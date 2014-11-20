@@ -1,0 +1,31 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress",
+        "type": "webroot",
+        "version": "4.0",
+        "dist": {
+          "type": "tar",
+          "url": "http://wordpress.org/wordpress-4.0.tar.gz"
+        },
+        "require" : {
+          "fancyguy/webroot-installer": "~1.1"
+        }
+      }
+    }
+  ],
+  "require": {
+    "wordpress": "~4.0",
+    "wpackagist-plugin/wpfront-user-role-editor": "~2.1"
+  },
+  "extra": {
+    "webroot-dir": "wp",
+    "webroot-package": "wordpress"
+  }
+}

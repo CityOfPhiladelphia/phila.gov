@@ -1,1 +1,4 @@
 .vagrant
+vendor
+wp
+wp-content

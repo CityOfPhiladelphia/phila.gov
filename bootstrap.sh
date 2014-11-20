@@ -45,3 +45,10 @@ EOF
 
 # TODO cd to static files directory and
 # python -m SimpleHTTPServer
+
+echo 'Installing composer...'
+curl -sS https://getcomposer.org/download/1.0.0-alpha8/composer.phar > /usr/local/bin/composer
+chmod 755 /usr/local/bin/composer
+
+echo 'Install php components with composer...'
+sudo -u vagrant composer install
