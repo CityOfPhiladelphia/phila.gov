@@ -6,7 +6,7 @@ apt-get update
 apt-get install -y mysql-server-5.6 nginx php5-cli php5-fpm
 
 echo 'Configuring mysql...'
-mysql -uroot -e "CREATE DATABASE wp"
+mysql -uroot -e "CREATE DATABASE IF NOT EXISTS wp"
 # mysql -uroot -e "GRANT ALL PRIVILEGES ON wp.* TO username@hostname IDENTIFIED BY 'userpassword'"
 
 echo 'Configuring nginx...'
