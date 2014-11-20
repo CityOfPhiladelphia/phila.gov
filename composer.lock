@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "845367304661bb54cd52f6f44099dded",
+    "hash": "5817a1e6a71f6300e1de7f8ceadab02b",
     "packages": [
         {
             "name": "composer/installers",
@@ -150,6 +150,29 @@
                 "fancyguy/webroot-installer": "~1.1"
             },
             "type": "webroot"
+        },
+        {
+            "name": "wpackagist-plugin/restrict-categories",
+            "version": "2.6.3",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/restrict-categories/",
+                "reference": "tags/2.6.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/restrict-categories.2.6.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "replace": {
+                "wpackagist/restrict-categories": "self.version"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "http://wordpress.org/plugins/restrict-categories/"
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
