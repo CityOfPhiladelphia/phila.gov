@@ -17,16 +17,12 @@ mysql -uroot -e "CREATE DATABASE IF NOT EXISTS wp"
 echo 'Configuring nginx...'
 cat > /etc/nginx/sites-available/default << 'EOF'
 server {
+    server_name localhost;
     listen 80;
 
     root /vagrant/wp;
     index index.php index.html index.htm;
-
-    server_name localhost;
-
-    location / {
-        try_files $uri $uri/ /index.php?q=$uri&$args;
-    }
+    try_files $uri $uri/ /index.php?q=$uri&$args;
 
     location ~ \.php$ {
         try_files $uri =404;
@@ -34,22 +30,17 @@ server {
         fastcgi_index index.php;
         include fastcgi_params;
     }
+}
 
-    location = /favicon.ico {
-        log_not_found off;
-        access_log off;
-    }
+server {
+    server_name localhost;
+    listen 81;
 
-    location = /robots.txt {
-        log_not_found off;
-        access_log off;
-    }
+    root /usr/share/nginx/html;
+    try_files $uri $uri/ $uri.html;
 }
 EOF
 /etc/init.d/nginx restart
-
-# TODO cd to static files directory and
-# python -m SimpleHTTPServer &
 
 echo 'Installing composer...'
 curl -sS https://getcomposer.org/download/1.0.0-alpha8/composer.phar > /usr/local/bin/composer
