@@ -1,23 +1,23 @@
 {
   "repositories": [
     {
-      "type": "composer",
-      "url": "http://wpackagist.org"
-    },
-    {
       "type": "package",
       "package": {
         "name": "wordpress",
         "type": "webroot",
-        "version": "4.0",
+        "version": "4.0.1",
         "dist": {
           "type": "tar",
-          "url": "http://wordpress.org/wordpress-4.0.tar.gz"
+          "url": "http://wordpress.org/wordpress-4.0.1.tar.gz"
         },
         "require" : {
           "fancyguy/webroot-installer": "~1.1"
         }
       }
+    },
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
     }
   ],
   "require": {
