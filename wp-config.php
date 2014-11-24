@@ -14,12 +14,17 @@
  * @package WordPress
  */
 
+/**
+ * For all getenv() vars set fastcgi_param values in nginx
+ *
+ */
+
 /** For Composer-driven autoload. See http://composer.rarst.net/recipe/site-stack */
 require __DIR__ . '/vendor/autoload.php';
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wp');
+define('DB_NAME', getenv('DB_NAME') ?: 'wp');
 
 /** MySQL database username */
 define('DB_USER', 'root');
