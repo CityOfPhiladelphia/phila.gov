@@ -50,4 +50,4 @@ echo 'Install php components with composer...'
 cd /vagrant
 su vagrant -c 'composer install'
 
-echo 'Wordpress should be up and running at http://localhost:8080'
+echo 'Wordpress should be up and running at http://localhost:19102'
