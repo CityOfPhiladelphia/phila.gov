@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6d16be85fddc407a6dfcbdb774d32308",
+    "hash": "c4f1ac999a41998ccceb3122063b9e9a",
     "packages": [
         {
             "name": "composer/installers",
@@ -150,6 +150,29 @@
                 "fancyguy/webroot-installer": "~1.1"
             },
             "type": "webroot"
+        },
+        {
+            "name": "wpackagist-plugin/pods",
+            "version": "2.4.3",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/pods/",
+                "reference": "tags/2.4.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/pods.2.4.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "replace": {
+                "wpackagist/pods": "self.version"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "http://wordpress.org/plugins/pods/"
         },
         {
             "name": "wpackagist-plugin/restrict-categories",
