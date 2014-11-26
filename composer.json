@@ -22,8 +22,9 @@
   ],
   "require": {
     "wordpress": "~4.0",
-    "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
-    "wpackagist-plugin/restrict-categories": "~2.6"
+    "wpackagist-plugin/pods": "~2.4",
+    "wpackagist-plugin/restrict-categories": "~2.6",
+    "wpackagist-plugin/wpfront-user-role-editor": "~2.1"
   },
   "extra": {
     "webroot-dir": "wp",
