@@ -4,15 +4,18 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 # Don't apt-get upgrade http://stackoverflow.com/a/15093460/589391
 
-# Need to lower mysql connections before install to limit memory use
+# Limit mysql memory use for install
+# https://mariadb.com/blog/starting-mysql-low-memory-virtual-machines
 mkdir -p /etc/mysql/conf.d
-echo -e '[mysqld]\nmax_connections = 20' > /etc/mysql/conf.d/low_connect.cnf
+cat > /etc/mysql/conf.d/low_mem.cnf << 'EOF'
+[mysqld]
+performance_schema = off
+EOF
 
 apt-get install -y mysql-server-5.6 nginx php5-cli php5-fpm php5-mysql
 
 echo 'Configuring mysql...'
 mysql -uroot -e "CREATE DATABASE IF NOT EXISTS wp"
-# mysql -uroot -e "GRANT ALL PRIVILEGES ON wp.* TO username@hostname IDENTIFIED BY 'userpassword'"
 
 echo 'Configuring nginx...'
 cat > /etc/nginx/sites-available/default << 'EOF'
