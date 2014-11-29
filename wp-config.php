@@ -67,10 +67,19 @@ $table_prefix  = 'wp_';
 define('WP_DEBUG', true);
 
 /** 
- * Directory splitting for Composer (and better dev, generally)
+ * Advanced options
  *
- * See http://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder
+ * See http://codex.wordpress.org/Editing_wp-config.php#Advanced_Options
  */
+
+/** WP_SITEURL overrides DB to set WP core address */
+define('WP_SITEURL', getenv('WP_SITEURL') ?: 'http://localhost:19102');
+
+/** WP_HOME overrides DB to set public site address */
+/** To be changed to port 19107 once static is generated there */
+define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost:19102');
+
+/** Directory splitting for Composer */
 define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
 
 
