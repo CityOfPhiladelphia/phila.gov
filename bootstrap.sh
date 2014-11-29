@@ -27,6 +27,10 @@ server {
     index index.php index.html index.htm;
     try_files $uri $uri/ /index.php?q=$uri&$args;
 
+    location /wp-content/ {
+        root /vagrant;
+    }
+
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_pass unix:/var/run/php5-fpm.sock;
