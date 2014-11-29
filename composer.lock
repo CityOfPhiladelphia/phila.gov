@@ -3,8 +3,32 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6433cfeeb2f683ae78d921f2360913aa",
+    "hash": "c371aa39c5b725135cce0f3c0a5754c0",
     "packages": [
+        {
+            "name": "CityOfPhiladelphia/phila.gov-customization",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
+                "reference": "0343ecdd7edc9bfa851150273929a80b8e374deb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/0343ecdd7edc9bfa851150273929a80b8e374deb",
+                "reference": "0343ecdd7edc9bfa851150273929a80b8e374deb",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "support": {
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/master",
+                "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
+            },
+            "time": "2014-11-29 01:36:15"
+        },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
             "version": "0.0.1",
