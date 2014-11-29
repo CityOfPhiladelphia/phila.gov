@@ -31,6 +31,12 @@
     "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
     "CityOfPhiladelphia/phila.gov-theme": "*"
   },
+  "scripts": {
+    "post-install-cmd": [
+      "echo Installing phila.gov-styles in phila.gov-theme",
+      "curl https://github.com/CityOfPhiladelphia/phila.gov-styles/archive/0.0.1.tar.gz | tar xz -C wp-content/themes/phila.gov-theme --transform 's/[^\\/]*/phila.gov-styles/'"
+    ]
+  },
   "extra": {
     "webroot-dir": "wp",
     "webroot-package": "wordpress"
