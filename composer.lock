@@ -7,7 +7,7 @@
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
@@ -24,7 +24,7 @@
             },
             "type": "wordpress-plugin",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/master",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.0.3",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
             },
             "time": "2014-11-29 01:36:15"
