@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "567f0a89187f8599a36320c6ee222480",
+    "hash": "c5d68f57242209f58e8fefa45e31cbfd",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -203,16 +203,16 @@
             "type": "webroot"
         },
         {
-            "name": "wpackagist-plugin/pods",
-            "version": "2.4.3",
+            "name": "wpackagist-plugin/meta-box",
+            "version": "4.3.11",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/pods/",
-                "reference": "tags/2.4.3"
+                "url": "http://plugins.svn.wordpress.org/meta-box/",
+                "reference": "tags/4.3.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/pods.2.4.3.zip",
+                "url": "http://downloads.wordpress.org/plugin/meta-box.4.3.11.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -220,10 +220,10 @@
                 "composer/installers": "~1.0"
             },
             "replace": {
-                "wpackagist/pods": "self.version"
+                "wpackagist/meta-box": "self.version"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/pods/"
+            "homepage": "http://wordpress.org/plugins/meta-box/"
         },
         {
             "name": "wpackagist-plugin/restrict-categories",
