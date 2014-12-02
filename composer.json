@@ -30,7 +30,7 @@
   ],
   "require": {
     "wordpress": "~4.0",
-    "wpackagist-plugin/pods": "~2.4",
+    "wpackagist-plugin/meta-box": "~4.3",
     "wpackagist-plugin/restrict-categories": "~2.6",
     "wpackagist-plugin/wordpress-importer": "~0.6",
     "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
