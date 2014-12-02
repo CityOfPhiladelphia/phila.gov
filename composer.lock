@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c371aa39c5b725135cce0f3c0a5754c0",
+    "hash": "567f0a89187f8599a36320c6ee222480",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -247,6 +247,29 @@
             },
             "type": "wordpress-plugin",
             "homepage": "http://wordpress.org/plugins/restrict-categories/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-importer",
+            "version": "0.6.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/wordpress-importer/",
+                "reference": "tags/0.6.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/wordpress-importer.0.6.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "replace": {
+                "wpackagist/wordpress-importer": "self.version"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "http://wordpress.org/plugins/wordpress-importer/"
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
