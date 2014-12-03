@@ -36,38 +36,780 @@
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:wp_author>
 <wp:category>
-  <wp:term_id>2</wp:term_id>
-  <wp:category_nicename>philly311</wp:category_nicename>
+  <wp:term_id>1</wp:term_id>
+  <wp:category_nicename>uncategorized</wp:category_nicename>
   <wp:category_parent/>
-  <wp:cat_name><![CDATA[311]]></wp:cat_name>
-  <wp:category_description><![CDATA[Revolutionizing the way you get information from your City government. 311 is the only number you need to call when you need information or help from the City of Philadelphia.]]></wp:category_description>
+  <wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+</wp:category>
+<wp:category>
+  <wp:term_id>2</wp:term_id>
+  <wp:category_nicename>asian-american-affairs</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Commission on Asian American Affairs]]></wp:cat_name>
+  <wp:category_description><![CDATA[Identifying issues important in the Asian American community, and collaborating with other organizations on common issues and making recommendations.]]></wp:category_description>
 </wp:category>
 <wp:category>
   <wp:term_id>3</wp:term_id>
-  <wp:category_nicename>city-planning</wp:category_nicename>
+  <wp:category_nicename>channel-64</wp:category_nicename>
   <wp:category_parent/>
-  <wp:cat_name><![CDATA[City Planning Commission]]></wp:cat_name>
-  <wp:category_description><![CDATA[City Planning Commission's goal is to guide the orderly growth and development of the City of Philadelphia. The Commission also address issues of community and economic development, public health and environmental sustainability, and multi-modal transportation policy. ]]></wp:category_description>
+  <wp:cat_name><![CDATA[Cable TV - Channel 64]]></wp:cat_name>
+  <wp:category_description><![CDATA[Streaming live content from the City of Philadelphia.]]></wp:category_description>
 </wp:category>
 <wp:category>
   <wp:term_id>4</wp:term_id>
-  <wp:category_nicename>department-of-revenue</wp:category_nicename>
+  <wp:category_nicename>faith-based-initiatives</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Faith Based Initiatives]]></wp:cat_name>
+  <wp:category_description><![CDATA[Promoting positive aspirations and hope among residents; and rekindling community linkages that support successful planning regarding residents’ community reintegration.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>5</wp:term_id>
+  <wp:category_nicename>historical</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Historical Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Ensuring the preservation of historic resources including buildings, structures, sites, objects, interiors, and districts.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>6</wp:term_id>
+  <wp:category_nicename>history</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philly History (Records)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Housing one of the country's largest municipal archives, with about 2 million photographs, dating from the late 1800's. Discover gorgeous images of Philadelphia, its industry, architecture, culture, and people.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>7</wp:term_id>
+  <wp:category_nicename>presidents-house</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Presidents House]]></wp:cat_name>
+  <wp:category_description><![CDATA[Commemorating, the nation’s first two presidents, an open-air installation marks the site where George Washington and John Adams served their terms of office and began to shape the executive branch of government.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>8</wp:term_id>
+  <wp:category_nicename>virtual-city-hall</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Virtual City Hall]]></wp:cat_name>
+  <wp:category_description><![CDATA[Displaying a brief history, photos, feature description, and in some cases a 360-degree panoramic view of the space in City Hall.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>9</wp:term_id>
+  <wp:category_nicename>parks-recreation</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Parks & Recreation]]></wp:cat_name>
+  <wp:category_description><![CDATA[Promoting the well-being of the City, its citizens and visitors, by offering beautiful natural landscapes and parks, historically significant resources, high quality recreation centers and athletic programs, along with enriching cultural and environmental programs.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>10</wp:term_id>
+  <wp:category_nicename>arts-culture-and-creative-economy</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Arts, Culture and Creative Economy]]></wp:cat_name>
+  <wp:category_description><![CDATA[Focusing on supporting the City's thriving cultural and creative sector, and sharing stories of the people and products that drive its growth.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>11</wp:term_id>
+  <wp:category_nicename>mural-arts</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mural Arts Program]]></wp:cat_name>
+  <wp:category_description><![CDATA[Uniting artists and communities through a collaborative process, rooted in the traditions of mural-making, to create art that transforms public spaces and individual lives.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>12</wp:term_id>
+  <wp:category_nicename>art-in-city-hall</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Art in City Hall]]></wp:cat_name>
+  <wp:category_description><![CDATA[Presenting exhibitions that showcase contemporary artwork by professional and emerging Philadelphia visual artists.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>13</wp:term_id>
+  <wp:category_nicename>public-art</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Public Art in Philadelphia]]></wp:cat_name>
+  <wp:category_description><![CDATA[Commissioning new works of public art and overseeing the preservation and maintenance of the City's public art collection.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>14</wp:term_id>
+  <wp:category_nicename>delaware-river-waterfront-corporation</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Delaware River Waterfront Corporation]]></wp:cat_name>
+  <wp:category_description><![CDATA[Acting as the steward to design, develop and manage the central Delaware River waterfront in Philadelphia between Oregon and Allegheny Avenue to provide a benefit to all of the citizens and visitors of the City. ]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>15</wp:term_id>
+  <wp:category_nicename>literacy</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Commission on Literacy]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working to equip all adults in Philadelphia with the education and work-ready skills they need to qualify for family-sustaining employment and post-secondary training.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>16</wp:term_id>
+  <wp:category_nicename>education</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Education]]></wp:cat_name>
+  <wp:category_description><![CDATA[Creating partnerships to support improved educational outcomes for children and adults. Advocating for parents, young people and schools]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>17</wp:term_id>
+  <wp:category_nicename>free-library</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Free Library of Philadelphia]]></wp:cat_name>
+  <wp:category_description><![CDATA[Helping to advance literacy, guide learning, and inspire curiosity. Building an enlightened community devoted to lifelong learning.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>18</wp:term_id>
+  <wp:category_nicename>philareads</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Reads]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working with individuals, schools, community and faith-based organizations and businesses to provide mentors, resources and advocacy for in-school, after school and summer programs.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>19</wp:term_id>
+  <wp:category_nicename>school-district-of-philadelphia</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[School District of Philadelphia]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing a high-quality education that prepares, ensures, and empowers all students to achieve their full intellectual and social potential in order to become lifelong learners and productive members of society.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>20</wp:term_id>
+  <wp:category_nicename>youth-commission</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Youth Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working with the city, non-profits, community organizations, and private entities to develop strategies to improve the lives of Philadelphia’s youth.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>21</wp:term_id>
+  <wp:category_nicename>phillygoes2college</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[PhillyGoes2College]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working to motivate more youth, adults and current college students in Philadelphia to pursue and complete college. Helping students realize that Philadelphia is the ideal city to earn a college degree and to live in while pursuing a rewarding career.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>22</wp:term_id>
+  <wp:category_nicename>veterans-advisory</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Veterans Advisory Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Serving the veterans of our city providing them with the information they need regarding all benefits, social services and counseling they are entitled to.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>23</wp:term_id>
+  <wp:category_nicename>planning</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Planning Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Guiding the orderly growth and development of the City of Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>24</wp:term_id>
+  <wp:category_nicename>311</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philly311]]></wp:cat_name>
+  <wp:category_description><![CDATA[Revolutionizing the way you get information from your City government. 311 is the only number you need to call when you need information or help from the City of Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>25</wp:term_id>
+  <wp:category_nicename>information-locator-service</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Information Locator Service (phils)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing access to information about City government. The Philadelphia Information Locator System (PhILS) will help users of government information determine what information is available on a particular topic or from a particular source, where that information is located, and how to access the information]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>26</wp:term_id>
+  <wp:category_nicename>phillyrising</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[PhillyRising Collaborative]]></wp:cat_name>
+  <wp:category_description><![CDATA[Targeting neighborhoods throughout Philadelphia that are plagued by chronic crime and quality of life problems that require a coordinated, multi-agency and community response.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>27</wp:term_id>
+  <wp:category_nicename>civil-service-commission</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Civil Service Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Advising the Mayor and the Director of Human Resources on problems concerning personnel administration in City service and upholding the interest of the City's merit-based civil service system, a role vital to the public interest.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>28</wp:term_id>
+  <wp:category_nicename>economic-opportunity</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Economic Opportunity]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working with Philadelphia business community to build internal and external alliances with Minority, Women or Disabled owned business enterprises to help develop strong, mutually beneficial relationships that facilitate successful networking opportunities.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>29</wp:term_id>
+  <wp:category_nicename>human-resources</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Human Resources]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working in partnership with City departments, agencies, boards, and commissions to attract and maintain a competitive and diverse workforce.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>30</wp:term_id>
+  <wp:category_nicename>procurement</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Procurement]]></wp:cat_name>
+  <wp:category_description><![CDATA[Managing purchasing and materials for the City, while ensuring a fair and open process.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>31</wp:term_id>
+  <wp:category_nicename>re-entry-for-ex-offenders</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Re-entry for Ex Offenders]]></wp:cat_name>
+  <wp:category_description><![CDATA[Partnering with the private and non-profit sectors to make the process of hiring individuals who are ex-offenders as easy as possible.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>32</wp:term_id>
+  <wp:category_nicename>commerce</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Commerce]]></wp:cat_name>
+  <wp:category_description><![CDATA[Leading efforts to develop business-friendly strategies to help both small businesses and major corporations in Philadelphia thrive.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>33</wp:term_id>
+  <wp:category_nicename>sustainability</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Sustainability (MOS)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Committing to make Philadelphia the number one green city in America.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>34</wp:term_id>
+  <wp:category_nicename>licenses-inspections</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Licenses & Inspections]]></wp:cat_name>
+  <wp:category_description><![CDATA[Regulating the conduct of businesses and persons by issuing licenses, by conducting inspections, and by enforcing applicable codes and regulations.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>35</wp:term_id>
+  <wp:category_nicename>more-beautiful-committee</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia More Beautiful Committee]]></wp:cat_name>
+  <wp:category_description><![CDATA[Partnering with City Government and community block captains to combat neighborhood grime with organized block cleanings promoting civic pride, public safety, and neighborhood empowerment.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>36</wp:term_id>
+  <wp:category_nicename>recycling</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Recycling]]></wp:cat_name>
+  <wp:category_description><![CDATA[Helping Philadelphians earn personal rewards just for recycling regularly and right. With the new Philadelphia Recycling Rewards program, powered by RecycleBank, the more you and your neighbors recycle the more rewards points you earn.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>37</wp:term_id>
+  <wp:category_nicename>streets</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Streets]]></wp:cat_name>
+  <wp:category_description><![CDATA[Maintaining the City’s vast network of streets and roadways. Responsible for the collection and disposal of residential trash and recyclables, as well as the construction and cleanliness of our entire street system.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>38</wp:term_id>
+  <wp:category_nicename>green-city-clean-waters</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Green City, Clean Waters]]></wp:cat_name>
+  <wp:category_description><![CDATA[Protecting and enhancing our watersheds, while managing storm water with innovative green infrastructure.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>39</wp:term_id>
+  <wp:category_nicename>water</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Water]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing an adequate and reliable water supply for all households, commercial, and community needs and sustaining and enhancing the region's watersheds and quality of life by managing wastewater and storm water effectively.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>40</wp:term_id>
+  <wp:category_nicename>boards</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Boards]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working independently to oversee various parts of the government activities.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>41</wp:term_id>
+  <wp:category_nicename>commissioners</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Commissioners Office]]></wp:cat_name>
+  <wp:category_description><![CDATA[Overseeing voter registration and elections for the City of Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>42</wp:term_id>
+  <wp:category_nicename>council</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Council]]></wp:cat_name>
+  <wp:category_description><![CDATA[Conducting hearings and public meetings on proposed bills and issues concerning The City of Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>43</wp:term_id>
+  <wp:category_nicename>ethics</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Board of Ethics]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing ethics training for all city employees and enforcing city campaign finance, financial disclosure, and conflict of interest laws. The board has authority to render advice, investigate complaints and issue fines.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>44</wp:term_id>
+  <wp:category_nicename>immigrant-multicultural-affairs</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Immigrant & Multicultural Affairs]]></wp:cat_name>
+  <wp:category_description><![CDATA[Promoting the well-being of the immigrant community and other constituency groups in Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>45</wp:term_id>
+  <wp:category_nicename>law</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Law Department (City Solicitor)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing legal advice to all officers, departments, boards, and commissions within the City concerning any matter arising in connection with the exercise of their official powers. Responsible for the collection of all fines, taxes and other debts owed the City, the representation of the City and its officers in litigation, the preparation of ordinances for introduction in City Council, and the negotiation and preparation of City contracts.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>46</wp:term_id>
+  <wp:category_nicename>mayors-office</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office]]></wp:cat_name>
+  <wp:category_description><![CDATA[Supporting Mayor Michael Nutter who governs the City of Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>47</wp:term_id>
+  <wp:category_nicename>phillystat</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[PhillyStat]]></wp:cat_name>
+  <wp:category_description><![CDATA[Facilitating meetings with City leaders to review departmental performance metrics to advance the progress of the Mayor's strategic goals.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>48</wp:term_id>
+  <wp:category_nicename>register-of-wills</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Register of Wills]]></wp:cat_name>
+  <wp:category_description><![CDATA[Administering the last Will of the decedent and determining whether a document offered for probate should be received as the last Will of the decedent.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>49</wp:term_id>
+  <wp:category_nicename>representative</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Representative]]></wp:cat_name>
+  <wp:category_description><![CDATA[Helping to create the experience of what it means to live, work or visit our wonderful city]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>50</wp:term_id>
+  <wp:category_nicename>risk-management</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Risk Management]]></wp:cat_name>
+  <wp:category_description><![CDATA[Analyzing the City's insurance and other risk exposure issues, including managing claims, workers' compensation, and service-connected disabilities. Provides safety and loss prevention programs.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>51</wp:term_id>
+  <wp:category_nicename>human-relations</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Human Relations Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Enforcing civil rights laws and deals with all matters of inter-group conflict within the city.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>52</wp:term_id>
+  <wp:category_nicename>task-force-on-tax-policy-and-economic-competitiveness</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Task Force on Tax Policy and Economic Competitiveness]]></wp:cat_name>
+  <wp:category_description><![CDATA[Evaluating Philadelphia’s real estate development environment and its tax policy and structure; and how they compare to competitor cities and neighboring jurisdictions.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>53</wp:term_id>
+  <wp:category_nicename>water-revenue-bureau</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[The Water Revenue Bureau]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing quality, courteous and efficient services to the customers of the Water Department. Accurately bills and collects water/sewer charges and fees, and ensures that the Water Department has the resources necessary to continue to provide high-quality water and cost-effective wastewater treatment to the city and the region.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>54</wp:term_id>
+  <wp:category_nicename>budget</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Budget]]></wp:cat_name>
+  <wp:category_description><![CDATA[Overseeing the plans and proposals pertaining to the City's spending and investing.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>55</wp:term_id>
+  <wp:category_nicename>controller</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Controller]]></wp:cat_name>
+  <wp:category_description><![CDATA[Auditing and advising the municipal government on Pre-Audit, Post-Audit, Special and Fraud Investigations, Administration, Financial and Policy Analysis, Pension Affairs, Information Technology, and Legal Affairs. ]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>56</wp:term_id>
+  <wp:category_nicename>finance</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of the Director of Finance]]></wp:cat_name>
+  <wp:category_description><![CDATA[Overseeing the financial, accounting, and budgeting functions of the executive branch.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>57</wp:term_id>
+  <wp:category_nicename>investor</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Investor]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing investors with information pertaining to the financial condition of the City, including information on the City's bond ratings and its upcoming debt issuance calendar.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>58</wp:term_id>
+  <wp:category_nicename>pensions</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Board of Pensions]]></wp:cat_name>
+  <wp:category_description><![CDATA[Ensuring that retirement benefits promised to the active and retired members of the City's Pension system are provided in a timely and professional manner.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>59</wp:term_id>
+  <wp:category_nicename>recovery</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Recovery]]></wp:cat_name>
+  <wp:category_description><![CDATA[Representing a number of separate funding opportunities for which the City of Philadelphia is directly eligible, either by formula or competitive grant. In addition, grants to other local governments and authorities, which will be spent in and on Philadelphia, are significant and will benefit the city.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>60</wp:term_id>
+  <wp:category_nicename>treasurer</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[City Treasurer]]></wp:cat_name>
+  <wp:category_description><![CDATA[Managing the City's Debt, Cash Management Goals, Custodian Banking, and Payments.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>61</wp:term_id>
+  <wp:category_nicename>treasurer</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Treasurer]]></wp:cat_name>
+  <wp:category_description><![CDATA[Managing the development and administration of the City's debt policies, while coordinating financial analysis and support for the City and its related agencies, and also manages the City's cash resources.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>62</wp:term_id>
+  <wp:category_nicename>fleet-management</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Fleet Management]]></wp:cat_name>
+  <wp:category_description><![CDATA[Maintaining the vehicles and large equipment that supports city wide functions. OFM is responsible for the acquisition, assignment and maintenance of vehicles and equipment.  ]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>63</wp:term_id>
+  <wp:category_nicename>revenue</wp:category_nicename>
   <wp:category_parent/>
   <wp:cat_name><![CDATA[Department of Revenue]]></wp:cat_name>
   <wp:category_description><![CDATA[Collecting taxes due the City and the School District of Philadelphia.]]></wp:category_description>
 </wp:category>
 <wp:category>
-  <wp:term_id>5</wp:term_id>
-  <wp:category_nicename>mayor-office</wp:category_nicename>
+  <wp:term_id>64</wp:term_id>
+  <wp:category_nicename>tax-review</wp:category_nicename>
   <wp:category_parent/>
-  <wp:cat_name><![CDATA[Mayor's Office]]></wp:cat_name>
-  <wp:category_description><![CDATA[Announcements, events, and plans to reach the ambitious goals the Mayor has set for the City of Philadelphia.]]></wp:category_description>
+  <wp:cat_name><![CDATA[Tax Review Board]]></wp:cat_name>
+  <wp:category_description><![CDATA[Resolving taxpayer appeals from all City assessments or bills with the exception of real estate tax assessments and real estate tax principal.]]></wp:category_description>
 </wp:category>
 <wp:category>
-  <wp:term_id>1</wp:term_id>
-  <wp:category_nicename>uncategorized</wp:category_nicename>
+  <wp:term_id>65</wp:term_id>
+  <wp:category_nicename>aging</wp:category_nicename>
   <wp:category_parent/>
-  <wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+  <wp:cat_name><![CDATA[Mayor's Commission on Services to the Aging]]></wp:cat_name>
+  <wp:category_description><![CDATA[Improving the quality of life for older adults in Philadelphia. Opportunities and Services for Philadelphia Residents 55+. Our services are Free to Residents and Employers.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>66</wp:term_id>
+  <wp:category_nicename>behavioral-health-and-intellectual-disability-services-dbhids</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Behavioral Health and Intellectual DisAbility Services (DBHIDS)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Embracing a vision of recovery, resilience, and self-determination the department’s collaboration with the Philadelphia School District, child welfare and judicial systems, and other stakeholders guide people in managing their own conditions while building their own recovery resources. ]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>67</wp:term_id>
+  <wp:category_nicename>health</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Public Health]]></wp:cat_name>
+  <wp:category_description><![CDATA[Protecting the health of all Philadelphians and to promote an environment that allows us to lead healthy lives. Providing services, setting policies, and enforcing laws that support the dignity of every man, woman and child in Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>68</wp:term_id>
+  <wp:category_nicename>human-services</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Human Services]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing and promoting safety, permanency, and well-being for children and youth at risk of abuse, neglect and delinquency.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>69</wp:term_id>
+  <wp:category_nicename>people-with-disabilities</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Commission on People with Disabilities]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing a forum for the disability community to express interest and opinions on city programs and services. Seeking to bring positive visibility to people with disabilities.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>70</wp:term_id>
+  <wp:category_nicename>regional-emergency-medical-services</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Regional Emergency Medical Services]]></wp:cat_name>
+  <wp:category_description><![CDATA[Planning, interpreting, implementing and requiring compliance with the laws and regulations of EMS on the federal, state, and local levels.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>71</wp:term_id>
+  <wp:category_nicename>fair-housing</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Fair Housing Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Addressing unfair rental practices. A tenant may file a complaint with the Philadelphia Fair Housing Commission if rent is current and the tenant is being threatened with illegal eviction, if a landlord is raising rent while housing code violations exist.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>72</wp:term_id>
+  <wp:category_nicename>housing-development-corporation</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Housing Development Corporation]]></wp:cat_name>
+  <wp:category_description><![CDATA[Serving the housing needs of low and moderate income Philadelphians since 1964, through landownership and house repair programs.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>73</wp:term_id>
+  <wp:category_nicename>records</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Records]]></wp:cat_name>
+  <wp:category_description><![CDATA[Ensuring that Philadelphia's municipal records are appropriately controlled and managed providing standards and procedures for all City Departments, board, agencies and commissions.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>74</wp:term_id>
+  <wp:category_nicename>revision-of-taxes</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Board of Revision of Taxes]]></wp:cat_name>
+  <wp:category_description><![CDATA[Hearing and deciding all property assessment and valuation appeals.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>75</wp:term_id>
+  <wp:category_nicename>supportive-housing-osh</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Supportive Housing (OSH)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing a wide array of services through policy and planning; including emergency, transitional and supportive housing to individuals, couples and families who are homeless]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>76</wp:term_id>
+  <wp:category_nicename>anti-graffiti-network</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Anti-Graffiti Network]]></wp:cat_name>
+  <wp:category_description><![CDATA[Coordinating efforts between city agencies, business organizations and community groups dedicated to the eradication of graffiti vandalism.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>77</wp:term_id>
+  <wp:category_nicename>housing-authority</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Housing Authority]]></wp:cat_name>
+  <wp:category_description><![CDATA[Operating low income housing programs for limited income people. Funding to operate and improve residences come from subsidies from US department of Housing and Urban Development.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>78</wp:term_id>
+  <wp:category_nicename>property-assessments</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Property Assessments]]></wp:cat_name>
+  <wp:category_description><![CDATA[Establishing real property values which serve as the basis for real estate taxes levied by the City of Philadelphia]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>79</wp:term_id>
+  <wp:category_nicename>zoning-archive</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Zoning Archive On-line]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing electronic access to zoning documents.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>80</wp:term_id>
+  <wp:category_nicename>public-property</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Department of Public Property]]></wp:cat_name>
+  <wp:category_description><![CDATA[Managing the physical infrastructure that supports City government operations through acquisition, care, and maintenance of City properties. ]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>81</wp:term_id>
+  <wp:category_nicename>redevelopment-authority</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Redevelopment Authority]]></wp:cat_name>
+  <wp:category_description><![CDATA[Focusing on the redevelopment of Philadelphia while creating balanced mixed-use communities to establish thriving, well-served and revitalized neighborhoods. ]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>82</wp:term_id>
+  <wp:category_nicename>fire</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Fire Department]]></wp:cat_name>
+  <wp:category_description><![CDATA[Serving and protecting Philadelphia for nearly 265 years. Striving to maintain a safe, fire-free environment for all citizens]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>83</wp:term_id>
+  <wp:category_nicename>tax-reform</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Tax Reform Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Recommending methods to reduce the taxes of Philadelphia residents, workers and businesses in an equitable manner in order to enhance Philadelphia's ability to compete with other jurisdictions in attracting and retaining new residents, businesses and jobs.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>84</wp:term_id>
+  <wp:category_nicename>housing-and-community-development-ohcd</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Housing and Community Development (OHCD)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Administering housing and community development programs to benefit low- and moderate-income residents.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>85</wp:term_id>
+  <wp:category_nicename>zoning-code-commission</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Zoning Code Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working to reform and modernize Philadelphia's Zoning Code so it is easier to understand. Improving the City’s planning process, promoting positive development, and preserving the character of Philadelphia’s neighborhoods.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>86</wp:term_id>
+  <wp:category_nicename>community-empowerment-and-opportunity</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Community Empowerment and Opportunity]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working to combat poverty in our city, helping Philadelphia’s low-income residents realize economic security, by increasing opportunities for low income individuals and families.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>87</wp:term_id>
+  <wp:category_nicename>maps</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[CityMaps]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing access to mapped information that allows for address verification, answering questions about city services and basic property information.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>88</wp:term_id>
+  <wp:category_nicename>neighborhood-services</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Neighborhood Services]]></wp:cat_name>
+  <wp:category_description><![CDATA[Promoting programs dedicated to improving the appearance of Philadelphia’s neighborhoods through the eradication of blight.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>89</wp:term_id>
+  <wp:category_nicename>quarter-sessions</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Clerk of Quarter Sessions]]></wp:cat_name>
+  <wp:category_description><![CDATA[Supporting the Criminal Courts of Common Pleas, Municipal Courts, and the Juvenile Division of Family Court while performing various activities; working with dockets, taking bail, entering judgments, issuing bench warrants, collecting fines, recording bills of information and criminal transcripts decisions of the courts, issuing commitments or discharges for defendants.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>90</wp:term_id>
+  <wp:category_nicename>sheriff</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Sheriff]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing safety to everyone involved with the court system of the First Judicial District and for managing Sheriff Sales of properties that have been taken because of mortgage foreclosure or various tax liens.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>91</wp:term_id>
+  <wp:category_nicename>town-watch</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Town Watch]]></wp:cat_name>
+  <wp:category_description><![CDATA[Promoting safety in the neighborhood by engaging institutions, community- based organizations, and local leaders to dialogue toward developing an agenda for action. These actions and plans involve pre and post intervention services while developing viable partnerships.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>92</wp:term_id>
+  <wp:category_nicename>managing-director</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Managing Director's Office]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing oversight, support and assistance to City operating departments.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>93</wp:term_id>
+  <wp:category_nicename>courts</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Courts]]></wp:cat_name>
+  <wp:category_description><![CDATA[Housing the Court of Common Pleas; Municipal Court; and Traffic Court.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>94</wp:term_id>
+  <wp:category_nicename>defender</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Defender Association of Philadelphia]]></wp:cat_name>
+  <wp:category_description><![CDATA[Representing approximately seventy percent of all persons arrested in Philadelphia. The Association, however, has no power to appoint itself as legal counsel.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>95</wp:term_id>
+  <wp:category_nicename>district-attorney</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of the District Attorney]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing a voice for victims of crime and protects the community through zealous, ethical and effective investigations and prosecutions.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>96</wp:term_id>
+  <wp:category_nicename>emergency-management</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Emergency Preparedness and Response (READY)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Educating the public on how to prepare for emergencies, while working with organizations throughout the city to prepare emergency contingencies, mitigate the impact of emergencies and enable the city to recover from an emergency as quickly as possible.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>97</wp:term_id>
+  <wp:category_nicename>inspector-general</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Inspector General's Office]]></wp:cat_name>
+  <wp:category_description><![CDATA[Enhancing the public confidence in the integrity of the City government by rooting out corruption, fraud, misconduct, waste and mismanagement. The OIG is the watchdog for the taxpayers of the city.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>98</wp:term_id>
+  <wp:category_nicename>integrityworks</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[IntegrityWorks]]></wp:cat_name>
+  <wp:category_description><![CDATA[Explaining why and how the City operates ethically.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>99</wp:term_id>
+  <wp:category_nicename>police</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Police Department]]></wp:cat_name>
+  <wp:category_description><![CDATA[Policing Philadelphia County working to fight crimes and enforce laws for residents and visitors.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>100</wp:term_id>
+  <wp:category_nicename>police-advisory</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Police Advisory Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working hard to improve the relationship between the police department and the community by providing civilian oversight.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>101</wp:term_id>
+  <wp:category_nicename>prisons</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Prison System]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing a secure correctional environment that adequately detains persons accused or convicted of illegal acts. Providing programs, services, and supervision in a safe, lawful, clean, humane environment; while preparing incarcerated persons for reentry into society.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>102</wp:term_id>
+  <wp:category_nicename>econtract-philly</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[eContract Philly]]></wp:cat_name>
+  <wp:category_description><![CDATA[Serving as a gateway for the public and for vendors interested in applying for contract opportunities. eContract Philly is an online interface to support the City in purchasing non-competitively bid services.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>103</wp:term_id>
+  <wp:category_nicename>innovation-and-technology</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Office of Innovation and Technology]]></wp:cat_name>
+  <wp:category_description><![CDATA[Increasing the effectiveness of the information technology infrastructure, where the services provided are advanced, optimized, and responsive to the needs of the City of Philadelphia’s businesses, residents and visitors.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>104</wp:term_id>
+  <wp:category_nicename>gas</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Gas Commission]]></wp:cat_name>
+  <wp:category_description><![CDATA[Overseeing the management and operation of the Philadelphia Gas Works (PGW).]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>105</wp:term_id>
+  <wp:category_nicename>parking-authority</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Parking Authority]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing an efficient, well-organized transportation system that serves the needs of the public and encourages economic development. Ranging from managing parking and related traffic management programs on the streets of Philadelphia, to building and operating parking lots and garages.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>106</wp:term_id>
+  <wp:category_nicename>septa</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[SEPTA]]></wp:cat_name>
+  <wp:category_description><![CDATA[Offering a vast option of transit services, including buses, trolleys, trackless trolleys, subways and Regional Rail (our commuter rail). Hop aboard and experience the treasures Philadelphia has to share.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>107</wp:term_id>
+  <wp:category_nicename>transportation-and-utilities</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Transportation and Utilities]]></wp:cat_name>
+  <wp:category_description><![CDATA[Working hard to make sure that Philadelphians can get where they are going, no matter how they choose to get there; be it by foot, bike, car or transit. It endeavors to ensure that Philadelphia’s water, electricity and gas systems are of the highest caliber.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>108</wp:term_id>
+  <wp:category_nicename>airport</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia International Airport]]></wp:cat_name>
+  <wp:category_description><![CDATA[Serving the entire Philadelphia region, the airport is easy to get to and has many programs to enhance the traveler's airport experience.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>109</wp:term_id>
+  <wp:category_nicename>industrial-development</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Philadelphia Industrial Development Corporation (PIDC)]]></wp:cat_name>
+  <wp:category_description><![CDATA[Planning and implementing real estate and financing transactions that attract investment, jobs and tax ratables to the City of Philadelphia.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>110</wp:term_id>
+  <wp:category_nicename>civic-engagement-and-volunteer-service</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Civic Engagement and Volunteer Service]]></wp:cat_name>
+  <wp:category_description><![CDATA[Coordinating the implementation of SERVE Philadelphia, the City's blueprint for promoting service as a strategy to impact challenges and strengthen communities.]]></wp:category_description>
+</wp:category>
+<wp:category>
+  <wp:term_id>111</wp:term_id>
+  <wp:category_nicename>lesbian-gay-bi-sexual-and-transgender-affairs</wp:category_nicename>
+  <wp:category_parent/>
+  <wp:cat_name><![CDATA[Mayor's Office of Lesbian, Gay, Bi-sexual and Transgender Affairs]]></wp:cat_name>
+  <wp:category_description><![CDATA[Providing services and information to LGBT people through outreach and public education. Advising the Mayor and Philadelphia City government on the needs of LGBT residents and supports LGBT policy development, community outreach, public education, and capacity building.]]></wp:category_description>
 </wp:category>
 <wp:term>
   <wp:term_id>6</wp:term_id>
@@ -268,7 +1010,7 @@ As a new WordPress user, you should go to <a href="http://localhost:19102/wp-adm
   <wp:post_type>news_post</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="city-planning"><![CDATA[City Planning Commission]]></category>
+  <category domain="category" nicename="planning"><![CDATA[City Planning Commission]]></category>
   <wp:postmeta>
     <wp:meta_key>_wp_old_slug</wp:meta_key>
     <wp:meta_value><![CDATA[the-news-title]]></wp:meta_value>
@@ -295,7 +1037,7 @@ As a new WordPress user, you should go to <a href="http://localhost:19102/wp-adm
   <wp:post_type>department_page</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="city-planning"><![CDATA[City Planning Commission]]></category>
+  <category domain="category" nicename="planning"><![CDATA[City Planning Commission]]></category>
   <wp:postmeta>
     <wp:meta_key>external_site</wp:meta_key>
     <wp:meta_value><![CDATA[1]]></wp:meta_value>
@@ -342,7 +1084,7 @@ The City of Philadelphia is not a party to any reciprocal tax agreements with an
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="topics" nicename="individuals-and-families"><![CDATA[Individuals and Families]]></category>
-  <category domain="category" nicename="mayor-office"><![CDATA[Mayor's Office]]></category>
+  <category domain="category" nicename="mayors-office"><![CDATA[Mayor's Office]]></category>
   <category domain="topics" nicename="taxes-and-payments"><![CDATA[Taxes and Payments]]></category>
   <wp:postmeta>
     <wp:meta_key>_encloseme</wp:meta_key>
@@ -422,7 +1164,7 @@ The City of Philadelphia is not a party to any reciprocal tax agreements with an
   <wp:post_type>department_page</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="philly311"><![CDATA[311]]></category>
+  <category domain="category" nicename="311"><![CDATA[311]]></category>
   <wp:postmeta>
     <wp:meta_key>external_site</wp:meta_key>
     <wp:meta_value><![CDATA[1]]></wp:meta_value>
@@ -450,7 +1192,7 @@ The City of Philadelphia is not a party to any reciprocal tax agreements with an
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="topics" nicename="abatements-and-exemptions"><![CDATA[Abatements &amp; Exemptions]]></category>
-  <category domain="category" nicename="department-of-revenue"><![CDATA[Department of Revenue]]></category>
+  <category domain="category" nicename="revenue"><![CDATA[Department of Revenue]]></category>
   <category domain="topics" nicename="property"><![CDATA[Property]]></category>
   <wp:postmeta>
     <wp:meta_key>service_introduction</wp:meta_key>
@@ -498,7 +1240,7 @@ You can setup electronic payments to be made directly from your bank account. <a
   <wp:post_type>service_post</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="department-of-revenue"><![CDATA[Department of Revenue]]></category>
+  <category domain="category" nicename="revenue"><![CDATA[Department of Revenue]]></category>
   <category domain="topics" nicename="individuals-and-families"><![CDATA[Individuals and Families]]></category>
   <category domain="topics" nicename="taxes-and-payments"><![CDATA[Taxes and Payments]]></category>
   <wp:postmeta>
@@ -531,7 +1273,7 @@ You can setup electronic payments to be made directly from your bank account. <a
   <wp:post_type>department_page</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="department-of-revenue"><![CDATA[Department of Revenue]]></category>
+  <category domain="category" nicename="revenue"><![CDATA[Department of Revenue]]></category>
   <category domain="topics" nicename="urban-development"><![CDATA[Urban Development]]></category>
   <wp:postmeta>
     <wp:meta_key>external_site</wp:meta_key>
@@ -559,7 +1301,7 @@ You can setup electronic payments to be made directly from your bank account. <a
   <wp:post_type>department_page</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="category" nicename="mayor-office"><![CDATA[Mayor's Office]]></category>
+  <category domain="category" nicename="mayors-office"><![CDATA[Mayor's Office]]></category>
   <wp:postmeta>
     <wp:meta_key>external_site</wp:meta_key>
     <wp:meta_value><![CDATA[1]]></wp:meta_value>
