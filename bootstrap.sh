@@ -61,7 +61,10 @@ echo 'Installing wp-cli...'
 curl -sS https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp
 chmod 755 /usr/local/bin/wp
 
-echo 'Importing fixture data...'
+echo 'Importing configuration...'
 su vagrant -c 'wp db import'
+
+echo 'Importing fixture data...'
+su vagrant -c 'wp import wp.xml'
 
 echo 'Wordpress should be up and running at http://localhost:19102'
