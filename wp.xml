@@ -14,19 +14,31 @@
 <!--    existing user on the site or to create a new user. -->
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
-<!-- generator="WordPress/4.0.1" created="2014-12-03 20:16" -->
+<!-- generator="WordPress/4.0.1" created="2014-12-03 20:59" -->
 <rss xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/" version="2.0">
 <channel>
     <title>phila.gov</title>
     <link>http://localhost:19102</link>
     <description>City of Philadelphia</description>
-    <pubDate>Wed, 03 Dec 2014 20:16:21 +0000</pubDate>
+    <pubDate>Wed, 03 Dec 2014 20:59:23 +0000</pubDate>
     <language>en-US</language>
     <wp:wxr_version>1.2</wp:wxr_version>
     <wp:base_site_url>http://localhost:19102</wp:base_site_url>
     <wp:base_blog_url>http://localhost:19102</wp:base_blog_url>
+    <wp:author>
+        <wp:author_id>1</wp:author_id>
+        <wp:author_login>admin</wp:author_login>
+        <wp:author_email>vagrant@localhost.localdomain</wp:author_email>
+        <wp:author_display_name>
+            <![CDATA[admin]]>
+        </wp:author_display_name>
+        <wp:author_first_name>
+        </wp:author_first_name>
+        <wp:author_last_name>
+        </wp:author_last_name>
+    </wp:author>
     <wp:category>
-        <wp:term_id>42</wp:term_id>
+        <wp:term_id>2</wp:term_id>
         <wp:category_nicename>311</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -34,7 +46,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>82</wp:term_id>
+        <wp:term_id>3</wp:term_id>
         <wp:category_nicename>aging</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -42,7 +54,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>125</wp:term_id>
+        <wp:term_id>4</wp:term_id>
         <wp:category_nicename>airport</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -50,7 +62,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>93</wp:term_id>
+        <wp:term_id>5</wp:term_id>
         <wp:category_nicename>anti-graffiti-network</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -58,7 +70,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>30</wp:term_id>
+        <wp:term_id>6</wp:term_id>
         <wp:category_nicename>art-in-city-hall</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -66,7 +78,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>28</wp:term_id>
+        <wp:term_id>7</wp:term_id>
         <wp:category_nicename>arts-culture-and-creative-economy</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -74,7 +86,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>20</wp:term_id>
+        <wp:term_id>8</wp:term_id>
         <wp:category_nicename>asian-american-affairs</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -82,7 +94,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>83</wp:term_id>
+        <wp:term_id>9</wp:term_id>
         <wp:category_nicename>behavioral-health-and-intellectual-disability-services-dbhids</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -90,7 +102,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>58</wp:term_id>
+        <wp:term_id>10</wp:term_id>
         <wp:category_nicename>boards</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -98,7 +110,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>72</wp:term_id>
+        <wp:term_id>11</wp:term_id>
         <wp:category_nicename>budget</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -106,7 +118,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>21</wp:term_id>
+        <wp:term_id>12</wp:term_id>
         <wp:category_nicename>channel-64</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -114,7 +126,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>127</wp:term_id>
+        <wp:term_id>13</wp:term_id>
         <wp:category_nicename>civic-engagement-and-volunteer-service</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -122,7 +134,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>45</wp:term_id>
+        <wp:term_id>14</wp:term_id>
         <wp:category_nicename>civil-service-commission</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -130,7 +142,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>50</wp:term_id>
+        <wp:term_id>15</wp:term_id>
         <wp:category_nicename>commerce</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -138,7 +150,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>59</wp:term_id>
+        <wp:term_id>16</wp:term_id>
         <wp:category_nicename>commissioners</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -146,7 +158,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>103</wp:term_id>
+        <wp:term_id>17</wp:term_id>
         <wp:category_nicename>community-empowerment-and-opportunity</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -154,7 +166,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>73</wp:term_id>
+        <wp:term_id>18</wp:term_id>
         <wp:category_nicename>controller</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -162,7 +174,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>60</wp:term_id>
+        <wp:term_id>19</wp:term_id>
         <wp:category_nicename>council</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -170,7 +182,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>110</wp:term_id>
+        <wp:term_id>20</wp:term_id>
         <wp:category_nicename>courts</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -178,7 +190,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>111</wp:term_id>
+        <wp:term_id>21</wp:term_id>
         <wp:category_nicename>defender</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -186,7 +198,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>32</wp:term_id>
+        <wp:term_id>22</wp:term_id>
         <wp:category_nicename>delaware-river-waterfront-corporation</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -194,7 +206,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>112</wp:term_id>
+        <wp:term_id>23</wp:term_id>
         <wp:category_nicename>district-attorney</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -202,7 +214,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>46</wp:term_id>
+        <wp:term_id>24</wp:term_id>
         <wp:category_nicename>economic-opportunity</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -210,7 +222,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>119</wp:term_id>
+        <wp:term_id>25</wp:term_id>
         <wp:category_nicename>econtract-philly</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -218,7 +230,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>34</wp:term_id>
+        <wp:term_id>26</wp:term_id>
         <wp:category_nicename>education</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -226,7 +238,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>113</wp:term_id>
+        <wp:term_id>27</wp:term_id>
         <wp:category_nicename>emergency-management</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -234,7 +246,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>61</wp:term_id>
+        <wp:term_id>28</wp:term_id>
         <wp:category_nicename>ethics</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -242,7 +254,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>88</wp:term_id>
+        <wp:term_id>29</wp:term_id>
         <wp:category_nicename>fair-housing</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -250,7 +262,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>22</wp:term_id>
+        <wp:term_id>30</wp:term_id>
         <wp:category_nicename>faith-based-initiatives</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -258,7 +270,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>74</wp:term_id>
+        <wp:term_id>31</wp:term_id>
         <wp:category_nicename>finance</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -266,7 +278,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>99</wp:term_id>
+        <wp:term_id>32</wp:term_id>
         <wp:category_nicename>fire</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -274,7 +286,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>79</wp:term_id>
+        <wp:term_id>33</wp:term_id>
         <wp:category_nicename>fleet-management</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -282,7 +294,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>35</wp:term_id>
+        <wp:term_id>34</wp:term_id>
         <wp:category_nicename>free-library</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -290,7 +302,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>121</wp:term_id>
+        <wp:term_id>35</wp:term_id>
         <wp:category_nicename>gas</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -298,7 +310,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>56</wp:term_id>
+        <wp:term_id>36</wp:term_id>
         <wp:category_nicename>green-city-clean-waters</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -306,7 +318,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>84</wp:term_id>
+        <wp:term_id>37</wp:term_id>
         <wp:category_nicename>health</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -314,7 +326,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>23</wp:term_id>
+        <wp:term_id>38</wp:term_id>
         <wp:category_nicename>historical</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -322,7 +334,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>24</wp:term_id>
+        <wp:term_id>39</wp:term_id>
         <wp:category_nicename>history</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -330,7 +342,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>101</wp:term_id>
+        <wp:term_id>40</wp:term_id>
         <wp:category_nicename>housing-and-community-development-ohcd</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -338,7 +350,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>94</wp:term_id>
+        <wp:term_id>41</wp:term_id>
         <wp:category_nicename>housing-authority</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -346,7 +358,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>89</wp:term_id>
+        <wp:term_id>42</wp:term_id>
         <wp:category_nicename>housing-development-corporation</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -354,7 +366,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>69</wp:term_id>
+        <wp:term_id>43</wp:term_id>
         <wp:category_nicename>human-relations</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -362,7 +374,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>47</wp:term_id>
+        <wp:term_id>44</wp:term_id>
         <wp:category_nicename>human-resources</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -370,7 +382,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>85</wp:term_id>
+        <wp:term_id>45</wp:term_id>
         <wp:category_nicename>human-services</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -378,7 +390,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>62</wp:term_id>
+        <wp:term_id>46</wp:term_id>
         <wp:category_nicename>immigrant-multicultural-affairs</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -386,7 +398,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>126</wp:term_id>
+        <wp:term_id>47</wp:term_id>
         <wp:category_nicename>industrial-development</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -394,7 +406,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>43</wp:term_id>
+        <wp:term_id>48</wp:term_id>
         <wp:category_nicename>information-locator-service</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -402,7 +414,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>120</wp:term_id>
+        <wp:term_id>49</wp:term_id>
         <wp:category_nicename>innovation-and-technology</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -410,7 +422,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>114</wp:term_id>
+        <wp:term_id>50</wp:term_id>
         <wp:category_nicename>inspector-general</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -418,7 +430,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>115</wp:term_id>
+        <wp:term_id>51</wp:term_id>
         <wp:category_nicename>integrityworks</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -426,7 +438,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>75</wp:term_id>
+        <wp:term_id>52</wp:term_id>
         <wp:category_nicename>investor</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -434,7 +446,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>63</wp:term_id>
+        <wp:term_id>53</wp:term_id>
         <wp:category_nicename>law</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -442,7 +454,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>128</wp:term_id>
+        <wp:term_id>54</wp:term_id>
         <wp:category_nicename>lesbian-gay-bi-sexual-and-transgender-affairs</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -450,7 +462,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>52</wp:term_id>
+        <wp:term_id>55</wp:term_id>
         <wp:category_nicename>licenses-inspections</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -458,7 +470,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>33</wp:term_id>
+        <wp:term_id>56</wp:term_id>
         <wp:category_nicename>literacy</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -466,7 +478,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>109</wp:term_id>
+        <wp:term_id>57</wp:term_id>
         <wp:category_nicename>managing-director</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -474,7 +486,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>104</wp:term_id>
+        <wp:term_id>58</wp:term_id>
         <wp:category_nicename>maps</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -482,7 +494,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>64</wp:term_id>
+        <wp:term_id>59</wp:term_id>
         <wp:category_nicename>mayors-office</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -490,7 +502,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>53</wp:term_id>
+        <wp:term_id>60</wp:term_id>
         <wp:category_nicename>more-beautiful-committee</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -498,7 +510,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>29</wp:term_id>
+        <wp:term_id>61</wp:term_id>
         <wp:category_nicename>mural-arts</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -506,7 +518,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>105</wp:term_id>
+        <wp:term_id>62</wp:term_id>
         <wp:category_nicename>neighborhood-services</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -514,7 +526,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>122</wp:term_id>
+        <wp:term_id>63</wp:term_id>
         <wp:category_nicename>parking-authority</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -522,7 +534,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>27</wp:term_id>
+        <wp:term_id>64</wp:term_id>
         <wp:category_nicename>parks-recreation</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -530,7 +542,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>76</wp:term_id>
+        <wp:term_id>65</wp:term_id>
         <wp:category_nicename>pensions</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -538,7 +550,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>86</wp:term_id>
+        <wp:term_id>66</wp:term_id>
         <wp:category_nicename>people-with-disabilities</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -546,7 +558,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>36</wp:term_id>
+        <wp:term_id>67</wp:term_id>
         <wp:category_nicename>philareads</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -554,7 +566,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>39</wp:term_id>
+        <wp:term_id>68</wp:term_id>
         <wp:category_nicename>phillygoes2college</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -562,7 +574,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>44</wp:term_id>
+        <wp:term_id>69</wp:term_id>
         <wp:category_nicename>phillyrising</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -570,7 +582,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>65</wp:term_id>
+        <wp:term_id>70</wp:term_id>
         <wp:category_nicename>phillystat</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -578,7 +590,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>41</wp:term_id>
+        <wp:term_id>71</wp:term_id>
         <wp:category_nicename>planning</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -586,7 +598,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>116</wp:term_id>
+        <wp:term_id>72</wp:term_id>
         <wp:category_nicename>police</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -594,7 +606,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>117</wp:term_id>
+        <wp:term_id>73</wp:term_id>
         <wp:category_nicename>police-advisory</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -602,7 +614,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>25</wp:term_id>
+        <wp:term_id>74</wp:term_id>
         <wp:category_nicename>presidents-house</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -610,7 +622,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>118</wp:term_id>
+        <wp:term_id>75</wp:term_id>
         <wp:category_nicename>prisons</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -618,7 +630,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>48</wp:term_id>
+        <wp:term_id>76</wp:term_id>
         <wp:category_nicename>procurement</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -626,7 +638,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>95</wp:term_id>
+        <wp:term_id>77</wp:term_id>
         <wp:category_nicename>property-assessments</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -634,7 +646,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>31</wp:term_id>
+        <wp:term_id>78</wp:term_id>
         <wp:category_nicename>public-art</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -642,7 +654,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>97</wp:term_id>
+        <wp:term_id>79</wp:term_id>
         <wp:category_nicename>public-property</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -650,7 +662,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>106</wp:term_id>
+        <wp:term_id>80</wp:term_id>
         <wp:category_nicename>quarter-sessions</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -658,7 +670,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>49</wp:term_id>
+        <wp:term_id>81</wp:term_id>
         <wp:category_nicename>re-entry-for-ex-offenders</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -666,7 +678,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>90</wp:term_id>
+        <wp:term_id>82</wp:term_id>
         <wp:category_nicename>records</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -674,7 +686,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>77</wp:term_id>
+        <wp:term_id>83</wp:term_id>
         <wp:category_nicename>recovery</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -682,7 +694,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>54</wp:term_id>
+        <wp:term_id>84</wp:term_id>
         <wp:category_nicename>recycling</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -690,7 +702,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>98</wp:term_id>
+        <wp:term_id>85</wp:term_id>
         <wp:category_nicename>redevelopment-authority</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -698,7 +710,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>87</wp:term_id>
+        <wp:term_id>86</wp:term_id>
         <wp:category_nicename>regional-emergency-medical-services</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -706,7 +718,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>66</wp:term_id>
+        <wp:term_id>87</wp:term_id>
         <wp:category_nicename>register-of-wills</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -714,7 +726,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>67</wp:term_id>
+        <wp:term_id>88</wp:term_id>
         <wp:category_nicename>representative</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -722,7 +734,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>80</wp:term_id>
+        <wp:term_id>89</wp:term_id>
         <wp:category_nicename>revenue</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -730,7 +742,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>91</wp:term_id>
+        <wp:term_id>90</wp:term_id>
         <wp:category_nicename>revision-of-taxes</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -738,7 +750,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>68</wp:term_id>
+        <wp:term_id>91</wp:term_id>
         <wp:category_nicename>risk-management</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -746,7 +758,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>37</wp:term_id>
+        <wp:term_id>92</wp:term_id>
         <wp:category_nicename>school-district-of-philadelphia</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -754,7 +766,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>123</wp:term_id>
+        <wp:term_id>93</wp:term_id>
         <wp:category_nicename>septa</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -762,7 +774,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>107</wp:term_id>
+        <wp:term_id>94</wp:term_id>
         <wp:category_nicename>sheriff</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -770,7 +782,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>55</wp:term_id>
+        <wp:term_id>95</wp:term_id>
         <wp:category_nicename>streets</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -778,7 +790,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>92</wp:term_id>
+        <wp:term_id>96</wp:term_id>
         <wp:category_nicename>supportive-housing-osh</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -786,7 +798,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>51</wp:term_id>
+        <wp:term_id>97</wp:term_id>
         <wp:category_nicename>sustainability</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -794,7 +806,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>70</wp:term_id>
+        <wp:term_id>98</wp:term_id>
         <wp:category_nicename>task-force-on-tax-policy-and-economic-competitiveness</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -802,7 +814,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>100</wp:term_id>
+        <wp:term_id>99</wp:term_id>
         <wp:category_nicename>tax-reform</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -810,7 +822,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>81</wp:term_id>
+        <wp:term_id>100</wp:term_id>
         <wp:category_nicename>tax-review</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -818,7 +830,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>108</wp:term_id>
+        <wp:term_id>101</wp:term_id>
         <wp:category_nicename>town-watch</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -826,7 +838,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>124</wp:term_id>
+        <wp:term_id>102</wp:term_id>
         <wp:category_nicename>transportation-and-utilities</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -834,7 +846,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>78</wp:term_id>
+        <wp:term_id>103</wp:term_id>
         <wp:category_nicename>treasurer</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -842,7 +854,15 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>40</wp:term_id>
+        <wp:term_id>1</wp:term_id>
+        <wp:category_nicename>uncategorized</wp:category_nicename>
+        <wp:category_parent/>
+        <wp:cat_name>
+            <![CDATA[Uncategorized]]>
+        </wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>104</wp:term_id>
         <wp:category_nicename>veterans-advisory</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -850,7 +870,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>26</wp:term_id>
+        <wp:term_id>105</wp:term_id>
         <wp:category_nicename>virtual-city-hall</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -858,7 +878,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>57</wp:term_id>
+        <wp:term_id>106</wp:term_id>
         <wp:category_nicename>water</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -866,7 +886,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>71</wp:term_id>
+        <wp:term_id>107</wp:term_id>
         <wp:category_nicename>water-revenue-bureau</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -874,7 +894,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>38</wp:term_id>
+        <wp:term_id>108</wp:term_id>
         <wp:category_nicename>youth-commission</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -882,7 +902,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>96</wp:term_id>
+        <wp:term_id>109</wp:term_id>
         <wp:category_nicename>zoning-archive</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -890,7 +910,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:category>
-        <wp:term_id>102</wp:term_id>
+        <wp:term_id>110</wp:term_id>
         <wp:category_nicename>zoning-code-commission</wp:category_nicename>
         <wp:category_parent/>
         <wp:cat_name>
@@ -898,7 +918,7 @@
         </wp:cat_name>
     </wp:category>
     <wp:term>
-        <wp:term_id>148</wp:term_id>
+        <wp:term_id>111</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>business</wp:term_slug>
         <wp:term_parent/>
@@ -910,7 +930,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>151</wp:term_id>
+        <wp:term_id>112</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>efile</wp:term_slug>
         <wp:term_parent>business</wp:term_parent>
@@ -919,7 +939,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>84</wp:term_id>
+        <wp:term_id>37</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>health</wp:term_slug>
         <wp:term_parent/>
@@ -931,7 +951,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>160</wp:term_id>
+        <wp:term_id>113</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>health-centers</wp:term_slug>
         <wp:term_parent>health</wp:term_parent>
@@ -940,7 +960,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>163</wp:term_id>
+        <wp:term_id>114</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>insurance</wp:term_slug>
         <wp:term_parent>health</wp:term_parent>
@@ -949,7 +969,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>165</wp:term_id>
+        <wp:term_id>115</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>lead</wp:term_slug>
         <wp:term_parent>health</wp:term_parent>
@@ -958,7 +978,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>166</wp:term_id>
+        <wp:term_id>116</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>licenses-and-permits</wp:term_slug>
         <wp:term_parent/>
@@ -970,7 +990,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>152</wp:term_id>
+        <wp:term_id>117</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>payments</wp:term_slug>
         <wp:term_parent>business</wp:term_parent>
@@ -979,7 +999,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>164</wp:term_id>
+        <wp:term_id>118</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>pests</wp:term_slug>
         <wp:term_parent>health</wp:term_parent>
@@ -988,7 +1008,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>129</wp:term_id>
+        <wp:term_id>119</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>property</wp:term_slug>
         <wp:term_parent/>
@@ -1000,7 +1020,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>97</wp:term_id>
+        <wp:term_id>79</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>public-property</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1009,7 +1029,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>172</wp:term_id>
+        <wp:term_id>120</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>public-safety</wp:term_slug>
         <wp:term_parent/>
@@ -1021,7 +1041,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>153</wp:term_id>
+        <wp:term_id>121</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>recreation</wp:term_slug>
         <wp:term_parent/>
@@ -1033,7 +1053,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>150</wp:term_id>
+        <wp:term_id>122</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>register-a-business</wp:term_slug>
         <wp:term_parent>business</wp:term_parent>
@@ -1042,7 +1062,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>171</wp:term_id>
+        <wp:term_id>123</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>report-a-problem</wp:term_slug>
         <wp:term_parent>licenses-and-permits</wp:term_parent>
@@ -1051,7 +1071,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>175</wp:term_id>
+        <wp:term_id>124</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>report-crime</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1060,7 +1080,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>179</wp:term_id>
+        <wp:term_id>125</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>safety-training</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1069,7 +1089,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>162</wp:term_id>
+        <wp:term_id>126</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>sexual-health</wp:term_slug>
         <wp:term_parent>health</wp:term_parent>
@@ -1078,7 +1098,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>134</wp:term_id>
+        <wp:term_id>127</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>tax-balance</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1087,7 +1107,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>149</wp:term_id>
+        <wp:term_id>128</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>taxes</wp:term_slug>
         <wp:term_parent>business</wp:term_parent>
@@ -1096,7 +1116,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>136</wp:term_id>
+        <wp:term_id>129</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>taxes-and-payments</wp:term_slug>
         <wp:term_parent/>
@@ -1108,7 +1128,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>168</wp:term_id>
+        <wp:term_id>130</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>tenantlandlord</wp:term_slug>
         <wp:term_parent>licenses-and-permits</wp:term_parent>
@@ -1117,7 +1137,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>156</wp:term_id>
+        <wp:term_id>131</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>trails</wp:term_slug>
         <wp:term_parent>recreation</wp:term_parent>
@@ -1126,7 +1146,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>143</wp:term_id>
+        <wp:term_id>132</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>transportation-utilities</wp:term_slug>
         <wp:term_parent/>
@@ -1138,7 +1158,7 @@
         </wp:term_description>
     </wp:term>
     <wp:term>
-        <wp:term_id>135</wp:term_id>
+        <wp:term_id>133</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>vacant-property</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1147,7 +1167,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>177</wp:term_id>
+        <wp:term_id>134</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>vehicle-violations-and-accidents</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1156,7 +1176,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>174</wp:term_id>
+        <wp:term_id>135</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>victim-assistance</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1165,7 +1185,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>132</wp:term_id>
+        <wp:term_id>136</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>violations</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1174,7 +1194,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>57</wp:term_id>
+        <wp:term_id>106</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>water</wp:term_slug>
         <wp:term_parent>transportation-utilities</wp:term_parent>
@@ -1183,7 +1203,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>133</wp:term_id>
+        <wp:term_id>137</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>zoning</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1192,7 +1212,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>130</wp:term_id>
+        <wp:term_id>138</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>abatements-exemptions</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1201,7 +1221,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>169</wp:term_id>
+        <wp:term_id>139</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>appeals</wp:term_slug>
         <wp:term_parent>licenses-and-permits</wp:term_parent>
@@ -1210,7 +1230,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>131</wp:term_id>
+        <wp:term_id>140</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>assessments</wp:term_slug>
         <wp:term_parent>property</wp:term_parent>
@@ -1219,7 +1239,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>138</wp:term_id>
+        <wp:term_id>141</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>business-taxes</wp:term_slug>
         <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -1228,7 +1248,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>113</wp:term_id>
+        <wp:term_id>27</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>emergency-management</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1237,7 +1257,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>158</wp:term_id>
+        <wp:term_id>142</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>events</wp:term_slug>
         <wp:term_parent>recreation</wp:term_parent>
@@ -1246,7 +1266,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>154</wp:term_id>
+        <wp:term_id>143</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>facilities-rec-centers</wp:term_slug>
         <wp:term_parent>recreation</wp:term_parent>
@@ -1255,7 +1275,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>170</wp:term_id>
+        <wp:term_id>144</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>find-a-licensed-professional</wp:term_slug>
         <wp:term_parent>licenses-and-permits</wp:term_parent>
@@ -1264,7 +1284,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>161</wp:term_id>
+        <wp:term_id>145</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>food-protection</wp:term_slug>
         <wp:term_parent>health</wp:term_parent>
@@ -1273,7 +1293,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>167</wp:term_id>
+        <wp:term_id>146</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>get-a-permitlicense</wp:term_slug>
         <wp:term_parent>licenses-and-permits</wp:term_parent>
@@ -1282,7 +1302,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>139</wp:term_id>
+        <wp:term_id>147</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>individual-and-family-taxes</wp:term_slug>
         <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -1291,7 +1311,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>173</wp:term_id>
+        <wp:term_id>148</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>inmate-services-and-facilities</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1300,7 +1320,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>137</wp:term_id>
+        <wp:term_id>149</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>make-a-payment</wp:term_slug>
         <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -1309,7 +1329,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>159</wp:term_id>
+        <wp:term_id>150</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>obtain-a-permit</wp:term_slug>
         <wp:term_parent>recreation</wp:term_parent>
@@ -1318,7 +1338,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>176</wp:term_id>
+        <wp:term_id>151</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>obtain-case-information</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1327,7 +1347,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>147</wp:term_id>
+        <wp:term_id>152</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>parking</wp:term_slug>
         <wp:term_parent>transportation-utilities</wp:term_parent>
@@ -1336,7 +1356,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>155</wp:term_id>
+        <wp:term_id>153</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>parks</wp:term_slug>
         <wp:term_parent>recreation</wp:term_parent>
@@ -1345,7 +1365,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>178</wp:term_id>
+        <wp:term_id>154</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>preventative-youth-programs</wp:term_slug>
         <wp:term_parent>public-safety</wp:term_parent>
@@ -1354,7 +1374,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>157</wp:term_id>
+        <wp:term_id>155</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>programs</wp:term_slug>
         <wp:term_parent>recreation</wp:term_parent>
@@ -1363,7 +1383,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>146</wp:term_id>
+        <wp:term_id>156</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>public-transit</wp:term_slug>
         <wp:term_parent>transportation-utilities</wp:term_parent>
@@ -1372,7 +1392,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>141</wp:term_id>
+        <wp:term_id>157</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>rates-and-forms</wp:term_slug>
         <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -1381,7 +1401,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>54</wp:term_id>
+        <wp:term_id>84</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>recycling</wp:term_slug>
         <wp:term_parent>transportation-utilities</wp:term_parent>
@@ -1390,7 +1410,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>142</wp:term_id>
+        <wp:term_id>158</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>refunds</wp:term_slug>
         <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -1399,7 +1419,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>144</wp:term_id>
+        <wp:term_id>159</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>sanitation</wp:term_slug>
         <wp:term_parent>transportation-utilities</wp:term_parent>
@@ -1408,7 +1428,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>145</wp:term_id>
+        <wp:term_id>160</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>street-closures</wp:term_slug>
         <wp:term_parent>transportation-utilities</wp:term_parent>
@@ -1417,7 +1437,7 @@
         </wp:term_name>
     </wp:term>
     <wp:term>
-        <wp:term_id>140</wp:term_id>
+        <wp:term_id>161</wp:term_id>
         <wp:term_taxonomy>topics</wp:term_taxonomy>
         <wp:term_slug>tax-professionals</wp:term_slug>
         <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -1428,15 +1448,17 @@
     <generator>http://wordpress.org/?v=4.0.1</generator>
     <item>
         <title>Mayor's Commission on Asian American Affairs</title>
-        <link>http://localhost:19102/?department_page=asian-american-affairs</link>
+        <link>http://localhost:19102/departments/asian-american-affairs/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=2</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
         <wp:post_id>2</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
@@ -1485,68 +1507,18 @@
         </wp:postmeta>
     </item>
     <item>
-        <title>Cable TV - Channel 64</title>
-        <link>http://localhost:19102/?department_page=channel-64</link>
-        <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
-        <dc:creator>
-        </dc:creator>
-        <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=3</guid>
-        <description/>
-        <content:encoded>
-        </content:encoded>
-        <excerpt:encoded>
-        </excerpt:encoded>
-        <wp:post_id>3</wp:post_id>
-        <wp:post_date>2014-11-21 14:35:07</wp:post_date>
-        <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
-        <wp:comment_status>closed</wp:comment_status>
-        <wp:ping_status>closed</wp:ping_status>
-        <wp:post_name>channel-64</wp:post_name>
-        <wp:status>publish</wp:status>
-        <wp:post_parent>0</wp:post_parent>
-        <wp:menu_order>0</wp:menu_order>
-        <wp:post_type>department_page</wp:post_type>
-        <wp:post_password/>
-        <wp:is_sticky>0</wp:is_sticky>
-        <category domain="category" nicename="channel-64">
-            <![CDATA[Channel 64]]>
-        </category>
-        <wp:postmeta>
-            <wp:meta_key>phila_dept_url</wp:meta_key>
-            <wp:meta_value>
-                <![CDATA[http://www.phila.gov/channel64]]>
-            </wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>phila_dept_desc</wp:meta_key>
-            <wp:meta_value>
-                <![CDATA[Streaming live content from the City of Philadelphia.]]>
-            </wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>phila_dept_url</wp:meta_key>
-            <wp:meta_value>
-                <![CDATA[http://www.phila.gov/channel64]]>
-            </wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>phila_dept_desc</wp:meta_key>
-            <wp:meta_value>
-                <![CDATA[Streaming live content from the City of Philadelphia.]]>
-            </wp:meta_value>
-        </wp:postmeta>
-    </item>
-    <item>
         <title>Mayor's Office of Faith Based Initiatives</title>
-        <link>http://localhost:19102/?department_page=faith-based-initiatives</link>
+        <link>http://localhost:19102/departments/faith-based-initiatives/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=4</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
         <wp:post_id>4</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
@@ -1590,15 +1562,17 @@
     </item>
     <item>
         <title>Historical Commission</title>
-        <link>http://localhost:19102/?department_page=historical</link>
+        <link>http://localhost:19102/departments/historical/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=5</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
         <wp:post_id>5</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
@@ -1653,18 +1627,74 @@
         </wp:postmeta>
     </item>
     <item>
+        <title>Cable TV - Channel 64</title>
+        <link>http://localhost:19102/departments/channel-64/</link>
+        <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
+        <dc:creator>
+        </dc:creator>
+        <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=3</guid>
+        <description/>
+        <content:encoded>
+            <![CDATA[]]>
+        </content:encoded>
+        <excerpt:encoded>
+            <![CDATA[]]>
+        </excerpt:encoded>
+        <wp:post_id>6</wp:post_id>
+        <wp:post_date>2014-11-21 14:35:07</wp:post_date>
+        <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>channel-64</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>department_page</wp:post_type>
+        <wp:post_password/>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="channel-64">
+            <![CDATA[Channel 64]]>
+        </category>
+        <wp:postmeta>
+            <wp:meta_key>phila_dept_url</wp:meta_key>
+            <wp:meta_value>
+                <![CDATA[http://www.phila.gov/channel64]]>
+            </wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>phila_dept_desc</wp:meta_key>
+            <wp:meta_value>
+                <![CDATA[Streaming live content from the City of Philadelphia.]]>
+            </wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>phila_dept_url</wp:meta_key>
+            <wp:meta_value>
+                <![CDATA[http://www.phila.gov/channel64]]>
+            </wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>phila_dept_desc</wp:meta_key>
+            <wp:meta_value>
+                <![CDATA[Streaming live content from the City of Philadelphia.]]>
+            </wp:meta_value>
+        </wp:postmeta>
+    </item>
+    <item>
         <title>Philly History (Records)</title>
-        <link>http://localhost:19102/?department_page=history</link>
+        <link>http://localhost:19102/departments/history/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=6</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>6</wp:post_id>
+        <wp:post_id>7</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -1706,17 +1736,19 @@
     </item>
     <item>
         <title>Presidents House</title>
-        <link>http://localhost:19102/?department_page=presidents-house</link>
+        <link>http://localhost:19102/departments/presidents-house/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=7</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>7</wp:post_id>
+        <wp:post_id>8</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -1758,17 +1790,19 @@
     </item>
     <item>
         <title>Virtual City Hall</title>
-        <link>http://localhost:19102/?department_page=virtual-city-hall</link>
+        <link>http://localhost:19102/departments/virtual-city-hall/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=8</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>8</wp:post_id>
+        <wp:post_id>9</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -1810,17 +1844,19 @@
     </item>
     <item>
         <title>Department of Parks &amp; Recreation</title>
-        <link>http://localhost:19102/?department_page=parks-recreation</link>
+        <link>http://localhost:19102/departments/parks-recreation/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=9</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>9</wp:post_id>
+        <wp:post_id>10</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -1862,17 +1898,19 @@
     </item>
     <item>
         <title>Office of Arts, Culture and Creative Economy</title>
-        <link>http://localhost:19102/?department_page=arts-culture-and-creative-economy</link>
+        <link>http://localhost:19102/departments/arts-culture-and-creative-economy/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=10</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>10</wp:post_id>
+        <wp:post_id>11</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -1914,17 +1952,19 @@
     </item>
     <item>
         <title>Mural Arts Program</title>
-        <link>http://localhost:19102/?department_page=mural-arts</link>
+        <link>http://localhost:19102/departments/mural-arts/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=11</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>11</wp:post_id>
+        <wp:post_id>12</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -1966,17 +2006,19 @@
     </item>
     <item>
         <title>Art in City Hall</title>
-        <link>http://localhost:19102/?department_page=art-in-city-hall</link>
+        <link>http://localhost:19102/departments/art-in-city-hall/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=12</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>12</wp:post_id>
+        <wp:post_id>13</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2018,17 +2060,19 @@
     </item>
     <item>
         <title>Public Art in Philadelphia</title>
-        <link>http://localhost:19102/?department_page=public-art</link>
+        <link>http://localhost:19102/departments/public-art/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=13</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>13</wp:post_id>
+        <wp:post_id>14</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2070,17 +2114,19 @@
     </item>
     <item>
         <title>Delaware River Waterfront Corporation</title>
-        <link>http://localhost:19102/?department_page=delaware-river-waterfront-corporation</link>
+        <link>http://localhost:19102/departments/delaware-river-waterfront-corporation/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=14</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>14</wp:post_id>
+        <wp:post_id>15</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2104,7 +2150,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Acting as the steward to design, develop and manage the central Delaware River waterfront in Philadelphia between Oregon and Allegheny Avenue to provide a benefit to all of the citizens and visitors of the City. ]]>
+                <![CDATA[Acting as the steward to design, develop and manage the central Delaware River waterfront in Philadelphia between Oregon and Allegheny Avenue to provide a benefit to all of the citizens and visitors of the City.]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -2116,23 +2162,25 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Acting as the steward to design, develop and manage the central Delaware River waterfront in Philadelphia between Oregon and Allegheny Avenue to provide a benefit to all of the citizens and visitors of the City. ]]>
+                <![CDATA[Acting as the steward to design, develop and manage the central Delaware River waterfront in Philadelphia between Oregon and Allegheny Avenue to provide a benefit to all of the citizens and visitors of the City.]]>
             </wp:meta_value>
         </wp:postmeta>
     </item>
     <item>
         <title>Mayor's Commission on Literacy</title>
-        <link>http://localhost:19102/?department_page=literacy</link>
+        <link>http://localhost:19102/departments/literacy/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=15</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>15</wp:post_id>
+        <wp:post_id>16</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2174,17 +2222,19 @@
     </item>
     <item>
         <title>Mayor's Office of Education</title>
-        <link>http://localhost:19102/?department_page=education</link>
+        <link>http://localhost:19102/departments/education/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=16</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>16</wp:post_id>
+        <wp:post_id>17</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2226,17 +2276,19 @@
     </item>
     <item>
         <title>Free Library of Philadelphia</title>
-        <link>http://localhost:19102/?department_page=free-library</link>
+        <link>http://localhost:19102/departments/free-library/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=17</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>17</wp:post_id>
+        <wp:post_id>18</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2278,17 +2330,19 @@
     </item>
     <item>
         <title>Philadelphia Reads</title>
-        <link>http://localhost:19102/?department_page=philareads</link>
+        <link>http://localhost:19102/departments/philareads/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=18</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>18</wp:post_id>
+        <wp:post_id>19</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2330,17 +2384,19 @@
     </item>
     <item>
         <title>School District of Philadelphia</title>
-        <link>http://localhost:19102/?department_page=school-district-of-philadelphia</link>
+        <link>http://localhost:19102/departments/school-district-of-philadelphia/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=19</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>19</wp:post_id>
+        <wp:post_id>20</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2382,17 +2438,19 @@
     </item>
     <item>
         <title>Youth Commission</title>
-        <link>http://localhost:19102/?department_page=youth-commission</link>
+        <link>http://localhost:19102/departments/youth-commission/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=20</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>20</wp:post_id>
+        <wp:post_id>21</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2434,17 +2492,19 @@
     </item>
     <item>
         <title>PhillyGoes2College</title>
-        <link>http://localhost:19102/?department_page=phillygoes2college</link>
+        <link>http://localhost:19102/departments/phillygoes2college/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=21</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>21</wp:post_id>
+        <wp:post_id>22</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2486,17 +2546,19 @@
     </item>
     <item>
         <title>Veterans Advisory Commission</title>
-        <link>http://localhost:19102/?department_page=veterans-advisory</link>
+        <link>http://localhost:19102/departments/veterans-advisory/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=22</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>22</wp:post_id>
+        <wp:post_id>23</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2538,17 +2600,19 @@
     </item>
     <item>
         <title>City Planning Commission</title>
-        <link>http://localhost:19102/?department_page=planning</link>
+        <link>http://localhost:19102/departments/planning/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=23</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>23</wp:post_id>
+        <wp:post_id>24</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2590,17 +2654,19 @@
     </item>
     <item>
         <title>Philly311</title>
-        <link>http://localhost:19102/?department_page=311-2</link>
+        <link>http://localhost:19102/departments/311-2/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=24</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>24</wp:post_id>
+        <wp:post_id>25</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2642,17 +2708,19 @@
     </item>
     <item>
         <title>Philadelphia Information Locator Service (phils)</title>
-        <link>http://localhost:19102/?department_page=information-locator-service</link>
+        <link>http://localhost:19102/departments/information-locator-service/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=25</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>25</wp:post_id>
+        <wp:post_id>26</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2694,17 +2762,19 @@
     </item>
     <item>
         <title>PhillyRising Collaborative</title>
-        <link>http://localhost:19102/?department_page=phillyrising</link>
+        <link>http://localhost:19102/departments/phillyrising/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=26</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>26</wp:post_id>
+        <wp:post_id>27</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2746,17 +2816,19 @@
     </item>
     <item>
         <title>Civil Service Commission</title>
-        <link>http://localhost:19102/?department_page=civil-service-commission</link>
+        <link>http://localhost:19102/departments/civil-service-commission/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=27</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>27</wp:post_id>
+        <wp:post_id>28</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2798,17 +2870,19 @@
     </item>
     <item>
         <title>Office of Economic Opportunity</title>
-        <link>http://localhost:19102/?department_page=economic-opportunity</link>
+        <link>http://localhost:19102/departments/economic-opportunity/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=28</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>28</wp:post_id>
+        <wp:post_id>29</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2850,17 +2924,19 @@
     </item>
     <item>
         <title>Human Resources</title>
-        <link>http://localhost:19102/?department_page=human-resources</link>
+        <link>http://localhost:19102/departments/human-resources/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=29</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>29</wp:post_id>
+        <wp:post_id>30</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2902,17 +2978,19 @@
     </item>
     <item>
         <title>Department of Procurement</title>
-        <link>http://localhost:19102/?department_page=procurement</link>
+        <link>http://localhost:19102/departments/procurement/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=30</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>30</wp:post_id>
+        <wp:post_id>31</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -2954,17 +3032,19 @@
     </item>
     <item>
         <title>Re-entry for Ex Offenders</title>
-        <link>http://localhost:19102/?department_page=re-entry-for-ex-offenders</link>
+        <link>http://localhost:19102/departments/re-entry-for-ex-offenders/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=31</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>31</wp:post_id>
+        <wp:post_id>32</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3006,17 +3086,19 @@
     </item>
     <item>
         <title>Department of Commerce</title>
-        <link>http://localhost:19102/?department_page=commerce</link>
+        <link>http://localhost:19102/departments/commerce/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=32</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>32</wp:post_id>
+        <wp:post_id>33</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3058,17 +3140,19 @@
     </item>
     <item>
         <title>Mayor's Office of Sustainability (MOS)</title>
-        <link>http://localhost:19102/?department_page=sustainability</link>
+        <link>http://localhost:19102/departments/sustainability/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=33</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>33</wp:post_id>
+        <wp:post_id>34</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3110,17 +3194,19 @@
     </item>
     <item>
         <title>Licenses &amp; Inspections</title>
-        <link>http://localhost:19102/?department_page=licenses-inspections</link>
+        <link>http://localhost:19102/departments/licenses-inspections/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=34</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>34</wp:post_id>
+        <wp:post_id>35</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3162,17 +3248,19 @@
     </item>
     <item>
         <title>Philadelphia More Beautiful Committee</title>
-        <link>http://localhost:19102/?department_page=more-beautiful-committee</link>
+        <link>http://localhost:19102/departments/more-beautiful-committee/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=35</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>35</wp:post_id>
+        <wp:post_id>36</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3214,17 +3302,19 @@
     </item>
     <item>
         <title>Recycling</title>
-        <link>http://localhost:19102/?department_page=recycling</link>
+        <link>http://localhost:19102/departments/recycling/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=36</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>36</wp:post_id>
+        <wp:post_id>37</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3266,17 +3356,19 @@
     </item>
     <item>
         <title>Department of Streets</title>
-        <link>http://localhost:19102/?department_page=streets</link>
+        <link>http://localhost:19102/departments/streets/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=37</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>37</wp:post_id>
+        <wp:post_id>38</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3318,17 +3410,19 @@
     </item>
     <item>
         <title>Green City, Clean Waters</title>
-        <link>http://localhost:19102/?department_page=green-city-clean-waters</link>
+        <link>http://localhost:19102/departments/green-city-clean-waters/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=38</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>38</wp:post_id>
+        <wp:post_id>39</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3370,17 +3464,19 @@
     </item>
     <item>
         <title>Department of Water</title>
-        <link>http://localhost:19102/?department_page=water</link>
+        <link>http://localhost:19102/departments/water/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=39</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>39</wp:post_id>
+        <wp:post_id>40</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3422,17 +3518,19 @@
     </item>
     <item>
         <title>Boards</title>
-        <link>http://localhost:19102/?department_page=boards</link>
+        <link>http://localhost:19102/departments/boards/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=40</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>40</wp:post_id>
+        <wp:post_id>41</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3480,17 +3578,19 @@
     </item>
     <item>
         <title>City Commissioners Office</title>
-        <link>http://localhost:19102/?department_page=commissioners</link>
+        <link>http://localhost:19102/departments/commissioners/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=41</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>41</wp:post_id>
+        <wp:post_id>42</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3532,17 +3632,19 @@
     </item>
     <item>
         <title>City Council</title>
-        <link>http://localhost:19102/?department_page=council</link>
+        <link>http://localhost:19102/departments/council/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=42</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>42</wp:post_id>
+        <wp:post_id>43</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3584,17 +3686,19 @@
     </item>
     <item>
         <title>Board of Ethics</title>
-        <link>http://localhost:19102/?department_page=ethics</link>
+        <link>http://localhost:19102/departments/ethics/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=43</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>43</wp:post_id>
+        <wp:post_id>44</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3636,17 +3740,19 @@
     </item>
     <item>
         <title>Immigrant &amp; Multicultural Affairs</title>
-        <link>http://localhost:19102/?department_page=immigrant-multicultural-affairs</link>
+        <link>http://localhost:19102/departments/immigrant-multicultural-affairs/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=44</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>44</wp:post_id>
+        <wp:post_id>45</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3688,17 +3794,19 @@
     </item>
     <item>
         <title>Law Department (City Solicitor)</title>
-        <link>http://localhost:19102/?department_page=law</link>
+        <link>http://localhost:19102/departments/law/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=45</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>45</wp:post_id>
+        <wp:post_id>46</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3740,17 +3848,19 @@
     </item>
     <item>
         <title>Mayor's Office</title>
-        <link>http://localhost:19102/?department_page=mayors-office</link>
+        <link>http://localhost:19102/departments/mayors-office/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=46</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>46</wp:post_id>
+        <wp:post_id>47</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3792,17 +3902,19 @@
     </item>
     <item>
         <title>PhillyStat</title>
-        <link>http://localhost:19102/?department_page=phillystat</link>
+        <link>http://localhost:19102/departments/phillystat/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=47</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>47</wp:post_id>
+        <wp:post_id>48</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3844,17 +3956,19 @@
     </item>
     <item>
         <title>Register of Wills</title>
-        <link>http://localhost:19102/?department_page=register-of-wills</link>
+        <link>http://localhost:19102/departments/register-of-wills/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=48</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>48</wp:post_id>
+        <wp:post_id>49</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3896,17 +4010,19 @@
     </item>
     <item>
         <title>City Representative</title>
-        <link>http://localhost:19102/?department_page=representative</link>
+        <link>http://localhost:19102/departments/representative/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=49</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>49</wp:post_id>
+        <wp:post_id>50</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -3948,17 +4064,19 @@
     </item>
     <item>
         <title>Office of Risk Management</title>
-        <link>http://localhost:19102/?department_page=risk-management</link>
+        <link>http://localhost:19102/departments/risk-management/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=50</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>50</wp:post_id>
+        <wp:post_id>51</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4000,17 +4118,19 @@
     </item>
     <item>
         <title>Human Relations Commission</title>
-        <link>http://localhost:19102/?department_page=human-relations</link>
+        <link>http://localhost:19102/departments/human-relations/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=51</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>51</wp:post_id>
+        <wp:post_id>52</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4052,17 +4172,19 @@
     </item>
     <item>
         <title>Mayor's Task Force on Tax Policy and Economic Competitiveness</title>
-        <link>http://localhost:19102/?department_page=task-force-on-tax-policy-and-economic-competitiveness</link>
+        <link>http://localhost:19102/departments/task-force-on-tax-policy-and-economic-competitiveness/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=52</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>52</wp:post_id>
+        <wp:post_id>53</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4104,17 +4226,19 @@
     </item>
     <item>
         <title>The Water Revenue Bureau</title>
-        <link>http://localhost:19102/?department_page=water-revenue-bureau</link>
+        <link>http://localhost:19102/departments/water-revenue-bureau/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=53</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>53</wp:post_id>
+        <wp:post_id>54</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4156,17 +4280,19 @@
     </item>
     <item>
         <title>City Budget</title>
-        <link>http://localhost:19102/?department_page=budget</link>
+        <link>http://localhost:19102/departments/budget/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=54</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>54</wp:post_id>
+        <wp:post_id>55</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4208,17 +4334,19 @@
     </item>
     <item>
         <title>City Controller</title>
-        <link>http://localhost:19102/?department_page=controller</link>
+        <link>http://localhost:19102/departments/controller/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=55</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>55</wp:post_id>
+        <wp:post_id>56</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4242,7 +4370,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Auditing and advising the municipal government on Pre-Audit, Post-Audit, Special and Fraud Investigations, Administration, Financial and Policy Analysis, Pension Affairs, Information Technology, and Legal Affairs. ]]>
+                <![CDATA[Auditing and advising the municipal government on Pre-Audit, Post-Audit, Special and Fraud Investigations, Administration, Financial and Policy Analysis, Pension Affairs, Information Technology, and Legal Affairs.]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -4254,23 +4382,25 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Auditing and advising the municipal government on Pre-Audit, Post-Audit, Special and Fraud Investigations, Administration, Financial and Policy Analysis, Pension Affairs, Information Technology, and Legal Affairs. ]]>
+                <![CDATA[Auditing and advising the municipal government on Pre-Audit, Post-Audit, Special and Fraud Investigations, Administration, Financial and Policy Analysis, Pension Affairs, Information Technology, and Legal Affairs.]]>
             </wp:meta_value>
         </wp:postmeta>
     </item>
     <item>
         <title>Office of the Director of Finance</title>
-        <link>http://localhost:19102/?department_page=finance</link>
+        <link>http://localhost:19102/departments/finance/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=56</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>56</wp:post_id>
+        <wp:post_id>57</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4312,17 +4442,19 @@
     </item>
     <item>
         <title>Investor</title>
-        <link>http://localhost:19102/?department_page=investor</link>
+        <link>http://localhost:19102/departments/investor/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=57</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>57</wp:post_id>
+        <wp:post_id>58</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4370,17 +4502,19 @@
     </item>
     <item>
         <title>Board of Pensions</title>
-        <link>http://localhost:19102/?department_page=pensions</link>
+        <link>http://localhost:19102/departments/pensions/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=58</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>58</wp:post_id>
+        <wp:post_id>59</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4422,17 +4556,19 @@
     </item>
     <item>
         <title>Recovery</title>
-        <link>http://localhost:19102/?department_page=recovery</link>
+        <link>http://localhost:19102/departments/recovery/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=59</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>59</wp:post_id>
+        <wp:post_id>60</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4558,17 +4694,19 @@
     </item>
     <item>
         <title>City Treasurer</title>
-        <link>http://localhost:19102/?department_page=treasurer</link>
+        <link>http://localhost:19102/departments/treasurer/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=60</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>60</wp:post_id>
+        <wp:post_id>61</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4610,17 +4748,19 @@
     </item>
     <item>
         <title>Treasurer</title>
-        <link>http://localhost:19102/?department_page=treasurer-2</link>
+        <link>http://localhost:19102/departments/treasurer-2/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=61</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>61</wp:post_id>
+        <wp:post_id>62</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4662,17 +4802,19 @@
     </item>
     <item>
         <title>Fleet Management</title>
-        <link>http://localhost:19102/?department_page=fleet-management</link>
+        <link>http://localhost:19102/departments/fleet-management/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=62</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>62</wp:post_id>
+        <wp:post_id>63</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4696,7 +4838,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Maintaining the vehicles and large equipment that supports city wide functions. OFM is responsible for the acquisition, assignment and maintenance of vehicles and equipment.  ]]>
+                <![CDATA[Maintaining the vehicles and large equipment that supports city wide functions. OFM is responsible for the acquisition, assignment and maintenance of vehicles and equipment.]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -4708,23 +4850,25 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Maintaining the vehicles and large equipment that supports city wide functions. OFM is responsible for the acquisition, assignment and maintenance of vehicles and equipment.  ]]>
+                <![CDATA[Maintaining the vehicles and large equipment that supports city wide functions. OFM is responsible for the acquisition, assignment and maintenance of vehicles and equipment.]]>
             </wp:meta_value>
         </wp:postmeta>
     </item>
     <item>
         <title>Department of Revenue</title>
-        <link>http://localhost:19102/?department_page=revenue</link>
+        <link>http://localhost:19102/departments/revenue/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=63</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>63</wp:post_id>
+        <wp:post_id>64</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4766,17 +4910,19 @@
     </item>
     <item>
         <title>Tax Review Board</title>
-        <link>http://localhost:19102/?department_page=tax-review</link>
+        <link>http://localhost:19102/departments/tax-review/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=64</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>64</wp:post_id>
+        <wp:post_id>65</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4818,17 +4964,19 @@
     </item>
     <item>
         <title>Mayor's Commission on Services to the Aging</title>
-        <link>http://localhost:19102/?department_page=aging</link>
+        <link>http://localhost:19102/departments/aging/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=65</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>65</wp:post_id>
+        <wp:post_id>66</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4870,17 +5018,19 @@
     </item>
     <item>
         <title>Behavioral Health and Intellectual DisAbility Services (DBHIDS)</title>
-        <link>http://localhost:19102/?department_page=behavioral-health-and-intellectual-disability-services-dbhids</link>
+        <link>http://localhost:19102/departments/behavioral-health-and-intellectual-disability-services-dbhids/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=66</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>66</wp:post_id>
+        <wp:post_id>67</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4910,7 +5060,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Embracing a vision of recovery, resilience, and self-determination the department’s collaboration with the Philadelphia School District, child welfare and judicial systems, and other stakeholders guide people in managing their own conditions while building their own recovery resources. ]]>
+                <![CDATA[Embracing a vision of recovery, resilience, and self-determination the department’s collaboration with the Philadelphia School District, child welfare and judicial systems, and other stakeholders guide people in managing their own conditions while building their own recovery resources.]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -4922,23 +5072,25 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Embracing a vision of recovery, resilience, and self-determination the department’s collaboration with the Philadelphia School District, child welfare and judicial systems, and other stakeholders guide people in managing their own conditions while building their own recovery resources. ]]>
+                <![CDATA[Embracing a vision of recovery, resilience, and self-determination the department’s collaboration with the Philadelphia School District, child welfare and judicial systems, and other stakeholders guide people in managing their own conditions while building their own recovery resources.]]>
             </wp:meta_value>
         </wp:postmeta>
     </item>
     <item>
         <title>Department of Public Health</title>
-        <link>http://localhost:19102/?department_page=health</link>
+        <link>http://localhost:19102/departments/health/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=67</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>67</wp:post_id>
+        <wp:post_id>68</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -4980,17 +5132,19 @@
     </item>
     <item>
         <title>Department of Human Services</title>
-        <link>http://localhost:19102/?department_page=human-services</link>
+        <link>http://localhost:19102/departments/human-services/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=68</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>68</wp:post_id>
+        <wp:post_id>69</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5032,17 +5186,19 @@
     </item>
     <item>
         <title>Mayor's Commission on People with Disabilities</title>
-        <link>http://localhost:19102/?department_page=people-with-disabilities</link>
+        <link>http://localhost:19102/departments/people-with-disabilities/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=69</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>69</wp:post_id>
+        <wp:post_id>70</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5096,17 +5252,19 @@
     </item>
     <item>
         <title>Regional Emergency Medical Services</title>
-        <link>http://localhost:19102/?department_page=regional-emergency-medical-services</link>
+        <link>http://localhost:19102/departments/regional-emergency-medical-services/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=70</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>70</wp:post_id>
+        <wp:post_id>71</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5148,17 +5306,19 @@
     </item>
     <item>
         <title>Fair Housing Commission</title>
-        <link>http://localhost:19102/?department_page=fair-housing</link>
+        <link>http://localhost:19102/departments/fair-housing/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=71</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>71</wp:post_id>
+        <wp:post_id>72</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5200,17 +5360,19 @@
     </item>
     <item>
         <title>Philadelphia Housing Development Corporation</title>
-        <link>http://localhost:19102/?department_page=housing-development-corporation</link>
+        <link>http://localhost:19102/departments/housing-development-corporation/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=72</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>72</wp:post_id>
+        <wp:post_id>73</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5252,17 +5414,19 @@
     </item>
     <item>
         <title>Department of Records</title>
-        <link>http://localhost:19102/?department_page=records</link>
+        <link>http://localhost:19102/departments/records/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=73</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>73</wp:post_id>
+        <wp:post_id>74</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5304,17 +5468,19 @@
     </item>
     <item>
         <title>Board of Revision of Taxes</title>
-        <link>http://localhost:19102/?department_page=revision-of-taxes</link>
+        <link>http://localhost:19102/departments/revision-of-taxes/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=74</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>74</wp:post_id>
+        <wp:post_id>75</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5356,17 +5522,19 @@
     </item>
     <item>
         <title>Office of Supportive Housing (OSH)</title>
-        <link>http://localhost:19102/?department_page=supportive-housing-osh</link>
+        <link>http://localhost:19102/departments/supportive-housing-osh/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=75</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>75</wp:post_id>
+        <wp:post_id>76</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5408,17 +5576,19 @@
     </item>
     <item>
         <title>Anti-Graffiti Network</title>
-        <link>http://localhost:19102/?department_page=anti-graffiti-network</link>
+        <link>http://localhost:19102/departments/anti-graffiti-network/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=76</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>76</wp:post_id>
+        <wp:post_id>77</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5460,17 +5630,19 @@
     </item>
     <item>
         <title>Housing Authority</title>
-        <link>http://localhost:19102/?department_page=housing-authority</link>
+        <link>http://localhost:19102/departments/housing-authority/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=77</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>77</wp:post_id>
+        <wp:post_id>78</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5512,17 +5684,19 @@
     </item>
     <item>
         <title>Office of Property Assessments</title>
-        <link>http://localhost:19102/?department_page=property-assessments</link>
+        <link>http://localhost:19102/departments/property-assessments/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=78</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>78</wp:post_id>
+        <wp:post_id>79</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5564,17 +5738,19 @@
     </item>
     <item>
         <title>Zoning Archive On-line</title>
-        <link>http://localhost:19102/?department_page=zoning-archive</link>
+        <link>http://localhost:19102/departments/zoning-archive/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=79</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>79</wp:post_id>
+        <wp:post_id>80</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5628,17 +5804,19 @@
     </item>
     <item>
         <title>Department of Public Property</title>
-        <link>http://localhost:19102/?department_page=public-property</link>
+        <link>http://localhost:19102/departments/public-property/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=80</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>80</wp:post_id>
+        <wp:post_id>81</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5662,7 +5840,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Managing the physical infrastructure that supports City government operations through acquisition, care, and maintenance of City properties. ]]>
+                <![CDATA[Managing the physical infrastructure that supports City government operations through acquisition, care, and maintenance of City properties.]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -5674,23 +5852,25 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Managing the physical infrastructure that supports City government operations through acquisition, care, and maintenance of City properties. ]]>
+                <![CDATA[Managing the physical infrastructure that supports City government operations through acquisition, care, and maintenance of City properties.]]>
             </wp:meta_value>
         </wp:postmeta>
     </item>
     <item>
         <title>Philadelphia Redevelopment Authority</title>
-        <link>http://localhost:19102/?department_page=redevelopment-authority</link>
+        <link>http://localhost:19102/departments/redevelopment-authority/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=81</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>81</wp:post_id>
+        <wp:post_id>82</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5714,7 +5894,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Focusing on the redevelopment of Philadelphia while creating balanced mixed-use communities to establish thriving, well-served and revitalized neighborhoods. ]]>
+                <![CDATA[Focusing on the redevelopment of Philadelphia while creating balanced mixed-use communities to establish thriving, well-served and revitalized neighborhoods.]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -5726,23 +5906,25 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_desc</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[Focusing on the redevelopment of Philadelphia while creating balanced mixed-use communities to establish thriving, well-served and revitalized neighborhoods. ]]>
+                <![CDATA[Focusing on the redevelopment of Philadelphia while creating balanced mixed-use communities to establish thriving, well-served and revitalized neighborhoods.]]>
             </wp:meta_value>
         </wp:postmeta>
     </item>
     <item>
         <title>Fire Department</title>
-        <link>http://localhost:19102/?department_page=fire</link>
+        <link>http://localhost:19102/departments/fire/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=82</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>82</wp:post_id>
+        <wp:post_id>83</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5784,17 +5966,19 @@
     </item>
     <item>
         <title>Tax Reform Commission</title>
-        <link>http://localhost:19102/?department_page=tax-reform</link>
+        <link>http://localhost:19102/departments/tax-reform/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=83</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>83</wp:post_id>
+        <wp:post_id>84</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5842,17 +6026,19 @@
     </item>
     <item>
         <title>Office of Housing and Community Development (OHCD)</title>
-        <link>http://localhost:19102/?department_page=housing-and-community-development-ohcd</link>
+        <link>http://localhost:19102/departments/housing-and-community-development-ohcd/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=84</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>84</wp:post_id>
+        <wp:post_id>85</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5900,17 +6086,19 @@
     </item>
     <item>
         <title>Philadelphia Zoning Code Commission</title>
-        <link>http://localhost:19102/?department_page=zoning-code-commission</link>
+        <link>http://localhost:19102/departments/zoning-code-commission/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=85</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>85</wp:post_id>
+        <wp:post_id>86</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -5952,17 +6140,19 @@
     </item>
     <item>
         <title>Mayor's Office of Community Empowerment and Opportunity</title>
-        <link>http://localhost:19102/?department_page=community-empowerment-and-opportunity</link>
+        <link>http://localhost:19102/departments/community-empowerment-and-opportunity/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=86</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>86</wp:post_id>
+        <wp:post_id>87</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6016,17 +6206,19 @@
     </item>
     <item>
         <title>CityMaps</title>
-        <link>http://localhost:19102/?department_page=maps</link>
+        <link>http://localhost:19102/departments/maps/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=87</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>87</wp:post_id>
+        <wp:post_id>88</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6068,17 +6260,19 @@
     </item>
     <item>
         <title>Mayor's Office of Neighborhood Services</title>
-        <link>http://localhost:19102/?department_page=neighborhood-services</link>
+        <link>http://localhost:19102/departments/neighborhood-services/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=88</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>88</wp:post_id>
+        <wp:post_id>89</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6120,17 +6314,19 @@
     </item>
     <item>
         <title>Clerk of Quarter Sessions</title>
-        <link>http://localhost:19102/?department_page=quarter-sessions</link>
+        <link>http://localhost:19102/departments/quarter-sessions/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=89</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>89</wp:post_id>
+        <wp:post_id>90</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6172,17 +6368,19 @@
     </item>
     <item>
         <title>Sheriff</title>
-        <link>http://localhost:19102/?department_page=sheriff</link>
+        <link>http://localhost:19102/departments/sheriff/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=90</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>90</wp:post_id>
+        <wp:post_id>91</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6224,17 +6422,19 @@
     </item>
     <item>
         <title>Town Watch</title>
-        <link>http://localhost:19102/?department_page=town-watch</link>
+        <link>http://localhost:19102/departments/town-watch/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=91</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>91</wp:post_id>
+        <wp:post_id>92</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6276,17 +6476,19 @@
     </item>
     <item>
         <title>Managing Director's Office</title>
-        <link>http://localhost:19102/?department_page=managing-director</link>
+        <link>http://localhost:19102/departments/managing-director/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=92</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>92</wp:post_id>
+        <wp:post_id>93</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6328,17 +6530,19 @@
     </item>
     <item>
         <title>Philadelphia Courts</title>
-        <link>http://localhost:19102/?department_page=courts</link>
+        <link>http://localhost:19102/departments/courts/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=93</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>93</wp:post_id>
+        <wp:post_id>94</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6380,17 +6584,19 @@
     </item>
     <item>
         <title>Defender Association of Philadelphia</title>
-        <link>http://localhost:19102/?department_page=defender</link>
+        <link>http://localhost:19102/departments/defender/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=94</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>94</wp:post_id>
+        <wp:post_id>95</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6432,17 +6638,19 @@
     </item>
     <item>
         <title>Office of the District Attorney</title>
-        <link>http://localhost:19102/?department_page=district-attorney</link>
+        <link>http://localhost:19102/departments/district-attorney/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=95</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>95</wp:post_id>
+        <wp:post_id>96</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6484,17 +6692,19 @@
     </item>
     <item>
         <title>Office of Emergency Preparedness and Response (READY)</title>
-        <link>http://localhost:19102/?department_page=emergency-management</link>
+        <link>http://localhost:19102/departments/emergency-management/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=96</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>96</wp:post_id>
+        <wp:post_id>97</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6536,17 +6746,19 @@
     </item>
     <item>
         <title>Inspector General's Office</title>
-        <link>http://localhost:19102/?department_page=inspector-general</link>
+        <link>http://localhost:19102/departments/inspector-general/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=97</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>97</wp:post_id>
+        <wp:post_id>98</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6588,17 +6800,19 @@
     </item>
     <item>
         <title>IntegrityWorks</title>
-        <link>http://localhost:19102/?department_page=integrityworks</link>
+        <link>http://localhost:19102/departments/integrityworks/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=98</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>98</wp:post_id>
+        <wp:post_id>99</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6640,17 +6854,19 @@
     </item>
     <item>
         <title>Police Department</title>
-        <link>http://localhost:19102/?department_page=police</link>
+        <link>http://localhost:19102/departments/police/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=99</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>99</wp:post_id>
+        <wp:post_id>100</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6692,17 +6908,19 @@
     </item>
     <item>
         <title>Police Advisory Commission</title>
-        <link>http://localhost:19102/?department_page=police-advisory</link>
+        <link>http://localhost:19102/departments/police-advisory/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=100</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>100</wp:post_id>
+        <wp:post_id>101</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6744,17 +6962,19 @@
     </item>
     <item>
         <title>Philadelphia Prison System</title>
-        <link>http://localhost:19102/?department_page=prisons</link>
+        <link>http://localhost:19102/departments/prisons/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=101</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>101</wp:post_id>
+        <wp:post_id>102</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6796,17 +7016,19 @@
     </item>
     <item>
         <title>eContract Philly</title>
-        <link>http://localhost:19102/?department_page=econtract-philly</link>
+        <link>http://localhost:19102/departments/econtract-philly/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=102</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>102</wp:post_id>
+        <wp:post_id>103</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6848,17 +7070,19 @@
     </item>
     <item>
         <title>Office of Innovation and Technology</title>
-        <link>http://localhost:19102/?department_page=innovation-and-technology</link>
+        <link>http://localhost:19102/departments/innovation-and-technology/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=103</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>103</wp:post_id>
+        <wp:post_id>104</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6912,17 +7136,19 @@
     </item>
     <item>
         <title>Philadelphia Gas Commission</title>
-        <link>http://localhost:19102/?department_page=gas</link>
+        <link>http://localhost:19102/departments/gas/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=104</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>104</wp:post_id>
+        <wp:post_id>105</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -6964,17 +7190,19 @@
     </item>
     <item>
         <title>Philadelphia Parking Authority</title>
-        <link>http://localhost:19102/?department_page=parking-authority</link>
+        <link>http://localhost:19102/departments/parking-authority/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=105</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>105</wp:post_id>
+        <wp:post_id>106</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7016,17 +7244,19 @@
     </item>
     <item>
         <title>SEPTA</title>
-        <link>http://localhost:19102/?department_page=septa</link>
+        <link>http://localhost:19102/departments/septa/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=106</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>106</wp:post_id>
+        <wp:post_id>107</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7068,17 +7298,19 @@
     </item>
     <item>
         <title>Mayor's Office of Transportation and Utilities</title>
-        <link>http://localhost:19102/?department_page=transportation-and-utilities</link>
+        <link>http://localhost:19102/departments/transportation-and-utilities/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=107</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>107</wp:post_id>
+        <wp:post_id>108</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7120,17 +7352,19 @@
     </item>
     <item>
         <title>Philadelphia International Airport</title>
-        <link>http://localhost:19102/?department_page=airport</link>
+        <link>http://localhost:19102/departments/airport/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=108</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>108</wp:post_id>
+        <wp:post_id>109</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7172,17 +7406,19 @@
     </item>
     <item>
         <title>Philadelphia Industrial Development Corporation (PIDC)</title>
-        <link>http://localhost:19102/?department_page=industrial-development</link>
+        <link>http://localhost:19102/departments/industrial-development/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=109</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>109</wp:post_id>
+        <wp:post_id>110</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7224,17 +7460,19 @@
     </item>
     <item>
         <title>Mayor's Office of Civic Engagement and Volunteer Service</title>
-        <link>http://localhost:19102/?department_page=civic-engagement-and-volunteer-service</link>
+        <link>http://localhost:19102/departments/civic-engagement-and-volunteer-service/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=110</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>110</wp:post_id>
+        <wp:post_id>111</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7276,17 +7514,19 @@
     </item>
     <item>
         <title>Mayor's Office of Lesbian, Gay, Bi-sexual and Transgender Affairs</title>
-        <link>http://localhost:19102/?department_page=lesbian-gay-bi-sexual-and-transgender-affairs</link>
+        <link>http://localhost:19102/departments/lesbian-gay-bi-sexual-and-transgender-affairs/</link>
         <pubDate>Fri, 21 Nov 2014 14:35:07 +0000</pubDate>
         <dc:creator>
         </dc:creator>
         <guid isPermaLink="false">http://localhost:8080/?post_type=department_page&amp;p=111</guid>
         <description/>
         <content:encoded>
+            <![CDATA[]]>
         </content:encoded>
         <excerpt:encoded>
+            <![CDATA[]]>
         </excerpt:encoded>
-        <wp:post_id>111</wp:post_id>
+        <wp:post_id>112</wp:post_id>
         <wp:post_date>2014-11-21 14:35:07</wp:post_date>
         <wp:post_date_gmt>2014-11-21 14:35:07</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
@@ -7304,7 +7544,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_url</wp:meta_key>
             <wp:meta_value>
-                <![CDATA[no website]]>
+                <![CDATA[]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -7316,6 +7556,7 @@
         <wp:postmeta>
             <wp:meta_key>phila_dept_url</wp:meta_key>
             <wp:meta_value>
+                <![CDATA[]]>
             </wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
@@ -7325,5 +7566,141 @@
             </wp:meta_value>
         </wp:postmeta>
     </item>
+    <item>
+        <title>Earnings Tax</title>
+        <link>http://localhost:19102/earnings-tax/</link>
+        <pubDate>Wed, 03 Dec 2014 20:55:03 +0000</pubDate>
+        <dc:creator>
+            <![CDATA[admin]]>
+        </dc:creator>
+        <guid isPermaLink="false">http://localhost:19102/?p=113</guid>
+        <description/>
+        <content:encoded>
+            <![CDATA[<h2>Overview</h2>
+            The Earnings Tax is a tax on salaries, wages, commissions and other compensation paid to an employee who is employed or renders services to an employer.
+            <h2>Who Must File</h2>
+            The Earnings Tax must be filed and paid by Philadelphia residents or non-residents who work in Philadelphia who do not have the City Wage Tax withheld from their paycheck.
+            The most common situation that requires the filing and payment of the Earnings Tax is those who work for out of state employers. They are not required to withhold Philadelphia’s wage tax. Earning Tax is taxed at the same rates as the wage tax for residents and non-residents.
+            <h2>When to File</h2>
+            The Earnings Tax must be filed and paid quarterly along with an annual reconciliation at the end of each calendar year.
+            <h2>Exclusions from Earnings Tax</h2>
+            <ul>
+                <li>Those who have City Wage Tax withheld from their paycheck</li>
+                <li>Individuals and partners that file and pay the Net Profits Tax</li>
+            </ul>
+            <h2>Rates</h2>
+            <ul>
+                <li>3.92% (Resident)</li>
+                <li>3.4915% (Non-Resident)</li>
+            </ul>
+            <h2>No Reciprocal Agreements</h2>
+            The City of Philadelphia is not a party to any reciprocal tax agreements with any other municipality. Non-residents of Pennsylvania cannot claim a tax credit against Philadelphia Earnings Tax for income taxes paid to any other state or political subdivision. Residents of Philadelphia employed outside of Pennsylvania may be required to file and pay a local income tax in that jurisdiction in addition to Philadelphia Earnings Tax.]]&gt;]]>
+        </content:encoded>
+        <excerpt:encoded>
+        </excerpt:encoded>
+        <wp:post_id>113</wp:post_id>
+        <wp:post_date>2014-12-03 15:55:03</wp:post_date>
+        <wp:post_date_gmt>2014-12-03 20:55:03</wp:post_date_gmt>
+        <wp:comment_status>open</wp:comment_status>
+        <wp:ping_status>open</wp:ping_status>
+        <wp:post_name>earnings-tax</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password/>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="topics" nicename="individual-and-family-taxes">
+            <![CDATA[Individual and Family Taxes]]>
+        </category>
+        <category domain="category" nicename="revenue">
+            <![CDATA[Revenue]]>
+        </category>
+        <category domain="topics" nicename="taxes-and-payments">
+            <![CDATA[Taxes and Payments]]>
+        </category>
+        <wp:postmeta>
+            <wp:meta_key>_edit_last</wp:meta_key>
+            <wp:meta_value>
+                <![CDATA[1]]>
+            </wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_encloseme</wp:meta_key>
+            <wp:meta_value>
+                <![CDATA[1]]>
+            </wp:meta_value>
+        </wp:postmeta>
+    </item>
+    <item>
+        <title>Pay your Earnings Tax</title>
+        <link>http://localhost:19102/service/pay-your-earnings-tax/</link>
+        <pubDate>Wed, 03 Dec 2014 20:58:52 +0000</pubDate>
+        <dc:creator>
+            <![CDATA[admin]]>
+        </dc:creator>
+        <guid isPermaLink="false">http://localhost:19102/?post_type=service_post&amp;p=115</guid>
+        <description/>
+        <content:encoded>
+            <![CDATA[<h2>Before you start</h2>
+            <div class="alert exclamation">You do not have to manually pay your earnings tax if it already withheld from your paycheck.</div>
+            <ul>
+                <li>You must have a Earnings Tax Account. <a href="#">Apply for one.</a>
+            </li>
+            <li>Have your Social Security Number or Individual Tax Identification Number handy. This is your Earnings Tax account number.</li>
+        </ul>
+        <h2>How long it takes</h2>
+        The process typically takes 30 minutes.
+        <h2>Other ways to pay</h2>
+        <h3>By mail</h3>
+        Complete this form and mail it to:
+        Philadelphia Department of Revenue
+        PO Box 1648
+        Philadelphia, PA 19105‐1648
+        <h3>Electronic funds transfer</h3>
+        You can setup electronic payments to be made directly from your bank account. <a href="#">Get started.</a>]]>
+    </content:encoded>
+    <excerpt:encoded>
+    </excerpt:encoded>
+    <wp:post_id>115</wp:post_id>
+    <wp:post_date>2014-12-03 15:58:52</wp:post_date>
+    <wp:post_date_gmt>2014-12-03 20:58:52</wp:post_date_gmt>
+    <wp:comment_status>closed</wp:comment_status>
+    <wp:ping_status>closed</wp:ping_status>
+    <wp:post_name>pay-your-earnings-tax</wp:post_name>
+    <wp:status>publish</wp:status>
+    <wp:post_parent>0</wp:post_parent>
+    <wp:menu_order>0</wp:menu_order>
+    <wp:post_type>service_post</wp:post_type>
+    <wp:post_password/>
+    <wp:is_sticky>0</wp:is_sticky>
+    <category domain="topics" nicename="individual-and-family-taxes">
+        <![CDATA[Individual and Family Taxes]]>
+    </category>
+    <category domain="category" nicename="revenue">
+        <![CDATA[Revenue]]>
+    </category>
+    <category domain="topics" nicename="taxes-and-payments">
+        <![CDATA[Taxes and Payments]]>
+    </category>
+    <wp:postmeta>
+        <wp:meta_key>_edit_last</wp:meta_key>
+        <wp:meta_value>
+            <![CDATA[1]]>
+        </wp:meta_value>
+    </wp:postmeta>
+    <wp:postmeta>
+        <wp:meta_key>phila_service_desc</wp:meta_key>
+        <wp:meta_value>
+            <![CDATA[The Earnings Tax is a tax on salaries, wages, commissions and other compensation paid to an employee who is employed or renders services to an employer.]]>
+        </wp:meta_value>
+    </wp:postmeta>
+    <wp:postmeta>
+        <wp:meta_key>phila_service_url</wp:meta_key>
+        <wp:meta_value>
+            <![CDATA[https://ework.phila.gov/revenue/]]>
+        </wp:meta_value>
+    </wp:postmeta>
+</item>
 </channel>
 </rss>
