@@ -812,21 +812,21 @@
   <wp:category_description><![CDATA[Providing services and information to LGBT people through outreach and public education. Advising the Mayor and Philadelphia City government on the needs of LGBT residents and supports LGBT policy development, community outreach, public education, and capacity building.]]></wp:category_description>
 </wp:category>
 <wp:term>
-  <wp:term_id>6</wp:term_id>
+  <wp:term_id>112</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>arts-and-culture</wp:term_slug>
   <wp:term_parent/>
   <wp:term_name><![CDATA[Arts and Culture]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>7</wp:term_id>
+  <wp:term_id>113</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>business</wp:term_slug>
   <wp:term_parent/>
   <wp:term_name><![CDATA[Business]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>8</wp:term_id>
+  <wp:term_id>114</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>property</wp:term_slug>
   <wp:term_parent/>
@@ -834,7 +834,7 @@
   <wp:term_description><![CDATA[Includes assessments, taxes, and violations]]></wp:term_description>
 </wp:term>
 <wp:term>
-  <wp:term_id>9</wp:term_id>
+  <wp:term_id>115</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>taxes-and-payments</wp:term_slug>
   <wp:term_parent/>
@@ -842,14 +842,14 @@
   <wp:term_description><![CDATA[Includes online payments, tax information, and forms]]></wp:term_description>
 </wp:term>
 <wp:term>
-  <wp:term_id>10</wp:term_id>
+  <wp:term_id>116</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>urban-development</wp:term_slug>
   <wp:term_parent/>
   <wp:term_name><![CDATA[Urban Development]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>11</wp:term_id>
+  <wp:term_id>117</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>abatements-and-exemptions</wp:term_slug>
   <wp:term_parent>property</wp:term_parent>
@@ -857,21 +857,21 @@
   <wp:term_description><![CDATA[This is the abatements and exemptions description.]]></wp:term_description>
 </wp:term>
 <wp:term>
-  <wp:term_id>12</wp:term_id>
+  <wp:term_id>118</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>art-museums</wp:term_slug>
   <wp:term_parent>arts-and-culture</wp:term_parent>
   <wp:term_name><![CDATA[Art Museums]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>13</wp:term_id>
+  <wp:term_id>119</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>assessments</wp:term_slug>
   <wp:term_parent>property</wp:term_parent>
   <wp:term_name><![CDATA[Assessments]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>14</wp:term_id>
+  <wp:term_id>120</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>business-taxes</wp:term_slug>
   <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -879,21 +879,21 @@
   <wp:term_description><![CDATA[Taxes for business etc.]]></wp:term_description>
 </wp:term>
 <wp:term>
-  <wp:term_id>15</wp:term_id>
+  <wp:term_id>121</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>individuals-and-families</wp:term_slug>
   <wp:term_parent>taxes-and-payments</wp:term_parent>
   <wp:term_name><![CDATA[Individuals and Families]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>16</wp:term_id>
+  <wp:term_id>122</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>make-a-payment</wp:term_slug>
   <wp:term_parent>taxes-and-payments</wp:term_parent>
   <wp:term_name><![CDATA[Make a payment]]></wp:term_name>
 </wp:term>
 <wp:term>
-  <wp:term_id>17</wp:term_id>
+  <wp:term_id>123</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>rates-and-forms</wp:term_slug>
   <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -901,7 +901,7 @@
   <wp:term_description><![CDATA[Rates and forms description]]></wp:term_description>
 </wp:term>
 <wp:term>
-  <wp:term_id>18</wp:term_id>
+  <wp:term_id>124</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>refunds</wp:term_slug>
   <wp:term_parent>taxes-and-payments</wp:term_parent>
@@ -909,7 +909,7 @@
   <wp:term_description><![CDATA[Refunds, everyone loves em!]]></wp:term_description>
 </wp:term>
 <wp:term>
-  <wp:term_id>19</wp:term_id>
+  <wp:term_id>125</wp:term_id>
   <wp:term_taxonomy>topics</wp:term_taxonomy>
   <wp:term_slug>tax-professionals</wp:term_slug>
   <wp:term_parent>taxes-and-payments</wp:term_parent>
