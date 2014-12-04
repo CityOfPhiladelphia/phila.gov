@@ -38,7 +38,7 @@
         "version": "0.0.7",
         "dist": {
           "type": "zip",
-          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.6.zip"
+          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.7.zip"
         },
         "require" : {
           "composer/installers": "~1.0"
