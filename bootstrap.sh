@@ -53,8 +53,11 @@ echo 'Installing composer...'
 curl -sS https://getcomposer.org/download/1.0.0-alpha8/composer.phar > /usr/local/bin/composer
 chmod 755 /usr/local/bin/composer
 
-echo 'Install php components with composer...'
+# Switch to /vagrant and make it the automatic login directory
 cd /vagrant
+su vagrant -c 'echo "cd /vagrant" >> /home/vagrant/.bashrc'
+
+echo 'Install php components with composer...'
 su vagrant -c 'composer install'
 
 echo 'Installing wp-cli...'
