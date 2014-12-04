@@ -35,10 +35,10 @@
       "package": {
         "name": "CityOfPhiladelphia/phila.gov-theme",
         "type": "wordpress-theme",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "dist": {
           "type": "zip",
-          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.7.zip"
+          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.8.zip"
         },
         "require" : {
           "composer/installers": "~1.0"
