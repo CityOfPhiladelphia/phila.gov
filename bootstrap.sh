@@ -70,4 +70,7 @@ su vagrant -c 'wp db import'
 echo 'Importing fixture data...'
 su vagrant -c 'wp import wp.xml --authors=skip'
 
+echo 'Flushing rewrite rules so permalinks work...'
+su vagrant -c 'wp rewrite flush'
+
 echo 'Wordpress should be up and running at http://localhost:19102'
