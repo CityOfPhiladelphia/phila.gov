@@ -65,6 +65,6 @@ echo 'Importing configuration...'
 su vagrant -c 'wp db import'
 
 echo 'Importing fixture data...'
-su vagrant -c 'wp import wp.xml'
+su vagrant -c 'wp import wp.xml --authors=skip'
 
 echo 'Wordpress should be up and running at http://localhost:19102'
