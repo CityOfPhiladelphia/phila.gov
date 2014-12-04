@@ -15,13 +15,13 @@ require __DIR__ . '/vendor/autoload.php';
 define('DB_NAME', getenv('DB_NAME') ?: 'wp');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', getenv('DB_USER') ?: 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', getenv('DB_PASSWORD') ?: '');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -38,14 +38,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define('AUTH_KEY', getenv('AUTH_KEY') ?: 'put your unique phrase here');
+define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY') ?: 'put your unique phrase here');
+define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY') ?: 'put your unique phrase here');
+define('NONCE_KEY', getenv('NONCE_KEY') ?: 'put your unique phrase here');
+define('AUTH_SALT', getenv('AUTH_SALT') ?: 'put your unique phrase here');
+define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT') ?: 'put your unique phrase here');
+define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT') ?: 'put your unique phrase here');
+define('NONCE_SALT', getenv('NONCE_SALT') ?: 'put your unique phrase here');
 
 /**#@-*/
 
@@ -64,7 +64,7 @@ $table_prefix  = 'wp_';
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', getenv('WP_DEBUG') ?: true);
 
 /** 
  * Advanced options
