@@ -3,55 +3,35 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c5d68f57242209f58e8fefa45e31cbfd",
+    "hash": "ab7579ffcce0fe93f7fb3040efcabaa5",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
-                "reference": "036b150fa5bc5dc347ad86ae43ca95bba1e9fcac"
-            },
+            "version": "0.0.6",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/036b150fa5bc5dc347ad86ae43ca95bba1e9fcac",
-                "reference": "036b150fa5bc5dc347ad86ae43ca95bba1e9fcac",
-                "shasum": ""
+                "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization/archive/0.0.6.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "type": "wordpress-plugin",
-            "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/master",
-                "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
-            },
-            "time": "2014-12-02 19:02:05"
+            "type": "wordpress-plugin"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "63432cbd7fb0a6e3eff4b8e6ff75e4b8ad99c34e"
-            },
+            "version": "0.0.6",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/63432cbd7fb0a6e3eff4b8e6ff75e4b8ad99c34e",
-                "reference": "63432cbd7fb0a6e3eff4b8e6ff75e4b8ad99c34e",
-                "shasum": ""
+                "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.6.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "type": "wordpress-theme",
-            "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/master",
-                "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
-            },
-            "time": "2014-12-02 19:02:46"
+            "type": "wordpress-theme"
         },
         {
             "name": "composer/installers",
