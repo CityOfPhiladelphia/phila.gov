@@ -16,16 +16,38 @@
       }
     },
     {
+      "type": "package",
+      "package": {
+        "name": "CityOfPhiladelphia/phila.gov-customization",
+        "type": "wordpress-plugin",
+        "version": "0.0.6",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization/archive/0.0.6.zip"
+        },
+        "require" : {
+          "composer/installers": "~1.0"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "CityOfPhiladelphia/phila.gov-theme",
+        "type": "wordpress-theme",
+        "version": "0.0.6",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.6.zip"
+        },
+        "require" : {
+          "composer/installers": "~1.0"
+        }
+      }
+    },
+    {
       "type": "composer",
       "url": "http://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme"
     }
   ],
   "require": {
