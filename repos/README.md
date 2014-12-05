@@ -7,7 +7,7 @@ git clone git@github.com:CityOfPhiladelphia/phila.gov-customization.git
 Then, from the root of the phila.gov repo run the link script:
 
 ```
-./scripts/link.sh wp-content/plugins/phila.gov-customization
+./bin/link wp-content/plugins/phila.gov-customization
 ```
 
 Now all changes made in the phila.gov-customization repo will be seen
