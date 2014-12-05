@@ -47,6 +47,11 @@ server {
     try_files $uri $uri/ $uri.html;
 }
 EOF
+
+# https://abitwiser.wordpress.com/2011/02/24/virtualbox-hates-sendfile/
+sed -i 's/sendfile on/sendfile off/' /etc/nginx/nginx.conf
+
+echo 'Restarting nginx...'
 /etc/init.d/nginx restart
 
 echo 'Installing composer...'
