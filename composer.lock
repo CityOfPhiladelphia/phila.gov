@@ -3,14 +3,14 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e54015fd932e08213982b372fa66da2e",
+    "hash": "f4675f0b43af03d13d34817e0371512e",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.0.7",
+            "version": "0.0.8",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization/archive/0.0.7.zip",
+                "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization/archive/0.0.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -21,10 +21,10 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.0.9",
+            "version": "0.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.0.9.zip",
+                "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.1.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -184,15 +184,15 @@
         },
         {
             "name": "wpackagist-plugin/meta-box",
-            "version": "4.3.11",
+            "version": "4.4.0",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/meta-box/",
-                "reference": "tags/4.3.11"
+                "reference": "tags/4.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/meta-box.4.3.11.zip",
+                "url": "http://downloads.wordpress.org/plugin/meta-box.4.4.0.zip",
                 "reference": null,
                 "shasum": null
             },
