@@ -4,4 +4,6 @@ repos
 vendor
 wp
 wp-content
+
 scripts/env
+scripts/temp.xml
