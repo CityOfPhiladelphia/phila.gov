@@ -1,72 +1,36 @@
 {
   "repositories": [
     {
-      "type": "package",
-      "package": {
-        "name": "wordpress",
-        "type": "webroot",
-        "version": "4.0.1",
-        "dist": {
-          "type": "tar",
-          "url": "http://wordpress.org/wordpress-4.0.1.tar.gz"
-        },
-        "require" : {
-          "fancyguy/webroot-installer": "~1.1"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "CityOfPhiladelphia/phila.gov-customization",
-        "type": "wordpress-plugin",
-        "version": "0.1.3",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization/archive/0.1.3.zip"
-        },
-        "require" : {
-          "composer/installers": "~1.0"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "CityOfPhiladelphia/phila.gov-theme",
-        "type": "wordpress-theme",
-        "version": "0.3.5",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.3.5.zip"
-        },
-        "require" : {
-          "composer/installers": "~1.0"
-        }
-      }
-    },
-    {
       "type": "composer",
       "url": "http://wpackagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila.gov-styles"
     }
   ],
   "require": {
-    "wordpress": "~4.0",
+    "johnpbloch/wordpress": "~4.0",
     "wpackagist-plugin/meta-box": "~4.3",
     "wpackagist-plugin/restrict-categories": "~2.6",
     "wpackagist-plugin/wordpress-importer": "~0.6",
     "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
     "CityOfPhiladelphia/phila.gov-customization": "*",
-    "CityOfPhiladelphia/phila.gov-theme": "*"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "echo Installing phila.gov-styles in phila.gov-theme",
-      "curl -sL https://github.com/CityOfPhiladelphia/phila.gov-styles/archive/0.3.4.tar.gz | tar xz -C wp-content/themes/phila.gov-theme --transform 's/[^\\/]*/phila.gov-styles/'"
-    ]
+    "CityOfPhiladelphia/phila.gov-theme": "*",
+    "CityOfPhiladelphia/phila.gov-styles": "*"
   },
   "extra": {
-    "webroot-dir": "wp",
-    "webroot-package": "wordpress"
+    "wordpress-install-dir": "wp",
+    "installer-paths": {
+      "wp-content/themes/phila.gov-theme/{$name}": ["CityOfPhiladelphia/phila.gov-styles"]
+    }
   }
 }
