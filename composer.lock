@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "01110a0001e47ce86c9ed2eed066612e",
+    "hash": "4c9e566f0938023ff9e93bc67adcdfc5",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -21,10 +21,10 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.3.3.zip",
+                "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
