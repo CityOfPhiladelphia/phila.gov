@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "928eeef1f2d4f42ecbf939bf4b6bb150",
+    "hash": "e742936c23c4b6a7f1f7762324592e9f",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
