@@ -35,10 +35,10 @@
       "package": {
         "name": "CityOfPhiladelphia/phila.gov-theme",
         "type": "wordpress-theme",
-        "version": "0.3.4",
+        "version": "0.3.5",
         "dist": {
           "type": "zip",
-          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.3.4.zip"
+          "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/archive/0.3.5.zip"
         },
         "require" : {
           "composer/installers": "~1.0"
@@ -62,7 +62,7 @@
   "scripts": {
     "post-install-cmd": [
       "echo Installing phila.gov-styles in phila.gov-theme",
-      "curl -sL https://github.com/CityOfPhiladelphia/phila.gov-styles/archive/0.3.3.tar.gz | tar xz -C wp-content/themes/phila.gov-theme --transform 's/[^\\/]*/phila.gov-styles/'"
+      "curl -sL https://github.com/CityOfPhiladelphia/phila.gov-styles/archive/0.3.4.tar.gz | tar xz -C wp-content/themes/phila.gov-theme --transform 's/[^\\/]*/phila.gov-styles/'"
     ]
   },
   "extra": {
