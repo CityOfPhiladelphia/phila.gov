@@ -1,0 +1,8 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /phila.gov
+hooks:
+  AfterInstall:
+    - location: bin/install
