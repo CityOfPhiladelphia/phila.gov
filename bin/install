@@ -1,0 +1,4 @@
+#!/bin/bash
+composer install
+# Run it again for the styles
+composer install
