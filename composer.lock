@@ -31,16 +31,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-styles",
-            "version": "0.4.4",
+            "version": "0.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-styles.git",
-                "reference": "0d5bf6ec8be9386f3e1b5ed173c11c82770212dd"
+                "reference": "aa52337370af7e78655f828acbe0f4611fd69e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-styles/zipball/0d5bf6ec8be9386f3e1b5ed173c11c82770212dd",
-                "reference": "0d5bf6ec8be9386f3e1b5ed173c11c82770212dd",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-styles/zipball/aa52337370af7e78655f828acbe0f4611fd69e66",
+                "reference": "aa52337370af7e78655f828acbe0f4611fd69e66",
                 "shasum": ""
             },
             "require": {
@@ -48,23 +48,23 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-styles/tree/0.4.4",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-styles/tree/0.4.5",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-styles/issues"
             },
-            "time": "2014-12-15 20:23:39"
+            "time": "2014-12-15 22:02:44"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.6.0",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "7bd953129982651e3c0d6f06b8478e1bc2d72066"
+                "reference": "294b84e89ea831169a2fd5e52decd04ae9e4ee5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/7bd953129982651e3c0d6f06b8478e1bc2d72066",
-                "reference": "7bd953129982651e3c0d6f06b8478e1bc2d72066",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/294b84e89ea831169a2fd5e52decd04ae9e4ee5d",
+                "reference": "294b84e89ea831169a2fd5e52decd04ae9e4ee5d",
                 "shasum": ""
             },
             "require": {
@@ -72,10 +72,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.6.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.6.2",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2014-12-15 20:19:55"
+            "time": "2014-12-15 22:19:16"
         },
         {
             "name": "composer/installers",
@@ -320,23 +320,20 @@
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
-            "version": "2.1",
+            "version": "2.3",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wpfront-user-role-editor/",
-                "reference": "tags/2.1"
+                "reference": "tags/2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.1.zip",
+                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.3.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
-            },
-            "replace": {
-                "wpackagist/wpfront-user-role-editor": "self.version"
             },
             "type": "wordpress-plugin",
             "homepage": "http://wordpress.org/plugins/wpfront-user-role-editor/"
