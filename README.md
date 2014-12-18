@@ -34,3 +34,13 @@ The following happens when you `vagrant up`:
 - Update the contents of `wp.xml` with the new export file.
 - `vagrant destroy` then `vagrant up` to test your changes.
 - Commit the updated `wp.xml` to the repository
+
+
+## How to deploy
+
+1. Push tags on plugins, themes, etc.
+2. In phila.gov repo, run `bin/sshc composer update`.
+3. Run `bin/sshc composer install`.
+4. Check out the site locally.
+5. If all looks good, commit and push.
+6. Grab sha of commit from GitHub and paste into new deployment at CodeDeploy. Note that this step will go away soon!
