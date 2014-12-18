@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4bc0d4541de11aaaec2d6ceb4132155a",
+    "hash": "29ee9d75b418632dc9522da4749f2611",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -294,6 +294,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "http://wordpress.org/plugins/restrict-categories/"
+        },
+        {
+            "name": "wpackagist-plugin/swiftype-search",
+            "version": "1.1.39",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/swiftype-search/",
+                "reference": "tags/1.1.39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/swiftype-search.1.1.39.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "http://wordpress.org/plugins/swiftype-search/"
         },
         {
             "name": "wpackagist-plugin/wordpress-importer",
