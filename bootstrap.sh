@@ -12,7 +12,7 @@ cat > /etc/mysql/conf.d/low_mem.cnf << 'EOF'
 performance_schema = off
 EOF
 
-apt-get install -y mysql-server-5.6 nginx php5-cli php5-fpm php5-mysql
+apt-get install -y mysql-server-5.6 nginx php5-cli php5-fpm php5-mysql php5-curl
 
 echo 'Configuring mysql...'
 mysql -uroot -e "CREATE DATABASE IF NOT EXISTS wp"
