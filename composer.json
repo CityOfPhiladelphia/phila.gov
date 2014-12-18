@@ -19,6 +19,8 @@
   ],
   "require": {
     "johnpbloch/wordpress": "~4.0",
+    "wpackagist-plugin/amazon-s3-and-cloudfront": "~0.7",
+    "wpackagist-plugin/amazon-web-services": "~0.2",
     "wpackagist-plugin/meta-box": "~4.3",
     "wpackagist-plugin/restrict-categories": "~2.6",
     "wpackagist-plugin/swiftype-search": "~1.1",
