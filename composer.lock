@@ -31,16 +31,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-styles",
-            "version": "0.5.0",
+            "version": "0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-styles.git",
-                "reference": "0bb7d0847865f7e9cd1c14780a3f96fa617e3f83"
+                "reference": "cd57ac98c2b94cdb9d3d599a40ff984dffd64d9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-styles/zipball/0bb7d0847865f7e9cd1c14780a3f96fa617e3f83",
-                "reference": "0bb7d0847865f7e9cd1c14780a3f96fa617e3f83",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-styles/zipball/cd57ac98c2b94cdb9d3d599a40ff984dffd64d9b",
+                "reference": "cd57ac98c2b94cdb9d3d599a40ff984dffd64d9b",
                 "shasum": ""
             },
             "require": {
@@ -48,23 +48,23 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-styles/tree/0.5.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-styles/tree/0.5.2",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-styles/issues"
             },
-            "time": "2014-12-18 15:44:05"
+            "time": "2014-12-18 19:10:04"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.8.0",
+            "version": "0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "cd60e26f920203953f11cb6631f174b05cd45c76"
+                "reference": "e311a60cbef45e9f85a81e0680cc57b94f170745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/cd60e26f920203953f11cb6631f174b05cd45c76",
-                "reference": "cd60e26f920203953f11cb6631f174b05cd45c76",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/e311a60cbef45e9f85a81e0680cc57b94f170745",
+                "reference": "e311a60cbef45e9f85a81e0680cc57b94f170745",
                 "shasum": ""
             },
             "require": {
@@ -72,10 +72,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.8.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.8.3",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2014-12-18 15:44:40"
+            "time": "2014-12-18 19:13:20"
         },
         {
             "name": "composer/installers",
@@ -172,16 +172,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.0.1",
+            "version": "4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "bbc5e56449860b183aafbe7df97ca137594073a4"
+                "reference": "fced41fbfeb6b6a1f48f505426da0cb392d44274"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/bbc5e56449860b183aafbe7df97ca137594073a4",
-                "reference": "bbc5e56449860b183aafbe7df97ca137594073a4",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/fced41fbfeb6b6a1f48f505426da0cb392d44274",
+                "reference": "fced41fbfeb6b6a1f48f505426da0cb392d44274",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +205,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2014-11-20 17:45:59"
+            "time": "2014-12-18 18:31:41"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
