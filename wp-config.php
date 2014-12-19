@@ -86,6 +86,9 @@ define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
 define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID') ?: 'noaccesskeydefined');
 define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY') ?: 'nosecretkeydefined');
 
+/** https://wordpress.org/support/topic/problem-after-the-recent-update */
+define('FS_METHOD', 'direct');
+
 
 /* That's all, stop editing! Happy blogging. */
 
