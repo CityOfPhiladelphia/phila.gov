@@ -330,9 +330,6 @@
             "require": {
                 "composer/installers": "~1.0"
             },
-            "replace": {
-                "wpackagist/restrict-categories": "self.version"
-            },
             "type": "wordpress-plugin",
             "homepage": "http://wordpress.org/plugins/restrict-categories/"
         },
@@ -372,9 +369,6 @@
             },
             "require": {
                 "composer/installers": "~1.0"
-            },
-            "replace": {
-                "wpackagist/wordpress-importer": "self.version"
             },
             "type": "wordpress-plugin",
             "homepage": "http://wordpress.org/plugins/wordpress-importer/"
