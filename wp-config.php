@@ -82,6 +82,10 @@ define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost:19102');
 /** Directory splitting for Composer */
 define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
 
+/** For AWS and S3 usage */
+define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID') ?: 'noaccesskeydefined');
+define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY') ?: 'nosecretkeydefined');
+
 
 /* That's all, stop editing! Happy blogging. */
 
