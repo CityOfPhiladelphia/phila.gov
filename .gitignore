@@ -4,6 +4,7 @@ repos
 vendor
 wp
 wp-content
+auth.json
 
 scripts/env
 scripts/temp.xml
