@@ -1,7 +1,8 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
     "hash": "6e20facfda79d48531476f74b120f75a",
     "packages": [
@@ -55,16 +56,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.8.4",
+            "version": "0.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "65a210ab3d8f18f9880713e4badb4a67a3222586"
+                "reference": "c0328e990d862d15e357e5c1ba69e775e6b82b41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/65a210ab3d8f18f9880713e4badb4a67a3222586",
-                "reference": "65a210ab3d8f18f9880713e4badb4a67a3222586",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/c0328e990d862d15e357e5c1ba69e775e6b82b41",
+                "reference": "c0328e990d862d15e357e5c1ba69e775e6b82b41",
                 "shasum": ""
             },
             "require": {
@@ -72,10 +73,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.8.4",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.8.6",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2014-12-18 20:29:38"
+            "time": "2014-12-19 14:25:36"
         },
         {
             "name": "composer/installers",
@@ -399,20 +400,12 @@
             "homepage": "http://wordpress.org/plugins/wpfront-user-role-editor/"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
 }
