@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.5.0",
+            "version": "0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
-                "reference": "bd09ba26662d78c070988583bf7a84c26174ca15"
+                "reference": "c0318621e2b7251028b7296383813af94d5e873f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/bd09ba26662d78c070988583bf7a84c26174ca15",
-                "reference": "bd09ba26662d78c070988583bf7a84c26174ca15",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/c0318621e2b7251028b7296383813af94d5e873f",
+                "reference": "c0318621e2b7251028b7296383813af94d5e873f",
                 "shasum": ""
             },
             "require": {
@@ -25,10 +25,10 @@
             },
             "type": "wordpress-plugin",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.5.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.5.1",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
             },
-            "time": "2015-01-08 16:41:12"
+            "time": "2015-01-08 18:17:01"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-styles",
@@ -399,7 +399,6 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
