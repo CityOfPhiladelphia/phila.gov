@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.5.1",
+            "version": "0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
-                "reference": "c0318621e2b7251028b7296383813af94d5e873f"
+                "reference": "b5c7518443380516c07eb5d002542730e2e4259e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/c0318621e2b7251028b7296383813af94d5e873f",
-                "reference": "c0318621e2b7251028b7296383813af94d5e873f",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/b5c7518443380516c07eb5d002542730e2e4259e",
+                "reference": "b5c7518443380516c07eb5d002542730e2e4259e",
                 "shasum": ""
             },
             "require": {
@@ -25,10 +25,10 @@
             },
             "type": "wordpress-plugin",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.5.1",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.5.2",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
             },
-            "time": "2015-01-08 18:17:01"
+            "time": "2015-01-08 21:09:44"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-styles",
@@ -56,16 +56,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.10.2",
+            "version": "0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "19966f572e4710c30ce0a9e37bb442984156f445"
+                "reference": "312c2c3784381dde933cbc524fcce6469004c8eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/19966f572e4710c30ce0a9e37bb442984156f445",
-                "reference": "19966f572e4710c30ce0a9e37bb442984156f445",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/312c2c3784381dde933cbc524fcce6469004c8eb",
+                "reference": "312c2c3784381dde933cbc524fcce6469004c8eb",
                 "shasum": ""
             },
             "require": {
@@ -73,10 +73,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.10.2",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.10.3",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-01-07 18:06:20"
+            "time": "2015-01-08 21:10:15"
         },
         {
             "name": "composer/installers",
@@ -255,15 +255,15 @@
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
-            "version": "0.7.2",
+            "version": "0.8",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
-                "reference": "tags/0.7.2"
+                "reference": "tags/0.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.7.2.zip",
+                "url": "http://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -271,19 +271,19 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/amazon-s3-and-cloudfront/"
+            "homepage": "https://wordpress.org/plugins/amazon-s3-and-cloudfront/"
         },
         {
             "name": "wpackagist-plugin/amazon-web-services",
-            "version": "0.2",
+            "version": "0.2.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/amazon-web-services/",
-                "reference": "tags/0.2"
+                "reference": "tags/0.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/amazon-web-services.0.2.zip",
+                "url": "http://downloads.wordpress.org/plugin/amazon-web-services.0.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -291,7 +291,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/amazon-web-services/"
+            "homepage": "https://wordpress.org/plugins/amazon-web-services/"
         },
         {
             "name": "wpackagist-plugin/meta-box",
