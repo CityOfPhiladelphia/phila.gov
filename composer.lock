@@ -32,16 +32,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-styles",
-            "version": "0.7.0",
+            "version": "0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-styles.git",
-                "reference": "3cd41d29c6b96d77f91b34478493557079318817"
+                "reference": "69df67bbe0a79c00a7f350945fa881523ff82ded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-styles/zipball/3cd41d29c6b96d77f91b34478493557079318817",
-                "reference": "3cd41d29c6b96d77f91b34478493557079318817",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-styles/zipball/69df67bbe0a79c00a7f350945fa881523ff82ded",
+                "reference": "69df67bbe0a79c00a7f350945fa881523ff82ded",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-styles/tree/0.7.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-styles/tree/0.7.1",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-styles/issues"
             },
-            "time": "2015-01-07 18:07:42"
+            "time": "2015-01-16 15:19:04"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
@@ -80,16 +80,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.19",
+            "version": "v1.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "89d77bfbee79e16653f7162c86e602cc188471db"
+                "reference": "1bff8aa77a18f3616f468ed8000cf86a5725bac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/89d77bfbee79e16653f7162c86e602cc188471db",
-                "reference": "89d77bfbee79e16653f7162c86e602cc188471db",
+                "url": "https://api.github.com/repos/composer/installers/zipball/1bff8aa77a18f3616f468ed8000cf86a5725bac3",
+                "reference": "1bff8aa77a18f3616f468ed8000cf86a5725bac3",
                 "shasum": ""
             },
             "replace": {
@@ -131,6 +131,7 @@
                 "Hurad",
                 "MODX Evo",
                 "OXID",
+                "SMF",
                 "Thelia",
                 "WolfCMS",
                 "agl",
@@ -169,7 +170,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-11-29 01:29:17"
+            "time": "2015-01-11 03:51:11"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -335,15 +336,15 @@
         },
         {
             "name": "wpackagist-plugin/swiftype-search",
-            "version": "1.1.39",
+            "version": "1.1.41",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/swiftype-search/",
-                "reference": "tags/1.1.39"
+                "reference": "tags/1.1.41"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/swiftype-search.1.1.39.zip",
+                "url": "http://downloads.wordpress.org/plugin/swiftype-search.1.1.41.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -351,7 +352,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/swiftype-search/"
+            "homepage": "https://wordpress.org/plugins/swiftype-search/"
         },
         {
             "name": "wpackagist-plugin/wordpress-importer",
