@@ -48,6 +48,7 @@ The following happens when you `vagrant up`:
 1. Push tags on plugins, themes, etc.
 2. In phila.gov repo, run `bin/sshc composer update`.
 3. Run `bin/sshc composer install`.
-4. Check out the site locally.
-5. If all looks good, commit and push.
-6. Grab sha of commit from GitHub and paste into new deployment at CodeDeploy. Note that this step will go away soon!
+4. If you don't see styles, run `bin/sshc composer install` again.
+5. Check out the site locally.
+6. If all looks good, commit and push.
+7. Grab sha of commit from GitHub and paste into new deployment at CodeDeploy. Note that this step will go away soon!
