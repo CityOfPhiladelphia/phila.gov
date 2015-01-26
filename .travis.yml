@@ -1,6 +1,7 @@
 language: php
 php:
   - '5.5'
+script: "echo No tests yet!"
 deploy:
   - provider: opsworks
     access_key_id: AKIAI65HYMCAT2AOFKUQ
