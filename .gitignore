@@ -1,5 +1,6 @@
 .env
 .vagrant
+cookbooks
 repos
 vendor
 wp
