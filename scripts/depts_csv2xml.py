@@ -4,7 +4,7 @@ from slugify import slugify
 f = open('departments.csv')
 reader = csvkit.CSVKitReader(f)
 i = 1
-headers = ['short', 'full', 'url', 'topics', 'description']
+headers = ['short', 'full', 'description', 'topics', 'url']
 
 for l in reader:
     values = {header: l[i] for (i, header) in enumerate(headers)}
@@ -20,7 +20,7 @@ for l in reader:
   <wp:category_description><![CDATA[]]></wp:category_description>
 </wp:category>
     """ % (values)
-    print cat_xml.encode('utf-8').strip()
+    # print cat_xml.encode('utf-8').strip()
 
     page_xml = """
 <item>
