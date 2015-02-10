@@ -256,15 +256,15 @@
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
-            "version": "0.8.1",
+            "version": "0.8.2",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
-                "reference": "tags/0.8.1"
+                "reference": "tags/0.8.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.8.1.zip",
+                "url": "http://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.8.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -336,15 +336,15 @@
         },
         {
             "name": "wpackagist-plugin/swiftype-search",
-            "version": "1.1.41",
+            "version": "1.1.42",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/swiftype-search/",
-                "reference": "tags/1.1.41"
+                "reference": "tags/1.1.42"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/swiftype-search.1.1.41.zip",
+                "url": "http://downloads.wordpress.org/plugin/swiftype-search.1.1.42.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -376,15 +376,15 @@
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
-            "version": "2.3",
+            "version": "2.4",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wpfront-user-role-editor/",
-                "reference": "tags/2.3"
+                "reference": "tags/2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.3.zip",
+                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -392,7 +392,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/wpfront-user-role-editor/"
+            "homepage": "https://wordpress.org/plugins/wpfront-user-role-editor/"
         }
     ],
     "packages-dev": [],
