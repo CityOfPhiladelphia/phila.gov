@@ -56,16 +56,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.10.4",
+            "version": "0.10.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "6f0642561a5484a4f52a08a31886fae6455b95d1"
+                "reference": "c00265f80196febcba76bb720465673234214c66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/6f0642561a5484a4f52a08a31886fae6455b95d1",
-                "reference": "6f0642561a5484a4f52a08a31886fae6455b95d1",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/c00265f80196febcba76bb720465673234214c66",
+                "reference": "c00265f80196febcba76bb720465673234214c66",
                 "shasum": ""
             },
             "require": {
@@ -73,10 +73,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.10.4",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/master",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-01-22 20:31:02"
+            "time": "2015-02-17 15:52:07"
         },
         {
             "name": "composer/installers",
@@ -376,15 +376,15 @@
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
-            "version": "2.5",
+            "version": "2.5.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wpfront-user-role-editor/",
-                "reference": "tags/2.5"
+                "reference": "tags/2.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.5.zip",
+                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.5.1.zip",
                 "reference": null,
                 "shasum": null
             },
