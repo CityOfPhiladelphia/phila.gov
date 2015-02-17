@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 # Don't apt-get upgrade http://stackoverflow.com/a/15093460/589391
