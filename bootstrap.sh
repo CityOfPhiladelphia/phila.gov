@@ -40,14 +40,6 @@ server {
         include fastcgi_params;
     }
 }
-
-server {
-    server_name localhost;
-    listen 81;
-
-    root /usr/share/nginx/html;
-    try_files $uri $uri/ $uri.html;
-}
 EOF
 
 # https://abitwiser.wordpress.com/2011/02/24/virtualbox-hates-sendfile/
