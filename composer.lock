@@ -32,16 +32,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.11.4",
+            "version": "0.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "e0ec6ee6e0dbb19f8e788f8f27b1856432e6d6ed"
+                "reference": "800a56155a4a6f81aa69544e6cc267ae4db97224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/e0ec6ee6e0dbb19f8e788f8f27b1856432e6d6ed",
-                "reference": "e0ec6ee6e0dbb19f8e788f8f27b1856432e6d6ed",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/800a56155a4a6f81aa69544e6cc267ae4db97224",
+                "reference": "800a56155a4a6f81aa69544e6cc267ae4db97224",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.4",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.5",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-02-24 15:54:57"
+            "time": "2015-03-17 17:46:53"
         },
         {
             "name": "composer/installers",
@@ -313,15 +313,15 @@
         },
         {
             "name": "wpackagist-plugin/swiftype-search",
-            "version": "1.1.42",
+            "version": "1.1.43",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/swiftype-search/",
-                "reference": "tags/1.1.42"
+                "reference": "tags/1.1.43"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/swiftype-search.1.1.42.zip",
+                "url": "https://downloads.wordpress.org/plugin/swiftype-search.1.1.43.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -353,15 +353,15 @@
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
-            "version": "2.5.1",
+            "version": "2.7",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wpfront-user-role-editor/",
-                "reference": "tags/2.5.1"
+                "reference": "tags/2.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.5.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.7.zip",
                 "reference": null,
                 "shasum": null
             },
