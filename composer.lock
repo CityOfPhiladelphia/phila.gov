@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.5.4",
+            "version": "0.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
-                "reference": "ab7845f6a338805b3f35b59f2b2c2248c8945494"
+                "reference": "d2f141cb513af0ec9451b7495a84b74b74124c0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/ab7845f6a338805b3f35b59f2b2c2248c8945494",
-                "reference": "ab7845f6a338805b3f35b59f2b2c2248c8945494",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/d2f141cb513af0ec9451b7495a84b74b74124c0b",
+                "reference": "d2f141cb513af0ec9451b7495a84b74b74124c0b",
                 "shasum": ""
             },
             "require": {
@@ -25,23 +25,23 @@
             },
             "type": "wordpress-plugin",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.5.4",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.5.7",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
             },
-            "time": "2015-02-20 18:06:04"
+            "time": "2015-03-24 17:16:47"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.11.5",
+            "version": "0.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "800a56155a4a6f81aa69544e6cc267ae4db97224"
+                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/800a56155a4a6f81aa69544e6cc267ae4db97224",
-                "reference": "800a56155a4a6f81aa69544e6cc267ae4db97224",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/74486f329bd2979d0efdc4e31bb51159d23fffcb",
+                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.5",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.7",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-03-17 17:46:53"
+            "time": "2015-04-08 19:34:33"
         },
         {
             "name": "composer/installers",
@@ -273,7 +273,7 @@
         },
         {
             "name": "wpackagist-plugin/meta-box",
-            "version": "4.4.2",
+            "version": "4.4.3",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/meta-box/",
@@ -281,7 +281,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/meta-box.zip",
+                "url": "https://downloads.wordpress.org/plugin/meta-box.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -313,15 +313,15 @@
         },
         {
             "name": "wpackagist-plugin/swiftype-search",
-            "version": "1.1.43",
+            "version": "1.1.44",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/swiftype-search/",
-                "reference": "tags/1.1.43"
+                "reference": "tags/1.1.44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/swiftype-search.1.1.43.zip",
+                "url": "https://downloads.wordpress.org/plugin/swiftype-search.1.1.44.zip",
                 "reference": null,
                 "shasum": null
             },
