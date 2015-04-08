@@ -32,16 +32,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.11.6",
+            "version": "0.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "e7c5a3993532428019ecaa8dcacebd2112ececb9"
+                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/e7c5a3993532428019ecaa8dcacebd2112ececb9",
-                "reference": "e7c5a3993532428019ecaa8dcacebd2112ececb9",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/74486f329bd2979d0efdc4e31bb51159d23fffcb",
+                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.6",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.7",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-03-27 15:28:36"
+            "time": "2015-04-08 19:34:33"
         },
         {
             "name": "composer/installers",
