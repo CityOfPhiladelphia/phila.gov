@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c92afd269c0b380de2dd3ac48a16ef41",
+    "hash": "2511a70ccb7a86cecf492d10662b536c",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -230,6 +230,26 @@
             ],
             "description": "A custom installer to handle deploying WordPress with composer",
             "time": "2013-09-09 15:04:54"
+        },
+        {
+            "name": "wpackagist-plugin/add-headers",
+            "version": "1.2.0",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/add-headers/",
+                "reference": "tags/1.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/add-headers.1.2.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/add-headers/"
         },
         {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
