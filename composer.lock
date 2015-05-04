@@ -32,16 +32,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.11.7",
+            "version": "0.11.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb"
+                "reference": "e46a5aea2342173c91984b2f7ece364156f6cf58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/74486f329bd2979d0efdc4e31bb51159d23fffcb",
-                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/e46a5aea2342173c91984b2f7ece364156f6cf58",
+                "reference": "e46a5aea2342173c91984b2f7ece364156f6cf58",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.7",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.8",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-04-08 19:34:33"
+            "time": "2015-05-04 19:45:22"
         },
         {
             "name": "composer/installers",
@@ -151,16 +151,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.2",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "4c247a5f81af6207a99ecda3ce3b895a9f6af84e"
+                "reference": "c1cefa55c50dadb75b5e9f0e4844e420c794ab48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/4c247a5f81af6207a99ecda3ce3b895a9f6af84e",
-                "reference": "4c247a5f81af6207a99ecda3ce3b895a9f6af84e",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/c1cefa55c50dadb75b5e9f0e4844e420c794ab48",
+                "reference": "c1cefa55c50dadb75b5e9f0e4844e420c794ab48",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2015-04-23 16:31:07"
+            "time": "2015-04-27 17:16:13"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -293,15 +293,15 @@
         },
         {
             "name": "wpackagist-plugin/meta-box",
-            "version": "4.4.3",
+            "version": "4.5.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/meta-box/",
-                "reference": "trunk"
+                "reference": "tags/4.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/meta-box.zip",
+                "url": "https://downloads.wordpress.org/plugin/meta-box.4.5.1.zip",
                 "reference": null,
                 "shasum": null
             },
