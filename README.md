@@ -16,7 +16,7 @@ git clone git@github.com:CityOfPhiladelphia/phila.gov.git
 vagrant up
 ```
 
-Composer relies on the GitHub API. To set it up for authentication, generate a new personal access token at https://github.com/settings/applications and run this command:
+Composer relies on the GitHub API. To set it up for authentication, generate a new personal access token at https://github.com/settings/tokens and run this command:
 
 ```
 bin/sshc composer config github-oauth.github.com <github token>
