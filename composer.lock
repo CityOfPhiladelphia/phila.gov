@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c92afd269c0b380de2dd3ac48a16ef41",
+    "hash": "2511a70ccb7a86cecf492d10662b536c",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -32,16 +32,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.11.7",
+            "version": "0.11.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb"
+                "reference": "e46a5aea2342173c91984b2f7ece364156f6cf58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/74486f329bd2979d0efdc4e31bb51159d23fffcb",
-                "reference": "74486f329bd2979d0efdc4e31bb51159d23fffcb",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/e46a5aea2342173c91984b2f7ece364156f6cf58",
+                "reference": "e46a5aea2342173c91984b2f7ece364156f6cf58",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.7",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.11.8",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-04-08 19:34:33"
+            "time": "2015-05-04 19:45:22"
         },
         {
             "name": "composer/installers",
@@ -151,16 +151,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.1.1",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "b6a0e3c2ef178f97ce8b709897fd4411420b3ccb"
+                "reference": "c1cefa55c50dadb75b5e9f0e4844e420c794ab48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/b6a0e3c2ef178f97ce8b709897fd4411420b3ccb",
-                "reference": "b6a0e3c2ef178f97ce8b709897fd4411420b3ccb",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/c1cefa55c50dadb75b5e9f0e4844e420c794ab48",
+                "reference": "c1cefa55c50dadb75b5e9f0e4844e420c794ab48",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2015-02-18 22:16:06"
+            "time": "2015-04-27 17:16:13"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -232,6 +232,26 @@
             "time": "2013-09-09 15:04:54"
         },
         {
+            "name": "wpackagist-plugin/add-headers",
+            "version": "1.2.0",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/add-headers/",
+                "reference": "tags/1.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/add-headers.1.2.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/add-headers/"
+        },
+        {
             "name": "wpackagist-plugin/amazon-s3-and-cloudfront",
             "version": "0.8.2",
             "source": {
@@ -273,15 +293,15 @@
         },
         {
             "name": "wpackagist-plugin/meta-box",
-            "version": "4.4.3",
+            "version": "4.5.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/meta-box/",
-                "reference": "trunk"
+                "reference": "tags/4.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/meta-box.zip",
+                "url": "https://downloads.wordpress.org/plugin/meta-box.4.5.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -353,15 +373,15 @@
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
-            "version": "2.7",
+            "version": "2.9.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wpfront-user-role-editor/",
-                "reference": "tags/2.7"
+                "reference": "tags/2.9.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.7.zip",
+                "url": "https://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.9.1.zip",
                 "reference": null,
                 "shasum": null
             },
