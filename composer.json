@@ -15,6 +15,7 @@
   ],
   "require": {
     "johnpbloch/wordpress": "~4.0",
+    "wpackagist-plugin/add-headers": "~1.2",
     "wpackagist-plugin/amazon-s3-and-cloudfront": "~0.7",
     "wpackagist-plugin/amazon-web-services": "~0.2",
     "wpackagist-plugin/meta-box": "~4.3",
