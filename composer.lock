@@ -292,6 +292,26 @@
             "homepage": "https://wordpress.org/plugins/amazon-web-services/"
         },
         {
+            "name": "wpackagist-plugin/force-strong-passwords",
+            "version": "1.5.2",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/force-strong-passwords/",
+                "reference": "tags/1.5.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/force-strong-passwords.1.5.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/force-strong-passwords/"
+        },
+        {
             "name": "wpackagist-plugin/meta-box",
             "version": "4.5.3",
             "source": {
