@@ -393,15 +393,15 @@
         },
         {
             "name": "wpackagist-plugin/wpfront-user-role-editor",
-            "version": "2.9.1",
+            "version": "2.10",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wpfront-user-role-editor/",
-                "reference": "tags/2.9.1"
+                "reference": "tags/2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.9.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wpfront-user-role-editor.2.10.zip",
                 "reference": null,
                 "shasum": null
             },
