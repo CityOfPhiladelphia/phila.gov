@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b5e2bc684b5ce81c85ff7ca2af8e55c4",
+    "hash": "eba5d67abab82d4942014f7a37602fad",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -32,16 +32,16 @@
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.14.3",
+            "version": "0.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "b972ebf7a08cdaa579adeda010bf1783ddc0eb86"
+                "reference": "3811569972e8ee0f0dae563e3077a9cb561c8316"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/b972ebf7a08cdaa579adeda010bf1783ddc0eb86",
-                "reference": "b972ebf7a08cdaa579adeda010bf1783ddc0eb86",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/3811569972e8ee0f0dae563e3077a9cb561c8316",
+                "reference": "3811569972e8ee0f0dae563e3077a9cb561c8316",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.14.3",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.15.0",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-06-01 20:48:46"
+            "time": "2015-06-05 20:39:08"
         },
         {
             "name": "composer/installers",
@@ -350,26 +350,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/restrict-categories/"
-        },
-        {
-            "name": "wpackagist-plugin/swiftype-search",
-            "version": "1.1.44",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/swiftype-search/",
-                "reference": "tags/1.1.44"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/swiftype-search.1.1.44.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/swiftype-search/"
         },
         {
             "name": "wpackagist-plugin/wordpress-importer",
