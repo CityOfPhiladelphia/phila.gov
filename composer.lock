@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb8aeb37865e4a134048f0c99f7d23b2",
+    "hash": "6bef4ab0fef1f1dcc56c27718b422882",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -352,6 +352,26 @@
             "homepage": "https://wordpress.org/plugins/meta-box/"
         },
         {
+            "name": "wpackagist-plugin/nginx-helper",
+            "version": "1.8.12",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/nginx-helper/",
+                "reference": "tags/1.8.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/nginx-helper.1.8.12.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/nginx-helper/"
+        },
+        {
             "name": "wpackagist-plugin/restrict-categories",
             "version": "2.6.3",
             "source": {
@@ -417,6 +437,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
