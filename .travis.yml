@@ -12,5 +12,5 @@ deploy:
     access_key_id: AKIAI65HYMCAT2AOFKUQ
     secret_access_key:
       secure: H8T711FSQHYvZtQfdwQqdlP2wgHbrTAS3JO3ZTcLCNfjrOFW1m9WFc7L8Q9Lpuo9sclRc98IuIXGlBVXuG5CQa+MdmGN7zz+Jyr+OmWtCJJRtGvqvkVVEPLNeW1h3EzsSn77L2AiEEfg2QfRHPDiZSRK4kamvADUWrHI6qnFvSE=
-    app-id: c59b084c-60c5-4a50-ae41-986bec7eb22c
+    app-id: 45243925-4388-4b59-a0fe-310ac3c5d4d2
     on: staging
