@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb8aeb37865e4a134048f0c99f7d23b2",
+    "hash": "6bef4ab0fef1f1dcc56c27718b422882",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
-            "version": "0.8.0",
+            "version": "0.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git",
-                "reference": "abca0c6b0d9e2930ade87344077a5e66de9199d2"
+                "reference": "d277eded45bf57c89b4ce2046758e05e23c8f249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/abca0c6b0d9e2930ade87344077a5e66de9199d2",
-                "reference": "abca0c6b0d9e2930ade87344077a5e66de9199d2",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-customization/zipball/d277eded45bf57c89b4ce2046758e05e23c8f249",
+                "reference": "d277eded45bf57c89b4ce2046758e05e23c8f249",
                 "shasum": ""
             },
             "require": {
@@ -25,23 +25,23 @@
             },
             "type": "wordpress-plugin",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.8.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-customization/tree/0.8.2",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-customization/issues"
             },
-            "time": "2015-06-09 18:49:45"
+            "time": "2015-06-16 20:31:10"
         },
         {
             "name": "CityOfPhiladelphia/phila.gov-theme",
-            "version": "0.15.0",
+            "version": "0.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git",
-                "reference": "3811569972e8ee0f0dae563e3077a9cb561c8316"
+                "reference": "20ca033bfbc180263502fa42d2aa439ca93292e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/3811569972e8ee0f0dae563e3077a9cb561c8316",
-                "reference": "3811569972e8ee0f0dae563e3077a9cb561c8316",
+                "url": "https://api.github.com/repos/CityOfPhiladelphia/phila.gov-theme/zipball/20ca033bfbc180263502fa42d2aa439ca93292e5",
+                "reference": "20ca033bfbc180263502fa42d2aa439ca93292e5",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             },
             "type": "wordpress-theme",
             "support": {
-                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.15.0",
+                "source": "https://github.com/CityOfPhiladelphia/phila.gov-theme/tree/0.15.2",
                 "issues": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
             },
-            "time": "2015-06-05 20:39:08"
+            "time": "2015-06-16 20:30:05"
         },
         {
             "name": "composer/installers",
@@ -188,20 +188,20 @@
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
-                "reference": "a4c08e91be99e858c7778c2f52a4d73820147c2e"
+                "reference": "a04c2c383ef13aae077f36799ed2eafdebd618d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/a4c08e91be99e858c7778c2f52a4d73820147c2e",
-                "reference": "a4c08e91be99e858c7778c2f52a4d73820147c2e",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/a04c2c383ef13aae077f36799ed2eafdebd618d2",
+                "reference": "a04c2c383ef13aae077f36799ed2eafdebd618d2",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "conflict": {
                 "composer/installers": "<1.0.6"
@@ -229,7 +229,10 @@
                 }
             ],
             "description": "A custom installer to handle deploying WordPress with composer",
-            "time": "2013-09-09 15:04:54"
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2015-06-11 15:15:30"
         },
         {
             "name": "wpackagist-plugin/add-headers",
@@ -333,15 +336,15 @@
         },
         {
             "name": "wpackagist-plugin/meta-box",
-            "version": "4.5.3",
+            "version": "4.5.5",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/meta-box/",
-                "reference": "tags/4.5.3"
+                "reference": "tags/4.5.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/meta-box.4.5.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/meta-box.4.5.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -350,6 +353,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/meta-box/"
+        },
+        {
+            "name": "wpackagist-plugin/nginx-helper",
+            "version": "1.8.12",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/nginx-helper/",
+                "reference": "tags/1.8.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/nginx-helper.1.8.12.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/nginx-helper/"
         },
         {
             "name": "wpackagist-plugin/restrict-categories",
@@ -417,6 +440,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
