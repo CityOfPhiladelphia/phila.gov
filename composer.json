@@ -21,6 +21,7 @@
     "wpackagist-plugin/amazon-web-services": "~0.2",
     "wpackagist-plugin/force-strong-passwords": "~1.5",
     "wpackagist-plugin/meta-box": "~4.3",
+    "wpackagist-plugin/nginx-helper": "~1.8",
     "wpackagist-plugin/restrict-categories": "~2.6",
     "wpackagist-plugin/wordpress-importer": "~0.6",
     "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
