@@ -7,7 +7,7 @@ deploy:
     access_key_id: AKIAI65HYMCAT2AOFKUQ
     secret_access_key:
       secure: H8T711FSQHYvZtQfdwQqdlP2wgHbrTAS3JO3ZTcLCNfjrOFW1m9WFc7L8Q9Lpuo9sclRc98IuIXGlBVXuG5CQa+MdmGN7zz+Jyr+OmWtCJJRtGvqvkVVEPLNeW1h3EzsSn77L2AiEEfg2QfRHPDiZSRK4kamvADUWrHI6qnFvSE=
-    app-id: ea4b220f-4adb-4a89-908d-cff653e57b7e
+    app-id: c4d1f7af-05c1-48be-ad5d-2d0823858500
   - provider: opsworks
     access_key_id: AKIAI65HYMCAT2AOFKUQ
     secret_access_key:
