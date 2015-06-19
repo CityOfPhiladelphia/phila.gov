@@ -25,6 +25,7 @@
     "wpackagist-plugin/restrict-categories": "~2.6",
     "wpackagist-plugin/wordpress-importer": "~0.6",
     "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
+    "wpackagist-plugin/media-library-assistant": "~2.1",
     "CityOfPhiladelphia/phila.gov-customization": "*",
     "CityOfPhiladelphia/phila.gov-theme": "*"
   },

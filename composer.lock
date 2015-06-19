@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6bef4ab0fef1f1dcc56c27718b422882",
+    "hash": "0de1e56e4c8b17b9a11ab79b291c0017",
     "packages": [
         {
             "name": "CityOfPhiladelphia/phila.gov-customization",
@@ -201,7 +201,7 @@
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0"
+                "composer-plugin-api": "~1.0"
             },
             "conflict": {
                 "composer/installers": "<1.0.6"
@@ -333,6 +333,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/force-strong-passwords/"
+        },
+        {
+            "name": "wpackagist-plugin/media-library-assistant",
+            "version": "2.12",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/media-library-assistant/",
+                "reference": "tags/2.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/media-library-assistant.2.12.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/media-library-assistant/"
         },
         {
             "name": "wpackagist-plugin/meta-box",
