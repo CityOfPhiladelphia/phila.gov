@@ -11,7 +11,7 @@
     "wpackagist-plugin/nginx-helper": "1.8.12",
     "wpackagist-plugin/restrict-categories": "2.6.3",
     "wpackagist-plugin/wordpress-importer": "0.6.1",
-    "wpackagist-plugin/wpfront-user-role-editor": "2.10",
+    "wpfront/user-role-editor-personal-pro": "2.10",
     "cityofphiladelphia/phila.gov-customization": "0.8.2",
     "cityofphiladelphia/phila.gov-theme": "0.15.2"
   },
