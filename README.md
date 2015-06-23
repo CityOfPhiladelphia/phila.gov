@@ -45,12 +45,10 @@ The following happens when you `vagrant up`:
 
 ## How to deploy
 
-1. Push tags on plugins, themes, etc.
-2. In phila.gov repo, run `bin/sshc composer update`.
-3. Run `bin/sshc composer install`.
-4. If you don't see styles, run `bin/sshc composer install` again.
-5. Check out the site locally.
-6. If all looks good, commit and push to the `staging` branch.
-7. That push will trigger a build at https://travis-ci.org/CityOfPhiladelphia/phila.gov, which will in turn trigger a staging deployment at OpsWorks.
-8. Check out the site at the staging server.
-9. If all looks good, create a pull request from staging to master. Once the PR has been accepted and merged, a production deployment will be triggered.
+1. Modify `composer.json` to point at new require versions.
+2. Run `bin/sshc composer install`.
+3. Check out the site locally.
+4. If all looks good, commit and push to the `staging` branch.
+5. That push will trigger a build at https://travis-ci.org/CityOfPhiladelphia/phila.gov, which will in turn trigger a staging deployment at OpsWorks.
+6. Check out the site at the staging server.
+7. If all looks good, create a pull request from staging to master. Once the PR has been accepted and merged, a production deployment will be triggered.
