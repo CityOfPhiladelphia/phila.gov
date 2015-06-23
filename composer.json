@@ -1,18 +1,4 @@
 {
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme"
-    }
-  ],
   "require": {
     "johnpbloch/wordpress": "4.2.2",
     "wpackagist-plugin/add-headers": "1.2.0",
