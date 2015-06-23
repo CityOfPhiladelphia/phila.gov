@@ -6,6 +6,7 @@ vendor
 wp
 wp-content
 auth.json
+composer.lock
 
 scripts/env
 scripts/temp.xml

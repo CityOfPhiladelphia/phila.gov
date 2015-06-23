@@ -1,32 +1,19 @@
 {
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme"
-    }
-  ],
   "require": {
-    "johnpbloch/wordpress": "~4.0",
-    "wpackagist-plugin/add-headers": "~1.2",
-    "wpackagist-plugin/all-in-one-event-calendar": "~2.2",
-    "wpackagist-plugin/amazon-s3-and-cloudfront": "~0.7",
-    "wpackagist-plugin/amazon-web-services": "~0.2",
-    "wpackagist-plugin/force-strong-passwords": "~1.5",
-    "wpackagist-plugin/meta-box": "~4.3",
-    "wpackagist-plugin/nginx-helper": "~1.8",
-    "wpackagist-plugin/restrict-categories": "~2.6",
-    "wpackagist-plugin/wordpress-importer": "~0.6",
-    "wpackagist-plugin/wpfront-user-role-editor": "~2.1",
-    "CityOfPhiladelphia/phila.gov-customization": "*",
-    "CityOfPhiladelphia/phila.gov-theme": "*"
+    "cityofphiladelphia/phila.gov-customization": "0.8.2",
+    "cityofphiladelphia/phila.gov-theme": "0.15.2",
+    "johnpbloch/wordpress": "4.2.2",
+    "private/wpfront-user-role-editor-personal-pro": "2.10",
+    "wpackagist-plugin/add-headers": "1.2.0",
+    "wpackagist-plugin/all-in-one-event-calendar": "2.2.1",
+    "wpackagist-plugin/amazon-s3-and-cloudfront": "0.8.2",
+    "wpackagist-plugin/amazon-web-services": "0.2.2",
+    "wpackagist-plugin/force-strong-passwords": "1.5.2",
+    "wpackagist-plugin/media-library-assistant": "2.12",
+    "wpackagist-plugin/meta-box": "4.5.5",
+    "wpackagist-plugin/nginx-helper": "1.8.12",
+    "wpackagist-plugin/restrict-categories": "2.6.3",
+    "wpackagist-plugin/wordpress-importer": "0.6.1"
   },
   "extra": {
     "wordpress-install-dir": "wp"
