@@ -3,6 +3,7 @@
     "cityofphiladelphia/phila.gov-customization": "0.8.2",
     "cityofphiladelphia/phila.gov-theme": "0.15.2",
     "johnpbloch/wordpress": "4.2.2",
+    "private/wpfront-user-role-editor-personal-pro": "2.10",
     "wpackagist-plugin/add-headers": "1.2.0",
     "wpackagist-plugin/all-in-one-event-calendar": "2.2.1",
     "wpackagist-plugin/amazon-s3-and-cloudfront": "0.8.2",
@@ -12,8 +13,7 @@
     "wpackagist-plugin/meta-box": "4.5.5",
     "wpackagist-plugin/nginx-helper": "1.8.12",
     "wpackagist-plugin/restrict-categories": "2.6.3",
-    "wpackagist-plugin/wordpress-importer": "0.6.1",
-    "wpfront/user-role-editor-personal-pro": "2.10"
+    "wpackagist-plugin/wordpress-importer": "0.6.1"
   },
   "extra": {
     "wordpress-install-dir": "wp"
