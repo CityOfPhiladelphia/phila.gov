@@ -1,6 +1,6 @@
 {
   "require": {
-    "cityofphiladelphia/phila.gov-customization": "0.8.2",
+    "cityofphiladelphia/phila.gov-customization": "0.8.3",
     "cityofphiladelphia/phila.gov-theme": "0.15.2",
     "johnpbloch/wordpress": "4.2.2",
     "private/wpfront-user-role-editor-personal-pro": "2.10",
