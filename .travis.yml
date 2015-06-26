@@ -1,6 +1,8 @@
 language: php
 php:
   - '5.5'
+before_install:
+  - composer self-update
 script: 
   - composer config -g repositories.private composer $COMPOSER_REPOSITORY_URL
   - composer install
