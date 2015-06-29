@@ -1,7 +1,12 @@
+sudo: false
 language: php
 php:
   - '5.5'
-script: "echo No tests yet!"
+before_install:
+  - composer self-update
+script: 
+  - composer config -g repositories.private composer $COMPOSER_REPOSITORY_URL
+  - composer install
 deploy:
   - provider: opsworks
     access_key_id: AKIAI65HYMCAT2AOFKUQ
