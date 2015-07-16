@@ -56,20 +56,9 @@ echo 'Installing wp-cli...'
 curl -sS https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp
 chmod 755 /usr/local/bin/wp
 
-echo 'Switching to /vagrant and making that automatic for ssh...'
+echo 'Making /vagrant the login directory...'
 cd /vagrant
 su vagrant -c 'echo "cd /vagrant" >> /home/vagrant/.bashrc'
 
-echo 'Install php components with composer...'
-su vagrant -c 'composer install'
-
-echo 'Importing configuration...'
-su vagrant -c 'wp db import'
-
-echo 'Importing fixture data...'
-su vagrant -c 'wp import wp.xml --authors=skip'
-
-echo 'Flushing rewrite rules so permalinks work...'
-su vagrant -c 'wp rewrite flush'
-
-echo 'Wordpress should be up and running at http://localhost:19102'
+echo 'Wordpress should be up and running at http://localhost:1234'
+echo 'Follow the README for final setup.'
