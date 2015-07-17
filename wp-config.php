@@ -73,11 +73,10 @@ define('WP_DEBUG', getenv('WP_DEBUG') ?: true);
  */
 
 /** WP_SITEURL overrides DB to set WP core address */
-define('WP_SITEURL', getenv('WP_SITEURL') ?: 'http://localhost:19102');
+define('WP_SITEURL', getenv('WP_SITEURL') ?: 'http://localhost:1234');
 
 /** WP_HOME overrides DB to set public site address */
-/** To be changed to port 19107 once static is generated there */
-define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost:19102');
+define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost:1234');
 
 /** Directory splitting for Composer */
 define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
