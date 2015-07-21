@@ -88,6 +88,8 @@ define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY') ?: 'nosecretkeyd
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 
+/** https://rtcamp.com/nginx-helper/faq/ */
+define('RT_WP_NGINX_HELPER_CACHE_PATH', getenv('RT_WP_NGINX_HELPER_CACHE_PATH') ?: '/var/run/nginx-cache/');
 
 /* That's all, stop editing! Happy blogging. */
 
