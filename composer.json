@@ -15,6 +15,7 @@
     "wpackagist-plugin/nginx-helper": "1.9.4",
     "wpackagist-plugin/restrict-categories": "2.6.3",
     "wpackagist-plugin/simple-page-ordering": "2.2.4",
+    "wpackagist-plugin/wordfence": "6.0.11",
     "wpackagist-plugin/wordpress-importer": "0.6.1"
   },
   "extra": {
