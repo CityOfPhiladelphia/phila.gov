@@ -2,11 +2,10 @@
   "repositories": {"packagist": false},
   "require": {
     "cityofphiladelphia/phila.gov-customization": "0.10.0",
-    "cityofphiladelphia/phila.gov-theme": "0.16.5",
-    "johnpbloch/wordpress": "4.2.2",
+    "cityofphiladelphia/phila.gov-theme": "0.16.6",
+    "johnpbloch/wordpress": "4.2.3",
     "private/wpfront-user-role-editor-personal-pro": "2.10.1.3",
     "wpackagist-plugin/add-headers": "1.2.0",
-    "wpackagist-plugin/all-in-one-event-calendar": "2.2.1",
     "wpackagist-plugin/amazon-s3-and-cloudfront": "0.9.0",
     "wpackagist-plugin/amazon-web-services": "0.3.0",
     "wpackagist-plugin/force-strong-passwords": "1.5.2",
@@ -16,6 +15,7 @@
     "wpackagist-plugin/nginx-helper": "1.9.4",
     "wpackagist-plugin/restrict-categories": "2.6.3",
     "wpackagist-plugin/simple-page-ordering": "2.2.4",
+    "wpackagist-plugin/wordfence": "6.0.11",
     "wpackagist-plugin/wordpress-importer": "0.6.1"
   },
   "extra": {
