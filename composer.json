@@ -8,7 +8,7 @@
     "wpackagist-plugin/add-headers": "1.2.0",
     "wpackagist-plugin/amazon-s3-and-cloudfront": "0.9.2",
     "wpackagist-plugin/amazon-web-services": "0.3.1",
-    "wpackagist-plugin/google-calendar-events": "2.2.6.0",
+    "wpackagist-plugin/google-calendar-events": "2.2.7",
     "wpackagist-plugin/media-library-assistant": "2.13",
     "wpackagist-plugin/meta-box": "4.5.5",
     "wpackagist-plugin/nginx-helper": "1.9.5",
