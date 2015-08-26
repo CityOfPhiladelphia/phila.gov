@@ -1,20 +1,46 @@
-<!DOCTYPE html>
-<head>
-  <title>Site Maintenance | phila.gov</title>
-  <style>
-    body { text-align: center; padding: 150px; }
-    h1 { font-size: 50px; }
-    body { font: 20px Helvetica, sans-serif; color: #333; }
-    article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-    a { color: #dc8100; text-decoration: none; }
-    a:hover { color: #333; text-decoration: none; }                                                                        
-  </style>
-</head>
-<body>
-  <article>
-    <h1>We'll be back soon!</h1>
-    <div>
-      <p>Sorry for the inconvenience but we're performing some maintenance at the moment. We'll be back online shortly!</p>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maintenance | phila.gov</title>
+    <link rel="icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="//cityofphiladelphia.github.io/patterns/dist/0.9.1/css/patterns.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="site" id="page">
+      <header data-swiftype-index="false" class="site-header" role="banner">
+        <div class="row">
+          <div class="small-24 columns">
+            <a href="/" rel="home">
+              <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-logo.png" class="logo no-scale" alt="City of Philadelphia">
+            </a>
+          </div>
+        </div>
+      </header>
+      <div class="row">
+        <div class="small-24 columns">
+          <div class="divider"></div>
+        </div>
+      </div>
+      <article>
+        <div class="row">
+          <div class="small-24 columns">
+            <h1 class="h2">Phila.gov is currently down for maintenance. We expect to be back shortly.</h1>
+            <p>Sorry for the inconvenience. You can <a href="mailto:webissues@phila.gov">contact us</a> in the meantime!</p>
+          </div>
+        </div>
+      </article>
     </div>
-  </article>
-</body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation.min.js"></script>
+    <script src="//cityofphiladelphia.github.io/patterns/dist/0.9.1/js/patterns.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
