@@ -10,3 +10,5 @@ composer.lock
 
 scripts/env
 scripts/temp.xml
+
+packer/user-data.sh
