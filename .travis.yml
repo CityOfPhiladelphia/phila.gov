@@ -4,18 +4,22 @@ php:
   - '5.5'
 before_install:
   - composer self-update
-script: 
+script:
   - composer config -g repositories.private composer $COMPOSER_REPOSITORY_URL
   - composer install
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_16a3424d8998_key -iv $encrypted_16a3424d8998_iv
+    -in .travis/deploy.pem.enc -out .travis/deploy.pem -d
+  - chmod 400 .travis/deploy.pem
+  - echo -e "Host master\n  User ubuntu\n  HostName $STAG\n  IdentityFile `pwd`/.travis/deploy.pem\nHost production\n  User ubuntu\n  HostName $PROD\n  IdentityFile `pwd`/.travis/deploy.pem" >> ~/.ssh/config
+  - ssh-keyscan $STAG >> ~/.ssh/known_hosts
+  - ssh-keyscan $PROD >> ~/.ssh/known_hosts
 deploy:
-  - provider: opsworks
-    access_key_id: AKIAI65HYMCAT2AOFKUQ
-    secret_access_key:
-      secure: H8T711FSQHYvZtQfdwQqdlP2wgHbrTAS3JO3ZTcLCNfjrOFW1m9WFc7L8Q9Lpuo9sclRc98IuIXGlBVXuG5CQa+MdmGN7zz+Jyr+OmWtCJJRtGvqvkVVEPLNeW1h3EzsSn77L2AiEEfg2QfRHPDiZSRK4kamvADUWrHI6qnFvSE=
-    app-id: 8f2e90ea-6b1c-443f-a81a-0938976c9bd5
   - provider: opsworks
     access_key_id: AKIAI65HYMCAT2AOFKUQ
     secret_access_key:
       secure: H8T711FSQHYvZtQfdwQqdlP2wgHbrTAS3JO3ZTcLCNfjrOFW1m9WFc7L8Q9Lpuo9sclRc98IuIXGlBVXuG5CQa+MdmGN7zz+Jyr+OmWtCJJRtGvqvkVVEPLNeW1h3EzsSn77L2AiEEfg2QfRHPDiZSRK4kamvADUWrHI6qnFvSE=
     app-id: c4d1f7af-05c1-48be-ad5d-2d0823858500
     on: production
+  - provider: script
+    script: deploy/main.sh
