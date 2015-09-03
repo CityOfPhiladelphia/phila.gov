@@ -2,8 +2,12 @@
 
 set -e
 
+export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y nginx php5-cli php5-curl php5-fpm php5-mysql postfix
+
+# Stop services so chroot can unmount
+service postfix stop
 
 echo 'Modifying php.ini...'
 ed /etc/php5/fpm/php.ini <<'EOF'
@@ -23,4 +27,3 @@ chmod 755 /usr/local/bin/wp
 
 echo 'Enabling env vars in ssh deploys...'
 echo 'PermitUserEnvironment yes' >> /etc/ssh/sshd_config
-service ssh restart
