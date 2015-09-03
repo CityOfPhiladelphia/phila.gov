@@ -8,5 +8,5 @@ chmod 400 .travis/deploy.pem
 eval `ssh-agent`
 ssh-add .travis/deploy.pem
 echo -e "Host master\n  User ubuntu\n  HostName $STAG\nHost production\n  User ubuntu\n  HostName $PROD" >> ~/.ssh/config
-ssh-keyscan $STAG >> ~/.ssh/known_hosts 2> /dev/null
+ssh-keyscan $STAG >> ~/.ssh/known_hosts
 ssh-keyscan $PROD >> ~/.ssh/known_hosts 2> /dev/null
