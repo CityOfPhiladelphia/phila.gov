@@ -2,5 +2,5 @@ sudo: false
 language: php
 php: '5.5'
 install: .travis/install.sh
-before_script: .travis/prep.sh
-script: .travis/deploy.sh
+script:
+  - .travis/prep.sh && .travis/deploy.sh
