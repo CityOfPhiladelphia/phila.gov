@@ -23,4 +23,5 @@ DB_USER=wp
 DB_PASSWORD=dbPass
 DB_HOST=dbmachine.example.com
 HTTPS=on
+ROBOTS_DISALLOW=/
 EOF
