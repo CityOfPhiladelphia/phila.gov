@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 # $TRAVIS_BRANCH mapped to dest in .ssh/config
 rsync -rz --delete --exclude=".git" ./ $TRAVIS_BRANCH:phila.gov
