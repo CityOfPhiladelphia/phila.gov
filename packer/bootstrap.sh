@@ -3,7 +3,7 @@
 set -e
 
 apt-get update
-apt-get install -y nginx php5-cli php5-curl php5-fpm php5-mysql
+apt-get install -y nginx php5-cli php5-curl php5-fpm php5-mysql postfix
 
 echo 'Modifying php.ini...'
 ed /etc/php5/fpm/php.ini <<'EOF'
