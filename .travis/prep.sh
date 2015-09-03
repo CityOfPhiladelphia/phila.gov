@@ -8,7 +8,6 @@ chmod 400 .travis/deploy.pem
 cat >> ~/.ssh/config <<EOF
 Host *
   User ubuntu
-  IdentitiesOnly yes
   IdentityFile `pwd`/.travis/deploy.pem
 Host master
   HostName $STAG
