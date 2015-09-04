@@ -9,14 +9,6 @@ apt-get install -y nginx php5-cli php5-curl php5-fpm php5-gd php5-mysql postfix
 # Stop services so chroot can unmount
 service postfix stop
 
-echo 'Modifying php.ini...'
-ed /etc/php5/fpm/php.ini <<'EOF'
-g/post_max_size/s/8/100
-g/upload_max_filesize/s/2/100
-g/expose_php/s/On/Off
-w
-EOF
-
 echo 'Installing composer...'
 curl -sS https://getcomposer.org/download/1.0.0-alpha10/composer.phar > /usr/local/bin/composer
 chmod 755 /usr/local/bin/composer
