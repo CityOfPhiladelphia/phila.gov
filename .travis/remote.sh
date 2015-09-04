@@ -22,7 +22,7 @@ sudo rm -rf /var/run/nginx-cache/*
 sudo service nginx reload
 
 echo 'Modifying php.ini...'
-ed /etc/php5/fpm/php.ini <<'EOF'
+sudo ed /etc/php5/fpm/php.ini <<'EOF'
 g/post_max_size/s/8/100
 g/upload_max_filesize/s/2/100
 g/expose_php/s/On/Off
