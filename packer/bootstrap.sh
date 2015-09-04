@@ -4,7 +4,7 @@ set -e
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get install -y nginx php5-cli php5-curl php5-fpm php5-mysql postfix
+apt-get install -y nginx php5-cli php5-curl php5-fpm php5-gd php5-mysql postfix
 
 # Stop services so chroot can unmount
 service postfix stop
