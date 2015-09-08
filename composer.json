@@ -2,7 +2,7 @@
   "repositories": {"packagist": false},
   "require": {
     "cityofphiladelphia/phila.gov-customization": "0.15.7",
-    "cityofphiladelphia/phila.gov-theme": "0.17.2",
+    "cityofphiladelphia/phila.gov-theme": "0.17.3",
     "johnpbloch/wordpress": "4.3.0",
     "private/wpfront-user-role-editor-personal-pro": "2.11.3",
     "wpackagist-plugin/add-headers": "1.2.0",
