@@ -4,7 +4,7 @@
     "cityofphiladelphia/phila.gov-customization": "0.15.7",
     "cityofphiladelphia/phila.gov-theme": "0.17.2",
     "johnpbloch/wordpress": "4.3.0",
-    "private/wpfront-user-role-editor-personal-pro": "2.11",
+    "private/wpfront-user-role-editor-personal-pro": "2.11.3",
     "wpackagist-plugin/add-headers": "1.2.0",
     "wpackagist-plugin/amazon-s3-and-cloudfront": "0.9.5",
     "wpackagist-plugin/amazon-web-services": "0.3.2",
