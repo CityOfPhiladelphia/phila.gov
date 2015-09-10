@@ -18,6 +18,10 @@ echo 'Running WP CLI deploy steps...'
 wp rewrite flush
 wp core update-db
 
+echo 'Giving web server write access to uploads...'
+mkdir -p wp-content/uploads
+sudo chgrp www-data wp-content/uploads
+
 
 # Render nginx confs in /etc with env vars
 echo 'Rendering nginx confs...'
