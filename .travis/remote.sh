@@ -20,7 +20,7 @@ wp core update-db
 
 echo 'Giving web server write access to uploads...'
 mkdir -p wp-content/uploads
-sudo chgrp www-data wp-content/uploads
+sudo chmod 777 wp-content/uploads
 
 
 # Render nginx confs in /etc with env vars
