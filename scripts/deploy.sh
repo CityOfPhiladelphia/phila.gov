@@ -3,7 +3,7 @@
 set -e
 
 echo 'Running composer install...'
-composer config -g repositories.private composer $COMPOSER_REPOSITORY_URL
+composer config -g repositories.private composer $COMPOSER_URL
 composer install
 
 echo 'Modifying php.ini...'
