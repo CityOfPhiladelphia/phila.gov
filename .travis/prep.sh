@@ -14,7 +14,7 @@ EOF
 IP=`aws ec2 describe-instances --filters \
   "Name=tag:Branch,Values=$TRAVIS_BRANCH" \
   "Name=tag:Project,Values=phila.gov" | \
-  grep '^INSTANCES' | cut -f13`
+  grep '^INSTANCES' | cut -f15`
 
 # Only deploy if we have an IP
 if [ -z "$IP" ]; then exit 1; fi
