@@ -4,7 +4,7 @@ set -e
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-# Don't apt-get upgrade http://stackoverflow.com/a/15093460/589391
+# No apt-get upgrade http://stackoverflow.com/a/15093460/589391
 
 # Limit mysql memory use for install
 # https://mariadb.com/blog/starting-mysql-low-memory-virtual-machines
@@ -14,7 +14,7 @@ cat > /etc/mysql/conf.d/low_mem.cnf << 'EOF'
 performance_schema = off
 EOF
 
-apt-get install -y mysql-server-5.6 nginx php5-cli php5-fpm php5-mysql php5-curl
+apt-get install -y mysql-server-5.6 nginx php5-cli php5-curl php5-fpm php5-gd php5-mysql
 
 echo 'Configuring mysql...'
 mysql -uroot -e "CREATE DATABASE IF NOT EXISTS wp"
