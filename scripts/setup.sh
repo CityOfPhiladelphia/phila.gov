@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Spin up new machine on AWS with something like the following:
+# $ aws ec2 run-instances --user-data file://scripts/setup.sh --key-name philagov2 \
+# > --instance-type t2.micro --associate-public-ip-address --image-id ami-d05e75b8 \
+# > --subnet-id subnet-54412b0d
+
 set -e
 
 export DEBIAN_FRONTEND=noninteractive
