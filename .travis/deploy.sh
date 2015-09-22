@@ -2,8 +2,8 @@
 
 set -e
 
-# Deploy to target machine identified in .ssh/config
+echo 'Syncing to target machine...'
 rsync -rz --delete --exclude=.git ./ target:phila.gov
 
-# Execute deploy script from the app directory
+echo 'Executing deploy in app directory on target...'
 ssh target 'cd phila.gov && scripts/deploy.sh'
