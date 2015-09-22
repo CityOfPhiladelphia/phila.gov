@@ -1,7 +1,5 @@
 sudo: false
 language: php
 php: '5.5'
-before_script:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
+before_script: pip install --user awscli && export PATH=$HOME/.local/bin:$PATH
 script: .travis/prep.sh && .travis/deploy.sh
