@@ -3,8 +3,10 @@
 set -e
 
 echo 'Installing AWS CLI'
-pip install --user awscli
-export PATH=$HOME/.local/bin:$PATH
+wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+unzip awscli-bundle.zip
+./awscli-bundle/install -b ~/bin/aws
+export PATH=~/bin:$PATH
 
 echo 'Configuring AWS CLI'
 mkdir -p ~/.aws
