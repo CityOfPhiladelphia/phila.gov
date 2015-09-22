@@ -16,3 +16,4 @@ chmod 755 /usr/local/bin/wp
 
 echo 'Setting env vars for ssh deploys...'
 echo 'PermitUserEnvironment yes' >> /etc/ssh/sshd_config
+service ssh restart
