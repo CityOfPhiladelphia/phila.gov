@@ -1,3 +1,4 @@
 sudo: false
+language: generic
 before_script: .travis/prep.sh
 script: .travis/deploy.sh
