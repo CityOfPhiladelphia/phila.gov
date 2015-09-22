@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Environment variables needed by this script should be in
+# /home/ubuntu/.ssh/environment on the target machine.
+
 set -e
 
 echo 'Running composer install'
