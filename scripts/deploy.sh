@@ -41,10 +41,10 @@ for f in nginx/**; do
   perl -X -p -i -e 's/<(\w+)>/defined $ENV{$1} ? $ENV{$1} : $&/eg' < "$f" | sudo tee "/etc/$f" > /dev/null
 done
 
-# Test config
+echo 'Testing nginx config'
 sudo nginx -t
 
-# Purge fastcgi cache
+echo 'Purging fastcgi cache'
 sudo rm -rf /var/run/nginx-cache/*
 
 sudo service nginx reload
