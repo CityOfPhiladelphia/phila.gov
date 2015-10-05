@@ -6,7 +6,7 @@
     "johnpbloch/wordpress": "4.3.1",
     "private/wpfront-user-role-editor-personal-pro": "2.12",
     "wpackagist-plugin/add-headers": "1.2.0",
-    "wpackagist-plugin/amazon-s3-and-cloudfront": "0.9.5",
+    "wpackagist-plugin/amazon-s3-and-cloudfront": "0.9.6",
     "wpackagist-plugin/amazon-web-services": "0.3.2",
     "wpackagist-plugin/easy-wp-smtp": "1.2.0",
     "wpackagist-plugin/google-calendar-events": "2.4.0",
