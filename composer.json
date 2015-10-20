@@ -16,7 +16,7 @@
     "wpackagist-plugin/restrict-categories": "2.6.3",
     "wpackagist-plugin/simple-301-redirects": "1.06",
     "wpackagist-plugin/simple-page-ordering": "2.2.4",
-    "wpackagist-plugin/wordfence": "6.0.17",
+    "wpackagist-plugin/wordfence": "6.0.20",
     "wpackagist-plugin/wordpress-importer": "0.6.1"
   },
   "extra": {
