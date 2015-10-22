@@ -1,6 +1,7 @@
 #!/bin/bash
 
-rm wp-config.php
+# Don't let any existing configs get in the way
+rm -f wp-config.php wp/wp-config.php
 
 if [ "$WP_AUTH_KEY" ]; then
   SKIP_SALTS="--skip-salts"
