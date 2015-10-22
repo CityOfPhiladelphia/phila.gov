@@ -4,6 +4,7 @@ cookbooks
 repos
 vendor
 wp
+wp-config.php
 wp-content
 auth.json
 composer.lock
