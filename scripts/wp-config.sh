@@ -16,7 +16,7 @@ define('NONCE_SALT',       '$WP_NONCE_SALT');
 EOF
 fi
 
-wp core config --dbname=$DB_NAME --dbuser=$DB_USER ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} $SKIP_SALTS --extra-php <<PHP
+wp core config --dbname=$DB_NAME --dbuser=$DB_USER ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} --skip-check $SKIP_SALTS --extra-php <<PHP
 $SALTS
 
 /** For Composer-driven autoload. See http://composer.rarst.net/recipe/site-stack */
