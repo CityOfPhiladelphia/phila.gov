@@ -22,30 +22,5 @@ fastcgi_param   SERVER_NAME             $server_name;
 # PHP only, required if PHP was built with --enable-force-cgi-redirect
 fastcgi_param   REDIRECT_STATUS         200;
 
-# URLs must not be https for caching to work behind SSL termination
-fastcgi_param WP_SITEURL '<WP_SITEURL>';
-fastcgi_param WP_HOME '<WP_HOME>';
-
-fastcgi_param WP_DEBUG '<WP_DEBUG>';
-
-fastcgi_param AUTH_KEY '<WP_AUTH_KEY>';
-fastcgi_param SECURE_AUTH_KEY '<WP_SECURE_AUTH_KEY>';
-fastcgi_param LOGGED_IN_KEY '<WP_LOGGED_IN_KEY>';
-fastcgi_param NONCE_KEY '<WP_NONCE_KEY>';
-fastcgi_param AUTH_SALT '<WP_AUTH_SALT>';
-fastcgi_param SECURE_AUTH_SALT '<WP_SECURE_AUTH_SALT>';
-fastcgi_param LOGGED_IN_SALT '<WP_LOGGED_IN_SALT>';
-fastcgi_param NONCE_SALT '<WP_NONCE_SALT>';
-
-fastcgi_param AWS_ACCESS_KEY_ID '<AWS_ACCESS_KEY_ID>';  
-fastcgi_param AWS_SECRET_ACCESS_KEY '<AWS_SECRET_ACCESS_KEY>';
-
-fastcgi_param SWIFTYPE_ID '<SWIFTYPE_ID>';
-
-fastcgi_param DB_NAME '<DB_NAME>';
-fastcgi_param DB_USER '<DB_USER>';
-fastcgi_param DB_PASSWORD '<DB_PASSWORD>';
-fastcgi_param DB_HOST '<DB_HOST>';
-
 # Tell proxied WordPress that https is on to avoid wp-admin loops
 fastcgi_param HTTPS <HTTPS>;

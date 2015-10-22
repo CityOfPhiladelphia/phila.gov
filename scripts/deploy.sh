@@ -17,6 +17,9 @@ g/expose_php/s/On/Off
 w
 EOF
 
+echo 'Writing wp-config.php'
+scripts/wp-config.sh
+
 echo 'Reloading php-fpm'
 # https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1242376
 sudo kill -USR2 `cat /var/run/php5-fpm.pid`
