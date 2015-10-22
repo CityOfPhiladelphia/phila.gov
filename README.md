@@ -31,6 +31,16 @@ Then install php components with composer:
 $ composer install
 ```
 
+Then set environment variables and generate `wp-config.php`:
+```
+$ export WP_SITEURL=http://localhost:1234
+$ export WP_HOME=http://localhost:1234
+$ export AWS_ACCESS_KEY_ID=<aws_access_key_id>
+$ export AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
+$ export SWIFTYPE_ENGINE=<swiftype_engine>
+$ scripts/wp-config.sh
+```
+
 Import configuration and fixture data:
 ```
 $ wp db import
