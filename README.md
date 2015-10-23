@@ -35,6 +35,8 @@ Then set environment variables and generate `wp-config.php`:
 ```
 $ export WP_SITEURL=http://localhost:1234
 $ export WP_HOME=http://localhost:1234
+$ export DB_NAME=wp
+$ export DB_USER=root
 $ export AWS_ACCESS_KEY_ID=<aws_access_key_id>
 $ export AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
 $ export SWIFTYPE_ENGINE=<swiftype_engine>
