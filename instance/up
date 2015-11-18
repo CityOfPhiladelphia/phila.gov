@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Pull in variables from .env
+source .env
+
+# Easy reference for directory containing script
+dir=`dirname "$0"`
+
+aws ec2 run-instances --user-data "file://$dir/user-data.sh" --key-name $KEYNAME \
+--instance-type t2.micro --associate-public-ip-address --image-id $AMI \
+--subnet-id $SUBNET
+
+echo $WP_SITEURL
+
+ssh target "cat > .ssh/environment.txt" <<EOF
+APP_ROOT=/home/ubuntu/phila.gov
+WP_SITEURL=$WP_SITEURL
+WP_HOME=$WP_HOME
+EOF
