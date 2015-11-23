@@ -4,7 +4,8 @@
 source .env
 
 if [ "$PHILA_INSTANCE" ]; then
-  read -p "PHILA_INSTANCE=$PHILA_INSTANCE already set. Spin up new instance and replace reference? (y/n) " ref_replace
+  echo "Existing reference found: PHILA_INSTANCE=$PHILA_INSTANCE"
+  read -p "Spin up new instance and replace reference? (Enter \"y\" to proceed.) " ref_replace
   [ ! "$ref_replace" = "y" ] && exit 0
 fi
 
