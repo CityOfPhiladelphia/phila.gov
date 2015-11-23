@@ -9,7 +9,7 @@
     "wpackagist-plugin/amazon-s3-and-cloudfront": "0.9.6",
     "wpackagist-plugin/amazon-web-services": "0.3.4",
     "wpackagist-plugin/easy-wp-smtp": "1.2.1",
-    "wpackagist-plugin/google-calendar-events": "2.4.0",
+    "wpackagist-plugin/google-calendar-events": "3.0.5",
     "wpackagist-plugin/media-library-assistant": "2.15",
     "wpackagist-plugin/meta-box": "4.5.7",
     "wpackagist-plugin/nginx-helper": "1.9.6",
