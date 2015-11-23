@@ -26,34 +26,4 @@ g/PHILA_INSTANCE/s/=.*/=$PHILA_INSTANCE
 w
 EOF
 
-echo "Waiting for instance $PHILA_INSTANCE to come online. This may take a few minutes."
-while true; do
-  sleep 5
-  echo -n "."
-  reachability=`aws ec2 describe-instance-status --instance-id=$PHILA_INSTANCE | grep reachability | head -n1 | cut -f3`
-  [ "$reachability" = "passed" ] && break
-done
-echo
-
-echo "Setting up ssh access for $PHILA_INSTANCE."
-ip=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f15`
-
-ssh-keyscan $ip >> .ssh/known_hosts 2> /dev/null
-
-cat >> .ssh/config <<EOF
-Host $PHILA_INSTANCE
-    User ubuntu
-    HostName $ip
-    IdentityFile .ssh/$KEY_PAIR_NAME.pem
-    UserKnownHostsFile .ssh/known_hosts
-EOF
-
-domain=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f14`
-echo "Run instance/sync to begin syncing and deploying to https://$domain."
-
-echo "Setting instance environment variables."
-ssh -F .ssh/config $PHILA_INSTANCE "cat > .ssh/environment" <<EOF
-APP_ROOT=/home/ubuntu/phila.gov
-WP_SITEURL=$WP_SITEURL
-WP_HOME=$WP_HOME
-EOF
+$dir/prep
