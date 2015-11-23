@@ -16,10 +16,11 @@ echo "Getting domain."
 export PHILA_DOMAIN=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f14`
 
 echo "Setting PHILA_DOMAIN in .env."
-ed -s .env <<EOF
-g/PHILA_DOMAIN/s/=.*/=https:\/\/$PHILA_DOMAIN
+ed_out=`ed -s .env <<EOF
+g/PHILA_DOMAIN/s/=.*/=$PHILA_DOMAIN
 w
-EOF
+EOF`
+[ ! "$ed_out" ] && echo PHILA_DOMAIN=$PHILA_DOMAIN >> .env
 
 echo "Setting up ssh access."
 mkdir -p .ssh

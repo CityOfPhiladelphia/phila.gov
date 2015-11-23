@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#set -x
+source .env
+[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
 
 # Easy reference for directory containing script
 dir=`dirname "$0"`

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#set -x
-
 # Pull in variables from .env
 source .env
+
+[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
 
 echo "Syncing environment variables."
 ssh -F .ssh/config $PHILA_INSTANCE "cat > .ssh/environment" <<EOF

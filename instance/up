@@ -21,9 +21,10 @@ export PHILA_INSTANCE=`aws ec2 run-instances --user-data $user_data --key-name $
 grep '^INSTANCES' | cut -f8`
 
 echo "Setting PHILA_INSTANCE in .env."
-ed -s .env <<EOF
+ed_out=`ed -s .env <<EOF
 g/PHILA_INSTANCE/s/=.*/=$PHILA_INSTANCE
 w
-EOF
+EOF`
+[ ! "$ed_out" ] && echo PHILA_INSTANCE=$PHILA_INSTANCE >> .env
 
 $dir/prep

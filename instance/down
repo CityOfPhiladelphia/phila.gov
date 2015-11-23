@@ -13,3 +13,10 @@ else
 fi
 
 aws ec2 terminate-instances --instance-id=$PHILA_INSTANCE
+
+echo "Nulling out PHILA_INSTANCE."
+export PHILA_INSTANCE=
+ed -s .env <<EOF
+g/PHILA_INSTANCE/s/=.*/=$PHILA_INSTANCE
+w
+EOF
