@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Pull in variables from .env
+source .env
+
+echo "Waiting for instance $PHILA_INSTANCE to come online. This may take a few minutes."
+while true; do
+  sleep 5
+  echo -n "."
+  reachability=`aws ec2 describe-instance-status --instance-id=$PHILA_INSTANCE | grep reachability | head -n1 | cut -f3`
+  [ "$reachability" = "passed" ] && break
+done
+echo
+
+echo "Getting details."
+details=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES'`
+domain=`echo $details | cut -d' ' -f13`
+ip=`echo $details | cut -d' ' -f14`
+
+echo "Setting WP_SITEURL and WP_HOME to instance domain."
+export WP_SITEURL=$domain
+export WP_HOME=$domain
+ed -s .env <<EOF
+g/WP_SITEURL/s/=.*/=https:\/\/$domain
+g/WP_HOME/s/=.*/=https:\/\/$domain
+w
+EOF
+
+echo "Setting up ssh access."
+mkdir -p .ssh
+ssh-keyscan $ip >> .ssh/known_hosts 2> /dev/null
+
+cat >> .ssh/config <<EOF
+Host $PHILA_INSTANCE
+    User ubuntu
+    HostName $ip
+    IdentityFile .ssh/$KEY_PAIR_NAME.pem
+    UserKnownHostsFile .ssh/known_hosts
+EOF
+
+echo "Run instance/sync to begin syncing and deploying to https://$domain."

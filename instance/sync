@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#set -x
+
+# Easy reference for directory containing script
+dir=`dirname "$0"`
+
+echo "Monitoring files and deploying on changes."
+$dir/deploy
+fswatch -rdo -l5 --event Created --event Updated --event Removed . | while read num; do
+  $dir/deploy
+done
