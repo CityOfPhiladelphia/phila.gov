@@ -1,1 +1,3 @@
 path: wp
+skip-plugins:
+  - google-calendar-events
