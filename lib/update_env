@@ -1,0 +1,12 @@
+update_env () {
+  echo "Setting $1 in .env to \"$2\"."
+
+  # Replace value if var in file
+  ed_out=`ed -s .env <<EOF
+g/$1/s/=.*/=$2
+w
+EOF`
+
+  # If the var wasn't already in the file add it
+  [ ! "$ed_out" ] && echo $1=$2 >> .env
+}
