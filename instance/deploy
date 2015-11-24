@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Pull in variables from .env
+source .env
+
+[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
+
+echo "Syncing environment variables."
+ssh -F .ssh/config $PHILA_INSTANCE "cat > .ssh/environment" <<EOF
+APP_ROOT=/home/ubuntu/phila.gov
+WP_SITEURL=$PHILA_DOMAIN
+WP_HOME=$PHILA_DOMAIN
+WP_AUTH_KEY=$WP_AUTH_KEY
+WP_SECURE_AUTH_KEY=$WP_SECURE_AUTH_KEY
+WP_LOGGED_IN_KEY=$WP_LOGGED_IN_KEY
+WP_NONCE_KEY=$WP_NONCE_KEY
+WP_AUTH_SALT=$WP_AUTH_SALT
+WP_SECURE_AUTH_SALT=$WP_SECURE_AUTH_SALT
+WP_LOGGED_IN_SALT=$WP_LOGGED_IN_SALT
+WP_NONCE_SALT=$WP_NONCE_SALT
+AWS_ID=$AWS_ID
+AWS_SECRET=$AWS_SECRET
+S3_BUCKET=$S3_BUCKET
+SWIFTYPE_ENGINE=$SWIFTYPE_ENGINE
+COMPOSER_URL=$COMPOSER_URL
+DB_NAME=$DB_NAME
+DB_USER=$DB_USER
+DB_PASS=$DB_PASS
+DB_HOST=$DB_HOST
+HTTPS=$HTTPS
+ROBOTS_DISALLOW=$ROBOTS_DISALLOW
+EOF
+
+echo "Syncing files."
+rsync -e 'ssh -F .ssh/config' -rzp --delete --exclude=".*" --delete-excluded ./ $PHILA_INSTANCE:phila.gov
+
+echo "Running deploy script."
+ssh -F .ssh/config $PHILA_INSTANCE 'cd phila.gov && scripts/deploy.sh'

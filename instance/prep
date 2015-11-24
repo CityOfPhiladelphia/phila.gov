@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Pull in variables from .env
+source .env
+
+echo "Waiting for instance $PHILA_INSTANCE to come online. This may take a few minutes."
+while true; do
+  sleep 5
+  echo -n "."
+  reachability=`aws ec2 describe-instance-status --instance-id=$PHILA_INSTANCE | grep reachability | head -n1 | cut -f3`
+  [ "$reachability" = "passed" ] && break
+done
+echo
+
+echo "Getting domain."
+export PHILA_DOMAIN=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f14`
+
+echo "Setting PHILA_DOMAIN in .env."
+ed_out=`ed -s .env <<EOF
+g/PHILA_DOMAIN/s/=.*/=$PHILA_DOMAIN
+w
+EOF`
+[ ! "$ed_out" ] && echo PHILA_DOMAIN=$PHILA_DOMAIN >> .env
+
+echo "Setting up ssh access."
+mkdir -p .ssh
+ssh-keyscan $PHILA_DOMAIN >> .ssh/known_hosts 2> /dev/null
+
+cat >> .ssh/config <<EOF
+Host $PHILA_INSTANCE
+    User ubuntu
+    HostName $PHILA_DOMAIN
+    IdentityFile .ssh/$KEY_PAIR_NAME.pem
+    UserKnownHostsFile .ssh/known_hosts
+EOF
+
+echo "Run instance/sync to begin syncing and deploying to https://$PHILA_DOMAIN."
