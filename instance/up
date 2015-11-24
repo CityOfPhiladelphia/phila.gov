@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Pull in variables from .env
-source .env
+. lib/update_env
+. .env
 
 if [ "$PHILA_INSTANCE" ]; then
   echo "Existing reference found: PHILA_INSTANCE=$PHILA_INSTANCE"
@@ -9,22 +9,14 @@ if [ "$PHILA_INSTANCE" ]; then
   [ ! "$ref_replace" = "y" ] && exit 0
 fi
 
-# Easy reference for directory containing script
-dir=`dirname "$0"`
-
-user_data="file://$dir/user-data.sh"
-[ "$PHILA_ENV" = "prod" ] && user_data="file://$dir/user-data-prod.sh"
+user_data="file://instance/user-data.sh"
+[ "$PHILA_ENV" = "prod" ] && user_data="file://instance/user-data-prod.sh"
 
 echo "Provisioning instance."
-export PHILA_INSTANCE=`aws ec2 run-instances --user-data $user_data --key-name $KEY_PAIR_NAME \
+PHILA_INSTANCE=`aws ec2 run-instances --user-data $user_data --key-name $KEY_PAIR_NAME \
 --instance-type t2.micro --associate-public-ip-address --image-id $AMI --subnet-id $SUBNET | \
 grep '^INSTANCES' | cut -f8`
 
-echo "Setting PHILA_INSTANCE in .env."
-ed_out=`ed -s .env <<EOF
-g/PHILA_INSTANCE/s/=.*/=$PHILA_INSTANCE
-w
-EOF`
-[ ! "$ed_out" ] && echo PHILA_INSTANCE=$PHILA_INSTANCE >> .env
+update_env 'PHILA_INSTANCE' $PHILA_INSTANCE
 
-$dir/prep
+instance/prep

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Pull in variables from .env
-source .env
+. lib/update_env
+. .env
 
 echo "Waiting for instance $PHILA_INSTANCE to come online. This may take a few minutes."
 while true; do
@@ -13,14 +13,9 @@ done
 echo
 
 echo "Getting domain."
-export PHILA_DOMAIN=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f14`
+PHILA_DOMAIN=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f14`
 
-echo "Setting PHILA_DOMAIN in .env."
-ed_out=`ed -s .env <<EOF
-g/PHILA_DOMAIN/s/=.*/=$PHILA_DOMAIN
-w
-EOF`
-[ ! "$ed_out" ] && echo PHILA_DOMAIN=$PHILA_DOMAIN >> .env
+update_env 'PHILA_DOMAIN' $PHILA_DOMAIN
 
 echo "Setting up ssh access."
 mkdir -p .ssh

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Pull in variables from .env
-source .env
+. .env
 
 [ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Pull in variables from .env
-source .env
+. .env
 
 ssh -F .ssh/config $PHILA_INSTANCE

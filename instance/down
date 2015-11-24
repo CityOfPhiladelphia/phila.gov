@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Pull in variables from .env
-source .env
+. lib/update_env
+. .env
 
 if [ "$PHILA_INSTANCE" ]; then
   echo "Reference found: PHILA_INSTANCE=$PHILA_INSTANCE"
@@ -14,9 +14,4 @@ fi
 
 aws ec2 terminate-instances --instance-id=$PHILA_INSTANCE
 
-echo "Nulling out PHILA_INSTANCE."
-export PHILA_INSTANCE=
-ed -s .env <<EOF
-g/PHILA_INSTANCE/s/=.*/=$PHILA_INSTANCE
-w
-EOF
+update_env 'PHILA_INSTANCE' ''
