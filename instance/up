@@ -17,6 +17,9 @@ PHILA_INSTANCE=`aws ec2 run-instances --user-data $user_data --key-name $KEY_PAI
 --instance-type t2.micro --associate-public-ip-address --image-id $AMI --subnet-id $SUBNET | \
 grep '^INSTANCES' | cut -f8`
 
+echo "Tagging instance."
+aws ec2 create-tags --resources $PHILA_INSTANCE --tags Key=Name,Value=phila.gov-test
+
 update_env 'PHILA_INSTANCE' $PHILA_INSTANCE
 
 instance/prep
