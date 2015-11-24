@@ -29,4 +29,10 @@ Host $PHILA_INSTANCE
     UserKnownHostsFile .ssh/known_hosts
 EOF
 
+echo "Generating self-signed SSL certificate."
+ssh -F .ssh/config $PHILA_INSTANCE "sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /etc/ssl/private/self-signed.key \
+  -out /etc/ssl/certs/self-signed.crt \
+  -subj \"/C=US/ST=Pennsylvania/L=Philadelphia/O=City of Philadelphia/OU=Office of Innovation and Technology/CN=$PHILA_DOMAIN\""
+
 echo "Run instance/sync to begin syncing and deploying to https://$PHILA_DOMAIN."
