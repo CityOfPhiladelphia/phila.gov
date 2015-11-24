@@ -3,6 +3,8 @@
 # Environment variables needed by this script should be in
 # /home/ubuntu/.ssh/environment on the target machine.
 
+. lib/mo
+
 set -e
 
 echo 'Running composer install'
@@ -40,8 +42,8 @@ shopt -s globstar
 for f in nginx/**; do
   [ ! -f "$f" ] && continue
   sudo mkdir -p `dirname "/etc/$f"`
-  # Replace <ENV_VARS> in files and place them in /etc/nginx
-  perl -X -p -i -e 's/<(\w+)>/defined $ENV{$1} ? $ENV{$1} : $&/eg' < "$f" | sudo tee "/etc/$f" > /dev/null
+  # Render templates with mo
+  mo "$f" | sudo tee "/etc/$f" > /dev/null
 done
 
 echo 'Testing nginx config'

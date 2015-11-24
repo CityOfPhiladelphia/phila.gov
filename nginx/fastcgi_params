@@ -23,4 +23,4 @@ fastcgi_param   SERVER_NAME             $server_name;
 fastcgi_param   REDIRECT_STATUS         200;
 
 # Tell proxied WordPress that https is on to avoid wp-admin loops
-fastcgi_param HTTPS <HTTPS>;
+fastcgi_param HTTPS {{HTTPS}};
