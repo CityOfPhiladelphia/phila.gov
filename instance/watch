@@ -1,0 +1,11 @@
+#!/bin/bash
+
+. .env
+
+[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
+
+echo "Syncing and deploying on file changes."
+fswatch -rdo --event Created --event Updated --event Removed . | while read num; do
+  instance/sync
+  instance/deploy
+done

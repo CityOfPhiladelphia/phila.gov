@@ -1,0 +1,20 @@
+#!/bin/bash
+
+. lib/update_env
+. .env
+
+[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
+
+echo "Getting domain."
+PHILA_DOMAIN=`aws ec2 describe-instances --instance-id=$PHILA_INSTANCE | grep '^INSTANCES' | cut -f14`
+update_env 'PHILA_DOMAIN' $PHILA_DOMAIN
+
+echo "Setting up ssh access."
+ssh-keyscan $PHILA_DOMAIN >> .ssh/known_hosts 2> /dev/null
+cat >> .ssh/config <<EOF
+Host $PHILA_INSTANCE
+    User ubuntu
+    HostName $PHILA_DOMAIN
+    IdentityFile .ssh/$KEY_PAIR.pem
+    UserKnownHostsFile .ssh/known_hosts
+EOF

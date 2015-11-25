@@ -17,24 +17,25 @@ define('NONCE_SALT',       '$WP_NONCE_SALT');
 EOF
 fi
 
-wp core config --dbname=$DB_NAME --dbuser=$DB_USER ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} --skip-check $SKIP_SALTS --extra-php <<PHP
+wp core config --dbname=${DB_NAME:-'wp'} --dbuser=${DB_USER:-'root'} ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} --skip-check $SKIP_SALTS --extra-php <<PHP
 $SALTS
 
 /** For Composer-driven autoload. See http://composer.rarst.net/recipe/site-stack */
 require __DIR__ . '/vendor/autoload.php';
 
 /** WP_SITEURL overrides DB to set WP core address */
-define('WP_SITEURL', '$WP_SITEURL');
+define('WP_SITEURL', 'https://$PHILA_DOMAIN');
 
 /** WP_HOME overrides DB to set public site address */
-define('WP_HOME', '$WP_HOME');
+define('WP_HOME', 'https://$PHILA_DOMAIN');
 
 /** Directory splitting for Composer */
 define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
 
 /** For AWS and S3 usage */
-define('AWS_ACCESS_KEY_ID', '$AWS_ACCESS_KEY_ID');
-define('AWS_SECRET_ACCESS_KEY', '$AWS_SECRET_ACCESS_KEY');
+define('AWS_ACCESS_KEY_ID', '$AWS_ID');
+define('AWS_SECRET_ACCESS_KEY', '$AWS_SECRET');
+define('AS3CF_BUCKET', '$S3_BUCKET');
 
 /** For Swiftype search */
 define('SWIFTYPE_ENGINE', '$SWIFTYPE_ENGINE');
