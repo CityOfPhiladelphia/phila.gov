@@ -82,3 +82,14 @@ The following happens when you `vagrant up`:
 5. That push will trigger a build at https://travis-ci.org/CityOfPhiladelphia/phila.gov, which will in turn trigger a staging deploy.
 6. Check out the site at the staging server.
 7. If all looks good, create a pull request from staging to master. Once the PR has been accepted and merged, a production deploy will be triggered.
+
+
+## Using a remote instance
+
+1. Install aws cli
+2. Install fswatch
+3. Create .env file with these vars:
+  - AMI=`ID for the AMI to use for the instance`
+  - SUBNET=`ID for the VPC subnet the instance should be in`
+  - KEY_PAIR=`name of the key pair in AWS to use for the instance`
+4. Save private key as .ssh/$KEY_PAIR.pem in this repo's directory
