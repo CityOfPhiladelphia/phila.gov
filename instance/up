@@ -9,17 +9,28 @@ if [ "$PHILA_INSTANCE" ]; then
   [ ! "$ref_replace" = "y" ] && exit 0
 fi
 
-user_data="file://instance/user-data.sh"
-[ "$PHILA_ENV" = "prod" ] && user_data="file://instance/user-data-prod.sh"
-
 echo "Provisioning instance."
-PHILA_INSTANCE=`aws ec2 run-instances --user-data $user_data --key-name $KEY_PAIR_NAME \
---instance-type t2.micro --associate-public-ip-address --image-id $AMI --subnet-id $SUBNET | \
-grep '^INSTANCES' | cut -f8`
+PHILA_INSTANCE=`aws ec2 run-instances --key-name $KEY_PAIR --instance-type t2.micro \
+  --associate-public-ip-address --image-id $AMI --subnet-id $SUBNET | \
+  grep '^INSTANCES' | cut -f8`
 
 echo "Tagging instance."
 aws ec2 create-tags --resources $PHILA_INSTANCE --tags Key=Name,Value=phila.gov-test
 
 update_env 'PHILA_INSTANCE' $PHILA_INSTANCE
 
+echo "Waiting for instance $PHILA_INSTANCE to come online. This may take a few minutes."
+while true; do
+  sleep 5
+  echo -n "."
+  reachability=`aws ec2 describe-instance-status --instance-id=$PHILA_INSTANCE | grep reachability | head -n1 | cut -f3`
+  [ "$reachability" = "passed" ] && break
+done
+echo
+
+instance/host
+instance/sync
 instance/prep
+instance/deploy
+
+echo "Run instance/watch to begin syncing and deploying to https://$PHILA_DOMAIN."

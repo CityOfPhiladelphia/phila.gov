@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Environment variables needed by this script should be in
-# /home/ubuntu/.ssh/environment on the target machine.
-
 . lib/mo
 
 set -e
@@ -12,7 +9,7 @@ composer config -g repositories.private composer $COMPOSER_URL
 composer install
 
 echo 'Modifying php.ini'
-sudo ed /etc/php5/fpm/php.ini <<'EOF'
+sudo ed -s /etc/php5/fpm/php.ini <<'EOF'
 g/post_max_size/s/8/100
 g/upload_max_filesize/s/2/100
 g/expose_php/s/On/Off
@@ -34,15 +31,15 @@ echo 'Giving web server write access to uploads'
 mkdir -p wp-content/uploads
 sudo chmod 777 wp-content/uploads
 
-
-# Render nginx confs in /etc with env vars
 echo 'Rendering nginx confs'
+# Render nginx confs into /etc with mo
 sudo rm -rf /etc/nginx
 shopt -s globstar
+# Defaults
+[ ! "$ROBOTS_DISALLOW" ] && export ROBOTS_DISALLOW=/
 for f in nginx/**; do
   [ ! -f "$f" ] && continue
   sudo mkdir -p `dirname "/etc/$f"`
-  # Render templates with mo
   mo "$f" | sudo tee "/etc/$f" > /dev/null
 done
 
