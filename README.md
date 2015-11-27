@@ -84,7 +84,7 @@ The following happens when you `vagrant up`:
 7. If all looks good, create a pull request from staging to master. Once the PR has been accepted and merged, a production deploy will be triggered.
 
 
-## Using a remote instance
+## Running a remote test instance
 
 1. Install aws cli
 2. Install fswatch
@@ -92,4 +92,12 @@ The following happens when you `vagrant up`:
   - AMI=`ID for the AMI to use for the instance`
   - SUBNET=`ID for the VPC subnet the instance should be in`
   - KEY_PAIR=`name of the key pair in AWS to use for the instance`
-4. Save private key as .ssh/$KEY_PAIR.pem in this repo's directory
+  - PHILA_TEST=true
+  - PHILA_DB_BUCKET=`S3 bucket where we keep DB dumps`
+  - PHILA_MEDIA_BUCKET=`S3 bucket where instance media is stored`
+  - AWS_ID=`AWS access key ID for the instance to use`
+  - AWS_SECRET=`AWS secret access key for the instance to use`
+  - SWIFTYPE_ENGINE=`Swiftype engine ID`
+  - COMPOSER_URL=`URL for our Satis repository`
+4. Save private key as .ssh/$KEY_PAIR.pem in this repo
+5. Run `instance/up`
