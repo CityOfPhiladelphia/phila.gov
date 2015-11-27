@@ -1,5 +1,5 @@
 update_env () {
-  echo "Setting $1 in .env to \"$2\"."
+  echo "Setting $1 in .env to $2"
 
   # Replace value if var in file
   ed_out=`ed -s .env <<EOF
