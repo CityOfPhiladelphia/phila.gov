@@ -4,5 +4,7 @@
 
 [ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
 
-echo "Running deploy script."
+echo "Running deploy script"
 ssh -F .ssh/config $PHILA_INSTANCE 'cd phila.gov && scripts/deploy.sh'
+
+echo "Deployed to https://$PHILA_DOMAIN"

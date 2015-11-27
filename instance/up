@@ -31,6 +31,7 @@ echo
 instance/host
 instance/sync
 instance/prep
+instance/db
 instance/deploy
 
-echo "Run instance/watch to begin syncing and deploying to https://$PHILA_DOMAIN."
+echo "Sync and deploy on changes with instance/watch"

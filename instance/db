@@ -2,6 +2,7 @@
 
 . .env
 
+echo 'Loading database dump into instance database'
 ssh -F .ssh/config $PHILA_INSTANCE 'mysql -uroot' <<EOF
 DROP DATABASE IF EXISTS wp;
 CREATE DATABASE wp;
