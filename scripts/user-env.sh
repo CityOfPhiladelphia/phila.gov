@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo 'Linking phila.gov/.env to .ssh/environment'
+echo 'Linking .joia/config to .ssh/environment'
 cd .ssh
-ln -s ../phila.gov/.env environment
+ln -fs ../phila.gov/.joia/config environment
 
 echo 'Permitting user env vars for ssh deploys'
 echo 'PermitUserEnvironment yes' >> /etc/ssh/sshd_config
