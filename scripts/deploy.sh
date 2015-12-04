@@ -4,10 +4,6 @@
 
 set -e
 
-echo 'Running composer install'
-composer config -g repositories.private composer $COMPOSER_URL
-composer install
-
 echo 'Modifying php.ini'
 sudo ed -s /etc/php5/fpm/php.ini <<'EOF'
 g/post_max_size/s/8/100
