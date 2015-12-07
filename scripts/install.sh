@@ -15,7 +15,13 @@ unzip -o awscli-bundle.zip
 ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 cd -
 
-echo "Configuring AWS CLI"
+echo "Generating SSL certificate"
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /etc/ssl/private/self-signed.key \
+  -out /etc/ssl/certs/self-signed.crt \
+  -subj "/C=US/ST=Pennsylvania/L=Philadelphia/O=City of Philadelphia/OU=Office of Innovation and Technology/CN=$JOIA_HOSTNAME"
+
+echo "Configuring AWS CLI to load DB from S3"
 mkdir -p ~/.aws
 cat > ~/.aws/config <<EOF
 [default]
@@ -25,10 +31,7 @@ output = text
 region = us-east-1
 EOF
 
-echo "Generating SSL certificate"
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-  -keyout /etc/ssl/private/self-signed.key \
-  -out /etc/ssl/certs/self-signed.crt \
-  -subj "/C=US/ST=Pennsylvania/L=Philadelphia/O=City of Philadelphia/OU=Office of Innovation and Technology/CN=$JOIA_HOSTNAME"
-
-`dirname "$0"`/db.sh
+cd phila.gov
+scripts/db.sh
+sudo -u ubuntu -E scripts/wp-config.sh
+cd -
