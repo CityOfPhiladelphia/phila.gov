@@ -4,7 +4,6 @@
 .ssh
 cookbooks
 auth.json
-composer.lock
 
 scripts/env
 scripts/temp.xml
