@@ -20,17 +20,11 @@ fi
 wp core config --dbname=${DB_NAME:-'wp'} --dbuser=${DB_USER:-'root'} ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} --skip-check $SKIP_SALTS --extra-php <<PHP
 $SALTS
 
-/** For Composer-driven autoload. See http://composer.rarst.net/recipe/site-stack */
-require __DIR__ . '/vendor/autoload.php';
-
 /** WP_SITEURL overrides DB to set WP core address */
 define('WP_SITEURL', 'https://$PHILA_DOMAIN');
 
 /** WP_HOME overrides DB to set public site address */
 define('WP_HOME', 'https://$PHILA_DOMAIN');
-
-/** Directory splitting for Composer */
-define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
 
 /** For AWS and S3 usage */
 define('AWS_ACCESS_KEY_ID', '$AWS_ID');
@@ -43,5 +37,3 @@ define('SWIFTYPE_ENGINE', '$SWIFTYPE_ENGINE');
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
-
-mv wp/wp-config.php .
