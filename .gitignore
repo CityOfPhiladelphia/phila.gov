@@ -4,6 +4,7 @@
 .ssh
 cookbooks
 auth.json
+wp/wp-config.php
 
 scripts/env
 scripts/temp.xml
