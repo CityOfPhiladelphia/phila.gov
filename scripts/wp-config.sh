@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo 'Writing wp-config.php'
+
 # Don't let any existing configs get in the way
 rm -f wp-config.php wp/wp-config.php
 
