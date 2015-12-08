@@ -1,0 +1,12 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for the taxonomy "edit-tags.php" page, adapted from wp-admin.css and given unique names
+ * to avoid conflicts.
+ */
+
+.column-attachments {
+	text-align: center;
+}
+
