@@ -1,0 +1,78 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Simple 301 Redirects"
+msgstr ""
+
+#. Short description.
+msgid "Simple 301 Redirects provides an easy method of redirecting requests to another page on your site or elsewhere on the web."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Simple 301 Redirects provides an easy method of redirecting requests to another page on your site or elsewhere on the web. It's especially handy when you migrate a site to WordPress and can't preserve your URL structure. By setting up 301 redirects from your old pages to your new pages, any incoming links will be seemlessly passed along, and their pagerank (or what-have-you) will be passed along with them."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Upload Simple 301 Redirects to the <code>/wp-content/plugins/</code> directory"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin through the 'Plugins' menu in WordPress"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Add redirects on the Settings &gt; 301 Redirects page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Security Updates - Special thanks to Ryan Hellyer!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Wildcard support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Delete functiontionality"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "On-page documentation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed deprecated function calls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated code to better match WordPress coding standards"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated handling of https protocol to prevent errors in certain server configurations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Better support for destinations that start with a leading slash instead of the full domain"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Sorry for the double update. I forgot to check for PHP4 compatibility. Many people are still using PHP4, apparently, so this update is to fix compatibility with these legacy systems."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for special characters in non-english URLs."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a case sensitivity bug."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated redirect method to send headers directly rather than using wp_redirect() because it was sending 302 codes on some servers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial Release"
+msgstr ""
