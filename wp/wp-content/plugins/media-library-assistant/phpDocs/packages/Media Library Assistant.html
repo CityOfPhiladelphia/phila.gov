@@ -1,0 +1,596 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » Media Library Assistant</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/Media%20Library%20Assistant.html" title="Media Library Assistant"><i class="icon-folder-open"></i>Media Library Assistant</a><ul class="nav nav-list nav-packages"><li>
+<span class="empty-package"><i class="icon-folder-close"></i>MLA</span><ul class="nav nav-list nav-packages"><li>
+<span class="empty-package"><i class="icon-folder-close"></i>Child</span><ul class="nav nav-list nav-packages"><li>
+<a href="../packages/Media%20Library%20Assistant.MLA.Child.Theme.html" title="Theme"><i class="icon-folder-open"></i>Theme</a><ul class="nav nav-list nav-packages"></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-function"></i> Functions</li>
+<li class="function  "><a href="#mla_name_conflict_reporting_action" title="mla_name_conflict_reporting_action :: Displays name conflict error messages at the top of the Dashboard"><span class="description">Displays name conflict error messages at the top of the Dashboard</span><pre>mla_name_conflict_reporting_action</pre></a></li>
+<li class="function  "><a href="#mla_plugin_loader_reporting_action" title="mla_plugin_loader_reporting_action :: Displays version conflict error messages at the top of the Dashboard"><span class="description">Displays version conflict error messages at the top of the Dashboard</span><pre>mla_plugin_loader_reporting_action</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#MNA_Pad_Counts_Walker" title="Class MNA_Pad_Counts_Walker adds accurate, padded attachment counts to taxonomy terms.">MNA_Pad_Counts_Walker</a></li>
+<li><a href="#MLAPDF" title="Class MLA (Media Library Assistant) PDF extracts legacy and XMP meta data from PDF files">MLAPDF</a></li>
+<li><a href="#MLAData" title="Class MLA (Media Library Assistant) Data provides database and template file access for MLA needs">MLAData</a></li>
+<li><a href="#MLAEdit" title="Class MLA (Media Library Assistant) Edit contains meta boxes for the Edit Media (advanced-form-edit.php) screen">MLAEdit</a></li>
+<li><a href="#MLA_Checklist_Walker" title="Class MLA (Media Library Assistant) Checklist Walker replaces term_id with slug in checklist output">MLA_Checklist_Walker</a></li>
+<li><a href="#MLAImageProcessor" title="Class MLA (Media Library Assistant) Image Processor provides PDF thumbnails
+for the [mla_gallery] mla_viewer
+and Media/Assistant thumbnail generator.">MLAImageProcessor</a></li>
+<li><a href="#MLAMutex" title='Class MLA (Media Library Assistant) Mutex provides a simple "mutual exclusion" semaphore
+for the [mla_gallery] mla_viewer=single option'>MLAMutex</a></li>
+<li><a href="#MLA_List_Table" title='Class MLA (Media Library Assistant) List Table implements the "Assistant" admin submenu'>MLA_List_Table</a></li>
+<li><a href="#MLA" title="Class MLA (Media Library Assistant) provides several enhancements to the handling
+of images and files held in the WordPress Media Library.">MLA</a></li>
+<li><a href="#MLAModal" title="Class MLA (Media Library Assistant) Modal contains enhancements for the WordPress 3.5+ Media Manager">MLAModal</a></li>
+<li><a href="#MLAMime" title="Class MLA (Media Library Assistant) MIME filters WordPress MIME Type functions and supports
+the Views and Uploads Settings tabs">MLAMime</a></li>
+<li><a href="#MLAObjects" title="Class MLA (Media Library Assistant) Objects defines and manages custom taxonomies for Attachment Categories and Tags">MLAObjects</a></li>
+<li><a href="#MLATextWidget" title="Class MLA (Media Library Assistant) Text Widget defines a shortcode-enabled version of the WordPress Text widget">MLATextWidget</a></li>
+<li><a href="#MLAOptions" title="Class MLA (Media Library Assistant) Options manages the plugin option settings
+and provides functions to get and put them from/to WordPress option variables">MLAOptions</a></li>
+<li><a href="#MLA_Polylang" title="Class MLA (Media Library Assistant) Polylang provides support for the
+Polylang Multilingual plugin">MLA_Polylang</a></li>
+<li><a href="#MLASettings" title="Class MLA (Media Library Assistant) Settings provides the settings page to edit the plugin option settings">MLASettings</a></li>
+<li><a href="#MLAShortcodes" title="Class MLA (Media Library Assistant) Shortcodes defines the shortcodes available to MLA users">MLAShortcodes</a></li>
+<li><a href="#MLA_Thumbnail" title="Class MLA (Media Library Assistant) Thumbnails provides support for
+Featured IMage generation">MLA_Thumbnail</a></li>
+<li><a href="#MLA_Upload_List_Table" title='Class MLA (Media Library Assistant) Upload List Table implements the "Upload" admin settings tab'>MLA_Upload_List_Table</a></li>
+<li><a href="#MLA_Upload_Optional_List_Table" title='Class MLA (Media Library Assistant) Upload Optional List Table implements the
+searchable database of exension/type associations for the "Uploads" admin settings tab'>MLA_Upload_Optional_List_Table</a></li>
+<li><a href="#MLA_View_List_Table" title='Class MLA (Media Library Assistant) View List Table implements the "Views" admin settings tab'>MLA_View_List_Table</a></li>
+<li><a href="#MLA_WPML" title="Class MLA (Media Library Assistant) WPML provides support for the WPML Multilingual CMS
+family of plugins, including WPML Media">MLA_WPML</a></li>
+<li><a href="#MLA_WPML_List_Table" title="Class MLA (Media Library Assistant) WPML List Table adds a reference to an MLA_WPML object">MLA_WPML_List_Table</a></li>
+<li><a href="#MLA_WPML_Table" title="Class MLA (Media Library Assistant) WPML Table provides support for the WPML Multilingual CMS
+family of plugins, including WPML Media, for an MLA_List_Table object.">MLA_WPML_Table</a></li>
+<li><a href="#MLATest" title="Class MLA (Media Library Assistant) Test provides basic run-time tests
+to ensure the plugin can run in the current WordPress envrionment.">MLATest</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#MLA_BACKUP_DIR" title="MLA_BACKUP_DIR :: "><span class="description">MLA_BACKUP_DIR</span><pre>MLA_BACKUP_DIR</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_LEVEL" title="MLA_DEBUG_LEVEL :: Activates debug options; can be set in wp-config.php"><span class="description">Activates debug options; can be set in wp-config.php</span><pre>MLA_DEBUG_LEVEL</pre></a></li>
+<li class="constant  "><a href="#MLA_OPTION_PREFIX" title="MLA_OPTION_PREFIX :: Gives a unique prefix for plugin options; can be set in wp-config.php"><span class="description">Gives a unique prefix for plugin options; can be set in wp-config.php</span><pre>MLA_OPTION_PREFIX</pre></a></li>
+<li class="constant  "><a href="#MLA_PLUGIN_BASENAME" title="MLA_PLUGIN_BASENAME :: Provides the plugin's directory name, relative to the plugins directory, without leading or trailing slashes."><span class="description">Provides the plugin's directory name, relative to the plugins directory, without leading or trailing slashes.</span><pre>MLA_PLUGIN_BASENAME</pre></a></li>
+<li class="constant  "><a href="#MLA_PLUGIN_PATH" title="MLA_PLUGIN_PATH :: Provides path information to the plugin root in file system format, including the trailing slash."><span class="description">Provides path information to the plugin root in file system format, including the trailing slash.</span><pre>MLA_PLUGIN_PATH</pre></a></li>
+<li class="constant  "><a href="#MLA_PLUGIN_URL" title="MLA_PLUGIN_URL :: Provides path information to the plugin root in URL format."><span class="description">Provides path information to the plugin root in URL format.</span><pre>MLA_PLUGIN_URL</pre></a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span>
+</li>
+<li class="active"><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></li>
+</ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a name="mla_name_conflict_reporting_action" id="mla_name_conflict_reporting_action"></a><div class="element clickable function  mla_name_conflict_reporting_action" data-toggle="collapse" data-target=".mla_name_conflict_reporting_action .collapse">
+<h2>Displays name conflict error messages at the top of the Dashboard</h2>
+<pre>mla_name_conflict_reporting_action() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_plugin_loader_reporting_action" id="mla_plugin_loader_reporting_action"></a><div class="element clickable function  mla_plugin_loader_reporting_action" data-toggle="collapse" data-target=".mla_plugin_loader_reporting_action .collapse">
+<h2>Displays version conflict error messages at the top of the Dashboard</h2>
+<pre>mla_plugin_loader_reporting_action() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.14</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="MLA" id="MLA"></a><div class="element ajax clickable class" href="../classes/MLA.html">
+<h1>MLA<a href="../classes/MLA.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) provides several enhancements to the handling
+of images and files held in the WordPress Media Library.</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA.html" class="more">« More »</a>
+</div>
+<a name="MLAData" id="MLAData"></a><div class="element ajax clickable class" href="../classes/MLAData.html">
+<h1>MLAData<a href="../classes/MLAData.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Data provides database and template file access for MLA needs</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAData.html" class="more">« More »</a>
+</div>
+<a name="MLAEdit" id="MLAEdit"></a><div class="element ajax clickable class" href="../classes/MLAEdit.html">
+<h1>MLAEdit<a href="../classes/MLAEdit.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Edit contains meta boxes for the Edit Media (advanced-form-edit.php) screen</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAEdit.html" class="more">« More »</a>
+</div>
+<a name="MLAImageProcessor" id="MLAImageProcessor"></a><div class="element ajax clickable class" href="../classes/MLAImageProcessor.html">
+<h1>MLAImageProcessor<a href="../classes/MLAImageProcessor.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Image Processor provides PDF thumbnails
+for the [mla_gallery] mla_viewer
+and Media/Assistant thumbnail generator.</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAImageProcessor.html" class="more">« More »</a>
+</div>
+<a name="MLAMime" id="MLAMime"></a><div class="element ajax clickable class" href="../classes/MLAMime.html">
+<h1>MLAMime<a href="../classes/MLAMime.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) MIME filters WordPress MIME Type functions and supports
+the Views and Uploads Settings tabs</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAMime.html" class="more">« More »</a>
+</div>
+<a name="MLAModal" id="MLAModal"></a><div class="element ajax clickable class" href="../classes/MLAModal.html">
+<h1>MLAModal<a href="../classes/MLAModal.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Modal contains enhancements for the WordPress 3.5+ Media Manager</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAModal.html" class="more">« More »</a>
+</div>
+<a name="MLAMutex" id="MLAMutex"></a><div class="element ajax clickable class" href="../classes/MLAMutex.html">
+<h1>MLAMutex<a href="../classes/MLAMutex.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Mutex provides a simple "mutual exclusion" semaphore
+for the [mla_gallery] mla_viewer=single option</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAMutex.html" class="more">« More »</a>
+</div>
+<a name="MLAObjects" id="MLAObjects"></a><div class="element ajax clickable class" href="../classes/MLAObjects.html">
+<h1>MLAObjects<a href="../classes/MLAObjects.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Objects defines and manages custom taxonomies for Attachment Categories and Tags</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAObjects.html" class="more">« More »</a>
+</div>
+<a name="MLAOptions" id="MLAOptions"></a><div class="element ajax clickable class" href="../classes/MLAOptions.html">
+<h1>MLAOptions<a href="../classes/MLAOptions.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Options manages the plugin option settings
+and provides functions to get and put them from/to WordPress option variables</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAOptions.html" class="more">« More »</a>
+</div>
+<a name="MLAPDF" id="MLAPDF"></a><div class="element ajax clickable class" href="../classes/MLAPDF.html">
+<h1>MLAPDF<a href="../classes/MLAPDF.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) PDF extracts legacy and XMP meta data from PDF files</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAPDF.html" class="more">« More »</a>
+</div>
+<a name="MLASettings" id="MLASettings"></a><div class="element ajax clickable class" href="../classes/MLASettings.html">
+<h1>MLASettings<a href="../classes/MLASettings.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Settings provides the settings page to edit the plugin option settings</p>
+<div class="details collapse"></div>
+<a href="../classes/MLASettings.html" class="more">« More »</a>
+</div>
+<a name="MLAShortcodes" id="MLAShortcodes"></a><div class="element ajax clickable class" href="../classes/MLAShortcodes.html">
+<h1>MLAShortcodes<a href="../classes/MLAShortcodes.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Shortcodes defines the shortcodes available to MLA users</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAShortcodes.html" class="more">« More »</a>
+</div>
+<a name="MLATest" id="MLATest"></a><div class="element ajax clickable class" href="../classes/MLATest.html">
+<h1>MLATest<a href="../classes/MLATest.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Test provides basic run-time tests
+to ensure the plugin can run in the current WordPress envrionment.</p>
+<div class="details collapse"></div>
+<a href="../classes/MLATest.html" class="more">« More »</a>
+</div>
+<a name="MLATextWidget" id="MLATextWidget"></a><div class="element ajax clickable class" href="../classes/MLATextWidget.html">
+<h1>MLATextWidget<a href="../classes/MLATextWidget.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Text Widget defines a shortcode-enabled version of the WordPress Text widget</p>
+<div class="details collapse"></div>
+<a href="../classes/MLATextWidget.html" class="more">« More »</a>
+</div>
+<a name="MLA_Checklist_Walker" id="MLA_Checklist_Walker"></a><div class="element ajax clickable class" href="../classes/MLA_Checklist_Walker.html">
+<h1>MLA_Checklist_Walker<a href="../classes/MLA_Checklist_Walker.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Checklist Walker replaces term_id with slug in checklist output</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_Checklist_Walker.html" class="more">« More »</a>
+</div>
+<a name="MLA_List_Table" id="MLA_List_Table"></a><div class="element ajax clickable class" href="../classes/MLA_List_Table.html">
+<h1>MLA_List_Table<a href="../classes/MLA_List_Table.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) List Table implements the "Assistant" admin submenu</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_List_Table.html" class="more">« More »</a>
+</div>
+<a name="MLA_Polylang" id="MLA_Polylang"></a><div class="element ajax clickable class" href="../classes/MLA_Polylang.html">
+<h1>MLA_Polylang<a href="../classes/MLA_Polylang.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Polylang provides support for the
+Polylang Multilingual plugin</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_Polylang.html" class="more">« More »</a>
+</div>
+<a name="MLA_Thumbnail" id="MLA_Thumbnail"></a><div class="element ajax clickable class" href="../classes/MLA_Thumbnail.html">
+<h1>MLA_Thumbnail<a href="../classes/MLA_Thumbnail.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Thumbnails provides support for
+Featured IMage generation</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_Thumbnail.html" class="more">« More »</a>
+</div>
+<a name="MLA_Upload_List_Table" id="MLA_Upload_List_Table"></a><div class="element ajax clickable class" href="../classes/MLA_Upload_List_Table.html">
+<h1>MLA_Upload_List_Table<a href="../classes/MLA_Upload_List_Table.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Upload List Table implements the "Upload" admin settings tab</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_Upload_List_Table.html" class="more">« More »</a>
+</div>
+<a name="MLA_Upload_Optional_List_Table" id="MLA_Upload_Optional_List_Table"></a><div class="element ajax clickable class" href="../classes/MLA_Upload_Optional_List_Table.html">
+<h1>MLA_Upload_Optional_List_Table<a href="../classes/MLA_Upload_Optional_List_Table.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Upload Optional List Table implements the
+searchable database of exension/type associations for the "Uploads" admin settings tab</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_Upload_Optional_List_Table.html" class="more">« More »</a>
+</div>
+<a name="MLA_View_List_Table" id="MLA_View_List_Table"></a><div class="element ajax clickable class" href="../classes/MLA_View_List_Table.html">
+<h1>MLA_View_List_Table<a href="../classes/MLA_View_List_Table.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) View List Table implements the "Views" admin settings tab</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_View_List_Table.html" class="more">« More »</a>
+</div>
+<a name="MLA_WPML" id="MLA_WPML"></a><div class="element ajax clickable class" href="../classes/MLA_WPML.html">
+<h1>MLA_WPML<a href="../classes/MLA_WPML.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) WPML provides support for the WPML Multilingual CMS
+family of plugins, including WPML Media</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_WPML.html" class="more">« More »</a>
+</div>
+<a name="MLA_WPML_List_Table" id="MLA_WPML_List_Table"></a><div class="element ajax clickable class" href="../classes/MLA_WPML_List_Table.html">
+<h1>MLA_WPML_List_Table<a href="../classes/MLA_WPML_List_Table.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) WPML List Table adds a reference to an MLA_WPML object</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_WPML_List_Table.html" class="more">« More »</a>
+</div>
+<a name="MLA_WPML_Table" id="MLA_WPML_Table"></a><div class="element ajax clickable class" href="../classes/MLA_WPML_Table.html">
+<h1>MLA_WPML_Table<a href="../classes/MLA_WPML_Table.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) WPML Table provides support for the WPML Multilingual CMS
+family of plugins, including WPML Media, for an MLA_List_Table object.</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_WPML_Table.html" class="more">« More »</a>
+</div>
+<a name="MNA_Pad_Counts_Walker" id="MNA_Pad_Counts_Walker"></a><div class="element ajax clickable class" href="../classes/MNA_Pad_Counts_Walker.html">
+<h1>MNA_Pad_Counts_Walker<a href="../classes/MNA_Pad_Counts_Walker.html">¶</a>
+</h1>
+<p class="short_description">Class MNA_Pad_Counts_Walker adds accurate, padded attachment counts to taxonomy terms.</p>
+<div class="details collapse"></div>
+<a href="../classes/MNA_Pad_Counts_Walker.html" class="more">« More »</a>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a name="MLA_BACKUP_DIR" id="MLA_BACKUP_DIR"> </a><div class="element clickable constant  MLA_BACKUP_DIR" data-toggle="collapse" data-target=".MLA_BACKUP_DIR .collapse">
+<h2>MLA_BACKUP_DIR</h2>
+<pre>MLA_BACKUP_DIR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEBUG_LEVEL" id="MLA_DEBUG_LEVEL"> </a><div class="element clickable constant  MLA_DEBUG_LEVEL" data-toggle="collapse" data-target=".MLA_DEBUG_LEVEL .collapse">
+<h2>Activates debug options; can be set in wp-config.php</h2>
+<pre>MLA_DEBUG_LEVEL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_OPTION_PREFIX" id="MLA_OPTION_PREFIX"> </a><div class="element clickable constant  MLA_OPTION_PREFIX" data-toggle="collapse" data-target=".MLA_OPTION_PREFIX .collapse">
+<h2>Gives a unique prefix for plugin options; can be set in wp-config.php</h2>
+<pre>MLA_OPTION_PREFIX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_PLUGIN_BASENAME" id="MLA_PLUGIN_BASENAME"> </a><div class="element clickable constant  MLA_PLUGIN_BASENAME" data-toggle="collapse" data-target=".MLA_PLUGIN_BASENAME .collapse">
+<h2>Provides the plugin's directory name, relative to the plugins directory, without leading or trailing slashes.</h2>
+<pre>MLA_PLUGIN_BASENAME </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_PLUGIN_PATH" id="MLA_PLUGIN_PATH"> </a><div class="element clickable constant  MLA_PLUGIN_PATH" data-toggle="collapse" data-target=".MLA_PLUGIN_PATH .collapse">
+<h2>Provides path information to the plugin root in file system format, including the trailing slash.</h2>
+<pre>MLA_PLUGIN_PATH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_PLUGIN_URL" id="MLA_PLUGIN_URL"> </a><div class="element clickable constant  MLA_PLUGIN_URL" data-toggle="collapse" data-target=".MLA_PLUGIN_URL .collapse">
+<h2>Provides path information to the plugin root in URL format.</h2>
+<pre>MLA_PLUGIN_URL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></li>
+<span class="divider">\</span><li class="active"><a href="../packages/Media%20Library%20Assistant.MLA.html">MLA</a></li>
+</ul>
+<div class="package-indent">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></li>
+<span class="divider">\</span><li><a href="../packages/Media%20Library%20Assistant.MLA.html">MLA</a></li>
+<span class="divider">\</span><li class="active"><a href="../packages/Media%20Library%20Assistant.MLA.Child.html">Child</a></li>
+</ul>
+<div class="package-indent">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></li>
+<span class="divider">\</span><li><a href="../packages/Media%20Library%20Assistant.MLA.html">MLA</a></li>
+<span class="divider">\</span><li><a href="../packages/Media%20Library%20Assistant.MLA.Child.html">Child</a></li>
+<span class="divider">\</span><li class="active"><a href="../packages/Media%20Library%20Assistant.MLA.Child.Theme.html">Theme</a></li>
+</ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a name="custom_taxonomy_dropdown" id="custom_taxonomy_dropdown"></a><div class="element clickable function  custom_taxonomy_dropdown" data-toggle="collapse" data-target=".custom_taxonomy_dropdown .collapse">
+<h2>Custom Taxonomy Dropdown Control</h2>
+<pre>custom_taxonomy_dropdown(string $taxonomy, string $orderby, string $order, string $limit, string $name, mixed $show_option_all, mixed $show_option_none) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$taxonomy</h4>
+<code>string</code><p>Taxonomy slug</p></div>
+<div class="subelement argument">
+<h4>$orderby</h4>
+<code>string</code><p>Order by field</p></div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>string</code><p>Sort order</p></div>
+<div class="subelement argument">
+<h4>$limit</h4>
+<code>string</code><p>Not used</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>HTML name= value</p>
+</div>
+<div class="subelement argument">
+<h4>$show_option_all</h4>
+<code>mixed</code><p>NULL/"Select All" label</p>
+</div>
+<div class="subelement argument">
+<h4>$show_option_none</h4>
+<code>mixed</code><p>NULL/"Select None" label</p>
+</div>
+</div></div>
+</div>
+<a name="custom_taxonomy_dropdown" id="custom_taxonomy_dropdown"></a><div class="element clickable function  custom_taxonomy_dropdown" data-toggle="collapse" data-target=".custom_taxonomy_dropdown .collapse">
+<h2>Custom Taxonomy Dropdown Control</h2>
+<pre>custom_taxonomy_dropdown(string $taxonomy, string $orderby, string $order, string $limit, string $name, mixed $show_option_all, mixed $show_option_none, integer $selected) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$taxonomy</h4>
+<code>string</code><p>Taxonomy slug</p></div>
+<div class="subelement argument">
+<h4>$orderby</h4>
+<code>string</code><p>Order by field</p></div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>string</code><p>Sort order</p></div>
+<div class="subelement argument">
+<h4>$limit</h4>
+<code>string</code><p>Not used</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>HTML name= value</p>
+</div>
+<div class="subelement argument">
+<h4>$show_option_all</h4>
+<code>mixed</code><p>NULL/"Select All" label</p>
+</div>
+<div class="subelement argument">
+<h4>$show_option_none</h4>
+<code>mixed</code><p>NULL/"Select None" label</p>
+</div>
+<div class="subelement argument">
+<h4>$selected</h4>
+<code>integer</code><p>Index of the inital selection</p></div>
+</div></div>
+</div>
+<a name="mla_after_setup_theme_action" id="mla_after_setup_theme_action"></a><div class="element clickable function  mla_after_setup_theme_action" data-toggle="collapse" data-target=".mla_after_setup_theme_action .collapse">
+<h2>Loads the text domain(s) for the mla-child-theme, from the WordPress language directory
+and/or from the theme's own directory.</h2>
+<pre>mla_after_setup_theme_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="mla_custom_terms_list" id="mla_custom_terms_list"></a><div class="element clickable function  mla_custom_terms_list" data-toggle="collapse" data-target=".mla_custom_terms_list .collapse">
+<h2>Generate a list of taxonomy- and term-specific links to the page of your choice,
+listing the terms assigned to a specific post or Media Library item.</h2>
+<pre>mla_custom_terms_list(integer $ID, array $attr) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ID</h4>
+<code>integer</code><p>ID of the post/page to generate terms for</p>
+</div>
+<div class="subelement argument">
+<h4>$attr</h4>
+<code>array</code><p>Attributes of the function: site_url, page_url, taxonomy</p></div>
+</div></div>
+</div>
+<a name="mla_insert_social_tags" id="mla_insert_social_tags"></a><div class="element clickable function  mla_insert_social_tags" data-toggle="collapse" data-target=".mla_insert_social_tags .collapse">
+<h2>Insert thumbnail image tags for Facebook, Twitter, etc.</h2>
+<pre>mla_insert_social_tags() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="mla_paginated_term_gallery" id="mla_paginated_term_gallery"></a><div class="element clickable function  mla_paginated_term_gallery" data-toggle="collapse" data-target=".mla_paginated_term_gallery .collapse">
+<h2>Generate a taxonomy- and term-specific [mla_gallery], limited by current_page and posts_per_page</h2>
+<pre>mla_paginated_term_gallery(array $attr) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This function uses $wpdb functions for efficiency.</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attr</h4>
+<code>array</code><p>Attributes of the function: page, taxonomy, term, post_mime_type, posts_per_page, current_page</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>number of posts matching taxonomy & term, before LIMIT. echoes HTML <h3>, <p> and <a> tags</div>
+</div></div>
+</div>
+<a name="mla_tag_gallery" id="mla_tag_gallery"></a><div class="element clickable function  mla_tag_gallery" data-toggle="collapse" data-target=".mla_tag_gallery .collapse">
+<h2>Generate a taxonomy- and term-specific [mla_gallery]</h2>
+<pre>mla_tag_gallery(array $attr) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attr</h4>
+<code>array</code><p>Attributes of the function: taxonomy, term</p></div>
+</div></div>
+</div>
+<a name="mla_taxonomy_terms_list" id="mla_taxonomy_terms_list"></a><div class="element clickable function  mla_taxonomy_terms_list" data-toggle="collapse" data-target=".mla_taxonomy_terms_list .collapse">
+<h2>Generate a list of taxonomy- and term-specific links to the page of your choice.</h2>
+<pre>mla_taxonomy_terms_list(array $attr) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Best used with the Collapse-O-Matic plugin, which uses the [expand] shortcode to
+display an "accordian-style" list.</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attr</h4>
+<code>array</code><p>Attributes of the function: taxonomy</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML <h3>, <p> and <a> tags</div>
+</div></div>
+</div>
+<a name="mla_wp_title_filter" id="mla_wp_title_filter"></a><div class="element clickable function  mla_wp_title_filter" data-toggle="collapse" data-target=".mla_wp_title_filter .collapse">
+<h2>Customize the &lt;title&gt; tag content for the Tag Gallery and Single Image pages</h2>
+<pre>mla_wp_title_filter(string $title, string $sep, string $seplocation) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$title</h4>
+<code>string</code><p>The default page title</p></div>
+<div class="subelement argument">
+<h4>$sep</h4>
+<code>string</code><p>How to separate the various items within the page title</p></div>
+<div class="subelement argument">
+<h4>$seplocation</h4>
+<code>string</code><p>Optional. Direction to display title, 'right'.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>updated title value</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>

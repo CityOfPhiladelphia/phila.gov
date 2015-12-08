@@ -1,0 +1,200 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for the Media Manager Modal Window,
+ * as well as the WordPress 4.0 Media Grid.
+ * Adapted from /wp-admin/css/edit.css and given unique names to avoid conflicts.
+ */
+
+.attachments-browser .media-toolbar {
+	overflow: visible;
+}
+
+.attachments-browser .media-toolbar .media-toolbar-secondary {
+	width: 50%;
+	max-width: 50%;
+}
+
+.attachments-browser .media-toolbar .media-toolbar-primary {
+	width: 50%;
+	max-width: 50%;
+}
+
+/** === Search Options */
+.mla-search-options {
+	list-style: none;
+	padding: 0;
+}
+
+.mla-search-options > li {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 0;
+}
+
+.mla-search-options > li:last-child { margin-right: 0; }
+
+/**
+ * Media Toolbar Controls
+*/
+.media-modal-content #mla-terms-search,
+.media-modal-content #mla-search-submit {
+	height: 26px;
+	line-height:normal;
+	margin-top: 11px;
+	position: static;
+	width:auto
+}
+
+.mode-grid.media-frame .media-toolbar .select-mode-toggle-button,
+.mode-grid.media-frame .media-toolbar input#mla-terms-search {
+	vertical-align:middle;
+}
+
+.mode-grid.media-frame .media-toolbar input#mla-media-search-input,
+.mode-grid.media-frame .media-toolbar input#mla-search-submit {
+	/* margin-top: 11px; */
+	position: static;
+	width:auto
+}
+
+/**
+ * Hide "Media Categories" meta box
+ */
+.attachment-compat .compat-item .compat-field-MLA-has-disabled-this-instance_metabox,
+.media-sidebar .compat-item .compat-field-MLA-has-disabled-this-instance_metabox {
+	display: none;
+}
+
+/**
+ * Checkbox-style taxonomy meta box
+ */
+
+.media-modal .media-toolbar {
+	right: 312px;
+}
+
+.attachments-browser .no-media {
+	margin-top: 135px;
+}
+
+.media-modal .attachments {
+	right: 312px;
+	top: 120px;
+}
+
+.media-modal .media-sidebar {
+	padding-left: 6px;
+	min-width: 290px;
+}
+
+/* Avoid "Media Categories" interference */
+.mla-hidden-children .wp-hidden-child {
+	display: none;
+}
+
+.attachment-compat .compat-item .mla-taxonomy-row .mla-taxonomy-field div.categorydiv,
+.media-sidebar .compat-item .mla-taxonomy-row .mla-taxonomy-field div.categorydiv {
+	margin-top: 0px;
+	padding-top: 6px;
+}
+
+.attachment-compat .compat-item .mla-taxonomy-row .mla-taxonomy-field div.tagsdiv,
+.media-sidebar .compat-item .mla-taxonomy-row .mla-taxonomy-field div.tagsdiv {
+	margin-top: 0px;
+	padding-top: 6px;
+}
+
+.attachment-compat .compat-item .mla-taxonomy-row td.field div.tabs-panel,
+.media-sidebar .compat-item .mla-taxonomy-row td.field div.tabs-panel {
+	min-height: 200px;
+	max-height: 200px;
+}
+
+.media-sidebar .compat-item .mla-taxonomy-row td.field div.tabs-panel input {
+	width: 16px;
+}
+
+/**
+ * Flat taxonomy meta box, from /wp-admin/css/edit.css "13.0 - Tags"
+ */
+
+.attachment-compat .compat-item .mla-taxonomy-row .mla-taxonomy-field div.ajaxtag .newtag,
+.media-sidebar .compat-item .mla-taxonomy-row .mla-taxonomy-field div.ajaxtag .newtag {
+	position: relative;
+}
+
+.attachment-compat .compat-item .mla-taxonomy-row .mla-taxonomy-field div.tagsdiv .newtag,
+.media-sidebar .compat-item .mla-taxonomy-row .mla-taxonomy-field div.tagsdiv .newtag {
+	margin-right: 4px;
+	width: 200px;
+}
+
+.attachment-compat .compat-item .mla-taxonomy-row .mla-taxonomy-field div.tagsdiv .tagadd,
+.media-sidebar .compat-item .mla-taxonomy-row .mla-taxonomy-field div.tagsdiv .tagadd {
+	width: auto;
+}
+
+.edit-attachment-frame input.mla-taxonomy-add-submit,
+.media-frame input.mla-taxonomy-add-submit {
+	font-size: 13px;
+	line-height: 16px;
+	height: 26px;
+	padding: 4px;
+	width: auto;
+}
+
+/* ntdelbutton in media grid */
+.edit-attachment-frame .tagchecklist span a {
+	position:static;
+	margin-left: 0px
+}
+
+/*
+ * /wp-includes/js/jquery/suggest.js tag auto-complete results
+ */
+.mla_ac_results {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	position: absolute;
+	z-index: 170000;
+	display: none;
+	border: 1px solid #808080;
+	background-color: #fff;
+}
+
+.mla_ac_results li {
+	padding: 2px 5px;
+	white-space: nowrap;
+	color: #101010;
+	text-align: left;
+}
+
+.mla_ac_over {
+	background-color: #f0f0b8;
+	cursor: pointer;
+}
+
+.mla_ac_match {
+	text-decoration: underline;
+}
+
+/** === INCLUDED BY ANTONIO === */
+
+/** For responsive control, use the following media queries */
+
+/* @media only screen and (max-width: 960px) {} */
+
+/*@media only screen and (max-width: 900px) {}*/
+
+/* Responsive on portrait and landscape */
+/*@media only screen and (max-width: 640px), screen and (max-height: 400px) {}*/
+
+/* Landscape specific header override */
+/*@media screen and (max-height: 400px) {}*/
+
+/*@media only screen and (max-width: 680px) {}*/
+
+/** === END INCLUDED BY ANTONIO === */

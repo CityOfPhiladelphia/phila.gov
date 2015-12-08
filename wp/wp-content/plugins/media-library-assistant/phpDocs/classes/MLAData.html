@@ -1,0 +1,1972 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAData</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#initialize" title="initialize :: Initialization function, similar to __construct()"><span class="description">Initialization function, similar to __construct()</span><pre>initialize()</pre></a></li>
+<li class="method public "><a href="#mla_IPTC_EXIF_error_handler" title="mla_IPTC_EXIF_error_handler :: Intercept IPTC and EXIF parse errors"><span class="description">Intercept IPTC and EXIF parse errors</span><pre>mla_IPTC_EXIF_error_handler()</pre></a></li>
+<li class="method public "><a href="#mla_apply_field_level_format" title="mla_apply_field_level_format :: Apply field-level format options to field-level content"><span class="description">Apply field-level format options to field-level content</span><pre>mla_apply_field_level_format()</pre></a></li>
+<li class="method public "><a href="#mla_attachment_array_fetch_references" title="mla_attachment_array_fetch_references :: Add Featured Image and inserted image/link references to an array of attachments"><span class="description">Add Featured Image and inserted image/link references to an array of attachments</span><pre>mla_attachment_array_fetch_references()</pre></a></li>
+<li class="method public "><a href="#mla_count_list_table_items" title="mla_count_list_table_items :: Get the total number of attachment posts"><span class="description">Get the total number of attachment posts</span><pre>mla_count_list_table_items()</pre></a></li>
+<li class="method public "><a href="#mla_exif_metadata_value" title="mla_exif_metadata_value :: Parse one EXIF metadata field"><span class="description">Parse one EXIF metadata field</span><pre>mla_exif_metadata_value()</pre></a></li>
+<li class="method public "><a href="#mla_expand_field_level_parameters" title="mla_expand_field_level_parameters :: Analyze a template, expanding Field-level Markup Substitution Parameters"><span class="description">Analyze a template, expanding Field-level Markup Substitution Parameters</span><pre>mla_expand_field_level_parameters()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_attachment_id3_metadata" title="mla_fetch_attachment_id3_metadata :: Fetch and filter ID3 metadata for an audio or video attachment"><span class="description">Fetch and filter ID3 metadata for an audio or video attachment</span><pre>mla_fetch_attachment_id3_metadata()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_attachment_image_metadata" title="mla_fetch_attachment_image_metadata :: Fetch and filter IPTC and EXIF, XMP or PDF metadata for an image attachment"><span class="description">Fetch and filter IPTC and EXIF, XMP or PDF metadata for an image attachment</span><pre>mla_fetch_attachment_image_metadata()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_attachment_metadata" title="mla_fetch_attachment_metadata :: Fetch and filter meta data for an attachment"><span class="description">Fetch and filter meta data for an attachment</span><pre>mla_fetch_attachment_metadata()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_attachment_parent_data" title="mla_fetch_attachment_parent_data :: Returns information about an attachment's parent, if found"><span class="description">Returns information about an attachment's parent, if found</span><pre>mla_fetch_attachment_parent_data()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_attachment_references" title="mla_fetch_attachment_references :: Find Featured Image and inserted image/link references to an attachment"><span class="description">Find Featured Image and inserted image/link references to an attachment</span><pre>mla_fetch_attachment_references()</pre></a></li>
+<li class="method public "><a href="#mla_find_array_element" title="mla_find_array_element :: Finds the value of a key in a possibly nested array structure"><span class="description">Finds the value of a key in a possibly nested array structure</span><pre>mla_find_array_element()</pre></a></li>
+<li class="method public "><a href="#mla_flush_mla_galleries" title="mla_flush_mla_galleries :: Invalidates the $mla_galleries or $galleries array and cached values"><span class="description">Invalidates the $mla_galleries or $galleries array and cached values</span><pre>mla_flush_mla_galleries()</pre></a></li>
+<li class="method public "><a href="#mla_get_attachment_by_id" title="mla_get_attachment_by_id :: Retrieve an Attachment array given a $post_id"><span class="description">Retrieve an Attachment array given a $post_id</span><pre>mla_get_attachment_by_id()</pre></a></li>
+<li class="method public "><a href="#mla_get_template_placeholders" title="mla_get_template_placeholders :: Analyze a template, returning an array of the placeholders it contains"><span class="description">Analyze a template, returning an array of the placeholders it contains</span><pre>mla_get_template_placeholders()</pre></a></li>
+<li class="method public "><a href="#mla_hex_dump" title="mla_hex_dump :: Format printable version of binary data"><span class="description">Format printable version of binary data</span><pre>mla_hex_dump()</pre></a></li>
+<li class="method public "><a href="#mla_id3_metadata_value" title="mla_id3_metadata_value :: Parse one ID3 (audio/visual) metadata field"><span class="description">Parse one ID3 (audio/visual) metadata field</span><pre>mla_id3_metadata_value()</pre></a></li>
+<li class="method public "><a href="#mla_iptc_metadata_value" title="mla_iptc_metadata_value :: Parse one IPTC metadata field"><span class="description">Parse one IPTC metadata field</span><pre>mla_iptc_metadata_value()</pre></a></li>
+<li class="method public "><a href="#mla_load_template" title="mla_load_template :: Load an HTML template from a file"><span class="description">Load an HTML template from a file</span><pre>mla_load_template()</pre></a></li>
+<li class="method public "><a href="#mla_parse_array_template" title="mla_parse_array_template :: Expand a template, replacing placeholders with their values"><span class="description">Expand a template, replacing placeholders with their values</span><pre>mla_parse_array_template()</pre></a></li>
+<li class="method public "><a href="#mla_parse_pdf_date" title="mla_parse_pdf_date :: Parse a PDF date string"><span class="description">Parse a PDF date string</span><pre>mla_parse_pdf_date()</pre></a></li>
+<li class="method public "><a href="#mla_parse_template" title="mla_parse_template :: Expand a template, replacing placeholders with their values"><span class="description">Expand a template, replacing placeholders with their values</span><pre>mla_parse_template()</pre></a></li>
+<li class="method public "><a href="#mla_parse_xmp_metadata" title="mla_parse_xmp_metadata :: Extract XMP meta data from a file"><span class="description">Extract XMP meta data from a file</span><pre>mla_parse_xmp_metadata()</pre></a></li>
+<li class="method public "><a href="#mla_pdf_metadata_value" title="mla_pdf_metadata_value :: Parse one PDF metadata field"><span class="description">Parse one PDF metadata field</span><pre>mla_pdf_metadata_value()</pre></a></li>
+<li class="method public "><a href="#mla_query_list_table_items" title="mla_query_list_table_items :: Retrieve attachment objects for list table display"><span class="description">Retrieve attachment objects for list table display</span><pre>mla_query_list_table_items()</pre></a></li>
+<li class="method public "><a href="#mla_query_media_modal_items" title="mla_query_media_modal_items :: Retrieve attachment objects for the WordPress Media Manager"><span class="description">Retrieve attachment objects for the WordPress Media Manager</span><pre>mla_query_media_modal_items()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_clauses_filter" title="mla_query_posts_clauses_filter :: Filters all clauses for shortcode queries, pre caching plugins"><span class="description">Filters all clauses for shortcode queries, pre caching plugins</span><pre>mla_query_posts_clauses_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_clauses_request_filter" title="mla_query_posts_clauses_request_filter :: Filters all clauses for shortcode queries, post caching plugins"><span class="description">Filters all clauses for shortcode queries, post caching plugins</span><pre>mla_query_posts_clauses_request_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_groupby_filter" title="mla_query_posts_groupby_filter :: Adds a GROUPBY clause, if required"><span class="description">Adds a GROUPBY clause, if required</span><pre>mla_query_posts_groupby_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_join_filter" title="mla_query_posts_join_filter :: Adds a JOIN clause, if required, to handle sorting/searching on custom fields or ALT Text"><span class="description">Adds a JOIN clause, if required, to handle sorting/searching on custom fields or ALT Text</span><pre>mla_query_posts_join_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_orderby_filter" title="mla_query_posts_orderby_filter :: Adds a ORDERBY clause, if required"><span class="description">Adds a ORDERBY clause, if required</span><pre>mla_query_posts_orderby_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_search_filter" title="mla_query_posts_search_filter :: Adds a keyword search to the WHERE clause, if required"><span class="description">Adds a keyword search to the WHERE clause, if required</span><pre>mla_query_posts_search_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_posts_where_filter" title="mla_query_posts_where_filter :: Adds/modifies the WHERE clause for meta values, LIKE patterns and detached items"><span class="description">Adds/modifies the WHERE clause for meta values, LIKE patterns and detached items</span><pre>mla_query_posts_where_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_relevanssi_admin_search_ok_filter" title="mla_query_relevanssi_admin_search_ok_filter :: Disable Relevanssi - A Better Search, v3.2 by Mikko Saari
+Defined as public because it's a filter."><span class="description">Disable Relevanssi - A Better Search, v3.2 by Mikko Saari
+Defined as public because it's a filter.</span><pre>mla_query_relevanssi_admin_search_ok_filter()</pre></a></li>
+<li class="method public "><a href="#mla_query_terms_clauses_filter" title="mla_query_terms_clauses_filter :: Filters all clauses for get_terms queries"><span class="description">Filters all clauses for get_terms queries</span><pre>mla_query_terms_clauses_filter()</pre></a></li>
+<li class="method public "><a href="#mla_save_post_action" title="mla_save_post_action :: Invalidates $mla_galleries and $galleries arrays and cached values after post, page or attachment updates"><span class="description">Invalidates $mla_galleries and $galleries arrays and cached values after post, page or attachment updates</span><pre>mla_save_post_action()</pre></a></li>
+<li class="method public "><a href="#mla_search_terms_tidy" title="mla_search_terms_tidy :: Replaces a WordPress function deprecated in v3.7"><span class="description">Replaces a WordPress function deprecated in v3.7</span><pre>mla_search_terms_tidy()</pre></a></li>
+<li class="method public "><a href="#mla_update_item_postmeta" title='mla_update_item_postmeta :: Update custom field and "meta:" data for a single attachment'><span class="description">Update custom field and "meta:" data for a single attachment</span><pre>mla_update_item_postmeta()</pre></a></li>
+<li class="method public "><a href="#mla_update_single_item" title='mla_update_single_item :: Update a single item; change the "post" data, taxonomy terms
+and meta data for a single attachment'><span class="description">Update a single item; change the "post" data, taxonomy terms
+and meta data for a single attachment</span><pre>mla_update_single_item()</pre></a></li>
+<li class="method public "><a href="#mla_update_wp_attachment_metadata" title='mla_update_wp_attachment_metadata :: Update "meta:" data for a single attachment'><span class="description">Update "meta:" data for a single attachment</span><pre>mla_update_wp_attachment_metadata()</pre></a></li>
+<li class="method public "><a href="#mla_xmp_metadata_value" title="mla_xmp_metadata_value :: Parse one XMP metadata field"><span class="description">Parse one XMP metadata field</span><pre>mla_xmp_metadata_value()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_bin_to_utf8" title="_bin_to_utf8 :: Replace SQL incorrect characters (0x80 - 0xFF) with their UTF-8 equivalents"><span class="description">Replace SQL incorrect characters (0x80 - 0xFF) with their UTF-8 equivalents</span><pre>_bin_to_utf8()</pre></a></li>
+<li class="method private "><a href="#_build_mla_galleries" title="_build_mla_galleries :: Builds the $mla_galleries or $galleries array"><span class="description">Builds the $mla_galleries or $galleries array</span><pre>_build_mla_galleries()</pre></a></li>
+<li class="method private "><a href="#_evaluate_template_array_node" title='_evaluate_template_array_node :: Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters'><span class="description">Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters</span><pre>_evaluate_template_array_node()</pre></a></li>
+<li class="method private "><a href="#_evaluate_template_node" title='_evaluate_template_node :: Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters'><span class="description">Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters</span><pre>_evaluate_template_node()</pre></a></li>
+<li class="method private "><a href="#_execute_list_table_query" title="_execute_list_table_query :: Add filters, run query, remove filters"><span class="description">Add filters, run query, remove filters</span><pre>_execute_list_table_query()</pre></a></li>
+<li class="method private "><a href="#_expand_field_level_template" title='_expand_field_level_template :: Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters'><span class="description">Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters</span><pre>_expand_field_level_template()</pre></a></li>
+<li class="method private "><a href="#_find_template_substring" title="_find_template_substring :: Find a complete template, balancing opening and closing delimiters"><span class="description">Find a complete template, balancing opening and closing delimiters</span><pre>_find_template_substring()</pre></a></li>
+<li class="method private "><a href="#_find_test_substring" title="_find_test_substring :: Find a complete (test) element, balancing opening and closing delimiters"><span class="description">Find a complete (test) element, balancing opening and closing delimiters</span><pre>_find_test_substring()</pre></a></li>
+<li class="method private "><a href="#_match_quoted_phrase" title="_match_quoted_phrase :: Isolates keyword match results to word boundaries"><span class="description">Isolates keyword match results to word boundaries</span><pre>_match_quoted_phrase()</pre></a></li>
+<li class="method private "><a href="#_parse_arguments" title="_parse_arguments :: Process an argument list within a field-level parameter format specification"><span class="description">Process an argument list within a field-level parameter format specification</span><pre>_parse_arguments()</pre></a></li>
+<li class="method private "><a href="#_parse_field_level_template" title='_parse_field_level_template :: Convert field-level "template:" string into its component parts'><span class="description">Convert field-level "template:" string into its component parts</span><pre>_parse_field_level_template()</pre></a></li>
+<li class="method private "><a href="#_parse_iso8601_date" title="_parse_iso8601_date :: Parse a ISO 8601 Timestamp"><span class="description">Parse a ISO 8601 Timestamp</span><pre>_parse_iso8601_date()</pre></a></li>
+<li class="method private "><a href="#_parse_xmp_array" title="_parse_xmp_array :: Parse an XMP array value, stripping namespace prefixes and Seq/Alt/Bag arrays"><span class="description">Parse an XMP array value, stripping namespace prefixes and Seq/Alt/Bag arrays</span><pre>_parse_xmp_array()</pre></a></li>
+<li class="method private "><a href="#_prepare_list_table_query" title="_prepare_list_table_query :: Sanitize and expand query arguments from request variables"><span class="description">Sanitize and expand query arguments from request variables</span><pre>_prepare_list_table_query()</pre></a></li>
+<li class="method private "><a href="#_process_field_level_array" title="_process_field_level_array :: Process an markup field array value according to the supplied data-format option"><span class="description">Process an markup field array value according to the supplied data-format option</span><pre>_process_field_level_array()</pre></a></li>
+<li class="method private "><a href="#_rational_to_decimal" title="_rational_to_decimal :: Convert an EXIF GPS rational value to a PHP float value"><span class="description">Convert an EXIF GPS rational value to a PHP float value</span><pre>_rational_to_decimal()</pre></a></li>
+<li class="method private "><a href="#_rational_to_string" title="_rational_to_string :: Convert an EXIF rational value to a formatted string"><span class="description">Convert an EXIF rational value to a formatted string</span><pre>_rational_to_string()</pre></a></li>
+<li class="method private "><a href="#_remove_terms" title="_remove_terms :: Remove terms from an attachment's assignments"><span class="description">Remove terms from an attachment's assignments</span><pre>_remove_terms()</pre></a></li>
+<li class="method private "><a href="#_search_mla_galleries" title="_search_mla_galleries :: Search the $mla_galleries or $galleries array"><span class="description">Search the $mla_galleries or $galleries array</span><pre>_search_mla_galleries()</pre></a></li>
+<li class="method private "><a href="#_set_array_element" title="_set_array_element :: Adds or replaces the value of a key in a possibly nested array structure"><span class="description">Adds or replaces the value of a key in a possibly nested array structure</span><pre>_set_array_element()</pre></a></li>
+<li class="method private "><a href="#_unset_array_element" title="_unset_array_element :: Deletes the value of a key in a possibly nested array structure"><span class="description">Deletes the value of a key in a possibly nested array structure</span><pre>_unset_array_element()</pre></a></li>
+<li class="method private "><a href="#_wildcard_search_string" title="_wildcard_search_string :: Detects wildcard searches, i.e., containing an asterisk outside quotes"><span class="description">Detects wildcard searches, i.e., containing an asterisk outside quotes</span><pre>_wildcard_search_string()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24mla_iptc_keys" title="$mla_iptc_keys :: IPTC Dataset friendly name/slug and identifiers"><span class="description">IPTC Dataset friendly name/slug and identifiers</span><pre>$mla_iptc_keys</pre></a></li>
+<li class="property public "><a href="#%24query_parameters" title='$query_parameters :: WP_Query filter "parameters"'><span class="description">WP_Query filter "parameters"</span><pre>$query_parameters</pre></a></li>
+<li class="property public "><a href="#%24search_parameters" title="$search_parameters :: WP_Query 'posts_search' filter &quot;parameters&quot;"><span class="description">WP_Query 'posts_search' filter "parameters"</span><pre>$search_parameters</pre></a></li>
+<li class="property public "><a href="#%24utf8_chars" title="$utf8_chars :: UTF-8 replacements for invalid SQL characters"><span class="description">UTF-8 replacements for invalid SQL characters</span><pre>$utf8_chars</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24galleries" title="$galleries :: Objects containing [gallery] shortcodes"><span class="description">Objects containing [gallery] shortcodes</span><pre>$galleries</pre></a></li>
+<li class="property private "><a href="#%24mla_IPTC_EXIF_errors" title="$mla_IPTC_EXIF_errors :: Passes IPTC/EXIF parse errors between mla_IPTC_EXIF_error_handler
+and mla_fetch_attachment_image_metadata"><span class="description">Passes IPTC/EXIF parse errors between mla_IPTC_EXIF_error_handler
+and mla_fetch_attachment_image_metadata</span><pre>$mla_IPTC_EXIF_errors</pre></a></li>
+<li class="property private "><a href="#%24mla_alt_text_view" title='$mla_alt_text_view :: Provides a unique name for the ALT Text "Search Media" SQL View'><span class="description">Provides a unique name for the ALT Text "Search Media" SQL View</span><pre>$mla_alt_text_view</pre></a></li>
+<li class="property private "><a href="#%24mla_galleries" title="$mla_galleries :: Objects containing [mla_gallery] shortcodes"><span class="description">Objects containing [mla_gallery] shortcodes</span><pre>$mla_galleries</pre></a></li>
+<li class="property private "><a href="#%24mla_iptc_descriptions" title="$mla_iptc_descriptions :: IPTC Dataset descriptions"><span class="description">IPTC Dataset descriptions</span><pre>$mla_iptc_descriptions</pre></a></li>
+<li class="property private "><a href="#%24mla_iptc_formats" title="$mla_iptc_formats :: IPTC file format identifiers and descriptions"><span class="description">IPTC file format identifiers and descriptions</span><pre>$mla_iptc_formats</pre></a></li>
+<li class="property private "><a href="#%24mla_iptc_image_types" title="$mla_iptc_image_types :: IPTC image type identifiers and descriptions"><span class="description">IPTC image type identifiers and descriptions</span><pre>$mla_iptc_image_types</pre></a></li>
+<li class="property private "><a href="#%24mla_iptc_records" title="$mla_iptc_records :: IPTC Dataset identifiers and names"><span class="description">IPTC Dataset identifiers and names</span><pre>$mla_iptc_records</pre></a></li>
+<li class="property private "><a href="#%24mla_list_table_items" title="$mla_list_table_items :: Cache the results of mla_count_list_table_items for reuse in mla_query_list_table_items"><span class="description">Cache the results of mla_count_list_table_items for reuse in mla_query_list_table_items</span><pre>$mla_list_table_items</pre></a></li>
+<li class="property private "><a href="#%24mla_orderby_view" title='$mla_orderby_view :: Provides a unique name for the custom field "orderby" SQL View'><span class="description">Provides a unique name for the custom field "orderby" SQL View</span><pre>$mla_orderby_view</pre></a></li>
+<li class="property private "><a href="#%24mla_table_view_custom" title='$mla_table_view_custom :: Provides a unique name for the "Table View custom:" SQL View'><span class="description">Provides a unique name for the "Table View custom:" SQL View</span><pre>$mla_table_view_custom</pre></a></li>
+<li class="property private "><a href="#%24wp_4dot0_plus" title="$wp_4dot0_plus :: WordPress version test for $wpdb-&gt;esc_like() Vs esc_sql()"><span class="description">WordPress version test for $wpdb-&gt;esc_like() Vs esc_sql()</span><pre>$wp_4dot0_plus</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#MLA_ALT_TEXT_VIEW_SUFFIX" title='MLA_ALT_TEXT_VIEW_SUFFIX :: Provides a unique suffix for the ALT Text "Search Media" SQL View'><span class="description">Provides a unique suffix for the ALT Text "Search Media" SQL View</span><pre>MLA_ALT_TEXT_VIEW_SUFFIX</pre></a></li>
+<li class="constant  "><a href="#MLA_ORDERBY_VIEW_SUFFIX" title='MLA_ORDERBY_VIEW_SUFFIX :: Provides a unique suffix for the custom field "orderby" SQL View'><span class="description">Provides a unique suffix for the custom field "orderby" SQL View</span><pre>MLA_ORDERBY_VIEW_SUFFIX</pre></a></li>
+<li class="constant  "><a href="#MLA_TABLE_VIEW_CUSTOM_SUFFIX" title='MLA_TABLE_VIEW_CUSTOM_SUFFIX :: Provides a unique suffix for the "Table View custom:" SQL View'><span class="description">Provides a unique suffix for the "Table View custom:" SQL View</span><pre>MLA_TABLE_VIEW_CUSTOM_SUFFIX</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAData" id="\MLAData"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAData.html">MLAData</a>
+</li>
+</ul>
+<div href="../classes/MLAData.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) Data provides database and template file access for MLA needs</p>
+<div class="details">
+<p class="long_description"><p>The _template functions are inspired by the book "WordPress 3 Plugin Development Essentials."
+Templates separate HTML markup from PHP code for easier maintenance and localization.</p></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>0.1</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="initialize" id="initialize"></a><div class="element clickable method public initialize" data-toggle="collapse" data-target=".initialize .collapse">
+<h2>Initialization function, similar to __construct()</h2>
+<pre>initialize() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_IPTC_EXIF_error_handler" id="mla_IPTC_EXIF_error_handler"></a><div class="element clickable method public mla_IPTC_EXIF_error_handler" data-toggle="collapse" data-target=".mla_IPTC_EXIF_error_handler .collapse">
+<h2>Intercept IPTC and EXIF parse errors</h2>
+<pre>mla_IPTC_EXIF_error_handler(int $type, string $string, string $file, int $line) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.81</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>int</code><p>the level of the error raised</p></div>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>the error message</p></div>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>string</code><p>the filename that the error was raised in</p></div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code><p>the line number the error was raised at</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true, to bypass PHP error handler</div>
+</div></div>
+</div>
+<a name="mla_apply_field_level_format" id="mla_apply_field_level_format"></a><div class="element clickable method public mla_apply_field_level_format" data-toggle="collapse" data-target=".mla_apply_field_level_format .collapse">
+<h2>Apply field-level format options to field-level content</h2>
+<pre>mla_apply_field_level_format(string $value, array $args) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code><p>field-level content</p>
+</div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>format code and aguments</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>formatted field-level content</div>
+</div></div>
+</div>
+<a name="mla_attachment_array_fetch_references" id="mla_attachment_array_fetch_references"></a><div class="element clickable method public mla_attachment_array_fetch_references" data-toggle="collapse" data-target=".mla_attachment_array_fetch_references .collapse">
+<h2>Add Featured Image and inserted image/link references to an array of attachments</h2>
+<pre>mla_attachment_array_fetch_references(array $attachments) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Searches all post and page content to see if the attachmenta are used
+as a Featured Image or inserted in the post as an image or link.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.94</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attachments</h4>
+<code>array</code><p>WP_Post objects, passed by reference</p></div>
+</div></div>
+</div>
+<a name="mla_count_list_table_items" id="mla_count_list_table_items"></a><div class="element clickable method public mla_count_list_table_items" data-toggle="collapse" data-target=".mla_count_list_table_items .collapse">
+<h2>Get the total number of attachment posts</h2>
+<pre>mla_count_list_table_items(array $request, int $offset, int $count) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.30</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>array</code><p>Query variables, e.g., from $_REQUEST</p>
+</div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>int</code><p>(optional) number of rows to skip over to reach desired page</p>
+</div>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>int</code><p>(optional) number of rows on each page</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>Number of attachment posts</div>
+</div></div>
+</div>
+<a name="mla_exif_metadata_value" id="mla_exif_metadata_value"></a><div class="element clickable method public mla_exif_metadata_value" data-toggle="collapse" data-target=".mla_exif_metadata_value .collapse">
+<h2>Parse one EXIF metadata field</h2>
+<pre>mla_exif_metadata_value(string $exif_key, array $item_metadata, string $option, boolean $keep_existing) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Also handles the special pseudo-values 'ALL_EXIF' and 'ALL_IPTC'.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$exif_key</h4>
+<code>string</code><p>field name</p></div>
+<div class="subelement argument">
+<h4>$item_metadata</h4>
+<code>array</code><p>metadata array containing iptc, exif, xmp and pdf metadata arrays</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>data option; 'text'|'single'|'export'|'array'|'multi'</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>Optional: for option 'multi', retain existing values</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string/array representation of metadata value or an empty string</div>
+</div></div>
+</div>
+<a name="mla_expand_field_level_parameters" id="mla_expand_field_level_parameters"></a><div class="element clickable method public mla_expand_field_level_parameters" data-toggle="collapse" data-target=".mla_expand_field_level_parameters .collapse">
+<h2>Analyze a template, expanding Field-level Markup Substitution Parameters</h2>
+<pre>mla_expand_field_level_parameters(string $tpl, array $query, array $markup_values, integer $post_id, boolean $keep_existing, string $default_option) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Field-level parameters must have one of the following prefix values:
+template, request, query, custom, terms, meta, iptc, exif, xmp, pdf.
+All but request and query require an attachment ID.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A formatting string containing [+placeholders+]</p>
+</div>
+<div class="subelement argument">
+<h4>$query</h4>
+<code>array</code><p>Optional: an array of values from the query, if any, e.g. shortcode parameters</p></div>
+<div class="subelement argument">
+<h4>$markup_values</h4>
+<code>array</code><p>Optional: an array of values to add to the returned array</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>Optional: attachment ID for attachment-specific placeholders</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>Optional: for option 'multi', retain existing values</p>
+</div>
+<div class="subelement argument">
+<h4>$default_option</h4>
+<code>string</code><p>Optional: default option value</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( parameter => value ) for all field-level parameters and anything in $markup_values</div>
+</div></div>
+</div>
+<a name="mla_fetch_attachment_id3_metadata" id="mla_fetch_attachment_id3_metadata"></a><div class="element clickable method public mla_fetch_attachment_id3_metadata" data-toggle="collapse" data-target=".mla_fetch_attachment_id3_metadata .collapse">
+<h2>Fetch and filter ID3 metadata for an audio or video attachment</h2>
+<pre>mla_fetch_attachment_id3_metadata(int $post_id, string $path) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adapted from /wp-admin/includes/media.php functions wp_add_id3_tag_data,
+wp_read_video_metadata and wp_read_audio_metadata</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>int</code><p>post ID of attachment</p></div>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code><p>optional; if $post_id is zero, path to the image file.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Meta data variables, including 'audio' and 'video'</div>
+</div></div>
+</div>
+<a name="mla_fetch_attachment_image_metadata" id="mla_fetch_attachment_image_metadata"></a><div class="element clickable method public mla_fetch_attachment_image_metadata" data-toggle="collapse" data-target=".mla_fetch_attachment_image_metadata .collapse">
+<h2>Fetch and filter IPTC and EXIF, XMP or PDF metadata for an image attachment</h2>
+<pre>mla_fetch_attachment_image_metadata(int $post_id, string $path) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>int</code><p>post ID of attachment</p></div>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code><p>optional; if $post_id is zero, path to the image file.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Meta data variables, IPTC and EXIF or PDF</div>
+</div></div>
+</div>
+<a name="mla_fetch_attachment_metadata" id="mla_fetch_attachment_metadata"></a><div class="element clickable method public mla_fetch_attachment_metadata" data-toggle="collapse" data-target=".mla_fetch_attachment_metadata .collapse">
+<h2>Fetch and filter meta data for an attachment</h2>
+<pre>mla_fetch_attachment_metadata(int $post_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Returns a filtered array of a post's meta data. Internal values beginning with '<em>'
+are stripped out or converted to an 'mla</em>' equivalent.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>int</code><p>post ID of attachment</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Meta data variables</div>
+</div></div>
+</div>
+<a name="mla_fetch_attachment_parent_data" id="mla_fetch_attachment_parent_data"></a><div class="element clickable method public mla_fetch_attachment_parent_data" data-toggle="collapse" data-target=".mla_fetch_attachment_parent_data .collapse">
+<h2>Returns information about an attachment's parent, if found</h2>
+<pre>mla_fetch_attachment_parent_data(int $parent_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$parent_id</h4>
+<code>int</code><p>post ID of attachment's parent, if any</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Parent information; post_date, post_title and post_type</div>
+</div></div>
+</div>
+<a name="mla_fetch_attachment_references" id="mla_fetch_attachment_references"></a><div class="element clickable method public mla_fetch_attachment_references" data-toggle="collapse" data-target=".mla_fetch_attachment_references .collapse">
+<h2>Find Featured Image and inserted image/link references to an attachment</h2>
+<pre>mla_fetch_attachment_references(int $ID, int $parent, boolean $add_references) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Searches all post and page content to see if the attachment is used
+as a Featured Image or inserted in the post as an image or link.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ID</h4>
+<code>int</code><p>post ID of attachment</p></div>
+<div class="subelement argument">
+<h4>$parent</h4>
+<code>int</code><p>post ID of attachment's parent, if any</p>
+</div>
+<div class="subelement argument">
+<h4>$add_references</h4>
+<code>boolean</code><p>True to compute references, false to return empty values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Reference information; see $references array comments</div>
+</div></div>
+</div>
+<a name="mla_find_array_element" id="mla_find_array_element"></a><div class="element clickable method public mla_find_array_element" data-toggle="collapse" data-target=".mla_find_array_element .collapse">
+<h2>Finds the value of a key in a possibly nested array structure</h2>
+<pre>mla_find_array_element(string $needle, array $haystack, string $option, boolean $keep_existing) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Used primarily to extract fields from the _wp_attachment_metadata custom field.
+Also used with the audio/video ID3 metadata exposed in WordPress 3.6 and later.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.30</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code>string</code><p>key value, e.g. array1.array2.element</p></div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code>array</code><p>PHP nested arrays</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>data option; 'text'|'single'|'export'|'array'|'multi'</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>keep existing values - for 'multi' option</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string or array value matching key(.key ...) or ''</div>
+</div></div>
+</div>
+<a name="mla_flush_mla_galleries" id="mla_flush_mla_galleries"></a><div class="element clickable method public mla_flush_mla_galleries" data-toggle="collapse" data-target=".mla_flush_mla_galleries .collapse">
+<h2>Invalidates the $mla_galleries or $galleries array and cached values</h2>
+<pre>mla_flush_mla_galleries(string $option_name) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option_name</h4>
+<code>string</code><p>name of the gallery's cache/option variable</p>
+</div>
+</div></div>
+</div>
+<a name="mla_get_attachment_by_id" id="mla_get_attachment_by_id"></a><div class="element clickable method public mla_get_attachment_by_id" data-toggle="collapse" data-target=".mla_get_attachment_by_id .collapse">
+<h2>Retrieve an Attachment array given a $post_id</h2>
+<pre>mla_get_attachment_by_id(integer $post_id, boolean $add_references) : NULL | array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The (associative) array will contain every field that can be found in
+the posts and postmeta tables, and all references to the attachment.</p></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>0.1</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$post</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>The ID of the attachment post</p></div>
+<div class="subelement argument">
+<h4>$add_references</h4>
+<code>boolean</code><p>True to add references, false to skip references</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>NULL</code><code>array</code>NULL on failure else associative array</div>
+</div></div>
+</div>
+<a name="mla_get_template_placeholders" id="mla_get_template_placeholders"></a><div class="element clickable method public mla_get_template_placeholders" data-toggle="collapse" data-target=".mla_get_template_placeholders .collapse">
+<h2>Analyze a template, returning an array of the placeholders it contains</h2>
+<pre>mla_get_template_placeholders(string $tpl, string $default_option) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A formatting string containing [+placeholders+]</p>
+</div>
+<div class="subelement argument">
+<h4>$default_option</h4>
+<code>string</code><p>Optional: default option value</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Placeholder information: each entry is an array with ['prefix'] => string, ['value'] => string, ['option'] => string 'text'|single'|'export'|'array'|'multi'</div>
+</div></div>
+</div>
+<a name="mla_hex_dump" id="mla_hex_dump"></a><div class="element clickable method public mla_hex_dump" data-toggle="collapse" data-target=".mla_hex_dump .collapse">
+<h2>Format printable version of binary data</h2>
+<pre>mla_hex_dump(string $data, integer $limit, \intger $bytes_per_row, integer $offset) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>string</code><p>Binary data</p></div>
+<div class="subelement argument">
+<h4>$limit</h4>
+<code>integer</code><p>Bytes to format, default = 0 (all bytes)</p>
+</div>
+<div class="subelement argument">
+<h4>$bytes_per_row</h4>
+<code>\intger</code><p>Bytes to format on each line</p></div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>integer</code><p>offset of initial byte, or -1 to suppress printing offset information</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Printable representation of $data</div>
+</div></div>
+</div>
+<a name="mla_id3_metadata_value" id="mla_id3_metadata_value"></a><div class="element clickable method public mla_id3_metadata_value" data-toggle="collapse" data-target=".mla_id3_metadata_value .collapse">
+<h2>Parse one ID3 (audio/visual) metadata field</h2>
+<pre>mla_id3_metadata_value(string $id3_key, array $id3_metadata, string $option, boolean $keep_existing) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Also handles the special pseudo-value 'ALL_ID3'.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id3_key</h4>
+<code>string</code><p>field name</p></div>
+<div class="subelement argument">
+<h4>$id3_metadata</h4>
+<code>array</code><p>ID3 metadata array</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>data option; 'text'|'single'|'export'|'array'|'multi'</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>Optional: for option 'multi', retain existing values</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string/array representation of metadata value or an empty string</div>
+</div></div>
+</div>
+<a name="mla_iptc_metadata_value" id="mla_iptc_metadata_value"></a><div class="element clickable method public mla_iptc_metadata_value" data-toggle="collapse" data-target=".mla_iptc_metadata_value .collapse">
+<h2>Parse one IPTC metadata field</h2>
+<pre>mla_iptc_metadata_value(string $iptc_key, array $item_metadata, string $option, boolean $keep_existing) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.41</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$iptc_key</h4>
+<code>string</code><p>field name - IPTC Identifier or friendly name/slug</p>
+</div>
+<div class="subelement argument">
+<h4>$item_metadata</h4>
+<code>array</code><p>metadata array containing iptc, exif, xmp and pdf metadata arrays</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>data option; 'text'|'single'|'export'|'array'|'multi'</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>Optional: for option 'multi', retain existing values</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string/array representation of metadata value or an empty string</div>
+</div></div>
+</div>
+<a name="mla_load_template" id="mla_load_template"></a><div class="element clickable method public mla_load_template" data-toggle="collapse" data-target=".mla_load_template .collapse">
+<h2>Load an HTML template from a file</h2>
+<pre>mla_load_template(string $source, string $type) : string | array | false | NULL</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Loads a template to a string or a multi-part template to an array.
+Multi-part templates are divided by comments of the form <!-- template="key" -->,
+where "key" becomes the key part of the array.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source</h4>
+<code>string</code><p>Complete path and/or name of the template file, option name or the raw template</p>
+</div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>Optional type of template source; 'path', 'file' (default), 'option', 'string'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>array</code><code>false</code><code>NULL</code>string for files that do not contain template divider comments, array for files containing template divider comments, false if file or option does not exist, NULL if file could not be loaded.</div>
+</div></div>
+</div>
+<a name="mla_parse_array_template" id="mla_parse_array_template"></a><div class="element clickable method public mla_parse_array_template" data-toggle="collapse" data-target=".mla_parse_array_template .collapse">
+<h2>Expand a template, replacing placeholders with their values</h2>
+<pre>mla_parse_array_template(string $tpl, array $markup_values) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Will return an array of values if one or more of the placeholders returns an array.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A formatting string containing [+placeholders+]</p>
+</div>
+<div class="subelement argument">
+<h4>$markup_values</h4>
+<code>array</code><p>An associative array containing keys and values e.g. array('key' => 'value')</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string or array, depending on placeholder values. Placeholders corresponding to the keys of the markup_values will be replaced with their values.</div>
+</div></div>
+</div>
+<a name="mla_parse_pdf_date" id="mla_parse_pdf_date"></a><div class="element clickable method public mla_parse_pdf_date" data-toggle="collapse" data-target=".mla_parse_pdf_date .collapse">
+<h2>Parse a PDF date string</h2>
+<pre>mla_parse_pdf_date(string $source_string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source_string</h4>
+<code>string</code><p>PDF date string of the form D:YYYYMMDDHHmmSSOHH'mm</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>formatted date string YYYY-MM-DD HH:mm:SS</div>
+</div></div>
+</div>
+<a name="mla_parse_template" id="mla_parse_template"></a><div class="element clickable method public mla_parse_template" data-toggle="collapse" data-target=".mla_parse_template .collapse">
+<h2>Expand a template, replacing placeholders with their values</h2>
+<pre>mla_parse_template(string $tpl, array $markup_values) : \strng</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>A simple parsing function for basic templating.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A formatting string containing [+placeholders+]</p>
+</div>
+<div class="subelement argument">
+<h4>$markup_values</h4>
+<code>array</code><p>An associative array containing keys and values e.g. array('key' => 'value')</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\strng</code>Placeholders corresponding to the keys of the markup_values will be replaced with their values.</div>
+</div></div>
+</div>
+<a name="mla_parse_xmp_metadata" id="mla_parse_xmp_metadata"></a><div class="element clickable method public mla_parse_xmp_metadata" data-toggle="collapse" data-target=".mla_parse_xmp_metadata .collapse">
+<h2>Extract XMP meta data from a file</h2>
+<pre>mla_parse_xmp_metadata(string $file_name, integer $file_offset) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code><p>full path and file name</p></div>
+<div class="subelement argument">
+<h4>$file_offset</h4>
+<code>integer</code><p>offset within the file of the search start point</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>array of metadata values or NULL on failure</div>
+</div></div>
+</div>
+<a name="mla_pdf_metadata_value" id="mla_pdf_metadata_value"></a><div class="element clickable method public mla_pdf_metadata_value" data-toggle="collapse" data-target=".mla_pdf_metadata_value .collapse">
+<h2>Parse one PDF metadata field</h2>
+<pre>mla_pdf_metadata_value(string $pdf_key, string $item_metadata) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Also handles the special pseudo-value 'ALL_PDF'.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pdf_key</h4>
+<code>string</code><p>field name</p></div>
+<div class="subelement argument">
+<h4>$item_metadata</h4>
+<code>string</code><p>metadata array containing iptc, exif, xmp and pdf metadata arrays</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string/array representation of metadata value or an empty string</div>
+</div></div>
+</div>
+<a name="mla_query_list_table_items" id="mla_query_list_table_items"></a><div class="element clickable method public mla_query_list_table_items" data-toggle="collapse" data-target=".mla_query_list_table_items .collapse">
+<h2>Retrieve attachment objects for list table display</h2>
+<pre>mla_query_list_table_items(array $request, int $offset, int $count) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Supports prepare_items in class-mla-list-table.php.
+Modeled after wp_edit_attachments_query in wp-admin/post.php</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>array</code><p>query parameters from web page, usually found in $_REQUEST</p>
+</div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>int</code><p>number of rows to skip over to reach desired page</p></div>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>int</code><p>number of rows on each page</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>attachment objects (posts) including parent data, meta data and references</div>
+</div></div>
+</div>
+<a name="mla_query_media_modal_items" id="mla_query_media_modal_items"></a><div class="element clickable method public mla_query_media_modal_items" data-toggle="collapse" data-target=".mla_query_media_modal_items .collapse">
+<h2>Retrieve attachment objects for the WordPress Media Manager</h2>
+<pre>mla_query_media_modal_items(array $request, int $offset, int $count) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Supports month-year and taxonomy-term filters as well as the enhanced search box</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>array</code><p>query parameters from Media Manager</p></div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>int</code><p>number of rows to skip over to reach desired page</p></div>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>int</code><p>number of rows on each page</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>WP_Query object with query results</div>
+</div></div>
+</div>
+<a name="mla_query_posts_clauses_filter" id="mla_query_posts_clauses_filter"></a><div class="element clickable method public mla_query_posts_clauses_filter" data-toggle="collapse" data-target=".mla_query_posts_clauses_filter .collapse">
+<h2>Filters all clauses for shortcode queries, pre caching plugins</h2>
+<pre>mla_query_posts_clauses_filter(array $pieces) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This is for debug purposes only.
+Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pieces</h4>
+<code>array</code><p>query clauses before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>query clauses after modification (none)</div>
+</div></div>
+</div>
+<a name="mla_query_posts_clauses_request_filter" id="mla_query_posts_clauses_request_filter"></a><div class="element clickable method public mla_query_posts_clauses_request_filter" data-toggle="collapse" data-target=".mla_query_posts_clauses_request_filter .collapse">
+<h2>Filters all clauses for shortcode queries, post caching plugins</h2>
+<pre>mla_query_posts_clauses_request_filter(array $pieces) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This is for debug purposes only.
+Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pieces</h4>
+<code>array</code><p>query clauses before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>query clauses after modification (none)</div>
+</div></div>
+</div>
+<a name="mla_query_posts_groupby_filter" id="mla_query_posts_groupby_filter"></a><div class="element clickable method public mla_query_posts_groupby_filter" data-toggle="collapse" data-target=".mla_query_posts_groupby_filter .collapse">
+<h2>Adds a GROUPBY clause, if required</h2>
+<pre>mla_query_posts_groupby_filter(string $groupby_clause) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Taxonomy text queries and postmeta queries can return multiple results for the same ID.
+Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$groupby_clause</h4>
+<code>string</code><p>query clause before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>updated query clause</div>
+</div></div>
+</div>
+<a name="mla_query_posts_join_filter" id="mla_query_posts_join_filter"></a><div class="element clickable method public mla_query_posts_join_filter" data-toggle="collapse" data-target=".mla_query_posts_join_filter .collapse">
+<h2>Adds a JOIN clause, if required, to handle sorting/searching on custom fields or ALT Text</h2>
+<pre>mla_query_posts_join_filter(string $join_clause) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.30</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$join_clause</h4>
+<code>string</code><p>query clause before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>query clause after "LEFT JOIN view ON post_id" item modification</div>
+</div></div>
+</div>
+<a name="mla_query_posts_orderby_filter" id="mla_query_posts_orderby_filter"></a><div class="element clickable method public mla_query_posts_orderby_filter" data-toggle="collapse" data-target=".mla_query_posts_orderby_filter .collapse">
+<h2>Adds a ORDERBY clause, if required</h2>
+<pre>mla_query_posts_orderby_filter(string $orderby_clause) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Expands the range of sort options because the logic in WP_Query is limited.
+Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.30</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$orderby_clause</h4>
+<code>string</code><p>query clause before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>updated query clause</div>
+</div></div>
+</div>
+<a name="mla_query_posts_search_filter" id="mla_query_posts_search_filter"></a><div class="element clickable method public mla_query_posts_search_filter" data-toggle="collapse" data-target=".mla_query_posts_search_filter .collapse">
+<h2>Adds a keyword search to the WHERE clause, if required</h2>
+<pre>mla_query_posts_search_filter(string $search_string, object $query_object) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.60</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$search_string</h4>
+<code>string</code><p>query clause before modification</p></div>
+<div class="subelement argument">
+<h4>$query_object</h4>
+<code>object</code><p>WP_Query object</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>query clause after keyword search addition</div>
+</div></div>
+</div>
+<a name="mla_query_posts_where_filter" id="mla_query_posts_where_filter"></a><div class="element clickable method public mla_query_posts_where_filter" data-toggle="collapse" data-target=".mla_query_posts_where_filter .collapse">
+<h2>Adds/modifies the WHERE clause for meta values, LIKE patterns and detached items</h2>
+<pre>mla_query_posts_where_filter(string $where_clause) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Modeled after _edit_attachments_query_helper in wp-admin/post.php.
+Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$where_clause</h4>
+<code>string</code><p>query clause before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>query clause after modification</div>
+</div></div>
+</div>
+<a name="mla_query_relevanssi_admin_search_ok_filter" id="mla_query_relevanssi_admin_search_ok_filter"></a><div class="element clickable method public mla_query_relevanssi_admin_search_ok_filter" data-toggle="collapse" data-target=".mla_query_relevanssi_admin_search_ok_filter .collapse">
+<h2>Disable Relevanssi - A Better Search, v3.2 by Mikko Saari
+Defined as public because it's a filter.</h2>
+<pre>mla_query_relevanssi_admin_search_ok_filter(boolean $admin_search_ok) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$admin_search_ok</h4>
+<code>boolean</code><p>Default setting</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Updated setting</div>
+</div></div>
+</div>
+<a name="mla_query_terms_clauses_filter" id="mla_query_terms_clauses_filter"></a><div class="element clickable method public mla_query_terms_clauses_filter" data-toggle="collapse" data-target=".mla_query_terms_clauses_filter .collapse">
+<h2>Filters all clauses for get_terms queries</h2>
+<pre>mla_query_terms_clauses_filter(array $pieces, array $taxonomies, array $args) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Defined as public because it's a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pieces</h4>
+<code>array</code><p>Terms query SQL clauses.</p></div>
+<div class="subelement argument">
+<h4>$taxonomies</h4>
+<code>array</code><p>An array of taxonomies.</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>An array of terms query arguments.</p></div>
+</div></div>
+</div>
+<a name="mla_save_post_action" id="mla_save_post_action"></a><div class="element clickable method public mla_save_post_action" data-toggle="collapse" data-target=".mla_save_post_action .collapse">
+<h2>Invalidates $mla_galleries and $galleries arrays and cached values after post, page or attachment updates</h2>
+<pre>mla_save_post_action(integer $post_id) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>ID of post/page/attachment; not used at this time</p>
+</div>
+</div></div>
+</div>
+<a name="mla_search_terms_tidy" id="mla_search_terms_tidy"></a><div class="element clickable method public mla_search_terms_tidy" data-toggle="collapse" data-target=".mla_search_terms_tidy .collapse">
+<h2>Replaces a WordPress function deprecated in v3.7</h2>
+<pre>mla_search_terms_tidy(string $term) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Defined as public because it's a callback from array_map().</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.51</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$term</h4>
+<code>string</code><p>search term before modification</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>cleaned up search term</div>
+</div></div>
+</div>
+<a name="mla_update_item_postmeta" id="mla_update_item_postmeta"></a><div class="element clickable method public mla_update_item_postmeta" data-toggle="collapse" data-target=".mla_update_item_postmeta .collapse">
+<h2>Update custom field and "meta:" data for a single attachment</h2>
+<pre>mla_update_item_postmeta(int $post_id, array $new_meta) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.40</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>int</code><p>The ID of the attachment to be updated</p></div>
+<div class="subelement argument">
+<h4>$new_meta</h4>
+<code>array</code><p>Field name => value pairs</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>success/failure message(s)</div>
+</div></div>
+</div>
+<a name="mla_update_single_item" id="mla_update_single_item"></a><div class="element clickable method public mla_update_single_item" data-toggle="collapse" data-target=".mla_update_single_item .collapse">
+<h2>Update a single item; change the "post" data, taxonomy terms
+and meta data for a single attachment</h2>
+<pre>mla_update_single_item(int $post_id, array $new_data, array $tax_input, array $tax_actions) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>int</code><p>The ID of the attachment to be updated</p></div>
+<div class="subelement argument">
+<h4>$new_data</h4>
+<code>array</code><p>Field name => value pairs</p>
+</div>
+<div class="subelement argument">
+<h4>$tax_input</h4>
+<code>array</code><p>Optional taxonomy term values, default null</p></div>
+<div class="subelement argument">
+<h4>$tax_actions</h4>
+<code>array</code><p>Optional taxonomy actions (add, remove, replace), default null</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>success/failure message and NULL content</div>
+</div></div>
+</div>
+<a name="mla_update_wp_attachment_metadata" id="mla_update_wp_attachment_metadata"></a><div class="element clickable method public mla_update_wp_attachment_metadata" data-toggle="collapse" data-target=".mla_update_wp_attachment_metadata .collapse">
+<h2>Update "meta:" data for a single attachment</h2>
+<pre>mla_update_wp_attachment_metadata(array $current_values, array $new_meta) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.51</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$current_values</h4>
+<code>array</code><p>The current wp_attachment_metadata value</p></div>
+<div class="subelement argument">
+<h4>$new_meta</h4>
+<code>array</code><p>Field name => value pairs</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>success/failure message(s); empty string if no changes.</div>
+</div></div>
+</div>
+<a name="mla_xmp_metadata_value" id="mla_xmp_metadata_value"></a><div class="element clickable method public mla_xmp_metadata_value" data-toggle="collapse" data-target=".mla_xmp_metadata_value .collapse">
+<h2>Parse one XMP metadata field</h2>
+<pre>mla_xmp_metadata_value(string $xmp_key, array $xmp_metadata, string $option, boolean $keep_existing) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Also handles the special pseudo-value 'ALL_XMP'.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$xmp_key</h4>
+<code>string</code><p>field name</p></div>
+<div class="subelement argument">
+<h4>$xmp_metadata</h4>
+<code>array</code><p>XMP metadata array</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>data option; 'text'|'single'|'export'|'array'|'multi'</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>Optional: for option 'multi', retain existing values</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string/array representation of metadata value or an empty string</div>
+</div></div>
+</div>
+<a name="_bin_to_utf8" id="_bin_to_utf8"></a><div class="element clickable method private _bin_to_utf8" data-toggle="collapse" data-target="._bin_to_utf8 .collapse">
+<h2>Replace SQL incorrect characters (0x80 - 0xFF) with their UTF-8 equivalents</h2>
+<pre>_bin_to_utf8(string $string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.41</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>unencoded string</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>UTF-8 encoded string</div>
+</div></div>
+</div>
+<a name="_build_mla_galleries" id="_build_mla_galleries"></a><div class="element clickable method private _build_mla_galleries" data-toggle="collapse" data-target="._build_mla_galleries .collapse">
+<h2>Builds the $mla_galleries or $galleries array</h2>
+<pre>_build_mla_galleries(string $option_name, array $galleries_array, string $shortcode, boolean $exclude_revisions) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option_name</h4>
+<code>string</code><p>name of the gallery's cache/option variable</p>
+</div>
+<div class="subelement argument">
+<h4>$galleries_array</h4>
+<code>array</code><p>by reference to the private static galleries array variable</p></div>
+<div class="subelement argument">
+<h4>$shortcode</h4>
+<code>string</code><p>the shortcode to be searched for and processed</p></div>
+<div class="subelement argument">
+<h4>$exclude_revisions</h4>
+<code>boolean</code><p>true to exclude revisions from the search</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if the galleries array is not empty</div>
+</div></div>
+</div>
+<a name="_evaluate_template_array_node" id="_evaluate_template_array_node"></a><div class="element clickable method private _evaluate_template_array_node" data-toggle="collapse" data-target="._evaluate_template_array_node .collapse">
+<h2>Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters</h2>
+<pre>_evaluate_template_array_node(array $node, array $markup_values) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Will return an array of values if one or more of the placeholders returns an array.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$node</h4>
+<code>array</code><p>A field-level template element node</p>
+</div>
+<div class="subelement argument">
+<h4>$markup_values</h4>
+<code>array</code><p>An array of markup substitution values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>string or array, depending on placeholder values. Placeholders corresponding to the keys of the markup_values will be replaced with their values.</div>
+</div></div>
+</div>
+<a name="_evaluate_template_node" id="_evaluate_template_node"></a><div class="element clickable method private _evaluate_template_node" data-toggle="collapse" data-target="._evaluate_template_node .collapse">
+<h2>Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters</h2>
+<pre>_evaluate_template_node(array $node, array $markup_values) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$node</h4>
+<code>array</code><p>A field-level template element node</p>
+</div>
+<div class="subelement argument">
+<h4>$markup_values</h4>
+<code>array</code><p>An array of markup substitution values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>String with expanded values, if any</div>
+</div></div>
+</div>
+<a name="_execute_list_table_query" id="_execute_list_table_query"></a><div class="element clickable method private _execute_list_table_query" data-toggle="collapse" data-target="._execute_list_table_query .collapse">
+<h2>Add filters, run query, remove filters</h2>
+<pre>_execute_list_table_query(array $request) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.30</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>array</code><p>query parameters from web page, usually found in $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>WP_Query object with query results</div>
+</div></div>
+</div>
+<a name="_expand_field_level_template" id="_expand_field_level_template"></a><div class="element clickable method private _expand_field_level_template" data-toggle="collapse" data-target="._expand_field_level_template .collapse">
+<h2>Analyze a field-level "template:" element, expanding Field-level Markup Substitution Parameters</h2>
+<pre>_expand_field_level_template(string $tpl, array $markup_values, boolean $return_arrays) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A formatting string containing [+placeholders+]</p>
+</div>
+<div class="subelement argument">
+<h4>$markup_values</h4>
+<code>array</code><p>An array of markup substitution values</p></div>
+<div class="subelement argument">
+<h4>$return_arrays</h4>
+<code>boolean</code><p>True to return array value(s), false to return a string</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Element with expanded string/array values, if any</div>
+</div></div>
+</div>
+<a name="_find_template_substring" id="_find_template_substring"></a><div class="element clickable method private _find_template_substring" data-toggle="collapse" data-target="._find_template_substring .collapse">
+<h2>Find a complete template, balancing opening and closing delimiters</h2>
+<pre>_find_template_substring(string $tpl) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A string possibly starting with '[+template:'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>'' or template string starting with '[+template:' and ending with the matching '+]'</div>
+</div></div>
+</div>
+<a name="_find_test_substring" id="_find_test_substring"></a><div class="element clickable method private _find_test_substring" data-toggle="collapse" data-target="._find_test_substring .collapse">
+<h2>Find a complete (test) element, balancing opening and closing delimiters</h2>
+<pre>_find_test_substring(string $tpl) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>A string possibly starting with '('</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>'' or template string starting with '(' and ending with the matching ')'</div>
+</div></div>
+</div>
+<a name="_match_quoted_phrase" id="_match_quoted_phrase"></a><div class="element clickable method private _match_quoted_phrase" data-toggle="collapse" data-target="._match_quoted_phrase .collapse">
+<h2>Isolates keyword match results to word boundaries</h2>
+<pre>_match_quoted_phrase(string $needle, string $haystack) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Eliminates matches such as "man" in "woman".</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.11</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code>string</code><p>the quoted phrase (without enclosing quotes)</p>
+</div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code>string</code><p>the entire term</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>$needle is a word match within $haystack</div>
+</div></div>
+</div>
+<a name="_parse_arguments" id="_parse_arguments"></a><div class="element clickable method private _parse_arguments" data-toggle="collapse" data-target="._parse_arguments .collapse">
+<h2>Process an argument list within a field-level parameter format specification</h2>
+<pre>_parse_arguments(string $argument_string) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.02</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$argument_string</h4>
+<code>string</code><p>arguments, e.g., ('d/m/Y H:i:s' , "arg, \" two" ) without parens</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>individual arguments, e.g. array( 0 => 'd/m/Y H:i:s', 1 => 'arg, \" two' )</div>
+</div></div>
+</div>
+<a name="_parse_field_level_template" id="_parse_field_level_template"></a><div class="element clickable method private _parse_field_level_template" data-toggle="collapse" data-target="._parse_field_level_template .collapse">
+<h2>Convert field-level "template:" string into its component parts</h2>
+<pre>_parse_field_level_template(string $tpl) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tpl</h4>
+<code>string</code><p>Template content with string, test and choice elements</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( node => array( type => "string | test | choice | template", length => bytes, value => string | node(s) ) )</div>
+</div></div>
+</div>
+<a name="_parse_iso8601_date" id="_parse_iso8601_date"></a><div class="element clickable method private _parse_iso8601_date" data-toggle="collapse" data-target="._parse_iso8601_date .collapse">
+<h2>Parse a ISO 8601 Timestamp</h2>
+<pre>_parse_iso8601_date(string $source_string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source_string</h4>
+<code>string</code><p>ISO string of the form YYYY-MM-DDTHH:MM:SS-HH:MM (inc time zone)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>formatted date string YYYY-MM-DD HH:mm:SS</div>
+</div></div>
+</div>
+<a name="_parse_xmp_array" id="_parse_xmp_array"></a><div class="element clickable method private _parse_xmp_array" data-toggle="collapse" data-target="._parse_xmp_array .collapse">
+<h2>Parse an XMP array value, stripping namespace prefixes and Seq/Alt/Bag arrays</h2>
+<pre>_parse_xmp_array(array $values) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$values</h4>
+<code>array</code><p>XMP multi-valued element</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Simplified array or string value</div>
+</div></div>
+</div>
+<a name="_prepare_list_table_query" id="_prepare_list_table_query"></a><div class="element clickable method private _prepare_list_table_query" data-toggle="collapse" data-target="._prepare_list_table_query .collapse">
+<h2>Sanitize and expand query arguments from request variables</h2>
+<pre>_prepare_list_table_query(array $raw_request, int $offset, int $count) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Prepare the arguments for WP_Query.
+Modeled after wp_edit_attachments_query in wp-admin/post.php</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$raw_request</h4>
+<code>array</code><p>query parameters from web page, usually found in $_REQUEST</p>
+</div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>int</code><p>Optional number of rows (default 0) to skip over to reach desired page</p>
+</div>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>int</code><p>Optional number of rows on each page (0 = all rows, default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>revised arguments suitable for WP_Query</div>
+</div></div>
+</div>
+<a name="_process_field_level_array" id="_process_field_level_array"></a><div class="element clickable method private _process_field_level_array" data-toggle="collapse" data-target="._process_field_level_array .collapse">
+<h2>Process an markup field array value according to the supplied data-format option</h2>
+<pre>_process_field_level_array(array $record, string $option, boolean $keep_existing) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$record</h4>
+<code>array</code><p>an array of scalar values</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>data option; 'text'|'single'|'export'|'array'|'multi'</p>
+</div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>Optional: for option 'multi', retain existing values</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( parameter => value ) for all field-level parameters and anything in $markup_values</div>
+</div></div>
+</div>
+<a name="_rational_to_decimal" id="_rational_to_decimal"></a><div class="element clickable method private _rational_to_decimal" data-toggle="collapse" data-target="._rational_to_decimal .collapse">
+<h2>Convert an EXIF GPS rational value to a PHP float value</h2>
+<pre>_rational_to_decimal(array $rational) : float</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.50</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rational</h4>
+<code>array</code><p>array( 0 => numerator, 1 => denominator )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>float</code>numerator/denominator</div>
+</div></div>
+</div>
+<a name="_rational_to_string" id="_rational_to_string"></a><div class="element clickable method private _rational_to_string" data-toggle="collapse" data-target="._rational_to_string .collapse">
+<h2>Convert an EXIF rational value to a formatted string</h2>
+<pre>_rational_to_string(string $rational, string $integer_format, string $fraction_format, string $mixed_format) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.02</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rational</h4>
+<code>string</code><p>numerator/denominator</p>
+</div>
+<div class="subelement argument">
+<h4>$integer_format</h4>
+<code>string</code><p>format for integer values</p></div>
+<div class="subelement argument">
+<h4>$fraction_format</h4>
+<code>string</code><p>format for fractional values from -1 to +1</p>
+</div>
+<div class="subelement argument">
+<h4>$mixed_format</h4>
+<code>string</code><p>format for integer.fraction values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>formatted value or boolean false if no value available</div>
+</div></div>
+</div>
+<a name="_remove_terms" id="_remove_terms"></a><div class="element clickable method private _remove_terms" data-toggle="collapse" data-target="._remove_terms .collapse">
+<h2>Remove terms from an attachment's assignments</h2>
+<pre>_remove_terms(integer $post_id, array $terms, object $taxonomy_obj) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.40</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>The ID of the attachment to be updated</p></div>
+<div class="subelement argument">
+<h4>$terms</h4>
+<code>array</code><p>The term ids (integer array) or names (string array) to remove</p>
+</div>
+<div class="subelement argument">
+<h4>$taxonomy_obj</h4>
+<code>object</code><p>The taxonomy object</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Term ids/names of the surviving terms</div>
+</div></div>
+</div>
+<a name="_search_mla_galleries" id="_search_mla_galleries"></a><div class="element clickable method private _search_mla_galleries" data-toggle="collapse" data-target="._search_mla_galleries .collapse">
+<h2>Search the $mla_galleries or $galleries array</h2>
+<pre>_search_mla_galleries(array $galleries_array, int $attachment_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$galleries_array</h4>
+<code>array</code><p>by reference to the private static galleries array variable</p></div>
+<div class="subelement argument">
+<h4>$attachment_id</h4>
+<code>int</code><p>the attachment ID to be searched for and processed</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>All posts/pages with one or more galleries that include the attachment. The array key is the parent_post ID; each entry contains post_title and post_type.</div>
+</div></div>
+</div>
+<a name="_set_array_element" id="_set_array_element"></a><div class="element clickable method private _set_array_element" data-toggle="collapse" data-target="._set_array_element .collapse">
+<h2>Adds or replaces the value of a key in a possibly nested array structure</h2>
+<pre>_set_array_element(string $needle, mixed $value, array $haystack) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.51</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code>string</code><p>key value, e.g. array1.array2.element</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>replacement value, string or array, by reference</p></div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code>array</code><p>PHP nested arrays, by reference</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if $needle element set, false if not</div>
+</div></div>
+</div>
+<a name="_unset_array_element" id="_unset_array_element"></a><div class="element clickable method private _unset_array_element" data-toggle="collapse" data-target="._unset_array_element .collapse">
+<h2>Deletes the value of a key in a possibly nested array structure</h2>
+<pre>_unset_array_element(string $needle, array $haystack) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.51</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code>string</code><p>key value, e.g. array1.array2.element</p></div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code>array</code><p>PHP nested arrays, by reference</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if $needle element found, false if not</div>
+</div></div>
+</div>
+<a name="_wildcard_search_string" id="_wildcard_search_string"></a><div class="element clickable method private _wildcard_search_string" data-toggle="collapse" data-target="._wildcard_search_string .collapse">
+<h2>Detects wildcard searches, i.e., containing an asterisk outside quotes</h2>
+<pre>_wildcard_search_string(string $search_string) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Defined as public because it's a callback from array_map().</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$search_string</h4>
+<code>string</code><p>search string</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if wildcard</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24mla_iptc_keys" id="$mla_iptc_keys"> </a><div class="element clickable property public $mla_iptc_keys" data-toggle="collapse" data-target=".$mla_iptc_keys .collapse">
+<h2>IPTC Dataset friendly name/slug and identifiers</h2>
+<pre>$mla_iptc_keys : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains the sanitized names and identifiers of Datasets defined in
+the "IPTC-NAA Information Interchange Model Version No. 4.1".</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24query_parameters" id="$query_parameters"> </a><div class="element clickable property public $query_parameters" data-toggle="collapse" data-target=".$query_parameters .collapse">
+<h2>WP_Query filter "parameters"</h2>
+<pre>$query_parameters : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array defines parameters for the query's join, where and orderby filters.
+The parameters are set up in the _prepare_list_table_query function, and
+any further logic required to translate those values is contained in the filters.</p>
+
+<p>Array index values are: use_alt_text_view, use_postmeta_view, use_orderby_view,
+alt_text_value, postmeta_key, postmeta_value, patterns, detached,
+orderby, order, mla-metavalue, debug (also in search_parameters)</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.30</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24search_parameters" id="$search_parameters"> </a><div class="element clickable property public $search_parameters" data-toggle="collapse" data-target=".$search_parameters .collapse">
+<h2>WP_Query 'posts_search' filter "parameters"</h2>
+<pre>$search_parameters : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array defines parameters for the query's posts_search filter, which uses
+'search_string' to add a clause to the query's WHERE clause. It is shared between
+the list_table-query functions here and the mla_get_shortcode_attachments function
+in class-mla-shortcodes.php. This array passes the relevant parameters to the filter.</p>
+
+<p>Array index values are:
+['mla_terms_search']['phrases']
+['mla_terms_search']['taxonomies']
+['mla_terms_search']['radio_phrases'] => AND/OR
+['mla_terms_search']['radio_terms'] => AND/OR
+['s'] => numeric for ID/parent search
+['mla_search_fields'] => 'content', 'title', 'excerpt', 'alt-text', 'name', 'terms'
+Note: 'alt-text' is not supported in [mla_gallery]
+['mla_search_connector'] => AND/OR
+['sentence'] => entire string must match as one "keyword"
+['exact'] => entire string must match entire field value
+['debug'] => internal element, console/log/shortcode/none
+['tax_terms_count'] => internal element, shared with JOIN and GROUP BY filters</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24utf8_chars" id="$utf8_chars"> </a><div class="element clickable property public $utf8_chars" data-toggle="collapse" data-target=".$utf8_chars .collapse">
+<h2>UTF-8 replacements for invalid SQL characters</h2>
+<pre>$utf8_chars : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.41</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24galleries" id="$galleries"> </a><div class="element clickable property private $galleries" data-toggle="collapse" data-target=".$galleries .collapse">
+<h2>Objects containing [gallery] shortcodes</h2>
+<pre>$galleries : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains all of the objects containing one or more [gallery] shortcodes
+and array(s) of which attachments each [gallery] contains. The arrays are built once
+each page load and cached for subsequent calls.</p>
+
+<p>The outer array is keyed by post_id. It contains an associative array with:
+['parent_title'] post_title of the gallery parent,
+['parent_type'] 'post' or 'page' or the custom post_type of the gallery parent,
+['parent_status'] 'publish', 'private', 'future', 'pending', 'draft'
+['results'] array ( ID => ID ) of attachments appearing in ANY of the parent's galleries.
+['galleries'] array of [gallery] entries numbered from one (1), containing:
+galleries[X]['query'] contains a string with the arguments of the [gallery],
+galleries[X]['results'] contains an array ( ID ) of post_ids for the objects in the gallery.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_IPTC_EXIF_errors" id="$mla_IPTC_EXIF_errors"> </a><div class="element clickable property private $mla_IPTC_EXIF_errors" data-toggle="collapse" data-target=".$mla_IPTC_EXIF_errors .collapse">
+<h2>Passes IPTC/EXIF parse errors between mla_IPTC_EXIF_error_handler
+and mla_fetch_attachment_image_metadata</h2>
+<pre>$mla_IPTC_EXIF_errors : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.81</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_alt_text_view" id="$mla_alt_text_view"> </a><div class="element clickable property private $mla_alt_text_view" data-toggle="collapse" data-target=".$mla_alt_text_view .collapse">
+<h2>Provides a unique name for the ALT Text "Search Media" SQL View</h2>
+<pre>$mla_alt_text_view : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.40</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_galleries" id="$mla_galleries"> </a><div class="element clickable property private $mla_galleries" data-toggle="collapse" data-target=".$mla_galleries .collapse">
+<h2>Objects containing [mla_gallery] shortcodes</h2>
+<pre>$mla_galleries : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains all of the objects containing one or more [mla_gallery] shortcodes
+and array(s) of which attachments each [mla_gallery] contains. The arrays are built once
+each page load and cached for subsequent calls.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_iptc_descriptions" id="$mla_iptc_descriptions"> </a><div class="element clickable property private $mla_iptc_descriptions" data-toggle="collapse" data-target=".$mla_iptc_descriptions .collapse">
+<h2>IPTC Dataset descriptions</h2>
+<pre>$mla_iptc_descriptions : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains the descriptions of Datasets defined in
+the "IPTC-NAA Information Interchange Model Version No. 4.1".</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_iptc_formats" id="$mla_iptc_formats"> </a><div class="element clickable property private $mla_iptc_formats" data-toggle="collapse" data-target=".$mla_iptc_formats .collapse">
+<h2>IPTC file format identifiers and descriptions</h2>
+<pre>$mla_iptc_formats : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains the file format identifiers and descriptions defined in
+the "IPTC-NAA Information Interchange Model Version No. 4.1" for dataset 1#020.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_iptc_image_types" id="$mla_iptc_image_types"> </a><div class="element clickable property private $mla_iptc_image_types" data-toggle="collapse" data-target=".$mla_iptc_image_types .collapse">
+<h2>IPTC image type identifiers and descriptions</h2>
+<pre>$mla_iptc_image_types : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains the image type identifiers and descriptions defined in
+the "IPTC-NAA Information Interchange Model Version No. 4.1" for dataset 2#130, octet 2.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_iptc_records" id="$mla_iptc_records"> </a><div class="element clickable property private $mla_iptc_records" data-toggle="collapse" data-target=".$mla_iptc_records .collapse">
+<h2>IPTC Dataset identifiers and names</h2>
+<pre>$mla_iptc_records : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains the identifiers and names of Datasets defined in
+the "IPTC-NAA Information Interchange Model Version No. 4.1".</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_list_table_items" id="$mla_list_table_items"> </a><div class="element clickable property private $mla_list_table_items" data-toggle="collapse" data-target=".$mla_list_table_items .collapse">
+<h2>Cache the results of mla_count_list_table_items for reuse in mla_query_list_table_items</h2>
+<pre>$mla_list_table_items : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.40</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_orderby_view" id="$mla_orderby_view"> </a><div class="element clickable property private $mla_orderby_view" data-toggle="collapse" data-target=".$mla_orderby_view .collapse">
+<h2>Provides a unique name for the custom field "orderby" SQL View</h2>
+<pre>$mla_orderby_view : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_table_view_custom" id="$mla_table_view_custom"> </a><div class="element clickable property private $mla_table_view_custom" data-toggle="collapse" data-target=".$mla_table_view_custom .collapse">
+<h2>Provides a unique name for the "Table View custom:" SQL View</h2>
+<pre>$mla_table_view_custom : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24wp_4dot0_plus" id="$wp_4dot0_plus"> </a><div class="element clickable property private $wp_4dot0_plus" data-toggle="collapse" data-target=".$wp_4dot0_plus .collapse">
+<h2>WordPress version test for $wpdb-&gt;esc_like() Vs esc_sql()</h2>
+<pre>$wp_4dot0_plus : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a name="MLA_ALT_TEXT_VIEW_SUFFIX" id="MLA_ALT_TEXT_VIEW_SUFFIX"> </a><div class="element clickable constant  MLA_ALT_TEXT_VIEW_SUFFIX" data-toggle="collapse" data-target=".MLA_ALT_TEXT_VIEW_SUFFIX .collapse">
+<h2>Provides a unique suffix for the ALT Text "Search Media" SQL View</h2>
+<pre>MLA_ALT_TEXT_VIEW_SUFFIX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The SQL View is used to filter the Media/Assistant submenu table by
+ALT Text with the Search Media text box.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.40</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ORDERBY_VIEW_SUFFIX" id="MLA_ORDERBY_VIEW_SUFFIX"> </a><div class="element clickable constant  MLA_ORDERBY_VIEW_SUFFIX" data-toggle="collapse" data-target=".MLA_ORDERBY_VIEW_SUFFIX .collapse">
+<h2>Provides a unique suffix for the custom field "orderby" SQL View</h2>
+<pre>MLA_ORDERBY_VIEW_SUFFIX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The SQL View is used to sort the Media/Assistant submenu table on
+ALT Text and custom field columns.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_TABLE_VIEW_CUSTOM_SUFFIX" id="MLA_TABLE_VIEW_CUSTOM_SUFFIX"> </a><div class="element clickable constant  MLA_TABLE_VIEW_CUSTOM_SUFFIX" data-toggle="collapse" data-target=".MLA_TABLE_VIEW_CUSTOM_SUFFIX .collapse">
+<h2>Provides a unique suffix for the "Table View custom:" SQL View</h2>
+<pre>MLA_TABLE_VIEW_CUSTOM_SUFFIX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The SQL View is used to filter the Media/Assistant submenu table on
+custom field Table Views.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>

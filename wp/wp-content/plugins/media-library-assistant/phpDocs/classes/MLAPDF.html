@@ -1,0 +1,384 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAPDF</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#mla_extract_pdf_metadata" title="mla_extract_pdf_metadata :: Extract Metadata from a PDF file"><span class="description">Extract Metadata from a PDF file</span><pre>mla_extract_pdf_metadata()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_build_pdf_indirect_objects" title="_build_pdf_indirect_objects :: Build an array of indirect object definitions"><span class="description">Build an array of indirect object definitions</span><pre>_build_pdf_indirect_objects()</pre></a></li>
+<li class="method private "><a href="#_extract_pdf_trailer" title="_extract_pdf_trailer :: Extract dictionary from traditional cross-reference + trailer documents"><span class="description">Extract dictionary from traditional cross-reference + trailer documents</span><pre>_extract_pdf_trailer()</pre></a></li>
+<li class="method private "><a href="#_find_pdf_indirect_dictionary" title="_find_pdf_indirect_dictionary :: Find the offset, length and contents of an indirect object containing a dictionary"><span class="description">Find the offset, length and contents of an indirect object containing a dictionary</span><pre>_find_pdf_indirect_dictionary()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_LPD_dictionary" title="_parse_pdf_LPD_dictionary :: Parse a PDF Linearization Parameter Dictionary object"><span class="description">Parse a PDF Linearization Parameter Dictionary object</span><pre>_parse_pdf_LPD_dictionary()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_UTF16BE" title="_parse_pdf_UTF16BE :: Parse a PDF Unicode (16-bit Big Endian) object"><span class="description">Parse a PDF Unicode (16-bit Big Endian) object</span><pre>_parse_pdf_UTF16BE()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_dictionary" title="_parse_pdf_dictionary :: Parse a PDF dictionary object"><span class="description">Parse a PDF dictionary object</span><pre>_parse_pdf_dictionary()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_string" title="_parse_pdf_string :: Parse a PDF string object"><span class="description">Parse a PDF string object</span><pre>_parse_pdf_string()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_xref_section" title="_parse_pdf_xref_section :: Parse a cross-reference table section into the array of indirect object definitions"><span class="description">Parse a cross-reference table section into the array of indirect object definitions</span><pre>_parse_pdf_xref_section()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_xref_stream" title="_parse_pdf_xref_stream :: Parse a cross-reference steam into the array of indirect object definitions"><span class="description">Parse a cross-reference steam into the array of indirect object definitions</span><pre>_parse_pdf_xref_stream()</pre></a></li>
+<li class="method private "><a href="#_parse_pdf_xref_subsection" title="_parse_pdf_xref_subsection :: Parse a cross-reference table subsection into the array of indirect object definitions"><span class="description">Parse a cross-reference table subsection into the array of indirect object definitions</span><pre>_parse_pdf_xref_subsection()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24pdf_indirect_objects" title="$pdf_indirect_objects :: Array of PDF indirect objects"><span class="description">Array of PDF indirect objects</span><pre>$pdf_indirect_objects</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAPDF" id="\MLAPDF"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAPDF.html">MLAPDF</a>
+</li>
+</ul>
+<div href="../classes/MLAPDF.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) PDF extracts legacy and XMP meta data from PDF files</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>2.10</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="mla_extract_pdf_metadata" id="mla_extract_pdf_metadata"></a><div class="element clickable method public mla_extract_pdf_metadata" data-toggle="collapse" data-target=".mla_extract_pdf_metadata .collapse">
+<h2>Extract Metadata from a PDF file</h2>
+<pre>mla_extract_pdf_metadata(string $file_name) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code><p>full path to the desired file</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( 'xmp' => array( key => value ), 'pdf' => array( key => value ) ) for each metadata field, in string format</div>
+</div></div>
+</div>
+<a name="_build_pdf_indirect_objects" id="_build_pdf_indirect_objects"></a><div class="element clickable method private _build_pdf_indirect_objects" data-toggle="collapse" data-target="._build_pdf_indirect_objects .collapse">
+<h2>Build an array of indirect object definitions</h2>
+<pre>_build_pdf_indirect_objects(string $string) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Creates the array of indirect object offsets and lengths</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>The entire PDF document, passsed by reference</p></div>
+</div></div>
+</div>
+<a name="_extract_pdf_trailer" id="_extract_pdf_trailer"></a><div class="element clickable method private _extract_pdf_trailer" data-toggle="collapse" data-target="._extract_pdf_trailer .collapse">
+<h2>Extract dictionary from traditional cross-reference + trailer documents</h2>
+<pre>_extract_pdf_trailer(string $file_name, integer $file_offset) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code><p>full path to the desired file</p></div>
+<div class="subelement argument">
+<h4>$file_offset</h4>
+<code>integer</code><p>offset within file of the cross-reference table</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>array of "PDF dictionary arrays", newest first, or NULL on failure</div>
+</div></div>
+</div>
+<a name="_find_pdf_indirect_dictionary" id="_find_pdf_indirect_dictionary"></a><div class="element clickable method private _find_pdf_indirect_dictionary" data-toggle="collapse" data-target="._find_pdf_indirect_dictionary .collapse">
+<h2>Find the offset, length and contents of an indirect object containing a dictionary</h2>
+<pre>_find_pdf_indirect_dictionary(string $file_name, integer $object, integer $generation) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The function searches the entire file, if necessary, to find the last/most recent copy of the object.
+This is required because Adobe Acrobat does NOT increment the generation number when it reuses an object.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code><p>full path and file name</p></div>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>integer</code><p>The object number</p></div>
+<div class="subelement argument">
+<h4>$generation</h4>
+<code>integer</code><p>The object generation number; default zero (0)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>NULL on failure else array( 'start' => offset in the file, 'length' => object length, 'content' => dictionary contents )</div>
+</div></div>
+</div>
+<a name="_parse_pdf_LPD_dictionary" id="_parse_pdf_LPD_dictionary"></a><div class="element clickable method private _parse_pdf_LPD_dictionary" data-toggle="collapse" data-target="._parse_pdf_LPD_dictionary .collapse">
+<h2>Parse a PDF Linearization Parameter Dictionary object</h2>
+<pre>_parse_pdf_LPD_dictionary(string $source_string, integer $filesize) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Returns an array of dictionary contents, classified by object type: boolean, numeric, string, hex (string),
+indirect (object), name, array, dictionary, stream, and null.
+The array also has a '/length' element containing the number of bytes occupied by the
+dictionary in the source string, excluding the enclosing delimiters, if passed in.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source_string</h4>
+<code>string</code><p>data within which the object occurs, typically the start of a PDF document</p></div>
+<div class="subelement argument">
+<h4>$filesize</h4>
+<code>integer</code><p>filesize of the PDF document, for validation purposes, or zero (0) to ignore filesize</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>array of dictionary objects on success, false on failure</div>
+</div></div>
+</div>
+<a name="_parse_pdf_UTF16BE" id="_parse_pdf_UTF16BE"></a><div class="element clickable method private _parse_pdf_UTF16BE" data-toggle="collapse" data-target="._parse_pdf_UTF16BE .collapse">
+<h2>Parse a PDF Unicode (16-bit Big Endian) object</h2>
+<pre>_parse_pdf_UTF16BE(string $source_string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source_string</h4>
+<code>string</code><p>PDF string of 16-bit characters</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>UTF-8 encoded string</div>
+</div></div>
+</div>
+<a name="_parse_pdf_dictionary" id="_parse_pdf_dictionary"></a><div class="element clickable method private _parse_pdf_dictionary" data-toggle="collapse" data-target="._parse_pdf_dictionary .collapse">
+<h2>Parse a PDF dictionary object</h2>
+<pre>_parse_pdf_dictionary(string $source_string, integer $offset) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Returns an array of dictionary contents, classified by object type: boolean, numeric, string, hex (string),
+indirect (object), name, array, dictionary, stream, and null.
+The array also has a '/length' element containing the number of bytes occupied by the
+dictionary in the source string, excluding the enclosing delimiters.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source_string</h4>
+<code>string</code><p>data within which the string occurs</p></div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>integer</code><p>offset within the source string of the opening '<<' characters or the first content character.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( '/length' => length, key => array( 'type' => type, 'value' => value ) ) for each dictionary field</div>
+</div></div>
+</div>
+<a name="_parse_pdf_string" id="_parse_pdf_string"></a><div class="element clickable method private _parse_pdf_string" data-toggle="collapse" data-target="._parse_pdf_string .collapse">
+<h2>Parse a PDF string object</h2>
+<pre>_parse_pdf_string(string $source_string, integer $offset) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Returns an array with one dictionary entry. The array also has a '/length' element containing
+the number of bytes occupied by the string in the source string, including the enclosing parentheses.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source_string</h4>
+<code>string</code><p>data within which the string occurs</p></div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>integer</code><p>offset within the source string of the opening '(' character.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( key => array( 'type' => type, 'value' => value, '/length' => length ) ) for the string</div>
+</div></div>
+</div>
+<a name="_parse_pdf_xref_section" id="_parse_pdf_xref_section"></a><div class="element clickable method private _parse_pdf_xref_section" data-toggle="collapse" data-target="._parse_pdf_xref_section .collapse">
+<h2>Parse a cross-reference table section into the array of indirect object definitions</h2>
+<pre>_parse_pdf_xref_section(string $file_name, integer $file_offset) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Creates the array of indirect object offsets and lengths</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code><p>full path and file name</p></div>
+<div class="subelement argument">
+<h4>$file_offset</h4>
+<code>integer</code><p>offset within the file of the xref id and count entry</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>length of the section</div>
+</div></div>
+</div>
+<a name="_parse_pdf_xref_stream" id="_parse_pdf_xref_stream"></a><div class="element clickable method private _parse_pdf_xref_stream" data-toggle="collapse" data-target="._parse_pdf_xref_stream .collapse">
+<h2>Parse a cross-reference steam into the array of indirect object definitions</h2>
+<pre>_parse_pdf_xref_stream(string $file_name, integer $file_offset, string $entry_parms_string) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Creates the array of indirect object offsets and lengths</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file_name</h4>
+<code>string</code><p>full path and file name</p></div>
+<div class="subelement argument">
+<h4>$file_offset</h4>
+<code>integer</code><p>offset within the file of the xref id and count entry</p></div>
+<div class="subelement argument">
+<h4>$entry_parms_string</h4>
+<code>string</code><p>"/W" entry, representing the size of the fields in a single entry</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>length of the stream</div>
+</div></div>
+</div>
+<a name="_parse_pdf_xref_subsection" id="_parse_pdf_xref_subsection"></a><div class="element clickable method private _parse_pdf_xref_subsection" data-toggle="collapse" data-target="._parse_pdf_xref_subsection .collapse">
+<h2>Parse a cross-reference table subsection into the array of indirect object definitions</h2>
+<pre>_parse_pdf_xref_subsection(string $xref_section, integer $offset, integer $object_id, integer $count) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>A cross-reference subsection is a sequence of 20-byte entries, each with offset and generation values.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$xref_section</h4>
+<code>string</code><p>buffer containing the subsection</p></div>
+<div class="subelement argument">
+<h4>$offset</h4>
+<code>integer</code><p>offset within the buffer of the first entry</p></div>
+<div class="subelement argument">
+<h4>$object_id</h4>
+<code>integer</code><p>number of the first object in the subsection</p></div>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>integer</code><p>number of entries in the subsection</p></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24pdf_indirect_objects" id="$pdf_indirect_objects"> </a><div class="element clickable property private $pdf_indirect_objects" data-toggle="collapse" data-target=".$pdf_indirect_objects .collapse">
+<h2>Array of PDF indirect objects</h2>
+<pre>$pdf_indirect_objects : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains all of the indirect object offsets and lengths.
+The array key is ( object ID * 1000 ) + object generation.
+The array value is array( number, generation, start, optional /length )</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>
