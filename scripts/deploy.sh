@@ -6,7 +6,7 @@ set -e
 
 echo 'Reloading php-fpm'
 # https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1242376
-sudo kill -USR2 `cat /var/run/php5-fpm.pid`
+sudo kill -USR2 "$(cat /var/run/php5-fpm.pid)"
 
 echo 'Running WP CLI deploy steps'
 wp rewrite flush
@@ -24,7 +24,7 @@ shopt -s globstar
 [ ! "$ROBOTS_DISALLOW" ] && export ROBOTS_DISALLOW=/
 for f in nginx/**; do
   [ ! -f "$f" ] && continue
-  sudo mkdir -p `dirname "/etc/$f"`
+  sudo mkdir -p "$(dirname "/etc/$f")"
   mo "$f" | sudo tee "/etc/$f" > /dev/null
 done
 
