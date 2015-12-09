@@ -7,19 +7,26 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area row">
-		<main id="main" class="site-main small-24 columns" role="main">
+<div id="primary" class="content-area row">
+  <main id="main" class="site-main small-24 columns" role="main">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+  <?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'partials/content', 'single' ); ?>
+    <?php
+      if ( get_post_type() === 'calendar') :
 
-			<?php //phila_gov_post_nav(); ?>
+        get_template_part( 'partials/content', 'page' );
 
-		<?php endwhile; // end of the loop. ?>
+       else :
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	
+        get_template_part( 'partials/content', 'single' );
+
+      endif;
+
+    endwhile; // end of the loop. ?>
+
+  </main><!-- #main -->
+</div><!-- #primary -->
+
 
 <?php get_footer(); ?>

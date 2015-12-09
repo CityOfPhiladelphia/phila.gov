@@ -75,11 +75,6 @@ function phila_gov_setup() {
     'gallery', 'caption',
   ) );
 
-  // Set up the WordPress core custom background feature.
-  add_theme_support( 'custom-background', apply_filters( 'phila_gov_custom_background_args', array(
-    'default-color' => 'ffffff',
-    'default-image' => '',
-  ) ) );
 }
 endif; // phila_gov_setup
 
@@ -521,4 +516,42 @@ function phila_filter_notices( $query ) {
       );
     $query->set( 'tax_query', $taxquery );
   }
+}
+/**
+ * Look up author by slug and use author ID
+ *
+ * @since 0.22.0
+ * @param $query_vars
+ * @return $query_vars string Returns new author-nickname var.
+ */
+add_filter( 'request', 'phila_gov_request' );
+
+function phila_gov_request( $query_vars ){
+  if ( array_key_exists( 'author_name', $query_vars ) ) {
+    global $wpdb;
+    $author_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM {$wpdb->usermeta} WHERE meta_key='nickname' AND meta_value = %s", $query_vars['author_name'] ) );
+    if ( $author_id ) {
+      $query_vars['author'] = $author_id;
+      unset( $query_vars['author_name'] );
+    }
+  }
+  return $query_vars;
+}
+/**
+ * Swaps author user name with author nickname
+ *
+ * @since 0.22.0
+ * @param $link Author link
+ * @param $author_id
+ * @param $author_name
+ * @return $link string Returns modified author link.
+ */
+add_filter( 'author_link', 'phila_gov_author_link', 10, 3 );
+
+function phila_gov_author_link( $link, $author_id, $author_name ){
+  $author_nickname = get_user_meta( $author_id, 'nickname', true );
+  if ( $author_nickname ) {
+    $link = str_replace( $author_name, $author_nickname, $link );
+  }
+  return $link;
 }

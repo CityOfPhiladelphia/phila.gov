@@ -8,18 +8,13 @@
  */
 ?>
     <?php
-        if (is_front_page()){
-            //nothing
-        }elseif (is_post_type_archive('department_page')){
-            //nothing
-        }
-        elseif (is_page()){ ?>
+        if (is_page()){ ?>
       <div class="row">
         <div class="small-24 columns">
           <div class="panel center">
             <?php echo 'Can\'t find what you are looking for? <a href="';
                   echo get_template_part( 'partials/content', 'feedback-url' );
-                  echo '" target="_blank"> Let us know. <span class="accessible">Opens in new window</span></a>'; ?>
+                  echo '" target="_blank" class="external"> Let us know. <span class="accessible">Opens in new window</span></a>'; ?>
           </div>
         </div>
       </div>
@@ -29,7 +24,7 @@
           <div class="panel center">
             <?php
                 echo 'Can\'t find what you\'re looking for? We\'re still moving content. <a href="https://docs.google.com/forms/d/16i1gP0lSdquHUlAV26-9K04WkwHI1TAjuAhJGMU0nA0/viewform?entry.2063571544&entry.1408587938=';
-                echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] . '" target="_blank">';
+                echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] . '" target="_blank" class="external">';
                 echo 'Let us know what you are trying to find. <span class="accessible">Opens in new window</span></a>'; ?>
           </div>
         </div>
@@ -42,7 +37,7 @@
               <?php
                   echo 'Is this information incorrect? <a href="';
                   echo get_template_part( 'partials/content', 'feedback-url' );
-                  echo '" target="_blank"> Let us know. <span class="accessible">Opens in new window</span></a>'; ?>
+                  echo '" target="_blank" class="external"> Let us know. <span class="accessible">Opens in new window</span></a>'; ?>
           </div>
         </div>
       </div>
@@ -92,7 +87,7 @@
   </section><!-- fat -->
   <div class="row classic">
     <div class="site-info large-6 columns">
-      <a href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>"><?php printf( __( 'Provide Feedback', 'phila-gov' )); ?></a>
+      <a href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>" class="external"><?php printf( __( 'Provide Feedback', 'phila-gov' )); ?></a>
           <?php //printf( __( 'Theme: %1$s by %2$s.', 'phila-gov' ), 'phila-gov', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
     </div><!-- .site-info -->
     <nav class="large-12 columns">
@@ -111,8 +106,5 @@
 </script>
 
 <?php wp_footer(); ?>
-<script>
-  jQuery(document).foundation();
-</script>
 </body>
 </html>

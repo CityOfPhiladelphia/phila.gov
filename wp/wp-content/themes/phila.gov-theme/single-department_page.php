@@ -31,7 +31,7 @@ get_header(); ?>
   </header>
   <?php
   //get department homepage alerts
-  call_user_func( array( 'PhilaGovDepartmentSites', 'department_homepage_alert' ) );
+  call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
   ?>
   <?php
   	/*
