@@ -1,0 +1,59 @@
+/*
+ *
+ * Document Pages
+ *
+ *
+*/
+.document {
+  .document-pad {
+    padding:0 .5rem;
+  }
+  .document-row{
+    margin: 1rem 0;
+    padding:1rem .5rem;
+    &:nth-child(even){
+      background:$ghost-gray;
+    }
+    i{
+       padding-left:5px;
+       color:$sidewalk;
+    }
+  }
+  h3{
+    margin:0;
+    padding:0;
+  }
+  .doc-type {
+    span::after{
+      content: ', ';
+    }
+    span:last-child::after{
+      content: '';
+    }
+  }
+  .doc-meta{
+    margin-bottom:25px;
+  }
+  h3.alternate, h4.alternate {
+    margin-top:10px;
+    margin-bottom:0;
+  }
+  .file-type{
+    text-transform:uppercase;
+  }
+  table thead.light-head tr th{
+    background:$white;
+  }
+  .clickable-row{
+    cursor:pointer;
+    &:hover {
+      background:$manatee;
+      .small-text{
+        color:$ghost-gray;
+      }
+      a {
+        color:$black;
+      }
+    }
+  }
+}
