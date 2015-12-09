@@ -1,0 +1,238 @@
+/*
+ *
+ * Department Pages
+ *
+ *
+*/
+.top-nav {
+  margin: 5px auto 20px auto;
+  .top-bar-section ul li.current-menu-parent>a,
+  .top-bar-section ul li.current-menu-item>a{
+    background:$bell-yellow;
+  }
+
+  nav.top-bar .top-bar-section ul li {
+    min-width:8.375rem;
+    margin: 0 1.255rem 0 0;
+  }
+}
+.department {
+  p {
+    margin: rem-calc(16 0 32 0);
+    //beacuse of those crazy long department names
+    &.external-site {
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+  @media only screen and (min-width: 40.063em) {
+    .external-site a.button {
+      width:60%
+    }
+  }
+  h1.alternate, h2.alternate, h3.alternate, h4.alternate, h5.alternate, h6.alternate {
+    color: $black;
+    font-size:.95rem;
+  }
+  h3{
+    font-size: .825rem;
+  }
+  p{
+    margin:1rem 0;
+    line-height: 1.6;
+  }
+
+  .services-finder{
+    background: $ghost-gray;
+    padding: 1rem;
+
+    h2{
+      text-align: center;
+      margin-bottom:2rem;
+    }
+    .call-to-action {
+      margin-bottom: 3.5rem;
+
+        @media only screen and (max-width: 40em) {
+          > div {
+          margin-bottom: 2.5rem;
+
+          &:last-of-type{
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .call-to-action-low-priority > div > a{
+      background: $white;
+      display: block;
+      padding:.5rem 1rem 0;
+
+      h1, h2, h3, h4, h5, h6,
+      .h1, .h2, .h3, .h4, .h5, .h6{
+        color:$ben-franklin-blue;
+      }
+      @media only screen and (max-width: 40em) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  .news {
+    .small-thumb{
+      width:100px;
+      height:auto;
+      margin: 5px 10px 30px 0;
+    }
+    .story {
+      cursor: pointer;
+    }
+    ul.news-list{
+      margin:0;
+      padding:0;
+      li {
+        list-style: none;
+        margin-bottom: 20px;
+        clear: both;
+        border-bottom: 1px solid #f2f2f2;
+        padding: 0 0 10px 0;
+        &:hover{
+          opacity: .6;
+        }
+      }
+      a:link, a:visited {
+        font-weight: normal;
+        > h3 {
+          font-weight: 400;
+          color:$ben-franklin-blue;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .story, .unlinked-story {
+    padding: .8rem;
+    margin-bottom: 20px;
+    cursor: default;
+
+    a img.alignnone {
+      margin:0;
+    }
+    p{
+      font-size: 80%;
+      line-height: 1.4;
+      margin: .5rem 0;
+    }
+  }
+  .unlinked-story{
+    border: 1px solid #DBE1E3;
+    background: #fff;
+    width: 100%;
+  }
+  ul, ol, dl {
+    font-size: .85rem;
+    line-height: 1.6;
+  }
+  .logo {
+    img {
+      width:100%;
+      height:auto;
+    }
+    text-align:center;
+    margin: 0 0 20px 0;
+  }
+  #sidebar {
+    margin-top:1rem;
+    font-size:85%;
+
+    .call-to-action {
+      .h1, .h2, .h3, .h4, .h5, .h6, span.h6 {
+        font-size:.7rem;
+      }
+    }
+  }//#sidebar
+
+  .contact{
+    background:$ghost-gray;
+    padding:1rem;
+
+    aside{
+      font-size: 0.85rem;
+    }
+    .logo{
+      padding:1rem 0;
+    }
+  }
+
+  .inner {
+    background:$geyser;
+    padding:20px;
+  }
+
+  .widget-title {
+    font-size:1rem;
+    margin-top:0;
+    margin-bottom: 0;
+  }
+
+  .notices li{
+    border-bottom: 1px solid $geyser;
+    padding:10px 0;
+
+    &:first-child{
+      padding-top: 0;
+      padding-bottom: 10px;
+    }
+    &:last-child{
+      padding-bottom: 0;
+      border:none;
+    }
+
+  }
+  .event-box{
+    flex-grow: 1;
+
+    .event-title{
+      font-size: 0.75rem;
+      line-height: 01.3rem;
+    }
+
+    .simcal-day:last-of-type .event-row{
+      border-bottom: none;
+    }
+    .event-row{
+      border-bottom:1px solid $geyser;
+    }
+    .simcal-default-calendar-list{
+      padding:0;
+    }
+    .simcal-calendar-list .simcal-day:nth-child(even){
+    //  background:$whitesmoke;
+    }
+    .simcal-default-calendar-list ul.simcal-events li.simcal-event {
+      margin-bottom: 0;
+    }
+    //PLUGIN OVERRIDES
+    ul.simcal-events{
+      margin:0;
+      padding:0;
+    }
+  }
+  .button.alternate.full{
+    margin-bottom: 0;
+  }
+  section{
+    margin-bottom: 2rem;
+
+    &:last-of-type{
+      margin-bottom: 0;
+    }
+  }
+}//department
+
+.department-menu{
+  .current-menu-item{
+    background: $bell-yellow;
+    color:$black;
+  }
+}
