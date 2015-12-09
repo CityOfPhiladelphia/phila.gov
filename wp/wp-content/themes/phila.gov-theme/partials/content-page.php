@@ -13,7 +13,7 @@
 		</header><!-- .entry-header -->
 	</div>
   <div class="row">
-      <div data-swiftype-index='true' class="entry-content small-24 columns">
+      <div data-swiftype-index='true' class="entry-content medium-18 columns">
           <?php the_content(); ?>
       </div><!-- .entry-content -->
 	</div>
