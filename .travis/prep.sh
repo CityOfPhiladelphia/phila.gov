@@ -25,7 +25,7 @@ IP=`aws ec2 describe-instances --filters \
   "Name=tag:Branch,Values=$TRAVIS_BRANCH" \
   "Name=tag:Project,Values=phila.gov" | \
   grep '^INSTANCES' | cut -f15`
-if [ -z "$IP" ]; then echo "ERROR: No machine found for branch \"$TRAVIS_BRANCH\"" && exit 1; fi
+if [ -z "$IP" ]; then echo "No machine found for branch \"$TRAVIS_BRANCH\". Skipping SSH setup" && exit 0; fi
 
 echo 'Setting up SSH access'
 openssl aes-256-cbc -K $encrypted_16a3424d8998_key -iv $encrypted_16a3424d8998_iv -in .travis/philagov2.pem.enc -out ~/.ssh/philagov2.pem -d
