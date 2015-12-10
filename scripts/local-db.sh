@@ -6,5 +6,5 @@ echo "Resetting database (creating if not yet)"
 wp db reset --yes
 
 echo "Loading database dump into database"
-dirn="$(dirname "$0")"
-curl -s "$("$dirn/s3url.sh" "$PHILA_DB_BUCKET" current.sql)" | wp db import -
+_dir="$(dirname "$0")"
+curl -s "$("$_dir/s3url.sh" "$PHILA_DB_BUCKET" current.sql)" | wp db import -
