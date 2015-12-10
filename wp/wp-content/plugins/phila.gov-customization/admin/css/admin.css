@@ -1,0 +1,9 @@
+/* for all users */
+
+/* hide wp target=_blank selector */
+#wp-link .link-target label:first-child,
+#wp-link-target,
+#wp-phila_service_related_items-media-buttons,
+#wp-phila_service_before_start-editor-tools {
+  display: none !important;
+}
