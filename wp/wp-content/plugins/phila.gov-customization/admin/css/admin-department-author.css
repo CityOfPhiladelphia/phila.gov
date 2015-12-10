@@ -1,0 +1,31 @@
+.media-modal .attachments{
+  top:0 !important;
+}
+/* hide all these things */
+#wp-content-media-buttons,
+.media-toolbar-secondary{
+  display:none !important;
+}
+
+/*no cloning abilities*/
+.add-clone,
+.remove-clone,
+/*hide unwanted items from the wordpress menus*/
+.menu-icon-service_post,
+.menu-icon-media,
+a[href^="nav-menus.php"],
+a[href$="nav-menus.php?action=locations"],
+#wp-admin-bar-new-content,
+#wp-admin-bar-wp-logo,
+/*hide content on editing pages */
+#category-adder,
+#news_type-adder,
+#categorydiv,
+.add-new-menu-action,
+#menu-appearance,
+.manage-menus option,
+.edit-slug,
+.menu-icon-document,
+.page-title-action {
+  display: none !important;
+}
