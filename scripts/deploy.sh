@@ -8,13 +8,11 @@ echo 'Reloading php-fpm'
 # https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1242376
 sudo kill -USR2 "$(cat /var/run/php5-fpm.pid)"
 
-echo 'Running WP CLI deploy steps'
+echo 'Refreshing WordPress'
 wp rewrite flush
 wp core update-db
-
-echo 'Giving web server write access to uploads'
 mkdir -p wp/wp-content/uploads
-sudo chmod 777 wp/wp-content/uploads
+sudo chmod 777 -R wp/wp-content/uploads
 
 echo 'Rendering nginx confs'
 # Render nginx confs into /etc with mo
