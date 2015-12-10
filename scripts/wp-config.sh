@@ -23,10 +23,10 @@ wp core config --dbname=${DB_NAME:-'wp'} --dbuser=${DB_USER:-'root'} ${DB_PASS+"
 $SALTS
 
 /** WP_SITEURL overrides DB to set WP core address */
-define('WP_SITEURL', 'https://$PHILA_DOMAIN');
+define('WP_SITEURL', 'https://$HOSTNAME');
 
 /** WP_HOME overrides DB to set public site address */
-define('WP_HOME', 'https://$PHILA_DOMAIN');
+define('WP_HOME', 'https://$HOSTNAME');
 
 /** For AWS and S3 usage */
 define('AWS_ACCESS_KEY_ID', '$AWS_ID');
