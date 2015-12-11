@@ -186,15 +186,14 @@ class wordfenceScanner {
 									'severity' => 1,
 									'ignoreP' => $this->path . $file,
 									'ignoreC' => $fileSum,
-									'shortMsg' => "File appears to be malicious: " . $file,
-									'longMsg' => "This file appears to be installed by a hacker to perform malicious activity. If you know about this file you can choose to ignore it to exclude it from future scans. The text we found in this file that matches a known malicious file is: <strong style=\"color: #F00;\">\"" . $matches[1] . "\"</strong>.",
+									'shortMsg' => "File appears to be malicious: " . esc_html($file),
+									'longMsg' => "This file appears to be installed by a hacker to perform malicious activity. If you know about this file you can choose to ignore it to exclude it from future scans. The text we found in this file that matches a known malicious file is: <strong style=\"color: #F00;\">\"" . esc_html($matches[1]) . "\"</strong>.",
 									'data' => array(
 										'file' => $file,
 										'canDiff' => false,
 										'canFix' => false,
 										'canDelete' => true
-									)
-									));
+									)));
 								break;
 							}
 
@@ -206,15 +205,15 @@ class wordfenceScanner {
 									'severity' => 1,
 									'ignoreP' => $this->path . $file,
 									'ignoreC' => $fileSum,
-									'shortMsg' => "This file may contain malicious executable code: " . $this->path . $file,
-									'longMsg' => "This file is a PHP executable file and contains an " . $this->patterns['word1'] . " function and " . $this->patterns['word2'] . " decoding function on the same line. This is a common technique used by hackers to hide and execute code. If you know about this file you can choose to ignore it to exclude it from future scans.",
+									'shortMsg' => "This file may contain malicious executable code: " . esc_html($this->path . $file),
+									'longMsg' => "This file is a PHP executable file and contains an " . esc_html($this->patterns['word1']) . " function and " . esc_html($this->patterns['word2']) . " decoding function on the same line. This is a common technique used by hackers to hide and execute code. If you know about this file you can choose to ignore it to exclude it from future scans.",
 									'data' => array(
 										'file' => $file,
 										'canDiff' => false,
 										'canFix' => false,
 										'canDelete' => true
 									)
-									));
+								));
 								break;
 							}
 						}
@@ -235,15 +234,15 @@ class wordfenceScanner {
 										'severity' => 1,
 										'ignoreP' => $this->path . $file,
 										'ignoreC' => $fileSum,
-										'shortMsg' => "This file may contain malicious executable code: " . $this->path . $file,
-										'longMsg' => "This file is a PHP executable file and contains the word 'eval' (without quotes) and the word '" . $badStringFound . "' (without quotes). The eval() function along with an encoding function like the one mentioned are commonly used by hackers to hide their code. If you know about this file you can choose to ignore it to exclude it from future scans.",
+										'shortMsg' => "This file may contain malicious executable code: " . esc_html($this->path . $file),
+										'longMsg' => "This file is a PHP executable file and contains the word 'eval' (without quotes) and the word '" . esc_html($badStringFound) . "' (without quotes). The eval() function along with an encoding function like the one mentioned are commonly used by hackers to hide their code. If you know about this file you can choose to ignore it to exclude it from future scans.",
 										'data' => array(
 											'file' => $file,
 											'canDiff' => false,
 											'canFix' => false,
 											'canDelete' => true
 										)
-										));
+									));
 									break;
 								}
 							}
@@ -290,8 +289,8 @@ class wordfenceScanner {
 							'severity' => 1,
 							'ignoreP' => $this->path . $file,
 							'ignoreC' => md5_file($this->path . $file),
-							'shortMsg' => "File contains suspected malware URL: " . $this->path . $file,
-							'longMsg' => "This file contains a suspected malware URL listed on Google's list of malware sites. Wordfence decodes " . $this->patterns['word3'] . " when scanning files so the URL may not be visible if you view this file. The URL is: " . $result['URL'] . " - More info available at <a href=\"http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=" . urlencode($result['URL']) . "&client=googlechrome&hl=en-US\" target=\"_blank\">Google Safe Browsing diagnostic page</a>.",
+							'shortMsg' => "File contains suspected malware URL: " . esc_html($this->path . $file),
+							'longMsg' => "This file contains a suspected malware URL listed on Google's list of malware sites. Wordfence decodes " . esc_html($this->patterns['word3']) . " when scanning files so the URL may not be visible if you view this file. The URL is: " . esc_html($result['URL']) . " - More info available at <a href=\"http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=" . urlencode($result['URL']) . "&client=googlechrome&hl=en-US\" target=\"_blank\">Google Safe Browsing diagnostic page</a>.",
 							'data' => array(
 								'file' => $file,
 								'badURL' => $result['URL'],
@@ -299,8 +298,8 @@ class wordfenceScanner {
 								'canFix' => false,
 								'canDelete' => true,
 								'gsb' => 'goog-malware-shavar'
-								)
-							));
+							)
+						));
 					}
 				} else if($result['badList'] == 'googpub-phish-shavar'){
 					if(! $this->isSafeFile($this->path . $file)){
@@ -309,8 +308,8 @@ class wordfenceScanner {
 							'severity' => 1,
 							'ignoreP' => $this->path . $file,
 							'ignoreC' => md5_file($this->path . $file),
-							'shortMsg' => "File contains suspected phishing URL: " . $this->path . $file,
-							'longMsg' => "This file contains a URL that is a suspected phishing site that is currently listed on Google's list of known phishing sites. The URL is: " . $result['URL'],
+							'shortMsg' => "File contains suspected phishing URL: " . esc_html($this->path . $file),
+							'longMsg' => "This file contains a URL that is a suspected phishing site that is currently listed on Google's list of known phishing sites. The URL is: " . esc_html($result['URL']),
 							'data' => array(
 								'file' => $file,
 								'badURL' => $result['URL'],
@@ -318,8 +317,8 @@ class wordfenceScanner {
 								'canFix' => false,
 								'canDelete' => true,
 								'gsb' => 'googpub-phish-shavar'
-								)
-							));
+							)
+						));
 					}
 				}
 			}
@@ -386,8 +385,8 @@ class wordfenceDBScanner extends wordfenceScanner {
 					'severity' => 1,
 					'ignoreP'  => "{$db->prefix()}option.{$row['option_name']}",
 					'ignoreC'  => md5($row['option_value']),
-					'shortMsg' => "This option may contain malicious executable code: {$row['option_name']}",
-					'longMsg'  => "This option appears to be inserted by a hacker to perform malicious activity. If you know about this option you can choose to ignore it to exclude it from future scans. The text we found in this file that matches a known malicious file is: <strong style=\"color: #F00;\">\"{$matches[1]}\"</strong>.",
+					'shortMsg' => "This option may contain malicious executable code: " . esc_html($row['option_name']),
+					'longMsg'  => "This option appears to be inserted by a hacker to perform malicious activity. If you know about this option you can choose to ignore it to exclude it from future scans. The text we found in this file that matches a known malicious file is: <strong style=\"color: #F00;\">\"" . esc_html($matches[1]). "\"</strong>.",
 					'data'     => array(
 						'option_name' => $row['option_name'],
 						'site_id'     => $blog['blog_id'],

@@ -881,7 +881,7 @@ class wordfence {
 			}
 
 			if(wfConfig::get('blockFakeBots')){
-				if(wfCrawl::isGooglebot() && (! wfCrawl::verifyCrawlerPTR($wfLog->getGooglePattern(), $IP) )){
+				if(wfCrawl::isGooglebot() && !wfCrawl::isVerifiedGoogleCrawler()){
 					$wfLog->blockIP($IP, "Fake Google crawler automatically blocked");
 					wordfence::status(2, 'info', "Blocking fake Googlebot at IP $IP");
 					$wfLog->do503(3600, "Fake Google crawler automatically blocked.");
@@ -2099,7 +2099,7 @@ class wordfence {
 			return array('err' => 1, 'errorMsg' => "The IP address " . wp_kses($IP, array()) . " is whitelisted and can't be blocked or it is in a range of internal IP addresses that Wordfence does not block. You can remove this IP from the whitelist on the Wordfence options page.");
 		}
 		if (wfConfig::get('neverBlockBG') != 'treatAsOtherCrawlers') { //Either neverBlockVerified or neverBlockUA is selected which means the user doesn't want to block google
-			if (wfCrawl::verifyCrawlerPTR('/\.googlebot\.com$/i', $IP)) {
+			if (wfCrawl::isVerifiedGoogleCrawler($IP)) {
 				return array('err' => 1, 'errorMsg' => "The IP address you're trying to block belongs to Google. Your options are currently set to not block these crawlers. Change this in Wordfence options if you want to manually block Google.");
 			}
 		}

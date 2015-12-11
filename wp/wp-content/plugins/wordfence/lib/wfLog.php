@@ -178,7 +178,7 @@ class wfLog {
 			return true;
 		}
 		//These belong to sucuri's scanning servers which will get blocked by Wordfence as a false positive if you try a scan. So we whitelisted them.
-		$externalWhite = array('97.74.127.171', '69.164.203.172', '173.230.128.135', '66.228.34.49', '66.228.40.185', '50.116.36.92', '50.116.36.93', '50.116.3.171', '198.58.96.212', '50.116.63.221', '192.155.92.112', '192.81.128.31', '198.58.106.244', '192.155.95.139', '23.239.9.227', '198.58.112.103', '192.155.94.43', '162.216.16.33', '173.255.233.124', '173.255.233.124', '192.155.90.179', '50.116.41.217', '192.81.129.227', '198.58.111.80');
+		$externalWhite = array('97.74.127.171', '69.164.203.172', '173.230.128.135', '66.228.34.49', '66.228.40.185', '50.116.36.92', '50.116.36.93', '50.116.3.171', '198.58.96.212', '50.116.63.221', '192.155.92.112', '192.81.128.31', '198.58.106.244', '192.155.95.139', '23.239.9.227', '198.58.112.103', '192.155.94.43', '162.216.16.33', '173.255.233.124', '173.255.233.124', '192.155.90.179', '50.116.41.217', '192.81.129.227', '198.58.111.80', '162.216.19.183');
 		if (in_array($IP, $externalWhite)) {
 			return true;
 		}
@@ -219,7 +219,7 @@ class wfLog {
 		}
 
 		// These belong to sucuri's scanning servers which will get blocked by Wordfence as a false positive if you try a scan. So we whitelisted them.
-		$white_listed_ips = array_merge($white_listed_ips, array_map(array('wfUtils', 'inet_pton'), array('97.74.127.171', '69.164.203.172', '173.230.128.135', '66.228.34.49', '66.228.40.185', '50.116.36.92', '50.116.36.93', '50.116.3.171', '198.58.96.212', '50.116.63.221', '192.155.92.112', '192.81.128.31', '198.58.106.244', '192.155.95.139', '23.239.9.227', '198.58.112.103', '192.155.94.43', '162.216.16.33', '173.255.233.124', '173.255.233.124', '192.155.90.179', '50.116.41.217', '192.81.129.227', '198.58.111.80')));
+		$white_listed_ips = array_merge($white_listed_ips, array_map(array('wfUtils', 'inet_pton'), array('97.74.127.171', '69.164.203.172', '173.230.128.135', '66.228.34.49', '66.228.40.185', '50.116.36.92', '50.116.36.93', '50.116.3.171', '198.58.96.212', '50.116.63.221', '192.155.92.112', '192.81.128.31', '198.58.106.244', '192.155.95.139', '23.239.9.227', '198.58.112.103', '192.155.94.43', '162.216.16.33', '173.255.233.124', '173.255.233.124', '192.155.90.179', '50.116.41.217', '192.81.129.227', '198.58.111.80', '162.216.19.183')));
 
 		if ($user_whitelisted === null) {
 			$user_whitelisted = wfConfig::get('whitelisted');
@@ -972,7 +972,7 @@ class wfLog {
 			} else if($nb == 'neverBlockUA' || $nb == 'neverBlockVerified'){
 				if(wfCrawl::isGoogleCrawler()){ //Check the UA using regex
 					if($nb == 'neverBlockVerified'){
-						if(wfCrawl::verifyCrawlerPTR($this->googlePattern, wfUtils::getIP())){ //UA check passed, now verify using PTR if configured to
+						if(wfCrawl::isVerifiedGoogleCrawler($this->googlePattern, wfUtils::getIP())){ //UA check passed, now verify using PTR if configured to
 							self::$gbSafeCache[$cacheKey] = false; //This is a verified Google crawler, so no we can't block it
 						} else {
 							self::$gbSafeCache[$cacheKey] = true; //This is a crawler claiming to be Google but it did not verify
