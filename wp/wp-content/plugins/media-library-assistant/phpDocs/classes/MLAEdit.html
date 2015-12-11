@@ -1,0 +1,519 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAEdit</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#initialize" title="initialize :: Initialization function, similar to __construct()"><span class="description">Initialization function, similar to __construct()</span><pre>initialize()</pre></a></li>
+<li class="method public "><a href="#mla_add_meta_boxes_action" title="mla_add_meta_boxes_action :: Registers meta boxes for the Edit Media screen."><span class="description">Registers meta boxes for the Edit Media screen.</span><pre>mla_add_meta_boxes_action()</pre></a></li>
+<li class="method public "><a href="#mla_admin_enqueue_scripts_action" title="mla_admin_enqueue_scripts_action :: Load the plugin's Style Sheet and Javascript files"><span class="description">Load the plugin's Style Sheet and Javascript files</span><pre>mla_admin_enqueue_scripts_action()</pre></a></li>
+<li class="method public "><a href="#mla_admin_init_action" title="mla_admin_init_action :: Adds Custom Field support to the Edit Media screen."><span class="description">Adds Custom Field support to the Edit Media screen.</span><pre>mla_admin_init_action()</pre></a></li>
+<li class="method public "><a href="#mla_attachment_submitbox_action" title="mla_attachment_submitbox_action :: Adds Last Modified date to the Submit box on the Edit Media screen."><span class="description">Adds Last Modified date to the Submit box on the Edit Media screen.</span><pre>mla_attachment_submitbox_action()</pre></a></li>
+<li class="method public "><a href="#mla_checklist_meta_box" title='mla_checklist_meta_box :: Display taxonomy "checklist" form fields'><span class="description">Display taxonomy "checklist" form fields</span><pre>mla_checklist_meta_box()</pre></a></li>
+<li class="method public "><a href="#mla_edit_add_help_tab" title="mla_edit_add_help_tab :: Add contextual help tabs to the WordPress Edit Media page"><span class="description">Add contextual help tabs to the WordPress Edit Media page</span><pre>mla_edit_add_help_tab()</pre></a></li>
+<li class="method public "><a href="#mla_edit_attachment_action" title="mla_edit_attachment_action :: Saves updates from the Edit Media screen."><span class="description">Saves updates from the Edit Media screen.</span><pre>mla_edit_attachment_action()</pre></a></li>
+<li class="method public "><a href="#mla_featured_in_handler" title="mla_featured_in_handler :: Renders the Featured in meta box on the Edit Media page."><span class="description">Renders the Featured in meta box on the Edit Media page.</span><pre>mla_featured_in_handler()</pre></a></li>
+<li class="method public "><a href="#mla_gallery_in_handler" title="mla_gallery_in_handler :: Renders the Gallery in meta box on the Edit Media page."><span class="description">Renders the Gallery in meta box on the Edit Media page.</span><pre>mla_gallery_in_handler()</pre></a></li>
+<li class="method public "><a href="#mla_image_metadata_handler" title="mla_image_metadata_handler :: Renders the Image Metadata meta box on the Edit Media page."><span class="description">Renders the Image Metadata meta box on the Edit Media page.</span><pre>mla_image_metadata_handler()</pre></a></li>
+<li class="method public "><a href="#mla_inserted_in_handler" title="mla_inserted_in_handler :: Renders the Inserted in meta box on the Edit Media page."><span class="description">Renders the Inserted in meta box on the Edit Media page.</span><pre>mla_inserted_in_handler()</pre></a></li>
+<li class="method public "><a href="#mla_menu_order_handler" title="mla_menu_order_handler :: Renders the Menu Order meta box on the Edit Media page."><span class="description">Renders the Menu Order meta box on the Edit Media page.</span><pre>mla_menu_order_handler()</pre></a></li>
+<li class="method public "><a href="#mla_mla_gallery_in_handler" title="mla_mla_gallery_in_handler :: Renders the MLA Gallery in meta box on the Edit Media page."><span class="description">Renders the MLA Gallery in meta box on the Edit Media page.</span><pre>mla_mla_gallery_in_handler()</pre></a></li>
+<li class="method public "><a href="#mla_parent_info_handler" title="mla_parent_info_handler :: Renders the Parent Info meta box on the Edit Media page."><span class="description">Renders the Parent Info meta box on the Edit Media page.</span><pre>mla_parent_info_handler()</pre></a></li>
+<li class="method public "><a href="#mla_post_updated_messages_filter" title="mla_post_updated_messages_filter :: Adds mapping update messages for display at the top of the Edit Media screen."><span class="description">Adds mapping update messages for display at the top of the Edit Media screen.</span><pre>mla_post_updated_messages_filter()</pre></a></li>
+<li class="method public "><a href="#mla_post_upload_ui" title="mla_post_upload_ui :: Echoes bulk edit area HTML to the Media/Add New screen"><span class="description">Echoes bulk edit area HTML to the Media/Add New screen</span><pre>mla_post_upload_ui()</pre></a></li>
+<li class="method public "><a href="#mla_update_attachment_metadata_postfilter" title="mla_update_attachment_metadata_postfilter :: Apply Media/Add New bulk edit area updates, if any"><span class="description">Apply Media/Add New bulk edit area updates, if any</span><pre>mla_update_attachment_metadata_postfilter()</pre></a></li>
+<li class="method public "><a href="#mla_upload_post_params" title="mla_upload_post_params :: Filter the Media/Add New post parameters."><span class="description">Filter the Media/Add New post parameters.</span><pre>mla_upload_post_params()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_mla_ajax_add_flat_term" title='_mla_ajax_add_flat_term :: Add flat taxonomy term from "checklist" meta box on the Media Manager Modal Window'><span class="description">Add flat taxonomy term from "checklist" meta box on the Media Manager Modal Window</span><pre>_mla_ajax_add_flat_term()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24mla_references" title="$mla_references :: Where-used values for the current item"><span class="description">Where-used values for the current item</span><pre>$mla_references</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#JAVASCRIPT_EDIT_MEDIA_OBJECT" title="JAVASCRIPT_EDIT_MEDIA_OBJECT :: Object name for localizing JavaScript - Add Media and related dialogs"><span class="description">Object name for localizing JavaScript - Add Media and related dialogs</span><pre>JAVASCRIPT_EDIT_MEDIA_OBJECT</pre></a></li>
+<li class="constant  "><a href="#JAVASCRIPT_EDIT_MEDIA_SLUG" title="JAVASCRIPT_EDIT_MEDIA_SLUG :: Slug for localizing and enqueueing JavaScript - Add Media and related dialogs"><span class="description">Slug for localizing and enqueueing JavaScript - Add Media and related dialogs</span><pre>JAVASCRIPT_EDIT_MEDIA_SLUG</pre></a></li>
+<li class="constant  "><a href="#JAVASCRIPT_EDIT_MEDIA_STYLES" title="JAVASCRIPT_EDIT_MEDIA_STYLES :: Slug for localizing and enqueueing CSS - Add Media and related dialogs"><span class="description">Slug for localizing and enqueueing CSS - Add Media and related dialogs</span><pre>JAVASCRIPT_EDIT_MEDIA_STYLES</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAEdit" id="\MLAEdit"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAEdit.html">MLAEdit</a>
+</li>
+</ul>
+<div href="../classes/MLAEdit.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) Edit contains meta boxes for the Edit Media (advanced-form-edit.php) screen</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>0.80</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="initialize" id="initialize"></a><div class="element clickable method public initialize" data-toggle="collapse" data-target=".initialize .collapse">
+<h2>Initialization function, similar to __construct()</h2>
+<pre>initialize() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_add_meta_boxes_action" id="mla_add_meta_boxes_action"></a><div class="element clickable method public mla_add_meta_boxes_action" data-toggle="collapse" data-target=".mla_add_meta_boxes_action .collapse">
+<h2>Registers meta boxes for the Edit Media screen.</h2>
+<pre>mla_add_meta_boxes_action(string $post_type, object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is an action.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_type</h4>
+<code>string</code><p>type of the current post, e.g., 'attachment' (optional, default 'unknown')</p>
+</div>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post (optional, default (object) array ( 'ID' => 0 ))</p>
+</div>
+</div></div>
+</div>
+<a name="mla_admin_enqueue_scripts_action" id="mla_admin_enqueue_scripts_action"></a><div class="element clickable method public mla_admin_enqueue_scripts_action" data-toggle="collapse" data-target=".mla_admin_enqueue_scripts_action .collapse">
+<h2>Load the plugin's Style Sheet and Javascript files</h2>
+<pre>mla_admin_enqueue_scripts_action(string $page_hook) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.71</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$page_hook</h4>
+<code>string</code><p>Name of the page being loaded</p></div>
+</div></div>
+</div>
+<a name="mla_admin_init_action" id="mla_admin_init_action"></a><div class="element clickable method public mla_admin_init_action" data-toggle="collapse" data-target=".mla_admin_init_action .collapse">
+<h2>Adds Custom Field support to the Edit Media screen.</h2>
+<pre>mla_admin_init_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is an action.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_attachment_submitbox_action" id="mla_attachment_submitbox_action"></a><div class="element clickable method public mla_attachment_submitbox_action" data-toggle="collapse" data-target=".mla_attachment_submitbox_action .collapse">
+<h2>Adds Last Modified date to the Submit box on the Edit Media screen.</h2>
+<pre>mla_attachment_submitbox_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is an action.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_checklist_meta_box" id="mla_checklist_meta_box"></a><div class="element clickable method public mla_checklist_meta_box" data-toggle="collapse" data-target=".mla_checklist_meta_box .collapse">
+<h2>Display taxonomy "checklist" form fields</h2>
+<pre>mla_checklist_meta_box(object $target_post, array $box) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adapted from /wp-admin/includes/ajax-actions.php function _wp_ajax_add_hierarchical_term().
+Includes the "? Search" area to filter the term checklist by entering part
+or all of a word/phrase in the term label.
+Output to the Media/Edit Media screen and to the Media Manager Modal Window.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.71</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$target_post</h4>
+<code>object</code><p>The current post</p></div>
+<div class="subelement argument">
+<h4>$box</h4>
+<code>array</code><p>The meta box parameters</p></div>
+</div></div>
+</div>
+<a name="mla_edit_add_help_tab" id="mla_edit_add_help_tab"></a><div class="element clickable method public mla_edit_add_help_tab" data-toggle="collapse" data-target=".mla_edit_add_help_tab .collapse">
+<h2>Add contextual help tabs to the WordPress Edit Media page</h2>
+<pre>mla_edit_add_help_tab(string $admin_title, string $title) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$admin_title</h4>
+<code>string</code><p>title as shown on the screen</p></div>
+<div class="subelement argument">
+<h4>$title</h4>
+<code>string</code><p>title as shown in the HTML header</p></div>
+</div></div>
+</div>
+<a name="mla_edit_attachment_action" id="mla_edit_attachment_action"></a><div class="element clickable method public mla_edit_attachment_action" data-toggle="collapse" data-target=".mla_edit_attachment_action .collapse">
+<h2>Saves updates from the Edit Media screen.</h2>
+<pre>mla_edit_attachment_action(integer $post_ID) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is an action.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_ID</h4>
+<code>integer</code><p>ID of the current post</p></div>
+</div></div>
+</div>
+<a name="mla_featured_in_handler" id="mla_featured_in_handler"></a><div class="element clickable method public mla_featured_in_handler" data-toggle="collapse" data-target=".mla_featured_in_handler .collapse">
+<h2>Renders the Featured in meta box on the Edit Media page.</h2>
+<pre>mla_featured_in_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_gallery_in_handler" id="mla_gallery_in_handler"></a><div class="element clickable method public mla_gallery_in_handler" data-toggle="collapse" data-target=".mla_gallery_in_handler .collapse">
+<h2>Renders the Gallery in meta box on the Edit Media page.</h2>
+<pre>mla_gallery_in_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_image_metadata_handler" id="mla_image_metadata_handler"></a><div class="element clickable method public mla_image_metadata_handler" data-toggle="collapse" data-target=".mla_image_metadata_handler .collapse">
+<h2>Renders the Image Metadata meta box on the Edit Media page.</h2>
+<pre>mla_image_metadata_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_inserted_in_handler" id="mla_inserted_in_handler"></a><div class="element clickable method public mla_inserted_in_handler" data-toggle="collapse" data-target=".mla_inserted_in_handler .collapse">
+<h2>Renders the Inserted in meta box on the Edit Media page.</h2>
+<pre>mla_inserted_in_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_menu_order_handler" id="mla_menu_order_handler"></a><div class="element clickable method public mla_menu_order_handler" data-toggle="collapse" data-target=".mla_menu_order_handler .collapse">
+<h2>Renders the Menu Order meta box on the Edit Media page.</h2>
+<pre>mla_menu_order_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_mla_gallery_in_handler" id="mla_mla_gallery_in_handler"></a><div class="element clickable method public mla_mla_gallery_in_handler" data-toggle="collapse" data-target=".mla_mla_gallery_in_handler .collapse">
+<h2>Renders the MLA Gallery in meta box on the Edit Media page.</h2>
+<pre>mla_mla_gallery_in_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_parent_info_handler" id="mla_parent_info_handler"></a><div class="element clickable method public mla_parent_info_handler" data-toggle="collapse" data-target=".mla_parent_info_handler .collapse">
+<h2>Renders the Parent Info meta box on the Edit Media page.</h2>
+<pre>mla_parent_info_handler(object $post) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a callback function.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>current post</p></div>
+</div></div>
+</div>
+<a name="mla_post_updated_messages_filter" id="mla_post_updated_messages_filter"></a><div class="element clickable method public mla_post_updated_messages_filter" data-toggle="collapse" data-target=".mla_post_updated_messages_filter .collapse">
+<h2>Adds mapping update messages for display at the top of the Edit Media screen.</h2>
+<pre>mla_post_updated_messages_filter(array $messages) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Declared public because it is a filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$messages</h4>
+<code>array</code><p>messages for the Edit screen</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated messages</div>
+</div></div>
+</div>
+<a name="mla_post_upload_ui" id="mla_post_upload_ui"></a><div class="element clickable method public mla_post_upload_ui" data-toggle="collapse" data-target=".mla_post_upload_ui .collapse">
+<h2>Echoes bulk edit area HTML to the Media/Add New screen</h2>
+<pre>mla_post_upload_ui() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Fires on the post upload UI screen; legacy (pre-3.5.0) upload interface.
+Anything echoed here goes below the "Maximum upload file size" message
+and above the id="media-items" div.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.02</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_update_attachment_metadata_postfilter" id="mla_update_attachment_metadata_postfilter"></a><div class="element clickable method public mla_update_attachment_metadata_postfilter" data-toggle="collapse" data-target=".mla_update_attachment_metadata_postfilter .collapse">
+<h2>Apply Media/Add New bulk edit area updates, if any</h2>
+<pre>mla_update_attachment_metadata_postfilter(array $data, integer $post_id, array $options) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This filter is called AFTER MLA mapping rules are applied during
+wp_update_attachment_metadata() processing. If none of the mapping rules
+is enabled it is called from the 'wp_update_attachment_metadata' filter
+with just two arguments.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.02</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>attachment metadata</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>The Post ID of the new/updated attachment</p>
+</div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>Processing options, e.g., 'is_upload'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated attachment metadata</div>
+</div></div>
+</div>
+<a name="mla_upload_post_params" id="mla_upload_post_params"></a><div class="element clickable method public mla_upload_post_params" data-toggle="collapse" data-target=".mla_upload_post_params .collapse">
+<h2>Filter the Media/Add New post parameters.</h2>
+<pre>mla_upload_post_params(array $post_parms) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.02</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_parms</h4>
+<code>array</code><p>An array of media upload parameters used by Plupload.</p></div>
+</div></div>
+</div>
+<a name="_mla_ajax_add_flat_term" id="_mla_ajax_add_flat_term"></a><div class="element clickable method private _mla_ajax_add_flat_term" data-toggle="collapse" data-target="._mla_ajax_add_flat_term .collapse">
+<h2>Add flat taxonomy term from "checklist" meta box on the Media Manager Modal Window</h2>
+<pre>_mla_ajax_add_flat_term(string $key) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adapted from the WordPress post_categories_meta_box() in /wp-admin/includes/meta-boxes.php.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>The taxonomy name, from $_POST['action']</p>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24mla_references" id="$mla_references"> </a><div class="element clickable property private $mla_references" data-toggle="collapse" data-target=".$mla_references .collapse">
+<h2>Where-used values for the current item</h2>
+<pre>$mla_references : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains the Featured/Inserted/Gallery/MLA Gallery references for the item.
+The array is built once each page load and cached for subsequent calls.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a name="JAVASCRIPT_EDIT_MEDIA_OBJECT" id="JAVASCRIPT_EDIT_MEDIA_OBJECT"> </a><div class="element clickable constant  JAVASCRIPT_EDIT_MEDIA_OBJECT" data-toggle="collapse" data-target=".JAVASCRIPT_EDIT_MEDIA_OBJECT .collapse">
+<h2>Object name for localizing JavaScript - Add Media and related dialogs</h2>
+<pre>JAVASCRIPT_EDIT_MEDIA_OBJECT : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="JAVASCRIPT_EDIT_MEDIA_SLUG" id="JAVASCRIPT_EDIT_MEDIA_SLUG"> </a><div class="element clickable constant  JAVASCRIPT_EDIT_MEDIA_SLUG" data-toggle="collapse" data-target=".JAVASCRIPT_EDIT_MEDIA_SLUG .collapse">
+<h2>Slug for localizing and enqueueing JavaScript - Add Media and related dialogs</h2>
+<pre>JAVASCRIPT_EDIT_MEDIA_SLUG : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="JAVASCRIPT_EDIT_MEDIA_STYLES" id="JAVASCRIPT_EDIT_MEDIA_STYLES"> </a><div class="element clickable constant  JAVASCRIPT_EDIT_MEDIA_STYLES" data-toggle="collapse" data-target=".JAVASCRIPT_EDIT_MEDIA_STYLES .collapse">
+<h2>Slug for localizing and enqueueing CSS - Add Media and related dialogs</h2>
+<pre>JAVASCRIPT_EDIT_MEDIA_STYLES : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.20</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>

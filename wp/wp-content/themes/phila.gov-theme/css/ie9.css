@@ -1,0 +1,21 @@
+/*---_____------____IE-----______----___---_____*/
+
+.home #news > div{
+    display:block !important;
+    float:left !important;
+    margin-right:40px;
+}
+
+.container:after, #news:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input[type="search"]{
+    width:100%;
+}
+
+.home #active dt, .home #active dd{
+    border-bottom: none;
+}

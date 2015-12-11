@@ -1,0 +1,15 @@
+/*---_____------____IE8-----______----___---_____*/
+.home ul {
+    list-style: none !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+dt span {
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+}
+
+#breadcrumbs li {
+    margin:0 10px 0 0;
+}

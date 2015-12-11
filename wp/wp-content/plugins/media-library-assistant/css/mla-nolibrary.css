@@ -1,0 +1,8 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for hiding the Media/Library submenu entry.
+ */
+
+li#menu-media > ul > li.wp-first-item + li { display: none; }

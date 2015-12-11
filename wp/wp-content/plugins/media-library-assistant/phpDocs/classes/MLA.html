@@ -1,0 +1,1150 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLA</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#initialize" title="initialize :: Initialization function, similar to __construct()"><span class="description">Initialization function, similar to __construct()</span><pre>initialize()</pre></a></li>
+<li class="method public "><a href="#mla_add_help_tab" title="mla_add_help_tab :: Add contextual help tabs to all the MLA pages"><span class="description">Add contextual help tabs to all the MLA pages</span><pre>mla_add_help_tab()</pre></a></li>
+<li class="method public "><a href="#mla_add_menu_options" title='mla_add_menu_options :: Add the "XX Entries per page" filter to the Screen Options tab'><span class="description">Add the "XX Entries per page" filter to the Screen Options tab</span><pre>mla_add_menu_options()</pre></a></li>
+<li class="method public "><a href="#mla_admin_enqueue_scripts_action" title="mla_admin_enqueue_scripts_action :: Load the plugin's Style Sheet and Javascript files"><span class="description">Load the plugin's Style Sheet and Javascript files</span><pre>mla_admin_enqueue_scripts_action()</pre></a></li>
+<li class="method public "><a href="#mla_admin_init_action" title="mla_admin_init_action :: Load the plugin's Ajax handler or process Edit Media update actions"><span class="description">Load the plugin's Ajax handler or process Edit Media update actions</span><pre>mla_admin_init_action()</pre></a></li>
+<li class="method public "><a href="#mla_admin_menu_action" title="mla_admin_menu_action :: Add the submenu pages"><span class="description">Add the submenu pages</span><pre>mla_admin_menu_action()</pre></a></li>
+<li class="method public "><a href="#mla_admin_print_styles_action" title="mla_admin_print_styles_action :: Print optional in-lne styles for Media/Assistant submenu table"><span class="description">Print optional in-lne styles for Media/Assistant submenu table</span><pre>mla_admin_print_styles_action()</pre></a></li>
+<li class="method public "><a href="#mla_authors_dropdown" title="mla_authors_dropdown :: Get the edit Authors dropdown box, if user has suitable permissions"><span class="description">Get the edit Authors dropdown box, if user has suitable permissions</span><pre>mla_authors_dropdown()</pre></a></li>
+<li class="method public "><a href="#mla_clear_filter_by" title="mla_clear_filter_by :: Clear the Media/Assistant submenu Filter-by variables"><span class="description">Clear the Media/Assistant submenu Filter-by variables</span><pre>mla_clear_filter_by()</pre></a></li>
+<li class="method public "><a href="#mla_debug_add" title="mla_debug_add :: Add a debug message to the collection"><span class="description">Add a debug message to the collection</span><pre>mla_debug_add()</pre></a></li>
+<li class="method public "><a href="#mla_debug_content" title="mla_debug_content :: Get debug information without clearing the buffer"><span class="description">Get debug information without clearing the buffer</span><pre>mla_debug_content()</pre></a></li>
+<li class="method public "><a href="#mla_debug_file" title="mla_debug_file :: Get/Set debug information collection output file for mode = 'log'"><span class="description">Get/Set debug information collection output file for mode = 'log'</span><pre>mla_debug_file()</pre></a></li>
+<li class="method public "><a href="#mla_debug_flush" title="mla_debug_flush :: Flush debug information and clear buffer"><span class="description">Flush debug information and clear buffer</span><pre>mla_debug_flush()</pre></a></li>
+<li class="method public "><a href="#mla_debug_mode" title="mla_debug_mode :: Get/Set debug information collection mode"><span class="description">Get/Set debug information collection mode</span><pre>mla_debug_mode()</pre></a></li>
+<li class="method public "><a href="#mla_find_posts_ajax_action" title='mla_find_posts_ajax_action :: Ajax handler to fetch candidates for the "Set Parent" popup window'><span class="description">Ajax handler to fetch candidates for the "Set Parent" popup window</span><pre>mla_find_posts_ajax_action()</pre></a></li>
+<li class="method public "><a href="#mla_inline_edit_ajax_action" title="mla_inline_edit_ajax_action :: Ajax handler for inline editing"><span class="description">Ajax handler for inline editing</span><pre>mla_inline_edit_ajax_action()</pre></a></li>
+<li class="method public "><a href="#mla_load_media_action" title="mla_load_media_action :: Redirect to Media/Assistant if Media/Library is hidden"><span class="description">Redirect to Media/Assistant if Media/Library is hidden</span><pre>mla_load_media_action()</pre></a></li>
+<li class="method public "><a href="#mla_name_conflict_reporting_action" title="mla_name_conflict_reporting_action :: Displays name conflict error messages at the top of the Dashboard"><span class="description">Displays name conflict error messages at the top of the Dashboard</span><pre>mla_name_conflict_reporting_action()</pre></a></li>
+<li class="method public "><a href="#mla_parent_file_filter" title="mla_parent_file_filter :: Cleanup menus for Edit Tags/Categories page"><span class="description">Cleanup menus for Edit Tags/Categories page</span><pre>mla_parent_file_filter()</pre></a></li>
+<li class="method public "><a href="#mla_plugins_loaded_action" title="mla_plugins_loaded_action :: Load a plugin text domain and alternate debug file"><span class="description">Load a plugin text domain and alternate debug file</span><pre>mla_plugins_loaded_action()</pre></a></li>
+<li class="method public "><a href="#mla_prepare_bulk_edits" title="mla_prepare_bulk_edits :: Prepare Bulk Edit field-level updates"><span class="description">Prepare Bulk Edit field-level updates</span><pre>mla_prepare_bulk_edits()</pre></a></li>
+<li class="method public "><a href="#mla_process_bulk_action" title="mla_process_bulk_action :: Process bulk action for one or more attachments"><span class="description">Process bulk action for one or more attachments</span><pre>mla_process_bulk_action()</pre></a></li>
+<li class="method public "><a href="#mla_render_admin_page" title='mla_render_admin_page :: Render the "Assistant" subpage in the Media section, using the list_table package'><span class="description">Render the "Assistant" subpage in the Media section, using the list_table package</span><pre>mla_render_admin_page()</pre></a></li>
+<li class="method public "><a href="#mla_screen_options_show_screen_filter" title="mla_screen_options_show_screen_filter :: Only show screen options on the table-list screen"><span class="description">Only show screen options on the table-list screen</span><pre>mla_screen_options_show_screen_filter()</pre></a></li>
+<li class="method public "><a href="#mla_set_parent_ajax_action" title="mla_set_parent_ajax_action :: Ajax handler to set post_parent for a single attachment"><span class="description">Ajax handler to set post_parent for a single attachment</span><pre>mla_set_parent_ajax_action()</pre></a></li>
+<li class="method public "><a href="#mla_set_parent_form" title='mla_set_parent_form :: Build the hidden form for the "Set Parent" popup modal window'><span class="description">Build the hidden form for the "Set Parent" popup modal window</span><pre>mla_set_parent_form()</pre></a></li>
+<li class="method public "><a href="#mla_set_screen_option_filter" title='mla_set_screen_option_filter :: Save the "Entries per page" option set by this user'><span class="description">Save the "Entries per page" option set by this user</span><pre>mla_set_screen_option_filter()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_build_inline_edit_form" title="_build_inline_edit_form :: Build the hidden row templates for inline editing (quick and bulk edit)"><span class="description">Build the hidden row templates for inline editing (quick and bulk edit)</span><pre>_build_inline_edit_form()</pre></a></li>
+<li class="method private "><a href="#_bulk_edit_ajax_handler" title="_bulk_edit_ajax_handler :: Ajax handler for bulk editing and mapping"><span class="description">Ajax handler for bulk editing and mapping</span><pre>_bulk_edit_ajax_handler()</pre></a></li>
+<li class="method private "><a href="#_compose_post_type_select" title="_compose_post_type_select :: Compose a Post Type Options list with current selection"><span class="description">Compose a Post Type Options list with current selection</span><pre>_compose_post_type_select()</pre></a></li>
+<li class="method private "><a href="#_current_bulk_action" title="_current_bulk_action :: Get the current action selected from the bulk actions dropdown"><span class="description">Get the current action selected from the bulk actions dropdown</span><pre>_current_bulk_action()</pre></a></li>
+<li class="method private "><a href="#_debug_log" title="_debug_log :: Write a debug message to the appropriate log file"><span class="description">Write a debug message to the appropriate log file</span><pre>_debug_log()</pre></a></li>
+<li class="method private "><a href="#_delete_single_item" title="_delete_single_item :: Delete a single item permanently"><span class="description">Delete a single item permanently</span><pre>_delete_single_item()</pre></a></li>
+<li class="method private "><a href="#_process_bulk_value" title="_process_bulk_value :: Process bulk edit area fields, which may contain a Content Template"><span class="description">Process bulk edit area fields, which may contain a Content Template</span><pre>_process_bulk_value()</pre></a></li>
+<li class="method private "><a href="#_process_mla_download_file" title="_process_mla_download_file :: Process secure file download"><span class="description">Process secure file download</span><pre>_process_mla_download_file()</pre></a></li>
+<li class="method private "><a href="#_restore_single_item" title="_restore_single_item :: Restore a single item from the Trash"><span class="description">Restore a single item from the Trash</span><pre>_restore_single_item()</pre></a></li>
+<li class="method private "><a href="#_trash_single_item" title="_trash_single_item :: Move a single item to Trash"><span class="description">Move a single item to Trash</span><pre>_trash_single_item()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24mla_debug_level" title="$mla_debug_level :: Effective MLA Debug Level, from MLA_DEBUG_LEVEL or override option"><span class="description">Effective MLA Debug Level, from MLA_DEBUG_LEVEL or override option</span><pre>$mla_debug_level</pre></a></li>
+<li class="property public "><a href="#%24original_php_log" title="$original_php_log :: Original PHP error_log path and file"><span class="description">Original PHP error_log path and file</span><pre>$original_php_log</pre></a></li>
+<li class="property public "><a href="#%24original_php_reporting" title="$original_php_reporting :: Original PHP error_reporting value"><span class="description">Original PHP error_reporting value</span><pre>$original_php_reporting</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24mla_debug_file" title="$mla_debug_file :: Debug information output file for mode = 'log'"><span class="description">Debug information output file for mode = 'log'</span><pre>$mla_debug_file</pre></a></li>
+<li class="property private "><a href="#%24mla_debug_messages" title="$mla_debug_messages :: Accumulates debug messages"><span class="description">Accumulates debug messages</span><pre>$mla_debug_messages</pre></a></li>
+<li class="property private "><a href="#%24mla_debug_mode" title="$mla_debug_mode :: Debug information collection mode"><span class="description">Debug information collection mode</span><pre>$mla_debug_mode</pre></a></li>
+<li class="property private "><a href="#%24mla_language_support_error_messages" title="$mla_language_support_error_messages :: Accumulates error messages from name conflict tests"><span class="description">Accumulates error messages from name conflict tests</span><pre>$mla_language_support_error_messages</pre></a></li>
+<li class="property private "><a href="#%24page_hooks" title="$page_hooks :: Holds screen ids to match help text to corresponding screen"><span class="description">Holds screen ids to match help text to corresponding screen</span><pre>$page_hooks</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#ADMIN_PAGE_SLUG" title="ADMIN_PAGE_SLUG :: Slug for adding plugin submenu"><span class="description">Slug for adding plugin submenu</span><pre>ADMIN_PAGE_SLUG</pre></a></li>
+<li class="constant  "><a href="#CURRENT_MLA_VERSION" title="CURRENT_MLA_VERSION :: Current version number"><span class="description">Current version number</span><pre>CURRENT_MLA_VERSION</pre></a></li>
+<li class="constant  "><a href="#JAVASCRIPT_INLINE_EDIT_OBJECT" title="JAVASCRIPT_INLINE_EDIT_OBJECT :: Object name for localizing JavaScript - MLA List Table"><span class="description">Object name for localizing JavaScript - MLA List Table</span><pre>JAVASCRIPT_INLINE_EDIT_OBJECT</pre></a></li>
+<li class="constant  "><a href="#JAVASCRIPT_INLINE_EDIT_SLUG" title="JAVASCRIPT_INLINE_EDIT_SLUG :: Slug for localizing and enqueueing JavaScript - MLA List Table"><span class="description">Slug for localizing and enqueueing JavaScript - MLA List Table</span><pre>JAVASCRIPT_INLINE_EDIT_SLUG</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_NONCE_ACTION" title="MLA_ADMIN_NONCE_ACTION :: Action name; gives a context for the nonce"><span class="description">Action name; gives a context for the nonce</span><pre>MLA_ADMIN_NONCE_ACTION</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_NONCE_NAME" title="MLA_ADMIN_NONCE_NAME :: Nonce name; uniquely identifies the nonce"><span class="description">Nonce name; uniquely identifies the nonce</span><pre>MLA_ADMIN_NONCE_NAME</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SET_PARENT" title="MLA_ADMIN_SET_PARENT :: mla_admin_action value for setting an item's parent object"><span class="description">mla_admin_action value for setting an item's parent object</span><pre>MLA_ADMIN_SET_PARENT</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP" title="MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP :: mla_admin_action value for mapping Custom Field metadata"><span class="description">mla_admin_action value for mapping Custom Field metadata</span><pre>MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_DELETE" title="MLA_ADMIN_SINGLE_DELETE :: mla_admin_action value for permanently deleting a single item"><span class="description">mla_admin_action value for permanently deleting a single item</span><pre>MLA_ADMIN_SINGLE_DELETE</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_EDIT_DISPLAY" title="MLA_ADMIN_SINGLE_EDIT_DISPLAY :: mla_admin_action value to display a single item for editing"><span class="description">mla_admin_action value to display a single item for editing</span><pre>MLA_ADMIN_SINGLE_EDIT_DISPLAY</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_EDIT_UPDATE" title="MLA_ADMIN_SINGLE_EDIT_UPDATE :: mla_admin_action value for updating a single item"><span class="description">mla_admin_action value for updating a single item</span><pre>MLA_ADMIN_SINGLE_EDIT_UPDATE</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_MAP" title="MLA_ADMIN_SINGLE_MAP :: mla_admin_action value for mapping IPTC/EXIF metadata"><span class="description">mla_admin_action value for mapping IPTC/EXIF metadata</span><pre>MLA_ADMIN_SINGLE_MAP</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_RESTORE" title="MLA_ADMIN_SINGLE_RESTORE :: mla_admin_action value for restoring a single item from the trash"><span class="description">mla_admin_action value for restoring a single item from the trash</span><pre>MLA_ADMIN_SINGLE_RESTORE</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_SINGLE_TRASH" title="MLA_ADMIN_SINGLE_TRASH :: mla_admin_action value for moving a single item to the trash"><span class="description">mla_admin_action value for moving a single item to the trash</span><pre>MLA_ADMIN_SINGLE_TRASH</pre></a></li>
+<li class="constant  "><a href="#MLA_ADMIN_TERMS_SEARCH" title="MLA_ADMIN_TERMS_SEARCH :: mla_admin_action value for searching taxonomy terms"><span class="description">mla_admin_action value for searching taxonomy terms</span><pre>MLA_ADMIN_TERMS_SEARCH</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_CATEGORY_AJAX" title="MLA_DEBUG_CATEGORY_AJAX :: Constant to log Ajax debug activity"><span class="description">Constant to log Ajax debug activity</span><pre>MLA_DEBUG_CATEGORY_AJAX</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_CATEGORY_LANGUAGE" title="MLA_DEBUG_CATEGORY_LANGUAGE :: Constant to log WPML/Polylang action/filter activity"><span class="description">Constant to log WPML/Polylang action/filter activity</span><pre>MLA_DEBUG_CATEGORY_LANGUAGE</pre></a></li>
+<li class="constant  "><a href="#MLA_DEVELOPMENT_VERSION" title="MLA_DEVELOPMENT_VERSION :: Current date for Development Version, empty for production versions"><span class="description">Current date for Development Version, empty for production versions</span><pre>MLA_DEVELOPMENT_VERSION</pre></a></li>
+<li class="constant  "><a href="#STYLESHEET_SLUG" title="STYLESHEET_SLUG :: Slug for registering and enqueueing plugin style sheet"><span class="description">Slug for registering and enqueueing plugin style sheet</span><pre>STYLESHEET_SLUG</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLA" id="\MLA"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLA.html">MLA</a>
+</li>
+</ul>
+<div href="../classes/MLA.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) provides several enhancements to the handling
+of images and files held in the WordPress Media Library.</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>0.1</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="initialize" id="initialize"></a><div class="element clickable method public initialize" data-toggle="collapse" data-target=".initialize .collapse">
+<h2>Initialization function, similar to __construct()</h2>
+<pre>initialize() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This function contains add_action and add_filter calls
+to set up the Ajax handlers, enqueue JavaScript and CSS files, and
+set up the Assistant submenu.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_add_help_tab" id="mla_add_help_tab"></a><div class="element clickable method public mla_add_help_tab" data-toggle="collapse" data-target=".mla_add_help_tab .collapse">
+<h2>Add contextual help tabs to all the MLA pages</h2>
+<pre>mla_add_help_tab() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_add_menu_options" id="mla_add_menu_options"></a><div class="element clickable method public mla_add_menu_options" data-toggle="collapse" data-target=".mla_add_menu_options .collapse">
+<h2>Add the "XX Entries per page" filter to the Screen Options tab</h2>
+<pre>mla_add_menu_options() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_admin_enqueue_scripts_action" id="mla_admin_enqueue_scripts_action"></a><div class="element clickable method public mla_admin_enqueue_scripts_action" data-toggle="collapse" data-target=".mla_admin_enqueue_scripts_action .collapse">
+<h2>Load the plugin's Style Sheet and Javascript files</h2>
+<pre>mla_admin_enqueue_scripts_action(string $page_hook) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$page_hook</h4>
+<code>string</code><p>Name of the page being loaded</p></div>
+</div></div>
+</div>
+<a name="mla_admin_init_action" id="mla_admin_init_action"></a><div class="element clickable method public mla_admin_init_action" data-toggle="collapse" data-target=".mla_admin_init_action .collapse">
+<h2>Load the plugin's Ajax handler or process Edit Media update actions</h2>
+<pre>mla_admin_init_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_admin_menu_action" id="mla_admin_menu_action"></a><div class="element clickable method public mla_admin_menu_action" data-toggle="collapse" data-target=".mla_admin_menu_action .collapse">
+<h2>Add the submenu pages</h2>
+<pre>mla_admin_menu_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Add a submenu page in the "Media" section,
+add settings page in the "Settings" section.
+add settings link in the Plugins section entry for MLA.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_admin_print_styles_action" id="mla_admin_print_styles_action"></a><div class="element clickable method public mla_admin_print_styles_action" data-toggle="collapse" data-target=".mla_admin_print_styles_action .collapse">
+<h2>Print optional in-lne styles for Media/Assistant submenu table</h2>
+<pre>mla_admin_print_styles_action() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_authors_dropdown" id="mla_authors_dropdown"></a><div class="element clickable method public mla_authors_dropdown" data-toggle="collapse" data-target=".mla_authors_dropdown .collapse">
+<h2>Get the edit Authors dropdown box, if user has suitable permissions</h2>
+<pre>mla_authors_dropdown(integer $author, string $name, string $class) : string | false</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$author</h4>
+<code>integer</code><p>Optional User ID of the current author, default 0</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Optional HTML name attribute, default 'post_author'</p>
+</div>
+<div class="subelement argument">
+<h4>$class</h4>
+<code>string</code><p>Optional HTML class attribute, default 'authors'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>false</code>HTML markup for the dropdown field or False</div>
+</div></div>
+</div>
+<a name="mla_clear_filter_by" id="mla_clear_filter_by"></a><div class="element clickable method public mla_clear_filter_by" data-toggle="collapse" data-target=".mla_clear_filter_by .collapse">
+<h2>Clear the Media/Assistant submenu Filter-by variables</h2>
+<pre>mla_clear_filter_by(array $preserves) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$preserves</h4>
+<code>array</code><p>Filters to be retained</p></div>
+</div></div>
+</div>
+<a name="mla_debug_add" id="mla_debug_add"></a><div class="element clickable method public mla_debug_add" data-toggle="collapse" data-target=".mla_debug_add .collapse">
+<h2>Add a debug message to the collection</h2>
+<pre>mla_debug_add(string $message, integer $debug_level) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Message text</p></div>
+<div class="subelement argument">
+<h4>$debug_level</h4>
+<code>integer</code><p>Optional. Debug category.</p></div>
+</div></div>
+</div>
+<a name="mla_debug_content" id="mla_debug_content"></a><div class="element clickable method public mla_debug_content" data-toggle="collapse" data-target=".mla_debug_content .collapse">
+<h2>Get debug information without clearing the buffer</h2>
+<pre>mla_debug_content(string $format, string $glue) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$format</h4>
+<code>string</code><p>Return data type: 'string' (default) or 'array'</p>
+</div>
+<div class="subelement argument">
+<h4>$glue</h4>
+<code>string</code><p>Join array elements with '\n' or '</p>
+
+<p><</p>
+
+<p>p>' (default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if success else false</div>
+</div></div>
+</div>
+<a name="mla_debug_file" id="mla_debug_file"></a><div class="element clickable method public mla_debug_file" data-toggle="collapse" data-target=".mla_debug_file .collapse">
+<h2>Get/Set debug information collection output file for mode = 'log'</h2>
+<pre>mla_debug_file(string $file) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Note that WP_CONTENT_DIR will be pre-pended to the value, and a slash
+will be added to the front of the value if necessary.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.14</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>string</code><p>Optional. The (optional path and) file name, relative to WP_CONTENT_DIR, or false/empty string to clear the value.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The previous file value, i.e., before the update, relative to WP_CONTENT_DIR</div>
+</div></div>
+</div>
+<a name="mla_debug_flush" id="mla_debug_flush"></a><div class="element clickable method public mla_debug_flush" data-toggle="collapse" data-target=".mla_debug_flush .collapse">
+<h2>Flush debug information and clear buffer</h2>
+<pre>mla_debug_flush(string $destination, boolean $stop_collecting) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$destination</h4>
+<code>string</code><p>Destination: 'buffer' (default), 'console', 'log' or 'none'</p>
+</div>
+<div class="subelement argument">
+<h4>$stop_collecting</h4>
+<code>boolean</code><p>true (default) to stop, false to continue collection</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>debug content if $destination == 'buffer' else empty string</div>
+</div></div>
+</div>
+<a name="mla_debug_mode" id="mla_debug_mode"></a><div class="element clickable method public mla_debug_mode" data-toggle="collapse" data-target=".mla_debug_mode .collapse">
+<h2>Get/Set debug information collection mode</h2>
+<pre>mla_debug_mode(string $mode) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$mode</h4>
+<code>string</code><p>Optional. New collection mode: 'none' (default), 'buffer', 'console' or 'log'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The previous mode value, i.e., before the update</div>
+</div></div>
+</div>
+<a name="mla_find_posts_ajax_action" id="mla_find_posts_ajax_action"></a><div class="element clickable method public mla_find_posts_ajax_action" data-toggle="collapse" data-target=".mla_find_posts_ajax_action .collapse">
+<h2>Ajax handler to fetch candidates for the "Set Parent" popup window</h2>
+<pre>mla_find_posts_ajax_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adapted from wp_ajax_find_posts in /wp-admin/includes/ajax-actions.php.
+Adds filters for post type and pagination.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_inline_edit_ajax_action" id="mla_inline_edit_ajax_action"></a><div class="element clickable method public mla_inline_edit_ajax_action" data-toggle="collapse" data-target=".mla_inline_edit_ajax_action .collapse">
+<h2>Ajax handler for inline editing</h2>
+<pre>mla_inline_edit_ajax_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adapted for Quick Edit from wp_ajax_inline_save in /wp-admin/includes/ajax-actions.php</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_load_media_action" id="mla_load_media_action"></a><div class="element clickable method public mla_load_media_action" data-toggle="collapse" data-target=".mla_load_media_action .collapse">
+<h2>Redirect to Media/Assistant if Media/Library is hidden</h2>
+<pre>mla_load_media_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.60</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_name_conflict_reporting_action" id="mla_name_conflict_reporting_action"></a><div class="element clickable method public mla_name_conflict_reporting_action" data-toggle="collapse" data-target=".mla_name_conflict_reporting_action .collapse">
+<h2>Displays name conflict error messages at the top of the Dashboard</h2>
+<pre>mla_name_conflict_reporting_action() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.11</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_parent_file_filter" id="mla_parent_file_filter"></a><div class="element clickable method public mla_parent_file_filter" data-toggle="collapse" data-target=".mla_parent_file_filter .collapse">
+<h2>Cleanup menus for Edit Tags/Categories page</h2>
+<pre>mla_parent_file_filter(array $parent_file) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Fixes the submenu bolding when going to the Edit Media screen.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$parent_file</h4>
+<code>array</code><p>The top-level menu page</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The updated top-level menu page</div>
+</div></div>
+</div>
+<a name="mla_plugins_loaded_action" id="mla_plugins_loaded_action"></a><div class="element clickable method public mla_plugins_loaded_action" data-toggle="collapse" data-target=".mla_plugins_loaded_action .collapse">
+<h2>Load a plugin text domain and alternate debug file</h2>
+<pre>mla_plugins_loaded_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The "add_action" for this function is in mla-plugin-loader.php, because the "initialize"
+function above doesn't run in time.
+Defined as public because it's an action.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.60</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_prepare_bulk_edits" id="mla_prepare_bulk_edits"></a><div class="element clickable method public mla_prepare_bulk_edits" data-toggle="collapse" data-target=".mla_prepare_bulk_edits .collapse">
+<h2>Prepare Bulk Edit field-level updates</h2>
+<pre>mla_prepare_bulk_edits(integer $post_id, array $request, array $custom_field_map) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.11</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>Current post ID</p></div>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>array</code><p>Form elements, e.g., from $_REQUEST</p>
+</div>
+<div class="subelement argument">
+<h4>$custom_field_map</h4>
+<code>array</code><p>Form id to field name mapping</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Non-empty form elements</div>
+</div></div>
+</div>
+<a name="mla_process_bulk_action" id="mla_process_bulk_action"></a><div class="element clickable method public mla_process_bulk_action" data-toggle="collapse" data-target=".mla_process_bulk_action .collapse">
+<h2>Process bulk action for one or more attachments</h2>
+<pre>mla_process_bulk_action(string $bulk_action, array $request) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$bulk_action</h4>
+<code>string</code><p>Bulk action slug: delete, edit, restore, trash, custom action</p></div>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>array</code><p>Form elements, e.g., from $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>messages and page content: ( 'message', 'body', 'unchanged', 'success', 'failure', 'item_results' )</div>
+</div></div>
+</div>
+<a name="mla_render_admin_page" id="mla_render_admin_page"></a><div class="element clickable method public mla_render_admin_page" data-toggle="collapse" data-target=".mla_render_admin_page .collapse">
+<h2>Render the "Assistant" subpage in the Media section, using the list_table package</h2>
+<pre>mla_render_admin_page() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_screen_options_show_screen_filter" id="mla_screen_options_show_screen_filter"></a><div class="element clickable method public mla_screen_options_show_screen_filter" data-toggle="collapse" data-target=".mla_screen_options_show_screen_filter .collapse">
+<h2>Only show screen options on the table-list screen</h2>
+<pre>mla_screen_options_show_screen_filter(boolean $show_screen, string $this_screen) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$show_screen</h4>
+<code>boolean</code><p>True to display "Screen Options", false to suppress them</p>
+</div>
+<div class="subelement argument">
+<h4>$this_screen</h4>
+<code>string</code><p>Name of the page being loaded</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True to display "Screen Options", false to suppress them</div>
+</div></div>
+</div>
+<a name="mla_set_parent_ajax_action" id="mla_set_parent_ajax_action"></a><div class="element clickable method public mla_set_parent_ajax_action" data-toggle="collapse" data-target=".mla_set_parent_ajax_action .collapse">
+<h2>Ajax handler to set post_parent for a single attachment</h2>
+<pre>mla_set_parent_ajax_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adapted from wp_ajax_inline_save in /wp-admin/includes/ajax-actions.php</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_set_parent_form" id="mla_set_parent_form"></a><div class="element clickable method public mla_set_parent_form" data-toggle="collapse" data-target=".mla_set_parent_form .collapse">
+<h2>Build the hidden form for the "Set Parent" popup modal window</h2>
+<pre>mla_set_parent_form(boolean $return_form) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$return_form</h4>
+<code>boolean</code><p>true to return complete form, false to return mla-set-parent-div</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML <form> markup for hidden form</div>
+</div></div>
+</div>
+<a name="mla_set_screen_option_filter" id="mla_set_screen_option_filter"></a><div class="element clickable method public mla_set_screen_option_filter" data-toggle="collapse" data-target=".mla_set_screen_option_filter .collapse">
+<h2>Save the "Entries per page" option set by this user</h2>
+<pre>mla_set_screen_option_filter(mixed $status, string $option, string $value) : string | void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$status</h4>
+<code>mixed</code><p>false or value returned by previous filter</p></div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>Name of the option being changed</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code><p>New value of the option</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>void</code>New value if this is our option, otherwise nothing</div>
+</div></div>
+</div>
+<a name="_build_inline_edit_form" id="_build_inline_edit_form"></a><div class="element clickable method private _build_inline_edit_form" data-toggle="collapse" data-target="._build_inline_edit_form .collapse">
+<h2>Build the hidden row templates for inline editing (quick and bulk edit)</h2>
+<pre>_build_inline_edit_form(object $MLAListTable) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>inspired by inline_edit() in wp-admin\includes\class-wp-posts-list-table.php.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$MLAListTable</h4>
+<code>object</code><p>MLA List Table object</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML <form> markup for hidden rows</div>
+</div></div>
+</div>
+<a name="_bulk_edit_ajax_handler" id="_bulk_edit_ajax_handler"></a><div class="element clickable method private _bulk_edit_ajax_handler" data-toggle="collapse" data-target="._bulk_edit_ajax_handler .collapse">
+<h2>Ajax handler for bulk editing and mapping</h2>
+<pre>_bulk_edit_ajax_handler() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="_compose_post_type_select" id="_compose_post_type_select"></a><div class="element clickable method private _compose_post_type_select" data-toggle="collapse" data-target="._compose_post_type_select .collapse">
+<h2>Compose a Post Type Options list with current selection</h2>
+<pre>_compose_post_type_select(array $templates, string $selection) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.90</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$templates</h4>
+<code>array</code><p>template parts</p></div>
+<div class="subelement argument">
+<h4>$selection</h4>
+<code>string</code><p>current selection or 'all' (default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML markup with select field options</div>
+</div></div>
+</div>
+<a name="_current_bulk_action" id="_current_bulk_action"></a><div class="element clickable method private _current_bulk_action" data-toggle="collapse" data-target="._current_bulk_action .collapse">
+<h2>Get the current action selected from the bulk actions dropdown</h2>
+<pre>_current_bulk_action() : string | false</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>false</code>The action name or False if no action was selected</div>
+</div></div>
+</div>
+<a name="_debug_log" id="_debug_log"></a><div class="element clickable method private _debug_log" data-toggle="collapse" data-target="._debug_log .collapse">
+<h2>Write a debug message to the appropriate log file</h2>
+<pre>_debug_log(string $message) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.14</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Message text</p></div>
+</div></div>
+</div>
+<a name="_delete_single_item" id="_delete_single_item"></a><div class="element clickable method private _delete_single_item" data-toggle="collapse" data-target="._delete_single_item .collapse">
+<h2>Delete a single item permanently</h2>
+<pre>_delete_single_item(array $post_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>array</code><p>The form POST data</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>success/failure message and NULL content</div>
+</div></div>
+</div>
+<a name="_process_bulk_value" id="_process_bulk_value"></a><div class="element clickable method private _process_bulk_value" data-toggle="collapse" data-target="._process_bulk_value .collapse">
+<h2>Process bulk edit area fields, which may contain a Content Template</h2>
+<pre>_process_bulk_value(integer $post_id, string $bulk_value) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>Current post ID</p></div>
+<div class="subelement argument">
+<h4>$bulk_value</h4>
+<code>string</code><p>Field value as entered</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Empty, or new value for the field</div>
+</div></div>
+</div>
+<a name="_process_mla_download_file" id="_process_mla_download_file"></a><div class="element clickable method private _process_mla_download_file" data-toggle="collapse" data-target="._process_mla_download_file .collapse">
+<h2>Process secure file download</h2>
+<pre>_process_mla_download_file() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Requires _wpnonce, mla_download_file and mla_download_type in $_REQUEST; mla_download_disposition is optional.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="_restore_single_item" id="_restore_single_item"></a><div class="element clickable method private _restore_single_item" data-toggle="collapse" data-target="._restore_single_item .collapse">
+<h2>Restore a single item from the Trash</h2>
+<pre>_restore_single_item(integer $post_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>The WordPress Post ID of the attachment item</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>success/failure message and NULL content</div>
+</div></div>
+</div>
+<a name="_trash_single_item" id="_trash_single_item"></a><div class="element clickable method private _trash_single_item" data-toggle="collapse" data-target="._trash_single_item .collapse">
+<h2>Move a single item to Trash</h2>
+<pre>_trash_single_item(integer $post_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>The WordPress Post ID of the attachment item</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>success/failure message and NULL content</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24mla_debug_level" id="$mla_debug_level"> </a><div class="element clickable property public $mla_debug_level" data-toggle="collapse" data-target=".$mla_debug_level .collapse">
+<h2>Effective MLA Debug Level, from MLA_DEBUG_LEVEL or override option</h2>
+<pre>$mla_debug_level : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24original_php_log" id="$original_php_log"> </a><div class="element clickable property public $original_php_log" data-toggle="collapse" data-target=".$original_php_log .collapse">
+<h2>Original PHP error_log path and file</h2>
+<pre>$original_php_log : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24original_php_reporting" id="$original_php_reporting"> </a><div class="element clickable property public $original_php_reporting" data-toggle="collapse" data-target=".$original_php_reporting .collapse">
+<h2>Original PHP error_reporting value</h2>
+<pre>$original_php_reporting : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_debug_file" id="$mla_debug_file"> </a><div class="element clickable property private $mla_debug_file" data-toggle="collapse" data-target=".$mla_debug_file .collapse">
+<h2>Debug information output file for mode = 'log'</h2>
+<pre>$mla_debug_file : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.14</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_debug_messages" id="$mla_debug_messages"> </a><div class="element clickable property private $mla_debug_messages" data-toggle="collapse" data-target=".$mla_debug_messages .collapse">
+<h2>Accumulates debug messages</h2>
+<pre>$mla_debug_messages : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_debug_mode" id="$mla_debug_mode"> </a><div class="element clickable property private $mla_debug_mode" data-toggle="collapse" data-target=".$mla_debug_mode .collapse">
+<h2>Debug information collection mode</h2>
+<pre>$mla_debug_mode : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Collection mode: 'buffer', 'console', 'log' or 'none' (default).</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_language_support_error_messages" id="$mla_language_support_error_messages"> </a><div class="element clickable property private $mla_language_support_error_messages" data-toggle="collapse" data-target=".$mla_language_support_error_messages .collapse">
+<h2>Accumulates error messages from name conflict tests</h2>
+<pre>$mla_language_support_error_messages </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.14</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24page_hooks" id="$page_hooks"> </a><div class="element clickable property private $page_hooks" data-toggle="collapse" data-target=".$page_hooks .collapse">
+<h2>Holds screen ids to match help text to corresponding screen</h2>
+<pre>$page_hooks : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a name="ADMIN_PAGE_SLUG" id="ADMIN_PAGE_SLUG"> </a><div class="element clickable constant  ADMIN_PAGE_SLUG" data-toggle="collapse" data-target=".ADMIN_PAGE_SLUG .collapse">
+<h2>Slug for adding plugin submenu</h2>
+<pre>ADMIN_PAGE_SLUG : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="CURRENT_MLA_VERSION" id="CURRENT_MLA_VERSION"> </a><div class="element clickable constant  CURRENT_MLA_VERSION" data-toggle="collapse" data-target=".CURRENT_MLA_VERSION .collapse">
+<h2>Current version number</h2>
+<pre>CURRENT_MLA_VERSION : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="JAVASCRIPT_INLINE_EDIT_OBJECT" id="JAVASCRIPT_INLINE_EDIT_OBJECT"> </a><div class="element clickable constant  JAVASCRIPT_INLINE_EDIT_OBJECT" data-toggle="collapse" data-target=".JAVASCRIPT_INLINE_EDIT_OBJECT .collapse">
+<h2>Object name for localizing JavaScript - MLA List Table</h2>
+<pre>JAVASCRIPT_INLINE_EDIT_OBJECT : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="JAVASCRIPT_INLINE_EDIT_SLUG" id="JAVASCRIPT_INLINE_EDIT_SLUG"> </a><div class="element clickable constant  JAVASCRIPT_INLINE_EDIT_SLUG" data-toggle="collapse" data-target=".JAVASCRIPT_INLINE_EDIT_SLUG .collapse">
+<h2>Slug for localizing and enqueueing JavaScript - MLA List Table</h2>
+<pre>JAVASCRIPT_INLINE_EDIT_SLUG : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_NONCE_ACTION" id="MLA_ADMIN_NONCE_ACTION"> </a><div class="element clickable constant  MLA_ADMIN_NONCE_ACTION" data-toggle="collapse" data-target=".MLA_ADMIN_NONCE_ACTION .collapse">
+<h2>Action name; gives a context for the nonce</h2>
+<pre>MLA_ADMIN_NONCE_ACTION : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_NONCE_NAME" id="MLA_ADMIN_NONCE_NAME"> </a><div class="element clickable constant  MLA_ADMIN_NONCE_NAME" data-toggle="collapse" data-target=".MLA_ADMIN_NONCE_NAME .collapse">
+<h2>Nonce name; uniquely identifies the nonce</h2>
+<pre>MLA_ADMIN_NONCE_NAME : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SET_PARENT" id="MLA_ADMIN_SET_PARENT"> </a><div class="element clickable constant  MLA_ADMIN_SET_PARENT" data-toggle="collapse" data-target=".MLA_ADMIN_SET_PARENT .collapse">
+<h2>mla_admin_action value for setting an item's parent object</h2>
+<pre>MLA_ADMIN_SET_PARENT : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.82</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP" id="MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP .collapse">
+<h2>mla_admin_action value for mapping Custom Field metadata</h2>
+<pre>MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_DELETE" id="MLA_ADMIN_SINGLE_DELETE"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_DELETE" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_DELETE .collapse">
+<h2>mla_admin_action value for permanently deleting a single item</h2>
+<pre>MLA_ADMIN_SINGLE_DELETE : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_EDIT_DISPLAY" id="MLA_ADMIN_SINGLE_EDIT_DISPLAY"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_EDIT_DISPLAY" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_EDIT_DISPLAY .collapse">
+<h2>mla_admin_action value to display a single item for editing</h2>
+<pre>MLA_ADMIN_SINGLE_EDIT_DISPLAY : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Used by class-mla-view-list-table.php and class-mla-upload-list-table.php</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_EDIT_UPDATE" id="MLA_ADMIN_SINGLE_EDIT_UPDATE"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_EDIT_UPDATE" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_EDIT_UPDATE .collapse">
+<h2>mla_admin_action value for updating a single item</h2>
+<pre>MLA_ADMIN_SINGLE_EDIT_UPDATE : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Used by class-mla-view-list-table.php and class-mla-upload-list-table.php</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_MAP" id="MLA_ADMIN_SINGLE_MAP"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_MAP" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_MAP .collapse">
+<h2>mla_admin_action value for mapping IPTC/EXIF metadata</h2>
+<pre>MLA_ADMIN_SINGLE_MAP : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_RESTORE" id="MLA_ADMIN_SINGLE_RESTORE"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_RESTORE" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_RESTORE .collapse">
+<h2>mla_admin_action value for restoring a single item from the trash</h2>
+<pre>MLA_ADMIN_SINGLE_RESTORE : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_SINGLE_TRASH" id="MLA_ADMIN_SINGLE_TRASH"> </a><div class="element clickable constant  MLA_ADMIN_SINGLE_TRASH" data-toggle="collapse" data-target=".MLA_ADMIN_SINGLE_TRASH .collapse">
+<h2>mla_admin_action value for moving a single item to the trash</h2>
+<pre>MLA_ADMIN_SINGLE_TRASH : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_ADMIN_TERMS_SEARCH" id="MLA_ADMIN_TERMS_SEARCH"> </a><div class="element clickable constant  MLA_ADMIN_TERMS_SEARCH" data-toggle="collapse" data-target=".MLA_ADMIN_TERMS_SEARCH .collapse">
+<h2>mla_admin_action value for searching taxonomy terms</h2>
+<pre>MLA_ADMIN_TERMS_SEARCH : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.90</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_DEBUG_CATEGORY_AJAX" id="MLA_DEBUG_CATEGORY_AJAX"> </a><div class="element clickable constant  MLA_DEBUG_CATEGORY_AJAX" data-toggle="collapse" data-target=".MLA_DEBUG_CATEGORY_AJAX .collapse">
+<h2>Constant to log Ajax debug activity</h2>
+<pre>MLA_DEBUG_CATEGORY_AJAX : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_DEBUG_CATEGORY_LANGUAGE" id="MLA_DEBUG_CATEGORY_LANGUAGE"> </a><div class="element clickable constant  MLA_DEBUG_CATEGORY_LANGUAGE" data-toggle="collapse" data-target=".MLA_DEBUG_CATEGORY_LANGUAGE .collapse">
+<h2>Constant to log WPML/Polylang action/filter activity</h2>
+<pre>MLA_DEBUG_CATEGORY_LANGUAGE : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.15</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_DEVELOPMENT_VERSION" id="MLA_DEVELOPMENT_VERSION"> </a><div class="element clickable constant  MLA_DEVELOPMENT_VERSION" data-toggle="collapse" data-target=".MLA_DEVELOPMENT_VERSION .collapse">
+<h2>Current date for Development Version, empty for production versions</h2>
+<pre>MLA_DEVELOPMENT_VERSION : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="STYLESHEET_SLUG" id="STYLESHEET_SLUG"> </a><div class="element clickable constant  STYLESHEET_SLUG" data-toggle="collapse" data-target=".STYLESHEET_SLUG .collapse">
+<h2>Slug for registering and enqueueing plugin style sheet</h2>
+<pre>STYLESHEET_SLUG : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>

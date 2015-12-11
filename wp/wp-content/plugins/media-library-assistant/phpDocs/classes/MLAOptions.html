@@ -1,0 +1,1715 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAOptions</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#initialize" title="initialize :: Initialization function, similar to __construct()"><span class="description">Initialization function, similar to __construct()</span><pre>initialize()</pre></a></li>
+<li class="method public "><a href="#mla_add_attachment_action" title="mla_add_attachment_action :: Set $add_attachment_id to just-inserted attachment"><span class="description">Set $add_attachment_id to just-inserted attachment</span><pre>mla_add_attachment_action()</pre></a></li>
+<li class="method public "><a href="#mla_attachment_display_settings_option_handler" title="mla_attachment_display_settings_option_handler :: Render and manage Attachment Display Settings options; alignment, link type and size"><span class="description">Render and manage Attachment Display Settings options; alignment, link type and size</span><pre>mla_attachment_display_settings_option_handler()</pre></a></li>
+<li class="method public "><a href="#mla_custom_field_option_handler" title="mla_custom_field_option_handler :: Render and manage custom field mapping options"><span class="description">Render and manage custom field mapping options</span><pre>mla_custom_field_option_handler()</pre></a></li>
+<li class="method public "><a href="#mla_custom_field_option_value" title="mla_custom_field_option_value :: Fetch custom field option value given a slug"><span class="description">Fetch custom field option value given a slug</span><pre>mla_custom_field_option_value()</pre></a></li>
+<li class="method public "><a href="#mla_custom_field_support" title="mla_custom_field_support :: Evaluate file information for custom field mapping"><span class="description">Evaluate file information for custom field mapping</span><pre>mla_custom_field_support()</pre></a></li>
+<li class="method public "><a href="#mla_delete_option" title="mla_delete_option :: Delete the stored value of a defined MLA option"><span class="description">Delete the stored value of a defined MLA option</span><pre>mla_delete_option()</pre></a></li>
+<li class="method public "><a href="#mla_evaluate_custom_field_mapping" title="mla_evaluate_custom_field_mapping :: Evaluate custom field mapping updates for a post"><span class="description">Evaluate custom field mapping updates for a post</span><pre>mla_evaluate_custom_field_mapping()</pre></a></li>
+<li class="method public "><a href="#mla_evaluate_iptc_exif_mapping" title="mla_evaluate_iptc_exif_mapping :: Evaluate IPTC/EXIF mapping updates for a post"><span class="description">Evaluate IPTC/EXIF mapping updates for a post</span><pre>mla_evaluate_iptc_exif_mapping()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_gallery_template" title="mla_fetch_gallery_template :: Fetch style or markup template from $mla_templates"><span class="description">Fetch style or markup template from $mla_templates</span><pre>mla_fetch_gallery_template()</pre></a></li>
+<li class="method public "><a href="#mla_get_data_source" title="mla_get_data_source :: Get IPTC/EXIF or custom field mapping data source"><span class="description">Get IPTC/EXIF or custom field mapping data source</span><pre>mla_get_data_source()</pre></a></li>
+<li class="method public "><a href="#mla_get_markup_templates" title="mla_get_markup_templates :: Get ALL markup templates from $mla_templates, including 'default'"><span class="description">Get ALL markup templates from $mla_templates, including 'default'</span><pre>mla_get_markup_templates()</pre></a></li>
+<li class="method public "><a href="#mla_get_option" title="mla_get_option :: Return the stored value or default value of a defined MLA option"><span class="description">Return the stored value or default value of a defined MLA option</span><pre>mla_get_option()</pre></a></li>
+<li class="method public "><a href="#mla_get_style_templates" title="mla_get_style_templates :: Get ALL style templates from $mla_templates, including 'default'"><span class="description">Get ALL style templates from $mla_templates, including 'default'</span><pre>mla_get_style_templates()</pre></a></li>
+<li class="method public "><a href="#mla_initialize_tax_checked_on_top" title='mla_initialize_tax_checked_on_top :: Initialize "tax_checked_on_top" =&gt; "checked" default for all supported taxonomies'><span class="description">Initialize "tax_checked_on_top" =&gt; "checked" default for all supported taxonomies</span><pre>mla_initialize_tax_checked_on_top()</pre></a></li>
+<li class="method public "><a href="#mla_iptc_exif_option_handler" title="mla_iptc_exif_option_handler :: Render and manage iptc/exif support options"><span class="description">Render and manage iptc/exif support options</span><pre>mla_iptc_exif_option_handler()</pre></a></li>
+<li class="method public "><a href="#mla_is_data_source" title="mla_is_data_source :: Identify custom field mapping data source"><span class="description">Identify custom field mapping data source</span><pre>mla_is_data_source()</pre></a></li>
+<li class="method public "><a href="#mla_localize_option_definitions_array" title="mla_localize_option_definitions_array :: Localize $mla_option_definitions array"><span class="description">Localize $mla_option_definitions array</span><pre>mla_localize_option_definitions_array()</pre></a></li>
+<li class="method public "><a href="#mla_put_markup_templates" title="mla_put_markup_templates :: Put user-defined markup templates to $mla_templates and database"><span class="description">Put user-defined markup templates to $mla_templates and database</span><pre>mla_put_markup_templates()</pre></a></li>
+<li class="method public "><a href="#mla_put_style_templates" title="mla_put_style_templates :: Put user-defined style templates to $mla_templates and database"><span class="description">Put user-defined style templates to $mla_templates and database</span><pre>mla_put_style_templates()</pre></a></li>
+<li class="method public "><a href="#mla_search_option_handler" title="mla_search_option_handler :: Render and manage Search box options, e.g., connector and search fields"><span class="description">Render and manage Search box options, e.g., connector and search fields</span><pre>mla_search_option_handler()</pre></a></li>
+<li class="method public "><a href="#mla_supported_taxonomies" title="mla_supported_taxonomies :: Returns an array of taxonomy names assigned to $support_type"><span class="description">Returns an array of taxonomy names assigned to $support_type</span><pre>mla_supported_taxonomies()</pre></a></li>
+<li class="method public "><a href="#mla_taxonomy_option_handler" title="mla_taxonomy_option_handler :: Render and manage taxonomy support options, e.g., Categories and Post Tags"><span class="description">Render and manage taxonomy support options, e.g., Categories and Post Tags</span><pre>mla_taxonomy_option_handler()</pre></a></li>
+<li class="method public "><a href="#mla_taxonomy_support" title="mla_taxonomy_support :: Determine MLA support for a taxonomy, handling the special case where the
+settings are being updated or reset."><span class="description">Determine MLA support for a taxonomy, handling the special case where the
+settings are being updated or reset.</span><pre>mla_taxonomy_support()</pre></a></li>
+<li class="method public "><a href="#mla_update_attachment_metadata_filter" title="mla_update_attachment_metadata_filter :: Perform IPTC/EXIF and Custom Field mapping on just-inserted attachment"><span class="description">Perform IPTC/EXIF and Custom Field mapping on just-inserted attachment</span><pre>mla_update_attachment_metadata_filter()</pre></a></li>
+<li class="method public "><a href="#mla_update_option" title="mla_update_option :: Add or update the stored value of a defined MLA option"><span class="description">Add or update the stored value of a defined MLA option</span><pre>mla_update_option()</pre></a></li>
+<li class="method public "><a href="#mla_wp_handle_upload_filter" title="mla_wp_handle_upload_filter :: Called once for each file uploaded"><span class="description">Called once for each file uploaded</span><pre>mla_wp_handle_upload_filter()</pre></a></li>
+<li class="method public "><a href="#mla_wp_handle_upload_prefilter_filter" title="mla_wp_handle_upload_prefilter_filter :: Examine or alter the filename before the file is made permanent"><span class="description">Examine or alter the filename before the file is made permanent</span><pre>mla_wp_handle_upload_prefilter_filter()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_compose_custom_field_option_list" title="_compose_custom_field_option_list :: Compose a Custom Field Options list with current selection"><span class="description">Compose a Custom Field Options list with current selection</span><pre>_compose_custom_field_option_list()</pre></a></li>
+<li class="method private "><a href="#_compose_data_source_option_list" title="_compose_data_source_option_list :: Compose a (Custom Field) Data Source Options list with current selection"><span class="description">Compose a (Custom Field) Data Source Options list with current selection</span><pre>_compose_data_source_option_list()</pre></a></li>
+<li class="method private "><a href="#_compose_iptc_option_list" title="_compose_iptc_option_list :: Compose an IPTC Options list with current selection"><span class="description">Compose an IPTC Options list with current selection</span><pre>_compose_iptc_option_list()</pre></a></li>
+<li class="method private "><a href="#_compose_parent_option_list" title="_compose_parent_option_list :: Compose an hierarchical taxonomy Parent options list with current selection"><span class="description">Compose an hierarchical taxonomy Parent options list with current selection</span><pre>_compose_parent_option_list()</pre></a></li>
+<li class="method private "><a href="#_evaluate_array_result" title="_evaluate_array_result :: Evaluate post information for custom field mapping"><span class="description">Evaluate post information for custom field mapping</span><pre>_evaluate_array_result()</pre></a></li>
+<li class="method private "><a href="#_evaluate_data_source" title="_evaluate_data_source :: Evaluate custom field mapping data source"><span class="description">Evaluate custom field mapping data source</span><pre>_evaluate_data_source()</pre></a></li>
+<li class="method private "><a href="#_evaluate_file_information" title="_evaluate_file_information :: Evaluate file information for custom field mapping"><span class="description">Evaluate file information for custom field mapping</span><pre>_evaluate_file_information()</pre></a></li>
+<li class="method private "><a href="#_evaluate_post_information" title="_evaluate_post_information :: Evaluate post information for custom field mapping"><span class="description">Evaluate post information for custom field mapping</span><pre>_evaluate_post_information()</pre></a></li>
+<li class="method private "><a href="#_get_custom_field_names" title="_get_custom_field_names :: Generate a list of all (post) Custom Field names"><span class="description">Generate a list of all (post) Custom Field names</span><pre>_get_custom_field_names()</pre></a></li>
+<li class="method private "><a href="#_get_term_id" title="_get_term_id :: Build and search a cache of taxonomy and term name to term ID mappings"><span class="description">Build and search a cache of taxonomy and term name to term ID mappings</span><pre>_get_term_id()</pre></a></li>
+<li class="method private "><a href="#_load_option_templates" title="_load_option_templates :: Load style and markup templates to $mla_templates"><span class="description">Load style and markup templates to $mla_templates</span><pre>_load_option_templates()</pre></a></li>
+<li class="method private "><a href="#_update_attachment_metadata" title="_update_attachment_metadata :: Update _wp_attachment_metadata for just-inserted attachment"><span class="description">Update _wp_attachment_metadata for just-inserted attachment</span><pre>_update_attachment_metadata()</pre></a></li>
+<li class="method private "><a href="#_update_custom_field_mapping" title="_update_custom_field_mapping :: Update custom field mappings"><span class="description">Update custom field mappings</span><pre>_update_custom_field_mapping()</pre></a></li>
+<li class="method private "><a href="#_update_iptc_exif_custom_mapping" title="_update_iptc_exif_custom_mapping :: Update Custom field portion of IPTC/EXIF mappings"><span class="description">Update Custom field portion of IPTC/EXIF mappings</span><pre>_update_iptc_exif_custom_mapping()</pre></a></li>
+<li class="method private "><a href="#_update_iptc_exif_standard_mapping" title="_update_iptc_exif_standard_mapping :: Update Standard field portion of IPTC/EXIF mappings"><span class="description">Update Standard field portion of IPTC/EXIF mappings</span><pre>_update_iptc_exif_standard_mapping()</pre></a></li>
+<li class="method private "><a href="#_update_iptc_exif_taxonomy_mapping" title="_update_iptc_exif_taxonomy_mapping :: Update Taxonomy term portion of IPTC/EXIF mappings"><span class="description">Update Taxonomy term portion of IPTC/EXIF mappings</span><pre>_update_iptc_exif_taxonomy_mapping()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24mla_option_definitions" title="$mla_option_definitions :: $mla_option_definitions defines the database options and admin page areas for setting/updating them"><span class="description">$mla_option_definitions defines the database options and admin page areas for setting/updating them</span><pre>$mla_option_definitions</pre></a></li>
+<li class="property public "><a href="#%24process_featured_in" title='$process_featured_in :: Option setting for "Featured in" reporting'><span class="description">Option setting for "Featured in" reporting</span><pre>$process_featured_in</pre></a></li>
+<li class="property public "><a href="#%24process_gallery_in" title='$process_gallery_in :: Option setting for "Gallery in" reporting'><span class="description">Option setting for "Gallery in" reporting</span><pre>$process_gallery_in</pre></a></li>
+<li class="property public "><a href="#%24process_inserted_in" title='$process_inserted_in :: Option setting for "Inserted in" reporting'><span class="description">Option setting for "Inserted in" reporting</span><pre>$process_inserted_in</pre></a></li>
+<li class="property public "><a href="#%24process_mla_gallery_in" title='$process_mla_gallery_in :: Option setting for "MLA Gallery in" reporting'><span class="description">Option setting for "MLA Gallery in" reporting</span><pre>$process_mla_gallery_in</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24add_attachment_id" title="$add_attachment_id :: Attachment ID passed from mla_add_attachment_action to mla_update_attachment_metadata_filter"><span class="description">Attachment ID passed from mla_add_attachment_action to mla_update_attachment_metadata_filter</span><pre>$add_attachment_id</pre></a></li>
+<li class="property private "><a href="#%24custom_field_data_sources" title="$custom_field_data_sources :: Array of Data Source names for custom field mapping"><span class="description">Array of Data Source names for custom field mapping</span><pre>$custom_field_data_sources</pre></a></li>
+<li class="property private "><a href="#%24mla_option_templates" title="$mla_option_templates :: Style and Markup templates"><span class="description">Style and Markup templates</span><pre>$mla_option_templates</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#MLA_ADD_NEW_BULK_EDIT" title="MLA_ADD_NEW_BULK_EDIT :: Provides a unique name for the Media/Add New bulk edit option"><span class="description">Provides a unique name for the Media/Add New bulk edit option</span><pre>MLA_ADD_NEW_BULK_EDIT</pre></a></li>
+<li class="constant  "><a href="#MLA_ADD_NEW_BULK_EDIT_ON_TOP" title='MLA_ADD_NEW_BULK_EDIT_ON_TOP :: Provides a unique name for the Media/Add New bulk edit "on top" option'><span class="description">Provides a unique name for the Media/Add New bulk edit "on top" option</span><pre>MLA_ADD_NEW_BULK_EDIT_ON_TOP</pre></a></li>
+<li class="constant  "><a href="#MLA_BULK_CHUNK_SIZE" title="MLA_BULK_CHUNK_SIZE :: Provides a unique name for the Bulk Update and Map All chunk size option"><span class="description">Provides a unique name for the Bulk Update and Map All chunk size option</span><pre>MLA_BULK_CHUNK_SIZE</pre></a></li>
+<li class="constant  "><a href="#MLA_COUNT_TERM_ATTACHMENTS" title="MLA_COUNT_TERM_ATTACHMENTS :: Provides a unique name for the taxonomy count Attachments option"><span class="description">Provides a unique name for the taxonomy count Attachments option</span><pre>MLA_COUNT_TERM_ATTACHMENTS</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_DISPLAY_LIMIT" title="MLA_DEBUG_DISPLAY_LIMIT :: Provides a unique name for the Debug display limit option"><span class="description">Provides a unique name for the Debug display limit option</span><pre>MLA_DEBUG_DISPLAY_LIMIT</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_FILE" title="MLA_DEBUG_FILE :: Provides a unique name for the Debug alternate log file option"><span class="description">Provides a unique name for the Debug alternate log file option</span><pre>MLA_DEBUG_FILE</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_REPLACE_LEVEL" title="MLA_DEBUG_REPLACE_LEVEL :: Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option"><span class="description">Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option</span><pre>MLA_DEBUG_REPLACE_LEVEL</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_REPLACE_PHP_LOG" title="MLA_DEBUG_REPLACE_PHP_LOG :: Provides a unique name for the Debug replace PHP log file option"><span class="description">Provides a unique name for the Debug replace PHP log file option</span><pre>MLA_DEBUG_REPLACE_PHP_LOG</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_REPLACE_PHP_REPORTING" title="MLA_DEBUG_REPLACE_PHP_REPORTING :: Provides a unique name for the Debug replace PHP error_reporting option"><span class="description">Provides a unique name for the Debug replace PHP error_reporting option</span><pre>MLA_DEBUG_REPLACE_PHP_REPORTING</pre></a></li>
+<li class="constant  "><a href="#MLA_DEFAULT_ORDER" title="MLA_DEFAULT_ORDER :: Provides a unique name for the default order option"><span class="description">Provides a unique name for the default order option</span><pre>MLA_DEFAULT_ORDER</pre></a></li>
+<li class="constant  "><a href="#MLA_DEFAULT_ORDERBY" title="MLA_DEFAULT_ORDERBY :: Provides a unique name for the default orderby option"><span class="description">Provides a unique name for the default orderby option</span><pre>MLA_DEFAULT_ORDERBY</pre></a></li>
+<li class="constant  "><a href="#MLA_EDIT_MEDIA_META_BOXES" title="MLA_EDIT_MEDIA_META_BOXES :: Provides a unique name for the Edit Media additional meta boxes option"><span class="description">Provides a unique name for the Edit Media additional meta boxes option</span><pre>MLA_EDIT_MEDIA_META_BOXES</pre></a></li>
+<li class="constant  "><a href="#MLA_EDIT_MEDIA_SEARCH_TAXONOMY" title='MLA_EDIT_MEDIA_SEARCH_TAXONOMY :: Provides a unique name for the "searchable taxonomies" option'><span class="description">Provides a unique name for the "searchable taxonomies" option</span><pre>MLA_EDIT_MEDIA_SEARCH_TAXONOMY</pre></a></li>
+<li class="constant  "><a href="#MLA_ENABLE_MLA_ICONS" title="MLA_ENABLE_MLA_ICONS :: Provides a unique name for the Enable MLA Icons option"><span class="description">Provides a unique name for the Enable MLA Icons option</span><pre>MLA_ENABLE_MLA_ICONS</pre></a></li>
+<li class="constant  "><a href="#MLA_ENABLE_POST_MIME_TYPES" title="MLA_ENABLE_POST_MIME_TYPES :: Provides a unique name for the Enable Post MIME Types option"><span class="description">Provides a unique name for the Enable Post MIME Types option</span><pre>MLA_ENABLE_POST_MIME_TYPES</pre></a></li>
+<li class="constant  "><a href="#MLA_ENABLE_UPLOAD_MIMES" title="MLA_ENABLE_UPLOAD_MIMES :: Provides a unique name for the Enable Upload MIME Types option"><span class="description">Provides a unique name for the Enable Upload MIME Types option</span><pre>MLA_ENABLE_UPLOAD_MIMES</pre></a></li>
+<li class="constant  "><a href="#MLA_EXCLUDE_REVISIONS" title="MLA_EXCLUDE_REVISIONS :: Provides a unique name for the exclude revisions option"><span class="description">Provides a unique name for the exclude revisions option</span><pre>MLA_EXCLUDE_REVISIONS</pre></a></li>
+<li class="constant  "><a href="#MLA_EXIF_SIZE" title='MLA_EXIF_SIZE :: Provides a "size" attribute value for the EXIF/Template Value field'><span class="description">Provides a "size" attribute value for the EXIF/Template Value field</span><pre>MLA_EXIF_SIZE</pre></a></li>
+<li class="constant  "><a href="#MLA_FEATURED_IN_TUNING" title="MLA_FEATURED_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_FEATURED_IN_TUNING</pre></a></li>
+<li class="constant  "><a href="#MLA_GALLERY_IN_TUNING" title="MLA_GALLERY_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_GALLERY_IN_TUNING</pre></a></li>
+<li class="constant  "><a href="#MLA_INSERTED_IN_TUNING" title="MLA_INSERTED_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_INSERTED_IN_TUNING</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_GRID_TOOLBAR" title="MLA_MEDIA_GRID_TOOLBAR :: Provides a unique name for the Media Grid toolbar option, which
+also controls the ATTACHMENT DETAILS enhancements"><span class="description">Provides a unique name for the Media Grid toolbar option, which
+also controls the ATTACHMENT DETAILS enhancements</span><pre>MLA_MEDIA_GRID_TOOLBAR</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_AUTOFILL" title="MLA_MEDIA_MODAL_DETAILS_AUTOFILL :: Provides a unique name for the Media Manager Attachment Details auto-fill option"><span class="description">Provides a unique name for the Media Manager Attachment Details auto-fill option</span><pre>MLA_MEDIA_MODAL_DETAILS_AUTOFILL</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" title='MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX :: Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
+This option is for hierarchical taxonomies, e.g., "Att.'><span class="description">Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
+This option is for hierarchical taxonomies, e.g., "Att.</span><pre>MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_TAG_METABOX" title='MLA_MEDIA_MODAL_DETAILS_TAG_METABOX :: Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
+This option is for flat taxonomies, e.g., "Att.'><span class="description">Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
+This option is for flat taxonomies, e.g., "Att.</span><pre>MLA_MEDIA_MODAL_DETAILS_TAG_METABOX</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_MIMETYPES" title="MLA_MEDIA_MODAL_MIMETYPES :: Provides a unique name for the Media Manager toolbar MIME Types option"><span class="description">Provides a unique name for the Media Manager toolbar MIME Types option</span><pre>MLA_MEDIA_MODAL_MIMETYPES</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_MONTHS" title="MLA_MEDIA_MODAL_MONTHS :: Provides a unique name for the Media Manager toolbar Month and Year option"><span class="description">Provides a unique name for the Media Manager toolbar Month and Year option</span><pre>MLA_MEDIA_MODAL_MONTHS</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_ORDER" title="MLA_MEDIA_MODAL_ORDER :: Provides a unique name for the Media Manager order option"><span class="description">Provides a unique name for the Media Manager order option</span><pre>MLA_MEDIA_MODAL_ORDER</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_ORDERBY" title="MLA_MEDIA_MODAL_ORDERBY :: Provides a unique name for the Media Manager orderby option"><span class="description">Provides a unique name for the Media Manager orderby option</span><pre>MLA_MEDIA_MODAL_ORDERBY</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_SEARCHBOX" title="MLA_MEDIA_MODAL_SEARCHBOX :: Provides a unique name for the Media Manager toolbar Search Box option"><span class="description">Provides a unique name for the Media Manager toolbar Search Box option</span><pre>MLA_MEDIA_MODAL_SEARCHBOX</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS" title="MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS :: Provides a unique name for the Media Manager toolbar Search Box Controls option"><span class="description">Provides a unique name for the Media Manager toolbar Search Box Controls option</span><pre>MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_TERMS" title="MLA_MEDIA_MODAL_TERMS :: Provides a unique name for the Media Manager toolbar Taxonomy Terms option"><span class="description">Provides a unique name for the Media Manager toolbar Taxonomy Terms option</span><pre>MLA_MEDIA_MODAL_TERMS</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_TERMS_SEARCH" title='MLA_MEDIA_MODAL_TERMS_SEARCH :: Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option'><span class="description">Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option</span><pre>MLA_MEDIA_MODAL_TERMS_SEARCH</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_TOOLBAR" title="MLA_MEDIA_MODAL_TOOLBAR :: Provides a unique name for the Media Manager toolbar option, which
+also controls the ATTACHMENT DETAILS enhancements"><span class="description">Provides a unique name for the Media Manager toolbar option, which
+also controls the ATTACHMENT DETAILS enhancements</span><pre>MLA_MEDIA_MODAL_TOOLBAR</pre></a></li>
+<li class="constant  "><a href="#MLA_MLA_GALLERY_IN_TUNING" title="MLA_MLA_GALLERY_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_MLA_GALLERY_IN_TUNING</pre></a></li>
+<li class="constant  "><a href="#MLA_NEW_CUSTOM_FIELD" title='MLA_NEW_CUSTOM_FIELD :: Provides a unique name for the Custom Field "new field" key'><span class="description">Provides a unique name for the Custom Field "new field" key</span><pre>MLA_NEW_CUSTOM_FIELD</pre></a></li>
+<li class="constant  "><a href="#MLA_NEW_CUSTOM_RULE" title='MLA_NEW_CUSTOM_RULE :: Provides a unique name for the Custom Field "new rule" key'><span class="description">Provides a unique name for the Custom Field "new rule" key</span><pre>MLA_NEW_CUSTOM_RULE</pre></a></li>
+<li class="constant  "><a href="#MLA_POST_MIME_TYPES" title="MLA_POST_MIME_TYPES :: Provides a unique name for the Post MIME Types option"><span class="description">Provides a unique name for the Post MIME Types option</span><pre>MLA_POST_MIME_TYPES</pre></a></li>
+<li class="constant  "><a href="#MLA_SCREEN_DISPLAY_LIBRARY" title="MLA_SCREEN_DISPLAY_LIBRARY :: Provides a unique name for the admin screen remove Media/Library option"><span class="description">Provides a unique name for the admin screen remove Media/Library option</span><pre>MLA_SCREEN_DISPLAY_LIBRARY</pre></a></li>
+<li class="constant  "><a href="#MLA_SCREEN_MENU_TITLE" title="MLA_SCREEN_MENU_TITLE :: Provides a unique name for the admin screen menu title option"><span class="description">Provides a unique name for the admin screen menu title option</span><pre>MLA_SCREEN_MENU_TITLE</pre></a></li>
+<li class="constant  "><a href="#MLA_SCREEN_ORDER" title="MLA_SCREEN_ORDER :: Provides a unique name for the admin screen menu order option"><span class="description">Provides a unique name for the admin screen menu order option</span><pre>MLA_SCREEN_ORDER</pre></a></li>
+<li class="constant  "><a href="#MLA_SCREEN_PAGE_TITLE" title="MLA_SCREEN_PAGE_TITLE :: Provides a unique name for the admin screen page title option"><span class="description">Provides a unique name for the admin screen page title option</span><pre>MLA_SCREEN_PAGE_TITLE</pre></a></li>
+<li class="constant  "><a href="#MLA_SEARCH_MEDIA_FILTER_DEFAULTS" title="MLA_SEARCH_MEDIA_FILTER_DEFAULTS :: Provides a unique name for the display Search Media controls option"><span class="description">Provides a unique name for the display Search Media controls option</span><pre>MLA_SEARCH_MEDIA_FILTER_DEFAULTS</pre></a></li>
+<li class="constant  "><a href="#MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS" title="MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS :: Provides a unique name for the display Search Media controls option"><span class="description">Provides a unique name for the display Search Media controls option</span><pre>MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS</pre></a></li>
+<li class="constant  "><a href="#MLA_TABLE_ICON_SIZE" title="MLA_TABLE_ICON_SIZE :: Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option"><span class="description">Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option</span><pre>MLA_TABLE_ICON_SIZE</pre></a></li>
+<li class="constant  "><a href="#MLA_TABLE_VIEWS_WIDTH" title="MLA_TABLE_VIEWS_WIDTH :: Provides a unique name for the Media/Assistant submenu table views width option"><span class="description">Provides a unique name for the Media/Assistant submenu table views width option</span><pre>MLA_TABLE_VIEWS_WIDTH</pre></a></li>
+<li class="constant  "><a href="#MLA_TAXONOMY_FILTER_DEPTH" title="MLA_TAXONOMY_FILTER_DEPTH :: Provides a unique name for the taxonomy filter maximum depth option"><span class="description">Provides a unique name for the taxonomy filter maximum depth option</span><pre>MLA_TAXONOMY_FILTER_DEPTH</pre></a></li>
+<li class="constant  "><a href="#MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN" title="MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN :: Provides a unique name for the taxonomy filter maximum depth option"><span class="description">Provides a unique name for the taxonomy filter maximum depth option</span><pre>MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN</pre></a></li>
+<li class="constant  "><a href="#MLA_TAXONOMY_SUPPORT" title="MLA_TAXONOMY_SUPPORT :: Provides a unique name for the taxonomy support option"><span class="description">Provides a unique name for the taxonomy support option</span><pre>MLA_TAXONOMY_SUPPORT</pre></a></li>
+<li class="constant  "><a href="#MLA_UPLOAD_MIMES" title="MLA_UPLOAD_MIMES :: Provides a unique name for the Upload MIME Types option"><span class="description">Provides a unique name for the Upload MIME Types option</span><pre>MLA_UPLOAD_MIMES</pre></a></li>
+<li class="constant  "><a href="#MLA_VERSION_OPTION" title="MLA_VERSION_OPTION :: Provides a unique name for the current version option"><span class="description">Provides a unique name for the current version option</span><pre>MLA_VERSION_OPTION</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAOptions" id="\MLAOptions"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAOptions.html">MLAOptions</a>
+</li>
+</ul>
+<div href="../classes/MLAOptions.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) Options manages the plugin option settings
+and provides functions to get and put them from/to WordPress option variables</p>
+<div class="details">
+<p class="long_description"><p>Separated from class MLASettings in version 1.00</p></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.00</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="initialize" id="initialize"></a><div class="element clickable method public initialize" data-toggle="collapse" data-target=".initialize .collapse">
+<h2>Initialization function, similar to __construct()</h2>
+<pre>initialize() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_add_attachment_action" id="mla_add_attachment_action"></a><div class="element clickable method public mla_add_attachment_action" data-toggle="collapse" data-target=".mla_add_attachment_action .collapse">
+<h2>Set $add_attachment_id to just-inserted attachment</h2>
+<pre>mla_add_attachment_action(integer $post_ID) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>All of the actual processing is done later, in mla_update_attachment_metadata_filter.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_ID</h4>
+<code>integer</code><p>ID of just-inserted attachment</p>
+</div>
+</div></div>
+</div>
+<a name="mla_attachment_display_settings_option_handler" id="mla_attachment_display_settings_option_handler"></a><div class="element clickable method public mla_attachment_display_settings_option_handler" data-toggle="collapse" data-target=".mla_attachment_display_settings_option_handler .collapse">
+<h2>Render and manage Attachment Display Settings options; alignment, link type and size</h2>
+<pre>mla_attachment_display_settings_option_handler(string $action, string $key, array $value, array $args) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.71</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\MLASettings::$page_template_array</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code><p>'render', 'update', 'delete', or 'reset'</p>
+</div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>option name, e.g., 'image_default_align'</p>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code><p>option parameters</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>Optional. null (default) for 'render' else option data, e.g., $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML table row markup for 'render' else message(s) reflecting the results of the operation.</div>
+</div></div>
+</div>
+<a name="mla_custom_field_option_handler" id="mla_custom_field_option_handler"></a><div class="element clickable method public mla_custom_field_option_handler" data-toggle="collapse" data-target=".mla_custom_field_option_handler .collapse">
+<h2>Render and manage custom field mapping options</h2>
+<pre>mla_custom_field_option_handler(string $action, string $key, array $value, array $args) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.10</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code><p>'render', 'update', 'delete', or 'reset'</p>
+</div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>option name, e.g., 'custom_field_mapping'</p>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code><p>option parameters</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>Optional. null (default) for 'render' else option data, e.g., $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML table row markup for 'render' else message(s) reflecting the results of the operation.</div>
+</div></div>
+</div>
+<a name="mla_custom_field_option_value" id="mla_custom_field_option_value"></a><div class="element clickable method public mla_custom_field_option_value" data-toggle="collapse" data-target=".mla_custom_field_option_value .collapse">
+<h2>Fetch custom field option value given a slug</h2>
+<pre>mla_custom_field_option_value(string $slug) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$slug</h4>
+<code>string</code><p>slug, e.g., 'c_File Size' for the 'File Size' field</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>option value, e.g., array( 'name' => 'File Size', ... )</div>
+</div></div>
+</div>
+<a name="mla_custom_field_support" id="mla_custom_field_support"></a><div class="element clickable method public mla_custom_field_support" data-toggle="collapse" data-target=".mla_custom_field_support .collapse">
+<h2>Evaluate file information for custom field mapping</h2>
+<pre>mla_custom_field_support(string $support_type) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$support_type</h4>
+<code>string</code><p>array format; 'default_columns' (default), 'default_hidden_columns', 'default_sortable_columns', 'quick_edit' or 'bulk_edit'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>default, hidden, sortable quick_edit or bulk_edit colums in appropriate format</div>
+</div></div>
+</div>
+<a name="mla_delete_option" id="mla_delete_option"></a><div class="element clickable method public mla_delete_option" data-toggle="collapse" data-target=".mla_delete_option .collapse">
+<h2>Delete the stored value of a defined MLA option</h2>
+<pre>mla_delete_option(string $option, array $option_table) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>Name of the desired option</p></div>
+<div class="subelement argument">
+<h4>$option_table</h4>
+<code>array</code><p>Custom option definitions</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the option was deleted, otherwise false</div>
+</div></div>
+</div>
+<a name="mla_evaluate_custom_field_mapping" id="mla_evaluate_custom_field_mapping"></a><div class="element clickable method public mla_evaluate_custom_field_mapping" data-toggle="collapse" data-target=".mla_evaluate_custom_field_mapping .collapse">
+<h2>Evaluate custom field mapping updates for a post</h2>
+<pre>mla_evaluate_custom_field_mapping(integer $post_id, string $category, array $settings, array $attachment_metadata) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post ID to be evaluated</p></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: custom_field_mapping or single_attachment_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$settings</h4>
+<code>array</code><p>(optional) custom_field_mapping values, default NULL (use current option value)</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>(optional) attachment_metadata, default NULL (use current postmeta database value)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Updates suitable for MLAData::mla_update_single_item, if any</div>
+</div></div>
+</div>
+<a name="mla_evaluate_iptc_exif_mapping" id="mla_evaluate_iptc_exif_mapping"></a><div class="element clickable method public mla_evaluate_iptc_exif_mapping" data-toggle="collapse" data-target=".mla_evaluate_iptc_exif_mapping .collapse">
+<h2>Evaluate IPTC/EXIF mapping updates for a post</h2>
+<pre>mla_evaluate_iptc_exif_mapping(object $post, string $category, array $settings, array $attachment_metadata, boolean $is_upload) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post</h4>
+<code>object</code><p>post object with current values</p></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category to evaluate against, e.g., iptc_exif_standard_mapping or iptc_exif_mapping</p></div>
+<div class="subelement argument">
+<h4>$settings</h4>
+<code>array</code><p>(optional) iptc_exif_mapping values, default - current option value</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>(optional) _wp_attachment_metadata, for MLAOptions::mla_update_attachment_metadata_filter</p>
+</div>
+<div class="subelement argument">
+<h4>$is_upload</h4>
+<code>boolean</code><p>(optional) true if uploading a new item else false (default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Updates suitable for MLAData::mla_update_single_item, if any</div>
+</div></div>
+</div>
+<a name="mla_fetch_gallery_template" id="mla_fetch_gallery_template"></a><div class="element clickable method public mla_fetch_gallery_template" data-toggle="collapse" data-target=".mla_fetch_gallery_template .collapse">
+<h2>Fetch style or markup template from $mla_templates</h2>
+<pre>mla_fetch_gallery_template(string $key, string $type) : string | boolean | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>Template name</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>Template type; 'style' (default) or 'markup'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>boolean</code><code>null</code>requested template, false if not found or null if no templates</div>
+</div></div>
+</div>
+<a name="mla_get_data_source" id="mla_get_data_source"></a><div class="element clickable method public mla_get_data_source" data-toggle="collapse" data-target=".mla_get_data_source .collapse">
+<h2>Get IPTC/EXIF or custom field mapping data source</h2>
+<pre>mla_get_data_source(integer $post_id, string $category, array $data_value, array $attachment_metadata) : string | array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Defined as public so MLA Mapping Hooks clients can call it.
+Isolates clients from changes to _evaluate_data_source().</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post->ID of attachment</p>
+</div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: custom_field_mapping or single_attachment_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$data_value</h4>
+<code>array</code><p>data source specification ( name, *data_source, *keep_existing, *format, mla_column, quick_edit, bulk_edit, *meta_name, *option, no_null )</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>(optional) _wp_attachment_metadata, default NULL (use current postmeta database value)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>array</code>data source value</div>
+</div></div>
+</div>
+<a name="mla_get_markup_templates" id="mla_get_markup_templates"></a><div class="element clickable method public mla_get_markup_templates" data-toggle="collapse" data-target=".mla_get_markup_templates .collapse">
+<h2>Get ALL markup templates from $mla_templates, including 'default'</h2>
+<pre>mla_get_markup_templates() : array | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>null</code>name => value for all markup templates or null if no templates</div>
+</div></div>
+</div>
+<a name="mla_get_option" id="mla_get_option"></a><div class="element clickable method public mla_get_option" data-toggle="collapse" data-target=".mla_get_option .collapse">
+<h2>Return the stored value or default value of a defined MLA option</h2>
+<pre>mla_get_option(string $option, boolean $get_default, boolean $get_stored, array $option_table) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>Name of the desired option</p></div>
+<div class="subelement argument">
+<h4>$get_default</h4>
+<code>boolean</code><p>True to ignore current setting and return default values</p></div>
+<div class="subelement argument">
+<h4>$get_stored</h4>
+<code>boolean</code><p>True to ignore default values and return only stored values</p></div>
+<div class="subelement argument">
+<h4>$option_table</h4>
+<code>array</code><p>Custom option definitions</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Value(s) for the option or false if the option is not a defined MLA option</div>
+</div></div>
+</div>
+<a name="mla_get_style_templates" id="mla_get_style_templates"></a><div class="element clickable method public mla_get_style_templates" data-toggle="collapse" data-target=".mla_get_style_templates .collapse">
+<h2>Get ALL style templates from $mla_templates, including 'default'</h2>
+<pre>mla_get_style_templates() : array | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>null</code>name => value for all style templates or null if no templates</div>
+</div></div>
+</div>
+<a name="mla_initialize_tax_checked_on_top" id="mla_initialize_tax_checked_on_top"></a><div class="element clickable method public mla_initialize_tax_checked_on_top" data-toggle="collapse" data-target=".mla_initialize_tax_checked_on_top .collapse">
+<h2>Initialize "tax_checked_on_top" =&gt; "checked" default for all supported taxonomies</h2>
+<pre>mla_initialize_tax_checked_on_top() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Called after all taxonomies are registered, e.g., in MLAObjects::_build_taxonomies.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.02</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_iptc_exif_option_handler" id="mla_iptc_exif_option_handler"></a><div class="element clickable method public mla_iptc_exif_option_handler" data-toggle="collapse" data-target=".mla_iptc_exif_option_handler .collapse">
+<h2>Render and manage iptc/exif support options</h2>
+<pre>mla_iptc_exif_option_handler(string $action, string $key, array $value, array $args) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.00</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code><p>'render', 'update', 'delete', or 'reset'</p>
+</div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>option name, e.g., 'iptc_exif_mapping'</p>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code><p>option parameters</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>Optional. null (default) for 'render' else option data, e.g., $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML table row markup for 'render' else message(s) reflecting the results of the operation.</div>
+</div></div>
+</div>
+<a name="mla_is_data_source" id="mla_is_data_source"></a><div class="element clickable method public mla_is_data_source" data-toggle="collapse" data-target=".mla_is_data_source .collapse">
+<h2>Identify custom field mapping data source</h2>
+<pre>mla_is_data_source(string $candidate_name) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Determines whether a name matches any of the element-level data source dropdown options, i.e.,
+excludes "template:" and "meta:" values.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$candidate_name</h4>
+<code>string</code><p>candidate data source name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if candidate name matches a data source</div>
+</div></div>
+</div>
+<a name="mla_localize_option_definitions_array" id="mla_localize_option_definitions_array"></a><div class="element clickable method public mla_localize_option_definitions_array" data-toggle="collapse" data-target=".mla_localize_option_definitions_array .collapse">
+<h2>Localize $mla_option_definitions array</h2>
+<pre>mla_localize_option_definitions_array() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Localization must be done at runtime; these calls cannot be placed in the
+"public static" array definition itself. Called from MLATest::initialize.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.70</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_put_markup_templates" id="mla_put_markup_templates"></a><div class="element clickable method public mla_put_markup_templates" data-toggle="collapse" data-target=".mla_put_markup_templates .collapse">
+<h2>Put user-defined markup templates to $mla_templates and database</h2>
+<pre>mla_put_markup_templates(array $templates) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$templates</h4>
+<code>array</code><p>name => value for all user-defined markup templates</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if success, false if failure</div>
+</div></div>
+</div>
+<a name="mla_put_style_templates" id="mla_put_style_templates"></a><div class="element clickable method public mla_put_style_templates" data-toggle="collapse" data-target=".mla_put_style_templates .collapse">
+<h2>Put user-defined style templates to $mla_templates and database</h2>
+<pre>mla_put_style_templates(array $templates) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$templates</h4>
+<code>array</code><p>name => value for all user-defined style templates</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if success, false if failure</div>
+</div></div>
+</div>
+<a name="mla_search_option_handler" id="mla_search_option_handler"></a><div class="element clickable method public mla_search_option_handler" data-toggle="collapse" data-target=".mla_search_option_handler .collapse">
+<h2>Render and manage Search box options, e.g., connector and search fields</h2>
+<pre>mla_search_option_handler(string $action, string $key, array $value, array $args) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.90</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code><p>'render', 'update', 'delete', or 'reset'</p>
+</div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>option name; 'search_connector' or 'search_fields'</p>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code><p>option parameters</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>Optional. null (default) for 'render' else option data, e.g., $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML table row markup for 'render' else message(s) reflecting the results of the operation.</div>
+</div></div>
+</div>
+<a name="mla_supported_taxonomies" id="mla_supported_taxonomies"></a><div class="element clickable method public mla_supported_taxonomies" data-toggle="collapse" data-target=".mla_supported_taxonomies .collapse">
+<h2>Returns an array of taxonomy names assigned to $support_type</h2>
+<pre>mla_supported_taxonomies(string $support_type) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.90</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$support_type</h4>
+<code>string</code><p>Optional. 'support' (default), 'quick-edit', 'flat-checklist', 'term-search' or 'filter'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>taxonomies assigned to $support_type; can be empty.</div>
+</div></div>
+</div>
+<a name="mla_taxonomy_option_handler" id="mla_taxonomy_option_handler"></a><div class="element clickable method public mla_taxonomy_option_handler" data-toggle="collapse" data-target=".mla_taxonomy_option_handler .collapse">
+<h2>Render and manage taxonomy support options, e.g., Categories and Post Tags</h2>
+<pre>mla_taxonomy_option_handler(string $action, string $key, array $value, array $args) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>0.30</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code><p>'render', 'update', 'delete', or 'reset'</p>
+</div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>option name, e.g., 'tax_support', or 'tax_flat_checklist'</p>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code><p>option parameters</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>Optional. null (default) for 'render' else option data, e.g., $_REQUEST</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML table row markup for 'render' else message(s) reflecting the results of the operation.</div>
+</div></div>
+</div>
+<a name="mla_taxonomy_support" id="mla_taxonomy_support"></a><div class="element clickable method public mla_taxonomy_support" data-toggle="collapse" data-target=".mla_taxonomy_support .collapse">
+<h2>Determine MLA support for a taxonomy, handling the special case where the
+settings are being updated or reset.</h2>
+<pre>mla_taxonomy_support(string $tax_name, string $support_type) : boolean | string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.30</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tax_name</h4>
+<code>string</code><p>Taxonomy name, e.g., attachment_category</p></div>
+<div class="subelement argument">
+<h4>$support_type</h4>
+<code>string</code><p>Optional. 'support' (default), 'quick-edit' or 'filter'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code><code>string</code>true if the taxonomy is supported in this way else false. string if $tax_name is '' and $support_type is 'filter', returns the taxonomy to filter by.</div>
+</div></div>
+</div>
+<a name="mla_update_attachment_metadata_filter" id="mla_update_attachment_metadata_filter"></a><div class="element clickable method public mla_update_attachment_metadata_filter" data-toggle="collapse" data-target=".mla_update_attachment_metadata_filter .collapse">
+<h2>Perform IPTC/EXIF and Custom Field mapping on just-inserted attachment</h2>
+<pre>mla_update_attachment_metadata_filter(array $data, integer $post_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This filter tests the $add_attachment_id variable set by the mla_add_attachment_action
+to ensure that mapping is only performed for new additions, not metadata updates.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>Attachment metadata for just-inserted attachment</p>
+</div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>ID of just-inserted attachment</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Updated attachment metadata</div>
+</div></div>
+</div>
+<a name="mla_update_option" id="mla_update_option"></a><div class="element clickable method public mla_update_option" data-toggle="collapse" data-target=".mla_update_option .collapse">
+<h2>Add or update the stored value of a defined MLA option</h2>
+<pre>mla_update_option(string $option, mixed $newvalue, array $option_table) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>Name of the desired option</p></div>
+<div class="subelement argument">
+<h4>$newvalue</h4>
+<code>mixed</code><p>New value for the desired option</p></div>
+<div class="subelement argument">
+<h4>$option_table</h4>
+<code>array</code><p>Custom option definitions</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the value was changed or false if the update failed</div>
+</div></div>
+</div>
+<a name="mla_wp_handle_upload_filter" id="mla_wp_handle_upload_filter"></a><div class="element clickable method public mla_wp_handle_upload_filter" data-toggle="collapse" data-target=".mla_wp_handle_upload_filter .collapse">
+<h2>Called once for each file uploaded</h2>
+<pre>mla_wp_handle_upload_filter(array $file) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>array</code><p>file parameters ( 'name' )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated file parameters</div>
+</div></div>
+</div>
+<a name="mla_wp_handle_upload_prefilter_filter" id="mla_wp_handle_upload_prefilter_filter"></a><div class="element clickable method public mla_wp_handle_upload_prefilter_filter" data-toggle="collapse" data-target=".mla_wp_handle_upload_prefilter_filter .collapse">
+<h2>Examine or alter the filename before the file is made permanent</h2>
+<pre>mla_wp_handle_upload_prefilter_filter(array $file) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>array</code><p>file parameters ( 'name' )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated file parameters</div>
+</div></div>
+</div>
+<a name="_compose_custom_field_option_list" id="_compose_custom_field_option_list"></a><div class="element clickable method private _compose_custom_field_option_list" data-toggle="collapse" data-target="._compose_custom_field_option_list .collapse">
+<h2>Compose a Custom Field Options list with current selection</h2>
+<pre>_compose_custom_field_option_list(string $selection, array $blacklist) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.10</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$selection</h4>
+<code>string</code><p>current selection or 'none' (default)</p>
+</div>
+<div class="subelement argument">
+<h4>$blacklist</h4>
+<code>array</code><p>optional list of terms to exclude from the list</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML markup with select field options</div>
+</div></div>
+</div>
+<a name="_compose_data_source_option_list" id="_compose_data_source_option_list"></a><div class="element clickable method private _compose_data_source_option_list" data-toggle="collapse" data-target="._compose_data_source_option_list .collapse">
+<h2>Compose a (Custom Field) Data Source Options list with current selection</h2>
+<pre>_compose_data_source_option_list(string $selection) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.10</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$selection</h4>
+<code>string</code><p>current selection or 'none' (default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML markup with select field options</div>
+</div></div>
+</div>
+<a name="_compose_iptc_option_list" id="_compose_iptc_option_list"></a><div class="element clickable method private _compose_iptc_option_list" data-toggle="collapse" data-target="._compose_iptc_option_list .collapse">
+<h2>Compose an IPTC Options list with current selection</h2>
+<pre>_compose_iptc_option_list(string $selection) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.00</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$selection</h4>
+<code>string</code><p>current selection or 'none' (default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML markup with select field options</div>
+</div></div>
+</div>
+<a name="_compose_parent_option_list" id="_compose_parent_option_list"></a><div class="element clickable method private _compose_parent_option_list" data-toggle="collapse" data-target="._compose_parent_option_list .collapse">
+<h2>Compose an hierarchical taxonomy Parent options list with current selection</h2>
+<pre>_compose_parent_option_list(string $taxonomy, integer $selection) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.00</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\$mla_option_templates</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$taxonomy</h4>
+<code>string</code><p>taxonomy slug</p></div>
+<div class="subelement argument">
+<h4>$selection</h4>
+<code>integer</code><p>current selection or 0 (zero, default)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>HTML markup with select field options</div>
+</div></div>
+</div>
+<a name="_evaluate_array_result" id="_evaluate_array_result"></a><div class="element clickable method private _evaluate_array_result" data-toggle="collapse" data-target="._evaluate_array_result .collapse">
+<h2>Evaluate post information for custom field mapping</h2>
+<pre>_evaluate_array_result(array $value, string $option, boolean $keep_existing) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.40</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code><p>field value(s)</p>
+</div>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>format option text|single|export|array|multi</p></div>
+<div class="subelement argument">
+<h4>$keep_existing</h4>
+<code>boolean</code><p>keep existing value(s) - for 'multi' option</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>array for option = array|multi else string</div>
+</div></div>
+</div>
+<a name="_evaluate_data_source" id="_evaluate_data_source"></a><div class="element clickable method private _evaluate_data_source" data-toggle="collapse" data-target="._evaluate_data_source .collapse">
+<h2>Evaluate custom field mapping data source</h2>
+<pre>_evaluate_data_source(integer $post_id, string $category, array $data_value, array $attachment_metadata) : string | array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post->ID of attachment</p>
+</div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: custom_field_mapping or single_attachment_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$data_value</h4>
+<code>array</code><p>data source specification ( name, *data_source, *keep_existing, *format, mla_column, quick_edit, bulk_edit, *meta_name, *option, no_null )</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>(optional) _wp_attachment_metadata, default NULL (use current postmeta database value)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>array</code>data source value</div>
+</div></div>
+</div>
+<a name="_evaluate_file_information" id="_evaluate_file_information"></a><div class="element clickable method private _evaluate_file_information" data-toggle="collapse" data-target="._evaluate_file_information .collapse">
+<h2>Evaluate file information for custom field mapping</h2>
+<pre>_evaluate_file_information(string $upload_dir, array $wp_attached_files, array $wp_attachment_metadata, integer $post_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$upload_dir</h4>
+<code>string</code><p>absolute path the the uploads base directory</p></div>
+<div class="subelement argument">
+<h4>$wp_attached_files</h4>
+<code>array</code><p>_wp_attached_file meta_value array, indexed by post_id</p></div>
+<div class="subelement argument">
+<h4>$wp_attachment_metadata</h4>
+<code>array</code><p>_wp_attachment_metadata meta_value array, indexed by post_id</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post->ID of attachment</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>absolute_path_raw, absolute_path, absolute_file_name_raw, absolute_file_name, absolute_file, base_file, path, file_name, extension, dimensions, width, height, hwstring_small, array of intermediate sizes</div>
+</div></div>
+</div>
+<a name="_evaluate_post_information" id="_evaluate_post_information"></a><div class="element clickable method private _evaluate_post_information" data-toggle="collapse" data-target="._evaluate_post_information .collapse">
+<h2>Evaluate post information for custom field mapping</h2>
+<pre>_evaluate_post_information(integer $post_id, string $category, string $data_source) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.40</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post->ID of attachment</p>
+</div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: custom_field_mapping or single_attachment_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$data_source</h4>
+<code>string</code><p>data source name ( post_date or post_parent )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>(string)/'' or (integer)/0 depending on $data_source type</div>
+</div></div>
+</div>
+<a name="_get_custom_field_names" id="_get_custom_field_names"></a><div class="element clickable method private _get_custom_field_names" data-toggle="collapse" data-target="._get_custom_field_names .collapse">
+<h2>Generate a list of all (post) Custom Field names</h2>
+<pre>_get_custom_field_names() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The list will include any Custom Field and IPTC/EXIF rules that
+haven't been mapped to any attachments, yet.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Custom field names from the postmeta table and MLA rules</div>
+</div></div>
+</div>
+<a name="_get_term_id" id="_get_term_id"></a><div class="element clickable method private _get_term_id" data-toggle="collapse" data-target="._get_term_id .collapse">
+<h2>Build and search a cache of taxonomy and term name to term ID mappings</h2>
+<pre>_get_term_id(string $term_name, integer $term_parent, string $taxonomy, array $post_terms) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.01</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$term_name</h4>
+<code>string</code><p>term name (not slug)</p>
+</div>
+<div class="subelement argument">
+<h4>$term_parent</h4>
+<code>integer</code><p>zero or term's parent term_id</p>
+</div>
+<div class="subelement argument">
+<h4>$taxonomy</h4>
+<code>string</code><p>taxonomy slug</p></div>
+<div class="subelement argument">
+<h4>$post_terms</h4>
+<code>array</code><p>term objects currently assigned to the item</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>term_id for the term name</div>
+</div></div>
+</div>
+<a name="_load_option_templates" id="_load_option_templates"></a><div class="element clickable method private _load_option_templates" data-toggle="collapse" data-target="._load_option_templates .collapse">
+<h2>Load style and markup templates to $mla_templates</h2>
+<pre>_load_option_templates() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+</div></div>
+</div>
+<a name="_update_attachment_metadata" id="_update_attachment_metadata"></a><div class="element clickable method private _update_attachment_metadata" data-toggle="collapse" data-target="._update_attachment_metadata .collapse">
+<h2>Update _wp_attachment_metadata for just-inserted attachment</h2>
+<pre>_update_attachment_metadata(array $updates, array $data) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$updates</h4>
+<code>array</code><p>Attachment metadata updates</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>Attachment metadata, by reference; updated by this function</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Attachment metadata updates, with "meta:" elements removed</div>
+</div></div>
+</div>
+<a name="_update_custom_field_mapping" id="_update_custom_field_mapping"></a><div class="element clickable method private _update_custom_field_mapping" data-toggle="collapse" data-target="._update_custom_field_mapping .collapse">
+<h2>Update custom field mappings</h2>
+<pre>_update_custom_field_mapping(array $current_values, array $new_values) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$current_values</h4>
+<code>array</code><p>current custom_field_mapping values</p></div>
+<div class="subelement argument">
+<h4>$new_values</h4>
+<code>array</code><p>new values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( 'message' => HTML message(s) reflecting results, 'values' => updated custom_field_mapping values, 'changed' => true if any changes detected else false )</div>
+</div></div>
+</div>
+<a name="_update_iptc_exif_custom_mapping" id="_update_iptc_exif_custom_mapping"></a><div class="element clickable method private _update_iptc_exif_custom_mapping" data-toggle="collapse" data-target="._update_iptc_exif_custom_mapping .collapse">
+<h2>Update Custom field portion of IPTC/EXIF mappings</h2>
+<pre>_update_iptc_exif_custom_mapping(array $current_values, array $new_values) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$current_values</h4>
+<code>array</code><p>current iptc_exif_mapping values</p></div>
+<div class="subelement argument">
+<h4>$new_values</h4>
+<code>array</code><p>new values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( 'message' => HTML message(s) reflecting results, 'values' => updated iptc_exif_mapping values, 'changed' => true if any changes detected else false )</div>
+</div></div>
+</div>
+<a name="_update_iptc_exif_standard_mapping" id="_update_iptc_exif_standard_mapping"></a><div class="element clickable method private _update_iptc_exif_standard_mapping" data-toggle="collapse" data-target="._update_iptc_exif_standard_mapping .collapse">
+<h2>Update Standard field portion of IPTC/EXIF mappings</h2>
+<pre>_update_iptc_exif_standard_mapping(array $current_values, array $new_values) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$current_values</h4>
+<code>array</code><p>current iptc_exif_mapping values</p></div>
+<div class="subelement argument">
+<h4>$new_values</h4>
+<code>array</code><p>new values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( 'message' => HTML message(s) reflecting results, 'values' => updated iptc_exif_mapping values, 'changed' => true if any changes detected else false )</div>
+</div></div>
+</div>
+<a name="_update_iptc_exif_taxonomy_mapping" id="_update_iptc_exif_taxonomy_mapping"></a><div class="element clickable method private _update_iptc_exif_taxonomy_mapping" data-toggle="collapse" data-target="._update_iptc_exif_taxonomy_mapping .collapse">
+<h2>Update Taxonomy term portion of IPTC/EXIF mappings</h2>
+<pre>_update_iptc_exif_taxonomy_mapping(array $current_values, array $new_values) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$current_values</h4>
+<code>array</code><p>current iptc_exif_mapping values</p></div>
+<div class="subelement argument">
+<h4>$new_values</h4>
+<code>array</code><p>new values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( 'message' => HTML message(s) reflecting results, 'values' => updated iptc_exif_mapping values, 'changed' => true if any changes detected else false )</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24mla_option_definitions" id="$mla_option_definitions"> </a><div class="element clickable property public $mla_option_definitions" data-toggle="collapse" data-target=".$mla_option_definitions .collapse">
+<h2>$mla_option_definitions defines the database options and admin page areas for setting/updating them</h2>
+<pre>$mla_option_definitions </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>The array must be populated at runtime in MLAOptions::mla_localize_option_definitions_array();
+localization calls cannot be placed in the "public static" array definition itself.</p>
+
+<p>Each option is defined by an array with the following elements:</p>
+
+<p>array key => HTML id/name attribute and option database key (OMIT MLA_OPTION_PREFIX)</p>
+
+<p>tab => Settings page tab id for the option
+name => admin page label or heading text
+type => 'checkbox', 'header', 'radio', 'select', 'text', 'textarea', 'custom', 'hidden'
+std => default value
+help => help text
+size => text size, default 40
+cols => textbox columns, default 90
+rows => textbox rows, default 5
+options => array of radio or select option values
+texts => array of radio or select option display texts
+render => rendering function for 'custom' options. Usage:
+    $options_list .= ['render']( 'render', $key, $value );
+update => update function for 'custom' options; returns nothing. Usage:
+    $message = ['update']( 'update', $key, $value, $_REQUEST );
+delete => delete function for 'custom' options; returns nothing. Usage:
+    $message = ['delete']( 'delete', $key, $value, $_REQUEST );
+reset => reset function for 'custom' options; returns nothing. Usage:
+    $message = ['reset']( 'reset', $key, $value, $_REQUEST );</p></p></div></div>
+</div>
+<a name="%24process_featured_in" id="$process_featured_in"> </a><div class="element clickable property public $process_featured_in" data-toggle="collapse" data-target=".$process_featured_in .collapse">
+<h2>Option setting for "Featured in" reporting</h2>
+<pre>$process_featured_in : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This setting is false if the "Featured in" database access setting is "disabled", else true.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24process_gallery_in" id="$process_gallery_in"> </a><div class="element clickable property public $process_gallery_in" data-toggle="collapse" data-target=".$process_gallery_in .collapse">
+<h2>Option setting for "Gallery in" reporting</h2>
+<pre>$process_gallery_in : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This setting is false if the "Gallery in" database access setting is "disabled", else true.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24process_inserted_in" id="$process_inserted_in"> </a><div class="element clickable property public $process_inserted_in" data-toggle="collapse" data-target=".$process_inserted_in .collapse">
+<h2>Option setting for "Inserted in" reporting</h2>
+<pre>$process_inserted_in : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This setting is false if the "Inserted in" database access setting is "disabled", else true.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24process_mla_gallery_in" id="$process_mla_gallery_in"> </a><div class="element clickable property public $process_mla_gallery_in" data-toggle="collapse" data-target=".$process_mla_gallery_in .collapse">
+<h2>Option setting for "MLA Gallery in" reporting</h2>
+<pre>$process_mla_gallery_in : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This setting is false if the "MLA Gallery in" database access setting is "disabled", else true.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24add_attachment_id" id="$add_attachment_id"> </a><div class="element clickable property private $add_attachment_id" data-toggle="collapse" data-target=".$add_attachment_id .collapse">
+<h2>Attachment ID passed from mla_add_attachment_action to mla_update_attachment_metadata_filter</h2>
+<pre>$add_attachment_id : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Ensures that IPTC/EXIF and Custom Field mapping is only performed when the attachment is first
+added to the Media Library.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.70</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24custom_field_data_sources" id="$custom_field_data_sources"> </a><div class="element clickable property private $custom_field_data_sources" data-toggle="collapse" data-target=".$custom_field_data_sources .collapse">
+<h2>Array of Data Source names for custom field mapping</h2>
+<pre>$custom_field_data_sources : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_option_templates" id="$mla_option_templates"> </a><div class="element clickable property private $mla_option_templates" data-toggle="collapse" data-target=".$mla_option_templates .collapse">
+<h2>Style and Markup templates</h2>
+<pre>$mla_option_templates : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.80</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a name="MLA_ADD_NEW_BULK_EDIT" id="MLA_ADD_NEW_BULK_EDIT"> </a><div class="element clickable constant  MLA_ADD_NEW_BULK_EDIT" data-toggle="collapse" data-target=".MLA_ADD_NEW_BULK_EDIT .collapse">
+<h2>Provides a unique name for the Media/Add New bulk edit option</h2>
+<pre>MLA_ADD_NEW_BULK_EDIT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_ADD_NEW_BULK_EDIT_ON_TOP" id="MLA_ADD_NEW_BULK_EDIT_ON_TOP"> </a><div class="element clickable constant  MLA_ADD_NEW_BULK_EDIT_ON_TOP" data-toggle="collapse" data-target=".MLA_ADD_NEW_BULK_EDIT_ON_TOP .collapse">
+<h2>Provides a unique name for the Media/Add New bulk edit "on top" option</h2>
+<pre>MLA_ADD_NEW_BULK_EDIT_ON_TOP </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_BULK_CHUNK_SIZE" id="MLA_BULK_CHUNK_SIZE"> </a><div class="element clickable constant  MLA_BULK_CHUNK_SIZE" data-toggle="collapse" data-target=".MLA_BULK_CHUNK_SIZE .collapse">
+<h2>Provides a unique name for the Bulk Update and Map All chunk size option</h2>
+<pre>MLA_BULK_CHUNK_SIZE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_COUNT_TERM_ATTACHMENTS" id="MLA_COUNT_TERM_ATTACHMENTS"> </a><div class="element clickable constant  MLA_COUNT_TERM_ATTACHMENTS" data-toggle="collapse" data-target=".MLA_COUNT_TERM_ATTACHMENTS .collapse">
+<h2>Provides a unique name for the taxonomy count Attachments option</h2>
+<pre>MLA_COUNT_TERM_ATTACHMENTS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEBUG_DISPLAY_LIMIT" id="MLA_DEBUG_DISPLAY_LIMIT"> </a><div class="element clickable constant  MLA_DEBUG_DISPLAY_LIMIT" data-toggle="collapse" data-target=".MLA_DEBUG_DISPLAY_LIMIT .collapse">
+<h2>Provides a unique name for the Debug display limit option</h2>
+<pre>MLA_DEBUG_DISPLAY_LIMIT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEBUG_FILE" id="MLA_DEBUG_FILE"> </a><div class="element clickable constant  MLA_DEBUG_FILE" data-toggle="collapse" data-target=".MLA_DEBUG_FILE .collapse">
+<h2>Provides a unique name for the Debug alternate log file option</h2>
+<pre>MLA_DEBUG_FILE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEBUG_REPLACE_LEVEL" id="MLA_DEBUG_REPLACE_LEVEL"> </a><div class="element clickable constant  MLA_DEBUG_REPLACE_LEVEL" data-toggle="collapse" data-target=".MLA_DEBUG_REPLACE_LEVEL .collapse">
+<h2>Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option</h2>
+<pre>MLA_DEBUG_REPLACE_LEVEL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEBUG_REPLACE_PHP_LOG" id="MLA_DEBUG_REPLACE_PHP_LOG"> </a><div class="element clickable constant  MLA_DEBUG_REPLACE_PHP_LOG" data-toggle="collapse" data-target=".MLA_DEBUG_REPLACE_PHP_LOG .collapse">
+<h2>Provides a unique name for the Debug replace PHP log file option</h2>
+<pre>MLA_DEBUG_REPLACE_PHP_LOG </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEBUG_REPLACE_PHP_REPORTING" id="MLA_DEBUG_REPLACE_PHP_REPORTING"> </a><div class="element clickable constant  MLA_DEBUG_REPLACE_PHP_REPORTING" data-toggle="collapse" data-target=".MLA_DEBUG_REPLACE_PHP_REPORTING .collapse">
+<h2>Provides a unique name for the Debug replace PHP error_reporting option</h2>
+<pre>MLA_DEBUG_REPLACE_PHP_REPORTING </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEFAULT_ORDER" id="MLA_DEFAULT_ORDER"> </a><div class="element clickable constant  MLA_DEFAULT_ORDER" data-toggle="collapse" data-target=".MLA_DEFAULT_ORDER .collapse">
+<h2>Provides a unique name for the default order option</h2>
+<pre>MLA_DEFAULT_ORDER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_DEFAULT_ORDERBY" id="MLA_DEFAULT_ORDERBY"> </a><div class="element clickable constant  MLA_DEFAULT_ORDERBY" data-toggle="collapse" data-target=".MLA_DEFAULT_ORDERBY .collapse">
+<h2>Provides a unique name for the default orderby option</h2>
+<pre>MLA_DEFAULT_ORDERBY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_EDIT_MEDIA_META_BOXES" id="MLA_EDIT_MEDIA_META_BOXES"> </a><div class="element clickable constant  MLA_EDIT_MEDIA_META_BOXES" data-toggle="collapse" data-target=".MLA_EDIT_MEDIA_META_BOXES .collapse">
+<h2>Provides a unique name for the Edit Media additional meta boxes option</h2>
+<pre>MLA_EDIT_MEDIA_META_BOXES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_EDIT_MEDIA_SEARCH_TAXONOMY" id="MLA_EDIT_MEDIA_SEARCH_TAXONOMY"> </a><div class="element clickable constant  MLA_EDIT_MEDIA_SEARCH_TAXONOMY" data-toggle="collapse" data-target=".MLA_EDIT_MEDIA_SEARCH_TAXONOMY .collapse">
+<h2>Provides a unique name for the "searchable taxonomies" option</h2>
+<pre>MLA_EDIT_MEDIA_SEARCH_TAXONOMY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_ENABLE_MLA_ICONS" id="MLA_ENABLE_MLA_ICONS"> </a><div class="element clickable constant  MLA_ENABLE_MLA_ICONS" data-toggle="collapse" data-target=".MLA_ENABLE_MLA_ICONS .collapse">
+<h2>Provides a unique name for the Enable MLA Icons option</h2>
+<pre>MLA_ENABLE_MLA_ICONS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_ENABLE_POST_MIME_TYPES" id="MLA_ENABLE_POST_MIME_TYPES"> </a><div class="element clickable constant  MLA_ENABLE_POST_MIME_TYPES" data-toggle="collapse" data-target=".MLA_ENABLE_POST_MIME_TYPES .collapse">
+<h2>Provides a unique name for the Enable Post MIME Types option</h2>
+<pre>MLA_ENABLE_POST_MIME_TYPES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_ENABLE_UPLOAD_MIMES" id="MLA_ENABLE_UPLOAD_MIMES"> </a><div class="element clickable constant  MLA_ENABLE_UPLOAD_MIMES" data-toggle="collapse" data-target=".MLA_ENABLE_UPLOAD_MIMES .collapse">
+<h2>Provides a unique name for the Enable Upload MIME Types option</h2>
+<pre>MLA_ENABLE_UPLOAD_MIMES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_EXCLUDE_REVISIONS" id="MLA_EXCLUDE_REVISIONS"> </a><div class="element clickable constant  MLA_EXCLUDE_REVISIONS" data-toggle="collapse" data-target=".MLA_EXCLUDE_REVISIONS .collapse">
+<h2>Provides a unique name for the exclude revisions option</h2>
+<pre>MLA_EXCLUDE_REVISIONS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_EXIF_SIZE" id="MLA_EXIF_SIZE"> </a><div class="element clickable constant  MLA_EXIF_SIZE" data-toggle="collapse" data-target=".MLA_EXIF_SIZE .collapse">
+<h2>Provides a "size" attribute value for the EXIF/Template Value field</h2>
+<pre>MLA_EXIF_SIZE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_FEATURED_IN_TUNING" id="MLA_FEATURED_IN_TUNING"> </a><div class="element clickable constant  MLA_FEATURED_IN_TUNING" data-toggle="collapse" data-target=".MLA_FEATURED_IN_TUNING .collapse">
+<h2>Provides a unique name for a database tuning option</h2>
+<pre>MLA_FEATURED_IN_TUNING </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_GALLERY_IN_TUNING" id="MLA_GALLERY_IN_TUNING"> </a><div class="element clickable constant  MLA_GALLERY_IN_TUNING" data-toggle="collapse" data-target=".MLA_GALLERY_IN_TUNING .collapse">
+<h2>Provides a unique name for a database tuning option</h2>
+<pre>MLA_GALLERY_IN_TUNING </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_INSERTED_IN_TUNING" id="MLA_INSERTED_IN_TUNING"> </a><div class="element clickable constant  MLA_INSERTED_IN_TUNING" data-toggle="collapse" data-target=".MLA_INSERTED_IN_TUNING .collapse">
+<h2>Provides a unique name for a database tuning option</h2>
+<pre>MLA_INSERTED_IN_TUNING </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_GRID_TOOLBAR" id="MLA_MEDIA_GRID_TOOLBAR"> </a><div class="element clickable constant  MLA_MEDIA_GRID_TOOLBAR" data-toggle="collapse" data-target=".MLA_MEDIA_GRID_TOOLBAR .collapse">
+<h2>Provides a unique name for the Media Grid toolbar option, which
+also controls the ATTACHMENT DETAILS enhancements</h2>
+<pre>MLA_MEDIA_GRID_TOOLBAR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_DETAILS_AUTOFILL" id="MLA_MEDIA_MODAL_DETAILS_AUTOFILL"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_DETAILS_AUTOFILL" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_DETAILS_AUTOFILL .collapse">
+<h2>Provides a unique name for the Media Manager Attachment Details auto-fill option</h2>
+<pre>MLA_MEDIA_MODAL_DETAILS_AUTOFILL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" id="MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX .collapse">
+<h2>Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
+This option is for hierarchical taxonomies, e.g., "Att.</h2>
+<pre>MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>Categories".</p></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_DETAILS_TAG_METABOX" id="MLA_MEDIA_MODAL_DETAILS_TAG_METABOX"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_DETAILS_TAG_METABOX" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_DETAILS_TAG_METABOX .collapse">
+<h2>Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
+This option is for flat taxonomies, e.g., "Att.</h2>
+<pre>MLA_MEDIA_MODAL_DETAILS_TAG_METABOX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>Tags".</p></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_MIMETYPES" id="MLA_MEDIA_MODAL_MIMETYPES"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_MIMETYPES" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_MIMETYPES .collapse">
+<h2>Provides a unique name for the Media Manager toolbar MIME Types option</h2>
+<pre>MLA_MEDIA_MODAL_MIMETYPES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_MONTHS" id="MLA_MEDIA_MODAL_MONTHS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_MONTHS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_MONTHS .collapse">
+<h2>Provides a unique name for the Media Manager toolbar Month and Year option</h2>
+<pre>MLA_MEDIA_MODAL_MONTHS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_ORDER" id="MLA_MEDIA_MODAL_ORDER"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_ORDER" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_ORDER .collapse">
+<h2>Provides a unique name for the Media Manager order option</h2>
+<pre>MLA_MEDIA_MODAL_ORDER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_ORDERBY" id="MLA_MEDIA_MODAL_ORDERBY"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_ORDERBY" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_ORDERBY .collapse">
+<h2>Provides a unique name for the Media Manager orderby option</h2>
+<pre>MLA_MEDIA_MODAL_ORDERBY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_SEARCHBOX" id="MLA_MEDIA_MODAL_SEARCHBOX"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_SEARCHBOX" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_SEARCHBOX .collapse">
+<h2>Provides a unique name for the Media Manager toolbar Search Box option</h2>
+<pre>MLA_MEDIA_MODAL_SEARCHBOX </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS" id="MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS .collapse">
+<h2>Provides a unique name for the Media Manager toolbar Search Box Controls option</h2>
+<pre>MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_TERMS" id="MLA_MEDIA_MODAL_TERMS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_TERMS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_TERMS .collapse">
+<h2>Provides a unique name for the Media Manager toolbar Taxonomy Terms option</h2>
+<pre>MLA_MEDIA_MODAL_TERMS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_TERMS_SEARCH" id="MLA_MEDIA_MODAL_TERMS_SEARCH"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_TERMS_SEARCH" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_TERMS_SEARCH .collapse">
+<h2>Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option</h2>
+<pre>MLA_MEDIA_MODAL_TERMS_SEARCH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_TOOLBAR" id="MLA_MEDIA_MODAL_TOOLBAR"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_TOOLBAR" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_TOOLBAR .collapse">
+<h2>Provides a unique name for the Media Manager toolbar option, which
+also controls the ATTACHMENT DETAILS enhancements</h2>
+<pre>MLA_MEDIA_MODAL_TOOLBAR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MLA_GALLERY_IN_TUNING" id="MLA_MLA_GALLERY_IN_TUNING"> </a><div class="element clickable constant  MLA_MLA_GALLERY_IN_TUNING" data-toggle="collapse" data-target=".MLA_MLA_GALLERY_IN_TUNING .collapse">
+<h2>Provides a unique name for a database tuning option</h2>
+<pre>MLA_MLA_GALLERY_IN_TUNING </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_NEW_CUSTOM_FIELD" id="MLA_NEW_CUSTOM_FIELD"> </a><div class="element clickable constant  MLA_NEW_CUSTOM_FIELD" data-toggle="collapse" data-target=".MLA_NEW_CUSTOM_FIELD .collapse">
+<h2>Provides a unique name for the Custom Field "new field" key</h2>
+<pre>MLA_NEW_CUSTOM_FIELD </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_NEW_CUSTOM_RULE" id="MLA_NEW_CUSTOM_RULE"> </a><div class="element clickable constant  MLA_NEW_CUSTOM_RULE" data-toggle="collapse" data-target=".MLA_NEW_CUSTOM_RULE .collapse">
+<h2>Provides a unique name for the Custom Field "new rule" key</h2>
+<pre>MLA_NEW_CUSTOM_RULE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_POST_MIME_TYPES" id="MLA_POST_MIME_TYPES"> </a><div class="element clickable constant  MLA_POST_MIME_TYPES" data-toggle="collapse" data-target=".MLA_POST_MIME_TYPES .collapse">
+<h2>Provides a unique name for the Post MIME Types option</h2>
+<pre>MLA_POST_MIME_TYPES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_SCREEN_DISPLAY_LIBRARY" id="MLA_SCREEN_DISPLAY_LIBRARY"> </a><div class="element clickable constant  MLA_SCREEN_DISPLAY_LIBRARY" data-toggle="collapse" data-target=".MLA_SCREEN_DISPLAY_LIBRARY .collapse">
+<h2>Provides a unique name for the admin screen remove Media/Library option</h2>
+<pre>MLA_SCREEN_DISPLAY_LIBRARY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_SCREEN_MENU_TITLE" id="MLA_SCREEN_MENU_TITLE"> </a><div class="element clickable constant  MLA_SCREEN_MENU_TITLE" data-toggle="collapse" data-target=".MLA_SCREEN_MENU_TITLE .collapse">
+<h2>Provides a unique name for the admin screen menu title option</h2>
+<pre>MLA_SCREEN_MENU_TITLE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_SCREEN_ORDER" id="MLA_SCREEN_ORDER"> </a><div class="element clickable constant  MLA_SCREEN_ORDER" data-toggle="collapse" data-target=".MLA_SCREEN_ORDER .collapse">
+<h2>Provides a unique name for the admin screen menu order option</h2>
+<pre>MLA_SCREEN_ORDER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_SCREEN_PAGE_TITLE" id="MLA_SCREEN_PAGE_TITLE"> </a><div class="element clickable constant  MLA_SCREEN_PAGE_TITLE" data-toggle="collapse" data-target=".MLA_SCREEN_PAGE_TITLE .collapse">
+<h2>Provides a unique name for the admin screen page title option</h2>
+<pre>MLA_SCREEN_PAGE_TITLE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_SEARCH_MEDIA_FILTER_DEFAULTS" id="MLA_SEARCH_MEDIA_FILTER_DEFAULTS"> </a><div class="element clickable constant  MLA_SEARCH_MEDIA_FILTER_DEFAULTS" data-toggle="collapse" data-target=".MLA_SEARCH_MEDIA_FILTER_DEFAULTS .collapse">
+<h2>Provides a unique name for the display Search Media controls option</h2>
+<pre>MLA_SEARCH_MEDIA_FILTER_DEFAULTS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS" id="MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS"> </a><div class="element clickable constant  MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS" data-toggle="collapse" data-target=".MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS .collapse">
+<h2>Provides a unique name for the display Search Media controls option</h2>
+<pre>MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_TABLE_ICON_SIZE" id="MLA_TABLE_ICON_SIZE"> </a><div class="element clickable constant  MLA_TABLE_ICON_SIZE" data-toggle="collapse" data-target=".MLA_TABLE_ICON_SIZE .collapse">
+<h2>Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option</h2>
+<pre>MLA_TABLE_ICON_SIZE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_TABLE_VIEWS_WIDTH" id="MLA_TABLE_VIEWS_WIDTH"> </a><div class="element clickable constant  MLA_TABLE_VIEWS_WIDTH" data-toggle="collapse" data-target=".MLA_TABLE_VIEWS_WIDTH .collapse">
+<h2>Provides a unique name for the Media/Assistant submenu table views width option</h2>
+<pre>MLA_TABLE_VIEWS_WIDTH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_TAXONOMY_FILTER_DEPTH" id="MLA_TAXONOMY_FILTER_DEPTH"> </a><div class="element clickable constant  MLA_TAXONOMY_FILTER_DEPTH" data-toggle="collapse" data-target=".MLA_TAXONOMY_FILTER_DEPTH .collapse">
+<h2>Provides a unique name for the taxonomy filter maximum depth option</h2>
+<pre>MLA_TAXONOMY_FILTER_DEPTH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN" id="MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN"> </a><div class="element clickable constant  MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN" data-toggle="collapse" data-target=".MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN .collapse">
+<h2>Provides a unique name for the taxonomy filter maximum depth option</h2>
+<pre>MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_TAXONOMY_SUPPORT" id="MLA_TAXONOMY_SUPPORT"> </a><div class="element clickable constant  MLA_TAXONOMY_SUPPORT" data-toggle="collapse" data-target=".MLA_TAXONOMY_SUPPORT .collapse">
+<h2>Provides a unique name for the taxonomy support option</h2>
+<pre>MLA_TAXONOMY_SUPPORT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_UPLOAD_MIMES" id="MLA_UPLOAD_MIMES"> </a><div class="element clickable constant  MLA_UPLOAD_MIMES" data-toggle="collapse" data-target=".MLA_UPLOAD_MIMES .collapse">
+<h2>Provides a unique name for the Upload MIME Types option</h2>
+<pre>MLA_UPLOAD_MIMES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_VERSION_OPTION" id="MLA_VERSION_OPTION"> </a><div class="element clickable constant  MLA_VERSION_OPTION" data-toggle="collapse" data-target=".MLA_VERSION_OPTION .collapse">
+<h2>Provides a unique name for the current version option</h2>
+<pre>MLA_VERSION_OPTION </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>
