@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
 sudo apt-get install -y mysql-server-5.6
 
 echo "Resetting database (creating if not yet)"
