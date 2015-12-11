@@ -1,0 +1,202 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for the Bulk Updates area.
+ * Adapted from /wp-admin/css/list-tables.css section 10.1 - Inline Editing
+ */
+
+/* Layout */
+
+#bulk-edit-reset {
+	margin: 0px 5px
+}
+
+#mla-add-new-bulk-edit-div .mla_taxonomy_options {
+	margin-top: 8px;
+	margin-bottom: 8px
+}
+
+#mla-add-new-bulk-edit-div .inline-edit-col-left {
+	width: 25%
+}
+
+#mla-add-new-bulk-edit-div .inline-edit-col-center {
+	width: 25%
+}
+
+#mla-add-new-bulk-edit-div .inline-edit-col-right {
+	width: 49%
+}
+
+#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right label span.title {
+	width: 6em;
+	line-height: 1.2
+}
+
+#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right label span.input-text-wrap {
+	margin-right: 6em
+}
+
+#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right label.inline-edit-post-parent span.input-text-wrap {
+	width: 5em
+}
+
+#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right input#bulk-edit-set-parent {
+	display:inline;
+	line-height: 16px;
+	margin: .2em .4em .2em .4em;
+}
+
+#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right label.inline-edit-tags span.title {
+	width: 99%
+}
+
+#mla-add-new-bulk-edit-div fieldset {
+	font-size: 12px;
+	float: right;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#mla-add-new-bulk-edit-div fieldset .inline-edit-col {
+	padding: 0 0.5em;
+}
+
+#mla-add-new-bulk-edit-div fieldset .inline-edit-group {
+	clear: both;
+}
+
+#mla-add-new-bulk-edit-div fieldset .inline-edit-group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+@media screen and ( max-width: 782px ) {
+	/* Quick Edit and Bulk Edit */
+	#mla-add-new-bulk-edit-div .inline-edit-col-left,
+	#mla-add-new-bulk-edit-div .inline-edit-col-right,
+	#mla-add-new-bulk-edit-div .inline-edit-col-center {
+		float: none;
+		width: 100%;
+	}
+
+	#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right label span.title {
+		width: 100%;
+		line-height: 2.5
+	}
+
+	#mla-add-new-bulk-edit-div fieldset.inline-edit-col-right label span.input-text-wrap {
+		margin-right: 0em
+	}
+}
+
+/* Positioning */
+
+#mla-add-new-bulk-edit-div fieldset span.title,
+#mla-add-new-bulk-edit-div fieldset span.checkbox-title {
+	margin: 0;
+	padding: 0;
+	line-height: 27px;
+}
+
+#mla-add-new-bulk-edit-div fieldset label,
+#mla-add-new-bulk-edit-div fieldset span.inline-edit-categories-label {
+	display: block;
+	margin: .2em 0;
+}
+
+#mla-add-new-bulk-edit-div fieldset label.inline-edit-tags {
+	margin-top: 0;
+}
+
+#mla-add-new-bulk-edit-div fieldset label.inline-edit-tags span.title {
+	margin: .2em 0;
+	width: auto;
+}
+
+#mla-add-new-bulk-edit-div fieldset label span.title {
+	display: block;
+	float: right;
+	width: 5em;
+}
+
+#mla-add-new-bulk-edit-div fieldset label span.input-text-wrap {
+	display: block;
+	margin-right: 5em;
+}
+
+#mla-add-new-bulk-edit-div .input-text-wrap input[type=text] {
+	width: 100%;
+}
+
+#mla-add-new-bulk-edit-div fieldset label input[type=checkbox] {
+	vertical-align: text-bottom;
+}
+
+#mla-add-new-bulk-edit-div fieldset label textarea {
+	width: 100%;
+	height: 4em;
+}
+
+#mla-add-new-bulk-edit-div fieldset .inline-edit-group label {
+	max-width: 50%;
+}
+
+#mla-add-new-bulk-edit-div fieldset .inline-edit-group label.alignleft:first-child {
+	margin-right: 0.5em
+}
+
+/* Styling */
+
+#mla-add-new-bulk-edit-div fieldset span.title,
+#mla-add-new-bulk-edit-div fieldset span.checkbox-title {
+	font-style: italic;
+	line-height: 1.8em;
+}
+
+/* Specific Elements */
+
+#mla-add-new-bulk-edit-div ul.cat-checklist {
+	height: 12em;
+	border: solid 1px #ddd;
+	overflow-y: scroll;
+	padding: 0 5px;
+	margin: 0px;
+	background-color: #fff;
+}
+
+#mla-add-new-bulk-edit-div ul.cat-checklist ul {
+	margin-right: 18px;
+}
+
+#mla-add-new-bulk-edit-div span.catshow {
+	display: none;
+}
+
+#mla-add-new-bulk-edit-div fieldset ul.cat-checklist li,
+#mla-add-new-bulk-edit-div fieldset ul.cat-checklist input {
+	margin: 0;
+	position: relative; /* RTL fix, #WP27629 */
+}
+
+#mla-add-new-bulk-edit-div fieldset ul.cat-checklist label {
+	font-style: normal;
+	font-size: 11px;
+}
+
+#mla-add-new-bulk-edit-div fieldset label input.inline-edit-slug-input {
+	width: 75%;
+}
+
+#mla-add-new-bulk-edit-div #post_parent {
+	max-width: 80%;
+}
+
+.ie8 #mla-add-new-bulk-edit-div #post_parent {
+	width: 250px;
+}

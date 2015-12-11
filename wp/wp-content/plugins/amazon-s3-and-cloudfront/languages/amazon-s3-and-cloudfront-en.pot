@@ -1,0 +1,641 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: amazon-s3-and-cloudfront\n"
+"Report-Msgid-Bugs-To: nom@deliciousbrains.com\n"
+"POT-Creation-Date: 2015-10-01 18:10+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: classes/amazon-s3-and-cloudfront.php:84
+msgid "Offload S3"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:85
+msgid "S3 and CloudFront"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:521
+#, php-format
+msgid "File %s does not exist"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:530
+#, php-format
+msgid "Mime type %s is not allowed"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:607
+#, php-format
+msgid "Error uploading %s to S3: %s"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1247
+msgid "Cheatin&#8217; eh?"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1251
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1257
+msgid "No bucket name provided."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1532
+msgid "Error Getting Bucket Region"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1533
+#, php-format
+msgid "There was an error attempting to get the region of the bucket %s: %s"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1653
+msgid ""
+"This is a test file to check if the user has write permission to S3. Delete "
+"me if found."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1685
+#, php-format
+msgid ""
+"There was an error attempting to check the permissions of the bucket %s: %s"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1743
+msgid "Error creating bucket"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1744
+msgid "Bucket name too short."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1745
+msgid "Bucket name too long."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1746
+msgid ""
+"Invalid character. Bucket names can contain lowercase letters, numbers, "
+"periods and hyphens."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1747
+msgid "Error saving bucket"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1748
+msgid "Error fetching buckets"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1749
+msgid "Error getting URL preview: "
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1750
+msgid "The changes you made will be lost if you navigate away from this page"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1808
+msgid "Cheatin' eh?"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1911
+msgctxt "Show the media library tab"
+msgid "Media Library"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:1912
+msgctxt "Show the support tab"
+msgid "Support"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:2048
+#, php-format
+msgid "The file %s has been given %s permissions on Amazon S3."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:2549
+msgid "Quick Start Guide"
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:2551
+#, php-format
+msgid ""
+"Looks like we don't have write access to this bucket. It's likely that the "
+"user you've provided access keys for hasn't been granted the correct "
+"permissions. Please see our %s for instructions on setting up permissions "
+"correctly."
+msgstr ""
+
+#: classes/amazon-s3-and-cloudfront.php:2553
+#, php-format
+msgid ""
+"Looks like we don't have access to the buckets. It's likely that the user "
+"you've provided access keys for hasn't been granted the correct permissions. "
+"Please see our %s for instructions on setting up permissions correctly."
+msgstr ""
+
+#: classes/as3cf-plugin-compatibility.php:357
+#: classes/upgrades/as3cf-meta-wp-error.php:72
+#, php-format
+msgid "There was an error attempting to download the file %s from S3: %s"
+msgstr ""
+
+#: classes/as3cf-upgrade.php:279
+#, php-format
+msgid ""
+"<strong>Running %s Update</strong> &mdash; We&#8217;re going through all the "
+"Media Library items uploaded to S3 %s This will be done quietly in the "
+"background, processing a small batch of Media Library items every %d "
+"minutes. There should be no noticeable impact on your server&#8217;s "
+"performance."
+msgstr ""
+
+#: classes/as3cf-upgrade.php:280
+msgid "Pause Update"
+msgstr ""
+
+#: classes/as3cf-upgrade.php:284
+#, php-format
+msgid ""
+"<strong>%s Update Paused</strong> &mdash; Updating Media Library %s has been "
+"paused."
+msgstr ""
+
+#: classes/as3cf-upgrade.php:285
+msgid "Restart Update"
+msgstr ""
+
+#: classes/as3cf-upgrade.php:288
+#, php-format
+msgid ""
+"<strong>Error Updating %s</strong> &mdash; We ran into some errors "
+"attempting to update the %s for all your Media Library items that have been "
+"uploaded to S3. Please check your error log for details."
+msgstr ""
+
+#: classes/as3cf-upgrade.php:289
+msgid "Try Run It Again"
+msgstr ""
+
+#: classes/as3cf-upgrade.php:391
+#, php-format
+msgid "Every %d Minutes"
+msgstr ""
+
+#: classes/upgrades/as3cf-file-sizes.php:37
+msgid ""
+"and updating the metadata with the sizes of files that have been removed "
+"from the server. This will allow us to serve the correct size for media "
+"items and the total space used in Multisite subsites."
+msgstr ""
+
+#: classes/upgrades/as3cf-meta-wp-error.php:38
+msgid ""
+"and rebuilding the metadata for attachments that may have been corrupted."
+msgstr ""
+
+#: classes/upgrades/as3cf-region-meta.php:36
+msgid ""
+"and updating the metadata with the bucket region it is served from. This "
+"will allow us to serve your files from the proper S3 region subdomain <span "
+"style=\"white-space:nowrap;\">(e.g. s3-us-west-2.amazonaws.com)</span>."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:310
+msgid "deactivate"
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:311
+#, php-format
+msgid "You can %s the %s plugin to get rid of this notice."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:314
+#, php-format
+msgid "%s has been disabled as it requires the %s plugin."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:318
+msgid "which is currently disabled."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:320
+msgid "It appears to be installed already."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:322
+msgctxt "Activate plugin"
+msgid "Activate it now."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:329
+#, php-format
+msgid "<a href=\"%s\">Install</a> and activate it."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:340
+#, php-format
+msgid ""
+"%s has been disabled as it requires version %s or later of the %s plugin."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:343
+#, php-format
+msgid "You currently have version %s installed."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:350
+#, php-format
+msgid "A valid license for %s is required to update."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:358
+msgid "Update to the latest version"
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:370
+#, php-format
+msgid ""
+"%1$s has been disabled because it is not a supported addon of the %2$s "
+"plugin."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:379
+#, php-format
+msgid ""
+"%1$s has been disabled because it will not work with the version of the %2$s "
+"plugin installed. %1$s %3$s or later is required."
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:382
+#, php-format
+msgid "Update %s to the latest version"
+msgstr ""
+
+#: classes/wp-aws-compatibility-check.php:442
+#, php-format
+msgid "The %s plugin has been deactivated."
+msgstr ""
+
+#: view/bucket-select.php:3
+msgid "Change bucket"
+msgstr ""
+
+#: view/bucket-select.php:3
+msgid "What bucket would you like to use?"
+msgstr ""
+
+#: view/bucket-select.php:5
+msgid "Existing bucket name"
+msgstr ""
+
+#: view/bucket-select.php:7
+#: view/bucket-select.php:12
+msgid "Saving..."
+msgstr ""
+
+#: view/bucket-select.php:7
+#: view/bucket-select.php:12
+msgid "Save Bucket"
+msgstr ""
+
+#: view/bucket-select.php:8
+msgid "Browse existing buckets"
+msgstr ""
+
+#: view/bucket-select.php:9
+#: view/bucket-select.php:26
+#: view/bucket-select.php:31
+msgid "Create new bucket"
+msgstr ""
+
+#: view/bucket-select.php:13
+#: view/bucket-select.php:21
+#: view/bucket-select.php:67
+msgid "Cancel"
+msgstr ""
+
+#: view/bucket-select.php:18
+msgid "Select bucket"
+msgstr ""
+
+#: view/bucket-select.php:19
+msgid "Loading..."
+msgstr ""
+
+#: view/bucket-select.php:22
+#: view/bucket-select.php:27
+msgid "Refresh"
+msgstr ""
+
+#: view/bucket-select.php:25
+msgid "Enter bucket name"
+msgstr ""
+
+#: view/bucket-select.php:37
+msgid "Bucket Name:"
+msgstr ""
+
+#: view/bucket-select.php:40
+msgid "Bucket Name"
+msgstr ""
+
+#: view/bucket-select.php:46
+msgid "Region:"
+msgstr ""
+
+#: view/bucket-select.php:60
+#, php-format
+msgid "%s (defined in wp-config.php)"
+msgstr ""
+
+#: view/bucket-select.php:66
+msgid "Creating..."
+msgstr ""
+
+#: view/bucket-select.php:66
+msgid "Create New Bucket"
+msgstr ""
+
+#: view/bucket-setting.php:7
+msgid "Bucket"
+msgstr ""
+
+#: view/bucket-setting.php:11
+msgid "Change"
+msgstr ""
+
+#: view/bucket-setting.php:13
+msgid "(defined in wp-config.php)"
+msgstr ""
+
+#: view/debug-info.php:2
+msgid "Diagnostic Info"
+msgstr ""
+
+#: view/debug-info.php:11
+msgctxt "Download to your computer"
+msgid "Download"
+msgstr ""
+
+#: view/domain-setting.php:5
+msgid "Domain:"
+msgstr ""
+
+#: view/domain-setting.php:23
+msgid "Bucket name as subdomain"
+msgstr ""
+
+#: view/domain-setting.php:28
+msgid "Bucket name in path"
+msgstr ""
+
+#: view/domain-setting.php:33
+msgid "Bucket name as domain"
+msgstr ""
+
+#: view/domain-setting.php:38
+msgid "CloudFront or custom domain"
+msgstr ""
+
+#: view/error-access.php:4
+msgid "Access Denied to Bucket"
+msgstr ""
+
+#: view/settings.php:10
+msgid "Settings saved."
+msgstr ""
+
+#: view/settings.php:44
+msgid "Enable/Disable the Plugin"
+msgstr ""
+
+#: view/settings.php:51
+msgid "Copy Files to S3"
+msgstr ""
+
+#: view/settings.php:52
+msgid ""
+"When a file is uploaded to the Media Library, copy it to S3. Existing files "
+"are <em>not</em> copied to S3."
+msgstr ""
+
+#: view/settings.php:60
+msgid "Rewrite File URLs"
+msgstr ""
+
+#: view/settings.php:61
+msgid ""
+"For Media Library files that have been copied to S3, rewrite the URLs so "
+"that they are served from S3/CloudFront instead of your server."
+msgstr ""
+
+#: view/settings.php:65
+msgid "Configure File URLs"
+msgstr ""
+
+#: view/settings.php:83
+msgid "Path"
+msgstr ""
+
+#: view/settings.php:85
+msgid "By default the path is the same as your local WordPress files:"
+msgstr ""
+
+#: view/settings.php:98
+msgid "Year/Month"
+msgstr ""
+
+#: view/settings.php:100
+msgid "Add the Year/Month in the URL."
+msgstr ""
+
+#: view/settings.php:106
+msgid "SSL:"
+msgstr ""
+
+#: view/settings.php:114
+msgid "Same as request"
+msgstr ""
+
+#: view/settings.php:115
+msgid "When the request is https://, use https:// for the file URL as well."
+msgstr ""
+
+#: view/settings.php:119
+msgid "Always SSL"
+msgstr ""
+
+#: view/settings.php:120
+msgid "Forces https:// to be used."
+msgstr ""
+
+#: view/settings.php:121
+msgid ""
+"You cannot use the \"Bucket as a subdomain\" domain option when using SSL."
+msgstr ""
+
+#: view/settings.php:125
+msgid "Always non-SSL"
+msgstr ""
+
+#: view/settings.php:126
+msgid "Forces http:// to be used."
+msgstr ""
+
+#: view/settings.php:132
+msgid "Advanced Options"
+msgstr ""
+
+#: view/settings.php:139
+msgid "Remove Files From Server"
+msgstr ""
+
+#: view/settings.php:140
+msgid "Once a file has been copied to S3, remove it from the local server."
+msgstr ""
+
+#: view/settings.php:148
+msgid "Object Versioning"
+msgstr ""
+
+#: view/settings.php:150
+msgid ""
+"Append a timestamp to the S3 file path. Recommended when using CloudFront so "
+"you don't have to worry about cache invalidation."
+msgstr ""
+
+#: view/settings.php:152
+#: view/settings.php:165
+msgid "More info"
+msgstr ""
+
+#: view/settings.php:162
+msgid "Far Future Expiration Header"
+msgstr ""
+
+#: view/settings.php:163
+msgid ""
+"Implements a \"Never Expire\" caching policy for browsers by setting an "
+"Expires header for 10 years in the future. Should be used in conjunction "
+"with object versioning above."
+msgstr ""
+
+#: view/settings.php:175
+msgid "Copy HiDPI (@2x) Images"
+msgstr ""
+
+#: view/settings.php:176
+#, php-format
+msgid ""
+"When uploading a file to S3, checks if there's a file of the same name with "
+"an @2x suffix and copies it to S3 as well. Works with the <a href=\"%s\">WP "
+"Retina 2x</a> plugin."
+msgstr ""
+
+#: view/settings.php:182
+msgid "Save Changes"
+msgstr ""
+
+#: view/sidebar.php:10
+msgid "Upload existing Media Library to S3"
+msgstr ""
+
+#: view/sidebar.php:11
+msgid "Find & replace file URLs in content"
+msgstr ""
+
+#: view/sidebar.php:12
+msgid "Manage S3 files in WordPress"
+msgstr ""
+
+#: view/sidebar.php:13
+msgid "Assets addon - Serve your CSS & JS from S3/CloudFront"
+msgstr ""
+
+#: view/sidebar.php:14
+msgid "WooCommerce addon"
+msgstr ""
+
+#: view/sidebar.php:15
+msgid "Easy Digital Downloads addon"
+msgstr ""
+
+#: view/sidebar.php:16
+msgid "PriorityExpert™ email support"
+msgstr ""
+
+#: view/sidebar.php:19
+msgid "Visit deliciousbrains.com &rarr;"
+msgstr ""
+
+#: view/sidebar.php:26
+msgid "Get 20% Off!"
+msgstr ""
+
+#: view/sidebar.php:29
+#, php-format
+msgid ""
+"Submit your name and email and we’ll send you a coupon for 20% off your "
+"upgrade."
+msgstr ""
+
+#: view/sidebar.php:33
+msgid "Your Email"
+msgstr ""
+
+#: view/sidebar.php:37
+msgid "First Name"
+msgstr ""
+
+#: view/sidebar.php:41
+msgid "Last Name"
+msgstr ""
+
+#: view/sidebar.php:48
+msgid "Send me the coupon"
+msgstr ""
+
+#: view/sidebar.php:52
+msgid ""
+"We promise we will not use your email for anything else and you can "
+"unsubscribe with 1-click anytime."
+msgstr ""
+
+#: view/wordpress-org-support.php:2
+msgid "As this is a free plugin, we do not provide support."
+msgstr ""
+
+#: view/wordpress-org-support.php:4
+#, php-format
+msgid ""
+"You may ask the WordPress community for help by posting to the <a href=\"%s"
+"\">WordPress.org support forum</a>. Response time can range from a few days "
+"to a few weeks and will likely be from a non-developer."
+msgstr ""
+
+#: view/wordpress-org-support.php:6
+#, php-format
+msgid ""
+"If you want a <strong>timely response via email from a developer</strong> "
+"who works on this plugin, <a href=\"%s\">upgrade</a> and send us an email."
+msgstr ""
+
+#: view/wordpress-org-support.php:8
+#, php-format
+msgid ""
+"If you've found a bug, please <a href=\"%s\">submit an issue on GitHub</a>."
+msgstr ""

@@ -1,0 +1,257 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAMutex</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#__construct" title="__construct :: Initializes the choice of semaphore Vs file lock"><span class="description">Initializes the choice of semaphore Vs file lock</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#acquire" title="acquire :: Acquires the semaphore or opens and locks the file"><span class="description">Acquires the semaphore or opens and locks the file</span><pre>acquire()</pre></a></li>
+<li class="method public "><a href="#getId" title="getId :: Returns the semaphore identifier, if it exists, else NULL"><span class="description">Returns the semaphore identifier, if it exists, else NULL</span><pre>getId()</pre></a></li>
+<li class="method public "><a href="#init" title="init :: Creates the semaphore or sets the (lock) file name"><span class="description">Creates the semaphore or sets the (lock) file name</span><pre>init()</pre></a></li>
+<li class="method public "><a href="#release" title="release :: Releases the semaphore or unlocks and closes (but does not unlink) the file"><span class="description">Releases the semaphore or unlocks and closes (but does not unlink) the file</span><pre>release()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24filename" title="$filename :: Name of the (locked) file used as a semaphore"><span class="description">Name of the (locked) file used as a semaphore</span><pre>$filename</pre></a></li>
+<li class="property private "><a href="#%24filepointer" title="$filepointer :: File system pointer resource of the (locked) file used as a semaphore"><span class="description">File system pointer resource of the (locked) file used as a semaphore</span><pre>$filepointer</pre></a></li>
+<li class="property private "><a href="#%24is_acquired" title="$is_acquired :: True if the semaphore has been acquired"><span class="description">True if the semaphore has been acquired</span><pre>$is_acquired</pre></a></li>
+<li class="property private "><a href="#%24sem_id" title="$sem_id :: Semaphore identifier returned by sem_get()"><span class="description">Semaphore identifier returned by sem_get()</span><pre>$sem_id</pre></a></li>
+<li class="property private "><a href="#%24use_file_lock" title="$use_file_lock :: True if using a file lock instead of a semaphore"><span class="description">True if using a file lock instead of a semaphore</span><pre>$use_file_lock</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAMutex" id="\MLAMutex"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAMutex.html">MLAMutex</a>
+</li>
+</ul>
+<div href="../classes/MLAMutex.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) Mutex provides a simple "mutual exclusion" semaphore
+for the [mla_gallery] mla_viewer=single option</p>
+<div class="details">
+<p class="long_description"><p>Adapted from the example by mr.smaon@gmail.com in the PHP Manual "Semaphore Functions" page.</p></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>2.10</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>Initializes the choice of semaphore Vs file lock</h2>
+<pre>__construct(boolean $use_lock) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$use_lock</h4>
+<code>boolean</code><p>True to force use of file locking</p></div>
+</div></div>
+</div>
+<a name="acquire" id="acquire"></a><div class="element clickable method public acquire" data-toggle="collapse" data-target=".acquire .collapse">
+<h2>Acquires the semaphore or opens and locks the file</h2>
+<pre>acquire() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the acquisition succeeded</div>
+</div></div>
+</div>
+<a name="getId" id="getId"></a><div class="element clickable method public getId" data-toggle="collapse" data-target=".getId .collapse">
+<h2>Returns the semaphore identifier, if it exists, else NULL</h2>
+<pre>getId() : resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>resource</code>Semaphore identifier or NULL</div>
+</div></div>
+</div>
+<a name="init" id="init"></a><div class="element clickable method public init" data-toggle="collapse" data-target=".init .collapse">
+<h2>Creates the semaphore or sets the (lock) file name</h2>
+<pre>init(integer $id, string $filename) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code><p>Key to identify the semaphore</p></div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code><p>Absolute path and name of the file for locking</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the initialization succeeded</div>
+</div></div>
+</div>
+<a name="release" id="release"></a><div class="element clickable method public release" data-toggle="collapse" data-target=".release .collapse">
+<h2>Releases the semaphore or unlocks and closes (but does not unlink) the file</h2>
+<pre>release() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the release succeeded</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24filename" id="$filename"> </a><div class="element clickable property private $filename" data-toggle="collapse" data-target=".$filename .collapse">
+<h2>Name of the (locked) file used as a semaphore</h2>
+<pre>$filename : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24filepointer" id="$filepointer"> </a><div class="element clickable property private $filepointer" data-toggle="collapse" data-target=".$filepointer .collapse">
+<h2>File system pointer resource of the (locked) file used as a semaphore</h2>
+<pre>$filepointer : resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24is_acquired" id="$is_acquired"> </a><div class="element clickable property private $is_acquired" data-toggle="collapse" data-target=".$is_acquired .collapse">
+<h2>True if the semaphore has been acquired</h2>
+<pre>$is_acquired : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24sem_id" id="$sem_id"> </a><div class="element clickable property private $sem_id" data-toggle="collapse" data-target=".$sem_id .collapse">
+<h2>Semaphore identifier returned by sem_get()</h2>
+<pre>$sem_id : resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24use_file_lock" id="$use_file_lock"> </a><div class="element clickable property private $use_file_lock" data-toggle="collapse" data-target=".$use_file_lock .collapse">
+<h2>True if using a file lock instead of a semaphore</h2>
+<pre>$use_file_lock : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>

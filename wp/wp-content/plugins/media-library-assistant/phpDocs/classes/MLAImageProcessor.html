@@ -1,0 +1,332 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAImageProcessor</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#mla_handle_thumbnail_sideload" title="mla_handle_thumbnail_sideload :: Process Imagick thumbnail conversion request, e.g., for a PDF thumbnail"><span class="description">Process Imagick thumbnail conversion request, e.g., for a PDF thumbnail</span><pre>mla_handle_thumbnail_sideload()</pre></a></li>
+<li class="method public "><a href="#mla_process_stream_image" title="mla_process_stream_image :: Process Imagick image stream request, e.g., for a PDF thumbnail"><span class="description">Process Imagick image stream request, e.g., for a PDF thumbnail</span><pre>mla_process_stream_image()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_get_temp_file" title="_get_temp_file :: Generate a unique, writable file in the temporary directory"><span class="description">Generate a unique, writable file in the temporary directory</span><pre>_get_temp_file()</pre></a></li>
+<li class="method private "><a href="#_ghostscript_convert" title="_ghostscript_convert :: Direct Ghostscript file conversion"><span class="description">Direct Ghostscript file conversion</span><pre>_ghostscript_convert()</pre></a></li>
+<li class="method private "><a href="#_mla_debug_add" title="_mla_debug_add :: Log debug information"><span class="description">Log debug information</span><pre>_mla_debug_add()</pre></a></li>
+<li class="method private "><a href="#_mla_die" title="_mla_die :: Abort the operation and exit"><span class="description">Abort the operation and exit</span><pre>_mla_die()</pre></a></li>
+<li class="method private "><a href="#_mla_error_return" title="_mla_error_return :: Log the message and return error message array"><span class="description">Log the message and return error message array</span><pre>_mla_error_return()</pre></a></li>
+<li class="method private "><a href="#_prepare_image" title="_prepare_image :: Prepare the image for output, scaling and flattening as required"><span class="description">Prepare the image for output, scaling and flattening as required</span><pre>_prepare_image()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24mla_debug" title="$mla_debug :: Log debug information if true"><span class="description">Log debug information if true</span><pre>$mla_debug</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected "><a href="#%24image" title="$image :: Imagick object for the image to be streamed"><span class="description">Imagick object for the image to be streamed</span><pre>$image</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAImageProcessor" id="\MLAImageProcessor"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAImageProcessor.html">MLAImageProcessor</a>
+</li>
+</ul>
+<div href="../classes/MLAImageProcessor.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) Image Processor provides PDF thumbnails
+for the [mla_gallery] mla_viewer
+and Media/Assistant thumbnail generator.</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>2.10</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="mla_handle_thumbnail_sideload" id="mla_handle_thumbnail_sideload"></a><div class="element clickable method public mla_handle_thumbnail_sideload" data-toggle="collapse" data-target=".mla_handle_thumbnail_sideload .collapse">
+<h2>Process Imagick thumbnail conversion request, e.g., for a PDF thumbnail</h2>
+<pre>mla_handle_thumbnail_sideload(string $input_file, array $args) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Replaces download_url() in the Codex "Function Reference/wp handle sideload" example.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.13</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input_file</h4>
+<code>string</code><p>Path and name of the source file relative to upload directory</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>array</code><p>Generation parameters</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>file attributes ( 'file', 'url', 'type' ) on success, ( 'error' ) on failure</div>
+</div></div>
+</div>
+<a name="mla_process_stream_image" id="mla_process_stream_image"></a><div class="element clickable method public mla_process_stream_image" data-toggle="collapse" data-target=".mla_process_stream_image .collapse">
+<h2>Process Imagick image stream request, e.g., for a PDF thumbnail</h2>
+<pre>mla_process_stream_image() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Requires mla_stream_file (relative to wp_upload_dir ) in $_REQUEST;
+optional $_REQUEST parameters are:
+        mla_stream_width, mla_stream_height, mla_stream_frame, mla_stream_resolution,
+    mla_stream_quality, mla_stream_type, mla_stream_fit, mla_ghostscript_path</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+<a name="_get_temp_file" id="_get_temp_file"></a><div class="element clickable method private _get_temp_file" data-toggle="collapse" data-target="._get_temp_file .collapse">
+<h2>Generate a unique, writable file in the temporary directory</h2>
+<pre>_get_temp_file(string $extension) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$extension</h4>
+<code>string</code><p>File extension for the temporary file</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Writable path and file name.</div>
+</div></div>
+</div>
+<a name="_ghostscript_convert" id="_ghostscript_convert"></a><div class="element clickable method private _ghostscript_convert" data-toggle="collapse" data-target="._ghostscript_convert .collapse">
+<h2>Direct Ghostscript file conversion</h2>
+<pre>_ghostscript_convert(string $file, string $frame, string $resolution, string $output_type, string $explicit_path) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>2.10</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\self::$image</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>string</code><p>Input file, e.g., a PDF document</p></div>
+<div class="subelement argument">
+<h4>$frame</h4>
+<code>string</code><p>Page/frame within the file, zero-based</p>
+</div>
+<div class="subelement argument">
+<h4>$resolution</h4>
+<code>string</code><p>Output file DPI. Default 72.</p></div>
+<div class="subelement argument">
+<h4>$output_type</h4>
+<code>string</code><p>Output MIME type; 'image/jpeg' or 'image/png'.</p>
+</div>
+<div class="subelement argument">
+<h4>$explicit_path</h4>
+<code>string</code><p>Optional. Non-standard location to override default search, e.g., 'C:\Program Files (x86)\gs\gs9.15\bin\gswin32c.exe'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if conversion succeeds else false</div>
+</div></div>
+</div>
+<a name="_mla_debug_add" id="_mla_debug_add"></a><div class="element clickable method private _mla_debug_add" data-toggle="collapse" data-target="._mla_debug_add .collapse">
+<h2>Log debug information</h2>
+<pre>_mla_debug_add(string $message) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Error message.</p></div>
+</div></div>
+</div>
+<a name="_mla_die" id="_mla_die"></a><div class="element clickable method private _mla_die" data-toggle="collapse" data-target="._mla_die .collapse">
+<h2>Abort the operation and exit</h2>
+<pre>_mla_die(string $message, string $title, integer $response) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Error message.</p></div>
+<div class="subelement argument">
+<h4>$title</h4>
+<code>string</code><p>Optional. Error title. Default empty.</p></div>
+<div class="subelement argument">
+<h4>$response</h4>
+<code>integer</code><p>Optional. HTML response code. Default 500.</p></div>
+</div></div>
+</div>
+<a name="_mla_error_return" id="_mla_error_return"></a><div class="element clickable method private _mla_error_return" data-toggle="collapse" data-target="._mla_error_return .collapse">
+<h2>Log the message and return error message array</h2>
+<pre>_mla_error_return(string $message, string $line) : \array(</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Error message.</p></div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>string</code><p>Optional. Line number in the caller.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\array(</code>'error' => message )</div>
+</div></div>
+</div>
+<a name="_prepare_image" id="_prepare_image"></a><div class="element clickable method private _prepare_image" data-toggle="collapse" data-target="._prepare_image .collapse">
+<h2>Prepare the image for output, scaling and flattening as required</h2>
+<pre>_prepare_image(integer $width, integer $height, boolean $best_fit, string $type, integer $quality) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>2.10</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\self::$image</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$width</h4>
+<code>integer</code><p>zero or new width</p></div>
+<div class="subelement argument">
+<h4>$height</h4>
+<code>integer</code><p>zero or new height</p></div>
+<div class="subelement argument">
+<h4>$best_fit</h4>
+<code>boolean</code><p>proportional fit (true) or exact fit (false)</p>
+</div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>output MIME type</p></div>
+<div class="subelement argument">
+<h4>$quality</h4>
+<code>integer</code><p>compression quality; 1 - 100</p>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24mla_debug" id="$mla_debug"> </a><div class="element clickable property public $mla_debug" data-toggle="collapse" data-target=".$mla_debug .collapse">
+<h2>Log debug information if true</h2>
+<pre>$mla_debug : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.12</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24image" id="$image"> </a><div class="element clickable property protected $image" data-toggle="collapse" data-target=".$image .collapse">
+<h2>Imagick object for the image to be streamed</h2>
+<pre>$image : \Imagick</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.10</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+</div>
+</body>
+</html>
