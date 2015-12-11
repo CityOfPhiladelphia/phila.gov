@@ -1,9 +1,8 @@
 #!/bin/bash
 
-echo 'Linking .env to .ssh/environment'
-cd ~/.ssh
-ln -fs ../phila.gov/.env environment
+echo 'Copying .env to ~/.ssh/environment'
+cp .env ~/.ssh/environment
 
 echo 'Permitting user env vars for ssh deploys'
-echo 'PermitUserEnvironment yes' >> /etc/ssh/sshd_config
-service ssh restart
+echo 'PermitUserEnvironment yes' | sudo tee -a /etc/ssh/sshd_config > /dev/null
+sudo service ssh restart
