@@ -243,8 +243,8 @@ class MLA_Upload_List_Table extends WP_List_Table {
 		}
 
 		if ( isset( $_REQUEST['mla_tab'] ) && $_REQUEST['mla_tab'] == 'upload' ) {
-			add_filter( 'get_user_option_managesettings_page_' . MLASettings::MLA_SETTINGS_SLUG . '-uploadcolumnshidden', 'MLA_Upload_list_Table::mla_manage_hidden_columns_filter', 10, 3 );
-			add_filter( 'manage_settings_page_' . MLASettings::MLA_SETTINGS_SLUG . '-upload_columns', 'MLA_Upload_list_Table::mla_manage_columns_filter', 10, 0 );
+			add_filter( 'get_user_option_managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-uploadcolumnshidden', 'MLA_Upload_list_Table::mla_manage_hidden_columns_filter', 10, 3 );
+			add_filter( 'manage_settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-upload_columns', 'MLA_Upload_list_Table::mla_manage_columns_filter', 10, 0 );
 			add_action( 'admin_print_styles', 'MLA_Upload_List_Table::mla_admin_print_styles_action' );
 		}
 	}
@@ -268,7 +268,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 			'singular' => 'upload_type', //singular name of the listed records
 			'plural' => 'upload_types', //plural name of the listed records
 			'ajax' => true, //does this table support ajax?
-			'screen' => 'settings_page_' . MLASettings::MLA_SETTINGS_SLUG . '-upload'
+			'screen' => 'settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-upload'
 		) );
 
 		/*
@@ -384,7 +384,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 		 */
 
 		$view_args = array(
-			'page' => MLASettings::MLA_SETTINGS_SLUG . '-upload',
+			'page' => MLACore::MLA_SETTINGS_SLUG . '-upload',
 			'mla_tab' => 'upload',
 			'mla_item_slug' => urlencode( $item->slug )
 		);
@@ -401,15 +401,15 @@ class MLA_Upload_List_Table extends WP_List_Table {
 			$view_args['orderby'] = $_REQUEST['orderby'];
 		}
 
-		$actions['edit'] = '<a href="' . add_query_arg( $view_args, wp_nonce_url( '?mla_admin_action=' . MLA::MLA_ADMIN_SINGLE_EDIT_DISPLAY, MLA::MLA_ADMIN_NONCE_ACTION, MLA::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Edit this item', 'media-library-assistant' ) . '">' . __( 'Edit', 'media-library-assistant' ) . '</a>';
+		$actions['edit'] = '<a href="' . add_query_arg( $view_args, wp_nonce_url( '?mla_admin_action=' . MLA::MLA_ADMIN_SINGLE_EDIT_DISPLAY, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Edit this item', 'media-library-assistant' ) . '">' . __( 'Edit', 'media-library-assistant' ) . '</a>';
 
 		$actions['inline hide-if-no-js'] = '<a class="editinline" href="#" title="' . __( 'Edit this item inline', 'media-library-assistant' ) . '">' . __( 'Quick Edit', 'media-library-assistant' ) . '</a>';
 
 		if ( 'custom' == $item->source ) {
 			if ( empty( $item->standard_source ) ) {
-				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, wp_nonce_url( '?mla_admin_action=' . MLA::MLA_ADMIN_SINGLE_DELETE, MLA::MLA_ADMIN_NONCE_ACTION, MLA::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Delete this item Permanently', 'media-library-assistant' ) . '">' . __( 'Delete Permanently', 'media-library-assistant' ) . '</a>';
+				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, wp_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Delete this item Permanently', 'media-library-assistant' ) . '">' . __( 'Delete Permanently', 'media-library-assistant' ) . '</a>';
 			} else {
-				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, wp_nonce_url( '?mla_admin_action=' . MLA::MLA_ADMIN_SINGLE_DELETE, MLA::MLA_ADMIN_NONCE_ACTION, MLA::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Revert to standard item', 'media-library-assistant' ) . '">' . __( 'Revert to Standard', 'media-library-assistant' ) . '</a>';
+				$actions['delete'] = '<a class="delete-tag"' . ' href="' . add_query_arg( $view_args, wp_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_DELETE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Revert to standard item', 'media-library-assistant' ) . '">' . __( 'Revert to Standard', 'media-library-assistant' ) . '</a>';
 			}
 		}
 
@@ -598,7 +598,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 	 * @return	array	Column information,e.g., array(0 => 'ID_parent, 1 => 'title_name')
 	 */
 	function get_hidden_columns( ) {
-		$columns = get_user_option( 'managesettings_page_' . MLASettings::MLA_SETTINGS_SLUG . '-uploadcolumnshidden' );
+		$columns = get_user_option( 'managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-uploadcolumnshidden' );
 
 		if ( is_array( $columns ) ) {
 			return $columns;
@@ -656,7 +656,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 			/*
 			 * Remember the view filters
 			 */
-			$base_url = 'options-general.php?page=' . MLASettings::MLA_SETTINGS_SLUG . '-upload&mla_tab=upload';
+			$base_url = 'options-general.php?page=' . MLACore::MLA_SETTINGS_SLUG . '-upload&mla_tab=upload';
 
 			if ( isset( $_REQUEST['s'] ) ) {
 				$base_url = add_query_arg( array( 's' => $_REQUEST['s'] ), $base_url );

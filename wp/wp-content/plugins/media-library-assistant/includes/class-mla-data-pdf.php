@@ -229,10 +229,11 @@ class MLAPDF {
 	 * @param	string	full path and file name
 	 * @param	integer	The object number
 	 * @param	integer	The object generation number; default zero (0)
+	 * @param	integer	The desired object instance (when multiple instances are present); default "highest/latest"
 	 *
 	 * @return	mixed	NULL on failure else array( 'start' => offset in the file, 'length' => object length, 'content' => dictionary contents )
 	 */
-	private static function _find_pdf_indirect_dictionary( $file_name, $object, $generation = 0 ) {
+	private static function _find_pdf_indirect_dictionary( $file_name, $object, $generation = 0, $instance = NULL ) {
 		$chunksize = 16384;			
 		$key = ( $object * 1000 ) + $generation;
 		if ( isset( self::$pdf_indirect_objects ) && isset( self::$pdf_indirect_objects[ $key ] ) ) {
@@ -243,14 +244,18 @@ class MLAPDF {
 
 		$object_starts = array();
 		$object_content = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$file_name}, {$file_offset} ) object_content = \r\n" . MLAData::mla_hex_dump( $object_content ), 0 );
 
 		/*
 		 * Match the object header
 		 */
 		$pattern = sprintf( '!%1$d\\h+%2$d\\h+obj[\\x00-\\x20]*(<<)!', $object, $generation );
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$object}, {$generation} ) pattern = " . var_export( $pattern, true ), 0 );
 		$match_count = preg_match( $pattern, $object_content, $matches, PREG_OFFSET_CAPTURE );
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$match_count} ) matches = " . var_export( $matches, true ), 0 );
 		if ( $match_count ) {
 			$object_starts[] = array( 'offset' => $file_offset, 'start' => $matches[1][1]);
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$file_offset}, {$matches[1][1]} ) object_content = \r\n" . MLAData::mla_hex_dump( substr( $object_content, $matches[1][1] ), 512 ), 0 );
 			$match_count = 0;
 		}
 
@@ -261,9 +266,11 @@ class MLAPDF {
 			$file_offset += ( $chunksize - 16 );
 			$object_content = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
 			$match_count = preg_match( $pattern, $object_content, $matches, PREG_OFFSET_CAPTURE );
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$match_count} ) matches = " . var_export( $matches, true ), 0 );
 
 			if ( $match_count ) {
 				$object_starts[] = array( 'offset' => $file_offset, 'start' => $matches[1][1]);
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$file_offset}, {$matches[1][1]} ) object_content = \r\n" . MLAData::mla_hex_dump( substr( $object_content, $matches[1][1] ), 512 ), 0 );
 				$match_count = 0;
 			}
 
@@ -271,15 +278,28 @@ class MLAPDF {
 				$file_offset += ( $chunksize - 16 );
 				$object_content = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
 				$match_count = preg_match( $pattern, $object_content, $matches, PREG_OFFSET_CAPTURE );
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$match_count} ) matches = " . var_export( $matches, true ), 0 );
 
 				if ( $match_count ) {
 					$object_starts[] = array( 'offset' => $file_offset, 'start' => $matches[1][1]);
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary( {$file_offset}, {$matches[1][1]} ) object_content = \r\n" . MLAData::mla_hex_dump( substr( $object_content, $matches[1][1] ), 512 ), 0 );
 					$match_count = 0;
 				}
 			} // while not found
 		} // if not found
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary object_starts = " . var_export( $object_starts, true ), 0 );
 
-		$object_start = array_pop( $object_starts );
+		/*
+		 * Return the highest/latest instance unless a specific instance is requested
+		 */
+		$object_count = count( $object_starts );
+		if ( is_null( $instance ) ) {
+			$object_start = array_pop( $object_starts );
+		} else {
+			$instance = absint( $instance );
+			$object_start = isset( $object_starts[ $instance ] ) ? $object_starts[ $instance ] : NULL;
+		}
+	
 		if ( is_null( $object_start ) ) {
 			return NULL;
 		} else {
@@ -312,8 +332,9 @@ class MLAPDF {
 		}
 
 		if ($match_count) {
-			$results = array( 'start' => $file_offset + $start, 'length' => ($matches[0][1] + 2) - $start );
+			$results = array( 'count' => $object_count, 'start' => $file_offset + $start, 'length' => ($matches[0][1] + 2) - $start );
 			$results['content'] = substr( $object_content, $start, $results['length'] );
+//error_log( __LINE__ . " MLAPDF::_find_pdf_indirect_dictionary results = " . var_export( $results, true ), 0 );
 			return $results;
 		} // found trailer
 
@@ -616,35 +637,35 @@ class MLAPDF {
 		 */
 		if ( 'xref' == substr( $tail, $chunk_offset, 4 ) ) {
 			$xref_length =	self::_parse_pdf_xref_section( $file_name, $file_offset + $chunk_offset + 4 );
-				$chunk_offset += 4 + $xref_length;
+//error_log( __LINE__ . " MLAPDF::_extract_pdf_trailer xref_length = " . var_export( $xref_length, true ), 0 );
+			$chunk_offset += 4 + $xref_length;
 
-				if ( $chunk_offset > ( $chunksize - 1024 ) ) {
-					$file_offset += $chunk_offset;
-					$tail = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
-					$chunk_offset = 0; 
+			if ( $chunk_offset > ( $chunksize - 1024 ) ) {
+				$file_offset += $chunk_offset;
+				$tail = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
+				$chunk_offset = 0; 
 			}
+//error_log( __LINE__ . " MLAPDF::_extract_pdf_trailer( {$file_offset} ) tail = \r\n" . MLAData::mla_hex_dump( $tail, 0, 16, 0 ), 0 );
 
 			$match_count = preg_match( '/[\x00-\x20]*trailer[\x00-\x20]+/', $tail, $matches, PREG_OFFSET_CAPTURE, $chunk_offset );
+//error_log( __LINE__ . " MLAPDF::_extract_pdf_trailer( {$match_count} ) matches = " . var_export( $matches, true ), 0 );
 			if ( $match_count ) {
 				$chunk_offset = $matches[0][1] + strlen( $matches[0][0] );
-				$match_count = preg_match( '/<<(.*)>>/', $tail, $matches, 0, $chunk_offset );
+				$dictionary = self::_parse_pdf_dictionary( $tail, $chunk_offset );
+//error_log( __LINE__ . " MLAPDF::_extract_pdf_trailer dictionary = " . var_export( $dictionary, true ), 0 );
 
-				if ( 0 < $match_count ) {
-					$dictionary = self::_parse_pdf_dictionary( $matches[0], 0 );
+				if ( isset( $dictionary['Prev'] ) ) {
+					$other_trailers =  self::_extract_pdf_trailer( $file_name, $dictionary['Prev']['value'] );
+				} else {
+					$other_trailers = NULL;
+				}
 
-					if ( isset( $dictionary['Prev'] ) ) {
-						$other_trailers =  self::_extract_pdf_trailer( $file_name, $dictionary['Prev']['value'] );
-					} else {
-						$other_trailers = NULL;
-					}
-
-					if ( is_array( $other_trailers ) ) {
-						$other_trailers = array_merge( $other_trailers, array( $dictionary ) );
-						return $other_trailers;
-					} else {
-						return array( $dictionary );
-					}
-				} // found trailer dictionary
+				if ( is_array( $other_trailers ) ) {
+					$other_trailers = array_merge( $other_trailers, array( $dictionary ) );
+					return $other_trailers;
+				} else {
+					return array( $dictionary );
+				}
 			} // found 'trailer'
 		} else { // found 'xref'
 		/*
@@ -705,12 +726,14 @@ class MLAPDF {
 		$filesize = filesize( $file_name );
 		$file_offset = ( $chunksize < $filesize ) ? ( $filesize - $chunksize ) : 0;
 		$tail = file_get_contents( $file_name, false, NULL, $file_offset );
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata( {$file_name}, {$file_offset} ) tail = \r\n" . MLAData::mla_hex_dump( $tail ), 0 );
 
 		if ( 0 == $file_offset ) {
 			$header = substr( $tail, 0, 128 );
 		} else {
 			$header = file_get_contents( $file_name, false, NULL, 0, 128 );
 		}
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata( {$file_name}, {$file_offset} ) header = \r\n" . MLAData::mla_hex_dump( $header ), 0 );
 
 		if ( '%PDF-' == substr( $header, 0, 5 ) ) {
 			$metadata['PDF_Version'] = substr( $header, 1, 7 );
@@ -729,6 +752,7 @@ class MLAPDF {
 
 		$startxref = (integer) $matches[1][ $match_count - 1 ][0];
 		$trailer_dictionaries = self::_extract_pdf_trailer( $file_name, $startxref );
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata trailer_dictionaries = " . var_export( $trailer_dictionaries, true ), 0 );
 		if ( is_array( $trailer_dictionaries ) ) {
 			$info_reference = NULL;
 			foreach ( $trailer_dictionaries as $trailer_dictionary ) 
@@ -736,11 +760,29 @@ class MLAPDF {
 				$info_reference = $trailer_dictionary['Info'];
 				break;
 			}
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata info_reference = " . var_export( $info_reference, true ), 0 );
 
 			if ( isset( $info_reference ) ) {	
 				$info_object = self::_find_pdf_indirect_dictionary( $file_name, $info_reference['object'], $info_reference['generation'] );
+
+				/*
+				 * Handle single or multiple Info instances
+				 */
+				$info_objects = array();
 				if ( $info_object ) {
+					if ( 1 == $info_object['count'] ) {
+						$info_objects[] = $info_object;
+					} else {
+						for ( $index = 0; $index < $info_object['count']; $index++ ) {
+							$info_objects[] = self::_find_pdf_indirect_dictionary( $file_name, $info_reference['object'], $info_reference['generation'], $index );
+						}
+					}
+				}
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata info_objects = " . var_export( $info_objects, true ), 0 );
+
+				foreach( $info_objects as $info_object ) {
 					$info_dictionary = self::_parse_pdf_dictionary( $info_object['content'], 0 );
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata info_dictionary = " . var_export( $info_dictionary, true ), 0 );
 					unset( $info_dictionary['/length'] );
 
 					foreach ( $info_dictionary as $name => $value ) {
@@ -757,38 +799,56 @@ class MLAPDF {
 							$metadata[ $name ] = $value['value'];
 						 }
 					} // each info entry
-				} // found Info object
+				} // foreach Info object
+				
+				/*
+				 * Remove spurious "Filter" dictionaries
+				 */
+				unset( $metadata['Filter'] );
+				unset( $metadata['Length'] );
+				unset( $metadata['Length1'] );
 			} // found Info reference
+//error_log( __LINE__ . ' MLAPDF::mla_extract_pdf_metadata pdf metadata = ' . var_export( $metadata, true ), 0 );
 
 			/*
 			 * Look for XMP Metadata
 			 */
 			$root_reference = NULL;
-			foreach ( $trailer_dictionaries as $trailer_dictionary ) 
-			if ( isset( $trailer_dictionary['Root'] ) ) {
-				$root_reference = $trailer_dictionary['Root'];
-				break;
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata info_dictionary = " . var_export( $info_dictionary, true ), 0 );
+			foreach ( $trailer_dictionaries as $trailer_dictionary ) {
+				if ( isset( $trailer_dictionary['Root'] ) ) {
+					$root_reference = $trailer_dictionary['Root'];
+					break;
+				}
 			}
-
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata root_reference = " . var_export( $root_reference, true ), 0 );
+			
 			if ( isset( $root_reference ) ) {	
 				$root_object = self::_find_pdf_indirect_dictionary( $file_name, $root_reference['object'], $root_reference['generation'] );
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata root_object = " . var_export( $root_object, true ), 0 );
 				if ( $root_object ) {
 					$root_dictionary = self::_parse_pdf_dictionary( $root_object['content'], 0 );
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata root_dictionary = " . var_export( $root_dictionary, true ), 0 );
 					unset( $root_dictionary['/length'] );
 
 					if ( isset( $root_dictionary['Metadata'] ) ) {
 						$xmp_object = self::_find_pdf_indirect_dictionary( $file_name, $root_dictionary['Metadata']['object'], $root_dictionary['Metadata']['generation'] );
+//error_log( __LINE__ . " MLAPDF::mla_extract_pdf_metadata xmp_object = " . var_export( $xmp_object, true ), 0 );
 						$xmp = MLAData::mla_parse_xmp_metadata( $file_name, $xmp_object['start'] + $xmp_object['length'] );
 
 						if ( is_array( $xmp ) ) {
 							$metadata = array_merge( $metadata, $xmp );
 						} else {
 							$xmp = array();
+							$xmp = MLAData::mla_parse_xmp_metadata( $file_name, 0 );
+//error_log( __LINE__ . ' MLAPDF::mla_extract_pdf_metadata recovered xmp = ' . var_export( $xmp, true ), 0 );
 						}
 					} // found Metadata reference
 				} // found Root object
 			} // found Root reference
 		} // found trailer_dictionaries
+//error_log( __LINE__ . ' MLAPDF::mla_extract_pdf_metadata pdf = ' . var_export( $metadata, true ), 0 );
+//error_log( __LINE__ . ' MLAPDF::mla_extract_pdf_metadata xmp = ' . var_export( $xmp, true ), 0 );
 
 		return array( 'xmp' => $xmp, 'pdf' => $metadata );
 	}

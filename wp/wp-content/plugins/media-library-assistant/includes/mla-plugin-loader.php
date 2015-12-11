@@ -56,20 +56,60 @@ $mla_plugin_loader_error_messages .= MLATest::min_WordPress_version( '3.5.0' );
 if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	add_action( 'admin_notices', 'mla_plugin_loader_reporting_action' );
 } else {
+	/*
+	 * MLATest is loaded above
+	 */
 	add_action( 'init', 'MLATest::initialize', 0x7FFFFFFF );
+
+	/*
+	 * Minimum support functions required by all other components
+	 */
+	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-core.php' );
+	add_action( 'init', 'MLACore::initialize', 0x7FFFFFFF );
+
+	/*
+	 * Front end posts/pages only need shortcode support; load the interface shims.
+	 */
+	if( ! ( defined('WP_ADMIN') && WP_ADMIN ) ) {
+		require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcodes.php' );
+		add_action( 'init', 'MLAShortcodes::initialize', 0x7FFFFFFF );
+		return;
+	}
+
+	if( defined('DOING_AJAX') && DOING_AJAX ) {
+		/*
+		 * Quick and Bulk Edit requires full support for content templates, etc.
+		 * IPTC/EXIF and Custom Field mapping require full support, too.
+		 */
+		$ajax_only = true;
+		if ( isset( $_REQUEST['action'] ) ) {
+			if ( in_array( $_REQUEST['action'], array( MLACore::JAVASCRIPT_INLINE_EDIT_SLUG, 'mla-inline-mapping-iptc-exif-scripts', 'mla-inline-mapping-custom-scripts' ) ) ) {
+				$ajax_only = false;
+			}
+		}
+		
+		if ( $ajax_only ) {
+			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data-query.php' );
+			add_action( 'init', 'MLAQuery::initialize', 0x7FFFFFFF );
+			
+			/*
+			 * Ajax handlers
+			 */
+			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-ajax.php' );
+			add_action( 'init', 'MLA_Ajax::initialize', 0x7FFFFFFF );
+		
+			return;
+		}
+	}
 
 	/*
 	 * Template file and database access functions.
 	 */
+	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data-query.php' );
+	add_action( 'init', 'MLAQuery::initialize', 0x7FFFFFFF );
+		
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data.php' );
 	add_action( 'init', 'MLAData::initialize', 0x7FFFFFFF );
-	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data-pdf.php' );
-
-	/*
-	 * Custom Taxonomies and WordPress objects.
-	 */
-	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-objects.php' );
-	add_action( 'init', 'MLAObjects::initialize', 0x7FFFFFFF );
 
 	/*
 	 * MIME Type functions.
@@ -78,22 +118,12 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	add_action( 'init', 'MLAMime::initialize', 0x7FFFFFFF );
 
 	/*
-	 * Shortcodes
+	 * Shortcode shim functions
 	 */
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcodes.php' );
 	add_action( 'init', 'MLAShortcodes::initialize', 0x7FFFFFFF );
 
-	/*
-	 * Edit Media screen additions, e.g., meta boxes
-	 */
-	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-edit-media.php' );
-	add_action( 'init', 'MLAEdit::initialize', 0x7FFFFFFF );
-
-	/*
-	 * Media Manager (Modal window) additions
-	 */
-	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-media-modal.php' );
-	add_action( 'init', 'MLAModal::initialize', 0x7FFFFFFF );
+	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcode-support.php' );
 
 	/*
 	 * Plugin settings management
@@ -111,8 +141,20 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	 * Main program
 	 */
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-main.php' );
-	add_action( 'init', 'MLA::initialize', 0x7FFFFFFF );
 	add_action( 'plugins_loaded', 'MLA::mla_plugins_loaded_action', 0x7FFFFFFF );
+	add_action( 'init', 'MLA::initialize', 0x7FFFFFFF );
+
+	/*
+	 * Edit Media screen additions, e.g., meta boxes
+	 */
+	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-edit-media.php' );
+	add_action( 'init', 'MLAEdit::initialize', 0x7FFFFFFF );
+
+	/*
+	 * Media Manager (Modal window) additions
+	 */
+	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-media-modal.php' );
+	add_action( 'init', 'MLAModal::initialize', 0x7FFFFFFF );
 
 	/*
 	 * Custom list table package that extends the core WP_List_Table class.

@@ -9,7 +9,7 @@
  * a supporting function "_export_this_item" and the "mla_end_mapping" action.
  *
  * @package MLA Mapping Hooks Example
- * @version 1.01
+ * @version 1.02
  */
 
 /*
@@ -86,6 +86,7 @@ class MLAMappingHooksExample {
 		add_filter( 'mla_mapping_custom_value', 'MLAMappingHooksExample::mla_mapping_custom_value_filter', 10, 5 );
 		add_filter( 'mla_mapping_iptc_value', 'MLAMappingHooksExample::mla_mapping_iptc_value_filter', 10, 5 );
 		add_filter( 'mla_mapping_exif_value', 'MLAMappingHooksExample::mla_mapping_exif_value_filter', 10, 5 );
+		add_filter( 'mla_mapping_new_text', 'MLAMappingHooksExample::mla_mapping_new_text_filter', 10, 5 );
 		add_filter( 'mla_mapping_updates', 'MLAMappingHooksExample::mla_mapping_updates_filter', 10, 5 );
 		add_action( 'mla_end_mapping', 'MLAMappingHooksExample::mla_end_mapping_action', 10, 0 );
 
@@ -455,7 +456,7 @@ class MLAMappingHooksExample {
 	 * @param	mixed 	IPTC value returned by the rule
 	 * @param	array 	custom_field_mapping rule
 	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
+	 * @param	string 	category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping
 	 * @param	array 	attachment_metadata, default NULL
 	 *
 	 * @return	array	updated rule IPTC value
@@ -497,7 +498,7 @@ class MLAMappingHooksExample {
 	 * @param	mixed 	EXIF/Template value returned by the rule
 	 * @param	array 	custom_field_mapping rule
 	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
+	 * @param	string 	category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping
 	 * @param	array 	attachment_metadata, default NULL
 	 *
 	 * @return	array	updated rule EXIF/Template value
@@ -527,6 +528,33 @@ class MLAMappingHooksExample {
 		 */
 		return $exif_value;
 	} // mla_mapping_exif_value_filter
+
+	/**
+	 * MLA Mapping New Text Filter
+	 *
+	 * This filter is called once for each IPTC/EXIF mapping rule, after the selection
+	 * between the IPTC and EXIF values has been made. You can change the new value
+	 * produced by the rule.
+	 *
+	 * @since 1.02
+	 *
+	 * @param	mixed 	string or array value returned by the rule
+	 * @param	array 	custom_field_mapping rule
+	 * @param	integer post ID to be evaluated
+	 * @param	string 	category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping
+	 * @param	array 	attachment_metadata, default NULL
+	 *
+	 * @return	array	updated rule EXIF/Template value
+	 */
+	public static function mla_mapping_new_text_filter( $new_text, $setting_value, $post_id, $category, $attachment_metadata ) {
+		//error_log( 'MLAMappingHooksExample::mla_mapping_new_text_filter $exif_value = ' . var_export( $exif_value, true ), 0 );
+		//error_log( 'MLAMappingHooksExample::mla_mapping_new_text_filter $setting_value = ' . var_export( $setting_value, true ), 0 );
+		//error_log( 'MLAMappingHooksExample::mla_mapping_new_text_filter $post_id = ' . var_export( $post_id, true ), 0 );
+		//error_log( 'MLAMappingHooksExample::mla_mapping_new_text_filter $category = ' . var_export( $category, true ), 0 );
+		//error_log( 'MLAMappingHooksExample::mla_mapping_new_text_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
+
+		return  $new_text;
+	} // mla_mapping_new_text_filter
 
 	/**
 	 * MLA Mapping Updates Filter

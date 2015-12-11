@@ -46,11 +46,9 @@ class MLATest {
 		/*
 		 * This is the earliest effective place to change error_reporting
 		 */
-		//error_reporting( E_ALL | E_STRICT | E_DEPRECATED | E_USER_DEPRECATED | E_USER_ERROR | E_USER_WARNING );
-		//error_reporting( E_ALL | E_STRICT );
-
-		MLA::$original_php_reporting = sprintf( '0x%1$04X', error_reporting() );
-		$php_reporting = trim( MLAOptions::mla_get_option( MLAOptions::MLA_DEBUG_REPLACE_PHP_REPORTING ) );
+		MLACore::$original_php_log = ini_get( 'error_log' );
+		MLACore::$original_php_reporting = sprintf( '0x%1$04X', error_reporting() );
+		$php_reporting = trim( MLACore::mla_get_option( MLACore::MLA_DEBUG_REPLACE_PHP_REPORTING ) );
 		if ( ! empty( $php_reporting ) ) {
 			@error_reporting( 0 + $php_reporting );
 		}
@@ -58,12 +56,27 @@ class MLATest {
 		/*
 		 * This is the earliest effective place to localize values in other plugin components
 		 */
-		MLAOptions::mla_localize_option_definitions_array();
-		MLASettings::mla_localize_tablist();
-		MLA_List_Table::mla_localize_default_columns_array();
-		MLA_Upload_List_Table::mla_localize_default_columns_array();
-		MLA_Upload_Optional_List_Table::mla_localize_default_columns_array();
-		MLA_View_List_Table::mla_localize_default_columns_array();
+		MLACore::mla_localize_option_definitions_array();
+		
+		if ( class_exists( 'MLASettings' ) ) {
+			MLASettings::mla_localize_tablist();
+		}
+		
+		if ( class_exists( 'MLAQuery' ) ) {
+			MLAQuery::mla_localize_default_columns_array();
+		}
+		
+		if ( class_exists( 'MLA_Upload_List_Table' ) ) {
+			MLA_Upload_List_Table::mla_localize_default_columns_array();
+		}
+		
+		if ( class_exists( 'MLA_Upload_Optional_List_Table' ) ) {
+			MLA_Upload_Optional_List_Table::mla_localize_default_columns_array();
+		}
+		
+		if ( class_exists( 'MLA_View_List_Table' ) ) {
+			MLA_View_List_Table::mla_localize_default_columns_array();
+		}
 	}
 
 	/**

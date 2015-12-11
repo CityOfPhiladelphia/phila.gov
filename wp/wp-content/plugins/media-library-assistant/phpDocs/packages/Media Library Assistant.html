@@ -73,10 +73,18 @@
 <li class="nav-header">
 <i class="icon-custom icon-class"></i> Classes</li>
 <li><a href="#MNA_Pad_Counts_Walker" title="Class MNA_Pad_Counts_Walker adds accurate, padded attachment counts to taxonomy terms.">MNA_Pad_Counts_Walker</a></li>
+<li><a href="#MLA_Ajax" title="Class MLA (Media Library Assistant) Ajax contains handlers for simple Ajax requests">MLA_Ajax</a></li>
+<li><a href="#MLACore" title="Class MLA (Media Library Assistant) Core is the minimum support required for all other MLA features">MLACore</a></li>
+<li><a href="#MLA_Checklist_Walker" title="Class MLA (Media Library Assistant) Checklist Walker replaces term_id with slug in checklist output">MLA_Checklist_Walker</a></li>
 <li><a href="#MLAPDF" title="Class MLA (Media Library Assistant) PDF extracts legacy and XMP meta data from PDF files">MLAPDF</a></li>
+<li><a href="#MLAQuery" title="Class MLA (Media Library Assistant) Query provides database query support
+for MLA Ajax, Shortcode and Admin needs">MLAQuery</a></li>
+<li><a href="#MLAReferences" title='Class MLA (Media Library Assistant) Query provides database query support
+for "where-used" reporting needs'>MLAReferences</a></li>
+<li><a href="#MLAData_source" title="Class MLA (Media Library Assistant) Data SOurce manages data sources for
+custom field mapping and shortcode execution">MLAData_source</a></li>
 <li><a href="#MLAData" title="Class MLA (Media Library Assistant) Data provides database and template file access for MLA needs">MLAData</a></li>
 <li><a href="#MLAEdit" title="Class MLA (Media Library Assistant) Edit contains meta boxes for the Edit Media (advanced-form-edit.php) screen">MLAEdit</a></li>
-<li><a href="#MLA_Checklist_Walker" title="Class MLA (Media Library Assistant) Checklist Walker replaces term_id with slug in checklist output">MLA_Checklist_Walker</a></li>
 <li><a href="#MLAImageProcessor" title="Class MLA (Media Library Assistant) Image Processor provides PDF thumbnails
 for the [mla_gallery] mla_viewer
 and Media/Assistant thumbnail generator.">MLAImageProcessor</a></li>
@@ -85,6 +93,7 @@ for the [mla_gallery] mla_viewer=single option'>MLAMutex</a></li>
 <li><a href="#MLA_List_Table" title='Class MLA (Media Library Assistant) List Table implements the "Assistant" admin submenu'>MLA_List_Table</a></li>
 <li><a href="#MLA" title="Class MLA (Media Library Assistant) provides several enhancements to the handling
 of images and files held in the WordPress Media Library.">MLA</a></li>
+<li><a href="#MLAModal_Ajax" title="Class MLA (Media Library Assistant) Modal Ajax contains handlers for the WordPress 3.5+ Media Manager">MLAModal_Ajax</a></li>
 <li><a href="#MLAModal" title="Class MLA (Media Library Assistant) Modal contains enhancements for the WordPress 3.5+ Media Manager">MLAModal</a></li>
 <li><a href="#MLAMime" title="Class MLA (Media Library Assistant) MIME filters WordPress MIME Type functions and supports
 the Views and Uploads Settings tabs">MLAMime</a></li>
@@ -95,7 +104,10 @@ and provides functions to get and put them from/to WordPress option variables">M
 <li><a href="#MLA_Polylang" title="Class MLA (Media Library Assistant) Polylang provides support for the
 Polylang Multilingual plugin">MLA_Polylang</a></li>
 <li><a href="#MLASettings" title="Class MLA (Media Library Assistant) Settings provides the settings page to edit the plugin option settings">MLASettings</a></li>
-<li><a href="#MLAShortcodes" title="Class MLA (Media Library Assistant) Shortcodes defines the shortcodes available to MLA users">MLAShortcodes</a></li>
+<li><a href="#MLAShortcode_Support" title="Class MLA (Media Library Assistant) Shortcode Support provides the functions that
+implement the [mla_gallery] and [mla_tag_cloud] shortcodes.">MLAShortcode_Support</a></li>
+<li><a href="#MLAShortcodes" title="Class MLA (Media Library Assistant) Shortcodes defines the shortcodes available
+to MLA users and loads the support class if the shortcodes are executed.">MLAShortcodes</a></li>
 <li><a href="#MLA_Thumbnail" title="Class MLA (Media Library Assistant) Thumbnails provides support for
 Featured IMage generation">MLA_Thumbnail</a></li>
 <li><a href="#MLA_Upload_List_Table" title='Class MLA (Media Library Assistant) Upload List Table implements the "Upload" admin settings tab'>MLA_Upload_List_Table</a></li>
@@ -163,12 +175,27 @@ of images and files held in the WordPress Media Library.</p>
 <div class="details collapse"></div>
 <a href="../classes/MLA.html" class="more">« More »</a>
 </div>
+<a name="MLACore" id="MLACore"></a><div class="element ajax clickable class" href="../classes/MLACore.html">
+<h1>MLACore<a href="../classes/MLACore.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Core is the minimum support required for all other MLA features</p>
+<div class="details collapse"></div>
+<a href="../classes/MLACore.html" class="more">« More »</a>
+</div>
 <a name="MLAData" id="MLAData"></a><div class="element ajax clickable class" href="../classes/MLAData.html">
 <h1>MLAData<a href="../classes/MLAData.html">¶</a>
 </h1>
 <p class="short_description">Class MLA (Media Library Assistant) Data provides database and template file access for MLA needs</p>
 <div class="details collapse"></div>
 <a href="../classes/MLAData.html" class="more">« More »</a>
+</div>
+<a name="MLAData_source" id="MLAData_source"></a><div class="element ajax clickable class" href="../classes/MLAData_source.html">
+<h1>MLAData_source<a href="../classes/MLAData_source.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Data SOurce manages data sources for
+custom field mapping and shortcode execution</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAData_source.html" class="more">« More »</a>
 </div>
 <a name="MLAEdit" id="MLAEdit"></a><div class="element ajax clickable class" href="../classes/MLAEdit.html">
 <h1>MLAEdit<a href="../classes/MLAEdit.html">¶</a>
@@ -201,6 +228,13 @@ the Views and Uploads Settings tabs</p>
 <div class="details collapse"></div>
 <a href="../classes/MLAModal.html" class="more">« More »</a>
 </div>
+<a name="MLAModal_Ajax" id="MLAModal_Ajax"></a><div class="element ajax clickable class" href="../classes/MLAModal_Ajax.html">
+<h1>MLAModal_Ajax<a href="../classes/MLAModal_Ajax.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Modal Ajax contains handlers for the WordPress 3.5+ Media Manager</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAModal_Ajax.html" class="more">« More »</a>
+</div>
 <a name="MLAMutex" id="MLAMutex"></a><div class="element ajax clickable class" href="../classes/MLAMutex.html">
 <h1>MLAMutex<a href="../classes/MLAMutex.html">¶</a>
 </h1>
@@ -231,6 +265,22 @@ and provides functions to get and put them from/to WordPress option variables</p
 <div class="details collapse"></div>
 <a href="../classes/MLAPDF.html" class="more">« More »</a>
 </div>
+<a name="MLAQuery" id="MLAQuery"></a><div class="element ajax clickable class" href="../classes/MLAQuery.html">
+<h1>MLAQuery<a href="../classes/MLAQuery.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Query provides database query support
+for MLA Ajax, Shortcode and Admin needs</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAQuery.html" class="more">« More »</a>
+</div>
+<a name="MLAReferences" id="MLAReferences"></a><div class="element ajax clickable class" href="../classes/MLAReferences.html">
+<h1>MLAReferences<a href="../classes/MLAReferences.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Query provides database query support
+for "where-used" reporting needs</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAReferences.html" class="more">« More »</a>
+</div>
 <a name="MLASettings" id="MLASettings"></a><div class="element ajax clickable class" href="../classes/MLASettings.html">
 <h1>MLASettings<a href="../classes/MLASettings.html">¶</a>
 </h1>
@@ -238,10 +288,19 @@ and provides functions to get and put them from/to WordPress option variables</p
 <div class="details collapse"></div>
 <a href="../classes/MLASettings.html" class="more">« More »</a>
 </div>
+<a name="MLAShortcode_Support" id="MLAShortcode_Support"></a><div class="element ajax clickable class" href="../classes/MLAShortcode_Support.html">
+<h1>MLAShortcode_Support<a href="../classes/MLAShortcode_Support.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Shortcode Support provides the functions that
+implement the [mla_gallery] and [mla_tag_cloud] shortcodes.</p>
+<div class="details collapse"></div>
+<a href="../classes/MLAShortcode_Support.html" class="more">« More »</a>
+</div>
 <a name="MLAShortcodes" id="MLAShortcodes"></a><div class="element ajax clickable class" href="../classes/MLAShortcodes.html">
 <h1>MLAShortcodes<a href="../classes/MLAShortcodes.html">¶</a>
 </h1>
-<p class="short_description">Class MLA (Media Library Assistant) Shortcodes defines the shortcodes available to MLA users</p>
+<p class="short_description">Class MLA (Media Library Assistant) Shortcodes defines the shortcodes available
+to MLA users and loads the support class if the shortcodes are executed.</p>
 <div class="details collapse"></div>
 <a href="../classes/MLAShortcodes.html" class="more">« More »</a>
 </div>
@@ -259,6 +318,13 @@ to ensure the plugin can run in the current WordPress envrionment.</p>
 <p class="short_description">Class MLA (Media Library Assistant) Text Widget defines a shortcode-enabled version of the WordPress Text widget</p>
 <div class="details collapse"></div>
 <a href="../classes/MLATextWidget.html" class="more">« More »</a>
+</div>
+<a name="MLA_Ajax" id="MLA_Ajax"></a><div class="element ajax clickable class" href="../classes/MLA_Ajax.html">
+<h1>MLA_Ajax<a href="../classes/MLA_Ajax.html">¶</a>
+</h1>
+<p class="short_description">Class MLA (Media Library Assistant) Ajax contains handlers for simple Ajax requests</p>
+<div class="details collapse"></div>
+<a href="../classes/MLA_Ajax.html" class="more">« More »</a>
 </div>
 <a name="MLA_Checklist_Walker" id="MLA_Checklist_Walker"></a><div class="element ajax clickable class" href="../classes/MLA_Checklist_Walker.html">
 <h1>MLA_Checklist_Walker<a href="../classes/MLA_Checklist_Walker.html">¶</a>
@@ -590,7 +656,7 @@ display an "accordian-style" list.</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+            generated on 2015-12-01T21:12:13-08:00.<br></footer></div>
 </div>
 </body>
 </html>

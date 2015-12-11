@@ -97,10 +97,8 @@ and the value is db column (or other criteria) to sort by."><span class="descrip
 and the value is db column (or other criteria) to sort by.</span><pre>get_sortable_columns()</pre></a></li>
 <li class="method public "><a href="#get_views" title="get_views :: Returns an associative array listing all the views that can be used with this table."><span class="description">Returns an associative array listing all the views that can be used with this table.</span><pre>get_views()</pre></a></li>
 <li class="method public "><a href="#mla_admin_init_action" title="mla_admin_init_action :: Adds support for taxonomy and custom field columns"><span class="description">Adds support for taxonomy and custom field columns</span><pre>mla_admin_init_action()</pre></a></li>
-<li class="method public "><a href="#mla_get_sortable_columns" title="mla_get_sortable_columns :: Return the names and display values of the sortable columns"><span class="description">Return the names and display values of the sortable columns</span><pre>mla_get_sortable_columns()</pre></a></li>
 <li class="method public "><a href="#mla_get_taxonomy_filter_dropdown" title="mla_get_taxonomy_filter_dropdown :: Get dropdown box of terms to filter by, if available"><span class="description">Get dropdown box of terms to filter by, if available</span><pre>mla_get_taxonomy_filter_dropdown()</pre></a></li>
 <li class="method public "><a href="#mla_get_view" title="mla_get_view :: Wrapper for _get_view; returns HTML markup for one view that can be used with this table"><span class="description">Wrapper for _get_view; returns HTML markup for one view that can be used with this table</span><pre>mla_get_view()</pre></a></li>
-<li class="method public "><a href="#mla_localize_default_columns_array" title="mla_localize_default_columns_array :: Builds the $default_columns array with translated source texts."><span class="description">Builds the $default_columns array with translated source texts.</span><pre>mla_localize_default_columns_array()</pre></a></li>
 <li class="method public "><a href="#mla_manage_columns_filter" title="mla_manage_columns_filter :: Handler for filter 'manage_media_page_mla-menu_columns'"><span class="description">Handler for filter 'manage_media_page_mla-menu_columns'</span><pre>mla_manage_columns_filter()</pre></a></li>
 <li class="method public "><a href="#mla_manage_hidden_columns_filter" title="mla_manage_hidden_columns_filter :: Handler for filter 'get_user_option_managemedia_page_mla-menucolumnshidden'"><span class="description">Handler for filter 'get_user_option_managemedia_page_mla-menucolumnshidden'</span><pre>mla_manage_hidden_columns_filter()</pre></a></li>
 <li class="method public "><a href="#mla_submenu_arguments" title="mla_submenu_arguments :: Process $_REQUEST, building $submenu_arguments"><span class="description">Process $_REQUEST, building $submenu_arguments</span><pre>mla_submenu_arguments()</pre></a></li>
@@ -767,21 +765,6 @@ created in time to affect the "screen options" setup.</p></p>
 </tr></table>
 </div></div>
 </div>
-<a name="mla_get_sortable_columns" id="mla_get_sortable_columns"></a><div class="element clickable method public mla_get_sortable_columns" data-toggle="collapse" data-target=".mla_get_sortable_columns .collapse">
-<h2>Return the names and display values of the sortable columns</h2>
-<pre>mla_get_sortable_columns() : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>0.30</td>
-</tr></table>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>name => array( orderby value, heading ) for sortable columns</div>
-</div></div>
-</div>
 <a name="mla_get_taxonomy_filter_dropdown" id="mla_get_taxonomy_filter_dropdown"></a><div class="element clickable method public mla_get_taxonomy_filter_dropdown" data-toggle="collapse" data-target=".mla_get_taxonomy_filter_dropdown .collapse">
 <h2>Get dropdown box of terms to filter by, if available</h2>
 <pre>mla_get_taxonomy_filter_dropdown(integer $selected) : string</pre>
@@ -822,19 +805,6 @@ created in time to affect the "screen options" setup.</p></p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>| false HTML for link to display the view, false if count = zero</div>
-</div></div>
-</div>
-<a name="mla_localize_default_columns_array" id="mla_localize_default_columns_array"></a><div class="element clickable method public mla_localize_default_columns_array" data-toggle="collapse" data-target=".mla_localize_default_columns_array .collapse">
-<h2>Builds the $default_columns array with translated source texts.</h2>
-<pre>mla_localize_default_columns_array() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>Called from MLATest::initialize because the $default_columns information
-might be accessed from "front end" posts/pages.</p></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>1.71</td>
-</tr></table>
 </div></div>
 </div>
 <a name="mla_manage_columns_filter" id="mla_manage_columns_filter"></a><div class="element clickable method public mla_manage_columns_filter" data-toggle="collapse" data-target=".mla_manage_columns_filter .collapse">
@@ -1190,15 +1160,7 @@ visible column and add div tags.</p></p>
 <pre>$default_columns : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>This array defines table columns and titles where the key is the column slug (and class)
-and the value is the column's title text. If you need a checkbox for bulk actions,
-use the special slug "cb".</p>
-
-<p>The 'cb' column is treated differently than the rest. If including a checkbox
-column in your table you must create a column_cb() method. If you don't need
-bulk actions or checkboxes, simply leave the 'cb' entry out of your array.</p>
-
-<p>All of the columns are added to this array by MLA_List_Table::mla_admin_init_action.</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
 <td>0.1</td>
@@ -1210,14 +1172,7 @@ bulk actions or checkboxes, simply leave the 'cb' entry out of your array.</p>
 <pre>$default_hidden_columns : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>This array is used when the user-level option is not set, i.e.,
-the user has not altered the selection of hidden columns.</p>
-
-<p>The value on the right-hand side must match the column slug, e.g.,
-array(0 => 'ID_parent, 1 => 'title_name').</p>
-
-<p>Taxonomy and custom field columns are added to this array by
-MLA_List_Table::mla_admin_init_action.</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
 <td>0.1</td>
@@ -1229,16 +1184,7 @@ MLA_List_Table::mla_admin_init_action.</p></p>
 <pre>$default_sortable_columns : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>This array defines the table columns that can be sorted. The array key
-is the column slug that needs to be sortable, and the value is database column
-to sort by. Often, the key and value will be the same, but this is not always
-the case (as the value is a column name from the database, not the list table).</p>
-
-<p>The array value also contains a boolean which is 'true' if the initial sort order
-for the column is DESC/Descending.</p>
-
-<p>Taxonomy and custom field columns are added to this array by
-MLA_List_Table::mla_admin_init_action.</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
 <td>0.1</td>
@@ -1312,7 +1258,7 @@ MLA_List_Table::mla_admin_init_action.</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
 </div>
 </body>
 </html>

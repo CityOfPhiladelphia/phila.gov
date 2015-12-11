@@ -1,0 +1,4867 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Media Library Assistant\n"
+"POT-Creation-Date: 2015-06-06 20:01-0800\n"
+"PO-Revision-Date: 2015-07-10 20:59+0100\n"
+"Last-Translator: David Lingren <david@fairtradejudaica.org>\n"
+"Language-Team: David Lingren <david@fairtradejudaica.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language: sv_SE\n"
+"X-Poedit-SearchPath-0: includes\n"
+"X-Poedit-SearchPath-1: tests\n"
+
+#. translators: 1: ERROR tag 2: index
+#: includes/class-mla-data-pdf.php:216
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _build_pdf_indirect_objects bad value at $index = \"%2$d\"."
+msgstr ""
+"%1$s: _build_pdf_indirect_objects felaktigt värde at $index = \"%2$d\"."
+
+#: includes/class-mla-data-pdf.php:216 includes/class-mla-data-pdf.php:496
+#: includes/class-mla-data-pdf.php:498 includes/class-mla-data-pdf.php:544
+#: includes/class-mla-data-pdf.php:725 includes/class-mla-data.php:101
+#: includes/class-mla-data.php:119 includes/class-mla-data.php:198
+#: includes/class-mla-data.php:257 includes/class-mla-data.php:345
+#: includes/class-mla-data.php:389 includes/class-mla-data.php:492
+#: includes/class-mla-data.php:648 includes/class-mla-data.php:711
+#: includes/class-mla-data.php:1266 includes/class-mla-data.php:1528
+#: includes/class-mla-data.php:2692 includes/class-mla-data.php:2698
+#: includes/class-mla-data.php:4046 includes/class-mla-data.php:4049
+#: includes/class-mla-data.php:5052 includes/class-mla-data.php:5079
+#: includes/class-mla-data.php:5399 includes/class-mla-data.php:5412
+#: includes/class-mla-data.php:5434 includes/class-mla-data.php:5623
+#: includes/class-mla-data.php:5664 includes/class-mla-data.php:5696
+#: includes/class-mla-data.php:5712 includes/class-mla-data.php:5891
+#: includes/class-mla-edit-media.php:316 includes/class-mla-edit-media.php:682
+#: includes/class-mla-main.php:636 includes/class-mla-main.php:765
+#: includes/class-mla-main.php:1081 includes/class-mla-main.php:1134
+#: includes/class-mla-main.php:1159 includes/class-mla-main.php:1252
+#: includes/class-mla-main.php:1311 includes/class-mla-main.php:1402
+#: includes/class-mla-main.php:1433 includes/class-mla-main.php:1660
+#: includes/class-mla-main.php:1667 includes/class-mla-main.php:1671
+#: includes/class-mla-main.php:1745 includes/class-mla-main.php:1752
+#: includes/class-mla-main.php:1896 includes/class-mla-main.php:1971
+#: includes/class-mla-main.php:2218 includes/class-mla-main.php:2226
+#: includes/class-mla-main.php:2250 includes/class-mla-main.php:2258
+#: includes/class-mla-main.php:2290 includes/class-mla-main.php:2298
+#: includes/class-mla-media-modal.php:1219
+#: includes/class-mla-mime-types.php:483 includes/class-mla-mime-types.php:906
+#: includes/class-mla-mime-types.php:912 includes/class-mla-mime-types.php:916
+#: includes/class-mla-mime-types.php:961
+#: includes/class-mla-mime-types.php:1049
+#: includes/class-mla-mime-types.php:1195
+#: includes/class-mla-mime-types.php:1218
+#: includes/class-mla-mime-types.php:1960
+#: includes/class-mla-mime-types.php:1971
+#: includes/class-mla-mime-types.php:1984
+#: includes/class-mla-mime-types.php:1992
+#: includes/class-mla-mime-types.php:1997
+#: includes/class-mla-mime-types.php:2040
+#: includes/class-mla-mime-types.php:2059
+#: includes/class-mla-mime-types.php:2110
+#: includes/class-mla-mime-types.php:2144
+#: includes/class-mla-mime-types.php:2229
+#: includes/class-mla-mime-types.php:2308
+#: includes/class-mla-mime-types.php:2317
+#: includes/class-mla-mime-types.php:2349 includes/class-mla-objects.php:201
+#: includes/class-mla-options.php:1710 includes/class-mla-options.php:1887
+#: includes/class-mla-options.php:1963 includes/class-mla-options.php:3297
+#: includes/class-mla-options.php:3737 includes/class-mla-options.php:3750
+#: includes/class-mla-options.php:3754 includes/class-mla-options.php:4290
+#: includes/class-mla-options.php:4512 includes/class-mla-options.php:4951
+#: includes/class-mla-options.php:4995 includes/class-mla-options.php:5003
+#: includes/class-mla-options.php:5020 includes/class-mla-options.php:5030
+#: includes/class-mla-options.php:5040 includes/class-mla-options.php:5048
+#: includes/class-mla-options.php:5052 includes/class-mla-settings.php:560
+#: includes/class-mla-settings.php:624 includes/class-mla-settings.php:638
+#: includes/class-mla-settings.php:667 includes/class-mla-settings.php:678
+#: includes/class-mla-settings.php:768 includes/class-mla-settings.php:902
+#: includes/class-mla-settings.php:1009 includes/class-mla-settings.php:1042
+#: includes/class-mla-settings.php:1181 includes/class-mla-settings.php:1544
+#: includes/class-mla-settings.php:1576 includes/class-mla-settings.php:1653
+#: includes/class-mla-settings.php:1990 includes/class-mla-settings.php:2041
+#: includes/class-mla-settings.php:2120 includes/class-mla-settings.php:2674
+#: includes/class-mla-settings.php:2816 includes/class-mla-settings.php:2988
+#: includes/class-mla-settings.php:3018 includes/class-mla-settings.php:3073
+#: includes/class-mla-settings.php:3108 includes/class-mla-settings.php:3111
+#: includes/class-mla-settings.php:3115 includes/class-mla-settings.php:3214
+#: includes/class-mla-settings.php:3220 includes/class-mla-settings.php:3234
+#: includes/class-mla-settings.php:3241 includes/class-mla-settings.php:3263
+#: includes/class-mla-settings.php:3305 includes/class-mla-settings.php:3311
+#: includes/class-mla-settings.php:3325 includes/class-mla-settings.php:3332
+#: includes/class-mla-settings.php:3384 includes/class-mla-settings.php:3505
+#: includes/class-mla-settings.php:3635 includes/class-mla-settings.php:3706
+#: includes/class-mla-settings.php:3792 includes/class-mla-settings.php:4126
+#: includes/class-mla-settings.php:4130 includes/class-mla-settings.php:4141
+#: includes/class-mla-settings.php:4148 includes/class-mla-settings.php:4157
+#: includes/class-mla-settings.php:4194 includes/class-mla-settings.php:4202
+#: includes/class-mla-settings.php:4211 includes/class-mla-shortcodes.php:1658
+#: includes/class-mla-shortcodes.php:1732
+#: includes/class-mla-shortcodes.php:3023
+#: includes/class-mla-shortcodes.php:3351
+#: includes/class-mla-shortcodes.php:3382
+msgid "ERROR"
+msgstr "FEL"
+
+#. translators: 1: ERROR tag 2: source offset 3: nest level
+#: includes/class-mla-data-pdf.php:496
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary offset = %2$d, nest = %3$d."
+msgstr "%1$s: _parse_pdf_dictionary offset =%2$d, boet =%3$d."
+
+#. translators: 1: ERROR tag 2: dictionary excerpt
+#: includes/class-mla-data-pdf.php:498
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary no end delimiter dump = %2$s."
+msgstr "%1$s: _parse_pdf_dictionary ingen slutet avgränsaren dumpa = %2$s."
+
+#. translators: 1: ERROR tag 2: entry name 3: value excerpt
+#: includes/class-mla-data-pdf.php:544
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary bad value [ %2$s ] dump = %3$s"
+msgstr "%1$s: _parse_pdf_dictionary felaktigt värde [%2$s] dump = %3$s"
+
+#. translators: 1: ERROR tag 2: path and file
+#: includes/class-mla-data-pdf.php:725
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: File \"%2$s\", startxref not found."
+msgstr "%1$s: filen \"%2$s\", startxref hittades inte."
+
+#. translators: 1: ERROR tag 2: path and file name
+#: includes/class-mla-data.php:101
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" not found."
+msgstr "%1$s: mla_load_template filen \"%2$s\" hittades inte."
+
+#. translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string
+#: includes/class-mla-data.php:119
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" bad source type \"%3$s\"."
+msgstr ""
+"%1$s: mla_load_template filen \"%2$s\" felaktig källa för typ \"%3$s\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#: includes/class-mla-data.php:198
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: _find_template_substring no template end delimiter, tail = \"%2$s\"."
+msgstr ""
+"%1$s: _find_template_substring ingen mall slutet avgränsaren, svans = \"%2$s"
+"\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#: includes/class-mla-data.php:257
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_parse_array_template no template end delimiter, tail = \"%2$s\"."
+msgstr ""
+"%1$s: mla_parse_array_template ingen mall slutet avgränsaren, svans = \"%2$s"
+"\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#: includes/class-mla-data.php:345
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_parse_template no end delimiter, tail = \"%2$s\"."
+msgstr "%1$s: mla_parse_template ingen slutet avgränsaren, svans = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template string
+#: includes/class-mla-data.php:389
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _find_test_substring no end delimiter, tail = \"%2$s\"."
+msgstr "%1$s: _find_test_substring ingen slutet avgränsaren, svans = \"%2$s\"."
+
+#: includes/class-mla-data.php:492
+msgid "Test; no closing parenthesis "
+msgstr "Testa; ingen avslutande parentes"
+
+#. translators: 1: ERROR tag 2: node type, e.g., template
+#: includes/class-mla-data.php:648
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _evaluate_template_array_node unknown type \"%2$s\"."
+msgstr "%1$s: _evaluate_template_array_node okänd typ \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: node type, e.g., template
+#: includes/class-mla-data.php:711
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _evaluate_template_node unknown type \"%2$s\"."
+msgstr "%1$s: _evaluate_template_node okänd typ \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#: includes/class-mla-data.php:1266
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_get_template_placeholders no template-end delimiter dump = \"%2$s"
+"\"."
+msgstr ""
+"%1$s: mla_get_template_placeholders ingen mall-slutet avgränsaren dumpa = "
+"\"%2$s\"."
+
+#. translators: 1: ERROR tag 2: function name 3: non-array value
+#: includes/class-mla-data.php:1528 includes/class-mla-edit-media.php:316
+#: includes/class-mla-main.php:1896 includes/class-mla-main.php:1971
+#: includes/class-mla-media-modal.php:1219
+#: includes/class-mla-mime-types.php:483
+#: includes/class-mla-mime-types.php:1218
+#: includes/class-mla-mime-types.php:2349 includes/class-mla-settings.php:1544
+#: includes/class-mla-settings.php:1990
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s non-array \"%3$s\""
+msgstr "%1$s: %2$s icke-array \"%3$s\""
+
+#. translators: 1: DEBUG tag 2: query filter details
+#: includes/class-mla-data.php:1967
+#, php-format
+msgid "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+
+#: includes/class-mla-data.php:1967 includes/class-mla-data.php:1970
+#: includes/class-mla-data.php:1987 includes/class-mla-data.php:1989
+#: includes/class-mla-data.php:1992 includes/class-mla-data.php:1994
+#: includes/class-mla-data.php:2367 includes/class-mla-data.php:2370
+#: includes/class-mla-data.php:2436 includes/class-mla-data.php:2439
+#: includes/class-mla-data.php:2490 includes/class-mla-data.php:2493
+#: includes/class-mla-data.php:2592 includes/class-mla-data.php:2595
+#: includes/class-mla-data.php:2631 includes/class-mla-data.php:2634
+#: includes/class-mla-data.php:2655 includes/class-mla-data.php:2658
+msgid "DEBUG"
+msgstr "FELSÖKA"
+
+#. translators: 1: DEBUG tag 2: query filter details
+#: includes/class-mla-data.php:1970
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: query details
+#: includes/class-mla-data.php:1987
+#, php-format
+msgid "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL statement
+#: includes/class-mla-data.php:1989
+#, php-format
+msgid "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: query details
+#: includes/class-mla-data.php:1992
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL statement
+#: includes/class-mla-data.php:1994
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: search filter details
+#: includes/class-mla-data.php:2367
+#, php-format
+msgid "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: search filter details
+#: includes/class-mla-data.php:2370
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: where filter details
+#: includes/class-mla-data.php:2436
+#, php-format
+msgid "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: where filter details
+#: includes/class-mla-data.php:2439
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: join filter details
+#: includes/class-mla-data.php:2490
+#, php-format
+msgid "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: join filter details
+#: includes/class-mla-data.php:2493
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: orderby details details
+#: includes/class-mla-data.php:2592
+#, php-format
+msgid "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: orderby details details
+#: includes/class-mla-data.php:2595
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#: includes/class-mla-data.php:2631
+#, php-format
+msgid "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#: includes/class-mla-data.php:2634
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#: includes/class-mla-data.php:2655
+#, php-format
+msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#: includes/class-mla-data.php:2658
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: post ID
+#: includes/class-mla-data.php:2692
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_get_attachment_by_id(%2$d) not found."
+msgstr "%1$s: mla_get_attachment_by_id(%2$d) hittades inte."
+
+#. translators: 1: ERROR tag 2: post ID 3: post_type
+#: includes/class-mla-data.php:2698
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_get_attachment_by_id(%2$d) wrong post_type \"%3$s\"."
+msgstr "%1$s: mla_get_attachment_by_id(%2$d) fel post_type \"%3$s\"."
+
+#: includes/class-mla-data.php:3313 includes/class-mla-data.php:3657
+#: includes/class-mla-list-table.php:929
+msgid "NO REFERENCE TESTS"
+msgstr "INGEN REFERENSTEST"
+
+#: includes/class-mla-data.php:3319 includes/class-mla-data.php:3663
+#: includes/class-mla-options.php:2838 includes/class-mla-options.php:2839
+msgid "ORPHAN"
+msgstr "FÖRÄLDRALÖS"
+
+#: includes/class-mla-data.php:3323 includes/class-mla-data.php:3667
+msgid "UNUSED"
+msgstr "OANVÄND"
+
+#: includes/class-mla-data.php:3328 includes/class-mla-data.php:3672
+msgid "UNATTACHED"
+msgstr "EJ BIFOGAD"
+
+#: includes/class-mla-data.php:3330 includes/class-mla-data.php:3674
+msgid "INVALID PARENT"
+msgstr "ÖVERORDNAD EJ GILTIG"
+
+#. translators: 1: post_type, 2: post_title, 3: post ID, 4: query string, 5: error message
+#: includes/class-mla-data.php:3855
+#, php-format
+msgid "(%1$s) %2$s (ID %3$d) query \"%4$s\" failed, returning \"%5$s\""
+msgstr ""
+"(%1$s) %2$s (ID %3$ d) fråga \"%4$s\" misslyckades, återvänder \"%5$s\""
+
+#: includes/class-mla-data.php:4046
+msgctxt "error_log"
+msgid "mla_parse_xmp_metadata xml_parse_into_struct failed."
+msgstr "mla_parse_xmp_metadata xml_parse_into_struct misslyckades."
+
+#: includes/class-mla-data.php:4049
+msgctxt "error_log"
+msgid "mla_parse_xmp_metadata set option failed."
+msgstr "mla_parse_xmp_metadata ange alternativet misslyckades."
+
+#: includes/class-mla-data.php:5136 includes/class-mla-settings.php:1777
+#: includes/class-mla-view-list-table.php:377
+#: includes/class-mla-view-list-table.php:393
+msgid "Yes"
+msgstr "Ja"
+
+#: includes/class-mla-data.php:5138 includes/class-mla-list-table.php:282
+#: includes/class-mla-settings.php:1776
+#: includes/class-mla-view-list-table.php:379
+#: includes/class-mla-view-list-table.php:395
+msgid "No"
+msgstr "Nej"
+
+#. translators: 1: meta_key
+#: includes/class-mla-data.php:5396 includes/class-mla-data.php:5494
+#, php-format
+msgid "Deleting %1$s"
+msgstr "Raderar %1$s"
+
+#. translators: 1: ERROR tag 2: meta_key
+#: includes/class-mla-data.php:5399
+#, php-format
+msgid "%1$s: meta:%2$s not found"
+msgstr "%1$s: meta:%2$s Hittades ej"
+
+#. translators: 1: meta_key 2: meta_value
+#. translators: 1: meta_key 2: new_value
+#. translators: 1: meta_key 2: meta_value
+#: includes/class-mla-data.php:5408 includes/class-mla-data.php:5505
+#: includes/class-mla-data.php:5511
+#, php-format
+msgid "Adding %1$s = %2$s"
+msgstr "Lägger till %1$s = %2$s"
+
+#. translators: 1: ERROR tag 2: meta_key
+#: includes/class-mla-data.php:5412
+#, php-format
+msgid "%1$s: Adding meta:%2$s; not found"
+msgstr "%1$s: Lägger till Meta:%2$s; Hittades ej"
+
+#. translators: 1: meta_key
+#: includes/class-mla-data.php:5419
+#, php-format
+msgid "Deleting Null meta:%1$s"
+msgstr "Radera noll meta:%1$s"
+
+#. translators: 1: element name 2: old_value 3: new_value
+#: includes/class-mla-data.php:5429 includes/class-mla-data.php:5580
+#: includes/class-mla-data.php:5641 includes/class-mla-data.php:5667
+#: includes/class-mla-data.php:5709 includes/class-mla-data.php:5722
+#: includes/class-mla-data.php:5731 includes/class-mla-data.php:5742
+#: includes/class-mla-data.php:5753 includes/class-mla-data.php:5766
+#: includes/class-mla-data.php:5775 includes/class-mla-data.php:5784
+#: includes/class-mla-mime-types.php:1052
+#: includes/class-mla-mime-types.php:2113
+#, php-format
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\""
+msgstr "Ändrar %1$s från \"%2$s\" till \"%3$s\""
+
+#. translators: 1: ERROR tag 2: meta_key
+#: includes/class-mla-data.php:5434
+#, php-format
+msgid "%1$s: Changing meta:%2$s; not found"
+msgstr "%1$s: Ändrar meta:%2$s; Hittades ej"
+
+#. translators: 1: meta_key
+#: includes/class-mla-data.php:5535
+#, php-format
+msgid "Deleting old %1$s values"
+msgstr "Raderar gammla %1$s värden"
+
+#. translators: 1: meta_key 2: old_value 3: new_value 4: update count
+#: includes/class-mla-data.php:5565
+#, php-format
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\"; %4$d updates"
+msgstr "Ändrar %1$s från \"%2$s\" till \"%3$s\"; %4$d uppdateringar"
+
+#: includes/class-mla-data.php:5623
+msgid "Could not retrieve Attachment."
+msgstr "Kunde inte hämta bilaga."
+
+#: includes/class-mla-data.php:5641 includes/class-mla-edit-media.php:424
+#: includes/class-mla-main.php:1602 includes/class-mla-main.php:1910
+#: includes/class-mla-main.php:2100 includes/class-mla-objects.php:278
+#: includes/class-mla-options.php:1077 includes/class-mla-options.php:1917
+#: includes/mla-main-search-box-template.php:42
+#: includes/mla-media-modal-js-template.php:32
+msgid "Title"
+msgstr "Titel"
+
+#. translators: 1: ERROR tag 2: old_value
+#: includes/class-mla-data.php:5664
+#, php-format
+msgid "%1$s: Could not change Name/Slug \"%2$s\"; name already exists"
+msgstr "%1$s: Kunde inte ändra namn/Slug \"%2$s\"; namnet finns redan"
+
+#: includes/class-mla-data.php:5667 includes/class-mla-edit-media.php:425
+#: includes/class-mla-main.php:2101 includes/class-mla-options.php:1084
+msgid "Name/Slug"
+msgstr "Namn/Slug"
+
+#. translators: 1: old_value
+#: includes/class-mla-data.php:5693
+#, php-format
+msgid "Deleting ALT Text, was \"%1$s\""
+msgstr "Raderar ALT Text, var \"%1$s\""
+
+#. translators: 1: ERROR tag 2: old_value
+#: includes/class-mla-data.php:5696
+#, php-format
+msgid "%1$s: Could not delete ALT Text, remains \"%2$s\""
+msgstr "%1$s: Kunde inte radera ALT Text, återstår \"%2$s\""
+
+#: includes/class-mla-data.php:5709 includes/class-mla-edit-media.php:428
+#: includes/class-mla-list-table.php:1219 includes/class-mla-main.php:2104
+#: includes/class-mla-options.php:1091 includes/class-mla-options.php:1923
+#: includes/mla-main-search-box-template.php:44
+#: includes/mla-media-modal-js-template.php:40
+msgid "ALT Text"
+msgstr "ALT Text"
+
+#. translators: 1: ERROR tag 2: old_value 3: new_value
+#: includes/class-mla-data.php:5712
+#, php-format
+msgid "%1$s: Could not change ALT Text from \"%2$s\" to \"%3$s\""
+msgstr "%1$s: Kunde inte ändra ALT Text från \"%2$s\" till \"%3$s\""
+
+#: includes/class-mla-data.php:5722 includes/class-mla-edit-media.php:426
+#: includes/class-mla-main.php:2102 includes/class-mla-options.php:1098
+#: includes/class-mla-options.php:1926
+#: includes/mla-main-search-box-template.php:45
+#: includes/mla-media-modal-js-template.php:45
+msgid "Caption"
+msgstr "Rubrik"
+
+#: includes/class-mla-data.php:5731 includes/class-mla-edit-media.php:427
+#: includes/class-mla-main.php:2103 includes/class-mla-options.php:1105
+#: includes/class-mla-options.php:1929 includes/class-mla-settings.php:1510
+#: includes/class-mla-settings.php:1767 includes/class-mla-settings.php:1865
+#: includes/class-mla-settings.php:2229
+#: includes/mla-main-search-box-template.php:46
+#: includes/mla-media-modal-js-template.php:49
+msgid "Description"
+msgstr "Beskrivning"
+
+#: includes/class-mla-data.php:5742 includes/class-mla-list-table.php:903
+#: includes/class-mla-list-table.php:995 includes/class-mla-options.php:4460
+#: includes/class-mla-options.php:4807
+msgid "Parent"
+msgstr "Förälder"
+
+#: includes/class-mla-data.php:5753 includes/class-mla-edit-media.php:616
+#: includes/class-mla-edit-media.php:769 includes/class-mla-main.php:2107
+#: includes/class-mla-settings.php:1508 includes/class-mla-settings.php:1765
+msgid "Menu Order"
+msgstr "Meny ordning"
+
+#: includes/class-mla-data.php:5766 includes/class-mla-edit-media.php:395
+#: includes/class-mla-list-table.php:1375
+#: includes/class-mla-list-table.php:1378 includes/class-mla-main.php:1977
+#: includes/class-mla-main.php:2079
+msgid "Author"
+msgstr "Författare"
+
+#: includes/class-mla-data.php:5775 includes/class-mla-edit-media.php:418
+#: includes/class-mla-main.php:2118
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: includes/class-mla-data.php:5784 includes/class-mla-edit-media.php:419
+#: includes/class-mla-main.php:2119
+msgid "Pings"
+msgstr "Pings"
+
+#: includes/class-mla-data.php:5815
+msgid "Adding"
+msgstr "Lägger till"
+
+#: includes/class-mla-data.php:5819
+msgid "Removing"
+msgstr "Tar bort"
+
+#: includes/class-mla-data.php:5828
+msgid "Replacing"
+msgstr "Ersätter"
+
+#: includes/class-mla-data.php:5836
+msgid "Ignoring"
+msgstr "Ignorerar"
+
+#. translators: 1: action_name, 2: taxonomy
+#: includes/class-mla-data.php:5849
+#, php-format
+msgid "%1$s \"%2$s\" terms"
+msgstr "%1$s \"%2$s\" termer"
+
+#. translators: 1: taxonomy
+#: includes/class-mla-data.php:5853
+#, php-format
+msgid "You cannot assign \"%1$s\" terms"
+msgstr "Du kan inte ange \"%1$s\" termer"
+
+#. translators: 1: post ID
+#: includes/class-mla-data.php:5865 includes/class-mla-main.php:1144
+#, php-format
+msgid "Item %1$d, no changes detected."
+msgstr "artikel %1$d, inga ändringar hittades."
+
+#. translators: 1: post ID
+#: includes/class-mla-data.php:5877
+#, php-format
+msgid "Item %1$d updated."
+msgstr "artikel %1$d uppdaterades."
+
+#. translators: 1: ERROR tag 2: post ID
+#: includes/class-mla-data.php:5891
+#, php-format
+msgid "%1$s: Item %2$d update failed."
+msgstr "%1$s: Iartikel %2$d uppdateringen misslyckades."
+
+#: includes/class-mla-edit-media.php:147 includes/class-mla-edit-media.php:183
+#: includes/class-mla-edit-media.php:237 includes/class-mla-main.php:428
+#: includes/class-mla-main.php:939 includes/class-mla-main.php:1789
+#: includes/class-mla-media-modal.php:415 includes/class-mla-options.php:4001
+#: includes/class-mla-polylang-support.php:371
+#: includes/class-mla-settings.php:340
+msgctxt "tag_delimiter"
+msgid ","
+msgstr ","
+
+#: includes/class-mla-edit-media.php:182
+msgid "Upload New Media items"
+msgstr "Ladda upp ny media"
+
+#: includes/class-mla-edit-media.php:184 includes/class-mla-edit-media.php:239
+#: includes/class-mla-main.php:415
+msgid "An ajax.fail error has occurred. Please reload the page and try again."
+msgstr ""
+"Ett ajax.misslyckades fel har uppstått. vänligen ladda om sidan och försök "
+"igen."
+
+#: includes/class-mla-edit-media.php:185 includes/class-mla-edit-media.php:240
+#: includes/class-mla-main.php:416
+msgid "An ajax.done error has occurred. Please reload the page and try again."
+msgstr "Ett ajax. fel har uppstått.vänligen ladda om sidan och försök igen."
+
+#: includes/class-mla-edit-media.php:188 includes/class-mla-edit-media.php:414
+msgid "Open Bulk Edit area"
+msgstr "Öppna massupladdnings delen"
+
+#: includes/class-mla-edit-media.php:189
+msgid "Close Bulk Edit area"
+msgstr "Stäng massuppladdnings delen"
+
+#: includes/class-mla-edit-media.php:338 includes/class-mla-main.php:2012
+msgid "more"
+msgstr "mer"
+
+#: includes/class-mla-edit-media.php:339 includes/class-mla-main.php:2013
+msgid "less"
+msgstr "mindre"
+
+#: includes/class-mla-edit-media.php:342 includes/class-mla-edit-media.php:373
+#: includes/class-mla-main.php:2016 includes/class-mla-main.php:2054
+msgid "Add"
+msgstr "Lägg till"
+
+#: includes/class-mla-edit-media.php:343 includes/class-mla-edit-media.php:374
+#: includes/class-mla-main.php:2017 includes/class-mla-main.php:2055
+msgid "Remove"
+msgstr "Ta bort"
+
+#: includes/class-mla-edit-media.php:344 includes/class-mla-edit-media.php:375
+#: includes/class-mla-main.php:2018 includes/class-mla-main.php:2056
+#: includes/class-mla-options.php:3531 includes/class-mla-options.php:3634
+#: includes/class-mla-options.php:3678 includes/class-mla-options.php:4696
+#: includes/class-mla-options.php:4746 includes/class-mla-options.php:4865
+#: includes/class-mla-options.php:4907 includes/class-mla-options.php:4932
+msgid "Replace"
+msgstr "Ersätt"
+
+#: includes/class-mla-edit-media.php:420 includes/class-mla-main.php:2120
+#: includes/class-mla-main.php:2166 includes/class-mla-settings.php:1775
+#: includes/class-mla-settings.php:1813 includes/class-mla-settings.php:2240
+msgid "No Change"
+msgstr "Ingen ändring"
+
+#: includes/class-mla-edit-media.php:421 includes/class-mla-main.php:2121
+msgid "Allow"
+msgstr "Tillåt"
+
+#: includes/class-mla-edit-media.php:422 includes/class-mla-main.php:2122
+msgid "Do not allow"
+msgstr "Tillåt ej"
+
+#: includes/class-mla-edit-media.php:429 includes/class-mla-list-table.php:900
+#: includes/class-mla-list-table.php:992 includes/class-mla-main.php:2105
+msgid "Parent ID"
+msgstr "Förälder ID"
+
+#: includes/class-mla-edit-media.php:430 includes/class-mla-edit-media.php:749
+#: includes/class-mla-main.php:2106
+#: includes/class-mla-upload-optional-list-table.php:281
+msgid "Select"
+msgstr "Välj"
+
+#: includes/class-mla-edit-media.php:506
+msgid "Custom field mapping updated."
+msgstr "Mappning av egna fält uppdaterat"
+
+#: includes/class-mla-edit-media.php:507
+msgid "IPTC/EXIF mapping updated."
+msgstr "IPTC/EXIF mappning uppdaterad."
+
+#. translators: date_i18n format for last modified date and time
+#: includes/class-mla-edit-media.php:525
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: includes/class-mla-edit-media.php:527
+msgid "Last modified"
+msgstr "Senast ändrad"
+
+#: includes/class-mla-edit-media.php:538
+msgid "Map Custom Field metadata for this item"
+msgstr "Mappa egna fält med metadata för den här artikeln"
+
+#: includes/class-mla-edit-media.php:538 includes/class-mla-main.php:1713
+#: includes/class-mla-main.php:2125
+msgid "Map Custom Field metadata"
+msgstr "Mappa egna fält med metadata"
+
+#: includes/class-mla-edit-media.php:540
+msgid "Map IPTC/EXIF metadata for this item"
+msgstr "Mappa IPTC/EXIF med metadat för den här artikeln"
+
+#: includes/class-mla-edit-media.php:540 includes/class-mla-main.php:1716
+#: includes/class-mla-main.php:2124
+msgid "Map IPTC/EXIF metadata"
+msgstr "Mappa IPTC/EXIF med metadata"
+
+#: includes/class-mla-edit-media.php:612 includes/class-mla-edit-media.php:750
+msgid "Parent Info"
+msgstr "Förälder info"
+
+#: includes/class-mla-edit-media.php:622 includes/class-mla-edit-media.php:793
+msgid "Attachment Metadata"
+msgstr "Bilagans Metadata"
+
+#: includes/class-mla-edit-media.php:627 includes/class-mla-edit-media.php:827
+#: includes/class-mla-options.php:472
+msgid "Featured in"
+msgstr "Utvalt innehåll i"
+
+#: includes/class-mla-edit-media.php:631 includes/class-mla-edit-media.php:866
+#: includes/class-mla-options.php:481
+msgid "Inserted in"
+msgstr "Insatt i"
+
+#: includes/class-mla-edit-media.php:635 includes/class-mla-edit-media.php:901
+#: includes/class-mla-options.php:490 includes/class-mla-settings.php:3927
+msgid "Gallery in"
+msgstr "Galleri i"
+
+#: includes/class-mla-edit-media.php:639 includes/class-mla-edit-media.php:936
+#: includes/class-mla-options.php:499 includes/class-mla-settings.php:3937
+msgid "MLA Gallery in"
+msgstr "MLA Galleri i"
+
+#. translators: 1: ERROR tag 2: function name 3: template key
+#: includes/class-mla-edit-media.php:682 includes/class-mla-main.php:636
+#: includes/class-mla-settings.php:560
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s discarding \"%3$s\"; no title/order"
+msgstr "%1$s: %2$s discarding \"%3$s\"; ingen titel/ordning"
+
+#: includes/class-mla-edit-media.php:728 includes/class-mla-list-table.php:703
+#: includes/class-mla-main.php:1615
+msgid "Scheduled"
+msgstr "Schemalagd"
+
+#: includes/class-mla-edit-media.php:731 includes/class-mla-list-table.php:706
+msgctxt "post state"
+msgid "Pending"
+msgstr "﻿Väntande"
+
+#: includes/class-mla-edit-media.php:734 includes/class-mla-list-table.php:700
+#: includes/class-mla-main.php:1621
+msgid "Draft"
+msgstr "Utkast"
+
+#: includes/class-mla-edit-media.php:748
+msgid "Post Parent"
+msgstr "Post överordnad"
+
+#: includes/class-mla-edit-media.php:749 includes/class-mla-main.php:1901
+msgid "Select Parent"
+msgstr "Markera överordnad"
+
+#: includes/class-mla-edit-media.php:816 includes/class-mla-edit-media.php:854
+#: includes/class-mla-edit-media.php:890 includes/class-mla-edit-media.php:925
+#: includes/class-mla-list-table.php:1042
+#: includes/class-mla-list-table.php:1091
+#: includes/class-mla-list-table.php:1137
+#: includes/class-mla-list-table.php:1182
+msgid "PARENT"
+msgstr "Överordnad"
+
+#: includes/class-mla-edit-media.php:1119
+msgid "Most Used"
+msgstr "Mest använd"
+
+#. translators: %s: add new taxonomy label
+#: includes/class-mla-edit-media.php:1148
+#, php-format
+msgid "+ %s"
+msgstr "+ %s"
+
+#: includes/class-mla-edit-media.php:1154 includes/class-mla-main.php:1902
+#: includes/class-mla-media-modal.php:1249
+#: includes/mla-media-modal-js-template.php:20
+#: includes/mla-media-modal-js-template.php:61
+msgid "Search"
+msgstr "Sök"
+
+#: includes/class-mla-list-table.php:241
+msgctxt "list_table_column"
+msgid "ID/Parent"
+msgstr "ID / överordnad"
+
+#: includes/class-mla-list-table.php:242
+msgctxt "list_table_column"
+msgid "Title/Name"
+msgstr "Titel / Namn"
+
+#: includes/class-mla-list-table.php:243
+msgctxt "list_table_column"
+msgid "Title"
+msgstr "Titel"
+
+#: includes/class-mla-list-table.php:244
+msgctxt "list_table_column"
+msgid "Name"
+msgstr "Namn"
+
+#: includes/class-mla-list-table.php:245
+msgctxt "list_table_column"
+msgid "Parent ID"
+msgstr "Överordnad ID"
+
+#: includes/class-mla-list-table.php:246
+msgctxt "list_table_column"
+msgid "Menu Order"
+msgstr "Menyordning"
+
+#: includes/class-mla-list-table.php:247
+msgctxt "list_table_column"
+msgid "Featured in"
+msgstr "Utvalt i"
+
+#: includes/class-mla-list-table.php:248
+msgctxt "list_table_column"
+msgid "Inserted in"
+msgstr "Inlagd i"
+
+#: includes/class-mla-list-table.php:249
+msgctxt "list_table_column"
+msgid "Gallery in"
+msgstr "Galleri i"
+
+#: includes/class-mla-list-table.php:250
+msgctxt "list_table_column"
+msgid "MLA Gallery in"
+msgstr "MLA Gallery i"
+
+#: includes/class-mla-list-table.php:251
+msgctxt "list_table_column"
+msgid "ALT Text"
+msgstr "ALT Text"
+
+#: includes/class-mla-list-table.php:252
+msgctxt "list_table_column"
+msgid "Caption"
+msgstr "Rubrik"
+
+#: includes/class-mla-list-table.php:253
+#: includes/class-mla-upload-list-table.php:186
+#: includes/class-mla-upload-optional-list-table.php:171
+#: includes/class-mla-view-list-table.php:179
+msgctxt "list_table_column"
+msgid "Description"
+msgstr "Beskrivning"
+
+#: includes/class-mla-list-table.php:254
+#: includes/class-mla-upload-list-table.php:178
+#: includes/class-mla-upload-optional-list-table.php:168
+msgctxt "list_table_column"
+msgid "MIME Type"
+msgstr "MIME-typ"
+
+#: includes/class-mla-list-table.php:255
+msgctxt "list_table_column"
+msgid "File URL"
+msgstr "Fil-URL"
+
+#: includes/class-mla-list-table.php:256
+msgctxt "list_table_column"
+msgid "Base File"
+msgstr "Basfilnamn"
+
+#: includes/class-mla-list-table.php:257
+msgctxt "list_table_column"
+msgid "Date"
+msgstr "Datum"
+
+#: includes/class-mla-list-table.php:258
+msgctxt "list_table_column"
+msgid "Last Modified"
+msgstr "Senast ändrad"
+
+#: includes/class-mla-list-table.php:259
+msgctxt "list_table_column"
+msgid "Author"
+msgstr "Författare"
+
+#: includes/class-mla-list-table.php:260
+msgctxt "list_table_column"
+msgid "Attached to"
+msgstr "Bifogat till"
+
+#: includes/class-mla-list-table.php:281
+msgid "All"
+msgstr "Alla"
+
+#: includes/class-mla-list-table.php:566
+#: includes/class-mla-list-table.php:1277 includes/class-mla-options.php:604
+#: includes/class-mla-options.php:806 includes/class-mla-options.php:830
+#: includes/class-mla-options.php:844 includes/class-mla-settings.php:2314
+msgid "None"
+msgstr "Inga"
+
+#: includes/class-mla-list-table.php:572 includes/class-mla-list-table.php:605
+#: includes/class-mla-list-table.php:900 includes/class-mla-list-table.php:992
+#: includes/class-mla-list-table.php:1215
+#: includes/class-mla-list-table.php:1259
+#: includes/class-mla-list-table.php:1291
+#: includes/class-mla-list-table.php:1375
+msgid "Filter by"
+msgstr "Filtrera efter"
+
+#: includes/class-mla-list-table.php:582
+#: includes/class-mla-media-modal.php:910
+msgid "Not Supported"
+msgstr "Stöds inte"
+
+#. translators: 1: column_name 2: column_values
+#: includes/class-mla-list-table.php:625
+#: includes/class-mla-upload-list-table.php:247
+#: includes/class-mla-upload-optional-list-table.php:228
+#: includes/class-mla-view-list-table.php:236
+#, php-format
+msgid "column_default: %1$s, %2$s"
+msgstr "column_default: %1$s, %2$s"
+
+#: includes/class-mla-list-table.php:684 includes/class-mla-list-table.php:756
+#: includes/class-mla-list-table.php:1047
+#: includes/class-mla-list-table.php:1096
+#: includes/class-mla-list-table.php:1142
+#: includes/class-mla-list-table.php:1187
+#: includes/class-mla-list-table.php:1395
+#: includes/class-mla-list-table.php:1712
+#: includes/class-mla-polylang-support.php:370
+#: includes/class-mla-upload-list-table.php:312
+#: includes/class-mla-upload-list-table.php:610
+#: includes/class-mla-view-list-table.php:302
+#: includes/class-mla-view-list-table.php:513
+msgid "Edit"
+msgstr "Redigera"
+
+#: includes/class-mla-list-table.php:709
+msgid "Trash"
+msgstr "Papperskorg"
+
+#: includes/class-mla-list-table.php:745
+msgid "Restore this item from the Trash"
+msgstr "Återställ objektet från papperskorgen"
+
+#: includes/class-mla-list-table.php:745
+#: includes/class-mla-list-table.php:1709
+msgid "Restore"
+msgstr "Återställ"
+
+#: includes/class-mla-list-table.php:756
+#: includes/class-mla-upload-list-table.php:312
+#: includes/class-mla-view-list-table.php:302
+msgid "Edit this item"
+msgstr "Redigera denna post"
+
+#: includes/class-mla-list-table.php:757
+#: includes/class-mla-upload-list-table.php:314
+#: includes/class-mla-view-list-table.php:304
+msgid "Edit this item inline"
+msgstr "Redigera den här posten i angivet område"
+
+#: includes/class-mla-list-table.php:757 includes/class-mla-main.php:2099
+#: includes/class-mla-options.php:3408 includes/class-mla-options.php:3715
+#: includes/class-mla-upload-list-table.php:314
+#: includes/class-mla-view-list-table.php:304
+msgid "Quick Edit"
+msgstr "Snabbredigering"
+
+#: includes/class-mla-list-table.php:763
+msgid "Move this item to the Trash"
+msgstr "Flytta objekt till papperskorgen"
+
+#: includes/class-mla-list-table.php:763
+#: includes/class-mla-list-table.php:1715
+msgid "Move to Trash"
+msgstr "Flytta till Papperskorgen"
+
+#: includes/class-mla-list-table.php:768
+#: includes/class-mla-upload-list-table.php:318
+#: includes/class-mla-view-list-table.php:310
+msgid "Delete this item Permanently"
+msgstr "Radera detta objekt permanent"
+
+#: includes/class-mla-list-table.php:768
+#: includes/class-mla-list-table.php:1710
+#: includes/class-mla-list-table.php:1717
+#: includes/class-mla-upload-list-table.php:318
+#: includes/class-mla-view-list-table.php:310
+#: includes/class-mla-view-list-table.php:514
+msgid "Delete Permanently"
+msgstr "Radera permanent"
+
+#: includes/class-mla-list-table.php:776 includes/class-mla-settings.php:3030
+msgid "Download"
+msgstr "Ladda ner"
+
+#: includes/class-mla-list-table.php:779 includes/class-mla-settings.php:1753
+msgid "View"
+msgstr "Visa"
+
+#: includes/class-mla-list-table.php:825 includes/class-mla-list-table.php:897
+#: includes/class-mla-main.php:419 includes/class-mla-main.php:1606
+#: includes/class-mla-polylang-support.php:367
+msgid "(no title)"
+msgstr "(ingen titel)"
+
+#: includes/class-mla-list-table.php:989
+msgid "(no title: bad ID)"
+msgstr "(Ingen titel: felaktigt ID)"
+
+#: includes/class-mla-list-table.php:1024
+#: includes/class-mla-list-table.php:1069
+#: includes/class-mla-list-table.php:1119
+#: includes/class-mla-list-table.php:1164 includes/class-mla-options.php:476
+#: includes/class-mla-options.php:485 includes/class-mla-options.php:494
+#: includes/class-mla-options.php:503
+msgid "Disabled"
+msgstr "Avaktiverad"
+
+#: includes/class-mla-list-table.php:1262 includes/class-mla-settings.php:1858
+#: includes/class-mla-settings.php:2223
+msgid "MIME Type"
+msgstr "MIME-typ"
+
+#: includes/class-mla-list-table.php:1295
+msgid "Base File"
+msgstr "Basfilnamn"
+
+#: includes/class-mla-list-table.php:1311
+#: includes/class-mla-list-table.php:1344
+msgid "Unpublished"
+msgstr "Ej publicerad"
+
+#. translators: 1: upload/last modified date and time
+#: includes/class-mla-list-table.php:1320
+#: includes/class-mla-list-table.php:1351
+#, php-format
+msgid "%1$s from now"
+msgstr "%1$s från och med nu"
+
+#. translators: 1: upload/last modified date and time
+#: includes/class-mla-list-table.php:1323
+#: includes/class-mla-list-table.php:1353
+#, php-format
+msgid "%1$s ago"
+msgstr "%1$s sedan"
+
+#. translators: format for upload/last modified date
+#. translators: date format in table columns, see http://php.net/date
+#: includes/class-mla-list-table.php:1327
+#: includes/class-mla-list-table.php:1356
+#: includes/class-mla-list-table.php:1412 includes/class-mla-main.php:1631
+msgid "Y/m/d"
+msgstr "Y/m/d"
+
+#: includes/class-mla-list-table.php:1414 includes/class-mla-options.php:1194
+msgctxt "table_view_singular"
+msgid "Unattached"
+msgstr "Ej bifogad"
+
+#: includes/class-mla-list-table.php:1417
+msgid "Set Parent"
+msgstr "Sätt som överordnad"
+
+#: includes/class-mla-list-table.php:1564
+msgctxt "uploaded files"
+msgid "All"
+msgid_plural "All"
+msgstr[0] "Alla"
+msgstr[1] "Allt"
+
+#: includes/class-mla-list-table.php:1743
+msgid "Filter"
+msgstr "Filter"
+
+#: includes/class-mla-list-table.php:1747
+#: includes/mla-media-modal-js-template.php:58
+msgid "Terms Search"
+msgstr "Villkor Sök"
+
+#: includes/class-mla-list-table.php:1753
+#: includes/class-mla-polylang-support.php:1651
+msgid "Clear Filter-by"
+msgstr "Rensa Filter-efter"
+
+#: includes/class-mla-list-table.php:1757
+msgid "Empty Trash"
+msgstr "Töm papperskorg"
+
+#: includes/class-mla-main.php:417 includes/class-mla-settings.php:337
+msgid "Error while saving the changes."
+msgstr "Fel när ändringar skulle sparas."
+
+#: includes/class-mla-main.php:418 includes/class-mla-settings.php:338
+msgid "Remove From Bulk Edit"
+msgstr "Ta bort från Bulk Edit"
+
+#: includes/class-mla-main.php:420
+msgid "Bulk Edit items"
+msgstr "Massredigering media"
+
+#: includes/class-mla-main.php:421 includes/class-mla-main.php:2126
+#: includes/class-mla-settings.php:354
+msgid "Waiting"
+msgstr "Väntar"
+
+#: includes/class-mla-main.php:422 includes/class-mla-main.php:2128
+#: includes/class-mla-settings.php:356
+msgid "Complete"
+msgstr "Slutfört!"
+
+#: includes/class-mla-main.php:423 includes/class-mla-settings.php:357
+msgid "Unchanged"
+msgstr "oförändrat"
+
+#: includes/class-mla-main.php:424 includes/class-mla-settings.php:358
+msgid "Succeeded"
+msgstr "Lyckades"
+
+#: includes/class-mla-main.php:425 includes/class-mla-settings.php:359
+msgid "Failed"
+msgstr "Misslyckades"
+
+#: includes/class-mla-main.php:426 includes/class-mla-settings.php:362
+msgid "CANCELED"
+msgstr "Annullerad"
+
+#: includes/class-mla-main.php:529
+#, php-format
+msgid "Item permanently deleted."
+msgid_plural "%d items permanently deleted."
+msgstr[0] "Objektet raderades permanent"
+msgstr[1] "%d Objekt raderades permanent"
+
+#. translators: 1: post ID
+#: includes/class-mla-main.php:534 includes/class-mla-main.php:2305
+#, php-format
+msgid "Item %1$d moved to Trash."
+msgstr "Objekt %1$d flyttades till papperskorgen."
+
+#: includes/class-mla-main.php:553
+msgid "Entries per page"
+msgstr "Inlägg per sida"
+
+#: includes/class-mla-main.php:1081
+msgid "You are not allowed to edit Attachment: "
+msgstr "Du har inte tillåtelse att redigera Bilaga:"
+
+#. translators: 1: ERROR tag 2: bulk action
+#: includes/class-mla-main.php:1134
+#, php-format
+msgid "%1$s: Unknown bulk action %2$s"
+msgstr "%1$s: Okänd mass handling %2$s"
+
+#: includes/class-mla-main.php:1156
+msgid "no changes detected"
+msgstr "inga förändringar upptäcktes"
+
+#. translators: 1: action name, e.g., edit
+#: includes/class-mla-main.php:1202 includes/class-mla-settings.php:1632
+#: includes/class-mla-settings.php:2099
+#, php-format
+msgid "Bulk Action %1$s - no items selected."
+msgstr "Massåtgärd %1$s - inga objekt har valts."
+
+#: includes/class-mla-main.php:1253
+msgid "You do not have permission to manage attachments."
+msgstr "Du har inte behörighet att hantera bifogade filer."
+
+#. translators: 1: number of items
+#: includes/class-mla-main.php:1320
+#, php-format
+msgctxt "deleted items"
+msgid "%s item deleted."
+msgid_plural "%s items deleted."
+msgstr[0] "%s objekt togs bort."
+msgstr[1] "%s objekt togs bort."
+
+#: includes/class-mla-main.php:1322
+msgid "No items deleted."
+msgstr "Inga objekt raderades"
+
+#: includes/class-mla-main.php:1376
+msgid "Empty Terms Search; ignored"
+msgstr "Tomma Villkor för Sök; ignoreras"
+
+#. translators: 1: row-level action, e.g., single_item_delete, single_item_edit
+#. translators: 1: bulk_action, e.g., single_item_delete, single_item_edit
+#: includes/class-mla-main.php:1388 includes/class-mla-settings.php:1669
+#: includes/class-mla-settings.php:2138
+#, php-format
+msgid "Unknown mla_admin_action - \"%1$s\""
+msgstr "Okänd mla_admin_action - \"%1$s\""
+
+#: includes/class-mla-main.php:1421
+msgid "term search results for"
+msgstr "Vilkors sökning resultat för"
+
+#: includes/class-mla-main.php:1424
+msgid "post/parent results for"
+msgstr "Post/överordnad resultat för"
+
+#: includes/class-mla-main.php:1426
+msgid "search results for"
+msgstr "Sökresultat för"
+
+#: includes/class-mla-main.php:1602 includes/class-mla-main.php:1911
+msgid "Type"
+msgstr "﻿Typ"
+
+#: includes/class-mla-main.php:1602 includes/class-mla-main.php:1912
+msgid "Date"
+msgstr "Datum"
+
+#: includes/class-mla-main.php:1602 includes/class-mla-main.php:1913
+#: includes/class-mla-settings.php:2239
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-mla-main.php:1612
+msgid "Published"
+msgstr "Publicerad"
+
+#: includes/class-mla-main.php:1618
+msgid "Pending Review"
+msgstr "Inväntar granskning"
+
+#: includes/class-mla-main.php:1660 includes/class-mla-main.php:1745
+msgid "No post ID found"
+msgstr "Ingen post-ID hittades"
+
+#: includes/class-mla-main.php:1667 includes/class-mla-main.php:1752
+#: includes/class-mla-polylang-support.php:271
+msgid "You are not allowed to edit this Attachment."
+msgstr "Du har inte tillåtelse att redigera den här Bilagan."
+
+#: includes/class-mla-main.php:1719 includes/class-mla-main.php:1923
+#: includes/class-mla-main.php:2113 includes/class-mla-settings.php:1512
+#: includes/class-mla-settings.php:1773 includes/class-mla-settings.php:1867
+#: includes/class-mla-settings.php:2237
+msgid "Update"
+msgstr "Uppdatera"
+
+#: includes/class-mla-main.php:1858
+msgid "All Post Types"
+msgstr "Alla Inläggstyper"
+
+#: includes/class-mla-main.php:1904
+msgid "For"
+msgstr "För"
+
+#: includes/class-mla-main.php:1914 includes/class-mla-shortcodes.php:838
+msgid "Unattached"
+msgstr "Ej bifogad"
+
+#: includes/class-mla-main.php:1919 includes/class-mla-main.php:2112
+#: includes/class-mla-polylang-support.php:1644
+#: includes/class-mla-settings.php:1513 includes/class-mla-settings.php:1772
+#: includes/class-mla-settings.php:1868 includes/class-mla-settings.php:1940
+#: includes/class-mla-settings.php:2236 includes/class-mla-settings.php:2707
+#: includes/class-mla-settings.php:2843
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: includes/class-mla-main.php:2114 includes/class-mla-options.php:3422
+#: includes/class-mla-options.php:3716 includes/class-mla-settings.php:1774
+#: includes/class-mla-settings.php:2238
+msgid "Bulk Edit"
+msgstr "Massredigera"
+
+#: includes/class-mla-main.php:2127
+msgid "In-process"
+msgstr "Pågående"
+
+#: includes/class-mla-main.php:2129 includes/class-mla-options.php:494
+#: includes/class-mla-options.php:503 includes/class-mla-settings.php:2710
+#: includes/class-mla-settings.php:2846
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: includes/class-mla-main.php:2218
+msgid "You are not allowed to delete this item."
+msgstr "Du har inte tillåtelse att radera objektet"
+
+#. translators: 1: ERROR tag 2: post ID
+#: includes/class-mla-main.php:2226
+#, php-format
+msgid "%1$s: Item %2$d could NOT be deleted."
+msgstr "%1$s: Objekt %2$d kunde EJ raderas."
+
+#. translators: 1: post ID
+#: includes/class-mla-main.php:2233
+#, php-format
+msgid "Item %1$d permanently deleted."
+msgstr "Objekt %1$d raderades permanent."
+
+#: includes/class-mla-main.php:2250
+msgid "You are not allowed to move this item out of the Trash."
+msgstr "Du har inte tillåtelse att flytta det här objektet ur papperskorgen."
+
+#. translators: 1: ERROR tag 2: post ID
+#: includes/class-mla-main.php:2258
+#, php-format
+msgid "%1$s: Item %2$d could NOT be restored from Trash."
+msgstr "%1$s: Objekt %2$d kunde EJ återställas från papperskorgen."
+
+#. translators: 1: post ID
+#: includes/class-mla-main.php:2273
+#, php-format
+msgid "Item %1$d restored from Trash."
+msgstr "Objekt %1$d återställdes från papperskorgen."
+
+#: includes/class-mla-main.php:2290
+msgid "You are not allowed to move this item to the Trash."
+msgstr "Du har inte tillåtelse att flytta objektet till papperskorgen."
+
+#. translators: 1: ERROR tag 2: post ID
+#: includes/class-mla-main.php:2298
+#, php-format
+msgid "%1$s: Item %2$d could NOT be moved to Trash."
+msgstr "%1$s: objektet %2$d kunde EJ flyttas till papperskorgen."
+
+#: includes/class-mla-media-modal.php:245
+#: includes/class-mla-media-modal.php:251
+#: includes/class-mla-media-modal.php:824
+#: includes/class-mla-media-modal.php:859
+#: includes/class-mla-media-modal.php:904
+msgid "Click to toggle"
+msgstr "Klicka för att växla"
+
+#: includes/class-mla-media-modal.php:290
+msgid "Show all dates"
+msgstr "Visa alla datum"
+
+#. translators: 1: month name, 2: 4-digit year
+#: includes/class-mla-media-modal.php:305
+#, php-format
+msgid "%1$s %2$d"
+msgstr "%1$s %2$d"
+
+#: includes/class-mla-media-modal.php:521
+msgid "Search Box"
+msgstr "Sökruta"
+
+#: includes/class-mla-media-modal.php:522
+msgid "Loading..."
+msgstr "Laddar…"
+
+#: includes/class-mla-media-modal.php:870
+msgid "Tags"
+msgstr "Etiketter"
+
+#. translators: %s: add new taxonomy label
+#. translators: %s: add new View
+#. translators: %s: add new Upload MIME Type
+#: includes/class-mla-media-modal.php:872 includes/class-mla-objects.php:46
+#: includes/class-mla-objects.php:76 includes/class-mla-settings.php:1753
+#: includes/class-mla-settings.php:2219
+#, php-format
+msgid "Add New %1$s"
+msgstr "Lägg till ny %1$s"
+
+#: includes/class-mla-media-modal.php:888
+msgid "Choose from the most used tags"
+msgstr "Välj bland de mest använda etiketterna"
+
+#: includes/class-mla-media-modal.php:1232
+#: includes/class-mla-media-modal.php:1248
+msgid "Search Terms"
+msgstr "Sök vilkor"
+
+#: includes/class-mla-media-modal.php:1233
+msgid "There are no taxonomies to search"
+msgstr "Det finns inga klassificeringar att söka"
+
+#: includes/class-mla-media-modal.php:1251
+msgid "All phrases"
+msgstr "Alla fraser"
+
+#: includes/class-mla-media-modal.php:1253
+msgid "Any phrase"
+msgstr "Vilken fras som hels"
+
+#: includes/class-mla-media-modal.php:1255
+msgid "All terms"
+msgstr "Alla termer"
+
+#: includes/class-mla-media-modal.php:1257
+msgid "Any term"
+msgstr "Viken term som helst"
+
+#: includes/class-mla-media-modal.php:1259
+msgid "Exact"
+msgstr "exakt"
+
+#: includes/class-mla-mime-types.php:364
+msgctxt "post_mime_types"
+msgid "Manage"
+msgstr "Hantera"
+
+#: includes/class-mla-mime-types.php:764
+msgctxt "post_mime_types_description"
+msgid "Copied from previous filter/plugin"
+msgstr "Kopierad från föregående filter/plugin"
+
+#. translators: 1: ERROR tag 2: raw_mime_type
+#: includes/class-mla-mime-types.php:906
+#, php-format
+msgid "%1$s: Bad specification part \"%2$s\""
+msgstr "%1$s:Felaktig specefikations del \"%2$s\""
+
+#. translators: 1: ERROR tag 2: option, e.g., any, match, null
+#: includes/class-mla-mime-types.php:912
+#, php-format
+msgid "%1$s: Bad specification option \"%2$s\""
+msgstr "%1$s: Felaktigt specifikations alternativ \"%2$s\""
+
+#. translators: 1: ERROR tag 2: prefix, e.g., custom
+#: includes/class-mla-mime-types.php:916
+#, php-format
+msgid "%1$s: Bad specification prefix \"%2$s\""
+msgstr "%1$s: Felaktigt specifikations prefix \"%2$s\""
+
+#: includes/class-mla-mime-types.php:947
+#: includes/class-mla-mime-types.php:1064
+msgid "Ignoring specification for Post MIME Type; using slug"
+msgstr "Ignorera specifikation för Post MIME-typ; med användning av kula"
+
+#. translators: 1: element name 2: bad_value 3: good_value
+#: includes/class-mla-mime-types.php:953
+#: includes/class-mla-mime-types.php:1976
+#, php-format
+msgid "<br>Changing %1$s \"%2$s\" to valid value \"%3$s\""
+msgstr "<br>Ändrar %1$s \"%2$s\" till gilltigt värde \"%3$s\""
+
+#: includes/class-mla-mime-types.php:953
+#: includes/class-mla-mime-types.php:1041
+#: includes/class-mla-mime-types.php:1052 includes/class-mla-settings.php:1497
+#: includes/class-mla-settings.php:1754
+msgid "Slug"
+msgstr "Slug"
+
+#. translators: 1: ERROR tag 2: slug
+#: includes/class-mla-mime-types.php:961
+#: includes/class-mla-mime-types.php:1049
+#, php-format
+msgid "%1$s: Could not add Slug \"%2$s\"; value already exists"
+msgstr "%1$s: Kunde inte lägga till Slug \"%2$s\"; namnet finns redan"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:996
+#, php-format
+msgid "Edit view \"%1$s\"; added"
+msgstr "Redigera visa \"%1$s\"; tillagd"
+
+#. translators: 1: element name 2: bad_value 3: good_value
+#: includes/class-mla-mime-types.php:1041
+#: includes/class-mla-mime-types.php:2102
+#, php-format
+msgid "<br>Changing new %1$s \"%2$s\" to valid value \"%3$s\""
+msgstr "<br>Ändrar ny %1$s \"%2$s\" till gilltigt värde \"%3$s\""
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:1094
+#, php-format
+msgid "Edit view \"%1$s\"; no changes detected"
+msgstr "Redigera visa \"%1$s\"; inga ändringar detekterades"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:1108
+#, php-format
+msgid "Edit view \"%1$s\"; updated"
+msgstr "Redigera visa \"%1$s\"; uppdaterad"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:1181
+#, php-format
+msgid "View \"%1$s\" reverted to standard"
+msgstr "Visa \"%1$s\" återgick till standard"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:1187
+#, php-format
+msgid "View \"%1$s\" deleted"
+msgstr "Visa \"%1$s\" raderad"
+
+#. translators: 1: ERROR tag 2: slug
+#: includes/class-mla-mime-types.php:1195
+#, php-format
+msgid "%1$s: Did not find view \"%2$s\""
+msgstr "%1$s: Hittade inte visa \"%2$s\""
+
+#: includes/class-mla-mime-types.php:1454 includes/class-mla-options.php:1140
+msgctxt "table_view_singular"
+msgid "All"
+msgstr "Alla"
+
+#: includes/class-mla-mime-types.php:1455 includes/class-mla-options.php:1141
+msgctxt "table_view_plural"
+msgid "All"
+msgstr "Allt"
+
+#: includes/class-mla-mime-types.php:1458
+msgctxt "table_view_singular"
+msgid "Active"
+msgstr "Aktiv"
+
+#: includes/class-mla-mime-types.php:1459
+msgctxt "table_view_plural"
+msgid "Active"
+msgstr "Aktiva"
+
+#: includes/class-mla-mime-types.php:1462
+msgctxt "table_view_singular"
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: includes/class-mla-mime-types.php:1463
+msgctxt "table_view_plural"
+msgid "Inactive"
+msgstr "Inaktiva"
+
+#: includes/class-mla-mime-types.php:1466
+msgctxt "table_view_singular"
+msgid "WordPress"
+msgstr "WordPress"
+
+#: includes/class-mla-mime-types.php:1467
+msgctxt "table_view_plural"
+msgid "WordPress"
+msgstr "WordPress"
+
+#: includes/class-mla-mime-types.php:1470
+msgctxt "table_view_singular"
+msgid "MLA"
+msgstr "MLA"
+
+#: includes/class-mla-mime-types.php:1471
+msgctxt "table_view_plural"
+msgid "MLA"
+msgstr "MLA"
+
+#: includes/class-mla-mime-types.php:1474
+msgctxt "table_view_singular"
+msgid "Custom"
+msgstr "Anpassad"
+
+#: includes/class-mla-mime-types.php:1475
+msgctxt "table_view_plural"
+msgid "Custom"
+msgstr "Anpassade"
+
+#: includes/class-mla-mime-types.php:1666
+msgid "icon"
+msgstr "ikon"
+
+#: includes/class-mla-mime-types.php:1960
+#: includes/class-mla-mime-types.php:2059
+msgid "Cannot load Upload MIME Types"
+msgstr "Kan inte ladda ladda upp MIME-typer"
+
+#: includes/class-mla-mime-types.php:1971
+msgid "Extension is required"
+msgstr "Filtillägg krävs"
+
+#: includes/class-mla-mime-types.php:1976
+#: includes/class-mla-mime-types.php:2102
+#: includes/class-mla-mime-types.php:2113 includes/class-mla-settings.php:1856
+#: includes/class-mla-settings.php:2221
+msgid "Extension"
+msgstr "Filtillägg"
+
+#. translators: 1: ERROR tag 2: slug
+#: includes/class-mla-mime-types.php:1984
+#, php-format
+msgid "%1$s: Could not add extension \"%2$s\"; value already exists"
+msgstr "%1$s: Kunde inte lägga till filtillägg \"%2$s\"; värdet finns redan"
+
+#: includes/class-mla-mime-types.php:1992
+msgid "MIME type is required"
+msgstr "MIME-typ krävs"
+
+#. translators: 1: ERROR tag 2: clean_mime_type
+#: includes/class-mla-mime-types.php:1997
+#: includes/class-mla-mime-types.php:2144
+#, php-format
+msgid "%1$s: Bad MIME type; try \"%2$s\""
+msgstr "%1$s: Felaktig MIME typ; prova \"%2$s\""
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:2034
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; added"
+msgstr "Ladda upp MIME-typ \"%1$s\"; tillagd"
+
+#: includes/class-mla-mime-types.php:2040
+#: includes/class-mla-mime-types.php:2229
+#: includes/class-mla-mime-types.php:2308
+msgid "Cannot update Upload MIME Types"
+msgstr "Kan inte uppdatera ladda upp MIME-typer"
+
+#. translators: 1: ERROR tag 2: slug
+#: includes/class-mla-mime-types.php:2110
+#, php-format
+msgid "%1$s: Could not add new extension \"%2$s\"; value already exists"
+msgstr "%1$s: Kunde inte lägga till filtillägg \"%2$s\"; värdet finns redan"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:2209
+#, php-format
+msgid "Edit type \"%1$s\"; no changes detected"
+msgstr "Redigera typ \"%1$s\"; inga ändringar upptäcktes"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:2223
+#, php-format
+msgid "Edit type \"%1$s\"; updated"
+msgstr "Redigera typ \"%1$s\"; uppdaterad"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:2296
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; reverted to standard"
+msgstr "Ladda upp MIME-typ \"%1$s\"; återgått till standard"
+
+#. translators: 1: slug
+#: includes/class-mla-mime-types.php:2302
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; deleted"
+msgstr "Ladda upp MIME-typ \"%1$s\"; raderad"
+
+#. translators: 1: ERROR tag 2: slug
+#: includes/class-mla-mime-types.php:2317
+#, php-format
+msgid "%1$s: Did not find Upload type \"%2$s\""
+msgstr "%1$s: Hittade inte ladda upp typ \"%2$s\""
+
+#: includes/class-mla-objects.php:37
+msgctxt "taxonomy_name_plural"
+msgid "Att. Categories"
+msgstr "Att. Kategorier"
+
+#: includes/class-mla-objects.php:38
+msgctxt "taxonomy_name_singular"
+msgid "Att. Category"
+msgstr "Att. kategori"
+
+#: includes/class-mla-objects.php:39
+msgid "Search Att. Categories"
+msgstr "Att. sökkategorier"
+
+#: includes/class-mla-objects.php:40
+msgid "All Att. Categories"
+msgstr "Alla Att. Kategorier"
+
+#: includes/class-mla-objects.php:41 includes/class-mla-objects.php:42
+msgid "Parent Att. Category"
+msgstr "Överordnad Att. kategori"
+
+#: includes/class-mla-objects.php:43
+msgid "Edit Att. Category"
+msgstr "Redigera Att. kategori"
+
+#: includes/class-mla-objects.php:44
+msgid "Update Att. Category"
+msgstr "Uppdatera Att. kategori"
+
+#: includes/class-mla-objects.php:46 includes/class-mla-objects.php:48
+msgid "Att. Category"
+msgstr "Att. kategori"
+
+#: includes/class-mla-objects.php:47
+msgid "New Att. Category Name"
+msgstr "Nytt Att. kategorinamn"
+
+#: includes/class-mla-objects.php:67
+msgctxt "taxonomy_name_plural"
+msgid "Att. Tags"
+msgstr "Att. Taggar"
+
+#: includes/class-mla-objects.php:68
+msgctxt "taxonomy_name_singular"
+msgid "Att. Tag"
+msgstr "Att. Tagg"
+
+#: includes/class-mla-objects.php:69
+msgid "Search Att. Tags"
+msgstr "Sök Att. Taggar"
+
+#: includes/class-mla-objects.php:70
+msgid "All Att. Tags"
+msgstr "Alla Att. Taggar"
+
+#: includes/class-mla-objects.php:71 includes/class-mla-objects.php:72
+msgid "Parent Att. Tag"
+msgstr "Överordnad Att. Tagg"
+
+#: includes/class-mla-objects.php:73
+msgid "Edit Att. Tag"
+msgstr "Redigera Att. Tagg"
+
+#: includes/class-mla-objects.php:74
+msgid "Update Att. Tag"
+msgstr "Uppdatera Att. Tagg"
+
+#: includes/class-mla-objects.php:76 includes/class-mla-objects.php:78
+msgid "Att. Tag"
+msgstr "Att. Tagg"
+
+#: includes/class-mla-objects.php:77
+msgid "New Att. Tag Name"
+msgstr "Nytt Att. taggnamn"
+
+#: includes/class-mla-objects.php:133
+msgid "Attachments"
+msgstr "Bilagor"
+
+#. translators: 1: ERROR tag 2: taxonomy 3: error message
+#: includes/class-mla-objects.php:201
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_taxonomy_column_filter( \"%2$s\" ) - get_term failed: \"%3$s\""
+msgstr ""
+"%1$s: mla_taxonomy_column_filter( \"%2$s\" ) - hämta term misslyckades: "
+"\"%3$s\""
+
+#: includes/class-mla-objects.php:206
+msgid "click to search"
+msgstr "Klicka för att söka"
+
+#: includes/class-mla-objects.php:233
+msgid "Shortcode(s), HTML and/or Plain Text"
+msgstr "Kortkod(er), HTML och/eller oformaterad Text"
+
+#: includes/class-mla-objects.php:241
+msgid "MLA Text"
+msgstr "MLA Text"
+
+#: includes/class-mla-objects.php:283
+msgid "Automatically add paragraphs"
+msgstr "﻿Lägg automatiskt till stycken"
+
+#: includes/class-mla-options.php:385
+msgid "error loading tpls/mla-option-templates.tpl"
+msgstr "fel vid inläsning av tpls/mla-alternativet-templates.tpl"
+
+#: includes/class-mla-options.php:388
+msgid "tpls/mla-option-templates.tpl not found"
+msgstr "tpls/mla-alternativet-templates.tpl hittades inte"
+
+#: includes/class-mla-options.php:441 includes/class-mla-options.php:1744
+msgid "Attachment Categories"
+msgstr "Bifogad fil kategorier"
+
+#: includes/class-mla-options.php:444
+msgid "Check this option to add support for Attachment Categories."
+msgstr ""
+"Markera detta alternativ för att lägga till stöd för tilläggs kategorier."
+
+#: includes/class-mla-options.php:448 includes/class-mla-options.php:1759
+msgid "Attachment Tags"
+msgstr "Etiketter för bilaga"
+
+#: includes/class-mla-options.php:451
+msgid "Check this option to add support for Attachment Tags."
+msgstr "Markera detta alternativ för att lägga till stöd för bifogade Taggar."
+
+#: includes/class-mla-options.php:455 includes/class-mla-settings.php:1339
+msgid "Where-used Reporting"
+msgstr "Var-Använd rapportering"
+
+#: includes/class-mla-options.php:460
+msgid "Exclude Revisions"
+msgstr "Utesluta revideringar"
+
+#: includes/class-mla-options.php:463
+msgid "Check this option to exclude revisions from where-used reporting."
+msgstr ""
+"Markera detta alternativ för att utesluta revideringar från används i "
+"rapportering."
+
+#: includes/class-mla-options.php:467
+msgid "Where-used database access tuning"
+msgstr "Var-Använd databasen access inställning"
+
+#: includes/class-mla-options.php:476 includes/class-mla-options.php:485
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: includes/class-mla-options.php:477
+msgid "Search database posts and pages for Featured Image attachments."
+msgstr "Sök databas inlägg och sidor för utvalda bildbilagor."
+
+#: includes/class-mla-options.php:485
+msgid "Base"
+msgstr "Grund"
+
+#: includes/class-mla-options.php:486
+msgid ""
+"Search database posts and pages for attachments embedded in content."
+"<br>&nbsp;&nbsp;Base = ignore intermediate size suffixes; use path, base "
+"name and extension only."
+msgstr ""
+"Sökdatabas inlägg och sidor för bifogade filer inbäddade i innehåll."
+"<br>>&nbsp;&nbsp;Base = ignorera mellanliggande storlek suffix; Använd "
+"sökvägen, bas och utbyggnad bara."
+
+#: includes/class-mla-options.php:494 includes/class-mla-options.php:503
+msgid "Dynamic"
+msgstr "dynamisk"
+
+#: includes/class-mla-options.php:494 includes/class-mla-options.php:503
+msgid "Cached"
+msgstr "Cachelagrade"
+
+#: includes/class-mla-options.php:495
+msgid ""
+"Search database posts and pages for [gallery] shortcode results.<br>&nbsp;"
+"&nbsp;Dynamic = once every page load, Cached = once every login, Disabled = "
+"never.<br>&nbsp;&nbsp;Refresh = update references, then set to Cached."
+msgstr ""
+"Sök databas inlägg och sidor för [Galleri] kortkod resultat.<br>&nbsp;&nbsp;"
+"Dynamisk = en gång varje gång sidan laddar, cachelagrat = en gång varje "
+"inloggning, oduglig = aldrig.<br>&nbsp;&nbsp;Uppdatera = uppdatera "
+"referenser, då inställd cachad."
+
+#: includes/class-mla-options.php:504
+msgid ""
+"Search database posts and pages for [mla_gallery] shortcode results."
+"<br>&nbsp;&nbsp;Dynamic = once every page load, Cached = once every login, "
+"Disabled = never.<br>&nbsp;&nbsp;Refresh = update references, then set to "
+"Cached."
+msgstr ""
+"Sök databas inlägg och sidor för [mla_gallery] kortkod resultat.<br>&nbsp;"
+"&nbsp;Dynamisk = en gång varje gång sidan laddar, cachelagrat = en gång "
+"varje inloggning, oduglig = aldrig.<br>&nbsp;&nbsp;Uppdatera = uppdatera "
+"referenser, då inställd cachad."
+
+#: includes/class-mla-options.php:508 includes/class-mla-settings.php:1339
+msgid "Taxonomy Support"
+msgstr "Taxonomi stöd"
+
+#: includes/class-mla-options.php:513
+msgid "Compute Attachments Column"
+msgstr "Beräkna bilagornas kolumn"
+
+#: includes/class-mla-options.php:516
+msgid ""
+"Check this option to calculate attachments per term in the Attachments "
+"Column."
+msgstr ""
+"Markera detta alternativ för att beräkna bilagor per term i kolumnen "
+"bifogade filer."
+
+#: includes/class-mla-options.php:520
+msgid ""
+"Check the \"<strong>Support</strong>\" box to add the taxonomy to the "
+"Assistant and the Edit Media screen."
+msgstr ""
+"Markera rutan \"<strong>stöd</strong>\" för att lägga till taxonomin till "
+"assistenten och skärmen redigera Media."
+
+#: includes/class-mla-options.php:521
+msgid ""
+"Check the \"<strong>Inline Edit</strong>\" box to display the taxonomy in "
+"the Quick Edit and Bulk Edit areas."
+msgstr ""
+"Markera rutan \"<strong>Inline redigera</strong>\" för att Visa taxonomin i "
+"områdena Quick Edit och Massredigera."
+
+#: includes/class-mla-options.php:522
+msgid ""
+"Check the \"<strong>Term Search</strong>\" box to add the taxonomy to the "
+"\"Search Media/Terms\" list."
+msgstr ""
+"Markera rutan \"<strong>Term Sök</strong>\" för att lägga till taxonomin i "
+"listan \"Media/sökord\"."
+
+#: includes/class-mla-options.php:523 includes/class-mla-options.php:704
+#: includes/class-mla-settings.php:1371 includes/class-mla-settings.php:1372
+msgid "For complete documentation"
+msgstr "För fullständig dokumentation"
+
+#: includes/class-mla-options.php:523 includes/class-mla-options.php:704
+#: includes/class-mla-settings.php:1371 includes/class-mla-settings.php:1372
+msgid "click here"
+msgstr "klicka här"
+
+#: includes/class-mla-options.php:525
+msgid ""
+"Check the \"<strong>Checklist</strong>\" box to enable the checklist-style "
+"meta box for a flat taxonomy."
+msgstr ""
+"Markera rutan \"<strong>Checklista</strong>\" för att aktivera checklista-"
+"stil meta-rutan för en flat taxonomi."
+
+#: includes/class-mla-options.php:526
+msgid ""
+"You must also check the <strong>\"Enable enhanced checklist taxonomies\"</"
+"strong> box below to enable this feature."
+msgstr ""
+"Du måste också markera rutan <strong>\"Aktivera förstärkt checklista "
+"taxonomier\"</strong> nedan för att aktivera den här funktionen."
+
+#: includes/class-mla-options.php:527
+msgid ""
+"Check the \"<strong>Checked On Top</strong>\" box to moved checked terms to "
+"the top of the checklist-style meta box."
+msgstr ""
+"Markera rutan \"<strong>Kollade på Top</strong>\" flyttas kontrollerade "
+"villkor överst i rutan checklista-stil meta."
+
+#: includes/class-mla-options.php:528
+msgid ""
+"Use the \"<strong>List Filter</strong>\" option to select the taxonomy on "
+"which to filter the Assistant table listing."
+msgstr ""
+"Använd alternativet \"<strong>Listan Filter</strong>\" för att Välj den "
+"taxonomi som att filtrera assistent bordet."
+
+#: includes/class-mla-options.php:554
+msgid "Media/Assistant Screen Options"
+msgstr "Media/assistent skärmalternativ"
+
+#: includes/class-mla-options.php:559
+msgid "Admin Menu Options"
+msgstr "Admin-menyn Alternativ"
+
+#: includes/class-mla-options.php:564
+msgid "Page Title"
+msgstr "Sidrubrik"
+
+#: includes/class-mla-options.php:566 includes/class-mla-settings.php:447
+#: includes/class-mla-settings.php:3073 includes/class-mla-settings.php:3095
+msgid "Media Library Assistant"
+msgstr "Media Library Assistant"
+
+#: includes/class-mla-options.php:568
+msgid "Enter the title for the Media/Assistant submenu page"
+msgstr "Ange titeln för Media/assistent undermenyn sidan"
+
+#: includes/class-mla-options.php:572
+msgid "Menu Title"
+msgstr "Menytitel"
+
+#: includes/class-mla-options.php:574
+msgid "Assistant"
+msgstr "Assistent"
+
+#: includes/class-mla-options.php:576
+msgid "Enter the title for the Media/Assistant submenu entry"
+msgstr "Ange titeln för posten Media/assistent undermeny"
+
+#: includes/class-mla-options.php:580
+msgid "Submenu Order"
+msgstr "Undermenyn ordning"
+
+#: includes/class-mla-options.php:584
+msgid ""
+"Enter the position of the Media/Assistant submenu entry.<br>&nbsp;&nbsp;0 = "
+"natural order (at bottom),&nbsp;&nbsp;&nbsp;&nbsp;1 - 4 = at top<br>&nbsp;"
+"&nbsp;6-9 = after \"Library\",&nbsp;&nbsp;&nbsp;&nbsp;11-16 = after \"Add New"
+"\""
+msgstr ""
+"Ange positionen för Media/assistent undermeny innehåll.<br>&nbsp;&nbsp;0 = "
+"naturliga order (längst ned),&nbsp;&nbsp;&nbsp;&nbsp; 1-4 = överst<br>&nbsp;"
+"&nbsp6-9 = efter \"Bibliotek\",&nbsp;&nbsp;&nbsp;&nbsp; 11-16 = efter "
+"\"Lägga till nya\""
+
+#: includes/class-mla-options.php:588
+msgid "Display Media/Library"
+msgstr "Visa Media/bibliotek"
+
+#: includes/class-mla-options.php:591
+msgid ""
+"Check/uncheck this option to display/remove the WordPress Media/Library "
+"submenu entry."
+msgstr ""
+"Markera/avmarkera detta alternativ för att visa/ta bort WordPress "
+"mediabibliotekets undermeny."
+
+#: includes/class-mla-options.php:595
+msgid "Table Defaults"
+msgstr "Standard tabell"
+
+#: includes/class-mla-options.php:600
+msgid "Order By"
+msgstr "Sortera efter"
+
+#: includes/class-mla-options.php:604 includes/class-mla-options.php:806
+msgid "Title/Name"
+msgstr "Titel / Namn"
+
+#: includes/class-mla-options.php:605
+msgid "Select the column for the sort order of the Assistant table listing."
+msgstr "Markera kolumnen för sorteringsordning  av assistent tabellen."
+
+#: includes/class-mla-options.php:609
+msgid "Order"
+msgstr "Ordning"
+
+#: includes/class-mla-options.php:613
+msgid "Ascending"
+msgstr "Stigande"
+
+#: includes/class-mla-options.php:613
+msgid "Descending"
+msgstr "Fallande"
+
+#: includes/class-mla-options.php:614 includes/class-mla-options.php:816
+msgid "Choose the sort order."
+msgstr "Välj sorteringsordning."
+
+#: includes/class-mla-options.php:618
+msgid "Views Width"
+msgstr "vyens vidd"
+
+#: includes/class-mla-options.php:622
+msgid "Enter the width for the views list, in pixels (px) or percent (%)"
+msgstr "Ange bredden för listan vyer i pixlar (px) eller i procent (%)"
+
+#: includes/class-mla-options.php:626
+msgid "Icon Size"
+msgstr "Ikonstorlek"
+
+#: includes/class-mla-options.php:630
+msgid "Enter the size of the thumbnail/icon images, in pixels"
+msgstr "Ange storleken på miniatyren/ikon bilder, i pixlar"
+
+#: includes/class-mla-options.php:634
+msgid "Bulk Chunk Size"
+msgstr "Uppdelningsstorlek"
+
+#: includes/class-mla-options.php:638
+msgid "Enter the size of the Bulk Edit and Map All processing chunks"
+msgstr "Ange storleken på Massredigeringen och mappa alla bitar"
+
+#: includes/class-mla-options.php:642
+msgid "Taxonomy Filter parameters"
+msgstr "Taxonomi filterparametrar"
+
+#: includes/class-mla-options.php:647
+msgid "Maximum Depth"
+msgstr "Maximalt djup"
+
+#: includes/class-mla-options.php:651
+msgid ""
+"Enter the number of levels displayed for hierarchial taxonomies; enter zero "
+"for no limit."
+msgstr ""
+"Ange antalet nivåer visas för hierarchial taxonomier; Ange noll för ingen "
+"gräns."
+
+#: includes/class-mla-options.php:655
+msgid "Include Children"
+msgstr "Inkludera underordnade"
+
+#: includes/class-mla-options.php:658
+msgid ""
+"Check/uncheck this option to include/exclude children for hierarchical "
+"taxonomies."
+msgstr ""
+"Markera/avmarkera detta alternativ för att inkludera/utesluta underornade "
+"för hierarkiska taxonomier."
+
+#: includes/class-mla-options.php:662
+msgid "Search Media Defaults"
+msgstr "Sök Media Standard"
+
+#: includes/class-mla-options.php:667
+msgid "Display Search Controls"
+msgstr "Visa sök"
+
+#: includes/class-mla-options.php:670 includes/class-mla-options.php:777
+msgid ""
+"Check/uncheck this option to display/hide the and/or connector and search "
+"fields controls."
+msgstr ""
+"Markera/avmarkera detta alternativ för att Visa/Göm den och/eller kontakt "
+"och Sök fält kontroller."
+
+#: includes/class-mla-options.php:674
+msgid ""
+"Use these controls to set defaults for the and/or connector and search "
+"fields controls.<br>These defaults will be used for the Search Media boxes "
+"on both the Media/Assistant submenu<br>and the Media Manager Modal Window."
+msgstr ""
+"Använda dessa kontroller för att ange standardvärden för den och/eller "
+"kontakt och Sök fält kontroller.<br>Dessa standarder kommer att användas för "
+"rutorna Sök medier på båda undermenyn Media/assistent<br>och mediafönstret "
+"Manager Modal."
+
+#: includes/class-mla-options.php:687
+msgid "Media/Edit Media Enhancements"
+msgstr "Media/redigera Media förbättringar"
+
+#: includes/class-mla-options.php:692
+msgid "Enable enhanced \"checklist\" taxonomies"
+msgstr "Aktivera förhöjd \"checklista\" taxonomier"
+
+#: includes/class-mla-options.php:695
+msgid ""
+"Check this option to enable the \"? Search\" feature for hierarchical "
+"taxonomies, e.g., Att. Categories.<br>&nbsp;&nbsp;This option also enables "
+"the \"checklist-style\" support for flat taxonomies, e.g., Att. Tags."
+msgstr ""
+"Markera detta alternativ för att aktivera den \"? Sök\"funktionen för "
+"hierarkiska taxonomier, t.ex., Att. kategorier.<br>&nbsp;&nbsp;Detta "
+"alternativ kan också \"checklista-stil\" stöd för flat taxonomie, t.ex., "
+"Att. Taggar."
+
+#: includes/class-mla-options.php:699
+msgid "Enable Edit Media additional meta boxes"
+msgstr "Aktivera redigera Media ytterligare meta boxes"
+
+#: includes/class-mla-options.php:702
+msgid ""
+"Check this option to add \"Parent Info\", \"Menu Order\", \"Attachment "
+"Metadata\" and four \"where-used\" meta boxes to the Edit Media screen."
+msgstr ""
+"Markera detta alternativ för att lägga till \"Överordnad Info\", \"Menyernas "
+"ordning\", \"Bifogad fil Metadata\" och fyra \"används\" meta boxes till "
+"skärmen redigera Media."
+
+#: includes/class-mla-options.php:703
+msgid "You can also use Filters to customize the meta boxes."
+msgstr "Du kan också använda filter för att anpassa rutorna meta."
+
+#: includes/class-mla-options.php:708
+msgid "Media/Add New Enhancements"
+msgstr "Media/lägga till nya förbättringar"
+
+#: includes/class-mla-options.php:713
+msgid "Enable \"bulk edit\" area"
+msgstr "Aktivera \"massredigera\" området"
+
+#: includes/class-mla-options.php:716
+msgid ""
+"Check this option to enable the \"Bulk Edit area\" feature on the Media/Add "
+"New screen."
+msgstr ""
+"Markera detta alternativ för att aktivera funktionen \"Massredigering område"
+"\" på Media/Lägg till nya skärmen."
+
+#: includes/class-mla-options.php:720
+msgid "Media Manager/Media Grid Enhancements"
+msgstr "Media Manager/Media rutnät förbättringar"
+
+#: includes/class-mla-options.php:725
+msgid "Enable Media Grid Enhancements"
+msgstr "Aktivera Media rutnät förbättringarna"
+
+#: includes/class-mla-options.php:728
+msgid ""
+"Check/uncheck this option to enable/disable Media Library Grid View "
+"Enhancements."
+msgstr ""
+"Markera/avmarkera detta alternativ för att aktivera/inaktivera Media "
+"bibliotek rutnät Visa förbättringar."
+
+#: includes/class-mla-options.php:732
+msgid "Enable Media Manager Enhancements"
+msgstr "Aktivera Media Manager förbättringarna"
+
+#: includes/class-mla-options.php:735
+msgid ""
+"Check/uncheck this option to enable/disable Media Manager Modal Window "
+"Enhancements."
+msgstr ""
+"Markera/avmarkera detta alternativ för att aktivera/inaktivera Media Manager "
+"modala fönstret förbättringar."
+
+#: includes/class-mla-options.php:739
+msgid "Media Manager Enhanced MIME Type filter"
+msgstr "Media Manager förbättrad MIME typfilter"
+
+#: includes/class-mla-options.php:742
+msgid ""
+"Check this option to filter by more MIME Types, e.g., text, applications."
+msgstr ""
+"Markera detta alternativ för att filtrera efter mer MIME-typer, t.ex. text, "
+"applikationer."
+
+#: includes/class-mla-options.php:746
+msgid "Media Manager Month and Year filter"
+msgstr "Media Manager månad och år filter"
+
+#: includes/class-mla-options.php:749
+msgid "Check this option to filter by month and year uploaded."
+msgstr ""
+"Markera detta alternativ för att filtrera efter uppladdad per månad och år."
+
+#: includes/class-mla-options.php:753
+msgid "Media Manager Category/Tag filter"
+msgstr "Media Manager kategori/Tag filtret"
+
+#: includes/class-mla-options.php:756
+msgid "Check this option to filter by taxonomy terms."
+msgstr "Markera detta alternativ för att filtrera efter taxonomi termer."
+
+#: includes/class-mla-options.php:760
+msgid "Media Manager Terms Search popup"
+msgstr "Media Manager villkor Sök popup"
+
+#: includes/class-mla-options.php:763
+msgid "Check this option to enable the \"Terms Search\" popup window."
+msgstr ""
+"Markera detta alternativ för att aktivera popup-fönstret \"Villkor Sök\"."
+
+#: includes/class-mla-options.php:767
+msgid "Media Manager Enhanced Search Media box"
+msgstr "Media Manager Enhanced Sök medier box"
+
+#: includes/class-mla-options.php:770
+msgid "Check this option to enable search box enhancements."
+msgstr "Markera detta alternativ för att aktivera Sök rutan förbättringarna."
+
+#: includes/class-mla-options.php:774
+msgid "Media Manager Enhanced Search Media Controls"
+msgstr "Media Manager Enhanced Sök mediekontroller"
+
+#: includes/class-mla-options.php:781
+msgid "Media Manager Checklist meta boxes"
+msgstr "Media Manager checklista meta boxes"
+
+#: includes/class-mla-options.php:784
+msgid ""
+"Check this option to enable MLA-enhanced meta boxes in the \"ATTACHMENT "
+"DETAILS\" pane.<br>&nbsp;&nbsp;This option is for any taxonomy that uses a "
+"<strong>\"checklist-style\"</strong> meta box.</strong>"
+msgstr ""
+"Markera detta alternativ för att aktivera MLA-förbättrade meta boxes i "
+"\"Bifogade filen information\" informationsfönstret.<br>&nbsp;&nbsp;Detta "
+"alternativ är för någon taxonomi som använder en <strong>\"checklista-stil"
+"\"</strong> meta box."
+
+#: includes/class-mla-options.php:788
+msgid "Media Manager Flat meta boxes"
+msgstr "Media Manager flat meta boxes"
+
+#: includes/class-mla-options.php:791
+msgid ""
+"Check this option to enable MLA-enhanced meta boxes in the \"ATTACHMENT "
+"DETAILS\" pane.<br>&nbsp;&nbsp;This option is for <strong>flat taxonomies</"
+"strong>, e.g., \"Tags\" or \"Att. Tags\", that do not use the \"checklist-"
+"style\" meta box."
+msgstr ""
+"Markera detta alternativ för att aktivera MLA-enhanced meta boxes i "
+"\"Bifogade filen information\" informationsfönstret.<br>&nbsp;&nbsp;Detta "
+"alternativ är för <strong>platt taxonomier</strong>, t ex \"Taggar\" eller "
+"\"Att. Taggar\", som inte använder \"checklista-stil\" meta box."
+
+#: includes/class-mla-options.php:795
+msgid "Media Manager auto-fill meta boxes"
+msgstr "Media Manager automatiskt fylla meta boxes"
+
+#: includes/class-mla-options.php:798
+msgid ""
+"Check this option to automatically fill MLA-enhanced meta boxes in the "
+"\"ATTACHMENT DETAILS\" pane<br>&nbsp;&nbsp;when the item is selected."
+msgstr ""
+"Kontrollera detta alternativ för att automatiskt fylla MLA-förbättra meta "
+"boxes i rutan \"Bifogade filen information\"<br>När objektet är markerat."
+
+#: includes/class-mla-options.php:802
+msgid "Media Manager Order By"
+msgstr "Media Manager sortera efter"
+
+#: includes/class-mla-options.php:806 includes/class-mla-options.php:815
+#: includes/class-mla-options.php:830 includes/class-mla-options.php:844
+#: includes/class-mla-options.php:858 includes/class-mla-settings.php:1421
+msgid "Media Manager Default"
+msgstr "Media Manager standard"
+
+#: includes/class-mla-options.php:807
+msgid ""
+"If you want to override the Media Manager default,<br>&nbsp;&nbsp;select a "
+"column for the sort order of the Media Library listing."
+msgstr ""
+"Om du vill åsidosätta Media Manager standard värde,<br>&nbsp;&nbsp;Markera "
+"en kolumn för sorteringsordning för mediebibliotekets förteckning."
+
+#: includes/class-mla-options.php:811
+msgid "Media Manager Order"
+msgstr "Media Manager sortera"
+
+#: includes/class-mla-options.php:820
+msgid "Attachment Display Settings"
+msgstr "Visningsinställning för bilaga"
+
+#: includes/class-mla-options.php:825 includes/class-mla-options.php:827
+msgid "Alignment"
+msgstr "Justering"
+
+#. translators: 1: option name, e.g., Alignment, Link To or Size
+#: includes/class-mla-options.php:827 includes/class-mla-options.php:841
+#: includes/class-mla-options.php:855
+#, php-format
+msgid ""
+"Select a value for the default %1$s option in the Attachment Display "
+"Settings."
+msgstr ""
+"Välj ett värde för alternativet Standard %1$s i bifogad fil i "
+"visningsinställningar."
+
+#: includes/class-mla-options.php:830
+msgid "Left"
+msgstr "Vänster"
+
+#: includes/class-mla-options.php:830
+msgid "Center"
+msgstr "Centrera"
+
+#: includes/class-mla-options.php:830
+msgid "Right"
+msgstr "Höger"
+
+#: includes/class-mla-options.php:839 includes/class-mla-options.php:841
+msgid "Link To"
+msgstr "Länk till"
+
+#: includes/class-mla-options.php:844
+msgid "Media File"
+msgstr "Media-fil"
+
+#: includes/class-mla-options.php:844
+msgid "Attachment Page"
+msgstr "Bilags sida"
+
+#: includes/class-mla-options.php:844
+msgid "Custom URL"
+msgstr "Anpassad URL"
+
+#: includes/class-mla-options.php:853 includes/class-mla-options.php:855
+msgid "Size"
+msgstr "Storlek"
+
+#: includes/class-mla-options.php:858
+msgid "Thumbnail"
+msgstr "Tumnagel"
+
+#: includes/class-mla-options.php:858
+msgid "Medium"
+msgstr "Medel"
+
+#: includes/class-mla-options.php:858
+msgid "Large"
+msgstr "Stor"
+
+#: includes/class-mla-options.php:858
+msgid "Full Size"
+msgstr "Full Storlek"
+
+#: includes/class-mla-options.php:867
+msgid "Default [mla_gallery] Templates and Settings"
+msgstr "Inställningar och standardmallar [mla_gallery]"
+
+#: includes/class-mla-options.php:872 includes/class-mla-options.php:878
+#: includes/class-mla-options.php:916 includes/class-mla-options.php:922
+#: includes/class-mla-settings.php:3203 includes/class-mla-settings.php:3214
+#: includes/class-mla-settings.php:3220 includes/class-mla-settings.php:3224
+#: includes/class-mla-settings.php:3252 includes/class-mla-settings.php:3263
+msgid "Style Template"
+msgstr "Stilmallen"
+
+#. translators: 1: template type 2: shortcode
+#: includes/class-mla-options.php:878 includes/class-mla-options.php:888
+#: includes/class-mla-options.php:922 includes/class-mla-options.php:932
+#, php-format
+msgid "Select the default %1$s for your %2$s shortcodes."
+msgstr "Välj standard %1$s för din %2$s kortkoder."
+
+#: includes/class-mla-options.php:882 includes/class-mla-options.php:926
+msgid "Markup Template"
+msgstr "Stilmallen"
+
+#: includes/class-mla-options.php:888 includes/class-mla-options.php:932
+#: includes/class-mla-settings.php:3292 includes/class-mla-settings.php:3305
+#: includes/class-mla-settings.php:3311 includes/class-mla-settings.php:3315
+#: includes/class-mla-settings.php:3384
+msgid "markup template"
+msgstr "Stilmallen"
+
+#: includes/class-mla-options.php:892 includes/class-mla-options.php:936
+msgid "Default columns"
+msgstr "Standardkolumnerna"
+
+#: includes/class-mla-options.php:896
+msgid ""
+"Enter the number of [mla_tag_cloud] columns; must be a positive integer."
+msgstr "Ange antalet kolumner [mla_tag_cloud]; måste vara ett positivt heltal."
+
+#: includes/class-mla-options.php:900 includes/class-mla-options.php:944
+msgid "Default mla_margin"
+msgstr "Standard mla_margin"
+
+#: includes/class-mla-options.php:904 includes/class-mla-options.php:948
+msgid ""
+"Enter the CSS \"margin\" property value, in length (px, em, pt, etc.), "
+"percent (%), \"auto\" or \"inherit\".<br>&nbsp;&nbsp;Enter \"none\" to "
+"remove the property entirely."
+msgstr ""
+"Ange egenskapsvärdet CSS \"marginal\", i längd (px, em, pt, etc.), procent "
+"(%), \"auto\" eller \"ärva\".<br>Ange \"ingen\" för att ta bort egenskapen "
+"helt."
+
+#: includes/class-mla-options.php:908 includes/class-mla-options.php:952
+msgid "Default mla_itemwidth"
+msgstr "Standard mla_itemwidth"
+
+#: includes/class-mla-options.php:912 includes/class-mla-options.php:956
+msgid ""
+"Enter the CSS \"width\" property value, in length (px, em, pt, etc.), "
+"percent (%), \"auto\" or \"inherit\".<br>&nbsp;&nbsp;Enter \"calculate"
+"\" (the default) to calculate the value taking the \"margin\" value into "
+"account.<br>&nbsp;&nbsp;Enter \"exact\" to calculate the value without "
+"considering the \"margin\" value.<br>&nbsp;&nbsp;Enter \"none\" to remove "
+"the property entirely."
+msgstr ""
+"Ange egenskapsvärdet CSS \"bredd\" i längd (px, em, pt, etc.), procent (%), "
+"\"auto\" eller \"ärva\".<br>Ange \"beräkna\" (standard) för att beräkna "
+"värdet värdet \"marginal\" med hänsyn tagen till.<br>Ange \"exakta\" att "
+"beräkna värdet utan att överväga värdet \"marginal\".<br>Ange \"ingen\" för "
+"att ta bort egenskapen helt."
+
+#: includes/class-mla-options.php:940
+msgid "Enter the number of [mla_gallery] columns; must be a positive integer."
+msgstr "Ange antalet kolumner [mla_gallery]; måste vara ett positivt heltal."
+
+#: includes/class-mla-options.php:960
+msgid "Enable thumbnail substitution"
+msgstr "Aktivera thumbnail substitution"
+
+#: includes/class-mla-options.php:963
+msgid ""
+"Check this option to allow the \"mla_viewer\" to generate thumbnail images "
+"for PDF  documents. Thumbnails are generated dynamically, each time the item "
+"appears in an [mla_gallery] display.<br>&nbsp;&nbsp;<strong>IMPORTANT: both "
+"Ghostscript and Imagick/Imagemagick must be installed for this feature.</"
+"strong>"
+msgstr ""
+"Markera detta alternativ för att tillåta \"mla_viewer\" att generera "
+"miniatyrbilder för PDF-dokument. Miniatyrbilder genereras dynamiskt, varje "
+"gång objektet visas i en display [mla_gallery].<br><strong>Viktigt: "
+"Ghostscript och Imagick/Imagemagick måste installeras för den här funktionen."
+"</strong>"
+
+#: includes/class-mla-options.php:967
+msgid "Enable Featured Images"
+msgstr "Aktivera presenterade bilder"
+
+#: includes/class-mla-options.php:970
+msgid ""
+"Check this option to extend Featured Image support to all Media Library "
+"items. The Featured Image can be used as a thumbnail image for the item in "
+"an [mla_gallery] display."
+msgstr ""
+"Markera det här alternativet att förlänga dagens bild stöd till alla Media "
+"biblioteksposter. Dagens bild kan användas som en miniatyrbild för objekt i "
+"en [mla_gallery]-display."
+
+#: includes/class-mla-options.php:974
+msgid "Enable explicit Ghostscript check"
+msgstr "Aktivera detaljerad Ghostscript kontroll"
+
+#: includes/class-mla-options.php:977
+msgid ""
+"Check this option to enable the explicit check for Ghostscript support "
+"required for thumbnail generation. If your Ghostscript software is in a non-"
+"standard location, unchecking this option bypasses the check. Bad things can "
+"happen if Ghostscript is missing but Imagick/Imagemagick is present, so "
+"leave this option checked unless you know it is safe to turn it off."
+msgstr ""
+"Markera detta alternativ för att aktivera den edetaljerade kontrollen för "
+"Ghostscript stöd krävs för thumbnail generation. Om programvaran Ghostscript "
+"är ett icke-standard läge, om du avmarkerar det här alternativet går förbi "
+"kontrollen. Dåliga saker kan hända om Ghostscript saknas men Imagick/"
+"Imagemagick är närvarande, så lämna alternativet markerat om du inte vet det "
+"är säkert att stänga av."
+
+#: includes/class-mla-options.php:981
+msgid "Ghostscript path"
+msgstr "Ghostscript sökväg"
+
+#: includes/class-mla-options.php:985
+msgid ""
+"If your &ldquo;gs&rdquo; executable is in a non-standard location, enter the "
+"full path and filename here, e.g., &ldquo;/usr/bin/gs&rdquo;. It will "
+"override the search for Ghostscript in other places."
+msgstr ""
+"Om din &ldquo;gs&rdquo; körbar är ett icke-standard läge, ange den "
+"fullständiga sökvägen och filnamnet här, t.ex. &ldquo;/usr/bin/gs&rdquo;. "
+"Det åsidosätter sökandet för Ghostscript på andra ställen."
+
+#: includes/class-mla-options.php:1005
+msgid "Enable custom field mapping when adding new media"
+msgstr "Aktivera anpassat fältmappning när du lägger till nya medier"
+
+#: includes/class-mla-options.php:1008
+msgid ""
+"Check this option to enable mapping when uploading new media (attachments)."
+"<br>&nbsp;&nbsp;Click Save Changes at the bottom of the screen if you change "
+"this option.<br>&nbsp;&nbsp;Does NOT affect the operation of the \"Map\" "
+"buttons on the bulk edit, single edit and settings screens."
+msgstr ""
+"Markera detta alternativ för att aktivera mappning när du laddar upp nya "
+"medier (bilagor).<br>&nbsp;&nbsp;Klicka på Spara ändringar längst ned på "
+"skärmen om du ändrar det här alternativet.<br>&nbsp;&nbsp;Påverkar inte "
+"driften av knapparna \"Karta\" på massredigering, enda edit och "
+"inställningsskärmarna."
+
+#: includes/class-mla-options.php:1012
+msgid "Enable custom field mapping when updating media metadata"
+msgstr "Aktivera anpassat fältmappning när du uppdaterar media metadata"
+
+#: includes/class-mla-options.php:1015 includes/class-mla-options.php:1039
+msgid ""
+"Check this option to enable mapping when media (attachments) metadata is "
+"regenerated,<br>&nbsp;&nbsp;e.g., when the Media/Edit Media \"Edit Image\" "
+"functions are used."
+msgstr ""
+"Markera detta alternativ för att aktivera mappning när media (bilagor) "
+"metadata regenereras,<br>&nbsp;&nbsp;t.ex. när Media/redigera Media "
+"\"Redigera bild\"-funktioner används."
+
+#: includes/class-mla-options.php:1019
+msgid ""
+"Update the custom field mapping values above, then click Save Changes to "
+"make the updates permanent.<br>You can also make temporary updates and click "
+"a Map All Attachments button to apply the rule(s) to all attachments without "
+"saving any rule changes."
+msgstr ""
+"Uppdatera Anpassad mappning fältvärdena ovan, sedan klicka på Spara "
+"ändringar för att göra uppdateringar permanent.<br>Du kan också göra "
+"tillfälliga uppdateringar och klicka en karta alla bifogade filer för att "
+"reglerna gälla alla bifogade filer utan att spara eventuella regeländringar."
+
+#: includes/class-mla-options.php:1029
+msgid "Enable IPTC/EXIF Mapping when adding new media"
+msgstr "Aktivera mappning av IPTC/EXIF när du lägger till nya medier"
+
+#: includes/class-mla-options.php:1032
+msgid ""
+"Check this option to enable mapping when uploading new media (attachments)."
+"<br>&nbsp;&nbsp;Does NOT affect the operation of the \"Map\" buttons on the "
+"bulk edit, single edit and settings screens."
+msgstr ""
+"Markera detta alternativ för att aktivera mappning när du laddar upp nya "
+"medier (bilagor).<br>&nbsp;&nbsp;Påverkar inte driften av knapparna \"Karta"
+"\" på massredigering, enda edit och inställningsskärmarna."
+
+#: includes/class-mla-options.php:1036
+msgid "Enable IPTC/EXIF Mapping when updating media metadata"
+msgstr "Aktivera mappning av IPTC/EXIF när du uppdaterar media metadata"
+
+#: includes/class-mla-options.php:1043
+msgid ""
+"Update the standard field mapping values above, then click <strong>Save "
+"Changes</strong> to make the updates permanent.<br>You can also make "
+"temporary updates and click <strong>Map All Attachments, Standard Fields "
+"Now</strong> to apply the updates to all attachments without saving the rule "
+"changes."
+msgstr ""
+"Uppdatera standard kartläggning fältvärdena ovan, sedan klicka på "
+"<strong>Spara ändringar</strong> för att göra uppdateringar permanent.<br>Du "
+"kan också göra tillfälliga uppdateringar och klicka på <strong>karta alla "
+"bilagor, Standard fält nu</strong> för att tillämpa uppdateringarna på alla "
+"bifogade filer utan att spara regeländringar."
+
+#: includes/class-mla-options.php:1053
+msgid ""
+"Update the taxonomy term mapping values above, then click <strong>Save "
+"Changes</strong> or <strong>Map All Attachments, Taxonomy Terms Now</strong>."
+msgstr ""
+"Uppdatera taxonomi sikt kartläggning värdena ovan, sedan klicka på "
+"<strong>Spara ändringar</strong> eller <strong>mappa alla bilagor, taxonomi "
+"villkor nu</strong>."
+
+#: includes/class-mla-options.php:1063
+msgid ""
+"<strong>Update</strong> individual custom field mapping values above, or "
+"make several updates and click <strong>Save Changes</strong> below to apply "
+"them all at once.<br>You can also <strong>add a new rule</strong> for an "
+"existing field or <strong>add a new field</strong> and rule.<br>You can make "
+"temporary updates and click <strong>Map All Attachments, Custom Fields Now</"
+"strong> to apply the updates to all attachments without saving the rule "
+"changes."
+msgstr ""
+"<strong>Uppdatera</strong> fältmappning för individuella anpassade värden "
+"ovan, eller göra flera uppdateringar och klicka på <strong>Spara ändringar</"
+"strong> nedan om du vill använda dem på en gång.<br>Du kan också "
+"<strong>lägga till en ny regel</strong> för ett befintligt fält eller "
+"<strong>lägga till ett nytt fält</strong> och regel.<br>Du kan göra "
+"tillfälliga uppdateringar och klicka på <strong>karta alla bilagor, "
+"anpassade fält nu</strong> för att tillämpa uppdateringarna på alla bifogade "
+"filer utan att spara regeländringar."
+
+#: includes/class-mla-options.php:1073
+msgid "IPTC/EXIF Mapping help"
+msgstr "Mappning av IPTC/EXIF hjälp"
+
+#: includes/class-mla-options.php:1125
+msgid "Enable View and Post MIME Type Support"
+msgstr "Aktivera Visa och Post MIME-typ stöd"
+
+#: includes/class-mla-options.php:1128
+msgid ""
+"Check/uncheck this option to enable/disable Post MIME Type Support, then "
+"click <strong>Save Changes</strong> to record the new setting."
+msgstr ""
+"Markera/avmarkera detta alternativ för att aktivera/inaktivera stöd för Post "
+"MIME-typ, klicka på <strong>Spara ändringar</strong> för att spela in den "
+"nya inställningen."
+
+#: includes/class-mla-options.php:1137
+msgid "Post MIME Types help."
+msgstr "Bidra till post MIME-typer."
+
+#: includes/class-mla-options.php:1146 includes/class-mla-options.php:1200
+#: includes/class-mla-options.php:1209 includes/class-mla-options.php:1218
+msgctxt "post_mime_types_description"
+msgid "Built-in view"
+msgstr "Inbyggda Visa"
+
+#: includes/class-mla-options.php:1149
+msgctxt "table_view_singular"
+msgid "Image"
+msgstr "Bild"
+
+#: includes/class-mla-options.php:1150
+msgctxt "table_view_plural"
+msgid "Images"
+msgstr "Bilder"
+
+#: includes/class-mla-options.php:1155
+msgctxt "post_mime_types_description"
+msgid "All image subtypes"
+msgstr "Alla bild undertyper"
+
+#: includes/class-mla-options.php:1158
+msgctxt "table_view_singular"
+msgid "Audio"
+msgstr "Ljud"
+
+#: includes/class-mla-options.php:1159
+msgctxt "table_view_plural"
+msgid "Audio"
+msgstr "Ljud"
+
+#: includes/class-mla-options.php:1164
+msgctxt "post_mime_types_description"
+msgid "All audio subtypes"
+msgstr "Alla ljud undertyper"
+
+#: includes/class-mla-options.php:1167
+msgctxt "table_view_singular"
+msgid "Video"
+msgstr "Film"
+
+#: includes/class-mla-options.php:1168
+msgctxt "table_view_plural"
+msgid "Video"
+msgstr "Filmer"
+
+#: includes/class-mla-options.php:1173
+msgctxt "post_mime_types_description"
+msgid "All video subtypes"
+msgstr "Alla video undertyper"
+
+#: includes/class-mla-options.php:1176
+msgctxt "table_view_singular"
+msgid "Text"
+msgstr "Text"
+
+#: includes/class-mla-options.php:1177
+msgctxt "table_view_plural"
+msgid "Text"
+msgstr "Texten"
+
+#: includes/class-mla-options.php:1182
+msgctxt "post_mime_types_description"
+msgid "All text subtypes"
+msgstr "Alla text undertyper"
+
+#: includes/class-mla-options.php:1185
+msgctxt "table_view_singular"
+msgid "Application"
+msgstr "Tillämpning"
+
+#: includes/class-mla-options.php:1186
+msgctxt "table_view_plural"
+msgid "Applications"
+msgstr "Tillämpningar"
+
+#: includes/class-mla-options.php:1191
+msgctxt "post_mime_types_description"
+msgid "All application subtypes"
+msgstr "Alla tillämpningars undertyper"
+
+#: includes/class-mla-options.php:1195
+msgctxt "table_view_plural"
+msgid "Unattached"
+msgstr "Ej bifogad"
+
+#: includes/class-mla-options.php:1203
+msgctxt "table_view_singular"
+msgid "Attached"
+msgstr "Bifogat"
+
+#: includes/class-mla-options.php:1204
+msgctxt "table_view_plural"
+msgid "Attached"
+msgstr "Bifogat"
+
+#: includes/class-mla-options.php:1212
+msgctxt "table_view_singular"
+msgid "Trash"
+msgstr "Papperskorg"
+
+#: includes/class-mla-options.php:1213
+msgctxt "table_view_plural"
+msgid "Trash"
+msgstr "Papperskorgen"
+
+#: includes/class-mla-options.php:1224
+msgid "Enable Upload MIME Type Support"
+msgstr "Aktivera stöd för uppladdning MIME-typ"
+
+#: includes/class-mla-options.php:1227
+msgid ""
+"Check/uncheck this option to enable/disable Upload MIME Type Support, then "
+"click <strong>Save Changes</strong> to record the new setting."
+msgstr ""
+"Markera/avmarkera detta alternativ för att aktivera/inaktivera stöd för "
+"ladda upp MIME-typ, klicka på <strong>Spara ändringar</strong> för att spela "
+"in den nya inställningen."
+
+#: includes/class-mla-options.php:1236
+msgid "Upload MIME Types help."
+msgstr "Ladda upp MIME-typer hjälp."
+
+#: includes/class-mla-options.php:1241
+msgid "Enable MLA File Type Icons Support"
+msgstr "Aktivera stöd för MLA filen ikoner"
+
+#: includes/class-mla-options.php:1244
+msgid ""
+"Check/uncheck this option to enable/disable MLA File Type Icons Support, "
+"then click <strong>Save Changes</strong> to record the new setting."
+msgstr ""
+"Markera/avmarkera detta alternativ för att aktivera/inaktivera stöd för MLA "
+"filen ikoner och sedan på <strong>Spara ändringar</strong> för att spela in "
+"den nya inställningen."
+
+#: includes/class-mla-options.php:1296 includes/class-mla-options.php:1318
+#: includes/class-mla-options.php:1360
+msgid "no templates exist"
+msgstr "inga mallar finns"
+
+#: includes/class-mla-options.php:1304
+msgid "not found"
+msgstr "Hittades inte"
+
+#. translators: 1: ERROR tag 2: option name 3: action, e.g., update, delete, reset
+#: includes/class-mla-options.php:1710 includes/class-mla-options.php:1887
+#: includes/class-mla-options.php:1963 includes/class-mla-options.php:3754
+#: includes/class-mla-options.php:5052
+#, php-format
+msgid "%1$s: Custom %2$s unknown action \"%3$s\""
+msgstr "%1$s: anpassad %2$s okänd åtgärd \"%3$s\""
+
+#: includes/class-mla-options.php:1801
+msgid "Support"
+msgstr "Support"
+
+#: includes/class-mla-options.php:1802
+msgid "Inline Edit"
+msgstr "Inline redigera"
+
+#: includes/class-mla-options.php:1803
+msgid "Term Search"
+msgstr "Vilkors sökning"
+
+#: includes/class-mla-options.php:1804
+msgid "Checklist"
+msgstr "Checklista"
+
+#: includes/class-mla-options.php:1805
+msgid "Checked On Top"
+msgstr "kontrollerad Ovanpå"
+
+#: includes/class-mla-options.php:1806
+msgid "List Filter"
+msgstr "Listan Filter"
+
+#: includes/class-mla-options.php:1807
+msgid "Taxonomy"
+msgstr "Taxonomi"
+
+#. translators: 1: taxonomy name
+#: includes/class-mla-options.php:1826
+#, php-format
+msgid "List Filter ignored; %1$s not supported."
+msgstr "Lista filtret ignoreras; %1$s stöds inte."
+
+#. translators: 1: taxonomy name
+#: includes/class-mla-options.php:1833
+#, php-format
+msgid "Inline Edit ignored; %1$s not supported."
+msgstr "Inline redigera ignoreras; %1$s stöds inte."
+
+#. translators: 1: taxonomy name
+#: includes/class-mla-options.php:1841
+#, php-format
+msgid "Term Search ignored; %1$s not supported."
+msgstr "Termen Search ignoreras; %1$s stöds inte."
+
+#. translators: 1: taxonomy name
+#: includes/class-mla-options.php:1851
+#, php-format
+msgid "Checklist ignored; %1$s not supported."
+msgstr "Checklista ignoreras; %1$s stöds inte."
+
+#. translators: 1: taxonomy name
+#: includes/class-mla-options.php:1859
+#, php-format
+msgid "Checked On Top ignored; %1$s not supported."
+msgstr "kontollerad ovanpå ignoreras; %1$s stöds inte."
+
+#. translators: 1: option name, e.g., taxonomy_support
+#: includes/class-mla-options.php:1877 includes/class-mla-options.php:1953
+#, php-format
+msgid "Update custom %1$s"
+msgstr "Uppdatera anpassade %1$s"
+
+#. translators: 1: option name, e.g., taxonomy_support
+#: includes/class-mla-options.php:1884 includes/class-mla-options.php:1960
+#: includes/class-mla-options.php:5045
+#, php-format
+msgid "Reset custom %1$s"
+msgstr "Återställa anpassade %1$s"
+
+#: includes/class-mla-options.php:1913
+#: includes/mla-main-search-box-template.php:38
+#: includes/mla-media-modal-js-template.php:24
+msgid "and"
+msgstr "och"
+
+#: includes/class-mla-options.php:1915
+#: includes/mla-main-search-box-template.php:40
+#: includes/mla-media-modal-js-template.php:28
+msgid "or"
+msgstr "eller"
+
+#: includes/class-mla-options.php:1920 includes/class-mla-settings.php:2369
+#: includes/class-mla-settings.php:2402 includes/class-mla-settings.php:2428
+#: includes/class-mla-settings.php:2463 includes/class-mla-settings.php:2520
+#: includes/class-mla-settings.php:2570
+#: includes/mla-main-search-box-template.php:43
+#: includes/mla-media-modal-js-template.php:36
+msgid "Name"
+msgstr "Namn"
+
+#: includes/class-mla-options.php:1932
+#: includes/mla-main-search-box-template.php:47
+#: includes/mla-media-modal-js-template.php:53
+msgid "Terms"
+msgstr "Villkor"
+
+#: includes/class-mla-options.php:3086 includes/class-mla-options.php:3215
+#: includes/class-mla-options.php:4204 includes/class-mla-options.php:4235
+#: includes/class-mla-settings.php:1819
+msgid "None (select a value)"
+msgstr "Ingen (Välj ett värde)"
+
+#: includes/class-mla-options.php:3222
+msgid "Metadata (see below)"
+msgstr "Metadata (se nedan)"
+
+#: includes/class-mla-options.php:3229
+msgid "Template (see below)"
+msgstr "Mall (se nedan)"
+
+#. translators: 1: ERROR tag 2: custom field name
+#: includes/class-mla-options.php:3297 includes/class-mla-options.php:4512
+#, php-format
+msgid "%1$s: New field %2$s already exists."
+msgstr "%1$s: nya fältet %2$s finns redan."
+
+#. translators: 1: custom field name
+#: includes/class-mla-options.php:3302 includes/class-mla-options.php:4517
+#, php-format
+msgid "Adding new field %1$s."
+msgstr "Lägga till nya fält %1$s."
+
+#. translators: 1: custom field name
+#: includes/class-mla-options.php:3310 includes/class-mla-options.php:4525
+#, php-format
+msgid "Adding new rule for %1$s."
+msgstr "Lägga till ny regel för %1$s."
+
+#. translators: 1: custom field name
+#: includes/class-mla-options.php:3336 includes/class-mla-options.php:4386
+#: includes/class-mla-options.php:4548
+#, php-format
+msgid "Deleting rule for %1$s."
+msgstr "Tar bort regel för %1$s."
+
+#. translators: 1: custom field name 2: attribute 3: old value 4: new value
+#: includes/class-mla-options.php:3359 includes/class-mla-options.php:3380
+#: includes/class-mla-options.php:3430 includes/class-mla-options.php:3437
+#: includes/class-mla-options.php:4302 includes/class-mla-options.php:4309
+#: includes/class-mla-options.php:4316 includes/class-mla-options.php:4411
+#: includes/class-mla-options.php:4418 includes/class-mla-options.php:4453
+#: includes/class-mla-options.php:4460 includes/class-mla-options.php:4558
+#: includes/class-mla-options.php:4565
+#, php-format
+msgid "%1$s changing %2$s from %3$s to %4$s."
+msgstr "%1$s byte från %3$s %2$s till %4$s."
+
+#: includes/class-mla-options.php:3359 includes/class-mla-options.php:3711
+msgid "Data Source"
+msgstr "Datakälla"
+
+#: includes/class-mla-options.php:3365 includes/class-mla-options.php:4336
+#: includes/class-mla-options.php:4438 includes/class-mla-options.php:4585
+msgid "Replace to Keep"
+msgstr "Ersätta att behålla"
+
+#: includes/class-mla-options.php:3368 includes/class-mla-options.php:4339
+#: includes/class-mla-options.php:4441 includes/class-mla-options.php:4588
+msgid "Keep to Replace"
+msgstr "Behålla till Ersätt"
+
+#. translators: 1: custom field name 2: attribute 3: old value 'to' new value
+#: includes/class-mla-options.php:3373 includes/class-mla-options.php:3394
+#: includes/class-mla-options.php:3408 includes/class-mla-options.php:3422
+#: includes/class-mla-options.php:3451 includes/class-mla-options.php:4330
+#: includes/class-mla-options.php:4344 includes/class-mla-options.php:4432
+#: includes/class-mla-options.php:4446 includes/class-mla-options.php:4579
+#: includes/class-mla-options.php:4593
+#, php-format
+msgid "%1$s changing %2$s value from %3$s."
+msgstr "%1$s %2$s värde förändras från %3$s."
+
+#: includes/class-mla-options.php:3373 includes/class-mla-options.php:3712
+#: includes/class-mla-options.php:4344 includes/class-mla-options.php:4446
+#: includes/class-mla-options.php:4593 includes/class-mla-options.php:4719
+#: includes/class-mla-options.php:4805 includes/class-mla-options.php:4943
+msgid "Existing Text"
+msgstr "Befintlig Text"
+
+#: includes/class-mla-options.php:3380 includes/class-mla-options.php:3713
+msgid "Format"
+msgstr "Format"
+
+#: includes/class-mla-options.php:3386 includes/class-mla-options.php:3400
+#: includes/class-mla-options.php:3414 includes/class-mla-options.php:3443
+msgid "unchecked to checked"
+msgstr "Okontrollerad till kontrollerad"
+
+#: includes/class-mla-options.php:3389 includes/class-mla-options.php:3403
+#: includes/class-mla-options.php:3417 includes/class-mla-options.php:3446
+msgid "checked to unchecked"
+msgstr "kontrollead till okontrollerad"
+
+#: includes/class-mla-options.php:3394 includes/class-mla-options.php:3714
+msgid "MLA Column"
+msgstr "MLA kolumn"
+
+#: includes/class-mla-options.php:3430
+msgid "Metavalue name"
+msgstr "Metavalue namn"
+
+#: includes/class-mla-options.php:3437 includes/class-mla-options.php:3545
+#: includes/class-mla-options.php:3647 includes/class-mla-options.php:3691
+msgid "Option"
+msgstr "Alternativ"
+
+#: includes/class-mla-options.php:3451 includes/class-mla-options.php:3557
+#: includes/class-mla-options.php:3659 includes/class-mla-options.php:3703
+msgid "Delete NULL values"
+msgstr "Ta bort NULL-värden"
+
+#: includes/class-mla-options.php:3490 includes/class-mla-options.php:4817
+msgid "No Custom Field Mapping Rules Defined"
+msgstr "Inga anpassade fältet mappningsregler definieras"
+
+#: includes/class-mla-options.php:3529 includes/class-mla-options.php:3632
+#: includes/class-mla-options.php:3676 includes/class-mla-options.php:4694
+#: includes/class-mla-options.php:4744 includes/class-mla-options.php:4863
+#: includes/class-mla-options.php:4905 includes/class-mla-options.php:4930
+msgid "Keep"
+msgstr "Behåll"
+
+#: includes/class-mla-options.php:3533 includes/class-mla-options.php:3636
+#: includes/class-mla-options.php:3680
+msgid "Native"
+msgstr "Inbyggt"
+
+#: includes/class-mla-options.php:3535 includes/class-mla-options.php:3638
+#: includes/class-mla-options.php:3682
+msgid "Commas"
+msgstr "Kommatecken"
+
+#: includes/class-mla-options.php:3537 includes/class-mla-options.php:3640
+#: includes/class-mla-options.php:3684
+msgid "Raw"
+msgstr "rådata"
+
+#: includes/class-mla-options.php:3547 includes/class-mla-options.php:3649
+#: includes/class-mla-options.php:3693
+msgid "Text"
+msgstr "Text"
+
+#: includes/class-mla-options.php:3549 includes/class-mla-options.php:3651
+#: includes/class-mla-options.php:3695
+msgid "Single"
+msgstr "Singel"
+
+#: includes/class-mla-options.php:3551 includes/class-mla-options.php:3653
+#: includes/class-mla-options.php:3697
+msgid "Export"
+msgstr "Exportera"
+
+#: includes/class-mla-options.php:3553 includes/class-mla-options.php:3655
+#: includes/class-mla-options.php:3699
+msgid "Array"
+msgstr "Samling"
+
+#: includes/class-mla-options.php:3555 includes/class-mla-options.php:3657
+#: includes/class-mla-options.php:3701
+msgid "Multi"
+msgstr "Många"
+
+#: includes/class-mla-options.php:3558 includes/class-mla-options.php:4866
+msgid "Delete Rule"
+msgstr "Radera Regel"
+
+#: includes/class-mla-options.php:3559 includes/class-mla-options.php:4867
+msgid "Delete Rule AND Field"
+msgstr "Radera regeln och fält"
+
+#: includes/class-mla-options.php:3560 includes/class-mla-options.php:4868
+msgid "Update Rule"
+msgstr "Uppdatera regel"
+
+#: includes/class-mla-options.php:3561 includes/class-mla-options.php:4869
+#: includes/class-mla-settings.php:711 includes/class-mla-settings.php:842
+msgid "Map All Attachments"
+msgstr "Mappa alla bifogade filer"
+
+#: includes/class-mla-options.php:3627 includes/class-mla-options.php:4894
+msgid "Add a new Mapping Rule"
+msgstr "Lägga till en ny mappning av regel"
+
+#: includes/class-mla-options.php:3660 includes/class-mla-options.php:4908
+msgid "Add Rule"
+msgstr "Lägg till regel"
+
+#: includes/class-mla-options.php:3661 includes/class-mla-options.php:4909
+msgid "Add Rule and Map All Attachments"
+msgstr "Lägg till regel och kartlägga alla bifogade filer"
+
+#: includes/class-mla-options.php:3671 includes/class-mla-options.php:4919
+msgid "Add a new Field and Mapping Rule"
+msgstr "Lägga till ett nytt fält och mappning av regel"
+
+#: includes/class-mla-options.php:3704 includes/class-mla-options.php:4933
+msgid "Add Field"
+msgstr "Lägg till fält"
+
+#: includes/class-mla-options.php:3705 includes/class-mla-options.php:4934
+msgid "Add Field and Map All Attachments"
+msgstr "Lägga till fält och mappa alla bifogade filer"
+
+#: includes/class-mla-options.php:3710 includes/class-mla-options.php:4302
+#: includes/class-mla-options.php:4715 includes/class-mla-options.php:4801
+#: includes/class-mla-options.php:4939
+msgid "Field Title"
+msgstr "Fälttitel"
+
+#: includes/class-mla-options.php:3735
+msgid "Custom field mapping rules updated."
+msgstr "Anpassat fält mappning regler uppdaterad."
+
+#: includes/class-mla-options.php:3737
+msgid "Custom field mapping rules update failed."
+msgstr "Anpassade fältmappning regler uppdatering misslyckades."
+
+#: includes/class-mla-options.php:3740 includes/class-mla-settings.php:756
+#: includes/class-mla-settings.php:762
+msgid "Custom field no mapping rule changes detected."
+msgstr "Custom field ingen mappning regeländringar upptäcks."
+
+#: includes/class-mla-options.php:3748
+msgid "Custom field mapping settings saved."
+msgstr "Anpassat fält mappnings-inställningarna sparas."
+
+#: includes/class-mla-options.php:3750
+msgid "Custom field mapping settings reset failed."
+msgstr "Det gick inte att återställa inställningarna,  mappa anpassade fält ."
+
+#. translators: 1: ERROR tag 2: custom field name
+#: includes/class-mla-options.php:4290
+#, php-format
+msgid "%1$s: No old values for %2$s."
+msgstr "%1$s: inga gamla värden för %2$s."
+
+#: includes/class-mla-options.php:4309 includes/class-mla-options.php:4411
+#: includes/class-mla-options.php:4558 includes/class-mla-options.php:4716
+#: includes/class-mla-options.php:4802 includes/class-mla-options.php:4940
+msgid "IPTC Value"
+msgstr "IPTC värde"
+
+#: includes/class-mla-options.php:4316 includes/class-mla-options.php:4418
+#: includes/class-mla-options.php:4565
+msgid "EXIF Value"
+msgstr "EXIF värde"
+
+#: includes/class-mla-options.php:4322 includes/class-mla-options.php:4424
+#: includes/class-mla-options.php:4571
+msgid "EXIF to IPTC"
+msgstr "EXIF till IPTC"
+
+#: includes/class-mla-options.php:4325 includes/class-mla-options.php:4427
+#: includes/class-mla-options.php:4574
+msgid "IPTC to EXIF"
+msgstr "IPTC till EXIF"
+
+#: includes/class-mla-options.php:4330 includes/class-mla-options.php:4432
+#: includes/class-mla-options.php:4579 includes/class-mla-options.php:4718
+#: includes/class-mla-options.php:4804 includes/class-mla-options.php:4942
+msgid "Priority"
+msgstr "Prioritet"
+
+#: includes/class-mla-options.php:4453 includes/class-mla-options.php:4806
+msgid "Delimiter(s)"
+msgstr "﻿Avgränsare"
+
+#: includes/class-mla-options.php:4690 includes/class-mla-options.php:4740
+#: includes/class-mla-options.php:4859 includes/class-mla-options.php:4901
+#: includes/class-mla-options.php:4926
+msgid "IPTC"
+msgstr "IPTC"
+
+#: includes/class-mla-options.php:4692 includes/class-mla-options.php:4742
+#: includes/class-mla-options.php:4861 includes/class-mla-options.php:4903
+#: includes/class-mla-options.php:4928
+msgid "EXIF"
+msgstr "EXIF"
+
+#: includes/class-mla-options.php:4717 includes/class-mla-options.php:4803
+#: includes/class-mla-options.php:4941
+msgid "EXIF/Template Value"
+msgstr "EXIF/mall värde"
+
+#. translators: 1: ERROR tag 2: option name
+#: includes/class-mla-options.php:4951
+#, php-format
+msgid "%1$s: Render unknown custom %2$s."
+msgstr "%1$s: göra okänd anpassad %2$s."
+
+#. translators: 1: ERROR tag 2: option name
+#: includes/class-mla-options.php:4995
+#, php-format
+msgid "%1$s: Update/delete unknown custom %2$s."
+msgstr "%1$s: uppdatera/ta bort okänd anpassad %2$s."
+
+#: includes/class-mla-options.php:5001
+msgid "IPTC/EXIF mapping settings updated."
+msgstr "IPTC/EXIF mappningsinställningarna uppdaterad."
+
+#: includes/class-mla-options.php:5003
+msgid "IPTC/EXIF settings update failed."
+msgstr "Det gick inte att uppdatera inställningarna för IPTC/EXIF."
+
+#: includes/class-mla-options.php:5006 includes/class-mla-settings.php:890
+#: includes/class-mla-settings.php:896
+msgid "IPTC/EXIF no mapping changes detected."
+msgstr "IPTC/EXIF ingen mappning förändringar upptäcktes."
+
+#. translators: 1: field type
+#: includes/class-mla-options.php:5017 includes/class-mla-options.php:5027
+#: includes/class-mla-options.php:5037 includes/class-mla-settings.php:3390
+#, php-format
+msgid "%1$s settings saved."
+msgstr "%1$s inställningar sparade."
+
+#: includes/class-mla-options.php:5017 includes/class-mla-options.php:5020
+#: includes/class-mla-settings.php:3635 includes/class-mla-settings.php:3674
+#: includes/class-mla-settings.php:3677
+msgid "Standard field"
+msgstr "Standardfältet"
+
+#. translators: 1: ERROR tag 2: field type
+#: includes/class-mla-options.php:5020 includes/class-mla-options.php:5030
+#: includes/class-mla-options.php:5040
+#, php-format
+msgid "%1$s: IPTC/EXIF %2$s settings update failed."
+msgstr "%1$s: IPTC/EXIF %2$s inställningar uppdateringen misslyckades."
+
+#: includes/class-mla-options.php:5027 includes/class-mla-options.php:5030
+#: includes/class-mla-settings.php:3706 includes/class-mla-settings.php:3745
+#: includes/class-mla-settings.php:3748
+msgid "Taxonomy term"
+msgstr "Namn på taxonomi"
+
+#: includes/class-mla-options.php:5037 includes/class-mla-options.php:5040
+#: includes/class-mla-settings.php:3535 includes/class-mla-settings.php:3538
+#: includes/class-mla-settings.php:3792 includes/class-mla-settings.php:3831
+#: includes/class-mla-settings.php:3834
+msgid "Custom field"
+msgstr "Anpassat fält"
+
+#. translators: 1: ERROR tag 2: option name, e.g., taxonomy_support
+#: includes/class-mla-options.php:5048
+#, php-format
+msgid "%1$s: Reset unknown custom %2$s"
+msgstr "%1$s: återställa okänd anpassad %2$s"
+
+#: includes/class-mla-polylang-support.php:264
+msgid "ERROR: No post ID found"
+msgstr "FEL: Inget post-ID hittades"
+
+#: includes/class-mla-polylang-support.php:365
+msgid "Error while saving the translations."
+msgstr "Fel vid spara översättningar."
+
+#: includes/class-mla-polylang-support.php:366
+msgid "Remove From Bulk Translate"
+msgstr "Ta bort från mass översätta"
+
+#: includes/class-mla-polylang-support.php:368
+msgid "Bulk Translate items"
+msgstr "Massredigering media"
+
+#: includes/class-mla-polylang-support.php:369
+msgid "Add new"
+msgstr "Lägg till nytt"
+
+#: includes/class-mla-polylang-support.php:1125
+#: includes/class-mla-polylang-support.php:1128
+msgid "Attached"
+msgstr "Bifogat"
+
+#: includes/class-mla-polylang-support.php:1494
+#: includes/class-mla-polylang-support.php:1814
+msgid "Bulk Translations"
+msgstr "Mass översättningar"
+
+#: includes/class-mla-polylang-support.php:1518
+msgid "Translate"
+msgstr "Översätt"
+
+#: includes/class-mla-polylang-support.php:1634
+msgid "All Languages"
+msgstr "Alla språk"
+
+#: includes/class-mla-polylang-support.php:1641
+#: includes/class-mla-polylang-support.php:1887
+#: includes/class-mla-polylang-support.php:2013
+msgid "Quick Translate"
+msgstr "Snabb översätta"
+
+#: includes/class-mla-polylang-support.php:1645
+msgid "Set Language"
+msgstr "Ange språk"
+
+#: includes/class-mla-polylang-support.php:1646
+#: includes/class-mla-polylang-support.php:2020
+msgid "Bulk Translate"
+msgstr "Mass översätt"
+
+#: includes/class-mla-polylang-support.php:1647
+msgid "Add or Modify Translation"
+msgstr "Lägga till eller ändra översättningen"
+
+#: includes/class-mla-polylang-support.php:1648
+#: includes/class-mla-polylang-support.php:1689
+#: includes/class-mla-polylang-support.php:1959
+#: includes/class-mla-wpml-support.php:1105
+#: includes/class-mla-wpml-support.php:1603
+msgid "Language"
+msgstr "Språk"
+
+#: includes/class-mla-polylang-support.php:1650
+msgid "Options"
+msgstr "Alternativ"
+
+#: includes/class-mla-polylang-support.php:1887
+msgid "Translate this item inline"
+msgstr "Redigera den här posten i angivet område"
+
+#: includes/class-mla-polylang-support.php:1994
+#: includes/class-mla-polylang-support.php:2083
+#: includes/class-mla-wpml-support.php:1140
+#: includes/class-mla-wpml-support.php:1215
+msgid "Media/Assistant submenu table"
+msgstr "Media/assistent undermenyn tabell"
+
+#: includes/class-mla-polylang-support.php:1999
+#: includes/class-mla-wpml-support.php:1145
+msgid "Language Column"
+msgstr "Språk kolumn"
+
+#: includes/class-mla-polylang-support.php:2002
+#: includes/class-mla-wpml-support.php:1148
+msgid ""
+"Check this option to add a Language column to the Media/Assistant submenu "
+"table."
+msgstr ""
+"Markera detta alternativ för att lägga till en språk kolumn i tabellen Media/"
+"assistent undermeny."
+
+#: includes/class-mla-polylang-support.php:2006
+#: includes/class-mla-wpml-support.php:1152
+msgid "Translations Column"
+msgstr "Översättningar kolumn"
+
+#: includes/class-mla-polylang-support.php:2009
+#: includes/class-mla-wpml-support.php:1155
+msgid ""
+"Check this option to add a Translation Status column to the Media/Assistant "
+"submenu table."
+msgstr ""
+"Markera detta alternativ för att lägga till en översättningsstatus-kolumnen "
+"i tabellen Media/assistent undermeny."
+
+#: includes/class-mla-polylang-support.php:2016
+msgid ""
+"Check this option to add a Quick Translate rollover action to the Media/"
+"Assistant submenu table."
+msgstr ""
+"Markera detta alternativ för att lägga till en snabb översätta rollover "
+"åtgärder i tabellen Media/assistent undermeny."
+
+#: includes/class-mla-polylang-support.php:2023
+msgid ""
+"Check this option to add \"Translate\" to the \"Bulk Actions\" control on "
+"the Media/Assistant submenu table."
+msgstr ""
+"Markera detta alternativ för att lägga till \"Översätt\" kontrollen "
+"\"Massåtgärder\" i tabellen Media/assistent undermeny."
+
+#: includes/class-mla-polylang-support.php:2027
+#: includes/class-mla-polylang-support.php:2083
+#: includes/class-mla-wpml-support.php:1159
+#: includes/class-mla-wpml-support.php:1215
+msgid "Term Management"
+msgstr "Term hantering"
+
+#: includes/class-mla-polylang-support.php:2032
+#: includes/class-mla-wpml-support.php:1164
+msgid "Term Assignment"
+msgstr "Tilldelning av termer"
+
+#: includes/class-mla-polylang-support.php:2035
+#: includes/class-mla-wpml-support.php:1167
+msgid ""
+"Check this option to assign language-specific terms when items are updated."
+msgstr ""
+"Markera detta alternativ för att tilldela språkspecifika termer när objekt "
+"uppdateras."
+
+#: includes/class-mla-polylang-support.php:2039
+#: includes/class-mla-wpml-support.php:1171
+msgid "Term Synchronization"
+msgstr "Synkronisera vilkor"
+
+#: includes/class-mla-polylang-support.php:2042
+#: includes/class-mla-wpml-support.php:1174
+msgid ""
+"Check this option to synchronize common terms among all item translations."
+msgstr ""
+"Markera detta alternativ för att synkronisera gemensamma vilkor bland alla "
+"artikelöversättningar."
+
+#: includes/class-mla-polylang-support.php:2081
+#: includes/class-mla-wpml-support.php:1213
+msgid "Language Options"
+msgstr "Språk alternativ"
+
+#. translators: 1: - 4: page subheader values
+#: includes/class-mla-polylang-support.php:2083
+#, php-format
+msgid ""
+"In this tab you can find a number of options for controlling Polylang-"
+"specific operations. Scroll down to find options for %1$s and %2$s. Be sure "
+"to click \"Save Changes\" at the bottom of the tab to save any changes you "
+"make."
+msgstr ""
+"På denna flik kan du hitta ett antal alternativ för att styra Polylang-"
+"specifika operationer. Bläddra ner till sökalternativ för %1$s och %2$s. "
+"måste du klicka på \"Spara ändringar\" längst ned på fliken om du vill spara "
+"de ändringar du gör."
+
+#. translators: 1: Documentation hyperlink
+#: includes/class-mla-polylang-support.php:2085
+#: includes/class-mla-wpml-support.php:1217
+#, php-format
+msgid ""
+"You can find more information about multilingual features in the %1$s "
+"section of the Documentation."
+msgstr ""
+"Du kan hitta mer information om flerspråksfunktioner i avsnittet %1$s i "
+"dokumentationen."
+
+#: includes/class-mla-polylang-support.php:2085
+#: includes/class-mla-wpml-support.php:1217
+msgid "Language Options documentation"
+msgstr "Språk alternativ dokumentation"
+
+#: includes/class-mla-polylang-support.php:2085
+#: includes/class-mla-wpml-support.php:1217
+msgid "WPML &amp; Polylang Multilingual Support; the MLA Language Tab"
+msgstr "WPML &amp; Polylang flerspråkig stöd; Fliken MLA språk"
+
+#: includes/class-mla-polylang-support.php:2087
+#: includes/class-mla-settings.php:1340 includes/class-mla-settings.php:1698
+#: includes/class-mla-settings.php:1751 includes/class-mla-settings.php:2167
+#: includes/class-mla-settings.php:2217 includes/class-mla-settings.php:2305
+#: includes/class-mla-settings.php:2728 includes/class-mla-settings.php:2731
+#: includes/class-mla-settings.php:2870 includes/class-mla-settings.php:2872
+#: includes/class-mla-settings.php:3053 includes/class-mla-settings.php:3055
+#: includes/class-mla-wpml-support.php:1219
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+#: includes/class-mla-polylang-support.php:2088
+#: includes/class-mla-wpml-support.php:1220
+msgid "Delete Language options and restore default settings"
+msgstr "Ta bort språkalternativ och Återställ till standardinställningar"
+
+#: includes/class-mla-polylang-support.php:2091
+#: includes/class-mla-settings.php:1079 includes/class-mla-settings.php:1345
+#: includes/class-mla-settings.php:2300
+#: includes/class-mla-wpml-support.php:1223
+msgid "Go to Top"
+msgstr "Gå till toppen"
+
+#: includes/class-mla-polylang-support.php:2128
+#: includes/class-mla-wpml-support.php:1260
+msgid "Language settings saved."
+msgstr "Språkinställningarna sparades."
+
+#. translators: 1: option name
+#: includes/class-mla-polylang-support.php:2159
+#: includes/class-mla-settings.php:4011
+#: includes/class-mla-wpml-support.php:1291
+#, php-format
+msgctxt "message_list"
+msgid "delete_option \"%1$s\""
+msgstr "delete_option \"%1$s\""
+
+#: includes/class-mla-polylang-support.php:2167
+#: includes/class-mla-wpml-support.php:1299
+msgid "Language settings reset to default values."
+msgstr "Språkinställningar Återställ till standardvärden."
+
+#: includes/class-mla-settings.php:339
+msgid "no slug"
+msgstr "ingen slug"
+
+#: includes/class-mla-settings.php:355
+msgid "Running"
+msgstr "Pågår"
+
+#: includes/class-mla-settings.php:360
+msgid "Skipped"
+msgstr "Hoppade över"
+
+#: includes/class-mla-settings.php:361
+msgid "Reprocessed"
+msgstr "Bearbetas på nytt"
+
+#: includes/class-mla-settings.php:447 includes/class-mla-settings.php:960
+#: includes/class-mla-settings.php:3096
+msgid "Settings"
+msgstr "Inställningar"
+
+#: includes/class-mla-settings.php:466
+msgid "Views per page"
+msgstr "Visningar per sida"
+
+#: includes/class-mla-settings.php:477
+msgid "Types per page"
+msgstr "Typer per sida"
+
+#: includes/class-mla-settings.php:488
+msgid "Upload types per page"
+msgstr "Ladda upp typer per sida"
+
+#: includes/class-mla-settings.php:624
+msgid "No view slug found"
+msgstr "Ingen uppfattning slug hittades"
+
+#: includes/class-mla-settings.php:667
+msgid "No upload slug found"
+msgstr "Ingen uppladdning slug hittades"
+
+#: includes/class-mla-settings.php:707 includes/class-mla-settings.php:2729
+#: includes/class-mla-settings.php:2733
+msgid "Map All Rules, All Attachments Now"
+msgstr "Mappa alla regler, alla bifogade filer Nu"
+
+#: includes/class-mla-settings.php:831 includes/class-mla-settings.php:2862
+msgid "Map All Attachments, Standard Fields Now"
+msgstr "Mappa alla bifogade filer, standardfälten Nu"
+
+#: includes/class-mla-settings.php:834 includes/class-mla-settings.php:2865
+msgid "Map All Attachments, Taxonomy Terms Now"
+msgstr "Mappa alla bifogade filer, taxonomi villkor Nu"
+
+#: includes/class-mla-settings.php:837 includes/class-mla-settings.php:2868
+msgid "Map All Attachments, Custom Fields Now"
+msgstr "Mappa alla bifogade filer, anpassade fält Nu"
+
+#. translators: 1: ERROR tag 2: function name 3: option type, e.g., radio, select, text
+#: includes/class-mla-settings.php:1009 includes/class-mla-settings.php:1042
+#: includes/class-mla-settings.php:1181
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s unknown type = \"%3$s\""
+msgstr "%1$s: %2$s okänd typ = \"%3$s\""
+
+#: includes/class-mla-settings.php:1230
+msgid "General"
+msgstr "Generella"
+
+#: includes/class-mla-settings.php:1231
+msgid "Views"
+msgstr "Visningar"
+
+#: includes/class-mla-settings.php:1232
+msgid "Uploads"
+msgstr "Uppladdningar"
+
+#: includes/class-mla-settings.php:1233 includes/class-mla-settings.php:3390
+#: includes/class-mla-settings.php:3393
+msgid "MLA Gallery"
+msgstr "MLA Galleri"
+
+#: includes/class-mla-settings.php:1234
+msgid "Custom Fields"
+msgstr "Egna fält"
+
+#: includes/class-mla-settings.php:1236
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: includes/class-mla-settings.php:1237
+msgid "Debug"
+msgstr "Felsök"
+
+#: includes/class-mla-settings.php:1337
+msgid "General Processing Options"
+msgstr "De allmänna bearbetningsalternativen"
+
+#. translators: 1: - 4: page subheader values
+#: includes/class-mla-settings.php:1339
+#, php-format
+msgid ""
+"In this tab you can find a number of options for controlling the "
+"plugin&rsquo;s operation. Scroll down to find options for %1$s, %2$s, %3$s "
+"and %4$s. Be sure to click \"Save Changes\" at the bottom of the tab to save "
+"any changes you make."
+msgstr ""
+"På denna flik kan du hitta ett antal alternativ för att kontrollera plugin "
+"drift. Scrolla ner för att hitta alternativ för %1$s %2$s, %3$s och %4$s. se "
+"till att klicka på \"Spara ändringar\" längst ned på fliken om du vill spara "
+"de ändringar du gör."
+
+#: includes/class-mla-settings.php:1339
+msgid "Media/Assistant Table Defaults"
+msgstr "Media/assistent tabell Standard"
+
+#: includes/class-mla-settings.php:1339
+msgid "Media Manager Enhancements"
+msgstr "Media Manager förbättringar"
+
+#: includes/class-mla-settings.php:1341
+msgid "Export ALL Settings"
+msgstr "Exportera alla inställningar"
+
+#: includes/class-mla-settings.php:1342
+msgid "Delete General options and restore default settings"
+msgstr ""
+"Ta bort allmänna inställningar och Återställ till standardinställningar"
+
+#: includes/class-mla-settings.php:1346
+msgid "Support Our Work"
+msgstr "Stöd vårt arbete"
+
+#: includes/class-mla-settings.php:1347 includes/class-mla-settings.php:1350
+msgid "Donate to FTJ"
+msgstr "Donera till FTJ"
+
+#: includes/class-mla-settings.php:1348 includes/class-mla-settings.php:3088
+msgid "Donate"
+msgstr "Donera"
+
+#. translators: 1: donation hyperlink
+#: includes/class-mla-settings.php:1350
+#, php-format
+msgid ""
+"This plugin was inspired by my work on the WordPress web site for our "
+"nonprofit, Fair Trade Judaica. If you find the Media Library Assistant "
+"plugin useful and would like to support a great cause, consider a %1$s to "
+"our work. Thank you!"
+msgstr ""
+"Denna plugin var inspirerad av mitt arbete på webbplatsen WordPress för våra "
+"ideella, rättvis handel Judaica. Om du finna Media Library Assistant plugin "
+"bra och skulle vilja stödja en stor orsak, överväga en %1$s till vårt "
+"arbete. Tack!"
+
+#: includes/class-mla-settings.php:1350
+msgid "tax-deductible donation"
+msgstr "avdragsgill donation"
+
+#: includes/class-mla-settings.php:1371
+msgid "enhanced version of the WordPress [gallery] shortcode."
+msgstr "förbättrad version av WordPress [Galleri] kortkod."
+
+#: includes/class-mla-settings.php:1372
+msgid "enhanced version of the WordPress Tag Cloud."
+msgstr "förbättrad version av WordPress taggmoln."
+
+#: includes/class-mla-settings.php:1384
+msgid "Shortcodes made available by this plugin"
+msgstr "kortkoder som tillhandahålls av denna plugin"
+
+#: includes/class-mla-settings.php:1492
+msgid "Edit View"
+msgstr "Redigera vy"
+
+#: includes/class-mla-settings.php:1498 includes/class-mla-settings.php:1755
+msgid ""
+"The &#8220;slug&#8221; is the URL-friendly, unique key for the view. It must "
+"be all lowercase and contain only letters, numbers, periods (.), slashes (/) "
+"and hyphens (-). For &#8220;<strong>Post MIME Type</strong>&#8221; views, "
+"the slug is also the MIME type specification and <strong>must be a valid "
+"MIME</strong> type, e.g., &#8220;image&#8221; or &#8220;image/jpeg&#8221;."
+msgstr ""
+"Den \"slug\" är URL-vänlig, unika nyckeln för vyn. Det måste vara alla "
+"gemener och innehåller bara bokstäver, siffror, punkter (.), snedstreck (/) "
+"och bindestreck (-). För \"<strong>Post MIME-typ</strong>\" vyer är "
+"skogssnigel också den MIME-typ specifikationen och <strong>måste vara en "
+"giltig MIME</strong> typ, t.ex., \"bild\" eller \"image/jpeg\"."
+
+#: includes/class-mla-settings.php:1499 includes/class-mla-settings.php:1756
+msgid "Singular Label"
+msgstr "Singular etikett"
+
+#: includes/class-mla-settings.php:1500 includes/class-mla-settings.php:1757
+msgid "Plural Label"
+msgstr "Plural etikett"
+
+#: includes/class-mla-settings.php:1501 includes/class-mla-settings.php:1758
+msgid ""
+"The labels, e.g., &#8220;Image&#8221; and &#8220;Images&#8221; are used for "
+"column headers and other display purposes."
+msgstr ""
+"Etiketter, t.ex., &#8220; bild &#8221; och &#8220; bilder &#8221; används "
+"för kolumnrubriker och andra visningsändamål."
+
+#: includes/class-mla-settings.php:1502 includes/class-mla-settings.php:1759
+msgid "Specification"
+msgstr "Specifikation"
+
+#: includes/class-mla-settings.php:1503 includes/class-mla-settings.php:1760
+msgid ""
+"If the MIME type specification differs from the slug, enter it here. You may "
+"include multiple MIME types, e.g., &#8220;audio,video&#8221; and/or wildcard "
+"specs, e.g.,  &#8220;*/*ms*&#8221;. This field will be ignored if the Post "
+"MIME Type box is checked."
+msgstr ""
+"Om MIME-typ specifikationen skiljer sig från skogssnigel, ange den här. Du "
+"kan inkludera flera MIME-typer, t.ex., &#8220; ljud, video &#8221; och/eller "
+"jokertecken specifikationer, t.ex., &#8220; * / * ms * &#8221;. Det här "
+"fältet kommer att ignoreras om inlägget MIME-typen är markerad."
+
+#: includes/class-mla-settings.php:1504 includes/class-mla-settings.php:1761
+msgid "Post MIME Type"
+msgstr "Inläggets MIME-typ"
+
+#: includes/class-mla-settings.php:1505 includes/class-mla-settings.php:1762
+msgid ""
+"Check this box if you want to add this entry to the list of MIME types "
+"returned by wp_get_mime_types()."
+msgstr ""
+"Markera denna ruta om du vill lägga till denna post i listan över MIME-typer "
+"som returneras av wp_get_mime_types()."
+
+#: includes/class-mla-settings.php:1506 includes/class-mla-settings.php:1763
+msgid "Table View"
+msgstr "tabellvy"
+
+#: includes/class-mla-settings.php:1507 includes/class-mla-settings.php:1764
+msgid ""
+"Check this box if you want to add this entry to the list of Media/Assistant "
+"table views."
+msgstr ""
+"Markera denna ruta om du vill lägga till denna post i listan över Media/"
+"assistent tabellvyer."
+
+#: includes/class-mla-settings.php:1509 includes/class-mla-settings.php:1766
+msgid ""
+"You can choose your own table view order by entering a number (1 for first, "
+"etc.) in this field."
+msgstr ""
+"I det här fältet kan du välja din egen tabell Visa ordern genom att ange ett "
+"nummer (1 för första, etc.)."
+
+#: includes/class-mla-settings.php:1511 includes/class-mla-settings.php:1768
+#: includes/class-mla-settings.php:1866 includes/class-mla-settings.php:2230
+msgid ""
+"The description can contain any documentation or notes you need to "
+"understand or use the item."
+msgstr ""
+"Beskrivningen kan innehålla dokumentation eller anteckningar du behöver "
+"förstå eller använda objektet."
+
+#. translators: 1: bulk_action, e.g., delete, edit, restore, trash
+#: includes/class-mla-settings.php:1622 includes/class-mla-settings.php:2088
+#, php-format
+msgid "Unknown bulk action %1$s"
+msgstr "Okänd massåtgärd %1$s"
+
+#. translators: 1: view name/slug
+#: includes/class-mla-settings.php:1661 includes/class-mla-settings.php:2130
+#, php-format
+msgid "Edit view \"%1$s\" cancelled."
+msgstr "Redigera Visa \"%1$s\" inställd."
+
+#: includes/class-mla-settings.php:1695
+msgid "View and Post MIME Type Support is disabled"
+msgstr "Visa och Post MIME typ Support är inaktiverat"
+
+#: includes/class-mla-settings.php:1740 includes/class-mla-settings.php:1743
+msgid "Library Views/Post MIME Type Processing"
+msgstr "Biblioteket visningar/MIME typ efterbearbetning"
+
+#: includes/class-mla-settings.php:1741
+msgid ""
+"In this tab you can manage the list of \"Post MIME Types\", which are used "
+"by WordPress to define the views for the <em><strong>Media/Library</strong></"
+"em> screen and the <em><strong>Media Manager/Add Media</strong></em> \"media "
+"items\" drop down list. MLA&rsquo;s <em><strong>Media/Assistant</strong></"
+"em> screen uses an enhanced version of the list, <em>Table Views</em>, to "
+"support views with multiple MIME Types (e.g., \"audio,video\") and wildcard "
+"specifications (e.g. \"*/*ms*\")."
+msgstr ""
+"I den här fliken kan du hantera listan över \"Post MIME-typer\", som används "
+"av WordPress för att definiera vyer för skärmen <em><strong>Media/bibliotek</"
+"strong></em> och <em><strong>Media Manager/Lägg till Media</strong></em> "
+"\"medieobjekt\" rullgardinsmenyn. MLA'S <em><strong>Media/assistent</"
+"strong></em> skärm använder en förbättrad version av listan <em>Tabellvyer</"
+"em>, som stöd för visningar med flera MIME-typer (t.ex., \"ljud, video\") "
+"och jokertecken specifikationer (t.ex. \"* / * ms *\")."
+
+#. translators: 1: Documentation hyperlink
+#: includes/class-mla-settings.php:1743
+#, php-format
+msgid ""
+"You can find more information about library views, Post MIME types and how "
+"MLA and WordPress use them in the %1$s section of the Documentation or by "
+"clicking the <strong>\"Help\"</strong> tab in the upper-right corner of this "
+"screen."
+msgstr ""
+"Du kan hitta mer information om biblioteksvyer, Post MIME-typer och hur MLA "
+"och WordPress använder dem i %1$s avsnittet av dokumentationen eller genom "
+"att klicka på fliken <strong>\"Hjälp\"</strong> i det övre högra hörnet på "
+"den här skärmen."
+
+#: includes/class-mla-settings.php:1743
+msgid "Library View Processing documentation"
+msgstr "Bibliotek Visa bearbetning dokumentation"
+
+#: includes/class-mla-settings.php:1747 includes/class-mla-settings.php:1936
+#: includes/class-mla-settings.php:2242
+msgid "Displaying search results for"
+msgstr "Visar sökresultat för"
+
+#: includes/class-mla-settings.php:1748
+msgid "Search Views"
+msgstr "Sök visningar"
+
+#: includes/class-mla-settings.php:1769
+msgid "Add View"
+msgstr "Lägg till vy"
+
+#: includes/class-mla-settings.php:1771 includes/class-mla-settings.php:2235
+msgid "<strong>Quick Edit</strong>"
+msgstr "<strong>Snabb redigera</strong>"
+
+#: includes/class-mla-settings.php:1851
+msgid "Edit Upload MIME Type"
+msgstr "Redigera uppladdning för MIME-typ"
+
+#: includes/class-mla-settings.php:1857
+msgid ""
+"The &#8220;extension&#8221; is the file extension for this type, and a "
+"unique key for the item. It must be all lowercase and contain only letters "
+"and numbers."
+msgstr ""
+"Den &#8220; förlängning &#8221; är filnamnstillägget för denna typ, och en "
+"unik nyckel för objektet. Det måste vara alla gemener och innehåller bara "
+"bokstäver och siffror."
+
+#: includes/class-mla-settings.php:1859 includes/class-mla-settings.php:2224
+msgid ""
+"The MIME Type must be all lowercase and contain only letters, numbers, "
+"periods (.), slashes (/) and hyphens (-). It <strong>must be a valid MIME</"
+"strong> type, e.g., &#8220;image&#8221; or &#8220;image/jpeg&#8221;."
+msgstr ""
+"MIME-typen måste vara alla gemener och innehåller bara bokstäver, siffror, "
+"punkter (.), snedstreck (/) och bindestreck (-). Det <strong>måste vara en "
+"giltig MIME</strong> typ, t.ex., \"bild\" eller \"image/jpeg\"."
+
+#: includes/class-mla-settings.php:1860 includes/class-mla-settings.php:2225
+msgid "Icon Type"
+msgstr "Ikontyp"
+
+#: includes/class-mla-settings.php:1862 includes/class-mla-settings.php:2226
+msgid ""
+"The Icon Type selects a thumbnail image displayed for non-image file types, "
+"such as PDF documents."
+msgstr ""
+"Ikontypen väljer en miniatyrbild som visas för icke-image filtyper som PDF-"
+"dokument."
+
+#: includes/class-mla-settings.php:1863 includes/class-mla-settings.php:2227
+#: includes/class-mla-upload-list-table.php:415
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: includes/class-mla-settings.php:1864 includes/class-mla-settings.php:2228
+msgid ""
+"Check this box if you want to remove this entry from the list of Upload MIME "
+"Types returned by get_allowed_mime_types()."
+msgstr ""
+"Markera denna ruta om du vill ta bort posten från listan över ladda upp MIME-"
+"typer som returneras av get_allowed_mime_types()."
+
+#: includes/class-mla-settings.php:1935
+msgid "Known File Extension/MIME Type Associations"
+msgstr "Kända filassociationer förlängning/MIME-typ."
+
+#: includes/class-mla-settings.php:1937
+msgid "Search Known MIME Types"
+msgstr "Sök kända MIME-typer"
+
+#: includes/class-mla-settings.php:1939 includes/class-mla-settings.php:2213
+msgid "To search by extension, use \".\", e.g., \".doc\""
+msgstr "För att söka i förlängningen, Använd \".\", exempelvis \".doc\""
+
+#: includes/class-mla-settings.php:2164
+msgid "Upload MIME Type Support is disabled"
+msgstr "Ladda MIME-typ stöd är inaktiverad"
+
+#: includes/class-mla-settings.php:2207 includes/class-mla-settings.php:2210
+msgid "File Extension and MIME Type Processing"
+msgstr "Filnamnstillägget och MIME-typ under bearbetning"
+
+#: includes/class-mla-settings.php:2208
+msgid ""
+"In this tab you can manage the list of file extension/MIME Type "
+"associations, which are used by WordPress to decide what kind of files can "
+"be uploaded to the Media Library and to fill in the "
+"<strong><em>post_mime_type</em></strong> value. To upload a file, the file "
+"extension must be in this list and be active."
+msgstr ""
+"I den här fliken kan du hantera listan över förlängning/MIME "
+"filtypsassociationer, som används av WordPress att besluta vilken typ av "
+"filer kan laddas upp till mediebiblioteket och fylla i "
+"<strong><em>post_mime_type</em></strong> värde. För att ladda upp en fil, "
+"måste filnamnstillägget i den här listan och vara aktiv."
+
+#. translators: 1: Documentation hyperlink
+#: includes/class-mla-settings.php:2210
+#, php-format
+msgid ""
+"You can find more information about file extensions, MIME types and how "
+"WordPress uses them in the %1$s section of the Documentation or by clicking "
+"the <strong>\"Help\"</strong> tab in the upper-right corner of this screen."
+msgstr ""
+"Du kan hitta mer information om arkivera sträckningarna, MIME-typer och hur "
+"WordPress använder dem i %1$s avsnittet av dokumentationen eller genom att "
+"klicka på fliken <strong>\"Hjälp\"</strong> i det övre högra hörnet på den "
+"här skärmen."
+
+#: includes/class-mla-settings.php:2210
+msgid "File Extension Processing documentation"
+msgstr "Fil förlängning bearbetning dokumentation"
+
+#: includes/class-mla-settings.php:2212
+msgid "Search Uploads"
+msgstr "Sök uppladdningar"
+
+#: includes/class-mla-settings.php:2219
+msgid "Upload MIME Type"
+msgstr "Ladda upp MIME-typ"
+
+#: includes/class-mla-settings.php:2220
+msgid ""
+"To search the database of over 1,500 known extension/type associations, "
+"click \"Search Known Types\" below the form."
+msgstr ""
+"För att söka i databasen av över 1 500 kända tilläggstypen anslutningar, "
+"klicka på \"Sök kända typer\" nedanför formuläret."
+
+#: includes/class-mla-settings.php:2222
+msgid ""
+"The &#8220;extension&#8221; is the file extension for this type, and unique "
+"key for the item. It must be all lowercase and contain only letters and "
+"numbers."
+msgstr ""
+"Den &#8220; förlängning &#8221; är filändelsen för denna typ, och unik "
+"nyckel för objektet. Det måste vara alla gemener och innehåller bara "
+"bokstäver och siffror."
+
+#: includes/class-mla-settings.php:2231
+msgid "Add Upload MIME Type"
+msgstr "Aktivera stöd för uppladdning MIME-typ"
+
+#: includes/class-mla-settings.php:2233
+msgid "Search Known Types"
+msgstr "Sök kända typer"
+
+#: includes/class-mla-settings.php:2241
+#: includes/class-mla-upload-list-table.php:417
+msgid "Active"
+msgstr "Aktiv"
+
+#: includes/class-mla-settings.php:2294
+msgid "MLA Gallery Options"
+msgstr "MLA Galleri alternativ"
+
+#: includes/class-mla-settings.php:2295
+msgid "Go to Style Templates"
+msgstr "Gå till stilmallar"
+
+#: includes/class-mla-settings.php:2296
+msgid "Go to Markup Templates"
+msgstr "Gå till markering mallar"
+
+#: includes/class-mla-settings.php:2297
+msgid ""
+"In this tab you can view the default style and markup templates. You can "
+"also define additional templates and use the <code>mla_style</code> and "
+"<code>mla_markup</code> parameters to apply them in your "
+"<code>[mla_gallery]</code> shortcodes. <strong>NOTE:</strong> template "
+"additions and changes will not be made permanent until you click \"Save "
+"Changes\" at the bottom of this page."
+msgstr ""
+"I den här fliken kan du Visa standardmallarna stil och uppmärkning. Du kan "
+"också definiera ytterligare mallar och använda den <code>mla_style</code> "
+"och <code>mla_markup</code> parametrar för att tillämpa dem i din "
+"<code>[mla_gallery]</code> kortkoder. <strong>Obs:</strong> mall tillägg och "
+"ändringar kommer inte att göras permanent förrän du klickar på \"Spara "
+"ändringar\" längst ner på denna sida."
+
+#: includes/class-mla-settings.php:2301
+msgid "Style Templates"
+msgstr "Stilmallar"
+
+#: includes/class-mla-settings.php:2303
+msgid "Markup Templates"
+msgstr "Markup mallar"
+
+#: includes/class-mla-settings.php:2316
+msgid "Theme"
+msgstr "Tema"
+
+#: includes/class-mla-settings.php:2364
+msgid ""
+"This default template cannot be altered or deleted, but you can copy the "
+"styles."
+msgstr ""
+"Denna standardmall inte får ändras eller tas bort, men du kan kopiera "
+"formatmallarna."
+
+#: includes/class-mla-settings.php:2375 includes/class-mla-settings.php:2408
+#: includes/class-mla-settings.php:2434
+msgid "Styles"
+msgstr "﻿Stilar"
+
+#: includes/class-mla-settings.php:2379 includes/class-mla-settings.php:2412
+#: includes/class-mla-settings.php:2438
+msgid ""
+"List of substitution parameters, e.g., [+selector+], on Documentation tab."
+msgstr ""
+"Lista över substitution parametrar, t ex [+ selector +], dokumentation på "
+"fliken."
+
+#: includes/class-mla-settings.php:2396 includes/class-mla-settings.php:2514
+msgid "Delete this template"
+msgstr "Ta bort den här mallen"
+
+#: includes/class-mla-settings.php:2397 includes/class-mla-settings.php:2515
+msgid ""
+"Check the box to delete this template when you press Update at the bottom of "
+"the page."
+msgstr ""
+"Markera rutan om du vill ta bort den här mallen när du trycker på uppdatera "
+"längst ned på sidan."
+
+#: includes/class-mla-settings.php:2423
+msgid "Fill in a name and styles to add a new template."
+msgstr "Fyll i ett namn och stilar för att lägga till en ny mall."
+
+#: includes/class-mla-settings.php:2458
+msgid ""
+"This default template cannot be altered or deleted, but you can copy the "
+"markup."
+msgstr ""
+"Denna standardmall inte får ändras eller tas bort, men du kan kopiera "
+"markeringen."
+
+#: includes/class-mla-settings.php:2470 includes/class-mla-settings.php:2527
+#: includes/class-mla-settings.php:2577
+msgid "Open"
+msgstr "Öppna"
+
+#: includes/class-mla-settings.php:2474 includes/class-mla-settings.php:2531
+#: includes/class-mla-settings.php:2581
+msgid ""
+"Markup for the beginning of the gallery. List of parameters, e.g., [+selector"
+"+], on Documentation tab."
+msgstr ""
+"Markering för början av galleriet. Lista över parametrar, t ex [+ selector "
+"+], dokumentation på fliken."
+
+#: includes/class-mla-settings.php:2476 includes/class-mla-settings.php:2533
+#: includes/class-mla-settings.php:2583
+msgid "Row"
+msgstr "Rad"
+
+#: includes/class-mla-settings.php:2480 includes/class-mla-settings.php:2587
+msgid "Markup for the beginning of each row in the gallery."
+msgstr "Markering för början av varje rad i galleriet."
+
+#: includes/class-mla-settings.php:2482 includes/class-mla-settings.php:2539
+#: includes/class-mla-settings.php:2589
+msgid "Item"
+msgstr "Post"
+
+#: includes/class-mla-settings.php:2486 includes/class-mla-settings.php:2593
+msgid "Markup for each item/cell of the gallery."
+msgstr "Markering för varje objekt/cell i galleriet."
+
+#: includes/class-mla-settings.php:2488 includes/class-mla-settings.php:2545
+#: includes/class-mla-settings.php:2595 includes/class-mla-settings.php:2709
+#: includes/class-mla-settings.php:2845
+msgid "Close"
+msgstr "Stäng"
+
+#: includes/class-mla-settings.php:2492 includes/class-mla-settings.php:2599
+msgid "Markup for the end of each row in the gallery."
+msgstr "Markering i slutet av varje rad i galleriet."
+
+#: includes/class-mla-settings.php:2497 includes/class-mla-settings.php:2554
+#: includes/class-mla-settings.php:2604
+msgid "Markup for the end of the gallery."
+msgstr "Markering för slutet av galleriet."
+
+#: includes/class-mla-settings.php:2537
+msgid "Markup for the beginning of each row."
+msgstr "Markering för början av varje rad."
+
+#: includes/class-mla-settings.php:2543
+msgid "Markup for each item/cell."
+msgstr "Markering för varje objekt/cell."
+
+#: includes/class-mla-settings.php:2549
+msgid "Markup for the end of each row."
+msgstr "Markering i slutet av varje rad."
+
+#: includes/class-mla-settings.php:2565
+msgid "Fill in a name and markup to add a new template."
+msgstr "Fyll i ett namn och en markering att lägga till en ny mall."
+
+#: includes/class-mla-settings.php:2701
+msgid "Custom Field Mapping Progress"
+msgstr "Anpassat fält kartläggning pågår"
+
+#: includes/class-mla-settings.php:2702 includes/class-mla-settings.php:2838
+msgid "DO NOT DO THE FOLLOWING (they will cause mapping to fail)"
+msgstr "GÖR INTE FÖLJANDE (de kommer att orsaka mappning att misslyckas)"
+
+#: includes/class-mla-settings.php:2703 includes/class-mla-settings.php:2839
+msgid "Close the window"
+msgstr "Stäng fönstret"
+
+#: includes/class-mla-settings.php:2704 includes/class-mla-settings.php:2840
+msgid "Reload the page"
+msgstr "Ladda om sidan"
+
+#: includes/class-mla-settings.php:2705 includes/class-mla-settings.php:2841
+msgid "Click the browser&rsquo;s Stop, Back or forward buttons"
+msgstr "Klicka på webbläsarens stopp, tillbaka eller framåt knappar"
+
+#: includes/class-mla-settings.php:2706 includes/class-mla-settings.php:2842
+msgid "Progress"
+msgstr "Pågående"
+
+#: includes/class-mla-settings.php:2708 includes/class-mla-settings.php:2844
+msgid "Resume"
+msgstr "Återuppta"
+
+#: includes/class-mla-settings.php:2718 includes/class-mla-settings.php:2722
+msgid "Custom Field and Attachment Metadata Processing Options"
+msgstr "Anpassat fält och bifogad fil Metadata bearbetningsalternativ"
+
+#. translators: 1: Documentation hyperlink
+#: includes/class-mla-settings.php:2720
+#, php-format
+msgid ""
+"In this tab you can define the rules for mapping several types of image "
+"metadata to WordPress custom fields. You can also use this screen to define "
+"rules for adding or updating fields within the WordPress-supplied "
+"\"Attachment Metadata\", stored in the \"_wp_attachment_metadata\" custom "
+"field. See the %1$s section of the Documentation for details."
+msgstr ""
+"I den här fliken kan du definiera reglerna för mappning av flera typer av "
+"bildmetadata till WordPress anpassade fält. Du kan också använda denna skärm "
+"för att definiera regler för att lägga till eller uppdatera fält inom "
+"WordPress-levererade \"bifogad fil Metadata\", lagras i det anpassade fältet "
+"för \"_wp_attachment_metadata\". Se avsnittet %1$s dokumentation för "
+"detaljer."
+
+#: includes/class-mla-settings.php:2720
+msgid "Updating Attachment Metadata Documentation"
+msgstr "Uppdatera bifogad fil Metadata dokumentation"
+
+#: includes/class-mla-settings.php:2720
+msgid "Adding or changing Attachment Metadata"
+msgstr "Lägga till eller ändra bifogad fil Metadata"
+
+#. translators: 1: Documentation hyperlink
+#: includes/class-mla-settings.php:2722 includes/class-mla-settings.php:2857
+#, php-format
+msgid ""
+"You can find more information about using the controls in this tab to define "
+"mapping rules and apply them in the %1$s section of the Documentation."
+msgstr ""
+"Du kan hitta mer information om kontrollerna i den här fliken att definiera "
+"mappningsregler och tillämpa dem i avsnittet %1$s i dokumentationen."
+
+#: includes/class-mla-settings.php:2722
+msgid "Custom Field Options documentation"
+msgstr "Dokumentation för alternativ för anpassade fält"
+
+#: includes/class-mla-settings.php:2726 includes/class-mla-settings.php:2867
+msgid "Custom field mapping"
+msgstr "Anpassade fältmappning"
+
+#. translators: 1: "Save Changes"
+#: includes/class-mla-settings.php:2731
+#, php-format
+msgid ""
+"Click %1$s to update the \"Enable custom field mapping...\" checkbox and/or "
+"all rule changes and additions at once. <strong>No rule mapping will be "
+"performed.</strong>"
+msgstr ""
+"Klicka på %1$s om du vill uppdatera kryssrutan \"Aktivera anpassade fältet "
+"kartläggning...\" och/eller alla regeländringar och tillägg på en gång. "
+"<strong>Utförs ingen regel mappning.</strong>"
+
+#. translators: 1: "Map All Rules..."
+#: includes/class-mla-settings.php:2733
+#, php-format
+msgid ""
+"Click %1$s to apply all the rules at once (rule changes will be applied but "
+"not saved)."
+msgstr ""
+"Klicka på %1$s om du vill tillämpa alla regler på en gång (regel ändringar "
+"kommer att tillämpas men inte sparats)."
+
+#: includes/class-mla-settings.php:2837
+msgid "IPTC &amp; EXIF Mapping Progress"
+msgstr "IPTC och EXIF kartläggning pågår"
+
+#: includes/class-mla-settings.php:2854 includes/class-mla-settings.php:2857
+msgid "IPTC &amp; EXIF Processing Options"
+msgstr "IPTC och EXIF bearbetningsalternativ"
+
+#: includes/class-mla-settings.php:2855
+msgid ""
+"In this tab you can define the rules for mapping IPTC (International Press "
+"Telecommunications Council) and EXIF (EXchangeable Image File) metadata to "
+"WordPress standard attachment fields, taxonomy terms and custom fields. "
+"<strong>NOTE:</strong> settings changes will not be made permanent until you "
+"click \"Save Changes\" at the bottom of this page."
+msgstr ""
+"I den här fliken kan du definiera reglerna för mappning av IPTC "
+"(International Press Telecommunications Council) och EXIF (EXchangeable "
+"Image File)-metadata till WordPress standard bilagefält, taxonomi villkor "
+"och anpassade fält. <strong>Obs:</strong> inställningar förändringar kommer "
+"inte göras permanent förrän du klickar på \"Spara ändringar\" längst ner på "
+"denna sida."
+
+#: includes/class-mla-settings.php:2857
+msgid "IPTC/EXIF Options documentation"
+msgstr "IPTC/EXIF alternativ dokumentation"
+
+#: includes/class-mla-settings.php:2861
+msgid "Standard field mapping"
+msgstr "Standard fältmappning"
+
+#: includes/class-mla-settings.php:2864
+msgid "Taxonomy term mapping"
+msgstr "Taxonomi term mappning"
+
+#. translators: 1: "Save Changes"
+#: includes/class-mla-settings.php:2872
+#, php-format
+msgid ""
+"Click %1$s to update the \"Enable IPTC/EXIF mapping...\" checkbox and/or all "
+"rule changes and additions at once. <strong>No rule mapping will be "
+"performed.</strong>"
+msgstr ""
+"Klicka på %1$s om du vill uppdatera kryssrutan \"Aktivera IPTC/EXIF "
+"kartläggning...\" och/eller alla regeländringar och tillägg på en gång. "
+"<strong>Utförs ingen regel mappning.</strong>"
+
+#: includes/class-mla-settings.php:2943
+msgid "Debug settings saved."
+msgstr "Felsöka inställningar sparas."
+
+#. translators: 1: ERROR tag 2: file type 3: file name
+#: includes/class-mla-settings.php:2988
+#, php-format
+msgid "%1$s: The %2$s file ( %3$s ) could not be reset."
+msgstr "%1$s: %2$s filen (%3$s) kunde inte återställas."
+
+#: includes/class-mla-settings.php:2988 includes/class-mla-settings.php:3018
+#: includes/class-mla-settings.php:3030 includes/class-mla-settings.php:3037
+#: includes/class-mla-settings.php:3041
+msgid "Error Log"
+msgstr "Fel logg"
+
+#. translators: 1: ERROR tag 2: file type 3: file name 4: error message
+#: includes/class-mla-settings.php:3018
+#, php-format
+msgid "%1$s: Reading the %2$s file ( %3$s ) \"%4$s\"."
+msgstr "%1$s: läsa filen %2$s (%3$s) \"%4$s\"."
+
+#: includes/class-mla-settings.php:3037
+msgid "Reset"
+msgstr "Återställ"
+
+#: includes/class-mla-settings.php:3046 includes/class-mla-settings.php:3055
+msgid "Debug Options"
+msgstr "Felsöka alternativ"
+
+#. translators: 1: "Save Changes"
+#: includes/class-mla-settings.php:3055
+#, php-format
+msgid "Click %1$s to update the %2$s."
+msgstr "Klicka på %1$s om du vill uppdatera %2$s."
+
+#: includes/class-mla-settings.php:3074
+msgid "You do not have permission to manage plugin settings."
+msgstr "Du har inte behörighet att hantera plugin inställningar."
+
+#: includes/class-mla-settings.php:3108
+msgid "Cannot render content tab"
+msgstr "Kan inte återges fliken innehåll"
+
+#: includes/class-mla-settings.php:3111
+msgid "Unknown content tab"
+msgstr "Okänd fliken innehåll"
+
+#. translators: 1: template type 2: template name
+#: includes/class-mla-settings.php:3203 includes/class-mla-settings.php:3292
+#, php-format
+msgctxt "message_list"
+msgid "Deleting %1$s \"%2$s\"."
+msgstr "Raderar %1$s \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template name 3: template type
+#: includes/class-mla-settings.php:3214 includes/class-mla-settings.php:3305
+#, php-format
+msgid "%1$s: Reserved name \"%2$s\", new %3$s discarded."
+msgstr "%1$s: reserverat namn \"%2$s\", nya %3$s kasseras."
+
+#. translators: 1: ERROR tag 2: template name 3: template type
+#: includes/class-mla-settings.php:3220 includes/class-mla-settings.php:3311
+#, php-format
+msgid "%1$s: Duplicate name \"%2$s\", new %3$s discarded."
+msgstr "%1$s: Dubblett namn \"%2$s\", nya %3$s kasseras."
+
+#. translators: 1: template type 2: template name
+#: includes/class-mla-settings.php:3224 includes/class-mla-settings.php:3315
+#, php-format
+msgctxt "message_list"
+msgid "Adding new %1$s \"%2$s\"."
+msgstr "Lägger till ny %1$s \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: element name 3: old value
+#: includes/class-mla-settings.php:3234 includes/class-mla-settings.php:3325
+#, php-format
+msgid "%1$s: Blank %2$s, reverting to \"%3$s\"."
+msgstr "%1$s: Tom %2$s, återgå till \"%3$s\"."
+
+#: includes/class-mla-settings.php:3234 includes/class-mla-settings.php:3241
+#: includes/class-mla-settings.php:3245
+msgid "style template name"
+msgstr "Stilmallens namn"
+
+#. translators: 1: ERROR tag 2: element name 3: new value 4: old value
+#: includes/class-mla-settings.php:3241 includes/class-mla-settings.php:3332
+#, php-format
+msgid "%1$s: Duplicate new %2$s \"%3$s\", reverting to \"%4$s\"."
+msgstr "%1$s: duplicera nya %2$s \"%3$s\", återgå till \"%4$s\"."
+
+#. translators: 1: element name 2: old_value 3: new_value
+#: includes/class-mla-settings.php:3245 includes/class-mla-settings.php:3336
+#, php-format
+msgctxt "message_list"
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\""
+msgstr "Ändrar %1$s från \"%2$s\" till \"%3$s\""
+
+#. translators: 1: template type 2: template name
+#: includes/class-mla-settings.php:3252
+#, php-format
+msgctxt "message_list"
+msgid "Updating contents of %1$s \"%2$s\"."
+msgstr "Uppdaterar innehåll för %1$s \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template type
+#: includes/class-mla-settings.php:3263 includes/class-mla-settings.php:3384
+#, php-format
+msgid "%1$s: Update of %2$s failed."
+msgstr "%1$s: uppdateringen av %2$s misslyckades."
+
+#: includes/class-mla-settings.php:3325 includes/class-mla-settings.php:3332
+#: includes/class-mla-settings.php:3336
+msgid "markup template name"
+msgstr "Mallens markup namn"
+
+#. translators: 1: template name
+#: includes/class-mla-settings.php:3344
+#, php-format
+msgctxt "message_list"
+msgid "Updating open markup for \"%1$s\"."
+msgstr "Uppdatera öppen markering för \"%1$s\"."
+
+#. translators: 1: template name
+#: includes/class-mla-settings.php:3350
+#, php-format
+msgctxt "message_list"
+msgid "Updating row open markup for \"%1$s\"."
+msgstr "Uppdatera raden öppen markering för \"%1$s\"."
+
+#. translators: 1: template name
+#: includes/class-mla-settings.php:3356
+#, php-format
+msgctxt "message_list"
+msgid "Updating item markup for \"%1$s\"."
+msgstr "Uppdatera posten markup för \"%1$s\"."
+
+#. translators: 1: template name
+#: includes/class-mla-settings.php:3362
+#, php-format
+msgctxt "message_list"
+msgid "Updating row close markup for \"%1$s\"."
+msgstr "Uppdatera rad nära markup för \"%1$s\"."
+
+#. translators: 1: template name
+#: includes/class-mla-settings.php:3368
+#, php-format
+msgctxt "message_list"
+msgid "Updating close markup for \"%1$s\"."
+msgstr "Uppdatera nära markup för \"%1$s\"."
+
+#. translators: 1: field type
+#: includes/class-mla-settings.php:3393
+#, php-format
+msgid "%1$s no changes detected."
+msgstr "%1$s inga ändringar upptäcks."
+
+#: includes/class-mla-settings.php:3428
+msgid "View settings saved."
+msgstr "Visningsinställningar sparades"
+
+#: includes/class-mla-settings.php:3462
+msgid "Upload MIME Type settings saved."
+msgstr "Ladda upp MIME-typ inställningar sparades."
+
+#: includes/class-mla-settings.php:3505
+msgid "No custom field mapping rules to process."
+msgstr "Inga anpassade fältet mappningsregler att bearbeta."
+
+#. translators: 1: field type 2: examined count 3: updated count
+#: includes/class-mla-settings.php:3535 includes/class-mla-settings.php:3674
+#: includes/class-mla-settings.php:3745 includes/class-mla-settings.php:3831
+#, php-format
+msgid "%1$s mapping completed; %2$d attachment(s) examined, %3$d updated."
+msgstr ""
+"%1$s kartläggning slutförd; %2$ d bilagorna undersökta, %3$ d uppdaterad."
+
+#. translators: 1: field type 2: examined count
+#: includes/class-mla-settings.php:3538 includes/class-mla-settings.php:3677
+#: includes/class-mla-settings.php:3748 includes/class-mla-settings.php:3834
+#, php-format
+msgid ""
+"%1$s mapping completed; %2$d attachment(s) examined, no changes detected."
+msgstr ""
+"%1$s kartläggning slutförd; %2$ d bilagorna undersökt, inga ändringar "
+"upptäcktes."
+
+#. translators: 1: number of attachments
+#: includes/class-mla-settings.php:3569
+#, php-format
+msgid "%s attachment"
+msgid_plural "%s attachments"
+msgstr[0] "%s bilaga"
+msgstr[1] "%s bilagor"
+
+#. translators: 1: singular/plural number of attachments
+#: includes/class-mla-settings.php:3571
+#, php-format
+msgid "Deleted custom field value from %1$s."
+msgstr "Ta bort anpassade fältvärdet från %1$s."
+
+#: includes/class-mla-settings.php:3574
+msgid "No attachments contained this custom field."
+msgstr "Inga bilagor innehöll det här anpassade fältet."
+
+#. translators: 1: ERROR tag 2: field type
+#: includes/class-mla-settings.php:3635 includes/class-mla-settings.php:3706
+#: includes/class-mla-settings.php:3792
+#, php-format
+msgid "%1$s: No %2$s settings to process."
+msgstr "%1$s: ingen %2$s inställningar att bearbeta."
+
+#: includes/class-mla-settings.php:3665 includes/class-mla-settings.php:3736
+#: includes/class-mla-settings.php:3822
+msgid "updated."
+msgstr "Uppdaterad"
+
+#. translators: 1: reference type, e.g., Gallery in
+#: includes/class-mla-settings.php:3927 includes/class-mla-settings.php:3937
+#, php-format
+msgctxt "message_list"
+msgid "%1$s - references updated."
+msgstr "%1$s - referenser uppdaterat."
+
+#: includes/class-mla-settings.php:3980
+msgid "General settings saved."
+msgstr "Allmänna inställningar sparas."
+
+#: includes/class-mla-settings.php:4019
+msgid "General settings reset to default values."
+msgstr "Allmänna inställningar Återställ till standardvärden."
+
+#: includes/class-mla-settings.php:4061
+msgid "select settings"
+msgstr "Välj inställningar"
+
+#: includes/class-mla-settings.php:4081
+msgid "Import ALL Settings"
+msgstr "Importera ALLA inställningar"
+
+#: includes/class-mla-settings.php:4106
+msgctxt "message_list"
+msgid "exported"
+msgstr "Exporterad"
+
+#: includes/class-mla-settings.php:4108
+msgctxt "message_list"
+msgid "skipped"
+msgstr "Hoppade över"
+
+#: includes/class-mla-settings.php:4115
+msgid "ALL settings exported."
+msgstr "ALLA inställningar exporterades."
+
+#. translators: 1: ERROR tag 2: backup directory name
+#: includes/class-mla-settings.php:4126
+#, php-format
+msgid "%1$s: The settings directory ( %2$s ) cannot be created."
+msgstr "%1$s: katalogen inställningar (%2$s) kan inte skapas."
+
+#. translators: 1: ERROR tag 2: backup directory name
+#: includes/class-mla-settings.php:4130
+#, php-format
+msgid "%1$s: The settings directory ( %2$s ) is not writable."
+msgstr "%1$s: katalogen inställningar (%2$s) är inte skrivbar."
+
+#. translators: 1: ERROR tag 2: backup file name
+#: includes/class-mla-settings.php:4141
+#, php-format
+msgid "%1$s: The settings file ( %2$s ) could not be opened."
+msgstr "%1$s: inställningsfilen (%2$s) kunde inte öppnas."
+
+#. translators: 1: ERROR tag 2: PHP error information
+#: includes/class-mla-settings.php:4148
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _export_settings $error_info = \"%2$s\"."
+msgstr "%1$s: _export_settings $error_info = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: backup file name 3: error message
+#: includes/class-mla-settings.php:4157
+#, php-format
+msgid "%1$s: Writing the settings file ( %2$s ) \"%3$s\"."
+msgstr "%1$s: skriva inställningsfilen (%2$s) \"%3$s\"."
+
+#. translators: 1: number of option settings
+#: includes/class-mla-settings.php:4163
+#, php-format
+msgid "Settings exported; %1$s settings recorded."
+msgstr "Inställningar exporterades. %1$s inställningar registreras."
+
+#: includes/class-mla-settings.php:4181
+msgid "No settings imported."
+msgstr "Inga inställningar importeras."
+
+#: includes/class-mla-settings.php:4190
+msgid "Please select an import settings file from the dropdown list."
+msgstr "Välj en fil Importera inställningar från den nedrullningsbara listan."
+
+#: includes/class-mla-settings.php:4194
+msgid "The import settings dropdown selection is missing."
+msgstr "Importera inställningar nerrullningslistan saknas."
+
+#. translators: 1: ERROR tag 2: PHP error information
+#: includes/class-mla-settings.php:4202
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _import_settings $error_info = \"%2$s\"."
+msgstr "%1$s: _import_settings $error_info = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: backup file name 3: error message
+#: includes/class-mla-settings.php:4211
+#, php-format
+msgid "%1$s: Reading the settings file ( %2$s ) \"%3$s\"."
+msgstr "%1$s: läser inställningsfilen (%2$s) \"%3$s\"."
+
+#: includes/class-mla-settings.php:4221
+msgctxt "message_list"
+msgid "updated"
+msgstr "uppdaterad"
+
+#: includes/class-mla-settings.php:4224
+msgctxt "message_list"
+msgid "unchanged"
+msgstr "oförändrat"
+
+#. translators: 1: number of option settings updated 2: number of option settings unchanged
+#: includes/class-mla-settings.php:4229
+#, php-format
+msgid "Settings imported; %1$s updated, %2$s unchanged."
+msgstr "Inställningarna importeras. %1$s uppdaterad, %2$s oförändrad."
+
+#: includes/class-mla-shortcodes.php:334
+#: includes/class-mla-shortcodes.php:1448
+#: includes/class-mla-shortcodes.php:2355
+#: includes/class-mla-shortcodes.php:2642
+msgid "Previous"
+msgstr "Föregående"
+
+#: includes/class-mla-shortcodes.php:335
+#: includes/class-mla-shortcodes.php:1449
+#: includes/class-mla-shortcodes.php:2404
+#: includes/class-mla-shortcodes.php:2648
+msgid "Next"
+msgstr "Nästa"
+
+#: includes/class-mla-shortcodes.php:442
+msgid "mla_debug empty gallery"
+msgstr "mla_debug tomt Galleri"
+
+#: includes/class-mla-shortcodes.php:511
+msgid ""
+"<strong>Photonic-enhanced [mla_gallery]</strong> type must be "
+"<strong>default</strong>, query = "
+msgstr ""
+"<strong>Photonic utökad [mla_gallery]</strong> typ måste vara "
+"<strong>standard</strong>, fråga ="
+
+#: includes/class-mla-shortcodes.php:859
+msgid "unknown"
+msgstr "okänd"
+
+#: includes/class-mla-shortcodes.php:1581
+msgid "mla_debug attributes"
+msgstr "mla_debug attribut"
+
+#: includes/class-mla-shortcodes.php:1582
+msgid "mla_debug arguments"
+msgstr "mla_debug argument"
+
+#: includes/class-mla-shortcodes.php:1674
+msgid "mla_debug empty cloud"
+msgstr "mla_debug Tom cloud"
+
+#: includes/class-mla-shortcodes.php:3023
+#: includes/class-mla-shortcodes.php:3351
+#: includes/class-mla-shortcodes.php:3382
+msgid "Invalid mla_gallery"
+msgstr "Ogiltig mla_gallery"
+
+#: includes/class-mla-shortcodes.php:3630
+msgid "mla_debug query"
+msgstr "mla_debug fråga"
+
+#: includes/class-mla-shortcodes.php:3631
+msgid "mla_debug request"
+msgstr "mla_debug begäran"
+
+#: includes/class-mla-shortcodes.php:3632
+msgid "mla_debug query_vars"
+msgstr "mla_debug query_vars"
+
+#: includes/class-mla-shortcodes.php:3633
+msgid "mla_debug post_count"
+msgstr "mla_debug post_count"
+
+#: includes/class-mla-shortcodes.php:3701
+msgid "mla_debug WHERE filter"
+msgstr "mla_debug där filtrerna"
+
+#: includes/class-mla-shortcodes.php:3720
+msgid "mla_debug modified WHERE filter"
+msgstr "mla_debug modifierad var filtrerna"
+
+#: includes/class-mla-shortcodes.php:3743
+msgid "mla_debug ORDER BY filter, incoming"
+msgstr "mla_debug SORTERA EFTER filter, inkommande"
+
+#: includes/class-mla-shortcodes.php:3743
+msgid "Replacement ORDER BY clause"
+msgstr "Ersättning SORTERA EFTER klasul"
+
+#: includes/class-mla-shortcodes.php:3766
+msgid "mla_debug posts_clauses filter"
+msgstr "mla_debug posts_clauses filter"
+
+#: includes/class-mla-shortcodes.php:3784
+msgid "mla_debug posts_clauses_request filter"
+msgstr "mla_debug posts_clauses_request filter"
+
+#: includes/class-mla-shortcodes.php:3974
+msgid "Invalid taxonomy"
+msgstr "Ogiltigt taxonomi"
+
+#: includes/class-mla-shortcodes.php:4180
+msgid "mla_debug query arguments"
+msgstr "mla_debug fråga argument"
+
+#: includes/class-mla-shortcodes.php:4181
+msgid "mla_debug last_query"
+msgstr "mla_debug last_query"
+
+#: includes/class-mla-shortcodes.php:4182
+msgid "mla_debug last_error"
+msgstr "mla_debug last_error"
+
+#: includes/class-mla-shortcodes.php:4183
+msgid "mla_debug num_rows"
+msgstr "mla_debug num_rows"
+
+#: includes/class-mla-shortcodes.php:4184
+msgid "mla_debug found_rows"
+msgstr "mla_debug found_rows"
+
+#: includes/class-mla-upload-list-table.php:177
+#: includes/class-mla-upload-optional-list-table.php:167
+msgctxt "list_table_column"
+msgid "Extension"
+msgstr "Filtillägg"
+
+#: includes/class-mla-upload-list-table.php:179
+msgctxt "list_table_column"
+msgid "Icon Type"
+msgstr "Ikontyp"
+
+#: includes/class-mla-upload-list-table.php:180
+msgctxt "list_table_column"
+msgid "Source"
+msgstr "Källa"
+
+#: includes/class-mla-upload-list-table.php:181
+msgctxt "list_table_column"
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-mla-upload-list-table.php:182
+#: includes/class-mla-upload-optional-list-table.php:169
+msgctxt "list_table_column"
+msgid "WordPress Type"
+msgstr "WordPress typ"
+
+#: includes/class-mla-upload-list-table.php:183
+#: includes/class-mla-upload-optional-list-table.php:170
+msgctxt "list_table_column"
+msgid "MLA Type"
+msgstr "MLA typ"
+
+#: includes/class-mla-upload-list-table.php:184
+msgctxt "list_table_column"
+msgid "Std. Source"
+msgstr "Std. källa"
+
+#: includes/class-mla-upload-list-table.php:185
+msgctxt "list_table_column"
+msgid "Std. Icon Type"
+msgstr "Std. ikontyp"
+
+#: includes/class-mla-upload-list-table.php:320
+#: includes/class-mla-view-list-table.php:308
+msgid "Revert to standard item"
+msgstr "Återgå till standard objekt"
+
+#: includes/class-mla-upload-list-table.php:320
+#: includes/class-mla-view-list-table.php:308
+msgid "Revert to Standard"
+msgstr "Återgå till Standard"
+
+#: includes/class-mla-upload-list-table.php:611
+msgid "Delete/Revert Custom"
+msgstr "Ta bort/Återställ anpassade"
+
+#: includes/class-mla-upload-optional-list-table.php:281
+msgid "Select this entry"
+msgstr "Välj denna post"
+
+#: includes/class-mla-upload-optional-list-table.php:414
+msgid "Select these entries"
+msgstr "Markera dessa poster"
+
+#: includes/class-mla-view-list-table.php:173
+msgctxt "list_table_column"
+msgid "Specification"
+msgstr "Specifikation"
+
+#: includes/class-mla-view-list-table.php:174
+msgctxt "list_table_column"
+msgid "Post Mime"
+msgstr "Verkställ Mime"
+
+#: includes/class-mla-view-list-table.php:175
+msgctxt "list_table_column"
+msgid "Table View"
+msgstr "Tabellvy"
+
+#: includes/class-mla-view-list-table.php:176
+msgctxt "list_table_column"
+msgid "Singular Name"
+msgstr "Singular etikett"
+
+#: includes/class-mla-view-list-table.php:177
+msgctxt "list_table_column"
+msgid "Plural Name"
+msgstr "Plural etikett"
+
+#: includes/class-mla-view-list-table.php:178
+msgctxt "list_table_column"
+msgid "Order"
+msgstr "Ordning"
+
+#: includes/class-mla-wpml-support.php:372
+msgid "Duplicate translation created; update as desired."
+msgstr "Duplicera översättning skapat; uppdatera."
+
+#. translators: 1: - 4: page subheader values
+#: includes/class-mla-wpml-support.php:1215
+#, php-format
+msgid ""
+"In this tab you can find a number of options for controlling WPML-specific "
+"operations. Scroll down to find options for %1$s and %2$s. Be sure to click "
+"\"Save Changes\" at the bottom of the tab to save any changes you make."
+msgstr ""
+"På denna flik kan du hitta ett antal alternativ för att styra WPML-specifika "
+"operationer. Bläddra ner till sökalternativ för %1$s och %2$s. måste du "
+"klicka på \"Spara ändringar\" längst ned på fliken om du vill spara de "
+"ändringar du gör."
+
+#: includes/class-mla-wpml-support.php:1710
+#: includes/class-mla-wpml-support.php:1716
+#, php-format
+msgid "Edit the %s translation"
+msgstr "Redigera översättningen %s"
+
+#: includes/class-mla-wpml-support.php:1722
+#, php-format
+msgid "Add translation to %s"
+msgstr "Lägg till översättning för %s"
+
+#: includes/mla-main-search-box-template.php:34
+#: includes/mla-main-search-box-template.php:36
+#: includes/mla-media-modal-js-template.php:17
+msgid "Search Media"
+msgstr "Sök meda"
+
+#: includes/mla-plugin-loader.php:43
+msgid "The Media Library Assistant cannot load."
+msgstr "Media Library Assistant kan inte laddas."
+
+#: includes/mla-plugin-loader.php:45
+msgid "You must resolve these conflicts before this plugin can safely load."
+msgstr "Innan denna plugin kan säkert läsas in måste du lösa dessa konflikter."

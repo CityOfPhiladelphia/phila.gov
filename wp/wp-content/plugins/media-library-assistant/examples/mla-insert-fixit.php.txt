@@ -1,0 +1,593 @@
+<?php
+/**
+ * Synchronizes Media Library values to and from post/page inserted images
+ *
+ * Adds a Tools/Insert Fixit submenu with buttons to perform the operations.
+ *
+ * @package Insert Fixit
+ * @version 1.00
+ */
+
+/*
+Plugin Name: MLA Insert Fixit
+Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
+Description: Synchronizes Media Library values to and from post/page inserted images
+Author: David Lingren
+Version: 1.00
+Author URI: http://fairtradejudaica.org/our-story/staff/
+
+Copyright 2015 David Lingren
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You can get a copy of the GNU General Public License by writing to the
+	Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+*/
+
+/**
+ * Class Insert Fixit implements a Tools submenu page with several image-fixing tools.
+ *
+ * @package Insert Fixit
+ * @since 1.00
+ */
+class Insert_Fixit {
+	/**
+	 * Current version number
+	 *
+	 * @since 1.00
+	 *
+	 * @var	string
+	 */
+	const CURRENT_VERSION = '1.00';
+
+	/**
+	 * Slug prefix for registering and enqueueing submenu pages, style sheets and scripts
+	 *
+	 * @since 1.00
+	 *
+	 * @var	string
+	 */
+	const SLUG_PREFIX = 'insertfixit-';
+
+	/**
+	 * WordPress version test for $wpdb->esc_like() Vs esc_sql()
+	 *
+	 * @since 1.00
+	 *
+	 * @var	boolean
+	 */
+	private static $wp_4dot0_plus = true;
+
+	/**
+	 * Initialization function, similar to __construct()
+	 *
+	 * @since 1.00
+	 *
+	 * @return	void
+	 */
+	public static function initialize() {
+		self::$wp_4dot0_plus = version_compare( get_bloginfo('version'), '4.0', '>=' );
+		
+		add_action( 'admin_init', 'Insert_Fixit::admin_init_action' );
+		add_action( 'admin_menu', 'Insert_Fixit::admin_menu_action' );
+	}
+
+	/**
+	 * Admin Init Action
+	 *
+	 * @since 1.00
+	 *
+	 * @return	void
+	 */
+	public static function admin_init_action() {
+	}
+
+	/**
+	 * Add submenu page in the "Tools" section
+	 *
+	 * @since 1.00
+	 *
+	 * @return	void
+	 */
+	public static function admin_menu_action( ) {
+		$current_page_hook = add_submenu_page( 'tools.php', 'Insert Fixit Tools', 'Insert Fixit', 'manage_options', self::SLUG_PREFIX . 'tools', 'Insert_Fixit::render_tools_page' );
+		add_filter( 'plugin_action_links', 'Insert_Fixit::add_plugin_links_filter', 10, 2 );
+	}
+
+	/**
+	 * Add the "Tools" link to the Plugins section entry
+	 *
+	 * @since 1.00
+	 *
+	 * @param	array 	array of links for the Plugin, e.g., "Activate"
+	 * @param	string 	Directory and name of the plugin Index file
+	 *
+	 * @return	array	Updated array of links for the Plugin
+	 */
+	public static function add_plugin_links_filter( $links, $file ) {
+		if ( $file == 'mla-insert-fixit.php' ) {
+			$tools_link = sprintf( '<a href="%s">%s</a>', admin_url( 'tools.php?page=' . self::SLUG_PREFIX . 'tools' ), 'Tools' );
+			array_unshift( $links, $tools_link );
+		}
+
+		return $links;
+	}
+
+	/**
+	 * Render (echo) the "Insert Fixit" submenu in the Tools section
+	 *
+	 * @since 1.00
+	 *
+	 * @return	void Echoes HTML markup for the submenu page
+	 */
+	public static function render_tools_page() {
+error_log( 'Insert_Fixit::render_tools_page() $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
+		if ( !current_user_can( 'manage_options' ) ) {
+			echo "Insert Fixit - Error</h2>\n";
+			wp_die( 'You do not have permission to manage plugin settings.' );
+		}
+		
+		$setting_actions = array(
+			'help' => array( 'handler' => '', 'comment' => '<strong>Enter first and (optional) last ID values above to restrict tool application range</strong>. To operate on one ID, enter just the "First ID". The default is to perform the operation on <strong>all posts/pages</strong>.<br />&nbsp;<br />You can find ID values by hovering over the post/page title in the "Title" column of the All Posts/All Pages submenu tables; look for the number following <code>post=</code>.' ),
+			'warning' => array( 'handler' => '', 'comment' => '<strong>These tools make permanent updates to your database.</strong> Make a backup before you use the tools so you can restore your old values if you don&rsquo;t like the results.' ),
+
+			'c0' => array( 'handler' => '', 'comment' => '<h3>Media Library item to Post/Page inserts</h3>' ),
+			'ALT from Library' => array( 'handler' => '_copy_from_media_library',
+				'comment' => 'Copy ALT Text from Media Library item to Post/Page inserts.' ),
+			'c1' => array( 'handler' => '', 'comment' => '<h3>Post/Page inserts to Media Library item</h3>' ),
+			'ALT to Library' => array( 'handler' => '_copy_to_media_library',
+				'comment' => 'Copy ALT Text from Post/Page inserts to Media Library item' ),
+			'c2' => array( 'handler' => '', 'comment' => '<hr>' ),
+			'c3' => array( 'handler' => '', 'comment' => '<h3>Refresh Caches</h3>' ),
+			'c4' => array( 'handler' => '', 'comment' => 'If you have a large number of posts/pages and/or Media Library items you can use the cache refresh operations to break up processing into smaller steps. Try clicking the "Image Inserts" button, then the "Image Objects" button to build these intermediate data structures and save them in the WOrdPress cache for fifteen minutes. That will make the "Copy" operations above go quicker.<br>&nbsp;' ),
+			'Image Inserts' => array( 'handler' => '_build_image_inserts_cache',
+				'comment' => 'Find all post/page inserts and save in cache for fifteen minutes' ),
+			'Image objects' => array( 'handler' => '_build_image_objects_cache',
+				'comment' => 'Find all image items and save in cache for fifteen minutes' ),
+ 		);
+		
+		echo '<div class="wrap">' . "\n";
+		echo "\t\t" . '<div id="icon-tools" class="icon32"><br/></div>' . "\n";
+		echo "\t\t" . '<h2>Insert Fixit Tools v' . self::CURRENT_VERSION . '</h2>' . "\n";
+
+		if ( isset( $_REQUEST[ self::SLUG_PREFIX . 'action' ] ) ) {
+			$label = $_REQUEST[ self::SLUG_PREFIX . 'action' ];
+			if( isset( $setting_actions[ $label ] ) ) {
+				$action = $setting_actions[ $label ]['handler'];
+				if ( ! empty( $action ) ) {
+					if ( method_exists( 'Insert_Fixit', $action ) ) {
+						echo self::$action();
+					} else {
+						echo "\t\t<br>ERROR: handler does not exist for action: \"{$label}\"\n";
+					}
+				} else {
+					echo "\t\t<br>ERROR: no handler for action: \"{$label}\"\n";
+				}
+			} else {
+				echo "\t\t<br>ERROR: unknown action: \"{$label}\"\n";
+			}
+		}
+
+		echo "\t\t" . '<div style="width:700px">' . "\n";
+		echo "\t\t" . '<form action="' . admin_url( 'tools.php?page=' . self::SLUG_PREFIX . 'tools' ) . '" method="post" class="' . self::SLUG_PREFIX . 'tools-form-class" id="' . self::SLUG_PREFIX . 'tools-form-id">' . "\n";
+		echo "\t\t" . '  <p class="submit" style="padding-bottom: 0;">' . "\n";
+		echo "\t\t" . '    <table>' . "\n";
+
+		echo "\t\t" . '      <tr valign="top">' . "\n";
+		echo "\t\t" . '        <td width="24%" style="text-align: right; padding-right: 5px" >First Post/Page ID</td>' . "\n";
+		echo "\t\t" . '        <td width="24%" style="text-align: left;">' . "\n";
+		echo "\t\t" . '          <input name="' . self::SLUG_PREFIX . 'post_lower" type="text" size="5" value="">' . "\n";
+		echo "\t\t" . '        </td>' . "\n";
+		echo "\t\t" . '        <td width="24%" style="text-align: right; padding-right: 5px" >First Attachment ID</td>' . "\n";
+		echo "\t\t" . '        <td width="24%" style="text-align: left;"><input name="' . self::SLUG_PREFIX . 'attachment_lower" type="text" size="5" value=""></td>' . "\n";
+		echo "\t\t" . '      </tr>' . "\n";
+		
+		echo "\t\t" . '      <tr valign="top">' . "\n";
+		echo "\t\t" . '        <td width="24%" style="text-align: right; padding-right: 5px" >Last Post/Page ID</td>' . "\n";
+		echo "\t\t" . '        <td style="text-align: left;"><input name="' . self::SLUG_PREFIX . 'post_upper" type="text" size="5" value=""></td>' . "\n";
+		echo "\t\t" . '        <td width="24%" style="text-align: right; padding-right: 5px" >Last Attachment ID</td>' . "\n";
+		echo "\t\t" . '        <td style="text-align: left;"><input name="' . self::SLUG_PREFIX . 'attachment_upper" type="text" size="5" value=""></td>' . "\n";
+		echo "\t\t" . '      </tr>' . "\n";
+		echo "\t\t" . '    </table>' . "\n";
+		
+		echo "\t\t" . '    <table>' . "\n";
+		
+		foreach ( $setting_actions as $label => $action ) {
+			if ( empty( $action['handler'] ) ) {
+				echo "\t\t" . '      <tr><td colspan=2 style="padding: 2px 0px;">' . $action['comment'] . "</td></tr>\n";
+			} else {
+				echo "\t\t" . '      <tr><td width="150px">' . "\n";
+				echo "\t\t" . '        <input name="' . self::SLUG_PREFIX . 'action" type="submit" class="button-primary" style="width: 140px;" value="' . $label . '" />&nbsp;&nbsp;' . "\n";
+				echo "\t\t" . '      </td><td>' . "\n";
+				echo "\t\t" . '        ' . $action['comment'] . "\n";
+				echo "\t\t" . '      </td></tr>' . "\n";
+			}
+		}
+			
+		echo "\t\t" . '    </table>' . "\n";
+		echo "\t\t" . '  </p>' . "\n";
+		echo "\t\t" . '</form>' . "\n";
+		echo "\t\t" . '</div>' . "\n";
+		echo "\t\t" . '</div><!-- wrap -->' . "\n";
+	}
+
+	/**
+	 * Array of post/page IDs giving inserted image URL and ALT Text:
+	 * ID => array( 'src' => image URL, 'alt' => ALT Text
+	 *
+	 * @since 1.00
+	 *
+	 * @var	array
+	 */
+	private static $image_inserts = array();
+
+	/**
+	 * Compile array of image URLs inserted in posts/pages
+ 	 *
+	 * @since 1.00
+	 *
+	 * @param	boolean	$use_cache True to use an existing cache, false to force rebuild
+	 *
+	 * @return	void
+	 */
+	private static function _build_image_inserts_cache( $use_cache = false ) {
+		global $wpdb;
+		
+		if ( $use_cache ) {
+			self::$image_inserts = get_transient( self::SLUG_PREFIX . 'image_inserts' );
+			if ( is_array( self::$image_inserts ) ) {
+//error_log( __LINE__ . " Insert_Fixit::_build_image_inserts_cache using cached self::\$image_inserts " . var_export( self::$image_inserts, true ), 0 );
+				return;
+			}
+		}
+
+		$return = delete_transient( self::SLUG_PREFIX . 'image_inserts' );
+//error_log( __LINE__ . " Insert_Fixit::_build_image_inserts_cache delete_transient return = " . var_export( $return, true ), 0 );
+		
+		if ( ! empty( $_REQUEST[ self::SLUG_PREFIX . 'post_lower' ] ) ) {
+			$lower_bound = (integer) $_REQUEST[ self::SLUG_PREFIX . 'post_lower' ];
+		} else {
+			$lower_bound = 0;
+		}
+
+		if ( ! empty( $_REQUEST[ self::SLUG_PREFIX . 'post_upper' ] ) ) {
+			$upper_bound = (integer) $_REQUEST[ self::SLUG_PREFIX . 'post_upper' ];
+		} elseif ( $lower_bound ) {
+			$upper_bound = $lower_bound;
+		} else {
+			$upper_bound = 0x7FFFFFFF;
+		}
+
+		$query = sprintf( 'SELECT ID, post_content FROM %1$s WHERE ( post_type IN ( \'post\', \'page\' ) AND ( post_status = \'publish\' ) AND ( ID >= %2$d ) AND ( ID <= %3$d ) AND ( post_content LIKE \'%4$s\' ) ) ORDER BY ID', $wpdb->posts, $lower_bound, $upper_bound, '%<img%' );
+		$results = $wpdb->get_results( $query );
+//error_log( __LINE__ . ' Insert_Fixit::_build_image_inserts_cache() $results = ' . var_export( $results, true ), 0 );
+
+		$upload_dir = wp_upload_dir();
+//error_log( __LINE__ . ' Insert_Fixit::_build_image_inserts_cache() $upload_dir = ' . var_export( $upload_dir, true ), 0 );
+		$upload_dir = $upload_dir['baseurl'] . '/';
+
+		$image_inserts = array();
+		foreach ( $results as $result ) {
+			$match_count = preg_match_all( '/\<img.*src="([^"]*)".*alt="([^"]*)"/', $result->post_content, $matches, PREG_OFFSET_CAPTURE );
+//error_log( __LINE__ . " Insert_Fixit::_build_image_inserts_cache( {$result->ID} ) \$matches = " . var_export( $matches, true ), 0 );
+			if ( $match_count ) {
+				$image_inserts[ $result->ID ]['content'] = $result->post_content;
+
+				foreach( $matches[1] as $index => $match ) {
+					$file = str_replace( $upload_dir, '', $match[0] );
+					$image_inserts[ $result->ID ]['files'][] = $file;
+					$image_inserts[ $result->ID ]['inserts'][ $index ] = array( 'src' => $file, 'src_offset' => $match[1] );
+				}
+
+				foreach( $matches[2] as $index => $match ) {
+					$image_inserts[ $result->ID ]['inserts'][ $index ]['alt'] = $match[0];
+					$image_inserts[ $result->ID ]['inserts'][ $index ]['alt_offset'] = $match[1];
+				}
+
+				$image_inserts[ $result->ID ]['replacements'] = array();
+			}
+		}
+error_log( __LINE__ . " Insert_Fixit::_build_image_inserts_cache \$image_inserts " . var_export($image_inserts, true ), 0 );
+
+		$return = set_transient( self::SLUG_PREFIX . 'image_inserts', $image_inserts, 900 ); // fifteen minutes
+//error_log( __LINE__ . " Insert_Fixit::_build_image_inserts_cache set_transient return = " . var_export( $return, true ), 0 );
+		self::$image_inserts = $image_inserts;
+		return 'Image inserts cache refreshed.';
+	} // _build_image_inserts_cache
+
+	/**
+	 * Array of post/page IDs giving inserted image URL and ALT Text:
+	 * ID => array( 'src' => image URL, 'alt' => ALT Text
+	 *
+	 * @since 1.00
+	 *
+	 * @var	array
+	 */
+	private static $image_objects = array();
+
+	/**
+	 * Compile array of image URLs inserted in posts/pages
+ 	 *
+	 * @since 1.00
+	 *
+	 * @return	void
+	 */
+	private static function _build_image_objects_cache( $use_cache = false ) {
+		global $wpdb;
+		
+		if ( $use_cache ) {
+			self::$image_objects = get_transient( self::SLUG_PREFIX . 'image_objects' );
+			if ( is_array( self::$image_objects ) ) {
+//error_log( __LINE__ . " Insert_Fixit::_build_image_objects_cache using cached self::\$image_objects " . var_export( self::$image_objects, true ), 0 );
+				return;
+			}
+		}
+
+		$return = delete_transient( self::SLUG_PREFIX . 'image_objects' );
+//error_log( __LINE__ . " Insert_Fixit::_build_image_inserts_cache delete_transient return = " . var_export( $return, true ), 0 );
+		
+		if ( ! empty( $_REQUEST[ self::SLUG_PREFIX . 'attachment_lower' ] ) ) {
+			$lower_bound = (integer) $_REQUEST[ self::SLUG_PREFIX . 'attachment_lower' ];
+		} else {
+			$lower_bound = 0;
+		}
+
+		if ( ! empty( $_REQUEST[ self::SLUG_PREFIX . 'attachment_upper' ] ) ) {
+			$upper_bound = (integer) $_REQUEST[ self::SLUG_PREFIX . 'attachment_upper' ];
+		} elseif ( $lower_bound ) {
+			$upper_bound = $lower_bound;
+		} else {
+			$upper_bound = 0x7FFFFFFF;
+		}
+
+		$where = str_replace( '%', '%%', wp_post_mime_type_where( 'image', '' ) );
+		$query = sprintf( 'SELECT ID FROM %1$s WHERE ( ( post_type = \'attachment\' ) %2$s AND ( ID >= %3$d ) AND ( ID <= %4$d ) ) ORDER BY ID', $wpdb->posts, $where, $lower_bound, $upper_bound );
+		$results = $wpdb->get_results( $query );
+//error_log( __LINE__ . ' Insert_Fixit::_build_image_objects_cache() $results = ' . var_export( $results, true ), 0 );
+
+		/*
+		 * Load the image_inserts array
+		 */
+		self::_build_image_inserts_cache( true );
+		
+		$references = array();
+		foreach ( $results as $result ) {
+			// assemble the files
+			$files = array();
+
+			$base_file = get_metadata( 'post', $result->ID, '_wp_attached_file', true );
+			if ( empty( $base_file ) ) {
+				$base_file = '';
+			}
+
+			$pathinfo = pathinfo( $base_file );
+			if ( ( ! isset( $pathinfo['dirname'] ) ) || '.' == $pathinfo['dirname'] ) {
+				$path = '/';
+			} else {
+				$path = $pathinfo['dirname'] . '/';
+			}
+
+			$file = $pathinfo['basename'];
+
+			$attachment_metadata = get_metadata( 'post', $result->ID, '_wp_attachment_metadata', true );
+			if ( empty( $attachment_metadata ) ) {
+				$attachment_metadata = array();
+			}
+
+			$sizes = isset( $attachment_metadata['sizes'] ) ? $attachment_metadata['sizes'] : NULL;
+			if ( ! empty( $sizes ) && is_array( $sizes ) ) {
+				/* Using the path and name as the array key ensures each name is added only once */
+				foreach ( $sizes as $size => $size_info ) {
+					$files[ $path . $size_info['file'] ] = $path . $size_info['file'];
+				}
+			}
+
+			if ( ! empty( $base_file ) ) {
+				$files[ $base_file ] = $base_file;
+			}
+//error_log( __LINE__ . " Insert_Fixit::_array_image_inserts_references( {$attachment->ID} ) files = " . var_export( $files, true ), 0 );
+			/*
+			 * inserts	Array of specific files (i.e., sizes) found in one or more posts/pages
+			 *			as an image (<img>). The array key is the path and file name.
+			 *			The array value is the post/page ID
+			 */
+			$inserts = array();
+			
+			foreach( $files as $file ) {
+				foreach ( self::$image_inserts as $insert_id => $value ) {
+					if ( in_array( $file, $value['files'] ) ) {
+						$inserts[ $insert_id ][] = $file;
+					}
+				} // foreach insert
+			} // foreach file
+			
+			if ( ! empty( $inserts ) ) {
+				$references[ $result->ID ] = $inserts;
+			}
+		} // each result
+
+		$return = set_transient( self::SLUG_PREFIX . 'image_objects', $references, 900 ); // fifteen minutes
+//error_log( __LINE__ . " Insert_Fixit::_build_image_objects_cache set_transient return = " . var_export( $return, true ), 0 );
+error_log( __LINE__ . " Insert_Fixit::_build_image_objects_cache set_transient references = " . var_export( $references, true ), 0 );
+		self::$image_objects = $references;
+		return 'Image objects cache refreshed.';
+	} // _build_image_objects_cache
+
+	/**
+	 * Copy ALT Text from Media Library item to Post/Page inserts
+ 	 *
+	 * @since 1.00
+	 *
+	 * @return	string	HTML markup for results/messages
+	 */
+	private static function _copy_from_media_library() {
+		global $wpdb;
+		
+		/*
+		 * Load the image_inserts array
+		 */
+		self::_build_image_inserts_cache( true );
+		
+		/*
+		 * Load the image_objects array
+		 */
+		self::_build_image_objects_cache( true );
+		
+		// Initialize statistics
+		$image_inserts = count( self::$image_inserts );
+		$image_objects = count( self::$image_objects );
+		$updates = 0;
+		$updated_posts = 0;
+		$errors = 0;
+		
+		foreach ( self::$image_objects as $attachment_id => $references ) {
+			$alt_text = get_metadata( 'post', $attachment_id, '_wp_attachment_image_alt', true );
+			if ( empty( $alt_text ) ) {
+				$alt_text = '';
+			}
+			
+			// Add replacements to each post/page in self::$image_inserts
+			foreach ( $references as $post_id => $files ) {
+				$inserts = self::$image_inserts[ $post_id ];
+				foreach ( $files as $file ) {
+					foreach ( $inserts['inserts'] as $insert ) {
+error_log( __LINE__ . " Insert_Fixit::_copy_from_media_library file test '{$file}' == " . var_export( $insert['src'], true ), 0 );
+						if ( $file != $insert['src'] ) {
+							continue;
+						}
+					
+error_log( __LINE__ . " Insert_Fixit::_copy_from_media_library ALT text test '{$alt_text}' ==  " . var_export( $insert['alt'], true ), 0 );
+						if ( $alt_text == $insert['alt'] ) {
+							continue;
+						}
+						
+						// Queue replacement
+						self::$image_inserts[ $post_id ]['replacements'][ $insert['alt_offset'] ] = array( 'length' => strlen( $insert['alt'] ), 'text' => $alt_text );
+					} // foreach file
+				} // foreach reference
+			} // foreach insert
+		} // foreach attachment
+		
+		// Apply replacements
+		foreach ( self::$image_inserts as $post_id => $inserts ) {
+			$replacements = $inserts['replacements'];
+			if ( ! empty( $replacements ) ) {
+				krsort( $replacements );
+error_log( __LINE__ . " Insert_Fixit::_copy_from_media_library( {$post_id} ) replacements =  " . var_export( $replacements, true ), 0 );
+				$post_content = $inserts['content'];
+				foreach ( $replacements as $offset => $replacement ) {
+					$post_content = substr_replace( $post_content, $replacement['text'], $offset, $replacement['length'] );
+					$updates++;
+				} // foreach replacement
+error_log( __LINE__ . " Insert_Fixit::_copy_from_media_library( {$post_id} ) new post_content =  " . var_export( $post_content, true ), 0 );
+				$new_content = array( 'ID' => $post_id, 'post_content' => $post_content );
+				$result = wp_update_post( $new_content, true );
+error_log( __LINE__ . " Insert_Fixit::_copy_from_media_library( {$post_id} ) update result =  " . var_export( $result, true ), 0 );
+				if ( is_wp_error( $result ) ) {
+					$errors++;
+				}
+				$updated_posts++;
+			} // has replacements
+		} // foreach post/page
+
+		/*
+		 * Invalidate the image_inserts cache, since post/page content has changed.
+		 */
+		if ( $updated_posts ) {		
+			delete_transient( self::SLUG_PREFIX . 'image_inserts' );
+		}
+		
+		return "<br>Copy from Library matched {$image_inserts} posts/pages to {$image_objects} attachments and made {$updates} update(s) in {$updated_posts} posts/pages. There were {$errors} error(s).\n";
+	} // _copy_from_media_library
+
+	/**
+	 * Copy ALT Text from Post/Page inserts to Media Library item 
+ 	 *
+	 * @since 1.00
+	 *
+	 * @return	string	HTML markup for results/messages
+	 */
+	private static function _copy_to_media_library() {
+		global $wpdb;
+		
+		/*
+		 * Load the image_inserts array
+		 */
+		self::_build_image_inserts_cache( true );
+		
+		/*
+		 * Load the image_objects array
+		 */
+		self::_build_image_objects_cache( true );
+		
+		$image_inserts = count( self::$image_inserts );
+		$image_objects = count( self::$image_objects );
+		$updated_attachments = 0;
+		$errors = 0;
+		
+		foreach ( self::$image_objects as $attachment_id => $references ) {
+			$alt_text = get_metadata( 'post', $attachment_id, '_wp_attachment_image_alt', true );
+			if ( empty( $alt_text ) ) {
+				$alt_text = '';
+			}
+			
+			// Make sure the most recent changes are the last updates applied
+			ksort( $references );
+
+			// Find most recent replacement
+			$replacement = NULL;
+			foreach ( $references as $post_id => $files ) {
+				$inserts = self::$image_inserts[ $post_id ];
+				foreach ( $files as $file ) {
+					foreach ( $inserts['inserts'] as $insert ) {
+error_log( __LINE__ . " Insert_Fixit::_copy_to_media_library file test '{$file}' == " . var_export( $insert['src'], true ), 0 );
+						if ( $file != $insert['src'] ) {
+							continue;
+						}
+					
+error_log( __LINE__ . " Insert_Fixit::_copy_to_media_library ALT text test '{$alt_text}' ==  " . var_export( $insert['alt'], true ), 0 );
+						if ( $alt_text == $insert['alt'] ) {
+							continue;
+						}
+						
+						// Queue replacement
+						$replacement = $insert['alt'];
+					} // foreach file
+				} // foreach reference
+			} // foreach insert
+			
+			// Apply replacement
+			if ( ! is_null( $replacement ) ) {
+error_log( __LINE__ . " Insert_Fixit::_copy_to_media_library( {$attachment_id} ) replacement =  " . var_export( $replacement, true ), 0 );
+				if ( update_metadata( 'post', $attachment_id, '_wp_attachment_image_alt', $replacement ) ) {
+					$updated_attachments++;
+				} else {
+					$errors++;
+				}
+			}
+		} // foreach attachment
+		
+		/*
+		 * Invalidate the image_objects cache, since Media Library item content has changed.
+		 */
+		if ( $updated_attachments ) {		
+			delete_transient( self::SLUG_PREFIX . 'image_objects' );
+		}
+		
+		return "<br>Copy to Library matched {$image_inserts} posts/pages to {$image_objects} attachments and updated {$updated_attachments} Media Library items. There were {$errors} error(s).\n";
+	} // _copy_to_media_library
+} //Insert_Fixit
+
+/*
+ * Install the submenu at an early opportunity
+ */
+add_action('init', 'Insert_Fixit::initialize');
+?>

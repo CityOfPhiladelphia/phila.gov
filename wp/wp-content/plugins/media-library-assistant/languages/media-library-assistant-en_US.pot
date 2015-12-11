@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Media Library Assistant\n"
-"POT-Creation-Date: 2015-10-09 19:32-0700\n"
+"POT-Creation-Date: 2015-12-01 21:17-0800\n"
 "PO-Revision-Date: 2015-08-21 21:38-0800\n"
 "Last-Translator: David Lingren <david@fairtradejudaica.org>\n"
 "Language-Team: David Lingren <david@fairtradejudaica.org>\n"
@@ -20,766 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: tests\n"
 "X-Poedit-SearchPath-2: index.php\n"
 
-#. translators: 1: ERROR tag 2: index
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _build_pdf_indirect_objects bad value at $index = \"%2$d\"."
-msgstr ""
-
-msgid "ERROR"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: source offset 3: nest level
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _parse_pdf_dictionary offset = %2$d, nest = %3$d."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: dictionary excerpt
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _parse_pdf_dictionary no end delimiter dump = %2$s."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: entry name 3: value excerpt
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _parse_pdf_dictionary bad value [ %2$s ] dump = %3$s"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: path and file
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: File \"%2$s\", startxref not found."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: path and file name
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_load_template file \"%2$s\" not found."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_load_template file \"%2$s\" bad source type \"%3$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: template excerpt
-#, php-format
-msgctxt "error_log"
-msgid ""
-"%1$s: _find_template_substring no template end delimiter, tail = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: template excerpt
-#, php-format
-msgctxt "error_log"
-msgid ""
-"%1$s: mla_parse_array_template no template end delimiter, tail = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: template excerpt
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_parse_template no end delimiter, tail = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: template string
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _find_test_substring no end delimiter, tail = \"%2$s\"."
-msgstr ""
-
-msgid "Test; no closing parenthesis "
-msgstr ""
-
-#. translators: 1: ERROR tag 2: node type, e.g., template
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _evaluate_template_array_node unknown type \"%2$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: node type, e.g., template
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _evaluate_template_node unknown type \"%2$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: template excerpt
-#, php-format
-msgctxt "error_log"
-msgid ""
-"%1$s: mla_get_template_placeholders no template-end delimiter dump = \"%2$s"
-"\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: function name 3: non-array value
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: %2$s non-array \"%3$s\""
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: query filter details
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
-msgstr ""
-
-msgid "DEBUG"
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: query details
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: SQL statement
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: search filter details
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_query_posts_search_filter = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: where filter details
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_query_posts_where_filter = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: join filter details
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_query_posts_join_filter = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: orderby details details
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: SQL clauses
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: DEBUG tag 2: SQL clauses
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: post ID
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_get_attachment_by_id(%2$d) not found."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: post ID 3: post_type
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_get_attachment_by_id(%2$d) wrong post_type \"%3$s\"."
-msgstr ""
-
-msgid "NO REFERENCE TESTS"
-msgstr ""
-
-msgid "ORPHAN"
-msgstr ""
-
-msgid "UNUSED"
-msgstr ""
-
-msgid "UNATTACHED"
-msgstr ""
-
-msgid "INVALID PARENT"
-msgstr ""
-
-#. translators: 1: post_type, 2: post_title, 3: post ID, 4: query string, 5: error message
-#, php-format
-msgid "(%1$s) %2$s (ID %3$d) query \"%4$s\" failed, returning \"%5$s\""
-msgstr ""
-
-msgctxt "error_log"
-msgid "mla_parse_xmp_metadata xml_parse_into_struct failed."
-msgstr ""
-
-msgctxt "error_log"
-msgid "mla_parse_xmp_metadata set option failed."
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "No"
-msgstr ""
-
-#. translators: 1: meta_key
-#, php-format
-msgid "Deleting %1$s"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: meta_key
-#, php-format
-msgid "%1$s: meta:%2$s not found"
-msgstr ""
-
-#. translators: 1: meta_key 2: meta_value
-#. translators: 1: meta_key 2: new_value
-#. translators: 1: meta_key 2: meta_value
-#, php-format
-msgid "Adding %1$s = %2$s"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: meta_key
-#, php-format
-msgid "%1$s: Adding meta:%2$s; not found"
-msgstr ""
-
-#. translators: 1: meta_key
-#, php-format
-msgid "Deleting Null meta:%1$s"
-msgstr ""
-
-#. translators: 1: element name 2: old_value 3: new_value
-#, php-format
-msgid "Changing %1$s from \"%2$s\" to \"%3$s\""
-msgstr ""
-
-#. translators: 1: ERROR tag 2: meta_key
-#, php-format
-msgid "%1$s: Changing meta:%2$s; not found"
-msgstr ""
-
-#. translators: 1: meta_key
-#, php-format
-msgid "Deleting old %1$s values"
-msgstr ""
-
-#. translators: 1: meta_key 2: old_value 3: new_value 4: update count
-#, php-format
-msgid "Changing %1$s from \"%2$s\" to \"%3$s\"; %4$d updates"
-msgstr ""
-
-msgid "Could not retrieve Attachment."
-msgstr ""
-
 msgid "Title"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: old_value
-#, php-format
-msgid "%1$s: Could not change Name/Slug \"%2$s\"; name already exists"
-msgstr ""
-
-msgid "Name/Slug"
-msgstr ""
-
-#. translators: 1: old_value
-#, php-format
-msgid "Deleting ALT Text, was \"%1$s\""
-msgstr ""
-
-#. translators: 1: ERROR tag 2: old_value
-#, php-format
-msgid "%1$s: Could not delete ALT Text, remains \"%2$s\""
-msgstr ""
-
-msgid "ALT Text"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: old_value 3: new_value
-#, php-format
-msgid "%1$s: Could not change ALT Text from \"%2$s\" to \"%3$s\""
-msgstr ""
-
-msgid "Caption"
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "Parent"
-msgstr ""
-
-msgid "Menu Order"
-msgstr ""
-
-msgid "Author"
-msgstr ""
-
-msgid "Comments"
-msgstr ""
-
-msgid "Pings"
-msgstr ""
-
-msgid "Adding"
-msgstr ""
-
-msgid "Removing"
-msgstr ""
-
-msgid "Replacing"
-msgstr ""
-
-msgid "Ignoring"
-msgstr ""
-
-#. translators: 1: action_name, 2: taxonomy
-#, php-format
-msgid "%1$s \"%2$s\" terms"
-msgstr ""
-
-#. translators: 1: taxonomy
-#, php-format
-msgid "You cannot assign \"%1$s\" terms"
-msgstr ""
-
-#. translators: 1: post ID
-#, php-format
-msgid "Item %1$d, no changes detected."
-msgstr ""
-
-#. translators: 1: post ID
-#, php-format
-msgid "Item %1$d updated."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: post ID
-#, php-format
-msgid "%1$s: Item %2$d update failed."
-msgstr ""
-
-msgctxt "tag_delimiter"
-msgid ","
-msgstr ""
-
-msgid "Upload New Media items"
-msgstr ""
-
-msgid "Open Bulk Edit area"
-msgstr ""
-
-msgid "Close Bulk Edit area"
-msgstr ""
-
-msgid "An ajax.fail error has occurred. Please reload the page and try again."
-msgstr ""
-
-msgid "An ajax.done error has occurred. Please reload the page and try again."
-msgstr ""
-
-msgid "more"
-msgstr ""
-
-msgid "less"
-msgstr ""
-
-msgid "Add"
-msgstr ""
-
-msgid "Remove"
-msgstr ""
-
-msgid "Replace"
-msgstr ""
-
-msgid ""
-"IMPORTANT: Make your entries BEFORE uploading new items. Pull down the Help "
-"menu for more information."
-msgstr ""
-
-msgid "Reset"
-msgstr ""
-
-msgid "No Change"
-msgstr ""
-
-msgid "Allow"
-msgstr ""
-
-msgid "Do not allow"
-msgstr ""
-
-msgid "Parent ID"
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Custom field mapping updated."
-msgstr ""
-
-msgid "IPTC/EXIF mapping updated."
-msgstr ""
-
-#. translators: date_i18n format for last modified date and time
-msgid "M j, Y @ G:i"
-msgstr ""
-
-msgid "Last modified"
-msgstr ""
-
-msgid "Map Custom Field metadata for this item"
-msgstr ""
-
-msgid "Map Custom Field metadata"
-msgstr ""
-
-msgid "Map IPTC/EXIF metadata for this item"
-msgstr ""
-
-msgid "Map IPTC/EXIF metadata"
-msgstr ""
-
-msgid "Parent Info"
-msgstr ""
-
-msgid "Attachment Metadata"
-msgstr ""
-
-msgid "Featured in"
-msgstr ""
-
-msgid "Inserted in"
-msgstr ""
-
-msgid "Gallery in"
-msgstr ""
-
-msgid "MLA Gallery in"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: function name 3: template key
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: %2$s discarding \"%3$s\"; no title/order"
-msgstr ""
-
-msgid "Scheduled"
-msgstr ""
-
-msgctxt "post state"
-msgid "Pending"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Post Parent"
-msgstr ""
-
-msgid "Select Parent"
-msgstr ""
-
-msgid "PARENT"
-msgstr ""
-
-msgid "Most Used"
-msgstr ""
-
-#. translators: %s: add new taxonomy label
-#, php-format
-msgid "+ %s"
-msgstr ""
-
-msgid "Search"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "ID/Parent"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Title/Name"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Title"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Name"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Parent ID"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Menu Order"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Featured in"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Inserted in"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Gallery in"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "MLA Gallery in"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "ALT Text"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Caption"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Description"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "MIME Type"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "File URL"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Base File"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Date"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Last Modified"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Author"
-msgstr ""
-
-msgctxt "list_table_column"
-msgid "Attached to"
-msgstr ""
-
-msgid "All"
-msgstr ""
-
-msgid "List View"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-msgid "Filter by"
-msgstr ""
-
-msgid "Not Supported"
-msgstr ""
-
-#. translators: 1: column_name 2: column_values
-#, php-format
-msgid "column_default: %1$s, %2$s"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Trash"
-msgstr ""
-
-msgid "Restore this item from the Trash"
-msgstr ""
-
-msgid "Restore"
-msgstr ""
-
-msgid "Edit this item"
-msgstr ""
-
-msgid "Edit this item inline"
-msgstr ""
-
-msgid "Quick Edit"
-msgstr ""
-
-msgid "Move this item to the Trash"
-msgstr ""
-
-msgid "Move to Trash"
-msgstr ""
-
-msgid "Delete this item Permanently"
-msgstr ""
-
-msgid "Delete Permanently"
-msgstr ""
-
-msgid "Download"
-msgstr ""
-
-msgid "View"
-msgstr ""
-
-msgid "(no title)"
-msgstr ""
-
-msgid "(no title: bad ID)"
-msgstr ""
-
-msgid "Disabled"
-msgstr ""
-
-msgid "MIME Type"
-msgstr ""
-
-msgid "Base File"
-msgstr ""
-
-msgid "Unpublished"
-msgstr ""
-
-#. translators: 1: upload/last modified date and time
-#, php-format
-msgid "%1$s from now"
-msgstr ""
-
-#. translators: 1: upload/last modified date and time
-#, php-format
-msgid "%1$s ago"
-msgstr ""
-
-#. translators: format for upload/last modified date
-#. translators: date format in table columns, see http://php.net/date
-msgid "Y/m/d"
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "Unattached"
-msgstr ""
-
-msgid "Set Parent"
-msgstr ""
-
-msgctxt "uploaded files"
-msgid "All"
-msgid_plural "All"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Terms Search"
-msgstr ""
-
-msgid "Clear Filter-by"
-msgstr ""
-
-msgid "Empty Trash"
-msgstr ""
-
-msgid "Error while saving the changes."
-msgstr ""
-
-msgid "Remove From Bulk Edit"
-msgstr ""
-
-msgid "Bulk Edit items"
-msgstr ""
-
-msgid "Waiting"
-msgstr ""
-
-msgid "Complete"
-msgstr ""
-
-msgid "Unchanged"
-msgstr ""
-
-msgid "Succeeded"
-msgstr ""
-
-msgid "Failed"
-msgstr ""
-
-msgid "CANCELED"
-msgstr ""
-
-#, php-format
-msgid "Item permanently deleted."
-msgid_plural "%d items permanently deleted."
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: 1: post ID
-#, php-format
-msgid "Item %1$d moved to Trash."
-msgstr ""
-
-msgid "Entries per page"
-msgstr ""
-
-msgid "You are not allowed to edit Attachment: "
-msgstr ""
-
-#. translators: 1: ERROR tag 2: bulk action
-#, php-format
-msgid "%1$s: Unknown bulk action %2$s"
-msgstr ""
-
-msgid "no changes detected"
-msgstr ""
-
-#. translators: 1: action name, e.g., edit
-#, php-format
-msgid "Bulk Action %1$s - no items selected."
-msgstr ""
-
-msgid "You do not have permission to manage attachments."
-msgstr ""
-
-#. translators: 1: number of items
-#, php-format
-msgctxt "deleted items"
-msgid "%s item deleted."
-msgid_plural "%s items deleted."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "No items deleted."
-msgstr ""
-
-msgid "Empty Terms Search; ignored"
-msgstr ""
-
-#. translators: 1: row-level action, e.g., single_item_delete, single_item_edit
-#. translators: 1: bulk_action, e.g., single_item_delete, single_item_edit
-#, php-format
-msgid "Unknown mla_admin_action - \"%1$s\""
-msgstr ""
-
-msgid "term search results for"
-msgstr ""
-
-msgid "post/parent results for"
-msgstr ""
-
-msgid "search results for"
 msgstr ""
 
 msgid "Type"
@@ -791,396 +32,33 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+msgid "(no title)"
+msgstr ""
+
 msgid "Published"
 msgstr ""
 
+msgid "Scheduled"
+msgstr ""
+
 msgid "Pending Review"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+#. translators: date format in table columns, see http://php.net/date
+#. translators: format for upload/last modified date
+msgid "Y/m/d"
+msgstr ""
+
+msgid "ERROR"
 msgstr ""
 
 msgid "No post ID found"
 msgstr ""
 
 msgid "You are not allowed to edit this Attachment."
-msgstr ""
-
-msgid "Update"
-msgstr ""
-
-msgid "All Post Types"
-msgstr ""
-
-msgid "For"
-msgstr ""
-
-msgid "Unattached"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Bulk Edit"
-msgstr ""
-
-msgid "In-process"
-msgstr ""
-
-msgid "Refresh"
-msgstr ""
-
-msgid "You are not allowed to delete this item."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: post ID
-#, php-format
-msgid "%1$s: Item %2$d could NOT be deleted."
-msgstr ""
-
-#. translators: 1: post ID
-#, php-format
-msgid "Item %1$d permanently deleted."
-msgstr ""
-
-msgid "You are not allowed to move this item out of the Trash."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: post ID
-#, php-format
-msgid "%1$s: Item %2$d could NOT be restored from Trash."
-msgstr ""
-
-#. translators: 1: post ID
-#, php-format
-msgid "Item %1$d restored from Trash."
-msgstr ""
-
-msgid "You are not allowed to move this item to the Trash."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: post ID
-#, php-format
-msgid "%1$s: Item %2$d could NOT be moved to Trash."
-msgstr ""
-
-msgid "Click to toggle"
-msgstr ""
-
-msgid "Show all dates"
-msgstr ""
-
-#. translators: 1: month name, 2: 4-digit year
-#, php-format
-msgid "%1$s %2$d"
-msgstr ""
-
-msgid "Search Box"
-msgstr ""
-
-msgid "Loading..."
-msgstr ""
-
-msgid "Tags"
-msgstr ""
-
-#. translators: %s: add new taxonomy label
-#. translators: %s: add new View
-#. translators: %s: add new Upload MIME Type
-#, php-format
-msgid "Add New %1$s"
-msgstr ""
-
-msgid "Choose from the most used tags"
-msgstr ""
-
-msgid "Search Terms"
-msgstr ""
-
-msgid "There are no taxonomies to search"
-msgstr ""
-
-msgid "All phrases"
-msgstr ""
-
-msgid "Any phrase"
-msgstr ""
-
-msgid "All terms"
-msgstr ""
-
-msgid "Any term"
-msgstr ""
-
-msgid "Exact"
-msgstr ""
-
-msgctxt "post_mime_types"
-msgid "Manage"
-msgstr ""
-
-msgctxt "post_mime_types_description"
-msgid "Copied from previous filter/plugin"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: raw_mime_type
-#, php-format
-msgid "%1$s: Bad specification part \"%2$s\""
-msgstr ""
-
-#. translators: 1: ERROR tag 2: option, e.g., any, match, null
-#, php-format
-msgid "%1$s: Bad specification option \"%2$s\""
-msgstr ""
-
-#. translators: 1: ERROR tag 2: prefix, e.g., custom
-#, php-format
-msgid "%1$s: Bad specification prefix \"%2$s\""
-msgstr ""
-
-msgid "Ignoring specification for Post MIME Type; using slug"
-msgstr ""
-
-#. translators: 1: element name 2: bad_value 3: good_value
-#, php-format
-msgid "<br>Changing %1$s \"%2$s\" to valid value \"%3$s\""
-msgstr ""
-
-msgid "Slug"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: slug
-#, php-format
-msgid "%1$s: Could not add Slug \"%2$s\"; value already exists"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Edit view \"%1$s\"; added"
-msgstr ""
-
-#. translators: 1: element name 2: bad_value 3: good_value
-#, php-format
-msgid "<br>Changing new %1$s \"%2$s\" to valid value \"%3$s\""
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Edit view \"%1$s\"; no changes detected"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Edit view \"%1$s\"; updated"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "View \"%1$s\" reverted to standard"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "View \"%1$s\" deleted"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: slug
-#, php-format
-msgid "%1$s: Did not find view \"%2$s\""
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "All"
-msgstr ""
-
-msgctxt "table_view_plural"
-msgid "All"
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "Active"
-msgstr ""
-
-msgctxt "table_view_plural"
-msgid "Active"
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "Inactive"
-msgstr ""
-
-msgctxt "table_view_plural"
-msgid "Inactive"
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "WordPress"
-msgstr ""
-
-msgctxt "table_view_plural"
-msgid "WordPress"
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "MLA"
-msgstr ""
-
-msgctxt "table_view_plural"
-msgid "MLA"
-msgstr ""
-
-msgctxt "table_view_singular"
-msgid "Custom"
-msgstr ""
-
-msgctxt "table_view_plural"
-msgid "Custom"
-msgstr ""
-
-msgid "icon"
-msgstr ""
-
-msgid "Cannot load Upload MIME Types"
-msgstr ""
-
-msgid "Extension is required"
-msgstr ""
-
-msgid "Extension"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: slug
-#, php-format
-msgid "%1$s: Could not add extension \"%2$s\"; value already exists"
-msgstr ""
-
-msgid "MIME type is required"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: clean_mime_type
-#, php-format
-msgid "%1$s: Bad MIME type; try \"%2$s\""
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Upload MIME Type \"%1$s\"; added"
-msgstr ""
-
-msgid "Cannot update Upload MIME Types"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: slug
-#, php-format
-msgid "%1$s: Could not add new extension \"%2$s\"; value already exists"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Edit type \"%1$s\"; no changes detected"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Edit type \"%1$s\"; updated"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Upload MIME Type \"%1$s\"; reverted to standard"
-msgstr ""
-
-#. translators: 1: slug
-#, php-format
-msgid "Upload MIME Type \"%1$s\"; deleted"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: slug
-#, php-format
-msgid "%1$s: Did not find Upload type \"%2$s\""
-msgstr ""
-
-msgctxt "taxonomy_name_plural"
-msgid "Att. Categories"
-msgstr ""
-
-msgctxt "taxonomy_name_singular"
-msgid "Att. Category"
-msgstr ""
-
-msgid "Search Att. Categories"
-msgstr ""
-
-msgid "All Att. Categories"
-msgstr ""
-
-msgid "Parent Att. Category"
-msgstr ""
-
-msgid "Edit Att. Category"
-msgstr ""
-
-msgid "Update Att. Category"
-msgstr ""
-
-msgid "Att. Category"
-msgstr ""
-
-msgid "New Att. Category Name"
-msgstr ""
-
-msgctxt "taxonomy_name_plural"
-msgid "Att. Tags"
-msgstr ""
-
-msgctxt "taxonomy_name_singular"
-msgid "Att. Tag"
-msgstr ""
-
-msgid "Search Att. Tags"
-msgstr ""
-
-msgid "All Att. Tags"
-msgstr ""
-
-msgid "Parent Att. Tag"
-msgstr ""
-
-msgid "Edit Att. Tag"
-msgstr ""
-
-msgid "Update Att. Tag"
-msgstr ""
-
-msgid "Att. Tag"
-msgstr ""
-
-msgid "New Att. Tag Name"
-msgstr ""
-
-msgid "Attachments"
-msgstr ""
-
-#. translators: 1: ERROR tag 2: taxonomy 3: error message
-#, php-format
-msgctxt "error_log"
-msgid ""
-"%1$s: mla_taxonomy_column_filter( \"%2$s\" ) - get_term failed: \"%3$s\""
-msgstr ""
-
-msgid "click to search"
-msgstr ""
-
-msgid "Shortcode(s), HTML and/or Plain Text"
-msgstr ""
-
-msgid "MLA Text"
-msgstr ""
-
-msgid "Automatically add paragraphs"
-msgstr ""
-
-msgid "error loading tpls/mla-option-templates.tpl"
-msgstr ""
-
-msgid "tpls/mla-option-templates.tpl not found"
 msgstr ""
 
 msgid "Attachment Categories"
@@ -1207,10 +85,19 @@ msgstr ""
 msgid "Where-used database access tuning"
 msgstr ""
 
+msgid "Featured in"
+msgstr ""
+
 msgid "Enabled"
 msgstr ""
 
+msgid "Disabled"
+msgstr ""
+
 msgid "Search database posts and pages for Featured Image attachments."
+msgstr ""
+
+msgid "Inserted in"
 msgstr ""
 
 msgid "Base"
@@ -1222,7 +109,13 @@ msgid ""
 "name and extension only."
 msgstr ""
 
+msgid "Gallery in"
+msgstr ""
+
 msgid "Dynamic"
+msgstr ""
+
+msgid "Refresh"
 msgstr ""
 
 msgid "Cached"
@@ -1232,6 +125,9 @@ msgid ""
 "Search database posts and pages for [gallery] shortcode results.<br>&nbsp;"
 "&nbsp;Dynamic = once every page load, Cached = once every login, Disabled = "
 "never.<br>&nbsp;&nbsp;Refresh = update references, then set to Cached."
+msgstr ""
+
+msgid "MLA Gallery in"
 msgstr ""
 
 msgid ""
@@ -1342,7 +238,10 @@ msgstr ""
 msgid "Order By"
 msgstr ""
 
-msgid "Title/Name"
+msgid "None"
+msgstr ""
+
+msgid "ID/Parent"
 msgstr ""
 
 msgid "Select the column for the sort order of the Assistant table listing."
@@ -1456,6 +355,14 @@ msgid ""
 "New screen."
 msgstr ""
 
+msgid "&quot;bulk edit&quot; area initially open"
+msgstr ""
+
+msgid ""
+"Check this option to automatically open the \"Bulk Edit area\" when the "
+"Media/Add New screen is displayed."
+msgstr ""
+
 msgid "Media Manager/Media Grid Enhancements"
 msgstr ""
 
@@ -1540,6 +447,9 @@ msgid "Media Manager Order By"
 msgstr ""
 
 msgid "Media Manager Default"
+msgstr ""
+
+msgid "Title/Name"
 msgstr ""
 
 msgid ""
@@ -1762,6 +672,18 @@ msgstr ""
 msgid "IPTC/EXIF Mapping help"
 msgstr ""
 
+msgid "Name/Slug"
+msgstr ""
+
+msgid "ALT Text"
+msgstr ""
+
+msgid "Caption"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
 msgid "Enable View and Post MIME Type Support"
 msgstr ""
 
@@ -1771,6 +693,14 @@ msgid ""
 msgstr ""
 
 msgid "Post MIME Types help."
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "All"
+msgstr ""
+
+msgctxt "table_view_plural"
+msgid "All"
 msgstr ""
 
 msgctxt "post_mime_types_description"
@@ -1835,6 +765,10 @@ msgstr ""
 
 msgctxt "post_mime_types_description"
 msgid "All application subtypes"
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "Unattached"
 msgstr ""
 
 msgctxt "table_view_plural"
@@ -1916,10 +850,1084 @@ msgid ""
 "the existing MLA_DEBUG_LEVEL value."
 msgstr ""
 
-msgid "no templates exist"
+#. translators: 1: ERROR tag 2: raw_mime_type
+#, php-format
+msgid "%1$s: Bad specification part \"%2$s\""
 msgstr ""
 
-msgid "not found"
+#. translators: 1: ERROR tag 2: option, e.g., any, match, null
+#, php-format
+msgid "%1$s: Bad specification option \"%2$s\""
+msgstr ""
+
+#. translators: 1: ERROR tag 2: prefix, e.g., custom
+#, php-format
+msgid "%1$s: Bad specification prefix \"%2$s\""
+msgstr ""
+
+msgid "Most Used"
+msgstr ""
+
+#. translators: %s: add new taxonomy label
+#, php-format
+msgid "+ %s"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: index
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _build_pdf_indirect_objects bad value at $index = \"%2$d\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: source offset 3: nest level
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary offset = %2$d, nest = %3$d."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: dictionary excerpt
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary no end delimiter dump = %2$s."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: entry name 3: value excerpt
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary bad value [ %2$s ] dump = %3$s"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: path and file
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: File \"%2$s\", startxref not found."
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "ID/Parent"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Title/Name"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Title"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Name"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Parent ID"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Menu Order"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Featured in"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Inserted in"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Gallery in"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "MLA Gallery in"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "ALT Text"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Caption"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Description"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "MIME Type"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "File URL"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Base File"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Date"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Last Modified"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Author"
+msgstr ""
+
+msgctxt "list_table_column"
+msgid "Attached to"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: function name 3: non-array value
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s non-array \"%3$s\""
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: query filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+msgstr ""
+
+msgid "DEBUG"
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: query details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: SQL statement
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: search filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: where filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: join filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: orderby details details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+msgstr ""
+
+msgid "NO REFERENCE TESTS"
+msgstr ""
+
+msgid "ORPHAN"
+msgstr ""
+
+msgid "UNUSED"
+msgstr ""
+
+msgid "UNATTACHED"
+msgstr ""
+
+msgid "INVALID PARENT"
+msgstr ""
+
+#. translators: 1: post_type, 2: post_title, 3: post ID, 4: query string, 5: error message
+#, php-format
+msgid "(%1$s) %2$s (ID %3$d) query \"%4$s\" failed, returning \"%5$s\""
+msgstr ""
+
+#. translators: 1: ERROR tag 2: path and file name
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" not found."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" bad source type \"%3$s\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: _find_template_substring no template end delimiter, tail = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_parse_array_template no template end delimiter, tail = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_parse_template no end delimiter, tail = \"%2$s\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: template string
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _find_test_substring no end delimiter, tail = \"%2$s\"."
+msgstr ""
+
+msgid "Test; no closing parenthesis "
+msgstr ""
+
+#. translators: 1: ERROR tag 2: node type, e.g., template
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _evaluate_template_array_node unknown type \"%2$s\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: node type, e.g., template
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _evaluate_template_node unknown type \"%2$s\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_get_template_placeholders no template-end delimiter dump = \"%2$s"
+"\"."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_get_attachment_by_id(%2$d) not found."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: post ID 3: post_type
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_get_attachment_by_id(%2$d) wrong post_type \"%3$s\"."
+msgstr ""
+
+msgctxt "error_log"
+msgid "mla_parse_xmp_metadata xml_parse_into_struct failed."
+msgstr ""
+
+msgctxt "error_log"
+msgid "mla_parse_xmp_metadata set option failed."
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+#. translators: 1: meta_key
+#, php-format
+msgid "Deleting %1$s"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: meta_key
+#, php-format
+msgid "%1$s: meta:%2$s not found"
+msgstr ""
+
+#. translators: 1: meta_key 2: meta_value
+#. translators: 1: meta_key 2: new_value
+#. translators: 1: meta_key 2: meta_value
+#, php-format
+msgid "Adding %1$s = %2$s"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: meta_key
+#, php-format
+msgid "%1$s: Adding meta:%2$s; not found"
+msgstr ""
+
+#. translators: 1: meta_key
+#, php-format
+msgid "Deleting Null meta:%1$s"
+msgstr ""
+
+#. translators: 1: element name 2: old_value 3: new_value
+#, php-format
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\""
+msgstr ""
+
+#. translators: 1: ERROR tag 2: meta_key
+#, php-format
+msgid "%1$s: Changing meta:%2$s; not found"
+msgstr ""
+
+#. translators: 1: meta_key
+#, php-format
+msgid "Deleting old %1$s values"
+msgstr ""
+
+#. translators: 1: meta_key 2: old_value 3: new_value 4: update count
+#, php-format
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\"; %4$d updates"
+msgstr ""
+
+msgid "Could not retrieve Attachment."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: old_value
+#, php-format
+msgid "%1$s: Could not change Name/Slug \"%2$s\"; name already exists"
+msgstr ""
+
+#. translators: 1: old_value
+#, php-format
+msgid "Deleting ALT Text, was \"%1$s\""
+msgstr ""
+
+#. translators: 1: ERROR tag 2: old_value
+#, php-format
+msgid "%1$s: Could not delete ALT Text, remains \"%2$s\""
+msgstr ""
+
+#. translators: 1: ERROR tag 2: old_value 3: new_value
+#, php-format
+msgid "%1$s: Could not change ALT Text from \"%2$s\" to \"%3$s\""
+msgstr ""
+
+msgid "Parent"
+msgstr ""
+
+msgid "Menu Order"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Pings"
+msgstr ""
+
+msgid "Adding"
+msgstr ""
+
+msgid "Removing"
+msgstr ""
+
+msgid "Replacing"
+msgstr ""
+
+msgid "Ignoring"
+msgstr ""
+
+#. translators: 1: action_name, 2: taxonomy
+#, php-format
+msgid "%1$s \"%2$s\" terms"
+msgstr ""
+
+#. translators: 1: taxonomy
+#, php-format
+msgid "You cannot assign \"%1$s\" terms"
+msgstr ""
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d, no changes detected."
+msgstr ""
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d updated."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d update failed."
+msgstr ""
+
+msgctxt "tag_delimiter"
+msgid ","
+msgstr ""
+
+msgid "Upload New Media items"
+msgstr ""
+
+msgid "Open Bulk Edit area"
+msgstr ""
+
+msgid "Close Bulk Edit area"
+msgstr ""
+
+msgid "An ajax.fail error has occurred. Please reload the page and try again."
+msgstr ""
+
+msgid "An ajax.done error has occurred. Please reload the page and try again."
+msgstr ""
+
+msgid "more"
+msgstr ""
+
+msgid "less"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Replace"
+msgstr ""
+
+msgid ""
+"IMPORTANT: Make your entries BEFORE uploading new items. Pull down the Help "
+"menu for more information."
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "No Change"
+msgstr ""
+
+msgid "Allow"
+msgstr ""
+
+msgid "Do not allow"
+msgstr ""
+
+msgid "Parent ID"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Custom field mapping updated."
+msgstr ""
+
+msgid "IPTC/EXIF mapping updated."
+msgstr ""
+
+#. translators: date_i18n format for last modified date and time
+msgid "M j, Y @ G:i"
+msgstr ""
+
+msgid "Last modified"
+msgstr ""
+
+msgid "Map Custom Field metadata for this item"
+msgstr ""
+
+msgid "Map Custom Field metadata"
+msgstr ""
+
+msgid "Map IPTC/EXIF metadata for this item"
+msgstr ""
+
+msgid "Map IPTC/EXIF metadata"
+msgstr ""
+
+msgid "Parent Info"
+msgstr ""
+
+msgid "Attachment Metadata"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: function name 3: template key
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s discarding \"%3$s\"; no title/order"
+msgstr ""
+
+msgctxt "post state"
+msgid "Pending"
+msgstr ""
+
+msgid "Post Parent"
+msgstr ""
+
+msgid "Select Parent"
+msgstr ""
+
+msgid "PARENT"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "List View"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "Not Supported"
+msgstr ""
+
+#. translators: 1: column_name 2: column_values
+#, php-format
+msgid "column_default: %1$s, %2$s"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Trash"
+msgstr ""
+
+msgid "Restore this item from the Trash"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Edit this item"
+msgstr ""
+
+msgid "Edit this item inline"
+msgstr ""
+
+msgid "Quick Edit"
+msgstr ""
+
+msgid "Move this item to the Trash"
+msgstr ""
+
+msgid "Move to Trash"
+msgstr ""
+
+msgid "Delete this item Permanently"
+msgstr ""
+
+msgid "Delete Permanently"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "(no title: bad ID)"
+msgstr ""
+
+msgid "MIME Type"
+msgstr ""
+
+msgid "Base File"
+msgstr ""
+
+msgid "Unpublished"
+msgstr ""
+
+#. translators: 1: upload/last modified date and time
+#, php-format
+msgid "%1$s from now"
+msgstr ""
+
+#. translators: 1: upload/last modified date and time
+#, php-format
+msgid "%1$s ago"
+msgstr ""
+
+msgid "Set Parent"
+msgstr ""
+
+msgctxt "uploaded files"
+msgid "All"
+msgid_plural "All"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Terms Search"
+msgstr ""
+
+msgid "Clear Filter-by"
+msgstr ""
+
+msgid "Empty Trash"
+msgstr ""
+
+msgid "Error while saving the changes."
+msgstr ""
+
+msgid "Remove From Bulk Edit"
+msgstr ""
+
+msgid "Bulk Edit items"
+msgstr ""
+
+msgid "Waiting"
+msgstr ""
+
+msgid "Complete"
+msgstr ""
+
+msgid "Unchanged"
+msgstr ""
+
+msgid "Succeeded"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "CANCELED"
+msgstr ""
+
+#, php-format
+msgid "Item permanently deleted."
+msgid_plural "%d items permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d moved to Trash."
+msgstr ""
+
+msgid "Entries per page"
+msgstr ""
+
+msgid "You are not allowed to edit Attachment: "
+msgstr ""
+
+#. translators: 1: ERROR tag 2: bulk action
+#, php-format
+msgid "%1$s: Unknown bulk action %2$s"
+msgstr ""
+
+msgid "no changes detected"
+msgstr ""
+
+#. translators: 1: action name, e.g., edit
+#, php-format
+msgid "Bulk Action %1$s - no items selected."
+msgstr ""
+
+msgid "You do not have permission to manage attachments."
+msgstr ""
+
+#. translators: 1: number of items
+#, php-format
+msgctxt "deleted items"
+msgid "%s item deleted."
+msgid_plural "%s items deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "No items deleted."
+msgstr ""
+
+msgid "Empty Terms Search; ignored"
+msgstr ""
+
+#. translators: 1: row-level action, e.g., single_item_delete, single_item_edit
+#. translators: 1: bulk_action, e.g., single_item_delete, single_item_edit
+#, php-format
+msgid "Unknown mla_admin_action - \"%1$s\""
+msgstr ""
+
+msgid "term search results for"
+msgstr ""
+
+msgid "post/parent results for"
+msgstr ""
+
+msgid "search results for"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "All Post Types"
+msgstr ""
+
+msgid "For"
+msgstr ""
+
+msgid "Unattached"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Bulk Edit"
+msgstr ""
+
+msgid "In-process"
+msgstr ""
+
+msgid "You are not allowed to delete this item."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d could NOT be deleted."
+msgstr ""
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d permanently deleted."
+msgstr ""
+
+msgid "You are not allowed to move this item out of the Trash."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d could NOT be restored from Trash."
+msgstr ""
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d restored from Trash."
+msgstr ""
+
+msgid "You are not allowed to move this item to the Trash."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d could NOT be moved to Trash."
+msgstr ""
+
+msgid "Click to toggle"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+#. translators: %s: add new taxonomy label
+#. translators: %s: add new View
+#. translators: %s: add new Upload MIME Type
+#, php-format
+msgid "Add New %1$s"
+msgstr ""
+
+msgid "Choose from the most used tags"
+msgstr ""
+
+msgid "Show all dates"
+msgstr ""
+
+#. translators: 1: month name, 2: 4-digit year
+#, php-format
+msgid "%1$s %2$d"
+msgstr ""
+
+msgid "Search Box"
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Search Terms"
+msgstr ""
+
+msgid "There are no taxonomies to search"
+msgstr ""
+
+msgid "All phrases"
+msgstr ""
+
+msgid "Any phrase"
+msgstr ""
+
+msgid "All terms"
+msgstr ""
+
+msgid "Any term"
+msgstr ""
+
+msgid "Exact"
+msgstr ""
+
+msgctxt "post_mime_types"
+msgid "Manage"
+msgstr ""
+
+msgctxt "post_mime_types_description"
+msgid "Copied from previous filter/plugin"
+msgstr ""
+
+msgid "Ignoring specification for Post MIME Type; using slug"
+msgstr ""
+
+#. translators: 1: element name 2: bad_value 3: good_value
+#, php-format
+msgid "<br>Changing %1$s \"%2$s\" to valid value \"%3$s\""
+msgstr ""
+
+msgid "Slug"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Could not add Slug \"%2$s\"; value already exists"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit view \"%1$s\"; added"
+msgstr ""
+
+#. translators: 1: element name 2: bad_value 3: good_value
+#, php-format
+msgid "<br>Changing new %1$s \"%2$s\" to valid value \"%3$s\""
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit view \"%1$s\"; no changes detected"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit view \"%1$s\"; updated"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "View \"%1$s\" reverted to standard"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "View \"%1$s\" deleted"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Did not find view \"%2$s\""
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "Active"
+msgstr ""
+
+msgctxt "table_view_plural"
+msgid "Active"
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "Inactive"
+msgstr ""
+
+msgctxt "table_view_plural"
+msgid "Inactive"
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "WordPress"
+msgstr ""
+
+msgctxt "table_view_plural"
+msgid "WordPress"
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "MLA"
+msgstr ""
+
+msgctxt "table_view_plural"
+msgid "MLA"
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "Custom"
+msgstr ""
+
+msgctxt "table_view_plural"
+msgid "Custom"
+msgstr ""
+
+msgid "icon"
+msgstr ""
+
+msgid "Cannot load Upload MIME Types"
+msgstr ""
+
+msgid "Extension is required"
+msgstr ""
+
+msgid "Extension"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Could not add extension \"%2$s\"; value already exists"
+msgstr ""
+
+msgid "MIME type is required"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: clean_mime_type
+#, php-format
+msgid "%1$s: Bad MIME type; try \"%2$s\""
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; added"
+msgstr ""
+
+msgid "Cannot update Upload MIME Types"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Could not add new extension \"%2$s\"; value already exists"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit type \"%1$s\"; no changes detected"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit type \"%1$s\"; updated"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; reverted to standard"
+msgstr ""
+
+#. translators: 1: slug
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; deleted"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Did not find Upload type \"%2$s\""
+msgstr ""
+
+msgctxt "taxonomy_name_plural"
+msgid "Att. Categories"
+msgstr ""
+
+msgctxt "taxonomy_name_singular"
+msgid "Att. Category"
+msgstr ""
+
+msgid "Search Att. Categories"
+msgstr ""
+
+msgid "All Att. Categories"
+msgstr ""
+
+msgid "Parent Att. Category"
+msgstr ""
+
+msgid "Edit Att. Category"
+msgstr ""
+
+msgid "Update Att. Category"
+msgstr ""
+
+msgid "Att. Category"
+msgstr ""
+
+msgid "New Att. Category Name"
+msgstr ""
+
+msgctxt "taxonomy_name_plural"
+msgid "Att. Tags"
+msgstr ""
+
+msgctxt "taxonomy_name_singular"
+msgid "Att. Tag"
+msgstr ""
+
+msgid "Search Att. Tags"
+msgstr ""
+
+msgid "All Att. Tags"
+msgstr ""
+
+msgid "Parent Att. Tag"
+msgstr ""
+
+msgid "Edit Att. Tag"
+msgstr ""
+
+msgid "Update Att. Tag"
+msgstr ""
+
+msgid "Att. Tag"
+msgstr ""
+
+msgid "New Att. Tag Name"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+#. translators: 1: ERROR tag 2: taxonomy 3: error message
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_taxonomy_column_filter( \"%2$s\" ) - get_term failed: \"%3$s\""
+msgstr ""
+
+msgid "click to search"
+msgstr ""
+
+msgid "Shortcode(s), HTML and/or Plain Text"
+msgstr ""
+
+msgid "MLA Text"
+msgstr ""
+
+msgid "Automatically add paragraphs"
+msgstr ""
+
+msgid "error loading tpls/mla-option-templates.tpl"
+msgstr ""
+
+msgid "tpls/mla-option-templates.tpl not found"
+msgstr ""
+
+msgid "no templates exist"
 msgstr ""
 
 #. translators: 1: ERROR tag 2: option name 3: action, e.g., update, delete, reset
@@ -2311,6 +2319,14 @@ msgid ""
 "Check this option to synchronize common terms among all item translations."
 msgstr ""
 
+msgid "Term Mapping Replication"
+msgstr ""
+
+msgid ""
+"When mapping IPTC/EXIF metadata to taxonomy terms, make them available in "
+"all languages."
+msgstr ""
+
 msgid "Language Options"
 msgstr ""
 
@@ -2355,6 +2371,9 @@ msgid "delete_option \"%1$s\""
 msgstr ""
 
 msgid "Language settings reset to default values."
+msgstr ""
+
+msgid "Error while making the changes."
 msgstr ""
 
 msgid "no slug"
@@ -2712,7 +2731,10 @@ msgstr ""
 msgid "Ghostscript support is not installed."
 msgstr ""
 
-msgid "WARNING: MLA Viewer support may not be available"
+msgid "WARNING:"
+msgstr ""
+
+msgid " MLA Viewer support may not be available"
 msgstr ""
 
 msgid ""
@@ -3150,6 +3172,9 @@ msgstr ""
 msgid "Settings imported; %1$s updated, %2$s unchanged."
 msgstr ""
 
+msgid "not found"
+msgstr ""
+
 msgid "Previous"
 msgstr ""
 
@@ -3355,6 +3380,10 @@ msgid "Select these entries"
 msgstr ""
 
 msgctxt "list_table_column"
+msgid "Slug"
+msgstr ""
+
+msgctxt "list_table_column"
 msgid "Specification"
 msgstr ""
 
@@ -3379,6 +3408,15 @@ msgid "Order"
 msgstr ""
 
 msgid "Duplicate translation created; update as desired."
+msgstr ""
+
+msgid "Make media available in all languages"
+msgstr ""
+
+msgid " WPML Media is not installed."
+msgstr ""
+
+msgid " WPML Media is not active."
 msgstr ""
 
 #. translators: 1: - 4: page subheader values

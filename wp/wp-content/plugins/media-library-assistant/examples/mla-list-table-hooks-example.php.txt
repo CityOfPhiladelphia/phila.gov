@@ -3,7 +3,7 @@
  * Provides an example of hooking the filters provided by the MLA_List_Table class
  *
  * @package MLA List Table Hooks Example
- * @version 1.06
+ * @version 1.07
  */
 
 /*
@@ -11,7 +11,7 @@ Plugin Name: MLA List Table Hooks Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Provides an example of hooking the filters provided by the MLA_List_Table class
 Author: David Lingren
-Version: 1.06
+Version: 1.07
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
 Copyright 2014 - 2015 David Lingren
@@ -134,6 +134,13 @@ class MLAListTableHooksExample {
 
 		// 'views_upload' is only applied when WPML is active
 		add_filter( 'views_upload', 'MLAListTableHooksExample::views_upload', 10, 1 );
+
+		 /*
+		  * Defined in /media-library-assistant/includes/class-mla-edit-media.php
+		  */
+		add_filter( 'mla_upload_bulk_edit_form_values', 'MLAListTableHooksExample::mla_upload_bulk_edit_form_values', 10, 1 );
+		add_filter( 'mla_upload_bulk_edit_form_template', 'MLAListTableHooksExample::mla_upload_bulk_edit_form_template', 10, 1 );
+		add_filter( 'mla_upload_bulk_edit_form_parse', 'MLAListTableHooksExample::mla_upload_bulk_edit_form_parse', 10, 3 );
 	}
 
 	/**
@@ -1024,6 +1031,55 @@ class MLAListTableHooksExample {
 		//error_log( 'MLAListTableHooksExample::views_upload $views = ' . var_export( $views, true ), 0 );
 		return $views;
 	} // views_upload
+
+	/**
+	 * MLAEdit bulk edit on upload item values
+	 *
+	 * This filter gives you a chance to modify and extend the substitution values
+	 * for the Bulk Edit on Upload form.
+	 *
+	 * @since 1.07
+	 *
+	 * @param	array	$item_values [ parameter_name => parameter_value ] pairs
+	 */
+	public static function mla_upload_bulk_edit_form_values( $item_values ) {
+		//error_log( 'MLAListTableHooksExample::mla_upload_bulk_edit_form_values $item_values = ' . var_export( $item_values, true ), 0 );
+		return $item_values;
+	} // mla_upload_bulk_edit_form_values
+
+	/**
+	 * MLAEdit bulk edit on upload template
+	 *
+	 * This filter gives you a chance to modify and extend the template used
+	 * for the Bulk Edit on Upload form.
+	 *
+	 * @since 1.07
+	 *
+	 * @param	string	$item_template Template used to generate the HTML markup
+	 */
+	public static function mla_upload_bulk_edit_form_template( $item_template ) {
+		//error_log( 'MLAListTableHooksExample::mla_upload_bulk_edit_form_template $item_template = ' . var_export( $item_template, true ), 0 );
+		return $item_template;
+	} // mla_upload_bulk_edit_form_template
+
+	/**
+	 * MLAEdit bulk edit on upload parse
+	 *
+	 * @since 1.07
+	 *
+	 * This filter gives you a final chance to modify and extend the HTML
+	 * markup used for the Bulk Edit on Upload form.
+	 *
+	 * @param	string	$html_markup HTML markup returned by the template parser
+	 * @param	string	$item_template Template used to generate the HTML markup
+	 * @param	array	$item_values [ parameter_name => parameter_value ] pairs
+	 */
+	public static function mla_upload_bulk_edit_form_parse( $html_markup, $item_template, $item_values ) {
+		//error_log( 'MLAListTableHooksExample::mla_upload_bulk_edit_form_parse $html_markup = ' . var_export( $html_markup, true ), 0 );
+		//error_log( 'MLAListTableHooksExample::mla_upload_bulk_edit_form_parse $item_template = ' . var_export( $item_template, true ), 0 );
+		//error_log( 'MLAListTableHooksExample::mla_upload_bulk_edit_form_parse $item_values = ' . var_export( $item_values, true ), 0 );
+		return $html_markup;
+	} // mla_upload_bulk_edit_form_parse
 } // Class MLAListTableHooksExample
 
 /*

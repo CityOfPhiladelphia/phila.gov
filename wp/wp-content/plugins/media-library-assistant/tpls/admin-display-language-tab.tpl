@@ -1,6 +1,7 @@
 <h3>[+Language Options+]</h3>
 <p>[+In this tab+]</p>
 <p>[+You can find+]</p>
+[+WPML Status+]
 <form action="[+form_url+]" method="post" class="mla-display-settings-page" id="mla-display-settings-general-tab">
     <table class="optiontable">
 [+options_list+]

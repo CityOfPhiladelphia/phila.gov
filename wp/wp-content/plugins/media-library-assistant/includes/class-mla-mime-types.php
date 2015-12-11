@@ -26,7 +26,7 @@ class MLAMime {
 		add_filter( 'ext2type', 'MLAMime::mla_ext2type_filter', 0x7FFFFFFF, 1 );
 //		add_filter( 'wp_check_filetype_and_ext', 'MLAMime::mla_wp_check_filetype_and_ext_filter', 0x7FFFFFFF, 4 );
 
-		if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_UPLOAD_MIMES ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_UPLOAD_MIMES ) ) {
 			if ( function_exists('wp_get_mime_types') ) {
 				add_filter( 'mime_types', 'MLAMime::mla_mime_types_filter', 0x7FFFFFFF, 1 );
 			}
@@ -34,7 +34,7 @@ class MLAMime {
 			add_filter( 'upload_mimes', 'MLAMime::mla_upload_mimes_filter', 0x7FFFFFFF, 2 );
 		}
 
-		if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_POST_MIME_TYPES ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_POST_MIME_TYPES ) ) {
 			add_filter( 'post_mime_types', 'MLAMime::mla_post_mime_types_filter', 0x7FFFFFFF, 1 );
 		}
 
@@ -126,7 +126,7 @@ class MLAMime {
 		$items = self::mla_query_upload_items( array( 'mla_upload_view' => 'active' ), 0, 0 );
 		$pairs = array();
 		foreach ( $items as $value )
-			if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_MLA_ICONS ) ) {
+			if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 				$pairs[ $value->slug ] = $value->icon_type;
 			} else {
 				$pairs[ $value->slug ] = $value->wp_icon_type;
@@ -393,7 +393,7 @@ class MLAMime {
 	public static function mla_icon_dir_filter( $path ) {
 		global $wp_filter;
 
-		if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 			return MLA_PLUGIN_PATH . 'images/crystal';
 		}
 		 
@@ -415,7 +415,7 @@ class MLAMime {
 	public static function mla_icon_dir_uri_filter( $uri ) {
 		global $wp_filter;
 
-		if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 			return MLA_PLUGIN_URL . 'images/crystal';
 		}
 
@@ -437,7 +437,7 @@ class MLAMime {
 	public static function mla_icon_dirs_filter( $path_uri_array ) {
 		global $wp_filter;
 
-		if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 			$path_uri_array [ MLA_PLUGIN_PATH . 'images/crystal' ] = MLA_PLUGIN_URL . 'images/crystal';
 		}
 
@@ -730,7 +730,7 @@ class MLAMime {
 		/*
 		 * Start with MLA standard types
 		 */
-		$mla_types = MLAOptions::mla_get_option( MLAOptions::MLA_POST_MIME_TYPES, true );
+		$mla_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, true );
 		if ( ! is_array( $mla_types ) ) {
 			$mla_types = array ();
 		}
@@ -740,7 +740,7 @@ class MLAMime {
 		 * filter-enhanced extensions, retain anything new as a custom type.
 		 * Otherwise, add the current MLA custom types.
 		 */
-		$custom_types = MLAOptions::mla_get_option( MLAOptions::MLA_POST_MIME_TYPES, false, true );
+		$custom_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, false, true );
 
 		if ( is_array( $custom_types ) ) {
 			$mla_types = array_merge( $mla_types, $custom_types );
@@ -791,7 +791,7 @@ class MLAMime {
 	private static function _put_post_mime_templates() {
 		$mla_post_mimes = array ();
 
-		$mla_types = MLAOptions::mla_get_option( MLAOptions::MLA_POST_MIME_TYPES, true );
+		$mla_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, true );
 
 		foreach ( self::$mla_post_mime_templates as $slug => $value ) {
 			unset( $value['post_ID'] );
@@ -802,12 +802,14 @@ class MLAMime {
 			$mla_post_mimes[ $slug ] =  $value;
 		}
 
-		MLAOptions::mla_update_option( MLAOptions::MLA_POST_MIME_TYPES, $mla_post_mimes );
+		MLACore::mla_update_option( MLACore::MLA_POST_MIME_TYPES, $mla_post_mimes );
 		return true;
 	}
 
 	/**
 	 * Convert a Library View/Post MIME Type specification to WP_Query parameters
+	 *
+	 * Compatibility shim for MLACore::mla_prepare_view_query
 	 *
 	 * @since 1.40
 	 *
@@ -817,49 +819,13 @@ class MLAMime {
 	 * @return	array	post_mime_type specification or custom field query
 	 */
 	public static function mla_prepare_view_query( $slug, $specification ) {
-		$query = array ( );
-		$specification = self::mla_parse_view_specification( $specification );
-		if ( 'mime' == $specification['prefix'] ) {
-			$query['post_mime_type'] = $specification['value'];
-		} else {
-			$meta_query = array( 'slug' => $slug , 'relation' => 'OR', 'patterns' => array () );
-			switch( $specification['option'] ) {
-				case 'match':
-					$patterns = array_map( 'trim', explode( ',', $specification['value'] ) );
-					foreach ( (array) $patterns as $pattern ) {
-						$pattern = preg_replace( '/\*+/', '%', $pattern );
-						if ( false !== strpos( $pattern, '%' ) ) {
-							/*
-							 * Preserve the pattern - it will be used in the "where" filter
-							 */
-							$meta_query['patterns'][] = $pattern;
-							$meta_query[] = array( 'key' => $specification['name'], 'value' => $pattern, 'compare' => 'LIKE' );
-						} else {
-							$meta_query[] = array( 'key' => $specification['name'], 'value' => $pattern, 'compare' => '=' );
-						}
-					} // foreach pattern
-
-					if ( empty( $meta_query['patterns'] ) ) {
-						unset( $meta_query['patterns'] );
-					}
-
-					break;
-				case 'null':
-					$meta_query['key'] = $specification['name'];
-					$meta_query['value'] = 'NULL';
-					break;
-				default: // '', 'any'
-					$meta_query[] = array( 'key' => $specification['name'], 'value' => NULL, 'compare' => '!=' );
-			}
-
-			$query['meta_query'] = $meta_query;
-		} // custom field specification
-
-		return $query;
+		return MLACore::mla_prepare_view_query( $slug, $specification );
 	}
 
 	/**
 	 * Analyze a Library View/Post MIME Type specification, returning an array of the placeholders it contains
+	 *
+	 * Compatibility shim for MLACore::mla_parse_view_specification
 	 *
 	 * @since 1.40
 	 *
@@ -868,65 +834,7 @@ class MLAMime {
 	 * @return	array	( ['prefix'] => string, ['name'] => string, ['value'] => string, ['option'] => string, optional ['error'] => string )
 	 */
 	public static function mla_parse_view_specification( $specification ) {
-			if ( is_array( $specification ) ) {
-				$specification = @implode( ',', $specification );
-			}
-
-			$result = array( 'prefix' => '', 'name' => '', 'value' => '', 'option' => '' );
-			$match_count = preg_match( '/^(.+):(.+)/', $specification, $matches );
-			if ( 1 == $match_count ) {
-				$result['prefix'] = trim( strtolower( $matches[1] ) );
-				$tail = $matches[2];
-
-				$match_count = preg_match( '/([^,=]+)((,|=)(.*))$/', $tail, $matches );
-				if ( 1 == $match_count ) {
-					$result['name'] = $matches[1];
-
-					if ( ',' == $matches[3] ) {
-						$result['option'] = trim( strtolower( $matches[4] ));
-					} else {
-						if ( empty( $matches[4] ) ) {
-							$result['option'] = 'null';
-						} elseif ( '*' == $matches[4] ) {
-							$result['option'] = 'any';
-						} else {
-							$result['option'] = 'match';
-							$result['value'] = $matches[4];
-						}
-					}
-				} else {
-					$result['option'] = 'any';
-					$result['name'] = $tail;
-				}
-			} else {
-				$result['prefix'] = 'mime';
-				$result['value'] = $specification;
-			}
-
-			/*
-			 * Validate the results
-			 */
-			if ( 'mime' == $result['prefix'] ) {
-				$mime_types = array_map( 'trim', explode( ',', $result['value'] ) );
-				foreach ( (array) $mime_types as $raw_mime_type ) {
-					$no_wildcards = str_replace( '*', 'X', $raw_mime_type );
-					$clean_mime_type = sanitize_mime_type( $no_wildcards );
-					if ( $clean_mime_type != $no_wildcards ) {
-						/* translators: 1: ERROR tag 2: raw_mime_type */
-						$result['error'] = '<br>' . sprintf( __( '%1$s: Bad specification part "%2$s"', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $raw_mime_type );
-					}
-				} // foreach
-			} elseif ( 'custom' == $result['prefix'] ) {
-				if ( ! in_array( $result['option'], array( '', 'any', 'match', 'null' ) ) ) {
-					/* translators: 1: ERROR tag 2: option, e.g., any, match, null */
-					$result['error'] = '<br>' . sprintf( __( '%1$s: Bad specification option "%2$s"', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $specification['option'] );
-				}
-			} else {
-				/* translators: 1: ERROR tag 2: prefix, e.g., custom */
-				$result['error'] = '<br>' . sprintf( __( '%1$s: Bad specification prefix "%2$s"', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $specification['prefix'] );
-			}
-
-		return $result;
+		return MLACore::mla_parse_view_specification( $specification );
 	}
 
 	/**
@@ -975,7 +883,7 @@ class MLAMime {
 		 * Validate specification, if present
 		 */
 		if ( !empty( $request['specification'] ) ) {
-			$specification = self::mla_parse_view_specification( $request['specification'] );
+			$specification = MLACore::mla_parse_view_specification( $request['specification'] );
 			if ( isset( $specification['error'] ) ) {
 				$errors .= $specification['error'];
 			}
@@ -1076,7 +984,7 @@ class MLAMime {
 		}
 
 		if ( !empty( $specification ) ) {
-			$result = self::mla_parse_view_specification( $request['specification'] );
+			$result = MLACore::mla_parse_view_specification( $request['specification'] );
 			if ( isset( $result['error'] ) ) {
 				$errors .= $result['error'];
 			}
@@ -1765,7 +1673,7 @@ class MLAMime {
 		 * filter-enhanced extensions, retain anything new as a custom type.
 		 */
 		$custom_types = array();
-		$mla_upload_mimes = MLAOptions::mla_get_option( MLAOptions::MLA_UPLOAD_MIMES );
+		$mla_upload_mimes = MLACore::mla_get_option( MLACore::MLA_UPLOAD_MIMES );
 		if ( is_array( $mla_upload_mimes ) ) {
 			$first_time_called = false;
 			$custom_types = $mla_upload_mimes['custom'];
@@ -1837,7 +1745,7 @@ class MLAMime {
 					'core_icon_type' => self::mla_get_core_icon_type( $array[0] )
 				);
 
-				if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_MLA_ICONS ) ) {
+				if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 					self::$mla_upload_mime_templates[ $key ]['icon_type'] = self::$mla_upload_mime_templates[ $key ]['mla_icon_type'];
 				}
 			}
@@ -1886,7 +1794,7 @@ class MLAMime {
 				'core_icon_type' => $core_icon_type
 			);
 
-			if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_ENABLE_MLA_ICONS ) ) {
+			if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 				self::$mla_upload_mime_templates[ $key ]['icon_type'] = self::$mla_upload_mime_templates[ $key ]['mla_icon_type'];
 			}
 		}
@@ -1979,7 +1887,7 @@ class MLAMime {
 			}
 		}
 
-		MLAOptions::mla_update_option( MLAOptions::MLA_UPLOAD_MIMES, $mla_upload_mimes );
+		MLACore::mla_update_option( MLACore::MLA_UPLOAD_MIMES, $mla_upload_mimes );
 		return true;
 	}
 

@@ -1854,7 +1854,7 @@ As you can tell from the number of parameters available, the <code>[mla_gallery]
 </p>
 <h4>Simple Examples</h4>
 <p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><code>[mla_gallery]</code> - will display all the images "attached" to the current post/page.</li>
 <li><code>[mla_gallery ids="1,3,2,4"]</code> - will display specific images on any post/page. The numbers are the ID values of the images. You can use the "Add Media..." popup window and "Create Gallery" to get the list, then change the shortcode name to "mla_gallery" if you want to add other <code>[mla_gallery]</code> specific parameters.</li>
 <li><code>[mla_gallery post_parent=all]</code> - will display all the images in your Media Library.</li>
@@ -1872,7 +1872,7 @@ With MLA you can extend Categories and Tags support to attachments. MLA also pro
 <p>
 To use a taxonomy you must create one or more "terms" within it. For example, you could create terms in the Category taxonomy like "Big Dog" and "Little Dog". For each term, WordPress automatically creates a "slug", e.g., "big-dog" and "little-dog" for the previous examples. Removing capital letters, spaces and punctuation makes it easier to organize and search the database. It's the slug you can use in [mla_gallery] shortcodes. To "<em>display the attachments that have been assigned to a single category/tag</em>", use the term's slug; for the four taxonomies we've discussed:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li>Categories: <code>[mla_gallery category_name=big-dog]</code></li>
 <li>Tags: <code>[mla_gallery tag=big-dog]</code></li>
 <li>Att. Categories: <code>[mla_gallery attachment_category=big-dog]</code></li>
@@ -1913,7 +1913,7 @@ The <code>[mla_tag_cloud]</code> displays Att. Categories terms in the familiar 
 <p>
 The <code>[mla_gallery]</code> displays the images assigned to the selected attachment_category term. The <code>mla_nolink_text</code> parameter gives the text to display when the gallery is empty, e.g., before you click on a term. In this shortcode:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li>The <code>template:</code> prefix says that this is a Content Template</li>
 <li>The parentheses "()" around the two elements are used to group them into a list of alternatives</li>
 <li>The vertical bar "|" between the two elements means "stop when you get a non-empty alternative"</li>
@@ -4565,7 +4565,7 @@ Some image file formats such as JPEG DCT or TIFF Rev 6.0 support the addition of
 </p>
 <p>
 The Media Library Assistant has powerful tools for copying image metadata to:
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li>the WordPress standard fields, e.g., the Caption</li>
 <li>taxonomy terms, e.g., in categories, tags or custom taxonomies</li>
 <li>WordPress Custom Fields</li>
@@ -4805,7 +4805,7 @@ You can use Content Templates in the EXIF/Template Value text box to extract met
 </table>
 <p>
 The three rules have a similar structure:
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li>"template:" (goes in the text box below "EXIF/Template Value") is used to access the pdf: values instead of the EXIF values.</li>
 <li>The values are surrounded by parentheses "(" and ")" so they will return an empty string for documents without meta data in the field and for other items such as images.
 </li>
@@ -4849,7 +4849,7 @@ If your Media Library contains a mix of images and PDF documents you will want a
 </table>
 <p>
 The three rules have similar changes:
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li>A vertical bar ("|") separates the two data source specifications. This is the Content Template "Choice" operator, which takes the first non-blank alternative from among the choices.</li>
 <li>A second data source for images. The PDF documents will not have "exif:"/"iptc:" data sources, and images will not have "pdf:" data sources, so only one (at most) of the two alternatives will be non-blank.
 </li>
@@ -5025,7 +5025,7 @@ If you are having trouble with some part of Media Library Assistant it may be he
 <p>
 The existence and location of the error log can vary depending on your server configuration. WordPress includes some <code>wp-config.php</code> entries that can help. If you activate the Debug tab but can't access the error log you can try adding or updating these statements in your <code>wp-config.php</code> file:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><code>define( 'WP_DEBUG', 1 );</code>
 When WP_DEBUG is true, all PHP notices are reported. WordPress will also display notices, including one when a deprecated WordPress function, function argument, or file is used. Deprecated code may be removed from a later version.
 </li>
@@ -5042,7 +5042,7 @@ The full path and file name of the error log is displayed just above the text ar
 <p>
 To add the Debug tab to your Settings/Media Library Assistant submenu you must add an entry to your <code>wp-config.php</code> file:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><code>define( 'MLA_DEBUG_LEVEL', 1 );</code></li>
 </ul>
 <p>
@@ -5099,7 +5099,7 @@ Below the Debug Options section is a list of settings and values that are useful
 <p>
 Below the Debug Settings section is a text area with the current content of the PHP (or MLA-specific) error log file. Below the text box are three action buttons:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><strong>Download</strong> - click this button to download a copy of the error log to your system.</li>
 <li><strong>Reset</strong> - click this button to erase the contents of the error log.</li>
 <li><strong>Save Changes</strong> - click this button to save a new value for the Display Limit option.</li>
@@ -5117,10 +5117,11 @@ Media Library Assistant provides integrates support for two popular "Multilangua
 <p>
 MLA detects the presence of either plugin and automatically adds several features that work with them:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><strong>Language-specific filtering</strong> of the <code>[mla_gallery]</code> and <code>[mla_tag_cloud]</code> shortcodes.</li>
 <li><strong>Media/Assistant submenu table enhancements</strong> for displaying and managing item translations.</li>
 <li><strong>Term Assignment and Term Synchronization</strong>, to match terms to language-specific items and automatically keep all translations for an item in synch.</li>
+<li><strong>Term Mapping Replication</strong>, to manage the terms created when mapping taxonomy terms from IPTC/EXIF metadata.</li>
 </ul>
 <h4>Items, Translations and Terms</h4>
 <p>
@@ -5146,14 +5147,14 @@ The <code>[mla_tag_cloud]</code> shortcode selects terms using the WordPress <co
 <p>
 Two columns are added to the table when WPML or Polylang is active:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><strong>Language</strong> - displays the language of the item. This column is only present when "All languages/Show all languages" is selected in the admin toolbar at the top of the screen.</li>
 <li><strong>"Translations"</strong> - displays the translation status of the item in all active languages. The column header displays the flag icon for the language. The column content will have a check mark icon for the item's language, a pencil icon for an existing translation or a plus icon for a translation that does not exist. You can click any icon to go directly to the Media/Edit Media screen for that translation. If you click a plus icon, a new translation will be created and initialized with content and terms from the current item and you will go to the Media/Edit Media screen for the new translation.</li>
 </ul>
 <p>
 When Polylang is active, several additional features are available:
 </p>
-<ul class="mla-doc-toc-list">
+<ul class="mla_settings">
 <li><strong>A Language dropdown control</strong> is added to the Quick Edit and Bulk Edit areas. You can change the language of one or more items by selecting a new value in the dropdown and clicking Update. The new language must not have an existing translation; if a translation already exists the change will be ignored.</li>
 <li><strong>Translation status links</strong> are added to the Quick Edit area, just below the Language dropdown control. If you click one of the pencil/plus translation status links, a new Quick Edit area will open for the translation you selected. A new translation is created if you click a plus status icon.</li>
 <li><strong>A Quick Translate rollover action</strong> can be added to each item (the default option setting is "unchecked"). If you activate this option, when you click the "Quick Translate" rollover action for an item the Quick Translate area opens, showing the Language dropdown control and the translation status links. From there, click "Set Language" to change the language assigned to the item or click one of the pencil/plus translation status links. A new Quick Edit area will open for the translation you selected. A new translation is created if you click a plus status icon.</li>
@@ -5161,13 +5162,14 @@ When Polylang is active, several additional features are available:
 </ul>
 <h4>Term Management</h4>
 <p>
-Taxonomy terms are language-specific, and making sure the right terms are assigned to all items and translations can be a challenge. Terms can change when an item is updated in any of four ways:
+Taxonomy terms are language-specific, and making sure the right terms are assigned to all items and translations can be a challenge. Terms can change when an item is updated in any of five ways:
 </p>
 <ol>
 <li><strong>Individual edit</strong> - this is the full-screen Media/Edit Media submenu provided by WordPress. Taxonomies are displayed and updated in meta boxes along the right side of the screen. When "Update" is clicked whatever terms have been selected/entered are assigned to the item; they replace any old assignments.</li>
 <li><strong>Media Manager Modal Window</strong> - this is the popup window provided by WordPress' "Add Media" and "Select Featured Image" features. Taxonomies are displayed and updated in the ATTACHMENT DETAILS meta boxes along the right side of the window. Whatever terms are selected/entered here are assigned to the item; they replace any old assignments.</li>
 <li><strong>Quick Edit</strong> - this is a row-level action on the Media/Assistant screen. When "Update" is clicked whatever terms have been selected/entered are assigned to the item; they replace any old assignments.</li>
 <li><strong>Bulk edit</strong> - this is a bulk action on the Media/Assistant screen, and is also available on the Media/Upload New Media screen. In the Bulk Edit area, terms can be added or removed or all terms can be replaced. The bulk edit can be applied to multiple item translations in one or more languages.</li>
+<li><strong>IPTC/EXIF Metadata Mapping</strong> - this is done by defining rules in the "Taxonomy term mapping" section of the <a href="#mla_iptc_exif_mapping">IPTC &amp; EXIF Processing Options</a>. The mapping rules can be run when new items are added to the Media Library, from the Settings/Media Library Assistant IPTC/EXIF tab, from the Media/Assistant Bulk Edit area or from the Media/Edit Media submenu screen.</li>
 </ol>
 <p>
 When terms change in any of the above ways there are two tasks that require rules:
@@ -5176,6 +5178,9 @@ When terms change in any of the above ways there are two tasks that require rule
 <li>How should language-specific terms be assigned to items selected? This is "Term Assignment".</li>
 <li>How should terms assigned to one translation of an item be used to update other translations of the same item? This is "Term Synchronization".</li>
 </ol>
+<p>
+When new terms are added during IPTC/EXIF taxonomy term mapping a third task is required; should new terms be added only to the current language or should they be made available in all languages? This is "Term Mapping Replication".
+</p>
 <strong>Term Assignment</strong>
 <p>
 When a specific language is selected only the item translations for that language are shown, and only the terms for that language are displayed (except for a Polylang bug that shows all languages in the "auto-complete" list for flat taxonomies). When "All Languages"/"Show all languages" is selected the terms for all languages are displayed even if they cannot be assigned to an item. For example, a Spanish term may appear in the list be cannot be assigned to an English item translations.
@@ -5242,6 +5247,17 @@ Then synchronization handles common editing actions as follows:
 <li>If you edit the English Translation and remove "Common-term-1-eng", synchronization will remove "Common-term-1-esp" from the Spanish Translation.</li>
 <li>If you edit the English Translation and remove "English-only-term", nothing will happen to the Spanish Translation.</li>
 </ol>
+<strong>Term Mapping Replication</strong>
+<p>
+When rules are defined in the IPTC/EXIF "Taxonomy term mapping section" they extract values (e.g., "IPTC 2#025 Keywords") from image metadata and use them to assign terms to the Media Library item(s). If the metadata value matches an existing term in the item's language it is assigned to the item. If the term already exists for any other active language it is not assigned to the item. If the term does not exist in any of the active languages, i.e., it is an entirely new term, a decision is required. The "Term Mapping Replication" option controls the decision:
+</p>
+<ul class="mla_settings">
+<li>When Replication <strong>is active</strong>, the term is created in the current language and then copied to every other active language as a translation of the term in the current language.</li>
+<li>When Replication <strong>is not active</strong>, the term is created in the current language only. It is not copied to any other active language and will not be assigned to items in any language other than the current language.</li>
+</ul>
+<p>
+If you use Replication to automatically create terms in non-current languages they will be created with the same text value as the source term in the current language. You can always go to the taxonomy edit page and change the source text to an appropriate value for the other language(s). If you do not use Replication you can always go to the taxonomy edit page and add translations with an appropriate value for the other language(s).
+</p>
 <p>
 &nbsp;
 <a name="mla_list_table_hooks"></a>&nbsp;
@@ -5292,7 +5308,7 @@ The following hooks are defined in <code>/wp-admin/includes/class-wp-list-table.
 </tr>
 </table>
 <p>
-The following hooks are defined in <code>/wp-admin/includes/class-mla-objects.php</code>:
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-objects.php</code>:
 </p>
 <table>
 <tr>
@@ -5305,7 +5321,7 @@ The following hooks are defined in <code>/wp-admin/includes/class-mla-objects.ph
 </tr>
 </table>
 <p>
-The following hooks are defined in <code>/wp-admin/includes/class-mla-data.php</code>:
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-data.php</code>:
 </p>
 <table>
 <tr>
@@ -5411,7 +5427,7 @@ The following hooks are defined in <code>/media-library-assistant/includes/class
 </tr>
 </table>
 <p>
-The following hooks are defined in <code>/wp-admin/includes/class-wp-list-table.php</code>:
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-list-table.php</code>:
 </p>
 <table>
 <tr>
@@ -5465,6 +5481,23 @@ The following hooks are defined in <code>/wp-admin/includes/class-wp-list-table.
 <tr>
 <td class="mla-doc-hook-label">views_upload</td>
 <td class="mla-doc-hook-definition">Views for the "upload" page when WPML is active. This filter is hooked by WPML Media in wpml-media.class.php, and is only applied when WPML is active.</td>
+</tr>
+</table>
+<p>
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-edit-media.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_values</td>
+<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the substitution values for the Bulk Edit on Upload form.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_template</td>
+<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the template used for the Bulk Edit on Upload form.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_parse</td>
+<td class="mla-doc-hook-definition">Gives you a final chance to modify and extend the HTML markup used for the Bulk Edit on Upload form.</td>
 </tr>
 </table>
 <p>

@@ -18,19 +18,19 @@ if ( !empty( $_REQUEST['s'] ) ) {
 	$search_fields = isset ( $_REQUEST['mla_search_fields'] ) ? $_REQUEST['mla_search_fields'] : array();
 	$search_connector = $_REQUEST['mla_search_connector'];
 } else {
-	$search_value = MLAOptions::mla_get_option( MLAOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS );
+	$search_value = MLACore::mla_get_option( MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS );
 	$search_fields = $search_value['search_fields'];
 	$search_connector = $search_value['search_connector'];
 	$search_value = '';
 }
 
-if ( 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS ) ) {
+if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS ) ) {
 	$controls_style = 'style="display: inline;"';
 } else {
 	$controls_style = 'style="display: none;"';
 }
 
-$supported_taxonomies = MLAOptions::mla_supported_taxonomies('support');
+$supported_taxonomies = MLACore::mla_supported_taxonomies('support');
 if ( empty( $supported_taxonomies ) ) {
 	$terms_style = 'style="display: none;"';
 	unset( $search_fields['terms'] );

@@ -1,10 +1,10 @@
-﻿=== Media Library Assistant ===
+=== Media Library Assistant ===
 Contributors: dglingren
 Donate link: http://fairtradejudaica.org/make-a-difference/donate/
 Tags: attachment, attachments, documents, gallery, image, images, media, library, media library, tag cloud, media-tags, media tags, tags, media categories, categories, IPTC, EXIF, XMP, GPS, PDF, meta, metadata, photo, photos, photograph, photographs, photoblog, photo albums, lightroom, photoshop, MIME, mime-type, icon, upload, file extensions, WPML, Polylang, multilanguage, multilingual, localization
 Requires at least: 3.5.0
-Tested up to: 4.3
-Stable tag: 2.15
+Tested up to: 4.4
+Stable tag: 2.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,7 +94,7 @@ The powerful `[mla_gallery]` shortcode supports almost all of the query flexibil
 
 = Can I use [mla_gallery] for attachments other than images? =
 
-Yes! The `[mla_gallery]` shortcode supports all MIME types when you add the post_mime_type parameter to your query. You can build a gallery of your PDF documents, plain text files and other attachments. You can mix images and other MIME types in the same gallery, too. Here's an example that displays a gallery of PDF documents, using the Google File Viewer to show the first page of each document as a thumbnail:
+Yes! The `[mla_gallery]` shortcode supports all MIME types when you add the post_mime_type parameter to your query. You can build a gallery of your PDF documents, plain text files and other attachments. You can mix images and other MIME types in the same gallery, too. Here's an example that displays a gallery of PDF documents, using Imagick and Ghostscript to show the first page of each document as a thumbnail:
 
 `
 [mla_gallery post_mime_type=application/pdf post_parent=all link=file mla_viewer=true columns=1 orderby=date order=desc]
@@ -170,42 +170,42 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
-= 2.15 =
+= 2.21 =
+* Fix: A defect in the default "Orderby" setting has been fixed. This defect caused "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem.
+* Fix: The "Featured Image" support for non-image Media Library items now respects the `size=none` parameter to substitute a text value for the thumbnail image.
 
-* New: **A "Reset" button** has been added to the Media/Assistant Bulk Edit area and the Media/Add New (Upload New Media) Bulk Edit area. When clicked, the button clears all of the fields in the Bulk Edit area to simplify the entry of new values. 
-* New: An option has been added to the "Media/Add New Enhancements" section of the Settings/Media Library Assistant General tab to allow **moving the Bulk Edit area** to the top of the Media/Add New (Upload New Media) screen, above the drag-and-drop area.
-* New: When WPML is active, **MLA will fix a WPML defect that assigns the wrong term to flat taxonomies** if two or more translations have the same term name.
-* New: Options have been added to the Settings/Media Library Assistant Debug tab that allow control over the PHP error_log file, PHP error_reporting level and MLA_DEBUG_LEVEL without modifying the `wp-config.php` file.
-* New: The Media/Assistant "Search Media by ID/Parent" search has been extended to allow **multiple ID values**. If all the "keywords" in the Search Media box are numeric they will be matched against item IDs and item parent IDs in addition to the normal text-based search.
-* New: The Media/Assistant Quick Edit area now displays the item's thumbnail/icon image to make it easier to confirm which item is being edited.
-* New: A new `/media-library-assistant/examples/mla-upload-bulk-edit-example.php.txt` example plugin has been added to demonstrate updates to the Title field from the Bulk Edit area on the Media/Upload New Media submenu.
-* New: The `/media-library-assistant/examples/mla-simple-mapping-hooks-example.php.txt` example plugin has been updated to demonstrate splitting an IPTC value with a regular expression (regex) and updating two custom fields with the results.
-* New: The Portable Object (".po") files are now included in the `/media-library-assistant/languages` directory, facilitating the translation update process.
-* New: Harm Kramer has contributed **updates and additions to the Dutch translation**; thanks Harm!
-* New: Comments have been added to each "/tpls/help-for-*.tpl" template showing where in MLA the template is used. This should help with the translation of these templates to other languages.
-* New: Two new hooks, `mla_taxonomy_get_columns` and `mla_taxonomy_column`, have been added to allow control of the Media/"Taxonomy Edit" submenu columns such as the "Attachments" column added by MLA.
-* New: Two new hooks, `mla_update_single_item` and `mla_update_single_item`, have been added to increase control over Media Library item updates, e.g., for taxonomy term updates.
-* New: The "mla_media_modal_initial_filters" and "mla_media_modal_settings" filters have been updated to allow control over the "uploaded" MIME type dropdown, e.g., on the "Create Gallery" and "Set Featured Image" views of the Media Manager Modal (popup) Window.
-* New: The `/examples/mla-tax-query-example.php.txt` example plugin has been updated to support keyword search parameters.
-* New: The `/examples/random-feature.php.txt` example plugin has been updated to allow for separate "post" and "item" taxonomies.
-* Fix: For the `[mla_gallery]` shortcode, keyword searches only on `terms` generate an empty result when no terms match the search string.
-* Fix: For the `[mla_gallery]` shortcode, keyword searches with special characters such as single and/or double quotes now work correctly.
-* Fix: Style sheets and HTML markup changes have been added to support sites with Right-to-left (TRL) languages.
-* Fix: For the Media/Assistant submenu table, WordPress 4.2+ alternate-row coloring (striping) for the Quick Edit and Bulk Edit areas has been fixed.
-* Fix: For the Media/Assistant submenu table, combinations of ALT Text filtering in the Search Media box, sorting on custom field columns and Table Views based on custom field values now work correctly.
-* Fix: The Edit Taxonomy "Attachments" column is displayed correctly when othe plugins, e.g., Polylang, add columns to the submenu table.
-* Fix: When WPML or Polylang are active, flat taxonomy "auto-completion" suggestions for the Media/Assistant Quick Edit area and the Media/Edit Media screen are now language-specific.
-* Fix: When WPML or Polylang are active, **Term Assignment and Synchronization defects** when two or more translations have the same term name are corrected.
-* Fix: For item updates thet only affect postmeta and/or taxonomy values, `wp_update_post` is no longer called.
-* Fix: Commas are now accepted within quoted arguments of the "Field-level option/format values". Commas outside of quoted arguments of the `timestamp` and `date` format values no longer generate PHP Warning messages.
-* Fix: The Bulk Edit on Upload (Media/Add New) has been fixed for WordPress versions before 4.0.
-* Fix: When WPML is active, a defect in Bulk Edit term assignment that copied terms from one item to subsequent items in the list has been corrected.
-* Fix: The Settings/Media Library Assistant tab HTML heading tags have been adjusted to conform to the new WordPress v4.3+ standards.
-* Fix: The Settings/Media Library Assistant tab titles and option content is loaded later in the startup process, allowing their translation to other languages.
-* Fix: The Settings/Media Library Assistant "Donate" button is changed from an image to text, facilitating translation ro other languages.
-* Fix: An array initialization defect that caused a PHP warning message in PHP Version 7 has been corrected.
+= 2.20 =
+* New: The plugin code has been re-structured for **reduced memory requirements and loading time**. MLA memory for front-end posts/pages without MLA shortcodes is 85% less. Front end posts/pages with MLA shortcodes are reduced 42%. MLA ajax functions are also significantly reduced.
 
-= 2.10 - 2.14 =
+* New: Some of the **default plugin settings have been changed.** The "where-used" options are disabled, the Media/Assistant submenu table sort order shows the most recent item additions first and the default table display includes the ID/Parent, Title/Name, ALT Text, Caption, Description, Date and Attached To columns. None of these changes affect your install if you have made any choices of your own already.
+
+* New: When WPML or Polylang is active, a **"Term Replication"** option has been added to the Settings/Media Library Assistant Language tab. When checked, the option causes new terms added by IPTC/EXIF Taxonomy term mapping rules to be added to all active languages. If not checked, new values are only added to the current language for the operation.
+* New: Nic Mare has contributed a **partial German translation**; thanks Nic!
+* New: When WPML is active a dropdown control is added to the Bulk Edit on Upload form so the default "make new media available in all languages" option can be changed on an upload-by-upload basis.
+* New: When WPML is active but WPML Media is not installed/active, a warning message now appears on the Settings/Media lLibrary Assistant Language tab.
+* New: A new `/media-library-assistant/examples/mla-unattached-fixit.php.txt` example plugin has been added to demonstrate trashing/deleting unattached Media Library items.
+* New: A new `/media-library-assistant/examples/mla-dynamic-references-example.php.txt` example plugin has been added to demonstrate dynamic "where-used" reporting that populates one or more custom fields.
+* New: A new `/media-library-assistant/examples/mla-insert-fixit.php.txt` example plugin has been added to demonstrate synchronizing Media Library values to and from post/page inserted images.
+* New: Three new filters have been added to support adding fields to the Bulk Edit on Upload area. Examples of the new filters have been added to the `/examples/mla-list-table-hooks-example.php.txt` file.
+* New: A new filter, "mla_mapping_new_text", has been added to simplify changing values for mapping rules. An examples of the new filter has been added to the `/examples/mla-mapping-hooks-example.php.txt` file.
+* New: The '"bulk edit" area initially open' option allows the "Bulk Edit on Upload" area to be automatically opened as soon as the Media/Add New screen appears.
+* New: The WordPress Attachment Display Settings are now saved/restored in the Export/Import All Settings operations.
+* Fix: WHen WPML or Polylang is active, PHP Notice messages are no longer generated when media items are updated from the Media/Edit Media screen.
+* Fix: IPTC/EXIF taxonomy term mapping rules are only displayed and processed for taxonomies that are marked for MLA support on the Settings/Media Library Assistant General tab.
+* Fix: For WordPress 4.3 and higher, the "Bulk Edit on Upload" button once again appears when the "bulk edit area on top" option is selected.
+* Fix: When WPML or Polylang is active, taxonomy terms added by IPTC/EXIF Taxonomy term mapping rules in the default language are not assigned to items in other languages.
+* Fix: When WPML is active, attachment metadata is copied to and mapping rules are run on all duplicate items created by "make new media available in all languages" option.
+* Fix: When WPML is active, IPTC/EXIF and Custom Field mapping rules are run against all items, regardless of the current language setting.
+* Fix: When WPML is active, updates from the Bulk Edit on Upload form are copied to the duplicate items created by "make new media available in all languages" option.
+* Fix: A failure to update ALT Text values in the Bulk Edit on Upload area has been corrected.
+* Fix: A conflict with Visual Composer use of Media Manager "Upload Files" has been resolved.
+* Fix: When WPML is active but WPML Media is not installed/active, taxonomy term assignment in the Quick Edit and Bulk Edit areas has been fixed.
+* Fix: Parsing enhancements return more and cleaner XMP data from some PDF documents.
+* Fix: Damaged XMP data in an item no longer causes PHP Warning messages. In addition, NULL characters in XMP data are changed to printable zero characters ('0') to allow some damage to be repaired.
+* Fix: Sorting the Media/Assistant submenu table by the ALT Text column has been fixed.
+
+= 2.10 - 2.15 =
+* 2.15 - Bulk Edit Reset button, Debug tab enhancements, Quick Edit thumbnails, new examples and hooks. Sixteen enhancements in all, sixteen fixes.
 * 2.14 - Final WordPress 4.3 updates. New Debug tab features. Updated Dutch translation. Four other fixes.
 * 2.13 - WordPress 4.3 updates. PDF Thumbnail image generator. Wildcard keyword/term searching. Several WPML and Polylang fixes. Dutch and Swedish translations! Twelve other enhancements, twelve other fixes.
 * 2.12 - Fixes a defect in [mla_gallery] handling of the mla_caption parameter. Adds mla_debug=log option.
@@ -279,8 +279,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 2.15 =
-Bulk Edit Reset button, Debug tab enhancements, Quick Edit thumbnails, new examples and hooks. Sixteen enhancements in all, sixteen fixes.
+= 2.21 =
+Fix for "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem. One other fix for "Featured Image" handling of size=none.
 
 == Other Notes ==
 
@@ -303,6 +303,7 @@ MLA detects the presence of either plugin and automatically adds several feature
 * <strong>Language-specific filtering</strong> of the <code>[mla_gallery]</code> and <code>[mla_tag_cloud]</code> shortcodes.
 * <strong>Media/Assistant submenu table enhancements</strong> for displaying and managing item translations.
 * <strong>Term Assignment and Term Synchronization</strong>, to match terms to language-specific items and automatically keep all translations for an item in synch.
+* <strong>Term Mapping Replication</strong>, to manage the terms created when mapping taxonomy terms from IPTC/EXIF metadata.
 
 <strong>Items, Translations and Terms</strong>
 
@@ -336,16 +337,20 @@ When Polylang is active, several additional features are available:
 
 <strong>Term Management</strong>
 
-Taxonomy terms are language-specific, and making sure the right terms are assigned to all items and translations can be a challenge. Terms can change when an item is updated in any of four ways:
+Taxonomy terms are language-specific, and making sure the right terms are assigned to all items and translations can be a challenge. Terms can change when an item is updated in any of five ways:
 
 1. <strong>Individual edit</strong> - this is the full-screen Media/Edit Media submenu provided by WordPress. Taxonomies are displayed and updated in meta boxes along the right side of the screen. When "Update" is clicked whatever terms have been selected/entered are assigned to the item; they replace any old assignments.
 1. <strong>Media Manager Modal Window</strong> – this is the popup window provided by WordPress' "Add Media" and "Select Featured Image" features. Taxonomies are displayed and updated in the ATTACHMENT DETAILS meta boxes along the right side of the window. Whatever terms are selected/entered here are assigned to the item; they replace any old assignments.
 1. <strong>Quick Edit</strong> - this is a row-level action on the Media/Assistant screen. When "Update" is clicked whatever terms have been selected/entered are assigned to the item; they replace any old assignments.
 1. <strong>Bulk edit</strong> - this is a bulk action on the Media/Assistant screen, and is also available on the Media/Upload New Media screen. In the Bulk Edit area, terms can be added or removed or all terms can be replaced. The bulk edit can be applied to multiple item translations in one or more languages.
+1. <strong>IPTC/EXIF Metadata Mapping</strong> - this is done by defining rules in the "Taxonomy term mapping" section of the IPTC &amp; EXIF Processing Options. The mapping rules can be run when new items are added to the Media Library, from the Settings/Media Library Assistant IPTC/EXIF tab, from the Media/Assistant Bulk Edit area or from the Media/Edit Media submenu screen.
 
 When terms change in any of the above ways there are two tasks that require rules:
 
-1. How should language-specific terms be assigned to items selected? This is "Term Assignment".1. How should terms assigned to one translation of an item be used to update other translations of the same item? This is "Term Synchronization".
+1. How should language-specific terms be assigned to items selected? This is "Term Assignment".
+1. How should terms assigned to one translation of an item be used to update other translations of the same item? This is "Term Synchronization".
+
+When new terms are added during IPTC/EXIF taxonomy term mapping a third task is required; should new terms be added only to the current language or should they be made available in all languages? This is "Term Mapping Replication".
 
 <strong>Term Assignment</strong>
 
@@ -400,6 +405,15 @@ Then synchronization handles common editing actions as follows:
 1. If you edit the English Translation and add "Common-term-2-eng", synchronization will add "Common-term-2-esp" to the Spanish Translation.
 1. If you edit the English Translation and remove "Common-term-1-eng", synchronization will remove "Common-term-1-esp" from the Spanish Translation.
 1. If you edit the English Translation and remove "English-only-term", nothing will happen to the Spanish Translation.
+
+<strong>Term Mapping Replication</strong>
+
+When rules are defined in the IPTC/EXIF "Taxonomy term mapping section" they extract values (e.g., "IPTC 2#025 Keywords") from image metadata and use them to assign terms to the Media Library item(s). If the metadata value matches an existing term in the item's language it is assigned to the item. If the term already exists for any other active language it is not assigned to the item. If the term does not exist in any of the active languages, i.e., it is an entirely new term, a decision is required. The "Term Mapping Replication" option controls the decision:
+
+* When Replication <strong>is active</strong>, the term is created in the current language and then copied to every other active language as a translation of the term in the current language.
+* When Replication <strong>is not active</strong>, the term is created in the current language only. It is not copied to any other active language and will not be assigned to items in any language other than the current language.
+
+If you use Replication to automatically create terms in non-current languages they will be created with the same text value as the source term in the current language. You can always go to the taxonomy edit page and change the source text to an appropriate value for the other language(s). If you do not use Replication you can always go to the taxonomy edit page and add translations with an appropriate value for the other language(s).
 
 <h4>Thumbnail Substitution Support, mla_viewer</h4>
 

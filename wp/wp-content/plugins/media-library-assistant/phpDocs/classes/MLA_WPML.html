@@ -63,6 +63,8 @@
 and the Media/Edit Media screen"><span class="description">Filters taxonomy updates by language for Bulk Edit during Add New Media
 and the Media/Edit Media screen</span><pre>edit_attachment()</pre></a></li>
 <li class="method public "><a href="#initialize" title="initialize :: Initialization function, similar to __construct()"><span class="description">Initialization function, similar to __construct()</span><pre>initialize()</pre></a></li>
+<li class="method public "><a href="#mla_begin_mapping" title='mla_begin_mapping :: Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments'><span class="description">Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</span><pre>mla_begin_mapping()</pre></a></li>
+<li class="method public "><a href="#mla_end_mapping" title='mla_end_mapping :: Remove "All languages" filter'><span class="description">Remove "All languages" filter</span><pre>mla_end_mapping()</pre></a></li>
 <li class="method public "><a href="#mla_get_options_tablist" title='mla_get_options_tablist :: Adds the "Language" tab to the Settings/Media Library Assistant list'><span class="description">Adds the "Language" tab to the Settings/Media Library Assistant list</span><pre>mla_get_options_tablist()</pre></a></li>
 <li class="method public "><a href="#mla_get_terms_clauses" title="mla_get_terms_clauses :: MLA Tag Cloud Query Clauses"><span class="description">MLA Tag Cloud Query Clauses</span><pre>mla_get_terms_clauses()</pre></a></li>
 <li class="method public "><a href="#mla_get_terms_query_arguments" title="mla_get_terms_query_arguments :: MLA Tag Cloud Query Arguments"><span class="description">MLA Tag Cloud Query Arguments</span><pre>mla_get_terms_query_arguments()</pre></a></li>
@@ -71,6 +73,8 @@ and the Media/Edit Media screen</span><pre>edit_attachment()</pre></a></li>
 <li class="method public "><a href="#mla_list_table_custom_admin_action" title="mla_list_table_custom_admin_action :: Add a duplicate translation for an item, then redirect to the Media/Edit Media screen"><span class="description">Add a duplicate translation for an item, then redirect to the Media/Edit Media screen</span><pre>mla_list_table_custom_admin_action()</pre></a></li>
 <li class="method public "><a href="#mla_list_table_inline_action" title='mla_list_table_inline_action :: Captures the Quick Edit "before update" term assignments'><span class="description">Captures the Quick Edit "before update" term assignments</span><pre>mla_list_table_inline_action()</pre></a></li>
 <li class="method public "><a href="#mla_localize_language_option_definitions" title="mla_localize_language_option_definitions :: Localize $mla_language_option_definitions array"><span class="description">Localize $mla_language_option_definitions array</span><pre>mla_localize_language_option_definitions()</pre></a></li>
+<li class="method public "><a href="#mla_mapping_new_text" title="mla_mapping_new_text :: Manages the creation of new taxonomy terms from metadata values"><span class="description">Manages the creation of new taxonomy terms from metadata values</span><pre>mla_mapping_new_text()</pre></a></li>
+<li class="method public "><a href="#mla_mapping_rule" title="mla_mapping_rule :: Saves the current mapping rule for term creation"><span class="description">Saves the current mapping rule for term creation</span><pre>mla_mapping_rule()</pre></a></li>
 <li class="method public "><a href="#mla_media_modal_begin_update_compat_fields" title="mla_media_modal_begin_update_compat_fields :: Captures the existing term assignments before the
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy meta boxes updates"><span class="description">Captures the existing term assignments before the
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy meta boxes updates</span><pre>mla_media_modal_begin_update_compat_fields()</pre></a></li>
@@ -81,8 +85,11 @@ Media Manager Modal Window taxonomy updates</span><pre>mla_media_modal_end_updat
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy"><span class="description">Applies Term Assignment to the terms assigned to one
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy</span><pre>mla_media_modal_update_compat_fields_terms()</pre></a></li>
 <li class="method public "><a href="#mla_render_language_tab" title='mla_render_language_tab :: Renders the Settings/Media Library Assistant "Language" tab'><span class="description">Renders the Settings/Media Library Assistant "Language" tab</span><pre>mla_render_language_tab()</pre></a></li>
+<li class="method public "><a href="#mla_update_attachment_metadata_postfilter" title="mla_update_attachment_metadata_postfilter :: Copy attachment metadata to duplicated items"><span class="description">Copy attachment metadata to duplicated items</span><pre>mla_update_attachment_metadata_postfilter()</pre></a></li>
 <li class="method public "><a href="#mla_updated_single_item" title="mla_updated_single_item :: Applies Term Synchronization after item updates"><span class="description">Applies Term Synchronization after item updates</span><pre>mla_updated_single_item()</pre></a></li>
+<li class="method public "><a href="#mla_upload_bulk_edit_form_values" title="mla_upload_bulk_edit_form_values :: Modify and extend the substitution values used for the Bulk Edit on Upload form."><span class="description">Modify and extend the substitution values used for the Bulk Edit on Upload form.</span><pre>mla_upload_bulk_edit_form_values()</pre></a></li>
 <li class="method public "><a href="#post_updated_messages" title="post_updated_messages :: Adds translation update message for display at the top of the Edit Media screen"><span class="description">Adds translation update message for display at the top of the Edit Media screen</span><pre>post_updated_messages()</pre></a></li>
+<li class="method public "><a href="#pre_wpml_is_translated_post_type_filter" title='pre_wpml_is_translated_post_type_filter :: Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments'><span class="description">Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</span><pre>pre_wpml_is_translated_post_type_filter()</pre></a></li>
 <li class="method public "><a href="#wpml_media_create_duplicate_attachment" title="wpml_media_create_duplicate_attachment :: Copies taxonomy terms from the source item to the new translated item"><span class="description">Copies taxonomy terms from the source item to the new translated item</span><pre>wpml_media_create_duplicate_attachment()</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="method private "><a href="#_add_relevant_term" title="_add_relevant_term :: Adds a term and its translations to $relevant_terms"><span class="description">Adds a term and its translations to $relevant_terms</span><pre>_add_relevant_term()</pre></a></li>
@@ -104,10 +111,15 @@ admin page areas for setting/updating them</span><pre>$mla_language_option_defin
 <li class="property private "><a href="#%24all_query_parameters" title="$all_query_parameters :: Save the query arguments"><span class="description">Save the query arguments</span><pre>$all_query_parameters</pre></a></li>
 <li class="property private "><a href="#%24bulk_edit_map" title='$bulk_edit_map :: Custom Field Map during Bulk Edit, "Upload New Media"'><span class="description">Custom Field Map during Bulk Edit, "Upload New Media"</span><pre>$bulk_edit_map</pre></a></li>
 <li class="property private "><a href="#%24bulk_edit_request" title='$bulk_edit_request :: Bulk Edit parameters during "Upload New Media"'><span class="description">Bulk Edit parameters during "Upload New Media"</span><pre>$bulk_edit_request</pre></a></li>
+<li class="property private "><a href="#%24current_mapping_rule" title="$current_mapping_rule :: Current mapping rule for term creation"><span class="description">Current mapping rule for term creation</span><pre>$current_mapping_rule</pre></a></li>
 <li class="property private "><a href="#%24duplicate_attachments" title="$duplicate_attachments :: Duplicates created during media upload"><span class="description">Duplicates created during media upload</span><pre>$duplicate_attachments</pre></a></li>
 <li class="property private "><a href="#%24existing_terms" title="$existing_terms :: Taxonomy terms for the current item translation in the database"><span class="description">Taxonomy terms for the current item translation in the database</span><pre>$existing_terms</pre></a></li>
 <li class="property private "><a href="#%24relevant_terms" title="$relevant_terms :: Taxonomy terms and translations"><span class="description">Taxonomy terms and translations</span><pre>$relevant_terms</pre></a></li>
 <li class="property private "><a href="#%24tax_input" title="$tax_input :: Replacement tax_input values in all languages"><span class="description">Replacement tax_input values in all languages</span><pre>$tax_input</pre></a></li>
+<li class="property private "><a href="#%24updating_duplicates" title="$updating_duplicates :: True while fixing and mapping duplicates"><span class="description">True while fixing and mapping duplicates</span><pre>$updating_duplicates</pre></a></li>
+<li class="property private "><a href="#%24wpml_content_defaults" title="$wpml_content_defaults :: WPML Option settings to restore when always_translate_media is changed in
+Bulk Edit on Upload area"><span class="description">WPML Option settings to restore when always_translate_media is changed in
+Bulk Edit on Upload area</span><pre>$wpml_content_defaults</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -194,6 +206,37 @@ and the Media/Edit Media screen</h2>
 <table class="table table-bordered"><tr>
 <th>since</th>
 <td>2.11</td>
+</tr></table>
+</div></div>
+</div>
+<a name="mla_begin_mapping" id="mla_begin_mapping"></a><div class="element clickable method public mla_begin_mapping" data-toggle="collapse" data-target=".mla_begin_mapping .collapse">
+<h2>Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</h2>
+<pre>mla_begin_mapping(string $source, mixed $post_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source</h4>
+<code>string</code><p>what kind of mapping action is starting: single_custom, single_iptc_exif, bulk_custom, bulk_iptc_exif, create_metadata, update_metadata, custom_fields, custom_rule, iptc_exif_standard, iptc_exif_taxonomy, iptc_exif_custom, iptc_exif_custom_rule</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>mixed</code><p>Attachment ID or NULL, depending on scope</p></div>
+</div></div>
+</div>
+<a name="mla_end_mapping" id="mla_end_mapping"></a><div class="element clickable method public mla_end_mapping" data-toggle="collapse" data-target=".mla_end_mapping .collapse">
+<h2>Remove "All languages" filter</h2>
+<pre>mla_end_mapping() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
 </tr></table>
 </div></div>
 </div>
@@ -381,6 +424,64 @@ in the "public static" array definition itself.</p></p>
 </tr></table>
 </div></div>
 </div>
+<a name="mla_mapping_new_text" id="mla_mapping_new_text"></a><div class="element clickable method public mla_mapping_new_text" data-toggle="collapse" data-target=".mla_mapping_new_text .collapse">
+<h2>Manages the creation of new taxonomy terms from metadata values</h2>
+<pre>mla_mapping_new_text(mixed $new_text, string $setting_key, integer $post_id, string $category, array $attachment_metadata) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$new_text</h4>
+<code>mixed</code><p>string or array value returned by the rule</p></div>
+<div class="subelement argument">
+<h4>$setting_key</h4>
+<code>string</code><p>field name or taxonomy name</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post ID to be evaluated</p></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>attachment_metadata, default NULL</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated rule EXIF/Template value</div>
+</div></div>
+</div>
+<a name="mla_mapping_rule" id="mla_mapping_rule"></a><div class="element clickable method public mla_mapping_rule" data-toggle="collapse" data-target=".mla_mapping_rule .collapse">
+<h2>Saves the current mapping rule for term creation</h2>
+<pre>mla_mapping_rule(array $setting_value, integer $post_id, string $category, array $attachment_metadata) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$setting_value</h4>
+<code>array</code><p>mapping rule</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post ID to be evaluated</p></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>attachment_metadata, default NULL</p></div>
+</div></div>
+</div>
 <a name="mla_media_modal_begin_update_compat_fields" id="mla_media_modal_begin_update_compat_fields"></a><div class="element clickable method public mla_media_modal_begin_update_compat_fields" data-toggle="collapse" data-target=".mla_media_modal_begin_update_compat_fields .collapse">
 <h2>Captures the existing term assignments before the
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy meta boxes updates</h2>
@@ -463,6 +564,35 @@ Media Manager Modal Window ATTACHMENT DETAILS taxonomy</h2>
 <code>array</code>( 'message' => '', 'body' => '' )</div>
 </div></div>
 </div>
+<a name="mla_update_attachment_metadata_postfilter" id="mla_update_attachment_metadata_postfilter"></a><div class="element clickable method public mla_update_attachment_metadata_postfilter" data-toggle="collapse" data-target=".mla_update_attachment_metadata_postfilter .collapse">
+<h2>Copy attachment metadata to duplicated items</h2>
+<pre>mla_update_attachment_metadata_postfilter(array $data, integer $post_id, array $options) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This filter is called AFTER MLA mapping rules are applied during
+wp_update_attachment_metadata() processing. The postfilter gives you
+an opportunity to record or update the metadata after the mapping.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>attachment metadata</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>The Post ID of the new/updated attachment</p>
+</div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>Processing options, e.g., 'is_upload'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated attachment metadata</div>
+</div></div>
+</div>
 <a name="mla_updated_single_item" id="mla_updated_single_item"></a><div class="element clickable method public mla_updated_single_item" data-toggle="collapse" data-target=".mla_updated_single_item .collapse">
 <h2>Applies Term Synchronization after item updates</h2>
 <pre>mla_updated_single_item(integer $post_id, integer $result) </pre>
@@ -482,6 +612,23 @@ Media Manager Modal Window ATTACHMENT DETAILS taxonomy</h2>
 <code>integer</code><p>Zero if the update failed else ID of the item that was updated.</p></div>
 </div></div>
 </div>
+<a name="mla_upload_bulk_edit_form_values" id="mla_upload_bulk_edit_form_values"></a><div class="element clickable method public mla_upload_bulk_edit_form_values" data-toggle="collapse" data-target=".mla_upload_bulk_edit_form_values .collapse">
+<h2>Modify and extend the substitution values used for the Bulk Edit on Upload form.</h2>
+<pre>mla_upload_bulk_edit_form_values(array $page_values) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$page_values</h4>
+<code>array</code><p>[ parameter_name => parameter_value ] pairs</p>
+</div>
+</div></div>
+</div>
 <a name="post_updated_messages" id="post_updated_messages"></a><div class="element clickable method public post_updated_messages" data-toggle="collapse" data-target=".post_updated_messages .collapse">
 <h2>Adds translation update message for display at the top of the Edit Media screen</h2>
 <pre>post_updated_messages(array $messages) : array</pre>
@@ -499,6 +646,26 @@ Media Manager Modal Window ATTACHMENT DETAILS taxonomy</h2>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>updated messages</div>
+</div></div>
+</div>
+<a name="pre_wpml_is_translated_post_type_filter" id="pre_wpml_is_translated_post_type_filter"></a><div class="element clickable method public pre_wpml_is_translated_post_type_filter" data-toggle="collapse" data-target=".pre_wpml_is_translated_post_type_filter .collapse">
+<h2>Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</h2>
+<pre>pre_wpml_is_translated_post_type_filter(boolean $translated, string $type) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$translated</h4>
+<code>boolean</code><p>true if the post_type is language-specific</p>
+</div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>the post type</p></div>
 </div></div>
 </div>
 <a name="wpml_media_create_duplicate_attachment" id="wpml_media_create_duplicate_attachment"></a><div class="element clickable method public wpml_media_create_duplicate_attachment" data-toggle="collapse" data-target=".wpml_media_create_duplicate_attachment .collapse">
@@ -522,7 +689,7 @@ Media Manager Modal Window ATTACHMENT DETAILS taxonomy</h2>
 </div>
 <a name="_add_relevant_term" id="_add_relevant_term"></a><div class="element clickable method private _add_relevant_term" data-toggle="collapse" data-target="._add_relevant_term .collapse">
 <h2>Adds a term and its translations to $relevant_terms</h2>
-<pre>_add_relevant_term(object $term, object $translations) </pre>
+<pre>_add_relevant_term(object $term, object $translations, boolean $skip_cache) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -543,6 +710,9 @@ Media Manager Modal Window ATTACHMENT DETAILS taxonomy</h2>
 <div class="subelement argument">
 <h4>$translations</h4>
 <code>object</code><p>Sitepress translations object; optional</p></div>
+<div class="subelement argument">
+<h4>$skip_cache</h4>
+<code>boolean</code><p>Ignore the Sitepress terms cache; optional</p></div>
 </div></div>
 </div>
 <a name="_apply_synch_input" id="_apply_synch_input"></a><div class="element clickable method private _apply_synch_input" data-toggle="collapse" data-target="._apply_synch_input .collapse">
@@ -616,7 +786,7 @@ and $existing_terms contains the target translation</p></p>
 </tr>
 <tr>
 <th>uses</th>
-<td>\global\MLA_Polylang::$existing_terms</td>
+<td>\global\MLA_WPML::$existing_terms</td>
 </tr>
 </table>
 <h3>Parameters</h3>
@@ -694,7 +864,7 @@ language-specific term_id to term_id/term_name mappings for all languages.</p></
 </div>
 <a name="_get_relevant_term" id="_get_relevant_term"></a><div class="element clickable method private _get_relevant_term" data-toggle="collapse" data-target="._get_relevant_term .collapse">
 <h2>Finds a $relevant_term (if defined) given a key and (optional) a language</h2>
-<pre>_get_relevant_term(string $field, mixed $value, string $taxonomy, string $language, boolean $test_only) </pre>
+<pre>_get_relevant_term(string $field, mixed $value, string $taxonomy, string $language, boolean $test_only, boolean $skip_cache) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -726,6 +896,9 @@ language-specific term_id to term_id/term_name mappings for all languages.</p></
 <h4>$test_only</h4>
 <code>boolean</code><p>false (default) to add missing term, true to leave term out</p>
 </div>
+<div class="subelement argument">
+<h4>$skip_cache</h4>
+<code>boolean</code><p>Ignore the Sitepress terms cache; optional</p></div>
 </div></div>
 </div>
 <a name="_reset_language_settings" id="_reset_language_settings"></a><div class="element clickable method private _reset_language_settings" data-toggle="collapse" data-target="._reset_language_settings .collapse">
@@ -843,6 +1016,18 @@ because localization calls cannot be placed in the "public static" array definit
 </tr></table>
 </div></div>
 </div>
+<a name="%24current_mapping_rule" id="$current_mapping_rule"> </a><div class="element clickable property private $current_mapping_rule" data-toggle="collapse" data-target=".$current_mapping_rule .collapse">
+<h2>Current mapping rule for term creation</h2>
+<pre>$current_mapping_rule : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+</div></div>
+</div>
 <a name="%24duplicate_attachments" id="$duplicate_attachments"> </a><div class="element clickable property private $duplicate_attachments" data-toggle="collapse" data-target=".$duplicate_attachments .collapse">
 <h2>Duplicates created during media upload</h2>
 <pre>$duplicate_attachments : array</pre>
@@ -892,6 +1077,31 @@ Polylang uses term_id as the "element_id".</p></p>
 </tr></table>
 </div></div>
 </div>
+<a name="%24updating_duplicates" id="$updating_duplicates"> </a><div class="element clickable property private $updating_duplicates" data-toggle="collapse" data-target=".$updating_duplicates .collapse">
+<h2>True while fixing and mapping duplicates</h2>
+<pre>$updating_duplicates : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24wpml_content_defaults" id="$wpml_content_defaults"> </a><div class="element clickable property private $wpml_content_defaults" data-toggle="collapse" data-target=".$wpml_content_defaults .collapse">
+<h2>WPML Option settings to restore when always_translate_media is changed in
+Bulk Edit on Upload area</h2>
+<pre>$wpml_content_defaults : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -899,7 +1109,7 @@ Polylang uses term_id as the "element_id".</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
 </div>
 </body>
 </html>
