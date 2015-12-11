@@ -282,9 +282,12 @@ class Default_Calendar_List implements Calendar_View {
 			$timestamps   = array_keys( $events );
 			$lower_bound  = array_filter( $timestamps,  array( $this, 'filter_events_before' ) );
 			$higher_bound = array_filter( $lower_bound, array( $this, 'filter_events_after'  ) );
-			$filtered     = array_intersect_key( $events, array_combine( $higher_bound, $higher_bound ) );
-			foreach ( $filtered as $timestamp => $events ) {
-				$paged_events[ intval( $timestamp ) ] = $events;
+
+			if ( is_array( $higher_bound ) && !empty( $higher_bound ) ) {
+				$filtered = array_intersect_key( $events, array_combine( $higher_bound, $higher_bound ) );
+				foreach ( $filtered as $timestamp => $events ) {
+					$paged_events[ intval( $timestamp ) ] = $events;
+				}
 			}
 
 		} else {
@@ -318,7 +321,7 @@ class Default_Calendar_List implements Calendar_View {
 
 		// Put resulting events in an associative array, with Ymd date as key for easy retrieval in calendar days loop.
 		foreach ( $paged_events as $timestamp => $events ) {
-			if ( $timestamp < $this->end ) {
+			if ( $timestamp <= $this->end ) {
 				$date = Carbon::createFromTimestamp( $timestamp, $calendar->timezone )->endOfDay()->format( 'Ymd' );
 				$daily_events[ intval( $date ) ][] = $events;
 			}

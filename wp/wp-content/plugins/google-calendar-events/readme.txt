@@ -1,9 +1,9 @@
-=== Simple Calendar - formerly Google Calendar Events ===
+=== Simple Calendar (aka Google Calendar Events) ===
 Contributors: moonstonemedia, pderksen, nickyoung87, nekojira, rosshanney
 Tags: calendar, calendars, calendar manager, custom calendar, custom calendars, event, events, events feed, google calendar, google
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 3.0.5
+Stable tag: 3.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,27 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.0.8 - December 1, 2015 =
+
+* Fix: Fixed bug for Google Calendar Pro add-on organizer event builder code.
+* Fix: Fixed some inconsistencies with all-day events and multi-day events when combined.
+
+= 3.0.7 - November 28, 2015 =
+
+* Fix: Fixed all day multi-day events showing on an extra day.
+* Fix: Fixed multi-day events that span less than 24 hours to show up on both days.
+* Fix: Fixed multi-day events that span 2 days to show up correctly.
+* Fix: Fixed issues with grouped calendars using categories not loading.
+* Tweak: Additional empty check for previous array_combine PHP error.
+* Tweak: Remove extra qtip triangle image from popup.
+
+= 3.0.6 - November 24, 2015 =
+
+* Fix: Fixed bug with days being off by one day.
+* Fix: Added check for array to avoid array_combine() PHP error.
+* Fix: Allow last list event to show correctly.
+* Tweak: Update shortcode to not check for a singular page.
 
 = 3.0.5 - November 19, 2015 =
 
