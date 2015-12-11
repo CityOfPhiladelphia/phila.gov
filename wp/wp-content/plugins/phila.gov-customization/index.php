@@ -2,7 +2,6 @@
 /**
  *
  * @link              http://phila.gov
- * @since             0.5.6
  * @package           phila-gov_customization
  *
  * @wordpress-plugin
@@ -10,7 +9,7 @@
  * Plugin URI:        https://github.com/CityOfPhiladelphia/phila.gov-customization
  * Description:       Custom Wordpress functionality, custom post types, custom taxonomies, etc.
  *
- * Version:           0.21.0
+ * Version:           0.21.1
  * Author:            City of Philadelphia
  * Author URI:        http://phila.gov
  * License:           GPL-2.0+
@@ -42,6 +41,7 @@ require $dir. '/admin/tiny-mce.php';
 require $dir. '/public/browse.php';
 require $dir. '/public/class-content-collection-walker.php';
 require $dir. '/public/class-phila-gov-department-notices.php';
+require $dir. '/public/class-phila-gov-service-info-display.php';
 require $dir. '/public/class-phila-gov-service-rewrites.php';
 require $dir. '/public/class-phila-gov-sidebar-shortcode.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';

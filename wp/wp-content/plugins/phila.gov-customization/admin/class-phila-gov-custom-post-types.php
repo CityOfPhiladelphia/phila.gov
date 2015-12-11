@@ -47,15 +47,16 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'Service Page Not Found' ),
           'not_found_in_trash'   => __( 'Service Page not found in trash' ),
         ),
-        'taxonomies' => array('category', 'post_tag'),
-        'supports' => array( 'title', 'editor', 'revisions'),
+        'taxonomies' => array( 'category' ),
+        'supports' => array( 'title', 'editor', 'revisions' ),
         'public' => true,
         'has_archive' => true,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-groups',
         'hierarchical' => false,
         'rewrite' => array(
-            'slug' => 'service',
+          'slug' => 'service',
+          'with_front' => false,
         ),
       )
     );
@@ -87,7 +88,8 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => true,
         'query_var' => true,
         'rewrite' => array(
-            'slug' => 'departments',
+          'slug' => 'departments',
+          'with_front' => false,
         ),
       )
     );
@@ -116,7 +118,8 @@ class Phila_Gov_Custom_Post_Types{
       'hierarchical' => false,
       'supports'  => array('title','editor','thumbnail', 'revisions'),
       'rewrite' => array(
-          'slug' => 'news'
+          'slug' => 'news',
+          'with_front' => false,
         ),
       )
     );
@@ -145,6 +148,7 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => false,
         'rewrite' => array(
           'slug' => 'alerts',
+          'with_front' => false,
         ),
       )
     );
@@ -174,6 +178,7 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => false,
         'rewrite' => array(
             'slug' => 'documents',
+             'with_front' => false,
         ),
       )
     );
@@ -202,6 +207,7 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => false,
         'rewrite' => array(
             'slug' => 'notices',
+            'with_front' => false,
         ),
       )
     );
