@@ -2,9 +2,12 @@
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
+// Make sure "text" field is loaded
+require_once RWMB_FIELDS_DIR . 'text.php';
+
 if ( ! class_exists( 'RWMB_Date_Field' ) )
 {
-	class RWMB_Date_Field extends RWMB_Field
+	class RWMB_Date_Field extends RWMB_Text_Field
 	{
 		/**
 		 * Enqueue scripts and styles
@@ -16,7 +19,7 @@ if ( ! class_exists( 'RWMB_Date_Field' ) )
 			$url = RWMB_CSS_URL . 'jqueryui';
 			wp_register_style( 'jquery-ui-core', "{$url}/jquery.ui.core.css", array(), '1.8.17' );
 			wp_register_style( 'jquery-ui-theme', "{$url}/jquery.ui.theme.css", array(), '1.8.17' );
-			wp_register_style( 'wp-datepicker', RWMB_CSS_URL ."datepicker.css", array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
+			wp_register_style( 'wp-datepicker', RWMB_CSS_URL . 'datepicker.css', array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
 			wp_enqueue_style( 'jquery-ui-datepicker', "{$url}/jquery.ui.datepicker.css", array( 'wp-datepicker' ), '1.8.17' );
 
 			// Load localized scripts
@@ -39,25 +42,6 @@ if ( ! class_exists( 'RWMB_Date_Field' ) )
 			wp_enqueue_script( 'rwmb-date', RWMB_JS_URL . 'date.js', $deps, RWMB_VER, true );
 		}
 
-		/**
-		 * Get field HTML
-		 *
-		 * @param mixed $meta
-		 * @param array $field
-		 *
-		 * @return string
-		 */
-		static function html( $meta, $field )
-		{
-			return sprintf(
-				'<input type="text" class="rwmb-date" name="%s" value="%s" id="%s" size="%s" data-options="%s" />',
-				$field['field_name'],
-				$meta,
-				isset( $field['clone'] ) && $field['clone'] ? '' : $field['id'],
-				$field['size'],
-				esc_attr( wp_json_encode( $field['js_options'] ) )
-			);
-		}
 
 		/**
 		 * Normalize parameters for field
@@ -69,7 +53,6 @@ if ( ! class_exists( 'RWMB_Date_Field' ) )
 		static function normalize_field( $field )
 		{
 			$field = wp_parse_args( $field, array(
-				'size'       => 30,
 				'js_options' => array(),
 			) );
 
@@ -78,6 +61,12 @@ if ( ! class_exists( 'RWMB_Date_Field' ) )
 			$field['js_options'] = wp_parse_args( $field['js_options'], array(
 				'dateFormat'      => empty( $field['format'] ) ? 'yy-mm-dd' : $field['format'],
 				'showButtonPanel' => true,
+			) );
+
+			$field = parent::normalize_field( $field );
+
+			$field['attributes'] = wp_parse_args( $field['attributes'], array(
+				'data-options' => wp_json_encode( $field['js_options'] ),
 			) );
 
 			return $field;

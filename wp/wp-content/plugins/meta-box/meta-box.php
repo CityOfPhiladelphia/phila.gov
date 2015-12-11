@@ -1,21 +1,21 @@
 <?php
-/*
-Plugin Name: Meta Box
-Plugin URI: http://metabox.io
-Description: Create meta box for editing pages in WordPress. Compatible with custom post types since WP 3.0
-Version: 4.5.7
-Author: Rilwis
-Author URI: http://www.deluxeblogtips.com
-License: GPL2+
-Text Domain: meta-box
-Domain Path: /lang/
-*/
+/**
+ * Plugin Name: Meta Box
+ * Plugin URI: https://metabox.io
+ * Description: Create custom meta boxes and custom fields for any post type in WordPress.
+ * Version: 4.7.2
+ * Author: Rilwis
+ * Author URI: http://www.deluxeblogtips.com
+ * License: GPL2+
+ * Text Domain: meta-box
+ * Domain Path: /lang/
+ */
 
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
 // Script version, used to add version for scripts and styles
-define( 'RWMB_VER', '4.5.7' );
+define( 'RWMB_VER', '4.7.2' );
 
 // Define plugin URLs, for fast enqueuing scripts and styles
 if ( ! defined( 'RWMB_URL' ) )
@@ -42,6 +42,9 @@ foreach ( glob( RWMB_FIELDS_DIR . '*.php' ) as $file )
 
 // Meta box class
 require_once RWMB_INC_DIR . 'meta-box.php';
+
+// Validation module
+require_once RWMB_INC_DIR . 'validation.php';
 
 // Helper function to retrieve meta value
 require_once RWMB_INC_DIR . 'helpers.php';

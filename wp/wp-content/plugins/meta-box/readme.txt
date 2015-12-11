@@ -4,7 +4,7 @@ Donate link: http://www.deluxeblogtips.com/donate
 Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, matrix, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
 Requires at least: 3.5
 Tested up to: 4.3.1
-Stable tag: 4.5.7
+Stable tag: 4.7.2
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional solution to create custom meta boxes and custom fields for WordPress websites.
@@ -74,6 +74,33 @@ To getting started with the plugin API, please read [this tutorial](https://meta
 1. Post Taxonomy Fields
 
 == Changelog ==
+
+
+= 4.7.2 =
+
+* Fix: notice undefined index in date, time fields.
+
+= 4.7.1 =
+
+* Fix: remove default `maxlength = 30` for text fields.
+
+= 4.7 =
+
+* Improvement: add `attributes` for all input fields (text, number, email, ...) so users can add any custom attributes for them. Also added default attributes `required`, `disabled`, `readonly`, `maxlength` and `pattern` for those fields as well. These attributes will be merged into the `attributes`.
+* Improvement: add `js_options` for color field which allows users to define custom color palettes and other attributes for color picker. See the options in [Iris page](http://automattic.github.io/Iris/).
+* Fix: fix for file and image uploaded via `file_advanced` and `image_advanced` not showing up.
+
+= 4.6 =
+
+* Improvement: the plugin translation is now handled in translate.wordpress.org. While the plugin keeps old translation as backward compatibility, it's recommended to translate everything in translate.wordpress.org. Language packs will be automatically updated by WordPress.
+* Improvement: rewrite code for `file_advanced` and `image_advanced`, which share the same code base. These fields are now clonable and not autosave (you have to save post to save files)! Props @funkatronic.
+* Improvement: restyle clone icon, sort clone icon and add clone button for better UI. The new UI now is compatible with `color` and `date` fields
+* Improvement: separate validation module into 1 class, for better code structure
+* Improvement: add `pattern` attribute for `url` field
+* Improvement: improve code quality
+* Fix: missing "checked" when clone radio
+* Fix: language file name for Dutch
+* Fix: oembed not render preview if provider is added via `wp_embed_register_handler`
 
 = 4.5.7 =
 * Fix: Always set std as value for hidden field
