@@ -3,7 +3,7 @@
  *
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  */
 
 /**
@@ -12,7 +12,7 @@
  * @since 0.5.9
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization, https://wordpress.org/plugins/restrict-categories/
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  */
 
 add_action( 'admin_init', 'phila_restrict_categories_custom_loader', 1 );

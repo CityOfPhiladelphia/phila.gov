@@ -5,14 +5,14 @@
 *
 * Filter the post_type_link to add the category into notices URL, very similar to /news
 *
-* @package phila.gov-customization
+* @package phila-gov_customization
 */
 
 
-if (class_exists("PhilaGovCPTNotices") ){
-  $phila_gov_tax = new PhilaGovCPTNotices();
+if (class_exists("Phila_Gov_CPT_Notices") ){
+  $phila_gov_tax = new Phila_Gov_CPT_Notices();
 }
-class PhilaGovCPTNotices {
+class Phila_Gov_CPT_Notices {
 
   public function __construct(){
     add_filter( 'post_type_link', array($this, 'phila_notices_link'), 10, 2 );

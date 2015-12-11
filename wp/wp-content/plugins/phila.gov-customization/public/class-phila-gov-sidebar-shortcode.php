@@ -6,15 +6,15 @@
  *
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  * @since 0.20.0
  */
 
- if ( class_exists('PhilaGovSidebarShortcode' ) ){
-   $phila_load_sidebar_shortcode = new PhilaGovSidebarShortcode();
+ if ( class_exists('Phila_Gov_Sidebar_Shortcode' ) ){
+   $phila_load_sidebar_shortcode = new Phila_Gov_Sidebar_Shortcode();
  }
 
- class PhilaGovSidebarShortcode {
+ class Phila_Gov_Sidebar_Shortcode {
 
    public function __construct(){
 

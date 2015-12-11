@@ -4,15 +4,15 @@
  *
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  * @since 0.19.0
  */
 
-if ( class_exists("PhilaGovDepartmentHomePageNotices" ) ){
-  $phila_document_load = new PhilaGovDepartmentHomePageNotices();
+if ( class_exists("Phila_Gov_Department_Home_Page_Notices" ) ){
+  $phila_document_load = new Phila_Gov_Department_Home_Page_Notices();
 }
 
-class PhilaGovDepartmentHomePageNotices {
+class Phila_Gov_Department_Home_Page_Notices {
 
   public function __construct(){
 

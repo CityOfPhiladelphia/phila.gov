@@ -4,7 +4,7 @@
  *
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  */
 
 
@@ -52,7 +52,7 @@ function get_home_news(){
 *
 * Filter the post_type_link to add the category into url
 *
-* @package phila.gov-customization
+* @package phila-gov_customization
 */
 
 add_filter( 'post_type_link', 'phila_news_link' , 10, 2 );
@@ -84,7 +84,7 @@ function phila_news_link( $post_link, $id = 0 ) {
 * @param @atts - posts can be set to 1 or 3 in a card-like view
 *                list can be set for ul display
 *
-* @package phila.gov-customization
+* @package phila-gov_customization
 */
 
 function is_flag( $flag, $atts ) {
@@ -227,7 +227,7 @@ function register_news_shortcode(){
 * @param @atts - posts can be set to 1 or 3 in a card-like view
 *                list can be set for ul display
 *
-* @package phila.gov-customization
+* @package phila-gov_customization
 */
 
 

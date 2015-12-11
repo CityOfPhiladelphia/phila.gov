@@ -3,14 +3,14 @@
  *
  * @link              http://phila.gov
  * @since             0.5.6
- * @package           phila.gov-customization
+ * @package           phila-gov_customization
  *
  * @wordpress-plugin
  * Plugin Name:       Phila.gov Customization
  * Plugin URI:        https://github.com/CityOfPhiladelphia/phila.gov-customization
  * Description:       Custom Wordpress functionality, custom post types, custom taxonomies, etc.
  *
- * Version:           0.20.3
+ * Version:           0.21.0
  * Author:            City of Philadelphia
  * Author URI:        http://phila.gov
  * License:           GPL-2.0+

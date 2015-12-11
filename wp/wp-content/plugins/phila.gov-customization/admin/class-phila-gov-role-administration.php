@@ -1,10 +1,10 @@
 <?php
 
-if ( class_exists("PhilaGovRoleAdministration" ) ){
-  $phila_role_administration_load = new PhilaGovRoleAdministration();
+if ( class_exists("Phila_Gov_Role_Administration" ) ){
+  $phila_role_administration_load = new Phila_Gov_Role_Administration();
 }
 
-class PhilaGovRoleAdministration {
+class Phila_Gov_Role_Administration {
 
   public function __construct(){
 
@@ -24,8 +24,6 @@ class PhilaGovRoleAdministration {
     add_action( 'admin_head', array( $this, 'add_meta_data') );
 
     add_action( 'admin_head', array( $this, 'remove_meta_boxes' ) );
-
-    //add_action( 'do_meta_boxes', array( $this, 'remove_role_metabox' ) );
 
     add_action('admin_head', array($this, 'tinyMCE_edits' ) );
 
@@ -343,21 +341,6 @@ class PhilaGovRoleAdministration {
       }
     }
   }
-  /**
-   * Hides per-page role editor for all admins.
-   *
-   * @since 0.17.7
-   *
-   */
-  public function remove_role_metabox(){
-    if ( is_admin() ) {
-      $post_types = get_post_types( );
-      foreach ( $post_types as $post_type ) {
-        remove_meta_box( 'wpfront-user-role-editor-role-permission', $post_type, 'advanced' );
-       }
-    }
-  }
-
 
   /**
    * Add custom js to force category selection for Department Author roles
