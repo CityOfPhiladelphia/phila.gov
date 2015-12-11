@@ -157,6 +157,7 @@ class wfIssues {
 		foreach($q1 as $i){
 			$i['data'] = unserialize($i['data']);
 			$i['timeAgo'] = wfUtils::makeTimeAgo(time() - $i['time']);
+			$i['longMsg'] = wp_kses($i['longMsg'], 'post');
 			if($i['status'] == 'new'){
 				$ret['new'][] = $i;
 			} else if($i['status'] == 'ignoreP' || $i['status'] == 'ignoreC'){

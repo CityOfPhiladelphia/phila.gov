@@ -465,11 +465,11 @@ class wfScanEngine {
 			$type = $this->scanData[$idString]['type'];
 			foreach($hresults as $result){
 				if($result['badList'] == 'goog-malware-shavar'){
-					$shortMsg = "$uctype contains a suspected malware URL: " . $this->scanData[$idString]['title'];
-					$longMsg = "This $type contains a suspected malware URL listed on Google's list of malware sites. The URL is: " . $result['URL'] . " - More info available at <a href=\"http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=" . urlencode($result['URL']) . "&client=googlechrome&hl=en-US\" target=\"_blank\">Google Safe Browsing diagnostic page</a>.";
+					$shortMsg = "$uctype contains a suspected malware URL: " . esc_html($this->scanData[$idString]['title']);
+					$longMsg = "This $type contains a suspected malware URL listed on Google's list of malware sites. The URL is: " . esc_html($result['URL']) . " - More info available at <a href=\"http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=" . urlencode($result['URL']) . "&client=googlechrome&hl=en-US\" target=\"_blank\">Google Safe Browsing diagnostic page</a>.";
 				} else if($result['badList'] == 'googpub-phish-shavar'){
-					$shortMsg = "$uctype contains a suspected phishing site URL: " . $this->scanData[$idString]['title'];
-					$longMsg = "This $type contains a URL that is a suspected phishing site that is currently listed on Google's list of known phishing sites. The URL is: " . $result['URL'];
+					$shortMsg = "$uctype contains a suspected phishing site URL: " . esc_html($this->scanData[$idString]['title']);
+					$longMsg = "This $type contains a URL that is a suspected phishing site that is currently listed on Google's list of known phishing sites. The URL is: " . esc_html($result['URL']);
 				} else {
 					//A list type that may be new and the plugin has not been upgraded yet.
 					continue;
@@ -558,11 +558,11 @@ class wfScanEngine {
 			$type = $this->scanData[$idString]['type'];
 			foreach($hresults as $result){
 				if($result['badList'] == 'goog-malware-shavar'){
-					$shortMsg = "$uctype with author " . $this->scanData[$idString]['author'] . " contains a suspected malware URL.";
-					$longMsg = "This $type contains a suspected malware URL listed on Google's list of malware sites. The URL is: " . $result['URL'] . " - More info available at <a href=\"http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=" . urlencode($result['URL']) . "&client=googlechrome&hl=en-US\" target=\"_blank\">Google Safe Browsing diagnostic page</a>.";
+					$shortMsg = "$uctype with author " . esc_html($this->scanData[$idString]['author']) . " contains a suspected malware URL.";
+					$longMsg = "This $type contains a suspected malware URL listed on Google's list of malware sites. The URL is: " . esc_html($result['URL']) . " - More info available at <a href=\"http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=" . urlencode($result['URL']) . "&client=googlechrome&hl=en-US\" target=\"_blank\">Google Safe Browsing diagnostic page</a>.";
 				} else if($result['badList'] == 'googpub-phish-shavar'){
 					$shortMsg = "$uctype contains a suspected phishing site URL.";
-					$longMsg = "This $type contains a URL that is a suspected phishing site that is currently listed on Google's list of known phishing sites. The URL is: " . $result['URL'];
+					$longMsg = "This $type contains a URL that is a suspected phishing site that is currently listed on Google's list of known phishing sites. The URL is: " . esc_html($result['URL']);
 				} else {
 					//A list type that may be new and the plugin has not been upgraded yet.
 					continue;
@@ -719,12 +719,12 @@ class wfScanEngine {
 		$this->status(4, 'info', "Checking password strength of user '" . $userDat->user_login . "'");
 		$highCap = $this->highestCap($userDat->wp_capabilities);
 		if($this->isEditor($userDat->wp_capabilities)){ 
-			$shortMsg = "User \"" . $userDat->user_login . "\" with \"" . $highCap . "\" access has an easy password.";
-			$longMsg = "A user with the a role of '" . $highCap . "' has a password that is easy to guess. Please change this password yourself or ask the user to change it.";
+			$shortMsg = "User \"" . esc_html($userDat->user_login) . "\" with \"" . esc_html($highCap) . "\" access has an easy password.";
+			$longMsg = "A user with the a role of '" . esc_html($highCap) . "' has a password that is easy to guess. Please change this password yourself or ask the user to change it.";
 			$level = 1;
 			$words = $this->dictWords;
 		} else {
-			$shortMsg = "User \"" . $userDat->user_login . "\" with 'subscriber' access has a very easy password.";
+			$shortMsg = "User \"" . esc_html($userDat->user_login) . "\" with 'subscriber' access has a very easy password.";
 			$longMsg = "A user with 'subscriber' access has a password that is very easy to guess. Please either change it or ask the user to change their password.";
 			$level = 2;
 			$words = array($userDat->user_login);
