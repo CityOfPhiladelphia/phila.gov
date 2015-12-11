@@ -6,7 +6,7 @@
  * will the rest of the plugin be loaded and run.
  *
  * @package Media Library Assistant
- * @version 2.15
+ * @version 2.21
  */
 
 /*
@@ -16,7 +16,7 @@ Description: Enhances the Media Library; powerful [mla_gallery], taxonomy suppor
 Author: David Lingren, Fair Trade Judaica
 Text Domain: media-library-assistant
 Domain Path: /languages
-Version: 2.15
+Version: 2.21
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
 Copyright 2011-2015 David Lingren
@@ -36,6 +36,7 @@ Copyright 2011-2015 David Lingren
 */
 
 defined( 'ABSPATH' ) or die();
+//error_log( __LINE__ . ' MEMORY index.php ' . number_format( memory_get_peak_usage( true ) ), 0);
 
 /*
  * Translation strings for the plugin data in the comment block above; MUST MATCH
@@ -102,14 +103,20 @@ if ( ! defined( 'MLA_BACKUP_DIR' ) ) {
  */
 $mla_name_conflict_candidates =
 	array (
+		'MLA_Ajax' => 'class',
+		'MLACore' => 'class',
+		'MLA_Checklist_Walker' => 'class',
 		'MLAPDF' => 'class',
+		'MLAQuery' => 'class',
+		'MLAReferences' => 'class',
+		'MLAData_Source' => 'class',
 		'MLAData' => 'class',
 		'MLAEdit' => 'class',
-		'MLA_Checklist_Walker' => 'class',
 		'MLAImageProcessor' => 'class',
 		'MLAMutex' => 'class',
 		'MLA_List_Table' => 'class',
 		'MLA' => 'class',
+		'MLAModal_Ajax' => 'class',
 		'MLAModal' => 'class',
 		'MLAMime' => 'class',
 		'MLAObjects' => 'class',
@@ -117,6 +124,7 @@ $mla_name_conflict_candidates =
 		'MLAOptions' => 'class',
 		'MLA_Polylang' => 'class',
 		'MLASettings' => 'class',
+		'MLAShortcode_Support' => 'class',
 		'MLAShortcodes' => 'class',
 		'MLA_Thumbnail' => 'class',
 		'MLA_Upload_List_Table' => 'class',
@@ -169,8 +177,8 @@ function mla_name_conflict_reporting_action () {
 if ( empty( $mla_name_conflict_error_messages ) ) {
 	require_once('includes/mla-plugin-loader.php');
 
-	register_activation_hook( __FILE__, array( 'MLASettings', 'mla_activation_hook' ) );
-	register_deactivation_hook( __FILE__, array( 'MLASettings', 'mla_deactivation_hook' ) );
+	//register_activation_hook( __FILE__, array( 'MLASettings', 'mla_activation_hook' ) );
+	//register_deactivation_hook( __FILE__, array( 'MLASettings', 'mla_deactivation_hook' ) );
 }
 else {
 	add_action( 'admin_notices', 'mla_name_conflict_reporting_action' );

@@ -169,7 +169,7 @@ class MLA_Thumbnail {
 
 		self::$bulk_action_options = array();
 		$request_options = isset( $_REQUEST['mla_thumbnail_options'] ) ? $_REQUEST['mla_thumbnail_options'] : array();
-		$request_options['ghostscript_path'] = MLAOptions::mla_get_option( 'ghostscript_path' );
+		$request_options['ghostscript_path'] = MLACore::mla_get_option( 'ghostscript_path' );
 
 		if ( empty( $request_options['existing_thumbnails'] ) ) {
 			$request_options['existing_thumbnails'] = 'keep';

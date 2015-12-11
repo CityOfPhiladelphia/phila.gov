@@ -64,7 +64,10 @@
 and the Media/Edit Media screen"><span class="description">Filters taxonomy updates by language for Bulk Edit during Add New Media
 and the Media/Edit Media screen</span><pre>edit_attachment()</pre></a></li>
 <li class="method public "><a href="#initialize" title="initialize :: Initialization function, similar to __construct()"><span class="description">Initialization function, similar to __construct()</span><pre>initialize()</pre></a></li>
+<li class="method public "><a href="#mla_begin_mapping" title='mla_begin_mapping :: Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments'><span class="description">Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</span><pre>mla_begin_mapping()</pre></a></li>
+<li class="method public "><a href="#mla_end_mapping" title='mla_end_mapping :: Remove "All languages" filter'><span class="description">Remove "All languages" filter</span><pre>mla_end_mapping()</pre></a></li>
 <li class="method public "><a href="#mla_get_options_tablist" title='mla_get_options_tablist :: Adds the "Language" tab to the Settings/Media Library Assistant list'><span class="description">Adds the "Language" tab to the Settings/Media Library Assistant list</span><pre>mla_get_options_tablist()</pre></a></li>
+<li class="method public "><a href="#mla_get_shortcode_attachments_final_terms" title='mla_get_shortcode_attachments_final_terms :: Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments'><span class="description">Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</span><pre>mla_get_shortcode_attachments_final_terms()</pre></a></li>
 <li class="method public "><a href="#mla_get_terms_clauses" title="mla_get_terms_clauses :: MLA Tag Cloud Query Clauses"><span class="description">MLA Tag Cloud Query Clauses</span><pre>mla_get_terms_clauses()</pre></a></li>
 <li class="method public "><a href="#mla_get_terms_query_arguments" title="mla_get_terms_query_arguments :: MLA Tag Cloud Query Arguments"><span class="description">MLA Tag Cloud Query Arguments</span><pre>mla_get_terms_query_arguments()</pre></a></li>
 <li class="method public "><a href="#mla_list_table_add_pll_styles" title="mla_list_table_add_pll_styles :: Add styles for the pll_translations table column"><span class="description">Add styles for the pll_translations table column</span><pre>mla_list_table_add_pll_styles()</pre></a></li>
@@ -87,6 +90,8 @@ process the Language dropdown selection, if changed</span><pre>mla_list_table_in
 <li class="method public "><a href="#mla_list_table_prepare_items_total_items" title="mla_list_table_prepare_items_total_items :: Filter the total items count for prepare_items()"><span class="description">Filter the total items count for prepare_items()</span><pre>mla_list_table_prepare_items_total_items()</pre></a></li>
 <li class="method public "><a href="#mla_list_table_submenu_arguments" title='mla_list_table_submenu_arguments :: Filter the "sticky" submenu URL parameters'><span class="description">Filter the "sticky" submenu URL parameters</span><pre>mla_list_table_submenu_arguments()</pre></a></li>
 <li class="method public "><a href="#mla_localize_language_option_definitions" title="mla_localize_language_option_definitions :: Localize $mla_language_option_definitions array"><span class="description">Localize $mla_language_option_definitions array</span><pre>mla_localize_language_option_definitions()</pre></a></li>
+<li class="method public "><a href="#mla_mapping_new_text" title="mla_mapping_new_text :: Manages the creation of new taxonomy terms from metadata values"><span class="description">Manages the creation of new taxonomy terms from metadata values</span><pre>mla_mapping_new_text()</pre></a></li>
+<li class="method public "><a href="#mla_mapping_rule" title="mla_mapping_rule :: Saves the current mapping rule for term creation"><span class="description">Saves the current mapping rule for term creation</span><pre>mla_mapping_rule()</pre></a></li>
 <li class="method public "><a href="#mla_media_modal_begin_update_compat_fields" title="mla_media_modal_begin_update_compat_fields :: Captures the existing term assignments before the
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy meta boxes updates"><span class="description">Captures the existing term assignments before the
 Media Manager Modal Window ATTACHMENT DETAILS taxonomy meta boxes updates</span><pre>mla_media_modal_begin_update_compat_fields()</pre></a></li>
@@ -125,6 +130,7 @@ admin page areas for setting/updating them</span><pre>$mla_language_option_defin
 <li class="property private "><a href="#%24bulk_action_includes" title="$bulk_action_includes :: Items returned by custom bulk action(s)"><span class="description">Items returned by custom bulk action(s)</span><pre>$bulk_action_includes</pre></a></li>
 <li class="property private "><a href="#%24bulk_edit_map" title='$bulk_edit_map :: Custom Field Map during Bulk Edit, "Upload New Media"'><span class="description">Custom Field Map during Bulk Edit, "Upload New Media"</span><pre>$bulk_edit_map</pre></a></li>
 <li class="property private "><a href="#%24bulk_edit_request" title='$bulk_edit_request :: Bulk Edit parameters during Bulk Edit, "Upload New Media"'><span class="description">Bulk Edit parameters during Bulk Edit, "Upload New Media"</span><pre>$bulk_edit_request</pre></a></li>
+<li class="property private "><a href="#%24current_mapping_rule" title="$current_mapping_rule :: Current mapping rule for term creation"><span class="description">Current mapping rule for term creation</span><pre>$current_mapping_rule</pre></a></li>
 <li class="property private "><a href="#%24duplicate_attachments" title="$duplicate_attachments :: Duplicates created during media upload"><span class="description">Duplicates created during media upload</span><pre>$duplicate_attachments</pre></a></li>
 <li class="property private "><a href="#%24existing_terms" title="$existing_terms :: Taxonomy terms for the current item translation in the database"><span class="description">Taxonomy terms for the current item translation in the database</span><pre>$existing_terms</pre></a></li>
 <li class="property private "><a href="#%24list_table_parameters" title="$list_table_parameters :: Data selection parameters for custom views"><span class="description">Data selection parameters for custom views</span><pre>$list_table_parameters</pre></a></li>
@@ -238,6 +244,37 @@ and the Media/Edit Media screen</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="mla_begin_mapping" id="mla_begin_mapping"></a><div class="element clickable method public mla_begin_mapping" data-toggle="collapse" data-target=".mla_begin_mapping .collapse">
+<h2>Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</h2>
+<pre>mla_begin_mapping(string $source, mixed $post_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source</h4>
+<code>string</code><p>what kind of mapping action is starting: single_custom, single_iptc_exif, bulk_custom, bulk_iptc_exif, create_metadata, update_metadata, custom_fields, custom_rule, iptc_exif_standard, iptc_exif_taxonomy, iptc_exif_custom, iptc_exif_custom_rule</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>mixed</code><p>Attachment ID or NULL, depending on scope</p></div>
+</div></div>
+</div>
+<a name="mla_end_mapping" id="mla_end_mapping"></a><div class="element clickable method public mla_end_mapping" data-toggle="collapse" data-target=".mla_end_mapping .collapse">
+<h2>Remove "All languages" filter</h2>
+<pre>mla_end_mapping() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+</div></div>
+</div>
 <a name="mla_get_options_tablist" id="mla_get_options_tablist"></a><div class="element clickable method public mla_get_options_tablist" data-toggle="collapse" data-target=".mla_get_options_tablist .collapse">
 <h2>Adds the "Language" tab to the Settings/Media Library Assistant list</h2>
 <pre>mla_get_options_tablist(array | false $results, array $mla_tablist, string | NULL $tab) : array</pre>
@@ -263,6 +300,26 @@ and the Media/Edit Media screen</h2>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>updated tablist or single tab element</div>
+</div></div>
+</div>
+<a name="mla_get_shortcode_attachments_final_terms" id="mla_get_shortcode_attachments_final_terms"></a><div class="element clickable method public mla_get_shortcode_attachments_final_terms" data-toggle="collapse" data-target=".mla_get_shortcode_attachments_final_terms .collapse">
+<h2>Force "All languages" mode for IPTC/EXIF mapping, which uses mla_get_shortcode_attachments</h2>
+<pre>mla_get_shortcode_attachments_final_terms(array $arguments, boolean $return_found_rows) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$arguments</h4>
+<code>array</code><p>Arguments for mla_get_shortcode_attachments</p></div>
+<div class="subelement argument">
+<h4>$return_found_rows</h4>
+<code>boolean</code><p>true to calculate and return ['found_posts'] as an array element</p>
+</div>
 </div></div>
 </div>
 <a name="mla_get_terms_clauses" id="mla_get_terms_clauses"></a><div class="element clickable method public mla_get_terms_clauses" data-toggle="collapse" data-target=".mla_get_terms_clauses .collapse">
@@ -719,6 +776,64 @@ in the "public static" array definition itself.</p></p>
 <th>since</th>
 <td>2.11</td>
 </tr></table>
+</div></div>
+</div>
+<a name="mla_mapping_new_text" id="mla_mapping_new_text"></a><div class="element clickable method public mla_mapping_new_text" data-toggle="collapse" data-target=".mla_mapping_new_text .collapse">
+<h2>Manages the creation of new taxonomy terms from metadata values</h2>
+<pre>mla_mapping_new_text(mixed $new_text, string $setting_key, integer $post_id, string $category, array $attachment_metadata) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$new_text</h4>
+<code>mixed</code><p>string or array value returned by the rule</p></div>
+<div class="subelement argument">
+<h4>$setting_key</h4>
+<code>string</code><p>field name or taxonomy name</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post ID to be evaluated</p></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>attachment_metadata, default NULL</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>updated rule EXIF/Template value</div>
+</div></div>
+</div>
+<a name="mla_mapping_rule" id="mla_mapping_rule"></a><div class="element clickable method public mla_mapping_rule" data-toggle="collapse" data-target=".mla_mapping_rule .collapse">
+<h2>Saves the current mapping rule for term creation</h2>
+<pre>mla_mapping_rule(array $setting_value, integer $post_id, string $category, array $attachment_metadata) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$setting_value</h4>
+<code>array</code><p>mapping rule</p></div>
+<div class="subelement argument">
+<h4>$post_id</h4>
+<code>integer</code><p>post ID to be evaluated</p></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>category/scope to evaluate against: iptc_exif_standard_mapping, iptc_exif_taxonomy_mapping or iptc_exif_custom_mapping</p>
+</div>
+<div class="subelement argument">
+<h4>$attachment_metadata</h4>
+<code>array</code><p>attachment_metadata, default NULL</p></div>
 </div></div>
 </div>
 <a name="mla_media_modal_begin_update_compat_fields" id="mla_media_modal_begin_update_compat_fields"></a><div class="element clickable method public mla_media_modal_begin_update_compat_fields" data-toggle="collapse" data-target=".mla_media_modal_begin_update_compat_fields .collapse">
@@ -1250,6 +1365,18 @@ because localization calls cannot be placed in the "public static" array definit
 </tr></table>
 </div></div>
 </div>
+<a name="%24current_mapping_rule" id="$current_mapping_rule"> </a><div class="element clickable property private $current_mapping_rule" data-toggle="collapse" data-target=".$current_mapping_rule .collapse">
+<h2>Current mapping rule for term creation</h2>
+<pre>$current_mapping_rule : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.20</td>
+</tr></table>
+</div></div>
+</div>
 <a name="%24duplicate_attachments" id="$duplicate_attachments"> </a><div class="element clickable property private $duplicate_attachments" data-toggle="collapse" data-target=".$duplicate_attachments .collapse">
 <h2>Duplicates created during media upload</h2>
 <pre>$duplicate_attachments : array</pre>
@@ -1332,7 +1459,7 @@ Polylang uses term_id as the "element_id".</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
 </div>
 </body>
 </html>

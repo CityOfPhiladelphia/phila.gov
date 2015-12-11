@@ -62,7 +62,6 @@
 <li class="method public "><a href="#mla_admin_enqueue_scripts_action" title="mla_admin_enqueue_scripts_action :: Load the plugin's Style Sheet and Javascript files"><span class="description">Load the plugin's Style Sheet and Javascript files</span><pre>mla_admin_enqueue_scripts_action()</pre></a></li>
 <li class="method public "><a href="#mla_admin_init_action" title="mla_admin_init_action :: Adds Custom Field support to the Edit Media screen."><span class="description">Adds Custom Field support to the Edit Media screen.</span><pre>mla_admin_init_action()</pre></a></li>
 <li class="method public "><a href="#mla_attachment_submitbox_action" title="mla_attachment_submitbox_action :: Adds Last Modified date to the Submit box on the Edit Media screen."><span class="description">Adds Last Modified date to the Submit box on the Edit Media screen.</span><pre>mla_attachment_submitbox_action()</pre></a></li>
-<li class="method public "><a href="#mla_checklist_meta_box" title='mla_checklist_meta_box :: Display taxonomy "checklist" form fields'><span class="description">Display taxonomy "checklist" form fields</span><pre>mla_checklist_meta_box()</pre></a></li>
 <li class="method public "><a href="#mla_edit_add_help_tab" title="mla_edit_add_help_tab :: Add contextual help tabs to the WordPress Edit Media page"><span class="description">Add contextual help tabs to the WordPress Edit Media page</span><pre>mla_edit_add_help_tab()</pre></a></li>
 <li class="method public "><a href="#mla_edit_attachment_action" title="mla_edit_attachment_action :: Saves updates from the Edit Media screen."><span class="description">Saves updates from the Edit Media screen.</span><pre>mla_edit_attachment_action()</pre></a></li>
 <li class="method public "><a href="#mla_featured_in_handler" title="mla_featured_in_handler :: Renders the Featured in meta box on the Edit Media page."><span class="description">Renders the Featured in meta box on the Edit Media page.</span><pre>mla_featured_in_handler()</pre></a></li>
@@ -76,8 +75,6 @@
 <li class="method public "><a href="#mla_post_upload_ui" title="mla_post_upload_ui :: Echoes bulk edit area HTML to the Media/Add New screen"><span class="description">Echoes bulk edit area HTML to the Media/Add New screen</span><pre>mla_post_upload_ui()</pre></a></li>
 <li class="method public "><a href="#mla_update_attachment_metadata_postfilter" title="mla_update_attachment_metadata_postfilter :: Apply Media/Add New bulk edit area updates, if any"><span class="description">Apply Media/Add New bulk edit area updates, if any</span><pre>mla_update_attachment_metadata_postfilter()</pre></a></li>
 <li class="method public "><a href="#mla_upload_post_params" title="mla_upload_post_params :: Filter the Media/Add New post parameters."><span class="description">Filter the Media/Add New post parameters.</span><pre>mla_upload_post_params()</pre></a></li>
-<li class="nav-header private">» Private</li>
-<li class="method private "><a href="#_mla_ajax_add_flat_term" title='_mla_ajax_add_flat_term :: Add flat taxonomy term from "checklist" meta box on the Media Manager Modal Window'><span class="description">Add flat taxonomy term from "checklist" meta box on the Media Manager Modal Window</span><pre>_mla_ajax_add_flat_term()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="nav-header private">» Private</li>
@@ -186,28 +183,6 @@
 <th>since</th>
 <td>0.80</td>
 </tr></table>
-</div></div>
-</div>
-<a name="mla_checklist_meta_box" id="mla_checklist_meta_box"></a><div class="element clickable method public mla_checklist_meta_box" data-toggle="collapse" data-target=".mla_checklist_meta_box .collapse">
-<h2>Display taxonomy "checklist" form fields</h2>
-<pre>mla_checklist_meta_box(object $target_post, array $box) : void</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>Adapted from /wp-admin/includes/ajax-actions.php function _wp_ajax_add_hierarchical_term().
-Includes the "? Search" area to filter the term checklist by entering part
-or all of a word/phrase in the term label.
-Output to the Media/Edit Media screen and to the Media Manager Modal Window.</p></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>1.71</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$target_post</h4>
-<code>object</code><p>The current post</p></div>
-<div class="subelement argument">
-<h4>$box</h4>
-<code>array</code><p>The meta box parameters</p></div>
 </div></div>
 </div>
 <a name="mla_edit_add_help_tab" id="mla_edit_add_help_tab"></a><div class="element clickable method public mla_edit_add_help_tab" data-toggle="collapse" data-target=".mla_edit_add_help_tab .collapse">
@@ -436,23 +411,6 @@ with just two arguments.</p></p>
 <code>array</code><p>An array of media upload parameters used by Plupload.</p></div>
 </div></div>
 </div>
-<a name="_mla_ajax_add_flat_term" id="_mla_ajax_add_flat_term"></a><div class="element clickable method private _mla_ajax_add_flat_term" data-toggle="collapse" data-target="._mla_ajax_add_flat_term .collapse">
-<h2>Add flat taxonomy term from "checklist" meta box on the Media Manager Modal Window</h2>
-<pre>_mla_ajax_add_flat_term(string $key) : void</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>Adapted from the WordPress post_categories_meta_box() in /wp-admin/includes/meta-boxes.php.</p></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>1.80</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$key</h4>
-<code>string</code><p>The taxonomy name, from $_POST['action']</p>
-</div>
-</div></div>
-</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24mla_references" id="$mla_references"> </a><div class="element clickable property private $mla_references" data-toggle="collapse" data-target=".$mla_references .collapse">
@@ -513,7 +471,7 @@ The array is built once each page load and cached for subsequent calls.</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
 </div>
 </body>
 </html>

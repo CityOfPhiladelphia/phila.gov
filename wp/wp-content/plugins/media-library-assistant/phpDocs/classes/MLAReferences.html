@@ -1,0 +1,262 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Media Library Assistant » \MLAReferences</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Media Library Assistant</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Media%20Library%20Assistant.html"><i class="icon-folder-open"></i> Media Library Assistant</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#mla_attachment_array_fetch_references_handler" title="mla_attachment_array_fetch_references_handler :: Add Featured Image and inserted image/link references to an array of attachments"><span class="description">Add Featured Image and inserted image/link references to an array of attachments</span><pre>mla_attachment_array_fetch_references_handler()</pre></a></li>
+<li class="method public "><a href="#mla_fetch_attachment_references_handler" title="mla_fetch_attachment_references_handler :: Find Featured Image and inserted image/link references to an attachment"><span class="description">Find Featured Image and inserted image/link references to an attachment</span><pre>mla_fetch_attachment_references_handler()</pre></a></li>
+<li class="method public "><a href="#mla_flush_mla_galleries_handler" title="mla_flush_mla_galleries_handler :: Invalidates the $mla_galleries or $galleries array and cached values"><span class="description">Invalidates the $mla_galleries or $galleries array and cached values</span><pre>mla_flush_mla_galleries_handler()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#_build_mla_galleries" title="_build_mla_galleries :: Builds the $mla_galleries or $galleries array"><span class="description">Builds the $mla_galleries or $galleries array</span><pre>_build_mla_galleries()</pre></a></li>
+<li class="method private "><a href="#_search_mla_galleries" title="_search_mla_galleries :: Search the $mla_galleries or $galleries array"><span class="description">Search the $mla_galleries or $galleries array</span><pre>_search_mla_galleries()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24galleries" title="$galleries :: Objects containing [gallery] shortcodes"><span class="description">Objects containing [gallery] shortcodes</span><pre>$galleries</pre></a></li>
+<li class="property private "><a href="#%24mla_galleries" title="$mla_galleries :: Objects containing [mla_gallery] shortcodes"><span class="description">Objects containing [mla_gallery] shortcodes</span><pre>$mla_galleries</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CMLAReferences" id="\MLAReferences"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/MLAReferences.html">MLAReferences</a>
+</li>
+</ul>
+<div href="../classes/MLAReferences.html" class="element class">
+<p class="short_description">Class MLA (Media Library Assistant) Query provides database query support
+for "where-used" reporting needs</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Media%20Library%20Assistant.html">Media Library Assistant</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>2.20</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="mla_attachment_array_fetch_references_handler" id="mla_attachment_array_fetch_references_handler"></a><div class="element clickable method public mla_attachment_array_fetch_references_handler" data-toggle="collapse" data-target=".mla_attachment_array_fetch_references_handler .collapse">
+<h2>Add Featured Image and inserted image/link references to an array of attachments</h2>
+<pre>mla_attachment_array_fetch_references_handler(array $attachments) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Called from MLAQuery::mla_fetch_attachment_references, which handles conditional
+loading of this file.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.94</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attachments</h4>
+<code>array</code><p>WP_Post objects, passed by reference</p></div>
+</div></div>
+</div>
+<a name="mla_fetch_attachment_references_handler" id="mla_fetch_attachment_references_handler"></a><div class="element clickable method public mla_fetch_attachment_references_handler" data-toggle="collapse" data-target=".mla_fetch_attachment_references_handler .collapse">
+<h2>Find Featured Image and inserted image/link references to an attachment</h2>
+<pre>mla_fetch_attachment_references_handler(int $ID, int $parent, boolean $add_references) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Called from MLAQuery::mla_fetch_attachment_references, which handles conditional
+loading of this file.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ID</h4>
+<code>int</code><p>post ID of attachment</p></div>
+<div class="subelement argument">
+<h4>$parent</h4>
+<code>int</code><p>post ID of attachment's parent, if any</p>
+</div>
+<div class="subelement argument">
+<h4>$add_references</h4>
+<code>boolean</code><p>True to compute references, false to return empty values</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Reference information; see $references array comments</div>
+</div></div>
+</div>
+<a name="mla_flush_mla_galleries_handler" id="mla_flush_mla_galleries_handler"></a><div class="element clickable method public mla_flush_mla_galleries_handler" data-toggle="collapse" data-target=".mla_flush_mla_galleries_handler .collapse">
+<h2>Invalidates the $mla_galleries or $galleries array and cached values</h2>
+<pre>mla_flush_mla_galleries_handler(string $option_name) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Called from MLAQuery::mla_flush_mla_galleries, which handles conditional
+loading of this file.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.00</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option_name</h4>
+<code>string</code><p>name of the gallery's cache/option variable</p>
+</div>
+</div></div>
+</div>
+<a name="_build_mla_galleries" id="_build_mla_galleries"></a><div class="element clickable method private _build_mla_galleries" data-toggle="collapse" data-target="._build_mla_galleries .collapse">
+<h2>Builds the $mla_galleries or $galleries array</h2>
+<pre>_build_mla_galleries(string $option_name, array $galleries_array, string $shortcode, boolean $exclude_revisions) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option_name</h4>
+<code>string</code><p>name of the gallery's cache/option variable</p>
+</div>
+<div class="subelement argument">
+<h4>$galleries_array</h4>
+<code>array</code><p>by reference to the private static galleries array variable</p></div>
+<div class="subelement argument">
+<h4>$shortcode</h4>
+<code>string</code><p>the shortcode to be searched for and processed</p></div>
+<div class="subelement argument">
+<h4>$exclude_revisions</h4>
+<code>boolean</code><p>true to exclude revisions from the search</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if the galleries array is not empty</div>
+</div></div>
+</div>
+<a name="_search_mla_galleries" id="_search_mla_galleries"></a><div class="element clickable method private _search_mla_galleries" data-toggle="collapse" data-target="._search_mla_galleries .collapse">
+<h2>Search the $mla_galleries or $galleries array</h2>
+<pre>_search_mla_galleries(array $galleries_array, int $attachment_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$galleries_array</h4>
+<code>array</code><p>by reference to the private static galleries array variable</p></div>
+<div class="subelement argument">
+<h4>$attachment_id</h4>
+<code>int</code><p>the attachment ID to be searched for and processed</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>All posts/pages with one or more galleries that include the attachment. The array key is the parent_post ID; each entry contains post_title and post_type.</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24galleries" id="$galleries"> </a><div class="element clickable property private $galleries" data-toggle="collapse" data-target=".$galleries .collapse">
+<h2>Objects containing [gallery] shortcodes</h2>
+<pre>$galleries : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains all of the objects containing one or more [gallery] shortcodes
+and array(s) of which attachments each [gallery] contains. The arrays are built once
+each page load and cached for subsequent calls.</p>
+
+<p>The outer array is keyed by post_id. It contains an associative array with:
+['parent_title'] post_title of the gallery parent,
+['parent_type'] 'post' or 'page' or the custom post_type of the gallery parent,
+['parent_status'] 'publish', 'private', 'future', 'pending', 'draft'
+['results'] array ( ID => ID ) of attachments appearing in ANY of the parent's galleries.
+['galleries'] array of [gallery] entries numbered from one (1), containing:
+galleries[X]['query'] contains a string with the arguments of the [gallery],
+galleries[X]['results'] contains an array ( ID ) of post_ids for the objects in the gallery.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24mla_galleries" id="$mla_galleries"> </a><div class="element clickable property private $mla_galleries" data-toggle="collapse" data-target=".$mla_galleries .collapse">
+<h2>Objects containing [mla_gallery] shortcodes</h2>
+<pre>$mla_galleries : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>This array contains all of the objects containing one or more [mla_gallery] shortcodes
+and array(s) of which attachments each [mla_gallery] contains. The arrays are built once
+each page load and cached for subsequent calls.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>0.70</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
+</div>
+</body>
+</html>

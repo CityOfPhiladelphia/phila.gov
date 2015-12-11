@@ -32,7 +32,7 @@ class MLAObjects {
 	 * @return	void
 	 */
 	private static function _build_taxonomies( ) {
-		if ( MLAOptions::mla_taxonomy_support('attachment_category') ) {
+		if ( MLACore::mla_taxonomy_support('attachment_category') ) {
 			$labels = array(
 				'name' => _x( 'Att. Categories', 'taxonomy_name_plural', 'media-library-assistant' ),
 				'singular_name' => _x( 'Att. Category', 'taxonomy_name_singular', 'media-library-assistant' ),
@@ -62,7 +62,7 @@ class MLAObjects {
 			);
 		}
 
-		if ( MLAOptions::mla_taxonomy_support('attachment_tag') ) {
+		if ( MLACore::mla_taxonomy_support('attachment_tag') ) {
 			$labels = array(
 				'name' => _x( 'Att. Tags', 'taxonomy_name_plural', 'media-library-assistant' ),
 				'singular_name' => _x( 'Att. Tag', 'taxonomy_name_singular', 'media-library-assistant' ),
@@ -93,10 +93,10 @@ class MLAObjects {
 			);
 		}
 
-		MLAOptions::mla_initialize_tax_checked_on_top();
+		MLACore::mla_initialize_tax_checked_on_top();
 		$taxonomies = get_taxonomies( array ( 'show_ui' => true ), 'names' );
 		foreach ( $taxonomies as $tax_name ) {
-			if ( MLAOptions::mla_taxonomy_support( $tax_name ) ) {
+			if ( MLACore::mla_taxonomy_support( $tax_name ) ) {
 				register_taxonomy_for_object_type( $tax_name, 'attachment');
 				add_filter( "manage_edit-{$tax_name}_columns", 'MLAObjects::mla_taxonomy_get_columns_filter', 0x7FFFFFFF, 1 ); // $columns
 				add_filter( "manage_{$tax_name}_custom_column", 'MLAObjects::mla_taxonomy_column_filter', 0x7FFFFFFF, 3 ); // $place_holder, $column_name, $tag->term_id
@@ -199,11 +199,18 @@ class MLAObjects {
 
 			$tax_object = get_taxonomy( $taxonomy );
 
-			$count_terms = 'checked' == MLAOptions::mla_get_option( MLAOptions::MLA_COUNT_TERM_ATTACHMENTS );
+			$count_terms = 'checked' == MLACore::mla_get_option( MLACore::MLA_COUNT_TERM_ATTACHMENTS );
 			if ( $count_terms ) {
 				$terms = get_transient( MLA_OPTION_PREFIX . 't_term_counts_' . $taxonomy );
 
 				if ( ! is_array( $terms ) ) {
+					/* 
+					 * The MLAShortcodes class is only loaded when needed.
+					 */
+					if ( !class_exists( 'MLAShortcodes' ) ) {
+						require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcodes.php' );
+					}
+		
 					$cloud = MLAShortcodes::mla_get_terms( array(
 						'taxonomy' => $taxonomy,
 						'fields' => 't.term_id, t.name, t.slug, COUNT(p.ID) AS `count`',
@@ -239,7 +246,7 @@ class MLAObjects {
 		}
 
 		return sprintf( '<a href="%1$s">%2$s</a>', esc_url( add_query_arg(
-				array( 'page' => MLA::ADMIN_PAGE_SLUG, 'mla-tax' => $taxonomy, 'mla-term' => $term->slug, 'heading_suffix' => urlencode( $tax_object->label . ':' . $term->name ) ), 'upload.php' ) ), $column_text );
+				array( 'page' => MLACore::ADMIN_PAGE_SLUG, 'mla-tax' => $taxonomy, 'mla-term' => $term->slug, 'heading_suffix' => urlencode( $tax_object->label . ':' . $term->name ) ), 'upload.php' ) ), $column_text );
 	}
 } //Class MLAObjects
 

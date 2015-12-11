@@ -762,6 +762,7 @@ wp.media.view.MlaSearch.on( 'all', MlaSearchOn );
 				var filters, state = this.controller._state;
 
 				mlaModal.settings.state = state;
+				mlaModal.settings.$el = this.controller.$el;
 				if ( 'undefined' === typeof mlaModal.settings.query[ state ] ) {
 					mlaModal.settings.query[ state ] = _.clone( mlaModal.settings.query.initial );
 					mlaModal.settings.query[ state ].searchFields = _.clone( mlaModal.settings.query.initial.searchFields );
@@ -825,6 +826,7 @@ this.listenTo( this.controller, 'all', this.toolbarEvent );
 						this.listenTo( this.controller, 'content:activate', this.hideDefaultSearch );
 						this.listenTo( this.controller, 'router:render', this.hideDefaultSearch );
 						this.listenTo( this.controller, 'uploader:ready', this.hideDefaultSearch );
+						this.listenTo( this.controller, 'edit:activate', this.hideDefaultSearch );
 						this.toolbar.set( 'MlaSearch', new wp.media.view.MlaSearch({
 							controller: this.controller,
 							model:      this.collection.props,
@@ -1317,7 +1319,8 @@ this.listenTo( this, 'all', this.selectionEvent );
 					}
 
 					if ( true === hookCompat ) {
-						mlaModal.utility.hookCompatTaxonomies( model.get('id'), wp.media.frame.$el );
+						mlaModal.utility.hookCompatTaxonomies( model.get('id'), mlaModal.settings.$el );
+						//mlaModal.utility.hookCompatTaxonomies( model.get('id'), wp.media.frame.$el );
 					}
 				});
 			}

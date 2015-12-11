@@ -42,13 +42,17 @@ var jQuery,
 
 	mla.addNewBulkEdit = {
 		init: function() {
-			var toggleButton, resetButton, 
-				bypass = $( '.upload-flash-bypass' ), title = $( '#wpbody .wrap' ).children ( 'h2' ),
+			var blankContent, toggleButton, resetButton, 
+				bypass = $( '.upload-flash-bypass' ), title = $( '#wpbody .wrap' ).children ( 'h1, h2' ),
 				uploadContent, uploadDiv = $( '#mla-add-new-bulk-edit-div' ).hide(); // Start with area closed up
 
 			$( '#bulk-edit-set-parent', uploadDiv ).on( 'click', function(){
 				return mla.addNewBulkEdit.parentOpen();
 			});
+
+			// Move the blank content out of the form so it won't pollute the serialize() results
+			blankContent = $('#mla-blank-add-new-bulk-edit-div').detach();
+			$( '#file-form' ).before( blankContent );
 
 			// Move the Open/Close Bulk Edit area toggleButton to save space on the page
 			toggleButton = $( '#bulk-edit-toggle', uploadDiv ).detach();
@@ -58,7 +62,7 @@ var jQuery,
 				toggleButton.appendTo( title );
 				resetButton.appendTo( title );
 				uploadContent = uploadDiv.detach();
-				$( '#file-form' ).before( uploadContent );
+				$( '#media-upload-notice' ).before( uploadContent );
 			} else {
 				toggleButton.appendTo( bypass );
 				resetButton.appendTo( bypass );
@@ -80,6 +84,10 @@ var jQuery,
 				return mla.addNewBulkEdit.doReset();
 			});
 
+			if ( mla.settings.areaOpen ) {
+				mla.addNewBulkEdit.formToggle();
+			};
+
 			//auto-complete/suggested matches for flat taxonomies
 			$( 'textarea.mla_tags', uploadDiv ).each(function(){
 				var taxname = $(this).attr('name').replace(']', '').replace('tax_input[', '');
@@ -95,17 +103,17 @@ var jQuery,
 		},
 
 		doReset : function(){
-			var bulkRow = $('#mla-add-new-bulk-edit-div'),
-				blankRow = $('#mla-blank-add-new-bulk-edit-div'),
-				blankCategories = $('.inline-edit-categories', blankRow ).html(),
-				blankTags = $('.inline-edit-tags', blankRow ).html(),
-				blankFields = $('.inline-edit-fields', blankRow ).html();
+			var bulkDiv = $('#mla-add-new-bulk-edit-div'),
+				blankDiv = $('#mla-blank-add-new-bulk-edit-div'),
+				blankCategories = $('.inline-edit-categories', blankDiv ).html(),
+				blankTags = $('.inline-edit-tags', blankDiv ).html(),
+				blankFields = $('.inline-edit-fields', blankDiv ).html();
 
-			$('.inline-edit-categories', bulkRow ).html( blankCategories ),
-			$('.inline-edit-tags', bulkRow ).html( blankTags ),
-			$('.inline-edit-fields', bulkRow ).html( blankFields );
+			$('.inline-edit-categories', bulkDiv ).html( blankCategories ),
+			$('.inline-edit-tags', bulkDiv ).html( blankTags ),
+			$('.inline-edit-fields', bulkDiv ).html( blankFields );
 
-			$('#bulk-edit-set-parent', bulkRow).on( 'click', function(){
+			$('#bulk-edit-set-parent', bulkDiv).on( 'click', function(){
 				return mla.addNewBulkEdit.parentOpen();
 			});
 

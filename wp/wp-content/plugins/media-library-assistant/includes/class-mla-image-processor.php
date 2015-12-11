@@ -279,7 +279,7 @@ class MLAImageProcessor {
 	private static function _mla_debug_add( $message ) {
 		if ( self::$mla_debug ) {
 			if ( class_exists( 'MLA' ) ) {
-				MLA::mla_debug_add( $message );
+				MLACore::mla_debug_add( $message );
 			} else {
 				error_log( $message, 0);
 			}

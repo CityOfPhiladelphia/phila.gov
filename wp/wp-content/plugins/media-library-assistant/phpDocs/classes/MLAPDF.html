@@ -161,7 +161,7 @@
 </div>
 <a name="_find_pdf_indirect_dictionary" id="_find_pdf_indirect_dictionary"></a><div class="element clickable method private _find_pdf_indirect_dictionary" data-toggle="collapse" data-target="._find_pdf_indirect_dictionary .collapse">
 <h2>Find the offset, length and contents of an indirect object containing a dictionary</h2>
-<pre>_find_pdf_indirect_dictionary(string $file_name, integer $object, integer $generation) : mixed</pre>
+<pre>_find_pdf_indirect_dictionary(string $file_name, integer $object, integer $generation, integer $instance) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>The function searches the entire file, if necessary, to find the last/most recent copy of the object.
@@ -180,6 +180,10 @@ This is required because Adobe Acrobat does NOT increment the generation number 
 <div class="subelement argument">
 <h4>$generation</h4>
 <code>integer</code><p>The object generation number; default zero (0)</p>
+</div>
+<div class="subelement argument">
+<h4>$instance</h4>
+<code>integer</code><p>The desired object instance (when multiple instances are present); default "highest/latest"</p>
 </div>
 <h3>Returns</h3>
 <div class="subelement response">
@@ -378,7 +382,7 @@ The array value is array( number, generation, start, optional /length )</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-10-13T16:50:49-07:00.<br></footer></div>
+            generated on 2015-12-01T21:12:13-08:00.<br></footer></div>
 </div>
 </body>
 </html>
