@@ -1,9 +1,9 @@
 <?php
-if ( class_exists( "PhilaGovSiteWideAlertRendering" ) ){
-  $phila_site_wide_alert = new PhilaGovSiteWideAlertRendering();
+if ( class_exists( "Phila_Gov_Site_Wide_Alert_Rendering" ) ){
+  $phila_site_wide_alert = new Phila_Gov_Site_Wide_Alert_Rendering();
 }
 
-class PhilaGovSiteWideAlertRendering {
+class Phila_Gov_Site_Wide_Alert_Rendering {
 
   /**
   *

@@ -1,10 +1,10 @@
 <?php
 
-if ( class_exists("PhilaGovNews" ) ){
-  $phila_document_load = new PhilaGovNews();
+if ( class_exists("Phila_Gov_News" ) ){
+  $phila_document_load = new Phila_Gov_News();
 }
 
- class PhilaGovNews {
+ class Phila_Gov_News {
 
   public function __construct(){
 

@@ -4,7 +4,7 @@
  *
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  */
 
 add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );

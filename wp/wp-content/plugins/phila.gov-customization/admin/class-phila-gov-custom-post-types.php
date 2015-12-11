@@ -9,11 +9,11 @@
  *
  *
  */
-if ( class_exists("PhilaGovCustomPostTypes" ) ){
-  $custom_post_types = new PhilaGovCustomPostTypes();
+if ( class_exists("Phila_Gov_Custom_Post_Types" ) ){
+  $custom_post_types = new Phila_Gov_Custom_Post_Types();
 }
 
-class PhilaGovCustomPostTypes{
+class Phila_Gov_Custom_Post_Types{
 
   public function __construct(){
     add_action( 'init', array( $this, 'create_services_post_type' ) );

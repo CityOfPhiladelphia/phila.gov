@@ -1,10 +1,10 @@
 <?php
 
-if ( class_exists("PhilaGovAdminDocuments" ) ){
-  $phila_document_load = new PhilaGovAdminDocuments();
+if ( class_exists("Phila_Gov_Admin_Documents" ) ){
+  $phila_document_load = new Phila_Gov_Admin_Documents();
 }
 
- class PhilaGovAdminDocuments {
+ class Phila_Gov_Admin_Documents {
 
   public function __construct(){
     add_action( 'save_post', array( $this, 'save_document_meta'), 10, 3 );
@@ -75,4 +75,4 @@ if ( class_exists("PhilaGovAdminDocuments" ) ){
       return $r;
   }
 
-}//PhilaGovAdminDocuments
+}//Phila_Gov_Admin_Documents

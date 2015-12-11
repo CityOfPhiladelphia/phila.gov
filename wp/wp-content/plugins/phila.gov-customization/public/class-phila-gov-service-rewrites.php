@@ -7,9 +7,9 @@
 
 
  // Instantiate new class
- $phila_service_page_rewrites = new PhilaGovServiceRewrites();
+ $phila_service_page_rewrites = new Phila_Gov_Service_Rewrites();
 
- class PhilaGovServiceRewrites {
+ class Phila_Gov_Service_Rewrites {
 
   public function __construct(){
 
@@ -76,4 +76,4 @@
     }
   }
 
-}//PhilaGovServiceRewrites
+}//Phila_Gov_Service_Rewrites

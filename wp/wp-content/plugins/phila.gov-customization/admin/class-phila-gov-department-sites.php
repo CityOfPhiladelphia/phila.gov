@@ -1,10 +1,10 @@
 <?php
 
-if ( class_exists("PhilaGovDepartmentSites" ) ){
-  $phila_departent_sites = new PhilaGovDepartmentSites();
+if ( class_exists("Phila_Gov_Department_Sites" ) ){
+  $phila_departent_sites = new Phila_Gov_Department_Sites();
 }
 
- class PhilaGovDepartmentSites {
+ class Phila_Gov_Department_Sites {
 
   public function __construct(){
 

@@ -5,14 +5,14 @@
 *
 * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
 *
-* @package phila.gov-customization
+* @package phila-gov_customization
 */
 
-if ( class_exists( "PhilaGovSiteWideAlert" ) ){
-  $phila_site_wide_alert = new PhilaGovSiteWideAlert();
+if ( class_exists( "Phila_Gov_Site_Wide_Alert" ) ){
+  $phila_site_wide_alert = new Phila_Gov_Site_Wide_Alert();
 }
 
-class PhilaGovSiteWideAlert {
+class Phila_Gov_Site_Wide_Alert {
 
   public function __construct(){
 

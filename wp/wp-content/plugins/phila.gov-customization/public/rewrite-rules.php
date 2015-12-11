@@ -6,7 +6,7 @@
 * /news/category renders filtered news archive page
 * /browse/topicname renders filtered topics page
 * @uses https://codex.wordpress.org/Rewrite_API/add_rewrite_rule
-* @package phila.gov-customization
+* @package phila-gov_customization
 */
 
 add_action('init','phila_news_rewrite');

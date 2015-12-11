@@ -5,7 +5,7 @@
 *
 * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
 *
-* @package phila.gov-customization
+* @package phila-gov_customization
 * @since 0.9.0
 */
 

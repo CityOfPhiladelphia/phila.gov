@@ -4,15 +4,15 @@
  *
  * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
  *
- * @package phila.gov-customization
+ * @package phila-gov_customization
  * @since 0.17.6
  */
 
-if ( class_exists( "PhilaGovAdminMenu" ) ){
-  $admin_menu_labels = new PhilaGovAdminMenu();
+if ( class_exists( "Phila_Gov_Admin_Menu" ) ){
+  $admin_menu_labels = new Phila_Gov_Admin_Menu();
 }
 
-class PhilaGovAdminMenu {
+class Phila_Gov_Admin_Menu {
 
   public function __construct(){
 
