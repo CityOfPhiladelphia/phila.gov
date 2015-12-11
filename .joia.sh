@@ -11,8 +11,8 @@ joia_install () {
   joia_ssh "
 sudo -E scripts/install.sh
 scripts/gen-cert.sh
-scripts/local-db.sh
 scripts/wp-config.sh
+scripts/local-db.sh
 "
 }
 
