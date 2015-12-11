@@ -2,26 +2,30 @@
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
+// Make sure "input" field is loaded
+require_once RWMB_FIELDS_DIR . 'input.php';
+
 if ( ! class_exists( 'RWMB_Hidden_Field' ) )
 {
-	class RWMB_Hidden_Field extends RWMB_Field
+	class RWMB_Hidden_Field extends RWMB_Input_Field
 	{
 		/**
-		 * Get field HTML
+		 * Normalize parameters for field
 		 *
-		 * @param mixed $meta
 		 * @param array $field
 		 *
-		 * @return string
+		 * @return array
 		 */
-		static function html( $meta, $field )
+		static function normalize_field( $field )
 		{
-			return sprintf(
-				'<input type="hidden" class="rwmb-hidden" name="%s" id="%s" value="%s">',
-				$field['field_name'],
-				$field['id'],
-				$field['std']
+			$field = parent::normalize_field( $field );
+
+			$field['attributes'] = array(
+				'name' => $field['field_name'],
+				'id'   => $field['clone'] ? false : $field['id'],
 			);
+
+			return $field;
 		}
 	}
 }

@@ -10,23 +10,19 @@ if ( ! class_exists( 'RWMB_Email_Field' ) )
 	class RWMB_Email_Field extends RWMB_Text_Field
 	{
 		/**
-		 * Get field HTML
+		 * Normalize parameters for field
 		 *
-		 * @param mixed $meta
 		 * @param array $field
 		 *
-		 * @return string
+		 * @return array
 		 */
-		static function html( $meta, $field )
+		static function normalize_field( $field )
 		{
-			return sprintf(
-				'<input type="email" class="rwmb-email" name="%s" id="%s" value="%s" size="%s" placeholder="%s"/>',
-				$field['field_name'],
-				$field['id'],
-				$meta,
-				$field['size'],
-				$field['placeholder']
-			);
+			$field = parent::normalize_field( $field );
+
+			$field['attributes']['type']  = 'email';
+
+			return $field;
 		}
 
 		/**

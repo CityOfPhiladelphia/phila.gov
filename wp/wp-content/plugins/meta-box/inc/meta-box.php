@@ -32,11 +32,6 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 		public $types;
 
 		/**
-		 * @var array Validation information
-		 */
-		public $validation;
-
-		/**
 		 * @var bool Used to prevent duplicated calls like revisions, manual hook to wp_insert_post, etc.
 		 */
 		public $saved = false;
@@ -57,9 +52,8 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 				return;
 
 			// Assign meta box values to local variables and add it's missed values
-			$this->meta_box   = self::normalize( $meta_box );
-			$this->fields     = &$this->meta_box['fields'];
-			$this->validation = &$this->meta_box['validation'];
+			$this->meta_box = self::normalize( $meta_box );
+			$this->fields   = &$this->meta_box['fields'];
 
 			// Allow users to show/hide meta box
 			// 1st action applies to all meta boxes
@@ -86,10 +80,10 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 			// Hide meta box if it's set 'default_hidden'
 			add_filter( 'default_hidden_meta_boxes', array( $this, 'hide' ), 10, 2 );
 
-			// Save post meta			
-			foreach( $this->meta_box['post_types'] as $post_type ) 
+			// Save post meta
+			foreach ( $this->meta_box['post_types'] as $post_type )
 			{
-				if( 'attachment' === $post_type )
+				if ( 'attachment' === $post_type )
 				{
 					// Attachment uses other hooks
 					// @see wp_update_post(), wp_insert_attachment()
@@ -100,7 +94,7 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 				{
 					add_action( "save_post_{$post_type}", array( $this, 'save_post' ) );
 				}
-			}		
+			}
 		}
 
 		/**
@@ -110,39 +104,38 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 		 */
 		function admin_enqueue_scripts()
 		{
-			$screen = get_current_screen();
-
-			// Enqueue scripts and styles for registered pages (post types) only
-			if ( 'post' != $screen->base || ! in_array( $screen->post_type, $this->meta_box['post_types'] ) )
+			if ( ! $this->is_edit_screen() )
 				return;
 
 			wp_enqueue_style( 'rwmb', RWMB_CSS_URL . 'style.css', array(), RWMB_VER );
 
 			// Load clone script conditionally
-			$has_clone = false;
-			$fields    = self::get_fields( $this->fields );
-
+			$fields = self::get_fields( $this->fields );
 			foreach ( $fields as $field )
 			{
 				if ( $field['clone'] )
-					$has_clone = true;
-
-				// Enqueue scripts and styles for fields
-				call_user_func( array( self::get_class_name( $field ), 'admin_enqueue_scripts' ) );
+				{
+					wp_enqueue_script( 'rwmb-clone', RWMB_JS_URL . 'clone.js', array( 'jquery' ), RWMB_VER, true );
+					break;
+				}
 			}
 
-			if ( $has_clone )
-				wp_enqueue_script( 'rwmb-clone', RWMB_JS_URL . 'clone.js', array( 'jquery' ), RWMB_VER, true );
-
-			if ( $this->validation )
+			// Enqueue scripts and styles for fields
+			foreach ( $fields as $field )
 			{
-				wp_enqueue_script( 'jquery-validate', RWMB_JS_URL . 'jquery.validate.min.js', array( 'jquery' ), RWMB_VER, true );
-				wp_enqueue_script( 'rwmb-validate', RWMB_JS_URL . 'validate.js', array( 'jquery-validate' ), RWMB_VER, true );
+				call_user_func( array( self::get_class_name( $field ), 'admin_enqueue_scripts' ) );
 			}
 
 			// Auto save
 			if ( $this->meta_box['autosave'] )
 				wp_enqueue_script( 'rwmb-autosave', RWMB_JS_URL . 'autosave.js', array( 'jquery' ), RWMB_VER, true );
+
+			/**
+			 * Allow developers to enqueue more scripts and styles
+			 *
+			 * @param RW_Meta_Box $object Meta Box object
+			 */
+			do_action( 'rwmb_enqueue_scripts', $this );
 		}
 
 		/**
@@ -199,11 +192,7 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 		 */
 		function hide( $hidden, $screen )
 		{
-			if (
-				'post' === $screen->base
-				&& in_array( $screen->post_type, $this->meta_box['post_types'] )
-				&& $this->meta_box['default_hidden']
-			)
+			if ( $this->is_edit_screen( $screen ) && $this->meta_box['default_hidden'] )
 			{
 				$hidden[] = $this->meta_box['id'];
 			}
@@ -218,7 +207,7 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 		 */
 		function show()
 		{
-			global $post;
+			$post = get_post();
 
 			$saved = self::has_been_saved( $post->ID, $this->fields );
 
@@ -239,27 +228,6 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 			foreach ( $this->fields as $field )
 			{
 				call_user_func( array( self::get_class_name( $field ), 'show' ), $field, $saved );
-			}
-
-			// Include validation settings for this meta-box
-			if ( isset( $this->validation ) && $this->validation )
-			{
-				echo '
-					<script>
-					if ( typeof rwmb == "undefined" )
-					{
-						var rwmb = {
-							validationOptions : jQuery.parseJSON( \'' , json_encode( $this->validation ) , '\' ),
-							summaryMessage : "' , esc_js( __( 'Please correct the errors highlighted below and try again.', 'meta-box' ) ) , '"
-						};
-					}
-					else
-					{
-						var tempOptions = jQuery.parseJSON( \'' , json_encode( $this->validation ) . '\' );
-						jQuery.extend( true, rwmb.validationOptions, tempOptions );
-					}
-					</script>
-				';
 			}
 
 			// Allow users to add custom code after meta box content
@@ -482,6 +450,22 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 			}
 
 			return false;
+		}
+
+		/**
+		 * Check if we're on the right edit screen.
+		 *
+		 * @param WP_Screen $screen Screen object. Optional. Use current screen object by default.
+		 *
+		 * @return bool
+		 */
+		function is_edit_screen( $screen = null )
+		{
+			if ( ! ( $screen instanceof WP_Screen ) )
+			{
+				$screen = get_current_screen();
+			}
+			return 'post' == $screen->base && in_array( $screen->post_type, $this->meta_box['post_types'] );
 		}
 	}
 }

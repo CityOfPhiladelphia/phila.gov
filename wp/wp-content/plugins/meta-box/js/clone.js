@@ -92,12 +92,9 @@ jQuery( function ( $ )
 	 */
 	function clone( $container )
 	{
-		var $clone_last = $container.children( '.rwmb-clone:last' ),
-			$clone = $clone_last.clone(),
-			$input;
-
-		$clone.insertAfter( $clone_last );
-		$input = $clone.find( ':input[class|="rwmb"]' );
+		var $last = $container.children( '.rwmb-clone:last' ),
+			$clone = $last.clone(),
+			$input = $clone.find( ':input[class|="rwmb"]' );
 
 		$input.each( function ()
 		{
@@ -105,7 +102,7 @@ jQuery( function ( $ )
 			if ( $field.attr( 'type' ) === 'radio' || $field.attr( 'type' ) === 'checkbox' )
 			{
 				// Reset 'checked' attribute
-				$field.removeAttr( 'checked' );
+				$field.prop( 'checked', false );
 			}
 			else
 			{
@@ -114,6 +111,7 @@ jQuery( function ( $ )
 			}
 		} );
 
+		$clone.insertAfter( $last );
 		cloneIndex.reset( $container );
 
 		// Toggle remove buttons
@@ -284,7 +282,7 @@ jQuery( function ( $ )
 				return;
 			}
 
-			$this.parent().remove();
+			$this.parent().trigger( 'remove' ).remove();
 			cloneIndex.reset( $container );
 			toggleRemoveButtons( $container );
 			toggleAddButton( $container )
@@ -300,6 +298,12 @@ jQuery( function ( $ )
 		$container.sortable( {
 			handle     : '.rwmb-clone-icon',
 			placeholder: ' rwmb-clone rwmb-clone-placeholder',
+			items      : '.rwmb-clone',
+			start      : function ( event, ui )
+			{
+				// Make the placeholder has the same height as dragged item
+				ui.placeholder.height( ui.item.height() );
+			},
 			update     : function ()
 			{
 				cloneIndex.reset( $container );

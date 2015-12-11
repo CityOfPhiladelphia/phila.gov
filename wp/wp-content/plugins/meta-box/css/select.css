@@ -1,8 +1,4 @@
-#post-body .rwmb-select {
-	height: auto;
-	min-width: 200px;
-}
-
-#post-body .rwmb-select-all {
+.rwmb-select-all-none {
+	display: block;
 	margin-top: 5px;
 }

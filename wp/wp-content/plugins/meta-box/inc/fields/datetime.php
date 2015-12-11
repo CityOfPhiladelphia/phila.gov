@@ -2,9 +2,12 @@
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
+// Make sure "text" field is loaded
+require_once RWMB_FIELDS_DIR . 'date.php';
+
 if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 {
-	class RWMB_Datetime_Field extends RWMB_Field
+	class RWMB_Datetime_Field extends RWMB_Input_Field
 	{
 		/**
 		 * Translate date format from jQuery UI datepicker to PHP date()
@@ -39,7 +42,7 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 			wp_register_style( 'jquery-ui-core', "{$url}/jquery.ui.core.css", array(), '1.8.17' );
 			wp_register_style( 'jquery-ui-theme', "{$url}/jquery.ui.theme.css", array(), '1.8.17' );
 			wp_register_style( 'jquery-ui-datepicker', "{$url}/jquery.ui.datepicker.css", array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
-			wp_register_style( 'wp-datepicker', RWMB_CSS_URL ."datepicker.css", array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
+			wp_register_style( 'wp-datepicker', RWMB_CSS_URL . 'datepicker.css', array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
 			wp_register_style( 'jquery-ui-slider', "{$url}/jquery.ui.slider.css", array( 'jquery-ui-core', 'jquery-ui-theme' ), '1.8.17' );
 			wp_enqueue_style( 'jquery-ui-timepicker', "{$url}/jquery-ui-timepicker-addon.min.css", array( 'jquery-ui-datepicker', 'jquery-ui-slider', 'wp-datepicker' ), '1.5.0' );
 
@@ -53,7 +56,7 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 			 *
 			 * Note: we use full locale (de-DE) and fallback to short locale (de)
 			 */
-			$locale = str_replace( '_', '-', get_locale() );
+			$locale       = str_replace( '_', '-', get_locale() );
 			$locale_short = substr( $locale, 0, 2 );
 
 			wp_register_script( 'jquery-ui-timepicker-i18n', "{$url}/jquery-ui-timepicker-addon-i18n.min.js", array( 'jquery-ui-timepicker' ), '1.5.0', true );
@@ -84,27 +87,6 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 		}
 
 		/**
-		 * Get field HTML
-		 *
-		 * @param mixed $meta
-		 * @param array $field
-		 *
-		 * @return string
-		 */
-		static function html( $meta, $field )
-		{
-			$meta = $field['timestamp'] && $meta ? date( self::translate_format( $field ), intval( $meta ) ) : $meta;
-			return sprintf(
-				'<input type="text" class="rwmb-datetime" name="%s" value="%s" id="%s" size="%s" data-options="%s">',
-				$field['field_name'],
-				$meta,
-				$field['clone'] ? '' : $field['id'],
-				$field['size'],
-				esc_attr( wp_json_encode( $field['js_options'] ) )
-			);
-		}
-
-		/**
 		 * Calculates the timestamp from the datetime string and returns it
 		 * if $field['timestamp'] is set or the datetime string if not
 		 *
@@ -126,6 +108,32 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 		}
 
 		/**
+		 * Get meta value
+		 *
+		 * @param int   $post_id
+		 * @param bool  $saved
+		 * @param array $field
+		 *
+		 * @return mixed
+		 */
+		static function meta( $post_id, $saved, $field )
+		{
+			$meta = parent::meta( $post_id, $saved, $field );
+			if ( is_array( $meta ) )
+			{
+				foreach ( $meta as $key => $value )
+				{
+					$meta[$key] = $field['timestamp'] && $value ? date( self::translate_format( $field ), intval( $value ) ) : $value;
+				}
+			}
+			else
+			{
+				$meta = $field['timestamp'] && $meta ? date( self::translate_format( $field ), intval( $meta ) ) : $meta;
+			}
+			return $meta;
+		}
+
+		/**
 		 * Normalize parameters for field
 		 *
 		 * @param array $field
@@ -135,19 +143,18 @@ if ( ! class_exists( 'RWMB_Datetime_Field' ) )
 		static function normalize_field( $field )
 		{
 			$field = wp_parse_args( $field, array(
-				'size'       => 30,
-				'js_options' => array(),
 				'timestamp'  => false,
+				'js_options' => array()
 			) );
 
 			// Deprecate 'format', but keep it for backward compatible
 			// Use 'js_options' instead
 			$field['js_options'] = wp_parse_args( $field['js_options'], array(
-				'dateFormat'      => empty( $field['format'] ) ? 'yy-mm-dd' : $field['format'],
-				'timeFormat'      => 'HH:mm',
-				'showButtonPanel' => true,
-				'separator'       => ' ',
+				'timeFormat' => 'HH:mm',
+				'separator'  => ' ',
 			) );
+
+			$field = RWMB_Date_Field::normalize_field( $field );
 
 			return $field;
 		}

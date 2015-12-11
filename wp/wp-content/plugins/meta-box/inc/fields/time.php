@@ -2,9 +2,12 @@
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
+// Make sure "text" field is loaded
+require_once RWMB_FIELDS_DIR . 'text.php';
+
 if ( ! class_exists( 'RWMB_Time_Field' ) )
 {
-	class RWMB_Time_Field extends RWMB_Field
+	class RWMB_Time_Field extends RWMB_Text_Field
 	{
 		/**
 		 * Enqueue scripts and styles
@@ -30,7 +33,7 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
 			 *
 			 * Note: we use full locale (de-DE) and fallback to short locale (de)
 			 */
-			$locale = str_replace( '_', '-', get_locale() );
+			$locale       = str_replace( '_', '-', get_locale() );
 			$locale_short = substr( $locale, 0, 2 );
 			wp_register_script( 'jquery-ui-timepicker-i18n', "{$url}/jquery-ui-timepicker-addon-i18n.min.js", array( 'jquery-ui-timepicker' ), '1.5.0', true );
 
@@ -39,26 +42,6 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
 				'locale'      => $locale,
 				'localeShort' => $locale_short,
 			) );
-		}
-
-		/**
-		 * Get field HTML
-		 *
-		 * @param mixed $meta
-		 * @param array $field
-		 *
-		 * @return string
-		 */
-		static function html( $meta, $field )
-		{
-			return sprintf(
-				'<input type="text" class="rwmb-time" name="%s" value="%s" id="%s" size="%s" data-options="%s">',
-				$field['field_name'],
-				$meta,
-				isset( $field['clone'] ) && $field['clone'] ? '' : $field['id'],
-				$field['size'],
-				esc_attr( wp_json_encode( $field['js_options'] ) )
-			);
 		}
 
 		/**
@@ -71,7 +54,6 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
 		static function normalize_field( $field )
 		{
 			$field = wp_parse_args( $field, array(
-				'size'       => 30,
 				'js_options' => array(),
 			) );
 
@@ -80,6 +62,12 @@ if ( ! class_exists( 'RWMB_Time_Field' ) )
 			$field['js_options'] = wp_parse_args( $field['js_options'], array(
 				'showButtonPanel' => true,
 				'timeFormat'      => empty( $field['format'] ) ? 'HH:mm' : $field['format'],
+			) );
+
+			$field = parent::normalize_field( $field );
+
+			$field['attributes'] = wp_parse_args( $field['attributes'], array(
+				'data-options' => wp_json_encode( $field['js_options'] ),
 			) );
 
 			return $field;
