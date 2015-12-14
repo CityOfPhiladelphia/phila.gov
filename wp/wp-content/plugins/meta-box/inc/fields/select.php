@@ -28,8 +28,11 @@ if ( ! class_exists( 'RWMB_Select_Field' ) )
 		static function html( $meta, $field )
 		{
 			$html = sprintf(
-				'<select %s>',
-				self::render_attributes( $field['attributes'] )
+				'<select class="rwmb-select" name="%s" id="%s" size="%s"%s>',
+				$field['field_name'],
+				$field['id'],
+				$field['size'],
+				$field['multiple'] ? ' multiple' : ''
 			);
 
 			$html .= self::options_html( $field, $meta );
@@ -77,18 +80,11 @@ if ( ! class_exists( 'RWMB_Select_Field' ) )
 		 */
 		static function normalize_field( $field )
 		{
-			if ( ! $field['clone'] && $field['multiple'] )
-				$field['field_name'] .= '[]';
-			
-			$field = parent::normalize_field( $field );			
 			$field = wp_parse_args( $field, array(
 				'size' => $field['multiple'] ? 5 : 0,
 			) );
-			
-			$field['attributes'] = wp_parse_args( $field['attributes'], array(
-				'multiple'     => $field['multiple'],
-				'size'         => $field['size'],
-			) );	
+			if ( ! $field['clone'] && $field['multiple'] )
+				$field['field_name'] .= '[]';
 
 			return $field;
 		}
