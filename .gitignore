@@ -1,5 +1,6 @@
 .env
 .joia
 .vagrant
-wp/wp-config.php
 wp/readme.*
+wp/wp-config.php
+wp/wp-content/plugins/wordfence/tmp/configCache.php
