@@ -7,7 +7,7 @@ _dir="$(dirname "$0")"
 
 source "$_dir/lib/mo"
 
-# Install private plugins
+echo 'Installing private plugins'
 "$_dir/private-plugins.sh"
 
 echo 'Reloading php-fpm'
