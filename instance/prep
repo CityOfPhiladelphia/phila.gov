@@ -1,9 +1,0 @@
-#!/bin/bash
-
-. .env
-
-[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
-
-echo "Prepping machine."
-ssh -F .ssh/config $PHILA_INSTANCE 'sudo phila.gov/scripts/user-env.sh'
-ssh -F .ssh/config $PHILA_INSTANCE 'sudo -E phila.gov/scripts/prep.sh'

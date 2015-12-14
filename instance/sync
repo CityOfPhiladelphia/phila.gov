@@ -1,8 +1,0 @@
-#!/bin/bash
-
-. .env
-
-[ ! "$PHILA_INSTANCE" ] && echo "No reference found for PHILA_INSTANCE." && exit 0
-
-echo "Syncing files."
-rsync -e 'ssh -F .ssh/config' -rzp --delete --exclude=".git" ./ $PHILA_INSTANCE:phila.gov

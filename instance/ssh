@@ -1,5 +1,0 @@
-#!/bin/bash
-
-. .env
-
-ssh -F .ssh/config $PHILA_INSTANCE
