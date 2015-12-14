@@ -20,7 +20,7 @@ get_header(); ?>
               single_cat_title();
 
               elseif ( is_tag() ) :
-                single_tag_title();
+               '<span>' . single_tag_title('Tagged in: ') . '</span>';
 
               elseif ( is_author() ) :
                 printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
@@ -44,7 +44,7 @@ get_header(); ?>
       <main id="main" class="site-main small-24 columns" role="main">
         <?php while ( have_posts() ) : the_post(); ?>
           <div class="row">
-            <div class="small-24 columns">
+            <div class="small-18 columns">
               <?php get_template_part( 'content', get_post_format() ) ?>
             </div>
           </div>
