@@ -5,7 +5,7 @@ joia_install () {
   joia_ssh "scripts/user-env.sh"
 
   # Alias for JOIA_HOSTNAME
-  joia_ssh "echo PUBLIC_HOSTNAME=$JOIA_HOSTNAME >> .env"
+  joia_ssh "echo PUBLIC_HOSTNAME=$JOIA_HOSTNAME >> ~/.ssh/environment"
 
   # Run install scripts
   joia_ssh "
