@@ -13,6 +13,7 @@ sudo -E scripts/install.sh
 scripts/gen-cert.sh
 scripts/wp-config.sh
 scripts/local-db.sh
+scripts/unison.sh
 "
 }
 
