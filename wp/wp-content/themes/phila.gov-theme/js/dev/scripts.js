@@ -13,4 +13,8 @@ jQuery(document).ready(function($) {
   $(".clickable-row").click(function() {
       window.document.location = $(this).data("href");
   });
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  if ( w <= 640 ){
+    $('.all-services-info-list').addClass('equal-height');
+  }
 });
