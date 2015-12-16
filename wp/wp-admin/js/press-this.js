@@ -323,7 +323,7 @@
 					link = src;
 				}
 
-				newContent = '<a href="' + link + '"><img class="alignnone size-full" src="' + src + '" alt="" /></a>';
+				newContent = '<a href="' + link + '"><img class="alignnone size-full" src="' + src + '" /></a>';
 			} else {
 				newContent = '[embed]' + src + '[/embed]';
 			}
@@ -773,8 +773,7 @@
 
 			// Publish, Draft and Preview buttons
 			$( '.post-actions' ).on( 'click.press-this', function( event ) {
-				var location,
-					$target = $( event.target ),
+				var $target = $( event.target ),
 					$button = $target.closest( 'button' );
 
 				if ( $button.length ) {
@@ -783,15 +782,6 @@
 						submitPost( 'draft' );
 					} else if ( $button.hasClass( 'publish-button' ) ) {
 						$button.addClass( 'is-saving' );
-
-						if ( window.history.replaceState ) {
-							location = window.location.href;
-							location += ( location.indexOf( '?' ) !== -1 ) ? '&' : '?';
-							location += 'wp-press-this-reload=true';
-
-							window.history.replaceState( null, null, location );
-						}
-
 						submitPost( 'publish' );
 					} else if ( $button.hasClass( 'preview-button' ) ) {
 						prepareFormData();

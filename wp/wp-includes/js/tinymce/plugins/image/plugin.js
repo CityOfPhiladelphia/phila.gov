@@ -218,7 +218,6 @@ tinymce.PluginManager.add('image', function(editor) {
 					dom.setAttrib(imgElm, 'id', null);
 				} else {
 					dom.setAttribs(imgElm, data);
-					editor.editorUpload.uploadImagesAuto();
 				}
 
 				waitLoad(imgElm);

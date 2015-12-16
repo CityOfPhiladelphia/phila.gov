@@ -15,9 +15,8 @@ if ( ! isset( $_GET['inline'] ) )
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
-if ( ! current_user_can( 'upload_files' ) ) {
-	wp_die( __( 'You do not have permission to upload files.' ), 403 );
-}
+if (!current_user_can('upload_files'))
+	wp_die(__('You do not have permission to upload files.'));
 
 wp_enqueue_script('plupload-handlers');
 wp_enqueue_script('image-edit');
@@ -32,20 +31,12 @@ $ID = isset($ID) ? (int) $ID : 0;
 $post_id = isset($post_id)? (int) $post_id : 0;
 
 // Require an ID for the edit screen.
-if ( isset( $action ) && $action == 'edit' && !$ID ) {
-	wp_die(
-		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
-		'<p>' . __( 'Invalid item ID.' ) . '</p>',
-		403
-	);
+if ( isset($action) && $action == 'edit' && !$ID ) {
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 }
 
 if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_post' , $_REQUEST['post_id'] ) ) {
-	wp_die(
-		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
-		'<p>' . __( 'You are not allowed to edit this item.' ) . '</p>',
-		403
-	);
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 }
 
 // Upload type: image, video, file, ..?

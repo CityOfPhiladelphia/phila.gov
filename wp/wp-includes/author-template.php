@@ -56,23 +56,12 @@ function get_the_author($deprecated = '') {
  * @return string|null The author's display name, from get_the_author().
  */
 function the_author( $deprecated = '', $deprecated_echo = true ) {
-	if ( ! empty( $deprecated ) ) {
+	if ( !empty( $deprecated ) )
 		_deprecated_argument( __FUNCTION__, '2.1' );
-	}
-
-	if ( true !== $deprecated_echo ) {
-		_deprecated_argument( __FUNCTION__, '1.5',
-			/* translators: %s: get_the_author() */
-			sprintf( __( 'Use %s instead if you do not want the value echoed.' ),
-				'<code>get_the_author()</code>'
-			)
-		);
-	}
-
-	if ( $deprecated_echo ) {
+	if ( $deprecated_echo !== true )
+		_deprecated_argument( __FUNCTION__, '1.5', __('Use <code>get_the_author()</code> instead if you do not want the value echoed.') );
+	if ( $deprecated_echo )
 		echo get_the_author();
-	}
-
 	return get_the_author();
 }
 
@@ -234,17 +223,23 @@ function the_author_posts() {
 }
 
 /**
- * Retrieves an HTML link to the author page of the current post's author.
+ * Display an HTML link to the author page of the author of the current post.
  *
- * Returns an HTML-formatted link using get_author_posts_url().
+ * Does just echo get_author_posts_url() function, like the others do. The
+ * reason for this, is that another function is used to help in printing the
+ * link to the author's posts.
  *
- * @since 4.4.0
+ * @link https://codex.wordpress.org/Template_Tags/the_author_posts_link
+ * @since 1.2.0
  *
  * @global object $authordata The current author's DB object.
  *
- * @return string An HTML link to the author page.
+ * @param string $deprecated Deprecated.
  */
-function get_the_author_posts_link() {
+function the_author_posts_link($deprecated = '') {
+	if ( !empty( $deprecated ) )
+		_deprecated_argument( __FUNCTION__, '2.1' );
+
 	global $authordata;
 	if ( ! is_object( $authordata ) ) {
 		return;
@@ -264,22 +259,7 @@ function get_the_author_posts_link() {
 	 *
 	 * @param string $link HTML link.
 	 */
-	return apply_filters( 'the_author_posts_link', $link );
-}
-
-/**
- * Displays an HTML link to the author page of the current post's author.
- *
- * @since 1.2.0
- * @since 4.4.0 Converted into a wrapper for get_the_author_posts_link()
- *
- * @param string $deprecated Unused.
- */
-function the_author_posts_link( $deprecated = '' ) {
-	if ( ! empty( $deprecated ) ) {
-		_deprecated_argument( __FUNCTION__, '2.1' );
-	}
-	echo get_the_author_posts_link();
+	echo apply_filters( 'the_author_posts_link', $link );
 }
 
 /**
@@ -330,7 +310,7 @@ function get_author_posts_url($author_id, $author_nicename = '') {
  *
  * @since 1.2.0
  *
- * @global wpdb $wpdb WordPress database abstraction object.
+ * @global wpdb $wpdb
  *
  * @param string|array $args {
  *     Optional. Array or string of default arguments.
@@ -464,7 +444,7 @@ function wp_list_authors( $args = '' ) {
  *
  * @since 3.2.0
  *
- * @global wpdb $wpdb WordPress database abstraction object.
+ * @global wpdb $wpdb
  *
  * @return bool Whether or not we have more than one author
  */

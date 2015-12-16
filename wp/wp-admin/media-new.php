@@ -25,15 +25,15 @@ if ( isset( $_REQUEST['post_id'] ) ) {
 }
 
 if ( $_POST ) {
+	$location = 'upload.php';
 	if ( isset($_POST['html-upload']) && !empty($_FILES) ) {
 		check_admin_referer('media-form');
 		// Upload File button was clicked
-		$upload_id = media_handle_upload( 'async-upload', $post_id );
-		if ( is_wp_error( $upload_id ) ) {
-			wp_die( $upload_id );
-		}
+		$id = media_handle_upload( 'async-upload', $post_id );
+		if ( is_wp_error( $id ) )
+			$location .= '?message=3';
 	}
-	wp_redirect( admin_url( 'upload.php' ) );
+	wp_redirect( admin_url( $location ) );
 	exit;
 }
 

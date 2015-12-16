@@ -789,7 +789,5 @@ tinymce.PluginManager.add('media', function(editor, url) {
 		prependToContext: true
 	});
 
-	editor.addCommand('mceMedia', showDialog);
-
 	this.showDialog = showDialog;
 });

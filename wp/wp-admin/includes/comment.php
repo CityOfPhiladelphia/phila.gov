@@ -4,36 +4,24 @@
  *
  * @package WordPress
  * @subpackage Administration
- * @since 2.3.0
  */
 
 /**
  * Determine if a comment exists based on author and date.
  *
- * For best performance, use `$timezone = 'gmt'`, which queries a field that is properly indexed. The default value
- * for `$timezone` is 'blog' for legacy reasons.
- *
  * @since 2.0.0
- * @since 4.4.0 Added the `$timezone` parameter.
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
- * @param string $comment_author Author of the comment.
- * @param string $comment_date   Date of the comment.
- * @param string $timezone       Timezone. Accepts 'blog' or 'gmt'. Default 'blog'.
- *
+ * @param string $comment_author Author of the comment
+ * @param string $comment_date Date of the comment
  * @return mixed Comment post ID on success.
  */
-function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
+function comment_exists($comment_author, $comment_date) {
 	global $wpdb;
 
-	$date_field = 'comment_date';
-	if ( 'gmt' === $timezone ) {
-		$date_field = 'comment_date_gmt';
-	}
-
 	return $wpdb->get_var( $wpdb->prepare("SELECT comment_post_ID FROM $wpdb->comments
-			WHERE comment_author = %s AND $date_field = %s",
+			WHERE comment_author = %s AND comment_date = %s",
 			stripslashes( $comment_author ),
 			stripslashes( $comment_date )
 	) );
@@ -86,12 +74,12 @@ function edit_comment() {
 }
 
 /**
- * Returns a WP_Comment object based on comment ID.
+ * Returns a comment object based on comment ID.
  *
  * @since 2.0.0
  *
  * @param int $id ID of comment to retrieve.
- * @return WP_Comment|false Comment if found. False on failure.
+ * @return object|false Comment if found. False on failure.
  */
 function get_comment_to_edit( $id ) {
 	if ( !$comment = get_comment($id) )
@@ -168,11 +156,14 @@ function get_pending_comments_num( $post_id ) {
  *
  * @since 2.5.0
  *
+ * @global object $comment
+ *
  * @param string $name User name.
  * @return string Avatar with Admin name.
  */
 function floated_admin_avatar( $name ) {
-	$avatar = get_avatar( get_comment(), 32, 'mystery' );
+	global $comment;
+	$avatar = get_avatar( $comment, 32, 'mystery' );
 	return "$avatar $name";
 }
 
@@ -182,15 +173,4 @@ function floated_admin_avatar( $name ) {
 function enqueue_comment_hotkeys_js() {
 	if ( 'true' == get_user_option( 'comment_shortcuts' ) )
 		wp_enqueue_script( 'jquery-table-hotkeys' );
-}
-
-/**
- * Display error message at bottom of comments.
- *
- * @param string $msg Error Message. Assumed to contain HTML and be sanitized.
- */
-function comment_footer_die( $msg ) {
-	echo "<div class='wrap'><p>$msg</p></div>";
-	include( ABSPATH . 'wp-admin/admin-footer.php' );
-	die;
 }
