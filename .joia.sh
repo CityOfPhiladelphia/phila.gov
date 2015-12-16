@@ -4,9 +4,6 @@ joia_install () {
   # Set up .ssh/environment
   joia_ssh "scripts/user-env.sh"
 
-  # Alias for JOIA_HOSTNAME
-  joia_ssh "echo PUBLIC_HOSTNAME=$JOIA_HOSTNAME >> ~/.ssh/environment"
-
   # Run install scripts
   joia_ssh "
 sudo -E scripts/install.sh
@@ -19,5 +16,5 @@ scripts/unison.sh
 
 joia_deploy () {
   joia_ssh "scripts/deploy.sh"
-  echo "Deployed to https://$JOIA_HOSTNAME"
+  echo "Deployed to https://$DOMAIN"
 }
