@@ -1,5 +1,4 @@
 .env
-.joia
 .vagrant
 wp/readme.*
 wp/wp-config.php
