@@ -15,7 +15,7 @@
  *
  * @since 3.0.0
  *
- * @global wpdb $wpdb WordPress database abstraction object.
+ * @global wpdb $wpdb
  */
 function ms_upload_constants() {
 	global $wpdb;

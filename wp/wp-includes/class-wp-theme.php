@@ -4,20 +4,9 @@
  *
  * @package WordPress
  * @subpackage Theme
- * @since 3.4.0
  */
-final class WP_Theme implements ArrayAccess {
 
-	/**
-	 * Whether the theme has been marked as updateable.
-	 *
-	 * @since 4.4.0
-	 * @access public
-	 * @var bool
-	 *
-	 * @see WP_MS_Themes_List_Table
-	 */
-	public $update = false;
+final class WP_Theme implements ArrayAccess {
 
 	/**
 	 * Headers for style.css files.
@@ -56,7 +45,6 @@ final class WP_Theme implements ArrayAccess {
 		'twentythirteen' => 'Twenty Thirteen',
 		'twentyfourteen' => 'Twenty Fourteen',
 		'twentyfifteen'  => 'Twenty Fifteen',
-		'twentysixteen'  => 'Twenty Sixteen',
 	);
 
 	/**
@@ -1022,15 +1010,18 @@ final class WP_Theme implements ArrayAccess {
 		/**
 		 * Filter list of page templates for a theme.
 		 *
+		 * This filter does not currently allow for page templates to be added.
+		 *
 		 * @since 3.9.0
-		 * @since 4.4.0 Converted to allow complete control over the `$page_templates` array.
 		 *
 		 * @param array        $page_templates Array of page templates. Keys are filenames,
 		 *                                     values are translated names.
 		 * @param WP_Theme     $this           The theme object.
 		 * @param WP_Post|null $post           The post being edited, provided for context, or null.
 		 */
-		return (array) apply_filters( 'theme_page_templates', $page_templates, $this, $post );
+		$return = apply_filters( 'theme_page_templates', $page_templates, $this, $post );
+
+		return array_intersect_assoc( $return, $page_templates );
 	}
 
 	/**
@@ -1148,23 +1139,6 @@ final class WP_Theme implements ArrayAccess {
 				return true;
 		}
 
-		return false;
-	}
-
-	/**
-	 * Determines the latest WordPress default theme that is installed.
-	 *
-	 * This hits the filesystem.
-	 *
-	 * @return WP_Theme|false Object, or false if no theme is installed, which would be bad.
-	 */
-	public static function get_core_default_theme() {
-		foreach ( array_reverse( self::$default_themes ) as $slug => $name ) {
-			$theme = wp_get_theme( $slug );
-			if ( $theme->exists() ) {
-				return $theme;
-			}
-		}
 		return false;
 	}
 

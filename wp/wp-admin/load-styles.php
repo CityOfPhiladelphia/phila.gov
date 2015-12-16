@@ -11,7 +11,92 @@ error_reporting(0);
 define( 'ABSPATH', dirname(dirname(__FILE__)) . '/' );
 define( 'WPINC', 'wp-includes' );
 
-require( ABSPATH . 'wp-admin/includes/noop.php' );
+/**
+ * @ignore
+ */
+function __() {}
+
+/**
+ * @ignore
+ */
+function _x() {}
+
+/**
+ * @ignore
+ */
+function add_filter() {}
+
+/**
+ * @ignore
+ */
+function esc_attr() {}
+
+/**
+ * @ignore
+ */
+function apply_filters() {}
+
+/**
+ * @ignore
+ */
+function get_option() {}
+
+/**
+ * @ignore
+ */
+function is_lighttpd_before_150() {}
+
+/**
+ * @ignore
+ */
+function add_action() {}
+
+/**
+ * @ignore
+ */
+function do_action_ref_array() {}
+
+/**
+ * @ignore
+ */
+function get_bloginfo() {}
+
+/**
+ * @ignore
+ */
+function is_admin() {return true;}
+
+/**
+ * @ignore
+ */
+function site_url() {}
+
+/**
+ * @ignore
+ */
+function admin_url() {}
+
+/**
+ * @ignore
+ */
+function wp_guess_url() {}
+
+/**
+ *
+ * @param string $path
+ * @return string
+ */
+function get_file($path) {
+
+	if ( function_exists('realpath') )
+		$path = realpath($path);
+
+	if ( ! $path || ! @is_file($path) )
+		return '';
+
+	return @file_get_contents($path);
+}
+
 require( ABSPATH . WPINC . '/script-loader.php' );
 require( ABSPATH . WPINC . '/version.php' );
 
@@ -30,7 +115,7 @@ $out = '';
 $wp_styles = new WP_Styles();
 wp_default_styles($wp_styles);
 
-foreach ( $load as $handle ) {
+foreach( $load as $handle ) {
 	if ( !array_key_exists($handle, $wp_styles->registered) )
 		continue;
 

@@ -1,19 +1,11 @@
 <?php
 /**
- * List Table API: WP_Links_List_Table class
+ * Links Manager List Table class.
  *
  * @package WordPress
- * @subpackage Administration
- * @since 3.1.0
- */
-
-/**
- * Core class used to implement displaying links in a list table.
- *
+ * @subpackage List_Table
  * @since 3.1.0
  * @access private
- *
- * @see WP_List_Tsble
  */
 class WP_Links_List_Table extends WP_List_Table {
 

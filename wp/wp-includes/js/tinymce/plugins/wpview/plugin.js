@@ -347,15 +347,6 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 				attributeFilter: ['class']
 			} );
 		}
-
-		if ( tinymce.Env.ie ) {
-			// Prevent resize handles in newer IE
-			editor.dom.bind( editor.getBody(), 'controlselect mscontrolselect', function( event ) {
-				if ( getView( event.target ) ) {
-					event.preventDefault();
-				}
-			});
-		}
 	});
 
 	// Empty the wpview wrap and marker nodes
