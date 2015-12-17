@@ -95,7 +95,7 @@ function phila_gov_posted_on() {
   );
   echo '<h3 class="alternate posted-on">Posted On</h3>' . $posted_on;
 
-  if ( $post->post_type != 'news_post') {
+  if ( $post->post_type != 'news_post' && $post->post_type != 'notices' ) {
     echo '<h3 class="alternate">Posted by</h3>' . $byline;
   }
 }
