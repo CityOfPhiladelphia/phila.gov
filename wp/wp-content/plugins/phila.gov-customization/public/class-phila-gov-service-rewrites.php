@@ -15,10 +15,9 @@
 
   public function __construct(){
 
-    add_filter( 'post_type_link', array($this, 'filter_post_type_link' ), 10, 3 );
+   //add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 3 );
 
-    add_action( 'pre_get_posts', array($this, 'pre_get_posts_services' ) );
-
+   //add_action( 'pre_get_posts', array( $this, 'pre_get_posts_services' ) );
   }
 
   /**
@@ -56,7 +55,9 @@
       return;
     }
 
-    $post_name = $query->get( 'pagename' );
+    $post_name = $query->get( 'name' );
+
+    var_dump($post_name);
 
     $post_type = $wpdb->get_var(
       $wpdb->prepare(
@@ -64,25 +65,20 @@
           $post_name
       )
     );
-
-    $result = $wpdb->get_row(
-      $wpdb->prepare(
-        'SELECT wpp1.post_type, wpp2.post_name AS parent_post_name FROM ' . $wpdb->posts . ' as wpp1 LEFT JOIN ' . $wpdb->posts . ' as wpp2 ON wpp1.post_parent = wpp2.ID WHERE wpp1.post_name = %s LIMIT 1',
-        $post_name
-      )
-    );
+    var_dump($post_type);
 
     switch($post_type) {
       case 'service_post':
-        if ( $result->parent_post_name !== '' ) {
-            $post_name = $result->parent_post_name . '/' . $post_name;
-        }
+
+        $post_name = $post_name;
+
         $query->set('service_post', $post_name);
         $query->set('post_type', $post_type);
         $query->is_single = true;
         $query->is_page = false;
 
         break;
+
     }
 
   }
