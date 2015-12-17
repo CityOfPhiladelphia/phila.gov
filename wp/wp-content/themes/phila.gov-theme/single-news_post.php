@@ -6,22 +6,6 @@
  */
 
 get_header(); ?>
-<?php
-$terms = get_the_terms( $post->ID, 'topics' );
-if ( $terms && ! is_wp_error( $terms ) ) :
-	$current_topics = array();
-	$link = array();
-	foreach ( $terms as $term ) {
-		//parent terms only
-		if( 0 == $term->parent ) {
-				$current_topics[] = $term->name;
-		}
-	}
-	$topics = join( ", ", $current_topics );
-else :
-	$topics = null;
-endif;
-?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('news'); ?>>
 	<div class="row">
@@ -29,9 +13,6 @@ endif;
 			<?php the_title( '<h1 class="entry-title container">', '</h1>' ); ?>
 			<div data-swiftype-index='false' class="entry-meta small-text">
 				<span class="entry-date"><?php echo get_the_date(); ?> </span>
-				<span class="posted-in">
-					<?php echo  (!$topics == null ? ' | Topics: ' . $topics : ''); ?>
-				</span>
 			</div>
 		</header><!-- .entry-header -->
 	</div>
