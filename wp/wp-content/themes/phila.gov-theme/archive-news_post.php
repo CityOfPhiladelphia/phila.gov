@@ -33,7 +33,7 @@ get_header();
       <main id="main" class="site-main medium-19 columns end" role="main">
         <?php while ( have_posts() ) : the_post(); ?>
         <?php
-            get_template_part( 'partials/content', 'news' );
+            get_template_part( 'partials/content', 'list-featured-image' );
 
          endwhile;
 
