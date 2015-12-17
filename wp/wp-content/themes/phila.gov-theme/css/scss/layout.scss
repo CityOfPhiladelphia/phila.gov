@@ -66,3 +66,11 @@ img.float-right{
     color: $mine-shaft;
   }
 }
+
+aside {
+  h3.alternate, 
+  h4.alternate {
+      margin-top:10px;
+      margin-bottom:0;
+    }
+}
