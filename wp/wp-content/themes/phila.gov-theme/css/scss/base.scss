@@ -12,6 +12,12 @@
 @import 'news';
 @import 'service';
 
+p, ul, ol {
+  line-height: 1.6;
+}
+li{
+  padding-bottom: .5rem;
+}
 
 .site-header {
   color: $white;
