@@ -50,7 +50,7 @@ class Phila_Gov_Custom_Post_Types{
         'taxonomies' => array( 'category' ),
         'supports' => array( 'title', 'editor', 'revisions' ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-groups',
         'hierarchical' => false,
