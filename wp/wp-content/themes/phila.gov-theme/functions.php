@@ -510,7 +510,7 @@ function phila_filter_notices( $query ) {
           'taxonomy' => 'news_type',
           'field' => 'slug',
           'terms' => array('notice'),
-          'operator' => 'NOT IN'
+          'operator' => 'NOT IN',
           )
         )
       );
