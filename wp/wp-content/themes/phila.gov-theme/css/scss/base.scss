@@ -66,3 +66,21 @@ article .entry-title{
 .row.call-to-action-low-priority.equal-height{
   width:auto;
 }
+
+.navigation {
+  margin-top:1rem;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-size:.95rem;
+  .page-numbers{
+    padding: 5px;
+    &.next, &.prev{
+      padding:0;
+    }
+  }
+  i{
+    color:$white;
+    background:$bell-yellow;
+    padding:5px;
+  }
+}
