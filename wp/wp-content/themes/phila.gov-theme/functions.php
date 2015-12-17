@@ -362,15 +362,10 @@ function the_breadcrumb() {
             echo '<li>'.get_the_title().'</li>';
           }
 
-    }  elseif ( is_tag() ) {
-      //tag page
-      $term_id = get_query_var('tag_id');
-      $taxonomy = 'post_tag';
-      $args ='include=' . $term_id;
-      $terms = get_terms( $taxonomy, $args );
-
-      // Display the tag name
-      echo '<li class="item-current item-tag-' . $terms[0]->term_id . ' item-tag-' . $terms[0]->slug . '"><strong class="bread-current bread-tag-' . $terms[0]->term_id . ' bread-tag-' . $terms[0]->slug . '">' . $terms[0]->name . '</strong></li>';
+    } elseif( is_tag() ){
+      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li>';
+       '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
 
     }elseif( is_archive() && is_category() ){
 
@@ -380,6 +375,12 @@ function the_breadcrumb() {
       if ( !$categories == 0 ) {
         echo '<li>' . $categories[0]->name . '</li>';
       }
+    }elseif ( is_author() ) {
+      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li>';
+        printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
+      echo '</li>';
+
     } elseif ( is_category() ) {
         echo '<li>';
         the_title();
