@@ -17,7 +17,8 @@ get_header(); ?>
         <h1>
           <?php
             if ( is_category() ) :
-                if ( is_post_type_archive( 'post' ) ) :
+              $post = get_post_type( );
+                if ( $post == 'post' ) :
                   _e('Posts | ');
                   single_cat_title();
                 else:
