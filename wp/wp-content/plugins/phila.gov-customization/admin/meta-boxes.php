@@ -190,7 +190,22 @@ function phila_register_meta_boxes( $meta_boxes ){
         application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
         text/plain'
       ),
-    )
+    ),
+  );
+  $meta_boxes[] = array(
+    'id'       => 'post-description',
+    'title'    => 'Post Summary',
+    'pages'    => array( 'post' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+
+    'fields' => array(
+      array(
+       'name' => 'Summary',
+       'id'   => $prefix . 'post_desc',
+       'type' => 'textarea'
+     ),
+   ),
   );
     return $meta_boxes;
 }
