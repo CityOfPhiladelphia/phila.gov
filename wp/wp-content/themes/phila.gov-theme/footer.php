@@ -8,7 +8,7 @@
  */
 ?>
     <?php
-        if (is_page()){ ?>
+        if (is_page() && !is_page_template('home.php') ){ ?>
       <div class="row">
         <div class="small-24 columns">
           <div class="panel center">
