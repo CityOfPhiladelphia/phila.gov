@@ -17,10 +17,15 @@ get_header(); ?>
         <h1>
           <?php
             if ( is_category() ) :
-              single_cat_title();
-
+              $post = get_post_type( );
+                if ( $post == 'post' ) :
+                  _e('Posts | ');
+                  single_cat_title();
+                else:
+                  single_cat_title();
+                endif;
               elseif ( is_tag() ) :
-                single_tag_title();
+               '<span>' . single_tag_title('Tagged in: ') . '</span>';
 
               elseif ( is_author() ) :
                 printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
@@ -43,11 +48,8 @@ get_header(); ?>
       </header><!-- .page-header -->
       <main id="main" class="site-main small-24 columns" role="main">
         <?php while ( have_posts() ) : the_post(); ?>
-          <div class="row">
-            <div class="small-24 columns">
-              <?php get_template_part( 'content', get_post_format() ) ?>
-            </div>
-          </div>
+
+          <?php get_template_part( 'partials/content', 'list-featured-image' ) ?>
 
         <?php endwhile; ?>
 

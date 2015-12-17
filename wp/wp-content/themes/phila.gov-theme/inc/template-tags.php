@@ -20,17 +20,23 @@ function phila_gov_paging_nav() {
   ?>
   <nav class="navigation paging-navigation" role="navigation">
     <h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'phila-gov' ); ?></h1>
-    <div class="nav-links">
+      <?php
+      global $wp_query;
 
-      <?php if ( get_next_posts_link() ) : ?>
-      <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'phila-gov' ) ); ?></div>
-      <?php endif; ?>
+      $big = 999999999; // need an unlikely integer
+      $translated = __( 'Page', 'phila-gov' ); // Supply translatable string
 
-      <?php if ( get_previous_posts_link() ) : ?>
-      <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'phila-gov' ) ); ?></div>
-      <?php endif; ?>
-
-    </div><!-- .nav-links -->
+      echo paginate_links( array(
+      	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+      	'format' => '?paged=%#%',
+      	'current' => max( 1, get_query_var('paged') ),
+      	'total' => $wp_query->max_num_pages,
+              'before_page_number' => '<span class="screen-reader-text">'.$translated.' </span>',
+        'prev_text' => __('<i class="fa fa-arrow-left"></i> Previous'),
+	      'next_text' => __('Next <i class="fa fa-arrow-right"></i> '),
+        )
+      );
+      ?>
   </nav><!-- .navigation -->
   <?php
 }
@@ -53,7 +59,7 @@ function phila_gov_post_nav() {
     <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'phila-gov' ); ?></h1>
     <div class="nav-links">
       <?php
-        previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span>&nbsp;%title', 'Previous post link', 'phila-gov' ) );
+        previous_post_link( '<div class="nav-previous"><i class="fa fa-arrow-left"></i> %link</div>', _x( '<span class="meta-nav">&larr;</span>&nbsp;%title', 'Previous post link', 'phila-gov' ) );
         next_post_link(     '<div class="nav-next">%link</div>',     _x( '%title&nbsp;<span class="meta-nav">&rarr;</span>', 'Next post link',     'phila-gov' ) );
       ?>
     </div><!-- .nav-links -->
@@ -67,8 +73,9 @@ if ( ! function_exists( 'phila_gov_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function phila_gov_posted_on() {
-  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  global $post;
 
+  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
@@ -78,17 +85,19 @@ function phila_gov_posted_on() {
   );
 
   $posted_on = sprintf(
-    esc_html_x( 'Posted on %s', 'post date', 'phila-gov' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+    esc_html_x( '%s', 'post date', 'phila-gov' ),
+    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark" class="small-text">' . $time_string . '</a>'
   );
 
   $byline = sprintf(
-    esc_html_x( 'by %s', 'post author', 'phila-gov' ),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+    esc_html_x( '%s', 'post author', 'phila-gov' ),
+    '<span class="author small-text"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
+  echo '<h3 class="alternate posted-on">Posted On</h3>' . $posted_on;
 
-  echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
-
+  if ( $post->post_type != 'news_post' && $post->post_type != 'notices' ) {
+    echo '<h3 class="alternate">Posted by</h3>' . $byline;
+  }
 }
 endif;
 
@@ -100,15 +109,13 @@ function phila_gov_entry_footer() {
   // Hide category and tag text for pages.
   if ( 'post' == get_post_type() ) {
     /* translators: used between list items, there is a space after the comma */
-    $categories_list = get_the_category_list( __( ', ', 'phila-gov' ) );
-    if ( $categories_list && phila_gov_categorized_blog() ) {
-    //  printf( '<span class="cat-links">' . __( 'Posted by %1$s', 'phila-gov' ) . '</span>', $categories_list );
-    }
-
-    /* translators: used between list items, there is a space after the comma */
     $tags_list = get_the_tag_list( '', __( ', ', 'phila-gov' ) );
     if ( $tags_list ) {
-      printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'phila-gov' ) . '</span>', $tags_list );
+      echo '<h3 class="alternate tags-links">';
+        _e('Tagged In', 'phila-gov');
+      echo '</h3><span class="small-text">';
+        printf(  __( '%1$s', 'phila-gov' ), $tags_list );
+      echo '</span>';
     }
   }
 }

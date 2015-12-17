@@ -136,7 +136,7 @@ function phila_gov_scripts() {
 
   wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css', array(), '2.0.0' );
 
-  wp_enqueue_style( 'theme-styles', get_stylesheet_directory_uri() . '/css/styles.css', array('pattern_portfolio'), null );
+  wp_enqueue_style( 'theme-styles', get_stylesheet_directory_uri() . '/css/styles.css', array('pattern_portfolio') );
 
   wp_deregister_script( 'jquery' );
 
@@ -210,23 +210,23 @@ function the_breadcrumb() {
 
   echo '<ul>';
   if ( !is_front_page() ) { //display breadcrumbs everywhere but on the homepage
-      echo '<li><a href="';
-      echo get_option('home');
-      echo '">';
-      util_echo_website_url();
-      echo '</a></li>';
+    echo '<li><a href="';
+    echo get_option('home');
+    echo '">';
+    util_echo_website_url();
+    echo '</a></li>';
 
-      if ( is_singular('news_post') ) {
-        $categories = get_the_category($post->ID);
+    if ( is_singular('news_post') ) {
+      $categories = get_the_category($post->ID);
 
-        echo '<li><a href="/news">News</a></li>';
-        if ( !$categories == 0 ) {
-         echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-        }
+      echo '<li><a href="/news">News</a></li>';
+      if ( !$categories == 0 ) {
+        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+      }
 
-        echo '<li>';
-        the_title();
-        echo '</li>';
+      echo '<li>';
+      the_title();
+      echo '</li>';
 
       }elseif ( is_singular('notices') ) {
         $categories = get_the_category($post->ID);
@@ -235,6 +235,18 @@ function the_breadcrumb() {
         if ( !$categories == 0 ) {
           echo '<li><a href="/notices/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
         }
+        echo '<li>';
+        the_title();
+        echo '</li>';
+
+      }elseif ( is_singular('post') ) {
+        $categories = get_the_category($post->ID);
+
+        echo '<li><a href="/posts">Posts</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
+
         echo '<li>';
         the_title();
         echo '</li>';
@@ -262,20 +274,21 @@ function the_breadcrumb() {
 
       } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
 
-          echo '<li><a href="/notices">Notices</a></li>';
-          $category = get_the_category($post->ID);
+        echo '<li><a href="/notices">Notices</a></li>';
+
+        $category = get_the_category($post->ID);
 
         echo '<li>' . $category[0]->name . '</li>';
 
       } elseif ( is_post_type_archive('notices') ) {
 
-          echo '<li>Notices</li>';
+        echo '<li>Notices</li>';
 
       } elseif ( is_singular('site_wide_alert') ) {
 
-              echo '<li>';
-              the_title();
-              echo '</li>';
+        echo '<li>';
+        the_title();
+        echo '</li>';
 
       } elseif ( is_singular('department_page') ) {
 
@@ -349,22 +362,31 @@ function the_breadcrumb() {
             echo '<li>'.get_the_title().'</li>';
           }
 
-    }  elseif ( is_tag() ) {
-      //tag page
-      $term_id = get_query_var('tag_id');
-      $taxonomy = 'post_tag';
-      $args ='include=' . $term_id;
-      $terms = get_terms( $taxonomy, $args );
+    } elseif( is_tag() ){
+      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li>';
+       '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
 
-      // Display the tag name
-      echo '<li class="item-current item-tag-' . $terms[0]->term_id . ' item-tag-' . $terms[0]->slug . '"><strong class="bread-current bread-tag-' . $terms[0]->term_id . ' bread-tag-' . $terms[0]->slug . '">' . $terms[0]->name . '</strong></li>';
+    }elseif( is_archive() && is_category() ){
 
-      } elseif ( is_category() ) {
+      $categories = get_the_category($post->ID);
+
+      echo '<li><a href="/posts">Posts</a></li>';
+      if ( !$categories == 0 ) {
+        echo '<li>' . $categories[0]->name . '</li>';
+      }
+    }elseif ( is_author() ) {
+      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li>';
+        printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
+      echo '</li>';
+
+    } elseif ( is_category() ) {
         echo '<li>';
         the_title();
         echo '</li>';
+    }
 
-      }
   }//end is front page
   echo '</ul>';
 }//end breadcrumbs
@@ -510,7 +532,7 @@ function phila_filter_notices( $query ) {
           'taxonomy' => 'news_type',
           'field' => 'slug',
           'terms' => array('notice'),
-          'operator' => 'NOT IN'
+          'operator' => 'NOT IN',
           )
         )
       );

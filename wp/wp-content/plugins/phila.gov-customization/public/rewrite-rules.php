@@ -16,13 +16,13 @@ function phila_news_rewrite() {
 
   add_rewrite_rule("^news/([^/]+)/?$",'index.php?post_type=news_post&category_name=$matches[1]','top');
 
+  add_rewrite_rule("^news/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=news_post&category_name=$matches[1]&paged=$matches[2]','top');
+
   add_rewrite_rule("^notices/([^/]+)/([^/]+)/?$",'index.php?post_type=notices&category_name=$matches[1]&notices=$matches[2]','top');
 
   add_rewrite_rule("^notices/([^/]+)/?$",'index.php?post_type=notices&category_name=$matches[1]','top');
 
-  add_rewrite_rule("^posts/([^/]+)/([^/]+)/?$",'index.php?post_type=posts&category_name=$matches[1]&tag=$matches[2]','top');
-
-  add_rewrite_rule("^posts/([^/]+)/?$",'index.php?post_type=posts&category_name=$matches[1]','top');
+  //add_rewrite_rule("^notices/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=notices&category_name=$matches[1]&paged=$matches[2]','top');
 
   add_rewrite_rule("^browse/([^/]+)/([^/]+)/?$",'index.php?&topics=$matches[1]&topics=$matches[2]','top');
 }
