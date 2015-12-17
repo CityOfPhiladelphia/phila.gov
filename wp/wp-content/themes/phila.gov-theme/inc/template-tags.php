@@ -73,6 +73,8 @@ if ( ! function_exists( 'phila_gov_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function phila_gov_posted_on() {
+  global $post;
+
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
   $time_string = sprintf( $time_string,
@@ -91,10 +93,11 @@ function phila_gov_posted_on() {
     esc_html_x( '%s', 'post author', 'phila-gov' ),
     '<span class="author small-text"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
-
   echo '<h3 class="alternate posted-on">Posted On</h3>' . $posted_on;
-  echo '<h3 class="alternate">Posted by</h3>' . $byline;
 
+  if ( $post->post_type != 'news_post') {
+    echo '<h3 class="alternate">Posted by</h3>' . $byline;
+  }
 }
 endif;
 
