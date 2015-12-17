@@ -43,11 +43,8 @@ get_header(); ?>
       </header><!-- .page-header -->
       <main id="main" class="site-main small-24 columns" role="main">
         <?php while ( have_posts() ) : the_post(); ?>
-          <div class="row">
-            <div class="small-18 columns">
-              <?php get_template_part( 'content', get_post_format() ) ?>
-            </div>
-          </div>
+
+          <?php get_template_part( 'partials/content', 'list-featured-image' ) ?>
 
         <?php endwhile; ?>
 
