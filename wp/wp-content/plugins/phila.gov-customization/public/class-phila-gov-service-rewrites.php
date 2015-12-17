@@ -1,6 +1,8 @@
 <?php
 /**
  * Removes and redirects all requests at /service/foo/ to /foo/
+ * Thanks to: http://ryansechrest.com/2013/04/remove-post-type-slug-in-custom-post-type-url-and-move-subpages-to-website-root-in-wordpress/
+ *
  * @package  phila.gov-customization
  * @since    0.17.3
  */
@@ -13,67 +15,72 @@
 
   public function __construct(){
 
-    add_filter( 'post_type_link', array( $this, 'remove_cpt_slug' ), 10, 3 );
+   //add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 3 );
 
-    add_action( 'pre_get_posts', array( $this, 'parse_request' ) );
-
-    add_action( 'template_redirect', array( $this, 'redirect_service_page' ) );
+   //add_action( 'pre_get_posts', array( $this, 'pre_get_posts_services' ) );
   }
 
   /**
-   * Remove /service/ slug from published permalinks.
-   * @param $post_link The current link
-   * @param $post The post object
-   * @return Post link without /service/
+   *
+   * Filter the post type link
+   * @param $permalink Wordpress query object
+   * @param $post Post object
+   * @return $permalink Our new slugless permalink
    */
 
-  function remove_cpt_slug( $post_link, $post ) {
-
-    if ( 'service_post' != $post->post_type || 'publish' != $post->post_status ) {
-        return $post_link;
+  function filter_post_type_link( $permalink, $post ) {
+    if ( ! gettype( $post ) == 'post' ) {
+      return $permalink;
+    }
+    switch ( $post->post_type ) {
+      case 'service_post':
+        $permalink = get_home_url() . '/' . $post->post_name . '/';
+        break;
     }
 
-    $post_link = str_replace( '/' . 'service' . '/', '/', $post_link );
-
-    return $post_link;
+    return $permalink;
   }
-
 
   /**
+   * Tell WP what kind of post we are dealing with, since the slug is gone now.
    *
-   * Posts, pages and services need to be unique, otherwise, there will be trouble
-   * @param $query Wordpress query object
-   *
+   * @param $query The current query
    */
 
-  function parse_request( $query ) {
 
-    // Ignore main query
-    if ( ! $query->is_main_query() )
-        return;
+  function pre_get_posts_services( $query ) {
+    global $wpdb;
 
-    // This really only works with non-hierarchical post types
-    if ( 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
-        return;
+    if( ! $query->is_main_query() ) {
+      return;
     }
 
-    // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
-    if ( ! empty( $query->query['name'] ) ) {
-        $query->set( 'post_type', array( 'post', 'service_post', 'page' ) );
-    }
-  }
+    $post_name = $query->get( 'name' );
 
-  function redirect_service_page() {
-    if ( get_query_var('post_type') == 'service_post') {
-      global $post;
-      $current_url = get_permalink( $post->ID );
-      $pattern = '/service/';
-      $replacement = '/';
-      $updated_url =  preg_replace($pattern, $replacement, $current_url);
+    var_dump($post_name);
 
-      wp_redirect( $updated_url );
-      exit();
+    $post_type = $wpdb->get_var(
+      $wpdb->prepare(
+          'SELECT post_type FROM ' . $wpdb->posts . ' WHERE post_name = %s LIMIT 1',
+          $post_name
+      )
+    );
+    var_dump($post_type);
+
+    switch($post_type) {
+      case 'service_post':
+
+        $post_name = $post_name;
+
+        $query->set('service_post', $post_name);
+        $query->set('post_type', $post_type);
+        $query->is_single = true;
+        $query->is_page = false;
+
+        break;
+
     }
+
   }
 
 }//Phila_Gov_Service_Rewrites

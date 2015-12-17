@@ -34,10 +34,11 @@ if ( ! class_exists( 'RWMB_Field ' ) )
 		 */
 		static function show( $field, $saved )
 		{
-			$post = get_post();
+			$post    = get_post();
+			$post_id = isset( $post->ID ) ? $post->ID : 0;
 
 			$field_class = RW_Meta_Box::get_class_name( $field );
-			$meta        = call_user_func( array( $field_class, 'meta' ), $post->ID, $saved, $field );
+			$meta        = call_user_func( array( $field_class, 'meta' ), $post_id, $saved, $field );
 
 			// Apply filter to field meta value
 			// 1st filter applies to all fields
@@ -397,9 +398,21 @@ if ( ! class_exists( 'RWMB_Field ' ) )
 		 */
 		static function normalize_field( $field )
 		{
-			return wp_parse_args( $field, array(
+			$field = wp_parse_args( $field, array(
+				'disabled'   => false,
+				'required'   => false,
 				'attributes' => array()
 			) );
+
+			$field['attributes'] = wp_parse_args( $field['attributes'], array(
+				'disabled' => $field['disabled'],
+				'required' => $field['required'],
+				'class'    => "rwmb-{$field['type']}",
+				'id'       => $field['clone'] ? false : $field['id'],
+				'name'     => $field['field_name'],
+			) );
+
+			return $field;
 		}
 
 		/**
@@ -416,6 +429,7 @@ if ( ! class_exists( 'RWMB_Field ' ) )
 			{
 				if ( $value )
 				{
+					$value = ( true === $value ) ? $key : $value;
 					$attr_string .= sprintf(
 						' %s="%s"',
 						$key,

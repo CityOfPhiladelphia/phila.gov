@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying a featured image and some text
+ * The template used for displaying a featured image, description and link
  *
  * @package phila-gov
  */
@@ -23,16 +23,23 @@
             $current_cat = null;
           }
         ?>
-      <span class="entry-date"><?php echo get_the_date(); ?> </span> <span class="category">
+      <span class="entry-date"><strong><?php echo get_the_date(); ?> </span></strong> <span class="category">
         <?php echo $current_cat == null ?  '' : ' | ' . $current_cat  ?> </span>
         <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2>', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
     <?php
-    if (function_exists('rwmb_meta')) {
-      $news_url = rwmb_meta( 'phila_news_url', $args = array('type' => 'url'));
-      $news_desc = rwmb_meta( 'phila_news_desc', $args = array('type' => 'textrea'));
-      echo '<p class="description">' . $news_desc . '</p>';
-    } ?>
+      if (function_exists('rwmb_meta')) :
+      $news_desc = rwmb_meta( 'phila_news_desc', $args = array( 'type' => 'textrea' ) );
+      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textrea' ) );
+
+        if ( '' != $news_desc ) :
+          ?><p class="description"><?php echo $news_desc ?></p>
+        <?php else : ?>
+        <p class="description"><?php echo $post_desc ?></p>
+    <?php
+      endif;
+    endif;
+    ?>
   </div>
 </article><!-- #post-## -->
 <hr>
