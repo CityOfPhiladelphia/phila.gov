@@ -17,8 +17,12 @@ get_header(); ?>
         <h1>
           <?php
             if ( is_category() ) :
-              single_cat_title();
-
+                if ( is_post_type_archive( 'post' ) ) :
+                  _e('Posts | ');
+                  single_cat_title();
+                else:
+                  single_cat_title();
+                endif;
               elseif ( is_tag() ) :
                '<span>' . single_tag_title('Tagged in: ') . '</span>';
 
