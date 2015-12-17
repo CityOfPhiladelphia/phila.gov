@@ -21,14 +21,20 @@ function phila_gov_paging_nav() {
   <nav class="navigation paging-navigation" role="navigation">
     <h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'phila-gov' ); ?></h1>
     <div class="nav-links">
+      <?php
+      global $wp_query;
 
-      <?php if ( get_next_posts_link() ) : ?>
-      <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'phila-gov' ) ); ?></div>
-      <?php endif; ?>
+      $big = 999999999; // need an unlikely integer
+      $translated = __( 'Page', 'phila-gov' ); // Supply translatable string
 
-      <?php if ( get_previous_posts_link() ) : ?>
-      <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'phila-gov' ) ); ?></div>
-      <?php endif; ?>
+      echo paginate_links( array(
+      	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+      	'format' => '?paged=%#%',
+      	'current' => max( 1, get_query_var('paged') ),
+      	'total' => $wp_query->max_num_pages,
+              'before_page_number' => '<span class="screen-reader-text">'.$translated.' </span>'
+      ) );
+      ?>
 
     </div><!-- .nav-links -->
   </nav><!-- .navigation -->
@@ -69,7 +75,6 @@ if ( ! function_exists( 'phila_gov_posted_on' ) ) :
 function phila_gov_posted_on() {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
-
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
     esc_html( get_the_date() ),
@@ -78,16 +83,17 @@ function phila_gov_posted_on() {
   );
 
   $posted_on = sprintf(
-    esc_html_x( 'Posted on %s', 'post date', 'phila-gov' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+    esc_html_x( '%s', 'post date', 'phila-gov' ),
+    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark" class="small-text">' . $time_string . '</a>'
   );
 
   $byline = sprintf(
-    esc_html_x( 'by %s', 'post author', 'phila-gov' ),
-    '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+    esc_html_x( '%s', 'post author', 'phila-gov' ),
+    '<span class="author small-text"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
   );
 
-  echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
+  echo '<h3 class="alternate posted-on">Posted On</h3>' . $posted_on;
+  echo '<h3 class="alternate">Posted by</h3>' . $byline;
 
 }
 endif;
@@ -102,7 +108,11 @@ function phila_gov_entry_footer() {
     /* translators: used between list items, there is a space after the comma */
     $tags_list = get_the_tag_list( '', __( ', ', 'phila-gov' ) );
     if ( $tags_list ) {
-      printf( '<span class="tags-links">' . __( 'Posted in: %1$s', 'phila-gov' ) . '</span>', $tags_list );
+      echo '<h3 class="alternate tags-links">';
+        _e('Tagged In', 'phila-gov');
+      echo '</h3><span class="small-text">';
+        printf(  __( '%1$s', 'phila-gov' ), $tags_list );
+      echo '</span>';
     }
   }
 }
