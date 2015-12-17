@@ -30,7 +30,7 @@ get_header();
           ?>
         </h1>
         </header><!-- .page-header -->
-      <main id="main" class="site-main medium-19 columns end" role="main">
+      <main id="main" class="site-main medium-24 columns end" role="main">
         <?php while ( have_posts() ) : the_post(); ?>
         <?php
             get_template_part( 'partials/content', 'list-featured-image' );
