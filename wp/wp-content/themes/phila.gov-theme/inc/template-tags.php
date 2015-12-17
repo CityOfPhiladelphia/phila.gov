@@ -20,7 +20,6 @@ function phila_gov_paging_nav() {
   ?>
   <nav class="navigation paging-navigation" role="navigation">
     <h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'phila-gov' ); ?></h1>
-    <div class="nav-links">
       <?php
       global $wp_query;
 
@@ -32,11 +31,12 @@ function phila_gov_paging_nav() {
       	'format' => '?paged=%#%',
       	'current' => max( 1, get_query_var('paged') ),
       	'total' => $wp_query->max_num_pages,
-              'before_page_number' => '<span class="screen-reader-text">'.$translated.' </span>'
-      ) );
+              'before_page_number' => '<span class="screen-reader-text">'.$translated.' </span>',
+        'prev_text' => __('<i class="fa fa-arrow-left"></i> Previous'),
+	      'next_text' => __('Next <i class="fa fa-arrow-right"></i> '),
+        )
+      );
       ?>
-
-    </div><!-- .nav-links -->
   </nav><!-- .navigation -->
   <?php
 }
@@ -59,7 +59,7 @@ function phila_gov_post_nav() {
     <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'phila-gov' ); ?></h1>
     <div class="nav-links">
       <?php
-        previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span>&nbsp;%title', 'Previous post link', 'phila-gov' ) );
+        previous_post_link( '<div class="nav-previous"><i class="fa fa-arrow-left"></i> %link</div>', _x( '<span class="meta-nav">&larr;</span>&nbsp;%title', 'Previous post link', 'phila-gov' ) );
         next_post_link(     '<div class="nav-next">%link</div>',     _x( '%title&nbsp;<span class="meta-nav">&rarr;</span>', 'Next post link',     'phila-gov' ) );
       ?>
     </div><!-- .nav-links -->
