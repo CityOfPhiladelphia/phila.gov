@@ -1,9 +1,9 @@
-=== Simple Calendar (aka Google Calendar Events) ===
+=== Simple Calendar - Google Calendar Plugin ===
 Contributors: moonstonemedia, pderksen, nickyoung87, nekojira, rosshanney
 Tags: calendar, calendars, calendar manager, custom calendar, custom calendars, event, events, events feed, google calendar, google
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 3.0.8
+Stable tag: 3.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,7 @@ Add Google Calendar events to your WordPress site in minutes. Beautiful calendar
 
 == Description ==
 
-[Simple Calendar](https://simplecalendar.io) is the easiest way to add Google Calendar events to your WordPress site. Keep managing everything in Google Calendar. Fine tune the display of your calendars to your liking. Add advanced features with add-ons.
+[Simple Calendar](https://simplecalendar.io/?utm_source=wordpress.org&utm_medium=link&utm_campaign=simple-cal-readme&utm_content=description) is the easiest way to add Google Calendar events to your WordPress site. Keep managing everything in Google Calendar. Fine tune the display of your calendars to your liking. Add advanced features with add-ons.
 
 = SIMPLE CALENDAR FEATURES =
 
@@ -26,6 +26,8 @@ Add Google Calendar events to your WordPress site in minutes. Beautiful calendar
 * Many translations available with more being added on a regular basis. [Translations welcome!](https://translate.wordpress.org/projects/wp-plugins/google-calendar-events)
 * Fully extensible to support add-ons with advanced features for more specific needs.
 * Open source with code hosted on GitHub. [Contributions welcome!](https://github.com/moonstonemedia/Simple-Calendar)
+
+**[Try out a Live Demo](http://demo.simplecalendar.io/?utm_source=wordpress.org&utm_medium=link&utm_campaign=simple-cal-readme&utm_content=description)**
 
 >**[Love the plugin? Please consider purchasing our Google Calendar Pro add-on](https://simplecalendar.io/addons/google-calendar-pro/?utm_source=wordpress.org&utm_medium=link&utm_campaign=simple-cal-readme&utm_content=description)**
 
@@ -77,6 +79,14 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.0.9 - December 16, 2015 =
+
+* Fix: Fixed all-day events with an end time showing on an extra day.
+* Fix: Fixed a bug with site default timezone setting not pulling in correctly.
+* Tweak: Make always enqueue option enabled by default for new installs.
+* Tweak: Translations moved from .po/.mo files to official wordpress.org translation packs.
+* Tweak: Minor text fixes to admin UI.
 
 = 3.0.8 - December 1, 2015 =
 
