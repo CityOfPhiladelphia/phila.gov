@@ -6,7 +6,7 @@ joia_install () {
 
   # Run install scripts
   joia_ssh "
-sudo -E scripts/install.sh
+scripts/install.sh
 scripts/gen-cert.sh
 scripts/wp-config.sh
 scripts/local-db.sh
