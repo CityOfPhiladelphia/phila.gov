@@ -28,6 +28,14 @@ class AS3CF_Plugin_Compatibility {
 	 */
 	protected $as3cf;
 
+	/**
+	 * @var array
+	 */
+	protected static $stream_wrappers = array();
+
+	/**
+	 * @param Amazon_S3_And_CloudFront $as3cf
+	 */
 	function __construct( $as3cf ) {
 		$this->as3cf = $as3cf;
 
@@ -35,9 +43,35 @@ class AS3CF_Plugin_Compatibility {
 	}
 
 	/**
-	 * Register the compatibility hooks
+	 * Register the compatibility hooks for the plugin.
 	 */
 	function compatibility_init() {
+		/*
+		 * WP_Customize_Control
+		 * /wp-includes/class-wp-customize_control.php
+		 */
+		add_filter( 'attachment_url_to_postid', array( $this, 'customizer_background_image' ), 10, 2 );
+
+		/*
+		 * Responsive Images WP 4.4+
+		 */
+		add_filter( 'wp_calculate_image_srcset', array( $this, 'wp_calculate_image_srcset' ), 10, 5 );
+
+		if ( $this->as3cf->is_plugin_setup() ) {
+			$this->compatibility_init_if_setup();
+		}
+	}
+
+	/**
+	 * Register the compatibility hooks as long as the plugin is setup.
+	 */
+	function compatibility_init_if_setup() {
+		// Add notices about compatibility addons to install
+		add_action( 'admin_init', array( $this, 'maybe_render_compatibility_addons_notice' ) );
+
+		// Turn on stream wrapper S3 file
+		add_filter( 'as3cf_get_attached_file', array( $this, 'get_stream_wrapper_file' ), 20, 4 );
+
 		/*
 		 * Legacy filter
 		 * 'as3cf_get_attached_file_copy_back_to_local'
@@ -51,19 +85,182 @@ class AS3CF_Plugin_Compatibility {
 		add_action( 'as3cf_upload_attachment_pre_remove', array( $this, 'image_editor_remove_files' ), 10, 4 );
 		add_filter( 'as3cf_get_attached_file', array( $this, 'image_editor_download_file' ), 10, 4 );
 		add_filter( 'as3cf_upload_attachment_local_files_to_remove', array( $this, 'image_editor_remove_original_image' ), 10, 3 );
-		add_filter( 'as3cf_get_attached_file', array( $this, 'customizer_header_crop_download_file' ), 10, 4 );
-		add_filter( 'as3cf_upload_attachment_local_files_to_remove', array( $this, 'customizer_header_crop_remove_original_image' ), 10, 3 );
+		add_filter( 'as3cf_get_attached_file', array( $this, 'customizer_crop_download_file' ), 10, 4 );
+		add_filter( 'as3cf_upload_attachment_local_files_to_remove', array( $this, 'customizer_crop_remove_original_image' ), 10, 3 );
 
-		/*
-		 * WP_Customize_Control
-		 * /wp-includes/class-wp-customize_control.php
-		 */
-		add_filter( 'attachment_url_to_postid', array( $this, 'customizer_background_image' ), 10, 2 );
 		/*
 		 * Regenerate Thumbnails
 		 * https://wordpress.org/plugins/regenerate-thumbnails/
 		 */
 		add_filter( 'as3cf_get_attached_file', array( $this, 'regenerate_thumbnails_download_file' ), 10, 4 );
+	}
+
+	/**
+	 * Get the addons for the Pro upgrade
+	 *
+	 * @return array
+	 */
+	public function get_pro_addons() {
+		global $amazon_web_services;
+
+		$all_addons = $amazon_web_services->get_addons( true );
+		if ( ! isset( $all_addons['amazon-s3-and-cloudfront']['addons']['amazon-s3-and-cloudfront-pro']['addons'] ) ) {
+			return array();
+		}
+
+		$addons = $all_addons['amazon-s3-and-cloudfront']['addons']['amazon-s3-and-cloudfront-pro']['addons'];
+
+		return $addons;
+	}
+
+	/**
+	 * Get compatibility addons that are required to be installed
+	 *
+	 * @return array
+	 */
+	public function get_compatibility_addons_to_install() {
+		$addons = $this->get_pro_addons();
+
+		$addons_to_install = array();
+
+		if ( empty ( $addons ) ) {
+			return $addons_to_install;
+		}
+
+		foreach( $addons as $addon_slug => $addon ) {
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $addon_slug . '/' . $addon_slug . '.php' ) ) {
+				// Addon already installed, ignore.
+				continue;
+			}
+
+			if ( ! isset( $addon['parent_plugin_basename'] ) || '' === $addon['parent_plugin_basename'] ) {
+				// Addon doesn't have a parent plugin, ignore.
+				continue;
+			}
+
+			if ( ! file_exists( WP_PLUGIN_DIR . '/' . $addon['parent_plugin_basename'] ) || ! is_plugin_active( $addon['parent_plugin_basename'] ) ) {
+				// Parent plugin not installed or not activated, ignore.
+				continue;
+			}
+
+			$addons_to_install[ $addon_slug ] = array(
+				'title' => $addon['title'],
+				'url'   => $addon['url'],
+			);
+		}
+
+		return $addons_to_install;
+	}
+
+	/**
+	 * Maybe show a notice about installing addons when the site is using the
+	 * plugins they add compatibility for.
+	 */
+	public function maybe_render_compatibility_addons_notice() {
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return;
+		}
+
+		global $as3cf_compat_check;
+		if ( ! $as3cf_compat_check->check_capabilities() ){
+			// User can't install plugins anyway, bail.
+			return;
+		}
+
+		$addons_to_install = $this->get_compatibility_addons_to_install();
+
+		$notice_id = 'as3cf-compat-addons';
+
+		$this->maybe_prepare_compatibility_addons_notice( $notice_id, $addons_to_install );
+
+		if ( empty( $addons_to_install ) ) {
+			return;
+		}
+
+		$title       = __( 'WP Offload S3 Compatibility Addons', 'amazon-s3-and-cloudfront' );
+		$compat_url  = 'https://deliciousbrains.com/wp-offload-s3/doc/compatibility-with-other-plugins/';
+		$compat_link = sprintf( '<a href="%s">%s</a>', $compat_url, __( 'compatibility addons', 'amazon-s3-and-cloudfront' ) );
+		$message     = sprintf( __( "To get WP Offload S3 to work with certain 3rd party plugins, you might need to install and activate some of our %s. We've detected the following addons might need to be installed. Please click the links for more information about each addon to determine if you need it or not.", 'amazon-s3-and-cloudfront' ), $compat_link );
+
+		$notice_addons_text = $this->render_addon_list( $addons_to_install );
+		$support_email      = 'nom@deliciousbrains.com';
+		$support_link       = sprintf( '<a href="mailto:%1$s">%1$s</a>', $support_email );
+
+		$notice_addons_text .= '<p>' . sprintf( __( "You will need to purchase a license to get access to these addons. If you're having trouble determining whether or not you need the addons, send an email to %s.", 'amazon-s3-and-cloudfront' ), $support_link ). '</p>';
+		$notice_addons_text .= sprintf( '<p><a href="%s" class="button button-large">%s</a></p>', 'https://deliciousbrains.com/wp-offload-s3/pricing/', __( 'View Licenses', 'amazon-s3-and-cloudfront' ) );
+
+		$notice_addons_text = apply_filters( 'wpos3_compat_addons_notice', $notice_addons_text, $addons_to_install );
+
+		if ( false === $notice_addons_text ) {
+			// Allow the notice to be aborted.
+			return;
+		}
+
+		$notice = '<p><strong>' . $title . '</strong> &mdash; ' . $message . '</p>' . $notice_addons_text;
+
+		$notice_args = array(
+			'type'              => 'notice-info',
+			'custom_id'         => $notice_id,
+			'only_show_to_user' => false,
+			'flash'             => false,
+			'auto_p'            => false,
+		);
+
+		$notice_args = apply_filters( 'wpos3_compat_addons_notice_args', $notice_args, $addons_to_install );
+
+		update_site_option( 'as3cf_compat_addons_to_install', $addons_to_install );
+
+		$this->as3cf->notices->add_notice( $notice, $notice_args );
+	}
+
+	/**
+	 * Remove the notice if exists already and undismiss the notice
+	 * if the addons available have changed.
+	 *
+	 * @param int $notice_id
+	 * @param array $addons_to_install
+	 */
+	protected function maybe_prepare_compatibility_addons_notice( $notice_id, $addons_to_install ) {
+		$notice = $this->as3cf->notices->find_notice_by_id( $notice_id );
+
+		if ( is_null( $notice ) ) {
+			return;
+		}
+
+		$previous_addons_to_install = get_site_option( 'as3cf_compat_addons_to_install', array() );
+
+		if ( ! empty( $previous_addons_to_install ) && $addons_to_install !== $previous_addons_to_install ) {
+			// Remove dismissed flag for all users, so we reshow the notice with new addons
+			$this->as3cf->notices->undismiss_notice_for_all( $notice_id );
+		}
+
+		// Remove the notice so we refresh it later on
+		$this->as3cf->notices->remove_notice( $notice );
+	}
+
+	/**
+	 * Render list of addons for a notice
+	 *
+	 * @param array $addons
+	 *
+	 * @return string
+	 */
+	protected function render_addon_list( $addons ) {
+		if ( ! is_array( $addons ) || empty( $addons ) ) {
+			return '';
+		}
+
+		sort( $addons );
+
+		$html = '<ul style="list-style-type: disc; padding: 0 0 0 30px; margin: 5px 0;">';
+		foreach ( $addons as $addon ) {
+			$html .= '<li style="margin: 0;">';
+			$html .= '<a href="' . $addon['url'] . '">' . $addon['title'] . '</a>';
+			$html .= '</li>';
+		}
+		$html .= '</ul>';
+
+		return $html;
 	}
 
 	/**
@@ -90,6 +287,79 @@ class AS3CF_Plugin_Compatibility {
 		};
 
 		// Return S3 URL as a fallback
+		return $url;
+	}
+
+	/**
+	 * Is this an AJAX process?
+	 *
+	 * @return bool
+	 */
+	function is_ajax() {
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check the current request is a specific one based on action and
+	 * optional context
+	 *
+	 * @param string      $action_key
+	 * @param bool        $ajax
+	 * @param null|string $context_key
+	 *
+	 * @return bool
+	 */
+	function maybe_process_on_action( $action_key, $ajax, $context_key = null ) {
+		if ( $ajax !== $this->is_ajax() ) {
+			return false;
+		}
+
+		$var_type = 'GET';
+
+		if ( isset( $_GET['action'] ) ) {
+			$action = $_GET['action'];
+		} else if ( isset( $_POST['action'] ) ) {
+			$var_type = 'POST';
+			$action   = $_POST['action'];
+		} else {
+			return false;
+		}
+
+		$context_check = true;
+		if ( ! is_null( $context_key ) ) {
+			$global        = constant( 'INPUT_' . $var_type );
+			$context       = filter_input( $global, 'context' );
+			$context_check = ( $context_key === $context );
+		}
+
+		return ( $action_key === sanitize_key( $action ) && $context_check );
+	}
+
+	/**
+	 * Generic method for copying back an S3 file to the server on a specific AJAX action
+	 *
+	 * @param string $action_key Action that must be in process
+	 * @param bool   $ajax       Must the process be an AJAX one?
+	 * @param string $url        S3 URL
+	 * @param string $file       Local file path of image
+	 * @param array  $s3_object  S3 meta data
+	 *
+	 * @return string
+	 */
+	function copy_image_to_server_on_action( $action_key, $ajax, $url, $file, $s3_object ) {
+		if ( false === $this->maybe_process_on_action( $action_key, $ajax ) ) {
+			return $url;
+		}
+
+		if ( ( $file = $this->copy_s3_file_to_server( $s3_object, $file ) ) ) {
+			// Return the file if successfully downloaded from S3
+			return $file;
+		};
+
 		return $url;
 	}
 
@@ -145,7 +415,7 @@ class AS3CF_Plugin_Compatibility {
 	 * @return string
 	 */
 	function image_editor_download_file( $url, $file, $attachment_id, $s3_object ) {
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+		if ( ! $this->is_ajax() ) {
 			return $url;
 		}
 
@@ -199,7 +469,7 @@ class AS3CF_Plugin_Compatibility {
 	 * @return array
 	 */
 	function image_editor_remove_original_image( $files, $post_id, $file_path ) {
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+		if ( ! $this->is_ajax() ) {
 			return $files;
 		}
 
@@ -214,6 +484,23 @@ class AS3CF_Plugin_Compatibility {
 	}
 
 	/**
+	 * Generic check for Customizer crop actions
+	 *
+	 * @return bool
+	 */
+	protected function is_customizer_crop_action() {
+		$header_crop   = $this->maybe_process_on_action( 'custom-header-crop', true );
+		$identity_crop = $this->maybe_process_on_action( 'crop-image', true, 'site-icon' );
+
+		if ( ! $header_crop && ! $identity_crop ) {
+			// Not doing a Customizer action
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Allow the WordPress Customizer to crop images that have been copied to S3
 	 * but removed from the local server, by copying them back temporarily
 	 *
@@ -224,17 +511,15 @@ class AS3CF_Plugin_Compatibility {
 	 *
 	 * @return string
 	 */
-	function customizer_header_crop_download_file( $url, $file, $attachment_id, $s3_object ) {
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+	function customizer_crop_download_file( $url, $file, $attachment_id, $s3_object ) {
+		if ( false === $this->is_customizer_crop_action() ) {
 			return $url;
 		}
 
-		if ( isset( $_POST['action'] ) && 'custom-header-crop' === sanitize_key( $_POST['action'] ) ) { // input var okay
-			if ( ( $file = $this->copy_s3_file_to_server( $s3_object, $file ) ) ) {
-				// Return the file if successfully downloaded from S3
-				return $file;
-			};
-		}
+		if ( ( $file = $this->copy_s3_file_to_server( $s3_object, $file ) ) ) {
+			// Return the file if successfully downloaded from S3
+			return $file;
+		};
 
 		return $url;
 	}
@@ -249,16 +534,14 @@ class AS3CF_Plugin_Compatibility {
 	 *
 	 * @return array
 	 */
-	function customizer_header_crop_remove_original_image( $files, $post_id, $file_path ) {
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+	function customizer_crop_remove_original_image( $files, $post_id, $file_path ) {
+		if ( false === $this->is_customizer_crop_action() ) {
 			return $files;
 		}
 
-		if ( isset( $_POST['action'] ) && 'custom-header-crop' === sanitize_key( $_POST['action'] ) ) { // input var okay
-			// remove original main image after edit
-			if ( ( $original_file = $this->get_original_image_file( $_POST['id'], $file_path ) ) ) {
-				$files[] = $original_file;
-			}
+		// remove original main image after edit
+		if ( ( $original_file = $this->get_original_image_file( $_POST['id'], $file_path ) ) ) {
+			$files[] = $original_file;
 		}
 
 		return $files;
@@ -321,18 +604,7 @@ class AS3CF_Plugin_Compatibility {
 	 * @return string
 	 */
 	function regenerate_thumbnails_download_file( $url, $file, $attachment_id, $s3_object ) {
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
-			return $url;
-		}
-
-		if ( isset( $_POST['action'] ) && 'regeneratethumbnail' == sanitize_key( $_POST['action'] ) ) { // input var okay
-			if ( ( $file = $this->copy_s3_file_to_server( $s3_object, $file ) ) ) {
-				// Return the file if successfully downloaded from S3
-				return $file;
-			};
-		}
-
-		return $url;
+		return $this->copy_image_to_server_on_action( 'regeneratethumbnail', true, $url, $file, $s3_object );
 	}
 
 	/**
@@ -360,5 +632,134 @@ class AS3CF_Plugin_Compatibility {
 		}
 
 		return $file;
+	}
+
+	/**
+	 * Register stream wrappers per region
+	 *
+	 * @param string $region
+	 *
+	 * @return mixed
+	 */
+	protected function register_stream_wrapper( $region ) {
+		$stored_region = ( '' === $region ) ? Amazon_S3_And_CloudFront::DEFAULT_REGION : $region;
+
+		if ( in_array( $stored_region, self::$stream_wrappers ) ) {
+			return;
+		}
+
+		$client   = $this->as3cf->get_s3client( $region, true );
+		$protocol = $this->get_stream_wrapper_protocol( $region );
+
+		// Register the region specific S3 stream wrapper to be used by plugins
+		AS3CF_Stream_Wrapper::register( $client, $protocol );
+
+		self::$stream_wrappers[] = $stored_region;
+	}
+
+	/**
+	 * Generate the stream wrapper protocol
+	 *
+	 * @param string $region
+	 *
+	 * @return string
+	 */
+	protected function get_stream_wrapper_protocol( $region ) {
+		$protocol = 's3';
+		$protocol .= str_replace( '-', '', $region );
+
+		return $protocol;
+	}
+
+	/**
+	 * Generate an S3 stream wrapper compatible URL
+	 *
+	 * @param string $bucket
+	 * @param string $key
+	 *
+	 * @return string
+	 */
+	function prepare_stream_wrapper_file( $bucket, $region, $key ) {
+		$protocol = $this->get_stream_wrapper_protocol( $region );
+
+		return $protocol . '://' . $bucket . '/' . $key;
+	}
+
+	/**
+	 * Allow access to the S3 file via the stream wrapper.
+	 * This is useful for compatibility with plugins when attachments are removed from the
+	 * local server after upload.
+	 *
+	 * @param string $url
+	 * @param string $file
+	 * @param int    $attachment_id
+	 * @param array  $s3_object
+	 *
+	 * @return string
+	 */
+	public function get_stream_wrapper_file( $url, $file, $attachment_id, $s3_object ) {
+		if ( $url === $file ) {
+			// Abort if an earlier hook to get the file has been called and it has been copied back.
+			return $file;
+		}
+
+		// Make sure the region stream wrapper is registered
+		$this->register_stream_wrapper( $s3_object['region'] );
+
+		return $this->prepare_stream_wrapper_file( $s3_object['bucket'], $s3_object['region'], $s3_object['key'] );
+	}
+
+	/**
+	 * Replace local URLs with S3 ones for srcset image sources
+	 *
+	 * @param array  $sources
+	 * @param array  $size_array
+	 * @param string $image_src
+	 * @param array  $image_meta
+	 * @param int    $attachment_id
+	 *
+	 * @return array
+	 */
+	public function wp_calculate_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
+		if ( ! $this->as3cf->get_setting( 'serve-from-s3' ) ) {
+			// S3 URLs disabled, abort
+			return $sources;
+		}
+
+		if ( ! ( $s3object = $this->as3cf->get_attachment_s3_info( $attachment_id ) ) ) {
+			// Attachment not uploaded to S3, abort
+			return $sources;
+		}
+
+		foreach ( $sources as $width => $source ) {
+			$size   = $this->find_image_size_from_width( $image_meta['sizes'], $width );
+			$s3_url = $this->as3cf->get_attachment_s3_url( $attachment_id, $s3object, null, $size, $image_meta );
+
+			if ( false === $s3_url || is_wp_error( $s3_url ) ) {
+				continue;
+			}
+
+			$sources[ $width ]['url'] = $s3_url;
+		}
+
+		return $sources;
+	}
+
+	/**
+	 * Helper function to find size name from width
+	 *
+	 * @param array  $sizes
+	 * @param string $width
+	 *
+	 * @return null|string
+	 */
+	protected function find_image_size_from_width( $sizes, $width ) {
+		foreach ( $sizes as $name => $size ) {
+			if ( $width === $size['width'] ) {
+				return $name;
+			}
+		}
+
+		return null;
 	}
 }
