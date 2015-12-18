@@ -16,5 +16,4 @@ scripts/unison.sh
 
 joia_deploy () {
   joia_ssh "scripts/deploy.sh"
-  echo "Deployed to https://$DOMAIN"
 }
