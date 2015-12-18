@@ -46,11 +46,6 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
 );
 
-get_current_screen()->set_screen_reader_content( array(
-	'heading_pagination' => __( 'Sites list navigation' ),
-	'heading_list'       => __( 'Sites list' ),
-) );
-
 $id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
 
 if ( isset( $_GET['action'] ) ) {
@@ -107,7 +102,7 @@ if ( isset( $_GET['action'] ) ) {
 					<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( wp_get_referer() ); ?>" />
 					<?php wp_nonce_field( $site_action . '_' . $id, '_wpnonce', false ); ?>
 					<p><?php echo sprintf( $manage_actions[ $site_action ], $site_address ); ?></p>
-					<?php submit_button( __( 'Confirm' ), 'primary' ); ?>
+					<?php submit_button( __( 'Confirm' ), 'button' ); ?>
 				</form>
 			</div>
 		<?php

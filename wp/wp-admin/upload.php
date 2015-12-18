@@ -25,8 +25,6 @@ if ( 'grid' === $mode ) {
 	wp_enqueue_script( 'media-grid' );
 	wp_enqueue_script( 'media' );
 
-	remove_action( 'admin_head', 'wp_admin_canonical_url' );
-
 	$q = $_GET;
 	// let JS handle this
 	unset( $q['s'] );
@@ -128,7 +126,7 @@ if ( $doaction ) {
 				break;
 			foreach ( (array) $post_ids as $post_id ) {
 				if ( !current_user_can( 'delete_post', $post_id ) )
-					wp_die( __( 'You are not allowed to move this item to the Trash.' ) );
+					wp_die( __( 'You are not allowed to move this post to the trash.' ) );
 
 				if ( !wp_trash_post( $post_id ) )
 					wp_die( __( 'Error in moving to Trash.' ) );
@@ -140,7 +138,7 @@ if ( $doaction ) {
 				break;
 			foreach ( (array) $post_ids as $post_id ) {
 				if ( !current_user_can( 'delete_post', $post_id ) )
-					wp_die( __( 'You are not allowed to move this item out of the Trash.' ) );
+					wp_die( __( 'You are not allowed to move this post out of the trash.' ) );
 
 				if ( !wp_untrash_post( $post_id ) )
 					wp_die( __( 'Error in restoring from Trash.' ) );
@@ -152,7 +150,7 @@ if ( $doaction ) {
 				break;
 			foreach ( (array) $post_ids as $post_id_del ) {
 				if ( !current_user_can( 'delete_post', $post_id_del ) )
-					wp_die( __( 'You are not allowed to delete this item.' ) );
+					wp_die( __( 'You are not allowed to delete this post.' ) );
 
 				if ( !wp_delete_attachment( $post_id_del ) )
 					wp_die( __( 'Error in deleting.' ) );
@@ -203,12 +201,6 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __( '<a href="https://codex.wordpress.org/Media_Library_Screen" target="_blank">Documentation on Media Library</a>' ) . '</p>' .
 	'<p>' . __( '<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 );
-
-get_current_screen()->set_screen_reader_content( array(
-	'heading_views'      => __( 'Filter media items list' ),
-	'heading_pagination' => __( 'Media items list navigation' ),
-	'heading_list'       => __( 'Media items list' ),
-) );
 
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>

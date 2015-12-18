@@ -19,13 +19,8 @@ if ( ! current_theme_supports( 'menus' ) && ! current_theme_supports( 'widgets' 
 	wp_die( __( 'Your theme does not support navigation menus or widgets.' ) );
 
 // Permissions Check
-if ( ! current_user_can( 'edit_theme_options' ) ) {
-	wp_die(
-		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
-		'<p>' . __( 'You are not allowed to edit theme options on this site.' ) . '</p>',
-		403
-	);
-}
+if ( ! current_user_can('edit_theme_options') )
+	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 
 wp_enqueue_script( 'nav-menu' );
 
@@ -72,7 +67,7 @@ switch ( $action ) {
 				// Set up the data we need in one pass through the array of menu items.
 				$dbids_to_orders = array();
 				$orders_to_dbids = array();
-				foreach ( (array) $ordered_menu_items as $ordered_menu_item_object ) {
+				foreach( (array) $ordered_menu_items as $ordered_menu_item_object ) {
 					if ( isset( $ordered_menu_item_object->ID ) ) {
 						if ( isset( $ordered_menu_item_object->menu_order ) ) {
 							$dbids_to_orders[$ordered_menu_item_object->ID] = $ordered_menu_item_object->menu_order;
@@ -145,7 +140,7 @@ switch ( $action ) {
 				// Set up the data we need in one pass through the array of menu items.
 				$dbids_to_orders = array();
 				$orders_to_dbids = array();
-				foreach ( (array) $ordered_menu_items as $ordered_menu_item_object ) {
+				foreach( (array) $ordered_menu_items as $ordered_menu_item_object ) {
 					if ( isset( $ordered_menu_item_object->ID ) ) {
 						if ( isset( $ordered_menu_item_object->menu_order ) ) {
 							$dbids_to_orders[$ordered_menu_item_object->ID] = $ordered_menu_item_object->menu_order;
@@ -465,7 +460,7 @@ if ( ! $nav_menu_selected_title && is_nav_menu( $nav_menu_selected_id ) ) {
 }
 
 // Generate truncated menu names.
-foreach ( (array) $nav_menus as $key => $_nav_menu ) {
+foreach( (array) $nav_menus as $key => $_nav_menu ) {
 	$nav_menus[$key]->truncated_name = wp_html_excerpt( $_nav_menu->name, 40, '&hellip;' );
 }
 
@@ -593,7 +588,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		?>
 	</h2>
 	<?php
-	foreach ( $messages as $message ) :
+	foreach( $messages as $message ) :
 		echo $message . "\n";
 	endforeach;
 	?>
@@ -673,7 +668,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 				<?php if ( $add_new_screen ) : ?>
 					<option value="0" selected="selected"><?php _e( '&mdash; Select &mdash;' ); ?></option>
 				<?php endif; ?>
-				<?php foreach ( (array) $nav_menus as $_nav_menu ) : ?>
+				<?php foreach( (array) $nav_menus as $_nav_menu ) : ?>
 					<option value="<?php echo esc_attr( $_nav_menu->term_id ); ?>" <?php selected( $_nav_menu->term_id, $nav_menu_selected_id ); ?>>
 						<?php
 						echo esc_html( $_nav_menu->truncated_name ) ;
@@ -798,15 +793,9 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 										<dt class="howto"><?php _e( 'Theme locations' ); ?></dt>
 										<?php foreach ( $locations as $location => $description ) : ?>
 										<dd class="checkbox-input">
-											<input type="checkbox"<?php checked( isset( $menu_locations[ $location ] ) && $menu_locations[ $location ] == $nav_menu_selected_id ); ?> name="menu-locations[<?php echo esc_attr( $location ); ?>]" id="locations-<?php echo esc_attr( $location ); ?>" value="<?php echo esc_attr( $nav_menu_selected_id ); ?>" />
-											<label for="locations-<?php echo esc_attr( $location ); ?>"><?php echo $description; ?></label>
+											<input type="checkbox"<?php checked( isset( $menu_locations[ $location ] ) && $menu_locations[ $location ] == $nav_menu_selected_id ); ?> name="menu-locations[<?php echo esc_attr( $location ); ?>]" id="locations-<?php echo esc_attr( $location ); ?>" value="<?php echo esc_attr( $nav_menu_selected_id ); ?>" /> <label for="locations-<?php echo esc_attr( $location ); ?>"><?php echo $description; ?></label>
 											<?php if ( ! empty( $menu_locations[ $location ] ) && $menu_locations[ $location ] != $nav_menu_selected_id ) : ?>
-												<span class="theme-location-set"><?php 
-													/* translators: %s: menu name */
-													printf( _x( '(Currently set to: %s)', 'menu location' ),
-														wp_get_nav_menu_object( $menu_locations[ $location ] )->name
-													);
-												?></span>
+											<span class="theme-location-set"> <?php printf( __( "(Currently set to: %s)" ), wp_get_nav_menu_object( $menu_locations[ $location ] )->name ); ?> </span>
 											<?php endif; ?>
 										</dd>
 										<?php endforeach; ?>

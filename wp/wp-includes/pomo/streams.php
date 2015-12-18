@@ -3,12 +3,12 @@
  * Classes, which help reading streams of data from files.
  * Based on the classes from Danilo Segan <danilo@kvota.net>
  *
- * @version $Id: streams.php 1157 2015-11-20 04:30:11Z dd32 $
+ * @version $Id: streams.php 718 2012-10-31 00:32:02Z nbachiyski $
  * @package pomo
  * @subpackage streams
  */
 
-if ( ! class_exists( 'POMO_Reader', false ) ):
+if ( !class_exists( 'POMO_Reader' ) ):
 class POMO_Reader {
 
 	var $endian = 'little';
@@ -134,7 +134,7 @@ class POMO_Reader {
 }
 endif;
 
-if ( ! class_exists( 'POMO_FileReader', false ) ):
+if ( !class_exists( 'POMO_FileReader' ) ):
 class POMO_FileReader extends POMO_Reader {
 
 	/**
@@ -204,7 +204,7 @@ class POMO_FileReader extends POMO_Reader {
 }
 endif;
 
-if ( ! class_exists( 'POMO_StringReader', false ) ):
+if ( !class_exists( 'POMO_StringReader' ) ):
 /**
  * Provides file-like methods for manipulating a string instead
  * of a physical file.
@@ -267,7 +267,7 @@ class POMO_StringReader extends POMO_Reader {
 }
 endif;
 
-if ( ! class_exists( 'POMO_CachedFileReader', false ) ):
+if ( !class_exists( 'POMO_CachedFileReader' ) ):
 /**
  * Reads the contents of the file in the beginning.
  */
@@ -292,7 +292,7 @@ class POMO_CachedFileReader extends POMO_StringReader {
 }
 endif;
 
-if ( ! class_exists( 'POMO_CachedIntFileReader', false ) ):
+if ( !class_exists( 'POMO_CachedIntFileReader' ) ):
 /**
  * Reads the contents of the file in the beginning.
  */

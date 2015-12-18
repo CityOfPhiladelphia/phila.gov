@@ -75,7 +75,6 @@
 		if ( typeof adminpage !== 'undefined' && ( adminpage === 'post-php' || adminpage === 'post-new-php' ) &&
 			typeof wp !== 'undefined' && wp.heartbeat ) {
 
-			$(document).off( 'heartbeat-tick.wp-auth-check' );
 			wp.heartbeat.connectNow();
 		}
 
