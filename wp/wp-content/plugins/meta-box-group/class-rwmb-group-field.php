@@ -1,4 +1,15 @@
 <?php
+/**
+ * Group field class.
+ * @package    Meta Box
+ * @subpackage Meta Box Group
+ */
+
+/**
+ * Class for group field.
+ * @package    Meta Box
+ * @subpackage Meta Box Group
+ */
 class RWMB_Group_Field extends RWMB_Field
 {
 	/**
@@ -17,6 +28,7 @@ class RWMB_Group_Field extends RWMB_Field
 	static function admin_enqueue_scripts()
 	{
 		wp_enqueue_style( 'rwmb-group', plugins_url( 'group.css', __FILE__ ) );
+		wp_enqueue_script( 'rwmb-group', plugins_url( 'group.js', __FILE__ ) );
 	}
 
 	/**
@@ -37,8 +49,9 @@ class RWMB_Group_Field extends RWMB_Field
 
 		foreach ( $field['fields'] as $child_field )
 		{
-			$child_field['field_name'] = self::child_field_name( $field['field_name'], $child_field['field_name'] );
+			$child_field['attributes']['name'] = $child_field['field_name'] = self::child_field_name( $field['field_name'], $child_field['field_name'] );
 			call_user_func( array( RW_Meta_Box::get_class_name( $child_field ), 'show' ), $child_field, RWMB_Group::$saved );
+			do_action( 'add_debug_info', $child_field['field_name'] );
 		}
 
 		// Remove filter to child field meta value and reset class's parent field's meta
@@ -60,12 +73,12 @@ class RWMB_Group_Field extends RWMB_Field
 	static function child_field_meta( $meta, $child_field, $saved )
 	{
 		$meta = '';
-		$id = $child_field['id'];
+		$id   = $child_field['id'];
 		if ( isset( self::$meta[$id] ) )
 		{
 			$meta = self::$meta[$id];
 		}
-		elseif ( !$saved && isset( $child_field['std'] ) )
+		elseif ( ! $saved && isset( $child_field['std'] ) )
 		{
 			$meta = $child_field['std'];
 		}
@@ -91,7 +104,7 @@ class RWMB_Group_Field extends RWMB_Field
 		$meta = get_post_meta( $post_id, $field['id'], true ); // Always save as single value
 
 		// Use $field['std'] only when the meta box hasn't been saved (i.e. the first time we run)
-		$meta = !$saved && '' === $meta ? $field['std'] : $meta;
+		$meta = ! $saved && '' === $meta ? $field['std'] : $meta;
 
 		// Make sure returned value is an array
 		if ( empty( $meta ) )
@@ -123,8 +136,8 @@ class RWMB_Group_Field extends RWMB_Field
 	 */
 	static function child_field_name( $parent, $child )
 	{
-		$pos = strpos( $child, '[' );
-		$pos = false === $pos ? strlen( $child ) : $pos;
+		$pos  = strpos( $child, '[' );
+		$pos  = false === $pos ? strlen( $child ) : $pos;
 		$name = $parent . '[' . substr( $child, 0, $pos ) . ']' . substr( $child, $pos );
 
 		return $name;
