@@ -24,7 +24,7 @@ window.wp = window.wp || {};
 	 * wp.revisions.log
 	 *
 	 * A debugging utility for revisions. Works only when a
-	 * debug flag is on and the browser supports it.
+	 * debug flag is on and the browser supports it.
 	 */
 	revisions.log = function() {
 		if ( window.console && revisions.debug ) {

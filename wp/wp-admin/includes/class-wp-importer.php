@@ -12,7 +12,7 @@ class WP_Importer {
 	/**
 	 * Returns array with imported permalinks from WordPress database
 	 *
-	 * @global wpdb $wpdb WordPress database abstraction object.
+	 * @global wpdb $wpdb
 	 *
 	 * @param string $importer_name
 	 * @param string $bid
@@ -52,7 +52,7 @@ class WP_Importer {
 	/**
 	 * Return count of imported permalinks from WordPress database
 	 *
-	 * @global wpdb $wpdb WordPress database abstraction object.
+	 * @global wpdb $wpdb
 	 *
 	 * @param string $importer_name
 	 * @param string $bid
@@ -81,7 +81,7 @@ class WP_Importer {
 	/**
 	 * Set array with imported comments from WordPress database
 	 *
-	 * @global wpdb $wpdb WordPress database abstraction object.
+	 * @global wpdb $wpdb
 	 *
 	 * @param string $bid
 	 * @return array

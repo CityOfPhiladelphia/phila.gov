@@ -58,8 +58,7 @@
 							ii === 1 && removedNodes.length === 1 &&
 							addedNodes[0].nodeType === 3 &&
 							removedNodes[0].nodeName === 'IMG' &&
-							addedNodes[0].data === removedNodes[0].alt &&
-							'load-failed' === removedNodes[0].getAttribute( 'data-error' )
+							addedNodes[0].data === removedNodes[0].alt
 						) {
 							return;
 						}
@@ -149,19 +148,13 @@
 							return false;
 					}
 
-					if ( ! settings.supports.flag && settings.supports.simple && settings.supports.unicode8 &&
+					if ( ! settings.supports.flag && settings.supports.simple &&
 						! /^1f1(?:e[6-9a-f]|f[0-9a-f])-1f1(?:e[6-9a-f]|f[0-9a-f])$/.test( icon ) ) {
 
 						return false;
 					}
 
 					return ''.concat( options.base, icon, options.ext );
-				},
-				onerror: function() {
-					if ( twemoji.parentNode ) {
-						this.setAttribute( 'data-error', 'load-failed' );
-						twemoji.parentNode.replaceChild( document.createTextNode( twemoji.alt ), twemoji );
-					}
 				}
 			};
 
@@ -178,7 +171,7 @@
 		 * Initialize our emoji support, and set up listeners.
 		 */
 		if ( settings ) {
-			replaceEmoji = ! settings.supports.simple || ! settings.supports.flag || ! settings.supports.unicode8;
+			replaceEmoji = ! settings.supports.simple || ! settings.supports.flag;
 
 			if ( settings.DOMReady ) {
 				load();

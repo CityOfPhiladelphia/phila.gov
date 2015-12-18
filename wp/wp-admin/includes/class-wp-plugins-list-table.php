@@ -1,19 +1,11 @@
 <?php
 /**
- * List Table API: WP_Plugins_List_Table class
+ * Plugins List Table class.
  *
  * @package WordPress
- * @subpackage Administration
- * @since 3.1.0
- */
-
-/**
- * Core class used to implement displaying installed plugins in a list table.
- *
+ * @subpackage List_Table
  * @since 3.1.0
  * @access private
- *
- * @see WP_List_Table
  */
 class WP_Plugins_List_Table extends WP_List_Table {
 
@@ -135,41 +127,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			}
 		}
 
-		if ( ! $screen->in_admin( 'network' ) ) {
-			$show = current_user_can( 'manage_network_plugins' );
-			/**
-			 * Filter whether to display network-active plugins alongside plugins active for the current site.
-			 *
-			 * This also controls the display of inactive network-only plugins (plugins with
-			 * "Network: true" in the plugin header).
-			 *
-			 * Plugins cannot be network-activated or network-deactivated from this screen.
-			 *
-			 * @since 4.4.0
-			 *
-			 * @param bool $show Whether to show network-active plugins. Default is whether the current
-			 *                   user can manage network plugins (ie. a Super Admin).
-			 */
-			$show_network_active = apply_filters( 'show_network_active_plugins', $show );
-		}
-
 		set_transient( 'plugin_slugs', array_keys( $plugins['all'] ), DAY_IN_SECONDS );
 
-		if ( $screen->in_admin( 'network' ) ) {
-			$recently_activated = get_site_option( 'recently_activated', array() );
-		} else {
+		if ( ! $screen->in_admin( 'network' ) ) {
 			$recently_activated = get_option( 'recently_activated', array() );
-		}
 
-		foreach ( $recently_activated as $key => $time ) {
-			if ( $time + WEEK_IN_SECONDS < time() ) {
-				unset( $recently_activated[$key] );
-			}
-		}
-
-		if ( $screen->in_admin( 'network' ) ) {
-			update_site_option( 'recently_activated', $recently_activated );
-		} else {
+			foreach ( $recently_activated as $key => $time )
+				if ( $time + WEEK_IN_SECONDS < time() )
+					unset( $recently_activated[$key] );
 			update_option( 'recently_activated', $recently_activated );
 		}
 
@@ -194,29 +159,19 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 			// Filter into individual sections
 			if ( is_multisite() && ! $screen->in_admin( 'network' ) && is_network_only_plugin( $plugin_file ) && ! is_plugin_active( $plugin_file ) ) {
-				if ( $show_network_active ) {
-					// On the non-network screen, show inactive network-only plugins if allowed
-					$plugins['inactive'][ $plugin_file ] = $plugin_data;
-				} else {
-					// On the non-network screen, filter out network-only plugins as long as they're not individually active
-					unset( $plugins['all'][ $plugin_file ] );
-				}
+				// On the non-network screen, filter out network-only plugins as long as they're not individually activated
+				unset( $plugins['all'][ $plugin_file ] );
 			} elseif ( ! $screen->in_admin( 'network' ) && is_plugin_active_for_network( $plugin_file ) ) {
-				if ( $show_network_active ) {
-					// On the non-network screen, show network-active plugins if allowed
-					$plugins['active'][ $plugin_file ] = $plugin_data;
-				} else {
-					// On the non-network screen, filter out network-active plugins
-					unset( $plugins['all'][ $plugin_file ] );
-				}
+				// On the non-network screen, filter out network activated plugins
+				unset( $plugins['all'][ $plugin_file ] );
 			} elseif ( ( ! $screen->in_admin( 'network' ) && is_plugin_active( $plugin_file ) )
 				|| ( $screen->in_admin( 'network' ) && is_plugin_active_for_network( $plugin_file ) ) ) {
 				// On the non-network screen, populate the active list with plugins that are individually activated
 				// On the network-admin screen, populate the active list with plugins that are network activated
 				$plugins['active'][ $plugin_file ] = $plugin_data;
 			} else {
-				if ( isset( $recently_activated[ $plugin_file ] ) ) {
-					// Populate the recently activated list with plugins that have been recently activated
+				if ( ! $screen->in_admin( 'network' ) && isset( $recently_activated[ $plugin_file ] ) ) {
+					// On the non-network screen, populate the recently activated list with plugins that have been recently activated
 					$plugins['recently_activated'][ $plugin_file ] = $plugin_data;
 				}
 				// Populate the inactive list with plugins that aren't activated
@@ -302,7 +257,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		if ( $a == $b )
 			return 0;
 
-		if ( 'DESC' === $order ) {
+		if ( 'DESC' == $order ) {
 			return strcasecmp( $b, $a );
 		} else {
 			return strcasecmp( $a, $b );
@@ -382,10 +337,10 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					break;
 			}
 
-			if ( 'search' !== $type ) {
+			if ( 'search' != $type ) {
 				$status_links[$type] = sprintf( "<a href='%s' %s>%s</a>",
 					add_query_arg('plugin_status', $type, 'plugins.php'),
-					( $type === $status ) ? ' class="current"' : '',
+					( $type == $status ) ? ' class="current"' : '',
 					sprintf( $text, number_format_i18n( $count ) )
 					);
 			}
@@ -445,19 +400,13 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		echo '<div class="alignleft actions">';
 
-		if ( 'recently_activated' == $status ) {
+		if ( ! $this->screen->in_admin( 'network' ) && 'recently_activated' == $status )
 			submit_button( __( 'Clear List' ), 'button', 'clear-recent-list', false );
-		} elseif ( 'top' === $which && 'mustuse' === $status ) {
-			/* translators: %s: mu-plugins directory name */
-			echo '<p>' . sprintf( __( 'Files in the %s directory are executed automatically.' ),
-				'<code>' . str_replace( ABSPATH, '/', WPMU_PLUGIN_DIR ) . '</code>'
-			) . '</p>';
-		} elseif ( 'top' === $which && 'dropins' === $status ) {
-			/* translators: %s: wp-content directory name */
-			echo '<p>' . sprintf( __( 'Drop-ins are advanced plugins in the %s directory that replace WordPress functionality when present.' ),
-				'<code>' . str_replace( ABSPATH, '', WP_CONTENT_DIR ) . '</code>'
-			) . '</p>';
-		}
+		elseif ( 'top' == $which && 'mustuse' == $status )
+			echo '<p>' . sprintf( __( 'Files in the <code>%s</code> directory are executed automatically.' ), str_replace( ABSPATH, '/', WPMU_PLUGIN_DIR ) ) . '</p>';
+		elseif ( 'top' == $which && 'dropins' == $status )
+			echo '<p>' . sprintf( __( 'Drop-ins are advanced plugins in the <code>%s</code> directory that replace WordPress functionality when present.' ), str_replace( ABSPATH, '', WP_CONTENT_DIR ) ) . '</p>';
+
 		echo '</div>';
 	}
 
@@ -509,13 +458,9 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			'delete' => '',
 		);
 
-		// Do not restrict by default
-		$restrict_network_active = false;
-		$restrict_network_only = false;
-
-		if ( 'mustuse' === $context ) {
+		if ( 'mustuse' == $context ) {
 			$is_active = true;
-		} elseif ( 'dropins' === $context ) {
+		} elseif ( 'dropins' == $context ) {
 			$dropins = _get_dropins();
 			$plugin_name = $plugin_file;
 			if ( $plugin_file != $plugin_data['Name'] )
@@ -528,23 +473,15 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				$description = '<p><strong>' . $dropins[ $plugin_file ][0] . '</strong></p>';
 			} else {
 				$is_active = false;
-				$description = '<p><strong>' . $dropins[ $plugin_file ][0] . ' <span class="error-message">' . __( 'Inactive:' ) . '</span></strong> ' .
-					/* translators: 1: drop-in constant name, 2: wp-config.php */
-					sprintf( __( 'Requires %1$s in %2$s file.' ),
-						"<code>define('" . $dropins[ $plugin_file ][1] . "', true);</code>",
-						'<code>wp-config.php</code>'
-					) . '</p>';
+				$description = '<p><strong>' . $dropins[ $plugin_file ][0] . ' <span class="error-message">' . __('Inactive:') . '</span></strong> ' . sprintf( __( 'Requires <code>%s</code> in <code>wp-config.php</code>.' ), "define('" . $dropins[ $plugin_file ][1] . "', true);" ) . '</p>';
 			}
 			if ( $plugin_data['Description'] )
 				$description .= '<p>' . $plugin_data['Description'] . '</p>';
 		} else {
-			if ( $screen->in_admin( 'network' ) ) {
+			if ( $screen->in_admin( 'network' ) )
 				$is_active = is_plugin_active_for_network( $plugin_file );
-			} else {
+			else
 				$is_active = is_plugin_active( $plugin_file );
-				$restrict_network_active = ( is_multisite() && is_plugin_active_for_network( $plugin_file ) );
-				$restrict_network_only = ( is_multisite() && is_network_only_plugin( $plugin_file ) && ! $is_active );
-			}
 
 			if ( $screen->in_admin( 'network' ) ) {
 				if ( $is_active ) {
@@ -563,15 +500,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					}
 				}
 			} else {
-				if ( $restrict_network_active ) {
-					$actions = array(
-						'network_active' => __( 'Network Active' ),
-					);
-				} elseif ( $restrict_network_only ) {
-					$actions = array(
-						'network_only' => __( 'Network Only' ),
-					);
-				} elseif ( $is_active ) {
+				if ( $is_active ) {
 					/* translators: %s: plugin name */
 					$actions['deactivate'] = '<a href="' . wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . $plugin_file . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'deactivate-plugin_' . $plugin_file ) . '" aria-label="' . esc_attr( sprintf( __( 'Deactivate %s' ), $plugin_data['Name'] ) ) . '">' . __( 'Deactivate' ) . '</a>';
 				} else {
@@ -592,90 +521,59 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			}
 		} // end if $context
 
-		$actions = array_filter( $actions );
+		$prefix = $screen->in_admin( 'network' ) ? 'network_admin_' : '';
 
-		if ( $screen->in_admin( 'network' ) ) {
+		/**
+		 * Filter the action links displayed for each plugin in the Plugins list table.
+		 *
+		 * The dynamic portion of the hook name, `$prefix`, refers to the context the
+		 * action links are displayed in. The 'network_admin_' prefix is used if the
+		 * current screen is the Network plugins list table. The prefix is empty ('')
+		 * if the current screen is the site plugins list table.
+		 *
+		 * The default action links for the Network plugins list table include
+		 * 'Network Activate', 'Network Deactivate', 'Edit', and 'Delete'.
+		 *
+		 * The default action links for the site plugins list table include
+		 * 'Activate', 'Deactivate', and 'Edit', for a network site, and
+		 * 'Activate', 'Deactivate', 'Edit', and 'Delete' for a single site.
+		 *
+		 * @since 2.5.0
+		 *
+		 * @param array  $actions     An array of plugin action links.
+		 * @param string $plugin_file Path to the plugin file.
+		 * @param array  $plugin_data An array of plugin data.
+		 * @param string $context     The plugin context. Defaults are 'All', 'Active',
+		 *                            'Inactive', 'Recently Activated', 'Upgrade',
+		 *                            'Must-Use', 'Drop-ins', 'Search'.
+		 */
+		$actions = apply_filters( $prefix . 'plugin_action_links', array_filter( $actions ), $plugin_file, $plugin_data, $context );
 
-			/**
-			 * Filter the action links displayed for each plugin in the Network Admin Plugins list table.
-			 *
-			 * The default action links for the Network plugins list table include
-			 * 'Network Activate', 'Network Deactivate', 'Edit', and 'Delete'.
-			 *
-			 * @since 3.1.0 As `{$prefix}_plugin_action_links`
-			 * @since 4.4.0
-			 *
-			 * @param array  $actions     An array of plugin action links.
-			 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
-			 * @param array  $plugin_data An array of plugin data.
-			 * @param string $context     The plugin context. Defaults are 'All', 'Active',
-			 *                            'Inactive', 'Recently Activated', 'Upgrade',
-			 *                            'Must-Use', 'Drop-ins', 'Search'.
-			 */
-			$actions = apply_filters( 'network_admin_plugin_action_links', $actions, $plugin_file, $plugin_data, $context );
-
-			/**
-			 * Filter the list of action links displayed for a specific plugin in the Network Admin Plugins list table.
-			 *
-			 * The dynamic portion of the hook name, $plugin_file, refers to the path
-			 * to the plugin file, relative to the plugins directory.
-			 *
-			 * @since 3.1.0 As `{$prefix}_plugin_action_links_{$plugin_file}`
-			 * @since 4.4.0
-			 *
-			 * @param array  $actions     An array of plugin action links.
-			 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
-			 * @param array  $plugin_data An array of plugin data.
-			 * @param string $context     The plugin context. Defaults are 'All', 'Active',
-			 *                            'Inactive', 'Recently Activated', 'Upgrade',
-			 *                            'Must-Use', 'Drop-ins', 'Search'.
-			 */
-			$actions = apply_filters( "network_admin_plugin_action_links_{$plugin_file}", $actions, $plugin_file, $plugin_data, $context );
-
-		} else {
-
-			/**
-			 * Filter the action links displayed for each plugin in the Plugins list table.
-			 *
-			 * The default action links for the site plugins list table include
-			 * 'Activate', 'Deactivate', and 'Edit', for a network site, and
-			 * 'Activate', 'Deactivate', 'Edit', and 'Delete' for a single site.
-			 *
-			 * @since 2.5.0 As `{$prefix}_plugin_action_links`
-			 * @since 4.4.0
-			 *
-			 * @param array  $actions     An array of plugin action links.
-			 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
-			 * @param array  $plugin_data An array of plugin data.
-			 * @param string $context     The plugin context. Defaults are 'All', 'Active',
-			 *                            'Inactive', 'Recently Activated', 'Upgrade',
-			 *                            'Must-Use', 'Drop-ins', 'Search'.
-			 */
-			$actions = apply_filters( 'plugin_action_links', $actions, $plugin_file, $plugin_data, $context );
-
-			/**
-			 * Filter the list of action links displayed for a specific plugin in the Plugins list table.
-			 *
-			 * The dynamic portion of the hook name, $plugin_file, refers to the path
-			 * to the plugin file, relative to the plugins directory.
-			 *
-			 * @since 2.7.0 As `{$prefix}_plugin_action_links_{$plugin_file}`
-			 * @since 4.4.0
-			 *
-			 * @param array  $actions     An array of plugin action links.
-			 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
-			 * @param array  $plugin_data An array of plugin data.
-			 * @param string $context     The plugin context. Defaults are 'All', 'Active',
-			 *                            'Inactive', 'Recently Activated', 'Upgrade',
-			 *                            'Must-Use', 'Drop-ins', 'Search'.
-			 */
-			$actions = apply_filters( "plugin_action_links_{$plugin_file}", $actions, $plugin_file, $plugin_data, $context );
-
-		}
+		/**
+		 * Filter the list of action links displayed for a specific plugin.
+		 *
+		 * The first dynamic portion of the hook name, $prefix, refers to the context
+		 * the action links are displayed in. The 'network_admin_' prefix is used if the
+		 * current screen is the Network plugins list table. The prefix is empty ('')
+		 * if the current screen is the site plugins list table.
+		 *
+		 * The second dynamic portion of the hook name, $plugin_file, refers to the path
+		 * to the plugin file, relative to the plugins directory.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param array  $actions     An array of plugin action links.
+		 * @param string $plugin_file Path to the plugin file.
+		 * @param array  $plugin_data An array of plugin data.
+		 * @param string $context     The plugin context. Defaults are 'All', 'Active',
+		 *                            'Inactive', 'Recently Activated', 'Upgrade',
+		 *                            'Must-Use', 'Drop-ins', 'Search'.
+		 */
+		$actions = apply_filters( $prefix . "plugin_action_links_$plugin_file", $actions, $plugin_file, $plugin_data, $context );
 
 		$class = $is_active ? 'active' : 'inactive';
 		$checkbox_id =  "checkbox_" . md5($plugin_data['Name']);
-		if ( $restrict_network_active || $restrict_network_only || in_array( $status, array( 'mustuse', 'dropins' ) ) ) {
+		if ( in_array( $status, array( 'mustuse', 'dropins' ) ) ) {
 			$checkbox = '';
 		} else {
 			$checkbox = "<label class='screen-reader-text' for='" . $checkbox_id . "' >" . sprintf( __( 'Select %s' ), $plugin_data['Name'] ) . "</label>"

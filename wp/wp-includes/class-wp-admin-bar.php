@@ -1,16 +1,11 @@
 <?php
 /**
- * Toolbar API: WP_Admin_Bar class
+ * The WordPress Toolbar
+ *
+ * @since 3.1.0
  *
  * @package WordPress
  * @subpackage Toolbar
- * @since 3.1.0
- */
-
-/**
- * Core class used to implement the Toolbar API.
- *
- * @since 3.1.0
  */
 class WP_Admin_Bar {
 	private $nodes = array();

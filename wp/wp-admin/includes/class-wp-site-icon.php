@@ -1,14 +1,6 @@
 <?php
 /**
- * Administration API: WP_Site_Icon class
- *
- * @package WordPress
- * @subpackage Administration
- * @since 4.3.0
- */
-
-/**
- * Core class used to implement site icon functionality.
+ * Class for implementing site icon functionality.
  *
  * @since 4.3.0
  */
@@ -88,7 +80,7 @@ class WP_Site_Icon {
 	 */
 	public function create_attachment_object( $cropped, $parent_attachment_id ) {
 		$parent     = get_post( $parent_attachment_id );
-		$parent_url = wp_get_attachment_url( $parent->ID );
+		$parent_url = $parent->guid;
 		$url        = str_replace( basename( $parent_url ), basename( $cropped ), $parent_url );
 
 		$size       = @getimagesize( $cropped );
@@ -229,12 +221,10 @@ class WP_Site_Icon {
 	 * @return array|null|string The attachment metadata value, array of values, or null.
 	 */
 	public function get_post_metadata( $value, $post_id, $meta_key, $single ) {
-		if ( $single && '_wp_attachment_backup_sizes' === $meta_key ) {
-			$site_icon_id = get_option( 'site_icon' );
+		$site_icon_id = get_option( 'site_icon' );
 
-			if ( $post_id == $site_icon_id ) {
-				add_filter( 'intermediate_image_sizes', array( $this, 'intermediate_image_sizes' ) );
-			}
+		if ( $post_id == $site_icon_id && '_wp_attachment_backup_sizes' == $meta_key && $single ) {
+			add_filter( 'intermediate_image_sizes', array( $this, 'intermediate_image_sizes' ) );
 		}
 
 		return $value;
