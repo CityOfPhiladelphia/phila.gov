@@ -1,35 +1,36 @@
 <?php
-/*
-Plugin Name: Meta Box Group
-Plugin URI: http://metabox.io/plugins/meta-box-group/
-Description: Add-on for meta box plugin, allows you to add field type 'group' which put child fields into 1 group which are displayed/accessed easier and can be cloneable.
-Version: 1.0.1
-Author: Rilwis
-Author URI: http://metabox.io
-License: GPL2+
-*/
+/**
+ * Plugin Name: Meta Box Group
+ * Plugin URI: https://metabox.io/plugins/meta-box-group/
+ * Description: Add-on for meta box plugin, allows you to add field type 'group' which put child fields into 1 group which are displayed/accessed easier and can be cloneable.
+ * Version: 1.0.4
+ * Author: Rilwis
+ * Author URI: http://metabox.io
+ * License: GPL2+
+ */
 
 // Prevent loading this file directly
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Extension main class.
+ */
 class RWMB_Group
 {
 	/**
-	 * Indicate that the meta box is saved or not
-	 * This variable is used inside group field to show child fields
+	 * Indicate that the meta box is saved or not.
+	 * This variable is used inside group field to show child fields.
 	 *
 	 * @var bool
 	 */
 	static $saved = false;
 
 	/**
-	 * Add hooks to meta box
-	 *
-	 * @return RWMB_Group
+	 * Add hooks to meta box.
 	 */
-	function __construct()
+	public function __construct()
 	{
-		if ( !is_admin() )
+		if ( ! is_admin() )
 			return;
 
 		// Make sure Meta Box files are loaded, because we extend base field class
@@ -40,36 +41,31 @@ class RWMB_Group
 	}
 
 	/**
-	 * Load field group class
-	 *
-	 * @return array
+	 * Load field group class.
 	 */
-	function load_files()
+	public function load_files()
 	{
 		if ( class_exists( 'RWMB_Field' ) && ! class_exists( 'RWMB_Group_Field' ) )
+		{
 			require_once plugin_dir_path( __FILE__ ) . 'class-rwmb-group-field.php';
+		}
 	}
 
 	/**
-	 * Check if current meta box is saved
-	 * This variable is used inside group field to show child fields
+	 * Check if current meta box is saved.
+	 * This variable is used inside group field to show child fields.
 	 *
-	 * @param $obj
-	 *
-	 * @return void
+	 * @param RW_Meta_Box $obj Meta Box object
 	 */
-	function set_saved( $obj )
+	public function set_saved( RW_Meta_Box $obj )
 	{
-		global $post;
-		self::$saved = RW_Meta_Box::has_been_saved( $post->ID, $obj->fields );
+		self::$saved = $obj->is_saved();
 	}
 
 	/**
-	 * Unset 'saved' variable, to be ready for next meta box
-	 *
-	 * @return void
+	 * Unset 'saved' variable, to be ready for next meta box.
 	 */
-	function unset_saved()
+	public function unset_saved()
 	{
 		self::$saved = false;
 	}
