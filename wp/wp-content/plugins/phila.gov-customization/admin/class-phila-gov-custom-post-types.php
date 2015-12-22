@@ -224,7 +224,7 @@ class Phila_Gov_Custom_Post_Types{
             'not_found_in_trash'   => __( 'Post not found in trash' ),
         ),
         'taxonomies' => array('category', 'post_tag'),
-        'supports' => array( 'editor', 'title', 'revisions', 'featured-image'),
+        'supports' => array( 'editor', 'title', 'revisions', 'thumbnail'),
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-admin-post',
