@@ -253,7 +253,7 @@ function the_breadcrumb() {
 
     } elseif ( is_post_type_archive('department_page' ) ) {
 
-          echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
+        echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
 
     } elseif ( ( is_post_type_archive('news_post') && is_tax('topics') ) ) {
 
@@ -272,7 +272,14 @@ function the_breadcrumb() {
 
         echo '<li>News</li>';
 
-    } elseif(is_post_type_archive( 'phila_post' )) {
+    }elseif ( is_post_type_archive('phila_post') && is_category() )  {
+
+        echo '<li><a href="/posts">Posts</a></li>';
+        $category = get_the_category($post->ID);
+
+        echo '<li>' . $category[0]->name . '</li>';
+
+    } elseif( is_post_type_archive( 'phila_post' ) ) {
 
         echo '<li>Posts</li>';
 
