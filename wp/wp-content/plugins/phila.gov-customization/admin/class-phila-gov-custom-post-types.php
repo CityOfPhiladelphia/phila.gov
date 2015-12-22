@@ -16,6 +16,8 @@ if ( class_exists("Phila_Gov_Custom_Post_Types" ) ){
 class Phila_Gov_Custom_Post_Types{
 
   public function __construct(){
+    add_action( 'init', array( $this, 'create_phila_posts_post_type' ) );
+
     add_action( 'init', array( $this, 'create_services_post_type' ) );
 
     add_action( 'init', array( $this, 'create_news_post_type' ) );
@@ -51,7 +53,6 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array( 'title', 'editor', 'revisions' ),
         'public' => true,
         'has_archive' => false,
-        'menu_position' => 5,
         'menu_icon' => 'dashicons-groups',
         'hierarchical' => false,
         'rewrite' => array(
@@ -83,7 +84,6 @@ class Phila_Gov_Custom_Post_Types{
         'public' => true,
         'has_archive' => true,
         'show_in_nav_menus' => true,
-        'menu_position' => 5,
         'menu_icon' => 'dashicons-groups',
         'hierarchical' => true,
         'query_var' => true,
@@ -113,7 +113,6 @@ class Phila_Gov_Custom_Post_Types{
       'taxonomies' => array('category', 'topics'),
       'public' => true,
       'has_archive' => true,
-      'menu_position' => 6,
       'menu_icon' => 'dashicons-media-document',
       'hierarchical' => false,
       'supports'  => array('title','editor','thumbnail', 'revisions'),
@@ -143,7 +142,6 @@ class Phila_Gov_Custom_Post_Types{
         'exclude_from_search' => true,
         'public' => true,
         'has_archive' => false,
-        'menu_position' => 5,
         'menu_icon' => 'dashicons-megaphone',
         'hierarchical' => false,
         'rewrite' => array(
@@ -173,7 +171,6 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array( 'title', 'revisions'),
         'public' => true,
         'has_archive' => true,
-        'menu_position' => 5,
         'menu_icon' => 'dashicons-media-text',
         'hierarchical' => false,
         'rewrite' => array(
@@ -202,11 +199,38 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array( 'editor', 'title', 'revisions'),
         'public' => true,
         'has_archive' => true,
-        'menu_position' => 4,
         'menu_icon' => 'dashicons-warning',
         'hierarchical' => false,
         'rewrite' => array(
             'slug' => 'notices',
+            'with_front' => false,
+        ),
+      )
+    );
+  }
+  function create_phila_posts_post_type() {
+    register_post_type( 'phila_post',
+      array(
+        'labels' => array(
+            'name' => __( 'Blog' ),
+            'singular_name' => __( 'Posts' ),
+            'add_new'   => __( 'Add Post' ),
+            'all_items'   => __( 'All Posts' ),
+            'add_new_item' => __( 'Add New Post' ),
+            'edit_item'   => __( 'Edit Post' ),
+            'view_item'   => __( 'View Post' ),
+            'search_items'   => __( 'Search Posts' ),
+            'not_found'   => __( 'Post Not Found' ),
+            'not_found_in_trash'   => __( 'Post not found in trash' ),
+        ),
+        'taxonomies' => array('category', 'post_tag'),
+        'supports' => array( 'editor', 'title', 'revisions', 'featured-image'),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-admin-post',
+        'hierarchical' => false,
+        'rewrite' => array(
+            'slug' => 'posts',
             'with_front' => false,
         ),
       )
