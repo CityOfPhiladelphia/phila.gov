@@ -261,113 +261,101 @@ function the_breadcrumb() {
 
         echo '<li>'. $term_obj->name . '</li>';
 
-      } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
+    } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
 
-          echo '<li><a href="/news">News</a></li>';
-          $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
-
-      } elseif ( is_post_type_archive('news_post') ) {
-
-          echo '<li>News</li>';
-
-      } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
-
-        echo '<li><a href="/notices">Notices</a></li>';
-
+        echo '<li><a href="/news">News</a></li>';
         $category = get_the_category($post->ID);
 
         echo '<li>' . $category[0]->name . '</li>';
 
-      } elseif ( is_post_type_archive('notices') ) {
+    } elseif ( is_post_type_archive('news_post') ) {
 
-        echo '<li>Notices</li>';
+        echo '<li>News</li>';
 
-      } elseif ( is_singular('site_wide_alert') ) {
+    } elseif(is_post_type_archive( 'phila_post' )) {
+
+        echo '<li>Posts</li>';
+
+    } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
+
+      echo '<li><a href="/notices">Notices</a></li>';
+
+      $category = get_the_category($post->ID);
+
+      echo '<li>' . $category[0]->name . '</li>';
+
+    } elseif ( is_post_type_archive('notices') ) {
+
+      echo '<li>Notices</li>';
+
+    } elseif ( is_singular('site_wide_alert') ) {
+
+      echo '<li>';
+      the_title();
+      echo '</li>';
+
+    } elseif ( is_singular('department_page') ) {
+
+      $anc = get_post_ancestors( $post->ID );
+      $title = get_the_title();
+
+      foreach ( $anc as $ancestor ) {
+
+        $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
+      }
+      echo $output;
+      echo '<li> '.$title.'</li>';
+
+    } elseif ( is_singular('service_post') || is_single() ){
 
         echo '<li>';
         the_title();
         echo '</li>';
 
-      } elseif ( is_singular('department_page') ) {
+    } elseif ( is_tax('topics') ) {
 
-        $anc = get_post_ancestors( $post->ID );
-        $title = get_the_title();
-        foreach ( $anc as $ancestor ) {
+      //BROWSE
+      $taxonomy = 'topics';
+      $queried_term = get_query_var($taxonomy);
+      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
 
-          $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
-            }
-          echo $output;
-          echo '<li> '.$title.'</li>';
+      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
+      $parent = get_term($term->parent, $taxonomy);
 
-        }  elseif ( is_singular('service_post') || is_single() ){
-          //service/info pages
-          /*$i = 0;
-          $topic_terms = wp_get_object_terms( $post->ID,  'topics', array('orderby'=>'term_group') );
-          $topic_parent = $topic_terms[0];
-          $child_term = get_term_children($topic_parent->term_id, 'topics');
-          var_dump($child_term);
-          $my_term = get_term_by( 'id', $child_term, 'topics' );
-          var_dump($my_term);
-          if ( ! empty( $topic_terms ) ) {
-            if ( ! is_wp_error( $topic_terms ) ) {
-              foreach( $topic_terms as $term ) {
-                  if ( $i == 0 ) {
-                    echo '<li><a href=/browse/' . $topic_parent->slug . '>' . $topic_parent->name . '</a>halp</li>';
-                  }elseif ( $i == 1 ){
-                    echo '<li><a href=/browse/' . $topic_parent->slug . '/' .  $my_term->slug . '>' . $my_term->name . '</a></li>';
-                  }
-                $i++;
-              }
-            }
-          }//end if empty
-          */
-          echo '<li>';
-          the_title();
-          echo '</li>';
+      if ( ! is_wp_error( $parent ) ) :
+        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
+      endif;
 
-      } elseif ( is_tax('topics') ) {
-        //BROWSE
-        $taxonomy = 'topics';
-        $queried_term = get_query_var($taxonomy);
-        $term_obj = get_term_by( 'slug', $queried_term, 'topics');
-
-        $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
-        $parent = get_term($term->parent, $taxonomy);
-
-        if ( ! is_wp_error( $parent ) ) :
-          echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
-        endif;
-
-        if ( ! is_wp_error( $parent ) ) :
-          echo '<li>' . $term_obj->name . '</li>';
-        else :
-          echo '<li>'. $term_obj->name . '</li>';
-        endif;
-
+      if ( ! is_wp_error( $parent ) ) :
+        echo '<li>' . $term_obj->name . '</li>';
+      else :
+        echo '<li>'. $term_obj->name . '</li>';
+      endif;
 
     } elseif ( is_page() ) {
 
-        if( $post->post_parent ){
-          //$anc = array_reverse(get_post_ancestors( $post->ID ));
-          $anc = get_post_ancestors( $post->ID );
-          $title = get_the_title();
-          foreach ( $anc as $ancestor ) {
-            $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
-          }
-          echo $output;
-          echo '<li>'.$title.'</li>';
-        } else {
-            echo '<li>'.get_the_title().'</li>';
-          }
+      if( $post->post_parent ){
+
+        //$anc = array_reverse(get_post_ancestors( $post->ID ));
+        $anc = get_post_ancestors( $post->ID );
+        $title = get_the_title();
+        foreach ( $anc as $ancestor ) {
+          $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
+        }
+        echo $output;
+        echo '<li>'.$title.'</li>';
+
+      } else {
+          echo '<li>'.get_the_title().'</li>';
+      }
 
     } elseif( is_tag() ){
+
       echo '<li><a href="/posts">Posts</a></li>';
       echo '<li>';
        '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
 
-    }elseif( is_archive() && is_category() ){
+    } elseif( is_archive() && is_category() ){
 
       $categories = get_the_category($post->ID);
 
@@ -375,13 +363,15 @@ function the_breadcrumb() {
       if ( !$categories == 0 ) {
         echo '<li>' . $categories[0]->name . '</li>';
       }
-    }elseif ( is_author() ) {
+    } elseif ( is_author() ) {
+
       echo '<li><a href="/posts">Posts</a></li>';
       echo '<li>';
         printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
       echo '</li>';
 
     } elseif ( is_category() ) {
+
         echo '<li>';
         the_title();
         echo '</li>';
