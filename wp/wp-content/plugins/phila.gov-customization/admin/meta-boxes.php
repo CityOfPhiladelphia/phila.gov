@@ -195,7 +195,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'post-description',
     'title'    => 'Post Summary',
-    'pages'    => array( 'post' ),
+    'pages'    => array( 'phila_post' ),
     'context'  => 'normal',
     'priority' => 'high',
 
