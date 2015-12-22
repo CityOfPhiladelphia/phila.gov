@@ -16,14 +16,19 @@ get_header(); ?>
       <header class="columns">
         <h1>
           <?php
+            $post = get_post_type();
+
             if ( is_category() ) :
-              $post = get_post_type( );
-                if ( $post == 'phila_post' ) :
-                  _e('Posts | ');
-                  single_cat_title();
-                else:
-                  single_cat_title();
-                endif;
+              if ( $post == 'phila_post' ) :
+                _e('Posts | ');
+                single_cat_title();
+              else:
+                single_cat_title();
+              endif;
+
+              elseif ( $post == 'phila_post' ) :
+                  _e('Posts');
+
               elseif ( is_tag() ) :
                '<span>' . single_tag_title('Tagged in: ') . '</span>';
 
