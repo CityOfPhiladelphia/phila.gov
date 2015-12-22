@@ -18,7 +18,7 @@ get_header(); ?>
           <?php
             if ( is_category() ) :
               $post = get_post_type( );
-                if ( $post == 'post' ) :
+                if ( $post == 'phila_post' ) :
                   _e('Posts | ');
                   single_cat_title();
                 else:

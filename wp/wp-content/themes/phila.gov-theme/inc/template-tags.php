@@ -107,7 +107,7 @@ if ( ! function_exists( 'phila_gov_entry_footer' ) ) :
  */
 function phila_gov_entry_footer() {
   // Hide category and tag text for pages.
-  if ( 'post' == get_post_type() ) {
+  if ( 'phila_post' == get_post_type() ) {
     /* translators: used between list items, there is a space after the comma */
     $tags_list = get_the_tag_list( '', __( ', ', 'phila-gov' ) );
     if ( $tags_list ) {
