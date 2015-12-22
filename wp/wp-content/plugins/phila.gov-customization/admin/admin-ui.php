@@ -78,3 +78,9 @@ function phila_reorder_meta_boxes() {
   do_meta_boxes(get_current_screen(), 'advanced', $post);
   unset($wp_meta_boxes[get_post_type($post)]['advanced']);
 }
+
+add_action( 'admin_bar_menu', 'remove_add_new', 999 );
+
+function remove_add_new( $wp_admin_bar ) {
+	$wp_admin_bar->remove_node( 'new-content' );
+}

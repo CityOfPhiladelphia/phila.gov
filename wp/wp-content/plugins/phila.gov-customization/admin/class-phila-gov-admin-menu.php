@@ -27,17 +27,25 @@ class Phila_Gov_Admin_Menu {
 
  }
 
-  function admin_menu_order($menu_ord) {
+  function admin_menu_order( $menu_ord ) {
 
-    if (!$menu_ord) return true;
-
+    if ( !$menu_ord ){
+      return true;
+    }
     return array(
-        'index.php', // Dashboard
-        'separator1', // First separator
-        'edit.php', // Posts
-        'edit.php?post_type=service_post', // Links
-        'edit.php?post_type=page', // Pages
-        'upload.php', // Media
+        'index.php',
+        'edit.php?post_type=service_post',
+        'edit.php?post_type=page',
+        'separator1',
+        'edit.php?post_type=department_page',
+        'edit.php?post_type=phila_post',
+        'edit.php?post_type=news_post',
+        'edit.php?post_type=document',
+        'upload.php',
+        'edit.php?post_type=notices',
+        'edit.php?post_type=site_wide_alert',
+        'edit.php?post_type=calendar',
+        'separator2',
     );
   }
 
@@ -48,6 +56,9 @@ class Phila_Gov_Admin_Menu {
 
     //remove comments, this is here b/c we are using the add_action hook
     remove_menu_page('edit-comments.php');
+
+    //remove WP posts, we are using phila_post instead.
+    remove_menu_page( 'edit.php' );
   }
 
   function change_admin_information_page_label(){
