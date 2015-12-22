@@ -15,9 +15,9 @@
 
   public function __construct(){
 
-   //add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 3 );
+   add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 3 );
 
-   //add_action( 'pre_get_posts', array( $this, 'pre_get_posts_services' ) );
+   add_action( 'pre_get_posts', array( $this, 'pre_get_posts_services' ) );
   }
 
   /**
@@ -57,16 +57,12 @@
 
     $post_name = $query->get( 'name' );
 
-    var_dump($post_name);
-
     $post_type = $wpdb->get_var(
       $wpdb->prepare(
           'SELECT post_type FROM ' . $wpdb->posts . ' WHERE post_name = %s LIMIT 1',
           $post_name
       )
     );
-    var_dump($post_type);
-
     switch($post_type) {
       case 'service_post':
 
