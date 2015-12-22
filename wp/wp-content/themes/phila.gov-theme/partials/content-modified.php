@@ -42,7 +42,7 @@
           if ( $current_cat_slug != 'uncategorized' && $current_post_type != 'document' ) :
             // NOTE: the id and data-slug are important. Google Tag Manager
             // uses it to attach the department to our web analytics.
-            if ( $current_post_type != 'post' && $current_post_type != 'news_post' && $current_post_type != 'notices' ):
+            if ( $current_post_type != 'phila_post' && $current_post_type != 'news_post' && $current_post_type != 'notices' ):
               echo 'by <a href="' . get_the_permalink() . '" id="content-modified-department"
                     data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
             endif;

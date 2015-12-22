@@ -239,7 +239,7 @@ function the_breadcrumb() {
         the_title();
         echo '</li>';
 
-      }elseif ( is_singular('post') ) {
+      }elseif ( is_singular('phila_post') ) {
         $categories = get_the_category($post->ID);
 
         echo '<li><a href="/posts">Posts</a></li>';
