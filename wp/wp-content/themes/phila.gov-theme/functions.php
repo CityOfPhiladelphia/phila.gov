@@ -522,23 +522,6 @@ function phila_format_document_type($document_type){
       break;
   }
 }
-
-add_filter( 'pre_get_posts', 'phila_filter_notices' );
-
-function phila_filter_notices( $query ) {
-  if ( !is_admin() && !is_tax() && is_post_type_archive('news_post') ) {
-    $taxquery = array( 'tax_query', array(
-      array(
-          'taxonomy' => 'news_type',
-          'field' => 'slug',
-          'terms' => array('notice'),
-          'operator' => 'NOT IN',
-          )
-        )
-      );
-    $query->set( 'tax_query', $taxquery );
-  }
-}
 /**
  * Look up author by slug and use author ID
  *
