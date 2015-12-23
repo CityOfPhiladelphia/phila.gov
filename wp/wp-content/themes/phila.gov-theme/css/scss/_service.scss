@@ -63,12 +63,12 @@
 }
 .all-services-info-list{
   .light-stripe {
-    border-top:1px solid $sidewalk;
+    background: $ghost-gray;
+    padding:0 1rem;
     color:$sidewalk;
   }
   .list{
-    padding:0 0 0 2rem;
-    margin-top:-38px;
+    padding:0 0 0 3rem;
   }
   .list + .list{
     margin-top:0;
