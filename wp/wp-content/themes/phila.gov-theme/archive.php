@@ -15,40 +15,7 @@ get_header(); ?>
     if ( have_posts() ) : ?>
       <header class="columns">
         <h1>
-          <?php
-            $post = get_post_type();
-
-            if ( is_category() ) :
-              if ( $post == 'phila_post' ) :
-                _e('Posts | ');
-                single_cat_title();
-              else:
-                single_cat_title();
-              endif;
-
-              elseif ( $post == 'phila_post' ) :
-                  _e('Posts');
-
-              elseif ( is_tag() ) :
-               '<span>' . single_tag_title('Tagged in: ') . '</span>';
-
-              elseif ( is_author() ) :
-                printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
-
-              elseif ( is_day() ) :
-                printf( __( 'Day: %s', 'phila-gov' ), '<span>' . get_the_date() . '</span>' );
-
-              elseif ( is_month() ) :
-                printf( __( 'Month: %s', 'phila-gov' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'phila-gov' ) ) . '</span>' );
-
-              elseif ( is_year() ) :
-                printf( __( 'Year: %s', 'phila-gov' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'phila-gov' ) ) . '</span>' );
-
-              else :
-                _e( 'Archives', 'phila-gov' );
-
-              endif;
-          ?>
+          <?php the_archive_title(); ?>
         </h1>
       </header><!-- .page-header -->
       <main id="main" class="site-main small-24 columns" role="main">
