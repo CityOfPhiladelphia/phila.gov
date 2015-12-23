@@ -572,12 +572,18 @@ function change_post_archive_title(){
   }
 }
 
-add_filter( 'get_the_archive_title', 'phila_filter_h1');
+add_filter( 'get_the_archive_title', 'phila_filter_h1' );
 
 function phila_filter_h1( $title ) {
 
   if ( is_tag() ) {
+
     $title = single_tag_title( 'Tag | ', false );
+
+  } elseif ( is_category() ){
+
+    $title = single_cat_title( ' | ', false );
+
   }
 
   return $title;
