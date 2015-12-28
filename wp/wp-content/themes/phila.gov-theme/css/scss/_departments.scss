@@ -80,7 +80,7 @@
   }
   .news {
     .small-thumb{
-      width:100px;
+      width:150px;
       height:auto;
       margin: 5px 10px 30px 0;
     }
@@ -202,6 +202,7 @@
     }
     .event-row{
       border-bottom:1px solid $geyser;
+      font-size: 0.75rem;
     }
     .simcal-default-calendar-list{
       padding:0;
