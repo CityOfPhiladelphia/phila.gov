@@ -67,6 +67,11 @@ article .entry-title{
   width:auto;
 }
 
+.equal-height .panel{
+  margin:0;
+  flex-grow: 1;
+}
+
 .navigation {
   margin-top:1rem;
   font-family: 'Montserrat';
