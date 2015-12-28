@@ -46,7 +46,7 @@ function latest_posts_shortcode($atts) {
       $output .= '<div class="row"><h2 class="alternate large-24 columns">' . __('Blog Posts', 'phila.gov') . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
     }else{
       if ( $a['posts'] == 3 || $a['posts'] == 4 ) {
-        $output .= '<div class="row"><div class="equal-height"><div class="row title-push"><h2 class="alternate large-24 columns">' . __('Blog Posts', 'phila.gov') . '</h2></div>';
+        $output .= '<div class="row equal-height"><h2 class="alternate large-24 columns">' . __('Blog Posts', 'phila.gov') . '</h2>';
       }
     }
 
@@ -61,7 +61,7 @@ function latest_posts_shortcode($atts) {
       $output .= '<li>';
 
       $output .= '<a href="' . get_permalink() .'">';
-      
+
       $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
       $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
@@ -104,7 +104,7 @@ function latest_posts_shortcode($atts) {
     }
     if( $a['posts'] == 3 ) {
       //this means we had equal-height applied and must close those divs
-      $output .= '</div></div>';
+      $output .= '</div>';
     }
 
     }else {
