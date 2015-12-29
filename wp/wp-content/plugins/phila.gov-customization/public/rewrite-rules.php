@@ -31,6 +31,8 @@ function phila_news_rewrite() {
 
   add_rewrite_rule("^posts/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=phila_post&category_name=$matches[1]&paged=$matches[2]','top');
 
+  add_rewrite_rule("^posts/author/([^/]+)/?$",'index.php?author_name=$matches[1]','top');
+
   add_rewrite_rule("^browse/([^/]+)/([^/]+)/?$",'index.php?&topics=$matches[1]&topics=$matches[2]','top');
 }
 
@@ -38,4 +40,20 @@ add_action( 'init', 'phila_register_rewrite_tag', 0, 10);
 
 function phila_register_rewrite_tag() {
   add_rewrite_tag( '%topics%', '([^/]+)');
+}
+
+/**
+* @since 0.22.0
+*
+* Adds /posts/ to author link base
+*
+* @package phila-gov_customization
+*/
+add_action( 'init', 'phila_filter_author_link' );
+
+function phila_filter_author_link(){
+
+  global $wp_rewrite;
+
+  $wp_rewrite->author_base = 'posts/author';
 }
