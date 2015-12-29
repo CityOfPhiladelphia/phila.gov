@@ -108,7 +108,7 @@ function latest_posts_shortcode($atts) {
     }
 
     }else {
-      $output .= __( 'Please enter at least one news story.', 'phila.gov' );
+      $output .= __( 'Please enter at least one post.', 'phila.gov' );
     }
     //.news
 
