@@ -250,6 +250,9 @@ function the_breadcrumb() {
         echo '<li>';
         the_title();
         echo '</li>';
+    }elseif ( is_singular('calendar') ) {
+
+      echo '<li>Calendar: ' . get_the_title() . '</li>'; 
 
     } elseif ( is_post_type_archive('department_page' ) ) {
 
