@@ -30,7 +30,7 @@
         </div>
       </div>
       <?php
-        }elseif(is_single()){ ?>
+    }elseif( is_single() && ! is_singular( 'department_page' ) ){ ?>
       <div class="row">
         <div class="small-24 columns">
           <div class="panel center">
