@@ -99,10 +99,11 @@ function recent_news_shortcode($atts) {
   $category = get_the_category();
   $a = shortcode_atts( array(
    'posts' => 1,
-    0 => 'list'
+    0 => 'list',
+    'name' => 'News'
  ), $atts );
 
-   $current_category = $category[0]->cat_ID;
+  $current_category = $category[0]->cat_ID;
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
@@ -132,11 +133,11 @@ function recent_news_shortcode($atts) {
   if( $news_loop->have_posts() ) {
     $post_counter = 0;
 
-  if ( is_flag ('list', $atts) ) {
-      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . __('News', 'phila.gov') . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
+  if ( is_flag ( 'list', $atts ) ) {
+      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
     }else{
       if ( $a['posts'] == 3 || $a['posts'] == 4 ) {
-        $output .= '<div class="row"><div class="equal-height"><div class="row title-push"><h2 class="alternate large-24 columns">' . __('News', 'phila.gov') . '</h2></div>';
+        $output .= '<div class="row"><div class="equal-height"><div class="row title-push"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div>';
       }
     }
 
@@ -172,7 +173,7 @@ function recent_news_shortcode($atts) {
 
       //news title on first item
       if ( $post_counter == 1 && $a['posts'] == 1) {
-        $output .= '<h2 class="alternate">' . __('News', 'phila.gov') . '</h2>';
+        $output .= '<h2 class="alternate">' . $a['name'] . '</h2>';
       }
 
       $output .= '<a href="' . get_permalink() .'" class="card">';
