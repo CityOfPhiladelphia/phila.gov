@@ -17,7 +17,8 @@ function latest_posts_shortcode($atts) {
   $category = get_the_category();
   $a = shortcode_atts( array(
    'posts' => 1,
-    0 => 'list'
+    0 => 'list',
+    'name' => 'Blog Posts',
  ), $atts );
 
    $current_category = $category[0]->cat_ID;
@@ -43,10 +44,10 @@ function latest_posts_shortcode($atts) {
     $post_counter = 0;
 
   if ( is_flag ('list', $atts) ) {
-      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . __('Blog Posts', 'phila.gov') . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
+      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
     }else{
       if ( $a['posts'] == 3 || $a['posts'] == 4 ) {
-        $output .= '<div class="row equal-height"><h2 class="alternate large-24 columns">' . __('Blog Posts', 'phila.gov') . '</h2>';
+        $output .= '<div class="row equal-height"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2>';
       }
     }
 
@@ -80,7 +81,7 @@ function latest_posts_shortcode($atts) {
 
       //news title on first item
       if ( $post_counter == 1 && $a['posts'] == 1) {
-        $output .= '<h2 class="alternate">' . __('Blog Posts', 'phila.gov') . '</h2>';
+        $output .= '<h2 class="alternate">' . $a['name'] . '</h2>';
       }
 
       $output .= '<a href="' . get_permalink() .'" class="card">';
