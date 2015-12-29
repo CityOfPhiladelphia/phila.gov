@@ -143,23 +143,21 @@ function recent_news_shortcode($atts) {
     while( $news_loop->have_posts() ) : $news_loop->the_post();
     $post_counter++;
 
-    $url = rwmb_meta('phila_news_url', $args = array('type'=>'url'));
     $contributor = rwmb_meta('phila_news_contributor', $args = array('type'=>'text'));
     $desc = rwmb_meta('phila_news_desc', $args = array('type'=>'textarea'));
 
     $link = get_permalink();
 
     if ( is_flag( 'list', $atts ) ){
+
       $output .= '<li>';
-      if ( !$url == '' ){
-        $output .= '<a href="' . $url .'">';
-      }else{
-        $output .= '<a href="' . get_permalink() .'">';
-      }
+
+      $output .= '<a href="' . $link .'">';
+
       $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
       $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
-      $output .= '<span class="small-text">' . $desc . '</span>';
+      $output .= '<span class="small-text">' . wp_strip_all_tags( $desc ) . '</span>';
       $output .= '</a>';
       $output .= '</li>';
 
@@ -196,14 +194,14 @@ function recent_news_shortcode($atts) {
 
     endwhile;
 
-    if ( is_flag( 'list', $atts ) ) {
-      $output .= '</ul>';
-      $output .= '</div></div>';
-    }
-    if( $a['posts'] == 3 ) {
-      //this means we had equal-height applied and must close those divs
-      $output .= '</div></div>';
-    }
+      if ( is_flag( 'list', $atts ) ) {
+        $output .= '</ul>';
+        $output .= '</div><!-- medium-24 columns --> </div>';
+      }
+      if( $a['posts'] == 3 && ! is_flag( 'list', $atts ) ) {
+        //this means we had equal-height applied and must close those divs
+        $output .= '</div></div>';
+      }
 
     }else {
       $output .= __( 'Please enter at least one news story.', 'phila.gov' );
