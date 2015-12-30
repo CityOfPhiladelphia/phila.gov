@@ -25,9 +25,10 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'admin_head', array( $this, 'remove_meta_boxes' ) );
 
-    add_action('admin_head', array($this, 'tinyMCE_edits' ) );
+    add_action('admin_head', array( $this, 'tinyMCE_edits' ) );
 
-    add_action( 'admin_enqueue_scripts', array($this, 'administration_admin_scripts'), 1000 );
+    add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
+
   }
 
   /**
@@ -268,10 +269,12 @@ class Phila_Gov_Role_Administration {
   	return array_diff( $buttons, $remove );
    }
    function tinyMCE_edits(){
+
      if ( ! current_user_can( PHILA_ADMIN ) ){
        add_filter( 'mce_buttons',  array( $this, 'remove_top_tinymce_button' ) );
 
-       add_filter( 'mce_buttons_2', array( $this,'remove_bottom_tinymce2_buttons')  );
+       add_filter( 'mce_buttons_2', array( $this,'remove_bottom_tinymce2_buttons') );
+
      }
    }
   /**
@@ -305,7 +308,10 @@ class Phila_Gov_Role_Administration {
 
   public function abstract_user_role(){
     if ( ! current_user_can( PHILA_ADMIN )  ){
+
       add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'change_dropdown_args' ), 9, 2 );
+
+      add_filter('wp_dropdown_users', array( $this, 'display_users_in_same_role' ) );
     }
   }
   /**
@@ -355,5 +361,35 @@ class Phila_Gov_Role_Administration {
       wp_enqueue_style( 'admin-department-author' );
 
     }
+  }
+
+  /**
+   * On phila_posts only allow users to change the post author to users in the same secondary role.
+   *
+   * @since   0.22.0
+   * @return $output The filtered author dropdown
+   */
+  function display_users_in_same_role( $output ){
+    global $post;
+
+    global $current_user;
+
+    $user_roles = $current_user->roles;
+    $user_role = array_shift($user_roles);
+
+    $users = get_users( array(
+      'role' => $user_roles[0],
+      )
+    );
+
+    $output = "<select id=\"post_author_override\" name=\"post_author_override\" class=\"\">";
+
+    foreach($users as $user) {
+      $sel = ($post->post_author == $user->ID)?"selected='selected'":'';
+      $output .= '<option value="'.$user->ID.'"'.$sel.'>'.$user->display_name.'</option>';
+    }
+    $output .= "</select>";
+
+    return $output;
   }
 }
