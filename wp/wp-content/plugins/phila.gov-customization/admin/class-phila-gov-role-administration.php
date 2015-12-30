@@ -29,6 +29,7 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
+  //  add_filter( 'gettext', array( $this, 'change_tagcloud_link_text'), 20, 3 );
   }
 
   /**
@@ -317,6 +318,9 @@ class Phila_Gov_Role_Administration {
       add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'change_dropdown_args' ), 9, 2 );
 
       add_filter('wp_dropdown_users', array( $this, 'display_users_in_same_role' ) );
+
+      add_filter( 'get_terms_args', array( $this, 'show_all_tags_on_phila_post' ) );
+
     }
   }
   /**
@@ -397,4 +401,24 @@ class Phila_Gov_Role_Administration {
 
     return $output;
   }
+
+
+  /**
+   * Display all tags on post tag, instead of 'popluar'
+   *
+   * @since   0.22.0
+   * @return $output The filtered author dropdown
+   */
+  function show_all_tags_on_phila_post ( $args ) {
+    if ( is_admin() ) {
+      if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_POST['action'] ) && $_POST['action'] === 'get-tagcloud' ) {;
+        $args['number'] == 90000;
+        $args['hide_empty'] = false;
+      }
+    }
+    return $args;
+  }
+
+
+
 }
