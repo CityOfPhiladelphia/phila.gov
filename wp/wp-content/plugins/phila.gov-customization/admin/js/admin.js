@@ -58,6 +58,17 @@ jQuery(document).ready(function($){
     });
   }
 
+  if (typenow == 'phila_post' && adminpage.indexOf('post') > -1 ){
+    $('#post').validate({
+      rules: {
+         'post_title' : 'required'
+       }
+    });
+    $( '#phila_post_desc' ).rules( 'add', {
+      required: true
+    });
+  }
+
   $('a#link-post_tag').click();
 
 });
