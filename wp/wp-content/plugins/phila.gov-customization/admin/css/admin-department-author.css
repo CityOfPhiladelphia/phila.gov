@@ -26,6 +26,8 @@ a[href$="nav-menus.php?action=locations"],
 .manage-menus option,
 .edit-slug,
 .menu-icon-document,
-.page-title-action {
+.page-title-action,
+/* don't allow users to create tags */
+.jaxtag{
   display: none !important;
 }

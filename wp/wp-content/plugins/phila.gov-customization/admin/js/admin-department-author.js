@@ -59,8 +59,9 @@ jQuery(document).ready(function($){
       maxlength: 225, required: true
     });
   }
-   if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
-     $('#title').prop('disabled', true);
-     $('[id^=phila_block_id]').parent().parent().hide();
-   }
+  if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
+    $('#title').prop('disabled', true);
+    $('[id^=phila_block_id]').parent().parent().hide();
+  }
+
 });
