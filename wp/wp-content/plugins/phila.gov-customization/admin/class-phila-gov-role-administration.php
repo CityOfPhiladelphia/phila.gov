@@ -217,6 +217,7 @@ class Phila_Gov_Role_Administration {
 	  */
 
   public function add_department_menu(){
+
     if ( ! current_user_can( PHILA_ADMIN ) ){
 
       $category_object = $this->secondary_roles();
@@ -229,14 +230,18 @@ class Phila_Gov_Role_Administration {
 
         // Add Menus as a Department Site submenu
         add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php?action=edit&menu='. $key );
+
       }else {
+
         $key = 'menu-' . $category_object->term_id;
 
-        $current_menu_value = $menu_locations[$key];
+        if( isset( $menu_locations[$key] ) ) {
 
-        // Add Menus as a Department Site submenu
-        add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php?action=edit&menu='. $current_menu_value );
+          $current_menu_value = $menu_locations[$key];
 
+          // Add Menus as a Department Site submenu
+          add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php?action=edit&menu='. $current_menu_value );
+        }
       }
     }else{
       add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php' );
@@ -374,11 +379,11 @@ class Phila_Gov_Role_Administration {
 
     global $current_user;
 
-    $user_roles = $current_user->roles;
-    $user_role = array_shift($user_roles);
+    $secondary_role_name = $current_user->roles;
+    $user_role = array_shift($secondary_role_name);
 
     $users = get_users( array(
-      'role' => $user_roles[0],
+      'role' => $secondary_role_name[0],
       )
     );
 
