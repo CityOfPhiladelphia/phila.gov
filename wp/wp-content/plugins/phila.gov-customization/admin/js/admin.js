@@ -57,4 +57,7 @@ jQuery(document).ready(function($){
       required: true
     });
   }
+
+  $('a#link-post_tag').click();
+
 });
