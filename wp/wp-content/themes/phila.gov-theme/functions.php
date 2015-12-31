@@ -252,7 +252,7 @@ function the_breadcrumb() {
         echo '</li>';
     }elseif ( is_singular('calendar') ) {
 
-      echo '<li>Calendar: ' . get_the_title() . '</li>'; 
+      echo '<li>Calendar: ' . get_the_title() . '</li>';
 
     } elseif ( is_post_type_archive('department_page' ) ) {
 
@@ -398,11 +398,6 @@ function the_breadcrumb() {
 //this is used throughout the theme and is meant to be updated once the major switch happens
 function util_echo_website_url(){
     echo 'alpha.phila.gov';
-}
-
-//should there be an alert bar at the top of the site?
-function alpha_alert(){
-    return true;
 }
 
 function provide_feedback(){
