@@ -82,5 +82,12 @@ function phila_reorder_meta_boxes() {
 add_action( 'admin_bar_menu', 'remove_add_new', 999 );
 
 function remove_add_new( $wp_admin_bar ) {
-	$wp_admin_bar->remove_node( 'new-content' );
+  $wp_admin_bar->remove_node( 'new-content' );
+}
+
+
+add_action('do_meta_boxes', 'phila_remove_thumbnails_from_pages');
+
+function phila_remove_thumbnails_from_pages() {
+  remove_meta_box( 'postimagediv','page','side' );
 }
