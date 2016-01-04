@@ -7,7 +7,11 @@ _dir="$(dirname "$0")"
 
 source "$_dir/lib/mo"
 
-echo 'Modifying php.ini'
+echo 'Modifying php configs'
+sudo ed -s /etc/php5/fpm/pool.d/www.conf <<'EOF'
+g/pm\.max_children/s/5/10
+w
+EOF
 sudo ed -s /etc/php5/fpm/php.ini <<'EOF'
 g/post_max_size/s/8/100
 g/upload_max_filesize/s/2/100
