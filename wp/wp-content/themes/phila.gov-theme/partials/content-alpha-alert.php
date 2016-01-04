@@ -8,7 +8,7 @@
         esc_html_x( '%s', 'site-url', 'phila-gov' ), '<a href="http://phila.gov/" target="_new" class="external">phila.gov</a>' );
 
         //if post is in the Mayor's Office category, give it a different banner.
-        if ( ( isset( $post ) ) &&  in_category( 'mayors-office', $post->ID ) ) : ?>
+        if ( ( isset( $post ) ) &&  in_category( 'mayor', $post->ID ) ) : ?>
 
           <p> <?php _e('We\'re piloting a new, user-friendly website design. To view the existing City website, visit ' . $phila_gov_link . '.', 'phila-gov' ); ?>
           </p>
@@ -16,7 +16,7 @@
             $about_link = sprintf( esc_html_x( '%s', 'under construction', 'phila-gov' ), '<a href="/about/">work-in-progress</a>' ); ?>
 
             <p> <?php _e('This site is a ' . $about_link . ' that will change as we add content. Please notify us of errors.', 'phila-gov') ; ?> </p>
-            
+
             <a class="go-back small-text external" href="http://www.phila.gov" target="_blank">Take me back to Phila.gov<span class="accessible"> Opens in new window</span></a>
       <?php endif; ?>
     </div>
