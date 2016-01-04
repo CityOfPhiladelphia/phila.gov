@@ -5,7 +5,7 @@
       global $post;
 
       $phila_gov_link = sprintf(
-        esc_html_x( '%s', 'site-url', 'phila-gov' ), '<a href="http://phila.gov/" target="_new" class="external">phila.gov</a>' );
+        esc_html_x( '%s', 'site-url', 'phila-gov' ), '<a href="http://www.phila.gov/" target="_new" class="external">phila.gov</a>' );
 
         //if post is in the Mayor's Office category, give it a different banner.
         if ( ( isset( $post ) ) &&  in_category( 'mayor', $post->ID ) ) : ?>
