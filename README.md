@@ -86,8 +86,9 @@ The following happens when you `vagrant up`:
 
 ## Running a remote test instance
 
-1. Install aws cli
-2. Install fswatch
+1. [Install aws cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-bundle-other-os)
+2. [Install unison](http://www.cis.upenn.edu/~bcpierce/unison/download.html)
+2. [Install joia](https://github.com/gsf/joia#install)
 3. Create .env file with these vars:
   - AMI=`ID for the AMI to use for the instance`
   - SUBNET=`ID for the VPC subnet the instance should be in`
@@ -99,5 +100,5 @@ The following happens when you `vagrant up`:
   - AWS_SECRET=`AWS secret access key for the instance to use`
   - SWIFTYPE_ENGINE=`Swiftype engine ID`
   - COMPOSER_URL=`URL for our Satis repository`
-4. Save private key as .ssh/$KEY_PAIR.pem in this repo
-5. Run `instance/up`
+4. Private key must be at ~/.ssh/$KEY_PAIR.pem
+5. Run `joia up`
