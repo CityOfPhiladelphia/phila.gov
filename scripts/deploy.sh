@@ -9,13 +9,13 @@ source "$_dir/lib/mo"
 
 echo 'Modifying php configs'
 sudo ed -s /etc/php5/fpm/pool.d/www.conf <<'EOF'
-g/pm\.max_children/s/5/10
+g/^pm\.max_children/s/5/10
 w
 EOF
 sudo ed -s /etc/php5/fpm/php.ini <<'EOF'
-g/post_max_size/s/8/100
-g/upload_max_filesize/s/2/100
-g/expose_php/s/On/Off
+g/^post_max_size/s/8/100
+g/^upload_max_filesize/s/2/100
+g/^expose_php/s/On/Off
 w
 EOF
 
