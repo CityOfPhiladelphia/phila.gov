@@ -17,7 +17,7 @@ function get_home_news(){
   if (!$url == ''){
 
       echo '<a href="' . $url .'" target="_blank">';
-      the_post_thumbnail(  );
+      the_post_thumbnail( 'home-thumb' );
       echo '<span class="accessible"> Opens in new window</span></a>';
 
       echo '<a href="' . $url .'" target="_blank">';
@@ -27,7 +27,7 @@ function get_home_news(){
 
   }else{
       echo '<a href="' . get_permalink() .'">';
-      the_post_thumbnail(  );
+      the_post_thumbnail( 'home-thumb'  );
       echo '</a>';
 
       echo '<a href="' . get_permalink().'">';
