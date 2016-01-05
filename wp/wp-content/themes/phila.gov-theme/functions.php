@@ -44,8 +44,8 @@ function phila_gov_setup() {
 
   add_image_size( 'news-thumb', 250, 165, true );
 
-  //This is temporary, until we decide how to handle responsive images more effectively and in what ratios. 
-  add_image_size( 'home-thumb', 275, 180, true );
+  //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
+  add_image_size( 'home-thumb', 550, 360, true );
 
   // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
