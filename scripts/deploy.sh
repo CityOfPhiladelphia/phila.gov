@@ -47,7 +47,7 @@ done
 echo 'Testing nginx config'
 sudo nginx -t
 
-echo 'Purging fastcgi cache'
-sudo rm -rf /var/run/nginx-cache/*
+echo 'Purging nginx cache'
+sudo rm -rf /var/run/nginx-cache
 
 sudo service nginx reload
