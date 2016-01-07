@@ -486,7 +486,7 @@ function phila_get_attachment_id_by_url( $url ) {
 
   $parsed_url = $matches[1];
 
-  $attachment = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'amazonS3_info' AND meta_value LIKE %s;", '%"' . $parsed_url .'"%' ));
+  $attachment = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'amazonS3_info' AND meta_value LIKE %s;", '%"' .'media/' .$parsed_url .'"%' ));
 
   // Returns null if no attachment is found
   return $attachment;
