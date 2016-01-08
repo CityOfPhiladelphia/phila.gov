@@ -222,5 +222,25 @@ function phila_register_meta_boxes( $meta_boxes ){
      ),
    ),
   );
+  $meta_boxes[] = array(
+    'id'       => 'page-display',
+    'title'    => 'Appears in Browse',
+    'pages'    => array( 'page' ),
+    'context'  => 'side',
+    'priority' => 'high',
+
+    'fields' => array(
+      array(
+       'name' => 'Show this page in /browse',
+       'id'   => $prefix . 'show_in_browse',
+       'type' => 'radio',
+       'std'=> '0',
+       'options' =>  array(
+           '0' => 'No',
+           '1' => 'Yes'
+       ),
+     ),
+   ),
+  );
     return $meta_boxes;
 }
