@@ -1,7 +1,7 @@
 <?php
 /*
   *
-  * template for displaying 2nd level topics page.
+  * template for displaying L3 topic pages.
   *
   */
   ?>
@@ -33,7 +33,7 @@ $parent_args = array(
   			'terms'    => $current_term,
   		),
   	),
-); 
+);
 $parent_pages_query = new WP_Query( $parent_args );
 if ( $parent_pages_query->have_posts() ) :
   while ( $parent_pages_query->have_posts() ) : $parent_pages_query->the_post(); ?>
