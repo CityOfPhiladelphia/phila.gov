@@ -16,7 +16,7 @@
 ?>
 
 <?php
-  //Also get our special tagged pages.
+  //Get the pages marked with 'show in browse'.
   $get_L2_pages = new WP_Query(array(
     'post_type' => 'page',
     'posts_per_page' => -1,
@@ -26,14 +26,22 @@
     'meta_key'  => 'phila_show_in_browse',
     'meta_value' => 1,
     'tax_query' => array(
-      'taxonomy' => 'topics',
-      'terms' => $current_term,
-      'include_children' => false,
+      //only produce pages in the current topic
+      array(
+        'taxonomy' => 'topics',
+        'field' => 'slug',
+        'terms' => $current_term,
+        'include_children' => false,
+        ),
       ),
     )
   );
+
   $pages_and_topics = array();
 
+  /* this loop does not actually display any posts
+  TODO: reevaluate this, it should probably just be a sql query
+  */
   if ( $get_L2_pages->have_posts() ) : ?>
     <?php while ( $get_L2_pages->have_posts() ) : $get_L2_pages->the_post(); ?>
 
@@ -66,14 +74,16 @@
 
         $term_link = get_term_link( $term_child, $current_term->taxonomy);
 
-        //add topics to array
+        //add taxonomy to array
         $pages_and_topics[$term_name][] = $term_desc;
         $pages_and_topics[$term_name][] = $term_link;
+
       endif;
 
     endforeach;
-      //sort by name
-      ksort($pages_and_topics); ?>
+    //sort by name
+    ksort($pages_and_topics); ?>
+
   <?php foreach ( $pages_and_topics as $display_name => $display_data ) : ?>
     <li>
       <?php //display_data[1] is permalink ?>
