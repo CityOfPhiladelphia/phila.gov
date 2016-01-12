@@ -22,6 +22,7 @@
     $parent_content = null;
     $parent_link = get_permalink( $post->post_parent );
     $current = false;
+
   }else{
 
     $parent_link = get_permalink();
@@ -56,8 +57,11 @@
         <div class="small-24 columns">
             <aside>
               <ul class="tabs vertical">
-                <li class="tab-title<?php echo ($current) ? ' active' : ''?>">
-                  <a href="<?php echo $parent_link ?>">Overview</a></li>
+                <?php if ( $parent_content ) : ?>
+                  <li class="tab-title<?php echo ($current) ? ' active' : ''?>">
+                    <a href="<?php echo $parent_link ?>">Overview</a>
+                  </li>
+                <?php  endif ?>
                 <?php echo $children; ?>
               </ul>
             </aside>
