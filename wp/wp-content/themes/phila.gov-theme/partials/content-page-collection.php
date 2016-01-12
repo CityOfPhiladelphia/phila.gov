@@ -6,8 +6,17 @@
  */
 
   $walker_menu = new Content_Collection_Walker();
+  $has_parent = get_post_ancestors( $post );
+
+  $this_parent = array(
+    'include' => $has_parent,
+  );
+  $parent_content = get_pages( $this_parent );
+
+  $check_parent_content = $parent_content[0]->post_content;
 
   if( $post->post_parent ) {
+    //it's a child
     $children = wp_list_pages(array(
       'sort_column' => 'menu_order',
       'title_li' => '',
@@ -24,7 +33,7 @@
     $current = false;
 
   }else{
-
+    //it's a parent with content
     $parent_link = get_permalink();
     $current = true;
     $parent_title = get_the_title();
@@ -39,8 +48,8 @@
       'walker' => $walker_menu
       )
     );
-
   }
+
   ?>
   <div class="data-swiftype-index='true'">
     <div class="row">
@@ -55,16 +64,16 @@
     <article id="post-<?php the_ID(); ?>">
       <div class="row">
         <div class="small-24 columns">
-            <aside>
-              <ul class="tabs vertical">
-                <?php if ( $parent_content ) : ?>
-                  <li class="tab-title<?php echo ($current) ? ' active' : ''?>">
-                    <a href="<?php echo $parent_link ?>">Overview</a>
-                  </li>
-                <?php  endif ?>
-                <?php echo $children; ?>
-              </ul>
-            </aside>
+          <aside>
+            <ul class="tabs vertical">
+              <?php if ( $check_parent_content ) : ?>
+                <li class="tab-title<?php echo ( $current ) ? ' active' : ''?>">
+                  <a href="<?php echo $parent_link ?>">Overview</a>
+                </li>
+              <?php endif; ?>
+              <?php echo $children; ?>
+            </ul>
+          </aside>
         <div data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content">
           <div class="content active">
             <header class="entry-header">
