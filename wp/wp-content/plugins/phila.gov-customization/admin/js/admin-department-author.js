@@ -63,5 +63,4 @@ jQuery(document).ready(function($){
     $('#title').prop('disabled', true);
     $('[id^=phila_block_id]').parent().parent().hide();
   }
-
 });
