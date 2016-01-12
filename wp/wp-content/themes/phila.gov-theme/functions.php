@@ -78,8 +78,16 @@ function phila_gov_setup() {
     'gallery', 'caption',
   ) );
 
+  add_theme_support( 'title-tag' );
+
 }
 endif; // phila_gov_setup
+
+add_filter('document_title_separator', 'phila_filter_sep');
+
+function phila_filter_sep(){
+  return '|';
+}
 
 /**
  * Register widget areas for all categories. To appear on department pages.
