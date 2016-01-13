@@ -207,20 +207,5 @@ function phila_register_meta_boxes( $meta_boxes ){
      ),
    ),
   );
-  $meta_boxes[] = array(
-    'id'       => 'page-description',
-    'title'    => 'Summary',
-    'pages'    => array( 'page' ),
-    'context'  => 'advanced',
-    'priority' => 'high',
-
-    'fields' => array(
-      array(
-       'name' => 'Short Summary',
-       'id'   => $prefix . 'page_desc',
-       'type' => 'textarea'
-     ),
-   ),
-  );
     return $meta_boxes;
 }
