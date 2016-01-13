@@ -68,7 +68,46 @@ jQuery(document).ready(function($){
       required: true
     });
   }
+  if (typenow == 'page' && adminpage.indexOf('post') > -1 ){
 
-  $('a#link-post_tag').click();
+    $('#page-display input[name=phila_show_in_browse]').click(function(){
+
+      if ( $(this).val() == 'yes' ) {
+
+        $('#page-display .rwmb-textarea-wrapper').show();
+
+      }else if( $(this).val() == 'no' ){
+
+        $('#page-display .rwmb-textarea-wrapper').hide();
+      }
+
+    });
+
+    if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'yes' ){
+
+      $('#page-display .rwmb-textarea-wrapper').show();
+
+    }else if ($('#page-display input[name=phila_show_in_browse]:checked').val() == 'no'){
+
+      $('#page-display .rwmb-textarea-wrapper').hide();
+
+    }
+  }
+  if (typenow == 'page' && adminpage.indexOf('post') > -1 ){
+    $('#post').validate({
+      rules: {
+         'post_title' : 'required'
+       }
+    });
+    $( '#phila_page_desc' ).rules( 'add', {
+      required: true,
+      maxlength: 255,
+    });
+  }
+  if (typenow == 'phila_post' && adminpage.indexOf('post') > -1 ){
+
+    $('a#link-post_tag').click();
+
+  }
 
 });
