@@ -86,7 +86,72 @@ endif; // phila_gov_setup
 add_filter('document_title_separator', 'phila_filter_sep');
 
 function phila_filter_sep(){
+
   return '|';
+
+}
+
+add_filter('pre_get_document_title', 'phila_filter_title');
+
+function phila_filter_title( $title ){
+  global $post;
+  global $page, $paged;
+  $page_title = get_the_title( $post->ID );
+  $sep = ' | ';
+  $site_title = get_bloginfo( 'name' );
+  $post_type = get_post_type_object( get_post_type( $post ) );
+
+  $title = array(
+    'title' => ''
+  );
+
+
+  // If it's a 404 page, use a "Page not found" title.
+  if ( is_404() ) {
+      $title['title'] = __( 'Page not found' );
+
+  // If it's a search, use a dynamic search results title.
+  } elseif ( is_search() ) {
+    /* translators: %s: search phrase */
+    $title['title'] = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
+
+  // If on the home or front page, use the site title.
+  } elseif ( is_home() && is_front_page() ) {
+      $title['title'] = get_bloginfo( 'name', 'display' );
+
+  }elseif ( is_post_type_archive() ){
+
+    $title['title'] = post_type_archive_title('', false);
+
+  } // If on a taxonomy archive, use the term title.
+   elseif ( is_tax() ) {
+    $title['title'] = single_term_title( '', false );
+
+  }elseif ( $post_type ) {
+
+    $title['title'] = "$page_title $sep" . $post_type->labels->singular_name;
+
+
+    // If on an author archive, use the author's display name.
+  } elseif ( is_author() && $author = get_queried_object() ) {
+    $title['title'] = $author->display_name;
+  }
+
+  // Add a page number if necessary.
+  if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+        $title['page'] = sprintf( __( 'Page %s' ), max( $paged, $page ) );
+    }
+
+    // Append the description or site title to give context.
+   if ( is_home() && is_front_page() ) {
+       $title['tagline'] = get_bloginfo( 'description', 'display' );
+   } else {
+       $title['site'] = get_bloginfo( 'name', 'display' );
+   }
+
+  $title = implode( " $sep ", array_filter( $title ) );
+
+  return $title;
 }
 
 /**
@@ -597,4 +662,25 @@ function phila_filter_h1( $title ) {
 
   return $title;
 
+}
+/**
+ * Filter department page archive to use list template & show all Parent Pages
+ *
+ * @since 0.22.0
+ * @link https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
+ * @param $query
+ *
+ */
+
+add_action( 'pre_get_posts', 'phila_department_list' );
+
+function phila_department_list( $query ) {
+  if ( $query->is_post_type_archive( 'department_page' ) ){
+
+    $query->set('posts_per_page', -1);
+    $query->set('orderby', 'title');
+    $query->set('order', 'asc');
+    $query->set( 'post_parent', 0 );
+
+  }
 }
