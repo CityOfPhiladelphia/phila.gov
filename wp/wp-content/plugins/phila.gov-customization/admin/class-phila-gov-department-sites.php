@@ -1,7 +1,7 @@
 <?php
 
 if ( class_exists("Phila_Gov_Department_Sites" ) ){
-  $phila_departent_sites = new Phila_Gov_Department_Sites();
+  $phila_department_sites = new Phila_Gov_Department_Sites();
 }
 
  class Phila_Gov_Department_Sites {
