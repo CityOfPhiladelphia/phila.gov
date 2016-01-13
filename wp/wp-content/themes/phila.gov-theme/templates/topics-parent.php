@@ -24,7 +24,7 @@
     'order'=> 'asc',
     'post_parent' => 0,
     'meta_key'  => 'phila_show_in_browse',
-    'meta_value' => 1,
+    'meta_value' => 'yes',
     'tax_query' => array(
       //only produce pages in the current topic
       array(
