@@ -1,7 +1,7 @@
 <?php
 /*
   *
-  * template for displaying 2nd level topics page.
+  * template for displaying L3 topic pages.
   *
   */
   ?>
@@ -27,28 +27,27 @@ $parent_args = array(
   'order' => 'asc',
   'orderby'=> 'menu_order',
   'tax_query' => array(
-  		array(
-  			'taxonomy' => 'topics',
-  			'field'    => 'slug',
-  			'terms'    => $current_term,
-  		),
-  	),
-); 
+      array(
+        'taxonomy' => 'topics',
+        'field'    => 'slug',
+        'terms'    => $current_term,
+      ),
+    ),
+);
 $parent_pages_query = new WP_Query( $parent_args );
 if ( $parent_pages_query->have_posts() ) :
   while ( $parent_pages_query->have_posts() ) : $parent_pages_query->the_post(); ?>
-  	<div class="row">
-  		<div class="small-24 columns">
+    <div class="row">
+      <div class="small-24 columns">
         <ul>
-
-  			<?php get_template_part( 'partials/content', 'list' ); ?>
+        <?php get_template_part( 'partials/content', 'list' ); ?>
       </ul>
-  		</div>
-  	</div>
-  	<?php
+      </div>
+    </div>
+    <?php
   endwhile;
   wp_reset_postdata();
-	 else :
+   else :
      get_template_part( 'partials/content', 'none' );
    endif;
 ?>
