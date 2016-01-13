@@ -67,7 +67,8 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'department_page',
       array(
         'labels' => array(
-          'name' => __( 'Department Site' ),
+          'name' => __( 'Departments' ),
+          'menu_name' => __('Department Site'),
           'singular_name' => __( 'Department Site' ),
           'add_new'   => __( 'Add a Page' ),
           'all_items'   => __( 'All Pages' ),
