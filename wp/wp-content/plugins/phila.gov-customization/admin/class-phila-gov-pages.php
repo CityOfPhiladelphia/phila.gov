@@ -1,7 +1,7 @@
 <?php
 
 if ( class_exists("Phila_Gov_Pages" ) ){
-  $phila_departent_sites = new Phila_Gov_Pages();
+  $phila_pages = new Phila_Gov_Pages();
 }
 
  class Phila_Gov_Pages {
@@ -9,7 +9,6 @@ if ( class_exists("Phila_Gov_Pages" ) ){
   public function __construct(){
 
     add_action( 'admin_init', array( $this, 'determine_page_level' ) );
-
 
     if ( $this->determine_page_level() ){
       add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_page_meta_boxes' ) );
@@ -25,9 +24,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
       $post = get_post( $_GET['post'] );
       $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
 
-      $children = get_pages( array( 'child_of' => $post_id ) );
-
-      if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
+      if( ( $post->post_parent == 0 ) ){
         return true;
       }
     }
