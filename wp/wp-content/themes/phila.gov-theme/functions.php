@@ -686,7 +686,11 @@ function phila_filter_h1( $title ) {
 add_action( 'pre_get_posts', 'phila_department_list' );
 
 function phila_department_list( $query ) {
-  if ( $query->is_post_type_archive( 'department_page' ) ){
+  if ( is_admin() ){
+    return;
+  }
+  if ( is_post_type_archive('department_page')
+         && ! empty( $query->query['post_type']  == 'department_page' ) ) {
 
     $query->set('posts_per_page', -1);
     $query->set('orderby', 'title');
