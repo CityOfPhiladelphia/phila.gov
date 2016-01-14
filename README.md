@@ -6,6 +6,11 @@
 The phila.gov site is WordPress running behind Nginx on an AWS instance. The entire machine setup (the whole stack) is kept in this repo. 
 
 
+## Install
+
+See install, wp-config, and deploy in the scripts directory.
+
+
 ## Running a test AWS instance
 
 1. [Install joia](https://github.com/gsf/joia#install)
