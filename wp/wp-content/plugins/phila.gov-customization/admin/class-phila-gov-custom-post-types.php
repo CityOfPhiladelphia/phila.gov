@@ -214,7 +214,8 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'phila_post',
       array(
         'labels' => array(
-            'name' => __( 'Blog' ),
+            'name' => __( 'Posts' ),
+            'menu_name' => __( 'Blog' ),
             'singular_name' => __( 'Posts' ),
             'add_new'   => __( 'Add Post' ),
             'all_items'   => __( 'All Posts' ),

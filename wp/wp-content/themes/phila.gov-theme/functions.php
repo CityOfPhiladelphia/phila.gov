@@ -111,7 +111,7 @@ function phila_filter_title( $title ){
 
   // If on the home or front page, use the site title.
   } elseif ( is_home() && is_front_page() ) {
-    $title['title'] = get_bloginfo( 'name', 'display' ) . $sep . $site_title;
+    $title['title'] = get_bloginfo( 'name', 'display' );
 
   }elseif ( is_post_type_archive() ){
 
@@ -140,9 +140,11 @@ function phila_filter_title( $title ){
 
     // If on an author archive, use the author's display name.
   } elseif ( is_author() && $author = get_queried_object() ) {
+
     $title['title'] = $author->display_name . $sep . $site_title;
 
   }
+
   // Add a page number if necessary.
   if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
     $title['page'] = sprintf( __( 'Page %s' ), max( $paged, $page ) );
