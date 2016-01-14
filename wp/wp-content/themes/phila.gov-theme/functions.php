@@ -134,8 +134,18 @@ function phila_filter_title( $title ){
 
     if ($post_type->name == 'page') {
       $title['title'] = $page_title . $sep . $site_title;
+
     }else{
-      $title['title'] = $page_title . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+      if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' ) {
+
+        $cat = get_the_category();
+        $title['title'] = $page_title . $sep . $cat[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+      }else{
+
+        $title['title'] = $page_title . $sep . $post_type->labels->singular_name . $sep . $site_title;
+      }
     }
 
     // If on an author archive, use the author's display name.
