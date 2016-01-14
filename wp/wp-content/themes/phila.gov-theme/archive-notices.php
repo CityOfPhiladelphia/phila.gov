@@ -16,7 +16,7 @@ get_header();
       <header class="columns">
         <h1>
           <?php
-            _e( 'Notices ', 'phila-gov' );
+            post_type_archive_title(); 
 
           $taxonomy = 'topics';
           $queried_term = get_query_var($taxonomy);
