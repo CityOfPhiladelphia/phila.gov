@@ -38,8 +38,9 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'service_post',
       array(
         'labels' => array(
-          'name' => __( 'Service Page' ),
-          'singular_name' => __( 'Service Page' ),
+          'name' => __( 'Services' ),
+          'menu_name' => __( 'Service Page' ),
+          'singular_name' => __( 'Service' ),
           'add_new'   => __( 'Add Service Page' ),
           'all_items'   => __( 'All Service Pages' ),
           'add_new_item' => __( 'Add Service Page' ),
@@ -69,7 +70,7 @@ class Phila_Gov_Custom_Post_Types{
         'labels' => array(
           'name' => __( 'Departments' ),
           'menu_name' => __('Department Site'),
-          'singular_name' => __( 'Department Site' ),
+          'singular_name' => __( 'Department' ),
           'add_new'   => __( 'Add a Page' ),
           'all_items'   => __( 'All Pages' ),
           'add_new_item' => __( 'Add a Department Page' ),
