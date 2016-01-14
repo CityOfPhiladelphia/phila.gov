@@ -105,51 +105,50 @@ function phila_filter_title( $title ){
     'title' => ''
   );
 
-
   // If it's a 404 page, use a "Page not found" title.
   if ( is_404() ) {
-      $title['title'] = __( 'Page not found' );
-
-  // If it's a search, use a dynamic search results title.
-  } elseif ( is_search() ) {
-    /* translators: %s: search phrase */
-    $title['title'] = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
+    $title['title'] = __( 'Page not found' ) . $sep . $site_title;
 
   // If on the home or front page, use the site title.
   } elseif ( is_home() && is_front_page() ) {
-      $title['title'] = get_bloginfo( 'name', 'display' );
+    $title['title'] = get_bloginfo( 'name', 'display' ) . $sep . $site_title;
 
   }elseif ( is_post_type_archive() ){
 
-    $title['title'] = post_type_archive_title('', false);
+    if( is_category() ) {
+
+      $cat = get_the_category();
+      $title['title'] = post_type_archive_title('', false) . $sep . $cat[0]->name . $sep . $site_title;
+
+    }else{
+      $title['title'] = post_type_archive_title('', false) . $sep . $site_title;
+    }
 
   } // If on a taxonomy archive, use the term title.
    elseif ( is_tax() ) {
-    $title['title'] = single_term_title( '', false );
+
+    $tax_name = get_taxonomy( get_query_var( 'taxonomy' ) );
+    $title['title'] = single_term_title( '', false ) . $sep . $tax_name->labels->name . $sep . $site_title;
 
   }elseif ( $post_type ) {
 
-    $title['title'] = "$page_title $sep" . $post_type->labels->singular_name;
-
+    if ($post_type->name == 'page') {
+      $title['title'] = $page_title . $sep . $site_title;
+    }else{
+      $title['title'] = $page_title . $sep . $post_type->labels->singular_name . $sep . $site_title;
+    }
 
     // If on an author archive, use the author's display name.
   } elseif ( is_author() && $author = get_queried_object() ) {
-    $title['title'] = $author->display_name;
-  }
+    $title['title'] = $author->display_name . $sep . $site_title;
 
+  }
   // Add a page number if necessary.
   if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-        $title['page'] = sprintf( __( 'Page %s' ), max( $paged, $page ) );
-    }
+    $title['page'] = sprintf( __( 'Page %s' ), max( $paged, $page ) );
+  }
 
-    // Append the description or site title to give context.
-   if ( is_home() && is_front_page() ) {
-       $title['tagline'] = get_bloginfo( 'description', 'display' );
-   } else {
-       $title['site'] = get_bloginfo( 'name', 'display' );
-   }
-
-  $title = implode( " $sep ", array_filter( $title ) );
+  $title = implode( "$sep", array_filter( $title ) );
 
   return $title;
 }
