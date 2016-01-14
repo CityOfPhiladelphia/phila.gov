@@ -3,10 +3,10 @@
 
 # phila.gov
 
-Where the pieces are pulled together for phila.gov deployment.
+The phila.gov site is WordPress running behind Nginx on an AWS instance. The entire machine setup (the whole stack) is kept in this repo. 
 
 
-## Running a test instance
+## Running a test AWS instance
 
 1. [Install joia](https://github.com/gsf/joia#install)
 2. Create .env file with these vars:
