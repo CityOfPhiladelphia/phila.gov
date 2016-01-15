@@ -15,7 +15,8 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
     if ( $this->determine_page_level() ){
-      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ) );
+      //for some reason, this priority needs to be lower than all the others?
+      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
       add_action( 'admin_print_styles', array($this, 'hide_wysiwyg_on_department_home' ) );
       add_action( 'init', array($this, 'no_wpautop_on_department_homepages' ) );
       add_filter( 'user_can_richedit', array($this, 'hide_visual_editor_department_home' )  );
@@ -42,6 +43,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   function phila_register_department_meta_boxes( $meta_boxes ){
     $prefix = 'phila_';
+
     $meta_boxes[] = array(
       'id'       => 'departments',
       'title'    => 'Department Information',
@@ -60,7 +62,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         ),
         array(
           'name'  => 'External URL of Department',
-          'desc'  => 'If the department does not live on this website, enter the location here. Eg. http://phila.gov/health/',
+          'desc'  => 'If the department does not live on this website, enter the location here. Eg. http://phila.gov/health/. <br>If the department lives off-site, then the transition template is displayed, instead of the body content.',
           'id'    => $prefix . 'dept_url',
           'type'  => 'URL',
           'class' => 'dept-url',
