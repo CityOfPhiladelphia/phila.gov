@@ -29,6 +29,7 @@ class PhilaGovDepartmentAuthorMedia {
       add_filter( 'mla_media_modal_query_final_terms', 'PhilaGovDepartmentAuthorMedia::filter_media_modal_query_final_terms', 10, 1 );
 
     }
+    add_filter('mla_update_attachment_metadata_prefilter', 'PhilaGovDepartmentAuthorMedia::mla_update_attachment_metadata_prefilter_filter', 10, 3);
   }
 
   /**
@@ -90,5 +91,28 @@ class PhilaGovDepartmentAuthorMedia {
 
     return $request;
 
+  }
+
+  /**
+   * @param    array    attachment metadata
+   * @param    integer  The Post ID of the new/updated attachment
+   * @param    array    Processing options, e.g., 'is_upload'
+   *
+   * @return    array    updated attachment metadata
+   */
+  function mla_update_attachment_metadata_prefilter_filter( $data, $post_id, $options ) {
+
+    error_log( 'MLAMappingHooksExample::mla_update_attachment_metadata_prefilter_filter $data = ' . var_export( $data, true ), 0 );
+    error_log( 'MLAMappingHooksExample::mla_update_attachment_metadata_prefilter_filter $post_id = ' . var_export( $post_id, true ), 0 );
+    error_log( 'MLAMappingHooksExample::mla_update_attachment_metadata_prefilter_filter $options = ' . var_export( $options, true ), 0 );
+
+    if ( $options['is_upload'] ) {
+      // array of int = hierarchical, comma-delimited string = non-hierarchical.
+      $term_ids =  array( 115 );
+      $result = wp_set_post_terms( $post_id, $term_ids, 'category' );
+
+      return $data;
+
+    }
   }
 }
