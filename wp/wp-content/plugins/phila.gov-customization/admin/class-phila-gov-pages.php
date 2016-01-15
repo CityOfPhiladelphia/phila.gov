@@ -11,7 +11,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
     add_action( 'admin_init', array( $this, 'determine_page_level' ) );
 
     if ( $this->determine_page_level() ){
-      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_page_meta_boxes' ) );
+      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_page_meta_boxes' ), 2 );
     }
 
   }
@@ -54,7 +54,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
        array(
         'name' => 'Browse summary',
         'id'   => $prefix . 'page_desc',
-        'type' => 'textarea'
+        'type' => 'textarea',
       ),
      ),
     );
