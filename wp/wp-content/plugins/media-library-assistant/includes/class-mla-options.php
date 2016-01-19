@@ -320,7 +320,7 @@ class MLAOptions {
 	 * @return	void
 	 */
 	private static function _load_option_templates() {
-		MLAOptions::$mla_option_templates = MLAData::mla_load_template( 'mla-option-templates.tpl' );
+		MLAOptions::$mla_option_templates = MLACore::mla_load_template( 'mla-option-templates.tpl' );
 
 		/* 	
 		 * Load the default templates

@@ -96,7 +96,9 @@ add_filter('pre_get_document_title', 'phila_filter_title');
 function phila_filter_title( $title ){
   global $post;
   global $page, $paged;
-  $page_title = get_the_title( $post->ID );
+  if (isset( $post->ID )  ) {
+    $page_title = get_the_title( $post->ID );
+  }
   $sep = ' | ';
   $site_title = get_bloginfo( 'name' );
   $post_type = get_post_type_object( get_post_type( $post ) );

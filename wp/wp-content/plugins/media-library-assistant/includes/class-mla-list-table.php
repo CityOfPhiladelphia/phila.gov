@@ -151,16 +151,17 @@ class MLA_List_Table extends WP_List_Table {
 	 * @since 1.20
 	 *
 	 * @param	integer	currently selected term_id || zero (default)
+	 * @param	array	additional wp_dropdown_categories options; default empty
 	 *
 	 * @return	string	HTML markup for dropdown box
 	 */
-	public static function mla_get_taxonomy_filter_dropdown( $selected = 0 ) {
+	public static function mla_get_taxonomy_filter_dropdown( $selected = 0, $dropdown_options = array() ) {
 		$dropdown = '';
 		$tax_filter =  MLACore::mla_taxonomy_support('', 'filter');
 
 		if ( ( '' != $tax_filter ) && ( is_object_in_taxonomy( 'attachment', $tax_filter ) ) ) {
 			$tax_object = get_taxonomy( $tax_filter );
-			$dropdown_options = array(
+			$dropdown_options = array_merge( array(
 				'show_option_all' => __( 'All', 'media-library-assistant' ) . ' ' . $tax_object->labels->name,
 				'show_option_none' => __( 'No', 'media-library-assistant' ) . ' ' . $tax_object->labels->name,
 				'orderby' => 'name',
@@ -181,7 +182,7 @@ class MLA_List_Table extends WP_List_Table {
 				'pad_counts' => false,
 				'taxonomy' => $tax_filter,
 				'hide_if_empty' => false 
-			);
+			), $dropdown_options );
 
 			ob_start();
 			wp_dropdown_categories( $dropdown_options );
@@ -338,13 +339,6 @@ class MLA_List_Table extends WP_List_Table {
 	 * @return	array	list of table columns
 	 */
 	public static function mla_manage_columns_filter( ) {
-		/*
-		 * For WP 4.3+ icon will be merged with the first visible preferred column
-		 */
-		if ( MLATest::$wp_4dot3_plus ) {
-			unset( self::$default_columns['icon'] );
-		}
-
 		return apply_filters( 'mla_list_table_get_columns', self::$default_columns );
 	}
 
@@ -1721,34 +1715,64 @@ class MLA_List_Table extends WP_List_Table {
 	 * 
 	 * @param	string	'top' or 'bottom', i.e., above or below the table rows
 	 *
-	 * @return	array	Contains all the bulk actions: 'slugs'=>'Visible Titles'
+	 * @return	void
 	 */
 	function extra_tablenav( $which ) {
-		echo ( '<div class="alignleft actions">' );
-
+		/*
+		 * Decide which actions to show
+		 */
 		if ( 'top' == $which ) {
-			$this->months_dropdown( 'attachment' );
-
-			echo self::mla_get_taxonomy_filter_dropdown( isset( $_REQUEST['mla_filter_term'] ) ? $_REQUEST['mla_filter_term'] : 0 );
-
-			submit_button( __( 'Filter', 'media-library-assistant' ), 'secondary', 'mla_filter', false, array(
-				 'id' => 'post-query-submit' 
-			) );
+			$actions = array( 'month', 'mla_filter_term', 'mla_filter' );
 
 			$term_search_taxonomies = MLACore::mla_supported_taxonomies('term-search');
 			if ( ! empty( $term_search_taxonomies ) ) {
-				submit_button( __( 'Terms Search', 'media-library-assistant' ), 'secondary', 'mla_filter', false, array(
-					 'id' => 'mla-terms-search-open', 'onclick' => 'mlaTaxonomy.termsSearch.open()' 
-				) );
+				$actions[] = 'terms_search';
 			}
+		} else {
+			$actions = array();
 		}
 
 		if ( self::mla_submenu_arguments( true ) != self::mla_submenu_arguments( false ) ) {
-			submit_button( __( 'Clear Filter-by', 'media-library-assistant' ), 'button apply', 'clear_filter_by', false );
+			$actions[] = 'clear_filter_by';
+		}
+		
+		if ( $this->is_trash && current_user_can( 'edit_others_posts' ) ) {
+			$actions[] = 'delete_all';
 		}
 
-		if ( $this->is_trash && current_user_can( 'edit_others_posts' ) ) {
-			submit_button( __( 'Empty Trash', 'media-library-assistant' ), 'button apply', 'delete_all', false );
+		$actions = apply_filters( 'mla_list_table_extranav_actions', $actions, $which );
+		
+		if ( empty( $actions ) ) {
+			return;
+		}
+
+		echo ( '<div class="alignleft actions">' );
+
+		foreach ( $actions as $action ) {
+			switch ( $action ) {
+				case 'month':
+					$this->months_dropdown( 'attachment' );
+					break;
+				case 'mla_filter_term':
+					echo self::mla_get_taxonomy_filter_dropdown( isset( $_REQUEST['mla_filter_term'] ) ? $_REQUEST['mla_filter_term'] : 0 );
+					break;
+				case 'mla_filter':
+					submit_button( __( 'Filter', 'media-library-assistant' ), 'secondary', 'mla_filter', false, array( 'id' => 'post-query-submit' ) );
+					break;
+				case 'terms_search':
+					submit_button( __( 'Terms Search', 'media-library-assistant' ), 'secondary', 'mla_terms_search', false, array(
+					 'id' => 'mla-terms-search-open', 'onclick' => 'mlaTaxonomy.termsSearch.open()' 
+				) );
+					break;
+				case 'clear_filter_by':
+					submit_button( __( 'Clear Filter-by', 'media-library-assistant' ), 'button apply', 'clear_filter_by', false );
+					break;
+				case 'delete_all':
+					submit_button( __( 'Empty Trash', 'media-library-assistant' ), 'button apply', 'delete_all', false );
+					break;
+				default:
+					do_action( 'mla_list_table_extranav_custom_action', $action, $which );
+			}
 		}
 
 		echo ( '</div>' );

@@ -1,72 +1,64 @@
 <?php
+
 /**
 * @package  phila.gov-customization
 * @since    0.5.6
 */
 
-/*
-* Install the filters at an early opportunity
-*/
 add_action('init', 'PhilaGovDepartmentAuthorMedia::initialize');
 
 class PhilaGovDepartmentAuthorMedia {
 
-	/**
-	 * @since 1.00
-	 *
-	 * @return	void
-	 */
+  public static function initialize() {
+    //only in admin
+    if ( ! is_admin() )
+      return;
 
-	public static function initialize() {
-		//only in admin
-		if ( ! is_admin() )
-			return;
+     if ( ! current_user_can( PHILA_ADMIN ) ){
 
-		/*
-		 * Defined in /media-library-assistant/includes/class-mla-data.php
-		 */
- 		if ( ! current_user_can( PHILA_ADMIN ) ){
-			add_filter( 'mla_media_modal_query_final_terms', 'PhilaGovDepartmentAuthorMedia::filter_media_modal_query_final_terms', 10, 1 );
+     /*
+      * Defined in /media-library-assistant/includes/class-mla-data.php
+      */
+      add_filter( 'mla_media_modal_query_final_terms', 'PhilaGovDepartmentAuthorMedia::filter_media_modal_query_final_terms', 10, 1 );
 
-		  add_filter( 'ajax_query_attachments_args', 'PhilaGovDepartmentAuthorMedia::show_current_user_attachments', 10, 1 );
-		}
-	}
+      /*
+      * Defined in /media-library-assistant/includes/class-mla-options.php
+      */
+      add_filter( 'mla_update_attachment_metadata_prefilter', 'PhilaGovDepartmentAuthorMedia::phila_mla_update_attachment_metadata_prefilter_filter', 10, 3 );
 
-	/**
-	* MLA Edit Media "Query Attachments" final terms Filter
-	*
-	* Changes the terms of the
-	* Media Manager Modal Window "Query Attachments" query
-	* after they are processed by the "Prepare List Table Query" handler.
-	*
-	* @since 1.01
-	*
-	* @param    array    WP_Query request prepared by "Prepare List Table Query"
-	*/
+    }
+  }
 
-	public static function filter_media_modal_query_final_terms( $request ) {
+  /**
+  * Get category slugs for later use
+  *
+  *
+  * @since 0.22.0
+  * @return array of category slugs matched by current user role
+  */
 
-		$categories_args = array(
-  		'type'                     => 'post',
-  		'child_of'                 => 0,
-  		'parent'                   => '',
-  		'orderby'                  => 'name',
-  		'order'                    => 'ASC',
-  		'hide_empty'               => 1,
-  		'hierarchical'             => 0,
-  		'taxonomy'                 => 'category',
-  		'pad_counts'               => false
-		);
+  public static function get_current_cat_slugs(){
+    $categories_args = array(
+      'type'                     => 'post',
+      'child_of'                 => 0,
+      'parent'                   => '',
+      'orderby'                  => 'name',
+      'order'                    => 'ASC',
+      'hide_empty'               => 1,
+      'hierarchical'             => 0,
+      'taxonomy'                 => 'category',
+      'pad_counts'               => false
+    );
 
-		$categories = get_categories( $categories_args );
+    $categories = get_categories( $categories_args );
 
-		$cat_slugs =[];
+    $cat_slugs =[];
 
-		//loop through and push slugs to $cat_slugs
-		foreach( $categories as $category ){
-			array_push( $cat_slugs, $category->slug );
-		}
-		//add category slugs to their own array
+    //loop through and push slugs to $cat_slugs
+    foreach( $categories as $category ){
+      array_push( $cat_slugs, $category->slug );
+    }
+    //add category slugs to their own array
 
     if ( is_user_logged_in() ){
       //define current_user, we should only do this when we are logged in
@@ -79,33 +71,67 @@ class PhilaGovDepartmentAuthorMedia {
       $current_user_cat_assignment = array_intersect( $all_user_roles_to_cats, $cat_slugs );
     }
 
-	  if ( isset( $request['tax_query'] ) ) {
-	    $tax_query = $request['tax_query'];
-	    $tax_query['relation'] = 'AND';
-	  } else {
-	    $tax_query = array();
-	  }
-		//sets the tax query with our current user slugs
-	  $tax_query[] = array( 'taxonomy' => 'category', 'operator' => 'IN', 'field' => 'slug', 'terms' => $current_user_cat_assignment);
-	  $request['tax_query'] = $tax_query;
-
-	  return $request;
-
-	}
+    return $current_user_cat_assignment;
+  }
 
   /**
-   * Only show attachments this user uploaded.
-   *
-   * @since 0.12.0
-   * @uses get_current_user_id() https://codex.wordpress.org/Function_Reference/get_current_user_id
-   * @return $cat_slugs array Returns an array of all categories.
-   */
+  * MLA Edit Media "Query Attachments" final terms Filter
+  *
+  * Changes the terms of the
+  * Media Manager Modal Window "Query Attachments" query
+  * after they are processed by the "Prepare List Table Query" handler.
+  *
+  * @since 1.01
+  *
+  * @param    array    WP_Query request prepared by "Prepare List Table Query"
+  * @uses get_current_cat_slugs
+  */
 
-  function show_current_user_attachments( $query ) {
-    $user_id = get_current_user_id();
-    if ( $user_id ) {
-      $query['author'] = $user_id;
+  public static function filter_media_modal_query_final_terms( $request ) {
+
+    $current_user_cat_assignment = PhilaGovDepartmentAuthorMedia::get_current_cat_slugs();
+
+    if ( isset( $request['tax_query'] ) ) {
+      $tax_query = $request['tax_query'];
+      $tax_query['relation'] = 'AND';
+    } else {
+      $tax_query = array();
     }
-    return $query;
-	}
+    //sets the tax query with our current user slugs
+    $tax_query[] = array( 'taxonomy' => 'category', 'operator' => 'IN', 'field' => 'slug', 'terms' => $current_user_cat_assignment);
+
+    $request['tax_query'] = $tax_query;
+
+    return $request;
+
+  }
+
+
+  /**
+    * MLA Edit Media "Query Attachments" final terms Filter
+    * @param    array    attachment metadata
+    * @param    integer  The Post ID of the new/updated attachment
+    * @param    array    Processing options, e.g., 'is_upload'
+    * @uses get_current_cat_slugs
+    *
+    * @return    array    updated attachment metadata
+  */
+  public static function phila_mla_update_attachment_metadata_prefilter_filter( $data, $post_id, $options ) {
+
+    $current_user_cat_assignment = PhilaGovDepartmentAuthorMedia::get_current_cat_slugs();
+
+    $single_id = implode('|', $current_user_cat_assignment );
+
+    $cat_id = get_category_by_slug( $single_id );
+
+    if ( $options['is_upload'] ) {
+
+      $term_ids = array( $cat_id->term_id );
+      $result = wp_set_object_terms( $post_id, $term_ids, 'category' );
+
+      return $result;
+   }
+
+  }
+
 }

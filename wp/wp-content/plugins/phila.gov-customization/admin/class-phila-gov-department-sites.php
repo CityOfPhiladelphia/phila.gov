@@ -30,13 +30,18 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
     global $pagenow;
 
     if ( ( is_admin() && 'post.php' == $pagenow ) ) {
-      $post = get_post( $_GET['post'] );
-      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
 
-      $children = get_pages( array( 'child_of' => $post_id ) );
+      if ( isset( $_GET['post'] ) ) {
 
-      if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
-        return true;
+        $post = get_post( $_GET['post'] );
+
+        $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+        $children = get_pages( array( 'child_of' => $post_id ) );
+
+        if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
+          return true;
+        }
       }
     }
   }

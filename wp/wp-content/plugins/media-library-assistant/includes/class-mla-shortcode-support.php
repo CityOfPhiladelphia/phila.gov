@@ -45,7 +45,7 @@ class MLAShortcode_Support {
 	 * @return	void
 	 */
 	public static function mla_load_custom_templates() {
-		MLAShortcode_Support::$mla_custom_templates = MLAData::mla_load_template( 'mla-custom-templates.tpl' );
+		MLAShortcode_Support::$mla_custom_templates = MLACore::mla_load_template( 'mla-custom-templates.tpl' );
 
 		/* 	
 		 * Load the default templates
@@ -207,15 +207,16 @@ class MLAShortcode_Support {
 	}
 
 	/**
-	 * Make sure $attr is an array and repair line-break damage
+	 * Make sure $attr is an array, repair line-break damage, merge with $content
 	 *
 	 * @since 2.20
 	 *
-	 * @param	mixed	array or string containing shortcode attributes
+	 * @param	mixed	$attr Array or string containing shortcode attributes
+	 * @param	string	$content Optional content for enclosing shortcodes; might be used with mla_alt_shortcode
 	 *
 	 * @return	array	clean attributes array
 	 */
-	private static function _validate_attributes( $attr ) {
+	private static function _validate_attributes( $attr, $content = NULL ) {
 		if ( empty( $attr ) ) {
 			$attr = array();
 		} elseif ( is_string( $attr ) ) {
@@ -223,40 +224,63 @@ class MLAShortcode_Support {
 		}
 
 		// Numeric keys indicate parse errors
-		$is_valid = true;
+		$not_valid = false;
 		foreach ( $attr as $key => $value ) {
 			if ( is_numeric( $key ) ) {
-				$is_valid = false;
+				$not_valid = true;
 				break;
 			}
 		}
 
-		if ( $is_valid ) {
-			return $attr;
-		}
-
-		/*
-		 * Found an error, e.g., line break(s) among the atttributes.
-		 * Try to reconstruct the input string without them.
-		 */
-		$new_attr = '';
-		foreach ( $attr as $key => $value ) {
-			$break_tag = strpos( $value, '<br' );
-			if ( ( false !== $break_tag ) && ( ($break_tag + 3) == strlen( $value ) ) ) {
-				$value = substr( $value, 0, ( strlen( $value ) - 3) );
-			}
-
-			if ( is_numeric( $key ) ) {
-				if ( '/>' !== $value ) {
-					$new_attr .= $value . ' ';
+		if ( $not_valid ) {
+			/*
+			 * Found an error, e.g., line break(s) among the atttributes.
+			 * Try to reconstruct the input string without them.
+			 */
+			$new_attr = '';
+			foreach ( $attr as $key => $value ) {
+				$break_tag = strpos( $value, '<br' );
+				if ( ( false !== $break_tag ) && ( ($break_tag + 3) == strlen( $value ) ) ) {
+					$value = substr( $value, 0, ( strlen( $value ) - 3) );
 				}
-			} else {
-				$delimiter = ( false === strpos( $value, '"' ) ) ? '"' : "'";
-				$new_attr .= $key . '=' . $delimiter . $value . $delimiter . ' ';
+	
+				if ( is_numeric( $key ) ) {
+					if ( '/>' !== $value ) {
+						$new_attr .= $value . ' ';
+					}
+				} else {
+					$delimiter = ( false === strpos( $value, '"' ) ) ? '"' : "'";
+					$new_attr .= $key . '=' . $delimiter . $value . $delimiter . ' ';
+				}
 			}
+			
+			$attr = shortcode_parse_atts( $new_attr );
+			
+			/*
+			 * Remove empty values and still-invalid parameters
+			 */
+			$new_attr = '';
+			foreach ( $attr as $key => $value ) {
+				if ( is_numeric( $key ) || empty( $value ) ) {
+					continue;
+				}
+				
+				$new_attr[ $key ] = $value;
+			}
+			
+			$attr = $new_attr;
+		} // not_valid
+		
+		/*
+		 * Look for parameters in an enclosing shortcode
+		 */
+		if ( ! ( empty( $content ) || isset( $attr['mla_alt_shortcode'] ) ) ) {
+			$content = str_replace( array( '&#8216;', '&#8217;', '&#8221;', '&#8243;', '<br />', '<p>', '</p>', "\r", "\n" ), array( '\'', '\'', '"', '"', ' ', ' ', ' ', ' ', ' ' ), $content );
+			$new_attr = shortcode_parse_atts( $content );
+			$attr = array_merge( $attr, $new_attr );
 		}
-
-		return shortcode_parse_atts( $new_attr );
+		
+		return $attr;
 	}
 
 	/**
@@ -277,8 +301,8 @@ class MLAShortcode_Support {
 	 *
 	 * @since 2.20
 	 *
-	 * @param array Attributes of the shortcode
-	 * @param string Optional content for enclosing shortcodes; used with mla_alt_shortcode
+	 * @param array $attr Attributes of the shortcode
+	 * @param string $content Optional content for enclosing shortcodes; used with mla_alt_shortcode
 	 *
 	 * @return string HTML content to display gallery.
 	 */
@@ -289,14 +313,26 @@ class MLAShortcode_Support {
 		 * Some do_shortcode callers may not have a specific post in mind
 		 */
 		if ( ! is_object( $post ) ) {
-			$post = (object) array( 'ID' => 0 );
+			$post = (object) array( 
+				'ID' => 0,
+				'post_author' => '0',
+				'post_date' => '',
+				'post_content' => '',
+				'post_title' => '',
+				'post_excerpt' => '',
+				'post_status' => '',
+				'post_name' => '',
+				'post_modified' => '',
+				'guid' => '',
+				'post_type' => '',
+			);
 		}
 
 		/*
 		 * Make sure $attr is an array, even if it's empty,
 		 * and repair damage caused by link-breaks in the source text
 		 */
-		$attr = self::_validate_attributes( $attr );
+		$attr = self::_validate_attributes( $attr, $content );
 
 		/*
 		 * Filter the attributes before $mla_page_parameter and "request:" prefix processing.
@@ -1271,6 +1307,8 @@ class MLAShortcode_Support {
 					 * Look for the "Featured Image" as an alternate thumbnail for PDFs, etc.
 					 */
 					$feature = get_the_post_thumbnail( $attachment->ID, $size, array( 'class' => 'attachment-thumbnail' ) );
+					$feature = apply_filters( 'mla_gallery_featured_image', $feature, $attachment, $size, $item_values );
+					
 					if ( ! empty( $feature ) ) {
 						$match_count = preg_match_all( '# width=\"([^\"]+)\" height=\"([^\"]+)\" src=\"([^\"]+)\" #', $feature, $matches, PREG_OFFSET_CAPTURE );
 						if ( ! ( ( $match_count == false ) || ( $match_count == 0 ) ) ) {
@@ -2327,15 +2365,16 @@ class MLAShortcode_Support {
 	 * @since 2.20
 	 *
 	 * @param array $attr Attributes of the shortcode.
+	 * @param string $content Optional content for enclosing shortcodes
 	 *
 	 * @return string HTML content to display the tag cloud.
 	 */
-	public static function mla_tag_cloud_shortcode( $attr ) {
+	public static function mla_tag_cloud_shortcode( $attr, $content = NULL ) {
 		/*
 		 * Make sure $attr is an array, even if it's empty,
 		 * and repair damage caused by link-breaks in the source text
 		 */
-		$attr = self::_validate_attributes( $attr );
+		$attr = self::_validate_attributes( $attr, $content );
 
 		/*
 		 * The 'array' format makes no sense in a shortcode

@@ -3,7 +3,7 @@
  * Provides an example of hooking the filters provided by the MLA_List_Table class
  *
  * @package MLA List Table Hooks Example
- * @version 1.07
+ * @version 1.08
  */
 
 /*
@@ -11,7 +11,7 @@ Plugin Name: MLA List Table Hooks Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Provides an example of hooking the filters provided by the MLA_List_Table class
 Author: David Lingren
-Version: 1.07
+Version: 1.08
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
 Copyright 2014 - 2015 David Lingren
@@ -120,6 +120,8 @@ class MLAListTableHooksExample {
 		add_filter( 'mla_list_table_get_hidden_columns', 'MLAListTableHooksExample::mla_list_table_get_hidden_columns', 10, 1 );
 		add_filter( 'mla_list_table_get_sortable_columns', 'MLAListTableHooksExample::mla_list_table_get_sortable_columns', 10, 1 );
 		add_filter( 'mla_list_table_get_bulk_actions', 'MLAListTableHooksExample::mla_list_table_get_bulk_actions', 10, 1 );
+		add_filter( 'mla_list_table_extranav_actions', 'MLAListTableHooksExample::mla_list_table_extranav_actions', 10, 2 );
+		add_action( 'mla_list_table_extranav_custom_action', 'MLAListTableHooksExample::mla_list_table_extranav_custom_action', 10, 2 );
 		add_filter( 'mla_list_table_column_default', 'MLAListTableHooksExample::mla_list_table_column_default', 10, 3 );
 
 		add_filter( 'mla_list_table_submenu_arguments', 'MLAListTableHooksExample::mla_list_table_submenu_arguments', 10, 2 );
@@ -812,6 +814,38 @@ class MLAListTableHooksExample {
 	 */
 	public static function mla_list_table_get_bulk_actions( $actions ) {
 		//error_log( 'MLAListTableHooksExample::mla_list_table_get_bulk_actions $actions = ' . var_export( $actions, true ), 0 );
+		return $actions;
+	} // mla_list_table_get_bulk_actions
+
+	/**
+	 * Filter the MLA_List_Table "extra tablenav" actions list
+	 *
+	 * This MLA-specific filter gives you an opportunity to add, remove and/or re-order the
+	 * controls added to the top & bottom table navigation areas.
+	 *
+	 * @since 1.08
+	 *
+	 * @param	array	$actions	An array of extranav action labels.
+	 * @param	string	$which		'top' or 'bottom'.
+	 */
+	public static function mla_list_table_extranav_actions( $actions, $which ) {
+		error_log( "MLAListTableHooksExample::mla_list_table_extranav_actions( {$which} ) $actions = " . var_export( $actions, true ), 0 );
+		return $actions;
+	} // mla_list_table_get_bulk_actions
+
+	/**
+	 * Supply a custom MLA_List_Table "extra tablenav" action
+	 *
+	 * Called when the MLA_List_Table can't find a value for an extranav action.
+	 * Echo the HTML content of the custom action, return nothing.
+	 *
+	 * @since 1.08
+	 *
+	 * @param	array	$action	extranav action label.
+	 * @param	string	$which	'top' or 'bottom'.
+	 */
+	public static function mla_list_table_extranav_actions( $actions, $which ) {
+		error_log( "MLAListTableHooksExample::mla_list_table_extranav_actions( {$which} ) $actions = " . var_export( $actions, true ), 0 );
 		return $actions;
 	} // mla_list_table_get_bulk_actions
 

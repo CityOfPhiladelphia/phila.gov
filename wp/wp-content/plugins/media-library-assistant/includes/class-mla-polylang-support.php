@@ -75,6 +75,7 @@ class MLA_Polylang {
 		 /*
 		  * Defined in /media-library-assistant/includes/class-mla-media-modal.php
 		  */
+		add_filter( 'mla_media_modal_terms_options', 'MLA_Polylang::mla_media_modal_terms_options', 10, 1 );
 		add_action( 'mla_media_modal_begin_update_compat_fields', 'MLA_Polylang::mla_media_modal_begin_update_compat_fields', 10, 1 );
 		add_filter( 'mla_media_modal_update_compat_fields_terms', 'MLA_Polylang::mla_media_modal_update_compat_fields_terms', 10, 4 );
 		add_filter( 'mla_media_modal_end_update_compat_fields', 'MLA_Polylang::mla_media_modal_end_update_compat_fields', 10, 3 );
@@ -187,7 +188,7 @@ class MLA_Polylang {
 		}
 
 		if ( defined('DOING_AJAX') && DOING_AJAX ) {
-			add_action( 'wp_ajax_' . 'mla-polylang-quick-translate', 'MLA_Polylang::quick_translate' );
+			add_action( 'wp_ajax_' . MLA_Polylang::MLA_PLL_QUICK_TRANSLATE, 'MLA_Polylang::quick_translate' );
 		}
 
 		/*
@@ -1415,6 +1416,41 @@ class MLA_Polylang {
 	} // edit_attachment
 
 	/**
+	 * Return terms in all languages when "Activate languages and translations for media"
+	 * is disabled
+	 *
+	 * @since 2.22
+	 *
+	 * @param	array	( 'class' => $class_array, 'value' => $value_array, 'text' => $text_array )
+	 */
+	public static function mla_media_modal_terms_options( $term_values ) {
+		global $polylang;
+		static $in_process = false;
+
+		// Avoid recursion loop		
+		if ( $in_process ) {
+			return $term_values;
+		}
+
+		/*
+		 * Check Polylang Languages/Settings "Activate languages and translations for media" option
+		 */
+		if ( isset( $polylang->options['media_support'] ) && ! $polylang->options['media_support'] ) {
+			$in_process = true;
+			$dropdown_options = array( 'pll_get_terms_not_translated' => true );
+			$term_values = MLAModal::mla_terms_options( MLA_List_Table::mla_get_taxonomy_filter_dropdown( 0, $dropdown_options ) );
+			$in_process = false;
+		}
+
+		/*
+		 * $class_array => HTML class attribute value for each option
+		 * $value_array => HTML value attribute value for each option
+		 * $text_array => HTML text content for each option
+		 */
+		return $term_values;
+	} // mla_media_modal_terms_options
+
+	/**
 	 * Captures the existing term assignments before the  
 	 * Media Manager Modal Window ATTACHMENT DETAILS taxonomy meta boxes updates
 	 *
@@ -1822,7 +1858,7 @@ class MLA_Polylang {
 		/*
 		 * Add the Quick and Bulk Translate Markup
 		 */
-		$page_template_array = MLAData::mla_load_template( 'mla-polylang-support.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'mla-polylang-support.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			error_log( 'ERROR: mla-polylang-support.tpl path = ' . var_export( plugin_dir_path( __FILE__ ) . 'mla-polylang-support.tpl', true ), 0 );
 			error_log( 'ERROR: mla-polylang-support.tpl non-array result = ' . var_export( $page_template_array, true ), 0 );
@@ -2234,6 +2270,8 @@ class MLA_Polylang {
 	 * @return	void
 	 */
 	public static function mla_localize_language_option_definitions() {
+		global $polylang;
+
 		MLA_Polylang::$mla_language_option_definitions = array (
 			'media_assistant_table_header' =>
 				array('tab' => 'language',
@@ -2258,7 +2296,7 @@ class MLA_Polylang {
 				array('tab' => 'language',
 					'name' => __( 'Quick Translate', 'media-library-assistant' ),
 					'type' => 'checkbox',
-					'std' => 'unchecked',
+					'std' => 'checked',
 					'help' => __( 'Check this option to add a Quick Translate rollover action to the Media/Assistant submenu table.', 'media-library-assistant' )),
 
 			'bulk_translate' =>
@@ -2294,6 +2332,15 @@ class MLA_Polylang {
 					'std' => 'checked',
 					'help' => __( 'When mapping IPTC/EXIF metadata to taxonomy terms, make them available in all languages.'), 'media-library-assistant' ),
 		);
+		
+		/*
+		 * Respect the Polylang Languages/Settings "Activate languages and translations for media" option.
+		 */
+		if ( isset( $polylang->options['media_support'] ) && ! $polylang->options['media_support'] ) {
+			MLA_Polylang::$mla_language_option_definitions['term_assignment']['std'] = 'unchecked';
+			MLA_Polylang::$mla_language_option_definitions['term_synchronization']['std'] = 'unchecked';
+			MLA_Polylang::$mla_language_option_definitions['term_mapping_replication']['std'] = 'unchecked';
+		}
 	}
 
 	/**
@@ -2355,7 +2402,7 @@ class MLA_Polylang {
 		}
 
 		$page_values['options_list'] = $options_list;
-		$page_template = MLAData::mla_load_template( 'admin-display-language-tab.tpl' );
+		$page_template = MLACore::mla_load_template( 'admin-display-language-tab.tpl' );
 		$page_content['body'] = MLAData::mla_parse_template( $page_template, $page_values );
 		return $page_content;
 	}

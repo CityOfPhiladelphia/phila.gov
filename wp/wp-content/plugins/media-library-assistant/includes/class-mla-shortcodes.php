@@ -60,8 +60,8 @@ class MLAShortcodes {
 	 *
 	 * @since .50
 	 *
-	 * @param array Attributes of the shortcode
-	 * @param string Optional content for enclosing shortcodes; used with mla_alt_shortcode
+	 * @param array $attr Attributes of the shortcode
+	 * @param string $content Optional content for enclosing shortcodes; used with mla_alt_shortcode
 	 *
 	 * @return string HTML content to display gallery.
 	 */
@@ -76,20 +76,21 @@ class MLAShortcodes {
 	/**
 	 * The MLA Tag Cloud shortcode.
 	 *
-	 * Compatibility shim for MLAShortcode_Support::mla_gallery_shortcode
+	 * Compatibility shim for MLAShortcode_Support::mla_tag_cloud_shortcode
 	 *
 	 * @since 1.60
 	 *
 	 * @param array $attr Attributes of the shortcode.
+	 * @param string $content Optional content for enclosing shortcodes
 	 *
 	 * @return string HTML content to display the tag cloud.
 	 */
-	public static function mla_tag_cloud_shortcode( $attr ) {
+	public static function mla_tag_cloud_shortcode( $attr, $content = NULL ) {
 		if ( !class_exists( 'MLAShortcode_Support' ) ) {
 			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcode-support.php' );
 		}
 
-		return MLAShortcode_Support::mla_tag_cloud_shortcode( $attr );
+		return MLAShortcode_Support::mla_tag_cloud_shortcode( $attr, $content );
 	}
 
 	/**

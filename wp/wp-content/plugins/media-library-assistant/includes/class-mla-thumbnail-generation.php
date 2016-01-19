@@ -141,8 +141,8 @@ class MLA_Thumbnail {
 			return $template_array;
 		}
 
-		$template_array = MLAData::mla_load_template( $file_name );
-		$help_array = MLAData::mla_load_template( 'help-for-thumbnail_generation.tpl' );
+		$template_array = MLACore::mla_load_template( $file_name );
+		$help_array = MLACore::mla_load_template( 'help-for-thumbnail_generation.tpl' );
 
 		if ( isset( $template_array['sidebar'] ) ) {
 			$template_array['sidebar'] .= $help_array['sidebar'];
@@ -416,7 +416,7 @@ class MLA_Thumbnail {
 		/*
 		 * Add the Thumbnail Generation Markup
 		 */
-		$page_template_array = MLAData::mla_load_template( 'mla-thumbnail-generation.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'mla-thumbnail-generation.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			error_log( 'ERROR: mla-thumbnail-generation.tpl path = ' . var_export( plugin_dir_path( __FILE__ ) . 'mla-thumbnail-generation.tpl', true ), 0 );
 			error_log( 'ERROR: mla-thumbnail-generation.tpl non-array result = ' . var_export( $page_template_array, true ), 0 );

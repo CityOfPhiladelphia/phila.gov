@@ -1774,7 +1774,7 @@ class MLA_WPML {
 		}
 
 		$page_values['options_list'] = $options_list;
-		$page_template = MLAData::mla_load_template( 'admin-display-language-tab.tpl' );
+		$page_template = MLACore::mla_load_template( 'admin-display-language-tab.tpl' );
 		$page_content['body'] = MLAData::mla_parse_template( $page_template, $page_values );
 		return $page_content;
 	}

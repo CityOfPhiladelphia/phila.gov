@@ -1543,6 +1543,135 @@ class MLACore {
 	}
 
 	/**
+	 * Load an HTML template from a file
+	 *
+	 * Loads a template to a string or a multi-part template to an array.
+	 * Multi-part templates are divided by comments of the form <!-- template="key" -->,
+	 * where "key" becomes the key part of the array.
+	 *
+	 * @since 0.1
+	 *
+	 * @param	string 	Complete path and/or name of the template file, option name or the raw template
+	 * @param	string 	Optional type of template source; 'path', 'file' (default), 'option', 'string'
+	 *
+	 * @return	string|array|false|NULL
+	 *			string for files that do not contain template divider comments,
+	 *			array for files containing template divider comments,
+	 *			false if file or option does not exist,
+	 *			NULL if file could not be loaded.
+	 */
+	public static function mla_load_template( $source, $type = 'file' ) {
+		switch ( $type ) {
+			case 'file':
+				/*
+				 * Look in three places, in this order:
+				 * 1) Custom templates
+				 * 2) Language-specific templates
+				 * 3) Standard templates
+				 */
+				$text_domain = 'media-library-assistant';
+				$locale = apply_filters( 'mla_plugin_locale', get_locale(), $text_domain );
+				$path = trailingslashit( WP_LANG_DIR ) . $text_domain . '/tpls/' . $locale . '/' . $source;
+				if ( file_exists( $path ) ) {
+					$source = $path;
+				} else {
+					$path = MLA_PLUGIN_PATH . 'languages/tpls/' . $locale . '/' . $source;
+					if ( file_exists( $path ) ) {
+						$source = $path;
+					} else {
+						$source = MLA_PLUGIN_PATH . 'tpls/' . $source;
+					}
+				}
+				// fallthru
+			case 'path':
+				if ( !file_exists( $source ) ) {
+					return false;
+				}
+
+				$template = file_get_contents( $source, true );
+				if ( $template == false ) {
+					/* translators: 1: ERROR tag 2: path and file name */
+					error_log( sprintf( _x( '%1$s: mla_load_template file "%2$s" not found.', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), var_export( $source, true ) ), 0 );
+					return NULL;
+				}
+				break;
+			case 'option':
+				$template = MLACore::mla_get_option( $source );
+				if ( $template == false ) {
+					return false;
+				}
+				break;
+			case 'string':
+				$template = $source;
+				if ( empty( $template ) ) {
+					return false;
+				}
+				break;
+			default:
+				/* translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string */
+				error_log( sprintf( _x( '%1$s: mla_load_template file "%2$s" bad source type "%3$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $source, $type ), 0 );
+				return NULL;
+		}
+
+		$match_count = preg_match_all( '#\<!-- template=".+" --\>#', $template, $matches, PREG_OFFSET_CAPTURE );
+
+		if ( ( $match_count == false ) || ( $match_count == 0 ) ) {
+			return $template;
+		}
+
+		$matches = array_reverse( $matches[0] );
+
+		$template_array = array();
+		$current_offset = strlen( $template );
+		foreach ( $matches as $key => $value ) {
+			$template_key = preg_split( '#"#', $value[0] );
+			$template_key = $template_key[1];
+			$template_value = substr( $template, $value[1] + strlen( $value[0] ), $current_offset - ( $value[1] + strlen( $value[0] ) ) );
+			/*
+			 * Trim exactly one newline sequence from the start of the value
+			 */
+			if ( 0 === strpos( $template_value, "\r\n" ) ) {
+				$offset = 2;
+			} elseif ( 0 === strpos( $template_value, "\n\r" ) ) {
+				$offset = 2;
+			} elseif ( 0 === strpos( $template_value, "\n" ) ) {
+				$offset = 1;
+			} elseif ( 0 === strpos( $template_value, "\r" ) ) {
+				$offset = 1;
+			} else {
+				$offset = 0;
+			}
+
+			$template_value = substr( $template_value, $offset );
+
+			/*
+			 * Trim exactly one newline sequence from the end of the value
+			 */
+			$length = strlen( $template_value );
+			if ( $length > 2) {
+				$postfix = substr( $template_value, ($length - 2), 2 );
+			} else {
+				$postfix = $template_value;
+			}
+
+			if ( 0 === strpos( $postfix, "\r\n" ) ) {
+				$length -= 2;
+			} elseif ( 0 === strpos( $postfix, "\n\r" ) ) {
+				$length -= 2;
+			} elseif ( 0 === strpos( $postfix, "\n" ) ) {
+				$length -= 1;
+			} elseif ( 0 === strpos( $postfix, "\r" ) ) {
+				$length -= 1;
+			}
+
+			$template_array[ $template_key ] = substr( $template_value, 0, $length );
+			$current_offset = $value[1];
+		} // foreach $matches
+
+		return $template_array;
+	}
+
+	/**
 	 * Determine MLA support for a taxonomy, handling the special case where the
 	 * settings are being updated or reset.
  	 *
@@ -2243,6 +2372,49 @@ class MLACore {
 				break;
 		}
 	}
+	
+	/**
+	 * Admin Columns support storage model object for the Media/Assistant submenu
+	 *
+	 * @since 2.22
+	 *
+	 * @var	object
+	 */
+	public static $admin_columns_storage_model = NULL;
+
+	/**
+	 * Define the Media/Assistant submenu screen to the Admin Columns plugin
+	 *
+	 * @since 2.22
+	 *
+	 * @param	array	$storage_models List of storage model class instances ( [key] => [CPAC_Storage_Model object] )
+	 * @param	object	$cpac CPAC, the root CodePress Admin Columns object
+	 */
+	public static function admin_columns_support( $storage_models, $cpac ) {
+		require_once( MLA_PLUGIN_PATH . 'includes/class-mla-admin-columns-support.php' );
+		MLACore::$admin_columns_storage_model = new CPAC_Storage_Model_MLA();
+
+		/*
+		 * Put MLA before WP Media Library so is_columns_screen() will work
+		 */
+		$new_models = array();
+		foreach ( $storage_models as $key => $model ) {
+			if ( 'wp-media' == $key ) {
+				$new_models[  MLACore::$admin_columns_storage_model->key ] = MLACore::$admin_columns_storage_model;
+			}
+			
+			$new_models[ $key ] = $model;
+		}
+		
+		/*
+		 * If we didn't find wp-media, add our entry to the end
+		 */
+		if ( count( $storage_models ) == count( $new_models ) ) {
+			$new_models[ $storage_model->key ] = MLACore::$admin_columns_storage_model;
+		}
+
+		return $new_models;
+	}
 } // Class MLACore
 
 /**
@@ -2312,4 +2484,15 @@ class MLA_Checklist_Walker extends Walker_Category {
  */
 require_once( MLA_PLUGIN_PATH . 'includes/class-mla-objects.php' );
 add_action( 'init', 'MLAObjects::initialize', 0x7FFFFFFF );
+
+/*
+ * MIME Type functions; some filters required in all modes.
+ */
+require_once( MLA_PLUGIN_PATH . 'includes/class-mla-mime-types.php' );
+add_action( 'init', 'MLAMime::initialize', 0x7FFFFFFF );
+
+/*
+ * Admin Columns plugin support
+ */
+add_filter( 'cac/storage_models', 'MLACore::admin_columns_support', 10, 2 );
 ?>

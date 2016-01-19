@@ -77,7 +77,7 @@
 <li class="method private "><a href="#_process_shortcode_parameter" title="_process_shortcode_parameter :: Handles brace/bracket escaping and parses template for a shortcode parameter"><span class="description">Handles brace/bracket escaping and parses template for a shortcode parameter</span><pre>_process_shortcode_parameter()</pre></a></li>
 <li class="method private "><a href="#_registered_dimensions" title="_registered_dimensions :: Computes image dimensions for scalable graphics, e.g., SVG"><span class="description">Computes image dimensions for scalable graphics, e.g., SVG</span><pre>_registered_dimensions()</pre></a></li>
 <li class="method private "><a href="#_sanitize_query_specification" title="_sanitize_query_specification :: Cleans up damage caused by the Visual Editor to the tax_query and meta_query specifications"><span class="description">Cleans up damage caused by the Visual Editor to the tax_query and meta_query specifications</span><pre>_sanitize_query_specification()</pre></a></li>
-<li class="method private "><a href="#_validate_attributes" title="_validate_attributes :: Make sure $attr is an array and repair line-break damage"><span class="description">Make sure $attr is an array and repair line-break damage</span><pre>_validate_attributes()</pre></a></li>
+<li class="method private "><a href="#_validate_attributes" title="_validate_attributes :: Make sure $attr is an array, repair line-break damage, merge with $content"><span class="description">Make sure $attr is an array, repair line-break damage, merge with $content</span><pre>_validate_attributes()</pre></a></li>
 <li class="method private "><a href="#_validate_sql_orderby" title="_validate_sql_orderby :: Translates query parameters to a valid SQL order by clause."><span class="description">Translates query parameters to a valid SQL order by clause.</span><pre>_validate_sql_orderby()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
@@ -411,7 +411,7 @@ options to customize the hyperlink behind each term.</p></p>
 </div>
 <a name="mla_tag_cloud_shortcode" id="mla_tag_cloud_shortcode"></a><div class="element clickable method public mla_tag_cloud_shortcode" data-toggle="collapse" data-target=".mla_tag_cloud_shortcode .collapse">
 <h2>The MLA Tag Cloud shortcode.</h2>
-<pre>mla_tag_cloud_shortcode(array $attr) : string</pre>
+<pre>mla_tag_cloud_shortcode(array $attr, string $content) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>This is an interface to the mla_tag_cloud function.</p></p>
@@ -423,6 +423,9 @@ options to customize the hyperlink behind each term.</p></p>
 <div class="subelement argument">
 <h4>$attr</h4>
 <code>array</code><p>Attributes of the shortcode.</p></div>
+<div class="subelement argument">
+<h4>$content</h4>
+<code>string</code><p>Optional content for enclosing shortcodes</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>HTML content to display the tag cloud.</div>
@@ -586,8 +589,8 @@ relevant children are already in the $terms argument.</p></p>
 </div></div>
 </div>
 <a name="_validate_attributes" id="_validate_attributes"></a><div class="element clickable method private _validate_attributes" data-toggle="collapse" data-target="._validate_attributes .collapse">
-<h2>Make sure $attr is an array and repair line-break damage</h2>
-<pre>_validate_attributes(mixed $attr) : array</pre>
+<h2>Make sure $attr is an array, repair line-break damage, merge with $content</h2>
+<pre>_validate_attributes(mixed $attr, string $content) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -598,7 +601,10 @@ relevant children are already in the $terms argument.</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$attr</h4>
-<code>mixed</code><p>array or string containing shortcode attributes</p></div>
+<code>mixed</code><p>Array or string containing shortcode attributes</p></div>
+<div class="subelement argument">
+<h4>$content</h4>
+<code>string</code><p>Optional content for enclosing shortcodes; might be used with mla_alt_shortcode</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>clean attributes array</div>
@@ -710,7 +716,7 @@ any further logic required to translate those values is contained in the filter.
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
+            generated on 2016-01-03T09:26:09-08:00.<br></footer></div>
 </div>
 </body>
 </html>
