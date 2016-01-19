@@ -1,51 +1,43 @@
 <?php
+
 /**
 * @package  phila.gov-customization
 * @since    0.5.6
 */
 
-/*
-* Install the filters at an early opportunity
-*/
 add_action('init', 'PhilaGovDepartmentAuthorMedia::initialize');
 
 class PhilaGovDepartmentAuthorMedia {
-
-  /**
-   * @since 1.00
-   *
-   * @return  void
-   */
 
   public static function initialize() {
     //only in admin
     if ( ! is_admin() )
       return;
 
-    /*
-     * Defined in /media-library-assistant/includes/class-mla-data.php
-     */
      if ( ! current_user_can( PHILA_ADMIN ) ){
+
+     /*
+      * Defined in /media-library-assistant/includes/class-mla-data.php
+      */
       add_filter( 'mla_media_modal_query_final_terms', 'PhilaGovDepartmentAuthorMedia::filter_media_modal_query_final_terms', 10, 1 );
 
+      /*
+      * Defined in /media-library-assistant/includes/class-mla-options.php
+      */
+      add_filter( 'mla_update_attachment_metadata_prefilter', 'PhilaGovDepartmentAuthorMedia::phila_mla_update_attachment_metadata_prefilter_filter', 10, 3 );
+
     }
-    add_filter('mla_update_attachment_metadata_prefilter', 'PhilaGovDepartmentAuthorMedia::mla_update_attachment_metadata_prefilter_filter', 10, 3);
   }
 
   /**
-  * MLA Edit Media "Query Attachments" final terms Filter
+  * Get category slugs for later use
   *
-  * Changes the terms of the
-  * Media Manager Modal Window "Query Attachments" query
-  * after they are processed by the "Prepare List Table Query" handler.
   *
-  * @since 1.01
-  *
-  * @param    array    WP_Query request prepared by "Prepare List Table Query"
+  * @since 0.22.0
+  * @return array of category slugs matched by current user role
   */
 
-  public static function filter_media_modal_query_final_terms( $request ) {
-
+  public static function get_current_cat_slugs(){
     $categories_args = array(
       'type'                     => 'post',
       'child_of'                 => 0,
@@ -79,6 +71,26 @@ class PhilaGovDepartmentAuthorMedia {
       $current_user_cat_assignment = array_intersect( $all_user_roles_to_cats, $cat_slugs );
     }
 
+    return $current_user_cat_assignment;
+  }
+
+  /**
+  * MLA Edit Media "Query Attachments" final terms Filter
+  *
+  * Changes the terms of the
+  * Media Manager Modal Window "Query Attachments" query
+  * after they are processed by the "Prepare List Table Query" handler.
+  *
+  * @since 1.01
+  *
+  * @param    array    WP_Query request prepared by "Prepare List Table Query"
+  * @uses get_current_cat_slugs
+  */
+
+  public static function filter_media_modal_query_final_terms( $request ) {
+
+    $current_user_cat_assignment = PhilaGovDepartmentAuthorMedia::get_current_cat_slugs();
+
     if ( isset( $request['tax_query'] ) ) {
       $tax_query = $request['tax_query'];
       $tax_query['relation'] = 'AND';
@@ -87,32 +99,39 @@ class PhilaGovDepartmentAuthorMedia {
     }
     //sets the tax query with our current user slugs
     $tax_query[] = array( 'taxonomy' => 'category', 'operator' => 'IN', 'field' => 'slug', 'terms' => $current_user_cat_assignment);
+
     $request['tax_query'] = $tax_query;
 
     return $request;
 
   }
 
-  /**
-   * @param    array    attachment metadata
-   * @param    integer  The Post ID of the new/updated attachment
-   * @param    array    Processing options, e.g., 'is_upload'
-   *
-   * @return    array    updated attachment metadata
-   */
-  function mla_update_attachment_metadata_prefilter_filter( $data, $post_id, $options ) {
 
-    error_log( 'MLAMappingHooksExample::mla_update_attachment_metadata_prefilter_filter $data = ' . var_export( $data, true ), 0 );
-    error_log( 'MLAMappingHooksExample::mla_update_attachment_metadata_prefilter_filter $post_id = ' . var_export( $post_id, true ), 0 );
-    error_log( 'MLAMappingHooksExample::mla_update_attachment_metadata_prefilter_filter $options = ' . var_export( $options, true ), 0 );
+  /**
+    * MLA Edit Media "Query Attachments" final terms Filter
+    * @param    array    attachment metadata
+    * @param    integer  The Post ID of the new/updated attachment
+    * @param    array    Processing options, e.g., 'is_upload'
+    * @uses get_current_cat_slugs
+    *
+    * @return    array    updated attachment metadata
+  */
+  public static function phila_mla_update_attachment_metadata_prefilter_filter( $data, $post_id, $options ) {
+
+    $current_user_cat_assignment = PhilaGovDepartmentAuthorMedia::get_current_cat_slugs();
+
+    $single_id = implode('|', $current_user_cat_assignment );
+
+    $cat_id = get_category_by_slug( $single_id );
 
     if ( $options['is_upload'] ) {
-      // array of int = hierarchical, comma-delimited string = non-hierarchical.
-      $term_ids =  array( 115 );
-      $result = wp_set_post_terms( $post_id, $term_ids, 'category' );
 
-      return $data;
+      $term_ids = array( $cat_id->term_id );
+      $result = wp_set_object_terms( $post_id, $term_ids, 'category' );
 
-    }
+      return $result;
+   }
+
   }
+
 }
