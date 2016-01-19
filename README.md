@@ -25,12 +25,11 @@ The phila.gov site is WordPress running behind Nginx on an AWS instance. The ent
 4. Run `joia up`
 
 
-## How to deploy a new production instance
+## How to launch a new production instance
 
-Same as above for test instance but after machine is up: 
+Same as above for test instance but replace .env with one for production. Then, after machine is up:
 
-1. `joia ssh` and replace .ssh/environment
-2. Set branch and project tags in AWS for Travis deploy (unsetting tags on current production instance)
-3. Restart most recent build in Travis
-4. After deploy has succeeded, add instance to load balancer
-5. Once instance status is InService, remove old instance
+1. Set branch and project tags in AWS for Travis deploy (unsetting tags on current production instance)
+2. Restart most recent build in Travis
+3. After deploy has succeeded, add instance to load balancer
+4. Once instance status is InService, remove old instance
