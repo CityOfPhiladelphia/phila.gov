@@ -30,7 +30,8 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
     global $pagenow;
 
     if ( ( is_admin() && 'post.php' == $pagenow ) ) {
-      if ( method_exists( get_post( $_GET['post'] ) ) )  {
+
+      if ( isset( $_GET['post'] ) ) {
 
         $post = get_post( $_GET['post'] );
 
