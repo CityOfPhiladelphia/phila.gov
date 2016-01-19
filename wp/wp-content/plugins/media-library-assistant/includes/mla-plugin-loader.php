@@ -83,11 +83,20 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 		 */
 		$ajax_only = true;
 		if ( isset( $_REQUEST['action'] ) ) {
-			if ( in_array( $_REQUEST['action'], array( MLACore::JAVASCRIPT_INLINE_EDIT_SLUG, 'mla-inline-mapping-iptc-exif-scripts', 'mla-inline-mapping-custom-scripts' ) ) ) {
+			if ( in_array( $_REQUEST['action'], array( MLACore::JAVASCRIPT_INLINE_EDIT_SLUG, 'mla-inline-mapping-iptc-exif-scripts', 'mla-inline-mapping-custom-scripts', 'mla-polylang-quick-translate', 'mla-inline-edit-upload-scripts', 'mla-inline-edit-view-scripts', 'upload-attachment' ) ) ) {
 				$ajax_only = false;
 			}
 		}
 		
+		//Look for WPML flat taxonomy autocomplete
+		if ( isset( $_GET['action'] ) && ( 'ajax-tag-search' == $_GET['action'] ) ) {
+			global $sitepress;
+			
+			if ( is_object( $sitepress ) ) {
+				$ajax_only = false;
+			}
+		}
+
 		if ( $ajax_only ) {
 			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data-query.php' );
 			add_action( 'init', 'MLAQuery::initialize', 0x7FFFFFFF );
@@ -97,7 +106,13 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 			 */
 			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-ajax.php' );
 			add_action( 'init', 'MLA_Ajax::initialize', 0x7FFFFFFF );
-		
+
+			/*
+			 * Other plugins such as "No Cache AJAX Widgets" might need shortcodes
+			 */
+			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcodes.php' );
+			add_action( 'init', 'MLAShortcodes::initialize', 0x7FFFFFFF );
+
 			return;
 		}
 	}
@@ -110,12 +125,6 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 		
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data.php' );
 	add_action( 'init', 'MLAData::initialize', 0x7FFFFFFF );
-
-	/*
-	 * MIME Type functions.
-	 */
-	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-mime-types.php' );
-	add_action( 'init', 'MLAMime::initialize', 0x7FFFFFFF );
 
 	/*
 	 * Shortcode shim functions

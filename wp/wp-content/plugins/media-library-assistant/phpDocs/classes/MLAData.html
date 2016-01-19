@@ -71,7 +71,6 @@
 <li class="method public "><a href="#mla_hex_dump" title="mla_hex_dump :: Format printable version of binary data"><span class="description">Format printable version of binary data</span><pre>mla_hex_dump()</pre></a></li>
 <li class="method public "><a href="#mla_id3_metadata_value" title="mla_id3_metadata_value :: Parse one ID3 (audio/visual) metadata field"><span class="description">Parse one ID3 (audio/visual) metadata field</span><pre>mla_id3_metadata_value()</pre></a></li>
 <li class="method public "><a href="#mla_iptc_metadata_value" title="mla_iptc_metadata_value :: Parse one IPTC metadata field"><span class="description">Parse one IPTC metadata field</span><pre>mla_iptc_metadata_value()</pre></a></li>
-<li class="method public "><a href="#mla_load_template" title="mla_load_template :: Load an HTML template from a file"><span class="description">Load an HTML template from a file</span><pre>mla_load_template()</pre></a></li>
 <li class="method public "><a href="#mla_parse_array_template" title="mla_parse_array_template :: Expand a template, replacing placeholders with their values"><span class="description">Expand a template, replacing placeholders with their values</span><pre>mla_parse_array_template()</pre></a></li>
 <li class="method public "><a href="#mla_parse_pdf_date" title="mla_parse_pdf_date :: Parse a PDF date string"><span class="description">Parse a PDF date string</span><pre>mla_parse_pdf_date()</pre></a></li>
 <li class="method public "><a href="#mla_parse_template" title="mla_parse_template :: Expand a template, replacing placeholders with their values"><span class="description">Expand a template, replacing placeholders with their values</span><pre>mla_parse_template()</pre></a></li>
@@ -525,32 +524,6 @@ the posts and postmeta tables, and all references to the attachment.</p></p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>mixed</code>string/array representation of metadata value or an empty string</div>
-</div></div>
-</div>
-<a name="mla_load_template" id="mla_load_template"></a><div class="element clickable method public mla_load_template" data-toggle="collapse" data-target=".mla_load_template .collapse">
-<h2>Load an HTML template from a file</h2>
-<pre>mla_load_template(string $source, string $type) : string | array | false | NULL</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>Loads a template to a string or a multi-part template to an array.
-Multi-part templates are divided by comments of the form <!-- template="key" -->,
-where "key" becomes the key part of the array.</p></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>0.1</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$source</h4>
-<code>string</code><p>Complete path and/or name of the template file, option name or the raw template</p>
-</div>
-<div class="subelement argument">
-<h4>$type</h4>
-<code>string</code><p>Optional type of template source; 'path', 'file' (default), 'option', 'string'</p>
-</div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>string</code><code>array</code><code>false</code><code>NULL</code>string for files that do not contain template divider comments, array for files containing template divider comments, false if file or option does not exist, NULL if file could not be loaded.</div>
 </div></div>
 </div>
 <a name="mla_parse_array_template" id="mla_parse_array_template"></a><div class="element clickable method public mla_parse_array_template" data-toggle="collapse" data-target=".mla_parse_array_template .collapse">
@@ -1347,7 +1320,7 @@ the "IPTC-NAA Information Interchange Model Version No. 4.1".</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
+            generated on 2016-01-03T09:26:08-08:00.<br></footer></div>
 </div>
 </body>
 </html>

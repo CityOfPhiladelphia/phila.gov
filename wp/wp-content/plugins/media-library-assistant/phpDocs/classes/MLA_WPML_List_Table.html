@@ -806,7 +806,7 @@ a specific method, so this function returns a troubleshooting message.</p></p>
 </div>
 <a name="extra_tablenav" id="extra_tablenav"></a><div class="element clickable method public extra_tablenav" data-toggle="collapse" data-target=".extra_tablenav .collapse">
 <h2>Extra controls to be displayed between bulk actions and pagination</h2>
-<pre>extra_tablenav(string $which) : array</pre>
+<pre>extra_tablenav(string $which) : void</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>Modeled after class-wp-posts-list-table.php in wp-admin/includes.</p></p>
@@ -825,9 +825,6 @@ a specific method, so this function returns a troubleshooting message.</p></p>
 <h4>$which</h4>
 <code>string</code><p>'top' or 'bottom', i.e., above or below the table rows</p>
 </div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>Contains all the bulk actions: 'slugs'=>'Visible Titles'</div>
 </div></div>
 </div>
 <a name="get_bulk_actions" id="get_bulk_actions"></a><div class="element clickable method public get_bulk_actions" data-toggle="collapse" data-target=".get_bulk_actions .collapse">
@@ -959,7 +956,7 @@ created in time to affect the "screen options" setup.</p></p>
 </div>
 <a name="mla_get_taxonomy_filter_dropdown" id="mla_get_taxonomy_filter_dropdown"></a><div class="element clickable method public mla_get_taxonomy_filter_dropdown" data-toggle="collapse" data-target=".mla_get_taxonomy_filter_dropdown .collapse">
 <h2>Get dropdown box of terms to filter by, if available</h2>
-<pre>mla_get_taxonomy_filter_dropdown(integer $selected) : string</pre>
+<pre>mla_get_taxonomy_filter_dropdown(integer $selected, array $dropdown_options) : string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -978,6 +975,9 @@ created in time to affect the "screen options" setup.</p></p>
 <h4>$selected</h4>
 <code>integer</code><p>currently selected term_id || zero (default)</p>
 </div>
+<div class="subelement argument">
+<h4>$dropdown_options</h4>
+<code>array</code><p>additional wp_dropdown_categories options; default empty</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>HTML markup for dropdown box</div>
@@ -1602,7 +1602,7 @@ visible column and add div tags.</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
+            generated on 2016-01-03T09:26:09-08:00.<br></footer></div>
 </div>
 </body>
 </html>

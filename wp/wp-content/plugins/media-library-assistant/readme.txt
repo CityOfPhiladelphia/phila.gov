@@ -4,7 +4,7 @@ Donate link: http://fairtradejudaica.org/make-a-difference/donate/
 Tags: attachment, attachments, documents, gallery, image, images, media, library, media library, tag cloud, media-tags, media tags, tags, media categories, categories, IPTC, EXIF, XMP, GPS, PDF, meta, metadata, photo, photos, photograph, photographs, photoblog, photo albums, lightroom, photoshop, MIME, mime-type, icon, upload, file extensions, WPML, Polylang, multilanguage, multilingual, localization
 Requires at least: 3.5.0
 Tested up to: 4.4
-Stable tag: 2.21
+Stable tag: 2.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,24 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 2.22 =
+* New: Support for the **Admin Columns** plugin has been added. You can use Admin Columns to re-order, re-size and/or remove columns from the Media/Assistant submenu table. You can also add any of the Admin Columns "custom" columns to the table. See the [Other Notes section](http://wordpress.org/extend/plugins/media-library-assistant/other_notes/ "Click here, then scroll down") section or the Settings/Media Library Assistant Documentation tab for more information.
+* New: For `[mla_gallery]` and `[mla_tag_cloud]`, **support for the "enclosing shortcode" syntax** lets you spread shortcodes over multiple lines and avoids many of the problems caused by WordPress shortcode-parsing issues.
+* New: A new filter, `mla_gallery_featured_image`, allows modification of the Featured Image assigned to an item. A new example plugin, `mla-default-featured-image-example.php.txt`, has been added that uses the filter to supply a default Featured Image based on the item's file extension.
+* New: Two new filters,`mla_list_table_extranav_actions` and `mla_list_table_extranav_custom_action`, allow modifications of the "extra tablenav" controls on the Media/Assistant submenu. A new example plugin, `/media-library-assistant/examples/mla-list-table-extranav.example.php.txt`, has been added to illustrate their use.
+* New: Added shortcode support in "DOING_AJAX" mode for other plugins such as No Cache AJAX Widgets.
+* New: A new example plugin, `mla-featured-field-shortcode.php.txt`, has been added. It contains a shortcode that displays custom field content from the Featured Image on the post/page it is part of.
+* New: The `mla-jhdean-mapping-hooks-example.php.txt` example plugin has been extended to illustrate updating a custom field during the mapping process.
+* New: For the Media/Assistant submenu table, **SQL views have been replaced by SQL subqueries** for increased performance and reliability.
+* Fix: When new Media LIbrary items are uploaded via the Media Manager Modal (popup) Window, mapping rule execution has been restored.
+* Fix: When Polylang is active and the "Activate languages and translations for media" option is disabled, the MMMW taxonomy dropdown is populated with all terms regardless of language. The default settings of the Term Assignment, Synchronization and Mapping Replication options is changed to unchecked/disabled.
+* Fix: The Quick Edit Area in the Settings/Media Library Assistant Views and Uploads tabs has been restored.
+* Fix: Errors encountered while loading damaged `mla-default-mime-types.tpl` files no longer cause PHP messages. A message is written to the error log file and the damaged entry is ignored.
+* Fix: MIME type filters are now loaded unconditionally, preventing PHP errors in actions such as updating posts, pages and attachments from their Edit screens.
+* Fix: For `[mla_gallery]`, MLA File Type Icons Support has been restored.
+* Fix: PHP7 changes no longer cause fatal errors rendering the Settings/Media Library Assistant General tab.
+* Fix: Support for WPML and Polylang DOING_AJAX handlers has been restored, e.g. Polylang Quick Edit and WPML flat term autocomplete.
+
 = 2.21 =
 * Fix: A defect in the default "Orderby" setting has been fixed. This defect caused "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem.
 * Fix: The "Featured Image" support for non-image Media Library items now respects the `size=none` parameter to substitute a text value for the thumbnail image.
@@ -204,54 +222,39 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 * Fix: Damaged XMP data in an item no longer causes PHP Warning messages. In addition, NULL characters in XMP data are changed to printable zero characters ('0') to allow some damage to be repaired.
 * Fix: Sorting the Media/Assistant submenu table by the ALT Text column has been fixed.
 
-= 2.10 - 2.15 =
+= 2.00 - 2.15 =
 * 2.15 - Bulk Edit Reset button, Debug tab enhancements, Quick Edit thumbnails, new examples and hooks. Sixteen enhancements in all, sixteen fixes.
 * 2.14 - Final WordPress 4.3 updates. New Debug tab features. Updated Dutch translation. Four other fixes.
 * 2.13 - WordPress 4.3 updates. PDF Thumbnail image generator. Wildcard keyword/term searching. Several WPML and Polylang fixes. Dutch and Swedish translations! Twelve other enhancements, twelve other fixes.
 * 2.12 - Fixes a defect in [mla_gallery] handling of the mla_caption parameter. Adds mla_debug=log option.
 * 2.11 - Enhanced WPML and new Polylang support. "Attached" Media/Assistant table view. Eight other enhancements, fifteen fixes.
 *2.10 - mla_viewer is back, with a Featured Image option! XMP support for image meta data. Eight other enhancements, twelve fixes.
-
-
-= 2.00 - 2.02 =
 * 2.02 - Bulk Edit on Media/Add New, pause/restart IPTC/EXIF mapping, EXIF CAMERA fields, "timestamp", "date" and "fraction" format options. Six other enhancements, twelve fixes.
 * 2.01 - Google File Viewer (mla_viewer) disabled. IPTC/EXIF mapping performance gains. Four other enhancements, five fixes.
 * 2.00 - Requires WP v3.5+. Ajax-powered bulk edit and mapping, front-end "terms search" for [mla_gallery]. Five other enhancements, two fixes.
 
-= 1.90 - 1.95 =
+= 1.00 - 1.95 =
 * 1.95: New [mla_gallery] parameters, Download rollover action, Media/Assistant submenu filters. Eleven enhancements, seven fixes.
 * 1.94: Media Manager fixes and new "current-item" parameters for [mla_tag_cloud]. Two other enhancements, seven fixes.
 * 1.93: WordPress 4.0 Media Grid enhancements (optional) and compatibility fixes. New auto-fill option for Media Manager taxonomy meta boxes. One other enhancement, three other fixes.
 * 1.92: Three bug fixes, one serious.
 * 1.91: WordPress 4.0 support! New "Edit Media meta box" and "Media Modal Initial Values" filters and example plugins. Four other enhancements, six fixes.
 * 1.90: New "Terms Search" popup window and Search Media "Terms" checkbox. Post Type filter and pagination for "Select Parent" popup. Ten other enhancements, five fixes.
-
-= 1.80 - 1.83 =
 * 1.83: Corrects serious defect, restoring Quick Edit, Bulk Edit and Screen Options to Media/Assistant submenu. Three other fixes.
 * 1.82: "Select Parent" popup window (Media/Edit Media, Attached to column, Quick Edit area), SVG support and several new filter examples. Five other enhancements, three other fixes.
 * 1.81: Corrects serious defect in Media Manager Modal Window file uploading. Adds item-specific tag clouds. One other enhancement, five other fixes.
 * 1.80: Full taxonomy meta box support in the Media Manager Modal Window. Checkbox-style meta box for flat taxonomies. Fourteen other enhancements, nine fixes.
-
-= 1.70 - 1.71 =
 * 1.71: Searchable Category meta boxes for the Media/Edit Media screen. Support for the WordPress "Attachment Display Settings". Six fixes.
 * 1.70: Internationalization and localization support! Custom Field and IPTC/EXIF Mapping hooks. One other enhancement, six fixes.
-
-= 1.60 - 1.61 =
 * 1.61: Three fixes, including one significant fix for item-specific markup substitution parameters. Tested for compatibility with WP 3.8.
 * 1.60: New [mla_tag_cloud] shortcode and shortcode-enabled MLA Text Widget. Five other enhancements, four fixes.
-
-= 1.50 - 1.52 =
 * 1.52: Corrected serious defect in [mla_gallery] that incorrectly limited the number of items returned for non-paginated galleries. One other fix.
 * 1.51: Attachment Metadata mapping/updating, [mla_gallery] "apply_filters" hooks, multiple paginated galleries per page, "ALL_CUSTOM" pseudo value. Three other enhancements, six fixes.
 * 1.50: PDF and GPS Metadata support. Content Templates; mix literal text with data values, test for empty values and choose among two or more alternatives for [mla_gallery] and data mapping. Four other enhancements, seven fixes.
-
-= 1.40 - 1.43 =
 * 1.43: Generalized pagination support with "mla_output=paginate_links". One other enhancement, four fixes.
 * 1.42: Pagination support for [mla_gallery]! Improved CSS width (itemwidth) and margin handling. Eight other enhancements, six fixes.
 * 1.41: New [mla_gallery] "previous link" and "next link" output for gallery navigation. New "request" substitution parameter to access $_REQUEST variables. Three other enhancements, seven fixes.
 * 1.40: Better performance! New custom table views, Post MIME Type and Upload file/MIMEs control; 112 file type icons to choose from. Four new Gallery Display Content parameters. four other enhancements, twelve fixes.
-
-= 1.00 - 1.30 =
 * 1.30: New "mla_alt_shortcode" parameter combines [mla_gallery] with other gallery display shortcodes, e.g., Jetpack Carousel and Tiled Mosaic. Support for new 3.6 audio/video metadata. One other enhancement, eight fixes.
 * 1.20: Media Manager (Add Media, etc.) enhancements: filter by more MIME types, date, taxonomy terms; enhanced search box for name/slug, ALT text, caption and attachment ID. New [mla_gallery] sort options. Four other enhancements, four fixes.
 * 1.14: New [mla_gallery] mla_target and tax_operator parameters, tax_query cleanup and ids/include fix. Attachments column fix. IPTC/EXIF and Custom Field mapping fixes. Three other fixes.
@@ -279,8 +282,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 2.21 =
-Fix for "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem. One other fix for "Featured Image" handling of size=none.
+= 2.22 =
+Support for the "Admin Columns" plugin, PHP7 and "enclosing shortcode" syntax. Better performance, new filters and examples. Eight enhancements in all, eight fixes.
 
 == Other Notes ==
 
@@ -292,7 +295,23 @@ In this section, scroll down to see highlights from the documentation, including
 
 Media Library Assistant includes many images drawn (with permission) from the [Crystal Project Icons](http://www.softicons.com/free-icons/system-icons/crystal-project-icons-by-everaldo-coelho), created by [Everaldo Coelho](http://www.everaldo.com), founder of [Yellowicon](http://www.yellowicon.com).
 
-<strong>Many thanks</strong> to Aurovrata Venet and Il'ya Karastel for testing and advising on the new multilingual support features!
+<strong>Many thanks</strong> to Aurovrata Venet, Il'ya Karastel and Kristian Adolfsson for testing and advising on the multilingual support features!
+
+<h4>*NEW* Support for the "Admin Columns" Plugin</h4>
+
+The [Admin Columns plugin](https://wordpress.org/plugins/codepress-admin-columns/ "Admin Columns free version") allows you to customize columns on several admin-mode screens, including the MLA Media/Assistant submenu screen. All you have to do is install the plugin; MLA will detect its presence and automatically register the Media/Assistant submenu screen for support. With Admin Columns, you can:
+
+* Reorder columns with a simple drag & drop interface.
+* Re-size columns to give more or less space to a column.
+* Remove (not just hide) columns from the submenu table.
+* Add new columns for custom fields and additional information.
+* The Admin Columns "Pro" version adds support for ACF fields and other capabilities.
+
+When Admin Columns is present you will see a new "Edit Columns" button just above the Media/Assistant submenu table. Click the button to go to the Settings/Admin Columns configuration screen. There you will see "Media Library Assistant" added to the "Others:" list. Click on it to see the configuration of the Media/Assistant submenu screen. 
+
+You can find detailed configuration instructions at the [Admin Columns web site Documentation page](http://admincolumns.com/documentation/ "Admin Columns Documentation"). 
+
+When you have completed your configuration changes, click "Update Media Library Assistant" in the Store Settings metabox at the top-right of the screen. You can also click "Restore Media Library Assistant columns" to remove your changes and go back to the MLA default settings. Click the "View" button at the right of the Media Library Assistant heading to return to the Media/Assistant submenu screen and see your changes. 
 
 <h4>WPML &amp; Polylang Multilingual Support; the MLA Language Tab</h4>
 

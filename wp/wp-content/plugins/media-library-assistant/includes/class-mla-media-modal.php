@@ -133,7 +133,7 @@ class MLAModal {
 	 *
 	 * @return	array	( 'class' => $class_array, 'value' => $value_array, 'text' => $text_array )
 	 */
-	private static function _terms_options( $markup ) {
+	public static function mla_terms_options( $markup ) {
 		$match_count = preg_match_all( "#\<option(( class=\"([^\"]+)\" )|( ))value=((\'([^\']+)\')|(\"([^\"]+)\"))([^\>]*)\>([^\<]*)\<.*#", $markup, $matches );
 		if ( ( $match_count == false ) || ( $match_count == 0 ) ) {
 			return array( 'class' => array( '' ), 'value' => array( '0' ), 'text' => array( 'Show all terms' ) );
@@ -246,7 +246,7 @@ class MLAModal {
 		self::$mla_media_modal_settings['months'] = self::_months_dropdown('attachment');
 
 		self::$mla_media_modal_settings['termsTaxonomy'] =  MLACore::mla_taxonomy_support('', 'filter');
-		$terms_options = self::_terms_options( MLA_List_Table::mla_get_taxonomy_filter_dropdown() );
+		$terms_options = self::mla_terms_options( MLA_List_Table::mla_get_taxonomy_filter_dropdown() );
 		self::$mla_media_modal_settings['termsClass'] = $terms_options['class'];
 		self::$mla_media_modal_settings['termsValue'] = $terms_options['value'];
 		self::$mla_media_modal_settings['termsText'] = $terms_options['text'];
@@ -565,7 +565,7 @@ class MLAModal {
 	 * @return	string	HTML <form> markup for hidden form
 	 */
 	public static function mla_terms_search_form() {
-		$page_template_array = MLAData::mla_load_template( 'admin-terms-search-form.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'admin-terms-search-form.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
 			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLA::_build_terms_search_form', var_export( $page_template_array, true ) ), 0 );
