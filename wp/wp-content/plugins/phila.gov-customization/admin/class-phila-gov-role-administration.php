@@ -19,6 +19,8 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'admin_head', array( $this, 'set_jquery_vars' ) );
 
+    add_action( 'admin_head', array( $this, 'check_assigned_role' ) );
+
     add_action( 'init', array( $this, 'abstract_user_role') );
 
     add_action( 'admin_head', array( $this, 'add_meta_data') );
@@ -113,6 +115,7 @@ class Phila_Gov_Role_Administration {
       }elseif( count( $current_user_cat_assignment ) == 1 ) {
 
         $assigned_role = get_category_by_slug( $current_user_cat_assignment[1] );
+
         //returns a single object
         return $assigned_role;
 
@@ -417,6 +420,13 @@ class Phila_Gov_Role_Administration {
       }
     }
     return $args;
+  }
+
+  function check_assigned_role(){
+    if ( is_admin() ){
+      $current_user_cat = $this->get_current_user_category();
+    }
+
   }
 
 

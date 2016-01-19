@@ -1717,16 +1717,17 @@ class MLAMime {
 		 * Save the descriptions for use in _put_upload_mime_types()
 		 */
 		self::$mla_upload_mime_descriptions = array();
-		$template_array = MLAData::mla_load_template( 'mla-default-mime-types.tpl' );
+		$template_array = MLACore::mla_load_template( 'mla-default-mime-types.tpl' );
 		if ( isset( $template_array['mla-mime-types'] ) ) {
 			$mla_mime_types = preg_split('/[\r\n]+/', $template_array['mla-mime-types'] );
 			foreach ( $mla_mime_types as $mla_type ) {
 				$array = explode(',', $mla_type );
 
-				/* Anthony Martin debug * /
-				if ( 4 > count( $array ) ) {
-					trigger_error( sprintf( 'mla-default-mime-types.tpl $array = "%1$s".', var_export( $array, true ) ), E_USER_WARNING );
-				} // */
+				// Bypass damaged entries
+				if ( 5 > count( $array ) ) {
+					error_log( __LINE__ . ' _get_upload_mime_templates mla-default-mime-types.tpl $array = ' . var_export( $array, true ), 0 );
+					continue;
+				}
 
 				$key = strtolower( $array[0] );
 				self::$mla_upload_mime_descriptions[ $key ] = $array[4];
@@ -1769,14 +1770,11 @@ class MLAMime {
 				$mla_type = '';
 				$description = '';
 
-//				if ( NULL == $icon_type = wp_ext2type( $key ) ) {
-//					$icon_type = 'default';
-//				}
 				$icon_type = self::mla_get_core_icon_type( $key );
 
 				$wp_icon_type = $icon_type;
 				$mla_icon_type = $icon_type;
-				$core_icon_type = $icon_type; //self::mla_get_core_icon_type( $key );
+				$core_icon_type = $icon_type;
 			}
 
 			self::$mla_upload_mime_templates[ $key ] = array(
@@ -2478,13 +2476,20 @@ class MLAMime {
 		}
 
 		self::$mla_optional_upload_mime_templates = array ();
-		$template_array = MLAData::mla_load_template( 'mla-default-mime-types.tpl' );
+		$template_array = MLACore::mla_load_template( 'mla-default-mime-types.tpl' );
 		if ( isset( $template_array['mla-optional-mime-types'] ) ) {
 			$mla_mime_types = preg_split('/[\r\n]+/', $template_array['mla-optional-mime-types'] );
 
 			$ID = 0;
 			foreach ( $mla_mime_types as $mla_type ) {
 				$array = explode(',', $mla_type );
+
+				// Bypass damaged entries
+				if ( 3 > count( $array ) ) {
+					error_log( __LINE__ . ' _get_optional_upload_mime_templates mla-default-mime-types.tpl $array = ' . var_export( $array, true ), 0 );
+					continue;
+				}
+
 				$slug = $array[0];
 				if ( $matched_type = self::mla_get_upload_mime( $slug ) ) {
 					$core_type = $matched_type['core_type'];

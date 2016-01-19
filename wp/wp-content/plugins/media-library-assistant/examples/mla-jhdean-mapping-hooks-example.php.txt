@@ -5,7 +5,7 @@
  * In this example the Title is replaced by a hyperlink using the IPTC 2#005 Object Name value.
  *
  * @package MLA jhdean Mapping Hooks Example
- * @version 1.00
+ * @version 1.01
  */
 
 /*
@@ -13,7 +13,7 @@ Plugin Name: MLA jhdean Mapping Hooks Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Replace Title with hyperlink, for Jeff Dean.
 Author: David Lingren
-Version: 1.00
+Version: 1.01
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
 Copyright 2014 - 2015 David Lingren
@@ -116,17 +116,26 @@ class MLAjhdeanMappingHooksExample {
 			'option' => 'raw'
 		);
 		$object_name = trim( MLAOptions::mla_get_data_source( $post_id, 'single_attachment_mapping', $my_setting, NULL ) );
-
+		
 		if ( ! empty( $object_name ) ) {
 			$object_link = strtolower( str_replace( array( ' ', '-', '_', '.' ), '-', $object_name ) );
 
 			$new_title = sprintf( '<a id="detail-title" target="blank" href="http://www.jhdstaging.jeffreyhdean.com/portfolio/%1$s/"> %2$s </a>', $object_link, $object_name );
 
+			$new_jig_link = sprintf( 'http://www.jeffreyhdean.jhddevelopment.dev/portfolio/%1$s/', $object_link );			
+
 			if ( $old_value != $new_title ) {
 				$updates[ 'post_title' ] = $new_title;
+				
+				// Create or add to the custom field updates
+				if ( empty( $updates[ 'custom_updates' ] ) ) {
+					$updates[ 'custom_updates' ] = array();
+				}
+				
+				$updates[ 'custom_updates' ][ 'jig_image_link' ] = $new_jig_link;
 			}
 		}
-
+		
 		return $updates;
 	} // mla_mapping_updates_filter
 } //MLAjhdeanMappingHooksExample

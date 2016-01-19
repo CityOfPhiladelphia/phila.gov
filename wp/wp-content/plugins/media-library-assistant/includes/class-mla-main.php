@@ -29,7 +29,7 @@ class MLA {
 	 *
 	 * @var	string
 	 */
-	const CURRENT_MLA_VERSION = '2.21';
+	const CURRENT_MLA_VERSION = '2.22';
 
 	/**
 	 * Current date for Development Version, empty for production versions
@@ -698,7 +698,7 @@ class MLA {
 
 		$template_array = apply_filters( 'mla_list_table_help_template', NULL, 'help-for-' . $file_suffix . '.tpl', $file_suffix );
 		if ( is_null( $template_array ) ) {
-			$template_array = MLAData::mla_load_template( 'help-for-' . $file_suffix . '.tpl' );
+			$template_array = MLACore::mla_load_template( 'help-for-' . $file_suffix . '.tpl' );
 		}
 
 		if ( empty( $template_array ) ) {
@@ -1873,7 +1873,7 @@ class MLA {
 	 * @return	string	HTML <form> markup for hidden form
 	 */
 	public static function mla_set_parent_form( $return_form = true ) {
-		$set_parent_template = MLAData::mla_load_template( 'admin-set-parent-form.tpl' );
+		$set_parent_template = MLACore::mla_load_template( 'admin-set-parent-form.tpl' );
 		if ( ! is_array( $set_parent_template ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
 			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLA::_build_inline_edit_form', var_export( $set_parent_template, true ) ), 0 );
@@ -1948,7 +1948,7 @@ class MLA {
 			}
 		}
 
-		$page_template_array = MLAData::mla_load_template( 'admin-inline-edit-form.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'admin-inline-edit-form.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
 			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLA::_build_inline_edit_form', var_export( $page_template_array, true ) ), 0 );

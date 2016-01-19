@@ -3,7 +3,9 @@
 <h3>Plugin and Shortcode Documentation. In this tab, jump to:</h3>
 <div id="mla-doc-gallery-shortcode"><a href="#mla_gallery"><strong>MLA Gallery Shortcode</strong></a>
 <ul class="mla-doc-toc-list">
+<li><a href="#documentation_sources">Option/Parameter Documentation Sources</a></li>
 <li><a href="#gallery_substitution">Substitution Parameters</a></li>
+<li><a href="#complex_shortcodes">Entering Long/Complex Shortcodes</a></li>
 <li><a href="#gallery_display_style">Gallery Display Style</a></li>
 <li><a href="#gallery_display_content">Gallery Display Content</a></li>
 <li><a href="#thumbnail_substitution">Thumbnail Substitution Support, mla_viewer</a></li>
@@ -60,7 +62,7 @@
 <a href="#alt_shortcode"><strong>Support for Other Gallery-generating Shortcodes</strong></a>
 </li>
 <li>
-<a href="#photonic_gallery"><strong>Support for &#8220;Photonic Gallery&#8221;</strong></a>
+<a href="#photonic_gallery"><strong>Support for the &#8220;Photonic Gallery&#8221; Plugin</strong></a>
 </li>
 <li>
 <a href="#mla_gallery_templates"><strong>Style and Markup Templates</strong></a>
@@ -96,6 +98,12 @@
 </li>
 <li>
 <a href="#select_parent"><strong>Select Parent Popup Window</strong></a>
+</li>
+<li>
+<a href="#admin_columns"><strong>Support for the &#8220;Admin Columns&#8221; Plugin</strong></a>
+</li>
+<li>
+<a href="#mla_list_table_hooks"><strong>Media/Assistant Submenu Actions and Filters (Hooks)</strong></a>
 </li>
 <li>
 <a href="#mla_media_modal_filters"><strong>Media Manager Enhancement filters (Hooks)</strong></a>
@@ -139,7 +147,6 @@
 <li><a href="#mla_mapping_hooks"><strong>MLA Custom Field and IPTC/EXIF Mapping Actions and Filters (Hooks)</strong></a></li>
 <li><a href="#mla_debug_tab"><strong>MLA Debug Tab</strong></a></li>
 <li><a href="#mla_language_tab"><strong>WPML &amp; Polylang Multilingual Support; the MLA Language Tab</strong></a></li>
-<li><a href="#mla_list_table_hooks"><strong>Media/Assistant Submenu Actions and Filters (Hooks)</strong></a></li>
 </ul>
 <h3>Translating/Localizing the plugin</h3>
 <p>
@@ -169,6 +176,10 @@ The <code>[mla_gallery]</code> shortcode is used in a post, page or custom post 
 <li>You can combine <code>[mla_gallery]</code> data selection with other popular gallery-generating plugins to get the best of both.
 </li>
 </ul>
+<p>
+&nbsp;
+<a name="documentation_sources"></a>
+</p>
 <h4>Option/Parameter Documentation Sources</h4>
 <p>
 If you're new to Media Library Assistant and the <code>[mla_gallery]</code> shortcode you should read through the material in the <a href="#gallery_examples">MLA Gallery Examples</a> section.
@@ -211,6 +222,51 @@ Click on any of the category names in the above table to go to the Documentation
 </p>
 <p>
 To use a substitution parameter in your shortcode, simply add "{+" before the substitution parameter name and add "+}" after the name. Note that the enclosing delimiters are different than those used in Style and Markup templates, since the WordPress shortcode parser reserves square brackets ("[" and "]") for its own use. Also, because square brackets are reserved, <strong>you must substitute curly braces for square brackets</strong> if your parameter values require them. For example, if your shortcode parameter is <code>mla_link_attributes='rel="shadowbox{sbalbum-{+instance+}};player=img"'</code>, the actual attribute added to the link will be <code>rel="shadowbox[sbalbum-1];player=img"</code>. If you must code a curly brace in a parameter value, preface it with <strong>two backslash characters</strong>, e.g., "\\{" or "\\}".
+<a name="complex_shortcodes"></a>
+</p>
+<h4>Entering Long/Complex Shortcodes</h4>
+<p>
+The <code>[mla_gallery]</code> shortcode has many parameters and some of them have a complex syntax; it can be a challenge to build a correct shortcode. The <a href="https://codex.wordpress.org/Shortcode_API" title="Shortcode API Documentation" target="_blank">WordPress Shortcode API</a> has a number of limitations that make techniques such as entering HTML or splitting shortcode parameters across multiple lines difficult. If you have trouble with your shortcode, such as an "Invalid mla_gallery tax_query" message, try these rules to correct the problem:
+</p>
+<ul class="mla_settings">
+<li>Use the Text tab of the post/page editor, not the Visual tab.</li>
+<li>Enter the entire shortcode on one line; do not break it up - that confuses the WordPress shortcode parser.</li>
+<li>Put "&lt;code&gt;&lt;/code&gt;" tags around the entire shortcode. Recent versions of WordPress mangle special characters like "=>" in the query if you don't add the tags.</li>
+</ul>
+<p>
+When embedding the shortcode in the body of a post, be very careful when coding parameters such as <code>tax_query</code>, <code>meta_query</code> or <code>date_query;</code> they must be a valid PHP array specification. Splitting your query over multiple lines or using the "Visual" editor will introduce HTML markup and escape sequences that can render your query invalid. MLA can clean up some of the damage, but if your query fails use the "mla_debug=true" parameter to see if your query has been corrupted. 
+</p>
+<p>
+<strong>IMPORTANT:</strong> Beginning with version 4.0, WordPress changed the way it handles shortcode parameters. Using the <code>=></code> characters in a shortcode will often return "Invalid mla_gallery tax_query" errors. There are two ways to prevent this: 1) add "&lt;code&gt;&lt;/code&gt;" tags around your shortcode, or 2) use the "=&amp;gt;" escape sequence in your query.
+</p>
+<p>
+MLA also supports an alternative syntax that can help you avoid parsing problems with long shortcodes; the "enclosing shortcode" syntax. You can read all about it in the WordPress Shortcode API documentation, but the basic idea is simple. Instead of coding your parameters inside the shortcode square brackets:
+</p>
+<p>
+<code>[mla_gallery post_parent=all post_mime_type=image/png link=file]</code>
+</p>
+You code the parameters between opening and closing shortcode delimiters:
+<p>
+<code>[mla_gallery]post_parent=all post_mime_type=image/png link=file[/mla_gallery]</code>
+</p>
+<p>
+WordPress parses the second, "enclosing" syntax in a different way that can eliminate some problems and make your shortcode easier to understand. For example, you can split your shortcode over multiple lines:
+</p>
+<p>
+<code>[mla_gallery]</code><br />
+<code>tax_query="</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>array(</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>array(</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>'taxonomy' => 'attachment_category',</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>'field' => 'id',</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>'terms' => array(11, 12)</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>)</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>)"</code><br />
+<code>post_mime_type=image/png link=file</code><br />
+<code>[/mla_gallery]</code>
+</p>
+<p>
+For simple <code>[mla_gallery]</code> shortcodes, code your parameters within the shortcode square brackets and follow the rules above. For more complex shortcodes, the enclosing syntax can avoid many of the limitations WordPress imposes on shortcode parsing.
 <a name="gallery_display_style"></a>
 </p>
 <h4>Gallery Display Style</h4>
@@ -702,10 +758,7 @@ More complex queries can be specified by using <a href="http://codex.wordpress.o
 The first example is equivalent to the simple query <code>attachment_tag=artisan</code>. The second example matches items of all MIME types, attached to the current post, having an attachment_category ID of 11 or 12.
 </p>
 <p>
-When embedding the shortcode in the body of a post, be very careful when coding the tax_query; it must be a valid PHP array specification. Splitting your query over multiple lines or using the "Visual" editor will introduce HTML markup and escape sequences that can render your query invalid. MLA will clean up most of the damage, but if your query fails use the "mla_debug=true" parameter to see if your query has been corrupted. 
-</p>
-<p>
-<strong>IMPORTANT:</strong> Beginning with version 4.0, WordPress changed the way it handles shortcode parameters. Using the <code>=></code> characters in the first shortcode on a post/page will return "Invalid mla_gallery tax_query" errors. There are two ways to prevent this: 1) add "&lt;code&gt;&lt;/code&gt;" tags around your shortcode, or 2) use the "=&amp;gt;" escape sequence in your query.
+When embedding the shortcode in the body of a post, be very careful when coding the tax_query; it must be a valid PHP array specification. Read and follow the rules and guidelines in the "<a href="#complex_shortcodes">Entering Long/Complex Shortcodes</a>" Documentation section to get the results you want.
 </p>
 <p>
 Remember to use <code>post_parent=current</code> if you want to restrict your query to items attached to the current post.
@@ -795,10 +848,7 @@ The <code>[mla_gallery]</code> shortcode supports the "<a href="http://codex.wor
 As the <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Date_Parameters" title="WordPress Codex Documentation for date_query" target="_blank">Codex date_query documentation</a> suggests, "before" and "after" values can use any of the <a href="http://php.net/strtotime" title="PHP Date and Time Formats">PHP strtotime()-compatible string values</a>, which are quite powerful. For example, you can use relative values such as <code>'after' => 'second tuesday of last month'</code>. Careful study of the PHP documentation can be most rewarding. You can use <code>mla_debug=true</code> to see how PHP and WordPress translate your query to specific date-time values.
 </p>
 <p>
-When embedding the shortcode in the body of a post, be very careful when coding the date_query; it must be a valid PHP array specification. Splitting your query over multiple lines or using the "Visual" editor will introduce HTML markup and escape sequences that can render your query invalid. MLA will clean up most of the damage, but if your query fails use the "mla_debug=true" parameter to see if your query has been corrupted. 
-</p>
-<p>
-<strong>IMPORTANT:</strong> Beginning with version 4.0, WordPress changed the way it handles shortcode parameters. Using the <code>=></code> characters in the first shortcode on a post/page will return "Invalid mla_gallery tax_query" errors. There are two ways to prevent this: 1) add "&lt;code&gt;&lt;/code&gt;" tags around your shortcode, or 2) use the "=&amp;gt;" escape sequence in your query.
+When embedding the shortcode in the body of a post, be very careful when coding the date_query; it must be a valid PHP array specification. Read and follow the rules and guidelines in the "<a href="#complex_shortcodes">Entering Long/Complex Shortcodes</a>" Documentation section to get the results you want.
 </p>
 <p>
 Remember to use <code>post_parent=current</code> if you want to restrict your query to items attached to the current post.<a name="custom_field_parameters"></a>
@@ -824,7 +874,7 @@ The <code>[mla_gallery]</code> shortcode supports the simple custom field parame
 </tr>
 </table>
 <p>
-<strong>IMPORTANT:</strong> Beginning with version 4.0, WordPress changed the way it handles shortcode parameters. Using the <code>></code> character in the first shortcode on a post/page will return "Invalid mla_gallery tax_query" errors. To prevent this, add "&lt;code&gt;&lt;/code&gt;" tags around your shortcode.
+<strong>IMPORTANT:</strong> Beginning with version 4.0, WordPress changed the way it handles shortcode parameters. Using the <code>></code> characters in a shortcode will often return "Invalid mla_gallery tax_query" errors. To prevent this, add "&lt;code&gt;&lt;/code&gt;" tags around your shortcode.
 </p>
 <p>
 Remember to use <code>post_parent=current</code> if you want to restrict your query to items attached to the current post.
@@ -835,10 +885,7 @@ Remember to use <code>post_parent=current</code> if you want to restrict your qu
 The <code>[mla_gallery]</code> shortcode supports the more powerful <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters" title="WordPress Codex documentation for meta_query" target="_blank">"WP_Query meta_query"</a> parameters made available as of WordPress 3.1.
 </p>
 <p>
-When embedding the shortcode in the body of a post, be very careful when coding the meta_query; it must be a valid PHP array specification. In particular, code the query on one line; splitting it across lines can insert HTML <br> tags and corrupt your query. MLA will clean up most of the damage, but if your query fails use the <code>mla_debug=true</code> parameter to see if your query has been corrupted. 
-</p>
-<p>
-<strong>IMPORTANT:</strong> Beginning with version 4.0, WordPress changed the way it handles shortcode parameters. Using the <code>=></code> characters in the first shortcode on a post/page will return "Invalid mla_gallery tax_query" errors. There are two ways to prevent this: 1) add "&lt;code&gt;&lt;/code&gt;" tags around your shortcode, or 2) use the "=&amp;gt;" escape sequence in your query.
+When embedding the shortcode in the body of a post, be very careful when coding the meta_query; it must be a valid PHP array specification. Read and follow the rules and guidelines in the "<a href="#complex_shortcodes">Entering Long/Complex Shortcodes</a>" Documentation section to get the results you want.
 </p>
 <p>
 Remember to use <code>post_parent=current</code> if you want to restrict your query to items attached to the current post.
@@ -1002,6 +1049,9 @@ The <code>[mla_tag_cloud]</code> shortcode function displays a list of taxonomy 
 <li>A comprehensive set of filters gives you access to each step of the cloud generation process from PHP code in your theme or other plugins.
 </li>
 </ul>
+<p>
+The [mla_tag_cloud] shortcode has many parameters and some of them have a complex syntax; it can be a challenge to build a correct shortcode. The WordPress Shortcode API has a number of limitations that make techniques such as entering HTML or splitting shortcode parameters across multiple lines difficult. Read and follow the rules and guidelines in the "<a href="#complex_shortcodes">Entering Long/Complex Shortcodes</a>" Documentation section to get the results you want. 
+</p>
 <p>
 Many of the <code>[mla_tag_cloud]</code> concepts and shortcode parameters are modeled after the <code>[mla_gallery]</code> shortcode, so the learning curve is short. Differences and parameters unique to the cloud are given in the sections below.
 <a name="tag_cloud_output"></a>
@@ -2332,7 +2382,7 @@ You can also use the "enclosing shortcode" form if the alternate shortcode, such
 <p>
 <a href="#backtotop">Go to Top</a>
 </p>
-<h3>Support for &#8220;Photonic Gallery for Flickr, Picasa, SmugMug, 500px and Instagram&#8221;</h3>
+<h3>Support for the &#8220;Photonic Gallery for Flickr, Picasa, SmugMug, 500px and Instagram&#8221; Plugin</h3>
 <p>
 The <a href="http://wordpress.org/extend/plugins/photonic/" title="Photonic Gallery plugin directory page" target="_blank">Photonic Gallery for Flickr, Picasa, SmugMug, 500px and Instagram</a> plugin adds several new parameters to the <code>[mla_gallery]</code> shortcode to enhance your galleries. All you have to do is install the plugin, then add a "style=" parameter to your <code>[mla_gallery]</code> shortcode to use the Photonic styling and markup in place of the native <code>[mla_gallery]</code> style and markup templates.
 </p>
@@ -3923,6 +3973,280 @@ Once you have chosen a new parent, click the "Update" button at the lower right 
 </p>
 <p>
 If you change your mind you can close the window without making a change by clicking the "X" in the upper-right corner of the window or the "Cancel" button in the lower-left corner of the window.
+<a name="admin_columns"></a>&nbsp;
+</p>
+<p>
+<a href="#backtotop">Go to Top</a>
+</p>
+<h3>Support for the &#8220;Admin Columns&#8221; Plugin</h3>
+<p>
+The <a href="https://wordpress.org/plugins/codepress-admin-columns/" title="Admin Columns plugin directory page" target="_blank">Admin Columns</a> plugin allows you to customize columns on several admin-mode screens, including the MLA Media/Assistant submenu screen. All you have to do is install the plugin; MLA will detect its presence and automatically register the Media/Assistant submenu screen for support. With Admin Columns, you can:
+</p>
+<ul class="mla_settings">
+<li>Reorder columns with a simple drag & drop interface.</li>
+<li>Re-size columns to give more or less space to a column.</li>
+<li>Remove (not just hide) columns from the submenu table.</li>
+<li>Add new columns for custom fields and additional information.</li>
+<li>The Admin Columns "Pro" version adds support for ACF fields and other capabilities.</li>
+</ul>
+<p>
+When Admin Columns is present you will see a new "Edit Columns" button just above the Media/Assistant submenu table. Click the button to go to the Settings/Admin Columns configuration screen. There you will see "Media Library Assistant" added to the "Others:" list. Click on it to see the configuration of the Media/Assistant submenu screen.
+</p>
+<p>
+You can find detailed configuration instructions at the <a href="http://admincolumns.com/documentation/" title="Admin Columns Documentation" target="_blank">Admin Columns web site Documentation page</a>.
+</p>
+<p>
+When you have completed your configuration changes, click "Update Media Library Assistant" in the Store Settings metabox at the top-right of the screen. You can also click "Restore Media Library Assistant columns" to remove your changes and go back to the MLA default settings. Click the "View" button at the right of the Media Library Assistant heading to return to the Media/Assistant submenu screen and see your changes.
+<a name="mla_list_table_hooks"></a>
+</p>
+<p>
+<a href="#backtotop">Go to Top</a>
+</p>
+<h3>Media/Assistant Submenu Actions and Filters (Hooks)</h3>
+<p>
+The Media/Assistant submenu supports a comprehensive set of filters and actions that give you control over table columns, inline actions and bulk actions from PHP code in your theme or in another plugin. An example of using the hooks from a simple, stand-alone plugin can be found here: <a title="View the Media/Assistant Submenu Example source code" href="[+examples_url+]mla-list-table-hooks-example.php.txt" target="_blank" class="mla-doc-bold-link">mla-list-table-hooks-example.php.txt</a>. To run the example:
+<ol>
+<li>Edit the code to uncomment the <code>error_log()</code> calls so you can see what is passed to the hooks you are interested in.</li>
+<li>Remove the ".txt" extension and save the "mla-list-table-hooks-example.php" file in your plugins directory.</li>
+<li>Go to the Plugins/Installed Plugins screen and activate the "MLA List Table Hooks Example" plugin.</li>
+<li>Go to the Media/Assistant submenu to exercise the filters and write filter/action information to the site's Error Log.</li>
+<li>Examine the Error Log to see the filter/action information.</li>
+</ol>
+</p>
+<p>
+The example code documents each hook with comments in the filter/action function that intercepts each hook. There are hooks that let you add, modify or delete table columns. 
+</p>
+<p>
+In addition, there are hooks that run when the Media Library items are selected from the database and hooks for adding and processing custom quick actions and bulk actions.
+</p>
+<p>
+The following hooks are defined in <code>/wp-admin/includes/class-wp-list-table.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">views_media_page_mla_menu</td>
+<td class="mla-doc-hook-definition">Filter the list of available list table views.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">bulk_actions-media_page_mla-menu</td>
+<td class="mla-doc-hook-definition">Filter the list table Bulk Actions drop-down. This WordPress filter can currently only be used to remove bulk actions.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">months_dropdown_results</td>
+<td class="mla-doc-hook-definition">Filter the 'Months' drop-down results.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_entries_per_page</td>
+<td class="mla-doc-hook-definition">Filter the number of items to be displayed on each page of the list table.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">manage_media_page_mla-menu_sortable_columns</td>
+<td class="mla-doc-hook-definition">Filter the list table sortable columns for a specific screen.</td>
+</tr>
+</table>
+<p>
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-objects.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">mla_taxonomy_get_columns</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to change the columns defined for the Edit Taxonomy submenu table(s).</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_taxonomy_column</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to change column content in the Edit Taxonomy submenu table(s).</td>
+</tr>
+</table>
+<p>
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-data.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_query_final_terms</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to change the terms of the prepare_items query after they are processed by the "Prepare List Table Query" handler.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_query_custom_items</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to substitute the results of the prepare_items query with alternative results of your own.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_search_filter_fields</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to add or remove any of the MLA standard fields for Search Media.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_search_filter_inner_clause</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to modify or add to the inner WHERE clause for Search Media.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_fetch_attachment_references</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to modify or add to the "where-used" reference reporting information.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_update_single_item</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to modify, delete or add to updates before they are applied.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_updated_single_item</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to work with the item after updates have been applied.</td>
+</tr>
+</table>
+<p>
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-main.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_inline_fields</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to name the fields passed to the JavaScript functions for Quick editing.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_inline_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table "Quick Edit" action before the MLA handler.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_bulk_action_initial_request</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process the request parameters for a bulk action before the action begins. DO NOT assume parameters come from the $_REQUEST super array!</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_begin_bulk_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table bulk action, standard or custom, before the MLA handler. The filter is called once before any of the items in $_REQUEST['cb_attachment'] are processed.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_bulk_action_item_request</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process the request parameters for each item during a bulk action. DO NOT assume parameters come from the $_REQUEST super array!</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_bulk_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table bulk action, standard or custom, before the MLA handler. The filter is called once for each of the items in $_REQUEST['cb_attachment'].</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_custom_bulk_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to process an MLA_List_Table bulk action that MLA does not recognize. The filter is called once for each of the items in $_REQUEST['cb_attachment'].</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_end_bulk_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to post-process an MLA_List_Table bulk action, standard or custom. The filter is called once after all of the items in $_REQUEST['cb_attachment'] are processed.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_admin_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table item-level action, standard or custom, before the MLA handler. This filter is called before anything is output for the Media/Assistant submenu, so you can redirect to another admin screen if desired.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_custom_admin_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to process an MLA_List_Table item-level action that MLA does not recognize. This filter is called before anything is output for the Media/Assistant submenu, so you can redirect to another admin screen if desired.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_single_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table item-level action, standard or custom, before the MLA handler. This filter is called after the Media/Assistant submenu screen header is output but before the messages and submenu table are displayed.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_custom_single_action</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to process an MLA_List_Table page-level or single-item action that MLA does not recognize. This filter is called after the Media/Assistant submenu screen header is output but before the messages and submenu table are displayed.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_clear_filter_by</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to clear any custom submenu "Filter-by" parameters.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_new_instance</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to extend the MLA_List_Table class.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_inline_values</td>
+<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the substitution values for the Quick and Bulk Edit forms.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_inline_template</td>
+<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the template used for the Quick and Bulk Edit forms.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_inline_parse</td>
+<td class="mla-doc-hook-definition">Gives you a final chance to modify and extend the HTML markup used for the Quick and Bulk Edit forms.</td>
+</tr>
+</table>
+<p>
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-list-table.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_get_columns</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the list table columns.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_get_hidden_columns</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the hidden list table columns.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_get_sortable_columns</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the sortable list table columns; a good alternative to the 'manage_media_page_mla_menu_sortable_columns' filter.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_get_bulk_actions</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the list of bulk actions; a good alternative to the 'bulk_actions-media_page_mla-menu' filter.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_extranav_actions</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to add, remove and/or re-order the controls added to the top & bottom table navigation areas.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_extranav_custom_action</td>
+<td class="mla-doc-hook-definition">Called when the MLA_List_Table can't find a value for an extranav action.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_column_default</td>
+<td class="mla-doc-hook-definition">Called when the MLA_List_Table can't find a value for a given column.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_submenu_arguments</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the URL parameters that will be retained when the submenu page refreshes.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_prepare_items_pagination</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the per_page and current_page parameters used for the prepare_items database query.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_prepare_items_total_items</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to substitute your own $total_items parameter used for the prepare_items database query.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_prepare_items_the_items</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to substitute your own items array in place of the default prepare_items database query.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_prepare_items</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to record or modify the results of the prepare_items database query. </td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_build_rollover_actions</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the list of "Rollover" actions giving item-level links such as "Quick Edit", "Move to Trash".</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_list_table_build_inline_data</td>
+<td class="mla-doc-hook-definition">Gives you an opportunity to filter the data passed to the JavaScript functions for Quick and Bulk editing.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">views_upload</td>
+<td class="mla-doc-hook-definition">Views for the "upload" page when WPML is active. This filter is hooked by WPML Media in wpml-media.class.php, and is only applied when WPML is active.</td>
+</tr>
+</table>
+<p>
+The following hooks are defined in <code>/media-library-assistant/includes/class-mla-edit-media.php</code>:
+</p>
+<table>
+<tr>
+<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_values</td>
+<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the substitution values for the Bulk Edit on Upload form.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_template</td>
+<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the template used for the Bulk Edit on Upload form.</td>
+</tr>
+<tr>
+<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_parse</td>
+<td class="mla-doc-hook-definition">Gives you a final chance to modify and extend the HTML markup used for the Bulk Edit on Upload form.</td>
+</tr>
+</table>
+<p>
+&nbsp;
 <a name="mla_media_modal_filters"></a>
 </p>
 <p>
@@ -5258,248 +5582,6 @@ When rules are defined in the IPTC/EXIF "Taxonomy term mapping section" they ext
 <p>
 If you use Replication to automatically create terms in non-current languages they will be created with the same text value as the source term in the current language. You can always go to the taxonomy edit page and change the source text to an appropriate value for the other language(s). If you do not use Replication you can always go to the taxonomy edit page and add translations with an appropriate value for the other language(s).
 </p>
-<p>
-&nbsp;
-<a name="mla_list_table_hooks"></a>&nbsp;
-</p>
-<p>
-<a href="#backtotop">Go to Top</a>
-</p>
-<h3>Media/Assistant Submenu Actions and Filters (Hooks)</h3>
-<p>
-The Media/Assistant submenu supports a comprehensive set of filters and actions that give you control over table columns, inline actions and bulk actions from PHP code in your theme or in another plugin. An example of using the hooks from a simple, stand-alone plugin can be found here: <a title="View the Media/Assistant Submenu Example source code" href="[+examples_url+]mla-list-table-hooks-example.php.txt" target="_blank" class="mla-doc-bold-link">mla-list-table-hooks-example.php.txt</a>. To run the example:
-<ol>
-<li>Edit the code to uncomment the <code>error_log()</code> calls so you can see what is passed to the hooks you are interested in.</li>
-<li>Remove the ".txt" extension and save the "mla-list-table-hooks-example.php" file in your plugins directory.</li>
-<li>Go to the Plugins/Installed Plugins screen and activate the "MLA List Table Hooks Example" plugin.</li>
-<li>Go to the Media/Assistant submenu to exercise the filters and write filter/action information to the site's Error Log.</li>
-<li>Examine the Error Log to see the filter/action information.</li>
-</ol>
-</p>
-<p>
-The example code documents each hook with comments in the filter/action function that intercepts each hook. There are hooks that let you add, modify or delete table columns. 
-</p>
-<p>
-In addition, there are hooks that run when the Media Library items are selected from the database and hooks for adding and processing custom quick actions and bulk actions.
-</p>
-<p>
-The following hooks are defined in <code>/wp-admin/includes/class-wp-list-table.php</code>:
-</p>
-<table>
-<tr>
-<td class="mla-doc-hook-label">views_media_page_mla_menu</td>
-<td class="mla-doc-hook-definition">Filter the list of available list table views.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">bulk_actions-media_page_mla-menu</td>
-<td class="mla-doc-hook-definition">Filter the list table Bulk Actions drop-down. This WordPress filter can currently only be used to remove bulk actions.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">months_dropdown_results</td>
-<td class="mla-doc-hook-definition">Filter the 'Months' drop-down results.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_entries_per_page</td>
-<td class="mla-doc-hook-definition">Filter the number of items to be displayed on each page of the list table.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">manage_media_page_mla-menu_sortable_columns</td>
-<td class="mla-doc-hook-definition">Filter the list table sortable columns for a specific screen.</td>
-</tr>
-</table>
-<p>
-The following hooks are defined in <code>/media-library-assistant/includes/class-mla-objects.php</code>:
-</p>
-<table>
-<tr>
-<td class="mla-doc-hook-label">mla_taxonomy_get_columns</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to change the columns defined for the Edit Taxonomy submenu table(s).</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_taxonomy_column</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to change column content in the Edit Taxonomy submenu table(s).</td>
-</tr>
-</table>
-<p>
-The following hooks are defined in <code>/media-library-assistant/includes/class-mla-data.php</code>:
-</p>
-<table>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_query_final_terms</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to change the terms of the prepare_items query after they are processed by the "Prepare List Table Query" handler.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_query_custom_items</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to substitute the results of the prepare_items query with alternative results of your own.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_search_filter_fields</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to add or remove any of the MLA standard fields for Search Media.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_search_filter_inner_clause</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to modify or add to the inner WHERE clause for Search Media.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_fetch_attachment_references</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to modify or add to the "where-used" reference reporting information.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_update_single_item</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to modify, delete or add to updates before they are applied.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_updated_single_item</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to work with the item after updates have been applied.</td>
-</tr>
-</table>
-<p>
-The following hooks are defined in <code>/media-library-assistant/includes/class-mla-main.php</code>:
-</p>
-<table>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_inline_fields</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to name the fields passed to the JavaScript functions for Quick editing.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_inline_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table "Quick Edit" action before the MLA handler.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_bulk_action_initial_request</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process the request parameters for a bulk action before the action begins. DO NOT assume parameters come from the $_REQUEST super array!</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_begin_bulk_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table bulk action, standard or custom, before the MLA handler. The filter is called once before any of the items in $_REQUEST['cb_attachment'] are processed.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_bulk_action_item_request</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process the request parameters for each item during a bulk action. DO NOT assume parameters come from the $_REQUEST super array!</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_bulk_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table bulk action, standard or custom, before the MLA handler. The filter is called once for each of the items in $_REQUEST['cb_attachment'].</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_custom_bulk_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to process an MLA_List_Table bulk action that MLA does not recognize. The filter is called once for each of the items in $_REQUEST['cb_attachment'].</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_end_bulk_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to post-process an MLA_List_Table bulk action, standard or custom. The filter is called once after all of the items in $_REQUEST['cb_attachment'] are processed.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_admin_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table item-level action, standard or custom, before the MLA handler. This filter is called before anything is output for the Media/Assistant submenu, so you can redirect to another admin screen if desired.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_custom_admin_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to process an MLA_List_Table item-level action that MLA does not recognize. This filter is called before anything is output for the Media/Assistant submenu, so you can redirect to another admin screen if desired.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_single_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to pre-process an MLA_List_Table item-level action, standard or custom, before the MLA handler. This filter is called after the Media/Assistant submenu screen header is output but before the messages and submenu table are displayed.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_custom_single_action</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to process an MLA_List_Table page-level or single-item action that MLA does not recognize. This filter is called after the Media/Assistant submenu screen header is output but before the messages and submenu table are displayed.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_clear_filter_by</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to clear any custom submenu "Filter-by" parameters.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_new_instance</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to extend the MLA_List_Table class.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_inline_values</td>
-<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the substitution values for the Quick and Bulk Edit forms.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_inline_template</td>
-<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the template used for the Quick and Bulk Edit forms.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_inline_parse</td>
-<td class="mla-doc-hook-definition">Gives you a final chance to modify and extend the HTML markup used for the Quick and Bulk Edit forms.</td>
-</tr>
-</table>
-<p>
-The following hooks are defined in <code>/media-library-assistant/includes/class-mla-list-table.php</code>:
-</p>
-<table>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_get_columns</td>
-<td class="mla-doc-hook-definition">This MLA-specific filter gives you an opportunity to filter the list table columns.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_get_hidden_columns</td>
-<td class="mla-doc-hook-definition">This MLA-specific filter gives you an opportunity to filter the hidden list table columns.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_get_sortable_columns</td>
-<td class="mla-doc-hook-definition">This MLA-specific filter gives you an opportunity to filter the sortable list table columns; a good alternative to the 'manage_media_page_mla_menu_sortable_columns' filter.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_get_bulk_actions</td>
-<td class="mla-doc-hook-definition">This MLA-specific filter gives you an opportunity to filter the list of bulk actions; a good alternative to the 'bulk_actions-media_page_mla-menu' filter.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_column_default</td>
-<td class="mla-doc-hook-definition">Called when the MLA_List_Table can't find a value for a given column.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_submenu_arguments</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to filter the URL parameters that will be retained when the submenu page refreshes.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_prepare_items_pagination</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to filter the per_page and current_page parameters used for the prepare_items database query.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_prepare_items_total_items</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to substitute your own $total_items parameter used for the prepare_items database query.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_prepare_items_the_items</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to substitute your own items array in place of the default prepare_items database query.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_prepare_items</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to record or modify the results of the prepare_items database query. </td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_build_rollover_actions</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to filter the list of "Rollover" actions giving item-level links such as "Quick Edit", "Move to Trash".</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_list_table_build_inline_data</td>
-<td class="mla-doc-hook-definition">Gives you an opportunity to filter the data passed to the JavaScript functions for Quick and Bulk editing.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">views_upload</td>
-<td class="mla-doc-hook-definition">Views for the "upload" page when WPML is active. This filter is hooked by WPML Media in wpml-media.class.php, and is only applied when WPML is active.</td>
-</tr>
-</table>
-<p>
-The following hooks are defined in <code>/media-library-assistant/includes/class-mla-edit-media.php</code>:
-</p>
-<table>
-<tr>
-<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_values</td>
-<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the substitution values for the Bulk Edit on Upload form.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_template</td>
-<td class="mla-doc-hook-definition">Gives you a chance to modify and extend the template used for the Bulk Edit on Upload form.</td>
-</tr>
-<tr>
-<td class="mla-doc-hook-label">mla_upload_bulk_edit_form_parse</td>
-<td class="mla-doc-hook-definition">Gives you a final chance to modify and extend the HTML markup used for the Bulk Edit on Upload form.</td>
-</tr>
-</table>
 <p>
 <a href="#backtotop">Go to Top</a>
 </p>

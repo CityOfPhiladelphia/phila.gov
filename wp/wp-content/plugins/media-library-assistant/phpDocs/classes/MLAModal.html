@@ -69,11 +69,11 @@ but only once per page load</span><pre>mla_add_terms_search_scripts()</pre></a><
 <li class="method public "><a href="#mla_media_view_settings_filter" title="mla_media_view_settings_filter :: Adds settings values to be passed to the Media Manager in /wp-includes/js/media-views.js."><span class="description">Adds settings values to be passed to the Media Manager in /wp-includes/js/media-views.js.</span><pre>mla_media_view_settings_filter()</pre></a></li>
 <li class="method public "><a href="#mla_media_view_strings_filter" title="mla_media_view_strings_filter :: Adds string values to be passed to the Media Manager in /wp-includes/js/media-views.js."><span class="description">Adds string values to be passed to the Media Manager in /wp-includes/js/media-views.js.</span><pre>mla_media_view_strings_filter()</pre></a></li>
 <li class="method public "><a href="#mla_print_media_templates_action" title="mla_print_media_templates_action :: Prints the templates used in the MLA Media Manager enhancements."><span class="description">Prints the templates used in the MLA Media Manager enhancements.</span><pre>mla_print_media_templates_action()</pre></a></li>
+<li class="method public "><a href="#mla_terms_options" title="mla_terms_options :: Extract value and text elements from Dropdown HTML option tags"><span class="description">Extract value and text elements from Dropdown HTML option tags</span><pre>mla_terms_options()</pre></a></li>
 <li class="method public "><a href="#mla_terms_search_form" title='mla_terms_search_form :: Build the hidden form for the "Search Terms" popup modal window'><span class="description">Build the hidden form for the "Search Terms" popup modal window</span><pre>mla_terms_search_form()</pre></a></li>
 <li class="method public "><a href="#mla_wp_enqueue_media_action" title="mla_wp_enqueue_media_action :: Enqueues the mla-media-modal-scripts.js file, adding it to the Media Manager scripts."><span class="description">Enqueues the mla-media-modal-scripts.js file, adding it to the Media Manager scripts.</span><pre>mla_wp_enqueue_media_action()</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="method private "><a href="#_months_dropdown" title="_months_dropdown :: Display a monthly dropdown for filtering items"><span class="description">Display a monthly dropdown for filtering items</span><pre>_months_dropdown()</pre></a></li>
-<li class="method private "><a href="#_terms_options" title="_terms_options :: Extract value and text elements from Dropdown HTML option tags"><span class="description">Extract value and text elements from Dropdown HTML option tags</span><pre>_terms_options()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="nav-header private">» Private</li>
@@ -234,6 +234,26 @@ but only once per page load</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="mla_terms_options" id="mla_terms_options"></a><div class="element clickable method public mla_terms_options" data-toggle="collapse" data-target=".mla_terms_options .collapse">
+<h2>Extract value and text elements from Dropdown HTML option tags</h2>
+<pre>mla_terms_options(string $markup) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.20</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$markup</h4>
+<code>string</code><p>HTML markup for taxonomy terms dropdown <select> tag</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>( 'class' => $class_array, 'value' => $value_array, 'text' => $text_array )</div>
+</div></div>
+</div>
 <a name="mla_terms_search_form" id="mla_terms_search_form"></a><div class="element clickable method public mla_terms_search_form" data-toggle="collapse" data-target=".mla_terms_search_form .collapse">
 <h2>Build the hidden form for the "Search Terms" popup modal window</h2>
 <pre>mla_terms_search_form() : string</pre>
@@ -279,26 +299,6 @@ but only once per page load</h2>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>( value => label ) pairs</div>
-</div></div>
-</div>
-<a name="_terms_options" id="_terms_options"></a><div class="element clickable method private _terms_options" data-toggle="collapse" data-target="._terms_options .collapse">
-<h2>Extract value and text elements from Dropdown HTML option tags</h2>
-<pre>_terms_options(string $markup) : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>1.20</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$markup</h4>
-<code>string</code><p>HTML markup for taxonomy terms dropdown <select> tag</p>
-</div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>( 'class' => $class_array, 'value' => $value_array, 'text' => $text_array )</div>
 </div></div>
 </div>
 <h3>
@@ -373,7 +373,7 @@ and mla_print_media_templates_action</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
+            generated on 2016-01-03T09:26:08-08:00.<br></footer></div>
 </div>
 </body>
 </html>

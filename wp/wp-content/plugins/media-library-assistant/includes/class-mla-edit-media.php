@@ -310,7 +310,7 @@ class MLAEdit {
 			}
 		}
 
-		$page_template_array = MLAData::mla_load_template( 'mla-add-new-bulk-edit.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'mla-add-new-bulk-edit.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
 			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLAEdit::mla_post_upload_ui', var_export( $page_template_array, true ) ), 0 );
@@ -667,7 +667,7 @@ class MLAEdit {
 		 * Upload New Media Bulk Edit Area
 		 */
 		if ( ( 'media' == $screen->id ) && ( 'add' == $screen->action ) ) {
-			$template_array = MLAData::mla_load_template( 'help-for-upload-new-media.tpl' );
+			$template_array = MLACore::mla_load_template( 'help-for-upload-new-media.tpl' );
 			if ( empty( $template_array ) ) {
 				return $admin_title;
 			}
@@ -717,7 +717,7 @@ class MLAEdit {
 			return $admin_title;
 		}
 
-		$template_array = MLAData::mla_load_template( 'help-for-edit_attachment.tpl' );
+		$template_array = MLACore::mla_load_template( 'help-for-edit_attachment.tpl' );
 		if ( empty( $template_array ) ) {
 			return $admin_title;
 		}
