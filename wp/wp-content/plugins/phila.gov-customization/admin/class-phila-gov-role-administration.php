@@ -273,7 +273,7 @@ class Phila_Gov_Role_Administration {
    }
 
   function remove_bottom_tinymce2_buttons( $buttons ){
-    $remove = array( 'underline', 'alignjustify', 'forecolor', 'outdent', 'indent', 'removeformat' );
+    $remove = array( 'underline', 'alignjustify', 'forecolor', 'outdent', 'indent' );
 
   	return array_diff( $buttons, $remove );
    }
