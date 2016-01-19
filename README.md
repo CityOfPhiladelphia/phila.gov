@@ -30,12 +30,12 @@ See install, wp-config, and deploy in the scripts directory.
 4. Run `joia up`
 
 
-## How to deploy
+## How to deploy a new production instance
 
-1. Modify `composer.json` to point at new require versions.
-2. Run `composer install`.
-3. Check out the site locally.
-4. If all looks good, commit and push to the `staging` branch.
-5. That push will trigger a build at https://travis-ci.org/CityOfPhiladelphia/phila.gov, which will in turn trigger a staging deploy.
-6. Check out the site at the staging server.
-7. If all looks good, create a pull request from staging to master. Once the PR has been accepted and merged, a production deploy will be triggered.
+Same as above for test instance but after machine is up: 
+
+1. `joia ssh` and replace .ssh/environment
+2. Set branch and project tags in AWS for Travis deploy (unsetting tags on current production instance)
+3. Restart most recent build in Travis
+4. After deploy has succeeded, add instance to load balancer
+5. Once instance status is InService, remove old instance
