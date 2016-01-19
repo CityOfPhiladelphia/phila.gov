@@ -8,7 +8,7 @@ The phila.gov site is WordPress running behind Nginx on an AWS instance. The ent
 
 ## Running a test AWS instance
 
-1. [Install joia](https://github.com/gsf/joia#install)
+1. [Install joia](https://github.com/CityOfPhiladelphia/joia#install)
 2. Create .env file with these vars:
   - AMI=`ID for the AMI to use for the instance`
   - SUBNET=`ID for the VPC subnet the instance should be in`
