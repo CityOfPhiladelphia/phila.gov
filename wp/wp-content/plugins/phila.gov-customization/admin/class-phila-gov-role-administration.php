@@ -267,13 +267,13 @@ class Phila_Gov_Role_Administration {
   */
 
   function remove_top_tinymce_button( $buttons ){
-    $remove = array( 'alignleft', 'aligncenter', 'alignright', 'wp-more', 'fullscreen', 'wp-more', 'wp_adv', 'strikethrough' );
+    $remove = array( 'alignleft', 'aligncenter', 'alignright', 'wp-more', 'fullscreen', 'strikethrough' );
 
     return array_diff( $buttons, $remove );
    }
 
   function remove_bottom_tinymce2_buttons( $buttons ){
-    $remove = array( 'pastetext', 'underline', 'alignjustify', 'forecolor', 'outdent', 'indent', 'removeformat' );
+    $remove = array( 'underline', 'alignjustify', 'forecolor', 'outdent', 'indent', 'removeformat' );
 
   	return array_diff( $buttons, $remove );
    }
