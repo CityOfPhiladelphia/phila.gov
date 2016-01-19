@@ -3,12 +3,7 @@
 
 # phila.gov
 
-The phila.gov site is WordPress running behind Nginx on an AWS instance. The entire machine setup (the whole stack) is kept in this repo. 
-
-
-## Install
-
-See install, wp-config, and deploy in the scripts directory.
+The phila.gov site is WordPress running behind Nginx on an AWS instance. The entire machine setup is kept in this repo. 
 
 
 ## Running a test AWS instance
