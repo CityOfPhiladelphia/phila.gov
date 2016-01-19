@@ -15,42 +15,24 @@
  */
 class MLAQuery {
 	/**
-	 * Provides a unique suffix for the ALT Text "Search Media" SQL View
+	 * Provides a unique value for the ALT Text "Search Media" subquery
 	 *
-	 * The SQL View is used to filter the Media/Assistant submenu table by
+	 * The subquery is used to filter the Media/Assistant submenu table by
 	 * ALT Text with the Search Media text box.
 	 *
 	 * @since 0.40
 	 */
-	const MLA_ALT_TEXT_VIEW_SUFFIX = 'alt_text_view';
+	const MLA_ALT_TEXT_SUBQUERY = 'alt_text_subquery';
 
 	/**
-	 * Provides a unique name for the ALT Text "Search Media" SQL View
+	 * Provides a unique suffix for the custom field "orderby" subquery
 	 *
-	 * @since 0.40
-	 *
-	 * @var	array
-	 */
-	private static $mla_alt_text_view = NULL;
-
-	/**
-	 * Provides a unique suffix for the custom field "orderby" SQL View
-	 *
-	 * The SQL View is used to sort the Media/Assistant submenu table on
+	 * The subquery is used to sort the Media/Assistant submenu table on
 	 * ALT Text and custom field columns.
 	 *
 	 * @since 2.15
 	 */
-	const MLA_ORDERBY_VIEW_SUFFIX = 'orderby_view';
-
-	/**
-	 * Provides a unique name for the custom field "orderby" SQL View
-	 *
-	 * @since 2.15
-	 *
-	 * @var	array
-	 */
-	private static $mla_orderby_view = NULL;
+	const MLA_ORDERBY_SUBQUERY = 'orderby_subquery';
 
 	/**
 	 * Provides a unique suffix for the "Table View custom:" SQL View
@@ -60,16 +42,7 @@ class MLAQuery {
 	 *
 	 * @since 2.15
 	 */
-	const MLA_TABLE_VIEW_CUSTOM_SUFFIX = 'table_view_custom';
-
-	/**
-	 * Provides a unique name for the "Table View custom:" SQL View
-	 *
-	 * @since 2.15
-	 *
-	 * @var	array
-	 */
-	private static $mla_table_view_custom = NULL;
+	const MLA_TABLE_VIEW_SUBQUERY = 'table_view_subquery';
 
 	/**
 	 * WordPress version test for $wpdb->esc_like() Vs esc_sql()
@@ -86,11 +59,6 @@ class MLAQuery {
 	 * @since 0.1
 	 */
 	public static function initialize() {
-		global $table_prefix;
-
-		self::$mla_alt_text_view = $table_prefix . MLA_OPTION_PREFIX . self::MLA_ALT_TEXT_VIEW_SUFFIX;
-		self::$mla_orderby_view = $table_prefix . MLA_OPTION_PREFIX . self::MLA_ORDERBY_VIEW_SUFFIX;
-		self::$mla_table_view_custom = $table_prefix . MLA_OPTION_PREFIX . self::MLA_TABLE_VIEW_CUSTOM_SUFFIX;
 		self::$wp_4dot0_plus = version_compare( get_bloginfo('version'), '4.0', '>=' );
 
 		/*
@@ -106,6 +74,13 @@ class MLAQuery {
 				// self::$default_sortable_columns [] = none at this time
 			} // supported taxonomy
 		} // foreach $tax_name
+
+		/*
+		 * For WP 4.3+ icon will be merged with the first visible preferred column
+		 */
+		if ( MLATest::$wp_4dot3_plus ) {
+			unset( self::$default_columns['icon'] );
+		}
 
 		self::$default_columns = array_merge( self::$default_columns, MLACore::mla_custom_field_support( 'default_columns' ) );
 		self::$default_hidden_columns = array_merge( self::$default_hidden_columns, MLACore::mla_custom_field_support( 'default_hidden_columns' ) );
@@ -894,7 +869,7 @@ class MLAQuery {
 		/*
 		 * Pass query and search parameters to the filters for _execute_list_table_query
 		 */
-		self::$query_parameters = array( 'use_alt_text_view' => false, 'use_postmeta_view' => false, 'use_orderby_view' => false, 'orderby' => $clean_request['orderby'], 'order' => $clean_request['order'] );
+		self::$query_parameters = array( 'use_alt_text_subquery' => false, 'use_postmeta_subquery' => false, 'use_orderby_subquery' => false, 'orderby' => $clean_request['orderby'], 'order' => $clean_request['order'] );
 		self::$query_parameters['detached'] = isset( $clean_request['detached'] ) ? $clean_request['detached'] : NULL;
 		self::$search_parameters = array( 'debug' => 'none' );
 
@@ -903,7 +878,7 @@ class MLAQuery {
 		 * Matching a wildcard pattern requires mainpulating the WHERE clause, too
 		 */
 		if ( isset( $clean_request['meta_query']['key'] ) ) {
-			self::$query_parameters['use_postmeta_view'] = true;
+			self::$query_parameters['use_postmeta_subquery'] = true;
 			self::$query_parameters['postmeta_key'] = $clean_request['meta_query']['key'];
 			self::$query_parameters['postmeta_value'] = NULL;
 			unset( $clean_request['meta_query'] );
@@ -955,7 +930,7 @@ class MLAQuery {
 			self::$search_parameters['exact'] = isset( $clean_request['exact'] );
 
 			if ( in_array( 'alt-text', self::$search_parameters['mla_search_fields'] ) ) {
-				self::$query_parameters['use_alt_text_view'] = true;
+				self::$query_parameters['use_alt_text_subquery'] = true;
 			}
 
 			if ( in_array( 'terms', self::$search_parameters['mla_search_fields'] ) ) {
@@ -976,8 +951,8 @@ class MLAQuery {
 		if ( 'c_' == substr( $clean_request['orderby'], 0, 2 ) ) {
 			$option_value = MLAQuery::mla_custom_field_option_value( $clean_request['orderby'] );
 			if ( isset( $option_value['name'] ) ) {
-				self::$query_parameters['use_orderby_view'] = true;
-				self::$query_parameters['postmeta_key'] = $option_value['name'];
+				self::$query_parameters['use_orderby_subquery'] = true;
+				self::$query_parameters['orderby_key'] = $option_value['name'];
 
 				if ( isset($clean_request['orderby']) ) {
 					unset($clean_request['orderby']);
@@ -994,8 +969,8 @@ class MLAQuery {
 				 * so we'll handle it in the JOIN and ORDERBY filters
 				 */
 				case '_wp_attachment_image_alt':
-					self::$query_parameters['use_orderby_view'] = true;
-					self::$query_parameters['postmeta_key'] = '_wp_attachment_image_alt';
+					self::$query_parameters['use_orderby_subquery'] = true;
+					self::$query_parameters['orderby_key'] = '_wp_attachment_image_alt';
 
 					if ( isset($clean_request['orderby']) ) {
 						unset($clean_request['orderby']);
@@ -1100,56 +1075,6 @@ class MLAQuery {
 	private static function _execute_list_table_query( $request ) {
 		global $wpdb;
 
-		/*
-		 * ALT Text searches, custom field Table Views and custom field sorts are
-		 * special; we have to use an SQL VIEW to build an intermediate table and
-		 * modify the JOIN to include posts with no value for the metadata field.
-		 */
-		if ( self::$query_parameters['use_alt_text_view'] ) {
-			$alt_text_view_name = self::$mla_alt_text_view;
-			$key_name = '_wp_attachment_image_alt';
-			$table_name = $wpdb->postmeta;
-
-			$result = $wpdb->query(
-					"
-					CREATE OR REPLACE VIEW {$alt_text_view_name} AS
-					SELECT post_id, meta_value
-					FROM {$table_name}
-					WHERE {$table_name}.meta_key = '{$key_name}'
-					"
-			);
-		}
-
-		if ( self::$query_parameters['use_postmeta_view'] ) {
-			$postmeta_view_name = self::$mla_table_view_custom;
-			$key_name = self::$query_parameters['postmeta_key'];
-			$table_name = $wpdb->postmeta;
-
-			$result = $wpdb->query(
-					"
-					CREATE OR REPLACE VIEW {$postmeta_view_name} AS
-					SELECT post_id, meta_value
-					FROM {$table_name}
-					WHERE {$table_name}.meta_key = '{$key_name}'
-					"
-			);
-		}
-
-		if ( self::$query_parameters['use_orderby_view'] ) {
-			$orderby_view_name = self::$mla_orderby_view;
-			$key_name = self::$query_parameters['postmeta_key'];
-			$table_name = $wpdb->postmeta;
-
-			$result = $wpdb->query(
-					"
-					CREATE OR REPLACE VIEW {$orderby_view_name} AS
-					SELECT post_id, meta_value
-					FROM {$table_name}
-					WHERE {$table_name}.meta_key = '{$key_name}'
-					"
-			);
-		}
-
 		add_filter( 'posts_search', 'MLAQuery::mla_query_posts_search_filter', 10, 2 ); // $search, &$this
 		add_filter( 'posts_where', 'MLAQuery::mla_query_posts_where_filter' );
 		add_filter( 'posts_join', 'MLAQuery::mla_query_posts_join_filter' );
@@ -1199,18 +1124,6 @@ class MLAQuery {
 		remove_filter( 'posts_join', 'MLAQuery::mla_query_posts_join_filter' );
 		remove_filter( 'posts_where', 'MLAQuery::mla_query_posts_where_filter' );
 		remove_filter( 'posts_search', 'MLAQuery::mla_query_posts_search_filter' );
-
-		if ( self::$query_parameters['use_alt_text_view'] ) {
-			$result = $wpdb->query( "DROP VIEW {$alt_text_view_name}" );
-		}
-
-		if ( self::$query_parameters['use_postmeta_view'] ) {
-			$result = $wpdb->query( "DROP VIEW {$postmeta_view_name}" );
-		}
-
-		if ( self::$query_parameters['use_orderby_view'] ) {
-			$result = $wpdb->query( "DROP VIEW {$orderby_view_name}" );
-		}
 
 		return $results;
 	}
@@ -1518,7 +1431,7 @@ class MLAQuery {
 					}
 
 					if ( in_array( 'alt-text', $fields ) ) {
-						$view_name = self::$mla_alt_text_view;
+						$view_name = self::MLA_ALT_TEXT_SUBQUERY;
 						$inner_clause .= "{$inner_connector}({$view_name}.meta_value LIKE {$sql_term})";
 						$inner_connector = ' OR ';
 					}
@@ -1668,7 +1581,7 @@ class MLAQuery {
 		 * Matching a NULL meta value 
 		 */
 		if ( array_key_exists( 'postmeta_value', self::$query_parameters ) && NULL == self::$query_parameters['postmeta_value'] ) {
-			$where_clause .= ' AND ' . self::$mla_table_view_custom . '.meta_value IS NULL';
+			$where_clause .= ' AND ' . self::MLA_TABLE_VIEW_SUBQUERY . '.meta_value IS NULL';
 		}
 
 		/*
@@ -1723,29 +1636,33 @@ class MLAQuery {
 
 		/*
 		 * ALT Text searches, custom field Table Views and custom field sorts are
-		 * special; we have to use an SQL VIEW to build an intermediate table and
-		 * modify the JOIN to include posts with no value for this metadata field.
+		 * special; we have to use a subquery to build an intermediate table and
+		 * modify the JOIN to include posts with no value for the metadata field.
+		 * Three clauses are used because all three conditions can be present at once.
 		 */
-		if ( self::$query_parameters['use_alt_text_view'] ) {
-			$join_clause .= sprintf( ' LEFT JOIN %1$s ON (%2$s.ID = %1$s.post_id)', self::$mla_alt_text_view, $wpdb->posts );
+		if ( self::$query_parameters['use_alt_text_subquery'] ) {
+			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, '_wp_attachment_image_alt' );
+			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_ALT_TEXT_SUBQUERY, $wpdb->posts );
 		}
 
-		if ( self::$query_parameters['use_postmeta_view'] ) {
-			$join_clause .= sprintf( ' LEFT JOIN %1$s ON (%2$s.ID = %1$s.post_id)', self::$mla_table_view_custom, $wpdb->posts );
+		if ( self::$query_parameters['use_postmeta_subquery'] ) {
+			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, self::$query_parameters['postmeta_key'] );
+			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_TABLE_VIEW_SUBQUERY, $wpdb->posts );
 		}
 
-		if ( self::$query_parameters['use_orderby_view'] ) {
-			$join_clause .= sprintf( ' LEFT JOIN %1$s ON (%2$s.ID = %1$s.post_id)', self::$mla_orderby_view, $wpdb->posts );
+		if ( self::$query_parameters['use_orderby_subquery'] ) {
+			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, self::$query_parameters['orderby_key'] );
+			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_ORDERBY_SUBQUERY, $wpdb->posts );
 		}
 
 		/*
-		 * custom field sorts are special; we have to use an SQL VIEW to
-		 * build an intermediate table and modify the JOIN to include posts with
+		 * Custom field sorts are special; we have to use a subquery to build
+		 * an intermediate table and modify the JOIN to include posts with
 		 * no value for this metadata field.
 		 */
 		if ( isset( self::$query_parameters['orderby'] ) ) {
 			if ( ( 'c_' == substr( self::$query_parameters['orderby'], 0, 2 ) ) || ( '_wp_attachment_image_alt' == self::$query_parameters['orderby'] ) ) {
-				$orderby = self::$mla_orderby_view . '.meta_value';
+				$orderby = self::MLA_ORDERBY_SUBQUERY . '.meta_value';
 			}
 		}
 
@@ -1786,7 +1703,7 @@ class MLAQuery {
 	public static function mla_query_posts_groupby_filter( $groupby_clause ) {
 		global $wpdb;
 
-		if ( ( ! empty( self::$query_parameters['use_postmeta_view'] ) ) || ( ! empty( self::$query_parameters['use_alt_text_view'] ) ) || ( ! empty( self::$query_parameters['use_orderby_view'] ) ) || isset( self::$search_parameters['tax_terms_count'] ) ) {
+		if ( ( ! empty( self::$query_parameters['use_postmeta_subquery'] ) ) || ( ! empty( self::$query_parameters['use_alt_text_subquery'] ) ) || ( ! empty( self::$query_parameters['use_orderby_subquery'] ) ) || isset( self::$search_parameters['tax_terms_count'] ) ) {
 			$groupby_clause = "{$wpdb->posts}.ID";
 		}
 
@@ -1814,7 +1731,7 @@ class MLAQuery {
 
 		if ( isset( self::$query_parameters['orderby'] ) ) {
 			if ( 'c_' == substr( self::$query_parameters['orderby'], 0, 2 ) ) {
-				$orderby = self::$mla_orderby_view . '.meta_value';
+				$orderby = self::MLA_ORDERBY_SUBQUERY . '.meta_value';
 			} /* custom field sort */ else { 
 				switch ( self::$query_parameters['orderby'] ) {
 					case 'none':
@@ -1846,7 +1763,7 @@ class MLAQuery {
 					 * use the view we prepared to get attachments with no meta data value
 					 */
 					case '_wp_attachment_image_alt':
-						$orderby = self::$mla_orderby_view . '.meta_value';
+						$orderby = self::MLA_ORDERBY_SUBQUERY . '.meta_value';
 						break;
 					default:
 						$orderby = $wpdb->posts . '.' . self::$query_parameters['orderby'];

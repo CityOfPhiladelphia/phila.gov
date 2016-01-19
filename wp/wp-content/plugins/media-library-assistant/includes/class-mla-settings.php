@@ -538,7 +538,7 @@ class MLASettings {
 			} // switch
 		} // isset( $_REQUEST['mla_admin_action'] )
 
-		$template_array = MLAData::mla_load_template( 'help-for-' . $file_suffix . '.tpl' );
+		$template_array = MLACore::mla_load_template( 'help-for-' . $file_suffix . '.tpl' );
 		if ( empty( $template_array ) ) {
 			return;
 		}
@@ -1011,7 +1011,7 @@ class MLASettings {
 					MLACore::mla_update_option( $key, stripslashes( trim( $_REQUEST[ MLA_OPTION_PREFIX . $key ], $option_table ) ) );
 					break;
 				case 'custom':
-					$message = MLAOptions::$value['update']( 'update', $key, $value, $_REQUEST );
+					$message = call_user_func( array( 'MLAOptions', $value['update'] ), 'update', $key, $value, $_REQUEST );
 					break;
 				case 'hidden':
 					break;
@@ -1044,7 +1044,7 @@ class MLASettings {
 					MLACore::mla_delete_option( $key, $option_table );
 					break;
 				case 'custom':
-					$message = MLAOptions::$value['delete']( 'delete', $key, $value, $_REQUEST );
+					$message = call_user_func( array( 'MLAOptions', $value['delete'] ), 'delete', $key, $value, $_REQUEST );
 					break;
 				case 'hidden':
 					break;
@@ -1181,7 +1181,7 @@ class MLASettings {
 				return MLAData::mla_parse_template( self::$page_template_array['textarea'], $option_values );
 			case 'custom':
 				if ( isset( $value['render'] ) ) {
-					return MLAOptions::$value['render']( 'render', $key, $value );
+					return call_user_func( array( 'MLAOptions', $value['render'] ), 'render', $key, $value );
 				}
 
 				break;
@@ -1548,7 +1548,7 @@ class MLASettings {
 	 * @return	array	'message' => status/error messages, 'body' => tab content
 	 */
 	private static function _compose_view_tab( ) {
-		$page_template_array = MLAData::mla_load_template( 'admin-display-settings-view-tab.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'admin-display-settings-view-tab.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
 			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLASettings::_compose_view_tab', var_export( $page_template_array, true ) ), 0 );
@@ -1994,7 +1994,7 @@ class MLASettings {
 	 * @return	array	'message' => status/error messages, 'body' => tab content
 	 */
 	private static function _compose_upload_tab( ) {
-		$page_template_array = MLAData::mla_load_template( 'admin-display-settings-upload-tab.tpl' );
+		$page_template_array = MLACore::mla_load_template( 'admin-display-settings-upload-tab.tpl' );
 		if ( ! is_array( $page_template_array ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
 			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLASettings::_compose_upload_tab', var_export( $page_template_array, true ) ), 0 );
@@ -2937,7 +2937,7 @@ class MLASettings {
 	 * @return	array	'message' => status/error messages, 'body' => tab content
 	 */
 	private static function _compose_documentation_tab( ) {
-		$page_template = MLAData::mla_load_template( 'documentation-settings-tab.tpl' );
+		$page_template = MLACore::mla_load_template( 'documentation-settings-tab.tpl' );
 		$page_values = array(
 			'translate_url' => MLA_PLUGIN_URL . 'languages/MLA Internationalization Guide.pdf',
 			'phpDocs_url' => MLA_PLUGIN_URL . 'phpDocs/index.html',
@@ -3211,7 +3211,7 @@ class MLASettings {
 		 */
 		$development_version =  MLA::MLA_DEVELOPMENT_VERSION;
 		$development_version =  ( ! empty( $development_version ) ) ? ' (' . $development_version . ')' : '';
-		self::$page_template_array = MLAData::mla_load_template( 'admin-display-settings-page.tpl' );
+		self::$page_template_array = MLACore::mla_load_template( 'admin-display-settings-page.tpl' );
 		$current_tab_slug = isset( $_REQUEST['mla_tab'] ) ? $_REQUEST['mla_tab']: 'general';
 		$current_tab = self::mla_get_options_tablist( $current_tab_slug );
 		$page_values = array(
@@ -4143,7 +4143,7 @@ class MLASettings {
 		foreach ( MLACore::$mla_option_definitions as $key => $value ) {
 			if ( 'general' == $value['tab'] ) {
 				if ( 'custom' == $value['type'] && isset( $value['reset'] ) ) {
-					$message = MLAOptions::$value['reset']( 'reset', $key, $value, $_REQUEST );
+					$message = call_user_func( array( 'MLAOptions', $value['reset'] ), 'reset', $key, $value, $_REQUEST );
 				} elseif ( ('header' == $value['type']) || ('hidden' == $value['type']) ) {
 					$message = '';
 				} else {

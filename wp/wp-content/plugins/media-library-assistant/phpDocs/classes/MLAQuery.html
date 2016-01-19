@@ -95,15 +95,12 @@ Defined as public because it's a filter.</span><pre>mla_query_relevanssi_admin_s
 <li class="property public "><a href="#%24search_parameters" title="$search_parameters :: WP_Query 'posts_search' filter &quot;parameters&quot;"><span class="description">WP_Query 'posts_search' filter "parameters"</span><pre>$search_parameters</pre></a></li>
 <li class="property public "><a href="#%24wp_4dot0_plus" title="$wp_4dot0_plus :: WordPress version test for $wpdb-&gt;esc_like() Vs esc_sql()"><span class="description">WordPress version test for $wpdb-&gt;esc_like() Vs esc_sql()</span><pre>$wp_4dot0_plus</pre></a></li>
 <li class="nav-header private">» Private</li>
-<li class="property private "><a href="#%24mla_alt_text_view" title='$mla_alt_text_view :: Provides a unique name for the ALT Text "Search Media" SQL View'><span class="description">Provides a unique name for the ALT Text "Search Media" SQL View</span><pre>$mla_alt_text_view</pre></a></li>
 <li class="property private "><a href="#%24mla_list_table_items" title="$mla_list_table_items :: Cache the results of mla_count_list_table_items for reuse in mla_query_list_table_items"><span class="description">Cache the results of mla_count_list_table_items for reuse in mla_query_list_table_items</span><pre>$mla_list_table_items</pre></a></li>
-<li class="property private "><a href="#%24mla_orderby_view" title='$mla_orderby_view :: Provides a unique name for the custom field "orderby" SQL View'><span class="description">Provides a unique name for the custom field "orderby" SQL View</span><pre>$mla_orderby_view</pre></a></li>
-<li class="property private "><a href="#%24mla_table_view_custom" title='$mla_table_view_custom :: Provides a unique name for the "Table View custom:" SQL View'><span class="description">Provides a unique name for the "Table View custom:" SQL View</span><pre>$mla_table_view_custom</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-constant"></i> Constants</li>
-<li class="constant  "><a href="#MLA_ALT_TEXT_VIEW_SUFFIX" title='MLA_ALT_TEXT_VIEW_SUFFIX :: Provides a unique suffix for the ALT Text "Search Media" SQL View'><span class="description">Provides a unique suffix for the ALT Text "Search Media" SQL View</span><pre>MLA_ALT_TEXT_VIEW_SUFFIX</pre></a></li>
-<li class="constant  "><a href="#MLA_ORDERBY_VIEW_SUFFIX" title='MLA_ORDERBY_VIEW_SUFFIX :: Provides a unique suffix for the custom field "orderby" SQL View'><span class="description">Provides a unique suffix for the custom field "orderby" SQL View</span><pre>MLA_ORDERBY_VIEW_SUFFIX</pre></a></li>
-<li class="constant  "><a href="#MLA_TABLE_VIEW_CUSTOM_SUFFIX" title='MLA_TABLE_VIEW_CUSTOM_SUFFIX :: Provides a unique suffix for the "Table View custom:" SQL View'><span class="description">Provides a unique suffix for the "Table View custom:" SQL View</span><pre>MLA_TABLE_VIEW_CUSTOM_SUFFIX</pre></a></li>
+<li class="constant  "><a href="#MLA_ALT_TEXT_SUBQUERY" title='MLA_ALT_TEXT_SUBQUERY :: Provides a unique value for the ALT Text "Search Media" subquery'><span class="description">Provides a unique value for the ALT Text "Search Media" subquery</span><pre>MLA_ALT_TEXT_SUBQUERY</pre></a></li>
+<li class="constant  "><a href="#MLA_ORDERBY_SUBQUERY" title='MLA_ORDERBY_SUBQUERY :: Provides a unique suffix for the custom field "orderby" subquery'><span class="description">Provides a unique suffix for the custom field "orderby" subquery</span><pre>MLA_ORDERBY_SUBQUERY</pre></a></li>
+<li class="constant  "><a href="#MLA_TABLE_VIEW_SUBQUERY" title='MLA_TABLE_VIEW_SUBQUERY :: Provides a unique suffix for the "Table View custom:" SQL View'><span class="description">Provides a unique suffix for the "Table View custom:" SQL View</span><pre>MLA_TABLE_VIEW_SUBQUERY</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -788,18 +785,6 @@ Note: 'alt-text' is not supported in [mla_gallery]
 </tr></table>
 </div></div>
 </div>
-<a name="%24mla_alt_text_view" id="$mla_alt_text_view"> </a><div class="element clickable property private $mla_alt_text_view" data-toggle="collapse" data-target=".$mla_alt_text_view .collapse">
-<h2>Provides a unique name for the ALT Text "Search Media" SQL View</h2>
-<pre>$mla_alt_text_view : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>0.40</td>
-</tr></table>
-</div></div>
-</div>
 <a name="%24mla_list_table_items" id="$mla_list_table_items"> </a><div class="element clickable property private $mla_list_table_items" data-toggle="collapse" data-target=".$mla_list_table_items .collapse">
 <h2>Cache the results of mla_count_list_table_items for reuse in mla_query_list_table_items</h2>
 <pre>$mla_list_table_items : array</pre>
@@ -812,38 +797,14 @@ Note: 'alt-text' is not supported in [mla_gallery]
 </tr></table>
 </div></div>
 </div>
-<a name="%24mla_orderby_view" id="$mla_orderby_view"> </a><div class="element clickable property private $mla_orderby_view" data-toggle="collapse" data-target=".$mla_orderby_view .collapse">
-<h2>Provides a unique name for the custom field "orderby" SQL View</h2>
-<pre>$mla_orderby_view : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>2.15</td>
-</tr></table>
-</div></div>
-</div>
-<a name="%24mla_table_view_custom" id="$mla_table_view_custom"> </a><div class="element clickable property private $mla_table_view_custom" data-toggle="collapse" data-target=".$mla_table_view_custom .collapse">
-<h2>Provides a unique name for the "Table View custom:" SQL View</h2>
-<pre>$mla_table_view_custom : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>2.15</td>
-</tr></table>
-</div></div>
-</div>
 <h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
-<a name="MLA_ALT_TEXT_VIEW_SUFFIX" id="MLA_ALT_TEXT_VIEW_SUFFIX"> </a><div class="element clickable constant  MLA_ALT_TEXT_VIEW_SUFFIX" data-toggle="collapse" data-target=".MLA_ALT_TEXT_VIEW_SUFFIX .collapse">
-<h2>Provides a unique suffix for the ALT Text "Search Media" SQL View</h2>
-<pre>MLA_ALT_TEXT_VIEW_SUFFIX </pre>
+<a name="MLA_ALT_TEXT_SUBQUERY" id="MLA_ALT_TEXT_SUBQUERY"> </a><div class="element clickable constant  MLA_ALT_TEXT_SUBQUERY" data-toggle="collapse" data-target=".MLA_ALT_TEXT_SUBQUERY .collapse">
+<h2>Provides a unique value for the ALT Text "Search Media" subquery</h2>
+<pre>MLA_ALT_TEXT_SUBQUERY </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>The SQL View is used to filter the Media/Assistant submenu table by
+<p class="long_description"><p>The subquery is used to filter the Media/Assistant submenu table by
 ALT Text with the Search Media text box.</p></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
@@ -851,12 +812,12 @@ ALT Text with the Search Media text box.</p></p>
 </tr></table>
 </div></div>
 </div>
-<a name="MLA_ORDERBY_VIEW_SUFFIX" id="MLA_ORDERBY_VIEW_SUFFIX"> </a><div class="element clickable constant  MLA_ORDERBY_VIEW_SUFFIX" data-toggle="collapse" data-target=".MLA_ORDERBY_VIEW_SUFFIX .collapse">
-<h2>Provides a unique suffix for the custom field "orderby" SQL View</h2>
-<pre>MLA_ORDERBY_VIEW_SUFFIX </pre>
+<a name="MLA_ORDERBY_SUBQUERY" id="MLA_ORDERBY_SUBQUERY"> </a><div class="element clickable constant  MLA_ORDERBY_SUBQUERY" data-toggle="collapse" data-target=".MLA_ORDERBY_SUBQUERY .collapse">
+<h2>Provides a unique suffix for the custom field "orderby" subquery</h2>
+<pre>MLA_ORDERBY_SUBQUERY </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>The SQL View is used to sort the Media/Assistant submenu table on
+<p class="long_description"><p>The subquery is used to sort the Media/Assistant submenu table on
 ALT Text and custom field columns.</p></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
@@ -864,9 +825,9 @@ ALT Text and custom field columns.</p></p>
 </tr></table>
 </div></div>
 </div>
-<a name="MLA_TABLE_VIEW_CUSTOM_SUFFIX" id="MLA_TABLE_VIEW_CUSTOM_SUFFIX"> </a><div class="element clickable constant  MLA_TABLE_VIEW_CUSTOM_SUFFIX" data-toggle="collapse" data-target=".MLA_TABLE_VIEW_CUSTOM_SUFFIX .collapse">
+<a name="MLA_TABLE_VIEW_SUBQUERY" id="MLA_TABLE_VIEW_SUBQUERY"> </a><div class="element clickable constant  MLA_TABLE_VIEW_SUBQUERY" data-toggle="collapse" data-target=".MLA_TABLE_VIEW_SUBQUERY .collapse">
 <h2>Provides a unique suffix for the "Table View custom:" SQL View</h2>
-<pre>MLA_TABLE_VIEW_CUSTOM_SUFFIX </pre>
+<pre>MLA_TABLE_VIEW_SUBQUERY </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>The SQL View is used to filter the Media/Assistant submenu table on
@@ -884,7 +845,7 @@ custom field Table Views.</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2015-12-01T21:12:14-08:00.<br></footer></div>
+            generated on 2016-01-03T09:26:08-08:00.<br></footer></div>
 </div>
 </body>
 </html>
