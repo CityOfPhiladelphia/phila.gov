@@ -1,6 +1,40 @@
 Changelog
 =========
 
+#### 3.0.12 - January 15, 2015
+
+**Fixes**
+
+- Incorrect hooks being fired for successful and unsuccessful form sign-ups (which also broke the success redirect).
+
+#### 3.0.11 - January 14, 2015
+
+**Improvements**
+
+- Allow splitting up "birthday" and "date" fields into separate fields with `day`, `month` and `year` index.
+- Improved algorithm for finding fields when integrating with Contact Form 7 or other custom forms.
+- Ninja Forms integration can now automatically find name-fields.
+- Ninja Forms integration can now use `mc4wp-` prefixed admin labels.
+
+**Additions**
+
+- `add_ecommerce_order()` and `delete_ecommerce_order()` methods to API class.
+
+#### 3.0.10 - January 6, 2016
+
+**Fixes**
+
+- 500 server error for "already subscribed" on Windows servers.
+- Incorrect HTML being generated for hidden fields.
+- Duplicate sign-up request when using CF7 integration.
+
+**Improvements**
+
+- Stop logging "already subscribed" errors to PHP's error log.
+- Simplify `pattern` attribute for `date` fields.
+- Remove invalid `autofill` attribute from honeypot field.
+
+
 #### 3.0.9 - December 17, 2015
 
 **Fixes**
