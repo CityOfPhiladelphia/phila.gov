@@ -32,4 +32,4 @@ Same as above for test instance but replace .env with one for production. Then, 
 1. Set branch and project tags in AWS for Travis deploy (unsetting tags on current production instance)
 2. Restart most recent build in Travis
 3. After deploy has succeeded, add instance to load balancer
-4. Once instance status is InService, remove old instance
+4. Once instance status is InService, remove and terminate old instance
