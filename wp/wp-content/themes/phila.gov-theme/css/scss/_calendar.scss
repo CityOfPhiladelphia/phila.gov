@@ -8,6 +8,13 @@
   color:$ben-franklin-blue !important;
 }
 
+//PLUGIN OVERRIDES
+ul.simcal-events{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
 .month, .day{
   display: inline
 }
