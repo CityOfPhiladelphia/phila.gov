@@ -6,14 +6,10 @@
 The phila.gov site is WordPress running behind Nginx on an AWS instance. The entire machine setup is kept in this repo. 
 
 
-## Running a test AWS instance
+## Running a test instance
 
 1. [Install joia](https://github.com/CityOfPhiladelphia/joia#install)
 2. Create .env file with these vars:
-  - AMI=`ID for the AMI to use for the instance`
-  - SUBNET=`ID for the VPC subnet the instance should be in`
-  - KEY_PAIR=`name of the key pair in AWS to use for the instance`
-  - INSTANCE_NAME=`name to set for the instance`
   - PHILA_TEST=`"true" or any truthy value so setup knows this is a test instance`
   - PHILA_DB_BUCKET=`S3 bucket where we keep DB dumps`
   - PHILA_MEDIA_BUCKET=`S3 bucket where instance media is stored`
@@ -21,6 +17,10 @@ The phila.gov site is WordPress running behind Nginx on an AWS instance. The ent
   - AWS_ID=`AWS access key ID for the instance to use`
   - AWS_SECRET=`AWS secret access key for the instance to use`
   - SWIFTYPE_ENGINE=`Swiftype engine ID`
+  - APP_DIR=`phila.gov`
+  - SUBNET=`ID for the VPC subnet the instance should be in`
+  - KEY_PAIR=`name of the key pair in AWS to use for the instance`
+  - INSTANCE_NAME=`name to set for the instance`
 3. Private key must be at ~/.ssh/$KEY_PAIR.pem
 4. Run `joia up`
 
