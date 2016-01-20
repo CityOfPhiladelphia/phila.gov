@@ -245,7 +245,8 @@ class Event_Builder {
 				case 'start-location' :
 				case 'end-location' :
 					$location = $tag == 'end-location' ? $event->end_location['address'] : $event->start_location['address'];
-					return ' <span class="simcal-event-address simcal-event-start-location" itemprop="location" itemscope itemtype="http://schema.org/Place">' . wp_strip_all_tags( $location ) . '</span>';
+					$location_class = $tag == 'end-location' ? 'end' : 'start';
+					return ' <span class="simcal-event-address simcal-event-' . $location_class . '-location" itemprop="location" itemscope itemtype="http://schema.org/Place">' . wp_strip_all_tags( $location ) . '</span>';
 
 				case 'start-location-link':
 				case 'end-location-link' :
@@ -474,7 +475,6 @@ class Event_Builder {
 	 */
 	private function limit_words( $text, $limit ) {
 
-		$text = wp_strip_all_tags( $text );
 		$limit = max( absint( $limit ), 0 );
 
 		if ( $limit > 0 && ( str_word_count( $text, 0 ) > $limit ) ) {
@@ -551,16 +551,16 @@ class Event_Builder {
 		// Markdown and HTML don't play well together, use one or the other in the same tag.
 		if ( $allow_html || $allow_md ) {
 			if ( $allow_html ) {
-				$html .= wp_kses_post( $description );
+				$description = wp_kses_post( $description );
 			} elseif ( $allow_md ) {
 				$markdown = new \Parsedown();
-				$html .= $markdown->text( wp_strip_all_tags( $description ) );
+				$description = $markdown->text( wp_strip_all_tags( $description ) );
 			}
-		} else {
-			$html .= $this->limit_words( $description, $attr['limit'] );
 		}
 
-		$html .= '</div>';
+		$description = $this->limit_words( $description, $attr['limit'] );
+
+		$html .= $description . '</div>';
 
 		if ( 'no' != $attr['autolink'] ) {
 			$html = ' ' . make_clickable( $html );
@@ -690,6 +690,12 @@ class Event_Builder {
 
 		if ( 'human' == $format ) {
 			$value = human_time_diff( $event_dt->getTimestamp(), Carbon::now( $event->timezone )->getTimestamp() );
+
+			if ( $event_dt->getTimestamp() < Carbon::now( $event->timezone )->getTimestamp() ) {
+				$value .= ' ' . _x( 'before', 'human date event builder code modifier', 'google-calendar-events' );
+			} else {
+				$value .= ' ' . _x( 'after', 'human date event builder code modifier', 'google-calendar-events' );
+			}
 		} else {
 			$value = date_i18n( $dt_format, $event_dt->getTimestamp() );
 		}

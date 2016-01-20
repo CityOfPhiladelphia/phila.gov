@@ -3,11 +3,11 @@
  * Plugin Name: Simple Calendar
  * Plugin URI:  https://simplecalendar.io
  * Description: Add Google Calendar events to your WordPress site in minutes. Beautiful calendar displays. Fully responsive.
- * Version:     3.0.9
+ * Version:     3.0.12
  * Author:      Moonstone Media
  * Author URI:  https://simplecalendar.io
  * Text Domain: google-calendar-events
- * Domain Path: /languages
+ * Domain Path: /i18n
  *
  * @package     SimpleCalendar
  * @copyright   2015 Moonstone Media/Phil Derksen. All rights reserved.
@@ -29,7 +29,7 @@ if ( version_compare( PHP_VERSION, '5.3.0' ) === -1 ) {
 $this_plugin_path = trailingslashit( dirname( __FILE__ ) );
 $this_plugin_dir  = plugin_dir_url( __FILE__ );
 $this_plugin_constants = array(
-	'SIMPLE_CALENDAR_VERSION'   => '3.0.9',
+	'SIMPLE_CALENDAR_VERSION'   => '3.0.12',
 	'SIMPLE_CALENDAR_MAIN_FILE' => __FILE__,
 	'SIMPLE_CALENDAR_URL'       => $this_plugin_dir,
 	'SIMPLE_CALENDAR_ASSETS'    => $this_plugin_dir  . 'assets/',

@@ -505,7 +505,7 @@ abstract class Calendar {
 
 			if ( 'use_custom' == $date_format_option ) {
 				$date_format_custom = esc_attr( get_post_meta( $this->id, '_calendar_date_format', true ) );
-			} elseif ( 'use_custom_php' ) {
+			} elseif ( 'use_custom_php' == $date_format_option ) {
 				$date_format_custom = esc_attr( get_post_meta( $this->id, '_calendar_date_format_php', true ) );
 			}
 		}
@@ -532,7 +532,7 @@ abstract class Calendar {
 
 			if ( 'use_custom' == $time_format_option ) {
 				$time_format_custom = esc_attr( get_post_meta( $this->id, '_calendar_time_format', true ) );
-			} elseif ( 'use_custom_php' ) {
+			} elseif ( 'use_custom_php' == $time_format_option ) {
 				$time_format_custom = esc_attr( get_post_meta( $this->id, '_calendar_time_format_php', true ) );
 			}
 		}
@@ -598,7 +598,7 @@ abstract class Calendar {
 		$this->start = Carbon::now( $this->timezone )->getTimestamp();
 
 		$calendar_begins = esc_attr( get_post_meta( $this->id, '_calendar_begins', true ) );
-		$nth = max( absint( get_post_meta( $this->id, '_calendar_begins_nth' ) ), 1 );
+		$nth = max( absint( get_post_meta( $this->id, '_calendar_begins_nth', true ) ), 1 );
 
 		if ( 'today' == $calendar_begins ) {
 			$this->start = Carbon::today( $this->timezone )->getTimestamp();
