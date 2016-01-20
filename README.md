@@ -25,7 +25,7 @@ The phila.gov site is WordPress running behind Nginx on an AWS instance. The ent
 4. Run `joia up`
 
 
-## How to launch a new production instance
+## Launching a new production instance
 
 Same as above for test instance but replace .env with one for production. Then, after machine is up:
 
