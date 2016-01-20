@@ -5,8 +5,8 @@ echo 'Writing wp-config.php'
 # Don't let any existing configs get in the way
 rm -f wp-config.php wp/wp-config.php
 
-# SITE_URL in .env overrides DOMAIN
-[ "$SITE_URL" ] && DOMAIN=$SITE_URL
+# DOMAIN is INSTANCE_HOSTNAME unless PUBLIC_HOSTNAME is set
+DOMAIN=${PUBLIC_HOSTNAME:-"$INSTANCE_HOSTNAME"}
 
 if [ "$WP_AUTH_KEY" ]; then
   SKIP_SALTS="--skip-salts"
