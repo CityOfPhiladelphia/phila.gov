@@ -69,7 +69,7 @@ jQuery(document).ready(function($){
     });
   }
 
-  if (typenow == 'page' && adminpage.indexOf('post') > -1 ){
+  if ( ( typenow == 'page' || typenow == 'service_post' ) && adminpage.indexOf('post') > -1 ){
     $('#post').validate({
       rules: {
          'post_title' : 'required'
