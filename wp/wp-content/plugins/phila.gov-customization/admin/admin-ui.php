@@ -44,7 +44,7 @@ add_filter('page_attributes_dropdown_pages_args', 'phila_allow_draft_dropdown_pa
 
 function phila_allow_draft_dropdown_pages_args($dropdown_args) {
 
-    $dropdown_args['post_status'] = array('publish','draft');
+    $dropdown_args['post_status'] = array('publish','draft', 'private');
 
     return $dropdown_args;
 }
