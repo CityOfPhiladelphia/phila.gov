@@ -7,3 +7,7 @@
 #wp-phila_service_before_start-editor-tools{
   display: none !important;
 }
+
+#post_name{
+  width:100%;
+}
