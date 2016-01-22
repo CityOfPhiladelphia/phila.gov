@@ -6,6 +6,8 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
  class Phila_Gov_Department_Sites {
 
+  static $post_id;
+
   public function __construct(){
 
     add_action( 'admin_init', array( $this, 'determine_page_level' ) );
@@ -15,11 +17,16 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
     if ( $this->determine_page_level() ){
+
       //for some reason, this priority needs to be lower than all the others?
       add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
+
       add_action( 'admin_print_styles', array($this, 'hide_wysiwyg_on_department_home' ) );
+
       add_action( 'init', array($this, 'no_wpautop_on_department_homepages' ) );
+
       add_filter( 'user_can_richedit', array($this, 'hide_visual_editor_department_home' )  );
+
       add_filter('tiny_mce_before_init', array($this, 'override_mce_options' ) );
     }
 
@@ -29,19 +36,18 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     global $pagenow;
 
-    if ( ( is_admin() && 'post.php' == $pagenow ) ) {
+    if ( ( is_admin() && 'post.php' == $pagenow )  ) {
 
-      if ( isset( $_GET['post'] ) ) {
+      $post = get_post( $_GET['post'] );
 
-        $post = get_post( $_GET['post'] );
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
 
-        $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+      $children = get_pages( array( 'child_of' => $post_id ) );
 
-        $children = get_pages( array( 'child_of' => $post_id ) );
+      if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
 
-        if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
-          return true;
-        }
+        return true;
+
       }
     }
   }
@@ -165,7 +171,9 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         )
       )
     );
+
     return $meta_boxes;
+
   }
 
   // this will disable the visual editor for everyone but admins

@@ -22,14 +22,13 @@ if ( class_exists("Phila_Gov_Pages" ) ){
 
     if ( ( is_admin() && 'post.php' == $pagenow ) ) {
 
-      if ( isset( $_GET['post'] ) ) {
+      $post = get_post( $_GET['post'] );
 
-        $post = get_post( $_GET['post'] );
-        $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
 
-        if( ( $post->post_parent == 0 ) ){
-          return true;
-        }
+      if( ( $post->post_parent == 0 ) ){
+
+        return true;
         
       }
     }
