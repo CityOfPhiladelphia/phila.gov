@@ -18,7 +18,10 @@
 <?php
   //Get the pages marked with 'show in browse'.
   $get_L2_pages = new WP_Query(array(
-    'post_type' => 'page',
+    'post_type' => array(
+      'page',
+      'service_post'
+      ),
     'posts_per_page' => -1,
     'orderby' => 'title',
     'order'=> 'asc',

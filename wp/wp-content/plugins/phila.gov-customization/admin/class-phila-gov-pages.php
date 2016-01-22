@@ -29,7 +29,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
       if( ( $post->post_parent == 0 ) ){
 
         return true;
-        
+
       }
     }
   }
@@ -40,7 +40,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
     $meta_boxes[] = array(
       'id'       => 'page-display',
       'title'    => 'Display Location',
-      'pages'    => array( 'page' ),
+      'pages'    => array( 'page', 'service_post' ),
       'context'  => 'side',
       'priority' => 'high',
 
