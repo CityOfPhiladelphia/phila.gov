@@ -8,14 +8,13 @@ _dir="$(dirname "$0")"
 source "$_dir/lib/mo"
 
 echo 'Modifying php configs'
-sudo ed -s /etc/php5/fpm/pool.d/www.conf <<'EOF'
+sudo ed -s /etc/php/7.0/fpm/pool.d/www.conf <<'EOF'
 g/^pm\.max_children/s/5/10
 w
 EOF
-sudo ed -s /etc/php5/fpm/php.ini <<'EOF'
+sudo ed -s /etc/php/7.0/fpm/php.ini <<'EOF'
 g/^post_max_size/s/8/100
 g/^upload_max_filesize/s/2/100
-g/^expose_php/s/On/Off
 w
 EOF
 
@@ -23,8 +22,7 @@ echo 'Installing private plugins'
 "$_dir/private-plugins.sh"
 
 echo 'Reloading php-fpm'
-# https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1242376
-sudo kill -USR2 "$(cat /var/run/php5-fpm.pid)"
+sudo service php7.0-fpm reload
 
 echo 'Refreshing WordPress'
 wp rewrite flush
