@@ -6,7 +6,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
  class Phila_Gov_Department_Sites {
 
-  static $post_id;
 
   public function __construct(){
 
