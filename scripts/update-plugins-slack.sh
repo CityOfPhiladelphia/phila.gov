@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ "$SLACK_HOOK" ] || exit
+
 payload=$(wp plugin list --update=available --format=json | jq -c '{
     channel: "#alpha",
     username: "dingding",
