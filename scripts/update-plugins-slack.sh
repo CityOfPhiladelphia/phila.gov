@@ -10,4 +10,4 @@ payload=$(wp plugin list --update=available --format=json | jq -c '{
   }' | tr -d "'")
 
 #echo $payload
-curl -XPOST --data-urlencode "payload=$payload" $SLACK_HOOK
+curl -s -XPOST --data-urlencode "payload=$payload" $SLACK_HOOK > /dev/null
