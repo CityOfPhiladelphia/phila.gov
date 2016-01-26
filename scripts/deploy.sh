@@ -49,3 +49,12 @@ echo 'Purging nginx cache'
 sudo rm -rf /var/run/nginx-cache
 
 sudo service nginx reload
+
+echo 'Writing crontab'
+crontab - <<EOF
+APP_DIR=$APP_DIR
+PATH=$PATH
+SLACK_HOOK=$SLACK_HOOK
+
+20 11 * * * $HOME/$APP_DIR/scripts/update-plugins-slack.sh
+EOF
