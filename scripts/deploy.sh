@@ -52,9 +52,7 @@ sudo service nginx reload
 
 echo 'Writing crontab'
 crontab - <<EOF
-APP_DIR=$APP_DIR
 PATH=$PATH
-SLACK_HOOK=$SLACK_HOOK
 
-20 11 * * * $HOME/$APP_DIR/scripts/update-plugins-slack.sh
+20 11 * * * cd phila.gov; scripts/update-plugins-slack.sh $SLACK_HOOK
 EOF

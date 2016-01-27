@@ -1,8 +1,6 @@
 #!/bin/bash
 
-[ "$SLACK_HOOK" ] || exit
-
-cd $HOME/$APP_DIR
+[ "$1" ] || exit
 
 payload=$(wp plugin list --update=available --format=json | jq -c '{
     channel: "#alpha",
@@ -13,4 +11,4 @@ payload=$(wp plugin list --update=available --format=json | jq -c '{
 
 #echo $payload
 
-curl -s -XPOST --data-urlencode "payload=$payload" $SLACK_HOOK > /dev/null
+curl -s -XPOST --data-urlencode "payload=$payload" $1 > /dev/null
