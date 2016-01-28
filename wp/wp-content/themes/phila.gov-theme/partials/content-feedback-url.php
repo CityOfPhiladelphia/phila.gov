@@ -1,1 +1,1 @@
-https://docs.google.com/forms/d/1KNMzq52m14eROSbisox94Hospk7JtxMbDQDJxfQGSHk/viewform?entry.526820711=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>
+https://alpha.phila.gov/feedback?url=&dept=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>
