@@ -7,87 +7,86 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
       <div class="home-top">
-				<div class="row">
-	        <section id="welcome" class="large-12 small-24 columns">
-	              <div class="home-search">
-	                <header>
-	                    <h1>What can we help you find?</h1>
-	                </header>
-	                    <?php get_search_form(); ?>
-	                    <div class="search-help">e.g. Property Information, Department of Revenue, Water Billing</div>
-	                </div>
-	                <div id="popular" class="row call-to-action">
-	                    <div class="small-6 columns">
-	                        <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
-	                            <span class="fa-stack fa-3x">
-	                              <i class="fa fa-circle fa-stack-2x"></i>
-	                              <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
-	                            </span>
-	                            <h2 class="h5">Report a Problem</h2>
-	                            <span class="accessible"> Opens in new window</span>
-	                        </a>
-	                    </div>
-	                    <div class="small-6 columns">
-	                        <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
-	                           <span class="fa-stack fa-3x">
-	                              <i class="fa fa-circle fa-stack-2x"></i>
-	                              <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
-	                            </span>
-	                            <h2 class="h5">Pay<br> a bill</h2>
-	                            <span class="accessible"> Opens in new window</span>
-	                        </a>
-	                    </div>
-	                      <div class="small-6 columns">
-	                        <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
-	                            <span class="fa-stack fa-3x">
-	                              <i class="fa fa-circle fa-stack-2x"></i>
-	                              <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
-	                            </span>
-	                           <h2 class="h5">Find<br> a Job</h2>
-	                            <span class="accessible"> Opens in new window</span>
-	                        </a>
-	                    </div>
-											<div class="small-6 columns">
-													<a href="/property" target="_blank">
-														<span class="fa-stack fa-3x">
-															<i class="fa fa-circle fa-stack-2x"></i>
-															<i class="fa fa-home fa-stack-1x fa-inverse"></i>
-														</span>
-														<h2 class="h5">Property Search</h2>
-															<span class="accessible"> Opens in new window</span>
-													</a>
-										</div>
-	                </div><!--#popular -->
-	          </section>
-							<div class="large-12 medium-24 columns">
-			          <section id="services">
-			                    <?php
-			                    /* temp top-level topics list w/ descriptions */
-			                       $args = array(
-			                            'orderby' => 'name',
-			                            'fields'=> 'all',
-			                            'parent' => 0,
-			                           'hide_empty'=> false
-			                       );
-			                      $terms = get_terms( 'topics', $args );
-			                        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-			                             echo '<ul>';
-			                             foreach ( $terms as $term ) {
-			                                 echo '<li><a href="/browse/' . $term->slug .  '"><h2>' . $term->name . '</h2>';
-			                                 echo '<span>' . $term->description . '</span></a></li>';
-			                             }
-			                             echo '</ul>';
-			                            }
+        <div class="row">
+          <section id="welcome" class="medium-16 columns">
+                <div class="home-search">
+                  <header>
+                      <h1>What can we help you find?</h1>
+                  </header>
+                      <?php get_search_form(); ?>
+                  </div>
+                  <div id="popular" class="row call-to-action">
+                      <div class="small-6 columns">
+                          <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
+                              <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
+                              </span>
+                              <p>Report a Problem</p>
+                              <span class="accessible"> Opens in new window</span>
+                          </a>
+                      </div>
+                      <div class="small-6 columns">
+                          <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
+                             <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
+                              </span>
+                              <p>Pay a bill<p>
+                              <span class="accessible"> Opens in new window</span>
+                          </a>
+                      </div>
+                        <div class="small-6 columns">
+                          <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
+                              <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
+                              </span>
+                             <p>Find a Job</p>
+                              <span class="accessible"> Opens in new window</span>
+                          </a>
+                      </div>
+                      <div class="small-6 columns">
+                          <a href="/property" target="_blank">
+                            <span class="fa-stack fa-3x">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <p>Property Search</p>
+                              <span class="accessible"> Opens in new window</span>
+                          </a>
+                    </div>
+                  </div><!--#popular -->
+            </section>
+              <div class="medium-8 columns">
+                <section id="services">
+                <?php
+                /* temp top-level topics list w/ descriptions */
+                   $args = array(
+                        'orderby' => 'name',
+                        'fields'=> 'all',
+                        'parent' => 0,
+                        'hide_empty'=> true
+                   );
+                  $terms = get_terms( 'topics', $args );
+                    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+                         echo '<ul>';
+                         foreach ( $terms as $term ) {
+                             echo '<li><a href="/browse/' . $term->slug .  '">' . $term->name . '</a></li>';
+                         }
+                         echo '</ul>';
+                        }
 
-			                            ?>
-			        </section>
-				</div>
-			</div><!--.row -->
-		</div>
-		<div class="home-news">
+                        ?>
+                        <span class="small-text">More topics coming soon</span>
+                  </section>
+            </div>
+          </div><!--.row -->
+    </div>
+    <div class="home-news">
       <div class="row">
         <section id="news">
             <?php
@@ -121,15 +120,15 @@ get_header(); ?>
 
         </section><!--#news-->
         </div><!-- .row -->
-		</div><!-- .home-news -->
+    </div><!-- .home-news -->
 
-		<section id="active" class="row">
-			<div class="small-24 large-17 columns related">
-				<div class="row">
+    <section id="active" class="row">
+      <div class="small-24 large-17 columns related">
+        <div class="row">
           <header>
               <h1>Most Active</h1>
           </header>
-	      <dl>
+        <dl>
           <dt class="medium-24 large-8 columns"><a href="http://alpha.phila.gov/property" class="h3" target="_blank">Property Information<span class="accessible"> Opens in new window</span></a>
           <span>Property Assessment</span></dt>
           <dd class="medium-24 large-16 columns">Search and compare property data in the City of Philadelphia</dd>
@@ -149,9 +148,9 @@ get_header(); ?>
           <dt class="medium-24 large-8 columns"><a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a>
           <span>Revenue</span></dt>
           <dd class="medium-24 large-16 columns">Learn about taxes that individuals must remit and/or file in Philadelphia.</dd>
-	      </dl>
-			</div>
-		</div>
+        </dl>
+      </div>
+    </div>
     <div class="small-24 large-7 columns links">
       <a class="button icon full" href="/departments">Department Directory<i class="fa fa-sitemap"></i></a>
       <a class="button icon full" href="/departments/mayor">Mayor's Office<i class="fa fa-university"></i></a>
@@ -160,7 +159,7 @@ get_header(); ?>
     </div>
 
     </section><!--#active-->
-	</main><!-- #main -->
+  </main><!-- #main -->
 </div><!-- #primary -->`
 
 <?php get_footer(); ?>
