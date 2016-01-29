@@ -49,10 +49,3 @@ echo 'Purging nginx cache'
 sudo rm -rf /var/run/nginx-cache
 
 sudo service nginx reload
-
-echo 'Writing crontab'
-crontab - <<EOF
-PATH=$PATH
-
-20 11 * * * cd phila.gov; scripts/update-plugins-slack.sh $SLACK_HOOK
-EOF
