@@ -12,54 +12,53 @@ get_header(); ?>
       <div class="home-top">
         <div class="row">
           <section id="welcome" class="medium-16 columns">
-                <div class="home-search">
-                  <header>
-                      <h1>What can we help you find?</h1>
-                  </header>
-                      <?php get_search_form(); ?>
+            <div class="home-search">
+              <header>
+                <h1>What can we help you find?</h1>
+              </header>
+                <?php get_search_form(); ?>
+              </div>
+              <div id="popular" class="row call-to-action">
+                <div class="small-6 columns">
+                  <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
+                    <span class="fa-stack fa-3x">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
+                      </span>
+                      <p>Report a Problem</p>
+                    <span class="accessible"> Opens in new window</span>
+                  </a>
                   </div>
-                  <div id="popular" class="row call-to-action">
-                      <div class="small-6 columns">
-                          <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
-                              <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
-                              </span>
-                              <p>Report a Problem</p>
-                              <span class="accessible"> Opens in new window</span>
-                          </a>
-                      </div>
-                      <div class="small-6 columns">
-                          <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
-                             <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
-                              </span>
-                              <p>Pay a bill<p>
-                              <span class="accessible"> Opens in new window</span>
-                          </a>
-                      </div>
-                        <div class="small-6 columns">
-                          <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
-                              <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
-                              </span>
-                             <p>Find a Job</p>
-                              <span class="accessible"> Opens in new window</span>
-                          </a>
-                      </div>
-                      <div class="small-6 columns">
-                          <a href="/property" target="_blank">
-                            <span class="fa-stack fa-3x">
-                              <i class="fa fa-circle fa-stack-2x"></i>
-                              <i class="fa fa-home fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <p>Property Search</p>
-                              <span class="accessible"> Opens in new window</span>
-                          </a>
-                    </div>
-                  </div><!--#popular -->
+                  <div class="small-6 columns">
+                    <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
+                     <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
+                      </span>
+                      <p>Pay a bill<p>
+                      <span class="accessible"> Opens in new window</span>
+                    </a>
+                  </div>
+                  <div class="small-6 columns">
+                    <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
+                      <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
+                      </span>
+                      <p>Find a Job</p>
+                      <span class="accessible"> Opens in new window</span>
+                    </a>
+                  </div>
+                  <div class="small-6 columns">
+                    <a href="/property">
+                      <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                      </span>
+                      <p>Property Search</p>
+                    </a>
+                </div>
+              </div><!--#popular -->
             </section>
               <div class="medium-8 columns">
                 <section id="services">
@@ -79,9 +78,8 @@ get_header(); ?>
                          }
                          echo '</ul>';
                         }
-
                         ?>
-                        <span class="small-text">More topics coming soon</span>
+                        <p class="small-text">More topics coming soon</p>
                   </section>
             </div>
           </div><!--.row -->
