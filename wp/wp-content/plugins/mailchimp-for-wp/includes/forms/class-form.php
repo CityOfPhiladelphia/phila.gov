@@ -452,21 +452,20 @@ class MC4WP_Form {
 		$this->raw_data = $request->post->all();
 		$this->data = $this->parse_request_data( $request );
 
-
 		// update form configuration from given data
 		$config = array();
+		$map = array(
+			'_mc4wp_lists' => 'lists',
+			'_mc4wp_action' => 'action',
+			'_mc4wp_form_element_id' => 'element_id',
+			'_mc4wp_email_type' => 'email_type'
+		);
 
 		// use isset here to allow empty lists (which should show a notice)
-		if( isset( $this->raw_data['_mc4wp_lists'] ) ) {
-			$config['lists'] = $this->raw_data['_mc4wp_lists'];
-		}
-
-		if( isset( $this->raw_data['_mc4wp_action'] ) ) {
-			$config['action'] = $this->raw_data['_mc4wp_action'];
-		}
-
-		if( isset( $this->raw_data['_mc4wp_form_element_id'] ) ) {
-			$config['element_id'] = $this->raw_data['_mc4wp_form_element_id'];
+		foreach( $map as $param_key => $config_key ) {
+			if( isset( $this->raw_data[ $param_key ] ) ) {
+				$config[ $config_key ] = $this->raw_data[ $param_key ];
+			}
 		}
 
 		if( ! empty( $config ) ) {
@@ -545,6 +544,11 @@ class MC4WP_Form {
 			$this->config['action'] = 'subscribe';
 		}
 
+		// email_type should be a valid value
+		if( ! in_array( $this->config['email_type'], array( 'html', 'text' ) ) ) {
+			$this->config['email_type'] = '';
+		}
+
 		return $this->config;
 	}
 
@@ -572,6 +576,7 @@ class MC4WP_Form {
 		 * @param MC4WP_Form $form
 		 */
 		$lists = (array) apply_filters( 'mc4wp_form_lists', $lists, $form );
+
 		return $lists;
 	}
 

@@ -46,7 +46,12 @@ function mc4wp_get_options() {
 		$options = array_merge( $defaults, $options );
 	}
 
-	return $options;
+	/**
+	 * Filters the MailChimp for WordPress settings (general).
+	 *
+	 * @param array $options
+	 */
+	return apply_filters( 'mc4wp_settings', $options );
 }
 
 
@@ -64,6 +69,36 @@ function mc4wp_get_api() {
 	$opts = mc4wp_get_options();
 	$instance = new MC4WP_API( $opts['api_key'] );
 	return $instance;
+}
+
+/**
+ * Creates a new instance of the Debug Log
+ *
+ * @return MC4WP_Debug_Log
+ */
+function mc4wp_get_debug_log() {
+
+	// get default log file location
+	$upload_dir = wp_upload_dir();
+	$file = trailingslashit( $upload_dir['basedir'] ) . 'mc4wp-debug.log';
+
+	/**
+	 * Filters the log file to write to.
+	 *
+	 * @param string $file The log file location. Default: /wp-content/uploads/mc4wp-debug.log
+	 */
+	$file = apply_filters( 'mc4wp_debug_log_file', $file );
+
+	/**
+	 * Filters the minimum level to log messages.
+	 *
+	 * @see MC4WP_Debug_Log
+	 *
+	 * @param string|int $level The minimum level of messages which should be logged.
+	 */
+	$level = apply_filters( 'mc4wp_debug_log_level', 'warning' );
+
+	return new MC4WP_Debug_Log( $file, $level );
 }
 
 /**

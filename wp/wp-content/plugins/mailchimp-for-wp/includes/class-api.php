@@ -32,7 +32,7 @@ class MC4WP_API {
 	/**
 	 * @var boolean Boolean indicating whether the user is connected with MailChimp
 	 */
-	protected $connected = null;
+	protected $connected;
 
 	/**
 	 * @var object The full response object of the latest API call
@@ -80,7 +80,7 @@ class MC4WP_API {
 	 * @return bool
 	 */
 	private function show_connection_error( $message ) {
-		$message = rtrim( $message, '.' ) . '. ' . sprintf( '<a href="%s">' . __( 'Read more about common connectivity issues.', 'mailchimp-for-wp' ) . '</a>', 'https://mc4wp.com/kb/solving-connectivity-issues/#utm_source=wp-plugin&utm_medium=mailchimp-for-wp&utm_campaign=settings-notice' );
+		$message .= '<br /><br />' . sprintf( '<a href="%s">' . __( 'Read more about common connectivity issues.', 'mailchimp-for-wp' ) . '</a>', 'https://mc4wp.com/kb/solving-connectivity-issues/#utm_source=wp-plugin&utm_medium=mailchimp-for-wp&utm_campaign=settings-notice' );
 		return $this->show_error( $message );
 	}
 
@@ -92,25 +92,27 @@ class MC4WP_API {
 	 * @return boolean
 	 */
 	public function is_connected() {
-		if( $this->connected !== null ) {
+
+		if( is_bool( $this->connected ) ) {
 			return $this->connected;
 		}
 
-		$this->connected = false;
 		$result = $this->call( 'helper/ping' );
+		$this->connected = false;
 
-		if( $result !== false ) {
-			if( isset( $result->msg ) ) {
-				if( $result->msg === "Everything's Chimpy!" ) {
-					$this->connected = true;
-				} else {
-					$this->show_error( $result->msg );
-				}
-			} elseif( isset( $result->error ) ) {
+		if( is_object( $result ) ) {
+
+			// Msg key set? All good then!
+			if( ! empty( $result->msg ) ) {
+				$this->connected = true;
+				return true;
+			}
+
+			// Uh oh. We got an error back.
+			if( isset( $result->error ) ) {
 				$this->show_error( 'MailChimp Error: ' . $result->error );
 			}
 		}
-
 
 		return $this->connected;
 	}
@@ -190,6 +192,30 @@ class MC4WP_API {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get the lists an email address is subscribed to
+	 *
+	 * @param array|string $email
+	 *
+	 * @return array
+	 */
+	public function get_lists_for_email( $email ) {
+
+		if( is_string( $email ) ) {
+			$email = array(
+				'email' => $email,
+			);
+		}
+
+		$result = $this->call( 'helper/lists-for-email', array( 'email' => $email ) );
+
+		if( ! is_array( $result ) ) {
+			return false;
+		}
+
+		return $result;
 	}
 
 	/**
@@ -376,6 +402,11 @@ class MC4WP_API {
 			if ( isset( $response->complete ) && $response->complete ) {
 				return true;
 			}
+
+			// Invalid order (order not existing). Good!
+			if( isset( $response->code ) && $response->code == 330 ) {
+				return true;
+			}
 		}
 
 		return false;
@@ -399,6 +430,11 @@ class MC4WP_API {
 
 		// do not make request when no api key was provided.
 		if( empty( $this->api_key ) ) {
+			return false;
+		}
+
+		// do not make request if helper/ping failed already
+		if( $this->connected === false ) {
 			return false;
 		}
 
@@ -430,6 +466,16 @@ class MC4WP_API {
 			$code = (int) wp_remote_retrieve_response_code( $response );
 			if( $code !== 200 ) {
 				$message = sprintf( 'The MailChimp API server returned the following response: <em>%s %s</em>.', $code, wp_remote_retrieve_response_message( $response ) );
+
+				// check for Akamai firewall response
+				if( $code === 403 ) {
+					preg_match('/Reference (.*)/', $body, $matches );
+
+					if( ! empty( $matches[1] ) ) {
+						$message .= '</strong><br /><br />' . sprintf( 'This usually means that your server is blacklisted by MailChimp\'s firewall. Please contact MailChimp support with the following reference number: %s </strong>', $matches[1] );
+					}
+				}
+
 				$this->show_connection_error( $message );
 			}
 
