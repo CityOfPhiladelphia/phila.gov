@@ -3665,7 +3665,6 @@ return array(
     'Symfony\\Component\\Translation\\Util\\ArrayConverter' => $vendorDir . '/symfony/translation/Util/ArrayConverter.php',
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Writer/TranslationWriter.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
-    'WP_Requirements' => $vendorDir . '/nekojira/wp-requirements/src/wp-requirements.php',
     'xrstf\\Composer52\\AutoloadGenerator' => $vendorDir . '/xrstf/composer-php52/lib/xrstf/Composer52/AutoloadGenerator.php',
     'xrstf\\Composer52\\Generator' => $vendorDir . '/xrstf/composer-php52/lib/xrstf/Composer52/Generator.php',
 );

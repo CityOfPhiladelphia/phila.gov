@@ -175,7 +175,9 @@ class Event_Builder {
 		);
 
 		// Removes extra consecutive <br> tags.
-		return preg_replace( '#(<br */?>\s*)+#i', '<br />', trim( $result ) );
+		// TODO: Doesn't seem to work but going to remove it to allow multiple <br> tags in the editor
+		/*return preg_replace( '#(<br *//*?>\s*)+#i', '<br />', trim( $result ) );*/
+		return trim( $result );
 	}
 
 	/**
@@ -556,6 +558,8 @@ class Event_Builder {
 				$markdown = new \Parsedown();
 				$description = $markdown->text( wp_strip_all_tags( $description ) );
 			}
+		} else {
+			$description = wpautop( $description );
 		}
 
 		$description = $this->limit_words( $description, $attr['limit'] );
@@ -692,17 +696,17 @@ class Event_Builder {
 			$value = human_time_diff( $event_dt->getTimestamp(), Carbon::now( $event->timezone )->getTimestamp() );
 
 			if ( $event_dt->getTimestamp() < Carbon::now( $event->timezone )->getTimestamp() ) {
-				$value .= ' ' . _x( 'before', 'human date event builder code modifier', 'google-calendar-events' );
+				$value .= ' ' . _x( 'ago', 'human date event builder code modifier', 'google-calendar-events' );
 			} else {
-				$value .= ' ' . _x( 'after', 'human date event builder code modifier', 'google-calendar-events' );
+				$value .= ' ' . _x( 'from now', 'human date event builder code modifier', 'google-calendar-events' );
 			}
 		} else {
 			$value = date_i18n( $dt_format, $event_dt->getTimestamp() );
 		}
 
-		return '<span class="simcal-event-' . $bound . ' ' . 'simcal-event-' . $bound . '-' . $format . '"' .
-		       'data-event-' . $bound . '="' . $event_dt->getTimestamp() . '"' .
-		       'data-event-format="' . $dt_format . '"' .
+		return '<span class="simcal-event-' . $bound . ' ' . 'simcal-event-' . $bound . '-' . $format . '" ' .
+		       'data-event-' . $bound . '="' . $event_dt->getTimestamp() . '" ' .
+		       'data-event-format="' . $dt_format . '" ' .
 		       'itemprop="' . $bound . 'Date" content="' . $event_dt->toIso8601String() . '">' .
 		       $value .
 		       '</span>';
