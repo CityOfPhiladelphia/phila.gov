@@ -333,6 +333,12 @@ abstract class MC4WP_Integration {
 		$lists = $this->get_lists();
 		$result = false;
 
+		// validate lists
+		if( empty( $lists ) ) {
+			$this->get_log()->warning( sprintf( '%s > No MailChimp lists were selected', $this->name ) );
+			return false;
+		}
+
 		/**
 		 * Filters the final merge variables before the request is sent to MailChimp, for all integrations.
 		 *
@@ -361,9 +367,19 @@ abstract class MC4WP_Integration {
 
 		// if result failed, show error message
 		if ( ! $result && $api->has_error() ) {
-			error_log( sprintf( 'MailChimp for WordPres (%s): %s', $this->slug, $api->get_error_message() ) );
+
+			// log error
+			if( $api->get_error_code() === 214 ) {
+				$this->get_log()->warning( sprintf( "%s > %s is already subscribed to the selected list(s)", $this->name, $email ) );
+			} else {
+				$this->get_log()->error( sprintf( '%s > MailChimp API Error: %s', $this->name, $api->get_error_message() ) );
+			}
+
+			// bail
 			return false;
 		}
+
+		$this->get_log()->info( sprintf( '%s > Successfully subscribed %s', $this->name, $email ) );
 
 		/**
 		 * Runs right after someone is subscribed using an integration
@@ -438,6 +454,13 @@ abstract class MC4WP_Integration {
 		$request = mc4wp('request');
 		$data = $request->params->all();
 		return $data;
+	}
+
+	/**
+	 * @return MC4WP_Debug_Log
+	 */
+	protected function get_log() {
+		return mc4wp('log');
 	}
 
 }
