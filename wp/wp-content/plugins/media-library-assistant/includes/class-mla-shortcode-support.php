@@ -120,14 +120,26 @@ class MLAShortcode_Support {
 	public static function mla_ghostscript_present( $explicit_path = '', $ghostscript_only = false ) {
 		static $ghostscript_present = NULL;
 
+		/*
+		 * If $ghostscript_only = false, let the mla_debug parameter control logging
+		 */
+		if ( $ghostscript_only ) {
+			$mla_debug_category = MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL;
+		} else {
+			$mla_debug_category = NULL;
+		}
+
+		MLACore::mla_debug_add( "MLAShortcode_Support::mla_ghostscript_present( {$ghostscript_only} ) explicit_path = " . var_export( $explicit_path, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
+		MLACore::mla_debug_add( "MLAShortcode_Support::mla_ghostscript_present( {$ghostscript_only} ) ghostscript_present = " . var_export( $ghostscript_present, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
+		
 		if ( ! $ghostscript_only ) {
 			if ( isset( $ghostscript_present ) ) {
-				MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, ghostscript_present = ' . var_export( $ghostscript_present, true ) );
+				MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, ghostscript_present = ' . var_export( $ghostscript_present, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 				return $ghostscript_present;
 			}
 
 			if ( 'checked' != MLACore::mla_get_option( 'enable_ghostscript_check' ) ) {
-				MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, disabled' );
+				MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, disabled', $mla_debug_category );
 				return $ghostscript_present = true;
 			}
 
@@ -135,7 +147,7 @@ class MLAShortcode_Support {
 			 * Imagick must be installed as well
 			 */
 			if ( ! class_exists( 'Imagick' ) ) {
-				MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, Imagick missing' );
+				MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, Imagick missing', $mla_debug_category );
 				return $ghostscript_present = false;
 			}
 		} // not ghostscript_only
@@ -144,20 +156,20 @@ class MLAShortcode_Support {
 		 * Look for exec() - from http://stackoverflow.com/a/12980534/866618
 		 */
 		if ( ini_get('safe_mode') ) {
-			MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, safe_mode' );
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, safe_mode', $mla_debug_category );
 			return $ghostscript_present = false;
 		}
 
 		$blacklist = preg_split( '/,\s*/', ini_get('disable_functions') . ',' . ini_get('suhosin.executor.func.blacklist') );
 		if ( in_array('exec', $blacklist) ) {
-			MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, exec in blacklist' );
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, exec in blacklist', $mla_debug_category );
 			return $ghostscript_present = false;
 		}
 
 		if ( 'WIN' === strtoupper( substr( PHP_OS, 0, 3) ) ) {
 			if ( ! empty( $explicit_path ) ) {
 				$return = exec( 'dir /o:n/s/b "' . $explicit_path . '"' );
-				MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, WIN explicit path = ' . var_export( $return, true ) );
+				MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, WIN explicit path = ' . var_export( $return, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 				if ( ! empty( $return ) ) {
 					return $ghostscript_present = true;
 				} else {
@@ -166,44 +178,52 @@ class MLAShortcode_Support {
 			}
 
 			$return = getenv('GSC');
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, getenv(GSC) = ' . var_export( $return, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 			if ( ! empty( $return ) ) {
 				return $ghostscript_present = true;
 			}
 
 			$return = exec('where gswin*c.exe');
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>,  exec(where gswin*c.exe) = ' . var_export( $return, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 			if ( ! empty( $return ) ) {
 				return $ghostscript_present = true;
 			}
 
 			$return = exec('dir /o:n/s/b "C:\Program Files\gs\*gswin*c.exe"');
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>,  exec(dir /o:n/s/b "C:\Program Files\gs\*gswin*c.exe") = ' . var_export( $return, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 			if ( ! empty( $return ) ) {
 				return $ghostscript_present = true;
 			}
 
 			$return = exec('dir /o:n/s/b "C:\Program Files (x86)\gs\*gswin32c.exe"');
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>,  exec(dir /o:n/s/b "C:\Program Files (x86)\gs\*gswin32c.exe") = ' . var_export( $return, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 			if ( ! empty( $return ) ) {
 				return $ghostscript_present = true;
 			}
 
-			MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, WIN detection failed' );
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, WIN detection failed', $mla_debug_category );
 			return $ghostscript_present = false;
 		} // Windows platform
 
 		if ( ! empty( $explicit_path ) ) {
 			exec( 'test -e ' . $explicit_path, $dummy, $ghostscript_path );
-			MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, explicit path = ' . var_export( $explicit_path, true ) . ', ghostscript_path = ' . var_export( $ghostscript_path, true ) );
+			MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, explicit path = ' . var_export( $explicit_path, true ) . ', ghostscript_path = ' . var_export( $ghostscript_path, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 			return ( $explicit_path === $ghostscript_path );
 		}
 
 		$return = exec('which gs');
+		MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, exec(which gs) = ' . var_export( $return, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
 		if ( ! empty( $return ) ) {
 			return $ghostscript_present = true;
 		}
 
 		$test_path = '/usr/bin/gs';
-		exec('test -e ' . $test_path, $dummy, $ghostscript_path);
-		MLACore::mla_debug_add( '<strong>_ghostscript_present</strong>, test_path = ' . var_export( $test_path, true ) . ', ghostscript_path = ' . var_export( $ghostscript_path, true ) );
-		return $ghostscript_present = ( $test_path === $ghostscript_path );
+		$output = array();
+		$return_arg = -1;
+		$return = exec( 'test -e ' . $test_path, $output, $return_arg );
+		MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, test_path = ' . var_export( $test_path, true ) . ', return_arg = ' . var_export( $return_arg, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
+		MLACore::mla_debug_add( '<strong>MLAShortcode_Support::mla_ghostscript_present</strong>, return = ' . var_export( $return, true ) . ', output = ' . var_export( $output, true ), MLACore::MLA_DEBUG_CATEGORY_THUMBNAIL );
+		return $ghostscript_present = ( $test_path === $return_arg );
 	}
 
 	/**
@@ -400,6 +420,7 @@ class MLAShortcode_Support {
 
 			'mla_alt_shortcode' => NULL,
 			'mla_alt_ids_name' => 'ids',
+			'mla_alt_ids_value' => NULL,
 
 			// paginatation arguments defined in $mla_get_shortcode_attachments_parameters
 			// 'mla_page_parameter' => 'mla_paginate_current', handled in code with $mla_page_parameter
@@ -549,7 +570,7 @@ class MLAShortcode_Support {
 				$blacklist = array_merge( $mla_arguments, self::$mla_get_shortcode_attachments_parameters );
 			}
 
-			$new_args = '';
+			$mla_alt_shortcode_args = '';
 			foreach ( $attr as $key => $value ) {
 				if ( array_key_exists( $key, $blacklist ) ) {
 					continue;
@@ -560,31 +581,38 @@ class MLAShortcode_Support {
 					$value = '"' . $slashed . '"';
 				}
 
-				$new_args .= empty( $new_args ) ? $key . '=' . $value : ' ' . $key . '=' . $value;
+				$mla_alt_shortcode_args .= empty( $mla_alt_shortcode_args ) ? $key . '=' . $value : ' ' . $key . '=' . $value;
 			} // foreach $attr
 
-			$new_ids = '';
-			foreach ( $attachments as $value ) {
-				$new_ids .= empty( $new_ids ) ? (string) $value->ID : ',' . $value->ID;
-			} // foreach $attachments
-
-			$new_ids = $arguments['mla_alt_ids_name'] . '="' . $new_ids . '"';
-
-			if ( self::$mla_debug ) {
-				$output = MLACore::mla_debug_flush();
-			} else {
-				$output = '';
-			}
-
 			/*
-			 * Execute the alternate gallery shortcode with the new parameters
+			 * If an alternate value has been specified we must delay alt shortcode execution
 			 */
-			$content = apply_filters( 'mla_gallery_final_content', $content );
-			if ( ! empty( $content ) ) {
-				return $output . do_shortcode( sprintf( '[%1$s %2$s %3$s]%4$s[/%5$s]', $arguments['mla_alt_shortcode'], $new_ids, $new_args, $content, $arguments['mla_alt_shortcode'] ) );
-			} else {
-				return $output . do_shortcode( sprintf( '[%1$s %2$s %3$s]', $arguments['mla_alt_shortcode'], $new_ids, $new_args ) );
-			}
+			$mla_alt_ids_value = is_null( $arguments['mla_alt_ids_value'] ) ? NULL : str_replace( '{+', '[+', str_replace( '+}', '+]', $arguments['mla_alt_ids_value'] ) );
+			$mla_alt_shortcode_ids = array();
+			
+			if ( is_null( $mla_alt_ids_value ) ) {
+				foreach ( $attachments as $value ) {
+					$mla_alt_shortcode_ids[] = $value->ID;
+				} // foreach $attachments
+	
+				$mla_alt_shortcode_ids = $arguments['mla_alt_ids_name'] . '="' . implode( ',', $mla_alt_shortcode_ids ) . '"';
+	
+				if ( self::$mla_debug ) {
+					$output = MLACore::mla_debug_flush();
+				} else {
+					$output = '';
+				}
+	
+				/*
+				 * Execute the alternate gallery shortcode with the new parameters
+				 */
+				$content = apply_filters( 'mla_gallery_final_content', $content );
+				if ( ! empty( $content ) ) {
+					return $output . do_shortcode( sprintf( '[%1$s %2$s %3$s]%4$s[/%5$s]', $arguments['mla_alt_shortcode'], $mla_alt_shortcode_ids, $mla_alt_shortcode_args, $content, $arguments['mla_alt_shortcode'] ) );
+				} else {
+					return $output . do_shortcode( sprintf( '[%1$s %2$s %3$s]', $arguments['mla_alt_shortcode'], $mla_alt_shortcode_ids, $mla_alt_shortcode_args ) );
+				}
+			} // is_null( $mla_alt_ids_value )
 		} // mla_alt_shortcode
 
 		/*
@@ -834,12 +862,12 @@ class MLAShortcode_Support {
 		 * Look for gallery-level markup substitution parameters
 		 */
 		$new_text = $open_template . $row_open_template . $row_close_template . $close_template;
-
 		$markup_values = MLAData::mla_expand_field_level_parameters( $new_text, $attr, $markup_values );
+
 		if ( self::$mla_debug ) {
-			$output = MLACore::mla_debug_flush();
+			$mla_alt_ids_output = $output = MLACore::mla_debug_flush();
 		} else {
-			$output = '';
+			$mla_alt_ids_output = $output = '';
 		}
 
 		if ($is_gallery ) {
@@ -971,7 +999,7 @@ class MLAShortcode_Support {
 			}
 
 			$post_meta = MLAQuery::mla_fetch_attachment_metadata( $attachment->ID );
-			$base_file = $post_meta['mla_wp_attached_file'];
+			$base_file = isset( $post_meta['mla_wp_attached_file'] ) ? $post_meta['mla_wp_attached_file'] : '';
 			$sizes = isset( $post_meta['mla_wp_attachment_metadata']['sizes'] ) ? $post_meta['mla_wp_attachment_metadata']['sizes'] : array();
 
 			if ( !empty( $post_meta['mla_wp_attachment_metadata']['width'] ) ) {
@@ -1078,8 +1106,13 @@ class MLAShortcode_Support {
 			 * caption with 'aria-describedby'. The caption has a matching 'id' attribute
 			 * "$selector-#id". See below for the MLA equivalent processing.
 			 */
-			$item_values['pagelink'] = wp_get_attachment_link($attachment->ID, $size, true, $show_icon, $link_text);
-			$item_values['filelink'] = wp_get_attachment_link($attachment->ID, $size, false, $show_icon, $link_text);
+			if ( 'attachment' == $attachment->post_type ) {
+				$item_values['pagelink'] = wp_get_attachment_link($attachment->ID, $size, true, $show_icon, $link_text);
+				$item_values['filelink'] = wp_get_attachment_link($attachment->ID, $size, false, $show_icon, $link_text);
+			} else {
+				$item_values['pagelink'] = sprintf( '<a href=\'%1$s\'>%2$s</a>', $attachment->guid, $attachment->post_title );
+				$item_values['filelink'] = sprintf( '<a href=\'%1$s\'>%2$s</a>', get_permalink( $attachment->ID ), $attachment->post_title );
+			}
 
 			if ( in_array( $attachment->post_mime_type, array( 'image/svg+xml' ) ) ) {
 				$registered_dimensions = self::_registered_dimensions();
@@ -1289,6 +1322,7 @@ class MLAShortcode_Support {
 				$link_tag = $matches[1][0][0];
 				$item_values['thumbnail_content'] = $matches[2][0][0];
 			} else {
+				$link_tag = '';
 				$item_values['thumbnail_content'] = '';
 			}
 
@@ -1499,6 +1533,16 @@ class MLAShortcode_Support {
 				}
 
 				$item_values = apply_filters( 'mla_gallery_item_values', $item_values );
+
+				/*
+				 * Accumulate mla_alt_shortcode_ids when mla_alt_ids_value present
+				 */
+				if ( is_string( $arguments['mla_alt_shortcode'] ) && is_string( $mla_alt_ids_value ) ) {
+					$item_values = MLAData::mla_expand_field_level_parameters( $mla_alt_ids_value, $attr, $item_values );
+					$mla_alt_shortcode_ids[] = MLAData::mla_parse_template( $mla_alt_ids_value, $item_values );
+					continue;
+				}
+
 				$item_template = apply_filters( 'mla_gallery_item_template', $item_template );
 				$parse_value = MLAData::mla_parse_template( $item_template, $item_values );
 				$output .= apply_filters( 'mla_gallery_item_parse', $parse_value, $item_template, $item_values );
@@ -1518,7 +1562,20 @@ class MLAShortcode_Support {
 			}
 		} // foreach attachment
 
-		if ($is_gallery ) {
+		/*
+		 * Execute the alternate gallery shortcode with the new parameters
+		 */
+		if ( is_string( $arguments['mla_alt_shortcode'] ) && is_string( $mla_alt_ids_value ) ) {
+			$mla_alt_shortcode_ids = $arguments['mla_alt_ids_name'] . '="' . implode( ',', $mla_alt_shortcode_ids ) . '"';
+			$content = apply_filters( 'mla_gallery_final_content', $content );
+			if ( ! empty( $content ) ) {
+				return $output . do_shortcode( sprintf( '[%1$s %2$s %3$s]%4$s[/%5$s]', $arguments['mla_alt_shortcode'], $mla_alt_shortcode_ids, $mla_alt_shortcode_args, $content, $arguments['mla_alt_shortcode'] ) );
+			} else {
+				return $output . do_shortcode( sprintf( '[%1$s %2$s %3$s]', $arguments['mla_alt_shortcode'], $mla_alt_shortcode_ids, $mla_alt_shortcode_args ) );
+			}
+		}
+
+		if ( $is_gallery ) {
 			/*
 			 * Close out partial row
 			 */
@@ -1790,37 +1847,12 @@ class MLAShortcode_Support {
 
 		$tags = self::mla_get_terms( $arguments );
 
-		if ( self::$mla_debug ) {
-			$cloud = MLACore::mla_debug_flush();
-		} else {
-			$cloud = '';
-		}
-
 		/*
 		 * Invalid taxonomy names return WP_Error
 		 */
 		if ( is_wp_error( $tags ) ) {
 			$cloud .=  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $tags->get_error_message() . '</strong>, ' . $tags->get_error_data( $tags->get_error_code() );
 
-			if ( 'array' == $arguments['mla_output'] ) {
-				return array( $cloud );
-			}
-
-			if ( empty($arguments['echo']) ) {
-				return $cloud;
-			}
-
-			echo $cloud;
-			return;
-		}
-
-		if ( empty( $tags ) ) {
-			if ( self::$mla_debug ) {
-				MLACore::mla_debug_add( '<strong>' . __( 'mla_debug empty cloud', 'media-library-assistant' ) . '</strong>, query = ' . var_export( $arguments, true ) );
-				$cloud = MLACore::mla_debug_flush();
-			}
-
-			$cloud .= $arguments['mla_nolink_text'];
 			if ( 'array' == $arguments['mla_output'] ) {
 				return array( $cloud );
 			}
@@ -1841,6 +1873,37 @@ class MLAShortcode_Support {
 			unset( $tags['found_rows'] );
 		} else {
 			$found_rows = count( $tags );
+		}
+
+		if ( 0 == $found_rows ) {
+			if ( self::$mla_debug ) {
+				MLACore::mla_debug_add( '<strong>' . __( 'mla_debug empty cloud', 'media-library-assistant' ) . '</strong>, query = ' . var_export( $arguments, true ) );
+				$cloud = MLACore::mla_debug_flush();
+				
+				if ( '<p></p>' == $cloud ) {
+					$cloud = '';
+				}
+			} else {
+				$cloud = '';
+			}
+
+			$cloud .= $arguments['mla_nolink_text'];
+			if ( 'array' == $arguments['mla_output'] ) {
+				return array( $cloud );
+			}
+
+			if ( empty($arguments['echo']) ) {
+				return $cloud;
+			}
+
+			echo $cloud;
+			return;
+		}
+
+		if ( self::$mla_debug ) {
+			$cloud = MLACore::mla_debug_flush();
+		} else {
+			$cloud = '';
 		}
 
 		$min_count = 0x7FFFFFFF;

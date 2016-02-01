@@ -1798,7 +1798,7 @@ class MLAData {
 						} // count
 
 						if ( ! in_array( $att_tag, array( 'rdf:about', 'rdf:parseType' ) ) ) {
-							$node_attributes[ $att_tag ] = $att_value;
+							$node_attributes[ $att_tag ] = self::_bin_to_utf8( $att_value );
 						}
 					}
 				}
@@ -1811,7 +1811,8 @@ class MLAData {
 				case 'close':
 					if ( 0 < --$current_level ) {
 						$top_level = array_pop( $levels );
-//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) top_level = " . var_export( $top_level, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'close': top_level = " . var_export( $top_level, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'close': levels( {$current_level} ) before = " . var_export( $levels, true ), 0 );
 						if ( 'rdf:li' == $top_level['key'] ) {
 							$levels[ $current_level ]['values'][] = $top_level['values'];
 						} else {
@@ -1822,37 +1823,39 @@ class MLAData {
 							}
 						}
 					}
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'close': levels( {$current_level} ) after = " . var_export( $levels, true ), 0 );
 					break;
 				case 'complete':
 					if ( 'x-default' != $language ) {
 						break;
 					}
 
-					$complete_value = NULL;
-					if ( isset( $value['attributes'] ) ) {
-						unset( $value['attributes']['xml:lang'] );
-
-						if ( ! empty( $value['attributes'] ) ) {
-							$complete_value = array();
-							foreach ( $value['attributes'] as $attr_key => $attr_value ) {
-								$complete_value[ $attr_key ] = self::_bin_to_utf8( $attr_value );
-							}
-						}
-					}
-
-					if ( empty( $complete_value ) ) {
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'complete': node_attributes = " . var_export( $node_attributes, true ), 0 );
+					if ( empty( $node_attributes ) ) {
 						if ( isset( $value['value'] ) ) {
 							$complete_value = self::_bin_to_utf8( $value['value'] );
 						} else {
 							$complete_value = '';
 						}
+					} else {
+						$complete_value = $node_attributes;
 					}
 
 					if ( 'rdf:li' == $value['tag'] ) {
 						$levels[ $current_level ]['values'][] = $complete_value;
 					} else {
-						$levels[ $current_level ]['values'][ $value['tag'] ] = $complete_value;
+						if ( isset( $levels[ $current_level ]['values'][ $value['tag'] ] ) ) {
+							$new_value = (array) $levels[ $current_level ]['values'][ $value['tag'] ];
+							$levels[ $current_level ]['values'][ $value['tag'] ] = array_merge( $new_value, (array) $complete_value );
+						} else {
+							$levels[ $current_level ]['values'][ $value['tag'] ] = $complete_value;
+						}
 					}
+
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index}, {$current_level} ) case 'complete': values = " . var_export( $levels[ $current_level ]['values'], true ), 0 );
+					break;
+				default:
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index}, {$current_level} ) ignoring type = " . var_export( $value['type'], true ), 0 );
 			} // switch on type
 //error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index}, {$current_level} ) levels = " . var_export( $levels, true ), 0 );
 		} // foreach value
@@ -2021,6 +2024,7 @@ class MLAData {
 		}
 
 		$results = array_merge( $results, $namespace_arrays );
+//error_log( __LINE__ . " mla_fetch_attachment_image_metadata results = " . var_export( $results, true ), 0 );
 		return $results;
 	}
 
@@ -2929,6 +2933,7 @@ class MLAData {
 			if ( is_callable( 'exif_read_data' ) && in_array( $size[2], array( IMAGETYPE_JPEG, IMAGETYPE_TIFF_II, IMAGETYPE_TIFF_MM ) ) ) {
 				//set_error_handler( 'MLAData::mla_IPTC_EXIF_error_handler' );
 				$results['mla_exif_metadata'] = $exif_data = @exif_read_data( $path );
+//error_log( __LINE__ . " MLAData::mla_fetch_attachment_image_metadata exif_data = " . var_export( $exif_data, true ), 0 );
 				//restore_error_handler();
 				if ( ! empty( MLAData::$mla_IPTC_EXIF_errors ) ) {
 					$results['mla_exif_errors'] = MLAData::$mla_IPTC_EXIF_errors;
@@ -2940,6 +2945,17 @@ class MLAData {
 			$results['mla_xmp_metadata'] = self::mla_parse_xmp_metadata( $path, 0 );
 			if ( NULL == $results['mla_xmp_metadata'] ) {
 				$results['mla_xmp_metadata'] = array();
+			}
+				
+			// experimental damage repair for Elsie Gilmore (earthnutvt)
+			if ( isset( $exif_data['Keywords'] ) && ( '????' == substr( $exif_data['Keywords'], 0, 4 ) ) ) {
+				if ( isset( $results['mla_xmp_metadata']['Keywords'] ) ) {
+					$exif_data['Keywords'] = $results['mla_xmp_metadata']['Keywords'];
+					$results['mla_exif_metadata']['Keywords'] = $results['mla_xmp_metadata']['Keywords'];
+				} else {
+					unset( $exif_data['Keywords'] );
+					unset( $results['mla_exif_metadata']['Keywords'] );
+				}
 			}
 		}
 
@@ -3209,6 +3225,7 @@ class MLAData {
 			} // is_array
 		} // */
 
+//error_log( __LINE__ . " mla_fetch_attachment_image_metadata( {$post_id} ) results = " . var_export( $results, true ), 0 );
 		return $results;
 	}
 

@@ -30,11 +30,14 @@ div.mla_errors {
 }
 
 /*
- * MLA List Table Terms Search and Clear Filter-by buttons
+ * MLA List Table Filter, Terms Search, Empty Trash and Clear Filter-by buttons
  */
-#mla-terms-search-open,
-#clear_filter_by {
-	margin: 1px 8px 0 0;
+.actions #post-query-submit,
+.actions #mla-terms-search-open,
+.actions #delete_all,
+.actions #clear_filter_by {
+	float: left;
+	margin: 1px 4px 0 0;
 }
 
 /*
