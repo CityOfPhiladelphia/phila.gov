@@ -3,7 +3,7 @@ Contributors: moonstonemedia, pderksen, nickyoung87, nekojira, rosshanney
 Tags: calendar, calendars, calendar manager, custom calendar, custom calendars, event, events, events feed, google calendar, google
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 3.0.12
+Stable tag: 3.0.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,18 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.0.13 - January 25, 2016 =
+
+* Tweak: Lists that start on a custom date will start at the beginning of the day now.
+* Tweak: Make it so grouped calendars are properly sorted by event time.
+* Tweak: Updated option for controlling multi-day events.
+* Tweak: Allow line breaks from Google calendar description to persist if not using the html attribute.
+* Tweak: Updated text output for human date times.
+* Fix: Multi-day events that span over to the first day of the month should now show correctly.
+* Feature: Added dropdown option on how to handle line breaks and paragraphs for the event template tags.
+* Dev: Removed WP Requirements from Composer.
+* Dev: Removed always enqueue and disable scripts options so scripts will load automatically on every page.
 
 = 3.0.12 - January 5, 2016 =
 
