@@ -1011,6 +1011,7 @@ class MLAOptions {
 
 		$options = apply_filters( 'mla_update_attachment_metadata_options', $options, $data, $post_id );
 		$data = apply_filters( 'mla_update_attachment_metadata_prefilter', $data, $post_id, $options );
+//error_log( __LINE__ . ' mla_update_attachment_metadata_filter options = ' . var_export( $options, true ), 0 );
 
 		if ( $options['is_upload'] ) {
 			if ( $options['enable_iptc_exif_mapping'] || $options['enable_custom_field_mapping'] ) {
@@ -1885,6 +1886,18 @@ class MLAOptions {
 	 */
 	public static function mla_evaluate_iptc_exif_mapping( $post, $category, $settings = NULL, $attachment_metadata = NULL, $is_upload = false ) {
 		$image_metadata = MLAData::mla_fetch_attachment_image_metadata( $post->ID );
+
+		/*
+		 * Make the PDF/XMP metadata available as EXIF values so simple rules like "EXIF:Keywords" will work
+		 */
+		if ( empty( $image_metadata['mla_exif_metadata'] ) ) {
+			if ( ! empty( $image_metadata['mla_xmp_metadata'] ) ) {
+				$image_metadata['mla_exif_metadata'] = $image_metadata['mla_xmp_metadata'];
+			} elseif ( ! empty( $image_metadata['mla_pdf_metadata'] ) ) {
+				$image_metadata['mla_exif_metadata'] = $image_metadata['mla_pdf_metadata'];
+			}
+		}
+
 		$updates = array();
 		$update_all = ( 'iptc_exif_mapping' == $category );
 		$data_source_category = $update_all ? 'single_attachment_mapping' : 'custom_field_mapping';

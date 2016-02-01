@@ -988,11 +988,34 @@ class MLASettings {
 	 * @return	string	HTML markup for the option's table row
 	 */
 	public static function mla_update_option_row( $key, $value, $option_table = NULL ) {
+		$default = MLACore::mla_get_option( $key, true, false, $option_table );
+		
+		/*
+		 * Checkbox logic is done in the switch statements below,
+		 * custom logic is done in the handler.
+		 */
+		if ( ( 'checkbox' != $value['type'] ) && ( 'custom' != $value['type'] ) ) {
+			if ( isset( $_REQUEST[ MLA_OPTION_PREFIX . $key ] ) ) {
+				$current = $_REQUEST[ MLA_OPTION_PREFIX . $key ];
+			} else {
+				$current = $default;
+			}
+
+			if ( $current == $default ) {
+				unset( $_REQUEST[ MLA_OPTION_PREFIX . $key ] );
+			}
+		}
+		
 		if ( isset( $_REQUEST[ MLA_OPTION_PREFIX . $key ] ) ) {
 			$message = '<br>update_option(' . $key . ")\r\n";
 			switch ( $value['type'] ) {
 				case 'checkbox':
-					MLACore::mla_update_option( $key, 'checked', $option_table );
+					if ( 'checked' == $default ) {
+						MLACore::mla_delete_option( $key, $option_table );
+					} else {
+						$message = '<br>check_option(' . $key . ')';
+						MLACore::mla_update_option( $key, 'checked', $option_table );
+					}
 					break;
 				case 'header':
 				case 'subheader':
@@ -1024,8 +1047,12 @@ class MLASettings {
 			$message = '<br>delete_option(' . $key . ')';
 			switch ( $value['type'] ) {
 				case 'checkbox':
-					$message = '<br>uncheck_option(' . $key . ')';
-					MLACore::mla_update_option( $key, 'unchecked', $option_table );
+					if ( 'checked' == $default ) {
+						$message = '<br>uncheck_option(' . $key . ')';
+						MLACore::mla_update_option( $key, 'unchecked', $option_table );
+					} else {
+						MLACore::mla_delete_option( $key, $option_table );
+					}
 					break;
 				case 'header':
 				case 'subheader':
@@ -3276,34 +3303,36 @@ class MLASettings {
 		 */
 		foreach ( MLACore::$mla_option_definitions as $key => $value ) {
 			if ( 'mla_gallery' == $value['tab'] ) {
+				$this_setting_changed = false;
+				$old_value = MLACore::mla_get_option( $key );
+
 				if (  'select' == $value['type'] ) {
-					$old_value = MLACore::mla_get_option( $key );
 					if ( $old_value != $_REQUEST[ MLA_OPTION_PREFIX . $key ] ) {
-						$settings_changed = true;
-						$message_list .= self::mla_update_option_row( $key, $value );
+						$this_setting_changed = true;
 					}
 				} elseif ( 'text' == $value['type'] ) {
 					if ( '' == $_REQUEST[ MLA_OPTION_PREFIX . $key ] ) {
 						$_REQUEST[ MLA_OPTION_PREFIX . $key ] = $value['std'];
 					}
 
-					$old_value = MLACore::mla_get_option( $key );
 					if ( $old_value != $_REQUEST[ MLA_OPTION_PREFIX . $key ] ) {
-						$settings_changed = true;
-						$message_list .= self::mla_update_option_row( $key, $value );
+						$this_setting_changed = true;
 					}
 				} elseif ( 'checkbox' == $value['type'] ) {
-					$old_value = MLACore::mla_get_option( $key );
 					if ( isset( $_REQUEST[ MLA_OPTION_PREFIX . $key ] ) ) {
-						$checkbox_changed = "checked" != $old_value;
+						$this_setting_changed = "checked" != $old_value;
 					} else {
-						$checkbox_changed = "unchecked" != $old_value;
+						$this_setting_changed = "checked" == $old_value;
 					}
-
-					if ( $checkbox_changed ) {
-						$settings_changed = true;
-						$message_list .= self::mla_update_option_row( $key, $value );
-					}
+				}
+				
+				/*
+				 * Always update to scrub default settings
+				 */
+				$message = self::mla_update_option_row( $key, $value );
+				if ( $this_setting_changed ) {
+					$settings_changed = true;
+					$message_list .= $message;
 				}
 			} // mla_gallery option
 		} // foreach mla_options
@@ -4025,7 +4054,7 @@ class MLASettings {
 		/*
 		 * Uncomment this for debugging.
 		 */
-		// $message_list = $option_messages . '<br>';
+		//$message_list = $option_messages . '<br>';
 
 		/*
 		 * Add mapping options
@@ -4125,7 +4154,7 @@ class MLASettings {
 		/*
 		 * Uncomment this for debugging.
 		 */
-		// $page_content['message'] .= $message_list;
+		//$page_content['message'] .= $message_list;
 
 		return $page_content;
 	} // _save_general_settings

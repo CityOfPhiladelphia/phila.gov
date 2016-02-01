@@ -63,10 +63,14 @@ calls the parent constructor to set some default configs.</span><pre>__construct
 <li class="method public "><a href="#get_default_column_names" title="get_default_column_names :: Returns the Media/Assistant submenu table column slugs/keys"><span class="description">Returns the Media/Assistant submenu table column slugs/keys</span><pre>get_default_column_names()</pre></a></li>
 <li class="method public "><a href="#get_default_columns" title="get_default_columns :: Returns the Media/Assistant submenu table column definitions"><span class="description">Returns the Media/Assistant submenu table column definitions</span><pre>get_default_columns()</pre></a></li>
 <li class="method public "><a href="#get_edit_link" title="get_edit_link :: Return a link to the Media/Assistant submenu Edit columns screen"><span class="description">Return a link to the Media/Assistant submenu Edit columns screen</span><pre>get_edit_link()</pre></a></li>
-<li class="method public "><a href="#get_meta" title="get_meta :: Returns the custom fields assignedto Media Library items, removing those already present
-in the Media/Assistant submenu table"><span class="description">Returns the custom fields assignedto Media Library items, removing those already present
+<li class="method public "><a href="#get_meta" title="get_meta :: Returns the custom fields assigned to Media Library items, removing those already present
+in the Media/Assistant submenu table"><span class="description">Returns the custom fields assigned to Media Library items, removing those already present
 in the Media/Assistant submenu table</span><pre>get_meta()</pre></a></li>
+<li class="method public "><a href="#init_manage_columns" title="init_manage_columns :: Added in Admin Columns update to v2.4.9"><span class="description">Added in Admin Columns update to v2.4.9</span><pre>init_manage_columns()</pre></a></li>
 <li class="method public "><a href="#is_columns_screen" title="is_columns_screen :: Test for current screen = the Media/Assistant submenu screen"><span class="description">Test for current screen = the Media/Assistant submenu screen</span><pre>is_columns_screen()</pre></a></li>
+<li class="method public "><a href="#is_current_screen" title="is_current_screen :: Test for current screen = the Media/Assistant submenu screen,
+For Admin Columns 2.4.9+"><span class="description">Test for current screen = the Media/Assistant submenu screen,
+For Admin Columns 2.4.9+</span><pre>is_current_screen()</pre></a></li>
 <li class="method public "><a href="#manage_value" title="manage_value :: Return the content of an Admin Columns custom column"><span class="description">Return the content of an Admin Columns custom column</span><pre>manage_value()</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="method protected "><a href="#get_screen_link" title="get_screen_link :: Return a link to the Media/Assistant submenu screen"><span class="description">Return a link to the Media/Assistant submenu screen</span><pre>get_screen_link()</pre></a></li>
@@ -157,7 +161,7 @@ calls the parent constructor to set some default configs.</h2>
 </div></div>
 </div>
 <a name="get_meta" id="get_meta"></a><div class="element clickable method public get_meta" data-toggle="collapse" data-target=".get_meta .collapse">
-<h2>Returns the custom fields assignedto Media Library items, removing those already present
+<h2>Returns the custom fields assigned to Media Library items, removing those already present
 in the Media/Assistant submenu table</h2>
 <pre>get_meta() : array</pre>
 <div class="labels"></div>
@@ -172,6 +176,18 @@ in the Media/Assistant submenu table</h2>
 <code>array</code>( index => array( 0 => 'custom field name' ) )</div>
 </div></div>
 </div>
+<a name="init_manage_columns" id="init_manage_columns"></a><div class="element clickable method public init_manage_columns" data-toggle="collapse" data-target=".init_manage_columns .collapse">
+<h2>Added in Admin Columns update to v2.4.9</h2>
+<pre>init_manage_columns() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.23</td>
+</tr></table>
+</div></div>
+</div>
 <a name="is_columns_screen" id="is_columns_screen"></a><div class="element clickable method public is_columns_screen" data-toggle="collapse" data-target=".is_columns_screen .collapse">
 <h2>Test for current screen = the Media/Assistant submenu screen</h2>
 <pre>is_columns_screen() : boolean</pre>
@@ -181,6 +197,22 @@ in the Media/Assistant submenu table</h2>
 <table class="table table-bordered"><tr>
 <th>since</th>
 <td>2.22</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if the Media/Assistant submenu is the current screen</div>
+</div></div>
+</div>
+<a name="is_current_screen" id="is_current_screen"></a><div class="element clickable method public is_current_screen" data-toggle="collapse" data-target=".is_current_screen .collapse">
+<h2>Test for current screen = the Media/Assistant submenu screen,
+For Admin Columns 2.4.9+</h2>
+<pre>is_current_screen() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.23</td>
 </tr></table>
 <h3>Returns</h3>
 <div class="subelement response">
@@ -235,7 +267,7 @@ in the Media/Assistant submenu table</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2016-01-03T09:26:08-08:00.<br></footer></div>
+            generated on 2016-01-23T23:00:26-08:00.<br></footer></div>
 </div>
 </body>
 </html>

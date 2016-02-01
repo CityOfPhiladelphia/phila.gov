@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Media Library Assistant\n"
-"POT-Creation-Date: 2015-12-01 21:17-0800\n"
+"POT-Creation-Date: 2016-01-23 23:01-0800\n"
 "PO-Revision-Date: 2015-08-21 21:38-0800\n"
 "Last-Translator: David Lingren <david@fairtradejudaica.org>\n"
 "Language-Team: David Lingren <david@fairtradejudaica.org>\n"
@@ -19,6 +19,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: includes\n"
 "X-Poedit-SearchPath-1: tests\n"
 "X-Poedit-SearchPath-2: index.php\n"
+
+#. translators: Name of the plugin/theme
+msgid "Media Library Assistant"
+msgstr ""
+
+msgid "Assistant"
+msgstr ""
 
 msgid "Title"
 msgstr ""
@@ -198,17 +205,10 @@ msgstr ""
 msgid "Page Title"
 msgstr ""
 
-#. translators: Name of the plugin/theme
-msgid "Media Library Assistant"
-msgstr ""
-
 msgid "Enter the title for the Media/Assistant submenu page"
 msgstr ""
 
 msgid "Menu Title"
-msgstr ""
-
-msgid "Assistant"
 msgstr ""
 
 msgid "Enter the title for the Media/Assistant submenu entry"
@@ -461,6 +461,14 @@ msgid "Media Manager Order"
 msgstr ""
 
 msgid "Attachment Display Settings"
+msgstr ""
+
+msgid "Media Manager Apply Display Settings"
+msgstr ""
+
+msgid ""
+"Check this option to always start with the Attachment Display Settings set "
+"here,<br>&nbsp;&nbsp;overriding browser-/cookie-based defaults."
 msgstr ""
 
 msgid "Alignment"
@@ -850,6 +858,18 @@ msgid ""
 "the existing MLA_DEBUG_LEVEL value."
 msgstr ""
 
+#. translators: 1: ERROR tag 2: path and file name
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" not found."
+msgstr ""
+
+#. translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" bad source type \"%3$s\"."
+msgstr ""
+
 #. translators: 1: ERROR tag 2: raw_mime_type
 #, php-format
 msgid "%1$s: Bad specification part \"%2$s\""
@@ -1067,18 +1087,6 @@ msgstr ""
 #. translators: 1: post_type, 2: post_title, 3: post ID, 4: query string, 5: error message
 #, php-format
 msgid "(%1$s) %2$s (ID %3$d) query \"%4$s\" failed, returning \"%5$s\""
-msgstr ""
-
-#. translators: 1: ERROR tag 2: path and file name
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_load_template file \"%2$s\" not found."
-msgstr ""
-
-#. translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string
-#, php-format
-msgctxt "error_log"
-msgid "%1$s: mla_load_template file \"%2$s\" bad source type \"%3$s\"."
 msgstr ""
 
 #. translators: 1: ERROR tag 2: template excerpt

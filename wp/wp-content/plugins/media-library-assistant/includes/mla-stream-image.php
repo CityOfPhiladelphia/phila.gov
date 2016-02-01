@@ -9,7 +9,7 @@
 /*
  * Process mla_viewer image stream requests
  */
-//@ini_set('error_log','C:\Program Files (x86)\Apache Software Foundation\Apache2.2\logs\php-errors.log');
+//@ini_set('error_log','C:\Program Files (x86)\Apache Software Foundation\Apache24\logs\php-errors.log');
 
 require_once( pathinfo( __FILE__, PATHINFO_DIRNAME ) . '/class-mla-image-processor.php' );
 

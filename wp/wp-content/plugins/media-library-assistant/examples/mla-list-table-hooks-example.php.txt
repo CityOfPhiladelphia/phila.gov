@@ -829,9 +829,9 @@ class MLAListTableHooksExample {
 	 * @param	string	$which		'top' or 'bottom'.
 	 */
 	public static function mla_list_table_extranav_actions( $actions, $which ) {
-		error_log( "MLAListTableHooksExample::mla_list_table_extranav_actions( {$which} ) $actions = " . var_export( $actions, true ), 0 );
+		//error_log( "MLAListTableHooksExample::mla_list_table_extranav_actions( {$which} ) $actions = " . var_export( $actions, true ), 0 );
 		return $actions;
-	} // mla_list_table_get_bulk_actions
+	} // mla_list_table_extranav_actions
 
 	/**
 	 * Supply a custom MLA_List_Table "extra tablenav" action
@@ -844,10 +844,10 @@ class MLAListTableHooksExample {
 	 * @param	array	$action	extranav action label.
 	 * @param	string	$which	'top' or 'bottom'.
 	 */
-	public static function mla_list_table_extranav_actions( $actions, $which ) {
-		error_log( "MLAListTableHooksExample::mla_list_table_extranav_actions( {$which} ) $actions = " . var_export( $actions, true ), 0 );
+	public static function mla_list_table_extranav_custom_action( $actions, $which ) {
+		//error_log( "MLAListTableHooksExample::mla_list_table_extranav_custom_action( {$which} ) $actions = " . var_export( $actions, true ), 0 );
 		return $actions;
-	} // mla_list_table_get_bulk_actions
+	} // mla_list_table_extranav_custom_action
 
 	/**
 	 * Supply a column value if no column-specific function has been defined
