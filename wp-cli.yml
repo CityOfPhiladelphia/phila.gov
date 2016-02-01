@@ -1,5 +1,1 @@
 path: wp
-skip-plugins:
-  - google-calendar-events
-  - wordpress-importer
-  - simple-301-redirects
