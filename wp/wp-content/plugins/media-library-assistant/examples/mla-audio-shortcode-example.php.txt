@@ -132,6 +132,18 @@ class MLAAudioShortcodeExample {
 			$item_values['link'] = wp_audio_shortcode( $audio_args );
 		}
 
+		/*
+		 * Replace the Spotify Playlist URL with the WordPress [embed] output
+		 * Solution for support topic:
+		 * https://wordpress.org/support/topic/using-wordpress-embeds-with-mla-gallery
+		 * Remove "false && " to activate this feature
+		 */
+		if ( false && isset( $item_values['custom:spotify_playlist'] ) ) {
+			//$item_values['custom:spotify_playlist'] = do_shortcode( '[embed]' . $item_values['custom:spotify_playlist'] . '[/embed]' );
+			$item_values['custom:spotify_playlist'] = apply_filters('the_content', "[embed]" . $item_values['custom:spotify_playlist'] . "[/embed]");
+			$item_values['caption'] = $item_values['custom:spotify_playlist'];
+		}
+		
 		return $item_values;
 	} // mla_gallery_item_values_filter
 } // Class MLAAudioShortcodeExample

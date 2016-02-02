@@ -51,6 +51,15 @@ class MLACore {
 	CONST MLA_DEBUG_CATEGORY_LANGUAGE = 0x00000004;
 
 	/**
+	 * Constant to log Ghostscript/Imagick activity
+	 *
+	 * @since 2.23
+	 *
+	 * @var	integer
+	 */
+	CONST MLA_DEBUG_CATEGORY_THUMBNAIL = 0x00000008;
+
+	/**
 	 * Slug for adding plugin submenu
 	 *
 	 * @since 0.1
@@ -364,6 +373,11 @@ class MLACore {
 	const MLA_MEDIA_MODAL_ORDER = 'media_modal_order';
 
 	/**
+	 * Provides a unique name for the Media Manager Force Image Default Setings option
+	 */
+	const MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS = 'media_modal_apply_display_settings';
+
+	/**
 	 * Provides a unique name for the Post MIME Types option
 	 */
 	const MLA_POST_MIME_TYPES = 'post_mime_types';
@@ -479,6 +493,119 @@ class MLACore {
 
 		if ( 'disabled' == MLACore::mla_get_option( MLACore::MLA_MLA_GALLERY_IN_TUNING ) ) {
 			MLACore::$process_mla_gallery_in = false;
+		}
+	}
+
+	/**
+	 * Load a plugin text domain and alternate debug file
+	 * 
+	 * The "add_action" for this function is in mla-plugin-loader.php, because the "initialize"
+	 * function above doesn't run in time.
+	 * Defined as public because it's an action.
+	 *
+	 * @since 1.60
+	 *
+	 * @return	void
+	 */
+	public static function mla_plugins_loaded_action(){
+		$text_domain = 'media-library-assistant';
+		$locale = apply_filters( 'mla_plugin_locale', get_locale(), $text_domain );
+
+		/*
+		 * To override the plugin's translation files for one, some or all strings,
+		 * create a sub-directory named 'media-library-assistant' in the WordPress
+		 * WP_LANG_DIR (e.g., /wp-content/languages) directory.
+		 */
+		load_textdomain( $text_domain, trailingslashit( WP_LANG_DIR ) . $text_domain . '/' . $text_domain . '-' . $locale . '.mo' );
+		load_plugin_textdomain( $text_domain, false, MLA_PLUGIN_BASENAME . '/languages/' );
+
+		/*
+		 * This must/will be repeated in class-mla-tests.php to reflect translations
+		 */
+		MLACore::mla_localize_option_definitions_array();
+
+		/*
+		 * Do not process debug options unless MLA_DEBUG_LEVEL is set in wp-config.php
+		 */
+		if ( MLA_DEBUG_LEVEL & 1 ) {
+			/*
+			 * Set up alternate MLA debug log file
+			 */
+			$error_log_name = MLACore::mla_get_option( MLACore::MLA_DEBUG_FILE ); 
+			if ( ! empty( $error_log_name ) ) {
+				MLACore::mla_debug_file( $error_log_name );
+
+				/*
+				 * Override PHP error_log file
+				 */
+				if ( 'checked' === MLACore::mla_get_option( MLACore::MLA_DEBUG_REPLACE_PHP_LOG ) ) {
+					$result = ini_set('error_log', WP_CONTENT_DIR . self::$mla_debug_file );
+				}
+			}
+
+			/*
+			 * PHP error_reporting must be done later in class-mla-tests.php
+			 * Override MLA debug levels
+			 */
+			MLACore::$mla_debug_level = MLA_DEBUG_LEVEL;
+			$mla_reporting = trim( MLACore::mla_get_option( MLACore::MLA_DEBUG_REPLACE_LEVEL ) );
+			if ( ! empty( $mla_reporting ) ) {
+				MLACore::$mla_debug_level = ( 0 + $mla_reporting ) | 1;
+			}
+		} // MLA_DEBUG_LEVEL & 1
+		
+		/*
+		 * Override the cookie-based Attachment Display Settings, if desired
+		 * consider ignoring 'action' => 'send-attachment-to-editor',
+		 */
+		if ( 'checked' === MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS ) ) {
+			$image_default_align = get_option( 'image_default_align' );
+			$image_default_link_type = get_option( 'image_default_link_type' );
+			$image_default_size = get_option( 'image_default_size' );
+			
+			if ( ! ( empty( $image_default_align ) && empty( $image_default_link_type ) && empty( $image_default_size ) ) ) {
+				$user_id = get_current_user_id();
+				$not_super_admin = ! (is_super_admin() && ! is_user_member_of_blog() );
+	
+				if ( $user_id && $not_super_admin ) {
+					if ( isset( $_COOKIE['wp-settings-' . $user_id] ) ) {
+						$cookie = preg_replace( '/[^A-Za-z0-9=&_]/', '', $_COOKIE['wp-settings-' . $user_id] );
+					} else {
+						$cookie = (string) get_user_option( 'user-settings', $user_id );
+					}
+
+					parse_str( $cookie, $cookie_array );
+					$cookie_align = isset( $cookie_array['align'] ) ? $cookie_array['align'] : '';
+					$cookie_urlbutton = isset( $cookie_array['urlbutton'] ) ? $cookie_array['urlbutton'] : '';
+					$cookie_imgsize = isset( $cookie_array['imgsize'] ) ? $cookie_array['imgsize'] : '';
+					$changed = false;
+
+					if ( ( ! empty( $image_default_align ) ) && ( $cookie_align !== $image_default_align ) ) {
+						$cookie_array['align'] = $image_default_align;
+						$changed = true;
+					}
+
+					if ( ( ! empty( $image_default_link_type ) ) && ( $cookie_urlbutton !== $image_default_link_type ) ) {
+						$cookie_array['urlbutton'] = $image_default_link_type;
+						$changed = true;
+					}
+
+					if ( ( ! empty( $image_default_size ) ) && ( $cookie_imgsize !== $image_default_size ) ) {
+						$cookie_array['imgsize'] = $image_default_size;
+						$changed = true;
+					}
+
+					if ( $changed ) {
+						$cookie = http_build_query( $cookie_array, '', '&' );
+						$current = time();
+						$secure = ( 'https' === parse_url( admin_url(), PHP_URL_SCHEME ) );
+						setcookie( 'wp-settings-' . $user_id, $cookie, time() + YEAR_IN_SECONDS, SITECOOKIEPATH, null, $secure );
+						setcookie( 'wp-settings-time-' . $user_id, $current, $current + YEAR_IN_SECONDS, SITECOOKIEPATH, null, $secure );
+						$_COOKIE['wp-settings-' . $user_id] = $cookie;
+						$_COOKIE['wp-settings-time-' . $user_id] = $current;
+					}
+				}
+			}
 		}
 	}
 
@@ -936,6 +1063,13 @@ class MLACore {
 					'name' => __( 'Attachment Display Settings', 'media-library-assistant' ),
 					'type' => 'subheader'),
 
+			self::MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS =>
+				array('tab' => 'general',
+					'name' => __( 'Media Manager Apply Display Settings', 'media-library-assistant' ),
+					'type' => 'checkbox',
+					'std' => 'checked',
+					'help' => __( 'Check this option to always start with the Attachment Display Settings set here,<br>&nbsp;&nbsp;overriding browser-/cookie-based defaults.', 'media-library-assistant' )),
+
 			'image_default_align' =>
 				array('tab' => 'general',
 					'name' => __( 'Alignment', 'media-library-assistant' ),
@@ -1375,7 +1509,7 @@ class MLACore {
 				array('tab' => 'debug',
 					'name' => __( 'Display Limit', 'media-library-assistant' ),
 					'type' => 'text',
-					'std' => '',
+					'std' => '131072',
 					'size' => 5,
 					'help' => __( 'Enter the maximum number of debug log characters to display; enter zero or leave blank for no limit.', 'media-library-assistant' )),
 
@@ -2393,17 +2527,22 @@ class MLACore {
 	public static function admin_columns_support( $storage_models, $cpac ) {
 		require_once( MLA_PLUGIN_PATH . 'includes/class-mla-admin-columns-support.php' );
 		MLACore::$admin_columns_storage_model = new CPAC_Storage_Model_MLA();
-
 		/*
-		 * Put MLA before WP Media Library so is_columns_screen() will work
+		 * Put MLA before/after WP Media Library so is_columns_screen() will work
 		 */
 		$new_models = array();
 		foreach ( $storage_models as $key => $model ) {
 			if ( 'wp-media' == $key ) {
-				$new_models[  MLACore::$admin_columns_storage_model->key ] = MLACore::$admin_columns_storage_model;
+				if ( version_compare( CPAC_VERSION, '2.4.9', '>=' ) ) {
+					$new_models[ $key ] = $model;
+					$new_models[  MLACore::$admin_columns_storage_model->key ] = MLACore::$admin_columns_storage_model;
+				} else {
+					$new_models[  MLACore::$admin_columns_storage_model->key ] = MLACore::$admin_columns_storage_model;
+					$new_models[ $key ] = $model;
+				}
+			} else {
+				$new_models[ $key ] = $model;
 			}
-			
-			$new_models[ $key ] = $model;
 		}
 		
 		/*

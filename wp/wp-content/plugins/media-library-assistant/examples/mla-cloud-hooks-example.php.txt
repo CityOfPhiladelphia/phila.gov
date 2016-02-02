@@ -271,7 +271,7 @@ class MLATagCloudHooksExample {
 	 * @return	array	updated tag objects
 	 */
 	public static function mla_get_terms_query_results_filter( $tag_objects ) {
-		error_log( 'MLATagCloudHooksExample::mla_get_terms_query_results_filter $tag_objects = ' . var_export( $tag_objects, true ), 0 );
+		//error_log( 'MLATagCloudHooksExample::mla_get_terms_query_results_filter $tag_objects = ' . var_export( $tag_objects, true ), 0 );
 
 		return $tag_objects;
 	} // mla_get_terms_query_results_filter

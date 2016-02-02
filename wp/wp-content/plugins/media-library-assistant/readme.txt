@@ -4,7 +4,7 @@ Donate link: http://fairtradejudaica.org/make-a-difference/donate/
 Tags: attachment, attachments, documents, gallery, image, images, media, library, media library, tag cloud, media-tags, media tags, tags, media categories, categories, IPTC, EXIF, XMP, GPS, PDF, meta, metadata, photo, photos, photograph, photographs, photoblog, photo albums, lightroom, photoshop, MIME, mime-type, icon, upload, file extensions, WPML, Polylang, multilanguage, multilingual, localization
 Requires at least: 3.5.0
 Tested up to: 4.4
-Stable tag: 2.22
+Stable tag: 2.24
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,24 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 2.24 =
+* Fix: Corrected the MLA error that suppressed Admin Columns functions for Posts, Pages, Custom Post Types, Users and Comments.
+
+= 2.23 =
+* New: For the `[mla_gallery]` shortcode, **Posts, Pages and custom Post Types can be included in the gallery display**. See the [Other Notes section](http://wordpress.org/extend/plugins/media-library-assistant/other_notes/ "Click here, then scroll down") section or the Settings/Media Library Assistant Documentation tab for more information.
+* New: For the `[mla_gallery]` shortcode, **a new `mla_alt_ids_value` parameter** lets you substitute item-specific values such as the file URL for the default item ID. This expands the uses of the `mla_alt_shortcode` parameter.
+* New: For the Media Manager Modal (popup) Window, site-wide defaults for the Display Settings can be set on the Settings/Media Library Assistant General tab. A checkbox option is provided to disable this feature and use the WordPress cookie-based default scheme.
+* New: For IPTC/EXIF mapping, **XMP and PDF metadata is used by default when EXIF metadata is not available**. This means that EXIF rules/values like "Keywords" are found in XMP/PDF metadata without resorting to complex Content Templates.
+* New: For the Media/Assistant **Quick Edit area, simple array values** in custom fields are now supported when Option: array is set in the mapping rule.
+* New: For the Settings/Media Library Assistant Debug tab, the Display Limit default value is now 131072 (128k) characters. This prevents very large error log files from causing page load problems.
+* New: A new example plugin, `/media-library-assistant/examples/mla-random-galleries-example.php.txt`, has been added to illustrate a high-performance SQL-based alternative to WP_Query taxonomy queries for selecting random images assigned to an `attachment_category` term. It is particularly helpful when many `[mla_gallery]` shortcodes of this type occur on a single post/page.
+* Fix: **Fatal errors caused by the Admin Columns 2.4.9 update** have been resolved.
+* Fix: For the Settings/Media Library Assistant Uploads tab, the icon size calculation no longer requires an `http:` request.
+* Fix: For the Settings/Media Library Assistant tabs, only options with non-default values are stored to the options table. This reduces the number of entries added to the table by MLA.
+* Fix: For `[mla_tag_cloud]`, `mla_nolink_text` now works as documented.
+* Fix: EXIF and XMP parsing has been improved for images processed by very old PhotoShop and WINXP programs, e.g., "Keywords" assignment.
+* Fix: When the "Upload Files" tab of the "Insert Media" Modal (popup) Window is used to add items, the MLA enhanced taxonomy metaboxes have been restored to the ATTACHMENT DETAILS pane.
+
 = 2.22 =
 * New: Support for the **Admin Columns** plugin has been added. You can use Admin Columns to re-order, re-size and/or remove columns from the Media/Assistant submenu table. You can also add any of the Admin Columns "custom" columns to the table. See the [Other Notes section](http://wordpress.org/extend/plugins/media-library-assistant/other_notes/ "Click here, then scroll down") section or the Settings/Media Library Assistant Documentation tab for more information.
 * New: For `[mla_gallery]` and `[mla_tag_cloud]`, **support for the "enclosing shortcode" syntax** lets you spread shortcodes over multiple lines and avoids many of the problems caused by WordPress shortcode-parsing issues.
@@ -188,41 +206,9 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 * Fix: PHP7 changes no longer cause fatal errors rendering the Settings/Media Library Assistant General tab.
 * Fix: Support for WPML and Polylang DOING_AJAX handlers has been restored, e.g. Polylang Quick Edit and WPML flat term autocomplete.
 
-= 2.21 =
-* Fix: A defect in the default "Orderby" setting has been fixed. This defect caused "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem.
-* Fix: The "Featured Image" support for non-image Media Library items now respects the `size=none` parameter to substitute a text value for the thumbnail image.
-
-= 2.20 =
-* New: The plugin code has been re-structured for **reduced memory requirements and loading time**. MLA memory for front-end posts/pages without MLA shortcodes is 85% less. Front end posts/pages with MLA shortcodes are reduced 42%. MLA ajax functions are also significantly reduced.
-
-* New: Some of the **default plugin settings have been changed.** The "where-used" options are disabled, the Media/Assistant submenu table sort order shows the most recent item additions first and the default table display includes the ID/Parent, Title/Name, ALT Text, Caption, Description, Date and Attached To columns. None of these changes affect your install if you have made any choices of your own already.
-
-* New: When WPML or Polylang is active, a **"Term Replication"** option has been added to the Settings/Media Library Assistant Language tab. When checked, the option causes new terms added by IPTC/EXIF Taxonomy term mapping rules to be added to all active languages. If not checked, new values are only added to the current language for the operation.
-* New: Nic Mare has contributed a **partial German translation**; thanks Nic!
-* New: When WPML is active a dropdown control is added to the Bulk Edit on Upload form so the default "make new media available in all languages" option can be changed on an upload-by-upload basis.
-* New: When WPML is active but WPML Media is not installed/active, a warning message now appears on the Settings/Media lLibrary Assistant Language tab.
-* New: A new `/media-library-assistant/examples/mla-unattached-fixit.php.txt` example plugin has been added to demonstrate trashing/deleting unattached Media Library items.
-* New: A new `/media-library-assistant/examples/mla-dynamic-references-example.php.txt` example plugin has been added to demonstrate dynamic "where-used" reporting that populates one or more custom fields.
-* New: A new `/media-library-assistant/examples/mla-insert-fixit.php.txt` example plugin has been added to demonstrate synchronizing Media Library values to and from post/page inserted images.
-* New: Three new filters have been added to support adding fields to the Bulk Edit on Upload area. Examples of the new filters have been added to the `/examples/mla-list-table-hooks-example.php.txt` file.
-* New: A new filter, "mla_mapping_new_text", has been added to simplify changing values for mapping rules. An examples of the new filter has been added to the `/examples/mla-mapping-hooks-example.php.txt` file.
-* New: The '"bulk edit" area initially open' option allows the "Bulk Edit on Upload" area to be automatically opened as soon as the Media/Add New screen appears.
-* New: The WordPress Attachment Display Settings are now saved/restored in the Export/Import All Settings operations.
-* Fix: WHen WPML or Polylang is active, PHP Notice messages are no longer generated when media items are updated from the Media/Edit Media screen.
-* Fix: IPTC/EXIF taxonomy term mapping rules are only displayed and processed for taxonomies that are marked for MLA support on the Settings/Media Library Assistant General tab.
-* Fix: For WordPress 4.3 and higher, the "Bulk Edit on Upload" button once again appears when the "bulk edit area on top" option is selected.
-* Fix: When WPML or Polylang is active, taxonomy terms added by IPTC/EXIF Taxonomy term mapping rules in the default language are not assigned to items in other languages.
-* Fix: When WPML is active, attachment metadata is copied to and mapping rules are run on all duplicate items created by "make new media available in all languages" option.
-* Fix: When WPML is active, IPTC/EXIF and Custom Field mapping rules are run against all items, regardless of the current language setting.
-* Fix: When WPML is active, updates from the Bulk Edit on Upload form are copied to the duplicate items created by "make new media available in all languages" option.
-* Fix: A failure to update ALT Text values in the Bulk Edit on Upload area has been corrected.
-* Fix: A conflict with Visual Composer use of Media Manager "Upload Files" has been resolved.
-* Fix: When WPML is active but WPML Media is not installed/active, taxonomy term assignment in the Quick Edit and Bulk Edit areas has been fixed.
-* Fix: Parsing enhancements return more and cleaner XMP data from some PDF documents.
-* Fix: Damaged XMP data in an item no longer causes PHP Warning messages. In addition, NULL characters in XMP data are changed to printable zero characters ('0') to allow some damage to be repaired.
-* Fix: Sorting the Media/Assistant submenu table by the ALT Text column has been fixed.
-
-= 2.00 - 2.15 =
+= 2.00 - 2.21 =
+* 2.21 - Fix for "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem. One other fix for "Featured Image" handling of size=none.
+* 2.20 - Reduced memory/time footprint, default setting changes, WPML/Polylang IPTC/EXIF mapping fixes, partial German translation. Nine other enhancements, thirteen fixes.
 * 2.15 - Bulk Edit Reset button, Debug tab enhancements, Quick Edit thumbnails, new examples and hooks. Sixteen enhancements in all, sixteen fixes.
 * 2.14 - Final WordPress 4.3 updates. New Debug tab features. Updated Dutch translation. Four other fixes.
 * 2.13 - WordPress 4.3 updates. PDF Thumbnail image generator. Wildcard keyword/term searching. Several WPML and Polylang fixes. Dutch and Swedish translations! Twelve other enhancements, twelve other fixes.
@@ -282,8 +268,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 2.22 =
-Support for the "Admin Columns" plugin, PHP7 and "enclosing shortcode" syntax. Better performance, new filters and examples. Eight enhancements in all, eight fixes.
+= 2.24 =
+Corrects the MLA error that suppressed Admin Columns functions for Posts, Pages, Custom Post Types, Users and Comments.
 
 == Other Notes ==
 
@@ -312,6 +298,28 @@ When Admin Columns is present you will see a new "Edit Columns" button just abov
 You can find detailed configuration instructions at the [Admin Columns web site Documentation page](http://admincolumns.com/documentation/ "Admin Columns Documentation"). 
 
 When you have completed your configuration changes, click "Update Media Library Assistant" in the Store Settings metabox at the top-right of the screen. You can also click "Restore Media Library Assistant columns" to remove your changes and go back to the MLA default settings. Click the "View" button at the right of the Media Library Assistant heading to return to the Media/Assistant submenu screen and see your changes. 
+
+<h4>*NEW* [mla_gallery] Post Type, Post Status support</h4>
+
+For compatibility with the WordPress <code>[gallery]</code> shortcode, these parameters default to <code>post_type=attachment</code>, <code>post_status=inherit</code>. You can override the defaults to, for example, display items in the trash (<code>post_status=trash</code>). 
+
+You can change the <code>post_type</code> parameter to compose a "gallery" of WordPress objects such as posts, pages and custom post types. For example, to display a gallery of the published posts in a particular category you can code something like: 
+
+<code>[mla_gallery category=some-term post_type=post post_status=publish post_mime_type=all]</code>
+
+Note that you must also change the <code>post_status</code> and <code>post_mime_type</code> because the default values for those parameters are set for Media Library image items. 
+
+For posts, pages and custom post types some of the other data values are used in slightly different ways: 
+
+* Title - Taken from the Title of the item. 
+* Caption - Taken from the Excerpt of the item. 
+* ALT Text - Not used. 
+* Description - Taken from the Content of the item. 
+* Thumbnail - Taken from the Featured Image of the item, if set. You can use the <code>size</code> parameter to display any of the available image sizes. If no Featured Image is set, the Title will be used instead. 
+* Page Link (<code>link=page</code>) - Taken from the "guid", or "short form" of the link to the item. 
+* File Link (<code>link=file</code>) - Taken from the permalink to the item. 
+
+You can find all the parameter values and more examples in the WP_Query class reference Type Parameters and Status Parameters sections. 
 
 <h4>WPML &amp; Polylang Multilingual Support; the MLA Language Tab</h4>
 

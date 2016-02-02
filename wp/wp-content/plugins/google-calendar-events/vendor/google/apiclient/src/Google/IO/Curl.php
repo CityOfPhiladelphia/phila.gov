@@ -109,6 +109,7 @@ class Google_IO_Curl extends Google_IO_Abstract
     );
 
     $response = curl_exec($curl);
+
     if ($response === false) {
       $error = curl_error($curl);
       $code = curl_errno($curl);

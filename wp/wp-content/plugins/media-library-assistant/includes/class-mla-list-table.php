@@ -803,6 +803,16 @@ class MLA_List_Table extends WP_List_Table {
 		$custom_fields = array_merge( $custom_fields, MLACore::mla_custom_field_support( 'bulk_edit' ) );
 		foreach ( $custom_fields as $slug => $details ) {
 			$value = get_metadata( 'post', $item->ID, $details['name'], true );
+
+			if ( is_array( $value ) ) {
+				if ( 'array' == $details['option'] ) {
+					$value = implode( ',', $value );
+				} else {
+					// '(Array)' indicates an existing array value in the field, which we preserve
+					$value = '(Array)';
+				}
+			}
+			
 			$inline_data .= '	<div class="' . $slug . '">' . esc_html( $value ) . "</div>\r\n";
 		}
 

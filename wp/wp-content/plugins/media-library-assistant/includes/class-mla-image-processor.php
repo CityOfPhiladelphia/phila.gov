@@ -52,7 +52,7 @@ class MLAImageProcessor {
 				} else {
 					$temp = '/tmp/';
 					if ( false == @is_dir( $temp ) ) {
-						self::_mla_debug_add( 'Temp directory failure' );
+						self::_mla_debug_add( 'MLAImageProcessor::_get_temp_file Temp directory failure' );
 						return false;
 					}
 				}
@@ -65,7 +65,7 @@ class MLAImageProcessor {
 		$path = $temp . uniqid( mt_rand() ) . $extension;
 		$f = @fopen( $path, 'a' );
 		if ( $f === false ) {
-			self::_mla_debug_add( 'Temp file failure' );
+			self::_mla_debug_add( 'MLAImageProcessor::_get_temp_file Temp file failure' );
 			return false;
 		}
 
@@ -101,13 +101,13 @@ class MLAImageProcessor {
 		 * Look for exec() - from http://stackoverflow.com/a/12980534/866618
 		 */
 		if ( ini_get('safe_mode') ) {
-			self::_mla_debug_add( 'safe_mode failure' );
+			self::_mla_debug_add( 'MLAImageProcessor::_ghostscript_convert safe_mode failure' );
 			return false;
 		}
 
 		$blacklist = preg_split( '/,\s*/', ini_get('disable_functions') . ',' . ini_get('suhosin.executor.func.blacklist') );
 		if ( in_array('exec', $blacklist) ) {
-			self::_mla_debug_add( 'blacklist failure' );
+			self::_mla_debug_add( 'MLAImageProcessor::_ghostscript_convert blacklist failure' );
 			return false;
 		}
 
@@ -172,7 +172,8 @@ class MLAImageProcessor {
 				$ghostscript_path = NULL;
 			}
 		} while ( false );
-
+		self::_mla_debug_add( 'MLAImageProcessor::_ghostscript_convert ghostscript_path = ' . var_export( $ghostscript_path, true ) );
+		
 		if ( isset( $ghostscript_path ) ) {
 			if ( 'image/jpeg' == $output_type ) {
 				$device = 'jpeg';
@@ -208,7 +209,7 @@ class MLAImageProcessor {
 			return true;
 		} // found Ghostscript
 
-		self::_mla_debug_add( 'Ghostscript detection failure' );
+		self::_mla_debug_add( 'MLAImageProcessor::_ghostscript_convert Ghostscript detection failure' );
 		return false;
 	} // _ghostscript_convert
 
@@ -278,7 +279,7 @@ class MLAImageProcessor {
 	 */
 	private static function _mla_debug_add( $message ) {
 		if ( self::$mla_debug ) {
-			if ( class_exists( 'MLA' ) ) {
+			if ( class_exists( 'MLACore' ) ) {
 				MLACore::mla_debug_add( $message );
 			} else {
 				error_log( $message, 0);
@@ -442,6 +443,7 @@ class MLAImageProcessor {
 	 * @return	void	echos image content and calls exit();
 	 */
 	public static function mla_process_stream_image() {
+		self::_mla_debug_add( 'MLAImageProcessor::mla_process_stream_image REQUEST = ' . var_export( $_REQUEST, true ) );
 		if ( ! class_exists( 'Imagick' ) ) {
 			self::_mla_die( 'Imagick not installed', __LINE__, 500 );
 		}
@@ -479,6 +481,7 @@ class MLAImageProcessor {
 			$mutex = new MLAMutex();
 			$mutex->init( 1, $temp_file );
 			$mutex->acquire();
+			self::_mla_debug_add( 'MLAImageProcessor::mla_process_stream_image begin file = ' . var_export( $file, true ) );
 		}
 
 		/*

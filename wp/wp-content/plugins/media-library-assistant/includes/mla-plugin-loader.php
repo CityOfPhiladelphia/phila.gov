@@ -65,6 +65,7 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	 * Minimum support functions required by all other components
 	 */
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-core.php' );
+	add_action( 'plugins_loaded', 'MLACore::mla_plugins_loaded_action', 0x7FFFFFFF );
 	add_action( 'init', 'MLACore::initialize', 0x7FFFFFFF );
 
 	/*
@@ -77,6 +78,12 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	}
 
 	if( defined('DOING_AJAX') && DOING_AJAX ) {
+		/*
+		 * Ajax handlers
+		 */
+		require_once( MLA_PLUGIN_PATH . 'includes/class-mla-ajax.php' );
+		add_action( 'init', 'MLA_Ajax::initialize', 0x7FFFFFFF );
+
 		/*
 		 * Quick and Bulk Edit requires full support for content templates, etc.
 		 * IPTC/EXIF and Custom Field mapping require full support, too.
@@ -101,12 +108,6 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-data-query.php' );
 			add_action( 'init', 'MLAQuery::initialize', 0x7FFFFFFF );
 			
-			/*
-			 * Ajax handlers
-			 */
-			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-ajax.php' );
-			add_action( 'init', 'MLA_Ajax::initialize', 0x7FFFFFFF );
-
 			/*
 			 * Other plugins such as "No Cache AJAX Widgets" might need shortcodes
 			 */
@@ -150,7 +151,6 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	 * Main program
 	 */
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-main.php' );
-	add_action( 'plugins_loaded', 'MLA::mla_plugins_loaded_action', 0x7FFFFFFF );
 	add_action( 'init', 'MLA::initialize', 0x7FFFFFFF );
 
 	/*

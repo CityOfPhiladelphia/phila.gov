@@ -705,7 +705,7 @@ For simple queries, enter the custom taxonomy name and the term(s) that must be 
 <li><code>[mla_gallery attachment_category='separate-category,another-category']</code></li>
 </ul>
 <p>
-Note that you must use the name/slug strings for taxonomy and terms, not the "title" strings. If you are using the "Att. Tag" taxonomy built in to MLA then your shortcode should be something like:
+Note that you should use the name/slug strings for taxonomy and terms, not the "title" strings. You can often use the "title" strings if they can be "sanitized" to the slug, but this is not always reliable. If you are using the "Att. Tag" taxonomy built in to MLA then your shortcode should be something like:
 </p>
 <ul class="mla_settings">
 <li><code>[mla_gallery attachment_tag=artisan post_parent=all]</code></li>
@@ -796,12 +796,56 @@ For compatibility with the WordPress <code>[gallery]</code> shortcode, this para
 </p>
 <h4>Post Type, Post Status</h4>
 <p>
-For compatibility with the WordPress <code>[gallery]</code> shortcode, these parameters default to <code>post_type=attachment</code>, <code>post_status=inherit</code>. You can override the defaults to, for example, display items in the trash (<code>post_status=trash</code>). I'm not sure why you'd want to override "post_type", but you are welcome to experiment and let me know what you find.
+For compatibility with the WordPress <code>[gallery]</code> shortcode, these parameters default to <code>post_type=attachment</code>, <code>post_status=inherit</code>. You can override the defaults to, for example, display items in the trash (<code>post_status=trash</code>).
+</p>
+<p>
+You can change the <code>post_type</code> parameter to compose a "gallery" of WordPress objects such as posts, pages and custom post types. For example, to display a gallery of the published posts in a particular category you can code something like:
+<p>
+<code>[mla_gallery category=some-term post_type=post post_status=publish post_mime_type=all]</code>
+</p>
+Note that you must also change the <code>post_status</code> and <code>post_mime_type</code> because the default values for those parameters are set for Media Library image items.
+</p>
+<p>
+For posts, pages and custom post types some of the other data values are used in slightly different ways:
+</p>
+<table>
+<tr>
+<td class="mla-doc-table-label">Title</td>
+<td>Taken from the Title of the item.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">Caption</td>
+<td>Taken from the Excerpt of the item.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">ALT Text</td>
+<td>Not used.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">Description</td>
+<td>Taken from the Content of the item.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">Thumbnail</td>
+<td>Taken from the Featured Image of the item, if set. You can use the <code>size</code> parameter to display any of the available image sizes. If no Featured Image is set, the Title will be used instead.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">Page Link (link=page)</td>
+<td valign="top">Taken from the "guid", or "short form" of the link to the item.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">File Link (link=file)</td>
+<td valign="top">Taken from the permalink to the item.</td>
+</tr>
+</table>
+<p>
+You can find all the parameter values and more examples in the WP_Query class reference <a href="https://codex.wordpress.org/Class_Reference/WP_Query#Type_Parameters" title="WordPress Codex link" target="_blank">Type Parameters</a> and <a href="https://codex.wordpress.org/Class_Reference/WP_Query#Status_Parameters" title="WordPress Codex link" target="_blank">Status Parameters</a> sections.
 <a name="pagination_parameters"></a>
 </p>
 <h4>Pagination Parameters</h4>
 <p>
 Pagination parameters let you divide your <code>[mla_gallery]</code> display into two or more pages when the display includes a large number of items. These parameters work with MLA's <a href="#mla_output_parameter"><strong>Support for Alternative Gallery Output, e.g., Pagination</strong></a> to make it easy to construct multi-page galleries without resorting to PHP templates and code in your theme.
+</p>
 <table>
 <tr>
 <td class="mla-doc-table-label">nopaging</td>
@@ -2334,6 +2378,10 @@ The <code>[mla_gallery]</code> shortcode can be used in combination with other g
 <td class="mla-doc-table-label">mla_alt_ids_name</td>
 <td>(optional, default "ids") the name of the parameter used to pass a list of attachment ID values to the alternate shortcode</td>
 </tr>
+<tr>
+<td class="mla-doc-table-label">mla_alt_ids_value</td>
+<td>(optional) an item-specific substitution parameter, Content Template or other alternative for the attachment ID value(s) passed to the alternate shortcode</td>
+</tr>
 </table>
 <p>
 For example, if you want to select images using the MLA Att. Category taxonomy but want to display a "Tiled Mosaic" gallery, you can code:
@@ -2365,6 +2413,12 @@ Here, <code>[mla_gallery]</code> selects the images with an Att. Tag of "fauna" 
 <p>
 Photonic recognizes the <code>type=default</code> parameter and takes over, using the other three parameters to format its results. This example is a less convenient but more flexible alternative to the native Photonic support built-in to <code>[mla_gallery]</code> (see next section).
 </p>
+<p>
+The next example selects one PDF document at random and uses the <a href="https://wordpress.org/plugins/pdf-embedder/" title="PDF Embedder plugin" target="_blank">PDF Embedder</a> plugin to display the document content. The <code>mla_alt_ids_name</code> and <code>mla_alt_ids_value</code> parameters change the "ids" and attachment ID defaults to the "url" and file URL values expected by the <code>[pdf-embedder]</code> shortcode.
+</p>
+<code>
+[mla_gallery post_mime_type="application/pdf" orderby=rand numberposts=1 mla_alt_shortcode=pdf-embedder mla_alt_ids_name=url mla_alt_ids_value="{+filelink_url+}"]
+</code>
 <p>
 You can also use the "enclosing shortcode" form if the alternate shortcode, such as Fullscreen Galleria's "fsg_link", requires it. You would code this form as:
 </p>

@@ -53,7 +53,7 @@ class MC4WP_Admin {
 		add_action( 'current_screen', array( $this, 'customize_admin_texts' ) );
 		add_action( 'wp_dashboard_setup', array( $this, 'register_dashboard_widgets' ) );
 		add_action( 'mc4wp_admin_empty_lists_cache', array( $this, 'renew_lists_cache' ) );
-
+		add_action( 'mc4wp_admin_empty_debug_log', array( $this, 'empty_debug_log' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 
 		$this->ads->add_hooks();
@@ -84,7 +84,7 @@ class MC4WP_Admin {
 	public function listen_for_actions() {
 
 		// listen for any action (if user is authorised)
-		if( ! current_user_can( 'manage_options' ) || ! isset( $_REQUEST['_mc4wp_action'] ) ) {
+		if( ! $this->is_user_authorized() || ! isset( $_REQUEST['_mc4wp_action'] ) ) {
 			return false;
 		}
 
@@ -196,20 +196,29 @@ class MC4WP_Admin {
 
 		$current = mc4wp_get_options();
 
-		// Toggle usage tracking
-		if( isset( $settings['allow_usage_tracking'] ) ) {
-			MC4WP_Usage_Tracking::instance()->toggle( (bool) $settings['allow_usage_tracking'] );
+		// merge with current settings to allow passing partial arrays to this method
+		$settings = array_merge( $current, $settings );
+
+		// toggle usage tracking
+		if( $settings['allow_usage_tracking'] !== $current['allow_usage_tracking'] ) {
+			MC4WP_Usage_Tracking::instance()->toggle( $settings['allow_usage_tracking'] );
 		}
 
-		// Sanitize API key & empty cache when API key changed
-		if( isset( $settings['api_key'] ) ) {
+		// Sanitize API key
+		$settings['api_key'] = sanitize_text_field( $settings['api_key'] );
 
-			$settings['api_key'] = sanitize_text_field( $settings['api_key'] );
-
-			if ( $settings['api_key'] !== $current['api_key'] ) {
-				$this->mailchimp->empty_cache();
-			}
+		// if API key changed, empty MailChimp cache
+		if ( $settings['api_key'] !== $current['api_key'] ) {
+			$this->mailchimp->empty_cache();
 		}
+
+		/**
+		 * Runs right before general settings are saved.
+		 *
+		 * @param array $settings The updated settings array
+		 * @param array $current The old settings array
+		 */
+		do_action( 'mc4wp_save_settings', $settings, $current );
 
 		return $settings;
 	}
@@ -325,6 +334,13 @@ class MC4WP_Admin {
 				'slug' => '',
 				'callback' => array( $this, 'show_generals_setting_page' ),
 				'position' => 0
+			),
+			'other' => array(
+				'title' => __( 'Other Settings', 'mailchimp-for-wp' ),
+				'text' => __( 'Other', 'mailchimp-for-wp' ),
+				'slug' => 'other',
+				'callback' => array( $this, 'show_other_setting_page' ),
+				'position' => 90
 			)
 		);
 
@@ -381,14 +397,23 @@ class MC4WP_Admin {
 	}
 
 	/**
-	 * Show the API settings page
+	 * Show the API Settings page
 	 */
 	public function show_generals_setting_page() {
 		$opts = mc4wp_get_options();
 		$connected = ( mc4wp('api')->is_connected() );
 		$lists = $this->mailchimp->get_lists();
-
 		require MC4WP_PLUGIN_DIR . 'includes/views/general-settings.php';
+	}
+
+	/**
+	 * Show the Other Settings page
+	 */
+	public function show_other_setting_page() {
+		$opts = mc4wp_get_options();
+		$log = $this->get_log();
+		$log_reader = new MC4WP_Debug_Log_Reader( $log->file );
+		require MC4WP_PLUGIN_DIR . 'includes/views/other-settings.php';
 	}
 
 	/**
@@ -401,6 +426,23 @@ class MC4WP_Admin {
 		$pos_a = isset( $a['position'] ) ? $a['position'] : 80;
 		$pos_b = isset( $b['position'] ) ? $b['position'] : 90;
 		return $pos_a < $pos_b ? -1 : 1;
+	}
+
+	/**
+	 * Empties the log file
+	 */
+	public function empty_debug_log() {
+		$log = $this->get_log();
+		file_put_contents( $log->file, '' );
+
+		$this->messages->flash( __( 'Log successfully emptied.', 'mailchimp-for-wp' ) );
+	}
+
+	/**
+	 * @return MC4WP_Debug_Log
+	 */
+	protected function get_log() {
+		return mc4wp('log');
 	}
 
 }

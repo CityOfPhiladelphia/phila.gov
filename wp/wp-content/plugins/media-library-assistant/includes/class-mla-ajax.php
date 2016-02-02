@@ -31,8 +31,7 @@ class MLA_Ajax {
 	 * @since 2.20
 	 */
 	public static function mla_admin_init_action( ) {
-//error_log( 'DEBUG: MLA_Ajax::mla_admin_init_action() $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
-
+		//error_log( __LINE__ . ' DEBUG: MLA_Ajax::mla_admin_init_action $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
 		/*
 		 * If there's no action variable, we have nothing more to do
 		 */
