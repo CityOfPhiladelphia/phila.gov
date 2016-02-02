@@ -1,4 +1,4 @@
-.env
+.env*
 .vagrant
 wp/readme.*
 wp/wp-config.php
