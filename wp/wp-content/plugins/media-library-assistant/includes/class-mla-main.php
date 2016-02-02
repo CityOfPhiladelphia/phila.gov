@@ -29,7 +29,7 @@ class MLA {
 	 *
 	 * @var	string
 	 */
-	const CURRENT_MLA_VERSION = '2.22';
+	const CURRENT_MLA_VERSION = '2.24';
 
 	/**
 	 * Current date for Development Version, empty for production versions
@@ -213,65 +213,6 @@ class MLA {
 		add_action( 'admin_menu', 'MLA::mla_admin_menu_action' );
 		add_filter( 'set-screen-option', 'MLA::mla_set_screen_option_filter', 10, 3 ); // $status, $option, $value
 		add_filter( 'screen_options_show_screen', 'MLA::mla_screen_options_show_screen_filter', 10, 2 ); // $show_screen, $this
-	}
-
-	/**
-	 * Load a plugin text domain and alternate debug file
-	 * 
-	 * The "add_action" for this function is in mla-plugin-loader.php, because the "initialize"
-	 * function above doesn't run in time.
-	 * Defined as public because it's an action.
-	 *
-	 * @since 1.60
-	 *
-	 * @return	void
-	 */
-	public static function mla_plugins_loaded_action(){
-		$text_domain = 'media-library-assistant';
-		$locale = apply_filters( 'mla_plugin_locale', get_locale(), $text_domain );
-
-		/*
-		 * To override the plugin's translation files for one, some or all strings,
-		 * create a sub-directory named 'media-library-assistant' in the WordPress
-		 * WP_LANG_DIR (e.g., /wp-content/languages) directory.
-		 */
-		load_textdomain( $text_domain, trailingslashit( WP_LANG_DIR ) . $text_domain . '/' . $text_domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $text_domain, false, MLA_PLUGIN_BASENAME . '/languages/' );
-
-		/*
-		 * This must/will be repeated in class-mla-tests.php to reflect translations
-		 */
-		MLACore::mla_localize_option_definitions_array();
-
-		/*
-		 * Do not process debug options unless MLA_DEBUG_LEVEL is set in wp-config.php
-		 */
-		if ( MLA_DEBUG_LEVEL & 1 ) {
-			/*
-			 * Set up alternate MLA debug log file
-			 */
-			$error_log_name = MLACore::mla_get_option( MLACore::MLA_DEBUG_FILE ); 
-			if ( ! empty( $error_log_name ) ) {
-				MLACore::mla_debug_file( $error_log_name );
-
-				/*
-				 * Override PHP error_log file
-				 */
-				if ( 'checked' === MLACore::mla_get_option( MLACore::MLA_DEBUG_REPLACE_PHP_LOG ) ) {
-					$result = ini_set('error_log', WP_CONTENT_DIR . self::$mla_debug_file );
-				}
-			}
-
-			/*
-			 * PHP error_reporting must be done later in class-mla-tests.php
-			 * Override MLA debug levels
-			 */
-			MLACore::$mla_debug_level = MLA_DEBUG_LEVEL;
-			$mla_reporting = trim( MLACore::mla_get_option( MLACore::MLA_DEBUG_REPLACE_LEVEL ) );
-			if ( ! empty( $mla_reporting ) ) {
-				MLACore::$mla_debug_level = ( 0 + $mla_reporting ) | 1;
-			}
-		} // MLA_DEBUG_LEVEL & 1
 	}
 
 	/**
@@ -1738,6 +1679,13 @@ class MLA {
 			if ( isset( $_REQUEST[ $slug ] ) ) {
 				$value = trim( $_REQUEST[ $slug ] );
 				unset ( $_REQUEST[ $slug ] );
+
+				// '(Array)' indicates an existing array value in the field, which we preserve
+				if ( 'array' == $details['option'] ) {
+					$value = explode( ',', $value );
+				} elseif ( '(Array)' == $value ) {
+					continue;
+				}
 
 				if ( $details['no_null'] && empty( $value ) ) {
 					$custom_fields[ $details['name'] ] = NULL;

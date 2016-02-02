@@ -72,6 +72,7 @@
 <li class="method public "><a href="#mla_load_template" title="mla_load_template :: Load an HTML template from a file"><span class="description">Load an HTML template from a file</span><pre>mla_load_template()</pre></a></li>
 <li class="method public "><a href="#mla_localize_option_definitions_array" title="mla_localize_option_definitions_array :: Localize $mla_option_definitions array"><span class="description">Localize $mla_option_definitions array</span><pre>mla_localize_option_definitions_array()</pre></a></li>
 <li class="method public "><a href="#mla_parse_view_specification" title="mla_parse_view_specification :: Analyze a Library View/Post MIME Type specification, returning an array of the placeholders it contains"><span class="description">Analyze a Library View/Post MIME Type specification, returning an array of the placeholders it contains</span><pre>mla_parse_view_specification()</pre></a></li>
+<li class="method public "><a href="#mla_plugins_loaded_action" title="mla_plugins_loaded_action :: Load a plugin text domain and alternate debug file"><span class="description">Load a plugin text domain and alternate debug file</span><pre>mla_plugins_loaded_action()</pre></a></li>
 <li class="method public "><a href="#mla_prepare_view_query" title="mla_prepare_view_query :: Convert a Library View/Post MIME Type specification to WP_Query parameters"><span class="description">Convert a Library View/Post MIME Type specification to WP_Query parameters</span><pre>mla_prepare_view_query()</pre></a></li>
 <li class="method public "><a href="#mla_supported_taxonomies" title="mla_supported_taxonomies :: Returns an array of taxonomy names assigned to $support_type"><span class="description">Returns an array of taxonomy names assigned to $support_type</span><pre>mla_supported_taxonomies()</pre></a></li>
 <li class="method public "><a href="#mla_taxonomy_support" title="mla_taxonomy_support :: Determine MLA support for a taxonomy, handling the special case where the
@@ -114,6 +115,7 @@ settings are being updated or reset.</span><pre>mla_taxonomy_support()</pre></a>
 <li class="constant  "><a href="#MLA_COUNT_TERM_ATTACHMENTS" title="MLA_COUNT_TERM_ATTACHMENTS :: Provides a unique name for the taxonomy count Attachments option"><span class="description">Provides a unique name for the taxonomy count Attachments option</span><pre>MLA_COUNT_TERM_ATTACHMENTS</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_CATEGORY_AJAX" title="MLA_DEBUG_CATEGORY_AJAX :: Constant to log Ajax debug activity"><span class="description">Constant to log Ajax debug activity</span><pre>MLA_DEBUG_CATEGORY_AJAX</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_CATEGORY_LANGUAGE" title="MLA_DEBUG_CATEGORY_LANGUAGE :: Constant to log WPML/Polylang action/filter activity"><span class="description">Constant to log WPML/Polylang action/filter activity</span><pre>MLA_DEBUG_CATEGORY_LANGUAGE</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_CATEGORY_THUMBNAIL" title="MLA_DEBUG_CATEGORY_THUMBNAIL :: Constant to log Ghostscript/Imagick activity"><span class="description">Constant to log Ghostscript/Imagick activity</span><pre>MLA_DEBUG_CATEGORY_THUMBNAIL</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_DISPLAY_LIMIT" title="MLA_DEBUG_DISPLAY_LIMIT :: Provides a unique name for the Debug display limit option"><span class="description">Provides a unique name for the Debug display limit option</span><pre>MLA_DEBUG_DISPLAY_LIMIT</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_FILE" title="MLA_DEBUG_FILE :: Provides a unique name for the Debug alternate log file option"><span class="description">Provides a unique name for the Debug alternate log file option</span><pre>MLA_DEBUG_FILE</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_REPLACE_LEVEL" title="MLA_DEBUG_REPLACE_LEVEL :: Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option"><span class="description">Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option</span><pre>MLA_DEBUG_REPLACE_LEVEL</pre></a></li>
@@ -134,6 +136,7 @@ settings are being updated or reset.</span><pre>mla_taxonomy_support()</pre></a>
 <li class="constant  "><a href="#MLA_MEDIA_GRID_TOOLBAR" title="MLA_MEDIA_GRID_TOOLBAR :: Provides a unique name for the Media Grid toolbar option, which
 also controls the ATTACHMENT DETAILS enhancements"><span class="description">Provides a unique name for the Media Grid toolbar option, which
 also controls the ATTACHMENT DETAILS enhancements</span><pre>MLA_MEDIA_GRID_TOOLBAR</pre></a></li>
+<li class="constant  "><a href="#MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS" title="MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS :: Provides a unique name for the Media Manager Force Image Default Setings option"><span class="description">Provides a unique name for the Media Manager Force Image Default Setings option</span><pre>MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS</pre></a></li>
 <li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_AUTOFILL" title="MLA_MEDIA_MODAL_DETAILS_AUTOFILL :: Provides a unique name for the Media Manager Attachment Details auto-fill option"><span class="description">Provides a unique name for the Media Manager Attachment Details auto-fill option</span><pre>MLA_MEDIA_MODAL_DETAILS_AUTOFILL</pre></a></li>
 <li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" title='MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX :: Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
 This option is for hierarchical taxonomies, e.g., "Att.'><span class="description">Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
@@ -503,6 +506,20 @@ where "key" becomes the key part of the array.</p></p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>( ['prefix'] => string, ['name'] => string, ['value'] => string, ['option'] => string, optional ['error'] => string )</div>
+</div></div>
+</div>
+<a name="mla_plugins_loaded_action" id="mla_plugins_loaded_action"></a><div class="element clickable method public mla_plugins_loaded_action" data-toggle="collapse" data-target=".mla_plugins_loaded_action .collapse">
+<h2>Load a plugin text domain and alternate debug file</h2>
+<pre>mla_plugins_loaded_action() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The "add_action" for this function is in mla-plugin-loader.php, because the "initialize"
+function above doesn't run in time.
+Defined as public because it's an action.</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.60</td>
+</tr></table>
 </div></div>
 </div>
 <a name="mla_prepare_view_query" id="mla_prepare_view_query"></a><div class="element clickable method public mla_prepare_view_query" data-toggle="collapse" data-target=".mla_prepare_view_query .collapse">
@@ -953,6 +970,18 @@ reset => reset function for 'custom' options; returns nothing. Usage:
 </tr></table>
 </div></div>
 </div>
+<a name="MLA_DEBUG_CATEGORY_THUMBNAIL" id="MLA_DEBUG_CATEGORY_THUMBNAIL"> </a><div class="element clickable constant  MLA_DEBUG_CATEGORY_THUMBNAIL" data-toggle="collapse" data-target=".MLA_DEBUG_CATEGORY_THUMBNAIL .collapse">
+<h2>Constant to log Ghostscript/Imagick activity</h2>
+<pre>MLA_DEBUG_CATEGORY_THUMBNAIL : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.23</td>
+</tr></table>
+</div></div>
+</div>
 <a name="MLA_DEBUG_DISPLAY_LIMIT" id="MLA_DEBUG_DISPLAY_LIMIT"> </a><div class="element clickable constant  MLA_DEBUG_DISPLAY_LIMIT" data-toggle="collapse" data-target=".MLA_DEBUG_DISPLAY_LIMIT .collapse">
 <h2>Provides a unique name for the Debug display limit option</h2>
 <pre>MLA_DEBUG_DISPLAY_LIMIT </pre>
@@ -1059,6 +1088,12 @@ reset => reset function for 'custom' options; returns nothing. Usage:
 <h2>Provides a unique name for the Media Grid toolbar option, which
 also controls the ATTACHMENT DETAILS enhancements</h2>
 <pre>MLA_MEDIA_GRID_TOOLBAR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS" id="MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS .collapse">
+<h2>Provides a unique name for the Media Manager Force Image Default Setings option</h2>
+<pre>MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
 </div>
@@ -1258,7 +1293,7 @@ also controls the ATTACHMENT DETAILS enhancements</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2016-01-03T09:26:08-08:00.<br></footer></div>
+            generated on 2016-01-23T23:00:26-08:00.<br></footer></div>
 </div>
 </body>
 </html>

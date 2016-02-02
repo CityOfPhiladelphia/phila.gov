@@ -38,6 +38,17 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	}
 
 	/**
+	 * Added in Admin Columns update to v2.4.9
+	 *
+	 * @since 2.23
+	 */
+	public function init_manage_columns() {
+
+		//add_filter( "manage_{$this->page}_columns", array( $this, 'add_headings' ), 100 );
+		//add_action( 'manage_comments_custom_column', array( $this, 'manage_value' ), 100, 2 );
+	}
+
+	/**
 	 * Returns the Media/Assistant submenu table column definitions
 	 *
 	 * @since 2.22
@@ -70,7 +81,7 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	}
 
 	/**
-	 * Returns the custom fields assignedto Media Library items, removing those already present
+	 * Returns the custom fields assigned to Media Library items, removing those already present
 	 * in the Media/Assistant submenu table
 	 *
 	 * @since 2.22
@@ -136,6 +147,25 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	}
 
 	/**
+	 * Test for current screen = the Media/Assistant submenu screen,
+	 * For Admin Columns 2.4.9+
+	 *
+	 * @since 2.23
+	 *
+	 * @return boolean true if the Media/Assistant submenu is the current screen
+	 */
+	public function is_current_screen() {
+		$is_current_screen = parent::is_current_screen();
+		if ( ! $is_current_screen ) {
+			if ( ! empty( $_REQUEST['page'] ) && 'mla-menu' == $_REQUEST['page'] ) {
+				$is_current_screen = true;
+			}
+		}
+
+		return $is_current_screen;
+	}
+
+	/**
 	 * Test for current screen = the Media/Assistant submenu screen
 	 *
 	 * @since 2.22
@@ -144,7 +174,6 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	 */
 	public function is_columns_screen() {
 		$is_columns_screen = parent::is_columns_screen();
-
 		if ( ! $is_columns_screen ) {
 			if ( ! empty( $_REQUEST['page'] ) && 'mla-menu' == $_REQUEST['page'] ) {
 				$is_columns_screen = true;

@@ -391,8 +391,6 @@ class MLAMime {
 	 * @return	string	Updated path to the icon directory, no trailing slash
 	 */
 	public static function mla_icon_dir_filter( $path ) {
-		global $wp_filter;
-
 		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 			return MLA_PLUGIN_PATH . 'images/crystal';
 		}
@@ -413,8 +411,6 @@ class MLAMime {
 	 * @return	string	Updated path to the icon directory URL, no trailing slash
 	 */
 	public static function mla_icon_dir_uri_filter( $uri ) {
-		global $wp_filter;
-
 		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 			return MLA_PLUGIN_URL . 'images/crystal';
 		}
@@ -435,8 +431,6 @@ class MLAMime {
 	 * @return	array	Updated (path => URI) array
 	 */
 	public static function mla_icon_dirs_filter( $path_uri_array ) {
-		global $wp_filter;
-
 		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
 			$path_uri_array [ MLA_PLUGIN_PATH . 'images/crystal' ] = MLA_PLUGIN_URL . 'images/crystal';
 		}
@@ -1566,9 +1560,43 @@ class MLAMime {
 	 * @return	array	( width, height )
 	 */
 	public static function mla_get_icon_type_size( $icon_type ) {
-		$icon_file =  wp_mime_type_icon( $icon_type );
-		$image_info = getimagesize( $icon_file );
+		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+			return array( 'width' => 64, 'height' => 64 );
+		}
+		
+		$icon_info = NULL;
+		$icon_dir = apply_filters( 'icon_dir', ABSPATH . WPINC . '/images/media' );
+		if ( false === ( $dh = @opendir( $icon_dir ) ) ) {
+			$icon_dir = apply_filters( 'icon_dir', ABSPATH . WPINC . '/images/crystal' );
+			$dh = opendir( $icon_dir );
+		}
 
+		if ( $dh ) {
+			while ( false !== $icon_file = readdir( $dh ) ) {
+				$icon_file = basename( $icon_file );
+				if ( substr( $icon_file, 0, 1 ) == '.' ) {
+					continue;
+				}
+				
+				$file_info = pathinfo( $icon_file );
+				if ( in_array( strtolower( $file_info['extension'] ), array('png', 'gif', 'jpg') ) ) {
+					if ( $icon_type == $file_info['filename'] ) {
+						$icon_info = $file_info;
+						break;
+					} elseif ( 'default' == $file_info['filename'] ) {
+						$icon_info = $file_info;
+					}
+				}
+			}
+
+			closedir( $dh );
+		}
+	
+		if ( is_null( $icon_info ) ) {
+			return array( 'width' => 64, 'height' => 64 );
+		}
+		
+		$image_info = getimagesize( $icon_dir . '/' . $icon_info['filename'] . '.' . $icon_info['extension'] );
 		if ( $image_info ) {
 			if ( isset( $image_info[0] ) ) {
 				$image_info['width'] = $image_info[0];

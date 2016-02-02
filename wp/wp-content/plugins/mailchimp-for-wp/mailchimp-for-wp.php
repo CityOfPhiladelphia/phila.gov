@@ -3,7 +3,7 @@
 Plugin Name: MailChimp for WordPress
 Plugin URI: https://mc4wp.com/#utm_source=wp-plugin&utm_medium=mailchimp-for-wp&utm_campaign=plugins-page
 Description: MailChimp for WordPress by ibericode. Adds various highly effective sign-up methods to your site.
-Version: 3.0.12
+Version: 3.1.1
 Author: ibericode
 Author URI: https://ibericode.com/
 Text Domain: mailchimp-for-wp
@@ -47,7 +47,7 @@ function __mc4wp_load_plugin() {
 	}
 
 	// bootstrap the core plugin
-	define( 'MC4WP_VERSION', '3.0.12' );
+	define( 'MC4WP_VERSION', '3.1.1' );
 	define( 'MC4WP_PLUGIN_DIR', dirname( __FILE__ ) . '/' );
 	define( 'MC4WP_PLUGIN_URL', plugins_url( '/' , __FILE__ ) );
 	define( 'MC4WP_PLUGIN_FILE', __FILE__ );
@@ -62,6 +62,7 @@ function __mc4wp_load_plugin() {
 	$mc4wp = mc4wp();
 	$mc4wp['api'] = 'mc4wp_get_api';
 	$mc4wp['request'] = array( 'MC4WP_Request', 'create_from_globals' );
+	$mc4wp['log'] = 'mc4wp_get_debug_log';
 
 	// forms
 	$mc4wp['forms'] = new MC4WP_Form_Manager();
@@ -70,10 +71,6 @@ function __mc4wp_load_plugin() {
 	// integration core
 	$mc4wp['integrations'] = new MC4WP_Integration_Manager();
 	$mc4wp['integrations']->add_hooks();
-
-	// visitor tracking
-	$mc4wp['tracking'] = new MC4WP_Visitor_Tracking();
-	$mc4wp['tracking']->add_hooks();
 
 	// bootstrap custom integrations
 	require_once MC4WP_PLUGIN_DIR . 'integrations/bootstrap.php';
@@ -88,6 +85,8 @@ function __mc4wp_load_plugin() {
 	    && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 
 		$messages = new MC4WP_Admin_Messages();
+		$mc4wp['admin.messages'] = $messages;
+
 		$mailchimp = new MC4WP_MailChimp();
 
 		$admin = new MC4WP_Admin( $messages, $mailchimp );

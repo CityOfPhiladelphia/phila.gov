@@ -116,97 +116,6 @@
         "homepage": "http://www.xrstf.de/"
     },
     {
-        "name": "nekojira/wp-requirements",
-        "version": "1.4.1",
-        "version_normalized": "1.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/unfulvio/wp-requirements.git",
-            "reference": "c12147245286b5b9053d1745995677e6df36e96d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/unfulvio/wp-requirements/zipball/c12147245286b5b9053d1745995677e6df36e96d",
-            "reference": "c12147245286b5b9053d1745995677e6df36e96d",
-            "shasum": ""
-        },
-        "time": "2015-10-05 09:08:37",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Fulvio Notarstefano",
-                "email": "fulvio.notarstefano@gmail.com",
-                "homepage": "https://github.com/nekojira",
-                "role": "Developer"
-            }
-        ],
-        "description": "Utility for WordPress plugin developers to check PHP version, WordPress version and presence of PHP extensions in current installation.",
-        "homepage": "https://github.com/nekojira/wp-requirements/",
-        "keywords": [
-            "php",
-            "requirements",
-            "version",
-            "wordpress"
-        ]
-    },
-    {
-        "name": "mexitek/phpcolors",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mexitek/phpColors.git",
-            "reference": "89bf30473a68dc8845e46e9db3e536b969e18c11"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/mexitek/phpColors/zipball/89bf30473a68dc8845e46e9db3e536b969e18c11",
-            "reference": "89bf30473a68dc8845e46e9db3e536b969e18c11",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2015-09-09 15:43:06",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "classmap": [
-                "src"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arlo Carreon",
-                "homepage": "http://arlocarreon.com",
-                "role": "creator"
-            }
-        ],
-        "description": "A series of methods that let you manipulate colors. Just incase you ever need different shades of one color on the fly.",
-        "homepage": "http://mexitek.github.com/phpColors/",
-        "keywords": [
-            "color",
-            "css",
-            "design",
-            "frontend",
-            "ui"
-        ]
-    },
-    {
         "name": "nesbot/carbon",
         "version": "1.21.0",
         "version_normalized": "1.21.0.0",
@@ -526,5 +435,55 @@
         ],
         "description": "Symfony Translation Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "mexitek/phpcolors",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mexitek/phpColors.git",
+            "reference": "629eb54bf7f920529c815fd5f85b5af9651ae9f0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mexitek/phpColors/zipball/629eb54bf7f920529c815fd5f85b5af9651ae9f0",
+            "reference": "629eb54bf7f920529c815fd5f85b5af9651ae9f0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "nette/tester": "~1.6"
+        },
+        "time": "2016-01-12 23:45:10",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "src"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arlo Carreon",
+                "homepage": "http://arlocarreon.com",
+                "role": "creator"
+            }
+        ],
+        "description": "A series of methods that let you manipulate colors. Just incase you ever need different shades of one color on the fly.",
+        "homepage": "http://mexitek.github.com/phpColors/",
+        "keywords": [
+            "color",
+            "css",
+            "design",
+            "frontend",
+            "ui"
+        ]
     }
 ]
