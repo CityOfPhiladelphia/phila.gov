@@ -502,7 +502,7 @@ function still_migrating_content(){
 }
 
 function get_department_menu() {
-     /*
+  /*
     Set the menus. We use categories to drive functionality.
     Pass the current category (there should only ever be 1)
     as the menu-id.
@@ -518,7 +518,7 @@ function get_department_menu() {
         'container'       => '',
         'container_class' => '',
         'container_id'    => '',
-        'menu_class'      => 'department-menu',
+        'menu_class'      => 'department-menu medium-horizontal menu',
         'menu_id'         => '',
         'echo'            => true,
         'fallback_cb'     => false,//if there is no menu, output nothing
@@ -526,18 +526,15 @@ function get_department_menu() {
         'after'           => '',
         'items_wrap'      => '
           <div class="small-24 columns">
-            <div data-swiftype-index="false" class="top-nav">
-              <nav class="top-bar" data-topbar role="navigation">
-                <ul class="title-area">
-                  <li class="name"></li>
-                  <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                </ul>
-                <section class="top-bar-section">
-                  <ul id="%1$s" class="%2$s">%3$s</ul>
-                </section>
-              </nav>
+            <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
             </div>
-          </div>',
+          <div class="top-bar" id="site-nav">
+            <nav data-swiftype-index="false">
+              <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
+            </nav>
+          </div>
+        </div>',
         'depth'           => 0,
         'walker'          => new phila_gov_walker_nav_menu
     );
