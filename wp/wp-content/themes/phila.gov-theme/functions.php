@@ -36,6 +36,13 @@ function phila_gov_setup() {
   add_theme_support( 'automatic-feed-links' );
 
   /*
+   * Enable support for custom background uploads
+   *
+   * @link https://codex.wordpress.org/Custom_Backgrounds
+   */
+  add_theme_support( 'custom-background' );
+
+  /*
    * Enable support for Post Thumbnails on posts and pages.
    *
    * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
