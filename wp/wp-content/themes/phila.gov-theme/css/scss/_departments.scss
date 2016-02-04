@@ -4,18 +4,6 @@
  *
  *
 */
-.top-nav {
-  margin: 5px auto 20px auto;
-  .top-bar-section ul li.current-menu-parent>a,
-  .top-bar-section ul li.current-menu-item>a{
-    background:$bell-yellow;
-  }
-
-  nav.top-bar .top-bar-section ul li {
-    min-width:8.375rem;
-    margin: 0 1.255rem 0 0;
-  }
-}
 .department {
   p {
     margin: rem-calc(16 0 32 0);
@@ -84,9 +72,6 @@
       height:auto;
       margin: 5px 10px 30px 0;
     }
-    .story {
-      cursor: pointer;
-    }
     ul.news-list{
       margin:0;
       padding:0;
@@ -115,25 +100,6 @@
       }
     }
   }
-  .story, .unlinked-story {
-    padding: .8rem;
-    margin-bottom: 20px;
-    cursor: default;
-
-    a img.alignnone {
-      margin:0;
-    }
-    p{
-      font-size: 80%;
-      line-height: 1.4;
-      margin: .5rem 0;
-    }
-  }
-  .unlinked-story{
-    border: 1px solid #DBE1E3;
-    background: #fff;
-    width: 100%;
-  }
   ul, ol, dl {
     font-size: .85rem;
     line-height: 1.6;
@@ -146,16 +112,6 @@
     text-align:center;
     margin: 0 0 20px 0;
   }
-  #sidebar {
-    margin-top:1rem;
-    font-size:85%;
-
-    .call-to-action {
-      .h1, .h2, .h3, .h4, .h5, .h6, span.h6 {
-        font-size:.7rem;
-      }
-    }
-  }//#sidebar
 
   .contact{
     background:$ghost-gray;
@@ -170,7 +126,7 @@
   }
 
   .inner {
-    background:$geyser;
+    background:$ghost-gray;
     padding:20px;
   }
 
@@ -181,7 +137,7 @@
   }
 
   .notices li{
-    border-bottom: 1px solid $geyser;
+    border-bottom: 1px solid $ghost-gray;
     padding:10px 0;
 
     &:first-child{
@@ -206,7 +162,7 @@
       border-bottom: none;
     }
     .event-row{
-      border-bottom:1px solid $geyser;
+      border-bottom:1px solid $ghost-gray;
       font-size: 0.75rem;
     }
     .simcal-default-calendar-list{
@@ -239,6 +195,6 @@
 }
 
 .post-type-archive-department_page .list li{
-  border-bottom: 1px solid $geyser;
+  border-bottom: 1px solid $ghost-gray;
   margin: 1rem 0;
 }

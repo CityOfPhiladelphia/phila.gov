@@ -57,7 +57,7 @@
     }
     a:hover, a:active{
       h2{
-        color:$mine-shaft;
+        color:$dark-gray;
       }
     }
     &.child {
@@ -180,7 +180,7 @@ p.child-description, p.parent-description {
   .find {
       @extend .group;
       background-color:#F9F9F9;
-      border: 1px solid $geyser;
+      border: 1px solid $ghost-gray;
       padding:1.5em;
       margin-bottom: 0;
 
