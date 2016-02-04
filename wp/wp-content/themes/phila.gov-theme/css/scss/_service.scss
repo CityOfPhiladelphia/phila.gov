@@ -3,14 +3,14 @@
 }
 .service{
   .border {
-    border: 1px solid $geyser;
+    border: 1px solid $medium-gray;
   }
   .button+.small-text {
     margin: .5rem 0 0 0;
     padding: 0;
   }
   .intro-top{
-    background:$geyser;
+    background:$medium-gray;
     padding:2rem;
     h1 {
       margin:0;
@@ -27,7 +27,7 @@
     padding-left: 2em;
   }
   .columns.before-start-right{
-    border-left: 1px solid $geyser;
+    border-left: 1px solid $medium-gray;
     padding-left: 2rem;
     p, ul, ol {
       font-size:.75rem;
@@ -80,7 +80,7 @@
     }
     .light-stripe{
       border-top:none;
-      background:$geyser;
+      background:$medium-gray;
       text-align: center;
       &:first-of-type{
         margin-top:0;

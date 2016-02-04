@@ -48,3 +48,19 @@ li:last-child{
     padding:5px;
   }
 }
+
+#content header{
+  background: transparent;
+}
+
+header {
+  background: rgba(255,255,255,0.6);
+  .site-branding {
+    background: transparent;
+  }
+
+}
+
+body.custom-background{
+  background-size:100%;
+}
