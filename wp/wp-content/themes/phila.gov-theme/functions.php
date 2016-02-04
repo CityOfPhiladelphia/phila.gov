@@ -498,8 +498,9 @@ function phila_still_migrating_content(){
     get_template_part( 'partials/content', 'feedback-url' );
     echo '">How can we make it better?</a></p>';
 }
+
 function phila_get_department_menu() {
-    /*
+  /*
     Set the menus. We use categories to drive functionality.
     Pass the current category (there should only ever be 1)
     as the menu-id.
