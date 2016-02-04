@@ -69,11 +69,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ?>
     <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) { ?>
       <div class="row">
-        <div class="small-24 columns">
-          <div class="divider"></div>
-        </div>
-      </div>
-      <div class="row">
         <div data-swiftype-index='false' id="breadcrumbs" class="large-24 columns">
           <nav><?php phila_breadcrumbs(); ?> </nav>
         </div>
