@@ -774,7 +774,7 @@ function phila_output_header_images(){
         $height = $size['height'];
       }
     }
-    
+
     //incase the width/height of hero-crop changes, get those values from WP
     $page_bg_image_url = $bg_raw . '-' . $width . 'x' . $height . '.jpg';
 
