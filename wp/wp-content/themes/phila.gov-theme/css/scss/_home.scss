@@ -142,7 +142,7 @@
       .story {
           background: $white;
           @extend .group;
-          border: 1px solid $geyser;
+          border: 1px solid $ghost-gray;
           margin-bottom: 20px;
           cursor: default;
 
@@ -153,20 +153,20 @@
       }
 
       h3 {
-          border-bottom: 1px solid $whitesmoke;
+          border-bottom: 1px solid $ghost-gray;
           margin: 1em 0 0 0;
           padding: 0 0 .5em 0;
           word-break: break-word;
       }
 
       a:link > h3, a:visited > h3 {
-          color:$mine-shaft;
+          color:$ghost-gray;
       }
       a:hover > h3, a:active > h3{
           color:$ben-franklin-blue;
       }
       span {
-          color: $manatee;
+          color: $ghost-gray;
           font-size: 80%;
 
       }
@@ -223,7 +223,7 @@
           dt, dd {
               margin:0 0 10px 0;
               padding:0 0 10px 0;
-              border-bottom: 1px solid $manatee;
+              border-bottom: 1px solid $ghost-gray;
               min-height: 68px;
               font-size: 95%;
           }
@@ -256,15 +256,15 @@
       .related .row {
         margin-left:0;
         margin-right:0;
-        background:$whitesmoke;
-        border:1px solid $geyser;
+        background:$ghost-gray;
+        border:1px solid $medium-gray;
         padding:20px;
 
         a:link, a:visited{
-          color:#026583;//hack
+          color:$ben-franklin-blue;//hack
         }
         a:hover, a:active{
-          color:$mine-shaft;
+          color:$dark-gray;
         }
       }
   }//#active
