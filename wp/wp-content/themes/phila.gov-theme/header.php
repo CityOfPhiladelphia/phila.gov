@@ -55,13 +55,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <header data-swiftype-index='false' id="masthead" class="site-header" role="banner">
     <div class="row site-branding">
       <div class="small-24 medium-12 columns">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-          <img src="<?php echo get_stylesheet_directory_uri();?>/img/city-of-philadelphia@2x.png" alt="City of Philadelphia" height="100" class="logo"></a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo">
+          <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png"></a>
           <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
         <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-24 medium-12 columns"> <?php get_search_form(); ?> </div> <?php }?>
-
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
     </div>
   </header><!-- #masthead -->

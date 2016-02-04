@@ -20,28 +20,6 @@ li:last-child{
   padding-bottom: .5rem;
 }
 
-.site-header {
-  color: $white;
-  height: 75px;
-  background: $white;
-}
-
-#breadcrumbs {
-  ul {
-    list-style:none;
-    margin: 0;
-    padding:0;
-  }
-  li {
-    display:inline;
-  }
-  li::after {
-    content:" / ";
-  }
-  li:last-child::after{
-    content:"";
-  }
-}
 @media screen and (min-width: 35.5em){
   .entry-content > div {
     margin:0 20px 0 0;
@@ -51,20 +29,6 @@ li:last-child{
   content: "";
   display: table;
   clear: both;
-}
-
-ul.no-bullet, ol.no-bullet{
-  margin:0;
-  padding:0;
-}
-article .entry-title{
-  text-transform:none;
-  font-family: "Open Sans";
-}
-
-.equal-height .panel{
-  margin:0;
-  flex-grow: 1;
 }
 
 .navigation {
