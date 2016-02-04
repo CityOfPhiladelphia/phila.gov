@@ -296,7 +296,7 @@ function the_breadcrumb() {
   global $output;
   global $i;
 
-  echo '<ul>';
+  echo '<ul class="breadcrumbs">';
   if ( !is_front_page() ) { //display breadcrumbs everywhere but on the homepage
     echo '<li><a href="';
     echo get_option('home');
