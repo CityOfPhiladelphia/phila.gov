@@ -26,91 +26,95 @@ jQuery(document).ready(function($){
     wp.media.controller.Library.prototype.defaults.searchable=false;
     wp.media.controller.Library.prototype.defaults.sortable=false;
   }*/
+  if ( typeof typenow === 'undefined'){
+      return;
 
-  if ( (typenow == 'department_page' || typenow == 'document' || typenow == 'service_post') && adminpage.indexOf('post') > -1 ){
-    $("#post").validate({
+    }else{
+
+    if ( (typenow == 'department_page' || typenow == 'document' || typenow == 'service_post') && adminpage.indexOf('post') > -1 ){
+      $("#post").validate({
+          rules: {
+            'post_title' : 'required'
+          }
+        });
+    }
+    if (typenow == 'department_page' && adminpage.indexOf('post') > -1 ){
+      var heading = $('[id^=phila_block_heading]');
+      var content_title = $('[id^=phila_block_content_title]');
+      var summary = $('[id^=phila_block_summary]');
+      var alert_heading = $('[id^=phila_department_home_alert_title]');
+      var id = $('[id^=phila_block_id]');
+
+      heading.attr('maxlength', '20');
+      content_title.attr('maxlength', '70');
+      summary.attr('maxlength', '255');
+      alert_heading.attr('maxlength', '255');
+      id.attr('required', 'required');
+    }
+    if (typenow == 'news_post' && adminpage.indexOf('post') > -1 ){
+      $('#post').validate({
         rules: {
-          'post_title' : 'required'
-        }
+           'post_title' : 'required'
+         }
       });
-  }
-  if (typenow == 'department_page' && adminpage.indexOf('post') > -1 ){
-    var heading = $('[id^=phila_block_heading]');
-    var content_title = $('[id^=phila_block_content_title]');
-    var summary = $('[id^=phila_block_summary]');
-    var alert_heading = $('[id^=phila_department_home_alert_title]');
-    var id = $('[id^=phila_block_id]');
+      $( '#phila_news_desc' ).rules( 'add', {
+        required: true
+      });
+    }
 
-    heading.attr('maxlength', '20');
-    content_title.attr('maxlength', '70');
-    summary.attr('maxlength', '255');
-    alert_heading.attr('maxlength', '255');
-    id.attr('required', 'required');
-  }
-  if (typenow == 'news_post' && adminpage.indexOf('post') > -1 ){
-    $('#post').validate({
-      rules: {
-         'post_title' : 'required'
-       }
-    });
-    $( '#phila_news_desc' ).rules( 'add', {
-      required: true
-    });
-  }
+    if (typenow == 'phila_post' && adminpage.indexOf('post') > -1 ){
+      $('#post').validate({
+        rules: {
+           'post_title' : 'required'
+         }
+      });
+      $( '#phila_post_desc' ).rules( 'add', {
+        required: true
+      });
+    }
 
-  if (typenow == 'phila_post' && adminpage.indexOf('post') > -1 ){
-    $('#post').validate({
-      rules: {
-         'post_title' : 'required'
-       }
-    });
-    $( '#phila_post_desc' ).rules( 'add', {
-      required: true
-    });
-  }
+    if ( ( typenow == 'page' || typenow == 'service_post' ) && adminpage.indexOf('post') > -1 ){
+      $('#post').validate({
+        rules: {
+           'post_title' : 'required'
+         }
+      });
 
-  if ( ( typenow == 'page' || typenow == 'service_post' ) && adminpage.indexOf('post') > -1 ){
-    $('#post').validate({
-      rules: {
-         'post_title' : 'required'
-       }
-    });
+      if ( $( "#page-display input[name=phila_show_in_browse]" ).length ) {
 
-    if ( $( "#page-display input[name=phila_show_in_browse]" ).length ) {
+        $('#page-display input[name=phila_show_in_browse]').click(function(){
 
-      $('#page-display input[name=phila_show_in_browse]').click(function(){
+          if ( $(this).val() == 'yes' ) {
 
-        if ( $(this).val() == 'yes' ) {
+            $('#page-display .rwmb-textarea-wrapper').show();
+
+          }else if( $(this).val() == 'no' ){
+
+            $('#page-display .rwmb-textarea-wrapper').hide();
+          }
+
+        });
+
+        if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'yes' ){
 
           $('#page-display .rwmb-textarea-wrapper').show();
 
-        }else if( $(this).val() == 'no' ){
+        }else if ($('#page-display input[name=phila_show_in_browse]:checked').val() == 'no'){
 
           $('#page-display .rwmb-textarea-wrapper').hide();
+
         }
 
-      });
-
-      if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'yes' ){
-
-        $('#page-display .rwmb-textarea-wrapper').show();
-
-      }else if ($('#page-display input[name=phila_show_in_browse]:checked').val() == 'no'){
-
-        $('#page-display .rwmb-textarea-wrapper').hide();
+        $("#phila_page_desc").prop( 'required', true );
 
       }
 
-      $("#phila_page_desc").prop( 'required', true );
-
     }
 
+    if (typenow == 'phila_post' && adminpage.indexOf('post') > -1 ){
+
+      $('a#link-post_tag').click();
+
+    }
   }
-
-  if (typenow == 'phila_post' && adminpage.indexOf('post') > -1 ){
-
-    $('a#link-post_tag').click();
-
-  }
-
 });
