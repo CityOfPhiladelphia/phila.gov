@@ -180,7 +180,7 @@ function recent_news_shortcode($atts) {
 
       $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
 
-      $output .= '<div class="content-block">';
+      $output .= '<div class="content-block equal">';
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 
@@ -197,7 +197,7 @@ function recent_news_shortcode($atts) {
 
       if ( is_flag( 'list', $atts ) ) {
         $output .= '</ul>';
-        $output .= '</div><!-- medium-24 columns --> </div>';
+        $output .= '</div></div>';
       }
       if( $a['posts'] == 3 && ! is_flag( 'list', $atts ) ) {
         //this means we had equal-height applied and must close those divs
