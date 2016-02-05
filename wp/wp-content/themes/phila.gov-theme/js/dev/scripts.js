@@ -10,6 +10,14 @@ new List('filter-list', {
 });
 
 jQuery(document).ready(function($) {
+
+  var alphaAlertHeight = $("#alpha-alert").css( "height" );
+
+  //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
+  if (alphaAlertHeight){
+    $('body.custom-background').css('background-position-y', alphaAlertHeight );
+  }
+
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
   $('.is-drilldown').find('ul').addClass('vertical');
 
