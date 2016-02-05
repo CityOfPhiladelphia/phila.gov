@@ -52,7 +52,7 @@ function phila_gov_setup() {
   add_image_size( 'home-thumb', 550, 360, true );
 
   //added for use in custom-background
-  add_image_size('hero-crop', 1600, 400, array( 'center', 'center' ) );
+  add_image_size('hero-crop', 1600, 200, array( 'center', 'center' ) );
 
   // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
@@ -718,6 +718,8 @@ add_action('wp_head', 'phila_output_header_images', 100);
 function phila_output_header_images(){
 
   global $post;
+  global $_wp_additional_image_sizes;
+
 
   if ( is_front_page() ) {
     $page_bg_image_url = get_background_image();
@@ -725,7 +727,6 @@ function phila_output_header_images(){
   }elseif ( $post->post_type == 'department_page' ) {
 
     $parents = get_post_ancestors( $post->ID );
-
     $id = ( $parents ) ? $parents[count($parents)-1]: $post->ID;
 
     if ( has_post_thumbnail( $id ) ) {
@@ -734,32 +735,58 @@ function phila_output_header_images(){
 
       $children = get_pages( array( 'child_of' => $post_id ) );
 
+      $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+
+      $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
+
       //this is a parent
       if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
 
-        $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
-
-        $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
+        $page_bg_image_url = $page_bg_image[0];
 
       }else{
-        //child
+        //this is a child
         $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'hero-crop' );
 
         $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
       }
+
+    //this page doesn't have a featured image
+    }else{
+      $full_bg_image = get_background_image();
+      //this assumes the image uploaded was a .jpg, which is should be....
+      $bg_raw = str_replace('.jpg', '', $full_bg_image);
+
+      foreach( $_wp_additional_image_sizes as $name => $size ){
+        if ($name == 'hero-crop'){
+          $width = $size['width'];
+          $height = $size['height'];
+        }
+      }
+      //incase the width/height of hero-crop changes, get those values from WP
+      $page_bg_image_url = $bg_raw . '-' . $width . 'x' . $height . '.jpg';
+
     }
+    //this is not a department page
   }else{
 
     $full_bg_image = get_background_image();
-
     //this assumes the image uploaded was a .jpg, which is should be....
     $bg_raw = str_replace('.jpg', '', $full_bg_image);
 
-    $page_bg_image_url = $bg_raw . '-1600x200.jpg';
+    foreach( $_wp_additional_image_sizes as $name => $size ){
+      if ($name == 'hero-crop'){
+        $width = $size['width'];
+        $height = $size['height'];
+      }
+    }
+    
+    //incase the width/height of hero-crop changes, get those values from WP
+    $page_bg_image_url = $bg_raw . '-' . $width . 'x' . $height . '.jpg';
 
   }
 
-  $output = "<style type='text/css' id='custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
+  $output = "<style type='text/css' id='alpha-custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
 
   echo $output;
 
