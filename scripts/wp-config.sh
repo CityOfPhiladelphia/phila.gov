@@ -35,6 +35,7 @@ define('WP_HOME', 'https://$DOMAIN');
 define('AWS_ACCESS_KEY_ID', '$AWS_ID');
 define('AWS_SECRET_ACCESS_KEY', '$AWS_SECRET');
 define('AS3CF_BUCKET', '$PHILA_MEDIA_BUCKET');
+define('AS3CF_DOMAIN', '$DOMAIN');
 
 /** For Swiftype search */
 define('SWIFTYPE_ENGINE', '$SWIFTYPE_ENGINE');
