@@ -59,13 +59,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-24 medium-12 columns"> <?php get_search_form(); ?> </div> <?php }?>
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
     </div>
+    <?php if ( function_exists( 'the_breadcrumb' ) && !is_front_page() ) : ?>
+    <div class="row expanded">
+      <div class="columns">
+        <div class="row">
+          <div data-swiftype-index='false' class="large-24 columns">
+            <nav><?php the_breadcrumb(); ?> </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
   </header><!-- #masthead -->
     <?php call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
     ?>
-    <?php if ( function_exists( 'the_breadcrumb' ) && !is_front_page() ) { ?>
-      <div class="row">
-        <div data-swiftype-index='false' class="large-24 columns">
-          <nav><?php the_breadcrumb(); ?> </nav>
-        </div>
-      </div> <?php } ?>
-    <div id="content" class="site-content">
+  <div id="content" class="site-content">
