@@ -8,9 +8,6 @@
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
-if ( ! isset( $content_width ) ) {
-  $content_width = 640; /* pixels */
-}
 
 if ( ! function_exists( 'phila_gov_setup' ) ) :
 /**
@@ -53,6 +50,9 @@ function phila_gov_setup() {
 
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
   add_image_size( 'home-thumb', 550, 360, true );
+
+  //added for use in custom-background
+  add_image_size('hero-crop', 1600, 400, array( 'center', 'center' ) );
 
   // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
@@ -703,4 +703,64 @@ function phila_department_list( $query ) {
     $query->set( 'post_parent', 0 );
 
   }
+}
+
+/**
+ * Find and displays the correct header imagesy
+ *
+ * @since 0.22.0
+ * @link https://codex.wordpress.org/Custom_Backgrounds,
+ * @param $classes
+ *
+ */
+add_action('wp_head', 'phila_output_header_images', 100);
+
+function phila_output_header_images(){
+
+  global $post;
+
+  if ( is_front_page() ) {
+    $page_bg_image_url = get_background_image();
+
+  }elseif ( $post->post_type == 'department_page' ) {
+
+    $parents = get_post_ancestors( $post->ID );
+
+    $id = ( $parents ) ? $parents[count($parents)-1]: $post->ID;
+
+    if ( has_post_thumbnail( $id ) ) {
+
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+      $children = get_pages( array( 'child_of' => $post_id ) );
+
+      //this is a parent
+      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+
+        $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+
+        $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
+
+      }else{
+        //child
+        $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'hero-crop' );
+
+        $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
+      }
+    }
+  }else{
+
+    $full_bg_image = get_background_image();
+
+    //this assumes the image uploaded was a .jpg, which is should be....
+    $bg_raw = str_replace('.jpg', '', $full_bg_image);
+
+    $page_bg_image_url = $bg_raw . '-1600x200.jpg';
+
+  }
+
+  $output = "<style type='text/css' id='custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
+
+  echo $output;
+
 }
