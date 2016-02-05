@@ -30,30 +30,6 @@
   <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <?php
-
-    // declare $post global if used outside of the loop
-    global $post;
-
-    // check to see if the theme supports Featured Images, and one is set
-    if ( current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
-
-      // specify desired image size in place of 'full'
-      $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-      $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
-
-    } else {
-      // the fallback – our current active theme's default bg image
-      $page_bg_image_url = get_background_image();
-    }
-
-   ?>
-    <style type="text/css" id="custom-background-css-override">
-        body.custom-background {
-          background-image: url('<?php echo $page_bg_image_url; ?>');
-        }
-    </style>
-
 </head>
 
 <body <?php body_class(); ?>>

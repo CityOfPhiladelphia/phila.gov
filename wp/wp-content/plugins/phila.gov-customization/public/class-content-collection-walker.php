@@ -20,14 +20,14 @@ class Content_Collection_Walker extends Walker_Page {
         else
             $indent = '';
         extract($args, EXTR_SKIP);
-        $class_attr = 'tab-title';
+        $class_attr = 'tabs-title';
         if ( !empty($current_page) ) {
             $_current_page = get_page( $current_page );
             if ( (isset($_current_page->ancestors) && in_array($page->ID, (array) $_current_page->ancestors)) || ( $page->ID == $current_page ) || ( $_current_page && $page->ID == $_current_page->post_parent ) ) {
-                $class_attr = 'tab-title active';
+                $class_attr = 'tabs-title is-active';
             }
         } elseif ( (is_single() || is_archive()) && ($page->ID == get_option('page_for_posts')) ) {
-            $class_attr = 'tab-title';
+            $class_attr = 'tabs-title';
         }
         if ( $class_attr != '' ) {
             $class_attr = ' class="' . $class_attr . '"';
