@@ -14,7 +14,7 @@
           <div class="panel center">
             <?php echo 'Can\'t find what you are looking for? We\'re still moving content. <a href="';
                   echo get_template_part( 'partials/content', 'feedback-url' );
-                  echo '&iHave=This%20website&whatHappened=I%20couldn%27t%20find%20what%20I%20was%20looking%20for"> Let us know what you are trying to find.'; ?>
+                  echo '&iHave=This%20website&whatHappened=I%20couldn%27t%20find%20what%20I%20was%20looking%20for"> Let us know what you are trying to find</a>.'; ?>
           </div>
         </div>
       </div>
