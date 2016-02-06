@@ -15,7 +15,6 @@
         <div class="small-24 columns">
           <div class="panel center">
             <?php echo phila_still_migrating_content(); ?>
-          </div>
         </div>
       </div>
       <?php endif; ?>
