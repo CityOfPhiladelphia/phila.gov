@@ -8,13 +8,15 @@
  */
 ?>
     <?php
-      if ( ! is_front_page() ): ?>
+    $current_post_type =  get_post_type( $post->ID );
+    if ( is_front_page() || $current_post_type == 'department_page' ):  ?>
+    <?php else : ?>
       <div class="row">
         <div class="small-24 columns">
           <div class="panel center">
-            <?php echo 'Can\'t find what you are looking for? We\'re still moving content. <a href="';
+            <?php echo 'Can\'t find what you are looking for? We\'re still moving content. Please <a href="';
                   echo get_template_part( 'partials/content', 'feedback-url' );
-                  echo '&iHave=This%20website&whatHappened=I%20couldn%27t%20find%20what%20I%20was%20looking%20for"> Let us know what you are trying to find</a>.'; ?>
+                  echo '&iHave=This%20website&whatHappened=I%20couldn%27t%20find%20what%20I%20was%20looking%20for">notify us of errors</a>.'; ?>
           </div>
         </div>
       </div>
