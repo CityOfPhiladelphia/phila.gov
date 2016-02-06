@@ -8,7 +8,9 @@
  */
 ?>
     <?php
-      if ( ! is_front_page() ): ?>
+    $current_post_type =  get_post_type( $post->ID );
+    if ( is_front_page() || $current_post_type == 'department_page' ):  ?>
+    <?php else : ?>
       <div class="row">
         <div class="small-24 columns">
           <div class="panel center">
