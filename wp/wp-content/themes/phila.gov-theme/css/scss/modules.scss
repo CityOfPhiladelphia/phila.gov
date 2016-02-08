@@ -1,6 +1,10 @@
 .hero-content{
   text-align: center;
 
+  @media screen and (min-width: 48em) {
+    margin-top:100px;
+  }
+
   section{
     background:$ben-franklin-blue;
   }
