@@ -16,7 +16,7 @@
 p, ul, ol {
   line-height: 1.6;
 }
-li:last-child{
+article li:last-child{
   padding-bottom: .5rem;
 }
 
@@ -52,23 +52,29 @@ li:last-child{
 #content header{
   background: transparent;
 }
-
-header {
-  background: rgba(255,255,255,0.6);
-  .site-branding {
-    background: transparent;
+body {
+  header{
+    background: $ben-franklin-blue;
+    .site-branding{
+      background: transparent;
+    }
+    .row+.row {
+      background: $ben-franklin-light;
+    }
   }
+}
 
+body.home, body.department-home {
+  header {
+
+    background: rgba(255,255,255,0.6);
+
+    .site-branding {
+      background: transparent;
+    }
+  }
 }
 
 body.custom-background{
   background-size:100%;
-}
-
-#content.site-content{
-
-   @media screen and (min-width: 40em) {
-     margin-top:60px;
-   }
-   
 }

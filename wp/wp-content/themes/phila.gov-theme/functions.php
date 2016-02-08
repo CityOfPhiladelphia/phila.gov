@@ -707,12 +707,12 @@ function phila_department_list( $query ) {
 }
 
 /**
- * Find and displays the correct header imagesy
+ * Finds and displays the correct header images for homepages
  *
- * @since 0.22.0
- * @link https://codex.wordpress.org/Custom_Backgrounds,
- * @param $classes
+ * @since 0.23.0
+ * @link https://codex.wordpress.org/Custom_Backgrounds
  *
+ * TODO: Determine if there is a cleaner way to handle page backgrounds
  */
 add_action('wp_head', 'phila_output_header_images', 100);
 
@@ -741,17 +741,55 @@ function phila_output_header_images(){
         $page_bg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 
         $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
+      }else{
+        $page_bg_image_url = '';
       }
 
-      //this is our normal header
-      }
-    }else {
+    }else{
       $page_bg_image_url = '';
     }
 
+  }else {
+    $page_bg_image_url = '';
+  }
 
   $output = "<style type='text/css' id='alpha-custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
 
   echo $output;
 
+}
+
+
+/**
+ * Adds 'department-home' class to appropiate department homepages.
+ *
+ * @since 0.23.0
+ * @link https://codex.wordpress.org/Function_Reference/body_class
+ * @param $classes
+ *
+ */
+
+add_filter( 'body_class', 'phila_home_classes' );
+
+function phila_home_classes( $classes ) {
+
+  global $post;
+
+  if ( isset($post) ) {
+
+    if ( $post->post_type == 'department_page' ) {
+
+      $parents = get_post_ancestors( $post->ID );
+
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+      $children = get_pages( array( 'child_of' => $post_id ) );
+
+      //this is a parent
+      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+        $classes[] = 'department-home';
+      }
+    }
+  }
+    return $classes;
 }

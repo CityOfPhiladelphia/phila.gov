@@ -34,6 +34,12 @@
       margin-bottom: 0;
     }
   }
+  header{
+    background: rgba(255,255,255,0.6);
+  }
+  .app > .row:last-of-type {
+    background: transparent;
+  }
 
   /*
    *
