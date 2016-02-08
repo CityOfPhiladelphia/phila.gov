@@ -51,10 +51,6 @@ function phila_gov_setup() {
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
   add_image_size( 'home-thumb', 550, 360, true );
 
-  //added for use in custom-background
-
-  add_image_size('hero-crop', 1200, 210, array( 'center', 'top' ) );
-
   // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
 
