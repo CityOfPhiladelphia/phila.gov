@@ -52,27 +52,8 @@ article li:last-child{
 #content header{
   background: transparent;
 }
-body {
-  header{
-    background: $ben-franklin-blue;
-    .site-branding{
-      background: transparent;
-    }
-    .row+.row {
-      background: $ben-franklin-light;
-    }
-  }
-}
-
-body.home, body.department-home {
-  header {
-
-    background: rgba(255,255,255,0.6);
-
-    .site-branding {
-      background: transparent;
-    }
-  }
+header .site-branding {
+  background: transparent;
 }
 
 body.custom-background{
