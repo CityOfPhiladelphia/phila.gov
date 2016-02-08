@@ -5,120 +5,36 @@
  *
 */
 .home {
-  #welcome h1 {
-    margin:0 0 40px 0;
-    padding:0;
-    text-transform: none;
-    font-size: 2.4rem;
-    font-weight: 400;
-    color:$white;
-    @media screen and (max-width: 48em) {
-      font-size: 1.4rem;
-    }
-  }
-
-  .search {
-    width: 70%;
-    margin: 0 auto;
-
-    @media screen and (max-width: 48em) {
-      width: 100%;
-    }
-
-    input[type="text"]{
-      border:transparent;
-    }
-  }
-
-  .home-top{
-    background:$ben-franklin-blue;
-    padding:20px 0;
-    margin-bottom: 0;
-  }
-
-  .home-search {
-    @extend .group;
-    text-align: center;
-    padding:1.5em;
-    margin-bottom: 1em;
-    color:$white;
-
-    p {
-      margin: 0 0 1em 0;
-      padding:0;
-      font-size: 100%;
-    }
-    .search:before {
-      background: $bell-yellow;
-    }
-  }//.home-search
-
-  #popular {
-    margin-top: 50px;
-
-    p{
-      color:$white;
-      font-size:.9rem;
-      @media screen and (max-width: 48em) {
-        font-size: .8rem;
-      }
-    }
-
-    @media screen and (max-width: 64em) {
-      margin-top: 0;
-    }
-    @media screen and (max-width: 48em) {
-      a .fa-inverse {
-          font-size: 1.8rem !important;
-        }
-      .fa-3x {
-        font-size: 2em;
-        }
-      .h3 {
-        font-size:.7rem;
-      }
-    }
-  }
-
-
-  #services {
-    background:$ben-franklin-blue;
-    padding:1.5em 2em;
-    color:$white;
-    ul{
+  .hero-content {
+    h1 {
       margin:0;
-      padding:0;
-      list-style:none;
-
-      @media screen and (max-width: 40em) {
-        -webkit-column-count: 2; /* Chrome, Safari, Opera */
-        -moz-column-count: 2;
-        column-count: 2;
-        column-gap: 20px;
-      }
-
-      li {
-        margin:0;
-        padding:0 0 20px 0;
-        font-weight:400;
-        font-size:1rem;
-        @media screen and (max-width: 64em) {
-          font-size: .8rem;
-        }
+      padding: 1rem 0;
+      color:$white;
+      @media screen and (max-width: 48em) {
+        font-size: 1.4rem;
       }
     }
-    a:link, a:visited {
-      color:$white;
-      font-weight:normal;
+
+    .search {
+      width: 60%;
+      margin: 0 auto;
+
+      @media screen and (max-width: 48em) {
+        width: 100%;
+      }
+
+      input[type="text"]{
+        border:transparent;
+      }
     }
-    a:hover, a:active{
-      color:$black;
+
+    .home-top{
+      background:$ben-franklin-blue;
+      padding:20px 0;
+      margin-bottom: 0;
     }
-    .small-text{
-      color:$white;
-      font-style: italic;;
-    }
-  }//services
+  }
+
   /*
    *
    * homepage news styles
