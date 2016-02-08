@@ -7,93 +7,85 @@
 
 get_header(); ?>
 
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <div class="home-top">
-        <div class="row">
-          <section id="welcome" class="medium-16 columns">
-            <div class="home-search">
-              <header>
-                <h1>What can we help you find?</h1>
-              </header>
-                <?php get_search_form(); ?>
+<div id="primary" class="content-area">
+  <main id="main" class="site-main home" role="main">
+    <div class="hero-content">
+      <div class="row">
+        <section class="medium-18 small-centered columns">
+          <header>
+            <h1>What can we help you find?</h1>
+          </header>
+          <?php get_search_form(); ?>
+          <div class="row call-to-action">
+            <div class="small-6 columns">
+              <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
+                <span class="fa-stack fa-3x">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
+                  </span>
+                  <p>Report a Problem</p>
+                <span class="accessible"> Opens in new window</span>
+              </a>
               </div>
-              <div id="popular" class="row call-to-action">
-                <div class="small-6 columns">
-                  <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
-                    <span class="fa-stack fa-3x">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
-                      </span>
-                      <p>Report a Problem</p>
-                    <span class="accessible"> Opens in new window</span>
-                  </a>
-                  </div>
-                  <div class="small-6 columns">
-                    <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
-                     <span class="fa-stack fa-3x">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
-                      </span>
-                      <p>Pay a bill<p>
-                      <span class="accessible"> Opens in new window</span>
-                    </a>
-                  </div>
-                  <div class="small-6 columns">
-                    <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
-                      <span class="fa-stack fa-3x">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
-                      </span>
-                      <p>Find a Job</p>
-                      <span class="accessible"> Opens in new window</span>
-                    </a>
-                  </div>
-                  <div class="small-6 columns">
-                    <a href="/property">
-                      <span class="fa-stack fa-3x">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
-                      </span>
-                      <p>Property Search</p>
-                    </a>
-                </div>
-              </div><!--#popular -->
-            </section>
-              <div class="medium-8 columns">
-                <section id="services">
-                <?php
-                /* temp top-level topics list w/ descriptions */
-                   $args = array(
-                        'orderby' => 'name',
-                        'fields'=> 'all',
-                        'parent' => 0,
-                        'hide_empty'=> true
-                   );
-                  $terms = get_terms( 'topics', $args );
-                    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-                         echo '<ul>';
-                         foreach ( $terms as $term ) {
-                             echo '<li><a href="/browse/' . $term->slug .  '">' . $term->name . '</a></li>';
-                         }
-                         echo '</ul>';
-                        }
-                        ?>
-                        <p class="small-text">More topics coming soon</p>
-                  </section>
+              <div class="small-6 columns">
+                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
+                 <span class="fa-stack fa-3x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
+                  </span>
+                  <p>Pay a bill<p>
+                  <span class="accessible"> Opens in new window</span>
+                </a>
+              </div>
+              <div class="small-6 columns">
+                <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
+                  <span class="fa-stack fa-3x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
+                  </span>
+                  <p>Find a Job</p>
+                  <span class="accessible"> Opens in new window</span>
+                </a>
+              </div>
+              <div class="small-6 columns">
+                <a href="/property">
+                  <span class="fa-stack fa-3x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                  </span>
+                  <p>Property Search</p>
+                </a>
             </div>
-          </div><!--.row -->
+          </div><!--#popular -->
+          <div class="row expanded topic-main-nav">
+          <?php
+             $args = array(
+              'orderby' => 'name',
+              'fields'=> 'all',
+              'parent' => 0,
+              'hide_empty'=> true
+             );
+            $terms = get_terms( 'topics', $args );
+              if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+                foreach ( $terms as $term ) {
+                  echo '<a href="/browse/' . $term->slug .  '">' . $term->name . '</a>';
+                 }
+              }
+            ?>
+          </div>
+        </section>
+      </div>
     </div>
     <div class="home-news">
       <div class="row">
         <section id="news">
             <?php
                 $args = array(
-                    'post_type' => array ('news_post'),
-                    'posts_per_page'    => 3,
-                    'meta_key'          => 'phila_show_on_home',
-                    //only show if "yes" is selected
-                    'meta_value'     => '1'
+                  'post_type' => array ('news_post'),
+                  'posts_per_page'    => 3,
+                  'meta_key'          => 'phila_show_on_home',
+                  //only show if "yes" is selected
+                  'meta_value'     => '1'
                 );
                 $counter = 0;
                 $news_query = new WP_Query($args);
@@ -158,6 +150,6 @@ get_header(); ?>
 
     </section><!--#active-->
   </main><!-- #main -->
-</div><!-- #primary -->`
+</div><!-- #primary -->
 
 <?php get_footer(); ?>
