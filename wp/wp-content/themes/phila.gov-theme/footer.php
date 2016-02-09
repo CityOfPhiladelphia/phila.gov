@@ -26,6 +26,18 @@
  </div><!-- #page -->
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer" role="contentinfo">
+  <?php
+    if (isset($_POST)): ?>
+      <?php
+        if($current_post_type == 'department_page'): ?>
+        <section class="contact">
+          <div class="row">
+            <?php echo phila_get_dept_contact_blocks(); ?>
+          </div>
+          <?php get_template_part( 'partials/content', 'modified' ) ?>
+        </section>
+      <?php endif; ?>
+    <?php endif; ?>
   <section class="fat">
     <div class="row">
       <div class="large-8 columns">
