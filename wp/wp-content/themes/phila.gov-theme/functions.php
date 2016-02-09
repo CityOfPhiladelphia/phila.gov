@@ -741,4 +741,45 @@ function phila_output_header_images(){
   $output = "<style type='text/css' id='alpha-custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
 
   echo $output;
+
+}
+
+
+/**
+ * Adds 'department-home' class to appropiate department homepages.
+ *
+ * @since 0.23.0
+ * @link https://codex.wordpress.org/Function_Reference/body_class
+ * @param $classes
+ *
+ */
+
+add_filter( 'body_class', 'phila_home_classes' );
+
+function phila_home_classes( $classes ) {
+
+  global $post;
+
+  if ( isset($post) ) {
+
+    if ( $post->post_type == 'department_page' ) {
+
+      $parents = get_post_ancestors( $post->ID );
+
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+      $children = get_pages( array( 'child_of' => $post_id ) );
+
+      //this is a parent
+      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+
+        if ( has_post_thumbnail( $post->ID ) ) {
+
+          $classes[] = 'department-home';
+
+        }
+      }
+    }
+  }
+    return $classes;
 }
