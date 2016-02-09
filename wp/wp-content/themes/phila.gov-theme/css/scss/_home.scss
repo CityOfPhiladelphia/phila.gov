@@ -6,6 +6,8 @@
 */
 .home {
   .hero-content {
+    position: relative;
+
     h1 {
       margin:0;
       padding: 1rem 0;
@@ -28,10 +30,19 @@
       }
     }
 
-    .home-top{
-      background:$ben-franklin-blue;
-      padding:20px 0;
-      margin-bottom: 0;
+  }
+  #site-nav{
+    margin-top: -35px;
+    padding-top:55px;
+    text-align: center;
+
+    nav {
+      display: table;
+      margin:0 auto;
+      ul {
+        display: table-cell;
+
+      }
     }
   }
   header{
@@ -41,87 +52,6 @@
     background: transparent;
   }
 
-  /*
-   *
-   * homepage news styles
-   *
-   *
-  */
-  .home-news {
-      background:#F9F9F9;
-      padding: 20px 0;
-  }
-  #news {
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: stretch;
-      flex-align: stretch;
-      -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-
-      .story {
-          background: $white;
-          @extend .group;
-          border: 1px solid $ghost-gray;
-          margin-bottom: 20px;
-          cursor: default;
-
-          @media screen and (min-width: 48em){
-              width:100%;
-              margin-bottom:0;
-          }
-      }
-
-      h3 {
-          border-bottom: 1px solid $ghost-gray;
-          margin: 1em 0 0 0;
-          padding: 0 0 .5em 0;
-          word-break: break-word;
-      }
-
-      a:link > h3, a:visited > h3 {
-          color:$ghost-gray;
-      }
-      a:hover > h3, a:active > h3{
-          color:$ben-franklin-blue;
-      }
-      span {
-          color: $ghost-gray;
-          font-size: 80%;
-
-      }
-      p{
-          margin:.5em 0;
-          font-size:.9em;
-      }
-      img {
-          width:100%;
-          height:auto;
-
-      @media screen and (min-width: 35.5em){
-          max-width:293px;
-          float:left;
-          margin:0 20px 0 0;
-          }
-
-      @media screen and (min-width: 64em) {
-          float:none;
-          width:100%;
-          }
-      }//img
-
-      .read-more{
-          float:right;
-      }
-
-      > div {
-        display: -webkit-flex;
-        display: flex;
-
-      }
-  }//#news
   #active {
     padding:20px 0;
 
