@@ -540,6 +540,17 @@ function phila_get_department_menu() {
   }
 }
 
+function phila_get_dept_contact_blocks(){
+    $categories = get_the_category();
+    foreach ( $categories as $category ) {
+      $cat_slug = $category->slug;
+      $cat_id = $category->cat_ID;
+      $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
+      //echo $current_sidebar_name;
+    }
+    return dynamic_sidebar( $current_sidebar_name );
+}
+
 function phila_get_full_page_title(){
   global $post;
   $page_path = '';
