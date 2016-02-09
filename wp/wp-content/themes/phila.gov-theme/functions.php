@@ -783,7 +783,12 @@ function phila_home_classes( $classes ) {
 
       //this is a parent
       if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
-        $classes[] = 'department-home';
+
+        if ( has_post_thumbnail( $post->ID ) ) {
+
+          $classes[] = 'department-home';
+
+        }
       }
     }
   }
