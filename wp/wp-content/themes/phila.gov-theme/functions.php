@@ -757,7 +757,7 @@ function phila_output_header_images(){
 
 
 /**
- * Adds 'department-home' class to appropiate department homepages.
+ * Adds 'department-home' class to appropiate department homepages or a 'department-landing' class to departments with no bg selected
  *
  * @since 0.23.0
  * @link https://codex.wordpress.org/Function_Reference/body_class
@@ -781,16 +781,21 @@ function phila_home_classes( $classes ) {
 
       $children = get_pages( array( 'child_of' => $post_id ) );
 
-      //this is a parent
+      //this is a department homepage
       if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+        //this class allows us to determine if a department page is just a holder for a site
+        $classes[] = 'department-landing';
 
         if ( has_post_thumbnail( $post->ID ) ) {
-
+          //this classname is important b/c we reference it in scripts.js to determine which header should be displayed (blue or white)
           $classes[] = 'department-home';
 
         }
+
       }
+
     }
+
   }
     return $classes;
 }
