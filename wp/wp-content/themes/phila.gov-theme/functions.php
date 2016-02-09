@@ -799,3 +799,32 @@ function phila_home_classes( $classes ) {
   }
     return $classes;
 }
+
+function phila_get_home_news(){
+  $category = get_the_category();
+  $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
+
+  $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
+
+  echo '<a href="' . get_permalink() .'" class="card equal">';
+
+  the_post_thumbnail( 'home-thumb'  );
+
+  if (function_exists('rwmb_meta')) {
+
+    echo '<div class="content-block">';
+
+    the_title('<h3>', '</h3>');
+
+    if ($contributor === ''){
+        echo '<span>' . $category[0]->cat_name . '</span>';
+    }else {
+        echo '<span>' . $contributor . '</span>';
+    }
+
+    echo '<p>' . $desc  . '</p>';
+
+  }
+
+  echo '</div></a>';
+}

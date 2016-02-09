@@ -13,7 +13,7 @@ get_header(); ?>
       <div class="row">
         <section class="medium-18 small-centered columns">
           <header>
-            <h1>What can we help you find?</h1>
+            <h1><?php printf( __( 'What can we help you find?') ) ?></h1>
           </header>
           <?php get_search_form(); ?>
           <div class="row call-to-action">
@@ -76,43 +76,49 @@ get_header(); ?>
         </section>
       </div>
     </div>
-    <div class="home-news">
-      <div class="row">
-        <section id="news">
+    <div id="site-nav" class="row expanded">
+      <div class="small-24 columns links">
+        <nav>
+          <ul class="menu">
+            <li><a href="/departments"><i class="fa fa-sitemap"></i> Department Directory</a></li>
+            <li><a href="/departments/mayor"><i class="fa fa-university"></i> Mayor's Office</a></li>
+            <li><a href="http://www.phila.gov/map"><i class="fa fa-map-marker"></i> Maps</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="news-row row expanded">
+      <div class="columns">
+        <div class="row">
+          <div class="columns">
+            <h2 class="contrast"><?php printf( __( 'News' ) ) ?> </h2>
+          </div>
+        </div>
+          <div class="row equal-height">
             <?php
-                $args = array(
-                  'post_type' => array ('news_post'),
-                  'posts_per_page'    => 3,
-                  'meta_key'          => 'phila_show_on_home',
-                  //only show if "yes" is selected
-                  'meta_value'     => '1'
-                );
-                $counter = 0;
-                $news_query = new WP_Query($args);
-                if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+              $args = array(
+                'post_type' => array ('news_post'),
+                'posts_per_page'    => 3,
+                'meta_key'          => 'phila_show_on_home',
+                //only show if "yes" is selected
+                'meta_value'     => '1'
+              );
+              $news_query = new WP_Query( $args );
+              if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
 
-                <div class="small-24 medium-8 columns">
-                    <div class="story">
-                        <?php get_home_news(); ?>
-                    </div>
-                </div>
-            <?php
-                $counter++;
-                if ($counter === 1 || $counter === 2){
-                 //echo '<div class="small-1 columns"></div>';
-                }
-            ?>
-                <?php endwhile; ?>
+              <div class="small-24 medium-8 columns">
+                <?php phila_get_home_news(); ?>
+              </div>
+              <?php endwhile; ?>
 
-                <?php else : ?>
-                    <div class="alert">No recent news.</div>
-                <?php endif; ?>
+              <?php else : ?>
+                  <div class="alert">No recent news.</div>
+              <?php endif; ?>
 
-        </section><!--#news-->
         </div><!-- .row -->
-    </div><!-- .home-news -->
-
-    <section id="active" class="row">
+      </div><!-- .home-news -->
+    </div>
+    <section id="active" class="row center">
       <div class="small-24 large-17 columns related">
         <div class="row">
           <header>
@@ -141,13 +147,6 @@ get_header(); ?>
         </dl>
       </div>
     </div>
-    <div class="small-24 large-7 columns links">
-      <a class="button icon full" href="/departments">Department Directory<i class="fa fa-sitemap"></i></a>
-      <a class="button icon full" href="/departments/mayor">Mayor's Office<i class="fa fa-university"></i></a>
-      <a class="button icon full" href="/news">News<i class="fa fa-microphone"></i></a>
-      <a class="button icon full" href="http://www.phila.gov/map" target="_blank">Maps<i class="fa fa-map-marker"></i><span class="accessible"> Opens in new window</span></a>
-    </div>
-
     </section><!--#active-->
   </main><!-- #main -->
 </div><!-- #primary -->
