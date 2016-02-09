@@ -2,14 +2,14 @@
   text-align: center;
 
   @media screen and (min-width: 48em) {
-    margin-top:100px;
+    margin-top:150px;
   }
 
   section{
     background:$ben-franklin-blue;
   }
   .call-to-action {
-    margin-top: 50px;
+    margin: 40px 0;
 
     p{
       color:$white;
@@ -20,12 +20,16 @@
     }
 
     @media screen and (max-width: 64em) {
-      margin-top: 0;
+      margin: 20px 0;
     }
     @media screen and (max-width: 48em) {
       a .fa-inverse {
-          font-size: 1.8rem !important;
+        font-size: 1.8rem;
+          
+        span.h6 {
+          font-size: 1.8rem;
         }
+      }
       .fa-3x {
         font-size: 2em;
         }
@@ -44,7 +48,7 @@
       flex-grow:1;
       margin:0;
       padding:.5rem 0;
-      width:25%;
+      width:100%;
       display: inline-block;
       border-left:1px solid $ben-franklin-blue;
       border-right:1px solid $ben-franklin-blue;
@@ -52,6 +56,10 @@
       color:white;
       text-transform: uppercase;
       font-weight: normal;
+
+      @media screen and (min-width: 64em) {
+        width:25%;
+      }
 
       &:hover, &:active{
         background: $ben-franklin-light;
