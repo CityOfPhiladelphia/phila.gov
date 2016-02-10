@@ -1,3 +1,51 @@
+@media screen and (min-width: 35.5em){
+  .entry-content > div {
+    margin:0 20px 0 0;
+  }
+}
+.group::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.navigation {
+  margin-top:1rem;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-size:.95rem;
+  .page-numbers{
+    padding: 5px;
+    &.next, &.prev{
+      padding:0;
+    }
+  }
+  i{
+    color:$white;
+    background:$bell-yellow;
+    padding:5px;
+  }
+}
+body.home header.site-header,
+body.department-home header.site-header{
+
+  background: rgba(225, 225, 225, .4);
+
+  .breadcrumbs{
+    display: none;
+  }
+
+}
+#content header{
+  background: transparent;
+}
+header .site-branding {
+  background: transparent;
+}
+
+body.custom-background{
+  background-size:100%;
+}
 
 .departments .topic {
     clear:both;
