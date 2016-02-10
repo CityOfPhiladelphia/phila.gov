@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="row site-branding">
       <div class="small-24 medium-12 columns">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo">
-          <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png"></a>
+          <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png"></a>
           <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>

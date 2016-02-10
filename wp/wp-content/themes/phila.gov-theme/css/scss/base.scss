@@ -48,25 +48,21 @@ article li:last-child{
     padding:5px;
   }
 }
+body.home header.site-header,
+body.department-home header.site-header{
 
+  background: rgba(225, 225, 225, .4);
+
+  .breadcrumbs{
+    display: none;
+  }
+
+}
 #content header{
   background: transparent;
 }
 header .site-branding {
   background: transparent;
-}
-
-header.app .logo img{
-
-  display: block;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background: url("//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png") no-repeat;
-  width: 178px; /* Width of new image */
-  height: 50px; /* Height of new image */
-  padding-left: 178px; /* Equal to width of new image */
-  background-size: contain;
-
 }
 
 body.custom-background{
