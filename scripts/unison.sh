@@ -4,5 +4,6 @@
 
 _dir="$(dirname "$0")"
 
+echo "Downloading unison command"
 curl -s "$("$_dir/s3url.sh" "$PHILA_DEPLOY_BUCKET" bin/unison)" | sudo tee /usr/local/bin/unison > /dev/null
 sudo chmod 755 /usr/local/bin/unison
