@@ -496,10 +496,10 @@ function provide_feedback(){
 }
 
 function still_migrating_content(){
-    echo '<p>Can\'t find what you\'re looking for? We\'re still moving content. </p>';
-    echo '<p><a href="javascript:searchPhilaGov()">Search phila.gov</a> or <a href="';
+    echo '<p>We\'re still moving content. </p>';
+    echo '<p><a href="http://www.phila.gov">Visit phila.gov</a> or <a href="';
     get_template_part( 'partials/content', 'feedback-url' );
-    echo '" target="_blank">tell us what you\'re looking for. <span class="accessible">Opens in new window</span></a></p>';
+    echo '">tell us how this page could be better.</a></p>';
 }
 
 function get_department_menu() {

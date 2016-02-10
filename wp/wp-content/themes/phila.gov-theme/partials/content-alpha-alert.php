@@ -15,16 +15,17 @@
           <?php else :
             $about_link = sprintf( esc_html_x( '%s', 'under construction', 'phila-gov' ), '<a href="/about/">work-in-progress</a>' ); ?>
 
-            <p> <?php _e('This site is a ' . $about_link . ' that will change as we add content. Please notify us of errors.', 'phila-gov') ; ?> </p>
+            <p> <?php _e('This site is a ' . $about_link . ' that will change as we add content. Please ', 'phila-gov') ; ?>
+
+            <a class="feedback" href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>">
+                <?php printf( __( 'notify us of errors.', 'phila-gov' )); ?>
+              </a>
+             </p>
 
             <a class="go-back small-text external" href="http://www.phila.gov" target="_blank">Take me back to Phila.gov<span class="accessible"> Opens in new window</span></a>
       <?php endif; ?>
     </div>
-    <div class="large-7 columns contact">
-      <a class="feedback" href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>" target="_blank"><i class="fa fa-comments"></i>
-        <?php printf( __( 'Provide Feedback', 'phila-gov' )); ?>
-        <span class="accessible"> Opens in new window</span>
-      </a>
+    <div class="large-7 columns text-right">
       <i class="fa fa-globe"></i><div id="google_translate_element"></div>
         <script type="text/javascript">
           function googleTranslateElementInit() {
