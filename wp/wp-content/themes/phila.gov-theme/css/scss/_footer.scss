@@ -1,0 +1,41 @@
+/*
+ *
+ * Footers
+ *
+ *
+*/
+footer{
+  .contact{
+    font-family: "Open Sans",Helvetica,Roboto,Arial,sans-serif;
+    background:$ghost-gray;
+    color:$dark-gray;
+    padding:1rem;
+
+    aside{
+      font-size: 0.85rem;
+      margin:30px 0px;
+      a:link {
+        color:$dark-gray;
+        font-weight: bold;
+      }
+    }
+    aside:not(:last-child) {
+      border-right: 1px solid rgba(68,68,68, 0.5);
+    }
+
+    a:link{
+        color: #2582e6;
+        text-decoration: none;
+        font-weight: normal;
+    }
+    .logo{
+      padding:1rem 0;
+    }
+    .vcard, .vcard-label{
+      color:$dark-gray;
+      font-weight: bold;
+      text-transform: none;
+      margin: 1em 0;
+    }
+  }
+}
