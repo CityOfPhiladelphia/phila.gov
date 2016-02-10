@@ -60,6 +60,5 @@ get_header(); ?>
 	}
   ?>
 </article><!-- #post-## -->
-<?php get_template_part( 'partials/content', 'modified' ) ?>
 
 <?php get_footer(); ?>
