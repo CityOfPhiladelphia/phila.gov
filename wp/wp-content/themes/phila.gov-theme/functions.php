@@ -197,9 +197,9 @@ function phila_gov_widgets_init() {
       'name'          => __( $name . ' Sidebar', 'phila-gov' ),
       'id'            => 'sidebar-' . $slug .'-' . $cat_id,
       'description'   => '',
-      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s">',
+      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center equal">',
       'after_widget'  => '</aside>',
-      'before_title'  => '<h1 class="widget-title">',
+      'before_title'  => '<h1 class="h4 widget-title">',
       'after_title'   => '</h1>',
     ) );
   }
@@ -544,6 +544,16 @@ function get_department_menu() {
     );
     wp_nav_menu( $defaults );
   }
+}
+
+function phila_get_dept_contact_blocks(){
+  $categories = get_the_category();
+  foreach ( $categories as $category ) {
+    $cat_slug = $category->slug;
+    $cat_id = $category->cat_ID;
+    $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
+  }
+  dynamic_sidebar( $current_sidebar_name );
 }
 
 function phila_get_full_page_title(){

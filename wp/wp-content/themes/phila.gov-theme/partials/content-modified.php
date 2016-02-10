@@ -8,8 +8,7 @@
      wp_reset_postdata();
 ?>
 <div class="row">
-  <div class="small-24 columns">
-    <hr>
+  <div class="small-24 columns center">
     <?php
     // NOTE: the id is important. Google Tag Manager uses it to attach the
     // last modified date to our web analytics.
