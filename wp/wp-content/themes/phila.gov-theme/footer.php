@@ -31,7 +31,7 @@
       <?php
         if($current_post_type == 'department_page'): ?>
         <section class="contact">
-          <div class="row">
+          <div class="row equal-height">
             <?php echo phila_get_dept_contact_blocks(); ?>
           </div>
           <?php get_template_part( 'partials/content', 'modified' ) ?>
