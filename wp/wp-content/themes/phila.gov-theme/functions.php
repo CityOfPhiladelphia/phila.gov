@@ -719,6 +719,12 @@ function phila_output_header_images(){
   if ( is_front_page() ) {
     $page_bg_image_url = get_background_image();
 
+  }elseif( is_404() ) {
+    $page_bg_image_url = null;
+
+  }elseif( !isset($post) ) {
+    $page_bg_image_url = null;
+
   }elseif ( $post->post_type == 'department_page' ) {
 
     $parents = get_post_ancestors( $post->ID );
@@ -738,15 +744,15 @@ function phila_output_header_images(){
 
         $page_bg_image_url = $page_bg_image[0]; // this returns just the URL of the image
       }else{
-        $page_bg_image_url = '';
+        $page_bg_image_url = null;
       }
 
     }else{
-      $page_bg_image_url = '';
+      $page_bg_image_url = null;
     }
 
   }else {
-    $page_bg_image_url = '';
+    $page_bg_image_url = null;
   }
 
   $output = "<style type='text/css' id='alpha-custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
