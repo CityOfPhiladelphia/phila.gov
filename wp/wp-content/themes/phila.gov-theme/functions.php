@@ -199,7 +199,7 @@ function phila_gov_widgets_init() {
       'description'   => '',
       'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center">',
       'after_widget'  => '</aside>',
-      'before_title'  => '<h1 class="h6 widget-title">',
+      'before_title'  => '<h1 class="h4 widget-title">',
       'after_title'   => '</h1>',
     ) );
   }
