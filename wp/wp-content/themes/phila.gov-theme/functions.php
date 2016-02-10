@@ -712,10 +712,13 @@ function phila_output_header_images(){
 
   if ( is_front_page() ) {
     $page_bg_image_url = get_background_image();
+
   }elseif( is_404() ) {
     $page_bg_image_url = null;
+
   }elseif( !isset($post) ) {
     $page_bg_image_url = null;
+
   }elseif ( $post->post_type == 'department_page' ) {
     $parents = get_post_ancestors( $post->ID );
 
