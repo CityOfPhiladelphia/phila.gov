@@ -1,26 +1,8 @@
 #!/bin/bash
 #
-# Script for installing Unison (http://www.cis.upenn.edu/~bcpierce/unison/)
+# Script for downloading unison command for file syncing with joia
 
-export DEBIAN_FRONTEND=noninteractive
-sudo apt-get install -y exuberant-ctags gcc make
+_dir="$(dirname "$0")"
 
-unison_version="unison-2.48.3"
-ocaml_version="ocaml-4.02.3"
-
-cd /tmp
-
-wget http://caml.inria.fr/pub/distrib/ocaml-4.02/$ocaml_version.tar.gz
-tar xzf $ocaml_version.tar.gz
-cd $ocaml_version
-./configure
-make -s world opt
-sudo make -s install
-cd -
-
-wget http://www.seas.upenn.edu/~bcpierce/unison/download/releases/stable/$unison_version.tar.gz
-tar xzf $unison_version.tar.gz
-cd $unison_version
-make -s
-sudo cp -v unison /usr/local/bin/
-cd -
+curl -s "$("$_dir/s3url.sh" "$PHILA_DEPLOY_BUCKET" bin/unison)" | sudo tee /usr/local/bin/unison > /dev/null
+sudo chmod 755 /usr/local/bin/unison
