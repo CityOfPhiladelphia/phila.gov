@@ -197,7 +197,7 @@ function phila_gov_widgets_init() {
       'name'          => __( $name . ' Sidebar', 'phila-gov' ),
       'id'            => 'sidebar-' . $slug .'-' . $cat_id,
       'description'   => '',
-      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center">',
+      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center equal">',
       'after_widget'  => '</aside>',
       'before_title'  => '<h1 class="h4 widget-title">',
       'after_title'   => '</h1>',
