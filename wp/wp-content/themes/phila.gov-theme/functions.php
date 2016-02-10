@@ -547,7 +547,7 @@ function phila_get_dept_contact_blocks(){
     $cat_id = $category->cat_ID;
     $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
   }
-  return dynamic_sidebar( $current_sidebar_name );
+  dynamic_sidebar( $current_sidebar_name );
 }
 
 function phila_get_full_page_title(){
