@@ -48,17 +48,18 @@ li:last-child{
     padding:5px;
   }
 }
+body.home header.site-header,
+body.department-home header.site-header{
 
-#content header{
-  background: transparent;
-}
+  background: rgba(225, 225, 225, .4);
 
-header {
-  background: rgba(255,255,255,0.6);
-  .site-branding {
-    background: transparent;
+  .breadcrumbs{
+    display: none;
   }
 
+}
+#content header{
+  background: transparent;
 }
 
 body.custom-background{
