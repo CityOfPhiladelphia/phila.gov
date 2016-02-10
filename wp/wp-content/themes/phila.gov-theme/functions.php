@@ -542,12 +542,19 @@ function phila_get_department_menu() {
 
 function phila_get_dept_contact_blocks(){
   $categories = get_the_category();
-  foreach ( $categories as $category ) {
-    $cat_slug = $category->slug;
-    $cat_id = $category->cat_ID;
-    $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
+
+  if (count($categories)==1){
+    foreach ( $categories as $category ) {
+      $cat_slug = $category->slug;
+      $cat_id = $category->cat_ID;
+      $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
+    }
+    dynamic_sidebar( $current_sidebar_name );
   }
-  dynamic_sidebar( $current_sidebar_name );
+  else{
+    dynamic_sidebar( 'uncategorized' );
+  }
+  
 }
 
 function phila_get_full_page_title(){
