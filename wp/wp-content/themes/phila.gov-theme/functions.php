@@ -292,7 +292,7 @@ require get_template_directory() . '/inc/department-menu.php';
  * Add breadcrumb support
  *
  */
-function the_breadcrumb() {
+function phila_breadcrumbs() {
   global $post;
   global $output;
   global $i;
@@ -302,7 +302,7 @@ function the_breadcrumb() {
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
-    util_echo_website_url();
+    phila_util_echo_website_url();
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
@@ -485,24 +485,18 @@ function the_breadcrumb() {
  */
 
 //this is used throughout the theme and is meant to be updated once the major switch happens
-function util_echo_website_url(){
+function phila_util_echo_website_url(){
     echo 'alpha.phila.gov';
 }
 
-function provide_feedback(){
-    echo '<div class="button-with-icon"><a class="pure-button feedback" href="';
+function phila_still_migrating_content(){
+    echo '<p>We\'re still working on this page\'s design and content. ';
+    echo '<a href="';
     get_template_part( 'partials/content', 'feedback-url' );
-    echo '" target="_blank"><span>Provide Feedback</span> <span class="accessible">Opens in new window</span></a></div>';
+    echo '">How can we make it better?</a></p>';
 }
 
-function still_migrating_content(){
-    echo '<p>Can\'t find what you\'re looking for? We\'re still moving content. </p>';
-    echo '<p><a href="javascript:searchPhilaGov()">Search phila.gov</a> or <a href="';
-    get_template_part( 'partials/content', 'feedback-url' );
-    echo '" target="_blank">tell us what you\'re looking for. <span class="accessible">Opens in new window</span></a></p>';
-}
-
-function get_department_menu() {
+function phila_get_department_menu() {
      /*
     Set the menus. We use categories to drive functionality.
     Pass the current category (there should only ever be 1)
