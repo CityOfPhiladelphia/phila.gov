@@ -5,6 +5,11 @@
  *
 */
 .home {
+
+  header.site-header>.row:last-of-type{
+    background: transparent;
+  }
+
   .hero-content {
     position: relative;
 
@@ -66,6 +71,7 @@
       }
 
       @media screen and (min-width: 48em){
+
           dt, dd {
               margin:0 0 10px 0;
               padding:0 0 10px 0;
