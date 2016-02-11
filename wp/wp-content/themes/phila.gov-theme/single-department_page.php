@@ -18,9 +18,9 @@ $ancestors = get_post_ancestors($post);
 
 //if there are grandchildren, don't redirect those.
 if ( $children && count( $ancestors ) == 1 ) {
-	$firstchild = $children[0];
+  $firstchild = $children[0];
   wp_redirect(get_permalink($firstchild->ID));
-	exit;
+  exit;
 }
 get_header(); ?>
 
@@ -34,30 +34,30 @@ get_header(); ?>
   call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
   ?>
   <?php
-  	/*
-  	Our navigation menu. We use categories to drive functionality.
-  	This checks to make sure a category exisits for the given page,
-  	if it does, we render our menu w/ markup.
-  	*/
-  		get_department_menu();
+    /*
+    Our navigation menu. We use categories to drive functionality.
+    This checks to make sure a category exisits for the given page,
+    if it does, we render our menu w/ markup.
+    */
+      phila_get_department_menu();
   ?>
 
   <?php
-	if (function_exists('rwmb_meta')) {
-			$external_site = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
-	if (!$external_site == ''){
+  if (function_exists('rwmb_meta')) {
+      $external_site = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
+  if (!$external_site == ''){
 
-		get_template_part( 'templates/single', 'off-site' );
+    get_template_part( 'templates/single', 'off-site' );
 
- 	} else {
-  //loop for our regularly scheduled content
-	   while ( have_posts() ) : the_post();
+   } else {
+     //loop for our regularly scheduled content
+     while ( have_posts() ) : the_post();
 
       get_template_part( 'templates/single', 'on-site-content' );
 
-	    endwhile;
-		}
-	}
+      endwhile;
+    }
+  }
   ?>
 </article><!-- #post-## -->
 <?php get_template_part( 'partials/content', 'modified' ) ?>

@@ -17,7 +17,7 @@
 
   <div class="row">
     <div class="page-content small-24 columns">
-      <?php still_migrating_content();?>
+      <?php phila_still_migrating_content();?>
     </div><!-- .page-content -->
   </div><!-- .row-->
 </section><!-- .no-results -->
