@@ -65,7 +65,7 @@
     <?php endwhile; ?>
   <?php endif; ?>
 
-<div class="small-24 large-16 columns parent results">
+<div class="small-24 large-16 columns parent results tabs-panel is-active">
   <h1><?php echo $current_term->name ?></h1>
 
   <ul class="subtopics">
