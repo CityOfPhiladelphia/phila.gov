@@ -548,6 +548,7 @@ function get_department_menu() {
 
 function phila_get_dept_contact_blocks(){
   $categories = get_the_category();
+  $default_sidebar = 'sidebar-uncategorized-1';
 
   if (count($categories)==1){
     foreach ( $categories as $category ) {
@@ -555,12 +556,17 @@ function phila_get_dept_contact_blocks(){
       $cat_id = $category->cat_ID;
       $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
     }
-    dynamic_sidebar( $current_sidebar_name );
+    if(is_active_sidebar($current_sidebar_name)){
+      dynamic_sidebar( $current_sidebar_name );
+    }
+    else{
+      dynamic_sidebar( $default_sidebar );
+    }
   }
   else{
-    dynamic_sidebar( 'uncategorized' );
+    dynamic_sidebar( $default_sidebar );
   }
-  
+
 }
 
 function phila_get_full_page_title(){
