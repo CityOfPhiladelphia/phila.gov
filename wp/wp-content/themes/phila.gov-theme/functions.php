@@ -845,3 +845,54 @@ function phila_get_home_news(){
 
   echo '</div></a>';
 }
+
+/**
+ * Gets the list of topics available used in:
+ * templates/topics-child.php
+ * templates/topics-parent.php
+ * taxonomy-topics.php
+ *
+ */
+function phila_get_parent_topics(){
+
+  $args = array(
+    'orderby' => 'name',
+    'fields'=> 'all',
+    'parent' => 0,
+    'hide_empty'=> true
+  );
+
+  $terms = get_terms( 'topics', $args );
+  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+     echo '<ul class="no-bullet">';
+     foreach ( $terms as $term ) {
+         echo '<li class="'. $term->slug  . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
+     }
+     echo '</ul>';
+  }
+}
+/**
+ * Utility function to get a list of all topics and their children on the site.
+ *
+ */
+function phila_get_master_topics(){
+  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
+  echo '<ul>';
+  foreach($parent_terms as $key => $parent_term) {
+
+    echo '<li><h3>' . $parent_term->name . '</h3>';
+    echo  $parent_term->description;
+
+    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
+
+    if($child_terms) {
+      echo '<ul class="subtopics">';
+      foreach($child_terms as $key => $child_term) {
+        echo '<li><h4>' . $child_term->name . '</h4>';
+        echo  $child_term->description . '</li></li>';
+      }
+
+    }
+    echo '</ul>';
+  }
+}
