@@ -548,7 +548,11 @@ function get_department_menu() {
 
 function phila_get_dept_contact_blocks(){
   $categories = get_the_category();
-  $default_sidebar = 'sidebar-uncategorized-1';
+  $default_category_slug = 'uncategorized';
+  $default_category_object = get_category_by_slug($default_category_slug);
+  $default_category_id = $default_category_object->term_id;
+
+  $default_sidebar = 'sidebar-' . $default_category_slug .'-' . $default_category_id;
 
   if (count($categories)==1){
     foreach ( $categories as $category ) {
