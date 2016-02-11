@@ -12,9 +12,7 @@
       <div class="row">
         <div class="small-24 columns">
           <div class="panel center">
-            <?php echo 'Can\'t find what you are looking for? We\'re still moving content. <a href="';
-                  echo get_template_part( 'partials/content', 'feedback-url' );
-                  echo '&iHave=This%20website&whatHappened=I%20couldn%27t%20find%20what%20I%20was%20looking%20for">How could this page be better?'; ?>
+            <?php echo phila_still_migrating_content(); ?>
           </div>
         </div>
       </div>
@@ -30,7 +28,7 @@
         <h1>Government</h1>
         <nav class="government">
           <ul>
-            <li><a href="http://alpha.phila.gov"><?php util_echo_website_url() ;?></a></li>
+            <li><a href="http://alpha.phila.gov"><?php phila_util_echo_website_url() ;?></a></li>
             <li><a href="/departments">Department Directory</a></li>
             <li><a href="http://www.phila.gov/mayor">Mayor's Office</a></li>
             <li><a href="http://iframe.publicstuff.com/#?client_id=242">Report an Issue / 311</a></li>
@@ -63,10 +61,10 @@
     </div><!-- row -->
   </section><!-- fat -->
   <div class="row classic">
-    <div class="site-info large-6 columns">
-      <a href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>"><?php printf( __( 'How could this page be better?', 'phila-gov' ) ); ?></a>
+    <div class="site-info large-16 columns">
+      <?php printf('This site is a work-in-progress that will change as we add content. Please ');?> <a style="text-transform:uppercase; font-weight:bold;" href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>"><?php printf( __( 'notify us of errors.', 'phila-gov' ) ); ?></a>
     </div><!-- .site-info -->
-    <nav class="large-12 columns">
+    <nav class="large-8 columns">
       <ul class="inline-list">
           <li><a href="/terms-of-use">Terms of use</a></li>
           <li><a href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to know (pdf)</a></li>
