@@ -14,6 +14,7 @@ footer{
     aside{
       font-size: 0.85rem;
       margin:20px 0px;
+      border-bottom: 1px solid rgba(68,68,68, 0.5);
       a:link {
         color:$dark-gray;
         font-weight: bold;
@@ -21,14 +22,21 @@ footer{
     }
 
     @media only screen and (min-width: 40em) {
+      aside{
+        border-bottom: 0;
+      }
       aside:not(:last-child) {
         border-right: 1px solid rgba(68,68,68, 0.5);
       }
     }
     a:link{
-        color: #2582e6;
-        text-decoration: none;
-        font-weight: normal;
+      color: $ben-franklin-blue;
+      text-decoration: none;
+      font-weight: normal;
+    }
+    a:hover,
+    a:visited{
+      color: $dark-gray;
     }
     .logo{
       padding:1rem 0;
