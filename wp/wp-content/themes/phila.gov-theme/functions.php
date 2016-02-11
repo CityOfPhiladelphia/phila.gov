@@ -864,9 +864,9 @@ function phila_get_parent_topics(){
 
   $terms = get_terms( 'topics', $args );
   if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-     echo '<ul class="no-bullet">';
+     echo '<ul class="tabs vertical">';
      foreach ( $terms as $term ) {
-         echo '<li class="'. $term->slug  . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
+         echo '<li class="tabs-title '. $term->slug  . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
      }
      echo '</ul>';
   }

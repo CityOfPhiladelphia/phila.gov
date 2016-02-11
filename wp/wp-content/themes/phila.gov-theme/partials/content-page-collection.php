@@ -67,7 +67,7 @@
           <aside>
             <ul class="tabs vertical">
               <?php if ( $check_parent_content ) : ?>
-                <li class="tab-title<?php echo ( $current ) ? ' active' : ''?>">
+                <li class="tabs-title<?php echo ( $current ) ? ' is-active' : ''?>">
                   <a href="<?php echo $parent_link ?>">Overview</a>
                 </li>
               <?php endif; ?>
