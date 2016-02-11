@@ -6,7 +6,9 @@
   */
   ?>
 <nav class="topics-nav small-24 large-8 columns">
-  <?php get_parent_topics(); ?>
+  <?php
+  /* located in functions.php */
+  phila_get_parent_topics(); ?>
 </nav>
 
 <?php

@@ -40,7 +40,6 @@ require $dir. '/admin/tiny-mce.php';
 
 
 require $dir. '/public/blog-shortcode.php';
-require $dir. '/public/browse.php';
 require $dir. '/public/class-content-collection-walker.php';
 require $dir. '/public/class-phila-gov-department-notices.php';
 require $dir. '/public/class-phila-gov-filter-posts.php';
