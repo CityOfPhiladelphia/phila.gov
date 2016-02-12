@@ -15,7 +15,7 @@
   }
   @media only screen and (min-width: 40.063em) {
     .external-site a.button {
-      width:60%
+      // width:60%
     }
   }
   h1.alternate, h2.alternate, h3.alternate, h4.alternate, h5.alternate, h6.alternate {
@@ -29,7 +29,9 @@
     margin:1rem 0;
     line-height: 1.6;
   }
-
+  .button.icon .fa{
+    background: $sidewalk;
+  }
   .services-finder{
     background: $ghost-gray;
     padding: 1rem;
