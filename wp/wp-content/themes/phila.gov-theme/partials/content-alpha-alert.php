@@ -17,7 +17,7 @@
 
             <p> <?php _e('This site is a ' . $about_link . ' that will change as we add content. Please ', 'phila-gov') ; ?>
 
-            <a class="feedback" href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>">
+            <a class="feedback" href="<?php echo phila_util_echo_feedback_url(); ?>">
                 <?php printf( __( 'notify us of errors.', 'phila-gov' )); ?>
               </a>
              </p>
