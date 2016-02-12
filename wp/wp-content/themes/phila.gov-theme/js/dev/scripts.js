@@ -11,10 +11,6 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
-  if( $('body').is('[class*="home"]') ){
-    $('header').removeClass('app');
-  }
-
   var alphaAlertHeight = $("#alpha-alert").css( "height" );
 
   //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
