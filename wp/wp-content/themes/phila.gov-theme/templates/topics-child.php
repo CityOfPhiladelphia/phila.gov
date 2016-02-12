@@ -9,7 +9,7 @@
  <?php
    $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
    $parent = get_term($current_term->parent, get_query_var('taxonomy') );
-   echo '<h3 class="back-arrow"><a href="' . get_term_link( $parent, $parent->taxonomy )  .'">' . $parent->name . '</a></h3>'; ?>
+   echo '<h3><a href="' . get_term_link( $parent, $parent->taxonomy )  .'"><i class="fa fa-arrow-left"></i> ' . $parent->name . '</a></h3>'; ?>
   <?php
     /* located in functions.php */
     phila_get_parent_topics(); ?>
@@ -42,7 +42,9 @@
       <div class="row">
         <div class="small-24 columns">
           <ul>
-          <?php get_template_part( 'partials/content', 'list' ); ?>
+            <li>
+            <?php the_title( sprintf( '<h2 class="h4"><a href="%s" class="item">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+          </li>
         </ul>
         </div>
       </div>
