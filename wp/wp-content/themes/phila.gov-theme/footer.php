@@ -75,7 +75,7 @@
   </section><!-- fat -->
   <div class="row classic">
     <div class="site-info large-16 columns">
-      <?php printf('This site is a work-in-progress that will change as we add content. Please ');?> <a style="text-transform:uppercase; font-weight:bold;" href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>"><?php printf( __( 'notify us of errors.', 'phila-gov' ) ); ?></a>
+      <?php printf('This site is a work-in-progress that will change as we add content. Please ');?> <a style="text-transform:uppercase; font-weight:bold;" href="<?php echo phila_util_echo_feedback_url(); ?>"><?php printf( __( 'notify us of errors.', 'phila-gov' ) ); ?></a>
     </div><!-- .site-info -->
     <nav class="large-8 columns">
       <ul class="inline-list">

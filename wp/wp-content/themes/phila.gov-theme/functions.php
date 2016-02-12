@@ -499,7 +499,7 @@ function phila_util_echo_feedback_url(){
 function phila_still_migrating_content(){
     echo '<p>We\'re still working on this page\'s design and content. ';
     echo '<a href="';
-    get_template_part( 'partials/content', 'feedback-url' );
+    echo phila_util_echo_feedback_url();
     echo '">How can we make it better?</a></p>';
 }
 
