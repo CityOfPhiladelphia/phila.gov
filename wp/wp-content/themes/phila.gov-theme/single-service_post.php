@@ -11,7 +11,7 @@ get_header(); ?>
   <div class="row">
     <div class="small-24 columns">
   		<header class="entry-header">
-  			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+  			<?php the_title( '<h1 class="entry-title contrast h3">', '</h1>' ); ?>
   		</header><!-- .entry-header -->
     </div>
   </div>
@@ -76,7 +76,7 @@ get_header(); ?>
     }
     if (!$related_content == ''){
       ?>
-      <aside id="secondary" class="related no-border widget-area small-24 medium-6 columns" role="complementary">
+      <aside id="secondary" class="related widget-area small-24 medium-6 columns" role="complementary">
         <h3 class="alternate">Related Topics</h3>
           <?php echo $related_content ?>
       </aside>
