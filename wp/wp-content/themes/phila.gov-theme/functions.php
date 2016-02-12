@@ -559,12 +559,18 @@ function phila_get_dept_contact_blocks() {
       $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
     }
     if(is_active_sidebar( $current_sidebar_name )) {
+      echo '<div class="row equal-height">';
       dynamic_sidebar( $current_sidebar_name );
-    } else {
-      dynamic_sidebar( $default_sidebar );
+      echo '</div>';
+    } elseif(is_active_sidebar( $default_sidebar )) {
+        echo '<div class="row equal-height">';
+        dynamic_sidebar( $default_sidebar );
+        echo '</div>';
     }
-  } else {
-    dynamic_sidebar( $default_sidebar );
+  } elseif( ( !count($categories) == 1 ) && ( is_active_sidebar( $current_sidebar_name ) ) ) {
+      echo '<div class="row equal-height">';
+      dynamic_sidebar( $default_sidebar );
+      echo '</div>';
   }
 
 }
