@@ -13,19 +13,21 @@ footer{
 
     aside{
       font-size: 0.85rem;
-      margin:20px 0px;
-      border-bottom: 1px solid rgba(68,68,68, 0.5);
       a:link {
         color:$dark-gray;
         font-weight: bold;
       }
+      .content{
+        padding: 1rem;
+      }
+    }
+    aside:not(:last-child) {
+      border-bottom: 1px solid rgba(68,68,68, 0.5);
     }
 
     @media only screen and (min-width: 40em) {
-      aside{
-        border-bottom: 0;
-      }
       aside:not(:last-child) {
+        border-bottom: 0;
         border-right: 1px solid rgba(68,68,68, 0.5);
       }
     }
