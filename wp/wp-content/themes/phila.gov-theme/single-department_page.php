@@ -60,10 +60,4 @@ get_header(); ?>
   }
   ?>
 </article><!-- #post-## -->
-<?php
-  if ( !$external_site == '' ){
-    get_template_part( 'partials/content', 'feedback' );
-  }
-
-  get_footer();
-?>
+<?php get_footer(); ?>
