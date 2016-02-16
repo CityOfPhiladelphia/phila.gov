@@ -10,9 +10,11 @@
     padding: 0;
   }
   .intro{
+    margin-top: 2rem;
+    margin-bottom: 3.5rem;
     .intro-item{
       .row{
-        padding:2rem;
+        padding:1.5rem;
         background:$sidewalk;
       }
       &:first-of-type{
@@ -20,6 +22,9 @@
         background:$ghost-gray;
         margin-bottom: 0;
         }
+      }
+      .button{
+        margin: 0;
       }
     }
     h1 {
