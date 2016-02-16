@@ -9,16 +9,22 @@
     margin: .5rem 0 0 0;
     padding: 0;
   }
-  .intro-top{
-    background:$ghost-gray;
-    padding:2rem;
+  .intro{
+    .intro-item{
+      .row{
+        padding:2rem;
+        background:$sidewalk;
+      }
+      &:first-of-type{
+        .row {
+        background:$ghost-gray;
+        margin-bottom: 0;
+        }
+      }
+    }
     h1 {
       margin:0;
     }
-  }
-  .intro-bottom{
-    background: $ghost-gray;
-    padding: 1.5rem 2rem;
   }
   .columns.to-start-left{
     text-align: center;
@@ -27,7 +33,7 @@
     padding-left: 2em;
   }
   .columns.before-start-right{
-    border-left: 1px solid $medium-gray;
+    border-left: 2px solid $white;
     padding-left: 2rem;
     p, ul, ol {
       font-size:.75rem;
