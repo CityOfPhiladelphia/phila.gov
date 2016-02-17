@@ -37,9 +37,38 @@
   .file-type{
     text-transform:uppercase;
   }
-  table thead.light-head tr th{
-    background:$white;
+
+  table{
+      margin-top: 3.5rem;
+      margin-bottom: 3.5rem;
+      tr{
+      }
+      tr:nth-of-type(odd) {
+        background-color: $ghost-gray;
+      }
+      tr:nth-of-type(even) {
+        background-color: $sidewalk;
+      }
+
+      td{
+        border-right: 2px solid $white;
+        padding: 1rem;
+        &:last-of-type{
+          border-right: 0;
+        }
+      }
+      thead{
+        border: 0;
+      }
+      thead.light-head tr th{
+      background:$white;
+      color: $dark-gray;
+      }
+      .bell-yellow{
+        color: $bell-yellow;
+      }
   }
+
   .clickable-row{
     cursor:pointer;
     &:hover {
