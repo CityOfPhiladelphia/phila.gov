@@ -62,7 +62,7 @@
                 <span class="small-text file-type"> <?php phila_format_document_type( $file_type ); ?> </span>
               </div>
               <div class="medium-12 columns">
-                <i class="fa fa-download fa-3x bell-yellow"></i>
+                <i class="fa fa-download fa-2x"></i>
               </div>
             </div>
           <?php endif; ?>
