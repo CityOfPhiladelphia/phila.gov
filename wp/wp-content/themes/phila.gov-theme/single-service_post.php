@@ -44,12 +44,10 @@ get_header(); ?>
       <?php endif; ?>
       <div class="small-24 medium-8 intro-item columns center equal">
         <?php if (!$service_url == ''):?>
-          <div>
-            <a data-swiftype-index="false" class="button" href="<?php echo $service_url;?>">
-              <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
-              <span class="accessible"> External link</span>
-            </a>
-          </div>
+          <a data-swiftype-index="false" class="button" href="<?php echo $service_url;?>">
+            <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
+            <span class="accessible"> External link</span>
+          </a>
         <?php endif;?>
         <?php if (!$service_name == ''):?>
           <span data-swiftype-index="false" class="small-text">On the <?php echo $service_name;?> website</span>
