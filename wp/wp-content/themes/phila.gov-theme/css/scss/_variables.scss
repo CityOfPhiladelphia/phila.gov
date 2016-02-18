@@ -1,4 +1,6 @@
-//brights
+/*
+  BRIGHTS
+*/
 $ben-franklin-blue: #2582e6; //primary
 $bell-yellow: #f2c612; //secondary
 $flyers-orange: #f99300;
@@ -8,9 +10,23 @@ $ben-franklin-light: #96c9ff;
 $black: #000000;
 $white: #fff;
 
-//grays
+/*
+  GRAYS
+*/
 $dark-gray: #444;
 $medium-gray: #a1a1a1;
 $ghost-gray: #f0f0f0;
 
 $sidewalk: #cfcfcf;
+
+/*
+  SPACES
+*/
+$spacing-none: 0;
+$spacing-extra-small: .25rem;
+$spacing-small: .5rem;
+$spacing-medium: 1rem;
+$spacing-large: 2rem;
+$spacing-extra: 4rem;
+$spacing-extra-large: 6rem;
+$spacing-extra-extra-large: 10rem;
