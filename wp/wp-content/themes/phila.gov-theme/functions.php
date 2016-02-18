@@ -567,7 +567,7 @@ function phila_get_dept_contact_blocks() {
         dynamic_sidebar( $default_sidebar );
         echo '</div>';
     }
-  } elseif( ( !count($categories) == 1 ) && ( is_active_sidebar( $current_sidebar_name ) ) ) {
+  } elseif( ( ! count( $categories ) == 1 ) && ( is_active_sidebar( $default_sidebar ) ) ) {
       echo '<div class="row equal-height">';
       dynamic_sidebar( $default_sidebar );
       echo '</div>';
