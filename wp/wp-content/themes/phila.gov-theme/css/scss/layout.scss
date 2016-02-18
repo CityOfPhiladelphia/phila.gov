@@ -128,3 +128,9 @@ aside {
 .news-row{
   background:$white;
 }
+
+@media screen and (min-width: 40em) {
+  .border-right{
+    border-right:1px solid $dark-gray;
+  }
+}

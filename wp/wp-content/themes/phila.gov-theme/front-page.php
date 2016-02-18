@@ -118,35 +118,62 @@ get_header(); ?>
         </div><!-- .row -->
       </div><!-- .home-news -->
     </div>
-    <section id="active" class="row">
-      <div class="small-24 large-24 columns related">
-        <div class="row">
+    <section id="active">
+      <div class="row">
+        <div class="small-24 large-24 columns">
           <header>
-              <h1>Most Active</h1>
+            <h1 class="contrast">Most Active</h1>
           </header>
-        <dl>
-          <dt class="medium-24 large-7 columns"><a href="http://alpha.phila.gov/property" class="h3" target="_blank">Property Information<span class="accessible"> Opens in new window</span></a>
-          <span>Property Assessment</span></dt>
-          <dd class="medium-24 large-16 columns">Search and compare property data in the City of Philadelphia</dd>
-
-          <dt class="medium-24 large-7 columns"><a href="http://www.phila.gov/revenue/realestatetax/" class="h3" target="_blank">Real Estate Tax<span class="accessible"> Opens in new window</span></a>
-          <span>Revenue</span></dt>
-          <dd class="medium-24 large-16 columns">Real Estate Tax bills are sent in December for the following year and payments are due March 31st.</dd>
-
-          <dt class="medium-24 large-7 columns"><a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a>
-          <span>L+I</span></dt>
-          <dd class="medium-24 large-16 columns">Search and view all previous applications, approved uses and site drawings for a parcel of land.</dd>
-
-          <dt class="medium-24 large-7 columns"><a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3" target="_blank">Correctional Facilities<span class="accessible"> Opens in new window</span></a>
-          <span>Prisons</span></dt>
-          <dd class="medium-24 large-16 columns">Find facility history, visiting rules, and hours.</dd>
-
-          <dt class="medium-24 large-7 columns"><a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a>
-          <span>Revenue</span></dt>
-          <dd class="medium-24 large-16 columns end">Learn about taxes that individuals must remit and/or file in Philadelphia.</dd>
-        </dl>
+        </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="medium-24 large-6 columns">
+          <div class="mam-mu border-right">
+            <a href="http://www.phila.gov/revenue/realestatetax/" class="h3" target="_blank">Real Estate Tax<span class="accessible"> Opens in new window</span></a><br>
+            <span>Revenue</span>
+            </div>
+        </div>
+        <div class="medium-24 large-18 columns">
+          <div class="mam-mu">Real Estate Tax bills are sent in December for the following year and payments are due March 31st.</div>
+        </div>
+        <hr class="mrm-mu mlm-mu ptm">
+      </div>
+      <div class="row">
+        <div class="medium-24 large-6 columns">
+          <div class="mam-mu border-right">
+            <a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a><br>
+            <span>L+I</span>
+            </div>
+          </div>
+          <div class="medium-24 large-18 columns">
+            <div class="mam-mu">Search and view all previous applications, approved uses and site drawings for a parcel of land.</div>
+          </div>
+          <hr class="mrm-mu mlm-mu ptm">
+      </div>
+      <div class="row">
+        <div class="medium-24 large-6 columns">
+          <div class="mam-mu border-right">
+            <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3" target="_blank">Correctional Facilities<span class="accessible"> Opens in new window</span></a><br>
+          <span>Prisons</span>
+          </div>
+        </div>
+        <div class="medium-24 large-18 columns">
+          <div class="mam-mu">Find facility history, visiting rules, and hours.</div>
+        </div>
+        <hr class="mrm-mu mlm-mu ptm">
+      </div>
+      <div class="row">
+        <div class="medium-24 large-6 columns">
+          <div class="mam-mu border-right">
+            <a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a><br>
+            <span>Revenue</span>
+          </div>
+        </div>
+        <div class="medium-24 large-18 columns">
+          <div class="mam-mu">Learn about taxes that individuals must remit and/or file in Philadelphia.
+          </div>
+        </div>
+      </div>
     </section><!--#active-->
   </main><!-- #main -->
 </div><!-- #primary -->
