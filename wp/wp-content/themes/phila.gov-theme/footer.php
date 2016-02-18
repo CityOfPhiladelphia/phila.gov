@@ -13,7 +13,7 @@
     <?php else : ?>
       <div class="row">
         <div class="small-24 columns">
-          <div class="panel center">
+          <div class="panel center mvl">
             <?php echo phila_still_migrating_content(); ?>
           </div>
         </div>
