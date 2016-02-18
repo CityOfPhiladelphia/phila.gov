@@ -54,72 +54,27 @@
   #active {
     padding:20px 0;
 
-      .h3 {
-           @media screen and (min-width: 48em){
-              font-size:95%;
-          }
-      }
-      dt{
-          margin:0 0 0 0;
-          border-bottom: none;
-      }
-      dd{
-          margin:0 0 20px 0;
-          font-size: .9em;
-          border-bottom: none;
-
-      }
-
+    .h3 {
       @media screen and (min-width: 48em){
+        font-size:95%;
+      }
+    }
 
-          dt, dd {
-              margin:0 0 10px 0;
-              padding:0 0 10px 0;
-              border-bottom: 1px solid $ghost-gray;
-              min-height: 68px;
-              font-size: 95%;
-          }
-          dt:last-of-type, dd:last-of-type{
-              margin:0;
-              padding:0;
-              border-bottom:none;
-          }
-      }
-
-      .h3 {
-          display: block;
-      }
-      dt > span {
-          font-weight: bold;
-          font-size: 90%;
-      }
-      header h1 {
-          margin-top:0;
-          padding:0 0 10px 0;
-          font-size: 1.5em;
-      }
-      header h1::after {
-          font-family: 'FontAwesome';
-          color:$ben-franklin-blue;
-          content:"\f201";
-          padding:0 0 0 20px;
-          -webkit-font-smoothing: antialiased;
-      }
-      .related .row {
-        margin-left:0;
-        margin-right:0;
-        background:$ghost-gray;
-        border:1px solid $medium-gray;
-        padding:20px;
-
-        a:link, a:visited{
-          color:$ben-franklin-blue;//hack
-        }
-        a:hover, a:active{
-          color:$dark-gray;
-        }
-      }
+    header h1 {
+      margin-top:0;
+      padding:0 0 10px 0;
+      font-size: 1.5em;
+    }
+    
+    header h1::after {
+      font-family: 'FontAwesome';
+      color:$ben-franklin-blue;
+      content:"\f201";
+      padding:0 0 0 20px;
+      -webkit-font-smoothing: antialiased;
+    }
   }//#active
+
   .links {
     a.button{
       margin:.5rem 0;
