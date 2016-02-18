@@ -28,9 +28,9 @@ get_header(); ?>
   </div>
 
   <div class="columns">
-    <div class="intro clearfix equal-height">
-      <?php if ( !$service_before_start == '' ): ?>
-        <div class="small-24 medium-16 intro-item columns before-start-left equal">
+    <?php if ( !$service_before_start == '' ): ?>
+			<div class="intro clearfix equal-height">
+				<div class="small-24 medium-16 intro-item columns before-start-left equal">
           <div class="row">
             <div class="small-2 columns">
               <i class="fa fa-flag fa-2x"></i>
@@ -41,10 +41,15 @@ get_header(); ?>
             </div>
           </div>
         </div>
+				<div class="small-24 medium-8 intro-item columns center equal">
+					<div class="valign mvm mvn-mu">
+						<div class="valign-cell">
+			<?php else: ?>
+				<div class="intro clearfix">
+				<div class="small-24 medium-24 intro-item columns center pam">
+					<div class="valign mvm mvn-mu">
+						<div class="valign-cell">
       <?php endif; ?>
-      <div class="small-24 medium-8 intro-item columns center equal">
-				<div class="valign mvm mvn-mu">
-					<div class="valign-cell">
 					<?php if (!$service_url == ''):?>
 	          <a data-swiftype-index="false" class="button" href="<?php echo $service_url;?>">
 	            <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
