@@ -83,6 +83,11 @@
   aside#secondary {
     padding-bottom:0;
     padding-left: 1rem;
+    border-top: 5px solid #cfcfcf;
+    @media only screen and (min-width: 40.063em) {
+      border-top: 0;
+      border-left: 5px solid #cfcfcf;
+    }
   }
 }
 .all-services-info-list{
