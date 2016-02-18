@@ -39,7 +39,7 @@
         }
       }
       .button{
-        margin: 1rem;
+        margin: 0;
       }
 
     }
@@ -87,6 +87,16 @@
     @media only screen and (min-width: 40.063em) {
       border-top: 0;
       border-left: 5px solid #cfcfcf;
+    }
+    h3{
+      margin-top: 0;
+    }
+    li{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      &:last-child{
+        margin-bottom: 0;
+      }
     }
   }
 }

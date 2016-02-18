@@ -511,36 +511,37 @@ function phila_get_department_menu() {
   */
   global $post;
   $categories = get_the_category($post->ID);
-  if ((!$categories == '') || (!$categories[0]->cat_name == 'Uncategorized')){
-    $current_cat = $categories[0]->cat_ID;
-
-    $defaults = array(
-        'theme_location'  => 'menu-' . $current_cat,
-        'menu'            => '',
-        'container'       => '',
-        'container_class' => '',
-        'container_id'    => '',
-        'menu_class'      => 'department-menu medium-horizontal menu',
-        'menu_id'         => '',
-        'echo'            => true,
-        'fallback_cb'     => false,//if there is no menu, output nothing
-        'before'          => '',
-        'after'           => '',
-        'items_wrap'      => '
-          <div class="small-24 columns">
-            <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
-            <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
+  if ( ! empty( $categories ) ){
+    if ( ! $categories[0]->cat_slug == 'Uncategorized' ){
+      $current_cat = $categories[0]->cat_ID;
+      $defaults = array(
+          'theme_location'  => 'menu-' . $current_cat,
+          'menu'            => '',
+          'container'       => '',
+          'container_class' => '',
+          'container_id'    => '',
+          'menu_class'      => 'department-menu medium-horizontal menu',
+          'menu_id'         => '',
+          'echo'            => true,
+          'fallback_cb'     => false,//if there is no menu, output nothing
+          'before'          => '',
+          'after'           => '',
+          'items_wrap'      => '
+            <div class="small-24 columns">
+              <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
+              <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
+              </div>
+            <div class="top-bar" id="site-nav">
+              <nav data-swiftype-index="false">
+                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
+              </nav>
             </div>
-          <div class="top-bar" id="site-nav">
-            <nav data-swiftype-index="false">
-              <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
-            </nav>
-          </div>
-        </div>',
-        'depth'           => 0,
-        'walker'          => new phila_gov_walker_nav_menu
-    );
-    wp_nav_menu( $defaults );
+          </div>',
+          'depth'           => 0,
+          'walker'          => new phila_gov_walker_nav_menu
+      );
+      wp_nav_menu( $defaults );
+    }
   }
 }
 
@@ -559,16 +560,16 @@ function phila_get_dept_contact_blocks() {
       $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
     }
     if(is_active_sidebar( $current_sidebar_name )) {
-      echo '<div class="row equal-height">';
+      echo '<div class="row equal-height ptm">';
       dynamic_sidebar( $current_sidebar_name );
       echo '</div>';
     } elseif(is_active_sidebar( $default_sidebar )) {
-        echo '<div class="row equal-height">';
+        echo '<div class="row equal-height ptm">';
         dynamic_sidebar( $default_sidebar );
         echo '</div>';
     }
   } elseif( ( ! count( $categories ) == 1 ) && ( is_active_sidebar( $default_sidebar ) ) ) {
-      echo '<div class="row equal-height">';
+      echo '<div class="row equal-height ptm">';
       dynamic_sidebar( $default_sidebar );
       echo '</div>';
   }
