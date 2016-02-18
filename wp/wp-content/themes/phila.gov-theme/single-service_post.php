@@ -43,7 +43,7 @@ get_header(); ?>
         </div>
       <?php endif; ?>
       <div class="small-24 medium-8 intro-item columns center equal">
-				<div class="valign">
+				<div class="valign mvm mvn-mu">
 					<div class="valign-cell">
 					<?php if (!$service_url == ''):?>
 	          <a data-swiftype-index="false" class="button" href="<?php echo $service_url;?>">
@@ -59,16 +59,18 @@ get_header(); ?>
     </div>
 	</div>
   </div>
-  <div data-swiftype-index='true' class="entry-content small-24 medium-24 large-17 columns">
-    <?php the_content(); ?>
-    <?php endwhile; // end of the loop. ?>
-  </div><!-- .entry-content -->
-  <?php if (!$related_content == ''):?>
-      <aside id="secondary" class="related widget-area small-24 medium-24 large-6 columns" role="complementary">
-        <h3 class="alternate">Related Topics</h3>
-          <?php echo $related_content; ?>
-      </aside>
-  <?php endif; ?>
+	<div class="columns mtm">
+		<div data-swiftype-index='true' class="entry-content small-24 medium-17 large-17 columns">
+	    <?php the_content(); ?>
+	    <?php endwhile; // end of the loop. ?>
+	  </div><!-- .entry-content -->
+	  <?php if (!$related_content == ''):?>
+	      <aside id="secondary" class="related widget-area small-24 medium-6 large-6 columns" role="complementary">
+	        <h3 class="alternate">Related Topics</h3>
+	          <?php echo $related_content; ?>
+	      </aside>
+	  <?php endif; ?>
+	</div>
 </article><!-- #post-## -->
 
 <?php get_footer(); ?>
