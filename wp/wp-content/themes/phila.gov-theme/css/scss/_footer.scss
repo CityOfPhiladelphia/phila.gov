@@ -41,11 +41,23 @@ footer{
     .logo{
       padding:1rem 0;
     }
-    .vcard, .vcard-label{
+    .vcard,
+    .vcard-label,
+    .tel a:link,
+    .email a:link{
       color:$dark-gray;
-      font-weight: bold;
+      font-weight: normal;
       text-transform: none;
       margin: 1em 0;
+      .tel .vcard-label,
+      .fax .vcard-label,
+      .email .vcard-label{
+        font-weight: bold;
+      }
+      .email a:link{
+        color: $ben-franklin-blue;
+        text-decoration: underline;
+      }
     }
   }
 }
