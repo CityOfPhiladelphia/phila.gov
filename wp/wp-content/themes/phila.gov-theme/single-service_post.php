@@ -59,7 +59,7 @@ get_header(); ?>
     </div>
 	</div>
   </div>
-	<div class="columns mtm">
+	<div class="columns mtm mtl-mu">
 		<div data-swiftype-index='true' class="entry-content small-24 medium-17 large-17 columns">
 	    <?php the_content(); ?>
 	    <?php endwhile; // end of the loop. ?>
