@@ -43,17 +43,21 @@ get_header(); ?>
         </div>
       <?php endif; ?>
       <div class="small-24 medium-8 intro-item columns center equal">
-        <?php if (!$service_url == ''):?>
-          <a data-swiftype-index="false" class="button" href="<?php echo $service_url;?>">
-            <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
-            <span class="accessible"> External link</span>
-          </a>
-        <?php endif;?>
-        <?php if (!$service_name == ''):?>
-          <span data-swiftype-index="false" class="small-text">On the <?php echo $service_name;?> website</span>
-        <?php endif; ?>
+				<div class="valign">
+					<div class="valign-cell">
+					<?php if (!$service_url == ''):?>
+	          <a data-swiftype-index="false" class="button" href="<?php echo $service_url;?>">
+	            <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
+	            <span class="accessible"> External link</span>
+	          </a>
+	        <?php endif;?>
+	        <?php if (!$service_name == ''):?>
+	          <span data-swiftype-index="false" class="small-text">On the <?php echo $service_name;?> website</span>
+	        <?php endif; ?>
+				</div>
       </div>
     </div>
+	</div>
   </div>
   <div data-swiftype-index='true' class="entry-content small-24 medium-24 large-17 columns">
     <?php the_content(); ?>
