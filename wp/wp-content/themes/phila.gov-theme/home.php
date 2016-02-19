@@ -25,7 +25,7 @@ get_header(); ?>
 
     if ( $display_posts->have_posts() ) : ?>
       <header class="columns">
-        <h1>
+        <h1 class="contrast ptm">
           <?php echo get_the_title(); ?>
         </h1>
       </header><!-- .page-header -->

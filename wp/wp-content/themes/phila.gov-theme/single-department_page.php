@@ -27,7 +27,7 @@ get_header(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('row department'); ?>>
 
   <header class="entry-header on-site small-24 columns">
-    <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
+    <?php the_title( '<h1 class="entry-title contrast ptm">', '</h1>' ); ?>
   </header>
   <?php
   //get department homepage alerts

@@ -11,7 +11,7 @@ get_header(); ?>
   <main id="main" class="site-main" role="main">
     <div class="row">
       <header class="small-24 columns">
-        <?php post_type_archive_title('<h1>All City ', '</h1>'); ?>
+        <?php post_type_archive_title('<h1 class="contrast ptm">All City ', '</h1>'); ?>
       </header>
     </div>
     <div class="row">
