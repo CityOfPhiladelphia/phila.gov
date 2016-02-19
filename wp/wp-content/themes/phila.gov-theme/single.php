@@ -17,7 +17,11 @@ get_header(); ?>
 
         get_template_part( 'partials/content', 'page' );
 
-       else :
+      elseif ( get_post_type() === 'phila_post'):
+
+        get_template_part('partials/content', 'single-post');
+
+      else :
 
         get_template_part( 'partials/content', 'single' );
 
