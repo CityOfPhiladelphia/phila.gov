@@ -51,7 +51,7 @@ get_header(); ?>
             <div class="valign-cell">
       <?php endif; ?>
           <?php if (!$service_url == ''):?>
-            <a data-swiftype-index="false" class="button prl pll" href="<?php echo $service_url;?>">
+            <a data-swiftype-index="false" class="button prxl plxl" href="<?php echo $service_url;?>">
               <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
               <span class="accessible"> External link</span>
             </a>
