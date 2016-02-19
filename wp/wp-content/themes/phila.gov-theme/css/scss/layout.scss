@@ -1,3 +1,7 @@
+body{
+  //required to override wp setting on bg images
+  position: static !important;
+}
 @media screen and (min-width: 35.5em){
   .entry-content > div {
     margin:0 20px 0 0;
