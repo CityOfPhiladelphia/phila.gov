@@ -9,7 +9,7 @@
   <?php if ( has_post_thumbnail() ) {
     $thumb_active = true;  ?>
     <div class="logo columns medium-7">
-      <?php the_post_thumbnail('news-thumb'); ?>
+      <?php the_post_thumbnail('home-thumb'); ?>
     </div>
   <?php } ?>
 
@@ -25,7 +25,7 @@
         ?>
       <span class="entry-date"><strong><?php echo get_the_date(); ?> </span></strong> <span class="category">
         <?php echo $current_cat == null ?  '' : ' | ' . $current_cat  ?> </span>
-        <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2>', '</h2>' ); ?></a>
+        <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
     <?php
       if (function_exists('rwmb_meta')) :
