@@ -64,6 +64,7 @@ function recent_news_shortcode($atts) {
  ), $atts );
 
   $current_category = $category[0]->cat_ID;
+  $category_slug = $category[0]->slug;
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
@@ -163,6 +164,8 @@ function recent_news_shortcode($atts) {
         //this means we had equal-height applied and must close those divs
         $output .= '</div></div>';
       }
+
+      $output .= '<a class="see-all-right float-right" href="/news/'. $category_slug . '">All ' . $a['name'] . '</a>';
 
     }else {
       $output .= __( 'Please enter at least one news story.', 'phila.gov' );
