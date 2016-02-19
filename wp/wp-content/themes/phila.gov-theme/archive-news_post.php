@@ -14,9 +14,9 @@ get_header();
   <?php
     if ( have_posts() ) : ?>
       <header class="columns">
-        <h1>
+        <h1 class="contrast ptm">
           <?php
-          post_type_archive_title(); 
+          post_type_archive_title();
 
           $taxonomy = 'topics';
           $queried_term = get_query_var($taxonomy);
