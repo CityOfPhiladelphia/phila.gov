@@ -95,11 +95,9 @@ function recent_news_shortcode($atts) {
     $post_counter = 0;
 
   if ( is_flag ( 'list', $atts ) ) {
-      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
+      $output .= '<div class="large-24 columns"><h2 class="alternate">' . $a['name'] . '</h2><div class="news"><ul>';
     }else{
-      if ( $a['posts'] == 3 || $a['posts'] == 4 ) {
-        $output .= '<div class="row"><div class="equal-height"><div class="row title-push"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div>';
-      }
+      $output .= '<div class="large-24 columns"><h2 class="alternate">' . $a['name'] . '</h2><div class="row">';
     }
 
     while( $news_loop->have_posts() ) : $news_loop->the_post();
@@ -112,7 +110,7 @@ function recent_news_shortcode($atts) {
 
     if ( is_flag( 'list', $atts ) ){
 
-      $output .= '<li>';
+      $output .= '<li class="group mbm pbm">';
 
       $output .= '<a href="' . $link .'">';
 
@@ -123,18 +121,14 @@ function recent_news_shortcode($atts) {
       $output .= '</a>';
       $output .= '</li>';
 
-
     }else{
 
-      if( $a['posts'] == 4 ){
+      if($a['posts'] == 3){
+        $output .=  '<div class="medium-8 columns">';
+      }elseif($a['posts'] == 4){
         $output .=  '<div class="medium-6 columns">';
       }else{
-        $output .=  '<div class="medium-8 columns">';
-      }
-
-      //news title on first item
-      if ( $post_counter == 1 && $a['posts'] == 1) {
-        $output .= '<h2 class="alternate">' . $a['name'] . '</h2>';
+        $output .=  '<div class="medium-24 columns">';
       }
 
       $output .= '<a href="' . get_permalink() .'" class="card">';
@@ -156,16 +150,12 @@ function recent_news_shortcode($atts) {
 
     endwhile;
 
-      if ( is_flag( 'list', $atts ) ) {
-        $output .= '</ul>';
-        $output .= '</div></div>';
-      }
-      if( $a['posts'] == 3 && ! is_flag( 'list', $atts ) ) {
-        //this means we had equal-height applied and must close those divs
-        $output .= '</div></div>';
-      }
+    $output .= '</div><a class="see-all-right float-right" href="/posts/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
 
-      $output .= '<a class="see-all-right float-right" href="/news/'. $category_slug . '">All ' . $a['name'] . '</a>';
+    if ( is_flag( 'list', $atts ) ) {
+      $output .= '</ul>';
+      $output .= '</div></div>';
+    }
 
     }else {
       $output .= __( 'Please enter at least one news story.', 'phila.gov' );
