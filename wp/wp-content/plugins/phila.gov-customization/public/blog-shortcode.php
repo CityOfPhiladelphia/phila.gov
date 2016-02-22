@@ -58,9 +58,9 @@ function latest_posts_shortcode($atts) {
     $link = get_permalink();
 
     if ( is_flag( 'list', $atts ) ){
-      $output .= '<li class="group">';
+      $output .= '<li class="group mbm">';
 
-      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class= small-thumb mlm mbm' );
+      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class= small-thumb mrm mbm' );
 
       $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .= '<a href="' . get_permalink() .'"><h3>' . get_the_title( $post->ID ) . '</h3></a>';
