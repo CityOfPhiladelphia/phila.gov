@@ -128,7 +128,7 @@ get_header(); ?>
       </div>
       <div class="row">
         <div class="medium-24 large-6 columns">
-          <div class="mam-mu border-right">
+          <div class="mlm-mu mrm-mu border-right">
             <a href="http://www.phila.gov/revenue/realestatetax/" class="h3" target="_blank">Real Estate Tax<span class="accessible"> Opens in new window</span></a><br>
             <span>Revenue</span>
             </div>
@@ -136,11 +136,11 @@ get_header(); ?>
         <div class="medium-24 large-18 columns">
           <div class="mam-mu">Real Estate Tax bills are sent in December for the following year and payments are due March 31st.</div>
         </div>
-        <hr class="mrm-mu mlm-mu ptm">
+        <hr class="ptm-mu mrm-mu mlm-mu">
       </div>
       <div class="row">
         <div class="medium-24 large-6 columns">
-          <div class="mam-mu border-right">
+          <div class="mlm-mu mrm-mu border-right">
             <a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a><br>
             <span>L+I</span>
             </div>
@@ -148,11 +148,11 @@ get_header(); ?>
           <div class="medium-24 large-18 columns">
             <div class="mam-mu">Search and view all previous applications, approved uses and site drawings for a parcel of land.</div>
           </div>
-          <hr class="mrm-mu mlm-mu ptm">
+          <hr class="ptm-mu mrm-mu mlm-mu">
       </div>
       <div class="row">
         <div class="medium-24 large-6 columns">
-          <div class="mam-mu border-right">
+          <div class="mlm-mu mrm-mu border-right">
             <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3" target="_blank">Correctional Facilities<span class="accessible"> Opens in new window</span></a><br>
           <span>Prisons</span>
           </div>
@@ -160,11 +160,11 @@ get_header(); ?>
         <div class="medium-24 large-18 columns">
           <div class="mam-mu">Find facility history, visiting rules, and hours.</div>
         </div>
-        <hr class="mrm-mu mlm-mu ptm">
+        <hr class="ptm-mu mrm-mu mlm-mu">
       </div>
       <div class="row">
         <div class="medium-24 large-6 columns">
-          <div class="mam-mu border-right">
+          <div class="mlm-mu mrm-mu border-right">
             <a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a><br>
             <span>Revenue</span>
           </div>
