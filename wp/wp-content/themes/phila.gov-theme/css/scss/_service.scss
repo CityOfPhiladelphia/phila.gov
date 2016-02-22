@@ -82,14 +82,10 @@
   }
   aside#secondary {
     padding-bottom:0;
-    padding-left: 1rem;
-    border-top: 5px solid #cfcfcf;
+    border-top: 5px solid $sidewalk;
     @media only screen and (min-width: 40.063em) {
       border-top: 0;
-      border-left: 5px solid #cfcfcf;
-    }
-    h3{
-      margin-top: 0;
+      border-left: 5px solid $sidewalk;
     }
     li{
       margin-top: 1rem;
