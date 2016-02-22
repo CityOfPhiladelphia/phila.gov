@@ -65,8 +65,8 @@
     <?php endwhile; ?>
   <?php endif; ?>
 
-<div class="small-24 large-16 columns parent results tabs-panel is-active">
-  <h1><?php echo $current_term->name ?></h1>
+<div class="small-24 large-16 columns parent results is-active plm-mu">
+  <h1 class="mbm mtn"><?php echo $current_term->name ?></h1>
 
     <?php
     foreach ($term_children as $term_child) :
@@ -91,10 +91,10 @@
   <?php foreach ( $pages_and_topics as $display_name => $display_data ) : ?>
       <?php //display_data[1] is permalink ?>
       <a href="<?php echo $display_data[1] ?>">
-        <h2 class="h4"><?php echo $display_name ?></h2>
-        <?php //display_data[0] is description ?>
-        <p class="description"><?php echo $display_data[0] ?></p>
+        <h2 class="h4 mbn"><?php echo $display_name ?></h2>
       </a>
+        <?php //display_data[0] is description ?>
+        <span class="description"><?php echo $display_data[0] ?></span>
       <hr>
   <?php endforeach; ?>
 
