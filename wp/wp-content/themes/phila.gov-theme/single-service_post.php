@@ -32,10 +32,10 @@ get_header(); ?>
       <div class="intro clearfix equal-height">
         <div class="small-24 medium-16 intro-item columns before-start-left equal">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="medium-2 columns show-for-medium">
               <i class="fa fa-flag fa-2x"></i>
             </div>
-            <div class="small-22 columns">
+            <div class="medium-22 small-24 columns">
               <h2 class="h5">Before you start</h2>
               <?php echo $service_before_start; ?>
             </div>
