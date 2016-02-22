@@ -142,7 +142,7 @@ get_header(); ?>
         <div class="medium-24 large-6 columns">
           <div class="mlm-mu mrm-mu border-right">
             <a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a><br>
-            <span>L+I</span>
+            <span>Licenses and Inspections <abbr>(L+I)</abbr></span>
             </div>
           </div>
           <div class="medium-24 large-18 columns">
