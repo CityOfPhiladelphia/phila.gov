@@ -852,13 +852,16 @@ function phila_get_parent_topics(){
     'hide_empty'=> true
   );
 
+  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
   $terms = get_terms( 'topics', $args );
   if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-     echo '<ul class="tabs vertical">';
-     foreach ( $terms as $term ) {
-         echo '<li class="tabs-title '. $term->slug  . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
-     }
-     echo '</ul>';
+    echo '<ul class="tabs vertical">';
+    foreach ( $terms as $term ) {
+      $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
+      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
+    }
+    echo '</ul>';
   }
 }
 /**
