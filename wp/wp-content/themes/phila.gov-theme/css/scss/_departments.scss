@@ -155,13 +155,9 @@
     }
     .event-row{
       border-bottom:1px solid $ghost-gray;
-      font-size: 0.75rem;
     }
     .simcal-default-calendar-list{
       padding:0;
-    }
-    .simcal-calendar-list .simcal-day:nth-child(even){
-    //  background:$whitesmoke;
     }
     .simcal-default-calendar-list ul.simcal-events li.simcal-event {
       margin-bottom: 0;
