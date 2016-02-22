@@ -6,15 +6,11 @@
 */
 footer{
   .contact{
-    font-family: "Open Sans",Helvetica,Roboto,Arial,sans-serif;
     background:$ghost-gray;
     color:$dark-gray;
     aside{
       font-size: 0.85rem;
-      a:link {
-        color:$dark-gray;
-        font-weight: bold;
-      }
+
       .content{
         padding: 1rem;
       }
@@ -28,15 +24,6 @@ footer{
         border-bottom: 0;
         border-right: 1px solid rgba(68,68,68, 0.5);
       }
-    }
-    a:link{
-      color: $ben-franklin-blue;
-      text-decoration: none;
-      font-weight: normal;
-    }
-    a:hover,
-    a:visited{
-      color: $dark-gray;
     }
     .logo{
       padding:1rem 0;
