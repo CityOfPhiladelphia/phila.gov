@@ -27,10 +27,10 @@ class Phila_Gov_Department_Home_Page_Notices {
     $current_category = $category[0]->cat_ID;
 
     $args = array( 'posts_per_page' => 5,
-    'order'=> 'DESC',
-    'orderby' => 'date',
-    'post_type'  => 'notices',
-    'cat' => $current_category,
+      'order'=> 'DESC',
+      'orderby' => 'date',
+      'post_type'  => 'notices',
+      'cat' => $current_category,
     );
 
     $notices_loop = new WP_Query( $args );
@@ -42,7 +42,7 @@ class Phila_Gov_Department_Home_Page_Notices {
       $output .= '<h2 class="alternate">Notices</h2>';
       $output .= '<div class="notices content-block">';
 
-      $output .= '<ul class="no-bullet margin-bottom-50">';
+      $output .= '<ul class="no-bullet pan">';
 
       while( $notices_loop->have_posts() ) : $notices_loop->the_post();
       $counter ++;
@@ -62,7 +62,7 @@ class Phila_Gov_Department_Home_Page_Notices {
       $output .= '</div>';
 
       if( $counter > 5 ) {
-        $output .= '<p class="no-margin"><a href="/notices/' . $category[0]->slug .'" class="button alternate full">See All</a></p>';
+        $output .= '<a href="/notices/' . $category[0]->slug .'" class="see-all-right float-right">See All</a>';
       }
 
     }else {
