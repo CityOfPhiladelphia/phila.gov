@@ -69,21 +69,6 @@
         }
       }
     }
-
-    .call-to-action-low-priority > div > a{
-      background: $white;
-      display: block;
-      padding:.5rem 1rem;
-      font-weight: normal;
-
-      h1, h2, h3, h4, h5, h6,
-      .h1, .h2, .h3, .h4, .h5, .h6{
-        color:$ben-franklin-blue;
-      }
-      @media only screen and (max-width: 40em) {
-        margin-bottom: 1rem;
-      }
-    }
   }
   .news {
     .small-thumb{
