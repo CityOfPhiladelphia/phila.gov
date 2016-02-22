@@ -22,9 +22,6 @@
     color: $black;
     font-size:.95rem;
   }
-  h3{
-    font-size: .825rem;
-  }
   p{
     margin:1rem 0;
     line-height: 1.6;
@@ -92,18 +89,19 @@
     .small-thumb{
       width:150px;
       height:auto;
-      margin: 5px 10px 30px 0;
+      float:left;
     }
-    ul.news-list{
+    h3{
+      font-size:1rem;
+    }
+    ul{
       margin:0;
       padding:0;
       li {
         list-style: none;
-        margin-bottom: 20px;
-        clear: both;
         border-bottom: 1px solid #f2f2f2;
-        padding: 0 0 10px 0;
-        min-height:130px;
+        padding: 0 0 $spacing-small 0;
+
         &:hover{
           opacity: .6;
         }
@@ -137,11 +135,12 @@
 
   .contact{
     background:$ghost-gray;
-    padding:1rem;
+    padding:$spacing-medium;
 
     aside{
       font-size: 0.85rem;
     }
+
     .logo{
       padding:1rem 0;
     }
