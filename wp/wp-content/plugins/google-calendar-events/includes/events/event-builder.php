@@ -597,7 +597,7 @@ class Event_Builder {
 			              ' <span class="simcal-event-start simcal-event-start-time" ' .
 			              'data-event-start="' . $start->getTimestamp() . '" ' .
 			              'data-event-format="' . $this->calendar->time_format . '" ' .
-			              'itemprop="startDate" content="' . $start->toIso8601String() . '">' .
+			              'itemprop="startDate" data-content="' . $start->toIso8601String() . '">' .
 			              date_i18n( $this->calendar->time_format, $start->getTimestamp() ) .
 			              '</span> ';
 
@@ -606,7 +606,7 @@ class Event_Builder {
 				$time_end = ' <span class="simcal-event-end simcal-event-end-time" ' .
 				            'data-event-end="' . $end->getTimestamp() . '" ' .
 				            'data-event-format="' . $this->calendar->time_format . '" ' .
-				            'itemprop="endDate" content="' . $end->toIso8601String() . '">' .
+				            'itemprop="endDate" data-content="' . $end->toIso8601String() . '">' .
 				            date_i18n( $this->calendar->time_format, $end->getTimestamp() ) .
 				            '</span> ';
 
@@ -619,7 +619,7 @@ class Event_Builder {
 			$output = ' <span class="simcal-event-start simcal-event-start-date" ' .
 			          'data-event-start="' . $start->getTimestamp() . '" ' .
 			          'data-event-format="' . $this->calendar->date_format . '" ' .
-			          'itemprop="startDate" content="' . $start->toIso8601String() . '">' .
+			          'itemprop="startDate" data-content="' . $start->toIso8601String() . '">' .
 			          date_i18n( $this->calendar->date_format, $start->getTimestamp() ) .
 			          '</span> ' .
 			          $time_start;
@@ -630,7 +630,7 @@ class Event_Builder {
 				           ' <span class="simcal-event-start simcal-event-end-date" ' .
 				           'data-event-start="' . $end->getTimestamp() . '" ' .
 				           'data-event-format="' . $this->calendar->date_format . '" ' .
-				           'itemprop="endDate" content="' . $end->toIso8601String() . '">' .
+				           'itemprop="endDate" data-content="' . $end->toIso8601String() . '">' .
 				           date_i18n( $this->calendar->date_format, $end->getTimestamp() ) .
 				           '</span> ' .
 				           $time_end;
@@ -707,7 +707,7 @@ class Event_Builder {
 		return '<span class="simcal-event-' . $bound . ' ' . 'simcal-event-' . $bound . '-' . $format . '" ' .
 		       'data-event-' . $bound . '="' . $event_dt->getTimestamp() . '" ' .
 		       'data-event-format="' . $dt_format . '" ' .
-		       'itemprop="' . $bound . 'Date" content="' . $event_dt->toIso8601String() . '">' .
+		       'itemprop="' . $bound . 'Date" data-content="' . $event_dt->toIso8601String() . '">' .
 		       $value .
 		       '</span>';
 	}
