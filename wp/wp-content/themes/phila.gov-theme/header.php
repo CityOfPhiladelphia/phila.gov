@@ -48,15 +48,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header data-swiftype-index='false' id="masthead" class="site-header" role="banner">
+  <header data-swiftype-index='false' id="masthead" class="site-header app" role="banner">
     <div class="row site-branding">
-      <div class="small-24 medium-12 columns">
+      <div class="small-24 medium-16 columns">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo">
           <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png"></a>
           <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
-        <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-24 medium-12 columns"> <?php get_search_form(); ?> </div> <?php }?>
+        <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-24 medium-8 columns"> <?php get_search_form(); ?> </div> <?php }?>
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
     </div>
     <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
