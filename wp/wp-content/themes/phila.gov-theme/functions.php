@@ -855,11 +855,21 @@ function phila_get_parent_topics(){
   $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 
   $terms = get_terms( 'topics', $args );
+
   if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
     echo '<ul class="tabs vertical">';
+
     foreach ( $terms as $term ) {
-      $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
+
+      if (isset($current_term->slug) ) {
+        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
+
+      }else {
+        $active = '';
+      }
+
       echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
+
     }
     echo '</ul>';
   }
