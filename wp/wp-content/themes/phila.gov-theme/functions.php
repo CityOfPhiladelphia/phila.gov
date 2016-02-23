@@ -576,6 +576,71 @@ function phila_get_dept_contact_blocks() {
 
 }
 
+function phila_get_posted_on(){
+  global $post;
+
+  $author = esc_html( get_the_author() );
+  $authorURL = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
+  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  $time_string = sprintf( $time_string,
+    esc_attr( get_the_date( 'c' ) ),
+    esc_html( get_the_date() ),
+    esc_attr( get_the_modified_date( 'c' ) ),
+    esc_html( get_the_modified_date() )
+  );
+  $current_category = get_the_category();
+
+  if ( !$current_category == '' ) {
+    $department_page_args = array(
+      'post_type' => 'department_page',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    => $current_category[0]->slug,
+        ),
+      ),
+      'post_parent' => 0,
+      'posts_per_page' => 1,
+    );
+    $get_department_link = new WP_Query( $department_page_args );
+    if ( $get_department_link->have_posts() ) {
+      while ( $get_department_link->have_posts() ) {
+        $get_department_link->the_post();
+        // //$current_cat_slug = $current_category[0]->slug;
+      }
+    }
+  }
+
+  $current_cat_slug = $current_category[0]->slug;
+  $dept_cat_permalink = get_the_permalink();
+  $dept_title = get_the_title();
+
+  wp_reset_postdata();
+
+  if ( ( $post->post_type == 'phila_post') && ( $current_cat_slug != 'uncategorized' ) ){
+    echo '<div class="posted-on row column pvs">';
+    if ( has_post_thumbnail() ){
+      echo '<div class="columns small-12 medium-24">';
+      $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+      the_post_thumbnail( 'news-thumb' );
+      echo '</div>';
+    }
+    echo '<div class="small-12 medium-24 column pvs"><div class="float-left center prs icon hide-for-small-only"><span class="fa-stack fa-lg">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+</span></div><div class="details small-text">';
+    echo '<span>Posted by <a href="' . $authorURL . '">' . $author . '</a></span><br>';
+    // NOTE: the id and data-slug are important. Google Tag Manager
+    // uses it to attach the department to our web analytics.
+    echo '<span><a href="' . $dept_cat_permalink . '" id="content-modified-department"
+          data-slug="' . $current_cat_slug . '">' . $dept_title . '</a></span><br>';
+    echo '<span>' . $time_string . '</span></div></div>';
+  }
+
+}
+
+
 function phila_get_full_page_title(){
   global $post;
   $page_path = '';
