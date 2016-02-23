@@ -5,4 +5,11 @@
   .entry-content p:first-child{
     margin-top: 0px;
   }
+  .posted-on .details{
+    overflow: hidden;
+    float:none;
+  }
+  .posted-on .icon {
+    color: $ben-franklin-blue;
+  }
 }
