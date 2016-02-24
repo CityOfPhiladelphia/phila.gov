@@ -171,22 +171,26 @@
     text-align: center;
   }
 }
-#site-nav{
+#site-nav  {
   .is-drilldown{
     //we are making this important to override some goofy inline styles foundation is trying to add.
     height: auto !important;
     width:320px !important;
   }
-  .dropdown li{
-    border-bottom:1px solid $sidewalk;
 
-    &:last-child{
-      border-bottom: none;
+  .department-menu{
+
+    .dropdown li{
+      border-bottom:1px solid $sidewalk;
+
+      &:last-child{
+        border-bottom: none;
+      }
     }
-  }
-  li[class*="current"] > a{
-    background: $ben-franklin-blue;
-    color:$white;
+    li[class*="current"] > a{
+      background: $ben-franklin-blue;
+      color:$white;
+    }
   }
 }
 
