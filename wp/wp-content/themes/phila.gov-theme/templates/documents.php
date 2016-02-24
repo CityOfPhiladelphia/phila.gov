@@ -53,7 +53,7 @@
           echo '</span>';
         }
         ?></td>
-        <td><i class="fa fa-download"></i></td>
+        <td><a href="<?php echo $document['url'] ?>"><i class="fa fa-download"></i></a></td>
       </tr>
     <?php endforeach; ?>
     </tbody>
