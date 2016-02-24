@@ -26,8 +26,18 @@ get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('row department'); ?>>
 
-  <header class="entry-header on-site small-24 columns">
-    <?php the_title( '<h1 class="entry-title contrast ptm">', '</h1>' ); ?>
+  <header class="entry-header small-24 columns">
+    <?php
+     /* Get an array of Ancestors and Parents if they exist */
+      $parents = get_post_ancestors( $post->ID );
+      /* Get the top Level page->ID count base 1, array base 0 so -1 */
+      $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+      if ($id === $post->ID) {
+
+      }
+      $parent = get_post( $id );
+      ?>
+      <h1 class="entry-title contrast"><?php echo $parent->post_title;?></h1>
   </header>
   <?php
   //get department homepage alerts
