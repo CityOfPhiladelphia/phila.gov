@@ -33,7 +33,7 @@
   foreach ($documents as $document): ?>
     <tr class="clickable-row" data-href="<?php echo $document['url'] ?>">
       <td>
-        <h3 class="h4 document-title"><a><?php echo $document['title']; ?></a>
+        <h3 class="h4 document-title"><a href="<?php echo $document['url'] ?>"><?php echo $document['title']; ?></a>
         </h2>
       </td>
         <?php
