@@ -73,10 +73,7 @@
     </div><!-- row -->
   </section><!-- fat -->
   <div class="row classic">
-    <div class="site-info large-15 columns">
-      <?php printf('This site is a work-in-progress that will change as we add content. Please ');?> <a href="<?php echo phila_util_echo_feedback_url(); ?>"><?php printf( __( 'notify us of errors.', 'phila-gov' ) ); ?></a>
-    </div><!-- .site-info -->
-    <nav class="large-9 columns">
+    <nav class="columns center">
       <ul class="inline-list">
           <li><a href="/terms-of-use">Terms of use</a></li>
           <li><a href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to know (pdf)</a></li>
