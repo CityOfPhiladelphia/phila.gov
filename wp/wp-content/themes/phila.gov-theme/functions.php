@@ -527,11 +527,11 @@ function phila_get_department_menu() {
           'before'          => '',
           'after'           => '',
           'items_wrap'      => '
-            <div class="small-24 columns">
+            <div class="small-24 columns medium-center">
               <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
               <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
               </div>
-            <div class="top-bar" id="site-nav">
+            <div class="top-bar mbm" id="site-nav">
               <nav data-swiftype-index="false">
                 <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
               </nav>
@@ -544,15 +544,15 @@ function phila_get_department_menu() {
     }
   }
 }
-/*
+
 add_filter('nav_menu_css_class', 'phila_add_active_nav_class', 10, 2);
 
 function phila_add_active_nav_class( $classes, $item ){
   if ( in_array( 'current-menu-ancestor', $classes ) ){
-    $classes[] = 'current-item';
+    $classes[] = 'current-menu-item';
   }
   return $classes;
-}*/
+}
 
 function phila_get_dept_contact_blocks() {
   $categories = get_the_category();

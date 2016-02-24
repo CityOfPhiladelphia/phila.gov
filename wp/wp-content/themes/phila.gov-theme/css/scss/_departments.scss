@@ -165,11 +165,28 @@
     }
   }
 }//department
+@media screen and (min-width: 40em) {
 
-.department-menu{
-  .current-menu-item{
-    background: $bell-yellow;
-    color:$black;
+  .medium-center{
+    text-align: center;
+  }
+}
+#site-nav{
+  .is-drilldown{
+    //we are making this important to override some goofy inline styles foundation is trying to add.
+    height: auto !important;
+    width:320px !important;
+  }
+  .dropdown li{
+    border-bottom:1px solid $sidewalk;
+
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  li[class*="current"] > a{
+    background: $ben-franklin-blue;
+    color:$white;
   }
 }
 
