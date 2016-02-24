@@ -646,7 +646,10 @@ function phila_get_posted_on(){
           data-slug="' . $current_cat_slug . '">' . $dept_title . '</a></span><br>';
     echo '<span>' . $time_string . '</span></div></div>';
   }
-
+  elseif ( ( $post->post_type == 'news_post') && ( $current_cat_slug != 'uncategorized' ) ){
+    echo '<span class="small-text">' . $time_string . ' by <a href="' . $dept_cat_permalink . '" id="content-modified-department"
+          data-slug="' . $current_cat_slug . '">' . $dept_title . '</a></span>';
+  }
 }
 
 
