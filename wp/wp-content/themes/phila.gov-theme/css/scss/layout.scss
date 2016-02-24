@@ -140,3 +140,7 @@ aside {
 .bg-white{
   background-color:$white;
 }
+
+li.current-menu-ancestor > a, li.current-menu-item > a{
+  border-bottom: 5px solid $ben-franklin-blue;
+}
