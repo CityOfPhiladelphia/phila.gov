@@ -26,7 +26,7 @@
 
   <?php wp_head(); ?>
 
-  <!--[if lte IE 8]>
+  <!--[if lte IE 9]>
   <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 

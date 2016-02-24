@@ -544,6 +544,15 @@ function phila_get_department_menu() {
     }
   }
 }
+/*
+add_filter('nav_menu_css_class', 'phila_add_active_nav_class', 10, 2);
+
+function phila_add_active_nav_class( $classes, $item ){
+  if ( in_array( 'current-menu-ancestor', $classes ) ){
+    $classes[] = 'current-item';
+  }
+  return $classes;
+}*/
 
 function phila_get_dept_contact_blocks() {
   $categories = get_the_category();
