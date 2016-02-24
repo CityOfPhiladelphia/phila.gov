@@ -71,6 +71,7 @@ endif;
 if ( ! function_exists( 'phila_gov_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
+ * phila_posts and news_posts now use phila_get_posted_on in functions.php
  */
 function phila_gov_posted_on() {
   global $post;
