@@ -4,6 +4,12 @@
  *
  *
 */
+.department-home, .department-landing{
+  //hide secondary page title, we don't need it
+  h2.entry-title{
+    display: none;
+  }
+}
 .department {
   p {
     &.external-site {

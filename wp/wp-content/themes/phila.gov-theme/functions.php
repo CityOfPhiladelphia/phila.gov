@@ -531,7 +531,7 @@ function phila_get_department_menu() {
               <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
               <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
               </div>
-            <div class="top-bar mbm" id="site-nav">
+            <div class="top-bar" id="site-nav">
               <nav data-swiftype-index="false">
                 <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
               </nav>
