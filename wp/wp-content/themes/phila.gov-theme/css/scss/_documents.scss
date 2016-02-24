@@ -40,16 +40,14 @@
   table thead.light-head tr th{
     background:$white;
   }
-  .clickable-row{
+  .clickable-row.is-hover{
     cursor:pointer;
-    &:hover {
-      background:$manatee;
-      .small-text{
-        color:$ghost-gray;
-      }
-      a {
-        color:$black;
-      }
+    background:$manatee;
+    .small-text{
+      color:$ghost-gray;
+    }
+    a {
+      color:$black;
     }
   }
 }
