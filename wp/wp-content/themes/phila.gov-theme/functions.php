@@ -635,7 +635,7 @@ function phila_get_posted_on(){
       the_post_thumbnail( 'news-thumb' );
       echo '</div>';
     }
-    echo '<div class="byline small-24 medium-24 column pvs"><div class="float-left center prs icon hide-for-small-only"><span class="fa-stack fa-lg">
+    echo '<div class="byline small-24 medium-24 column pvm pvs-mu"><div class="float-left center prs icon hide-for-small-only"><span class="fa-stack fa-lg">
   <i class="fa fa-circle fa-stack-2x"></i>
   <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 </span></div><div class="details small-text">';
