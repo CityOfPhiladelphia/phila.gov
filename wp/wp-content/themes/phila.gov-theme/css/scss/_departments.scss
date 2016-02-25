@@ -177,6 +177,13 @@
     text-align: center;
   }
 }
+.department-nav{
+  .top-bar, .top-bar ul {
+    @media screen and (min-width: 40em){
+      background-color:#daedfe;
+    }
+  }
+}
 #site-nav  {
   .is-drilldown{
     //we are making this important to override some goofy inline styles foundation is trying to add.

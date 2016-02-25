@@ -527,7 +527,8 @@ function phila_get_department_menu() {
           'before'          => '',
           'after'           => '',
           'items_wrap'      => '
-            <div class="small-24 columns medium-center">
+          <div class="row department-nav">
+            <div class="small-24 columns">
               <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
               <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
               </div>
@@ -536,7 +537,8 @@ function phila_get_department_menu() {
                 <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li id="" class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only" role="menuitem"><a href="/"><i class="fa fa-angle-left fa-lg"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
               </nav>
             </div>
-          </div>',
+          </div>
+        </div>',
           'depth'           => 0,
           'walker'          => new phila_gov_walker_nav_menu
       );
