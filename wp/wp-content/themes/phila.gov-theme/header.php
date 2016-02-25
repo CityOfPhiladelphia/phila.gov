@@ -60,11 +60,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
     </div>
     <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
-    <div class="row expanded hide-for-small-only">
+      <?php if ( get_post_type() === 'department_page' ) : ?>
+        <div class="row expanded hide-for-small-only">
+        <?php else : ?>
+          <div class="row expanded">
+          <?php endif; ?>
       <div class="columns">
         <div class="row">
           <div data-swiftype-index='false' class="large-24 columns">
-            <nav><?php phila_breadcrumbs(); ?> </nav>
+            <nav><?php phila_breadcrumbs(); ?></nav>
           </div>
         </div>
       </div>
