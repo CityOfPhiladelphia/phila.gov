@@ -138,7 +138,9 @@ get_header(); ?>
             <div class="medium-24 large-18 columns">
               <div class="mam-mu">Real Estate Tax bills are sent in December for the following year and payments are due March 31st.</div>
             </div>
-            <hr class="ptm mrm-mu mlm-mu">
+            <div class="medium-24 large-24 columns">
+              <hr>
+            </div>
           </div>
           <div class="row">
             <div class="medium-24 large-6 columns">
@@ -150,7 +152,9 @@ get_header(); ?>
               <div class="medium-24 large-18 columns">
                 <div class="mam-mu">Search and view all previous applications, approved uses and site drawings for a parcel of land.</div>
               </div>
-              <hr class="ptm mrm-mu mlm-mu">
+              <div class="medium-24 large-24 columns">
+                <hr>
+              </div>
           </div>
           <div class="row">
             <div class="medium-24 large-6 columns">
@@ -162,7 +166,9 @@ get_header(); ?>
             <div class="medium-24 large-18 columns">
               <div class="mam-mu">Find facility history, visiting rules, and hours.</div>
             </div>
-            <hr class="ptm mrm-mu mlm-mu">
+            <div class="medium-24 large-24 columns">
+              <hr>
+            </div>
           </div>
           <div class="row">
             <div class="medium-24 large-6 columns">
