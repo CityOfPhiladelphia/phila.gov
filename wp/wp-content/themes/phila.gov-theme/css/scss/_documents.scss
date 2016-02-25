@@ -71,6 +71,11 @@
         background:$white;
         color: $dark-gray;
       }
+      .tablesaw-cell-content{
+        @media (max-width: 39.9375em){
+            padding-left: .5rem;
+        }
+      }
   }
   .clickable-row{
     cursor:pointer;
