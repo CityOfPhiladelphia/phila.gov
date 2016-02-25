@@ -533,7 +533,7 @@ function phila_get_department_menu() {
               </div>
             <div class="top-bar" id="site-nav">
               <nav data-swiftype-index="false">
-                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
+                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li id="" class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only" role="menuitem"><a href="/"><i class="fa fa-angle-left fa-lg"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
               </nav>
             </div>
           </div>',
