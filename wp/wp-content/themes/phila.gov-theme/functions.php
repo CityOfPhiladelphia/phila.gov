@@ -46,6 +46,7 @@ function phila_gov_setup() {
    */
   add_theme_support( 'post-thumbnails' );
 
+  //TODO: Decide on ultimate image sizes and most likely remove news-thumb
   add_image_size( 'news-thumb', 250, 165, true );
 
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
