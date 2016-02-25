@@ -15,13 +15,15 @@ footer{
         padding: 1rem;
       }
     }
-    aside:not(:last-child) {
+    aside{
       border-bottom: 1px solid rgba(68,68,68, 0.5);
     }
 
     @media only screen and (min-width: 40em) {
-      aside:not(:last-child) {
+      aside {
         border-bottom: 0;
+      }
+      aside:not(:last-child) {
         border-right: 1px solid rgba(68,68,68, 0.5);
       }
     }
