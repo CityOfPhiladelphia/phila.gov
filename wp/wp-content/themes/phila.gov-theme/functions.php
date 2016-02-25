@@ -650,6 +650,7 @@ function phila_get_posted_on(){
     echo '<span class="small-text">' . $time_string . ' by <a href="' . $dept_cat_permalink . '" id="content-modified-department"
           data-slug="' . $current_cat_slug . '">' . $dept_title . '</a></span>';
   }
+
 }
 
 
@@ -810,7 +811,7 @@ function phila_department_list( $query ) {
 }
 
 /**
- * Find and displays the correct header imagesy
+ * Find and displays the correct header images
  *
  * @since 0.22.0
  * @link https://codex.wordpress.org/Custom_Backgrounds,
@@ -914,10 +915,7 @@ function phila_get_home_news(){
 }
 
 /**
- * Gets the list of topics available used in:
- * templates/topics-child.php
- * templates/topics-parent.php
- * taxonomy-topics.php
+ * Gets the list of topics.
  *
  */
 function phila_get_parent_topics(){
