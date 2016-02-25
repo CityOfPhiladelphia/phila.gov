@@ -13,7 +13,7 @@
   $documents = rwmb_meta( 'phila_files', $args = array( 'type' => 'file_advanced' ) );
   ?>
   <p class="description"><?php echo $document_description; ?></p>
-  <table class="no-borders align-left mvm mvl-mu">
+  <table class="no-borders align-left mvm mvl-mu tablesaw tablesaw-stack" data-tablesaw-mode="stack">
     <thead class="light-head">
       <tr>
         <th>
