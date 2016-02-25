@@ -27,7 +27,7 @@
   <?php
     if (isset($_POST)): ?>
       <?php
-        if( in_array( $current_post_type, array( 'department_page' , 'document' , 'news_post' , 'phila_post' , 'service_post' ) , true ) ): ?>
+        if( (in_array( $current_post_type, array( 'department_page' , 'document' , 'news_post' , 'phila_post' , 'service_post' ) , true ) ) && !is_tax()  ): ?>
         <section class="contact">
             <?php echo phila_get_dept_contact_blocks(); ?>
           <?php get_template_part( 'partials/content', 'modified' ) ?>
