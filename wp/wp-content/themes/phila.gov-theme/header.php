@@ -60,7 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
     </div>
     <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
-    <div class="row expanded">
+    <div class="row expanded hide-for-small-only">
       <div class="columns">
         <div class="row">
           <div data-swiftype-index='false' class="large-24 columns">
