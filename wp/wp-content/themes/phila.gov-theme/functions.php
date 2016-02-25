@@ -46,7 +46,6 @@ function phila_gov_setup() {
    */
   add_theme_support( 'post-thumbnails' );
 
-  //TODO: Decide on ultimate image sizes and most likely remove news-thumb
   add_image_size( 'news-thumb', 250, 165, true );
 
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
@@ -589,8 +588,8 @@ function phila_get_dept_contact_blocks() {
 function phila_get_posted_on(){
   global $post;
 
-  $author = esc_html( get_the_author() );
-  $authorURL = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
+  $posted_on_meta['author'] = esc_html( get_the_author() );
+  $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
@@ -598,9 +597,11 @@ function phila_get_posted_on(){
     esc_attr( get_the_modified_date( 'c' ) ),
     esc_html( get_the_modified_date() )
   );
-  $current_category = get_the_category();
+  $posted_on_meta['time_string'] = $time_string;
 
-  if ( !$current_category == '' ) {
+  if( !get_the_category() == '' ) {
+    $current_category = get_the_category();
+
     $department_page_args = array(
       'post_type' => 'department_page',
       'tax_query' => array(
@@ -620,37 +621,14 @@ function phila_get_posted_on(){
         // //$current_cat_slug = $current_category[0]->slug;
       }
     }
+    $posted_on_meta['current_cat_slug'] = $current_category[0]->slug;
+    $posted_on_meta['dept_cat_permalink'] = get_the_permalink();
+    $posted_on_meta['dept_title'] = get_the_title();
   }
-
-  $current_cat_slug = $current_category[0]->slug;
-  $dept_cat_permalink = get_the_permalink();
-  $dept_title = get_the_title();
 
   wp_reset_postdata();
 
-  if ( ( $post->post_type == 'phila_post') && ( $current_cat_slug != 'uncategorized' ) ){
-    echo '<div class="posted-on row column pvs">';
-    if ( has_post_thumbnail() ){
-      echo '<div class="columns hide-for-small-only medium-24">';
-      $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-      the_post_thumbnail( 'news-thumb' );
-      echo '</div>';
-    }
-    echo '<div class="byline small-24 medium-24 column pvm pvs-mu"><div class="float-left center prs icon hide-for-small-only"><span class="fa-stack fa-lg">
-  <i class="fa fa-circle fa-stack-2x"></i>
-  <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-</span></div><div class="details small-text">';
-    echo '<span>Posted by <a href="' . $authorURL . '">' . $author . '</a></span><br>';
-    // NOTE: the id and data-slug are important. Google Tag Manager
-    // uses it to attach the department to our web analytics.
-    echo '<span><a href="' . $dept_cat_permalink . '" id="content-modified-department"
-          data-slug="' . $current_cat_slug . '">' . $dept_title . '</a></span><br>';
-    echo '<span>' . $time_string . '</span></div></div>';
-  }
-  elseif ( ( $post->post_type == 'news_post') && ( $current_cat_slug != 'uncategorized' ) ){
-    echo '<span class="small-text">' . $time_string . ' by <a href="' . $dept_cat_permalink . '" id="content-modified-department"
-          data-slug="' . $current_cat_slug . '">' . $dept_title . '</a></span>';
-  }
+  return $posted_on_meta;
 
 }
 
@@ -812,7 +790,7 @@ function phila_department_list( $query ) {
 }
 
 /**
- * Find and displays the correct header images
+ * Find and displays the correct header imagesy
  *
  * @since 0.22.0
  * @link https://codex.wordpress.org/Custom_Backgrounds,
@@ -916,7 +894,10 @@ function phila_get_home_news(){
 }
 
 /**
- * Gets the list of topics.
+ * Gets the list of topics available used in:
+ * templates/topics-child.php
+ * templates/topics-parent.php
+ * taxonomy-topics.php
  *
  */
 function phila_get_parent_topics(){
