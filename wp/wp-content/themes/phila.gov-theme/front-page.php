@@ -119,58 +119,62 @@ get_header(); ?>
       </div><!-- .home-news -->
     </div>
     <section id="active">
-      <div class="row">
-        <div class="small-24 large-24 columns">
-          <header>
-            <h1 class="contrast">Most Active</h1>
-          </header>
-        </div>
-      </div>
-      <div class="row">
-        <div class="medium-24 large-6 columns">
-          <div class="mlm-mu mrm-mu border-right">
-            <a href="http://www.phila.gov/revenue/realestatetax/" class="h3" target="_blank">Real Estate Tax<span class="accessible"> Opens in new window</span></a><br>
-            <span>Revenue</span>
-            </div>
-        </div>
-        <div class="medium-24 large-18 columns">
-          <div class="mam-mu">Real Estate Tax bills are sent in December for the following year and payments are due March 31st.</div>
-        </div>
-        <hr class="ptm mrm-mu mlm-mu">
-      </div>
-      <div class="row">
-        <div class="medium-24 large-6 columns">
-          <div class="mlm-mu mrm-mu border-right">
-            <a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a><br>
-            <span>Licenses and Inspections <abbr>(L+I)</abbr></span>
+      <div class="row expanded">
+        <div class="columns">
+          <div class="row">
+            <div class="small-24 large-24 columns">
+              <header>
+                <h1 class="contrast">Most Active</h1>
+              </header>
             </div>
           </div>
-          <div class="medium-24 large-18 columns">
-            <div class="mam-mu">Search and view all previous applications, approved uses and site drawings for a parcel of land.</div>
+          <div class="row">
+            <div class="medium-24 large-6 columns">
+              <div class="mlm-mu mrm-mu border-right">
+                <a href="http://www.phila.gov/revenue/realestatetax/" class="h3" target="_blank">Real Estate Tax<span class="accessible"> Opens in new window</span></a><br>
+                <span>Revenue</span>
+                </div>
+            </div>
+            <div class="medium-24 large-18 columns">
+              <div class="mam-mu">Real Estate Tax bills are sent in December for the following year and payments are due March 31st.</div>
+            </div>
+            <hr class="ptm mrm-mu mlm-mu">
           </div>
-          <hr class="ptm mrm-mu mlm-mu">
-      </div>
-      <div class="row">
-        <div class="medium-24 large-6 columns">
-          <div class="mlm-mu mrm-mu border-right">
-            <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3" target="_blank">Correctional Facilities<span class="accessible"> Opens in new window</span></a><br>
-          <span>Prisons</span>
+          <div class="row">
+            <div class="medium-24 large-6 columns">
+              <div class="mlm-mu mrm-mu border-right">
+                <a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a><br>
+                <span>Licenses and Inspections <abbr>(L+I)</abbr></span>
+                </div>
+              </div>
+              <div class="medium-24 large-18 columns">
+                <div class="mam-mu">Search and view all previous applications, approved uses and site drawings for a parcel of land.</div>
+              </div>
+              <hr class="ptm mrm-mu mlm-mu">
           </div>
-        </div>
-        <div class="medium-24 large-18 columns">
-          <div class="mam-mu">Find facility history, visiting rules, and hours.</div>
-        </div>
-        <hr class="ptm mrm-mu mlm-mu">
-      </div>
-      <div class="row">
-        <div class="medium-24 large-6 columns">
-          <div class="mlm-mu mrm-mu border-right">
-            <a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a><br>
-            <span>Revenue</span>
+          <div class="row">
+            <div class="medium-24 large-6 columns">
+              <div class="mlm-mu mrm-mu border-right">
+                <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3" target="_blank">Correctional Facilities<span class="accessible"> Opens in new window</span></a><br>
+              <span>Prisons</span>
+              </div>
+            </div>
+            <div class="medium-24 large-18 columns">
+              <div class="mam-mu">Find facility history, visiting rules, and hours.</div>
+            </div>
+            <hr class="ptm mrm-mu mlm-mu">
           </div>
-        </div>
-        <div class="medium-24 large-18 columns">
-          <div class="mam-mu">Learn about taxes that individuals must remit and/or file in Philadelphia.
+          <div class="row">
+            <div class="medium-24 large-6 columns">
+              <div class="mlm-mu mrm-mu border-right">
+                <a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a><br>
+                <span>Revenue</span>
+              </div>
+            </div>
+            <div class="medium-24 large-18 columns">
+              <div class="mam-mu">Learn about taxes that individuals must remit and/or file in Philadelphia.
+              </div>
+            </div>
           </div>
         </div>
       </div>
