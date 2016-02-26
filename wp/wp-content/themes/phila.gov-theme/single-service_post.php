@@ -70,7 +70,7 @@ get_header(); ?>
       <?php endwhile; // end of the loop. ?>
     </div><!-- .entry-content -->
     <?php if (!$related_content == ''):?>
-        <aside id="secondary" class="related widget-area small-24 medium-6 large-6 columns" role="complementary">
+        <aside id="secondary" class="related widget-area small-24 medium-6 large-6 columns mtl mtn-mu" role="complementary">
           <h3 class="alternate mtm mtn-mu">Related Topics</h3>
             <?php echo $related_content; ?>
         </aside>
