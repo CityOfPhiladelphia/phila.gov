@@ -11,6 +11,25 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
+
+  //add search focus on tap or click
+  $('.search-icon').click(function() {
+
+    var fadeOn = $( ".fade" ).is( ":visible" );
+
+    $('.search-field').focus();
+
+    if ( !fadeOn ){
+      $('#page').prepend('<div class="fade"></div>');
+    }
+
+    $('.fade').click(function() {
+      $('.fade').remove();
+    });
+
+  });
+
+
   var alphaAlertHeight = $("#alpha-alert").css( "height" );
 
   //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
