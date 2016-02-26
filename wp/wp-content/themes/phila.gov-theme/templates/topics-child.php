@@ -15,7 +15,7 @@
     phila_get_parent_topics(); ?>
 </nav>
 
-<div class="small-24 large-16 columns child results">
+<div class="small-24 large-16 columns child results mbm">
 
 <?php
   echo '<h1 class="h2">' . $current_term->name . '</h1>';
