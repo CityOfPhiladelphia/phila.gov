@@ -15,7 +15,7 @@ get_header(); ?>
       </header>
     </div>
     <div class="row">
-      <div class="small-24 columns results">
+      <div class="small-24 columns results mbm">
         <?php get_template_part( 'partials/content', 'finder' ); ?>
           <ul class="list no-bullet"><!-- ul for sortable listness -->
             <?php  if ( have_posts() ) : ?>

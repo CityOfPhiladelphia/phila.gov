@@ -65,7 +65,7 @@
     <?php endwhile; ?>
   <?php endif; ?>
 
-<div class="small-24 large-16 columns parent results is-active plm-mu">
+<div class="small-24 large-16 columns parent results is-active plm-mu mbm">
   <h1 class="mbm mtn"><?php echo $current_term->name ?></h1>
 
     <?php
