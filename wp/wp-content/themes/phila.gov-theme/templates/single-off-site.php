@@ -15,7 +15,7 @@
       </div>
       <div class="small-24 medium-12 column">
         <div class="prl-mu external-site-link-right">
-          <a class="button icon" href="<?php echo rwmb_meta( 'phila_dept_url', $args = array('type' => 'url')); ?>">You are now leaving
+          <a class="button icon" href="<?php echo rwmb_meta( 'phila_dept_url', $args = array('type' => 'url')); ?>"><span class="show-for-large-only">You are now </span>leaving
           <?php phila_util_echo_website_url();?> <i class="fa fa-sign-out"></i></a>
         </div>
       </div>
