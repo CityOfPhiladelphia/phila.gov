@@ -33,7 +33,7 @@ get_header(); ?>
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
                   </span>
-                  <p>Pay a bill<p>
+                  <p>Pay a Bill<p>
                   <span class="accessible"> Opens in new window</span>
                 </a>
               </div>
