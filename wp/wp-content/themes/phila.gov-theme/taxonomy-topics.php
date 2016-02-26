@@ -22,7 +22,7 @@ get_header(); ?>
                       get_template_part('templates/topics', 'child');
                     }
               }else { ?>
-                <nav class="topics-nav small-24 large-8 columns">
+                <nav class="topics-nav mbm small-24 large-8 columns">
                   <?php
                   /* located in functions.php */
                     phila_get_parent_topics(); ?>
