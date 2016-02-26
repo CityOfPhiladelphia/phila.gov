@@ -1,10 +1,4 @@
-#page .service h1.entry-title{
-  margin-bottom: 1rem;
-}
 .service{
-  h2{
-    margin-top: 0;
-  }
   .border {
     border: 1px solid $medium-gray;
   }
@@ -70,6 +64,7 @@
     }
     .h5{
       font-size: 1.21429rem;
+      margin-top:0;
     }
     i {
       color:$flyers-orange;
@@ -120,15 +115,6 @@
       &:first-of-type{
         margin-top:0;
       }
-    }
-  }
-
-  .a-z-list{
-    background:$ghost-gray;
-    text-align: center;
-
-    li{
-      padding:1rem 0;
     }
   }
 }
