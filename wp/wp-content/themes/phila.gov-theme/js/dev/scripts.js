@@ -27,6 +27,11 @@ jQuery(document).ready(function($) {
       $('.fade').remove();
     });
 
+    var string = $('.search-field').val();
+
+    if( string.match(/\S/) ){
+      $('.search-submit').submit();
+    }
   });
 
 
