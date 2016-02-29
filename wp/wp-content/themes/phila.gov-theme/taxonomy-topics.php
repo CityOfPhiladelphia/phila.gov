@@ -11,7 +11,7 @@ get_header(); ?>
   <main id="main" class="site-main" role="main">
     <div class="row topics-browser">
       <div class="columns">
-        <h1 class="contrast ptm"><?php printf('Browse Topics'); ?></h1>
+        <h1 class="contrast"><?php printf('Browse Topics'); ?></h1>
           <div class="row">
             <?php
               $term = get_term_by('slug', get_query_var('term'), 'topics');

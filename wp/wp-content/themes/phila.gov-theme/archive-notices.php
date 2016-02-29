@@ -14,7 +14,7 @@ get_header();
   <?php
     if ( have_posts() ) : ?>
       <header class="columns">
-        <h1 class="contrast ptm">
+        <h1 class="contrast">
           <?php
             post_type_archive_title();
 

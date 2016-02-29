@@ -9,7 +9,7 @@ get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('row service'); ?>>
   <header class="entry-header small-24 columns">
-    <?php the_title( '<h1 class="entry-title contrast ptm mbl">', '</h1>' ); ?>
+    <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
   </header><!-- .entry-header -->
 
   <?php while ( have_posts() ) : the_post();
