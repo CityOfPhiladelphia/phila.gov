@@ -634,22 +634,6 @@ function phila_get_posted_on(){
 
 }
 
-
-function phila_get_full_page_title(){
-  global $post;
-  $page_path = '';
-  $page_title = get_the_title( $post );
-  $page_path .= $page_title;
-  $anc = get_post_ancestors( $post->ID );
-
-  foreach ( $anc as $ancestor ) {
-    $page_path .= ' | ' . get_the_title($ancestor);
-  }
-  $page_path .= ' | ' . get_bloginfo('name');
-
-  return $page_path;
-}
-
 /**
  * Return an ID of an attachment by searching the database with the file URL.
  */
@@ -751,23 +735,6 @@ function phila_change_post_archive_title(){
   }
 }
 
-add_filter( 'get_the_archive_title', 'phila_filter_h1' );
-
-function phila_filter_h1( $title ) {
-
-  if ( is_tag() ) {
-
-    $title = single_tag_title( 'Tag | ', false );
-
-  } elseif ( is_category() ){
-
-    $title = single_cat_title( ' | ', false );
-
-  }
-
-  return $title;
-
-}
 /**
  * Filter department page archive to use list template & show all Parent Pages
  *
@@ -795,7 +762,7 @@ function phila_department_list( $query ) {
 }
 
 /**
- * Find and displays the correct header imagesy
+ * Find and displays the correct header images
  *
  * @since 0.22.0
  * @link https://codex.wordpress.org/Custom_Backgrounds,
