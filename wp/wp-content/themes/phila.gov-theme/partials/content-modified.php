@@ -13,7 +13,7 @@
     // NOTE: the id is important. Google Tag Manager uses it to attach the
     // last modified date to our web analytics.
     ?>
-    <p class="small-text">This content was last updated on <time id="content-modified-datetime" datetime="<?php the_modified_time('c'); ?>"><?php the_modified_date(); ?></time><?php
+    <div class="small-text">This content was last updated on <time id="content-modified-datetime" datetime="<?php the_modified_time('c'); ?>"><?php the_modified_date(); ?></time><?php
     /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
     $current_category = get_the_category();
     $current_post_type = get_post_type(get_the_ID());
@@ -40,20 +40,20 @@
           if ( $current_cat_slug != 'uncategorized' && $current_post_type != 'document' ) :
             // NOTE: the id and data-slug are important. Google Tag Manager
             // uses it to attach the department to our web analytics.
-            if ( $current_post_type != 'phila_post' && $current_post_type != 'news_post' && $current_post_type != 'notices' ):
+            if ( $current_post_type != 'notices' && !is_tax() && !is_archive() && !is_home() ):
               echo ' by <a href="' . get_the_permalink() . '" id="content-modified-department"
                     data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+              endif;
             endif;
-          endif;
-        endwhile;
+          endwhile;
+        endif;
       endif;
-    endif;
-    echo '.';
+      echo '.';
 
-    /* Restore original Post Data */
-    wp_reset_postdata();
+      /* Restore original Post Data */
+      wp_reset_postdata();
 
-    ?>
-    </p>
+      ?>
     </div>
+  </div>
 </div>
