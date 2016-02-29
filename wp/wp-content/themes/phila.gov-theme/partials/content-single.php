@@ -7,7 +7,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <div class="row">
     <header class="entry-header small-24 columns">
-      <?php the_title( '<h1 class="entry-title contrast ptm">', '</h1>' ); ?>
+      <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
     </header><!-- .entry-header -->
   </div>
   <div class="row">

@@ -14,7 +14,7 @@ get_header(); ?>
   <?php
     if ( have_posts() ) : ?>
       <header class="columns">
-        <?php post_type_archive_title('<h1 class="contrast ptm">', '</h1>'); ?>
+        <?php post_type_archive_title('<h1 class="contrast">', '</h1>'); ?>
       </header><!-- .page-header -->
       <main id="main" class="site-main small-24 columns" role="main">
         <?php while ( have_posts() ) : the_post(); ?>
