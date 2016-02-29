@@ -203,6 +203,9 @@
     li[class*="current"] > a{
       background: $ben-franklin-blue;
       color:$white;
+      &:hover{
+        color:$black;
+      }
     }
   }
 }
