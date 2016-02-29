@@ -13,7 +13,7 @@ get_header(); ?>
         <div class="small-24 columns">
           <section class="error-404 not-found">
             <header>
-                <h1 class="contrast ptm"><?php _e( 'Sorry, the page you requested was not found.', 'phila-gov' ); ?></h1>
+                <h1 class="contrast"><?php _e( 'Sorry, the page you requested was not found.', 'phila-gov' ); ?></h1>
             </header><!-- .page-header -->
             <div class="page-content">
                 <p><?php _e( 'It looks like nothing was found at this location.', 'phila-gov' ); ?></p>
