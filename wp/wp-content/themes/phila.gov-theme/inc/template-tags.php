@@ -112,11 +112,9 @@ function phila_gov_entry_footer() {
     /* translators: used between list items, there is a space after the comma */
     $tags_list = get_the_tag_list( '', __( ', ', 'phila-gov' ) );
     if ( $tags_list ) {
-      echo '<h3 class="alternate tags-links">';
-        _e('Tagged In', 'phila-gov');
-      echo '</h3><span class="small-text">';
-        printf(  __( '%1$s', 'phila-gov' ), $tags_list );
-      echo '</span>';
+      echo '<div class="mvs"><span>Tagged in:<br>';
+      printf(  __( '%1$s', 'phila-gov' ), $tags_list );
+      echo '</span</div>';  
     }
   }
 }

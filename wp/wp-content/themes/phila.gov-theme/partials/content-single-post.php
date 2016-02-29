@@ -36,16 +36,20 @@
               the_post_thumbnail( 'news-thumb' ); ?>
               </div>
           <?php endif ?>
-          <div class="byline small-24 medium-24 column pvm pvs-mu"><div class="float-left center prs icon hide-for-small-only"><span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-          </span></div><div class="details small-text">
-          <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
-          <?php if( !get_the_category() == ''): ?>
-            <span><a href="<?php echo $posted_on_values['dept_cat_permalink']; ?>" id="content-modified-department" data-slug="<?php echo $posted_on_values['current_cat_slug']; ?>"><?php echo $posted_on_values['dept_title']; ?></a></span><br>
-          <?php endif; ?>
-          <span><?php echo $posted_on_values['time_string']; ?></span></div></div>
-      <?php phila_gov_entry_footer();?>
+          <div class="byline small-24 column pvm pvs-mu">
+            <div class="details small-text center">
+              <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
+              <?php if( !get_the_category() == ''): ?>
+                <span><a href="<?php echo $posted_on_values['dept_cat_permalink']; ?>" id="content-modified-department" data-slug="<?php echo $posted_on_values['current_cat_slug']; ?>"><?php echo $posted_on_values['dept_title']; ?></a></span><br>
+              <?php endif; ?>
+              <span>
+                <?php echo $posted_on_values['time_string']; ?>
+              </span>
+              <br>
+                  <?php phila_gov_entry_footer();?>
+            </div>
+        </div>
+
     </aside>
   </div><!-- .row -->
 
