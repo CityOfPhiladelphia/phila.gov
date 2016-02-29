@@ -91,6 +91,5 @@
         </div><!-- .entry-content -->
       </div>
     </div>
-    <?php get_template_part( 'partials/content', 'modified' ) ?>
   </article><!-- #post-## -->
 </div>
