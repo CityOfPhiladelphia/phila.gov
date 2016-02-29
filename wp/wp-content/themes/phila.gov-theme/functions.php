@@ -740,6 +740,9 @@ function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'phila_post' ) ){
     _e('Posts', 'phila-gov');
     single_cat_title(' | ');
+  }elseif(is_post_type_archive( 'news_post' ) ){
+    _e('News', 'phila-gov');
+    single_cat_title(' | ');
   }elseif( is_tag() ){
     single_tag_title('Tagged in: ');
   }elseif( is_author() ){
