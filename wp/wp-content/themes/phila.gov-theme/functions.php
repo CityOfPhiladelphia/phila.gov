@@ -564,7 +564,7 @@ function phila_get_dept_contact_blocks() {
 
   $default_sidebar = 'sidebar-' . $default_category_slug .'-' . $default_category_id;
 
-  if ( count($categories) == 1 ) {
+  if ( count($categories) == 1 && !is_tax() && !is_archive() ) {
     foreach ( $categories as $category ) {
       $cat_slug = $category->slug;
       $cat_id = $category->cat_ID;
