@@ -734,14 +734,14 @@ function phila_gov_author_link( $link, $author_id, $author_name ){
   return $link;
 }
 
-add_filter( 'get_the_archive_title', 'change_post_archive_title' );
+add_filter( 'get_the_archive_title', 'phila_change_post_archive_title' );
 
-function change_post_archive_title(){
+function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'phila_post' ) ){
     _e('Posts', 'phila-gov');
-  }elseif( is_category() && is_post_type_archive( 'phila_post' ) ){
-    _e('Posts | ', 'phila-gov');
-    single_cat_title();
+    single_cat_title(' | ');
+  }elseif( is_tag() ){
+    single_tag_title('Tagged in: ');
   }elseif( is_author() ){
     _e('Author | ', 'phila-gov');
     echo get_the_author();
