@@ -12,7 +12,7 @@ get_header(); ?>
     <div class="search-head">
       <div class="row">
         <header class="medium-8 columns">
-          <h1 class="contrast"><?php printf( __( 'Search results for:', 'phila-gov' )); ?></h1>
+          <h1><?php printf( __( 'Search results for:', 'phila-gov' )); ?></h1>
         </header><!-- .page-header -->
       </div>
       <div class="row">
