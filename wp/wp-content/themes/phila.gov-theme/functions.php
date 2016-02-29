@@ -150,10 +150,15 @@ function phila_filter_title( $title ){
 
       }else{
 
-        $title['title'] = $page_title . $sep . $post_type->labels->singular_name . $sep . $site_title;
+        if ( phila_is_department_homepage( $post ) ){
+          $title['title'] = $page_title  . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+        }else{
+          $category = get_the_category($post->ID);
+          $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+        }
       }
     }
-
     // If on an author archive, use the author's display name.
   } elseif ( is_author() && $author = get_queried_object() ) {
 
@@ -835,6 +840,34 @@ function phila_home_classes( $classes ) {
   }
     return $classes;
 }
+
+/* Returns true if this page is a department page, has children and no other parents - i.e. department homepage */
+
+function phila_is_department_homepage( $post ) {
+
+  global $post;
+
+  if ( isset($post) ) {
+
+    if ( $post->post_type == 'department_page' ) {
+
+      $parents = get_post_ancestors( $post->ID );
+
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+      $children = get_pages( array( 'child_of' => $post_id ) );
+
+      //this is a department homepage
+      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+
+        return true;
+
+      }
+    }
+  }
+}
+
+
 
 function phila_get_home_news(){
   $category = get_the_category();

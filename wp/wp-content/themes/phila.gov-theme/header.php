@@ -2,7 +2,7 @@
 /**
  * The header for our theme.
  *
- * Displays all of the <head> section and everything up till <div id="content">
+ * Displays all of the <head> section and everything up until <div id="content">
  *
  * @package phila-gov
  */
@@ -20,7 +20,6 @@
   <?php if (is_single()) { ?>
   <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
   <?php } ?>
-
 
   <link rel="shortcut icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
 
@@ -75,6 +74,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   <?php endif; ?>
   </header><!-- #masthead -->
-    <?php call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
-    ?>
-    <div id="content" class="site-content">
+  <?php call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
+  ?>
+  <div id="content" class="site-content">
