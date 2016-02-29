@@ -53,7 +53,7 @@ get_header(); ?>
       */
         phila_get_department_menu();
     ?>
-    <div class="row">
+    <div class="row mtm">
       <?php
       if (function_exists('rwmb_meta')) {
           $external_site = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
