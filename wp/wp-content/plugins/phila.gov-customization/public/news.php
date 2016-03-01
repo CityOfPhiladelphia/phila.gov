@@ -7,46 +7,6 @@
  * @package phila-gov_customization
  */
 
-
-function get_home_news(){
-  $category = get_the_category();
-  $url = rwmb_meta('phila_news_url', $args = array('type'=>'url'));
-  $contributor = rwmb_meta('phila_news_contributor', $args = array('type'=>'text'));
-  $desc = rwmb_meta('phila_news_desc', $args = array('type'=>'textarea'));
-
-  if (!$url == ''){
-
-      echo '<a href="' . $url .'" target="_blank">';
-      the_post_thumbnail( 'home-thumb' );
-      echo '<span class="accessible"> Opens in new window</span></a>';
-
-      echo '<a href="' . $url .'" target="_blank">';
-      the_title('<h3>', '</h3>');
-      echo '<span class="accessible"> Opens in new window</span></a>';
-
-
-  }else{
-      echo '<a href="' . get_permalink() .'">';
-      the_post_thumbnail( 'home-thumb'  );
-      echo '</a>';
-
-      echo '<a href="' . get_permalink().'">';
-      the_title('<h3>', '</h3>');
-      echo '</a>';
-
-  }
-
-  if (function_exists('rwmb_meta')) {
-      if ($contributor === ''){
-          echo '<span>' . $category[0]->cat_name . '</span>';
-      }else {
-          echo '<span>' . $contributor . '</span>';
-      }
-
-      echo '<p>' . $desc  . '</p>';
-
-  }
-}
 /**
 * @since 0.5.11
 *
@@ -104,6 +64,7 @@ function recent_news_shortcode($atts) {
  ), $atts );
 
   $current_category = $category[0]->cat_ID;
+  $category_slug = $category[0]->slug;
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
@@ -134,11 +95,9 @@ function recent_news_shortcode($atts) {
     $post_counter = 0;
 
   if ( is_flag ( 'list', $atts ) ) {
-      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
+      $output .= '<div class="large-24 columns"><h2 class="alternate">' . $a['name'] . '</h2><div class="news"><ul>';
     }else{
-      if ( $a['posts'] == 3 || $a['posts'] == 4 ) {
-        $output .= '<div class="row"><div class="equal-height"><div class="row title-push"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div>';
-      }
+      $output .= '<div class="large-24 columns"><h2 class="alternate">' . $a['name'] . '</h2><div class="row">';
     }
 
     while( $news_loop->have_posts() ) : $news_loop->the_post();
@@ -151,7 +110,7 @@ function recent_news_shortcode($atts) {
 
     if ( is_flag( 'list', $atts ) ){
 
-      $output .= '<li>';
+      $output .= '<li class="group mbm pbm">';
 
       $output .= '<a href="' . $link .'">';
 
@@ -162,25 +121,21 @@ function recent_news_shortcode($atts) {
       $output .= '</a>';
       $output .= '</li>';
 
-
     }else{
 
-      if( $a['posts'] == 4 ){
+      if($a['posts'] == 3){
+        $output .=  '<div class="medium-8 columns">';
+      }elseif($a['posts'] == 4){
         $output .=  '<div class="medium-6 columns">';
       }else{
-        $output .=  '<div class="medium-8 columns">';
-      }
-
-      //news title on first item
-      if ( $post_counter == 1 && $a['posts'] == 1) {
-        $output .= '<h2 class="alternate">' . $a['name'] . '</h2>';
+        $output .=  '<div class="medium-24 columns">';
       }
 
       $output .= '<a href="' . get_permalink() .'" class="card">';
 
       $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
 
-      $output .= '<div class="content-block">';
+      $output .= '<div class="content-block equal">';
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 
@@ -195,14 +150,12 @@ function recent_news_shortcode($atts) {
 
     endwhile;
 
-      if ( is_flag( 'list', $atts ) ) {
-        $output .= '</ul>';
-        $output .= '</div><!-- medium-24 columns --> </div>';
-      }
-      if( $a['posts'] == 3 && ! is_flag( 'list', $atts ) ) {
-        //this means we had equal-height applied and must close those divs
-        $output .= '</div></div>';
-      }
+    $output .= '</div><a class="see-all-right float-right" href="/posts/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
+
+    if ( is_flag( 'list', $atts ) ) {
+      $output .= '</ul>';
+      $output .= '</div></div>';
+    }
 
     }else {
       $output .= __( 'Please enter at least one news story.', 'phila.gov' );

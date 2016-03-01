@@ -1,0 +1,23 @@
+.phila_post{
+  aside#secondary {
+  border: 0;
+  }
+  .entry-content p:first-child{
+    margin-top: 0px;
+  }
+  .posted-on{
+    .details{
+      overflow: hidden;
+      float:none;
+    }
+    .icon {
+    color: $ben-franklin-blue;
+    }
+    .byline{
+      border-top: 1px solid $sidewalk;
+      @media only screen and (min-width: 40em) {
+          border-top: 0;
+      }
+    }
+  }
+}

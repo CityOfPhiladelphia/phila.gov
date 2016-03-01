@@ -8,9 +8,6 @@
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
-if ( ! isset( $content_width ) ) {
-  $content_width = 640; /* pixels */
-}
 
 if ( ! function_exists( 'phila_gov_setup' ) ) :
 /**
@@ -34,6 +31,13 @@ function phila_gov_setup() {
 
   // Add default posts and comments RSS feed links to head.
   add_theme_support( 'automatic-feed-links' );
+
+  /*
+   * Enable support for custom background uploads
+   *
+   * @link https://codex.wordpress.org/Custom_Backgrounds
+   */
+  add_theme_support( 'custom-background' );
 
   /*
    * Enable support for Post Thumbnails on posts and pages.
@@ -146,10 +150,15 @@ function phila_filter_title( $title ){
 
       }else{
 
-        $title['title'] = $page_title . $sep . $post_type->labels->singular_name . $sep . $site_title;
+        if ( phila_is_department_homepage( $post ) ){
+          $title['title'] = $page_title  . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+        }else{
+          $category = get_the_category($post->ID);
+          $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+        }
       }
     }
-
     // If on an author archive, use the author's display name.
   } elseif ( is_author() && $author = get_queried_object() ) {
 
@@ -193,9 +202,9 @@ function phila_gov_widgets_init() {
       'name'          => __( $name . ' Sidebar', 'phila-gov' ),
       'id'            => 'sidebar-' . $slug .'-' . $cat_id,
       'description'   => '',
-      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s">',
+      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center equal">',
       'after_widget'  => '</aside>',
-      'before_title'  => '<h1 class="widget-title">',
+      'before_title'  => '<h1 class="h4 widget-title">',
       'after_title'   => '</h1>',
     ) );
   }
@@ -219,9 +228,9 @@ add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
 
-  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/0.12.6/css/patterns.css' );
+  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/1.1.2/css/patterns.css' );
 
-  wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), '4.4.0' );
+  wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.4.0' );
 
   wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css', array(), '2.0.0' );
 
@@ -235,13 +244,12 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'jquery-migrate', ( '//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js' ), array('jquery'), null, true );
 
-  wp_enqueue_script( 'modernizr', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array(), '2.8.3', false );
 
   wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
 
-  wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
+  wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
 
-  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/0.12.6/js/patterns.min.js', array('jquery', 'foundation-js'), true );
+  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.1.2/js/patterns.min.js', array('jquery', 'foundation-js'), true );
 
   wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js'), 1.0, true );
 }
@@ -297,7 +305,7 @@ function phila_breadcrumbs() {
   global $output;
   global $i;
 
-  echo '<ul>';
+  echo '<ul class="breadcrumbs">';
   if ( !is_front_page() ) { //display breadcrumbs everywhere but on the homepage
     echo '<li><a href="';
     echo get_option('home');
@@ -489,70 +497,146 @@ function phila_util_echo_website_url(){
     echo 'alpha.phila.gov';
 }
 
+function phila_util_echo_feedback_url(){
+    echo 'https://alpha.phila.gov/feedback?url=' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] . '&dept=';
+}
+
 function phila_still_migrating_content(){
     echo '<p>We\'re still working on this page\'s design and content. ';
     echo '<a href="';
-    get_template_part( 'partials/content', 'feedback-url' );
+    echo phila_util_echo_feedback_url();
     echo '">How can we make it better?</a></p>';
 }
 
 function phila_get_department_menu() {
-     /*
+  /*
     Set the menus. We use categories to drive functionality.
     Pass the current category (there should only ever be 1)
     as the menu-id.
   */
   global $post;
   $categories = get_the_category($post->ID);
-  if ((!$categories == '') || (!$categories[0]->cat_name == 'Uncategorized')){
-    $current_cat = $categories[0]->cat_ID;
-
-    $defaults = array(
-        'theme_location'  => 'menu-' . $current_cat,
-        'menu'            => '',
-        'container'       => '',
-        'container_class' => '',
-        'container_id'    => '',
-        'menu_class'      => 'department-menu',
-        'menu_id'         => '',
-        'echo'            => true,
-        'fallback_cb'     => false,//if there is no menu, output nothing
-        'before'          => '',
-        'after'           => '',
-        'items_wrap'      => '
-          <div class="small-24 columns">
-            <div data-swiftype-index="false" class="top-nav">
-              <nav class="top-bar" data-topbar role="navigation">
-                <ul class="title-area">
-                  <li class="name"></li>
-                  <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                </ul>
-                <section class="top-bar-section">
-                  <ul id="%1$s" class="%2$s">%3$s</ul>
-                </section>
+  if ( ! empty( $categories ) ){
+    if ( ! $categories[0]->cat_slug == 'Uncategorized' ){
+      $current_cat = $categories[0]->cat_ID;
+      $defaults = array(
+          'theme_location'  => 'menu-' . $current_cat,
+          'menu'            => '',
+          'container'       => '',
+          'container_class' => '',
+          'container_id'    => '',
+          'menu_class'      => 'department-menu medium-horizontal menu',
+          'menu_id'         => '',
+          'echo'            => true,
+          'fallback_cb'     => false,//if there is no menu, output nothing
+          'before'          => '',
+          'after'           => '',
+          'items_wrap'      => '
+          <div class="row department-nav">
+            <div class="small-24 columns">
+              <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
+              <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
+              </div>
+            <div class="top-bar mbm-mu" id="site-nav">
+              <nav data-swiftype-index="false">
+                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li id="" class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only" role="menuitem"><a href="/"><i class="fa fa-angle-left fa-lg"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
               </nav>
             </div>
-          </div>',
-        'depth'           => 0,
-        'walker'          => new phila_gov_walker_nav_menu
-    );
-    wp_nav_menu( $defaults );
+          </div>
+        </div>',
+          'depth'           => 0,
+          'walker'          => new phila_gov_walker_nav_menu
+      );
+      wp_nav_menu( $defaults );
+    }
   }
 }
 
-function phila_get_full_page_title(){
-  global $post;
-  $page_path = '';
-  $page_title = get_the_title( $post );
-  $page_path .= $page_title;
-  $anc = get_post_ancestors( $post->ID );
+add_filter('nav_menu_css_class', 'phila_add_active_nav_class', 10, 2);
 
-  foreach ( $anc as $ancestor ) {
-    $page_path .= ' | ' . get_the_title($ancestor);
+function phila_add_active_nav_class( $classes, $item ){
+  if ( in_array( 'current-menu-ancestor', $classes ) ){
+    $classes[] = 'current-menu-item';
   }
-  $page_path .= ' | ' . get_bloginfo('name');
+  return $classes;
+}
 
-  return $page_path;
+function phila_get_dept_contact_blocks() {
+  $categories = get_the_category();
+  $default_category_slug = 'uncategorized';
+  $default_category_object = get_category_by_slug($default_category_slug);
+  $default_category_id = $default_category_object->term_id;
+
+  $default_sidebar = 'sidebar-' . $default_category_slug .'-' . $default_category_id;
+
+  if ( count($categories) == 1 && !is_tax() && !is_archive() ) {
+    foreach ( $categories as $category ) {
+      $cat_slug = $category->slug;
+      $cat_id = $category->cat_ID;
+      $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
+    }
+    if(is_active_sidebar( $current_sidebar_name )) {
+      echo '<div class="row equal-height ptm">';
+      dynamic_sidebar( $current_sidebar_name );
+      echo '</div>';
+    } elseif(is_active_sidebar( $default_sidebar )) {
+        echo '<div class="row equal-height ptm">';
+        dynamic_sidebar( $default_sidebar );
+        echo '</div>';
+    }
+  } elseif( ( ! count( $categories ) == 1 ) && ( is_active_sidebar( $default_sidebar ) ) ) {
+      echo '<div class="row equal-height ptm">';
+      dynamic_sidebar( $default_sidebar );
+      echo '</div>';
+  }
+
+}
+
+function phila_get_posted_on(){
+  global $post;
+
+  $posted_on_meta['author'] = esc_html( get_the_author() );
+  $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
+  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  $time_string = sprintf( $time_string,
+    esc_attr( get_the_date( 'c' ) ),
+    esc_html( get_the_date() ),
+    esc_attr( get_the_modified_date( 'c' ) ),
+    esc_html( get_the_modified_date() )
+  );
+  $posted_on_meta['time_string'] = $time_string;
+
+  if( !get_the_category() == '' ) {
+    $current_category = get_the_category();
+
+    $department_page_args = array(
+      'post_type' => 'department_page',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    => $current_category[0]->slug,
+        ),
+      ),
+      'post_parent' => 0,
+      'posts_per_page' => 1,
+    );
+    $get_department_link = new WP_Query( $department_page_args );
+    if ( $get_department_link->have_posts() ) {
+      while ( $get_department_link->have_posts() ) {
+        $get_department_link->the_post();
+        // //$current_cat_slug = $current_category[0]->slug;
+      }
+    }
+    $posted_on_meta['current_cat_slug'] = $current_category[0]->slug;
+    $posted_on_meta['dept_cat_permalink'] = get_the_permalink();
+    $posted_on_meta['dept_title'] = get_the_title();
+  }
+
+  wp_reset_postdata();
+
+  return $posted_on_meta;
+
 }
 
 /**
@@ -639,37 +723,23 @@ function phila_gov_author_link( $link, $author_id, $author_name ){
   return $link;
 }
 
-add_filter( 'get_the_archive_title', 'change_post_archive_title' );
+add_filter( 'get_the_archive_title', 'phila_change_post_archive_title' );
 
-function change_post_archive_title(){
+function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'phila_post' ) ){
     _e('Posts', 'phila-gov');
-  }elseif( is_category() && is_post_type_archive( 'phila_post' ) ){
-    _e('Posts | ', 'phila-gov');
-    single_cat_title();
+    single_cat_title(' | ');
+  }elseif(is_post_type_archive( 'news_post' ) ){
+    _e('News', 'phila-gov');
+    single_cat_title(' | ');
+  }elseif( is_tag() ){
+    single_tag_title('Tagged in: ');
   }elseif( is_author() ){
     _e('Author | ', 'phila-gov');
     echo get_the_author();
   }
 }
 
-add_filter( 'get_the_archive_title', 'phila_filter_h1' );
-
-function phila_filter_h1( $title ) {
-
-  if ( is_tag() ) {
-
-    $title = single_tag_title( 'Tag | ', false );
-
-  } elseif ( is_category() ){
-
-    $title = single_cat_title( ' | ', false );
-
-  }
-
-  return $title;
-
-}
 /**
  * Filter department page archive to use list template & show all Parent Pages
  *
@@ -693,5 +763,201 @@ function phila_department_list( $query ) {
     $query->set('order', 'asc');
     $query->set( 'post_parent', 0 );
 
+  }
+}
+
+/**
+ * Find and displays the correct header images
+ *
+ * @since 0.22.0
+ * @link https://codex.wordpress.org/Custom_Backgrounds,
+ * @param $classes
+ *
+ */
+add_action('wp_head', 'phila_output_header_images', 100);
+
+
+function phila_output_header_images(){
+  global $post;
+
+  $page_bg_image_url = null;
+
+  if ( is_front_page() ) {
+    $page_bg_image_url = get_background_image();
+
+  }elseif( is_404() ) {
+    $page_bg_image_url = null;
+
+  }
+
+  $output = "<style type='text/css' id='alpha-custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
+
+  echo $output;
+
+}
+
+
+/**
+ * Adds 'department-home' class to appropiate department homepages or a 'department-landing' class to departments with no bg selected
+ *
+ * @since 0.23.0
+ * @link https://codex.wordpress.org/Function_Reference/body_class
+ * @param $classes
+ *
+ */
+
+add_filter( 'body_class', 'phila_home_classes' );
+
+function phila_home_classes( $classes ) {
+
+  global $post;
+
+  if ( isset($post) ) {
+
+    if ( $post->post_type == 'department_page' ) {
+
+      $parents = get_post_ancestors( $post->ID );
+
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+      $children = get_pages( array( 'child_of' => $post_id ) );
+
+      //this is a department homepage
+      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+        //this class allows us to determine if a department page is just a holder for a site
+        $classes[] = 'department-landing';
+
+        if ( has_post_thumbnail( $post->ID ) ) {
+          //this classname is important b/c we reference it in scripts.js to determine which header should be displayed (blue or white)
+          $classes[] = 'department-home';
+
+        }
+
+      }
+
+    }
+
+  }
+    return $classes;
+}
+
+/* Returns true if this page is a department page, has children and no other parents - i.e. department homepage */
+
+function phila_is_department_homepage( $post ) {
+
+  global $post;
+
+  if ( isset($post) ) {
+
+    if ( $post->post_type == 'department_page' ) {
+
+      $parents = get_post_ancestors( $post->ID );
+
+      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
+
+      $children = get_pages( array( 'child_of' => $post_id ) );
+
+      //this is a department homepage
+      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+
+        return true;
+
+      }
+    }
+  }
+}
+
+
+
+function phila_get_home_news(){
+  $category = get_the_category();
+  $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
+
+  $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
+
+  echo '<a href="' . get_permalink() .'" class="card equal">';
+
+  the_post_thumbnail( 'home-thumb'  );
+
+  if (function_exists('rwmb_meta')) {
+
+    echo '<div class="content-block">';
+
+    the_title('<h3>', '</h3>');
+
+    if ($contributor === ''){
+        echo '<span>' . $category[0]->cat_name . '</span>';
+    }else {
+        echo '<span>' . $contributor . '</span>';
+    }
+
+    echo '<p>' . $desc  . '</p>';
+
+  }
+
+  echo '</div></a>';
+}
+
+/**
+ * Gets the list of topics available used in:
+ * templates/topics-child.php
+ * templates/topics-parent.php
+ * taxonomy-topics.php
+ *
+ */
+function phila_get_parent_topics(){
+
+  $args = array(
+    'orderby' => 'name',
+    'fields'=> 'all',
+    'parent' => 0,
+    'hide_empty'=> true
+  );
+
+  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+  $terms = get_terms( 'topics', $args );
+
+  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+    echo '<ul class="tabs vertical">';
+
+    foreach ( $terms as $term ) {
+
+      if (isset($current_term->slug) ) {
+        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
+
+      }else {
+        $active = '';
+      }
+
+      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
+
+    }
+    echo '</ul>';
+  }
+}
+/**
+ * Utility function to get a list of all topics and their children on the site.
+ *
+ */
+function phila_get_master_topics(){
+  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
+  echo '<ul>';
+  foreach($parent_terms as $key => $parent_term) {
+
+    echo '<li><h3>' . $parent_term->name . '</h3>';
+    echo  $parent_term->description;
+
+    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
+
+    if($child_terms) {
+      echo '<ul class="subtopics">';
+      foreach($child_terms as $key => $child_term) {
+        echo '<li><h4>' . $child_term->name . '</h4>';
+        echo  $child_term->description . '</li></li>';
+      }
+
+    }
+    echo '</ul>';
   }
 }

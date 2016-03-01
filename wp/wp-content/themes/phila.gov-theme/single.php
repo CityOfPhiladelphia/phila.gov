@@ -17,7 +17,15 @@ get_header(); ?>
 
         get_template_part( 'partials/content', 'page' );
 
-       else :
+      elseif ( get_post_type() === 'phila_post'):
+
+        get_template_part('partials/content', 'single-post');
+
+      elseif ( get_post_type() === 'news_post'):
+
+        get_template_part('partials/content', 'single-news');
+
+      else :
 
         get_template_part( 'partials/content', 'single' );
 

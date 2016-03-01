@@ -1,6 +1,6 @@
 
 .single-calendar .simcal-event-details{
-  border-bottom:1px solid $geyser;
+  border-bottom:1px solid $dark-gray;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
@@ -18,7 +18,7 @@ ul.simcal-events{
 .month, .day{
   display: inline
 }
-a[href*="calendar.google.com"]:after{
+a[href*="google.com/calendar"]:after{
   font-family: "FontAwesome";
   content: "\f08e";
   font-size: 0.75rem;
@@ -28,18 +28,20 @@ a[href*="calendar.google.com"]:after{
 @media only screen and (min-width: 40.063em) {
   .calendar-date{
     text-align:center;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    color:$white;
 
     .month{
-      background:$sidewalk;
-      color:$white;
-      font-weight: bold;
-      border:1px solid $sidewalk;
+      background:$ben-franklin-blue;
       display: block;
+      text-transform: uppercase;
+
     }
+
     .day{
-      font-size: 1.5rem;
-      padding: .85rem 0;
-      border:1px solid $sidewalk;
+      font-size: 3rem;
+      font-weight: bold;
+      background:$ben-franklin-blue;
       display: block;
     }
   }

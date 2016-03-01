@@ -5,8 +5,10 @@
   *
   */
   ?>
-<nav class="topics-nav small-24 large-8 columns">
-  <?php get_parent_topics(); ?>
+<nav class="topics-nav small-24 large-8 columns mbm">
+  <?php
+  /* located in functions.php */
+  phila_get_parent_topics(); ?>
 </nav>
 
 <?php
@@ -63,10 +65,9 @@
     <?php endwhile; ?>
   <?php endif; ?>
 
-<div class="small-24 large-16 columns parent results">
-  <h1><?php echo $current_term->name ?></h1>
+<div class="small-24 large-16 columns parent results is-active plm-mu mbm">
+  <h1 class="mbm mtn"><?php echo $current_term->name ?></h1>
 
-  <ul class="subtopics">
     <?php
     foreach ($term_children as $term_child) :
       $term = get_term_by( 'id', $term_child, $current_term->taxonomy );
@@ -88,15 +89,13 @@
     ksort($pages_and_topics); ?>
 
   <?php foreach ( $pages_and_topics as $display_name => $display_data ) : ?>
-    <li>
       <?php //display_data[1] is permalink ?>
       <a href="<?php echo $display_data[1] ?>">
-        <h2 class="h4"><?php echo $display_name ?></h2>
-        <?php //display_data[0] is description ?>
-        <p class="description"><?php echo $display_data[0] ?></p>
+        <h2 class="h4 mbn"><?php echo $display_name ?></h2>
       </a>
-    </li>
-    <hr>
+        <?php //display_data[0] is description ?>
+        <span class="description"><?php echo $display_data[0] ?></span>
+      <hr>
   <?php endforeach; ?>
 
   </ul>

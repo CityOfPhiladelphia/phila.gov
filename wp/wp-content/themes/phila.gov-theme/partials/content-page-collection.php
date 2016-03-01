@@ -63,19 +63,21 @@
     </div>
     <article id="post-<?php the_ID(); ?>">
       <div class="row">
-        <div class="small-24 columns">
+        <div class="medium-6 columns">
           <aside>
             <ul class="tabs vertical">
               <?php if ( $check_parent_content ) : ?>
-                <li class="tab-title<?php echo ( $current ) ? ' active' : ''?>">
+                <li class="tabs-title<?php echo ( $current ) ? ' is-active' : ''?>">
                   <a href="<?php echo $parent_link ?>">Overview</a>
                 </li>
               <?php endif; ?>
               <?php echo $children; ?>
             </ul>
+          </div>
           </aside>
-        <div data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content">
-          <div class="content active">
+      <div class="medium-18 columns">
+        <div data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
+          <div class="tabs-panel is-active">
             <header class="entry-header">
               <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
             </header><!-- .entry-header -->
@@ -85,9 +87,9 @@
               <?php the_content(); ?>
             <?php endif; ?>
           </div>
+        </div>
         </div><!-- .entry-content -->
       </div>
     </div>
-    <?php get_template_part( 'partials/content', 'modified' ) ?>
   </article><!-- #post-## -->
 </div>

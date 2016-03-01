@@ -1,11 +1,50 @@
-.site-branding{
-    img {
-      width: auto;
-      height: 75px;
-      margin-top:0;
-    }//img
+body{
+  //required to override wp setting on bg images
+  position: static !important;
+}
+.group::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-}//.site-branding
+.navigation {
+  margin-top:1rem;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-size:.95rem;
+  .page-numbers{
+    padding: 5px;
+    &.next, &.prev{
+      padding:0;
+    }
+  }
+  i{
+    color:$white;
+    background:$bell-yellow;
+    padding:5px;
+  }
+}
+body.home header.site-header{
+
+  background: rgba(225, 225, 225, .4);
+
+  .breadcrumbs{
+    display: none;
+  }
+
+}
+
+#content header{
+  background: transparent;
+}
+header .site-branding {
+  background: transparent;
+}
+
+body.custom-background{
+  background-size:100%;
+}
 
 .departments .topic {
     clear:both;
@@ -63,14 +102,124 @@ img.float-right{
   color:$white;
 
   &:hover {
-    color: $mine-shaft;
+    color: $dark-gray;
   }
 }
 
 aside {
-  h3.alternate, 
+  h3.alternate,
   h4.alternate {
       margin-top:10px;
       margin-bottom:0;
     }
+}
+
+.breadcrumbs{
+
+  padding:0;
+
+   @media screen and (min-width: 64em) {
+     margin-left:55px;
+   }
+
+}
+
+.news-row{
+  background:$white;
+}
+
+@media screen and (min-width: 64em) {
+  .border-right{
+    border-right:1px solid $dark-gray;
+  }
+}
+.top-bar{
+  padding:0;
+}
+
+.bg-white{
+  background-color:$white;
+}
+
+.fade{
+  position: fixed;
+  background: rgba(0, 0, 0, .7);
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+@media screen and (max-width: 39.9375em) {
+
+  header{
+    $tl: 0.6s; // transition length
+
+    .search{
+      z-index: 10;
+    }
+
+    .search-site{
+      position: absolute;
+      width:100%;
+    }
+
+    .search-field {
+      float:right;
+      transition: width $tl, background $tl;
+      width: 1px;
+      //need to override foundation style here
+      height: 42px !important;
+      border: 1px solid $bell-yellow;
+      cursor: pointer;
+      background: $white;
+      & + label .search-icon {
+        color: white;
+      }
+      &:hover {
+        color: white;
+        background: rgb(255, 255, 255);
+        & + label .search-icon {
+          color: white;
+        }
+      }
+      &:focus {
+        transition: width $tl cubic-bezier(0,1,.66,1), background $tl;
+        border: 1px solid $bell-yellow;
+        outline: none;
+        box-shadow: none;
+        padding-left: 15px;
+        cursor: text;
+        width: 100%;
+        background: rgb(235, 235, 235);
+        color: black;
+        & + label .search-icon {
+          color: black;
+        }
+      }
+      &:not(:focus) {
+        text-indent:-5000px;
+      } // for more-graceful falling back (:not browsers likely support indent)
+    }
+
+    .search-submit {
+      position: relative;
+      left: -5000px;
+    }
+
+    .search:before{
+      content: '';
+      width: 0;
+      height:0;
+      background: transparent;
+    }
+
+    .search-icon {
+      padding:1rem;
+      background: $bell-yellow;
+      position: absolute;
+      right:0;
+      color: $white;
+      cursor: pointer;
+    }
+  }
 }

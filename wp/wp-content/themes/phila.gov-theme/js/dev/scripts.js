@@ -10,6 +10,41 @@ new List('filter-list', {
 });
 
 jQuery(document).ready(function($) {
+
+
+  //add search focus on tap or click
+  $('.search-icon').click(function() {
+
+    var fadeOn = $( ".fade" ).is( ":visible" );
+
+    $('.search-field').focus();
+
+    if ( !fadeOn ){
+      $('#page').prepend('<div class="fade"></div>');
+    }
+
+    $('.fade').click(function() {
+      $('.fade').remove();
+    });
+
+    var string = $('.search-field').val();
+
+    if( string.match(/\S/) ){
+      $('.search-submit').submit();
+    }
+  });
+
+
+  var alphaAlertHeight = $("#alpha-alert").css( "height" );
+
+  //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
+  if (alphaAlertHeight){
+    $('body.custom-background').css('background-position-y', alphaAlertHeight );
+  }
+
+  //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
+  $('.is-drilldown').find('ul').addClass('vertical');
+
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
     if(event.keyCode == 13) {

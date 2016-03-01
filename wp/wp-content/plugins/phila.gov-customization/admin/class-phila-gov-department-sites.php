@@ -214,7 +214,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
         $block_link = isset( $array_value['phila_block_link'] ) ? $array_value['phila_block_link'] : '';
         if ($block_link == '') {
-
+          $output .= '<div class="card equal">';
           $output .= '<div class="content-block">';
           $block_image = isset( $array_value['phila_block_image'] ) ? $array_value['phila_block_image'] : '';
 
@@ -228,9 +228,9 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           $block_summary = isset( $array_value['phila_block_summary'] ) ? $array_value['phila_block_summary'] : '';
           $output .= '<p>' . $block_summary . '</p>';
 
-          $output .= '</div>';
+          $output .= '</div></div>';
         }else{
-          $output .= '<a href="' . $block_link . '" class="card">';
+          $output .= '<a href="' . $block_link . '" class="card equal">';
 
           $block_image = isset( $array_value['phila_block_image'] ) ? $array_value['phila_block_image'] : '';
 
