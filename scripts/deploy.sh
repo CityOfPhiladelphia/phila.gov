@@ -9,6 +9,7 @@ source "$_dir/lib/mo"
 
 echo 'Running grunt tasks'
 cd wp/wp-content/themes/phila.gov-theme
+npm install
 grunt
 cd -
 
