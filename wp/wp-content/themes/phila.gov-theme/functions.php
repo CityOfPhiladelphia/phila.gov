@@ -569,7 +569,7 @@ function phila_get_dept_contact_blocks() {
 
   $default_sidebar = 'sidebar-' . $default_category_slug .'-' . $default_category_id;
 
-  if ( count($categories) == 1 && !is_tax() && !is_archive() ) {
+  if ( count($categories) == 1 && !is_tax() && !is_archive() && !is_404() ) {
     foreach ( $categories as $category ) {
       $cat_slug = $category->slug;
       $cat_id = $category->cat_ID;
@@ -584,7 +584,7 @@ function phila_get_dept_contact_blocks() {
         dynamic_sidebar( $default_sidebar );
         echo '</div>';
     }
-  } elseif( ( ! count( $categories ) == 1 ) && ( is_active_sidebar( $default_sidebar ) ) ) {
+  } elseif( ( ! count( $categories ) == 1 ) && ( is_active_sidebar( $default_sidebar ) ) && ( $cat_slug == $default_category_slug ) ) {
       echo '<div class="row equal-height ptm">';
       dynamic_sidebar( $default_sidebar );
       echo '</div>';
@@ -729,7 +729,7 @@ function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'phila_post' ) ){
     _e('Posts', 'phila-gov');
     single_cat_title(' | ');
-  }elseif(is_post_type_archive( 'news_post' ) ){
+  }elseif( is_post_type_archive( 'news_post' ) ){
     _e('News', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_tag() ){
@@ -737,6 +737,8 @@ function phila_change_post_archive_title(){
   }elseif( is_author() ){
     _e('Author | ', 'phila-gov');
     echo get_the_author();
+  }else{
+    post_type_archive_title();
   }
 }
 
