@@ -26,7 +26,7 @@
     margin-top: 0;
   }
   .property-link {
-    border: 3px solid #f2ba13;
+    border: 3px solid $flyers-orange;
     display: block;
     padding: 0.3rem 0.5rem;
 
@@ -41,7 +41,7 @@
   }
   .entry-summary {
     em {
-      background-color: $geyser;
+      background-color: $ghost-gray;
       padding: 0 0.25rem;
       margin: 0 -0.15rem;
     }

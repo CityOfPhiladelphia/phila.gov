@@ -2,7 +2,7 @@
 /**
  * The header for our theme.
  *
- * Displays all of the <head> section and everything up till <div id="content">
+ * Displays all of the <head> section and everything up until <div id="content">
  *
  * @package phila-gov
  */
@@ -21,17 +21,12 @@
   <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
   <?php } ?>
 
-
   <link rel="shortcut icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
 
   <?php wp_head(); ?>
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/phila.gov-styles/ie8.css" type="text/css" media="all">
-        <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-      <![endif]-->
-  <!--[if IE 9]>
-      <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/phila.gov-styles/ie9.css" type="text/css" media="all">
+  <!--[if lte IE 9]>
+  <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
 </head>
@@ -52,30 +47,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header data-swiftype-index='false' id="masthead" class="site-header" role="banner">
+  <header data-swiftype-index='false' id="masthead" class="site-header app" role="banner">
     <div class="row site-branding">
-      <div class="small-24 medium-12 columns">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-          <img src="<?php echo get_stylesheet_directory_uri();?>/img/city-of-philadelphia@2x.png" alt="City of Philadelphia" height="100" class="logo"></a>
+      <div class="small-16 columns">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo mbn-mu">
+          <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png"></a>
           <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
-        <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-24 medium-12 columns"> <?php get_search_form(); ?> </div> <?php }?>
-
+        <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-8 columns"> <?php get_search_form(); ?> </div> <?php }?>
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
     </div>
-  </header><!-- #masthead -->
-    <?php call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
-    ?>
-    <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) { ?>
-      <div class="row">
-        <div class="small-24 columns">
-          <div class="divider"></div>
+    <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
+      <?php if ( get_post_type() === 'department_page' ) : ?>
+        <div class="row expanded hide-for-small-only">
+        <?php else : ?>
+          <div class="row expanded">
+          <?php endif; ?>
+      <div class="columns">
+        <div class="row">
+          <div data-swiftype-index='false' class="large-24 columns">
+            <nav><?php phila_breadcrumbs(); ?></nav>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div data-swiftype-index='false' id="breadcrumbs" class="large-24 columns">
-          <nav><?php phila_breadcrumbs(); ?> </nav>
-        </div>
-      </div> <?php } ?>
-    <div id="content" class="site-content">
+    </div>
+  <?php endif; ?>
+  </header><!-- #masthead -->
+  <?php call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
+  ?>
+  <div id="content" class="site-content">

@@ -14,7 +14,9 @@ get_header(); ?>
   <?php
     if ( have_posts() ) : ?>
       <header class="columns">
-        <?php post_type_archive_title('<h1>', '</h1>'); ?>
+        <h1 class="contrast">
+          <?php get_the_archive_title(); ?>
+        </h1>
       </header><!-- .page-header -->
       <main id="main" class="site-main small-24 columns" role="main">
         <?php while ( have_posts() ) : the_post(); ?>

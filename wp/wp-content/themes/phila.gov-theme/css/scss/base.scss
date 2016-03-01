@@ -8,79 +8,10 @@
 @import 'calendar';
 @import 'departments';
 @import 'documents';
+@import 'footer';
 @import 'home';
 @import 'news';
+@import 'post';
+@import 'search';
 @import 'service';
 @import 'social-media';
-
-p, ul, ol {
-  line-height: 1.6;
-}
-li:last-child{
-  padding-bottom: .5rem;
-}
-
-.site-header {
-  color: $white;
-  height: 75px;
-  background: $white;
-}
-
-#breadcrumbs {
-  ul {
-    list-style:none;
-    margin: 0;
-    padding:0;
-  }
-  li {
-    display:inline;
-  }
-  li::after {
-    content:" / ";
-  }
-  li:last-child::after{
-    content:"";
-  }
-}
-@media screen and (min-width: 35.5em){
-  .entry-content > div {
-    margin:0 20px 0 0;
-  }
-}
-.group::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-ul.no-bullet, ol.no-bullet{
-  margin:0;
-  padding:0;
-}
-article .entry-title{
-  text-transform:none;
-  font-family: "Open Sans";
-}
-
-.equal-height .panel{
-  margin:0;
-  flex-grow: 1;
-}
-
-.navigation {
-  margin-top:1rem;
-  font-family: 'Montserrat';
-  text-transform: uppercase;
-  font-size:.95rem;
-  .page-numbers{
-    padding: 5px;
-    &.next, &.prev{
-      padding:0;
-    }
-  }
-  i{
-    color:$white;
-    background:$bell-yellow;
-    padding:5px;
-  }
-}

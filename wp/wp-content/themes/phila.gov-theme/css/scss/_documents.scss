@@ -37,17 +37,58 @@
   .file-type{
     text-transform:uppercase;
   }
-  table thead.light-head tr th{
-    background:$white;
+
+  table{
+      a{
+        text-decoration: underline;
+      }
+      tr{
+      }
+      tr:nth-of-type(odd){
+        background-color: $ghost-gray;
+      }
+      tr:nth-of-type(even){
+        background-color: $sidewalk;
+      }
+      td{
+        border-bottom: 2px solid $white;
+        padding: 1rem;
+        &:last-of-type{
+          border-bottom: 0;
+        }
+        @media only screen and (min-width: 40em) {
+          border-right: 2px solid $white;
+          border-bottom: 0;
+          &:last-of-type{
+            border-right: 0;
+          }
+        }
+      }
+      thead{
+        border: 0;
+      }
+      thead.light-head tr th{
+        background:$white;
+        color: $dark-gray;
+      }
+      .tablesaw-cell-content{
+        @media (max-width: 39.9375em){
+            padding-left: .5rem;
+        }
+      }
   }
   .clickable-row.is-hover{
     cursor:pointer;
-    background:$manatee;
-    .small-text{
-      color:$ghost-gray;
-    }
-    a {
-      color:$black;
+
+    &:hover {
+      background:$medium-gray;
+      .small-text{
+        color:$ghost-gray;
+      }
+      a {
+        color:$black;
+      }
+
     }
   }
 }

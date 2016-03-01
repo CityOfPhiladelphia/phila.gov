@@ -1,198 +1,90 @@
-/*
- *
- * service/information/department finder
- *
- *
-*/
+.hero-content{
+  text-align: center;
 
-#topic {
-  h3 {
-      margin-top:20px;
-      @media screen and (min-width: 35.5em){
-          margin-top: 0;
-       }
-  }
-  li.current-topic.current {
-    border-left:10px solid $ben-franklin-blue;
-    background: $ben-franklin-blue;
-    color: white;
-  }
-  ul {
-      padding:0;
-      margin:0;
-  }
-  li.current-topic + ul.subtopics {
-      background:$ghost-gray;
-      padding: 10px 0;
-  }
-}//#topic
-
-.browse {
-  margin:30px 0 40px 0;
-
-  nav{
-    margin-bottom:30px;
+  @media screen and (min-width: 48em) {
+    margin-top:150px;
   }
 
-  .results {
-    p {
-      margin-top:0;
-    }
-    li {
-      list-style: none;
-    }
-    h1 {
-      margin:0 0 10px 0;
-    }
-    ul {
-      margin:0;
-      padding:0;
-    }
+  section{
+    background:$ben-franklin-blue;
+  }
+  .call-to-action {
+    margin: 40px 0;
 
-    a:link, a:visited{
-      h2 {
-        color:$ben-franklin-blue;
-        margin-bottom:0;
+    p{
+      color:$white;
+      font-size:.9rem;
+      @media screen and (max-width: 48em) {
+        font-size: .8rem;
       }
     }
-    a:hover, a:active{
-      h2{
-        color:$mine-shaft;
-      }
+
+    @media screen and (max-width: 64em) {
+      margin: 20px 0;
     }
-    &.child {
-      margin: 0 0 0 0;
-      @media screen and (min-width: 64em){
-          margin: 30px 0 0 0;
+    @media screen and (max-width: 48em) {
+      a .fa-inverse {
+        font-size: 1.8rem;
+
+        span.h6 {
+          font-size: 1.8rem;
         }
-    }
-
-  }//results
-  .subtopics a li:hover {
-      border-left:10px solid $ben-franklin-blue;
-  }
-
-  .subtopic-select .subtopics a li{
-      border-left: 10px solid $white;
-    }
-  .subtopics a li{
-      border-left: 10px solid $ghost-gray;
-    }
-  .topics-nav{
-      float:left;
-
-      ul {
-          padding: 10px 0 !important;
       }
-  }
-  .subtopic-select ul.subtopics{
-      background:none !important;
-  }
-  .parent.current-topic a:hover{
-      color:$ben-franklin-blue;
-  }
-
-  li.parent.current-topic{
-    margin:0;
-    padding:0;
-
-    h3 {
-      display: inline;
+      .fa-3x {
+        font-size: 2em;
+        }
+      .h3 {
+        font-size:.7rem;
+      }
     }
   }
+  .topic-main-nav{
+    background: #3e8ef1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    a{
+      flex-grow:1;
+      margin:0;
+      padding:.5rem 0;
+      width:100%;
+      display: inline-block;
+      border-left:1px solid $ben-franklin-blue;
+      border-right:1px solid $ben-franklin-blue;
+      border-top: 2px solid $ben-franklin-blue;
+      color:white;
+      text-transform: uppercase;
+      font-weight: normal;
 
-  li.parent.current-topic h3::before {
-    display: inline;
+      @media screen and (min-width: 64em) {
+        width:25%;
+      }
+
+      &:hover, &:active{
+        background: $ben-franklin-light;
+      }
+    }
   }
-  .back-arrow::before{
-    content: "\f053";
-    font-family: 'FontAwesome';
-    padding: 0 5px 0 0;
-    display: inline;
-    color:$ben-franklin-blue;
-  }
-}//browse
-
-.browse nav li, .departments li {
-    list-style: none;
-    padding:10px;
-}
-
-.parent-topics,
-.browse li h3,
-.departments li h3 {
-    margin:0;
-}
-.browse nav.active, .departments nav.active{
-    background:#ccc;
-}
-
-.archive.tax-topics #breadcrumbs ul li:first-child {
-  text-transform: none;
-}
-.browse nav span, .departments nav span{
-    font-weight: normal;
-}
-
-p.child-description, p.parent-description {
-    padding: 0;
-    margin: 0;
-    font-weight: normal;
-    text-transform: none;
-}
-.parent-description a {
-    padding: 0;
-    font-weight: normal;
-}
-.main-nav h4{
-    margin: 0;
-}
-.detail {
-    display: block;
-}
-
-.topics-nav {
-    margin-right: 0;
-    ul {
-        background:$ghost-gray;
-        margin:0 10px 0 0 !important;
-    }
-    li {
-      border-left:10px solid $ghost-gray;
-    }
-    li.current-topic {
-        border-left:10px solid $ben-franklin-blue;
-        background: $ben-franklin-blue;
-        color: white;
-    }
-
-    a li:hover {
-        border-left:10px solid $ben-franklin-blue;
-    }
-
-    h2 {
-        padding-left:10px;
-    }
-
 }
 
 .error-404{
   .find {
-      @extend .group;
-      background-color:#F9F9F9;
-      border: 1px solid $geyser;
-      padding:1.5em;
-      margin-bottom: 0;
+    @extend .group;
+    background-color:#F9F9F9;
+    border: 1px solid $ghost-gray;
+    padding:1.5em;
+    margin-bottom: 0;
 
-      @media screen and (min-width: 35.5em){
-           margin-bottom: 1em;
-      }
-       h1{
-          margin-top: 0;
-          padding: 0;
-          text-transform: none;
-          font-size: 1.33em;
-          font-weight: 400;
-       }
+    @media screen and (min-width: 35.5em){
+         margin-bottom: 1em;
+    }
+     h1{
+        margin-top: 0;
+        padding: 0;
+        text-transform: none;
+        font-size: 1.33em;
+        font-weight: 400;
+     }
    }
 }

@@ -7,6 +7,10 @@
 */
 ?>
 
+<div class="small-24 columns">
+  <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+</div>
+
 
 <div class="small-24 columns">
   <div class="row">

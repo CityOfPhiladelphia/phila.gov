@@ -8,20 +8,26 @@
  */
 ?>
     <?php
-      if ( ! is_front_page() ): ?>
+    $current_post_type =  get_post_type( $post->ID );
+    if ( is_front_page() || $current_post_type == 'department_page' ):  ?>
+    <?php else : ?>
       <div class="row">
         <div class="small-24 columns">
-          <div class="panel center">
+          <div class="panel center mbl mtm mtl-mu">
             <?php echo phila_still_migrating_content(); ?>
           </div>
         </div>
       </div>
-      <?php endif; ?>
+    <?php endif; ?>
 
-      </div><!-- #content -->
+    </div><!-- #content -->
  </div><!-- #page -->
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer" role="contentinfo">
+  <section class="contact">
+      <?php echo phila_get_dept_contact_blocks(); ?>
+    <?php get_template_part( 'partials/content', 'modified' ) ?>
+  </section>
   <section class="fat">
     <div class="row">
       <div class="large-8 columns">
@@ -61,10 +67,7 @@
     </div><!-- row -->
   </section><!-- fat -->
   <div class="row classic">
-    <div class="site-info large-16 columns">
-      <?php printf('This site is a work-in-progress that will change as we add content. Please ');?> <a style="text-transform:uppercase; font-weight:bold;" href="<?php get_template_part( 'partials/content', 'feedback-url' ); ?>"><?php printf( __( 'notify us of errors.', 'phila-gov' ) ); ?></a>
-    </div><!-- .site-info -->
-    <nav class="large-8 columns">
+    <nav class="columns center">
       <ul class="inline-list">
           <li><a href="/terms-of-use">Terms of use</a></li>
           <li><a href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to know (pdf)</a></li>

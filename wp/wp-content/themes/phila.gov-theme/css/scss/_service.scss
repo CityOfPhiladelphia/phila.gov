@@ -1,24 +1,42 @@
-#page .service h1.entry-title{
-  margin-bottom: 1rem;
-}
 .service{
   .border {
-    border: 1px solid $geyser;
+    border: 1px solid $medium-gray;
   }
   .button+.small-text {
     margin: .5rem 0 0 0;
     padding: 0;
   }
-  .intro-top{
-    background:$geyser;
-    padding:2rem;
-    h1 {
-      margin:0;
+  .intro{
+    background:$ghost_gray;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    .valign {
+      display: table;
+      width: 100%;
+      height: inherit;
     }
-  }
-  .intro-bottom{
-    background: $ghost-gray;
-    padding: 1.5rem 2rem;
+    .valign-cell {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .intro-item{
+
+      &:last-of-type{
+        border-left: 0;
+        border-top: 2px solid white;
+      }
+      @media only screen and (min-width: 40em) {
+        &:last-of-type{
+          border-top: 0;
+          border-left: 2px solid $white;
+        }
+      }
+      .button{
+        margin: 0;
+      }
+
+    }
   }
   .columns.to-start-left{
     text-align: center;
@@ -27,7 +45,7 @@
     padding-left: 2em;
   }
   .columns.before-start-right{
-    border-left: 1px solid $geyser;
+    border-left: 2px solid $white;
     padding-left: 2rem;
     p, ul, ol {
       font-size:.75rem;
@@ -37,13 +55,19 @@
     }
   }
   .columns.before-start-left{
+    padding: 2rem;
     h3{
-      color:$sidewalk;
+      color:$dark-gray;
       font-size:.8rem;
+      font-weight: bold;
+      margin-top:0;
+    }
+    .h5{
+      font-size: 1.21429rem;
       margin-top:0;
     }
     i {
-      color:$bell-yellow;
+      color:$flyers-orange;
       vertical-align: middle;
       padding: 0 1rem 0 0;
     }
@@ -52,12 +76,18 @@
     margin-top:1rem;
   }
   aside#secondary {
-    h3 {
-      margin-top:17px;
-      margin-bottom: 20px;
+    padding-bottom:0;
+    border-top: 5px solid $sidewalk;
+    @media only screen and (min-width: 40.063em) {
+      border-top: 0;
+      border-left: 5px solid $sidewalk;
     }
-    &.no-border {
-      border:none;
+    li{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      &:last-child{
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -80,20 +110,11 @@
     }
     .light-stripe{
       border-top:none;
-      background:$geyser;
+      background:$medium-gray;
       text-align: center;
       &:first-of-type{
         margin-top:0;
       }
-    }
-  }
-
-  .a-z-list{
-    background:$ghost-gray;
-    text-align: center;
-
-    li{
-      padding:1rem 0;
     }
   }
 }

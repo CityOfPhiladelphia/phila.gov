@@ -22,6 +22,7 @@ function latest_posts_shortcode($atts) {
  ), $atts );
 
    $current_category = $category[0]->cat_ID;
+   $category_slug = $category[0]->slug;
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
@@ -44,12 +45,10 @@ function latest_posts_shortcode($atts) {
     $post_counter = 0;
 
   if ( is_flag ('list', $atts) ) {
-      $output .= '<div class="row"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2></div><div class="row news"><div class="medium-24 columns"><ul class="news-list">';
-    }else{
-      if ( $a['posts'] == 3 || $a['posts'] == 4 ) {
-        $output .= '<div class="row equal-height"><h2 class="alternate large-24 columns">' . $a['name'] . '</h2>';
-      }
-    }
+    $output .= '<div class="large-24 columns"><h2 class="alternate">' . $a['name'] . '</h2><div class="news"><ul>';
+  }else{
+    $output .= '<div class="large-24 columns"><h2 class="alternate">' . $a['name'] . '</h2><div class="row">';
+  }
 
     while( $blog_loop->have_posts() ) : $blog_loop->the_post();
     $post_counter++;
@@ -59,36 +58,30 @@ function latest_posts_shortcode($atts) {
     $link = get_permalink();
 
     if ( is_flag( 'list', $atts ) ){
-      $output .= '<li>';
+      $output .= '<li class="group mbm pbm">';
 
-      $output .= '<a href="' . get_permalink() .'">';
+      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class= small-thumb mrm' );
 
-      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
       $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
-      $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
+      $output .= '<a href="' . get_permalink() .'"><h3>' . get_the_title( $post->ID ) . '</h3></a>';
       $output .= '<span class="small-text">' . $desc . '</span>';
-      $output .= '</a>';
       $output .= '</li>';
-
 
     }else{
 
-      if( $a['posts'] == 4 ){
+      if($a['posts'] == 3){
+        $output .=  '<div class="medium-8 columns">';
+      }elseif($a['posts'] == 4){
         $output .=  '<div class="medium-6 columns">';
       }else{
-        $output .=  '<div class="medium-8 columns">';
-      }
-
-      //news title on first item
-      if ( $post_counter == 1 && $a['posts'] == 1) {
-        $output .= '<h2 class="alternate">' . $a['name'] . '</h2>';
+        $output .=  '<div class="medium-24 columns">';
       }
 
       $output .= '<a href="' . get_permalink() .'" class="card">';
 
       $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
 
-      $output .= '<div class="content-block">';
+      $output .= '<div class="content-block equal">';
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 
@@ -99,13 +92,11 @@ function latest_posts_shortcode($atts) {
 
     endwhile;
 
+    $output .= '</div><a class="see-all-right float-right" href="/posts/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
+
     if ( is_flag( 'list', $atts ) ) {
       $output .= '</ul>';
       $output .= '</div></div>';
-    }
-    if( $a['posts'] == 3 ) {
-      //this means we had equal-height applied and must close those divs
-      $output .= '</div>';
     }
 
     }else {
