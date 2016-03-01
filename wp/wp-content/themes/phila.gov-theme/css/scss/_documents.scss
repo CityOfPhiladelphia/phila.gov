@@ -77,8 +77,9 @@
         }
       }
   }
-  .clickable-row{
+  .clickable-row.is-hover{
     cursor:pointer;
+
     &:hover {
       background:$medium-gray;
       .small-text{
@@ -87,6 +88,7 @@
       a {
         color:$black;
       }
+
     }
   }
 }

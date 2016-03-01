@@ -41,7 +41,7 @@
     ?>
     <tr class="clickable-row" data-href=" <?php echo $document['url']; ?>">
       <td>
-        <a><?php echo $document['title']; ?></a>
+        <a href="<?php echo $document['url'] ?>"><?php echo $document['title']; ?></a>
       </td>
         <td>
           <?php if ( $content ): ?>
@@ -62,7 +62,7 @@
                 <span class="small-text file-type"> <?php phila_format_document_type( $file_type ); ?> </span>
               </div>
               <div class="medium-12 columns">
-                <i class="fa fa-download fa-2x"></i>
+                <a href="<?php echo $document['url'] ?>"><i class="fa fa-download fa-2x"></i></a>
               </div>
             </div>
           <?php endif; ?>

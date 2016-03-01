@@ -193,6 +193,8 @@ class Default_Calendar_List implements Calendar_View {
 			$header_class = '';
 			$compact_list_class = $calendar->compact_list ? 'simcal-calendar-list-compact' : '';
 
+			edit_post_link( __( 'Edit Calendar', 'google-calendar-events' ), '<p class="simcal-align-right"><small>', '</small></p>', $calendar->id );
+
 			echo '<div class="simcal-calendar-list ' . $compact_list_class . '">';
 
 			if ( ! $hide_header && ! $static_calendar ) {
@@ -227,6 +229,7 @@ class Default_Calendar_List implements Calendar_View {
 			echo '<div class="simcal-ajax-loader simcal-spinner-top" style="display: none;"><i class="simcal-icon-spinner simcal-icon-spin"></i></div>';
 
 			echo '</div>';
+
 		}
 
 	}
@@ -559,7 +562,7 @@ class Default_Calendar_List implements Calendar_View {
 								$event_color = ' style="border-' . $side . ': 4px solid ' . $event_color . '; padding-' . $side . ': 8px;"';
 							}
 
-							$list_events .= "\t" . '<li class="' . $event_classes . '"' . $event_visibility . $event_color . ' itemprop="event" itemscope itemtype="http://schema.org/Event">' . "\n";
+							$list_events .= "\t" . '<li class="' . $event_classes . '"' . $event_visibility . $event_color . ' itemscope itemtype="http://schema.org/Event">' . "\n";
 							$list_events .= "\t\t" . '<div class="simcal-event-details">' . $calendar->get_event_html( $event ) . '</div>' . "\n";
 							$list_events .= "\t" . '</li>' . "\n";
 
@@ -659,7 +662,7 @@ class Default_Calendar_List implements Calendar_View {
 	 * @return bool
 	 */
 	private function filter_events_before( $event ) {
-		return intval( $event ) > intval( $this->start );
+		return intval( $event ) >= intval( $this->start );
 	}
 
 	/**

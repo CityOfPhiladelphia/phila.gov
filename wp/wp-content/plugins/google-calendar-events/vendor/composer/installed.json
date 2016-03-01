@@ -165,67 +165,72 @@
         ]
     },
     {
-        "name": "google/apiclient",
-        "version": "1.1.6",
-        "version_normalized": "1.1.6.0",
+        "name": "mexitek/phpcolors",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/google/google-api-php-client.git",
-            "reference": "a25dc9d5c109ebb02945ba1ff6336cc937c27628"
+            "url": "https://github.com/mexitek/phpColors.git",
+            "reference": "629eb54bf7f920529c815fd5f85b5af9651ae9f0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/a25dc9d5c109ebb02945ba1ff6336cc937c27628",
-            "reference": "a25dc9d5c109ebb02945ba1ff6336cc937c27628",
+            "url": "https://api.github.com/repos/mexitek/phpColors/zipball/629eb54bf7f920529c815fd5f85b5af9651ae9f0",
+            "reference": "629eb54bf7f920529c815fd5f85b5af9651ae9f0",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.2.1"
+            "php": ">=5.3.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "3.7.*",
-            "squizlabs/php_codesniffer": "~2.3"
+            "nette/tester": "~1.6"
         },
-        "time": "2015-10-16 22:11:08",
+        "time": "2016-01-12 23:45:10",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "classmap": [
-                "src/"
+                "src"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "Apache-2.0"
+            "MIT"
         ],
-        "description": "Client library for Google APIs",
-        "homepage": "http://developers.google.com/api-client-library/php",
+        "authors": [
+            {
+                "name": "Arlo Carreon",
+                "homepage": "http://arlocarreon.com",
+                "role": "creator"
+            }
+        ],
+        "description": "A series of methods that let you manipulate colors. Just incase you ever need different shades of one color on the fly.",
+        "homepage": "http://mexitek.github.com/phpColors/",
         "keywords": [
-            "google"
+            "color",
+            "css",
+            "design",
+            "frontend",
+            "ui"
         ]
     },
     {
         "name": "composer/installers",
-        "version": "v1.0.22",
-        "version_normalized": "1.0.22.0",
+        "version": "v1.0.23",
+        "version_normalized": "1.0.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+            "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
-            "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+            "url": "https://api.github.com/repos/composer/installers/zipball/6213d900e92647831f7a406d5c530ea1f3d4360e",
+            "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e",
             "shasum": ""
         },
         "require": {
-            "composer-plugin-api": "1.0.0"
+            "composer-plugin-api": "^1.0"
         },
         "replace": {
             "roundcube/plugin-installer": "*",
@@ -235,7 +240,7 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2015-10-29 23:28:48",
+        "time": "2016-01-27 12:54:22",
         "type": "composer-plugin",
         "extra": {
             "class": "Composer\\Installers\\Plugin",
@@ -310,18 +315,63 @@
         ]
     },
     {
-        "name": "symfony/polyfill-mbstring",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "name": "google/apiclient",
+        "version": "1.1.7",
+        "version_normalized": "1.1.7.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "49ff736bd5d41f45240cec77b44967d76e0c3d25"
+            "url": "https://github.com/google/google-api-php-client.git",
+            "reference": "400f250a30ae1dd4c4a0a4f750fe973fc70e6311"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/49ff736bd5d41f45240cec77b44967d76e0c3d25",
-            "reference": "49ff736bd5d41f45240cec77b44967d76e0c3d25",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/400f250a30ae1dd4c4a0a4f750fe973fc70e6311",
+            "reference": "400f250a30ae1dd4c4a0a4f750fe973fc70e6311",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2016-02-02 18:50:42",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Client library for Google APIs",
+        "homepage": "http://developers.google.com/api-client-library/php",
+        "keywords": [
+            "google"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-mbstring",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-mbstring.git",
+            "reference": "1289d16209491b584839022f29257ad859b8532d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/1289d16209491b584839022f29257ad859b8532d",
+            "reference": "1289d16209491b584839022f29257ad859b8532d",
             "shasum": ""
         },
         "require": {
@@ -330,11 +380,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2015-11-20 09:19:13",
+        "time": "2016-01-20 09:13:37",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.0-dev"
+                "dev-master": "1.1-dev"
             }
         },
         "installation-source": "dist",
@@ -372,17 +422,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v3.0.1",
-        "version_normalized": "3.0.1.0",
+        "version": "v3.0.2",
+        "version_normalized": "3.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "dff0867826a7068d673801b7522f8e2634016ef9"
+            "reference": "2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/dff0867826a7068d673801b7522f8e2634016ef9",
-            "reference": "dff0867826a7068d673801b7522f8e2634016ef9",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91",
+            "reference": "2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91",
             "shasum": ""
         },
         "require": {
@@ -403,7 +453,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2015-12-05 17:45:07",
+        "time": "2016-02-02 13:44:19",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -435,55 +485,5 @@
         ],
         "description": "Symfony Translation Component",
         "homepage": "https://symfony.com"
-    },
-    {
-        "name": "mexitek/phpcolors",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mexitek/phpColors.git",
-            "reference": "629eb54bf7f920529c815fd5f85b5af9651ae9f0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/mexitek/phpColors/zipball/629eb54bf7f920529c815fd5f85b5af9651ae9f0",
-            "reference": "629eb54bf7f920529c815fd5f85b5af9651ae9f0",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "nette/tester": "~1.6"
-        },
-        "time": "2016-01-12 23:45:10",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "classmap": [
-                "src"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Arlo Carreon",
-                "homepage": "http://arlocarreon.com",
-                "role": "creator"
-            }
-        ],
-        "description": "A series of methods that let you manipulate colors. Just incase you ever need different shades of one color on the fly.",
-        "homepage": "http://mexitek.github.com/phpColors/",
-        "keywords": [
-            "color",
-            "css",
-            "design",
-            "frontend",
-            "ui"
-        ]
     }
 ]
