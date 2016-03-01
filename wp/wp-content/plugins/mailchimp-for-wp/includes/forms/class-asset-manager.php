@@ -9,7 +9,7 @@
 class MC4WP_Form_Asset_Manager {
 
 	/**
-	 * @var MC4WP_Form_Output_Manager
+	 * @var MC4WP_Form_Output_Manager|null
 	 */
 	protected $output_manager;
 
@@ -21,14 +21,14 @@ class MC4WP_Form_Asset_Manager {
 	/**
 	 * @var string
 	 */
-	public $filename_suffix;
+	protected $filename_suffix;
 
 	/**
 	 * Constructor
 	 *
 	 * @param MC4WP_Form_Output_Manager $output_manager
 	 */
-	public function __construct( MC4WP_Form_Output_Manager $output_manager ) {
+	public function __construct( MC4WP_Form_Output_Manager $output_manager = null ) {
 		$this->output_manager = $output_manager;
 		$this->filename_suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 	}
@@ -63,8 +63,8 @@ class MC4WP_Form_Asset_Manager {
 		wp_register_script( 'mc4wp-forms-api', MC4WP_PLUGIN_URL . 'assets/js/forms-api'. $suffix .'.js', array(), MC4WP_VERSION, true );
 
 		// register placeholder script, which will later be enqueued for IE only
-		wp_register_script( 'mc4wp-placeholders', MC4WP_PLUGIN_URL . 'assets/js/third-party/placeholders.min.js', array(), MC4WP_VERSION, true );
-		$wp_scripts->add_data( 'mc4wp-placeholders', 'conditional', 'lte IE 9' );
+		wp_register_script( 'mc4wp-forms-placeholders', MC4WP_PLUGIN_URL . 'assets/js/third-party/placeholders.min.js', array(), MC4WP_VERSION, true );
+		$wp_scripts->add_data( 'mc4wp-forms-placeholders', 'conditional', 'lte IE 9' );
 
 		// register stylesheets
 		$stylesheets = array(
@@ -72,7 +72,7 @@ class MC4WP_Form_Asset_Manager {
 			'themes'
 		);
 		foreach( $stylesheets as $stylesheet ) {
-			wp_register_style( 'mc4wp-form-' . $stylesheet, MC4WP_PLUGIN_URL . 'assets/css/form-' . $stylesheet .$suffix . '.css', array(), MC4WP_VERSION );
+			wp_register_style( 'mc4wp-form-' . $stylesheet, $this->get_stylesheet_url( $stylesheet ), array(), MC4WP_VERSION );
 		}
 
 		/**
@@ -87,10 +87,11 @@ class MC4WP_Form_Asset_Manager {
 	}
 
 	/**
-	 * Load the various stylesheets
+	 * Get array of stylesheet handles which should be enqueued.
+	 *
+	 * @return array
 	 */
-	public function load_stylesheets( ) {
-
+	public function get_stylesheets() {
 		$stylesheets = (array) get_option( 'mc4wp_form_stylesheets', array() );
 
 		/**
@@ -105,11 +106,31 @@ class MC4WP_Form_Asset_Manager {
 		 * @param array $stylesheets Array of valid stylesheet handles
 		 */
 		$stylesheets = (array) apply_filters( 'mc4wp_form_stylesheets', $stylesheets );
+		return $stylesheets;
+	}
+
+	/**
+	 * @param string $handle
+	 *
+	 * @return string
+	 */
+	public function get_stylesheet_url( $handle ) {
+		return MC4WP_PLUGIN_URL . 'assets/css/form-' . $handle . $this->filename_suffix . '.css';
+	}
+
+	/**
+	 * Load the various stylesheets
+	 */
+	public function load_stylesheets( ) {
+		$stylesheets = $this->get_stylesheets();
 
 		foreach( $stylesheets as $stylesheet ) {
 			$handle = 'mc4wp-form-' . $stylesheet;
+
 			// TODO: check if stylesheet handle is registered?
 			wp_enqueue_style( $handle );
+
+			add_editor_style( $this->get_stylesheet_url( $stylesheet ) );
 		}
 
 		/**
@@ -183,9 +204,7 @@ class MC4WP_Form_Asset_Manager {
 		wp_enqueue_script( 'mc4wp-forms-api' );
 
 		// load placeholder polyfill if browser is Internet Explorer
-		if( ! empty( $GLOBALS['is_IE'] ) ) {
-			wp_enqueue_script( 'mc4wp-placeholders' );
-		}
+		wp_enqueue_script( 'mc4wp-placeholders' );
 
 		$this->scripts_loaded = true;
 		return true;
@@ -195,21 +214,19 @@ class MC4WP_Form_Asset_Manager {
 	 * Prints dummy JavaScript which allows people to call `mc4wp.forms.on()` before the JS is loaded.
 	 */
 	public function print_dummy_javascript() {
-		$file = MC4WP_PLUGIN_DIR . "assets/js/forms-dummy-api{$this->filename_suffix}.js";
+		$file = dirname( __FILE__ ) . '/views/js/dummy-api.js';
 		echo '<script type="text/javascript">';
 		include $file;
 		echo '</script>';
 	}
 
 	/**
-	* Returns the MailChimp for WP form mark-up
-	*
-	* @return string
+	* Outputs the inline JavaScript that is used to enhance forms
 	*/
 	public function print_javascript() {
 
 		// don't print any scripts if this page has no forms
-		if( empty( $this->output_manager->printed_forms ) ) {
+		if( ! $this->output_manager || empty( $this->output_manager->printed_forms ) ) {
 			return false;
 		}
 
@@ -245,6 +262,8 @@ class MC4WP_Form_Asset_Manager {
 		 */
 		do_action( 'mc4wp_print_forms_javascript' );
 	}
+
+
 
 
 }
