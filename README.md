@@ -12,6 +12,7 @@ The phila.gov site is WordPress running behind Nginx on an AWS instance. The ent
 2. Create .env file with these vars:
   - PHILA_TEST=`"true" or any truthy value so setup knows this is a test instance`
   - PHILA_DB_BUCKET=`S3 bucket where we keep DB dumps`
+  - PHILA_DEPLOY_BUCKET=`S3 bucket where we keep deploy files`
   - PHILA_MEDIA_BUCKET=`S3 bucket where instance media is stored`
   - PHILA_PLUGIN_BUCKET=`S3 bucket for private plugins`
   - AWS_ID=`AWS access key ID for the instance to use`
