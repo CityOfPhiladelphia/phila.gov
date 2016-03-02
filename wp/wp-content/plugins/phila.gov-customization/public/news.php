@@ -150,7 +150,7 @@ function recent_news_shortcode($atts) {
 
     endwhile;
 
-    $output .= '</div><a class="see-all-right float-right" href="/posts/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
+    $output .= '</div><a class="see-all-right float-right" href="/news/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
 
     if ( is_flag( 'list', $atts ) ) {
       $output .= '</ul>';
