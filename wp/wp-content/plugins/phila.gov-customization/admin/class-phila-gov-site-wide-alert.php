@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Add alerts to all pages
+* Add alerts to alpha homepage
 *
 * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
 *
@@ -94,7 +94,8 @@ class Phila_Gov_Site_Wide_Alert {
             'showTimepicker' => true,
             'stepMinute' => 15,
             'showHour' => 'true'
-          )
+          ),
+          'timestamp' => true,
         ),
         array(
           'name'  => 'Alert End Time',
@@ -102,14 +103,15 @@ class Phila_Gov_Site_Wide_Alert {
           'type'  => 'datetime',
           'class' =>  'end-time',
           'size'  =>  25,
-          'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times don’t effect when the alert is visible on the site.',
+          'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times define when an alert is visible on the site\'s homepage.',
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'m-dd-yy',
             'showTimepicker' => true,
             'stepMinute' => 15,
             'showHour' => 'true'
-          )
+          ),
+          'timestamp' => true,
         ),
       )
     );//site wide alert boxes
