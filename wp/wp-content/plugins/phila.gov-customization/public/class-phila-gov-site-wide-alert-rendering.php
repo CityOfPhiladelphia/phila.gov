@@ -18,14 +18,13 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
     $args = array(
       'post_type' => array ('site_wide_alert'),
-      'posts_per_page'    => 1,
-      'post_status' => 'any'
+      'posts_per_page'    => 1
     );
 
     function dateTimeFormat($date){
       if ( !$date == '' ) {
-        $the_date = DateTime::createFromFormat('m-d-Y H:i a', $date);
-        $formatted_date = $the_date->format('g:i a \o\n l, F d, Y');
+        $date_obj = new DateTime("@$date");
+        $formatted_date = $date_obj->format('g:i a \o\n l, F d, Y');
 
         echo str_replace(array('am','pm'),array('a.m.','p.m.'),$formatted_date);
       }
@@ -39,6 +38,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         $alert_query->the_post();
 
         $alert_active = rwmb_meta( 'phila_active', $args = array('type' => 'radio'));
+
         $alert_type = rwmb_meta( 'phila_type', $args = array('type' => 'select'));
         $alert_start = rwmb_meta( 'phila_start', $args = array('type' => 'datetime'));
         $alert_end = rwmb_meta( 'phila_end', $args = array('type' => 'datetime'));
@@ -69,7 +69,9 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
           $date_seperator = ' ';
         }
 
-      if ( $alert_active == 1 || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
+        $now = current_time('timestamp');
+
+        if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
         ?><div id="site-wide-alert">
             <div class="row"><?php
@@ -85,9 +87,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         echo '</div>';
         echo '</div>';
         echo '<div class="large-15 columns">';
-        if ($alert_type == 'Other'){
-          //blank
-        }else {
+        if ($alert_type != 'Other'){
           echo '<strong>'.$alert_type . ': </strong>';
         }
 
