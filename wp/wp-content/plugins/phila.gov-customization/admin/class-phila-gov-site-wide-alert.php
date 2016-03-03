@@ -91,8 +91,7 @@ class Phila_Gov_Site_Wide_Alert {
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'m-dd-yy',
-            'showTimepicker' => true,
-            'stepMinute' => 15,
+            'stepMinute' => 30,
             'showHour' => 'true'
           ),
           'timestamp' => true,
@@ -105,10 +104,9 @@ class Phila_Gov_Site_Wide_Alert {
           'size'  =>  25,
           'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times define when an alert is visible on the site\'s homepage.',
           'js_options' =>  array(
-            'timeFormat' =>  'hh:mm tt',
-            'dateFormat'=>'m-dd-yy',
-            'showTimepicker' => true,
-            'stepMinute' => 15,
+            'timeFormat' => 'hh:mm tt',
+            'dateFormat' => 'm-dd-yy',
+            'stepMinute' => 30,
             'showHour' => 'true'
           ),
           'timestamp' => true,
