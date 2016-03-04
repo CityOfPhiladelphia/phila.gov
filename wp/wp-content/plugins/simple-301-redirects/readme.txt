@@ -2,8 +2,8 @@
 Contributors: scottnelle
 Tags: 301, redirect, url, seo
 Requires at least: 3.0
-Tested up to: 4.3
-Stable tag: 1.06
+Tested up to: 4.4.2
+Stable tag: 1.07
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,9 @@ Simple 301 Redirects provides an easy method of redirecting requests to another 
 
 
 == Changelog ==
+= 1.07 =
+* Security Update - Better handling of posted data.
+
 = 1.06 =
 * Security Updates - Special thanks to Ryan Hellyer!
 
