@@ -31,24 +31,10 @@ module.exports = function(grunt) {
           ]
         }
       }
-    },
-    watch: {
-      css: {
-        files: ['css/scss/*.scss'],
-        tasks: ['sass'],
-        options: {
-          spawn: false
-        }
-      },
-      js: {
-        files: ['js/dev/*.js'],
-        tasks: ['uglify']
-      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['sass', 'uglify']);

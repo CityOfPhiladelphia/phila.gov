@@ -7,6 +7,12 @@ _dir="$(dirname "$0")"
 
 source "$_dir/lib/mo"
 
+echo 'Running grunt tasks'
+cd wp/wp-content/themes/phila.gov-theme
+npm install
+grunt
+cd -
+
 echo 'Modifying php configs'
 sudo ed -s /etc/php/7.0/fpm/pool.d/www.conf <<'EOF'
 g/^pm\.max_children/s/5/10
