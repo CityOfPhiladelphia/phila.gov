@@ -1,12 +1,12 @@
 <?php
+
 /**
  * Removes and redirects all requests at /service/foo/ to /foo/
  * Thanks to: http://ryansechrest.com/2013/04/remove-post-type-slug-in-custom-post-type-url-and-move-subpages-to-website-root-in-wordpress/
  *
- * @package  phila.gov-customization
+ * @package  phila.gov-customizatio
  * @since    0.17.3
  */
-
 
  // Instantiate new class
  $phila_service_page_rewrites = new Phila_Gov_Service_Rewrites();

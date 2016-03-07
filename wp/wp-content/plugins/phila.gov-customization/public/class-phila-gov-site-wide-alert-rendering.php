@@ -72,7 +72,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         $now = current_time('timestamp');
 
         if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
-
+          
         ?><div id="site-wide-alert">
             <div class="row"><?php
         echo '<div class="large-9 columns">';
