@@ -43,17 +43,6 @@ class Phila_Gov_Site_Wide_Alert {
 
       'fields' => array(
         array(
-          'name'  => 'Active Alert',
-          'desc'  => 'Should this alert be displayed on phila.gov?',
-          'id'    => $prefix . 'active',
-          'type'  => 'radio',
-          'std'=> '0',
-          'options' =>  array(
-            '0' => 'No',
-            '1' => 'Yes'
-          )
-        ),
-        array(
           'name'  => 'Alert Type',
           'id'    => $prefix . 'type',
           'type'  => 'select',
