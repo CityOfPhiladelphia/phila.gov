@@ -18,7 +18,7 @@ class Phila_Gov_Custom_Post_Types{
   public function __construct(){
     add_action( 'init', array( $this, 'create_phila_posts_post_type' ) );
 
-    add_action( 'init', array( $this, 'create_services_post_type' ) );
+    //add_action( 'init', array( $this, 'create_services_post_type' ) );
 
     add_action( 'init', array( $this, 'create_news_post_type' ) );
 
