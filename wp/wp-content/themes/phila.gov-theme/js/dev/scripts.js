@@ -66,11 +66,11 @@ jQuery(document).ready(function($) {
   if ( w <= 640 ){
     $('.all-services-info-list').addClass('equal-height');
   }
-});
 
+  /* Hijack mailchimp signup forms to use ajax handler */
 
-$(document).ready(function(){
-  ajaxMailChimpForm($("#mc-embedded-subscribe-form"), $("#subscribe-result"));
+  /*NOTE: this method requires that the form action URL from mailchimp uses subscribe/post-json */
+  ajaxMailChimpForm($("#mc-embedded-subscribe-form"), $("#mc_embed_signup"));
   // Turn the given MailChimp form into an ajax version of it.
   // If resultElement is given, the subscribe result is set as html to
   // that element.
@@ -83,7 +83,7 @@ $(document).ready(function(){
         $resultElement.html(error);
         $resultElement.css("color", "#f99300");
       } else {
-        $form.css("display", "none");
+      //  $form.css("display", "none");
         $resultElement.css("color", "black");
         $resultElement.html("Subscribing...");
         submitSubscribeForm($form, $resultElement);
@@ -120,12 +120,10 @@ $(document).ready(function(){
           $resultElement.css("color", "#f99300");
           if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
             message = "You're already subscribed. Thank you.";
-            $form.css("display", "none");
             $resultElement.css("color", "black");
           }
           $resultElement.html(message);
         } else {
-          $form.css("display", "none");
           $resultElement.css("color", "#58c04d");
           $resultElement.html("Thank you!<br>You must confirm the subscription in your inbox.");
         }
