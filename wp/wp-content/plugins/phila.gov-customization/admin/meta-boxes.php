@@ -17,7 +17,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'service_additions',
     'title'    => 'Service Description',
-    'pages'    => array( 'page' ),
+    'pages'    => array( 'service_post' ),
     'context'  => 'advanced',
     'priority' => 'high',
 
@@ -60,7 +60,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'service_before_start',
     'title'    => 'Before You Start Details',
-    'pages'    => array( 'page' ),
+    'pages'    => array( 'service_post' ),
     'context'  => 'advanced',
     'priority' => 'high',
 
@@ -74,8 +74,8 @@ function phila_register_meta_boxes( $meta_boxes ){
         'clone' => false,
         'options' => array(
           'teeny' => true,
-          //'dfw' => false,
-        //  'tinymce' =>  $serviceBeforeStart,
+          'dfw' => false,
+          'tinymce' =>  $serviceBeforeStart,
         ),
       ),
     )
@@ -83,7 +83,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'service_related_items',
     'title'    => 'Related Items',
-    'pages'    => array( 'page' ),
+    'pages'    => array( 'service_post' ),
     'context'  => 'side',
     'priority' => 'high',
 
