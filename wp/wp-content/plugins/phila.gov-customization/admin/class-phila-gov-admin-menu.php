@@ -34,6 +34,7 @@ class Phila_Gov_Admin_Menu {
     }
     return array(
         'index.php',
+        'edit.php?post_type=service_post',
         'edit.php?post_type=page',
         'separator1',
         'edit.php?post_type=department_page',
@@ -65,7 +66,7 @@ class Phila_Gov_Admin_Menu {
     global $menu;
     global $submenu;
     //Rename Pages
-    $menu[20][0] = 'Services and Information';
+    $menu[20][0] = 'Information Page';
 
     register_taxonomy_for_object_type('category', 'page');
   }
