@@ -80,12 +80,11 @@ jQuery(document).ready(function($) {
       e.preventDefault();
       if (!isValidEmail($form)) {
         var error =  "A valid email address must be provided.";
-        $resultElement.html(error);
+        $resultElement.append(error);
         $resultElement.css("color", "#f99300");
       } else {
-      //  $form.css("display", "none");
         $resultElement.css("color", "black");
-        $resultElement.html("Subscribing...");
+        $resultElement.append("Subscribing...");
         submitSubscribeForm($form, $resultElement);
       }
     });
@@ -121,8 +120,11 @@ jQuery(document).ready(function($) {
           if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
             message = "You're already subscribed. Thank you.";
             $resultElement.css("color", "black");
+          }else if (data.msg && data.msg.indexOf("zip code") >= 0) {
+            message = "Please enter a valid zip code.";
+            $resultElement.css("color", "f99300");
           }
-          $resultElement.html(message);
+          $resultElement.append(message);
         } else {
           $resultElement.css("color", "#58c04d");
           $resultElement.html("Thank you!<br>You must confirm the subscription in your inbox.");
