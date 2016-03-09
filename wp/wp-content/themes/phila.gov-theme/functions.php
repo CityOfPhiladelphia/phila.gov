@@ -188,7 +188,8 @@ add_action( 'widgets_init', 'phila_gov_widgets_init', 10 );
 function phila_gov_widgets_init() {
   $args = array(
     'orderby' => 'name',
-    'parent' => 0
+    'parent' => 0,
+    'hide_empty' => false
     );
   $categories = get_categories( $args );
 
