@@ -11,7 +11,6 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
-
   //add search focus on tap or click
   $('.search-icon').click(function() {
 
@@ -33,7 +32,6 @@ jQuery(document).ready(function($) {
       $('.search-submit').submit();
     }
   });
-
 
   var alphaAlertHeight = $("#alpha-alert").css( "height" );
 
@@ -67,5 +65,71 @@ jQuery(document).ready(function($) {
   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   if ( w <= 640 ){
     $('.all-services-info-list').addClass('equal-height');
+  }
+});
+
+
+$(document).ready(function(){
+  ajaxMailChimpForm($("#mc-embedded-subscribe-form"), $("#subscribe-result"));
+  // Turn the given MailChimp form into an ajax version of it.
+  // If resultElement is given, the subscribe result is set as html to
+  // that element.
+  function ajaxMailChimpForm($form, $resultElement){
+    // Hijack the submission. We'll submit the form manually.
+    $form.submit(function(e) {
+      e.preventDefault();
+      if (!isValidEmail($form)) {
+        var error =  "A valid email address must be provided.";
+        $resultElement.html(error);
+        $resultElement.css("color", "#f99300");
+      } else {
+        $form.css("display", "none");
+        $resultElement.css("color", "black");
+        $resultElement.html("Subscribing...");
+        submitSubscribeForm($form, $resultElement);
+      }
+    });
+  }
+  // Validate the email address in the form
+  function isValidEmail($form) {
+    var email = $form.find("input[type='email']").val();
+    if (!email || !email.length) {
+        return false;
+    } else if (email.indexOf("@") == -1) {
+        return false;
+    }
+    return true;
+  }
+  // Submit the form with an ajax/jsonp request.
+  // Based on http://stackoverflow.com/a/15120409/215821
+  function submitSubscribeForm($form, $resultElement) {
+    $.ajax({
+      type: "GET",
+      url: $form.attr("action"),
+      data: $form.serialize(),
+      cache: false,
+      dataType: "jsonp",
+      jsonp: "c", // trigger MailChimp to return a JSONP response
+      contentType: "application/json; charset=utf-8",
+      error: function(error){
+          // According to jquery docs, this is never called for cross-domain JSONP requests
+      },
+      success: function(data){
+        if (data.result != "success") {
+          var message = data.msg || "Sorry. Unable to subscribe. Please try again later.";
+          $resultElement.css("color", "#f99300");
+          if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
+            message = "You're already subscribed. Thank you.";
+            $form.css("display", "none");
+            $resultElement.css("color", "black");
+          }
+          $resultElement.html(message);
+        } else {
+          $form.css("display", "none");
+          $resultElement.css("color", "#58c04d");
+          $resultElement.html("Thank you!<br>You must confirm the subscription in your inbox.");
+        }
+      }
+    });
   }
 });
