@@ -1,52 +1,57 @@
 <?php
-// Prevent loading this file directly
-defined( 'ABSPATH' ) || exit;
-
-require_once RWMB_FIELDS_DIR . 'media.php';
-if ( ! class_exists( 'RWMB_Image_Advanced_Field' ) )
+/**
+ * Image advanced field class which users WordPress media popup to upload and select images.
+ */
+class RWMB_Image_Advanced_Field extends RWMB_Media_Field
 {
-	class RWMB_Image_Advanced_Field extends RWMB_Media_Field
+	/**
+	 * Normalize parameters for field
+	 *
+	 * @param array $field
+	 *
+	 * @return array
+	 */
+	static function normalize( $field )
 	{
-		/**
-		 * Normalize parameters for field
-		 *
-		 * @param array $field
-		 *
-		 * @return array
-		 */
-		static function normalize_field( $field )
-		{
-			$field = parent::normalize_field( $field );			
-			$field['mime_type'] = 'image';			
+		$field              = parent::normalize( $field );
+		$field['mime_type'] = 'image';
 
-			return $field;
-		}
+		return $field;
+	}
 
-		/**
-		 * Get field HTML
-		 *
-		 * @param mixed $meta
-		 * @param array $field
-		 *
-		 * @return string
-		 */
-		static function html( $meta, $field )
-		{			
-			$i18n_add    = apply_filters( 'rwmb_media_add_string', _x( '+ Add Media', 'media', 'meta-box' ) );
-			$meta = (array) $meta;
-			$meta = implode( ',', $meta );
-			$html = sprintf(
-				'<input type="hidden" name="%s" value="%s" class="rwmb-image-advanced">
-				<div class="rwmb-media-view"  data-mime-type="%s" data-max-files="%s" data-force-delete="%s"></div>',
-				$field['field_name'],
-				esc_attr( $meta ),
-				$field['mime_type'],
-				$field['max_file_uploads'] ,
-				$field['force_delete'] ? 'true' : 'false',
-				$i18n_add
-			);
+	/**
+	 * Get the field value.
+	 * @param array $field
+	 * @param array $args
+	 * @param null  $post_id
+	 * @return mixed
+	 */
+	static function get_value( $field, $args = array(), $post_id = null )
+	{
+		return RWMB_Image_Field::get_value( $field, $args, $post_id );
+	}
 
-			return $html;
-		}
+	/**
+	 * Output the field value.
+	 * @param array $field
+	 * @param array $args
+	 * @param null  $post_id
+	 * @return mixed
+	 */
+	static function the_value( $field, $args = array(), $post_id = null )
+	{
+		return RWMB_Image_Field::the_value( $field, $args, $post_id );
+	}
+
+	/**
+	 * Get uploaded file information.
+	 *
+	 * @param int   $file_id Attachment image ID (post ID). Required.
+	 * @param array $args    Array of arguments (for size).
+	 * @return array|bool False if file not found. Array of image info on success
+	 */
+	static function file_info( $file_id, $args = array() )
+	{
+		return RWMB_Image_Field::file_info( $file_id, $args );
 	}
 }
