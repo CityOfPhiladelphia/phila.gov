@@ -26,7 +26,7 @@ function phila_documentation_content(){
           Create "naked" embeded form in mailchimp
         </li>
         <li>
-          Remove extranous spaces from markup
+          Remove extraneous spaces from markup
         </li>
         <li>
           Ensure the form is wrapped in <code>&lt;div id="mc_embed_signup"&gt;</code> and the form element has an ID of <code>mc-embedded-subscribe-form</code>
