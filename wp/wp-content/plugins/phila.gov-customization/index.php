@@ -22,6 +22,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 $dir = plugin_dir_path( __FILE__ );
+require $dir. '/admin/admin-documentation.php';
 require $dir. '/admin/admin-ui.php';
 require $dir. '/admin/class-phila-gov-admin-documents.php';
 require $dir. '/admin/class-phila-gov-admin-menu.php';
