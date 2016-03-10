@@ -1,42 +1,48 @@
 <?php
-// Prevent loading this file directly
-defined( 'ABSPATH' ) || exit;
-
-// Make sure "input" field is loaded
-require_once RWMB_FIELDS_DIR . 'input.php';
-
-if ( ! class_exists( 'RWMB_Text_Field' ) )
+/**
+ * Text field class.
+ */
+class RWMB_Text_Field extends RWMB_Input_Field
 {
-	class RWMB_Text_Field extends RWMB_Input_Field
+	/**
+	 * Normalize parameters for field
+	 *
+	 * @param array $field
+	 * @return array
+	 */
+	static function normalize( $field )
 	{
-		/**
-		 * Normalize parameters for field
-		 *
-		 * @param array $field
-		 *
-		 * @return array
-		 */
-		static function normalize_field( $field )
-		{
-			$field = parent::normalize_field( $field );
+		$field = parent::normalize( $field );
 
-			$field = wp_parse_args( $field, array(
-				'size'        => 30,
-				'maxlength'   => false,
-				'pattern'     => false,
-				'placeholder' => '',
-			) );
+		$field = wp_parse_args( $field, array(
+			'size'        => 30,
+			'maxlength'   => false,
+			'pattern'     => false,
+		) );
 
-			$field['attributes'] = wp_parse_args( $field['attributes'], array(
-				'size'        => $field['size'],
-				'maxlength'   => $field['maxlength'],
-				'pattern'     => $field['pattern'],
-				'placeholder' => $field['placeholder'],
-			) );
+		return $field;
+	}
 
-			$field['attributes']['type'] = 'text';
+	/**
+	 * Get the attributes for a field
+	 *
+	 * @param array $field
+	 * @param mixed $value
+	 *
+	 * @return array
+	 */
+	static function get_attributes( $field, $value = null )
+	{
+		$attributes = parent::get_attributes( $field, $value );
+		$attributes = wp_parse_args( $attributes, array(
+			'size'        => $field['size'],
+			'maxlength'   => $field['maxlength'],
+			'pattern'     => $field['pattern'],
+			'placeholder' => $field['placeholder'],
+		) );
 
-			return $field;
-		}
+		$attributes['type'] = 'text';
+
+		return $attributes;
 	}
 }
