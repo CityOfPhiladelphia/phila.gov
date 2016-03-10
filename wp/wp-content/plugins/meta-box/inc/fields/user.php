@@ -1,103 +1,94 @@
 <?php
-// Prevent loading this file directly
-defined( 'ABSPATH' ) || exit;
-
-// Make sure "select" field is loaded
-require_once RWMB_FIELDS_DIR . 'select-advanced.php';
-
-if ( ! class_exists( 'RWMB_User_Field' ) )
+/**
+ * User field class.
+ */
+class RWMB_User_Field extends RWMB_Object_Choice_Field
 {
-	class RWMB_User_Field extends RWMB_Select_Advanced_Field
+	/**
+	 * Normalize parameters for field
+	 *
+	 * @param array $field
+	 *
+	 * @return array
+	 */
+	static function normalize( $field )
 	{
 		/**
-		 * Get field HTML
-		 *
-		 * @param mixed $meta
-		 * @param array $field
-		 *
-		 * @return string
+		 * Set default field args
 		 */
-		static function html( $meta, $field )
-		{
-			$field['options'] = self::get_options( $field );
-			switch ( $field['field_type'] )
-			{
-				case 'select':
-					return RWMB_Select_Field::html( $meta, $field );
-					break;
-				case 'select_advanced':
-				default:
-					return RWMB_Select_Advanced_Field::html( $meta, $field );
-			}
-		}
+		$field = wp_parse_args( $field, array(
+			'field_type' => 'select',
+			'query_args' => array(),
+		) );
 
 		/**
-		 * Normalize parameters for field
-		 *
-		 * @param array $field
-		 *
-		 * @return array
+		 * Prevent select tree for user since it's not hierarchical
 		 */
-		static function normalize_field( $field )
-		{
-			$field = wp_parse_args( $field, array(
-				'field_type' => 'select_advanced',
-				'parent'     => false,
-				'query_args' => array(),
-			) );
-
-			$field['std'] = empty( $field['std'] ) ? __( 'Select an user', 'meta-box' ) : $field['std'];
-
-			$field['query_args'] = wp_parse_args( $field['query_args'], array(
-				'orderby' => 'display_name',
-				'order'   => 'asc',
-				'role'    => '',
-				'fields'  => 'all',
-			) );
-
-			switch ( $field['field_type'] )
-			{
-				case 'select':
-					return RWMB_Select_Field::normalize_field( $field );
-					break;
-				case 'select_advanced':
-				default:
-					return RWMB_Select_Advanced_Field::normalize_field( $field );
-			}
-		}
+		$field['field_type'] = 'select_tree' === $field['field_type'] ? 'select' : $field['field_type'];
 
 		/**
-		 * Get users
-		 *
-		 * @param array $field
-		 *
-		 * @return array
+		 * Set to always flat
 		 */
-		static function get_options( $field )
-		{
-			$results = get_users( $field['query_args'] );
-			$options = array();
-			foreach ( $results as $result )
-			{
-				$options[$result->ID] = $result->display_name;
-			}
-
-			return $options;
-		}
+		$field['flatten'] = true;
 
 		/**
-		 * Get option label to display in the frontend
-		 *
-		 * @param int   $value Option value
-		 * @param int   $index Array index
-		 * @param array $field Field parameter
-		 *
-		 * @return string
+		 * Set default placeholder
 		 */
-		static function get_option_label( &$value, $index, $field )
-		{
-			$user  = get_userdata( $value );
-			$value = '<a href="' . get_author_posts_url( $value ) . '">' . $user->display_name . '</a>';
-		}
+		$field['placeholder'] = empty( $field['placeholder'] ) ? __( 'Select an user', 'meta-box' ) : $field['placeholder'];
+
+		/**
+		 * Set default query args
+		 */
+		$field['query_args'] = wp_parse_args( $field['query_args'], array(
+			'orderby' => 'display_name',
+			'order'   => 'asc',
+			'role'    => '',
+			'fields'  => 'all',
+		) );
+		$field               = parent::normalize( $field );
+
+		return $field;
+	}
+
+	/**
+	 * Get users
+	 *
+	 * @param array $field
+	 *
+	 * @return array
+	 */
+	static function get_options( $field )
+	{
+		$options = get_users( $field['query_args'] );
+		return $options;
+	}
+
+	/**
+	 * Get field names of object to be used by walker
+	 *
+	 * @return array
+	 */
+	static function get_db_fields()
+	{
+		return array(
+			'parent' => 'parent',
+			'id'     => 'ID',
+			'label'  => 'display_name',
+		);
+	}
+
+	/**
+	 * Get option label to display in the frontend
+	 *
+	 * @param int   $value Option value
+	 * @param int   $index Array index
+	 * @param array $field Field parameter
+	 *
+	 * @return string
+	 */
+	static function get_option_label( &$value, $index, $field )
+	{
+		$user  = get_userdata( $value );
+		$value = '<a href="' . get_author_posts_url( $value ) . '">' . $user->display_name . '</a>';
 	}
 }
