@@ -229,7 +229,7 @@ add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
 
-  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/1.1.2/css/patterns.css' );
+  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/1.1.5/css/patterns.css' );
 
   wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.4.0' );
 
@@ -250,7 +250,7 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
 
-  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.1.2/js/patterns.min.js', array('jquery', 'foundation-js'), true );
+  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.1.5/js/patterns.min.js', array('jquery', 'foundation-js'), true );
 
   wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js'), 1.0, true );
 }
@@ -495,18 +495,15 @@ function phila_breadcrumbs() {
 
 //this is used throughout the theme and is meant to be updated once the major switch happens
 function phila_util_echo_website_url(){
-    echo 'alpha.phila.gov';
+  echo 'alpha.phila.gov';
 }
 
-function phila_util_echo_feedback_url(){
-    echo 'https://alpha.phila.gov/feedback?url=' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] . '&dept=';
-}
-
-function phila_still_migrating_content(){
-    echo '<p>We\'re still working on this page\'s design and content. ';
-    echo '<a href="';
-    echo phila_util_echo_feedback_url();
-    echo '">How can we make it better?</a></p>';
+//spits out a nice version of the department category name
+function phila_util_echo_current_cat_name(){
+  $category = get_the_category();
+  foreach( $category as $cat){
+    echo $cat->name;
+  }
 }
 
 function phila_get_department_menu() {
