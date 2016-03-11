@@ -216,6 +216,13 @@
             white-space: pre;
             font-weight: bold;
             text-transform: uppercase;
+          }
+          .break-after{
+            &:after {
+              content: '\A';
+            }
+          }
+          .break-before{
             &:before {
               content: '\A';
             }
