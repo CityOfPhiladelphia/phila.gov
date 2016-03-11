@@ -7,18 +7,7 @@
  * @package phila-gov
  */
 ?>
-    <?php
-    $current_post_type =  get_post_type( $post->ID );
-    if ( $current_post_type == 'department_page' ):  ?>
-    <?php else : ?>
-      <div class="row">
-        <div class="small-24 columns">
-          <div class="panel center mbl mtm mtl-mu">
-            <?php echo phila_still_migrating_content(); ?>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
+      <?php get_template_part( 'partials/content', 'feedback' ); ?>
 
     </div><!-- #content -->
  </div><!-- #page -->

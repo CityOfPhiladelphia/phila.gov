@@ -14,10 +14,4 @@
       <h1 class="h2"><?php _e( 'Nothing Found', 'phila-gov' ); ?></h1>
     </div>
   </header><!-- .page-header -->
-
-  <div class="row">
-    <div class="page-content small-24 columns">
-      <?php phila_still_migrating_content();?>
-    </div><!-- .page-content -->
-  </div><!-- .row-->
 </section><!-- .no-results -->
