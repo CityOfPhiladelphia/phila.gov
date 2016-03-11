@@ -499,7 +499,7 @@ function phila_util_echo_website_url(){
 }
 
 //spits out a nice version of the department category name
-function phila_util_echo_current_cat_name(){
+function phila_util_get_current_cat_name(){
   $category = get_the_category();
   foreach( $category as $cat){
     return $cat->name;
