@@ -502,7 +502,7 @@ function phila_util_echo_website_url(){
 function phila_util_echo_current_cat_name(){
   $category = get_the_category();
   foreach( $category as $cat){
-    echo $cat->name;
+    return $cat->name;
   }
 }
 
