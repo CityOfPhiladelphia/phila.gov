@@ -246,6 +246,18 @@
       }
     }
   }
+  ul.list-border-bottom li{
+    border-bottom:1px solid $dark-gray;
+    padding:$spacing-small 0;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+
+  .border-bottom {
+    border-bottom:1px solid $dark-gray;
+  }
+
 }//department
 @media screen and (min-width: 40em) {
 
