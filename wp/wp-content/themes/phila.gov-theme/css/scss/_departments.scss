@@ -172,6 +172,7 @@
   }
   .department-header {
     position: relative;
+    overflow:hidden;
     .intro{
       position: relative;
       a {
@@ -181,11 +182,6 @@
         &:not(.button) {
           color: #fff;
           text-decoration: underline;
-        }
-      }
-      h1 {
-        .strong {
-
         }
       }
       .sub-head {
@@ -201,15 +197,18 @@
     @media screen and (min-width: 40em) {
       .intro {
         position: absolute;
-        left: 30px;
-        bottom:15px;
-        width: 600px;
+        bottom: 15px;
         color: #fff;
+        background: rgba(0,0,0,.6);
+        width: 430px;
+        left: .71429rem;
+        padding-left: 30px;
         h1 {
           display: inline-block;
+          font-size: 2.5rem;
+          line-height: 3rem;
           .strong {
             font-size: 3.5rem;
-            line-height: 0;
             white-space: pre;
             font-weight: bold;
             text-transform: uppercase;
@@ -237,18 +236,13 @@
     }
     @media only screen and (min-width: 64em) {
       .intro {
-        left: 30px;
-        width:400px;
         h1 {
-          font-size: 2.5rem;
-          display: inline-block;
         }
       }
     }
   }
 }//department
 @media screen and (min-width: 40em) {
-
   .medium-center{
     text-align: center;
   }
