@@ -130,7 +130,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
               'id'    => $prefix . 'block_heading',
               'type'  => 'text',
               'class' => 'block-title',
-              'required' => true,
               'desc'  => '20 character maximum'
             ),
             array(
@@ -138,7 +137,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
               'id'    => $prefix . 'block_image',
               'type'  => 'file_input',
               'class' => 'block-image',
-              'required' => true,
               'desc'  => 'Image should be no smaller than 274px by 180px.'
             ),
             array(
@@ -146,7 +144,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
               'id'    => $prefix . 'block_content_title',
               'type'  => 'text',
               'class' => 'block-content-title',
-              'required' => true,
               'desc'  => '70 character maximum.',
               'size'  => '60'
             ),
@@ -155,7 +152,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
               'id'    => $prefix . 'block_summary',
               'type'  => 'textarea',
               'class' => 'block-summary',
-              'required' => true,
               'desc'  => '225 character maximum.'
             ),
             array(
