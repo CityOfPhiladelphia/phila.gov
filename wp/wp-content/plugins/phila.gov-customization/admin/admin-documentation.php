@@ -36,10 +36,10 @@ function phila_documentation_content(){
           Remove extra spaces from the markup.
         </li>
         <li>
-          Ensure the form is wrapped in <code>&lt;div id="mc_embed_signup"&gt;</code> and the form element has an ID of <code>mc-embedded-subscribe-form</code>
+          Ensure the form is wrapped in <code>&lt;div id="mc_embed_signup"&gt;</code> and the form element has an ID of <code>mc-embedded-subscribe-form</code>.
         </li>
         <li>
-          Update form action from <code>subscribe/post</code> to <code>subscribe/post-json</code>
+          Modify the form action URL from <code>subscribe/post</code> to <code>subscribe/post-json</code>.
         </li>
       </ol>
   </section>
