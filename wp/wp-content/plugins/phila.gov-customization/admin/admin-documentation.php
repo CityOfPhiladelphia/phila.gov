@@ -9,7 +9,7 @@ function phila_documentation_menu() {
 function phila_documentation_content(){
   ?>
   <style>
-  ul{
+  section ul{
     list-style: disc;
     margin-left: 2em;
   }
