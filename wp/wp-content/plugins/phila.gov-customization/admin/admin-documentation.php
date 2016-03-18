@@ -24,10 +24,10 @@ function phila_documentation_content(){
     <h3>Adding a new MailChimp form to Alpha</h3>
       <ol class="new-mailchimp-form">
         <li>
-          Create "naked" embedded form in mailchimp
+          Create a "naked" embedded form in mailchimp.
         </li>
         <li>
-          Remove extraneous spaces from markup
+          Remove extra spaces from the markup.
         </li>
         <li>
           Ensure the form is wrapped in <code>&lt;div id="mc_embed_signup"&gt;</code> and the form element has an ID of <code>mc-embedded-subscribe-form</code>
@@ -36,9 +36,11 @@ function phila_documentation_content(){
           Update form action from <code>subscribe/post</code> to <code>subscribe/post-json</code>
         </li>
       </ol>
-  <section>
+  </section>
+  <hr>
   <section id="file-names">
     <h2>File Naming Conventions</h2>
+    <strong>Remember:</strong> <br>
       <ul>
         <li>Use hyphens to separate words.</li>
         <li>Lowercase is better, because it’s easier to type and to remember.</li>
@@ -51,37 +53,37 @@ function phila_documentation_content(){
       <p>If the owner of the file is important to the content, include that.
       </p>
       <blockquote>
-        mayor-influental-women-collage.jpg<br>
+        <code>mayor-influental-women-collage.jpg</code><br>
         <strong>-NOT-</strong><br>
-        womenmosaicfinal.jpg
+        <code>womenmosaicfinal.jpg</code>
       </blockquote>
       <p>If the file content is based on a date or time, include that information at the beginning.</p>
       <blockquote>
-        2015-income-based-wage-tax-refund-petition-spanish.pdf<br>
+        <code>2015-income-based-wage-tax-refund-petition-spanish.pdf</code><br>
         <strong>-NOT-</strong><br>
-        incomebasedWAGETAXREFUNDpetition2015SP.pdf<br>
+        <code>incomebasedWAGETAXREFUNDpetition2015SP.pdf</code><br>
       </blockquote>
       <p><small>This content has been heavily influenced by <a href="https://pages.18f.gov/content-guide/urls-and-filenames/"> https://pages.18f.gov/content-guide/urls-and-filenames/</a></small></p>
   </section>
+  <hr>
   <section id="urls">
     <h2>Creating URLs</h2>
 
+    <strong>Remember:</strong> <br>
       <ul>
         <li>URLs should be short, memorable, easy to type, and well-structured.</li>
         <li>Words in a url should be separated by a dash.</li>
         <li>Omit articles (a/an/the).</li>
-
       </ul>
 
-      <p>WordPress administrators can modify urls after a page has been saved.</p>
+      <p>When a page is created, WordpPress will automatically use dashes to separate words based on the title of the page when it was saved. This is expected behavior and the dashes should not be removed.</p>
 
-      <p>When a page is created, WordpPress will automatically use dashes to separate words based on the title of the page when it was saved the first time. This is expected behavior.</p>
+      <p>However, WordPress generated URLs can be cleaned up to remove unnecessary articles and to correct tone, as stated above.</p>
 
-      WordPress generated URLs should be cleaned up to remove unnecesrary articles, as stated above.
       <blockquote>
-        /documents/philadelphia-water-department-regulations/<br>
+        <code>/documents/philadelphia-water-department-regulations/</code><br>
         <strong>-NOT-</strong><br>
-        /documents/phillywaterregs/
+        <code>/documents/thephillywaterregs/</code>
       </blockquote>
 
 
