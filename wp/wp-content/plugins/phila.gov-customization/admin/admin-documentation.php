@@ -7,10 +7,16 @@ function phila_documentation_menu() {
 }
 
 function phila_documentation_content(){
-	?>
-	<div class="wrap">
-		<h2>alpha.phila.gov Documentation</h2>
-	</div>
+  ?>
+  <style>
+  ul{
+    list-style: disc;
+    margin-left: 2em;
+  }
+  </style>
+  <div class="wrap">
+    <h2>alpha.phila.gov Documentation</h2>
+  </div>
   <section id="intro">
     <p>The following documentation is intended to address workflows specific to alpha.phila.gov. If you don't see a topic listed, assume that the workflow is unchanged from that of a standard WordPress implementation and consult the original source of documentation.</p>
   </section>
@@ -40,17 +46,16 @@ function phila_documentation_content(){
   <hr>
   <section id="file-names">
     <h2>File Naming Conventions</h2>
-    <strong>Remember:</strong> <br>
       <ul>
         <li>Use hyphens to separate words.</li>
         <li>Lowercase is better, because it’s easier to type and to remember.</li>
         <li>Use the right extension — PDFs should have .pdf at the end, JPGs should have .jpg at the end, etc.</li>
         <li>Avoid the use of special characters beyond the hyphen and period, unless absolutely necessary. Do not include spaces (use hyphens in their place).</li>
-        <li>Avoid unnecessary abbreviations</li>
+        <li>Avoid unnecessary abbreviations.</li>
       </ul>
 
       <p>Shorter is best, but the content should be descriptive to the user. It’s better to have long descriptive filenames than short, obscure ones.</p>
-      <p>If the owner of the file is important to the content, include that.
+      <p>If the owner of the file is important to the context, include that.
       </p>
       <blockquote>
         <code>mayor-influental-women-collage.jpg</code><br>
@@ -69,7 +74,6 @@ function phila_documentation_content(){
   <section id="urls">
     <h2>Creating URLs</h2>
 
-    <strong>Remember:</strong> <br>
       <ul>
         <li>URLs should be short, memorable, easy to type, and well-structured.</li>
         <li>Words in a url should be separated by a dash.</li>
@@ -89,6 +93,6 @@ function phila_documentation_content(){
 
   <p><small>This content has been heavily influenced by <a href="https://pages.18f.gov/content-guide/urls-and-filenames/"> https://pages.18f.gov/content-guide/urls-and-filenames/</a></small></p>
   </section>
-	<?php
+  <?php
 }
 ?>
