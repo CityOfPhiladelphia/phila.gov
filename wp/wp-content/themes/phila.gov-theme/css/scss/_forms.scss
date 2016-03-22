@@ -1,0 +1,31 @@
+/*
+ *
+ * Forms
+ *
+ *
+*/
+
+// JotForms
+.form-all{
+  li {
+    list-style: none;
+  }
+  .form-header{
+    background: $ben-franklin-blue;
+    color: $white;
+    padding: 1rem;
+  }
+  .form-header-group{
+    margin-bottom: 2rem;
+  }
+  .form-label{
+    display: block;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  .form-textbox{
+    background: $ghost-gray;
+    border: 0;
+    box-shadow: none;
+  }
+}
