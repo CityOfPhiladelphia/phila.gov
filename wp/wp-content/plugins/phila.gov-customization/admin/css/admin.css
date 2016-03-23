@@ -11,3 +11,7 @@
 #post_name{
   width:100%;
 }
+
+#ui-datepicker-div {
+  z-index: 100000 !important;
+}
