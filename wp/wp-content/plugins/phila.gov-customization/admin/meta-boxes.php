@@ -231,19 +231,19 @@ function phila_register_meta_boxes( $meta_boxes ){
        ),
       array(
        'name' => 'Contact name',
-       'id'   => $prefix . 'press_contact_name',
+       'id'   => $prefix . 'press_release_contact_name',
        'type' => 'text',
        'required'  => true,
      ),
      array(
       'name' => 'Contact phone',
-      'id'   => $prefix . 'press_contact_phone',
+      'id'   => $prefix . 'press_release_contact_phone',
       'type' => 'text',
       'placeholder' => '(215) 686-2181'
     ),
     array(
      'name' => 'Contact email',
-     'id'   => $prefix . 'press_contact_email',
+     'id'   => $prefix . 'press_release_contact_email',
      'type' => 'text',
      'std' => 'press@phila.gov',
      'required'  => true,
