@@ -258,7 +258,7 @@ class Phila_Gov_Custom_Post_Types{
             'not_found_in_trash'   => __( 'Press Release not found in trash' ),
         ),
         'taxonomies' => array( 'category' ),
-        'supports' => array( 'editor', 'title', 'revisions', 'author'),
+        'supports' => array( 'editor', 'title', 'revisions' ),
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-admin-post',
