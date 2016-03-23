@@ -209,5 +209,47 @@ function phila_register_meta_boxes( $meta_boxes ){
      ),
    ),
   );
+  $meta_boxes[] = array(
+    'id'       => 'press-release-meta',
+    'title'    => 'Contact Information',
+    'pages'    => array( 'press_release' ),
+    'context'  => 'advanced',
+    'priority' => 'high',
+
+    'fields' => array(
+      array(
+       'name'  => 'Release Date',
+       'id'    => $prefix . 'press_release_date',
+       'type'  => 'date',
+       'class' =>  'press-release-date',
+       'size'  =>  30,
+       'required'  => true,
+       'js_options' =>  array(
+         'dateFormat'=>'MM dd, yy',
+         'showTimepicker' => false
+         )
+       ),
+      array(
+       'name' => 'Contact name',
+       'id'   => $prefix . 'press_contact_name',
+       'type' => 'text',
+       'required'  => true,
+     ),
+     array(
+      'name' => 'Contact phone',
+      'id'   => $prefix . 'press_contact_phone',
+      'type' => 'text',
+      'placeholder' => '(215) 686-2181'
+    ),
+    array(
+     'name' => 'Contact email',
+     'id'   => $prefix . 'press_contact_email',
+     'type' => 'text',
+     'std' => 'press@phila.gov',
+     'required'  => true,
+    ),
+   ),
+  );
+
     return $meta_boxes;
 }
