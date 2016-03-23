@@ -11,7 +11,9 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
   $prefix = 'phila_';
-  $serviceBeforeStart['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink';
+
+  $serviceBeforeStartToolbarOne['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, formatselect';
+
   $serviceRelatedContent['toolbar1'] = 'bullist, link, unlink';
 
   $meta_boxes[] = array(
@@ -75,7 +77,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'options' => array(
           'teeny' => true,
           'dfw' => false,
-          'tinymce' =>  $serviceBeforeStart,
+          'tinymce' => $serviceBeforeStartToolbarOne,
         ),
       ),
     )
