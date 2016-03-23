@@ -40,6 +40,7 @@ class Phila_Gov_Admin_Menu {
         'edit.php?post_type=department_page',
         'edit.php?post_type=phila_post',
         'edit.php?post_type=news_post',
+        'edit.php?post_type=press_release',
         'edit.php?post_type=document',
         'upload.php',
         'edit.php?post_type=notices',
