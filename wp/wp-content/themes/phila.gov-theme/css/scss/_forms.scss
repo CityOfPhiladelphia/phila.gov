@@ -1,0 +1,400 @@
+/*
+ *
+ * Forms
+ *
+ *
+*/
+
+// JotForms
+.form-all{
+  button{
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 0;
+    padding: 0.85em 1em;
+    margin: 0 0 1rem 0;
+    font-size: .9rem;
+    background-color: #f99300;
+    color: #fff;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 1em 0;
+    letter-spacing: .03rem;
+    transition: background-color 300ms ease-in-out;
+    border: none;
+  }
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  li {
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+  }
+  label{
+    span {
+      &.form-required {
+        float: none;
+        color:red;
+      }
+    }
+ }
+
+//Clearfixes
+  [data-type="control_phone"],
+  [data-type="control_datetime"],
+  [data-type="control_time"],
+  [data-type="control_number"],
+  [data-type="control_button"],
+  [data-type="control_text"],
+  .form-input{
+    clear: both;
+    &:before, &:after{
+      content: ' ';
+      display: table;
+    }
+  }
+  //JotForm Checkboxes
+  .form-checkbox-item{
+    display: block;
+  }
+  [type='checkbox']+label,
+  [type='radio']+label {
+  font-size: 12px;
+  }
+  .form-input-wide{
+    margin-bottom: $spacing-extra-small;
+  }
+  [data-type="control_text"]{
+    margin-top:$spacing-small;
+    &:first-of-type{
+      margin-top:$spacing-extra-small;
+    }
+  }
+  .form-line{
+    margin-bottom:$spacing-small;
+  }
+  .form-header{
+    background: $ben-franklin-blue;
+    color: $white;
+    padding: 1rem;
+  }
+  .form-html{
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top:$spacing-medium;
+      border-bottom: 10px solid #2176d2;
+    }
+  }
+  .form-header-group{
+  }
+  .form-label{
+    display: block;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-size: 1.21429rem;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  select,
+  textarea,
+  .form-textbox{
+    background-color: $ghost-gray;
+    border: 0;
+    box-shadow: none;
+  }
+  .form-line-error{
+    background: #f2dede;
+    border: 1px solid red;
+  }
+  //JotForm Address widget specific styles
+  .form-address-table{
+    tbody{
+      border: 0;
+    }
+    tr{
+      background: none;
+      &:nth-of-type(3n),
+      &:nth-of-type(4n){
+        td{
+          padding: .5rem 1rem 0 0;
+          &:last-of-type{
+            padding: .5rem 0 0 1rem;
+          }
+        }
+      }
+    }
+    td{
+      padding: .5rem 0;
+      &:first-of-type{
+        padding-top: 0;
+      }
+    }
+  }
+  //JotForm Telephone widget
+  [data-type="control_phone"]{
+    span{
+      float: left;
+      margin-right:1rem;
+      input{
+        width:4rem;
+      }
+      &:last-of-type{
+        input{
+          width:10rem;
+        }
+      }
+    }
+    .phone-separate{
+      display: none;
+    }
+  }
+  // JotForm Date Picker widget
+  [data-type="control_datetime"]{
+    span{
+      float: left;
+      margin: 0 1rem;
+      &:first-of-type{
+        margin-left: 0;
+      }
+      &:nth-last-child(2){
+        margin:0 0 0 1rem;
+      }
+    }
+    .date-separate{
+      display:none;
+    }
+  }
+  //JotForm Time widget
+  [data-type="control_time"]{
+    span{
+      float: left;
+      margin: 0 2rem 0 0;
+      width: 5rem;
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+    .date-separate{
+      display:none;
+    }
+  }
+  //JotForm Number widget
+  [data-type="control_number"]{
+    div{
+      float: left;
+      margin: 0 2rem 0 0;
+      width: 5rem;
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+    .form-number-input{
+      width: auto !important;
+    }
+  }
+  [data-type="control_button"],
+  [data-type="control_pagebreak"],
+  #previewButtons,
+  .form-pagebreak{
+    text-align: center;
+    .form-buttons-wrapper{
+      margin: 0!important;
+    }
+  }
+  .form-pagebreak-back-container,
+  .form-pagebreak-next-container{
+      display: inline-block;
+      float: none;
+  }
+  [type="text"]:focus,
+  [type="password"]:focus,
+  [type="date"]:focus,
+  [type="datetime"]:focus,
+  [type="datetime-local"]:focus,
+  [type="month"]:focus,
+  [type="week"]:focus,
+  [type="email"]:focus,
+  [type="number"]:focus,
+  [type="search"]:focus,
+  [type="tel"]:focus,
+  [type="time"]:focus,
+  [type="url"]:focus,
+  [type="color"]:focus,
+  textarea:focus {
+    border: 2px solid $ben-franklin-light;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 5px #a1a1a1;
+    transition: box-shadow 0.5s,border-color 0.25s ease-in-out;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="date"]:focus,
+  input[type="datetime"]:focus,
+  input[type="datetime-local"]:focus,
+  input[type="month"]:focus,
+  input[type="week"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="time"]:focus,
+  input[type="url"]:focus,
+  input[type="color"]:focus,
+  textarea:focus {
+    border-color: $ben-franklin-blue;
+  }
+  //JotForm Preview Check
+  #previewContainer #previewButtons{
+    margin-left:0!important;
+  }
+  #checkButton,
+  #backToForm,
+  #submitCheckedForm {
+    text-shadow:none;
+    box-shadow:none;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 1em 0;
+    letter-spacing: .03rem;
+    transition: background-color 300ms ease-in-out;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    background: #f99300;
+    border-color: #f99300;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    padding: 0.85em 1em;
+    font-size: .9rem;
+    color: #FFFFFF;
+  }
+  @media only screen and (min-width: 40em) {
+    .form-line{
+      padding-left: $spacing-medium;
+      padding-right: $spacing-medium;
+    }
+    .form-line-column {
+      width: 50%;
+      float: left;
+      clear: none;
+    }
+    //Full Name widget
+    [data-type="control_fullname"] .form-sub-label-container{
+      float: left;
+      padding: 0 1rem 0 0;
+      width: 50%;
+      &:last-of-type{
+        padding: 0 0 0 1rem;
+      }
+    }
+  }
+}
+
+//JotForm Calendar
+.calendar {
+  color: #000;
+  font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+  &.popup{
+    margin-left: -40px;
+    margin-top: -100px;
+    z-index: 100000;
+  }
+}
+.calendar {
+  table {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    width: 100%;
+    border-spacing: 2px;
+  }
+  thead {
+    background-color: white;
+    tr{
+      td{
+        background-color: $ben-franklin-blue;
+        color: $white;
+      }
+    }
+  }
+  tr{
+    &.days{
+      td{
+        font-size: 11px;
+        padding: 3px;
+        width: 2em;
+        color: #555;
+        text-align: center;
+        cursor: pointer;
+         &.otherDay{
+           color: #bbb;
+         }
+         &.weekend{
+           background: $ben-franklin-light;
+         }
+      }
+      .today {
+        background: $ben-franklin-blue !important;
+        color: $white;
+        font-weight: bold;
+      }
+    }
+    .button{
+      display: table-cell;
+    }
+  }
+  td {
+    font-size: 11px;
+    padding: 3px;
+    text-align: center;
+    .title{
+      font-weight: bold;
+    }
+    .button{
+      color: #f9621a;
+      background-color: rgba(0, 0, 0, 0);
+      border-collapse: collapse;
+      box-sizing: border-box;
+      color: rgb(249, 98, 26);
+      cursor: auto;
+      display: table-cell;
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      height: 22px;
+      letter-spacing: normal;
+      line-height: 16.5px;
+      margin: 0px;
+    }
+  }
+  th{
+    background: #ddd;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    font-weight: bold;
+    color: #555;
+    font-size: 11px;
+    padding: 3px;
+    text-align: center;
+    letter-spacing: .05px;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+  }
+}
