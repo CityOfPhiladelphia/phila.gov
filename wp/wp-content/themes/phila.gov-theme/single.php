@@ -25,6 +25,10 @@ get_header(); ?>
 
         get_template_part('partials/content', 'single-news');
 
+      elseif ( get_post_type() === 'press_release'):
+
+      get_template_part('partials/content', 'press-release');
+
       else :
 
         get_template_part( 'partials/content', 'single' );
