@@ -56,19 +56,19 @@ get_header(); ?>
     <div class="row mtm">
       <?php
       if (function_exists('rwmb_meta')) {
-          $external_site = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
-      if (!$external_site == ''){
+        $external_site = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
+        if (!$external_site == ''){
 
-        get_template_part( 'templates/single', 'off-site' );
+          get_template_part( 'templates/single', 'off-site' );
 
-       } else {
-         //loop for our regularly scheduled content
-         while ( have_posts() ) : the_post();
+         } else {
+           //loop for our regularly scheduled content
+           while ( have_posts() ) : the_post();
 
-          get_template_part( 'templates/single', 'on-site-content' );
+            get_template_part( 'templates/single', 'on-site-content' );
 
-          endwhile;
-        }
+            endwhile;
+          }
       }
       ?>
     </div>
