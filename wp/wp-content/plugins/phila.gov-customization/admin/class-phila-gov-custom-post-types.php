@@ -9,32 +9,33 @@
  *
  *
  */
-if ( class_exists("Phila_Gov_Custom_Post_Types" ) ){
+if ( class_exists( "Phila_Gov_Custom_Post_Types" ) ){
   $custom_post_types = new Phila_Gov_Custom_Post_Types();
 }
 
 class Phila_Gov_Custom_Post_Types{
 
   public function __construct(){
-    add_action( 'init', array( $this, 'create_phila_posts_post_type' ) );
 
-    add_action( 'init', array( $this, 'create_services_post_type' ) );
+    add_action( 'init', array( $this, 'create_phila_posts' ) );
 
-    add_action( 'init', array( $this, 'create_news_post_type' ) );
+    add_action( 'init', array( $this, 'create_phila_services' ) );
 
-    add_action( 'init', array( $this, 'create_departments_page_type' ) );
+    add_action( 'init', array( $this, 'create_phila_news' ) );
 
-    add_action( 'init', array( $this, 'create_site_wide_alert' ) );
+    add_action( 'init', array( $this, 'create_phila_departments_page_type' ) );
 
-    add_action( 'init', array( $this, 'create_document_post_type' ) );
+    add_action( 'init', array( $this, 'create_phila_site_wide_alert' ) );
 
-    add_action( 'init', array( $this, 'create_notices_post_type' ) );
+    add_action( 'init', array( $this, 'create_phila_document' ) );
 
-    register_activation_hook( __FILE__, array( $this, 'rewrite_flush' ) );
+    add_action( 'init', array( $this, 'create_phila_notices' ) );
+
+    add_action( 'init', array( $this, 'create_phila_press_release' ) );
 
   }
 
-  function create_services_post_type() {
+  function create_phila_services() {
     register_post_type( 'service_post',
       array(
         'labels' => array(
@@ -64,7 +65,7 @@ class Phila_Gov_Custom_Post_Types{
     );
   }
 
-  function create_departments_page_type() {
+  function create_phila_departments_page_type() {
     register_post_type( 'department_page',
       array(
         'labels' => array(
@@ -96,7 +97,7 @@ class Phila_Gov_Custom_Post_Types{
     );
   }
 
- function create_news_post_type() {
+ function create_phila_news() {
   register_post_type( 'news_post',
     array(
       'labels' => array(
@@ -124,7 +125,7 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
-  function create_site_wide_alert() {
+  function create_phila_site_wide_alert() {
     register_post_type( 'site_wide_alert',
       array(
         'labels' => array(
@@ -154,7 +155,7 @@ class Phila_Gov_Custom_Post_Types{
     );
   }
 
-  function create_document_post_type() {
+  function create_phila_document() {
     register_post_type( 'document',
       array(
         'labels' => array(
@@ -182,7 +183,7 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
-  function create_notices_post_type() {
+  function create_phila_notices() {
     register_post_type( 'notices',
       array(
         'labels' => array(
@@ -211,7 +212,7 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
-  function create_phila_posts_post_type() {
+  function create_phila_posts() {
     register_post_type( 'phila_post',
       array(
         'labels' => array(
@@ -235,6 +236,35 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => false,
         'rewrite' => array(
             'slug' => 'posts',
+            'with_front' => false,
+        ),
+      )
+    );
+  }
+  function create_phila_press_release() {
+    register_post_type( 'press_release',
+      array(
+        'labels' => array(
+            'name' => __( 'Press Release' ),
+            'menu_name' => __( 'Press Releases' ),
+            'singular_name' => __( 'Press Release' ),
+            'add_new'   => __( 'Add Press Release' ),
+            'all_items'   => __( 'All Press Releases' ),
+            'add_new_item' => __( 'Add New Press Release' ),
+            'edit_item'   => __( 'Edit Press Release' ),
+            'view_item'   => __( 'View Press Releases' ),
+            'search_items'   => __( 'Search Press Releases' ),
+            'not_found'   => __( 'Press Release Not Found' ),
+            'not_found_in_trash'   => __( 'Press Release not found in trash' ),
+        ),
+        'taxonomies' => array( 'category' ),
+        'supports' => array( 'editor', 'title', 'revisions', 'author'),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-admin-post',
+        'hierarchical' => false,
+        'rewrite' => array(
+            'slug' => 'press-releases',
             'with_front' => false,
         ),
       )
