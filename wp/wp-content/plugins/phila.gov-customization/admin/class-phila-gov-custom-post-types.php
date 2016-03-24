@@ -261,7 +261,7 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array( 'editor', 'title', 'revisions' ),
         'public' => true,
         'has_archive' => true,
-        'menu_icon' => 'dashicons-admin-post',
+        'menu_icon' => 'dashicons-editor-justify',
         'hierarchical' => false,
         'rewrite' => array(
             'slug' => 'press-releases',
