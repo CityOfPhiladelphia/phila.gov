@@ -49,5 +49,6 @@ require $dir. '/public/class-phila-gov-sidebar-shortcode.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
 require $dir. '/public/departments.php';
 require $dir. '/public/news.php';
+require $dir. '/public/press-release.php';
 require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
