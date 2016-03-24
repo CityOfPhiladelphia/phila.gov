@@ -9,26 +9,13 @@ The phila.gov site is WordPress running behind Nginx on an AWS instance. The ent
 ## Running a test instance
 
 1. [Install joia](https://github.com/CityOfPhiladelphia/joia#install)
-2. Create .env file with these vars:
-  - PHILA_TEST=`"true" or any truthy value so setup knows this is a test instance`
-  - PHILA_DB_BUCKET=`S3 bucket where we keep DB dumps`
-  - PHILA_DEPLOY_BUCKET=`S3 bucket where we keep deploy files`
-  - PHILA_MEDIA_BUCKET=`S3 bucket where instance media is stored`
-  - PHILA_PLUGIN_BUCKET=`S3 bucket for private plugins`
-  - AWS_ID=`AWS access key ID for the instance to use`
-  - AWS_SECRET=`AWS secret access key for the instance to use`
-  - SWIFTYPE_ENGINE=`Swiftype engine ID`
-  - APP_DIR=`phila.gov`
-  - SUBNET=`ID for the VPC subnet the instance should be in`
-  - KEY_PAIR=`name of the key pair in AWS to use for the instance`
-  - INSTANCE_NAME=`name to set for the instance`
-3. Private key must be at ~/.ssh/$KEY_PAIR.pem
+2. Copy `.env.test` from S3 to `.env` in this repo
 4. Run `joia up`
 
 
 ## Launching a new production instance
 
-Same as above for test instance but replace .env with one for production. Then, after machine is up:
+Same as above for test instance but replace `.env` with `.env.prod`. Then, after machine is up:
 
 1. Set branch and project tags in AWS for Travis deploy (unsetting tags on current production instance)
 2. Restart most recent build in Travis
