@@ -33,6 +33,12 @@ function phila_news_rewrite() {
 
   add_rewrite_rule("^posts/author/([^/]+)/?$",'index.php?author_name=$matches[1]','top');
 
+  add_rewrite_rule("^press-releases/([^/]+)/([^/]+)/?$",'index.php?post_type=press_release&category_name=$matches[1]&press_release=$matches[2]','top');
+
+  add_rewrite_rule("^press-releases/([^/]+)/?$",'index.php?post_type=press_release&category_name=$matches[1]','top');
+
+  add_rewrite_rule("^press-releases/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=press_release&category_name=$matches[1]&paged=$matches[2]','top');
+
   add_rewrite_rule("^browse/([^/]+)/([^/]+)/?$",'index.php?&topics=$matches[1]&topics=$matches[2]','top');
 }
 
