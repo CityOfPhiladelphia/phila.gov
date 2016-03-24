@@ -245,7 +245,7 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'press_release',
       array(
         'labels' => array(
-            'name' => __( 'Press Release' ),
+            'name' => __( 'Press Releases' ),
             'menu_name' => __( 'Press Releases' ),
             'singular_name' => __( 'Press Release' ),
             'add_new'   => __( 'Add Press Release' ),
