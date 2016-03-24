@@ -1,12 +1,14 @@
 # joia config
 
 joia_install () {
-  joia_ssh "scripts/install.sh"
+  joia_ssh "
+    scripts/install.sh
+    scripts/wp-config.sh
+  "
 
   if [ "$PHILA_TEST" ]; then
     joia_ssh "
       scripts/gen-cert.sh
-      scripts/wp-config.sh
       scripts/local-db.sh
       scripts/unison.sh
     "
