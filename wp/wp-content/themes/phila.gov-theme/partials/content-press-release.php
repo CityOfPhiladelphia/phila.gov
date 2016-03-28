@@ -17,31 +17,36 @@
 
         $press_date = rwmb_meta( 'phila_press_release_date', $args = array('type' => 'date'));
 
-        $press_name = rwmb_meta( 'phila_press_release_contact_name', $args = array('type' => 'text'));
-
-        $press_phone = rwmb_meta( 'phila_press_release_contact_phone', $args = array('type' => 'text'));
-
-        $press_email = rwmb_meta( 'phila_press_release_contact_email', $args = array('type' => 'text'));
-
         printf( _e( '<strong>For Immediate Release: </strong>' . $press_date, 'phila-gov' ) );
 
         ?><br><?php
 
-        _e('<strong>Published By:</strong> '); phila_echo_current_department_name();
+        _e('<strong>Published By:</strong> ');
+
+        phila_echo_current_department_name();
 
         ?><br><?php
 
-        if ( $press_name != '' ) :
+        printf( _e( '<strong>Contact: </strong>', 'phila-gov' ) );
 
-          printf( _e( '<strong>Contact: </strong>', 'phila-gov' ) );
+        $press_contacts = rwmb_meta( 'press_release_contact' );
+
+        foreach( $press_contacts as $contact ) :
+
+          $press_name = isset( $contact['phila_press_release_contact_name'] ) ? $contact['phila_press_release_contact_name'] : '';
+
+          $press_phone = isset( $contact['phila_press_release_contact_phone'] ) ? $contact['phila_press_release_contact_phone'] : '';
+
+          $press_email = isset( $contact['phila_press_release_contact_email'] ) ? $contact['phila_press_release_contact_email'] : '';
 
           $phone_exists = ( $press_phone == '' ) ? '' : $press_phone . ', ';
 
-          $contact = $press_name . ', '. $phone_exists . '<a href="mailto:' . $press_email . '">' . $press_email . '</a>' ;
+          $all_contacts = $press_name . ', '. $phone_exists . '<a href="mailto:' . $press_email . '">' . $press_email . '</a><br>' ;
 
-          echo $contact;
+          echo $all_contacts;
 
-        endif;
+        endforeach;
+
 
       endif;
       ?>
