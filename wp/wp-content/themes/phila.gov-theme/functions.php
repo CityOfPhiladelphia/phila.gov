@@ -1027,3 +1027,16 @@ function phila_echo_current_department_name(){
     /* Restore original Post Data */
     wp_reset_postdata();
 }
+
+function the_dept_description(){
+  $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'));
+
+  if (!$dept_desc == ''){
+    return $dept_desc;
+  }
+}
+
+function get_department_category(){
+  $category = get_the_category();
+  echo $category[0]->cat_name;
+}
