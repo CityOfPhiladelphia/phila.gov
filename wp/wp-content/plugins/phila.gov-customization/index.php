@@ -40,10 +40,10 @@ require $dir. '/admin/tiny-mce.php';
 
 require $dir. '/public/shortcodes/blogs.php';
 require $dir. '/public/shortcodes/news.php';
+require $dir. '/public/shortcodes/notices.php';
 require $dir. '/public/shortcodes/press-releases.php';
 
 require $dir. '/public/class-content-collection-walker.php';
-require $dir. '/public/class-phila-gov-department-notices.php';
 require $dir. '/public/class-phila-gov-filter-posts.php';
 require $dir. '/public/class-phila-gov-service-info-display.php';
 require $dir. '/public/class-phila-gov-service-rewrites.php';
