@@ -48,7 +48,6 @@ require $dir. '/public/class-phila-gov-filter-posts.php';
 require $dir. '/public/class-phila-gov-service-info-display.php';
 require $dir. '/public/class-phila-gov-service-rewrites.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
-require $dir. '/public/departments.php';
 require $dir. '/public/modify-post-type-links.php';
 require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
