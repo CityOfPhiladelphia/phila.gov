@@ -39,16 +39,19 @@ require $dir. '/admin/meta-boxes.php';
 require $dir. '/admin/tiny-mce.php';
 
 
-require $dir. '/public/blog-shortcode.php';
+require $dir. '/public/filtered-links.php';
+
+
+require $dir. '/public/shortcodes/blogs.php';
+require $dir. '/public/shortcodes/news.php';
+require $dir. '/public/shortcodes/press-releases.php';
+
 require $dir. '/public/class-content-collection-walker.php';
 require $dir. '/public/class-phila-gov-department-notices.php';
 require $dir. '/public/class-phila-gov-filter-posts.php';
 require $dir. '/public/class-phila-gov-service-info-display.php';
 require $dir. '/public/class-phila-gov-service-rewrites.php';
-require $dir. '/public/class-phila-gov-sidebar-shortcode.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
 require $dir. '/public/departments.php';
-require $dir. '/public/news.php';
-require $dir. '/public/press-release.php';
 require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
