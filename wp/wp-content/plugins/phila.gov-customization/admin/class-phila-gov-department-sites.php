@@ -191,32 +191,32 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'size'  => '60'
         ),
         array(
-          'name'  => 'Call to Action Button',
+          'name'  => 'Call to Action Button URL',
           'desc'  => 'Optional URL to include as a "call to action" button',
-          'id'    => $prefix . 'call_to_action_button',
+          'id'    => $prefix . 'hero_header_call_to_action_button_url',
           'type'  => 'URL',
-          'class' => 'call-to-action-button',
+          'class' => 'hero-header-call-to-action-button-url',
         ),
         array(
           'name'  => 'Call to Action Button Text',
-          'id'    => $prefix . 'call_to_action_button_text',
+          'id'    => $prefix . 'hero_header_call_to_action_button_text',
           'type'  => 'text',
-          'class' => 'call-to-action-button-text',
+          'class' => 'hero-header-call-to-action-button-text',
           'desc'  => 'Text that appears on the "call to action" button.',
           'size'  => '30'
         ),
         array(
           'name'  => 'Image',
-          'id'    => $prefix . 'block_image',
+          'id'    => $prefix . 'hero_header_image',
           'type'  => 'file_input',
-          'class' => 'block-image',
+          'class' => 'hero-header-image',
           'desc'  => 'Image should be no smaller than 274px by 180px.'
         ),
         array(
           'name'  => 'Image Alt Text',
-          'id'    => $prefix . 'image_alt_text',
+          'id'    => $prefix . 'hero_header_image_alt_text',
           'type'  => 'text',
-          'class' => 'image-alt-text',
+          'class' => 'hero-header-image-alt-text',
           'desc'  => 'A short description used to inform visitors about the contents of an image.',
           'size'  => '60'
         ),
