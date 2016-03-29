@@ -30,6 +30,14 @@ jQuery(document).ready(function($){
           }
         });
     }
+    if (typenow == 'department_page' && adminpage.indexOf('post') > -1 ){
+      $( '#phila_hero_header_title' ).rules( 'add', {
+        maxlength: 35
+      });
+      $( '#phila_hero_header_body_copy' ).rules( 'add', {
+        maxlength: 140
+      });
+    }
     if (typenow == 'news_post' && adminpage.indexOf('post') > -1 ){
       $('#post').validate({
         rules: {
