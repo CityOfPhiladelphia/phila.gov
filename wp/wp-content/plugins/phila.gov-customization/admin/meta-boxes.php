@@ -11,7 +11,9 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
   $prefix = 'phila_';
-  $serviceBeforeStart['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink';
+
+  $serviceBeforeStartToolbarOne['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, formatselect';
+
   $serviceRelatedContent['toolbar1'] = 'bullist, link, unlink';
 
   $meta_boxes[] = array(
@@ -75,7 +77,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'options' => array(
           'teeny' => true,
           'dfw' => false,
-          'tinymce' =>  $serviceBeforeStart,
+          'tinymce' => $serviceBeforeStartToolbarOne,
         ),
       ),
     )
@@ -208,6 +210,66 @@ function phila_register_meta_boxes( $meta_boxes ){
    ),
   );
   $meta_boxes[] = array(
+    'id'       => 'press-release-date',
+    'title'    => 'Release Date',
+    'pages'    => array( 'press_release' ),
+    'context'  => 'advanced',
+    'priority' => 'high',
+
+    'fields' => array(
+
+      array(
+        'name'  => 'Release Date',
+        'id'    => $prefix . 'press_release_date',
+        'type'  => 'date',
+        'class' =>  'press-release-date',
+        'size'  =>  30,
+        'required'  => true,
+        'js_options' =>  array(
+          'dateFormat'=>'MM dd, yy',
+          'showTimepicker' => false
+        )
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
+
+    'title'    => 'Contact Information',
+    'pages'    => array( 'press_release' ),
+    'context'  => 'advanced',
+    'priority' => 'high',
+    'fields' => array(
+      array(
+        'id'  => 'press_release_contact',
+        'type' => 'group',
+        'clone'  => true,
+        'fields' => array(
+          array(
+            'name' => 'Contact name',
+            'id'   => $prefix . 'press_release_contact_name',
+            'type' => 'text',
+            'required'  => true,
+           ),
+          array(
+            'name' => 'Contact phone',
+            'id'   => $prefix . 'press_release_contact_phone',
+            'type' => 'text',
+            'placeholder' => '(215) 686-2181'
+          ),
+          array(
+            'name' => 'Contact email',
+            'id'   => $prefix . 'press_release_contact_email',
+            'type' => 'text',
+            'std' => 'press@phila.gov',
+            'required'  => true,
+          ),
+         ),
+       )
+     ),
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'jotform-embed',
     'title'    => 'JotForm Embed',
     'pages'    => array( 'department_page' ),
@@ -221,6 +283,6 @@ function phila_register_meta_boxes( $meta_boxes ){
        'type' => 'textarea'
      ),
    ),
-  );
+ );
     return $meta_boxes;
 }

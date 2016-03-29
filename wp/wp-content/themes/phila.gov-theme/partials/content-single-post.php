@@ -19,11 +19,7 @@
       if ($post->post_content != ''):
         the_content();
       else :
-        if ($news_desc) :
-          echo '<p class="description">' . $news_desc . '</p>';
-        else :
-          echo '<p class="description">' . $post_desc . '</p>';
-        endif;
+        echo '<p class="description">' . $post_desc . '</p>';
       endif;
       ?>
     </div><!-- .entry-content -->

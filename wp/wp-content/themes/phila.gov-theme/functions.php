@@ -143,7 +143,7 @@ function phila_filter_title( $title ){
 
     }else{
 
-      if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' ) {
+      if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' || $post_type->name == 'press_release' ) {
 
         $cat = get_the_category();
         $title['title'] = $page_title . $sep . $cat[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
@@ -348,6 +348,19 @@ function phila_breadcrumbs() {
         echo '<li>';
         the_title();
         echo '</li>';
+
+      }elseif ( is_singular('press_release') ) {
+        $categories = get_the_category($post->ID);
+
+        echo '<li><a href="/press-releases">Press Releases</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
+
+        echo '<li>';
+        the_title();
+        echo '</li>';
+
     }elseif ( is_singular('calendar') ) {
 
       echo '<li>Calendar: ' . get_the_title() . '</li>';
@@ -383,6 +396,17 @@ function phila_breadcrumbs() {
     } elseif( is_post_type_archive( 'phila_post' ) ) {
 
         echo '<li>Posts</li>';
+
+    }elseif ( is_post_type_archive('press_release') && is_category() )  {
+
+      echo '<li><a href="/press-releases">Press Releases</a></li>';
+      $category = get_the_category($post->ID);
+
+      echo '<li>' . $category[0]->name . '</li>';
+
+    } elseif ( is_post_type_archive('press_release') ) {
+
+      echo '<li>Press Releases</li>';
 
     } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
 
@@ -732,6 +756,9 @@ function phila_change_post_archive_title(){
   }elseif( is_post_type_archive( 'news_post' ) ){
     _e('News', 'phila-gov');
     single_cat_title(' | ');
+  }elseif( is_post_type_archive( 'press_release' ) ){
+    _e('Press Releases', 'phila-gov');
+    single_cat_title(' | ');
   }elseif( is_tag() ){
     single_tag_title('Tagged in: ');
   }elseif( is_author() ){
@@ -962,4 +989,54 @@ function phila_get_master_topics(){
     }
     echo '</ul>';
   }
+}
+
+function phila_echo_current_department_name(){
+  /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
+  $current_category = get_the_category();
+
+  if ( !$current_category == '' )  :
+    $department_page_args = array(
+      'post_type' => 'department_page',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    => $current_category[0]->slug,
+        ),
+      ),
+      'post_parent' => 0,
+      'posts_per_page' => 1,
+    );
+    $get_department_link = new WP_Query( $department_page_args );
+    if ( $get_department_link->have_posts() ) :
+      while ( $get_department_link->have_posts() ) :
+        $get_department_link->the_post();
+        $current_cat_slug = $current_category[0]->slug;
+        //we are rendering the department link elsewhere on document pages & posts.
+        if ( $current_cat_slug != 'uncategorized' ) :
+          // NOTE: the id and data-slug are important. Google Tag Manager
+          // uses it to attach the department to our web analytics.
+            echo '<a href="' . get_the_permalink() . '" id="content-modified-department"
+            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+          endif;
+        endwhile;
+      endif;
+    endif;
+
+    /* Restore original Post Data */
+    wp_reset_postdata();
+}
+
+function the_dept_description(){
+  $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'));
+
+  if (!$dept_desc == ''){
+    return $dept_desc;
+  }
+}
+
+function get_department_category(){
+  $category = get_the_category();
+  echo $category[0]->cat_name;
 }
