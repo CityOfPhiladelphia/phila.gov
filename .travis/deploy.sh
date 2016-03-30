@@ -39,7 +39,7 @@ EOF
 ssh-keyscan $IP >> ~/.ssh/known_hosts 2> /dev/null
 
 echo 'Syncing to target machine'
-rsync -rzp --delete --exclude=".git" ./ target:phila.gov
+rsync -rzp --delete --exclude=".git" ./ target:app
 
 echo 'Executing deploy in app directory on target'
-ssh target 'cd phila.gov; scripts/wp-config.sh && scripts/deploy.sh'
+ssh target 'cd app; scripts/wp-config.sh && scripts/deploy.sh'
