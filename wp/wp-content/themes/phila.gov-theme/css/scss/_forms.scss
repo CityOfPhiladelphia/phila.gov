@@ -64,7 +64,14 @@
   }
   //JotForm Checkboxes
   .form-checkbox-item{
-    display: block;
+    display: table;
+    margin-bottom: $spacing-small;
+    label{
+      display: table-cell;
+      line-height: 1.2rem;
+      padding-left: $spacing-medium;
+      vertical-align: top;
+    }
   }
   [type='checkbox']+label,
   [type='radio']+label {
@@ -100,6 +107,7 @@
   }
   .form-label{
     display: block;
+    color: $dark-gray;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
     font-size: 1.21429rem;
     font-weight: bold;
