@@ -67,6 +67,14 @@ jQuery(document).ready(function($){
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('#title').prop('disabled', true);
       $('[id^=phila_block_id]').parent().parent().hide();
+      if ( $( "#hero-header" ).length ){
+        $( '#phila_hero_header_title' ).rules( 'add', {
+          maxlength: 35
+        });
+        $( '#phila_hero_header_body_copy' ).rules( 'add', {
+          maxlength: 140
+        });
+      }
     }
   }
 });
