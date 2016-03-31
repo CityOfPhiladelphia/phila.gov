@@ -24,7 +24,7 @@
               $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
         ?>
         <?php if (!$hero_header_image == ''): ?>
-            <section class="department-header no-margin">
+            <section class="department-header">
               <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
             <?php if (!$hero_header_title == ''): ?>
               <div class="intro row">
