@@ -67,13 +67,20 @@ jQuery(document).ready(function($){
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('#title').prop('disabled', true);
       $('[id^=phila_block_id]').parent().parent().hide();
-      if ( $( "#hero-header" ).length ){
-        $( '#phila_hero_header_title' ).rules( 'add', {
-          maxlength: 35
-        });
-        $( '#phila_hero_header_body_copy' ).rules( 'add', {
-          maxlength: 140
-        });
+      if ( $( '#hero-header' ).length ){
+        if( $('#phila_hero_header_admin_only').attr('checked') ){
+          alert('checked');
+          $('#hero-header').find('input', '.rwmb-file-input-select').prop('disabled', true);
+          $('#hero-header').css('display','none');
+        }
+        else {
+          $( '#phila_hero_header_title' ).rules( 'add', {
+            maxlength: 35
+          });
+          $( '#phila_hero_header_body_copy' ).rules( 'add', {
+            maxlength: 140
+          });
+        }
       }
     }
   }
