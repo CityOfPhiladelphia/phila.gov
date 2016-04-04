@@ -69,7 +69,6 @@ jQuery(document).ready(function($){
       $('[id^=phila_block_id]').parent().parent().hide();
       if ( $( '#hero-header' ).length ){
         if( $('#phila_hero_header_admin_only').attr('checked') ){
-          alert('checked');
           $('#hero-header').find('input', '.rwmb-file-input-select').prop('disabled', true);
           $('#hero-header').css('display','none');
         }
