@@ -169,6 +169,7 @@
   .department-header {
     position: relative;
     overflow:hidden;
+    margin: 0 0 $spacing-medium 0;
     .intro{
       position: relative;
       a {
@@ -193,16 +194,17 @@
     @media screen and (min-width: 40em) {
       .intro {
         position: absolute;
-        bottom: 15px;
+        bottom: 1.5rem;
+        left:$spacing-large;;
         color: #fff;
-        background: rgba(0,0,0,.6);
-        width: 430px;
-        left: .71429rem;
-        padding-left: 30px;
+        background: rgba(33,118,210,.9);
+        width: 400px;
+        padding: 0 $spacing-medium;;
         h1 {
           display: inline-block;
           font-size: 2.5rem;
           line-height: 3rem;
+          margin:$spacing-small 0;
           .strong {
             font-size: 3.5rem;
             white-space: pre;
