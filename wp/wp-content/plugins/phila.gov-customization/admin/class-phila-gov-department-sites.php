@@ -179,7 +179,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'id'    => $prefix . 'hero_header_admin_only',
           'type'  => 'checkbox',
           'class' => 'hero-header-admin-only',
-          'desc'  => 'Only allow admins to edit the Hero Header area',
+          'desc'  => 'Allow non-admins to edit the Hero Header area',
         ),
         array(
           'name'  => 'Hero Header Title',

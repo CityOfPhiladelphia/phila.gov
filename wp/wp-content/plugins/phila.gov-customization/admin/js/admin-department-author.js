@@ -68,10 +68,12 @@ jQuery(document).ready(function($){
       $('#title').prop('disabled', true);
       $('[id^=phila_block_id]').parent().parent().hide();
       $('#hero-header').css('display','none');
+      $('#hero-header').find('input', '.rwmb-file-input-select').prop('disabled', true);
       if ( $( '#hero-header' ).length ){
         if( $('#phila_hero_header_admin_only').attr('checked') ){
-          $('#hero-header').find('input', '.rwmb-file-input-select').prop('disabled', true);
           $('#hero-header').toggle();
+          $('#hero-header').find('input', '.rwmb-file-input-select').prop('disabled', false);
+          $('#phila_hero_header_admin_only').prop('disabled', true);
         }
         else {
           $( '#phila_hero_header_title' ).rules( 'add', {
