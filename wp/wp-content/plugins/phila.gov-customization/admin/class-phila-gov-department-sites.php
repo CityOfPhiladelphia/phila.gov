@@ -217,7 +217,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'id'    => $prefix . 'hero_header_image',
           'type'  => 'file_input',
           'class' => 'hero-header-image',
-          'desc'  => 'Image should be no smaller than 274px by 180px.'
+          'desc'  => 'Image should be no smaller than 975px by 430px.'
         ),
         array(
           'name'  => 'Image Alt Text',
