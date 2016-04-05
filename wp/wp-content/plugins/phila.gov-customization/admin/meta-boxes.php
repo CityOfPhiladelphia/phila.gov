@@ -270,6 +270,33 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'       => 'custom-markup',
+    'title'    => 'Custom Markup',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+
+    'fields' => array(
+      array(
+       'name' => 'Description',
+       'id'   => $prefix . 'custom_markup_description',
+       'type' => 'custom_html',
+       'std'  => '<span>Use this area to insert CSS, HTML or JS snippets either before or after the contents of the WYSIWYG editor.</span>',
+     ),
+      array(
+       'name' => 'Append Before WYSIWYG',
+       'id'   => $prefix . 'append_before_wysiwyg',
+       'type' => 'textarea'
+     ),
+     array(
+       'name' => 'Append After WYSIWYG',
+       'id'   => $prefix . 'append_after_wysiwyg',
+       'type' => 'textarea'
+     ),
+   ),
+ );
+
+  $meta_boxes[] = array(
     'id'       => 'jotform-embed',
     'title'    => 'JotForm Embed',
     'pages'    => array( 'department_page' ),
