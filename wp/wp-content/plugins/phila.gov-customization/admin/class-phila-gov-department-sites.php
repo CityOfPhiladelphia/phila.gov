@@ -175,7 +175,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
       'fields' => array(
         array(
-          'name'  => 'Admin Only',
+          'name'  => 'Allow Non-Admin Access',
           'id'    => $prefix . 'hero_header_admin_only',
           'type'  => 'checkbox',
           'class' => 'hero-header-admin-only',
