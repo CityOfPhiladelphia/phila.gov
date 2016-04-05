@@ -19,7 +19,7 @@
         <?php $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
               $hero_header_alt_text = rwmb_meta( 'phila_hero_header_image_alt_text', $args = array('type' => 'text'));
               $hero_header_title = rwmb_meta( 'phila_hero_header_title', $args = array('type' => 'text'));
-              $hero_header_body_copy = rwmb_meta( 'phila_hero_header_body_copy', $args = array('type' => 'text'));
+              $hero_header_body_copy = rwmb_meta( 'phila_hero_header_body_copy', $args = array('type' => 'textarea'));
               $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
               $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
         ?>

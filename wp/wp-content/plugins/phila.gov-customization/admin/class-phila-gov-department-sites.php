@@ -192,7 +192,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         array(
           'name'  => 'Hero Header Body Copy',
           'id'    => $prefix . 'hero_header_body_copy',
-          'type'  => 'text',
+          'type'  => 'textarea',
           'class' => 'hero-header-body-copy',
           'desc'  => 'Text that will be placed over the header image and below the Hero Header Title.',
           'size'  => '60'
