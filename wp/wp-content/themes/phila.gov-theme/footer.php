@@ -24,10 +24,10 @@
         <nav class="government">
           <ul>
             <li><a href="http://alpha.phila.gov"><?php phila_util_echo_website_url() ;?></a></li>
-            <li><a href="/departments">Department Directory</a></li>
-            <li><a href="http://www.phila.gov/mayor">Mayor's Office</a></li>
-            <li><a href="http://iframe.publicstuff.com/#?client_id=242">Report an Issue / 311</a></li>
-            <li><a href="http://cityofphiladelphia.wordpress.com/">News</a></li>
+            <li><a href="/departments"><?php printf( __('City Government Directory', 'phila-gov') ); ?></a></li>
+            <li><a href="/mayor"><?php printf( __('Mayor\'s Office', 'phila-gov') ); ?></a></li>
+            <li><a href="http://iframe.publicstuff.com/#?client_id=242"><?php printf( __('Report an Issue / 311', 'phila-gov') ); ?></a></li>
+            <li><a href="/news"><?php printf( __('News', 'phila-gov') ); ?></a></li>
           </ul>
         </nav>
       </div>
@@ -40,7 +40,7 @@
                   'orderby' => 'name',
                   'fields'=> 'all',
                   'parent' => 0,
-                  'hide_empty'=> false
+                  'hide_empty'=> true
                  );
               $terms = get_terms( 'topics', $args );
                 if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
