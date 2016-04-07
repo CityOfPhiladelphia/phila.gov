@@ -38,7 +38,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-6 columns">
-                <a href="http://www.phila.gov/personnel//announce/current/index.html" target="_blank">
+                <a href="http://www.phila.gov/personnel/JobOpps.html" target="_blank">
                   <span class="fa-stack fa-3x">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
