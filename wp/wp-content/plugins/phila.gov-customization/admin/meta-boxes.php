@@ -296,6 +296,98 @@ function phila_register_meta_boxes( $meta_boxes ){
    ),
  );
 
+ $meta_boxes[] = array(
+   'id'       => $prefix . 'module_row_1',
+   'title'    => 'Optional Module Row 1',
+   'pages'    => array( 'department_page' ),
+   'context'  => 'normal',
+   'priority' => 'low',
+
+   'fields' => array(
+     array(
+      'name' => 'Description',
+      'id'   => $prefix . 'module_row_1_description',
+      'type' => 'custom_html',
+      'std'  => '<span>Use this area to create a two column row. The row will be divided into 2/3 and 1/3 columns.</span>',
+     ),
+     array(
+      'id' => 'module_row_1_col_1',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+         array(
+          'name' => '2/3 Module',
+          'id'   => $prefix . 'module_row_1_col_1_type',
+          'type' => 'select',
+          'options' => array(
+            $prefix . 'module_row_1_col_1_blog_posts' => 'Blog Posts',
+            $prefix . 'module_row_1_col_1_custom_text' => 'Custom Text',
+          ),
+        ),
+        array(
+          'id' => 'module_row_1_col_1_options',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+             'name' => 'Blog Post Style',
+             'id'   => $prefix . 'module_row_1_col_1_post_style',
+             'type' => 'select',
+             'options' => array(
+               $prefix . 'module_row_1_col_1_post_style_cards' => 'Card',
+               $prefix . 'module_row_1_col_1_post_style_list' => 'List',
+             ),
+           ),
+           array(
+            'name' => 'Custom Text Content',
+            'id'   => $prefix . 'module_row_1_col_1_textarea',
+            'type' => 'textarea',
+           ),
+          ),
+        ),
+     ),
+   ),
+   array(
+    'id' => 'module_row_1_col_2',
+    'type' => 'group',
+    // List of sub-fields
+    'fields' => array(
+       array(
+        'name' => '1/3 Module',
+        'id'   => $prefix . 'module_row_1_col_2_type',
+        'type' => 'select',
+        'options' => array(
+          $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
+          $prefix . 'module_row_1_col_2_custom_text' => 'Custom Text',
+        ),
+      ),
+      array(
+        'id' => 'module_row_1_col_2_options',
+        'type' => 'group',
+        // List of sub-fields
+        'fields' => array(
+          array(
+           'name' => 'Blog Post Style',
+           'id'   => $prefix . 'module_row_1_col_2_post_style',
+           'type' => 'select',
+           'options' => array(
+             $prefix . 'module_row_1_col_2_post_style_cards' => 'Card',
+             $prefix . 'module_row_1_col_2_post_style_list' => 'List',
+             ),
+           ),
+           array(
+            'name' => 'Custom Text Content',
+            'id'   => $prefix . 'module_row_1_col_2_textarea',
+            'type' => 'textarea',
+           ),
+        ),
+      ),
+   ),
+ ),
+)
+);
+
+
   $meta_boxes[] = array(
     'id'       => 'jotform-embed',
     'title'    => 'JotForm Embed',
