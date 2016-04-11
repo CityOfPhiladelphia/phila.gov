@@ -109,32 +109,41 @@ jQuery(document).ready(function($){
 
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       var colTypes = {};
-      var rowOneColOneType = $('#phila_module_row_1_col_1_type').val();
-      var rowOneColOneOptions = '#phila_module_row_1_col_1_type';
-      var rowOneColTwoType = $('#phila_module_row_1_col_2_type').val();
-      var rowOneColTwoOptions = '#phila_module_row_1_col_2_type';
 
-      colTypes.colOne = {'loc':rowOneColOneOptions,'type':rowOneColOneType};
-      colTypes.colTwo = {'loc':rowOneColTwoOptions,'type':rowOneColTwoType};
+      function setColInfo(){
+        var rowOneColOneType = $('#phila_module_row_1_col_1_type').val();
+        var rowOneColOneOptions = '#phila_module_row_1_col_1_type';
+        var rowOneColTwoType = $('#phila_module_row_1_col_2_type').val();
+        var rowOneColTwoOptions = '#phila_module_row_1_col_2_type';
+
+        colTypes.colOne = {'col':1,'loc':rowOneColOneOptions,'type':rowOneColOneType};
+        colTypes.colTwo = {'col':2,'loc':rowOneColTwoOptions,'type':rowOneColTwoType};
+      }
 
       function hideOptions(c){
+
         for (i in c){
-          if (c[i]['type'] == ''){
-            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('.rwmb-group-wrapper').css('display','none');
+          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').hide();
+          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').hide();
+          if (c[i]['type'] == 'phila_module_row_1_col_' + c[i]['col'] + '_blog_posts'){
+            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').toggle();
           }
-          else if (c[i]['type'] == 'phila_module_row_1_col_1_blog_posts'){
-            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_1_textarea').css('display','none');
-          }
-          else if (c[i]['type'] == 'phila_module_row_1_col_1_custom_text'){
-            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_1_post_style').css('display','none');
+          else if (c[i]['type'] == 'phila_module_row_1_col_' + c[i]['col'] + '_custom_text'){
+            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').toggle();
           };
         }
       };
-
+      setColInfo();
       hideOptions(colTypes);
 
-      console.log(colTypes[1]);
-      console.log(colTypes.length);
+      $( "#phila_module_row_1_col_1_type, #phila_module_row_1_col_2_type" ).change(function() {
+        alert('change detected');
+        setColInfo();
+        hideOptions(colTypes);
+      });
+
+      // console.log(colTypes[1]);
+      // console.log(colTypes.length);
       // $('#phila_module_row_1_col_1_type').change(function() {
       //   if( $(this).val() == 'phila_module_row_1_col_1_blog_posts' ) {
       //     $(this).closest('.rwmb-group-wrapper').find('.rwmb-group-wrapper').css('display','block');
