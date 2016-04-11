@@ -11,7 +11,7 @@ $children = get_posts( array(
   'orderby' => 'menu_order',
   'order' => 'ASC',
   'post_type' => 'department_page',
-  'post_status' => 'publish'
+  'post_status' => 'any'
 ));
 
 $ancestors = get_post_ancestors($post);
