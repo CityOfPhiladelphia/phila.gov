@@ -18,12 +18,21 @@
       <?php if (function_exists('rwmb_meta')): ?>
         <?php $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
               $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'));
+
               $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
               $hero_header_alt_text = rwmb_meta( 'phila_hero_header_image_alt_text', $args = array('type' => 'text'));
               $hero_header_title = rwmb_meta( 'phila_hero_header_title', $args = array('type' => 'text'));
               $hero_header_body_copy = rwmb_meta( 'phila_hero_header_body_copy', $args = array('type' => 'textarea'));
               $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
               $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
+
+              $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1');
+              // foreach ( $row_one_col_one_module as $module_meta ):
+              //   $row_one_col_one_module_type = ();
+              //   $row_one_col_one_module_option = ();
+              // endforeach;
+              $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
+
         ?>
         <!-- If Custom Markup append_before_wysiwyg is present print it -->
         <?php if (!$append_before_wysiwyg == ''):?>
@@ -49,6 +58,27 @@
           </section>
         <?php endif; ?>
       <?php endif; ?>
+      <?php //print_r($row_one_col_one_module); ?>
+      <?php if ( ( !$row_one_col_one_module[phila_module_row_1_col_1_type]  == '') && (!$row_one_col_two_module[phila_module_row_1_col_2_type]  == '' ) ): ?>
+        <section>
+          <div class="row equal-height">
+            <div class="large-18 columns">
+              <div class="row">
+                <?php if ( $row_one_col_one_module[phila_module_row_1_col_1_type]  == 'phila_module_row_1_col_1_blog_posts' ): ?>
+                  <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="large-6 columns">
+              <h2 class="alternate">Connect</h2>
+              <div class="panel no-margin">
+                <?php print_r($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_textarea]); ?>
+              </div>
+            </div>
+          </div>
+        </section>
+      <?php endif; ?>
+
        <?php echo the_content();?>
 
        <!-- If Custom Markup append_after_wysiwyg is present print it -->
