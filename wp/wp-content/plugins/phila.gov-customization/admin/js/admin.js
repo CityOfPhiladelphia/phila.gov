@@ -111,25 +111,28 @@ jQuery(document).ready(function($){
       var colTypes = {};
 
       function setColInfo(){
-        var rowOneColOneType = $('#phila_module_row_1_col_1_type').val();
-        var rowOneColOneOptions = '#phila_module_row_1_col_1_type';
-        var rowOneColTwoType = $('#phila_module_row_1_col_2_type').val();
-        var rowOneColTwoOptions = '#phila_module_row_1_col_2_type';
 
-        colTypes.colOne = {'col':1,'loc':rowOneColOneOptions,'type':rowOneColOneType};
-        colTypes.colTwo = {'col':2,'loc':rowOneColTwoOptions,'type':rowOneColTwoType};
-      }
+        for (var row = 1; row < 2; row++){
+          console.log(row);
+          for(var col = 1; col < 3; col++){
+            var moduleType = $('#phila_module_row_' + row + '_col_' + col + '_type').val();
+            var moduleOptions = '#phila_module_row_' + row + '_col_' + col + '_type';
+            colTypes['row'+row+'Col'+col] = {'row':row, 'col':col, 'loc':moduleOptions,'type':moduleType};
+          };
+        };
+
+      };
 
       function hideOptions(c){
 
         for (i in c){
-          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').hide();
-          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').hide();
-          if (c[i]['type'] == 'phila_module_row_1_col_' + c[i]['col'] + '_blog_posts'){
-            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').toggle();
+          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').hide();
+          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').hide();
+          if (c[i]['type'] == 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_blog_posts'){
+            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').toggle();
           }
-          else if (c[i]['type'] == 'phila_module_row_1_col_' + c[i]['col'] + '_custom_text'){
-            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_1_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').toggle();
+          else if (c[i]['type'] == 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_custom_text'){
+            $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').toggle();
           };
         }
       };
@@ -141,16 +144,6 @@ jQuery(document).ready(function($){
         setColInfo();
         hideOptions(colTypes);
       });
-
-      // console.log(colTypes[1]);
-      // console.log(colTypes.length);
-      // $('#phila_module_row_1_col_1_type').change(function() {
-      //   if( $(this).val() == 'phila_module_row_1_col_1_blog_posts' ) {
-      //     $(this).closest('.rwmb-group-wrapper').find('.rwmb-group-wrapper').css('display','block');
-      //   }
-      // });
-      // $('#phila_module_row_1').find('.rwmb-group-wrapper').find('.rwmb-group-wrapper').css('display','none');
-      // $('#phila_module_row_1').find('input', '.rwmb-file-input-select').prop('disabled', true);
 
     }
   }
