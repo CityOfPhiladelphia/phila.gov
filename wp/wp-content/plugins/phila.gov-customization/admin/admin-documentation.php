@@ -3,7 +3,7 @@
 add_action('admin_menu', 'phila_documentation_menu');
 
 function phila_documentation_menu() {
-  add_object_page( 'Alpha Docs', 'Alpha Docs', 'read', 'alpha-docs', 'phila_documentation_content', 'dashicons-book-alt' );
+  add_menu_page( 'Alpha Docs', 'Alpha Docs', 'read', 'alpha-docs', 'phila_documentation_content', 'dashicons-book-alt' );
 }
 
 function phila_documentation_content(){
