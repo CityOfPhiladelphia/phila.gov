@@ -295,7 +295,7 @@ function phila_register_meta_boxes( $meta_boxes ){
      ),
    ),
  );
-
+// First row of modules - recent posts and custom markup
  $meta_boxes[] = array(
    'id'       => $prefix . 'module_row_1',
    'title'    => 'Optional Module Row 1',

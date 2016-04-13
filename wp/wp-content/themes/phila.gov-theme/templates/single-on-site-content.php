@@ -27,10 +27,6 @@
               $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
 
               $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1');
-              // foreach ( $row_one_col_one_module as $module_meta ):
-              //   $row_one_col_one_module_type = ();
-              //   $row_one_col_one_module_option = ();
-              // endforeach;
               $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
 
         ?>
@@ -58,10 +54,11 @@
           </section>
         <?php endif; ?>
       <?php endif; ?>
-      <!-- Row One MetaBox Modules -->
+      <!-- Begin Row One MetaBox Modules -->
       <?php if ( ( !$row_one_col_one_module[phila_module_row_1_col_1_type]  == '') && (!$row_one_col_two_module[phila_module_row_1_col_2_type]  == '' ) ): ?>
         <section>
           <div class="row equal-height">
+            <!-- Begin Column One -->
             <?php if ( $row_one_col_one_module[phila_module_row_1_col_1_type]  == 'phila_module_row_1_col_1_blog_posts' ): ?>
               <div class="large-18 columns">
                 <div class="row">
@@ -78,21 +75,25 @@
                 <?php echo($row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_textarea]); ?>
               </div>
             <?php endif; ?>
-
-            <div class="large-6 columns">
-              <?php if ( $row_one_col_two_module[phila_module_row_1_col_2_type]  == 'phila_module_row_1_col_2_blog_posts' ): ?>
+            <!-- End Column One -->
+            <!-- Begin Column Two -->
+            <?php if ( $row_one_col_two_module[phila_module_row_1_col_2_type]  == 'phila_module_row_1_col_2_blog_posts' ): ?>
+              <div class="large-6 columns">
                 <div class="row">
                   <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
                 </div>
-              <?php else: ?>
+              </div>
+            <?php else: ?>
+              <div class="large-6 columns">
                 <h2 class="alternate"><?php echo($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_texttitle]); ?></h2>
-                  <div class="panel no-margin">
-                    <div>
-                      <?php echo($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_textarea]); ?>
-                    </div>
+                <div class="panel no-margin">
+                  <div>
+                    <?php echo($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_textarea]); ?>
                   </div>
-              <?php endif; ?>
-            </div>
+                </div>
+              </div>
+            <?php endif; ?>
+            <!-- End Column Two -->
           </div>
         </section>
       <?php endif; ?>
