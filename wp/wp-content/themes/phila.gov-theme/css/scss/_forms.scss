@@ -33,11 +33,20 @@
   ul {
     padding-left: 0;
     margin-left: 0;
-  }
-  li {
-    list-style: none;
-    display: inline-block;
-    width: 100%;
+
+    li {
+      list-style: none;
+      display: inline-block;
+      width: 100%;
+    }
+    ul, ol {
+      padding-left:$spacing-medium;
+      margin-left:$spacing-medium;
+      li{
+        list-style: inherit;
+        display: list-item;
+      }
+    }
   }
   label{
     span {
@@ -46,6 +55,9 @@
         color:red;
       }
     }
+ }
+ .form-label-left{
+   width:auto !important;
  }
 
 //Clearfixes
@@ -75,7 +87,7 @@
   }
   [type='checkbox']+label,
   [type='radio']+label {
-  font-size: 12px;
+  font-size: 13px;
   }
   .form-input-wide{
     margin-bottom: $spacing-extra-small;
@@ -103,8 +115,6 @@
       border-bottom: 10px solid #2176d2;
     }
   }
-  .form-header-group{
-  }
   .form-label{
     display: block;
     color: $dark-gray;
@@ -123,6 +133,9 @@
   .form-line-error{
     background: #f2dede;
     border: 1px solid red;
+  }
+  .form-radio-item {
+    display:block;
   }
   //JotForm Address widget specific styles
   .form-address-table{
