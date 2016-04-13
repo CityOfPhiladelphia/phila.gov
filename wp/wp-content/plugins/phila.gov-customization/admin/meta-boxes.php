@@ -308,7 +308,7 @@ function phila_register_meta_boxes( $meta_boxes ){
       'name' => 'Description',
       'id'   => $prefix . 'module_row_1_description',
       'type' => 'custom_html',
-      'std'  => '<span>Use this area to create a two column row. The row will be divided into 2/3 and 1/3 columns.</span>',
+      'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
      ),
      array(
       'id' => 'module_row_1_col_1',
@@ -316,8 +316,9 @@ function phila_register_meta_boxes( $meta_boxes ){
       // List of sub-fields
       'fields' => array(
          array(
-          'name' => '2/3 Module',
+          'name' => 'Column 1 <br/>(2/3 width column)',
           'id'   => $prefix . 'module_row_1_col_1_type',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
           'options' => array(
             $prefix . 'module_row_1_col_1_blog_posts' => 'Blog Posts',
@@ -332,11 +333,17 @@ function phila_register_meta_boxes( $meta_boxes ){
               array(
                'name' => 'Blog Post Style',
                'id'   => $prefix . 'module_row_1_col_1_post_style',
+               'desc'  => 'Recent posts are displayed as "Cards" by default.',
                'type' => 'select',
                'options' => array(
                  $prefix . 'module_row_1_col_1_post_style_cards' => 'Card',
                  $prefix . 'module_row_1_col_1_post_style_list' => 'List',
                ),
+             ),
+             array(
+              'name' => 'Custom Text Title',
+              'id'   => $prefix . 'module_row_1_col_1_texttitle',
+              'type' => 'text',
              ),
              array(
               'name' => 'Custom Text Content',
@@ -353,8 +360,9 @@ function phila_register_meta_boxes( $meta_boxes ){
       // List of sub-fields
       'fields' => array(
          array(
-          'name' => '1/3 Module',
+          'name' => 'Column 2 <br/>(1/3 column)',
           'id'   => $prefix . 'module_row_1_col_2_type',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
           'options' => array(
             $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
@@ -369,11 +377,17 @@ function phila_register_meta_boxes( $meta_boxes ){
             array(
              'name' => 'Blog Post Style',
              'id'   => $prefix . 'module_row_1_col_2_post_style',
+             'desc'  => 'Recent posts are displayed as "Cards" by default.',
              'type' => 'select',
              'options' => array(
                $prefix . 'module_row_1_col_2_post_style_cards' => 'Card',
                $prefix . 'module_row_1_col_2_post_style_list' => 'List',
                ),
+             ),
+             array(
+              'name' => 'Custom Text Title',
+              'id'   => $prefix . 'module_row_1_col_2_texttitle',
+              'type' => 'text',
              ),
              array(
               'name' => 'Custom Text Content',

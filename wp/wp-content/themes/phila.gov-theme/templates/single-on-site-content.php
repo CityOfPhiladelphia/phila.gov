@@ -38,6 +38,7 @@
         <?php if (!$append_before_wysiwyg == ''):?>
           <?php echo $append_before_wysiwyg; ?>
         <?php endif; ?>
+        <!-- Hero-Header MetaBox Modules -->
         <?php if (!$hero_header_image == ''): ?>
             <section class="department-header">
               <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
@@ -51,29 +52,46 @@
                   <?php if (!$hero_header_call_to_action_button_url == ''): ?>
                     <p><a href="<?php echo $hero_header_call_to_action_button_url; ?>" class="button alternate no-margin"><?php echo $hero_header_call_to_action_button_text; ?></a></p>
                   <?php endif; ?>
-
                 </div>
               </div>
             <?php endif; ?>
           </section>
         <?php endif; ?>
       <?php endif; ?>
-      <?php //print_r($row_one_col_one_module); ?>
+      <!-- Row One MetaBox Modules -->
       <?php if ( ( !$row_one_col_one_module[phila_module_row_1_col_1_type]  == '') && (!$row_one_col_two_module[phila_module_row_1_col_2_type]  == '' ) ): ?>
         <section>
           <div class="row equal-height">
-            <div class="large-18 columns">
-              <div class="row">
-                <?php if ( $row_one_col_one_module[phila_module_row_1_col_1_type]  == 'phila_module_row_1_col_1_blog_posts' ): ?>
-                  <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-                <?php endif; ?>
+            <?php if ( $row_one_col_one_module[phila_module_row_1_col_1_type]  == 'phila_module_row_1_col_1_blog_posts' ): ?>
+              <div class="large-18 columns">
+                <div class="row">
+                  <?php if ($row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_post_style] == 'phila_module_row_1_col_1_post_style_list'):?>
+                    <?php echo do_shortcode('[recent-posts list posts="3"]'); ?>
+                  <?php else: ?>
+                    <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+                  <?php endif;?>
+                </div>
               </div>
-            </div>
+            <?php else: ?>
+              <div class="large-18 columns">
+                <h2 class="alternate"><?php echo($row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_texttitle]); ?></h2>
+                <?php echo($row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_textarea]); ?>
+              </div>
+            <?php endif; ?>
+
             <div class="large-6 columns">
-              <h2 class="alternate">Connect</h2>
-              <div class="panel no-margin">
-                <?php print_r($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_textarea]); ?>
-              </div>
+              <?php if ( $row_one_col_two_module[phila_module_row_1_col_2_type]  == 'phila_module_row_1_col_2_blog_posts' ): ?>
+                <div class="row">
+                  <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
+                </div>
+              <?php else: ?>
+                <h2 class="alternate"><?php echo($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_texttitle]); ?></h2>
+                  <div class="panel no-margin">
+                    <div>
+                      <?php echo($row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_textarea]); ?>
+                    </div>
+                  </div>
+              <?php endif; ?>
             </div>
           </div>
         </section>
