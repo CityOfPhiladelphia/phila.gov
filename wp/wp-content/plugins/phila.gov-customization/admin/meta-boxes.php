@@ -298,7 +298,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 // First row of modules - recent posts and custom markup
  $meta_boxes[] = array(
    'id'       => $prefix . 'module_row_1',
-   'title'    => 'Optional Module Row 1',
+   'title'    => 'Module Row 1',
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'low',
@@ -316,7 +316,7 @@ function phila_register_meta_boxes( $meta_boxes ){
       // List of sub-fields
       'fields' => array(
          array(
-          'name' => 'Column 1 <br/>(2/3 width column)',
+          'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
           'id'   => $prefix . 'module_row_1_col_1_type',
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
@@ -360,7 +360,7 @@ function phila_register_meta_boxes( $meta_boxes ){
       // List of sub-fields
       'fields' => array(
          array(
-          'name' => 'Column 2 <br/>(1/3 column)',
+          'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => $prefix . 'module_row_1_col_2_type',
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
