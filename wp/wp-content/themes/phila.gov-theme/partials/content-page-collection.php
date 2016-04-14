@@ -15,6 +15,9 @@
 
   $check_parent_content = $parent_content[0]->post_content;
 
+  $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'), $post->ID);
+  $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'), $post->ID);
+
   if( $post->post_parent ) {
     //it's a child
     $children = wp_list_pages(array(
@@ -74,20 +77,36 @@
               <?php echo $children; ?>
             </ul>
           </div>
-          </aside>
-      <div class="medium-18 columns">
-        <div data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
-          <div class="tabs-panel is-active">
-            <header class="entry-header">
-              <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-            </header><!-- .entry-header -->
-            <?php if ( $parent_content ) : ?>
-              <?php echo $parent_content ?>
-            <?php else : ?>
-              <?php the_content(); ?>
-            <?php endif; ?>
+        </aside>
+        <div class="medium-18 columns">
+          <div data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
+            <div class="tabs-panel is-active">
+              <header class="entry-header">
+                <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+              </header><!-- .entry-header -->
+
+              <!-- If Custom Markup append_before_wysiwyg is present print it -->
+              <?php if (!$append_before_wysiwyg == ''):?>
+                <?php echo $append_before_wysiwyg; ?>
+              <?php endif; ?>
+
+              <?php if ( $parent_content ) : ?>
+                
+                <?php echo $parent_content ?>
+
+              <?php else : ?>
+
+                <?php the_content(); ?>
+
+              <?php endif; ?>
+
+              <!-- If Custom Markup append_after_wysiwyg is present print it -->
+              <?php if (!$append_after_wysiwyg == ''):?>
+                <?php echo $append_after_wysiwyg; ?>
+              <?php endif; ?>
+
+            </div>
           </div>
-        </div>
         </div><!-- .entry-content -->
       </div>
     </div>
