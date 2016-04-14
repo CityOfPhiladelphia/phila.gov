@@ -17,6 +17,7 @@
 }
 
 #phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-select-wrapper,
+#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-text-wrapper,
 #phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-textarea-wrapper {
   display: none;
 }

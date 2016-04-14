@@ -126,9 +126,7 @@ jQuery(document).ready(function($){
       function hideOptions(c){
 
         for (i in c){
-          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_texttitle').closest('.rwmb-text-wrapper').hide();
-          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').hide();
-          $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').hide();
+
           if (c[i]['type'] == 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_blog_posts'){
             $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').toggle();
           }
