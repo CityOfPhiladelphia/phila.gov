@@ -82,7 +82,7 @@
                   <?php endif;?>
                 </div>
               </div>
-            <?php else: ?>
+            <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
               <div class="large-18 columns">
                 <h2 class="alternate"><?php echo($row_one_col_one_text_title); ?></h2>
                 <div>
@@ -98,7 +98,7 @@
                   <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
                 </div>
               </div>
-            <?php else: ?>
+            <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_custom_text' ): ?>
               <div class="large-6 columns">
                 <h2 class="alternate"><?php echo($row_one_col_two_text_title); ?></h2>
                 <div class="panel no-margin">
