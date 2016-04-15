@@ -103,7 +103,7 @@ class WP_Links_List_Table extends WP_List_Table {
 				'selected' => $cat_id,
 				'name' => 'cat_id',
 				'taxonomy' => 'link_category',
-				'show_option_all' => get_taxonomy( 'link_category' )->labels->all_items,
+				'show_option_all' => __( 'All categories' ),
 				'hide_empty' => true,
 				'hierarchical' => 1,
 				'show_count' => 0,
@@ -160,7 +160,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Handles the checkbox column output.
+	 * Handles the checkbox column ouput.
 	 *
 	 * @since 4.3.0
 	 * @access public
@@ -175,7 +175,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Handles the link name column output.
+	 * Handles the link name column ouput.
 	 *
 	 * @since 4.3.0
 	 * @access public
@@ -184,16 +184,15 @@ class WP_Links_List_Table extends WP_List_Table {
 	 */
 	public function column_name( $link ) {
 		$edit_link = get_edit_bookmark_link( $link );
-		printf( '<strong><a class="row-title" href="%s" aria-label="%s">%s</a></strong>',
-			$edit_link,
-			/* translators: %s: link name */
-			esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;' ), $link->link_name ) ),
-			$link->link_name
-		);
+		?>
+		<strong><a class="row-title" href="<?php echo $edit_link ?>" title="<?php
+			echo esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;' ), $link->link_name ) );
+		?>"><?php echo $link->link_name ?></a></strong><br />
+		<?php
 	}
 
 	/**
-	 * Handles the link URL column output.
+	 * Handles the link URL column ouput.
 	 *
 	 * @since 4.3.0
 	 * @access public
@@ -202,7 +201,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	 */
 	public function column_url( $link ) {
 		$short_url = url_shorten( $link->link_url );
-		echo "<a href='$link->link_url'>$short_url</a>";
+		echo "<a href='$link->link_url' title='". esc_attr( sprintf( __( 'Visit %s' ), $link->link_name ) )."'>$short_url</a>";
 	}
 
 	/**
@@ -234,7 +233,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Handles the link relation column output.
+	 * Handles the link relation column ouput.
 	 *
 	 * @since 4.3.0
 	 * @access public
@@ -246,7 +245,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Handles the link visibility column output.
+	 * Handles the link visibility column ouput.
 	 *
 	 * @since 4.3.0
 	 * @access public
@@ -262,7 +261,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Handles the link rating column output.
+	 * Handles the link rating column ouput.
 	 *
 	 * @since 4.3.0
 	 * @access public
