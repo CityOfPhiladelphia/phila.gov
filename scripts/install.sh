@@ -30,4 +30,5 @@ if [ "$PHILA_TEST" ]; then
   $_dir/unison.sh
   $_dir/gen-cert.sh
   $_dir/local-db.sh
+  $_dir/test-instances.sh
 fi
