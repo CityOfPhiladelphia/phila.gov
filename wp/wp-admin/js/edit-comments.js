@@ -286,7 +286,6 @@ setCommentsList = function() {
 
 			a.click(function( e ){
 				e.preventDefault();
-				e.stopPropagation(); // ticket #35904
 				list.wpList.del(this);
 				$('#undo-' + id).css( {backgroundColor:'#ceb'} ).fadeOut(350, function(){
 					$(this).remove();
@@ -314,8 +313,7 @@ setCommentsList = function() {
 			approved = commentRow.hasClass( 'approved' ),
 			unapproved = commentRow.hasClass( 'unapproved' ),
 			spammed = commentRow.hasClass( 'spam' ),
-			trashed = commentRow.hasClass( 'trash' ),
-			undoing = false; // ticket #35904
+			trashed = commentRow.hasClass( 'trash' );
 
 		updateDashboardText( newTotal );
 
@@ -348,8 +346,6 @@ setCommentsList = function() {
 					pendingDiff = 1;
 				}
 			}
-
-			undoing = true;
 
 		// user clicked "Spam"
 		} else if ( targetParent.is( 'span.spam' ) ) {
@@ -485,7 +481,7 @@ setCommentsList = function() {
 			}
 		}
 
-		if ( ! theExtraList || theExtraList.length === 0 || theExtraList.children().length === 0 || undoing ) {
+		if ( ! theExtraList || theExtraList.size() === 0 || theExtraList.children().size() === 0 ) {
 			return;
 		}
 

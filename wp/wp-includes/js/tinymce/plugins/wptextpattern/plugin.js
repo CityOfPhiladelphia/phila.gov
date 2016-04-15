@@ -11,42 +11,21 @@
  * using the undo shortcut, or the undo button in the toolbar.
  */
 ( function( tinymce, setTimeout ) {
-	if ( tinymce.Env.ie && tinymce.Env.ie < 9 ) {
-		return;
-	}
-
 	tinymce.PluginManager.add( 'wptextpattern', function( editor ) {
-		var VK = tinymce.util.VK;
-
-		var spacePatterns = [
-			{ regExp: /^[*-]\s/, cmd: 'InsertUnorderedList' },
-			{ regExp: /^1[.)]\s/, cmd: 'InsertOrderedList' }
-		];
-
-		var enterPatterns = [
-			{ start: '##', format: 'h2' },
-			{ start: '###', format: 'h3' },
-			{ start: '####', format: 'h4' },
-			{ start: '#####', format: 'h5' },
-			{ start: '######', format: 'h6' },
-			{ start: '>', format: 'blockquote' },
-			{ regExp: /^(-){3,}$/, element: 'hr' }
-		];
-
-		var inlinePatterns = [
-			{ start: '`', end: '`', format: 'code' }
-		];
-
-		var canUndo;
-		var chars = [];
-
-		tinymce.each( inlinePatterns, function( pattern ) {
-			tinymce.each( ( pattern.start + pattern.end ).split( '' ), function( c ) {
-				if ( tinymce.inArray( chars, c ) === -1 ) {
-					chars.push( c );
-				}
-			} );
-		} );
+		var VK = tinymce.util.VK,
+			spacePatterns = [
+				{ regExp: /^[*-]\s/, cmd: 'InsertUnorderedList' },
+				{ regExp: /^1[.)]\s/, cmd: 'InsertOrderedList' }
+			],
+			enterPatterns = [
+				{ start: '##', format: 'h2' },
+				{ start: '###', format: 'h3' },
+				{ start: '####', format: 'h4' },
+				{ start: '#####', format: 'h5' },
+				{ start: '######', format: 'h6' },
+				{ start: '>', format: 'blockquote' }
+			],
+			canUndo, refNode, refPattern;
 
 		editor.on( 'selectionchange', function() {
 			canUndo = null;
@@ -60,102 +39,17 @@
 			}
 
 			if ( event.keyCode === VK.ENTER && ! VK.modifierPressed( event ) ) {
-				enter();
+				watchEnter();
 			}
 		}, true );
 
 		editor.on( 'keyup', function( event ) {
 			if ( event.keyCode === VK.SPACEBAR && ! event.ctrlKey && ! event.metaKey && ! event.altKey ) {
 				space();
-			} else if ( event.keyCode > 47 && ! ( event.keyCode >= 91 && event.keyCode <= 93 ) ) {
-				inline();
+			} else if ( event.keyCode === VK.ENTER && ! VK.modifierPressed( event ) ) {
+				enter();
 			}
 		} );
-
-		function inline() {
-			var rng = editor.selection.getRng();
-			var node = rng.startContainer;
-			var offset = rng.startOffset;
-			var startOffset;
-			var endOffset;
-			var pattern;
-			var format;
-			var zero;
-
-			if ( ! node || node.nodeType !== 3 || ! node.data.length || ! offset ) {
-				return;
-			}
-
-			if ( tinymce.inArray( chars, node.data.charAt( offset - 1 ) ) === -1 ) {
-				return;
-			}
-
-			function findStart( node ) {
-				var i = inlinePatterns.length;
-				var offset;
-
-				while ( i-- ) {
-					pattern = inlinePatterns[ i ];
-					offset = node.data.indexOf( pattern.end );
-
-					if ( offset !== -1 ) {
-						return offset;
-					}
-				}
-			}
-
-			startOffset = findStart( node );
-			endOffset = node.data.lastIndexOf( pattern.end );
-
-			if ( startOffset === endOffset || endOffset === -1 ) {
-				return;
-			}
-
-			if ( endOffset - startOffset <= pattern.start.length ) {
-				return;
-			}
-
-			if ( node.data.slice( startOffset + pattern.start.length, endOffset ).indexOf( pattern.start.slice( 0, 1 ) ) !== -1 ) {
-				return;
-			}
-
-			format = editor.formatter.get( pattern.format );
-
-			if ( format && format[0].inline ) {
-				editor.undoManager.add();
-
-				editor.undoManager.transact( function() {
-					node.insertData( offset, '\u200b' );
-
-					node = node.splitText( startOffset );
-					zero = node.splitText( offset - startOffset );
-
-					node.deleteData( 0, pattern.start.length );
-					node.deleteData( node.data.length - pattern.end.length, pattern.end.length );
-
-					editor.formatter.apply( pattern.format, {}, node );
-
-					editor.selection.setCursorLocation( zero, 1 );
-				} );
-
-				// We need to wait for native events to be triggered.
-				setTimeout( function() {
-					canUndo = 'space';
-
-					editor.once( 'selectionchange', function() {
-						var offset;
-
-						if ( zero ) {
-							offset = zero.data.indexOf( '\u200b' );
-
-							if ( offset !== -1 ) {
-								zero.deleteData( offset, offset + 1 );
-							}
-						}
-					} );
-				} );
-			}
-		}
 
 		function firstTextNode( node ) {
 			var parent = editor.dom.getParent( node, 'p' ),
@@ -230,12 +124,12 @@
 			} );
 		}
 
-		function enter() {
+		function watchEnter() {
 			var rng = editor.selection.getRng(),
 				start = rng.startContainer,
 				node = firstTextNode( start ),
 				i = enterPatterns.length,
-				text, pattern, parent;
+				text, pattern;
 
 			if ( ! node ) {
 				return;
@@ -244,17 +138,10 @@
 			text = node.data;
 
 			while ( i-- ) {
-				if ( enterPatterns[ i ].start ) {
-					if ( text.indexOf( enterPatterns[ i ].start ) === 0 ) {
-						pattern = enterPatterns[ i ];
-						break;
-					}
-				} else if ( enterPatterns[ i ].regExp ) {
-					if ( enterPatterns[ i ].regExp.test( text ) ) {
-						pattern = enterPatterns[ i ];
-						break;
-					}
-				}
+				 if ( text.indexOf( enterPatterns[ i ].start ) === 0 ) {
+				 	pattern = enterPatterns[ i ];
+				 	break;
+				 }
 			}
 
 			if ( ! pattern ) {
@@ -265,31 +152,27 @@
 				return;
 			}
 
-			editor.once( 'keyup', function() {
+			refNode = node;
+			refPattern = pattern;
+		}
+
+		function enter() {
+			if ( refNode ) {
 				editor.undoManager.add();
 
 				editor.undoManager.transact( function() {
-					if ( pattern.format ) {
-						editor.formatter.apply( pattern.format, {}, node );
-						node.replaceData( 0, node.data.length, ltrim( node.data.slice( pattern.start.length ) ) );
-					} else if ( pattern.element ) {
-						parent = node.parentNode && node.parentNode.parentNode;
-
-						if ( parent ) {
-							parent.replaceChild( document.createElement( pattern.element ), node.parentNode );
-						}
-					}
+					editor.formatter.apply( refPattern.format, {}, refNode );
+					refNode.replaceData( 0, refNode.data.length, tinymce.trim( refNode.data.slice( refPattern.start.length ) ) );
 				} );
 
 				// We need to wait for native events to be triggered.
 				setTimeout( function() {
 					canUndo = 'enter';
 				} );
-			} );
-		}
+			}
 
-		function ltrim( text ) {
-			return text ? text.replace( /^\s+/, '' ) : '';
+			refNode = null;
+			refPattern = null;
 		}
 	} );
 } )( window.tinymce, window.setTimeout );

@@ -26,6 +26,7 @@
 			share_dialog_close = document.querySelector( '.wp-embed-share-dialog-close' ),
 			share_input = document.querySelectorAll( '.wp-embed-share-input' ),
 			share_dialog_tabs = document.querySelectorAll( '.wp-embed-share-tab-button button' ),
+			links = document.getElementsByTagName( 'a' ),
 			i;
 
 		if ( share_input ) {
@@ -153,13 +154,13 @@
 			/**
 			 * Send link target to the parent (embedding) site.
 			 */
-			if ( href ) {
-				sendEmbedMessage( 'link', href );
-				e.preventDefault();
-			}
+			sendEmbedMessage( 'link', href );
+			e.preventDefault();
 		}
 
-		document.addEventListener( 'click', linkClickHandler );
+		for ( i = 0; i < links.length; i++ ) {
+			links[ i ].addEventListener( 'click', linkClickHandler );
+		}
 	}
 
 	/**

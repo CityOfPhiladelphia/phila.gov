@@ -15,42 +15,28 @@
  * @see Walker
  */
 class Walker_Page extends Walker {
-
 	/**
-	 * What the class handles.
-	 *
-	 * @since 2.1.0
-	 * @access public
-	 * @var string
-	 *
 	 * @see Walker::$tree_type
+	 * @since 2.1.0
+	 * @var string
 	 */
 	public $tree_type = 'page';
 
 	/**
-	 * Database fields to use.
-	 *
-	 * @since 2.1.0
-	 * @access private
-	 * @var array
-	 *
 	 * @see Walker::$db_fields
+	 * @since 2.1.0
 	 * @todo Decouple this.
+	 * @var array
 	 */
-	public $db_fields = array( 'parent' => 'post_parent', 'id' => 'ID' );
+	public $db_fields = array ('parent' => 'post_parent', 'id' => 'ID');
 
 	/**
-	 * Outputs the beginning of the current level in the tree before elements are output.
-	 *
-	 * @since 2.1.0
-	 * @access public
-	 *
 	 * @see Walker::start_lvl()
+	 * @since 2.1.0
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int    $depth  Optional. Depth of page. Used for padding. Default 0.
-	 * @param array  $args   Optional. Arguments for outputing the next level.
-	 *                       Default empty array.
+	 * @param int    $depth  Depth of page. Used for padding.
+	 * @param array  $args
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
@@ -58,17 +44,12 @@ class Walker_Page extends Walker {
 	}
 
 	/**
-	 * Outputs the end of the current level in the tree after elements are output.
-	 *
-	 * @since 2.1.0
-	 * @access public
-	 *
 	 * @see Walker::end_lvl()
+	 * @since 2.1.0
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int    $depth  Optional. Depth of page. Used for padding. Default 0.
-	 * @param array  $args   Optional. Arguments for outputting the end of the current level.
-	 *                       Default empty array.
+	 * @param int    $depth  Depth of page. Used for padding.
+	 * @param array  $args
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
@@ -76,17 +57,14 @@ class Walker_Page extends Walker {
 	}
 
 	/**
-	 * Outputs the beginning of the current element in the tree.
-	 *
 	 * @see Walker::start_el()
 	 * @since 2.1.0
-	 * @access public
 	 *
-	 * @param string  $output       Used to append additional content. Passed by reference.
-	 * @param WP_Post $page         Page data object.
-	 * @param int     $depth        Optional. Depth of page. Used for padding. Default 0.
-	 * @param array   $args         Optional. Array of arguments. Default empty array.
-	 * @param int     $current_page Optional. Page ID. Default 0.
+	 * @param string $output       Passed by reference. Used to append additional content.
+	 * @param object $page         Page data object.
+	 * @param int    $depth        Depth of page. Used for padding.
+	 * @param int    $current_page Page ID.
+	 * @param array  $args
 	 */
 	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 		if ( $depth ) {
@@ -123,7 +101,7 @@ class Walker_Page extends Walker {
 		 * @see wp_list_pages()
 		 *
 		 * @param array   $css_class    An array of CSS classes to be applied
-		 *                              to each list item.
+		 *                             to each list item.
 		 * @param WP_Post $page         Page data object.
 		 * @param int     $depth        Depth of page, used for padding.
 		 * @param array   $args         An array of arguments.
@@ -139,12 +117,12 @@ class Walker_Page extends Walker {
 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
 
+		/** This filter is documented in wp-includes/post-template.php */
 		$output .= $indent . sprintf(
 			'<li class="%s"><a href="%s">%s%s%s</a>',
 			$css_classes,
 			get_permalink( $page->ID ),
 			$args['link_before'],
-			/** This filter is documented in wp-includes/post-template.php */
 			apply_filters( 'the_title', $page->post_title, $page->ID ),
 			$args['link_after']
 		);
@@ -162,17 +140,13 @@ class Walker_Page extends Walker {
 	}
 
 	/**
-	 * Outputs the end of the current element in the tree.
-	 *
-	 * @since 2.1.0
-	 * @access public
-	 *
 	 * @see Walker::end_el()
+	 * @since 2.1.0
 	 *
-	 * @param string  $output Used to append additional content. Passed by reference.
-	 * @param WP_Post $page   Page data object. Not used.
-	 * @param int     $depth  Optional. Depth of page. Default 0 (unused).
-	 * @param array   $args   Optional. Array of arguments. Default empty array.
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $page Page data object. Not used.
+	 * @param int    $depth Depth of page. Not Used.
+	 * @param array  $args
 	 */
 	public function end_el( &$output, $page, $depth = 0, $args = array() ) {
 		$output .= "</li>\n";

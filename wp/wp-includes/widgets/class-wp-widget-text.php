@@ -23,13 +23,9 @@ class WP_Widget_Text extends WP_Widget {
 	 * @access public
 	 */
 	public function __construct() {
-		$widget_ops = array(
-			'classname' => 'widget_text',
-			'description' => __( 'Arbitrary text or HTML.' ),
-			'customize_selective_refresh' => true,
-		);
-		$control_ops = array( 'width' => 400, 'height' => 350 );
-		parent::__construct( 'text', __( 'Text' ), $widget_ops, $control_ops );
+		$widget_ops = array('classname' => 'widget_text', 'description' => __('Arbitrary text or HTML.'));
+		$control_ops = array('width' => 400, 'height' => 350);
+		parent::__construct('text', __('Text'), $widget_ops, $control_ops);
 	}
 
 	/**
@@ -84,11 +80,10 @@ class WP_Widget_Text extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['text'] = $new_instance['text'];
-		} else {
-			$instance['text'] = wp_kses_post( $new_instance['text'] );
-		}
+		if ( current_user_can('unfiltered_html') )
+			$instance['text'] =  $new_instance['text'];
+		else
+			$instance['text'] = wp_kses_post( stripslashes( $new_instance['text'] ) );
 		$instance['filter'] = ! empty( $new_instance['filter'] );
 		return $instance;
 	}

@@ -14,16 +14,8 @@
 tinymce.PluginManager.add('lists', function(editor) {
 	var self = this;
 
-	function isChildOfBody(elm) {
-		return editor.$.contains(editor.getBody(), elm);
-	}
-
-	function isBr(node) {
-		return node && node.nodeName == 'BR';
-	}
-
 	function isListNode(node) {
-		return node && (/^(OL|UL|DL)$/).test(node.nodeName) && isChildOfBody(node);
+		return node && (/^(OL|UL|DL)$/).test(node.nodeName);
 	}
 
 	function isFirstChild(node) {
@@ -433,9 +425,9 @@ tinymce.PluginManager.add('lists', function(editor) {
 				return true;
 			}
 
-			/*if (sibling && sibling.nodeName == 'LI' && isListNode(li.lastChild)) {
+			if (sibling && sibling.nodeName == 'LI' && isListNode(li.lastChild)) {
 				return false;
-			}*/
+			}
 
 			sibling = li.previousSibling;
 			if (sibling && sibling.nodeName == 'LI') {
@@ -506,11 +498,7 @@ tinymce.PluginManager.add('lists', function(editor) {
 		}
 
 		function applyList(listName) {
-			var rng = selection.getRng(true), bookmark, listItemName = 'LI';
-
-			if (dom.getContentEditable(selection.getNode()) === "false") {
-				return;
-			}
+			var rng = selection.getRng(true), bookmark = createBookmark(rng), listItemName = 'LI';
 
 			listName = listName.toUpperCase();
 
@@ -566,8 +554,8 @@ tinymce.PluginManager.add('lists', function(editor) {
 						return;
 					}
 
-					if (dom.isBlock(node) || isBr(node)) {
-						if (isBr(node)) {
+					if (dom.isBlock(node) || node.nodeName == 'BR') {
+						if (node.nodeName == 'BR') {
 							dom.remove(node);
 						}
 
@@ -594,8 +582,6 @@ tinymce.PluginManager.add('lists', function(editor) {
 
 				return textBlocks;
 			}
-
-			bookmark = createBookmark(rng);
 
 			tinymce.each(getSelectedTextBlocks(), function(block) {
 				var listBlock, sibling;
@@ -673,18 +659,6 @@ tinymce.PluginManager.add('lists', function(editor) {
 			};
 		}
 
-		function isBogusBr(node) {
-			if (!isBr(node)) {
-				return false;
-			}
-
-			if (dom.isBlock(node.nextSibling) && !isBr(node.previousSibling)) {
-				return true;
-			}
-
-			return false;
-		}
-
 		self.backspaceDelete = function(isForward) {
 			function findNextCaretContainer(rng, isForward) {
 				var node = rng.startContainer, offset = rng.startOffset;
@@ -695,20 +669,9 @@ tinymce.PluginManager.add('lists', function(editor) {
 				}
 
 				nonEmptyBlocks = editor.schema.getNonEmptyElements();
-				if (node.nodeType == 1) {
-					node = tinymce.dom.RangeUtils.getNode(node, offset);
-				}
+				walker = new tinymce.dom.TreeWalker(rng.startContainer);
 
-				walker = new tinymce.dom.TreeWalker(node, editor.getBody());
-
-				// Delete at <li>|<br></li> then jump over the bogus br
-				if (isForward) {
-					if (isBogusBr(node)) {
-						walker.next();
-					}
-				}
-
-				while ((node = walker[isForward ? 'next' : 'prev2']())) {
+				while ((node = walker[isForward ? 'next' : 'prev']())) {
 					if (node.nodeName == 'LI' && !node.hasChildNodes()) {
 						return node;
 					}
@@ -726,22 +689,12 @@ tinymce.PluginManager.add('lists', function(editor) {
 			function mergeLiElements(fromElm, toElm) {
 				var node, listNode, ul = fromElm.parentNode;
 
-				if (!isChildOfBody(fromElm) || !isChildOfBody(toElm)) {
-					return;
-				}
-
 				if (isListNode(toElm.lastChild)) {
 					listNode = toElm.lastChild;
 				}
 
-				if (ul == toElm.lastChild) {
-					if (isBr(ul.previousSibling)) {
-						dom.remove(ul.previousSibling);
-					}
-				}
-
 				node = toElm.lastChild;
-				if (node && isBr(node) && fromElm.hasChildNodes()) {
+				if (node && node.nodeName == 'BR' && fromElm.hasChildNodes()) {
 					dom.remove(node);
 				}
 

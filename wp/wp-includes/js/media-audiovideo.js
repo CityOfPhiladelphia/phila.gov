@@ -728,17 +728,14 @@ MediaDetails = AttachmentDisplay.extend({
 		this.on( 'media:setting:remove', wp.media.mixin.unsetPlayers, this );
 		this.on( 'media:setting:remove', this.render );
 		this.on( 'media:setting:remove', this.setPlayer );
-
-		AttachmentDisplay.prototype.initialize.apply( this, arguments );
-	},
-
-	events: function(){
-		return _.extend( {
+		this.events = _.extend( this.events, {
 			'click .remove-setting' : 'removeSetting',
 			'change .content-track' : 'setTracks',
 			'click .remove-track' : 'setTracks',
 			'click .add-media-source' : 'addSource'
-		}, AttachmentDisplay.prototype.events );
+		} );
+
+		AttachmentDisplay.prototype.initialize.apply( this, arguments );
 	},
 
 	prepare: function() {
@@ -795,15 +792,13 @@ MediaDetails = AttachmentDisplay.extend({
 	 * @global MediaElementPlayer
 	 */
 	setPlayer : function() {
-		var baseSettings, src;
+		var baseSettings;
 
 		if ( this.players.length || ! this.media || this.scriptXhr ) {
 			return;
 		}
 
-		src = this.model.get( 'src' );
-
-		if ( src && src.indexOf( 'vimeo' ) > -1 && ! ( 'Froogaloop' in window ) ) {
+		if ( this.model.get( 'src' ).indexOf( 'vimeo' ) > -1 && ! ( 'Froogaloop' in window ) ) {
 			baseSettings = wp.media.mixin.mejsSettings;
 			this.scriptXhr = $.getScript( baseSettings.pluginPath + 'froogaloop.min.js', _.bind( this.loadPlayer, this ) );
 		} else {

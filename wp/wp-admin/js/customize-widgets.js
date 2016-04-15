@@ -34,7 +34,7 @@
 		multi_number: null,
 		name: null,
 		id_base: null,
-		transport: null,
+		transport: 'refresh',
 		params: [],
 		width: null,
 		height: null,
@@ -663,7 +663,7 @@
 		 */
 		_setupReorderUI: function() {
 			var self = this, selectSidebarItem, $moveWidgetArea,
-				$reorderNav, updateAvailableSidebars, template;
+				$reorderNav, updateAvailableSidebars;
 
 			/**
 			 * select the provided sidebar list item in the move widget area
@@ -681,10 +681,8 @@
 			 * Add the widget reordering elements to the widget control
 			 */
 			this.container.find( '.widget-title-action' ).after( $( api.Widgets.data.tpl.widgetReorderNav ) );
-
-
-			template = _.template( api.Widgets.data.tpl.moveWidgetArea );
-			$moveWidgetArea = $( template( {
+			$moveWidgetArea = $(
+				_.template( api.Widgets.data.tpl.moveWidgetArea, {
 					sidebars: _( api.Widgets.registeredSidebars.toArray() ).pluck( 'attributes' )
 				} )
 			);
@@ -961,7 +959,7 @@
 		 * comparing the loaded form with the sanitized form, whose fields will
 		 * be aligned to copy the sanitized over. The elements returned by this
 		 * are passed into this._getInputsSignature(), and they are iterated
-		 * over when copying sanitized values over to the form loaded.
+		 * over when copying sanitized values over to the the form loaded.
 		 *
 		 * @param {jQuery} container element in which to look for inputs
 		 * @returns {jQuery} inputs
@@ -1109,7 +1107,7 @@
 			params = {};
 			params.action = 'update-widget';
 			params.wp_customize = 'on';
-			params.nonce = api.settings.nonce['update-widget'];
+			params.nonce = api.Widgets.data.nonce;
 			params.theme = api.settings.theme.stylesheet;
 			params.customized = wp.customize.previewer.query().customized;
 
@@ -1831,7 +1829,7 @@
 				}
 			});
 
-			if ( 0 === widgetControls.length || ( 1 === api.Widgets.registeredSidebars.length && widgetControls.length <= 1 ) ) {
+			if ( ! widgetControls.length ) {
 				this.container.find( '.reorder-toggle' ).hide();
 				return;
 			} else {
@@ -1982,7 +1980,7 @@
 			isExistingWidget = api.has( settingId );
 			if ( ! isExistingWidget ) {
 				settingArgs = {
-					transport: api.Widgets.data.selectiveRefreshableWidgets[ widget.get( 'id_base' ) ] ? 'postMessage' : 'refresh',
+					transport: 'refresh',
 					previewer: this.setting.previewer
 				};
 				setting = api.create( settingId, settingId, '', settingArgs );
@@ -2058,6 +2056,11 @@
 	$.extend( api.controlConstructor, {
 		widget_form: api.Widgets.WidgetControl,
 		sidebar_widgets: api.Widgets.SidebarControl
+	});
+
+	// Refresh the nonce if login sends updated nonces over.
+	api.bind( 'nonce-refresh', function( nonces ) {
+		api.Widgets.data.nonce = nonces['update-widget'];
 	});
 
 	/**
