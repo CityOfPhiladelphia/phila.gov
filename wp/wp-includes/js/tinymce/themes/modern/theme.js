@@ -12,7 +12,7 @@
 
 tinymce.ThemeManager.add('modern', function(editor) {
 	var self = this, settings = editor.settings, Factory = tinymce.ui.Factory,
-		each = tinymce.each, DOM = tinymce.DOM, Rect = tinymce.geom.Rect, FloatPanel = tinymce.ui.FloatPanel;
+		each = tinymce.each, DOM = tinymce.DOM, Rect = tinymce.ui.Rect, FloatPanel = tinymce.ui.FloatPanel;
 
 	// Default menus
 	var defaultMenus = {
@@ -416,18 +416,13 @@ tinymce.ThemeManager.add('modern', function(editor) {
 			panelRect = tinymce.DOM.getRect(panel.getEl());
 			contentAreaRect = tinymce.DOM.getRect(editor.getContentAreaContainer() || editor.getBody());
 
-			// We need to use these instead of the rect values since the style
-			// size properites might not be the same as the real size for a table
-			elementRect.w = match.element.clientWidth;
-			elementRect.h = match.element.clientHeight;
-
 			if (!editor.inline) {
 				contentAreaRect.w = editor.getDoc().documentElement.offsetWidth;
 			}
 
 			// Inflate the elementRect so it doesn't get placed above resize handles
 			if (editor.selection.controlSelection.isResizable(match.element)) {
-				elementRect = Rect.inflate(elementRect, 0, 8);
+				elementRect = Rect.inflate(elementRect, 0, 7);
 			}
 
 			relPos = Rect.findBestRelativePosition(panelRect, elementRect, contentAreaRect, testPositions);
@@ -476,7 +471,11 @@ tinymce.ThemeManager.add('modern', function(editor) {
 				}
 			}
 
-			tinymce.util.Delay.requestAnimationFrame(execute);
+			if (window.requestAnimationFrame) {
+				window.requestAnimationFrame(execute);
+			} else {
+				execute();
+			}
 		}
 
 		function bindScrollEvent() {
@@ -546,24 +545,22 @@ tinymce.ThemeManager.add('modern', function(editor) {
 			return null;
 		}
 
-		editor.on('click keyup setContent', function(e) {
-			// Only act on partial inserts
-			if (e.type == 'setcontent' && !e.selection) {
-				return;
-			}
-
+		editor.on('click keyup', function() {
 			// Needs to be delayed to avoid Chrome img focus out bug
-			tinymce.util.Delay.setEditorTimeout(editor, function() {
+			window.setTimeout(function() {
 				var match;
+
+				if (editor.removed) {
+					return;
+				}
 
 				match = findFrontMostMatch(editor.selection.getNode());
 				if (match) {
-					hideAllContextToolbars();
 					showContextToolbar(match);
 				} else {
 					hideAllContextToolbars();
 				}
-			});
+			}, 0);
 		});
 
 		editor.on('blur hide', hideAllContextToolbars);
@@ -587,18 +584,6 @@ tinymce.ThemeManager.add('modern', function(editor) {
 
 			editor.contextToolbars = {};
 		});
-	}
-
-	function fireSkinLoaded(editor) {
-		return function() {
-			if (editor.initialized) {
-				editor.fire('SkinLoaded');
-			} else {
-				editor.on('init', function() {
-					editor.fire('SkinLoaded');
-				});
-			}
-		};
 	}
 
 	/**
@@ -721,7 +706,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 
 		// Preload skin css
 		if (args.skinUiCss) {
-			tinymce.DOM.styleSheetLoader.load(args.skinUiCss, fireSkinLoaded(editor));
+			tinymce.DOM.styleSheetLoader.load(args.skinUiCss);
 		}
 
 		return {};
@@ -736,18 +721,8 @@ tinymce.ThemeManager.add('modern', function(editor) {
 	function renderIframeUI(args) {
 		var panel, resizeHandleCtrl, startSize;
 
-		function switchMode() {
-			return function(e) {
-				if (e.mode == 'readonly') {
-					panel.find('*').disabled(true);
-				} else {
-					panel.find('*').disabled(false);
-				}
-			};
-		}
-
 		if (args.skinUiCss) {
-			tinymce.DOM.styleSheetLoader.load(args.skinUiCss, fireSkinLoaded(editor));
+			tinymce.DOM.loadCSS(args.skinUiCss);
 		}
 
 		// Basic UI layout
@@ -797,13 +772,12 @@ tinymce.ThemeManager.add('modern', function(editor) {
 			]});
 		}
 
-		editor.fire('BeforeRenderUI');
-		editor.on('SwitchMode', switchMode());
-		panel.renderBefore(args.targetNode).reflow();
-
 		if (settings.readonly) {
-			editor.setMode('readonly');
+			panel.find('*').disabled(true);
 		}
+
+		editor.fire('BeforeRenderUI');
+		panel.renderBefore(args.targetNode).reflow();
 
 		if (settings.width) {
 			tinymce.DOM.setStyle(panel.getEl(), 'width', settings.width);

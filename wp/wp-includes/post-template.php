@@ -161,22 +161,17 @@ function get_the_title( $post = 0 ) {
 /**
  * Display the Post Global Unique Identifier (guid).
  *
- * The guid will appear to be a link, but should not be used as a link to the
+ * The guid will appear to be a link, but should not be used as an link to the
  * post. The reason you should not use it as a link, is because of moving the
  * blog across domains.
  *
- * URL is escaped to make it XML-safe.
+ * Url is escaped to make it xml safe
  *
  * @since 1.5.0
  *
- * @param int|WP_Post $post Optional. Post ID or post object. Default is global $post.
+ * @param int|WP_Post $id Optional. Post ID or post object.
  */
-function the_guid( $post = 0 ) {
-	$post = get_post( $post );
-
-	$guid = isset( $post->guid ) ? get_the_guid( $post ) : '';
-	$id   = isset( $post->ID ) ? $post->ID : 0;
-
+function the_guid( $id = 0 ) {
 	/**
 	 * Filter the escaped Global Unique Identifier (guid) of the post.
 	 *
@@ -184,10 +179,9 @@ function the_guid( $post = 0 ) {
 	 *
 	 * @see get_the_guid()
 	 *
-	 * @param string $guid Escaped Global Unique Identifier (guid) of the post.
-	 * @param int    $id   The post ID.
+	 * @param string $post_guid Escaped Global Unique Identifier (guid) of the post.
 	 */
-	echo apply_filters( 'the_guid', $guid, $id );
+	echo apply_filters( 'the_guid', get_the_guid( $id ) );
 }
 
 /**
@@ -199,24 +193,20 @@ function the_guid( $post = 0 ) {
  *
  * @since 1.5.0
  *
- * @param int|WP_Post $post Optional. Post ID or post object. Default is global $post.
+ * @param int|WP_Post $id Optional. Post ID or post object.
  * @return string
  */
-function get_the_guid( $post = 0 ) {
-	$post = get_post( $post );
-
-	$guid = isset( $post->guid ) ? $post->guid : '';
-	$id   = isset( $post->ID ) ? $post->ID : 0;
+function get_the_guid( $id = 0 ) {
+	$post = get_post($id);
 
 	/**
 	 * Filter the Global Unique Identifier (guid) of the post.
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param string $guid Global Unique Identifier (guid) of the post.
-	 * @param int    $id   The post ID.
+	 * @param string $post_guid Global Unique Identifier (guid) of the post.
 	 */
-	return apply_filters( 'get_the_guid', $guid, $id );
+	return apply_filters( 'get_the_guid', $post->guid );
 }
 
 /**
@@ -354,25 +344,23 @@ function the_excerpt() {
 }
 
 /**
- * Retrieves the post excerpt.
+ * Retrieve the post excerpt.
  *
  * @since 0.71
- * @since 4.5.0 Introduced the `$post` parameter.
  *
- * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
- * @return string Post excerpt.
+ * @param mixed $deprecated Not used.
+ * @return string
  */
-function get_the_excerpt( $post = null ) {
-	if ( is_bool( $post ) ) {
+function get_the_excerpt( $deprecated = '' ) {
+	if ( !empty( $deprecated ) )
 		_deprecated_argument( __FUNCTION__, '2.3' );
-	}
 
-	$post = get_post( $post );
+	$post = get_post();
 	if ( empty( $post ) ) {
 		return '';
 	}
 
-	if ( post_password_required( $post ) ) {
+	if ( post_password_required() ) {
 		return __( 'There is no excerpt because this is a protected post.' );
 	}
 
@@ -380,12 +368,10 @@ function get_the_excerpt( $post = null ) {
 	 * Filter the retrieved post excerpt.
 	 *
 	 * @since 1.2.0
-	 * @since 4.5.0 Introduced the `$post` parameter.
 	 *
 	 * @param string $post_excerpt The post excerpt.
-	 * @param WP_Post $post Post object.
 	 */
-	return apply_filters( 'get_the_excerpt', $post->post_excerpt, $post );
+	return apply_filters( 'get_the_excerpt', $post->post_excerpt );
 }
 
 /**
@@ -582,9 +568,6 @@ function get_body_class( $class = '' ) {
 		$classes[] = 'attachment';
 	if ( is_404() )
 		$classes[] = 'error404';
-	if ( is_singular() ) {
-		$classes[] = 'singular';
-	}
 
 	if ( is_single() ) {
 		$post_id = $wp_query->get_queried_object_id();
@@ -705,10 +688,6 @@ function get_body_class( $class = '' ) {
 
 	if ( get_background_color() !== get_theme_support( 'custom-background', 'default-color' ) || get_background_image() )
 		$classes[] = 'custom-background';
-
-	if ( has_custom_logo() ) {
-		$classes[] = 'wp-custom-logo';
-	}
 
 	$page = $wp_query->get( 'page' );
 
@@ -1536,7 +1515,7 @@ function get_the_password_form( $post = 0 ) {
 	$label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );
 	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form" method="post">
 	<p>' . __( 'This content is password protected. To view it please enter your password below:' ) . '</p>
-	<p><label for="' . $label . '">' . __( 'Password:' ) . ' <input name="post_password" id="' . $label . '" type="password" size="20" /></label> <input type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form' ) . '" /></p></form>
+	<p><label for="' . $label . '">' . __( 'Password:' ) . ' <input name="post_password" id="' . $label . '" type="password" size="20" /></label> <input type="submit" name="Submit" value="' . esc_attr__( 'Submit' ) . '" /></p></form>
 	';
 
 	/**

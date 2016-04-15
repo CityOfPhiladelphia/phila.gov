@@ -69,12 +69,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 
 		$current_site = get_current_site();
 
-		if ( ! empty( $_REQUEST['mode'] ) ) {
-			$mode = $_REQUEST['mode'] === 'excerpt' ? 'excerpt' : 'list';
-			set_user_setting( 'sites_list_mode', $mode );
-		} else {
-			$mode = get_user_setting( 'sites_list_mode', 'list' );
-		}
+		$mode = ( empty( $_REQUEST['mode'] ) ) ? 'list' : $_REQUEST['mode'];
 
 		$per_page = $this->get_items_per_page( 'sites_network_per_page' );
 
@@ -89,7 +84,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 
 		/*
 		 * If the network is large and a search is not being performed, show only
-		 * the latest sites with no paging in order to avoid expensive count queries.
+		 * the latest blogs with no paging in order to avoid expensive count queries.
 		 */
 		if ( !$s && wp_is_large_network() ) {
 			if ( !isset($_REQUEST['orderby']) )
@@ -277,14 +272,14 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Handles the site name column output.
+	 * Handles the blogname column output.
 	 *
 	 * @since 4.3.0
 	 * @access public
 	 *
 	 * @global string $mode
 	 *
-	 * @param array $blog Current site.
+	 * @param array $blog Current blog.
 	 */
 	public function column_blogname( $blog ) {
 		global $mode;
@@ -315,14 +310,8 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		<?php
 		if ( 'list' !== $mode ) {
 			switch_to_blog( $blog['blog_id'] );
-			echo '<p>';
-			printf(
-				/* translators: 1: site name, 2: site tagline. */
-				__( '%1$s &#8211; %2$s' ),
-				get_option( 'blogname' ),
-				'<em>' . get_option( 'blogdescription ' ) . '</em>'
-			);
-			echo '</p>';
+			/* translators: 1: site name, 2: site tagline. */
+			echo '<p>' . sprintf( __( '%1$s &#8211; <em>%2$s</em>' ), get_option( 'blogname' ), get_option( 'blogdescription ' ) ) . '</p>';
 			restore_current_blog();
 		}
 	}
@@ -480,7 +469,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * @since 4.3.0
 	 * @access protected
 	 *
-	 * @param object $blog        Site being acted upon.
+	 * @param object $blog        Blog being acted upon.
 	 * @param string $column_name Current column name.
 	 * @param string $primary     Primary column name.
 	 * @return string Row actions output.

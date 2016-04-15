@@ -1,19 +1,14 @@
 <?php
 /**
- * Dependencies API: WP_Dependencies base class
+ * BackPress Scripts enqueue
  *
- * @since 2.6.0
+ * Classes were refactored from the WP_Scripts and WordPress script enqueue API.
  *
- * @package WordPress
- * @subpackage Dependencies
- */
-
-/**
- * Core base class extended to register items.
+ * @since BackPress r74
  *
- * @package WordPress
- * @since 2.6.0
+ * @package BackPress
  * @uses _WP_Dependency
+ * @since r74
  */
 class WP_Dependencies {
 	/**
@@ -77,19 +72,17 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.8.0
-	 * @deprecated 4.5.0
 	 * @var int
 	 */
 	public $group = 0;
 
 	/**
-	 * Processes the items and dependencies.
+	 * Process the items and dependencies.
 	 *
 	 * Processes the items passed to it or the queue, and their dependencies.
 	 *
 	 * @access public
-	 * @since 2.6.0
-	 * @since 2.8.0 Added the `$group` parameter.
+	 * @since 2.1.0
 	 *
 	 * @param mixed $handles Optional. Items to be processed: Process queue (false), process item (string), process items (array of strings).
 	 * @param mixed $group   Group level: level (int), no groups (false).
@@ -105,6 +98,21 @@ class WP_Dependencies {
 
 		foreach ( $this->to_do as $key => $handle ) {
 			if ( !in_array($handle, $this->done, true) && isset($this->registered[$handle]) ) {
+
+				/*
+				 * A single item may alias a set of items, by having dependencies,
+				 * but no source. Queuing the item queues the dependencies.
+				 *
+				 * Example: The extending class WP_Scripts is used to register 'scriptaculous' as a set of registered handles:
+				 *   <code>add( 'scriptaculous', false, array( 'scriptaculous-dragdrop', 'scriptaculous-slider', 'scriptaculous-controls' ) );</code>
+				 *
+				 * The src property is false.
+				 */
+				if ( ! $this->registered[$handle]->src ) {
+					$this->done[] = $handle;
+					continue;
+				}
+
 				/*
 				 * Attempt to process the item. If successful,
 				 * add the handle to the done array.
@@ -122,7 +130,7 @@ class WP_Dependencies {
 	}
 
 	/**
-	 * Processes a dependency.
+	 * Process a dependency.
 	 *
 	 * @access public
 	 * @since 2.6.0
@@ -135,19 +143,17 @@ class WP_Dependencies {
 	}
 
 	/**
-	 * Determines dependencies.
+	 * Determine dependencies.
 	 *
 	 * Recursively builds an array of items to process taking
 	 * dependencies into account. Does NOT catch infinite loops.
 	 *
 	 * @access public
 	 * @since 2.1.0
-	 * @since 2.6.0 Moved from `WP_Scripts`.
-	 * @since 2.8.0 Added the `$group` parameter.
 	 *
-	 * @param mixed     $handles   Item handle and argument (string) or item handles and arguments (array of strings).
-	 * @param bool      $recursion Internal flag that function is calling itself.
-	 * @param int|false $group     Group level: (int) level, (false) no groups.
+	 * @param mixed $handles   Item handle and argument (string) or item handles and arguments (array of strings).
+	 * @param bool  $recursion Internal flag that function is calling itself.
+	 * @param mixed $group     Group level: (int) level, (false) no groups.
 	 * @return bool True on success, false on failure.
 	 */
 	public function all_deps( $handles, $recursion = false, $group = false ) {
@@ -162,8 +168,7 @@ class WP_Dependencies {
 			if ( in_array($handle, $this->done, true) ) // Already done
 				continue;
 
-			$moved     = $this->set_group( $handle, $recursion, $group );
-			$new_group = $this->groups[ $handle ];
+			$moved = $this->set_group( $handle, $recursion, $group );
 
 			if ( $queued && !$moved ) // already queued and in the right group
 				continue;
@@ -173,7 +178,7 @@ class WP_Dependencies {
 				$keep_going = false; // Item doesn't exist.
 			elseif ( $this->registered[$handle]->deps && array_diff($this->registered[$handle]->deps, array_keys($this->registered)) )
 				$keep_going = false; // Item requires dependencies that don't exist.
-			elseif ( $this->registered[$handle]->deps && !$this->all_deps( $this->registered[$handle]->deps, true, $new_group ) )
+			elseif ( $this->registered[$handle]->deps && !$this->all_deps( $this->registered[$handle]->deps, true, $group ) )
 				$keep_going = false; // Item requires dependencies that don't exist.
 
 			if ( ! $keep_going ) { // Either item or its dependencies don't exist.
@@ -202,16 +207,12 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
-	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
-	 * @param string           $handle Name of the item. Should be unique.
-	 * @param string           $src    Full URL of the item, or path of the item relative to the WordPress root directory.
-	 * @param array            $deps   Optional. An array of registered item handles this item depends on. Default empty array.
-	 * @param string|bool|null $ver    Optional. String specifying item version number, if it has one, which is added to the URL
-	 *                                 as a query string for cache busting purposes. If version is set to false, a version
-	 *                                 number is automatically added equal to current installed WordPress version.
-	 *                                 If set to null, no version is added.
-	 * @param mixed            $args   Optional. Custom property of the item. NOT the class property $args. Examples: $media, $in_footer. 
+	 * @param string $handle Unique item name.
+	 * @param string $src    The item url.
+	 * @param array  $deps   Optional. An array of item handle strings on which this item depends.
+	 * @param string $ver    Optional. Version (used for cache busting).
+	 * @param mixed  $args   Optional. Custom property of the item. NOT the class property $args. Examples: $media, $in_footer.
 	 * @return bool Whether the item has been registered. True on success, false on failure.
 	 */
 	public function add( $handle, $src, $deps = array(), $ver = false, $args = null ) {
@@ -268,7 +269,6 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
-	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
 	 * @param mixed $handles Item handle and argument (string) or item handles and arguments (array of strings).
 	 * @return void
@@ -288,7 +288,6 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
-	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
 	 * @param mixed $handles Item handle and argument (string) or item handles and arguments (array of strings).
 	 */
@@ -311,7 +310,6 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
-	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
 	 * @param mixed $handles Item handle and argument (string) or item handles and arguments (array of strings).
 	 */
@@ -356,11 +354,10 @@ class WP_Dependencies {
 	 *
 	 * @access public
 	 * @since 2.1.0
-	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
 	 * @param string $handle Name of the item. Should be unique.
 	 * @param string $list   Property name of list array.
-	 * @return bool|_WP_Dependency Found, or object Item data.
+	 * @return bool Found, or object Item data.
 	 */
 	public function query( $handle, $list = 'registered' ) {
 		switch ( $list ) {
@@ -402,12 +399,15 @@ class WP_Dependencies {
 	public function set_group( $handle, $recursion, $group ) {
 		$group = (int) $group;
 
-		if ( isset( $this->groups[ $handle ] ) && $this->groups[ $handle ] <= $group ) {
+		if ( $recursion )
+			$group = min($this->group, $group);
+		else
+			$this->group = $group;
+
+		if ( isset($this->groups[$handle]) && $this->groups[$handle] <= $group )
 			return false;
-		}
 
-		$this->groups[ $handle ] = $group;
-
+		$this->groups[$handle] = $group;
 		return true;
 	}
 

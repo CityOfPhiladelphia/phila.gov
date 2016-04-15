@@ -244,7 +244,7 @@ table.fixed td {
 }
 
 #wpbody-content .postbox {
-	border: 1px solid #ddd;
+	border: 1px solid #dfdfdf;
 }
 
 #wpbody-content .postbox .hndle {
@@ -687,7 +687,7 @@ input[type="password"],
 * html .stuffbox,
 * html .stuffbox input,
 * html .stuffbox textarea {
-	border: 1px solid #ddd;
+	border: 1px solid #DFDFDF;
 }
 
 * html div.widget-liquid-left {
@@ -721,7 +721,7 @@ input[type="password"],
 }
 
 * html input {
-	border: 1px solid #ddd;
+	border: 1px solid #dfdfdf;
 }
 
 * html .edit-box {

@@ -117,15 +117,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			}
 
 			// Remove spaces from empty paragraphs.
-			// Avoid backtracking, can freeze the editor. See #35890.
-			// (This is also quite faster than using only one regex.)
-			event.content = event.content.replace( /<p>([^<>]+)<\/p>/gi, function( tag, text ) {
-				if ( /^(&nbsp;|\s|\u00a0|\ufeff)+$/i.test( text ) ) {
-					return '<p><br /></p>';
-				}
-
-				return tag;
-			});
+			event.content = event.content.replace( /<p>(?:&nbsp;|\u00a0|\uFEFF|\s)+<\/p>/gi, '<p><br /></p>' );
 		}
 	});
 
@@ -262,42 +254,43 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 		// Main section, default and additional shortcuts
 		html = html +
 			'<h2>' + __( 'Default shortcuts,' ) + ' ' + meta + '</h2>' +
-			'<table class="wp-help-th-center fixed">' +
+			'<table class="wp-help-th-center">' +
 				header +
 				table1.join('') +
 			'</table>' +
 			'<h2>' + __( 'Additional shortcuts,' ) + ' ' + access + '</h2>' +
-			'<table class="wp-help-th-center fixed">' +
+			'<table class="wp-help-th-center">' +
 				header +
 				table2.join('') +
 			'</table>';
 
-		if ( editor.plugins.wptextpattern && ( ! tinymce.Env.ie || tinymce.Env.ie > 8 ) ) {
+		if ( editor.plugins.wptextpattern ) {
 			// Text pattern section
 			html = html +
 				'<h2>' + __( 'When starting a new paragraph with one of these formatting shortcuts followed by a space, the formatting will be applied automatically. Press Backspace or Escape to undo.' ) + '</h2>' +
-				'<table class="wp-help-th-center fixed">' +
-					tr({ '*':  'Bullet list', '1.':  'Numbered list' }) +
-					tr({ '-':  'Bullet list', '1)':  'Numbered list' }) +
+				'<table>' +
+					tr({ '*':  'Bullet list' }) +
+					tr({ '-':  'Bullet list' }) +
+					tr({ '1.':  'Numbered list' }) +
+					tr({ '1)':  'Numbered list' }) +
 				'</table>';
 
 			html = html +
 				'<h2>' + __( 'The following formatting shortcuts are replaced when pressing Enter. Press Escape or the Undo button to undo.' ) + '</h2>' +
-				'<table class="wp-help-single">' +
+				'<table>' +
 					tr({ '>': 'Blockquote' }) +
 					tr({ '##': 'Heading 2' }) +
 					tr({ '###': 'Heading 3' }) +
 					tr({ '####': 'Heading 4' }) +
 					tr({ '#####': 'Heading 5' }) +
 					tr({ '######': 'Heading 6' }) +
-					tr({ '---': 'Horizontal line' }) +
 				'</table>';
 		}
 
 		// Focus management section
 		html = html +
 			'<h2>' + __( 'Focus shortcuts:' ) + '</h2>' +
-			'<table class="wp-help-single">' +
+			'<table>' +
 				tr({ 'Alt + F8':  'Inline toolbar (when an image, link or preview is selected)' }) +
 				tr({ 'Alt + F9':  'Editor menu (when enabled)' }) +
 				tr({ 'Alt + F10': 'Editor toolbar' }) +
@@ -557,22 +550,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 				wp.autosave.server.triggerSave();
 			}
 		} );
-
-		if ( window.getUserSetting( 'editor_plain_text_paste_warning' ) > 1 ) {
-			editor.settings.paste_plaintext_inform = false;
-		}
 	} );
-
-	editor.on( 'PastePlainTextToggle', function( event ) {
-		// Warn twice, then stop.
-		if ( event.state === true ) {
-			var times = parseInt( window.getUserSetting( 'editor_plain_text_paste_warning' ), 10 ) || 0;
-
-			if ( times < 2 ) {
-				window.setUserSetting( 'editor_plain_text_paste_warning', ++times );
-			}
-		}
-	});
 
 	/**
 	 * Experimental: create a floating toolbar.
@@ -766,10 +744,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 					top, left;
 
 				if ( spaceTop >= editorHeight || spaceBottom >= editorHeight ) {
-					this.scrolling = true;
-					this.hide();
-					this.scrolling = false;
-					return this;
+					return this.hide();
 				}
 
 				// Add offset in iOS to move the menu over the image, out of the way of the default iOS menu.
@@ -875,17 +850,13 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 			currentSelection = args.selection || args.element;
 
-			if ( activeToolbar && activeToolbar !== args.toolbar ) {
+			if ( activeToolbar ) {
 				activeToolbar.hide();
 			}
 
 			if ( args.toolbar ) {
-				if ( activeToolbar !== args.toolbar ) {
-					activeToolbar = args.toolbar;
-					activeToolbar.show();
-				} else {
-					activeToolbar.reposition();
-				}
+				activeToolbar = args.toolbar;
+				activeToolbar.show();
 			} else {
 				activeToolbar = false;
 			}
@@ -899,21 +870,18 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 		function hide( event ) {
 			if ( activeToolbar ) {
-				if ( activeToolbar.tempHide || event.type === 'hide' ) {
-					activeToolbar.hide();
+				activeToolbar.hide();
+
+				if ( event.type === 'hide' ) {
 					activeToolbar = false;
-				} else if ( ( event.type === 'resize' || event.type === 'scroll' ) && ! activeToolbar.blockHide ) {
+				} else if ( event.type === 'resize' || event.type === 'scroll' ) {
 					clearTimeout( timeout );
 
 					timeout = setTimeout( function() {
 						if ( activeToolbar && typeof activeToolbar.show === 'function' ) {
-							activeToolbar.scrolling = false;
 							activeToolbar.show();
 						}
 					}, 250 );
-
-					activeToolbar.scrolling = true;
-					activeToolbar.hide();
 				}
 			}
 		}

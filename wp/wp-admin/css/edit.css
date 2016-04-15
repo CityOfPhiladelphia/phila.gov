@@ -68,10 +68,16 @@
 }
 
 #titlediv #title-prompt-text {
-	color: #72777c;
+	color: #777;
 	position: absolute;
 	font-size: 1.7em;
 	padding: 11px 10px;
+}
+
+#poststuff .inside-submitbox,
+#side-sortables .inside-submitbox {
+	margin: 0 3px;
+	font-size: 11px;
 }
 
 input#link_description,
@@ -129,13 +135,17 @@ input#link_url {
 	float: left;
 }
 
+.submitbox .submit {
+	text-align: left;
+	padding: 12px 10px 10px;
+	font-size: 11px;
+	background-color: #464646;
+	color: #ccc;
+}
+
 .submitbox .submitdelete {
 	text-decoration: none;
 	padding: 1px 2px;
-}
-
-body.post-new-php .submitbox .submitdelete {
-	display: none;
 }
 
 /* @todo: do we really need this? word on the street is we don't and this
@@ -154,6 +164,10 @@ stray rule may actually be compensated for elsewhere. */
 	margin-bottom: 8px;
 	margin-right: 4px;
 	padding: 6px;
+}
+
+.inside-submitbox #post_status {
+	margin: 2px 0 2px -2px;
 }
 
 #post-status-select {
@@ -257,6 +271,11 @@ ul.category-tabs li,
 	border: 0 none;
 }
 
+#side-sortables .inside-submitbox .insidebox,
+.stuffbox .insidebox {
+	margin: 11px 0;
+}
+
 /* @todo: make this a more generic class */
 ul.category-tabs,
 ul.add-menu-item-tabs,
@@ -273,7 +292,7 @@ ul.add-menu-item-tabs li {
 ul.category-tabs li.tabs,
 ul.add-menu-item-tabs li.tabs,
 .wp-tab-active {
-	border: 1px solid #ddd;
+	border: 1px solid #dfdfdf;
 	border-bottom-color: #fdfdfd;
 	background-color: #fdfdfd;
 }
@@ -284,16 +303,10 @@ ul.wp-tab-bar li {
 	padding: 3px 5px 5px;
 }
 
-#set-post-thumbnail {
-	display: inline-block;
-	max-width: 100%;
-}
-
 #postimagediv .inside img {
 	max-width: 100%;
 	height: auto;
 	width: auto;
-	vertical-align: top;
 	background-image: -webkit-linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), -webkit-linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
 	background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
 	background-position: 0 0, 10px 10px;
@@ -354,10 +367,8 @@ form#tags-filter {
 	cursor: row-resize;
 }
 
-/*rtl:ignore*/
 .rtl #content-resize-handle {
-	background-image: url(../images/resize-rtl.gif);
-	background-position: left bottom;
+	background: transparent url(../images/resize-rtl.gif) no-repeat scroll left bottom;
 }
 
 .wp-editor-expand #content-resize-handle {
@@ -710,7 +721,7 @@ span.wp-media-buttons-icon:before {
 #postcustomstuff table {
 	margin: 0;
 	width: 100%;
-	border: 1px solid #ddd;
+	border: 1px solid #dfdfdf;
 	border-spacing: 0;
 	background-color: #f9f9f9;
 }
@@ -943,7 +954,7 @@ a.post-state-format.format-link:before {
 	max-height: 200px;
 	overflow: auto;
 	padding: 0 0.9em;
-	border: solid 1px #ddd;
+	border: solid 1px #dfdfdf;
 	background-color: #fdfdfd;
 }
 
@@ -1088,13 +1099,13 @@ p.popular-tags a {
 }
 
 .ac_results {
-	display: none;
-	margin: -1px 0 0;
 	padding: 0;
+	margin: 0;
 	list-style: none;
 	position: absolute;
 	z-index: 10000;
-	border: 1px solid #5b9dd9;
+	display: none;
+	border: 1px solid #808080;
 	background-color: #fff;
 }
 
@@ -1103,16 +1114,14 @@ p.popular-tags a {
 }
 
 .ac_results li {
-	margin: 0;
-	padding: 5px 10px;
+	padding: 2px 5px;
 	white-space: nowrap;
+	color: #101010;
 	text-align: left;
 }
 
-.ac_results .ac_over,
-.ac_over .ac_match {
-	background-color: #0073aa;
-	color: #fff;
+.ac_over {
+	background-color: #f0f0b8;
 	cursor: pointer;
 }
 
@@ -1129,23 +1138,6 @@ p.popular-tags a {
 .comment-ays th,
 .comment-ays td {
 	padding: 10px 15px;
-}
-
-.comment-ays .comment-content a[href]:after {
-	content: '(' attr( href ) ')';
-	display: inline-block;
-	padding: 0 4px;
-	color: #72777C;
-	font-size: 13px;
-}
-
-.comment-ays .comment-content p.edit-comment {
-	margin-top: 10px;
-}
-
-.comment-ays .comment-content p.edit-comment a[href]:after {
-	content: '';
-	padding: 0;
 }
 
 .comment-ays-submit .button-cancel {
@@ -1325,11 +1317,9 @@ table.links-table {
 		background-size: 11px 11px;
 	}
 
-	/*rtl:ignore*/
 	.rtl #content-resize-handle,
 	.rtl #post-body .wp_themeSkin .mceStatusbar a.mceResize {
-		background-image: url(../images/resize-rtl-2x.gif);
-		background-position: left bottom;
+		background: transparent url(../images/resize-rtl-2x.gif) no-repeat scroll right bottom;
 	}
 }
 

@@ -118,11 +118,10 @@ function translate( $text, $domain = 'default' ) {
  */
 function before_last_bar( $string ) {
 	$last_bar = strrpos( $string, '|' );
-	if ( false === $last_bar ) {
+	if ( false === $last_bar )
 		return $string;
-	} else {
+	else
 		return substr( $string, 0, $last_bar );
-	}
 }
 
 /**
@@ -389,7 +388,7 @@ function _nx($single, $plural, $number, $context, $domain = 'default') {
 }
 
 /**
- * Registers plural strings in POT file, but does not translate them.
+ * Registers plural strings in POT file, but don't translate them.
  *
  * Used when you want to keep structures with translatable plural
  * strings and use them later when the number is known.
@@ -426,7 +425,7 @@ function _n_noop( $singular, $plural, $domain = null ) {
 }
 
 /**
- * Registers plural strings with gettext context in POT file, but does not translate them.
+ * Register plural strings with gettext context in the POT file, but don't translate them.
  *
  * Used when you want to keep structures with translatable plural
  * strings and use them later when the number is known.
@@ -445,7 +444,6 @@ function _n_noop( $singular, $plural, $domain = null ) {
  *
  * @param string $singular Singular form to be localized.
  * @param string $plural   Plural form to be localized.
- * @param string $context  Context information for the translators.
  * @param string $domain   Optional. Text domain. Unique identifier for retrieving translated strings.
  *                         Default null.
  * @return array {
@@ -793,16 +791,10 @@ function load_child_theme_textdomain( $domain, $path = false ) {
  */
 function get_translations_for_domain( $domain ) {
 	global $l10n;
-	if ( isset( $l10n[ $domain ] ) ) {
-		return $l10n[ $domain ];
+	if ( !isset( $l10n[$domain] ) ) {
+		$l10n[$domain] = new NOOP_Translations;
 	}
-
-	static $noop_translations = null;
-	if ( null === $noop_translations ) {
-		$noop_translations = new NOOP_Translations;
-	}
-
-	return $noop_translations;
+	return $l10n[$domain];
 }
 
 /**
@@ -817,7 +809,7 @@ function get_translations_for_domain( $domain ) {
  */
 function is_textdomain_loaded( $domain ) {
 	global $l10n;
-	return isset( $l10n[ $domain ] );
+	return isset( $l10n[$domain] );
 }
 
 /**
@@ -899,7 +891,7 @@ function wp_get_installed_translations( $type ) {
 	$language_data = array();
 
 	foreach ( $files as $file ) {
-		if ( '.' === $file[0] || is_dir( WP_LANG_DIR . "$dir/$file" ) ) {
+		if ( '.' === $file[0] || is_dir( $file ) ) {
 			continue;
 		}
 		if ( substr( $file, -3 ) !== '.po' ) {
@@ -962,11 +954,11 @@ function wp_get_pomo_file_data( $po_file ) {
  *     @type array    $translations                 List of available translations. Default result of
  *                                                  wp_get_available_translations().
  *     @type string   $selected                     Language which should be selected. Default empty.
- *     @type bool|int $echo                         Whether to echo the generated markup. Accepts 0, 1, or their
- *                                                  boolean equivalents. Default 1.
+ *     @type bool|int $echo                         Whether to echo or return the generated markup. Accepts 0, 1, or their
+ *                                                  bool equivalents. Default 1.
  *     @type bool     $show_available_translations  Whether to show available translations. Default true.
  * }
- * @return string HTML content
+ * @return string HTML content only if 'echo' argument is 0.
  */
 function wp_dropdown_languages( $args = array() ) {
 

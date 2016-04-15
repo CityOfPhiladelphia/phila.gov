@@ -54,19 +54,81 @@ if ( !function_exists('wp_get_current_user') ) :
 /**
  * Retrieve the current user object.
  *
+ * @since 2.0.3
+ *
+ * @global WP_User $current_user
+ *
+ * @return WP_User Current user WP_User object
+ */
+function wp_get_current_user() {
+	global $current_user;
+
+	get_currentuserinfo();
+
+	return $current_user;
+}
+endif;
+
+if ( !function_exists('get_currentuserinfo') ) :
+/**
+ * Populate global variables with information about the currently logged in user.
+ *
  * Will set the current user, if the current user is not set. The current user
  * will be set to the logged-in person. If no user is logged-in, then it will
  * set the current user to 0, which is invalid and won't have any permissions.
  *
- * @since 2.0.3
+ * @since 0.71
  *
- * @see _wp_get_current_user()
- * @global WP_User $current_user Checks if the current user is set.
+ * @global WP_User $current_user Checks if the current user is set
  *
- * @return WP_User Current WP_User instance.
+ * @return false|void False on XML-RPC Request and invalid auth cookie.
  */
-function wp_get_current_user() {
-	return _wp_get_current_user();
+function get_currentuserinfo() {
+	global $current_user;
+
+	if ( ! empty( $current_user ) ) {
+		if ( $current_user instanceof WP_User )
+			return;
+
+		// Upgrade stdClass to WP_User
+		if ( is_object( $current_user ) && isset( $current_user->ID ) ) {
+			$cur_id = $current_user->ID;
+			$current_user = null;
+			wp_set_current_user( $cur_id );
+			return;
+		}
+
+		// $current_user has a junk value. Force to WP_User with ID 0.
+		$current_user = null;
+		wp_set_current_user( 0 );
+		return false;
+	}
+
+	if ( defined('XMLRPC_REQUEST') && XMLRPC_REQUEST ) {
+		wp_set_current_user( 0 );
+		return false;
+	}
+
+	/**
+	 * Filter the current user.
+	 *
+	 * The default filters use this to determine the current user from the
+	 * request's cookies, if available.
+	 *
+	 * Returning a value of false will effectively short-circuit setting
+	 * the current user.
+	 *
+	 * @since 3.9.0
+	 *
+	 * @param int|bool $user_id User ID if one has been determined, false otherwise.
+	 */
+	$user_id = apply_filters( 'determine_current_user', false );
+	if ( ! $user_id ) {
+		wp_set_current_user( 0 );
+		return false;
+	}
+
+	wp_set_current_user( $user_id );
 }
 endif;
 
@@ -479,7 +541,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 		return $phpmailer->Send();
 	} catch ( phpmailerException $e ) {
 
-		$mail_error_data = compact( 'to', 'subject', 'message', 'headers', 'attachments' );
+		$mail_error_data = compact( $to, $subject, $message, $headers, $attachments );
 
 		/**
 		 * Fires after a phpmailerException is caught.
@@ -498,40 +560,36 @@ endif;
 
 if ( !function_exists('wp_authenticate') ) :
 /**
- * Authenticate a user, confirming the login credentials are valid.
+ * Checks a user's login information and logs them in if it checks out.
  *
  * @since 2.5.0
- * @since 4.5.0 `$username` now accepts an email address.
  *
- * @param string $username User's username or email address.
- * @param string $password User's password.
- * @return WP_User|WP_Error WP_User object if the credentials are valid,
- *                          otherwise WP_Error.
+ * @param string $username User's username
+ * @param string $password User's password
+ * @return WP_User|WP_Error WP_User object if login successful, otherwise WP_Error object.
  */
 function wp_authenticate($username, $password) {
 	$username = sanitize_user($username);
 	$password = trim($password);
 
 	/**
-	 * Filter whether a set of user login credentials are valid.
+	 * Filter the user to authenticate.
 	 *
-	 * A WP_User object is returned if the credentials authenticate a user.
-	 * WP_Error or null otherwise.
+	 * If a non-null value is passed, the filter will effectively short-circuit
+	 * authentication, returning an error instead.
 	 *
 	 * @since 2.8.0
-	 * @since 4.5.0 `$username` now accepts an email address.
 	 *
-	 * @param null|WP_User|WP_Error $user     WP_User if the user is authenticated.
-	 *                                        WP_Error or null otherwise.
-	 * @param string                $username Username or email address.
-	 * @param string                $password User password
+	 * @param null|WP_User $user     User to authenticate.
+	 * @param string       $username User login.
+	 * @param string       $password User password
 	 */
 	$user = apply_filters( 'authenticate', null, $username, $password );
 
 	if ( $user == null ) {
 		// TODO what should the error message be? (Or would these even happen?)
 		// Only needed if all authentication handlers fail to return anything.
-		$user = new WP_Error( 'authentication_failed', __( '<strong>ERROR</strong>: Invalid username, email address or incorrect password.' ) );
+		$user = new WP_Error('authentication_failed', __('<strong>ERROR</strong>: Invalid username or incorrect password.'));
 	}
 
 	$ignore_codes = array('empty_username', 'empty_password');
@@ -541,9 +599,8 @@ function wp_authenticate($username, $password) {
 		 * Fires after a user login has failed.
 		 *
 		 * @since 2.5.0
-		 * @since 4.5.0 The value of `$username` can now be an email address.
 		 *
-		 * @param string $username Username or email address.
+		 * @param string $username User login.
 		 */
 		do_action( 'wp_login_failed', $username );
 	}
@@ -784,7 +841,7 @@ endif;
 
 if ( !function_exists('wp_set_auth_cookie') ) :
 /**
- * Log in a user by setting authentication cookies.
+ * Sets the authentication cookies based on user ID.
  *
  * The $remember parameter increases the time that the cookie will be kept. The
  * default the cookie is kept without remembering is two days. When $remember is
@@ -827,7 +884,7 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 		$secure = is_ssl();
 	}
 
-	// Front-end cookie is secure when the auth cookie is secure and the site's home URL is forced HTTPS.
+	// Frontend cookie is secure when the auth cookie is secure and the site's home URL is forced HTTPS.
 	$secure_logged_in_cookie = $secure && 'https' === parse_url( get_option( 'home' ), PHP_URL_SCHEME );
 
 	/**
@@ -1180,8 +1237,7 @@ if ( !function_exists('wp_sanitize_redirect') ) :
  *
  * @since 2.3.0
  *
- * @param string $location The path to redirect to.
- * @return string Redirect-sanitized URL.
+ * @return string redirect-sanitized URL
  **/
 function wp_sanitize_redirect($location) {
 	$regex = '/
@@ -1213,9 +1269,6 @@ function wp_sanitize_redirect($location) {
  * @access private
  *
  * @see wp_sanitize_redirect()
- *
- * @param array $matches RegEx matches against the redirect location.
- * @return string URL-encoded version of the first RegEx match.
  */
 function _wp_sanitize_utf8_in_redirect( $matches ) {
 	return urlencode( $matches[0] );
@@ -1235,9 +1288,6 @@ if ( !function_exists('wp_safe_redirect') ) :
  * but only used in a few places.
  *
  * @since 2.3.0
- *
- * @param string $location The path to redirect to.
- * @param int    $status   Status code to use.
  */
 function wp_safe_redirect($location, $status = 302) {
 
@@ -1299,7 +1349,7 @@ function wp_validate_redirect($location, $default = '') {
 		return $default;
 	}
 
-	// Reject malformed components parse_url() can return on odd inputs.
+	// Reject malformed components parse_url() can return on odd inputs
 	foreach ( array( 'user', 'pass', 'host' ) as $component ) {
 		if ( isset( $lp[ $component ] ) && strpbrk( $lp[ $component ], ':/?#@' ) ) {
 			return $default;
@@ -1456,11 +1506,11 @@ function wp_notify_postauthor( $comment_id, $deprecated = null ) {
 
 	if ( user_can( $post->post_author, 'edit_comment', $comment->comment_ID ) ) {
 		if ( EMPTY_TRASH_DAYS ) {
-			$notify_message .= sprintf( __( 'Trash it: %s' ), admin_url( "comment.php?action=trash&c={$comment->comment_ID}#wpbody-content" ) ) . "\r\n";
+			$notify_message .= sprintf( __('Trash it: %s'), admin_url("comment.php?action=trash&c={$comment->comment_ID}") ) . "\r\n";
 		} else {
-			$notify_message .= sprintf( __( 'Delete it: %s' ), admin_url( "comment.php?action=delete&c={$comment->comment_ID}#wpbody-content" ) ) . "\r\n";
+			$notify_message .= sprintf( __('Delete it: %s'), admin_url("comment.php?action=delete&c={$comment->comment_ID}") ) . "\r\n";
 		}
-		$notify_message .= sprintf( __( 'Spam it: %s' ), admin_url( "comment.php?action=spam&c={$comment->comment_ID}#wpbody-content" ) ) . "\r\n";
+		$notify_message .= sprintf( __('Spam it: %s'), admin_url("comment.php?action=spam&c={$comment->comment_ID}") ) . "\r\n";
 	}
 
 	$wp_email = 'wordpress@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
@@ -1597,18 +1647,16 @@ function wp_notify_moderator($comment_id) {
 			break;
 	}
 
-	$notify_message .= sprintf( __( 'Approve it: %s' ), admin_url( "comment.php?action=approve&c={$comment_id}#wpbody-content" ) ) . "\r\n";
-
+	$notify_message .= sprintf( __('Approve it: %s'),  admin_url("comment.php?action=approve&c=$comment_id") ) . "\r\n";
 	if ( EMPTY_TRASH_DAYS )
-		$notify_message .= sprintf( __( 'Trash it: %s' ), admin_url( "comment.php?action=trash&c={$comment_id}#wpbody-content" ) ) . "\r\n";
+		$notify_message .= sprintf( __('Trash it: %s'), admin_url("comment.php?action=trash&c=$comment_id") ) . "\r\n";
 	else
-		$notify_message .= sprintf( __( 'Delete it: %s' ), admin_url( "comment.php?action=delete&c={$comment_id}#wpbody-content" ) ) . "\r\n";
-
-	$notify_message .= sprintf( __( 'Spam it: %s' ), admin_url( "comment.php?action=spam&c={$comment_id}#wpbody-content" ) ) . "\r\n";
+		$notify_message .= sprintf( __('Delete it: %s'), admin_url("comment.php?action=delete&c=$comment_id") ) . "\r\n";
+	$notify_message .= sprintf( __('Spam it: %s'), admin_url("comment.php?action=spam&c=$comment_id") ) . "\r\n";
 
 	$notify_message .= sprintf( _n('Currently %s comment is waiting for approval. Please visit the moderation panel:',
  		'Currently %s comments are waiting for approval. Please visit the moderation panel:', $comments_waiting), number_format_i18n($comments_waiting) ) . "\r\n";
-	$notify_message .= admin_url( "edit-comments.php?comment_status=moderated#wpbody-content" ) . "\r\n";
+	$notify_message .= admin_url("edit-comments.php?comment_status=moderated") . "\r\n";
 
 	$subject = sprintf( __('[%1$s] Please moderate: "%2$s"'), $blogname, $post->post_title );
 	$message_headers = '';
@@ -1977,8 +2025,7 @@ if ( !function_exists('wp_hash') ) :
  *
  * @since 2.0.3
  *
- * @param string $data   Plain text to hash
- * @param string $scheme Authentication scheme (auth, secure_auth, logged_in, nonce)
+ * @param string $data Plain text to hash
  * @return string Hash of $data
  */
 function wp_hash($data, $scheme = 'auth') {
@@ -2033,9 +2080,8 @@ if ( !function_exists('wp_check_password') ) :
  *	against the $hash + $password
  * @uses PasswordHash::CheckPassword
  *
- * @param string     $password Plaintext user's password
- * @param string     $hash     Hash of the user's password to check against.
- * @param string|int $user_id  Optional. User ID.
+ * @param string $password Plaintext user's password
+ * @param string $hash     Hash of the user's password to check against.
  * @return bool False, if the $password does not match the hashed password
  */
 function wp_check_password($password, $hash, $user_id = '') {
@@ -2055,10 +2101,10 @@ function wp_check_password($password, $hash, $user_id = '') {
 		 *
 		 * @since 2.5.0
 		 *
-		 * @param bool       $check    Whether the passwords match.
-		 * @param string     $password The plaintext password.
-		 * @param string     $hash     The hashed password.
-		 * @param string|int $user_id  User ID. Can be empty.
+		 * @param bool   $check    Whether the passwords match.
+		 * @param string $password The plaintext password.
+		 * @param string $hash     The hashed password.
+		 * @param int    $user_id  User ID.
 		 */
 		return apply_filters( 'check_password', $check, $password, $hash, $user_id );
 	}
@@ -2144,7 +2190,7 @@ function wp_rand( $min = 0, $max = 0 ) {
 	if ( $use_random_int_functionality ) {
 		try {
 			$_max = ( 0 != $max ) ? $max : $max_random_number;
-			// wp_rand() can accept arguments in either order, PHP cannot.
+			// wp_rand() can accept arguements in either order, PHP cannot.
 			$_max = max( $min, $_max );
 			$_min = min( $min, $_max );
 			$val = random_int( $_min, $_max );
@@ -2296,7 +2342,7 @@ function get_avatar( $id_or_email, $size = 96, $default = '', $alt = '', $args =
 	 * Filter whether to retrieve the avatar URL early.
 	 *
 	 * Passing a non-null value will effectively short-circuit get_avatar(), passing
-	 * the value through the {@see 'get_avatar'} filter and returning early.
+	 * the value through the {@see 'pre_get_avatar'} filter and returning early.
 	 *
 	 * @since 4.2.0
 	 *

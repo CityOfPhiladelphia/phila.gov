@@ -23,11 +23,7 @@ class WP_Widget_Search extends WP_Widget {
 	 * @access public
 	 */
 	public function __construct() {
-		$widget_ops = array(
-			'classname' => 'widget_search',
-			'description' => __( 'A search form for your site.' ),
-			'customize_selective_refresh' => true,
-		);
+		$widget_ops = array('classname' => 'widget_search', 'description' => __( "A search form for your site.") );
 		parent::__construct( 'search', _x( 'Search', 'Search widget' ), $widget_ops );
 	}
 
