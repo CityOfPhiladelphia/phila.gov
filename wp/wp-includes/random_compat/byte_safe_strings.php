@@ -50,10 +50,8 @@ if (!function_exists('RandomCompat_strlen')) {
                     'RandomCompat_strlen() expects a string'
                 );
             }
-
             return mb_strlen($binary_string, '8bit');
         }
-
     } else {
         /**
          * strlen() implementation that isn't brittle to mbstring.func_overload
@@ -79,10 +77,8 @@ if (!function_exists('RandomCompat_strlen')) {
 }
 
 if (!function_exists('RandomCompat_substr')) {
-
     if (
-        defined('MB_OVERLOAD_STRING')
-        &&
+        defined('MB_OVERLOAD_STRING') &&
         ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING
     ) {
         /**
@@ -106,13 +102,11 @@ if (!function_exists('RandomCompat_substr')) {
                     'RandomCompat_substr(): First argument should be a string'
                 );
             }
-
             if (!is_int($start)) {
                 throw new TypeError(
                     'RandomCompat_substr(): Second argument should be an integer'
                 );
             }
-
             if ($length === null) {
                 /**
                  * mb_substr($str, 0, NULL, '8bit') returns an empty string on
@@ -124,12 +118,9 @@ if (!function_exists('RandomCompat_substr')) {
                     'RandomCompat_substr(): Third argument should be an integer, or omitted'
                 );
             }
-
             return mb_substr($binary_string, $start, $length, '8bit');
         }
-
     } else {
-
         /**
          * substr() implementation that isn't brittle to mbstring.func_overload
          *
@@ -150,23 +141,19 @@ if (!function_exists('RandomCompat_substr')) {
                     'RandomCompat_substr(): First argument should be a string'
                 );
             }
-
             if (!is_int($start)) {
                 throw new TypeError(
                     'RandomCompat_substr(): Second argument should be an integer'
                 );
             }
-
             if ($length !== null) {
                 if (!is_int($length)) {
                     throw new TypeError(
                         'RandomCompat_substr(): Third argument should be an integer, or omitted'
                     );
                 }
-
                 return substr($binary_string, $start, $length);
             }
-
             return substr($binary_string, $start);
         }
     }

@@ -39,7 +39,7 @@ a:focus {
 }
 
 h1, h2 {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #dedede;
 	clear: both;
 	color: #666;
 	font-size: 24px;
@@ -97,7 +97,7 @@ label {
 	background-size: 84px;
 	background-position: center top;
 	background-repeat: no-repeat;
-	color: #444; /* same as login.css */
+	color: #999;
 	height: 84px;
 	font-size: 20px;
 	font-weight: normal;
@@ -126,12 +126,11 @@ label {
 }
 .language-chooser.wp-core-ui .step .button.button-large {
 	height: 36px;
-	font-size: 14px;
-	line-height: 33px;
 	vertical-align: middle;
+	font-size: 14px;
 }
 textarea {
-	border: 1px solid #ddd;
+	border: 1px solid #dfdfdf;
 	font-family: "Open Sans", sans-serif;
 	width: 100%;
 	-webkit-box-sizing: border-box;
@@ -288,9 +287,10 @@ submit {
 }
 
 .message {
-	border-left: 4px solid #dc3232;
-	padding: .7em .6em;
-	background-color: #fbeaea;
+	border: 1px solid #c00;
+	padding: 0.5em 0.7em;
+	margin: 5px 0 15px;
+	background-color: #ffebe8;
 }
 
 /* rtl:ignore */
@@ -439,8 +439,9 @@ body.language-chooser {
 
 .step .spinner {
 	display: inline-block;
-	vertical-align: middle;
+	margin-top: 8px;
 	margin-right: 15px;
+	vertical-align: top;
 }
 
 .button-secondary.hide-if-no-js,

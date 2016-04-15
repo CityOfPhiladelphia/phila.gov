@@ -22,11 +22,6 @@
 	-webkit-overflow-scrolling: touch;
 }
 
-.media-modal legend,
-.media-modal label {
-	font-size: 13px;
-}
-
 .media-frame input,
 .media-frame textarea {
 	padding: 6px 8px;
@@ -84,7 +79,7 @@
 	font-size: 12px;
 	border-width: 1px;
 	border-style: solid;
-	border-color: #ddd;
+	border-color: #dfdfdf;
 }
 
 .media-frame input[type="text"]:focus,
@@ -114,17 +109,8 @@
 	-webkit-appearance: textfield;
 }
 
-.media-frame ::-webkit-input-placeholder {
-	color: #72777c;
-}
-
-.media-frame ::-moz-placeholder {
-	color: #72777c;
-	opacity: 1;
-}
-
-.media-frame :-ms-input-placeholder {
-	color: #72777c;
+.media-frame :-moz-placeholder {
+   color: #a9a9a9;
 }
 
 .media-frame .hidden {
@@ -271,7 +257,7 @@
 	z-index: 100;
 	height: 60px;
 	padding: 0 16px;
-	border: 0 solid #ddd;
+	border: 0 solid #dfdfdf;
 	overflow: hidden;
 }
 
@@ -408,7 +394,7 @@
 	color: #666;
 }
 
-.compat-item label span {
+.compat-item label span  {
 	text-align: right;
 }
 
@@ -722,7 +708,7 @@
 }
 
 .media-frame.hide-router .media-frame-title {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #dfdfdf;
 	-webkit-box-shadow: 0 4px 4px -4px rgba( 0, 0, 0, 0.1 );
 	box-shadow: 0 4px 4px -4px rgba( 0, 0, 0, 0.1 );
 }
@@ -806,7 +792,7 @@
 	margin-top: 11px;
 	padding: 4px;
 	font-size: 13px;
-	color: #444;
+	color: #464646;
 	font-family: "Open Sans", sans-serif;
 	-webkit-appearance: none;
 }
@@ -831,7 +817,7 @@
 	float: left;
 	padding: 8px;
 	margin: 0;
-	color: #444;
+	color: #464646;
 	cursor: pointer;
 	list-style: none;
 	text-align: center;
@@ -1141,7 +1127,7 @@
 
 .uploader-inline .close:before {
 	font: normal 30px/50px dashicons !important;
-	color: #72777c;
+	color: #777;
 	display: inline-block;
 	content: "\f335";
 	font-weight: 300;
@@ -1176,7 +1162,7 @@
 	margin: 10px auto;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
-	background: #ddd;
+	background: #dfdfdf;
 	background: rgba( 0, 0, 0, 0.1 );
 }
 
@@ -1235,7 +1221,7 @@
 }
 
 .media-uploader-status .upload-count {
-	color: #444;
+	color: #464646;
 }
 
 .media-uploader-status .upload-dismiss-errors,
@@ -1373,7 +1359,7 @@
 
 .uploader-inline .has-upload-message .upload-instructions {
 	font-size: 14px;
-	color: #444;
+	color: #464646;
 	font-weight: normal;
 }
 
@@ -1446,7 +1432,7 @@
 	padding: 1px 8px;
 	margin: 1px 8px 1px -8px;
 	line-height: 16px;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #dfdfdf;
 	color: #0073aa;
 }
 
@@ -1617,7 +1603,7 @@
 
 .attachment-info .filename {
 	font-weight: bold;
-	color: #444;
+	color: #464646;
 	word-wrap: break-word;
 }
 
@@ -1735,6 +1721,13 @@
 	position: static;
 }
 
+.media-modal .imgedit-wait {
+	height: auto !important;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
 .media-modal .imgedit-wrap .imgedit-panel-content {
 	padding: 16px;
 	position: absolute;
@@ -1748,7 +1741,7 @@
 .media-modal .imgedit-wrap .imgedit-settings {
 	background: #f3f3f3;
 	border-left: 1px solid #ddd;
-	padding: 20px 16px 16px;
+	padding: 0 16px 16px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1776,73 +1769,33 @@
 	padding: 0;
 }
 
-.media-modal .imgedit-group-top {
-	margin: 0;
-}
-
 .media-modal .imgedit-group-top h3, /* Back-compat for pre-4.4 */
-.media-modal .imgedit-group-top h2,
-.media-modal .imgedit-group-top h2 .button-link {
-	display: inline-block;
+.media-modal .imgedit-group-top h2 {
 	text-transform: uppercase;
 	font-size: 12px;
 	color: #666;
 	margin: 0;
-	margin-top: 3px;
+	margin-top: 24px;
 }
 
 .media-modal .imgedit-group-top h3 a, /* Back-compat for pre-4.4 */
-.media-modal .imgedit-group-top h2 a,
-.media-modal .imgedit-group-top h2 .button-link {
+.media-modal .imgedit-group-top h2 a {
 	text-decoration: none;
 	color: #666;
 }
 
-/* higher specificity than media.css */
-.wp-core-ui.media-modal .image-editor .imgedit-help-toggle,
-.wp-core-ui.media-modal .image-editor .imgedit-help-toggle:hover,
-.wp-core-ui.media-modal .image-editor .imgedit-help-toggle:active {
-	border: 1px solid transparent;
-	margin: 0;
-	padding: 0;
-	background: transparent;
-	color: #0074a2;
-	font-size: 20px;
-	line-height: 1;
-	cursor: pointer;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.wp-core-ui.media-modal .image-editor .imgedit-help-toggle:focus {
-	color: #0074a2;
-	border-color: #5b9dd9;
-	outline: none;
-	-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
-	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
-}
-
-.wp-core-ui.media-modal .imgedit-group-top .dashicons-arrow-down.imgedit-help-toggle {
-	margin-top: -3px;
-}
-
-.wp-core-ui.media-modal .image-editor h3 .imgedit-help-toggle {
+.media-modal .imgedit-help-toggle {
 	margin-top: -2px;
+	cursor: pointer;
+	color: #666;
 }
 
 .media-modal .imgedit-help-toggled span.dashicons:before {
 	content: "\f142";
 }
 
-.media-modal .imgedit-thumbnail-preview {
-	margin: 10px 8px 0 0;
-}
-
-.imgedit-thumbnail-preview-caption {
-	display: block;
+.media-modal .imgedit-group img {
+	margin-top: 5px;
 }
 
 .media-modal .imgedit-wrap div.updated {
@@ -2015,7 +1968,7 @@
 }
 
 .image-details .custom-size span small {
-	color: #555d66; /* #f3f3f3 background */
+	color: #999;
 	font-size: inherit;
 }
 
@@ -2616,7 +2569,7 @@
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 120dpi) {
 
-	.wp-core-ui .media-modal-icon {
+	.media-modal-icon {
 		background-image: url(../images/uploader-icons-2x.png);
 		-webkit-background-size: 134px 15px;
 		background-size: 134px 15px;

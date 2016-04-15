@@ -237,8 +237,7 @@ final class WP_Term {
 	 * @since 4.4.0
 	 * @access public
 	 *
-	 * @param string $key Property to get.
-	 * @return mixed Property value.
+	 * @return mixed
 	 */
 	public function __get( $key ) {
 		switch ( $key ) {

@@ -34,9 +34,8 @@ class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
 	 * @access public
 	 */
 	public function render_screen_options() {
-		// Adds the screen options.
-		require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
-		add_filter( 'manage_nav-menus_columns', 'wp_nav_menu_manage_columns' );
+		// Essentially adds the screen options.
+		add_filter( 'manage_nav-menus_columns', array( $this, 'wp_nav_menu_manage_columns' ) );
 
 		// Display screen options.
 		$screen = WP_Screen::get( 'nav-menus.php' );
@@ -49,12 +48,20 @@ class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
 	 * Link title attribute added as it's a relatively advanced concept for new users.
 	 *
 	 * @since 4.3.0
-	 * @deprecated 4.5.0 Deprecated in favor of wp_nav_menu_manage_columns().
+	 * @access public
+	 *
+	 * @return array The advanced menu properties.
 	 */
 	public function wp_nav_menu_manage_columns() {
-		_deprecated_function( __METHOD__, '4.5.0', 'wp_nav_menu_manage_columns' );
-		require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
-		return wp_nav_menu_manage_columns();
+		return array(
+			'_title'      => __( 'Show advanced menu properties' ),
+			'cb'          => '<input type="checkbox" />',
+			'link-target' => __( 'Link Target' ),
+			'attr-title'  => __( 'Title Attribute' ),
+			'css-classes' => __( 'CSS Classes' ),
+			'xfn'         => __( 'Link Relationship (XFN)' ),
+			'description' => __( 'Description' ),
+		);
 	}
 
 	/**
@@ -77,7 +84,7 @@ class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
 			<div class="accordion-section-title">
 				<span class="preview-notice">
 					<?php
-					/* translators: %s: the site/panel title in the Customizer */
+					/* Translators: %s is the site/panel title in the Customizer. */
 					printf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
 					?>
 				</span>

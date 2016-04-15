@@ -55,17 +55,15 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
 
-		if ( ! ( $this instanceof WP_Customize_Image_Control ) ) {
-			$this->button_labels = wp_parse_args( $this->button_labels, array(
-				'select'       => __( 'Select File' ),
-				'change'       => __( 'Change File' ),
-				'default'      => __( 'Default' ),
-				'remove'       => __( 'Remove' ),
-				'placeholder'  => __( 'No file selected' ),
-				'frame_title'  => __( 'Select File' ),
-				'frame_button' => __( 'Choose File' ),
-			) );
-		}
+		$this->button_labels = array(
+			'select'       => __( 'Select File' ),
+			'change'       => __( 'Change File' ),
+			'default'      => __( 'Default' ),
+			'remove'       => __( 'Remove' ),
+			'placeholder'  => __( 'No file selected' ),
+			'frame_title'  => __( 'Select File' ),
+			'frame_button' => __( 'Choose File' ),
+		);
 	}
 
 	/**
@@ -195,8 +193,8 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 			</div>
 			<div class="actions">
 				<# if ( data.canUpload ) { #>
-				<button type="button" class="button remove-button">{{ data.button_labels.remove }}</button>
-				<button type="button" class="button upload-button control-focus" id="{{ data.settings['default'] }}-button">{{ data.button_labels.change }}</button>
+				<button type="button" class="button remove-button"><?php echo $this->button_labels['remove']; ?></button>
+				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button"><?php echo $this->button_labels['change']; ?></button>
 				<div style="clear:both"></div>
 				<# } #>
 			</div>
@@ -206,7 +204,7 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 					<div class="placeholder">
 						<div class="inner">
 							<span>
-								{{ data.button_labels.placeholder }}
+								<?php echo $this->button_labels['placeholder']; ?>
 							</span>
 						</div>
 					</div>
@@ -214,10 +212,10 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 			</div>
 			<div class="actions">
 				<# if ( data.defaultAttachment ) { #>
-					<button type="button" class="button default-button">{{ data.button_labels.default }}</button>
+					<button type="button" class="button default-button"><?php echo $this->button_labels['default']; ?></button>
 				<# } #>
 				<# if ( data.canUpload ) { #>
-				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button">{{ data.button_labels.select }}</button>
+				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button"><?php echo $this->button_labels['select']; ?></button>
 				<# } #>
 				<div style="clear:both"></div>
 			</div>

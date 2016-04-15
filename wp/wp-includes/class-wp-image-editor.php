@@ -17,12 +17,10 @@ abstract class WP_Image_Editor {
 	protected $mime_type = null;
 	protected $default_mime_type = 'image/jpeg';
 	protected $quality = false;
-	protected $default_quality = 82;
+	protected $default_quality = 90;
 
 	/**
 	 * Each instance handles a single file.
-	 *
-	 * @param string $file Path to the file to load.
 	 */
 	public function __construct( $file ) {
 		$this->file = $file;
