@@ -15,3 +15,14 @@
 #ui-datepicker-div {
   z-index: 100000 !important;
 }
+
+#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-select-wrapper,
+#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-text-wrapper,
+#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-textarea-wrapper {
+  display: none;
+}
+#phila_module_row_1 .rwmb-custom_html-wrapper {
+  padding-bottom: 10px;
+  display:block;
+  border-bottom:1px solid #e5e5e5;
+}
