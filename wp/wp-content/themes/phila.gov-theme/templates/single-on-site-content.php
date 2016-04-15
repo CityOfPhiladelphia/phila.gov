@@ -26,17 +26,17 @@
               // Set module row vars
               $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1');
               if (!empty($row_one_col_one_module)){
-                $row_one_col_one_type = $row_one_col_one_module[phila_module_row_1_col_1_type];
-                $row_one_col_one_post_style = $row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_post_style];
-                $row_one_col_one_text_title = $row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_texttitle];
-                $row_one_col_one_textarea = $row_one_col_one_module[module_row_1_col_1_options][phila_module_row_1_col_1_textarea];
+                $row_one_col_one_type = $row_one_col_one_module['phila_module_row_1_col_1_type'];
+                $row_one_col_one_post_style = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_post_style'];
+                $row_one_col_one_text_title = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'];
+                $row_one_col_one_textarea = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_textarea'];
               }
               $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
               if (!empty($row_one_col_two_module)){
-                $row_one_col_two_type = $row_one_col_two_module[phila_module_row_1_col_2_type];
-                $row_one_col_two_post_style = $row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_post_style];
-                $row_one_col_two_text_title = $row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_texttitle];
-                $row_one_col_two_textarea = $row_one_col_two_module[module_row_1_col_2_options][phila_module_row_1_col_2_textarea];
+                $row_one_col_two_type = $row_one_col_two_module['phila_module_row_1_col_2_type'];
+                $row_one_col_two_post_style = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_post_style'];
+                $row_one_col_two_text_title = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_texttitle'];
+                $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
               }
         ?>
         <!-- If custom markup append_before_wysiwyg is present print it -->
@@ -64,7 +64,7 @@
         <?php endif; ?>
       <?php endif; ?>
       <!-- Begin Row One MetaBox Modules -->
-      <?php if ( ( !$row_one_col_one_type == '') && (!$row_one_col_two_type  == '' ) ): ?>
+      <?php if ( ( !empty($row_one_col_one_module ) ) && (!empty($row_one_col_one_module ) ) ): ?>
         <section>
           <div class="row equal-height">
             <!-- Begin Column One -->
