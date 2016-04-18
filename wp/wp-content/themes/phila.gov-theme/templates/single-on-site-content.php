@@ -68,7 +68,7 @@
       <?php endif; ?>
       <!-- Begin Row One MetaBox Modules -->
       <?php if ( ( !empty($row_one_col_one_module ) ) && (!empty($row_one_col_one_module ) ) ): ?>
-        <section>
+        <section class="department-module-row-one">
           <div class="row equal-height">
             <!-- Begin Column One -->
             <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
