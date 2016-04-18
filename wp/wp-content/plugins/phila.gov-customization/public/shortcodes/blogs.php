@@ -92,12 +92,11 @@ function latest_posts_shortcode($atts) {
 
     endwhile;
 
-    $output .= '</div><a class="see-all-right float-right" href="/posts/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
-
     if ( is_flag( 'list', $atts ) ) {
       $output .= '</ul>';
-      $output .= '</div></div>';
     }
+
+    $output .= '</div><a class="see-all-right float-right" href="/posts/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
 
     }else {
       $output .= __( 'Please enter at least one post.', 'phila.gov' );
