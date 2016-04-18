@@ -78,12 +78,6 @@ jQuery(document).ready(function($){
           $('#hero-header').toggle();
           $('#hero-header').find('input, select, .rwmb-file-input-select').prop('disabled', false);
         }
-        $( '#phila_hero_header_title' ).rules( 'add', {
-          maxlength: 35
-        });
-        $( '#phila_hero_header_body_copy' ).rules( 'add', {
-          maxlength: 140
-        });
       }
       // Check whether author has access to the module row options
       if ( $( '#phila_module_row_1' ).length ){
