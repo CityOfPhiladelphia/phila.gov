@@ -1,46 +1,5 @@
 [
     {
-        "name": "cbschuld/browser.php",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/cbschuld/Browser.php.git",
-            "reference": "45f4e96082c1b63357088f2204cc544574c713cf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/cbschuld/Browser.php/zipball/45f4e96082c1b63357088f2204cc544574c713cf",
-            "reference": "45f4e96082c1b63357088f2204cc544574c713cf",
-            "shasum": ""
-        },
-        "time": "2015-02-09 13:43:55",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "files": [
-                "lib/Browser.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Chris Schuld",
-                "email": "chris@chrisschuld.com",
-                "homepage": "http://chrisschuld.com"
-            }
-        ],
-        "homepage": "http://chrisschuld.com/projects/browser-php-detecting-a-users-browser-from-php.html",
-        "keywords": [
-            "browser",
-            "detection",
-            "user agent"
-        ]
-    },
-    {
         "name": "erusev/parsedown",
         "version": "1.6.0",
         "version_normalized": "1.6.0.0",
@@ -80,40 +39,6 @@
             "markdown",
             "parser"
         ]
-    },
-    {
-        "name": "xrstf/composer-php52",
-        "version": "v1.0.19",
-        "version_normalized": "1.0.19.0",
-        "source": {
-            "type": "hg",
-            "url": "https://bitbucket.org/xrstf/composer-php52",
-            "reference": "9a4a9c46d0347b39bf9159815301dc66fc25324e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://bitbucket.org/xrstf/composer-php52/get/9a4a9c46d0347b39bf9159815301dc66fc25324e.zip",
-            "reference": "9a4a9c46d0347b39bf9159815301dc66fc25324e",
-            "shasum": ""
-        },
-        "time": "2015-10-01 14:11:58",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-default": "1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "xrstf\\Composer52": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "homepage": "http://www.xrstf.de/"
     },
     {
         "name": "nesbot/carbon",
@@ -361,8 +286,8 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "v1.1.1",
+        "version_normalized": "1.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -422,17 +347,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v3.0.2",
-        "version_normalized": "3.0.2.0",
+        "version": "v3.0.4",
+        "version_normalized": "3.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91"
+            "reference": "f7a07af51ea067745a521dab1e3152044a2fb1f2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91",
-            "reference": "2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/f7a07af51ea067745a521dab1e3152044a2fb1f2",
+            "reference": "f7a07af51ea067745a521dab1e3152044a2fb1f2",
             "shasum": ""
         },
         "require": {
@@ -453,7 +378,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2016-02-02 13:44:19",
+        "time": "2016-03-25 01:41:20",
         "type": "library",
         "extra": {
             "branch-alias": {
