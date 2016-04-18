@@ -88,7 +88,6 @@ jQuery(document).ready(function($){
       // Check whether author has access to the module row options
       if ( $( '#phila_module_row_1' ).length ){
         if( $('#phila_module_row_1_admin_only').attr('checked') ){
-          alert('checked');
           $('#phila_module_row_1').toggle();
           $('#phila_module_row_1').find('input, select, .rwmb-file-input-select, .rwmb-select').prop('disabled', false);
         }
