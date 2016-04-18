@@ -1,9 +1,9 @@
 === Simple Calendar - Google Calendar Plugin ===
 Contributors: moonstonemedia, pderksen, nickyoung87, nekojira, rosshanney
 Tags: calendar, calendars, calendar manager, custom calendar, custom calendars, event, events, events feed, google calendar, google
-Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 3.0.14
+Requires at least: 4.1
+Tested up to: 4.5
+Stable tag: 3.0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,22 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.0.16 - March 30, 2016 =
+
+* Fix: Multiple events at the same time on a grouped calendar should now show correctly.
+* Fix: PHP notice when adding a new calendar should no longer appear.
+* Fix: Issues with Carbon fatal error should not happen.
+
+= 3.0.15 - March 19, 2016 =
+
+* Fix: Timezone issues with event source option should now work correctly.
+* Fix: Tooltips should no longer be empty after a resize.
+* Tweak: Removed event source option for grouped calendars.
+* Tweak: Allow other plugin or theme shortcodes to be used in the event template.
+* Dev: Removed Browser.php from composer so we can use it standalone with customizations.
+* Dev: Constructor for Browser.php now compatible with future versions of PHP.
+* Dev: Removed PHP 5.2 compatibility code.
 
 = 3.0.14 - February 10, 2016 =
 
