@@ -296,6 +296,125 @@ function phila_register_meta_boxes( $meta_boxes ){
    ),
  );
 
+ // First row of modules - recent posts and custom markup
+ $meta_boxes[] = array(
+   'id'       => $prefix . 'module_row_1',
+   'title'    => 'Module Row 1',
+   'pages'    => array( 'department_page' ),
+   'context'  => 'normal',
+   'priority' => 'low',
+
+   'fields' => array(
+     array(
+      'name' => 'Description',
+      'id'   => $prefix . 'module_row_1_description',
+      'type' => 'custom_html',
+      'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
+     ),
+     array(
+       'name'  => 'Non-Admin Access',
+       'id'    => $prefix . 'module_row_1_admin_only',
+       'class' => 'phila-access-control',
+       'type'  => 'checkbox',
+       'desc'  => 'Allow non-admins to edit Module Row 1',
+     ),
+     array(
+       'type' => 'divider'
+     ),
+     array(
+      'id' => 'module_row_1_col_1',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+         array(
+          'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+          'id'   => $prefix . 'module_row_1_col_1_type',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
+          'type' => 'select',
+          'options' => array(
+            $prefix . 'module_row_1_col_1_blog_posts' => 'Blog Posts',
+            $prefix . 'module_row_1_col_1_custom_text' => 'Custom Text',
+            ),
+          ),
+          array(
+            'id' => 'module_row_1_col_1_options',
+            'type' => 'group',
+            // List of sub-fields
+            'fields' => array(
+              array(
+               'name' => 'Blog Post Style',
+               'id'   => $prefix . 'module_row_1_col_1_post_style',
+               'desc'  => 'Recent posts are displayed as "Cards" by default.',
+               'type' => 'select',
+               'options' => array(
+                 $prefix . 'module_row_1_col_1_post_style_cards' => 'Card',
+                 $prefix . 'module_row_1_col_1_post_style_list' => 'List',
+               ),
+             ),
+             array(
+              'name' => 'Custom Text Title',
+              'id'   => $prefix . 'module_row_1_col_1_texttitle',
+              'type' => 'text',
+             ),
+             array(
+              'name' => 'Custom Text Content',
+              'id'   => $prefix . 'module_row_1_col_1_textarea',
+              'type' => 'textarea',
+             ),
+            ),
+          ),
+        ),
+      ),
+      array(
+        'type' => 'divider'
+      ),
+     array(
+      'id' => 'module_row_1_col_2',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+         array(
+          'name' => 'Column 2 <br/><small>(1/3 column)</small>',
+          'id'   => $prefix . 'module_row_1_col_2_type',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
+          'type' => 'select',
+          'options' => array(
+            $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
+            $prefix . 'module_row_1_col_2_custom_text' => 'Custom Text',
+          ),
+        ),
+        array(
+          'id' => 'module_row_1_col_2_options',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+             'name' => 'Blog Post Style',
+             'id'   => $prefix . 'module_row_1_col_2_post_style',
+             'desc'  => 'Recent posts are displayed as "Cards" by default.',
+             'type' => 'select',
+             'options' => array(
+               $prefix . 'module_row_1_col_2_post_style_cards' => 'Card',
+               $prefix . 'module_row_1_col_2_post_style_list' => 'List',
+               ),
+             ),
+             array(
+              'name' => 'Custom Text Title',
+              'id'   => $prefix . 'module_row_1_col_2_texttitle',
+              'type' => 'text',
+             ),
+             array(
+              'name' => 'Custom Text Content',
+              'id'   => $prefix . 'module_row_1_col_2_textarea',
+              'type' => 'textarea',
+             ),
+          ),
+        ),
+     ),
+   ),
+  )
+);
+
   $meta_boxes[] = array(
     'id'       => 'jotform-embed',
     'title'    => 'JotForm Embed',
