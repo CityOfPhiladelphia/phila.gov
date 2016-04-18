@@ -73,26 +73,17 @@ jQuery(document).ready(function($){
       $('.phila-access-control').closest('.postbox').css('display','none');
       $('.phila-access-control').closest('.postbox').find('input, select, .rwmb-file-input-select').prop('disabled', true);
 
-      // Check whether author has access to the hero-header options
-      // Update this to use 'phila-access-control' class
-      $('#hero-header').css('display','none');
-      $('#hero-header').find('input, select, .rwmb-file-input-select').prop('disabled', true);
-
       if ( $( '#hero-header' ).length ){
         if( $('#phila_hero_header_admin_only').attr('checked') ){
           $('#hero-header').toggle();
           $('#hero-header').find('input, select, .rwmb-file-input-select').prop('disabled', false);
-          $('#phila_hero_header_admin_only').prop('disabled', true);
-          // $('.phila-access-control').toggle();
         }
-        else {
-          $( '#phila_hero_header_title' ).rules( 'add', {
-            maxlength: 35
-          });
-          $( '#phila_hero_header_body_copy' ).rules( 'add', {
-            maxlength: 140
-          });
-        }
+        $( '#phila_hero_header_title' ).rules( 'add', {
+          maxlength: 35
+        });
+        $( '#phila_hero_header_body_copy' ).rules( 'add', {
+          maxlength: 140
+        });
       }
       // Check whether author has access to the module row options
       if ( $( '#phila_module_row_1' ).length ){
@@ -100,7 +91,6 @@ jQuery(document).ready(function($){
           alert('checked');
           $('#phila_module_row_1').toggle();
           $('#phila_module_row_1').find('input, select, .rwmb-file-input-select, .rwmb-select').prop('disabled', false);
-          $('.phila-access-control').toggle();
         }
       }
 
