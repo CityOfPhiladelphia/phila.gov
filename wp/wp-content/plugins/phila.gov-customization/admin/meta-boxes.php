@@ -312,6 +312,16 @@ function phila_register_meta_boxes( $meta_boxes ){
       'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
      ),
      array(
+       'name'  => 'Non-Admin Access',
+       'id'    => $prefix . 'module_row_1_admin_only',
+       'class' => 'phila-access-control',
+       'type'  => 'checkbox',
+       'desc'  => 'Allow non-admins to edit Module Row 1',
+     ),
+     array(
+       'type' => 'divider'
+     ),
+     array(
       'id' => 'module_row_1_col_1',
       'type' => 'group',
       // List of sub-fields
@@ -354,6 +364,9 @@ function phila_register_meta_boxes( $meta_boxes ){
             ),
           ),
         ),
+      ),
+      array(
+        'type' => 'divider'
       ),
      array(
       'id' => 'module_row_1_col_2',
