@@ -33,7 +33,7 @@ function press_release_shortcode($atts) {
   if( $press_release_loop->have_posts() ) {
     $post_counter = 0;
 
-    $output .= '<div class="large-24 columns"><h2 class="alternate">' . __('Press Releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
+    $output .= '<div class="large-24 columns"><h2 class="alternate">' . __('Press Releases', 'phila-gov') . '</h2><div class="press-releases"><ul class="no-bullet pan border-bottom-list">';
 
     while( $press_release_loop->have_posts() ) :
       $press_release_loop->the_post();
@@ -49,10 +49,9 @@ function press_release_shortcode($atts) {
 
     endwhile;
 
-    $output .= '</div><a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a></div>';
-
     $output .= '</ul>';
-    $output .= '</div>';
+
+    $output .= '</div><a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a></div>';
 
     }else {
       $output .= __( 'Please enter at least one press release.', 'phila.gov' );
