@@ -29,8 +29,8 @@
   	</header><!-- .entry-header -->
     <?php
       if (function_exists('rwmb_meta')) :
-      $news_desc = rwmb_meta( 'phila_news_desc', $args = array( 'type' => 'textrea' ) );
-      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textrea' ) );
+      $news_desc = rwmb_meta( 'phila_news_desc', $args = array( 'type' => 'textarea' ) );
+      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textarea' ) );
 
         if ( '' != $news_desc ) :
           ?><p class="description"><?php echo $news_desc ?></p>
