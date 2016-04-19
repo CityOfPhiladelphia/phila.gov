@@ -12,6 +12,9 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
     add_action( 'rwmb_after', array( $this, 'load_document_media_js'), 1000 );
 
     add_filter( 'wp_default_editor', array( $this, 'set_default_editor' ) );
+
+    //TODO: move this to the canonical location for metaboxes
+    add_filter( 'rwmb_meta_boxes',  array( $this, 'phila_register_attachment_page_meta_boxes' ) );
   }
  /**
   * Save attachment metadata when a document page is saved.
@@ -73,6 +76,33 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
   public function set_default_editor() {
       $r = 'tinymce';
       return $r;
+  }
+
+  function phila_register_attachment_page_meta_boxes( $meta_boxes ){
+    $prefix = 'phila_';
+
+    $meta_boxes[] = array(
+      'id'       => 'attachment_page_release_date',
+      'title'    => 'Release Date',
+      'post_types'    => array( 'attachment' ),
+      'context'  => 'side',
+      'priority' => 'high',
+
+      'fields' => array(
+        array(
+          'name'  => 'When was this item released?',
+          'id'    => $prefix . 'document_page_release_date',
+          'type'  => 'date',
+          'clone' => false,
+          'desc'  => 'This will take prescience over the release date set on the corresponding document page. Remove the above text to use the date on the document page.',
+          'js_options' =>  array(
+            'dateFormat'=>'MM dd, yy',
+            'showTimepicker' => false
+          )
+        ),
+      )
+    );
+    return $meta_boxes;
   }
 
 }//Phila_Gov_Admin_Documents
