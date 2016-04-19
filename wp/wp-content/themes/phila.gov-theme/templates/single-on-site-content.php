@@ -41,12 +41,22 @@
                 $row_one_col_two_text_title = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_texttitle'];
                 $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
               }
+              $row_two_col_one_module = rwmb_meta( 'module_row_2_col_1');
+              if (!empty($row_two_col_one_module)){
+                $row_two_col_one_type = $row_two_col_one_module['phila_module_row_2_col_1_type'];
+                $row_two_col_one_cal_id = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_id'];
+              }
+              $row_two_col_two_module = rwmb_meta( 'module_row_2_col_2');
+              if (!empty($row_two_col_two_module)){
+                $row_two_col_two_type = $row_two_col_two_module['phila_module_row_2_col_2_type'];
+                $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
+              }
         ?>
         <!-- If Custom Markup append_before_wysiwyg is present print it -->
         <?php if (!$append_before_wysiwyg == ''):?>
           <?php echo $append_before_wysiwyg; ?>
         <?php endif; ?>
-        <!-- Hero-Header MetaBox Modules -->
+        <!-- Begin Hero-Header MetaBox Modules -->
         <?php if (!$hero_header_image == ''): ?>
             <section class="department-header">
               <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
@@ -65,9 +75,10 @@
             <?php endif; ?>
           </section>
         <?php endif; ?>
+        <!-- End Hero-Header MetaBox Modules -->
       <?php endif; ?>
       <!-- Begin Row One MetaBox Modules -->
-      <?php if ( ( !empty($row_one_col_one_module ) ) && (!empty($row_one_col_one_module ) ) ): ?>
+      <?php if ( ( !empty($row_one_col_one_module ) ) && (!empty($row_one_col_two_module ) ) ): ?>
         <section class="department-module-row-one">
           <div class="row equal-height">
             <!-- Begin Column One -->
@@ -112,8 +123,48 @@
           </div>
         </section>
       <?php endif; ?>
+      <!-- End Row One MetaBox Modules -->
 
        <?php echo the_content();?>
+
+       <!-- Begin Row Two MetaBox Modules -->
+       <?php if ( ( !empty($row_two_col_one_module ) ) && (!empty($row_two_col_two_module ) ) ): ?>
+       <section class="department-module-row-one">
+         <div class="row equal-height">
+           <?php if ( $row_two_col_one_type  == 'phila_module_row_2_col_1_calendar' ): ?>
+             <div class="medium-12 columns">
+               <h2 class="alternate">Calendar</h2>
+               <div class="event-box">
+                 <?php echo do_shortcode('[calendar id="' . $row_two_col_one_cal_id .'"]'); ?>
+               </div>
+               <a class="float-right see-all-right" href="/calendar/mayor/">All Events</a>
+             </div>
+           <?php elseif ( $row_two_col_one_type  == 'phila_module_row_2_col_1_press_release' ): ?>
+               <div class="medium-12 columns">
+                 <div class="row">
+                 <?php echo do_shortcode('[press-releases posts=5]');?>
+                 </div>
+               </div>
+             <?php endif; ?>
+             <?php if ( $row_two_col_two_type  == 'phila_module_row_2_col_2_calendar' ): ?>
+               <div class="medium-12 columns">
+                 <h2 class="alternate">Calendar</h2>
+                 <div class="event-box">
+                   <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
+                 </div>
+                 <a class="float-right see-all-right" href="/calendar/mayor/">All Events</a>
+              </div>
+             <?php elseif ( $row_two_col_two_type  == 'phila_module_row_2_col_2_press_release' ): ?>
+               <div class="medium-12 columns">
+                 <div class="row">
+                   <?php echo do_shortcode('[press-releases posts=5]');?>
+                 </div>
+               </div>
+             <?php endif; ?>
+         </div>
+       </section>
+       <?php endif; ?>
+       <!-- End Row Two MetaBox Modules -->
 
        <!-- If Custom Markup append_after_wysiwyg is present print it -->
        <?php if (!$append_after_wysiwyg == ''):?>

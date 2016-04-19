@@ -87,6 +87,12 @@ jQuery(document).ready(function($){
         }
       }
 
+      if ( $( '#phila_module_row_2' ).length ){
+        if( $('#phila_module_row_2_admin_only').attr('checked') ){
+          $('#phila_module_row_2').toggle();
+          $('#phila_module_row_2').find('input, select, .rwmb-file-input-select, .rwmb-select').prop('disabled', false);
+        }
+      }
     }
   }
 });
