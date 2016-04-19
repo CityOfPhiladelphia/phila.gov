@@ -15,7 +15,7 @@ get_header(); ?>
   <?php while ( have_posts() ) : the_post();
    if (function_exists('rwmb_meta')) {
      $service_url = rwmb_meta( 'phila_service_url', $args = array('type' => 'url'));
-     $service_name = rwmb_meta( 'phila_service_detail', $args = array('type' => 'textrea'));
+     $service_name = rwmb_meta( 'phila_service_detail', $args = array('type' => 'textarea'));
      $service_desc = rwmb_meta( 'phila_service_desc', $args = array('type' => 'textarea'));
      $service_button_text =  rwmb_meta( 'phila_service_button_text', $args = array('type' => 'text'));
      $service_before_start =  rwmb_meta( 'phila_service_before_start', $args = array('type' => 'text'));
