@@ -14,7 +14,7 @@
     <div data-swiftype-index='true' class="entry-content medium-18 medium-push-6 columns">
 
     <?php
-      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textrea' ) );
+      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textarea' ) );
 
       if ($post->post_content != ''):
         the_content();
