@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy WP SMTP
-Version: 1.2.2
+Version: 1.2.3
 Plugin URI: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Author: wpecommerce
 Author URI: https://wp-ecommerce.net/
@@ -177,7 +177,7 @@ if ( ! function_exists( 'swpsmtp_settings' ) ) {
 			$swpsmtp_options['from_name_field'] = isset( $_POST['swpsmtp_from_name'] ) ? sanitize_text_field(wp_unslash($_POST['swpsmtp_from_name'])) : '';
 			if( isset( $_POST['swpsmtp_from_email'] ) ){
 				if( is_email( $_POST['swpsmtp_from_email'] ) ){
-					$swpsmtp_options['from_email_field'] = $_POST['swpsmtp_from_email'];
+					$swpsmtp_options['from_email_field'] = sanitize_email($_POST['swpsmtp_from_email']);
 				}
 				else{
 					$error .= " " . __( "Please enter a valid email address in the 'FROM' field.", 'easy-wp-smtp' );
@@ -185,8 +185,8 @@ if ( ! function_exists( 'swpsmtp_settings' ) ) {
 			}
 					
 			$swpsmtp_options['smtp_settings']['host']     				= sanitize_text_field($_POST['swpsmtp_smtp_host']);
-			$swpsmtp_options['smtp_settings']['type_encryption'] = ( isset( $_POST['swpsmtp_smtp_type_encryption'] ) ) ? $_POST['swpsmtp_smtp_type_encryption'] : 'none' ;
-			$swpsmtp_options['smtp_settings']['autentication']   = ( isset( $_POST['swpsmtp_smtp_autentication'] ) ) ? $_POST['swpsmtp_smtp_autentication'] : 'yes' ;
+			$swpsmtp_options['smtp_settings']['type_encryption'] = ( isset( $_POST['swpsmtp_smtp_type_encryption'] ) ) ? sanitize_text_field($_POST['swpsmtp_smtp_type_encryption']) : 'none' ;
+			$swpsmtp_options['smtp_settings']['autentication']   = ( isset( $_POST['swpsmtp_smtp_autentication'] ) ) ? sanitize_text_field($_POST['swpsmtp_smtp_autentication']) : 'yes' ;
 			$swpsmtp_options['smtp_settings']['username']  			= sanitize_text_field($_POST['swpsmtp_smtp_username']);
                         $smtp_password = trim($_POST['swpsmtp_smtp_password']);
 			$swpsmtp_options['smtp_settings']['password'] 				= base64_encode($smtp_password);
@@ -197,7 +197,7 @@ if ( ! function_exists( 'swpsmtp_settings' ) ) {
 					$swpsmtp_options['smtp_settings']['port'] = '25';
 					$error .= " " . __( "Please enter a valid port in the 'SMTP Port' field.", 'easy-wp-smtp' );
 				} else {
-					$swpsmtp_options['smtp_settings']['port'] = $_POST['swpsmtp_smtp_port'];
+					$swpsmtp_options['smtp_settings']['port'] = sanitize_text_field($_POST['swpsmtp_smtp_port']);
 				}
 			}
 
@@ -297,7 +297,7 @@ if ( ! function_exists( 'swpsmtp_settings' ) ) {
 					<tr class="ad_opt swpsmtp_smtp_options">
 						<th><?php _e( 'SMTP Password', 'easy-wp-smtp' ); ?></th>
 						<td>
-							<input type='password' name='swpsmtp_smtp_password' value='<?php echo swpsmtp_get_password(); ?>' /><br />
+							<input type='password' name='swpsmtp_smtp_password' value='<?php echo esc_attr(swpsmtp_get_password()); ?>' /><br />
 							<span class="swpsmtp_info"><?php _e( "The password to login to your mail server", 'easy-wp-smtp' ); ?></span>
 						</td>
 					</tr>
@@ -453,9 +453,10 @@ if ( ! function_exists( 'swpsmtp_get_password' ) ) {
 if ( ! function_exists( 'swpsmtp_admin_notice' ) ) {
     function swpsmtp_admin_notice() {        
         if(!swpsmtp_credentials_configured()){
+            $settings_url = admin_url().'options-general.php?page=swpsmtp_settings';
             ?>
             <div class="error">
-                <p><?php _e( 'Please configure your SMTP credentials in the settings in order to send email using Easy WP SMTP plugin.', 'easy-wp-smtp' ); ?></p>
+                <p><?php printf(__('Please configure your SMTP credentials in the <a href="%s">settings menu</a> in order to send email using Easy WP SMTP plugin.', 'easy-wp-smtp'), esc_url($settings_url) ); ?></p>
             </div>
             <?php
         }
