@@ -94,7 +94,7 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
           'id'    => $prefix . 'document_page_release_date',
           'type'  => 'date',
           'clone' => false,
-          'desc'  => 'This will take prescience over the release date set on the corresponding document page. Remove the above text to use the date on the document page.',
+          'desc'  => 'If you leave this field blank, the file will show the same release date as the document page it\'s attached to.',
           'js_options' =>  array(
             'dateFormat'=>'MM dd, yy',
             'showTimepicker' => false
