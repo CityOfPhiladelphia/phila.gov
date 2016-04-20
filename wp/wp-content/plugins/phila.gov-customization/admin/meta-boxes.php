@@ -425,10 +425,10 @@ $meta_boxes[] = array(
 
   'fields' => array(
     array(
-     'name' => 'Description',
-     'id'   => $prefix . 'module_row_2_description',
-     'type' => 'custom_html',
-     'std'  => '<span>Use this area to create a row that will be divided into two equal columns.</span>',
+      'name' => 'Description',
+      'id'   => $prefix . 'module_row_2_description',
+      'type' => 'custom_html',
+      'std'  => '<span>Use this area to create a row that will be divided into two equal columns.</span>',
     ),
     array(
       'name'  => 'Non-Admin Access',
@@ -441,70 +441,70 @@ $meta_boxes[] = array(
       'type' => 'divider'
     ),
     array(
-     'id' => 'module_row_2_col_1',
-     'type' => 'group',
-     // List of sub-fields
-     'fields' => array(
+      'id' => 'module_row_2_col_1',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
         array(
-         'name' => 'Column 2',
-         'id'   => $prefix . 'module_row_2_col_1_type',
-         'desc'  => 'Choose to display calendar events or press releases.',
-         'type' => 'select',
-         'options' => array(
-           $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
-           $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
-           ),
-         ),
-         array(
-           'id' => 'module_row_2_col_1_options',
-           'type' => 'group',
-           // List of sub-fields
-           'fields' => array(
-             array(
+          'name' => 'Column 2',
+          'id'   => $prefix . 'module_row_2_col_1_type',
+          'desc'  => 'Choose to display calendar events or press releases.',
+          'type' => 'select',
+          'options' => array(
+            $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
+            $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
+          ),
+        ),
+        array(
+          'id' => 'module_row_2_col_1_options',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
               'name' => 'Calender ID',
               'id'   => $prefix . 'module_row_2_col_1_cal_id',
               'desc'  => 'ID of the calendar',
               'type' => 'text',
-              ),
             ),
           ),
         ),
       ),
-       array(
-         'type' => 'divider'
-       ),
-       array(
-        'id' => 'module_row_2_col_2',
-        'type' => 'group',
-        // List of sub-fields
-        'fields' => array(
-         array(
-          'name' => 'Column 1',
+    ),
+    array(
+      'type' => 'divider'
+    ),
+    array(
+      'id' => 'module_row_2_col_2',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'name' => 'Column 2',
           'id'   => $prefix . 'module_row_2_col_2_type',
           'desc'  => 'Choose to display calendar events or press releases.',
           'type' => 'select',
           'options' => array(
             $prefix . 'module_row_2_col_2_calendar' => 'Calendar',
             $prefix . 'module_row_2_col_2_press_release' => 'Press Releases',
-            ),
           ),
-          array(
-            'id' => 'module_row_2_col_2_options',
-            'type' => 'group',
-            // List of sub-fields
-            'fields' => array(
-              array(
-               'name' => 'Calender ID',
-               'id'   => $prefix . 'module_row_2_col_2_cal_id',
-               'desc'  => 'ID of the calendar',
-               'type' => 'text',
-               ),
+        ),
+        array(
+          'id' => 'module_row_2_col_2_options',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'name' => 'Calender ID',
+              'id'   => $prefix . 'module_row_2_col_2_cal_id',
+              'desc'  => 'ID of the calendar',
+              'type' => 'text',
             ),
           ),
         ),
       ),
     ),
-  );
+  ),
+);
 
   $meta_boxes[] = array(
     'id'       => 'jotform-embed',
