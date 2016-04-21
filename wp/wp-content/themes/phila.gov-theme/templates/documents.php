@@ -9,7 +9,8 @@
 <div data-swiftype-index='true' class="entry-content small-24 columns">
   <?php
   $document_description = rwmb_meta( 'phila_document_description', $args = array( 'type' => 'textarea' ));
-  $document_published = rwmb_meta( 'phila_document_released', $args = array( 'type' => 'date' ) );
+  $global_document_published = rwmb_meta( 'phila_document_released', $args = array( 'type' => 'date' ) );
+
   $documents = rwmb_meta( 'phila_files', $args = array( 'type' => 'file_advanced' ) );
   ?>
   <p class="description"><?php echo $document_description; ?></p>
@@ -38,6 +39,7 @@
     $attachment_data = wp_prepare_attachment_for_js( $id[0] );
     $file_type = $attachment_data['subtype'];
     $content = $attachment_data['description'];
+    $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id[0] );
     ?>
     <tr class="clickable-row" data-href=" <?php echo $document['url']; ?>">
       <td>
@@ -53,6 +55,8 @@
         <td>
           <?php if( ! $document_published == '' ): ?>
             <span class="small-text"> <?php echo $document_published; ?> </span>
+          <?php else: ?>
+            <span class="small-text"> <?php echo $global_document_published; ?> </span>
           <?php endif; ?>
         </td>
         <td>
