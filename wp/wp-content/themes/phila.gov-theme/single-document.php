@@ -7,15 +7,6 @@
 
 get_header();
 ?>
-<?php /*
-
-Allow screen readers / text browsers to skip the navigation menu and
-get right to the good stuff. */ ?>
-
-<div class="skip-link screen-reader-text">
-	<a href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentyten' ); ?>">
-	<?php _e( 'Skip to content', 'twentyten' ); ?></a>
-</div>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('row document'); ?>>
 <?php

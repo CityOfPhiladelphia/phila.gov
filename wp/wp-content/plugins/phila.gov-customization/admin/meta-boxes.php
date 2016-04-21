@@ -161,7 +161,8 @@ function phila_register_meta_boxes( $meta_boxes ){
        'type' => 'textarea'
      ),
      array(
-      'name'  => 'Published Date',
+      'name'  => 'Release Date',
+      'desc'  => 'Set the release date for all items on this document page. You can change an individual release date by editing the document below.',
       'id'    => $prefix . 'document_released',
       'type'  => 'date',
       'class' =>  'document-released',
