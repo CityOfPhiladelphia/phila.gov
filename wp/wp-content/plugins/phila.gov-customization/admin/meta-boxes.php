@@ -416,6 +416,97 @@ function phila_register_meta_boxes( $meta_boxes ){
   )
 );
 
+// Second row of modules - recent posts and custom markup
+$meta_boxes[] = array(
+  'id'       => $prefix . 'module_row_2',
+  'title'    => 'Module Row 2',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'priority' => 'low',
+
+  'fields' => array(
+    array(
+      'name' => 'Description',
+      'id'   => $prefix . 'module_row_2_description',
+      'type' => 'custom_html',
+      'std'  => '<span>Use this area to create a row that will be divided into two equal columns.</span>',
+    ),
+    array(
+      'name'  => 'Non-Admin Access',
+      'id'    => $prefix . 'module_row_2_admin_only',
+      'class' => 'phila-access-control',
+      'type'  => 'checkbox',
+      'desc'  => 'Allow non-admins to edit Module Row 2',
+    ),
+    array(
+      'type' => 'divider'
+    ),
+    array(
+      'id' => 'module_row_2_col_1',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'name' => 'Column 2',
+          'id'   => $prefix . 'module_row_2_col_1_type',
+          'desc'  => 'Choose to display calendar events or press releases.',
+          'type' => 'select',
+          'options' => array(
+            $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
+            $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
+          ),
+        ),
+        array(
+          'id' => 'module_row_2_col_1_options',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'name' => 'Calender ID',
+              'id'   => $prefix . 'module_row_2_col_1_cal_id',
+              'desc'  => 'ID of the calendar',
+              'type' => 'text',
+            ),
+          ),
+        ),
+      ),
+    ),
+    array(
+      'type' => 'divider'
+    ),
+    array(
+      'id' => 'module_row_2_col_2',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'name' => 'Column 2',
+          'id'   => $prefix . 'module_row_2_col_2_type',
+          'desc'  => 'Choose to display calendar events or press releases.',
+          'type' => 'select',
+          'options' => array(
+            $prefix . 'module_row_2_col_2_calendar' => 'Calendar',
+            $prefix . 'module_row_2_col_2_press_release' => 'Press Releases',
+          ),
+        ),
+        array(
+          'id' => 'module_row_2_col_2_options',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'name' => 'Calender ID',
+              'id'   => $prefix . 'module_row_2_col_2_cal_id',
+              'desc'  => 'ID of the calendar',
+              'type' => 'text',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+
   $meta_boxes[] = array(
     'id'       => 'jotform-embed',
     'title'    => 'JotForm Embed',
