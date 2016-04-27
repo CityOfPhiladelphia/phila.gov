@@ -1,6 +1,7 @@
 .env*
 .vagrant
 wp/readme.*
+wp/xmlrpc.php
 wp/wp-config.php
 wp/wp-content/uploads/
 wp/wp-content/plugins/wordfence/tmp/configCache.php
