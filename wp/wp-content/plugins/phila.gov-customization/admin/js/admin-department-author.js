@@ -66,26 +66,6 @@ jQuery(document).ready(function($){
     }
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
-
-      // Check if there are any metaboxes that require explicit permissions
-      // For this to work properly Non-Admin Access fields should have class of 'phila-access-control'
-      $('.phila-access-control').closest('.postbox').css('display','none');
-      $('.phila-access-control').closest('.postbox').find('input, select, .rwmb-file-input-select').prop('disabled', true);
-
-      if ( $( '#hero-header' ).length ){
-        if( $('#phila_hero_header_admin_only').attr('checked') ){
-          $('#hero-header').toggle();
-          $('#hero-header').find('input, select, .rwmb-file-input-select').prop('disabled', false);
-        }
-      }
-      // Check whether author has access to the module row options
-      if ( $( '#phila_module_row_1' ).length ){
-        if( $('#phila_module_row_1_admin_only').attr('checked') ){
-          $('#phila_module_row_1').toggle();
-          $('#phila_module_row_1').find('input, select, .rwmb-file-input-select, .rwmb-select').prop('disabled', false);
-        }
-      }
-
     }
   }
 });
