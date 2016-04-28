@@ -97,35 +97,6 @@ img.float-right{
   margin:0;
   display: block;
 }
-#site-wide-alert a,
-#site-wide-alert a:visited {
-  color:$white;
-}
-#site-wide-alert a:hover {
-  color: $dark-gray;
-}
-
-#site-wide-alert{
-  background: $dark-gray;
-  text-align: center;
-  color:$white;
-
-  @media screen and (min-width: 40em) {
-    h2{
-      font-size: 1.78571rem;
-    }
-  }
-  .large-9, .large-15{
-    width:100%;
-  }
-  .alert-start, .ionicons{
-    display: none;
-  }
-  a:hover, a:active{
-    color:$bell-yellow;
-  }
-
-}
 
 aside {
   h3.alternate,
