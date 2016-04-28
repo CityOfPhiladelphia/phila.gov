@@ -34,7 +34,7 @@
                 <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">1</span>
+                <span class="label label-info">3</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -70,7 +70,6 @@
 <li class="method public "><a href="#mla_get_option" title="mla_get_option :: Return the stored value or default value of a defined MLA option"><span class="description">Return the stored value or default value of a defined MLA option</span><pre>mla_get_option()</pre></a></li>
 <li class="method public "><a href="#mla_initialize_tax_checked_on_top" title='mla_initialize_tax_checked_on_top :: Initialize "tax_checked_on_top" =&gt; "checked" default for all supported taxonomies'><span class="description">Initialize "tax_checked_on_top" =&gt; "checked" default for all supported taxonomies</span><pre>mla_initialize_tax_checked_on_top()</pre></a></li>
 <li class="method public "><a href="#mla_load_template" title="mla_load_template :: Load an HTML template from a file"><span class="description">Load an HTML template from a file</span><pre>mla_load_template()</pre></a></li>
-<li class="method public "><a href="#mla_localize_option_definitions_array" title="mla_localize_option_definitions_array :: Localize $mla_option_definitions array"><span class="description">Localize $mla_option_definitions array</span><pre>mla_localize_option_definitions_array()</pre></a></li>
 <li class="method public "><a href="#mla_parse_view_specification" title="mla_parse_view_specification :: Analyze a Library View/Post MIME Type specification, returning an array of the placeholders it contains"><span class="description">Analyze a Library View/Post MIME Type specification, returning an array of the placeholders it contains</span><pre>mla_parse_view_specification()</pre></a></li>
 <li class="method public "><a href="#mla_plugins_loaded_action" title="mla_plugins_loaded_action :: Load a plugin text domain and alternate debug file"><span class="description">Load a plugin text domain and alternate debug file</span><pre>mla_plugins_loaded_action()</pre></a></li>
 <li class="method public "><a href="#mla_prepare_view_query" title="mla_prepare_view_query :: Convert a Library View/Post MIME Type specification to WP_Query parameters"><span class="description">Convert a Library View/Post MIME Type specification to WP_Query parameters</span><pre>mla_prepare_view_query()</pre></a></li>
@@ -79,13 +78,13 @@
 settings are being updated or reset."><span class="description">Determine MLA support for a taxonomy, handling the special case where the
 settings are being updated or reset.</span><pre>mla_taxonomy_support()</pre></a></li>
 <li class="method public "><a href="#mla_update_option" title="mla_update_option :: Add or update the stored value of a defined MLA option"><span class="description">Add or update the stored value of a defined MLA option</span><pre>mla_update_option()</pre></a></li>
+<li class="method public "><a href="#mla_wp_redirect_filter" title="mla_wp_redirect_filter :: Filter the redirect location."><span class="description">Filter the redirect location.</span><pre>mla_wp_redirect_filter()</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="method private "><a href="#_debug_log" title="_debug_log :: Write a debug message to the appropriate log file"><span class="description">Write a debug message to the appropriate log file</span><pre>_debug_log()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public "><a href="#%24admin_columns_storage_model" title="$admin_columns_storage_model :: Admin Columns support storage model object for the Media/Assistant submenu"><span class="description">Admin Columns support storage model object for the Media/Assistant submenu</span><pre>$admin_columns_storage_model</pre></a></li>
 <li class="property public "><a href="#%24mla_debug_level" title="$mla_debug_level :: Effective MLA Debug Level, from MLA_DEBUG_LEVEL or override option"><span class="description">Effective MLA Debug Level, from MLA_DEBUG_LEVEL or override option</span><pre>$mla_debug_level</pre></a></li>
-<li class="property public "><a href="#%24mla_option_definitions" title="$mla_option_definitions :: $mla_option_definitions defines the database options and admin page areas for setting/updating them"><span class="description">$mla_option_definitions defines the database options and admin page areas for setting/updating them</span><pre>$mla_option_definitions</pre></a></li>
 <li class="property public "><a href="#%24original_php_log" title="$original_php_log :: Original PHP error_log path and file"><span class="description">Original PHP error_log path and file</span><pre>$original_php_log</pre></a></li>
 <li class="property public "><a href="#%24original_php_reporting" title="$original_php_reporting :: Original PHP error_reporting value"><span class="description">Original PHP error_reporting value</span><pre>$original_php_reporting</pre></a></li>
 <li class="property public "><a href="#%24process_featured_in" title='$process_featured_in :: Option setting for "Featured in" reporting'><span class="description">Option setting for "Featured in" reporting</span><pre>$process_featured_in</pre></a></li>
@@ -103,76 +102,15 @@ settings are being updated or reset.</span><pre>mla_taxonomy_support()</pre></a>
 <li class="constant  "><a href="#JAVASCRIPT_INLINE_EDIT_SLUG" title="JAVASCRIPT_INLINE_EDIT_SLUG :: Slug for localizing and enqueueing JavaScript - MLA List Table"><span class="description">Slug for localizing and enqueueing JavaScript - MLA List Table</span><pre>JAVASCRIPT_INLINE_EDIT_SLUG</pre></a></li>
 <li class="constant  "><a href="#JAVASCRIPT_QUERY_ATTACHMENTS_ACTION" title='JAVASCRIPT_QUERY_ATTACHMENTS_ACTION :: Slug for the "query attachments" action - Add Media and related dialogs'><span class="description">Slug for the "query attachments" action - Add Media and related dialogs</span><pre>JAVASCRIPT_QUERY_ATTACHMENTS_ACTION</pre></a></li>
 <li class="constant  "><a href="#JAVASCRIPT_UPDATE_COMPAT_ACTION" title='JAVASCRIPT_UPDATE_COMPAT_ACTION :: Slug for the "update compat-attachment-fields" action - Add Media and related dialogs'><span class="description">Slug for the "update compat-attachment-fields" action - Add Media and related dialogs</span><pre>JAVASCRIPT_UPDATE_COMPAT_ACTION</pre></a></li>
-<li class="constant  "><a href="#MLA_ADD_NEW_BULK_EDIT" title="MLA_ADD_NEW_BULK_EDIT :: Provides a unique name for the Media/Add New bulk edit option"><span class="description">Provides a unique name for the Media/Add New bulk edit option</span><pre>MLA_ADD_NEW_BULK_EDIT</pre></a></li>
-<li class="constant  "><a href="#MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN" title='MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN :: Provides a unique name for the Media/Add New bulk edit "Open Automatically" option'><span class="description">Provides a unique name for the Media/Add New bulk edit "Open Automatically" option</span><pre>MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN</pre></a></li>
-<li class="constant  "><a href="#MLA_ADD_NEW_BULK_EDIT_ON_TOP" title='MLA_ADD_NEW_BULK_EDIT_ON_TOP :: Provides a unique name for the Media/Add New bulk edit "on top" option'><span class="description">Provides a unique name for the Media/Add New bulk edit "on top" option</span><pre>MLA_ADD_NEW_BULK_EDIT_ON_TOP</pre></a></li>
 <li class="constant  "><a href="#MLA_ADMIN_NONCE_ACTION" title="MLA_ADMIN_NONCE_ACTION :: Action name; gives a context for the nonce"><span class="description">Action name; gives a context for the nonce</span><pre>MLA_ADMIN_NONCE_ACTION</pre></a></li>
 <li class="constant  "><a href="#MLA_ADMIN_NONCE_NAME" title="MLA_ADMIN_NONCE_NAME :: Nonce name; uniquely identifies the nonce"><span class="description">Nonce name; uniquely identifies the nonce</span><pre>MLA_ADMIN_NONCE_NAME</pre></a></li>
 <li class="constant  "><a href="#MLA_ADMIN_SINGLE_DELETE" title="MLA_ADMIN_SINGLE_DELETE :: mla_admin_action value for permanently deleting a single item"><span class="description">mla_admin_action value for permanently deleting a single item</span><pre>MLA_ADMIN_SINGLE_DELETE</pre></a></li>
 <li class="constant  "><a href="#MLA_ADMIN_SINGLE_RESTORE" title="MLA_ADMIN_SINGLE_RESTORE :: mla_admin_action value for restoring a single item from the trash"><span class="description">mla_admin_action value for restoring a single item from the trash</span><pre>MLA_ADMIN_SINGLE_RESTORE</pre></a></li>
 <li class="constant  "><a href="#MLA_ADMIN_SINGLE_TRASH" title="MLA_ADMIN_SINGLE_TRASH :: mla_admin_action value for moving a single item to the trash"><span class="description">mla_admin_action value for moving a single item to the trash</span><pre>MLA_ADMIN_SINGLE_TRASH</pre></a></li>
-<li class="constant  "><a href="#MLA_BULK_CHUNK_SIZE" title="MLA_BULK_CHUNK_SIZE :: Provides a unique name for the Bulk Update and Map All chunk size option"><span class="description">Provides a unique name for the Bulk Update and Map All chunk size option</span><pre>MLA_BULK_CHUNK_SIZE</pre></a></li>
-<li class="constant  "><a href="#MLA_COUNT_TERM_ATTACHMENTS" title="MLA_COUNT_TERM_ATTACHMENTS :: Provides a unique name for the taxonomy count Attachments option"><span class="description">Provides a unique name for the taxonomy count Attachments option</span><pre>MLA_COUNT_TERM_ATTACHMENTS</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_CATEGORY_AJAX" title="MLA_DEBUG_CATEGORY_AJAX :: Constant to log Ajax debug activity"><span class="description">Constant to log Ajax debug activity</span><pre>MLA_DEBUG_CATEGORY_AJAX</pre></a></li>
+<li class="constant  "><a href="#MLA_DEBUG_CATEGORY_ANY" title='MLA_DEBUG_CATEGORY_ANY :: Constant to log "any" debug activity'><span class="description">Constant to log "any" debug activity</span><pre>MLA_DEBUG_CATEGORY_ANY</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_CATEGORY_LANGUAGE" title="MLA_DEBUG_CATEGORY_LANGUAGE :: Constant to log WPML/Polylang action/filter activity"><span class="description">Constant to log WPML/Polylang action/filter activity</span><pre>MLA_DEBUG_CATEGORY_LANGUAGE</pre></a></li>
 <li class="constant  "><a href="#MLA_DEBUG_CATEGORY_THUMBNAIL" title="MLA_DEBUG_CATEGORY_THUMBNAIL :: Constant to log Ghostscript/Imagick activity"><span class="description">Constant to log Ghostscript/Imagick activity</span><pre>MLA_DEBUG_CATEGORY_THUMBNAIL</pre></a></li>
-<li class="constant  "><a href="#MLA_DEBUG_DISPLAY_LIMIT" title="MLA_DEBUG_DISPLAY_LIMIT :: Provides a unique name for the Debug display limit option"><span class="description">Provides a unique name for the Debug display limit option</span><pre>MLA_DEBUG_DISPLAY_LIMIT</pre></a></li>
-<li class="constant  "><a href="#MLA_DEBUG_FILE" title="MLA_DEBUG_FILE :: Provides a unique name for the Debug alternate log file option"><span class="description">Provides a unique name for the Debug alternate log file option</span><pre>MLA_DEBUG_FILE</pre></a></li>
-<li class="constant  "><a href="#MLA_DEBUG_REPLACE_LEVEL" title="MLA_DEBUG_REPLACE_LEVEL :: Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option"><span class="description">Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option</span><pre>MLA_DEBUG_REPLACE_LEVEL</pre></a></li>
-<li class="constant  "><a href="#MLA_DEBUG_REPLACE_PHP_LOG" title="MLA_DEBUG_REPLACE_PHP_LOG :: Provides a unique name for the Debug replace PHP log file option"><span class="description">Provides a unique name for the Debug replace PHP log file option</span><pre>MLA_DEBUG_REPLACE_PHP_LOG</pre></a></li>
-<li class="constant  "><a href="#MLA_DEBUG_REPLACE_PHP_REPORTING" title="MLA_DEBUG_REPLACE_PHP_REPORTING :: Provides a unique name for the Debug replace PHP error_reporting option"><span class="description">Provides a unique name for the Debug replace PHP error_reporting option</span><pre>MLA_DEBUG_REPLACE_PHP_REPORTING</pre></a></li>
-<li class="constant  "><a href="#MLA_DEFAULT_ORDER" title="MLA_DEFAULT_ORDER :: Provides a unique name for the default order option"><span class="description">Provides a unique name for the default order option</span><pre>MLA_DEFAULT_ORDER</pre></a></li>
-<li class="constant  "><a href="#MLA_DEFAULT_ORDERBY" title="MLA_DEFAULT_ORDERBY :: Provides a unique name for the default orderby option"><span class="description">Provides a unique name for the default orderby option</span><pre>MLA_DEFAULT_ORDERBY</pre></a></li>
-<li class="constant  "><a href="#MLA_EDIT_MEDIA_META_BOXES" title="MLA_EDIT_MEDIA_META_BOXES :: Provides a unique name for the Edit Media additional meta boxes option"><span class="description">Provides a unique name for the Edit Media additional meta boxes option</span><pre>MLA_EDIT_MEDIA_META_BOXES</pre></a></li>
-<li class="constant  "><a href="#MLA_EDIT_MEDIA_SEARCH_TAXONOMY" title='MLA_EDIT_MEDIA_SEARCH_TAXONOMY :: Provides a unique name for the "searchable taxonomies" option'><span class="description">Provides a unique name for the "searchable taxonomies" option</span><pre>MLA_EDIT_MEDIA_SEARCH_TAXONOMY</pre></a></li>
-<li class="constant  "><a href="#MLA_ENABLE_MLA_ICONS" title="MLA_ENABLE_MLA_ICONS :: Provides a unique name for the Enable MLA Icons option"><span class="description">Provides a unique name for the Enable MLA Icons option</span><pre>MLA_ENABLE_MLA_ICONS</pre></a></li>
-<li class="constant  "><a href="#MLA_ENABLE_POST_MIME_TYPES" title="MLA_ENABLE_POST_MIME_TYPES :: Provides a unique name for the Enable Post MIME Types option"><span class="description">Provides a unique name for the Enable Post MIME Types option</span><pre>MLA_ENABLE_POST_MIME_TYPES</pre></a></li>
-<li class="constant  "><a href="#MLA_ENABLE_UPLOAD_MIMES" title="MLA_ENABLE_UPLOAD_MIMES :: Provides a unique name for the Enable Upload MIME Types option"><span class="description">Provides a unique name for the Enable Upload MIME Types option</span><pre>MLA_ENABLE_UPLOAD_MIMES</pre></a></li>
-<li class="constant  "><a href="#MLA_EXCLUDE_REVISIONS" title="MLA_EXCLUDE_REVISIONS :: Provides a unique name for the exclude revisions option"><span class="description">Provides a unique name for the exclude revisions option</span><pre>MLA_EXCLUDE_REVISIONS</pre></a></li>
-<li class="constant  "><a href="#MLA_EXIF_SIZE" title='MLA_EXIF_SIZE :: Provides a "size" attribute value for the EXIF/Template Value field'><span class="description">Provides a "size" attribute value for the EXIF/Template Value field</span><pre>MLA_EXIF_SIZE</pre></a></li>
-<li class="constant  "><a href="#MLA_FEATURED_IN_TUNING" title="MLA_FEATURED_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_FEATURED_IN_TUNING</pre></a></li>
-<li class="constant  "><a href="#MLA_GALLERY_IN_TUNING" title="MLA_GALLERY_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_GALLERY_IN_TUNING</pre></a></li>
-<li class="constant  "><a href="#MLA_INSERTED_IN_TUNING" title="MLA_INSERTED_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_INSERTED_IN_TUNING</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_GRID_TOOLBAR" title="MLA_MEDIA_GRID_TOOLBAR :: Provides a unique name for the Media Grid toolbar option, which
-also controls the ATTACHMENT DETAILS enhancements"><span class="description">Provides a unique name for the Media Grid toolbar option, which
-also controls the ATTACHMENT DETAILS enhancements</span><pre>MLA_MEDIA_GRID_TOOLBAR</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS" title="MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS :: Provides a unique name for the Media Manager Force Image Default Setings option"><span class="description">Provides a unique name for the Media Manager Force Image Default Setings option</span><pre>MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_AUTOFILL" title="MLA_MEDIA_MODAL_DETAILS_AUTOFILL :: Provides a unique name for the Media Manager Attachment Details auto-fill option"><span class="description">Provides a unique name for the Media Manager Attachment Details auto-fill option</span><pre>MLA_MEDIA_MODAL_DETAILS_AUTOFILL</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" title='MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX :: Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
-This option is for hierarchical taxonomies, e.g., "Att.'><span class="description">Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
-This option is for hierarchical taxonomies, e.g., "Att.</span><pre>MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_DETAILS_TAG_METABOX" title='MLA_MEDIA_MODAL_DETAILS_TAG_METABOX :: Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
-This option is for flat taxonomies, e.g., "Att.'><span class="description">Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
-This option is for flat taxonomies, e.g., "Att.</span><pre>MLA_MEDIA_MODAL_DETAILS_TAG_METABOX</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_MIMETYPES" title="MLA_MEDIA_MODAL_MIMETYPES :: Provides a unique name for the Media Manager toolbar MIME Types option"><span class="description">Provides a unique name for the Media Manager toolbar MIME Types option</span><pre>MLA_MEDIA_MODAL_MIMETYPES</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_MONTHS" title="MLA_MEDIA_MODAL_MONTHS :: Provides a unique name for the Media Manager toolbar Month and Year option"><span class="description">Provides a unique name for the Media Manager toolbar Month and Year option</span><pre>MLA_MEDIA_MODAL_MONTHS</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_ORDER" title="MLA_MEDIA_MODAL_ORDER :: Provides a unique name for the Media Manager order option"><span class="description">Provides a unique name for the Media Manager order option</span><pre>MLA_MEDIA_MODAL_ORDER</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_ORDERBY" title="MLA_MEDIA_MODAL_ORDERBY :: Provides a unique name for the Media Manager orderby option"><span class="description">Provides a unique name for the Media Manager orderby option</span><pre>MLA_MEDIA_MODAL_ORDERBY</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_SEARCHBOX" title="MLA_MEDIA_MODAL_SEARCHBOX :: Provides a unique name for the Media Manager toolbar Search Box option"><span class="description">Provides a unique name for the Media Manager toolbar Search Box option</span><pre>MLA_MEDIA_MODAL_SEARCHBOX</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS" title="MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS :: Provides a unique name for the Media Manager toolbar Search Box Controls option"><span class="description">Provides a unique name for the Media Manager toolbar Search Box Controls option</span><pre>MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_TERMS" title="MLA_MEDIA_MODAL_TERMS :: Provides a unique name for the Media Manager toolbar Taxonomy Terms option"><span class="description">Provides a unique name for the Media Manager toolbar Taxonomy Terms option</span><pre>MLA_MEDIA_MODAL_TERMS</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_TERMS_SEARCH" title='MLA_MEDIA_MODAL_TERMS_SEARCH :: Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option'><span class="description">Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option</span><pre>MLA_MEDIA_MODAL_TERMS_SEARCH</pre></a></li>
-<li class="constant  "><a href="#MLA_MEDIA_MODAL_TOOLBAR" title="MLA_MEDIA_MODAL_TOOLBAR :: Provides a unique name for the Media Manager toolbar option, which
-also controls the ATTACHMENT DETAILS enhancements"><span class="description">Provides a unique name for the Media Manager toolbar option, which
-also controls the ATTACHMENT DETAILS enhancements</span><pre>MLA_MEDIA_MODAL_TOOLBAR</pre></a></li>
-<li class="constant  "><a href="#MLA_MLA_GALLERY_IN_TUNING" title="MLA_MLA_GALLERY_IN_TUNING :: Provides a unique name for a database tuning option"><span class="description">Provides a unique name for a database tuning option</span><pre>MLA_MLA_GALLERY_IN_TUNING</pre></a></li>
-<li class="constant  "><a href="#MLA_NEW_CUSTOM_FIELD" title='MLA_NEW_CUSTOM_FIELD :: Provides a unique name for the Custom Field "new field" key'><span class="description">Provides a unique name for the Custom Field "new field" key</span><pre>MLA_NEW_CUSTOM_FIELD</pre></a></li>
-<li class="constant  "><a href="#MLA_NEW_CUSTOM_RULE" title='MLA_NEW_CUSTOM_RULE :: Provides a unique name for the Custom Field "new rule" key'><span class="description">Provides a unique name for the Custom Field "new rule" key</span><pre>MLA_NEW_CUSTOM_RULE</pre></a></li>
-<li class="constant  "><a href="#MLA_POST_MIME_TYPES" title="MLA_POST_MIME_TYPES :: Provides a unique name for the Post MIME Types option"><span class="description">Provides a unique name for the Post MIME Types option</span><pre>MLA_POST_MIME_TYPES</pre></a></li>
-<li class="constant  "><a href="#MLA_SCREEN_DISPLAY_LIBRARY" title="MLA_SCREEN_DISPLAY_LIBRARY :: Provides a unique name for the admin screen remove Media/Library option"><span class="description">Provides a unique name for the admin screen remove Media/Library option</span><pre>MLA_SCREEN_DISPLAY_LIBRARY</pre></a></li>
-<li class="constant  "><a href="#MLA_SCREEN_MENU_TITLE" title="MLA_SCREEN_MENU_TITLE :: Provides a unique name for the admin screen menu title option"><span class="description">Provides a unique name for the admin screen menu title option</span><pre>MLA_SCREEN_MENU_TITLE</pre></a></li>
-<li class="constant  "><a href="#MLA_SCREEN_ORDER" title="MLA_SCREEN_ORDER :: Provides a unique name for the admin screen menu order option"><span class="description">Provides a unique name for the admin screen menu order option</span><pre>MLA_SCREEN_ORDER</pre></a></li>
-<li class="constant  "><a href="#MLA_SCREEN_PAGE_TITLE" title="MLA_SCREEN_PAGE_TITLE :: Provides a unique name for the admin screen page title option"><span class="description">Provides a unique name for the admin screen page title option</span><pre>MLA_SCREEN_PAGE_TITLE</pre></a></li>
-<li class="constant  "><a href="#MLA_SEARCH_MEDIA_FILTER_DEFAULTS" title="MLA_SEARCH_MEDIA_FILTER_DEFAULTS :: Provides a unique name for the display Search Media controls option"><span class="description">Provides a unique name for the display Search Media controls option</span><pre>MLA_SEARCH_MEDIA_FILTER_DEFAULTS</pre></a></li>
-<li class="constant  "><a href="#MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS" title="MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS :: Provides a unique name for the display Search Media controls option"><span class="description">Provides a unique name for the display Search Media controls option</span><pre>MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS</pre></a></li>
-<li class="constant  "><a href="#MLA_SETTINGS_SLUG" title="MLA_SETTINGS_SLUG :: Provides a unique name for the settings page"><span class="description">Provides a unique name for the settings page</span><pre>MLA_SETTINGS_SLUG</pre></a></li>
-<li class="constant  "><a href="#MLA_TABLE_ICON_SIZE" title="MLA_TABLE_ICON_SIZE :: Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option"><span class="description">Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option</span><pre>MLA_TABLE_ICON_SIZE</pre></a></li>
-<li class="constant  "><a href="#MLA_TABLE_VIEWS_WIDTH" title="MLA_TABLE_VIEWS_WIDTH :: Provides a unique name for the Media/Assistant submenu table views width option"><span class="description">Provides a unique name for the Media/Assistant submenu table views width option</span><pre>MLA_TABLE_VIEWS_WIDTH</pre></a></li>
-<li class="constant  "><a href="#MLA_TAXONOMY_FILTER_DEPTH" title="MLA_TAXONOMY_FILTER_DEPTH :: Provides a unique name for the taxonomy filter maximum depth option"><span class="description">Provides a unique name for the taxonomy filter maximum depth option</span><pre>MLA_TAXONOMY_FILTER_DEPTH</pre></a></li>
-<li class="constant  "><a href="#MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN" title="MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN :: Provides a unique name for the taxonomy filter maximum depth option"><span class="description">Provides a unique name for the taxonomy filter maximum depth option</span><pre>MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN</pre></a></li>
-<li class="constant  "><a href="#MLA_TAXONOMY_SUPPORT" title="MLA_TAXONOMY_SUPPORT :: Provides a unique name for the taxonomy support option"><span class="description">Provides a unique name for the taxonomy support option</span><pre>MLA_TAXONOMY_SUPPORT</pre></a></li>
-<li class="constant  "><a href="#MLA_UPLOAD_MIMES" title="MLA_UPLOAD_MIMES :: Provides a unique name for the Upload MIME Types option"><span class="description">Provides a unique name for the Upload MIME Types option</span><pre>MLA_UPLOAD_MIMES</pre></a></li>
-<li class="constant  "><a href="#MLA_VERSION_OPTION" title="MLA_VERSION_OPTION :: Provides a unique name for the current version option"><span class="description">Provides a unique name for the current version option</span><pre>MLA_VERSION_OPTION</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -444,7 +382,7 @@ will be added to the front of the value if necessary.</p></p>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>Called after all taxonomies are registered, e.g., in MLAObjects::_build_taxonomies.</p></p>
 <table class="table table-bordered"><tr>
-<th>sin20</th>
+<th>since</th>
 <td>2.02</td>
 </tr></table>
 </div></div>
@@ -473,19 +411,6 @@ where "key" becomes the key part of the array.</p></p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code><code>array</code><code>false</code><code>NULL</code>string for files that do not contain template divider comments, array for files containing template divider comments, false if file or option does not exist, NULL if file could not be loaded.</div>
-</div></div>
-</div>
-<a name="mla_localize_option_definitions_array" id="mla_localize_option_definitions_array"></a><div class="element clickable method public mla_localize_option_definitions_array" data-toggle="collapse" data-target=".mla_localize_option_definitions_array .collapse">
-<h2>Localize $mla_option_definitions array</h2>
-<pre>mla_localize_option_definitions_array() : void</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>Localization must be done at runtime; these calls cannot be placed in the
-"public static" array definition itself. Called from MLATest::initialize.</p></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>2.20</td>
-</tr></table>
 </div></div>
 </div>
 <a name="mla_parse_view_specification" id="mla_parse_view_specification"></a><div class="element clickable method public mla_parse_view_specification" data-toggle="collapse" data-target=".mla_parse_view_specification .collapse">
@@ -614,6 +539,25 @@ settings are being updated or reset.</h2>
 <code>boolean</code>True if the value was changed or false if the update failed</div>
 </div></div>
 </div>
+<a name="mla_wp_redirect_filter" id="mla_wp_redirect_filter"></a><div class="element clickable method public mla_wp_redirect_filter" data-toggle="collapse" data-target=".mla_wp_redirect_filter .collapse">
+<h2>Filter the redirect location.</h2>
+<pre>mla_wp_redirect_filter(string $location, int $status) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.25</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$location</h4>
+<code>string</code><p>The path to redirect to.</p></div>
+<div class="subelement argument">
+<h4>$status</h4>
+<code>int</code><p>Status code to use.</p></div>
+</div></div>
+</div>
 <a name="_debug_log" id="_debug_log"></a><div class="element clickable method private _debug_log" data-toggle="collapse" data-target="._debug_log .collapse">
 <h2>Write a debug message to the appropriate log file</h2>
 <pre>_debug_log(string $message) </pre>
@@ -655,36 +599,6 @@ settings are being updated or reset.</h2>
 <td>2.15</td>
 </tr></table>
 </div></div>
-</div>
-<a name="%24mla_option_definitions" id="$mla_option_definitions"> </a><div class="element clickable property public $mla_option_definitions" data-toggle="collapse" data-target=".$mla_option_definitions .collapse">
-<h2>$mla_option_definitions defines the database options and admin page areas for setting/updating them</h2>
-<pre>$mla_option_definitions </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"><p>The array must be populated at runtime in MLAOptions::mla_localize_option_definitions_array();
-localization calls cannot be placed in the "public static" array definition itself.</p>
-
-<p>Each option is defined by an array with the following elements:</p>
-
-<p>array key => HTML id/name attribute and option database key (OMIT MLA_OPTION_PREFIX)</p>
-
-<p>tab => Settings page tab id for the option
-name => admin page label or heading text
-type => 'checkbox', 'header', 'radio', 'select', 'text', 'textarea', 'custom', 'hidden'
-std => default value
-help => help text
-size => text size, default 40
-cols => textbox columns, default 90
-rows => textbox rows, default 5
-options => array of radio or select option values
-texts => array of radio or select option display texts
-render => rendering function for 'custom' options. Usage:
-    $options_list .= ['render']( 'render', $key, $value );
-update => update function for 'custom' options; returns nothing. Usage:
-    $message = ['update']( 'update', $key, $value, $_REQUEST );
-delete => delete function for 'custom' options; returns nothing. Usage:
-    $message = ['delete']( 'delete', $key, $value, $_REQUEST );
-reset => reset function for 'custom' options; returns nothing. Usage:
-    $message = ['reset']( 'reset', $key, $value, $_REQUEST );</p></p></div></div>
 </div>
 <a name="%24original_php_log" id="$original_php_log"> </a><div class="element clickable property public $original_php_log" data-toggle="collapse" data-target=".$original_php_log .collapse">
 <h2>Original PHP error_log path and file</h2>
@@ -856,24 +770,6 @@ reset => reset function for 'custom' options; returns nothing. Usage:
 </tr></table>
 </div></div>
 </div>
-<a name="MLA_ADD_NEW_BULK_EDIT" id="MLA_ADD_NEW_BULK_EDIT"> </a><div class="element clickable constant  MLA_ADD_NEW_BULK_EDIT" data-toggle="collapse" data-target=".MLA_ADD_NEW_BULK_EDIT .collapse">
-<h2>Provides a unique name for the Media/Add New bulk edit option</h2>
-<pre>MLA_ADD_NEW_BULK_EDIT </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN" id="MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN"> </a><div class="element clickable constant  MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN" data-toggle="collapse" data-target=".MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN .collapse">
-<h2>Provides a unique name for the Media/Add New bulk edit "Open Automatically" option</h2>
-<pre>MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_ADD_NEW_BULK_EDIT_ON_TOP" id="MLA_ADD_NEW_BULK_EDIT_ON_TOP"> </a><div class="element clickable constant  MLA_ADD_NEW_BULK_EDIT_ON_TOP" data-toggle="collapse" data-target=".MLA_ADD_NEW_BULK_EDIT_ON_TOP .collapse">
-<h2>Provides a unique name for the Media/Add New bulk edit "on top" option</h2>
-<pre>MLA_ADD_NEW_BULK_EDIT_ON_TOP </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
 <a name="MLA_ADMIN_NONCE_ACTION" id="MLA_ADMIN_NONCE_ACTION"> </a><div class="element clickable constant  MLA_ADMIN_NONCE_ACTION" data-toggle="collapse" data-target=".MLA_ADMIN_NONCE_ACTION .collapse">
 <h2>Action name; gives a context for the nonce</h2>
 <pre>MLA_ADMIN_NONCE_ACTION : string</pre>
@@ -934,18 +830,6 @@ reset => reset function for 'custom' options; returns nothing. Usage:
 </tr></table>
 </div></div>
 </div>
-<a name="MLA_BULK_CHUNK_SIZE" id="MLA_BULK_CHUNK_SIZE"> </a><div class="element clickable constant  MLA_BULK_CHUNK_SIZE" data-toggle="collapse" data-target=".MLA_BULK_CHUNK_SIZE .collapse">
-<h2>Provides a unique name for the Bulk Update and Map All chunk size option</h2>
-<pre>MLA_BULK_CHUNK_SIZE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_COUNT_TERM_ATTACHMENTS" id="MLA_COUNT_TERM_ATTACHMENTS"> </a><div class="element clickable constant  MLA_COUNT_TERM_ATTACHMENTS" data-toggle="collapse" data-target=".MLA_COUNT_TERM_ATTACHMENTS .collapse">
-<h2>Provides a unique name for the taxonomy count Attachments option</h2>
-<pre>MLA_COUNT_TERM_ATTACHMENTS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
 <a name="MLA_DEBUG_CATEGORY_AJAX" id="MLA_DEBUG_CATEGORY_AJAX"> </a><div class="element clickable constant  MLA_DEBUG_CATEGORY_AJAX" data-toggle="collapse" data-target=".MLA_DEBUG_CATEGORY_AJAX .collapse">
 <h2>Constant to log Ajax debug activity</h2>
 <pre>MLA_DEBUG_CATEGORY_AJAX : integer</pre>
@@ -955,6 +839,18 @@ reset => reset function for 'custom' options; returns nothing. Usage:
 <table class="table table-bordered"><tr>
 <th>since</th>
 <td>2.13</td>
+</tr></table>
+</div></div>
+</div>
+<a name="MLA_DEBUG_CATEGORY_ANY" id="MLA_DEBUG_CATEGORY_ANY"> </a><div class="element clickable constant  MLA_DEBUG_CATEGORY_ANY" data-toggle="collapse" data-target=".MLA_DEBUG_CATEGORY_ANY .collapse">
+<h2>Constant to log "any" debug activity</h2>
+<pre>MLA_DEBUG_CATEGORY_ANY : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>2.25</td>
 </tr></table>
 </div></div>
 </div>
@@ -982,310 +878,6 @@ reset => reset function for 'custom' options; returns nothing. Usage:
 </tr></table>
 </div></div>
 </div>
-<a name="MLA_DEBUG_DISPLAY_LIMIT" id="MLA_DEBUG_DISPLAY_LIMIT"> </a><div class="element clickable constant  MLA_DEBUG_DISPLAY_LIMIT" data-toggle="collapse" data-target=".MLA_DEBUG_DISPLAY_LIMIT .collapse">
-<h2>Provides a unique name for the Debug display limit option</h2>
-<pre>MLA_DEBUG_DISPLAY_LIMIT </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_DEBUG_FILE" id="MLA_DEBUG_FILE"> </a><div class="element clickable constant  MLA_DEBUG_FILE" data-toggle="collapse" data-target=".MLA_DEBUG_FILE .collapse">
-<h2>Provides a unique name for the Debug alternate log file option</h2>
-<pre>MLA_DEBUG_FILE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_DEBUG_REPLACE_LEVEL" id="MLA_DEBUG_REPLACE_LEVEL"> </a><div class="element clickable constant  MLA_DEBUG_REPLACE_LEVEL" data-toggle="collapse" data-target=".MLA_DEBUG_REPLACE_LEVEL .collapse">
-<h2>Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option</h2>
-<pre>MLA_DEBUG_REPLACE_LEVEL </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_DEBUG_REPLACE_PHP_LOG" id="MLA_DEBUG_REPLACE_PHP_LOG"> </a><div class="element clickable constant  MLA_DEBUG_REPLACE_PHP_LOG" data-toggle="collapse" data-target=".MLA_DEBUG_REPLACE_PHP_LOG .collapse">
-<h2>Provides a unique name for the Debug replace PHP log file option</h2>
-<pre>MLA_DEBUG_REPLACE_PHP_LOG </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_DEBUG_REPLACE_PHP_REPORTING" id="MLA_DEBUG_REPLACE_PHP_REPORTING"> </a><div class="element clickable constant  MLA_DEBUG_REPLACE_PHP_REPORTING" data-toggle="collapse" data-target=".MLA_DEBUG_REPLACE_PHP_REPORTING .collapse">
-<h2>Provides a unique name for the Debug replace PHP error_reporting option</h2>
-<pre>MLA_DEBUG_REPLACE_PHP_REPORTING </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_DEFAULT_ORDER" id="MLA_DEFAULT_ORDER"> </a><div class="element clickable constant  MLA_DEFAULT_ORDER" data-toggle="collapse" data-target=".MLA_DEFAULT_ORDER .collapse">
-<h2>Provides a unique name for the default order option</h2>
-<pre>MLA_DEFAULT_ORDER </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_DEFAULT_ORDERBY" id="MLA_DEFAULT_ORDERBY"> </a><div class="element clickable constant  MLA_DEFAULT_ORDERBY" data-toggle="collapse" data-target=".MLA_DEFAULT_ORDERBY .collapse">
-<h2>Provides a unique name for the default orderby option</h2>
-<pre>MLA_DEFAULT_ORDERBY </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_EDIT_MEDIA_META_BOXES" id="MLA_EDIT_MEDIA_META_BOXES"> </a><div class="element clickable constant  MLA_EDIT_MEDIA_META_BOXES" data-toggle="collapse" data-target=".MLA_EDIT_MEDIA_META_BOXES .collapse">
-<h2>Provides a unique name for the Edit Media additional meta boxes option</h2>
-<pre>MLA_EDIT_MEDIA_META_BOXES </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_EDIT_MEDIA_SEARCH_TAXONOMY" id="MLA_EDIT_MEDIA_SEARCH_TAXONOMY"> </a><div class="element clickable constant  MLA_EDIT_MEDIA_SEARCH_TAXONOMY" data-toggle="collapse" data-target=".MLA_EDIT_MEDIA_SEARCH_TAXONOMY .collapse">
-<h2>Provides a unique name for the "searchable taxonomies" option</h2>
-<pre>MLA_EDIT_MEDIA_SEARCH_TAXONOMY </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_ENABLE_MLA_ICONS" id="MLA_ENABLE_MLA_ICONS"> </a><div class="element clickable constant  MLA_ENABLE_MLA_ICONS" data-toggle="collapse" data-target=".MLA_ENABLE_MLA_ICONS .collapse">
-<h2>Provides a unique name for the Enable MLA Icons option</h2>
-<pre>MLA_ENABLE_MLA_ICONS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_ENABLE_POST_MIME_TYPES" id="MLA_ENABLE_POST_MIME_TYPES"> </a><div class="element clickable constant  MLA_ENABLE_POST_MIME_TYPES" data-toggle="collapse" data-target=".MLA_ENABLE_POST_MIME_TYPES .collapse">
-<h2>Provides a unique name for the Enable Post MIME Types option</h2>
-<pre>MLA_ENABLE_POST_MIME_TYPES </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_ENABLE_UPLOAD_MIMES" id="MLA_ENABLE_UPLOAD_MIMES"> </a><div class="element clickable constant  MLA_ENABLE_UPLOAD_MIMES" data-toggle="collapse" data-target=".MLA_ENABLE_UPLOAD_MIMES .collapse">
-<h2>Provides a unique name for the Enable Upload MIME Types option</h2>
-<pre>MLA_ENABLE_UPLOAD_MIMES </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_EXCLUDE_REVISIONS" id="MLA_EXCLUDE_REVISIONS"> </a><div class="element clickable constant  MLA_EXCLUDE_REVISIONS" data-toggle="collapse" data-target=".MLA_EXCLUDE_REVISIONS .collapse">
-<h2>Provides a unique name for the exclude revisions option</h2>
-<pre>MLA_EXCLUDE_REVISIONS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_EXIF_SIZE" id="MLA_EXIF_SIZE"> </a><div class="element clickable constant  MLA_EXIF_SIZE" data-toggle="collapse" data-target=".MLA_EXIF_SIZE .collapse">
-<h2>Provides a "size" attribute value for the EXIF/Template Value field</h2>
-<pre>MLA_EXIF_SIZE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_FEATURED_IN_TUNING" id="MLA_FEATURED_IN_TUNING"> </a><div class="element clickable constant  MLA_FEATURED_IN_TUNING" data-toggle="collapse" data-target=".MLA_FEATURED_IN_TUNING .collapse">
-<h2>Provides a unique name for a database tuning option</h2>
-<pre>MLA_FEATURED_IN_TUNING </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_GALLERY_IN_TUNING" id="MLA_GALLERY_IN_TUNING"> </a><div class="element clickable constant  MLA_GALLERY_IN_TUNING" data-toggle="collapse" data-target=".MLA_GALLERY_IN_TUNING .collapse">
-<h2>Provides a unique name for a database tuning option</h2>
-<pre>MLA_GALLERY_IN_TUNING </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_INSERTED_IN_TUNING" id="MLA_INSERTED_IN_TUNING"> </a><div class="element clickable constant  MLA_INSERTED_IN_TUNING" data-toggle="collapse" data-target=".MLA_INSERTED_IN_TUNING .collapse">
-<h2>Provides a unique name for a database tuning option</h2>
-<pre>MLA_INSERTED_IN_TUNING </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_GRID_TOOLBAR" id="MLA_MEDIA_GRID_TOOLBAR"> </a><div class="element clickable constant  MLA_MEDIA_GRID_TOOLBAR" data-toggle="collapse" data-target=".MLA_MEDIA_GRID_TOOLBAR .collapse">
-<h2>Provides a unique name for the Media Grid toolbar option, which
-also controls the ATTACHMENT DETAILS enhancements</h2>
-<pre>MLA_MEDIA_GRID_TOOLBAR </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS" id="MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS .collapse">
-<h2>Provides a unique name for the Media Manager Force Image Default Setings option</h2>
-<pre>MLA_MEDIA_MODAL_APPLY_DISPLAY_SETTINGS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_DETAILS_AUTOFILL" id="MLA_MEDIA_MODAL_DETAILS_AUTOFILL"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_DETAILS_AUTOFILL" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_DETAILS_AUTOFILL .collapse">
-<h2>Provides a unique name for the Media Manager Attachment Details auto-fill option</h2>
-<pre>MLA_MEDIA_MODAL_DETAILS_AUTOFILL </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" id="MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX .collapse">
-<h2>Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
-This option is for hierarchical taxonomies, e.g., "Att.</h2>
-<pre>MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"><p>Categories".</p></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_DETAILS_TAG_METABOX" id="MLA_MEDIA_MODAL_DETAILS_TAG_METABOX"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_DETAILS_TAG_METABOX" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_DETAILS_TAG_METABOX .collapse">
-<h2>Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
-This option is for flat taxonomies, e.g., "Att.</h2>
-<pre>MLA_MEDIA_MODAL_DETAILS_TAG_METABOX </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"><p>Tags".</p></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_MIMETYPES" id="MLA_MEDIA_MODAL_MIMETYPES"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_MIMETYPES" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_MIMETYPES .collapse">
-<h2>Provides a unique name for the Media Manager toolbar MIME Types option</h2>
-<pre>MLA_MEDIA_MODAL_MIMETYPES </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_MONTHS" id="MLA_MEDIA_MODAL_MONTHS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_MONTHS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_MONTHS .collapse">
-<h2>Provides a unique name for the Media Manager toolbar Month and Year option</h2>
-<pre>MLA_MEDIA_MODAL_MONTHS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_ORDER" id="MLA_MEDIA_MODAL_ORDER"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_ORDER" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_ORDER .collapse">
-<h2>Provides a unique name for the Media Manager order option</h2>
-<pre>MLA_MEDIA_MODAL_ORDER </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_ORDERBY" id="MLA_MEDIA_MODAL_ORDERBY"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_ORDERBY" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_ORDERBY .collapse">
-<h2>Provides a unique name for the Media Manager orderby option</h2>
-<pre>MLA_MEDIA_MODAL_ORDERBY </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_SEARCHBOX" id="MLA_MEDIA_MODAL_SEARCHBOX"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_SEARCHBOX" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_SEARCHBOX .collapse">
-<h2>Provides a unique name for the Media Manager toolbar Search Box option</h2>
-<pre>MLA_MEDIA_MODAL_SEARCHBOX </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS" id="MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS .collapse">
-<h2>Provides a unique name for the Media Manager toolbar Search Box Controls option</h2>
-<pre>MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_TERMS" id="MLA_MEDIA_MODAL_TERMS"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_TERMS" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_TERMS .collapse">
-<h2>Provides a unique name for the Media Manager toolbar Taxonomy Terms option</h2>
-<pre>MLA_MEDIA_MODAL_TERMS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_TERMS_SEARCH" id="MLA_MEDIA_MODAL_TERMS_SEARCH"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_TERMS_SEARCH" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_TERMS_SEARCH .collapse">
-<h2>Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option</h2>
-<pre>MLA_MEDIA_MODAL_TERMS_SEARCH </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MEDIA_MODAL_TOOLBAR" id="MLA_MEDIA_MODAL_TOOLBAR"> </a><div class="element clickable constant  MLA_MEDIA_MODAL_TOOLBAR" data-toggle="collapse" data-target=".MLA_MEDIA_MODAL_TOOLBAR .collapse">
-<h2>Provides a unique name for the Media Manager toolbar option, which
-also controls the ATTACHMENT DETAILS enhancements</h2>
-<pre>MLA_MEDIA_MODAL_TOOLBAR </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_MLA_GALLERY_IN_TUNING" id="MLA_MLA_GALLERY_IN_TUNING"> </a><div class="element clickable constant  MLA_MLA_GALLERY_IN_TUNING" data-toggle="collapse" data-target=".MLA_MLA_GALLERY_IN_TUNING .collapse">
-<h2>Provides a unique name for a database tuning option</h2>
-<pre>MLA_MLA_GALLERY_IN_TUNING </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_NEW_CUSTOM_FIELD" id="MLA_NEW_CUSTOM_FIELD"> </a><div class="element clickable constant  MLA_NEW_CUSTOM_FIELD" data-toggle="collapse" data-target=".MLA_NEW_CUSTOM_FIELD .collapse">
-<h2>Provides a unique name for the Custom Field "new field" key</h2>
-<pre>MLA_NEW_CUSTOM_FIELD </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_NEW_CUSTOM_RULE" id="MLA_NEW_CUSTOM_RULE"> </a><div class="element clickable constant  MLA_NEW_CUSTOM_RULE" data-toggle="collapse" data-target=".MLA_NEW_CUSTOM_RULE .collapse">
-<h2>Provides a unique name for the Custom Field "new rule" key</h2>
-<pre>MLA_NEW_CUSTOM_RULE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_POST_MIME_TYPES" id="MLA_POST_MIME_TYPES"> </a><div class="element clickable constant  MLA_POST_MIME_TYPES" data-toggle="collapse" data-target=".MLA_POST_MIME_TYPES .collapse">
-<h2>Provides a unique name for the Post MIME Types option</h2>
-<pre>MLA_POST_MIME_TYPES </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SCREEN_DISPLAY_LIBRARY" id="MLA_SCREEN_DISPLAY_LIBRARY"> </a><div class="element clickable constant  MLA_SCREEN_DISPLAY_LIBRARY" data-toggle="collapse" data-target=".MLA_SCREEN_DISPLAY_LIBRARY .collapse">
-<h2>Provides a unique name for the admin screen remove Media/Library option</h2>
-<pre>MLA_SCREEN_DISPLAY_LIBRARY </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SCREEN_MENU_TITLE" id="MLA_SCREEN_MENU_TITLE"> </a><div class="element clickable constant  MLA_SCREEN_MENU_TITLE" data-toggle="collapse" data-target=".MLA_SCREEN_MENU_TITLE .collapse">
-<h2>Provides a unique name for the admin screen menu title option</h2>
-<pre>MLA_SCREEN_MENU_TITLE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SCREEN_ORDER" id="MLA_SCREEN_ORDER"> </a><div class="element clickable constant  MLA_SCREEN_ORDER" data-toggle="collapse" data-target=".MLA_SCREEN_ORDER .collapse">
-<h2>Provides a unique name for the admin screen menu order option</h2>
-<pre>MLA_SCREEN_ORDER </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SCREEN_PAGE_TITLE" id="MLA_SCREEN_PAGE_TITLE"> </a><div class="element clickable constant  MLA_SCREEN_PAGE_TITLE" data-toggle="collapse" data-target=".MLA_SCREEN_PAGE_TITLE .collapse">
-<h2>Provides a unique name for the admin screen page title option</h2>
-<pre>MLA_SCREEN_PAGE_TITLE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SEARCH_MEDIA_FILTER_DEFAULTS" id="MLA_SEARCH_MEDIA_FILTER_DEFAULTS"> </a><div class="element clickable constant  MLA_SEARCH_MEDIA_FILTER_DEFAULTS" data-toggle="collapse" data-target=".MLA_SEARCH_MEDIA_FILTER_DEFAULTS .collapse">
-<h2>Provides a unique name for the display Search Media controls option</h2>
-<pre>MLA_SEARCH_MEDIA_FILTER_DEFAULTS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS" id="MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS"> </a><div class="element clickable constant  MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS" data-toggle="collapse" data-target=".MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS .collapse">
-<h2>Provides a unique name for the display Search Media controls option</h2>
-<pre>MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_SETTINGS_SLUG" id="MLA_SETTINGS_SLUG"> </a><div class="element clickable constant  MLA_SETTINGS_SLUG" data-toggle="collapse" data-target=".MLA_SETTINGS_SLUG .collapse">
-<h2>Provides a unique name for the settings page</h2>
-<pre>MLA_SETTINGS_SLUG : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>2.20</td>
-</tr></table>
-</div></div>
-</div>
-<a name="MLA_TABLE_ICON_SIZE" id="MLA_TABLE_ICON_SIZE"> </a><div class="element clickable constant  MLA_TABLE_ICON_SIZE" data-toggle="collapse" data-target=".MLA_TABLE_ICON_SIZE .collapse">
-<h2>Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option</h2>
-<pre>MLA_TABLE_ICON_SIZE </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_TABLE_VIEWS_WIDTH" id="MLA_TABLE_VIEWS_WIDTH"> </a><div class="element clickable constant  MLA_TABLE_VIEWS_WIDTH" data-toggle="collapse" data-target=".MLA_TABLE_VIEWS_WIDTH .collapse">
-<h2>Provides a unique name for the Media/Assistant submenu table views width option</h2>
-<pre>MLA_TABLE_VIEWS_WIDTH </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_TAXONOMY_FILTER_DEPTH" id="MLA_TAXONOMY_FILTER_DEPTH"> </a><div class="element clickable constant  MLA_TAXONOMY_FILTER_DEPTH" data-toggle="collapse" data-target=".MLA_TAXONOMY_FILTER_DEPTH .collapse">
-<h2>Provides a unique name for the taxonomy filter maximum depth option</h2>
-<pre>MLA_TAXONOMY_FILTER_DEPTH </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN" id="MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN"> </a><div class="element clickable constant  MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN" data-toggle="collapse" data-target=".MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN .collapse">
-<h2>Provides a unique name for the taxonomy filter maximum depth option</h2>
-<pre>MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_TAXONOMY_SUPPORT" id="MLA_TAXONOMY_SUPPORT"> </a><div class="element clickable constant  MLA_TAXONOMY_SUPPORT" data-toggle="collapse" data-target=".MLA_TAXONOMY_SUPPORT .collapse">
-<h2>Provides a unique name for the taxonomy support option</h2>
-<pre>MLA_TAXONOMY_SUPPORT </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_UPLOAD_MIMES" id="MLA_UPLOAD_MIMES"> </a><div class="element clickable constant  MLA_UPLOAD_MIMES" data-toggle="collapse" data-target=".MLA_UPLOAD_MIMES .collapse">
-<h2>Provides a unique name for the Upload MIME Types option</h2>
-<pre>MLA_UPLOAD_MIMES </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="MLA_VERSION_OPTION" id="MLA_VERSION_OPTION"> </a><div class="element clickable constant  MLA_VERSION_OPTION" data-toggle="collapse" data-target=".MLA_VERSION_OPTION .collapse">
-<h2>Provides a unique name for the current version option</h2>
-<pre>MLA_VERSION_OPTION </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
 </div>
 </div>
 </div>
@@ -1293,7 +885,7 @@ also controls the ATTACHMENT DETAILS enhancements</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2016-01-23T23:00:26-08:00.<br></footer></div>
+            generated on 2016-04-08T17:25:39-07:00.<br></footer></div>
 </div>
 </body>
 </html>

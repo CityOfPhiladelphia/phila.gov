@@ -138,7 +138,7 @@ class MLAReferences {
 		/*
 		 * Process the where-used settings option
 		 */
-		if ('checked' == MLACore::mla_get_option( MLACore::MLA_EXCLUDE_REVISIONS ) ) {
+		if ('checked' == MLACore::mla_get_option( MLACoreOptions::MLA_EXCLUDE_REVISIONS ) ) {
 			$exclude_revisions = "(post_type <> 'revision') AND ";
 		} else {
 			$exclude_revisions = '';
@@ -192,7 +192,7 @@ class MLAReferences {
 			$reference_tests++;
 
 			if ( NULL == $inserted_in_option ) {
-				$inserted_in_option = MLACore::mla_get_option( MLACore::MLA_INSERTED_IN_TUNING );
+				$inserted_in_option = MLACore::mla_get_option( MLACoreOptions::MLA_INSERTED_IN_TUNING );
 				$references['inserted_option'] = $inserted_in_option;
 			}
 
@@ -273,7 +273,7 @@ class MLAReferences {
 		 */
 		if ( MLACore::$process_mla_gallery_in ) {
 			$reference_tests++;
-			if ( self::_build_mla_galleries( MLACore::MLA_MLA_GALLERY_IN_TUNING, self::$mla_galleries, '[mla_gallery', $exclude_revisions ) ) {
+			if ( self::_build_mla_galleries( MLACoreOptions::MLA_MLA_GALLERY_IN_TUNING, self::$mla_galleries, '[mla_gallery', $exclude_revisions ) ) {
 				$galleries = self::_search_mla_galleries( self::$mla_galleries, $ID );
 				if ( ! empty( $galleries ) ) {
 					$references['found_reference'] = true;
@@ -295,7 +295,7 @@ class MLAReferences {
 		 */
 		if ( MLACore::$process_gallery_in ) {
 			$reference_tests++;
-			if ( self::_build_mla_galleries( MLACore::MLA_GALLERY_IN_TUNING, self::$galleries, '[gallery', $exclude_revisions ) ) {
+			if ( self::_build_mla_galleries( MLACoreOptions::MLA_GALLERY_IN_TUNING, self::$galleries, '[gallery', $exclude_revisions ) ) {
 				$galleries = self::_search_mla_galleries( self::$galleries, $ID );
 				if ( ! empty( $galleries ) ) {
 					$references['found_reference'] = true;
@@ -383,7 +383,7 @@ class MLAReferences {
 			'parent_errors' => ''
 		);
 
-		$inserted_in_option = MLACore::mla_get_option( MLACore::MLA_INSERTED_IN_TUNING );
+		$inserted_in_option = MLACore::mla_get_option( MLACoreOptions::MLA_INSERTED_IN_TUNING );
 		$initial_references['inserted_option'] = $inserted_in_option;
 
 		/*
@@ -451,7 +451,7 @@ class MLAReferences {
 			$files[ $index ] = $references;
 		}
 
-		if ('checked' == MLACore::mla_get_option( MLACore::MLA_EXCLUDE_REVISIONS ) ) {
+		if ('checked' == MLACore::mla_get_option( MLACoreOptions::MLA_EXCLUDE_REVISIONS ) ) {
 			$exclude_revisions = " AND (p.post_type <> 'revision')";
 		} else {
 			$exclude_revisions = '';
@@ -526,13 +526,13 @@ class MLAReferences {
 		} // process_inserted_in
 
 		if ( MLACore::$process_mla_gallery_in ) {
-			$have_mla_galleries = self::_build_mla_galleries( MLACore::MLA_MLA_GALLERY_IN_TUNING, self::$mla_galleries, '[mla_gallery', $exclude_revisions );
+			$have_mla_galleries = self::_build_mla_galleries( MLACoreOptions::MLA_MLA_GALLERY_IN_TUNING, self::$mla_galleries, '[mla_gallery', $exclude_revisions );
 		} else {
 			$have_mla_galleries = false;
 		}
 
 		if ( MLACore::$process_gallery_in ) {
-			$have_galleries = self::_build_mla_galleries( MLACore::MLA_GALLERY_IN_TUNING, self::$galleries, '[gallery', $exclude_revisions );
+			$have_galleries = self::_build_mla_galleries( MLACoreOptions::MLA_GALLERY_IN_TUNING, self::$galleries, '[gallery', $exclude_revisions );
 		} else {
 			$have_mla_galleries = false;
 		}
@@ -616,7 +616,7 @@ class MLAReferences {
 			 */
 			if ( MLACore::$process_mla_gallery_in ) {
 				$reference_tests++;
-				if ( self::_build_mla_galleries( MLACore::MLA_MLA_GALLERY_IN_TUNING, self::$mla_galleries, '[mla_gallery', $exclude_revisions ) ) {
+				if ( self::_build_mla_galleries( MLACoreOptions::MLA_MLA_GALLERY_IN_TUNING, self::$mla_galleries, '[mla_gallery', $exclude_revisions ) ) {
 					$galleries = self::_search_mla_galleries( self::$mla_galleries, $attachment->ID );
 					if ( ! empty( $galleries ) ) {
 						$references['found_reference'] = true;
@@ -638,7 +638,7 @@ class MLAReferences {
 			 */
 			if ( MLACore::$process_gallery_in ) {
 				$reference_tests++;
-				if ( self::_build_mla_galleries( MLACore::MLA_GALLERY_IN_TUNING, self::$galleries, '[gallery', $exclude_revisions ) ) {
+				if ( self::_build_mla_galleries( MLACoreOptions::MLA_GALLERY_IN_TUNING, self::$galleries, '[gallery', $exclude_revisions ) ) {
 					$galleries = self::_search_mla_galleries( self::$galleries, $attachment->ID );
 					if ( ! empty( $galleries ) ) {
 						$references['found_reference'] = true;
@@ -735,10 +735,10 @@ class MLAReferences {
 	 */
 	public static function mla_flush_mla_galleries_handler( $option_name ) {
 		switch ( $option_name ) {
-			case MLACore::MLA_GALLERY_IN_TUNING:
+			case MLACoreOptions::MLA_GALLERY_IN_TUNING:
 				self::$galleries = NULL;
 				break;
-			case MLACore::MLA_MLA_GALLERY_IN_TUNING:
+			case MLACoreOptions::MLA_MLA_GALLERY_IN_TUNING:
 				self::$mla_galleries = NULL;
 				break;
 			default:

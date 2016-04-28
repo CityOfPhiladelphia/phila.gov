@@ -2,7 +2,7 @@
 /**
  * Provides examples of hooking the filters provided by the [mla_gallery] shortcode:
  *
- *  - In the "mla_gallery_query_arguments" filter is an example of custom SQL queries
+ *  - In the "mla_gallery_query_arguments" filter are two examples of custom SQL queries
  *    that replace the usual get_posts/WP_Query results.
  *
  *  - In the "mla_gallery_item_values" filter are six examples that modify the 
@@ -16,7 +16,7 @@
  * and illustrates some of the techniques you can use to customize the gallery display.
  *
  * @package MLA Gallery Hooks Example
- * @version 1.07
+ * @version 1.08
  */
 
 /*
@@ -24,10 +24,10 @@ Plugin Name: MLA Gallery Hooks Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Provides examples of hooking the filters provided by the [mla_gallery] shortcode
 Author: David Lingren
-Version: 1.07
+Version: 1.08
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
-Copyright 2013, 2014 David Lingren
+Copyright 2013 - 2016 David Lingren
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -330,8 +330,82 @@ class MLAGalleryHooksExample {
 	 */
 	public static function mla_gallery_query_arguments_filter( $all_query_parameters ) {
 		//error_log( 'MLAGalleryHooksExample::mla_gallery_query_arguments_filter $all_query_parameters = ' . var_export( $all_query_parameters, true ), 0 );
+		//error_log( 'MLAGalleryHooksExample::mla_gallery_query_arguments_filter self::$shortcode_attributes = ' . var_export( self::$shortcode_attributes, true ), 0 );
 
 		self::$all_query_parameters = $all_query_parameters;
+
+		/*
+		 * This example executes a custom SQL query that cannot be done with the usual
+		 * WordPress WP_Query arguments. The query results are fed back to the [mla_gallery]
+		 * shortcode as a list of attachments using the "include" parameter.
+		 *
+		 * The query supported in this example's "recent_random_uploads" parameter selects one
+		 * random image from the "most recent" uploads. The number of uploads considered "most recent"
+		 * is taken from the value of the shortcode parameter, e.g., "most_recent_uploads=10" to
+		 * select ten recent uploads.
+		 *
+		 * You can also display more than one image by adding a second value to the parameter,
+		 * e.g., "most_recent_uploads=10,2" to display 2 of the ten most recent uploads.
+		 *
+		 * We use a shortcode parameter of our own to apply this filter on a gallery-by-gallery
+		 * basis, leaving other [mla_gallery] instances untouched. If the "recent_random_uploads"
+		 * parameter is not present, we have nothing to do. If the parameter IS present, build a
+		 * custom query that first selects the recent uploads and then picks one of them at random.
+		 */		
+		if ( isset( self::$shortcode_attributes['recent_random_uploads'] ) ) {
+			global $wpdb;
+
+			// Extract the number of "recent posts" to consider and the (optional) number to display
+			$limits = explode( ',', self::$shortcode_attributes['recent_random_uploads'] );
+			$recent_limit = absint( $limits[0] );
+			if ( 0 == $recent_limit ) {
+				return $all_query_parameters;
+			}
+			
+			$display_limit = isset( $limits[1] ) ? absint( $limits[1] ) : 1;
+			if ( 0 == $display_limit ) {
+				$display_limit = 1;
+			}
+
+			// Build an array of SQL clauses
+			$query = array();
+			$query_parameters = array();
+
+			$query[] = "SELECT p.ID FROM (";
+			$query[] = "SELECT ID FROM {$wpdb->posts} WHERE (";
+			$query[] = "( post_type = 'attachment' )";
+			$query[] = "AND ( post_status = 'inherit' )";
+			$query[] = "AND ( post_parent > 0 )";
+			$query[] = "AND ( post_mime_type LIKE 'image/%%' )";
+			$query[] = ") ORDER BY post_date DESC";
+
+			$query[] = "LIMIT %d";
+			$query_parameters[] = $recent_limit;
+
+			$query[] = ") AS p ORDER BY RAND()";
+
+			$query[] = "LIMIT %d";
+			$query_parameters[] = $display_limit;
+
+			$query =  join(' ', $query);
+			$ids = $wpdb->get_results( $wpdb->prepare( $query, $query_parameters ) );
+			if ( is_array( $ids ) ) {
+				$includes = array();
+				foreach ( $ids as $id ) {
+					$includes[] = $id->ID;
+				}
+				$all_query_parameters['include'] = implode( ',', $includes );
+			} else {
+				$all_query_parameters['include'] = '1'; // return no images
+			}
+
+			// Remove redundant parameters from the final query
+			$all_query_parameters['post_mime_type'] = 'all';
+			$all_query_parameters['orderby'] = 'none';
+			$all_query_parameters['post_status'] = 'all'; 
+
+			return $all_query_parameters;
+		} // parameter "recent_random_uploads" is present
 
 		/*
 		 * This example executes a custom SQL query that cannot be done with the usual
@@ -524,6 +598,8 @@ class MLAGalleryHooksExample {
 			} else {
 				$all_query_parameters['include'] = '1'; // return no images
 			}
+
+			return $all_query_parameters;
 		} // parameter "my_custom_sql" is present
 
 		return $all_query_parameters;

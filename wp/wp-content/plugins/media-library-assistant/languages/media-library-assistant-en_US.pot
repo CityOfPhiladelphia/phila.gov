@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Media Library Assistant\n"
-"POT-Creation-Date: 2016-01-23 23:01-0800\n"
+"POT-Creation-Date: 2016-04-08 20:53-0700\n"
 "PO-Revision-Date: 2015-08-21 21:38-0800\n"
 "Last-Translator: David Lingren <david@fairtradejudaica.org>\n"
 "Language-Team: David Lingren <david@fairtradejudaica.org>\n"
@@ -129,7 +129,7 @@ msgid "Cached"
 msgstr ""
 
 msgid ""
-"Search database posts and pages for [gallery] shortcode results.<br>&nbsp;"
+"Search database posts and pages for [ gallery ] shortcode results.<br>&nbsp;"
 "&nbsp;Dynamic = once every page load, Cached = once every login, Disabled = "
 "never.<br>&nbsp;&nbsp;Refresh = update references, then set to Cached."
 msgstr ""
@@ -230,6 +230,14 @@ msgstr ""
 msgid ""
 "Check/uncheck this option to display/remove the WordPress Media/Library "
 "submenu entry."
+msgstr ""
+
+msgid "Display Media/Assistant list/grid view switcher"
+msgstr ""
+
+msgid ""
+"Check/uncheck this option to display/remove the \"list/grid\" view switcher "
+"on the Media/Assistant submenu."
 msgstr ""
 
 msgid "Table Defaults"
@@ -515,6 +523,29 @@ msgid "Large"
 msgstr ""
 
 msgid "Full Size"
+msgstr ""
+
+msgid "Uninstall (Delete) Plugin Settings"
+msgstr ""
+
+msgid "Delete Option Settings"
+msgstr ""
+
+msgid ""
+"Check this option to remove all MLA option settings from the database when "
+"the plugin is deleted.<br>&nbsp;&nbsp;<strong>You can make a backup copy</"
+"strong> of your settings below by clicking \""
+msgstr ""
+
+msgid "Export ALL Settings"
+msgstr ""
+
+msgid "Delete Option Settings Backups"
+msgstr ""
+
+msgid ""
+"Check this option to remove the <code>/wp-content/mla-backup</code> "
+"directory and its contents when the plugin is deleted."
 msgstr ""
 
 msgid "Default [mla_gallery] Templates and Settings"
@@ -1643,6 +1674,7 @@ msgid "Tags"
 msgstr ""
 
 #. translators: %s: add new taxonomy label
+#. translators: %s: add new taxonomy label
 #. translators: %s: add new View
 #. translators: %s: add new Upload MIME Type
 #, php-format
@@ -2471,9 +2503,6 @@ msgstr ""
 msgid "Media Manager Enhancements"
 msgstr ""
 
-msgid "Export ALL Settings"
-msgstr ""
-
 msgid "Delete General options and restore default settings"
 msgstr ""
 
@@ -2773,6 +2802,12 @@ msgid ""
 "markup."
 msgstr ""
 
+msgid "Arguments"
+msgstr ""
+
+msgid "Default shortcode parameter values."
+msgstr ""
+
 msgid "Open"
 msgstr ""
 
@@ -3012,6 +3047,12 @@ msgstr ""
 #. translators: 1: template name
 #, php-format
 msgctxt "message_list"
+msgid "Updating arguments markup for \"%1$s\"."
+msgstr ""
+
+#. translators: 1: template name
+#, php-format
+msgctxt "message_list"
 msgid "Updating open markup for \"%1$s\"."
 msgstr ""
 
@@ -3207,6 +3248,9 @@ msgid "mla_debug arguments"
 msgstr ""
 
 msgid "mla_debug empty cloud"
+msgstr ""
+
+msgid "mla_debug empty list"
 msgstr ""
 
 msgid "Invalid mla_gallery"

@@ -172,7 +172,7 @@ class MLA_List_Table extends WP_List_Table {
 				'exclude' => '',
 				// 'exclude_tree => '', 
 				'echo' => true,
-				'depth' => MLACore::mla_get_option( MLACore::MLA_TAXONOMY_FILTER_DEPTH ),
+				'depth' => MLACore::mla_get_option( MLACoreOptions::MLA_TAXONOMY_FILTER_DEPTH ),
 				'tab_index' => 0,
 				'name' => 'mla_filter_term',
 				'id' => 'name',
@@ -716,8 +716,8 @@ class MLA_List_Table extends WP_List_Table {
 			$item_id = $item->ID;
 		}
 
-		$icon_width = MLACore::mla_get_option( MLACore::MLA_TABLE_ICON_SIZE );
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		$icon_width = MLACore::mla_get_option( MLACoreOptions::MLA_TABLE_ICON_SIZE );
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			if ( empty( $icon_width ) ) {
 				$icon_width = $icon_height = 64;
 			} else {
@@ -1532,7 +1532,7 @@ class MLA_List_Table extends WP_List_Table {
 				$mla_types[ $value->slug ] = $value;
 			}
 
-			$default_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, true );
+			$default_types = MLACore::mla_get_option( MLACoreOptions::MLA_POST_MIME_TYPES, true );
 			$posts_per_type = (array) wp_count_attachments();
 			$post_mime_types = get_post_mime_types();
 			$avail_post_mime_types = self::_avail_mime_types( $posts_per_type );
@@ -1714,6 +1714,40 @@ class MLA_List_Table extends WP_List_Table {
 		}
 
 		return apply_filters( 'mla_list_table_get_bulk_actions', $actions );
+	}
+
+	/**
+	 * Generate the table navigation above or below the table
+	 *
+	 * Adds the list/grid switcher in WP 4.0+
+	 *
+	 * @since 2.25
+	 *
+	 * @param	string	'top' or 'bottom', i.e., above or below the table rows
+	 */
+	function display_tablenav( $which ) {
+		if ( 'top' === $which ) {
+			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
+		}
+		?>
+
+	<div class="tablenav <?php echo esc_attr( $which ); ?>">
+		<?php if ( 'top' === $which && MLAQuery::$wp_4dot0_plus && ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_DISPLAY_SWITCHER ) )): ?>
+		<div class="view-switch media-grid-view-switch" style="float: left"> <a class="view-list current" href="<?php echo admin_url( 'upload.php?page=' . MLACore::ADMIN_PAGE_SLUG ); ?>"> <span class="screen-reader-text">List View</span> </a> <a class="view-grid" href="<?php echo admin_url( 'upload.php?mode=grid' ); ?>"> <span class="screen-reader-text">Grid View</span> </a> </div>
+		<?php endif; ?>
+
+		<?php if ( $this->has_items() ): ?>
+		<div class="alignleft actions bulkactions">
+			<?php $this->bulk_actions( $which ); ?>
+		</div>
+		<?php endif;
+		$this->extra_tablenav( $which );
+		$this->pagination( $which );
+?>
+
+		<br class="clear" />
+	</div>
+<?php
 	}
 
 	/**
