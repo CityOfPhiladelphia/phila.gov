@@ -258,7 +258,7 @@ class MLA_Ajax {
 /*
  * Check for Media Manager Enhancements
  */
-if ( ( ( 'checked' == MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_TOOLBAR ) ) || ( 'checked' == MLACore::mla_get_option( MLACore::MLA_MEDIA_GRID_TOOLBAR ) ) ) ) {
+if ( ( ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_TOOLBAR ) ) || ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_GRID_TOOLBAR ) ) ) ) {
 	require_once( MLA_PLUGIN_PATH . 'includes/class-mla-media-modal-ajax.php' );
 	add_action( 'init', 'MLAModal_Ajax::initialize', 0x7FFFFFFF );
 }

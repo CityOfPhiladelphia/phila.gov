@@ -89,7 +89,7 @@ class MLAEdit {
 		/*
 		 * Check for Media/Add New bulk edit area updates
 		 */
-		if ( ! empty( $_REQUEST['mlaAddNewBulkEditFormString'] ) && ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ADD_NEW_BULK_EDIT ) ) ) {
+		if ( ! empty( $_REQUEST['mlaAddNewBulkEditFormString'] ) && ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ADD_NEW_BULK_EDIT ) ) ) {
 			/*
 			 * If any of the mapping rule options is enabled, use the MLA filter so this
 			 * filter is called after mapping rules have run. If none are enabled,
@@ -156,7 +156,7 @@ class MLAEdit {
 		/*
 		 * Add New Bulk Edit Area
 		 */
-		if ( 'media-new.php' == $page_hook && ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ADD_NEW_BULK_EDIT ) ) ) {
+		if ( 'media-new.php' == $page_hook && ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ADD_NEW_BULK_EDIT ) ) ) {
 			if ( $wp_locale->is_rtl() ) {
 				wp_register_style( 'mla-add-new-bulk-edit', MLA_PLUGIN_URL . 'css/mla-add-new-bulk-edit-rtl.css', false, MLA::CURRENT_MLA_VERSION );
 				wp_register_style( 'mla-add-new-bulk-edit' . '-set-parent', MLA_PLUGIN_URL . 'css/mla-style-set-parent-rtl.css', false, MLA::CURRENT_MLA_VERSION );
@@ -179,8 +179,8 @@ class MLAEdit {
 				'uploadTitle' => __( 'Upload New Media items', 'media-library-assistant' ),
 				'toggleOpen' => __( 'Open Bulk Edit area', 'media-library-assistant' ),
 				'toggleClose' => __( 'Close Bulk Edit area', 'media-library-assistant' ),
-				'areaOnTop' => ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ADD_NEW_BULK_EDIT_ON_TOP ) ),
-				'areaOpen' => ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN ) ),
+				'areaOnTop' => ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ADD_NEW_BULK_EDIT_ON_TOP ) ),
+				'areaOpen' => ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ADD_NEW_BULK_EDIT_AUTO_OPEN ) ),
 				'comma' => _x( ',', 'tag_delimiter', 'media-library-assistant' ),
 				'ajaxFailError' => __( 'An ajax.fail error has occurred. Please reload the page and try again.', 'media-library-assistant' ),
 				'ajaxDoneError' => __( 'An ajax.done error has occurred. Please reload the page and try again.', 'media-library-assistant' ),
@@ -537,12 +537,19 @@ class MLAEdit {
 		$view_args = array( 'page' => MLACore::ADMIN_PAGE_SLUG, 'mla_item_ID' => $post->ID );
 		if ( isset( $_REQUEST['mla_source'] ) ) {
 			$view_args['mla_source'] = $_REQUEST['mla_source'];
+		
+			// apply_filters( 'get_delete_post_link', wp_nonce_url( $delete_link, "$action-post_{$post->ID}" ), $post->ID, $force_delete ) in /wp-includes/link-template.php
+			add_filter( 'get_delete_post_link', 'MLAEdit::get_delete_post_link_filter', 10, 3 );
 		}
 		if ( isset( $_REQUEST['lang'] ) ) {
 			$view_args['lang'] = $_REQUEST['lang'];
 		}
 
 		echo '<span id="mla_metadata_links" style="font-weight: bold; line-height: 2em">';
+
+		if ( isset( $_REQUEST['mla_source'] ) ) {
+			echo '<input name="mla_source" type="hidden" id="mla_source" value="' . $_REQUEST['mla_source'] . '" />';
+		}
 
 		echo '<a href="' . add_query_arg( $view_args, wp_nonce_url( 'upload.php?mla_admin_action=' . MLA::MLA_ADMIN_SINGLE_CUSTOM_FIELD_MAP, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Map Custom Field metadata for this item', 'media-library-assistant' ) . '">' . __( 'Map Custom Field metadata', 'media-library-assistant' ) . '</a><br>';
 
@@ -551,6 +558,29 @@ class MLAEdit {
 		echo "</span>\n";
 		echo "</div><!-- .misc-pub-section -->\n";
 	} // mla_attachment_submitbox_action
+
+	/**
+	 * Adds mla_source argument to Trash/Delete link.
+	 * Declared public because it is a filter.
+	 *
+	 * @since 2.25
+	 *
+	 * @param string $link         The delete link.
+	 * @param int    $post_id      Post ID.
+	 * @param bool   $force_delete Whether to bypass the trash and force deletion. Default false.
+	 */
+	public static function get_delete_post_link_filter( $link, $post_id, $force_delete ) {
+		/*
+		 * Add mla_source to force return to the Media/Assistant submenu
+		 */
+		if ( $force_delete ) {
+			$link = add_query_arg( 'mla_source', 'delete', $link );
+		} else {
+			$link = add_query_arg( 'mla_source', 'trash', $link );
+		}
+
+		return $link;
+	} // get_delete_post_link_filter
 
 	/**
 	 * Registers meta boxes for the Edit Media screen.
@@ -582,7 +612,7 @@ class MLAEdit {
 		$screen = convert_to_screen( 'attachment' );
 		$page = $screen->id;
 
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_EDIT_MEDIA_SEARCH_TAXONOMY ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_EDIT_MEDIA_SEARCH_TAXONOMY ) ) {
 			$taxonomies = get_taxonomies( array ( 'show_ui' => true ), 'objects' );
 			foreach ( $taxonomies as $key => $value ) {
 				if ( MLACore::mla_taxonomy_support( $key ) ) {
@@ -613,7 +643,7 @@ class MLAEdit {
 			} // foreach
 		} // MLA_EDIT_MEDIA_SEARCH_TAXONOMY
 
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_EDIT_MEDIA_META_BOXES ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_EDIT_MEDIA_META_BOXES ) ) {
 			$active_boxes = apply_filters( 'mla_edit_media_meta_boxes', array( 
 			'mla-parent-info' => 'mla-parent-info', 'mla-menu-order' => 'mla-menu-order', 'mla-image-metadata' => 'mla-image-metadata', 'mla-featured-in' => 'mla-featured-in', 'mla-inserted-in' => 'mla-inserted-in', 'mla-gallery-in' => 'mla-gallery-in', 'mla-mla-gallery-in' => 'mla-mla-gallery-in' ) );
 

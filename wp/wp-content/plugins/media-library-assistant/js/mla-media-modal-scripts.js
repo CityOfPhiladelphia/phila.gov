@@ -28,6 +28,8 @@ var wp, wpAjax, ajaxurl, jQuery, _,
 	};
 
 (function($){
+	var mlaDrop = wp.media.view.AttachmentsBrowser;
+	
 /*	for debug : trace every event triggered in the MediaFrame controller * /
 	var originalMediaFrameTrigger = wp.media.view.MediaFrame.prototype.trigger;
 	wp.media.view.MediaFrame.prototype.trigger = function(){
@@ -760,7 +762,7 @@ wp.media.view.MlaSearch.on( 'all', MlaSearchOn );
 
 			createToolbar: function() {
 				var filters, state = this.controller._state;
-
+	
 				mlaModal.settings.state = state;
 				mlaModal.settings.$el = this.controller.$el;
 				if ( 'undefined' === typeof mlaModal.settings.query[ state ] ) {
@@ -774,10 +776,16 @@ this.listenTo( this.controller, 'all', this.toolbarEvent );
 // */
 
 				// Apply the original method to create the toolbar
-				wp.media.view.AttachmentsBrowser.__super__.createToolbar.apply( this, arguments );
+				//wp.media.view.AttachmentsBrowser.__super__.createToolbar.apply( this, arguments );
+				mlaDrop.prototype.createToolbar.apply( this, arguments );
 				mlaModal.utility.mlaAttachmentsBrowser = this;
 				filters = this.options.filters;
 
+				// Enhanced Media Library (eml) plugin has CSS styles that require this patch
+				if ( typeof window.eml !== "undefined" ) {
+					$( '.media-toolbar', this.$el ).css( 'overflow', 'hidden' );
+				}
+				
 				if ( ( 'all' === filters ) && mlaModal.settings.enableMimeTypes ) {
 					this.toolbar.unset( 'filters', { silent: true } );
 					this.toolbar.set( 'filters', new wp.media.view.AttachmentFilters.Mla({
@@ -823,10 +831,11 @@ this.listenTo( this.controller, 'all', this.toolbarEvent );
 
 				if ( this.options.search ) {
 					if ( mlaModal.settings.enableSearchBox ) {
-						this.listenTo( this.controller, 'content:activate', this.hideDefaultSearch );
-						this.listenTo( this.controller, 'router:render', this.hideDefaultSearch );
-						this.listenTo( this.controller, 'uploader:ready', this.hideDefaultSearch );
-						this.listenTo( this.controller, 'edit:activate', this.hideDefaultSearch );
+						this.controller.on( 'content:activate', this.hideDefaultSearch );
+						this.controller.on( 'router:render', this.hideDefaultSearch );
+						this.controller.on( 'uploader:ready', this.hideDefaultSearch );
+						this.controller.on( 'edit:activate', this.hideDefaultSearch );
+
 						this.toolbar.set( 'MlaSearch', new wp.media.view.MlaSearch({
 							controller: this.controller,
 							model:      this.collection.props,
@@ -843,7 +852,13 @@ this.listenTo( this.controller, 'all', this.toolbarEvent );
 			},
 
 			hideDefaultSearch: function() {
-				$( '#media-search-input', this.el ).hide();
+				var defaultSearch = $( '#media-search-input', this.el );
+				
+				if ( 0 === defaultSearch.length ) {
+					defaultSearch = $( 'div.media-toolbar-primary > input.search', this.el )
+				}
+				
+				defaultSearch.hide();
 			},
 
 			updateFilters: function( taxonomy, selectMarkup ) {

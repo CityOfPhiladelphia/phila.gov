@@ -29,7 +29,7 @@ class MLA {
 	 *
 	 * @var	string
 	 */
-	const CURRENT_MLA_VERSION = '2.24';
+	const CURRENT_MLA_VERSION = '2.25';
 
 	/**
 	 * Current date for Development Version, empty for production versions
@@ -223,6 +223,7 @@ class MLA {
 	 * @return	void
 	 */
 	public static function mla_admin_init_action() {
+		//error_log( __LINE__ . ' DEBUG: MLA::mla_admin_init_action referer = ' . var_export( wp_get_referer(), true ), 0 );
 		//error_log( __LINE__ . ' DEBUG: MLA::mla_admin_init_action $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
 		/*
 		 * Process secure file download requests
@@ -292,7 +293,7 @@ class MLA {
 		/*
 		 * Optional - limit width of the views list
 		 */
-		$width_value = MLACore::mla_get_option( MLACore::MLA_TABLE_VIEWS_WIDTH );
+		$width_value = MLACore::mla_get_option( MLACoreOptions::MLA_TABLE_VIEWS_WIDTH );
 		if ( !empty( $width_value ) ) {
 			if ( is_numeric( $width_value ) ) {
 				$width_value .= 'px';
@@ -309,8 +310,8 @@ class MLA {
 		/*
 		 * Optional - change the size of the thumbnail/icon images
 		 */
-		$icon_value = MLACore::mla_get_option( MLACore::MLA_TABLE_ICON_SIZE );
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		$icon_value = MLACore::mla_get_option( MLACoreOptions::MLA_TABLE_ICON_SIZE );
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			if ( empty( $icon_value ) ) {
 				$icon_value = 64;
 			} else {
@@ -399,7 +400,7 @@ class MLA {
 
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		if ( 'checked' != MLACore::mla_get_option( MLACore::MLA_SCREEN_DISPLAY_LIBRARY ) ) {
+		if ( 'checked' != MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_DISPLAY_LIBRARY ) ) {
 			wp_register_style( self::STYLESHEET_SLUG . '-nolibrary', MLA_PLUGIN_URL . 'css/mla-nolibrary.css', false, self::CURRENT_MLA_VERSION );
 			wp_enqueue_style( self::STYLESHEET_SLUG . '-nolibrary' );
 		}
@@ -461,7 +462,7 @@ class MLA {
 			'bulkSuccess' => __( 'Succeeded', 'media-library-assistant' ),
 			'bulkFailure' => __( 'Failed', 'media-library-assistant' ),
 			'bulkCanceled' => __( 'CANCELED', 'media-library-assistant' ),
-			'bulkChunkSize' => MLACore::mla_get_option( MLACore::MLA_BULK_CHUNK_SIZE ),
+			'bulkChunkSize' => MLACore::mla_get_option( MLACoreOptions::MLA_BULK_CHUNK_SIZE ),
 			'comma' => _x( ',', 'tag_delimiter', 'media-library-assistant' ),
 			'useSpinnerClass' => false,
 			'ajax_action' => MLACore::JAVASCRIPT_INLINE_EDIT_SLUG,
@@ -489,18 +490,16 @@ class MLA {
 	public static function mla_admin_menu_action( ) {
 		global $submenu;
 
-		if ( 'checked' != MLACore::mla_get_option( MLACore::MLA_SCREEN_DISPLAY_LIBRARY ) ) {
-			add_action( 'load-upload.php', 'MLA::mla_load_media_action' );
-		}
+		add_action( 'load-upload.php', 'MLA::mla_load_media_action' );
 
-		$page_title = MLACore::mla_get_option( MLACore::MLA_SCREEN_PAGE_TITLE );
+		$page_title = MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_PAGE_TITLE );
 		if ( empty( $page_title ) ) {
-			$page_title = MLACore::mla_get_option( MLACore::MLA_SCREEN_PAGE_TITLE, true );
+			$page_title = MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_PAGE_TITLE, true );
 		}
 
-		$menu_title = MLACore::mla_get_option( MLACore::MLA_SCREEN_MENU_TITLE );
+		$menu_title = MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_MENU_TITLE );
 		if ( empty( $menu_title ) ) {
-			$menu_title = MLACore::mla_get_option( MLACore::MLA_SCREEN_MENU_TITLE, true );
+			$menu_title = MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_MENU_TITLE, true );
 		}
 
 		$hook = add_submenu_page( 'upload.php', $page_title, $menu_title, 'upload_files', MLACore::ADMIN_PAGE_SLUG, 'MLA::mla_render_admin_page' );
@@ -527,10 +526,10 @@ class MLA {
 		/*
 		 * If we are suppressing the Media/Library submenu, force Media/Assistant to come first
 		 */
-		if ( 'checked' != MLACore::mla_get_option( MLACore::MLA_SCREEN_DISPLAY_LIBRARY ) ) {
+		if ( 'checked' != MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_DISPLAY_LIBRARY ) ) {
 			$menu_position = 4;
 		} else {
-			$menu_position = (integer) MLACore::mla_get_option( MLACore::MLA_SCREEN_ORDER );
+			$menu_position = (integer) MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_ORDER );
 		}
 
 		if ( $menu_position && is_array( $submenu['upload.php'] ) ) {
@@ -549,14 +548,24 @@ class MLA {
 	}
 
 	/**
-	 * Redirect to Media/Assistant if Media/Library is hidden
+	 * Redirect to Media/Assistant if Media/Library is hidden or a trash/delete
+	 * returns from Media/Edit Media initiated from Media/Assistant
 	 *
 	 * @since 1.60
 	 *
 	 * @return	void
 	 */
 	public static function mla_load_media_action( ) {
-		if ( 'checked' != MLACore::mla_get_option( MLACore::MLA_SCREEN_DISPLAY_LIBRARY ) ) {
+		$mla_source = isset( $_REQUEST['mla_source'] ) && in_array( $_REQUEST['mla_source'], array ( 'trash', 'delete' ) );
+
+		if ( $mla_source || ( 'checked' != MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_DISPLAY_LIBRARY ) ) ) {
+			/*
+			 * Allow "grid" view even if the list view is suppressed
+			 */
+			if ( isset( $_REQUEST['mode'] ) && 'grid' === $_REQUEST['mode'] ) {
+				return;
+			}
+			
 			$query_args = '?page=' . MLACore::ADMIN_PAGE_SLUG;
 
 			/*
@@ -752,8 +761,8 @@ class MLA {
 		/*
 		 * Make sure the "Assistant" submenu line is bolded if the Media/Library submenu is hidden
 		 */
-		if ( 'checked' != MLACore::mla_get_option( MLACore::MLA_SCREEN_DISPLAY_LIBRARY ) &&
-		     'upload.php' == $parent_file && 'upload.php' == $submenu_file ) {
+		if ( 'checked' != MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_DISPLAY_LIBRARY ) &&
+		     'upload.php' == $parent_file && ( empty( $submenu_file ) || 'upload.php' == $submenu_file ) ) {
 			$submenu_file = 'upload.php?page=' . MLACore::ADMIN_PAGE_SLUG;
 		}
 
@@ -1341,9 +1350,9 @@ class MLA {
 
 		$bulk_action = self::_current_bulk_action();
 
-		$page_title = MLACore::mla_get_option( MLACore::MLA_SCREEN_PAGE_TITLE );
+		$page_title = MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_PAGE_TITLE );
 		if ( empty( $page_title ) ) {
-			$page_title = MLACore::mla_get_option( MLACore::MLA_SCREEN_PAGE_TITLE, true );
+			$page_title = MLACore::mla_get_option( MLACoreOptions::MLA_SCREEN_PAGE_TITLE, true );
 		}
 
 		echo "<div class=\"wrap\">\n";

@@ -68,6 +68,7 @@
 <a href="#mla_gallery_templates"><strong>Style and Markup Templates</strong></a>
 </li>
 <ul class="mla-doc-toc-list">
+<li><a href="#argument_parameters">Argument substitution parameters</a></li>
 <li><a href="#gallery_specific">Gallery-specific substitution parameters</a></li>
 <li><a href="#mla_style_parameters">Substitution parameters for style templates</a></li>
 <li><a href="#mla_markup_parameters">Substitution parameters for markup templates</a></li>
@@ -1178,6 +1179,10 @@ The Link parameter specifies the target and type of link from the tag cloud term
 </p>
 <table>
 <tr>
+<td class="mla-doc-table-label">current</td>
+<td>Link back to the current post/page with a query argument, <code>current_item</code>, set to the term_id of the selected term.</td>
+</tr>
+<tr>
 <td class="mla-doc-table-label">view</td>
 <td>Link to the term's "archive page"; this is the default value. Support for archive pages, or "tag archives", is theme-dependent. There is an introduction to tag archives in the WordPress Codex at the bottom of the <a href="http://codex.wordpress.org/Function_Reference/wp_tag_cloud#Creating_a_Tag_Archive" title="Codex Tag Archive Discussion" target="_blank"><code>wp_tag_cloud</code> Function Reference</a>.</td>
 </tr>
@@ -1199,7 +1204,7 @@ The Link parameter specifies the target and type of link from the tag cloud term
 </tr>
 </table>
 <p>
-Using the "mla_link_href" parameter to completely replace the link destination URL is a common and useful choice. With this parameter us can use the tag cloud to select a term and then go to another post/page that uses that selection as part of an <code>[mla_gallery]</code> shortcode. The pagination example later in this section uses this technique. 
+Using the "mla_link_href" parameter to completely replace the link destination URL is a common and useful choice. With this parameter you can use the tag cloud to select a term and then go to another post/page that uses that selection as part of an <code>[mla_gallery]</code> shortcode. The pagination example later in this section uses this technique. 
 <a name="tag_cloud_display_style"></a>
 </p>
 <h4>Tag Cloud Display Style (list and grid)</h4>
@@ -1239,11 +1244,31 @@ For the "exact" value, the calculation is the same but the margin is ignored, so
 </table>
 <p>
 The default margin and width calculations try to make the total width of each row as close to 100% as possible, but never exceed 100% due to rounding errors. If you have more advanced style and format needs, you can define custom style and/or markup templates. You can also code <code>mla_style=none</code> to suppress inline styles entirely and use a separate stylesheet to control the format of the grid.
+</p>
+<p>
+Three parameters provide control over the XHTML tags used to enclose each part of the tag cloud items. These parameters are only used in the "list" and "grid" output formats.
+</p>
+<table>
+<tr>
+<td class="mla-doc-table-label">itemtag</td>
+<td>for "list" format, the name of the XHTML tag used to begin the list; the default is "ul". When an explicit "captiontag" parameter is added to "list" format, the default is "dl". For "grid" format, the name of the XHTML tag used to enclose each item in the cloud; the default is "dl".</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">termtag</td>
+<td>the name of the XHTML tag used to enclose each term in the cloud. For "list" format, the default is "li"; for "grid" format or when an explicit "captiontag" parameter is added to "list" format, the default is "dt".</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">captiontag</td>
+<td>the name of the XHTML tag used to enclose each caption. For "grid" format, the default is "dd". To add a caption in "list" format you must enter an explicit "captiontag=dd" parameter to the shortcode.</td>
+</tr>
+</table>
+<p>
+These parameters give you some control over the markup used for the cloud and its elements. For more complex applications you can use style and markup templates to gain complete control over the cloud display.
 <a name="tag_cloud_display_content"></a>
 </p>
 <h4>Tag Cloud Display Content</h4>
 <p>
-Eight parameters provide an easy way to control the contents of tag cloud items without requiring the use of custom Markup templates.  
+Nine parameters provide an easy way to control the contents of tag cloud items without requiring the use of custom Markup templates.  
 </p>
 <table>
 <tr>
@@ -1253,7 +1278,11 @@ Eight parameters provide an easy way to control the contents of tag cloud items 
 </tr>
 <tr>
 <td class="mla-doc-table-label">mla_link_class</td>
-<td><strong>adds</strong> one or more classes to any already defined for the hyperlink </td>
+<td><strong>adds</strong> one or more classes to any already defined for the hyperlink</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">mla_link_style</td>
+<td>replaces the CSS styles for the hyperlink. The default style is <code>font-size: [+font_size+][+unit+]</code>.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">mla_link_href</td>
@@ -1285,7 +1314,7 @@ Eight parameters provide an easy way to control the contents of tag cloud items 
 All but the "mla_target" parameter support the <a href="#tag_cloud_markup_parameters">Markup</a>, <a href="#tag_cloud_item_parameters">Item-specific</a>, <a href="#tag_cloud_variable_parameters">Field-level</a> and <a href="#mla_template_parameters">Content Template</a> substitution parameters defined for Markup Templates. For example, if you code "<code>mla_rollover_text='{+slug+} : {+rollover_text+}'</code>, the rollover text will contain the term slug, a colon, and the appropriate "single text" or "multiple text". Simply add "{+" before the substitution parameter name and add "+}" after the name. Note that the enclosing delimiters are different than those used in the templates, since the WordPress shortcode parser reserves square brackets ("[" and "]") for its own use.
 </p>
 <p>
-The "mla_link_href" parameter is a great way to change the destination your cloud item links to and/or add arguments to the link for later processing. For example, to make a gallery item link back to the current page/post you can code: <code>mla_link_href='{+page_url+}'</code>. You can also add arguments to the link, e.g., <code>mla_link_href='{+page_url+}&amp;amp;myarg=myvalue'</code>. Note the use of the HTML entity name "&amp;amp;" to put an ampersand in the value; the WordPress "visual" post editor will replace "&", "<" and ">" with "&amp;amp;", "&amp;lt;" and "&amp;gt;" whether you like it not. The <strong>only</strong> markup parameters modified by this parameter are "link_url" and "thelink". The markup parameters "viewlink" and "editlink" are not modified.
+The "mla_link_href" parameter is a great way to change the destination your cloud item links to and/or add arguments to the link for later processing. For example, to make a gallery item link back to the current page/post you can code: <code>mla_link_href='{+page_url+}'</code>. You can also add arguments to the link, e.g., <code>mla_link_href='{+page_url+}?firstarg=value1&amp;amp;myarg=myvalue'</code>. Note the use of the HTML entity name "&amp;amp;" to put an ampersand in the value; the WordPress "visual" post editor will replace "&", "<" and ">" with "&amp;amp;", "&amp;lt;" and "&amp;gt;" whether you like it not. The <strong>only</strong> markup parameters modified by this parameter are "link_url" and "thelink". The markup parameters "viewlink" and "editlink" are not modified.
 </p>
 <p>
 The "mla_link_attributes" parameter accepts any value and adds it to the "&lt;a&gt;" or "&lt;span&gt;" tags for the item. For example, you can add a unique identifier to each item by adding <code>mla_link_attributes='id="{+selector}-{+index+}"'</code> to your shortcode (note the use of single quotes around the parameter value and the double quotes within the parameter). <strong>IMPORTANT:</strong> since the shortcode parser reserves square brackets ("[" and "]") for its own use, <strong>you must substitute curly braces for square brackets</strong> if your attributes require brackets. If you must code a curly brace in your attribute value, preface it with <strong>two backslash characters</strong>, e.g., "\\{" or "\\}". If you code an attribute already present in the tag, your value will override the existing value.
@@ -1888,6 +1917,10 @@ The example code documents each hook with comments in the filter/action function
 </p>
 <table>
 <tr>
+<td class="mla-doc-hook-label">mla_raw_tag_cloud_attributes</td>
+<td class="mla-doc-hook-definition">called at the beginning of the cloud, before the attributes pass through the logic that handles the 'mla_page_parameter' and "request:" prefix processing.</td>
+</tr>
+<tr>
 <td class="mla-doc-table-label">mla_tag_cloud_attributes,<br />mla_tag_cloud_arguments</td>
 <td class="mla-doc-hook-definition">called at the beginning of the cloud generation. You can record/modify shortcode parameter values before (attributes) or after (arguments) they are combined with all the defaults.</td>
 </tr>
@@ -2459,6 +2492,30 @@ The MLA Gallery tab on the Settings page lets you add, change and delete custom 
 </p>
 <p>
 In a template, substitution parameters are surrounded by opening ('[+') and closing ('+]') delimiters to separate them from the template text; see the default templates for many examples.
+<a name="argument_parameters"></a>
+</p>
+<h4>Argument Substitution Parameters</h4>
+<p>
+A markup template can include default values for any of the shortcode parameters and values you define for your own use, e.g., you can add <code>columns=1</code> to the arguments section to change the MLA default value whenever the template is used. The argument substitution parameter(s) you define in the markup template are treated as if you had added them to the shortcode that uses the template, but parameters you actually use in the shortcode will overide the default values you code in the arguments section. For example, if the arguments section of your "blue-table" markup template looks like:
+</p>
+<code>columns=1 div-class=blue div-id=id3</code>
+<p>
+and your shortcode is
+</p>
+<p>
+<code>[mla_gallery mla_markup=blue-table div-id=ID5]</code>
+</p>
+<p>
+the end result will be as if you had coded
+</p>
+<p>
+<code>[mla_gallery mla_markup=blue-table div-id=ID5 columns=1 div-class=blue]</code>
+</p>
+<p>
+The custom parameters you code in the arguments section become part of the shortcode parameters. To access them in your template or in other shortcode parameters you must use the 'query:' prefix, e.g., <code>[+query:div-class+]</code> in the template or <code>{+query:div-id+}</code> in another shortcode parameter.
+</p>
+<p>
+In the arguments section you can separate the parameters with one or more spaces or you can code them on separate lines. If your parameter value includes spaces you must enclose it in single or double quotes.
 <a name="gallery_specific"></a>
 </p>
 <h4>Gallery-specific Substitution Parameters</h4>
@@ -5321,6 +5378,10 @@ The current mapping hooks are:
 <tr>
 <td class="mla-doc-table-label">mla_mapping_exif_value</td>
 <td class="mla-doc-hook-definition">called once for each IPTC/EXIF mapping rule, after the EXIF portion of the rule is evaluated. You can change the new value produced by the rule.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">mla_mapping_new_text</td>
+<td class="mla-doc-hook-definition">called once for each IPTC/EXIF mapping rule, after the selection between the IPTC and EXIF values has been made. You can change the new value produced by the rule.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">mla_mapping_updates</td>

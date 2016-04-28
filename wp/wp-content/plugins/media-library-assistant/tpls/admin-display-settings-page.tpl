@@ -161,6 +161,12 @@
 		[+control_cells+]
 		</tr>
         <tr valign="top"><th scope="row" class="textright">
+            [+Arguments+]:
+        </th><td colspan="3" class="textleft">
+            <textarea name="[+arguments_name+]" id="[+arguments_id+]" rows="3" cols="100" [+readonly+]>[+arguments_text+]</textarea>
+            <div class="mla-settings-help">&nbsp;&nbsp;[+arguments_help+]</div>
+        </td></tr>
+        <tr valign="top"><th scope="row" class="textright">
             [+Open+]:
         </th><td colspan="3" class="textleft">
             <textarea name="[+open_name+]" id="[+open_id+]" rows="3" cols="100" [+readonly+]>[+open_text+]</textarea>

@@ -215,7 +215,7 @@ class MLA_WPML {
 		/*
 		 * Apply the "Always Translate Media" override
 		 */
-		if ( ! empty( $_REQUEST['mlaAddNewBulkEditFormString'] ) && class_exists( 'WPML_Media' ) && ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ADD_NEW_BULK_EDIT ) ) ) {
+		if ( ! empty( $_REQUEST['mlaAddNewBulkEditFormString'] ) && class_exists( 'WPML_Media' ) && ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ADD_NEW_BULK_EDIT ) ) ) {
 			$content_defaults = WPML_Media::get_setting( 'new_content_settings' );
 			$wpml_value = isset( $content_defaults['always_translate_media'] ) && $content_defaults['always_translate_media'];
 

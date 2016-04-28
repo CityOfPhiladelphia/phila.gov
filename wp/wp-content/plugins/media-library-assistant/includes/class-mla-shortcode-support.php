@@ -51,10 +51,10 @@ class MLAShortcode_Support {
 		 * Load the default templates
 		 */
 		if ( is_null( MLAShortcode_Support::$mla_custom_templates ) ) {
-			MLACore::mla_debug_add( '<strong>mla_debug _load_option_templates()</strong> ' . __( 'error loading tpls/mla-option-templates.tpl', 'media-library-assistant' ) );
+			MLACore::mla_debug_add( '<strong>mla_debug _load_option_templates()</strong> ' . __( 'error loading tpls/mla-option-templates.tpl', 'media-library-assistant' ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			return;
 		} elseif ( !MLAShortcode_Support::$mla_custom_templates ) {
-			MLACore::mla_debug_add( '<strong>mla_debug _load_option_templates()</strong> ' . __( 'tpls/mla-option-templates.tpl not found', 'media-library-assistant' ) );
+			MLACore::mla_debug_add( '<strong>mla_debug _load_option_templates()</strong> ' . __( 'tpls/mla-option-templates.tpl not found', 'media-library-assistant' ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			MLAShortcode_Support::$mla_custom_templates = NULL;
 			return;
 		}
@@ -72,11 +72,41 @@ class MLAShortcode_Support {
 		$templates = MLACore::mla_get_option( 'markup_templates' );
 		if ( is_array(	$templates ) ) {
 			foreach ( $templates as $name => $value ) {
-				MLAShortcode_Support::$mla_custom_templates[ $name . '-open-markup' ] = $value['open'];
-				MLAShortcode_Support::$mla_custom_templates[ $name . '-row-open-markup' ] = $value['row-open'];
-				MLAShortcode_Support::$mla_custom_templates[ $name . '-item-markup' ] = $value['item'];
-				MLAShortcode_Support::$mla_custom_templates[ $name . '-row-close-markup' ] = $value['row-close'];
-				MLAShortcode_Support::$mla_custom_templates[ $name . '-close-markup' ] = $value['close'];
+				if ( isset( $value['arguments'] ) ) {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-arguments-markup' ] = $value['arguments'];
+				} else {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-arguments-markup' ] = false;
+				}
+				
+				if ( isset( $value['open'] ) ) {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-open-markup' ] = $value['open'];
+				} else {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-open-markup' ] = false;
+				}
+				
+				if ( isset( $value['row-open'] ) ) {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-row-open-markup' ] = $value['row-open'];
+				} else {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-row-open-markup' ] = false;
+				}
+				
+				if ( isset( $value['item'] ) ) {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-item-markup' ] = $value['item'];
+				} else {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-item-markup' ] = false;
+				}
+				
+				if ( isset( $value['row-close'] ) ) {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-row-close-markup' ] = $value['row-close'];
+				} else {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-row-close-markup' ] = false;
+				}
+				
+				if ( isset( $value['close'] ) ) {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-close-markup' ] = $value['close'];
+				} else {
+					MLAShortcode_Support::$mla_custom_templates[ $name . '-close-markup' ] = false;
+				}
 			} // foreach $templates
 		} // is_array
 	}
@@ -93,7 +123,7 @@ class MLAShortcode_Support {
 	 */
 	public static function mla_fetch_gallery_template( $key, $type = 'style' ) {
 		if ( ! is_array( MLAShortcode_Support::$mla_custom_templates ) ) {
-			MLACore::mla_debug_add( '<strong>mla_fetch_gallery_template()</strong> ' . __( 'no templates exist', 'media-library-assistant' ) );
+			MLACore::mla_debug_add( '<strong>mla_fetch_gallery_template()</strong> ' . __( 'no templates exist', 'media-library-assistant' ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			return NULL;
 		}
 
@@ -101,7 +131,7 @@ class MLAShortcode_Support {
 		if ( array_key_exists( $array_key, MLAShortcode_Support::$mla_custom_templates ) ) {
 			return MLAShortcode_Support::$mla_custom_templates[ $array_key ];
 		} else {
-			MLACore::mla_debug_add( "<strong>mla_fetch_gallery_template( {$key}, {$type} )</strong> " . __( 'not found', 'media-library-assistant' ) );
+			MLACore::mla_debug_add( "<strong>mla_fetch_gallery_template( {$key}, {$type} )</strong> " . __( 'not found', 'media-library-assistant' ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			return false;
 		}
 	}
@@ -361,12 +391,12 @@ class MLAShortcode_Support {
 		$attr = apply_filters( 'mla_gallery_raw_attributes', $attr );
 
 		/*
-		 * The mla_paginate_current parameter can be changed to support multiple galleries per page.
+		 * The mla_paginate_current parameter can be changed to support
+		 * multiple galleries per page.
 		 */
 		if ( ! isset( $attr['mla_page_parameter'] ) ) {
 			$attr['mla_page_parameter'] = self::$mla_get_shortcode_attachments_parameters['mla_page_parameter'];
 		}
-
 		$mla_page_parameter = $attr['mla_page_parameter'];
 		 
 		/*
@@ -379,7 +409,7 @@ class MLAShortcode_Support {
 				$attr[ $mla_page_parameter ] = $_REQUEST[ $mla_page_parameter ];
 			}
 		}
-		 
+		
 		/*
 		 * These are the parameters for gallery display
 		 */
@@ -491,7 +521,16 @@ class MLAShortcode_Support {
 		);
 
 		/*
-		 * Look for page-level and 'request:' substitution parameters,
+		 * Apply default arguments set in the markup template
+		 */
+		$template = isset( $attr['mla_markup'] ) ? $attr['mla_markup'] : $mla_arguments['mla_markup'];
+		$arguments = self::mla_fetch_gallery_template( $template . '-arguments', 'markup' );
+		if ( !empty( $arguments ) ) {
+			$attr = wp_parse_args( $attr, self::_validate_attributes( array(), $arguments ) );
+		}
+		
+		/*
+		 * Look for page-level, 'request:' and 'query:' substitution parameters,
 		 * which can be added to any input parameter
 		 */
 		foreach ( $attr as $attr_key => $attr_value ) {
@@ -504,7 +543,8 @@ class MLAShortcode_Support {
 			}
 
 			$attr_value = str_replace( '{+', '[+', str_replace( '+}', '+]', $attr_value ) );
-			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, NULL, $page_values );
+//			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, NULL, $page_values );
+			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, $attr, $page_values );
 			$attr[ $attr_key ] = MLAData::mla_parse_template( $attr_value, $replacement_values );
 		}
 
@@ -516,6 +556,15 @@ class MLAShortcode_Support {
 		$content = apply_filters( 'mla_gallery_initial_content', $content, $attr );
 		$arguments = shortcode_atts( $default_arguments, $attr );
 		$arguments = apply_filters( 'mla_gallery_arguments', $arguments );
+		
+		/*
+		 * Look for "no effect" alternate gallery shortcode to support plugins such as Justified Image Grid
+		 */
+		if ( is_string( $arguments['mla_alt_shortcode'] ) && ( 'mla_gallery' == $arguments['mla_alt_shortcode'] ) ) {
+			$arguments['mla_alt_shortcode'] = NULL;
+			$arguments['mla_alt_ids_name'] = 'ids';
+			$arguments['mla_alt_ids_value'] = NULL;
+		}
 
 		self::$mla_debug = ( ! empty( $arguments['mla_debug'] ) ) ? trim( strtolower( $arguments['mla_debug'] ) ) : false;
 		if ( self::$mla_debug ) {
@@ -640,7 +689,7 @@ class MLAShortcode_Support {
 
 		$size = $size_class = $arguments['size'];
 		if ( 'icon' == strtolower( $size) ) {
-			if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+			if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 				$size = array( 64, 64 );
 			} else {
 				$size = array( 60, 60 );
@@ -1113,7 +1162,6 @@ class MLAShortcode_Support {
 				$item_values['pagelink'] = sprintf( '<a href=\'%1$s\'>%2$s</a>', $attachment->guid, $attachment->post_title );
 				$item_values['filelink'] = sprintf( '<a href=\'%1$s\'>%2$s</a>', get_permalink( $attachment->ID ), $attachment->post_title );
 			}
-
 			if ( in_array( $attachment->post_mime_type, array( 'image/svg+xml' ) ) ) {
 				$registered_dimensions = self::_registered_dimensions();
 				if ( isset( $registered_dimensions[ $size_class ] ) ) {
@@ -1611,6 +1659,25 @@ class MLAShortcode_Support {
 		global $post;
 
 		/*
+		 * Some do_shortcode callers may not have a specific post in mind
+		 */
+		if ( ! is_object( $post ) ) {
+			$post = (object) array( 
+				'ID' => 0,
+				'post_author' => '0',
+				'post_date' => '',
+				'post_content' => '',
+				'post_title' => '',
+				'post_excerpt' => '',
+				'post_status' => '',
+				'post_name' => '',
+				'post_modified' => '',
+				'guid' => '',
+				'post_type' => '',
+			);
+		}
+
+		/*
 		 * These are the default parameters for tag cloud display
 		 */
 		$mla_item_specific_arguments = array(
@@ -1671,7 +1738,14 @@ class MLAShortcode_Support {
 		);
 
 		/*
-		 * The mla_paginate_current parameter can be changed to support multiple galleries per page.
+		 * Filter the attributes before $mla_page_parameter and "request:" prefix processing.
+		 */
+		 
+		$attr = apply_filters( 'mla_tag_cloud_raw_attributes', $attr );
+
+		/*
+		 * The mla_paginate_current parameter can be changed to support
+		 * multiple clouds per page.
 		 */
 		if ( ! isset( $attr['mla_page_parameter'] ) ) {
 			$attr['mla_page_parameter'] = $defaults['mla_page_parameter'];
@@ -1720,7 +1794,16 @@ class MLAShortcode_Support {
 		);
 
 		/*
-		 * Look for 'request' substitution parameters,
+		 * Apply default arguments set in the markup template
+		 */
+		$template = isset( $attr['mla_markup'] ) ? $attr['mla_markup'] : $mla_arguments['mla_markup'];
+		$arguments = self::mla_fetch_gallery_template( $template . '-arguments', 'markup' );
+		if ( !empty( $arguments ) ) {
+			$attr = wp_parse_args( $attr, self::_validate_attributes( array(), $arguments ) );
+		}
+
+		/*
+		 * Look for page-level, 'request:' and 'query:' substitution parameters,
 		 * which can be added to any input parameter
 		 */
 		foreach ( $attr as $attr_key => $attr_value ) {
@@ -1733,7 +1816,8 @@ class MLAShortcode_Support {
 			}
 
 			$attr_value = str_replace( '{+', '[+', str_replace( '+}', '+]', $attr_value ) );
-			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, NULL, $page_values );
+//			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, NULL, $page_values );
+			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, $attr, $page_values );
 			$attr[ $attr_key ] = MLAData::mla_parse_template( $attr_value, $replacement_values );
 		}
 
@@ -1741,8 +1825,8 @@ class MLAShortcode_Support {
 		$arguments = shortcode_atts( $defaults, $attr );
 
 		/*
-		 * $mla_page_parameter, if non-default, doesn't make it through the shortcode_atts filter,
-		 * so we handle it separately
+		 * $mla_page_parameter, if non-default, doesn't make it through the shortcode_atts
+		 * filter, so we handle it separately
 		 */
 		if ( ! isset( $arguments[ $mla_page_parameter ] ) ) {
 			if ( isset( $attr[ $mla_page_parameter ] ) ) {
@@ -1800,8 +1884,17 @@ class MLAShortcode_Support {
 
 			if ( NULL == $arguments['mla_markup'] ) {
 				$arguments['mla_markup'] = $default_markup;
+			}
+
+			if ( empty( $attr['itemtag'] ) ) {
 				$arguments['itemtag'] = 'dl';
+			}
+			
+			if ( empty( $attr['termtag'] ) ) {
 				$arguments['termtag'] = 'dt';
+			}
+			
+			if ( empty( $attr['captiontag'] ) ) {
 				$arguments['captiontag'] = 'dd';
 			}
 		}
@@ -1851,7 +1944,7 @@ class MLAShortcode_Support {
 		 * Invalid taxonomy names return WP_Error
 		 */
 		if ( is_wp_error( $tags ) ) {
-			$cloud .=  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $tags->get_error_message() . '</strong>, ' . $tags->get_error_data( $tags->get_error_code() );
+			$cloud =  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $tags->get_error_message() . '</strong>, ' . $tags->get_error_data( $tags->get_error_code() );
 
 			if ( 'array' == $arguments['mla_output'] ) {
 				return array( $cloud );
@@ -1940,16 +2033,16 @@ class MLAShortcode_Support {
 			if ( is_wp_error( $link ) ) {
 				$cloud =  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $link->get_error_message() . '</strong>, ' . $link->get_error_data( $link->get_error_code() );
 
-			if ( 'array' == $arguments['mla_output'] ) {
-				return array( $cloud );
-			}
-
-			if ( empty($arguments['echo']) ) {
-				return $cloud;
-			}
-
-			echo $cloud;
-			return;
+				if ( 'array' == $arguments['mla_output'] ) {
+					return array( $cloud );
+				}
+	
+				if ( empty($arguments['echo']) ) {
+					return $cloud;
+				}
+	
+				echo $cloud;
+				return;
 			}
 
 			if ( 'edit' == $arguments['link'] ) {
@@ -2087,7 +2180,7 @@ class MLAShortcode_Support {
 			$open_template = MLAShortcode_support::mla_fetch_gallery_template( $markup_values['mla_markup'] . '-open', 'markup' );
 			if ( false === $open_template ) {
 				$markup_values['mla_markup'] = $default_markup;
-				$open_template = MLAShortcode_support::mla_fetch_gallery_template( $default_markup, 'markup' );
+				$open_template = MLAShortcode_support::mla_fetch_gallery_template( $default_markup . '-open', 'markup' );
 			}
 
 			if ( empty( $open_template ) ) {
@@ -2244,7 +2337,7 @@ class MLAShortcode_Support {
 			$item_values['editlink_url'] = $tag->edit_link;
 			$item_values['termlink_url'] = $tag->term_link;
 			// Added in the code below:
-			// 'caption', 'link_attributes', 'current_item_class', 'rollover_text', 'link_style', 'link_text', 'editlink', 'termlink', 'thelink'
+			// 'caption', 'link_attributes', 'current_item_class', 'rollover_text', 'link_style', 'link_text', 'currentlink', 'editlink', 'termlink', 'thelink'
 
 			if ( ! empty( $arguments['current_item'] ) ) {
 				if ( is_integer( $arguments['current_item'] ) ) {
@@ -2275,12 +2368,6 @@ class MLAShortcode_Support {
 				}
 			} else {
 				$item_values['caption'] = '';
-			}
-
-			if ( ! empty( $arguments['mla_link_text'] ) ) {
-				$link_text = self::_process_shortcode_parameter( $arguments['mla_link_text'], $item_values );
-			} else {
-				$link_text = false;
 			}
 
 			/*
@@ -2327,19 +2414,22 @@ class MLAShortcode_Support {
 			}
 
 			/*
-			 * Editlink, termlink and thelink
+			 * Currentlink, editlink, termlink and thelink
 			 */
+			$item_values['currentlink'] = sprintf( '<a %1$shref="%2$s?current_item=%3$d" title="%4$s" style="%5$s">%6$s</a>', $link_attributes, $item_values['page_url'], $item_values['term_id'], $item_values['rollover_text'], $item_values['link_style'], $item_values['link_text'] );
 			$item_values['editlink'] = sprintf( '<a %1$shref="%2$s" title="%3$s" style="%4$s">%5$s</a>', $link_attributes, $item_values['editlink_url'], $item_values['rollover_text'], $item_values['link_style'], $item_values['link_text'] );
 			$item_values['termlink'] = sprintf( '<a %1$shref="%2$s" title="%3$s" style="%4$s">%5$s</a>', $link_attributes, $item_values['termlink_url'], $item_values['rollover_text'], $item_values['link_style'], $item_values['link_text'] );
 
 			if ( ! empty( $link_href ) ) {
 				$item_values['thelink'] = sprintf( '<a %1$shref="%2$s" title="%3$s" style="%4$s">%5$s</a>', $link_attributes, $link_href, $item_values['rollover_text'], $item_values['link_style'], $item_values['link_text'] );
+			} elseif ( 'current' == $arguments['link'] ) {
+				$item_values['thelink'] = $item_values['currentlink'];
 			} elseif ( 'edit' == $arguments['link'] ) {
 				$item_values['thelink'] = $item_values['editlink'];
 			} elseif ( 'view' == $arguments['link'] ) {
 				$item_values['thelink'] = $item_values['termlink'];
 			} elseif ( 'span' == $arguments['link'] ) {
-				$item_values['thelink'] = sprintf( '<span %1$sstyle="%2$s">%3$s</a>', $link_attributes, $item_values['link_style'], $item_values['link_text'] );
+				$item_values['thelink'] = sprintf( '<span %1$sstyle="%2$s">%3$s</span>', $link_attributes, $item_values['link_style'], $item_values['link_text'] );
 			} else {
 				$item_values['thelink'] = $item_values['link_text'];
 			}
@@ -2411,8 +2501,6 @@ class MLAShortcode_Support {
 			} // switch format
 		}
 
-		//$cloud = wp_generate_tag_cloud( $tags, $arguments );
-
 		if ( 'array' == $arguments['mla_output'] || empty($arguments['echo']) ) {
 			return $cloud;
 		}
@@ -2455,6 +2543,789 @@ class MLAShortcode_Support {
 	}
 
 	/**
+	 * Compose one level of an mla_term_list
+	 *
+	 * Adds shortcode output text and term-specific links to arrays passed by reference.
+	 *
+	 * @since 2.25
+	 *
+	 * @param string $list Shortcode output text, by reference
+	 * @param array $links Term-specific links for flat/array output, by reference
+	 * @param array $terms Term objects, by reference
+	 * @param array $markup_values Style and list-level substitution parameters, by reference
+	 * @param array $arguments Shortcode parameters, including defaults, by reference
+	 * @param array $attr Shortcode parameters, explicit, by reference
+	 *
+	 * @return void Appends to &$list, &$links
+	 */
+	public static function _compose_term_list( &$list, &$links, &$terms, &$markup_values, &$arguments, &$attr ) {
+		$term = current( $terms );
+		if ( $term->parent ) {
+			$markup_values['itemtag_class'] = 'class="term-list term-list-taxonomy-' . $term->taxonomy . ' children" '; 
+			$markup_values['itemtag_id'] = 'id="' . $markup_values['selector'] . '-' . $term->parent . '" ';
+		} else {
+			$markup_values['itemtag_class'] = 'class="term-list term-list-taxonomy-' . $term->taxonomy . '" '; 
+			$markup_values['itemtag_id'] = 'id="' . $markup_values['selector'] . '" ';
+		}
+
+		/*
+		 * These are the default parameters for term list display
+		 */
+		$mla_item_specific_arguments = array(
+			'mla_link_attributes' => '',
+			'mla_link_class' => '',
+			// 'mla_link_style' => '',
+			'mla_link_href' => '',
+			'mla_link_text' => '',
+			'mla_nolink_text' => '',
+			'mla_rollover_text' => '',
+			'mla_caption' => ''
+		);
+
+		/*
+		 * Determine output type and templates
+		 */
+		$output_parameters = array_map( 'strtolower', array_map( 'trim', explode( ',', $arguments['mla_output'] ) ) );
+
+		$is_list = 'list' == $output_parameters[0];
+		$is_dropdown = 'dropdown' == $output_parameters[0];
+		$is_checklist = 'checklist' == $output_parameters[0];
+		$is_hierarchical = !empty( $arguments['hierarchical'] ) && ( 'true' == strtolower( $arguments['hierarchical'] ) );
+
+		if ( $is_list ) {
+			$open_template = MLAShortcode_support::mla_fetch_gallery_template( $markup_values['mla_markup'] . '-open', 'markup' );
+			if ( false === $open_template ) {
+				$markup_values['mla_markup'] = $default_markup;
+				$open_template = MLAShortcode_support::mla_fetch_gallery_template( $default_markup . '-open', 'markup' );
+			}
+
+			if ( empty( $open_template ) ) {
+				$open_template = '';
+			}
+
+			$item_template = MLAShortcode_support::mla_fetch_gallery_template( $markup_values['mla_markup'] . '-item', 'markup' );
+			if ( empty( $item_template ) ) {
+				$item_template = '';
+			}
+
+			$close_template = MLAShortcode_support::mla_fetch_gallery_template( $markup_values['mla_markup'] . '-close', 'markup' );
+			if ( empty( $close_template ) ) {
+				$close_template = '';
+			}
+
+			/*
+			 * Look for gallery-level markup substitution parameters
+			 */
+			$new_text = $open_template . $close_template;
+			$markup_values = MLAData::mla_expand_field_level_parameters( $new_text, $attr, $markup_values );
+
+			$markup_values = apply_filters( 'mla_term_list_open_values', $markup_values );
+			$open_template = apply_filters( 'mla_term_list_open_template', $open_template );
+			if ( empty( $open_template ) ) {
+				$gallery_open = '';
+			} else {
+				$gallery_open = MLAData::mla_parse_template( $open_template, $markup_values );
+			}
+
+			$list .=  apply_filters( 'mla_term_list_open_parse', $gallery_open, $open_template, $markup_values );
+		} // is_list
+
+		foreach ( $terms as $key => $term ) {
+//error_log( __LINE__ . " _compose_term_list {$key} => " . var_export( $term, true ), 0 );
+			$item_values = $markup_values;
+			
+			/*
+			 * fill in item-specific elements
+			 */
+			$item_values['key'] = $key;
+			$item_values['term_id'] = $term->term_id;
+			$item_values['name'] = wptexturize( $term->name );
+			$item_values['slug'] = wptexturize( $term->slug );
+			$item_values['term_group'] = $term->term_group;
+			$item_values['term_taxonomy_id'] = $term->term_taxonomy_id;
+			$item_values['taxonomy'] = wptexturize( $term->taxonomy );
+			$item_values['current_item_class'] = '';
+			$item_values['description'] = wptexturize( $term->description );
+			$item_values['parent'] = $term->parent;
+			$item_values['level'] = $term->level;
+			$item_values['count'] = isset ( $term->count ) ? $term->count : 0; 
+			$item_values['link_url'] = $term->link;
+			$item_values['editlink_url'] = $term->edit_link;
+			$item_values['termlink_url'] = $term->term_link;
+			$item_values['children'] = '';
+			$item_values['termtag_attributes'] = '';
+			$item_values['termtag_class'] = $term->parent ? 'class="term-list-term children" ' : 'class="term-list-term" ';
+			$item_values['termtag_id'] = sprintf( 'id="%1$s-%2$d" ', $item_values['taxonomy'], $item_values['term_id'] );
+			// Added in the code below:
+			// 'current_item_class', 'caption', 'link_attributes', 'rollover_text', 'link_style', 'link_text', 'currentlink', 'editlink', 'termlink', 'thelink'
+
+			if ( ! empty( $arguments['current_item'] ) ) {
+				if ( is_integer( $arguments['current_item'] ) ) {
+					if ( $arguments['current_item'] == $term->term_id ) {
+						$item_values['current_item_class'] = $arguments['current_item_class'];
+					}
+				} else {
+					if ( $arguments['current_item'] == $term->slug ) {
+						$item_values['current_item_class'] = $arguments['current_item_class'];
+					}
+				}
+			}
+
+			
+			/*
+			 * Add item_specific field-level substitution parameters
+			 */
+			$new_text = isset( $item_template ) ? $item_template : '';
+			foreach( $mla_item_specific_arguments as $index => $value ) {
+				$new_text .= str_replace( '{+', '[+', str_replace( '+}', '+]', $arguments[ $index ] ) );
+			}
+
+			$item_values = MLAData::mla_expand_field_level_parameters( $new_text, $attr, $item_values );
+
+			if ( $item_values['captiontag'] ) {
+				$item_values['caption'] = wptexturize( $term->description );
+				if ( ! empty( $arguments['mla_caption'] ) ) {
+					$item_values['caption'] = wptexturize( self::_process_shortcode_parameter( $arguments['mla_caption'], $item_values ) );
+				}
+			} else {
+				$item_values['caption'] = '';
+			}
+
+			/*
+			 * Apply the Display Content parameters.
+			 */
+			if ( ! empty( $arguments['mla_target'] ) ) {
+				$link_attributes = 'target="' . $arguments['mla_target'] . '" ';
+			} else {
+				$link_attributes = '';
+			}
+
+			if ( ! empty( $arguments['mla_link_attributes'] ) ) {
+				$link_attributes .= self::_process_shortcode_parameter( $arguments['mla_link_attributes'], $item_values ) . ' ';
+			}
+
+			if ( ! empty( $arguments['mla_link_class'] ) ) {
+				$link_attributes .= 'class="' . self::_process_shortcode_parameter( $arguments['mla_link_class'], $item_values ) . '" ';
+			}
+
+			$item_values['link_attributes'] = $link_attributes;
+
+			$item_values['rollover_text'] = sprintf( _n( $item_values['single_text'], $item_values['multiple_text'], $item_values['count'], 'media-library-assistant' ), number_format_i18n( $item_values['count'] ) );
+			if ( ! empty( $arguments['mla_rollover_text'] ) ) {
+				$item_values['rollover_text'] = esc_attr( self::_process_shortcode_parameter( $arguments['mla_rollover_text'], $item_values ) );
+			}
+
+			if ( ! empty( $arguments['mla_link_href'] ) ) {
+				$link_href = self::_process_shortcode_parameter( $arguments['mla_link_href'], $item_values );
+				$item_values['link_url'] = $link_href;
+			} else {
+				$link_href = '';
+			}
+
+			if ( ! empty( $arguments['mla_link_text'] ) ) {
+				$item_values['link_text'] = esc_attr( self::_process_shortcode_parameter( $arguments['mla_link_text'], $item_values ) );
+			} else {
+				$item_values['link_text'] = $item_values['name'];
+			}
+
+			if ( ! empty( $arguments['show_count'] ) && ( 'true' == strtolower( $arguments['show_count'] ) ) ) {
+				$item_values['link_text'] .= ' (' . $item_values['count'] . ')';
+			}
+
+			/*
+			 * Currentlink, editlink, termlink and thelink  TODO - link style
+			 */
+			$item_values['currentlink'] = sprintf( '<a %1$shref="%2$s?current_item=%3$d" title="%4$s" style="%5$s">%6$s</a>', $link_attributes, $item_values['page_url'], $item_values['term_id'], $item_values['rollover_text'], '', $item_values['link_text'] );
+			$item_values['editlink'] = sprintf( '<a %1$shref="%2$s" title="%3$s" style="%4$s">%5$s</a>', $link_attributes, $item_values['editlink_url'], $item_values['rollover_text'], '', $item_values['link_text'] );
+			$item_values['termlink'] = sprintf( '<a %1$shref="%2$s" title="%3$s" style="%4$s">%5$s</a>', $link_attributes, $item_values['termlink_url'], $item_values['rollover_text'], '', $item_values['link_text'] );
+
+			if ( ! empty( $link_href ) ) {
+				$item_values['thelink'] = sprintf( '<a %1$shref="%2$s" title="%3$s" style="%4$s">%5$s</a>', $link_attributes, $link_href, $item_values['rollover_text'], '', $item_values['link_text'] );
+			} elseif ( 'current' == $arguments['link'] ) {
+				$item_values['thelink'] = $item_values['currentlink'];
+			} elseif ( 'edit' == $arguments['link'] ) {
+				$item_values['thelink'] = $item_values['editlink'];
+			} elseif ( 'view' == $arguments['link'] ) {
+				$item_values['thelink'] = $item_values['termlink'];
+			} elseif ( 'span' == $arguments['link'] ) {
+				$item_values['thelink'] = sprintf( '<span %1$sstyle="%2$s">%3$s</span>', $link_attributes, '', $item_values['link_text'] );
+			} else {
+				$item_values['thelink'] = $item_values['link_text'];
+			}
+		
+			$child_links = array();
+			if ( $is_hierarchical && !empty( $term->children ) ) {
+				self::_compose_term_list( $item_values['children'], $child_links, $term->children, $markup_values, $arguments, $attr );
+			}
+
+			if ( $is_list ) {
+				/*
+				 * item markup
+				 */
+				$item_values = apply_filters( 'mla_term_list_item_values', $item_values );
+				$item_template = apply_filters( 'mla_term_list_item_template', $item_template );
+				$parse_value = MLAData::mla_parse_template( $item_template, $item_values );
+				$list .= apply_filters( 'mla_term_list_item_parse', $parse_value, $item_template, $item_values );
+			} else {
+				$item_values = apply_filters( 'mla_term_list_item_values', $item_values );
+				$links[] = apply_filters( 'mla_term_list_item_parse', $item_values['thelink'], NULL, $item_values );
+
+				if ( $is_hierarchical && !empty( $child_links ) ) {
+					$links = array_merge( $links, $child_links );
+				}
+			} 
+		} // foreach tag
+
+		if ( $is_list ) {
+			$markup_values = apply_filters( 'mla_term_list_close_values', $markup_values );
+			$close_template = apply_filters( 'mla_term_list_close_template', $close_template );
+			$parse_value = MLAData::mla_parse_template( $close_template, $markup_values );
+			$list .= apply_filters( 'mla_term_list_close_parse', $parse_value, $close_template, $markup_values );
+		} // is_list
+		else {
+			switch ( $markup_values['mla_output'] ) {
+			case 'array' :
+				$list =& $links;
+				break;
+			case 'flat' :
+			default :
+				$list .= join( $markup_values['separator'], $links );
+				break;
+			} // switch format
+		}
+//error_log( __LINE__ . ' _compose links = ' . var_export( $links, true ), 0 );
+	}
+
+	/**
+	 * The MLA Term List support function.
+	 *
+	 * This is an alternative to the WordPress wp_list_categories, wp_dropdown_categories
+	 * and wp_terms_checklist functions, with additional options to customize the hyperlink
+	 * behind each term.
+	 *
+	 * @since 2.25
+	 *
+	 * @param array $attr Attributes of the shortcode.
+	 *
+	 * @return string HTML content to display the term list, dropdown control or checklist.
+	 */
+	public static function mla_term_list( $attr ) {
+		global $post;
+
+		/*
+		 * Some do_shortcode callers may not have a specific post in mind
+		 */
+		if ( ! is_object( $post ) ) {
+			$post = (object) array( 
+				'ID' => 0,
+				'post_author' => '0',
+				'post_date' => '',
+				'post_content' => '',
+				'post_title' => '',
+				'post_excerpt' => '',
+				'post_status' => '',
+				'post_name' => '',
+				'post_modified' => '',
+				'guid' => '',
+				'post_type' => '',
+			);
+		}
+
+		/*
+		 * These are the default parameters for term list display
+		 */
+		$mla_item_specific_arguments = array(
+			'mla_link_attributes' => '',
+			'mla_link_class' => '',
+			// 'mla_link_style' => '',
+			'mla_link_href' => '',
+			'mla_link_text' => '',
+			'mla_nolink_text' => '',
+			'mla_rollover_text' => '',
+			'mla_caption' => ''
+		);
+
+		$mla_arguments = array_merge( array(
+			'mla_output' => 'list',
+			'hierarchical' => 'true',
+			'depth' => 0,
+			'child_of' => 0,
+			'include_tree' => NULL,
+			'exclude_tree' => NULL,
+			'mla_style' => NULL,
+			'mla_markup' => NULL,
+			'mla_target' => '',
+			'mla_debug' => false,
+
+			// Pagination parameters
+			//'term_id' => NULL,
+			//'mla_end_size'=> 1,
+			//'mla_mid_size' => 2,
+			//'mla_prev_text' => '&laquo; ' . __( 'Previous', 'media-library-assistant' ),
+			//'mla_next_text' => __( 'Next', 'media-library-assistant' ) . ' &raquo;',
+			//'mla_page_parameter' => 'mla_list_current',
+			//'mla_list_current' => NULL,
+			//'mla_paginate_total' => NULL,
+			//'mla_paginate_type' => 'plain'
+			),
+			$mla_item_specific_arguments
+		);
+
+		$defaults = array_merge(
+			self::$mla_get_terms_parameters,
+			array(
+			'separator' => "\n",
+			'single_text' => '%d item',
+			'multiple_text' => '%d items',
+
+			'echo' => false,
+			'link' => 'view',
+			'current_item' => '',
+			'current_item_class' => 'mla_current_item',
+			'show_count' => false,
+
+			'itemtag' => 'ul',
+			'termtag' => 'li',
+			'captiontag' => '',
+			),
+			$mla_arguments
+		);
+
+		/*
+		 * Filter the attributes before "request:" prefix processing.
+		 */
+		 
+		$attr = apply_filters( 'mla_term_list_raw_attributes', $attr );
+
+		// $instance supports multiple lists in one page/post	
+		static $instance = 0;
+		$instance++;
+
+		/*
+		 * Some values are already known, and can be used in data selection parameters
+		 */
+		$upload_dir = wp_upload_dir();
+		$page_values = array(
+			'instance' => $instance,
+			'selector' => "mla_term_list-{$instance}",
+			'site_url' => site_url(),
+			'base_url' => $upload_dir['baseurl'],
+			'base_dir' => $upload_dir['basedir'],
+			'id' => $post->ID,
+			'page_ID' => $post->ID,
+			'page_author' => $post->post_author,
+			'page_date' => $post->post_date,
+			'page_content' => $post->post_content,
+			'page_title' => $post->post_title,
+			'page_excerpt' => $post->post_excerpt,
+			'page_status' => $post->post_status,
+			'page_name' => $post->post_name,
+			'page_modified' => $post->post_modified,
+			'page_guid' => $post->guid,
+			'page_type' => $post->post_type,
+			'page_url' => get_page_link(),
+		);
+
+		/*
+		 * Apply default arguments set in the markup template
+		 */
+		$template = isset( $attr['mla_markup'] ) ? $attr['mla_markup'] : $mla_arguments['mla_markup'];
+		$arguments = self::mla_fetch_gallery_template( $template . '-arguments', 'markup' );
+		if ( !empty( $arguments ) ) {
+			$attr = wp_parse_args( $attr, self::_validate_attributes( array(), $arguments ) );
+		}
+
+		/*
+		 * Adjust data selection arguments; remove pagination-specific arguments
+		 */
+		unset( $attr['limit'] );
+		unset( $attr['offset'] );
+
+		/*
+		 * Look for page-level, 'request:' and 'query:' substitution parameters,
+		 * which can be added to any input parameter
+		 */
+		foreach ( $attr as $attr_key => $attr_value ) {
+			/*
+			 * item-specific Display Content parameters must be evaluated
+			 * later, when all of the information is available.
+			 */
+			if ( array_key_exists( $attr_key, $mla_item_specific_arguments ) ) {
+				continue;
+			}
+
+			$attr_value = str_replace( '{+', '[+', str_replace( '+}', '+]', $attr_value ) );
+			$replacement_values = MLAData::mla_expand_field_level_parameters( $attr_value, $attr, $page_values );
+			$attr[ $attr_key ] = MLAData::mla_parse_template( $attr_value, $replacement_values );
+		}
+
+		$attr = apply_filters( 'mla_term_list_attributes', $attr );
+		$arguments = shortcode_atts( $defaults, $attr );
+
+		/*
+		 * Clean up the current_item to separate term_id from slug
+		 */
+		if ( ! empty( $arguments['current_item'] ) && ctype_digit( $arguments['current_item'] ) ) {
+			$arguments['current_item'] = absint( $arguments['current_item'] );
+		}
+
+		$arguments = apply_filters( 'mla_term_list_arguments', $arguments );
+
+		self::$mla_debug = ( ! empty( $arguments['mla_debug'] ) ) ? trim( strtolower( $arguments['mla_debug'] ) ) : false;
+		if ( self::$mla_debug ) {
+			if ( 'true' == self::$mla_debug ) {
+				MLACore::mla_debug_mode( 'buffer' );
+			} elseif ( 'log' == self::$mla_debug ) {
+				MLACore::mla_debug_mode( 'log' );
+			} else {
+				self::$mla_debug = false;
+			}
+		}
+
+		if ( self::$mla_debug ) {
+			MLACore::mla_debug_add( '<strong>' . __( 'mla_debug attributes', 'media-library-assistant' ) . '</strong> = ' . var_export( $attr, true ) );
+			MLACore::mla_debug_add( '<strong>' . __( 'mla_debug arguments', 'media-library-assistant' ) . '</strong> = ' . var_export( $arguments, true ) );
+		}
+
+		/*
+		 * Determine output type and templates
+		 */
+		$output_parameters = array_map( 'strtolower', array_map( 'trim', explode( ',', $arguments['mla_output'] ) ) );
+
+		if ( $is_list = 'list' == $output_parameters[0] ) {
+			$default_style = 'none';
+			if ( empty( $arguments['captiontag'] ) ) {
+				$default_markup = 'term-list-ul';
+			} else {
+				$default_markup = 'term-list-dl';
+
+				if ( 'dd' == $arguments['captiontag'] ) {
+					$arguments['itemtag'] = 'dl';
+					$arguments['termtag'] = 'dt';
+				}
+			}
+
+			if ( NULL == $arguments['mla_style'] ) {
+				$arguments['mla_style'] = $default_style;
+			}
+
+			if ( NULL == $arguments['mla_markup'] ) {
+				$arguments['mla_markup'] = $default_markup;
+			}
+		}
+
+		if ( $is_dropdown = 'dropdown' == $output_parameters[0] ) {
+			$default_style = 'none';
+			$default_markup = 'term-list-dropdown';
+
+			if ( NULL == $arguments['mla_style'] ) {
+				$arguments['mla_style'] = $default_style;
+			}
+
+			if ( NULL == $arguments['mla_markup'] ) {
+				$arguments['mla_markup'] = $default_markup;
+			}
+		}
+
+		if ( $is_checklist = 'checklist' == $output_parameters[0] ) {
+			$default_style = 'none';
+			$default_markup = 'term-list-checklist';
+
+			if ( NULL == $arguments['mla_style'] ) {
+				$arguments['mla_style'] = $default_style;
+			}
+
+			if ( NULL == $arguments['mla_markup'] ) {
+				$arguments['mla_markup'] = $default_markup;
+			}
+		}
+
+		$is_hierarchical = !empty( $arguments['hierarchical'] ) && ( 'true' == strtolower( $arguments['hierarchical'] ) );
+		
+		/*
+		 * Convert lists to arrays
+		 */
+		if ( is_string( $arguments['taxonomy'] ) ) {
+			$arguments['taxonomy'] = explode( ',', $arguments['taxonomy'] );
+		}
+
+		if ( is_string( $arguments['post_type'] ) ) {
+			$arguments['post_type'] = explode( ',', $arguments['post_type'] );
+		}
+
+		if ( is_string( $arguments['post_status'] ) ) {
+			$arguments['post_status'] = explode( ',', $arguments['post_status'] );
+		}
+
+		// Hierarchical exclude is done in _get_term_tree to exclude children
+		if ( $is_hierarchical && isset( $arguments['exclude'] ) ) {
+			$exclude_later = $arguments['exclude'];
+			unset( $arguments['exclude'] );
+		} else {
+			$exclude_later = NULL;
+		}
+			
+		$tags = self::mla_get_terms( $arguments );
+
+		if ( !empty( $exclude_later ) ) {
+			$arguments['exclude'] = $exclude_later;
+		}
+
+		/*
+		 * Invalid taxonomy names return WP_Error
+		 */
+		if ( is_wp_error( $tags ) ) {
+			$list =  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $tags->get_error_message() . '</strong>, ' . $tags->get_error_data( $tags->get_error_code() );
+
+			if ( 'array' == $arguments['mla_output'] ) {
+				return array( $list );
+			}
+
+			if ( empty($arguments['echo']) ) {
+				return $list;
+			}
+
+			echo $list;
+			return;
+		}
+
+		/*
+		 * Fill in the item_specific link properties, calculate list parameters
+		 */
+		if ( isset( $tags['found_rows'] ) ) {
+			$found_rows = $tags['found_rows'];
+			unset( $tags['found_rows'] );
+		} else {
+			$found_rows = count( $tags );
+		}
+
+		if ( 0 == $found_rows ) {
+			if ( self::$mla_debug ) {
+				MLACore::mla_debug_add( '<strong>' . __( 'mla_debug empty list', 'media-library-assistant' ) . '</strong>, query = ' . var_export( $arguments, true ) );
+				$list = MLACore::mla_debug_flush();
+				
+				if ( '<p></p>' == $list ) {
+					$list = '';
+				}
+			} else {
+				$list = '';
+			}
+
+			$list .= $arguments['mla_nolink_text'];
+			if ( 'array' == $arguments['mla_output'] ) {
+				return array( $list );
+			}
+
+			if ( empty($arguments['echo']) ) {
+				return $list;
+			}
+
+			echo $list;
+			return;
+		}
+
+		if ( self::$mla_debug ) {
+			$list = MLACore::mla_debug_flush();
+		} else {
+			$list = '';
+		}
+
+		if ( $is_hierarchical ) {
+			$tags = self::_get_term_tree( $tags, $arguments );
+	
+			if ( is_wp_error( $tags ) ) {
+				$list =  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $tags->get_error_message() . '</strong>, ' . $tags->get_error_data( $tags->get_error_code() );
+
+				if ( 'array' == $arguments['mla_output'] ) {
+					return array( $list );
+				}
+	
+				if ( empty($arguments['echo']) ) {
+					return $list;
+				}
+	
+				echo $list;
+				return;
+			}
+
+			if ( isset( $tags['found_rows'] ) ) {
+				$found_rows = $tags['found_rows'];
+				unset( $tags['found_rows'] );
+			} else {
+				$found_rows = count( $tags );
+			}
+		} else {
+			// TODO Make this conditional on $arguments['link']
+			foreach ( $tags as $key => $tag ) {
+				$link = get_edit_tag_link( $tag->term_id, $tag->taxonomy );
+				if ( ! is_wp_error( $link ) ) {
+					$tags[ $key ]->edit_link = $link;
+					$link = get_term_link( intval($tag->term_id), $tag->taxonomy );
+					$tags[ $key ]->term_link = $link;
+				}
+	
+				if ( is_wp_error( $link ) ) {
+					$list =  '<strong>' . __( 'ERROR', 'media-library-assistant' ) . ': ' . $link->get_error_message() . '</strong>, ' . $link->get_error_data( $link->get_error_code() );
+	
+					if ( 'array' == $arguments['mla_output'] ) {
+						return array( $list );
+					}
+		
+					if ( empty($arguments['echo']) ) {
+						return $list;
+					}
+		
+					echo $list;
+					return;
+				}
+	
+				if ( 'edit' == $arguments['link'] ) {
+					$tags[ $key ]->link = $tags[ $key ]->edit_link;
+				} else {
+					$tags[ $key ]->link = $tags[ $key ]->term_link;
+				}
+			} // foreach tag
+		}
+
+		$style_values = array_merge( $page_values, array(
+			'mla_output' => $arguments['mla_output'],
+			'mla_style' => $arguments['mla_style'],
+			'mla_markup' => $arguments['mla_markup'],
+			'taxonomy' => implode( '-', $arguments['taxonomy'] ),
+			'current_item' => $arguments['current_item'],
+			'itemtag' => tag_escape( $arguments['itemtag'] ),
+			'termtag' => tag_escape( $arguments['termtag'] ),
+			'captiontag' => tag_escape( $arguments['captiontag'] ),
+			'itemtag_attributes' => '',
+			'itemtag_class' => 'class="term-list term-list-taxonomy-' . implode( '-', $arguments['taxonomy'] ) . '" ', 
+			'itemtag_id' => 'id="' . $page_values['selector'] . '" ',
+			//'columns' => $columns,
+			//'itemwidth' => $width_string,
+			//'margin' => $margin_string,
+			//'float' => $float,
+			'all_found_rows' => $found_rows,
+			'found_rows' => $found_rows,
+			//'min_count' => $min_count,
+			//'max_count' => $max_count,
+			//'min_scaled_count' => $min_scaled_count,
+			//'max_scaled_count' => $max_scaled_count,
+			//'spread' => $spread,
+			//'smallest' => $arguments['smallest'],
+			//'largest' => $arguments['largest'],
+			//'unit' => $arguments['unit'],
+			//'font_spread' => $font_spread,
+			//'font_step' => $font_step,
+			'separator' => $arguments['separator'],
+			'single_text' => $arguments['single_text'],
+			'multiple_text' => $arguments['multiple_text'],
+			'echo' => $arguments['echo'],
+			'link' => $arguments['link']
+		) );
+
+		$style_template = $gallery_style = '';
+		$use_mla_term_list_style = $is_list && ( 'none' != strtolower( $style_values['mla_style'] ) );
+		if ( apply_filters( 'use_mla_term_list_style', $use_mla_term_list_style, $style_values['mla_style'] ) ) {
+			$style_template = MLAShortcode_support::mla_fetch_gallery_template( $style_values['mla_style'], 'style' );
+			if ( empty( $style_template ) ) {
+				$style_values['mla_style'] = $default_style;
+				$style_template = MLAShortcode_support::mla_fetch_gallery_template( $default_style, 'style' );
+			}
+
+			if ( ! empty ( $style_template ) ) {
+				/*
+				 * Look for 'query' and 'request' substitution parameters
+				 */
+				$style_values = MLAData::mla_expand_field_level_parameters( $style_template, $attr, $style_values );
+
+				$style_values = apply_filters( 'mla_term_list_style_values', $style_values );
+				$style_template = apply_filters( 'mla_term_list_style_template', $style_template );
+				$gallery_style = MLAData::mla_parse_template( $style_template, $style_values );
+				$gallery_style = apply_filters( 'mla_term_list_style_parse', $gallery_style, $style_template, $style_values );
+			} // !empty template
+		} // use_mla_term_list_style
+
+		$list .= $gallery_style;
+		$markup_values = $style_values;
+		
+		/*
+		 * Accumulate links for flat and array output
+		 */
+		$tag_links = array();
+		
+		if ( $is_hierarchical ) {
+			foreach( $tags as $taxonomy => $root_terms ) {
+
+				if ( isset( $root_terms['found_rows'] ) ) {
+					$markup_values['found_rows'] = $root_terms['found_rows'];
+					unset( $root_terms['found_rows'] );
+				} else {
+					$markup_values['found_rows'] = count( $root_terms );
+				}
+
+				self::_compose_term_list( $list, $tag_links, $root_terms, $markup_values, $arguments, $attr );
+			}
+		} else {
+			self::_compose_term_list( $list, $tag_links, $tags, $markup_values, $arguments, $attr );
+		}
+
+		if ( 'array' == $arguments['mla_output'] || empty($arguments['echo']) ) {
+			return $list;
+		}
+
+		echo $list;
+	}
+
+	/**
+	 * The MLA Term List shortcode.
+	 *
+	 * This is an interface to the mla_term_list function.
+	 *
+	 * @since 2.25
+	 *
+	 * @param array $attr Attributes of the shortcode.
+	 * @param string $content Optional content for enclosing shortcodes
+	 *
+	 * @return string HTML content to display the term list.
+	 */
+	public static function mla_term_list_shortcode( $attr, $content = NULL ) {
+		/*
+		 * Make sure $attr is an array, even if it's empty,
+		 * and repair damage caused by link-breaks in the source text
+		 */
+		$attr = self::_validate_attributes( $attr, $content );
+
+		/*
+		 * The 'array' format makes no sense in a shortcode
+		 */
+		if ( isset( $attr['mla_output'] ) && 'array' == $attr['mla_output'] ) {
+			$attr['mla_output'] = 'flat';
+		}
+			 
+		/*
+		 * A shortcode must return its content to the caller, so "echo" makes no sense
+		 */
+		$attr['echo'] = false;
+
+		if ( empty( $attr['mla_output'] ) ) {
+			return 'mla_output is empty';
+		}
+		
+		switch ( $attr['mla_output'] ) {
+			case 'wp_list_categories':
+				return wp_list_categories( $attr );
+			case 'wp_dropdown_categories':
+				return wp_dropdown_categories( $attr );
+			case 'wp_terms_checklist':
+				require_once( ABSPATH . 'wp-admin/includes/template.php' );
+				return wp_terms_checklist( 0, $attr );
+			default:
+				//return 'mla_output not recognized';
+		}
+		
+		return self::mla_term_list( $attr );
+	}
+
+	/**
 	 * Computes image dimensions for scalable graphics, e.g., SVG 
 	 *
 	 * @since 2.20
@@ -2464,7 +3335,7 @@ class MLAShortcode_Support {
 	private static function _registered_dimensions() {
 		global $_wp_additional_image_sizes;
 
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			$sizes = array( 'icon' => array( 64, 64 ) );
 		} else {
 			$sizes = array( 'icon' => array( 60, 60 ) );
@@ -3774,9 +4645,11 @@ class MLAShortcode_Support {
 		 * Disable Relevanssi - A Better Search, v3.2 by Mikko Saari 
 		 * relevanssi_prevent_default_request( $request, $query )
 		 * apply_filters('relevanssi_admin_search_ok', $admin_search_ok, $query );
+		 * apply_filters('relevanssi_prevent_default_request', $prevent, $query );
 		 */
 		if ( function_exists( 'relevanssi_prevent_default_request' ) ) {
-			add_filter( 'relevanssi_admin_search_ok', 'MLAData::mla_query_relevanssi_admin_search_ok_filter' );
+			add_filter( 'relevanssi_admin_search_ok', 'MLAQuery::mla_query_relevanssi_admin_search_ok_filter' );
+			add_filter( 'relevanssi_prevent_default_request', 'MLAQuery::mla_query_relevanssi_prevent_default_request_filter' );
 		}
 
 		if ( class_exists( 'MLA_Polylang' ) ) {
@@ -3806,7 +4679,8 @@ class MLAShortcode_Support {
 		}
 
 		if ( function_exists( 'relevanssi_prevent_default_request' ) ) {
-			remove_filter( 'relevanssi_admin_search_ok', 'MLAData::mla_query_relevanssi_admin_search_ok_filter' );
+			remove_filter( 'relevanssi_admin_search_ok', 'MLAQuery::mla_query_relevanssi_admin_search_ok_filter' );
+			remove_filter( 'relevanssi_prevent_default_request', 'MLAQuery::mla_query_relevanssi_prevent_default_request_filter' );
 		}
 
 		remove_filter( 'posts_join', 'MLAShortcode_Support::mla_shortcode_query_posts_join_filter', 0x7FFFFFFF );
@@ -3977,7 +4851,7 @@ class MLAShortcode_Support {
 	}
 
 	/**
-	 * Data selection parameters for [mla_tag_cloud]
+	 * Data selection parameters for [mla_tag_cloud], [mla_term_list]
 	 *
 	 * @since 2.20
 	 *
@@ -4053,6 +4927,9 @@ class MLAShortcode_Support {
 	 * limit - final number of term objects to return, for pagination. Default 0.
 	 *
 	 * offset - number of term objects to skip, for pagination. Default 0.
+	 *
+	 * fields - string with fields for the SQL SELECT clause, e.g.,
+	 *          't.term_id, t.name, t.slug, COUNT(p.ID) AS `count`'
 	 *
 	 * @since 2.20
 	 *
@@ -4380,9 +5257,298 @@ class MLAShortcode_Support {
 
 		$tags['found_rows'] = $found_rows;
 		$tags = apply_filters( 'mla_get_terms_query_results', $tags );
+//error_log( __LINE__ . ' mla_get_terms tags = ' . var_export( $tags, true ), 0 );
 
 		return $tags;
 	} // mla_get_terms
+
+	/**
+	 * Walk a list of terms and find hierarchy, preserving source order.
+	 *
+	 * @since 2.25
+	 *
+	 * @param	array	$terms Term objects, by reference
+	 * @param	array	$arguments Shortcode arguments, including defaults
+	 *
+	 * @return	array	( [taxonomy] => array( [root terms] => array( [fields], array( 'children' => [child terms] )
+	 */
+	private static function _get_term_tree( &$terms, $arguments = array() ) {
+		$term = current( $terms );
+		
+		if ( empty( $term ) or ! isset( $term->parent ) ) {
+			return array();
+		}
+		
+		/*
+		 * Set found_rows aside to be restored later
+		 */
+		if ( isset( $terms['found_rows'] ) ) {
+			$found_rows = $terms['found_rows'];
+			unset( $terms['found_rows'] );
+		} else {
+			$found_rows = NULL;
+		}
+
+		$child_of = ! empty( $arguments['child_of'] ) ? absint( $arguments['child_of'] ) : NULL;
+		$include_tree = ! empty( $arguments['include_tree'] ) ? wp_parse_id_list( $arguments['include_tree'] ) : NULL;
+		$exclude_tree = empty( $include_tree ) && !empty( $arguments['exclude_tree'] ) ? wp_parse_id_list( $arguments['exclude_tree'] ) : NULL;
+		
+		$depth = !empty( $arguments['depth'] ) ? absint( $arguments['depth'] ) : 0;
+		$term_tree = array();
+		$root_ids = array();
+		$parents = array();
+		$child_ids = array();
+		foreach( $terms as $term ) {
+			// TODO Make this conditional on $arguments['link']
+			$link = get_edit_tag_link( $term->term_id, $term->taxonomy );
+			if ( ! is_wp_error( $link ) ) {
+				$term->edit_link = $link;
+				$link = get_term_link( intval($term->term_id), $term->taxonomy );
+				$term->term_link = $link;
+			}
+
+			if ( is_wp_error( $link ) ) {
+				return $link;
+			}
+
+			if ( 'edit' == $arguments['link'] ) {
+				$term->link = $term->edit_link;
+			} else {
+				$term->link = $term->term_link;
+			}
+
+			$term->children = array();
+			$parent = absint( $term->parent );
+			if ( 0 == $parent ) {
+				$term_tree[ $term->taxonomy ][] = $term;
+				$root_ids[ $term->taxonomy ][ $term->term_id ] = count( $term_tree[ $term->taxonomy ] ) - 1;
+			} else {
+				$parents[ $term->taxonomy ][ $term->parent ][] = $term;
+				$child_ids[ $term->taxonomy ][ $term->term_id ] = absint( $term->parent );
+			}
+		}
+//error_log( __LINE__ . ' _get_term_tree root terms = ' . var_export( $term_tree, true ), 0 );
+//error_log( __LINE__ . ' _get_term_tree root ids = ' . var_export( $root_ids, true ), 0 );
+//error_log( __LINE__ . ' _get_term_tree parents = ' . var_export( $parents, true ), 0 );
+//error_log( __LINE__ . ' _get_term_tree child ids = ' . var_export( $child_ids, true ), 0 );
+
+		/*
+		 * Collapse multi-level children
+		 */
+		foreach ( $parents as $taxonomy => $tax_parents ) {
+			if ( ! isset( $term_tree[ $taxonomy ] ) ) {
+				$term_tree[ $taxonomy ] = array();
+				$root_ids[ $taxonomy ] = array();
+			}
+			
+			while ( !empty( $tax_parents ) ) {
+				foreach( $tax_parents as $parent_id => $children ) {
+					foreach( $children as $index => $child ) {
+						if ( ! array_key_exists( $child->term_id, $tax_parents ) ) {
+//error_log( __LINE__ . " _get_term_tree leaf = " . var_export( $child, true ), 0 );
+	
+							if ( array_key_exists( $child->parent, $root_ids[ $taxonomy ] ) ) {
+								// Found a root node - attach the leaf
+								$term_tree[ $taxonomy ][ $root_ids[ $taxonomy ][ $child->parent ] ]->children[] = $child;
+							} elseif ( isset( $child_ids[ $taxonomy ][ $child->parent ] ) ) {
+								// Found a non-root parent node - attach the leaf
+								$the_parent = $child_ids[ $taxonomy ][ $child->parent ];
+//error_log( __LINE__ . " _get_term_tree tax_parents[{$the_parent}] = " . var_export( $tax_parents[ $the_parent ], true ), 0 );
+								foreach( $tax_parents[ $the_parent ] as $candidate_index => $candidate ) {
+//error_log( __LINE__ . " _get_term_tree tax_parents[{$the_parent}][ {$candidate_index} ] = " . var_export( $candidate, true ), 0 );
+									if ( $candidate->term_id == $child->parent ) {
+										$parents[ $taxonomy ][ $the_parent ][ $candidate_index ]->children[] = $child;
+										break;
+									}
+								} // foreach candidate
+							} else {
+								// No parent exists; make this a root node
+								$term_tree[ $taxonomy ][] = $child;
+								$root_ids[ $taxonomy ][ $child->term_id ] = count( $term_tree[ $taxonomy ] ) - 1;
+							} // Move the leaf node
+							
+							unset( $tax_parents[ $parent_id ][ $index ] );
+							if ( empty( $tax_parents[ $parent_id ] ) ) {
+								unset( $tax_parents[ $parent_id ] );
+							}
+						} // leaf node; no children
+					} // foreach child
+				} // foreach parent_id
+//error_log( __LINE__ . ' _get_term_tree tax_parents = ' . var_export( $tax_parents, true ), 0 );
+			}
+		} // foreach taxonomy
+
+		/*
+		 * Calculate and potentially trim parent/child tree
+		 */
+		$all_terms_count = 0;
+		foreach ( array_keys( $term_tree ) as $taxonomy ) {
+			if ( $child_of ) {
+				$result = self::_find_child_of( $term_tree[ $taxonomy ], $child_of );
+				if ( false !== $result ) {
+					$term_tree[ $taxonomy ] = $result->children;
+				} else {
+					$term_tree[ $taxonomy ] = array();
+					continue;
+				}
+			} // $child_of
+			
+			if ( $include_tree ) {
+				$result = self::_find_include_tree( $term_tree[ $taxonomy ], $include_tree );
+				if ( false !== $result ) {
+					$term_tree[ $taxonomy ] = $result;
+				} else {
+					$term_tree[ $taxonomy ] = array();
+					continue;
+				}
+			} // $include_tree
+			
+			if ( $exclude_tree ) {
+				self::_remove_exclude_tree( $term_tree[ $taxonomy ], $exclude_tree );
+			} // $include_tree
+error_log( __LINE__ . ' _get_term_tree root terms = ' . var_export( $term_tree, true ), 0 );
+			
+			$term_count = 0;
+			$root_limit = count( $term_tree[ $taxonomy ] );
+			
+			if ( $root_limit ) {
+				for ( $root_index = 0; $root_index < $root_limit; $root_index++ ) {
+					if ( isset( $term_tree[ $taxonomy ][ $root_index ] ) ) {
+						$term_count++;
+						$term_tree[ $taxonomy ][ $root_index ]->level = 0;
+						if ( ! empty( $term_tree[ $taxonomy ][ $root_index ]->children ) ) {
+							$term_count += self::_count_term_children( $term_tree[ $taxonomy ][ $root_index ], $depth );
+						}
+					} else {
+						$root_limit++;
+					}
+				}
+			}
+
+error_log( __LINE__ . " _get_term_tree( {$taxonomy} ) terms = " . var_export( $term_count, true ), 0 );
+			$term_tree[ $taxonomy ]['found_rows'] = $term_count;
+			$all_terms_count += $term_count;
+		}
+		
+		$term_tree['found_rows'] = $all_terms_count;
+error_log( __LINE__ . ' _get_term_tree root terms = ' . var_export( $term_tree, true ), 0 );
+		return $term_tree;
+	} // _get_term_tree
+
+	/**
+	 * Find a term that matches $child_of
+	 *
+	 * @since 2.25
+	 *
+	 * @param	array	$parents Potential parent Term objects, by reference
+	 * @param	integer	$parent_id Term_id of the desired parent
+	 *
+	 * @return	mixed	Term object of the desired parent else false
+	 */
+	private static function _find_child_of( &$parents, $parent_id ) {
+		foreach( $parents as $parent ) {
+			if ( $parent_id == $parent->term_id ) {
+				return $parent;
+			}
+		
+			$result = self::_find_child_of( $parent->children, $parent_id );
+			if ( false !== $result ) {
+				return $result;
+			}
+		}
+		
+		return false;
+	} // _find_child_of
+
+	/**
+	 * Find the term(s) that match $include_tree
+	 *
+	 * @since 2.25
+	 *
+	 * @param	array	$terms Potential term objects, by reference
+	 * @param	array	$include_tree term_id(s) of the desired terms
+	 *
+	 * @return	mixed	Term object(s) of the desired terms else false
+	 */
+	private static function _find_include_tree( &$terms, $include_tree ) {
+		$new_tree = array();
+		
+		foreach( $terms as $term ) {
+			if ( in_array( $term->term_id, $include_tree ) ) {
+				$new_tree[] = $term;
+			} elseif ( !empty( $term->children ) ) {
+				$result = self::_find_include_tree( $term->children, $include_tree );
+				if ( false !== $result ) {
+					$new_tree = array_merge( $new_tree, $result );
+				}
+			}
+		}
+
+		if ( empty( $new_tree ) ) {		
+			return false;
+		}
+		
+		return $new_tree;
+	} // _find_include_tree
+
+	/**
+	 * Remove the term(s) that match $exclude_tree
+	 *
+	 * @since 2.25
+	 *
+	 * @param	array	$terms Potential term objects, by reference
+	 * @param	array	$exclude_tree term_id(s) of the desired terms
+	 *
+	 * @return	void	Term object(s) are removed from the &parents array
+	 */
+	private static function _remove_exclude_tree( &$terms, $exclude_tree ) {
+		foreach( $terms as $index => $term ) {
+			if ( in_array( $term->term_id, $exclude_tree ) ) {
+				unset( $terms[ $index ] );
+			} elseif ( !empty( $term->children ) ) {
+				self::_remove_exclude_tree( $term->children, $exclude_tree );
+			}
+		}
+	} // _remove_exclude_tree
+
+	/**
+	 * Add level to term children and count them, all levels.
+	 *
+	 * Recalculates term counts by including items from child terms. Assumes all
+	 * relevant children are already in the $terms argument.
+	 *
+	 * @since 2.25
+	 *
+	 * @param	object	$parent Parent Term objects, by reference
+	 * @param	integer	$depth Maximum depth of parent/child relationship
+	 *
+	 * @return	integer	Total number of children, all levels
+	 */
+	private static function _count_term_children( &$parent, $depth = 0 ) {
+		$term_count = 0;
+		$child_level = $parent->level + 1;
+		
+		// level is zero-based, depth is one-based
+		if ( $depth && $child_level >= $depth ) {
+			$parent->children = array();
+			return 0;
+		}
+		
+		$child_limit = count( $parent->children );
+		for ( $child_index = 0; $child_index < $child_limit; $child_index++ ) {
+				if ( isset( $parent->children[ $child_index ] ) ) {
+					$term_count++;
+					$parent->children[ $child_index ]->level = $child_level;
+					if ( ! empty( $parent->children[ $child_index ]->children ) ) {
+						$term_count += self::_count_term_children( $parent->children[ $child_index ], $depth );
+					}
+				} else {
+					$child_limit++;
+				}
+			}
+
+		return $term_count;
+	} // _count_term_children
 
 	/**
 	 * Add count of children to parent count.
