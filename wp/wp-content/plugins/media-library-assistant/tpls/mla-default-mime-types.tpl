@@ -154,7 +154,7 @@ xlsm,application/vnd.ms-excel.sheet.macroEnabled.12,spreadsheet,spreadsheet,Micr
 xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,spreadsheet,spreadsheet,Microsoft Office - OOXML - Spreadsheet
 xlt,application/vnd.ms-excel,spreadsheet,spreadsheet,Microsoft Excel Template
 xltm,application/vnd.ms-excel.template.macroEnabled.12,spreadsheet,spreadsheet,Microsoft Excel - Macro-Enabled Template File
-xltx,application/vnd.openxmlformats-officedocument.spreadsheetml.template,spreadsheet,spreadsheet,Microsoft Office - OOXML - Spreadsheet Teplate
+xltx,application/vnd.openxmlformats-officedocument.spreadsheetml.template,spreadsheet,spreadsheet,Microsoft Office - OOXML - Spreadsheet Template
 xlw,application/vnd.ms-excel,spreadsheet,spreadsheet,Microsoft Excel Workspace
 xml,application/xml,code,code,Atom Syndication Format
 xsl,application/xml,code,style,XML Stylesheet
@@ -490,7 +490,7 @@ erf,application/x-hsp-erf,
 es,application/ecmascript,ECMAScript
 es,application/x-esrehber,
 es,audio/echospeech,EchoCast Plugin
-es3,application/vnd.eszigno3+xml,MICROSEC e-Szign¢
+es3,application/vnd.eszigno3+xml,MICROSEC e-Szigno
 esf,application/vnd.epson.esf,QUASS Stream Player
 etf,image/x-etf,
 etx,text/x-setext,Setext

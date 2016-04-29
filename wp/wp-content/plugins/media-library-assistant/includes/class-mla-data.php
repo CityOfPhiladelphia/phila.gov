@@ -47,7 +47,7 @@ class MLAData {
 				$template_end = strpos( $tpl, '+]', $nest );
 				if ( false === $template_end ) {
 					/* translators: 1: ERROR tag 2: template excerpt */
-					error_log( sprintf( _x( '%1$s: _find_template_substring no template end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $offset ) ), 0 );
+					MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: _find_template_substring no template end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $offset ) ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					return '';
 				}
 
@@ -106,7 +106,7 @@ class MLAData {
 			} else { // found template
 				if ( false === $end = strpos( $tpl, '+]', $offset ) ) {
 					/* translators: 1: ERROR tag 2: template excerpt */
-					error_log( sprintf( _x( '%1$s: mla_parse_array_template no template end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $offset ) ), 0 );
+					MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: mla_parse_array_template no template end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $offset ) ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					return $tpl;
 				} // no end delimiter
 
@@ -194,7 +194,7 @@ class MLAData {
 				} else { // found template
 					if ( false === $end = strpos( $tpl, '+]', $offset ) ) {
 					/* translators: 1: ERROR tag 2: template excerpt */
-					error_log( sprintf( _x( '%1$s: mla_parse_template no end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $offset ) ), 0 );
+					MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: mla_parse_template no end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $offset ) ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 						return $tpl;
 					} // no end delimiter
 
@@ -238,7 +238,7 @@ class MLAData {
 				$test_end = strpos( $tpl, ')', $nest );
 				if ( false === $test_end ) {
 					/* translators: 1: ERROR tag 2: template string */
-					error_log( sprintf( _x( '%1$s: _find_test_substring no end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $nest ) ), 0 );
+					MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: _find_test_substring no end delimiter, tail = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), substr( $tpl, $nest ) ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					return '';
 				}
 
@@ -497,7 +497,7 @@ class MLAData {
 					break;
 				default:
 					/* translators: 1: ERROR tag 2: node type, e.g., template */
-					error_log( sprintf( _x( '%1$s: _evaluate_template_array_node unknown type "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $node ), 0 );
+					MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: _evaluate_template_array_node unknown type "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $node ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			} // node type
 		} // isset node type
 
@@ -560,7 +560,7 @@ class MLAData {
 				return $results;
 			default:
 				/* translators: 1: ERROR tag 2: node type, e.g., template */
-				error_log( sprintf( _x( '%1$s: _evaluate_template_node unknown type "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $node ), 0 );
+				MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: _evaluate_template_node unknown type "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $node ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 		} // node type
 
 		return '';				
@@ -1148,7 +1148,7 @@ class MLAData {
 				$template_end = strpos( $tpl, '+]', $nest );
 				if ( false === $template_end ) {
 					/* translators: 1: ERROR tag 2: template excerpt */
-					error_log( sprintf( _x( '%1$s: mla_get_template_placeholders no template-end delimiter dump = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), self::mla_hex_dump( substr( $tpl, $template_offset, 128 ), 128, 16 ) ), 0 );
+					MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: mla_get_template_placeholders no template-end delimiter dump = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), self::mla_hex_dump( substr( $tpl, $template_offset, 128 ), 128, 16 ) ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					return array();
 				}
 
@@ -1352,13 +1352,13 @@ class MLAData {
 		$item = get_post( $post_id );
 		if ( empty( $item ) ) {
 			/* translators: 1: ERROR tag 2: post ID */
-			error_log( sprintf( _x( '%1$s: mla_get_attachment_by_id(%2$d) not found.', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $post_id ), 0 );
+			MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: mla_get_attachment_by_id(%2$d) not found.', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $post_id ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			return NULL;
 		}
 
 		if ( $item->post_type != 'attachment' ) {
 			/* translators: 1: ERROR tag 2: post ID 3: post_type */
-			error_log( sprintf( _x( '%1$s: mla_get_attachment_by_id(%2$d) wrong post_type "%3$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $post_id, $item->post_type ), 0 );
+			MLACore::mla_debug_add( __LINE__ . sprintf( _x( '%1$s: mla_get_attachment_by_id(%2$d) wrong post_type "%3$s".', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $post_id, $item->post_type ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			return NULL;
 		}
 
@@ -1564,8 +1564,8 @@ class MLAData {
 	 * @return	void
 	 */
 	public static function mla_save_post_action( $post_id ) {
-		MLAQuery::mla_flush_mla_galleries( MLACore::MLA_GALLERY_IN_TUNING );
-		MLAQuery::mla_flush_mla_galleries( MLACore::MLA_MLA_GALLERY_IN_TUNING );
+		MLAQuery::mla_flush_mla_galleries( MLACoreOptions::MLA_GALLERY_IN_TUNING );
+		MLAQuery::mla_flush_mla_galleries( MLACoreOptions::MLA_MLA_GALLERY_IN_TUNING );
 	}
 
 	/**
@@ -1702,21 +1702,27 @@ class MLAData {
 //error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$file_name}, {$file_offset} ) ", 0 );
 		$chunksize = 16384;			
 		$xmp_chunk = file_get_contents( $file_name, true, NULL, $file_offset, $chunksize );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$file_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $xmp_chunk ), 0 );
 
 		/*
 		 * If necessary and possible, advance the $xmp_chunk through the file until it contains the start tag
 		 */
 		if ( false === ( $start_tag = strpos( $xmp_chunk, '<x:xmpmeta' ) ) && ( $chunksize == strlen( $xmp_chunk ) ) ) {
 			$new_offset = $file_offset + ( $chunksize - 16 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$new_offset} ) ", 0 );
 			$xmp_chunk = file_get_contents( $file_name, true, NULL, $new_offset, $chunksize );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$new_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $xmp_chunk ), 0 );
 			while ( false === ( $start_tag = strpos( $xmp_chunk, '<x:xmpmeta' ) ) && ( $chunksize == strlen( $xmp_chunk ) ) ) {
 				$new_offset = $new_offset + ( $chunksize - 16 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$new_offset} ) ", 0 );
 				$xmp_chunk = file_get_contents( $file_name, true, NULL, $new_offset, $chunksize );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$new_offset} ) chunk = \r\n" . MLAData::mla_hex_dump( $xmp_chunk ), 0 );
 			} // while not found
 		} else { // if not found
 			$new_offset = $file_offset;
 		}
 
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata( {$start_tag} ) ", 0 );
 		if ( false === $start_tag ) {
 			return NULL;
 		}
@@ -1748,11 +1754,11 @@ class MLAData {
 		$xml_parser = xml_parser_create('UTF-8');
 		if ( xml_parser_set_option( $xml_parser, XML_OPTION_SKIP_WHITE, 0 ) && xml_parser_set_option( $xml_parser, XML_OPTION_CASE_FOLDING, 0 ) ) {
 			if ( 0 == xml_parse_into_struct( $xml_parser, $xmp_string, $xmp_values ) ) {
-				error_log( __( 'ERROR', 'media-library-assistant' ) . ': ' . _x( 'mla_parse_xmp_metadata xml_parse_into_struct failed.', 'error_log', 'media-library-assistant' ), 0 );
+				MLACore::mla_debug_add( __LINE__ . __( 'ERROR', 'media-library-assistant' ) . ': ' . _x( 'mla_parse_xmp_metadata xml_parse_into_struct failed.', 'error_log', 'media-library-assistant' ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 				$xmp_values = array();
 			}
 		} else {
-			error_log( __( 'ERROR', 'media-library-assistant' ) . ': ' . _x( 'mla_parse_xmp_metadata set option failed.', 'error_log', 'media-library-assistant' ), 0 );
+			MLACore::mla_debug_add( __LINE__ . __( 'ERROR', 'media-library-assistant' ) . ': ' . _x( 'mla_parse_xmp_metadata set option failed.', 'error_log', 'media-library-assistant' ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 		}
 
 		xml_parser_free($xml_parser);
@@ -1807,23 +1813,24 @@ class MLAData {
 			switch ( $value['type'] ) {
 				case 'open':
 					$levels[ ++$current_level ] = array( 'key' => $value['tag'], 'values' => $node_attributes );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$current_level}, {$index} ) case 'open': top_level = " . var_export( $levels[ $current_level ], true ), 0 );
 					break;
 				case 'close':
 					if ( 0 < --$current_level ) {
 						$top_level = array_pop( $levels );
-//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'close': top_level = " . var_export( $top_level, true ), 0 );
-//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'close': levels( {$current_level} ) before = " . var_export( $levels, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$current_level}, {$index} ) case 'close': top_level = " . var_export( $top_level, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$current_level}, {$index} ) case 'close': levels( {$current_level} ) before = " . var_export( $levels, true ), 0 );
 						if ( 'rdf:li' == $top_level['key'] ) {
 							$levels[ $current_level ]['values'][] = $top_level['values'];
 						} else {
 							if ( isset( $levels[ $current_level ]['values'][ $top_level['key'] ] ) ) {
-								$levels[ $current_level ]['values'][ $top_level['key'] ] = array_merge( $levels[ $current_level ]['values'][ $top_level['key'] ], $top_level['values'] );
+								$levels[ $current_level ]['values'][ $top_level['key'] ] = array_merge( (array) $levels[ $current_level ]['values'][ $top_level['key'] ], $top_level['values'] );
 							} else {
 								$levels[ $current_level ]['values'][ $top_level['key'] ] = $top_level['values'];
 							}
 						}
 					}
-//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'close': levels( {$current_level} ) after = " . var_export( $levels, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$current_level}, {$index} ) case 'close': levels( {$current_level} ) after = " . var_export( $levels, true ), 0 );
 					break;
 				case 'complete':
 					if ( 'x-default' != $language ) {
@@ -1841,6 +1848,9 @@ class MLAData {
 						$complete_value = $node_attributes;
 					}
 
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'complete': value = " . var_export( $value, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'complete': complete_value = " . var_export( $complete_value, true ), 0 );
+//error_log( __LINE__ . " MLAData::mla_parse_xmp_metadata xmp_values( {$index} ) case 'complete': (array) complete_value = " . var_export( (array) $complete_value, true ), 0 );
 					if ( 'rdf:li' == $value['tag'] ) {
 						$levels[ $current_level ]['values'][] = $complete_value;
 					} else {
@@ -2910,7 +2920,7 @@ class MLAData {
 					if ( ! empty( MLAData::$mla_IPTC_EXIF_errors ) ) {
 						$results['mla_iptc_errors'] = MLAData::$mla_IPTC_EXIF_errors;
 						MLAData::$mla_IPTC_EXIF_errors = array();
-						error_log( __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_iptc_errors] = ' . var_export( $results['mla_exif_errors'], true ), 0 );
+						MLACore::mla_debug_add( __LINE__ . __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_iptc_errors] = ' . var_export( $results['mla_exif_errors'], true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					}
 
 					if ( ! is_array( $iptc_values ) ) {
@@ -2938,7 +2948,7 @@ class MLAData {
 				if ( ! empty( MLAData::$mla_IPTC_EXIF_errors ) ) {
 					$results['mla_exif_errors'] = MLAData::$mla_IPTC_EXIF_errors;
 					MLAData::$mla_IPTC_EXIF_errors = array();
-					error_log( __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_exif_errors] = ' . var_export( $results['mla_exif_errors'], true ), 0 );
+					MLACore::mla_debug_add( __LINE__ . __( 'ERROR', 'media-library-assistant' ) . ': ' . '$results[mla_exif_errors] = ' . var_export( $results['mla_exif_errors'], true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 				}
 			} // exif_read_data
 

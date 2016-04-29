@@ -182,8 +182,8 @@ class MLA_Upload_Optional_List_Table extends WP_List_Table {
 	 */
 	public static function mla_admin_init_action( ) {
 		if ( isset( $_REQUEST['mla-optional-uploads-display'] ) || isset( $_REQUEST['mla-optional-uploads-search'] ) ) {
-			add_filter( 'get_user_option_managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-uploadcolumnshidden', 'MLA_Upload_Optional_List_Table::mla_manage_hidden_columns_filter', 10, 3 );
-			add_filter( 'manage_settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-upload_columns', 'MLA_Upload_Optional_List_Table::mla_manage_columns_filter', 10, 0 );
+			add_filter( 'get_user_option_managesettings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-uploadcolumnshidden', 'MLA_Upload_Optional_List_Table::mla_manage_hidden_columns_filter', 10, 3 );
+			add_filter( 'manage_settings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-upload_columns', 'MLA_Upload_Optional_List_Table::mla_manage_columns_filter', 10, 0 );
 		}
 	}
 
@@ -201,7 +201,7 @@ class MLA_Upload_Optional_List_Table extends WP_List_Table {
 			'singular' => 'optional_upload_type', //singular name of the listed records
 			'plural' => 'optional_upload_types', //plural name of the listed records
 			'ajax' => false, //does this table support ajax?
-			'screen' => 'settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-upload'
+			'screen' => 'settings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-upload'
 		) );
 
 		/*
@@ -261,7 +261,7 @@ class MLA_Upload_Optional_List_Table extends WP_List_Table {
 		 */
 
 		$view_args = array(
-			'page' => MLACore::MLA_SETTINGS_SLUG . '-upload',
+			'page' => MLACoreOptions::MLA_SETTINGS_SLUG . '-upload',
 			'mla_tab' => 'upload',
 			'mla_item_ID' => urlencode( $item->ID )
 		);
@@ -365,7 +365,7 @@ class MLA_Upload_Optional_List_Table extends WP_List_Table {
 	 * @return	array	Column information,e.g., array(0 => 'ID_parent, 1 => 'title_name')
 	 */
 	function get_hidden_columns( ) {
-		$columns = get_user_option( 'managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-viewcolumnshidden' );
+		$columns = get_user_option( 'managesettings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-viewcolumnshidden' );
 
 		if ( is_array( $columns ) ) {
 			return $columns;

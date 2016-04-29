@@ -6,7 +6,7 @@
  * will the rest of the plugin be loaded and run.
  *
  * @package Media Library Assistant
- * @version 2.24
+ * @version 2.25
  */
 
 /*
@@ -16,10 +16,10 @@ Description: Enhances the Media Library; powerful [mla_gallery], taxonomy suppor
 Author: David Lingren, Fair Trade Judaica
 Text Domain: media-library-assistant
 Domain Path: /languages
-Version: 2.24
+Version: 2.25
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
-Copyright 2011-2015 David Lingren
+Copyright 2011-2016 David Lingren
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -178,8 +178,10 @@ function mla_name_conflict_reporting_action () {
 if ( empty( $mla_name_conflict_error_messages ) ) {
 	require_once('includes/mla-plugin-loader.php');
 
-	//register_activation_hook( __FILE__, array( 'MLASettings', 'mla_activation_hook' ) );
-	//register_deactivation_hook( __FILE__, array( 'MLASettings', 'mla_deactivation_hook' ) );
+	if ( class_exists( 'MLASettings' ) ) {
+		register_activation_hook( __FILE__, array( 'MLASettings', 'mla_activation_hook' ) );
+		register_deactivation_hook( __FILE__, array( 'MLASettings', 'mla_deactivation_hook' ) );
+	}
 }
 else {
 	add_action( 'admin_notices', 'mla_name_conflict_reporting_action' );

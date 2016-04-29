@@ -34,7 +34,7 @@
                 <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">1</span>
+                <span class="label label-info">3</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -84,6 +84,7 @@ calls the parent constructor to set some default configs.</span><pre>__construct
 <li class="method public inherited"><a href="#column_post_name" title="column_post_name :: Supply the content for a custom column"><span class="description">Supply the content for a custom column</span><pre>column_post_name()</pre></a></li>
 <li class="method public inherited"><a href="#column_post_title" title="column_post_title :: Supply the content for a custom column"><span class="description">Supply the content for a custom column</span><pre>column_post_title()</pre></a></li>
 <li class="method public inherited"><a href="#column_title_name" title="column_title_name :: Supply the content for a custom column"><span class="description">Supply the content for a custom column</span><pre>column_title_name()</pre></a></li>
+<li class="method public inherited"><a href="#display_tablenav" title="display_tablenav :: Generate the table navigation above or below the table"><span class="description">Generate the table navigation above or below the table</span><pre>display_tablenav()</pre></a></li>
 <li class="method public inherited"><a href="#extra_tablenav" title="extra_tablenav :: Extra controls to be displayed between bulk actions and pagination"><span class="description">Extra controls to be displayed between bulk actions and pagination</span><pre>extra_tablenav()</pre></a></li>
 <li class="method public inherited"><a href="#get_bulk_actions" title="get_bulk_actions :: Get an associative array ( option_name =&gt; option_title ) with the list
 of bulk actions available on this table."><span class="description">Get an associative array ( option_name =&gt; option_title ) with the list
@@ -802,6 +803,29 @@ a specific method, so this function returns a troubleshooting message.</p></p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>HTML markup to be placed inside the column</div>
+</div></div>
+</div>
+<a name="display_tablenav" id="display_tablenav"></a><div class="element clickable method public display_tablenav" data-toggle="collapse" data-target=".display_tablenav .collapse">
+<h2>Generate the table navigation above or below the table</h2>
+<pre>display_tablenav(string $which) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Adds the list/grid switcher in WP 4.0+</p></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>2.25</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\MLA_List_Table::display_tablenav()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$which</h4>
+<code>string</code><p>'top' or 'bottom', i.e., above or below the table rows</p>
+</div>
 </div></div>
 </div>
 <a name="extra_tablenav" id="extra_tablenav"></a><div class="element clickable method public extra_tablenav" data-toggle="collapse" data-target=".extra_tablenav .collapse">
@@ -1602,7 +1626,7 @@ visible column and add div tags.</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2016-01-23T23:00:27-08:00.<br></footer></div>
+            generated on 2016-04-08T17:25:40-07:00.<br></footer></div>
 </div>
 </body>
 </html>

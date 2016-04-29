@@ -28,7 +28,7 @@ require $dir. '/admin/class-phila-gov-admin-documents.php';
 require $dir. '/admin/class-phila-gov-admin-menu.php';
 require $dir. '/admin/class-phila-gov-custom-post-types.php';
 require $dir. '/admin/class-phila-gov-custom-taxonomies.php';
-require $dir. '/admin/class-phila-gov-department-author-media.php';
+//require $dir. '/admin/class-phila-gov-department-author-media.php';
 require $dir. '/admin/class-phila-gov-department-sites.php';
 require $dir. '/admin/class-phila-gov-filter-post-type-links.php';
 require $dir. '/admin/class-phila-gov-pages.php';

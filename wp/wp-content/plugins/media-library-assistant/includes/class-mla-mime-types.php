@@ -26,7 +26,7 @@ class MLAMime {
 		add_filter( 'ext2type', 'MLAMime::mla_ext2type_filter', 0x7FFFFFFF, 1 );
 //		add_filter( 'wp_check_filetype_and_ext', 'MLAMime::mla_wp_check_filetype_and_ext_filter', 0x7FFFFFFF, 4 );
 
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_UPLOAD_MIMES ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_UPLOAD_MIMES ) ) {
 			if ( function_exists('wp_get_mime_types') ) {
 				add_filter( 'mime_types', 'MLAMime::mla_mime_types_filter', 0x7FFFFFFF, 1 );
 			}
@@ -34,7 +34,7 @@ class MLAMime {
 			add_filter( 'upload_mimes', 'MLAMime::mla_upload_mimes_filter', 0x7FFFFFFF, 2 );
 		}
 
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_POST_MIME_TYPES ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_POST_MIME_TYPES ) ) {
 			add_filter( 'post_mime_types', 'MLAMime::mla_post_mime_types_filter', 0x7FFFFFFF, 1 );
 		}
 
@@ -126,7 +126,7 @@ class MLAMime {
 		$items = self::mla_query_upload_items( array( 'mla_upload_view' => 'active' ), 0, 0 );
 		$pairs = array();
 		foreach ( $items as $value )
-			if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+			if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 				$pairs[ $value->slug ] = $value->icon_type;
 			} else {
 				$pairs[ $value->slug ] = $value->wp_icon_type;
@@ -391,7 +391,7 @@ class MLAMime {
 	 * @return	string	Updated path to the icon directory, no trailing slash
 	 */
 	public static function mla_icon_dir_filter( $path ) {
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			return MLA_PLUGIN_PATH . 'images/crystal';
 		}
 		 
@@ -411,7 +411,7 @@ class MLAMime {
 	 * @return	string	Updated path to the icon directory URL, no trailing slash
 	 */
 	public static function mla_icon_dir_uri_filter( $uri ) {
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			return MLA_PLUGIN_URL . 'images/crystal';
 		}
 
@@ -431,7 +431,7 @@ class MLAMime {
 	 * @return	array	Updated (path => URI) array
 	 */
 	public static function mla_icon_dirs_filter( $path_uri_array ) {
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			$path_uri_array [ MLA_PLUGIN_PATH . 'images/crystal' ] = MLA_PLUGIN_URL . 'images/crystal';
 		}
 
@@ -724,7 +724,7 @@ class MLAMime {
 		/*
 		 * Start with MLA standard types
 		 */
-		$mla_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, true );
+		$mla_types = MLACore::mla_get_option( MLACoreOptions::MLA_POST_MIME_TYPES, true );
 		if ( ! is_array( $mla_types ) ) {
 			$mla_types = array ();
 		}
@@ -734,7 +734,7 @@ class MLAMime {
 		 * filter-enhanced extensions, retain anything new as a custom type.
 		 * Otherwise, add the current MLA custom types.
 		 */
-		$custom_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, false, true );
+		$custom_types = MLACore::mla_get_option( MLACoreOptions::MLA_POST_MIME_TYPES, false, true );
 
 		if ( is_array( $custom_types ) ) {
 			$mla_types = array_merge( $mla_types, $custom_types );
@@ -785,7 +785,7 @@ class MLAMime {
 	private static function _put_post_mime_templates() {
 		$mla_post_mimes = array ();
 
-		$mla_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, true );
+		$mla_types = MLACore::mla_get_option( MLACoreOptions::MLA_POST_MIME_TYPES, true );
 
 		foreach ( self::$mla_post_mime_templates as $slug => $value ) {
 			unset( $value['post_ID'] );
@@ -796,7 +796,7 @@ class MLAMime {
 			$mla_post_mimes[ $slug ] =  $value;
 		}
 
-		MLACore::mla_update_option( MLACore::MLA_POST_MIME_TYPES, $mla_post_mimes );
+		MLACore::mla_update_option( MLACoreOptions::MLA_POST_MIME_TYPES, $mla_post_mimes );
 		return true;
 	}
 
@@ -1560,7 +1560,7 @@ class MLAMime {
 	 * @return	array	( width, height )
 	 */
 	public static function mla_get_icon_type_size( $icon_type ) {
-		if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+		if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 			return array( 'width' => 64, 'height' => 64 );
 		}
 		
@@ -1701,7 +1701,7 @@ class MLAMime {
 		 * filter-enhanced extensions, retain anything new as a custom type.
 		 */
 		$custom_types = array();
-		$mla_upload_mimes = MLACore::mla_get_option( MLACore::MLA_UPLOAD_MIMES );
+		$mla_upload_mimes = MLACore::mla_get_option( MLACoreOptions::MLA_UPLOAD_MIMES );
 		if ( is_array( $mla_upload_mimes ) ) {
 			$first_time_called = false;
 			$custom_types = $mla_upload_mimes['custom'];
@@ -1748,12 +1748,19 @@ class MLAMime {
 		$template_array = MLACore::mla_load_template( 'mla-default-mime-types.tpl' );
 		if ( isset( $template_array['mla-mime-types'] ) ) {
 			$mla_mime_types = preg_split('/[\r\n]+/', $template_array['mla-mime-types'] );
+			$line_number = 0;
 			foreach ( $mla_mime_types as $mla_type ) {
+				$line_number++;
+				// Ignore blank lines
+				if ( empty( $mla_type ) ) {
+					continue;
+				}
+				
 				$array = explode(',', $mla_type );
 
 				// Bypass damaged entries
 				if ( 5 > count( $array ) ) {
-					error_log( __LINE__ . ' _get_upload_mime_templates mla-default-mime-types.tpl $array = ' . var_export( $array, true ), 0 );
+					MLACore::mla_debug_add( __LINE__ . " _get_upload_mime_templates mla-default-mime-types.tpl section mla-mime-types( {$line_number} '{$mla_type}' ) \$array = " . var_export( $array, true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					continue;
 				}
 
@@ -1774,7 +1781,7 @@ class MLAMime {
 					'core_icon_type' => self::mla_get_core_icon_type( $array[0] )
 				);
 
-				if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+				if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 					self::$mla_upload_mime_templates[ $key ]['icon_type'] = self::$mla_upload_mime_templates[ $key ]['mla_icon_type'];
 				}
 			}
@@ -1820,7 +1827,7 @@ class MLAMime {
 				'core_icon_type' => $core_icon_type
 			);
 
-			if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_ENABLE_MLA_ICONS ) ) {
+			if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_ENABLE_MLA_ICONS ) ) {
 				self::$mla_upload_mime_templates[ $key ]['icon_type'] = self::$mla_upload_mime_templates[ $key ]['mla_icon_type'];
 			}
 		}
@@ -1913,7 +1920,7 @@ class MLAMime {
 			}
 		}
 
-		MLACore::mla_update_option( MLACore::MLA_UPLOAD_MIMES, $mla_upload_mimes );
+		MLACore::mla_update_option( MLACoreOptions::MLA_UPLOAD_MIMES, $mla_upload_mimes );
 		return true;
 	}
 
@@ -2510,11 +2517,16 @@ class MLAMime {
 
 			$ID = 0;
 			foreach ( $mla_mime_types as $mla_type ) {
+				// Ignore blank lines
+				if ( empty( $mla_type ) ) {
+					continue;
+				}
+				
 				$array = explode(',', $mla_type );
 
 				// Bypass damaged entries
 				if ( 3 > count( $array ) ) {
-					error_log( __LINE__ . ' _get_optional_upload_mime_templates mla-default-mime-types.tpl $array = ' . var_export( $array, true ), 0 );
+					MLACore::mla_debug_add( __LINE__ . " _get_upload_mime_templates mla-default-mime-types.tpl section mla-optional-mime-types( {$ID} '{$mla_type}' ) \$array = " . var_export( $array, true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 					continue;
 				}
 

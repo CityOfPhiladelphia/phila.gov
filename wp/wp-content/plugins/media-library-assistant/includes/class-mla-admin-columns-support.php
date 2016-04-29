@@ -15,6 +15,14 @@ defined( 'ABSPATH' ) or die();
  */
 class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	/**
+	 * Identifies submenu entry in the Admin sidebar, e.g., Media/Assistant in Media
+	 *
+	 * @since 2.25
+	 * @var string
+	 */
+	public $subpage;
+
+	/**
 	 * Initializes some properties, installs filters and then
 	 * calls the parent constructor to set some default configs.
 	 *
@@ -27,6 +35,7 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 		$this->type           = 'media';
 		$this->meta_type      = 'post';
 		$this->page           = 'upload';
+		$this->subpage        = MLACore::ADMIN_PAGE_SLUG;
 		$this->post_type      = 'attachment';
 		$this->menu_type      = 'other';
 
@@ -157,7 +166,7 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	public function is_current_screen() {
 		$is_current_screen = parent::is_current_screen();
 		if ( ! $is_current_screen ) {
-			if ( ! empty( $_REQUEST['page'] ) && 'mla-menu' == $_REQUEST['page'] ) {
+			if ( ! empty( $_REQUEST['page'] ) && MLACore::ADMIN_PAGE_SLUG == $_REQUEST['page'] ) {
 				$is_current_screen = true;
 			}
 		}
@@ -175,7 +184,7 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	public function is_columns_screen() {
 		$is_columns_screen = parent::is_columns_screen();
 		if ( ! $is_columns_screen ) {
-			if ( ! empty( $_REQUEST['page'] ) && 'mla-menu' == $_REQUEST['page'] ) {
+			if ( ! empty( $_REQUEST['page'] ) && MLACore::ADMIN_PAGE_SLUG == $_REQUEST['page'] ) {
 				$is_columns_screen = true;
 			}
 		}
@@ -191,7 +200,7 @@ class CPAC_Storage_Model_MLA extends CPAC_Storage_Model {
 	 * @return string Link to the Media/Assistant submenu screen
 	 */
 	protected function get_screen_link() {
-		return is_network_admin() ? network_admin_url( $this->page . '.php?page=mla-menu' ) : admin_url( $this->page . '.php?page=mla-menu' );
+		return is_network_admin() ? network_admin_url( $this->page . '.php?page=' . MLACore::ADMIN_PAGE_SLUG ) : admin_url( $this->page . '.php?page=' . MLACore::ADMIN_PAGE_SLUG );
 	}
 
 	/**
