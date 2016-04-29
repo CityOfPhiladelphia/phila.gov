@@ -129,7 +129,7 @@
        <!-- Begin Row Two MetaBox Modules -->
        <?php if ( ( !empty($row_two_col_one_module ) ) && (!empty($row_two_col_two_module ) ) ): ?>
        <section class="department-module-row-two">
-         <div class="row equal-height">
+         <div class="row">
            <?php if ( $row_two_col_one_type  == 'phila_module_row_2_col_1_calendar' ): ?>
              <div class="medium-12 columns">
                <h2 class="alternate">Calendar</h2>
