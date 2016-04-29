@@ -172,7 +172,9 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'high',
-
+      'include' => array(
+        'user_role'  => 'administrator',
+      ),
       'fields' => array(
         array(
           'name'  => 'Allow Non-Admin Access',
