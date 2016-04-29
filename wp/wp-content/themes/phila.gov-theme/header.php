@@ -28,6 +28,14 @@
   <!--[if lte IE 9]>
   <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+  <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
+      <?php if (function_exists('rwmb_meta')): ?>
+        <?php $append_css = rwmb_meta( 'phila_append_css', $args = array('type' => 'textarea'), $post->ID); ?>
+        <?php if ( !$append_css == '' ): ?>
+          <?php echo $append_css; ?>
+        <?php endif;?>
+      <?php endif; ?>
+  <?php endif; ?>
 
 </head>
 
