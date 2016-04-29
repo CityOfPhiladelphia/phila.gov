@@ -15,7 +15,7 @@
  * "mla_gallery_query_arguments" function for documentation on the parameter.
  *
  * @package MLA tax query Example
- * @version 1.02
+ * @version 1.03
  */
 
 /*
@@ -23,10 +23,10 @@ Plugin Name: MLA tax query Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Replaces the WP_Query tax_query with a more efficient, direct SQL query
 Author: David Lingren
-Version: 1.02
+Version: 1.03
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
-Copyright 2013 - 2015 David Lingren
+Copyright 2013 - 2016 David Lingren
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -113,11 +113,6 @@ class MLATaxQueryExample {
 	 */
 	public static function mla_gallery_attributes( $shortcode_attributes ) {
 		/*
-		 * Uncomment the error_log statements in any of the filters to see what's passed in
-		 */
-		//error_log( __LINE__ . ' MLATaxQueryExample::mla_gallery_attributes $shortcode_attributes = ' . var_export( $shortcode_attributes, true ), 0 );
-
-		/*
 		 * Save the attributes for use in the later filters
 		 */
 		self::$shortcode_attributes = $shortcode_attributes;
@@ -178,7 +173,7 @@ class MLATaxQueryExample {
 				} // foreach $shortcode_attributes 
 
 				// mla_terms_taxonomies is shared with keyword search.
-				self::$search_attributes['mla_terms_search']['taxonomies'] = MLAOptions::mla_supported_taxonomies( 'term-search' );
+				self::$search_attributes['mla_terms_search']['taxonomies'] = MLACore::mla_supported_taxonomies( 'term-search' );
 
 				if ( empty( self::$search_attributes['mla_search_fields'] ) ) {
 					self::$search_attributes['mla_search_fields'] = array( 'title', 'content' );
@@ -249,8 +244,6 @@ class MLATaxQueryExample {
 			}
 		} // my_custom_sql present
 
-		//error_log( __LINE__ . ' MLATaxQueryExample::mla_gallery_arguments $all_display_parameters = ' . var_export( $all_display_parameters, true ), 0 );
-
 		self::$all_display_parameters = $all_display_parameters;
 		return $all_display_parameters;
 	} // mla_gallery_arguments
@@ -316,8 +309,6 @@ class MLATaxQueryExample {
 	 */
 	private static function single_query( $all_query_parameters, $is_pagination = false ) {
 		global $wpdb;
-		//error_log( __LINE__ . ' MLATaxQueryExample::single_query $all_query_parameters = ' . var_export( $all_query_parameters, true ), 0 );
-		//error_log( __LINE__ . ' MLATaxQueryExample::single_query $is_pagination = ' . var_export( $is_pagination, true ), 0 );
 
 		/*
 		 * This example executes a custom SQL query that is much simpler than the usual
@@ -464,7 +455,6 @@ class MLATaxQueryExample {
 		$query =  join(' ', $query);
 		if ( $is_pagination ) {
 			$count = $wpdb->get_var( $wpdb->prepare( $query, $query_parameters ) );
-			//error_log( __LINE__ . ' MLATaxQueryExample::single_query $count = ' . var_export( $count, true ), 0 );
 			return $count;
 		}
 
@@ -479,7 +469,6 @@ class MLATaxQueryExample {
 			$all_query_parameters['include'] = '1'; // return no images
 		}
 
-		//error_log( __LINE__ . ' MLATaxQueryExample::single_query $all_query_parameters = ' . var_export( $all_query_parameters, true ), 0 );
 		return $all_query_parameters;
 	} // single_query
 
@@ -505,16 +494,14 @@ class MLATaxQueryExample {
 	 */
 	private static function double_query( $all_query_parameters, $is_pagination = false ) {
 		global $wpdb;
-		//error_log( __LINE__ . ' MLATaxQueryExample::double_query $all_query_parameters = ' . var_export( $all_query_parameters, true ), 0 );
-		//error_log( __LINE__ . ' MLATaxQueryExample::double_query $is_pagination = ' . var_export( $is_pagination, true ), 0 );
 
 		/*
-		 * This example executes two custom SQL queries that are more efficient than the usual
+		 * This example executes a custom SQL query that is more efficient than the usual
 		 * WordPress WP_Query arguments.
 		 *
-		 * The first query is on taxonomy and term(s) only, yielding a list of object_id
+		 * The subquery is on taxonomy and term(s) only, yielding a list of object_id
 		 * (post ID) values.
-		 * The second query filters the list by post_mime_type and/or keyword search, orders
+		 * The main query filters the list by post_mime_type and/or keyword search, orders
 		 * it and paginates it.
 		 */		
 
@@ -564,34 +551,24 @@ class MLATaxQueryExample {
 		}
 
 		// Build an array of SQL clauses for the term_relationships query
-		$query = array();
-		$query_parameters = array();
+		$subquery = array();
+		$subquery_parameters = array();
 
-		$query[] = "SELECT DISTINCT tr.object_id FROM {$wpdb->term_relationships} as tr";
+		$subquery[] = "SELECT DISTINCT tr.object_id FROM {$wpdb->term_relationships} as tr";
 
 		$placeholders = array();
 		if ( ! empty( $ttids ) ) {
 			foreach ( $ttids as $ttid ) {
 				$placeholders[] = '%s';
-				$query_parameters[] = $ttid;
+				$subquery_parameters[] = $ttid;
 			}
 		} else {
 				$placeholders[] = '%s';
-				$query_parameters[] = '0';
+				$subquery_parameters[] = '0';
 		}
 
-		$query[] = 'WHERE ( tr.term_taxonomy_id IN (' . join( ',', $placeholders ) . ') )';
-		$query =  join(' ', $query);
-		$ids = $wpdb->get_results( $wpdb->prepare( $query, $query_parameters ) );
-		if ( is_array( $ids ) ) {
-			$includes = array();
-			foreach ( $ids as $id ) {
-				$includes[] = $id->object_id;
-			}
-		} else {
-			$all_query_parameters['include'] = '1'; // return no items
-			return $all_query_parameters;
-		}
+		$subquery[] = 'WHERE ( tr.term_taxonomy_id IN (' . join( ',', $placeholders ) . ') )';
+		$subquery =  join(' ', $subquery);
 
 		// Build an array of SQL clauses for the posts query
 		$query = array();
@@ -603,18 +580,7 @@ class MLATaxQueryExample {
 			$query[] = "SELECT ID FROM {$wpdb->posts} as p";
 		}
 
-		$placeholders = array();
-		if ( ! empty( $includes ) ) {
-			foreach ( $includes as $include ) {
-				$placeholders[] = '%s';
-				$query_parameters[] = $include;
-			}
-		} else {
-				$placeholders[] = '%s';
-				$query_parameters[] = '0';
-		}
-
-		$query[] = 'WHERE ( ( p.ID IN (' . join( ',', $placeholders ) . ') )';
+		$query[] = 'WHERE ( ( p.ID IN ( ' . $wpdb->prepare( $subquery, $subquery_parameters ) . ' ) )';
 
 		if ( ! empty( self::$shortcode_attributes['post_mime_type'] ) ) {
 			if ( 'all' != strtolower( self::$shortcode_attributes['post_mime_type'] ) ) {
@@ -628,17 +594,14 @@ class MLATaxQueryExample {
 			global $wpdb;
 			$prefix = $wpdb->posts . '.';
 
-			//error_log( __LINE__ . ' MLATaxQueryExample::double_query self::$search_attributes = ' . var_export( self::$search_attributes, true ), 0 );
-
-			MLAData::$search_parameters = self::$search_attributes;
+			MLAQuery::$search_parameters = self::$search_attributes;
 
 			$query_object = (object) array();
-			$search_clause = MLAData::mla_query_posts_search_filter( '', $query_object );
+			$search_clause = MLAQuery::mla_query_posts_search_filter( '', $query_object );
 			$search_clause = str_replace( array( $prefix, '%' ), array( 'p.', '%%' ), $search_clause );
-			//error_log( __LINE__ . ' MLATaxQueryExample::double_query $search_clause = ' . var_export( $search_clause, true ), 0 );
 			$query[] = $search_clause;
 
-			MLAData::$search_parameters = array( 'debug' => 'none' );
+			MLAQuery::$search_parameters = array( 'debug' => 'none' );
 		}
 
 		// Close the WHERE clause
@@ -772,17 +735,12 @@ class MLATaxQueryExample {
 			$all_query_parameters['mla_paginate_total'] = NULL ;
 		} // ! is_pagination
 
-		$query =  join(' ', $query);
-		//error_log( __LINE__ . ' MLATaxQueryExample::double_query $query = ' . var_export( $query, true ), 0 );
-		//error_log( __LINE__ . ' MLATaxQueryExample::double_query $query_parameters = ' . var_export( $query_parameters, true ), 0 );
+		$query = join(' ', $query);
 		if ( $is_pagination ) {
-			$count = $wpdb->get_var( $wpdb->prepare( $query, $query_parameters ) );
-			//error_log( __LINE__ . ' MLATaxQueryExample::double_query $count = ' . var_export( $count, true ), 0 );
-			return $count;
+			return $wpdb->get_var( $wpdb->prepare( $query, $query_parameters ) );
 		}
 
 		$ids = $wpdb->get_results( $wpdb->prepare( $query, $query_parameters ) );
-		//error_log( __LINE__ . ' MLATaxQueryExample::double_query $ids = ' . var_export( $ids, true ), 0 );
 		if ( is_array( $ids ) ) {
 			$includes = array();
 			foreach ( $ids as $id ) {
@@ -793,7 +751,6 @@ class MLATaxQueryExample {
 			$all_query_parameters['include'] = '1'; // return no items
 		}
 
-		//error_log( __LINE__ . ' MLATaxQueryExample::double_query $all_query_parameters = ' . var_export( $all_query_parameters, true ), 0 );
 		return $all_query_parameters;
 	} // double_query
 } // Class MLATaxQueryExample

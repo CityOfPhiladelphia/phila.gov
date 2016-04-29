@@ -17,7 +17,7 @@
 		margin-left: 0;
 		vertical-align: top;
 	}
-	/* see mla_gallery_shortcode() in media-library-assistant/includes/class-mla-shortcodes.php */
+	/* see mla_gallery_shortcode() in media-library-assistant/includes/class-mla-shortcode-support.php */
 </style>
 
 <!-- template="default-open-markup" -->
@@ -56,7 +56,7 @@
 		margin-left: 0;
 		vertical-align: top;
 	}
-	/* see mla_tag_cloud() in media-library-assistant/includes/class-mla-shortcodes.php */
+	/* see mla_tag_cloud() in media-library-assistant/includes/class-mla-shortcode-support.php */
 </style>
 
 <!-- template="tag-cloud-open-markup" -->

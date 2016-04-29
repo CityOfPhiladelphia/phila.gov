@@ -671,7 +671,7 @@ class MLAQuery {
 		 * Make sure the current orderby choice still exists or revert to default.
 		 */
 		$default_orderby = array_merge( array( 'none' => array('none',false) ), self::mla_get_sortable_columns( ) );
-		$current_orderby = MLACore::mla_get_option( MLACore::MLA_DEFAULT_ORDERBY );
+		$current_orderby = MLACore::mla_get_option( MLACoreOptions::MLA_DEFAULT_ORDERBY );
 		$found_current = false;
 		foreach ( $default_orderby as $key => $value ) {
 			if ( $current_orderby == $value[0] ) {
@@ -693,14 +693,14 @@ class MLAQuery {
 				}
 			} // foreach
 		} else {
-			MLACore::mla_delete_option( MLACore::MLA_DEFAULT_ORDERBY );
-			$current_orderby = MLACore::mla_get_option( MLACore::MLA_DEFAULT_ORDERBY );
+			MLACore::mla_delete_option( MLACoreOptions::MLA_DEFAULT_ORDERBY );
+			$current_orderby = MLACore::mla_get_option( MLACoreOptions::MLA_DEFAULT_ORDERBY );
 		}
 
 		$clean_request = array (
 			'm' => 0,
 			'orderby' => $current_orderby,
-			'order' => MLACore::mla_get_option( MLACore::MLA_DEFAULT_ORDER ),
+			'order' => MLACore::mla_get_option( MLACoreOptions::MLA_DEFAULT_ORDER ),
 			'post_type' => 'attachment',
 			'post_status' => 'inherit',
 			'mla_search_connector' => 'AND',
@@ -1029,7 +1029,7 @@ class MLAQuery {
 							'terms' => array(
 								(int) $clean_request['mla_filter_term']
 							),
-							'include_children' => ( 'checked' == MLACore::mla_get_option( MLACore::MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN ) )
+							'include_children' => ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN ) )
 						) 
 					);
 				} // mla_filter_term != -1
@@ -1074,6 +1074,7 @@ class MLAQuery {
 	 */
 	private static function _execute_list_table_query( $request ) {
 		global $wpdb;
+		static $wpmf_pre_get_posts_priority = false, $wpmf_pre_get_posts1_priority = false;
 
 		add_filter( 'posts_search', 'MLAQuery::mla_query_posts_search_filter', 10, 2 ); // $search, &$this
 		add_filter( 'posts_where', 'MLAQuery::mla_query_posts_where_filter' );
@@ -1090,6 +1091,22 @@ class MLAQuery {
 			add_filter( 'relevanssi_admin_search_ok', 'MLAQuery::mla_query_relevanssi_admin_search_ok_filter' );
 		}
 
+		/*
+		 * Remove WP Media Folders actions from MLA queries for the Media/Assistant submenu table
+		 */
+		if ( isset( $GLOBALS['wp_media_folder'] ) && isset( $_REQUEST['page'] ) && ( MLACore::ADMIN_PAGE_SLUG == $_REQUEST['page'] ) ) {
+			$wpmf_pre_get_posts_priority = has_filter( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts' ) );
+			$wpmf_pre_get_posts1_priority = has_filter( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts1' ) );
+		}
+
+		if ( false !== $wpmf_pre_get_posts_priority ) {
+			remove_action( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts' ), $wpmf_pre_get_posts_priority );
+		}
+		
+		if ( false !== $wpmf_pre_get_posts1_priority ) {
+			remove_action( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts1' ), $wpmf_pre_get_posts1_priority );
+		}
+		
 		if ( isset( self::$query_parameters['debug'] ) ) {
 			global $wp_filter;
 			$debug_array = array( 'posts_search' => $wp_filter['posts_search'], 'posts_join' => $wp_filter['posts_join'], 'posts_where' => $wp_filter['posts_where'], 'posts_orderby' => $wp_filter['posts_orderby'] );
@@ -1115,6 +1132,15 @@ class MLAQuery {
 			MLACore::mla_debug_add( sprintf( _x( '%1$s: _execute_list_table_query SQL_request = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'DEBUG', 'media-library-assistant' ), var_export( $results->request, true ) ) );
 		} // debug
 
+
+		if ( false !== $wpmf_pre_get_posts1_priority ) {
+			add_action( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts1' ), $wpmf_pre_get_posts1_priority );
+		}
+		
+		if ( false !== $wpmf_pre_get_posts_priority ) {
+			add_action( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts' ), $wpmf_pre_get_posts_priority );
+		}
+		
 		if ( function_exists( 'relevanssi_prevent_default_request' ) ) {
 			remove_filter( 'relevanssi_admin_search_ok', 'MLAQuery::mla_query_relevanssi_admin_search_ok_filter' );
 		}
@@ -1796,6 +1822,20 @@ class MLAQuery {
 	 * @return	boolean	Updated setting
 	 */
 	public static function mla_query_relevanssi_admin_search_ok_filter( $admin_search_ok ) {
+		return false;
+	}
+
+	/**
+	 * Disable Relevanssi - A Better Search, v3.2 by Mikko Saari
+	 * Defined as public because it's a filter.
+	 *
+	 * @since 2.25
+	 *
+	 * @param	boolean	Default setting
+	 *
+	 * @return	boolean	Updated setting
+	 */
+	public static function mla_query_relevanssi_prevent_default_request_filter( $prevent ) {
 		return false;
 	}
 

@@ -7,7 +7,7 @@
  * available in the [mla_tag_cloud] shortcode.
  *
  * @package MLA Tag Cloud Hooks Example
- * @version 1.01
+ * @version 1.02
  */
 
 /*
@@ -15,10 +15,10 @@ Plugin Name: MLA Tag Cloud Hooks Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Provides an example of hooking the filters provided by the [mla_tag_cloud] shortcode
 Author: David Lingren
-Version: 1.01
+Version: 1.02
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
-Copyright 2013 David Lingren
+Copyright 2013-2016 David Lingren
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -67,6 +67,7 @@ class MLATagCloudHooksExample {
 		 *
 		 * Comment out the filters you don't need; save them for future use
 		 */
+		add_filter( 'mla_tag_cloud_raw_attributes', 'MLATagCloudHooksExample::mla_tag_cloud_raw_attributes_filter', 10, 1 );
 		add_filter( 'mla_tag_cloud_attributes', 'MLATagCloudHooksExample::mla_tag_cloud_attributes_filter', 10, 1 );
 		add_filter( 'mla_tag_cloud_arguments', 'MLATagCloudHooksExample::mla_tag_cloud_arguments_filter', 10, 1 );
 		add_filter( 'mla_get_terms_query_attributes', 'MLATagCloudHooksExample::mla_get_terms_query_attributes_filter', 10, 1 );
@@ -111,6 +112,39 @@ class MLATagCloudHooksExample {
 	 * @var	array
 	 */
 	private static $shortcode_attributes = array();
+
+	/**
+	 * MLA Tag Cloud Raw (Display) Attributes
+	 *
+	 * This filter gives you an opportunity to record or modify the arguments passed in to the shortcode
+	 * before they pass through the logic to handle the 'mla_page_parameter' and "request:" prefix processing.
+	 *
+	 * The $shortcode_attributes array is where you will find any of your own parameters that are coded in the
+	 * shortcode, e.g., [mla_tag_cloud my_parameter="my value"].
+	 *
+	 * @since 1.02
+	 *
+	 * @param	array	the raw shortcode parameters passed in to the shortcode
+	 *
+	 * @return	array	updated shortcode attributes
+	 */
+	public static function mla_tag_cloud_raw_attributes_filter( $shortcode_attributes ) {
+		/*
+		 * Uncomment the error_log statements in any of the filters to see what's passed in
+		 */
+		//error_log( 'MLATagCloudHooksExample::mla_tag_cloud_raw_attributes_filter $shortcode_attributes = ' . var_export( $shortcode_attributes, true ), 0 );
+
+		/*
+		 * Note that the global $post; object is available here and in all later filters.
+		 * It contains the post/page on which the [mla_tag_cloud] appears.
+		 * Some [mla_tag_cloud] invocations are not associated with a post/page; these will
+		 * have a substitute $post object with $post->ID == 0.
+		 */
+		global $post;
+		//error_log( 'MLATagCloudHooksExample::mla_tag_cloud_raw_attributes_filter $post->ID = ' . var_export( $post->ID, true ), 0 );
+
+		return $shortcode_attributes;
+	} // mla_tag_cloud_raw_attributes_filter
 
 	/**
 	 * MLA Tag Cloud (Display) Attributes
