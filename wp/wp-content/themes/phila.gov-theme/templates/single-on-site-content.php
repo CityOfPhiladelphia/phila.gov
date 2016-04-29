@@ -45,11 +45,13 @@
               if (!empty($row_two_col_one_module)){
                 $row_two_col_one_type = $row_two_col_one_module['phila_module_row_2_col_1_type'];
                 $row_two_col_one_cal_id = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_id'];
+                $row_two_col_one_cal_url = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_url'];
               }
               $row_two_col_two_module = rwmb_meta( 'module_row_2_col_2');
               if (!empty($row_two_col_two_module)){
                 $row_two_col_two_type = $row_two_col_two_module['phila_module_row_2_col_2_type'];
                 $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
+                $row_two_col_two_cal_url = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_url'];
               }
         ?>
         <!-- If Custom Markup append_before_wysiwyg is present print it -->
@@ -136,7 +138,9 @@
                <div class="event-box">
                  <?php echo do_shortcode('[calendar id="' . $row_two_col_one_cal_id .'"]'); ?>
                </div>
-               <a class="float-right see-all-right" href="/calendar/mayor/">All Events</a>
+               <?php if ($row_two_col_one_cal_url):?>
+                 <a class="float-right see-all-right" href="<?php echo $row_two_col_one_cal_url; ?>">All Events</a>
+               <?php endif; ?>
              </div>
            <?php elseif ( $row_two_col_one_type  == 'phila_module_row_2_col_1_press_release' ): ?>
                <div class="medium-12 columns">
@@ -151,7 +155,9 @@
                  <div class="event-box">
                    <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
                  </div>
-                 <a class="float-right see-all-right" href="/calendar/mayor/">All Events</a>
+                 <?php if ($row_two_col_one_cal_url):?>
+                   <a class="float-right see-all-right" href="<?php echo $row_two_col_two_cal_url; ?>">All Events</a>
+                 <?php endif; ?>
               </div>
              <?php elseif ( $row_two_col_two_type  == 'phila_module_row_2_col_2_press_release' ): ?>
                <div class="medium-12 columns">
