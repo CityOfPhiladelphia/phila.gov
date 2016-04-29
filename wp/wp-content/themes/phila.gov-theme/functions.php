@@ -420,12 +420,6 @@ function phila_breadcrumbs() {
 
       echo '<li>Notices</li>';
 
-    } elseif ( is_singular('site_wide_alert') ) {
-
-      echo '<li>';
-      the_title();
-      echo '</li>';
-
     } elseif ( is_singular('department_page') ) {
 
       $anc = get_post_ancestors( $post->ID );
