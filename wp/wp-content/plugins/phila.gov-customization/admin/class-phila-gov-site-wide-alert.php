@@ -18,17 +18,17 @@ class Phila_Gov_Site_Wide_Alert {
 
     add_filter( 'rwmb_meta_boxes',  array($this, 'phila_register_meta_boxes') );
 
-    add_filter('manage_edit-site_wide_alert_columns', array( $this, 'site_wide_alert_columns' ) );
+    //add_filter('manage_edit-site_wide_alert_columns', array( $this, 'site_wide_alert_columns' ) );
 
-    add_filter('manage_edit-site_wide_alert_sortable_columns', array( $this, 'site_wide_alert_columns' ) );
+    //add_filter('manage_edit-site_wide_alert_sortable_columns', array( $this, 'site_wide_alert_columns' ) );
 
-    add_action('manage_site_wide_alert_posts_custom_column',  array( $this, 'site_wide_alert_column_output'), 10, 2);
+    //add_action('manage_site_wide_alert_posts_custom_column',  array( $this, 'site_wide_alert_column_output'), 10, 2);
 
-    add_filter('request', array( $this, 'my_sort_metabox') );
+    //add_filter('request', array( $this, 'my_sort_metabox') );
 
     add_action( 'admin_enqueue_scripts', array($this, 'enqueue_alert_scripts') );
 
-    add_action( 'template_redirect', array($this, 'redirect_alert_pages') );
+    //add_action( 'template_redirect', array($this, 'redirect_alert_pages') );
 
   }
 
@@ -73,33 +73,67 @@ class Phila_Gov_Site_Wide_Alert {
         ),
         array(
           'name'  => 'Alert Start Time',
-          'id'    => $prefix . 'start',
+          'id'    => $prefix . 'alert_start',
           'class' =>  'start-time',
           'type'  => 'datetime',
           'size'  =>  25,
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
-            'dateFormat'=>'m-dd-yy',
-            'stepMinute' => 30,
-            'showHour' => 'true'
+            'dateFormat'=>'mm-dd-yy',
+            'stepMinute' => 15,
+            'showHour' => 'true',
+            //'altField' => '#phila_start_hidden',
+            //'altFormat'=> "@",
+            //'altFieldTimeOnly' => false,
+            'controlType'=> 'select',
+            'oneLine'=> true,
+            //'altTimeFormat' => 'c',
+            'timeInput' => true,
           ),
-          'timestamp' => true,
+          'timestamp' => true
+
         ),
         array(
           'name'  => 'Alert End Time',
-          'id'    => $prefix . 'end',
+          'id'    => $prefix . 'alert_end',
           'type'  => 'datetime',
           'class' =>  'end-time',
           'size'  =>  25,
           'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times define when an alert is visible on the site\'s homepage.',
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
-            'dateFormat' => 'm-dd-yy',
-            'stepMinute' => 30,
-            'showHour' => 'true'
+            'dateFormat' => 'mm-dd-yy',
+            'stepMinute' => 15,
+            'showHour' => 'true',
+            //'altField' => '#phila_end_hidden',
+            //'altFormat'=> "@",
+            //'altFieldTimeOnly' => false,
+            'controlType'=> 'select',
+            'oneLine'=> true,
+            //'altTimeFormat' => 'c',
+            'timeInput' => true
           ),
-          'timestamp' => true,
+          'timestamp' => true
+
         ),
+        /*
+        array(
+          'name'  => 'Alert Start Time Hidden',
+          'id'    => $prefix . 'start_hidden',
+          'type'  => 'datetime',
+          'class' =>  'start-time-hidden',
+          'size'  =>  25,
+          'timestamp' => true
+        ),
+        array(
+          'name'  => 'Alert End Time Hidden',
+          'id'    => $prefix . 'end_hidden',
+          'type'  => 'datetime',
+          'class' =>  'end-time-hidden',
+          'size'  =>  25,
+          'timestamp' => true
+        ),
+        */
       )
     );//site wide alert boxes
     return $meta_boxes;
@@ -121,7 +155,7 @@ class Phila_Gov_Site_Wide_Alert {
     if( array_key_exists('orderby', $vars )) {
       if('Active' == $vars['orderby']) {
         $vars['orderby'] = 'meta_value';
-        $vars['meta_key'] = 'phila_active';
+        $vars['meta_key'] = 'phila_end';
       }
     }
     return $vars;
