@@ -139,11 +139,16 @@ jQuery(document).ready(function($){
                 }
               }
             else if ( c[i]['row']=== 2){
-
+              // Hide Calendar ID option
               $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_id').closest('.rwmb-text-wrapper').hide();
+              // Hide Calendar URL option
+              $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_url').closest('.rwmb-url-wrapper').hide();
 
               if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_calendar'){
+                // Toggle Calendar ID option
                 $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_id').closest('.rwmb-text-wrapper').toggle();
+                // Toggle Calendar URL option
+                $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_url').closest('.rwmb-url-wrapper').toggle();
               }
             }
           }
