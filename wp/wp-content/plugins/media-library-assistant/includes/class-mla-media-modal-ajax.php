@@ -78,7 +78,7 @@ class MLAModal_Ajax {
 				}
 
 				if ( $use_checklist ) {
-					if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) ) {
+					if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) ) {
 						$enhanced_taxonomies[] = $key;
 
 						if ( class_exists( 'Media_Categories' ) && is_array( Media_Categories::$instances ) ) {
@@ -247,11 +247,11 @@ class MLAModal_Ajax {
 					 * Make sure the appropriate MMMW Enhancement option has been checked
 					 */
 					if ( $use_checklist ) {
-						if ( 'checked' !== MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) ) {
+						if ( 'checked' !== MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) ) {
 							continue;
 						}
 					} else {
-						if ( 'checked' !== MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX ) ) {
+						if ( 'checked' !== MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX ) ) {
 							continue;
 						}
 					}
@@ -362,7 +362,7 @@ class MLAModal_Ajax {
 				}
 
 				if ( $use_checklist ) {
-					if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) ) {
+					if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX ) ) {
 						unset( $requested[ $index ] );
 						$label = $value->label;
 						$terms = get_object_term_cache( $post_id, $key );
@@ -412,7 +412,7 @@ class MLAModal_Ajax {
 						$results[ $key ] = $row;
 					} // checked
 				} /* use_checklist */ else { // flat
-					if ( 'checked' == MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX ) ) {
+					if ( 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX ) ) {
 						unset( $requested[ $index ] );
 						$label = $value->label;
 						$terms = get_object_term_cache( $post_id, $key );
@@ -668,7 +668,7 @@ class MLAModal_Ajax {
 		/*
 		 * Check for sorting override
 		 */
-		$option =  MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_ORDERBY );
+		$option =  MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_ORDERBY );
 		if ( 'default' != $option ) {
 			/*
 			 * Make sure the current orderby choice still exists or revert to default.
@@ -683,14 +683,14 @@ class MLAModal_Ajax {
 			}
 
 			if ( ! $found_current ) {
-				MLACore::mla_delete_option( MLACore::MLA_DEFAULT_ORDERBY );
-				$option = MLACore::mla_get_option( MLACore::MLA_DEFAULT_ORDERBY );
+				MLACore::mla_delete_option( MLACoreOptions::MLA_DEFAULT_ORDERBY );
+				$option = MLACore::mla_get_option( MLACoreOptions::MLA_DEFAULT_ORDERBY );
 			}
 
 			$query['orderby'] = $option;
 		}
 
-		$option = MLACore::mla_get_option( MLACore::MLA_MEDIA_MODAL_ORDER );
+		$option = MLACore::mla_get_option( MLACoreOptions::MLA_MEDIA_MODAL_ORDER );
 		if ( 'default' != $option ) {
 			$query['order'] = $option;
 		}

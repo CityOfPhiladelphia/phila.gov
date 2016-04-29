@@ -1,10 +1,10 @@
 === Media Library Assistant ===
 Contributors: dglingren
 Donate link: http://fairtradejudaica.org/make-a-difference/donate/
-Tags: attachment, attachments, documents, gallery, image, images, media, library, media library, tag cloud, media-tags, media tags, tags, media categories, categories, IPTC, EXIF, XMP, GPS, PDF, meta, metadata, photo, photos, photograph, photographs, photoblog, photo albums, lightroom, photoshop, MIME, mime-type, icon, upload, file extensions, WPML, Polylang, multilanguage, multilingual, localization
+Tags: attachments, gallery, images, media, media library, tag cloud, media-tags, media tags, tags, media categories, categories, IPTC, EXIF, XMP, GPS, PDF, metadata, photos, photographs, photoblog, photo albums, lightroom, photoshop, MIME, mime-type, icon, upload, file extensions, WPML, Polylang, multilanguage, multilingual, localization
 Requires at least: 3.5.0
-Tested up to: 4.4
-Stable tag: 2.24
+Tested up to: 4.5
+Stable tag: 2.25
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,27 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 2.25 =
+* New: **Argument Substitution Parameters** can be added to custom markup templates to provide default values for shortcode parameters. See the [Other Notes section](http://wordpress.org/extend/plugins/media-library-assistant/other_notes/ "Click here, then scroll down") section or the Settings/Media Library Assistant Documentation tab for more information.
+* New: For the Media/Assistant submenu, the **list/grid view switcher** has been added so you can access the WordPress Media/Library grid view even if the Media/Library submenu entry has been suppressed. A new option in the Settings/Media Library Assistant General tab controls the switcher display.
+* New: Two new Settings/Media Library Assistant General tab options, **"Delete Option Settings"** and **"Delete Option Backups"**, let you delete MLA settings from the WordPress options table and/or MLA settings backup files when you delete the plugin. The default is to retain settings and backup files, as in previous MLA versions.
+* New: The `/media-library-assistant/examples/mla-hooks-example.php.txt` example plugin has been enhanced with a new "custom SQL" example. The new example selects one or more "recently uploaded" images that are attached to a post/page.
+* New: The `/media-library-assistant/examples/mla-metadata-mapping-hooks-example.php.txt` example plugin has been enhanced to restore IPTC/EXIF/XMP metadata to files processed by the Easy Watermark plugin during the upload process.
+* New: A performance improvement has been made to the `/media-library-assistant/examples/mla-tax-query-example.php.txt` example plugin, replacing two separate SQL queries with a single query/subquery.
+* New: For the Settings/Media Library Assistant Debug tab, you can enter "0" (zero) in the MLA Reporting text box to suppress all MLA debug messages but keep the Debug tab active.
+* New: Error reporting for damaged `mla-default-mime-types.tpl` files is now optional, and some additional information has been added to the messages.
+* Fix: When invoking the Media/Edit Media submenu from the Media/Assistant submenu "Edit" rollover action, "Update" and "Trash"/"Delete Permanently" actions preserve Media/Assistant as their source.
+* Fix: **XML parsing has been improved** to avoid PHP Warning messages for documents with empty `rdf:description` sections.
+* Fix: Initial values are provided for the `$post` object when `[mla_tag_cloud]` is called without a parent post/page.
+* Fix: Default values for `itemtag`, `termtag` and `captiontag` are provided when a custom markup template is used with `[mla_tag_cloud]`.
+* Fix: A new filter, `mla_tag_cloud_raw_attributes` has been added to match the corresponding `[mla_gallery]` filter. The `mla-cloud-hooks-example.php.txt` example plugin has been updated to document the new filter.
+* Fix: For XMLRPC calls, the full plugin functionality is loaded so Media Item uploads trigger IPTC/EXIF and Custom Field mapping rules.
+* Fix: The Relevanssi "prevent default request" filter definitions have been repaired, eliminating some PHP warning messages and restoring proper queries in the `[mla_gallery]` shortcode.
+* Fix: Changes have been made in `mla-media-modal-scripts.js` to increase compatibility with Enhanced Media Library, by wpUXsolutions.
+* Fix: Changes have been made in the Media/Assistant submenu screen and in `mla-media-modal-scripts.js` to increase compatibility with WP Media Folder, by JoomUnited.
+* Fix: Some template and metadata parsing error messages have been converted from unconditional `error_log()` calls to MLA Debug calls so they can be suppressed when not needed.
+* Fix: Information on the `[mla_tag_cloud]` itemtag, termtag and captiontag parameters has been added to the Documentation tab.
+
 = 2.24 =
 * Fix: Corrected the MLA error that suppressed Admin Columns functions for Posts, Pages, Custom Post Types, Users and Comments.
 
@@ -188,25 +209,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 * Fix: EXIF and XMP parsing has been improved for images processed by very old PhotoShop and WINXP programs, e.g., "Keywords" assignment.
 * Fix: When the "Upload Files" tab of the "Insert Media" Modal (popup) Window is used to add items, the MLA enhanced taxonomy metaboxes have been restored to the ATTACHMENT DETAILS pane.
 
-= 2.22 =
-* New: Support for the **Admin Columns** plugin has been added. You can use Admin Columns to re-order, re-size and/or remove columns from the Media/Assistant submenu table. You can also add any of the Admin Columns "custom" columns to the table. See the [Other Notes section](http://wordpress.org/extend/plugins/media-library-assistant/other_notes/ "Click here, then scroll down") section or the Settings/Media Library Assistant Documentation tab for more information.
-* New: For `[mla_gallery]` and `[mla_tag_cloud]`, **support for the "enclosing shortcode" syntax** lets you spread shortcodes over multiple lines and avoids many of the problems caused by WordPress shortcode-parsing issues.
-* New: A new filter, `mla_gallery_featured_image`, allows modification of the Featured Image assigned to an item. A new example plugin, `mla-default-featured-image-example.php.txt`, has been added that uses the filter to supply a default Featured Image based on the item's file extension.
-* New: Two new filters,`mla_list_table_extranav_actions` and `mla_list_table_extranav_custom_action`, allow modifications of the "extra tablenav" controls on the Media/Assistant submenu. A new example plugin, `/media-library-assistant/examples/mla-list-table-extranav.example.php.txt`, has been added to illustrate their use.
-* New: Added shortcode support in "DOING_AJAX" mode for other plugins such as No Cache AJAX Widgets.
-* New: A new example plugin, `mla-featured-field-shortcode.php.txt`, has been added. It contains a shortcode that displays custom field content from the Featured Image on the post/page it is part of.
-* New: The `mla-jhdean-mapping-hooks-example.php.txt` example plugin has been extended to illustrate updating a custom field during the mapping process.
-* New: For the Media/Assistant submenu table, **SQL views have been replaced by SQL subqueries** for increased performance and reliability.
-* Fix: When new Media LIbrary items are uploaded via the Media Manager Modal (popup) Window, mapping rule execution has been restored.
-* Fix: When Polylang is active and the "Activate languages and translations for media" option is disabled, the MMMW taxonomy dropdown is populated with all terms regardless of language. The default settings of the Term Assignment, Synchronization and Mapping Replication options is changed to unchecked/disabled.
-* Fix: The Quick Edit Area in the Settings/Media Library Assistant Views and Uploads tabs has been restored.
-* Fix: Errors encountered while loading damaged `mla-default-mime-types.tpl` files no longer cause PHP messages. A message is written to the error log file and the damaged entry is ignored.
-* Fix: MIME type filters are now loaded unconditionally, preventing PHP errors in actions such as updating posts, pages and attachments from their Edit screens.
-* Fix: For `[mla_gallery]`, MLA File Type Icons Support has been restored.
-* Fix: PHP7 changes no longer cause fatal errors rendering the Settings/Media Library Assistant General tab.
-* Fix: Support for WPML and Polylang DOING_AJAX handlers has been restored, e.g. Polylang Quick Edit and WPML flat term autocomplete.
-
-= 2.00 - 2.21 =
+= 2.00 - 2.22 =
+* 2.22 - Support for the "Admin Columns" plugin, PHP7 and "enclosing shortcode" syntax. Better performance, new filters and examples. Eight enhancements in all, eight fixes.
 * 2.21 - Fix for "empty grid", "No media attachments found", "No items found" and "Unknown column" symptoms. Thanks to all who quickly alerted me to the problem. One other fix for "Featured Image" handling of size=none.
 * 2.20 - Reduced memory/time footprint, default setting changes, WPML/Polylang IPTC/EXIF mapping fixes, partial German translation. Nine other enhancements, thirteen fixes.
 * 2.15 - Bulk Edit Reset button, Debug tab enhancements, Quick Edit thumbnails, new examples and hooks. Sixteen enhancements in all, sixteen fixes.
@@ -268,8 +272,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 2.24 =
-Corrects the MLA error that suppressed Admin Columns functions for Posts, Pages, Custom Post Types, Users and Comments.
+= 2.25 =
+Default shortcode parameters in templates, list/grid view switcher, delete option settings, better XML parsing. Eight enhancements in all, eleven fixes
 
 == Other Notes ==
 
@@ -283,7 +287,25 @@ Media Library Assistant includes many images drawn (with permission) from the [C
 
 <strong>Many thanks</strong> to Aurovrata Venet, Il'ya Karastel and Kristian Adolfsson for testing and advising on the multilingual support features!
 
-<h4>*NEW* Support for the "Admin Columns" Plugin</h4>
+<h4>*NEW* Argument Substitution Parameters for custom markup templates</h4>
+
+A markup template can include default values for any of the shortcode parameters and values you define for your own use, e.g., you can add <code>columns=1</code> to the arguments section to change the MLA default value whenever the template is used. The argument substitution parameter(s) you define in the markup template are treated as if you had added them to the shortcode that uses the template, but parameters you actually use in the shortcode will overide the default values you code in the arguments section. For example, if the arguments section of your "blue-table" markup template looks like: 
+
+<code>columns=1 div-class=blue div-id=id3</code>
+
+and your shortcode is 
+
+<code>[mla_gallery mla_markup=blue-table div-id=ID5]</code> 
+
+the end result will be as if you had coded 
+
+<code>[mla_gallery mla_markup=blue-table div-id=ID5 columns=1 div-class=blue]</code> 
+
+The custom parameters you code in the arguments section become part of the shortcode parameters. To access them in your template or in other shortcode parameters you must use the 'query:' prefix, e.g., <code>[+query:div-class+]</code> in the template or <code>{+query:div-id+}</code> in another shortcode parameter. 
+
+In the arguments section you can separate the parameters with one or more spaces or you can code them on separate lines. If your parameter value includes spaces you must enclose it in single or double quotes. 
+
+<h4>Support for the "Admin Columns" Plugin</h4>
 
 The [Admin Columns plugin](https://wordpress.org/plugins/codepress-admin-columns/ "Admin Columns free version") allows you to customize columns on several admin-mode screens, including the MLA Media/Assistant submenu screen. All you have to do is install the plugin; MLA will detect its presence and automatically register the Media/Assistant submenu screen for support. With Admin Columns, you can:
 
@@ -299,7 +321,7 @@ You can find detailed configuration instructions at the [Admin Columns web site 
 
 When you have completed your configuration changes, click "Update Media Library Assistant" in the Store Settings metabox at the top-right of the screen. You can also click "Restore Media Library Assistant columns" to remove your changes and go back to the MLA default settings. Click the "View" button at the right of the Media Library Assistant heading to return to the Media/Assistant submenu screen and see your changes. 
 
-<h4>*NEW* [mla_gallery] Post Type, Post Status support</h4>
+<h4>[mla_gallery] Post Type, Post Status support</h4>
 
 For compatibility with the WordPress <code>[gallery]</code> shortcode, these parameters default to <code>post_type=attachment</code>, <code>post_status=inherit</code>. You can override the defaults to, for example, display items in the trash (<code>post_status=trash</code>). 
 

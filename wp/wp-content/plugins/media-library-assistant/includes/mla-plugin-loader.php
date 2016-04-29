@@ -71,7 +71,7 @@ if ( ! empty( $mla_plugin_loader_error_messages ) ) {
 	/*
 	 * Front end posts/pages only need shortcode support; load the interface shims.
 	 */
-	if( ! ( defined('WP_ADMIN') && WP_ADMIN ) ) {
+	if( ! ( ( defined('WP_ADMIN') && WP_ADMIN ) || ( defined('XMLRPC_REQUEST') && XMLRPC_REQUEST ) ) ) {
 		require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcodes.php' );
 		add_action( 'init', 'MLAShortcodes::initialize', 0x7FFFFFFF );
 		return;

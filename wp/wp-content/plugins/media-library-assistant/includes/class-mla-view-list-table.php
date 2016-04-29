@@ -190,8 +190,8 @@ class MLA_View_List_Table extends WP_List_Table {
 	 */
 	public static function mla_admin_init_action( ) {
 		if ( isset( $_REQUEST['mla_tab'] ) && $_REQUEST['mla_tab'] == 'view' ) {
-			add_filter( 'get_user_option_managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-viewcolumnshidden', 'MLA_View_List_Table::mla_manage_hidden_columns_filter', 10, 3 );
-			add_filter( 'manage_settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-view_columns', 'MLA_View_List_Table::mla_manage_columns_filter', 10, 0 );
+			add_filter( 'get_user_option_managesettings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-viewcolumnshidden', 'MLA_View_List_Table::mla_manage_hidden_columns_filter', 10, 3 );
+			add_filter( 'manage_settings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-view_columns', 'MLA_View_List_Table::mla_manage_columns_filter', 10, 0 );
 		}
 	}
 
@@ -214,7 +214,7 @@ class MLA_View_List_Table extends WP_List_Table {
 			'singular' => 'post_mime_type', //singular name of the listed records
 			'plural' => 'post_mime_types', //plural name of the listed records
 			'ajax' => true, //does this table support ajax?
-			'screen' => 'settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-view'
+			'screen' => 'settings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-view'
 		) );
 
 		/*
@@ -318,7 +318,7 @@ class MLA_View_List_Table extends WP_List_Table {
 		 */
 
 		$view_args = array(
-			'page' => MLACore::MLA_SETTINGS_SLUG . '-view',
+			'page' => MLACoreOptions::MLA_SETTINGS_SLUG . '-view',
 			'mla_tab' => 'view',
 			'mla_item_slug' => urlencode( $item->slug )
 		);
@@ -338,12 +338,12 @@ class MLA_View_List_Table extends WP_List_Table {
 		/*
 		 * Get the standard and custom types
 		 */
-		$mla_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, true );
+		$mla_types = MLACore::mla_get_option( MLACoreOptions::MLA_POST_MIME_TYPES, true );
 		if ( ! is_array( $mla_types ) ) {
 			$mla_types = array ();
 		}
 
-		$custom_types = MLACore::mla_get_option( MLACore::MLA_POST_MIME_TYPES, false, true );
+		$custom_types = MLACore::mla_get_option( MLACoreOptions::MLA_POST_MIME_TYPES, false, true );
 		if ( ! is_array( $custom_types ) ) {
 			$custom_types = array ();
 		}
@@ -517,7 +517,7 @@ class MLA_View_List_Table extends WP_List_Table {
 	 * @return	array	Column information,e.g., array(0 => 'ID_parent, 1 => 'title_name')
 	 */
 	function get_hidden_columns( ) {
-		$columns = get_user_option( 'managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-viewcolumnshidden' );
+		$columns = get_user_option( 'managesettings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-viewcolumnshidden' );
 
 		if ( is_array( $columns ) ) {
 			return $columns;

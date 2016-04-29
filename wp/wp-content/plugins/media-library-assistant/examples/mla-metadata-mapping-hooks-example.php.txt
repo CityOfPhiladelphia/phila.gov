@@ -8,7 +8,7 @@
  * file do the actual work.
  *
  * @package MLA Metadata Mapping Hooks Example
- * @version 1.02
+ * @version 1.03
  */
 
 /*
@@ -16,10 +16,10 @@ Plugin Name: MLA Metadata Mapping Hooks Example
 Plugin URI: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Description: Provides an advanced example of the filters provided by the IPTC/EXIF and Custom Field mapping features
 Author: David Lingren
-Version: 1.02
+Version: 1.03
 Author URI: http://fairtradejudaica.org/our-story/staff/
 
-Copyright 2014 David Lingren
+Copyright 2014-2016 David Lingren
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -61,32 +61,13 @@ class MLAMetadataHooksExample {
 		if ( ! is_admin() )
 			return;
 
-		/*
-		 * add_filter parameters:
-		 * $tag - name of the hook you're filtering; defined by [mla_gallery]
-		 * $function_to_add - function to be called when [mla_gallery] applies the filter
-		 * $priority - default 10; lower runs earlier, higher runs later
-		 * $accepted_args - number of arguments your function accepts
-		 *
-		 * Comment out the filters you don't need; save them for future use
-		 */
 		add_filter( 'mla_upload_prefilter', 'MLAMetadataHooksExample::mla_upload_prefilter_filter', 10, 2 );
 		add_filter( 'mla_upload_filter', 'MLAMetadataHooksExample::mla_upload_filter_filter', 10, 2 );
-
 		add_action( 'mla_add_attachment', 'MLAMetadataHooksExample::mla_add_attachment_action', 10, 1 );
-
 		add_filter( 'mla_update_attachment_metadata_options', 'MLAMetadataHooksExample::mla_update_attachment_metadata_options_filter', 10, 3 );
 		add_filter( 'mla_update_attachment_metadata_prefilter', 'MLAMetadataHooksExample::mla_update_attachment_metadata_prefilter_filter', 10, 3 );
+		add_action( 'mla_begin_mapping', 'MLAMetadataHooksExample::mla_begin_mapping_action', 10, 2 );
 		add_filter( 'mla_update_attachment_metadata_postfilter', 'MLAMetadataHooksExample::mla_update_attachment_metadata_postfilter_filter', 10, 3 );
-
-		add_filter( 'mla_mapping_settings', 'MLAMetadataHooksExample::mla_mapping_settings_filter', 10, 4 );
-		add_filter( 'mla_mapping_rule', 'MLAMetadataHooksExample::mla_mapping_rule_filter', 10, 4 );
-		add_filter( 'mla_mapping_custom_value', 'MLAMetadataHooksExample::mla_mapping_custom_value_filter', 10, 5 );
-		add_filter( 'mla_mapping_iptc_value', 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter', 10, 5 );
-		add_filter( 'mla_mapping_exif_value', 'MLAMetadataHooksExample::mla_mapping_exif_value_filter', 10, 5 );
-		add_filter( 'mla_mapping_updates', 'MLAMetadataHooksExample::mla_mapping_updates_filter', 10, 5 );
-
-		add_filter( 'mla_get_options_tablist', 'MLAMetadataHooksExample::mla_get_options_tablist_filter', 10, 3 );
 	}
 
 	/**
@@ -95,15 +76,43 @@ class MLAMetadataHooksExample {
 	 * Array elements are:
 	 * 		'post_id' => 0,
 	 *		'mla_iptc_metadata' => array(),
-	 *		'mla_exif_metadata' => array(),
+	 *		'mla_xmp_metadata' => array(),
+	 *		'mla_pdf_metadata' => array(),
 	 *		'wp_image_metadata' => array(),
+	 * 		'preload_file' => array( 'name', 'type', 'tmp_name', 'error', 'size' )
+	 * 		'postload_file' => array( 'file', 'url', 'type' )
+	 * 		'id3_metadata' => array(),
 	 *
 	 * @since 1.00
 	 *
 	 * @var	array
 	 */
 	private static $image_metadata = array();
+
+	/**
+	 * Save the original JPEG metadata when a file is first uploaded
+	 *
+	 * Each array element is: 
+	 *     array ( 'marker' => integer section marker, 'content' => string section contents ) 
+	 *
+	 * @since 1.00
+	 *
+	 * @var	array
+	 */
 	private static $raw_metadata = array();
+
+	/*
+	 * Selected JPEG Section Markers
+	 */
+	const SOF0	= 0xC0; // 192 Baseline Encoding
+	const SOI	= 0xD8; // 216 Start of image
+	const EOI	= 0xD9; // 217 End of image
+	const SOS	= 0xDA; // 218 Start of scan (image data)
+	const APP0	= 0xE0; // 224 Application segment 0 JFIF Header
+	const APP1	= 0xE1; // 225 Application segment 1 EXIF/XMP
+	const APP2	= 0xE2; // 226 Application segment 2 EXIF Flashpix extensions
+	const APP13	= 0xED; // 237 Application segment 13 IPTC
+	const COM	= 0xFE; // 254 Comment
 
 	/**
 	 * MLA Mapping Upload Prefilter
@@ -140,11 +149,11 @@ class MLAMetadataHooksExample {
 		 */
 		if ( 'image/jpeg' == $file['type'] ) {
 			self::$raw_metadata = self::_extract_jpeg_metadata( $file['tmp_name'] );
-			error_log( 'MLAMetadataHooksExample::mla_upload_prefilter_filter $raw_metadata = ' . var_export( self::$raw_metadata, true ), 0 );
 		} else {
 			self::$raw_metadata = array();
 		}
 
+		//error_log( 'MLAMetadataHooksExample::mla_upload_prefilter_filter $raw_metadata = ' . var_export( self::$raw_metadata, true ), 0 );
 		return $file;
 	} // mla_upload_prefilter_filter
 
@@ -199,6 +208,7 @@ class MLAMetadataHooksExample {
 		 * Save the information for use in the later filters
 		 */
 		self::$image_metadata['post_id'] = $post_id;
+		//error_log( 'MLAMetadataHooksExample::mla_add_attachment_action self::$image_metadata = ' . var_export( self::$image_metadata, true ), 0 );
 	} // mla_add_attachment_action
 
 	/**
@@ -228,7 +238,7 @@ class MLAMetadataHooksExample {
 		//error_log( 'MLAMetadataHooksExample::mla_update_attachment_metadata_options_filter $post_id = ' . var_export( $post_id, true ), 0 );
 
 		return $options;
-	} // mla_update_attachment_metadata_prefilter_filter
+	} // mla_update_attachment_metadata_options_filter
 
 	/**
 	 * MLA Update Attachment Metadata Prefilter
@@ -258,16 +268,54 @@ class MLAMetadataHooksExample {
 		 * If the metadata has been stripped, try to replace it
 		 * NOTE: Uncomment/comment the "self::" and "$data = " lines to activate/deactivate
 		 */
-		if ( isset( $data['image_meta']['created_timestamp'] ) 
-			&& empty( $data['image_meta']['created_timestamp'] ) ) {
-				//self::_replace_jpeg_metadata( self::$image_metadata['postload_file']['file'], self::$raw_metadata );
-				//$data = wp_generate_attachment_metadata( $post_id, self::$image_metadata['postload_file']['file'] );
-				error_log( 'regenerated data = ' . var_export( $data, true ), 0 );
-
+		if ( isset( $data['image_meta']['created_timestamp'] ) && empty( $data['image_meta']['created_timestamp'] ) ) {
+			self::_replace_jpeg_metadata( self::$image_metadata['postload_file']['file'], self::$raw_metadata );
+			$data = wp_generate_attachment_metadata( $post_id, self::$image_metadata['postload_file']['file'] );
+			//error_log( 'MLAMetadataHooksExample::mla_update_attachment_metadata_prefilter_filter regenerated data = ' . var_export( $data, true ), 0 );
 		}
 
 		return $data;
 	} // mla_update_attachment_metadata_prefilter_filter
+
+	/**
+	 * MLA Begin Mapping Action
+	 *
+	 * This action is called once, before any mapping rules are executed for any item(s).
+	 *
+	 * @since 1.01
+	 *
+	 * @param	string 	what kind of mapping action is starting:
+	 *					single_custom, single_iptc_exif, bulk_custom, bulk_iptc_exif,
+	 *					create_metadata, update_metadata, custom_fields, custom_rule,
+	 *					iptc_exif_standard, iptc_exif_taxonomy, iptc_exif_custom,
+	 *					iptc_exif_custom_rule
+	 * @param	mixed	Attachment ID or NULL, depending on scope
+	 *
+	 * @return	void	updated mapping rules
+	 */
+	public static function mla_begin_mapping_action( $source, $post_id = NULL ) {
+		//error_log( 'MLAMappingHooksExample::mla_begin_mapping_action $source = ' . var_export( $source, true ), 0 );
+		//error_log( 'MLAMappingHooksExample::mla_begin_mapping_action $post_id = ' . var_export( $post_id, true ), 0 );
+
+		/*
+		 * Replace the metadata removed from the images processed by the Easy Watermark plugin
+		 */
+		if ( 'image/jpeg' == self::$image_metadata['postload_file']['type'] ) {
+			$metadata = self::_extract_jpeg_metadata( self::$image_metadata['postload_file']['file'] );
+			//error_log( 'MLAMetadataHooksExample::mla_update_attachment_metadata_postfilter_filter $metadata = ' . var_export( $metadata, true ), 0 );
+			$no_metadata = true;
+			foreach ( $metadata as $section ) {
+				if ( in_array( $section['marker'], array( self::APP1, self::APP2, self::APP13 ) ) ) {
+					$no_metadata = false;
+					break;
+				}
+			}
+			
+			if ( $no_metadata ) {
+				self::_replace_jpeg_metadata( self::$image_metadata['postload_file']['file'], self::$raw_metadata );
+			}
+		}
+	} // mla_begin_mapping_action
 
 	/**
 	 * MLA Update Attachment Metadata Postfilter
@@ -291,322 +339,6 @@ class MLAMetadataHooksExample {
 
 		return $data;
 	} // mla_update_attachment_metadata_postfilter_filter
-
-	/**
-	 * MLA Mapping Settings Filter
-	 *
-	 * This filter is called before any mapping rules are executed.
-	 * You can add, change or delete rules from the array.
-	 *
-	 * @since 1.00
-	 *
-	 * @param	array 	mapping rules
-	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against, e.g., custom_field_mapping or single_attachment_mapping
-	 * @param	array 	attachment_metadata, default NULL
-	 *
-	 * @return	array	updated mapping rules
-	 */
-	public static function mla_mapping_settings_filter( $settings, $post_id, $category, $attachment_metadata ) {
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_settings_filter $settings = ' . var_export( $settings, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_settings_filter $post_id = ' . var_export( $post_id, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_settings_filter $category = ' . var_export( $category, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_settings_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
-
-		/*
-		 * $category gives the context in which the rule is applied:
-		 *		'custom_field_mapping' - mapping custom fields for ALL attachments
-		 *		'single_attachment_mapping' - mapping custom fields for ONE attachments
-		 *
-		 *		'iptc_exif_mapping' - mapping ALL IPTC/EXIF rules
-		 *		'iptc_exif_standard_mapping' - mapping standard field rules
-		 *		'iptc_exif_taxonomy_mapping' - mapping taxonomy term rules
-		 *		'iptc_exif_custom_mapping' - mapping IPTC/EXIF custom field rules
-		 *
-		 * NOTE: 'iptc_exif_mapping' will never be passed to the 'mla_mapping_rule' filter.
-		 * There, one of the three more specific values will be passed.
-		 */
-
-		/*
-		 * For Custom Field Mapping, $settings is an array indexed by
-		 * the custom field name.
-		 * Each array element is a mapping rule; an array containing:
-		 *		'name' => custom field name
-		 *		'data_source' => 'none', 'meta', 'template' or data source name
-		 *		'keep_existing' => boolean; true to preserve existing content
-		 *		'format' => 'native', 'commas', 'raw'
-		 *		'mla_column' => boolean; not used
-		 *		'quick_edit' => boolean; not used
-		 *		'bulk_edit' => boolean; not used
-		 *		'meta_name' => attachment metadata element name or content template
-		 *		'option' => 'text', 'single', 'export', 'array', 'multi'
-		 *		'no_null' => boolean; true to delete empty custom field values
-		 *
-		 * For IPTC/EXIF Mapping, $settings is an array indexed by
-		 * the mapping category; 'standard', 'taxonomy' and 'custom'.
-		 * Each category is an array of rules, with slightly different formats.
-		 *
-		 * Each 'standard' category array element is a rule (array) containing:
-		 *		'name' => field slug; 'post_title', 'post_name', 'image_alt', 'post_excerpt', 'post_content'
-		 *		'iptc_value' => IPTC Identifier or friendly name
-		 *		'exif_value' => EXIF element name
-		 *		'iptc_first' => boolean; true to prefer IPTC value over EXIF value
-		 *		'keep_existing' => boolean; true to preserve existing content
-		 *
-		 * Each 'taxonomy' category array element is a rule (array) containing:
-		 *		'name' => taxonomy slug, e.g., 'post_tag', 'attachment_category'
-		 *		'hierarchical' => boolean; true for hierarchical taxonomies
-		 *		'iptc_value' => IPTC Identifier or friendly name
-		 *		'exif_value' => EXIF element name
-		 *		'iptc_first' => boolean; true to prefer IPTC value over EXIF value
-		 *		'keep_existing' => boolean; true to preserve existing content
-		 *		'parent' => zero for none or the term_id of the parent 
-		 *		'delimiters' => term separator(s), e.g., ',;'
-		 *
-		 * Each 'custom' category array element is a rule (array) containing:
-		 *		'name' => custom field name
-		 *		'iptc_value' => IPTC Identifier or friendly name
-		 *		'exif_value' => EXIF element name
-		 *		'iptc_first' => boolean; true to prefer IPTC value over EXIF value
-		 *		'keep_existing' => boolean; true to preserve existing content
-		 */
-		return $settings;
-	} // mla_mapping_settings_filter
-
-	/**
-	 * MLA Mapping Rule Filter
-	 *
-	 * This filter is called once for each mapping rule, before the rule
-	 * is evaluated. You can change the rule parameters, or prevent rule
-	 * evaluation by returning $setting_value['data_source'] = 'none'; 
-	 *
-	 * @since 1.00
-	 *
-	 * @param	array 	custom_field_mapping rule
-	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
-	 * @param	array 	attachment_metadata, default NULL
-	 *
-	 * @return	array	updated custom_field_mapping rule
-	 */
-	public static function mla_mapping_rule_filter( $setting_value, $post_id, $category, $attachment_metadata ) {
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_rule_filter $setting_value = ' . var_export( $setting_value, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_rule_filter $post_id = ' . var_export( $post_id, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_rule_filter $category = ' . var_export( $category, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_rule_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
-
-		/*
-		 * $setting_value is an array containing a mapping rule; see above
-		 * To stop this rule's evaluation and mapping, return NULL
-		 */
-		return $setting_value;
-	} // mla_mapping_rule_filter
-
-	/**
-	 * MLA Mapping Custom Field Value Filter
-	 *
-	 * This filter is called once for each custom field mapping rule, after the rule
-	 * is evaluated. You can change the new value produced by the rule.
-	 *
-	 * @since 1.00
-	 *
-	 * @param	mixed 	value returned by the rule
-	 * @param	array 	custom_field_mapping rule
-	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
-	 * @param	array 	attachment_metadata, default NULL
-	 *
-	 * @return	array	updated rule value
-	 */
-	public static function mla_mapping_custom_value_filter( $new_text, $setting_value, $post_id, $category, $attachment_metadata ) {
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_custom_value_filter $new_text = ' . var_export( $new_text, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_custom_value_filter $setting_value = ' . var_export( $setting_value, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_custom_value_filter $post_id = ' . var_export( $post_id, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_custom_value_filter $category = ' . var_export( $category, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_custom_value_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
-
-		/*
-		 * You can use MLAOptions::mla_get_data_source() to get anything available;
-		 * for example:
-		 */
-		$my_setting = array(
-			'data_source' => 'size_names',
-			'option' => 'array'
-		);
-		//$size_names = MLAOptions::mla_get_data_source($post_id, $category, $my_setting, $attachment_metadata);
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_custom_value_filter $size_names = ' . var_export( $size_names, true ), 0 );
-
-		/*
-		 * For "empty" values, return ' '.
-		 */
-		return $new_text;
-	} // mla_mapping_custom_value_filter
-
-	/**
-	 * MLA Mapping IPTC Value Filter
-	 *
-	 * This filter is called once for each IPTC/EXIF mapping rule, after the IPTC 
-	 * portion of the rule is evaluated. You can change the new value produced by
-	 * the rule.
-	 *
-	 * @since 1.00
-	 *
-	 * @param	mixed 	IPTC value returned by the rule
-	 * @param	array 	custom_field_mapping rule
-	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
-	 * @param	array 	attachment_metadata, default NULL
-	 *
-	 * @return	array	updated rule IPTC value
-	 */
-	public static function mla_mapping_iptc_value_filter( $iptc_value, $setting_value, $post_id, $category, $attachment_metadata ) {
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter $iptc_value = ' . var_export( $iptc_value, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter $setting_value = ' . var_export( $setting_value, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter $post_id = ' . var_export( $post_id, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter $category = ' . var_export( $category, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
-
-		/*
-		 * You can use MLAOptions::mla_get_data_source() to get anything available;
-		 * for example:
-		 */
-		$my_setting = array(
-			'data_source' => 'template',
-			'meta_name' => '([+iptc:keywords+])',
-			'option' => 'array'
-		);
-		//$keywords = MLAOptions::mla_get_data_source($post_id, $category, $my_setting, $attachment_metadata);
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_iptc_value_filter $keywords = ' . var_export( $keywords, true ), 0 );
-
-		/*
-		 * For "empty" values, return ''.
-		 */
-		return $iptc_value;
-	} // mla_mapping_iptc_value_filter
-
-	/**
-	 * MLA Mapping EXIF Value Filter
-	 *
-	 * This filter is called once for each IPTC/EXIF mapping rule, after the EXIF 
-	 * portion of the rule is evaluated. You can change the new value produced by
-	 * the rule.
-	 *
-	 * @since 1.00
-	 *
-	 * @param	mixed 	EXIF/Template value returned by the rule
-	 * @param	array 	custom_field_mapping rule
-	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
-	 * @param	array 	attachment_metadata, default NULL
-	 *
-	 * @return	array	updated rule EXIF/Template value
-	 */
-	public static function mla_mapping_exif_value_filter( $exif_value, $setting_value, $post_id, $category, $attachment_metadata ) {
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_exif_value_filter $exif_value = ' . var_export( $exif_value, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_exif_value_filter $setting_value = ' . var_export( $setting_value, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_exif_value_filter $post_id = ' . var_export( $post_id, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_exif_value_filter $category = ' . var_export( $category, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_exif_value_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
-
-		/*
-		 * You can use MLAOptions::mla_get_data_source() to get anything available;
-		 * for example:
-		 */
-		$my_setting = array(
-			'data_source' => 'template',
-			'meta_name' => '([+exif:Copyright+])',
-			'option' => 'array'
-		);
-		//$copyright = MLAOptions::mla_get_data_source($post_id, $category, $my_setting, $attachment_metadata);
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_exif_value_filter $copyright = ' . var_export( $copyright, true ), 0 );
-
-		/*
-		 * For "empty" 'text' values, return ''.
-		 * For "empty" 'array' values, return NULL.
-		 */
-		return $exif_value;
-	} // mla_mapping_exif_value_filter
-
-	/**
-	 * MLA Mapping Updates Filter
-	 *
-	 * This filter is called AFTER all mapping rules are applied.
-	 * You can add, change or remove updates for the attachment's
-	 * standard fields, taxonomies and/or custom fields.
-	 *
-	 * @since 1.00
-	 *
-	 * @param	array	updates for the attachment's standard fields, taxonomies and/or custom fields
-	 * @param	integer post ID to be evaluated
-	 * @param	string 	category/scope to evaluate against: custom_field_mapping or single_attachment_mapping
-	 * @param	array 	mapping rules
-	 * @param	array 	attachment_metadata, default NULL
-	 *
-	 * @return	array	updated attachment's updates
-	 */
-	public static function mla_mapping_updates_filter( $updates, $post_id, $category, $settings, $attachment_metadata ) {
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_updates_filter $updates = ' . var_export( $updates, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_updates_filter $post_id = ' . var_export( $post_id, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_updates_filter $category = ' . var_export( $category, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_updates_filter $settings = ' . var_export( $settings, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_mapping_updates_filter $attachment_metadata = ' . var_export( $attachment_metadata, true ), 0 );
-
-		/*
-		 * To stop this rule's updates, return an empty array, i.e., return array();
-		 */
-		return $updates;
-	} // mla_mapping_updates_filter
-
-	/**
-	 * MLA Mapping Updates Filter
-	 *
-	 * This filter is called AFTER all mapping rules are applied.
-	 * You can add, change or remove updates for the attachment's
-	 * standard fields, taxonomies and/or custom fields.
-	 *
-	 * @since 1.02
-	 *
-	 * @param	array|false	The entire tablist ( $tab = NULL ), a single tab entry or false if not found/not allowed.
-	 * @param	array		The entire tablist
-	 * @param	string|NULL	tab slug for single-element return or NULL to return entire tablist
-	 *
-	 * @return	array	updated attachment's updates
-	 */
-	public static function mla_get_options_tablist_filter( $results, $mla_tablist, $tab ) {
-		//error_log( 'MLAMetadataHooksExample::mla_get_options_tablist_filter $results = ' . var_export( $results, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_get_options_tablist_filter $mla_tablist = ' . var_export( $mla_tablist, true ), 0 );
-		//error_log( 'MLAMetadataHooksExample::mla_get_options_tablist_filter $tab = ' . var_export( $tab, true ), 0 );
-
-		/*
-		 * Return an updated $mla_tablist ( $tab = NULL ), an updated single element or false
-		 */
-		return $results;
-
-		/*
-		 * Comment out the above return statement to fall through to this example,
-		 * which removes the "Uploads" tab from the Settings/Media Library Assistant submenu
-		 */
-		if ( NULL == $tab ) {
-			unset( $results['upload'] );
-		} elseif ( 'upload' == $tab ) {
-			$results = false;
-		}
-
-		return $results;
-	} // mla_get_options_tablist_filter
-
-	/*
-	 * Selected JPEG Section Markers
-	 */
-	const SOF0	= 0xC0; // Baseline Encoding
-	const SOI	= 0xD8; // Start of image
-	const EOI	= 0xD9; // End of image
-	const SOS	= 0xDA; // Start of scan (image data)
-	const APP0	= 0xE0; // Application segment 0 JFIF Header
-	const APP1	= 0xE1; // Application segment 1 EXIF/XMP
-	const APP2	= 0xE2; // Application segment 2 EXIF Flashpix extensions
-	const APP13	= 0xED; // Application segment 13 IPTC
-	const COM	= 0xFE; // Comment
 
 	/**
 	 * Enumerate the sections of a JPEG file
@@ -686,7 +418,7 @@ class MLAMetadataHooksExample {
 
 			$section_value['length'] = $file_offset - $section_value['offset'];
 			$section_array[] = $section_value;
-			error_log( 'MLAMetadataHooksExample::_enumerate_jpeg_sections $section_value = ' . var_export( $section_value, true ), 0 );
+			//error_log( 'MLAMetadataHooksExample::_enumerate_jpeg_sections $section_value = ' . var_export( $section_value, true ), 0 );
 		} // while offset < length
 
 		return $section_array;
@@ -721,6 +453,7 @@ class MLAMetadataHooksExample {
 			 } // foreach section
 		 }
 		 
+		//error_log( 'MLAMetadataHooksExample::_extract_jpeg_metadata $metadata = ' . var_export( $metadata, true ), 0 );
 		return $metadata;
 	} // _extract_jpeg_metadata
 
@@ -735,12 +468,12 @@ class MLAMetadataHooksExample {
 	 * @return	void
 	 */
 	private static function _replace_jpeg_metadata( $path, $metadata ) {
-		error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $path = ' . var_export( $path, true ), 0 );
-		error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $marker = ' . var_export( $metadata[0]['marker'], true ), 0 );
+		//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $path = ' . var_export( $path, true ), 0 );
+		//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $marker = ' . var_export( $metadata[0]['marker'], true ), 0 );
 
 		$pathinfo = pathinfo( $path );
 		$temp_path = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '-MLA' . $pathinfo['extension'];
-		error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $temp_path = ' . var_export( $temp_path, true ), 0 );
+		//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $temp_path = ' . var_export( $temp_path, true ), 0 );
 
 		/*
 		 * Default to the old COM section if the destination file lacks one
@@ -776,10 +509,10 @@ class MLAMetadataHooksExample {
 					unset( $destination_sections[ $index ] );
 				}
 			}
-			error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $SOI_section = ' . var_export( $SOI_section, true ), 0 );
-			error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $APP0_section = ' . var_export( $APP0_section, true ), 0 );
-			error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $COM_section = ' . var_export( $COM_section, true ), 0 );
-			error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $destination_sections = ' . var_export( $destination_sections, true ), 0 );
+			//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $SOI_section = ' . var_export( $SOI_section, true ), 0 );
+			//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $APP0_section = ' . var_export( $APP0_section, true ), 0 );
+			//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $COM_section = ' . var_export( $COM_section, true ), 0 );
+			//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata $destination_sections = ' . var_export( $destination_sections, true ), 0 );
 
 			if ( ( NULL == $SOI_section ) || ( NULL == $APP0_section ) ) {
 				return;
@@ -788,19 +521,19 @@ class MLAMetadataHooksExample {
 			@unlink( $temp_path );
 			$temp_handle = @fopen( $temp_path, 'wb' );
 			if ( false === $temp_handle ) {
-				error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fopen error = ' . var_export( error_get_last(), true ), 0 );
+				//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fopen error = ' . var_export( error_get_last(), true ), 0 );
 				return;
 			}
 
 			if ( false === @fwrite( $temp_handle, $SOI_section ) ) {
-				error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite SOI error = ' . var_export( error_get_last(), true ), 0 );
+				//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite SOI error = ' . var_export( error_get_last(), true ), 0 );
 				@fclose( $temp_handle );
 				@unlink( $temp_path );
 				return;
 			}
 
 			if ( false === @fwrite( $temp_handle, $APP0_section ) ) {
-				error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite APP0 error = ' . var_export( error_get_last(), true ), 0 );
+				//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite APP0 error = ' . var_export( error_get_last(), true ), 0 );
 				@fclose( $temp_handle );
 				@unlink( $temp_path );
 				return;
@@ -808,7 +541,7 @@ class MLAMetadataHooksExample {
 
 			if ( ! empty( $COM_section ) ) {
 				if ( false === @fwrite( $temp_handle, $COM_section ) ) {
-					error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite COM error = ' . var_export( error_get_last(), true ), 0 );
+					//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite COM error = ' . var_export( error_get_last(), true ), 0 );
 					@fclose( $temp_handle );
 					@unlink( $temp_path );
 					return;
@@ -816,9 +549,10 @@ class MLAMetadataHooksExample {
 			}
 
 			foreach ( $metadata as $section ) {
+		//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata metadata $section marker = ' . var_export( $section['marker'], true ), 0 );
 				if ( false === @fwrite( $temp_handle, $section['content'] ) ) {
-					error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite metadata marker = ' . var_export( $section['marker'], true ), 0 );
-					error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite metadata error = ' . var_export( error_get_last(), true ), 0 );
+					//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite metadata marker = ' . var_export( $section['marker'], true ), 0 );
+					//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite metadata error = ' . var_export( error_get_last(), true ), 0 );
 					@fclose( $temp_handle );
 					@unlink( $temp_path );
 					return;
@@ -826,9 +560,10 @@ class MLAMetadataHooksExample {
 			}
 
 			foreach ( $destination_sections as $section ) {
+		//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata destination_sections $section marker = ' . var_export( $section['marker'], true ), 0 );
 				if ( false === @fwrite( $temp_handle, substr( $file_contents, $section['offset'], $section['length'] ) ) ) {
-					error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite destination_sections marker = ' . var_export( $section['marker'], true ), 0 );
-					error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite destination_sections error = ' . var_export( error_get_last(), true ), 0 );
+					//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite destination_sections marker = ' . var_export( $section['marker'], true ), 0 );
+					//error_log( 'MLAMetadataHooksExample::_replace_jpeg_metadata fwrite destination_sections error = ' . var_export( error_get_last(), true ), 0 );
 					@fclose( $temp_handle );
 					@unlink( $temp_path );
 					return;
@@ -836,17 +571,17 @@ class MLAMetadataHooksExample {
 			}
 
 			if ( false === @fclose( $temp_handle ) ) {
-				error_log( 'ERROR: MLAMetadataHooksExample::_replace_jpeg_metadata fclose = ' . var_export( error_get_last(), true ), 0 );
+				//error_log( 'ERROR: MLAMetadataHooksExample::_replace_jpeg_metadata fclose = ' . var_export( error_get_last(), true ), 0 );
 				return;
 			}
 
 			if ( false === @unlink( $path ) ) {
-				error_log( 'ERROR: MLAMetadataHooksExample::_replace_jpeg_metadata unlink = ' . var_export( error_get_last(), true ), 0 );
+				//error_log( 'ERROR: MLAMetadataHooksExample::_replace_jpeg_metadata unlink = ' . var_export( error_get_last(), true ), 0 );
 				return;
 			}
 
 			if ( false === @rename( $temp_path, $path ) ) {
-				error_log( 'ERROR: MLAMetadataHooksExample::_replace_jpeg_metadata rename = ' . var_export( error_get_last(), true ), 0 );
+				//error_log( 'ERROR: MLAMetadataHooksExample::_replace_jpeg_metadata rename = ' . var_export( error_get_last(), true ), 0 );
 				return;
 			}
 		 } // if $file_contents

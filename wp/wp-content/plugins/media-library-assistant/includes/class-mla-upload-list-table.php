@@ -243,8 +243,8 @@ class MLA_Upload_List_Table extends WP_List_Table {
 		}
 
 		if ( isset( $_REQUEST['mla_tab'] ) && $_REQUEST['mla_tab'] == 'upload' ) {
-			add_filter( 'get_user_option_managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-uploadcolumnshidden', 'MLA_Upload_list_Table::mla_manage_hidden_columns_filter', 10, 3 );
-			add_filter( 'manage_settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-upload_columns', 'MLA_Upload_list_Table::mla_manage_columns_filter', 10, 0 );
+			add_filter( 'get_user_option_managesettings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-uploadcolumnshidden', 'MLA_Upload_list_Table::mla_manage_hidden_columns_filter', 10, 3 );
+			add_filter( 'manage_settings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-upload_columns', 'MLA_Upload_list_Table::mla_manage_columns_filter', 10, 0 );
 			add_action( 'admin_print_styles', 'MLA_Upload_List_Table::mla_admin_print_styles_action' );
 		}
 	}
@@ -268,7 +268,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 			'singular' => 'upload_type', //singular name of the listed records
 			'plural' => 'upload_types', //plural name of the listed records
 			'ajax' => true, //does this table support ajax?
-			'screen' => 'settings_page_' . MLACore::MLA_SETTINGS_SLUG . '-upload'
+			'screen' => 'settings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-upload'
 		) );
 
 		/*
@@ -384,7 +384,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 		 */
 
 		$view_args = array(
-			'page' => MLACore::MLA_SETTINGS_SLUG . '-upload',
+			'page' => MLACoreOptions::MLA_SETTINGS_SLUG . '-upload',
 			'mla_tab' => 'upload',
 			'mla_item_slug' => urlencode( $item->slug )
 		);
@@ -598,7 +598,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 	 * @return	array	Column information,e.g., array(0 => 'ID_parent, 1 => 'title_name')
 	 */
 	function get_hidden_columns( ) {
-		$columns = get_user_option( 'managesettings_page_' . MLACore::MLA_SETTINGS_SLUG . '-uploadcolumnshidden' );
+		$columns = get_user_option( 'managesettings_page_' . MLACoreOptions::MLA_SETTINGS_SLUG . '-uploadcolumnshidden' );
 
 		if ( is_array( $columns ) ) {
 			return $columns;
@@ -656,7 +656,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 			/*
 			 * Remember the view filters
 			 */
-			$base_url = 'options-general.php?page=' . MLACore::MLA_SETTINGS_SLUG . '-upload&mla_tab=upload';
+			$base_url = 'options-general.php?page=' . MLACoreOptions::MLA_SETTINGS_SLUG . '-upload&mla_tab=upload';
 
 			if ( isset( $_REQUEST['s'] ) ) {
 				$base_url = add_query_arg( array( 's' => $_REQUEST['s'] ), $base_url );

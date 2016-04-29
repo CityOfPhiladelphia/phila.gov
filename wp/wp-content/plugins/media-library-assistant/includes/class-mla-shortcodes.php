@@ -24,6 +24,7 @@ class MLAShortcodes {
 	public static function initialize() {
 		add_shortcode( 'mla_gallery', 'MLAShortcodes::mla_gallery_shortcode' );
 		add_shortcode( 'mla_tag_cloud', 'MLAShortcodes::mla_tag_cloud_shortcode' );
+		//add_shortcode( 'mla_term_list', 'MLAShortcodes::mla_term_list_shortcode' );
 
 		/*
 		 * Avoid wptexturize defect
@@ -69,7 +70,7 @@ class MLAShortcodes {
 		if ( !class_exists( 'MLAShortcode_Support' ) ) {
 			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcode-support.php' );
 		}
-
+		
 		return MLAShortcode_Support::mla_gallery_shortcode( $attr, $content );
 	}
 
@@ -91,6 +92,26 @@ class MLAShortcodes {
 		}
 
 		return MLAShortcode_Support::mla_tag_cloud_shortcode( $attr, $content );
+	}
+
+	/**
+	 * The MLA Term List shortcode.
+	 *
+	 * Compatibility shim for MLAShortcode_Support::mla_term_list_shortcode
+	 *
+	 * @since 2.25
+	 *
+	 * @param array $attr Attributes of the shortcode.
+	 * @param string $content Optional content for enclosing shortcodes
+	 *
+	 * @return string HTML content to display the tag cloud.
+	 */
+	public static function mla_term_list_shortcode( $attr, $content = NULL ) {
+		if ( !class_exists( 'MLAShortcode_Support' ) ) {
+			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-shortcode-support.php' );
+		}
+
+		return MLAShortcode_Support::mla_term_list_shortcode( $attr, $content );
 	}
 
 	/**

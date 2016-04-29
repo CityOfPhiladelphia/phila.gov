@@ -199,7 +199,7 @@ class MLAObjects {
 
 			$tax_object = get_taxonomy( $taxonomy );
 
-			$count_terms = 'checked' == MLACore::mla_get_option( MLACore::MLA_COUNT_TERM_ATTACHMENTS );
+			$count_terms = 'checked' == MLACore::mla_get_option( MLACoreOptions::MLA_COUNT_TERM_ATTACHMENTS );
 			if ( $count_terms ) {
 				$terms = get_transient( MLA_OPTION_PREFIX . 't_term_counts_' . $taxonomy );
 

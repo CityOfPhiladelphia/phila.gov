@@ -48,7 +48,7 @@ class MLATest {
 		 */
 		MLACore::$original_php_log = ini_get( 'error_log' );
 		MLACore::$original_php_reporting = sprintf( '0x%1$04X', error_reporting() );
-		$php_reporting = trim( MLACore::mla_get_option( MLACore::MLA_DEBUG_REPLACE_PHP_REPORTING ) );
+		$php_reporting = trim( MLACore::mla_get_option( MLACoreOptions::MLA_DEBUG_REPLACE_PHP_REPORTING ) );
 		if ( ! empty( $php_reporting ) ) {
 			@error_reporting( 0 + $php_reporting );
 		}
@@ -56,7 +56,7 @@ class MLATest {
 		/*
 		 * This is the earliest effective place to localize values in other plugin components
 		 */
-		MLACore::mla_localize_option_definitions_array();
+		MLACoreOptions::mla_localize_option_definitions_array();
 		
 		if ( class_exists( 'MLASettings' ) ) {
 			MLASettings::mla_localize_tablist();

@@ -43,8 +43,11 @@ define('WP_HOME', 'https://$DOMAIN');
 /** For AWS and S3 usage */
 define('AWS_ACCESS_KEY_ID', '$AWS_ID');
 define('AWS_SECRET_ACCESS_KEY', '$AWS_SECRET');
-define('AS3CF_BUCKET', '$PHILA_MEDIA_BUCKET');
-define('AS3CF_DOMAIN', '$DOMAIN');
+
+define( 'WPOS3_SETTINGS', serialize( array(
+  'bucket' => '$PHILA_MEDIA_BUCKET',
+  'cloudfront' => '$DOMAIN'
+) ) );
 
 /** For Swiftype search */
 define('SWIFTYPE_ENGINE', '$SWIFTYPE_ENGINE');

@@ -19,261 +19,261 @@ class MLAOptions {
 	/**
 	 * Provides a unique name for the current version option
 	 */
-	const MLA_VERSION_OPTION = MLACore::MLA_VERSION_OPTION; // 'current_version';
+	const MLA_VERSION_OPTION = MLACoreOptions::MLA_VERSION_OPTION; // 'current_version';
 
 	/**
 	 * Provides a unique name for the exclude revisions option
 	 */
-	const MLA_EXCLUDE_REVISIONS = MLACore::MLA_EXCLUDE_REVISIONS; // 'exclude_revisions';
+	const MLA_EXCLUDE_REVISIONS = MLACoreOptions::MLA_EXCLUDE_REVISIONS; // 'exclude_revisions';
 
 	/**
 	 * Provides a unique name for a database tuning option
 	 */
-	const MLA_FEATURED_IN_TUNING = MLACore::MLA_FEATURED_IN_TUNING; // 'featured_in_tuning';
+	const MLA_FEATURED_IN_TUNING = MLACoreOptions::MLA_FEATURED_IN_TUNING; // 'featured_in_tuning';
 
 	/**
 	 * Provides a unique name for a database tuning option
 	 */
-	const MLA_INSERTED_IN_TUNING = MLACore::MLA_INSERTED_IN_TUNING; // 'inserted_in_tuning';
+	const MLA_INSERTED_IN_TUNING = MLACoreOptions::MLA_INSERTED_IN_TUNING; // 'inserted_in_tuning';
 
 	/**
 	 * Provides a unique name for a database tuning option
 	 */
-	const MLA_GALLERY_IN_TUNING = MLACore::MLA_GALLERY_IN_TUNING; // 'gallery_in_tuning';
+	const MLA_GALLERY_IN_TUNING = MLACoreOptions::MLA_GALLERY_IN_TUNING; // 'gallery_in_tuning';
 
 	/**
 	 * Provides a unique name for a database tuning option
 	 */
-	const MLA_MLA_GALLERY_IN_TUNING = MLACore::MLA_MLA_GALLERY_IN_TUNING; // 'mla_gallery_in_tuning';
+	const MLA_MLA_GALLERY_IN_TUNING = MLACoreOptions::MLA_MLA_GALLERY_IN_TUNING; // 'mla_gallery_in_tuning';
 
 	/**
 	 * Provides a unique name for the taxonomy count Attachments option
 	 */
-	const MLA_COUNT_TERM_ATTACHMENTS = MLACore::MLA_COUNT_TERM_ATTACHMENTS; // 'count_term_attachments';
+	const MLA_COUNT_TERM_ATTACHMENTS = MLACoreOptions::MLA_COUNT_TERM_ATTACHMENTS; // 'count_term_attachments';
 
 	/**
 	 * Provides a unique name for the taxonomy support option
 	 */
-	const MLA_TAXONOMY_SUPPORT = MLACore::MLA_TAXONOMY_SUPPORT; // 'taxonomy_support';
+	const MLA_TAXONOMY_SUPPORT = MLACoreOptions::MLA_TAXONOMY_SUPPORT; // 'taxonomy_support';
 
 	/**
 	 * Provides a unique name for the admin screen page title option
 	 */
-	const MLA_SCREEN_PAGE_TITLE = MLACore::MLA_SCREEN_PAGE_TITLE; // 'admin_screen_page_title';
+	const MLA_SCREEN_PAGE_TITLE = MLACoreOptions::MLA_SCREEN_PAGE_TITLE; // 'admin_screen_page_title';
 
 	/**
 	 * Provides a unique name for the admin screen menu title option
 	 */
-	const MLA_SCREEN_MENU_TITLE = MLACore::MLA_SCREEN_MENU_TITLE; // 'admin_screen_menu_title';
+	const MLA_SCREEN_MENU_TITLE = MLACoreOptions::MLA_SCREEN_MENU_TITLE; // 'admin_screen_menu_title';
 
 	/**
 	 * Provides a unique name for the admin screen menu order option
 	 */
-	const MLA_SCREEN_ORDER = MLACore::MLA_SCREEN_ORDER; // 'admin_screen_menu_order';
+	const MLA_SCREEN_ORDER = MLACoreOptions::MLA_SCREEN_ORDER; // 'admin_screen_menu_order';
 
 	/**
 	 * Provides a unique name for the admin screen remove Media/Library option
 	 */
-	const MLA_SCREEN_DISPLAY_LIBRARY = MLACore::MLA_SCREEN_DISPLAY_LIBRARY; // 'admin_screen_display_default';
+	const MLA_SCREEN_DISPLAY_LIBRARY = MLACoreOptions::MLA_SCREEN_DISPLAY_LIBRARY; // 'admin_screen_display_default';
 
 	/**
 	 * Provides a unique name for the default orderby option
 	 */
-	const MLA_DEFAULT_ORDERBY = MLACore::MLA_DEFAULT_ORDERBY; // 'default_orderby';
+	const MLA_DEFAULT_ORDERBY = MLACoreOptions::MLA_DEFAULT_ORDERBY; // 'default_orderby';
 
 	/**
 	 * Provides a unique name for the default order option
 	 */
-	const MLA_DEFAULT_ORDER = MLACore::MLA_DEFAULT_ORDER; // 'default_order';
+	const MLA_DEFAULT_ORDER = MLACoreOptions::MLA_DEFAULT_ORDER; // 'default_order';
 
 	/**
 	 * Provides a unique name for the Media/Assistant submenu table views width option
 	 */
-	const MLA_TABLE_VIEWS_WIDTH = MLACore::MLA_TABLE_VIEWS_WIDTH; // 'table_views_width';
+	const MLA_TABLE_VIEWS_WIDTH = MLACoreOptions::MLA_TABLE_VIEWS_WIDTH; // 'table_views_width';
 
 	/**
 	 * Provides a unique name for the Media/Assistant submenu table thumbnail/icon size option
 	 */
-	const MLA_TABLE_ICON_SIZE = MLACore::MLA_TABLE_ICON_SIZE; // 'table_icon_size';
+	const MLA_TABLE_ICON_SIZE = MLACoreOptions::MLA_TABLE_ICON_SIZE; // 'table_icon_size';
 
 	/**
 	 * Provides a unique name for the Bulk Update and Map All chunk size option
 	 */
-	const MLA_BULK_CHUNK_SIZE = MLACore::MLA_BULK_CHUNK_SIZE; // 'bulk_chunk_size';
+	const MLA_BULK_CHUNK_SIZE = MLACoreOptions::MLA_BULK_CHUNK_SIZE; // 'bulk_chunk_size';
 
 	/**
 	 * Provides a unique name for the taxonomy filter maximum depth option
 	 */
-	const MLA_TAXONOMY_FILTER_DEPTH = MLACore::MLA_TAXONOMY_FILTER_DEPTH; // 'taxonomy_filter_depth';
+	const MLA_TAXONOMY_FILTER_DEPTH = MLACoreOptions::MLA_TAXONOMY_FILTER_DEPTH; // 'taxonomy_filter_depth';
 
 	/**
 	 * Provides a unique name for the taxonomy filter maximum depth option
 	 */
-	const MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN = MLACore::MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN; // 'taxonomy_filter_include_children';
+	const MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN = MLACoreOptions::MLA_TAXONOMY_FILTER_INCLUDE_CHILDREN; // 'taxonomy_filter_include_children';
 
 	/**
 	 * Provides a unique name for the display Search Media controls option
 	 */
-	const MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS = MLACore::MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS; // 'search_media_filter_show_controls';
+	const MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS = MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_SHOW_CONTROLS; // 'search_media_filter_show_controls';
 
 	/**
 	 * Provides a unique name for the display Search Media controls option
 	 */
-	const MLA_SEARCH_MEDIA_FILTER_DEFAULTS = MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS; // 'search_media_filter_defaults';
+	const MLA_SEARCH_MEDIA_FILTER_DEFAULTS = MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS; // 'search_media_filter_defaults';
 
 	/**
 	 * Provides a "size" attribute value for the EXIF/Template Value field
 	 */
-	const MLA_EXIF_SIZE = MLACore::MLA_EXIF_SIZE; // 30;
+	const MLA_EXIF_SIZE = MLACoreOptions::MLA_EXIF_SIZE; // 30;
 
 	/**
 	 * Provides a unique name for the Custom Field "new rule" key
 	 */
-	const MLA_NEW_CUSTOM_RULE = MLACore::MLA_NEW_CUSTOM_RULE; // '__NEW_RULE__';
+	const MLA_NEW_CUSTOM_RULE = MLACoreOptions::MLA_NEW_CUSTOM_RULE; // '__NEW_RULE__';
 
 	/**
 	 * Provides a unique name for the Custom Field "new field" key
 	 */
-	const MLA_NEW_CUSTOM_FIELD = MLACore::MLA_NEW_CUSTOM_FIELD; // '__NEW_FIELD__';
+	const MLA_NEW_CUSTOM_FIELD = MLACoreOptions::MLA_NEW_CUSTOM_FIELD; // '__NEW_FIELD__';
 
 	/**
 	 * Provides a unique name for the "searchable taxonomies" option
 	 */
-	const MLA_EDIT_MEDIA_SEARCH_TAXONOMY = MLACore::MLA_EDIT_MEDIA_SEARCH_TAXONOMY; // 'edit_media_search_taxonomy';
+	const MLA_EDIT_MEDIA_SEARCH_TAXONOMY = MLACoreOptions::MLA_EDIT_MEDIA_SEARCH_TAXONOMY; // 'edit_media_search_taxonomy';
 
 	/**
 	 * Provides a unique name for the Edit Media additional meta boxes option
 	 */
-	const MLA_EDIT_MEDIA_META_BOXES = MLACore::MLA_EDIT_MEDIA_META_BOXES; // 'edit_media_meta_boxes';
+	const MLA_EDIT_MEDIA_META_BOXES = MLACoreOptions::MLA_EDIT_MEDIA_META_BOXES; // 'edit_media_meta_boxes';
 
 	/**
 	 * Provides a unique name for the Media/Add New bulk edit option
 	 */
-	const MLA_ADD_NEW_BULK_EDIT = MLACore::MLA_ADD_NEW_BULK_EDIT; // 'add_new_bulk_edit';
+	const MLA_ADD_NEW_BULK_EDIT = MLACoreOptions::MLA_ADD_NEW_BULK_EDIT; // 'add_new_bulk_edit';
 
 	/**
 	 * Provides a unique name for the Media/Add New bulk edit "on top" option
 	 */
-	const MLA_ADD_NEW_BULK_EDIT_ON_TOP = MLACore::MLA_ADD_NEW_BULK_EDIT_ON_TOP; // 'add_new_bulk_edit_on_top';
+	const MLA_ADD_NEW_BULK_EDIT_ON_TOP = MLACoreOptions::MLA_ADD_NEW_BULK_EDIT_ON_TOP; // 'add_new_bulk_edit_on_top';
 
 	/**
 	 * Provides a unique name for the Media Grid toolbar option, which
 	 * also controls the ATTACHMENT DETAILS enhancements
 	 */
-	const MLA_MEDIA_GRID_TOOLBAR = MLACore::MLA_MEDIA_GRID_TOOLBAR; // 'media_grid_toolbar';
+	const MLA_MEDIA_GRID_TOOLBAR = MLACoreOptions::MLA_MEDIA_GRID_TOOLBAR; // 'media_grid_toolbar';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar option, which
 	 * also controls the ATTACHMENT DETAILS enhancements
 	 */
-	const MLA_MEDIA_MODAL_TOOLBAR = MLACore::MLA_MEDIA_MODAL_TOOLBAR; // 'media_modal_toolbar';
+	const MLA_MEDIA_MODAL_TOOLBAR = MLACoreOptions::MLA_MEDIA_MODAL_TOOLBAR; // 'media_modal_toolbar';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar MIME Types option
 	 */
-	const MLA_MEDIA_MODAL_MIMETYPES = MLACore::MLA_MEDIA_MODAL_MIMETYPES; // 'media_modal_mimetypes';
+	const MLA_MEDIA_MODAL_MIMETYPES = MLACoreOptions::MLA_MEDIA_MODAL_MIMETYPES; // 'media_modal_mimetypes';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar Month and Year option
 	 */
-	const MLA_MEDIA_MODAL_MONTHS = MLACore::MLA_MEDIA_MODAL_MONTHS; // 'media_modal_months';
+	const MLA_MEDIA_MODAL_MONTHS = MLACoreOptions::MLA_MEDIA_MODAL_MONTHS; // 'media_modal_months';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar Taxonomy Terms option
 	 */
-	const MLA_MEDIA_MODAL_TERMS = MLACore::MLA_MEDIA_MODAL_TERMS; // 'media_modal_terms';
+	const MLA_MEDIA_MODAL_TERMS = MLACoreOptions::MLA_MEDIA_MODAL_TERMS; // 'media_modal_terms';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar Taxonomy "Terms Search" option
 	 */
-	const MLA_MEDIA_MODAL_TERMS_SEARCH = MLACore::MLA_MEDIA_MODAL_TERMS_SEARCH; // 'media_modal_terms_search';
+	const MLA_MEDIA_MODAL_TERMS_SEARCH = MLACoreOptions::MLA_MEDIA_MODAL_TERMS_SEARCH; // 'media_modal_terms_search';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar Search Box option
 	 */
-	const MLA_MEDIA_MODAL_SEARCHBOX = MLACore::MLA_MEDIA_MODAL_SEARCHBOX; // 'media_modal_searchbox';
+	const MLA_MEDIA_MODAL_SEARCHBOX = MLACoreOptions::MLA_MEDIA_MODAL_SEARCHBOX; // 'media_modal_searchbox';
 
 	/**
 	 * Provides a unique name for the Media Manager toolbar Search Box Controls option
 	 */
-	const MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS = MLACore::MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS; // 'media_modal_searchbox_controls';
+	const MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS = MLACoreOptions::MLA_MEDIA_MODAL_SEARCHBOX_CONTROLS; // 'media_modal_searchbox_controls';
 
 	/**
 	 * Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
 	 * This option is for hierarchical taxonomies, e.g., "Att. Categories".
 	 */
-	const MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX = MLACore::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX; // 'media_modal_details_category_metabox';
+	const MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX = MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_CATEGORY_METABOX; // 'media_modal_details_category_metabox';
 
 	/**
 	 * Provides a unique name for the Media Manager Attachment Details searchable taxonomy option
 	 * This option is for flat taxonomies, e.g., "Att. Tags".
 	 */
-	const MLA_MEDIA_MODAL_DETAILS_TAG_METABOX = MLACore::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX; // 'media_modal_details_tag_metabox';
+	const MLA_MEDIA_MODAL_DETAILS_TAG_METABOX = MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_TAG_METABOX; // 'media_modal_details_tag_metabox';
 
 	/**
 	 * Provides a unique name for the Media Manager Attachment Details auto-fill option
 	 */
-	const MLA_MEDIA_MODAL_DETAILS_AUTOFILL = MLACore::MLA_MEDIA_MODAL_DETAILS_AUTOFILL; // 'media_modal_details_autofill';
+	const MLA_MEDIA_MODAL_DETAILS_AUTOFILL = MLACoreOptions::MLA_MEDIA_MODAL_DETAILS_AUTOFILL; // 'media_modal_details_autofill';
 
 	/**
 	 * Provides a unique name for the Media Manager orderby option
 	 */
-	const MLA_MEDIA_MODAL_ORDERBY = MLACore::MLA_MEDIA_MODAL_ORDERBY; // 'media_modal_orderby';
+	const MLA_MEDIA_MODAL_ORDERBY = MLACoreOptions::MLA_MEDIA_MODAL_ORDERBY; // 'media_modal_orderby';
 
 	/**
 	 * Provides a unique name for the Media Manager order option
 	 */
-	const MLA_MEDIA_MODAL_ORDER = MLACore::MLA_MEDIA_MODAL_ORDER; // 'media_modal_order';
+	const MLA_MEDIA_MODAL_ORDER = MLACoreOptions::MLA_MEDIA_MODAL_ORDER; // 'media_modal_order';
 
 	/**
 	 * Provides a unique name for the Post MIME Types option
 	 */
-	const MLA_POST_MIME_TYPES = MLACore::MLA_POST_MIME_TYPES; // 'post_mime_types';
+	const MLA_POST_MIME_TYPES = MLACoreOptions::MLA_POST_MIME_TYPES; // 'post_mime_types';
 
 	/**
 	 * Provides a unique name for the Enable Post MIME Types option
 	 */
-	const MLA_ENABLE_POST_MIME_TYPES = MLACore::MLA_ENABLE_POST_MIME_TYPES; // 'enable_post_mime_types';
+	const MLA_ENABLE_POST_MIME_TYPES = MLACoreOptions::MLA_ENABLE_POST_MIME_TYPES; // 'enable_post_mime_types';
 
 	/**
 	 * Provides a unique name for the Upload MIME Types option
 	 */
-	const MLA_UPLOAD_MIMES = MLACore::MLA_UPLOAD_MIMES; // 'upload_mimes';
+	const MLA_UPLOAD_MIMES = MLACoreOptions::MLA_UPLOAD_MIMES; // 'upload_mimes';
 
 	/**
 	 * Provides a unique name for the Enable Upload MIME Types option
 	 */
-	const MLA_ENABLE_UPLOAD_MIMES = MLACore::MLA_ENABLE_UPLOAD_MIMES; // 'enable_upload_mimes';
+	const MLA_ENABLE_UPLOAD_MIMES = MLACoreOptions::MLA_ENABLE_UPLOAD_MIMES; // 'enable_upload_mimes';
 
 	/**
 	 * Provides a unique name for the Enable MLA Icons option
 	 */
-	const MLA_ENABLE_MLA_ICONS = MLACore::MLA_ENABLE_MLA_ICONS; // 'enable_mla_icons';
+	const MLA_ENABLE_MLA_ICONS = MLACoreOptions::MLA_ENABLE_MLA_ICONS; // 'enable_mla_icons';
 
 	/**
 	 * Provides a unique name for the Debug display limit option
 	 */
-	const MLA_DEBUG_DISPLAY_LIMIT = MLACore::MLA_DEBUG_DISPLAY_LIMIT; // 'debug_display_limit';
+	const MLA_DEBUG_DISPLAY_LIMIT = MLACoreOptions::MLA_DEBUG_DISPLAY_LIMIT; // 'debug_display_limit';
 
 	/**
 	 * Provides a unique name for the Debug alternate log file option
 	 */
-	const MLA_DEBUG_FILE = MLACore::MLA_DEBUG_FILE; // 'debug_file';
+	const MLA_DEBUG_FILE = MLACoreOptions::MLA_DEBUG_FILE; // 'debug_file';
 
 	/**
 	 * Provides a unique name for the Debug replace PHP log file option
 	 */
-	const MLA_DEBUG_REPLACE_PHP_LOG = MLACore::MLA_DEBUG_REPLACE_PHP_LOG; // 'debug_replace_php_log';
+	const MLA_DEBUG_REPLACE_PHP_LOG = MLACoreOptions::MLA_DEBUG_REPLACE_PHP_LOG; // 'debug_replace_php_log';
 
 	/**
 	 * Provides a unique name for the Debug replace PHP error_reporting option
 	 */
-	const MLA_DEBUG_REPLACE_PHP_REPORTING = MLACore::MLA_DEBUG_REPLACE_PHP_REPORTING; // 'debug_replace_php_reporting';
+	const MLA_DEBUG_REPLACE_PHP_REPORTING = MLACoreOptions::MLA_DEBUG_REPLACE_PHP_REPORTING; // 'debug_replace_php_reporting';
 
 	/**
 	 * Provides a unique name for the Debug replace MLA_DEBUG_LEVEL option
 	 */
-	const MLA_DEBUG_REPLACE_LEVEL = MLACore::MLA_DEBUG_REPLACE_LEVEL; // 'debug_replace_level';
+	const MLA_DEBUG_REPLACE_LEVEL = MLACoreOptions::MLA_DEBUG_REPLACE_LEVEL; // 'debug_replace_level';
 
 	/**
 	 * $mla_option_definitions moved to MLACore::
@@ -344,10 +344,10 @@ class MLAOptions {
 	 * @since 1.70
 	 *
 	 * @return	void
-	 */
+	 * /
 	public static function mla_localize_option_definitions_array() {
-		MLACore::mla_localize_option_definitions_array();
-	}
+		MLACoreOptions::mla_localize_option_definitions_array();
+	} // */
 
 	/**
 	 * Get ALL style templates from $mla_templates, including 'default'
@@ -406,6 +406,13 @@ class MLAOptions {
 
 		$templates = array();
 		foreach ( MLAShortcode_Support::$mla_custom_templates as $key => $value ) {
+			$tail = strrpos( $key, '-arguments-markup' );
+			if ( ! ( false === $tail ) ) {
+				$name = substr( $key, 0, $tail );
+				$templates[ $name ]['arguments'] = $value;
+				continue;
+			}
+
 			// Note order: -row-open must precede -open!
 			$tail = strrpos( $key, '-row-open-markup' );
 			if ( ! ( false === $tail ) ) {
@@ -630,12 +637,12 @@ class MLAOptions {
 			case 'render':
 				$taxonomies = get_taxonomies( array ( 'show_ui' => true ), 'objects' );
 				$current_values = MLACore::mla_get_option( $key );
-				$tax_support = isset( $current_values['tax_support'] ) ? $current_values['tax_support'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_support'];
-				$tax_quick_edit = isset( $current_values['tax_quick_edit'] ) ? $current_values['tax_quick_edit'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_quick_edit'];
-				$tax_term_search = isset( $current_values['tax_term_search'] ) ? $current_values['tax_term_search'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_term_search'];
-				$tax_flat_checklist = isset( $current_values['tax_flat_checklist'] ) ? $current_values['tax_flat_checklist'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_flat_checklist'];
-				$tax_checked_on_top = isset( $current_values['tax_checked_on_top'] ) ? $current_values['tax_checked_on_top'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_checked_on_top'];
-				$tax_filter = isset( $current_values['tax_filter'] ) ? $current_values['tax_filter'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_filter'];
+				$tax_support = isset( $current_values['tax_support'] ) ? $current_values['tax_support'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_support'];
+				$tax_quick_edit = isset( $current_values['tax_quick_edit'] ) ? $current_values['tax_quick_edit'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_quick_edit'];
+				$tax_term_search = isset( $current_values['tax_term_search'] ) ? $current_values['tax_term_search'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_term_search'];
+				$tax_flat_checklist = isset( $current_values['tax_flat_checklist'] ) ? $current_values['tax_flat_checklist'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_flat_checklist'];
+				$tax_checked_on_top = isset( $current_values['tax_checked_on_top'] ) ? $current_values['tax_checked_on_top'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_checked_on_top'];
+				$tax_filter = isset( $current_values['tax_filter'] ) ? $current_values['tax_filter'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_filter'];
 
 				/*
 				 * Always display our own taxonomies, even if not registered.
@@ -713,12 +720,12 @@ class MLAOptions {
 				return MLAData::mla_parse_template( MLAOptions::$mla_option_templates['taxonomy-table'], $option_values );
 			case 'update':
 			case 'delete':
-				$tax_support = isset( $args['tax_support'] ) ? $args['tax_support'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_support'];
-				$tax_quick_edit = isset( $args['tax_quick_edit'] ) ? $args['tax_quick_edit'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_quick_edit'];
-				$tax_term_search = isset( $args['tax_term_search'] ) ? $args['tax_term_search'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_term_search'];
-				$tax_flat_checklist = isset( $args['tax_flat_checklist'] ) ? $args['tax_flat_checklist'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_flat_checklist'];
-				$tax_checked_on_top = isset( $args['tax_checked_on_top'] ) ? $args['tax_checked_on_top'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_checked_on_top'];
-				$tax_filter = isset( $args['tax_filter'] ) ? $args['tax_filter'] : MLACore::$mla_option_definitions[ MLACore::MLA_TAXONOMY_SUPPORT ]['std']['tax_filter'];
+				$tax_support = isset( $args['tax_support'] ) ? $args['tax_support'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_support'];
+				$tax_quick_edit = isset( $args['tax_quick_edit'] ) ? $args['tax_quick_edit'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_quick_edit'];
+				$tax_term_search = isset( $args['tax_term_search'] ) ? $args['tax_term_search'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_term_search'];
+				$tax_flat_checklist = isset( $args['tax_flat_checklist'] ) ? $args['tax_flat_checklist'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_flat_checklist'];
+				$tax_checked_on_top = isset( $args['tax_checked_on_top'] ) ? $args['tax_checked_on_top'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_checked_on_top'];
+				$tax_filter = isset( $args['tax_filter'] ) ? $args['tax_filter'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_TAXONOMY_SUPPORT ]['std']['tax_filter'];
 
 				$msg = '';
 
@@ -806,8 +813,8 @@ class MLAOptions {
 		switch ( $action ) {
 			case 'render':
 				$current_values = MLACore::mla_get_option( $key );
-				$search_connector = isset( $current_values['search_connector'] ) ? $current_values['search_connector'] : MLACore::$mla_option_definitions[ MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_connector'];
-				$search_fields = isset( $current_values['search_fields'] ) ? $current_values['search_fields'] : MLACore::$mla_option_definitions[ MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_fields'];
+				$search_connector = isset( $current_values['search_connector'] ) ? $current_values['search_connector'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_connector'];
+				$search_fields = isset( $current_values['search_fields'] ) ? $current_values['search_fields'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_fields'];
 
 				$option_values = array (
 					'and_checked' => ( 'AND' == $search_connector ) ? 'checked="checked"' : '',
@@ -831,14 +838,14 @@ class MLAOptions {
 
 					'terms_checked' => ( in_array( 'terms', $search_fields ) ) ? 'checked="checked"' : '',
 					'Terms' => __( 'Terms', 'media-library-assistant' ),
-					'help' => MLACore::$mla_option_definitions[ MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['help']
+					'help' => MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['help']
 				);
 
 				return MLAData::mla_parse_template( MLAOptions::$mla_option_templates['search-table'], $option_values );
 			case 'update':
 			case 'delete':
-				$search_connector = isset( $args['search_connector'] ) ? $args['search_connector'] : MLACore::$mla_option_definitions[ MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_connector'];
-				$search_fields = isset( $args['search_fields'] ) ? $args['search_fields'] : MLACore::$mla_option_definitions[ MLACore::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_fields'];
+				$search_connector = isset( $args['search_connector'] ) ? $args['search_connector'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_connector'];
+				$search_fields = isset( $args['search_fields'] ) ? $args['search_fields'] : MLACoreOptions::$mla_option_definitions[ MLACoreOptions::MLA_SEARCH_MEDIA_FILTER_DEFAULTS ]['std']['search_fields'];
 
 				$msg = '';
 
@@ -1358,7 +1365,7 @@ class MLAOptions {
 			/*
 			 * Check for the addition of a new rule or field
 			 */
-			if ( MLACore::MLA_NEW_CUSTOM_FIELD === $the_key ) {
+			if ( MLACoreOptions::MLA_NEW_CUSTOM_FIELD === $the_key ) {
 				if ( empty( $new_key ) ) {
 					continue;
 				}
@@ -1372,7 +1379,7 @@ class MLAOptions {
 				/* translators: 1: custom field name */
 				$message_list .= '<br>' . sprintf( __( 'Adding new field %1$s.', 'media-library-assistant' ), esc_html( $new_key ) ) . "\r\n";
 				$any_setting_changed = true;
-			} elseif ( MLACore::MLA_NEW_CUSTOM_RULE === $the_key ) {
+			} elseif ( MLACoreOptions::MLA_NEW_CUSTOM_RULE === $the_key ) {
 				if ( 'none' == $new_key ) {
 					continue;
 				}
@@ -1694,7 +1701,7 @@ class MLAOptions {
 					'column_count' => 7,
 					'column_count_meta' => (7 - 2),
 					'Add new Rule' => __( 'Add a new Mapping Rule', 'media-library-assistant' ),
-					'index' => MLACore::MLA_NEW_CUSTOM_RULE,
+					'index' => MLACoreOptions::MLA_NEW_CUSTOM_RULE,
 					'field_name_options' => MLAOptions::_compose_custom_field_option_list( 'none', $current_values ),
 					'data_source_options' => MLAOptions::_compose_data_source_option_list( 'none' ),
 					'keep_selected' => '',
@@ -1738,7 +1745,7 @@ class MLAOptions {
 					'column_count' => 7,
 					'column_count_meta' => (7 - 2),
 					'Add new Field' => __( 'Add a new Field and Mapping Rule', 'media-library-assistant' ),
-					'index' => MLACore::MLA_NEW_CUSTOM_FIELD,
+					'index' => MLACoreOptions::MLA_NEW_CUSTOM_FIELD,
 					'field_name_size' => '24',
 					'data_source_options' => MLAOptions::_compose_data_source_option_list( 'none' ),
 					'keep_selected' => '',
@@ -1810,7 +1817,7 @@ class MLAOptions {
 
 				return $results . $messages;
 			case 'reset':
-				$current_values = MLACore::$mla_option_definitions['custom_field_mapping']['std'];
+				$current_values = MLACoreOptions::$mla_option_definitions['custom_field_mapping']['std'];
 				$settings_changed = MLACore::mla_update_option( 'custom_field_mapping', $current_values );
 				if ( $settings_changed ) {
 					return __( 'Custom field mapping settings saved.', 'media-library-assistant' ) . "\r\n";
@@ -2410,7 +2417,7 @@ class MLAOptions {
 			/*
 			 * Field Title can change as a result of localization
 			 */
-			$new_value['name'] = MLACore::$mla_option_definitions['iptc_exif_mapping']['std']['standard'][ $new_key ]['name'];
+			$new_value['name'] = MLACoreOptions::$mla_option_definitions['iptc_exif_mapping']['std']['standard'][ $new_key ]['name'];
 
 			if ( $old_values['name'] != $new_value['name'] ) {
 				$any_setting_changed = true;
@@ -2618,7 +2625,7 @@ class MLAOptions {
 			/*
 			 * Check for the addition of a new field or new rule
 			 */
-			if ( MLACore::MLA_NEW_CUSTOM_FIELD === $the_key ) {
+			if ( MLACoreOptions::MLA_NEW_CUSTOM_FIELD === $the_key ) {
 				if ( empty( $new_key ) ) {
 					continue;
 				}
@@ -2632,7 +2639,7 @@ class MLAOptions {
 				/* translators: 1: custom field name */
 				$message_list .= '<br>' . sprintf( __( 'Adding new field %1$s.', 'media-library-assistant' ), esc_html( $new_key ) ) . "\r\n";
 				$any_setting_changed = true;
-			} elseif ( MLACore::MLA_NEW_CUSTOM_RULE === $the_key ) {
+			} elseif ( MLACoreOptions::MLA_NEW_CUSTOM_RULE === $the_key ) {
 				if ( 'none' == $new_key ) {
 					continue;
 				}
@@ -2831,7 +2838,7 @@ class MLAOptions {
 								'name_attr' => esc_attr( $row_value['name'] ),
 								'name' => esc_html( $row_value['name'] ),
 								'iptc_field_options' => MLAOptions::_compose_iptc_option_list( $row_value['iptc_value'] ),
-								'exif_size' => MLACore::MLA_EXIF_SIZE,
+								'exif_size' => MLACoreOptions::MLA_EXIF_SIZE,
 								'exif_text' => esc_attr( $row_value['exif_value'] ),
 								'iptc_selected' => '',
 								'IPTC' => __( 'IPTC', 'media-library-assistant' ),
@@ -2885,7 +2892,7 @@ class MLAOptions {
 								'name' => esc_html( $row_value->labels->name ),
 								'hierarchical' => (string) $row_value->hierarchical,
 								'iptc_field_options' => '',
-								'exif_size' => MLACore::MLA_EXIF_SIZE,
+								'exif_size' => MLACoreOptions::MLA_EXIF_SIZE,
 								'exif_text' => '',
 								'iptc_selected' => '',
 								'IPTC' => __( 'IPTC', 'media-library-assistant' ),
@@ -3005,7 +3012,7 @@ class MLAOptions {
 									'name_attr' => esc_attr( $current_value['name'] ),
 									'name' => esc_html( $current_value['name'] ),
 									'iptc_field_options' => MLAOptions::_compose_iptc_option_list( $current_value['iptc_value'] ),
-									'exif_size' => MLACore::MLA_EXIF_SIZE,
+									'exif_size' => MLACoreOptions::MLA_EXIF_SIZE,
 									'exif_text' => esc_attr( $current_value['exif_value'] ),
 									'iptc_selected' => '',
 									'IPTC' => __( 'IPTC', 'media-library-assistant' ),
@@ -3097,10 +3104,10 @@ class MLAOptions {
 							'column_count' => 5 ,
 					'column_count_meta' => (5 - 2),
 							'Add new Rule' => __( 'Add a new Mapping Rule', 'media-library-assistant' ),
-							'index' => MLACore::MLA_NEW_CUSTOM_RULE,
+							'index' => MLACoreOptions::MLA_NEW_CUSTOM_RULE,
 							'field_name_options' => MLAOptions::_compose_custom_field_option_list( 'none', $current_values['custom'] ),
 							'iptc_field_options' => MLAOptions::_compose_iptc_option_list( 'none' ),
-							'exif_size' => MLACore::MLA_EXIF_SIZE,
+							'exif_size' => MLACoreOptions::MLA_EXIF_SIZE,
 							'exif_text' => '',
 							'iptc_selected' => 'selected="selected"',
 							'IPTC' => __( 'IPTC', 'media-library-assistant' ),
@@ -3143,10 +3150,10 @@ class MLAOptions {
 							'column_count' => 5 ,
 					'column_count_meta' => (5 - 2),
 							'Add new Field' => __( 'Add a new Field and Mapping Rule', 'media-library-assistant' ),
-							'index' => MLACore::MLA_NEW_CUSTOM_FIELD,
+							'index' => MLACoreOptions::MLA_NEW_CUSTOM_FIELD,
 							'field_name_size' => '24',
 							'iptc_field_options' => MLAOptions::_compose_iptc_option_list( 'none' ),
-							'exif_size' => MLACore::MLA_EXIF_SIZE,
+							'exif_size' => MLACoreOptions::MLA_EXIF_SIZE,
 							'exif_text' => '',
 							'iptc_selected' => 'selected="selected"',
 							'IPTC' => __( 'IPTC', 'media-library-assistant' ),
@@ -3256,7 +3263,7 @@ class MLAOptions {
 			case 'reset':
 				switch ( $key ) {
 					case 'iptc_exif_standard_mapping':
-						$current_values['standard'] = MLACore::$mla_option_definitions['iptc_exif_mapping']['std']['standard'];
+						$current_values['standard'] = MLACoreOptions::$mla_option_definitions['iptc_exif_mapping']['std']['standard'];
 						$settings_changed = MLACore::mla_update_option( 'iptc_exif_mapping', $current_values );
 						if ( $settings_changed ) {
 							/* translators: 1: field type */
@@ -3266,7 +3273,7 @@ class MLAOptions {
 							return sprintf( __( '%1$s: IPTC/EXIF %2$s settings update failed.', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), __( 'Standard field', 'media-library-assistant' ) ) . "\r\n";
 						}
 					case 'iptc_exif_taxonomy_mapping':
-						$current_values['taxonomy'] = MLACore::$mla_option_definitions['iptc_exif_mapping']['std']['taxonomy'];
+						$current_values['taxonomy'] = MLACoreOptions::$mla_option_definitions['iptc_exif_mapping']['std']['taxonomy'];
 						$settings_changed = MLACore::mla_update_option( 'iptc_exif_mapping', $current_values );
 						if ( $settings_changed ) {
 							/* translators: 1: field type */
@@ -3276,7 +3283,7 @@ class MLAOptions {
 							return sprintf( __( '%1$s: IPTC/EXIF %2$s settings update failed.', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), __( 'Taxonomy term', 'media-library-assistant' ) ) . "\r\n";
 						}
 					case 'iptc_exif_custom_mapping':
-						$current_values['custom'] = MLACore::$mla_option_definitions['iptc_exif_mapping']['std']['custom'];
+						$current_values['custom'] = MLACoreOptions::$mla_option_definitions['iptc_exif_mapping']['std']['custom'];
 						$settings_changed = MLACore::mla_update_option( 'iptc_exif_mapping', $current_values );
 						if ( $settings_changed ) {
 							/* translators: 1: field type */
