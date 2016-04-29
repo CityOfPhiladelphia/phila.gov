@@ -75,8 +75,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <?php endif; ?>
   </header><!-- #masthead -->
   <?php
-    if( is_home() ) {
-      call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
-    }
+    call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
   ?>
   <div id="content" class="site-content">
