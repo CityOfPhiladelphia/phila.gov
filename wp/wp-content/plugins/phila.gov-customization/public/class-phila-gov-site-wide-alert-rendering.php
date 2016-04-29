@@ -40,8 +40,8 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         $alert_active = rwmb_meta( 'phila_active', $args = array('type' => 'radio'));
 
         $alert_type = rwmb_meta( 'phila_type', $args = array('type' => 'select'));
-        $alert_start = rwmb_meta( 'phila_start', $args = array('type' => 'datetime'));
-        $alert_end = rwmb_meta( 'phila_end', $args = array('type' => 'datetime'));
+        $alert_start = rwmb_meta( 'phila_alert_start', $args = array('type' => 'datetime'));
+        $alert_end = rwmb_meta( 'phila_alert_end', $args = array('type' => 'datetime'));
 
         $alert_icon = 'ion-alert-circled';
 
