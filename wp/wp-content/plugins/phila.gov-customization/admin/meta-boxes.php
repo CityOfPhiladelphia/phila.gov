@@ -285,8 +285,8 @@ function phila_register_meta_boxes( $meta_boxes ){
        'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
      ),
      array(
-        'name' => 'Append Custom CSS',
-        'id'   => $prefix . 'append_css',
+        'name' => 'Append to Head',
+        'id'   => $prefix . 'append_to_head',
         'type' => 'textarea'
       ),
       array(

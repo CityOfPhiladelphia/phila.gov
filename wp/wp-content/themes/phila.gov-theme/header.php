@@ -30,9 +30,9 @@
   <![endif]-->
   <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
       <?php if (function_exists('rwmb_meta')): ?>
-        <?php $append_css = rwmb_meta( 'phila_append_css', $args = array('type' => 'textarea'), $post->ID); ?>
-        <?php if ( !$append_css == '' ): ?>
-          <?php echo $append_css; ?>
+        <?php $append_to_head = rwmb_meta( 'phila_append_to_head', $args = array('type' => 'textarea'), $post->ID); ?>
+        <?php if ( !$append_to_head == '' ): ?>
+          <?php echo $append_to_head; ?>
         <?php endif;?>
       <?php endif; ?>
   <?php endif; ?>
