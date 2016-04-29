@@ -437,7 +437,7 @@ $meta_boxes[] = array(
       // List of sub-fields
       'fields' => array(
         array(
-          'name' => 'Column 2',
+          'name' => 'Column 1',
           'id'   => $prefix . 'module_row_2_col_1_type',
           'desc'  => 'Choose to display calendar events or press releases.',
           'type' => 'select',
