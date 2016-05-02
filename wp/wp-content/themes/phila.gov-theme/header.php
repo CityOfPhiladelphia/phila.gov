@@ -29,6 +29,17 @@
   <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
+  <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
+      <?php if (function_exists('rwmb_meta')): ?>
+        <?php $append_to_head = rwmb_meta( 'phila_append_to_head', $args = array('type' => 'textarea'), $post->ID); ?>
+        <?php if ( !$append_to_head == '' ): ?>
+          <!-- Begin Custom Markup Metabox: Append to Head -->
+          <?php echo $append_to_head; ?>
+          <!-- End Custom Markup Metabox: Append to Head -->
+        <?php endif;?>
+      <?php endif; ?>
+  <?php endif; ?>
+
 </head>
 
 <body <?php body_class(); ?>>
