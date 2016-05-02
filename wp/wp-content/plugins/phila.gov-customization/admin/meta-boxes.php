@@ -282,8 +282,13 @@ function phila_register_meta_boxes( $meta_boxes ){
        'name' => 'Description',
        'id'   => $prefix . 'custom_markup_description',
        'type' => 'custom_html',
-       'std'  => '<span>Use this area to insert CSS, HTML or JS snippets either before or after the contents of the WYSIWYG editor.</span>',
+       'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
      ),
+     array(
+        'name' => 'Append to Head',
+        'id'   => $prefix . 'append_to_head',
+        'type' => 'textarea'
+      ),
       array(
        'name' => 'Append Before WYSIWYG',
        'id'   => $prefix . 'append_before_wysiwyg',
