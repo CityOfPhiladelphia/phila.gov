@@ -91,7 +91,7 @@
               <?php endif; ?>
 
               <?php if ( $parent_content ) : ?>
-                
+
                 <?php echo $parent_content ?>
 
               <?php else : ?>
