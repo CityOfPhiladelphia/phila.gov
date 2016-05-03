@@ -8,7 +8,7 @@
 get_header(); ?>
 
   <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main">
       <div class="row">
               <header class="small-24 columns">
                   <?php echo the_title(); ?>

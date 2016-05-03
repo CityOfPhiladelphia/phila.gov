@@ -19,7 +19,7 @@ if ( $children && empty( $content ) ) {
 get_header(); ?>
 
   <div id="primary" class="content-area row">
-    <main id="main" class="site-main small-24 columns" role="main">
+    <main id="main" class="site-main small-24 columns">
 
       <?php while ( have_posts() ) : the_post();
 
