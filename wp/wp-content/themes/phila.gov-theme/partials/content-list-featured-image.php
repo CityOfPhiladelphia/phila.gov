@@ -23,7 +23,7 @@
             $current_cat = null;
           }
         ?>
-      <span class="entry-date"><strong><?php echo get_the_date(); ?> </span></strong> <span class="category">
+      <span class="entry-date"><strong><?php echo get_the_date(); ?></strong></span><span class="category">
         <?php echo $current_cat == null ?  '' : ' | ' . $current_cat  ?> </span>
         <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
