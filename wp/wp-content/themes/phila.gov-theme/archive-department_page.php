@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area departments">
-  <main id="main" class="site-main" role="main">
+  <main id="main" class="site-main">
     <div class="row">
       <header class="small-24 columns">
         <?php printf(__('<h1 class="contrast ptm">City Government Directory</h1>', 'phila-gov') ); ?>
