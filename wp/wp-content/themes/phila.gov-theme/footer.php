@@ -13,10 +13,10 @@
  </div><!-- #page -->
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
-  <section class="contact">
+  <div class="contact">
       <?php echo phila_get_dept_contact_blocks(); ?>
     <?php get_template_part( 'partials/content', 'modified' ) ?>
-  </section>
+  </div>
   <section class="fat">
     <div class="row">
       <div class="large-8 columns">
