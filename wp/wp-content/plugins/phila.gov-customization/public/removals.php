@@ -39,3 +39,9 @@ add_action( 'admin_bar_menu', 'phila_remove_comments', 999 );
 function phila_remove_comments( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'comments' );
 }
+
+//No need for emoji's :(
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
