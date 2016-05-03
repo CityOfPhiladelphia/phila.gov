@@ -229,6 +229,14 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'desc'  => 'A short description used to inform visitors about the contents of an image.',
           'size'  => '60'
         ),
+        array(
+          'name' => 'Image Credit',
+          'id'   => $prefix . 'hero_header_image_credit',
+          'type' => 'text',
+          'class' => 'hero-header-image-credit',
+          'desc'  => 'Provide attribution information when necessary.',
+          'size'  => '60'
+        ),
       )
     );
 
