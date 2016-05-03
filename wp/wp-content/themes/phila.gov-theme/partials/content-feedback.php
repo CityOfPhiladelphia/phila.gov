@@ -10,8 +10,8 @@
       <p>We're still working on this page's design and content.
         <?php
         $link_text = "How can we make it better?";
-        if ( !is_home() && !is_404() && !is_tax() ) :
-          $current_cat = phila_util_get_current_cat_name();
+        if ( !is_home() && !is_404() && !is_tax() && !is_archive() ) :
+          $current_cat = phila_util_get_current_cat_slug();
           $dept = "?dept=" . $current_cat;
           $feedback = '<a href="/feedback/%1$s">%2$s</a>';
 
