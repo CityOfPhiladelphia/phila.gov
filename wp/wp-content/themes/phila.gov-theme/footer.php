@@ -12,7 +12,7 @@
     </div><!-- #content -->
  </div><!-- #page -->
 
-<footer data-swiftype-index='false' id="colophon" class="site-footer" role="contentinfo">
+<footer data-swiftype-index='false' id="colophon" class="site-footer">
   <section class="contact">
       <?php echo phila_get_dept_contact_blocks(); ?>
     <?php get_template_part( 'partials/content', 'modified' ) ?>
