@@ -188,6 +188,11 @@
         padding-left:0;
       }
     }
+    .photo-credit {
+      padding: $spacing-extra-small 0;
+      font-style: italic;
+      // background-color: rgba(0,0,0,.3);
+    }
     #header-image {
       width:100%;
     }
@@ -230,6 +235,14 @@
         p {
         font-weight: bold;
         }
+      }
+      .photo-credit {
+        color: $white;
+        padding: $spacing-extra-small $spacing-small;
+        position:absolute;
+        bottom:0;
+        right:0;
+        // background-color: rgba(0,0,0,.3);
       }
     }
     @media only screen and (min-width: 64em) {
