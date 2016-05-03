@@ -135,16 +135,12 @@ msgstr ""
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
-#: content-page.php:18 content-single.php:20 content.php:22
+#: content-page.php:18 content-single.php:20
 msgid "Pages:"
 msgstr ""
 
 #: content-page.php:25 inc/template-tags.php:122
 msgid "Edit"
-msgstr ""
-
-#: content.php:19
-msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
 #: footer.php:15
