@@ -58,7 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header data-swiftype-index='false' id="masthead" class="site-header app" role="banner">
+  <header data-swiftype-index='false' id="masthead" class="site-header app">
     <div class="row site-branding">
       <div class="small-16 columns">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo mbn-mu">
