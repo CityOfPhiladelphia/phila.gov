@@ -9,15 +9,16 @@
 
 get_header(); ?>
 
-<section id="primary" class="content-area archive row">
-
-  <?php
-    if ( have_posts() ) : ?>
+<section id="primary" class="content-area archive">
+  <?php if ( have_posts() ) : ?>
+    <div class="row">
       <header class="columns">
         <h1 class="contrast">
           <?php get_the_archive_title(); ?>
         </h1>
       </header><!-- .page-header -->
+    </div>
+    <div class="row">
       <main id="main" class="site-main small-24 columns">
         <?php while ( have_posts() ) : the_post(); ?>
 
@@ -27,12 +28,13 @@ get_header(); ?>
 
         <?php phila_gov_paging_nav(); ?>
 
-        <?php else : ?>
+      <?php else : ?>
 
-          <?php get_template_part( 'partials/content', 'none' ); ?>
+        <?php get_template_part( 'partials/content', 'none' ); ?>
 
-        <?php endif; ?>
+      <?php endif; ?>
 
-      </main><!-- #main -->
+    </main><!-- #main -->
+  </div>
 </section><!-- #primary -->
 <?php get_footer(); ?>
