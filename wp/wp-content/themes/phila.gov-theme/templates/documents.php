@@ -21,16 +21,16 @@
       <thead class="light-head">
         <tr>
           <th>
-            <h3 class="alternate">Name</h3>
+            <span class="h3 alternate">Name</span>
           </th>
           <th>
-            <h3 class="alternate">Description</h3>
+            <span class="h3 alternate">Description</span>
           </th>
           <th>
-            <h3 class="alternate">Released</h3>
+            <span class="h3 alternate">Released</span>
           </th>
           <th>
-            <h3 class="alternate">Format</h3>
+            <span class="h3 alternate">Format</span>
           </th>
         </tr>
       </thead>
