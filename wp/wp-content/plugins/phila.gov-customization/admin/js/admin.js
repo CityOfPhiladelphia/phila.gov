@@ -47,6 +47,9 @@ jQuery(document).ready(function($){
            'post_title' : 'required'
          }
       });
+      $( '#title' ).rules( 'add', {
+        maxlength: 72
+      });
       $( '#phila_post_desc' ).rules( 'add', {
         required: true
       });
