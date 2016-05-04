@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying  department websites
+ * The template used for displaying department websites
  *
  * @package phila-gov
  */
@@ -48,7 +48,7 @@ get_header(); ?>
     <?php
       /*
       Our navigation menu. We use categories to drive functionality.
-      This checks to make sure a category exisits for the given page,
+      This checks to make sure a category exists for the given page,
       if it does, we render our menu w/ markup.
       */
         phila_get_department_menu();
