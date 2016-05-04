@@ -23,7 +23,7 @@
       endif;
       ?>
     </div><!-- .entry-content -->
-    <aside id="secondary" class="small-24 medium-6 medium-pull-18 columns prm" role="complementary">
+    <aside id="secondary" class="small-24 medium-6 medium-pull-18 columns prm">
       <?php $posted_on_values = phila_get_posted_on(); ?>
         <div class="posted-on row column pvs">
         <?php if ( has_post_thumbnail() ): ?>
