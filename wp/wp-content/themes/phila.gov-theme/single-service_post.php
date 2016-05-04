@@ -7,10 +7,12 @@
 
 get_header(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('row service'); ?>>
-  <header class="entry-header small-24 columns">
-    <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
-  </header><!-- .entry-header -->
+<article id="post-<?php the_ID(); ?>" <?php post_class('service'); ?>>
+  <div class="row">
+    <header class="entry-header small-24 columns">
+      <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
+    </header><!-- .entry-header -->
+  </div>
 
   <?php while ( have_posts() ) : the_post();
    if (function_exists('rwmb_meta')) {
@@ -22,7 +24,6 @@ get_header(); ?>
      $related_content = rwmb_meta( 'phila_service_related_items', $args = array('type' => 'textarea'));
    }
   ?>
-<div class="columns">
   <div class="row">
     <div class="small-24 columns">
       <p class="description"><?php echo $service_desc;?></p>
@@ -65,23 +66,18 @@ get_header(); ?>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="mtm mtl-mu">
+    <div class="row mtm mtl-mu">
       <div data-swiftype-index='true' class="entry-content small-24 medium-17 large-17 columns">
-        <?php the_content(); ?>
-        <?php endwhile; // end of the loop. ?>
+          <?php the_content(); ?>
+          <?php endwhile; // end of the loop. ?>
       </div><!-- .entry-content -->
       <?php if (!$related_content == ''):?>
-        <aside id="secondary" class="related widget-area small-24 medium-6 large-6 columns mtl mtn-mu" role="complementary">
+        <aside id="secondary" class="related widget-area small-24 medium-6 large-6 columns mtl mtn-mu">
           <h3 class="alternate mtm mtn-mu">Related Topics</h3>
           <?php echo $related_content; ?>
         </aside>
       <?php endif; ?>
     </div>
-  </div>
-</div>
 </article><!-- #post-## -->
 
 <?php get_footer(); ?>
