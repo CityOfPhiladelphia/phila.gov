@@ -24,8 +24,11 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
     function dateTimeFormat($date){
       if ( !$date == '' ) {
         $date_obj = new DateTime("@$date");
-        $formatted_date = $date_obj->format('g:i a \o\n l, F d, Y');
-
+        if( strlen($date_obj->format('F')) > 5 ){
+          $formatted_date = $date_obj->format('g:i a \o\n l, M\. d, Y');
+        } else {
+          $formatted_date = $date_obj->format('g:i a \o\n l, F d, Y');
+        }
         echo str_replace(array('am','pm'),array('a.m.','p.m.'),$formatted_date);
       }
     }
