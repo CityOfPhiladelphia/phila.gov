@@ -8,8 +8,6 @@
   }
   .intro{
     background:$ghost_gray;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     .valign {
       display: table;
       width: 100%;
@@ -20,23 +18,23 @@
       text-align: center;
       vertical-align: middle;
     }
-    .intro-item{
+  }
+  .intro-item{
 
-      &:last-of-type{
-        border-left: 0;
-        border-top: 2px solid white;
-      }
-      @media only screen and (min-width: 40em) {
-        &:last-of-type{
-          border-top: 0;
-          border-left: 2px solid $white;
-        }
-      }
-      .button{
-        margin: 0;
-      }
-
+    &:last-of-type{
+      border-left: 0;
+      border-top: 2px solid white;
     }
+    @media only screen and (min-width: 40em) {
+      &:last-of-type{
+        border-top: 0;
+        border-left: 2px solid $white;
+      }
+    }
+    .button{
+      margin: 0;
+    }
+
   }
   .columns.to-start-left{
     text-align: center;
