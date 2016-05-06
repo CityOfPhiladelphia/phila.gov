@@ -120,12 +120,13 @@ function recent_news_shortcode($atts) {
 
     endwhile;
 
-    $output .= '</div><a class="see-all-right float-right" href="/news/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
-
     if ( is_flag( 'list', $atts ) ) {
       $output .= '</ul>';
-      $output .= '</div></div>';
+    //  $output .= '</div>';
     }
+
+    $output .= '</div><a class="see-all-right float-right" href="/news/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
+
 
     }else {
       $output .= __( 'Please enter at least one news story.', 'phila.gov' );
