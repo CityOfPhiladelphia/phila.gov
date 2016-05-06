@@ -19,7 +19,7 @@
 
         if ( $current_post_type != 'notices' && !is_tax() && !is_archive() && !is_home() ):
           _e(' by ', 'phila-gov');
-          phila_echo_current_department_name();
+          phila_echo_current_department_name( $include_id = true );
         endif;?><?php echo '.'; ?>
       </div>
     </div>

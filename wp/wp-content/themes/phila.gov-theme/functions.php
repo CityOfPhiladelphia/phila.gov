@@ -993,11 +993,18 @@ function phila_get_master_topics(){
   }
 }
 
-function phila_echo_current_department_name(){
+/**
+ *  Echo a slug and link to the department page currently in the loop.
+ *
+ * @param $include_id Boolean to include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the markup will properly validate. 
+ *
+ **/
+
+function phila_echo_current_department_name( $include_id = true ){
   /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
   $current_category = get_the_category();
 
-  if ( !$current_category == '' )  :
+  if ( !$current_category == '' )  {
     $department_page_args = array(
       'post_type' => 'department_page',
       'tax_query' => array(
@@ -1011,20 +1018,27 @@ function phila_echo_current_department_name(){
       'posts_per_page' => 1,
     );
     $get_department_link = new WP_Query( $department_page_args );
-    if ( $get_department_link->have_posts() ) :
-      while ( $get_department_link->have_posts() ) :
+    if ( $get_department_link->have_posts() ) {
+      while ( $get_department_link->have_posts() ) {
         $get_department_link->the_post();
         $current_cat_slug = $current_category[0]->slug;
         //we are rendering the department link elsewhere on document pages & posts.
-        if ( $current_cat_slug != 'uncategorized' ) :
+        if ( $current_cat_slug != 'uncategorized' ) {
+
+          if ( $include_id == true ) {
           // NOTE: the id and data-slug are important. Google Tag Manager
           // uses it to attach the department to our web analytics.
-            echo '<a href="' . get_the_permalink() . '" id="content-modified-department"
+            echo '<a href="' . get_the_permalink() . '"
+             id="content-modified-department"
             data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
-          endif;
-        endwhile;
-      endif;
-    endif;
+          }else{
+            echo '<a href="' . get_the_permalink() . '"
+            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+          }
+        }
+      }
+    }
+  }
 
     /* Restore original Post Data */
     wp_reset_postdata();
