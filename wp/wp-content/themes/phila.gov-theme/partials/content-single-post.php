@@ -22,31 +22,31 @@
         echo '<p class="description">' . $post_desc . '</p>';
       endif;
       ?>
-    </div><!-- .entry-content -->
+    </div>
     <aside id="secondary" class="small-24 medium-6 medium-pull-18 columns prm">
       <?php $posted_on_values = phila_get_posted_on(); ?>
-        <div class="posted-on row column pvs">
-        <?php if ( has_post_thumbnail() ): ?>
-              <div class="columns hide-for-small-only medium-24">
-              <?php $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-              the_post_thumbnail( 'news-thumb' ); ?>
-              </div>
-          <?php endif ?>
-          <div class="byline small-24 column pvm pvs-mu">
-            <div class="details small-text center">
-              <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
-              <?php if( !get_the_category() == ''): ?>
-                <span><a href="<?php echo $posted_on_values['dept_cat_permalink']; ?>" id="content-modified-department" data-slug="<?php echo $posted_on_values['current_cat_slug']; ?>"><?php echo $posted_on_values['dept_title']; ?></a></span><br>
-              <?php endif; ?>
-              <span>
-                <?php echo $posted_on_values['time_string']; ?>
-              </span>
-              <br>
-                  <?php phila_gov_entry_footer();?>
-            </div>
+      <div class="posted-on row column pvs">
+      <?php if ( has_post_thumbnail() ): ?>
+        <div class="columns hide-for-small-only medium-24 pan">
+          <?php $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+          the_post_thumbnail( 'news-thumb' ); ?>
         </div>
-
+        <?php endif; ?>
+        <div class="byline small-24 column pvm pvs-mu">
+          <div class="details small-text center">
+            <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
+            <?php if( !get_the_category() == ''): ?>
+              <?php phila_echo_current_department_name( false ); ?>
+            <?php endif; ?>
+            <br>
+            <span>
+              <?php echo $posted_on_values['time_string']; ?>
+            </span>
+            <br>
+            <?php phila_gov_entry_footer();?>
+          </div>
+        </div>
+      </div>
     </aside>
   </div><!-- .row -->
-
 </article><!-- #post-## -->
