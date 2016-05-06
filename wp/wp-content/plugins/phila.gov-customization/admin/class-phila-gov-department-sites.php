@@ -15,10 +15,9 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
-    if ( $this->determine_page_level() ){
+    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
 
-      //for some reason, this priority needs to be lower than all the others?
-      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
+    if ( $this->determine_page_level() ){
 
       add_action( 'admin_print_styles', array($this, 'hide_wysiwyg_on_department_home' ) );
 
@@ -60,6 +59,9 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+      'exclude'  => array(
+          'is_child' => true,
+      ),
 
       'fields' => array(
         array(
@@ -176,13 +178,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         'user_role'  => 'administrator',
       ),
       'fields' => array(
-        array(
-          'name'  => 'Allow Non-Admin Access',
-          'id'    => $prefix . 'hero_header_admin_only',
-          'type'  => 'checkbox',
-          'class' => 'phila-access-control',
-          'desc'  => 'Allow non-admins to edit the Hero Header area',
-        ),
         array(
           'name'  => 'Hero Header Title',
           'id'    => $prefix . 'hero_header_title',
