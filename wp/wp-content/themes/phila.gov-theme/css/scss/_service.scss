@@ -1,78 +1,10 @@
 .service{
-  .border {
-    border: 1px solid $medium-gray;
-  }
+
   .button+.small-text {
     margin: .5rem 0 0 0;
     padding: 0;
   }
-  .intro{
-    background:$ghost_gray;
-    .valign {
-      display: table;
-      width: 100%;
-      height: inherit;
-    }
-    .valign-cell {
-      display: table-cell;
-      text-align: center;
-      vertical-align: middle;
-    }
-  }
-  .intro-item{
-
-    &:last-of-type{
-      border-left: 0;
-      border-top: 2px solid white;
-    }
-    @media only screen and (min-width: 40em) {
-      &:last-of-type{
-        border-top: 0;
-        border-left: 2px solid $white;
-      }
-    }
-    .button{
-      margin: 0;
-    }
-
-  }
-  .columns.to-start-left{
-    text-align: center;
-  }
-  .columns.to-start-right {
-    padding-left: 2em;
-  }
-  .columns.before-start-right{
-    border-left: 2px solid $white;
-    padding-left: 2rem;
-    p, ul, ol {
-      font-size:.75rem;
-    }
-    p:first-of-type {
-      margin-top:0;
-    }
-  }
-  .columns.before-start-left{
-    padding: 2rem;
-    h3{
-      color:$dark-gray;
-      font-size:.8rem;
-      font-weight: bold;
-      margin-top:0;
-    }
-    .h5{
-      font-size: 1.21429rem;
-      margin-top:0;
-    }
-    i {
-      color:$flyers-orange;
-      vertical-align: middle;
-      padding: 0 1rem 0 0;
-    }
-  }
-  .top-margin{
-    margin-top:1rem;
-  }
+  
   aside#secondary {
     padding-bottom:0;
     border-top: 5px solid $sidewalk;

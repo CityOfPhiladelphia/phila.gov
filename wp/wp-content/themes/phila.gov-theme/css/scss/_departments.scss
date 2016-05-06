@@ -11,32 +11,19 @@
   }
 }
 .department {
-  p {
-    &.external-site {
-      word-wrap: break-word;
-      word-break: break-all;
+  
+  .external-site-link-left,
+  .external-site-link-right{
+      text-align: center;
+  }
+  .external-site-link-left{
+    @media only screen and (min-width: 40em) {
+        text-align: left;
     }
   }
-  .button.icon .fa{
-    background: $sidewalk;
-  }
-  .external-site{
-    .row {
-      background: $ghost-gray;
-    }
-    .external-site-link-left,
-    .external-site-link-right{
-        text-align: center;
-    }
-    .external-site-link-left{
-      @media only screen and (min-width: 40em) {
-          text-align: left;
-      }
-    }
-    .external-site-link-right{
-      @media only screen and (min-width: 40em) {
-          text-align: right;
-      }
+  .external-site-link-right{
+    @media only screen and (min-width: 40em) {
+        text-align: right;
     }
   }
   .services-finder{
