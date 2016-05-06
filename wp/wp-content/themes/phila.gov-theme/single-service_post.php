@@ -29,43 +29,40 @@ get_header(); ?>
       <p class="description"><?php echo $service_desc;?></p>
     </div>
   </div>
-  <div class="row equal-height">
-    <div class="columns">
-      <?php
-        if ( !$service_before_start == '' ): ?>
-          <div class="intro small-24 medium-16 intro-item columns before-start-left equal">
-            <div class="row">
-              <div class="medium-2 columns show-for-medium">
-                <i class="fa fa-flag fa-2x"></i>
-              </div>
-              <div class="medium-22 small-24 columns">
-                <h2 class="h5">Before you start</h2>
-                <?php echo $service_before_start; ?>
-              </div>
+  <div class="row columns equal-height">
+    <?php
+      if ( !$service_before_start == '' ): ?>
+        <div class="intro small-24 medium-16 intro-item columns pal equal">
+          <div class="row">
+            <div class="medium-2 columns show-for-medium">
+              <i class="fa fa-flag fa-2x"></i>
+            </div>
+            <div class="medium-22 small-24 columns">
+              <h2 class="h4 mtn">Before you start</h2>
+              <?php echo $service_before_start; ?>
             </div>
           </div>
-          <div class="intro small-24 medium-8 intro-item columns center equal">
+        </div>
+        <div class="intro small-24 medium-8 intro-item columns center equal">
+          <div class="valign mvm mvn-mu">
+            <div class="valign-cell">
+
+      <?php else: //$service_before_start ?>
+          <div class="intro small-24 medium-24 intro-item columns center pam">
             <div class="valign mvm mvn-mu">
               <div class="valign-cell">
+        <?php endif; //$service_before_start ?>
 
-        <?php else: //$service_before_start ?>
-            <div class="intro small-24 medium-24 intro-item columns center pam">
-              <div class="valign mvm mvn-mu">
-                <div class="valign-cell">
-          <?php endif; //$service_before_start ?>
+        <?php if (!$service_url == ''):?>
+          <a data-swiftype-index="false" class="button prxl plxl" href="<?php echo $service_url;?>">
+            <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
+            <span class="accessible"> External link</span>
+          </a>
+        <?php endif;?>
 
-          <?php if (!$service_url == ''):?>
-            <a data-swiftype-index="false" class="button prxl plxl" href="<?php echo $service_url;?>">
-              <?php echo ( ( $service_button_text == '')  ? 'Start Now' :  $service_button_text );?>
-              <span class="accessible"> External link</span>
-            </a>
-          <?php endif;?>
-
-          <?php if (!$service_name == ''):?>
-            <span data-swiftype-index="false" class="small-text">On the <?php echo $service_name;?> website</span>
-          <?php endif; ?>
-          
-        </div>
+        <?php if (!$service_name == ''):?>
+          <span data-swiftype-index="false" class="small-text">On the <?php echo $service_name;?> website</span>
+        <?php endif; ?>
       </div>
     </div>
   </div>
