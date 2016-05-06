@@ -24,7 +24,7 @@ if ( $children && count( $ancestors ) == 1 ) {
 }
 get_header(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('department'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
   <div class="row">
     <header class="entry-header small-24 columns">
       <?php
