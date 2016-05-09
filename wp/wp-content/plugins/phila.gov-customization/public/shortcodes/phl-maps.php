@@ -21,7 +21,7 @@ function phl_maps_shortcode($atts) {
    'width'  => 'default',
   ), $atts );
 
-  if ( $a['map_id'] != '' ){
+  if ( $a['mapid'] != '' ){
     $output = '<div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Construction" src="//phl.maps.arcgis.com/apps/Embed/index.html?webmap=' . $a['mapid'] . '&amp;center=' . $a['center'] . '&amp;level=' . $a['level'] . '&amp;zoom=true&amp;extent=-75.2279,39.9466,-75.149,39.9812&amp;scale=true&amp;disable_scroll=true&amp;theme=light&amp;logoimage=' . $a['logoimage'] . '&amp;logolink=' . $a['logolink'] . $a['mapid'] . '" class="phl-maps-' . $a['width'] . '-width"></iframe></div>';
     return $output;
   }
