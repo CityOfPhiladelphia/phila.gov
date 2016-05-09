@@ -13,12 +13,16 @@ add_action( 'init', 'register_phl_maps_shortcode' );
 
 function phl_maps_shortcode($atts) {
   $a = shortcode_atts( array(
-   'map_id' => '',
+   'mapid' => '',
+   'center' => '-75.1634622,39.9526239',
+   'level' => '2',
+   'logoimage' => '//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-mobile.png',
+   'logolink' => 'http://phl.maps.arcgis.com/home/webmap/viewer.html?webmap=',
    'width'  => 'default',
   ), $atts );
 
   if ( $a['map_id'] != '' ){
-    $output = '<div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Construction" src="//phl.maps.arcgis.com/apps/Embed/index.html?webmap=' . $a['map_id'] . '&amp;center=-75.1634622,39.9526239&amp;zoom=true&amp;extent=-75.2279,39.9466,-75.149,39.9812&amp;scale=true&amp;disable_scroll=true&amp;theme=light" class="phl-maps-' . $a['width'] . '-width"></iframe></div>';
+    $output = '<div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Construction" src="//phl.maps.arcgis.com/apps/Embed/index.html?webmap=' . $a['mapid'] . '&amp;center=' . $a['center'] . '&amp;level=' . $a['level'] . '&amp;zoom=true&amp;extent=-75.2279,39.9466,-75.149,39.9812&amp;scale=true&amp;disable_scroll=true&amp;theme=light&amp;logoimage=' . $a['logoimage'] . '&amp;logolink=' . $a['logolink'] . $a['mapid'] . '" class="phl-maps-' . $a['width'] . '-width"></iframe></div>';
     return $output;
   }
 }
