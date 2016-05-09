@@ -62,9 +62,9 @@
     <?php endif; ?>
     <!-- Hero-Header MetaBox Modules -->
     <?php if (!$hero_header_image == ''): ?>
+    <div class="row mtm">
+      <div class="small-24 columns">
         <section class="department-header">
-          <div class="row">
-            <div class="small-24 columns">
           <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
         <?php if (!$hero_header_title == ''): ?>
           <div class="intro row">
@@ -79,9 +79,9 @@
             </div>
           </div>
         <?php endif; ?>
+        </section>
       </div>
     </div>
-      </section>
     <?php endif; ?>
   <?php endif; ?>
   <!-- Begin Row One MetaBox Modules -->
@@ -132,11 +132,13 @@
   <?php endif; ?>
   <!-- End Row One MetaBox Modules -->
 
-  <div class="row wysiwyg-content">
-    <div class="small-24 columns">
+  <section class="wysiwyg-content">
+    <div class="row">
+      <div class="small-24 columns">
         <?php echo the_content();?>
+      </div>
     </div>
-  </div>
+  </section>
 
    <!-- Begin Row Two MetaBox Modules -->
    <?php if ( ( !empty($row_two_col_one_module ) ) && (!empty($row_two_col_two_module ) ) ): ?>
