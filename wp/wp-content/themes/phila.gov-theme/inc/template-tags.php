@@ -18,7 +18,7 @@ function phila_gov_paging_nav() {
     return;
   }
   ?>
-  <nav class="navigation paging-navigation" role="navigation">
+  <nav class="navigation paging-navigation">
     <h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'phila-gov' ); ?></h1>
       <?php
       global $wp_query;
@@ -37,32 +37,6 @@ function phila_gov_paging_nav() {
         )
       );
       ?>
-  </nav><!-- .navigation -->
-  <?php
-}
-endif;
-
-if ( ! function_exists( 'phila_gov_post_nav' ) ) :
-/**
- * Display navigation to next/previous post when applicable.
- */
-function phila_gov_post_nav() {
-  // Don't print empty markup if there's nowhere to navigate.
-  $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-  $next     = get_adjacent_post( false, '', false );
-
-  if ( ! $next && ! $previous ) {
-    return;
-  }
-  ?>
-  <nav class="navigation post-navigation pure-u-1" role="navigation">
-    <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'phila-gov' ); ?></h1>
-    <div class="nav-links">
-      <?php
-        previous_post_link( '<div class="nav-previous"><i class="fa fa-arrow-left"></i> %link</div>', _x( '<span class="meta-nav">&larr;</span>&nbsp;%title', 'Previous post link', 'phila-gov' ) );
-        next_post_link(     '<div class="nav-next">%link</div>',     _x( '%title&nbsp;<span class="meta-nav">&rarr;</span>', 'Next post link',     'phila-gov' ) );
-      ?>
-    </div><!-- .nav-links -->
   </nav><!-- .navigation -->
   <?php
 }
@@ -114,7 +88,7 @@ function phila_gov_entry_footer() {
     if ( $tags_list ) {
       echo '<div class="mvs"><span>Tagged in:<br>';
       printf(  __( '%1$s', 'phila-gov' ), $tags_list );
-      echo '</span</div>';  
+      echo '</span</div>';
     }
   }
 }

@@ -11,7 +11,8 @@
       <?php $posted_on_values = phila_get_posted_on(); ?>
       <span class="small-text"><?php echo $posted_on_values['time_string'];?>
         <?php if( !get_the_category() == ''): ?>
-          <?php echo ' by '; ?><a href="<?php echo $posted_on_values['dept_cat_permalink'] ?>" id="content-modified-department" data-slug="<?php echo $posted_on_values['current_cat_slug'] ?>"><?php echo $posted_on_values['dept_title'] ?></a>
+          <?php echo ' by ';  ?>
+          <?php phila_echo_current_department_name( false ); ?>
         <?php endif; ?>
       </span>
     </header><!-- .entry-header -->

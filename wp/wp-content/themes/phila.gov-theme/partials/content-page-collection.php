@@ -54,61 +54,57 @@
   }
 
   ?>
-  <div class="data-swiftype-index='true'">
-    <div class="row">
-      <header class="entry-header small-24 columns">
-        <?php if ( $parent_title ) : ?>
-          <h1><?php echo $parent_title ?> </h1>
-        <?php else : ?>
-          <h1><?php echo $page_title; ?></h1>
-        <?php endif; ?>
-      </header>
+<article id="post-<?php the_ID(); ?>">
+<div class="row">
+  <header class="entry-header small-24 columns">
+      <?php if ( $parent_title ) : ?>
+        <h1><?php echo $parent_title ?></h1>
+      <?php else : ?>
+        <h1><?php echo $page_title; ?></h1>
+      <?php endif; ?>
+    </header>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <aside>
+        <ul class="tabs vertical">
+          <?php if ( $check_parent_content ) : ?>
+            <li class="tabs-title<?php echo ( $current ) ? ' is-active' : ''?>">
+              <a href="<?php echo $parent_link ?>">Overview</a>
+            </li>
+          <?php endif; ?>
+          <?php echo $children; ?>
+        </ul>
+      </aside>
     </div>
-    <article id="post-<?php the_ID(); ?>">
-      <div class="row">
-        <div class="medium-6 columns">
-          <aside>
-            <ul class="tabs vertical">
-              <?php if ( $check_parent_content ) : ?>
-                <li class="tabs-title<?php echo ( $current ) ? ' is-active' : ''?>">
-                  <a href="<?php echo $parent_link ?>">Overview</a>
-                </li>
-              <?php endif; ?>
-              <?php echo $children; ?>
-            </ul>
-          </div>
-        </aside>
-        <div class="medium-18 columns">
-          <div data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
-            <div class="tabs-panel is-active">
-              <header class="entry-header">
-                <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-              </header><!-- .entry-header -->
+    <div class="medium-18 columns">
+      <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
+        <div class="tabs-panel is-active">
+          <header class="entry-header">
+            <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+          </header><!-- .entry-header -->
 
-              <!-- If Custom Markup append_before_wysiwyg is present print it -->
-              <?php if (!$append_before_wysiwyg == ''):?>
-                <?php echo $append_before_wysiwyg; ?>
-              <?php endif; ?>
+          <!-- If Custom Markup append_before_wysiwyg is present print it -->
+          <?php if (!$append_before_wysiwyg == ''):?>
+            <?php echo $append_before_wysiwyg; ?>
+          <?php endif; ?>
 
-              <?php if ( $parent_content ) : ?>
-                
-                <?php echo $parent_content ?>
+          <?php if ( $parent_content ) : ?>
 
-              <?php else : ?>
+            <?php echo $parent_content ?>
 
-                <?php the_content(); ?>
+          <?php else : ?>
 
-              <?php endif; ?>
+            <?php the_content(); ?>
 
-              <!-- If Custom Markup append_after_wysiwyg is present print it -->
-              <?php if (!$append_after_wysiwyg == ''):?>
-                <?php echo $append_after_wysiwyg; ?>
-              <?php endif; ?>
+          <?php endif; ?>
 
-            </div>
-          </div>
-        </div><!-- .entry-content -->
+          <!-- If Custom Markup append_after_wysiwyg is present print it -->
+          <?php if (!$append_after_wysiwyg == ''):?>
+            <?php echo $append_after_wysiwyg; ?>
+          <?php endif; ?>
+        </div>
       </div>
     </div>
-  </article><!-- #post-## -->
-</div>
+  </div>
+</article><!-- #post-## -->
