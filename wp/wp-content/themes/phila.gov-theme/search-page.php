@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <section id="primary" class="content-area">
-  <main id="main" class="site-main search-page" role="main">
+  <main id="main" class="site-main search-page">
     <div class="search-head">
       <div class="row">
         <header class="medium-8 columns">
