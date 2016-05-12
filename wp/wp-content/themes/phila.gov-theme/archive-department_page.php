@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area departments">
-  <main id="main" class="site-main" role="main">
+  <main id="main" class="site-main">
     <div class="row">
       <header class="small-24 columns">
         <?php printf(__('<h1 class="contrast ptm">City Government Directory</h1>', 'phila-gov') ); ?>
@@ -17,20 +17,21 @@ get_header(); ?>
     <div class="row">
       <div class="small-24 columns results mbm">
         <?php get_template_part( 'partials/content', 'finder' ); ?>
-          <ul class="list no-bullet"><!-- ul for sortable listness -->
+          <ul class="list no-bullet">
             <?php  if ( have_posts() ) : ?>
-                <?php the_title(); ?>
+              <?php the_title(); ?>
 
-                <?php while ( have_posts() ) : the_post(); ?>
+              <?php while ( have_posts() ) : the_post(); ?>
 
                 <?php get_template_part( 'partials/content', 'list' ); ?>
 
-                <?php endwhile; ?>
-                <?php else : ?>
+              <?php endwhile; ?>
 
-              <?php endif;
-              wp_reset_query();
-              ?>
+            <?php else : ?>
+
+              <?php endif; ?>
+
+              <?php wp_reset_query(); ?>
 
             </ul>
           </div>

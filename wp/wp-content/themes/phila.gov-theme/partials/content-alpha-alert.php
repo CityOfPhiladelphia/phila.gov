@@ -1,3 +1,8 @@
+<?php
+/*
+ * Partial for the "alpha alert," i.e. the bar says this site is a work in progress
+*/
+?>
 <div data-swiftype-index='false' id="alpha-alert">
   <div class="row">
     <div class="small-12 medium-18 columns">
@@ -8,7 +13,7 @@
         Back to <a class="go-back external" href="http://www.phila.gov" target="_blank">phila.gov</a>.
       </p>
     </div>
-    <div class="small-12 medium-6 columns text-right">
+    <div class="small-12 medium-6 columns text-right hide-for-small-only">
       <i class="fa fa-globe"></i><div id="google_translate_element"></div>
         <script type="text/javascript">
           function googleTranslateElementInit() {
