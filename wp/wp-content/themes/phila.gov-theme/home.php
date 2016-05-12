@@ -29,7 +29,7 @@ get_header(); ?>
           <?php echo get_the_title(); ?>
         </h1>
       </header><!-- .page-header -->
-      <main id="main" class="site-main small-24 medium-24 end columns" role="main">
+      <main id="main" class="site-main small-24 medium-24 end columns">
 
         <?php while ( $display_posts->have_posts() ) : $display_posts->the_post(); ?>
 
