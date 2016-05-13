@@ -354,7 +354,6 @@ class Phila_Gov_Role_Administration {
     if ( is_admin() ) {
       if ( ! current_user_can( PHILA_ADMIN ) ) {
         remove_meta_box('pageparentdiv', 'page', 'side');
-        remove_meta_box('pageparentdiv', 'department_page', 'side');
         remove_meta_box('news-admin-only', 'news_post', 'side');
       }
     }
