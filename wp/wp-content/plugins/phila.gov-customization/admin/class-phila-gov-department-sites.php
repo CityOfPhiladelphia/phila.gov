@@ -15,9 +15,10 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
-    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
-
     if ( $this->determine_page_level() ){
+
+      //for some reason, this priority needs to be lower than all the others?
+      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
 
       add_action( 'admin_print_styles', array($this, 'hide_wysiwyg_on_department_home' ) );
 
