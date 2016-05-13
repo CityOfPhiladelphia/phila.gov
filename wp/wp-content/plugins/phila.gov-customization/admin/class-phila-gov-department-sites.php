@@ -9,42 +9,14 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   public function __construct(){
 
-    add_action( 'admin_init', array( $this, 'determine_page_level' ) );
-
     add_action( 'init', array( $this, 'register_content_blocks_shortcode' ) );
 
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
-    if ( $this->determine_page_level() ){
-
-      //for some reason, this priority needs to be lower than all the others?
-      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
-
-
-      add_filter('tiny_mce_before_init', array($this, 'override_mce_options' ) );
-    }
+    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
 
   }
 
-  function determine_page_level() {
-
-    global $pagenow;
-
-    if ( ( is_admin() && 'post.php' == $pagenow )  ) {
-
-      $post = get_post( $_GET['post'] );
-
-      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
-
-      $children = get_pages( array( 'child_of' => $post_id ) );
-
-      if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
-
-        return true;
-
-      }
-    }
-  }
 
   function phila_register_department_meta_boxes( $meta_boxes ){
     $prefix = 'phila_';
@@ -297,7 +269,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   }
   function register_content_blocks_shortcode(){
-     add_shortcode( 'content-block', array($this, 'content_blocks_shortcode') );
+    add_shortcode( 'content-block', array($this, 'content_blocks_shortcode') );
   }
 
   function override_mce_options($initArray) {
