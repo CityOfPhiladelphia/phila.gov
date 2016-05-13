@@ -31,7 +31,6 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
-  //  add_filter( 'gettext', array( $this, 'change_tagcloud_link_text'), 20, 3 );
   }
 
   /**
