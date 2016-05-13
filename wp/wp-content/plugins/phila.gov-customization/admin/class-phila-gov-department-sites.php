@@ -17,16 +17,19 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   }
 
-
   function phila_register_department_meta_boxes( $meta_boxes ){
     $prefix = 'phila_';
 
     $meta_boxes[] = array(
       'id'       => 'departments',
-      'title'    => 'Department Information',
+      'title'    => 'Department General Information',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+
+      'exclude' => array(
+        'is_child'  => true,
+      ),
 
       'fields' => array(
         array(
@@ -54,6 +57,10 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'context'  => 'normal',
       'priority' => 'high',
 
+      'exclude' => array(
+        'is_child'  => true,
+      ),
+
       'fields' => array(
         array(
           'name'  => 'Alert text',
@@ -72,7 +79,8 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'clone' => false,
         ),
       )
-    );//External department link
+    );//Department homepage alert
+
     $meta_boxes[] = array(
       'title'    => 'Content Blocks',
       'pages'    => array( 'department_page' ),
