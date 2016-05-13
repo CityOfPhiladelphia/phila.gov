@@ -85,13 +85,13 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'title'    => 'Content Blocks',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
-      'priority' => 'high',
+      'priority' => 'low',
       'fields' => array(
         array(
          'id' => 'content_blocks',
          'type' => 'group',
          'clone'  => true,
-         // List of sub-fields
+
          'fields' => array(
            array(
              'name' => 'ID',
