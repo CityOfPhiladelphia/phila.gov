@@ -177,13 +177,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       ),
       'fields' => array(
         array(
-          'name'  => 'Allow Non-Admin Access',
-          'id'    => $prefix . 'hero_header_admin_only',
-          'type'  => 'checkbox',
-          'class' => 'phila-access-control',
-          'desc'  => 'Allow non-admins to edit the Hero Header area',
-        ),
-        array(
           'name'  => 'Hero Header Title',
           'id'    => $prefix . 'hero_header_title',
           'type'  => 'text',
