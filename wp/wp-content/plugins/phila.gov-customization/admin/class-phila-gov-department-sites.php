@@ -20,11 +20,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       //for some reason, this priority needs to be lower than all the others?
       add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
 
-      add_action( 'admin_print_styles', array($this, 'hide_wysiwyg_on_department_home' ) );
-
-      add_action( 'init', array($this, 'no_wpautop_on_department_homepages' ) );
-
-      add_filter( 'user_can_richedit', array($this, 'hide_visual_editor_department_home' )  );
 
       add_filter('tiny_mce_before_init', array($this, 'override_mce_options' ) );
     }
@@ -237,24 +232,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   }
 
-  // this will disable the visual editor for everyone but admins
-  function hide_wysiwyg_on_department_home() {
-    global $typenow;
-    if( ! current_user_can( PHILA_ADMIN ) && ( $typenow == 'department_page' ) ){
-      echo '<style>#postdivrich { display: none; }</style>';
-    }
-  }
-
-  function hide_visual_editor_department_home(){
-    global $typenow;
-
-    if( $typenow == 'department_page' ){
-      return false;
-    }else{
-      return true;
-    }
-  }
-
   function content_blocks_shortcode( $atts ) {
     $a = shortcode_atts( array(
       'id' => ''
@@ -321,10 +298,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
   }
   function register_content_blocks_shortcode(){
      add_shortcode( 'content-block', array($this, 'content_blocks_shortcode') );
-  }
-
-  function no_wpautop_on_department_homepages(){
-    remove_filter( 'the_content', 'wpautop' );
   }
 
   function override_mce_options($initArray) {
