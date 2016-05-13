@@ -124,11 +124,11 @@ class Phila_Gov_Role_Administration {
       }
     }
   /**
-	 * Removes widgets that don't belong to this category (or categories)
-	 *
-	 * @since 0.11.0
+   * Removes widgets that don't belong to this category (or categories)
+   *
+   * @since 0.11.0
    * @uses secondary_roles() Outputs an array of Term Objects that correspond to secondary roles applied to the logged in user.
-	  */
+    */
     public function remove_others_widgets(){
 
       if ( ! current_user_can( PHILA_ADMIN ) ){
@@ -145,14 +145,14 @@ class Phila_Gov_Role_Administration {
           if ( is_array($current_user_role) ) {
             foreach($current_user_role as $user_role) {
               register_sidebar( array(
-            		'name'          => __( $user_role->name . ' Sidebar', 'phila-gov' ),
-            		'id'            => 'sidebar-' . $user_role->slug . '-' . $user_role->term_id,
-            		'description'   => '',
-            		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            		'after_widget'  => '</aside>',
-            		'before_title'  => '<h1 class="widget-title">',
-            		'after_title'   => '</h1>',
-            	) );
+                'name'          => __( $user_role->name . ' Sidebar', 'phila-gov' ),
+                'id'            => 'sidebar-' . $user_role->slug . '-' . $user_role->term_id,
+                'description'   => '',
+                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                'after_widget'  => '</aside>',
+                'before_title'  => '<h1 class="widget-title">',
+                'after_title'   => '</h1>',
+              ) );
             }
           }else {
             register_sidebar( array(
@@ -211,13 +211,13 @@ class Phila_Gov_Role_Administration {
     }
   }
   /**
-	 * Gets the menu this user should see and passes the value to add_submenu_page
-	 *
-	 * @since 0.11.0
+   * Gets the menu this user should see and passes the value to add_submenu_page
+   *
+   * @since 0.11.0
    * @uses get_category_id() Outputs the current category ID.
    * @uses add_submenu_page https://codex.wordpress.org/Function_Reference/add_submenu_page
    * @uses get_nav_menu_locations() https://developer.wordpress.org/reference/functions/get_nav_menu_locations/
-	  */
+    */
 
   public function add_department_menu(){
 
@@ -274,7 +274,7 @@ class Phila_Gov_Role_Administration {
   function remove_bottom_tinymce2_buttons( $buttons ){
     $remove = array( 'underline', 'alignjustify', 'forecolor', 'outdent', 'indent' );
 
-  	return array_diff( $buttons, $remove );
+    return array_diff( $buttons, $remove );
    }
    function tinyMCE_edits(){
 
@@ -326,11 +326,11 @@ class Phila_Gov_Role_Administration {
     }
   }
   /**
-	 * Adds category as metadata for filtering the page attribute dropdown box.
-	 *
-	 * @since 0.14.0
-	 *
-	 */
+   * Adds category as metadata for filtering the page attribute dropdown box.
+   *
+   * @since 0.14.0
+   *
+   */
   public function add_meta_data( $post ){
     global $post;
     if ( isset( $post->ID ) ){
