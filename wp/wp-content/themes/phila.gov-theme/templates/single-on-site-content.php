@@ -132,6 +132,8 @@
   <?php endif; ?>
   <!-- End Row One MetaBox Modules -->
 
+  <!-- WYSIWYG content -->
+  <?php if( get_the_content() != '' ) : ?>
   <section class="wysiwyg-content">
     <div class="row">
       <div class="small-24 columns">
@@ -139,6 +141,8 @@
       </div>
     </div>
   </section>
+  <?php endif; ?>
+  <!-- End WYSIWYG content -->
 
    <!-- Begin Row Two MetaBox Modules -->
    <?php if ( ( !empty($row_two_col_one_module ) ) && (!empty($row_two_col_two_module ) ) ): ?>
@@ -191,4 +195,4 @@
       </div>
     </div>
   <?php endif; ?>
-</div>
+</div> <!-- End .entry-content -->
