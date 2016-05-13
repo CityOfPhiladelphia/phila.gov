@@ -26,6 +26,7 @@
           $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
           // Set module row vars
           $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1');
+
           if (!empty($row_one_col_one_module)){
             $row_one_col_one_type = $row_one_col_one_module['phila_module_row_1_col_1_type'];
             $row_one_col_one_post_style = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_post_style'];
@@ -85,7 +86,7 @@
     <?php endif; ?>
   <?php endif; ?>
   <!-- Begin Row One MetaBox Modules -->
-  <?php if ( ( !empty($row_one_col_one_module ) ) && (!empty($row_one_col_one_module ) ) ): ?>
+  <?php if ( ( !empty( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) ) && ( !empty( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ) ): ?>
     <section class="department-module-row-one">
       <div class="row equal-height">
         <!-- Begin Column One -->
@@ -145,7 +146,7 @@
   <!-- End WYSIWYG content -->
 
    <!-- Begin Row Two MetaBox Modules -->
-   <?php if ( ( !empty($row_two_col_one_module ) ) && (!empty($row_two_col_two_module ) ) ): ?>
+   <?php if ( ( !empty( $row_two_col_one_module['phila_module_row_2_col_1_type'] ) ) && (!empty( $row_two_col_two_module['phila_module_row_2_col_2_type'] ) ) ): ?>
    <section class="department-module-row-two">
      <div class="row">
        <?php if ( $row_two_col_one_type  == 'phila_module_row_2_col_1_calendar' ): ?>
