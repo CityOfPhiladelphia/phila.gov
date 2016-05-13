@@ -7,8 +7,8 @@
 */
 ?>
 <div class="row">
-  <div class="small-24 columns">
-    <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+  <div class="columns">
+    <?php the_title( '<h2 class="sub-page-title">', '</h2>' ); ?>
   </div>
 </div>
 
