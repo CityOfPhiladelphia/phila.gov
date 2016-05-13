@@ -514,20 +514,5 @@ $meta_boxes[] = array(
   ),
 );
 
-  $meta_boxes[] = array(
-    'id'       => 'jotform-embed',
-    'title'    => 'JotForm Embed',
-    'pages'    => array( 'department_page' ),
-    'context'  => 'normal',
-    'priority' => 'low',
-
-    'fields' => array(
-      array(
-       'name' => 'JotForm Markup',
-       'id'   => $prefix . 'jotform_embed',
-       'type' => 'textarea'
-     ),
-   ),
- );
     return $meta_boxes;
 }
