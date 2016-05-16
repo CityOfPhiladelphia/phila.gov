@@ -276,7 +276,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'page' ),
     'context'  => 'normal',
     'priority' => 'low',
-
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
     'fields' => array(
       array(
        'name' => 'Description',
