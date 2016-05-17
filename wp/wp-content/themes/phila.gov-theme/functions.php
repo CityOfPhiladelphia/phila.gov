@@ -1056,3 +1056,76 @@ function get_department_category(){
   $category = get_the_category();
   echo $category[0]->cat_name;
 }
+
+function echo_item_meta_desc(){
+  global $post;
+
+  $dept_desc = rwmb_meta( 'phila_dept_desc' );
+
+  $service_desc = rwmb_meta( 'phila_service_desc' );
+
+  $post_desc = rwmb_meta( 'phila_post_desc' );
+
+  $news_desc = rwmb_meta( 'phila_news_desc' );
+
+  $document_desc = rwmb_meta( 'phila_document_description' );
+
+  $page_desc = rwmb_meta( 'phila_page_desc' );
+
+  if ( !is_archive() ) {
+
+    if( $service_desc != '' ){
+
+      echo mb_strimwidth( $service_desc, 0, 200, '...');
+
+    }else if( $post_desc != '' ){
+
+      echo mb_strimwidth( $post_desc,  0, 200, '...');
+
+    }else if( $news_desc != '' ){
+
+      echo mb_strimwidth( $news_desc, 0, 200, '...');
+
+    }else if( $document_desc != '' ){
+
+      echo mb_strimwidth( $document_desc, 0, 200, '...');
+
+    //special handling for department pages
+    }else if ( get_post_type() == 'department_page' ) {
+
+      if ( empty( $dept_desc ) && !empty($post->post_content) ){
+
+        $dept_desc = wp_strip_all_tags($post->post_content);
+
+      }else{
+        //fallback if the wysiwyg editor is empty
+        $parents = get_post_ancestors( $post->ID );
+        $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+        $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'), $post_id = $id );
+
+      }
+
+      echo mb_strimwidth( $dept_desc, 0, 200, '...');
+
+    //special handing for regular pages
+    }else if( is_page() ){
+
+      $parents = get_post_ancestors( $post->ID );
+      $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+      if ( empty( $page_desc ) ){
+
+        $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
+
+      }
+
+      echo $page_desc;
+
+    }else{
+      bloginfo( 'description' );
+    }
+  }else{
+    bloginfo( 'description' );
+  }
+}
