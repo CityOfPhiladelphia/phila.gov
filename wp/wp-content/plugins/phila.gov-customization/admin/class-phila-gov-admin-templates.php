@@ -16,11 +16,11 @@ class Phila_Gov_Admin_Templates {
 
   public function __construct(){
 
-    add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox'), 10, 1 );
+    add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_departments'), 10, 1 );
 
  }
 
- function phila_register_template_selection_metabox( $meta_boxes ){
+ function phila_register_template_selection_metabox_departments( $meta_boxes ){
    $prefix = 'phila_';
 
   $meta_boxes[] = array(
