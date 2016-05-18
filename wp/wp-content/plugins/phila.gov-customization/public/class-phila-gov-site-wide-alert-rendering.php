@@ -24,8 +24,11 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
     function dateTimeFormat($date){
       if ( !$date == '' ) {
         $date_obj = new DateTime("@$date");
-        $formatted_date = $date_obj->format('g:i a \o\n l, F d, Y');
-
+        if( strlen($date_obj->format('F')) > 5 ){
+          $formatted_date = $date_obj->format('g:i a \o\n l, M\. d, Y');
+        } else {
+          $formatted_date = $date_obj->format('g:i a \o\n l, F d, Y');
+        }
         echo str_replace(array('am','pm'),array('a.m.','p.m.'),$formatted_date);
       }
     }
@@ -73,7 +76,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
-        ?><div id="site-wide-alert">
+        ?><div id="site-wide-alert" data-swiftype-index='false'>
             <div class="row"><?php
         echo '<div class="large-9 columns">';
         echo '<h2><i class="ionicons ' . $alert_icon . '"></i>' . get_the_title() .'</h2>';

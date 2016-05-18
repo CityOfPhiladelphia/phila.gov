@@ -29,8 +29,8 @@ get_header();
           endif;
           ?>
         </h1>
-        </header><!-- .page-header -->
-      <main id="main" class="site-main medium-19 columns end" role="main">
+      </header><!-- .page-header -->
+      <main id="main" class="site-main medium-19 columns end">
         <?php while ( have_posts() ) : the_post(); ?>
         <?php
             get_template_part( 'partials/content', 'list-featured-image' );
