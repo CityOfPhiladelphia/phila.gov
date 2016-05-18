@@ -101,7 +101,7 @@ function latest_posts_shortcode($atts) {
     }else {
       $output .= __( 'Please enter at least one post.', 'phila.gov' );
     }
-    //.news
+
 
   wp_reset_postdata();
   return $output;

@@ -276,7 +276,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'page' ),
     'context'  => 'normal',
     'priority' => 'low',
-
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
     'fields' => array(
       array(
        'name' => 'Description',
@@ -514,20 +516,5 @@ $meta_boxes[] = array(
   ),
 );
 
-  $meta_boxes[] = array(
-    'id'       => 'jotform-embed',
-    'title'    => 'JotForm Embed',
-    'pages'    => array( 'department_page' ),
-    'context'  => 'normal',
-    'priority' => 'low',
-
-    'fields' => array(
-      array(
-       'name' => 'JotForm Markup',
-       'id'   => $prefix . 'jotform_embed',
-       'type' => 'textarea'
-     ),
-   ),
- );
     return $meta_boxes;
 }

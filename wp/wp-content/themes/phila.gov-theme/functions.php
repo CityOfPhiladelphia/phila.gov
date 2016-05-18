@@ -559,11 +559,11 @@ function phila_get_department_menu() {
           <div class="row department-nav">
             <div class="small-24 columns">
               <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
-              <button class="menu-icon" type="button" data-toggle><div class="title-bar-title">Menu</div></button>
+              <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
               </div>
             <div class="top-bar mbm-mu" id="site-nav">
               <nav data-swiftype-index="false">
-                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li id="" class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only" role="menuitem"><a href="/"><i class="fa fa-angle-left fa-lg"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
+                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
               </nav>
             </div>
           </div>
@@ -993,11 +993,18 @@ function phila_get_master_topics(){
   }
 }
 
-function phila_echo_current_department_name(){
+/**
+ *  Echo a slug and link to the department page currently in the loop.
+ *
+ * @param $include_id Boolean to include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the markup will properly validate.
+ *
+ **/
+
+function phila_echo_current_department_name( $include_id = true ){
   /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
   $current_category = get_the_category();
 
-  if ( !$current_category == '' )  :
+  if ( !$current_category == '' )  {
     $department_page_args = array(
       'post_type' => 'department_page',
       'tax_query' => array(
@@ -1011,20 +1018,27 @@ function phila_echo_current_department_name(){
       'posts_per_page' => 1,
     );
     $get_department_link = new WP_Query( $department_page_args );
-    if ( $get_department_link->have_posts() ) :
-      while ( $get_department_link->have_posts() ) :
+    if ( $get_department_link->have_posts() ) {
+      while ( $get_department_link->have_posts() ) {
         $get_department_link->the_post();
         $current_cat_slug = $current_category[0]->slug;
         //we are rendering the department link elsewhere on document pages & posts.
-        if ( $current_cat_slug != 'uncategorized' ) :
+        if ( $current_cat_slug != 'uncategorized' ) {
+
+          if ( $include_id == true ) {
           // NOTE: the id and data-slug are important. Google Tag Manager
           // uses it to attach the department to our web analytics.
-            echo '<a href="' . get_the_permalink() . '" id="content-modified-department"
+            echo '<a href="' . get_the_permalink() . '"
+             id="content-modified-department"
             data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
-          endif;
-        endwhile;
-      endif;
-    endif;
+          }else{
+            echo '<a href="' . get_the_permalink() . '"
+            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+          }
+        }
+      }
+    }
+  }
 
     /* Restore original Post Data */
     wp_reset_postdata();
@@ -1041,4 +1055,77 @@ function the_dept_description(){
 function get_department_category(){
   $category = get_the_category();
   echo $category[0]->cat_name;
+}
+
+function echo_item_meta_desc(){
+  global $post;
+
+  $dept_desc = rwmb_meta( 'phila_dept_desc' );
+
+  $service_desc = rwmb_meta( 'phila_service_desc' );
+
+  $post_desc = rwmb_meta( 'phila_post_desc' );
+
+  $news_desc = rwmb_meta( 'phila_news_desc' );
+
+  $document_desc = rwmb_meta( 'phila_document_description' );
+
+  $page_desc = rwmb_meta( 'phila_page_desc' );
+
+  if ( !is_archive() ) {
+
+    if( $service_desc != '' ){
+
+      echo mb_strimwidth( $service_desc, 0, 200, '...');
+
+    }else if( $post_desc != '' ){
+
+      echo mb_strimwidth( $post_desc,  0, 200, '...');
+
+    }else if( $news_desc != '' ){
+
+      echo mb_strimwidth( $news_desc, 0, 200, '...');
+
+    }else if( $document_desc != '' ){
+
+      echo mb_strimwidth( $document_desc, 0, 200, '...');
+
+    //special handling for department pages
+    }else if ( get_post_type() == 'department_page' ) {
+
+      if ( empty( $dept_desc ) && !empty($post->post_content) ){
+
+        $dept_desc = wp_strip_all_tags($post->post_content);
+
+      }else{
+        //fallback if the wysiwyg editor is empty
+        $parents = get_post_ancestors( $post->ID );
+        $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+        $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'), $post_id = $id );
+
+      }
+
+      echo mb_strimwidth( $dept_desc, 0, 200, '...');
+
+    //special handing for regular pages
+    }else if( is_page() ){
+
+      $parents = get_post_ancestors( $post->ID );
+      $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+      if ( empty( $page_desc ) ){
+
+        $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
+
+      }
+
+      echo $page_desc;
+
+    }else{
+      bloginfo( 'description' );
+    }
+  }else{
+    bloginfo( 'description' );
+  }
 }

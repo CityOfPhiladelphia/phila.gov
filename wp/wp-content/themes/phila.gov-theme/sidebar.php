@@ -6,6 +6,6 @@
  */
 ?>
 
-<div id="secondary" class="widget-area small-24 medium-6 columns" role="complementary">
+<div id="secondary" class="widget-area small-24 medium-6 columns">
 	<?php echo get_parent_topics(); ?>
 </div><!-- #secondary -->

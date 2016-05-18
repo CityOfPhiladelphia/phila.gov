@@ -6,37 +6,24 @@
 */
 .department-home, .department-landing{
   //hide secondary page title, we don't need it
-  h2.entry-title{
+  h2.sub-page-title{
     display: none;
   }
 }
 .department {
-  p {
-    &.external-site {
-      word-wrap: break-word;
-      word-break: break-all;
+
+  .external-site-link-left,
+  .external-site-link-right{
+      text-align: center;
+  }
+  .external-site-link-left{
+    @media only screen and (min-width: 40em) {
+        text-align: left;
     }
   }
-  .button.icon .fa{
-    background: $sidewalk;
-  }
-  .external-site{
-    .row {
-      background: $ghost-gray;
-    }
-    .external-site-link-left,
-    .external-site-link-right{
-        text-align: center;
-    }
-    .external-site-link-left{
-      @media only screen and (min-width: 40em) {
-          text-align: left;
-      }
-    }
-    .external-site-link-right{
-      @media only screen and (min-width: 40em) {
-          text-align: right;
-      }
+  .external-site-link-right{
+    @media only screen and (min-width: 40em) {
+        text-align: right;
     }
   }
   .services-finder{
@@ -188,6 +175,11 @@
         padding-left:0;
       }
     }
+    .photo-credit {
+      padding: $spacing-extra-small 0;
+      font-style: italic;
+      // background-color: rgba(0,0,0,.3);
+    }
     #header-image {
       width:100%;
     }
@@ -230,6 +222,15 @@
         p {
         font-weight: bold;
         }
+      }
+      .photo-credit {
+        color: $white;
+        padding: $spacing-extra-small $spacing-small;
+        position:absolute;
+        bottom:0;
+        right:0;
+        text-shadow: 1px 1px 1px $dark-gray;
+        // background-color: rgba(0,0,0,.3);
       }
     }
     @media only screen and (min-width: 64em) {
