@@ -86,6 +86,10 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'low',
+      'exclude' => array(
+        'is_child'  => true,
+      ),
+      
       'fields' => array(
         array(
          'id' => 'content_blocks',
