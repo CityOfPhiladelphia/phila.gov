@@ -271,6 +271,42 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+
+    'title'    => 'Resource List',
+    'pages'    => array( 'department_page', 'page' ),
+    'context'  => 'advanced',
+    'priority' => 'high',
+    'fields' => array(
+      array(
+        'id'  => 'resource_list',
+        'type' => 'group',
+        'clone'  => true,
+        'fields' => array(
+          array(
+            'name' => 'Resource List Title',
+            'class'   => $prefix . 'resource_list_title',
+            'type' => 'text',
+            'required'  => true,
+           ),
+           array(
+             'id'  => 'resource_list_items',
+             'type' => 'group',
+             'clone' => true,
+             'fields' => array(
+               array(
+                 'name' => 'Resource Title',
+                 'class'   => $prefix . 'resource_item_title',
+                 'type' => 'text',
+                 'required'  => true,
+               ),
+             ),
+           ),
+         ),
+       )
+     ),
+  );
+
+  $meta_boxes[] = array(
     'id'       => $prefix . 'custom_markup',
     'title'    => 'Custom Markup',
     'pages'    => array( 'department_page', 'page' ),
