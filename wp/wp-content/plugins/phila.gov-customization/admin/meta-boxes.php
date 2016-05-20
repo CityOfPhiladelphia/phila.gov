@@ -276,6 +276,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'page' ),
     'context'  => 'normal',
     'priority' => 'high',
+    'visible' => array('phila_template_select', 'resource_list'),
     'fields' => array(
       array(
         'id'  => $prefix . 'resource_list',
@@ -571,20 +572,16 @@ $meta_boxes[] = array(
   ),
 );
 
+return $meta_boxes;
+
+}
 // The following filter based on MetaBox documentation
 add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
-function phila_group_add_clone_button_text( $text, $field )
-{
-    // If you want to change text by field, you can do something like this
-    if ( 'phila_resource_list' == $field['id'] )
-    {
-        $text = __( '+ Add a Resource List', 'textdomain' );
-    } else if ( 'phila_resource_list_items' == $field['id'] )
-    {
-      $text = __( '+ Add an Item', 'textdomain' );
-    }
-    return $text;
-}
-
-    return $meta_boxes;
+function phila_group_add_clone_button_text( $text, $field ) {
+  if ( 'phila_resource_list' == $field['id'] ) {
+      $text = __( '+ Add a Resource List', 'textdomain' );
+  } else if ( 'phila_resource_list_items' == $field['id'] ){
+    $text = __( '+ Add an Item', 'textdomain' );
+  }
+  return $text;
 }
