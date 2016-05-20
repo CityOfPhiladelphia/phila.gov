@@ -21,3 +21,56 @@
 #phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-textarea-wrapper {
   display: none;
 }
+
+.rwmb-button.remove-clone {
+  background: #555;
+  margin: .5rem .5rem 0;
+}
+
+.rwmb-button.remove-clone:hover {
+  background: #C00;
+}
+
+#phila_resource_list .rwmb-sort-clone {
+  padding-left: 0;
+}
+
+#phila_resource_list .rwmb-clone-icon {
+  top: 8px;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-group-clone {
+  border: 1px solid #efefef;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-field{
+  padding: .5rem .5rem 0;
+  padding-left: 15px;
+}
+
+#phila_resource_list .rwmb-field.rwmb-group-wrapper {
+  padding: 0;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-clone.rwmb-group-clone {
+  padding: 0 .5rem 0;
+  background: #efefef;
+  margin: 0;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-clone:after {
+    content: "";
+    display: block;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#phila_resource_list a.rwmb-button.button-primary.add-clone {
+  float: right;
+  margin-bottom: 0;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-group-clone a.rwmb-button.button-primary.add-clone {
+  margin-right: .5rem;
+}
