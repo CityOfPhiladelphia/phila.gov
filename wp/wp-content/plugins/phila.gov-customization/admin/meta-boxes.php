@@ -271,6 +271,61 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'       => $prefix . 'resource_list',
+    'title'    => __( 'Resource List' ),
+    'pages'    => array( 'department_page', 'page' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+    'fields' => array(
+      array(
+        'id'  => $prefix . 'resource_list',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'fields' => array(
+          array(
+            'name' => __('List Title', 'rwmb'),
+            'id'   => $prefix . 'resource_list_title',
+            'type' => 'text',
+            'required' => true,
+          ),
+          array(
+            'id'   => $prefix . 'resource_list_items',
+            'type' => 'group',
+            'clone'  => true,
+            'sort_clone' => true,
+            'fields' => array(
+                array(
+                  'name' => __('List Item Title', 'rwmb'),
+                  'id'   => $prefix . 'list-item-title',
+                  'type' => 'text',
+                  'required' => true,
+                ),
+                array(
+                  'name' => __('List Item URL', 'rwmb'),
+                  'id'   => $prefix . 'list-item-url',
+                  'type' => 'url',
+                  'required' => true,
+                ),
+                array(
+                   'name' => __('List Item Type', 'rwmb'),
+                   'id'   => $prefix . 'list-item-type',
+                   'type' => 'select',
+                   'placeholder' => 'Choose resource type...',
+                   'options' => array(
+                     $prefix . 'resource_link' => 'Link',
+                     $prefix . 'resource_document' => 'Document',
+                     $prefix . 'resource_map' => 'Map',
+                   ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+  $meta_boxes[] = array(
     'id'       => $prefix . 'custom_markup',
     'title'    => 'Custom Markup',
     'pages'    => array( 'department_page', 'page' ),
@@ -515,6 +570,21 @@ $meta_boxes[] = array(
     ),
   ),
 );
+
+// The following filter based on MetaBox documentation
+add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
+function phila_group_add_clone_button_text( $text, $field )
+{
+    // If you want to change text by field, you can do something like this
+    if ( 'phila_resource_list' == $field['id'] )
+    {
+        $text = __( '+ Add a Resource List', 'textdomain' );
+    } else if ( 'phila_resource_list_items' == $field['id'] )
+    {
+      $text = __( '+ Add an Item', 'textdomain' );
+    }
+    return $text;
+}
 
     return $meta_boxes;
 }
