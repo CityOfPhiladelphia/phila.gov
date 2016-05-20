@@ -25,24 +25,24 @@ class Phila_Gov_Admin_Templates {
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
-    'title'    => 'Choose Template',
+    'title'    => 'Select Page Template',
     'pages'    => array( 'department_page' ),
-    'context'  => 'advanced',
-    'priority' => 'high',
+    'context'  => 'side',
+    'priority' => 'low',
 
     'fields' => array(
 
       array(
         'desc'  => '',
         'id'    => $prefix . 'template_select',
-        'type'  => 'radio',
+        'type'  => 'select',
         'class' => 'template-select',
         'clone' => false,
+        'placeholder'  => 'Select a template',
+
         'options' => array(
-          'homepage' => 'Homepage',
-          'subpage' => 'Subpage',
-          'resource_list' => 'Grouped List of On-Site Links'
-        ),
+          'resource_list' => 'Resource List'
+          ),
        ),
     ),
   );
