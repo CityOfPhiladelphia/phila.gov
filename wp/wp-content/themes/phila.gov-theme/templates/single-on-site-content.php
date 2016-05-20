@@ -40,7 +40,7 @@
           if (!empty($row_one_col_two_module)){
             $row_one_col_two_type = $row_one_col_two_module['phila_module_row_1_col_2_type'];
             if ( $row_one_col_two_type == 'phila_module_row_1_col_2_blog_posts' ){
-              $row_one_col_two_post_style = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_post_style'];
+              $row_one_col_two_post_style = 'phila_module_row_1_col_2_post_style_cards';
             } else {
               $row_one_col_two_text_title = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_texttitle'];
               $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
