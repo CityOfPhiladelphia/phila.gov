@@ -571,6 +571,7 @@ $meta_boxes[] = array(
   ),
 );
 
+// The following filter based on MetaBox documentation
 add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
 function phila_group_add_clone_button_text( $text, $field )
 {
