@@ -52,6 +52,10 @@
             $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
             $row_two_col_two_cal_url = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_url'];
           }
+
+          //set template selection var
+          $user_selected_template = rwmb_meta( 'phila_template_select');
+
     ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
     <?php if (!$append_before_wysiwyg == ''):?>
@@ -144,6 +148,16 @@
   </section>
   <?php endif; ?>
   <!-- End WYSIWYG content -->
+
+  <?php if( !empty($user_selected_template) ) : ?>
+  <!-- Begin Template Display -->
+  <section class="apply-template">
+    <?php if ($user_selected_template == 'resource_list') : ?>
+      <?php get_template_part( 'partials/resource', 'list' ); ?>
+  <?php endif; ?>
+  </section>
+  <!-- End Template Display -->
+  <?php endif; ?>
 
    <!-- Begin Row Two MetaBox Modules -->
    <?php if ( ( !empty( $row_two_col_one_module['phila_module_row_2_col_1_type'] ) ) && (!empty( $row_two_col_two_module['phila_module_row_2_col_2_type'] ) ) ): ?>
