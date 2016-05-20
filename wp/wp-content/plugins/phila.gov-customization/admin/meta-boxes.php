@@ -405,20 +405,28 @@ function phila_register_meta_boxes( $meta_boxes ){
                'id'   => $prefix . 'module_row_1_col_1_post_style',
                'desc'  => 'Recent posts are displayed as "Cards" by default.',
                'type' => 'select',
+               'placeholder' => 'Choose display style...',
+               'required'  => true,
                'options' => array(
                  $prefix . 'module_row_1_col_1_post_style_cards' => 'Card',
                  $prefix . 'module_row_1_col_1_post_style_list' => 'List',
                ),
+               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_blog_posts'),
+
              ),
              array(
               'name' => 'Custom Text Title',
               'id'   => $prefix . 'module_row_1_col_1_texttitle',
               'type' => 'text',
+              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+
              ),
              array(
               'name' => 'Custom Text Content',
               'id'   => $prefix . 'module_row_1_col_1_textarea',
               'type' => 'textarea',
+              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+
              ),
             ),
           ),
@@ -452,20 +460,26 @@ function phila_register_meta_boxes( $meta_boxes ){
              'id'   => $prefix . 'module_row_1_col_2_post_style',
              'desc'  => 'Recent posts are displayed as "Cards" by default.',
              'type' => 'select',
+             'placeholder' => 'Choose display style...',
+             'required'  => true,
              'options' => array(
                $prefix . 'module_row_1_col_2_post_style_cards' => 'Card',
                $prefix . 'module_row_1_col_2_post_style_list' => 'List',
                ),
+              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_blog_posts'),
              ),
              array(
               'name' => 'Custom Text Title',
               'id'   => $prefix . 'module_row_1_col_2_texttitle',
               'type' => 'text',
+              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
+
              ),
              array(
               'name' => 'Custom Text Content',
               'id'   => $prefix . 'module_row_1_col_2_textarea',
               'type' => 'textarea',
+              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
              ),
           ),
         ),

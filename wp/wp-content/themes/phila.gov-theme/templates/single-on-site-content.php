@@ -29,32 +29,42 @@
 
           if (!empty($row_one_col_one_module)){
             $row_one_col_one_type = $row_one_col_one_module['phila_module_row_1_col_1_type'];
-            $row_one_col_one_post_style = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_post_style'];
-            $row_one_col_one_text_title = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'];
-            $row_one_col_one_textarea = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_textarea'];
+            if ( $row_one_col_one_type == 'phila_module_row_1_col_1_blog_posts' ){
+              $row_one_col_one_post_style = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_post_style'];
+            } else {
+              $row_one_col_one_text_title = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'];
+              $row_one_col_one_textarea = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_textarea'];
+            }
           }
           $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
           if (!empty($row_one_col_two_module)){
             $row_one_col_two_type = $row_one_col_two_module['phila_module_row_1_col_2_type'];
-            $row_one_col_two_post_style = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_post_style'];
-            $row_one_col_two_text_title = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_texttitle'];
-            $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
+            if ( $row_one_col_two_type == 'phila_module_row_1_col_2_blog_posts' ){
+              $row_one_col_two_post_style = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_post_style'];
+            } else {
+              $row_one_col_two_text_title = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_texttitle'];
+              $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
+            }
           }
           $row_two_col_one_module = rwmb_meta( 'module_row_2_col_1');
           if (!empty($row_two_col_one_module)){
             $row_two_col_one_type = $row_two_col_one_module['phila_module_row_2_col_1_type'];
-            $row_two_col_one_cal_id = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_id'];
-            $row_two_col_one_cal_url = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_url'];
+            if ( $row_two_col_one_type == 'phila_module_row_2_col_1_calendar' ){
+              $row_two_col_one_cal_id = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_id'];
+              $row_two_col_one_cal_url = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_url'];
+            }
           }
           $row_two_col_two_module = rwmb_meta( 'module_row_2_col_2');
           if (!empty($row_two_col_two_module)){
             $row_two_col_two_type = $row_two_col_two_module['phila_module_row_2_col_2_type'];
-            $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
-            $row_two_col_two_cal_url = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_url'];
+            if ( $row_two_col_two_type == 'phila_module_row_2_col_2_calendar' ){
+              $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
+              $row_two_col_two_cal_url = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_url'];
+            }
           }
 
           //set template selection var
-          $user_selected_template = rwmb_meta( 'phila_template_select');
+          // $user_selected_template = rwmb_meta( 'phila_template_select');
 
     ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
