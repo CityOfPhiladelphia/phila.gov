@@ -107,62 +107,62 @@ jQuery(document).ready(function($){
 
     }
 
-    if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
-        var colTypes = {};
-
-        function setColInfo(){
-
-          for (var row = 1; row < 3; row++){
-            for(var col = 1; col < 3; col++){
-              var moduleType = $('#phila_module_row_' + row + '_col_' + col + '_type').val();
-              var moduleOptions = '#phila_module_row_' + row + '_col_' + col + '_type';
-              colTypes['row'+row+'Col'+col] = {'row':row, 'col':col, 'loc':moduleOptions,'type':moduleType};
-            };
-          };
-
-        };
-
-        function hideOptions(c){
-
-            for (i in c){
-              if ( c[i]['row']=== 1){
-                $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_texttitle').closest('.rwmb-text-wrapper').hide();
-                $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').hide();
-                $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').hide();
-
-                if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_blog_posts'){
-                  $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').toggle();
-                }
-                else if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_custom_text'){
-                  $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_texttitle').closest('.rwmb-text-wrapper').toggle();
-                  $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').toggle();
-                }
-              }
-            else if ( c[i]['row']=== 2){
-              // Hide Calendar ID option
-              $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_id').closest('.rwmb-text-wrapper').hide();
-              // Hide Calendar URL option
-              $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_url').closest('.rwmb-url-wrapper').hide();
-
-              if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_calendar'){
-                // Toggle Calendar ID option
-                $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_id').closest('.rwmb-text-wrapper').toggle();
-                // Toggle Calendar URL option
-                $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_url').closest('.rwmb-url-wrapper').toggle();
-              }
-            }
-          }
-        };
-
-        setColInfo();
-        hideOptions(colTypes);
-
-        $( "#phila_module_row_1_col_1_type, #phila_module_row_1_col_2_type, #phila_module_row_2_col_1_type, #phila_module_row_2_col_2_type" ).change(function() {
-          setColInfo();
-          hideOptions(colTypes);
-        });
-
-      }
+    // if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
+    //     var colTypes = {};
+    //
+    //     function setColInfo(){
+    //
+    //       for (var row = 1; row < 3; row++){
+    //         for(var col = 1; col < 3; col++){
+    //           var moduleType = $('#phila_module_row_' + row + '_col_' + col + '_type').val();
+    //           var moduleOptions = '#phila_module_row_' + row + '_col_' + col + '_type';
+    //           colTypes['row'+row+'Col'+col] = {'row':row, 'col':col, 'loc':moduleOptions,'type':moduleType};
+    //         };
+    //       };
+    //
+    //     };
+    //
+    //     function hideOptions(c){
+    //
+    //         for (i in c){
+    //           if ( c[i]['row']=== 1){
+    //             $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_texttitle').closest('.rwmb-text-wrapper').hide();
+    //             $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').hide();
+    //             $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').hide();
+    //
+    //             if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_blog_posts'){
+    //               $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_post_style').closest('.rwmb-select-wrapper').toggle();
+    //             }
+    //             else if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_custom_text'){
+    //               $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_texttitle').closest('.rwmb-text-wrapper').toggle();
+    //               $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_textarea').closest('.rwmb-textarea-wrapper').toggle();
+    //             }
+    //           }
+    //         else if ( c[i]['row']=== 2){
+    //           // Hide Calendar ID option
+    //           $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_id').closest('.rwmb-text-wrapper').hide();
+    //           // Hide Calendar URL option
+    //           $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_url').closest('.rwmb-url-wrapper').hide();
+    //
+    //           if (c[i]['type'] === 'phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_calendar'){
+    //             // Toggle Calendar ID option
+    //             $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_id').closest('.rwmb-text-wrapper').toggle();
+    //             // Toggle Calendar URL option
+    //             $(c[i]['loc']).closest('.rwmb-group-wrapper').find('#phila_module_row_' + c[i]['row'] + '_col_' + c[i]['col'] + '_cal_url').closest('.rwmb-url-wrapper').toggle();
+    //           }
+    //         }
+    //       }
+    //     };
+    //
+    //     setColInfo();
+    //     hideOptions(colTypes);
+    //
+    //     $( "#phila_module_row_1_col_1_type, #phila_module_row_1_col_2_type, #phila_module_row_2_col_1_type, #phila_module_row_2_col_2_type" ).change(function() {
+    //       setColInfo();
+    //       hideOptions(colTypes);
+    //     });
+    //
+    //   }
 
   }
 });
