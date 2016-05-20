@@ -455,25 +455,11 @@ function phila_register_meta_boxes( $meta_boxes ){
           'type' => 'group',
           // List of sub-fields
           'fields' => array(
-            array(
-             'name' => 'Blog Post Style',
-             'id'   => $prefix . 'module_row_1_col_2_post_style',
-             'desc'  => 'Recent posts are displayed as "Cards" by default.',
-             'type' => 'select',
-             'placeholder' => 'Choose display style...',
-             'required'  => true,
-             'options' => array(
-               $prefix . 'module_row_1_col_2_post_style_cards' => 'Card',
-               $prefix . 'module_row_1_col_2_post_style_list' => 'List',
-               ),
-              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_blog_posts'),
-             ),
              array(
               'name' => 'Custom Text Title',
               'id'   => $prefix . 'module_row_1_col_2_texttitle',
               'type' => 'text',
               'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
-
              ),
              array(
               'name' => 'Custom Text Content',
@@ -533,12 +519,14 @@ $meta_boxes[] = array(
               'id'   => $prefix . 'module_row_2_col_1_cal_id',
               'desc'  => 'ID of the calendar',
               'type' => 'text',
+              'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
             ),
             array(
               'name' => 'Calender URL',
               'id'   => $prefix . 'module_row_2_col_1_cal_url',
               'desc'  => 'URL of the full calendar',
               'type' => 'url',
+              'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
             ),
           ),
         ),
@@ -572,12 +560,14 @@ $meta_boxes[] = array(
               'id'   => $prefix . 'module_row_2_col_2_cal_id',
               'desc'  => 'ID of the calendar',
               'type' => 'text',
+              'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
             ),
             array(
               'name' => 'Calender URL',
               'id'   => $prefix . 'module_row_2_col_2_cal_url',
               'desc'  => 'URL of the full calendar',
               'type' => 'url',
+              'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
             ),
           ),
         ),
