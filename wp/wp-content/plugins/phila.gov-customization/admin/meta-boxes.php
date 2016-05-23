@@ -277,12 +277,15 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array('phila_template_select', 'resource_list'),
+
     'fields' => array(
+
       array(
         'id'  => $prefix . 'resource_list',
         'type' => 'group',
         'clone'  => true,
         'sort_clone' => true,
+
         'fields' => array(
           array(
             'name' => __('List Title', 'rwmb'),
@@ -295,6 +298,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'type' => 'group',
             'clone'  => true,
             'sort_clone' => true,
+
             'fields' => array(
                 array(
                   'name' => __('List Item Title', 'rwmb'),
@@ -390,6 +394,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'id'   => $prefix . 'module_row_1_col_1_type',
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_1_col_1_blog_posts' => 'Blog Posts',
             $prefix . 'module_row_1_col_1_custom_text' => 'Custom Text',
@@ -445,6 +450,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'id'   => $prefix . 'module_row_1_col_2_type',
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
             $prefix . 'module_row_1_col_2_custom_text' => 'Custom Text',
@@ -504,6 +510,7 @@ $meta_boxes[] = array(
           'id'   => $prefix . 'module_row_2_col_1_type',
           'desc'  => 'Choose to display calendar events or press releases.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
             $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
@@ -545,6 +552,7 @@ $meta_boxes[] = array(
           'id'   => $prefix . 'module_row_2_col_2_type',
           'desc'  => 'Choose to display calendar events or press releases.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_2_col_2_calendar' => 'Calendar',
             $prefix . 'module_row_2_col_2_press_release' => 'Press Releases',
