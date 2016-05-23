@@ -11,7 +11,7 @@ jQuery( function ( $ )
 	FileUploadField = views.FileUploadField = MediaField.extend( {
 		createAddButton: function ()
 		{
-			this.addButton = new UploadButton( { collection: this.collection, props: this.props } );
+			this.addButton = new UploadButton( { controller: this.controller } );
 		}
 	} );
 
@@ -27,7 +27,7 @@ jQuery( function ( $ )
 
 		initialize: function ( options )
 		{
-			this.props = options.props;
+			this.controller = options.controller;
 			this.el.id = _.uniqueId( 'rwmb-upload-area-');
 			this.render();
 
@@ -35,24 +35,14 @@ jQuery( function ( $ )
 			this.dropzone = this.el;
 			this.browser  = this.$('.rwmb-browse-button')[0];
 
-			this.supports = {
-				upload: wp.Uploader.browser.supported
-			};
-
-			this.supported = this.supports.upload;
-
-			if ( this.supported ) {
+			if ( wp.Uploader.browser.supported ) {
 				this.initUploader();
 			}
 
-			this.listenTo( this.collection, 'add remove reset', function ()
+			// Auto hide if you reach the max number of media
+			this.listenTo( this.controller, 'change:full', function ()
 			{
-				var maxFiles = this.props.get( 'maxFiles' );
-
-				if ( maxFiles > 0 )
-				{
-					this.$el.toggle( this.collection.length < maxFiles );
-				}
+				this.$el.toggle( ! this.controller.get( 'full' ) );
 			} );
 		},
 
@@ -126,7 +116,7 @@ jQuery( function ( $ )
 					// so listeners to the upload queue can track and display upload progress.
 					file.attachment = wp.media.model.Attachment.create( attributes );
 					wp.Uploader.queue.add( file.attachment );
-					self.collection.add( file.attachment );
+					self.controller.addItems( [file.attachment] );
 				});
 
 				up.refresh();
@@ -173,7 +163,7 @@ jQuery( function ( $ )
 
 		getExtensions: function ()
 		{
-			var mimeTypes = this.props.get( 'mimeType' ).split(','),
+			var mimeTypes = this.controller.get( 'mimeType' ).split(','),
 				exts = [];
 
 			_.each( mimeTypes, function( current, index )
