@@ -298,19 +298,19 @@ function phila_register_meta_boxes( $meta_boxes ){
             'fields' => array(
                 array(
                   'name' => __('List Item Title', 'rwmb'),
-                  'id'   => $prefix . 'list-item-title',
+                  'id'   => $prefix . 'list_item_title',
                   'type' => 'text',
                   'required' => true,
                 ),
                 array(
                   'name' => __('List Item URL', 'rwmb'),
-                  'id'   => $prefix . 'list-item-url',
+                  'id'   => $prefix . 'list_item_url',
                   'type' => 'url',
                   'required' => true,
                 ),
                 array(
                    'name' => __('List Item Type', 'rwmb'),
-                   'id'   => $prefix . 'list-item-type',
+                   'id'   => $prefix . 'list_item_type',
                    'type' => 'select',
                    'placeholder' => 'Choose resource type...',
                    'options' => array(
