@@ -22,7 +22,8 @@ jQuery(document).ready(function($) {
         return;
 
     } else {
-        if ( ( typenow == 'department_page' || typenow == 'document' || typenow == 'service_post' || typenow == 'news_post' || typenow == 'phila_post' || typenow == 'press_release' ) && adminpage.indexOf( 'post' ) > -1 ) {
+
+        if ( allPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
           $('#post').validate({
               rules: {
                   'post_title': 'required'
