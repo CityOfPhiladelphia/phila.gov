@@ -28,12 +28,12 @@
           $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1');
 
           if (!empty($row_one_col_one_module)){
-            $row_one_col_one_type = $row_one_col_one_module['phila_module_row_1_col_1_type'];
+            $row_one_col_one_type = isset( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) ? $row_one_col_one_module['phila_module_row_1_col_1_type'] : '';
             if ( $row_one_col_one_type == 'phila_module_row_1_col_1_blog_posts' ){
               $row_one_col_one_post_style = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_post_style'];
             } else {
-              $row_one_col_one_text_title = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'];
-              $row_one_col_one_textarea = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_textarea'];
+              $row_one_col_one_text_title = isset( $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'] ) ? $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'] : '';
+              $row_one_col_one_textarea = isset( $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_textarea'] ) ? $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_textarea'] : '';
             }
           }
           $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
@@ -64,7 +64,7 @@
           }
 
           //set template selection var
-          // $user_selected_template = rwmb_meta( 'phila_template_select');
+          $user_selected_template = rwmb_meta( 'phila_template_select');
 
     ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
