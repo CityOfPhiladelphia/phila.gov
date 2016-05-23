@@ -251,3 +251,18 @@ aside {
 .bg-sidewalk {
   background:$sidewalk !important;
 }
+
+.clickable-row.is-hover{
+  cursor:pointer;
+
+  &:hover {
+    background:$medium-gray;
+    .small-text{
+      color:$ghost-gray;
+    }
+    a {
+      color:$black;
+    }
+
+  }
+}
