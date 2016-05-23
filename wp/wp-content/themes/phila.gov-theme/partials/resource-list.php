@@ -56,7 +56,7 @@
 
           ?>
 
-          <li class="phm pvs"><a href="<?php echo $item_url;
+          <li class="phm pvs clickable-row"><a href="<?php echo $item_url;
           ?>"><div><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i></div> <div><?php echo $item_title ?> </div></a></li>
 
         <?php endforeach; ?>
@@ -73,8 +73,10 @@
 
 
     <?php else : ?>
-      <div class="columns">
-        <?php echo 'Please enter at least three groups of links.'; ?>
+      <div class="row">
+        <div class="columns">
+          <?php echo 'Please enter at least three groups of links.'; ?>
+        </div>
       </div>
     <?php endif; ?>
 
