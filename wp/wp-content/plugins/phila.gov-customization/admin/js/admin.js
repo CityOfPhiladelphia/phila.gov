@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
 
   } else {
 
-    if ( allPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
+    if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
         rules: {
           'post_title': 'required'

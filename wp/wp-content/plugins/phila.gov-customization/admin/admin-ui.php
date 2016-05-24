@@ -64,6 +64,15 @@ function phila_load_admin_css(){
   wp_enqueue_style( 'phila_admin_css' );
 }
 
+// Set a JS var for philaAllPostTypes, similar to how typenow is set
+add_action( 'admin_head', 'phila_all_posts_js_array');
+
+function phila_all_posts_js_array(){
+  $philaAllPostTypes = json_encode( array_values( get_post_types( '','names' ) ) );
+
+  echo '<script type="text/javascript"> var	philaAllPostTypes = ' . $philaAllPostTypes . ';</script>';
+}
+
 /**
  * Move all "advanced" metaboxes above the default editor to allow for custom reordering
  *
