@@ -35,9 +35,6 @@ body.home header.site-header{
 
 }
 
-#content header{
-  background: transparent;
-}
 header .site-branding {
   background: transparent;
 }
@@ -253,4 +250,19 @@ aside {
 //TODO: Move to pattern portfolio and include options for all colors in palette
 .bg-sidewalk {
   background:$sidewalk !important;
+}
+
+.clickable-row.is-hover{
+  cursor:pointer;
+
+  &:hover {
+    background:$medium-gray;
+    .small-text{
+      color:$ghost-gray;
+    }
+    a {
+      color:$black;
+    }
+
+  }
 }
