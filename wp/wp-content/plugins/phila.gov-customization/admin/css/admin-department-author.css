@@ -1,6 +1,6 @@
 /*no cloning abilities*/
-.add-clone,
-.remove-clone,
+#content-blocks .add-clone,
+#content-blocks .remove-clone,
 /*hide unwanted items from the wordpress menus*/
 .menu-icon-service_post,
 .menu-icon-media,
