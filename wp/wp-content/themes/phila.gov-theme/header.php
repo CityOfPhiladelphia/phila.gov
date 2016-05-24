@@ -11,15 +11,16 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
 
-  <meta name="description" content="<?php bloginfo( 'description' ) ?>">
+  <meta name="description" content="<?php echo_item_meta_desc(); ?>">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Swiftype -->
   <meta class="swiftype" name="title" data-type="string" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) ); ?>" />
-  <?php if (is_single()) { ?>
-  <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
-  <?php } ?>
+
+  <?php if (is_single()) : ?>
+    <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
+  <?php endif; ?>
 
   <link rel="shortcut icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
 
@@ -58,23 +59,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header data-swiftype-index='false' id="masthead" class="site-header app" role="banner">
-    <div class="row site-branding">
-      <div class="small-16 columns">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo mbn-mu">
-          <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png" alt="home page"></a>
-          <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-          <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-        </div>
-        <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) {?> <div class="search-site small-8 columns"> <?php get_search_form(); ?> </div> <?php }?>
-      <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
-    </div>
-    <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
-      <?php if ( get_post_type() === 'department_page' ) : ?>
-        <div class="row expanded hide-for-small-only">
-        <?php else : ?>
-          <div class="row expanded">
-          <?php endif; ?>
+<header data-swiftype-index='false' id="masthead" class="site-header app">
+
+  <div class="row site-branding">
+    <div class="small-16 columns">
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo mbn-mu">
+        <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png" alt="home page"></a>
+        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+        <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+      </div>
+
+      <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) : ?>
+        <div class="search-site small-8 columns"> <?php get_search_form(); ?> </div>
+      <?php endif;?>
+
+    <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
+  </div>
+
+  <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
+
+    <?php //hide breadcrumbs on department page mobile views
+    if ( get_post_type() === 'department_page' ) : ?>
+      <div class="row expanded hide-for-small-only">
+    <?php else : ?>
+      <div class="row expanded">
+    <?php endif; ?>
+
       <div class="columns">
         <div class="row">
           <div data-swiftype-index='false' class="large-24 columns">
@@ -84,8 +94,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
   <?php endif; ?>
-  </header><!-- #masthead -->
+</header><!-- #masthead -->
   <?php
-    call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts'));
-  ?>
-  <div id="content" class="site-content">
+    //create alerts when appropriate
+    call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
+
+<div id="content" class="site-content">

@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area">
-  <main id="main" class="site-main home" role="main">
+  <main id="main" class="site-main home">
     <div class="hero-content">
       <div class="row">
         <section class="medium-18 small-centered columns">

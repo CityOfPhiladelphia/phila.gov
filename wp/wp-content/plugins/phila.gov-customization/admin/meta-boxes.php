@@ -271,12 +271,74 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'       => $prefix . 'resource_list',
+    'title'    => __( 'Resource List' ),
+    'pages'    => array( 'department_page', 'page' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+    'visible' => array('phila_template_select', 'resource_list'),
+
+    'fields' => array(
+
+      array(
+        'id'  => $prefix . 'resource_list',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+
+        'fields' => array(
+          array(
+            'name' => __('List Title', 'rwmb'),
+            'id'   => $prefix . 'resource_list_title',
+            'type' => 'text',
+            'required' => true,
+          ),
+          array(
+            'id'   => $prefix . 'resource_list_items',
+            'type' => 'group',
+            'clone'  => true,
+            'sort_clone' => true,
+
+            'fields' => array(
+                array(
+                  'name' => __('List Item Title', 'rwmb'),
+                  'id'   => $prefix . 'list_item_title',
+                  'type' => 'text',
+                  'required' => true,
+                ),
+                array(
+                  'name' => __('List Item URL', 'rwmb'),
+                  'id'   => $prefix . 'list_item_url',
+                  'type' => 'url',
+                  'required' => true,
+                ),
+                array(
+                   'name' => __('List Item Type', 'rwmb'),
+                   'id'   => $prefix . 'list_item_type',
+                   'type' => 'select',
+                   'placeholder' => 'Choose resource type...',
+                   'options' => array(
+                     $prefix . 'resource_link' => 'Link',
+                     $prefix . 'resource_document' => 'Document',
+                     $prefix . 'resource_map' => 'Map',
+                   ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+  $meta_boxes[] = array(
     'id'       => $prefix . 'custom_markup',
     'title'    => 'Custom Markup',
     'pages'    => array( 'department_page', 'page' ),
     'context'  => 'normal',
     'priority' => 'low',
-
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
     'fields' => array(
       array(
        'name' => 'Description',
@@ -332,6 +394,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'id'   => $prefix . 'module_row_1_col_1_type',
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_1_col_1_blog_posts' => 'Blog Posts',
             $prefix . 'module_row_1_col_1_custom_text' => 'Custom Text',
@@ -347,20 +410,28 @@ function phila_register_meta_boxes( $meta_boxes ){
                'id'   => $prefix . 'module_row_1_col_1_post_style',
                'desc'  => 'Recent posts are displayed as "Cards" by default.',
                'type' => 'select',
+               'placeholder' => 'Choose display style...',
+               'required'  => true,
                'options' => array(
                  $prefix . 'module_row_1_col_1_post_style_cards' => 'Card',
                  $prefix . 'module_row_1_col_1_post_style_list' => 'List',
                ),
+               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_blog_posts'),
+
              ),
              array(
               'name' => 'Custom Text Title',
               'id'   => $prefix . 'module_row_1_col_1_texttitle',
               'type' => 'text',
+              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+
              ),
              array(
               'name' => 'Custom Text Content',
               'id'   => $prefix . 'module_row_1_col_1_textarea',
               'type' => 'textarea',
+              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+
              ),
             ),
           ),
@@ -379,6 +450,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'id'   => $prefix . 'module_row_1_col_2_type',
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
             $prefix . 'module_row_1_col_2_custom_text' => 'Custom Text',
@@ -389,25 +461,17 @@ function phila_register_meta_boxes( $meta_boxes ){
           'type' => 'group',
           // List of sub-fields
           'fields' => array(
-            array(
-             'name' => 'Blog Post Style',
-             'id'   => $prefix . 'module_row_1_col_2_post_style',
-             'desc'  => 'Recent posts are displayed as "Cards" by default.',
-             'type' => 'select',
-             'options' => array(
-               $prefix . 'module_row_1_col_2_post_style_cards' => 'Card',
-               $prefix . 'module_row_1_col_2_post_style_list' => 'List',
-               ),
-             ),
              array(
               'name' => 'Custom Text Title',
               'id'   => $prefix . 'module_row_1_col_2_texttitle',
               'type' => 'text',
+              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
              ),
              array(
               'name' => 'Custom Text Content',
               'id'   => $prefix . 'module_row_1_col_2_textarea',
               'type' => 'textarea',
+              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
              ),
           ),
         ),
@@ -446,6 +510,7 @@ $meta_boxes[] = array(
           'id'   => $prefix . 'module_row_2_col_1_type',
           'desc'  => 'Choose to display calendar events or press releases.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
             $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
@@ -461,12 +526,14 @@ $meta_boxes[] = array(
               'id'   => $prefix . 'module_row_2_col_1_cal_id',
               'desc'  => 'ID of the calendar',
               'type' => 'text',
+              'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
             ),
             array(
               'name' => 'Calender URL',
               'id'   => $prefix . 'module_row_2_col_1_cal_url',
               'desc'  => 'URL of the full calendar',
               'type' => 'url',
+              'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
             ),
           ),
         ),
@@ -485,6 +552,7 @@ $meta_boxes[] = array(
           'id'   => $prefix . 'module_row_2_col_2_type',
           'desc'  => 'Choose to display calendar events or press releases.',
           'type' => 'select',
+          'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_2_col_2_calendar' => 'Calendar',
             $prefix . 'module_row_2_col_2_press_release' => 'Press Releases',
@@ -500,12 +568,14 @@ $meta_boxes[] = array(
               'id'   => $prefix . 'module_row_2_col_2_cal_id',
               'desc'  => 'ID of the calendar',
               'type' => 'text',
+              'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
             ),
             array(
               'name' => 'Calender URL',
               'id'   => $prefix . 'module_row_2_col_2_cal_url',
               'desc'  => 'URL of the full calendar',
               'type' => 'url',
+              'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
             ),
           ),
         ),
@@ -514,20 +584,16 @@ $meta_boxes[] = array(
   ),
 );
 
-  $meta_boxes[] = array(
-    'id'       => 'jotform-embed',
-    'title'    => 'JotForm Embed',
-    'pages'    => array( 'department_page' ),
-    'context'  => 'normal',
-    'priority' => 'low',
+return $meta_boxes;
 
-    'fields' => array(
-      array(
-       'name' => 'JotForm Markup',
-       'id'   => $prefix . 'jotform_embed',
-       'type' => 'textarea'
-     ),
-   ),
- );
-    return $meta_boxes;
+}
+// The following filter based on MetaBox documentation
+add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
+function phila_group_add_clone_button_text( $text, $field ) {
+  if ( 'phila_resource_list' == $field['id'] ) {
+      $text = __( '+ Add a Resource List', 'textdomain' );
+  } else if ( 'phila_resource_list_items' == $field['id'] ){
+    $text = __( '+ Add an Item', 'textdomain' );
+  }
+  return $text;
 }

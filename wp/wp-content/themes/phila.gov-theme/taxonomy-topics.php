@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area browse">
-  <main id="main" class="site-main" role="main">
+  <main id="main" class="site-main">
     <div class="row topics-browser">
       <div class="columns">
         <h1 class="contrast"><?php printf('Browse Topics'); ?></h1>

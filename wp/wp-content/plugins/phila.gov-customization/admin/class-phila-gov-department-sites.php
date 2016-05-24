@@ -9,46 +9,12 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   public function __construct(){
 
-    add_action( 'admin_init', array( $this, 'determine_page_level' ) );
-
     add_action( 'init', array( $this, 'register_content_blocks_shortcode' ) );
 
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
-    if ( $this->determine_page_level() ){
+    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
 
-      //for some reason, this priority needs to be lower than all the others?
-      add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
-
-      add_action( 'admin_print_styles', array($this, 'hide_wysiwyg_on_department_home' ) );
-
-      add_action( 'init', array($this, 'no_wpautop_on_department_homepages' ) );
-
-      add_filter( 'user_can_richedit', array($this, 'hide_visual_editor_department_home' )  );
-
-      add_filter('tiny_mce_before_init', array($this, 'override_mce_options' ) );
-    }
-
-  }
-
-  function determine_page_level() {
-
-    global $pagenow;
-
-    if ( ( is_admin() && 'post.php' == $pagenow )  ) {
-
-      $post = get_post( $_GET['post'] );
-
-      $post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
-
-      $children = get_pages( array( 'child_of' => $post_id ) );
-
-      if( ( count( $children ) == 0 ) && ( $post->post_parent == 0 ) ){
-
-        return true;
-
-      }
-    }
   }
 
   function phila_register_department_meta_boxes( $meta_boxes ){
@@ -56,10 +22,14 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     $meta_boxes[] = array(
       'id'       => 'departments',
-      'title'    => 'Department Information',
+      'title'    => 'Department General Information',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+
+      'exclude' => array(
+        'is_child'  => true,
+      ),
 
       'fields' => array(
         array(
@@ -87,6 +57,10 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'context'  => 'normal',
       'priority' => 'high',
 
+      'exclude' => array(
+        'is_child'  => true,
+      ),
+
       'fields' => array(
         array(
           'name'  => 'Alert text',
@@ -105,18 +79,20 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'clone' => false,
         ),
       )
-    );//External department link
+    );//Department homepage alert
+
     $meta_boxes[] = array(
       'title'    => 'Content Blocks',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
-      'priority' => 'high',
+      'priority' => 'low',
+
       'fields' => array(
         array(
          'id' => 'content_blocks',
          'type' => 'group',
          'clone'  => true,
-         // List of sub-fields
+         
          'fields' => array(
            array(
              'name' => 'ID',
@@ -177,13 +153,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       ),
       'fields' => array(
         array(
-          'name'  => 'Allow Non-Admin Access',
-          'id'    => $prefix . 'hero_header_admin_only',
-          'type'  => 'checkbox',
-          'class' => 'phila-access-control',
-          'desc'  => 'Allow non-admins to edit the Hero Header area',
-        ),
-        array(
           'name'  => 'Hero Header Title',
           'id'    => $prefix . 'hero_header_title',
           'type'  => 'text',
@@ -242,24 +211,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     return $meta_boxes;
 
-  }
-
-  // this will disable the visual editor for everyone but admins
-  function hide_wysiwyg_on_department_home() {
-    global $typenow;
-    if( ! current_user_can( PHILA_ADMIN ) && ( $typenow == 'department_page' ) ){
-      echo '<style>#postdivrich { display: none; }</style>';
-    }
-  }
-
-  function hide_visual_editor_department_home(){
-    global $typenow;
-
-    if( $typenow == 'department_page' ){
-      return false;
-    }else{
-      return true;
-    }
   }
 
   function content_blocks_shortcode( $atts ) {
@@ -327,11 +278,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   }
   function register_content_blocks_shortcode(){
-     add_shortcode( 'content-block', array($this, 'content_blocks_shortcode') );
-  }
-
-  function no_wpautop_on_department_homepages(){
-    remove_filter( 'the_content', 'wpautop' );
+    add_shortcode( 'content-block', array($this, 'content_blocks_shortcode') );
   }
 
   function override_mce_options($initArray) {
