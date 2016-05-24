@@ -12,7 +12,7 @@ jQuery( function ( $ )
 	ImageUploadField = views.ImageUploadField = ImageField.extend( {
 		createAddButton: function ()
 		{
-			this.addButton = new UploadButton( { collection: this.collection, props: this.props } );
+			this.addButton = new UploadButton( { controller: this.controller } );
 		}
 	} );
 
@@ -23,7 +23,6 @@ jQuery( function ( $ )
 	function init()
 	{
 		new ImageUploadField( { input: this, el: $( this ).siblings( 'div.rwmb-media-view' ) } );
-		console.log('win');
 	}
 	$( ':input.rwmb-image_upload, :input.rwmb-plupload_image' ).each( init );
 	$( '.rwmb-input' )

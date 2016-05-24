@@ -1,0 +1,25 @@
+.resource-list {
+  margin-bottom: 2rem;
+  header {
+    background-color: #58c04d; color: #FFFFFF; text-transform: uppercase; font-size: 1rem;
+  }
+  ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    li {
+      background-color: #f0f0f0;
+      margin: .75rem 0rem;
+      a {
+        display: table;
+        div {
+          display: table-cell;
+          vertical-align: middle;
+        }
+        i {
+          margin: 0 1rem 0 0;
+        }
+      }
+    }
+  }
+}
