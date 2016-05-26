@@ -33,6 +33,8 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_press_release' ) );
 
+    add_action( 'init', array( $this, 'create_phila_event_page_type' ) );
+
   }
 
   function create_phila_services() {
@@ -266,6 +268,37 @@ class Phila_Gov_Custom_Post_Types{
         'rewrite' => array(
             'slug' => 'press-releases',
             'with_front' => false,
+        ),
+      )
+    );
+  }
+  function create_phila_event_page_type() {
+    register_post_type( 'event_page',
+      array(
+        'labels' => array(
+          'name' => __( 'Events' ),
+          'menu_name' => __('Event Page'),
+          'singular_name' => __( 'Event' ),
+          'add_new'   => __( 'Add a Page' ),
+          'all_items'   => __( 'All Pages' ),
+          'add_new_item' => __( 'Add a Event Page' ),
+          'edit_item'   => __( 'Edit Event Page' ),
+          'view_item'   => __( 'View Event Page' ),
+          'search_items'   => __( 'Search Event Pages' ),
+          'not_found'   => __( 'No Pages Found' ),
+          'not_found_in_trash'   => __( 'Event Page not found in trash' ),
+        ),
+        'taxonomies' => array('category'),
+        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions', 'thumbnail'),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_nav_menus' => true,
+        'menu_icon' => 'dashicons-tickets-alt',
+        'hierarchical' => true,
+        'query_var' => true,
+        'rewrite' => array(
+          'slug' => 'events',
+          'with_front' => false,
         ),
       )
     );
