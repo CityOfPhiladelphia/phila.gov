@@ -86,6 +86,13 @@
     }
   }
   // Hero Header Alterations
+  #header-image, .photo-credit{
+      display: none;
+      @media screen and (min-width: 40em) {
+        display: inline-block;
+      }
+  }
+
   .intro {
     background: none;
     img {
@@ -103,5 +110,15 @@
     @media screen and (min-width: 40em) {
       display: none;
     }
+  }
+  //Vertical Align helper
+  .valign {
+    display: table;
+    width: 100%;
+    height: inherit;
+  }
+  .valign-cell {
+    display: table-cell;
+    vertical-align: middle;
   }
 }
