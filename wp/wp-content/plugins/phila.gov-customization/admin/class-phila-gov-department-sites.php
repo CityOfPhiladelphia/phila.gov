@@ -92,7 +92,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
          'id' => 'content_blocks',
          'type' => 'group',
          'clone'  => true,
-         
+
          'fields' => array(
            array(
              'name' => 'ID',
@@ -140,72 +140,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
             ),
           )
         )
-      )
-    );
-    $meta_boxes[] = array(
-      'id'       => 'hero-header',
-      'title'    => 'Hero Header',
-      'pages'    => array( 'department_page' ),
-      'context'  => 'normal',
-      'priority' => 'high',
-      'include' => array(
-        'user_role'  => 'administrator',
-      ),
-      'fields' => array(
-        array(
-          'name'  => 'Hero Header Title',
-          'id'    => $prefix . 'hero_header_title',
-          'type'  => 'text',
-          'class' => 'hero-header-title',
-          'desc'  => 'Title that will be placed over the header image.',
-          'size'  => '60'
-        ),
-        array(
-          'name'  => 'Hero Header Body Copy',
-          'id'    => $prefix . 'hero_header_body_copy',
-          'type'  => 'textarea',
-          'class' => 'hero-header-body-copy',
-          'desc'  => 'Text that will be placed over the header image and below the Hero Header Title.',
-          'size'  => '60'
-        ),
-        array(
-          'name'  => 'Call to Action Button URL',
-          'desc'  => 'Optional URL to include as a "call to action" button',
-          'id'    => $prefix . 'hero_header_call_to_action_button_url',
-          'type'  => 'URL',
-          'class' => 'hero-header-call-to-action-button-url',
-        ),
-        array(
-          'name'  => 'Call to Action Button Text',
-          'id'    => $prefix . 'hero_header_call_to_action_button_text',
-          'type'  => 'text',
-          'class' => 'hero-header-call-to-action-button-text',
-          'desc'  => 'Text that appears on the "call to action" button.',
-          'size'  => '30'
-        ),
-        array(
-          'name'  => 'Image',
-          'id'    => $prefix . 'hero_header_image',
-          'type'  => 'file_input',
-          'class' => 'hero-header-image',
-          'desc'  => 'Image should be no smaller than 975px by 430px.'
-        ),
-        array(
-          'name'  => 'Image Alt Text',
-          'id'    => $prefix . 'hero_header_image_alt_text',
-          'type'  => 'text',
-          'class' => 'hero-header-image-alt-text',
-          'desc'  => 'A short description used to inform visitors about the contents of an image.',
-          'size'  => '60'
-        ),
-        array(
-          'name' => 'Image Credit',
-          'id'   => $prefix . 'hero_header_image_credit',
-          'type' => 'text',
-          'class' => 'hero-header-image-credit',
-          'desc'  => 'Provide attribution information when necessary.',
-          'size'  => '60'
-        ),
       )
     );
 
