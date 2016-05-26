@@ -288,7 +288,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 
         'fields' => array(
           array(
-            'name' => __('List Group Title', 'rwmb'),
+            'name' => __('List Title', 'rwmb'),
             'id'   => $prefix . 'resource_list_title',
             'type' => 'text',
             'required' => true,
@@ -313,7 +313,7 @@ function phila_register_meta_boxes( $meta_boxes ){
                   'required' => true,
                 ),
                 array(
-                   'name' => __('Item Type', 'rwmb'),
+                   'name' => __('Item Icon', 'rwmb'),
                    'id'   => $prefix . 'list_item_type',
                    'type' => 'select',
                    'placeholder' => 'Choose icon...',
