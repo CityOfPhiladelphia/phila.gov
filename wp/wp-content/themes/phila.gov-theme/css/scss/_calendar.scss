@@ -25,24 +25,37 @@ a[href*="google.com/calendar"]:after{
   padding: 0 5px;
 }
 
+
 @media only screen and (min-width: 40.063em) {
-  .calendar-date{
-    text-align:center;
-    font-family: 'Montserrat', 'Tahoma', sans-serif;
-    color:$white;
-
-    .month{
-      background:$ben-franklin-blue;
-      display: block;
-      text-transform: uppercase;
-
-    }
-
-    .day{
-      font-size: 3rem;
-      font-weight: bold;
-      background:$ben-franklin-blue;
-      display: block;
-    }
+  .calendar-row{
+    background:url('https://ec2-54-88-31-248.compute-1.amazonaws.com/media/20160526105050/calendar-bg.jpg') no-repeat center top;
+    background-size:cover;
   }
+  .columns.calendar-details{
+    background-color:rgba(255, 255, 255, .8);
+    padding:1rem;
+    min-height:94px;
+  }
+}
+.simcal-event {
+  margin-bottom:1rem;
+}
+.calendar-date{
+  text-align:center;
+  font-family: 'Montserrat', 'Tahoma', sans-serif;
+  color:$white;
+  background:$ben-franklin-blue;
+
+  .month{
+    display: block;
+    text-transform: uppercase;
+
+  }
+
+  .day{
+    font-size: 4rem;
+    line-height: 3rem;
+    display: block;
+  }
+
 }
