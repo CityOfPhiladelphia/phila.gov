@@ -86,7 +86,6 @@ get_header(); ?>
               <div class="row">
                 <div class=" medium-8 large-8 columns event-logistics">
                   <div class="row">
-
                     <div class="small-10 medium-24 large-24 columns equal-height">
                       <div class="equal event-icon event-date-icon">
                         <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
@@ -101,7 +100,7 @@ get_header(); ?>
                         <i class="fa fa-map-marker fa-4x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-location-details small-text">
-                        <h4>Location</h4>
+                        <h4>Main Location</h4>
                         <?php echo $event_location;?>
                       </div>
                     </div>
