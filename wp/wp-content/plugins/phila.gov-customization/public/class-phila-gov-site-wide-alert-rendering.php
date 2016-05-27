@@ -62,6 +62,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
             $alert_icon = 'ion-ios-rainy';
             break;
           case 'Other':
+            $alert_class = rwmb_meta( 'phila_alert-class', $args = array('type' => 'text'));
             $alert_icon = rwmb_meta( 'phila_icon', $args = array('type' => 'text'));
             ($alert_icon == '') ? $alert_icon = 'ion-alert-circled' : $alert_icon;
             break;
@@ -76,7 +77,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
-        ?><div id="site-wide-alert" data-swiftype-index='false'>
+        ?><div id="site-wide-alert" <?php if ($alert_class != '') echo 'class="'. $alert_class .'"'; ?> data-swiftype-index='false'>
             <div class="row"><?php
         echo '<div class="large-9 columns">';
         echo '<h2><i class="ionicons ' . $alert_icon . '"></i>' . get_the_title() .'</h2>';
