@@ -100,6 +100,59 @@
       display: none;
     }
   }
+  //Service Updates
+  .service-update{
+    /*width: 100%;
+    height:auto;
+    background: #f0f0f0;*/
+    color: #444444;
+    margin-bottom: .5rem;
+
+    .critical {
+      .service-update-icon{
+        background: #FE0000;
+      }
+    }
+    .warning {
+      .service-update-icon{
+        background: #F3C800;
+      }
+    }
+    .service-update-icon {
+      float:left;
+      width: 70px;
+      height: 100%;
+      text-align: center;
+      max-height: none;
+      background: #54C247;
+      color:#fff;
+
+      .fa{
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .icon-label{
+        text-transform: uppercase;
+        font-weight: normal;
+        font-family:'Montserrat', 'Tahoma', sans-serif;
+        color: #fff;
+        font-size: .7rem;
+      }
+    }
+
+    .service-update-details {
+      color: #444444;
+      background: #f0f0f0;
+      text-align: left;
+      text-transform: none;
+      margin-left: 75px;
+
+      .date {
+        font-weight: normal;
+      }
+    }
+  }
   //Vertical Align helper
   .valign {
     display: table;
