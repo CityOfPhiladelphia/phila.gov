@@ -30,8 +30,9 @@
       .event-icon {
         float: left;
         text-align: center;
+        min-width: initial;
         @media screen and (min-width: 40em) {
-          min-width: initial;
+          min-width: 5rem;
         }
 
         .fa {
