@@ -84,20 +84,20 @@ get_header(); ?>
               <h2 class="contrast">Official Event Information</h2>
 
               <div class="row">
-                <div class="large-8 columns event-logistics">
+                <div class=" medium-8 large-8 columns event-logistics">
                   <div class="row">
 
-                    <div class="small-12 large-24 columns equal-height">
-                      <div class="equal event-date-icon">
+                    <div class="small-10 medium-24 large-24 columns equal-height">
+                      <div class="equal event-icon event-date-icon">
                         <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-date-details small-text">
                         <h4>Dates</h4>
-                        <?php echo $event_start_date . ' - ' . $event_end_date;?>
+                        <?php echo '<span class="nowrap">' . $event_start_date . '</span> - <span class="nowrap">' . $event_end_date . '</span>';?>
                       </div>
                     </div>
-                    <div class="small-12 large-24 columns equal-height">
-                      <div class="equal event-location-icon">
+                    <div class="small-14 medium-24 large-24 columns equal-height">
+                      <div class="equal event-icon event-location-icon">
                         <i class="fa fa-map-marker fa-4x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-location-details small-text">
@@ -108,7 +108,7 @@ get_header(); ?>
 
                   </div>
                 </div>
-                <div class="large-16 columns event-description">
+                <div class="large-16 medium-16 columns event-description">
                   <div>
                     <?php echo $event_description;?>
                   </div>

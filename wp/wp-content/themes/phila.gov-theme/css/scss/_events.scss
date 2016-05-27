@@ -18,29 +18,28 @@
     .event-details {
 
       .event-logistics{
-        border-right:1px solid gray;
+        border-right:0;
+        @media screen and (min-width: 40em) {
+          border-right:1px solid gray;
 
-        // border: 0;
-        // @media screen and (max-width: 64em) {
-        //   border: 0;
-        // }
-        @media only screen and (max-width: 64em) {
-          border-right:0;
         }
       }
       h4 {
         margin-bottom:0;
       }
-      .event-date-icon {
+      .event-icon {
         float: left;
-        // display:none;
-        // @media screen and (min-width: 40em) {
-        //   display:block;
-        //   float:left;
-        // }
+        text-align: center;
+        @media screen and (min-width: 40em) {
+          min-width: initial;
+        }
+
         .fa {
           padding: 0 1rem 0;
-          // line-height: 50px;
+          font-size: 2rem;
+          @media screen and (min-width: 40em) {
+            font-size: 3rem;
+          }
         }
       }
       .event-date-details {
@@ -48,28 +47,17 @@
           margin-bottom: 2rem;
         }
       }
-      .event-location-icon {
-        float: left;
-        // display:none;
-        // @media screen and (min-width: 40em) {
-        //   display:block;
-        //   float:left;
-        // }
-        .fa {
-          padding: 0 1rem 0;
-          // line-height: 70px;
-        }
-      }
       .event-location-details{
         overflow: auto;
       }
     }
     .event-description {
-      margin:1rem 0;
+      margin:.5rem 0 0;
       @media screen and (min-width: 40em) {
         margin:0;
       }
       div {
+        padding:1rem;
         @media screen and (min-width: 40em) {
           padding-left: 1.5rem;
         }
