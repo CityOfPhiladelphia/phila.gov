@@ -30,12 +30,18 @@ get_header(); ?>
             $hero_header_body_copy = rwmb_meta( 'phila_hero_header_body_copy', $args = array('type' => 'textarea'));
             $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
             $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
-            // Set Event Details
+            // Set Event Detail vars
             $event_description = rwmb_meta('phila_event_desc' , $args = array('type' => 'textarea'));
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
+            // Set Status Update vars
+            // TODO: Replace with actual values
+            $status_update_message = 'It\'s a test';
+            $status_update_level = 'critical';
+            $status_update_icon = 'fa-subway';
+            $status_update_dates = 'July 25';
       ?>
     <?php endif; ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
@@ -123,6 +129,42 @@ get_header(); ?>
         </div>
       </div>
     <?php endif; ?>
+
+    <?php // TODO: Insert markup for service updates. ?>
+    <?php if (!$status_update_message == ''): ?>
+      <div class="row mvm">
+        <h2 class="contrast">City Service Updates &amp; Changes</h2>
+        <p>Please continue to access this page for up-todate information. To ask questions or report an issue, contact 3-1-1.</p>
+        <?php // TODO: If the status alert's level is set, add the class ?>
+        <div class="small-24 columns centered service-update equal-height <?php if ( !$status_update_level == '' ) echo $status_update_level; ?> ">
+          <a href="#/">
+              <div class="service-update-icon equal">
+                <div class="valign">
+                  <div class="valign-cell pam">
+                    <?php // TODO: If the status alert's icon is set, add the class ?>
+                    <i class="fa <?php if ( $status_update_icon ) echo $status_update_icon; ?>  fa-2x" aria-hidden="true"></i>
+                    <span class="icon-label small-text">City</span>
+                  </div>
+                </div>
+              </div>
+              <div class="service-update-details pam equal">
+                  <div>
+                    <?php // TODO: If the status alert message is set, add the message ?>
+                    <?php if ( !$status_update_message == '' ):?>
+                      <span><?php  echo $status_update_message; ?></span>
+                    <?php endif;?>
+                    <br/>
+                    <?php // TODO: If the status alert date is set, add the date ?>
+                    <?php if ( !$status_update_dates == '' ):?>
+                      <span class="date small-text"><em><?php  echo $status_update_dates; ?></em></span>
+                    <?php endif;?>
+                  </div>
+              </div>
+          </a>
+        </div>
+      </div>
+    <?php endif; ?>
+
     <!-- WYSIWYG content -->
     <?php if( get_the_content() != '' ) : ?>
     <section class="wysiwyg-content">
