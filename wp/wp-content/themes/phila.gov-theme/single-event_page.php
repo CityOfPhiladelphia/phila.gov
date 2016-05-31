@@ -119,7 +119,16 @@ get_header(); ?>
                       </div>
                       <div class="equal event-date-details small-text">
                         <h4>Dates</h4>
-                        <?php echo '<span class="nowrap">' . $event_start_date . '</span> - <span class="nowrap">' . $event_end_date . '</span>';?>
+
+                        <?php // TODO: Create a date utility to replace this ?>
+                        <?php $comparison_date_one = explode(' ', $event_start_date); ?>
+                        <?php $comparison_date_two = explode(' ', $event_end_date); ?>
+                        <?php if ($comparison_date_one[0] === $comparison_date_two[0]): ?>
+                          <span class="nowrap"><?php echo $event_start_date; ?></span> - <span class="nowrap"><?php echo $comparison_date_two[1]; ?></span>
+                        <?php else: ?>
+                          <span class="nowrap"><?php echo $event_start_date; ?></span> - <span class="nowrap"><?php echo $event_end_date; ?></span>
+                        <?php endif; ?>
+
                       </div>
                     </div>
                     <div class="small-14 medium-24 large-24 columns equal-height">
@@ -189,6 +198,7 @@ get_header(); ?>
 
     <!-- Things to See and Do -->
     <?php $output_array = phila_get_event_posts(); ?>
+
     <div class="row equal-height">
       <div class="small-24 columns">
         <h2 class="contrast">Things to See &amp; Do</h2>
@@ -229,10 +239,12 @@ get_header(); ?>
             </div>
           </div>
         </div>
+        <!-- TODO: Link to the correct post category -->
         <a class="see-all-right float-right" href="/posts/">All Things to See &amp; Do</a>
       </div>
     </div>
 
+    <!-- TODO: Identify correct news Category -->
     <!-- Recent News  -->
     <!-- <div class="row news">
     <?php //echo do_shortcode('[recent-news posts="3"]'); ?>
