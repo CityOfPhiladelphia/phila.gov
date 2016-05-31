@@ -72,6 +72,14 @@ class Phila_Gov_Site_Wide_Alert {
           'desc'  => '<a href="http://ionicons.com/" target="_new">Choose icon</a>. Enter icon name only i.e. <i>ion-alert-circled</i>'
         ),
         array(
+          'name'  => 'Custom Alert Class',
+          'id'    => $prefix . 'alert-class',
+          'type'  => 'text',
+          'class' => 'other-alert-class',
+          'size'  => 25,
+          'desc'  => 'For non-urgent alerts use the "subtle" class.'
+        ),
+        array(
           'name'  => 'Alert Start Time',
           'id'    => $prefix . 'alert_start',
           'class' =>  'start-time',

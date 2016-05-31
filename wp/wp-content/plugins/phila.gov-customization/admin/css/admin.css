@@ -22,11 +22,6 @@
   display: none;
 }
 
-.rwmb-button.remove-clone {
-  background: #555;
-  margin: .5rem .5rem 0;
-}
-
 .rwmb-button.remove-clone:hover {
   background: #C00;
 }
@@ -59,11 +54,11 @@
 }
 
 #phila_resource_list .rwmb-group-wrapper .rwmb-clone:after {
-    content: "";
-    display: block;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    border-bottom: 1px solid #e0e0e0;
+  content: "";
+  display: block;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 #phila_resource_list a.rwmb-button.button-primary.add-clone {
@@ -73,4 +68,14 @@
 
 #phila_resource_list .rwmb-group-wrapper .rwmb-group-clone a.rwmb-button.button-primary.add-clone {
   margin-right: .5rem;
+}
+
+.rwmb-button.remove-clone {
+  background: #555;
+  margin: .5rem .5rem 0;
+}
+
+input.error, textarea.error, select.error {
+  border-color: #c00 !important;
+  background: #ffebe8 !important;
 }
