@@ -133,10 +133,10 @@ get_header(); ?>
     <?php // TODO: Insert markup for service updates. ?>
     <?php if (!$status_update_message == ''): ?>
       <div class="row mvm">
-        <h2 class="contrast">City Service Updates &amp; Changes</h2>
-        <p>Please continue to access this page for up-todate information. To ask questions or report an issue, contact 3-1-1.</p>
         <?php // TODO: If the status alert's level is set, add the class ?>
         <div class="small-24 columns centered service-update equal-height <?php if ( !$status_update_level == '' ) echo $status_update_level; ?> ">
+          <h2 class="contrast">City Service Updates &amp; Changes</h2>
+          <p>Please continue to access this page for up-todate information. To ask questions or report an issue, contact 3-1-1.</p>
           <a href="#/">
               <div class="service-update-icon equal">
                 <div class="valign">
@@ -164,6 +164,31 @@ get_header(); ?>
         </div>
       </div>
     <?php endif; ?>
+
+    <!-- Things to See and Do -->
+    <div class="row equal-height">
+      <div class="small-24 columns">
+        <h2 class="contrast">Things to See &amp; Do</h2>
+        <!-- Begin Column One -->
+        <div class="large-6 columns">
+          <div class="row">
+            <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
+          </div>
+        </div>
+        <!-- Begin Column Two -->
+        <div class="large-18 columns">
+          <div class="row">
+            <?php echo do_shortcode('[recent-posts list posts="3"]'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Recent News  -->
+    <div class="row news">
+    <?php echo do_shortcode('[recent-news posts="3"]'); ?>
+    </div>
 
     <!-- WYSIWYG content -->
     <?php if( get_the_content() != '' ) : ?>
