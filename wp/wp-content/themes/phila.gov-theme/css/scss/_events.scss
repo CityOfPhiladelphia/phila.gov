@@ -169,6 +169,13 @@
         font-size: 1.78571rem;
       }
     }
+    li {
+      span {
+        @media screen and (min-width: 40em) {
+          overflow: auto;
+        }
+      }
+    }
   }
   //Vertical Align helper
   .valign {
