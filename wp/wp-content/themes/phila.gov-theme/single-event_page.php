@@ -43,26 +43,33 @@ get_header(); ?>
       // TODO: Replace with actual values
       $status_updates = array(
           0 => array(
-            'message' => 'It\'s a transit test with a somewhat long title',
-            'level' => 'critical',
-            'type' => 'Transit',
-            'icon' => 'fa-subway',
-            'dates' => 'July 25',
+            'message' => 'All City of Philadelphia offices will remain open for business.',
+            'level' => '',
+            'type' => 'City',
+            'icon' => 'fa-institution',
+            'dates' => 'July 25 -28, 2016',
           ),
           1 => array(
-            'message' => 'It\'s a trash test with a really  really  really  really  really  really  really  really  really  really  really  really  really  really  really  really  really long title',
+            'message' => 'Trash and recycling pickup will occur on a normal schedule. Stay tuned for additional information.',
             'level' => '',
             'type' => 'Trash',
             'icon' => 'fa-trash',
-            'dates' => 'July 25 - 28th',
+            'dates' => 'July 25, 2016',
           ),
           2 => array(
-            'message' => 'It\'s a City test',
+            'message' => 'Road closures will be minimal. Stay tuned for additional information.',
             'level' => 'warning',
-            'type' => 'City',
-            'icon' => 'fa-institution',
-            'dates' => 'July 25',
+            'type' => 'Roads',
+            'icon' => 'fa-road',
+            'dates' => 'July 25 -28, 2016',
           ),
+          // 3 => array(
+          //   'message' => 'It\'s a transit test with a somewhat long title',
+          //   'level' => 'critical',
+          //   'type' => 'Transit',
+          //   'icon' => 'fa-subway',
+          //   'dates' => 'July 25',
+          // ),
       );
     ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
@@ -163,7 +170,7 @@ get_header(); ?>
         <div class="row mvm">
           <div class="small-24 columns">
             <div class="row">
-              <div class="small-18 columns">
+              <div class="large-18 columns">
             <?php if (is_array($status_updates)): ?>
             <h2 class="contrast">City Service Updates &amp; Changes</h2>
             <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
@@ -185,7 +192,7 @@ get_header(); ?>
                             <span><?php  echo $update['message']; ?></span>
                           <?php endif;?>
                           <br/>
-                          <?php if ( !$update['dates'] == '' ):?>
+                          <?php if ( !$update['dates'] == '' && !$update['level'] == '' ):?>
                             <span class="date small-text"><em>In Effect: <?php  echo $update['dates']; ?></em></span>
                           <?php endif;?>
                         </div>
@@ -196,7 +203,7 @@ get_header(); ?>
             </div>
           </div>
           <?php endif; ?>
-            <div class="small-6 columns permits">
+            <div class="large-6 columns permits">
               <h2 class="contrast">Permits</h2>
               <div class="panel">
                 <header>
