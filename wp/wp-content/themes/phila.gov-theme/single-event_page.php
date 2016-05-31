@@ -164,7 +164,7 @@ get_header(); ?>
         <div class="row mvm">
           <div class="small-24 columns">
             <h2 class="contrast">City Service Updates &amp; Changes</h2>
-            <p>Please continue to access this page for up-todate information. To ask questions or report an issue, contact 3-1-1.</p>
+            <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
             <div class="row">
             <?php foreach ($status_updates as $update):?>
               <div class="small-24 columns centered service-update equal-height <?php if ( !$update['level'] == '' ) echo $update['level']; ?> ">
@@ -195,6 +195,12 @@ get_header(); ?>
           </div>
         </div>
     <?php endif; ?>
+
+    <!-- TODO: Identify correct news Category -->
+    <!-- Recent News  -->
+    <div class="row news equal-height">
+    <?php echo do_shortcode('[recent-news posts="3"]'); ?>
+    </div>
 
     <!-- Things to See and Do -->
     <?php $output_array = phila_get_event_posts(); ?>
@@ -243,12 +249,6 @@ get_header(); ?>
         <a class="see-all-right float-right" href="/posts/">All Things to See &amp; Do</a>
       </div>
     </div>
-
-    <!-- TODO: Identify correct news Category -->
-    <!-- Recent News  -->
-    <!-- <div class="row news">
-    <?php //echo do_shortcode('[recent-news posts="3"]'); ?>
-    </div> -->
 
     <!-- WYSIWYG content -->
     <?php if( get_the_content() != '' ) : ?>
