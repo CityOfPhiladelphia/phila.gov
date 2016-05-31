@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
-    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src'),
 );
