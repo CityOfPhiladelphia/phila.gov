@@ -301,22 +301,22 @@ function phila_register_meta_boxes( $meta_boxes ){
 
             'fields' => array(
                 array(
-                  'name' => __('List Item Title', 'rwmb'),
+                  'name' => __('Item Title', 'rwmb'),
                   'id'   => $prefix . 'list_item_title',
                   'type' => 'text',
                   'required' => true,
                 ),
                 array(
-                  'name' => __('List Item URL', 'rwmb'),
+                  'name' => __('Item URL', 'rwmb'),
                   'id'   => $prefix . 'list_item_url',
                   'type' => 'url',
                   'required' => true,
                 ),
                 array(
-                   'name' => __('List Item Type', 'rwmb'),
+                   'name' => __('Item Icon', 'rwmb'),
                    'id'   => $prefix . 'list_item_type',
                    'type' => 'select',
-                   'placeholder' => 'Choose resource type...',
+                   'placeholder' => 'Choose icon...',
                    'options' => array(
                      $prefix . 'resource_link' => 'Link',
                      $prefix . 'resource_document' => 'Document',
