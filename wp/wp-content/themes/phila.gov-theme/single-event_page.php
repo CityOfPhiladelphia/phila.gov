@@ -166,24 +166,84 @@ get_header(); ?>
     <?php endif; ?>
 
     <!-- Things to See and Do -->
+    <?php
+    // TODO: Move this to a functions.php
+    $category = get_the_category();
+
+    $args = array( 'posts_per_page' => 4,
+    'order'=> 'DESC',
+    'orderby' => 'date',
+    'post_type'  => 'phila_post',
+    'cat' => $category[0]->cat_ID,
+    );
+
+    $blog_loop = new WP_Query( $args );
+    $output = '';
+    $featured_output_array = array();
+    $output_array = array();
+
+    if ( $blog_loop->have_posts() ){
+      $post_counter = 0;
+
+      while( $blog_loop->have_posts() ) : $blog_loop->the_post();
+      $post_counter++;
+      $output_item ='';
+
+      $desc = rwmb_meta('phila_post_desc', $args = array('type'=>'textarea'));
+
+      if($post_counter === 1){
+        $output_item .= '<a href="' . get_permalink() .'" class="card">';
+        $output_item .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
+        $output_item .= '<div class="content-block equal">';
+        $output_item .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
+        $output_item .= '<p>' . $desc  . '</p>';
+        $output_item .= '</div></a>'; //content-block, columns
+        array_push($featured_output_array, $output_item);
+
+      } else {
+
+        $link = get_permalink();
+
+        $output_item .= '<li class="group mbm pbm">';
+        $output_item .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class= small-thumb mrm' );
+        $output_item .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
+        $output_item .= '<a href="' . get_permalink() .'"><h3>' . get_the_title( $post->ID ) . '</h3></a>';
+        $output_item .= '<span class="small-text">' . $desc . '</span>';
+        $output_item .= '</li>';
+        array_push($output_array, $output_item);
+      }
+      endwhile;
+    }
+    wp_reset_postdata();
+    ?>
     <div class="row equal-height">
       <div class="small-24 columns">
         <h2 class="contrast">Things to See &amp; Do</h2>
         <!-- Begin Column One -->
         <div class="large-6 columns">
           <div class="row">
-            <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
+            <div class="large-24 columns">
+              <?php echo $featured_output_array[0]; ?>
+            </div>
           </div>
         </div>
         <!-- Begin Column Two -->
         <div class="large-18 columns">
           <div class="row">
-            <?php echo do_shortcode('[recent-posts list posts="3"]'); ?>
+            <div class="large-24 columns">
+              <div class="news equal">
+                <ul>
+                  <?php foreach ($output_array as $output_val){
+                    echo $output_val;
+                  } ?>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
+        <a class="see-all-right float-right" href="/posts/">All Things to See &amp; Do</a>
       </div>
     </div>
-
 
     <!-- Recent News  -->
     <div class="row news">
