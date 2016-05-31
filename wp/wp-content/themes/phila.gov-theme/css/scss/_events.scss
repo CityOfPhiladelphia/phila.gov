@@ -153,6 +153,23 @@
       }
     }
   }
+  // Event news
+  .news{
+    //Override classes that are added by the recent_news shortcode
+    h2{
+      padding: 0;
+      margin: .92857rem 0;
+      letter-spacing: .03rem;
+      font-size: 1.42857rem;
+      text-transform: none;
+      border-bottom: 10px solid $ben-franklin-blue;
+      margin-bottom: $spacing-large;
+
+      @media screen and (min-width: 40em) {
+        font-size: 1.78571rem;
+      }
+    }
+  }
   //Vertical Align helper
   .valign {
     display: table;
