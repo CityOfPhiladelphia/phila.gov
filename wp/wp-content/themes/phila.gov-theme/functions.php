@@ -1057,6 +1057,42 @@ function get_department_category(){
   echo $category[0]->cat_name;
 }
 
+function phila_get_event_posts(){
+
+  global $post;
+  $category = get_the_category();
+
+  $args = array( 'posts_per_page' => 4,
+  'order'=> 'DESC',
+  'orderby' => 'date',
+  'post_type'  => 'phila_post',
+  'cat' => $category[0]->cat_ID,
+  );
+
+  $blog_loop = new WP_Query( $args );
+  $featured_output_array = array();
+  $output_array = array();
+
+  if ( $blog_loop->have_posts() ){
+    $post_counter = 0;
+
+    while( $blog_loop->have_posts() ) : $blog_loop->the_post();
+    $post_counter++;
+    $output_item ='';
+
+      $output_item = array(
+        'postID' => $post->ID,
+        'permalink' => get_permalink(),
+        'date' => get_the_date(),
+        'desc' => rwmb_meta('phila_post_desc', $args = array('type'=>'textarea')),
+      );
+    array_push($output_array, $output_item);
+    endwhile;
+  }
+  wp_reset_postdata();
+  return $output_array;
+}
+
 function echo_item_meta_desc(){
   global $post;
 

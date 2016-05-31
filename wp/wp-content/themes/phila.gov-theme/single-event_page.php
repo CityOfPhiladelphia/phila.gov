@@ -36,14 +36,35 @@ get_header(); ?>
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
-            // Set Status Update vars
-            // TODO: Replace with actual values
-            $status_update_message = 'It\'s a test';
-            $status_update_level = 'critical';
-            $status_update_icon = 'fa-subway';
-            $status_update_dates = 'July 25';
-      ?>
+            ?>
     <?php endif; ?>
+    <?php
+      // Set Status Update vars
+      // TODO: Replace with actual values
+      $status_updates = array(
+          0 => array(
+            'message' => 'It\'s a transit test with a somewhat long title',
+            'level' => 'critical',
+            'type' => 'Transit',
+            'icon' => 'fa-subway',
+            'dates' => 'July 25',
+          ),
+          1 => array(
+            'message' => 'It\'s a trash test with a really  really  really  really  really  really  really  really  really  really  really  really  really  really  really  really  really long title',
+            'level' => '',
+            'type' => 'Trash',
+            'icon' => 'fa-trash',
+            'dates' => 'July 25 - 28th',
+          ),
+          2 => array(
+            'message' => 'It\'s a City test',
+            'level' => 'warning',
+            'type' => 'City',
+            'icon' => 'fa-institution',
+            'dates' => 'July 25',
+          ),
+      );
+    ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
     <?php if (!$append_before_wysiwyg == ''):?>
       <div class="row before-wysiwyg">
@@ -130,92 +151,44 @@ get_header(); ?>
       </div>
     <?php endif; ?>
 
-    <?php // TODO: Insert markup for service updates. ?>
-    <?php if (!$status_update_message == ''): ?>
-      <div class="row mvm">
-        <?php // TODO: If the status alert's level is set, add the class ?>
-        <div class="small-24 columns centered service-update equal-height <?php if ( !$status_update_level == '' ) echo $status_update_level; ?> ">
-          <h2 class="contrast">City Service Updates &amp; Changes</h2>
-          <p>Please continue to access this page for up-todate information. To ask questions or report an issue, contact 3-1-1.</p>
-          <a href="#/">
-              <div class="service-update-icon equal">
-                <div class="valign">
-                  <div class="valign-cell pam">
-                    <?php // TODO: If the status alert's icon is set, add the class ?>
-                    <i class="fa <?php if ( $status_update_icon ) echo $status_update_icon; ?>  fa-2x" aria-hidden="true"></i>
-                    <span class="icon-label small-text">City</span>
-                  </div>
-                </div>
+    <?php if (is_array($status_updates)): ?>
+        <div class="row mvm">
+          <div class="small-24 columns">
+            <h2 class="contrast">City Service Updates &amp; Changes</h2>
+            <p>Please continue to access this page for up-todate information. To ask questions or report an issue, contact 3-1-1.</p>
+            <div class="row">
+            <?php foreach ($status_updates as $update):?>
+              <div class="small-24 columns centered service-update equal-height <?php if ( !$update['level'] == '' ) echo $update['level']; ?> ">
+                <a href="#/">
+                    <div class="service-update-icon equal">
+                      <div class="valign">
+                        <div class="valign-cell pam">
+                          <i class="fa <?php if ( $update['icon'] ) echo $update['icon']; ?>  fa-2x" aria-hidden="true"></i>
+                          <span class="icon-label small-text"><?php if ( $update['type'] ) echo $update['type']; ?></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="service-update-details pam equal">
+                        <div>
+                          <?php if ( !$update['message'] == '' ):?>
+                            <span><?php  echo $update['message']; ?></span>
+                          <?php endif;?>
+                          <br/>
+                          <?php if ( !$update['dates'] == '' ):?>
+                            <span class="date small-text"><em>In Effect: <?php  echo $update['dates']; ?></em></span>
+                          <?php endif;?>
+                        </div>
+                    </div>
+                </a>
               </div>
-              <div class="service-update-details pam equal">
-                  <div>
-                    <?php // TODO: If the status alert message is set, add the message ?>
-                    <?php if ( !$status_update_message == '' ):?>
-                      <span><?php  echo $status_update_message; ?></span>
-                    <?php endif;?>
-                    <br/>
-                    <?php // TODO: If the status alert date is set, add the date ?>
-                    <?php if ( !$status_update_dates == '' ):?>
-                      <span class="date small-text"><em><?php  echo $status_update_dates; ?></em></span>
-                    <?php endif;?>
-                  </div>
-              </div>
-          </a>
+          <?php endforeach; ?>
+            </div>
+          </div>
         </div>
-      </div>
     <?php endif; ?>
 
     <!-- Things to See and Do -->
-    <?php
-    // TODO: Move this to a functions.php
-    $category = get_the_category();
-
-    $args = array( 'posts_per_page' => 4,
-    'order'=> 'DESC',
-    'orderby' => 'date',
-    'post_type'  => 'phila_post',
-    'cat' => $category[0]->cat_ID,
-    );
-
-    $blog_loop = new WP_Query( $args );
-    $output = '';
-    $featured_output_array = array();
-    $output_array = array();
-
-    if ( $blog_loop->have_posts() ){
-      $post_counter = 0;
-
-      while( $blog_loop->have_posts() ) : $blog_loop->the_post();
-      $post_counter++;
-      $output_item ='';
-
-      $desc = rwmb_meta('phila_post_desc', $args = array('type'=>'textarea'));
-
-      if($post_counter === 1){
-        $output_item .= '<a href="' . get_permalink() .'" class="card">';
-        $output_item .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
-        $output_item .= '<div class="content-block equal">';
-        $output_item .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
-        $output_item .= '<p>' . $desc  . '</p>';
-        $output_item .= '</div></a>'; //content-block, columns
-        array_push($featured_output_array, $output_item);
-
-      } else {
-
-        $link = get_permalink();
-
-        $output_item .= '<li class="group mbm pbm">';
-        $output_item .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class= small-thumb mrm' );
-        $output_item .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
-        $output_item .= '<a href="' . get_permalink() .'"><h3>' . get_the_title( $post->ID ) . '</h3></a>';
-        $output_item .= '<span class="small-text">' . $desc . '</span>';
-        $output_item .= '</li>';
-        array_push($output_array, $output_item);
-      }
-      endwhile;
-    }
-    wp_reset_postdata();
-    ?>
+    <?php $output_array = phila_get_event_posts(); ?>
     <div class="row equal-height">
       <div class="small-24 columns">
         <h2 class="contrast">Things to See &amp; Do</h2>
@@ -223,7 +196,13 @@ get_header(); ?>
         <div class="large-6 columns">
           <div class="row">
             <div class="large-24 columns">
-              <?php echo $featured_output_array[0]; ?>
+              <a href="<?php echo $output_array[0]['permalink']; ?>" class="card">
+                <?php echo get_the_post_thumbnail( $output_array[0]['postID'], 'news-thumb' ); ?>
+                <div class="content-block equal">
+                  <h3><?php echo get_the_title( $output_array[0]['postID'] ); ?></h3>
+                  <p><?php echo $output_array[0]['desc']; ?></p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -233,9 +212,18 @@ get_header(); ?>
             <div class="large-24 columns">
               <div class="news equal">
                 <ul>
-                  <?php foreach ($output_array as $output_val){
-                    echo $output_val;
-                  } ?>
+                  <?php $output_index = 0; ?>
+                  <?php foreach ($output_array as $output_val):
+                    if ($output_index > 0): ?>
+                      <li class="group mbm pbm">
+                      <?php echo get_the_post_thumbnail( $output_val['postID'], 'news-thumb', 'class= small-thumb mrm' ); ?>
+                      <span class="entry-date small-text"><?php echo $output_val['date']; ?></span>
+                      <a href="<?php echo $output_val['permalink']; ?>"><h3><?php echo get_the_title( $output_val['postID'] ); ?></h3></a>
+                      <span class="small-text"><?php echo $output_val['desc']; ?></span>
+                      </li>
+                    <?php endif; ?>
+                    <?php $output_index++;?>
+                  <?php endforeach; ?>
                 </ul>
               </div>
             </div>
@@ -246,9 +234,9 @@ get_header(); ?>
     </div>
 
     <!-- Recent News  -->
-    <div class="row news">
-    <?php echo do_shortcode('[recent-news posts="3"]'); ?>
-    </div>
+    <!-- <div class="row news">
+    <?php //echo do_shortcode('[recent-news posts="3"]'); ?>
+    </div> -->
 
     <!-- WYSIWYG content -->
     <?php if( get_the_content() != '' ) : ?>
