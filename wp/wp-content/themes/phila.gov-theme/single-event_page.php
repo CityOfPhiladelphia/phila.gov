@@ -160,9 +160,11 @@ get_header(); ?>
       </div>
     <?php endif; ?>
 
-    <?php if (is_array($status_updates)): ?>
         <div class="row mvm">
           <div class="small-24 columns">
+            <div class="row">
+              <div class="small-18 columns">
+            <?php if (is_array($status_updates)): ?>
             <h2 class="contrast">City Service Updates &amp; Changes</h2>
             <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
             <div class="row">
@@ -193,8 +195,23 @@ get_header(); ?>
           <?php endforeach; ?>
             </div>
           </div>
+          <?php endif; ?>
+            <div class="small-6 columns permits">
+              <h2 class="contrast">Permits</h2>
+              <div class="panel">
+                <header>
+                  <span class="fa-stack fa-4x center">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+                  </span>
+                  <h3><a href="" class="h4 external center" target="_blank">Demonstration Permits</a></h3>
+                </header>
+              <!-- TODO: Determine where this content should be pulled from and replace static copy -->
+                <span>Demonstrations are an important part of our political history. Philadelphia welcomes groups looking to express their right to free speech peacefully. Please submit a request for a permit.</span>
+              </div>
+            </div>
         </div>
-    <?php endif; ?>
+      </div>
 
     <!-- TODO: Identify correct news Category -->
     <!-- Recent News  -->

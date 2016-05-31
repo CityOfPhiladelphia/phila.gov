@@ -66,8 +66,6 @@
     }
     .connect {
       .panel {
-        padding: 1rem;
-        border:0;
         hr {
           margin: .25rem 0;
         }
@@ -176,6 +174,22 @@
         }
       }
     }
+  }
+  //Permits panel
+  .permits {
+    .panel {
+      header {
+        text-align: center;
+
+        .fa-circle {
+          color: $bell-yellow;
+        }
+      }
+    }
+  }
+  .panel {
+    padding: 1rem;
+    border:0;
   }
   //Vertical Align helper
   .valign {
