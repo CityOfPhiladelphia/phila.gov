@@ -204,7 +204,7 @@ get_header(); ?>
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
                   </span>
-                  <h3><a href="" class="h4 external center" target="_blank">Demonstration Permits</a></h3>
+                  <h3><a href="https://phillymdoevents.files.wordpress.com/2016/01/demonstration-application-revised-01-08-16.pdf" class="h4 external center" target="_blank">Demonstration Permits</a></h3>
                 </header>
               <!-- TODO: Determine where this content should be pulled from and replace static copy -->
                 <span>Demonstrations are an important part of our political history. Philadelphia welcomes groups looking to express their right to free speech peacefully. Please submit a request for a permit.</span>
