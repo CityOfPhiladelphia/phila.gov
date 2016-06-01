@@ -36,6 +36,10 @@ get_header(); ?>
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
+
+            $event_contact_blocks_header = rwmb_meta('phila_event_content_blocks_heading' , $args = array('type' => 'text'));
+            $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
+            $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
             ?>
     <?php endif; ?>
     <?php
@@ -43,14 +47,14 @@ get_header(); ?>
       // TODO: Replace with actual values
       $status_updates = array(
           0 => array(
-            'message' => 'All City of Philadelphia offices will remain open for business.',
+            'message' => 'The City of Philadelphia will remain open for business. Stay tuned for additional information.',
             'level' => '',
             'type' => 'City',
             'icon' => 'fa-institution',
             'dates' => 'July 25 -28, 2016',
           ),
           1 => array(
-            'message' => 'Trash and recycling pickup will occur on a normal schedule. Stay tuned for additional information.',
+            'message' => 'At this time, the Streets Department plans to pick up trash and recycling on a normal schedule.',
             'level' => '',
             'type' => 'Trash',
             'icon' => 'fa-trash',
@@ -220,27 +224,24 @@ get_header(); ?>
         </div>
       </div>
 
-    <!-- TODO: Identify correct news Category -->
-    <!-- Recent News  -->
-    <div class="row news equal-height">
-    <?php echo do_shortcode('[recent-news posts="3"]'); ?>
-    </div>
-
     <!-- Things to See and Do -->
-    <?php $output_array = phila_get_event_posts(); ?>
+    <?php // TODO: check if contentblocks exist ?>
+    <?php $output_array = phila_get_event_content_blocks(); ?>
 
     <div class="row equal-height">
       <div class="small-24 columns">
-        <h2 class="contrast">Things to See &amp; Do</h2>
+        <?php if (!$event_contact_blocks_header == ''): ?>
+          <h2 class="contrast"><?php echo $event_contact_blocks_header;?></h2>
+        <?php endif; ?>
         <!-- Begin Column One -->
         <div class="large-6 columns">
           <div class="row">
             <div class="large-24 columns">
-              <a href="<?php echo $output_array[0]['permalink']; ?>" class="card">
-                <?php echo get_the_post_thumbnail( $output_array[0]['postID'], 'news-thumb' ); ?>
+              <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
+                <img src="<?php echo $output_array[0]['block_image']; ?>">
                 <div class="content-block equal">
-                  <h3><?php echo get_the_title( $output_array[0]['postID'] ); ?></h3>
-                  <p><?php echo $output_array[0]['desc']; ?></p>
+                  <h3 class="external"><?php echo $output_array[0]['block_title']; ?></h3>
+                  <p><?php echo $output_array[0]['block_summary']; ?></p>
                 </div>
               </a>
             </div>
@@ -253,13 +254,15 @@ get_header(); ?>
               <div class="news equal">
                 <ul>
                   <?php $output_index = 0; ?>
-                  <?php foreach ($output_array as $output_val):
+                  <?php foreach ($output_array as $key => $array_value):
                     if ($output_index > 0): ?>
                       <li class="group mbm pbm">
-                      <?php echo get_the_post_thumbnail( $output_val['postID'], 'news-thumb', 'class= small-thumb mrm' ); ?>
-                      <span class="entry-date small-text"><?php echo $output_val['date']; ?></span>
-                      <a href="<?php echo $output_val['permalink']; ?>"><h3><?php echo get_the_title( $output_val['postID'] ); ?></h3></a>
-                      <span class="small-text"><?php echo $output_val['desc']; ?></span>
+                        <img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
+                        <a href="<?php echo $array_value['block_link']; ?>"><h3 class="external"><?php echo $array_value['block_title']; ?></h3></a>
+                        <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
+                        <?php if (!$array_value['block_image_credit']==''): ?>
+                          <span class="photo-credit small-text mtm">Photo by <?php echo $array_value['block_image_credit']; ?></span>
+                        <?php endif; ?>
                       </li>
                     <?php endif; ?>
                     <?php $output_index++;?>
@@ -269,9 +272,17 @@ get_header(); ?>
             </div>
           </div>
         </div>
-        <!-- TODO: Link to the correct post category -->
-        <a class="see-all-right float-right" href="/posts/">All Things to See &amp; Do</a>
+        <?php if (!$event_contact_blocks_link == ''): ?>
+          <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : "More"; ?>
+          <a class="see-all-right float-right" href="<?php echo $event_contact_blocks_link;?>"><?php echo $link_text ?></a>
+        <?php endif; ?>
       </div>
+    </div>
+
+    <!-- TODO: Identify correct news Category -->
+    <!-- Recent News  -->
+    <div class="row news equal-height">
+    <?php echo do_shortcode('[recent-news posts="3"]'); ?>
     </div>
 
     <!-- WYSIWYG content -->

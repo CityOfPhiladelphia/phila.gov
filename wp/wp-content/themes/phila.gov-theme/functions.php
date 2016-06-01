@@ -1057,39 +1057,32 @@ function get_department_category(){
   echo $category[0]->cat_name;
 }
 
-function phila_get_event_posts(){
+function phila_get_event_content_blocks(){
 
-  global $post;
-  $category = get_the_category();
-
-  $args = array( 'posts_per_page' => 4,
-  'order'=> 'DESC',
-  'orderby' => 'date',
-  'post_type'  => 'phila_post',
-  'cat' => $category[0]->cat_ID,
-  );
-
-  $blog_loop = new WP_Query( $args );
-  $featured_output_array = array();
   $output_array = array();
+  $content_blocks = rwmb_meta( 'event_content_blocks' );
 
-  if ( $blog_loop->have_posts() ){
-    $post_counter = 0;
-
-    while( $blog_loop->have_posts() ) : $blog_loop->the_post();
-    $post_counter++;
+  foreach( $content_blocks as $key => $array_value ) {
     $output_item ='';
+    
+    $block_title = isset( $array_value['phila_event_block_content_title'] ) ? $array_value['phila_event_block_content_title'] : '';
+    $block_link = isset( $array_value['phila_event_block_link'] ) ? $array_value['phila_event_block_link'] : '';
+    $block_summary = isset( $array_value['phila_event_block_summary'] ) ? $array_value['phila_event_block_summary'] : '';
+    $block_image = isset( $array_value['phila_event_block_image'] ) ? $array_value['phila_event_block_image'] : '';
+    $block_image_credit = isset( $array_value['phila_event_block_image_credit'] ) ? $array_value['phila_event_block_image_credit'] : '';
 
-      $output_item = array(
-        'postID' => $post->ID,
-        'permalink' => get_permalink(),
-        'date' => get_the_date(),
-        'desc' => rwmb_meta('phila_post_desc', $args = array('type'=>'textarea')),
-      );
+
+    $output_item = array(
+      'block_title' => $block_title,
+      'block_summary' => $block_summary,
+      'block_link' => $block_link,
+      'block_image' => $block_image,
+      'block_image_credit' => $block_image_credit,
+    );
+
     array_push($output_array, $output_item);
-    endwhile;
+
   }
-  wp_reset_postdata();
   return $output_array;
 }
 
