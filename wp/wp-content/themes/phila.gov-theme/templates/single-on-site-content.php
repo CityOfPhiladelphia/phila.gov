@@ -107,7 +107,7 @@
   <?php endif; ?>
   <!-- Begin Row One MetaBox Modules -->
   <?php if ( ( !empty( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) ) && ( !empty( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ) ): ?>
-    <section class="department-module-row-one">
+    <section class="department-module-row-one mvl">
       <div class="row equal-height">
         <!-- Begin Column One -->
         <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
@@ -177,7 +177,7 @@
 
    <!-- Begin Row Two MetaBox Modules -->
    <?php if ( ( !empty( $row_two_col_one_module['phila_module_row_2_col_1_type'] ) ) && (!empty( $row_two_col_two_module['phila_module_row_2_col_2_type'] ) ) ): ?>
-   <section class="department-module-row-two">
+   <section class="department-module-row-two mvl">
      <div class="row">
        <?php if ( $row_two_col_one_type  == 'phila_module_row_2_col_1_calendar' ): ?>
          <div class="medium-12 columns">
