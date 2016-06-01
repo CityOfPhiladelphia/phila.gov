@@ -175,36 +175,39 @@ get_header(); ?>
           <div class="small-24 columns">
             <div class="row">
               <div class="large-18 columns">
-            <?php if (is_array($status_updates)): ?>
-            <h2 class="contrast">City Service Updates &amp; Changes</h2>
-            <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
-            <div class="row">
-            <?php foreach ($status_updates as $update):?>
-              <div class="small-24 columns centered service-update equal-height <?php if ( !$update['level'] == '' ) echo $update['level']; ?> ">
-                <a href="#/">
-                    <div class="service-update-icon equal">
-                      <div class="valign">
-                        <div class="valign-cell pam">
-                          <i class="fa <?php if ( $update['icon'] ) echo $update['icon']; ?>  fa-2x" aria-hidden="true"></i>
-                          <span class="icon-label small-text"><?php if ( $update['type'] ) echo $update['type']; ?></span>
+
+                <?php $service_updates = phila_get_service_updates();?>
+
+                <?php if (is_array($service_updates)): ?>
+                <h2 class="contrast">City Service Updates &amp; Changes</h2>
+                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
+                <div class="row">
+                <?php foreach ($service_updates as $update):?>
+                  <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level'] == '' ) echo $update['service_level']; ?> ">
+                        <div class="service-update-icon equal">
+                          <div class="valign">
+                            <div class="valign-cell pam">
+                              <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                              <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="service-update-details pam equal">
-                        <div>
-                          <?php if ( !$update['message'] == '' ):?>
-                            <span><?php  echo $update['message']; ?></span>
-                          <?php endif;?>
-                          <br/>
-                          <?php if ( !$update['dates'] == '' && !$update['level'] == '' ):?>
-                            <span class="date small-text"><em>In Effect: <?php  echo $update['dates']; ?></em></span>
-                          <?php endif;?>
+                        <div class="service-update-details pam equal">
+                            <div>
+                              <?php if ( !$update['service_message'] == '' ):?>
+                                <span><?php  echo $update['service_message']; ?></span>                              <br/>
+                              <?php endif;?>
+                              <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
+                                <a href="<?php echo $update['service_link']; ?>" class="external" target="_blank"><?php echo $update['service_link_text']; ?></a>                              <br/>
+                              <?php endif;?>
+                              <?php if ( !$update['service_effective_date'] == ''):?>
+                                <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
+                              <?php endif;?>
+                            </div>
                         </div>
-                    </div>
-                </a>
-              </div>
-          <?php endforeach; ?>
-            </div>
+                  </div>
+              <?php endforeach; ?>
+                </div>
           </div>
           <?php endif; ?>
             <div class="large-6 columns permits">

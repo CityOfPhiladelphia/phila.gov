@@ -735,6 +735,96 @@ $meta_boxes[] = array(
   )
 );
 
+$meta_boxes[] = array(
+  'title'    => 'Service Updates & Changes',
+  'pages'    => array( 'event_page' ),
+  'context'  => 'normal',
+  'priority' => 'low',
+
+  'fields' => array(
+    array(
+     'id' => 'service_updates',
+     'type' => 'group',
+     'clone'  => true,
+
+     'fields' => array(
+       array(
+          'name' => 'Update Type',
+          'id'   => $prefix . 'update_type',
+          'type' => 'select',
+          'placeholder' => 'Choose type...',
+          'options' => array(
+            'city' => 'City',
+            'roads' => 'Roads',
+            'transit' => 'Transit',
+            'trash' => 'Trash',
+          ),
+       ),
+       array(
+          'name' => 'Urgency Level',
+          'id'   => $prefix . 'update_level',
+          'type' => 'select',
+          'placeholder' => 'Choose type...',
+          'options' => array(
+            'normal' => 'Normal (Green)',
+            'warning' => 'Warning (Yellow)',
+            'critical' => 'Critical (Red)',
+          ),
+       ),
+       array(
+         'name'  => 'Update Message',
+         'id'    => $prefix . 'service_update_message',
+         'type'  => 'textarea',
+         'class' => 'service-update-message',
+         'size'  => '60'
+       ),
+       array(
+         'name'  => 'Update Link Text',
+         'id'    => $prefix . 'update_link_text',
+         'type'  => 'text',
+         'class' => 'update-link-text',
+         'size'  => '60'
+       ),
+       array(
+         'name'  => 'Update Link',
+         'id'    => $prefix . 'update_link',
+         'type'  => 'url',
+         'class' => 'update-link',
+       ),
+       array(
+         'name'  => 'Update Effective Date',
+         'id'    => $prefix . 'update_effective_date',
+         'type'  => 'text',
+         'class' => 'update-effective-date',
+         'size'  => '60'
+       ),
+      //  array(
+      //    'name'  => 'Start Date',
+      //    'id'    => $prefix . 'update_start_date',
+      //    'class' =>  'update-start-date',
+      //    'type'  => 'date',
+      //    'size'  =>  25,
+      //    'js_options' =>  array(
+      //      'dateFormat'=>'MM dd',
+      //    ),
+      //    'timestamp' => false
+      //  ),
+      //  array(
+      //    'name'  => 'End Date',
+      //    'id'    => $prefix . 'update_end_date',
+      //    'class' =>  'update-end-date',
+      //    'type'  => 'date',
+      //    'size'  =>  25,
+      //    'js_options' =>  array(
+      //      'dateFormat'=>'MM dd',
+      //    ),
+      //    'timestamp' => false
+      //  ),
+      )
+    )
+  )
+);
+
 return $meta_boxes;
 
 }
