@@ -1064,7 +1064,7 @@ function phila_get_event_content_blocks(){
 
   foreach( $content_blocks as $key => $array_value ) {
     $output_item ='';
-    
+
     $block_title = isset( $array_value['phila_event_block_content_title'] ) ? $array_value['phila_event_block_content_title'] : '';
     $block_link = isset( $array_value['phila_event_block_link'] ) ? $array_value['phila_event_block_link'] : '';
     $block_summary = isset( $array_value['phila_event_block_summary'] ) ? $array_value['phila_event_block_summary'] : '';
@@ -1084,6 +1084,52 @@ function phila_get_event_content_blocks(){
 
   }
   return $output_array;
+}
+
+function phila_get_service_updates(){
+
+  $output_array = array();
+  $service_updates = rwmb_meta( 'service_updates' );
+
+  foreach( $service_updates as $key => $array_value ) {
+    $output_item ='';
+
+    $service_type = isset( $array_value['phila_update_type'] ) ? $array_value['phila_update_type'] : '';
+    $service_level = isset( $array_value['phila_update_level'] ) ? $array_value['phila_update_level'] : '';
+    $service_message = isset( $array_value['phila_service_update_message'] ) ? $array_value['phila_service_update_message'] : '';
+    $service_link_text = isset( $array_value['phila_update_link_text'] ) ? $array_value['phila_update_link_text'] : '';
+    $service_link = isset( $array_value['phila_update_link'] ) ? $array_value['phila_update_link'] : '';
+    $service_effective_date = isset( $array_value['phila_update_effective_date'] ) ? $array_value['phila_update_effective_date'] : '';
+    switch($service_type){
+      case 'city':
+        $service_icon = 'fa-institution';
+        break;
+        case 'roads':
+          $service_icon = 'fa-road';
+          break;
+        case 'transit':
+          $service_icon = 'fa-subway';
+          break;
+        case 'trash':
+          $service_icon = 'fa-trash';
+          break;
+    }
+
+    $output_item = array(
+      'service_type' => $service_type,
+      'service_icon' => $service_icon,
+      'service_level' => $service_level,
+      'service_message' => $service_message,
+      'service_link_text' => $service_link_text,
+      'service_link' => $service_link,
+      'service_effective_date' => $service_effective_date,
+    );
+
+    array_push($output_array, $output_item);
+
+  }
+  return $output_array;
+
 }
 
 function echo_item_meta_desc(){

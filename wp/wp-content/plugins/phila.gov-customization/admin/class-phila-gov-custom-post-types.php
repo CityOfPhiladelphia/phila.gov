@@ -289,7 +289,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Event Page not found in trash' ),
         ),
         'taxonomies' => array('category'),
-        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions', 'thumbnail'),
+        'supports' => array( 'title', 'page-attributes', 'revisions', 'thumbnail'),
         'public' => true,
         'has_archive' => true,
         'show_in_nav_menus' => true,
