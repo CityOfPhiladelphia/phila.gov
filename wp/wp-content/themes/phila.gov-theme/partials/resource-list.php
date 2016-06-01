@@ -56,7 +56,8 @@
 
           ?>
 
-          <li class="phm pvs clickable-row"><a href="<?php echo $item_url;
+          <li class="phm pvs clickable-row" data-href="<?php echo $item_url;
+          ?>"><a href="<?php echo $item_url;
           ?>"><div><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i></div> <div><?php echo $item_title ?> </div></a></li>
 
         <?php endforeach; ?>
