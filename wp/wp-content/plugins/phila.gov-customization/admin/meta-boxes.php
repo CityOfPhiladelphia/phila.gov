@@ -548,7 +548,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   )
 );
 
-// Second row of modules - recent posts and custom markup
+// Second row of modules - press release and/or calendar
 $meta_boxes[] = array(
   'id'       => $prefix . 'module_row_2',
   'title'    => 'Module Row 2',
@@ -558,98 +558,138 @@ $meta_boxes[] = array(
   'include' => array(
     'user_role'  => 'administrator',
   ),
-  'fields' => array(
-    array(
-      'name' => 'Description',
-      'id'   => $prefix . 'module_row_2_description',
-      'type' => 'custom_html',
-      'std'  => '<span>Use this area to create a row that will be divided into two equal columns.</span>',
-    ),
-    array(
-      'type' => 'divider'
-    ),
-    array(
-      'id' => 'module_row_2_col_1',
-      'type' => 'group',
+
       // List of sub-fields
       'fields' => array(
         array(
-          'name' => 'Column 1',
-          'id'   => $prefix . 'module_row_2_col_1_type',
-          'desc'  => 'Choose to display calendar events or press releases.',
-          'type' => 'select',
-          'placeholder' => 'Select...',
+          'name' => 'Column Selection',
+          'id'   => $prefix . 'module_row_2_column_selection',
+          'type'  => 'select',
+          'desc' => 'Use this area to choose a single full-width column or two equal width columns.',
+          'placeholder' => 'Choose single column or two columns',
           'options' => array(
-            $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
-            $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
+            $prefix . 'module_row_2_full_column' => 'One Column (Full-Width Calendar)',
+            $prefix . 'module_row_2_2_column' => 'Two Columns (Calendar and Press Releases)',
           ),
         ),
         array(
-          'id' => 'module_row_2_col_1_options',
+          'type' => 'divider',
+          'visible' => array(
+            'when' => array(
+              array( 'module_row_2_column_selection', '=', 'phila_module_row_2_2_column' ),
+
+              array( 'module_row_2_column_selection', '=', 'module_row_2_one_column'),
+            ),
+          'relation' => 'or',
+          ),
+        ),
+        array(
+          'name' => 'Full Width Calendar',
+          'id' => $prefix . 'module_row_two_full_cal_col',
+          'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_full_column'),
           'type' => 'group',
           // List of sub-fields
           'fields' => array(
             array(
               'name' => 'Calender ID',
-              'id'   => $prefix . 'module_row_2_col_1_cal_id',
+              'id'   => $prefix . 'module_row_2_full_col_cal_id',
               'desc'  => 'ID of the calendar',
-              'type' => 'text',
-              'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
+              'type' => 'number'
             ),
             array(
-              'name' => 'Calender URL',
-              'id'   => $prefix . 'module_row_2_col_1_cal_url',
+              'name' => 'Calendar URL',
+              'id'   => $prefix . 'module_row_2_full_col_cal_url',
               'desc'  => 'URL of the full calendar',
-              'type' => 'url',
-              'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
+              'type' => 'url'
             ),
           ),
         ),
-      ),
-    ),
-    array(
-      'type' => 'divider'
-    ),
-    array(
-      'id' => 'module_row_2_col_2',
-      'type' => 'group',
-      // List of sub-fields
-      'fields' => array(
         array(
-          'name' => 'Column 2',
-          'id'   => $prefix . 'module_row_2_col_2_type',
-          'desc'  => 'Choose to display calendar events or press releases.',
-          'type' => 'select',
-          'placeholder' => 'Select...',
-          'options' => array(
-            $prefix . 'module_row_2_col_2_calendar' => 'Calendar',
-            $prefix . 'module_row_2_col_2_press_release' => 'Press Releases',
-          ),
-        ),
-        array(
-          'id' => 'module_row_2_col_2_options',
+          'id' => 'module_row_2_col_1',
           'type' => 'group',
           // List of sub-fields
           'fields' => array(
             array(
-              'name' => 'Calender ID',
-              'id'   => $prefix . 'module_row_2_col_2_cal_id',
-              'desc'  => 'ID of the calendar',
-              'type' => 'text',
-              'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
+              'name' => 'Column 1',
+              'id'   => $prefix . 'module_row_2_col_1_type',
+              'desc'  => 'Choose to display calendar events or press releases.',
+              'type' => 'select',
+              'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_2_column'),
+              'placeholder' => 'Select...',
+              'options' => array(
+                $prefix . 'module_row_2_col_1_calendar' => 'Calendar',
+                $prefix . 'module_row_2_col_1_press_release' => 'Press Releases',
+              ),
             ),
             array(
-              'name' => 'Calender URL',
-              'id'   => $prefix . 'module_row_2_col_2_cal_url',
-              'desc'  => 'URL of the full calendar',
-              'type' => 'url',
-              'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
+              'id' => 'module_row_2_col_1_options',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'name' => 'Calendar ID',
+                  'id'   => $prefix . 'module_row_2_col_1_cal_id',
+                  'desc'  => 'ID of the calendar',
+                  'type' => 'number',
+                  'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
+                ),
+                array(
+                  'name' => 'Calendar URL',
+                  'id'   => $prefix . 'module_row_2_col_1_cal_url',
+                  'desc'  => 'URL of the full calendar',
+                  'type' => 'url',
+                  'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
+                ),
+              ),
+            ),
+          ),
+        ),
+        array(
+          'type' => 'divider',
+          'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_2_column'),
+        ),
+        array(
+          'id' => 'module_row_2_col_2',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'name' => 'Column 2',
+              'id'   => $prefix . 'module_row_2_col_2_type',
+              'desc'  => 'Choose to display calendar events or press releases.',
+              'type' => 'select',
+              'placeholder' => 'Select...',
+              'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_2_column'),
+              'options' => array(
+                $prefix . 'module_row_2_col_2_calendar' => 'Calendar',
+                $prefix . 'module_row_2_col_2_press_release' => 'Press Releases',
+              ),
+            ),
+            array(
+              'id' => 'module_row_2_col_2_options',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'name' => 'Calender ID',
+                  'id'   => $prefix . 'module_row_2_col_2_cal_id',
+                  'desc'  => 'ID of the calendar',
+                  'type' => 'text',
+                  'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
+                ),
+                array(
+                  'name' => 'Calender URL',
+                  'id'   => $prefix . 'module_row_2_col_2_cal_url',
+                  'desc'  => 'URL of the full calendar',
+                  'type' => 'url',
+                  'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
+                ),
+              ),
             ),
           ),
         ),
       ),
-    ),
-  ),
+
 );
 
 return $meta_boxes;
