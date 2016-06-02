@@ -237,7 +237,7 @@ get_header(); ?>
           <h2 class="contrast"><?php echo $event_contact_blocks_header;?></h2>
         <?php endif; ?>
         <!-- Begin Column One -->
-        <div class="large-6 columns">
+        <div class="large-8 columns">
           <div class="row">
             <div class="large-24 columns">
               <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
@@ -251,7 +251,7 @@ get_header(); ?>
           </div>
         </div>
         <!-- Begin Column Two -->
-        <div class="large-18 columns">
+        <div class="large-16 columns">
           <div class="row">
             <div class="large-24 columns">
               <div class="news equal">
