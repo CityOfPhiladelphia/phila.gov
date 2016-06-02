@@ -1,4 +1,14 @@
+dl.simcal-events-list-container{
+  background-color:rgba(255, 255, 255, .8);
+  margin-top:1rem;
 
+  p {
+    padding: 1rem;
+    @media only screen and (min-width: 40.063em) {
+      min-height: 100px;
+    }
+  }
+}
 .single-calendar .simcal-event-details{
   padding-bottom: 1rem;
   margin-bottom: 1rem;
