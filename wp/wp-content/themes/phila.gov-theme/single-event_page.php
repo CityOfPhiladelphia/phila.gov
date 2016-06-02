@@ -46,7 +46,7 @@ get_header(); ?>
             $event_permit_link = rwmb_meta('phila_event_permit_link' , $args = array('type' => 'url'));
             ?>
     <?php endif; ?>
-    
+
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
     <?php if (!$append_before_wysiwyg == ''):?>
       <div class="row before-wysiwyg">
@@ -184,6 +184,7 @@ get_header(); ?>
                 </div>
           </div>
           <?php endif; ?>
+          <?php if (!$event_permit_details == ''): ?>
             <div class="large-6 columns permits">
               <h2 class="contrast">Permits</h2>
               <div class="panel">
@@ -200,75 +201,80 @@ get_header(); ?>
                     <?php endif; ?>
                     </h3>
                 </header>
-              <!-- TODO: Determine where this content should be pulled from and replace static copy -->
-              <?php if (!$event_permit_details == ''): ?>
-                <span><?php echo $event_permit_details; ?></span>
-              <?php endif; ?>
+                  <span><?php echo $event_permit_details; ?></span>
               </div>
             </div>
+          <?php endif; ?>
+
         </div>
       </div>
 
     <!-- Things to See and Do -->
-    <?php // TODO: check if contentblocks exist ?>
     <?php $output_array = phila_get_event_content_blocks(); ?>
 
-    <div class="row equal-height">
-      <div class="small-24 columns">
-        <?php if (!$event_contact_blocks_header == ''): ?>
-          <h2 class="contrast"><?php echo $event_contact_blocks_header;?></h2>
-        <?php endif; ?>
-        <!-- Begin Column One -->
-        <div class="large-8 columns">
-          <div class="row">
-            <div class="large-24 columns">
-              <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
-                <img src="<?php echo $output_array[0]['block_image']; ?>">
-                <div class="content-block equal">
-                  <h3 class="external"><?php echo $output_array[0]['block_title']; ?></h3>
-                  <p><?php echo $output_array[0]['block_summary']; ?></p>
+    <?php if (is_array($output_array)):?>
+      <div class="row equal-height">
+        <div class="small-24 columns">
+          <?php if (!$event_contact_blocks_header == ''): ?>
+            <h2 class="contrast"><?php echo $event_contact_blocks_header;?></h2>
+          <?php endif; ?>
+          <!-- Begin Column One -->
+          <?php if (array_key_exists( 0 , $output_array )): ?>
+            <div class="large-8 columns">
+              <div class="row">
+                <div class="large-24 columns">
+                  <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
+                    <img src="<?php echo $output_array[0]['block_image']; ?>">
+                    <div class="content-block equal">
+                      <h3 class="external"><?php echo $output_array[0]['block_title']; ?></h3>
+                      <p><?php echo $output_array[0]['block_summary']; ?></p>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- Begin Column Two -->
-        <div class="large-16 columns">
-          <div class="row">
-            <div class="large-24 columns">
-              <div class="news equal">
-                <ul>
-                  <?php $output_index = 0; ?>
-                  <?php foreach ($output_array as $key => $array_value):
-                    if ($output_index > 0): ?>
-                      <li class="group mbm pbm">
-                        <img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
-                        <a href="<?php echo $array_value['block_link']; ?>"><h3 class="external"><?php echo $array_value['block_title']; ?></h3></a>
-                        <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
-                        <?php if (!$array_value['block_image_credit']==''): ?>
-                          <span class="photo-credit small-text mtm">Photo by <?php echo $array_value['block_image_credit']; ?></span>
-                        <?php endif; ?>
-                      </li>
-                    <?php endif; ?>
-                    <?php $output_index++;?>
-                  <?php endforeach; ?>
-                </ul>
               </div>
             </div>
-          </div>
+          <?php endif; ?>
+          <?php if (array_key_exists( 1 , $output_array )): ?>
+            <!-- Begin Column Two -->
+            <div class="large-16 columns">
+              <div class="row">
+                <div class="large-24 columns">
+                  <div class="news equal">
+                    <ul>
+                      <?php $output_index = 0; ?>
+                      <?php foreach ($output_array as $key => $array_value):
+                        if ($output_index > 0): ?>
+                          <li class="group mbm pbm">
+                            <img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
+                            <a href="<?php echo $array_value['block_link']; ?>"><h3 class="external"><?php echo $array_value['block_title']; ?></h3></a>
+                            <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
+                            <?php if (!$array_value['block_image_credit']==''): ?>
+                              <span class="photo-credit small-text mtm">Photo by <?php echo $array_value['block_image_credit']; ?></span>
+                            <?php endif; ?>
+                          </li>
+                        <?php endif; ?>
+                        <?php $output_index++;?>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if (!$event_contact_blocks_link == ''): ?>
+            <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : "More"; ?>
+            <a class="see-all-right float-right" href="<?php echo $event_contact_blocks_link;?>"><?php echo $link_text ?></a>
+          <?php endif; ?>
         </div>
-        <?php if (!$event_contact_blocks_link == ''): ?>
-          <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : "More"; ?>
-          <a class="see-all-right float-right" href="<?php echo $event_contact_blocks_link;?>"><?php echo $link_text ?></a>
-        <?php endif; ?>
       </div>
-    </div>
+    <?php endif; ?>
 
-    <!-- TODO: Identify correct news Category -->
-    <!-- Recent News  -->
-    <div class="row news equal-height">
-    <?php echo do_shortcode('[recent-news posts="3"]'); ?>
-    </div>
+    <?php if (array_key_exists( 0 , get_the_category() )): ?>
+      <!-- Recent News  -->
+      <div class="row news equal-height">
+      <?php echo do_shortcode('[recent-news posts="3"]'); ?>
+      </div>
+    <?php endif; ?>
 
     <!-- WYSIWYG content -->
     <?php if( get_the_content() != '' ) : ?>

@@ -1083,7 +1083,11 @@ function phila_get_event_content_blocks(){
     array_push($output_array, $output_item);
 
   }
-  return $output_array;
+  if (array_key_exists( 0 , $output_array )){
+      return $output_array;
+    } else {
+      return;
+    }
 }
 
 function phila_get_service_updates(){
@@ -1128,8 +1132,11 @@ function phila_get_service_updates(){
     array_push($output_array, $output_item);
 
   }
-  return $output_array;
-
+  if (array_key_exists( 0 , $output_array )){
+    return $output_array;
+  } else {
+    return;
+  }
 }
 
 function echo_item_meta_desc(){
