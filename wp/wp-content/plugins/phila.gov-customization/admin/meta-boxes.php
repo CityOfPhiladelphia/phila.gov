@@ -594,7 +594,7 @@ $meta_boxes[] = array(
               'name' => 'Calender ID',
               'id'   => $prefix . 'module_row_2_full_col_cal_id',
               'desc'  => 'ID of the calendar',
-              'type' => 'text'
+              'type' => 'number'
             ),
             array(
               'name' => 'Calendar URL',
@@ -630,7 +630,7 @@ $meta_boxes[] = array(
                   'name' => 'Calendar ID',
                   'id'   => $prefix . 'module_row_2_col_1_cal_id',
                   'desc'  => 'ID of the calendar',
-                  'type' => 'text',
+                  'type' => 'number',
                   'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
                 ),
                 array(
