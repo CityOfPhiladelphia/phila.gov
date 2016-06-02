@@ -33,6 +33,7 @@ get_header(); ?>
             // Set Event Detail vars
             $event_description = rwmb_meta('phila_event_desc' , $args = array('type' => 'textarea'));
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
+            $event_location_link = rwmb_meta('phila_event_loc_link' , $args = array('type' => 'url'));
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
@@ -40,6 +41,9 @@ get_header(); ?>
             $event_contact_blocks_header = rwmb_meta('phila_event_content_blocks_heading' , $args = array('type' => 'text'));
             $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
+
+            $event_permit_details = rwmb_meta('phila_event_permit_details' , $args = array('type' => 'textarea'));
+            $event_permit_link = rwmb_meta('phila_event_permit_link' , $args = array('type' => 'url'));
             ?>
     <?php endif; ?>
     <?php
@@ -149,6 +153,9 @@ get_header(); ?>
                       <div class="equal event-location-details small-text">
                         <h4>Main Location</h4>
                         <?php echo $event_location;?>
+                        <?php if (!$event_location_link == ''): ?>
+                          <a href="<?php echo $event_location_link;?>" class="external" target="_blank">View map</a>
+                        <?php endif; ?>
                       </div>
                     </div>
 
@@ -218,10 +225,18 @@ get_header(); ?>
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
                   </span>
-                  <h3><a href="https://phillymdoevents.files.wordpress.com/2016/01/demonstration-application-revised-01-08-16.pdf" class="h4 external center" target="_blank">Demonstration Permits</a></h3>
+                  <h3>
+                    <?php if (!$event_permit_link == ''): ?>
+                      <a href="<?php echo $event_permit_link; ?>" class="h4 external center" target="_blank">Demonstration Permits</a>
+                    <?php else: ?>
+                      Demonstration Permits
+                    <?php endif; ?>
+                    </h3>
                 </header>
               <!-- TODO: Determine where this content should be pulled from and replace static copy -->
-                <span>Demonstrations are an important part of our political history. Philadelphia welcomes groups looking to express their right to free speech peacefully. Please submit a request for a permit.</span>
+              <?php if (!$event_permit_details == ''): ?>
+                <span><?php echo $event_permit_details; ?></span>
+              <?php endif; ?>
               </div>
             </div>
         </div>

@@ -40,6 +40,14 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
           'clone' => false,
         ),
         array(
+          'name'  => 'Link to Map',
+          'desc'  => 'Provide a link to a map of the event location. Optional.',
+          'id'    => $prefix . 'event_loc_link',
+          'type'  => 'url',
+          'class' => 'event-location-link',
+          'clone' => false,
+        ),
+        array(
           'name'  => 'Event Start Date',
           'id'    => $prefix . 'event_start',
           'class' =>  'start-date',
@@ -170,7 +178,32 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
           )
         )
       )
-    );
+    );//Service Updates
+
+    $meta_boxes[] = array(
+      'id'       => 'events_permits',
+      'title'    => 'Permits',
+      'pages'    => array( 'event_page' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'fields' => array(
+        array(
+          'name'  => 'Permit Details',
+          'id'    => $prefix . 'event_permit_details',
+          'type'  => 'textarea',
+          'class' => 'event-permit-details',
+          'clone' => false,
+        ),
+        array(
+          'name'  => 'Permit Link',
+          'id'    => $prefix . 'event_permit_link',
+          'desc'  => 'Link to permit documents',
+          'type'  => 'url',
+          'class' => 'event-permit-link',
+          'clone' => false,
+        ),
+      )
+    );//Event Connect Information
 
     $meta_boxes[] = array(
       'title'    => 'Event Content Blocks',
