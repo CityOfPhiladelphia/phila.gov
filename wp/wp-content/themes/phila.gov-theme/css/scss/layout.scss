@@ -213,40 +213,6 @@ aside {
   }
 }
 
-.intro{
-  background:$ghost_gray;
-  .valign {
-    display: table;
-    width: 100%;
-    height: inherit;
-  }
-  .valign-cell {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  i {
-    color:$flyers-orange;
-    vertical-align: middle;
-    padding: 0 1rem 0 0;
-  }
-}
-.intro-item{
-
-  &:last-of-type{
-    border-left: 0;
-    border-top: 2px solid white;
-  }
-  @media only screen and (min-width: 40em) {
-    &:last-of-type{
-      border-top: 0;
-      border-left: 2px solid $white;
-    }
-  }
-  .button{
-    margin: 0;
-  }
-
-}
 //TODO: Move to pattern portfolio and include options for all colors in palette
 .bg-sidewalk {
   background:$sidewalk !important;

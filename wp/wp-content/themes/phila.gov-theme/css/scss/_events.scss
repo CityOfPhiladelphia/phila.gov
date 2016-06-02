@@ -1,0 +1,113 @@
+/*
+ *
+ * Events Pages
+ *
+ *
+*/
+.event_page {
+  h2 {
+    @media screen and (min-width: 40em) {
+      margin-bottom: 2rem;
+    }
+  }
+  .event-official {
+    margin-top: .5rem;
+    @media screen and (min-width: 40em) {
+      margin-top: 0;
+    }
+    .event-details {
+
+      .event-logistics{
+        border-right:0;
+        @media screen and (min-width: 40em) {
+          border-right:1px solid gray;
+
+        }
+      }
+      h4 {
+        margin-bottom:0;
+      }
+      .event-icon {
+        float: left;
+        text-align: center;
+        min-width: initial;
+        @media screen and (min-width: 40em) {
+          min-width: 5rem;
+        }
+
+        .fa {
+          padding: 0 1rem 0;
+          font-size: 2rem;
+          @media screen and (min-width: 40em) {
+            font-size: 3rem;
+          }
+        }
+      }
+      .event-date-details {
+        @media screen and (min-width: 40em) {
+          margin-bottom: 2rem;
+        }
+      }
+      .event-location-details{
+        overflow: auto;
+      }
+    }
+    .event-description {
+      margin:.5rem 0 0;
+      @media screen and (min-width: 40em) {
+        margin:0;
+      }
+      div {
+        padding:1rem;
+        @media screen and (min-width: 40em) {
+          padding-left: 1.5rem;
+        }
+      }
+    }
+    .connect {
+      .panel {
+        padding: 1rem;
+        border:0;
+        hr {
+          margin: .25rem 0;
+        }
+      }
+    }
+  }
+  // Hero Header Alterations
+  #header-image, .photo-credit{
+      display: none;
+      @media screen and (min-width: 40em) {
+        display: inline-block;
+      }
+  }
+
+  .intro {
+    background: none;
+    img {
+      padding-top:1.5rem;
+    }
+  }
+  .initial-hero {
+    display: none;
+    @media screen and (min-width: 40em) {
+      display: inline-block;
+    }
+  }
+  .hidden-hero{
+    display: inline-block;;
+    @media screen and (min-width: 40em) {
+      display: none;
+    }
+  }
+  //Vertical Align helper
+  .valign {
+    display: table;
+    width: 100%;
+    height: inherit;
+  }
+  .valign-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
