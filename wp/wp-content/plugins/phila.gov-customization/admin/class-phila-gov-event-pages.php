@@ -153,6 +153,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
              'class' => 'update-effective-date',
              'size'  => '60'
            ),
+          //  TODO: Create a better way to accept a date range or date and time range
           //  array(
           //    'name'  => 'Start Date',
           //    'id'    => $prefix . 'update_start_date',
