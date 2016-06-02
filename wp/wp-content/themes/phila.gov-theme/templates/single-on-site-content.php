@@ -38,7 +38,7 @@
           }
           $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
           if (!empty($row_one_col_two_module)){
-            $row_one_col_two_type = $row_one_col_two_module['phila_module_row_1_col_2_type'];
+            $row_one_col_two_type = isset( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ? $row_one_col_two_module['phila_module_row_1_col_2_type'] : '';
             if ( $row_one_col_two_type == 'phila_module_row_1_col_2_blog_posts' ){
               $row_one_col_two_post_style = 'phila_module_row_1_col_2_post_style_cards';
             } else {
@@ -46,25 +46,46 @@
               $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
             }
           }
+
+          //set row 2 vars
+          $row_two_column_selection = rwmb_meta('phila_module_row_2_column_selection');
+
           $row_two_col_one_module = rwmb_meta( 'module_row_2_col_1');
-          if (!empty($row_two_col_one_module)){
-            $row_two_col_one_type = $row_two_col_one_module['phila_module_row_2_col_1_type'];
-            if ( $row_two_col_one_type == 'phila_module_row_2_col_1_calendar' ){
-              $row_two_col_one_cal_id = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_id'];
-              $row_two_col_one_cal_url = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_url'];
+
+          if (!empty($row_two_column_selection)) {
+
+            $module_row_two_full_cal_col = rwmb_meta( 'phila_module_row_two_full_cal_col');
+
+            if ( $row_two_column_selection == 'phila_module_row_2_full_column' ){
+              $row_two_full_col_cal_id = $module_row_two_full_cal_col['phila_module_row_2_full_col_cal_id'];
+              $row_two_full_col_cal_url = $module_row_two_full_cal_col['phila_module_row_2_full_col_cal_url'];
             }
-          }
-          $row_two_col_two_module = rwmb_meta( 'module_row_2_col_2');
-          if (!empty($row_two_col_two_module)){
-            $row_two_col_two_type = $row_two_col_two_module['phila_module_row_2_col_2_type'];
-            if ( $row_two_col_two_type == 'phila_module_row_2_col_2_calendar' ){
-              $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
-              $row_two_col_two_cal_url = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_url'];
+
+            if ( $row_two_column_selection == 'phila_module_row_2_2_column' ){
+
+              if (!empty($row_two_col_one_module)){
+
+                $row_two_col_one_type = isset($row_two_col_one_module['phila_module_row_2_col_1_type']) ? $row_two_col_one_module['phila_module_row_2_col_1_type'] : '';
+
+                if ( $row_two_col_one_type == 'phila_module_row_2_col_1_calendar' ){
+                  $row_two_col_one_cal_id = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_id'];
+                  $row_two_col_one_cal_url = $row_two_col_one_module['module_row_2_col_1_options']['phila_module_row_2_col_1_cal_url'];
+                }
+              }
+
+              $row_two_col_two_module = rwmb_meta( 'module_row_2_col_2');
+              if (!empty($row_two_col_two_module)){
+                $row_two_col_two_type = $row_two_col_two_module['phila_module_row_2_col_2_type'];
+                if ( $row_two_col_two_type == 'phila_module_row_2_col_2_calendar' ){
+                  $row_two_col_two_cal_id = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_id'];
+                  $row_two_col_two_cal_url = $row_two_col_two_module['module_row_2_col_2_options']['phila_module_row_2_col_2_cal_url'];
+                }
+              }
             }
           }
 
-          //set template selection var
-          $user_selected_template = rwmb_meta( 'phila_template_select');
+        //set template selection var
+        $user_selected_template = rwmb_meta( 'phila_template_select');
 
     ?>
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
@@ -170,6 +191,21 @@
   <?php endif; ?>
 
    <!-- Begin Row Two MetaBox Modules -->
+   <?php if ( !empty( $row_two_full_col_cal_id ) ) : ?>
+     <div class="row expanded calendar-row ptl pbl mtl mbl">
+       <div class="medium-centered large-16 columns">
+         <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
+       </div>
+     </div>
+    <?php if ($row_two_full_col_cal_url):?>
+      <div class="row expanded">
+          <div class="medium-centered large-16 columns">
+            <a class="float-right see-all-right" href="<?php echo $row_two_full_col_cal_url; ?>">All Events</a>
+          </div>
+      </div>
+    <?php endif; ?>
+   <?php endif; ?>
+
    <?php if ( ( !empty( $row_two_col_one_module['phila_module_row_2_col_1_type'] ) ) && (!empty( $row_two_col_two_module['phila_module_row_2_col_2_type'] ) ) ): ?>
    <section class="department-module-row-two">
      <div class="row">
@@ -210,7 +246,7 @@
      </div>
    </section>
    <?php endif; ?>
-   <!-- End Row Two MetaBox Modules -->
+  <!-- End Row Two MetaBox Modules -->
 
    <!-- If Custom Markup append_after_wysiwyg is present print it -->
   <?php if (!$append_after_wysiwyg == ''):?>
