@@ -208,7 +208,7 @@ get_header(); ?>
 
         </div>
       </div>
-
+    </div>
     <!-- Things to See and Do -->
     <?php $output_array = phila_get_event_content_blocks(); ?>
 
@@ -220,9 +220,9 @@ get_header(); ?>
           <?php endif; ?>
           <!-- Begin Column One -->
           <?php if (array_key_exists( 0 , $output_array )): ?>
-            <div class="large-8 columns">
+            <div class="medium-8 columns">
               <div class="row">
-                <div class="large-24 columns">
+                <div class="small-24 columns">
                   <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
                     <img src="<?php echo $output_array[0]['block_image']; ?>">
                     <div class="content-block equal">
@@ -236,9 +236,9 @@ get_header(); ?>
           <?php endif; ?>
           <?php if (array_key_exists( 1 , $output_array )): ?>
             <!-- Begin Column Two -->
-            <div class="large-16 columns">
+            <div class="medium-16 columns">
               <div class="row">
-                <div class="large-24 columns">
+                <div class="small-24 columns">
                   <div class="news equal">
                     <ul>
                       <?php $output_index = 0; ?>
