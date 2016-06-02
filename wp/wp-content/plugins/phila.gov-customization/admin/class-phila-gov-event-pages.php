@@ -240,9 +240,10 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
           'type' => 'divider'
         ),
         array(
-         'id' => 'event_content_blocks',
-         'type' => 'group',
-         'clone'  => true,
+         'id'         => 'event_content_blocks',
+         'type'       => 'group',
+         'clone'      => true,
+         'sort_clone' => true,
 
          'fields' => array(
            array(
