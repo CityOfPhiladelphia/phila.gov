@@ -88,16 +88,17 @@
         $user_selected_template = rwmb_meta( 'phila_template_select');
 
     ?>
-    <!-- If Custom Markup append_before_wysiwyg is present print it -->
     <?php if (!$append_before_wysiwyg == ''):?>
+      <!-- If Custom Markup append_before_wysiwyg is present print it -->
       <div class="row before-wysiwyg">
         <div class="small-24 columns">
           <?php echo $append_before_wysiwyg; ?>
         </div>
       </div>
     <?php endif; ?>
-    <!-- Hero-Header MetaBox Modules -->
+
     <?php if (!$hero_header_image == ''): ?>
+    <!-- Hero-Header MetaBox Modules -->
     <div class="row mtm">
       <div class="small-24 columns">
         <section class="department-header">
@@ -120,12 +121,12 @@
     </div>
     <?php endif; ?>
   <?php endif; ?>
-  <!-- Begin Row One MetaBox Modules -->
   <?php if ( ( !empty( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) ) && ( !empty( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ) ): ?>
+    <!-- Begin Row One MetaBox Modules -->
     <section class="department-module-row-one">
       <div class="row equal-height">
-        <!-- Begin Column One -->
         <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
+          <!-- Begin Column One -->
           <div class="large-18 columns">
             <div class="row">
               <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
@@ -143,10 +144,10 @@
               <?php echo($row_one_col_one_textarea); ?>
             </div>
           </div>
+          <!-- End Column One -->
         <?php endif; ?>
-        <!-- End Column One -->
-        <!-- Begin Column Two -->
         <?php if ( $row_one_col_two_type  == 'phila_module_row_1_col_2_blog_posts' ): ?>
+          <!-- Begin Column Two -->
           <div class="large-6 columns">
             <div class="row">
               <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
@@ -161,15 +162,15 @@
               </div>
             </div>
           </div>
+          <!-- End Column Two -->
         <?php endif; ?>
-        <!-- End Column Two -->
       </div>
     </section>
+    <!-- End Row One MetaBox Modules -->
   <?php endif; ?>
-  <!-- End Row One MetaBox Modules -->
 
-  <!-- WYSIWYG content -->
   <?php if( get_the_content() != '' ) : ?>
+  <!-- WYSIWYG content -->
   <section class="wysiwyg-content">
     <div class="row">
       <div class="small-24 columns">
@@ -177,8 +178,8 @@
       </div>
     </div>
   </section>
-  <?php endif; ?>
   <!-- End WYSIWYG content -->
+  <?php endif; ?>
 
   <?php if( !empty($user_selected_template) ) : ?>
   <!-- Begin Template Display -->
@@ -190,17 +191,23 @@
   <!-- End Template Display -->
   <?php endif; ?>
 
-   <!-- Begin Row Two MetaBox Modules -->
-   <?php if ( !empty( $row_two_full_col_cal_id ) ) : ?>
-     <div class="row expanded calendar-row ptl pbl mtl mbl">
-       <div class="medium-centered large-16 columns">
-         <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
-       </div>
-     </div>
+  <!-- Begin Row Two MetaBox Modules -->
+  <?php if ( !empty( $row_two_full_col_cal_id ) ) : ?>
+    <div class="row">
+      <div class="columns">
+        <h2 class="alternate">Calendar</h2>
+      </div>
+    </div>
+
+    <div class="row expanded calendar-row mbm">
+      <div class="medium-centered large-16 columns">
+        <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
+      </div>
+    </div>
     <?php if ($row_two_full_col_cal_url):?>
-      <div class="row expanded">
-          <div class="medium-centered large-16 columns">
-            <a class="float-right see-all-right" href="<?php echo $row_two_full_col_cal_url; ?>">All Events</a>
+      <div class="row">
+        <div class="columns">
+          <a class="float-right see-all-right" href="<?php echo $row_two_full_col_cal_url; ?>">All Events</a>
           </div>
       </div>
     <?php endif; ?>
@@ -245,11 +252,11 @@
          <?php endif; ?>
      </div>
    </section>
+   <!-- End Row Two MetaBox Modules -->
    <?php endif; ?>
-  <!-- End Row Two MetaBox Modules -->
 
-   <!-- If Custom Markup append_after_wysiwyg is present print it -->
   <?php if (!$append_after_wysiwyg == ''):?>
+  <!-- If Custom Markup append_after_wysiwyg is present print it -->
     <div class="row after-wysiwyg">
       <div class="small-24 columns">
         <?php echo $append_after_wysiwyg; ?>
