@@ -80,15 +80,15 @@ function recent_news_shortcode($atts) {
 
     if ( is_flag( 'list', $atts ) ){
 
-      $output .= '<li class="group mbm pbm">';
+      $output .= '<li class="group">';
 
       $output .= '<a href="' . $link .'">';
 
       $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
-      $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
+      $output .= '<div class="pbm"><span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
       $output .= '<span class="small-text">' . wp_strip_all_tags( $desc ) . '</span>';
-      $output .= '</a>';
+      $output .= '</div></a>';
       $output .= '</li>';
 
     }else{
