@@ -46,40 +46,7 @@ get_header(); ?>
             $event_permit_link = rwmb_meta('phila_event_permit_link' , $args = array('type' => 'url'));
             ?>
     <?php endif; ?>
-    <?php
-      // Set Status Update vars
-      // TODO: Replace with actual values
-      $status_updates = array(
-          0 => array(
-            'message' => 'The City of Philadelphia will remain open for business. Stay tuned for additional information.',
-            'level' => '',
-            'type' => 'City',
-            'icon' => 'fa-institution',
-            'dates' => 'July 25 -28, 2016',
-          ),
-          1 => array(
-            'message' => 'At this time, the Streets Department plans to pick up trash and recycling on a normal schedule.',
-            'level' => '',
-            'type' => 'Trash',
-            'icon' => 'fa-trash',
-            'dates' => 'July 25, 2016',
-          ),
-          2 => array(
-            'message' => 'Road closures will be minimal. Stay tuned for additional information.',
-            'level' => 'warning',
-            'type' => 'Roads',
-            'icon' => 'fa-road',
-            'dates' => 'July 25 -28, 2016',
-          ),
-          // 3 => array(
-          //   'message' => 'It\'s a transit test with a somewhat long title',
-          //   'level' => 'critical',
-          //   'type' => 'Transit',
-          //   'icon' => 'fa-subway',
-          //   'dates' => 'July 25',
-          // ),
-      );
-    ?>
+    
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
     <?php if (!$append_before_wysiwyg == ''):?>
       <div class="row before-wysiwyg">
