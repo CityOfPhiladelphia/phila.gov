@@ -12,13 +12,6 @@ dl.simcal-events-list-container{
 .single-calendar .simcal-event-details{
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-
-  @media only screen and (min-width: 40.063em) {
-
-    .calendar-date{
-      padding: 1rem 0;
-    }
-  }
 }
 .simcal-default-calendar-light .simcal-nav-button{
   color:$ben-franklin-blue !important;
