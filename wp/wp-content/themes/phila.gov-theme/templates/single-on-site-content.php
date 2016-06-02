@@ -20,6 +20,7 @@
           // Set hero-header vars
           $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
           $hero_header_alt_text = rwmb_meta( 'phila_hero_header_image_alt_text', $args = array('type' => 'text'));
+          $hero_header_credit = rwmb_meta( 'phila_hero_header_image_credit', $args = array('type' => 'text'));
           $hero_header_title = rwmb_meta( 'phila_hero_header_title', $args = array('type' => 'text'));
           $hero_header_body_copy = rwmb_meta( 'phila_hero_header_body_copy', $args = array('type' => 'textarea'));
           $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
@@ -103,6 +104,11 @@
       <div class="small-24 columns">
         <section class="department-header">
           <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
+          <?php if (!$hero_header_credit == ''): ?>
+            <div class="photo-credit small-text">
+              <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo $hero_header_credit; ?></span>
+            </div>
+          <?php endif; ?>
         <?php if (!$hero_header_title == ''): ?>
           <div class="intro row">
             <div class="column">
@@ -123,7 +129,7 @@
   <?php endif; ?>
   <?php if ( ( !empty( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) ) && ( !empty( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ) ): ?>
     <!-- Begin Row One MetaBox Modules -->
-    <section class="department-module-row-one">
+    <section class="department-module-row-one mvl">
       <div class="row equal-height">
         <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
           <!-- Begin Column One -->
@@ -214,7 +220,7 @@
    <?php endif; ?>
 
    <?php if ( ( !empty( $row_two_col_one_module['phila_module_row_2_col_1_type'] ) ) && (!empty( $row_two_col_two_module['phila_module_row_2_col_2_type'] ) ) ): ?>
-   <section class="department-module-row-two">
+   <section class="department-module-row-two mvl">
      <div class="row">
        <?php if ( $row_two_col_one_type  == 'phila_module_row_2_col_1_calendar' ): ?>
          <div class="medium-12 columns">
