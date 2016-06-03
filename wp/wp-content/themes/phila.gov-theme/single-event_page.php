@@ -253,9 +253,9 @@ get_header(); ?>
                               <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
                               <?php if (!$array_value['block_image_credit']==''): ?>
                               <span class="photo-credit small-text mtm">Photo by <?php echo $array_value['block_image_credit']; ?></span>
+                              <?php endif; ?>
                             </div>
                             </a>
-                            <?php endif; ?>
                           </li>
                         <?php endif; ?>
                         <?php $output_index++;?>
