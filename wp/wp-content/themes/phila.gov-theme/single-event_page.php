@@ -30,14 +30,23 @@ get_header(); ?>
             $hero_header_body_copy = rwmb_meta( 'phila_hero_header_body_copy', $args = array('type' => 'textarea'));
             $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
             $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
-            // Set Event Details
+            // Set Event Detail vars
             $event_description = rwmb_meta('phila_event_desc' , $args = array('type' => 'textarea'));
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
+            $event_location_link = rwmb_meta('phila_event_loc_link' , $args = array('type' => 'url'));
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
-      ?>
+
+            $event_contact_blocks_header = rwmb_meta('phila_event_content_blocks_heading' , $args = array('type' => 'text'));
+            $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
+            $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
+
+            $event_permit_details = rwmb_meta('phila_event_permit_details' , $args = array('type' => 'textarea'));
+            $event_permit_link = rwmb_meta('phila_event_permit_link' , $args = array('type' => 'url'));
+            ?>
     <?php endif; ?>
+
     <!-- If Custom Markup append_before_wysiwyg is present print it -->
     <?php if (!$append_before_wysiwyg == ''):?>
       <div class="row before-wysiwyg">
@@ -92,7 +101,16 @@ get_header(); ?>
                       </div>
                       <div class="equal event-date-details small-text">
                         <h4>Dates</h4>
-                        <?php echo '<span class="nowrap">' . $event_start_date . '</span> - <span class="nowrap">' . $event_end_date . '</span>';?>
+
+                        <?php // TODO: Create a date utility to replace this ?>
+                        <?php $comparison_date_one = explode(' ', $event_start_date); ?>
+                        <?php $comparison_date_two = explode(' ', $event_end_date); ?>
+                        <?php if ($comparison_date_one[0] === $comparison_date_two[0]): ?>
+                          <span class="nowrap"><?php echo $event_start_date; ?></span> - <span class="nowrap"><?php echo $comparison_date_two[1]; ?></span>
+                        <?php else: ?>
+                          <span class="nowrap"><?php echo $event_start_date; ?></span> - <span class="nowrap"><?php echo $event_end_date; ?></span>
+                        <?php endif; ?>
+
                       </div>
                     </div>
                     <div class="small-14 medium-24 large-24 columns equal-height">
@@ -102,6 +120,9 @@ get_header(); ?>
                       <div class="equal event-location-details small-text">
                         <h4>Main Location</h4>
                         <?php echo $event_location;?>
+                        <?php if (!$event_location_link == ''): ?>
+                          <a href="<?php echo $event_location_link;?>" class="external" target="_blank">View map</a>
+                        <?php endif; ?>
                       </div>
                     </div>
 
@@ -123,6 +144,138 @@ get_header(); ?>
         </div>
       </div>
     <?php endif; ?>
+
+        <div class="row mvm">
+          <div class="small-24 columns">
+            <div class="row">
+              <div class="large-18 columns">
+
+                <?php $service_updates = phila_get_service_updates();?>
+
+                <?php if (is_array($service_updates)): ?>
+                <h2 class="contrast">City Service Updates &amp; Changes</h2>
+                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
+                <div class="row">
+                <?php foreach ($service_updates as $update):?>
+                  <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level'] == '' ) echo $update['service_level']; ?> ">
+                        <div class="service-update-icon equal">
+                          <div class="valign">
+                            <div class="valign-cell pam">
+                              <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                              <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="service-update-details pam equal">
+                            <div>
+                              <?php if ( !$update['service_message'] == '' ):?>
+                                <span><?php  echo $update['service_message']; ?></span>                              <br/>
+                              <?php endif;?>
+                              <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
+                                <a href="<?php echo $update['service_link']; ?>" class="external" target="_blank"><?php echo $update['service_link_text']; ?></a>                              <br/>
+                              <?php endif;?>
+                              <?php if ( !$update['service_effective_date'] == ''):?>
+                                <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
+                              <?php endif;?>
+                            </div>
+                        </div>
+                  </div>
+              <?php endforeach; ?>
+                </div>
+          </div>
+          <?php endif; ?>
+          <?php if (!$event_permit_details == ''): ?>
+            <div class="large-6 columns permits">
+              <h2 class="contrast">Permits</h2>
+              <div class="panel">
+                <header>
+                  <span class="fa-stack fa-4x center">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+                  </span>
+                  <h3>
+                    <?php if (!$event_permit_link == ''): ?>
+                      <a href="<?php echo $event_permit_link; ?>" class="h4 external center" target="_blank">Demonstration Permits</a>
+                    <?php else: ?>
+                      Demonstration Permits
+                    <?php endif; ?>
+                    </h3>
+                </header>
+                  <span><?php echo $event_permit_details; ?></span>
+              </div>
+            </div>
+          <?php endif; ?>
+
+        </div>
+      </div>
+    </div>
+    <!-- Things to See and Do -->
+    <?php $output_array = phila_get_event_content_blocks(); ?>
+
+    <?php if (is_array($output_array)):?>
+      <div class="row equal-height">
+        <div class="small-24 columns">
+          <?php if (!$event_contact_blocks_header == ''): ?>
+            <h2 class="contrast"><?php echo $event_contact_blocks_header;?></h2>
+          <?php endif; ?>
+          <!-- Begin Column One -->
+          <?php if (array_key_exists( 0 , $output_array )): ?>
+            <div class="medium-8 columns">
+              <div class="row">
+                <div class="small-24 columns">
+                  <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
+                    <img src="<?php echo $output_array[0]['block_image']; ?>">
+                    <div class="content-block equal">
+                      <h3 class="external"><?php echo $output_array[0]['block_title']; ?></h3>
+                      <p><?php echo $output_array[0]['block_summary']; ?></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if (array_key_exists( 1 , $output_array )): ?>
+            <!-- Begin Column Two -->
+            <div class="medium-16 columns">
+              <div class="row">
+                <div class="small-24 columns">
+                  <div class="news equal">
+                    <ul>
+                      <?php $output_index = 0; ?>
+                      <?php foreach ($output_array as $key => $array_value):
+                        if ($output_index > 0): ?>
+                          <li class="group mbm pbm">
+                            <img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
+                            <a href="<?php echo $array_value['block_link']; ?>"><h3 class="external"><?php echo $array_value['block_title']; ?></h3></a>
+                            <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
+                            <?php if (!$array_value['block_image_credit']==''): ?>
+                              <span class="photo-credit small-text mtm">Photo by <?php echo $array_value['block_image_credit']; ?></span>
+                            <?php endif; ?>
+                          </li>
+                        <?php endif; ?>
+                        <?php $output_index++;?>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if (!$event_contact_blocks_link == ''): ?>
+            <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : "More"; ?>
+            <a class="see-all-right float-right" href="<?php echo $event_contact_blocks_link;?>"><?php echo $link_text ?></a>
+          <?php endif; ?>
+        </div>
+      </div>
+    <?php endif; ?>
+
+    <?php if (array_key_exists( 0 , get_the_category() )): ?>
+      <!-- Recent News  -->
+      <div class="row news equal-height">
+      <?php echo do_shortcode('[recent-news posts="3"]'); ?>
+      </div>
+    <?php endif; ?>
+
     <!-- WYSIWYG content -->
     <?php if( get_the_content() != '' ) : ?>
     <section class="wysiwyg-content">
