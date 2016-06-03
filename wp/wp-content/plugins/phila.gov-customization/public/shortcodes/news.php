@@ -82,7 +82,7 @@ function recent_news_shortcode($atts) {
 
       $output .= '<li class="group">';
 
-      $output .= '<a href="' . $link .'">';
+      $output .= '<a href="' . $link .'" class="group">';
 
       $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
       $output .= '<div class="pbm"><span class="entry-date small-text">'. get_the_date() . '</span>';
