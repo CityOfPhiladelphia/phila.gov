@@ -244,12 +244,15 @@ get_header(); ?>
                       <?php $output_index = 0; ?>
                       <?php foreach ($output_array as $key => $array_value):
                         if ($output_index > 0): ?>
-                          <li class="group mbm pbm">
-                            <img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
-                            <a href="<?php echo $array_value['block_link']; ?>"><h3 class="external"><?php echo $array_value['block_title']; ?></h3></a>
-                            <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
-                            <?php if (!$array_value['block_image_credit']==''): ?>
+                          <li>
+                            <a href="<?php echo $array_value['block_link']; ?>" class="group"><img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
+                            <div class="pbm">
+                              <h3 class="external"><?php echo $array_value['block_title']; ?></h3>
+                              <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
+                              <?php if (!$array_value['block_image_credit']==''): ?>
                               <span class="photo-credit small-text mtm">Photo by <?php echo $array_value['block_image_credit']; ?></span>
+                            </div>
+                            </a>
                             <?php endif; ?>
                           </li>
                         <?php endif; ?>
