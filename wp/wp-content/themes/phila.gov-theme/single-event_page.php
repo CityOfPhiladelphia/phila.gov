@@ -244,7 +244,7 @@ get_header(); ?>
                       <?php $output_index = 0; ?>
                       <?php foreach ($output_array as $key => $array_value):
                         if ($output_index > 0): ?>
-                          <li>
+                          <li class="group">
                             <a href="<?php echo $array_value['block_link']; ?>" class="group"><img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
                             <div class="pbm">
                               <h3 class="external"><?php echo $array_value['block_title']; ?></h3>
