@@ -166,8 +166,9 @@ get_header(); ?>
                             </div>
                           </div>
                         </div>
-                        <div class="service-update-details pam equal">
-                            <div>
+                        <div class="service-update-details phm equal">
+                          <div class="valign">
+                            <div class="valign-cell pvm">
                               <?php if ( !$update['service_message'] == '' ):?>
                                 <span><?php  echo $update['service_message']; ?></span>                              <br/>
                               <?php endif;?>
@@ -178,6 +179,7 @@ get_header(); ?>
                                 <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
                               <?php endif;?>
                             </div>
+                          </div>
                         </div>
                   </div>
               <?php endforeach; ?>
