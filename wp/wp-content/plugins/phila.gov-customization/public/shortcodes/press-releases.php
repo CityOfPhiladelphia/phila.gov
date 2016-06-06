@@ -33,7 +33,7 @@ function press_release_shortcode($atts) {
   if( $press_release_loop->have_posts() ) {
     $post_counter = 0;
 
-    $output .= '<div class="large-24 columns"><h2 class="alternate">' . __('Press Releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
+    $output .= '<div class="large-24 columns"><h2 class="contrast">' . __('Press Releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
 
     while( $press_release_loop->have_posts() ) :
       $press_release_loop->the_post();

@@ -145,7 +145,7 @@
           </div>
         <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
           <div class="large-18 columns">
-            <h2 class="alternate"><?php echo($row_one_col_one_text_title); ?></h2>
+            <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
             <div>
               <?php echo($row_one_col_one_textarea); ?>
             </div>
@@ -161,7 +161,7 @@
           </div>
         <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_custom_text' ): ?>
           <div class="large-6 columns">
-            <h2 class="alternate"><?php echo($row_one_col_two_text_title); ?></h2>
+            <h2 class="contrast"><?php echo($row_one_col_two_text_title); ?></h2>
             <div class="panel no-margin">
               <div>
                 <?php echo($row_one_col_two_textarea); ?>
@@ -201,7 +201,7 @@
   <?php if ( !empty( $row_two_full_col_cal_id ) ) : ?>
     <div class="row">
       <div class="columns">
-        <h2 class="alternate">Calendar</h2>
+        <h2>Calendar</h2>
       </div>
     </div>
 
@@ -224,7 +224,7 @@
      <div class="row">
        <?php if ( $row_two_col_one_type  == 'phila_module_row_2_col_1_calendar' ): ?>
          <div class="medium-12 columns">
-           <h2 class="alternate">Calendar</h2>
+           <h2 class="contrast">Calendar</h2>
            <div class="event-box">
              <?php echo do_shortcode('[calendar id="' . $row_two_col_one_cal_id .'"]'); ?>
            </div>
@@ -241,7 +241,7 @@
          <?php endif; ?>
          <?php if ( $row_two_col_two_type  == 'phila_module_row_2_col_2_calendar' ): ?>
            <div class="medium-12 columns">
-             <h2 class="alternate">Calendar</h2>
+             <h2 class="contrast">Calendar</h2>
              <div class="event-box">
                <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
              </div>
