@@ -101,6 +101,8 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
          'id' => 'service_updates',
          'type' => 'group',
          'clone'  => true,
+         'sort_clone' => true,
+
 
          'fields' => array(
            array(
