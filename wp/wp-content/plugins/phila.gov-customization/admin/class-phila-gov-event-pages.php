@@ -101,6 +101,8 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
          'id' => 'service_updates',
          'type' => 'group',
          'clone'  => true,
+         'sort_clone' => true,
+
 
          'fields' => array(
            array(
@@ -139,6 +141,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
              'id'    => $prefix . 'update_link_text',
              'type'  => 'text',
              'class' => 'update-link-text',
+             'desc'  => '80 character maximum.',
              'size'  => '60'
            ),
            array(
