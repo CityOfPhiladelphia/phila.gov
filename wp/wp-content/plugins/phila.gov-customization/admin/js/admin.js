@@ -115,5 +115,32 @@ jQuery(document).ready(function($) {
       }
 
     }
+    if ( ( typenow == 'event_page') && adminpage.indexOf( 'post' ) > -1 ) {
+      $("#post").validate({
+        rules: {
+          'post_title': 'required'
+        }
+      });
+      $('#phila_event_desc').rules('add', {
+        maxlength: 365,
+        required:true
+      });
+      $('#phila_event_loc').rules('add', {
+        required:true
+      });
+      $('#phila_event_permit_details').rules('add', {
+        maxlength: 200
+      });
+      $('#phila_event_block_content_title').rules('add', {
+        maxlength: 70
+      });
+      $('#phila_event_block_summary').rules('add', {
+        maxlength: 200
+      });
+      $('#phila_service_update_message').rules('add', {
+        maxlength: 100
+      });
+
+    }
   }
 });
