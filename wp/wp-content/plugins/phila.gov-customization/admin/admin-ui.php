@@ -20,6 +20,7 @@ add_action( 'admin_init', 'phila_restrict_categories_custom_loader', 1 );
 function phila_restrict_categories_custom_loader() {
 
   class RestrictCategoriesCustom extends RestrictCategories {
+
     public function  __construct() {
 
       if ( is_admin() ) {
@@ -28,10 +29,14 @@ function phila_restrict_categories_custom_loader() {
          foreach ($post_type as $post) {
            add_action( 'admin_init', array( &$this, 'posts' ) );
           }
+
        }
     }
+
   }
-    new RestrictCategoriesCustom();
+
+  $custom_restrict_categories_load = new RestrictCategoriesCustom();
+
 }
 
 /**
