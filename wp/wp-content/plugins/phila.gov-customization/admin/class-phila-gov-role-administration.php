@@ -19,6 +19,8 @@ class Phila_Gov_Role_Administration {
 
     add_action('admin_head', array( $this, 'tinyMCE_edits' ) );
 
+    add_filter( 'default_hidden_meta_boxes',  array( $this, 'phila_hide_non_admin_meta_boxes'), 10, 2 );
+
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
   }
@@ -167,7 +169,6 @@ class Phila_Gov_Role_Administration {
 
     $current_user_cat = $this->get_current_user_category();
 
-var_dump($current_user_cat);
       $dropdown_args = array(
         'post_type'        => $post->post_type,
         'exclude_tree'     => $post->ID,
@@ -229,7 +230,16 @@ var_dump($current_user_cat);
       if ( ! current_user_can( PHILA_ADMIN ) ) {
         remove_meta_box('pageparentdiv', 'page', 'side');
         remove_meta_box('news-admin-only', 'news_post', 'side');
+
       }
+    }
+  }
+
+
+  public function phila_hide_non_admin_meta_boxes( $hidden, $screen ) {
+    if ( ! current_user_can( PHILA_ADMIN ) ){
+
+      return array( 'categorydiv');
     }
   }
 
