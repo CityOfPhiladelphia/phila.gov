@@ -29,7 +29,7 @@ function notices_shortcode( $atts ) {
 
   if( $notices_loop->have_posts() ) {
 
-    $output .= '<h2 class="alternate">Notices</h2>';
+    $output .= '<h2 class="contrast">Notices</h2>';
     $output .= '<div class="notices content-block">';
 
     $output .= '<ul class="no-bullet pan">';
@@ -56,7 +56,7 @@ function notices_shortcode( $atts ) {
     }
 
   }else {
-    $output .= '<h2 class="alternate">Notices</h2>';
+    $output .= '<h2 class="contrast">Notices</h2>';
     $output .= '<div class="notices content-block">';
     $output .= '<p>There are no notices.</p>';
     $output .= '</div>';
