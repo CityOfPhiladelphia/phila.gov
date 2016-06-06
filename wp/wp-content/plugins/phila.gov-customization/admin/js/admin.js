@@ -122,10 +122,17 @@ jQuery(document).ready(function($) {
         }
       });
       $('#phila_event_desc').rules('add', {
-        maxlength: 365
+        maxlength: 365,
+        required:true
+      });
+      $('#phila_event_loc').rules('add', {
+        required:true
       });
       $('#phila_event_permit_details').rules('add', {
         maxlength: 200
+      });
+      $('#phila_event_block_content_title').rules('add', {
+        maxlength: 70
       });
       $('#phila_event_block_summary').rules('add', {
         maxlength: 200
