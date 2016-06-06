@@ -183,25 +183,53 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
     );//Service Updates
 
     $meta_boxes[] = array(
-      'id'       => 'events_permits',
-      'title'    => 'Permits',
+      'id'       => 'action_panel',
+      'title'    => 'Action Panel',
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
       'fields' => array(
         array(
-          'name'  => 'Permit Details',
-          'id'    => $prefix . 'event_permit_details',
-          'type'  => 'textarea',
-          'class' => 'event-permit-details',
+          'name'  => 'Panel Title',
+          'id'    => $prefix . 'action_panel_title',
+          'type'  => 'text',
+          'class' => 'action-panel-title',
           'clone' => false,
         ),
         array(
-          'name'  => 'Permit Link',
-          'id'    => $prefix . 'event_permit_link',
+          'name'  => 'Call to Action Text',
+          'id'    => $prefix . 'action_panel_cta_text',
+          'type'  => 'text',
+          'class' => 'action-panel-cta-text',
+          'clone' => false,
+        ),
+        array(
+          'name'  => 'Details',
+          'id'    => $prefix . 'action_panel_details',
+          'type'  => 'textarea',
+          'class' => 'action-panel-details',
+          'clone' => false,
+        ),
+        array(
+          'name'  => 'Icon',
+          'id'    => $prefix . 'action_panel_fa',
+          'type'  => 'text',
+          'class' => 'action-panel-fa',
+          'clone' => false,
+        ),
+        array(
+          'name'  => 'Icon Background Circle',
+          'id'    => $prefix . 'action_panel_fa_circle',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-fa',
+          'clone' => false,
+        ),
+        array(
+          'name'  => 'Link',
+          'id'    => $prefix . 'action_panel_link',
           'desc'  => 'Link to permit documents',
           'type'  => 'url',
-          'class' => 'event-permit-link',
+          'class' => 'action-panel-link',
           'clone' => false,
         ),
       )

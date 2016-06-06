@@ -42,8 +42,11 @@ get_header(); ?>
             $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
 
-            $event_permit_details = rwmb_meta('phila_event_permit_details' , $args = array('type' => 'textarea'));
-            $event_permit_link = rwmb_meta('phila_event_permit_link' , $args = array('type' => 'url'));
+            $action_panel_details = rwmb_meta('phila_action_panel_details' , $args = array('type' => 'textarea'));
+            $action_panel_cta_text = rwmb_meta('phila_action_cta_text' , $args = array('type' => 'text'));
+            $action_panel_link = rwmb_meta('phila_action_panel_link' , $args = array('type' => 'url'));
+            $action_panel_fa_circle  = rwmb_meta('phila_action_panel_fa_circle' , $args = array('type' => 'checkbox'));
+            $action_panel_fa = rwmb_meta('phila_action_panel_fa' , $args = array('type' => 'text'));
             ?>
     <?php endif; ?>
 
@@ -186,25 +189,29 @@ get_header(); ?>
                 </div>
           </div>
           <?php endif; ?>
-          <?php if (!$event_permit_details == ''): ?>
+          <?php if (!$action_panel_details == ''): ?>
             <div class="large-6 columns permits">
               <h2 class="contrast">Permits</h2>
-              <div class="panel">
-                <header>
-                  <span class="fa-stack fa-4x center">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
-                  </span>
-                  <h3>
-                    <?php if (!$event_permit_link == ''): ?>
-                      <a href="<?php echo $event_permit_link; ?>" class="h4 external center" target="_blank">Demonstration Permits</a>
-                    <?php else: ?>
-                      Demonstration Permits
-                    <?php endif; ?>
-                    </h3>
-                </header>
-                  <span><?php echo $event_permit_details; ?></span>
-              </div>
+              <?php if (!$action_panel_link == ''): ?>
+                <a href="<?php echo $action_panel_link; ?>"  target="_blank">
+                  <div class="panel">
+                    <header>
+                      <?php if ($action_panel_fa_circle): ?>
+                        <span class="fa-stack fa-4x center">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
+                        </span>
+                      <?php else:?>
+                      <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x"></i></span>
+                      <?php endif;?>
+                        <?php if (!$action_panel_link == ''): ?>
+                          <h3 class="h4 external center">Demonstration Permits</h3>
+                        <?php endif; ?>
+                    </header>
+                      <span><?php echo $action_panel_details; ?></span>
+                  </div>
+                </a>
+                <?php endif ?>
             </div>
           <?php endif; ?>
 
