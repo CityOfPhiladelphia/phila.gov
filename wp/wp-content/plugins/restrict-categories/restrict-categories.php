@@ -514,8 +514,10 @@ class RestrictCategories{
 	 * @global $cat_list string The global comma-separated list of restricted categories.
 	 */
 	public function cat_filters( $categories ){
+  //$this->var = $categories;
 		// Clean up the category list
-		$this->cat_list = rtrim( $categories, ',' );
+    //by commenting out this line, we allow for an OR instead of an AND on category selection
+		//$this->cat_list = rtrim( $categories, ',' );
 
 		// If there are no categories, don't do anything
 		if ( empty( $this->cat_list ) )
@@ -528,7 +530,7 @@ class RestrictCategories{
 			add_filter( 'pre_get_posts', array( &$this, 'posts_query' ) );
 
 		// Allowed pages for term exclusions
-		$pages = array( 'edit.php', 'post-new.php', 'post.php' );
+		$pages = array( 'edit.php', 'post-new.php' );
 
 		// Make sure to exclude terms from $pages array as well as the Category screen
 		if ( in_array( $pagenow, $pages ) || ( $pagenow == 'edit-tags.php' && $_GET['taxonomy'] == 'category' ) || ( defined ( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) )
@@ -566,6 +568,8 @@ class RestrictCategories{
 	 * @return $excluded string Appended clause on WHERE of get_taxonomy
 	 */
 	public function exclusions(){
+    $this->cat_list = rtrim($this->cat_list, ",");
+
 		$excluded = " AND ( t.term_id IN ( $this->cat_list ) OR tt.taxonomy NOT IN ( 'category' ) )";
 
 		return $excluded;

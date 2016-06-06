@@ -20,6 +20,7 @@ add_action( 'admin_init', 'phila_restrict_categories_custom_loader', 1 );
 function phila_restrict_categories_custom_loader() {
 
   class RestrictCategoriesCustom extends RestrictCategories {
+
     public function  __construct() {
 
       if ( is_admin() ) {
@@ -28,10 +29,14 @@ function phila_restrict_categories_custom_loader() {
          foreach ($post_type as $post) {
            add_action( 'admin_init', array( &$this, 'posts' ) );
           }
+
        }
     }
+
   }
-    new RestrictCategoriesCustom();
+
+  $custom_restrict_categories_load = new RestrictCategoriesCustom();
+
 }
 
 /**
@@ -99,4 +104,10 @@ add_action('do_meta_boxes', 'phila_remove_thumbnails_from_pages');
 
 function phila_remove_thumbnails_from_pages() {
   remove_meta_box( 'postimagediv','page','side' );
+}
+
+add_filter( 'default_hidden_meta_boxes', 'phila_hide_meta_boxes', 10, 2 );
+
+function phila_hide_meta_boxes( $hidden, $screen ) {
+  return array( 'tagsdiv-post_tag', 'tagsdiv', 'postimagediv', 'formatdiv', 'pageparentdiv');
 }
