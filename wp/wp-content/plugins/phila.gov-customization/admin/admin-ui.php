@@ -109,5 +109,5 @@ function phila_remove_thumbnails_from_pages() {
 add_filter( 'default_hidden_meta_boxes', 'phila_hide_meta_boxes', 10, 2 );
 
 function phila_hide_meta_boxes( $hidden, $screen ) {
-    return array( 'tagsdiv-post_tag', 'tagsdiv', 'postimagediv', 'formatdiv', 'pageparentdiv'); // get these from the css class
+  return array( 'tagsdiv-post_tag', 'tagsdiv', 'postimagediv', 'formatdiv', 'pageparentdiv');
 }
