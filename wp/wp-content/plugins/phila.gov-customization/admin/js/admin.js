@@ -131,14 +131,25 @@ jQuery(document).ready(function($) {
       $('#phila_event_permit_details').rules('add', {
         maxlength: 200
       });
-      $('#phila_event_block_content_title').rules('add', {
-        maxlength: 70
+      $('input[id^="phila_event_block_content_title"]').each(function (i, el) {
+        $(this).rules('add', {
+          maxlength: 70
+        });
       });
-      $('#phila_event_block_summary').rules('add', {
-        maxlength: 200
+      $('textarea[id^="phila_event_block_summary"]').each(function (i, el) {
+        $(this).rules('add', {
+          maxlength: 200
+        });
       });
-      $('#phila_service_update_message').rules('add', {
-        maxlength: 100
+      $('textarea[id^="phila_service_update_message"]').each(function (i, el) {
+        $(this).rules('add', {
+          maxlength: 95
+        });
+      });
+      $('input[id^="phila_update_link_text"]').each(function (i, el) {
+        $(this).rules('add', {
+          maxlength: 80
+        });
       });
 
     }
