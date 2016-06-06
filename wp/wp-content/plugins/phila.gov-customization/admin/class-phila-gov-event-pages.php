@@ -25,7 +25,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
       'fields' => array(
         array(
           'name'  => 'Description',
-          'desc'  => 'A short description of the event. Required.',
+          'desc'  => 'A short description of the event (365 character maximum). Required.',
           'id'    => $prefix . 'event_desc',
           'type'  => 'textarea',
           'class' => 'event-description',
@@ -131,6 +131,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
              'id'    => $prefix . 'service_update_message',
              'type'  => 'textarea',
              'class' => 'service-update-message',
+             'desc'  => '100 character maximum.',
              'size'  => '60'
            ),
            array(
@@ -275,7 +276,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
               'id'    => $prefix . 'event_block_summary',
               'type'  => 'textarea',
               'class' => 'event-block-summary',
-              'desc'  => '225 character maximum.'
+              'desc'  => '200 character maximum.'
             ),
             array(
               'name'  => 'Link to Content',
