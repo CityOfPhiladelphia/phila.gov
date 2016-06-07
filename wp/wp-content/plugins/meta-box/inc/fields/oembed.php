@@ -74,49 +74,38 @@ class RWMB_OEmbed_Field extends RWMB_URL_Field
 	 */
 	public static function html( $meta, $field )
 	{
-		$attributes = self::get_attributes( $field, $meta );
-		return sprintf(
-			'<input %s>
-			<a href="#" class="show-embed button">%s</a>
+		return parent::html( $meta, $field ) . sprintf(
+			'<a href="#" class="show-embed button">%s</a>
 			<span class="spinner"></span>
 			<div class="embed-code">%s</div>',
-			self::render_attributes( $attributes ),
-			__( 'Preview', 'meta-box' ),
+			esc_html__( 'Preview', 'meta-box' ),
 			$meta ? self::get_embed( $meta ) : ''
 		);
 	}
 
 	/**
-	 * Output the field value
-	 * Display embed media
+	 * Get the attributes for a field
 	 *
-	 * @param  array    $field   Field parameters
-	 * @param  array    $args    Additional arguments. Not used for these fields.
-	 * @param  int|null $post_id Post ID. null for current post. Optional.
+	 * @param array $field
+	 * @param mixed $value
 	 *
-	 * @return mixed Field value
+	 * @return array
 	 */
-	public static function the_value( $field, $args = array(), $post_id = null )
+	public static function get_attributes( $field, $value = null )
 	{
-		$value  = self::get_value( $field, $args, $post_id );
-		$output = '';
-		if ( empty( $value ) )
-		{
-			return $output;
-		}
-		if ( $field['clone'] )
-		{
-			$output = '<ul>';
-			foreach ( $value as $subvalue )
-			{
-				$output .= '<li>' . self::get_embed( $subvalue ) . '</li>';
-			}
-			$output .= '</ul>';
-		}
-		else
-		{
-			$output = self::get_embed( $value );
-		}
-		return $output;
+		$attributes = parent::get_attributes( $field, $value );
+		$attributes['type'] = 'url';
+		return $attributes;
+	}
+
+	/**
+	 * Format a single value for the helper functions.
+	 * @param array  $field Field parameter
+	 * @param string $value The value
+	 * @return string
+	 */
+	public static function format_single_value( $field, $value )
+	{
+		return self::get_embed( $value );
 	}
 }

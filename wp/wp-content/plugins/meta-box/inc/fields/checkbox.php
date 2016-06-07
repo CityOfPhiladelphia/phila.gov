@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkbox field class.
  */
@@ -44,28 +45,12 @@ class RWMB_Checkbox_Field extends RWMB_Input_Field
 	 */
 	public static function end_html( $meta, $field )
 	{
-		$button = $field['clone'] ? call_user_func( array( RW_Meta_Box::get_class_name( $field ), 'add_clone_button' ), $field ) : '';
+		$button = $field['clone'] ? self::add_clone_button( $field ) : '';
 
 		// Closes the container
 		$html = "{$button}</div>";
 
 		return $html;
-	}
-
-	/**
-	 * Get the attributes for a field.
-	 *
-	 * @param array $field
-	 * @param mixed $value
-	 * @return array
-	 */
-	public static function get_attributes( $field, $value = null )
-	{
-		$attributes         = parent::get_attributes( $field, $value );
-		$attributes['type'] = 'checkbox';
-		$attributes['list'] = false;
-
-		return $attributes;
 	}
 
 	/**
@@ -87,24 +72,13 @@ class RWMB_Checkbox_Field extends RWMB_Input_Field
 	}
 
 	/**
-	 * Output the field value
-	 * Display 'Yes' or 'No' instead of '1' and '0'
-	 *
-	 * Note: we don't echo the field value directly. We return the output HTML of field, which will be used in
-	 * rwmb_the_field function later.
-	 *
-	 * @use self::get_value()
-	 * @see rwmb_the_value()
-	 *
-	 * @param  array    $field   Field parameters
-	 * @param  array    $args    Additional arguments. Rarely used. See specific fields for details
-	 * @param  int|null $post_id Post ID. null for current post. Optional.
-	 *
-	 * @return string HTML output of the field
+	 * Format a single value for the helper functions.
+	 * @param array  $field Field parameter
+	 * @param string $value The value
+	 * @return string
 	 */
-	public static function the_value( $field, $args = array(), $post_id = null )
+	public static function format_single_value( $field, $value )
 	{
-		$value = self::get_value( $field, $args, $post_id );
 		return $value ? __( 'Yes', 'meta-box' ) : __( 'No', 'meta-box' );
 	}
 }
