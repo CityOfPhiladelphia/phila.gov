@@ -42,8 +42,9 @@ get_header(); ?>
             $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
 
+            $action_panel_title = rwmb_meta('phila_action_section_title' , $args = array('type' => 'text'));
             $action_panel_details = rwmb_meta('phila_action_panel_details' , $args = array('type' => 'textarea'));
-            $action_panel_cta_text = rwmb_meta('phila_action_cta_text' , $args = array('type' => 'text'));
+            $action_panel_cta_text = rwmb_meta('phila_action_panel_cta_text' , $args = array('type' => 'text'));
             $action_panel_link = rwmb_meta('phila_action_panel_link' , $args = array('type' => 'url'));
             $action_panel_fa_circle  = rwmb_meta('phila_action_panel_fa_circle' , $args = array('type' => 'checkbox'));
             $action_panel_fa = rwmb_meta('phila_action_panel_fa' , $args = array('type' => 'text'));
@@ -193,10 +194,10 @@ get_header(); ?>
           </div>
           <?php endif; ?>
           <?php if (!$action_panel_details == ''): ?>
-            <div class="large-6 columns permits">
+            <div class="large-6 columns">
               <h2 class="contrast">Permits</h2>
               <?php if (!$action_panel_link == ''): ?>
-                <a href="<?php echo $action_panel_link; ?>"  target="_blank">
+                <a href="<?php echo $action_panel_link; ?>"  target="_blank" class="action-panel">
                   <div class="panel">
                     <header>
                       <?php if ($action_panel_fa_circle): ?>
@@ -207,11 +208,12 @@ get_header(); ?>
                       <?php else:?>
                       <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x"></i></span>
                       <?php endif;?>
-                        <?php if (!$action_panel_link == ''): ?>
-                          <h3 class="h4 external center">Demonstration Permits</h3>
+                        <?php if (!$action_panel_cta_text == ''): ?>
+                          <h3 class="h4 external center"><?php echo $action_panel_cta_text; ?></h3>
                         <?php endif; ?>
                     </header>
-                      <span><?php echo $action_panel_details; ?></span>
+                    <hr class="mll mrl">
+                      <span class="details"><?php echo $action_panel_details; ?></span>
                   </div>
                 </a>
                 <?php endif ?>

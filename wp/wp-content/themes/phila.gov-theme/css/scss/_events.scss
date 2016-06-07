@@ -177,7 +177,7 @@
     }
   }
   //Permits panel
-  .permits {
+  .action-panel {
     .panel {
       header {
         text-align: center;
@@ -185,6 +185,18 @@
         .fa-circle {
           color: $bell-yellow;
         }
+      }
+      .details {
+        color: $dark-gray;
+        font-weight: normal;
+      }
+    }
+    &:hover{
+      .panel header .fa-circle {
+        color: $medium-gray;
+      }
+      .details {
+        color: $medium-gray;
       }
     }
   }
