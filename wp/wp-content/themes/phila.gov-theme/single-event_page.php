@@ -201,15 +201,15 @@ get_header(); ?>
                   <div class="panel">
                     <header>
                       <?php if ($action_panel_fa_circle): ?>
-                        <span class="fa-stack fa-4x center">
+                        <span class="fa-stack fa-4x center" aria-hidden="true">
                           <i class="fa fa-circle fa-stack-2x"></i>
                           <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
                         </span>
                       <?php else:?>
-                      <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x"></i></span>
+                      <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
                       <?php endif;?>
                         <?php if (!$action_panel_cta_text == ''): ?>
-                          <h3 class="h4 external center"><?php echo $action_panel_cta_text; ?></h3>
+                          <span class="external center"><?php echo $action_panel_cta_text; ?></span>
                         <?php endif; ?>
                     </header>
                     <hr class="mll mrl">
