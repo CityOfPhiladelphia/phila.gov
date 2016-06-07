@@ -205,7 +205,7 @@
       </div>
     </div>
 
-    <div class="row expanded calendar-row mbm">
+    <div class="row expanded calendar-row mbm ptm">
       <div class="medium-centered large-16 columns">
         <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
       </div>
