@@ -187,16 +187,16 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
 
     $meta_boxes[] = array(
       'id'       => 'action_panel',
-      'title'    => 'Action Panel',
+      'title'    => 'Call to Action Panel',
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
       'fields' => array(
         array(
-          'name'  => 'Panel Title',
-          'id'    => $prefix . 'action_panel_title',
+          'name'  => 'Section Title',
+          'id'    => $prefix . 'action_section_title',
           'type'  => 'text',
-          'class' => 'action-panel-title',
+          'class' => 'action-section-title',
           'clone' => false,
         ),
         array(
@@ -230,7 +230,6 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
         array(
           'name'  => 'Link',
           'id'    => $prefix . 'action_panel_link',
-          'desc'  => 'Link to permit documents',
           'type'  => 'url',
           'class' => 'action-panel-link',
           'clone' => false,
