@@ -229,7 +229,7 @@ get_header(); ?>
               <div class="row">
                 <div class="small-24 columns">
                   <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
-                    <img src="<?php echo $output_array[0]['block_image']; ?>">
+                    <img src="<?php echo $output_array[0]['block_image']; ?>" alt="">
                     <div class="content-block equal">
                       <h3 class="external"><?php echo $output_array[0]['block_title']; ?></h3>
                       <p><?php echo $output_array[0]['block_summary']; ?></p>
@@ -250,7 +250,7 @@ get_header(); ?>
                       <?php foreach ($output_array as $key => $array_value):
                         if ($output_index > 0): ?>
                           <li class="group">
-                            <a href="<?php echo $array_value['block_link']; ?>" class="group"><img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
+                            <a href="<?php echo $array_value['block_link']; ?>" class="group"><img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>" alt="">
                             <div class="pbm">
                               <h3 class="external"><?php echo $array_value['block_title']; ?></h3>
                               <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
