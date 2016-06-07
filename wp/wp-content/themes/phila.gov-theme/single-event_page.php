@@ -159,32 +159,35 @@ get_header(); ?>
                 <h2 class="contrast">City Service Updates &amp; Changes</h2>
                 <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
                 <div class="row">
+                <?php $i=0; ?>
                 <?php foreach ($service_updates as $update):?>
-                  <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level'] == '' ) echo $update['service_level']; ?> ">
-                        <div class="service-update-icon equal">
-                          <div class="valign">
-                            <div class="valign-cell pam">
-                              <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
-                              <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
+                  <?php if ($i > 3) break; ?>
+                    <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level'] == '' ) echo $update['service_level']; ?> ">
+                          <div class="service-update-icon equal">
+                            <div class="valign">
+                              <div class="valign-cell pam">
+                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                                <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="service-update-details phm equal">
+                            <div class="valign">
+                              <div class="valign-cell pvm">
+                                <?php if ( !$update['service_message'] == '' ):?>
+                                  <span><?php  echo $update['service_message']; ?></span>                              <br/>
+                                <?php endif;?>
+                                <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
+                                  <a href="<?php echo $update['service_link']; ?>" class="external" target="_blank"><?php echo $update['service_link_text']; ?></a>                              <br/>
+                                <?php endif;?>
+                                <?php if ( !$update['service_effective_date'] == ''):?>
+                                  <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
+                                <?php endif;?>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div class="service-update-details phm equal">
-                          <div class="valign">
-                            <div class="valign-cell pvm">
-                              <?php if ( !$update['service_message'] == '' ):?>
-                                <span><?php  echo $update['service_message']; ?></span>                              <br/>
-                              <?php endif;?>
-                              <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
-                                <a href="<?php echo $update['service_link']; ?>" class="external" target="_blank"><?php echo $update['service_link_text']; ?></a>                              <br/>
-                              <?php endif;?>
-                              <?php if ( !$update['service_effective_date'] == ''):?>
-                                <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
-                              <?php endif;?>
-                            </div>
-                          </div>
-                        </div>
-                  </div>
+                  <?php ++$i; ?>
               <?php endforeach; ?>
                 </div>
           </div>
@@ -233,7 +236,7 @@ get_header(); ?>
               <div class="row">
                 <div class="small-24 columns">
                   <a href="<?php echo $output_array[0]['block_link']; ?>" class="card">
-                    <img src="<?php echo $output_array[0]['block_image']; ?>">
+                    <img src="<?php echo $output_array[0]['block_image']; ?>" alt="">
                     <div class="content-block equal">
                       <h3 class="external"><?php echo $output_array[0]['block_title']; ?></h3>
                       <p><?php echo $output_array[0]['block_summary']; ?></p>
@@ -254,7 +257,7 @@ get_header(); ?>
                       <?php foreach ($output_array as $key => $array_value):
                         if ($output_index > 0): ?>
                           <li class="group">
-                            <a href="<?php echo $array_value['block_link']; ?>" class="group"><img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>">
+                            <a href="<?php echo $array_value['block_link']; ?>" class="group"><img class="alignleft small-thumb wp-post-image" src="<?php echo $array_value['block_image']; ?>" alt="">
                             <div class="pbm">
                               <h3 class="external"><?php echo $array_value['block_title']; ?></h3>
                               <span class="small-text"><?php echo $array_value['block_summary']; ?></span>
