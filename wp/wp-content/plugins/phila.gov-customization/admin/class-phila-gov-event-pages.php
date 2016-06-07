@@ -133,7 +133,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
              'id'    => $prefix . 'service_update_message',
              'type'  => 'textarea',
              'class' => 'service-update-message',
-             'desc'  => '100 character maximum.',
+             'desc'  => '95 character maximum.',
              'size'  => '60'
            ),
            array(

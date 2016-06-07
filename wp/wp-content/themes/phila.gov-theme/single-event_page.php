@@ -100,7 +100,7 @@ get_header(); ?>
                         <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-date-details small-text">
-                        <h4>Dates</h4>
+                        <h3 class="h4">Dates</h3>
 
                         <?php // TODO: Create a date utility to replace this ?>
                         <?php $comparison_date_one = explode(' ', $event_start_date); ?>
@@ -118,7 +118,7 @@ get_header(); ?>
                         <i class="fa fa-map-marker fa-4x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-location-details small-text">
-                        <h4>Main Location</h4>
+                        <h3 class="h4">Main Location</h3>
                         <?php echo $event_location;?>
                         <?php if (!$event_location_link == ''): ?>
                           <a href="<?php echo $event_location_link;?>" class="external" target="_blank">View map</a>
