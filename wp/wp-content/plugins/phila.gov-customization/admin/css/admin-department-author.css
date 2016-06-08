@@ -1,9 +1,7 @@
 /*no cloning abilities*/
 #content-blocks .add-clone,
 #content-blocks .remove-clone,
-/*hide unwanted items from the wordpress menus*/
-.menu-icon-service_post,
-.menu-icon-media,
+
 a[href^="nav-menus.php"],
 a[href$="nav-menus.php?action=locations"],
 #wp-admin-bar-new-content,
@@ -14,7 +12,6 @@ a[href$="nav-menus.php?action=locations"],
 #menu-appearance,
 .manage-menus option,
 .edit-slug,
-.menu-icon-document,
 .page-title-action,
 /* don't allow users to create tags */
 .jaxtag{
