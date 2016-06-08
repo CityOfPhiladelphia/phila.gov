@@ -52,8 +52,10 @@ class Phila_Gov_Admin_Menu {
 
   function change_admin_post_label(){
 
-    // Add Menus as a Department Site submenu
+    // Add Widgets and Menus as a Department Site submenu
     add_submenu_page( 'edit.php?post_type=department_page', 'Sidebar', 'Sidebar', 'edit_posts', 'widgets.php');
+
+    add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
 
     //remove comments, this is here b/c we are using the add_action hook
     remove_menu_page('edit-comments.php');
