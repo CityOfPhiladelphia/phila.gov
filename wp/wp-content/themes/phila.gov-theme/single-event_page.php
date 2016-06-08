@@ -43,9 +43,10 @@ get_header(); ?>
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
 
             $action_panel_title = rwmb_meta('phila_action_section_title' , $args = array('type' => 'text'));
-            $action_panel_details = rwmb_meta('phila_action_panel_details' , $args = array('type' => 'textarea'));
+            $action_panel_summary = rwmb_meta('phila_action_panel_summary' , $args = array('type' => 'textarea'));
             $action_panel_cta_text = rwmb_meta('phila_action_panel_cta_text' , $args = array('type' => 'text'));
             $action_panel_link = rwmb_meta('phila_action_panel_link' , $args = array('type' => 'url'));
+            $action_panel_link_loc  = rwmb_meta('phila_action_panel_link_loc' , $args = array('type' => 'checkbox'));
             $action_panel_fa_circle  = rwmb_meta('phila_action_panel_fa_circle' , $args = array('type' => 'checkbox'));
             $action_panel_fa = rwmb_meta('phila_action_panel_fa' , $args = array('type' => 'text'));
             ?>
@@ -196,7 +197,7 @@ get_header(); ?>
                 </div>
           </div>
           <?php endif; ?>
-          <?php if (!$action_panel_details == ''): ?>
+          <?php if (!$action_panel_summary == ''): ?>
             <div class="large-6 columns">
               <h2 class="contrast">Permits</h2>
               <?php if (!$action_panel_link == ''): ?>
@@ -212,11 +213,11 @@ get_header(); ?>
                       <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
                       <?php endif;?>
                         <?php if (!$action_panel_cta_text == ''): ?>
-                          <span class="external center"><?php echo $action_panel_cta_text; ?></span>
+                          <span class="center <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
                         <?php endif; ?>
                     </header>
                     <hr class="mll mrl">
-                      <span class="details"><?php echo $action_panel_details; ?></span>
+                      <span class="details"><?php echo $action_panel_summary; ?></span>
                   </div>
                 </a>
                 <?php endif ?>

@@ -207,8 +207,8 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
           'clone' => false,
         ),
         array(
-          'name'  => 'Details',
-          'id'    => $prefix . 'action_panel_details',
+          'name'  => 'Summary',
+          'id'    => $prefix . 'action_panel_summary',
           'type'  => 'textarea',
           'class' => 'action-panel-details',
           'clone' => false,
@@ -228,10 +228,18 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
           'clone' => false,
         ),
         array(
-          'name'  => 'Link',
+          'name'  => 'Link to Content',
           'id'    => $prefix . 'action_panel_link',
           'type'  => 'url',
           'class' => 'action-panel-link',
+          'clone' => false,
+        ),
+        array(
+          'name'  => 'External Link',
+          'id'    => $prefix . 'action_panel_link_loc',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-link-loc',
+          'desc'  => 'This link directs users away from alpha.phila.gov',
           'clone' => false,
         ),
       )
