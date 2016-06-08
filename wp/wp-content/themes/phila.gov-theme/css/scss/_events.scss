@@ -176,7 +176,12 @@
       }
     }
   }
-  //Permits panel
+  //General panel override
+  .panel {
+    padding: 1rem;
+    border:0;
+  }
+  //Call to Action panel
   a.action-panel {
     color: $dark-gray;
     font-weight: normal;
@@ -184,8 +189,6 @@
     -moz-transition: opacity .2s ease-in-out;
     -webkit-transition: opacity .2s ease-in-out;
     .panel {
-      padding: 1rem;
-      border:0;
       header {
         color: $ben-franklin-blue;
         font-weight: 700;
