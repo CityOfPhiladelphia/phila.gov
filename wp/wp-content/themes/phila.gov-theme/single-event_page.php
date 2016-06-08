@@ -129,7 +129,7 @@ get_header(); ?>
 
                         <?php echo $event_location;?>
                         <?php if (!$event_location_link == ''): ?>
-                          <a href="<?php echo $event_location_link;?>" class="external" target="_blank">View map</a>
+                          <a href="<?php echo $event_location_link;?>" class="external">View map</a>
                         <?php endif; ?>
                       </div>
                     </div>
@@ -183,7 +183,7 @@ get_header(); ?>
                                   <span><?php  echo $update['service_message']; ?></span>                              <br/>
                                 <?php endif;?>
                                 <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
-                                  <a href="<?php echo $update['service_link']; ?>" class="external" target="_blank"><?php echo $update['service_link_text']; ?></a>                              <br/>
+                                  <a href="<?php echo $update['service_link']; ?>" class="external"><?php echo $update['service_link_text']; ?></a>                              <br/>
                                 <?php endif;?>
                                 <?php if ( !$update['service_effective_date'] == ''):?>
                                   <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
@@ -201,7 +201,7 @@ get_header(); ?>
             <div class="large-6 columns">
               <h2 class="contrast">Permits</h2>
               <?php if (!$action_panel_link == ''): ?>
-                <a href="<?php echo $action_panel_link; ?>"  target="_blank" class="action-panel">
+                <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
                   <div class="panel">
                     <header>
                       <?php if ($action_panel_fa_circle): ?>
