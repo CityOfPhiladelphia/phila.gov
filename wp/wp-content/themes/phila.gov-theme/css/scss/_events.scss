@@ -176,22 +176,40 @@
       }
     }
   }
-  //Permits panel
-  .permits {
+  //General panel override
+  .panel {
+    padding: 1rem;
+    border:0;
+  }
+  //Call to Action panel
+  a.action-panel {
+    color: $dark-gray;
+    font-weight: normal;
+    transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
     .panel {
       header {
+        color: $ben-franklin-blue;
+        font-weight: 700;
         text-align: center;
-
         .fa-circle {
           color: $bell-yellow;
         }
       }
     }
+    &:hover{
+      .panel header,
+      .details,
+      hr {
+        opacity: .6;
+        transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -webkit-transition: opacity .2s ease-in-out;
+      }
+    }
   }
-  .panel {
-    padding: 1rem;
-    border:0;
-  }
+
   //Vertical Align helper
   .valign {
     display: table;
