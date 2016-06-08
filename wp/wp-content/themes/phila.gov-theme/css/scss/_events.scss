@@ -177,33 +177,37 @@
     }
   }
   //Permits panel
-  .action-panel {
+  a.action-panel {
+    color: $dark-gray;
+    font-weight: normal;
+    padding: 1rem;
+    border:0;
+    transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
+
     .panel {
       header {
+        color: $ben-franklin-blue;
+        font-weight: 700;
         text-align: center;
-
         .fa-circle {
           color: $bell-yellow;
         }
       }
-      .details {
-        color: $dark-gray;
-        font-weight: normal;
-      }
     }
     &:hover{
-      .panel header .fa-circle {
-        color: $medium-gray;
-      }
-      .details {
-        color: $medium-gray;
+      .panel header,
+      .details,
+      hr {
+        opacity: .6;
+        transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -webkit-transition: opacity .2s ease-in-out;
       }
     }
   }
-  .panel {
-    padding: 1rem;
-    border:0;
-  }
+
   //Vertical Align helper
   .valign {
     display: table;
