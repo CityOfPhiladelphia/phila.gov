@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Select Tree Walker for cascading select fields.
  * @uses RWMB_Select_Walker
@@ -33,9 +34,9 @@ class RWMB_Select_Tree_Walker
 		$parent   = $this->db_fields['parent'];
 		$children = array();
 
-		foreach ( $options as $o )
+		foreach ( $options as $option )
 		{
-			$children[$o->$parent][] = $o;
+			$children[$option->$parent][] = $option;
 		}
 		$top_level = isset( $children[0] ) ? 0 : $options[0]->$parent;
 		return $this->display_level( $children, $top_level, true );
@@ -43,12 +44,10 @@ class RWMB_Select_Tree_Walker
 
 	function display_level( $options, $parent_id = 0, $active = false )
 	{
-		$id          = $this->db_fields['id'];
-		$field       = $this->field;
-		$meta        = $this->meta;
-		$walker      = new RWMB_Select_Walker( $this->db_fields, $this->field, $this->meta );
-		$field_class = RW_Meta_Box::get_class_name( $field );
-		$attributes  = call_user_func( array( $field_class, 'get_attributes' ), $field, $meta );
+		$id         = $this->db_fields['id'];
+		$field      = $this->field;
+		$walker     = new RWMB_Select_Walker( $this->db_fields, $field, $this->meta );
+		$attributes = RWMB_Field::call( 'get_attributes', $field, $this->meta );
 
 		$children = $options[$parent_id];
 		$output   = sprintf(
@@ -65,7 +64,7 @@ class RWMB_Select_Tree_Walker
 		{
 			if ( isset( $options[$c->$id] ) )
 			{
-				$output .= $this->display_level( $options, $c->$id, in_array( $c->$id, $meta ) && $active );
+				$output .= $this->display_level( $options, $c->$id, in_array( $c->$id, $this->meta ) && $active );
 			}
 		}
 

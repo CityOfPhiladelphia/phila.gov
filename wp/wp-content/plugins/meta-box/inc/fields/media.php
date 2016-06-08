@@ -1,16 +1,13 @@
 <?php
-
 /**
  * Media field class which users WordPress media popup to upload and select files.
  */
-class RWMB_Media_Field extends RWMB_Field
+class RWMB_Media_Field extends RWMB_File_Field
 {
 	/**
 	 * Enqueue scripts and styles
-	 *
-	 * @return void
 	 */
-	static function admin_enqueue_scripts()
+	public static function admin_enqueue_scripts()
 	{
 		wp_enqueue_media();
 		wp_enqueue_style( 'rwmb-media', RWMB_CSS_URL . 'media.css', array(), RWMB_VER );
@@ -41,13 +38,12 @@ class RWMB_Media_Field extends RWMB_Field
 
 	/**
 	 * Add actions
-	 *
-	 * @return void
 	 */
-	static function add_actions()
+	public static function add_actions()
 	{
-		// Print attachment templates
-		add_action( 'print_media_templates', array( __CLASS__, 'print_templates' ) );
+		$args = func_get_args();
+		$field = reset( $args );
+		add_action( 'print_media_templates', array( self::get_class_name( $field ), 'print_templates' ) );
 	}
 
 	/**
@@ -58,11 +54,11 @@ class RWMB_Media_Field extends RWMB_Field
 	 *
 	 * @return string
 	 */
-	static function html( $meta, $field )
+	public static function html( $meta, $field )
 	{
-		$meta                       = (array) $meta;
-		$meta                       = implode( ',', $meta );
-		$attributes                 = $load_test_attr = self::get_attributes( $field, $meta );
+		$meta       = (array) $meta;
+		$meta       = implode( ',', $meta );
+		$attributes = $load_test_attr = self::get_attributes( $field, $meta );
 
 		$html = sprintf(
 			'<input %s>
@@ -84,7 +80,7 @@ class RWMB_Media_Field extends RWMB_Field
 	 *
 	 * @return array
 	 */
-	static function normalize( $field )
+	public static function normalize( $field )
 	{
 		$field = parent::normalize( $field );
 		$field = wp_parse_args( $field, array(
@@ -108,7 +104,7 @@ class RWMB_Media_Field extends RWMB_Field
 	 *
 	 * @return array
 	 */
-	static function get_attributes( $field, $value = null )
+	public static function get_attributes( $field, $value = null )
 	{
 		$attributes         = parent::get_attributes( $field, $value );
 		$attributes['type'] = 'hidden';
@@ -120,7 +116,11 @@ class RWMB_Media_Field extends RWMB_Field
 		return $attributes;
 	}
 
-	static function get_mime_extensions()
+	/**
+	 * Get supported mime extensions.
+	 * @return array
+	 */
+	protected static function get_mime_extensions()
 	{
 		$mime_types = wp_get_mime_types();
 		$extensions = array();
@@ -147,7 +147,7 @@ class RWMB_Media_Field extends RWMB_Field
 	 * @param $post_id
 	 * @param $field
 	 */
-	static function save( $new, $old, $post_id, $field )
+	public static function save( $new, $old, $post_id, $field )
 	{
 		delete_post_meta( $post_id, $field['id'] );
 		parent::save( $new, array(), $post_id, $field );
@@ -163,7 +163,7 @@ class RWMB_Media_Field extends RWMB_Field
 	 *
 	 * @return array|mixed
 	 */
-	static function value( $new, $old, $post_id, $field )
+	public static function value( $new, $old, $post_id, $field )
 	{
 		if ( $field['clone'] )
 		{
@@ -182,10 +182,9 @@ class RWMB_Media_Field extends RWMB_Field
 
 	/**
 	 * Template for media item
-	 * @return void
 	 */
-	static function print_templates()
+	public static function print_templates()
 	{
-		require_once( RWMB_INC_DIR . 'templates/media.php' );
+		require_once RWMB_INC_DIR . 'templates/media.php';
 	}
 }

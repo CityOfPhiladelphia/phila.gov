@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Input List Walker
  * For checkbox and radio list fields
@@ -14,7 +15,7 @@ class RWMB_Input_List_Walker extends RWMB_Walker
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() )
 	{
-		$output .= "<ul class='rwmb-input-list'>";
+		$output .= '<ul class="rwmb-input-list">';
 	}
 
 	/**
@@ -26,7 +27,7 @@ class RWMB_Input_List_Walker extends RWMB_Walker
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() )
 	{
-		$output .= "</ul>";
+		$output .= '</ul>';
 	}
 
 	/**
@@ -40,17 +41,14 @@ class RWMB_Input_List_Walker extends RWMB_Walker
 	 */
 	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 )
 	{
-		$label       = $this->db_fields['label'];
-		$id          = $this->db_fields['id'];
-		$meta        = $this->meta;
-		$field       = $this->field;
-		$field_class = RW_Meta_Box::get_class_name( $field );
-		$attributes  = call_user_func( array( $field_class, 'get_attributes' ), $field, $object->$id );
+		$label      = $this->db_fields['label'];
+		$id         = $this->db_fields['id'];
+		$attributes = RWMB_Field::call( 'get_attributes', $this->field, $object->$id );
 
 		$output .= sprintf(
 			'<li><label><input %s %s>%s</label>',
 			RWMB_Field::render_attributes( $attributes ),
-			checked( in_array( $object->$id, $meta ), 1, false ),
+			checked( in_array( $object->$id, $this->meta ), 1, false ),
 			$object->$label
 		);
 	}
@@ -65,6 +63,6 @@ class RWMB_Input_List_Walker extends RWMB_Walker
 	 */
 	public function end_el( &$output, $page, $depth = 0, $args = array() )
 	{
-		$output .= "</li>";
+		$output .= '</li>';
 	}
 }
