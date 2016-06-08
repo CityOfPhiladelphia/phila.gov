@@ -42,8 +42,13 @@ get_header(); ?>
             $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
 
-            $event_permit_details = rwmb_meta('phila_event_permit_details' , $args = array('type' => 'textarea'));
-            $event_permit_link = rwmb_meta('phila_event_permit_link' , $args = array('type' => 'url'));
+            $action_panel_title = rwmb_meta('phila_action_section_title' , $args = array('type' => 'text'));
+            $action_panel_summary = rwmb_meta('phila_action_panel_summary' , $args = array('type' => 'textarea'));
+            $action_panel_cta_text = rwmb_meta('phila_action_panel_cta_text' , $args = array('type' => 'text'));
+            $action_panel_link = rwmb_meta('phila_action_panel_link' , $args = array('type' => 'url'));
+            $action_panel_link_loc  = rwmb_meta('phila_action_panel_link_loc' , $args = array('type' => 'checkbox'));
+            $action_panel_fa_circle  = rwmb_meta('phila_action_panel_fa_circle' , $args = array('type' => 'checkbox'));
+            $action_panel_fa = rwmb_meta('phila_action_panel_fa' , $args = array('type' => 'text'));
             ?>
     <?php endif; ?>
 
@@ -100,7 +105,8 @@ get_header(); ?>
                         <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-date-details small-text">
-                        <h3 class="h4">Dates</h3>
+
+                        <h3 class="h3">Dates</h3>
 
                         <?php // TODO: Create a date utility to replace this ?>
                         <?php $comparison_date_one = explode(' ', $event_start_date); ?>
@@ -118,10 +124,12 @@ get_header(); ?>
                         <i class="fa fa-map-marker fa-4x" aria-hidden="true"></i>
                       </div>
                       <div class="equal event-location-details small-text">
-                        <h3 class="h4">Main Location</h3>
+
+                        <h3 class="h3">Main Location</h3>
+
                         <?php echo $event_location;?>
                         <?php if (!$event_location_link == ''): ?>
-                          <a href="<?php echo $event_location_link;?>" class="external" target="_blank">View map</a>
+                          <a href="<?php echo $event_location_link;?>" class="external">View map</a>
                         <?php endif; ?>
                       </div>
                     </div>
@@ -175,7 +183,7 @@ get_header(); ?>
                                   <span><?php  echo $update['service_message']; ?></span>                              <br/>
                                 <?php endif;?>
                                 <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
-                                  <a href="<?php echo $update['service_link']; ?>" class="external" target="_blank"><?php echo $update['service_link_text']; ?></a>                              <br/>
+                                  <a href="<?php echo $update['service_link']; ?>" class="external"><?php echo $update['service_link_text']; ?></a>                              <br/>
                                 <?php endif;?>
                                 <?php if ( !$update['service_effective_date'] == ''):?>
                                   <span class="date small-text"><em>In Effect: <?php  echo $update['service_effective_date']; ?></em></span>
@@ -189,25 +197,34 @@ get_header(); ?>
                 </div>
           </div>
           <?php endif; ?>
-          <?php if (!$event_permit_details == ''): ?>
-            <div class="large-6 columns permits">
+          <?php if (!$action_panel_summary == ''): ?>
+            <div class="large-6 columns">
               <h2 class="contrast">Permits</h2>
-              <div class="panel">
-                <header>
-                  <span class="fa-stack fa-4x center">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
-                  </span>
-                  <h3>
-                    <?php if (!$event_permit_link == ''): ?>
-                      <a href="<?php echo $event_permit_link; ?>" class="h4 external center" target="_blank">Demonstration Permits</a>
-                    <?php else: ?>
-                      Demonstration Permits
-                    <?php endif; ?>
-                    </h3>
-                </header>
-                  <span><?php echo $event_permit_details; ?></span>
-              </div>
+              <?php if (!$action_panel_link == ''): ?>
+                <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
+                  <div class="panel">
+                    <header>
+                      <?php if ($action_panel_fa_circle): ?>
+                        <div>
+                          <span class="fa-stack fa-4x center" aria-hidden="true">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </div>
+                      <?php else:?>
+                        <div>
+                          <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
+                        </div>
+                      <?php endif;?>
+                        <?php if (!$action_panel_cta_text == ''): ?>
+                          <span class="center <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
+                        <?php endif; ?>
+                    </header>
+                    <hr class="mll mrl">
+                      <span class="details"><?php echo $action_panel_summary; ?></span>
+                  </div>
+                </a>
+                <?php endif ?>
             </div>
           <?php endif; ?>
 
