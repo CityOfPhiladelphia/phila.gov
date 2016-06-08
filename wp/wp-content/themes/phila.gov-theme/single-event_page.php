@@ -205,12 +205,16 @@ get_header(); ?>
                   <div class="panel">
                     <header>
                       <?php if ($action_panel_fa_circle): ?>
-                        <span class="fa-stack fa-4x center" aria-hidden="true">
+                        <div>
+                          <span class="fa-stack fa-4x center" aria-hidden="true">
                           <i class="fa fa-circle fa-stack-2x"></i>
                           <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
                         </span>
+                      </div>
                       <?php else:?>
-                      <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
+                        <div>
+                          <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
+                        </div>
                       <?php endif;?>
                         <?php if (!$action_panel_cta_text == ''): ?>
                           <span class="center <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
