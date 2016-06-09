@@ -227,7 +227,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       $home_alert_title = rwmb_meta( 'phila_department_home_alert_title', $args = array('type' => 'textarea'));
       $home_alert_link = rwmb_meta( 'phila_department_home_alert_link', $args = array('type' => 'url'));
       if (!$home_alert_title == ''){
-        echo '<div class="columns"><div data-alert class="alert-box info"><i class="fa fa-exclamation-triangle"></i> ' . $home_alert_title;
+        echo '<div class="columns"><div data-alert class="alert-box info"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' . $home_alert_title;
           if (!$home_alert_link == ''){
           echo ' <a href="' . $home_alert_link . '">More &raquo;</a>';
         }
