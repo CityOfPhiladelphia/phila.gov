@@ -23,7 +23,7 @@ get_header(); ?>
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
                 </span>
-                <span class="sr-only">311</span>
+                <span class="show-for-sr">311</span>
                   <p>Report a Problem</p>
                 <span class="accessible"> Opens in new window</span>
               </a>
