@@ -111,6 +111,8 @@ jQuery(document).ready(function($) {
       $('.rwmb-date').datepicker();
       if ($(".rwmb-date").datepicker("getDate") === null) {
 
+        $('.rwmb-date').val($.datepicker.setDefaults( $.datepicker.regional[ "" ]) );
+
         $('.rwmb-date').val($.datepicker.formatDate('MM dd, yy', new Date()));
       }
 
