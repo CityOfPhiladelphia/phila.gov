@@ -81,9 +81,9 @@ get_header(); ?>
       <div class="small-24 columns links">
         <nav>
           <ul class="menu">
-            <li><a href="/departments"><i class="fa fa-sitemap"></i> <?php printf( __('City Government Directory', 'phila-gov') ); ?></a></li>
-            <li><a href="/departments/mayor"><i class="fa fa-university"></i> <?php printf( __('Mayor\'s Office', 'phila-gov') ); ?></a></li>
-            <li><a href="http://www.phila.gov/map"><i class="fa fa-map-marker"></i> <?php printf( __('Maps', 'phila-gov') ); ?></a></li>
+            <li><a href="/departments"><i class="fa fa-sitemap"  aria-hidden="true"></i> <?php printf( __('City Government Directory', 'phila-gov') ); ?></a></li>
+            <li><a href="/departments/mayor"><i class="fa fa-university"  aria-hidden="true"></i> <?php printf( __('Mayor\'s Office', 'phila-gov') ); ?></a></li>
+            <li><a href="http://www.phila.gov/map"><i class="fa fa-map-marker"  aria-hidden="true"></i> <?php printf( __('Maps', 'phila-gov') ); ?></a></li>
           </ul>
         </nav>
       </div>
