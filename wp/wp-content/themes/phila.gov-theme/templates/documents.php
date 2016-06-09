@@ -44,34 +44,31 @@
       $content = $attachment_data['description'];
       $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id[0] );
       ?>
-      <tr class="clickable-row" data-href=" <?php echo $document['url']; ?>">
+      <tr class="clickable-row" data-href="<?php echo $document['url']; ?>">
         <td>
-          <a href="<?php echo $document['url'] ?>"><?php echo $document['title']; ?></a>
+          <a href="<?php echo $document['url'] ?>"><?php echo $document['title']; ?> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
         </td>
           <td>
             <?php if ( $content ): ?>
-              <span class="small-text"> <?php echo $content; ?> </span>
+              <?php echo $content; ?>
             <?php else:?>
-              <span class="small-text"> No description available. </span>
+               No description available.
             <?php endif; ?>
           </td>
           <td>
             <?php if( ! $document_published == '' ): ?>
-              <span class="small-text"> <?php echo $document_published; ?> </span>
+              <?php echo $document_published; ?>
             <?php else: ?>
-              <span class="small-text"> <?php echo $global_document_published; ?> </span>
+              <?php echo $global_document_published; ?>
             <?php endif; ?>
           </td>
           <td>
             <?php if ( $file_type ): ?>
-              <div class="row">
-                <div class="medium-12 columns">
-                  <span class="small-text file-type"> <?php phila_format_document_type( $file_type ); ?> </span>
-                </div>
-                <div class="medium-12 columns">
-                  <a href="<?php echo $document['url'] ?>"><i class="fa fa-download fa-2x"></i></a>
-                </div>
-              </div>
+            <div aria-hidden="true">
+              <span class="file-type phm"><?php phila_format_document_type( $file_type ); ?></span>
+              <a href="<?php echo $document['url'] ?>" data-file-name="<?php echo $document['title']; ?>" aria-hidden="true"><i class="fa fa-download fa-2x"></i>
+              </a>
+            </div>
             <?php endif; ?>
           </td>
         </tr>
