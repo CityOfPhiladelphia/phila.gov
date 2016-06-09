@@ -19,17 +19,18 @@ get_header(); ?>
           <div class="row call-to-action">
             <div class="small-6 columns">
               <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
-                <span class="fa-stack fa-3x">
+                <span class="fa-stack fa-3x" aria-hidden="true">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
-                  </span>
+                </span>
+                <span class="sr-only">311</span>
                   <p>Report a Problem</p>
                 <span class="accessible"> Opens in new window</span>
               </a>
               </div>
               <div class="small-6 columns">
                 <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
-                 <span class="fa-stack fa-3x">
+                 <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
                   </span>
@@ -39,7 +40,7 @@ get_header(); ?>
               </div>
               <div class="small-6 columns">
                 <a href="http://www.phila.gov/personnel/JobOpps.html" target="_blank">
-                  <span class="fa-stack fa-3x">
+                  <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
                   </span>
@@ -49,7 +50,7 @@ get_header(); ?>
               </div>
               <div class="small-6 columns">
                 <a href="/property">
-                  <span class="fa-stack fa-3x">
+                  <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-home fa-stack-1x fa-inverse"></i>
                   </span>
