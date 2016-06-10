@@ -14,7 +14,7 @@
       </p>
     </div>
     <div class="small-12 medium-6 columns text-right hide-for-small-only">
-      <i class="fa fa-globe"></i><div id="google_translate_element"></div>
+      <i class="fa fa-globe" aria-hidden="true"></i><div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
         <script type="text/javascript">
           function googleTranslateElementInit() {
             new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
