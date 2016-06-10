@@ -238,8 +238,10 @@ class Phila_Gov_Role_Administration {
 
   public function phila_hide_non_admin_meta_boxes( $hidden, $screen ) {
     if ( ! current_user_can( PHILA_ADMIN ) ){
-
       return array( 'categorydiv');
+
+    }else{
+      return $hidden;
     }
   }
 
