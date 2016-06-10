@@ -32,8 +32,8 @@ function phila_gov_paging_nav() {
       	'current' => max( 1, get_query_var('paged') ),
       	'total' => $wp_query->max_num_pages,
               'before_page_number' => '<span class="screen-reader-text">'.$translated.' </span>',
-        'prev_text' => __('<i class="fa fa-arrow-left"></i> Previous'),
-	      'next_text' => __('Next <i class="fa fa-arrow-right"></i> '),
+        'prev_text' => __('<i class="fa fa-arrow-left" aria-hidden="true"></i> Previous'),
+	      'next_text' => __('Next <i class="fa fa-arrow-right" aria-hidden="true"></i> '),
         )
       );
       ?>

@@ -9,7 +9,7 @@
  <?php
    $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
    $parent = get_term($current_term->parent, get_query_var('taxonomy') );
-   echo '<a class="h3" href="' . get_term_link( $parent, $parent->taxonomy )  .'"><i class="fa fa-arrow-left"></i> ' . $parent->name . '</a>'; ?>
+   echo '<a class="h3" href="' . get_term_link( $parent, $parent->taxonomy )  .'"><i class="fa fa-arrow-left" aria-hidden="true"></i> <span class="show-for-sr">Back to </span>' . $parent->name . '</a>'; ?>
   <?php
     /* located in functions.php */
     phila_get_parent_topics(); ?>

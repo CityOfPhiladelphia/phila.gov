@@ -19,17 +19,18 @@ get_header(); ?>
           <div class="row call-to-action">
             <div class="small-6 columns">
               <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
-                <span class="fa-stack fa-3x">
+                <span class="fa-stack fa-3x" aria-hidden="true">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
-                  </span>
+                </span>
+                <span class="show-for-sr">311</span>
                   <p>Report a Problem</p>
                 <span class="accessible"> Opens in new window</span>
               </a>
               </div>
               <div class="small-6 columns">
                 <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
-                 <span class="fa-stack fa-3x">
+                 <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
                   </span>
@@ -39,7 +40,7 @@ get_header(); ?>
               </div>
               <div class="small-6 columns">
                 <a href="http://www.phila.gov/personnel/JobOpps.html" target="_blank">
-                  <span class="fa-stack fa-3x">
+                  <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
                   </span>
@@ -49,7 +50,7 @@ get_header(); ?>
               </div>
               <div class="small-6 columns">
                 <a href="/property">
-                  <span class="fa-stack fa-3x">
+                  <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-home fa-stack-1x fa-inverse"></i>
                   </span>
@@ -80,9 +81,9 @@ get_header(); ?>
       <div class="small-24 columns links">
         <nav>
           <ul class="menu">
-            <li><a href="/departments"><i class="fa fa-sitemap"></i> <?php printf( __('City Government Directory', 'phila-gov') ); ?></a></li>
-            <li><a href="/departments/mayor"><i class="fa fa-university"></i> <?php printf( __('Mayor\'s Office', 'phila-gov') ); ?></a></li>
-            <li><a href="http://www.phila.gov/map"><i class="fa fa-map-marker"></i> <?php printf( __('Maps', 'phila-gov') ); ?></a></li>
+            <li><a href="/departments"><i class="fa fa-sitemap"  aria-hidden="true"></i> <?php printf( __('City Government Directory', 'phila-gov') ); ?></a></li>
+            <li><a href="/departments/mayor"><i class="fa fa-university"  aria-hidden="true"></i> <?php printf( __('Mayor\'s Office', 'phila-gov') ); ?></a></li>
+            <li><a href="http://www.phila.gov/map"><i class="fa fa-map-marker"  aria-hidden="true"></i> <?php printf( __('Maps', 'phila-gov') ); ?></a></li>
           </ul>
         </nav>
       </div>
