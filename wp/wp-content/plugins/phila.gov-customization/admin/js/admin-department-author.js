@@ -9,6 +9,9 @@ jQuery(document).ready(function($){
     required_cat.attr('checked','checked');
   }
 
+  //hide all category and tag menu items, department authors shouldn't see those.
+  $('a[href*="edit-tags.php"]').parent().css('display', 'none');
+
   var menuIdString = $('#menu-id').text().trim();
   var allMenuIDs = menuIdString.split(' ');
   var match = document.getElementById( allMenuIDs );
@@ -31,6 +34,7 @@ jQuery(document).ready(function($){
   }
   //add correct menu classes to 'nav menu' link
   var currentURL = window.location.pathname;
+
 
   if (currentURL.indexOf('nav-menus') > -1){
     $('#menu-posts-department_page').removeClass('wp-not-current-submenu');
