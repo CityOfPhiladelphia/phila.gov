@@ -1211,3 +1211,16 @@ function echo_item_meta_desc(){
     bloginfo( 'description' );
   }
 }
+
+/**
+*
+* Remove version from meta
+* Original source:
+* https://wordpress.org/support/topic/remove-ltmeta-namegenerator-contentwordpress-25-gt#post-920568
+*
+*/
+
+function phila_remove_version() {
+  return '';
+}
+add_filter('the_generator', 'phila_remove_version');
