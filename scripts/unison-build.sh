@@ -9,7 +9,7 @@ sudo apt-get install -y exuberant-ctags gcc make
 
 ocaml_minor_version="ocaml-4.02"
 ocaml_version="ocaml-4.02.3"
-unison_version="unison-2.48.3"
+unison_version="unison-2.48.4"
 
 wget http://caml.inria.fr/pub/distrib/$ocaml_minor_version/$ocaml_version.tar.gz
 tar xzf $ocaml_version.tar.gz
