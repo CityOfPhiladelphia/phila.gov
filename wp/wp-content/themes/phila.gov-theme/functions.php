@@ -1214,7 +1214,7 @@ function echo_item_meta_desc(){
 
 /**
 *
-*	Remove version from meta
+* Remove version from meta
 * Original source:
 * https://wordpress.org/support/topic/remove-ltmeta-namegenerator-contentwordpress-25-gt#post-920568
 *
