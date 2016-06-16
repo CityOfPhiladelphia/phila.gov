@@ -194,12 +194,12 @@ get_header(); ?>
                         </div>
                   <?php ++$i; ?>
               <?php endforeach; ?>
-                </div>
+            </div>
           </div>
           <?php endif; ?>
           <?php if (!$action_panel_summary == ''): ?>
             <div class="large-6 columns">
-              <h2 class="contrast">Permits</h2>
+              <h2 class="contrast"><?php echo $action_panel_title; ?></h2>
               <?php if (!$action_panel_link == ''): ?>
                 <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
                   <div class="panel">
@@ -224,7 +224,7 @@ get_header(); ?>
                       <span class="details"><?php echo $action_panel_summary; ?></span>
                   </div>
                 </a>
-                <?php endif ?>
+              <?php endif; ?>
             </div>
           <?php endif; ?>
 
