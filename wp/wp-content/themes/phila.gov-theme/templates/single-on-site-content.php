@@ -192,7 +192,7 @@
           <div class="large-6 columns">
             <h2 class="contrast"><?php echo $row_one_col_two_action_panel_title; ?></h2>
               <?php if (!$row_one_col_two_action_panel_link == ''): ?>
-                <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
+                <a href="<?php echo $row_one_col_two_action_panel_link; ?>"  class="action-panel">
                   <div class="panel">
                     <header>
                       <?php if ($row_one_col_two_action_panel_fa_circle): ?>
