@@ -35,9 +35,8 @@
         <div class="byline small-24 column pvm pvs-mu">
           <div class="details small-text center">
             <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
-            <?php if( !get_the_category() == ''): ?>
-              <?php phila_echo_current_department_name( false ); ?>
-            <?php endif; ?>
+            <?php $category = get_the_category(); ?>
+              <?php phila_echo_current_department_name( $category ); ?>
             <br>
             <span>
               <?php echo $posted_on_values['time_string']; ?>

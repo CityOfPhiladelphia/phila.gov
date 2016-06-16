@@ -17,14 +17,11 @@
   	<header class="entry-header small-text">
       <?php
         $categories = get_the_category($post->ID);
-          if ( !$categories == 0 ) {
-            $current_cat = $categories[0]->name;
-          }else {
-            $current_cat = null;
-          }
         ?>
-      <span class="entry-date"><strong><?php echo get_the_date(); ?></strong></span><span class="category">
-        <?php echo $current_cat == null ?  '' : ' | ' . $current_cat  ?> </span>
+      <span class="entry-date"><strong><?php echo get_the_date(); ?></strong> | </span>
+      <span class="category">
+        <?php phila_echo_current_department_name( $categories ); ?>
+      </span>
         <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
     <?php
