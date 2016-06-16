@@ -17,10 +17,11 @@
       <div class="small-text">This content was last updated on <time id="content-modified-datetime" datetime="<?php the_modified_time('c'); ?>"><?php the_modified_date(); ?></time><?php
         $current_post_type = get_post_type(get_the_ID());
 
-        if ( $current_post_type != 'notices' && !is_tax() && !is_archive() && !is_home() ):
-          _e(' by ', 'phila-gov');
-          phila_echo_current_department_name( $include_id = true );
-        endif;?><?php echo '.'; ?>
+        $category = get_the_category();
+
+        phila_echo_current_department_name( $category, true, true );
+
+       echo '.'; ?>
       </div>
     </div>
   </div>
