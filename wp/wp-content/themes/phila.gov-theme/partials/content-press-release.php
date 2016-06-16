@@ -23,7 +23,9 @@
 
         _e('<strong>Published By:</strong> ');
 
-        phila_echo_current_department_name( $include_id = false );
+        $category = get_the_category();
+
+        phila_echo_current_department_name( $category );
 
         ?><br><?php
 

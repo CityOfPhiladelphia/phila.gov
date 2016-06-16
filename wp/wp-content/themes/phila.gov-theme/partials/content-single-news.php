@@ -10,10 +10,8 @@
       <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
       <?php $posted_on_values = phila_get_posted_on(); ?>
       <span class="small-text"><?php echo $posted_on_values['time_string'];?>
-        <?php if( !get_the_category() == ''): ?>
-          <?php echo ' by ';  ?>
-          <?php phila_echo_current_department_name( false ); ?>
-        <?php endif; ?>
+        <?php $category = get_the_category() ?>
+        <?php phila_echo_current_department_name( $category, true ); ?>
       </span>
     </header><!-- .entry-header -->
   </div>
