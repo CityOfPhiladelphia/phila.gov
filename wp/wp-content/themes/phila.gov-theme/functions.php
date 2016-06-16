@@ -124,17 +124,22 @@ function phila_filter_title( $title ){
     if( is_category() ) {
 
       $cat = get_the_category();
-      $title['title'] = post_type_archive_title('', false) . $sep . $cat[0]->name . $sep . $site_title;
+      $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
     }else{
-      $title['title'] = post_type_archive_title('', false) . $sep . $site_title;
+      $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
 
   } // If on a taxonomy archive, use the term title.
    elseif ( is_tax() ) {
 
     $tax_name = get_taxonomy( get_query_var( 'taxonomy' ) );
-    $title['title'] = single_term_title( '', false ) . $sep . $tax_name->labels->name . $sep . $site_title;
+    $title['title'] = single_term_title( '', false ) . $sep . 'Archive' . $sep . $tax_name->labels->name . $sep . $site_title;
+
+    // If on an author archive, use the author's display name.
+  } elseif ( is_author() && $author = get_queried_object() ) {
+
+    $title['title'] = $author->display_name . $sep . 'Author Archive'. $sep . $site_title;
 
   }elseif ( $post_type ) {
 
@@ -159,11 +164,6 @@ function phila_filter_title( $title ){
         }
       }
     }
-    // If on an author archive, use the author's display name.
-  } elseif ( is_author() && $author = get_queried_object() ) {
-
-    $title['title'] = $author->display_name . $sep . $site_title;
-
   }
 
   // Add a page number if necessary.
@@ -753,18 +753,18 @@ add_filter( 'get_the_archive_title', 'phila_change_post_archive_title' );
 
 function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'phila_post' ) ){
-    _e('Posts', 'phila-gov');
+    _e('Post Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'news_post' ) ){
-    _e('News', 'phila-gov');
+    _e('News Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'press_release' ) ){
-    _e('Press Releases', 'phila-gov');
+    _e('Press Release Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_tag() ){
     single_tag_title('Tagged in: ');
   }elseif( is_author() ){
-    _e('Author | ', 'phila-gov');
+    _e('Author Archive | ', 'phila-gov');
     echo get_the_author();
   }else{
     post_type_archive_title();
