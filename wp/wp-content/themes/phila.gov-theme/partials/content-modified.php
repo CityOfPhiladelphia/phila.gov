@@ -15,13 +15,10 @@
       // last modified date to our web analytics.
       ?>
       <div class="small-text">This content was last updated on <time id="content-modified-datetime" datetime="<?php the_modified_time('c'); ?>"><?php the_modified_date(); ?></time><?php
-        $current_post_type = get_post_type(get_the_ID());
-
+      if ( !is_archive() && !is_tax() && !is_home() ) :
         $category = get_the_category();
-
         phila_echo_current_department_name( $category, true, true );
-
-       echo '.'; ?>
+      endif; ?><?php echo '.'; ?>
       </div>
     </div>
   </div>
