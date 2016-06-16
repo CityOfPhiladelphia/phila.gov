@@ -1003,7 +1003,7 @@ function phila_get_master_topics(){
 
 function phila_echo_current_department_name( $category, $byline = false, $include_id = false ){
 
-  if( $category != '' && $category[0]->slug != 'uncategorized' && !is_tax() && !is_archive() && !is_home() ) {
+  if( !empty( $category ) && $category[0]->slug != 'uncategorized' && !is_tax() && !is_archive() && !is_home() ) {
 
   /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
 
