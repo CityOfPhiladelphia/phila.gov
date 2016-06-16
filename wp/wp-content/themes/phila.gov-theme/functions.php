@@ -1007,27 +1007,21 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
 
   /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
 
-    $department_page_args = array(
-      'post_type' => 'department_page',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'category',
-          'field'    => 'slug',
-          'terms'    => $category[0]->slug,
-        ),
-      ),
-      'post_parent' => 0,
-      'posts_per_page' => 1,
-    );
-    $get_department_link = new WP_Query( $department_page_args );
+  $current_cat_slug = $category[0]->slug;
 
-    if ( $get_department_link->have_posts() ) {
-      while ( $get_department_link->have_posts() ) {
-        $get_department_link->the_post();
-        $current_cat_slug = $category[0]->slug;
-        //we are rendering the department link elsewhere on document pages & posts.
+  $department_page_args = array(
+    'post_type' => 'department_page',
+    'category_name' => $current_cat_slug,
+    'post_parent' => 0,
+    'posts_per_page' => 1,
+  );
+  $get_department_link = new WP_Query( $department_page_args );
+  if ( $get_department_link->have_posts() ) {
+    while ( $get_department_link->have_posts() ) {
+      $get_department_link->the_post();
 
-        $permalink = get_the_permalink();
+      $permalink = get_the_permalink();
+      $the_title = get_the_title();
 
         if ( get_the_permalink() != '' ) {
 
@@ -1039,14 +1033,13 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
 
           if ( $include_id == true ) {
           // NOTE: the id and data-slug are important. Google Tag Manager
-          // uses it to attach the department to our web analytics.
-
-             $category_link .= '<a href="' . $permalink . '"
-             id="content-modified-department"
-            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+          // uses it to attach the department to our web analytics. In some cases, this data could appear more than once on a page, so it can be removed.
+            $category_link .= '<a href="' . $permalink . '"
+            id="content-modified-department"
+            data-slug="' . $current_cat_slug . '">' . $the_title . '</a>';
           }else{
             $category_link .= '<a href="' . $permalink . '"
-            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+            data-slug="' . $current_cat_slug . '">' . $the_title . '</a>';
           }
         }
         echo $category_link;
