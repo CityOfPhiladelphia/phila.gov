@@ -994,54 +994,66 @@ function phila_get_master_topics(){
 }
 
 /**
- *  Echo a slug and link to the department page currently in the loop.
- *
- * @param $include_id Boolean to include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the markup will properly validate.
+ *  Echo a slug and link to the department category currently in the loop.
+ * @param $category String or array of categories applied to a page. Required.
+ * @param $byline Boolean Include ' by ' in display. Default true. Optional.
+ * @param $include_id Boolean Include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the page's markup will properly validate. Default true. Optional.
  *
  **/
 
-function phila_echo_current_department_name( $include_id = true ){
-  /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
-  $current_category = get_the_category();
+function phila_echo_current_department_name( $category, $byline = false, $include_id = false ){
 
-  if ( !$current_category == '' )  {
+  if( $category != '' && $category[0]->slug != 'uncategorized' && !is_tax() && !is_archive() && !is_home() ) {
+
+  /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
+
     $department_page_args = array(
       'post_type' => 'department_page',
       'tax_query' => array(
         array(
           'taxonomy' => 'category',
           'field'    => 'slug',
-          'terms'    => $current_category[0]->slug,
+          'terms'    => $category[0]->slug,
         ),
       ),
       'post_parent' => 0,
       'posts_per_page' => 1,
     );
     $get_department_link = new WP_Query( $department_page_args );
+
     if ( $get_department_link->have_posts() ) {
       while ( $get_department_link->have_posts() ) {
         $get_department_link->the_post();
-        $current_cat_slug = $current_category[0]->slug;
+        $current_cat_slug = $category[0]->slug;
         //we are rendering the department link elsewhere on document pages & posts.
-        if ( $current_cat_slug != 'uncategorized' ) {
+
+        $permalink = get_the_permalink();
+
+        if ( get_the_permalink() != '' ) {
+
+          $category_link = '';
+
+          if ( $byline == true ) {
+            $category_link .= ' by ';
+          }
 
           if ( $include_id == true ) {
           // NOTE: the id and data-slug are important. Google Tag Manager
           // uses it to attach the department to our web analytics.
-            echo '<a href="' . get_the_permalink() . '"
+
+             $category_link .= '<a href="' . $permalink . '"
              id="content-modified-department"
             data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
           }else{
-            echo '<a href="' . get_the_permalink() . '"
+            $category_link .= '<a href="' . $permalink . '"
             data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
           }
         }
+        echo $category_link;
       }
     }
-  }
-
-    /* Restore original Post Data */
     wp_reset_postdata();
+  }
 }
 
 function the_dept_description(){
