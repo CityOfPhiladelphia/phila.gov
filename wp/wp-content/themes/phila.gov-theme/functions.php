@@ -124,17 +124,22 @@ function phila_filter_title( $title ){
     if( is_category() ) {
 
       $cat = get_the_category();
-      $title['title'] = post_type_archive_title('', false) . $sep . $cat[0]->name . $sep . $site_title;
+      $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
     }else{
-      $title['title'] = post_type_archive_title('', false) . $sep . $site_title;
+      $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
 
   } // If on a taxonomy archive, use the term title.
    elseif ( is_tax() ) {
 
     $tax_name = get_taxonomy( get_query_var( 'taxonomy' ) );
-    $title['title'] = single_term_title( '', false ) . $sep . $tax_name->labels->name . $sep . $site_title;
+    $title['title'] = single_term_title( '', false ) . $sep . 'Archive' . $sep . $tax_name->labels->name . $sep . $site_title;
+
+    // If on an author archive, use the author's display name.
+  } elseif ( is_author() && $author = get_queried_object() ) {
+
+    $title['title'] = $author->display_name . $sep . 'Author Archive'. $sep . $site_title;
 
   }elseif ( $post_type ) {
 
@@ -159,11 +164,6 @@ function phila_filter_title( $title ){
         }
       }
     }
-    // If on an author archive, use the author's display name.
-  } elseif ( is_author() && $author = get_queried_object() ) {
-
-    $title['title'] = $author->display_name . $sep . $site_title;
-
   }
 
   // Add a page number if necessary.
@@ -753,18 +753,18 @@ add_filter( 'get_the_archive_title', 'phila_change_post_archive_title' );
 
 function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'phila_post' ) ){
-    _e('Posts', 'phila-gov');
+    _e('Post Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'news_post' ) ){
-    _e('News', 'phila-gov');
+    _e('News Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'press_release' ) ){
-    _e('Press Releases', 'phila-gov');
+    _e('Press Release Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_tag() ){
     single_tag_title('Tagged in: ');
   }elseif( is_author() ){
-    _e('Author | ', 'phila-gov');
+    _e('Author Archive | ', 'phila-gov');
     echo get_the_author();
   }else{
     post_type_archive_title();
@@ -994,54 +994,59 @@ function phila_get_master_topics(){
 }
 
 /**
- *  Echo a slug and link to the department page currently in the loop.
- *
- * @param $include_id Boolean to include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the markup will properly validate.
+ *  Echo a slug and link to the department category currently in the loop.
+ * @param $category String or array of categories applied to a page. Required.
+ * @param $byline Boolean Include ' by ' in display. Default true. Optional.
+ * @param $include_id Boolean Include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the page's markup will properly validate. Default true. Optional.
  *
  **/
 
-function phila_echo_current_department_name( $include_id = true ){
-  /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
-  $current_category = get_the_category();
+function phila_echo_current_department_name( $category, $byline = false, $include_id = false ){
 
-  if ( !$current_category == '' )  {
-    $department_page_args = array(
-      'post_type' => 'department_page',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'category',
-          'field'    => 'slug',
-          'terms'    => $current_category[0]->slug,
-        ),
-      ),
-      'post_parent' => 0,
-      'posts_per_page' => 1,
-    );
-    $get_department_link = new WP_Query( $department_page_args );
-    if ( $get_department_link->have_posts() ) {
-      while ( $get_department_link->have_posts() ) {
-        $get_department_link->the_post();
-        $current_cat_slug = $current_category[0]->slug;
-        //we are rendering the department link elsewhere on document pages & posts.
-        if ( $current_cat_slug != 'uncategorized' ) {
+  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
+
+  /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
+
+  $current_cat_slug = $category[0]->slug;
+
+  $department_page_args = array(
+    'post_type' => 'department_page',
+    'category_name' => $current_cat_slug,
+    'post_parent' => 0,
+    'posts_per_page' => 1,
+  );
+  $get_department_link = new WP_Query( $department_page_args );
+  if ( $get_department_link->have_posts() ) {
+    while ( $get_department_link->have_posts() ) {
+      $get_department_link->the_post();
+
+      $permalink = get_the_permalink();
+      $the_title = get_the_title();
+
+        if ( get_the_permalink() != '' ) {
+
+          $category_link = '';
+
+          if ( $byline == true ) {
+            $category_link .= ' by ';
+          }
 
           if ( $include_id == true ) {
           // NOTE: the id and data-slug are important. Google Tag Manager
-          // uses it to attach the department to our web analytics.
-            echo '<a href="' . get_the_permalink() . '"
-             id="content-modified-department"
-            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+          // uses it to attach the department to our web analytics. In some cases, this data could appear more than once on a page, so it can be removed.
+            $category_link .= '<a href="' . $permalink . '"
+            id="content-modified-department"
+            data-slug="' . $current_cat_slug . '">' . $the_title . '</a>';
           }else{
-            echo '<a href="' . get_the_permalink() . '"
-            data-slug="' . $current_cat_slug . '">' . get_the_title() . '</a>';
+            $category_link .= '<a href="' . $permalink . '"
+            data-slug="' . $current_cat_slug . '">' . $the_title . '</a>';
           }
         }
+        echo $category_link;
       }
     }
-  }
-
-    /* Restore original Post Data */
     wp_reset_postdata();
+  }
 }
 
 function the_dept_description(){

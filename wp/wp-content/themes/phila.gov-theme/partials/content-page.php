@@ -17,7 +17,7 @@
     </header><!-- .entry-header -->
   </div>
   <div class="row">
-    <div data-swiftype-index='true' class="entry-content medium-18 columns">
+    <div data-swiftype-index='true' class="entry-content columns">
       <!-- If Custom Markup append_before_wysiwyg is present print it -->
       <?php if (!$append_before_wysiwyg == ''):?>
         <?php echo $append_before_wysiwyg; ?>
