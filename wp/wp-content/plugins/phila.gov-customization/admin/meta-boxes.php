@@ -432,7 +432,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    )
  );
 
- // First row of modules - recent posts and custom markup
+ // First row of modules - recent posts, custom markup, call to action panel
  $meta_boxes[] = array(
    'id'       => $prefix . 'module_row_1',
    'title'    => 'Module Row 1',
@@ -505,29 +505,28 @@ function phila_register_meta_boxes( $meta_boxes ){
           ),
         ),
       ),
-      array(
-        'type' => 'divider'
-      ),
-     array(
+    array(
+      'type' => 'divider'
+    ),
+    array(
       'id' => 'module_row_1_col_2',
       'type' => 'group',
-      // List of sub-fields
       'fields' => array(
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => $prefix . 'module_row_1_col_2_type',
-          'desc'  => 'Choose to display recent blog posts or custom markup text.',
+          'desc'  => 'Choose to display recent blog posts, custom markup or a call to action panel.',
           'type' => 'select',
           'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
             $prefix . 'module_row_1_col_2_custom_text' => 'Custom Text',
+            $prefix . 'module_row_1_col_2_call_to_action_panel' => 'Call to Action Panel',
           ),
         ),
         array(
           'id' => 'module_row_1_col_2_options',
           'type' => 'group',
-          // List of sub-fields
           'fields' => array(
              array(
               'name' => 'Custom Text Title',
@@ -541,12 +540,62 @@ function phila_register_meta_boxes( $meta_boxes ){
               'type' => 'textarea',
               'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
              ),
+           ),
           ),
         ),
-     ),
-   ),
-  )
-);
+      ),
+      array(
+        'id' => 'module_row_1_col_2_call_to_action_panel',
+        'type' => 'group',
+        'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_call_to_action_panel'),
+
+        'fields' => array(
+          array(
+            'name'  => 'Section Title',
+            'id'    => $prefix . 'module_row_1_col_2_action_section_title',
+            'type'  => 'text',
+          ),
+        array(
+          'name'  => 'Call to Action Text',
+          'id'    => $prefix . 'action_panel_cta_text',
+          'type'  => 'text',
+          'class' => 'action-panel-cta-text',
+        ),
+        array(
+          'name'  => 'Summary',
+          'id'    => $prefix . 'action_panel_summary',
+          'type'  => 'textarea',
+          'class' => 'action-panel-details',
+        ),
+        array(
+          'name'  => 'Icon',
+          'id'    => $prefix . 'action_panel_fa',
+          'type'  => 'text',
+          'class' => 'action-panel-fa',
+        ),
+        array(
+          'name'  => 'Icon Background Circle',
+          'id'    => $prefix . 'action_panel_fa_circle',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-fa',
+        ),
+        array(
+          'name'  => 'Link to Content',
+          'id'    => $prefix . 'action_panel_link',
+          'type'  => 'url',
+          'class' => 'action-panel-link',
+        ),
+        array(
+          'name'  => 'External Link',
+          'id'    => $prefix . 'action_panel_link_loc',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-link-loc',
+          'desc'  => 'This link directs users away from alpha.phila.gov',
+          ),
+        ),
+      ),
+    ),
+  );
 
 // Second row of modules - press release and/or calendar
 $meta_boxes[] = array(
