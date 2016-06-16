@@ -532,6 +532,7 @@ function phila_register_meta_boxes( $meta_boxes ){
               'name' => 'Custom Text Title',
               'id'   => $prefix . 'module_row_1_col_2_texttitle',
               'type' => 'text',
+              //TODO Move these hidden fields up to the parent. This will change the metabox IDs and effect live content, so let's hold off for now.
               'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
              ),
              array(
@@ -552,7 +553,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'fields' => array(
           array(
             'name'  => 'Section Title',
-            'id'    => $prefix . 'module_row_1_col_2_action_section_title',
+            'id'    => $prefix . 'action_section_title',
             'type'  => 'text',
           ),
         array(
