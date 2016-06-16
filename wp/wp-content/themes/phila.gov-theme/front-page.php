@@ -18,34 +18,31 @@ get_header(); ?>
           <?php get_search_form(); ?>
           <div class="row call-to-action">
             <div class="small-6 columns">
-              <a href="http://iframe.publicstuff.com/#?client_id=242" target="_blank">
+              <a href="http://iframe.publicstuff.com/#?client_id=242">
                 <span class="fa-stack fa-3x" aria-hidden="true">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
                 </span>
                 <span class="show-for-sr">311</span>
                   <p>Report a Problem</p>
-                <span class="accessible"> Opens in new window</span>
               </a>
               </div>
               <div class="small-6 columns">
-                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" target="_blank">
+                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/">
                  <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
                   </span>
                   <p>Pay a Bill</p>
-                  <span class="accessible"> Opens in new window</span>
                 </a>
               </div>
               <div class="small-6 columns">
-                <a href="http://www.phila.gov/personnel/JobOpps.html" target="_blank">
+                <a href="http://www.phila.gov/personnel/JobOpps.html">
                   <span class="fa-stack fa-3x" aria-hidden="true">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
                   </span>
                   <p>Find a Job</p>
-                  <span class="accessible"> Opens in new window</span>
                 </a>
               </div>
               <div class="small-6 columns">
@@ -132,7 +129,7 @@ get_header(); ?>
           <div class="row">
             <div class="medium-24 large-6 columns">
               <div class="mlm-mu mrm-mu border-right">
-                <a href="http://www.phila.gov/revenue/realestatetax/" class="h3" target="_blank">Real Estate Tax<span class="accessible"> Opens in new window</span></a><br>
+                <a href="http://www.phila.gov/revenue/realestatetax/" class="h3 external">Real Estate Tax</a><br>
                 <span>Revenue</span>
                 </div>
             </div>
@@ -146,7 +143,7 @@ get_header(); ?>
           <div class="row">
             <div class="medium-24 large-6 columns">
               <div class="mlm-mu mrm-mu border-right">
-                <a href="http://www.phila.gov/zoningarchive/" class="h3" target="_blank">Zoning Archive<span class="accessible"> Opens in new window</span></a><br>
+                <a href="http://www.phila.gov/zoningarchive/" class="h3 external">Zoning Archive</a><br>
                 <span>Licenses and Inspections <abbr>(L+I)</abbr></span>
                 </div>
               </div>
@@ -160,7 +157,7 @@ get_header(); ?>
           <div class="row">
             <div class="medium-24 large-6 columns">
               <div class="mlm-mu mrm-mu border-right">
-                <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3" target="_blank">Correctional Facilities<span class="accessible"> Opens in new window</span></a><br>
+                <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="h3 external">Correctional Facilities</a><br>
               <span>Prisons</span>
               </div>
             </div>
@@ -174,7 +171,7 @@ get_header(); ?>
           <div class="row">
             <div class="medium-24 large-6 columns">
               <div class="mlm-mu mrm-mu border-right">
-                <a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3" target="_blank">Individual Taxes<span class="accessible"> Opens in new window</span></a><br>
+                <a href="http://www.phila.gov/Revenue/individuals/Pages/default.aspx" class="h3 external">Individual Taxes</a><br>
                 <span>Revenue</span>
               </div>
             </div>
