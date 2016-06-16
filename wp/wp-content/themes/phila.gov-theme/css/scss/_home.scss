@@ -85,14 +85,6 @@
       padding:0 0 10px 0;
       font-size: 1.5em;
     }
-
-    header h1::after {
-      font-family: 'FontAwesome';
-      color:$ben-franklin-blue;
-      content:"\f201";
-      padding:0 0 0 20px;
-      -webkit-font-smoothing: antialiased;
-    }
   }//#active
 
   .links {
