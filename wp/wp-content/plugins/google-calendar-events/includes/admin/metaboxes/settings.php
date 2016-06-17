@@ -506,6 +506,24 @@ class Settings implements Meta_Box {
 					?>
 				</td>
 			</tr>
+			<tr class="simcal-panel-field">
+				<th><label for="_poweredby"><?php _e( 'Powered By', 'google-calendar-events' ); ?></label></th>
+				<td>
+					<?php
+
+					$poweredby = get_post_meta( $post->ID, '_poweredby', true );
+
+					simcal_print_field( array(
+						'type'    => 'checkbox',
+						'name'    => '_poweredby',
+						'id'      => '_poweredby',
+						'value'   => 'yes' == $poweredby ? 'yes' : 'no',
+						'text'    => __( 'Yes, Simple Calendar rocks! Show some love with a little link below this calendar.', 'google-calendar-events' ),
+					) );
+
+					?>
+				</td>
+			</tr>
 			</tbody>
 		</table>
 		<?php
@@ -880,6 +898,10 @@ class Settings implements Meta_Box {
 		// _event_formatting
 		$event_formatting = isset( $_POST['_event_formatting'] ) ? sanitize_key( $_POST['_event_formatting'] ) : 'preserve_linebreaks';
 		update_post_meta( $post_id, '_event_formatting', $event_formatting );
+
+		// Powered by option
+		$poweredby = isset( $_POST['_poweredby'] ) ? 'yes' : 'no';
+		update_post_meta( $post_id, '_poweredby', $poweredby );
 
 		/* ======================= *
 		 * Advanced settings panel *
