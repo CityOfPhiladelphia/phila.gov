@@ -39,6 +39,7 @@
           }
           $row_one_col_two_module = rwmb_meta( 'module_row_1_col_2');
           $row_one_col_two_action_panel = rwmb_meta('module_row_1_col_2_call_to_action_panel');
+          $row_one_col_two_connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
 
           if (!empty($row_one_col_two_module)){
             $row_one_col_two_type = isset( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ? $row_one_col_two_module['phila_module_row_1_col_2_type'] : '';
@@ -51,7 +52,7 @@
 
               $row_one_col_two_textarea = $row_one_col_two_module['module_row_1_col_2_options']['phila_module_row_1_col_2_textarea'];
 
-            }else{
+            } elseif( $row_one_col_two_type == 'phila_module_row_1_col_2_call_to_action_panel' ) {
               $row_one_col_two_action_panel_title = isset( $row_one_col_two_action_panel['phila_action_section_title'] ) ? $row_one_col_two_action_panel['phila_action_section_title'] : '' ;
 
               $row_one_col_two_action_panel_summary = isset( $row_one_col_two_action_panel['phila_action_panel_summary'] ) ? $row_one_col_two_action_panel['phila_action_panel_summary'] : '';
@@ -65,6 +66,29 @@
               $row_one_col_two_action_panel_fa_circle  = isset( $row_one_col_two_action_panel['phila_action_panel_fa_circle'] ) ? $row_one_col_two_action_panel['phila_action_panel_fa_circle'] : '' ;
 
               $row_one_col_two_action_panel_fa = isset( $row_one_col_two_action_panel['phila_action_panel_fa'] ) ? $row_one_col_two_action_panel['phila_action_panel_fa'] : '';
+            } else {
+              $row_one_col_two_connect_panel_facebook = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] :'';
+
+              $row_one_col_two_connect_panel_twitter = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_twitter'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_twitter'] :'';
+
+              $row_one_col_two_connect_panel_instagram = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_instagram'] :'';
+
+              $row_one_col_two_connect_panel_st_1 = isset( $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'';
+
+              $row_one_col_two_connect_panel_st_2 = isset( $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_st_2'] ) ? $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_st_2'] :'';
+
+              $row_one_col_two_connect_panel_city = isset( $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_city'] ) ? $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_city'] :'';
+
+              $row_one_col_two_connect_panel_state = isset( $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_state'] ) ? $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_state'] :'';
+
+              $row_one_col_two_connect_panel_zip = isset( $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_zip'] ) ? $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_zip'] :'';
+
+              $row_one_col_two_connect_panel_phone = isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone'] ) ? $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone'] :'';
+
+              $row_one_col_two_connect_panel_fax = isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax'] ) ? $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax'] :'';
+
+              $row_one_col_two_connect_panel_email = isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_email'] ) ? $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_email'] :'';
+
             }
           }
 
@@ -188,7 +212,7 @@
               </div>
             </div>
           </div>
-        <?php elseif (!$row_one_col_two_action_panel_summary == ''): ?>
+        <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_call_to_action_panel' ): ?>
           <div class="large-6 columns">
             <h2 class="contrast"><?php echo $row_one_col_two_action_panel_title; ?></h2>
               <?php if (!$row_one_col_two_action_panel_link == ''): ?>
@@ -218,6 +242,68 @@
               <?php endif; ?>
             </div>
           <!-- End Column Two -->
+        <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ): ?>
+          <div class="large-6 columns connect">
+            <h2 class="contrast">Connect</h2>
+            <div class="vcard panel no-margin">
+                <div>
+                    <div class="row mbn">
+                        <?php if ( !$row_one_col_two_connect_panel_facebook == '') : ?>
+                        <div class="small-8 columns center pvxs">
+                            <a href="<?php echo $row_one_col_two_connect_panel_facebook; ?>" target="_blank" class="phs">
+                                <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
+                                <span class="show-for-sr">Facebook</span>
+                            </a>
+                        </div>
+                      <?php endif; ?>
+                        <?php if ( !$row_one_col_two_connect_panel_twitter == '') : ?>
+                        <div class="small-8 columns center pvxs">
+                            <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" target="_blank" class="phs">
+                                <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                                <span class="show-for-sr">Twitter</span>
+                            </a>
+                        </div>
+                      <?php endif; ?>
+                      <?php if ( !$row_one_col_two_connect_panel_instagram == '') : ?>
+                        <div class="small-8 columns center pvxs">
+                            <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" target="_blank" class="phs">
+                                <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+                                <span class="show-for-sr">Instagram</span>
+                            </a>
+                        </div>
+                      <?php endif; ?>
+                    </div>
+                    <hr>
+                    <div>
+                        <div class="adr mbm">
+                          <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
+                            <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_1; ?></a></span><br/>
+                          <?php endif; ?>
+                          <?php if ( !$row_one_col_two_connect_panel_st_2 == '') : ?>
+                            <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_2; ?></a></span><br/>
+                          <?php endif; ?>
+                          <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
+                            <span class="locality"><?php echo $row_one_col_two_connect_panel_city; ?><span>, <span class="region" title="Pennsylvania"> <?php echo $row_one_col_two_connect_panel_state; ?></span> <span class="postal-code"><?php echo $row_one_col_two_connect_panel_zip; ?></span>
+                          <?php endif; ?>
+                        </div>
+                            <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
+                              <!-- TODO: Strip out formatting for href presentation of phone number. -->
+                              <div class="tel"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo $row_one_col_two_connect_panel_phone; ?>"> <?php echo $row_one_col_two_connect_panel_phone; ?></a></div>
+                          <?php endif; ?>
+                          <?php if ( !$row_one_col_two_connect_panel_fax == '') : ?>
+                            <!-- TODO: Strip out formatting for href presentation of phone number. -->
+                            <div class="fax"><span class="type vcard-label">Fax:</span><a href="tel:<?php echo $row_one_col_two_connect_panel_fax; ?>"> <?php echo $row_one_col_two_connect_panel_fax; ?></a></div>
+                        <?php endif; ?>
+                        <?php if ( !$row_one_col_two_connect_panel_email == '') : ?>
+                          <!-- TODO: Strip out formatting for href presentation of phone number. -->
+                            <div class="email"><span class="vcard-label">Email:</span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"> <?php echo $row_one_col_two_connect_panel_email; ?></a></div>
+                      <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <?php endif; ?>
       </div>
     </section>
