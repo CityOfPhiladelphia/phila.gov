@@ -739,7 +739,114 @@ $meta_boxes[] = array(
           ),
         ),
       ),
+);
 
+//Connect
+$meta_boxes[] = array(
+  'id'       => $prefix . 'connect',
+  'title'    => 'Connect Information',
+  'pages'    => array( 'department_page', 'event_page' , 'page' ),
+  'context'  => 'normal',
+  'priority' => 'low',
+  'include' => array(
+    'user_role'  => 'administrator',
+  ),
+  'fields' => array(
+    array(
+      'name' => 'Social Links',
+      'id' => $prefix . 'connect_social',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+         'name' => 'Facebook URL',
+         'id'   => $prefix . 'connect_social_facebook',
+         'type' => 'url',
+         'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+        ),
+        array(
+         'name' => 'Twitter URL',
+         'id'   => $prefix . 'connect_social_twitter',
+         'type' => 'url',
+         'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+        ),
+        array(
+         'name' => 'Instagram URL',
+         'id'   => $prefix . 'connect_social_instagram',
+         'type' => 'url',
+         'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+        ),
+      ),
+    ),
+    array(
+      'type' => 'divider'
+    ),
+    array(
+      'name' => 'Address',
+      'id' => $prefix . 'connect_address',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+         'name' => 'Street Address 1',
+         'id'   => $prefix . 'connect_address_st_1',
+         'type' => 'text',
+        ),
+        array(
+         'name' => 'Street Address 2',
+         'id'   => $prefix . 'connect_address_st_2',
+         'type' => 'text',
+        ),
+        array(
+         'name' => 'City',
+         'id'   => $prefix . 'connect_address_city',
+         'type' => 'text',
+         'std'  => 'Philadelphia',
+        ),
+        array(
+         'name' => 'State',
+         'id'   => $prefix . 'connect_address_state',
+         'type' => 'text',
+         'std'  => 'PA',
+        ),
+        array(
+         'name' => 'Zip',
+         'id'   => $prefix . 'connect_address_zip',
+         'type' => 'text',
+         'std'  => '19107',
+        ),
+      ),
+    ),
+    array(
+      'type' => 'divider'
+    ),
+    array(
+      'name' => 'Contact',
+      'id' => $prefix . 'connect_address',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+           'name' => 'Phone',
+           'id'   => $prefix . 'connect_phone',
+           'type' => 'text',
+           'desc' => '(###)-###-####',
+         ),
+        array(
+          'name' => 'Fax',
+          'id'   => $prefix . 'connect_fax',
+          'type' => 'text',
+          'desc' => '(###)-###-####',
+        ),
+        array(
+          'name' => 'Email',
+          'id'   => $prefix . 'connect_email',
+          'type' => 'email',
+          'desc' => 'example@phila.gov',
+        ),
+      ),
+    ),
+  ),
 );
 
 return $meta_boxes;
