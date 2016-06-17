@@ -753,11 +753,14 @@ $meta_boxes[] = array(
   ),
   'fields' => array(
     array(
-      'name' => 'Social Links',
       'id' => $prefix . 'connect_social',
       'type' => 'group',
       // List of sub-fields
       'fields' => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Social',
+        ),
         array(
          'name' => 'Facebook URL',
          'id'   => $prefix . 'connect_social_facebook',
@@ -779,14 +782,14 @@ $meta_boxes[] = array(
       ),
     ),
     array(
-      'type' => 'divider'
-    ),
-    array(
-      'name' => 'Address',
       'id' => $prefix . 'connect_address',
       'type' => 'group',
       // List of sub-fields
       'fields' => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Address',
+        ),
         array(
          'name' => 'Street Address 1',
          'id'   => $prefix . 'connect_address_st_1',
@@ -818,14 +821,14 @@ $meta_boxes[] = array(
       ),
     ),
     array(
-      'type' => 'divider'
-    ),
-    array(
-      'name' => 'Contact',
       'id' => $prefix . 'connect_address',
       'type' => 'group',
       // List of sub-fields
       'fields' => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Contact',
+        ),
         array(
            'name' => 'Phone',
            'id'   => $prefix . 'connect_phone',
