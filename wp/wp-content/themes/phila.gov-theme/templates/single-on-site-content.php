@@ -68,7 +68,7 @@
               $row_one_col_two_action_panel_fa = isset( $row_one_col_two_action_panel['phila_action_panel_fa'] ) ? $row_one_col_two_action_panel['phila_action_panel_fa'] : '';
             } else {
               //Determine social media count and column widths
-              $row_one_col_two_connect_panel_social_count = count($row_one_col_two_connect_panel['phila_connect_social']);
+              $row_one_col_two_connect_panel_social_count = isset($row_one_col_two_connect_panel['phila_connect_social']) ? count($row_one_col_two_connect_panel['phila_connect_social']) : 0 ;
 
               if ( $row_one_col_two_connect_panel_social_count == 1 ){
                 $row_one_col_two_connect_panel_social_column_width = '24';
@@ -94,9 +94,17 @@
 
               $row_one_col_two_connect_panel_zip = isset( $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_zip'] ) ? $row_one_col_two_connect_panel['phila_connect_address']['phila_connect_address_zip'] :'19107';
 
-              $row_one_col_two_connect_panel_phone = isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone'] ) ? $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone'] :'';
+              if ( isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone'] ) && is_array( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone'] ) ) {
+                $row_one_col_two_connect_panel_phone = '(' . $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone']['area'] . ') ' . $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] . '-' . $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number'];
+              } else {
+                $row_one_col_two_connect_panel_phone = '';
+              }
 
-              $row_one_col_two_connect_panel_fax = isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax'] ) ? $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax'] :'';
+              if ( isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax'] ) && is_array( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax'] ) ) {
+                $row_one_col_two_connect_panel_fax = '(' . $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax']['area'] . ') ' . $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax']['phone-co-code'] . '-' . $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_fax']['phone-subscriber-number'];
+              } else {
+                $row_one_col_two_connect_panel_fax = '';
+              }
 
               $row_one_col_two_connect_panel_email = isset( $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_email'] ) ? $row_one_col_two_connect_panel['phila_connect_general']['phila_connect_email'] :'';
 
@@ -258,7 +266,7 @@
             <h2 class="contrast">Connect</h2>
             <div class="vcard panel no-margin">
                 <div>
-                  <?php if ( !$row_one_col_two_connect_panel_facebook == '' || !$row_one_col_two_connect_panel_twitter == '' || !$row_one_col_two_connect_panel_instagram == '') : ?>
+                  <?php if ( !$row_one_col_two_connect_panel_social_count == 0 ) : ?>
                     <div class="row mbn">
                         <?php if ( !$row_one_col_two_connect_panel_facebook == '') : ?>
                         <div class="small-<?php echo $row_one_col_two_connect_panel_social_column_width;?> columns center pvxs">
@@ -300,7 +308,7 @@
                           <?php endif; ?>
                         </div>
                             <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
-                              <div class="tel"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9\-]/', '', $row_one_col_two_connect_panel_phone); ?>"> <?php echo $row_one_col_two_connect_panel_phone; ?></a></div>
+                              <div class="tel"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo  $row_one_col_two_connect_panel_phone; ?>"> <?php echo  $row_one_col_two_connect_panel_phone; ?></a></div>
                           <?php endif; ?>
                           <?php if ( !$row_one_col_two_connect_panel_fax == '') : ?>
                             <div class="fax"><span class="type vcard-label">Fax:</span> <?php echo $row_one_col_two_connect_panel_fax; ?></div>

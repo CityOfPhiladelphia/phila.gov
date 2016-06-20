@@ -682,14 +682,14 @@ function phila_register_meta_boxes( $meta_boxes ){
                 array(
                    'name' => 'Phone',
                    'id'   => $prefix . 'connect_phone',
-                   'type' => 'text',
-                   'desc' => '(###) ###-####',
+                   'type' => 'phone',
+                   'desc' => '(###)-###-####',
                  ),
                 array(
                   'name' => 'Fax',
                   'id'   => $prefix . 'connect_fax',
-                  'type' => 'text',
-                  'desc' => '(###) ###-####',
+                  'type' => 'phone',
+                  'desc' => '(###)-###-####',
                 ),
                 array(
                   'name' => 'Email',

@@ -17,6 +17,12 @@
 
 add_action( 'admin_init', 'phila_restrict_categories_custom_loader', 1 );
 
+add_action( 'init', 'prefix_load_phone_type', 1 );
+function prefix_load_phone_type()
+{
+    require 'class-phila-gov-custom-phone.php';
+}
+
 function phila_restrict_categories_custom_loader() {
 
   class RestrictCategoriesCustom extends RestrictCategories {
