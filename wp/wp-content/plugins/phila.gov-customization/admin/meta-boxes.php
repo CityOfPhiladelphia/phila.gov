@@ -683,13 +683,13 @@ function phila_register_meta_boxes( $meta_boxes ){
                    'name' => 'Phone',
                    'id'   => $prefix . 'connect_phone',
                    'type' => 'text',
-                   'desc' => '(###)-###-####',
+                   'desc' => '(###) ###-####',
                  ),
                 array(
                   'name' => 'Fax',
                   'id'   => $prefix . 'connect_fax',
                   'type' => 'text',
-                  'desc' => '(###)-###-####',
+                  'desc' => '(###) ###-####',
                 ),
                 array(
                   'name' => 'Email',
