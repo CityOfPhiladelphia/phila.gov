@@ -515,13 +515,14 @@ function phila_register_meta_boxes( $meta_boxes ){
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => $prefix . 'module_row_1_col_2_type',
-          'desc'  => 'Choose to display recent blog posts, custom markup or a call to action panel.',
+          'desc'  => 'Choose to display recent blog posts, custom markup, call to action, or a connect panel.',
           'type' => 'select',
           'placeholder' => 'Select...',
           'options' => array(
             $prefix . 'module_row_1_col_2_blog_posts' => 'Blog Posts',
             $prefix . 'module_row_1_col_2_custom_text' => 'Custom Text',
             $prefix . 'module_row_1_col_2_call_to_action_panel' => 'Call to Action Panel',
+            $prefix . 'module_row_1_col_2_connect_panel' => 'Connect Panel',
           ),
         ),
         array(
@@ -595,6 +596,118 @@ function phila_register_meta_boxes( $meta_boxes ){
           ),
         ),
       ),
+      array(
+        'id' => 'module_row_1_col_2_connect_panel',
+        'type' => 'group',
+        'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_connect_panel'),
+
+        'fields' => array(
+            array(
+             'name' => 'Description',
+             'id'   => $prefix . 'connect_description',
+             'type' => 'custom_html',
+             'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
+             <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
+            ),
+            array(
+              'id' => $prefix . 'connect_social',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Social',
+                ),
+                array(
+                 'name' => 'Facebook URL',
+                 'id'   => $prefix . 'connect_social_facebook',
+                 'type' => 'url',
+                 'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+                ),
+                array(
+                 'name' => 'Twitter URL',
+                 'id'   => $prefix . 'connect_social_twitter',
+                 'type' => 'url',
+                 'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+                ),
+                array(
+                 'name' => 'Instagram URL',
+                 'id'   => $prefix . 'connect_social_instagram',
+                 'type' => 'url',
+                 'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+                ),
+              ),
+            ),
+            array(
+              'id' => $prefix . 'connect_address',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Address',
+                ),
+                array(
+                 'name' => 'Street Address 1',
+                 'id'   => $prefix . 'connect_address_st_1',
+                 'type' => 'text',
+                ),
+                array(
+                 'name' => 'Street Address 2',
+                 'id'   => $prefix . 'connect_address_st_2',
+                 'type' => 'text',
+                ),
+                array(
+                 'name' => 'City',
+                 'id'   => $prefix . 'connect_address_city',
+                 'type' => 'text',
+                 'std' => 'Philadelphia',
+                ),
+                array(
+                 'name' => 'State',
+                 'id'   => $prefix . 'connect_address_state',
+                 'type' => 'text',
+                 'std' => 'PA',
+                ),
+                array(
+                 'name' => 'Zip',
+                 'id'   => $prefix . 'connect_address_zip',
+                 'type' => 'text',
+                 'std' => '19107',
+                ),
+              ),
+            ),
+            array(
+              'id' => $prefix . 'connect_general',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Contact',
+                ),
+                array(
+                   'name' => 'Phone',
+                   'id'   => $prefix . 'connect_phone',
+                   'type' => 'phone',
+                   'desc' => '(###)-###-####',
+                 ),
+                array(
+                  'name' => 'Fax',
+                  'id'   => $prefix . 'connect_fax',
+                  'type' => 'phone',
+                  'desc' => '(###)-###-####',
+                ),
+                array(
+                  'name' => 'Email',
+                  'id'   => $prefix . 'connect_email',
+                  'type' => 'email',
+                  'desc' => 'example@phila.gov',
+                ),
+              ),
+            ),
+          ),
+        ),
     ),
   );
 
@@ -739,7 +852,6 @@ $meta_boxes[] = array(
           ),
         ),
       ),
-
 );
 
 return $meta_boxes;
