@@ -267,8 +267,7 @@
         border-bottom: none;
       }
     }
-    li[class*="current-menu-item"] > a,
-    li[class*="current-department_page-ancestor"] > a {
+    li[class*="current-menu-item"] > a{
       background: $ben-franklin-blue;
       color:$white;
       &:hover{
