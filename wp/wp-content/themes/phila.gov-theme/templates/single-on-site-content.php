@@ -296,7 +296,7 @@
                     <hr>
                   <?php endif; ?>
                     <div>
-                        <div class="adr mbm">
+                        <div class="adr mbs">
                           <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
                             <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_1; ?></a></span><br/>
                           <?php endif; ?>
@@ -308,13 +308,13 @@
                           <?php endif; ?>
                         </div>
                             <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
-                              <div class="tel"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $row_one_col_two_connect_panel_phone); ?>"> <?php echo  $row_one_col_two_connect_panel_phone; ?></a></div>
+                              <div class="tel pbxs"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $row_one_col_two_connect_panel_phone); ?>"> <?php echo  $row_one_col_two_connect_panel_phone; ?></a></div>
                           <?php endif; ?>
                           <?php if ( !$row_one_col_two_connect_panel_fax == '') : ?>
-                            <div class="fax"><span class="type vcard-label">Fax:</span> <?php echo $row_one_col_two_connect_panel_fax; ?></div>
+                            <div class="fax pbxs"><span class="type vcard-label">Fax:</span> <?php echo $row_one_col_two_connect_panel_fax; ?></div>
                         <?php endif; ?>
                         <?php if ( !$row_one_col_two_connect_panel_email == '') : ?>
-                            <div class="email"><span class="vcard-label">Email:</span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"> <?php echo $row_one_col_two_connect_panel_email; ?></a></div>
+                            <div class="email pbxs"><span class="vcard-label">Email:</span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"> <?php echo $row_one_col_two_connect_panel_email; ?></a></div>
                       <?php endif; ?>
                         </div>
                     </div>
