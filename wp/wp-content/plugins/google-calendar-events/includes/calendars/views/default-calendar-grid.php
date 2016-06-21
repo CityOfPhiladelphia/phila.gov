@@ -121,11 +121,25 @@ class Default_Calendar_Grid implements Calendar_View {
 				'ver'       => '2.2.1',
 				'in_footer' => true,
 			),
+			'simcal-fullcal-moment' => array(
+				'src'       => SIMPLE_CALENDAR_ASSETS . 'js/vendor/moment' . $min . '.js',
+				'deps'      => array( 'jquery' ),
+				'ver'       => '',
+				'in_footer' => true,
+			),
+			'simcal-moment-timezone' => array(
+				'src'       => SIMPLE_CALENDAR_ASSETS . 'js/vendor/moment-timezone-with-data' . $min . '.js',
+				'deps'      => array( 'jquery' ),
+				'ver'       => '',
+				'in_footer' => true,
+			),
 			'simcal-default-calendar' => array(
 				'src'       => SIMPLE_CALENDAR_ASSETS . 'js/default-calendar' . $min . '.js',
 				'deps'      => array(
 					'jquery',
 					'simcal-qtip',
+					'simcal-fullcal-moment',
+					'simcal-moment-timezone',
 				),
 				'var'       => SIMPLE_CALENDAR_VERSION,
 				'in_footer' => true,
@@ -193,7 +207,7 @@ class Default_Calendar_Grid implements Calendar_View {
 				<thead class="simcal-calendar-head">
 					<tr>
 						<?php if ( ! $calendar->static ) { ?>
-							<th class="simcal-nav simcal-prev-wrapper" colspan=colspan="<?php echo apply_filters( 'simcal_prev_cols', '1' ); ?>">
+							<th class="simcal-nav simcal-prev-wrapper" colspan="<?php echo apply_filters( 'simcal_prev_cols', '1' ); ?>">
 								<button class="simcal-nav-button simcal-month-nav simcal-prev" title="<?php _e( 'Previous Month', 'google-calendar-events' ); ?>"><i class="simcal-icon-left"></i></button>
 							</th>
 						<?php } ?>
