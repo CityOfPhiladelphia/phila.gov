@@ -267,7 +267,7 @@
         border-bottom: none;
       }
     }
-    li[class*="current"] > a{
+    li[class*="current-menu-item"] > a{
       background: $ben-franklin-blue;
       color:$white;
       &:hover{
