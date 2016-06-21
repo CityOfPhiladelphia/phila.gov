@@ -603,6 +603,13 @@ function phila_register_meta_boxes( $meta_boxes ){
 
         'fields' => array(
             array(
+             'name' => 'Description',
+             'id'   => $prefix . 'connect_description',
+             'type' => 'custom_html',
+             'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
+             <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
+            ),
+            array(
               'id' => $prefix . 'connect_social',
               'type' => 'group',
               // List of sub-fields

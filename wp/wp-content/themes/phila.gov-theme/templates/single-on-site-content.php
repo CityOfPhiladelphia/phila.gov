@@ -308,7 +308,7 @@
                           <?php endif; ?>
                         </div>
                             <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
-                              <div class="tel"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo  $row_one_col_two_connect_panel_phone; ?>"> <?php echo  $row_one_col_two_connect_panel_phone; ?></a></div>
+                              <div class="tel"><span class="type vcard-label">Phone:</span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $row_one_col_two_connect_panel_phone); ?>"> <?php echo  $row_one_col_two_connect_panel_phone; ?></a></div>
                           <?php endif; ?>
                           <?php if ( !$row_one_col_two_connect_panel_fax == '') : ?>
                             <div class="fax"><span class="type vcard-label">Fax:</span> <?php echo $row_one_col_two_connect_panel_fax; ?></div>
