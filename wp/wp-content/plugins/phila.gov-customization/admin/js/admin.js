@@ -156,20 +156,31 @@ jQuery(document).ready(function($) {
 
     }
   }
+  function setOnePageInputVals(){
+    $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text').prop( 'disabled', true );
+
+    $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'disabled', true );
+
+    $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel').prop( 'disabled', true );
+  }
+
   if ( ( typenow == 'department_page' ) )  {
-    $('#phila_template_select').change(function() {
+    var templateSelect =   $('#phila_template_select');
+
+    if ( templateSelect.val() == 'one_page_department' ){
+      setOnePageInputVals();
+      $('#phila_template_select').click();
+    }
+
+    templateSelect.change(function() {
       //set fields based on template selection
-      if ( $( this ).val() == 'one_page_department' ){
-        $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text').prop( 'disabled', true );
-
-        $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'disabled', true );
-
-        $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel').prop( 'disabled', true );
+      if ( templateSelect.val() == 'one_page_department' ){
+        setOnePageInputVals();
       }else{
         //enable the disabled elements
         $('#phila_module_row_1').each(function(){
-            var inputs = $( this ).find( ':input' );
-            inputs.prop( 'disabled', false );
+          var inputs = $( this ).find( ':input' );
+          inputs.prop( 'disabled', false );
         });
       }
     });
