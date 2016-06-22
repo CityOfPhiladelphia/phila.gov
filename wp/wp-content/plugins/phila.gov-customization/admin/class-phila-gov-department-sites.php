@@ -87,6 +87,10 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'context'  => 'normal',
       'priority' => 'low',
 
+      'hidden' => array(
+        'phila_template_select', '=', 'one_page_department',
+      ),
+
       'fields' => array(
         array(
          'id' => 'content_blocks',
