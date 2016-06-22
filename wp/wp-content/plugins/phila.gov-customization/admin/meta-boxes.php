@@ -16,6 +16,8 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $serviceRelatedContent['toolbar1'] = 'bullist, link, unlink';
 
+  $department_col_1_custom_content['toolbar1'] = 'bold, italic';
+
   $meta_boxes[] = array(
     'id'       => 'service_additions',
     'title'    => 'Service Description',
@@ -497,9 +499,13 @@ function phila_register_meta_boxes( $meta_boxes ){
              array(
               'name' => 'Custom Text Content',
               'id'   => $prefix . 'module_row_1_col_1_textarea',
-              'type' => 'textarea',
+              'type' => 'wysiwyg',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-
+              'options' => array(
+                'teeny' => true,
+                'dfw' => false,
+                'tinymce' => $department_col_1_custom_content,
+              ),
              ),
             ),
           ),
