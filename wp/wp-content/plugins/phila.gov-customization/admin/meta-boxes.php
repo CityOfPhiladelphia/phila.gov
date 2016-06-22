@@ -721,6 +721,9 @@ $meta_boxes[] = array(
   'include' => array(
     'user_role'  => 'administrator',
   ),
+  'hidden' => array(
+    'phila_template_select', '=', 'one_page_department',
+  ),
 
       // List of sub-fields
       'fields' => array(
