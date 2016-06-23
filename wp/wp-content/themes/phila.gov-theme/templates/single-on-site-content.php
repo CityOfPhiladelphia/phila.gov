@@ -13,10 +13,7 @@
 </div>
 
 <div data-swiftype-index='true' class="entry-content">
-<?php
-  $user_selected_template = phila_get_selected_template();
-  var_dump( $user_selected_template );
-?>
+  <?php $user_selected_template = phila_get_selected_template(); ?>
 
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
