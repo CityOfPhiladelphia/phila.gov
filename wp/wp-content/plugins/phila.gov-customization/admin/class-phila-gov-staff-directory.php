@@ -16,10 +16,7 @@ class Phila_Gov_Staff_Directory {
 
   public function __construct(){
     add_filter( 'rwmb_meta_boxes',  array($this, 'phila_register_meta_boxes') );
-
     add_filter('the_title', array($this, 'staff_member_title') );
-
-
   }
 
   function staff_member_title( $title ) {
@@ -32,9 +29,9 @@ class Phila_Gov_Staff_Directory {
       } else {
         return 'No name provided';
       }
-     }
-      return $title;
     }
+      return $title;
+  }
 
   function phila_register_meta_boxes( $meta_boxes ){
     $prefix = 'phila_';
