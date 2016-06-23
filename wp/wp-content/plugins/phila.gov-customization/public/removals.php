@@ -49,7 +49,6 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 //Remove version from meta
 //https://wordpress.org/support/topic/remove-ltmeta-namegenerator-contentwordpress-25-gt#post-920568
-}
 add_filter('the_generator', 'phila_remove_version');
 
 function phila_remove_version() {
