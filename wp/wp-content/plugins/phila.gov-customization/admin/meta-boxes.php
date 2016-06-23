@@ -391,7 +391,10 @@ function phila_register_meta_boxes( $meta_boxes ){
        'type'  => 'textarea',
        'class' => 'hero-header-body-copy',
        'desc'  => 'Text that will be placed over the header image and below the Hero Header Title.',
-       'size'  => '60'
+       'size'  => '60',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
        'name'  => 'Call to Action Button URL',
@@ -399,6 +402,9 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'    => $prefix . 'hero_header_call_to_action_button_url',
        'type'  => 'URL',
        'class' => 'hero-header-call-to-action-button-url',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
        'name'  => 'Call to Action Button Text',
@@ -406,7 +412,10 @@ function phila_register_meta_boxes( $meta_boxes ){
        'type'  => 'text',
        'class' => 'hero-header-call-to-action-button-text',
        'desc'  => 'Text that appears on the "call to action" button.',
-       'size'  => '30'
+       'size'  => '30',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
        'name'  => 'Image',
