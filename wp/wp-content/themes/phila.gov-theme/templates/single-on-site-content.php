@@ -35,13 +35,13 @@
   <?php endif; ?>
 
   <?php if( !empty($user_selected_template) ) : ?>
-  <!-- Begin Template Display -->
+  <!-- Begin Resource List Template Display -->
   <section class="apply-template">
     <?php if ($user_selected_template == 'resource_list') : ?>
       <?php get_template_part( 'partials/resource', 'list' ); ?>
   <?php endif; ?>
   </section>
-  <!-- End Template Display -->
+  <!-- End Resource List Template Display -->
   <?php endif; ?>
 
   <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
