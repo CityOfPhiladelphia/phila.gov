@@ -157,6 +157,10 @@ jQuery(document).ready(function($) {
     }
   }
   function setOnePageInputVals(){
+    $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
+
+    $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel');
+
     $("#phila_module_row_1_col_1_type option").each(function(){
       if ( $(this).val() != 'phila_module_row_1_col_1_custom_text' ){
         $(this).prop('disabled', true);
@@ -189,8 +193,9 @@ jQuery(document).ready(function($) {
         //enable the disabled elements
         $('#phila_module_row_1').each(function(){
           var inputs = $( this ).find( ':input' );
+          var options = $( this ).find( ':input option' );
           inputs.prop( 'readOnly', false );
-          inputs.prop( 'disabled', false );
+          options.prop( 'disabled', false );
         });
       }
     });
