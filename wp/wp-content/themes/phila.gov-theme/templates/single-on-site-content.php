@@ -48,10 +48,11 @@
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
       </div>
     <?php endif; ?>
+    <?php //for now, we don't allow calendar and blog posts on one page templates ?>
+  <?php else: ?>
+
+    <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
   <?php endif; ?>
-
-  <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
-
   <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 </div> <!-- End .entry-content -->
