@@ -1216,3 +1216,14 @@ function echo_item_meta_desc(){
     bloginfo( 'description' );
   }
 }
+/*
+ * Return a string representing the template currently applied to a page in the loop. 
+ *
+ */
+
+function phila_get_selected_template(){
+
+  $user_selected_template = rwmb_meta( 'phila_template_select' );
+
+  return $user_selected_template;
+}

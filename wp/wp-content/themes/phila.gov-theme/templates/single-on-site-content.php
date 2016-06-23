@@ -14,9 +14,8 @@
 
 <div data-swiftype-index='true' class="entry-content">
 <?php
-  //set template selection var
-  $user_selected_template = rwmb_meta( 'phila_template_select');
-  var_dump($user_selected_template);
+  $user_selected_template = phila_get_selected_template();
+  var_dump( $user_selected_template );
 ?>
 
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
