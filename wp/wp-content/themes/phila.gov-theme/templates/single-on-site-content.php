@@ -34,16 +34,23 @@
   <!-- End WYSIWYG content -->
   <?php endif; ?>
 
-  <?php if( !empty($user_selected_template) ) : ?>
-  <!-- Begin Resource List Template Display -->
-  <section class="apply-template">
-    <?php if ($user_selected_template == 'resource_list') : ?>
+  <?php if ($user_selected_template == 'resource_list') : ?>
+    <!-- Begin Resource List Template Display -->
+    <section class="apply-template">
       <?php get_template_part( 'partials/resource', 'list' ); ?>
-  <?php endif; ?>
-  </section>
-  <!-- End Resource List Template Display -->
+    </section>
+    <!-- End Resource List Template Display -->
   <?php endif; ?>
 
+  <?php if ($user_selected_template == 'one_page_department') : ?>
+  <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
+    <?php if ( $full_row_blog == 1): ?>
+      <div class="row">
+        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+      </div>
+    <?php endif; ?>
+
+  <?php endif; ?>
   <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
   <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
