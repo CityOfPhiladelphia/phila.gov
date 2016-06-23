@@ -17,10 +17,14 @@ class Phila_Gov_Staff_Directory {
   public function __construct(){
     add_filter( 'rwmb_meta_boxes',  array($this, 'phila_register_meta_boxes') );
 
-    add_filter('the_title', 'staff_member_title');
+    add_filter('the_title', array($this, 'staff_member_title') );
 
-    function staff_member_title( $title ) {
 
+  }
+
+  function staff_member_title( $title ) {
+    global $id, $post;
+    if ( $id && $post && $post->post_type == 'staff_directory' ) {
       $staff_member_name = get_post_meta( get_the_ID(),'phila_first_name',true) . ' ' . get_post_meta( get_the_ID(),'phila_last_name',true);
 
       if (isset($staff_member_name) && $staff_member_name != ' ' ){
@@ -28,10 +32,9 @@ class Phila_Gov_Staff_Directory {
       } else {
         return 'No name provided';
       }
-
+     }
+      return $title;
     }
-
-  }
 
   function phila_register_meta_boxes( $meta_boxes ){
     $prefix = 'phila_';
