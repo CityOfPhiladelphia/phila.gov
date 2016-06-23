@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Add alerts to alpha homepage
+* Add Staff Directory custom post type
 *
 * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
 *
@@ -16,6 +16,15 @@ class Phila_Gov_Staff_Directory {
 
   public function __construct(){
     add_filter( 'rwmb_meta_boxes',  array($this, 'phila_register_meta_boxes') );
+
+    add_filter('the_title', 'staff_member_title');
+
+    function staff_member_title( $title ) {
+
+      $staff_member_name = get_post_meta( get_the_ID(),'phila_first_name',true) . ' ' . get_post_meta( get_the_ID(),'phila_last_name',true);
+        return $staff_member_name;
+    }
+    
   }
 
   function phila_register_meta_boxes( $meta_boxes ){
