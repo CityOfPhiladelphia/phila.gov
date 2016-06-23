@@ -22,9 +22,15 @@ class Phila_Gov_Staff_Directory {
     function staff_member_title( $title ) {
 
       $staff_member_name = get_post_meta( get_the_ID(),'phila_first_name',true) . ' ' . get_post_meta( get_the_ID(),'phila_last_name',true);
+
+      if (isset($staff_member_name) && $staff_member_name != ' ' ){
         return $staff_member_name;
+      } else {
+        return 'No name provided';
+      }
+
     }
-    
+
   }
 
   function phila_register_meta_boxes( $meta_boxes ){
