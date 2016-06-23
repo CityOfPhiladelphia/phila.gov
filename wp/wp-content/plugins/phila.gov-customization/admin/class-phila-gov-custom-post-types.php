@@ -323,7 +323,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Staff Member entry not found in trash' ),
         ),
         'taxonomies' => array('category'),
-        'supports' => array('title', 'page-attributes', 'revisions', 'thumbnail'),
+        'supports' => array('title', 'revisions', 'thumbnail'),
         'exclude_from_search' => true,
         'public' => false,
         'show_ui' => true,
