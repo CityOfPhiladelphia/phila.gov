@@ -530,7 +530,7 @@ function phila_register_meta_boxes( $meta_boxes ){
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => $prefix . 'module_row_1_col_2_type',
-          'desc'  => 'Choose to display recent blog posts, custom markup, call to action, or a connect panel.',
+          'desc'  => 'Choose to display recent blog posts, custom markup, call to action panel, or a connect panel.',
           'type' => 'select',
           'placeholder' => 'Select...',
           'options' => array(
