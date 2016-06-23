@@ -893,11 +893,81 @@ $meta_boxes[] = array(
     ),
   );
 
+  $meta_boxes[] = array(
+    'id'  => $prefix . 'call_to_action_multi',
+    'title' => 'Call to action',
+    'pages' => array( 'department_page' ),
+    'context' => 'normal',
+    'priority'  => 'low',
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+
+    'fields' => array(
+      array(
+        'id'  => $prefix . 'call_to_action_multi_group',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+
+      'fields' => array(
+        array(
+          'name'  => 'Section Title',
+          'id'    => $prefix . 'action_section_title_multi',
+          'type'  => 'text',
+        ),
+        array(
+          'name'  => 'Call to Action Text',
+          'id'    => $prefix . 'action_panel_cta_text_multi',
+          'type'  => 'text',
+          'class' => 'action-panel-cta-text',
+        ),
+        array(
+          'name'  => 'Summary',
+          'id'    => $prefix . 'action_panel_summary_multi',
+          'type'  => 'textarea',
+          'class' => 'action-panel-details',
+        ),
+        array(
+          'name'  => 'Icon',
+          'id'    => $prefix . 'action_panel_fa_multi',
+          'type'  => 'text',
+          'class' => 'action-panel-fa',
+        ),
+        array(
+          'name'  => 'Icon Background Circle',
+          'id'    => $prefix . 'action_panel_fa_circle_multi',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-fa',
+        ),
+        array(
+          'name'  => 'Link to Content',
+          'id'    => $prefix . 'action_panel_link_multi',
+          'type'  => 'url',
+          'class' => 'action-panel-link',
+        ),
+        array(
+          'name'  => 'External Link',
+          'id'    => $prefix . 'action_panel_link_loc_multi',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-link-loc',
+          'desc'  => 'This link directs users away from alpha.phila.gov',
+        ),
+      ),
+    ),
+  ),
+);
+
+
 return $meta_boxes;
 
 }
 // The following filter based on MetaBox documentation
 add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
+
 function phila_group_add_clone_button_text( $text, $field ) {
   if ( 'phila_resource_list' == $field['id'] ) {
       $text = __( '+ Add a Resource List', 'textdomain' );
