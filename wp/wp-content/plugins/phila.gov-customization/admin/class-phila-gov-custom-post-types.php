@@ -323,7 +323,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Staff Member entry not found in trash' ),
         ),
         'taxonomies' => array('category'),
-        'supports' => array('page-attributes', 'revisions', 'thumbnail'),
+        'supports' => array('title', 'page-attributes', 'revisions', 'thumbnail'),
         'exclude_from_search' => true,
         'public' => false,
         'show_ui' => true,
@@ -331,7 +331,7 @@ class Phila_Gov_Custom_Post_Types{
         'menu_icon' => 'dashicons-id',
         'hierarchical' => false,
         'rewrite' => array(
-          'slug' => 'staf-directory',
+          'slug' => 'staff-directory',
           'with_front' => false,
         ),
       )
