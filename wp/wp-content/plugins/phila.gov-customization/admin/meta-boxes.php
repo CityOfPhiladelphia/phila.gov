@@ -870,7 +870,28 @@ $meta_boxes[] = array(
           ),
         ),
       ),
-);
+    );
+  $meta_boxes[] = array(
+    'id'       => $prefix . 'full_row_blog',
+    'title'    => 'Full row blog posts (3 total)',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => $prefix . 'full_row_blog_selected',
+        'desc'  => 'Should this page show a full row of blog posts?',
+        'type' => 'checkbox',
+      ),
+    ),
+  );
 
 return $meta_boxes;
 
