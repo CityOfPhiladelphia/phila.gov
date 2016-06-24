@@ -894,6 +894,28 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
+    'id'       => $prefix . 'staff_directory_listing',
+    'title'    => 'Staff Directory Listing',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => $prefix . 'staff_directory_selected',
+        'desc'  => 'Include a staff directory section?',
+        'type' => 'checkbox',
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
     'id'  => $prefix . 'call_to_action_multi',
     'title' => 'Call to action links',
     'pages' => array( 'department_page' ),
