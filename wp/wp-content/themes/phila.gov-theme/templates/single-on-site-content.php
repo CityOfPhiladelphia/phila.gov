@@ -54,5 +54,12 @@
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
   <?php endif; ?>
+
+  <?php if ($user_selected_template == 'one_page_department') : ?>
+
+    <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
+
+  <?php endif;?>
+
   <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 </div> <!-- End .entry-content -->
