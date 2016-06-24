@@ -17,7 +17,6 @@ class Phila_Gov_Staff_Directory {
   public function __construct(){
     add_filter( 'rwmb_meta_boxes',  array($this, 'phila_register_meta_boxes') );
     add_filter( 'wp_insert_post_data' , array($this, 'staff_directory_post_title'), 10, 2 );
-
   }
 
   // Use staff member's name as the post title
