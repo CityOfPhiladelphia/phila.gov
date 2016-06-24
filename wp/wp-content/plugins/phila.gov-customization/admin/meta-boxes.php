@@ -895,7 +895,7 @@ $meta_boxes[] = array(
 
   $meta_boxes[] = array(
     'id'  => $prefix . 'call_to_action_multi',
-    'title' => 'Call to action',
+    'title' => 'Call to action links',
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority'  => 'low',
