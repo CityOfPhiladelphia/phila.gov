@@ -1216,14 +1216,28 @@ function echo_item_meta_desc(){
     bloginfo( 'description' );
   }
 }
-/*
- * Return a string representing the template currently applied to a page in the loop. 
+/**
+ * Return a string representing the template currently applied to a page in the loop.
  *
- */
+ **/
 
 function phila_get_selected_template(){
 
   $user_selected_template = rwmb_meta( 'phila_template_select' );
 
   return $user_selected_template;
+}
+/**
+ * Do the math to determine the correct column span for X items on a 24 column grid.
+ *
+ * @param $item_count - Numeric string. Required. The count of the items in the grid.
+ * @return $column_count The column count
+ **/
+
+function phila_grid_column_counter( $item_count ){
+
+  $column_count = 24 / $item_count;
+
+  return $column_count;
+
 }
