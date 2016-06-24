@@ -20,6 +20,7 @@ class Phila_Gov_Staff_Directory {
 
   }
 
+  // Use staff member's name as the post title
   function staff_directory_post_title( $data , $postarr )
   {
     if($data['post_type'] == 'staff_directory') {
