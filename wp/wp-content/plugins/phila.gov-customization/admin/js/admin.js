@@ -159,6 +159,9 @@ jQuery(document).ready(function($) {
       $("#phila_first_name").prop('required', true);
       $("#phila_last_name").prop('required', true);
       $("#phila_job_title").prop('required', true);
+      $('#phila_summary').rules('add', {
+        maxlength: 700
+      });
     }
   }
   function setOnePageInputVals(){
