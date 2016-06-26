@@ -42,7 +42,7 @@ if (has_category()):
         endif;
 
         // Leadership Contact Info
-        $staff_leadership_output .= '<div class="small-12 medium-4 columns vcard">';
+        $staff_leadership_output .= '<div class="small-12 medium-4 columns">';
 
         if ( isset( $staff_first_name ) && !$staff_first_name == '' && isset( $staff_last_name ) && !$staff_last_name == ''):
           $staff_leadership_output .= '<div class="name">' . $staff_first_name . ' ' . $staff_last_name . '</div>';
@@ -52,12 +52,12 @@ if (has_category()):
           $staff_leadership_output .= '<div class="job-title">' . $staff_title . '</div>';
         endif;
 
-        if ( isset( $staff_email ) && !$staff_email == ''):
-          $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
-        endif;
-
         if ( isset( $staff_phone_unformatted ) && isset( $staff_phone_formatted ) ):
           $staff_leadership_output .= '<div class="tel"><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></div>';
+        endif;
+
+        if ( isset( $staff_email ) && !$staff_email == ''):
+          $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
         endif;
 
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
