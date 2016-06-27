@@ -127,7 +127,7 @@ if (has_category()):
       <section class="mvm">
         <div class="row">
           <div class="large-24 columns">
-            <div class="panel center mbl mtm mtl-mu">
+            <div class="placeholder center mbl mtm mtl-mu">
               <p>No staff content found.</p>
             </div>
           </div>
@@ -139,7 +139,7 @@ if (has_category()):
   <section class="mvm">
     <div class="row">
       <div class="large-24 columns">
-        <div class="panel center mbl mtm mtl-mu">
+        <div class="placeholder center mbl mtm mtl-mu">
           <p>This page must have at least one category in order to display a staff directory.</p>
         </div>
       </div>
