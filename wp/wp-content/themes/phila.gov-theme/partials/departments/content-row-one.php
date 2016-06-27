@@ -1,7 +1,7 @@
 <?php
 /*
  *
- * Partial for rendering Department Row Two Content
+ * Partial for rendering Department Row One Content
  *
  */
 ?>
@@ -116,6 +116,11 @@ if ( !empty( $row_one_col_two_module ) ){
       <div>
         <?php echo($row_one_col_one_textarea); ?>
       </div>
+      <?php if ( $row_one_col_one_textarea == '' ) :?>
+        <div class="placeholder">
+          Please enter content.
+        </div>
+      <?php endif; ?>
     </div>
     <!-- End Column One -->
   <?php endif; ?>
@@ -168,6 +173,11 @@ if ( !empty( $row_one_col_two_module ) ){
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ): ?>
   <div class="large-6 columns connect">
     <h2 class="contrast">Connect</h2>
+    <?php if ( $row_one_col_two_connect_panel_social_count == '' && $row_one_col_two_connect_panel_st_1 == ''): ?>
+      <div class="placeholder">
+        Please enter an address or social media links.
+      </div>
+    <?php endif; ?>
     <div class="vcard panel no-margin">
       <div>
       <?php if ( !$row_one_col_two_connect_panel_social_count == 0 ) : ?>
