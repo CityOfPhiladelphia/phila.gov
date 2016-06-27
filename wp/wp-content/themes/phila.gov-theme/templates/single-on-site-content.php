@@ -42,6 +42,10 @@
   <?php endif; ?>
 
   <?php if ($user_selected_template == 'one_page_department') : ?>
+    <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
+    <?php if ( $staff_directory_listing ): ?>
+      <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
+    <?php endif; ?>
     <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
     <?php if ( $full_row_blog == 1): ?>
       <div class="row">

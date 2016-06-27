@@ -155,6 +155,14 @@ jQuery(document).ready(function($) {
       });
 
     }
+    if ( typenow == 'staff_directory' && adminpage.indexOf( 'post' ) > -1 ) {
+      $("#phila_first_name").prop('required', true);
+      $("#phila_last_name").prop('required', true);
+      $("#phila_job_title").prop('required', true);
+      $('#phila_summary').rules('add', {
+        maxlength: 700
+      });
+    }
   }
   function setOnePageInputVals(){
     $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
