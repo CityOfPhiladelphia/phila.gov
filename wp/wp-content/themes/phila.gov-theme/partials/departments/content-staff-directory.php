@@ -35,7 +35,7 @@ if (has_category()):
         $staff_options = rwmb_meta('phila_leadership_options');
         $staff_display_order = intval( $staff_options['phila_display_order'] );
         $staff_summary = $staff_options['phila_summary'];
-        $staff_leadership_output .= '<div class="row">';
+        $staff_leadership_output .= '<div class="row staff-leadership">';
         // Leadership Thumbnail
         if ( has_post_thumbnail() ):
           $staff_photo = get_the_post_thumbnail( $post->ID, 'thumbnail', 'class= small-thumb mrm' );
@@ -86,7 +86,7 @@ if (has_category()):
 
 
     if (!empty($staff_leadership_array)):?>
-      <section class="mvm">
+      <section class="mvm staff-directory">
         <div class="row">
           <div class="large-24 columns">
             <h2 class="contrast">Leadership</h2>
