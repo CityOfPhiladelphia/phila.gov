@@ -51,6 +51,10 @@ function phila_gov_setup() {
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
   add_image_size( 'home-thumb', 550, 360, true );
 
+  //Staff Directory thumbnails
+  add_image_size( 'staff-thumb', '200', '200', array( 'center' , 'center') );
+
+
   // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
 

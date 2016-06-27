@@ -3,9 +3,15 @@
     margin-bottom: $spacing-medium;
 
     .staff-thumbnail {
-
+      width:100%;
     }
     .staff-contact {
+      margin-top: $spacing-medium;
+      margin-bottom: $spacing-medium;
+      @media screen and (min-width: 40em){
+        margin-top: 0;
+        margin-bottom: 0;
+      }
 
     }
     .staff-summary {
