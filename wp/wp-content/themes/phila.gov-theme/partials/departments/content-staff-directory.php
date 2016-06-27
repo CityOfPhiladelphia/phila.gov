@@ -38,12 +38,12 @@ if (has_category()):
         $staff_leadership_output .= '<div class="row staff-leadership">';
         // Leadership Thumbnail
         if ( has_post_thumbnail() ):
-          $staff_photo = get_the_post_thumbnail( $post->ID, 'thumbnail', 'class= small-thumb mrm' );
-          $staff_leadership_output .= '<div class="small-12 medium-4 columns">' . $staff_photo . '</div>';
+          $staff_photo = get_the_post_thumbnail( $post->ID, 'staff-thumb', 'class= staff-thumbnail' );
+          $staff_leadership_output .= '<div class="small-24 medium-5 columns">' . $staff_photo . '</div>';
         endif;
 
         // Leadership Contact Info
-        $staff_leadership_output .= '<div class="small-12 medium-4 columns">';
+        $staff_leadership_output .= '<div class="small-24 medium-5 columns staff-contact">';
 
         if ( isset( $staff_first_name ) && !$staff_first_name == '' && isset( $staff_last_name ) && !$staff_last_name == ''):
           $staff_leadership_output .= '<div class="name">' . $staff_first_name . ' ' . $staff_last_name . '</div>';
@@ -63,7 +63,7 @@ if (has_category()):
 
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
           $staff_leadership_output .= '</div>';
-          $staff_leadership_output .= '<div class="medium-16 columns">' . $staff_summary . '</div>';
+          $staff_leadership_output .= '<div class="medium-14 columns staff-summary">' . $staff_summary . '</div>';
         endif;
         $staff_leadership_output .= '</div>';
 
