@@ -97,7 +97,7 @@ if ( !empty( $row_one_col_two_module ) ){
 <?php if ( !empty( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) && !empty( $row_one_col_two_module['phila_module_row_1_col_2_type'] ) ) :?>
 <!-- Begin Row One MetaBox Modules -->
 <section class="department-module-row-one mvl">
-  <div class="row equal-height">
+  <div class="row">
   <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
   <!-- Begin Column One -->
     <div class="large-18 columns">
