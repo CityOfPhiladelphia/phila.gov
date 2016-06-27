@@ -50,16 +50,8 @@ if ( !empty( $row_one_col_two_module ) ){
     $row_one_col_two_action_panel_fa = isset( $row_one_col_two_action_panel['phila_action_panel_fa'] ) ? $row_one_col_two_action_panel['phila_action_panel_fa'] : '';
   } else {
     //Determine social media count and column widths
-    $row_one_col_two_connect_panel_social_count = isset($row_one_col_two_connect_panel['phila_connect_social'] ) ? count($row_one_col_two_connect_panel['phila_connect_social'] ) : 0 ;
 
-    //TODO: make this into a function that does the math for us
-    if ( $row_one_col_two_connect_panel_social_count == 1 ){
-      $row_one_col_two_connect_panel_social_column_width = '24';
-    } elseif ( $row_one_col_two_connect_panel_social_count == 2 ) {
-      $row_one_col_two_connect_panel_social_column_width = '12';
-    } elseif  ( $row_one_col_two_connect_panel_social_count == 3 ) {
-      $row_one_col_two_connect_panel_social_column_width = '8';
-    }
+    $connect_social_array = $row_one_col_two_connect_panel['phila_connect_social'];
 
     $row_one_col_two_connect_panel_facebook = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] :'';
 
@@ -180,10 +172,14 @@ if ( !empty( $row_one_col_two_module ) ){
     <?php endif; ?>
     <div class="vcard panel no-margin">
       <div>
-      <?php if ( !$row_one_col_two_connect_panel_social_count == 0 ) : ?>
+
+      <?php if ( ! empty( $connect_social_array ) ):
+            $item_count = count( $connect_social_array );
+            $columns = phila_grid_column_counter( $item_count );
+      ?>
         <div class="row mbn">
           <?php if ( !$row_one_col_two_connect_panel_facebook == '') : ?>
-            <div class="small-<?php echo $row_one_col_two_connect_panel_social_column_width;?> columns center pvxs">
+            <div class="small-<?php echo $columns;?> columns center pvxs">
               <a href="<?php echo $row_one_col_two_connect_panel_facebook; ?>" target="_blank" class="phs">
                 <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
@@ -191,7 +187,7 @@ if ( !empty( $row_one_col_two_module ) ){
             </div>
         <?php endif; ?>
         <?php if ( !$row_one_col_two_connect_panel_twitter == '') : ?>
-          <div class="small-<?php echo $row_one_col_two_connect_panel_social_column_width;?> columns center pvxs">
+          <div class="small-<?php echo $columns;?> columns center pvxs">
             <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" target="_blank" class="phs">
               <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
               <span class="show-for-sr">Twitter</span>
@@ -199,7 +195,7 @@ if ( !empty( $row_one_col_two_module ) ){
           </div>
         <?php endif; ?>
         <?php if ( !$row_one_col_two_connect_panel_instagram == '') : ?>
-          <div class="small-<?php echo $row_one_col_two_connect_panel_social_column_width;?> columns center pvxs">
+          <div class="small-<?php echo $columns;?> columns center pvxs">
             <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" target="_blank" class="phs">
             <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
               <span class="show-for-sr">Instagram</span>
