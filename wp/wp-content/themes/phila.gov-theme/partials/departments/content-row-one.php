@@ -51,8 +51,6 @@ if ( !empty( $row_one_col_two_module ) ){
   } else {
     //Determine social media count and column widths
 
-    $connect_social_array = $row_one_col_two_connect_panel['phila_connect_social'];
-
     $row_one_col_two_connect_panel_facebook = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] :'';
 
     $row_one_col_two_connect_panel_twitter = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_twitter'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_twitter'] :'';
@@ -163,17 +161,19 @@ if ( !empty( $row_one_col_two_module ) ){
   </div>
   <!-- End Column Two -->
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ): ?>
+
   <div class="large-6 columns connect">
     <h2 class="contrast">Connect</h2>
-    <?php if ( $row_one_col_two_connect_panel_social_count == '' && $row_one_col_two_connect_panel_st_1 == ''): ?>
+
+    <?php if ( empty( $connect_social_array ) && $row_one_col_two_connect_panel_st_1 == '' ): ?>
       <div class="placeholder">
         Please enter an address or social media links.
       </div>
     <?php endif; ?>
+
     <div class="vcard panel no-margin">
       <div>
-
-      <?php if ( ! empty( $connect_social_array ) ):
+      <?php if ( !empty( $connect_social_array ) ) :
             $item_count = count( $connect_social_array );
             $columns = phila_grid_column_counter( $item_count );
       ?>
@@ -204,7 +204,7 @@ if ( !empty( $row_one_col_two_module ) ){
         <?php endif; ?>
       </div>
   <hr>
- <?php endif; ?>
+<?php endif; ?>
              <div>
                  <div class="adr mbs">
                    <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
@@ -226,11 +226,11 @@ if ( !empty( $row_one_col_two_module ) ){
                  <?php if ( !$row_one_col_two_connect_panel_email == '') : ?>
                      <div class="email pbxs"><span class="vcard-label">Email:</span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"> <?php echo $row_one_col_two_connect_panel_email; ?></a></div>
                <?php endif; ?>
-                 </div>
-             </div>
-         </div>
-     </div>
-  </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
   <?php endif; ?>
   </div>
 </section>
