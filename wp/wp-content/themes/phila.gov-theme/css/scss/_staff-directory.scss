@@ -1,0 +1,18 @@
+.staff-directory {
+  .staff-leadership {
+    margin-bottom: $spacing-medium;
+
+    .staff-thumbnail {
+
+    }
+    .staff-contact {
+
+    }
+    .staff-summary {
+
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
