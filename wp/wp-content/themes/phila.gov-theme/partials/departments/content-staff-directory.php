@@ -9,15 +9,15 @@
 if (has_category()):
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
-
+  $staff_leadership_array = array();
   // The Staff Directory Loop
   $args = array ( 'orderby' => 'title', 'order' => 'ASC', 'post_type' => 'staff_directory', 'cat' => $category_id );
   $staff_member_loop = new WP_Query( $args );
 
   if ( $staff_member_loop->have_posts() ):
-    $staff_leadership_output = '';
     $all_staff_table_output = '';
     while ( $staff_member_loop->have_posts() ) :
+      $staff_leadership_output = '';
       $staff_member_loop->the_post();
       if (function_exists('rwmb_meta')){
         $staff_first_name = rwmb_meta('phila_first_name', $args = array('type'=>'text'));
@@ -33,6 +33,7 @@ if (has_category()):
       }
       if ( $staff_leadership ):
         $staff_options = rwmb_meta('phila_leadership_options');
+        $staff_display_order = intval( $staff_options['phila_display_order'] );
         $staff_summary = $staff_options['phila_summary'];
         $staff_leadership_output .= '<div class="row">';
         // Leadership Thumbnail
@@ -66,6 +67,12 @@ if (has_category()):
         endif;
         $staff_leadership_output .= '</div>';
 
+        if ( key_exists( $staff_display_order, $staff_leadership_array ) ):
+          ++$staff_display_order;
+        endif;
+
+        $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
+
       else:
 
         $all_staff_table_output .= '<tr>
@@ -78,14 +85,18 @@ if (has_category()):
     endwhile;
 
 
-    if (!$staff_leadership_output == ''): ?>
-    <!-- Begin Staff Leadership -->
+    if (!empty($staff_leadership_array)):?>
       <section class="mvm">
         <div class="row">
           <div class="large-24 columns">
             <h2 class="contrast">Leadership</h2>
-                <?php echo $staff_leadership_output; ?>
-            </div>
+            <?php
+            ksort($staff_leadership_array);
+            foreach ($staff_leadership_array as $key => $value):
+              echo $value;
+            endforeach;
+            ?>
+          </div>
         </div>
       </section>
     <?php endif; ?>
