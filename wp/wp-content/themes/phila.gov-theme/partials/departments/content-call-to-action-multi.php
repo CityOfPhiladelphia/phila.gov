@@ -22,7 +22,7 @@
         <h2 class="contrast"><?php echo $action_panel_title; ?></h2>
       </div>
     </div>
-    <div class="row equal-height">
+    <div class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
     <?php foreach ( $action_panel_multi as $call_to_action ) :
 
       $action_panel_summary = isset( $call_to_action['phila_action_panel_summary_multi'] ) ? $call_to_action['phila_action_panel_summary_multi'] : '';
@@ -42,7 +42,7 @@
     <div class="large-<?php echo $columns ?> columns">
       <?php if (!$action_panel_link == ''): ?>
       <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
-        <div class="panel equal">
+        <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
         <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
         <?php if ($action_panel_fa_circle): ?>
           <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?>">
