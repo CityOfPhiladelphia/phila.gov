@@ -219,17 +219,17 @@ if ( !empty( $row_one_col_two_module ) ){
             </div>
             <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
               <div class="tel pbxs">
-                <span class="type vcard-label">Phone:</span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $row_one_col_two_connect_panel_phone); ?>"> <?php echo  $row_one_col_two_connect_panel_phone; ?></a>
+                <span class="type vcard-label">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $row_one_col_two_connect_panel_phone); ?>"><?php echo  $row_one_col_two_connect_panel_phone; ?></a>
               </div>
            <?php endif; ?>
            <?php if ( !$row_one_col_two_connect_panel_fax == '') : ?>
              <div class="fax pbxs">
-               <span class="type vcard-label">Fax:</span> <?php echo $row_one_col_two_connect_panel_fax; ?>
+               <span class="type vcard-label">Fax: </span><?php echo $row_one_col_two_connect_panel_fax; ?>
              </div>
            <?php endif; ?>
            <?php if ( !$row_one_col_two_connect_panel_email == '') : ?>
              <div class="email pbxs">
-               <span class="vcard-label">Email:</span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"><?php echo $row_one_col_two_connect_panel_email; ?></a>
+               <span class="vcard-label">Email: </span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"><?php echo $row_one_col_two_connect_panel_email; ?></a>
              </div>
            <?php endif; ?>
           </div>
