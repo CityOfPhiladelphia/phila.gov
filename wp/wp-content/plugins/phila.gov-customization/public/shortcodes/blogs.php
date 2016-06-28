@@ -47,7 +47,7 @@ function latest_posts_shortcode($atts) {
   if ( is_flag ('list', $atts) ) {
     $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="news"><ul>';
   }else{
-    $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row">';
+    $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row equal-height">';
   }
 
     while( $blog_loop->have_posts() ) : $blog_loop->the_post();
@@ -77,11 +77,11 @@ function latest_posts_shortcode($atts) {
         $output .=  '<div class="medium-24 columns">';
       }
 
-      $output .= '<a href="' . get_permalink() .'" class="card">';
+      $output .= '<a href="' . get_permalink() .'" class="card equal">';
 
       $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
 
-      $output .= '<div class="content-block equal">';
+      $output .= '<div class="content-block">';
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 

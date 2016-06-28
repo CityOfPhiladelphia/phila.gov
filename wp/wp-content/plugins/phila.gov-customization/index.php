@@ -36,6 +36,7 @@ require $dir. '/admin/class-phila-gov-pages.php';
 require $dir. '/admin/class-phila-gov-role-administration.php';
 require $dir. '/admin/class-phila-gov-site-wide-alert.php';
 require $dir. '/admin/class-phila-gov-event-pages.php';
+require $dir. '/admin/class-phila-gov-staff-directory.php';
 require $dir. '/admin/define-roles.php';
 require $dir. '/admin/meta-boxes.php';
 require $dir. '/admin/tiny-mce.php';

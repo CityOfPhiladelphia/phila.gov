@@ -51,6 +51,10 @@ function phila_gov_setup() {
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
   add_image_size( 'home-thumb', 550, 360, true );
 
+  //Staff Directory thumbnails
+  add_image_size( 'staff-thumb', 400, 400, true );
+
+
   // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
 
@@ -1216,16 +1220,28 @@ function echo_item_meta_desc(){
     bloginfo( 'description' );
   }
 }
-
 /**
-*
-* Remove version from meta
-* Original source:
-* https://wordpress.org/support/topic/remove-ltmeta-namegenerator-contentwordpress-25-gt#post-920568
-*
-*/
+ * Return a string representing the template currently applied to a page in the loop.
+ *
+ **/
 
-function phila_remove_version() {
-  return '';
+function phila_get_selected_template(){
+
+  $user_selected_template = rwmb_meta( 'phila_template_select' );
+
+  return $user_selected_template;
 }
-add_filter('the_generator', 'phila_remove_version');
+/**
+ * Do the math to determine the correct column span for X items on a 24 column grid.
+ *
+ * @param $item_count - Numeric string. Required. The count of the items in the grid.
+ * @return $column_count The column count
+ **/
+
+function phila_grid_column_counter( $item_count ){
+
+  $column_count = 24 / $item_count;
+
+  return $column_count;
+
+}

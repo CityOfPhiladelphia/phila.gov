@@ -43,6 +43,7 @@ class Phila_Gov_Admin_Menu {
         'edit.php?post_type=press_release',
         'edit.php?post_type=document',
         'edit.php?post_type=event_page',
+        'edit.php?post_type=staff_directory',
         'upload.php',
         'edit.php?post_type=notices',
         'edit.php?post_type=site_wide_alert',
