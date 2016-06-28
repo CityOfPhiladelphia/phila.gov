@@ -50,7 +50,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         ),
       )
     );//External department link
-    $meta_boxes[] = array(
+    /*$meta_boxes[] = array(
       'id'       => 'department-home-alert',
       'title'    => 'Homepage Alert',
       'pages'    => array( 'department_page' ),
@@ -80,12 +80,17 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         ),
       )
     );//Department homepage alert
+    */
 
     $meta_boxes[] = array(
       'title'    => 'Content Blocks',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'low',
+
+      'hidden' => array(
+        'phila_template_select', '=', 'one_page_department',
+      ),
 
       'fields' => array(
         array(

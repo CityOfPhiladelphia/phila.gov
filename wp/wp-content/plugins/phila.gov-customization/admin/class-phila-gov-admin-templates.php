@@ -41,12 +41,12 @@ class Phila_Gov_Admin_Templates {
         'placeholder'  => 'Select a template',
 
         'options' => array(
-          'resource_list' => 'Resource List'
+          'resource_list' => 'Resource List',
+          'one_page_department' => 'One Page Department',
           ),
        ),
     ),
   );
-
    return $meta_boxes;
   }
 

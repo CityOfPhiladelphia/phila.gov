@@ -16,6 +16,8 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $serviceRelatedContent['toolbar1'] = 'bullist, link, unlink';
 
+  $department_col_1_custom_content['toolbar1'] = 'bold, italic';
+
   $meta_boxes[] = array(
     'id'       => 'service_additions',
     'title'    => 'Service Description',
@@ -389,7 +391,10 @@ function phila_register_meta_boxes( $meta_boxes ){
        'type'  => 'textarea',
        'class' => 'hero-header-body-copy',
        'desc'  => 'Text that will be placed over the header image and below the Hero Header Title.',
-       'size'  => '60'
+       'size'  => '60',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
        'name'  => 'Call to Action Button URL',
@@ -397,6 +402,9 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'    => $prefix . 'hero_header_call_to_action_button_url',
        'type'  => 'URL',
        'class' => 'hero-header-call-to-action-button-url',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
        'name'  => 'Call to Action Button Text',
@@ -404,7 +412,10 @@ function phila_register_meta_boxes( $meta_boxes ){
        'type'  => 'text',
        'class' => 'hero-header-call-to-action-button-text',
        'desc'  => 'Text that appears on the "call to action" button.',
-       'size'  => '30'
+       'size'  => '30',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
        'name'  => 'Image',
@@ -497,9 +508,13 @@ function phila_register_meta_boxes( $meta_boxes ){
              array(
               'name' => 'Custom Text Content',
               'id'   => $prefix . 'module_row_1_col_1_textarea',
-              'type' => 'textarea',
+              'type' => 'wysiwyg',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-
+              'options' => array(
+                'teeny' => true,
+                'dfw' => false,
+                'tinymce' => $department_col_1_custom_content,
+              ),
              ),
             ),
           ),
@@ -515,7 +530,7 @@ function phila_register_meta_boxes( $meta_boxes ){
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => $prefix . 'module_row_1_col_2_type',
-          'desc'  => 'Choose to display recent blog posts, custom markup, call to action, or a connect panel.',
+          'desc'  => 'Choose to display recent blog posts, custom markup, call to action panel, or a connect panel.',
           'type' => 'select',
           'placeholder' => 'Select...',
           'options' => array(
@@ -721,6 +736,9 @@ $meta_boxes[] = array(
   'include' => array(
     'user_role'  => 'administrator',
   ),
+  'hidden' => array(
+    'phila_template_select', '=', 'one_page_department',
+  ),
 
       // List of sub-fields
       'fields' => array(
@@ -852,13 +870,134 @@ $meta_boxes[] = array(
           ),
         ),
       ),
+    );
+  $meta_boxes[] = array(
+    'id'       => $prefix . 'full_row_blog',
+    'title'    => 'Full row blog posts (3 total)',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => $prefix . 'full_row_blog_selected',
+        'desc'  => 'Should this page show a full row of blog posts?',
+        'type' => 'checkbox',
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'       => $prefix . 'staff_directory_listing',
+    'title'    => 'Staff Directory Listing',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => $prefix . 'staff_directory_selected',
+        'desc'  => 'Include a staff directory section?',
+        'type' => 'checkbox',
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'  => $prefix . 'call_to_action_multi',
+    'title' => 'Call to action links',
+    'pages' => array( 'department_page' ),
+    'context' => 'normal',
+    'priority'  => 'low',
+    'include' => array(
+      'user_role'  => 'administrator',
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+    'fields' => array(
+
+      array(
+        'id'  => $prefix . 'call_to_action_section',
+        'type' => 'group',
+
+          'fields' => array(
+            array(
+              'name'  => 'Section Title',
+              'id'    => $prefix . 'action_section_title_multi',
+              'type'  => 'text',
+            ),
+
+        array(
+          'id'  => $prefix . 'call_to_action_multi_group',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+
+          'fields' => array(
+            array(
+              'name'  => 'Call to Action Text',
+              'id'    => $prefix . 'action_panel_cta_text_multi',
+              'type'  => 'text',
+              'class' => 'action-panel-cta-text',
+            ),
+            array(
+              'name'  => 'Summary',
+              'id'    => $prefix . 'action_panel_summary_multi',
+              'type'  => 'textarea',
+              'class' => 'action-panel-details',
+            ),
+            array(
+              'name'  => 'Icon',
+              'id'    => $prefix . 'action_panel_fa_multi',
+              'type'  => 'text',
+              'class' => 'action-panel-fa',
+            ),
+            array(
+              'name'  => 'Icon Background Circle',
+              'id'    => $prefix . 'action_panel_fa_circle_multi',
+              'type'  => 'checkbox',
+              'class' => 'action-panel-fa',
+            ),
+            array(
+              'name'  => 'Link to Content',
+              'id'    => $prefix . 'action_panel_link_multi',
+              'type'  => 'url',
+              'class' => 'action-panel-link',
+            ),
+            array(
+              'name'  => 'External Link',
+              'id'    => $prefix . 'action_panel_link_loc_multi',
+              'type'  => 'checkbox',
+              'class' => 'action-panel-link-loc',
+              'desc'  => 'This link directs users away from alpha.phila.gov',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
 );
+
 
 return $meta_boxes;
 
 }
 // The following filter based on MetaBox documentation
 add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
+
 function phila_group_add_clone_button_text( $text, $field ) {
   if ( 'phila_resource_list' == $field['id'] ) {
       $text = __( '+ Add a Resource List', 'textdomain' );

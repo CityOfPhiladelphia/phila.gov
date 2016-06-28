@@ -155,5 +155,58 @@ jQuery(document).ready(function($) {
       });
 
     }
+    if ( typenow == 'staff_directory' && adminpage.indexOf( 'post' ) > -1 ) {
+      $("#phila_first_name").prop('required', true);
+      $("#phila_last_name").prop('required', true);
+      $("#phila_job_title").prop('required', true);
+      $('#phila_summary').rules('add', {
+        maxlength: 700
+      });
+    }
   }
+  function setOnePageInputVals(){
+    $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
+
+    $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel');
+
+    $("#phila_module_row_1_col_1_type option").each(function(){
+      if ( $(this).val() != 'phila_module_row_1_col_1_custom_text' ){
+        $(this).prop('disabled', true);
+      }
+    });
+
+    $("#phila_module_row_1_col_2_type option").each(function(){
+      if ( $(this).val() != 'phila_module_row_1_col_2_connect_panel' ){
+        $(this).prop('disabled', true);
+      }
+    });
+
+    $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'readOnly', true );
+
+  }
+
+  if ( ( typenow == 'department_page' ) )  {
+    var templateSelect = $('#phila_template_select');
+
+    if ( templateSelect.val() == 'one_page_department' ){
+      setOnePageInputVals();
+      $('#phila_template_select').click();
+    }
+
+    templateSelect.change(function() {
+      //set fields based on template selection
+      if ( templateSelect.val() == 'one_page_department' ){
+        setOnePageInputVals();
+      }else{
+        //enable the disabled elements
+        $('#phila_module_row_1').each(function(){
+          var inputs = $( this ).find( ':input' );
+          var options = $( this ).find( ':input option' );
+          inputs.prop( 'readOnly', false );
+          options.prop( 'disabled', false );
+        });
+      }
+    });
+  }
+
 });

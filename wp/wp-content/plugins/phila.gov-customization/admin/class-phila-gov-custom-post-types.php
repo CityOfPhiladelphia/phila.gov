@@ -35,6 +35,9 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_event_page_type' ) );
 
+    add_action( 'init', array( $this, 'create_phila_staff_directory' ) );
+
+
   }
 
   function create_phila_services() {
@@ -303,4 +306,36 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
+
+  function create_phila_staff_directory() {
+    register_post_type( 'staff_directory',
+      array(
+        'labels' => array(
+          'name' => __( 'Staff Members' ),
+          'singular_name' => __( 'Staff Member' ),
+          'add_new'   => __( 'Add Staff Member' ),
+          'all_items'   => __( 'All Staff Members' ),
+          'add_new_item' => __( 'Add Staff Member' ),
+          'edit_item'   => __( 'Edit Staff Members' ),
+          'view_item'   => __( 'View Staff Members' ),
+          'search_items'   => __( 'Search Staff Members'),
+          'not_found'   => __( 'Staff Member not found' ),
+          'not_found_in_trash'   => __( 'Staff Member entry not found in trash' ),
+        ),
+        'taxonomies' => array('category'),
+        'supports' => array('revisions', 'thumbnail'),
+        'exclude_from_search' => true,
+        'public' => false,
+        'show_ui' => true,
+        'has_archive' => false,
+        'menu_icon' => 'dashicons-id',
+        'hierarchical' => false,
+        'rewrite' => array(
+          'slug' => 'staff-directory',
+          'with_front' => false,
+        ),
+      )
+    );
+  }
+
 }

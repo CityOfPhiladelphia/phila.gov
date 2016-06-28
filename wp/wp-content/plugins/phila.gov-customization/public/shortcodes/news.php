@@ -67,7 +67,7 @@ function recent_news_shortcode($atts) {
   if ( is_flag ( 'list', $atts ) ) {
       $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="news"><ul>';
     }else{
-      $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row">';
+      $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row equal-height">';
     }
 
     while( $news_loop->have_posts() ) : $news_loop->the_post();
@@ -101,7 +101,7 @@ function recent_news_shortcode($atts) {
         $output .=  '<div class="medium-24 columns">';
       }
 
-      $output .= '<a href="' . get_permalink() .'" class="card">';
+      $output .= '<a href="' . get_permalink() .'" class="card equal">';
 
       $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
 
