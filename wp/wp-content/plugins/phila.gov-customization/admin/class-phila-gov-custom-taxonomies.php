@@ -23,7 +23,6 @@ class Phila_Gov_Custom_Taxonomies {
     register_taxonomy('topics',
       array(
         'page',
-        'service_post'
       ), array(
           'hierarchical' => true,
           'labels' => array(
