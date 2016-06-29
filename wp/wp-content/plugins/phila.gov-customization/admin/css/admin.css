@@ -2,9 +2,7 @@
 
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
-#wp-link-target,
-#wp-phila_service_related_items-media-buttons,
-#wp-phila_service_before_start-editor-tools{
+#wp-link-target,{
   display: none !important;
 }
 
@@ -15,12 +13,6 @@
 #ui-datepicker-div {
   z-index: 100000 !important;
 }
-
-/*#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-select-wrapper,
-#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-text-wrapper,
-#phila_module_row_1 .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-textarea-wrapper {
-  display: none;
-}*/
 
 .rwmb-button.remove-clone:hover {
   background: #C00;
