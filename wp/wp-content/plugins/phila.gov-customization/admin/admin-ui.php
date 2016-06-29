@@ -87,8 +87,6 @@ function phila_all_posts_js_array(){
 /**
  * Move all "advanced" metaboxes above the default editor to allow for custom reordering
  *
- * Specifically in use on Service Pages
- *
  * @since   0.17.7
  */
 add_action('edit_form_after_title', 'phila_reorder_meta_boxes');
