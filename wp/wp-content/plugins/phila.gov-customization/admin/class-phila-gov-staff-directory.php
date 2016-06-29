@@ -82,6 +82,9 @@ class Phila_Gov_Staff_Directory {
             'LL.D.' => 'LL.D.',
             'Ph.D.' => 'Ph.D.',
             'Sr.' => 'Sr.',
+            'II' => 'II',
+            'III' => 'III',
+            'IV' => 'IV',
           ),
         ),
         array(
