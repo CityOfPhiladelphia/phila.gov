@@ -436,12 +436,6 @@ function phila_breadcrumbs() {
       echo $output;
       echo '<li> '.$title.'</li>';
 
-    } elseif ( is_singular('service_post') || is_single() ){
-
-        echo '<li>';
-        the_title();
-        echo '</li>';
-
     } elseif ( is_tax('topics') ) {
 
       //BROWSE
@@ -1153,8 +1147,6 @@ function echo_item_meta_desc(){
 
   $dept_desc = rwmb_meta( 'phila_dept_desc' );
 
-  $service_desc = rwmb_meta( 'phila_service_desc' );
-
   $post_desc = rwmb_meta( 'phila_post_desc' );
 
   $news_desc = rwmb_meta( 'phila_news_desc' );
@@ -1165,11 +1157,7 @@ function echo_item_meta_desc(){
 
   if ( !is_archive() ) {
 
-    if( $service_desc != '' ){
-
-      echo mb_strimwidth( $service_desc, 0, 200, '...');
-
-    }else if( $post_desc != '' ){
+  if( $post_desc != '' ){
 
       echo mb_strimwidth( $post_desc,  0, 200, '...');
 

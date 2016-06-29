@@ -26,28 +26,6 @@
         text-align: right;
     }
   }
-  .services-finder{
-    background: $ghost-gray;
-    padding: 1rem;
-
-    h2{
-      text-align: center;
-      margin-bottom:2rem;
-    }
-    .call-to-action {
-      margin-bottom: 3.5rem;
-
-        @media only screen and (max-width: 40em) {
-          > div {
-          margin-bottom: 2.5rem;
-
-          &:last-of-type{
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
   .logo {
     img {
       width:100%;
