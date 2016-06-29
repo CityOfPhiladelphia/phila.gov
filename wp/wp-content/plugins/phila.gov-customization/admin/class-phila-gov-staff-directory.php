@@ -28,7 +28,7 @@ class Phila_Gov_Staff_Directory {
       // Check if middle name present
       if(isset($_POST['phila_middle_name'])) $staff_member_name .= ' ' . $_POST['phila_middle_name'];
       // Check if name suffix present
-      if(isset($_POST['phila_name_suffix'])) $staff_member_name .= ', ' . $_POST['phila_name_suffix'];
+      if(isset($_POST['phila_name_suffix']) && $_POST['phila_name_suffix'] != '') $staff_member_name .= ', ' . $_POST['phila_name_suffix'];
 
       if (isset($staff_member_name) && $staff_member_name != ', ' ){
         $data['post_title'] = $staff_member_name;
