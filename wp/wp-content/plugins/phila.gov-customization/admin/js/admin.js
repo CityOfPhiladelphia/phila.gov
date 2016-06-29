@@ -33,41 +33,20 @@ jQuery(document).ready(function($) {
         maxlength: 72
       });
     }
-    if ( ( typenow == 'department_page' || typenow == 'document' || typenow == 'service_post' ) && adminpage.indexOf( 'post' ) > -1 ) {
-      $("#post").validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
-    }
+
     if ( typenow == 'news_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#post').validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
       $('#phila_news_desc').rules('add', {
         required: true
       });
     }
 
     if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#post').validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
       $('#phila_post_desc').rules('add', {
         required: true
       });
     }
 
-    if ( ( typenow == 'page' || typenow == 'service_post' ) && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#post').validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
+    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
 
       if ( $("#page-display input[name=phila_show_in_browse]").length ) {
 
