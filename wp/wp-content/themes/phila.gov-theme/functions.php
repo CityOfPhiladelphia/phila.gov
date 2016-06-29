@@ -776,29 +776,44 @@ function phila_change_post_archive_title(){
 }
 
 /**
- * Filter department page archive to use list template & show all Parent Pages
  *
- * @since 0.22.0
- * @link https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
- * @param $query
+ * @return $full_department_list Filtered WP_Query Object of only Department
  *
  */
 
-add_action( 'pre_get_posts', 'phila_department_list' );
+function phila_get_department_homepage_list(){
+  $top_level_department_pages =  array(
+    'post_type' => 'department_page',
+    'posts_per_page'=> -1,
+    'orderby' => 'title',
+    'order' => 'asc',
+    'post_parent' => 0,
+    'fields' => 'ids'
+  );
 
-function phila_department_list( $query ) {
-  if ( is_admin() ){
-    return;
-  }
-  if ( is_post_type_archive('department_page')
-         && ! empty( $query->query['post_type']  == 'department_page' ) ) {
+  $marked_homepages = array(
+    'post_type' => 'department_page',
+    'meta_key' => 'phila_department_home_page',
+    'meta_value' => 1,
+    'fields' => 'ids'
+  );
+  $get_top_level_pages = new WP_Query( $top_level_department_pages );
+  $get_marked = new WP_Query( $marked_homepages );
 
-    $query->set('posts_per_page', -1);
-    $query->set('orderby', 'title');
-    $query->set('order', 'asc');
-    $query->set( 'post_parent', 0 );
+  $full_department_homepage_list = array_merge( $get_top_level_pages->posts, $get_marked->posts );
 
-  }
+  //remove duplicates
+  array_unique( $full_department_homepage_list );
+
+  $full_department_list = new WP_Query( array(
+    'post_type' => 'department_page',
+    'post__in' => $full_department_homepage_list,
+    'posts_per_page'=> -1,
+    'orderby' => 'title',
+    'order' => 'asc',
+    ) );
+
+  return $full_department_list;
 }
 
 /**
