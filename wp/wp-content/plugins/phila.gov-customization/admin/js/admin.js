@@ -183,6 +183,12 @@ jQuery(document).ready(function($) {
 
     $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'readOnly', true );
 
+    $('#phila_module_row_1_col_1_textarea').rules('add', {
+      maxlength: 850
+    });
+    $('[id^=phila_action_panel_summary_multi_]').rules('add', {
+      maxlength: 180
+    });
   }
 
   if ( ( typenow == 'department_page' ) )  {
@@ -205,6 +211,9 @@ jQuery(document).ready(function($) {
           inputs.prop( 'readOnly', false );
           options.prop( 'disabled', false );
         });
+        //remove the rules specific to one_page_department
+        $('#phila_module_row_1_col_1_textarea').rules('remove', 'maxlength');
+        $('[id^=phila_action_panel_summary_multi_]').rules('remove', 'maxlength');
       }
     });
   }
