@@ -23,7 +23,13 @@ class Phila_Gov_Staff_Directory {
   function staff_directory_post_title( $data , $postarr )
   {
     if($data['post_type'] == 'staff_directory' && isset($_POST['phila_first_name']) && isset($_POST['phila_last_name']) ) {
-      $staff_member_name = $_POST['phila_last_name'] . ', ' . $_POST['phila_first_name'];
+      $staff_member_name = '';
+      $staff_member_name .= $_POST['phila_last_name'] . ', ' . $_POST['phila_first_name'];
+      // Check if middle name present
+      if(isset($_POST['phila_middle_name'])) $staff_member_name .= ' ' . $_POST['phila_middle_name'];
+      // Check if name suffix present
+      if(isset($_POST['phila_name_suffix']) && $_POST['phila_name_suffix'] != '') $staff_member_name .= ', ' . $_POST['phila_name_suffix'];
+
       if (isset($staff_member_name) && $staff_member_name != ', ' ){
         $data['post_title'] = $staff_member_name;
       }
@@ -49,10 +55,37 @@ class Phila_Gov_Staff_Directory {
           'class' => 'first-name',
         ),
         array(
+          'name'  => 'Middle Name / Initial',
+          'id'    => $prefix . 'middle_name',
+          'type'  => 'text',
+          'class' => 'middle-name',
+        ),
+        array(
           'name'  => 'Last Name',
           'id'    => $prefix . 'last_name',
           'type'  => 'text',
           'class' => 'last-name',
+        ),
+        array(
+          'name'  => 'Name Suffix<br/><small>(Optional)</small>',
+          'id'    => $prefix . 'name_suffix',
+          'type'  => 'select',
+          'class' => 'name-suffix',
+          'options' => array(
+            '' => 'Select One..',
+            'B.A.' => 'B.A.',
+            'B.S.' => 'B.S.',
+            'M.D.' => 'M.D.',
+            'M.S.' => 'M.S.',
+            'J.D.' => 'J.D.',
+            'Jr.' => 'Jr.',
+            'LL.D.' => 'LL.D.',
+            'Ph.D.' => 'Ph.D.',
+            'Sr.' => 'Sr.',
+            'II' => 'II',
+            'III' => 'III',
+            'IV' => 'IV',
+          ),
         ),
         array(
           'name'  => 'Job Title',

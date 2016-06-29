@@ -8,6 +8,14 @@
     .staff-contact {
       margin-top: $spacing-medium;
       margin-bottom: $spacing-medium;
+
+      .name,
+      .job-title,
+      .tel,
+      .email {
+        word-break: break-word;
+      }
+
       @media screen and (min-width: 40em){
         margin-top: 0;
         margin-bottom: 0;

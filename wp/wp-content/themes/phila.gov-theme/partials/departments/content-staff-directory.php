@@ -20,8 +20,23 @@ if (has_category()):
       $staff_leadership_output = '';
       $staff_member_loop->the_post();
       if (function_exists('rwmb_meta')){
+
         $staff_first_name = rwmb_meta('phila_first_name', $args = array('type'=>'text'));
+        $staff_middle_name = rwmb_meta('phila_middle_name', $args = array('type'=>'text'));
         $staff_last_name = rwmb_meta('phila_last_name', $args = array('type'=>'text'));
+        $staff_name_suffix = rwmb_meta('phila_name_suffix', $args = array('type'=>'select'));
+
+        //Build the name
+        $staff_member_name_output = '';
+
+        if ( isset( $staff_first_name ) && !$staff_first_name == '' && isset( $staff_last_name ) && !$staff_last_name == ''):
+          $staff_member_name_output .= $staff_first_name . ' ';
+          if( isset( $staff_middle_name ) && !$staff_middle_name == '' ) $staff_member_name_output .= $staff_middle_name . ' ';
+          $staff_member_name_output .= $staff_last_name;
+          if( isset( $staff_name_suffix ) && !$staff_name_suffix == '' ) $staff_member_name_output .= ', ' . $staff_name_suffix;
+        endif;
+
+
         $staff_title = rwmb_meta('phila_job_title', $args = array('type'=>'text'));
         $staff_email = rwmb_meta('phila_email', $args = array('type'=>'email'));
         $staff_phone = rwmb_meta('phila_phone', $args = array('type'=>'phone'));
@@ -45,9 +60,9 @@ if (has_category()):
         // Leadership Contact Info
         $staff_leadership_output .= '<div class="small-24 medium-5 columns staff-contact">';
 
-        if ( isset( $staff_first_name ) && !$staff_first_name == '' && isset( $staff_last_name ) && !$staff_last_name == ''):
-          $staff_leadership_output .= '<div class="name">' . $staff_first_name . ' ' . $staff_last_name . '</div>';
-        endif;
+        $staff_leadership_output .= '<div class="name">';
+        $staff_leadership_output .= $staff_member_name_output;
+        $staff_leadership_output .= '</div>';
 
         if ( isset( $staff_title ) && !$staff_title == ''):
           $staff_leadership_output .= '<div class="job-title">' . $staff_title . '</div>';
@@ -76,7 +91,7 @@ if (has_category()):
       else:
 
         $all_staff_table_output .= '<tr>
-          <td>' . $staff_first_name . ' ' . $staff_last_name . '</td>
+          <td>' . $staff_member_name_output . '</td>
           <td>' . $staff_title . '</td>
           <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
           <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>
