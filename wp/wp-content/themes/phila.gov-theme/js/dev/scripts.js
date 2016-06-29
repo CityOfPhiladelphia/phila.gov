@@ -62,11 +62,6 @@ jQuery(document).ready(function($) {
       $(this).removeClass('is-hover');
   });
 
-  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  if ( w <= 640 ){
-    $('.all-services-info-list').addClass('equal-height');
-  }
-
   /* Hijack mailchimp signup forms to use ajax handler */
 
   /*NOTE: this method requires that the form action URL from mailchimp uses subscribe/post-json */
