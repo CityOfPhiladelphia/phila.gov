@@ -24,14 +24,12 @@ if (has_category()):
         $staff_first_name = rwmb_meta('phila_first_name', $args = array('type'=>'text'));
         $staff_middle_name = rwmb_meta('phila_middle_name', $args = array('type'=>'text'));
         $staff_last_name = rwmb_meta('phila_last_name', $args = array('type'=>'text'));
-        $staff_name_prefix = rwmb_meta('phila_name_prefix', $args = array('type'=>'text'));
-        $staff_name_suffix = rwmb_meta('phila_name_suffix', $args = array('type'=>'text'));
+        $staff_name_suffix = rwmb_meta('phila_name_suffix', $args = array('type'=>'select'));
 
         //Build the name
         $staff_member_name_output = '';
 
         if ( isset( $staff_first_name ) && !$staff_first_name == '' && isset( $staff_last_name ) && !$staff_last_name == ''):
-          if( isset( $staff_name_prefix ) && !$staff_name_prefix == '' ) $staff_member_name_output .= $staff_name_prefix . ' ';
           $staff_member_name_output .= $staff_first_name . ' ';
           if( isset( $staff_middle_name ) && !$staff_middle_name == '' ) $staff_member_name_output .= $staff_middle_name . ' ';
           $staff_member_name_output .= $staff_last_name;
