@@ -35,6 +35,8 @@ a.action-panel {
     }
   }
 }
+
+//Overrides a style set in _calendar.scss
 a.action-panel[href*="google.com/calendar"]{
   &:after {
    content: "";
