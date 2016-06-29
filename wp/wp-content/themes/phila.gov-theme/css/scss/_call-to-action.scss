@@ -5,9 +5,11 @@ a.action-panel {
   transition: opacity .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out;
   -webkit-transition: opacity .2s ease-in-out;
+
   .panel {
     border:none;
     padding:1rem;
+    margin-bottom: 1rem;
 
     header {
       color: $ben-franklin-blue;
@@ -17,6 +19,10 @@ a.action-panel {
         color: $bell-yellow;
       }
     }
+    @media only screen and (min-width: 64em) {
+      margin-bottom: 0;
+    }
+
   }
   &:hover{
     .panel header,
@@ -27,5 +33,13 @@ a.action-panel {
       -moz-transition: opacity .2s ease-in-out;
       -webkit-transition: opacity .2s ease-in-out;
     }
+  }
+}
+
+//Overrides a style set in _calendar.scss
+a.action-panel[href*="google.com/calendar"]{
+  &:after {
+   content: "";
+   padding: 0;
   }
 }
