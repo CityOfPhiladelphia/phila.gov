@@ -944,6 +944,7 @@ $meta_boxes[] = array(
           'id'  => $prefix . 'call_to_action_multi_group',
           'type' => 'group',
           'clone'  => true,
+          'max_clone' => 3,
           'sort_clone' => true,
 
           'fields' => array(
