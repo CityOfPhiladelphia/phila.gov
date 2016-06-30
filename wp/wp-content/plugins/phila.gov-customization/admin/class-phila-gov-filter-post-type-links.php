@@ -34,7 +34,7 @@ class Phila_Gov_Filter_Post_Type_Links {
     if( is_wp_error( $terms ) || !$terms ) {
         $cat = 'uncategorised';
     } else {
-        $cat_obj = array_pop($terms);
+        $cat_obj = array_shift($terms);
         $cat = $cat_obj->slug;
     }
 
@@ -55,7 +55,7 @@ class Phila_Gov_Filter_Post_Type_Links {
     if( is_wp_error( $terms ) || !$terms ) {
       $cat = 'uncategorised';
     } else {
-      $cat_obj = array_pop($terms);
+      $cat_obj = array_shift($terms);
       $cat = $cat_obj->slug;
     }
 
