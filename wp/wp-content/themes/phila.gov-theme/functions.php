@@ -1065,6 +1065,7 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
         if ( $include_id == true ) {
         // NOTE: the id and data-slug are important. Google Tag Manager
         // uses it to attach the department to our web analytics. In some cases, this data could appear more than once on a page, so it can be removed.
+        //TODO: determine what this will do to our analytics, now that we can offer more than more category per item
           $category_link = '<a href="' . $permalink . '"
           id="content-modified-department"
           data-slug="' . $the_title . '">' . $the_title . '</a>';
