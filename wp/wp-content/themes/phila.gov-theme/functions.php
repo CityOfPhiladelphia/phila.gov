@@ -771,7 +771,7 @@ function phila_change_post_archive_title(){
 
 /**
  *
- * @return $full_department_list Filtered WP_Query Object of only Department
+ * @return $full_department_list_args Array Arguments for use in WP Query to get full list of all departments. Returns a list of department_page IDs that are at the top level or have the homepage metabox checked.
  * @param $category Optional
  */
 
@@ -800,16 +800,15 @@ function phila_get_department_homepage_list(){
   //remove duplicates
   array_unique( $full_department_homepage_list );
 
-  $full_department_list_query_object = new WP_Query( array(
+  $full_department_list_args = array(
     'post_type' => 'department_page',
     'post__in' => $full_department_homepage_list,
     'posts_per_page'=> -1,
     'orderby' => 'title',
     'order' => 'asc',
-  ) );
+  );
 
-
-  return $full_department_list_query_object;
+  return $full_department_list_args;
 }
 
 /**
@@ -1021,62 +1020,63 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
-  $cat_slugs = array();
-  $cat_names = array();
+  $cat_name = array();
+  $cat_ids = array();
   $all_available_pages = array();
-  $category_link = '';
+  $page_link = '';
   $final_dept_links = array();
 
   foreach( $category as $cat ){
-    array_push( $cat_slugs, $cat->slug );
+    array_push( $cat_name, $cat->name );
   }
   foreach( $category as $cat ){
-    array_push( $cat_names, $cat->name );
+    array_push( $cat_ids, $cat->cat_ID );
   }
 
-  $cat_slugs_string = implode( ', ', $cat_slugs );
+  $cat_id_string = implode( ', ', $cat_ids );
 
-  $department_page_args = array(
-    'post_type' => 'department_page',
-    'category_name' => $cat_slugs_string,
-    'meta_key' => 'phila_department_home_page',
-    'meta_value' => 1,
-    'posts_per_page' => -1,
-  );
+  $args = phila_get_department_homepage_list();
 
-  $query = new WP_Query( $department_page_args );
+  $args['category__in'] = $cat_ids;
 
-  if ( $query->have_posts() ) {
+  $get_links = new WP_Query( $args );
 
-    while ( $query->have_posts() ) {
-      $query->the_post();
+  if ( $get_links->have_posts() ) {
+
+    while ( $get_links->have_posts() ) {
+
+      $get_links->the_post();
 
       $permalink = get_the_permalink();
       $the_title = get_the_title();
+      $basename = basename(get_permalink());
 
-      if ( get_the_permalink() != '' ) {
+      if ( $permalink != '' ) {
 
         if ( $include_id == true ) {
         // NOTE: the id and data-slug are important. Google Tag Manager
         // uses it to attach the department to our web analytics. In some cases, this data could appear more than once on a page, so it can be removed.
         //TODO: determine what this will do to our analytics, now that we can offer more than more category per item
-          $category_link = '<a href="' . $permalink . '"
-          id="content-modified-department"
-          data-slug="' . $the_title . '">' . $the_title . '</a>';
+        //TODO: Build the markup separately  
 
-          array_push( $all_available_pages, $category_link );
+          $page_link = '<a href="' . $permalink . '"
+          id="content-modified-department"
+          data-slug="' . $basename . '">' . $the_title . '</a>';
+
+          array_push( $all_available_pages, $page_link );
 
         }else{
 
-          $category_link = '<a href="' . $permalink . '"
-          data-slug="' . $the_title . '">' . $the_title . '</a>';
+          $page_link = '<a href="' . $permalink . '"
+          data-slug="' . $basename . '">' . $the_title . '</a>';
 
-          array_push( $all_available_pages, $category_link );
+          array_push( $all_available_pages, $page_link );
 
         }
       }
     }
   }
+
   wp_reset_postdata();
 
   if ( $byline == true ) {
@@ -1084,14 +1084,22 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
   }
 
   foreach( $all_available_pages as $k=>$v ) {
-    foreach ($cat_names as $name) {
-      if( preg_match("/\b$name\b/i", $v ) ) {
-        array_push($final_dept_links, $v);
+
+    foreach ( $cat_name as $name ) {
+
+      $formattedname = str_replace( "'", '', $name );
+
+      $formatted_v = str_replace( "'", '', $v );
+
+      if( preg_match("/\b$formattedname\b/i", $formatted_v ) ) {
+
+        array_push($final_dept_links, $formatted_v);
+
       }
     }
   }
 
-  echo implode(', ', $final_dept_links);
+  echo implode(', ', $all_available_pages);
 
   }
 }
