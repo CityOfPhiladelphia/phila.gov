@@ -18,7 +18,7 @@ function phila_press_release_link( $post_link, $id = 0 ) {
     if( is_wp_error( $terms ) || !$terms ) {
         $cat = 'uncategorised';
     } else {
-        $cat_obj = array_pop($terms);
+        $cat_obj = array_shift($terms);
         $cat = $cat_obj->slug;
     }
 
@@ -47,7 +47,7 @@ function phila_news_link( $post_link, $id = 0 ) {
     if( is_wp_error( $terms ) || !$terms ) {
         $cat = 'uncategorised';
     } else {
-        $cat_obj = array_pop($terms);
+        $cat_obj = array_shift($terms);
         $cat = $cat_obj->slug;
     }
 

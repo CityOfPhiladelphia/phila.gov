@@ -40,7 +40,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
     $meta_boxes[] = array(
       'id'       => 'page-display',
       'title'    => 'Display Location',
-      'pages'    => array( 'page', 'service_post' ),
+      'pages'    => array( 'page' ),
       'context'  => 'side',
       'priority' => 'high',
 

@@ -185,36 +185,36 @@ if ( !empty( $row_one_col_two_module ) ){
                   <span class="show-for-sr">Facebook</span>
                 </a>
               </div>
-          <?php endif; ?>
-          <?php if ( !$row_one_col_two_connect_panel_twitter == '') : ?>
-            <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" target="_blank" class="phs">
-                <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
-                <span class="show-for-sr">Twitter</span>
-              </a>
-            </div>
-          <?php endif; ?>
-          <?php if ( !$row_one_col_two_connect_panel_instagram == '') : ?>
-            <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" target="_blank" class="phs">
-              <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
-                <span class="show-for-sr">Instagram</span>
-              </a>
-            </div>
-          <?php endif; ?>
+            <?php endif; ?>
+            <?php if ( !$row_one_col_two_connect_panel_twitter == '') : ?>
+              <div class="small-<?php echo $columns;?> columns center pvxs">
+                <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" target="_blank" class="phs">
+                  <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                  <span class="show-for-sr">Twitter</span>
+                </a>
+              </div>
+            <?php endif; ?>
+            <?php if ( !$row_one_col_two_connect_panel_instagram == '') : ?>
+              <div class="small-<?php echo $columns;?> columns center pvxs">
+                <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" target="_blank" class="phs">
+                <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+                  <span class="show-for-sr">Instagram</span>
+                </a>
+              </div>
+            <?php endif; ?>
           </div>
           <hr>
         <?php endif; ?>
           <div>
             <div class="adr mbs">
               <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
-                <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_1; ?></a></span><br/>
+                <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_1; ?></span><br/>
               <?php endif; ?>
              <?php if ( !$row_one_col_two_connect_panel_st_2 == '') : ?>
-               <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_2; ?></a></span><br/>
+               <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_2; ?></span><br/>
              <?php endif; ?>
              <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
-               <span class="locality"><?php echo $row_one_col_two_connect_panel_city; ?><span>, <span class="region" title="Pennsylvania"> <?php echo $row_one_col_two_connect_panel_state; ?></span> <span class="postal-code"><?php echo $row_one_col_two_connect_panel_zip; ?></span>
+               <span class="locality"><?php echo $row_one_col_two_connect_panel_city; ?></span>, <span class="region" title="Pennsylvania"> <?php echo $row_one_col_two_connect_panel_state; ?></span> <span class="postal-code"><?php echo $row_one_col_two_connect_panel_zip; ?></span>
              <?php endif; ?>
             </div>
             <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
@@ -236,9 +236,8 @@ if ( !empty( $row_one_col_two_module ) ){
         </div>
       </div>
     </div>
-  </div>
 <?php endif; ?>
-</div>
+  </div>
 </section>
 <!-- End Row One MetaBox Modules -->
 <?php endif; ?>
