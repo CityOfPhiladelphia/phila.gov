@@ -1,3 +1,4 @@
+//TODO: Remove this file once service pages have been redesigned
 .service{
 
   .button+.small-text {
@@ -53,32 +54,5 @@
       margin: 0;
     }
 
-  }
-}
-.all-services-info-list{
-  .light-stripe {
-    background: $ghost-gray;
-    padding:0 1rem;
-    color:$sidewalk;
-  }
-  .list{
-    padding:0 0 0 3rem;
-  }
-  .list + .list{
-    margin-top:0;
-  }
-
-  @media only screen and (max-width: 40em) {
-    .list{
-      margin-top:0;
-    }
-    .light-stripe{
-      border-top:none;
-      background:$medium-gray;
-      text-align: center;
-      &:first-of-type{
-        margin-top:0;
-      }
-    }
   }
 }

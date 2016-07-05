@@ -33,41 +33,20 @@ jQuery(document).ready(function($) {
         maxlength: 72
       });
     }
-    if ( ( typenow == 'department_page' || typenow == 'document' || typenow == 'service_post' ) && adminpage.indexOf( 'post' ) > -1 ) {
-      $("#post").validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
-    }
+
     if ( typenow == 'news_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#post').validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
       $('#phila_news_desc').rules('add', {
         required: true
       });
     }
 
     if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#post').validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
       $('#phila_post_desc').rules('add', {
         required: true
       });
     }
 
-    if ( ( typenow == 'page' || typenow == 'service_post' ) && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#post').validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
+    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
 
       if ( $("#page-display input[name=phila_show_in_browse]").length ) {
 
@@ -189,6 +168,7 @@ jQuery(document).ready(function($) {
     $('[id^=phila_action_panel_summary_multi_]').rules('add', {
       maxlength: 180
     });
+    $( '#phila_department_home_page' ).prop( 'checked', true );
   }
 
   if ( ( typenow == 'department_page' ) )  {
@@ -214,6 +194,7 @@ jQuery(document).ready(function($) {
         //remove the rules specific to one_page_department
         $('#phila_module_row_1_col_1_textarea').rules('remove', 'maxlength');
         $('[id^=phila_action_panel_summary_multi_]').rules('remove', 'maxlength');
+        $( '#phila_department_home_page' ).prop( 'checked', false );
       }
     });
   }
