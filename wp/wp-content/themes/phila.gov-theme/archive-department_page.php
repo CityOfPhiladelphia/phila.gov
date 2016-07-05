@@ -21,8 +21,8 @@ get_header(); ?>
             <input class="search" type="text" placeholder="Filter results...">
           </form>
             <?php
-
-            $department_list = phila_get_department_homepage_list();
+            $args = phila_get_department_homepage_list();
+            $department_list = new WP_Query( $args );
 
             if ( $department_list->have_posts() ) : ?>
               <ul class="list no-bullet">
