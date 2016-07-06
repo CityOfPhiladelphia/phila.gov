@@ -72,5 +72,7 @@
 </script>
 
 <?php wp_footer(); ?>
+<?php $category = get_the_category(); ?>
+<?php echo phila_return_current_department_name( $category, $byline = false, $break_tags = false, $analytics_list = true ); ?>
 </body>
 </html>

@@ -20,7 +20,7 @@
         ?>
       <span class="entry-date"><strong><?php echo get_the_date(); ?></strong> | </span>
       <span class="category">
-        <?php phila_echo_current_department_name( $categories ); ?>
+        <?php echo phila_return_current_department_name( $categories, $break_tags = false ); ?>
       </span>
         <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
