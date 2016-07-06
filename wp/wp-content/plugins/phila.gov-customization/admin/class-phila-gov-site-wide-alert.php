@@ -74,11 +74,11 @@ class Phila_Gov_Site_Wide_Alert {
           'visible' => array('phila_type', '=', 'Other'),
         ),
         array(
-          'name'  => 'Custom Alert Class',
+          'name'  => 'Non-Urgent Alert',
           'id'    => $prefix . 'alert-class',
           'type'  => 'checkbox',
           'class' => 'other-alert-class',
-          'desc'  => 'Non-urgent alert',
+          'desc'  => 'Use the "subtle" class',
           'visible' => array('phila_type', '=', 'Other'),
         ),
         array(
