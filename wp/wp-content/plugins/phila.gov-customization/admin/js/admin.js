@@ -169,6 +169,9 @@ jQuery(document).ready(function($) {
       maxlength: 180
     });
     $( '#phila_department_home_page' ).prop( 'checked', true );
+
+    $('.postarea').hide();
+
   }
 
   if ( ( typenow == 'department_page' ) )  {
@@ -195,6 +198,7 @@ jQuery(document).ready(function($) {
         $('#phila_module_row_1_col_1_textarea').rules('remove', 'maxlength');
         $('[id^=phila_action_panel_summary_multi_]').rules('remove', 'maxlength');
         $( '#phila_department_home_page' ).prop( 'checked', false );
+        $('.postarea').show();
       }
     });
   }
