@@ -61,7 +61,8 @@ class Phila_Gov_Site_Wide_Alert {
           'type'  => 'text',
           'class' => 'type-other',
           'size'  => 25,
-          'desc'  => 'E.g. <i>Hurricane Warning</i>'
+          'desc'  => 'E.g. <i>Hurricane Warning</i>',
+          'visible' => array('phila_type', '=', 'Other'),
         ),
         array(
           'name'  => 'Custom Alert Icon',
@@ -69,15 +70,20 @@ class Phila_Gov_Site_Wide_Alert {
           'type'  => 'text',
           'class' => 'other-icon',
           'size'  => 25,
-          'desc'  => '<a href="http://ionicons.com/" target="_new">Choose icon</a>. Enter icon name only i.e. <i>ion-alert-circled</i>'
+          'desc'  => '<a href="http://ionicons.com/" target="_new">Choose icon</a>. Enter icon name only i.e. <i>ion-alert-circled</i>',
+          'visible' => array('phila_type', '=', 'Other'),
         ),
         array(
-          'name'  => 'Custom Alert Class',
+          'name'  => 'Non-Urgent Alert',
           'id'    => $prefix . 'alert-class',
-          'type'  => 'text',
+          'type'  => 'checkbox',
           'class' => 'other-alert-class',
-          'size'  => 25,
-          'desc'  => 'For non-urgent alerts use the "subtle" class.'
+          'desc'  => 'Use the "subtle" class',
+          'visible' => array('phila_type', '=', 'Other'),
+        ),
+        array(
+          'type' => 'divider',
+          'visible' => array('phila_type', '=', 'Other'),
         ),
         array(
           'name'  => 'Alert Start Time',
