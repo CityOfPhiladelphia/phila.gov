@@ -1016,15 +1016,15 @@ function phila_get_master_topics(){
  *
  **/
 
-function phila_echo_current_department_name( $category, $byline = false, $include_id = false ){
+function phila_return_current_department_name( $category, $byline = false, $break_tags = false, $analytics_list = false ){
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
   $cat_name = array();
   $cat_ids = array();
   $all_available_pages = array();
-  $page_link = '';
   $final_dept_links = array();
+  $page_link = '';
 
   foreach( $category as $cat ){
     array_push( $cat_name, $cat->name );
@@ -1051,27 +1051,18 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
       $the_title = get_the_title();
       $basename = basename(get_permalink());
 
-      if ( $permalink != '' ) {
-
-        if ( $include_id == true ) {
-        // NOTE: the id and data-slug are important. Google Tag Manager
-        // uses it to attach the department to our web analytics. In some cases, this data could appear more than once on a page, so it can be removed.
-        //TODO: determine what this will do to our analytics, now that we can offer more than more category per item
-        //TODO: Build the markup separately  
-
-          $page_link = '<a href="' . $permalink . '"
-          id="content-modified-department"
-          data-slug="' . $basename . '">' . $the_title . '</a>';
-
-          array_push( $all_available_pages, $page_link );
-
-        }else{
-
+        if ( $permalink != '' && $analytics_list == false ) {
+          //TODO: Build the markup separately
           $page_link = '<a href="' . $permalink . '"
           data-slug="' . $basename . '">' . $the_title . '</a>';
 
           array_push( $all_available_pages, $page_link );
+        }
+        if ( $analytics_list == true ) {
 
+          $page_link = $basename;
+
+          array_push( $all_available_pages, $page_link );
         }
       }
     }
@@ -1099,9 +1090,22 @@ function phila_echo_current_department_name( $category, $byline = false, $includ
     }
   }
 
-  echo implode(', ', $all_available_pages);
-
+  if ( $break_tags == true ) {
+    return implode('<br>', $all_available_pages);
   }
+
+  if ( $analytics_list == true ) {
+    $analytics_div = '';
+    // NOTE: the id is important. Google Tag Manager
+    // uses it to attach the department to our web analytics.
+    $analytics_div .= '<div id="content-modified-department">';
+    $analytics_div .= implode(', ', $all_available_pages);
+    $analytics_div .= '</div>';
+    return $analytics_div;
+  }
+
+  return implode(', ', $all_available_pages);
+
 }
 
 function the_dept_description(){
