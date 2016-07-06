@@ -25,7 +25,7 @@
 
         $category = get_the_category();
 
-        phila_echo_current_department_name( $category );
+        echo phila_return_current_department_name( $category );
 
         ?><br><?php
 
