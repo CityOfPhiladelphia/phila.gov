@@ -40,6 +40,8 @@ class Phila_Gov_Staff_Directory {
   function phila_register_meta_boxes( $meta_boxes ){
     $prefix = 'phila_';
 
+    $summary_toolbar1['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+
     $meta_boxes[] = array(
       'id'       => 'staff_directory',
       'title'    => 'Staff Member Details',
@@ -147,6 +149,7 @@ class Phila_Gov_Staff_Directory {
                 'teeny' => true,
                 'dfw' => false,
                 'quicktags' => false,
+                'tinymce' => $summary_toolbar1,
               ),
             ),
           ),
