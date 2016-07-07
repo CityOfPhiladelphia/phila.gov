@@ -992,8 +992,10 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     $cat_name = array();
     $cat_ids = array();
     $all_available_pages = array();
-    $final_dept_links = array();
-    $page_link = '';
+    $final_list = array();
+    $full_links = array();
+    $basename = array();
+    $urls = array();
 
     foreach( $category as $cat ){
       array_push( $cat_name, $cat->name );
@@ -1018,20 +1020,11 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
         $permalink = get_the_permalink();
         $the_title = get_the_title();
-        $basename = basename(get_permalink());
 
-        if ( $permalink != '' && $slugs_list == false ) {
-          //TODO: Build the markup separately
-          $page_link = '<a href="' . $permalink . '"
-          data-slug="' . $basename . '">' . $the_title . '</a>';
+        if ( $permalink != '' ) {
 
-          array_push( $all_available_pages, $page_link );
-        }
-        if ( $slugs_list == true ) {
+          $all_available_pages[$permalink] = $the_title;
 
-          $page_link = $basename;
-
-          array_push( $all_available_pages, $page_link );
         }
       }
     }
@@ -1044,29 +1037,34 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     foreach( $all_available_pages as $k=>$v ) {
 
-      foreach ( $cat_name as $name ) {
+      $formatted_v = str_replace( "&#8217;", "'", $v );
 
-        $formatted_v = str_replace( "&#8217;", "'", $v );
+      foreach ( $cat_name as $name ) {
 
         if( preg_match("/\b$name\b/i", $formatted_v ) ) {
 
-          array_push($final_dept_links, $formatted_v);
+          $final_list[$k] = $v;
 
         }
       }
     }
 
-    if ( $break_tags == true ) {
-      return implode('<br>', $final_dept_links);
+    foreach ( $final_list as $k => $v ){
+      $markup = '<a href="' . $k . '">' . $v . '</a>';
+      $urls = basename( $k );
+      array_push( $basename, $urls );
+      array_push( $full_links, $markup );
     }
 
     if ( $slugs_list == true ) {
-      $list = '';
-      $list .= implode(', ', $all_available_pages);
-      return $list;
+      return implode(', ', $basename);
     }
 
-    return implode(', ', $final_dept_links);
+    if ( $break_tags == true ) {
+      return implode( '<br>', $full_links );
+    }else{
+      return implode(', ', $full_links);
+    }
   }
 }
 
