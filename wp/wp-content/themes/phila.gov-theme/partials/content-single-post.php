@@ -36,7 +36,7 @@
           <div class="details small-text center">
             <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
             <?php $category = get_the_category(); ?>
-              <?php phila_echo_current_department_name( $category ); ?>
+              <?php echo phila_get_current_department_name( $category, false, true ); ?>
             <br>
             <span>
               <?php echo $posted_on_values['time_string']; ?>

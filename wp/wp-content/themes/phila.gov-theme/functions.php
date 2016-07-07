@@ -155,16 +155,28 @@ function phila_filter_title( $title ){
       if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' || $post_type->name == 'press_release' ) {
 
         $cat = get_the_category();
+        //TODO: Update to accept content owner
         $title['title'] = $page_title . $sep . $cat[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
 
       }else{
 
         if ( phila_is_department_homepage( $post ) ){
+
           $title['title'] = $page_title  . $sep . $post_type->labels->singular_name . $sep . $site_title;
 
         }else{
           $category = get_the_category($post->ID);
-          $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+          if ( $category[0]->category_parent != 0 ){
+
+            $parent = get_category( $category[0]->category_parent);
+            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+          }else{
+
+            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+
+          }
         }
       }
     }
@@ -311,7 +323,7 @@ function phila_breadcrumbs() {
   global $i;
 
   echo '<ul class="breadcrumbs">';
-  if ( !is_front_page() ) { //display breadcrumbs everywhere but on the homepage
+  if ( !is_front_page() ) { //no breadcrumb on the homepage
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
@@ -319,13 +331,8 @@ function phila_breadcrumbs() {
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
-      $categories = get_the_category($post->ID);
 
       echo '<li><a href="/news">News</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
-
       echo '<li>';
       the_title();
       echo '</li>';
@@ -342,25 +349,15 @@ function phila_breadcrumbs() {
         echo '</li>';
 
       }elseif ( is_singular('phila_post') ) {
-        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/posts">Posts</a></li>';
-        if ( !$categories == 0 ) {
-          echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-        }
-
         echo '<li>';
         the_title();
         echo '</li>';
 
       }elseif ( is_singular('press_release') ) {
-        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/press-releases">Press Releases</a></li>';
-        if ( !$categories == 0 ) {
-          echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-        }
-
         echo '<li>';
         the_title();
         echo '</li>';
@@ -617,7 +614,6 @@ function phila_get_dept_contact_blocks() {
 }
 
 function phila_get_posted_on(){
-  global $post;
 
   $posted_on_meta['author'] = esc_html( get_the_author() );
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
@@ -629,33 +625,6 @@ function phila_get_posted_on(){
     esc_html( get_the_modified_date() )
   );
   $posted_on_meta['time_string'] = $time_string;
-
-  if( !get_the_category() == '' ) {
-    $current_category = get_the_category();
-
-    $department_page_args = array(
-      'post_type' => 'department_page',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'category',
-          'field'    => 'slug',
-          'terms'    => $current_category[0]->slug,
-        ),
-      ),
-      'post_parent' => 0,
-      'posts_per_page' => 1,
-    );
-    $get_department_link = new WP_Query( $department_page_args );
-    if ( $get_department_link->have_posts() ) {
-      while ( $get_department_link->have_posts() ) {
-        $get_department_link->the_post();
-        // //$current_cat_slug = $current_category[0]->slug;
-      }
-    }
-    $posted_on_meta['current_cat_slug'] = $current_category[0]->slug;
-    $posted_on_meta['dept_cat_permalink'] = get_the_permalink();
-    $posted_on_meta['dept_title'] = get_the_title();
-  }
 
   wp_reset_postdata();
 
@@ -770,29 +739,45 @@ function phila_change_post_archive_title(){
 }
 
 /**
- * Filter department page archive to use list template & show all Parent Pages
  *
- * @since 0.22.0
- * @link https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
- * @param $query
- *
+ * @return $full_department_list_args Array Arguments for use in WP Query to get full list of all departments. Returns a list of department_page IDs that are at the top level or have the homepage metabox checked.
+ * @param $category Optional
  */
 
-add_action( 'pre_get_posts', 'phila_department_list' );
+function phila_get_department_homepage_list(){
 
-function phila_department_list( $query ) {
-  if ( is_admin() ){
-    return;
-  }
-  if ( is_post_type_archive('department_page')
-         && ! empty( $query->query['post_type']  == 'department_page' ) ) {
+  $top_level_department_pages =  array(
+    'post_type' => 'department_page',
+    'posts_per_page'=> -1,
+    'orderby' => 'title',
+    'order' => 'asc',
+    'post_parent' => 0,
+    'fields' => 'ids'
+  );
 
-    $query->set('posts_per_page', -1);
-    $query->set('orderby', 'title');
-    $query->set('order', 'asc');
-    $query->set( 'post_parent', 0 );
+  $marked_homepages = array(
+    'post_type' => 'department_page',
+    'meta_key' => 'phila_department_home_page',
+    'meta_value' => 1,
+    'fields' => 'ids'
+  );
+  $get_top_level_pages = new WP_Query( $top_level_department_pages );
+  $get_marked = new WP_Query( $marked_homepages );
 
-  }
+  $full_department_homepage_list = array_merge( $get_top_level_pages->posts, $get_marked->posts );
+
+  //remove duplicates
+  array_unique( $full_department_homepage_list );
+
+  $full_department_list_args = array(
+    'post_type' => 'department_page',
+    'post__in' => $full_department_homepage_list,
+    'posts_per_page'=> -1,
+    'orderby' => 'title',
+    'order' => 'asc',
+  );
+
+  return $full_department_list_args;
 }
 
 /**
@@ -827,12 +812,12 @@ function phila_output_header_images(){
 
 
 /**
- * Adds 'department-home' class to appropiate department homepages or a 'department-landing' class to departments with no bg selected
+ * Adds 'department-home' class to appropriate department homepages or a 'department-landing' class to departments with no bg selected
  *
  * @since 0.23.0
  * @link https://codex.wordpress.org/Function_Reference/body_class
  * @param $classes
- *
+ * TODO: change this to reflect our new metadata related to department homepages
  */
 
 add_filter( 'body_class', 'phila_home_classes' );
@@ -992,58 +977,94 @@ function phila_get_master_topics(){
 }
 
 /**
- *  Echo a slug and link to the department category currently in the loop.
+ * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
+ * TODO: investigate a better way of handling the match.
  * @param $category String or array of categories applied to a page. Required.
  * @param $byline Boolean Include ' by ' in display. Default true. Optional.
- * @param $include_id Boolean Include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the page's markup will properly validate. Default true. Optional.
+ * @param $slugs_list Boolean Return comma delimited list of departments. Optional.
  *
  **/
 
-function phila_echo_current_department_name( $category, $byline = false, $include_id = false ){
+function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $slugs_list = false ){
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
-  /* A link pointing to the category in which this content lives. We are looking at department pages specifically, so a department link will not appear unless that department is associated with the category in question.  */
+    $cat_name = array();
+    $cat_ids = array();
+    $all_available_pages = array();
+    $final_list = array();
+    $full_links = array();
+    $basename = array();
+    $urls = array();
 
-  $current_cat_slug = $category[0]->slug;
+    foreach( $category as $cat ){
+      array_push( $cat_name, $cat->name );
+    }
+    foreach( $category as $cat ){
+      array_push( $cat_ids, $cat->cat_ID );
+    }
 
-  $department_page_args = array(
-    'post_type' => 'department_page',
-    'category_name' => $current_cat_slug,
-    'post_parent' => 0,
-    'posts_per_page' => 1,
-  );
-  $get_department_link = new WP_Query( $department_page_args );
-  if ( $get_department_link->have_posts() ) {
-    while ( $get_department_link->have_posts() ) {
-      $get_department_link->the_post();
+    $cat_id_string = implode( ', ', $cat_ids );
 
-      $permalink = get_the_permalink();
-      $the_title = get_the_title();
+    $args = phila_get_department_homepage_list();
 
-        if ( get_the_permalink() != '' ) {
+    $args['category__in'] = $cat_ids;
 
-          $category_link = '';
+    $get_links = new WP_Query( $args );
 
-          if ( $byline == true ) {
-            $category_link .= ' by ';
-          }
+    if ( $get_links->have_posts() ) {
 
-          if ( $include_id == true ) {
-          // NOTE: the id and data-slug are important. Google Tag Manager
-          // uses it to attach the department to our web analytics. In some cases, this data could appear more than once on a page, so it can be removed.
-            $category_link .= '<a href="' . $permalink . '"
-            id="content-modified-department"
-            data-slug="' . $current_cat_slug . '">' . $the_title . '</a>';
-          }else{
-            $category_link .= '<a href="' . $permalink . '"
-            data-slug="' . $current_cat_slug . '">' . $the_title . '</a>';
-          }
+      while ( $get_links->have_posts() ) {
+
+        $get_links->the_post();
+
+        $permalink = get_the_permalink();
+        $the_title = get_the_title();
+
+        if ( $permalink != '' ) {
+
+          $all_available_pages[$permalink] = $the_title;
+
         }
-        echo $category_link;
       }
     }
+
     wp_reset_postdata();
+
+    if ( $byline == true ) {
+      echo ' by ';
+    }
+    //FIXME: Find a better way to identify category/url relationship
+    foreach( $all_available_pages as $k=>$v ) {
+
+      $formatted_v = str_replace( "&#8217;", "'", $v );
+
+      foreach ( $cat_name as $name ) {
+
+        if( preg_match("/\b$name\b/i", $formatted_v ) ) {
+
+          $final_list[$k] = $v;
+
+        }
+      }
+    }
+
+    foreach ( $final_list as $k => $v ){
+      $markup = '<a href="' . $k . '">' . $v . '</a>';
+      $urls = basename( $k );
+      array_push( $basename, $urls );
+      array_push( $full_links, $markup );
+    }
+
+    if ( $slugs_list == true ) {
+      return implode(', ', $basename);
+    }
+
+    if ( $break_tags == true ) {
+      return implode( '<br>', $full_links );
+    }else{
+      return implode(', ', $full_links);
+    }
   }
 }
 
@@ -1053,11 +1074,6 @@ function the_dept_description(){
   if (!$dept_desc == ''){
     return $dept_desc;
   }
-}
-
-function get_department_category(){
-  $category = get_the_category();
-  echo $category[0]->cat_name;
 }
 
 function phila_get_event_content_blocks(){

@@ -43,12 +43,12 @@ class Phila_Gov_Admin_Templates {
         'options' => array(
           'resource_list' => 'Resource List',
           'one_page_department' => 'One Page Department',
-          ),
+        ),
        ),
        array(
-      'desc'  => 'Is this a department homepage?',
-      'id'    => $prefix . 'department_home_page',
-      'type'  => 'checkbox',
+        'desc'  => 'Is this a department homepage?',
+        'id'    => $prefix . 'department_home_page',
+        'type'  => 'checkbox',
       ),
     ),
   );

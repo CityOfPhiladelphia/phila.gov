@@ -50,7 +50,7 @@ if ( !empty( $row_one_col_two_module ) ){
     $row_one_col_two_action_panel_fa = isset( $row_one_col_two_action_panel['phila_action_panel_fa'] ) ? $row_one_col_two_action_panel['phila_action_panel_fa'] : '';
   } else {
 
-    if ( array_key_exists( 'phila_connect_social', $row_one_col_two_connect_panel ) ) $connect_social_array = $row_one_col_two_connect_panel['phila_connect_social'];
+    if ( is_array( $row_one_col_two_connect_panel ) && array_key_exists( 'phila_connect_social', $row_one_col_two_connect_panel ) ) $connect_social_array = $row_one_col_two_connect_panel['phila_connect_social'];
 
     $row_one_col_two_connect_panel_facebook = isset( $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) ? $row_one_col_two_connect_panel['phila_connect_social']['phila_connect_social_facebook'] :'';
 
