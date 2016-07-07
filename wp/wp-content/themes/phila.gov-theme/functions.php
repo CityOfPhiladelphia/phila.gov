@@ -602,7 +602,6 @@ function phila_get_dept_contact_blocks() {
 }
 
 function phila_get_posted_on(){
-  global $post;
 
   $posted_on_meta['author'] = esc_html( get_the_author() );
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
@@ -614,33 +613,6 @@ function phila_get_posted_on(){
     esc_html( get_the_modified_date() )
   );
   $posted_on_meta['time_string'] = $time_string;
-
-  if( !get_the_category() == '' ) {
-    $current_category = get_the_category();
-
-    $department_page_args = array(
-      'post_type' => 'department_page',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'category',
-          'field'    => 'slug',
-          'terms'    => $current_category[0]->slug,
-        ),
-      ),
-      'post_parent' => 0,
-      'posts_per_page' => 1,
-    );
-    $get_department_link = new WP_Query( $department_page_args );
-    if ( $get_department_link->have_posts() ) {
-      while ( $get_department_link->have_posts() ) {
-        $get_department_link->the_post();
-        // //$current_cat_slug = $current_category[0]->slug;
-      }
-    }
-    $posted_on_meta['current_cat_slug'] = $current_category[0]->slug;
-    $posted_on_meta['dept_cat_permalink'] = get_the_permalink();
-    $posted_on_meta['dept_title'] = get_the_title();
-  }
 
   wp_reset_postdata();
 
@@ -1005,36 +977,36 @@ function phila_return_current_department_name( $category, $byline = false, $brea
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
-  $cat_name = array();
-  $cat_ids = array();
-  $all_available_pages = array();
-  $final_dept_links = array();
-  $page_link = '';
+    $cat_name = array();
+    $cat_ids = array();
+    $all_available_pages = array();
+    $final_dept_links = array();
+    $page_link = '';
 
-  foreach( $category as $cat ){
-    array_push( $cat_name, $cat->name );
-  }
-  foreach( $category as $cat ){
-    array_push( $cat_ids, $cat->cat_ID );
-  }
+    foreach( $category as $cat ){
+      array_push( $cat_name, $cat->name );
+    }
+    foreach( $category as $cat ){
+      array_push( $cat_ids, $cat->cat_ID );
+    }
 
-  $cat_id_string = implode( ', ', $cat_ids );
+    $cat_id_string = implode( ', ', $cat_ids );
 
-  $args = phila_get_department_homepage_list();
+    $args = phila_get_department_homepage_list();
 
-  $args['category__in'] = $cat_ids;
+    $args['category__in'] = $cat_ids;
 
-  $get_links = new WP_Query( $args );
+    $get_links = new WP_Query( $args );
 
-  if ( $get_links->have_posts() ) {
+    if ( $get_links->have_posts() ) {
 
-    while ( $get_links->have_posts() ) {
+      while ( $get_links->have_posts() ) {
 
-      $get_links->the_post();
+        $get_links->the_post();
 
-      $permalink = get_the_permalink();
-      $the_title = get_the_title();
-      $basename = basename(get_permalink());
+        $permalink = get_the_permalink();
+        $the_title = get_the_title();
+        $basename = basename(get_permalink());
 
         if ( $permalink != '' && $slugs_list == false ) {
           //TODO: Build the markup separately
@@ -1051,42 +1023,41 @@ function phila_return_current_department_name( $category, $byline = false, $brea
         }
       }
     }
-  }
 
-  wp_reset_postdata();
+    wp_reset_postdata();
 
-  if ( $byline == true ) {
-    echo ' by ';
-  }
+    if ( $byline == true ) {
+      echo ' by ';
+    }
 
-  foreach( $all_available_pages as $k=>$v ) {
+    foreach( $all_available_pages as $k=>$v ) {
 
-    foreach ( $cat_name as $name ) {
+      foreach ( $cat_name as $name ) {
 
-      $formattedname = str_replace( "'", '', $name );
+        $formattedname = str_replace( "'", '', $name );
 
-      $formatted_v = str_replace( "'", '', $v );
+        $formatted_v = str_replace( "'", '', $v );
 
-      if( preg_match("/\b$formattedname\b/i", $formatted_v ) ) {
+        if( preg_match("/\b$formattedname\b/i", $formatted_v ) ) {
 
-        array_push($final_dept_links, $formatted_v);
+          array_push($final_dept_links, $formatted_v);
 
+        }
       }
     }
+
+    if ( $break_tags == true ) {
+      return implode('<br>', $all_available_pages);
+    }
+
+    if ( $slugs_list == true ) {
+      $list = '';
+      $list .= implode(', ', $all_available_pages);
+      return $list;
+    }
+
+    return implode(', ', $all_available_pages);
   }
-
-  if ( $break_tags == true ) {
-    return implode('<br>', $all_available_pages);
-  }
-
-  if ( $slugs_list == true ) {
-    $list = '';
-    $list .= implode(', ', $all_available_pages);
-    return $list;
-  }
-
-  return implode(', ', $all_available_pages);
-
 }
 
 function the_dept_description(){
