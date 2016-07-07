@@ -311,7 +311,7 @@ function phila_breadcrumbs() {
   global $i;
 
   echo '<ul class="breadcrumbs">';
-  if ( !is_front_page() ) { //display breadcrumbs everywhere but on the homepage
+  if ( !is_front_page() ) { //no breadcrumb on the homepage
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
@@ -319,13 +319,8 @@ function phila_breadcrumbs() {
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
-      $categories = get_the_category($post->ID);
 
       echo '<li><a href="/news">News</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
-
       echo '<li>';
       the_title();
       echo '</li>';
@@ -342,25 +337,15 @@ function phila_breadcrumbs() {
         echo '</li>';
 
       }elseif ( is_singular('phila_post') ) {
-        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/posts">Posts</a></li>';
-        if ( !$categories == 0 ) {
-          echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-        }
-
         echo '<li>';
         the_title();
         echo '</li>';
 
       }elseif ( is_singular('press_release') ) {
-        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/press-releases">Press Releases</a></li>';
-        if ( !$categories == 0 ) {
-          echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-        }
-
         echo '<li>';
         the_title();
         echo '</li>';
