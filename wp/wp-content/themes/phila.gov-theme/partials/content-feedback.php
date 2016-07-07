@@ -11,8 +11,9 @@
         <?php
         $link_text = "How can we make it better?";
         if ( !is_home() && !is_404() && !is_tax() && !is_archive() ) :
-          $current_cat = phila_util_get_current_cat_slug();
-          $dept = "?dept=" . $current_cat;
+          $category = get_the_category();
+          $current_cats = phila_get_current_department_name( $category, false, false, true );
+          $dept = "?dept=" . $current_cats;
           $feedback = '<a href="/feedback/%1$s">%2$s</a>';
 
           echo sprintf($feedback, $dept, $link_text);
