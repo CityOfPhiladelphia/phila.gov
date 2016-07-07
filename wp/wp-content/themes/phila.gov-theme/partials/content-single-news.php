@@ -11,7 +11,7 @@
       <?php $posted_on_values = phila_get_posted_on(); ?>
       <span class="small-text"><?php echo $posted_on_values['time_string'];?>
         <?php $category = get_the_category() ?>
-        <?php echo phila_return_current_department_name( $category, true ); ?>
+        <?php echo phila_get_current_department_name( $category, true ); ?>
       </span>
     </header><!-- .entry-header -->
   </div>

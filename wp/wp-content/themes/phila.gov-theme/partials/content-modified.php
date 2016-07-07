@@ -17,7 +17,7 @@
       <div class="small-text">This content was last updated on <time id="content-modified-datetime" datetime="<?php the_modified_time('c'); ?>"><?php the_modified_date(); ?></time><?php
       if ( !is_archive() && !is_tax() && !is_home() ) :
         $category = get_the_category();
-        echo phila_return_current_department_name( $category, $by_line = true );
+        echo phila_get_current_department_name( $category, $by_line = true );
       endif; ?><?php echo '.'; ?>
       </div>
     </div>
