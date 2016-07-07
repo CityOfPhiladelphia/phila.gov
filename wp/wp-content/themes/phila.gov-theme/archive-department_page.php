@@ -16,24 +16,30 @@ get_header(); ?>
     </div>
     <div class="row">
       <div class="small-24 columns results mbm">
-        <?php get_template_part( 'partials/content', 'finder' ); ?>
-          <ul class="list no-bullet">
-            <?php  if ( have_posts() ) : ?>
-              <?php the_title(); ?>
+        <div id="filter-list">
+          <form>
+            <input class="search" type="text" placeholder="Filter results...">
+          </form>
+            <?php
+            $args = phila_get_department_homepage_list();
+            $department_list = new WP_Query( $args );
 
-              <?php while ( have_posts() ) : the_post(); ?>
-
-                <?php get_template_part( 'partials/content', 'list' ); ?>
+            if ( $department_list->have_posts() ) : ?>
+              <ul class="list no-bullet">
+              <?php while ( $department_list->have_posts() ) : $department_list->the_post(); ?>
+                <li>
+                  <?php
+                    //NOTE: The content-department class is used for Google Analytics and should not be removed.
+                  ?><a href="<?php echo get_permalink(); ?>" class="content-department item"><?php echo the_title(); ?></a>
+                  <p class="item-desc"><?php echo the_dept_description(); ?> </p>
+                </li>
 
               <?php endwhile; ?>
 
-            <?php else : ?>
+              </ul>
+            <?php endif; ?>
 
-              <?php endif; ?>
-
-              <?php wp_reset_query(); ?>
-
-            </ul>
+            <?php wp_reset_query(); ?>
           </div>
         </div>
     </div> <!-- .row -->

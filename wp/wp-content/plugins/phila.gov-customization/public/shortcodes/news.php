@@ -26,15 +26,19 @@ function is_flag( $flag, $atts ) {
 
 function recent_news_shortcode($atts) {
   global $post;
+
   $category = get_the_category();
+
+  $current_category_id = $category[0]->cat_ID;
+  $category_slug = $category[0]->slug;
+
   $a = shortcode_atts( array(
    'posts' => 1,
     0 => 'list',
-    'name' => 'News'
+    'name' => 'News',
+    'category' => $category_slug,
  ), $atts );
 
-  $current_category = $category[0]->cat_ID;
-  $category_slug = $category[0]->slug;
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
@@ -46,7 +50,7 @@ function recent_news_shortcode($atts) {
   'order'=> 'DESC',
   'orderby' => 'date',
   'post_type'  => 'news_post',
-  'cat' => $current_category,
+  'category_name' => $a['category'],
   'tax_query'=> array(
     array(
       'taxonomy' => 'news_type',
@@ -158,13 +162,13 @@ function featured_news_shortcode() {
   global $post;
   $category = get_the_category();
 
-  $current_category = $category[0]->cat_ID;
+  $current_category_id = $category[0]->cat_ID;
 
   $args = array( 'posts_per_page' =>1,
   'order'=> 'DESC',
   'orderby' => 'date',
   'post_type'  => 'news_post',
-  'cat' => $current_category,
+  'cat' => $current_category_id,
   'tax_query'=> array(
     array(
       'taxonomy' => 'news_type',
