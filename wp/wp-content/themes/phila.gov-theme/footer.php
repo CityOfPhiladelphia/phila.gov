@@ -72,10 +72,5 @@
 </script>
 
 <?php wp_footer(); ?>
-<?php if ( !is_archive() && !is_tax() && !is_home() ) :
-  $category = get_the_category();
-  echo phila_return_current_department_name( $category, $byline = false, $break_tags = false, $analytics_list = true ); 
-  endif;
-  ?>
 </body>
 </html>
