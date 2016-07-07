@@ -977,11 +977,11 @@ function phila_get_master_topics(){
 }
 
 /**
- *  Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
+ * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
  * TODO: investigate a better way of handling the match.
  * @param $category String or array of categories applied to a page. Required.
  * @param $byline Boolean Include ' by ' in display. Default true. Optional.
- * @param $include_id Boolean Include the content-modified-department id in the output. This should only be set to false in the case of multiple uses of this function on a single page, e.g. Press Releases, so the page's markup will properly validate. Default true. Optional.
+ * @param $slugs_list Boolean Return comma delimited list of departments. Optional.
  *
  **/
 
@@ -1046,11 +1046,9 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
       foreach ( $cat_name as $name ) {
 
-        $formattedname = str_replace( "'", '', $name );
+        $formatted_v = str_replace( "&#8217;", "'", $v );
 
-        $formatted_v = str_replace( "'", '', $v );
-
-        if( preg_match("/\b$formattedname\b/i", $formatted_v ) ) {
+        if( preg_match("/\b$name\b/i", $formatted_v ) ) {
 
           array_push($final_dept_links, $formatted_v);
 
@@ -1059,7 +1057,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     }
 
     if ( $break_tags == true ) {
-      return implode('<br>', $all_available_pages);
+      return implode('<br>', $final_dept_links);
     }
 
     if ( $slugs_list == true ) {
@@ -1068,7 +1066,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       return $list;
     }
 
-    return implode(', ', $all_available_pages);
+    return implode(', ', $final_dept_links);
   }
 }
 
