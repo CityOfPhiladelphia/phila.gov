@@ -45,6 +45,18 @@
 
 <body <?php body_class(); ?>>
 
+<?php if ( !is_archive() && !is_tax() && !is_home() ) : ?>
+  <!-- Google Tag Manager DataLayer -->
+  <?php $category = get_the_category();
+    $departments = phila_return_current_department_name( $category, $byline = false, $break_tags = false, $slug_list = true );
+  ?>
+  <script>
+    dataLayer = [{
+      'contentModifiedDepartment': '<?php echo $departments ?>'
+    }];
+  </script>
+<?php endif; ?>
+
 <!-- Google Tag Manager [phila.gov] -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
