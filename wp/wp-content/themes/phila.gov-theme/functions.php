@@ -1080,11 +1080,6 @@ function the_dept_description(){
   }
 }
 
-function get_department_category(){
-  $category = get_the_category();
-  echo $category[0]->cat_name;
-}
-
 function phila_get_event_content_blocks(){
 
   $output_array = array();
