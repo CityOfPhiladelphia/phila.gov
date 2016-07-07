@@ -175,7 +175,7 @@ function phila_filter_title( $title ){
           }else{
 
             $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
-            
+
           }
         }
       }
@@ -985,7 +985,7 @@ function phila_get_master_topics(){
  *
  **/
 
-function phila_return_current_department_name( $category, $byline = false, $break_tags = false, $slugs_list = false ){
+function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $slugs_list = false ){
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
