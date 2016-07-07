@@ -1034,7 +1034,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     if ( $byline == true ) {
       echo ' by ';
     }
-
+    //FIXME: Find a better way to identify category/url relationship
     foreach( $all_available_pages as $k=>$v ) {
 
       $formatted_v = str_replace( "&#8217;", "'", $v );
