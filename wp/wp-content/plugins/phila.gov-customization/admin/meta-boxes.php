@@ -652,7 +652,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 // Second row of modules - press release and/or calendar
 $meta_boxes[] = array(
   'id'       => $prefix . 'module_row_2',
-  'title'    => 'Module Row 2',
+  'title'    => 'Row 2',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'low',
