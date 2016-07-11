@@ -173,6 +173,10 @@ jQuery(document).ready(function($) {
     $('.postarea').hide();
 
   }
+  function setOffSiteInputVals(){
+    $( '#phila_department_home_page' ).prop( 'checked', true );
+    $('.postarea').hide();
+  }
 
   if ( ( typenow == 'department_page' ) )  {
     var templateSelect = $('#phila_template_select');
@@ -182,10 +186,19 @@ jQuery(document).ready(function($) {
       $('#phila_template_select').click();
     }
 
+    if ( templateSelect.val() == 'off_site_department' ){
+      setOffSiteInputVals();
+      $('#phila_template_select').click();
+
+    }
+
     templateSelect.change(function() {
       //set fields based on template selection
       if ( templateSelect.val() == 'one_page_department' ){
         setOnePageInputVals();
+      }else if( templateSelect.val() == 'off_site_department'){
+        setOffSiteInputVals();
+
       }else{
         //enable the disabled elements
         $('#phila_module_row_1').each(function(){
