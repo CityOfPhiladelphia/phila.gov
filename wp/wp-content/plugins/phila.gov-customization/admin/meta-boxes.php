@@ -280,7 +280,10 @@ function phila_register_meta_boxes( $meta_boxes ){
    'context'  => 'normal',
    'priority' => 'high',
    'include' => array(
-     'user_role'  => 'administrator',
+     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+   ),
+   'hidden' => array(
+     'phila_template_select', '=', 'off_site_department',
    ),
    'fields' => array(
      array(
@@ -357,7 +360,10 @@ function phila_register_meta_boxes( $meta_boxes ){
    'context'  => 'normal',
    'priority' => 'low',
    'include' => array(
-     'user_role'  => 'administrator',
+     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+   ),
+   'hidden' => array(
+     'phila_template_select', '=', 'off_site_department',
    ),
    'fields' => array(
      array(
@@ -642,12 +648,15 @@ $meta_boxes[] = array(
   'context'  => 'normal',
   'priority' => 'low',
   'include' => array(
-    'user_role'  => 'administrator',
+    'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
   ),
   'hidden' => array(
-    'phila_template_select', '=', 'one_page_department',
+    'when'  => array(
+      array('phila_template_select', '=', 'one_page_department' ),
+      array('phila_template_select', '=', 'off_site_department' ),
+    ),
+    'relation' => 'or',
   ),
-
       // List of sub-fields
       'fields' => array(
         array(
@@ -786,7 +795,7 @@ $meta_boxes[] = array(
     'context'  => 'normal',
     'priority' => 'low',
     'include' => array(
-      'user_role'  => 'administrator',
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
     'visible' => array(
       'phila_template_select', '=', 'one_page_department',
@@ -808,7 +817,7 @@ $meta_boxes[] = array(
     'context'  => 'normal',
     'priority' => 'low',
     'include' => array(
-      'user_role'  => 'administrator',
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
     'visible' => array(
       'phila_template_select', '=', 'one_page_department',
@@ -830,7 +839,7 @@ $meta_boxes[] = array(
     'context' => 'normal',
     'priority'  => 'low',
     'include' => array(
-      'user_role'  => 'administrator',
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
     'visible' => array(
       'phila_template_select', '=', 'one_page_department',
