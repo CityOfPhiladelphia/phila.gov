@@ -1,5 +1,9 @@
 /* for all users */
 
+input[type="url"]{
+  width:100%;
+}
+
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
 #wp-link-target,{
