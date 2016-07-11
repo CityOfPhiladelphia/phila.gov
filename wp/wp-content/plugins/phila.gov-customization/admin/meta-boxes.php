@@ -355,7 +355,7 @@ function phila_register_meta_boxes( $meta_boxes ){
  // First row of modules - recent posts, custom markup, call to action panel
  $meta_boxes[] = array(
    'id'       => $prefix . 'module_row_1',
-   'title'    => 'Module Row 1',
+   'title'    => 'Row 1',
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'low',
@@ -371,9 +371,15 @@ function phila_register_meta_boxes( $meta_boxes ){
       'id'   => $prefix . 'module_row_1_description',
       'type' => 'custom_html',
       'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
+      'hidden' => array(
+        'phila_template_select', '=', 'one_page_department',
+      ),
      ),
      array(
-       'type' => 'divider'
+       'type' => 'divider',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
       'id' => 'module_row_1_col_1',
@@ -440,6 +446,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     array(
       'id' => 'module_row_1_col_2',
       'type' => 'group',
+      'hidden' => array(
+        'phila_template_select', '=', 'one_page_department',
+      ),
       'fields' => array(
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
@@ -532,7 +541,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 
         'fields' => array(
             array(
-             'name' => 'Description',
+             'name' => 'Connect Panel',
              'id'   => $prefix . 'connect_description',
              'type' => 'custom_html',
              'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
@@ -637,7 +646,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             ),
           ),
         ),
-    ),
+    )
   );
 
 // Second row of modules - press release and/or calendar
