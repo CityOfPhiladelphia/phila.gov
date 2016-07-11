@@ -27,8 +27,8 @@ class Phila_Gov_Admin_Templates {
     'id'       => 'template_selection',
     'title'    => 'Select Page Template',
     'pages'    => array( 'department_page' ),
-    'context'  => 'side',
-    'priority' => 'low',
+    'context'  => 'advanced',
+    'priority' => 'high',
 
     'fields' => array(
 
@@ -41,8 +41,10 @@ class Phila_Gov_Admin_Templates {
         'placeholder'  => 'Select a template',
 
         'options' => array(
-          'resource_list' => 'Resource List',
+          'default'   => 'Default',
+          'off_site_department' => 'Off-site Department',
           'one_page_department' => 'One Page Department',
+          'resource_list' => 'Resource List',
           ),
        ),
        array(
