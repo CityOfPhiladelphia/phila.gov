@@ -18,6 +18,9 @@ class Phila_Gov_Admin_Templates {
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_departments'), 10, 1 );
 
+    add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_page_attributes' ), 10, 1 );
+
+
  }
 
  function phila_register_template_selection_metabox_departments( $meta_boxes ){
@@ -55,6 +58,20 @@ class Phila_Gov_Admin_Templates {
     ),
   );
    return $meta_boxes;
+  }
+
+  function phila_hide_page_attributes( $conditions ) {
+    $conditions['categorydiv'] = array(
+      'include' => array(
+        'when' => array(
+          //TODO: Determine way to detect when user has access to multiple categories and apply that here.
+          array('user_role', '=', 'administrator' ),
+          array('user_role', '=', 'primary_department_homepage_editor' ),
+        ),
+      ),
+      'relation' => 'or'
+    );
+    return $conditions;
   }
 
 }
