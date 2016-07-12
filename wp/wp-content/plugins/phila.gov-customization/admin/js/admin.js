@@ -144,6 +144,9 @@ jQuery(document).ready(function($) {
     }
   }
   function setOnePageInputVals(){
+    //Hide row and column description. This can't be done using rwmb conditionals, because it will hide the whole group. 
+    $('#phila_module_row_1_col_1_type').parent().parent().hide();
+
     $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
 
     $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel');
