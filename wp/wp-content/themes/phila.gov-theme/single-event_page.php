@@ -297,7 +297,8 @@ get_header(); ?>
     <?php if (array_key_exists( 0 , get_the_category() )): ?>
       <!-- Recent News  -->
       <div class="row news equal-height">
-      <?php echo do_shortcode('[recent-news posts="3"]'); ?>
+        <?php //TODO: Remove the hard-coded mayor category ?>
+      <?php echo do_shortcode('[recent-news posts="3" category="mayor"]'); ?>
       </div>
     <?php endif; ?>
 
