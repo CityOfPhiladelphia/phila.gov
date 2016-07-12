@@ -18,8 +18,7 @@ class Phila_Gov_Admin_Templates {
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_departments'), 10, 1 );
 
-    add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_page_attributes' ), 10, 1 );
-
+    add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_categories' ), 10, 1 );
 
  }
 
@@ -61,13 +60,13 @@ class Phila_Gov_Admin_Templates {
    return $meta_boxes;
   }
 
-  function phila_hide_page_attributes( $conditions ) {
+
+  function phila_hide_categories( $conditions ) {
+
     $conditions['categorydiv'] = array(
-      'include' => array(
+      'hidden' => array(
         'when' => array(
-          //TODO: Determine way to detect when user has access to multiple categories and apply that here.
-          array('user_role', '=', 'administrator' ),
-          array('user_role', '=', 'primary_department_homepage_editor' ),
+          array('phila_get_user_roles_callback()', false ),
         ),
       ),
       'relation' => 'or'

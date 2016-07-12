@@ -1,3 +1,12 @@
+function phila_get_user_roles_callback() {
+  if (phila_WP_User.includes('multi_department_access') || phila_WP_User.includes('administrator')){
+    return true;
+  }else{
+    return false;
+  }
+
+}
+
 /* For all admins */
 jQuery(document).ready(function($) {
 
@@ -144,7 +153,7 @@ jQuery(document).ready(function($) {
     }
   }
   function setOnePageInputVals(){
-    //Hide row and column description. This can't be done using rwmb conditionals, because it will hide the whole group. 
+    //Hide row and column description. This can't be done using rwmb conditionals, because it will hide the whole group.
     $('#phila_module_row_1_col_1_type').parent().parent().hide();
 
     $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
