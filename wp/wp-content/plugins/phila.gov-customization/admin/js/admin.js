@@ -174,6 +174,10 @@ jQuery(document).ready(function($) {
 
     $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'readOnly', true );
 
+    $('[id^=phila_action_panel_fa_multi]').val('fa-desktop').prop( 'readOnly', true );
+    $('[id^=phila_action_panel_fa_circle_multi]').prop( 'readOnly', true );
+    $('[id^=phila_action_panel_fa_circle_multi]').prop( 'checked', true );
+
     $('#phila_module_row_1_col_1_textarea').rules('add', {
       maxlength: 850
     });
