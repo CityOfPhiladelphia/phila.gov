@@ -48,7 +48,7 @@ class Phila_Gov_Staff_Directory {
       'pages'    => array( 'staff_directory' ),
       'priority' => 'high',
       'context'  => 'normal',
-      'autosave' => 'true',
+
 
       'fields' => array(
         array(

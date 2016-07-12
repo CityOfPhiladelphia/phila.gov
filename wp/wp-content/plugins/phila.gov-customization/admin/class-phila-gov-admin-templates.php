@@ -31,7 +31,7 @@ class Phila_Gov_Admin_Templates {
     'pages'    => array( 'department_page' ),
     'context'  => 'advanced',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
 
