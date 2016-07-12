@@ -20,7 +20,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'news_post' ),
     'context'  => 'normal',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -40,7 +40,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'news_post' ),
     'context'  => 'side',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -63,7 +63,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -91,7 +91,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -113,7 +113,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'phila_post' ),
     'context'  => 'normal',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -129,7 +129,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'press_release' ),
     'context'  => 'advanced',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -152,7 +152,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'press_release' ),
     'context'  => 'advanced',
     'priority' => 'high',
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -191,7 +191,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array('phila_template_select', 'resource_list'),
-    'autosave' => 'true',
+
 
     'fields' => array(
       array(
@@ -250,7 +250,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'event_page' , 'page' ),
     'context'  => 'normal',
     'priority' => 'low',
-    'autosave' => 'true',
+
     'include' => array(
       'user_role'  => 'administrator',
     ),
@@ -287,7 +287,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    'pages'    => array( 'department_page' , 'event_page' ),
    'context'  => 'normal',
    'priority' => 'high',
-   'autosave' => 'true',
+
 
    'include' => array(
      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
@@ -370,7 +370,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'low',
-   'autosave' => 'true',
+
    'include' => array(
      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
    ),
@@ -669,7 +669,7 @@ $meta_boxes[] = array(
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'low',
-  'autosave' => 'true',
+
   'include' => array(
     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
   ),
@@ -817,7 +817,7 @@ $meta_boxes[] = array(
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
     'priority' => 'low',
-    'autosave' => 'true',
+
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
@@ -842,7 +842,7 @@ $meta_boxes[] = array(
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
     'priority' => 'low',
-    'autosave' => 'true',
+
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
@@ -867,7 +867,7 @@ $meta_boxes[] = array(
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority'  => 'low',
-    'autosave' => 'true',
+
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
