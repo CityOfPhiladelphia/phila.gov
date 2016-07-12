@@ -63,9 +63,14 @@ function phila_allow_draft_dropdown_pages_args($dropdown_args) {
 add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 1 );
 
 function phila_load_admin_media_js(){
-  wp_enqueue_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jQuery') ) );
+  wp_register_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__, array('jquery-validation') ) );
 
-  wp_enqueue_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__, array('jquery-validation') ) );
+  wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jQuery') ) );
+
+  wp_enqueue_script( 'jquery-validation' );
+
+  wp_enqueue_script( 'all-admin-scripts' );
+
 }
 
 add_action( 'admin_enqueue_scripts', 'phila_load_admin_css', 11 );
@@ -83,6 +88,17 @@ function phila_all_posts_js_array(){
 
   echo '<script type="text/javascript"> var	philaAllPostTypes = ' . $philaAllPostTypes . ';</script>';
 }
+
+// Set a JS var for phila_WP_User
+add_action( 'admin_head', 'phila_get_user_roles');
+
+function phila_get_user_roles(){
+  $WP_User = json_encode( array_values( wp_get_current_user()->roles ) );
+
+  echo '<script type="text/javascript"> var	phila_WP_User = ' . $WP_User . ';</script>';
+
+}
+
 
 /**
  * Move all "advanced" metaboxes above the default editor to allow for custom reordering
