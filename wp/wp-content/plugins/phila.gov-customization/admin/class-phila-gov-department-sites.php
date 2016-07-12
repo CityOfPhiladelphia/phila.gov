@@ -61,17 +61,15 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'low',
-
+      'visible' => array(
+        'phila_template_select', '=', array( 'default' ),
+      ),
 
       'fields' => array(
         array(
          'id' => 'content_blocks',
          'type' => 'group',
          'clone'  => true,
-
-         'visible' => array(
-           'phila_template_select', '=', array( 'default' ),
-         ),
 
          'fields' => array(
            array(
