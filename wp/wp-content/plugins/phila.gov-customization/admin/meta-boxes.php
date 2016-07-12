@@ -815,6 +815,7 @@ $meta_boxes[] = array(
         'id'   => $prefix . 'staff_directory_selected',
         'desc'  => 'Include a staff directory section?',
         'type' => 'checkbox',
+        'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
       ),
     ),
   );
@@ -836,6 +837,7 @@ $meta_boxes[] = array(
         'id'   => $prefix . 'full_row_blog_selected',
         'desc'  => 'Should this page show a full row of blog posts?',
         'type' => 'checkbox',
+        'after' => '<p class="description">Enter at least three blog posts in the <a href="/wp-admin/edit.php?post_type=phila_post">Blog Post</a> section.</p>'
       ),
     ),
   );
