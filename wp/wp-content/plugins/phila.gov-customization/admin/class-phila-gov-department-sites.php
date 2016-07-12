@@ -29,7 +29,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'autosave' => 'true',
 
       'exclude' => array(
-        'is_child'  => true,
+        'phila_is_department_homepage'  => 0,
       ),
 
       'fields' => array(
