@@ -43,6 +43,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
       'pages'    => array( 'page' ),
       'context'  => 'side',
       'priority' => 'high',
+      'autosave' => 'true',
 
       'fields' => array(
         array(

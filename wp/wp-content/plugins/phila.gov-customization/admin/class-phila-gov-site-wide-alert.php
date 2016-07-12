@@ -40,6 +40,7 @@ class Phila_Gov_Site_Wide_Alert {
       'pages'    => array( 'site_wide_alert' ),
       'context'  => 'side',
       'priority' => 'high',
+      'autosave' => 'true',
 
       'fields' => array(
         array(

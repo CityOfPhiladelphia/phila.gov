@@ -22,6 +22,8 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+      'autosave' => 'true',
+
       'fields' => array(
         array(
           'name'  => 'Description',
@@ -78,6 +80,8 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+      'autosave' => 'true',
+
       'fields' => array(
         array(
           'name'  => 'Custom Markup',
@@ -95,6 +99,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+      'autosave' => 'true',
 
       'fields' => array(
         array(
@@ -191,6 +196,8 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+      'autosave' => 'true',
+
       'fields' => array(
         array(
           'name'  => 'Section Title',
@@ -250,6 +257,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
       'pages'    => array( 'event_page' ),
       'context'  => 'normal',
       'priority' => 'high',
+      'autosave' => 'true',
 
       'fields' => array(
         array(
