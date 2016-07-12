@@ -108,7 +108,10 @@ class Phila_Gov_Staff_Directory {
           'class' => 'phone',
         ),
         array(
-          'name'  => 'Highlight Leadership',
+          'type'  => 'divider',
+        ),
+        array(
+          'desc'  => 'Is this staff member leadership?',
           'id'    => $prefix . 'leadership',
           'type'  => 'checkbox',
           'class' => 'leadership',
