@@ -26,7 +26,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'pages'    => array( 'department_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
-      'autosave' => 'true',
+
 
       'exclude' => array(
         'phila_is_department_homepage'  => 0,
@@ -61,7 +61,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'low',
-      'autosave' => 'true',
+
 
       'fields' => array(
         array(

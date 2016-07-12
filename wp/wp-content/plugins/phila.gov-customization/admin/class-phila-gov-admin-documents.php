@@ -87,7 +87,7 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
       'post_types'    => array( 'attachment' ),
       'context'  => 'side',
       'priority' => 'high',
-      'autosave' => 'true',
+
 
       'fields' => array(
         array(
