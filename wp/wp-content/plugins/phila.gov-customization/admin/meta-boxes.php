@@ -798,28 +798,6 @@ $meta_boxes[] = array(
       ),
     );
   $meta_boxes[] = array(
-    'id'       => $prefix . 'full_row_blog',
-    'title'    => 'Full row blog posts (3 total)',
-    'pages'    => array( 'department_page' ),
-    'context'  => 'normal',
-    'priority' => 'low',
-    'include' => array(
-      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
-    ),
-    'visible' => array(
-      'phila_template_select', '=', 'one_page_department',
-    ),
-    'fields' => array(
-      array(
-        'name' => '',
-        'id'   => $prefix . 'full_row_blog_selected',
-        'desc'  => 'Should this page show a full row of blog posts?',
-        'type' => 'checkbox',
-      ),
-    ),
-  );
-
-  $meta_boxes[] = array(
     'id'       => $prefix . 'staff_directory_listing',
     'title'    => 'Staff Directory Listing',
     'pages'    => array( 'department_page' ),
@@ -836,6 +814,27 @@ $meta_boxes[] = array(
         'name' => '',
         'id'   => $prefix . 'staff_directory_selected',
         'desc'  => 'Include a staff directory section?',
+        'type' => 'checkbox',
+      ),
+    ),
+  );
+  $meta_boxes[] = array(
+    'id'       => $prefix . 'full_row_blog',
+    'title'    => 'Full row blog posts (3 total)',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => $prefix . 'full_row_blog_selected',
+        'desc'  => 'Should this page show a full row of blog posts?',
         'type' => 'checkbox',
       ),
     ),
