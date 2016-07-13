@@ -3,11 +3,11 @@
 input[type="url"]{
   width:100%;
 }
-/*smarter column widths*/
+/*better column widths*/
 .fixed .column-categories, .fixed .column-role {
-    width: auto;
+    width: 25%;
 }
-th[class*="column-taxonomy"]{
+th[class*="column-taxonomy"], .fixed .column-tags{
   width:10%;
 }
 
