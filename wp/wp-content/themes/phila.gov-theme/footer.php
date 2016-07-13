@@ -73,8 +73,8 @@
 
 <?php wp_footer(); ?>
 <script type="text/javascript">
-		jQuery(".responsive_headline1").fitText({minFontSize: '24.9999px'});
-    jQuery(".responsive_headline2").fitText(.6, {minFontSize: '24.9999px'});
+		jQuery(".responsive_headline1").fitText(1, {minFontSize: '24.9999px'});
+    jQuery(".responsive_headline2").fitText(.5,{minFontSize: '24.9999px', maxFontSize: '90px'});
 
 </script>
 </body>
