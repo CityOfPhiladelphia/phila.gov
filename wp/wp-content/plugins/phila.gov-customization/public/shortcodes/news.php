@@ -129,7 +129,7 @@ function recent_news_shortcode($atts) {
     //  $output .= '</div>';
     }
 
-    $output .= '</div><a class="see-all-right float-right" href="/news/'. $category_slug . '">All ' . $a['name'] . '</a></div>';
+    $output .= '</div><a class="see-all-right float-right" href="/news/'. $a['category'] . '">All ' . $a['name'] . '</a></div>';
 
 
     }else {
