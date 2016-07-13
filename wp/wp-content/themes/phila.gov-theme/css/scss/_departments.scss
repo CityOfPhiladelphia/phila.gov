@@ -138,7 +138,8 @@
         width: 400px;
         padding: 0 $spacing-medium;;
         h1 {
-          display: inline-block;
+          // display: inline-block;
+          width:100%;
           font-size: 2.5rem;
           line-height: 3rem;
           margin:$spacing-small 0;
@@ -158,6 +159,11 @@
               content: '\A';
             }
           }
+        }
+        .responsive_headline1,
+        .responsive_headline2 {
+          display: block;
+          width:100%;
         }
         .sub-head {
           font-weight:700;
