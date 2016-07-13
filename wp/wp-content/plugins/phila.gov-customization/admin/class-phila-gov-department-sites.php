@@ -24,8 +24,9 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'id'       => 'departments',
       'title'    => 'Department General Information',
       'pages'    => array( 'department_page' ),
-      'context'  => 'normal',
+      'context'  => 'advanced',
       'priority' => 'high',
+
 
       'exclude' => array(
         'phila_is_department_homepage'  => 0,
@@ -34,11 +35,12 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'fields' => array(
         array(
           'name'  => 'Description',
-          'desc'  => 'A short description of the department. Required.',
+          'desc'  => 'A short description of the department. Appears on the <a href="/departments">City Government Directory</a> page. Required.',
           'id'    => $prefix . 'dept_desc',
           'type'  => 'textarea',
           'class' => 'dept-description',
           'clone' => false,
+          'required'  => true,
         ),
         array(
           'name'  => 'External URL of Department',
@@ -47,49 +49,20 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'type'  => 'URL',
           'class' => 'dept-url',
           'clone' => false,
+          'visible' => array(
+            'phila_template_select', '=', 'off_site_department',
+          ),
         ),
       )
     );//External department link
-    /*$meta_boxes[] = array(
-      'id'       => 'department-home-alert',
-      'title'    => 'Homepage Alert',
-      'pages'    => array( 'department_page' ),
-      'context'  => 'normal',
-      'priority' => 'high',
-
-      'exclude' => array(
-        'is_child'  => true,
-      ),
-
-      'fields' => array(
-        array(
-          'name'  => 'Alert text',
-          'desc'  => 'E.g. Phone lines are down. 225 character maximum.',
-          'id'    => $prefix . 'department_home_alert_title',
-          'type'  => 'textarea',
-          'class' => 'department-home-alert',
-          'clone' => false,
-        ),
-        array(
-          'name'  => 'Link to more information',
-          'desc'  => '',
-          'id'    => $prefix . 'department_home_alert_link',
-          'type'  => 'URL',
-          'class' => 'dept-home-alert-url',
-          'clone' => false,
-        ),
-      )
-    );//Department homepage alert
-    */
 
     $meta_boxes[] = array(
       'title'    => 'Content Blocks',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'low',
-
-      'hidden' => array(
-        'phila_template_select', '=', 'one_page_department',
+      'visible' => array(
+        'phila_template_select', '=', array( 'default' ),
       ),
 
       'fields' => array(

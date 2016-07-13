@@ -18,6 +18,8 @@ class Phila_Gov_Admin_Templates {
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_departments'), 10, 1 );
 
+    add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_categories' ), 10, 1 );
+
  }
 
  function phila_register_template_selection_metabox_departments( $meta_boxes ){
@@ -27,8 +29,9 @@ class Phila_Gov_Admin_Templates {
     'id'       => 'template_selection',
     'title'    => 'Select Page Template',
     'pages'    => array( 'department_page' ),
-    'context'  => 'side',
-    'priority' => 'low',
+    'context'  => 'advanced',
+    'priority' => 'high',
+
 
     'fields' => array(
 
@@ -41,9 +44,11 @@ class Phila_Gov_Admin_Templates {
         'placeholder'  => 'Select a template',
 
         'options' => array(
-          'resource_list' => 'Resource List',
+          'default'   => 'Default',
+          'off_site_department' => 'Off-site Department',
           'one_page_department' => 'One Page Department',
-        ),
+          'resource_list' => 'Resource List',
+          ),
        ),
        array(
         'desc'  => 'Is this a department homepage?',
@@ -53,6 +58,20 @@ class Phila_Gov_Admin_Templates {
     ),
   );
    return $meta_boxes;
+  }
+
+
+  function phila_hide_categories( $conditions ) {
+
+    $conditions['categorydiv'] = array(
+      'hidden' => array(
+        'when' => array(
+          array('phila_get_user_roles_callback()', false ),
+        ),
+      ),
+      'relation' => 'or'
+    );
+    return $conditions;
   }
 
 }

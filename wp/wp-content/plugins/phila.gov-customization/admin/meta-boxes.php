@@ -12,7 +12,7 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 function phila_register_meta_boxes( $meta_boxes ){
   $prefix = 'phila_';
 
-  $department_col_1_custom_content['toolbar1'] = 'bold, italic';
+  $department_col_1_custom_content['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
   $meta_boxes[] = array(
     'id'       => 'news',
@@ -20,6 +20,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'news_post' ),
     'context'  => 'normal',
     'priority' => 'high',
+
 
     'fields' => array(
       array(
@@ -39,6 +40,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'news_post' ),
     'context'  => 'side',
     'priority' => 'high',
+
 
     'fields' => array(
       array(
@@ -61,6 +63,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
+
 
     'fields' => array(
       array(
@@ -89,6 +92,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'high',
 
+
     'fields' => array(
       array(
         'name'  => 'Add Files',
@@ -110,6 +114,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'high',
 
+
     'fields' => array(
       array(
        'name' => 'Summary',
@@ -125,8 +130,8 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'advanced',
     'priority' => 'high',
 
-    'fields' => array(
 
+    'fields' => array(
       array(
         'name'  => 'Release Date',
         'id'    => $prefix . 'press_release_date',
@@ -143,11 +148,12 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-
     'title'    => 'Contact Information',
     'pages'    => array( 'press_release' ),
     'context'  => 'advanced',
     'priority' => 'high',
+
+
     'fields' => array(
       array(
         'id'  => 'press_release_contact',
@@ -186,8 +192,8 @@ function phila_register_meta_boxes( $meta_boxes ){
     'priority' => 'high',
     'visible' => array('phila_template_select', 'resource_list'),
 
-    'fields' => array(
 
+    'fields' => array(
       array(
         'id'  => $prefix . 'resource_list',
         'type' => 'group',
@@ -244,9 +250,11 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'event_page' , 'page' ),
     'context'  => 'normal',
     'priority' => 'low',
+
     'include' => array(
       'user_role'  => 'administrator',
     ),
+
     'fields' => array(
       array(
        'name' => 'Description',
@@ -279,9 +287,15 @@ function phila_register_meta_boxes( $meta_boxes ){
    'pages'    => array( 'department_page' , 'event_page' ),
    'context'  => 'normal',
    'priority' => 'high',
+
+
    'include' => array(
-     'user_role'  => 'administrator',
+     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
    ),
+   'hidden' => array(
+     'phila_template_select', '=', 'off_site_department',
+   ),
+
    'fields' => array(
      array(
        'name'  => 'Hero Header Title',
@@ -352,22 +366,33 @@ function phila_register_meta_boxes( $meta_boxes ){
  // First row of modules - recent posts, custom markup, call to action panel
  $meta_boxes[] = array(
    'id'       => $prefix . 'module_row_1',
-   'title'    => 'Module Row 1',
+   'title'    => 'Row 1',
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'low',
+
    'include' => array(
-     'user_role'  => 'administrator',
+     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
    ),
+   'hidden' => array(
+     'phila_template_select', '=', 'off_site_department',
+   ),
+
    'fields' => array(
      array(
       'name' => 'Description',
       'id'   => $prefix . 'module_row_1_description',
       'type' => 'custom_html',
       'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
+      'hidden' => array(
+        'phila_template_select', '=', 'one_page_department',
+      ),
      ),
      array(
-       'type' => 'divider'
+       'type' => 'divider',
+       'hidden' => array(
+         'phila_template_select', '=', 'one_page_department',
+       ),
      ),
      array(
       'id' => 'module_row_1_col_1',
@@ -417,8 +442,10 @@ function phila_register_meta_boxes( $meta_boxes ){
               'type' => 'wysiwyg',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
               'options' => array(
+                'media_buttons' => false,
                 'teeny' => true,
                 'dfw' => false,
+                'quicktags' => false,
                 'tinymce' => $department_col_1_custom_content,
               ),
              ),
@@ -432,6 +459,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     array(
       'id' => 'module_row_1_col_2',
       'type' => 'group',
+      'hidden' => array(
+        'phila_template_select', '=', 'one_page_department',
+      ),
       'fields' => array(
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
@@ -524,7 +554,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 
         'fields' => array(
             array(
-             'name' => 'Description',
+             'name' => 'Connect Panel',
              'id'   => $prefix . 'connect_description',
              'type' => 'custom_html',
              'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
@@ -629,23 +659,27 @@ function phila_register_meta_boxes( $meta_boxes ){
             ),
           ),
         ),
-    ),
+    )
   );
 
 // Second row of modules - press release and/or calendar
 $meta_boxes[] = array(
   'id'       => $prefix . 'module_row_2',
-  'title'    => 'Module Row 2',
+  'title'    => 'Row 2',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'low',
+
   'include' => array(
-    'user_role'  => 'administrator',
+    'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
   ),
   'hidden' => array(
-    'phila_template_select', '=', 'one_page_department',
+    'when'  => array(
+      array('phila_template_select', '=', 'one_page_department' ),
+      array('phila_template_select', '=', 'off_site_department' ),
+    ),
+    'relation' => 'or',
   ),
-
       // List of sub-fields
       'fields' => array(
         array(
@@ -778,45 +812,51 @@ $meta_boxes[] = array(
       ),
     );
   $meta_boxes[] = array(
-    'id'       => $prefix . 'full_row_blog',
-    'title'    => 'Full row blog posts (3 total)',
-    'pages'    => array( 'department_page' ),
-    'context'  => 'normal',
-    'priority' => 'low',
-    'include' => array(
-      'user_role'  => 'administrator',
-    ),
-    'visible' => array(
-      'phila_template_select', '=', 'one_page_department',
-    ),
-    'fields' => array(
-      array(
-        'name' => '',
-        'id'   => $prefix . 'full_row_blog_selected',
-        'desc'  => 'Should this page show a full row of blog posts?',
-        'type' => 'checkbox',
-      ),
-    ),
-  );
-
-  $meta_boxes[] = array(
     'id'       => $prefix . 'staff_directory_listing',
     'title'    => 'Staff Directory Listing',
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
     'priority' => 'low',
+
     'include' => array(
-      'user_role'  => 'administrator',
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
     'visible' => array(
       'phila_template_select', '=', 'one_page_department',
     ),
+
     'fields' => array(
       array(
         'name' => '',
         'id'   => $prefix . 'staff_directory_selected',
         'desc'  => 'Include a staff directory section?',
         'type' => 'checkbox',
+        'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'       => $prefix . 'full_row_blog',
+    'title'    => 'Full row blog posts (3 total)',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+    ),
+    'visible' => array(
+      'phila_template_select', '=', 'one_page_department',
+    ),
+
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => $prefix . 'full_row_blog_selected',
+        'desc'  => 'Should this page show a full row of blog posts?',
+        'type' => 'checkbox',
+        'after' => '<p class="description">Enter at least three blog posts in the <a href="/wp-admin/edit.php?post_type=phila_post">Blog Post</a> section.</p>'
       ),
     ),
   );
@@ -827,14 +867,15 @@ $meta_boxes[] = array(
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority'  => 'low',
+
     'include' => array(
-      'user_role'  => 'administrator',
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
     ),
     'visible' => array(
       'phila_template_select', '=', 'one_page_department',
     ),
-    'fields' => array(
 
+    'fields' => array(
       array(
         'id'  => $prefix . 'call_to_action_section',
         'type' => 'group',
@@ -871,12 +912,18 @@ $meta_boxes[] = array(
               'id'    => $prefix . 'action_panel_fa_multi',
               'type'  => 'text',
               'class' => 'action-panel-fa',
+              'hidden' => array(
+                'phila_template_select', '=', 'one_page_department',
+              ),
             ),
             array(
               'name'  => 'Icon Background Circle',
               'id'    => $prefix . 'action_panel_fa_circle_multi',
               'type'  => 'checkbox',
               'class' => 'action-panel-fa',
+              'hidden' => array(
+                'phila_template_select', '=', 'one_page_department',
+              ),
             ),
             array(
               'name'  => 'Link to Content',

@@ -41,6 +41,7 @@ class Phila_Gov_Site_Wide_Alert {
       'context'  => 'side',
       'priority' => 'high',
 
+
       'fields' => array(
         array(
           'name'  => 'Alert Type',
