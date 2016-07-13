@@ -1,3 +1,12 @@
+function phila_get_user_roles_callback() {
+  if (phila_WP_User.includes('multi_department_access') || phila_WP_User.includes('administrator')){
+    return true;
+  }else{
+    return false;
+  }
+
+}
+
 /* For all admins */
 jQuery(document).ready(function($) {
 
@@ -144,6 +153,9 @@ jQuery(document).ready(function($) {
     }
   }
   function setOnePageInputVals(){
+    //Hide row and column description. This can't be done using rwmb conditionals, because it will hide the whole group.
+    $('#phila_module_row_1_col_1_type').parent().parent().hide();
+
     $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
 
     $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel');
@@ -162,6 +174,19 @@ jQuery(document).ready(function($) {
 
     $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'readOnly', true );
 
+    //Create function for setting "Call to Action" panel default values
+    function ctaDefaults() {
+      $('[id^=phila_action_panel_fa_multi]').val('fa-desktop').prop( 'readOnly', true );
+      $('[id^=phila_action_panel_fa_circle_multi]').prop( 'readOnly', true );
+      $('[id^=phila_action_panel_fa_circle_multi]').prop( 'checked', true );
+    };
+
+    ctaDefaults();
+
+    $('#phila_call_to_action_multi .add-clone').click(function(){
+      ctaDefaults();
+    });
+
     $('#phila_module_row_1_col_1_textarea').rules('add', {
       maxlength: 850
     });
@@ -169,6 +194,13 @@ jQuery(document).ready(function($) {
       maxlength: 180
     });
     $( '#phila_department_home_page' ).prop( 'checked', true );
+
+    $('.postarea').hide();
+
+  }
+  function setOffSiteInputVals(){
+    $( '#phila_department_home_page' ).prop( 'checked', true );
+    $('.postarea').hide();
   }
 
   if ( ( typenow == 'department_page' ) )  {
@@ -179,10 +211,19 @@ jQuery(document).ready(function($) {
       $('#phila_template_select').click();
     }
 
+    if ( templateSelect.val() == 'off_site_department' ){
+      setOffSiteInputVals();
+      $('#phila_template_select').click();
+
+    }
+
     templateSelect.change(function() {
       //set fields based on template selection
       if ( templateSelect.val() == 'one_page_department' ){
         setOnePageInputVals();
+      }else if( templateSelect.val() == 'off_site_department'){
+        setOffSiteInputVals();
+
       }else{
         //enable the disabled elements
         $('#phila_module_row_1').each(function(){
@@ -195,6 +236,7 @@ jQuery(document).ready(function($) {
         $('#phila_module_row_1_col_1_textarea').rules('remove', 'maxlength');
         $('[id^=phila_action_panel_summary_multi_]').rules('remove', 'maxlength');
         $( '#phila_department_home_page' ).prop( 'checked', false );
+        $('.postarea').show();
       }
     });
   }

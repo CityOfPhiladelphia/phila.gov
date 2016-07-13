@@ -44,6 +44,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
       'context'  => 'side',
       'priority' => 'high',
 
+
       'fields' => array(
         array(
          'name' => 'Show this page in topic browser? <a href="https://alpha.phila.gov/browse/business/" target="_new">Example</a>',

@@ -3,10 +3,31 @@ for users who do not have the PHILA_ADMIN capability */
 
 jQuery(document).ready(function($){
 
-  //force top category to be checked all the time
-  var required_cat = $('#categorychecklist li:first-child input');
-  if( !required_cat.attr('checked')  ) {
-    required_cat.attr('checked','checked');
+  //force top category to be checked all the time, unless the user has access to mutiple categories
+
+  if( !phila_WP_User.includes('multi_department_access') ) {
+    var required_cat = $('#categorychecklist li:first-child input');
+    if( !required_cat.attr('checked')  ) {
+      required_cat.attr('checked','checked');
+    }
+  }
+
+  if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
+  //At least one category must be selected
+  $("#publish").one('click', function () {
+
+    var categories = document.getElementsByName("post_category[]");
+
+     if(categories[0].checked==false && categories[1].checked==false && categories[2].checked==false) {
+
+      $('#categorydiv').addClass('error');
+
+      $('#categorydiv').before('<label id="title-error" class="error" for="categorydiv">Category selection is required.</label>');
+
+      return false;
+     }
+     return true;
+   });
   }
 
   //hide all category and tag menu items, department authors shouldn't see those.
@@ -34,7 +55,6 @@ jQuery(document).ready(function($){
   }
   //add correct menu classes to 'nav menu' link
   var currentURL = window.location.pathname;
-
 
   if (currentURL.indexOf('nav-menus') > -1){
     $('#menu-posts-department_page').removeClass('wp-not-current-submenu');

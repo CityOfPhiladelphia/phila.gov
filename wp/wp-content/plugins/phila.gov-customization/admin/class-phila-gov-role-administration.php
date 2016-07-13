@@ -19,7 +19,7 @@ class Phila_Gov_Role_Administration {
 
     add_action('admin_head', array( $this, 'tinyMCE_edits' ) );
 
-    add_filter( 'default_hidden_meta_boxes',  array( $this, 'phila_hide_non_admin_meta_boxes'), 10, 2 );
+    //add_filter( 'default_hidden_meta_boxes',  array( $this, 'phila_hide_non_admin_meta_boxes'), 10, 2 );
 
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
@@ -235,16 +235,6 @@ class Phila_Gov_Role_Administration {
     }
   }
 
-
-  public function phila_hide_non_admin_meta_boxes( $hidden, $screen ) {
-    if ( ! current_user_can( PHILA_ADMIN ) ){
-      return array( 'categorydiv');
-
-    }else{
-      return $hidden;
-    }
-  }
-
   /**
    * Add custom js to force category selection for Department Author roles
    *
@@ -253,8 +243,11 @@ class Phila_Gov_Role_Administration {
 
   function administration_admin_scripts() {
     if ( ! current_user_can( PHILA_ADMIN ) ){
+
       wp_enqueue_script( 'admin-department-author-script', plugins_url( 'js/admin-department-author.js' , __FILE__ ) );
+
       wp_register_style( 'admin-department-author', plugins_url( 'css/admin-department-author.css' , __FILE__  ) );
+
       wp_enqueue_style( 'admin-department-author' );
 
     }
