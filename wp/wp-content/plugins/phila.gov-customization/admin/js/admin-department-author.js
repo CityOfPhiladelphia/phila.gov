@@ -12,6 +12,24 @@ jQuery(document).ready(function($){
     }
   }
 
+  if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
+  //At least one category must be selected
+  $("#publish").one('click', function () {
+
+    var categories = document.getElementsByName("post_category[]");
+
+     if(categories[0].checked==false && categories[1].checked==false && categories[2].checked==false) {
+
+      $('#categorydiv').addClass('error');
+
+      $('#categorydiv').before('<label id="title-error" class="error" for="categorydiv">Category selection is required.</label>');
+
+      return false;
+     }
+     return true;
+   });
+  }
+
   //hide all category and tag menu items, department authors shouldn't see those.
   $('a[href*="edit-tags.php"]').parent().css('display', 'none');
 
@@ -37,7 +55,6 @@ jQuery(document).ready(function($){
   }
   //add correct menu classes to 'nav menu' link
   var currentURL = window.location.pathname;
-
 
   if (currentURL.indexOf('nav-menus') > -1){
     $('#menu-posts-department_page').removeClass('wp-not-current-submenu');

@@ -2,6 +2,9 @@
 #content-blocks .add-clone,
 #content-blocks .remove-clone,
 
+/*non-admins should not create new categories*/
+#category-adder,
+
 a[href^="nav-menus.php"],
 a[href$="nav-menus.php?action=locations"],
 #wp-admin-bar-new-content,

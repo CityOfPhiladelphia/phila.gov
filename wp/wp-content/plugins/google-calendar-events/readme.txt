@@ -1,9 +1,9 @@
 === Simple Calendar - Google Calendar Plugin ===
 Contributors: moonstonemedia, pderksen, nickyoung87, nekojira, rosshanney
 Tags: google calendar, calendar, calendars, google, event calendar, custom calendar, custom calendars, event, events
-Requires at least: 4.1
-Tested up to: 4.5
-Stable tag: 3.1.1
+Requires at least: 4.2
+Tested up to: 4.6
+Stable tag: 3.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,12 +93,19 @@ We'd love your help! Here's a few things you can do:
 
 == Changelog ==
 
+= 3.1.2 - July 13, 2016 =
+
+* Fix: Multi-day events do not stop short a day.
+* Fix: Events that end at midnight no longer duplicate on the next day.
+* Fix: Header shows correct date in list view when there are no events to show.
+* Tweak: Tightened up security a bit.
+* Dev: Tested up to WordPress 4.6.
+
 = 3.1.1 - June 16, 2016 =
 
 * Fix: Correct all-day events displayed in multiple days in some cases.
 * Fix: Paging navigation links now hidden when no more events exist past the current page in list view.
 * Tweak: "Powered by Simple Calendar" author credit opt in moved to individual per calendar settings.
-
 
 = 3.1.0 - May 25, 2016 =
 
