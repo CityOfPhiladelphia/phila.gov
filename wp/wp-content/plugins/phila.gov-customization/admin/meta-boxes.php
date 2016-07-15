@@ -306,6 +306,22 @@ function phila_register_meta_boxes( $meta_boxes ){
        'size'  => '60'
      ),
      array(
+       'name'  => 'Hero Header Title (line 1)',
+       'id'    => $prefix . 'hero_header_title_l1',
+       'type'  => 'text',
+       'class' => 'hero-header-title-l1',
+       'desc'  => 'Title that will be placed over the header image.',
+       'size'  => '60'
+     ),
+     array(
+       'name'  => 'Hero Header Title (line 2)',
+       'id'    => $prefix . 'hero_header_title_l2',
+       'type'  => 'text',
+       'class' => 'hero-header-title-l2',
+       'desc'  => 'Title that will be placed over the header image.',
+       'size'  => '60'
+     ),
+     array(
        'name'  => 'Hero Header Body Copy',
        'id'    => $prefix . 'hero_header_body_copy',
        'type'  => 'textarea',

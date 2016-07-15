@@ -98,6 +98,25 @@
       margin-bottom: 0;
     }
   }
+  .measureline1,
+  .measureline2 {
+    position: absolute;
+    white-space: nowrap;
+    visibility: hidden;
+    font-size: 100px;
+    line-height: 3rem;
+    letter-spacing: .03rem;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .measureline1 {
+    font-size: 30px;
+  }
+  .measureline2 {
+    font-size: 100px;
+
+  }
   .department-header {
     position: relative;
     overflow:hidden;
@@ -139,14 +158,14 @@
         padding: 0 $spacing-medium;;
         h1 {
           // display: inline-block;
-          width:100%;
-          font-size: 2.5rem;
-          line-height: 3rem;
-          margin:$spacing-small 0;
+          width:300px;
+          font-size: 1.5rem;
+          line-height: 1;
+          margin:$spacing-medium 0 $spacing-small;
           .strong {
-            font-size: 3.5rem;
-            white-space: pre;
             font-weight: bold;
+          }
+          .emphasis {
             text-transform: uppercase;
           }
           .break-after{
@@ -159,11 +178,6 @@
               content: '\A';
             }
           }
-        }
-        .responsive_headline1,
-        .responsive_headline2 {
-          display: block;
-          width:100%;
         }
         .sub-head {
           font-weight:700;
