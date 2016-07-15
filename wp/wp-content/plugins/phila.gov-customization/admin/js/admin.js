@@ -206,6 +206,13 @@ jQuery(document).ready(function($) {
   if ( ( typenow == 'department_page' ) )  {
     var templateSelect = $('#phila_template_select');
 
+    $('#phila_hero_header_title_l1').rules( 'add' , {
+      maxlength: 20
+    });
+    $('#phila_hero_header_title_l2').rules( 'add' , {
+      maxlength: 15
+    });
+
     if ( templateSelect.val() == 'one_page_department' ){
       setOnePageInputVals();
       $('#phila_template_select').click();
