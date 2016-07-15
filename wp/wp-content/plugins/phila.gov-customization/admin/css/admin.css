@@ -3,6 +3,18 @@
 input[type="url"]{
   width:100%;
 }
+/*better column widths*/
+.fixed .column-categories, .fixed .column-role {
+    width: 25%;
+}
+th[class*="column-taxonomy"], .fixed .column-tags{
+  width:10%;
+}
+
+.manage-column.column-wpfront-user-role-editor-role-permission-column-key, .column-wpfront-user-role-editor-role-permission-column-key {
+  width: 15%;
+  text-align: left;
+}
 
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
