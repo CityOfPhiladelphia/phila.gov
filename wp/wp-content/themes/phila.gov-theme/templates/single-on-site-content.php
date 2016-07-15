@@ -10,6 +10,7 @@
 
 <div class="row">
   <div class="columns">
+    <?php // TODO: Figure out what to do with the title on Staff Template ?>
     <?php the_title( '<h2 class="sub-page-title">', '</h2>' ); ?>
   </div>
 </div>
@@ -39,6 +40,14 @@
       <?php get_template_part( 'partials/resource', 'list' ); ?>
     </section>
     <!-- End Resource List Template Display -->
+  <?php endif; ?>
+
+  <?php if ($user_selected_template == 'staff_directory') : ?>
+    <!-- Begin Staff Directory Template Display -->
+    <section class="apply-template">
+      <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
+    </section>
+    <!-- End Staff Directory Template Display -->
   <?php endif; ?>
 
   <?php if ($user_selected_template == 'one_page_department') : ?>
