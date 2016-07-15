@@ -1,0 +1,10 @@
+.callout{
+  &.important {
+    background-color: $ghost-gray;
+    border-left-color: $flyers-orange;
+    margin: $spacing-large 0;
+    p {
+      color: $dark-gray;
+    }
+  }
+}
