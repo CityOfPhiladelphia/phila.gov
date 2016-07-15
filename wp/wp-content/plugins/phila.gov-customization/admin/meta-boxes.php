@@ -310,7 +310,7 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'    => $prefix . 'hero_header_title_l1',
        'type'  => 'text',
        'class' => 'hero-header-title-l1',
-       'desc'  => 'Title that will be placed over the header image.',
+       'desc'  => 'Portion of the title that will be displayed in standard case. Maximum of 20 characters',
        'size'  => '60'
      ),
      array(
@@ -318,7 +318,7 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'    => $prefix . 'hero_header_title_l2',
        'type'  => 'text',
        'class' => 'hero-header-title-l2',
-       'desc'  => 'Title that will be placed over the header image.',
+       'desc'  => 'Portion of the title that will be displayed in a larger font and forced uppercase. Maximum of 15 characters.',
        'size'  => '60'
      ),
      array(
