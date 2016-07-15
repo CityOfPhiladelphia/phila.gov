@@ -130,9 +130,9 @@ jQuery(document).ready(function($) {
 
   //Set Hero Header Tagline font sizes
   if( $('.department-header')) {
-    $('.intro').addClass('hide');
     var smallFontSize = 50;
     var largeFontSize = 100;
+    $('.intro').addClass('hide');
 
     //Set line two font-size
     if( $('.measureline2').width() > 350 ) {
@@ -150,9 +150,8 @@ jQuery(document).ready(function($) {
         $('.measureline1').css('font-size', smallFontSize);
       }
     }
+    //Append new styles to head
     $('<style type="text/css">@media screen and (min-width: 40em){ .tagline1, .tagline2 { display:block; width:100%; } .tagline1{ font-size:' + smallFontSize + 'px;} .tagline2{ font-size:' + largeFontSize + 'px;}} </style>').appendTo("head");
-    // $('.measureline2').toggle();
     $('.intro').removeClass('hide');
-
   }
 });
