@@ -127,4 +127,32 @@ jQuery(document).ready(function($) {
       }
     });
   }
+
+  //Set Hero Header Tagline font sizes
+  if( $('.department-header')) {
+    $('.intro').addClass('hide');
+    var smallFontSize = 50;
+    var largeFontSize = 100;
+
+    //Set line two font-size
+    if( $('.measureline2').width() > 350 ) {
+      console.log('Test is wider that h1');
+      while ( $('.measureline2').width() > 350 ) {
+        largeFontSize = largeFontSize - 10;
+        $('.measureline2').css('font-size', largeFontSize);
+      }
+    }
+    //Set line one font-size
+    if( $('.measureline1').width() >= $('.intro h1').width()) {
+      console.log('Test is wider that h1');
+      while ( $('.measureline1').width() >= $('.intro h1').width() ) {
+        smallFontSize = smallFontSize - 1;
+        $('.measureline1').css('font-size', smallFontSize);
+      }
+    }
+    $('<style type="text/css">@media screen and (min-width: 40em){ .tagline1, .tagline2 { display:block; width:100%; } .tagline1{ font-size:' + smallFontSize + 'px;} .tagline2{ font-size:' + largeFontSize + 'px;}} </style>').appendTo("head");
+    // $('.measureline2').toggle();
+    $('.intro').removeClass('hide');
+
+  }
 });
