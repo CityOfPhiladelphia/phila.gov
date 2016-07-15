@@ -44,6 +44,21 @@ if (has_category()):
           $staff_phone_unformatted = $staff_phone['area'] . $staff_phone['phone-co-code'] . $staff_phone['phone-subscriber-number'];
           $staff_phone_formatted = '(' . $staff_phone['area'] . ') ' . $staff_phone['phone-co-code'] . '-' . $staff_phone['phone-subscriber-number'];
         }
+
+        $staff_social = rwmb_meta( 'phila_staff_social' );
+        print_r($staff_social);
+
+        if ( is_array( $staff_social )):
+
+        $staff_social_facebook = isset( $staff_social['phila_staff_facebook'] ) ? $staff_social['phila_staff_facebook'] :'';
+
+        $staff_social_twitter = isset( $staff_social['phila_staff_twitter'] ) ? $staff_social['phila_staff_twitter'] :'';
+
+        $staff_social_instagram = isset( $staff_social['phila_staff_instagram'] ) ? $staff_social['phila_staff_instagram'] :'';
+
+        endif;
+
+
         $staff_leadership = rwmb_meta('phila_leadership', $args = array('type'=>'checkbox'));
       }
       if ( $staff_leadership ):
@@ -74,6 +89,26 @@ if (has_category()):
 
         if ( isset( $staff_email ) && !$staff_email == ''):
           $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
+        endif;
+
+        if ( isset( $staff_social_twitter ) || isset( $staff_social_facebook ) || isset( $staff_social_instagram ) ):
+          $staff_leadership_output .= '<div class="">';
+            //Facebook
+            if ( !$staff_social_facebook == '') :
+                $staff_leadership_output .=  '<div class="small-8 columns center pvxs">';
+                $staff_leadership_output .= '<a href="' . $staff_social_facebook . '" target="_blank" class="phs"><i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a></div>';
+            endif;
+            //Twitter
+            if ( !$staff_social_twitter == '') :
+                $staff_leadership_output .=  '<div class="small-8 columns center pvxs">';
+                $staff_leadership_output .= '<a href="' . $staff_social_twitter . '" target="_blank" class="phs"><i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a></div>';
+            endif;
+            //Instagram
+            if ( !$staff_social_instagram == '') :
+                $staff_leadership_output .=  '<div class="small-8 columns center pvxs">';
+                $staff_leadership_output .= '<a href="' . $staff_social_instagram . '" target="_blank" class="phs"><i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a></div>';
+            endif;
+          $staff_leadership_output .= '</div>';
         endif;
 
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
