@@ -109,6 +109,35 @@ class Phila_Gov_Staff_Directory {
           'class' => 'phone',
         ),
         array(
+          'id' => $prefix . 'staff_social',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'type' => 'heading',
+              'name' => 'Social',
+            ),
+            array(
+             'name' => 'Facebook URL',
+             'id'   => $prefix . 'staff_facebook',
+             'type' => 'url',
+             'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+            ),
+            array(
+             'name' => 'Twitter URL',
+             'id'   => $prefix . 'staff_twitter',
+             'type' => 'url',
+             'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+            ),
+            array(
+             'name' => 'Instagram URL',
+             'id'   => $prefix . 'staff_instagram',
+             'type' => 'url',
+             'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+            ),
+          ),
+        ),
+        array(
           'type'  => 'divider',
         ),
         array(
