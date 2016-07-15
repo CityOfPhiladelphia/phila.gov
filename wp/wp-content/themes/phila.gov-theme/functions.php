@@ -192,6 +192,32 @@ function phila_filter_title( $title ){
   return $title;
 }
 
+add_action('wp_head', 'phila_open_graph', 5);
+
+function phila_open_graph() {
+  global $post;
+  global $title;
+
+  if('department_page' == get_post_type() ){
+    $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
+    $img_src = $hero_header_image;
+  }elseif( has_post_thumbnail( $post->ID ) ){
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
+    $img_src = array_shift( $img );
+    $type = 'article';
+  }
+  $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  ?>
+  <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
+  <meta property="og:description" content="<?php echo_item_meta_desc(); ?>"/>
+  <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
+  <meta property="og:url" content="<?php echo $link ?>"/>
+  <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
+  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://alpha.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
+  <?php
+}
+
+
 /**
  * Register widget areas for all categories. To appear on department pages.
  *
