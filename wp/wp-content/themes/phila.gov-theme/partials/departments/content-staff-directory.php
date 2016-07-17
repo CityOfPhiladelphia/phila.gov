@@ -46,7 +46,6 @@ if (has_category()):
         }
 
         $staff_social = rwmb_meta( 'phila_staff_social' );
-        print_r($staff_social);
 
         if ( is_array( $staff_social )):
 
@@ -127,6 +126,7 @@ if (has_category()):
           <td>' . $staff_title . '</td>
           <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
           <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>
+          <td></td>
         </tr>';
       endif;
     endwhile;
@@ -160,6 +160,7 @@ if (has_category()):
                   <th scope="col">Job Title</th>
                   <th scope="col">Email</th>
                   <th scope="col">Phone #</th>
+                  <th scope="col">Social</th>
                 </tr>
               </thead>
               <tbody>
