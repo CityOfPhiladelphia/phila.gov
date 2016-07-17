@@ -90,23 +90,20 @@ if (has_category()):
         if ( isset( $staff_email ) && !$staff_email == ''):
           $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
         endif;
-
+        //TODO: Adjust style for social icons
         if ( isset( $staff_social_twitter ) || isset( $staff_social_facebook ) || isset( $staff_social_instagram ) ):
-          $staff_leadership_output .= '<div class="">';
+          $staff_leadership_output .= '<div class="staff-social">';
             //Facebook
             if ( !$staff_social_facebook == '') :
-                $staff_leadership_output .=  '<div class="small-8 columns center pvxs">';
-                $staff_leadership_output .= '<a href="' . $staff_social_facebook . '" target="_blank" class="phs"><i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a></div>';
+                $staff_leadership_output .= '<a href="' . $staff_social_facebook . '" target="_blank" class="phs"><i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
             endif;
             //Twitter
             if ( !$staff_social_twitter == '') :
-                $staff_leadership_output .=  '<div class="small-8 columns center pvxs">';
-                $staff_leadership_output .= '<a href="' . $staff_social_twitter . '" target="_blank" class="phs"><i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a></div>';
+                $staff_leadership_output .= '<a href="' . $staff_social_twitter . '" target="_blank" class="phs"><i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
             endif;
             //Instagram
             if ( !$staff_social_instagram == '') :
-                $staff_leadership_output .=  '<div class="small-8 columns center pvxs">';
-                $staff_leadership_output .= '<a href="' . $staff_social_instagram . '" target="_blank" class="phs"><i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a></div>';
+                $staff_leadership_output .= '<a href="' . $staff_social_instagram . '" target="_blank" class="phs"><i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
             endif;
           $staff_leadership_output .= '</div>';
         endif;
