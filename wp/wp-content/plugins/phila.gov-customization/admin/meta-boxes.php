@@ -972,6 +972,97 @@ $meta_boxes[] = array(
 );
 
 
+$metabox_grid_options = array(
+ 'name' => 'Row Layout',
+ 'id'   => $prefix . 'grid_options',
+ 'desc'  => 'Choose the row layout.',
+ 'type' => 'select',
+ 'placeholder' => 'Select...',
+ 'options' => array(
+   $prefix . 'grid_options_full' => 'Full Width',
+   $prefix . 'grid_options_thirds' => '2/3 x 1/3',
+   ),
+ );
+
+ $metabox_full_options = array(
+  'name' => 'Full Width',
+  'id'   => $prefix . 'full_width_col',
+  'desc'  => 'Choose to display full width content.',
+  'type' => 'select',
+  'placeholder' => 'Select...',
+  'options' => array(
+    $prefix . 'full_width_col_blog_posts' => 'Blog Posts',
+    $prefix . 'full_width_col_custom_text' => 'Custom Text',
+    ),
+    'hidden' => array(
+      'phila_grid_options',
+      '!=',
+      'phila_grid_options_full'
+    ),
+  );
+
+
+$metabox_thirds_option_one = array(
+ 'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+ 'id'   => $prefix . 'two_thirds_col',
+ 'desc'  => 'Choose to display recent blog posts or custom markup text.',
+ 'type' => 'select',
+ 'placeholder' => 'Select...',
+ 'options' => array(
+   $prefix . 'two_thirds_column_blog_posts' => 'Blog Posts',
+   $prefix . 'two_thirds_column_custom_text' => 'Custom Text',
+   ),
+ );
+
+ $metabox_thirds_option_two = array(
+  'name' => 'Column 2 <br/><small>(1/3 width column)</small>',
+  'id'   => $prefix . 'one_third_column',
+  'desc'  => 'Choose to display recent blog posts or custom markup text.',
+  'type' => 'select',
+  'placeholder' => 'Select...',
+  'options' => array(
+    $prefix . 'one_third_column_blog_posts' => 'Blog Posts',
+    $prefix . 'one_third_column_connect' => 'Connect Panel',
+    $prefix . 'one_third_column_custom_text' => 'Custom Text',
+    ),
+  );
+
+  $metabox_thirds_options = array(
+   'name' => '2/3 x 1/3 Options',
+   'id'   => $prefix . 'two_thirds_options',
+   'type' => 'group',
+   'hidden' => array(
+     'phila_grid_options',
+     '!=',
+     'phila_grid_options_thirds'
+   ),
+   'fields' => array(
+     $metabox_thirds_option_one,
+     $metabox_thirds_option_two
+   ),
+ );
+
+ $metabox_two_col_row = array(
+   'name'  => 'Two Column Row',
+   'id'    => $prefix . 'two_column_row',
+   'type'  => 'group',
+   'clone' => true,
+   'sort_clone' => true,
+   'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options ),
+ );
+
+//Department Hompage metaboxes
+$meta_boxes[] = array(
+  'id'       => $prefix . 'department_homepage',
+  'title'    => 'Department Homepage',
+  'pages' => array( 'department_page' ),
+  'priority' => 'high',
+
+  'fields' => array(
+    $metabox_two_col_row,
+  )
+);
+
 return $meta_boxes;
 
 }
