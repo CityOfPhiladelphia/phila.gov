@@ -237,6 +237,32 @@ function phila_register_meta_boxes( $meta_boxes ){
                      $prefix . 'resource_map' => 'Map',
                    ),
                   ),
+                  array(
+                     'name' => __('Featured Resource', 'rwmb'),
+                     'id'   => $prefix . 'featured_resource',
+                     'class'   => $prefix . 'featured-resource',
+                     'type' => 'checkbox',
+                  ),
+                  array(
+                     'name' => __('Featured Resource Summary', 'rwmb'),
+                     'id'   => $prefix . 'featured_summary',
+                     'class'   => $prefix . 'featured-summary',
+                     'type' => 'textarea',
+                     //TODO: Conditional logic doesn't appear to work on cloned fields.
+                     //'hidden' => array( 'phila_featured_resource', '!=', true ),
+                  ),
+                  array(
+                    'name'  => 'Display Order',
+                    'id'    => $prefix . 'display_order',
+                    'type'  => 'select',
+                    'class' => 'display-order',
+                    'options' => array(
+                      '1' => '1',
+                      '2' => '2',
+                      '3' => '3',
+                      '4' => '4',
+                    ),
+                  ),
                 ),
               ),
             ),
