@@ -46,14 +46,21 @@ if (has_category()):
         }
 
         $staff_social = rwmb_meta( 'phila_staff_social' );
+        $staff_social_output = '';
 
         if ( is_array( $staff_social )):
 
-        $staff_social_facebook = isset( $staff_social['phila_staff_facebook'] ) ? $staff_social['phila_staff_facebook'] :'';
+          if ( isset( $staff_social['phila_staff_facebook'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_facebook'] . '" target="_blank" class="phs"><i class="fa fa-facebook fa-lg" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
+          endif;
 
-        $staff_social_twitter = isset( $staff_social['phila_staff_twitter'] ) ? $staff_social['phila_staff_twitter'] :'';
+          if ( isset( $staff_social['phila_staff_twitter'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" target="_blank" class="phs"><i class="fa fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
+          endif;
 
-        $staff_social_instagram = isset( $staff_social['phila_staff_instagram'] ) ? $staff_social['phila_staff_instagram'] :'';
+          if ( isset( $staff_social['phila_staff_instagram'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" target="_blank" class="phs"><i class="fa fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
+          endif;
 
         endif;
 
@@ -64,7 +71,7 @@ if (has_category()):
         $staff_options = rwmb_meta('phila_leadership_options');
         $staff_display_order = intval( $staff_options['phila_display_order'] );
         $staff_summary = $staff_options['phila_summary'];
-        $staff_leadership_output .= '<div class="row staff-leadership">';
+        $staff_leadership_output .= '<div class="row">';
         // Leadership Thumbnail
         if ( has_post_thumbnail() ):
           $staff_photo = get_the_post_thumbnail( $post->ID, 'staff-thumb', 'class= staff-thumbnail' );
@@ -89,22 +96,9 @@ if (has_category()):
         if ( isset( $staff_email ) && !$staff_email == ''):
           $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
         endif;
-        //TODO: Adjust style for social icons
-        if ( isset( $staff_social_twitter ) || isset( $staff_social_facebook ) || isset( $staff_social_instagram ) ):
-          $staff_leadership_output .= '<div class="staff-social">';
-            //Facebook
-            if ( !$staff_social_facebook == '') :
-                $staff_leadership_output .= '<a href="' . $staff_social_facebook . '" target="_blank" class="phs"><i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
-            endif;
-            //Twitter
-            if ( !$staff_social_twitter == '') :
-                $staff_leadership_output .= '<a href="' . $staff_social_twitter . '" target="_blank" class="phs"><i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
-            endif;
-            //Instagram
-            if ( !$staff_social_instagram == '') :
-                $staff_leadership_output .= '<a href="' . $staff_social_instagram . '" target="_blank" class="phs"><i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
-            endif;
-          $staff_leadership_output .= '</div>';
+
+        if ( isset( $staff_social_output ) && !$staff_social_output == ''):
+          $staff_leadership_output .= '<div class="social">' . $staff_social_output . '</div>';
         endif;
 
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
@@ -126,14 +120,15 @@ if (has_category()):
           <td>' . $staff_title . '</td>
           <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
           <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>
-          <td></td>
+          <td class="social">' . $staff_social_output . '</td>
         </tr>';
       endif;
     endwhile;
 
+    echo '<section class="mvm staff-directory">';
 
     if (!empty($staff_leadership_array)):?>
-      <section class="mvm staff-directory">
+      <div class="mvm staff-leadership">
         <div class="row">
           <div class="large-24 columns">
             <h2 class="contrast">Leadership</h2>
@@ -145,11 +140,11 @@ if (has_category()):
             ?>
           </div>
         </div>
-      </section>
+      </div>
     <?php endif; ?>
     <!-- Begin Staff Directory Table -->
     <?php if (!$all_staff_table_output == ''): ?>
-      <section class="mvm">
+      <div class="mvm all-staff-table">
         <div class="row">
           <div class="large-24 columns">
             <h2 class="contrast">All Staff</h2>
@@ -169,10 +164,10 @@ if (has_category()):
             </table>
           </div>
         </div>
-      </section>
+      </div>
     <?php endif; ?>
     <?php else: ?>
-      <section class="mvm">
+      <div class="mvm">
         <div class="row">
           <div class="large-24 columns">
             <div class="placeholder center mbl mtm mtl-mu">
@@ -180,11 +175,11 @@ if (has_category()):
             </div>
           </div>
         </div>
-      </section>
+      </div>
     <?php endif; ?>
   <?php wp_reset_query();?>
 <?php else: ?>
-  <section class="mvm">
+  <div class="mvm">
     <div class="row">
       <div class="large-24 columns">
         <div class="placeholder center mbl mtm mtl-mu">
@@ -192,5 +187,6 @@ if (has_category()):
         </div>
       </div>
     </div>
-  </section>
+  </div>
 <?php endif; ?>
+<?php echo '</section>'; ?>
