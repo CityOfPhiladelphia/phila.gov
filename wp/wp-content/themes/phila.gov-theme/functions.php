@@ -162,7 +162,7 @@ function phila_filter_title( $title ){
 
         if ( phila_is_department_homepage( $post ) ){
 
-          $title['title'] = $page_title  . $sep . $post_type->labels->singular_name . $sep . $site_title;
+          $title['title'] = $page_title . $sep . $site_title;
 
         }else{
           $category = get_the_category($post->ID);
@@ -170,11 +170,11 @@ function phila_filter_title( $title ){
           if ( $category[0]->category_parent != 0 ){
 
             $parent = get_category( $category[0]->category_parent);
-            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $site_title;
 
           }else{
 
-            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $site_title;
 
           }
         }
