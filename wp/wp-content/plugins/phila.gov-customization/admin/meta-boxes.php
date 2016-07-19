@@ -41,6 +41,11 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'side',
     'priority' => 'high',
 
+    'include' => array(
+      'relation' => 'OR',
+      'user_role' => 'administrator',
+      'custom'  => 'phila_master_homepage_editor'
+    ),
 
     'fields' => array(
       array(
@@ -959,4 +964,21 @@ function phila_group_add_clone_button_text( $text, $field ) {
     $text = __( '+ Add an Item', 'textdomain' );
   }
   return $text;
+}
+
+/**
+ *
+ * Returns true/false based on existence of secondary role. Metabox user_role doesn't see secondary roles, so a custom function is required. 
+ *
+ **/
+add_action( 'admin_head', 'phila_master_homepage_editor' );
+
+function phila_master_homepage_editor(){
+
+  $assigned_roles = array_values( wp_get_current_user()->roles );
+
+  if (in_array( 'secondary_master_homepage_editor', $assigned_roles )){
+    return true;
+  }
+  return false;
 }
