@@ -155,7 +155,7 @@ function phila_filter_title( $title ){
       if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' || $post_type->name == 'press_release' ) {
 
         $cat = get_the_category();
-        //TODO: Update to accept content owner
+
         $title['title'] = $page_title . $sep . $cat[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
 
       }else{
