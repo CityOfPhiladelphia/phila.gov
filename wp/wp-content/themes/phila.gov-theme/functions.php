@@ -199,6 +199,7 @@ function phila_open_graph() {
   global $title;
 
   if('department_page' == get_post_type() ){
+    //TODO: fetch the parent hero header if it's a child page
     $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
     $img_src = $hero_header_image;
   }elseif( has_post_thumbnail( $post->ID ) ){
