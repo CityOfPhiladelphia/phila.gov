@@ -15,8 +15,6 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'admin_head', array( $this, 'add_meta_data') );
 
-    add_action( 'admin_head', array( $this, 'remove_meta_boxes' ) );
-
     add_action('admin_head', array( $this, 'tinyMCE_edits' ) );
 
     //add_filter( 'default_hidden_meta_boxes',  array( $this, 'phila_hide_non_admin_meta_boxes'), 10, 2 );
@@ -216,22 +214,6 @@ class Phila_Gov_Role_Administration {
               update_post_meta( $post->ID, '_category', $cat->slug );
             }
         }
-    }
-  }
-
-  /**
-   * Hides page attributes meta box for non-admins.
-   *
-   * @since 0.15.6
-   *
-   */
-  public function remove_meta_boxes(){
-    if ( is_admin() ) {
-      if ( ! current_user_can( PHILA_ADMIN ) ) {
-        remove_meta_box('pageparentdiv', 'page', 'side');
-        remove_meta_box('news-admin-only', 'news_post', 'side');
-
-      }
     }
   }
 
