@@ -984,23 +984,172 @@ $metabox_grid_options = array(
    ),
  );
 
- $metabox_full_options = array(
+
+
+ $metabox_full_options_select = array(
   'name' => 'Full Width',
-  'id'   => $prefix . 'full_width_col',
+  'id'   => $prefix . 'full_options_select',
   'desc'  => 'Choose to display full width content.',
   'type' => 'select',
   'placeholder' => 'Select...',
   'options' => array(
-    $prefix . 'full_width_col_blog_posts' => 'Blog Posts',
-    $prefix . 'full_width_col_custom_text' => 'Custom Text',
-    ),
-    'hidden' => array(
-      'phila_grid_options',
-      '!=',
-      'phila_grid_options_full'
+    $prefix . 'full_width_calendar' => 'One Column (Full-Width Calendar)',
+    $prefix . 'full_width_press_releases' => 'One Column (Full-Width Press Releases)',
     ),
   );
 
+// Full Width Calendar
+  $meta_full_calendar = array(
+    'name' => 'Full Width Calendar',
+    'id' => $prefix . 'full_width_calendar',
+    'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
+    'type' => 'group',
+    // List of sub-fields
+    'fields' => array(
+      array(
+        'name' => 'Calender ID',
+        'id'   => $prefix . 'full_width_calendar_id',
+        'desc'  => 'ID of the calendar',
+        'type' => 'number'
+      ),
+      array(
+        'name' => 'Calendar URL',
+        'id'   => $prefix . 'full_width_calendar_url',
+        'desc'  => 'URL of the full calendar',
+        'type' => 'url'
+      ),
+    ),
+  );
+
+  $metabox_full_options = array(
+   'name' => '2/3 x 1/3 Options',
+   'id'   => $prefix . 'full_options',
+   'type' => 'group',
+   'visible' => array(
+     'phila_grid_options',
+     '=',
+     'phila_grid_options_full'
+   ),
+   'fields' => array(
+     $metabox_full_options_select,
+     $meta_full_calendar,
+   ),
+ );
+
+// End Full options
+
+$metabox_connect = array(
+        'id' => $prefix . 'connect_panel',
+        'type' => 'group',
+        'hidden' => array('phila_one_third_col_option', '!=', 'phila_one_third_column_connect'),
+
+        'fields' => array(
+            array(
+             'name' => 'Connect Panel',
+             'id'   => $prefix . 'connect_description',
+             'type' => 'custom_html',
+             'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
+             <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
+            ),
+            array(
+              'id' => $prefix . 'connect_social',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Social',
+                ),
+                array(
+                 'name' => 'Facebook URL',
+                 'id'   => $prefix . 'connect_social_facebook',
+                 'type' => 'url',
+                 'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+                ),
+                array(
+                 'name' => 'Twitter URL',
+                 'id'   => $prefix . 'connect_social_twitter',
+                 'type' => 'url',
+                 'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+                ),
+                array(
+                 'name' => 'Instagram URL',
+                 'id'   => $prefix . 'connect_social_instagram',
+                 'type' => 'url',
+                 'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+                ),
+              ),
+            ),
+            array(
+              'id' => $prefix . 'connect_address',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Address',
+                ),
+                array(
+                 'name' => 'Street Address 1',
+                 'id'   => $prefix . 'connect_address_st_1',
+                 'type' => 'text',
+                ),
+                array(
+                 'name' => 'Street Address 2',
+                 'id'   => $prefix . 'connect_address_st_2',
+                 'type' => 'text',
+                ),
+                array(
+                 'name' => 'City',
+                 'id'   => $prefix . 'connect_address_city',
+                 'type' => 'text',
+                 'std' => 'Philadelphia',
+                ),
+                array(
+                 'name' => 'State',
+                 'id'   => $prefix . 'connect_address_state',
+                 'type' => 'text',
+                 'std' => 'PA',
+                ),
+                array(
+                 'name' => 'Zip',
+                 'id'   => $prefix . 'connect_address_zip',
+                 'type' => 'text',
+                 'std' => '19107',
+                ),
+              ),
+            ),
+            array(
+              'id' => $prefix . 'connect_general',
+              'type' => 'group',
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Contact',
+                ),
+                array(
+                   'name' => 'Phone',
+                   'id'   => $prefix . 'connect_phone',
+                   'type' => 'phone',
+                   'desc' => '(###)-###-####',
+                 ),
+                array(
+                  'name' => 'Fax',
+                  'id'   => $prefix . 'connect_fax',
+                  'type' => 'phone',
+                  'desc' => '(###)-###-####',
+                ),
+                array(
+                  'name' => 'Email',
+                  'id'   => $prefix . 'connect_email',
+                  'type' => 'email',
+                  'desc' => 'example@phila.gov',
+                ),
+              ),
+            ),
+          ),
+        );
 
 $metabox_thirds_option_one = array(
  'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
@@ -1015,15 +1164,22 @@ $metabox_thirds_option_one = array(
  );
 
  $metabox_thirds_option_two = array(
-  'name' => 'Column 2 <br/><small>(1/3 width column)</small>',
-  'id'   => $prefix . 'one_third_column',
-  'desc'  => 'Choose to display recent blog posts or custom markup text.',
-  'type' => 'select',
-  'placeholder' => 'Select...',
-  'options' => array(
-    $prefix . 'one_third_column_blog_posts' => 'Blog Posts',
-    $prefix . 'one_third_column_connect' => 'Connect Panel',
-    $prefix . 'one_third_column_custom_text' => 'Custom Text',
+   'id' => $prefix . 'one_third_col',
+   'type' => 'group',
+   'fields' => array(
+      array(
+      'name' => 'Column 2 <br/><small>(1/3 width column)</small>',
+      'id'   => $prefix . 'one_third_col_option',
+      'desc'  => 'Choose to display recent blog posts or custom markup text.',
+      'type' => 'select',
+      'placeholder' => 'Select...',
+      'options' => array(
+        $prefix . 'one_third_column_blog_posts' => 'Blog Posts',
+        $prefix . 'one_third_column_connect' => 'Connect Panel',
+        $prefix . 'one_third_column_custom_text' => 'Custom Text',
+        ),
+      ),
+      $metabox_connect,
     ),
   );
 
@@ -1038,11 +1194,11 @@ $metabox_thirds_option_one = array(
    ),
    'fields' => array(
      $metabox_thirds_option_one,
-     $metabox_thirds_option_two
+     $metabox_thirds_option_two,
    ),
  );
 
- $metabox_two_col_row = array(
+ $metabox_grid_row = array(
    'name'  => 'Two Column Row',
    'id'    => $prefix . 'two_column_row',
    'type'  => 'group',
@@ -1059,7 +1215,7 @@ $meta_boxes[] = array(
   'priority' => 'high',
 
   'fields' => array(
-    $metabox_two_col_row,
+    $metabox_grid_row,
   )
 );
 
