@@ -42,9 +42,27 @@ function press_release_shortcode($atts) {
 
       $output .= '<li>';
 
-      $output .= '<a href="' . $link .'">' . get_the_title( $post->ID ) . '</a>';
-
-      $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
+      $output .=
+        '<a href="' . $link .'">
+          <div class="clearfix equal-height press-release">
+            <div class="float-left equal icon">
+              <div class="valign">
+                <div class="valign-cell pam">
+                  <i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <div class="equal details">
+              <div class="valign">
+                <div class="valign-cell pam">
+                  <span>' . get_the_title( $post->ID ) . '</span>
+                  <span class="entry-date small-text">'. get_the_date() . '</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>';
+        
       $output .= '</li>';
 
     endwhile;
