@@ -20,8 +20,6 @@
 
   <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
 
-  <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-
   <?php if( get_the_content() != '' ) : ?>
   <!-- WYSIWYG content -->
   <section class="wysiwyg-content">
@@ -40,17 +38,22 @@
       <?php get_template_part( 'partials/resource', 'list' ); ?>
     </section>
     <!-- End Resource List Template Display -->
-  <?php endif; ?>
 
-  <?php if ($user_selected_template == 'staff_directory') : ?>
+  <?php elseif ($user_selected_template == 'staff_directory') : ?>
     <!-- Begin Staff Directory Template Display -->
     <section class="apply-template">
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     </section>
     <!-- End Staff Directory Template Display -->
-  <?php endif; ?>
 
-  <?php if ($user_selected_template == 'one_page_department') : ?>
+  <?php elseif ($user_selected_template == 'department_homepage') : ?>
+    <!-- Begin Department Homepage Template Display -->
+    <section class="apply-template">
+      <?php get_template_part( 'partials/departments/content', 'department-homepage' ); ?>
+    </section>
+    <!-- End Department Homepage Template Display -->
+
+  <?php elseif ($user_selected_template == 'one_page_department') : ?>
     <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
@@ -63,7 +66,8 @@
     <?php endif; ?>
     <?php //for now, we don't allow calendar and blog posts on one page templates ?>
   <?php else: ?>
-
+    
+    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
   <?php endif; ?>
