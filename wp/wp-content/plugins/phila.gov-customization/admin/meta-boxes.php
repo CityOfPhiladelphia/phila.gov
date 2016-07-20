@@ -1182,6 +1182,36 @@ $metabox_connect = array(
                 ),
               ),
             ),
+            array(
+              'id' => $prefix . 'connect_include_cta',
+              'desc' => 'Include optional call to action button?',
+              'type' => 'checkbox',
+            ),
+            array(
+              'name' => 'Call to Action Button',
+              'id' => $prefix . 'connect_cta',
+              'type' => 'group',
+              'hidden' => array( 'phila_connect_include_cta', '!=', true ),
+
+              // List of sub-fields
+              'fields' => array(
+                array(
+                  'name' => 'Title',
+                  'id' => $prefix . 'connect_cta_title',
+                  'type' => 'text',
+                ),
+                array(
+                  'name' => 'URL',
+                  'id' => $prefix . 'connect_cta_url',
+                  'type' => 'url',
+                ),
+                array(
+                  'name' => 'Summary',
+                  'id' => $prefix . 'connect_cta_summary',
+                  'type' => 'textarea',
+                ),
+              ),
+            ),
           ),
         );
 
