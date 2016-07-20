@@ -210,7 +210,7 @@ function phila_open_graph() {
       $img_src = $hero_header_image;
     }elseif( has_post_thumbnail() ){
 
-    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
     $img_src = array_shift( $img );
     $type = 'article';
   }
