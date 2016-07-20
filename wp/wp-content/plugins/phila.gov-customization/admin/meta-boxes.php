@@ -998,8 +998,10 @@ $metabox_grid_options = array(
   'type' => 'select',
   'placeholder' => 'Select...',
   'options' => array(
-    $prefix . 'full_width_calendar' => 'One Column (Full-Width Calendar)',
-    $prefix . 'full_width_press_releases' => 'One Column (Full-Width Press Releases)',
+    $prefix . 'full_width_calendar' => 'Calendar',
+    $prefix . 'full_width_press_releases' => 'Press Releases',
+    $prefix . 'blog_posts' => 'Blog Posts',
+    $prefix . 'custom_text' => 'Custom Text',
     ),
   );
 
@@ -1042,6 +1044,32 @@ $metabox_grid_options = array(
  );
 
 // End Full options
+
+$metabox_custom_text = array(
+   'id'   => $prefix . 'custom_text',
+   'type' => 'group',
+
+   'fields' => array(
+     array(
+       'name' => 'Custom Text Title',
+       'id'   => $prefix . 'custom_text_title',
+       'type' => 'text',
+     ),
+     array(
+       'name' => 'Custom Text Content',
+       'id'   => $prefix . 'custom_text_content',
+       'type' => 'wysiwyg',
+       'hidden' => array('phila_two_thirds_col_option', '!=', 'phila_custom_text'),
+       'options' => array(
+         'media_buttons' => false,
+         'teeny' => true,
+         'dfw' => false,
+         'quicktags' => false,
+        //  'tinymce' => $department_col_1_custom_content,
+       ),
+    ),
+  ),
+);
 
 $metabox_connect = array(
         'id' => $prefix . 'connect_panel',
@@ -1123,6 +1151,7 @@ $metabox_connect = array(
                  'std' => '19107',
                 ),
               ),
+              // TODO: Add optional "Submit a Request" Button toggle and options
             ),
             array(
               'id' => $prefix . 'connect_general',
@@ -1156,17 +1185,25 @@ $metabox_connect = array(
           ),
         );
 
-$metabox_thirds_option_one = array(
- 'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
- 'id'   => $prefix . 'two_thirds_col',
- 'desc'  => 'Choose to display recent blog posts or custom markup text.',
- 'type' => 'select',
- 'placeholder' => 'Select...',
- 'options' => array(
-   $prefix . 'two_thirds_column_blog_posts' => 'Blog Posts',
-   $prefix . 'two_thirds_column_custom_text' => 'Custom Text',
-   ),
- );
+ $metabox_thirds_option_one = array(
+   'id' => $prefix . 'two_thirds_col',
+   'type' => 'group',
+   'fields' => array(
+      array(
+        'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+        'id'   => $prefix . 'two_thirds_col_option',
+        'desc'  => 'Choose to display recent blog posts or custom markup text.',
+        'type' => 'select',
+        'placeholder' => 'Select...',
+        'options' => array(
+          $prefix . 'two_thirds_column_blog_posts' => 'Blog Posts',
+          $prefix . 'custom_text' => 'Custom Text',
+          ),
+      ),
+      $metabox_connect,
+      $metabox_custom_text
+    ),
+  );
 
  $metabox_thirds_option_two = array(
    'id' => $prefix . 'one_third_col',
@@ -1181,10 +1218,11 @@ $metabox_thirds_option_one = array(
       'options' => array(
         $prefix . 'one_third_column_blog_posts' => 'Blog Posts',
         $prefix . 'one_third_column_connect' => 'Connect Panel',
-        $prefix . 'one_third_column_custom_text' => 'Custom Text',
+        $prefix . 'custom_text' => 'Custom Text',
         ),
       ),
       $metabox_connect,
+      $metabox_custom_text
     ),
   );
 
@@ -1204,8 +1242,7 @@ $metabox_thirds_option_one = array(
  );
 
  $metabox_grid_row = array(
-   'name'  => 'Two Column Row',
-   'id'    => $prefix . 'two_column_row',
+   'id'    => $prefix . 'row',
    'type'  => 'group',
    'clone' => true,
    'sort_clone' => true,
@@ -1241,7 +1278,7 @@ function phila_group_add_clone_button_text( $text, $field ) {
 
 /**
  *
- * Returns true/false based on existence of secondary role. Metabox user_role doesn't see secondary roles, so a custom function is required. 
+ * Returns true/false based on existence of secondary role. Metabox user_role doesn't see secondary roles, so a custom function is required.
  *
  **/
 add_action( 'admin_head', 'phila_master_homepage_editor' );
