@@ -7,7 +7,11 @@
 
 ?>
 <?php
-  $action_panel_section = rwmb_meta('phila_call_to_action_section');
+  if( isset($phila_dept_homepage_cta)):
+    $action_panel_section = $phila_dept_homepage_cta;
+  else :
+    $action_panel_section = rwmb_meta('phila_call_to_action_section');
+  endif;
   $action_panel_title = isset( $action_panel_section['phila_action_section_title_multi'] ) ? $action_panel_section['phila_action_section_title_multi'] : '' ;
 
   $action_panel_multi = isset( $action_panel_section['phila_call_to_action_multi_group'] ) ? $action_panel_section['phila_call_to_action_multi_group']: '' ;

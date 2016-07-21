@@ -44,21 +44,46 @@
                 </div>
               </div>
 
-            <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
+            <?php elseif ($current_row_option == 'phila_get_involved'): ?>
+              <!-- Display Multi Call to Action as Get Involved -->
+              <?php
+                $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
+                include(locate_template('partials/departments/content-get-involved.php'));
+              ?>
 
+            <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
+              <!-- Press Releases -->
               <div class="large-24 columns">
                 <div class="row">
                   <?php echo do_shortcode('[press-releases posts=5]');?>
                 </div>
               </div>
 
-            <?php elseif ( $current_row_option == 'phila_custom_text'):
+            <?php elseif ($current_row_option == 'phila_resource_list'): ?>
+              <!-- Display Multi Call to Action as Resource List -->
+              <?php
+                $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
+                include(locate_template('partials/departments/content-call-to-action-multi.php'));
+              ?>
 
-              echo 'custom text';
+            <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
 
-            endif;
-
-        elseif ($current_row['phila_grid_options'] == 'phila_grid_options_thirds'):
+              <?php $custom_text = $current_row['phila_full_options']['phila_custom_text']; ?>
+                <div class="row">
+                  <div class="large-24 columns">
+                    <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
+                    <div>
+                      <?php echo($custom_text['phila_custom_text_content']); ?>
+                    </div>
+                    <?php if ( $custom_text == '' ) :?>
+                      <div class="placeholder">
+                        Please enter content.
+                      </div>
+                    <?php endif; ?>
+                  </div>
+                </div>
+          <?php endif; ?>
+        <?php elseif ($current_row['phila_grid_options'] == 'phila_grid_options_thirds'):
           $current_row_option_one = $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'];
           $current_row_option_two = $current_row['phila_two_thirds_options'] ['phila_one_third_col']; ?>
 

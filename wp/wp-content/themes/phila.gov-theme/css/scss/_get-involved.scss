@@ -1,0 +1,87 @@
+// dl.simcal-events-list-container{
+//   background-color:rgba(255, 255, 255, .8);
+//   margin-top:1rem;
+//
+//   p {
+//     padding: 1rem;
+//     @media only screen and (min-width: 40.063em) {
+//       min-height: 100px;
+//     }
+//   }
+// }
+// .single-calendar .simcal-event-details{
+//   padding-bottom: 1rem;
+//   margin-bottom: 1rem;
+// }
+// .simcal-default-calendar-light .simcal-nav-button{
+//   color:$ben-franklin-blue !important;
+// }
+//
+// .events-block{
+//   border:none;
+// }
+// //PLUGIN OVERRIDES
+// ul.simcal-events{
+//   margin:0;
+//   padding:0;
+//   list-style:none;
+// }
+//
+// .month, .day{
+//   display: inline
+// }
+// a[href*="google.com/calendar"]:after{
+//   font-family: "FontAwesome";
+//   content: "\f08e";
+//   font-size: 0.75rem;
+//   padding: 0 5px;
+// }
+//
+// .event-row{
+//   margin-bottom:1rem;
+// }
+// .calendar-details{
+//   background-color:rgba(255, 255, 255, .8);
+//   padding:0 1rem;
+//   min-height:94px;
+//   border-left:1px solid $black;
+// }
+// .simcal-event {
+//   margin-bottom:1rem;
+// }
+// .calendar-date{
+//   text-align:center;
+//   font-family: 'Montserrat', 'Tahoma', sans-serif;
+//   float:left;
+//   color:$ben-franklin-blue;
+//
+//   .month{
+//     display: block;
+//     text-transform: uppercase;
+//   }
+//   .day{
+//     font-size: 4rem;
+//     line-height: 3rem;
+//     display: block;
+//   }
+// }
+.get-involved-row{
+  .panel{
+    background-color: rgba(255,255,255,0.7);
+  }
+}
+
+@media only screen and (min-width: 40.063em) {
+  .get-involved-row{
+    background:url('//alpha.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center top;
+    background-size:cover;
+  }
+  // .columns.get-involved-details {
+  //   padding:1rem;
+  //   border-left:none;
+  // }
+  // .calendar-date{
+  //   color:$white;
+  //   background:$ben-franklin-blue;
+  // }
+}

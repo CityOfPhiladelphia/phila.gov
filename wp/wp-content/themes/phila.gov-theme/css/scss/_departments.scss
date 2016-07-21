@@ -11,7 +11,11 @@
   }
 }
 .department {
-
+  .connect {
+    .panel{
+      border: 0;
+    }
+  }
   .external-site-link-left,
   .external-site-link-right{
       text-align: center;
@@ -183,11 +187,6 @@
         h1 {
         }
       }
-    }
-  }
-  .department-module-row-one {
-    .panel {
-      border:0;
     }
   }
 
