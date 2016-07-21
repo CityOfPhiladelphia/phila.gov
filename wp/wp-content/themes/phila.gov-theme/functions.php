@@ -290,14 +290,8 @@ function phila_gov_scripts() {
 
   wp_enqueue_style( 'theme-styles', get_stylesheet_directory_uri() . '/css/styles.css', array('pattern_portfolio') );
 
-  wp_deregister_script( 'jquery' );
-
-  wp_deregister_script( 'jquery-migrate' );
-
-  wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, null, true );
-
-  wp_enqueue_script( 'jquery-migrate', ( '//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js' ), array('jquery'), null, true );
-
+  wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'theme-styles' )  );
+  wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
   wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
 
@@ -305,9 +299,9 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.4.0/js/patterns.min.js', array('jquery', 'foundation-js'), true );
 
-  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js'), 1.0, true );
-}
+  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js', 'pattern-scripts'), 1.0, true );
 
+}
 
 add_action('init', 'enqueue_scripts_styles_init');
 
