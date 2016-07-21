@@ -989,8 +989,6 @@ $metabox_grid_options = array(
    ),
  );
 
-
-
  $metabox_full_options_select = array(
   'name' => 'Full Width',
   'id'   => $prefix . 'full_options_select',
@@ -998,10 +996,86 @@ $metabox_grid_options = array(
   'type' => 'select',
   'placeholder' => 'Select...',
   'options' => array(
-    $prefix . 'full_width_calendar' => 'Calendar',
-    $prefix . 'full_width_press_releases' => 'Press Releases',
     $prefix . 'blog_posts' => 'Blog Posts',
+    $prefix . 'full_width_calendar' => 'Calendar',
     $prefix . 'custom_text' => 'Custom Text',
+    $prefix . 'get_involved' => 'Get Involved',
+    $prefix . 'full_width_press_releases' => 'Press Releases',
+    $prefix . 'resource_list' => 'Resource List',
+    ),
+  );
+
+  // Resource List
+    $meta_call_to_action_multi = array(
+      'id'  => $prefix . 'call_to_action_multi',
+      'type' => 'group',
+      'fields' => array(
+        array(
+          'id'  => $prefix . 'call_to_action_section',
+          'type' => 'group',
+
+            'fields' => array(
+              array(
+                'name'  => 'Section Title',
+                'id'    => $prefix . 'action_section_title_multi',
+                'type'  => 'text',
+              ),
+
+          array(
+            'id'  => $prefix . 'call_to_action_multi_group',
+            'type' => 'group',
+            'clone'  => true,
+            'max_clone' => 3,
+            'sort_clone' => true,
+
+            'fields' => array(
+              array(
+                'name'  => 'Call to Action Text',
+                'id'    => $prefix . 'action_panel_cta_text_multi',
+                'type'  => 'text',
+                'class' => 'action-panel-cta-text',
+              ),
+              array(
+                'name'  => 'Summary',
+                'id'    => $prefix . 'action_panel_summary_multi',
+                'type'  => 'textarea',
+                'class' => 'action-panel-details',
+              ),
+              array(
+                'name'  => 'Icon',
+                'id'    => $prefix . 'action_panel_fa_multi',
+                'type'  => 'text',
+                'class' => 'action-panel-fa',
+                'hidden' => array(
+                  'phila_template_select', '=', 'one_page_department',
+                ),
+              ),
+              array(
+                'name'  => 'Icon Background Circle',
+                'id'    => $prefix . 'action_panel_fa_circle_multi',
+                'type'  => 'checkbox',
+                'class' => 'action-panel-fa',
+                'hidden' => array(
+                  'phila_template_select', '=', 'one_page_department',
+                ),
+              ),
+              array(
+                'name'  => 'Link to Content',
+                'id'    => $prefix . 'action_panel_link_multi',
+                'type'  => 'url',
+                'class' => 'action-panel-link',
+              ),
+              array(
+                'name'  => 'External Link',
+                'id'    => $prefix . 'action_panel_link_loc_multi',
+                'type'  => 'checkbox',
+                'class' => 'action-panel-link-loc',
+                'desc'  => 'This link directs users away from alpha.phila.gov',
+              ),
+            ),
+          ),
+        ),
+      ),
     ),
   );
 
@@ -1027,6 +1101,177 @@ $metabox_grid_options = array(
       ),
     ),
   );
+  // Connect Panel
+  $metabox_connect = array(
+    'id' => $prefix . 'connect_panel',
+    'type' => 'group',
+    'hidden' => array('phila_one_third_col_option', '!=', 'phila_one_third_column_connect'),
+
+    'fields' => array(
+        array(
+         'name' => 'Connect Panel',
+         'id'   => $prefix . 'connect_description',
+         'type' => 'custom_html',
+         'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
+         <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
+        ),
+        array(
+          'id' => $prefix . 'connect_social',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'type' => 'heading',
+              'name' => 'Social',
+            ),
+            array(
+             'name' => 'Facebook URL',
+             'id'   => $prefix . 'connect_social_facebook',
+             'type' => 'url',
+             'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+            ),
+            array(
+             'name' => 'Twitter URL',
+             'id'   => $prefix . 'connect_social_twitter',
+             'type' => 'url',
+             'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+            ),
+            array(
+             'name' => 'Instagram URL',
+             'id'   => $prefix . 'connect_social_instagram',
+             'type' => 'url',
+             'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+            ),
+          ),
+        ),
+        array(
+          'id' => $prefix . 'connect_address',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'type' => 'heading',
+              'name' => 'Address',
+            ),
+            array(
+             'name' => 'Street Address 1',
+             'id'   => $prefix . 'connect_address_st_1',
+             'type' => 'text',
+            ),
+            array(
+             'name' => 'Street Address 2',
+             'id'   => $prefix . 'connect_address_st_2',
+             'type' => 'text',
+            ),
+            array(
+             'name' => 'City',
+             'id'   => $prefix . 'connect_address_city',
+             'type' => 'text',
+             'std' => 'Philadelphia',
+            ),
+            array(
+             'name' => 'State',
+             'id'   => $prefix . 'connect_address_state',
+             'type' => 'text',
+             'std' => 'PA',
+            ),
+            array(
+             'name' => 'Zip',
+             'id'   => $prefix . 'connect_address_zip',
+             'type' => 'text',
+             'std' => '19107',
+            ),
+          ),
+          // TODO: Add optional "Submit a Request" Button toggle and options
+        ),
+        array(
+          'id' => $prefix . 'connect_general',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'type' => 'heading',
+              'name' => 'Contact',
+            ),
+            array(
+               'name' => 'Phone',
+               'id'   => $prefix . 'connect_phone',
+               'type' => 'phone',
+               'desc' => '(###)-###-####',
+             ),
+            array(
+              'name' => 'Fax',
+              'id'   => $prefix . 'connect_fax',
+              'type' => 'phone',
+              'desc' => '(###)-###-####',
+            ),
+            array(
+              'name' => 'Email',
+              'id'   => $prefix . 'connect_email',
+              'type' => 'email',
+              'desc' => 'example@phila.gov',
+            ),
+          ),
+        ),
+        array(
+          'id' => $prefix . 'connect_include_cta',
+          'desc' => 'Include optional call to action button?',
+          'type' => 'checkbox',
+        ),
+        array(
+          'name' => 'Call to Action Button',
+          'id' => $prefix . 'connect_cta',
+          'type' => 'group',
+          'hidden' => array( 'phila_connect_include_cta', '!=', true ),
+
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'name' => 'Title',
+              'id' => $prefix . 'connect_cta_title',
+              'type' => 'text',
+            ),
+            array(
+              'name' => 'URL',
+              'id' => $prefix . 'connect_cta_url',
+              'type' => 'url',
+            ),
+            array(
+              'name' => 'Summary',
+              'id' => $prefix . 'connect_cta_summary',
+              'type' => 'textarea',
+            ),
+          ),
+        ),
+      ),
+    );
+
+  // Custom Text
+  $metabox_custom_text = array(
+     'id'   => $prefix . 'custom_text',
+     'type' => 'group',
+
+     'fields' => array(
+       array(
+         'name' => 'Custom Text Title',
+         'id'   => $prefix . 'custom_text_title',
+         'type' => 'text',
+       ),
+       array(
+         'name' => 'Custom Text Content',
+         'id'   => $prefix . 'custom_text_content',
+         'type' => 'wysiwyg',
+        //  'hidden' => array('phila_two_thirds_col_option', '!=', 'phila_custom_text'),
+         'options' => array(
+           'media_buttons' => false,
+           'teeny' => true,
+           'dfw' => false,
+           'quicktags' => false,
+          //  'tinymce' => $department_col_1_custom_content,
+         ),
+      ),
+    ),
+  );
 
   $metabox_full_options = array(
    'name' => '2/3 x 1/3 Options',
@@ -1040,180 +1285,12 @@ $metabox_grid_options = array(
    'fields' => array(
      $metabox_full_options_select,
      $meta_full_calendar,
+     $metabox_custom_text,
+     $meta_call_to_action_multi
    ),
  );
 
 // End Full options
-
-$metabox_custom_text = array(
-   'id'   => $prefix . 'custom_text',
-   'type' => 'group',
-
-   'fields' => array(
-     array(
-       'name' => 'Custom Text Title',
-       'id'   => $prefix . 'custom_text_title',
-       'type' => 'text',
-     ),
-     array(
-       'name' => 'Custom Text Content',
-       'id'   => $prefix . 'custom_text_content',
-       'type' => 'wysiwyg',
-       'hidden' => array('phila_two_thirds_col_option', '!=', 'phila_custom_text'),
-       'options' => array(
-         'media_buttons' => false,
-         'teeny' => true,
-         'dfw' => false,
-         'quicktags' => false,
-        //  'tinymce' => $department_col_1_custom_content,
-       ),
-    ),
-  ),
-);
-
-$metabox_connect = array(
-        'id' => $prefix . 'connect_panel',
-        'type' => 'group',
-        'hidden' => array('phila_one_third_col_option', '!=', 'phila_one_third_column_connect'),
-
-        'fields' => array(
-            array(
-             'name' => 'Connect Panel',
-             'id'   => $prefix . 'connect_description',
-             'type' => 'custom_html',
-             'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
-             <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
-            ),
-            array(
-              'id' => $prefix . 'connect_social',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'type' => 'heading',
-                  'name' => 'Social',
-                ),
-                array(
-                 'name' => 'Facebook URL',
-                 'id'   => $prefix . 'connect_social_facebook',
-                 'type' => 'url',
-                 'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
-                ),
-                array(
-                 'name' => 'Twitter URL',
-                 'id'   => $prefix . 'connect_social_twitter',
-                 'type' => 'url',
-                 'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
-                ),
-                array(
-                 'name' => 'Instagram URL',
-                 'id'   => $prefix . 'connect_social_instagram',
-                 'type' => 'url',
-                 'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
-                ),
-              ),
-            ),
-            array(
-              'id' => $prefix . 'connect_address',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'type' => 'heading',
-                  'name' => 'Address',
-                ),
-                array(
-                 'name' => 'Street Address 1',
-                 'id'   => $prefix . 'connect_address_st_1',
-                 'type' => 'text',
-                ),
-                array(
-                 'name' => 'Street Address 2',
-                 'id'   => $prefix . 'connect_address_st_2',
-                 'type' => 'text',
-                ),
-                array(
-                 'name' => 'City',
-                 'id'   => $prefix . 'connect_address_city',
-                 'type' => 'text',
-                 'std' => 'Philadelphia',
-                ),
-                array(
-                 'name' => 'State',
-                 'id'   => $prefix . 'connect_address_state',
-                 'type' => 'text',
-                 'std' => 'PA',
-                ),
-                array(
-                 'name' => 'Zip',
-                 'id'   => $prefix . 'connect_address_zip',
-                 'type' => 'text',
-                 'std' => '19107',
-                ),
-              ),
-              // TODO: Add optional "Submit a Request" Button toggle and options
-            ),
-            array(
-              'id' => $prefix . 'connect_general',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'type' => 'heading',
-                  'name' => 'Contact',
-                ),
-                array(
-                   'name' => 'Phone',
-                   'id'   => $prefix . 'connect_phone',
-                   'type' => 'phone',
-                   'desc' => '(###)-###-####',
-                 ),
-                array(
-                  'name' => 'Fax',
-                  'id'   => $prefix . 'connect_fax',
-                  'type' => 'phone',
-                  'desc' => '(###)-###-####',
-                ),
-                array(
-                  'name' => 'Email',
-                  'id'   => $prefix . 'connect_email',
-                  'type' => 'email',
-                  'desc' => 'example@phila.gov',
-                ),
-              ),
-            ),
-            array(
-              'id' => $prefix . 'connect_include_cta',
-              'desc' => 'Include optional call to action button?',
-              'type' => 'checkbox',
-            ),
-            array(
-              'name' => 'Call to Action Button',
-              'id' => $prefix . 'connect_cta',
-              'type' => 'group',
-              'hidden' => array( 'phila_connect_include_cta', '!=', true ),
-
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'name' => 'Title',
-                  'id' => $prefix . 'connect_cta_title',
-                  'type' => 'text',
-                ),
-                array(
-                  'name' => 'URL',
-                  'id' => $prefix . 'connect_cta_url',
-                  'type' => 'url',
-                ),
-                array(
-                  'name' => 'Summary',
-                  'id' => $prefix . 'connect_cta_summary',
-                  'type' => 'textarea',
-                ),
-              ),
-            ),
-          ),
-        );
 
  $metabox_thirds_option_one = array(
    'id' => $prefix . 'two_thirds_col',
@@ -1252,7 +1329,8 @@ $metabox_connect = array(
         ),
       ),
       $metabox_connect,
-      $metabox_custom_text
+      $metabox_custom_text,
+      $meta_call_to_action_multi
     ),
   );
 
