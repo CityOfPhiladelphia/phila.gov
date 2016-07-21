@@ -1,4 +1,6 @@
-/*---_____------____IE8-----______----___---_____*/
+/*
+  Styles for IE 9 and later
+*/
 body.custom-background{
   background-image:none !important;
 }
