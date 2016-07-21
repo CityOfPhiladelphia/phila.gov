@@ -1,0 +1,64 @@
+/*
+  Styles for IE 9 and later
+*/
+body.custom-background{
+  background-image:none !important;
+}
+
+#page{
+  width:900px;
+  margin:0 auto;
+}
+
+img, .card img {
+  width: auto !important;
+  /*purposefully break what is in patterns */
+  max-width: auto !important;
+  height:auto !important;
+}
+
+.logo img{
+  height:50px !important;
+  width:auto !important;
+}
+img.hidden-hero, .small-thumb{
+  width:50% !important;
+}
+
+.browsehappy{
+  padding:20px;
+  background: #f2c612;
+}
+
+.site-branding, .hero-content{
+  background: #2176d2;
+  display: block;
+}
+
+nav li{
+  padding:5px;
+}
+
+/*hide breadcrumbs*/
+.row.site-branding + .row.expanded,
+/*hide alternative image */
+img.initial-hero,
+/*hide what we would normally show on mobile */
+.show-for-small-only,
+.fa,
+.fa-stack{
+  display:none !important;
+}
+
+.column, .columns{
+  padding:20px;
+}
+
+.row:after, .news ul li.group:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
