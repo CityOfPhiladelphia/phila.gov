@@ -18,9 +18,9 @@ function pullquote_shortcode($atts){
   if ( $a['quote'] != '' ){
     $output .= '<div class="pullquote">';
     $output .= '<div class="quote-icon">&ldquo;</div>';
-    $output .= '<p>...' . $a['quote'] . '</p>';
+    $output .= '<p>' . $a['quote'] . '</p>';
     if($a['attribution'] != '') {
-      $output .= '<span class="attribution"> -' . $a['attribution'] . '</span>';
+      $output .= '<span class="attribution"> - ' . $a['attribution'] . ' - </span>';
     }
     $output .= '</div>';
 

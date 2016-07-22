@@ -82,6 +82,58 @@
                 </div>
               </div>
         <?php endif; ?>
+
+      <?php elseif ($current_row['phila_grid_options'] == 'phila_grid_options_half'):
+        $current_row_option_one = $current_row['phila_half_options'] ['phila_half_col_1'];
+        $current_row_option_two = $current_row['phila_half_options'] ['phila_half_col_2']; ?>
+        <section class="mvl">
+          <div class="row">
+            <?php if ( $current_row_option_one['phila_half_col_1_option'] == 'phila_custom_text'):?>
+              <?php $custom_text = $current_row_option_one['phila_custom_text']; ?>
+
+                <div class="large-12 columns">
+                  <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
+                  <div>
+                    <?php echo($custom_text['phila_custom_text_content']); ?>
+                  </div>
+                  <?php if ( $custom_text == '' ) :?>
+                    <div class="placeholder">
+                      Please enter content.
+                    </div>
+                  <?php endif; ?>
+                </div>
+            <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):?>
+              <div class="large-12 columns">
+                <?php echo do_shortcode('[pullquote quote="To meaningfully change the outcomes of our schools, the single most important investment we can make is in pre-K." attribution="Mayor Jim Kenney"]'); ?>
+              </div>
+            <?php endif; ?>
+
+
+            <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
+              <?php $custom_text = $current_row_option_one['phila_custom_text']; ?>
+
+                <div class="large-12 columns">
+                  <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
+                  <div>
+                    <?php echo($custom_text['phila_custom_text_content']); ?>
+                  </div>
+                  <?php if ( $custom_text == '' ) :?>
+                    <div class="placeholder">
+                      Please enter content.
+                    </div>
+                  <?php endif; ?>
+                </div>
+            <?php elseif ( $current_row_option_two['phila_half_col_2_option'] == 'phila_pullquote'):?>
+              <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
+              <div class="large-12 columns pullquote-wrapper">
+                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '"]'); ?>
+              </div>
+            <?php endif; ?>
+
+
+
+          </div>
+        </section>
       <?php elseif ($current_row['phila_grid_options'] == 'phila_grid_options_thirds'):
         $current_row_option_one = $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'];
         $current_row_option_two = $current_row['phila_two_thirds_options'] ['phila_one_third_col']; ?>
