@@ -7,7 +7,7 @@
     padding: $spacing-medium;
     font-family: Times, "Times New Roman", Georgia, serif;
     text-align: center;
-    margin: $spacing-large $spacing-medium $spacing-medium $spacing-extra;
+    margin: $spacing-large;
     padding: $spacing-medium;
     // margin-top: .92857rem;
     p {
@@ -21,6 +21,11 @@
       font-size: 100px;
       line-height: 0px;
       margin: 35px 0 15px;
+    }
+  }
+  @media only screen and (min-width: 64em) {
+    .pullquote {
+      margin: $spacing-large $spacing-medium $spacing-medium $spacing-extra;
     }
   }
 }
