@@ -8,6 +8,12 @@
 ?>
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
+<?php if ($user_selected_template == 'programs_initiatives') : ?>
+
+  <?php get_template_part( 'partials/departments/content', 'programs-initiatives-header' ); ?>
+
+<?php else : ?>
+
 <div class="row">
   <div class="columns">
     <?php // TODO: Figure out what to do with the title on Staff Template ?>
@@ -15,21 +21,23 @@
   </div>
 </div>
 
+<?php endif; ?>
+
 <div data-swiftype-index='true' class="entry-content">
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
   <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
 
   <?php if( get_the_content() != '' ) : ?>
-  <!-- WYSIWYG content -->
-  <section class="wysiwyg-content">
-    <div class="row">
-      <div class="small-24 columns">
-        <?php echo the_content();?>
+    <!-- WYSIWYG content -->
+    <section class="wysiwyg-content">
+      <div class="row">
+        <div class="small-24 columns">
+          <?php echo the_content();?>
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- End WYSIWYG content -->
+    </section>
+    <!-- End WYSIWYG content -->
   <?php endif; ?>
 
   <?php if ($user_selected_template == 'resource_list') : ?>
@@ -53,6 +61,13 @@
     </section>
     <!-- End Department Homepage Template Display -->
 
+  <?php elseif ($user_selected_template == 'programs_initiatives') : ?>
+    <!-- Begin Department Homepage Template Display -->
+    <section class="apply-template">
+      <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>
+    </section>
+    <!-- End Department Homepage Template Display -->
+
   <?php elseif ($user_selected_template == 'one_page_department') : ?>
     <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
     <?php if ( $staff_directory_listing ): ?>
@@ -66,7 +81,7 @@
     <?php endif; ?>
     <?php //for now, we don't allow calendar and blog posts on one page templates ?>
   <?php else: ?>
-    
+
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 

@@ -1004,6 +1004,21 @@ $metabox_grid_options = array(
     $prefix . 'resource_list' => 'Resource List',
     ),
   );
+  // Program and Initiatives
+    $meta_programs_initiatives_images = array(
+      'id' => $prefix . 'p_i_images',
+      'type' => 'group',
+      'fields' => array(
+        array(
+          'name' => 'Header Image',
+          'id' => $prefix . 'p_i_header',
+          'type' => 'file_input',
+        ),
+      ),
+      'visible' => array(
+        'phila_template_select', '=', 'programs_initiatives',
+      ),
+    );
 
   // Resource List
     $meta_call_to_action_multi = array(
@@ -1025,7 +1040,7 @@ $metabox_grid_options = array(
             'id'  => $prefix . 'call_to_action_multi_group',
             'type' => 'group',
             'clone'  => true,
-            'max_clone' => 3,
+            'max_clone' => 4,
             'sort_clone' => true,
 
             'fields' => array(
@@ -1360,11 +1375,12 @@ $metabox_grid_options = array(
 //Department Hompage metaboxes
 $meta_boxes[] = array(
   'id'       => $prefix . 'department_homepage',
-  'title'    => 'Department Homepage',
+  'title'    => 'Page Content',
   'pages' => array( 'department_page' ),
   'priority' => 'high',
 
   'fields' => array(
+    $meta_programs_initiatives_images,
     $metabox_grid_row,
   )
 );
