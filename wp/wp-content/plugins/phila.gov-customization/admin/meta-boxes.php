@@ -976,34 +976,6 @@ $meta_boxes[] = array(
   ),
 );
 
-
-$metabox_grid_options = array(
- 'name' => 'Row Layout',
- 'id'   => $prefix . 'grid_options',
- 'desc'  => 'Choose the row layout.',
- 'type' => 'select',
- 'placeholder' => 'Select...',
- 'options' => array(
-   $prefix . 'grid_options_full' => 'Full Width',
-   $prefix . 'grid_options_thirds' => '2/3 x 1/3',
-   ),
- );
-
- $metabox_full_options_select = array(
-  'name' => 'Full Width',
-  'id'   => $prefix . 'full_options_select',
-  'desc'  => 'Choose to display full width content.',
-  'type' => 'select',
-  'placeholder' => 'Select...',
-  'options' => array(
-    $prefix . 'blog_posts' => 'Blog Posts',
-    $prefix . 'full_width_calendar' => 'Calendar',
-    $prefix . 'custom_text' => 'Custom Text',
-    $prefix . 'get_involved' => 'Get Involved',
-    $prefix . 'full_width_press_releases' => 'Press Releases',
-    $prefix . 'resource_list' => 'Resource List',
-    ),
-  );
   // Program and Initiatives
     $meta_programs_initiatives_images = array(
       'id' => $prefix . 'p_i_images',
@@ -1116,6 +1088,7 @@ $metabox_grid_options = array(
       ),
     ),
   );
+
   // Connect Panel
   $metabox_connect = array(
     'id' => $prefix . 'connect_panel',
@@ -1288,6 +1261,29 @@ $metabox_grid_options = array(
     ),
   );
 
+
+  /**
+  *
+  * Begin Full Width Column MetaBox content
+  *
+  **/
+  
+  $metabox_full_options_select = array(
+   'name' => 'Full Width',
+   'id'   => $prefix . 'full_options_select',
+   'desc'  => 'Choose to display full width content.',
+   'type' => 'select',
+   'placeholder' => 'Select...',
+   'options' => array(
+     $prefix . 'blog_posts' => 'Blog Posts',
+     $prefix . 'full_width_calendar' => 'Calendar',
+     $prefix . 'custom_text' => 'Custom Text',
+     $prefix . 'get_involved' => 'Get Involved',
+     $prefix . 'full_width_press_releases' => 'Press Releases',
+     $prefix . 'resource_list' => 'Resource List',
+     ),
+   );
+
   $metabox_full_options = array(
    'name' => '2/3 x 1/3 Options',
    'id'   => $prefix . 'full_options',
@@ -1303,10 +1299,15 @@ $metabox_grid_options = array(
      $metabox_custom_text,
      $meta_call_to_action_multi
    ),
- );
+  );
 
-// End Full options
+ /**
+ *
+ * Begin 2/3 x 1/3 Column MetaBox content
+ *
+ **/
 
+ // 2/3 x 1/3: Column 1 Options
  $metabox_thirds_option_one = array(
    'id' => $prefix . 'two_thirds_col',
    'type' => 'group',
@@ -1327,7 +1328,8 @@ $metabox_grid_options = array(
     ),
   );
 
- $metabox_thirds_option_two = array(
+  // 2/3 x 1/3: Column 2 Options
+  $metabox_thirds_option_two = array(
    'id' => $prefix . 'one_third_col',
    'type' => 'group',
    'fields' => array(
@@ -1349,6 +1351,7 @@ $metabox_grid_options = array(
     ),
   );
 
+  // 2/3 x 1/3 Options
   $metabox_thirds_options = array(
    'name' => '2/3 x 1/3 Options',
    'id'   => $prefix . 'two_thirds_options',
@@ -1364,12 +1367,85 @@ $metabox_grid_options = array(
    ),
  );
 
+/**
+*
+* Begin 1/2 x 1/2 Column MetaBox content
+*
+**/
+
+ // 1/2 x 1/2: Column 1 Options
+ $metabox_half_option_one = array(
+   'id' => $prefix . 'half_col_1',
+   'type' => 'group',
+   'fields' => array(
+      array(
+        'name' => 'Column 1 <br/><small>(1/2 width column)</small>',
+        'id'   => $prefix . 'half_col_1_option',
+        'desc'  => 'Choose to display recent blog posts or custom markup text.',
+        'type' => 'select',
+        'placeholder' => 'Select...',
+        'options' => array(
+          $prefix . 'custom_text' => 'Custom Text',
+          ),
+      ),
+      $metabox_custom_text
+    ),
+  );
+
+  // 1/2 x 1/2: Column 1 Options
+  $metabox_half_option_two = array(
+    'id' => $prefix . 'half_col_2',
+    'type' => 'group',
+    'fields' => array(
+       array(
+         'name' => 'Column 2 <br/><small>(1/2 width column)</small>',
+         'id'   => $prefix . 'half_col_2_option',
+         'desc'  => 'Choose to display recent blog posts or custom markup text.',
+         'type' => 'select',
+         'placeholder' => 'Select...',
+         'options' => array(
+           $prefix . 'custom_text' => 'Custom Text',
+           ),
+       ),
+       $metabox_custom_text
+     ),
+   );
+
+ $metabox_half_options = array(
+  'name' => '1/2 x 1/2 Options',
+  'id'   => $prefix . 'half_options',
+  'type' => 'group',
+  'hidden' => array(
+    'phila_grid_options',
+    '!=',
+    'phila_grid_options_half'
+  ),
+  'fields' => array(
+    $metabox_half_option_one,
+    $metabox_half_option_two,
+  ),
+);
+
+// Grid Options
+$metabox_grid_options = array(
+ 'name' => 'Row Layout',
+ 'id'   => $prefix . 'grid_options',
+ 'desc'  => 'Choose the row layout.',
+ 'type' => 'select',
+ 'placeholder' => 'Select...',
+ 'options' => array(
+   $prefix . 'grid_options_full' => 'Full Width',
+   $prefix . 'grid_options_half' => '1/2 x 1/2',
+   $prefix . 'grid_options_thirds' => '2/3 x 1/3',
+   ),
+ );
+
  $metabox_grid_row = array(
    'id'    => $prefix . 'row',
    'type'  => 'group',
    'clone' => true,
    'sort_clone' => true,
-   'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options ),
+   'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options, $metabox_half_options ),
  );
 
 //Department Hompage metaboxes
