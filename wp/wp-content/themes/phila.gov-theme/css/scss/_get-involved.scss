@@ -84,6 +84,17 @@
     background:url('//alpha.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center top;
     background-size:cover;
     padding: 3rem;
+
+    .columns{
+      padding: 0 2.5rem;
+      &:first-of-type {
+        padding-left: 3rem;
+      }
+      &:last-of-type {
+        padding-right: 3rem;
+      }
+    }
+
   }
   // .columns.get-involved-details {
   //   padding:1rem;
