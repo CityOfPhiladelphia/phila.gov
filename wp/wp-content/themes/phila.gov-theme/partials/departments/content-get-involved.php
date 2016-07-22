@@ -26,7 +26,7 @@
         <h2><?php echo $action_panel_title; ?></h2>
       </div>
     </div>
-    <section class="get-involved-row pal">
+    <section class="get-involved-row">
       <div class="row mbm ptm <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <?php foreach ( $action_panel_multi as $call_to_action ) :
 
@@ -44,29 +44,28 @@
         $action_panel_fa = isset( $call_to_action['phila_action_panel_fa_multi'] ) ? $call_to_action['phila_action_panel_fa_multi'] : '';
         ?>
         <?php phila_grid_column_counter( $item_count ); ?>
-      <div class="large-<?php echo $columns ?> columns">
+      <div class="large-<?php echo $columns; ?> phl columns">
         <?php if (!$action_panel_link == ''): ?>
         <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
           <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
           <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
           <?php if ($action_panel_fa_circle): ?>
-            <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?>">
+            <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?> icon">
               <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
               </span>
             </div>
           <?php else: ?>
-           <div>
-             <span><i class="fa <?php echo $action_panel_fa; ?> fa-5x" aria-hidden="true"></i></span>
+           <div class="icon">
+             <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
            </div>
           <?php endif; ?>
           <?php if (!$action_panel_cta_text == ''): ?>
             <span class="<?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
           <?php endif; ?>
           </header>
-          <?php echo $columns == '24' ? '' : '<hr class="mll mrl">'; ?>
-            <span class="details"><?php echo $action_panel_summary; ?></span>
+            <div class="details"><?php echo $action_panel_summary; ?></div>
           </div>
         </a>
       <?php endif; ?>

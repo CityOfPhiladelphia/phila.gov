@@ -69,12 +69,21 @@
   .panel{
     background-color: rgba(255,255,255,0.7);
   }
+  header {
+    .icon {
+      margin-bottom: $spacing-small;
+    }
+  }
+  .details{
+    margin-top: $spacing-small;
+  }
 }
 
 @media only screen and (min-width: 40.063em) {
   .get-involved-row{
     background:url('//alpha.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center top;
     background-size:cover;
+    padding: 3rem;
   }
   // .columns.get-involved-details {
   //   padding:1rem;
