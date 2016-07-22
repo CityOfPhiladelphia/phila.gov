@@ -7,10 +7,11 @@
     padding: $spacing-medium;
     font-family: Times, "Times New Roman", Georgia, serif;
     text-align: center;
-    margin: $spacing-large $spacing-medium $spacing-medium $spacing-extra-large;
+    margin: $spacing-large $spacing-medium $spacing-medium $spacing-extra;
+    padding: $spacing-medium;
     // margin-top: .92857rem;
     p {
-      font-size: 2em;
+      font-size: 1.8em;
       font-style: italic;
     }
     .attribution {
