@@ -1286,13 +1286,15 @@ function phila_connect_panel($connect_panel) {
   $output_array = array();
   // print_r($connect_panel);
   foreach ($connect_panel as $key => $value) {
-    $output_array['social'] = array(
-      'facebook' => isset( $connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) ? $connect_panel['phila_connect_social']['phila_connect_social_facebook'] :'',
 
-      'twitter' => isset( $connect_panel['phila_connect_social']['phila_connect_social_twitter'] ) ? $connect_panel['phila_connect_social']['phila_connect_social_twitter'] :'',
+    $output_array['social'] = array();
 
-      'instagram' => isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) ? $connect_panel['phila_connect_social']['phila_connect_social_instagram'] :'',
-    );
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) && $connect_panel['phila_connect_social']['phila_connect_social_facebook'] != '') $output_array['social']['facebook'] = $connect_panel['phila_connect_social']['phila_connect_social_facebook'];
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_twitter'] ) && $connect_panel['phila_connect_social']['phila_connect_social_twitter'] != ''  ) $output_array['social']['twitter'] = $connect_panel['phila_connect_social']['phila_connect_social_twitter'];
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_social']['phila_connect_social_instagram'];
+
     $output_array['address'] = array(
       'st_1' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'',
 

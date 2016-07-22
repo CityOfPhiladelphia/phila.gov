@@ -15,7 +15,7 @@
         $columns = phila_grid_column_counter( $item_count );
       ?>
       <div class="row mbn">
-        <?php if ( !$connect_vars['social']['facebook'] == '') : ?>
+        <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
           <div class="small-<?php echo $columns;?> columns center pvxs">
             <a href="<?php echo $connect_vars['social']['facebook']; ?>" target="_blank" class="phs">
               <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
@@ -23,7 +23,7 @@
             </a>
           </div>
         <?php endif; ?>
-        <?php if ( !$connect_vars['social']['twitter'] == '') : ?>
+        <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
           <div class="small-<?php echo $columns;?> columns center pvxs">
             <a href="<?php echo $connect_vars['social']['twitter']; ?>" target="_blank" class="phs">
               <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
@@ -31,7 +31,7 @@
             </a>
           </div>
         <?php endif; ?>
-        <?php if ( !$connect_vars['social']['instagram'] == '') : ?>
+        <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
           <div class="small-<?php echo $columns;?> columns center pvxs">
             <a href="<?php echo $connect_vars['social']['instagram']; ?>" target="_blank" class="phs">
             <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
