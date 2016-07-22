@@ -1261,13 +1261,32 @@ $meta_boxes[] = array(
     ),
   );
 
+  // Pullquote
+  $metabox_pullquote = array(
+    'id'   => $prefix . 'pullquote',
+    'type' => 'group',
+
+    'fields' => array(
+     array(
+       'name' => 'Quote',
+       'id'   => $prefix . 'quote',
+       'type' => 'textarea',
+       ),
+       array(
+         'name' => 'Attribution',
+         'id'   => $prefix . 'attribution',
+         'type' => 'text',
+       ),
+    ),
+  );
+
 
   /**
   *
   * Begin Full Width Column MetaBox content
   *
   **/
-  
+
   $metabox_full_options_select = array(
    'name' => 'Full Width',
    'id'   => $prefix . 'full_options_select',
@@ -1386,9 +1405,11 @@ $meta_boxes[] = array(
         'placeholder' => 'Select...',
         'options' => array(
           $prefix . 'custom_text' => 'Custom Text',
+          $prefix . 'pullquote' => 'Pullquote',
           ),
       ),
-      $metabox_custom_text
+      $metabox_custom_text,
+      $metabox_pullquote
     ),
   );
 
@@ -1405,9 +1426,11 @@ $meta_boxes[] = array(
          'placeholder' => 'Select...',
          'options' => array(
            $prefix . 'custom_text' => 'Custom Text',
+           $prefix . 'pullquote' => 'Pullquote',
            ),
        ),
-       $metabox_custom_text
+       $metabox_custom_text,
+       $metabox_pullquote
      ),
    );
 
