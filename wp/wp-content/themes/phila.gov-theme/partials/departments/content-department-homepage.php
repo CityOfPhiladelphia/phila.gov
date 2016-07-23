@@ -89,7 +89,7 @@
 
           <section class="mvl">
             <div class="row">
-          <?php if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_two_thirds_column_blog_posts'): ?>
+          <?php if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'): ?>
             <!-- Blog Content -->
             <div class="large-18 columns">
               <div class="row">
@@ -114,7 +114,7 @@
 
             <?php endif;?>
 
-            <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_one_third_column_connect'):
+            <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):
               $connect_panel = $current_row_option_two['phila_connect_panel'];
 
               // Set Connect Panel vars
