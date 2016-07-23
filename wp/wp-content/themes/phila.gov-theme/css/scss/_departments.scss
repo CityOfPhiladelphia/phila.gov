@@ -10,12 +10,7 @@
     display: none;
   }
 }
-
-  .connect {
-    .panel{
-      border: 0;
-    }
-
+.department {
   .external-site-link-left,
   .external-site-link-right{
       text-align: center;
@@ -257,4 +252,10 @@
 .post-type-archive-department_page .list li{
   border-bottom: 1px solid $ghost-gray;
   margin: 1rem 0;
+}
+
+.connect {
+  .panel{
+    border: 0;
+  }
 }
