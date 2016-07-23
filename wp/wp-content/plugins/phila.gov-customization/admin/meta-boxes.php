@@ -1089,6 +1089,29 @@ $meta_boxes[] = array(
     ),
   );
 
+  // Callout
+  $metabox_callout = array(
+     'id'   => $prefix . 'callout',
+     'type' => 'group',
+
+     'fields' => array(
+       array(
+         'name' => 'Status',
+         'id'   => $prefix . 'callout_type',
+         'type' => 'select',
+         'options' => array(
+           'default' => 'Default',
+           'important' => 'Important'
+         ),
+       ),
+       array(
+         'name' => ' Text',
+         'id'   => $prefix . 'callout_text',
+         'type' => 'wysiwyg',
+       ),
+     ),
+   );
+
   // Connect Panel
   $metabox_connect = array(
     'id' => $prefix . 'connect_panel',
@@ -1296,6 +1319,7 @@ $meta_boxes[] = array(
    'options' => array(
      $prefix . 'blog_posts' => 'Blog Posts',
      $prefix . 'full_width_calendar' => 'Calendar',
+     $prefix . 'callout' => 'Callout',
      $prefix . 'custom_text' => 'Custom Text',
      $prefix . 'get_involved' => 'Get Involved',
      $prefix . 'full_width_press_releases' => 'Press Releases',
@@ -1315,6 +1339,7 @@ $meta_boxes[] = array(
    'fields' => array(
      $metabox_full_options_select,
      $meta_full_calendar,
+     $metabox_callout,
      $metabox_custom_text,
      $meta_call_to_action_multi
    ),
