@@ -2,6 +2,7 @@
 a.action-panel {
   color: $dark-gray;
   font-weight: normal;
+  border-bottom: 0;
   transition: opacity .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out;
   -webkit-transition: opacity .2s ease-in-out;
