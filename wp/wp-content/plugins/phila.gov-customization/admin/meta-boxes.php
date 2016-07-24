@@ -1069,6 +1069,16 @@ $meta_boxes[] = array(
             ),
           ),
         ),
+        array(
+          'name'  =>  'Additional URL Title (optional)',
+          'id'    => $prefix . 'url_title',
+          'type'  => 'text',
+        ),
+        array(
+          'name'  =>  'Additional URL (optional)',
+          'id'    => $prefix . 'url',
+          'type'  => 'url',
+        ),
       ),
     ),
   );
