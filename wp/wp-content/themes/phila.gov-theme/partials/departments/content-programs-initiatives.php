@@ -20,11 +20,13 @@
           // Begin full width row
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
-          if ( $current_row_option == 'phila_blog_posts'): ?>
+          if ( $current_row_option == 'phila_blog_posts'):
+            $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : '';
+        ?>
             <!-- Blog Content -->
             <div class="large-24 columns">
               <div class="row">
-                <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+                <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
               </div>
             </div>
 
@@ -160,16 +162,19 @@
       <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ):
 
         // Begin 2/3 x 1/3 row
-        $current_row_option_one = $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'];
-        $current_row_option_two = $current_row['phila_two_thirds_options'] ['phila_one_third_col']; ?>
+        $current_row_option_one = $current_row['phila_two_thirds_options']['phila_two_thirds_col'];
+        $current_row_option_two = $current_row['phila_two_thirds_options']['phila_one_third_col']; ?>
 
         <section class="mvl">
           <div class="row">
-            <?php if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'): ?>
+            <?php
+              if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'):
+                $blog_category = isset( $current_row_option_one['phila_blog_options']['phila_category'] ) ? $current_row_option_one['phila_blog_options']['phila_category'] : '';
+              ?>
               <!-- Blog Content -->
               <div class="large-18 columns">
                 <div class="row">
-                  <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+                  <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
                 </div>
               </div>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>

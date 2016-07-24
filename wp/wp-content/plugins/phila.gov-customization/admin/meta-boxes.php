@@ -983,6 +983,15 @@ $meta_boxes[] = array(
   *
   **/
 
+  // Blogs
+  $meta_blogs = array(
+    array(
+      'name' => 'Category ID (optional)',
+      'id' => $prefix . 'category',
+      'type' => 'number',
+    ),
+  );
+
   // Program and Initiatives
   $meta_programs_initiatives_images = array(
     'id' => $prefix . 'p_i_images',
@@ -1366,6 +1375,12 @@ $meta_boxes[] = array(
    'fields' => array(
      $metabox_full_options_select,
      array(
+       'id' => $prefix . 'blog_options',
+       'type' => 'group',
+       'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
+       'fields' => $meta_blogs,
+     ),
+     array(
        'id' => $prefix . 'full_width_calendar',
        'type' => 'group',
        'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
@@ -1426,6 +1441,12 @@ $meta_boxes[] = array(
           $prefix . 'custom_text' => 'Custom Text',
           $prefix . 'custom_text_multi' => 'Custom Text (multi)',
           ),
+      ),
+      array(
+        'id' => $prefix . 'blog_options',
+        'type' => 'group',
+        'visible' => array('phila_two_thirds_col_option', '=', 'phila_blog_posts'),
+        'fields' => $meta_blogs,
       ),
       array(
         'id'   => $prefix . 'custom_text',
