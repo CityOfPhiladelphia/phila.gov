@@ -6,6 +6,7 @@
 <?php if (function_exists('rwmb_meta')): ?>
 
   <?php //set the vars
+  $user_selected_template = phila_get_selected_template();
   $resource_list_groups = rwmb_meta( 'phila_resource_list' );
 
     //we require at least three
@@ -79,22 +80,25 @@
 
       <!-- Loop featured resources -->
       <?php if ( !empty( $featured_resources ) ):?>
-        <div class="row">
-          <div class="columns">
-              <h2 class="contrast">Featured Resources</h2>
+        <?php if ($user_selected_template != 'resource_list') : ?>
+          <div class="row">
+            <div class="columns">
+                <h2 class="contrast">Featured Resources</h2>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
+
               <?php
               ksort($featured_resources);
               $item_count = count( $featured_resources );
               $columns = phila_grid_column_counter( $item_count );
-              
+
               // TODO: Validate featured resource order
               //Current Featured Resource limit
               $limit = 4;
               $current_position = 0;
               ?>
-              <div class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
+              <div class="row mbl <?php if( $item_count > 1 ) echo 'equal-height';?>">
 
               <?php
               foreach ($featured_resources as $key => $value): ?>
@@ -129,7 +133,9 @@
 
       <div class="row">
         <div class="columns">
+          <?php if ($user_selected_template != 'resource_list') : ?>
             <h2 class="contrast">Resources</h2>
+          <?php endif; ?>
         </div>
       </div>
       <?php echo $list_item_output; ?>

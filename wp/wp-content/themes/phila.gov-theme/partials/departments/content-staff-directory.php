@@ -6,6 +6,9 @@
  */
 ?>
 <?php
+
+$user_selected_template = phila_get_selected_template();
+
 if (has_category()):
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
@@ -131,7 +134,9 @@ if (has_category()):
       <div class="mvm staff-leadership">
         <div class="row">
           <div class="large-24 columns">
+          <?php if ($user_selected_template != 'staff_directory') : ?>
             <h2 class="contrast">Leadership</h2>
+          <?php endif; ?>
             <?php
             ksort($staff_leadership_array);
             foreach ($staff_leadership_array as $key => $value):
@@ -144,10 +149,12 @@ if (has_category()):
     <?php endif; ?>
     <!-- Begin Staff Directory Table -->
     <?php if (!$all_staff_table_output == ''): ?>
-      <div class="mvm all-staff-table">
+      <div class="mvl all-staff-table">
         <div class="row">
           <div class="large-24 columns">
-            <h2 class="contrast">All Staff</h2>
+            <?php if ($user_selected_template != 'staff_directory') : ?>
+              <h2 class="contrast">All Staff</h2>
+            <?php endif; ?>
             <table role="grid" class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
               <thead>
                 <tr>

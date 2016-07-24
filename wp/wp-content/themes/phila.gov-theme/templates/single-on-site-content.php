@@ -16,8 +16,7 @@
 
 <div class="row">
   <div class="columns">
-    <?php // TODO: Figure out what to do with the title on Staff Template ?>
-    <?php the_title( '<h2 class="sub-page-title">', '</h2>' ); ?>
+    <?php the_title( '<h2 class="sub-page-title contrast">', '</h2>' ); ?>
   </div>
 </div>
 
