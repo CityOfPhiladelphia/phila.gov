@@ -96,7 +96,12 @@
                   <?php endif; ?>
                 </div>
               </div>
-        <?php endif; ?>
+          <?php elseif ( $current_row_option == 'phila_list_items'): ?>
+            <?php
+              $list_items = isset( $current_row['phila_full_options']['phila_list_items'] ) ? $current_row['phila_full_options']['phila_list_items'] : '';
+              include(locate_template('partials/departments/content-list-items.php'));
+            ?>
+          <?php endif; ?>
 
       <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half'):
 
@@ -189,7 +194,7 @@
                 $custom_text_group = $custom_text['phila_custom_text_group'];
               ?>
               <div class="large-18 columns">
-              <h2 class="contrast"><?php echo($custom_text['phila_custom_row_title']); ?></h2>
+                <h2 class="contrast"><?php echo($custom_text['phila_custom_row_title']); ?></h2>
               <?php if ( is_array( $custom_text_group ) ):?>
                 <?php $item_count = count($custom_text_group); ?>
                 <?php $columns = phila_grid_column_counter( $item_count ); ?>
@@ -226,9 +231,8 @@
                 include(locate_template('partials/departments/content-connect.php'));
 
               endif; ?>
-
           </div>
-        </div>
+        </section>
       <?php endif; ?>
     <!-- Grid Row -->
     <?php endforeach; ?>
