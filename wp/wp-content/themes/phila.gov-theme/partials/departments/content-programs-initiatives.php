@@ -182,8 +182,39 @@
                     </div>
                   <?php endif; ?>
                 </div>
+            <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text_multi'):?>
+              <?php
+                $custom_text = $current_row_option_one['phila_custom_text_multi'];
+                $custom_text_title = $custom_text['phila_custom_row_title'];
+                $custom_text_group = $custom_text['phila_custom_text_group'];
+              ?>
+              <div class="large-18 columns">
+              <h2 class="contrast"><?php echo($custom_text['phila_custom_row_title']); ?></h2>
+              <?php if ( is_array( $custom_text_group ) ):?>
+                <?php $item_count = count($custom_text_group); ?>
+                <?php $columns = phila_grid_column_counter( $item_count ); ?>
+                <div class="row <?php if( $item_count > 1 ) echo 'equal-height';?> ">
+                  <?php foreach ($custom_text_group as $key => $value):?>
+                    <div class="large-<?php echo $columns ?> columns">
 
-              <?php endif;?>
+                      <?php if ( isset( $custom_text_group[$key]['phila_custom_text_title'] ) && $custom_text_group[$key]['phila_custom_text_title'] != '') : ?>
+                        <h3><?php echo $custom_text_group[$key]['phila_custom_text_title']; ?></h3>
+                      <?php endif;?>
+
+                      <?php if ( isset( $custom_text_group[$key]['phila_custom_text_content'] ) && $custom_text_group[$key]['phila_custom_text_content'] != '') : ?>
+                        <p><?php echo $custom_text_group[$key]['phila_custom_text_content']; ?></p>
+                      <?php else :?>
+                        <div class="placeholder">
+                          Please enter content.
+                        </div>
+                      <?php endif;?>
+
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
+            </div>
+            <?php endif;?>
 
               <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):
                 $connect_panel = $current_row_option_two['phila_connect_panel'];
