@@ -9,12 +9,12 @@
 
 <?php
   // Set hero-header vars
-  $header_images = rwmb_meta( 'phila_p_i_images', $args = array('type' => 'file_input'));
+  $header_images = rwmb_meta( 'phila_p_i_images');
 ?>
 <div class="row programs-header" >
   <div class="small-24 column">
     <div class="header-wrap">
-    <?php if ($header_images['phila_p_i_header'] && !$header_images['phila_p_i_header'] == ''):?>
+    <?php if ( isset($header_images['phila_p_i_header']) && !$header_images['phila_p_i_header'] == ''):?>
       <img class="" src="<?php echo $header_images['phila_p_i_header'];?>">
 
     <?php else: ?>
