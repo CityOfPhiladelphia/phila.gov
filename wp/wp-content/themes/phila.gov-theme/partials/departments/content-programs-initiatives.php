@@ -15,7 +15,7 @@
       $current_row = $p_i_page_rows[$key];?>
 
       <!-- Grid Row -->
-      <?php if ( $current_row['phila_grid_options'] == 'phila_grid_options_full'):
+      <?php if ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full'):
 
           // Begin full width row
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
@@ -98,7 +98,7 @@
               </div>
         <?php endif; ?>
 
-      <?php elseif ($current_row['phila_grid_options'] == 'phila_grid_options_half'):
+      <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half'):
 
         // Begin 1/2 x 1/2 row
         $current_row_option_one = $current_row['phila_half_options'] ['phila_half_col_1'];
@@ -152,7 +152,7 @@
 
           </div>
         </section>
-      <?php elseif ($current_row['phila_grid_options'] == 'phila_grid_options_thirds'):
+      <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ):
 
         // Begin 2/3 x 1/3 row
         $current_row_option_one = $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'];
