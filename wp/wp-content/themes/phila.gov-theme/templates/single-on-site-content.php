@@ -14,7 +14,7 @@
 
 <?php else : ?>
 
-<div class="row">
+<div class="row mbm">
   <div class="columns">
     <?php the_title( '<h2 class="sub-page-title contrast">', '</h2>' ); ?>
   </div>
