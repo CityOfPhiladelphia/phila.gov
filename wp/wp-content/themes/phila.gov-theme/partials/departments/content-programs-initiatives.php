@@ -189,11 +189,12 @@
                 </div>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text_multi'):?>
               <?php
+              // TODO: Move this block to partials/content-custom-text-multi.php
                 $custom_text = $current_row_option_one['phila_custom_text_multi'];
                 $custom_text_title = $custom_text['phila_custom_row_title'];
                 $custom_text_group = $custom_text['phila_custom_text_group'];
               ?>
-              <div class="large-18 columns">
+              <div class="large-18 columns custom-text-multi">
                 <h2 class="contrast"><?php echo($custom_text['phila_custom_row_title']); ?></h2>
               <?php if ( is_array( $custom_text_group ) ):?>
                 <?php $item_count = count($custom_text_group); ?>
