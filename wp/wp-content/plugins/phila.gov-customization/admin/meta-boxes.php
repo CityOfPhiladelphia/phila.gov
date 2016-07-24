@@ -1279,6 +1279,57 @@ $meta_boxes[] = array(
     ),
   );
 
+  // District Programs
+  $metabox_list_items = array(
+    array(
+      'name' => 'Row Title',
+      'id'   => $prefix . 'row_title',
+      'type' => 'text',
+    ),
+    array(
+      'name' => 'Summary',
+      'id'   => $prefix . 'summary',
+      'type' => 'textarea',
+    ),
+    array(
+      'id'  => $prefix . 'list',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+
+      'fields' => array(
+        array(
+          'std' => '<strong>Row</strong>',
+          'type' => 'custom_html',
+        ),
+        array(
+          'id'   => $prefix . 'list_items',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            array(
+              'name' => __('Item Title', 'rwmb'),
+              'id'   => $prefix . 'list_item_title',
+              'type' => 'text',
+              'required' => true,
+            ),
+            array(
+              'name' => __('Item URL', 'rwmb'),
+              'id'   => $prefix . 'list_item_url',
+              'type' => 'url',
+              'required' => true,
+            ),
+            array(
+               'name' => __('Item Icon', 'rwmb'),
+               'id'   => $prefix . 'list_item_type',
+               'type' => 'text',
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 
   /**
   *
@@ -1297,6 +1348,7 @@ $meta_boxes[] = array(
      $prefix . 'callout' => 'Callout',
      $prefix . 'custom_text' => 'Custom Text',
      $prefix . 'get_involved' => 'Get Involved',
+     $prefix . 'list_items' => 'List Items',
      $prefix . 'full_width_press_releases' => 'Press Releases',
      $prefix . 'resource_list' => 'Resource List',
      ),
@@ -1342,6 +1394,12 @@ $meta_boxes[] = array(
          'relation' => 'or',
        ),
        'fields' => $meta_call_to_action_multi,
+    ),
+    array(
+      'id'   => $prefix . 'list_items',
+      'type' => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
+      'fields' => $metabox_list_items,
     ),
    ),
   );
