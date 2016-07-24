@@ -1246,14 +1246,23 @@ $meta_boxes[] = array(
     array(
       'name' => 'Custom Text Content',
       'id'   => $prefix . 'custom_text_content',
-      'type' => 'wysiwyg',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-      ),
+      'type' => 'textarea',
     ),
+  );
+
+  // Custom Text Multi
+  $metabox_custom_text_multi = array(
+    array(
+      'name' => 'Row Title',
+      'id'   => $prefix . 'custom_row_title',
+      'type' => 'text',
+    ),
+    array(
+      'id'   => $prefix . 'custom_text_group',
+      'type' => 'group',
+      'clone' => true,
+      'fields' => $metabox_custom_text,
+    )
   );
 
   // Pullquote
@@ -1357,6 +1366,7 @@ $meta_boxes[] = array(
         'options' => array(
           $prefix . 'blog_posts' => 'Blog Posts',
           $prefix . 'custom_text' => 'Custom Text',
+          $prefix . 'custom_text_multi' => 'Custom Text (multi)',
           ),
       ),
       array(
@@ -1364,6 +1374,12 @@ $meta_boxes[] = array(
         'type' => 'group',
         'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
         'fields' => $metabox_custom_text,
+      ),
+      array(
+        'id'   => $prefix . 'custom_text_multi',
+        'type' => 'group',
+        'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
+        'fields' => $metabox_custom_text_multi,
       ),
     ),
   );
