@@ -996,6 +996,7 @@ $meta_boxes[] = array(
   $meta_programs_initiatives_images = array(
     'id' => $prefix . 'p_i_images',
     'type' => 'group',
+    'visible' => array('phila_template_select', 'programs_initiatives'),
     'fields' => array(
       array(
         'name' => 'Header Image',
@@ -1023,18 +1024,19 @@ $meta_boxes[] = array(
 
   // Feature Programs and Initiatives
   $meta_feature_programs_initiatives = array(
-    'id' => $prefix . 'feature_p_i',
-    'type' => 'group',
-    'fields' => array(
-      array(
-        'name' => 'Feature Program',
-        'id' => $prefix . 'p_i',
-        'type' => 'post',
-        'post_type' => 'department_page',
-        'clone' => true,
+    array(
+      'id' => $prefix . 'p_i',
+      'type' => 'group',
+      'fields' => array(
+        array(
+          'name' => 'Feature Program',
+          'id' => $prefix . 'p_i_items',
+          'type' => 'post',
+          'post_type' => 'department_page',
+          'clone' => true,
+        ),
       ),
-    ),
-    // 'visible' => array('phila_template_select', '=', 'programs_initiatives'),
+    ),// 'visible' => array('phila_template_select', '=', 'programs_initiatives'),
   );
 
   // Resource List
@@ -1464,7 +1466,12 @@ $meta_boxes[] = array(
       'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
       'fields' => $metabox_list_items,
     ),
-    $meta_feature_programs_initiatives,
+    array(
+      'id'   => $prefix . 'feature_p_i',
+      'type' => 'group',
+      // 'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
+      'fields' => $meta_feature_programs_initiatives,
+    ),
    ),
   );
 

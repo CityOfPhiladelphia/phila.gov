@@ -13,7 +13,7 @@
 <?php
     foreach ($page_rows as $key => $value):
       $current_row = $page_rows[$key];?>
-      
+
       <!-- Grid Row -->
       <?php if ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full'):
           // Begin full width row
@@ -28,12 +28,12 @@
             </div>
             <section class="row equal-height mbl">
               <?php
-                $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i'];
+                $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i']['phila_p_i_items'];
                 foreach ($featured as $key => $value):
               ?>
-
                 <article class="large-24 columns featured-content equal">
                   <?php
+                  //FIXME: This needs to be reworked a bit...
                     if ( null !== rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) )):
                       $featured_post = get_post( $featured[$key] );
                       $featured_item =  rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) );
@@ -48,7 +48,6 @@
                     </header>
                     <p><?php echo $long_description;?></p>
                   </article>
-
               <?php endforeach;?>
             </section>
           <?php endif; ?>

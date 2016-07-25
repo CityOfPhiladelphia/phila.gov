@@ -52,12 +52,13 @@
               </div>
               <section class="row equal-height mbl">
                 <?php
-                  $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i'];
+                  $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i']['phila_p_i_items'];
                   foreach ($featured as $key => $value):
                 ?>
 
                   <article class="large-8 medium-24 columns featured-content equal">
                     <?php
+                    //FIXME: This needs to be reworked a bit...
                       if ( null !== rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) )):
                         $featured_post = get_post( $featured[$key] );
                         $featured_item =  rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) );
