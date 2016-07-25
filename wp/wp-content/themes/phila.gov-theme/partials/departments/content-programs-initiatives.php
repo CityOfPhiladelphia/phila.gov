@@ -232,8 +232,6 @@
 
                 // Set Connect Panel vars
                 $connect_vars = phila_connect_panel($connect_panel);
-                // TODO: get_template_part vs. include: can't pass arbitrary vars to templates
-                // get_template_part( 'partials/departments/content', 'connect' );
                 include(locate_template('partials/departments/content-connect.php'));
 
               endif; ?>
