@@ -16,6 +16,8 @@
 
   $action_panel_multi = isset( $action_panel_section['phila_call_to_action_multi_group'] ) ? $action_panel_section['phila_call_to_action_multi_group']: '' ;
 
+  $action_panel_bg = isset( $action_panel_section['phila_bg_image'] ) ? $action_panel_section['phila_bg_image'] : '';
+
 
   if ( ! empty( $action_panel_section ) ) : ?>
   <?php $item_count = count($action_panel_multi); ?>
@@ -27,6 +29,10 @@
       </div>
     </div>
     <section class="get-involved-row">
+      <div class="row-wrap">
+      <?php if ( $action_panel_bg != '') :?>
+        <img class="banner show-for-large-only" src="<?php echo $action_panel_bg;?>">
+      <?php endif; ?>
       <div class="row mbm ptm <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <?php foreach ( $action_panel_multi as $call_to_action ) :
 
@@ -73,5 +79,6 @@
 
     <?php endforeach; ?>
   </div>
+</div>
 </section>
 <?php endif; ?>

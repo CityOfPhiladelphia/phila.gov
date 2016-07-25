@@ -1079,6 +1079,12 @@ $meta_boxes[] = array(
           'id'    => $prefix . 'url',
           'type'  => 'url',
         ),
+        array(
+          'name'  =>  'Background Image',
+          'id'    => $prefix . 'bg_image',
+          'type'  => 'file_input',
+          'visible' => array('phila_full_options_select', '=', 'phila_get_involved'),
+        ),
       ),
     ),
   );
