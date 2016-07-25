@@ -1002,8 +1002,39 @@ $meta_boxes[] = array(
         'id' => $prefix . 'p_i_header',
         'type' => 'file_input',
       ),
+      array(
+        'name' => 'Featured Image',
+        'id' => $prefix . 'p_i_featured',
+        'type' => 'file_input',
+      ),
+      array(
+        'name' => 'Short Feature Description',
+        'id' => $prefix . 'short_feat_desc',
+        'type' => 'textarea',
+      ),
+      array(
+        'name' => 'Long Feature Description',
+        'id' => $prefix . 'long_feat_desc',
+        'type' => 'textarea',
+      ),
     ),
     'visible' => array('phila_template_select', '=', 'programs_initiatives'),
+  );
+
+  // Feature Programs and Initiatives
+  $meta_feature_programs_initiatives = array(
+    'id' => $prefix . 'feature_p_i',
+    'type' => 'group',
+    'fields' => array(
+      array(
+        'name' => 'Feature Program',
+        'id' => $prefix . 'p_i',
+        'type' => 'post',
+        'post_type' => 'department_page',
+        'clone' => true,
+      ),
+    ),
+    // 'visible' => array('phila_template_select', '=', 'programs_initiatives'),
   );
 
   // Resource List
@@ -1372,6 +1403,7 @@ $meta_boxes[] = array(
      $prefix . 'full_width_calendar' => 'Calendar',
      $prefix . 'callout' => 'Callout',
      $prefix . 'custom_text' => 'Custom Text',
+     $prefix . 'feature_p_i' => 'Feature Program or Initiative',
      $prefix . 'get_involved' => 'Get Involved',
      $prefix . 'list_items' => 'List Items',
      $prefix . 'full_width_press_releases' => 'Press Releases',
@@ -1432,6 +1464,7 @@ $meta_boxes[] = array(
       'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
       'fields' => $metabox_list_items,
     ),
+    $meta_feature_programs_initiatives,
    ),
   );
 
