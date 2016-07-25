@@ -44,6 +44,38 @@
                 </div>
               </div>
 
+            <?php elseif ($current_row_option == 'phila_feature_p_i'): ?>
+              <!-- Display Featured Programs and Initiatives -->
+              <div class="row mvm">
+                <div class="columns">
+                  <h2 class="contrast"> Core Initiatives </h2>
+                </div>
+              </div>
+              <section class="row equal-height mbl">
+                <?php
+                  $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i'];
+                  foreach ($featured as $key => $value):
+                ?>
+
+                  <article class="large-8 medium-24 columns featured-content equal">
+                    <?php
+                      if ( null !== rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) )):
+                        $featured_post = get_post( $featured[$key] );
+                        $featured_item =  rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) );
+                        $featured_image = isset( $featured_item['phila_p_i_featured'] ) ? $featured_item['phila_p_i_featured'] : '';
+                        $short_description = isset( $featured_item['phila_short_feat_desc'] ) ? $featured_item['phila_short_feat_desc'] : '';
+                        $long_description = isset( $featured_item['phila_long_feat_desc'] ) ? $featured_item['phila_long_feat_desc'] : '';
+                      endif;
+                    ?>
+                      <img src="<?php echo $featured_image;?>" alt="" class="mrm mbxxl-mu">
+                      <header>
+                        <a href="<?php echo get_permalink($featured[$key]); ?>"><h4 class="h6"><?php echo $featured_post->post_title; ?></h4></a>
+                      </header>
+                      <p><?php echo $short_description;?></p>
+                    </article>
+
+                <?php endforeach;?>
+              </section>
             <?php elseif ($current_row_option == 'phila_get_involved'): ?>
               <!-- Display Multi Call to Action as Get Involved -->
               <?php
