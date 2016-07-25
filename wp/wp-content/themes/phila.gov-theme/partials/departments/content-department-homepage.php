@@ -7,14 +7,13 @@
 ?>
 <?php
   // MetaBox variables
-  $dept_homepage_rows = rwmb_meta('phila_row');
-  // print_r($dept_homepage_rows);
+  $page_rows = rwmb_meta('phila_row');
 ?>
 
   <div>
   <?php
-      foreach ($dept_homepage_rows as $key => $value):
-        $current_row = $dept_homepage_rows[$key];?>
+      foreach ($page_rows as $key => $value):
+        $current_row = $page_rows[$key];?>
         <!-- Grid Row -->
         <?php if ( $current_row['phila_grid_options'] == 'phila_grid_options_full'):
             $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
