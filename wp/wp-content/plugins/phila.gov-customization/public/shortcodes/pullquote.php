@@ -11,11 +11,17 @@ function pullquote_shortcode($atts){
   $a = shortcode_atts( array(
     'quote' => '',
     'attribution' => '',
+    'inline' => true,
   ), $atts);
 
   $output = '';
 
   if ( $a['quote'] != '' ){
+    if ( $a['inline'] == true ){
+      $output .= '<div class="pullquote-wrapper pullquote-inline">';
+    } else {
+      $output .= '<div class="pullquote-wrapper">';
+    }
     $output .= '<div class="pullquote">';
     $output .= '<div class="quote-icon">&ldquo;</div>';
     $output .= '<p>' . $a['quote'] . '</p>';
@@ -23,7 +29,7 @@ function pullquote_shortcode($atts){
       $output .= '<span class="attribution"> - ' . $a['attribution'] . ' - </span>';
     }
     $output .= '</div>';
-
+    $output .= '</div>';
     return $output;
   } else {
     return;
