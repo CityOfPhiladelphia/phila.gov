@@ -128,8 +128,9 @@
                 </div>
 
             <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):?>
+              <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
               <div class="large-12 columns">
-                <?php echo do_shortcode('[pullquote quote="To meaningfully change the outcomes of our schools, the single most important investment we can make is in pre-K." attribution="Mayor Jim Kenney"]'); ?>
+                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline=false]'); ?>
               </div>
             <?php endif; ?>
 
@@ -150,8 +151,8 @@
                 </div>
             <?php elseif ( $current_row_option_two['phila_half_col_2_option'] == 'phila_pullquote'):?>
               <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
-              <div class="large-12 columns pullquote-wrapper">
-                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '"]'); ?>
+              <div class="large-12 columns">
+                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline=false]'); ?>
               </div>
             <?php endif; ?>
 
