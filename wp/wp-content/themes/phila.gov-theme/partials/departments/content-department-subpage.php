@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying Program and Initiative pages
+ * The template used for displaying Department Subpages
  *
  * @package phila-gov
  */
