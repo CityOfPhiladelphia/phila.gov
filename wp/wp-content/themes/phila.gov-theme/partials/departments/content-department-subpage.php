@@ -7,16 +7,15 @@
 ?>
 <?php
   // MetaBox variables
-  $p_i_page_rows = rwmb_meta('phila_row');
+  $page_rows = rwmb_meta('phila_row');
 ?>
 <div>
 <?php
-    foreach ($p_i_page_rows as $key => $value):
-      $current_row = $p_i_page_rows[$key];?>
-
+    foreach ($page_rows as $key => $value):
+      $current_row = $page_rows[$key];?>
+      
       <!-- Grid Row -->
       <?php if ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full'):
-
           // Begin full width row
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
