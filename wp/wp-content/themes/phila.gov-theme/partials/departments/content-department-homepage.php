@@ -126,7 +126,7 @@
             endif; ?>
 
             </div>
-          </div>
+          </section>
         <?php endif; ?>
       <!-- Grid Row -->
       <?php endforeach; ?>
