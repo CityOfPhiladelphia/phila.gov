@@ -50,9 +50,9 @@
               $callout_type = $current_row['phila_full_options']['phila_callout']['phila_callout_type'];
               $callout_text = $current_row['phila_full_options']['phila_callout']['phila_callout_text'];
             ?>
-            <section class="row mvl">
+            <section class="row mvm">
               <div class="large-24 column">
-                  <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '"]'); ?>
+                  <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '" inline="false"]'); ?>
               </div>
             </section>
 
