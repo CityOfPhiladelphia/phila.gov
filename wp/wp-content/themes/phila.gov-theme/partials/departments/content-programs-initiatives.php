@@ -249,7 +249,9 @@
                 <a href="<?php echo $feature_url;?>" class="card action-panel">
                 <?php endif; ?>
                   <div class="panel">
-                    <img src="<?php echo $feature_image;?>" alt="" class="mbm">
+                    <?php if( $feature_image != '' ): ?>
+                      <img src="<?php echo $feature_image;?>" alt="" class="mbm">
+                    <?php endif; ?>
                     <span class="details"><?php echo $feature_text;?></span>
                   </div>
                 <?php if( $feature_url != '' ): ?>
