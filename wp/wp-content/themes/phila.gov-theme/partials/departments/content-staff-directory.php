@@ -128,11 +128,10 @@ if (has_category()):
       endif;
     endwhile;
 
-    echo '<section class="mvm staff-directory">';
+    echo '<section class="staff-directory">';
 
     if (!empty($staff_leadership_array)):?>
-      <div class="mvm staff-leadership">
-        <div class="row">
+      <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
           <div class="large-24 columns">
           <?php if ($user_selected_template != 'staff_directory') : ?>
             <h2 class="contrast">Leadership</h2>
@@ -144,13 +143,11 @@ if (has_category()):
             endforeach;
             ?>
           </div>
-        </div>
       </div>
     <?php endif; ?>
     <!-- Begin Staff Directory Table -->
     <?php if (!$all_staff_table_output == ''): ?>
-      <div class="mvl all-staff-table">
-        <div class="row">
+      <section class="row mvl all-staff-table">
           <div class="large-24 columns">
             <?php if ($user_selected_template != 'staff_directory') : ?>
               <h2 class="contrast">All Staff</h2>
@@ -170,8 +167,7 @@ if (has_category()):
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
+      </section>
     <?php endif; ?>
     <?php else: ?>
       <div class="mvm">

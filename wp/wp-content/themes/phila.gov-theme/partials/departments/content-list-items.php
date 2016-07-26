@@ -11,7 +11,7 @@ $summary = isset( $list_items['phila_summary'] ) ? $list_items['phila_summary'] 
 $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'] : '' ;
 ?>
 
-<div class="row">
+<section class="row mvl">
   <div class="large-24 columns">
     <h2 class="contrast"><?php echo( $row_title ); ?></h2>
       <div class="row">
@@ -57,4 +57,4 @@ $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'
         </div>
       </div>
   </div>
-</div>
+</section>
