@@ -54,7 +54,7 @@
                     $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i']['phila_p_i_items'];
                     foreach ($featured as $key => $value):
                   ?>
-                    <article class="large-8 medium-24 columns featured-content equal">
+                    <article class="large-8 medium-24 columns featured-content programs equal">
                       <?php
                       //FIXME: This needs to be reworked a bit...
                         if ( null !== rwmb_meta( 'phila_p_i_images', $arg ='type=textarea', $post_id = intval($featured[$key]) )):
@@ -65,11 +65,15 @@
                           $long_description = isset( $featured_item['phila_long_feat_desc'] ) ? $featured_item['phila_long_feat_desc'] : '';
                         endif;
                       ?>
-                        <img src="<?php echo $featured_image;?>" alt="" class="mrm mbxxl-mu">
-                        <header>
-                          <a href="<?php echo get_permalink($featured[$key]); ?>"><h4 class="h6"><?php echo $featured_post->post_title; ?></h4></a>
-                        </header>
-                        <p><?php echo $short_description;?></p>
+                        <div class="featured-thumbnail">
+                          <img src="<?php echo $featured_image;?>" alt="" class="mrm">
+                        </div>
+                        <div>
+                          <header>
+                            <a href="<?php echo get_permalink($featured[$key]); ?>"><h4 class="h6"><?php echo $featured_post->post_title; ?></h4></a>
+                          </header>
+                          <p><?php echo $short_description;?></p>
+                        </div>
                       </article>
                   <?php endforeach;?>
                 </section>
