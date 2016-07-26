@@ -1,0 +1,21 @@
+.content-list-items{
+  border-right: 2px solid $ghost-gray;
+  &:last-of-type{
+    border-right: 0;
+  }
+  .content-list-item{
+    border-bottom: 2px solid $ghost-gray;
+    &:nth-of-type(4){
+      border-bottom: 0;
+    }
+    a {
+      div {
+        .fa {
+          margin-right:$spacing-medium;
+        }
+        display:table-cell;
+        vertical-align:middle;
+      }
+    }
+  }
+}
