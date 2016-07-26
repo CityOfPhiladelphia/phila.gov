@@ -31,7 +31,7 @@
     <section class="get-involved-row">
       <div class="row-wrap">
       <?php if ( $action_panel_bg != '') :?>
-        <img class="banner show-for-large-only" src="<?php echo $action_panel_bg;?>">
+        <img class="banner show-for-large" src="<?php echo $action_panel_bg;?>">
       <?php endif; ?>
       <div class="row mbm ptm <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <?php foreach ( $action_panel_multi as $call_to_action ) :
