@@ -24,7 +24,7 @@
   <?php $item_count = count($action_panel_multi); ?>
   <?php $columns = phila_grid_column_counter( $item_count ); ?>
 
-    <div class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
+    <section class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <div class="columns">
         <h2 class="contrast"><?php echo $action_panel_title; ?></h2>
       </div>
@@ -72,7 +72,6 @@
     <?php endif; ?>
     </div>
   <?php endforeach; ?>
-</div>
 <?php if ( $link_url != '' && $link_title != ''):?>
   <div class="row">
     <div class="columns">
@@ -80,4 +79,5 @@
     </div>
   </div>
 <?php endif; ?>
+</section>
 <?php endif; ?>
