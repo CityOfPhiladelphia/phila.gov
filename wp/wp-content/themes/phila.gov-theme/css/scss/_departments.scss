@@ -236,6 +236,16 @@
     width:320px !important;
   }
 
+  ul {
+    background: white;
+  }
+
+  .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
+    border-color: transparent transparent transparent #fff;
+    border-left-style: solid;
+    border-right-width: 0;
+  }
+
   .department-menu{
 
     .dropdown li{
