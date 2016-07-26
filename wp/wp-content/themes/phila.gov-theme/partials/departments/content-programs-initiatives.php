@@ -24,11 +24,9 @@
             $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : '';
         ?>
             <!-- Blog Content -->
-            <div class="large-24 columns">
-              <div class="row">
+            <section class="row mvl">
                 <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
-              </div>
-            </div>
+            </section>
 
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'): ?>
             <!-- Full Width Calendar -->
@@ -37,16 +35,14 @@
               $cal_id = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'];
               $cal_url = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'];
             ?>
-            <div class="row">
+            <section class="row expanded calendar-row mbm ptm">
               <div class="columns">
                 <h2>Events</h2>
               </div>
-            </div>
-            <div class="row expanded calendar-row mbm ptm">
               <div class="medium-centered large-16 columns">
                 <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
               </div>
-            </div>
+            </section>
 
           <?php elseif ( $current_row_option == 'phila_callout'): ?>
             <!-- Display Callout -->
@@ -54,11 +50,11 @@
               $callout_type = $current_row['phila_full_options']['phila_callout']['phila_callout_type'];
               $callout_text = $current_row['phila_full_options']['phila_callout']['phila_callout_text'];
             ?>
-            <div class="row">
+            <section class="row mvl">
               <div class="large-24 column">
                   <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '"]'); ?>
               </div>
-            </div>
+            </section>
 
           <?php elseif ($current_row_option == 'phila_get_involved'): ?>
             <!-- Display Multi Call to Action as Get Involved -->
@@ -69,11 +65,9 @@
 
           <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
             <!-- Press Releases -->
-            <div class="large-24 columns">
-              <div class="row">
+              <section class="row mvl">
                 <?php echo do_shortcode('[press-releases posts=5]');?>
-              </div>
-            </div>
+              </section>
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <!-- Display Multi Call to Action as Resource List -->
@@ -85,8 +79,8 @@
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
             <!-- Display Custom Text -->
             <?php $custom_text = $current_row['phila_full_options']['phila_custom_text']; ?>
-              <div class="row">
-                <div class="large-24 columns">
+              <section class="row mvl">
+                <div class="large-24 column">
                   <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
                   <div>
                     <?php echo($custom_text['phila_custom_text_content']); ?>
@@ -97,7 +91,7 @@
                     </div>
                   <?php endif; ?>
                 </div>
-              </div>
+              </section>
           <?php elseif ( $current_row_option == 'phila_list_items'): ?>
             <?php
               $list_items = isset( $current_row['phila_full_options']['phila_list_items'] ) ? $current_row['phila_full_options']['phila_list_items'] : '';
@@ -110,8 +104,7 @@
         // Begin 1/2 x 1/2 row
         $current_row_option_one = $current_row['phila_half_options'] ['phila_half_col_1'];
         $current_row_option_two = $current_row['phila_half_options'] ['phila_half_col_2']; ?>
-        <section class="mvl">
-          <div class="row">
+        <section class="row mvl">
             <?php if ( $current_row_option_one['phila_half_col_1_option'] == 'phila_custom_text'):?>
               <?php $custom_text = $current_row_option_one['phila_custom_text']; ?>
 
@@ -156,9 +149,6 @@
               </div>
             <?php endif; ?>
 
-
-
-          </div>
         </section>
       <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ):
 
@@ -166,8 +156,7 @@
         $current_row_option_one = $current_row['phila_two_thirds_options']['phila_two_thirds_col'];
         $current_row_option_two = $current_row['phila_two_thirds_options']['phila_one_third_col']; ?>
 
-        <section class="mvl">
-          <div class="row">
+        <section class="row mvl">
             <?php
               if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'):
                 $blog_category = isset( $current_row_option_one['phila_blog_options']['phila_category'] ) ? $current_row_option_one['phila_blog_options']['phila_category'] : '';
@@ -259,7 +248,6 @@
                 <?php endif; ?>
               </div>
               <?php endif; ?>
-          </div>
         </section>
       <?php endif; ?>
     <!-- Grid Row -->

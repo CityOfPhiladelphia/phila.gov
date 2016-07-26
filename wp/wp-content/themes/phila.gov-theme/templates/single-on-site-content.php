@@ -11,11 +11,11 @@
 <?php if ($user_selected_template == 'programs_initiatives') : ?>
   <?php get_template_part( 'partials/departments/content', 'programs-initiatives-header' ); ?>
 <?php else : ?>
-  <div class="row mbm">
+  <header class="row">
     <div class="columns">
       <?php the_title( '<h2 class="sub-page-title contrast">', '</h2>' ); ?>
     </div>
-  </div>
+  </header>
 <?php endif; ?>
 
 <div data-swiftype-index='true' class="entry-content">
@@ -40,7 +40,7 @@
       <?php get_template_part( 'partials/departments/content', 'department-homepage' ); ?>
     </section>
     <!-- End Department Homepage Display -->
-    
+
   <?php elseif ($user_selected_template == 'department_subpage') : ?>
     <!-- Begin Department Subpage Template Display -->
     <section class="apply-template">
@@ -63,9 +63,9 @@
     <?php endif; ?>
     <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
     <?php if ( $full_row_blog == 1): ?>
-      <div class="row">
+      <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-      </div>
+      </section>
     <?php endif; ?>
     <!-- End One Page Template Display -->
 
