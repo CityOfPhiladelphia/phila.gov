@@ -109,7 +109,7 @@ function recent_news_shortcode($atts) {
 
       $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
 
-      $output .= '<div class="content-block equal">';
+      $output .= '<div class="content-block">';
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 
