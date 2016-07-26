@@ -228,14 +228,35 @@
             </div>
             <?php endif;?>
 
-              <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):
+              <?php
+                if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):
                 $connect_panel = $current_row_option_two['phila_connect_panel'];
 
                 // Set Connect Panel vars
                 $connect_vars = phila_connect_panel($connect_panel);
                 include(locate_template('partials/departments/content-connect.php'));
 
-              endif; ?>
+                elseif ( $current_row_option_two['phila_one_third_col_option'] == 'phila_custom_feature'):
+                  $feature_panel = isset( $current_row_option_two['phila_custom_feature'] ) ? $current_row_option_two['phila_custom_feature'] : '';
+                  $feature_title = isset( $feature_panel['phila_feature_title'] ) ? $feature_panel['phila_feature_title'] : '';
+                  $feature_image = isset( $feature_panel['phila_feature_image'] ) ? $feature_panel['phila_feature_image'] : '';
+                  $feature_text = isset( $feature_panel['phila_feature_text'] ) ? $feature_panel['phila_feature_text'] : '';
+                  $feature_url = isset( $feature_panel['phila_feature_url'] ) ? $feature_panel['phila_feature_url'] : '';
+              ?>
+              <div class="large-6 columns">
+                <h2 class="contrast"><?php echo $feature_title;?></h2>
+                <?php if( $feature_url != '' ): ?>
+                <a href="<?php echo $feature_url;?>" class="card action-panel">
+                <?php endif; ?>
+                  <div class="panel">
+                    <img src="<?php echo $feature_image;?>" alt="" class="mbm">
+                    <span class="details"><?php echo $feature_text;?></span>
+                  </div>
+                <?php if( $feature_url != '' ): ?>
+                </a>
+                <?php endif; ?>
+              </div>
+              <?php endif; ?>
           </div>
         </section>
       <?php endif; ?>

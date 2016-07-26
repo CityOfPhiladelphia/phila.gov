@@ -1036,7 +1036,30 @@ $meta_boxes[] = array(
           'clone' => true,
         ),
       ),
-    ),// 'visible' => array('phila_template_select', '=', 'programs_initiatives'),
+    ),
+  );
+  // Feature Programs and Initiatives
+  $meta_custom_feature = array(
+    array(
+      'name' => 'Feature Title',
+      'id' => $prefix . 'feature_title',
+      'type' => 'text',
+    ),
+    array(
+      'name' => 'Feature Image',
+      'id' => $prefix . 'feature_image',
+      'type' => 'file_input',
+    ),
+    array(
+      'name' => 'Feature Text',
+      'id' => $prefix . 'feature_text',
+      'type' => 'textarea',
+    ),
+    array(
+      'name' => 'URL',
+      'id' => $prefix . 'feature_url',
+      'type' => 'url',
+    ),
   );
 
   // Resource List
@@ -1106,11 +1129,13 @@ $meta_boxes[] = array(
           'name'  =>  'Additional URL Title (optional)',
           'id'    => $prefix . 'url_title',
           'type'  => 'text',
+          'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
         ),
         array(
           'name'  =>  'Additional URL (optional)',
           'id'    => $prefix . 'url',
           'type'  => 'url',
+          'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
         ),
         array(
           'name'  =>  'Background Image',
@@ -1469,7 +1494,7 @@ $meta_boxes[] = array(
     array(
       'id'   => $prefix . 'feature_p_i',
       'type' => 'group',
-      // 'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
+      'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
       'fields' => $meta_feature_programs_initiatives,
     ),
    ),
@@ -1532,6 +1557,7 @@ $meta_boxes[] = array(
       'placeholder' => 'Select...',
       'options' => array(
         $prefix . 'connect_panel' => 'Connect Panel',
+        $prefix . 'custom_feature' => 'Custom Feature Panel',
         $prefix . 'custom_text' => 'Custom Text',
         ),
       ),
@@ -1546,6 +1572,12 @@ $meta_boxes[] = array(
         'type' => 'group',
         'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
         'fields' => $metabox_custom_text,
+      ),
+      array(
+        'id'   => $prefix . 'custom_feature',
+        'type' => 'group',
+        'visible' => array('phila_one_third_col_option', '=', 'phila_custom_feature'),
+        'fields' => $meta_custom_feature,
       ),
     ),
   );
