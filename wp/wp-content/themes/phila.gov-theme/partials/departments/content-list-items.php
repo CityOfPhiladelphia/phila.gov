@@ -25,20 +25,29 @@ $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'
           ?>
         </div>
         <div class="large-18 columns">
-          <div class="row">
+          <div class="row collapse" data-equalizer>
             <?php
               foreach ($list_item_group as $key => $value) :
                 $item = isset( $list_item_group[$key]['phila_list_items'] ) ? $list_item_group[$key]['phila_list_items'] : '';
             ?>
-              <div class="large-8 columns">
+              <div class="content-list-items large-8 columns" >
                 <?php foreach ( $item as $k => $v) :
                   $item_title = isset( $item[$k]['phila_list_item_title'] ) ? $item[$k]['phila_list_item_title'] : '';
                   $item_icon = isset( $item[$k]['phila_list_item_type'] ) ? $item[$k]['phila_list_item_type'] : '';
                   $item_url = isset( $item[$k]['phila_list_item_url'] ) ? $item[$k]['phila_list_item_url'] : '';
                 ?>
-                   <div class="pam">
-                     <a href="<?php echo $item_url; ?>" class="external">
-                       <span><i class="fa <?php echo $item_icon; ?> fa-lg" aria-hidden="true"></i> <?php echo $item_title; ?></span>
+                   <div class="content-list-item valign pvm phl" data-equalizer-watch>
+                     <a href="<?php echo $item_url; ?>" class=" valign-cell">
+                       <div>
+                         <?php if ( $item_icon != ''):?>
+                           <i class="fa <?php echo $item_icon; ?> fa-lg" aria-hidden="true"></i>
+                         <?php endif;?>
+                       </div>
+                       <div>
+                         <span class="external">
+                           <?php echo $item_title; ?>
+                         </span>
+                       </div>
                      </a>
                    </div>
                 <?php endforeach; ?>
