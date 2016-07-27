@@ -13,20 +13,6 @@
     margin-top: $spacing-small;
   }
 
-  @media only screen and (min-width: 40.063em) {
-
-
-      .columns{
-        padding: 0 2.5rem;
-        &:first-of-type {
-          padding-left: 3rem;
-        }
-        &:last-of-type {
-          padding-right: 3rem;
-        }
-      }
-  }
-
   @media only screen and (min-width: 64em) {
     .row-wrap {
       position: relative;
