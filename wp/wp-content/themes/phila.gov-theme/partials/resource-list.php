@@ -19,7 +19,7 @@
       foreach ( $resource_list_groups as $resource_list_group ) :
 
         if ( $count == 0 ) :
-        $list_item_output .= '<div class="row">';
+        $list_item_output .= '<section class="row column">';
         endif;
 
         //assign vars
@@ -72,7 +72,7 @@
         $list_item_output .=  '</ul></div>'; ?>
 
       <?php if ( $count == 3 ) :
-      $list_item_output .= '</div>';
+      $list_item_output .= '</section>';
       $count = 0;
       endif; ?>
 
@@ -80,13 +80,7 @@
 
       <!-- Loop featured resources -->
       <?php if ( !empty( $featured_resources ) ):?>
-        <?php if ($user_selected_template != 'resource_list') : ?>
-          <div class="row">
-            <div class="columns">
-                <h2 class="contrast">Featured Resources</h2>
-            </div>
-          </div>
-        <?php endif; ?>
+
 
               <?php
               ksort($featured_resources);
@@ -98,7 +92,13 @@
               $limit = 4;
               $current_position = 0;
               ?>
-              <div class="row mbl <?php if( $item_count > 1 ) echo 'equal-height';?>">
+              <section class="row mbl <?php if( $item_count > 1 ) echo 'equal-height';?>">
+
+                <?php if ($user_selected_template != 'resource_list') : ?>
+                  <div class="columns">
+                      <h2 class="contrast">Featured Resources</h2>
+                  </div>
+                <?php endif; ?>
 
               <?php
               foreach ($featured_resources as $key => $value): ?>
@@ -128,25 +128,26 @@
                 endif;
               ?>
               <?php endforeach; ?>
-        </div>
+        </section>
       <?php endif; ?>
 
-      <div class="row">
-        <div class="columns">
-          <?php if ($user_selected_template != 'resource_list') : ?>
-            <h2 class="contrast">Resources</h2>
-          <?php endif; ?>
-        </div>
-      </div>
-      <?php echo $list_item_output; ?>
-
+      <section class="row">
+        <?php if (! empty( $featured_resources ) && count($featured_resources) > 0) : ?>
+            <div class="column">
+                <h2 class="contrast">Resources</h2>
+            </div>
+        <?php endif; ?>
+        <?php echo $list_item_output; ?>
+      </section>
 
     <?php else : ?>
-      <div class="row">
+      <section class="row mvl">
         <div class="columns">
-          <?php echo 'Please enter at least three groups of links.'; ?>
+          <div class="placeholder">
+            <?php echo 'Please enter at least three groups of links.'; ?>
+          </div>
         </div>
-      </div>
+      </section>
     <?php endif; ?>
 
   <?php endif; ?>
