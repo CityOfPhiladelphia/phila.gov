@@ -9,6 +9,7 @@
       color: $ben-franklin-blue;
       font-family: "Open Sans",sans-serif;
       font-size: 2.5rem;
+      text-transform: uppercase;
     }
     img {
       display:none;
@@ -33,7 +34,7 @@
           border-bottom: 1px solid $ben-franklin-blue;
           border-top: 1px solid $ben-franklin-blue;
           font-size: 3.5rem;
-          font-size: 700;
+          font-weight: 700;
       }
       img {
           position: absolute;
