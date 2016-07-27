@@ -11,7 +11,7 @@
     padding: $spacing-medium;
     // margin-top: .92857rem;
       p {
-        font-size: 1.8em;
+        font-size: 1.6em;
         font-style: italic;
       }
       .attribution {
@@ -25,7 +25,7 @@
     }
     @media only screen and (min-width: 64em) {
         .pullquote {
-          margin: $spacing-large $spacing-medium $spacing-medium $spacing-extra;
+          margin: $spacing-large $spacing-medium $spacing-medium $spacing-medium;
         }
         &.pullquote-inline{
 
