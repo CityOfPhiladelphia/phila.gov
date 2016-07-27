@@ -1177,7 +1177,7 @@ $meta_boxes[] = array(
      array(
        'name' => ' Text',
        'id'   => $prefix . 'callout_text',
-       'type' => 'wysiwyg',
+       'type' => 'textarea',
      ),
    );
 
