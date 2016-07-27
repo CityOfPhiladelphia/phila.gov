@@ -1,7 +1,16 @@
 .staff-directory {
   .all-staff-table {
     .social {
-      text-align: center;
+      .social-link {
+        padding-left: .5rem;
+        padding-right: .5rem;
+        &:first-of-type {
+          padding-left:0;
+        }
+      }
+      @media screen and (min-width: 40em){
+        text-align: center;
+      }
     }
   }
   .staff-leadership {
