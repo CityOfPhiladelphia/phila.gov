@@ -50,9 +50,9 @@
               $callout_type = $current_row['phila_full_options']['phila_callout']['phila_callout_type'];
               $callout_text = $current_row['phila_full_options']['phila_callout']['phila_callout_text'];
             ?>
-            <section class="row mvl">
+            <section class="row mvm">
               <div class="large-24 column">
-                  <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '"]'); ?>
+                  <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '" inline="false"]'); ?>
               </div>
             </section>
 
@@ -123,7 +123,7 @@
             <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):?>
               <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
               <div class="large-12 columns">
-                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline=false]'); ?>
+                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline="false"]'); ?>
               </div>
             <?php endif; ?>
 

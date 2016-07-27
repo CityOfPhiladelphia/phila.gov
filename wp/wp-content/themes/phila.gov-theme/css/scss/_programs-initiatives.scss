@@ -1,5 +1,7 @@
 .programs-header {
-
+  &:after {
+    content: none;
+  }
   .header-wrap {
     text-align: center;
 
@@ -7,9 +9,10 @@
       color: $ben-franklin-blue;
       font-family: "Open Sans",sans-serif;
       font-size: 2.5rem;
+      text-transform: uppercase;
     }
     img {
-      margin-top: $spacing-small;
+      display:none;
     }
   }
 
@@ -31,6 +34,7 @@
           border-bottom: 1px solid $ben-franklin-blue;
           border-top: 1px solid $ben-franklin-blue;
           font-size: 3.5rem;
+          font-weight: 700;
       }
       img {
           position: absolute;
@@ -39,6 +43,7 @@
           max-width: none;
           height: auto;
           opacity: 0.25;
+          display: inline-block;
       }
     }
   }

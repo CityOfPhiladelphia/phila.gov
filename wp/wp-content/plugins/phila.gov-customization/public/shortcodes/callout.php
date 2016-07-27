@@ -11,17 +11,24 @@ function callout_shortcode($atts){
   $a = shortcode_atts( array(
     'summary' => '',
     'type' => '',
+    'inline' => 'true',
   ), $atts);
 
   $output = '';
 
   if ( $a['summary'] != '' ){
     $output .= '<div class="callout';
+
     if($a['type'] == 'important') {
-      $output .= ' ' . $a['type'] . '">';
-    } else {
-      $output .= '">';
+      $output .= ' ' . $a['type'] . ' ';
     }
+
+    if($a['inline'] == 'true') {
+      $output .= 'mtl">';
+    } else  {
+        $output .= '">';
+    }
+
     $output .= '<p>' . $a['summary'] . '</p>';
     $output .= '</div>';
 

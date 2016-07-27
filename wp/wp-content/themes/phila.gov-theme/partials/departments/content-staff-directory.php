@@ -54,15 +54,15 @@ if (has_category()):
         if ( is_array( $staff_social )):
 
           if ( isset( $staff_social['phila_staff_facebook'] ) ):
-            $staff_social_output .= '<a href="' . $staff_social['phila_staff_facebook'] . '" target="_blank" class="phs"><i class="fa fa-facebook fa-lg" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_facebook'] . '" target="_blank" class="social-link"><i class="fa fa-facebook fa-lg" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
           endif;
 
           if ( isset( $staff_social['phila_staff_twitter'] ) ):
-            $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" target="_blank" class="phs"><i class="fa fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" target="_blank" class="social-link"><i class="fa fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
           endif;
 
           if ( isset( $staff_social['phila_staff_instagram'] ) ):
-            $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" target="_blank" class="phs"><i class="fa fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_instagram'] . '" target="_blank" class="social-link"><i class="fa fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
           endif;
 
         endif;

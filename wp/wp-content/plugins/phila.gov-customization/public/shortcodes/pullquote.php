@@ -17,7 +17,7 @@ function pullquote_shortcode($atts){
   $output = '';
 
   if ( $a['quote'] != '' ){
-    if ( $a['inline'] == true ){
+    if ( $a['inline'] == 'true' ){
       $output .= '<div class="pullquote-wrapper pullquote-inline">';
     } else {
       $output .= '<div class="pullquote-wrapper">';
