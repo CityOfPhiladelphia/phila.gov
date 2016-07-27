@@ -123,7 +123,7 @@
             <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):?>
               <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
               <div class="large-12 columns">
-                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline=false]'); ?>
+                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline="false"]'); ?>
               </div>
             <?php endif; ?>
 
