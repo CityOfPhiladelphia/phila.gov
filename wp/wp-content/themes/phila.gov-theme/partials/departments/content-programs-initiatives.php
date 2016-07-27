@@ -196,7 +196,7 @@
                 <?php $columns = phila_grid_column_counter( $item_count ); ?>
                 <div class="row <?php if( $item_count > 1 ) echo 'equal-height';?> ">
                   <?php foreach ($custom_text_group as $key => $value):?>
-                    <div class="large-<?php echo $columns ?> columns">
+                    <div class="large-<?php echo $columns ?> columns <?php if( $item_count > 1 ) echo 'equal';?>">
 
                       <?php if ( isset( $custom_text_group[$key]['phila_custom_text_title'] ) && $custom_text_group[$key]['phila_custom_text_title'] != '') : ?>
                         <h3><?php echo $custom_text_group[$key]['phila_custom_text_title']; ?></h3>

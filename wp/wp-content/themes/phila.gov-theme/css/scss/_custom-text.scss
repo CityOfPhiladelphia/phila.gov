@@ -1,0 +1,8 @@
+.custom-text-multi {
+  .columns {
+    border-right: 2px solid $ghost-gray;
+    &:last-of-type {
+      border-right: 0;
+    }
+  }
+}
