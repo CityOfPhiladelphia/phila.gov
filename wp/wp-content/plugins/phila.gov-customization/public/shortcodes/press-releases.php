@@ -62,14 +62,14 @@ function press_release_shortcode($atts) {
             </div>
           </div>
         </a>';
-        
+
       $output .= '</li>';
 
     endwhile;
 
     $output .= '</ul>';
 
-    $output .= '</div><a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a>';
+    $output .= '<a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a></div>';
 
     }else {
       $output .= __( 'Please enter at least one press release.', 'phila.gov' );
