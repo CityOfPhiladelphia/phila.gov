@@ -41,7 +41,14 @@ jQuery(document).ready(function($) {
   }
 
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
-  $('.is-drilldown').find('ul').addClass('vertical');
+  $('.menu-icon').click(function() {
+    $('.is-drilldown').find('ul').addClass('vertical');
+
+  });
+  $( window ).resize(function() {
+    $('.is-drilldown').find('ul').removeClass('vertical');
+  });
+
 
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){

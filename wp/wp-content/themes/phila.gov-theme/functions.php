@@ -155,14 +155,14 @@ function phila_filter_title( $title ){
       if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' || $post_type->name == 'press_release' ) {
 
         $cat = get_the_category();
-        //TODO: Update to accept content owner
+
         $title['title'] = $page_title . $sep . $cat[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
 
       }else{
 
         if ( phila_is_department_homepage( $post ) ){
 
-          $title['title'] = $page_title  . $sep . $post_type->labels->singular_name . $sep . $site_title;
+          $title['title'] = $page_title . $sep . $site_title;
 
         }else{
           $category = get_the_category($post->ID);
@@ -170,11 +170,11 @@ function phila_filter_title( $title ){
           if ( $category[0]->category_parent != 0 ){
 
             $parent = get_category( $category[0]->category_parent);
-            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $site_title;
 
           }else{
 
-            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $post_type->labels->singular_name . $sep . $site_title;
+            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $site_title;
 
           }
         }
@@ -191,6 +191,43 @@ function phila_filter_title( $title ){
 
   return $title;
 }
+
+add_action('wp_head', 'phila_open_graph', 5);
+
+function phila_open_graph() {
+  global $post;
+  global $title;
+
+  if( 'department_page' == get_post_type() ){
+    $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
+
+    if ( empty($hero_header_image) ) {
+      $parent_id = get_post_ancestors( $post->ID );
+
+      $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'), $post_id = $parent_id[0]);
+
+      }
+      $img_src = $hero_header_image;
+    }elseif( has_post_thumbnail() ){
+
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+    $img_src = array_shift( $img );
+    $type = 'article';
+  }
+  $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+  //TODO: Determine which twitter account should be used for site attribution
+  ?>
+  <meta name="twitter:card" content="summary">
+  <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
+  <meta property="og:description" content="<?php echo_item_meta_desc(); ?>"/>
+  <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
+  <meta property="og:url" content="<?php echo $link ?>"/>
+  <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
+  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://alpha.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
+  <?php
+}
+
 
 /**
  * Register widget areas for all categories. To appear on department pages.
@@ -253,14 +290,8 @@ function phila_gov_scripts() {
 
   wp_enqueue_style( 'theme-styles', get_stylesheet_directory_uri() . '/css/styles.css', array('pattern_portfolio') );
 
-  wp_deregister_script( 'jquery' );
-
-  wp_deregister_script( 'jquery-migrate' );
-
-  wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, null, true );
-
-  wp_enqueue_script( 'jquery-migrate', ( '//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js' ), array('jquery'), null, true );
-
+  wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'theme-styles' )  );
+  wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
   wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
 
@@ -268,9 +299,9 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.4.0/js/patterns.min.js', array('jquery', 'foundation-js'), true );
 
-  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js'), 1.0, true );
-}
+  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js', 'pattern-scripts'), 1.0, true );
 
+}
 
 add_action('init', 'enqueue_scripts_styles_init');
 
@@ -981,11 +1012,11 @@ function phila_get_master_topics(){
  * TODO: investigate a better way of handling the match.
  * @param $category String or array of categories applied to a page. Required.
  * @param $byline Boolean Include ' by ' in display. Default true. Optional.
- * @param $slugs_list Boolean Return comma delimited list of departments. Optional.
+ * @param $name_list Boolean Return comma separated list of nice department names. Optional.
  *
  **/
 
-function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $slugs_list = false ){
+function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = false ){
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
@@ -996,6 +1027,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     $full_links = array();
     $basename = array();
     $urls = array();
+    $names = array();
 
     foreach( $category as $cat ){
       array_push( $cat_name, $cat->name );
@@ -1054,10 +1086,15 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       $urls = basename( $k );
       array_push( $basename, $urls );
       array_push( $full_links, $markup );
-    }
+      array_push( $names, $v );
 
-    if ( $slugs_list == true ) {
-      return implode(', ', $basename);
+      if ( $name_list == true ) {
+        $name_listed = str_replace( "&#8217;", "'", $names );
+
+        return implode(', ',  $name_listed);
+
+      }
+
     }
 
     if ( $break_tags == true ) {
