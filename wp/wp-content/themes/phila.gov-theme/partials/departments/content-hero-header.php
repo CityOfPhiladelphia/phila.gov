@@ -40,7 +40,7 @@
       <div class="intro row">
         <div class="column">
 
-          <h1 class="tagline">
+          <h1>
             <?php if (!$hero_header_title == ''):
                     echo $hero_header_title;
                   else:?>
