@@ -249,6 +249,11 @@ function phila_register_meta_boxes( $meta_boxes ){
                      'type' => 'checkbox',
                   ),
                   array(
+                    'name' => __('Alternate Featured Title', 'rwmb'),
+                    'id'   => $prefix . 'list_item_alt_title',
+                    'type' => 'text',
+                  ),
+                  array(
                      'name' => __('Featured Resource Summary', 'rwmb'),
                      'id'   => $prefix . 'featured_summary',
                      'class'   => $prefix . 'featured-summary',
