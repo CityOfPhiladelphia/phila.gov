@@ -48,11 +48,11 @@
 <?php if ( !is_archive() && !is_tax() && !is_home() ) : ?>
   <!-- Google Tag Manager DataLayer -->
   <?php $category = get_the_category();
-    $departments = phila_get_current_department_name( $category, $byline = false, $break_tags = false, $slug_list = true );
+    $departments = phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = true );
   ?>
   <script>
     dataLayer = [{
-      'contentModifiedDepartment': '<?php echo $departments ?>'
+      "contentModifiedDepartment": "<?php echo $departments ?>"
     }];
   </script>
 <?php endif; ?>
