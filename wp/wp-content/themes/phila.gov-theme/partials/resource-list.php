@@ -40,6 +40,7 @@
           $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
           $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
           $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
+          $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
           $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
           $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
 
@@ -63,7 +64,7 @@
           if ( $item_featured ):
             $featured_output = '';
 
-            $featured_resources[$featured_display_order] = array('title' => $item_title , 'url' => $item_url , 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );
+            $featured_resources[$featured_display_order] = array('title' => $item_title , 'alt-title' => $item_alt_title ,  'url' => $item_url , 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );
           endif;
 
           $list_item_output .= '<li class="phm pvs clickable-row" data-href="' . $item_url . '"><a href="' . $item_url . '"><div><i class="fa ' . $icon . ' fa-lg" aria-hidden="true"></i></div> <div>' . $item_title . '</div></a></li>';
@@ -113,9 +114,11 @@
                         <i class="fa <?php echo $featured_resources[$key]['icon']; ?> fa-stack-1x fa-inverse"></i>
                       </span>
                     </div>
-                  <?php if (!$featured_resources[$key]['title'] == ''): ?>
-                    <span class=""><?php echo $featured_resources[$key]['title']; ?></span>
-                  <?php endif; ?>
+                    <?php if (!$featured_resources[$key]['alt-title'] == ''): ?>
+                      <span class=""><?php echo $featured_resources[$key]['alt-title']; ?></span>
+                    <?php elseif (!$featured_resources[$key]['title'] == ''): ?>
+                      <span class=""><?php echo $featured_resources[$key]['title']; ?></span>
+                    <?php endif; ?>
                   </header>
                   <?php echo $columns == '24' ? '' : '<hr class="mll mrl">'; ?>
                     <span class="details"><?php echo $featured_resources[$key]['summary']; ?></span>
@@ -135,7 +138,8 @@
       <section class="row">
         <?php if (! empty( $featured_resources ) && count($featured_resources) > 0) : ?>
             <div class="column">
-                <h2 class="contrast">Resources</h2>
+                <?php //TODO: Allow custom resource list title ?>
+                <h2 class="contrast">Collections</h2>
             </div>
         <?php endif; ?>
         <?php echo $list_item_output; ?>
