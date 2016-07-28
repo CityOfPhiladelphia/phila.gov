@@ -1012,11 +1012,11 @@ function phila_get_master_topics(){
  * TODO: investigate a better way of handling the match.
  * @param $category String or array of categories applied to a page. Required.
  * @param $byline Boolean Include ' by ' in display. Default true. Optional.
- * @param $slugs_list Boolean Return comma delimited list of departments. Optional.
+ * @param $name_list Boolean Return comma separated list of nice department names. Optional.
  *
  **/
 
-function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $slugs_list = false ){
+function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = false ){
 
   if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
@@ -1027,6 +1027,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     $full_links = array();
     $basename = array();
     $urls = array();
+    $names = array();
 
     foreach( $category as $cat ){
       array_push( $cat_name, $cat->name );
@@ -1068,7 +1069,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     //FIXME: Find a better way to identify category/url relationship
     foreach( $all_available_pages as $k=>$v ) {
 
-      $formatted_v = str_replace( "&#8217;", "'", $v );
+      $formatted_v = str_replace( "&#8217;", "&rsquo;", $v );
 
       foreach ( $cat_name as $name ) {
 
@@ -1087,8 +1088,12 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       array_push( $full_links, $markup );
     }
 
-    if ( $slugs_list == true ) {
-      return implode(', ', $basename);
+    if ( $name_list == true ) {
+      foreach ( $final_list as $k => $v ){
+        array_push( $names, $v );
+      }
+      return implode(', ',  $names);
+
     }
 
     if ( $break_tags == true ) {
