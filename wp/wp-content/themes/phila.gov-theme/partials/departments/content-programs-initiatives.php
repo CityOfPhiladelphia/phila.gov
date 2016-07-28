@@ -235,7 +235,7 @@
               <div class="large-6 columns">
                 <h2 class="contrast"><?php echo $feature_title;?></h2>
                 <?php if( $feature_url != '' ): ?>
-                <a href="<?php echo $feature_url;?>" class="card action-panel">
+                <a href="<?php echo $feature_url;?>" class="card action-panel mbn">
                 <?php endif; ?>
                 <?php if( $feature_image != '' ): ?>
                   <img src="<?php echo $feature_image;?>" alt="">
