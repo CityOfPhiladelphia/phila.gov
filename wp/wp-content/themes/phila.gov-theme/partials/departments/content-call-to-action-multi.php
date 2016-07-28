@@ -73,11 +73,9 @@
     </div>
   <?php endforeach; ?>
 <?php if ( $link_url != '' && $link_title != ''):?>
-  <div class="row">
     <div class="columns">
       <a class="see-all-right float-right" href="<?php echo $link_url; ?>"><?php echo $link_title; ?></a>
     </div>
-  </div>
 <?php endif; ?>
 </section>
 <?php endif; ?>
