@@ -25,9 +25,10 @@
         //assign vars
         $count++;
         $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
+        $resource_list_slug = sanitize_title_with_dashes($resource_list_title);
 
         $list_item_output .= '<div class="medium-8 small-24 column resource-list end">';
-        $list_item_output .= '<header><h2 class="h4 phm pvs">' . $resource_list_title . '</h2></header>';
+        $list_item_output .= '<header><h2 id="' . $resource_list_slug . '"class="h4 phm pvs">' . $resource_list_title . '</h2></header>';
         $list_item_output .= '<ul>';
 
         //items
