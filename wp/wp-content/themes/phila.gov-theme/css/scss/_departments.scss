@@ -157,15 +157,15 @@
         width: 400px;
         padding: 0 $spacing-medium;;
         h1 {
-          // display: inline-block;
-          // display: inline-block;
           font-size: 2.5rem;
           line-height: 3rem;
           margin: 0.5rem 0;
           .tagline1,
           .tagline2 {
             font-size: 2rem;
-            line-height: 2.5rem;
+            line-height: 3rem;
+          }
+          .tagline1{
           }
           .strong {
                 font-size: 3.5rem;

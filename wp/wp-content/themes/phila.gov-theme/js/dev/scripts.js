@@ -137,7 +137,7 @@ jQuery(document).ready(function($) {
 
   //Set Hero Header Tagline font sizes
   if( $('.intro .tagline1').length && $('.intro .tagline2').length  ) {
-    var smallFontSize = 50;
+    var smallFontSize = 30;
     var largeFontSize = 100;
 
     //Set line one font-size
@@ -157,7 +157,7 @@ jQuery(document).ready(function($) {
       }
     }
     //Append new styles to head
-    $('<style type="text/css">@media screen and (min-width: 40em){ .department .department-header .intro h1 .tagline1, .department .department-header .intro h1 .tagline2 { display:block; width:100%; } .department .department-header .intro h1 .tagline1{ font-size:' + smallFontSize + 'px;} .department .department-header .intro h1 .tagline2{ font-size:' + largeFontSize + 'px;}} </style>').appendTo("head");
+    $('<style type="text/css">@media screen and (min-width: 40em){ .department .department-header .intro h1 {padding:.5rem 0;}.department .department-header .intro h1 .tagline1, .department .department-header .intro h1 .tagline2 { display:block; width:100%; } .department .department-header .intro h1 .tagline1{ font-size:' + smallFontSize + 'px;} .department .department-header .intro h1 .tagline2{ font-size:' + largeFontSize + 'px;}} </style>').appendTo("head");
 
   }
 });
