@@ -36,7 +36,7 @@ $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'
                   $item_icon = isset( $item[$k]['phila_list_item_type'] ) ? $item[$k]['phila_list_item_type'] : '';
                   $item_url = isset( $item[$k]['phila_list_item_url'] ) ? $item[$k]['phila_list_item_url'] : '';
                 ?>
-                   <div class="content-list-item valign pvm phl" data-equalizer-watch>
+                   <div class="content-list-item valign pvm phm phl-l" data-equalizer-watch>
                      <a href="<?php echo $item_url; ?>" class=" valign-cell">
                        <div>
                          <?php if ( $item_icon != ''):?>
