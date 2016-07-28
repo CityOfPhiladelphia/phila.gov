@@ -1069,7 +1069,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     //FIXME: Find a better way to identify category/url relationship
     foreach( $all_available_pages as $k=>$v ) {
 
-      $formatted_v = str_replace( "&#8217;", "&rsquo;", $v );
+      $formatted_v = str_replace( "&#8217;", "'", $v );
 
       foreach ( $cat_name as $name ) {
 
@@ -1086,13 +1086,14 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       $urls = basename( $k );
       array_push( $basename, $urls );
       array_push( $full_links, $markup );
-    }
+      array_push( $names, $v );
 
-    if ( $name_list == true ) {
-      foreach ( $final_list as $k => $v ){
-        array_push( $names, $v );
+      if ( $name_list == true ) {
+        $name_listed = str_replace( "&#8217;", "'", $names );
+
+        return implode(', ',  $name_listed);
+
       }
-      return implode(', ',  $names);
 
     }
 

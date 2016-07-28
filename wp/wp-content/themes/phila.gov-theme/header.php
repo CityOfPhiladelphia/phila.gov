@@ -52,7 +52,7 @@
   ?>
   <script>
     dataLayer = [{
-      'contentModifiedDepartment': '<?php echo $departments ?>'
+      "contentModifiedDepartment": "<?php echo $departments ?>"
     }];
   </script>
 <?php endif; ?>
