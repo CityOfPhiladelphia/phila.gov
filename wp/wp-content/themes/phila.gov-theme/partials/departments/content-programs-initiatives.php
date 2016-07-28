@@ -237,10 +237,14 @@
                 <?php if( $feature_url != '' ): ?>
                 <a href="<?php echo $feature_url;?>" class="card action-panel">
                 <?php endif; ?>
+                <?php if( $feature_image != '' ): ?>
+                  <img src="<?php echo $feature_image;?>" alt="">
+                <?php endif; ?>
                   <div class="panel">
-                    <?php if( $feature_image != '' ): ?>
-                      <img src="<?php echo $feature_image;?>" alt="" class="mbm">
-                    <?php endif; ?>
+                    <header class="">
+                      <span class="external">Visit STEMcityPHL</span>
+                    </header>
+                    <hr class="mll mrl">
                     <span class="details"><?php echo $feature_text;?></span>
                   </div>
                 <?php if( $feature_url != '' ): ?>
