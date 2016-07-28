@@ -24,13 +24,13 @@ $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'
             endif;
           ?>
         </div>
-        <div class="large-18 columns">
+        <div class="large-18 columns content-list">
           <div class="row collapse" data-equalizer>
             <?php
               foreach ($list_item_group as $key => $value) :
                 $item = isset( $list_item_group[$key]['phila_list_items'] ) ? $list_item_group[$key]['phila_list_items'] : '';
             ?>
-              <div class="content-list-items large-8 columns" >
+              <div class="content-list-items medium-8 columns" >
                 <?php foreach ( $item as $k => $v) :
                   $item_title = isset( $item[$k]['phila_list_item_title'] ) ? $item[$k]['phila_list_item_title'] : '';
                   $item_icon = isset( $item[$k]['phila_list_item_type'] ) ? $item[$k]['phila_list_item_type'] : '';
