@@ -26,7 +26,7 @@ function callout_shortcode($atts){
     if($a['inline'] == 'true') {
       $output .= 'mtl">';
     } else  {
-        $output .= '">';
+        $output .= 'mbn">';
     }
 
     $output .= '<p>' . $a['summary'] . '</p>';
