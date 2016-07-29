@@ -107,15 +107,14 @@
     line-height: 3rem;
     letter-spacing: .03rem;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
+    font-weight: 700;
   }
   .measureline1 {
-    font-size: 30px;
+    font-size: 3rem;
   }
   .measureline2 {
-    font-size: 100px;
-
+    font-size: 8rem;
+    text-transform: uppercase;
   }
   .department-header {
     position: relative;
@@ -162,10 +161,10 @@
           margin: 0.5rem 0;
           .tagline1,
           .tagline2 {
-            font-size: 2rem;
-            line-height: 3rem;
+            line-height: 1;
           }
-          .tagline1{
+          .tagline2{
+            font-weight: 700;
           }
           .strong {
                 font-size: 3.5rem;
