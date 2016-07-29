@@ -6,6 +6,9 @@
  */
 ?>
 <?php
+
+$user_selected_template = phila_get_selected_template();
+
 if (has_category()):
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
@@ -44,13 +47,34 @@ if (has_category()):
           $staff_phone_unformatted = $staff_phone['area'] . $staff_phone['phone-co-code'] . $staff_phone['phone-subscriber-number'];
           $staff_phone_formatted = '(' . $staff_phone['area'] . ') ' . $staff_phone['phone-co-code'] . '-' . $staff_phone['phone-subscriber-number'];
         }
+
+        $staff_social = rwmb_meta( 'phila_staff_social' );
+        $staff_social_output = '';
+
+        if ( is_array( $staff_social )):
+
+          if ( isset( $staff_social['phila_staff_facebook'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_facebook'] . '" target="_blank" class="social-link"><i class="fa fa-facebook fa-lg" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
+          endif;
+
+          if ( isset( $staff_social['phila_staff_twitter'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" target="_blank" class="social-link"><i class="fa fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
+          endif;
+
+          if ( isset( $staff_social['phila_staff_instagram'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_instagram'] . '" target="_blank" class="social-link"><i class="fa fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
+          endif;
+
+        endif;
+
+
         $staff_leadership = rwmb_meta('phila_leadership', $args = array('type'=>'checkbox'));
       }
       if ( $staff_leadership ):
         $staff_options = rwmb_meta('phila_leadership_options');
         $staff_display_order = intval( $staff_options['phila_display_order'] );
         $staff_summary = $staff_options['phila_summary'];
-        $staff_leadership_output .= '<div class="row staff-leadership">';
+        $staff_leadership_output .= '<div class="row">';
         // Leadership Thumbnail
         if ( has_post_thumbnail() ):
           $staff_photo = get_the_post_thumbnail( $post->ID, 'staff-thumb', 'class= staff-thumbnail' );
@@ -76,6 +100,10 @@ if (has_category()):
           $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
         endif;
 
+        if ( isset( $staff_social_output ) && !$staff_social_output == ''):
+          $staff_leadership_output .= '<div class="social">' . $staff_social_output . '</div>';
+        endif;
+
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
           $staff_leadership_output .= '</div>';
           $staff_leadership_output .= '<div class="medium-14 columns staff-summary">' . $staff_summary . '</div>';
@@ -95,16 +123,19 @@ if (has_category()):
           <td>' . $staff_title . '</td>
           <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
           <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>
+          <td class="social">' . $staff_social_output . '</td>
         </tr>';
       endif;
     endwhile;
 
+    echo '<section class="staff-directory">';
 
     if (!empty($staff_leadership_array)):?>
-      <section class="mvm staff-directory">
-        <div class="row">
+      <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
           <div class="large-24 columns">
+          <?php if ($user_selected_template != 'staff_directory') : ?>
             <h2 class="contrast">Leadership</h2>
+          <?php endif; ?>
             <?php
             ksort($staff_leadership_array);
             foreach ($staff_leadership_array as $key => $value):
@@ -112,15 +143,15 @@ if (has_category()):
             endforeach;
             ?>
           </div>
-        </div>
-      </section>
+      </div>
     <?php endif; ?>
     <!-- Begin Staff Directory Table -->
     <?php if (!$all_staff_table_output == ''): ?>
-      <section class="mvm">
-        <div class="row">
+      <section class="row mvl all-staff-table">
           <div class="large-24 columns">
-            <h2 class="contrast">All Staff</h2>
+            <?php if ($user_selected_template != 'staff_directory') : ?>
+              <h2 class="contrast">All Staff</h2>
+            <?php endif; ?>
             <table role="grid" class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
               <thead>
                 <tr>
@@ -128,6 +159,7 @@ if (has_category()):
                   <th scope="col">Job Title</th>
                   <th scope="col">Email</th>
                   <th scope="col">Phone #</th>
+                  <th scope="col">Social</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,11 +167,10 @@ if (has_category()):
               </tbody>
             </table>
           </div>
-        </div>
       </section>
     <?php endif; ?>
     <?php else: ?>
-      <section class="mvm">
+      <div class="mvm">
         <div class="row">
           <div class="large-24 columns">
             <div class="placeholder center mbl mtm mtl-mu">
@@ -147,11 +178,11 @@ if (has_category()):
             </div>
           </div>
         </div>
-      </section>
+      </div>
     <?php endif; ?>
   <?php wp_reset_query();?>
 <?php else: ?>
-  <section class="mvm">
+  <div class="mvm">
     <div class="row">
       <div class="large-24 columns">
         <div class="placeholder center mbl mtm mtl-mu">
@@ -159,5 +190,6 @@ if (has_category()):
         </div>
       </div>
     </div>
-  </section>
+  </div>
 <?php endif; ?>
+<?php echo '</section>'; ?>

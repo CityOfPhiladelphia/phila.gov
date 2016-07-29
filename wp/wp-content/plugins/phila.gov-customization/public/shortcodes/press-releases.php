@@ -42,16 +42,34 @@ function press_release_shortcode($atts) {
 
       $output .= '<li>';
 
-      $output .= '<a href="' . $link .'">' . get_the_title( $post->ID ) . '</a>';
+      $output .=
+        '<a href="' . $link .'">
+          <div class="clearfix equal-height press-release">
+            <div class="float-left equal icon">
+              <div class="valign">
+                <div class="valign-cell pam">
+                  <i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <div class="equal details">
+              <div class="valign">
+                <div class="valign-cell pam">
+                  <span>' . get_the_title( $post->ID ) . '</span>
+                  <span class="entry-date small-text">'. get_the_date() . '</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>';
 
-      $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .= '</li>';
 
     endwhile;
 
     $output .= '</ul>';
 
-    $output .= '</div><a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a>';
+    $output .= '<a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a></div>';
 
     }else {
       $output .= __( 'Please enter at least one press release.', 'phila.gov' );

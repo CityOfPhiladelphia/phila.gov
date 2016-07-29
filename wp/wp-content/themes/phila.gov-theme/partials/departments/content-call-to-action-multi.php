@@ -7,22 +7,27 @@
 
 ?>
 <?php
-  $action_panel_section = rwmb_meta('phila_call_to_action_section');
+  if( isset($phila_dept_homepage_cta)):
+    $action_panel_section = $phila_dept_homepage_cta;
+  else :
+    $action_panel_section = rwmb_meta('phila_call_to_action_section');
+  endif;
   $action_panel_title = isset( $action_panel_section['phila_action_section_title_multi'] ) ? $action_panel_section['phila_action_section_title_multi'] : '' ;
 
   $action_panel_multi = isset( $action_panel_section['phila_call_to_action_multi_group'] ) ? $action_panel_section['phila_call_to_action_multi_group']: '' ;
 
+  $link_title = isset( $action_panel_section['phila_url_title'] ) ? $action_panel_section['phila_url_title'] : '' ;
+
+  $link_url = isset( $action_panel_section['phila_url'] ) ? $action_panel_section['phila_url'] : '' ;
 
   if ( ! empty( $action_panel_section ) ) : ?>
   <?php $item_count = count($action_panel_multi); ?>
   <?php $columns = phila_grid_column_counter( $item_count ); ?>
 
-    <div class="row">
+    <section class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <div class="columns">
         <h2 class="contrast"><?php echo $action_panel_title; ?></h2>
       </div>
-    </div>
-    <div class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
     <?php foreach ( $action_panel_multi as $call_to_action ) :
 
       $action_panel_summary = isset( $call_to_action['phila_action_panel_summary_multi'] ) ? $call_to_action['phila_action_panel_summary_multi'] : '';
@@ -41,7 +46,7 @@
       <?php phila_grid_column_counter( $item_count ); ?>
     <div class="large-<?php echo $columns ?> columns">
       <?php if (!$action_panel_link == ''): ?>
-      <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
+      <a href="<?php echo $action_panel_link; ?>"  class="card action-panel">
         <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
         <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
         <?php if ($action_panel_fa_circle): ?>
@@ -66,7 +71,11 @@
       </a>
     <?php endif; ?>
     </div>
-
   <?php endforeach; ?>
-</div>
+<?php if ( $link_url != '' && $link_title != ''):?>
+    <div class="columns">
+      <a class="see-all-right float-right" href="<?php echo $link_url; ?>"><?php echo $link_title; ?></a>
+    </div>
+<?php endif; ?>
+</section>
 <?php endif; ?>

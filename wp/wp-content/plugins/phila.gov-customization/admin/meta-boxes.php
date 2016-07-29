@@ -242,6 +242,37 @@ function phila_register_meta_boxes( $meta_boxes ){
                      $prefix . 'resource_map' => 'Map',
                    ),
                   ),
+                  array(
+                     'name' => __('Featured Resource', 'rwmb'),
+                     'id'   => $prefix . 'featured_resource',
+                     'class'   => $prefix . 'featured-resource',
+                     'type' => 'checkbox',
+                  ),
+                  array(
+                    'name' => __('Alternate Featured Title', 'rwmb'),
+                    'id'   => $prefix . 'list_item_alt_title',
+                    'type' => 'text',
+                  ),
+                  array(
+                     'name' => __('Featured Resource Summary', 'rwmb'),
+                     'id'   => $prefix . 'featured_summary',
+                     'class'   => $prefix . 'featured-summary',
+                     'type' => 'textarea',
+                     //TODO: Conditional logic doesn't appear to work on cloned fields.
+                     //'hidden' => array( 'phila_featured_resource', '!=', true ),
+                  ),
+                  array(
+                    'name'  => 'Display Order',
+                    'id'    => $prefix . 'display_order',
+                    'type'  => 'select',
+                    'class' => 'display-order',
+                    'options' => array(
+                      '1' => '1',
+                      '2' => '2',
+                      '3' => '3',
+                      '4' => '4',
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -816,6 +847,7 @@ $meta_boxes[] = array(
         ),
       ),
     );
+
   $meta_boxes[] = array(
     'id'       => $prefix . 'staff_directory_listing',
     'title'    => 'Staff Directory Listing',
@@ -950,6 +982,745 @@ $meta_boxes[] = array(
   ),
 );
 
+  /**
+  *
+  * Begin MetaBox Field Arrays
+  *
+  **/
+
+  // Blogs
+  $meta_blogs = array(
+    array(
+      'name' => 'Category ID (optional)',
+      'id' => $prefix . 'category',
+      'type' => 'number',
+    ),
+  );
+
+  // Program and Initiatives
+  $meta_programs_initiatives_images = array(
+    'id' => $prefix . 'p_i_images',
+    'type' => 'group',
+    'visible' => array('phila_template_select', 'programs_initiatives'),
+    'fields' => array(
+      array(
+        'name' => 'Header Image',
+        'id' => $prefix . 'p_i_header',
+        'type' => 'file_input',
+      ),
+      array(
+        'name' => 'Featured Image',
+        'id' => $prefix . 'p_i_featured',
+        'type' => 'file_input',
+      ),
+      array(
+        'name' => 'Short Feature Description',
+        'id' => $prefix . 'short_feat_desc',
+        'type' => 'textarea',
+      ),
+      array(
+        'name' => 'Long Feature Description',
+        'id' => $prefix . 'long_feat_desc',
+        'type' => 'textarea',
+      ),
+    ),
+    'visible' => array('phila_template_select', '=', 'programs_initiatives'),
+  );
+
+  // Feature Programs and Initiatives
+  $meta_feature_programs_initiatives = array(
+    array(
+      'id' => $prefix . 'p_i',
+      'type' => 'group',
+      'fields' => array(
+        array(
+          'name' => 'Feature Program',
+          'id' => $prefix . 'p_i_items',
+          'type' => 'post',
+          'post_type' => 'department_page',
+          'clone' => true,
+        ),
+      ),
+    ),
+  );
+  // Feature Programs and Initiatives
+  $meta_custom_feature = array(
+    array(
+      'name' => 'Feature Title',
+      'id' => $prefix . 'feature_title',
+      'type' => 'text',
+    ),
+    array(
+      'name' => 'Feature Image',
+      'id' => $prefix . 'feature_image',
+      'type' => 'file_input',
+    ),
+    array(
+      'name' => 'Feature Text',
+      'id' => $prefix . 'feature_text',
+      'type' => 'textarea',
+    ),
+    array(
+      'name' => 'URL',
+      'id' => $prefix . 'feature_url',
+      'type' => 'url',
+    ),
+  );
+
+  // Resource List
+  $meta_call_to_action_multi = array(
+    array(
+      'id'  => $prefix . 'call_to_action_section',
+      'type' => 'group',
+      'fields' => array(
+        array(
+          'name'  => 'Section Title',
+          'id'    => $prefix . 'action_section_title_multi',
+          'type'  => 'text',
+        ),
+        array(
+          'id'  => $prefix . 'call_to_action_multi_group',
+          'type' => 'group',
+          'clone'  => true,
+          'max_clone' => 4,
+          'sort_clone' => true,
+          'fields' => array(
+            array(
+              'name'  => 'Call to Action Text',
+              'id'    => $prefix . 'action_panel_cta_text_multi',
+              'type'  => 'text',
+              'class' => 'action-panel-cta-text',
+            ),
+            array(
+              'name'  => 'Summary',
+              'id'    => $prefix . 'action_panel_summary_multi',
+              'type'  => 'textarea',
+              'class' => 'action-panel-details',
+            ),
+            array(
+              'name'  => 'Icon',
+              'id'    => $prefix . 'action_panel_fa_multi',
+              'type'  => 'text',
+              'class' => 'action-panel-fa',
+              'hidden' => array(
+                'phila_template_select', '=', 'one_page_department',
+              ),
+            ),
+            array(
+              'name'  => 'Icon Background Circle',
+              'id'    => $prefix . 'action_panel_fa_circle_multi',
+              'type'  => 'checkbox',
+              'class' => 'action-panel-fa',
+              'hidden' => array(
+                'phila_template_select', '=', 'one_page_department',
+              ),
+            ),
+            array(
+              'name'  => 'Link to Content',
+              'id'    => $prefix . 'action_panel_link_multi',
+              'type'  => 'url',
+              'class' => 'action-panel-link',
+            ),
+            array(
+              'name'  => 'External Link',
+              'id'    => $prefix . 'action_panel_link_loc_multi',
+              'type'  => 'checkbox',
+              'class' => 'action-panel-link-loc',
+              'desc'  => 'This link directs users away from alpha.phila.gov',
+            ),
+          ),
+        ),
+        array(
+          'name'  =>  'Additional URL Title (optional)',
+          'id'    => $prefix . 'url_title',
+          'type'  => 'text',
+          'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
+        ),
+        array(
+          'name'  =>  'Additional URL (optional)',
+          'id'    => $prefix . 'url',
+          'type'  => 'url',
+          'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
+        ),
+        array(
+          'name'  =>  'Background Image',
+          'id'    => $prefix . 'bg_image',
+          'type'  => 'file_input',
+          'visible' => array('phila_full_options_select', '=', 'phila_get_involved'),
+        ),
+      ),
+    ),
+  );
+
+  // Full Width Calendar
+  $meta_full_calendar = array(
+    array(
+      'name' => 'Calender ID',
+      'id'   => $prefix . 'full_width_calendar_id',
+      'desc'  => 'ID of the calendar',
+      'type' => 'number'
+    ),
+    array(
+      'name' => 'Calendar URL',
+      'id'   => $prefix . 'full_width_calendar_url',
+      'desc'  => 'URL of the full calendar',
+      'type' => 'url'
+    ),
+  );
+
+  // Callout
+  $metabox_callout = array(
+     array(
+       'name' => 'Status',
+       'id'   => $prefix . 'callout_type',
+       'type' => 'select',
+       'options' => array(
+         'default' => 'Default',
+         'important' => 'Important'
+       ),
+     ),
+     array(
+       'name' => ' Text',
+       'id'   => $prefix . 'callout_text',
+       'type' => 'textarea',
+     ),
+   );
+
+  // Connect Panel
+  $metabox_connect = array(
+    array(
+     'name' => 'Connect Panel',
+     'id'   => $prefix . 'connect_description',
+     'type' => 'custom_html',
+     'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
+     <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
+    ),
+    array(
+      'id' => $prefix . 'connect_social',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Social',
+        ),
+        array(
+         'name' => 'Facebook URL',
+         'id'   => $prefix . 'connect_social_facebook',
+         'type' => 'url',
+         'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+        ),
+        array(
+         'name' => 'Twitter URL',
+         'id'   => $prefix . 'connect_social_twitter',
+         'type' => 'url',
+         'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+        ),
+        array(
+         'name' => 'Instagram URL',
+         'id'   => $prefix . 'connect_social_instagram',
+         'type' => 'url',
+         'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+        ),
+      ),
+    ),
+    array(
+      'id' => $prefix . 'connect_address',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Address',
+        ),
+        array(
+         'name' => 'Street Address 1',
+         'id'   => $prefix . 'connect_address_st_1',
+         'type' => 'text',
+        ),
+        array(
+         'name' => 'Street Address 2',
+         'id'   => $prefix . 'connect_address_st_2',
+         'type' => 'text',
+        ),
+        array(
+         'name' => 'City',
+         'id'   => $prefix . 'connect_address_city',
+         'type' => 'text',
+         'std' => 'Philadelphia',
+        ),
+        array(
+         'name' => 'State',
+         'id'   => $prefix . 'connect_address_state',
+         'type' => 'text',
+         'std' => 'PA',
+        ),
+        array(
+         'name' => 'Zip',
+         'id'   => $prefix . 'connect_address_zip',
+         'type' => 'text',
+         'std' => '19107',
+        ),
+      ),
+    ),
+    array(
+      'id' => $prefix . 'connect_general',
+      'type' => 'group',
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Contact',
+        ),
+        array(
+           'name' => 'Phone',
+           'id'   => $prefix . 'connect_phone',
+           'type' => 'phone',
+           'desc' => '(###)-###-####',
+         ),
+        array(
+          'name' => 'Fax',
+          'id'   => $prefix . 'connect_fax',
+          'type' => 'phone',
+          'desc' => '(###)-###-####',
+        ),
+        array(
+          'name' => 'Email',
+          'id'   => $prefix . 'connect_email',
+          'type' => 'email',
+          'desc' => 'example@phila.gov',
+        ),
+      ),
+    ),
+    array(
+      'id' => $prefix . 'connect_include_cta',
+      'desc' => 'Include optional call to action button?',
+      'type' => 'checkbox',
+    ),
+    array(
+      'name' => 'Call to Action Button',
+      'id' => $prefix . 'connect_cta',
+      'type' => 'group',
+      'hidden' => array( 'phila_connect_include_cta', '!=', true ),
+
+      // List of sub-fields
+      'fields' => array(
+        array(
+          'name' => 'Title',
+          'id' => $prefix . 'connect_cta_title',
+          'type' => 'text',
+        ),
+        array(
+          'name' => 'URL',
+          'id' => $prefix . 'connect_cta_url',
+          'type' => 'url',
+        ),
+        array(
+          'name' => 'Summary',
+          'id' => $prefix . 'connect_cta_summary',
+          'type' => 'textarea',
+        ),
+      ),
+    ),
+  );
+
+  // Custom Text
+  $metabox_custom_text = array(
+    array(
+      'name' => 'Custom Text Title',
+      'id'   => $prefix . 'custom_text_title',
+      'type' => 'text',
+    ),
+    array(
+      'name' => 'Custom Text Content',
+      'id'   => $prefix . 'custom_text_content',
+      'type' => 'textarea',
+    ),
+  );
+
+  // Custom Text Multi
+  $metabox_custom_text_multi = array(
+    array(
+      'name' => 'Row Title',
+      'id'   => $prefix . 'custom_row_title',
+      'type' => 'text',
+    ),
+    array(
+      'id'   => $prefix . 'custom_text_group',
+      'type' => 'group',
+      'clone' => true,
+      'fields' => $metabox_custom_text,
+    )
+  );
+
+  // Pullquote
+  $metabox_pullquote = array(
+    array(
+      'name' => 'Quote',
+      'id'   => $prefix . 'quote',
+      'type' => 'textarea',
+    ),
+    array(
+      'name' => 'Attribution',
+      'id'   => $prefix . 'attribution',
+      'type' => 'text',
+    ),
+  );
+
+  // District Programs
+  $metabox_list_items = array(
+    array(
+      'name' => 'Row Title',
+      'id'   => $prefix . 'row_title',
+      'type' => 'text',
+    ),
+    array(
+      'name' => 'Summary',
+      'id'   => $prefix . 'summary',
+      'type' => 'textarea',
+    ),
+    array(
+      'id'  => $prefix . 'list',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+
+      'fields' => array(
+        array(
+          'std' => '<strong>Row</strong>',
+          'type' => 'custom_html',
+        ),
+        array(
+          'id'   => $prefix . 'list_items',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            array(
+              'name' => __('Item Title', 'rwmb'),
+              'id'   => $prefix . 'list_item_title',
+              'type' => 'text',
+              'required' => true,
+            ),
+            array(
+              'name' => __('Item URL', 'rwmb'),
+              'id'   => $prefix . 'list_item_url',
+              'type' => 'url',
+              'required' => true,
+            ),
+            array(
+               'name' => __('Item Icon', 'rwmb'),
+               'id'   => $prefix . 'list_item_type',
+               'type' => 'text',
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  /**
+  *
+  * Begin Full Width Column MetaBox content
+  *
+  **/
+
+  $metabox_full_options_select = array(
+   'id'   => $prefix . 'full_options_select',
+   'desc'  => 'Choose to display full width content.',
+   'type' => 'select',
+   'placeholder' => 'Select...',
+   'options' => array(
+     $prefix . 'blog_posts' => 'Blog Posts',
+     $prefix . 'full_width_calendar' => 'Calendar',
+     $prefix . 'callout' => 'Callout',
+     $prefix . 'custom_text' => 'Custom Text',
+     $prefix . 'feature_p_i' => 'Feature Program or Initiative',
+     $prefix . 'get_involved' => 'Get Involved',
+     $prefix . 'list_items' => 'List Items',
+     $prefix . 'full_width_press_releases' => 'Press Releases',
+     $prefix . 'resource_list' => 'Resource List',
+     ),
+   );
+
+  $metabox_full_options = array(
+   'name' => 'Full Width Options',
+   'id'   => $prefix . 'full_options',
+   'type' => 'group',
+   'visible' => array(
+     'phila_grid_options',
+     '=',
+     'phila_grid_options_full'
+   ),
+   'fields' => array(
+     $metabox_full_options_select,
+     array(
+       'id' => $prefix . 'blog_options',
+       'type' => 'group',
+       'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
+       'fields' => $meta_blogs,
+     ),
+     array(
+       'id' => $prefix . 'full_width_calendar',
+       'type' => 'group',
+       'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
+       'fields' => $meta_full_calendar,
+     ),
+     array(
+       'id'   => $prefix . 'callout',
+       'type' => 'group',
+       'visible' => array('phila_full_options_select', '=', 'phila_callout'),
+       'fields' => $metabox_callout,
+     ),
+     array(
+       'id'   => $prefix . 'custom_text',
+       'type' => 'group',
+       'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
+       'fields' => $metabox_custom_text,
+     ),
+     array(
+       'id'  => $prefix . 'call_to_action_multi',
+       'type' => 'group',
+       'visible' => array(
+         'when' => array(
+           array('phila_full_options_select', '=', 'phila_get_involved'),
+           array('phila_full_options_select', '=', 'phila_resource_list'),
+         ),
+         'relation' => 'or',
+       ),
+       'fields' => $meta_call_to_action_multi,
+    ),
+    array(
+      'id'   => $prefix . 'list_items',
+      'type' => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
+      'fields' => $metabox_list_items,
+    ),
+    array(
+      'id'   => $prefix . 'feature_p_i',
+      'type' => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
+      'fields' => $meta_feature_programs_initiatives,
+    ),
+   ),
+  );
+
+ /**
+ *
+ * Begin 2/3 x 1/3 Column MetaBox content
+ *
+ **/
+
+ // 2/3 x 1/3: Column 1 Options
+ $metabox_thirds_option_one = array(
+   'id' => $prefix . 'two_thirds_col',
+   'type' => 'group',
+   'fields' => array(
+      array(
+        'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+        'id'   => $prefix . 'two_thirds_col_option',
+        'desc'  => 'Choose to display recent blog posts or custom markup text.',
+        'type' => 'select',
+        'placeholder' => 'Select...',
+        'options' => array(
+          $prefix . 'blog_posts' => 'Blog Posts',
+          $prefix . 'custom_text' => 'Custom Text',
+          $prefix . 'custom_text_multi' => 'Custom Text (multi)',
+          ),
+      ),
+      array(
+        'id' => $prefix . 'blog_options',
+        'type' => 'group',
+        'visible' => array('phila_two_thirds_col_option', '=', 'phila_blog_posts'),
+        'fields' => $meta_blogs,
+      ),
+      array(
+        'id'   => $prefix . 'custom_text',
+        'type' => 'group',
+        'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
+        'fields' => $metabox_custom_text,
+      ),
+      array(
+        'id'   => $prefix . 'custom_text_multi',
+        'type' => 'group',
+        'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
+        'fields' => $metabox_custom_text_multi,
+      ),
+    ),
+  );
+
+  // 2/3 x 1/3: Column 2 Options
+  $metabox_thirds_option_two = array(
+   'id' => $prefix . 'one_third_col',
+   'type' => 'group',
+   'fields' => array(
+      array(
+      'name' => 'Column 2 <br/><small>(1/3 width column)</small>',
+      'id'   => $prefix . 'one_third_col_option',
+      'desc'  => 'Choose to display recent blog posts or custom markup text.',
+      'type' => 'select',
+      'placeholder' => 'Select...',
+      'options' => array(
+        $prefix . 'connect_panel' => 'Connect Panel',
+        $prefix . 'custom_feature' => 'Custom Feature Panel',
+        $prefix . 'custom_text' => 'Custom Text',
+        ),
+      ),
+      array(
+        'id' => $prefix . 'connect_panel',
+        'type' => 'group',
+        'hidden' => array('phila_one_third_col_option', '!=', 'phila_connect_panel'),
+        'fields' => $metabox_connect,
+      ),
+      array(
+        'id'   => $prefix . 'custom_text',
+        'type' => 'group',
+        'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
+        'fields' => $metabox_custom_text,
+      ),
+      array(
+        'id'   => $prefix . 'custom_feature',
+        'type' => 'group',
+        'visible' => array('phila_one_third_col_option', '=', 'phila_custom_feature'),
+        'fields' => $meta_custom_feature,
+      ),
+    ),
+  );
+
+  // 2/3 x 1/3 Options
+  $metabox_thirds_options = array(
+   'name' => '2/3 x 1/3 Options',
+   'id'   => $prefix . 'two_thirds_options',
+   'type' => 'group',
+   'hidden' => array(
+     'phila_grid_options',
+     '!=',
+     'phila_grid_options_thirds'
+   ),
+   'fields' => array(
+     $metabox_thirds_option_one,
+     $metabox_thirds_option_two,
+   ),
+ );
+
+/**
+*
+* Begin 1/2 x 1/2 Column MetaBox content
+*
+**/
+
+ // 1/2 x 1/2: Column 1 Options
+ $metabox_half_option_one = array(
+   'id' => $prefix . 'half_col_1',
+   'type' => 'group',
+   'fields' => array(
+      array(
+        'name' => 'Column 1 <br/><small>(1/2 width column)</small>',
+        'id'   => $prefix . 'half_col_1_option',
+        'desc'  => 'Choose to display recent blog posts or custom markup text.',
+        'type' => 'select',
+        'placeholder' => 'Select...',
+        'options' => array(
+          $prefix . 'custom_text' => 'Custom Text',
+          $prefix . 'pullquote' => 'Pullquote',
+          ),
+      ),
+      array(
+        'id'   => $prefix . 'custom_text',
+        'type' => 'group',
+        'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
+        'fields' => $metabox_custom_text,
+      ),
+      array(
+        'id'   => $prefix . 'pullquote',
+        'type' => 'group',
+        'visible' => array('phila_half_col_1_option', '=', 'phila_pullquote'),
+        'fields' => $metabox_pullquote,
+      ),
+    ),
+  );
+
+  // 1/2 x 1/2: Column 1 Options
+  $metabox_half_option_two = array(
+    'id' => $prefix . 'half_col_2',
+    'type' => 'group',
+    'fields' => array(
+       array(
+         'name' => 'Column 2 <br/><small>(1/2 width column)</small>',
+         'id'   => $prefix . 'half_col_2_option',
+         'desc'  => 'Choose to display recent blog posts or custom markup text.',
+         'type' => 'select',
+         'placeholder' => 'Select...',
+         'options' => array(
+           $prefix . 'custom_text' => 'Custom Text',
+           $prefix . 'pullquote' => 'Pullquote',
+           ),
+       ),
+       array(
+         'id'   => $prefix . 'custom_text',
+         'type' => 'group',
+         'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
+         'fields' => $metabox_custom_text,
+       ),
+       array(
+         'id'   => $prefix . 'pullquote',
+         'type' => 'group',
+         'visible' => array('phila_half_col_2_option', '=', 'phila_pullquote'),
+         'fields' => $metabox_pullquote,
+       ),
+     ),
+   );
+
+ $metabox_half_options = array(
+  'name' => '1/2 x 1/2 Options',
+  'id'   => $prefix . 'half_options',
+  'type' => 'group',
+  'hidden' => array(
+    'phila_grid_options',
+    '!=',
+    'phila_grid_options_half'
+  ),
+  'fields' => array(
+    $metabox_half_option_one,
+    $metabox_half_option_two,
+  ),
+);
+
+// Grid Options
+$metabox_grid_options = array(
+ 'name' => 'Row Layout',
+ 'id'   => $prefix . 'grid_options',
+ 'desc'  => 'Choose the row layout.',
+ 'type' => 'select',
+ 'placeholder' => 'Select...',
+ 'options' => array(
+   $prefix . 'grid_options_full' => 'Full Width',
+   $prefix . 'grid_options_half' => '1/2 x 1/2',
+   $prefix . 'grid_options_thirds' => '2/3 x 1/3',
+   ),
+ );
+
+ $metabox_grid_row = array(
+   'id'    => $prefix . 'row',
+   'class'    => $prefix . 'row',
+   'type'  => 'group',
+   'clone' => true,
+   'sort_clone' => true,
+   'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options, $metabox_half_options ),
+ );
+
+//Department Hompage metaboxes
+$meta_boxes[] = array(
+  'id'       => $prefix . 'department_homepage',
+  'title'    => 'Page Content',
+  'pages' => array( 'department_page' ),
+  'priority' => 'high',
+
+  'fields' => array(
+    $meta_programs_initiatives_images,
+    $metabox_grid_row,
+  )
+);
 
 return $meta_boxes;
 
@@ -968,7 +1739,7 @@ function phila_group_add_clone_button_text( $text, $field ) {
 
 /**
  *
- * Returns true/false based on existence of secondary role. Metabox user_role doesn't see secondary roles, so a custom function is required. 
+ * Returns true/false based on existence of secondary role. Metabox user_role doesn't see secondary roles, so a custom function is required.
  *
  **/
 add_action( 'admin_head', 'phila_master_homepage_editor' );
