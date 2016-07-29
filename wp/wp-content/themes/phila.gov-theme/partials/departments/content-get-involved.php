@@ -50,7 +50,7 @@
         $action_panel_fa = isset( $call_to_action['phila_action_panel_fa_multi'] ) ? $call_to_action['phila_action_panel_fa_multi'] : '';
         ?>
         <?php phila_grid_column_counter( $item_count ); ?>
-        <div class="large-<?php echo $columns; ?> columns">
+        <div class="medium-<?php echo $columns; ?> columns">
           <?php if (!$action_panel_link == ''): ?>
           <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
             <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">

@@ -13,11 +13,15 @@
     margin-top: $spacing-small;
   }
 
-  @media only screen and (min-width: 64em) {
+  @media only screen and (min-width: 40em) {
     .row-wrap {
       position: relative;
       overflow: hidden;
       text-align: center;
+    }
+  }
+  @media only screen and (min-width: 64em) {
+    .row-wrap {
       padding: 4rem;
 
       .banner {
@@ -28,8 +32,6 @@
           height:100%;
           width: 100%;
           z-index:-2;
-      }
-      .row {
       }
     }
   }
