@@ -5,6 +5,7 @@
 * Shortcode for displaying posts on department homepage
 * @param @atts - posts can be set to 1 or 3 in a card-like view
 *                list can be set for ul display
+*                category can be set to display from a different cat (accepts cat ID)
 *
 * @package phila-gov_customization
 */
@@ -14,15 +15,23 @@ add_action( 'init', 'register_posts_shortcode' );
 
 function latest_posts_shortcode($atts) {
   global $post;
-  $category = get_the_category();
   $a = shortcode_atts( array(
    'posts' => 1,
     0 => 'list',
     'name' => 'Blog Posts',
+    'category' => '',
  ), $atts );
 
-   $current_category = $category[0]->cat_ID;
-   $category_slug = $category[0]->slug;
+  if ($a['category'] != ''){
+    $current_category = $a['category'];
+    $category_slug = get_category($a['category'])->slug;
+  } else {
+    $category = get_the_category();
+    $current_category = $category[0]->cat_ID;
+    $category_slug = $category[0]->slug;
+  }
+
+
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
