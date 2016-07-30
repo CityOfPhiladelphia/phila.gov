@@ -1351,6 +1351,7 @@ $meta_boxes[] = array(
       'id'   => $prefix . 'custom_text_group',
       'type' => 'group',
       'clone' => true,
+      'max_clone' => 3,
       'fields' => $metabox_custom_text,
     )
   );
