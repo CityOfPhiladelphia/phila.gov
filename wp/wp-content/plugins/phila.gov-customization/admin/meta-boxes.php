@@ -1039,6 +1039,7 @@ $meta_boxes[] = array(
           'type' => 'post',
           'post_type' => 'department_page',
           'clone' => true,
+          'max_clone' => 3,
         ),
       ),
     ),
