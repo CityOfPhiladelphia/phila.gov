@@ -1845,18 +1845,98 @@ $meta_boxes[] = array(
   )
 );
 
-//Tax Detail Template
 $meta_boxes[] = array(
-  'id'  => $prefix . 'tax_detail',
-  'title' => 'Tax Details',
+  'id'  => $prefix . 'payment_info',
+  'title' => 'Payment Information',
   'pages' => array('page'),
   'priority' => 'high',
 
   'fields'  => array(
-    $tax_due_date,
-    $tax_costs,
-    //  $tax_general
+    array(
+      'name' => 'Who has to pay the tax?',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'who_pays',
+      'type'  => 'wysiwyg',
+      'options' => array(
+        'media_buttons' => false,
+        'teeny' => true,
+        'dfw' => false,
+        'quicktags' => false,
+        'tinymce' => $basic_editor,
+        'editor_height' => 200
+      ),
+    ),
+    array(
+      'name'  => 'What happens if I don\'t pay on time?',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'late_fees',
+      'type'  => 'wysiwyg',
+      'options' => array(
+        'media_buttons' => false,
+        'teeny' => true,
+        'dfw' => false,
+        'quicktags' => false,
+        'tinymce' => $basic_editor,
+        'editor_height' => 200
+      ),
+    )
   )
+);
+
+$meta_boxes[] = array(
+  'id'  => $prefix . 'discounts_exemptions',
+  'title' => 'Discounts & Exemptions',
+  'pages' => array('page'),
+  'priority' => 'high',
+
+  'fields'  => array(
+    array(
+      'name' => 'Who is eligible for a discount?',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'discounts',
+      'type'  => 'wysiwyg',
+      'options' => array(
+        'media_buttons' => false,
+        'teeny' => true,
+        'dfw' => false,
+        'quicktags' => false,
+        'tinymce' => $basic_editor,
+        'editor_height' => 200
+      ),
+    ),
+    array(
+      'name'  => 'Can you be excused from paying the tax?',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'exemptions',
+      'type'  => 'wysiwyg',
+      'options' => array(
+        'media_buttons' => false,
+        'teeny' => true,
+        'dfw' => false,
+        'quicktags' => false,
+        'tinymce' => $basic_editor,
+        'editor_height' => 200
+      ),
+    )
+  )
+);
+$meta_boxes[] = array(
+  'id'  => $prefix . 'how_to_pay',
+  'title' => 'How you pay',
+  'pages' => array('page'),
+  'priority' => 'high',
+
+  'fields'  => array(
+
+  ),
 );
 
 return $meta_boxes;
