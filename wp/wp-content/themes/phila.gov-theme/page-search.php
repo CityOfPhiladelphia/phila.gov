@@ -1,6 +1,5 @@
 <?php
 /**
- * Template Name: Search Page
  *
  * @package phila-gov
  */
