@@ -9,10 +9,24 @@
 
 add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
+function phila_show_all_months(){
+
+  $month_array = array();
+  for ($m=1; $m<=12; $m++) {
+    $month = date('F', mktime(0,0,0,$m, 1, date('Y')));
+    $month_abr = date('M', mktime(0,0,0,$m, 1, date('Y')));
+
+    $month_array[$month_abr] = $month;
+  }
+  return $month_array;
+}
+
 function phila_register_meta_boxes( $meta_boxes ){
   $prefix = 'phila_';
 
   $department_col_1_custom_content['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+
+  $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, removeformat, pastetext';
 
   $meta_boxes[] = array(
     'id'       => 'news',
@@ -1719,6 +1733,129 @@ $meta_boxes[] = array(
   'fields' => array(
     $meta_programs_initiatives_images,
     $metabox_grid_row,
+  )
+);
+
+$tax_due_date = array(
+  'id'  =>  $prefix . 'tax_due_date',
+  'type'  => 'group',
+  'clone' => false,
+
+  'fields' => array(
+    array(
+      'name'  => 'Due Date Callout',
+      'type' => 'heading',
+    ),
+    array(
+      'name'  =>  'Tax Due Date',
+      'desc'  => 'Enter the day of the month this tax is due.',
+      'id'  => $prefix . 'due_date',
+      'type'  =>  'number',
+      'min' => '1',
+      'max' => '31',
+    ),
+    array(
+      'name'  => 'Is this tax due monthly?',
+      'id'  =>  $prefix . 'due_monthly',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'name'  => 'Month Due',
+      'id'  => $prefix . 'month_due',
+      'type'  => 'select',
+      'placeholder' => 'Choose month...',
+      'options' => phila_show_all_months(),
+    ),
+    array(
+      'name'  => 'Brief Explanation',
+      'id'  => $prefix . 'date_summary_brief',
+      'type'  => 'textarea',
+    ),
+    array(
+      'name'  => 'Due Date Details',
+      'type'  => 'heading',
+    ),
+    array(
+      'id'  => $prefix . 'date_summary_detailed',
+      'type'  => 'wysiwyg',
+      'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
+      'options' => array(
+        'media_buttons' => false,
+        'teeny' => true,
+        'dfw' => false,
+        'quicktags' => false,
+        'tinymce' => $basic_editor,
+        'editor_height' => 200
+      ),
+    ),
+  ),
+);
+
+$tax_costs = array(
+  'id'  =>  $prefix . 'tax_costs',
+  'type'  => 'group',
+  'clone' => false,
+
+  'fields' => array(
+    array(
+      'name'  => 'Cost Callout',
+      'type' => 'heading',
+    ),
+    array(
+      'name'  =>  'Tax Cost',
+      'desc'  => '',
+      'id'  => $prefix . 'cost',
+      'type'  =>  'number',
+    ),
+    array(
+      'name'  => 'Brief Explanation',
+      'id'  => $prefix . 'cost_summary_brief',
+      'type'  => 'textarea',
+    ),
+    array(
+      'name'  => 'Cost Details',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'cost_summary_detailed',
+      'type'  => 'wysiwyg',
+      'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
+      'options' => array(
+        'media_buttons' => false,
+        'teeny' => true,
+        'dfw' => false,
+        'quicktags' => false,
+        'tinymce' => $basic_editor,
+        'editor_height' => 200
+      ),
+    ),
+  ),
+);
+
+//Tax Detail Template
+$meta_boxes[] = array(
+  'id'  => $prefix . 'tax_highlights',
+  'title' => 'Tax Highlights',
+  'pages' => array('page'),
+  'priority' => 'high',
+
+  'fields'  => array(
+    $tax_due_date,
+    $tax_costs,
+  )
+);
+
+//Tax Detail Template
+$meta_boxes[] = array(
+  'id'  => $prefix . 'tax_detail',
+  'title' => 'Tax Details',
+  'pages' => array('page'),
+  'priority' => 'high',
+
+  'fields'  => array(
+    $tax_due_date,
+    $tax_costs,
+    //  $tax_general
   )
 );
 
