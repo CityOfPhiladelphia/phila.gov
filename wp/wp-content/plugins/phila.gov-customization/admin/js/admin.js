@@ -37,7 +37,6 @@ jQuery(document).ready(function($) {
 
     }
 
-
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
         rules: {
