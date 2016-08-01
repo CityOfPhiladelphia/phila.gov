@@ -28,6 +28,15 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, removeformat, pastetext';
 
+  $basic_wysiwyg_options = array(
+    'media_buttons' => false,
+    'teeny' => true,
+    'dfw' => false,
+    'quicktags' => false,
+    'tinymce' => $basic_editor,
+    'editor_height' => 200
+  );
+
   $meta_boxes[] = array(
     'id'       => 'news',
     'title'    => 'News Information',
@@ -1736,6 +1745,26 @@ $meta_boxes[] = array(
   )
 );
 
+$cloneable_basic_wysiwyg = array(
+  'id'  =>  $prefix . 'cloneable_wysiwyg',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+  'fields'  => array(
+    array(
+      'name'  => 'Section Title',
+      'id'  => $prefix . 'wywiwyg_title',
+      'type'  => 'text'
+    ),
+    array(
+      'id'  => $prefix . 'wywiyyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $basic_wysiwyg_options
+    )
+  )
+);
+
 $tax_due_date = array(
   'id'  =>  $prefix . 'tax_due_date',
   'type'  => 'group',
@@ -1779,14 +1808,7 @@ $tax_due_date = array(
       'id'  => $prefix . 'date_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-        'tinymce' => $basic_editor,
-        'editor_height' => 200
-      ),
+      'options' => $basic_wysiwyg_options
     ),
   ),
 );
@@ -1820,13 +1842,7 @@ $tax_costs = array(
       'id'  => $prefix . 'cost_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-        'tinymce' => $basic_editor,
-        'editor_height' => 200
+      'options' => $basic_wysiwyg_options
       ),
     ),
   ),
@@ -1917,25 +1933,18 @@ $meta_boxes[] = array(
     array(
       'id'  => $prefix . 'exemptions',
       'type'  => 'wysiwyg',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-        'tinymce' => $basic_editor,
-        'editor_height' => 200
-      ),
+      'options' => $basic_wysiwyg_options
     )
   )
 );
 $meta_boxes[] = array(
-  'id'  => $prefix . 'how_to_pay',
+  'id'  => $prefix . 'payments',
   'title' => 'How you pay',
   'pages' => array('page'),
   'priority' => 'high',
 
   'fields'  => array(
-
+    $cloneable_basic_wysiwyg
   ),
 );
 
