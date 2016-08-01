@@ -4,21 +4,12 @@ function phila_get_user_roles_callback() {
   }else{
     return false;
   }
-
 }
+
 
 /* For all admins */
 jQuery(document).ready(function($) {
 
-  //Rename Pages to "Information Pages"
-  //This is here because of permissions weirdness as well as timing problems
-  $('#adminmenuwrap .wp-submenu a').each(function(i) {
-    if ($(this).attr("href") == "edit.php?post_type=page") {
-      $(this).text("Information Page");
-    } else if ($(this).attr("href") == "post-new.php?post_type=page") {
-      $(this).text("Add Information Page");
-    }
-  });
 
   //no one can clone rn
   $('#department-content-blocks .add-clone').css('visibility', 'hidden');
@@ -31,6 +22,13 @@ jQuery(document).ready(function($) {
     return;
 
   } else {
+
+    //detach and reattach the #page_template div so it's consistant with the location of department page template selection
+    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
+      var templateSelect = $('#page_template').detach();
+      $(templateSelect).appendTo('#page_template_selection .inside');
+    }
+
 
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
