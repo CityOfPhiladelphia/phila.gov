@@ -20,10 +20,12 @@ class Phila_Gov_Admin_Templates {
 
     add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_categories' ), 10, 1 );
 
+    add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_wp_pages' ), 10, 1 );
+
  }
 
  function phila_register_template_selection_metabox_departments( $meta_boxes ){
-   $prefix = 'phila_';
+  $prefix = 'phila_';
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
@@ -76,6 +78,23 @@ class Phila_Gov_Admin_Templates {
       'relation' => 'or'
     );
     return $conditions;
+  }
+
+  function phila_register_template_selection_metabox_wp_pages( $meta_boxes ){
+    $prefix = 'phila_';
+
+    $meta_boxes[] = array(
+      'id'       => 'page_template_selection',
+      'title'    => 'Select Template',
+      'pages'    => array( 'page' ),
+      'context'  => 'advanced',
+      'priority' => 'high',
+
+      'fields' => array(
+        //this metabox is used as a container to place the #page_template selection at the top of the UI via JS, as it is being used on department pages
+      ),
+    );
+     return $meta_boxes;
   }
 
 }
