@@ -1745,7 +1745,26 @@ $meta_boxes[] = array(
   )
 );
 
-$cloneable_basic_wysiwyg = array(
+$metabox_custom_wysiwyg = array(
+  'id'  =>  $prefix . 'custom_wysiwyg',
+  'type'  => 'group',
+  'clone' => false,
+
+  'fields'  => array(
+    array(
+      'name'  => 'Section Title',
+      'id'  => $prefix . 'wywiwyg_title',
+      'type'  => 'text'
+    ),
+    array(
+      'id'  => $prefix . 'wywiyyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $basic_wysiwyg_options
+    )
+  )
+);
+
+$metabox_custom_wysiwyg_multi = array(
   'id'  =>  $prefix . 'cloneable_wysiwyg',
   'type'  => 'group',
   'clone' => true,
@@ -1759,6 +1778,83 @@ $cloneable_basic_wysiwyg = array(
     ),
     array(
       'id'  => $prefix . 'wywiyyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $basic_wysiwyg_options
+    )
+  )
+);
+
+$standard_address = array(
+  'id'  =>  'address_group',
+  'type'  => 'group',
+  'fields'  => array(
+
+      array(
+        'type' => 'heading',
+        'name' => 'Address',
+      ),
+      array(
+       'name' => 'Street Address 1',
+       'id'   => $prefix . 'std_address_st_1',
+       'type' => 'text',
+      ),
+      array(
+       'name' => 'Street Address 2',
+       'id'   => $prefix . 'std_address_st_2',
+       'type' => 'text',
+      ),
+      array(
+       'name' => 'City',
+       'id'   => $prefix . 'std_address_city',
+       'type' => 'text',
+       'std' => 'Philadelphia',
+      ),
+      array(
+       'name' => 'State',
+       'id'   => $prefix . 'std_address_state',
+       'type' => 'text',
+       'std' => 'PA',
+      ),
+      array(
+       'name' => 'Zip',
+       'id'   => $prefix . 'std_address_zip',
+       'type' => 'text',
+       'std' => '19107',
+    ),
+  ),
+);
+
+$ordered_content = array(
+  'id'  => $prefix . 'ordered_content',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+
+  'fields'  => array(
+    array(
+      'name'  => 'Step Title',
+      'id'  => $prefix . 'step_wywiwyg_title',
+      'type'  => 'text',
+      'columns' => 12,
+    ),
+    array(
+      'name'  => 'Does this step contain an address?',
+      'id'  => $prefix . 'address_step',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'id' => $prefix . 'std_address',
+      'type' => 'group',
+      'visible' => array('phila_address_step', true),
+
+      'fields' => array(
+        $standard_address,
+      ),
+    ),
+    array(
+      'id'  => $prefix . 'step_wywiyyg_content',
+      'visible' => array('phila_address_step', false),
       'type'  => 'wysiwyg',
       'options' => $basic_wysiwyg_options
     )
@@ -1843,7 +1939,6 @@ $tax_costs = array(
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
       'options' => $basic_wysiwyg_options
-      ),
     ),
   ),
 );
@@ -1875,14 +1970,7 @@ $meta_boxes[] = array(
     array(
       'id'  => $prefix . 'who_pays',
       'type'  => 'wysiwyg',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-        'tinymce' => $basic_editor,
-        'editor_height' => 200
-      ),
+      'options' => $basic_wysiwyg_options
     ),
     array(
       'name'  => 'What happens if I don\'t pay on time?',
@@ -1891,16 +1979,10 @@ $meta_boxes[] = array(
     array(
       'id'  => $prefix . 'late_fees',
       'type'  => 'wysiwyg',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-        'tinymce' => $basic_editor,
-        'editor_height' => 200
-      ),
-    )
+      'options' => $basic_wysiwyg_options
+    ),
   )
+
 );
 
 $meta_boxes[] = array(
@@ -1917,15 +1999,8 @@ $meta_boxes[] = array(
     array(
       'id'  => $prefix . 'discounts',
       'type'  => 'wysiwyg',
-      'options' => array(
-        'media_buttons' => false,
-        'teeny' => true,
-        'dfw' => false,
-        'quicktags' => false,
-        'tinymce' => $basic_editor,
-        'editor_height' => 200
+      'options' => $basic_wysiwyg_options
       ),
-    ),
     array(
       'name'  => 'Can you be excused from paying the tax?',
       'type'  => 'heading'
@@ -1934,7 +2009,7 @@ $meta_boxes[] = array(
       'id'  => $prefix . 'exemptions',
       'type'  => 'wysiwyg',
       'options' => $basic_wysiwyg_options
-    )
+    ),
   )
 );
 $meta_boxes[] = array(
@@ -1944,24 +2019,34 @@ $meta_boxes[] = array(
   'priority' => 'high',
 
   'fields'  => array(
-    $cloneable_basic_wysiwyg
+    $metabox_custom_wysiwyg_multi,
+    array(
+      'name' => 'Add A Step',
+      'type'  => 'heading',
+    ),
+    $ordered_content
   ),
 );
 
 return $meta_boxes;
 
 }
-// The following filter based on MetaBox documentation
+
 add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
 
 function phila_group_add_clone_button_text( $text, $field ) {
   if ( 'phila_resource_list' == $field['id'] ) {
-      $text = __( '+ Add a Resource List', 'textdomain' );
-  } else if ( 'phila_resource_list_items' == $field['id'] ){
-    $text = __( '+ Add an Item', 'textdomain' );
+    $text = '+ Add a Resource List';
+  }
+  if ( 'phila_ordered_content' == $field['id'] ) {
+    $text = '+ Add a Step';
+  }
+  if ( 'phila_cloneable_wysiwyg' == $field['id'] ){
+    $text = '+ Add a Section';
   }
   return $text;
 }
+
 
 /**
  *
