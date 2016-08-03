@@ -21,7 +21,7 @@
       foreach ( $resource_list_groups as $resource_list_group ) :
         $i++;
         if ( $count == 0 ) :
-        $list_item_output .= '<section class="row column">';
+        $list_item_output .= '<div class="row column">';
         endif;
 
         //assign vars
@@ -76,7 +76,7 @@
         $list_item_output .=  '</ul></div>'; ?>
 
       <?php if ( $count == 3 || $i == $total ) :
-      $list_item_output .= '</section>';
+      $list_item_output .= '</div>';
       $count = 0;
       endif; ?>
 
@@ -148,13 +148,13 @@
       </section>
 
     <?php else : ?>
-      <section class="row mvl">
+      <div class="row mvl">
         <div class="columns">
           <div class="placeholder">
             <?php echo 'Please enter at least three groups of links.'; ?>
           </div>
         </div>
-      </section>
+      </div>
     <?php endif; ?>
 
   <?php endif; ?>
