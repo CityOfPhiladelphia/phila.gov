@@ -1065,11 +1065,13 @@ $meta_boxes[] = array(
           'type' => 'post',
           'post_type' => 'department_page',
           'clone' => true,
+          'max_clone' => 3,
         ),
       ),
     ),
   );
-  // Feature Programs and Initiatives
+
+  // Custom Featured Content
   $meta_custom_feature = array(
     array(
       'name' => 'Feature Title',
@@ -1093,7 +1095,7 @@ $meta_boxes[] = array(
     ),
   );
 
-  // Resource List
+  // Multiple Call to Action (CTA) Panels
   $meta_call_to_action_multi = array(
     array(
       'id'  => $prefix . 'call_to_action_section',
@@ -1375,6 +1377,7 @@ $meta_boxes[] = array(
       'id'   => $prefix . 'custom_text_group',
       'type' => 'group',
       'clone' => true,
+      'max_clone' => 3,
       'fields' => $metabox_custom_text,
     )
   );
@@ -1393,7 +1396,7 @@ $meta_boxes[] = array(
     ),
   );
 
-  // District Programs
+  // List of links with FontAwesome icons
   $metabox_list_items = array(
     array(
       'name' => 'Row Title',
