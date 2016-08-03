@@ -7,7 +7,7 @@
  * @package phila-gov_customization
  */
 
-add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
+add_action('admin_init', 'phila_show_all_months');
 
 function phila_show_all_months(){
 
@@ -21,7 +21,10 @@ function phila_show_all_months(){
   return $month_array;
 }
 
+add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
+
 function phila_register_meta_boxes( $meta_boxes ){
+
   $prefix = 'phila_';
 
   $department_col_1_custom_content['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
@@ -1732,7 +1735,7 @@ $metabox_grid_options = array(
    'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options, $metabox_half_options ),
  );
 
-//Department Hompage metaboxes
+//Department Homepage metaboxes
 $meta_boxes[] = array(
   'id'       => $prefix . 'department_homepage',
   'title'    => 'Page Content',
@@ -1824,12 +1827,30 @@ $standard_address = array(
   ),
 );
 
+$document_page_selector = array(
+  'id'  => $prefix . 'document_page_picker',
+  'type'  => 'post',
+  'post_type' => 'document',
+  'field_type'  => 'select_advanced',
+  'desc'  => 'You can narrow your search options by typing in the field above.',
+  'query_args'  => array(
+    'orderby' => 'title',
+    'order' => 'ASC',
+    //TODO: only show document pages that match the current category
+  ),
+  'js_options'  => array(
+    'multiple'  => true,
+    'width' => '100%',
+    'placeholder' => ' ',
+    'closeOnSelect' => false,
+  )
+);
+
 $ordered_content = array(
   'id'  => $prefix . 'ordered_content',
   'type'  => 'group',
   'clone' => true,
   'sort_clone'  => true,
-
 
   'fields'  => array(
     array(
@@ -2021,11 +2042,26 @@ $meta_boxes[] = array(
   'fields'  => array(
     $metabox_custom_wysiwyg_multi,
     array(
-      'name' => 'Add A Step',
+      'name' => 'Add Steps',
       'type'  => 'heading',
     ),
     $ordered_content
   ),
+);
+
+$meta_boxes[] = array(
+  'id'  => $prefix . 'forms_instructions',
+  'pages' => array('page'),
+  'priority'  => 'high',
+  'title' => 'Forms & Instructions',
+
+  'fields'  => array(
+    array(
+      'name'  => 'Select Document Pages',
+      'type'  => 'heading'
+    ),
+    $document_page_selector
+  )
 );
 
 return $meta_boxes;
