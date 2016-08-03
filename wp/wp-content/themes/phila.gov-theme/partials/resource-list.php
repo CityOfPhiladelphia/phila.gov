@@ -11,13 +11,15 @@
 
     //we require at least three
     if ( ! empty( $resource_list_groups ) && count($resource_list_groups) >= 3 ) :
+      $i=0;
+      $total = count($resource_list_groups);
       $count = 0;
       $featured_resources = array();
       $list_item_output = '';
 
       //group
       foreach ( $resource_list_groups as $resource_list_group ) :
-
+        $i++;
         if ( $count == 0 ) :
         $list_item_output .= '<section class="row column">';
         endif;
@@ -28,7 +30,7 @@
         $resource_list_slug = sanitize_title_with_dashes($resource_list_title);
 
         $list_item_output .= '<div class="medium-8 small-24 column resource-list end">';
-        $list_item_output .= '<header><h2 id="' . $resource_list_slug . '"class="h4 phm pvs">' . $resource_list_title . '</h2></header>';
+        $list_item_output .= '<header><h2 id="' . $resource_list_slug . '" class="h4 phm pvs">' . $resource_list_title . '</h2></header>';
         $list_item_output .= '<ul>';
 
         //items
@@ -73,7 +75,7 @@
 
         $list_item_output .=  '</ul></div>'; ?>
 
-      <?php if ( $count == 3 ) :
+      <?php if ( $count == 3 || $i == $total ) :
       $list_item_output .= '</section>';
       $count = 0;
       endif; ?>
@@ -156,4 +158,3 @@
     <?php endif; ?>
 
   <?php endif; ?>
-</div>
