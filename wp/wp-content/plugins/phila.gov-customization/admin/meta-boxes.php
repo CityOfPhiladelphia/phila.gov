@@ -1778,9 +1778,10 @@ $metabox_custom_wysiwyg_multi = array(
 
   'fields'  => array(
     array(
-      'name'  => 'Section Title',
-      'id'  => $prefix . 'wywiwyg_title',
-      'type'  => 'text'
+      'placeholder'  => 'Section Heading',
+      'id'  => $prefix . 'wywiwyg_heading',
+      'type'  => 'text',
+      'class' => 'width-95'
     ),
     array(
       'id'  => $prefix . 'wywiyyg_content',
@@ -1790,7 +1791,7 @@ $metabox_custom_wysiwyg_multi = array(
   )
 );
 
-$standard_address = array(
+$meta_standard_address = array(
   'id'  =>  'address_group',
   'type'  => 'group',
   'fields'  => array(
@@ -1830,7 +1831,7 @@ $standard_address = array(
   ),
 );
 
-$document_page_selector = array(
+$meta_document_page_selector = array(
   'id'  => $prefix . 'document_page_picker',
   'type'  => 'post',
   'post_type' => 'document',
@@ -1849,7 +1850,7 @@ $document_page_selector = array(
   )
 );
 
-$ordered_content = array(
+$meta_ordered_content = array(
   'id'  => $prefix . 'ordered_content',
   'type'  => 'group',
   'clone' => true,
@@ -1857,13 +1858,14 @@ $ordered_content = array(
 
   'fields'  => array(
     array(
-      'name'  => 'Step Title',
-      'id'  => $prefix . 'step_wywiwyg_title',
+      //TODO: determine way to display step numbers
+      'placeholder' => 'Step Heading',
+      'id'  => $prefix . 'step_wywiwyg_heading',
       'type'  => 'text',
-      'columns' => 12,
+      'class' => 'width-95'
     ),
     array(
-      'name'  => 'Does this step contain an address?',
+      'desc'  => 'Does this step contain an address?',
       'id'  => $prefix . 'address_step',
       'type'  => 'checkbox',
     ),
@@ -1873,7 +1875,7 @@ $ordered_content = array(
       'visible' => array('phila_address_step', true),
 
       'fields' => array(
-        $standard_address,
+        $meta_standard_address,
       ),
     ),
     array(
@@ -1885,7 +1887,7 @@ $ordered_content = array(
   )
 );
 
-$tax_due_date = array(
+$meta_tax_due_date = array(
   'id'  =>  $prefix . 'tax_due_date',
   'type'  => 'group',
   'clone' => false,
@@ -1909,6 +1911,7 @@ $tax_due_date = array(
       'type'  => 'checkbox',
     ),
     array(
+      'visible' => array('phila_due_monthly', true),
       'name'  => 'Month Due',
       'id'  => $prefix . 'month_due',
       'type'  => 'select',
@@ -1919,6 +1922,7 @@ $tax_due_date = array(
       'name'  => 'Brief Explanation',
       'id'  => $prefix . 'date_summary_brief',
       'type'  => 'textarea',
+      'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box.'
     ),
     array(
       'name'  => 'Due Date Details',
@@ -1933,7 +1937,7 @@ $tax_due_date = array(
   ),
 );
 
-$tax_costs = array(
+$meta_tax_costs = array(
   'id'  =>  $prefix . 'tax_costs',
   'type'  => 'group',
   'clone' => false,
@@ -1945,14 +1949,24 @@ $tax_costs = array(
     ),
     array(
       'name'  =>  'Tax Cost',
-      'desc'  => '',
       'id'  => $prefix . 'cost',
       'type'  =>  'number',
+    ),
+    array(
+      'name'  => 'Unit',
+      'id'  => $prefix . 'unit',
+      'type'  => 'select',
+      'options' => array(
+        'percent' => '%',
+        'dollar'  => '$',
+        'mil' => 'mil'
+      )
     ),
     array(
       'name'  => 'Brief Explanation',
       'id'  => $prefix . 'cost_summary_brief',
       'type'  => 'textarea',
+      'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box.',
     ),
     array(
       'name'  => 'Cost Details',
@@ -1976,7 +1990,7 @@ $meta_forms_instructions = array(
       'name'  => 'Forms & Instructions',
       'type'  => 'heading'
     ),
-    $document_page_selector
+    $meta_document_page_selector
   )
 );
 
@@ -2039,17 +2053,17 @@ $meta_boxes[] = array(
   'priority' => 'high',
 
   'fields'  => array(
-    $tax_due_date,
+    $meta_tax_due_date,
     array(
       'type'  => 'divider'
     ),
-    $tax_costs,
+    $meta_tax_costs,
     array(
       'type'  => 'divider'
     ),
     array(
       'id'  => $prefix . 'tax_code',
-      'name'  => 'Tax Code',
+      'name'  => 'Tax Type Code',
       'type'  => 'number'
     ),
   )
@@ -2118,12 +2132,16 @@ $meta_boxes[] = array(
   'priority' => 'high',
 
   'fields'  => array(
-    $metabox_custom_wysiwyg_multi,
     array(
-      'name' => 'Add Steps',
+      'name' => 'Introduction',
       'type'  => 'heading',
     ),
-    $ordered_content
+    $metabox_custom_wysiwyg_multi,
+    array(
+      'name' => 'Numbered Items',
+      'type'  => 'heading',
+    ),
+    $meta_ordered_content
   ),
 );
 
