@@ -1835,7 +1835,7 @@ $document_page_selector = array(
   'type'  => 'post',
   'post_type' => 'document',
   'field_type'  => 'select_advanced',
-  'desc'  => 'You can narrow your search options by typing in the field above.',
+  'desc'  => 'Add document pages. You can narrow your search options by typing in the field above.',
   'query_args'  => array(
     'orderby' => 'title',
     'order' => 'ASC',
@@ -1967,6 +1967,70 @@ $tax_costs = array(
   ),
 );
 
+$meta_forms_instructions = array(
+  'id'  => $prefix . 'forms_instructions',
+  'type'  => 'group',
+
+  'fields'  => array(
+    array(
+      'name'  => 'Forms & Instructions',
+      'type'  => 'heading'
+    ),
+    $document_page_selector
+  )
+);
+
+$meta_related_content = array(
+  'id'  => $prefix . 'related',
+  'type'  => 'group',
+
+  'fields'  => array(
+    array(
+      'name'  => 'Related Content',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'related_content',
+      'type'  => 'wysiwyg',
+      'options' => $basic_wysiwyg_options
+    ),
+  )
+);
+
+$meta_questions = array(
+  'id'  => $prefix . 'questions',
+  'type'  => 'group',
+
+  'fields'  => array(
+    array(
+      'name'  => 'Questions about this content?',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'question_content',
+      'type'  => 'wysiwyg',
+      'options' => $basic_wysiwyg_options
+    ),
+  )
+);
+
+$meta_did_you_know = array(
+  'id'  => $prefix . 'did_you_know',
+  'type'  => 'group',
+
+  'fields'  => array(
+    array(
+      'name'  => 'Did You Know?',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'did_you_know_content',
+      'type'  => 'wysiwyg',
+      'options' => $basic_wysiwyg_options
+    ),
+  )
+);
+
 //Tax Detail Template
 $meta_boxes[] = array(
   'id'  => $prefix . 'tax_highlights',
@@ -1976,7 +2040,18 @@ $meta_boxes[] = array(
 
   'fields'  => array(
     $tax_due_date,
+    array(
+      'type'  => 'divider'
+    ),
     $tax_costs,
+    array(
+      'type'  => 'divider'
+    ),
+    array(
+      'id'  => $prefix . 'tax_code',
+      'name'  => 'Tax Code',
+      'type'  => 'number'
+    ),
   )
 );
 
@@ -2053,17 +2128,21 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'id'  => $prefix . 'forms_instructions',
+  'title' => 'Additional Content',
   'pages' => array('page'),
-  'priority'  => 'high',
-  'title' => 'Forms & Instructions',
-
-  'fields'  => array(
+  'fields' => array(
     array(
-      'name'  => 'Select Document Pages',
-      'type'  => 'heading'
-    ),
-    $document_page_selector
+      'id' => $prefix . 'additional_content',
+      'type'  => 'group',
+      'clone' => false,
+
+      'fields' => array(
+        $meta_forms_instructions,
+        $meta_related_content,
+        $meta_did_you_know,
+        $meta_questions
+      )
+    )
   )
 );
 
