@@ -1287,6 +1287,28 @@ function phila_grid_column_counter( $item_count ){
 
 }
 
+function phila_info_panel( $info_panel ){
+  $output = array();
+
+  var_dump($info_panel);
+
+  foreach ( $info_panel as $k => $v ){
+    $output = array();
+
+    if ( isset( $info_panel['phila_due_date'] ) ){
+      $output['date'] = $info_panel['phila_due_date'];
+    }
+    if ( isset( $info_panel['phila_date_summary_brief'] ) ){
+      $output['brief_summary'] = $info_panel['phila_date_summary_brief'];
+    }
+    if ( isset( $info_panel['phila_date_summary_detailed'] ) ){
+      $output['details'] = $info_panel['phila_date_summary_detailed'];
+    }
+  }
+
+  return $output;
+}
+
 function phila_connect_panel($connect_panel) {
 
   $output_array = array();
