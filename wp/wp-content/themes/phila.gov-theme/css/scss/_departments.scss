@@ -90,6 +90,8 @@
   .button.alternate.full{
     margin-bottom: 0;
   }
+
+  //TODO: Apply this to a class instead of the section element. Creates need for overrides like the one at the top of _resource-list.scss
   section{
     margin-bottom: 1rem;
 
@@ -97,6 +99,7 @@
       margin-bottom: 0;
     }
   }
+
   .department-header {
     position: relative;
     overflow:hidden;
