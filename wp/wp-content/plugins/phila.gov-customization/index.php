@@ -42,9 +42,12 @@ require $dir. '/admin/meta-boxes.php';
 require $dir. '/admin/tiny-mce.php';
 
 require $dir. '/public/shortcodes/blogs.php';
+require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/news.php';
 require $dir. '/public/shortcodes/notices.php';
 require $dir. '/public/shortcodes/press-releases.php';
+require $dir. '/public/shortcodes/pullquote.php';
+
 
 require $dir. '/public/class-content-collection-walker.php';
 require $dir. '/public/class-phila-gov-filter-posts.php';

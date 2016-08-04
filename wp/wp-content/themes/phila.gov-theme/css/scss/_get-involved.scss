@@ -1,0 +1,38 @@
+.get-involved-row{
+  position: relative;
+
+  .panel{
+    background-color: rgba(255,255,255,0.7);
+  }
+  header {
+    .icon {
+      margin-bottom: $spacing-small;
+    }
+  }
+  .details{
+    margin-top: $spacing-small;
+  }
+
+  @media only screen and (min-width: 40em) {
+    .row-wrap {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+  }
+  @media only screen and (min-width: 64em) {
+    .row-wrap {
+      padding: 4rem;
+
+      .banner {
+          position: absolute;
+          left: 0;
+          top: 0;
+          max-width: none;
+          height:100%;
+          width: 100%;
+          z-index:-2;
+      }
+    }
+  }
+}

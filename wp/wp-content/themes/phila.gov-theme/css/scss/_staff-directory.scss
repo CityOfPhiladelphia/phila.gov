@@ -1,6 +1,20 @@
 .staff-directory {
+  .all-staff-table {
+    .social {
+      .social-link {
+        padding-left: .5rem;
+        padding-right: .5rem;
+        &:first-of-type {
+          padding-left:0;
+        }
+      }
+      @media screen and (min-width: 40em){
+        text-align: center;
+      }
+    }
+  }
   .staff-leadership {
-    margin-bottom: $spacing-medium;
+    // margin-bottom: $spacing-medium;
 
     .staff-thumbnail {
       width:100%;
@@ -14,6 +28,13 @@
       .tel,
       .email {
         word-break: break-word;
+      }
+      .social {
+        a {
+          &:first-of-type{
+            padding-left: 0;
+          }
+        }
       }
 
       @media screen and (min-width: 40em){

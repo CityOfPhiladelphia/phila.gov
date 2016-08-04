@@ -1286,3 +1286,58 @@ function phila_grid_column_counter( $item_count ){
   return $column_count;
 
 }
+
+function phila_connect_panel($connect_panel) {
+
+  $output_array = array();
+  // print_r($connect_panel);
+  foreach ($connect_panel as $key => $value) {
+
+    $output_array['social'] = array();
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_facebook'] ) && $connect_panel['phila_connect_social']['phila_connect_social_facebook'] != '') $output_array['social']['facebook'] = $connect_panel['phila_connect_social']['phila_connect_social_facebook'];
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_twitter'] ) && $connect_panel['phila_connect_social']['phila_connect_social_twitter'] != ''  ) $output_array['social']['twitter'] = $connect_panel['phila_connect_social']['phila_connect_social_twitter'];
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_social']['phila_connect_social_instagram'];
+
+    $output_array['address'] = array(
+      'st_1' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'',
+
+      'st_2' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_2'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_2'] :'',
+
+      'city' => isset( $connect_panel['phila_connect_address']['phila_connect_address_city'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_city'] :'Philadelphia',
+
+      'state' => isset( $connect_panel['phila_connect_address']['phila_connect_address_state'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_state'] :'PA',
+
+      'zip' => isset( $connect_panel['phila_connect_address']['phila_connect_address_zip'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_zip'] :'19107',
+    );
+
+    $output_array['phone'] =
+       isset( $connect_panel['phila_connect_general']['phila_connect_phone'] ) && is_array( $connect_panel['phila_connect_general']['phila_connect_phone'] ) ? '(' . $connect_panel['phila_connect_general']['phila_connect_phone']['area'] . ') ' . $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] . '-' . $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number'] :'';
+
+    $output_array['fax'] =
+      isset( $connect_panel['phila_connect_general']['phila_connect_fax'] ) && is_array( $connect_panel['phila_connect_general']['phila_connect_fax'] ) ? $connect_panel_fax = '(' . $connect_panel['phila_connect_general']['phila_connect_fax']['area'] . ') ' . $connect_panel['phila_connect_general']['phila_connect_fax']['phone-co-code'] . '-' . $connect_panel['phila_connect_general']['phila_connect_fax']['phone-subscriber-number'] : '' ;
+
+    $output_array['email'] =
+      isset( $connect_panel['phila_connect_general']['phila_connect_email'] ) ? $connect_panel['phila_connect_general']['phila_connect_email'] :'';
+
+      $output_array['cta'] = array(
+
+        'title' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_title'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_title'] :'',
+
+        'url' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_url'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_url'] :'',
+
+        'summary' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_summary'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_summary'] :'',
+
+      );
+
+  }
+
+  if (array_key_exists( 'social' , $output_array )){
+    return $output_array;
+  } else {
+    return;
+  }
+  // return $connect_panel;
+}
