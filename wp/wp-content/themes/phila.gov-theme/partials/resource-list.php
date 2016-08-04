@@ -21,7 +21,7 @@
       foreach ( $resource_list_groups as $resource_list_group ) :
         $i++;
         if ( $count == 0 ) :
-        $list_item_output .= '<section class="row column">';
+        $list_item_output .= '<div class="row column">';
         endif;
 
         //assign vars
@@ -29,7 +29,7 @@
         $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
         $resource_list_slug = sanitize_title_with_dashes($resource_list_title);
 
-        $list_item_output .= '<div class="medium-8 small-24 column resource-list end">';
+        $list_item_output .= '<section class="medium-8 small-24 column resource-list end">';
         $list_item_output .= '<header><h2 id="' . $resource_list_slug . '" class="h4 phm pvs">' . $resource_list_title . '</h2></header>';
         $list_item_output .= '<ul>';
 
@@ -73,10 +73,10 @@
 
         endforeach;
 
-        $list_item_output .=  '</ul></div>'; ?>
+        $list_item_output .=  '</ul></section>'; ?>
 
       <?php if ( $count == 3 || $i == $total ) :
-      $list_item_output .= '</section>';
+      $list_item_output .= '</div>';
       $count = 0;
       endif; ?>
 
@@ -148,13 +148,13 @@
       </section>
 
     <?php else : ?>
-      <section class="row mvl">
+      <div class="row mvl">
         <div class="columns">
           <div class="placeholder">
             <?php echo 'Please enter at least three groups of links.'; ?>
           </div>
         </div>
-      </section>
+      </div>
     <?php endif; ?>
 
   <?php endif; ?>
