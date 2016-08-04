@@ -1,0 +1,59 @@
+.programs-header {
+  &:after {
+    content: none;
+  }
+  .header-wrap {
+    text-align: center;
+
+    h2 {
+      color: $ben-franklin-blue;
+      font-family: "Open Sans",sans-serif;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+    hr {
+      display: none;
+    }
+    img {
+      display:none;
+    }
+  }
+
+  @media only screen and (min-width: 40.063em) {
+    .header-wrap {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      height:200px;
+
+      h2 {
+          position: relative;
+          z-index: 2;
+          display: inline-block;
+          color: $ben-franklin-blue;
+          // border-bottom: 1px solid $ben-franklin-blue;
+          // border-top: 1px solid $ben-franklin-blue;
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin: 0;
+      }
+      hr{
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid $ben-franklin-blue;
+        // background: $ben-franklin-blue;
+        margin: 0 32%;
+      }
+      img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          max-width: none;
+          height: auto;
+          opacity: 0.25;
+          display: inline-block;
+      }
+    }
+  }
+}

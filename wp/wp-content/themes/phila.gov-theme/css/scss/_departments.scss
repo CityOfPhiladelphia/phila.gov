@@ -11,7 +11,6 @@
   }
 }
 .department {
-
   .external-site-link-left,
   .external-site-link-right{
       text-align: center;
@@ -91,6 +90,8 @@
   .button.alternate.full{
     margin-bottom: 0;
   }
+
+  //TODO: Apply this to a class instead of the section element. Creates need for overrides like the one at the top of _resource-list.scss
   section{
     margin-bottom: 1rem;
 
@@ -116,6 +117,7 @@
     font-size: 8rem;
     text-transform: uppercase;
   }
+
   .department-header {
     position: relative;
     overflow:hidden;
@@ -212,11 +214,6 @@
       }
     }
   }
-  .department-module-row-one {
-    .panel {
-      border:0;
-    }
-  }
 
   .featured-content{
     font-size: .95rem;
@@ -241,8 +238,49 @@
         float:none;
       }
     }
-  }
 
+
+    &.programs {
+
+      @media screen and (max-width: 39.9375em) {
+        text-align: center;
+        p {
+          margin-left: .5rem;
+          margin-right: .5rem;
+          text-align: left;
+        }
+      }
+
+      div {
+        display:table-cell;
+        &.featured-thumbnail {
+          float:left;
+          @media screen and (max-width: 39.9375em) {
+            float:none;
+          }
+        }
+        @media screen and (max-width: 39.9375em) {
+          display:inline-block;
+        }
+      }
+      img {
+        max-width: 100%;
+        float:left;
+
+        @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+          max-width: 100%;
+          margin-bottom:none;
+        }
+        @media screen and (min-width: 64em) {
+          max-width: 105px;
+          margin-bottom:0;
+        }
+      }
+      h4{
+        font-size: 1rem;
+      }
+    }
+  }
 }//department
 @media screen and (min-width: 40em) {
   .medium-center{
@@ -295,4 +333,10 @@
 .post-type-archive-department_page .list li{
   border-bottom: 1px solid $ghost-gray;
   margin: 1rem 0;
+}
+
+.connect {
+  .panel{
+    border: 0;
+  }
 }
