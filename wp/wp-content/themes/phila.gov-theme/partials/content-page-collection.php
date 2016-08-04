@@ -81,9 +81,8 @@
       <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
         <div class="tabs-panel is-active">
           <header class="entry-header">
-            <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+            <?php the_title( '<h2 class="entry-title mvn">', '</h2>' ); ?>
           </header><!-- .entry-header -->
-
           <!-- If Custom Markup append_before_wysiwyg is present print it -->
           <?php if (!$append_before_wysiwyg == ''):?>
             <?php echo $append_before_wysiwyg; ?>
@@ -93,9 +92,20 @@
 
             <?php echo $parent_content ?>
 
+            <?php if ( 'single-tax-detail.php' == basename( get_page_template() ) ): ?>
+
+              <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
+            <?php endif; ?>
+
           <?php else : ?>
 
             <?php the_content(); ?>
+
+            <?php if ( 'single-tax-detail.php' == basename( get_page_template() ) ): ?>
+
+              <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
+
+            <?php endif; ?>
 
           <?php endif; ?>
 
