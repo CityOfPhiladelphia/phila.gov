@@ -57,6 +57,8 @@
 
   <?php elseif ($user_selected_template == 'one_page_department') : ?>
     <!-- Begin One Page Template Display -->
+    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
+
     <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
