@@ -1,0 +1,28 @@
+//TODO: Add to patterns
+
+.panel.info{
+  background: rgba($ben-franklin-light, .5);
+  border:none;
+
+  &.heading{
+    padding:0;
+  }
+
+  .title{
+    border-bottom:2px solid $white;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+  }
+
+  .symbol{
+    vertical-align: top;
+    line-height: $large-font-base / 1.5;
+    font-size: $large-font-base / 2;
+  }
+
+}
+
+.large-text{
+  font-size: $large-font-base;
+  font-weight: 600;
+}
