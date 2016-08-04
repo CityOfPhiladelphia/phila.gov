@@ -2052,6 +2052,12 @@ $meta_boxes[] = array(
   'pages' => array('page'),
   'priority' => 'high',
 
+  'include' =>  array(
+    'template' => array(
+      'page-templates/single-tax-detail.php'
+    ),
+  ),
+
   'fields'  => array(
     $meta_tax_due_date,
     array(
@@ -2074,6 +2080,12 @@ $meta_boxes[] = array(
   'title' => 'Payment Information',
   'pages' => array('page'),
   'priority' => 'high',
+
+  'include' =>  array(
+    'template' => array(
+      'page-templates/single-tax-detail.php'
+    ),
+  ),
 
   'fields'  => array(
     array(
@@ -2104,6 +2116,12 @@ $meta_boxes[] = array(
   'pages' => array('page'),
   'priority' => 'high',
 
+  'include' =>  array(
+    'template' => array(
+      'page-templates/single-tax-detail.php'
+    ),
+  ),
+
   'fields'  => array(
     array(
       'name' => 'Who is eligible for a discount?',
@@ -2131,6 +2149,12 @@ $meta_boxes[] = array(
   'pages' => array('page'),
   'priority' => 'high',
 
+  'include' =>  array(
+    'template' => array(
+      'page-templates/single-tax-detail.php'
+    ),
+  ),
+
   'fields'  => array(
     array(
       'name' => 'Introduction',
@@ -2146,6 +2170,7 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  //TODO: determine if this should exist on all Pages
   'title' => 'Additional Content',
   'pages' => array('page'),
   'fields' => array(
