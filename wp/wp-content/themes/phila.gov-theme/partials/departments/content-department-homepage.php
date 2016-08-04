@@ -30,9 +30,11 @@
               $cal_url = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'];?>
 
               <!-- Full Width Calendar -->
-              <section class="row">
-                <div class="columns">
-                  <h2>Events</h2>
+              <section class="row expanded">
+                <div class="row">
+                  <div class="columns">
+                    <h2>Events</h2>
+                  </div>
                 </div>
                 <div class="row expanded calendar-row mbm ptm">
                   <div class="medium-centered large-16 columns">
