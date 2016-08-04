@@ -3,6 +3,7 @@
 .panel.info{
   background: rgba($ben-franklin-light, .5);
   border:none;
+  margin: $spacing-small 0;
 
   &.heading{
     padding:0;
@@ -14,12 +15,15 @@
     text-transform: uppercase;
   }
 
+  .large-text{
+    line-height: $large-font-base;
+  }
+
   .symbol{
     vertical-align: top;
     line-height: $large-font-base / 1.5;
     font-size: $large-font-base / 2;
   }
-
 }
 
 .large-text{
