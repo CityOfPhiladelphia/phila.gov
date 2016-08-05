@@ -1287,23 +1287,55 @@ function phila_grid_column_counter( $item_count ){
 
 }
 
-function phila_info_panel( $info_panel ){
+function phila_tax_highlight( $info_panel ){
   $output = array();
 
   var_dump($info_panel);
 
   foreach ( $info_panel as $k => $v ){
-    $output = array();
+    $output['due'] = array();
 
-    if ( isset( $info_panel['phila_due_date'] ) ){
-      $output['date'] = $info_panel['phila_due_date'];
-    }
-    if ( isset( $info_panel['phila_date_summary_brief'] ) ){
-      $output['brief_summary'] = $info_panel['phila_date_summary_brief'];
-    }
-    if ( isset( $info_panel['phila_date_summary_detailed'] ) ){
-      $output['details'] = $info_panel['phila_date_summary_detailed'];
-    }
+    $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
+    $info_panel['phila_tax_due_date']['phila_tax_date'] : '';
+
+    $output['due']['summary_brief'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] : '';
+
+    $output['due']['summary_detailed'] =  isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] ) ?  $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] : '';
+
+  $output['cost'] = array();
+
+    $output['cost']['number'] = isset( $info_panel['phila_tax_costs']['phila_tax_cost_number'] ) ? $info_panel['phila_tax_costs']['phila_tax_cost_number'] : '';
+
+    $output['cost']['unit'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_unit'] ) ?
+    $info_panel['phila_tax_costs']['phila_tax_cost_unit'] : '';
+
+    $output['cost']['summary_brief'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] ) ?
+    $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] : '';
+
+    $output['cost']['summary_detailed'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] ) ?
+    $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] : '';
+
+  }
+
+  return $output;
+}
+
+function phila_tax_cost( $info_panel ){
+  $output = array();
+
+  foreach ( $info_panel as $k => $v ){
+
+    $output['number'] = isset( $info_panel['phila_tax_cost_number'] ) ? $info_panel['phila_tax_cost_number'] : '';
+
+    $output['unit'] =  isset( $info_panel['phila_tax_cost_unit'] ) ?
+    $info_panel['phila_tax_cost_unit'] : '';
+
+    $output['summary_brief'] =  isset( $info_panel['phila_tax_cost_summary_brief'] ) ?
+    $info_panel['phila_tax_cost_summary_brief'] : '';
+
+    $output['summary_detailed'] =  isset( $info_panel['phila_tax_cost_summary_detailed'] ) ?
+    $info_panel['phila_tax_cost_summary_detailed'] : '';
+
   }
 
   return $output;
@@ -1312,7 +1344,7 @@ function phila_info_panel( $info_panel ){
 function phila_connect_panel($connect_panel) {
 
   $output_array = array();
-  // print_r($connect_panel);
+
   foreach ($connect_panel as $key => $value) {
 
     $output_array['social'] = array();
