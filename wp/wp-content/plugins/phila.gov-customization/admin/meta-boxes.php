@@ -21,6 +21,11 @@ function phila_show_all_months(){
   return $month_array;
 }
 
+$site_prefix = 'phila_';
+$tax_prefix = 'tax_';
+$cost = 'cost_';
+
+
 add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
@@ -29,15 +34,16 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $department_col_1_custom_content['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
-  $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, removeformat, pastetext';
+  $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
   $basic_wysiwyg_options = array(
     'media_buttons' => false,
     'teeny' => true,
-    'dfw' => false,
-    'quicktags' => false,
+    //'dfw' => false,
+    //'quicktags' => false,
     'tinymce' => $basic_editor,
-    'editor_height' => 200
+    'editor_height' => 200,
+    'raw' => false
   );
 
   $meta_boxes[] = array(
@@ -1886,7 +1892,6 @@ $meta_ordered_content = array(
     )
   )
 );
-
 $meta_tax_due_date = array(
   'id'  =>  $prefix . 'tax_due_date',
   'type'  => 'group',
@@ -1900,27 +1905,27 @@ $meta_tax_due_date = array(
     array(
       'name'  =>  'Tax Due Date',
       'desc'  => 'Enter the day of the month this tax is due.',
-      'id'  => $prefix . 'due_date',
+      'id'  => $prefix.'tax_date',
       'type'  =>  'number',
       'min' => '1',
       'max' => '31',
     ),
     array(
       'name'  => 'Is this tax due monthly?',
-      'id'  =>  $prefix . 'due_monthly',
+      'id'  => $prefix.'tax_date_is_monthly',
       'type'  => 'checkbox',
     ),
     array(
-      'visible' => array('phila_due_monthly', true),
+      'visible' => array('phila_tax_date_is_monthly', true),
       'name'  => 'Month Due',
-      'id'  => $prefix . 'month_due',
+      'id'  => $prefix.'tax_date_month',
       'type'  => 'select',
       'placeholder' => 'Choose month...',
       'options' => phila_show_all_months(),
     ),
     array(
       'name'  => 'Brief Explanation',
-      'id'  => $prefix . 'date_summary_brief',
+      'id'  => $prefix.'tax_date_summary_brief',
       'type'  => 'textarea',
       'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box.'
     ),
@@ -1929,7 +1934,7 @@ $meta_tax_due_date = array(
       'type'  => 'heading',
     ),
     array(
-      'id'  => $prefix . 'date_summary_detailed',
+      'id'  => $prefix.'tax_date_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
       'options' => $basic_wysiwyg_options
@@ -1949,22 +1954,23 @@ $meta_tax_costs = array(
     ),
     array(
       'name'  =>  'Tax Cost',
-      'id'  => $prefix . 'cost',
+      'id'  => $prefix.'tax_cost_number',
       'type'  =>  'number',
+      'step'  => 'any'
     ),
     array(
       'name'  => 'Unit',
-      'id'  => $prefix . 'unit',
+      'id'  =>  $prefix.'tax_cost_unit',
       'type'  => 'select',
       'options' => array(
-        'percent' => '%',
-        'dollar'  => '$',
+        '%' => '%',
+        '&'  => '$',
         'mil' => 'mil'
       )
     ),
     array(
       'name'  => 'Brief Explanation',
-      'id'  => $prefix . 'cost_summary_brief',
+      'id'  => $prefix.'tax_cost_summary_brief',
       'type'  => 'textarea',
       'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box.',
     ),
@@ -1973,7 +1979,7 @@ $meta_tax_costs = array(
       'type'  => 'heading'
     ),
     array(
-      'id'  => $prefix . 'cost_summary_detailed',
+      'id'  => $prefix.'tax_cost_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
       'options' => $basic_wysiwyg_options
@@ -2047,7 +2053,6 @@ $meta_did_you_know = array(
 
 //Tax Detail Template
 $meta_boxes[] = array(
-  'id'  => $prefix . 'tax_highlights',
   'title' => 'Tax Highlights',
   'pages' => array('page'),
   'priority' => 'high',
@@ -2059,19 +2064,26 @@ $meta_boxes[] = array(
   ),
 
   'fields'  => array(
-    $meta_tax_due_date,
     array(
-      'type'  => 'divider'
-    ),
-    $meta_tax_costs,
-    array(
-      'type'  => 'divider'
-    ),
-    array(
-      'id'  => $prefix . 'tax_code',
-      'name'  => 'Tax Type Code',
-      'type'  => 'number'
-    ),
+      'id'  => $prefix . 'tax_highlights',
+      'type'   => 'group',
+
+      'fields'  => array(
+          $meta_tax_due_date,
+          array(
+            'type'  => 'divider'
+          ),
+          $meta_tax_costs,
+          array(
+            'type'  => 'divider'
+          ),
+          array(
+            'id'  => $prefix . 'tax_code',
+            'name'  => 'Tax Type Code',
+            'type'  => 'number'
+          ),
+        ),
+    )
   )
 );
 
