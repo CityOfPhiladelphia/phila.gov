@@ -1315,6 +1315,9 @@ function phila_tax_highlight( $info_panel ){
     $output['cost']['summary_detailed'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] ) ?
     $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] : '';
 
+    $output['code'] = isset( $info_panel['phila_tax_code'] ) ?
+    $info_panel['phila_tax_code'] : '';
+
   }
 
   return $output;
