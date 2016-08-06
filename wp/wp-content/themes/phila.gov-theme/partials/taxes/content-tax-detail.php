@@ -16,7 +16,9 @@
   $intro = phila_extract_clonable_wysiwyg( $payment_group );
   $steps = phila_extract_stepped_content( $payment_group );
 
-  var_dump($steps);
+  $additional_content = rwmb_meta('phila_additional_content');
+  $content = phila_additional_content( $additional_content );
+
 ?>
 <div class="row equal-height">
   <div class="medium-12 columns">
@@ -151,14 +153,39 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="columns">
+    <section>
+      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Forms & Instructions</h3>
+      <!--need to revisit this -->
+    </section>
+  </div>
+</div>
 
- <div class="row">
+<div class="row">
+  <div class="columns">
+    <section>
+      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Related Content</h3>
+        <?php echo $content['related'] ?>
+    </section>
+  </div>
+</div>
+
+<div class="row equal-height">
    <div class="medium-12 columns">
-      <div class="panel info">
+      <div class="panel info equal">
         <aside>
           <h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Did you know?</h3>
-          <p>Amusement events and locations may be subject to specific licensing and permitting by the <a href="#">Department of Licenses and Inspections</a>.</p>
-        </div>
+          <?php echo $content['did_you_know'] ?>
+        </aside>
+      </div>
+  </div>
+  <div class="medium-12 columns">
+    <div class="panel info equal">
+      <aside>
+        <h3><i class="fa fa-comments" aria-hidden="true"></i> Questions?</h3>
+        <?php echo $content['questions'] ?>
       </aside>
+    </div>
   </div>
 </div>
