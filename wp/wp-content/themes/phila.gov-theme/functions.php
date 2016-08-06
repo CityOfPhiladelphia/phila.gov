@@ -1360,6 +1360,22 @@ function phila_extract_stepped_content($parent_group){
   return $output;
 }
 
+function phila_additional_content( $input ){
+  $output = array();
+
+  foreach ($input as $k => $v) {
+    //TODO: revisit post selector
+    $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
+
+    $output['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
+
+    $output['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
+
+  }
+
+  return $output;
+}
+
 
 function phila_connect_panel($connect_panel) {
 
