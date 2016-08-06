@@ -1939,7 +1939,8 @@ $meta_tax_due_date = array(
       'id'  => $prefix.'tax_date_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
-      'options' => $basic_wysiwyg_options
+      'options' => $basic_wysiwyg_options,
+      'required'  => true
     ),
   ),
 );
@@ -1986,7 +1987,8 @@ $meta_tax_costs = array(
       'id'  => $prefix.'tax_cost_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
-      'options' => $basic_wysiwyg_options
+      'options' => $basic_wysiwyg_options,
+      'required'  => true
     ),
   ),
 );
