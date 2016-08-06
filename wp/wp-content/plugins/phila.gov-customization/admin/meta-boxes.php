@@ -2146,7 +2146,6 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'id'  => $prefix . 'payments',
   'title' => 'How you pay',
   'pages' => array('page'),
   'priority' => 'high',
@@ -2159,16 +2158,23 @@ $meta_boxes[] = array(
 
   'fields'  => array(
     array(
-      'name' => 'Introduction',
-      'type'  => 'heading',
-    ),
-    $metabox_custom_wysiwyg_multi,
-    array(
-      'name' => 'Numbered Items',
-      'type'  => 'heading',
-    ),
-    $meta_ordered_content
-  ),
+      'id'  => $prefix . 'payment_group',
+      'type'  => 'group',
+
+    'fields' => array(
+        array(
+          'name' => 'Introduction',
+          'type'  => 'heading',
+        ),
+        $metabox_custom_wysiwyg_multi,
+        array(
+          'name' => 'Numbered Items',
+          'type'  => 'heading',
+        ),
+        $meta_ordered_content
+      ),
+    )
+  )
 );
 
 $meta_boxes[] = array(
