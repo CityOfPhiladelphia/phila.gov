@@ -1289,33 +1289,35 @@ function phila_grid_column_counter( $item_count ){
 
 function phila_tax_highlight( $info_panel ){
   $output = array();
+  if ( !empty($info_panel) ){
 
-  foreach ( $info_panel as $k ){
-    $output['due'] = array();
+    foreach ( $info_panel as $k ){
+      $output['due'] = array();
 
-    $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
-    $info_panel['phila_tax_due_date']['phila_tax_date'] : '';
+      $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
+      $info_panel['phila_tax_due_date']['phila_tax_date'] : '';
 
-    $output['due']['summary_brief'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] : '';
+      $output['due']['summary_brief'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] : '';
 
-    $output['due']['summary_detailed'] =  isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] ) ?  $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] : '';
+      $output['due']['summary_detailed'] =  isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] ) ?  $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] : '';
 
-    $output['cost'] = array();
+      $output['cost'] = array();
 
-    $output['cost']['number'] = isset( $info_panel['phila_tax_costs']['phila_tax_cost_number'] ) ? $info_panel['phila_tax_costs']['phila_tax_cost_number'] : '';
+      $output['cost']['number'] = isset( $info_panel['phila_tax_costs']['phila_tax_cost_number'] ) ? $info_panel['phila_tax_costs']['phila_tax_cost_number'] : '';
 
-    $output['cost']['unit'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_unit'] ) ?
-    $info_panel['phila_tax_costs']['phila_tax_cost_unit'] : '';
+      $output['cost']['unit'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_unit'] ) ?
+      $info_panel['phila_tax_costs']['phila_tax_cost_unit'] : '';
 
-    $output['cost']['summary_brief'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] ) ?
-    $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] : '';
+      $output['cost']['summary_brief'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] ) ?
+      $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] : '';
 
-    $output['cost']['summary_detailed'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] ) ?
-    $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] : '';
+      $output['cost']['summary_detailed'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] ) ?
+      $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] : '';
 
-    $output['code'] = isset( $info_panel['phila_tax_code'] ) ?
-    $info_panel['phila_tax_code'] : '';
+      $output['code'] = isset( $info_panel['phila_tax_code'] ) ?
+      $info_panel['phila_tax_code'] : '';
 
+    }
   }
 
   return $output;
@@ -1323,12 +1325,15 @@ function phila_tax_highlight( $info_panel ){
 function phila_tax_payment_info( $payment_info ){
   $output = array();
 
-  foreach ( $payment_info as $k ){
-    $output['who_pays'] = isset($payment_info['phila_tax_who_pays'] ) ? $payment_info['phila_tax_who_pays'] : '';
-    $output['late_fees'] = isset($payment_info['phila_tax_late_fees'] ) ? $payment_info['phila_tax_late_fees'] : '';
-    $output['discounts'] = isset($payment_info['phila_tax_discounts'] ) ? $payment_info['phila_tax_discounts'] : '';
-    $output['exemptions'] = isset($payment_info['phila_tax_exemptions'] ) ? $payment_info['phila_tax_exemptions'] : '';
+  if ( !empty($payment_info) ) {
 
+    foreach ( $payment_info as $k ){
+      $output['who_pays'] = isset($payment_info['phila_tax_who_pays'] ) ? $payment_info['phila_tax_who_pays'] : '';
+      $output['late_fees'] = isset($payment_info['phila_tax_late_fees'] ) ? $payment_info['phila_tax_late_fees'] : '';
+      $output['discounts'] = isset($payment_info['phila_tax_discounts'] ) ? $payment_info['phila_tax_discounts'] : '';
+      $output['exemptions'] = isset($payment_info['phila_tax_exemptions'] ) ? $payment_info['phila_tax_exemptions'] : '';
+
+    }
   }
   return $output;
 }
@@ -1336,12 +1341,13 @@ function phila_tax_payment_info( $payment_info ){
 function phila_extract_clonable_wysiwyg($parent_group){
   $output = array();
 
-  $clonable_wysiwyg = isset($parent_group['phila_cloneable_wysiwyg'] ) ? $parent_group['phila_cloneable_wysiwyg'] : '';
+  if ( !empty($parent_group) ){
 
-  foreach ( $clonable_wysiwyg as $k => $v ){
+    $clonable_wysiwyg = isset($parent_group['phila_cloneable_wysiwyg'] ) ? $parent_group['phila_cloneable_wysiwyg'] : $output;
 
-    $output[$k] = $v;
-
+    foreach ( $clonable_wysiwyg as $k => $v ){
+      $output[$k] = $v;
+    }
   }
   return $output;
 }
@@ -1350,27 +1356,31 @@ function phila_extract_clonable_wysiwyg($parent_group){
 function phila_extract_stepped_content($parent_group){
   $output = array();
 
-  $steps = isset($parent_group['phila_ordered_content'] ) ? $parent_group['phila_ordered_content'] : '';
+  if ( !empty($parent_group) ){
+    $steps = isset($parent_group['phila_ordered_content'] ) ? $parent_group['phila_ordered_content'] : $output;
 
-  foreach ( $steps as $k => $v ){
+    foreach ( $steps as $k => $v ){
 
-    $output[$k] = $v;
+      $output[$k] = $v;
 
+    }
   }
   return $output;
 }
 
 function phila_additional_content( $input ){
   $output = array();
+  if ( !empty($input) ) {
 
-  foreach ($input as $k => $v) {
-    //TODO: revisit post selector
-    $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
+    foreach ($input as $k => $v) {
+      //TODO: revisit post selector
+      $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
 
-    $output['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
+      $output['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
 
-    $output['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
+      $output['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
 
+    }
   }
 
   return $output;

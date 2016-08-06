@@ -1909,6 +1909,7 @@ $meta_tax_due_date = array(
       'type'  =>  'number',
       'min' => '1',
       'max' => '31',
+      'required'  => true
     ),
     array(
       'name'  => 'Is this tax due monthly?',
@@ -1927,7 +1928,8 @@ $meta_tax_due_date = array(
       'name'  => 'Brief Explanation',
       'id'  => $prefix.'tax_date_summary_brief',
       'type'  => 'textarea',
-      'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box.'
+      'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box.',
+      'required'  => true
     ),
     array(
       'name'  => 'Due Date Details',
@@ -1956,7 +1958,8 @@ $meta_tax_costs = array(
       'name'  =>  'Tax Cost',
       'id'  => $prefix.'tax_cost_number',
       'type'  =>  'number',
-      'step'  => 'any'
+      'step'  => 'any',
+      'required'  => true
     ),
     array(
       'name'  => 'Unit',
@@ -1973,6 +1976,7 @@ $meta_tax_costs = array(
       'id'  => $prefix.'tax_cost_summary_brief',
       'type'  => 'textarea',
       'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box.',
+      'required'  => true
     ),
     array(
       'name'  => 'Cost Details',
@@ -2069,7 +2073,6 @@ $meta_boxes[] = array(
       'type'   => 'group',
 
       'fields'  => array(
-
         $meta_tax_due_date,
         array(
           'type'  => 'divider'
