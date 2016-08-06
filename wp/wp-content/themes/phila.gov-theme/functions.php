@@ -1290,8 +1290,6 @@ function phila_grid_column_counter( $item_count ){
 function phila_tax_highlight( $info_panel ){
   $output = array();
 
-  var_dump($info_panel);
-
   foreach ( $info_panel as $k => $v ){
     $output['due'] = array();
 
@@ -1302,7 +1300,7 @@ function phila_tax_highlight( $info_panel ){
 
     $output['due']['summary_detailed'] =  isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] ) ?  $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] : '';
 
-  $output['cost'] = array();
+    $output['cost'] = array();
 
     $output['cost']['number'] = isset( $info_panel['phila_tax_costs']['phila_tax_cost_number'] ) ? $info_panel['phila_tax_costs']['phila_tax_cost_number'] : '';
 
@@ -1322,25 +1320,17 @@ function phila_tax_highlight( $info_panel ){
 
   return $output;
 }
-
-function phila_tax_cost( $info_panel ){
+function phila_tax_payment_info( $payment_info ){
   $output = array();
+  var_dump($payment_info);
 
-  foreach ( $info_panel as $k => $v ){
-
-    $output['number'] = isset( $info_panel['phila_tax_cost_number'] ) ? $info_panel['phila_tax_cost_number'] : '';
-
-    $output['unit'] =  isset( $info_panel['phila_tax_cost_unit'] ) ?
-    $info_panel['phila_tax_cost_unit'] : '';
-
-    $output['summary_brief'] =  isset( $info_panel['phila_tax_cost_summary_brief'] ) ?
-    $info_panel['phila_tax_cost_summary_brief'] : '';
-
-    $output['summary_detailed'] =  isset( $info_panel['phila_tax_cost_summary_detailed'] ) ?
-    $info_panel['phila_tax_cost_summary_detailed'] : '';
+  foreach ( $payment_info as $k => $v ){
+    $output['who_pays'] = isset($payment_info['phila_tax_who_pays'] ) ? $payment_info['phila_tax_who_pays'] : '';
+    $output['late_fees'] = isset($payment_info['phila_tax_late_fees'] ) ? $payment_info['phila_tax_late_fees'] : '';
+    $output['discounts'] = isset($payment_info['phila_tax_discounts'] ) ? $payment_info['phila_tax_discounts'] : '';
+    $output['exemptions'] = isset($payment_info['phila_tax_exemptions'] ) ? $payment_info['phila_tax_exemptions'] : '';
 
   }
-
   return $output;
 }
 

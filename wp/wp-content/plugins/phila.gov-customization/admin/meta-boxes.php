@@ -39,8 +39,8 @@ function phila_register_meta_boxes( $meta_boxes ){
   $basic_wysiwyg_options = array(
     'media_buttons' => false,
     'teeny' => true,
-    //'dfw' => false,
-    //'quicktags' => false,
+    'dfw' => false,
+    'quicktags' => false,
     'tinymce' => $basic_editor,
     'editor_height' => 200,
     'raw' => false
@@ -2069,26 +2069,26 @@ $meta_boxes[] = array(
       'type'   => 'group',
 
       'fields'  => array(
-          $meta_tax_due_date,
-          array(
-            'type'  => 'divider'
-          ),
-          $meta_tax_costs,
-          array(
-            'type'  => 'divider'
-          ),
-          array(
-            'id'  => $prefix . 'tax_code',
-            'name'  => 'Tax Type Code',
-            'type'  => 'number'
-          ),
+
+        $meta_tax_due_date,
+        array(
+          'type'  => 'divider'
         ),
+        $meta_tax_costs,
+        array(
+          'type'  => 'divider'
+        ),
+        array(
+          'id'  => $prefix . 'tax_code',
+          'name'  => 'Tax Type Code',
+          'type'  => 'number'
+        ),
+      ),
     )
   )
 );
 
 $meta_boxes[] = array(
-  'id'  => $prefix . 'payment_info',
   'title' => 'Payment Information',
   'pages' => array('page'),
   'priority' => 'high',
@@ -2098,63 +2098,53 @@ $meta_boxes[] = array(
       'page-templates/single-tax-detail.php'
     ),
   ),
-
   'fields'  => array(
     array(
-      'name' => 'Who has to pay the tax?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => $prefix . 'who_pays',
-      'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
-    ),
-    array(
-      'name'  => 'What happens if I don\'t pay on time?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => $prefix . 'late_fees',
-      'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
-    ),
-  )
+      'id'  => $prefix . 'tax_payment_info',
+      'type'   => 'group',
 
-);
-
-$meta_boxes[] = array(
-  'id'  => $prefix . 'discounts_exemptions',
-  'title' => 'Discounts & Exemptions',
-  'pages' => array('page'),
-  'priority' => 'high',
-
-  'include' =>  array(
-    'template' => array(
-      'page-templates/single-tax-detail.php'
-    ),
-  ),
-
-  'fields'  => array(
-    array(
-      'name' => 'Who is eligible for a discount?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => $prefix . 'discounts',
-      'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
-      ),
-    array(
-      'name'  => 'Can you be excused from paying the tax?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => $prefix . 'exemptions',
-      'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
-    ),
+      'fields'  => array(
+        array(
+          'name' => 'Who has to pay the tax?',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => $prefix . 'tax_who_pays',
+          'type'  => 'wysiwyg',
+          'options' => $basic_wysiwyg_options
+        ),
+        array(
+          'name'  => 'What happens if I don\'t pay on time?',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => $prefix . 'tax_late_fees',
+          'type'  => 'wysiwyg',
+          'options' => $basic_wysiwyg_options
+        ),
+        array(
+          'name' => 'Who is eligible for a discount?',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => $prefix . 'tax_discounts',
+          'type'  => 'wysiwyg',
+          'options' => $basic_wysiwyg_options
+          ),
+        array(
+          'name'  => 'Can you be excused from paying the tax?',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => $prefix . 'tax_exemptions',
+          'type'  => 'wysiwyg',
+          'options' => $basic_wysiwyg_options
+        )
+      )
+    )
   )
 );
+
 $meta_boxes[] = array(
   'id'  => $prefix . 'payments',
   'title' => 'How you pay',
