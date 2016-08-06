@@ -1290,7 +1290,7 @@ function phila_grid_column_counter( $item_count ){
 function phila_tax_highlight( $info_panel ){
   $output = array();
 
-  foreach ( $info_panel as $k => $v ){
+  foreach ( $info_panel as $k ){
     $output['due'] = array();
 
     $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
@@ -1322,9 +1322,8 @@ function phila_tax_highlight( $info_panel ){
 }
 function phila_tax_payment_info( $payment_info ){
   $output = array();
-  var_dump($payment_info);
 
-  foreach ( $payment_info as $k => $v ){
+  foreach ( $payment_info as $k ){
     $output['who_pays'] = isset($payment_info['phila_tax_who_pays'] ) ? $payment_info['phila_tax_who_pays'] : '';
     $output['late_fees'] = isset($payment_info['phila_tax_late_fees'] ) ? $payment_info['phila_tax_late_fees'] : '';
     $output['discounts'] = isset($payment_info['phila_tax_discounts'] ) ? $payment_info['phila_tax_discounts'] : '';
@@ -1333,6 +1332,34 @@ function phila_tax_payment_info( $payment_info ){
   }
   return $output;
 }
+
+function phila_extract_clonable_wysiwyg($parent_group){
+  $output = array();
+
+  $clonable_wysiwyg = isset($parent_group['phila_cloneable_wysiwyg'] ) ? $parent_group['phila_cloneable_wysiwyg'] : '';
+
+  foreach ( $clonable_wysiwyg as $k => $v ){
+
+    $output[$k] = $v;
+
+  }
+  return $output;
+}
+
+
+function phila_extract_stepped_content($parent_group){
+  $output = array();
+
+  $steps = isset($parent_group['phila_ordered_content'] ) ? $parent_group['phila_ordered_content'] : '';
+
+  foreach ( $steps as $k => $v ){
+
+    $output[$k] = $v;
+
+  }
+  return $output;
+}
+
 
 function phila_connect_panel($connect_panel) {
 
