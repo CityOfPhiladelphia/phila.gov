@@ -50,8 +50,9 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Who Pays the Tax</h3>
-      <div><?php echo apply_filters( 'the_content', $payments['who_pays'] ); ?>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Who Pays the Tax</h3>
+      <div class="phm-mu">
+        <?php echo apply_filters( 'the_content', $payments['who_pays'] ); ?>
       </div>
     </section>
   </div>
@@ -62,8 +63,8 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Important Dates</h3>
-      <div><?php echo apply_filters( 'the_content', $tax['due']['summary_detailed']); ?></div>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Important Dates</h3>
+      <div class="phm-mu"><?php echo apply_filters( 'the_content', $tax['due']['summary_detailed']); ?></div>
     </section>
   </div>
 </div>
@@ -73,13 +74,13 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Tax Rates, Penalties & Fees</h3>
-      <div>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Rates, Penalties & Fees</h3>
+      <div class="phm-mu">
         <h4>How much is it?</h4>
         <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
       </div>
-      <hr>
-      <div>
+      <hr class="mhm-mu">
+      <div class="phm-mu">
         <h4>What happens if you don't pay on time?</h4>
         <?php echo apply_filters( 'the_content', $payments['late_fees'] ); ?>
       </div>
@@ -92,13 +93,13 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Discounts & Exemptions</h3>
-      <div>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Discounts & Exemptions</h3>
+      <div class="phm-mu">
         <h4>Are you eligible for a discount?</h4>
         <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
       </div>
-      <hr>
-      <div>
+      <hr class="mhm-mu">
+      <div class="phm-mu">
         <h4>Can you be excused from paying the tax?</h4>
         <?php echo apply_filters( 'the_content',  $payments['exemptions'] );?>
       </div>
@@ -111,7 +112,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">How you pay the tax</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How you pay the tax</h3>
 
       <?php foreach ( $intro as $item ):  ?>
         <div class="mbm">
@@ -175,8 +176,8 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Tax Code</h3>
-        <span class="border-black-thin pas"><?php echo $tax['code'] ?></span>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Code</h3>
+        <div><span class="border-black-thin pas"><?php echo $tax['code'] ?></span></div>
     </section>
   </div>
 </div>
@@ -185,7 +186,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Forms & Instructions</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & Instructions</h3>
       <?php foreach ($content['forms'] as $form ): ?>
         <div class="pvs">
           <a href="<?php get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
@@ -199,7 +200,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Related Content</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Related Content</h3>
         <?php echo apply_filters( 'the_content', $content['related']); ?>
     </section>
   </div>
