@@ -43,7 +43,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'quicktags' => false,
     'tinymce' => $basic_editor,
     'editor_height' => 200,
-    'raw' => false
+    'raw' => true
   );
 
   $meta_boxes[] = array(
@@ -1848,10 +1848,10 @@ $meta_document_page_selector = array(
     'order' => 'ASC',
     //TODO: only show document pages that match the current category
   ),
+  'multiple'  => true,
+  'placeholder' => ' ',
   'js_options'  => array(
-    'multiple'  => true,
     'width' => '100%',
-    'placeholder' => ' ',
     'closeOnSelect' => false,
   )
 );
