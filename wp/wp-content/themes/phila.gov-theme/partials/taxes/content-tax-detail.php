@@ -71,17 +71,34 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Costs, Discounts, etc</h3>
+      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Tax Rates, Penalties & Fees</h3>
       <div>
         <h4>How much is it?</h4>
-        <p><?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?></p>
-        <hr>
+        <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
+      </div>
+      <hr>
+      <div>
         <h4>What happens if you dont pay on time?</h4>
-          <?php echo apply_filters( 'the_content', $payments['late_fees'] ); ?>
-        <hr>
+        <?php echo apply_filters( 'the_content', $payments['late_fees'] ); ?>
+      </div>
+    </section>
+  </div>
+</div>
+<?php endif; ?>
+
+<?php if ( !empty( $payments['discounts'] ) ) : ?>
+<div class="row">
+  <div class="columns">
+    <section>
+      <h3 class="black bg-ghost-gray h2 phm mtl mbm">Discounts & Exemptions</h3>
+      <div>
+        <h4>Are you eligible for a discount</h4>
+        <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
+      </div>
+      <hr>
+      <div>
         <h4>Can you be excused from paying the tax?</h4>
         <?php echo apply_filters( 'the_content',  $payments['exemptions'] );?>
-        </div>
       </div>
     </section>
   </div>
