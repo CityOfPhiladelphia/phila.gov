@@ -18,6 +18,8 @@
 
   $additional_content = rwmb_meta('phila_additional_content');
   $content = phila_additional_content( $additional_content );
+
+
 ?>
 <div class="row equal-height">
   <div class="medium-12 columns">
@@ -26,7 +28,7 @@
         <i class="fa fa-calendar" aria-hidden="true"></i>
  Due Date</div>
        <div class="pam">
-         <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol">th</span></div>
+         <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
          <div class="mtm"><?php echo $tax['due']['summary_brief'] ?></div>
       </div>
     </div>
@@ -78,7 +80,7 @@
       </div>
       <hr>
       <div>
-        <h4>What happens if you dont pay on time?</h4>
+        <h4>What happens if you don't pay on time?</h4>
         <?php echo apply_filters( 'the_content', $payments['late_fees'] ); ?>
       </div>
     </section>
@@ -92,7 +94,7 @@
     <section>
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Discounts & Exemptions</h3>
       <div>
-        <h4>Are you eligible for a discount</h4>
+        <h4>Are you eligible for a discount?</h4>
         <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
       </div>
       <hr>
