@@ -18,7 +18,6 @@
 
   $additional_content = rwmb_meta('phila_additional_content');
   $content = phila_additional_content( $additional_content );
-
 ?>
 <div class="row equal-height">
   <div class="medium-12 columns">
@@ -50,7 +49,7 @@
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Who Pays the Tax</h3>
-      <div><?php echo $payments['who_pays'] ?>
+      <div><?php echo apply_filters( 'the_content', $payments['who_pays'] ); ?>
       </div>
     </section>
   </div>
@@ -62,7 +61,7 @@
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Important Dates</h3>
-      <div><?php echo $tax['due']['summary_detailed'] ?></div>
+      <div><?php echo apply_filters( 'the_content', $tax['due']['summary_detailed']); ?></div>
     </section>
   </div>
 </div>
@@ -75,16 +74,13 @@
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Costs, Discounts, etc</h3>
       <div>
         <h4>How much is it?</h4>
-        <p><?php echo $tax['cost']['summary_detailed'] ?></p>
+        <p><?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?></p>
         <hr>
         <h4>What happens if you dont pay on time?</h4>
-          <?php echo $payments['late_fees'] ?>
+          <?php echo apply_filters( 'the_content', $payments['late_fees'] ); ?>
         <hr>
         <h4>Can you be excused from paying the tax?</h4>
-        <?php echo $payments['exemptions']?>
-          <div class="vr">
-          <p><strong>Religious institutions</strong>
-          Encompasses churches, synagogues, chapels, convents, and certain religious orders.</p>
+        <?php echo apply_filters( 'the_content',  $payments['exemptions'] );?>
         </div>
       </div>
     </section>
@@ -99,9 +95,11 @@
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">How you pay the tax</h3>
 
       <?php foreach ( $intro as $item ):  ?>
-        <h4 class="mbn"><?php echo $item['phila_wywiwyg_heading']; ?></h4>
-        <div class="plm">
-          <?php echo $item['phila_wywiyyg_content']; ?>
+        <div class="mbm">
+          <h4 class="mbn"><?php echo $item['phila_wywiwyg_heading']; ?></h4>
+          <div class="plm">
+            <?php echo $item['phila_wywiyyg_content']; ?>
+          </div>
         </div>
       <?php endforeach; ?>
 
@@ -141,7 +139,7 @@
               <span class="postal-code"><?php echo $zip; ?></span>
             </div>
             <?php else :
-              echo $step['phila_step_wywiyyg_content'] ?>
+              echo apply_filters( 'the_content', $step['phila_step_wywiyyg_content'] ); ?>
             <?php endif; ?>
           </div>
         </div>
@@ -159,7 +157,7 @@
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Tax Code</h3>
-      <?php echo $tax['code'] ?>
+        <span class="border-black-thin pas"><?php echo $tax['code'] ?></span>
     </section>
   </div>
 </div>
@@ -169,7 +167,11 @@
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Forms & Instructions</h3>
-      <!--need to revisit this -->
+      <?php foreach ($content['forms'] as $form ): ?>
+        <div class="pvs">
+          <a href="<?php get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+        </div>
+      <?php endforeach; ?>
     </section>
   </div>
 </div>
@@ -179,7 +181,7 @@
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm mtl mbm">Related Content</h3>
-        <?php echo $content['related'] ?>
+        <?php echo apply_filters( 'the_content', $content['related']); ?>
     </section>
   </div>
 </div>
@@ -188,13 +190,12 @@
 <div class="row equal-height">
   <?php if ( isset($content['did_you_know'] ) ) :
     //TODO: logic for a did_you_know or questions to take full width
-
      ?>
    <div class="medium-12 columns">
       <div class="panel info equal">
         <aside>
           <h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Did you know?</h3>
-          <?php echo $content['did_you_know'] ?>
+          <?php echo apply_filters( 'the_content', $content['did_you_know'] ); ?>
         </aside>
       </div>
   </div>
@@ -204,7 +205,7 @@
     <div class="panel info equal">
       <aside>
         <h3><i class="fa fa-comments" aria-hidden="true"></i> Questions?</h3>
-        <?php echo $content['questions'] ?>
+        <?php echo apply_filters( 'the_content', $content['questions'] );?>
       </aside>
     </div>
   </div>
