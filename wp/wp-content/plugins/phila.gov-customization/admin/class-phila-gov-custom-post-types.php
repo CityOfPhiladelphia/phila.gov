@@ -17,11 +17,13 @@ class Phila_Gov_Custom_Post_Types{
 
   public function __construct(){
 
+    add_action( 'init', array( $this, 'create_phila_department_pages' ) );
+
+    add_action( 'init', array( $this, 'create_phila_service_pages' ) );
+
     add_action( 'init', array( $this, 'create_phila_posts' ) );
 
     add_action( 'init', array( $this, 'create_phila_news' ) );
-
-    add_action( 'init', array( $this, 'create_phila_departments_page_type' ) );
 
     add_action( 'init', array( $this, 'create_phila_site_wide_alert' ) );
 
@@ -37,7 +39,7 @@ class Phila_Gov_Custom_Post_Types{
 
   }
 
-  function create_phila_departments_page_type() {
+  function create_phila_department_pages() {
     register_post_type( 'department_page',
       array(
         'labels' => array(
@@ -63,6 +65,38 @@ class Phila_Gov_Custom_Post_Types{
         'query_var' => true,
         'rewrite' => array(
           'slug' => 'departments',
+          'with_front' => false,
+        ),
+      )
+    );
+  }
+
+  function create_phila_service_pages() {
+    register_post_type( 'service_page',
+      array(
+        'labels' => array(
+          'name' => __( 'Services' ),
+          'menu_name' => __('Service Page'),
+          'singular_name' => __( 'Service' ),
+          'add_new'   => __( 'Add a Service Page' ),
+          'all_items'   => __( 'All Services' ),
+          'add_new_item' => __( 'Add a Service Page' ),
+          'edit_item'   => __( 'Edit Service Page' ),
+          'view_item'   => __( 'View Service Page' ),
+          'search_items'   => __( 'Search Service Pages' ),
+          'not_found'   => __( 'No Service Pages Found' ),
+          'not_found_in_trash'   => __( 'Service Page not found in trash' ),
+        ),
+        'taxonomies' => array('category'),
+        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions' ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_nav_menus' => true,
+        'menu_icon' => 'dashicons-groups',
+        'hierarchical' => true,
+        'query_var' => true,
+        'rewrite' => array(
+          'slug' => 'services',
           'with_front' => false,
         ),
       )
