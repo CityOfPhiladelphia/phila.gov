@@ -19,7 +19,6 @@
   $additional_content = rwmb_meta('phila_additional_content');
   $content = phila_additional_content( $additional_content );
 
-
 ?>
 <div class="row equal-height">
   <div class="medium-12 columns">
@@ -43,6 +42,12 @@
         <div class="mtm"><?php echo $tax['cost']['summary_brief'] ?></div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns">
+    <?php the_content(); ?>
   </div>
 </div>
 
@@ -108,7 +113,7 @@
 </div>
 <?php endif; ?>
 
-<?php if ( isset($intro) || ( isset($steps) && count($steps) > 1 ) ) : ?>
+<?php if ( !empty($intro) || ( !empty($steps) && count($steps) > 1 ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
@@ -172,7 +177,7 @@
 </div>
 <?php endif; ?>
 
-<?php if ( isset( $tax['code'] ) ) : ?>
+<?php if ( !empty( $tax['code'] ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
@@ -183,11 +188,12 @@
 </div>
 <?php endif; ?>
 
+<?php if ( !empty($content['forms']) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & Instructions</h3>
-      <?php foreach ($content['forms'] as $form ): ?>
+      <?php foreach ( $content['forms'] as $form ): ?>
         <div class="pvs">
           <a href="<?php get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
         </div>
@@ -195,6 +201,7 @@
     </section>
   </div>
 </div>
+<?php endif; ?>
 
 <?php if ( isset( $content['related'] ) ) : ?>
 <div class="row">
