@@ -27,7 +27,6 @@
 
         //single page, no children
         get_template_part( 'templates/default', 'page' );
-        echo 'yep';
 
       }elseif( ( $post->id = $post->post_parent ) ) {
 
