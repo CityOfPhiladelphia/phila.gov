@@ -1912,12 +1912,12 @@ $meta_tax_due_date = array(
       'required'  => true
     ),
     array(
-      'name'  => 'Is this tax due monthly?',
-      'id'  => $prefix.'tax_date_is_monthly',
+      'name'  => 'Is this tax due yearly?',
+      'id'  => $prefix.'tax_date_is_yearly',
       'type'  => 'checkbox',
     ),
     array(
-      'visible' => array('phila_tax_date_is_monthly', true),
+      'visible' => array('tax_date_is_yearly', true),
       'name'  => 'Month Due',
       'id'  => $prefix.'tax_date_month',
       'type'  => 'select',
