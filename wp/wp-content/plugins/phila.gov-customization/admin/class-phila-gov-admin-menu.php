@@ -35,6 +35,7 @@ class Phila_Gov_Admin_Menu {
     return array(
         'index.php',
         'edit.php?post_type=page',
+        'edit.php?post_type=service_page',
         'separator1',
         'edit.php?post_type=department_page',
         'edit.php?post_type=phila_post',
