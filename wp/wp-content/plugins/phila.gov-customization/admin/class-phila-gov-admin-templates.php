@@ -34,9 +34,7 @@ class Phila_Gov_Admin_Templates {
     'context'  => 'advanced',
     'priority' => 'high',
 
-
     'fields' => array(
-
       array(
         'desc'  => '',
         'id'    => $prefix . 'template_select',
@@ -86,12 +84,19 @@ class Phila_Gov_Admin_Templates {
     $meta_boxes[] = array(
       'id'       => 'page_template_selection',
       'title'    => 'Select Template',
-      'pages'    => array( 'page' ),
+      'pages'    => array( 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
 
       'fields' => array(
-        //this metabox is used as a container to place the #page_template selection at the top of the UI via JS, as it is being used on department pages
+        array(
+          'id'  => $prefix.'template_select',
+          'type'  => 'select',
+          'options' => array(
+            'default'   => 'Default',
+            'tax_detail' => 'Tax Detail'
+          )
+        )
       ),
     );
      return $meta_boxes;
