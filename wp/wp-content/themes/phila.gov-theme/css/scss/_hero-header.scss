@@ -33,7 +33,7 @@
       .intro {
         position: absolute;
         bottom: 1.5rem;
-        left:$spacing-large;;
+        left:$spacing-large;
         color: #fff;
         background: rgba(33,118,210,.9);
         width: 400px;
@@ -46,7 +46,6 @@
           .strong {
             font-size: 3.5rem;
             white-space: pre;
-            font-weight: bold;
             text-transform: uppercase;
           }
           .break-after{
@@ -67,7 +66,7 @@
           font-family: 'Montserrat', 'Tahoma', sans-serif;
         }
         p {
-        font-weight: bold;
+          font-weight: bold;
         }
       }
       .photo-credit {
@@ -78,12 +77,6 @@
         right:0;
         text-shadow: 1px 1px 1px $dark-gray;
         // background-color: rgba(0,0,0,.3);
-      }
-    }
-    @media only screen and (min-width: 64em) {
-      .intro {
-        h1 {
-        }
       }
     }
 }
