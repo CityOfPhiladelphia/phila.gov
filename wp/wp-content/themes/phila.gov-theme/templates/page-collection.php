@@ -88,18 +88,19 @@
           <?php endif; ?>
 
           <?php if ( isset( $parent_content ) ) : ?>
-
-            <?php echo $parent_content ?>
-
-          <?php else : ?>
-
             <?php if ($user_selected_template == 'tax_detail') : ?>
-
-              <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
-
+              <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php else: ?>
+              <?php echo $parent_content ?>
             <?php endif; ?>
 
-          <?php endif; ?>
+          <?php else : ?>
+            <?php if ($user_selected_template == 'tax_detail') : ?>
+              <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php else: ?>
+              <?php the_content(); ?>
+            <?php endif; ?>
+        <?php endif; ?>
 
           <!-- If Custom Markup append_after_wysiwyg is present print it -->
           <?php if (!$append_after_wysiwyg == ''):?>
