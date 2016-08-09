@@ -228,10 +228,14 @@ aside {
 
   }
 }
-//TODO: add as utility to patterns
+//TODO: add all these as utility to patterns
 .float-none{
   float:none;
 }
 .text-align-left{
   text-align: left !important;
+}
+
+.inline-block{
+  display: inline-block;
 }
