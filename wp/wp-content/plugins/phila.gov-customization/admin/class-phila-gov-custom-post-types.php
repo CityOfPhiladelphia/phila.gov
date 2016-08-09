@@ -21,17 +21,15 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_service_pages' ) );
 
-    add_action( 'init', array( $this, 'create_phila_posts' ) );
+    add_action( 'init', array( $this, 'create_phila_news_post' ) );
 
-    add_action( 'init', array( $this, 'create_phila_news' ) );
+    add_action( 'init', array( $this, 'create_phila_press_release' ) );
 
     add_action( 'init', array( $this, 'create_phila_site_wide_alert' ) );
 
     add_action( 'init', array( $this, 'create_phila_document' ) );
-
-    add_action( 'init', array( $this, 'create_phila_notices' ) );
-
-    add_action( 'init', array( $this, 'create_phila_press_release' ) );
+    
+    add_action( 'init', array( $this, 'create_phila_posts' ) );
 
     add_action( 'init', array( $this, 'create_phila_event_page_type' ) );
 
@@ -103,7 +101,7 @@ class Phila_Gov_Custom_Post_Types{
     );
   }
 
- function create_phila_news() {
+ function create_phila_news_post() {
   register_post_type( 'news_post',
     array(
       'labels' => array(
@@ -131,31 +129,32 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
+
   function create_phila_site_wide_alert() {
     register_post_type( 'site_wide_alert',
       array(
         'labels' => array(
-          'name' => __( 'Site-wide Alerts' ),
-          'singular_name' => __( 'Site-wide Alert' ),
-          'add_new'   => __( 'Add Site-wide Alert' ),
-          'all_items'   => __( 'All Site-wide Alerts' ),
-          'add_new_item' => __( 'Add Site-wide Alerts' ),
-          'edit_item'   => __( 'Edit Site-wide Alerts' ),
-          'view_item'   => __( 'View Site-wide Alerts' ),
-          'search_items'   => __( 'Search Site-wide Alerts'),
-          'not_found'   => __( 'Site-wide Alert not found' ),
-          'not_found_in_trash'   => __( 'Site-wide Alert not found in trash' ),
-        ),
-        'taxonomies' => array('category'),
-        'exclude_from_search' => true,
-        'public' => false,
-        'show_ui' => true,
-        'has_archive' => false,
-        'menu_icon' => 'dashicons-megaphone',
-        'hierarchical' => false,
-        'rewrite' => array(
-          'slug' => 'alerts',
-          'with_front' => false,
+        'name' => __( 'Site-wide Alerts' ),
+        'singular_name' => __( 'Site-wide Alert' ),
+        'add_new'   => __( 'Add Site-wide Alert' ),
+        'all_items'   => __( 'All Site-wide Alerts' ),
+        'add_new_item' => __( 'Add Site-wide Alerts' ),
+        'edit_item'   => __( 'Edit Site-wide Alerts' ),
+        'view_item'   => __( 'View Site-wide Alerts' ),
+        'search_items'   => __( 'Search Site-wide Alerts'),
+        'not_found'   => __( 'Site-wide Alert not found' ),
+        'not_found_in_trash'   => __( 'Site-wide Alert not found in trash' ),
+      ),
+      'taxonomies' => array('category'),
+      'exclude_from_search' => true,
+      'public' => false,
+      'show_ui' => true,
+      'has_archive' => false,
+      'menu_icon' => 'dashicons-megaphone',
+      'hierarchical' => false,
+      'rewrite' => array(
+        'slug' => 'alerts',
+        'with_front' => false,
         ),
       )
     );
@@ -189,50 +188,22 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
-  function create_phila_notices() {
-    register_post_type( 'notices',
-      array(
-        'labels' => array(
-            'name' => __( 'Notices' ),
-            'singular_name' => __( 'Notice' ),
-            'add_new'   => __( 'Add Notice' ),
-            'all_items'   => __( 'All Notices' ),
-            'add_new_item' => __( 'Add New Notice' ),
-            'edit_item'   => __( 'Edit Notice' ),
-            'view_item'   => __( 'View Notice' ),
-            'search_items'   => __( 'Search Notice' ),
-            'not_found'   => __( 'Notice Not Found' ),
-            'not_found_in_trash'   => __( 'Notice not found in trash' ),
-        ),
-        'taxonomies' => array('category'),
-        'supports' => array( 'editor', 'title', 'revisions'),
-        'public' => true,
-        'has_archive' => true,
-        'menu_icon' => 'dashicons-warning',
-        'exclude_from_search' => true,
-        'hierarchical' => false,
-        'rewrite' => array(
-          'slug' => 'notices',
-          'with_front' => false,
-        ),
-      )
-    );
-  }
+
   function create_phila_posts() {
     register_post_type( 'phila_post',
       array(
         'labels' => array(
-            'name' => __( 'Posts' ),
-            'menu_name' => __( 'Blog' ),
-            'singular_name' => __( 'Posts' ),
-            'add_new'   => __( 'Add Post' ),
-            'all_items'   => __( 'All Posts' ),
-            'add_new_item' => __( 'Add New Post' ),
-            'edit_item'   => __( 'Edit Post' ),
-            'view_item'   => __( 'View Post' ),
-            'search_items'   => __( 'Search Posts' ),
-            'not_found'   => __( 'Post Not Found' ),
-            'not_found_in_trash'   => __( 'Post not found in trash' ),
+          'name' => __( 'Posts' ),
+          'menu_name' => __( 'Blog' ),
+          'singular_name' => __( 'Posts' ),
+          'add_new'   => __( 'Add Post' ),
+          'all_items'   => __( 'All Posts' ),
+          'add_new_item' => __( 'Add New Post' ),
+          'edit_item'   => __( 'Edit Post' ),
+          'view_item'   => __( 'View Post' ),
+          'search_items'   => __( 'Search Posts' ),
+          'not_found'   => __( 'Post Not Found' ),
+          'not_found_in_trash'   => __( 'Post not found in trash' ),
         ),
         'taxonomies' => array( 'category', 'post_tag' ),
         'supports' => array( 'editor', 'title', 'revisions', 'thumbnail', 'author'),
@@ -251,17 +222,17 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'press_release',
       array(
         'labels' => array(
-            'name' => __( 'Press Releases' ),
-            'menu_name' => __( 'Press Releases' ),
-            'singular_name' => __( 'Press Release' ),
-            'add_new'   => __( 'Add Press Release' ),
-            'all_items'   => __( 'All Press Releases' ),
-            'add_new_item' => __( 'Add New Press Release' ),
-            'edit_item'   => __( 'Edit Press Release' ),
-            'view_item'   => __( 'View Press Releases' ),
-            'search_items'   => __( 'Search Press Releases' ),
-            'not_found'   => __( 'Press Release Not Found' ),
-            'not_found_in_trash'   => __( 'Press Release not found in trash' ),
+          'name' => __( 'Press Releases' ),
+          'menu_name' => __( 'Press Releases' ),
+          'singular_name' => __( 'Press Release' ),
+          'add_new'   => __( 'Add Press Release' ),
+          'all_items'   => __( 'All Press Releases' ),
+          'add_new_item' => __( 'Add New Press Release' ),
+          'edit_item'   => __( 'Edit Press Release' ),
+          'view_item'   => __( 'View Press Releases' ),
+          'search_items'   => __( 'Search Press Releases' ),
+          'not_found'   => __( 'Press Release Not Found' ),
+          'not_found_in_trash'   => __( 'Press Release not found in trash' ),
         ),
         'taxonomies' => array( 'category' ),
         'supports' => array( 'editor', 'title', 'revisions' ),
