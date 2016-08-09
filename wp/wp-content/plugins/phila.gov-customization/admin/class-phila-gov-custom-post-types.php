@@ -28,7 +28,7 @@ class Phila_Gov_Custom_Post_Types{
     add_action( 'init', array( $this, 'create_phila_site_wide_alert' ) );
 
     add_action( 'init', array( $this, 'create_phila_document' ) );
-    
+
     add_action( 'init', array( $this, 'create_phila_posts' ) );
 
     add_action( 'init', array( $this, 'create_phila_event_page_type' ) );
@@ -75,9 +75,9 @@ class Phila_Gov_Custom_Post_Types{
         'labels' => array(
           'name' => __( 'Services' ),
           'menu_name' => __('Service Page'),
-          'singular_name' => __( 'Service' ),
+          'singular_name' => __( 'Service Page' ),
           'add_new'   => __( 'Add a Service Page' ),
-          'all_items'   => __( 'All Services' ),
+          'all_items'   => __( 'All Service Pages' ),
           'add_new_item' => __( 'Add a Service Page' ),
           'edit_item'   => __( 'Edit Service Page' ),
           'view_item'   => __( 'View Service Page' ),
@@ -85,12 +85,12 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'No Service Pages Found' ),
           'not_found_in_trash'   => __( 'Service Page not found in trash' ),
         ),
-        'taxonomies' => array('category'),
-        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions' ),
+        'taxonomies' => array('category', 'topics'),
+        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions', 'author' ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_nav_menus' => true,
-        'menu_icon' => 'dashicons-groups',
+        'menu_icon' => 'dashicons-admin-generic',
         'hierarchical' => true,
         'query_var' => true,
         'rewrite' => array(
