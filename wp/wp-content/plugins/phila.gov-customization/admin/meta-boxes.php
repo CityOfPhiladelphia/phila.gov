@@ -21,11 +21,6 @@ function phila_show_all_months(){
   return $month_array;
 }
 
-$site_prefix = 'phila_';
-$tax_prefix = 'tax_';
-$cost = 'cost_';
-
-
 add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
@@ -224,7 +219,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => $prefix . 'resource_list',
     'title'    => __( 'Resource List' ),
-    'pages'    => array( 'department_page', 'page' ),
+    'pages'    => array( 'department_page', 'page', 'service_page' ),
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array('phila_template_select', 'resource_list'),
@@ -315,7 +310,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => $prefix . 'custom_markup',
     'title'    => 'Custom Markup',
-    'pages'    => array( 'department_page', 'event_page' , 'page' ),
+    'pages'    => array( 'department_page', 'event_page' , 'page', 'service_page' ),
     'context'  => 'normal',
     'priority' => 'low',
 
@@ -2072,7 +2067,7 @@ $meta_boxes[] = array(
 //Tax Detail Template
 $meta_boxes[] = array(
   'title' => 'Tax Highlights',
-  'pages' => array('page'),
+  'pages' => array('service_page'),
   'priority' => 'high',
 
   'show' =>  array(
@@ -2107,7 +2102,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Payment Information',
-  'pages' => array('page'),
+  'pages' => array('service_page'),
   'priority' => 'high',
 
   'show' =>  array(
@@ -2115,7 +2110,7 @@ $meta_boxes[] = array(
       'page-templates/single-tax-detail.php'
     ),
   ),
-  
+
   'fields'  => array(
     array(
       'id'  => $prefix . 'tax_payment_info',
@@ -2165,7 +2160,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'How you pay',
-  'pages' => array('page'),
+  'pages' => array('service_page'),
   'priority' => 'high',
 
   'show' =>  array(
@@ -2198,7 +2193,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   //TODO: determine if this should exist on all Pages
   'title' => 'Additional Content',
-  'pages' => array('page'),
+  'pages' => array('page', 'service_page'),
   'fields' => array(
     array(
       'id' => $prefix . 'additional_content',
