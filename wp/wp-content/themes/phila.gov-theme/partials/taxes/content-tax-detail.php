@@ -28,7 +28,7 @@
  Due Date</div>
        <div class="pam">
          <?php if ($tax['due']['type'] != 'misc') : ?>
-           <?php if( $tax['due']['type'] = 'monthly') : ?>
+           <?php if( $tax['due']['type'] == 'yearly') : ?>
              <div class="month"><span class="h4"><?php echo $tax['due']['month'] ?></span></div>
            <?php endif; ?>
             <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
