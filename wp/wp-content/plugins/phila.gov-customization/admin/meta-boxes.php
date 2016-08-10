@@ -7,16 +7,15 @@
  * @package phila-gov_customization
  */
 
-add_action('admin_init', 'phila_show_all_months');
+add_action('admin_init', 'phila_return_month_array');
 
-function phila_show_all_months(){
+function phila_return_month_array(){
 
   $month_array = array();
   for ($m=1; $m<=12; $m++) {
     $month = date('F', mktime(0,0,0,$m, 1, date('Y')));
-    $month_abr = date('M', mktime(0,0,0,$m, 1, date('Y')));
 
-    $month_array[$month_abr] = $month;
+    $month_array[$month] = $month;
   }
   return $month_array;
 }
@@ -31,7 +30,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
-  $basic_wysiwyg_options = array(
+  $wysiwyg_options_basic = array(
     'media_buttons' => false,
     'teeny' => true,
     'dfw' => false,
@@ -219,7 +218,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => $prefix . 'resource_list',
     'title'    => __( 'Resource List' ),
-    'pages'    => array( 'department_page', 'page', 'service_page' ),
+    'pages'    => array( 'department_page', 'page' ),
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array('phila_template_select', 'resource_list'),
@@ -1016,7 +1015,7 @@ $meta_boxes[] = array(
 **/
 
 // Blogs
-$meta_blogs = array(
+$meta_var_blogs = array(
   array(
     'name' => 'Category ID (optional)',
     'id' => $prefix . 'category',
@@ -1025,7 +1024,7 @@ $meta_blogs = array(
 );
 
 // Program and Initiatives
-$meta_programs_initiatives_images = array(
+$meta_var_programs_initiatives_images = array(
   'id' => $prefix . 'p_i_images',
   'type' => 'group',
   'visible' => array('phila_template_select', 'programs_initiatives'),
@@ -1056,7 +1055,7 @@ $meta_programs_initiatives_images = array(
 );
 
 // Feature Programs and Initiatives
-$meta_feature_programs_initiatives = array(
+$meta_var_feature_programs_initiatives = array(
   array(
     'id' => $prefix . 'p_i',
     'type' => 'group',
@@ -1074,7 +1073,7 @@ $meta_feature_programs_initiatives = array(
 );
 
 // Custom Featured Content
-$meta_custom_feature = array(
+$meta_var_custom_feature = array(
   array(
     'name' => 'Feature Title',
     'id' => $prefix . 'feature_title',
@@ -1098,7 +1097,7 @@ $meta_custom_feature = array(
 );
 
 // Multiple Call to Action (CTA) Panels
-$meta_call_to_action_multi = array(
+$meta_var_call_to_action_multi = array(
   array(
     'id'  => $prefix . 'call_to_action_section',
     'type' => 'group',
@@ -1183,7 +1182,7 @@ $meta_call_to_action_multi = array(
 );
 
 // Full Width Calendar
-$meta_full_calendar = array(
+$meta_var_calendar_full = array(
   array(
     'name' => 'Calender ID',
     'id'   => $prefix . 'full_width_calendar_id',
@@ -1199,7 +1198,7 @@ $meta_full_calendar = array(
 );
 
 // Callout
-$metabox_callout = array(
+$meta_var_callout = array(
    array(
      'name' => 'Status',
      'id'   => $prefix . 'callout_type',
@@ -1217,7 +1216,7 @@ $metabox_callout = array(
  );
 
 // Connect Panel
-$metabox_connect = array(
+$meta_var_connect = array(
   array(
    'name' => 'Connect Panel',
    'id'   => $prefix . 'connect_description',
@@ -1355,7 +1354,7 @@ $metabox_connect = array(
 );
 
 // Custom Text
-$metabox_custom_text = array(
+$meta_var_textarea = array(
   array(
     'name' => 'Custom Text Title',
     'id'   => $prefix . 'custom_text_title',
@@ -1369,7 +1368,7 @@ $metabox_custom_text = array(
 );
 
 // Custom Text Multi
-$metabox_custom_text_multi = array(
+$meta_var_textarea_multi = array(
   array(
     'name' => 'Row Title',
     'id'   => $prefix . 'custom_row_title',
@@ -1380,12 +1379,12 @@ $metabox_custom_text_multi = array(
     'type' => 'group',
     'clone' => true,
     'max_clone' => 3,
-    'fields' => $metabox_custom_text,
+    'fields' => $meta_var_textarea,
   )
 );
 
 // Pullquote
-$metabox_pullquote = array(
+$meta_var_pullquote = array(
   array(
     'name' => 'Quote',
     'id'   => $prefix . 'quote',
@@ -1399,7 +1398,7 @@ $metabox_pullquote = array(
 );
 
 // List of links with FontAwesome icons
-$metabox_list_items = array(
+$meta_var_list_items = array(
   array(
     'name' => 'Row Title',
     'id'   => $prefix . 'row_title',
@@ -1451,7 +1450,7 @@ $metabox_list_items = array(
 );
 
 //WYSIWYG with Title
-$metabox_custom_wysiwyg = array(
+$meta_var_wysiwyg = array(
   'id'  =>  $prefix . 'custom_wysiwyg',
   'type'  => 'group',
   'clone' => false,
@@ -1465,13 +1464,13 @@ $metabox_custom_wysiwyg = array(
     array(
       'id'  => $prefix . 'wywiyyg_content',
       'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
+      'options' => $wysiwyg_options_basic
     )
   )
 );
 
 //Clonable WYSIWYG with title
-$metabox_custom_wysiwyg_multi = array(
+$meta_var_wysiwyg_multi = array(
   'id'  =>  $prefix . 'cloneable_wysiwyg',
   'type'  => 'group',
   'clone' => true,
@@ -1487,13 +1486,13 @@ $metabox_custom_wysiwyg_multi = array(
     array(
       'id'  => $prefix . 'wywiyyg_content',
       'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
+      'options' => $wysiwyg_options_basic
     )
   )
 );
 
 //Default address fields
-$meta_standard_address = array(
+$meta_var_standard_address = array(
   'id'  =>  'address_group',
   'type'  => 'group',
   'fields'  => array(
@@ -1533,7 +1532,7 @@ $meta_standard_address = array(
   ),
 );
 
-$meta_document_page_selector = array(
+$meta_var_document_page_selector = array(
   'id'  => $prefix . 'document_page_picker',
   'type'  => 'post',
   'post_type' => 'document',
@@ -1552,8 +1551,8 @@ $meta_document_page_selector = array(
   )
 );
 
-//Create ordered list of content with Title, optional address field and WYSIWYG. Clonable. Used to display "stepped" content on the front-end
-$meta_ordered_content = array(
+//Purpose: To display content in a stepped order on the front-end
+$meta_var_ordered_content = array(
   'id'  => $prefix . 'ordered_content',
   'type'  => 'group',
   'clone' => true,
@@ -1578,20 +1577,20 @@ $meta_ordered_content = array(
       'visible' => array('phila_address_step', true),
 
       'fields' => array(
-        $meta_standard_address,
+        $meta_var_standard_address,
       ),
     ),
     array(
       'id'  => $prefix . 'step_wywiyyg_content',
       'visible' => array('phila_address_step', false),
       'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
+      'options' => $wysiwyg_options_basic
     )
   )
 );
 
 //Specific for tax detail template.
-$meta_tax_due_date = array(
+$meta_var_tax_due_date = array(
   'id'  =>  $prefix . 'tax_due_date',
   'type'  => 'group',
   'clone' => false,
@@ -1601,33 +1600,57 @@ $meta_tax_due_date = array(
       'name'  => 'Due Date Callout',
       'type' => 'heading',
     ),
+
     array(
+      'name'  => 'Due Date Type',
+      'id'  => $prefix.'tax_date_choice',
+      'type'  => 'select',
+      'options' => array(
+        'monthly' => 'Tax is due monthly',
+        'yearly'  => 'Tax is due yearly',
+        'misc'  => 'Tax is miscellaneous'
+      ),
+    ),
+    array(
+      'visible' => array(
+        'when' => array(
+          array('phila_tax_date_choice', 'monthly'),
+          array('phila_tax_date_choice', 'yearly'),
+        ),
+        'relation' => 'or',
+      ),
       'name'  =>  'Tax Due Date',
-      'desc'  => 'Enter the day of the month this tax is due.',
       'id'  => $prefix.'tax_date',
+      'desc'  => 'Enter the day of the month this tax is due.',
       'type'  =>  'number',
       'min' => '1',
       'max' => '31',
       'required'  => true
     ),
+
     array(
-      'name'  => 'Is this tax due yearly?',
-      'id'  => $prefix.'tax_date_is_yearly',
-      'type'  => 'checkbox',
-    ),
-    array(
-      'visible' => array('tax_date_is_yearly', true),
+      'visible' => array('phila_tax_date_choice', 'yearly'),
       'name'  => 'Month Due',
       'id'  => $prefix.'tax_date_month',
+      'desc'  => 'Enter the month of the year this tax is due.',
       'type'  => 'select',
       'placeholder' => 'Choose month...',
-      'options' => phila_show_all_months(),
+      'options' => phila_return_month_array(),
     ),
     array(
+      'hidden' => array('phila_tax_date_choice', 'misc'),
       'name'  => 'Brief Explanation',
       'id'  => $prefix.'tax_date_summary_brief',
       'type'  => 'textarea',
       'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box.',
+      'required'  => true
+    ),
+    array(
+      'visible' => array('phila_tax_date_choice', 'misc'),
+      'id'  => $prefix.'tax_date_misc_details',
+      'type'  => 'wysiwyg',
+      'desc'  => 'This content will appear in the date callout box.',
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
     array(
@@ -1638,13 +1661,13 @@ $meta_tax_due_date = array(
       'id'  => $prefix.'tax_date_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
-      'options' => $basic_wysiwyg_options,
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
   ),
 );
 //Specific to the tax detail template
-$meta_tax_costs = array(
+$meta_var_tax_costs = array(
   'id'  =>  $prefix . 'tax_costs',
   'type'  => 'group',
   'clone' => false,
@@ -1686,14 +1709,14 @@ $meta_tax_costs = array(
       'id'  => $prefix.'tax_cost_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
-      'options' => $basic_wysiwyg_options,
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
   ),
 );
 
 //Specific to the tax detail template
-$meta_forms_instructions = array(
+$meta_group_forms_instructions = array(
   'id'  => $prefix . 'forms_instructions',
   'type'  => 'group',
 
@@ -1702,12 +1725,12 @@ $meta_forms_instructions = array(
       'name'  => 'Forms & Instructions',
       'type'  => 'heading'
     ),
-    $meta_document_page_selector
+    $meta_var_document_page_selector
   )
 );
 
 //Group all "Page" related content
-$meta_related_content = array(
+$meta_group_related_content = array(
   'id'  => $prefix . 'related',
   'type'  => 'group',
 
@@ -1719,12 +1742,12 @@ $meta_related_content = array(
     array(
       'id'  => $prefix . 'related_content',
       'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
+      'options' => $wysiwyg_options_basic
     ),
   )
 );
 //Questions metabox, used for Pages
-$meta_questions = array(
+$meta_group_questions = array(
   'id'  => $prefix . 'questions',
   'type'  => 'group',
 
@@ -1736,13 +1759,13 @@ $meta_questions = array(
     array(
       'id'  => $prefix . 'question_content',
       'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
+      'options' => $wysiwyg_options_basic
     ),
   )
 );
 
 //Did you know, used for Pages
-$meta_did_you_know = array(
+$meta_group_did_you_know = array(
   'id'  => $prefix . 'did_you_know',
   'type'  => 'group',
 
@@ -1754,11 +1777,10 @@ $meta_did_you_know = array(
     array(
       'id'  => $prefix . 'did_you_know_content',
       'type'  => 'wysiwyg',
-      'options' => $basic_wysiwyg_options
+      'options' => $wysiwyg_options_basic
     ),
   )
 );
-
 
 
 /**
@@ -1800,25 +1822,25 @@ $metabox_full_options = array(
      'id' => $prefix . 'blog_options',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
-     'fields' => $meta_blogs,
+     'fields' => $meta_var_blogs,
    ),
    array(
      'id' => $prefix . 'full_width_calendar',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
-     'fields' => $meta_full_calendar,
+     'fields' => $meta_var_calendar_full,
    ),
    array(
      'id'   => $prefix . 'callout',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_callout'),
-     'fields' => $metabox_callout,
+     'fields' => $meta_var_callout,
    ),
    array(
      'id'   => $prefix . 'custom_text',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
-     'fields' => $metabox_custom_text,
+     'fields' => $meta_var_textarea,
    ),
    array(
      'id'  => $prefix . 'call_to_action_multi',
@@ -1830,19 +1852,19 @@ $metabox_full_options = array(
        ),
        'relation' => 'or',
      ),
-     'fields' => $meta_call_to_action_multi,
+     'fields' => $meta_var_call_to_action_multi,
   ),
   array(
     'id'   => $prefix . 'list_items',
     'type' => 'group',
     'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
-    'fields' => $metabox_list_items,
+    'fields' => $meta_var_list_items,
   ),
   array(
     'id'   => $prefix . 'feature_p_i',
     'type' => 'group',
     'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
-    'fields' => $meta_feature_programs_initiatives,
+    'fields' => $meta_var_feature_programs_initiatives,
   ),
  ),
 );
@@ -1874,19 +1896,19 @@ $metabox_thirds_option_one = array(
       'id' => $prefix . 'blog_options',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_blog_posts'),
-      'fields' => $meta_blogs,
+      'fields' => $meta_var_blogs,
     ),
     array(
       'id'   => $prefix . 'custom_text',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
-      'fields' => $metabox_custom_text,
+      'fields' => $meta_var_textarea,
     ),
     array(
       'id'   => $prefix . 'custom_text_multi',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
-      'fields' => $metabox_custom_text_multi,
+      'fields' => $meta_var_textarea_multi,
     ),
   ),
 );
@@ -1912,19 +1934,19 @@ $metabox_thirds_option_two = array(
       'id' => $prefix . 'connect_panel',
       'type' => 'group',
       'hidden' => array('phila_one_third_col_option', '!=', 'phila_connect_panel'),
-      'fields' => $metabox_connect,
+      'fields' => $meta_var_connect,
     ),
     array(
       'id'   => $prefix . 'custom_text',
       'type' => 'group',
       'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
-      'fields' => $metabox_custom_text,
+      'fields' => $meta_var_textarea,
     ),
     array(
       'id'   => $prefix . 'custom_feature',
       'type' => 'group',
       'visible' => array('phila_one_third_col_option', '=', 'phila_custom_feature'),
-      'fields' => $meta_custom_feature,
+      'fields' => $meta_var_custom_feature,
     ),
   ),
 );
@@ -1971,13 +1993,13 @@ $metabox_half_option_one = array(
       'id'   => $prefix . 'custom_text',
       'type' => 'group',
       'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
-      'fields' => $metabox_custom_text,
+      'fields' => $meta_var_textarea,
     ),
     array(
       'id'   => $prefix . 'pullquote',
       'type' => 'group',
       'visible' => array('phila_half_col_1_option', '=', 'phila_pullquote'),
-      'fields' => $metabox_pullquote,
+      'fields' => $meta_var_pullquote,
     ),
   ),
 );
@@ -2002,13 +2024,13 @@ $metabox_half_option_two = array(
        'id'   => $prefix . 'custom_text',
        'type' => 'group',
        'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
-       'fields' => $metabox_custom_text,
+       'fields' => $meta_var_textarea,
      ),
      array(
        'id'   => $prefix . 'pullquote',
        'type' => 'group',
        'visible' => array('phila_half_col_2_option', '=', 'phila_pullquote'),
-       'fields' => $metabox_pullquote,
+       'fields' => $meta_var_pullquote,
      ),
    ),
  );
@@ -2059,7 +2081,7 @@ $meta_boxes[] = array(
   'priority' => 'high',
 
   'fields' => array(
-    $meta_programs_initiatives_images,
+    $meta_var_programs_initiatives_images,
     $metabox_grid_row,
   )
 );
@@ -2082,11 +2104,11 @@ $meta_boxes[] = array(
       'type'   => 'group',
 
       'fields'  => array(
-        $meta_tax_due_date,
+        $meta_var_tax_due_date,
         array(
           'type'  => 'divider'
         ),
-        $meta_tax_costs,
+        $meta_var_tax_costs,
         array(
           'type'  => 'divider'
         ),
@@ -2124,7 +2146,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_who_pays',
           'type'  => 'wysiwyg',
-          'options' => $basic_wysiwyg_options
+          'options' => $wysiwyg_options_basic
         ),
         array(
           'name'  => 'What happens if I don\'t pay on time?',
@@ -2133,7 +2155,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_late_fees',
           'type'  => 'wysiwyg',
-          'options' => $basic_wysiwyg_options
+          'options' => $wysiwyg_options_basic
         ),
         array(
           'name' => 'Who is eligible for a discount?',
@@ -2142,7 +2164,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_discounts',
           'type'  => 'wysiwyg',
-          'options' => $basic_wysiwyg_options
+          'options' => $wysiwyg_options_basic
           ),
         array(
           'name'  => 'Can you be excused from paying the tax?',
@@ -2151,7 +2173,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_exemptions',
           'type'  => 'wysiwyg',
-          'options' => $basic_wysiwyg_options
+          'options' => $wysiwyg_options_basic
         )
       )
     )
@@ -2179,12 +2201,12 @@ $meta_boxes[] = array(
           'name' => 'Introduction',
           'type'  => 'heading',
         ),
-        $metabox_custom_wysiwyg_multi,
+        $meta_var_wysiwyg_multi,
         array(
           'name' => 'Numbered Items',
           'type'  => 'heading',
         ),
-        $meta_ordered_content
+        $meta_var_ordered_content
       ),
     )
   )
@@ -2201,10 +2223,10 @@ $meta_boxes[] = array(
       'clone' => false,
 
       'fields' => array(
-        $meta_forms_instructions,
-        $meta_related_content,
-        $meta_did_you_know,
-        $meta_questions
+        $meta_group_forms_instructions,
+        $meta_group_related_content,
+        $meta_group_did_you_know,
+        $meta_group_questions
       )
     )
   )
