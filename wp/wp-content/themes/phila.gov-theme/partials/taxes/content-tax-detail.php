@@ -17,7 +17,7 @@
   $steps = phila_extract_stepped_content( $payment_group );
 
   $additional_content = rwmb_meta('phila_additional_content');
-  $content = phila_additional_content( $additional_content );
+  $more = phila_additional_content( $additional_content );
 
 ?>
 <div class="row equal-height">
@@ -27,8 +27,15 @@
         <i class="fa fa-calendar" aria-hidden="true"></i>
  Due Date</div>
        <div class="pam">
-         <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
-         <div class="mtm"><?php echo $tax['due']['summary_brief'] ?></div>
+         <?php if ($tax['due']['type'] != 'misc') : ?>
+           <?php if( $tax['due']['type'] = 'monthly') : ?>
+             <div class="month"><span class="h4"><?php echo $tax['due']['month'] ?></span></div>
+           <?php endif; ?>
+            <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
+            <div class="mtm"><?php echo $tax['due']['summary_brief'] ?></div>
+         <?php else : ?>
+           <?php echo apply_filters( 'the_content', $tax['due']['misc']); ?>
+         <?php endif; ?>
       </div>
     </div>
   </div>
@@ -169,8 +176,10 @@
                 </div>
                 <?php endif; ?>
 
-              <?php else :
-                echo apply_filters( 'the_content', $step['phila_step_wywiyyg_content'] ); ?>
+              <?php else : ?>
+                <?php if ( !empty( $step['phila_step_wywiyyg_content'] ) ) :
+                  echo apply_filters( 'the_content', $step['phila_step_wywiyyg_content'] ); ?>
+                <?php endif; ?>
               <?php endif; ?>
             </div>
           </div>
@@ -196,13 +205,13 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty($content['forms']) ) : ?>
+<?php if ( !empty($more['forms']) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & Instructions</h3>
       <div class="phm-mu">
-        <?php foreach ( $content['forms'] as $form ): ?>
+        <?php foreach ( $more['forms'] as $form ): ?>
           <div class="pvs">
             <a href="<?php get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
           </div>
@@ -213,13 +222,13 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty( $content['related'] ) ) : ?>
+<?php if ( !empty( $more['related'] ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Related Content</h3>
       <div class="phm-mu">
-        <?php echo apply_filters( 'the_content', $content['related']); ?>
+        <?php echo apply_filters( 'the_content', $more['related']); ?>
       </div>
     </section>
   </div>
@@ -227,24 +236,22 @@
 <?php endif; ?>
 
 <div class="row equal-height">
-  <?php if ( !empty($content['did_you_know'] ) ) :
-    //TODO: logic for a did_you_know or questions to take full width
-     ?>
-   <div class="medium-12 columns">
+  <?php if ( !empty($more['aside']['did_you_know'] ) ) : ?>
+   <div class="medium-<?php echo (!empty( $more['aside']['questions'] ) ) ? '12' : '24'; ?> columns">
       <div class="panel info equal">
         <aside>
           <h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Did you know?</h3>
-          <?php echo apply_filters( 'the_content', $content['did_you_know'] ); ?>
+          <?php echo apply_filters( 'the_content', $more['aside']['did_you_know'] ); ?>
         </aside>
       </div>
   </div>
 <?php endif; ?>
-<?php if ( !empty($content['questions'] ) ) : ?>
-  <div class="medium-12 columns">
+<?php if ( !empty( $more['aside']['questions'] ) ) : ?>
+ <div class="medium-<?php echo (!empty( $more['aside']['did_you_know'] ) ) ? '12' : '24'; ?> columns">
     <div class="panel info equal">
       <aside>
         <h3><i class="fa fa-comments" aria-hidden="true"></i> Questions?</h3>
-        <?php echo apply_filters( 'the_content', $content['questions'] );?>
+        <?php echo apply_filters( 'the_content', $more['aside']['questions'] );?>
       </aside>
     </div>
   </div>

@@ -1294,8 +1294,22 @@ function phila_tax_highlight( $info_panel ){
     foreach ( $info_panel as $k ){
       $output['due'] = array();
 
-      $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
-      $info_panel['phila_tax_due_date']['phila_tax_date'] : '';
+      $output['due']['type'] = isset(
+      $info_panel['phila_tax_due_date']['phila_tax_date_choice'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_choice'] : '';
+
+      if( $output['due']['type'] == 'monthly' || $output['due']['type'] == 'yearly' ){
+        $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
+        $info_panel['phila_tax_due_date']['phila_tax_date'] : '';
+
+      }
+      if( $output['due']['type'] == 'yearly' ) {
+        $output['due']['month'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_month'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_month'] : '' ;
+      }
+
+      if( $output['due']['type'] == 'misc' ) {
+        $output['due']['misc'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_misc_details'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_misc_details'] : '' ;
+      }
+
 
       $output['due']['summary_brief'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] : '';
 
@@ -1378,9 +1392,9 @@ function phila_additional_content( $input ){
 
       $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
 
-      $output['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
+      $output['aside']['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
 
-      $output['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
+      $output['aside']['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
 
     }
   }
