@@ -29,7 +29,7 @@
 <!-- Hero-Header MetaBox Modules -->
 <div class="row mtm">
   <div class="small-24 columns">
-    <section class="department-header">
+    <section class="hero-header">
       <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
       <?php if (!$hero_header_credit == ''): ?>
         <div class="photo-credit small-text">
