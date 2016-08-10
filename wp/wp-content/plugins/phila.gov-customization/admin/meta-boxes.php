@@ -37,7 +37,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     'quicktags' => false,
     'tinymce' => $basic_editor,
     'editor_height' => 200,
-    //'raw' => true
   );
 
   $meta_boxes[] = array(
