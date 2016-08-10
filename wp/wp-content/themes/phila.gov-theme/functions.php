@@ -484,7 +484,7 @@ function phila_breadcrumbs() {
         echo '<li>'. $term_obj->name . '</li>';
       endif;
 
-    } elseif ( is_page() ) {
+    } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if( $post->post_parent ){
 
