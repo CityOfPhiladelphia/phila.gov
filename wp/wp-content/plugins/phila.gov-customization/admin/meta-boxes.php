@@ -1716,7 +1716,7 @@ $meta_var_tax_costs = array(
 );
 
 //Specific to the tax detail template
-$meta_group_forms_instructions = array(
+$meta_forms_instructions = array(
   'id'  => $prefix . 'forms_instructions',
   'type'  => 'group',
 
@@ -1730,7 +1730,7 @@ $meta_group_forms_instructions = array(
 );
 
 //Group all "Page" related content
-$meta_group_related_content = array(
+$meta_related_content = array(
   'id'  => $prefix . 'related',
   'type'  => 'group',
 
@@ -1747,7 +1747,7 @@ $meta_group_related_content = array(
   )
 );
 //Questions metabox, used for Pages
-$meta_group_questions = array(
+$meta_questions = array(
   'id'  => $prefix . 'questions',
   'type'  => 'group',
 
@@ -1765,7 +1765,7 @@ $meta_group_questions = array(
 );
 
 //Did you know, used for Pages
-$meta_group_did_you_know = array(
+$meta_did_you_know = array(
   'id'  => $prefix . 'did_you_know',
   'type'  => 'group',
 
@@ -2092,11 +2092,7 @@ $meta_boxes[] = array(
   'pages' => array('service_page'),
   'priority' => 'high',
 
-  'show' =>  array(
-    'template' => array(
-      'page-templates/single-tax-detail.php'
-    ),
-  ),
+  'visible' => array('phila_template_select', 'tax_detail'),
 
   'fields'  => array(
     array(
@@ -2126,12 +2122,7 @@ $meta_boxes[] = array(
   'title' => 'Payment Information',
   'pages' => array('service_page'),
   'priority' => 'high',
-
-  'show' =>  array(
-    'template' => array(
-      'page-templates/single-tax-detail.php'
-    ),
-  ),
+  'visible' => array('phila_template_select', 'tax_detail'),
 
   'fields'  => array(
     array(
@@ -2184,12 +2175,7 @@ $meta_boxes[] = array(
   'title' => 'How you pay',
   'pages' => array('service_page'),
   'priority' => 'high',
-
-  'show' =>  array(
-    'template' => array(
-      'page-templates/single-tax-detail.php'
-    ),
-  ),
+  'visible' => array('phila_template_select', 'tax_detail'),
 
   'fields'  => array(
     array(
@@ -2223,10 +2209,10 @@ $meta_boxes[] = array(
       'clone' => false,
 
       'fields' => array(
-        $meta_group_forms_instructions,
-        $meta_group_related_content,
-        $meta_group_did_you_know,
-        $meta_group_questions
+        $meta_forms_instructions,
+        $meta_related_content,
+        $meta_did_you_know,
+        $meta_questions
       )
     )
   )
