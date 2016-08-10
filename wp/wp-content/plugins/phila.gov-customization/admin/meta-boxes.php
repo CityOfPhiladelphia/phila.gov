@@ -2140,7 +2140,7 @@ $meta_boxes[] = array(
           'options' => $wysiwyg_options_basic
         ),
         array(
-          'name'  => 'What happens if I don\'t pay on time?',
+          'name'  => 'What happens if the tax is not paid on time?',
           'type'  => 'heading'
         ),
         array(
