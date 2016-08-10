@@ -60,39 +60,6 @@ jQuery(document).ready(function($) {
       });
     }
 
-    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
-
-      if ( $("#page-display input[name=phila_show_in_browse]").length ) {
-
-        $('#page-display input[name=phila_show_in_browse]').click(function() {
-
-          if ($(this).val() == 'yes') {
-
-            $('#page-display .rwmb-textarea-wrapper').show();
-
-          } else if ($(this).val() == 'no') {
-
-            $('#page-display .rwmb-textarea-wrapper').hide();
-          }
-
-        });
-
-        if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'yes' ) {
-
-          $('#page-display .rwmb-textarea-wrapper').show();
-
-        } else if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'no' ) {
-
-          $('#page-display .rwmb-textarea-wrapper').hide();
-
-        }
-
-        $("#phila_page_desc").prop('required', true);
-
-      }
-
-    }
-
     if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
 
       $('a#link-post_tag').click();
