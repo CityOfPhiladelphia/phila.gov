@@ -22,7 +22,7 @@
   $get_L2_pages = new WP_Query(array(
     'post_type' => array(
       'page',
-      'service_post'
+      'service_page'
       ),
     'posts_per_page' => -1,
     'orderby' => 'title',
