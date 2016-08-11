@@ -54,7 +54,12 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Department Page not found in trash' ),
         ),
         'taxonomies' => array('category'),
-        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions' ),
+        'supports' => array(
+          'title',
+          'editor',
+          'page-attributes',
+          'revisions'
+        ),
         'public' => true,
         'has_archive' => true,
         'show_in_nav_menus' => true,
@@ -86,7 +91,13 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Service Page not found in trash' ),
         ),
         'taxonomies' => array('category', 'topics'),
-        'supports' => array( 'title', 'editor', 'page-attributes', 'revisions', 'author' ),
+        'supports' => array(
+          'title',
+          'editor',
+          'page-attributes',
+          'revisions',
+          'author'
+        ),
         'public' => true,
         'has_archive' => false,
         'show_in_nav_menus' => true,
@@ -116,12 +127,20 @@ class Phila_Gov_Custom_Post_Types{
         'not_found'   => __( 'News Not Found' ),
         'not_found_in_trash'   => __( 'News not found in trash' ),
       ),
-      'taxonomies' => array( 'category', 'topics' ),
+      'taxonomies' => array(
+        'category',
+        'topics'
+      ),
       'public' => true,
       'has_archive' => true,
       'menu_icon' => 'dashicons-media-document',
       'hierarchical' => false,
-      'supports'  => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+      'supports'  => array(
+        'title',
+        'editor',
+        'thumbnail',
+        'revisions'
+      ),
       'rewrite' => array(
         'slug' => 'news',
         'with_front' => false,
@@ -134,17 +153,17 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'site_wide_alert',
       array(
         'labels' => array(
-        'name' => __( 'Site-wide Alerts' ),
-        'singular_name' => __( 'Site-wide Alert' ),
-        'add_new'   => __( 'Add Site-wide Alert' ),
-        'all_items'   => __( 'All Site-wide Alerts' ),
-        'add_new_item' => __( 'Add Site-wide Alerts' ),
-        'edit_item'   => __( 'Edit Site-wide Alerts' ),
-        'view_item'   => __( 'View Site-wide Alerts' ),
-        'search_items'   => __( 'Search Site-wide Alerts'),
-        'not_found'   => __( 'Site-wide Alert not found' ),
-        'not_found_in_trash'   => __( 'Site-wide Alert not found in trash' ),
-      ),
+          'name' => __( 'Site-wide Alerts' ),
+          'singular_name' => __( 'Site-wide Alert' ),
+          'add_new'   => __( 'Add Site-wide Alert' ),
+          'all_items'   => __( 'All Site-wide Alerts' ),
+          'add_new_item' => __( 'Add Site-wide Alerts' ),
+          'edit_item'   => __( 'Edit Site-wide Alerts' ),
+          'view_item'   => __( 'View Site-wide Alerts' ),
+          'search_items'   => __( 'Search Site-wide Alerts'),
+          'not_found'   => __( 'Site-wide Alert not found' ),
+          'not_found_in_trash'   => __( 'Site-wide Alert not found in trash' ),
+        ),
       'taxonomies' => array('category'),
       'exclude_from_search' => true,
       'public' => false,
@@ -175,8 +194,14 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'Document Not Found' ),
           'not_found_in_trash'   => __( 'Document not found in trash' ),
         ),
-        'taxonomies' => array( 'category', 'document_type' ),
-        'supports' => array( 'title', 'revisions' ),
+        'taxonomies' => array(
+          'category',
+          'document_type'
+        ),
+        'supports' => array(
+          'title',
+          'revisions'
+        ),
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-media-text',
@@ -205,8 +230,17 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'Post Not Found' ),
           'not_found_in_trash'   => __( 'Post not found in trash' ),
         ),
-        'taxonomies' => array( 'category', 'post_tag' ),
-        'supports' => array( 'editor', 'title', 'revisions', 'thumbnail', 'author'),
+        'taxonomies' => array(
+          'category',
+          'post_tag'
+        ),
+        'supports' => array(
+          'editor',
+          'title',
+          'revisions',
+          'thumbnail',
+          'author'
+        ),
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-admin-post',
@@ -235,7 +269,11 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Press Release not found in trash' ),
         ),
         'taxonomies' => array( 'category' ),
-        'supports' => array( 'editor', 'title', 'revisions' ),
+        'supports' => array(
+          'editor',
+          'title',
+          'revisions'
+        ),
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-editor-justify',
@@ -264,7 +302,12 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Event Page not found in trash' ),
         ),
         'taxonomies' => array('category'),
-        'supports' => array( 'title', 'page-attributes', 'revisions', 'thumbnail'),
+        'supports' => array(
+          'title',
+          'page-attributes',
+          'revisions',
+          'thumbnail'
+        ),
         'public' => true,
         'has_archive' => true,
         'show_in_nav_menus' => true,
@@ -295,7 +338,10 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Staff Member entry not found in trash' ),
         ),
         'taxonomies' => array('category'),
-        'supports' => array('revisions', 'thumbnail'),
+        'supports' => array(
+          'revisions',
+          'thumbnail'
+        ),
         'exclude_from_search' => true,
         'public' => false,
         'show_ui' => true,
@@ -309,5 +355,4 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
-
 }
