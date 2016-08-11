@@ -46,6 +46,9 @@ function phila_gov_setup() {
    */
   add_theme_support( 'post-thumbnails' );
 
+  // Current default
+  add_image_size( 'phila-thumb', 660, 430, true);
+
   add_image_size( 'news-thumb', 250, 165, true );
 
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
@@ -915,14 +918,33 @@ function phila_is_department_homepage( $post ) {
 
 
 function phila_get_home_news(){
+
   $category = get_the_category();
   $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-
   $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
 
   echo '<a href="' . get_permalink() .'" class="card equal">';
 
-  the_post_thumbnail( 'home-thumb'  );
+  // TODO: Remove additional fallback logic as possible (3 new news items)
+  if (has_post_thumbnail()){
+    $id = get_post_thumbnail_id();
+    $image = wp_get_attachment_image_src($id, 'phila-thumb');
+    if ($image[1] == 660 && $image[2] == 430 ) {
+      the_post_thumbnail( 'phila-thumb' );
+    } else {
+      $image = wp_get_attachment_image_src($id, 'home-thumb');
+      if ($image[1] == 550 && $image[2] == 360 ){
+        the_post_thumbnail( 'home-thumb' );
+      } else {
+        $image = wp_get_attachment_image_src($id, 'news-thumb');
+        if ($image[1] == 250 && $image[2] == 165 ){
+          the_post_thumbnail( 'news-thumb' );
+        }
+      }
+    }
+
+
+  };
 
   if (function_exists('rwmb_meta')) {
 
