@@ -403,7 +403,7 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'    => $prefix . 'hero_header_image',
        'type'  => 'file_input',
        'class' => 'hero-header-image',
-       'desc'  => 'Image should be no smaller than 975px by 430px.'
+       'desc'  => 'Image should be no smaller than 975px by 430px . '
      ),
      array(
        'name'  => 'Image Alt Text',
@@ -1602,7 +1602,7 @@ $meta_var_tax_due_date = array(
 
     array(
       'name'  => 'Due Date Type',
-      'id'  => $prefix.'tax_date_choice',
+      'id'  => $prefix . 'tax_date_choice',
       'type'  => 'select',
       'options' => array(
         'monthly' => 'Tax is due monthly',
@@ -1619,7 +1619,7 @@ $meta_var_tax_due_date = array(
         'relation' => 'or',
       ),
       'name'  =>  'Tax Due Date',
-      'id'  => $prefix.'tax_date',
+      'id'  => $prefix . 'tax_date',
       'desc'  => 'Enter the day of the month this tax is due.',
       'type'  =>  'number',
       'min' => '1',
@@ -1630,7 +1630,7 @@ $meta_var_tax_due_date = array(
     array(
       'visible' => array('phila_tax_date_choice', 'yearly'),
       'name'  => 'Month Due',
-      'id'  => $prefix.'tax_date_month',
+      'id'  => $prefix . 'tax_date_month',
       'desc'  => 'Enter the month of the year this tax is due.',
       'type'  => 'select',
       'placeholder' => 'Choose month...',
@@ -1639,16 +1639,16 @@ $meta_var_tax_due_date = array(
     array(
       'hidden' => array('phila_tax_date_choice', 'misc'),
       'name'  => 'Brief Explanation',
-      'id'  => $prefix.'tax_date_summary_brief',
+      'id'  => $prefix . 'tax_date_summary_brief',
       'type'  => 'textarea',
-      'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box.',
+      'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box . ',
       'required'  => true
     ),
     array(
       'visible' => array('phila_tax_date_choice', 'misc'),
-      'id'  => $prefix.'tax_date_misc_details',
+      'id'  => $prefix . 'tax_date_misc_details',
       'type'  => 'wysiwyg',
-      'desc'  => 'This content will appear in the date callout box.',
+      'desc'  => 'This content will appear in the date callout box . ',
       'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
@@ -1657,7 +1657,7 @@ $meta_var_tax_due_date = array(
       'type'  => 'heading',
     ),
     array(
-      'id'  => $prefix.'tax_date_summary_detailed',
+      'id'  => $prefix . 'tax_date_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
       'options' => $wysiwyg_options_basic,
@@ -1678,14 +1678,14 @@ $meta_var_tax_costs = array(
     ),
     array(
       'name'  =>  'Tax Cost',
-      'id'  => $prefix.'tax_cost_number',
+      'id'  => $prefix . 'tax_cost_number',
       'type'  =>  'number',
       'step'  => 'any',
       'required'  => true
     ),
     array(
       'name'  => 'Unit',
-      'id'  =>  $prefix.'tax_cost_unit',
+      'id'  =>  $prefix . 'tax_cost_unit',
       'type'  => 'select',
       'options' => array(
         '%' => '%',
@@ -1695,9 +1695,9 @@ $meta_var_tax_costs = array(
     ),
     array(
       'name'  => 'Brief Explanation',
-      'id'  => $prefix.'tax_cost_summary_brief',
+      'id'  => $prefix . 'tax_cost_summary_brief',
       'type'  => 'textarea',
-      'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box.',
+      'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box . ',
       'required'  => true
     ),
     array(
@@ -1705,7 +1705,7 @@ $meta_var_tax_costs = array(
       'type'  => 'heading'
     ),
     array(
-      'id'  => $prefix.'tax_cost_summary_detailed',
+      'id'  => $prefix . 'tax_cost_summary_detailed',
       'type'  => 'wysiwyg',
       'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
       'options' => $wysiwyg_options_basic,
