@@ -136,32 +136,24 @@ jQuery(document).ready(function($) {
   }
 
   //Set Hero Header Tagline font sizes
-  if( $('.intro .tagline1').length && $('.intro .tagline2').length  ) {
-    var smallFontSize = 3;
-    var largeFontSize = 8;
-    var largeLineMaxWidth;
+  if( $('.intro .hero-tagline').length && $('.intro .hero-tagline.emphasis').length  ) {
+    var smallFontSize = 2;
+    var largeFontSize = 3.5;
 
-    if( $('.measureline1').width() > 350) {
-      console.log('Test is wider that h1');
-      while ( $('.measureline1').width() > 350 ) {
+    if( $('[data-type="hero-measure"]').width() > 350) {
+      while ( $('[data-type="hero-measure"]').width() > 350 ) {
         smallFontSize = smallFontSize - .1;
-        $('.measureline1').css('font-size', smallFontSize + 'rem');
+        $('[data-type="hero-measure"]').css('font-size', smallFontSize + 'rem');
       }
-      largeLineMaxWidth = $('.measureline1').width();
-    } else {
-      largeLineMaxWidth  = $('.measureline1').width();
+      $('[data-type="hero-tagline"]').css('font-size', smallFontSize + 'rem');
     }
 
-    if( $('.measureline2').width() > largeLineMaxWidth ) {
-      console.log('Test is wider than h1');
-      while ( $('.measureline2').width() > largeLineMaxWidth ) {
+    if( $('[data-type="hero-measure-emphasis"]').width() > 350 ) {
+      while ( $('[data-type="hero-measure-emphasis"]').width() > 350 ) {
         largeFontSize = largeFontSize - .1;
-        $('.measureline2').css('font-size', largeFontSize + 'rem');
+        $('[data-type="hero-measure-emphasis"]').css('font-size', largeFontSize + 'rem');
       }
+      $('[data-type="hero-tagline-emphasis"]').css('font-size', largeFontSize + 'rem');
     }
-
-    //Append new styles to head
-    $('<style type="text/css">@media screen and (min-width: 40em){ .department .department-header .intro h1 {padding:.5rem 0 0;}.department .department-header .intro h1 .tagline1, .department .department-header .intro h1 .tagline2 { display:block; width:100%; line-height:1;} .department .department-header .intro h1 .tagline1{ font-size:' + (smallFontSize/1.6) + 'rem;} .department .department-header .intro h1 .tagline2{ font-size:' + (largeFontSize/1.6) + 'rem;}} @media screen and (min-width: 48em){ .department .department-header .intro h1 .tagline1{ font-size:' + smallFontSize + 'rem;} .department .department-header .intro h1 .tagline2{ font-size:' + largeFontSize + 'rem;}} </style>').appendTo("head");
-
   }
 });
