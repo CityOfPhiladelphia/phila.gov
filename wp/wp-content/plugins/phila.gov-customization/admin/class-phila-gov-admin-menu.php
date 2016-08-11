@@ -18,7 +18,7 @@ class Phila_Gov_Admin_Menu {
 
     add_action( 'admin_menu', array($this, 'change_admin_post_label' ) );
 
-    add_action( 'admin_menu', array($this, 'change_admin_information_page_label' ) );
+    add_action( 'admin_menu', array($this, 'phila_register_categories_for_pages' ) );
 
     add_filter( 'custom_menu_order', array($this, 'admin_menu_order' ) );
 
@@ -35,6 +35,7 @@ class Phila_Gov_Admin_Menu {
     return array(
         'index.php',
         'edit.php?post_type=page',
+        'edit.php?post_type=service_page',
         'separator1',
         'edit.php?post_type=department_page',
         'edit.php?post_type=phila_post',
@@ -66,12 +67,7 @@ class Phila_Gov_Admin_Menu {
     remove_menu_page( 'edit.php' );
   }
 
-  function change_admin_information_page_label(){
-
-    global $menu;
-    global $submenu;
-    //Rename Pages
-    $menu[20][0] = 'Information Page';
+  function phila_register_categories_for_pages(){
 
     register_taxonomy_for_object_type('category', 'page');
   }

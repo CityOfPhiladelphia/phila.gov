@@ -20,10 +20,12 @@ class Phila_Gov_Admin_Templates {
 
     add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_categories' ), 10, 1 );
 
+    add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_wp_pages' ), 10, 1 );
+
  }
 
  function phila_register_template_selection_metabox_departments( $meta_boxes ){
-   $prefix = 'phila_';
+  $prefix = 'phila_';
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
@@ -32,9 +34,7 @@ class Phila_Gov_Admin_Templates {
     'context'  => 'advanced',
     'priority' => 'high',
 
-
     'fields' => array(
-
       array(
         'desc'  => '',
         'id'    => $prefix . 'template_select',
@@ -76,6 +76,30 @@ class Phila_Gov_Admin_Templates {
       'relation' => 'or'
     );
     return $conditions;
+  }
+
+  function phila_register_template_selection_metabox_wp_pages( $meta_boxes ){
+    $prefix = 'phila_';
+
+    $meta_boxes[] = array(
+      'id'       => 'page_template_selection',
+      'title'    => 'Select Template',
+      'pages'    => array( 'service_page' ),
+      'context'  => 'advanced',
+      'priority' => 'high',
+
+      'fields' => array(
+        array(
+          'id'  => $prefix.'template_select',
+          'type'  => 'select',
+          'options' => array(
+            'default'   => 'Default',
+            'tax_detail' => 'Tax Detail'
+          )
+        )
+      ),
+    );
+     return $meta_boxes;
   }
 
 }

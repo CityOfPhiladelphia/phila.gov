@@ -11,7 +11,6 @@
  *
  * @package phila-gov
  */
-
   include( locate_template(  'partials/content-collection-header.php' ) );
 ?>
 
@@ -20,7 +19,8 @@
 
     <?php while ( have_posts() ) : the_post();
 
-      $children = get_pages( 'child_of=' . $post->ID );
+      $children = get_pages( 'child_of=' . $post->ID . '&post_type=' . get_post_type() );
+
       $this_content = get_the_content();
 
       if ( ( count( $children ) == 0 ) && ( !$this_content == 0 ) && ( !$has_parent ) )  {
