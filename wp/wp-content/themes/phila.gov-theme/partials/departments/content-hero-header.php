@@ -22,8 +22,11 @@
   $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
   $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
 ?>
+
+<?php if ( $hero_header_title == '' && ( !$hero_header_title_l1 == '' || !$hero_header_title_l2 == '' ) ): ?>
 <div class="hero-measureline" data-type="hero-measure"><?php echo $hero_header_title_l1; ?></div>
 <div class="hero-measureline emphasis" data-type="hero-measure-emphasis"><?php echo $hero_header_title_l2; ?></div>
+<?php endif;?>
 
 <?php if (!$hero_header_image == ''): ?>
 <!-- Hero-Header MetaBox Modules -->
