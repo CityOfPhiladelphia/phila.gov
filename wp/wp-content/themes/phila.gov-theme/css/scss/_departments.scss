@@ -99,25 +99,6 @@
       margin-bottom: 0;
     }
   }
-  .measureline1,
-  .measureline2 {
-    position: absolute;
-    white-space: nowrap;
-    visibility: hidden;
-    font-size: 100px;
-    line-height: 3rem;
-    letter-spacing: .03rem;
-    font-family: 'Montserrat', 'Tahoma', sans-serif;
-    font-weight: 700;
-  }
-  .measureline1 {
-    font-size: 3rem;
-  }
-  .measureline2 {
-    font-size: 8rem;
-    text-transform: uppercase;
-  }
-
   .featured-content{
     font-size: .95rem;
     position: relative;
