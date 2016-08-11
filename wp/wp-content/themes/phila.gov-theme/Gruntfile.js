@@ -28,7 +28,6 @@ module.exports = function(grunt) {
              'js/dev/scripts.js',
              'js/dev/search.js',
              'js/dev/skip-link-focus-fix.js'
-
           ]
         }
       }
