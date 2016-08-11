@@ -15,7 +15,7 @@ get_header(); ?>
     <?php
       if ( get_post_type() === 'calendar') :
 
-        get_template_part( 'partials/content', 'page' );
+        get_template_part( 'templates/default', 'page' );
 
       elseif ( get_post_type() === 'phila_post'):
 
@@ -31,7 +31,7 @@ get_header(); ?>
 
       else :
 
-        get_template_part( 'partials/content', 'single' );
+        get_template_part( 'templates/default', 'page' );
 
       endif;
 
