@@ -1,6 +1,5 @@
 <?php
 /**
- * Template Name: Blog
  *
  * This is the template to display all our blog posts at /posts
  *

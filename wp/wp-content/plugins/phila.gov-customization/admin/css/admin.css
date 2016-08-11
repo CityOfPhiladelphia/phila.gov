@@ -1,7 +1,14 @@
 /* for all users */
 
-input[type="url"]{
+.full-width,
+input[type="url"],
+.full-width > .rwmb-input > .rwmb-text
+#post_name{
   width:100%;
+}
+.width-95,
+.width-95 > .rwmb-input > .rwmb-text{
+  width:95%;
 }
 /*better column widths*/
 .fixed .column-categories, .fixed .column-role {
@@ -21,11 +28,6 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #wp-link-target,{
   display: none !important;
 }
-
-#post_name{
-  width:100%;
-}
-
 #ui-datepicker-div {
   z-index: 100000 !important;
 }

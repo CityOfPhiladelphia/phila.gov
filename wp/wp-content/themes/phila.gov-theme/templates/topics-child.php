@@ -24,7 +24,7 @@
   $parent_args = array(
     'post_parent' => 0,
     'post_type' => array(
-      'page', 'service_post'
+      'page', 'service_page'
     ),
     'order' => 'asc',
     'orderby'=> 'menu_order',
