@@ -1,18 +1,17 @@
-  .measureline1,
-  .measureline2 {
+  .hero-measureline {
     position: absolute;
     white-space: nowrap;
     visibility: hidden;
     line-height: 1;
     letter-spacing: .03rem;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
-  }
-  .measureline1 {
     font-size: 2rem;
   }
-  .measureline2 {
-    font-size: 3.5rem;
-    text-transform: uppercase;
+  .hero-measureline {
+    &.emphasis {
+      font-size: 3.5rem;
+      text-transform: uppercase;
+    }
   }
 .hero-header {
   position: relative;
