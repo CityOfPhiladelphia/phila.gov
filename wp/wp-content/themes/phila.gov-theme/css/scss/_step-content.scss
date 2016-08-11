@@ -1,0 +1,36 @@
+//TODO: Add to patterns
+
+.step-group{
+  margin-left:$spacing-medium;
+
+  .step-label {
+    margin-left: -$spacing-medium;
+    background: $black;
+    border-radius: $spacing-extra-large;
+    color:$white;
+    padding: 0 $spacing-small;
+    width:$spacing-large;
+    height:$spacing-large;
+    line-height: $spacing-large;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Montserrat';
+  }
+  .step{
+    margin-top: -$spacing-large;
+    padding-left: $spacing-large;
+    padding-bottom: $spacing-large;
+    border-left:1px solid $black;
+
+    &:last-of-type {
+      border:none;
+    }
+
+    .step-title{
+      //TODO: extend heading style instead of making this custom
+      font-family: 'Montserrat';
+      font-size:1.2rem;
+      margin-bottom: $spacing-small;
+    }
+  }
+}

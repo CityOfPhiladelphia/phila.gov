@@ -47,6 +47,8 @@ require $dir. '/public/shortcodes/news.php';
 require $dir. '/public/shortcodes/notices.php';
 require $dir. '/public/shortcodes/press-releases.php';
 require $dir. '/public/shortcodes/pullquote.php';
+require $dir. '/public/shortcodes/vertical-rule.php';
+
 
 
 require $dir. '/public/class-content-collection-walker.php';

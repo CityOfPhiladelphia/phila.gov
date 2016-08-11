@@ -4,21 +4,12 @@ function phila_get_user_roles_callback() {
   }else{
     return false;
   }
-
 }
+
 
 /* For all admins */
 jQuery(document).ready(function($) {
 
-  //Rename Pages to "Information Pages"
-  //This is here because of permissions weirdness as well as timing problems
-  $('#adminmenuwrap .wp-submenu a').each(function(i) {
-    if ($(this).attr("href") == "edit.php?post_type=page") {
-      $(this).text("Information Page");
-    } else if ($(this).attr("href") == "post-new.php?post_type=page") {
-      $(this).text("Add Information Page");
-    }
-  });
 
   //no one can clone rn
   $('#department-content-blocks .add-clone').css('visibility', 'hidden');
@@ -31,6 +22,20 @@ jQuery(document).ready(function($) {
     return;
 
   } else {
+
+    //detach and reattach the #page_template div so it's consistant with the location of department page template selection
+    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
+      var templateSelect = $('#page_template').detach();
+      var templateSelectLabel = $('label[for=page_template]').detach();
+      $(templateSelect).appendTo('#page_template_selection .inside');
+      $(templateSelectLabel).appendTo('#page_template_selection .inside');
+
+      //render help text
+      var templateText = $( "#pageparentdiv p:contains('Template')");
+
+      $(templateText).append('<p><i>The template selection dropdown is available below the page title.</i></p>');
+
+    }
 
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
@@ -53,39 +58,6 @@ jQuery(document).ready(function($) {
       $('#phila_post_desc').rules('add', {
         required: true
       });
-    }
-
-    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
-
-      if ( $("#page-display input[name=phila_show_in_browse]").length ) {
-
-        $('#page-display input[name=phila_show_in_browse]').click(function() {
-
-          if ($(this).val() == 'yes') {
-
-            $('#page-display .rwmb-textarea-wrapper').show();
-
-          } else if ($(this).val() == 'no') {
-
-            $('#page-display .rwmb-textarea-wrapper').hide();
-          }
-
-        });
-
-        if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'yes' ) {
-
-          $('#page-display .rwmb-textarea-wrapper').show();
-
-        } else if ( $('#page-display input[name=phila_show_in_browse]:checked').val() == 'no' ) {
-
-          $('#page-display .rwmb-textarea-wrapper').hide();
-
-        }
-
-        $("#phila_page_desc").prop('required', true);
-
-      }
-
     }
 
     if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
