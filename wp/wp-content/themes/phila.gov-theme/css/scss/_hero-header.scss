@@ -1,3 +1,18 @@
+  .hero-measureline {
+    position: absolute;
+    white-space: nowrap;
+    visibility: hidden;
+    line-height: 1;
+    letter-spacing: .03rem;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-size: 2rem;
+  }
+  .hero-measureline {
+    &.emphasis {
+      font-size: 3.5rem;
+      text-transform: uppercase;
+    }
+  }
 .hero-header {
   position: relative;
   overflow:hidden;
@@ -43,19 +58,32 @@
           font-size: 2.5rem;
           line-height: 3rem;
           margin:$spacing-small 0;
+          padding: $spacing-small 0;
           .strong {
             font-size: 3.5rem;
             white-space: pre;
             text-transform: uppercase;
           }
-          .break-after{
+          .break-after {
             &:after {
               content: '\A';
             }
           }
-          .break-before{
+          .break-before {
             &:before {
               content: '\A';
+            }
+          }
+          .emphasis {
+            text-transform: uppercase;
+          }
+          .hero-tagline {
+            line-height: 1;
+            font-size: 2rem;
+          }
+          .hero-tagline {
+            &.emphasis {
+              font-size: 3.5rem;
             }
           }
         }
