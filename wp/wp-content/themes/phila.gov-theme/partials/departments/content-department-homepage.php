@@ -30,7 +30,7 @@
               $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : '';?>
 
               <!-- Full Width Calendar -->
-              <?php if ( $cal_id != ''):?>
+              <?php if ( !empty( $cal_id ) ):?>
                 <section class="row expanded">
                   <div class="row">
                     <div class="columns">
@@ -42,7 +42,7 @@
                       <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
                     </div>
                   </div>
-                  <?php if ($cal_url != ''):?>
+                  <?php if ( !empty( $cal_url ) ):?>
                     <div class="row">
                       <div class="columns">
                         <a class="float-right see-all-right" href="<?php echo $cal_url; ?>">All Events</a>
