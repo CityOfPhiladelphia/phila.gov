@@ -134,4 +134,26 @@ jQuery(document).ready(function($) {
       }
     });
   }
+
+  //Set Hero Header Tagline font sizes
+  if( $('.intro .hero-tagline').length && $('.intro .hero-tagline.emphasis').length  ) {
+    var smallFontSize = 2;
+    var largeFontSize = 3.5;
+
+    if( $('[data-type="hero-measure"]').width() > 350) {
+      while ( $('[data-type="hero-measure"]').width() > 350 ) {
+        smallFontSize = smallFontSize - .1;
+        $('[data-type="hero-measure"]').css('font-size', smallFontSize + 'rem');
+      }
+      $('[data-type="hero-tagline"]').css('font-size', smallFontSize + 'rem');
+    }
+
+    if( $('[data-type="hero-measure-emphasis"]').width() > 350 ) {
+      while ( $('[data-type="hero-measure-emphasis"]').width() > 350 ) {
+        largeFontSize = largeFontSize - .1;
+        $('[data-type="hero-measure-emphasis"]').css('font-size', largeFontSize + 'rem');
+      }
+      $('[data-type="hero-tagline-emphasis"]').css('font-size', largeFontSize + 'rem');
+    }
+  }
 });
