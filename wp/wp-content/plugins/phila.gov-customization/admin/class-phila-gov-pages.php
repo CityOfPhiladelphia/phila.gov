@@ -40,7 +40,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
     $meta_boxes[] = array(
       'id'       => 'page-display',
       'title'    => 'Display Location',
-      'pages'    => array( 'page' ),
+      'pages'    => array( 'page', 'service_page' ),
       'context'  => 'side',
       'priority' => 'high',
 
@@ -60,6 +60,10 @@ if ( class_exists("Phila_Gov_Pages" ) ){
         'name' => 'Browse summary',
         'id'   => $prefix . 'page_desc',
         'type' => 'textarea',
+        'required' => true,
+        'visible' => array(
+          'show_in_browse', '=', 'yes'
+        )
       ),
      ),
     );

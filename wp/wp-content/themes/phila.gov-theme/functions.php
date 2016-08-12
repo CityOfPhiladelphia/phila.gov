@@ -46,6 +46,9 @@ function phila_gov_setup() {
    */
   add_theme_support( 'post-thumbnails' );
 
+  // Current default
+  add_image_size( 'phila-thumb', 660, 430, true);
+
   add_image_size( 'news-thumb', 250, 165, true );
 
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
@@ -282,7 +285,7 @@ add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
 
-  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/1.4.0/css/patterns.css' );
+  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/1.4.1/css/patterns.css' );
 
   wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.4.0' );
 
@@ -297,7 +300,7 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
 
-  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.4.0/js/patterns.min.js', array('jquery', 'foundation-js'), true );
+  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.4.1/js/patterns.min.js', array('jquery', 'foundation-js'), true );
 
   wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js', 'pattern-scripts'), 1.0, true );
 
@@ -484,7 +487,7 @@ function phila_breadcrumbs() {
         echo '<li>'. $term_obj->name . '</li>';
       endif;
 
-    } elseif ( is_page() ) {
+    } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if( $post->post_parent ){
 
@@ -555,6 +558,36 @@ function phila_util_get_current_cat_slug(){
   $category = get_the_category();
   foreach( $category as $cat){
     return $cat->slug;
+  }
+}
+
+// TODO: Remove additional fallback logic (foreach) as when possible
+function phila_get_thumbnails(){
+  if (has_post_thumbnail()){
+    $id = get_post_thumbnail_id();
+    $thumbs = array(
+      '0' => 'phila',
+      '1' => 'home',
+      '2' => 'news'
+    );
+    $output = '';
+
+    // echo 'Using phila_get_thumb';
+    foreach ($thumbs as $key => $value) {
+      $image = wp_get_attachment_image_src($id, $value . '-thumb');
+      if ($image[1] == 660 && $image[2] == 430 ) {
+        $output .= get_the_post_thumbnail( $post=null, 'phila-thumb' );
+        break;
+      } elseif ( $image[1] == 550 && $image[2] == 360 ) {
+        $output .= get_the_post_thumbnail( $post=null, 'home-thumb' );
+        break;
+      }
+      elseif ( $image[1] == 250 && $image[2] == 165  ) {
+        $output .=  get_the_post_thumbnail( $post=null, 'news-thumb' );
+        break;
+      }
+    }
+    return $output;
   }
 }
 
@@ -912,17 +945,15 @@ function phila_is_department_homepage( $post ) {
   }
 }
 
-
-
 function phila_get_home_news(){
+
   $category = get_the_category();
   $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-
   $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
 
   echo '<a href="' . get_permalink() .'" class="card equal">';
 
-  the_post_thumbnail( 'home-thumb'  );
+  echo phila_get_thumbnails();
 
   if (function_exists('rwmb_meta')) {
 
@@ -1287,10 +1318,126 @@ function phila_grid_column_counter( $item_count ){
 
 }
 
+function phila_tax_highlight( $info_panel ){
+  $output = array();
+  if ( !empty($info_panel) ){
+
+    foreach ( $info_panel as $k ){
+      $output['due'] = array();
+
+      $output['due']['type'] = isset(
+      $info_panel['phila_tax_due_date']['phila_tax_date_choice'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_choice'] : '';
+
+      if( $output['due']['type'] == 'monthly' || $output['due']['type'] == 'yearly' ){
+        $output['due']['date'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date'] ) ?
+        $info_panel['phila_tax_due_date']['phila_tax_date'] : '';
+
+      }
+      if( $output['due']['type'] == 'yearly' ) {
+        $output['due']['month'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_month'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_month'] : '' ;
+      }
+
+      if( $output['due']['type'] == 'misc' ) {
+        $output['due']['misc'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_misc_details'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_misc_details'] : '' ;
+      }
+
+
+      $output['due']['summary_brief'] = isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] ) ? $info_panel['phila_tax_due_date']['phila_tax_date_summary_brief'] : '';
+
+      $output['due']['summary_detailed'] =  isset( $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] ) ?  $info_panel['phila_tax_due_date']['phila_tax_date_summary_detailed'] : '';
+
+      $output['cost'] = array();
+
+      $output['cost']['number'] = isset( $info_panel['phila_tax_costs']['phila_tax_cost_number'] ) ? $info_panel['phila_tax_costs']['phila_tax_cost_number'] : '';
+
+      $output['cost']['unit'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_unit'] ) ?
+      $info_panel['phila_tax_costs']['phila_tax_cost_unit'] : '';
+
+      $output['cost']['summary_brief'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] ) ?
+      $info_panel['phila_tax_costs']['phila_tax_cost_summary_brief'] : '';
+
+      $output['cost']['summary_detailed'] =  isset( $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] ) ?
+      $info_panel['phila_tax_costs']['phila_tax_cost_summary_detailed'] : '';
+
+      $output['code'] = isset( $info_panel['phila_tax_code'] ) ?
+      $info_panel['phila_tax_code'] : '';
+
+    }
+  }
+
+  return $output;
+}
+
+function phila_tax_payment_info( $payment_info ){
+  $output = array();
+
+  if ( !empty($payment_info) ) {
+
+    foreach ( $payment_info as $k ){
+      $output['who_pays'] = isset($payment_info['phila_tax_who_pays'] ) ? $payment_info['phila_tax_who_pays'] : '';
+      $output['late_fees'] = isset($payment_info['phila_tax_late_fees'] ) ? $payment_info['phila_tax_late_fees'] : '';
+      $output['discounts'] = isset($payment_info['phila_tax_discounts'] ) ? $payment_info['phila_tax_discounts'] : '';
+      $output['exemptions'] = isset($payment_info['phila_tax_exemptions'] ) ? $payment_info['phila_tax_exemptions'] : '';
+
+    }
+  }
+  return $output;
+}
+
+function phila_extract_clonable_wysiwyg($parent_group){
+  $output = array();
+
+  if ( !empty($parent_group) ){
+
+    $clonable_wysiwyg = isset($parent_group['phila_cloneable_wysiwyg'] ) ? $parent_group['phila_cloneable_wysiwyg'] : $output;
+
+    foreach ( $clonable_wysiwyg as $k => $v ){
+      $output[$k] = $v;
+    }
+  }
+  return $output;
+}
+
+
+function phila_extract_stepped_content($parent_group){
+  $output = array();
+
+  if ( !empty($parent_group) ){
+    $steps = isset($parent_group['phila_ordered_content'] ) ? $parent_group['phila_ordered_content'] : $output;
+
+    foreach ( $steps as $k => $v ){
+
+      $output[$k] = $v;
+
+    }
+  }
+  return $output;
+}
+
+function phila_additional_content( $input ){
+  $output = array();
+  if ( !empty($input) ) {
+
+    foreach ($input as $k => $v) {
+      $output['forms'] = isset( $input['phila_forms_instructions']['phila_document_page_picker'] ) ? $input['phila_forms_instructions']['phila_document_page_picker'] : '';
+
+      $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
+
+      $output['aside']['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
+
+      $output['aside']['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
+
+    }
+  }
+
+  return $output;
+}
+
+
 function phila_connect_panel($connect_panel) {
 
   $output_array = array();
-  // print_r($connect_panel);
+
   foreach ($connect_panel as $key => $value) {
 
     $output_array['social'] = array();
@@ -1340,4 +1487,20 @@ function phila_connect_panel($connect_panel) {
     return;
   }
   // return $connect_panel;
+}
+
+
+function phila_return_ordinal($num){
+  $j = $num % 10;
+  $k = $num % 100;
+  if ($j == 1 && $k != 11) {
+    return 'st';
+  }
+  if ($j == 2 && $k != 12) {
+    return 'nd';
+  }
+  if ($j == 3 && $k != 13) {
+    return 'rd';
+  }
+  return 'th';
 }
