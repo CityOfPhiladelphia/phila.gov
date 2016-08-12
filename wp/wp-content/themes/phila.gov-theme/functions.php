@@ -1105,12 +1105,15 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
-function the_dept_description(){
-  $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'));
+function phila_return_dept_meta(){
+  $dept_desc = rwmb_meta( 'phila_dept_desc');
 
-  if (!$dept_desc == ''){
-    return $dept_desc;
-  }
+  $meta_desc = rwmb_meta( 'phila_meta_desc' );
+
+  $desc = ( !empty( $meta_desc ) ? $meta_desc : $dept_desc );
+
+  return $desc;
+  
 }
 
 function phila_get_event_content_blocks(){
