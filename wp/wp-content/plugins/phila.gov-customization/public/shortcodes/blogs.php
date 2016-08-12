@@ -66,6 +66,9 @@ function latest_posts_shortcode($atts) {
 
     $link = get_permalink();
 
+    $thumbnail = phila_get_thumbnails();
+    // echo 'thumbnail' . $thumbnail;
+
     if ( is_flag( 'list', $atts ) ){
       $output .= '<li class="group mbm pbm">';
 
@@ -88,7 +91,7 @@ function latest_posts_shortcode($atts) {
 
       $output .= '<a href="' . get_permalink() .'" class="card equal">';
 
-      $output .=   get_the_post_thumbnail( $post->ID, 'news-thumb' );
+      $output .= $thumbnail;
 
       $output .= '<div class="content-block">';
 
