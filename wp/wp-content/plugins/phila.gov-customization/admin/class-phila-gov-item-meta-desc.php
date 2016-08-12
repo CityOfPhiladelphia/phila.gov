@@ -33,7 +33,7 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
       'fields' => array(
         array(
           'name'  => 'Description',
-          'desc'  => 'A short description of the event (365 character maximum). Required.',
+          'desc'  => 'This field is deprecated. Please use the Short Description field at the top of the page.',
           'id'    => $prefix . 'event_desc',
           'type'  => 'textarea',
           'class' => 'event-description',
@@ -53,11 +53,12 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
       'fields' => array(
         array(
           'name'  => 'Description',
-          'desc'  => 'A one or two sentence description describing this article. Required.',
+          'desc'  => 'This field is deprecated. Please use the Short Description field at the top of the page.',
           'id'    => $prefix . 'news_desc',
           'type'  => 'textarea',
           'class' => 'news-description',
           'clone' => false,
+
         )
       )
     );//news description
@@ -74,7 +75,8 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
        array(
         'name' => 'Summary',
         'id'   => $prefix . 'post_desc',
-        'type' => 'textarea'
+        'type' => 'textarea',
+        'desc' => 'This field is deprecated. Please use the Short Description field at the top of the page.'
       ),
     ),
    );
