@@ -1113,7 +1113,7 @@ function phila_return_dept_meta(){
   $desc = ( !empty( $meta_desc ) ? $meta_desc : $dept_desc );
 
   return $desc;
-  
+
 }
 
 function phila_get_event_content_blocks(){

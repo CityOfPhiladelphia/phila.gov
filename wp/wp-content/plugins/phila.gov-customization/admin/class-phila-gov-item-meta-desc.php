@@ -14,6 +14,7 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
   }
 
   function phila_register_item_desc_meta_boxes( $meta_boxes ){
+    //TODO: remove deprecated code 
     $post_types = array(
       'public'  => true,
       '_builtin'  => true
@@ -37,6 +38,9 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
           'id'    => $prefix . 'event_desc',
           'type'  => 'textarea',
           'class' => 'event-description',
+          'attributes' => array(
+            'data-readonly'  => 'true'
+          ),
           'clone' => false,
         )
       )
@@ -57,6 +61,9 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
           'id'    => $prefix . 'news_desc',
           'type'  => 'textarea',
           'class' => 'news-description',
+          'attributes' => array(
+            'data-readonly'  => 'true'
+          ),
           'clone' => false,
 
         )
@@ -76,7 +83,10 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
         'name' => 'Summary',
         'id'   => $prefix . 'post_desc',
         'type' => 'textarea',
-        'desc' => 'This field is deprecated. Please use the Short Description field at the top of the page.'
+        'desc' => 'This field is deprecated. Please use the Short Description field at the top of the page.',
+        'attributes' => array(
+          'data-readonly'  => 'true'
+        ),
       ),
     ),
    );

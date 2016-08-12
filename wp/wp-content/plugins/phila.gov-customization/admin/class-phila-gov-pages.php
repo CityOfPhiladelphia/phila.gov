@@ -61,7 +61,7 @@ if ( class_exists("Phila_Gov_Pages" ) ){
         'id'   => $prefix . 'page_desc',
         'type' => 'textarea',
         'attributes' => array(
-          'data-disable'  => 'true'
+          'data-readonly'  => 'true'
         ),
         'desc'  => 'This field is deprecated. Please use the Short Description field at the top of the page.',
         'visible' => array(
