@@ -57,7 +57,7 @@ if (!empty($row_two_column_selection)) {
       <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
     </div>
   </div>
-  <?php if ($row_two_full_col_cal_url):?>
+  <?php if ( !empty($row_two_full_col_cal_url) ):?>
     <div class="row">
       <div class="columns">
         <a class="float-right see-all-right" href="<?php echo $row_two_full_col_cal_url; ?>">All Events</a>

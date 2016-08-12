@@ -26,23 +26,31 @@
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
               //TODO: verify that these vars exist before setting... offload to function?
-              $cal_id = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'];
-              $cal_url = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'];?>
+              $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '' ;
+              $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : '';?>
 
               <!-- Full Width Calendar -->
-              <section class="row expanded">
-                <div class="row">
-                  <div class="columns">
-                    <h2>Events</h2>
+              <?php if ( !empty( $cal_id ) ):?>
+                <section class="row expanded">
+                  <div class="row">
+                    <div class="columns">
+                      <h2>Events</h2>
+                    </div>
                   </div>
-                </div>
-                <div class="row expanded calendar-row mbm ptm">
-                  <div class="medium-centered large-16 columns">
-                    <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
+                  <div class="row expanded calendar-row mbm ptm">
+                    <div class="medium-centered large-16 columns">
+                      <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
+                    </div>
                   </div>
-                </div>
-              </section>
-
+                  <?php if ( !empty( $cal_url ) ):?>
+                    <div class="row">
+                      <div class="columns">
+                        <a class="float-right see-all-right" href="<?php echo $cal_url; ?>">All Events</a>
+                        </div>
+                    </div>
+                  <?php endif; ?>
+                </section>
+              <?php endif;?>
             <?php elseif ($current_row_option == 'phila_feature_p_i'): ?>
               <!-- Display Featured Programs and Initiatives -->
               <section class="mvl">
