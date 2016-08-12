@@ -46,6 +46,9 @@ function phila_gov_setup() {
    */
   add_theme_support( 'post-thumbnails' );
 
+  // Current default
+  add_image_size( 'phila-thumb', 660, 430, true);
+
   add_image_size( 'news-thumb', 250, 165, true );
 
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
@@ -558,6 +561,36 @@ function phila_util_get_current_cat_slug(){
   }
 }
 
+// TODO: Remove additional fallback logic (foreach) as when possible
+function phila_get_thumbnails(){
+  if (has_post_thumbnail()){
+    $id = get_post_thumbnail_id();
+    $thumbs = array(
+      '0' => 'phila',
+      '1' => 'home',
+      '2' => 'news'
+    );
+    $output = '';
+
+    // echo 'Using phila_get_thumb';
+    foreach ($thumbs as $key => $value) {
+      $image = wp_get_attachment_image_src($id, $value . '-thumb');
+      if ($image[1] == 660 && $image[2] == 430 ) {
+        $output .= get_the_post_thumbnail( $post=null, 'phila-thumb' );
+        break;
+      } elseif ( $image[1] == 550 && $image[2] == 360 ) {
+        $output .= get_the_post_thumbnail( $post=null, 'home-thumb' );
+        break;
+      }
+      elseif ( $image[1] == 250 && $image[2] == 165  ) {
+        $output .=  get_the_post_thumbnail( $post=null, 'news-thumb' );
+        break;
+      }
+    }
+    return $output;
+  }
+}
+
 function phila_get_department_menu() {
   /*
     Set the menus. We use categories to drive functionality.
@@ -912,17 +945,15 @@ function phila_is_department_homepage( $post ) {
   }
 }
 
-
-
 function phila_get_home_news(){
+
   $category = get_the_category();
   $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-
   $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
 
   echo '<a href="' . get_permalink() .'" class="card equal">';
 
-  the_post_thumbnail( 'home-thumb'  );
+  echo phila_get_thumbnails();
 
   if (function_exists('rwmb_meta')) {
 
