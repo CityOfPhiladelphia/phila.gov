@@ -40,26 +40,6 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'id'       => 'news',
-    'title'    => 'News Information',
-    'pages'    => array( 'news_post' ),
-    'context'  => 'normal',
-    'priority' => 'high',
-
-
-    'fields' => array(
-      array(
-        'name'  => 'Description',
-        'desc'  => 'A one or two sentence description describing this article. Required.',
-        'id'    => $prefix . 'news_desc',
-        'type'  => 'textarea',
-        'class' => 'news-description',
-        'clone' => false,
-      )
-    )
-  );//news description
-
-  $meta_boxes[] = array(
     'id'       => 'news-admin-only',
     'title'    => 'Homepage Display',
     'pages'    => array( 'news_post' ),
@@ -96,21 +76,16 @@ function phila_register_meta_boxes( $meta_boxes ){
 
 
     'fields' => array(
-      array(
-       'name' => 'Description',
-       'id'   => $prefix . 'document_description',
-       'type' => 'textarea'
-     ),
-     array(
-      'name'  => 'Release Date',
-      'desc'  => 'Set the release date for all items on this document page. You can change an individual release date by editing the document below.',
-      'id'    => $prefix . 'document_released',
-      'type'  => 'date',
-      'class' =>  'document-released',
-      'size'  =>  25,
-      'js_options' =>  array(
-        'dateFormat'=>'MM dd, yy',
-        'showTimepicker' => false
+       array(
+        'name'  => 'Release Date',
+        'desc'  => 'Set the release date for all items on this document page. You can change an individual release date by editing the document below.',
+        'id'    => $prefix . 'document_released',
+        'type'  => 'date',
+        'class' =>  'document-released',
+        'size'  =>  25,
+        'js_options' =>  array(
+          'dateFormat'=>'MM dd, yy',
+          'showTimepicker' => false
         )
       ),
     )
@@ -137,22 +112,7 @@ function phila_register_meta_boxes( $meta_boxes ){
       ),
     ),
   );
-  $meta_boxes[] = array(
-    'id'       => 'post-description',
-    'title'    => 'Post Summary',
-    'pages'    => array( 'phila_post' ),
-    'context'  => 'normal',
-    'priority' => 'high',
 
-
-    'fields' => array(
-      array(
-       'name' => 'Summary',
-       'id'   => $prefix . 'post_desc',
-       'type' => 'textarea'
-     ),
-   ),
-  );
   $meta_boxes[] = array(
     'id'       => 'press-release-date',
     'title'    => 'Release Date',
