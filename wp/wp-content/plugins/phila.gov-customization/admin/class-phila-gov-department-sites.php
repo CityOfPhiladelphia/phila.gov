@@ -27,21 +27,24 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'context'  => 'advanced',
       'priority' => 'high',
 
-
       'exclude' => array(
         'phila_is_department_homepage'  => 0,
       ),
 
       'fields' => array(
+
         array(
           'name'  => 'Description',
-          'desc'  => 'A short description of the department. Appears on the <a href="/departments">City Government Directory</a> page. Required.',
+          'desc'  => 'This field is deprecated. Please use the Short Description field at the top of the page.',
           'id'    => $prefix . 'dept_desc',
           'type'  => 'textarea',
           'class' => 'dept-description',
+          'attributes' => array(
+            'data-disable'  => 'true'
+          ),
           'clone' => false,
-          'required'  => true,
         ),
+
         array(
           'name'  => 'External URL of Department',
           'desc'  => 'If the department does not live on this website, enter the location here. Eg. http://phila.gov/health/. <br>If the department lives off-site, then the transition template is displayed, instead of the body content.',
