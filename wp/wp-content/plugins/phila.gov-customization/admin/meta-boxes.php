@@ -76,8 +76,17 @@ function phila_register_meta_boxes( $meta_boxes ){
 
 
     'fields' => array(
+        array(
+         'id'   => $prefix . 'document_description',
+         'type' => 'wysiwyg',
+         'options' => $wysiwyg_options_basic,
+         'desc' => 'Information describing the collection of documents on this page. This content will appear above the document list.'
+       ),
        array(
-        'name'  => 'Release Date',
+         'type'  => 'heading',
+         'name' => ' Release Date',
+       ),
+       array(
         'desc'  => 'Set the release date for all items on this document page. You can change an individual release date by editing the document below.',
         'id'    => $prefix . 'document_released',
         'type'  => 'date',
