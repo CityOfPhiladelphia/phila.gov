@@ -40,7 +40,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'type'  => 'textarea',
           'class' => 'dept-description',
           'attributes' => array(
-            'data-disable'  => 'true'
+            'data-readonly'  => 'true'
           ),
           'clone' => false,
         ),

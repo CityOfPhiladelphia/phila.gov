@@ -10,7 +10,7 @@ function phila_get_user_roles_callback() {
 /* For all admins */
 jQuery(document).ready(function($) {
 
-  $('textarea[data-disable="true"]').attr('readonly','readonly');
+  $('[data-readonly="true"]').attr('readonly','readonly');
 
   //no one can clone rn
   $('#department-content-blocks .add-clone').css('visibility', 'hidden');
