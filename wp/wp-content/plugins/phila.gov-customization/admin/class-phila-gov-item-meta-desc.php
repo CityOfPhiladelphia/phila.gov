@@ -62,23 +62,6 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
       )
     );//news description
 
-    $meta_boxes[] = array(
-      'id'       => $prefix . 'document-description',
-      'title'    => 'Document Information',
-      'pages'    => array( 'document' ),
-      'context'  => 'normal',
-      'priority' => 'high',
-
-
-      'fields' => array(
-        array(
-         'name' => 'Description',
-         'id'   => $prefix . 'document_description',
-         'type' => 'textarea'
-       ),
-     )
-   );
-
    $meta_boxes[] = array(
      'id'       => 'post-description',
      'title'    => 'Post Summary',
@@ -98,16 +81,18 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
 
   $meta_boxes[] = array(
     'id'  => 'item_description',
-    'title' => 'Item Summary',
+    'title' => 'Short Description',
     'context'  => 'advanced',
     'priority' => 'high',
+
     'pages' => $public_post_types,
 
-      'fields' => array(
-        array(
-         'name' => 'Summary',
-         'id'   => $prefix . 'post_desc',
-         'type' => 'textarea'
+    'fields' => array(
+      array(
+        'id'   => $prefix . 'meta_desc',
+        'type' => 'textarea',
+        'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 365 character maximum.',
+        'required'  => true
        ),
      ),
   );
