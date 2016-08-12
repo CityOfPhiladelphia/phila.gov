@@ -10,10 +10,9 @@
 
   $this_parent = array(
     'include' => $has_parent,
+    'post_type' => get_post_type()
   );
-  $parent_content = get_pages( $this_parent );
-
-  $check_parent_content = $parent_content[0]->post_content;
+  $parent_exists = get_pages( $this_parent );
 
   $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'), $post->ID);
   $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'), $post->ID);
@@ -25,15 +24,13 @@
       'title_li' => '',
       'child_of' => $post->post_parent,
       'echo' => 0,
-      'walker' => $walker_menu
+      'walker' => $walker_menu,
+      'post_type' => get_post_type()
       )
     );
 
     $page_title = get_the_title($post->post_parent);
-    $parent_title = null;
-    $parent_content = null;
     $parent_link = get_permalink( $post->post_parent );
-    $current = false;
 
   }else{
     //it's a parent with content
@@ -48,16 +45,18 @@
       'title_li' => '',
       'child_of' => $post->ID,
       'echo' => 0,
-      'walker' => $walker_menu
+      'walker' => $walker_menu,
+      'post_type' => get_post_type()
       )
     );
   }
+?>
+<?php $user_selected_template = phila_get_selected_template(); ?>
 
-  ?>
 <article id="post-<?php the_ID(); ?>">
 <div class="row">
   <header class="entry-header small-24 columns">
-      <?php if ( $parent_title ) : ?>
+      <?php if ( isset( $parent_title ) ) : ?>
         <h1><?php echo $parent_title ?></h1>
       <?php else : ?>
         <h1><?php echo $page_title; ?></h1>
@@ -68,8 +67,8 @@
     <div class="medium-6 columns">
       <aside>
         <ul class="tabs vertical">
-          <?php if ( $check_parent_content ) : ?>
-            <li class="tabs-title<?php echo ( $current ) ? ' is-active' : ''?>">
+          <?php if ( count($parent_exists) > 1 || !empty( $parent_exists[0]->post_content ) ) : ?>
+            <li class="tabs-title<?php echo isset( $current ) ? ' is-active' : ''?>">
               <a href="<?php echo $parent_link ?>">Overview</a>
             </li>
           <?php endif; ?>
@@ -81,23 +80,27 @@
       <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
         <div class="tabs-panel is-active">
           <header class="entry-header">
-            <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+            <?php the_title( '<h2 class="entry-title mvn">', '</h2>' ); ?>
           </header><!-- .entry-header -->
-
           <!-- If Custom Markup append_before_wysiwyg is present print it -->
           <?php if (!$append_before_wysiwyg == ''):?>
             <?php echo $append_before_wysiwyg; ?>
           <?php endif; ?>
 
-          <?php if ( $parent_content ) : ?>
-
-            <?php echo $parent_content ?>
+          <?php if ( isset( $parent_content ) ) : ?>
+            <?php if ($user_selected_template == 'tax_detail') : ?>
+              <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php else: ?>
+              <?php echo $parent_content ?>
+            <?php endif; ?>
 
           <?php else : ?>
-
-            <?php the_content(); ?>
-
-          <?php endif; ?>
+            <?php if ($user_selected_template == 'tax_detail') : ?>
+              <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php else: ?>
+              <?php the_content(); ?>
+            <?php endif; ?>
+        <?php endif; ?>
 
           <!-- If Custom Markup append_after_wysiwyg is present print it -->
           <?php if (!$append_after_wysiwyg == ''):?>
