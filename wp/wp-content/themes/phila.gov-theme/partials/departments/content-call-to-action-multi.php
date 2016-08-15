@@ -23,7 +23,7 @@
   if ( ! empty( $action_panel_section ) ) : ?>
   <?php $item_count = count($action_panel_multi); ?>
   <?php $columns = phila_grid_column_counter( $item_count ); ?>
-
+    <!-- Display Multi Call to Action as Resource List -->
     <section class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <div class="columns">
         <h2 class="contrast"><?php echo $action_panel_title; ?></h2>
