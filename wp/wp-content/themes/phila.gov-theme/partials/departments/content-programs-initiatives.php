@@ -86,9 +86,10 @@
             endif; ?>
 
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
-            <!-- Display Custom Text -->
             <?php if ( isset( $current_row['phila_full_options']['phila_custom_text'] ) ):
-              $custom_text = $current_row['phila_full_options']['phila_custom_text'];?>              <section class="row mvl">
+              $custom_text = $current_row['phila_full_options']['phila_custom_text'];?>
+              <!-- Display Custom Text -->
+              <section class="row mvl">
                 <div class="large-24 column">
                   <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
                     <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
