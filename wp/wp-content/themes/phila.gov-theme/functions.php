@@ -1253,9 +1253,9 @@ function phila_get_item_meta_desc(){
 
   if ( get_post_type() == 'department_page' ) {
 
-    if ( empty( $dept_desc ) && !empty($post->post_content) ){
+    if ( empty( $dept_desc ) && !empty( $post->post_content ) ){
 
-      $dept_desc = wp_strip_all_tags($post->post_content);
+      $dept_desc = $post->post_content;
 
     }else{
       //fallback if the wysiwyg editor is empty
@@ -1266,7 +1266,7 @@ function phila_get_item_meta_desc(){
 
     }
 
-    return mb_strimwidth( $dept_desc, 0, 200, '...');
+    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 200, '...');
 
   //special handing for content collection page types, when appropriate
   }else if( is_page() || get_post_type() == 'service_page' ){
@@ -1281,11 +1281,11 @@ function phila_get_item_meta_desc(){
 
     if ( !empty($page_desc) ) {
 
-      return $page_desc;
+      return wp_strip_all_tags( $page_desc );
 
     }else if ( !empty( $content ) ) {
 
-      return mb_strimwidth( wp_strip_all_tags($content),  0, 200, '...');
+      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 200, '...');
 
     }else{
       return bloginfo( 'description' );
