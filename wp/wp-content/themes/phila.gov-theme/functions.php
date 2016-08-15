@@ -165,7 +165,7 @@ function phila_filter_title( $title ){
 
         if ( phila_is_department_homepage( $post ) ){
 
-          $title['title'] = $page_title . $sep . $site_title;
+          $title['title'] = $page_title . $sep . 'Homepage' . $sep . $site_title;
 
         }else{
           $category = get_the_category($post->ID);
@@ -919,7 +919,9 @@ function phila_home_classes( $classes ) {
     return $classes;
 }
 
-/* Returns true if this page is a department page, has children and no other parents - i.e. department homepage */
+/* Returns true if this page is a department page, has children and no other parents - i.e. department homepage
+Or, has metadata t
+*/
 
 function phila_is_department_homepage( $post ) {
 
@@ -935,8 +937,9 @@ function phila_is_department_homepage( $post ) {
 
       $children = get_pages( array( 'child_of' => $post_id ) );
 
+      $marked_homepage = rwmb_meta('phila_department_home_page');
       //this is a department homepage
-      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+      if( ( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ) || ( $marked_homepage == 1) ){
 
         return true;
 
