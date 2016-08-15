@@ -201,20 +201,26 @@
                 </div>
               </div>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
-              <!-- Custom Text -->
-              <?php $custom_text = $current_row_option_one['phila_custom_text']; ?>
 
-                <div class="large-18 columns">
-                  <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
-                  <div>
-                    <?php echo($custom_text['phila_custom_text_content']); ?>
-                  </div>
-                  <?php if ( $custom_text == '' ) :?>
-                    <div class="placeholder">
-                      Please enter content.
+                <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
+                  $custom_text = $current_row_option_one['phila_custom_text']; ?>
+                  <!-- Custom Text -->
+                    <div class="large-18 columns">
+                      <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
+                        <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
+                      <?php endif; ?>
+                      <?php if ( !empty( $custom_text['phila_custom_text_content'] ) ) :?>
+                        <div>
+                          <?php echo($custom_text['phila_custom_text_content']); ?>
+                        </div>
+                      <?php else :?>
+                        <div class="placeholder">
+                          Please enter content.
+                        </div>
+                      <?php endif; ?>
                     </div>
-                  <?php endif; ?>
-                </div>
+                <?php endif; ?>
+
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text_multi'):?>
               <?php
               // TODO: Move this block to partials/content-custom-text-multi.php
