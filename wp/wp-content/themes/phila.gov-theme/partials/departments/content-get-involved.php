@@ -22,6 +22,7 @@
   if ( !empty( $action_panel_section ) ) : ?>
   <?php $item_count = count($action_panel_multi); ?>
   <?php $columns = phila_grid_column_counter( $item_count ); ?>
+  <!-- Display Multi Call to Action as Get Involved -->
   <section class="mvl">
     <div class="row">
       <div class="columns">

@@ -68,7 +68,6 @@
             <?php endif;?>
 
           <?php elseif ($current_row_option == 'phila_get_involved'): ?>
-            <!-- Display Multi Call to Action as Get Involved -->
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
               $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
                 include(locate_template('partials/departments/content-get-involved.php'));
