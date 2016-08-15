@@ -53,17 +53,19 @@
                 <?php endif; ?>
               </section>
             <?php endif;?>
-          <?php elseif ( $current_row_option == 'phila_callout'): ?>
-            <!-- Display Callout -->
-            <?php
-              $callout_type = $current_row['phila_full_options']['phila_callout']['phila_callout_type'];
-              $callout_text = $current_row['phila_full_options']['phila_callout']['phila_callout_text'];
-            ?>
-            <section class="row mvm">
-              <div class="large-24 column">
-                  <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '" inline="false"]'); ?>
-              </div>
-            </section>
+
+          <?php elseif ( $current_row_option == 'phila_callout'):
+            $callout_type = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_type'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_type'] : '';
+            $callout_text = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_text'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_text'] : ''; ?>
+
+            <?php if ( !empty( $callout_text ) ): ?>
+              <!-- Display Callout -->
+              <section class="row mvm">
+                <div class="large-24 column">
+                    <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '" inline="false"]'); ?>
+                </div>
+              </section>
+            <?php endif;?>
 
           <?php elseif ($current_row_option == 'phila_get_involved'): ?>
             <!-- Display Multi Call to Action as Get Involved -->
