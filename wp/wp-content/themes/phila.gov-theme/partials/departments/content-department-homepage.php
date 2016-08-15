@@ -25,12 +25,11 @@
                 </section>
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
-              //TODO: verify that these vars exist before setting... offload to function?
               $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '' ;
               $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : '';?>
 
-              <!-- Full Width Calendar -->
               <?php if ( !empty( $cal_id ) ):?>
+                <!-- Full Width Calendar -->
                 <section class="row expanded">
                   <div class="row">
                     <div class="columns">

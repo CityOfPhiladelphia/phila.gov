@@ -21,29 +21,38 @@
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
           if ( $current_row_option == 'phila_blog_posts'):
-            $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : '';
-        ?>
+            $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : ''; ?>
             <!-- Blog Content -->
             <section class="row mvl">
                 <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
             </section>
 
-          <?php elseif ( $current_row_option == 'phila_full_width_calendar'): ?>
-            <!-- Full Width Calendar -->
-            <?php
-              //TODO: verify that these vars exist before setting... offload to function?
-              $cal_id = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'];
-              $cal_url = $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'];
-            ?>
-            <section class="row expanded calendar-row mbm ptm">
-              <div class="columns">
-                <h2>Events</h2>
-              </div>
-              <div class="medium-centered large-16 columns">
-                <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
-              </div>
-            </section>
+          <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
+            $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
+            $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : ''; ?>
 
+            <?php if ( !empty( $cal_id ) ):?>
+              <!-- Full Width Calendar -->
+              <section class="expanded">
+                <div class="row">
+                  <div class="columns">
+                    <h2>Events</h2>
+                  </div>
+                </div>
+                <div class="row expanded calendar-row mbm ptm">
+                  <div class="medium-centered large-16 columns">
+                    <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
+                  </div>
+                </div>
+                <?php if ( !empty( $cal_url ) ):?>
+                  <div class="row">
+                    <div class="columns">
+                      <a class="float-right see-all-right" href="<?php echo $cal_url; ?>">All Events</a>
+                      </div>
+                  </div>
+                <?php endif; ?>
+              </section>
+            <?php endif;?>
           <?php elseif ( $current_row_option == 'phila_callout'): ?>
             <!-- Display Callout -->
             <?php
@@ -75,6 +84,7 @@
                 $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
                 include(locate_template('partials/departments/content-call-to-action-multi.php'));
             endif; ?>
+
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
             <!-- Display Custom Text -->
             <?php if ( isset( $current_row['phila_full_options']['phila_custom_text'] ) ):
@@ -109,8 +119,6 @@
         $current_row_option_two = $current_row['phila_half_options'] ['phila_half_col_2']; ?>
         <section class="row mvl">
             <?php if ( $current_row_option_one['phila_half_col_1_option'] == 'phila_custom_text'):?>
-
-
               <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                 $custom_text = $current_row_option_one['phila_custom_text']; ?>
                   <div class="large-12 columns">
