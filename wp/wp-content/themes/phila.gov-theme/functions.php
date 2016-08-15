@@ -952,7 +952,6 @@ function phila_get_home_news(){
 
   $category = get_the_category();
   $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-  $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
 
   echo '<a href="' . get_permalink() .'" class="card equal">';
 
@@ -970,7 +969,7 @@ function phila_get_home_news(){
         echo '<span>' . $contributor . '</span>';
     }
 
-    echo '<p>' . $desc  . '</p>';
+    echo '<p>' . phila_get_item_meta_desc()  . '</p>';
 
   }
 
@@ -1139,17 +1138,6 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
-function phila_return_dept_meta(){
-  $dept_desc = rwmb_meta( 'phila_dept_desc');
-
-  $meta_desc = rwmb_meta( 'phila_meta_desc' );
-
-  $desc = ( !empty( $meta_desc ) ? $meta_desc : $dept_desc );
-
-  return $desc;
-
-}
-
 function phila_get_event_content_blocks(){
 
   $output_array = array();
@@ -1235,10 +1223,6 @@ function phila_get_service_updates(){
 function phila_get_item_meta_desc(){
   global $post;
 
-  if( is_archive() || is_search() || is_home() ) {
-    return bloginfo( 'description' );
-  }
-
   $meta_desc = array();
 
   // TODO: Remove all old description fields.
@@ -1261,6 +1245,10 @@ function phila_get_item_meta_desc(){
     if ( !empty( $desc ) ) {
       return wp_strip_all_tags($desc);
     }
+  }
+
+  if( is_archive() || is_search() || is_home() ) {
+    return bloginfo( 'description' );
   }
 
   if ( get_post_type() == 'department_page' ) {
