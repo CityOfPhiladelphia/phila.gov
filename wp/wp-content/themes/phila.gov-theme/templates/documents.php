@@ -11,7 +11,8 @@
 <div class="row">
   <div data-swiftype-index='true' class="entry-content small-24 columns">
     <?php
-    $document_description = rwmb_meta( 'phila_document_description', $args = array( 'type' => 'textarea' ));
+    //Documents are using a wysiwyg editor for body content
+    $document_description = rwmb_meta( 'phila_document_description' );
     $global_document_published = rwmb_meta( 'phila_document_released', $args = array( 'type' => 'date' ) );
 
     $documents = rwmb_meta( 'phila_files', $args = array( 'type' => 'file_advanced' ) );
