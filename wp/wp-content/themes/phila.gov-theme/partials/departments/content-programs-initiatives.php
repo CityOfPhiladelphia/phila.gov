@@ -151,19 +151,25 @@
             <?php endif; ?>
 
             <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
-              <?php $custom_text = $current_row_option_one['phila_custom_text']; ?>
 
-                <div class="large-12 columns">
-                  <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
-                  <div>
-                    <?php echo($custom_text['phila_custom_text_content']); ?>
-                  </div>
-                  <?php if ( $custom_text == '' ) :?>
-                    <div class="placeholder">
-                      Please enter content.
+                <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
+                  $custom_text = $current_row_option_two['phila_custom_text']; ?>
+                    <div class="large-12 columns">
+                      <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
+                        <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
+                      <?php endif; ?>
+                      <?php if ( !empty( $custom_text['phila_custom_text_content'] ) ) :?>
+                        <div>
+                          <?php echo($custom_text['phila_custom_text_content']); ?>
+                        </div>
+                      <?php else :?>
+                        <div class="placeholder">
+                          Please enter content.
+                        </div>
+                      <?php endif; ?>
                     </div>
-                  <?php endif; ?>
-                </div>
+                <?php endif; ?>
+
             <?php elseif ( $current_row_option_two['phila_half_col_2_option'] == 'phila_pullquote'):?>
               <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
               <div class="large-12 columns">
