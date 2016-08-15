@@ -223,7 +223,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo echo_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo phila_get_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -1229,7 +1229,7 @@ function phila_get_service_updates(){
   }
 }
 
-function echo_item_meta_desc(){
+function phila_get_item_meta_desc(){
   global $post;
 
   if( is_archive() || is_search() || is_home() ) {
