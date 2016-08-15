@@ -1289,7 +1289,7 @@ function echo_item_meta_desc(){
     $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
 
     if ( !empty($page_desc) ) {
-      echo 'double fail';
+
       return $page_desc;
 
     }else if ( !empty( $content ) ) {
@@ -1304,6 +1304,7 @@ function echo_item_meta_desc(){
     return bloginfo( 'description' );
   }
 }
+
 /**
  * Return a string representing the template currently applied to a page in the loop.
  *
