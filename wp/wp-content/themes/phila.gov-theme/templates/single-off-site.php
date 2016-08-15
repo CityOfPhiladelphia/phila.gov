@@ -10,7 +10,7 @@
 
 <div class="row ptm">
   <div data-swiftype-index='true' class="entry-content columns end">
-    <p data-swiftype-name="body" data-swiftype-type="text" class="description"> <?php echo phila_return_dept_meta(); ?> </p>
+    <p data-swiftype-name="body" data-swiftype-type="text" class="description"> <?php echo phila_get_item_meta_desc(); ?> </p>
   </div>
 </div>
 

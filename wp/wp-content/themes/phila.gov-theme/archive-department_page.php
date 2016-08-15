@@ -31,7 +31,7 @@ get_header(); ?>
                   <?php
                     //NOTE: The content-department class is used for Google Analytics and should not be removed.
                   ?><a href="<?php echo get_permalink(); ?>" class="content-department item"><?php echo the_title(); ?></a>
-                  <p class="item-desc"><?php echo phila_return_dept_meta(); ?> </p>
+                  <p class="item-desc"><?php echo phila_get_item_meta_desc(); ?> </p>
                 </li>
 
               <?php endwhile; ?>
