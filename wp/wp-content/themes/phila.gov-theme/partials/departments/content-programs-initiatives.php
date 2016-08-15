@@ -138,13 +138,17 @@
                   </div>
               <?php endif; ?>
 
-            <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):?>
-              <?php $pullquote = $current_row_option_two['phila_pullquote'];?>
-              <div class="large-12 columns">
-                <?php echo do_shortcode('[pullquote quote="' . $pullquote['phila_quote'] . '" attribution="' . $pullquote['phila_attribution'] . '" inline="false"]'); ?>
-              </div>
-            <?php endif; ?>
+            <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):
+              $pullquote = isset ($current_row_option_two['phila_pullquote'] ) ? $current_row_option_two['phila_pullquote'] : '';
+              $quote = isset( $pullquote['phila_quote'] ) ? $pullquote['phila_quote'] : '';
+              $attribution = isset( $pullquote['phila_attribution'] ) ? $pullquote['phila_attribution'] : '';
 
+              if ( !empty( $quote ) ): ?>
+                <div class="large-12 columns">
+                  <?php echo do_shortcode('[pullquote quote="' . $quote . '" attribution="' . $attribution . '" inline="false"]'); ?>
+                </div>
+              <?php endif; ?>
+            <?php endif; ?>
 
             <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
               <?php $custom_text = $current_row_option_one['phila_custom_text']; ?>
