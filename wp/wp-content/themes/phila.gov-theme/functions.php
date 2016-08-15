@@ -223,7 +223,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo echo_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -1232,6 +1232,13 @@ function phila_get_service_updates(){
 function echo_item_meta_desc(){
   global $post;
 
+  if( is_archive() || is_search() ) {
+    bloginfo( 'description' );
+  }
+
+  $meta_desc = array();
+
+  // TODO: Remove all old description fields.
   $dept_desc = rwmb_meta( 'phila_dept_desc' );
 
   $post_desc = rwmb_meta( 'phila_post_desc' );
@@ -1242,55 +1249,53 @@ function echo_item_meta_desc(){
 
   $page_desc = rwmb_meta( 'phila_page_desc' );
 
-  if ( !is_archive() ) {
+  $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
 
-  if( $post_desc != '' ){
+  //This order matters. If $canonical_meta_desc is found first, it should be used.
+  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc );
 
-      echo mb_strimwidth( $post_desc,  0, 200, '...');
+  foreach ($meta_desc as $desc){
+    if ( !empty( $desc ) ) {
+      return wp_strip_all_tags($desc);
+    }
+  }
 
-    }else if( $news_desc != '' ){
+  $desc = get_the_content();
+  if ( !empty( $desc ) ) {
+    return mb_strimwidth( wp_strip_all_tags($desc),  0, 200, '...');
+  }
 
-      echo mb_strimwidth( $news_desc, 0, 200, '...');
+  if ( get_post_type() == 'department_page' ) {
 
-    }else if( $document_desc != '' ){
+    if ( empty( $dept_desc ) && !empty($post->post_content) ){
 
-      echo mb_strimwidth( $document_desc, 0, 200, '...');
+      $dept_desc = wp_strip_all_tags($post->post_content);
 
-    //special handling for department pages
-    }else if ( get_post_type() == 'department_page' ) {
-
-      if ( empty( $dept_desc ) && !empty($post->post_content) ){
-
-        $dept_desc = wp_strip_all_tags($post->post_content);
-
-      }else{
-        //fallback if the wysiwyg editor is empty
-        $parents = get_post_ancestors( $post->ID );
-        $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-
-        $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'), $post_id = $id );
-
-      }
-
-      echo mb_strimwidth( $dept_desc, 0, 200, '...');
-
-    //special handing for regular pages
-    }else if( is_page() ){
-
+    }else{
+      //fallback if the wysiwyg editor is empty
       $parents = get_post_ancestors( $post->ID );
       $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
 
-      if ( empty( $page_desc ) ){
+      $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'), $post_id = $id );
 
-        $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
-
-      }
-
-      echo $page_desc;
-
-    }else{
-      bloginfo( 'description' );
     }
+
+    echo mb_strimwidth( $dept_desc, 0, 200, '...');
+
+  //special handing for regular pages
+  }else if( is_page() ){
+
+    $parents = get_post_ancestors( $post->ID );
+    $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+    if ( empty( $page_desc ) ){
+
+      $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
+
+    }
+
+    echo $page_desc;
+
   }else{
     bloginfo( 'description' );
   }
