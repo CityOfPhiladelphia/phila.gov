@@ -9,15 +9,17 @@
 $row_title = isset( $list_items['phila_row_title'] ) ? $list_items['phila_row_title'] : '';
 $summary = isset( $list_items['phila_summary'] ) ? $list_items['phila_summary'] : '';
 $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'] : '' ;
-?>
 
+if ( !empty( $list_item_group ) ): ?>
 <section class="row mvl">
   <div class="large-24 columns">
-    <h2 class="contrast"><?php echo( $row_title ); ?></h2>
+    <?php if ( !empty( $row_title ) ): ?>
+      <h2 class="contrast"><?php echo( $row_title ); ?></h2>
+    <?php endif; ?>
       <div class="row">
         <div class="large-6 columns">
           <?php
-            if ($summary != ''):
+            if ( !empty( $summary ) ):
               echo( $summary );
             else :
               echo '<div class="placeholder">Please enter a summary.</div>';
@@ -58,3 +60,4 @@ $list_item_group = isset( $list_items['phila_list'] ) ? $list_items['phila_list'
       </div>
   </div>
 </section>
+<?php endif; ?>
