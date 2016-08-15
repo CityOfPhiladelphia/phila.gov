@@ -30,7 +30,7 @@
 
               <?php if ( !empty( $cal_id ) ):?>
                 <!-- Full Width Calendar -->
-                <section class="row expanded">
+                <section class="expanded">
                   <div class="row">
                     <div class="columns">
                       <h2>Events</h2>
