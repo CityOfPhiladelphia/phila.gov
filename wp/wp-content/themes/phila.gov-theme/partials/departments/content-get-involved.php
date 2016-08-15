@@ -7,7 +7,7 @@
 
 ?>
 <?php
-  if( isset($phila_dept_homepage_cta)):
+  if( isset($phila_dept_homepage_cta ) ):
     $action_panel_section = $phila_dept_homepage_cta;
   else :
     $action_panel_section = rwmb_meta('phila_call_to_action_section');
@@ -19,7 +19,7 @@
   $action_panel_bg = isset( $action_panel_section['phila_bg_image'] ) ? $action_panel_section['phila_bg_image'] : '';
 
 
-  if ( ! empty( $action_panel_section ) ) : ?>
+  if ( !empty( $action_panel_section ) ) : ?>
   <?php $item_count = count($action_panel_multi); ?>
   <?php $columns = phila_grid_column_counter( $item_count ); ?>
   <section class="mvl">
@@ -51,7 +51,7 @@
         ?>
         <?php phila_grid_column_counter( $item_count ); ?>
         <div class="medium-<?php echo $columns; ?> columns">
-          <?php if (!$action_panel_link == ''): ?>
+          <?php if ( !empty( $action_panel_link ) ): ?>
           <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
             <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
             <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
@@ -67,7 +67,7 @@
                <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
              </div>
             <?php endif; ?>
-            <?php if (!$action_panel_cta_text == ''): ?>
+            <?php if ( !empty( $action_panel_cta_text ) ): ?>
               <span class="<?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
             <?php endif; ?>
             </header>
