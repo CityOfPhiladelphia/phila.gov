@@ -14,12 +14,12 @@
     <div data-swiftype-index='true' class="entry-content medium-18 medium-push-6 columns">
 
     <?php
-      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textarea' ) );
+      $desc = phila_get_item_meta_desc();
 
       if ($post->post_content != ''):
         the_content();
       else :
-        echo '<p class="description">' . $post_desc . '</p>';
+        echo '<p class="description">' . $desc . '</p>';
       endif;
       ?>
     </div>
