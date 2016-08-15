@@ -24,19 +24,8 @@
       </span>
         <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
-    <?php
-      if (function_exists('rwmb_meta')) :
-      $news_desc = rwmb_meta( 'phila_news_desc', $args = array( 'type' => 'textarea' ) );
-      $post_desc = rwmb_meta( 'phila_post_desc', $args = array( 'type' => 'textarea' ) );
-
-        if ( '' != $news_desc ) :
-          ?><p class="description"><?php echo $news_desc ?></p>
-        <?php else : ?>
-        <p class="description"><?php echo $post_desc ?></p>
-    <?php
-      endif;
-    endif;
-    ?>
+    <?php $desc = phila_get_item_meta_desc(); ?>
+      <p class="description"><?php echo $desc ?> </p>
   </div>
 </article><!-- #post-## -->
 <hr>
