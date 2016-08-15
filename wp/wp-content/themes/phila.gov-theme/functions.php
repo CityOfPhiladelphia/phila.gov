@@ -1232,8 +1232,8 @@ function phila_get_service_updates(){
 function echo_item_meta_desc(){
   global $post;
 
-  if( is_archive() || is_search() ) {
-    bloginfo( 'description' );
+  if( is_archive() || is_search() || is_home() ) {
+    return bloginfo( 'description' );
   }
 
   $meta_desc = array();
@@ -1260,11 +1260,6 @@ function echo_item_meta_desc(){
     }
   }
 
-  $desc = get_the_content();
-  if ( !empty( $desc ) ) {
-    return mb_strimwidth( wp_strip_all_tags($desc),  0, 200, '...');
-  }
-
   if ( get_post_type() == 'department_page' ) {
 
     if ( empty( $dept_desc ) && !empty($post->post_content) ){
@@ -1280,24 +1275,33 @@ function echo_item_meta_desc(){
 
     }
 
-    echo mb_strimwidth( $dept_desc, 0, 200, '...');
+    return mb_strimwidth( $dept_desc, 0, 200, '...');
 
-  //special handing for regular pages
-  }else if( is_page() ){
+  //special handing for content collection page types, when appropriate
+  }else if( is_page() || get_post_type() == 'service_page' ){
 
     $parents = get_post_ancestors( $post->ID );
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
 
-    if ( empty( $page_desc ) ){
+    $page_object = get_page( $post->ID );
+    $content = $page_object->post_content;
 
-      $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
+    $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
 
+    if ( !empty($page_desc) ) {
+      echo 'double fail';
+      return $page_desc;
+
+    }else if ( !empty( $content ) ) {
+
+      return mb_strimwidth( wp_strip_all_tags($content),  0, 200, '...');
+
+    }else{
+      return bloginfo( 'description' );
     }
 
-    echo $page_desc;
-
   }else{
-    bloginfo( 'description' );
+    return bloginfo( 'description' );
   }
 }
 /**
