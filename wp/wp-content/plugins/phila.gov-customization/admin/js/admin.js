@@ -75,10 +75,6 @@ jQuery(document).ready(function($) {
           'post_title': 'required'
         }
       });
-      $('#phila_event_desc').rules('add', {
-        maxlength: 365,
-        required:true
-      });
       $('#phila_event_loc').rules('add', {
         required:true
       });

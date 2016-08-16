@@ -1236,10 +1236,12 @@ function phila_get_item_meta_desc(){
 
   $page_desc = rwmb_meta( 'phila_page_desc' );
 
+  $event_desc = rwmb_meta( 'phila_event_desc' );
+
   $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
 
   //This order matters. If $canonical_meta_desc is found first, it should be used.
-  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc );
+  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc, $event_desc );
 
   foreach ($meta_desc as $desc){
     if ( !empty( $desc ) ) {
