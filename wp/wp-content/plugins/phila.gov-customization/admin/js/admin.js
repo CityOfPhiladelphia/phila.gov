@@ -52,18 +52,6 @@ jQuery(document).ready(function($) {
       });
     }
 
-    if ( typenow == 'news_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#phila_news_desc').rules('add', {
-        required: true
-      });
-    }
-
-    if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#phila_post_desc').rules('add', {
-        required: true
-      });
-    }
-
     if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
 
       $('a#link-post_tag').click();
