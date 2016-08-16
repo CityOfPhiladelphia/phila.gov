@@ -91,20 +91,10 @@
               <!-- Display Custom Text -->
               <section class="row mvl">
                 <div class="large-24 column">
-                  <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
-                    <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
-                  <?php endif; ?>
-                  <?php if ( !empty( $custom_text['phila_custom_text_content'] ) ) :?>
-                    <div>
-                      <?php echo($custom_text['phila_custom_text_content']); ?>
-                    </div>
-                  <?php else :?>
-                    <div class="placeholder">
-                      Please enter content.
-                    </div>
-                  <?php endif; ?>
+                  <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                 </div>
               </section>
+
             <?php endif; ?>
           <?php elseif ( $current_row_option == 'phila_list_items'): ?>
             <?php
@@ -120,23 +110,13 @@
         $current_row_option_two = $current_row['phila_half_options'] ['phila_half_col_2']; ?>
         <section class="row mvl">
             <?php if ( $current_row_option_one['phila_half_col_1_option'] == 'phila_custom_text'):?>
+
               <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                 $custom_text = $current_row_option_one['phila_custom_text']; ?>
-                  <div class="large-12 columns">
-                    <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
-                      <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
-                    <?php endif; ?>
-                    <?php if ( !empty( $custom_text['phila_custom_text_content'] ) ) :?>
-                      <div>
-                        <?php echo($custom_text['phila_custom_text_content']); ?>
-                      </div>
-                    <?php else :?>
-                      <div class="placeholder">
-                        Please enter content.
-                      </div>
-                    <?php endif; ?>
-                  </div>
-              <?php endif; ?>
+                <div class="large-12 columns">
+                  <?php include(locate_template('partials/departments/content-custom-text.php'));?>
+                </div>
+              <?php endif;?>
 
             <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):
               $pullquote = isset ($current_row_option_one['phila_pullquote'] ) ? $current_row_option_one['phila_pullquote'] : '';
@@ -151,24 +131,12 @@
             <?php endif; ?>
 
             <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
-
                 <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_two['phila_custom_text']; ?>
-                    <div class="large-12 columns">
-                      <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
-                        <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
-                      <?php endif; ?>
-                      <?php if ( !empty( $custom_text['phila_custom_text_content'] ) ) :?>
-                        <div>
-                          <?php echo($custom_text['phila_custom_text_content']); ?>
-                        </div>
-                      <?php else :?>
-                        <div class="placeholder">
-                          Please enter content.
-                        </div>
-                      <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                  <div class="large-12 columns">
+                    <?php include(locate_template('partials/departments/content-custom-text.php'));?>
+                  </div>
+                <?php endif;?>
 
             <?php elseif ( $current_row_option_two['phila_half_col_2_option'] == 'phila_pullquote'):
               $pullquote = isset ($current_row_option_two['phila_pullquote'] ) ? $current_row_option_two['phila_pullquote'] : '';
@@ -201,33 +169,18 @@
                 </div>
               </div>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
-
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
-                  <!-- Custom Text -->
-                    <div class="large-18 columns">
-                      <?php if ( !empty( $custom_text['phila_custom_text_title'] ) ) :?>
-                        <h2 class="contrast"><?php echo($custom_text['phila_custom_text_title']); ?></h2>
-                      <?php endif; ?>
-                      <?php if ( !empty( $custom_text['phila_custom_text_content'] ) ) :?>
-                        <div>
-                          <?php echo($custom_text['phila_custom_text_content']); ?>
-                        </div>
-                      <?php else :?>
-                        <div class="placeholder">
-                          Please enter content.
-                        </div>
-                      <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                  <div class="large-18 columns">
+                    <?php include(locate_template('partials/departments/content-custom-text.php'));?>
+                  </div>
+                <?php endif;?>
 
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text_multi'):?>
-              <?php
-                $custom_text = isset ( $current_row_option_one['phila_custom_text_multi'] ) ? $current_row_option_one['phila_custom_text_multi'] : '';
-                if ( !empty($custom_text) ):
-                  include(locate_template('partials/departments/content-custom-text-multi.php'));
-                endif;
-              ?>
+              <?php if ( isset( $current_row_option_one['phila_custom_text_multi'] ) ):
+                $custom_text = $current_row_option_one['phila_custom_text_multi'];
+                include(locate_template('partials/departments/content-custom-text-multi.php'));
+              endif; ?>
 
             <?php endif;?>
 
