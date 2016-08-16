@@ -73,9 +73,6 @@ jQuery(document).ready(function($){
       $( '#title' ).rules( 'add', {
         maxlength: 70
       });
-      $( '#phila_news_desc' ).rules( 'add', {
-        maxlength: 255
-      });
     }
 
     if ( ( typenow == 'attachment') && adminpage.indexOf('post') > -1 ){

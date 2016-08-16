@@ -10,6 +10,7 @@ function phila_get_user_roles_callback() {
 /* For all admins */
 jQuery(document).ready(function($) {
 
+  $('[data-readonly="true"]').attr('readonly','readonly');
 
   //no one can clone rn
   $('#department-content-blocks .add-clone').css('visibility', 'hidden');
@@ -46,17 +47,8 @@ jQuery(document).ready(function($) {
       $('#title').rules('add', {
         maxlength: 72
       });
-    }
-
-    if ( typenow == 'news_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#phila_news_desc').rules('add', {
-        required: true
-      });
-    }
-
-    if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
-      $('#phila_post_desc').rules('add', {
-        required: true
+      $('#phila_meta_desc').rules('add', {
+        maxlength: 365
       });
     }
 
@@ -82,10 +74,6 @@ jQuery(document).ready(function($) {
         rules: {
           'post_title': 'required'
         }
-      });
-      $('#phila_event_desc').rules('add', {
-        maxlength: 365,
-        required:true
       });
       $('#phila_event_loc').rules('add', {
         required:true
