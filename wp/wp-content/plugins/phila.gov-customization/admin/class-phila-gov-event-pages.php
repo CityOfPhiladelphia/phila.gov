@@ -26,14 +26,6 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
 
       'fields' => array(
         array(
-          'name'  => 'Description',
-          'desc'  => 'A short description of the event (365 character maximum). Required.',
-          'id'    => $prefix . 'event_desc',
-          'type'  => 'textarea',
-          'class' => 'event-description',
-          'clone' => false,
-        ),
-        array(
           'name'  => 'Location',
           'desc'  => 'Address or general location of the event. Required.',
           'id'    => $prefix . 'event_loc',

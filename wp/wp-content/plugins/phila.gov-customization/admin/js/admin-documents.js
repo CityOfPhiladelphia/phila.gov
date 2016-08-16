@@ -12,10 +12,6 @@ jQuery(document).ready(function($){
         maxlength: 72
       });
 
-      $( "#phila_document_description" ).rules( "add", {
-        maxlength: 350, required: true
-      });
-
       var $eventSelect = $('.rwmb-select-advanced');
     }
   }
