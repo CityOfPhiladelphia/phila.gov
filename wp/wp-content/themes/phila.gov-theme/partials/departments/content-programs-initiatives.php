@@ -245,6 +245,7 @@
                   $feature_image = isset( $feature_panel['phila_feature_image'] ) ? $feature_panel['phila_feature_image'] : '';
                   $feature_text = isset( $feature_panel['phila_feature_text'] ) ? $feature_panel['phila_feature_text'] : '';
                   $feature_url = isset( $feature_panel['phila_feature_url'] ) ? $feature_panel['phila_feature_url'] : '';
+                  $feature_url_text = isset( $feature_panel['phila_feature_url_text'] ) ? $feature_panel['phila_feature_url_text'] : '';
               ?>
               <div class="large-6 columns">
                 <h2 class="contrast"><?php echo $feature_title;?></h2>
@@ -255,10 +256,12 @@
                   <img src="<?php echo $feature_image;?>" alt="">
                 <?php endif; ?>
                   <div class="panel">
-                    <header class="">
-                      <span class="external">Visit STEMcityPHL</span>
-                    </header>
-                    <hr class="mll mrl">
+                    <?php if( $feature_url_text != '' ): ?>
+                      <header class="">
+                        <span class="external"><?php echo $feature_url_text;?></span>
+                      </header>
+                      <hr class="mll mrl">
+                    <?php endif; ?>
                     <span class="details"><?php echo $feature_text;?></span>
                   </div>
                 <?php if( $feature_url != '' ): ?>

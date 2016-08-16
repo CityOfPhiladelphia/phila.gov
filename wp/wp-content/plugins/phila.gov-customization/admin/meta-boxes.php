@@ -1105,6 +1105,11 @@ $meta_var_custom_feature = array(
     'type' => 'textarea',
   ),
   array(
+    'name' => 'Feature URL Text',
+    'id' => $prefix . 'feature_url_text',
+    'type' => 'text',
+  ),
+  array(
     'name' => 'URL',
     'id' => $prefix . 'feature_url',
     'type' => 'url',
