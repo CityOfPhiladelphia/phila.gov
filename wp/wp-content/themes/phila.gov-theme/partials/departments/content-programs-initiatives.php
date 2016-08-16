@@ -184,8 +184,8 @@
 
             <?php endif;?>
 
-              <?php
-                if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):
+            <?php
+              if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):
                 $connect_panel = $current_row_option_two['phila_connect_panel'];
 
                 // Set Connect Panel vars
@@ -199,7 +199,7 @@
                   $feature_text = isset( $feature_panel['phila_feature_text'] ) ? $feature_panel['phila_feature_text'] : '';
                   $feature_url = isset( $feature_panel['phila_feature_url'] ) ? $feature_panel['phila_feature_url'] : '';
                   $feature_url_text = isset( $feature_panel['phila_feature_url_text'] ) ? $feature_panel['phila_feature_url_text'] : '';
-              ?>
+            ?>
               <div class="large-6 columns">
                 <h2 class="contrast"><?php echo $feature_title;?></h2>
                 <?php if( $feature_url != '' ): ?>
