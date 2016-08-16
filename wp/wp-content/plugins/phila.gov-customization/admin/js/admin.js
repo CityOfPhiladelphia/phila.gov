@@ -47,6 +47,9 @@ jQuery(document).ready(function($) {
       $('#title').rules('add', {
         maxlength: 72
       });
+      $('#phila_meta_desc').rules('add', {
+        maxlength: 365
+      });
     }
 
     if ( typenow == 'news_post' && adminpage.indexOf( 'post' ) > -1 ) {
