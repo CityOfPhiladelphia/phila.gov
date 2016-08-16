@@ -15,7 +15,8 @@
       foreach ($page_rows as $key => $value):
         $current_row = $page_rows[$key];?>
         <!-- Grid Row -->
-        <?php if ( $current_row['phila_grid_options'] == 'phila_grid_options_full'):
+        <?php if ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full' ) &&  isset( $current_row['phila_full_options']['phila_full_options_select'] ) ):
+
             $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
             if ( $current_row_option == 'phila_blog_posts'): ?>
@@ -87,7 +88,8 @@
               <?php endif; ?>
 
           <?php endif; ?>
-        <?php elseif ($current_row['phila_grid_options'] == 'phila_grid_options_thirds'):
+        <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds') && ( isset( $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options'] ['phila_one_third_col'] ) ) ):
+          
           $current_row_option_one = $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'];
           $current_row_option_two = $current_row['phila_two_thirds_options'] ['phila_one_third_col']; ?>
 
