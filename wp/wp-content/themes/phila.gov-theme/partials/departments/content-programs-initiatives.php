@@ -15,7 +15,7 @@
       $current_row = $page_rows[$key];?>
 
       <!-- Grid Row -->
-      <?php if ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full'):
+      <?php if ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full' ) && isset( $current_row['phila_full_options']['phila_full_options_select'] ) ):
 
           // Begin full width row
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
@@ -103,11 +103,12 @@
             ?>
           <?php endif; ?>
 
-      <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half'):
+      <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
 
         // Begin 1/2 x 1/2 row
-        $current_row_option_one = $current_row['phila_half_options'] ['phila_half_col_1'];
-        $current_row_option_two = $current_row['phila_half_options'] ['phila_half_col_2']; ?>
+        $current_row_option_one = $current_row['phila_half_options']['phila_half_col_1'];
+        $current_row_option_two = $current_row['phila_half_options']['phila_half_col_2']; ?>
+
         <section class="row mvl">
             <?php if ( $current_row_option_one['phila_half_col_1_option'] == 'phila_custom_text'):?>
 
@@ -151,7 +152,7 @@
             <?php endif; ?>
 
         </section>
-      <?php elseif ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ):
+      <?php elseif ( (isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ) && ( isset($current_row['phila_two_thirds_options']['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options']['phila_one_third_col'] ) ) ):
 
         // Begin 2/3 x 1/3 row
         $current_row_option_one = $current_row['phila_two_thirds_options']['phila_two_thirds_col'];
@@ -199,7 +200,7 @@
                 $feature_text = isset( $feature_panel['phila_feature_text'] ) ? $feature_panel['phila_feature_text'] : '';
                 $feature_url = isset( $feature_panel['phila_feature_url'] ) ? $feature_panel['phila_feature_url'] : '';
                 $feature_url_text = isset( $feature_panel['phila_feature_url_text'] ) ? $feature_panel['phila_feature_url_text'] : '';
-              endif; ?>
+              ?>
               <div class="large-6 columns">
                 <h2 class="contrast"><?php echo $feature_title;?></h2>
                 <?php if( $feature_url != '' ): ?>
@@ -222,6 +223,7 @@
                 <?php endif; ?>
               </div>
               <?php endif; ?>
+            <?php endif; ?>
         </section>
       <?php endif; ?>
     <!-- Grid Row -->
