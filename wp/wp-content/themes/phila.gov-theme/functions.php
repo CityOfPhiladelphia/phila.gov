@@ -165,7 +165,7 @@ function phila_filter_title( $title ){
 
         if ( phila_is_department_homepage( $post ) ){
 
-          $title['title'] = $page_title . $sep . $site_title;
+          $title['title'] = $page_title . $sep . 'Homepage' . $sep . $site_title;
 
         }else{
           $category = get_the_category($post->ID);
@@ -223,7 +223,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo phila_get_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -919,7 +919,9 @@ function phila_home_classes( $classes ) {
     return $classes;
 }
 
-/* Returns true if this page is a department page, has children and no other parents - i.e. department homepage */
+/* Returns true if this page is a department page, has children and no other parents - i.e. department homepage
+Or, has metadata t
+*/
 
 function phila_is_department_homepage( $post ) {
 
@@ -935,8 +937,9 @@ function phila_is_department_homepage( $post ) {
 
       $children = get_pages( array( 'child_of' => $post_id ) );
 
+      $marked_homepage = rwmb_meta('phila_department_home_page');
       //this is a department homepage
-      if( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ){
+      if( ( ( count( $children ) != 0 ) && ( $post->post_parent == 0 ) ) || ( $marked_homepage == 1) ){
 
         return true;
 
@@ -949,7 +952,6 @@ function phila_get_home_news(){
 
   $category = get_the_category();
   $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-  $desc = rwmb_meta( 'phila_news_desc', $args = array( 'type'=>'textarea' ) );
 
   echo '<a href="' . get_permalink() .'" class="card equal">';
 
@@ -967,7 +969,7 @@ function phila_get_home_news(){
         echo '<span>' . $contributor . '</span>';
     }
 
-    echo '<p>' . $desc  . '</p>';
+    echo '<p>' . phila_get_item_meta_desc()  . '</p>';
 
   }
 
@@ -1136,14 +1138,6 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
-function the_dept_description(){
-  $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'));
-
-  if (!$dept_desc == ''){
-    return $dept_desc;
-  }
-}
-
 function phila_get_event_content_blocks(){
 
   $output_array = array();
@@ -1226,9 +1220,12 @@ function phila_get_service_updates(){
   }
 }
 
-function echo_item_meta_desc(){
+function phila_get_item_meta_desc(){
   global $post;
 
+  $meta_desc = array();
+
+  // TODO: Remove all old description fields.
   $dept_desc = rwmb_meta( 'phila_dept_desc' );
 
   $post_desc = rwmb_meta( 'phila_post_desc' );
@@ -1239,59 +1236,68 @@ function echo_item_meta_desc(){
 
   $page_desc = rwmb_meta( 'phila_page_desc' );
 
-  if ( !is_archive() ) {
+  $event_desc = rwmb_meta( 'phila_event_desc' );
 
-  if( $post_desc != '' ){
+  $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
 
-      echo mb_strimwidth( $post_desc,  0, 200, '...');
+  //This order matters. If $canonical_meta_desc is found first, it should be used.
+  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc, $event_desc );
 
-    }else if( $news_desc != '' ){
+  foreach ($meta_desc as $desc){
+    if ( !empty( $desc ) ) {
+      return wp_strip_all_tags($desc);
+    }
+  }
 
-      echo mb_strimwidth( $news_desc, 0, 200, '...');
+  if( is_archive() || is_search() || is_home() ) {
+    return bloginfo( 'description' );
+  }
 
-    }else if( $document_desc != '' ){
+  if ( get_post_type() == 'department_page' ) {
 
-      echo mb_strimwidth( $document_desc, 0, 200, '...');
+    if ( empty( $dept_desc ) && !empty( $post->post_content ) ){
 
-    //special handling for department pages
-    }else if ( get_post_type() == 'department_page' ) {
+      $dept_desc = $post->post_content;
 
-      if ( empty( $dept_desc ) && !empty($post->post_content) ){
-
-        $dept_desc = wp_strip_all_tags($post->post_content);
-
-      }else{
-        //fallback if the wysiwyg editor is empty
-        $parents = get_post_ancestors( $post->ID );
-        $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-
-        $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'), $post_id = $id );
-
-      }
-
-      echo mb_strimwidth( $dept_desc, 0, 200, '...');
-
-    //special handing for regular pages
-    }else if( is_page() ){
-
+    }else{
+      //fallback if the wysiwyg editor is empty
       $parents = get_post_ancestors( $post->ID );
       $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
 
-      if ( empty( $page_desc ) ){
+      $dept_desc = rwmb_meta( 'phila_dept_desc', $args = array('type' => 'textarea'), $post_id = $id );
 
-        $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
+    }
 
-      }
+    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 365, '...');
 
-      echo $page_desc;
+  //special handing for content collection page types, when appropriate
+  }else if( is_page() || get_post_type() == 'service_page' ){
+
+    $parents = get_post_ancestors( $post->ID );
+    $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+    $page_object = get_page( $post->ID );
+    $content = $page_object->post_content;
+
+    $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'), $post_id = $id );
+
+    if ( !empty($page_desc) ) {
+
+      return wp_strip_all_tags( $page_desc );
+
+    }else if ( !empty( $content ) ) {
+
+      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 365, '...');
 
     }else{
-      bloginfo( 'description' );
+      return bloginfo( 'description' );
     }
+
   }else{
-    bloginfo( 'description' );
+    return bloginfo( 'description' );
   }
 }
+
 /**
  * Return a string representing the template currently applied to a page in the loop.
  *
