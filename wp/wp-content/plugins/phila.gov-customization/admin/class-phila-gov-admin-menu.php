@@ -70,5 +70,7 @@ class Phila_Gov_Admin_Menu {
   function phila_register_categories_for_pages(){
 
     register_taxonomy_for_object_type('category', 'page');
+    register_taxonomy_for_object_type('category', 'attachment');
+
   }
 }

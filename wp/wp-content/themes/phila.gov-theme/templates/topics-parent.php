@@ -51,9 +51,8 @@
     <?php while ( $get_L2_pages->have_posts() ) : $get_L2_pages->the_post(); ?>
 
       <?php
-        if (function_exists('rwmb_meta')) {
-          $page_desc = rwmb_meta( 'phila_page_desc', $args = array('type' => 'textarea'));
-        }
+        $page_desc = phila_get_item_meta_desc();
+
         $permalink = get_permalink();
         $title = get_the_title();
 
