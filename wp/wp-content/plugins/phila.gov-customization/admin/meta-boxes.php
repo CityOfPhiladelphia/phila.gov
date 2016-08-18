@@ -1663,7 +1663,7 @@ $meta_var_tax_costs = array(
 
   'fields' => array(
     array(
-      'name'  => 'Cost Callout',
+      'name'  => 'Tax Rate Callout',
       'type' => 'heading',
     ),
     array(
@@ -1671,7 +1671,6 @@ $meta_var_tax_costs = array(
       'id'  => $prefix . 'tax_cost_number',
       'type'  =>  'number',
       'step'  => 'any',
-      'required'  => true
     ),
     array(
       'name'  => 'Unit',
