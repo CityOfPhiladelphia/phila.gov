@@ -75,6 +75,16 @@ class Phila_Gov_Admin_Templates {
       ),
       'relation' => 'or'
     );
+
+    $conditions['postdivrich'] = array(
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'tax_detail' ),
+        ),
+      ),
+      'relation' => 'or'
+    );
+
     return $conditions;
   }
 
@@ -90,7 +100,7 @@ class Phila_Gov_Admin_Templates {
 
       'fields' => array(
         array(
-          'id'  => $prefix.'template_select',
+          'id'  => $prefix . 'template_select',
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
