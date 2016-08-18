@@ -57,9 +57,9 @@
 <div class="row">
   <header class="entry-header small-24 columns">
       <?php if ( isset( $parent_title ) ) : ?>
-        <h1><?php echo $parent_title ?></h1>
+        <h1 class="contrast"><?php echo $parent_title ?></h1>
       <?php else : ?>
-        <h1><?php echo $page_title; ?></h1>
+        <h1 class="contrast"><?php echo $page_title; ?></h1>
       <?php endif; ?>
     </header>
   </div>
