@@ -84,7 +84,7 @@ class Phila_Gov_Admin_Templates {
     $meta_boxes[] = array(
       'id'       => 'page_template_selection',
       'title'    => 'Select Template',
-      'pages'    => array( 'service_page' ),
+      'pages'    => array( 'page', 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
 

@@ -2078,7 +2078,7 @@ $meta_boxes[] = array(
 //Tax Detail Template
 $meta_boxes[] = array(
   'title' => 'Tax Highlights',
-  'pages' => array('service_page'),
+  'pages' => array('page', 'service_page'),
   'priority' => 'high',
 
   'visible' => array('phila_template_select', 'tax_detail'),
@@ -2109,7 +2109,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Payment Information',
-  'pages' => array('service_page'),
+  'pages' => array('page', 'service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'tax_detail'),
 
@@ -2162,7 +2162,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'How you pay',
-  'pages' => array('service_page'),
+  'pages' => array('page', 'service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'tax_detail'),
 
