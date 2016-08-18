@@ -24,20 +24,6 @@ jQuery(document).ready(function($) {
 
   } else {
 
-    //detach and reattach the #page_template div so it's consistant with the location of department page template selection
-    if ( ( typenow == 'page' ) && adminpage.indexOf( 'post' ) > -1 ) {
-      var templateSelect = $('#page_template').detach();
-      var templateSelectLabel = $('label[for=page_template]').detach();
-      $(templateSelect).appendTo('#page_template_selection .inside');
-      $(templateSelectLabel).appendTo('#page_template_selection .inside');
-
-      //render help text
-      var templateText = $( "#pageparentdiv p:contains('Template')");
-
-      $(templateText).append('<p><i>The template selection dropdown is available below the page title.</i></p>');
-
-    }
-
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
         rules: {

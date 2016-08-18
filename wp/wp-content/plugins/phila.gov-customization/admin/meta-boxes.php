@@ -1663,7 +1663,7 @@ $meta_var_tax_costs = array(
 
   'fields' => array(
     array(
-      'name'  => 'Cost Callout',
+      'name'  => 'Tax Rate Callout',
       'type' => 'heading',
     ),
     array(
@@ -1671,7 +1671,6 @@ $meta_var_tax_costs = array(
       'id'  => $prefix . 'tax_cost_number',
       'type'  =>  'number',
       'step'  => 'any',
-      'required'  => true
     ),
     array(
       'name'  => 'Unit',
@@ -2078,7 +2077,7 @@ $meta_boxes[] = array(
 //Tax Detail Template
 $meta_boxes[] = array(
   'title' => 'Tax Highlights',
-  'pages' => array('service_page'),
+  'pages' => array('page', 'service_page'),
   'priority' => 'high',
 
   'visible' => array('phila_template_select', 'tax_detail'),
@@ -2108,8 +2107,8 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'title' => 'Payment Information',
-  'pages' => array('service_page'),
+  'title' => 'Tax Details',
+  'pages' => array('page', 'service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'tax_detail'),
 
@@ -2161,8 +2160,8 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'title' => 'How you pay',
-  'pages' => array('service_page'),
+  'title' => 'How to pay',
+  'pages' => array('page', 'service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'tax_detail'),
 
@@ -2178,7 +2177,7 @@ $meta_boxes[] = array(
         ),
         $meta_var_wysiwyg_multi,
         array(
-          'name' => 'Numbered Items',
+          'name' => 'Steps in payment process',
           'type'  => 'heading',
         ),
         $meta_var_ordered_content

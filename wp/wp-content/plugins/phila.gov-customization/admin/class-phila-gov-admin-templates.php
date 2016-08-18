@@ -75,6 +75,16 @@ class Phila_Gov_Admin_Templates {
       ),
       'relation' => 'or'
     );
+
+    $conditions['postdivrich'] = array(
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'tax_detail' ),
+        ),
+      ),
+      'relation' => 'or'
+    );
+
     return $conditions;
   }
 
@@ -84,13 +94,13 @@ class Phila_Gov_Admin_Templates {
     $meta_boxes[] = array(
       'id'       => 'page_template_selection',
       'title'    => 'Select Template',
-      'pages'    => array( 'service_page' ),
+      'pages'    => array( 'page', 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
 
       'fields' => array(
         array(
-          'id'  => $prefix.'template_select',
+          'id'  => $prefix . 'template_select',
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
