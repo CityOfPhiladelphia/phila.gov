@@ -45,8 +45,13 @@
         <i class="fa fa-usd" aria-hidden="true"></i>
   Tax Rate</div>
       <div class="pam">
-        <div class="numbers"><span class="large-text"><?php echo $tax['cost']['number'] ?></span><span class="symbol"><?php echo $tax['cost']['unit'] ?></span></div>
-        <div class="mtm"><?php echo $tax['cost']['summary_brief'] ?></div>
+          <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
+            <div class="numbers mbm">
+              <span class="large-text">
+              <?php echo $tax['cost']['number'] ?></span><span class="symbol"><?php echo $tax['cost']['unit'] ?></span>
+            </div>
+          <?php endif; ?>
+        <div><?php echo $tax['cost']['summary_brief'] ?></div>
       </div>
     </div>
   </div>
