@@ -2108,7 +2108,7 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'title' => 'Payment Information',
+  'title' => 'Tax Details',
   'pages' => array('page', 'service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'tax_detail'),
@@ -2161,7 +2161,7 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'title' => 'How you pay',
+  'title' => 'How to pay',
   'pages' => array('page', 'service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'tax_detail'),
@@ -2178,7 +2178,7 @@ $meta_boxes[] = array(
         ),
         $meta_var_wysiwyg_multi,
         array(
-          'name' => 'Numbered Items',
+          'name' => 'Steps in payment process',
           'type'  => 'heading',
         ),
         $meta_var_ordered_content
