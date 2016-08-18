@@ -43,7 +43,7 @@
     <div class="panel info center heading equal">
       <div class="title pvxs">
         <i class="fa fa-usd" aria-hidden="true"></i>
-  Cost</div>
+  Tax Rate</div>
       <div class="pam">
         <div class="numbers"><span class="large-text"><?php echo $tax['cost']['number'] ?></span><span class="symbol"><?php echo $tax['cost']['unit'] ?></span></div>
         <div class="mtm"><?php echo $tax['cost']['summary_brief'] ?></div>
@@ -86,7 +86,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Rates, Penalties & Fees</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Rates, Penalties, & Fees</h3>
       <div class="phm-mu">
         <h4>How much is it?</h4>
         <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
@@ -128,7 +128,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How you pay the tax</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to Pay</h3>
       <div class="phm-mu">
         <?php foreach ( $intro as $item ):  ?>
           <div class="mbm">
