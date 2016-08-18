@@ -1451,7 +1451,7 @@ $meta_var_wysiwyg = array(
       'type'  => 'text'
     ),
     array(
-      'id'  => $prefix . 'wywiyyg_content',
+      'id'  => $prefix . 'wysiwyg_content',
       'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
     )
@@ -1473,7 +1473,7 @@ $meta_var_wysiwyg_multi = array(
       'class' => 'width-95'
     ),
     array(
-      'id'  => $prefix . 'wywiyyg_content',
+      'id'  => $prefix . 'wysiwyg_content',
       'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
     )
@@ -1570,7 +1570,7 @@ $meta_var_ordered_content = array(
       ),
     ),
     array(
-      'id'  => $prefix . 'step_wywiyyg_content',
+      'id'  => $prefix . 'step_wysiwyg_content',
       'visible' => array('phila_address_step', false),
       'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
