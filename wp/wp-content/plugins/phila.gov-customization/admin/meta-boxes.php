@@ -1451,7 +1451,21 @@ $meta_var_wysiwyg = array(
       'type'  => 'text'
     ),
     array(
-      'id'  => $prefix . 'wywiyyg_content',
+      'id'  => $prefix . 'wysiwyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic
+    )
+  )
+);
+//WYSIWYG with Title
+$meta_var_wysiwyg_no_title = array(
+  'id'  =>  $prefix . 'custom_wysiwyg',
+  'type'  => 'group',
+  'clone' => false,
+
+  'fields'  => array(
+    array(
+      'id'  => $prefix . 'wysiwyg_content',
       'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
     )
@@ -1473,7 +1487,7 @@ $meta_var_wysiwyg_multi = array(
       'class' => 'width-95'
     ),
     array(
-      'id'  => $prefix . 'wywiyyg_content',
+      'id'  => $prefix . 'wysiwyg_content',
       'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
     )
@@ -1570,7 +1584,7 @@ $meta_var_ordered_content = array(
       ),
     ),
     array(
-      'id'  => $prefix . 'step_wywiyyg_content',
+      'id'  => $prefix . 'step_wysiwyg_content',
       'visible' => array('phila_address_step', false),
       'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
@@ -1780,7 +1794,7 @@ $meta_did_you_know = array(
 
 $metabox_full_options_select = array(
  'id'   => $prefix . 'full_options_select',
- 'desc'  => 'Choose to display full width content.',
+ 'name'  => 'Choose content type',
  'type' => 'select',
  'placeholder' => 'Select...',
  'options' => array(
@@ -1797,7 +1811,6 @@ $metabox_full_options_select = array(
  );
 
 $metabox_full_options = array(
- 'name' => 'Full Width Options',
  'id'   => $prefix . 'full_options',
  'type' => 'group',
  'visible' => array(
@@ -1806,6 +1819,10 @@ $metabox_full_options = array(
    'phila_grid_options_full'
  ),
  'fields' => array(
+   array(
+     'name' => 'Full Width Options',
+     'type' => 'heading'
+   ),
    $metabox_full_options_select,
    array(
      'id' => $prefix . 'blog_options',
@@ -1942,7 +1959,6 @@ $metabox_thirds_option_two = array(
 
 // 2/3 x 1/3 Options
 $metabox_thirds_options = array(
-  'name' => '2/3 x 1/3 Options',
   'id'   => $prefix . 'two_thirds_options',
   'type' => 'group',
   'hidden' => array(
@@ -1951,7 +1967,14 @@ $metabox_thirds_options = array(
     'phila_grid_options_thirds'
 ),
   'fields' => array(
+    array(
+      'name'  => '2/3 x 1/3 Options',
+      'type' => 'heading',
+    ),
     $metabox_thirds_option_one,
+    array(
+      'type' => 'divider'
+    ),
     $metabox_thirds_option_two,
   ),
 );
@@ -2025,7 +2048,6 @@ $metabox_half_option_two = array(
  );
 
 $metabox_half_options = array(
-  'name' => '1/2 x 1/2 Options',
   'id'   => $prefix . 'half_options',
   'type' => 'group',
   'hidden' => array(
@@ -2034,16 +2056,22 @@ $metabox_half_options = array(
     'phila_grid_options_half'
   ),
   'fields' => array(
+    array(
+      'name'  => '1/2 x 1/2 Options',
+      'type' => 'heading',
+    ),
     $metabox_half_option_one,
+    array(
+      'type' => 'divider'
+    ),
     $metabox_half_option_two,
   ),
 );
 
 // Grid Options
 $metabox_grid_options = array(
- 'name' => 'Row Layout',
  'id'   => $prefix . 'grid_options',
- 'desc'  => 'Choose the row layout.',
+ 'name'  => 'Choose row layout',
  'type' => 'select',
  'placeholder' => 'Select...',
  'options' => array(
@@ -2059,7 +2087,50 @@ $metabox_grid_options = array(
    'type'  => 'group',
    'clone' => true,
    'sort_clone' => true,
-   'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options, $metabox_half_options ),
+   'fields' => array(
+     array(
+       'name'  => 'Row',
+       'type' => 'heading',
+     ),
+     $metabox_grid_options,
+     $metabox_full_options,
+     $metabox_thirds_options,
+     $metabox_half_options
+   ),
+ );
+
+ $metabox_grid_row_dev = array(
+   'id'    => $prefix . 'row-dev',
+   'class'    => $prefix . 'row-dev',
+   'type'  => 'group',
+   'clone' => true,
+   'sort_clone' => true,
+   'fields' => array(
+     array(
+       'name'  => 'Row',
+       'type' => 'heading',
+     ),
+     $metabox_grid_options,
+     $metabox_full_options_select,
+     array(
+       'name' => 'Callout Options',
+       'type' => 'heading'
+     ),
+     array(
+       'id' => 'callout-status',
+       'name' => 'Status',
+       'type' => 'select',
+       'options' => array(
+         'default' => 'Default',
+         'important' => 'Important'
+       ),
+     ),
+     array(
+       'id'  => $prefix . 'wysiwyg_content',
+       'type'  => 'wysiwyg',
+       'options' => $wysiwyg_options_basic
+     )
+   ),
  );
 
 //Department Homepage metaboxes
@@ -2072,6 +2143,19 @@ $meta_boxes[] = array(
   'fields' => array(
     $meta_var_programs_initiatives_images,
     $metabox_grid_row,
+  )
+);
+
+//Department Homepage metaboxes
+$meta_boxes[] = array(
+  'id'       => $prefix . 'department_homepage-dev',
+  'title'    => 'Dev Page Content',
+  'pages' => array( 'department_page' ),
+  'priority' => 'high',
+
+  'fields' => array(
+    $meta_var_programs_initiatives_images,
+    $metabox_grid_row_dev,
   )
 );
 
