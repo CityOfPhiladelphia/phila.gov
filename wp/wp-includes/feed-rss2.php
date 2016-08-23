@@ -48,7 +48,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 		$duration = 'hourly';
 
 		/**
-		 * Filters how often to update the RSS feed.
+		 * Filter how often to update the RSS feed.
 		 *
 		 * @since 2.1.0
 		 *
@@ -61,7 +61,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 		$frequency = '1';
 
 		/**
-		 * Filters the RSS update frequency.
+		 * Filter the RSS update frequency.
 		 *
 		 * @since 2.1.0
 		 *

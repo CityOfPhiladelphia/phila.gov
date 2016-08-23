@@ -8,10 +8,6 @@ var imageEdit = window.imageEdit = {
 	_view : false,
 
 	intval : function(f) {
-		/*
-		 * Bitwise OR operator: one of the obscure ways to truncate floating point figures,
-		 * worth reminding JavaScript doesn't have a distinct "integer" type.
-		 */
 		return f | 0;
 	},
 
@@ -83,13 +79,9 @@ var imageEdit = window.imageEdit = {
 		return $('input[name="imgedit-target-' + postid + '"]:checked', '#imgedit-save-target-' + postid).val() || 'full';
 	},
 
-	scaleChanged : function( postid, x, el ) {
+	scaleChanged : function(postid, x) {
 		var w = $('#imgedit-scale-width-' + postid), h = $('#imgedit-scale-height-' + postid),
 		warn = $('#imgedit-scale-warn-' + postid), w1 = '', h1 = '';
-
-		if ( false === this.validateNumeric( el ) ) {
-			return;
-		}
 
 		if ( x ) {
 			h1 = ( w.val() !== '' ) ? Math.round( w.val() / this.hold.xy_ratio ) : '';
@@ -369,8 +361,6 @@ var imageEdit = window.imageEdit = {
 				btn.removeClass( 'button-activated' );
 				spin.removeClass( 'is-active' );
 			});
-			// Initialise the Image Editor now that everything is ready.
-			imageEdit.init( postid );
 		});
 
 		return dfd;
@@ -596,15 +586,11 @@ var imageEdit = window.imageEdit = {
 		});
 	},
 
-	setNumSelection : function( postid, el ) {
+	setNumSelection : function(postid) {
 		var sel, elX = $('#imgedit-sel-width-' + postid), elY = $('#imgedit-sel-height-' + postid),
 			x = this.intval( elX.val() ), y = this.intval( elY.val() ),
 			img = $('#image-preview-' + postid), imgh = img.height(), imgw = img.width(),
 			sizer = this.hold.sizer, x1, y1, x2, y2, ias = this.iasapi;
-
-		if ( false === this.validateNumeric( el ) ) {
-			return;
-		}
 
 		if ( x < 1 ) {
 			elX.val('');
@@ -664,7 +650,8 @@ var imageEdit = window.imageEdit = {
 			y = this.intval( $('#imgedit-crop-height-' + postid).val() ),
 			h = $('#image-preview-' + postid).height();
 
-		if ( false === this.validateNumeric( el ) ) {
+		if ( !this.intval( $(el).val() ) ) {
+			$(el).val('');
 			return;
 		}
 
@@ -688,13 +675,6 @@ var imageEdit = window.imageEdit = {
 				this.iasapi.setSelection( sel.x1, sel.y1, sel.x2, r );
 				this.iasapi.update();
 			}
-		}
-	},
-
-	validateNumeric: function( el ) {
-		if ( ! this.intval( $( el ).val() ) ) {
-			$( el ).val( '' );
-			return false;
 		}
 	}
 };

@@ -69,7 +69,7 @@ class WP_Widget_Links extends WP_Widget {
 		);
 
 		/**
-		 * Filters the arguments for the Links widget.
+		 * Filter the arguments for the Links widget.
 		 *
 		 * @since 2.6.0
 		 * @since 4.4.0 The `$instance` parameter was added.

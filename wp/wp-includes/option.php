@@ -7,7 +7,7 @@
  */
 
 /**
- * Retrieves an option value based on an option name.
+ * Retrieve option value based on name of option.
  *
  * If the option does not exist or does not have a value, then the return value
  * will be false. This is useful to check whether you need to install an option
@@ -16,8 +16,8 @@
  *
  * If the option was serialized then it will be unserialized when it is returned.
  *
- * Any scalar values will be returned as strings. You may coerce the return type of
- * a given option by registering an {@see 'option_$option'} filter callback.
+ * Any scalar values will be returned as strings. You may coerce the return type of a given option by registering a
+ * 'option_{$option}' filter callback.
  *
  * @since 1.5.0
  *
@@ -35,7 +35,7 @@ function get_option( $option, $default = false ) {
 		return false;
 
 	/**
-	 * Filters the value of an existing option before it is retrieved.
+	 * Filter the value of an existing option before it is retrieved.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -61,7 +61,7 @@ function get_option( $option, $default = false ) {
 		$notoptions = wp_cache_get( 'notoptions', 'options' );
 		if ( isset( $notoptions[ $option ] ) ) {
 			/**
-			 * Filters the default value for an option.
+			 * Filter the default value for an option.
 			 *
 			 * The dynamic portion of the hook name, `$option`, refers to the option name.
 			 *
@@ -121,7 +121,7 @@ function get_option( $option, $default = false ) {
 		$value = untrailingslashit( $value );
 
 	/**
-	 * Filters the value of an existing option.
+	 * Filter the value of an existing option.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -266,7 +266,7 @@ function update_option( $option, $value, $autoload = null ) {
 	$old_value = get_option( $option );
 
 	/**
-	 * Filters a specific option before its value is (maybe) serialized and updated.
+	 * Filter a specific option before its value is (maybe) serialized and updated.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -280,7 +280,7 @@ function update_option( $option, $value, $autoload = null ) {
 	$value = apply_filters( 'pre_update_option_' . $option, $value, $old_value, $option );
 
 	/**
-	 * Filters an option before its value is (maybe) serialized and updated.
+	 * Filter an option before its value is (maybe) serialized and updated.
 	 *
 	 * @since 3.9.0
 	 *
@@ -295,7 +295,7 @@ function update_option( $option, $value, $autoload = null ) {
 		return false;
 
 	/** This filter is documented in wp-includes/option.php */
-	if ( apply_filters( 'default_option_' . $option, false, $option ) === $old_value ) {
+	if ( apply_filters( 'default_option_' . $option, false ) === $old_value ) {
 		// Default setting for new options is 'yes'.
 		if ( null === $autoload ) {
 			$autoload = 'yes';
@@ -399,7 +399,7 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	global $wpdb;
 
 	if ( !empty( $deprecated ) )
-		_deprecated_argument( __FUNCTION__, '2.3.0' );
+		_deprecated_argument( __FUNCTION__, '2.3' );
 
 	$option = trim($option);
 	if ( empty($option) )
@@ -416,7 +416,7 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	$notoptions = wp_cache_get( 'notoptions', 'options' );
 	if ( !is_array( $notoptions ) || !isset( $notoptions[$option] ) )
 		/** This filter is documented in wp-includes/option.php */
-		if ( apply_filters( 'default_option_' . $option, false, $option ) !== get_option( $option ) )
+		if ( apply_filters( 'default_option_' . $option, false ) !== get_option( $option ) )
 			return false;
 
 	$serialized_value = maybe_serialize( $value );
@@ -609,7 +609,7 @@ function delete_transient( $transient ) {
 function get_transient( $transient ) {
 
 	/**
-	 * Filters the value of an existing transient.
+	 * Filter the value of an existing transient.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -651,7 +651,7 @@ function get_transient( $transient ) {
 	}
 
 	/**
-	 * Filters an existing transient's value.
+	 * Filter an existing transient's value.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -684,7 +684,7 @@ function set_transient( $transient, $value, $expiration = 0 ) {
 	$expiration = (int) $expiration;
 
 	/**
-	 * Filters a specific transient before its value is set.
+	 * Filter a specific transient before its value is set.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -699,7 +699,7 @@ function set_transient( $transient, $value, $expiration = 0 ) {
 	$value = apply_filters( 'pre_set_transient_' . $transient, $value, $expiration, $transient );
 
 	/**
-	 * Filters the expiration for a transient before its value is set.
+	 * Filter the expiration for a transient before its value is set.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -844,14 +844,13 @@ function get_user_setting( $name, $default = false ) {
  * Add or update user interface setting.
  *
  * Both $name and $value can contain only ASCII letters, numbers and underscores.
- *
  * This function has to be used before any output has started as it calls setcookie().
  *
  * @since 2.8.0
  *
  * @param string $name  The name of the setting.
  * @param string $value The value for the setting.
- * @return bool|null True if set successfully, false if not. Null if the current user can't be established.
+ * @return bool|void true if set successfully/false if not.
  */
 function set_user_setting( $name, $value ) {
 	if ( headers_sent() ) {
@@ -868,13 +867,12 @@ function set_user_setting( $name, $value ) {
  * Delete user interface settings.
  *
  * Deleting settings would reset them to the defaults.
- *
  * This function has to be used before any output has started as it calls setcookie().
  *
  * @since 2.7.0
  *
  * @param string $names The name or array of names of the setting to be deleted.
- * @return bool|null True if deleted successfully, false if not. Null if the current user can't be established.
+ * @return bool|void true if deleted successfully/false if not.
  */
 function delete_user_setting( $names ) {
 	if ( headers_sent() ) {
@@ -943,13 +941,11 @@ function get_all_user_settings() {
  * Private. Set all user interface settings.
  *
  * @since 2.8.0
- * @access private
  *
  * @global array $_updated_user_settings
  *
- * @param array $user_settings User settings.
- * @return bool|null False if the current user can't be found, null if the current
- *                   user is not a super admin or a member of the site, otherwise true.
+ * @param array $user_settings
+ * @return bool|void
  */
 function wp_set_all_user_settings( $user_settings ) {
 	global $_updated_user_settings;
@@ -1092,7 +1088,7 @@ function get_network_option( $network_id, $option, $default = false ) {
 	}
 
 	/**
-	 * Filters an existing network option before it is retrieved.
+	 * Filter an existing network option before it is retrieved.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -1119,7 +1115,7 @@ function get_network_option( $network_id, $option, $default = false ) {
 	if ( isset( $notoptions[ $option ] ) ) {
 
 		/**
-		 * Filters a specific default network option.
+		 * Filter a specific default network option.
 		 *
 		 * The dynamic portion of the hook name, `$option`, refers to the option name.
 		 *
@@ -1163,7 +1159,7 @@ function get_network_option( $network_id, $option, $default = false ) {
 	}
 
 	/**
-	 * Filters the value of an existing network option.
+	 * Filter the value of an existing network option.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -1211,7 +1207,7 @@ function add_network_option( $network_id, $option, $value ) {
 	wp_protect_special_option( $option );
 
 	/**
-	 * Filters the value of a specific network option before it is added.
+	 * Filter the value of a specific network option before it is added.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -1227,7 +1223,7 @@ function add_network_option( $network_id, $option, $value ) {
 	$notoptions_key = "$network_id:notoptions";
 
 	if ( ! is_multisite() ) {
-		$result = add_option( $option, $value, '', 'no' );
+		$result = add_option( $option, $value );
 	} else {
 		$cache_key = "$network_id:$option";
 
@@ -1405,7 +1401,7 @@ function update_network_option( $network_id, $option, $value ) {
 	$old_value = get_network_option( $network_id, $option, false );
 
 	/**
-	 * Filters a specific network option before its value is updated.
+	 * Filter a specific network option before its value is updated.
 	 *
 	 * The dynamic portion of the hook name, `$option`, refers to the option name.
 	 *
@@ -1435,7 +1431,7 @@ function update_network_option( $network_id, $option, $value ) {
 	}
 
 	if ( ! is_multisite() ) {
-		$result = update_option( $option, $value, 'no' );
+		$result = update_option( $option, $value );
 	} else {
 		$value = sanitize_option( $option, $value );
 
@@ -1542,7 +1538,7 @@ function delete_site_transient( $transient ) {
 function get_site_transient( $transient ) {
 
 	/**
-	 * Filters the value of an existing site transient.
+	 * Filter the value of an existing site transient.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -1583,7 +1579,7 @@ function get_site_transient( $transient ) {
 	}
 
 	/**
-	 * Filters the value of an existing site transient.
+	 * Filter the value of an existing site transient.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -1615,7 +1611,7 @@ function get_site_transient( $transient ) {
 function set_site_transient( $transient, $value, $expiration = 0 ) {
 
 	/**
-	 * Filters the value of a specific site transient before it is set.
+	 * Filter the value of a specific site transient before it is set.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *
@@ -1630,7 +1626,7 @@ function set_site_transient( $transient, $value, $expiration = 0 ) {
 	$expiration = (int) $expiration;
 
 	/**
-	 * Filters the expiration for a site transient before its value is set.
+	 * Filter the expiration for a site transient before its value is set.
 	 *
 	 * The dynamic portion of the hook name, `$transient`, refers to the transient name.
 	 *

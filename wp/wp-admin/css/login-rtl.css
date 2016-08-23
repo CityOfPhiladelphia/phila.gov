@@ -8,11 +8,15 @@ body {
 	padding: 0;
 }
 
+html {
+	background: #f1f1f1;
+}
+
 body {
 	background: #f1f1f1;
 	min-width: 0;
 	color: #444;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 13px;
 	line-height: 1.4em;
 }
@@ -83,7 +87,7 @@ p {
 	margin-top: 20px;
 	margin-right: 0;
 	padding: 26px 24px 46px;
-	font-weight: 400;
+	font-weight: normal;
 	overflow: hidden;
 	background: #fff;
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
@@ -91,7 +95,7 @@ p {
 }
 
 .login form .forgetmenot {
-	font-weight: 400;
+	font-weight: normal;
 	float: right;
 	margin-bottom: 0;
 }
@@ -133,7 +137,7 @@ p {
 	color: #444;
 	height: 84px;
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: normal;
 	line-height: 1.3em;
 	margin: 0 auto 25px;
 	padding: 0;

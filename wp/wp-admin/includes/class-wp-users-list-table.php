@@ -125,7 +125,7 @@ class WP_Users_List_Table extends WP_List_Table {
 			$args['order'] = $_REQUEST['order'];
 
 		/**
-		 * Filters the query arguments used to retrieve users for the current users list table.
+		 * Filter the query arguments used to retrieve users for the current users list table.
 		 *
 		 * @since 4.4.0
 		 *
@@ -160,7 +160,7 @@ class WP_Users_List_Table extends WP_List_Table {
 	 * with this table.
 	 *
 	 * Provides a list of roles and user count for that role for easy
-	 * Filtersing of the user table.
+	 * filtering of the user table.
 	 *
 	 * @since  3.1.0
 	 * @access protected
@@ -275,11 +275,8 @@ class WP_Users_List_Table extends WP_List_Table {
 		 * in the Users list table.
 		 *
 		 * @since 3.5.0
-		 * @since 4.6.0 The `$which` parameter was added.
-		 *
-		 * @param string $which The location of the extra table nav markup: 'top' or 'bottom'.
 		 */
-		do_action( 'restrict_manage_users', $which );
+		do_action( 'restrict_manage_users' );
 		echo '</div>';
 	}
 
@@ -339,6 +336,7 @@ class WP_Users_List_Table extends WP_List_Table {
 	protected function get_sortable_columns() {
 		$c = array(
 			'username' => 'login',
+			'name'     => 'name',
 			'email'    => 'email',
 		);
 
@@ -414,7 +412,7 @@ class WP_Users_List_Table extends WP_List_Table {
 				$actions['remove'] = "<a class='submitdelete' href='" . wp_nonce_url( $url."action=remove&amp;user=$user_object->ID", 'bulk-users' ) . "'>" . __( 'Remove' ) . "</a>";
 
 			/**
-			 * Filters the action links displayed under each user in the Users list table.
+			 * Filter the action links displayed under each user in the Users list table.
 			 *
 			 * @since 2.8.0
 			 *
@@ -490,7 +488,7 @@ class WP_Users_List_Table extends WP_List_Table {
 						break;
 					default:
 						/**
-						 * Filters the display output of custom columns in the Users list table.
+						 * Filter the display output of custom columns in the Users list table.
 						 *
 						 * @since 2.8.0
 						 *
@@ -549,7 +547,7 @@ class WP_Users_List_Table extends WP_List_Table {
 		}
 
 		/**
-		 * Filters the returned array of roles for a user.
+		 * Filter the returned array of roles for a user.
 		 *
 		 * @since 4.4.0
 		 *

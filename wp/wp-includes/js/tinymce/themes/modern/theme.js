@@ -439,7 +439,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 		}
 
 		function reposition(match) {
-			var relPos, panelRect, elementRect, contentAreaRect, panel, relRect, testPositions, smallElementWidthThreshold;
+			var relPos, panelRect, elementRect, contentAreaRect, panel, relRect, testPositions;
 
 			if (editor.removed) {
 				return;
@@ -462,7 +462,6 @@ tinymce.ThemeManager.add('modern', function(editor) {
 			elementRect = getElementRect(match.element);
 			panelRect = tinymce.DOM.getRect(panel.getEl());
 			contentAreaRect = tinymce.DOM.getRect(editor.getContentAreaContainer() || editor.getBody());
-			smallElementWidthThreshold = 25;
 
 			// We need to use these instead of the rect values since the style
 			// size properites might not be the same as the real size for a table
@@ -474,7 +473,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 			}
 
 			// Inflate the elementRect so it doesn't get placed above resize handles
-			if (editor.selection.controlSelection.isResizable(match.element) && elementRect.w < smallElementWidthThreshold) {
+			if (editor.selection.controlSelection.isResizable(match.element)) {
 				elementRect = Rect.inflate(elementRect, 0, 8);
 			}
 
@@ -486,7 +485,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 				movePanelTo(panel, userConstrain(relRect.x, relRect.y, elementRect, contentAreaRect, panelRect));
 			} else {
 				// Allow overflow below the editor to avoid placing toolbars ontop of tables
-				contentAreaRect.h += panelRect.h;
+				contentAreaRect.h += 40;
 
 				elementRect = Rect.intersect(contentAreaRect, elementRect);
 				if (elementRect) {
@@ -506,7 +505,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 			}
 
 			togglePositionClass(panel, relPos, function(pos1, pos2) {
-				return pos1 === pos2;
+				return (!elementRect || elementRect.w > 40) && pos1 === pos2;
 			});
 
 			//drawRect(contentAreaRect, 'blue');
@@ -848,7 +847,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 		// Add statusbar if needed
 		if (settings.statusbar !== false) {
 			panel.add({type: 'panel', name: 'statusbar', classes: 'statusbar', layout: 'flow', border: '1 0 0 0', ariaRoot: true, items: [
-				{type: 'elementpath', editor: editor},
+				{type: 'elementpath'},
 				resizeHandleCtrl
 			]});
 		}

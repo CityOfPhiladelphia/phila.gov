@@ -15,8 +15,7 @@
 			$visualEditor = $(),
 			$textTop = $( '#ed_toolbar' ),
 			$textEditor = $( '#content' ),
-			textEditor = $textEditor[0],
-			oldTextLength = 0,
+			$textEditorClone = $( '<div id="content-textarea-clone" class="wp-exclude-emoji"></div>' ),
 			$bottom = $( '#post-status-info' ),
 			$menuBar = $(),
 			$statusBar = $(),
@@ -53,6 +52,16 @@
 				sideSortablesHeight: 0
 			};
 
+		$textEditorClone.insertAfter( $textEditor );
+
+		$textEditorClone.css( {
+			'font-family': $textEditor.css( 'font-family' ),
+			'font-size': $textEditor.css( 'font-size' ),
+			'line-height': $textEditor.css( 'line-height' ),
+			'white-space': 'pre-wrap',
+			'word-wrap': 'break-word'
+		} );
+
 		function getHeights() {
 			var windowWidth = $window.width();
 
@@ -75,41 +84,68 @@
 			}
 		}
 
+		function textEditorKeyup( event ) {
+			var VK = jQuery.ui.keyCode,
+				key = event.keyCode,
+				range = document.createRange(),
+				selStart = $textEditor[0].selectionStart,
+				selEnd = $textEditor[0].selectionEnd,
+				textNode = $textEditorClone[0].firstChild,
+				buffer = 10,
+				offset, cursorTop, cursorBottom, editorTop, editorBottom;
+
+			if ( selStart && selEnd && selStart !== selEnd ) {
+				return;
+			}
+
+			// These are not TinyMCE ranges.
+			try {
+				range.setStart( textNode, selStart );
+				range.setEnd( textNode, selEnd + 1 );
+			} catch ( ex ) {}
+
+			offset = range.getBoundingClientRect();
+
+			if ( ! offset.height ) {
+				return;
+			}
+
+			cursorTop = offset.top - buffer;
+			cursorBottom = cursorTop + offset.height + buffer;
+			editorTop = heights.adminBarHeight + heights.toolsHeight + heights.textTopHeight;
+			editorBottom = heights.windowHeight - heights.bottomHeight;
+
+			if ( cursorTop < editorTop && ( key === VK.UP || key === VK.LEFT || key === VK.BACKSPACE ) ) {
+				window.scrollTo( window.pageXOffset, cursorTop + window.pageYOffset - editorTop );
+			} else if ( cursorBottom > editorBottom ) {
+				window.scrollTo( window.pageXOffset, cursorBottom + window.pageYOffset - editorBottom );
+			}
+		}
+
 		function textEditorResize() {
-			if ( mceEditor && ! mceEditor.isHidden() ) {
+			if ( ( mceEditor && ! mceEditor.isHidden() ) || ( ! mceEditor && initialMode === 'tinymce' ) ) {
 				return;
 			}
 
-			if ( ! mceEditor && initialMode === 'tinymce' ) {
+			var textEditorHeight = $textEditor.height(),
+				hiddenHeight;
+
+			$textEditorClone.width( $textEditor.width() - 22 );
+			$textEditorClone.text( $textEditor.val() + '&nbsp;' );
+
+			hiddenHeight = $textEditorClone.height();
+
+			if ( hiddenHeight < autoresizeMinHeight ) {
+				hiddenHeight = autoresizeMinHeight;
+			}
+
+			if ( hiddenHeight === textEditorHeight ) {
 				return;
 			}
 
-			var length = textEditor.value.length;
-			var height = parseInt( textEditor.style.height, 10 );
-			var top = window.scrollTop;
+			$textEditor.height( hiddenHeight );
 
-			if ( length < oldTextLength ) {
-				// textEditor.scrollHeight is not adjusted until the next line.
-				textEditor.style.height = 'auto';
-
-				if ( textEditor.scrollHeight > autoresizeMinHeight ) {
-					textEditor.style.height = textEditor.scrollHeight + 'px';
-				} else {
-					textEditor.style.height = autoresizeMinHeight + 'px';
-				}
-
-				// Prevent scroll-jumping in Firefox and IE.
-				window.scrollTop = top;
-
-				if ( textEditor.scrollHeight < height ) {
-					adjust();
-				}
-			} else if ( height < textEditor.scrollHeight ) {
-				textEditor.style.height = textEditor.scrollHeight + 'px';
-				adjust();
-			}
-
-			oldTextLength = length;
+			adjust();
 		}
 
 		// We need to wait for TinyMCE to initialize.
@@ -438,7 +474,7 @@
 
 					if ( event && event.deltaHeight > 0 && event.deltaHeight < 100 ) {
 						window.scrollBy( 0, event.deltaHeight );
-					} else if ( visual && advanced ) {
+					} else if ( advanced ) {
 						fixedBottom = true;
 
 						$statusBar.css( {
@@ -567,6 +603,8 @@
 					$textEditor.css( {
 						marginTop: heights.textTopHeight
 					} );
+
+					$textEditorClone.width( contentWrapWidth - 20 - ( borderWidth * 2 ) );
 				}
 			}
 		}
@@ -604,7 +642,7 @@
 
 			// Adjust when collapsing the menu, changing the columns, changing the body class.
 			$document.on( 'wp-collapse-menu.editor-expand postboxes-columnchange.editor-expand editor-classchange.editor-expand', adjust )
-				.on( 'postbox-toggled.editor-expand postbox-moved.editor-expand', function() {
+				.on( 'postbox-toggled.editor-expand', function() {
 					if ( ! fixedSideTop && ! fixedSideBottom && window.pageYOffset > pinnedToolsTop ) {
 						fixedSideBottom = true;
 						window.scrollBy( 0, -1 );
@@ -622,6 +660,7 @@
 				});
 
 			$textEditor.on( 'focus.editor-expand input.editor-expand propertychange.editor-expand', textEditorResize );
+			$textEditor.on( 'keyup.editor-expand', textEditorKeyup );
 			mceBind();
 
 			// Adjust when entering/exiting fullscreen mode.

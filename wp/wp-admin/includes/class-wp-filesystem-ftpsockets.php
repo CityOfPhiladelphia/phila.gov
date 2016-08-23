@@ -121,10 +121,8 @@ class WP_Filesystem_ftpsockets extends WP_Filesystem_Base {
 
 		$temp = wp_tempnam( $file );
 
-		if ( ! $temphandle = fopen( $temp, 'w+' ) ) {
-			unlink( $temp );
+		if ( ! $temphandle = fopen($temp, 'w+') )
 			return false;
-		}
 
 		mbstring_binary_safe_encoding();
 
