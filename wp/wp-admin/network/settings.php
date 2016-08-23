@@ -17,7 +17,7 @@ if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
 if ( ! current_user_can( 'manage_network_options' ) )
-	wp_die( __( 'Sorry, you are not allowed to access this page.' ), 403 );
+	wp_die( __( 'You do not have permission to access this page.' ), 403 );
 
 $title = __( 'Network Settings' );
 $parent_file = 'settings.php';
@@ -62,7 +62,6 @@ if ( $_POST ) {
 		'first_post', 'first_page', 'first_comment', 'first_comment_url', 'first_comment_author',
 		'welcome_email', 'welcome_user_email', 'fileupload_maxk', 'global_terms_enabled',
 		'illegal_names', 'limited_email_domains', 'banned_email_domains', 'WPLANG', 'admin_email',
-		'first_comment_email',
 	);
 
 	// Handle translation install.
@@ -94,7 +93,7 @@ if ( $_POST ) {
 include( ABSPATH . 'wp-admin/admin-header.php' );
 
 if ( isset( $_GET['updated'] ) ) {
-	?><div id="message" class="updated notice is-dismissible"><p><?php _e( 'Settings saved.' ) ?></p></div><?php
+	?><div id="message" class="updated notice is-dismissible"><p><?php _e( 'Options saved.' ) ?></p></div><?php
 }
 ?>
 
@@ -266,15 +265,6 @@ if ( isset( $_GET['updated'] ) ) {
 				</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="first_comment_email"><?php _e( 'First Comment Email' ) ?></label></th>
-				<td>
-					<input type="text" size="40" name="first_comment_email" id="first_comment_email" aria-describedby="first-comment-email-desc" value="<?php echo esc_attr( get_site_option( 'first_comment_email' ) ); ?>" />
-					<p class="description" id="first-comment-email-desc">
-						<?php _e( 'The email address of the first comment author on a new site.' ) ?>
-					</p>
-				</td>
-			</tr>
-			<tr>
 				<th scope="row"><label for="first_comment_url"><?php _e( 'First Comment URL' ) ?></label></th>
 				<td>
 					<input type="text" size="40" name="first_comment_url" id="first_comment_url" aria-describedby="first-comment-url-desc" value="<?php echo esc_attr( get_site_option( 'first_comment_url' ) ) ?>" />
@@ -357,7 +347,7 @@ if ( isset( $_GET['updated'] ) ) {
 			<?php
 			$menu_perms = get_site_option( 'menu_items' );
 			/**
-			 * Filters available network-wide administration menu options.
+			 * Filter available network-wide administration menu options.
 			 *
 			 * Options returned to this filter are output as individual checkboxes that, when selected,
 			 * enable site administrator access to the specified administration menu in certain contexts.

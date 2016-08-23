@@ -13,7 +13,7 @@ require( ABSPATH . 'wp-admin/includes/theme-install.php' );
 wp_reset_vars( array( 'tab' ) );
 
 if ( ! current_user_can('install_themes') )
-	wp_die( __( 'Sorry, you are not allowed to install themes on this site.' ) );
+	wp_die( __( 'You do not have sufficient permissions to install themes on this site.' ) );
 
 if ( is_multisite() && ! is_network_admin() ) {
 	wp_redirect( network_admin_url( 'theme-install.php' ) );
@@ -58,7 +58,6 @@ wp_localize_script( 'theme', '_wpThemeSettings', array(
 ) );
 
 wp_enqueue_script( 'theme' );
-wp_enqueue_script( 'updates' );
 
 if ( $tab ) {
 	/**
@@ -76,7 +75,7 @@ if ( $tab ) {
 $help_overview =
 	'<p>' . sprintf(
 			/* translators: %s: Theme Directory URL */
-			__( 'You can find additional themes for your site by using the Theme Browser/Installer on this screen, which will display themes from the <a href="%s" target="_blank">WordPress Theme Directory</a>. These themes are designed and developed by third parties, are available free of charge, and are compatible with the license WordPress uses.' ),
+			__( 'You can find additional themes for your site by using the Theme Browser/Installer on this screen, which will display themes from the <a href="%s" target="_blank">WordPress.org Theme Directory</a>. These themes are designed and developed by third parties, are available free of charge, and are compatible with the license WordPress uses.' ),
 			__( 'https://wordpress.org/themes/' )
 		) . '</p>' .
 	'<p>' . __( 'You can Search for themes by keyword, author, or tag, or can get more specific and search by criteria listed in the feature filter.' ) . ' <span id="live-search-desc">' . __( 'The search results will be updated as you type.' ) . '</span></p>' .
@@ -117,9 +116,10 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 	echo esc_html( $title );
 
 	/**
-	 * Filters the tabs shown on the Add Themes screen.
+	 * Filter the tabs shown on the Add Themes screen.
 	 *
-	 * This filter is for backward compatibility only, for the suppression of the upload tab.
+	 * This filter is for backwards compatibility only, for the suppression
+	 * of the upload tab.
 	 *
 	 * @since 2.8.0
 	 *
@@ -127,20 +127,18 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 	 */
 	$tabs = apply_filters( 'install_themes_tabs', array( 'upload' => __( 'Upload Theme' ) ) );
 	if ( ! empty( $tabs['upload'] ) && current_user_can( 'upload_themes' ) ) {
-		echo ' <button type="button" class="upload-view-toggle page-title-action hide-if-no-js" aria-expanded="false">' . __( 'Upload Theme' ) . '</button>';
+		echo ' <a href="#" class="upload page-title-action">' . __( 'Upload Theme' ) . '</a>';
+		echo ' <a href="#" class="browse-themes page-title-action">' . _x( 'Browse', 'themes' ) . '</a>';
 	}
 	?></h1>
-	<div class="error hide-if-js">
-		<p><?php _e( 'The Theme Installer screen requires JavaScript.' ); ?></p>
-	</div>
 
 	<div class="upload-theme">
 	<?php install_themes_upload(); ?>
 	</div>
 
-	<h2 class="screen-reader-text hide-if-no-js"><?php _e( 'Filter themes list' ); ?></h2>
+	<h2 class="screen-reader-text"><?php _e( 'Filter themes list' ); ?></h2>
 
-	<div class="wp-filter hide-if-no-js">
+	<div class="wp-filter">
 		<div class="filter-count">
 			<span class="count theme-count"></span>
 		</div>
@@ -204,7 +202,7 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 			</div>
 		</div>
 	</div>
-	<h2 class="screen-reader-text hide-if-no-js"><?php _e( 'Themes list' ); ?></h2>
+	<h2 class="screen-reader-text"><?php _e( 'Themes list' ); ?></h2>
 	<div class="theme-browser content-filterable"></div>
 	<div class="theme-install-overlay wp-full-overlay expanded"></div>
 
@@ -238,100 +236,68 @@ if ( $tab ) {
 		<div class="theme-screenshot blank"></div>
 	<# } #>
 	<span class="more-details"><?php _ex( 'Details &amp; Preview', 'theme' ); ?></span>
-	<div class="theme-author">
-		<?php
-		/* translators: %s: Theme author name */
-		printf( __( 'By %s' ), '{{ data.author }}' );
-		?>
-	</div>
+	<div class="theme-author"><?php printf( __( 'By %s' ), '{{ data.author }}' ); ?></div>
 	<h3 class="theme-name">{{ data.name }}</h3>
 
 	<div class="theme-actions">
-		<# if ( data.installed ) { #>
-			<?php
-			/* translators: %s: Theme name */
-			$aria_label = sprintf( _x( 'Activate %s', 'theme' ), '{{ data.name }}' );
-			?>
-			<# if ( data.activate_url ) { #>
-				<a class="button button-primary activate" href="{{ data.activate_url }}" aria-label="<?php echo esc_attr( $aria_label ); ?>"><?php _e( 'Activate' ); ?></a>
-			<# } #>
-			<# if ( data.customize_url ) { #>
-				<a class="button button-secondary load-customize" href="{{ data.customize_url }}"><?php _e( 'Live Preview' ); ?></a>
-			<# } else { #>
-				<button class="button-secondary preview install-theme-preview"><?php _e( 'Preview' ); ?></button>
-			<# } #>
-		<# } else { #>
-			<?php
-			/* translators: %s: Theme name */
-			$aria_label = sprintf( __( 'Install %s' ), '{{ data.name }}' );
-			?>
-			<a class="button button-primary theme-install" data-name="{{ data.name }}" data-slug="{{ data.id }}" href="{{ data.install_url }}" aria-label="<?php echo esc_attr( $aria_label ); ?>"><?php _e( 'Install' ); ?></a>
-			<button class="button-secondary preview install-theme-preview"><?php _e( 'Preview' ); ?></button>
-		<# } #>
+		<a class="button button-primary" href="{{ data.install_url }}"><?php esc_html_e( 'Install' ); ?></a>
+		<a class="button button-secondary preview install-theme-preview" href="#"><?php esc_html_e( 'Preview' ); ?></a>
 	</div>
 
 	<# if ( data.installed ) { #>
-		<div class="notice notice-success notice-alt"><p><?php _ex( 'Installed', 'theme' ); ?></p></div>
+		<div class="theme-installed"><?php _ex( 'Already Installed', 'theme' ); ?></div>
 	<# } #>
 </script>
 
 <script id="tmpl-theme-preview" type="text/template">
 	<div class="wp-full-overlay-sidebar">
 		<div class="wp-full-overlay-header">
-			<button class="close-full-overlay"><span class="screen-reader-text"><?php _e( 'Close' ); ?></span></button>
-			<button class="previous-theme"><span class="screen-reader-text"><?php _ex( 'Previous', 'Button label for a theme' ); ?></span></button>
-			<button class="next-theme"><span class="screen-reader-text"><?php _ex( 'Next', 'Button label for a theme' ); ?></span></button>
-			<# if ( data.installed ) { #>
-				<a class="button button-primary activate" href="{{ data.activate_url }}"><?php _e( 'Activate' ); ?></a>
-			<# } else { #>
-				<a href="{{ data.install_url }}" class="button button-primary theme-install" data-name="{{ data.name }}" data-slug="{{ data.id }}"><?php _e( 'Install' ); ?></a>
-			<# } #>
+			<a href="#" class="close-full-overlay"><span class="screen-reader-text"><?php _e( 'Close' ); ?></span></a>
+			<a href="#" class="previous-theme"><span class="screen-reader-text"><?php _ex( 'Previous', 'Button label for a theme' ); ?></span></a>
+			<a href="#" class="next-theme"><span class="screen-reader-text"><?php _ex( 'Next', 'Button label for a theme' ); ?></span></a>
+		<# if ( data.installed ) { #>
+			<a href="#" class="button button-primary theme-install disabled"><?php _ex( 'Installed', 'theme' ); ?></a>
+		<# } else { #>
+			<a href="{{ data.install_url }}" class="button button-primary theme-install"><?php _e( 'Install' ); ?></a>
+		<# } #>
 		</div>
 		<div class="wp-full-overlay-sidebar-content">
 			<div class="install-theme-info">
 				<h3 class="theme-name">{{ data.name }}</h3>
-					<span class="theme-by">
-						<?php
-						/* translators: %s: Theme author name */
-						printf( __( 'By %s' ), '{{ data.author }}' );
-						?>
-					</span>
+				<span class="theme-by"><?php printf( __( 'By %s' ), '{{ data.author }}' ); ?></span>
 
-					<img class="theme-screenshot" src="{{ data.screenshot_url }}" alt="" />
+				<img class="theme-screenshot" src="{{ data.screenshot_url }}" alt="" />
 
-					<div class="theme-details">
-						<# if ( data.rating ) { #>
-							<div class="theme-rating">
-								{{{ data.stars }}}
-								<span class="num-ratings">({{ data.num_ratings }})</span>
-							</div>
-						<# } else { #>
-							<span class="no-rating"><?php _e( 'This theme has not been rated yet.' ); ?></span>
-						<# } #>
-						<div class="theme-version">
-							<?php
-							/* translators: %s: Theme version */
-							printf( __( 'Version: %s' ), '{{ data.version }}' );
-							?>
+				<div class="theme-details">
+					<# if ( data.rating ) { #>
+						<div class="theme-rating">
+							{{{ data.stars }}}
+							<span class="num-ratings" aria-hidden="true">({{ data.num_ratings }})</span>
 						</div>
-						<div class="theme-description">{{{ data.description }}}</div>
-					</div>
+					<# } else { #>
+						<span class="no-rating"><?php _e( 'This theme has not been rated yet.' ); ?></span>
+					<# } #>
+					<div class="theme-version"><?php printf( __( 'Version: %s' ), '{{ data.version }}' ); ?></div>
+					<div class="theme-description">{{{ data.description }}}</div>
 				</div>
 			</div>
-			<div class="wp-full-overlay-footer">
-				<button type="button" class="collapse-sidebar button-secondary" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse Sidebar' ); ?>">
-					<span class="collapse-sidebar-arrow"></span>
-					<span class="collapse-sidebar-label"><?php _e( 'Collapse' ); ?></span>
-				</button>
-			</div>
 		</div>
-		<div class="wp-full-overlay-main">
-		<iframe src="{{ data.preview_url }}" title="<?php esc_attr_e( 'Preview' ); ?>"></iframe>
+		<div class="wp-full-overlay-footer">
+			<div class="devices">
+				<button type="button" class="preview-desktop active" aria-pressed="true" data-device="desktop"><span class="screen-reader-text"><?php _e( 'Enter desktop preview mode' ); ?></span></button>
+				<button type="button" class="preview-tablet" aria-pressed="false" data-device="tablet"><span class="screen-reader-text"><?php _e( 'Enter tablet preview mode' ); ?></span></button>
+				<button type="button" class="preview-mobile" aria-pressed="false" data-device="mobile"><span class="screen-reader-text"><?php _e( 'Enter mobile preview mode' ); ?></span></button>
+			</div>
+			<button type="button" class="collapse-sidebar button-secondary" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse Sidebar' ); ?>">
+				<span class="collapse-sidebar-arrow"></span>
+				<span class="collapse-sidebar-label"><?php _e( 'Collapse' ); ?></span>
+			</button>
+		</div>
+	</div>
+	<div class="wp-full-overlay-main">
+		<iframe src="{{ data.preview_url }}" title="<?php esc_attr_e( 'Preview' ); ?>" />
 	</div>
 </script>
 
 <?php
-wp_print_request_filesystem_credentials_modal();
-wp_print_admin_notice_templates();
-
 include(ABSPATH . 'wp-admin/admin-footer.php');

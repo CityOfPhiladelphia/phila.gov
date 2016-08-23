@@ -18,7 +18,7 @@ if ( ! is_multisite() )
 $redirect_network_admin_request = 0 !== strcasecmp( $current_blog->domain, $current_site->domain ) || 0 !== strcasecmp( $current_blog->path, $current_site->path );
 
 /**
- * Filters whether to redirect the request to the Network Admin.
+ * Filter whether to redirect the request to the Network Admin.
  *
  * @since 3.2.0
  *

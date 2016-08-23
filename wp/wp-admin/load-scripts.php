@@ -8,10 +8,7 @@
 error_reporting(0);
 
 /** Set ABSPATH for execution */
-if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', dirname( dirname( __FILE__ ) ) . '/' );
-}
-
+define( 'ABSPATH', dirname(dirname(__FILE__)) . '/' );
 define( 'WPINC', 'wp-includes' );
 
 $load = $_GET['load'];

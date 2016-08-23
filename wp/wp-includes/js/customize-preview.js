@@ -172,8 +172,7 @@
 		api.preview.send( 'ready', {
 			activePanels: api.settings.activePanels,
 			activeSections: api.settings.activeSections,
-			activeControls: api.settings.activeControls,
-			settingValidities: api.settings.settingValidities
+			activeControls: api.settings.activeControls
 		} );
 
 		// Display a loading indicator when preview is reloading, and remove on failure.

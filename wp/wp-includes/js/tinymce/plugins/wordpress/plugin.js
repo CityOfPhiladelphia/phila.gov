@@ -90,6 +90,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
         window.wpActiveEditor = editor.id;
     });
 
+	// Replace Read More/Next Page tags with images
 	editor.on( 'BeforeSetContent', function( event ) {
 		var title;
 
@@ -115,21 +116,6 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 				event.content = wp.editor.autop( event.content );
 			}
 
-			if ( event.content.indexOf( '<script' ) !== -1 || event.content.indexOf( '<style' ) !== -1 ) {
-				event.content = event.content.replace( /<(script|style)[^>]*>[\s\S]*?<\/\1>/g, function( match, tag ) {
-					return '<img ' +
-						'src="' + tinymce.Env.transparentSrc + '" ' +
-						'data-wp-preserve="' + encodeURIComponent( match ) + '" ' +
-						'data-mce-resize="false" ' +
-						'data-mce-placeholder="1" '+
-						'class="mce-object" ' +
-						'width="20" height="20" '+
-						'alt="&lt;' + tag + '&gt;" ' +
-						'title="&lt;' + tag + '&gt;" ' +
-					'/>';
-				} );
-			}
-
 			// Remove spaces from empty paragraphs.
 			// Avoid backtracking, can freeze the editor. See #35890.
 			// (This is also quite faster than using only one regex.)
@@ -143,28 +129,23 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 		}
 	});
 
-	editor.on( 'PostProcess', function( event ) {
-		if ( event.get ) {
-			event.content = event.content.replace(/<img[^>]+>/g, function( image ) {
-				var match,
-					string,
-					moretext = '';
+	// Replace images with tags
+	editor.on( 'PostProcess', function( e ) {
+		if ( e.get ) {
+			e.content = e.content.replace(/<img[^>]+>/g, function( image ) {
+				var match, moretext = '';
 
 				if ( image.indexOf( 'data-wp-more="more"' ) !== -1 ) {
 					if ( match = image.match( /data-wp-more-text="([^"]+)"/ ) ) {
 						moretext = match[1];
 					}
 
-					string = '<!--more' + moretext + '-->';
+					image = '<!--more' + moretext + '-->';
 				} else if ( image.indexOf( 'data-wp-more="nextpage"' ) !== -1 ) {
-					string = '<!--nextpage-->';
-				} else if ( image.indexOf( 'data-wp-preserve' ) !== -1 ) {
-					if ( match = image.match( / data-wp-preserve="([^"]+)"/ ) ) {
-						string = decodeURIComponent( match[1] );
-					}
+					image = '<!--nextpage-->';
 				}
 
-				return string || image;
+				return image;
 			});
 		}
 	});
@@ -559,6 +540,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			q: 'mceBlockQuote',
 			u: 'InsertUnorderedList',
 			o: 'InsertOrderedList',
+			s: 'unlink',
 			m: 'WP_Medialib',
 			z: 'WP_Adv',
 			t: 'WP_More',
@@ -578,11 +560,6 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 		if ( window.getUserSetting( 'editor_plain_text_paste_warning' ) > 1 ) {
 			editor.settings.paste_plaintext_inform = false;
-		}
-
-		// Change the editor iframe title on MacOS, add the correct help shortcut.
-		if ( tinymce.Env.mac ) {
-			tinymce.$( editor.iframeElement ).attr( 'title', __( 'Rich Text Area. Press Control-Option-H for help.' ) );
 		}
 	} );
 
@@ -768,11 +745,12 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 					},
 					toolbar = this.getEl(),
 					toolbarWidth = toolbar.offsetWidth,
-					toolbarHeight = toolbar.clientHeight,
+					toolbarHeight = toolbar.offsetHeight,
 					selection = currentSelection.getBoundingClientRect(),
 					selectionMiddle = ( selection.left + selection.right ) / 2,
 					buffer = 5,
-					spaceNeeded = toolbarHeight + buffer,
+					margin = 8,
+					spaceNeeded = toolbarHeight + margin + buffer,
 					wpAdminbarBottom = wpAdminbar ? wpAdminbar.getBoundingClientRect().bottom : 0,
 					mceToolbarBottom = mceToolbar ? mceToolbar.getBoundingClientRect().bottom : 0,
 					mceStatusbarTop = mceStatusbar ? windowHeight - mceStatusbar.getBoundingClientRect().top : 0,
@@ -806,12 +784,12 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 						top = selection.bottom + iframeRect.top + scrollY - iosOffsetBottom;
 					} else if ( spaceTop >= spaceNeeded ) {
 						className = ' mce-arrow-down';
-						top = selection.top + iframeRect.top + scrollY - toolbarHeight + iosOffsetTop;
+						top = selection.top + iframeRect.top + scrollY - toolbarHeight - margin + iosOffsetTop;
 					}
 				} else {
 					if ( spaceTop >= spaceNeeded ) {
 						className = ' mce-arrow-down';
-						top = selection.top + iframeRect.top + scrollY - toolbarHeight + iosOffsetTop;
+						top = selection.top + iframeRect.top + scrollY - toolbarHeight - margin + iosOffsetTop;
 					} else if ( spaceBottom >= spaceNeeded && editorHeight / 2 > selection.bottom + iframeRect.top - blockedTop ) {
 						className = ' mce-arrow-up';
 						top = selection.bottom + iframeRect.top + scrollY - iosOffsetBottom;
