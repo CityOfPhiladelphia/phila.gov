@@ -121,12 +121,15 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 				<# if (data.random) { #>
 
 			<div class="placeholder">
-				<span class="dashicons dashicons-randomize dice"></span>
-				<# if ( data.type === 'uploaded' ) { #>
-					<?php _e( 'Randomizing uploaded headers' ); ?>
-				<# } else if ( data.type === 'default' ) { #>
-					<?php _e( 'Randomizing suggested headers' ); ?>
-				<# } #>
+				<div class="inner">
+					<span><span class="dashicons dashicons-randomize dice"></span>
+					<# if ( data.type === 'uploaded' ) { #>
+						<?php _e( 'Randomizing uploaded headers' ); ?>
+					<# } else if ( data.type === 'default' ) { #>
+						<?php _e( 'Randomizing suggested headers' ); ?>
+					<# } #>
+					</span>
+				</div>
 			</div>
 
 				<# } else { #>
@@ -137,7 +140,11 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 			<# } else { #>
 
 			<div class="placeholder">
-				<?php _e( 'No image set' ); ?>
+				<div class="inner">
+					<span>
+						<?php _e( 'No image set' ); ?>
+					</span>
+				</div>
 			</div>
 
 			<# } #>

@@ -42,7 +42,7 @@ class WP_Press_This {
 	public function site_settings() {
 		return array(
 			/**
-			 * Filters whether or not Press This should redirect the user in the parent window upon save.
+			 * Filter whether or not Press This should redirect the user in the parent window upon save.
 			 *
 			 * @since 4.2.0
 			 *
@@ -96,7 +96,7 @@ class WP_Press_This {
 	}
 
 	/**
-	 * Ajax handler for saving the post as draft or published.
+	 * AJAX handler for saving the post as draft or published.
 	 *
 	 * @since 4.2.0
 	 * @access public
@@ -134,9 +134,8 @@ class WP_Press_This {
 		$post_data['post_content'] = $this->side_load_images( $post_id, $post_data['post_content'] );
 
 		/**
-		 * Filters the post data of a Press This post before saving/updating.
-		 *
-		 * The {@see 'side_load_images'} action has already run at this point.
+		 * Filter the post data of a Press This post before saving/updating, after
+		 * side_load_images action had run.
 		 *
 		 * @since 4.5.0
 		 *
@@ -169,7 +168,7 @@ class WP_Press_This {
 			}
 
 			/**
-			 * Filters the URL to redirect to when Press This saves.
+			 * Filter the URL to redirect to when Press This saves.
 			 *
 			 * @since 4.2.0
 			 *
@@ -189,7 +188,7 @@ class WP_Press_This {
 	}
 
 	/**
-	 * Ajax handler for adding a new category.
+	 * AJAX handler for adding a new category.
 	 *
 	 * @since 4.2.0
 	 * @access public
@@ -691,7 +690,7 @@ class WP_Press_This {
 		}
 
 		/**
-		 * Filters whether to enable in-source media discovery in Press This.
+		 * Filter whether to enable in-source media discovery in Press This.
 		 *
 		 * @since 4.2.0
 		 *
@@ -766,7 +765,7 @@ class WP_Press_This {
 		}
 
 		/**
-		 * Filters the Press This data array.
+		 * Filter the Press This data array.
 		 *
 		 * @since 4.2.0
 		 *
@@ -794,7 +793,36 @@ class WP_Press_This {
 			$press_this = str_replace( '.css', '-rtl.css', $press_this );
 		}
 
-		return $styles . $press_this;
+		$open_sans_font_url = '';
+
+		/* translators: If there are characters in your language that are not supported
+		 * by Open Sans, translate this to 'off'. Do not translate into your own language.
+		 */
+		if ( 'off' !== _x( 'on', 'Open Sans font: on or off' ) ) {
+			$subsets = 'latin,latin-ext';
+
+			/* translators: To add an additional Open Sans character subset specific to your language,
+			 * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate into your own language.
+			 */
+			$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)' );
+
+			if ( 'cyrillic' == $subset ) {
+				$subsets .= ',cyrillic,cyrillic-ext';
+			} elseif ( 'greek' == $subset ) {
+				$subsets .= ',greek,greek-ext';
+			} elseif ( 'vietnamese' == $subset ) {
+				$subsets .= ',vietnamese';
+			}
+
+			$query_args = array(
+				'family' => urlencode( 'Open Sans:400italic,700italic,400,600,700' ),
+				'subset' => urlencode( $subsets ),
+			);
+
+			$open_sans_font_url = ',' . add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+		}
+
+		return $styles . $press_this . $open_sans_font_url;
 	}
 
 	/**
@@ -1143,7 +1171,7 @@ class WP_Press_This {
 		}
 
 		/**
-		 * Filters the default HTML tags used in the suggested content for the editor.
+		 * Filter the default HTML tags used in the suggested content for the editor.
 		 *
 		 * The HTML strings use printf format. After filtering the content is added at the specified places with `sprintf()`.
 		 *
@@ -1501,9 +1529,6 @@ class WP_Press_This {
 	<?php
 	/** This action is documented in wp-admin/admin-footer.php */
 	do_action( 'admin_footer' );
-
-	/** This action is documented in wp-admin/admin-footer.php */
-	do_action( 'admin_print_footer_scripts-press-this.php' );
 
 	/** This action is documented in wp-admin/admin-footer.php */
 	do_action( 'admin_print_footer_scripts' );

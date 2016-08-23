@@ -180,11 +180,6 @@ window.wp = window.wp || {};
 			$(self).trigger( 'uploader:ready' );
 		});
 
-		this.uploader.bind( 'postinit', function( up ) {
-			up.refresh();
-			self.init();
-		});
-
 		this.uploader.init();
 
 		if ( this.browser ) {
@@ -316,6 +311,9 @@ window.wp = window.wp || {};
 			up.refresh();
 		});
 
+		this.uploader.bind( 'PostInit', function() {
+			self.init();
+		});
 	};
 
 	// Adds the 'defaults' and 'browser' properties.

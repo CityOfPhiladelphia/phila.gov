@@ -28,9 +28,7 @@ define('WP_SETUP_CONFIG', true);
  */
 error_reporting(0);
 
-if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', dirname( dirname( __FILE__ ) ) . '/' );
-}
+define( 'ABSPATH', dirname( dirname( __FILE__ ) ) . '/' );
 
 require( ABSPATH . 'wp-settings.php' );
 
@@ -277,12 +275,6 @@ switch($step) {
 
 	if ( ! empty( $wpdb->error ) )
 		wp_die( $wpdb->error->get_error_message() . $tryagain_link );
-
-	$wpdb->query( "SELECT $prefix" );
-	if ( ! $wpdb->last_error ) {
-		// MySQL was able to parse the prefix as a value, which we don't want. Bail.
-		wp_die( __( '<strong>ERROR</strong>: "Table Prefix" is invalid.' ) );
-	}
 
 	// Generate keys and salts using secure CSPRNG; fallback to API if enabled; further fallback to original wp_generate_password().
 	try {

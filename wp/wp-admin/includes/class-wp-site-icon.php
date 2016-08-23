@@ -121,7 +121,7 @@ class WP_Site_Icon {
 		$metadata      = wp_generate_attachment_metadata( $attachment_id, $file );
 
 		/**
-		 * Filters the site icon attachment metadata.
+		 * Filter the site icon attachment metadata.
 		 *
 		 * @since 4.3.0
 		 *
@@ -148,7 +148,7 @@ class WP_Site_Icon {
 		$only_crop_sizes = array();
 
 		/**
-		 * Filters the different dimensions that a site icon is saved in.
+		 * Filter the different dimensions that a site icon is saved in.
 		 *
 		 * @since 4.3.0
 		 *

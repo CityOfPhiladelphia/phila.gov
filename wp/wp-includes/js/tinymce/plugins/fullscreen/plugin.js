@@ -117,7 +117,7 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 
 	editor.addMenuItem('fullscreen', {
 		text: 'Fullscreen',
-		shortcut: 'Ctrl+Shift+F',
+		shortcut: 'Meta+Alt+F',
 		selectable: true,
 		onClick: function() {
 			toggleFullscreen();
@@ -135,7 +135,7 @@ tinymce.PluginManager.add('fullscreen', function(editor) {
 
 	editor.addButton('fullscreen', {
 		tooltip: 'Fullscreen',
-		shortcut: 'Ctrl+Alt+F',
+		shortcut: 'Meta+Alt+F',
 		onClick: toggleFullscreen,
 		onPostRender: function() {
 			var self = this;

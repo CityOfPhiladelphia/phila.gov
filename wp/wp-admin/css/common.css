@@ -71,22 +71,26 @@
 
 /* 2 columns main area */
 
+#col-container,
+#col-left,
+#col-right {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
 #col-left {
-	float: left;
 	width: 35%;
 }
 
 #col-right {
 	float: right;
+	clear: right;
 	width: 65%;
 }
 
-#col-left .col-wrap {
-	padding: 0 6px 0 0;
-}
-
-#col-right .col-wrap {
-	padding: 0 0 0 6px;
+.col-wrap {
+	padding: 0 7px;
 }
 
 /* utility classes */
@@ -208,10 +212,13 @@ body {
 	padding: 0;
 }
 
-body {
+html {
 	background: #f1f1f1;
+}
+
+body {
 	color: #444;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 13px;
 	line-height: 1.4em;
 	min-width: 600px;
@@ -437,7 +444,7 @@ code {
 .subsubsub a .count,
 .subsubsub a.current .count {
 	color: #555d66; /* #f1f1f1 background */
-	font-weight: 400;
+	font-weight: normal;
 }
 
 .subsubsub a.current {
@@ -581,8 +588,7 @@ code {
 	padding-left: 25px;
 	color: #555d66;
 	font-size: 14px;
-	font-weight: 400;
-	line-height: 1;
+	font-weight: normal;
 }
 
 .wrap .add-new-h2, /* deprecated */
@@ -602,10 +608,6 @@ code {
 	text-shadow: none;
 	font-weight: 600;
 	font-size: 13px;
-	line-height: normal; /* IE8-IE11 need this for buttons */
-	color: #0073aa; /* some of these controls are button elements and don't inherit from links */
-	cursor: pointer;
-	outline: 0;
 }
 
 .wrap .add-new-h2:hover, /* deprecated */
@@ -613,11 +615,6 @@ code {
 	border-color: #008EC2;
 	background: #00a0d2;
 	color: #fff;
-}
-
-/* lower specificity: color needs to be overridden by :hover and :active */
-.page-title-action:focus {
-	color: #124964;
 }
 
 .wrap .page-title-action:focus {
@@ -1066,7 +1063,7 @@ th.action-links {
 	line-height: 1;
 	text-align: center;
 	text-decoration: inherit;
-	font-weight: 400;
+	font-weight: normal;
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 }
@@ -1308,10 +1305,6 @@ div.error {
 	padding: 1px 12px;
 }
 
-div[class="update-message"] { /* back-compat for pre-4.6 */
-	padding: 0.5em 12px 0.5em 0;
-}
-
 .notice p,
 .notice-title,
 div.updated p,
@@ -1411,66 +1404,12 @@ div.error {
 	background-color: #e5f5fa;
 }
 
-.update-message p:before,
-.updating-message p:before,
-.updated-message p:before,
-.import-php .updating-message:before,
-.button.updating-message:before,
-.button.updated-message:before,
-.button.installed:before,
-.button.installing:before {
-	display: inline-block;
-	font: normal 20px/1 'dashicons';
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	vertical-align: top;
-}
-
 .wrap .notice,
 .wrap div.updated,
 .wrap div.error,
 .media-upload-form .notice,
 .media-upload-form div.error {
 	margin: 5px 0 15px;
-}
-
-/* Update icon. */
-.update-message p:before,
-.updating-message p:before,
-.import-php .updating-message:before,
-.button.updating-message:before,
-.button.installing:before {
-	color: #f56e28;
-	content: "\f463";
-}
-
-/* Spins the update icon. */
-.updating-message p:before,
-.import-php .updating-message:before,
-.button.updating-message:before,
-.button.installing:before {
-	-webkit-animation: rotation 2s infinite linear;
-	animation: rotation 2s infinite linear;
-}
-
-/* Updated icon (check mark). */
-.updated-message p:before,
-.installed p:before,
-.button.updated-message:before {
-	color: #79ba49;
-	content: '\f147';
-}
-
-/* Error icon. */
-.update-message.notice-error p:before {
-	 color: #dc3232;
-	 content: "\f534";
-}
-
-.wrap .notice p:before,
-.import-php .updating-message:before {
-	margin-right: 6px;
-	vertical-align: bottom;
 }
 
 #update-nag,
@@ -1485,6 +1424,10 @@ div.error {
 	border-left: 4px solid #ffba00;
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+.update-message {
+	color: #000;
 }
 
 ul#dismissed-updates {
@@ -1517,50 +1460,6 @@ form.upgrade .hint {
 #ajax-response.alignleft {
 	margin-left: 2em;
 }
-
-.button.updating-message:before,
-.button.updated-message:before,
-.button.installed:before,
-.button.installing:before {
-	margin: 3px 5px 0 -2px;
-}
-
-.button-primary.updating-message:before {
-	color: #fff;
-}
-
-.button-primary.updated-message:before {
-	color: #66c6e4;
-}
-
-.button.updated-message,
-.notice .button-link {
-	-webkit-transition-property: border, background, color;
-	transition-property: border, background, color;
-	-webkit-transition-duration: .05s;
-	transition-duration: .05s;
-	-webkit-transition-timing-function: ease-in-out;
-	transition-timing-function: ease-in-out;
-}
-
-.notice .button-link {
-	color: #0073aa;
-}
-
-.notice .button-link:hover,
-.notice .button-link:active {
-	color: #00a0d2;
-}
-
-@media aural {
-	.wrap .notice p:before,
-	.button.installing:before,
-	.button.installed:before,
-	.update-message p:before {
-		speak: none;
-	}
-}
-
 
 /* @todo: this does not need its own section anymore */
 /*------------------------------------------------------------------------------
@@ -1875,7 +1774,7 @@ html.wp-toolbar {
 .widefat th,
 .widefat thead td,
 .widefat tfoot td {
-	font-weight: 400;
+	font-weight: normal;
 }
 
 .widefat thead tr th,
@@ -1897,11 +1796,6 @@ html.wp-toolbar {
 
 .widefat .column-comment p {
 	margin: 0.6em 0;
-}
-
-.widefat .column-comment ul {
-	list-style: initial;
-	margin-left: 2em;
 }
 
 /* Screens with postboxes */
@@ -1982,7 +1876,7 @@ html.wp-toolbar {
 
 .hndle a {
 	font-size: 11px;
-	font-weight: 400;
+	font-weight: normal;
 }
 
 .postbox .handlediv {
@@ -2201,8 +2095,7 @@ h3.nav-tab-wrapper {
 	margin: 4px 10px 0;
 }
 
-.spinner.is-active,
-.loading-content .spinner {
+.spinner.is-active {
 	visibility: visible;
 }
 
@@ -2279,45 +2172,13 @@ body.iframe {
 	display: block;
 }
 
+.importers td {
+	padding-right: 14px;
+}
+
 .importers {
 	font-size: 16px;
 	width: auto;
-}
-
-.importers td {
-	padding-right: 14px;
-	line-height: 1.5em;
-}
-
-.importers .import-system {
-	max-width: 250px;
-}
-
-.importers td.desc {
-	max-width: 500px;
-}
-
-.importer-title,
-.importer-desc,
-.importer-action {
-	display: block;
-}
-
-.importer-title {
-	color: #000;
-	font-size: 14px;
-	font-weight: 400;
-	margin-bottom: .2em;
-}
-
-.importer-action {
-	line-height: 20px; /* Same as with .updating-message */
-	color: #ddd;
-	margin-bottom: 1em;
-}
-
-.not-installed-main-site .importer-action {
-	color: #555;
 }
 
 #post-body #post-body-content #namediv h3, /* Back-compat for pre-4.4 */
@@ -2425,7 +2286,7 @@ div.star-holder .star-rating {
 	line-height: 1;
 	font-family: dashicons;
 	text-decoration: inherit;
-	font-weight: 400;
+	font-weight: normal;
 	font-style: normal;
 	vertical-align: top;
 	-webkit-transition: color .1s ease-in 0;
@@ -2453,7 +2314,7 @@ div.star-holder .star-rating {
 }
 
 div.action-links {
-	font-weight: 400;
+	font-weight: normal;
 	margin: 6px 0 0;
 }
 
@@ -2501,7 +2362,7 @@ div.action-links {
 
 #plugin-information-title h2 {
 	font-size: 1em;
-	font-weight: 600;
+	font-weight: bold;
 	padding: 0;
 	margin: 0;
 	max-width: 680px;
@@ -2547,8 +2408,7 @@ div.action-links {
 	position: relative;
 	right: 0;
 	left: 0;
-	min-height: 36px;
-	font-size: 0;
+	height: 36px;
 	z-index: 1;
 	border-bottom: 1px solid #ddd;
 	background: #f3f3f3;
@@ -2556,7 +2416,7 @@ div.action-links {
 
 #plugin-information-tabs a {
 	position: relative;
-	display: inline-block;
+	float: left;
 	padding: 9px 10px;
 	margin: 0;
 	height: 18px;
@@ -2568,7 +2428,7 @@ div.action-links {
 }
 
 #plugin-information-tabs a.current {
-	margin: 0 -1px -1px;
+	margin: 0 -1px 0;
 	background: #fff;
 	border: 1px solid #ddd;
 	border-bottom-color: #fff;
@@ -2640,7 +2500,7 @@ div.action-links {
 }
 
 #plugin-information .fyi h3 {
-	font-weight: 600;
+	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 12px;
 	color: #666;
@@ -3028,8 +2888,7 @@ img {
 
 /* Metabox collapse arrow indicators */
 .js .sidebar-name .sidebar-name-arrow:before,
-.js .meta-box-sortables .postbox .toggle-indicator:before,
-.bulk-action-notice .toggle-indicator:before {
+.js .meta-box-sortables .postbox .toggle-indicator:before {
 	content: "\f142";
 	display: inline-block;
 	font: normal 20px/1 dashicons;
@@ -3040,8 +2899,7 @@ img {
 }
 
 .js .widgets-holder-wrap.closed .sidebar-name-arrow:before,
-.js .meta-box-sortables .postbox.closed .handlediv .toggle-indicator:before,
-.bulk-action-notice .bulk-action-errors-collapsed .toggle-indicator:before {
+.js .meta-box-sortables .postbox.closed .handlediv .toggle-indicator:before {
 	content: "\f140";
 }
 
@@ -3069,12 +2927,6 @@ img {
 
 .rtl.js .postbox .handlediv .toggle-indicator:before {
 	text-indent: 1px; /* account for the dashicon alignment */
-}
-
-.bulk-action-notice .toggle-indicator:before {
-	line-height: 16px;
-	vertical-align: top;
-	color: #72777c;
 }
 
 .js .postbox .handlediv:focus {
@@ -3158,7 +3010,7 @@ img {
 
 #templateside .highlight {
 	border: none;
-	font-weight: 600;
+	font-weight: bold;
 }
 
 .nonessential {
@@ -3509,6 +3361,53 @@ img {
 /* =Media Queries
 -------------------------------------------------------------- */
 
+/* @todo: de-duplication */
+@media only screen and (min-width: 769px) {
+	/* categories */
+	#col-left {
+		width: 35%;
+	}
+
+	#col-right {
+		width: 65%;
+	}
+}
+
+@media only screen and (max-width: 860px) {
+
+	/* categories */
+	#col-left {
+		width: 35%;
+	}
+
+	#col-right {
+		width: 65%;
+	}
+}
+
+@media only screen and (min-width: 980px) {
+
+	/* categories */
+	#col-left {
+		width: 35%;
+	}
+
+	#col-right {
+		width: 65%;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	/* categories */
+	#col-left {
+		width: 100%;
+	}
+
+	#col-right {
+		width: 100%;
+	}
+}
+
 /**
  * HiDPI Displays
  */
@@ -3577,15 +3476,7 @@ img {
 		margin-left: 0;
 	}
 
-	/* categories */
-	#col-left,
-	#col-right {
-		float: none;
-		width: auto;
-	}
-
-	#col-left .col-wrap,
-	#col-right .col-wrap {
+	.col-wrap {
 		padding: 0;
 	}
 

@@ -10,9 +10,8 @@
 /**
  * Core base class extended to register widgets.
  *
- * This class must be extended for each widget, and WP_Widget::widget() must be overriden.
- *
- * If adding widget options, WP_Widget::update() and WP_Widget::form() should also be overridden.
+ * This class must be extended for each widget and WP_Widget::widget(), WP_Widget::update()
+ * and WP_Widget::form() need to be overridden.
  *
  * @since 2.8.0
  * @since 4.4.0 Moved to its own file from wp-includes/widgets.php
@@ -169,7 +168,7 @@ class WP_Widget {
 	 * @access public
 	 *
 	 * @see __construct()
-	 *
+	 * 
 	 * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
 	 *                                a portion of the widget's class name will be used Has to be unique.
 	 * @param string $name            Name for the widget displayed on the configuration page.
@@ -353,7 +352,7 @@ class WP_Widget {
 			$instance = $instances[ $this->number ];
 
 			/**
-			 * Filters the settings for a particular widget instance.
+			 * Filter the settings for a particular widget instance.
 			 *
 			 * Returning false will effectively short-circuit display of the widget.
 			 *
@@ -442,7 +441,7 @@ class WP_Widget {
 				}
 
 				/**
-				 * Filters a widget's settings before saving.
+				 * Filter a widget's settings before saving.
 				 *
 				 * Returning false will effectively short-circuit the widget's ability
 				 * to update settings.
@@ -498,7 +497,7 @@ class WP_Widget {
 		}
 
 		/**
-		 * Filters the widget instance's settings before displaying the control form.
+		 * Filter the widget instance's settings before displaying the control form.
 		 *
 		 * Returning false effectively short-circuits display of the control form.
 		 *

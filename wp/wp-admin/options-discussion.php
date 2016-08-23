@@ -9,7 +9,7 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! current_user_can( 'manage_options' ) )
-	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
+	wp_die( __( 'You do not have sufficient permissions to manage options for this site.' ) );
 
 $title = __('Discussion Settings');
 $parent_file = 'options-general.php';
@@ -78,7 +78,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <input name="thread_comments" type="checkbox" id="thread_comments" value="1" <?php checked('1', get_option('thread_comments')); ?> />
 <?php
 /**
- * Filters the maximum depth of threaded/nested comments.
+ * Filter the maximum depth of threaded/nested comments.
  *
  * @since 2.7.0.
  *
@@ -195,13 +195,13 @@ $show_avatars = get_option( 'show_avatars' );
 
 <?php
 $ratings = array(
-	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
 	'G' => __('G &#8212; Suitable for all audiences'),
-	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
 	'PG' => __('PG &#8212; Possibly offensive, usually for audiences 13 and above'),
-	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
 	'R' => __('R &#8212; Intended for adult audiences above 17'),
-	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
+	/* translators: Content suitability rating: http://bit.ly/89QxZA */
 	'X' => __('X &#8212; Even more mature than above')
 );
 foreach ($ratings as $key => $rating) :
@@ -229,7 +229,7 @@ $avatar_defaults = array(
 	'retro' => __('Retro (Generated)')
 );
 /**
- * Filters the default avatars.
+ * Filter the default avatars.
  *
  * Avatars are stored in key/value pairs, where the key is option value,
  * and the name is the displayed avatar name.
@@ -240,6 +240,7 @@ $avatar_defaults = array(
  */
 $avatar_defaults = apply_filters( 'avatar_defaults', $avatar_defaults );
 $default = get_option( 'avatar_default', 'mystery' );
+$size = 32;
 $avatar_list = '';
 
 // Force avatars on to display these choices
@@ -248,7 +249,12 @@ add_filter( 'pre_option_show_avatars', '__return_true', 100 );
 foreach ( $avatar_defaults as $default_key => $default_name ) {
 	$selected = ($default == $default_key) ? 'checked="checked" ' : '';
 	$avatar_list .= "\n\t<label><input type='radio' name='avatar_default' id='avatar_{$default_key}' value='" . esc_attr($default_key) . "' {$selected}/> ";
-	$avatar_list .= get_avatar( $user_email, 32, $default_key, '', array( 'force_default' => true ) );
+
+	$avatar = get_avatar( $user_email, $size, $default_key );
+	$avatar = preg_replace( "/src='(.+?)'/", "src='\$1&amp;forcedefault=1'", $avatar );
+	$avatar = preg_replace( "/srcset='(.+?) 2x'/", "srcset='\$1&amp;forcedefault=1 2x'", $avatar );
+	$avatar_list .= $avatar;
+
 	$avatar_list .= ' ' . $default_name . '</label>';
 	$avatar_list .= '<br />';
 }
@@ -256,7 +262,7 @@ foreach ( $avatar_defaults as $default_key => $default_name ) {
 remove_filter( 'pre_option_show_avatars', '__return_true', 100 );
 
 /**
- * Filters the HTML output of the default avatar list.
+ * Filter the HTML output of the default avatar list.
  *
  * @since 2.6.0
  *

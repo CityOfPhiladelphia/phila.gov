@@ -211,7 +211,7 @@ final class WP_Customize_Nav_Menus {
 		}
 
 		/**
-		 * Filters the available menu items.
+		 * Filter the available menu items.
 		 *
 		 * @since 4.3.0
 		 *
@@ -335,7 +335,7 @@ final class WP_Customize_Nav_Menus {
 		}
 
 		/**
-		 * Filters the available menu items during a search request.
+		 * Filter the available menu items during a search request.
 		 *
 		 * @since 4.5.0
 		 *
@@ -428,7 +428,7 @@ final class WP_Customize_Nav_Menus {
 	}
 
 	/**
-	 * Filters a dynamic setting's constructor args.
+	 * Filter a dynamic setting's constructor args.
 	 *
 	 * For a dynamic setting to be registered, this filter must be employed
 	 * to override the default false value with an array of args to pass to
@@ -496,7 +496,6 @@ final class WP_Customize_Nav_Menus {
 		// Create a panel for Menus.
 		$description = '<p>' . __( 'This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links.' ) . '</p>';
 		if ( current_theme_supports( 'widgets' ) ) {
-			/* translators: URL to the widgets panel of the customizer */
 			$description .= '<p>' . sprintf( __( 'Menus can be displayed in locations defined by your theme or in <a href="%s">widget areas</a> by adding a &#8220;Custom Menu&#8221; widget.' ), "javascript:wp.customize.panel( 'widgets' ).focus();" ) . '</p>';
 		} else {
 			$description .= '<p>' . __( 'Menus can be displayed in locations defined by your theme.' ) . '</p>';
@@ -513,15 +512,11 @@ final class WP_Customize_Nav_Menus {
 		$locations     = get_registered_nav_menus();
 		$num_locations = count( array_keys( $locations ) );
 		if ( 1 == $num_locations ) {
-			$description = '<p>' . __( 'Your theme supports one menu. Select which menu you would like to use.' ) . '</p>';
+			$description = '<p>' . __( 'Your theme supports one menu. Select which menu you would like to use.' );
 		} else {
-			/* translators: %s: number of menu locations */
-			$description = '<p>' . sprintf( _n( 'Your theme supports %s menu. Select which menu appears in each location.', 'Your theme supports %s menus. Select which menu appears in each location.', $num_locations ), number_format_i18n( $num_locations ) ) . '</p>';
+			$description = '<p>' . sprintf( _n( 'Your theme supports %s menu. Select which menu appears in each location.', 'Your theme supports %s menus. Select which menu appears in each location.', $num_locations ), number_format_i18n( $num_locations ) );
 		}
-		if ( current_theme_supports( 'widgets' ) ) {
-			/* translators: URL to the widgets panel of the customizer */
-			$description .= '<p>' . sprintf( __( 'You can also place menus in <a href="%s">widget areas</a> with the &#8220;Custom Menu&#8221; widget.' ), "javascript:wp.customize.panel( 'widgets' ).focus();" ) . '</p>';
-		}
+		$description  .= '</p><p>' . __( 'You can also place menus in widget areas with the Custom Menu widget.' ) . '</p>';
 
 		$this->manager->add_section( 'menu_locations', array(
 			'title'       => __( 'Menu Locations' ),
@@ -681,7 +676,7 @@ final class WP_Customize_Nav_Menus {
 		}
 
 		/**
-		 * Filters the available menu item types.
+		 * Filter the available menu item types.
 		 *
 		 * @since 4.3.0
 		 *
@@ -766,8 +761,8 @@ final class WP_Customize_Nav_Menus {
 					<input type="text" id="menu-items-search" placeholder="<?php esc_attr_e( 'Search menu items&hellip;' ) ?>" aria-describedby="menu-items-search-desc" />
 					<p class="screen-reader-text" id="menu-items-search-desc"><?php _e( 'The search results will be updated as you type.' ); ?></p>
 					<span class="spinner"></span>
+					<span class="clear-results"><span class="screen-reader-text"><?php _e( 'Clear Results' ); ?></span></span>
 				</div>
-				<button type="button" class="clear-results"><span class="screen-reader-text"><?php _e( 'Clear Results' ); ?></span></button>
 				<ul class="accordion-section-content" data-type="search"></ul>
 			</div>
 			<div id="new-custom-menu-item" class="accordion-section">
@@ -836,7 +831,7 @@ final class WP_Customize_Nav_Menus {
 	public $preview_nav_menu_instance_args = array();
 
 	/**
-	 * Filters arguments for dynamic nav_menu selective refresh partials.
+	 * Filter arguments for dynamic nav_menu selective refresh partials.
 	 *
 	 * @since 4.5.0
 	 * @access public

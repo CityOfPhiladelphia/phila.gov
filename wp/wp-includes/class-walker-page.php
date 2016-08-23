@@ -116,7 +116,7 @@ class Walker_Page extends Walker {
 		}
 
 		/**
-		 * Filters the list of CSS classes to include with each page item in the list.
+		 * Filter the list of CSS classes to include with each page item in the list.
 		 *
 		 * @since 2.8.0
 		 *
