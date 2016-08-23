@@ -69,7 +69,7 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 		}
 
 		/**
-		 * Filters the headers collection to be sent to the XML-RPC server.
+		 * Filter the headers collection to be sent to the XML-RPC server.
 		 *
 		 * @since 4.4.0
 		 *

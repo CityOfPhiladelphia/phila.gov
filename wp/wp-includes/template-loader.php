@@ -12,7 +12,7 @@ if ( defined('WP_USE_THEMES') && WP_USE_THEMES )
 	do_action( 'template_redirect' );
 
 /**
- * Filters whether to allow 'HEAD' requests to generate content.
+ * Filter whether to allow 'HEAD' requests to generate content.
  *
  * Provides a significant performance bump by exiting before the page
  * content loads for 'HEAD' requests. See #14348.
@@ -65,7 +65,7 @@ if ( defined('WP_USE_THEMES') && WP_USE_THEMES ) :
 		$template = get_index_template();
 	endif;
 	/**
-	 * Filters the path of the current template before including it.
+	 * Filter the path of the current template before including it.
 	 *
 	 * @since 3.0.0
 	 *

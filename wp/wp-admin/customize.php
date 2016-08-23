@@ -15,7 +15,7 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 if ( ! current_user_can( 'customize' ) ) {
 	wp_die(
 		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
-		'<p>' . __( 'Sorry, you are not allowed to customize this site.' ) . '</p>',
+		'<p>' . __( 'You are not allowed to customize the appearance of this site.' ) . '</p>',
 		403
 	);
 }
@@ -118,12 +118,12 @@ do_action( 'customize_controls_print_scripts' );
 			submit_button( $save_text, 'primary save', 'save', false );
 			?>
 			<span class="spinner"></span>
-			<button type="button" class="customize-controls-preview-toggle">
+			<a class="customize-controls-preview-toggle" href="#">
 				<span class="controls"><?php _e( 'Customize' ); ?></span>
 				<span class="preview"><?php _e( 'Preview' ); ?></span>
-			</button>
+			</a>
 			<a class="customize-controls-close" href="<?php echo esc_url( $wp_customize->get_return_url() ); ?>">
-				<span class="screen-reader-text"><?php _e( 'Close the Customizer and go back to the previous page' ); ?></span>
+				<span class="screen-reader-text"><?php _e( 'Cancel' ); ?></span>
 			</a>
 		</div>
 
@@ -134,7 +134,7 @@ do_action( 'customize_controls_print_scripts' );
 					<span class="preview-notice"><?php
 						echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title site-title">' . get_bloginfo( 'name' ) . '</strong>' );
 					?></span>
-					<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+					<button class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
 				</div>
 				<div class="customize-panel-description"><?php
 					_e( 'The Customizer allows you to preview changes to your site before publishing them. You can also navigate to different pages on your site to preview them.' );
@@ -178,7 +178,7 @@ do_action( 'customize_controls_print_scripts' );
 	<?php
 
 	/**
-	 * Prints templates, control scripts, and settings in the footer.
+	 * Print templates, control scripts, and settings in the footer.
 	 *
 	 * @since 3.4.0
 	 */

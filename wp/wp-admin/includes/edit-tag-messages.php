@@ -40,7 +40,7 @@ $messages['post_tag'] = array(
 );
 
 /**
- * Filters the messages displayed when a tag is updated.
+ * Filter the messages displayed when a tag is updated.
  *
  * @since 3.7.0
  *

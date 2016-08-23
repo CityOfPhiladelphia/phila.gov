@@ -62,7 +62,7 @@ class WP_Comment_Query {
 	/**
 	 * SQL WHERE clause.
 	 *
-	 * Stored after the {@see 'comments_clauses'} filter is run on the compiled WHERE sub-clauses.
+	 * Stored after the 'comments_clauses' filter is run on the compiled WHERE sub-clauses.
 	 *
 	 * @since 4.4.2
 	 * @access protected
@@ -125,7 +125,7 @@ class WP_Comment_Query {
 	public $max_num_pages = 0;
 
 	/**
-	 * Make private/protected methods readable for backward compatibility.
+	 * Make private/protected methods readable for backwards compatibility.
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -151,7 +151,6 @@ class WP_Comment_Query {
 	 * @since 4.4.0 Order by `comment__in` was added. `$update_comment_meta_cache`, `$no_found_rows`,
 	 *              `$hierarchical`, and `$update_comment_post_cache` were added.
 	 * @since 4.5.0 Introduced the `$author_url` argument.
-	 * @since 4.6.0 Introduced the `$cache_domain` argument.
 	 * @access public
 	 *
 	 * @param string|array $query {
@@ -251,8 +250,6 @@ class WP_Comment_Query {
 	 *                                                   The parameter is ignored (forced to `false`) when
 	 *                                                   `$fields` is 'ids' or 'counts'. Accepts 'threaded',
 	 *                                                   'flat', or false. Default: false.
- 	 *     @type string       $cache_domain              Unique cache key to be produced when this query is stored in
-	 *                                                   an object cache. Default is 'core'.
 	 *     @type bool         $update_comment_meta_cache Whether to prime the metadata cache for found comments.
 	 *                                                   Default true.
 	 *     @type bool         $update_comment_post_cache Whether to prime the cache for comment posts.
@@ -302,7 +299,6 @@ class WP_Comment_Query {
 			'meta_query' => '',
 			'date_query' => null, // See WP_Date_Query
 			'hierarchical' => false,
-			'cache_domain' => 'core',
 			'update_comment_meta_cache' => true,
 			'update_comment_post_cache' => false,
 		);
@@ -315,7 +311,7 @@ class WP_Comment_Query {
 	/**
 	 * Parse arguments passed to the comment query with default query parameters.
 	 *
-	 * @since 4.2.0 Extracted from WP_Comment_Query::query().
+	 * @since  4.2.0 Extracted from WP_Comment_Query::query().
 	 *
 	 * @access public
 	 *
@@ -327,14 +323,6 @@ class WP_Comment_Query {
 		}
 
 		$this->query_vars = wp_parse_args( $query, $this->query_var_defaults );
-
-		/**
-		 * Fires after the comment query vars have been parsed.
-		 *
-		 * @since 4.2.0
-		 *
-		 * @param WP_Comment_Query &$this The WP_Comment_Query instance (passed by reference).
-		 */
 		do_action_ref_array( 'parse_comment_query', array( &$this ) );
 	}
 
@@ -365,7 +353,7 @@ class WP_Comment_Query {
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
-	 * @return int|array List of comments or number of found comments if `$count` argument is true.
+	 * @return int|array The list of comments.
 	 */
 	public function get_comments() {
 		global $wpdb;
@@ -398,27 +386,12 @@ class WP_Comment_Query {
 			$last_changed = microtime();
 			wp_cache_set( 'last_changed', $last_changed, 'comment' );
 		}
+		$cache_key = "get_comment_ids:$key:$last_changed";
 
-		$cache_key   = "get_comments:$key:$last_changed";
-		$cache_value = wp_cache_get( $cache_key, 'comment' );
-		if ( false === $cache_value ) {
+		$comment_ids = wp_cache_get( $cache_key, 'comment' );
+		if ( false === $comment_ids ) {
 			$comment_ids = $this->get_comment_ids();
-			if ( $comment_ids ) {
-				$this->set_found_comments();
-			}
-
-			$cache_value = array(
-				'comment_ids'    => $comment_ids,
-				'found_comments' => $this->found_comments,
-			);
-			wp_cache_add( $cache_key, $cache_value, 'comment' );
-		} else {
-			$comment_ids          = $cache_value['comment_ids'];
-			$this->found_comments = $cache_value['found_comments'];
-		}
-
-		if ( $this->found_comments && $this->query_vars['number'] ) {
-			$this->max_num_pages = ceil( $this->found_comments / $this->query_vars['number'] );
+			wp_cache_add( $cache_key, $comment_ids, 'comment' );
 		}
 
 		// If querying for a count only, there's nothing more to do.
@@ -428,6 +401,23 @@ class WP_Comment_Query {
 		}
 
 		$comment_ids = array_map( 'intval', $comment_ids );
+
+		$this->comment_count = count( $this->comments );
+
+		if ( $comment_ids && $this->query_vars['number'] && ! $this->query_vars['no_found_rows'] ) {
+			/**
+			 * Filter the query used to retrieve found comment count.
+			 *
+			 * @since 4.4.0
+			 *
+			 * @param string           $found_comments_query SQL query. Default 'SELECT FOUND_ROWS()'.
+			 * @param WP_Comment_Query $comment_query        The `WP_Comment_Query` instance.
+			 */
+			$found_comments_query = apply_filters( 'found_comments_query', 'SELECT FOUND_ROWS()', $this );
+			$this->found_comments = (int) $wpdb->get_var( $found_comments_query );
+
+			$this->max_num_pages = ceil( $this->found_comments / $this->query_vars['number'] );
+		}
 
 		if ( 'ids' == $this->query_vars['fields'] ) {
 			$this->comments = $comment_ids;
@@ -455,7 +445,7 @@ class WP_Comment_Query {
 		}
 
 		/**
-		 * Filters the comment query results.
+		 * Filter the comment query results.
 		 *
 		 * @since 3.1.0
 		 *
@@ -744,13 +734,12 @@ class WP_Comment_Query {
 			}
 		}
 
-		$parent = $this->query_vars['parent'];
-		if ( $this->query_vars['hierarchical'] && ! $parent ) {
-			$parent = 0;
+		if ( $this->query_vars['hierarchical'] && ! $this->query_vars['parent'] ) {
+			$this->query_vars['parent'] = 0;
 		}
 
-		if ( '' !== $parent ) {
-			$this->sql_clauses['where']['parent'] = $wpdb->prepare( 'comment_parent = %d', $parent );
+		if ( '' !== $this->query_vars['parent'] ) {
+			$this->sql_clauses['where']['parent'] = $wpdb->prepare( 'comment_parent = %d', $this->query_vars['parent'] );
 		}
 
 		if ( is_array( $this->query_vars['user_id'] ) ) {
@@ -844,16 +833,17 @@ class WP_Comment_Query {
 			}
 		}
 
-		if ( ! empty( $this->query_vars['date_query'] ) && is_array( $this->query_vars['date_query'] ) ) {
-			$this->date_query = new WP_Date_Query( $this->query_vars['date_query'], 'comment_date' );
-			$this->sql_clauses['where']['date_query'] = preg_replace( '/^\s*AND\s*/', '', $this->date_query->get_sql() );
+		$date_query = $this->query_vars['date_query'];
+		if ( ! empty( $date_query ) && is_array( $date_query ) ) {
+			$date_query_object = new WP_Date_Query( $date_query, 'comment_date' );
+			$this->sql_clauses['where']['date_query'] = preg_replace( '/^\s*AND\s*/', '', $date_query_object->get_sql() );
 		}
 
 		$where = implode( ' AND ', $this->sql_clauses['where'] );
 
 		$pieces = array( 'fields', 'join', 'where', 'orderby', 'limits', 'groupby' );
 		/**
-		 * Filters the comment query clauses.
+		 * Filter the comment query clauses.
 		 *
 		 * @since 3.1.0
 		 *
@@ -905,33 +895,6 @@ class WP_Comment_Query {
 	}
 
 	/**
-	 * Populates found_comments and max_num_pages properties for the current
-	 * query if the limit clause was used.
-	 *
-	 * @since 4.6.0
-	 * @access private
-	 *
-	 * @global wpdb $wpdb WordPress database abstraction object.
-	 */
-	private function set_found_comments() {
-		global $wpdb;
-
-		if ( $this->query_vars['number'] && ! $this->query_vars['no_found_rows'] ) {
-			/**
-			 * Filters the query used to retrieve found comment count.
-			 *
-			 * @since 4.4.0
-			 *
-			 * @param string           $found_comments_query SQL query. Default 'SELECT FOUND_ROWS()'.
-			 * @param WP_Comment_Query $comment_query        The `WP_Comment_Query` instance.
-			 */
-			$found_comments_query = apply_filters( 'found_comments_query', 'SELECT FOUND_ROWS()', $this );
-
-			$this->found_comments = (int) $wpdb->get_var( $found_comments_query );
-		}
-	}
-
-	/**
 	 * Fetch descendants for located comments.
 	 *
 	 * Instead of calling `get_children()` separately on each child comment, we do a single set of queries to fetch
@@ -971,49 +934,20 @@ class WP_Comment_Query {
 			}
 		}
 
-		$key = md5( serialize( wp_array_slice_assoc( $this->query_vars, array_keys( $this->query_var_defaults ) ) ) );
-		$last_changed = wp_cache_get( 'last_changed', 'comment' );
-		if ( ! $last_changed ) {
-			$last_changed = microtime();
-			wp_cache_set( 'last_changed', $last_changed, 'comment' );
-		}
-
 		// Fetch an entire level of the descendant tree at a time.
 		$level = 0;
 		do {
-			// Parent-child relationships may be cached. Only query for those that are not.
-			$child_ids = $uncached_parent_ids = array();
-			$_parent_ids = $levels[ $level ];
-			foreach ( $_parent_ids as $parent_id ) {
-				$cache_key = "get_comment_child_ids:$parent_id:$key:$last_changed";
-				$parent_child_ids = wp_cache_get( $cache_key, 'comment' );
-				if ( false !== $parent_child_ids ) {
-					$child_ids = array_merge( $child_ids, $parent_child_ids );
-				} else {
-					$uncached_parent_ids[] = $parent_id;
-				}
+			$parent_ids = $levels[ $level ];
+			if ( ! $parent_ids ) {
+				break;
 			}
 
-			if ( $uncached_parent_ids ) {
-				$where = 'WHERE ' . $_where . ' AND comment_parent IN (' . implode( ',', array_map( 'intval', $uncached_parent_ids ) ) . ')';
-				$level_comments = $wpdb->get_results( "SELECT $wpdb->comments.comment_ID, $wpdb->comments.comment_parent {$this->sql_clauses['from']} {$where} {$this->sql_clauses['groupby']} ORDER BY comment_date_gmt ASC, comment_ID ASC" );
-
-				// Cache parent-child relationships.
-				$parent_map = array_fill_keys( $uncached_parent_ids, array() );
-				foreach ( $level_comments as $level_comment ) {
-					$parent_map[ $level_comment->comment_parent ][] = $level_comment->comment_ID;
-					$child_ids[] = $level_comment->comment_ID;
-				}
-
-				foreach ( $parent_map as $parent_id => $children ) {
-					$cache_key = "get_comment_child_ids:$parent_id:$key:$last_changed";
-					wp_cache_set( $cache_key, $children, 'comment' );
-				}
-			}
+			$where = 'WHERE ' . $_where . ' AND comment_parent IN (' . implode( ',', array_map( 'intval', $parent_ids ) ) . ')';
+			$comment_ids = $wpdb->get_col( "{$this->sql_clauses['select']} {$this->sql_clauses['from']} {$where} {$this->sql_clauses['groupby']} ORDER BY comment_date_gmt ASC, comment_ID ASC" );
 
 			$level++;
-			$levels[ $level ] = $child_ids;
-		} while ( $child_ids );
+			$levels[ $level ] = $comment_ids;
+		} while ( $comment_ids );
 
 		// Prime comment caches for non-top-level comments.
 		$descendant_ids = array();

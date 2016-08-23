@@ -111,7 +111,7 @@ class Walker_Category extends Walker {
 		$link = '<a href="' . esc_url( get_term_link( $category ) ) . '" ';
 		if ( $args['use_desc_for_title'] && ! empty( $category->description ) ) {
 			/**
-			 * Filters the category description for display.
+			 * Filter the category description for display.
 			 *
 			 * @since 1.2.0
 			 *
@@ -189,7 +189,7 @@ class Walker_Category extends Walker {
 			}
 
 			/**
-			 * Filters the list of CSS classes to include with each category in the list.
+			 * Filter the list of CSS classes to include with each category in the list.
 			 *
 			 * @since 4.2.0
 			 *

@@ -248,7 +248,7 @@ function wp_list_bookmarks( $args = '' ) {
 				$r['category_before']
 			);
 			/**
-			 * Filters the bookmarks category name.
+			 * Filter the bookmarks category name.
 			 *
 			 * @since 2.2.0
 			 *
@@ -289,7 +289,7 @@ function wp_list_bookmarks( $args = '' ) {
 	}
 
 	/**
-	 * Filters the bookmarks list before it is echoed or returned.
+	 * Filter the bookmarks list before it is echoed or returned.
 	 *
 	 * @since 2.5.0
 	 *

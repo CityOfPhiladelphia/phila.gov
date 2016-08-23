@@ -4,7 +4,8 @@ window.wp = window.wp || {};
 	'use strict';
 
 	var $containerPolite,
-		$containerAssertive;
+		$containerAssertive,
+		role;
 
 	/**
 	 * Update the ARIA live notification area text node.
@@ -19,9 +20,6 @@ window.wp = window.wp || {};
 	function speak( message, ariaLive ) {
 		// Clear previous messages to allow repeated strings being read out.
 		clear();
-
-		// Ensure only text is sent to screen readers.
-		message = $( '<p>' ).html( message ).text();
 
 		if ( $containerAssertive && 'assertive' === ariaLive ) {
 			$containerAssertive.text( message );
@@ -41,9 +39,11 @@ window.wp = window.wp || {};
 	 */
 	function addContainer( ariaLive ) {
 		ariaLive = ariaLive || 'polite';
+		role = 'assertive' === ariaLive ? 'alert' : 'status';
 
 		var $container = $( '<div>', {
 			'id': 'wp-a11y-speak-' + ariaLive,
+			'role': role,
 			'aria-live': ariaLive,
 			'aria-relevant': 'additions text',
 			'aria-atomic': 'true',

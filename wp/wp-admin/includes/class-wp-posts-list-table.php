@@ -72,8 +72,8 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 *
 	 * @see WP_List_Table::__construct() for more information on default arguments.
 	 *
-	 * @global WP_Post_Type $post_type_object
-	 * @global wpdb         $wpdb
+	 * @global object $post_type_object
+	 * @global wpdb   $wpdb
 	 *
 	 * @param array $args An associative array of arguments.
 	 */
@@ -412,56 +412,31 @@ class WP_Posts_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Displays a categories drop-down for filtering on the Posts list table.
-	 *
-	 * @since 4.6.0
-	 * @access protected
-	 *
-	 * @global int $cat Currently selected category.
-	 *
-	 * @param string $post_type Post type slug.
-	 */
-	protected function categories_dropdown( $post_type ) {
-		global $cat;
-
-		/**
-		 * Filters whether to remove the 'Categories' drop-down from the post list table.
-		 *
-		 * @since 4.6.0
-		 *
-		 * @param bool   $disable   Whether to disable the categories drop-down. Default false.
-		 * @param string $post_type Post type slug.
-		 */
-		if ( false !== apply_filters( 'disable_categories_dropdown', false, $post_type ) ) {
-			return;
-		}
-
-		if ( is_object_in_taxonomy( $post_type, 'category' ) ) {
-			$dropdown_options = array(
-				'show_option_all' => get_taxonomy( 'category' )->labels->all_items,
-				'hide_empty' => 0,
-				'hierarchical' => 1,
-				'show_count' => 0,
-				'orderby' => 'name',
-				'selected' => $cat
-			);
-
-			echo '<label class="screen-reader-text" for="cat">' . __( 'Filter by category' ) . '</label>';
-			wp_dropdown_categories( $dropdown_options );
-		}
-	}
-
-	/**
+	 * @global int $cat
 	 * @param string $which
 	 */
 	protected function extra_tablenav( $which ) {
+		global $cat;
 ?>
 		<div class="alignleft actions">
 <?php
 		if ( 'top' === $which && !is_singular() ) {
 
 			$this->months_dropdown( $this->screen->post_type );
-			$this->categories_dropdown( $this->screen->post_type );
+
+			if ( is_object_in_taxonomy( $this->screen->post_type, 'category' ) ) {
+				$dropdown_options = array(
+					'show_option_all' => get_taxonomy( 'category' )->labels->all_items,
+					'hide_empty' => 0,
+					'hierarchical' => 1,
+					'show_count' => 0,
+					'orderby' => 'name',
+					'selected' => $cat
+				);
+
+				echo '<label class="screen-reader-text" for="cat">' . __( 'Filter by category' ) . '</label>';
+				wp_dropdown_categories( $dropdown_options );
+			}
 
 			/**
 			 * Fires before the Filter button on the Posts and Pages list tables.
@@ -471,13 +446,10 @@ class WP_Posts_List_Table extends WP_List_Table {
 			 *
 			 * @since 2.1.0
 			 * @since 4.4.0 The `$post_type` parameter was added.
-			 * @since 4.6.0 The `$which` parameter was added.
 			 *
 			 * @param string $post_type The post type slug.
-			 * @param string $which     The location of the extra table nav markup:
-			 *                          'top' or 'bottom'.
 			 */
-			do_action( 'restrict_manage_posts', $this->screen->post_type, $which );
+			do_action( 'restrict_manage_posts', $this->screen->post_type );
 
 			submit_button( __( 'Filter' ), 'button', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
 		}
@@ -540,7 +512,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		$taxonomies = wp_filter_object_list( $taxonomies, array( 'show_admin_column' => true ), 'and', 'name' );
 
 		/**
-		 * Filters the taxonomy columns in the Posts list table.
+		 * Filter the taxonomy columns in the Posts list table.
 		 *
 		 * The dynamic portion of the hook name, `$post_type`, refers to the post
 		 * type slug.
@@ -573,7 +545,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		if ( 'page' === $post_type ) {
 
 			/**
-			 * Filters the columns displayed in the Pages list table.
+			 * Filter the columns displayed in the Pages list table.
 			 *
 			 * @since 2.5.0
 			 *
@@ -583,7 +555,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		} else {
 
 			/**
-			 * Filters the columns displayed in the Posts list table.
+			 * Filter the columns displayed in the Posts list table.
 			 *
 			 * @since 1.5.0
 			 *
@@ -594,7 +566,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 
 		/**
-		 * Filters the columns displayed in the Posts list table for a specific post type.
+		 * Filter the columns displayed in the Posts list table for a specific post type.
 		 *
 		 * The dynamic portion of the hook name, `$post_type`, refers to the post type slug.
 		 *
@@ -989,7 +961,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		echo '<br />';
 		if ( 'excerpt' === $mode ) {
 			/**
-			 * Filters the published time of the post.
+			 * Filter the published time of the post.
 			 *
 			 * If `$mode` equals 'excerpt', the published time and date are both displayed.
 			 * If `$mode` equals 'list' (default), the publish date is displayed, with the
@@ -1276,7 +1248,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		if ( is_post_type_hierarchical( $post->post_type ) ) {
 
 			/**
-			 * Filters the array of row action links on the Pages list table.
+			 * Filter the array of row action links on the Pages list table.
 			 *
 			 * The filter is evaluated only for hierarchical post types.
 			 *
@@ -1291,7 +1263,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		} else {
 
 			/**
-			 * Filters the array of row action links on the Posts list table.
+			 * Filter the array of row action links on the Posts list table.
 			 *
 			 * The filter is evaluated only for non-hierarchical post types.
 			 *
@@ -1333,7 +1305,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 			$show_in_quick_edit = $taxonomy->show_in_quick_edit;
 
 			/**
-			 * Filters whether the current taxonomy should be shown in the Quick Edit panel.
+			 * Filter whether the current taxonomy should be shown in the Quick Edit panel.
 			 *
 			 * @since 4.2.0
 			 *
@@ -1498,7 +1470,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 			$dropdown_args['show_option_no_change'] =  __( '&mdash; No Change &mdash;' );
 
 		/**
-		 * Filters the arguments used to generate the Quick Edit page-parent drop-down.
+		 * Filter the arguments used to generate the Quick Edit page-parent drop-down.
 		 *
 		 * @since 2.7.0
 		 *

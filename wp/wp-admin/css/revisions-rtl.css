@@ -149,7 +149,7 @@ body.folded .revisions .loading-indicator {
 }
 
 .revisions-controls .author-card .author-name {
-	font-weight: 600;
+	font-weight: bold;
 }
 
 .comparing-two-revisions .diff-meta-to strong {

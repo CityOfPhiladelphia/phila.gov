@@ -72,7 +72,7 @@ class WP_Widget_Categories extends WP_Widget {
 			$cat_args['id'] = $dropdown_id;
 
 			/**
-			 * Filters the arguments for the Categories widget drop-down.
+			 * Filter the arguments for the Categories widget drop-down.
 			 *
 			 * @since 2.8.0
 			 *
@@ -105,7 +105,7 @@ class WP_Widget_Categories extends WP_Widget {
 		$cat_args['title_li'] = '';
 
 		/**
-		 * Filters the arguments for the Categories widget.
+		 * Filter the arguments for the Categories widget.
 		 *
 		 * @since 2.8.0
 		 *

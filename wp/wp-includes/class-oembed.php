@@ -38,7 +38,7 @@ class WP_oEmbed {
 	public static $early_providers = array();
 
 	/**
-	 * A list of private/protected methods, used for backward compatibility.
+	 * A list of private/protected methods, used for backwards compatibility.
 	 *
 	 * @since 4.2.0
 	 * @access private
@@ -115,7 +115,7 @@ class WP_oEmbed {
 		self::$early_providers = array();
 
 		/**
-		 * Filters the list of whitelisted oEmbed providers.
+		 * Filter the list of whitelisted oEmbed providers.
 		 *
 		 * Since WordPress 4.4, oEmbed discovery is enabled for all users and allows embedding of sanitized
 		 * iframes. The providers in this list are whitelisted, meaning they are trusted and allowed to
@@ -192,7 +192,7 @@ class WP_oEmbed {
 	}
 
 	/**
-	 * Exposes private/protected methods for backward compatibility.
+	 * Exposes private/protected methods for backwards compatibility.
 	 *
 	 * @since 4.0.0
 	 * @access public
@@ -221,7 +221,6 @@ class WP_oEmbed {
 	 * @return false|string False on failure, otherwise the oEmbed provider URL.
 	 */
 	public function get_provider( $url, $args = '' ) {
-		$args = wp_parse_args( $args );
 
 		$provider = false;
 
@@ -316,8 +315,6 @@ class WP_oEmbed {
 	 * @return false|string False on failure, otherwise the UNSANITIZED (and potentially unsafe) HTML that should be used to embed.
 	 */
 	public function get_html( $url, $args = '' ) {
-		$args = wp_parse_args( $args );
-
 		/**
 		 * Filters the oEmbed result before any HTTP requests are made.
 		 *
@@ -346,7 +343,7 @@ class WP_oEmbed {
 		}
 
 		/**
-		 * Filters the HTML returned by the oEmbed provider.
+		 * Filter the HTML returned by the oEmbed provider.
 		 *
 		 * @since 2.9.0
 		 *
@@ -373,7 +370,7 @@ class WP_oEmbed {
 		);
 
 		/**
-		 * Filters oEmbed remote get arguments.
+		 * Filter oEmbed remote get arguments.
 		 *
 		 * @since 4.0.0
 		 *
@@ -389,7 +386,7 @@ class WP_oEmbed {
 		if ( $html = wp_remote_retrieve_body( $request ) ) {
 
 			/**
-			 * Filters the link types that contain oEmbed provider URLs.
+			 * Filter the link types that contain oEmbed provider URLs.
 			 *
 			 * @since 2.9.0
 			 *
@@ -460,7 +457,7 @@ class WP_oEmbed {
 		$provider = add_query_arg( 'url', urlencode($url), $provider );
 
 		/**
-		 * Filters the oEmbed URL to be fetched.
+		 * Filter the oEmbed URL to be fetched.
 		 *
 		 * @since 2.9.0
 		 *
@@ -623,7 +620,7 @@ class WP_oEmbed {
 		}
 
 		/**
-		 * Filters the returned oEmbed HTML.
+		 * Filter the returned oEmbed HTML.
 		 *
 		 * Use this filter to add support for custom data types, or to filter the result.
 		 *
