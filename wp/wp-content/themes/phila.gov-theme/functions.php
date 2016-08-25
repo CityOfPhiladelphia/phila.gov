@@ -1392,10 +1392,9 @@ function phila_tax_payment_info( $payment_info ){
 
 function phila_extract_clonable_wysiwyg($parent_group){
   $output = array();
-
   if ( !empty($parent_group) ){
 
-    $clonable_wysiwyg = isset($parent_group['phila_cloneable_wysiwyg'] ) ? $parent_group['phila_cloneable_wysiwyg'] : $output;
+    $clonable_wysiwyg = isset($parent_group['phila_wysiwyg_address_content'] ) ? $parent_group['phila_wysiwyg_address_content'] : $output;
 
     foreach ( $clonable_wysiwyg as $k => $v ){
       $output[$k] = $v;
