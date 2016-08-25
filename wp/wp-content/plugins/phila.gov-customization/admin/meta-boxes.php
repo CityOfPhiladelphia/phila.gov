@@ -1447,7 +1447,7 @@ $meta_var_wysiwyg = array(
   'fields'  => array(
     array(
       'name'  => 'Section Title',
-      'id'  => $prefix . 'wywiwyg_title',
+      'id'  => $prefix . 'wysiwyg_title',
       'type'  => 'text'
     ),
     array(
@@ -1468,7 +1468,7 @@ $meta_var_wysiwyg_multi = array(
   'fields'  => array(
     array(
       'placeholder'  => 'Section Heading',
-      'id'  => $prefix . 'wywiwyg_heading',
+      'id'  => $prefix . 'wysiwyg_heading',
       'type'  => 'text',
       'class' => 'width-95'
     ),
@@ -1551,7 +1551,7 @@ $meta_var_wysiwyg_address_content = array(
     array(
       //TODO: determine way to display step numbers in admin
       'placeholder' => 'Heading',
-      'id'  => $prefix . 'wywiwyg_heading',
+      'id'  => $prefix . 'wysiwyg_heading',
       'type'  => 'text',
       'class' => 'width-95'
     ),
@@ -1589,7 +1589,7 @@ $meta_var_ordered_content = array(
     array(
       //TODO: determine way to display step numbers in admin
       'placeholder' => 'Step Heading',
-      'id'  => $prefix . 'step_wywiwyg_heading',
+      'id'  => $prefix . 'step_wysiwyg_heading',
       'type'  => 'text',
       'class' => 'width-95'
     ),
