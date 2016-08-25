@@ -13,6 +13,7 @@
   $payments = phila_tax_payment_info( $tax_payments );
 
   $payment_group = rwmb_meta( 'phila_payment_group' );
+
   $intro = phila_extract_clonable_wysiwyg( $payment_group );
   $steps = phila_extract_stepped_content( $payment_group );
 
@@ -129,17 +130,46 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty($intro) || ( !empty($steps) && count($steps) > 1 ) ) : ?>
+<?php if ( !empty($intro) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to Pay</h3>
       <div class="phm-mu">
-        <?php foreach ( $intro as $item ):  ?>
+        <?php
+        foreach ( $intro as $item ):  ?>
           <div class="mbm">
-            <h4 class="mbn"><?php echo $item['phila_wywiwyg_heading']; ?></h4>
+            <?php if ( isset( $item['phila_wysiwyg_heading'] ) ): ?>
+              <h4 class="mbn"><?php echo $item['phila_wysiwyg_heading']; ?></h4>
+            <?php endif; ?>
             <div class="plm">
-              <?php echo $item['phila_wywiyyg_content']; ?>
+              <?php $wysiwyg_content = isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
+
+              <?php $is_address = isset( $item['phila_address_select'] ) ? $item['phila_address_select'] : '';
+               ?>
+                <?php
+                $address_1 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
+
+                $address_2 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_2'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_2'] : '';
+
+                $city = isset( $item['phila_std_address']['address_group']['phila_std_address_city'] ) ? $item['phila_std_address']['address_group']['phila_std_address_city'] : '';
+
+                $state = isset( $item['phila_std_address']['address_group']['phila_std_address_state'] ) ? $item['phila_std_address']['address_group']['phila_std_address_state'] : '';
+
+                $zip = isset( $item['phila_std_address']['address_group']['phila_std_address_zip'] ) ? $item['phila_std_address']['address_group']['phila_std_address_zip'] : '';
+                ?>
+
+                <?php if ( $is_address == 1 ) : ?>
+                <div class="vcard">
+                  <span class="street-address"><?php echo $address_1; ?></span><br>
+                  <span class="street-address"><?php echo $address_2; ?></span></br>
+                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
+                  <span class="postal-code"><?php echo $zip; ?></span>
+                </div>
+              <?php else : ?>
+                <?php echo isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
+              <?php endif; ?>
+
             </div>
           </div>
         <?php endforeach; ?>
@@ -157,7 +187,7 @@
           <div class="step-label"><?php echo $counter; ?></div>
 
           <div class="step">
-            <div class="step-title"><?php echo $step['phila_step_wywiwyg_heading'] ?></div>
+            <div class="step-title"><?php echo $step['phila_step_wysiwyg_heading'] ?></div>
             <div class="step-content">
               <?php if ( $is_address == 1 ) : ?>
                 <?php
