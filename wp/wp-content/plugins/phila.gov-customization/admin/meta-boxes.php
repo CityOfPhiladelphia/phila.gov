@@ -1540,6 +1540,44 @@ $meta_var_document_page_selector = array(
   )
 );
 
+//Purpose: To display content in a wysiwyg or markup for an address
+$meta_var_wysiwyg_address_content = array(
+  'id'  => $prefix . 'wysiwyg_address_content',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+  'fields'  => array(
+    array(
+      //TODO: determine way to display step numbers in admin
+      'placeholder' => 'Heading',
+      'id'  => $prefix . 'wywiwyg_heading',
+      'type'  => 'text',
+      'class' => 'width-95'
+    ),
+    array(
+      'desc'  => 'Is this an address?',
+      'id'  => $prefix . 'address_select',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'id' => $prefix . 'std_address',
+      'type' => 'group',
+      'visible' => array('phila_address_select', true),
+
+      'fields' => array(
+        $meta_var_standard_address,
+      ),
+    ),
+    array(
+      'id'  => $prefix . 'wysiwyg_content',
+      'visible' => array('phila_address_select', false),
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic
+    )
+  )
+);
+
 //Purpose: To display content in a stepped order on the front-end
 $meta_var_ordered_content = array(
   'id'  => $prefix . 'ordered_content',
@@ -2175,7 +2213,7 @@ $meta_boxes[] = array(
           'name' => 'Introduction',
           'type'  => 'heading',
         ),
-        $meta_var_wysiwyg_multi,
+        $meta_var_wysiwyg_address_content,
         array(
           'name' => 'Steps in payment process',
           'type'  => 'heading',
