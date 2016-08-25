@@ -11,6 +11,8 @@ ocaml_minor_version="ocaml-4.02"
 ocaml_version="ocaml-4.02.3"
 unison_version="unison-2.48.4"
 
+cd /tmp
+
 wget http://caml.inria.fr/pub/distrib/$ocaml_minor_version/$ocaml_version.tar.gz
 tar xzf $ocaml_version.tar.gz
 cd $ocaml_version
@@ -20,6 +22,7 @@ sudo make -s install
 cd -
 
 wget http://www.seas.upenn.edu/~bcpierce/unison/download/releases/stable/$unison_version.tar.gz
-tar xzf $unison_version.tar.gz
-cd $unison_version
+mkdir $unison_version
+tar xzf $unison_version.tar.gz -C $unison_version
+cd $unison_version/src
 make -s
