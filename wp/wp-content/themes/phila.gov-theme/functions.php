@@ -1392,6 +1392,7 @@ function phila_tax_payment_info( $payment_info ){
 
 function phila_extract_clonable_wysiwyg($parent_group){
   $output = array();
+
   if ( !empty($parent_group) ){
 
     $clonable_wysiwyg = isset($parent_group['phila_wysiwyg_address_content'] ) ? $parent_group['phila_wysiwyg_address_content'] : $output;
