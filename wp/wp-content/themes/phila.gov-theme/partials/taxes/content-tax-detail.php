@@ -15,6 +15,7 @@
   $payment_group = rwmb_meta( 'phila_payment_group' );
 
   $intro = phila_extract_clonable_wysiwyg( $payment_group );
+
   $steps = phila_extract_stepped_content( $payment_group );
 
   $additional_content = rwmb_meta('phila_additional_content');
@@ -48,8 +49,10 @@
       <div class="pam">
           <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
             <div class="numbers mbm">
-              <span class="large-text">
-              <?php echo $tax['cost']['number'] ?></span><span class="symbol"><?php echo $tax['cost']['unit'] ?></span>
+              <span class="symbol">
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?><?php echo ($tax['cost']['unit'] == 'mil') ? 'mil' : '';
+                  ?>
+              </span>
             </div>
           <?php endif; ?>
         <div><?php echo $tax['cost']['summary_brief'] ?></div>
@@ -129,15 +132,13 @@
   </div>
 </div>
 <?php endif; ?>
-
-<?php if ( !empty($intro) ) : ?>
+<?php if ( !empty($intro) || !empty($steps) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to Pay</h3>
       <div class="phm-mu">
-        <?php
-        foreach ( $intro as $item ):  ?>
+        <?php foreach ( $intro as $item ): ?>
           <div class="mbm">
             <?php if ( isset( $item['phila_wysiwyg_heading'] ) ): ?>
               <h4 class="mbn"><?php echo $item['phila_wysiwyg_heading']; ?></h4>
@@ -167,12 +168,13 @@
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
               <?php else : ?>
-                <?php echo isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
+                <?php echo $wysiwyg_content;?>
               <?php endif; ?>
 
             </div>
           </div>
         <?php endforeach; ?>
+      <?php endif; ?>
 
       <?php
       //display if there is more than one step
@@ -181,7 +183,6 @@
       <div class="step-group">
         <?php $counter = 0; ?>
         <?php foreach ( $steps as $step ): ?>
-
           <?php $is_address = isset( $step['phila_address_step'] ) ? $step['phila_address_step'] : '';
           $counter++; ?>
           <div class="step-label"><?php echo $counter; ?></div>
@@ -212,8 +213,8 @@
                 <?php endif; ?>
 
               <?php else : ?>
-                <?php if ( !empty( $step['phila_step_wywiyyg_content'] ) ) :
-                  echo apply_filters( 'the_content', $step['phila_step_wywiyyg_content'] ); ?>
+                <?php if ( !empty( $step['phila_step_wysiwyg_content'] ) ) :
+                  echo apply_filters( 'the_content', $step['phila_step_wysiwyg_content'] ); ?>
                 <?php endif; ?>
               <?php endif; ?>
             </div>
@@ -225,7 +226,6 @@
     </section>
   </div>
 </div>
-<?php endif; ?>
 
 <?php if ( !empty( $tax['code'] ) ) : ?>
 <div class="row">
