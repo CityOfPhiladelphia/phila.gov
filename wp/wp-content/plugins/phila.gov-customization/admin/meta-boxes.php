@@ -1715,8 +1715,8 @@ $meta_var_tax_costs = array(
       'id'  =>  $prefix . 'tax_cost_unit',
       'type'  => 'select',
       'options' => array(
-        '%' => '%',
-        '&'  => '$',
+        'percent' => '%',
+        'dollar'  => '$',
         'mil' => 'mil'
       )
     ),
