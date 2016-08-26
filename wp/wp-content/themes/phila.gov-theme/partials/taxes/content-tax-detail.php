@@ -181,7 +181,6 @@
       <div class="step-group">
         <?php $counter = 0; ?>
         <?php foreach ( $steps as $step ): ?>
-
           <?php $is_address = isset( $step['phila_address_step'] ) ? $step['phila_address_step'] : '';
           $counter++; ?>
           <div class="step-label"><?php echo $counter; ?></div>
@@ -212,8 +211,8 @@
                 <?php endif; ?>
 
               <?php else : ?>
-                <?php if ( !empty( $step['phila_step_wywiyyg_content'] ) ) :
-                  echo apply_filters( 'the_content', $step['phila_step_wywiyyg_content'] ); ?>
+                <?php if ( !empty( $step['phila_step_wysiwyg_content'] ) ) :
+                  echo apply_filters( 'the_content', $step['phila_step_wysiwyg_content'] ); ?>
                 <?php endif; ?>
               <?php endif; ?>
             </div>
