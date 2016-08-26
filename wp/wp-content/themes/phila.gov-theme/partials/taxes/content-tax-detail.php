@@ -15,6 +15,7 @@
   $payment_group = rwmb_meta( 'phila_payment_group' );
 
   $intro = phila_extract_clonable_wysiwyg( $payment_group );
+
   $steps = phila_extract_stepped_content( $payment_group );
 
   $additional_content = rwmb_meta('phila_additional_content');
@@ -131,15 +132,13 @@
   </div>
 </div>
 <?php endif; ?>
-
-<?php if ( !empty($intro) ) : ?>
+<?php if ( !empty($intro) || !empty($steps) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to Pay</h3>
       <div class="phm-mu">
-        <?php
-        foreach ( $intro as $item ):  ?>
+        <?php foreach ( $intro as $item ): ?>
           <div class="mbm">
             <?php if ( isset( $item['phila_wysiwyg_heading'] ) ): ?>
               <h4 class="mbn"><?php echo $item['phila_wysiwyg_heading']; ?></h4>
@@ -169,12 +168,13 @@
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
               <?php else : ?>
-                <?php echo isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
+                <?php echo $wysiwyg_content;?>
               <?php endif; ?>
 
             </div>
           </div>
         <?php endforeach; ?>
+      <?php endif; ?>
 
       <?php
       //display if there is more than one step
@@ -226,7 +226,6 @@
     </section>
   </div>
 </div>
-<?php endif; ?>
 
 <?php if ( !empty( $tax['code'] ) ) : ?>
 <div class="row">
