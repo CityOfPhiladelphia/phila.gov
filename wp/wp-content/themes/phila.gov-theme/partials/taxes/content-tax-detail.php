@@ -48,8 +48,10 @@
       <div class="pam">
           <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
             <div class="numbers mbm">
-              <span class="large-text">
-              <?php echo $tax['cost']['number'] ?></span><span class="symbol"><?php echo $tax['cost']['unit'] ?></span>
+              <span class="symbol">
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?><?php echo ($tax['cost']['unit'] == 'mil') ? 'mil' : '';
+                  ?>
+              </span>
             </div>
           <?php endif; ?>
         <div><?php echo $tax['cost']['summary_brief'] ?></div>
