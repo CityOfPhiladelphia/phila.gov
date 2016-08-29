@@ -50,7 +50,7 @@
           <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
             <div class="numbers mbm">
               <span class="symbol">
-                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?><?php echo ($tax['cost']['unit'] == 'mil') ? 'mil' : '';
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?><?php echo ($tax['cost']['unit'] == 'mil') ? 'mills' : '';
                   ?>
               </span>
             </div>
