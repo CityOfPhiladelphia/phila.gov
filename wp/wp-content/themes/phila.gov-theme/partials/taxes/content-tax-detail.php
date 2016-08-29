@@ -163,7 +163,9 @@
                 <?php if ( $is_address == 1 ) : ?>
                 <div class="vcard">
                   <span class="street-address"><?php echo $address_1; ?></span><br>
-                  <span class="street-address"><?php echo $address_2; ?></span></br>
+                  <?php if ( !empty($address_2) ) : ?>
+                    <span class="street-address"><?php echo $address_2; ?></span></br>
+                  <?php endif; ?>
                   <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
@@ -205,7 +207,9 @@
                 <?php if ( !empty( $address_1 ) ) : ?>
                 <div class="vcard">
                   <span class="street-address"><?php echo $address_1; ?></span><br>
-                  <span class="street-address"><?php echo $address_2; ?></span></br>
+                  <?php if ( !empty($address_2) ) : ?>
+                    <span class="street-address"><?php echo $address_2; ?></span></br>
+                  <?php endif; ?>
                   <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
