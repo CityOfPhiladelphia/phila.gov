@@ -264,7 +264,7 @@
 </div>
 <?php endif; ?>
 
-<div class="row equal-height">
+<div class="row equal-height mtl">
   <?php if ( !empty($more['aside']['did_you_know'] ) ) : ?>
    <div class="medium-<?php echo (!empty( $more['aside']['questions'] ) ) ? '12' : '24'; ?> columns">
       <div class="panel info equal">
