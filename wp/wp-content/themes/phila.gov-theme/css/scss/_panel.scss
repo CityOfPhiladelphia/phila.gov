@@ -32,8 +32,8 @@
 }
 .panel p{
   margin-bottom:1rem;
-}
-.panel p:last-of-type {
+
+  &:last-of-type {
   margin: 0;
   padding: 0;
 }
