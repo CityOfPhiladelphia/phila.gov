@@ -1540,7 +1540,7 @@ $meta_var_document_page_selector = array(
   )
 );
 
-//Purpose: To display content in a wysiwyg or markup for an address
+//Purpose: To display content in a wysiwyg and include markup for an address
 $meta_var_wysiwyg_address_content = array(
   'id'  => $prefix . 'wysiwyg_address_content',
   'type'  => 'group',
@@ -1556,7 +1556,12 @@ $meta_var_wysiwyg_address_content = array(
       'class' => 'width-95'
     ),
     array(
-      'desc'  => 'Is this an address?',
+      'id'  => $prefix . 'wysiwyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic
+    ),
+    array(
+      'desc'  => 'Include an address?',
       'id'  => $prefix . 'address_select',
       'type'  => 'checkbox',
     ),
@@ -1569,12 +1574,6 @@ $meta_var_wysiwyg_address_content = array(
         $meta_var_standard_address,
       ),
     ),
-    array(
-      'id'  => $prefix . 'wysiwyg_content',
-      'visible' => array('phila_address_select', false),
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
-    )
   )
 );
 
@@ -1594,6 +1593,11 @@ $meta_var_ordered_content = array(
       'class' => 'width-95'
     ),
     array(
+      'id'  => $prefix . 'step_wysiwyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic
+    ),
+    array(
       'desc'  => 'Does this step contain an address?',
       'id'  => $prefix . 'address_step',
       'type'  => 'checkbox',
@@ -1607,12 +1611,6 @@ $meta_var_ordered_content = array(
         $meta_var_standard_address,
       ),
     ),
-    array(
-      'id'  => $prefix . 'step_wysiwyg_content',
-      'visible' => array('phila_address_step', false),
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
-    )
   )
 );
 
