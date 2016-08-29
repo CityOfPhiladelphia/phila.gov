@@ -143,13 +143,11 @@
             <?php if ( isset( $item['phila_wysiwyg_heading'] ) ): ?>
               <h4 class="mbn"><?php echo $item['phila_wysiwyg_heading']; ?></h4>
             <?php endif; ?>
+            <?php $wysiwyg_content = isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
+            <?php $is_address = isset( $item['phila_address_select'] ) ? $item['phila_address_select'] : ''; ?>
+            <?php if ( (!empty($wysiwyg_content) || (!empty($is_address) ) ) ) : ?>
             <div class="plm">
-              <?php $wysiwyg_content = isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
-
               <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
-
-              <?php $is_address = isset( $item['phila_address_select'] ) ? $item['phila_address_select'] : '';
-               ?>
                 <?php
                 $address_1 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
 
@@ -171,6 +169,7 @@
                 </div>
                 <?php endif;?>
             </div>
+            <?php endif;?>
           </div>
         <?php endforeach; ?>
       <?php endif; ?>
@@ -187,11 +186,10 @@
           <div class="step-label"><?php echo $counter; ?></div>
 
           <div class="step">
-            <div class="step-title"><?php echo $step['phila_step_wysiwyg_heading'] ?></div>
+            <div class="step-title"><?php echo isset( $step['phila_step_wysiwyg_heading'] ) ? $step['phila_step_wysiwyg_heading'] : ''; ?></div>
             <div class="step-content">
-              <?php $step_wysiwyg_content = isset( $item['phila_step_wysiwyg_content'] ) ? $item['phila_step_wysiwyg_content'] : ''; ?>
-
-              <?php  echo apply_filters( 'the_content', $step_wysiwyg_content ); ?>
+              <?php $step_wysiwyg_content = isset( $step['phila_step_wysiwyg_content'] ) ? $step['phila_step_wysiwyg_content'] : ''; ?>
+              <?php echo apply_filters( 'the_content', $step_wysiwyg_content ); ?>
                 <?php
                 $address_1 = isset( $step['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $step['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
 
