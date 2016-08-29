@@ -146,6 +146,8 @@
             <div class="plm">
               <?php $wysiwyg_content = isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
 
+              <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
+
               <?php $is_address = isset( $item['phila_address_select'] ) ? $item['phila_address_select'] : '';
                ?>
                 <?php
@@ -167,10 +169,7 @@
                   <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
-              <?php else : ?>
-                <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
-              <?php endif; ?>
-
+                <?php endif;?>
             </div>
           </div>
         <?php endforeach; ?>
@@ -190,7 +189,9 @@
           <div class="step">
             <div class="step-title"><?php echo $step['phila_step_wysiwyg_heading'] ?></div>
             <div class="step-content">
-              <?php if ( $is_address == 1 ) : ?>
+              <?php $step_wysiwyg_content = isset( $item['phila_step_wysiwyg_content'] ) ? $item['phila_step_wysiwyg_content'] : ''; ?>
+
+              <?php  echo apply_filters( 'the_content', $step_wysiwyg_content ); ?>
                 <?php
                 $address_1 = isset( $step['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $step['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
 
@@ -212,11 +213,6 @@
                 </div>
                 <?php endif; ?>
 
-              <?php else : ?>
-                <?php if ( !empty( $step['phila_step_wysiwyg_content'] ) ) :
-                  echo apply_filters( 'the_content', $step['phila_step_wysiwyg_content'] ); ?>
-                <?php endif; ?>
-              <?php endif; ?>
             </div>
           </div>
           <?php endforeach; ?>
