@@ -55,7 +55,7 @@
               </span>
             </div>
           <?php endif; ?>
-        <div><?php echo $tax['cost']['summary_brief'] ?></div>
+        <div><?php echo apply_filters( 'the_content', $tax['cost']['summary_brief'] ); ?></div>
       </div>
     </div>
   </div>
@@ -168,7 +168,7 @@
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
               <?php else : ?>
-                <?php echo $wysiwyg_content;?>
+                <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
               <?php endif; ?>
 
             </div>
