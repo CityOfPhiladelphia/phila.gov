@@ -20,31 +20,6 @@ class Phila_Gov_Custom_Taxonomies {
   }
 
   function add_custom_taxonomies() {
-    register_taxonomy('topics',
-      array(
-        'page',
-        'service_page'
-      ), array(
-          'hierarchical' => true,
-          'labels' => array(
-            'name' => _x( 'Topics', 'phila-gov'),
-            'singular_name' => _x( 'Topic', 'phila-gov'),
-            'menu_name' =>     __('Topics'),
-            'search_items' =>  __( 'Search Topics' ),
-            'all_items' =>     __( 'All Topics' ),
-            'edit_item' =>     __( 'Edit Topic' ),
-            'update_item' =>   __( 'Update Topic' ),
-            'add_new_item' =>  __( 'Add New Topic' ),
-            'new_item_name' => __( 'New Topic Name' ),
-            'menu_name' =>     __( 'Topics' ),
-          ),
-      'public' => true,
-      'show_admin_column' => true,
-      'rewrite' => array(
-        'slug' => 'browse',
-        'with_front' => false,
-      ),
-    ));
     register_taxonomy('attachment_type',
       array(
         'attachment'
