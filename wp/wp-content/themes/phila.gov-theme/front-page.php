@@ -55,6 +55,8 @@ get_header(); ?>
                 </a>
             </div>
           </div><!--#popular -->
+          <div class="row expanded topic-main-nav">
+          </div>
         </section>
       </div>
     </div>
