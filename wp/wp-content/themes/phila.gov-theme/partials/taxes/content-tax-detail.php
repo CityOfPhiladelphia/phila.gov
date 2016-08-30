@@ -53,7 +53,7 @@
                 <div class="h4"><br></div>
               <?php endif; ?>
               <span class="symbol">
-                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mil') ? 'mills' : '';
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mills') ? 'mills' : '';
                   ?></span>
               </span>
             </div>
