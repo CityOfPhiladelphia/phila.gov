@@ -3,7 +3,6 @@
 /**
 * @since 0.19.2
 *
-* Filter the post_type_link to add the category into notices URL,
 * Add year-month-day to phila_post urls
 *
 * @package phila-gov_customization
