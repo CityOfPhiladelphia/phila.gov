@@ -19,7 +19,7 @@
   </div>
   <section class="fat">
     <div class="row">
-      <div class="large-8 columns">
+      <div class="large-24 columns center">
         <h1>Government</h1>
         <nav class="government">
           <ul>
@@ -31,28 +31,6 @@
           </ul>
         </nav>
       </div>
-      <div class="large-16 columns">
-        <h1>Browse alpha.phila.gov</h1>
-        <nav class="browse-alpha">
-            <?php
-            /* temp top-level topics list w/ descriptions */
-               $args = array(
-                  'orderby' => 'name',
-                  'fields'=> 'all',
-                  'parent' => 0,
-                  'hide_empty'=> true
-                 );
-              $terms = get_terms( 'topics', $args );
-                if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-                     echo '<ul class="columns-2">';
-                     foreach ( $terms as $term ) {
-                         echo '<li><a href="/browse/' . $term->slug .  '">' . $term->name . '</a>';
-                     }
-                     echo '</ul>';
-                    }
-                    ?>
-              </nav>
-        </div>
     </div><!-- row -->
   </section><!-- fat -->
   <div class="row classic">
