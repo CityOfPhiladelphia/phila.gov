@@ -116,5 +116,31 @@ class Phila_Gov_Custom_Taxonomies {
         'with_front' => false,
       ),
     ));
+    // Service Pages
+    register_taxonomy('service_type',
+      array(
+        'service_page'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Service Type', 'phila-gov'),
+        'singular_name' => _x( 'Service Type', 'phila-gov'),
+        'menu_name' =>     __('Service Types'),
+        'search_items' =>  __( 'Search Service Types' ),
+        'all_items' =>     __( 'All Service Types' ),
+        'edit_item' =>     __( 'Edit Service Type' ),
+        'update_item' =>   __( 'Update Service Type' ),
+        'add_new_item' =>  __( 'Add New Service Type' ),
+        'new_item_name' => __( 'New Service Type Name' ),
+        'menu_name' =>     __( 'Service Types' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'service-types',
+        'with_front' => false,
+      ),
+    ));
   }
 }
