@@ -2,7 +2,7 @@
 
 /**
 * @since 0.5.11
-* Rewrite rules for news, browse
+* Rewrite rules for news & posts
 * /news/category renders filtered news archive page
 * @uses https://codex.wordpress.org/Rewrite_API/add_rewrite_rule
 * @package phila-gov_customization
