@@ -4,7 +4,6 @@
 * @since 0.5.11
 * Rewrite rules for news, browse
 * /news/category renders filtered news archive page
-* /browse/topicname renders filtered topics page
 * @uses https://codex.wordpress.org/Rewrite_API/add_rewrite_rule
 * @package phila-gov_customization
 */
