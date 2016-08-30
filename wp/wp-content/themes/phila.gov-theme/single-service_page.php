@@ -11,36 +11,35 @@
  *
  * @package phila-gov
  */
-  include( locate_template(  'partials/content-collection-header.php' ) );
-?>
+ get_header(); ?>
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
 
-    <?php while ( have_posts() ) : the_post();
+    <?php while ( have_posts() ) : the_post(); ?>
+    <?php $user_selected_template = phila_get_selected_template(); ?>
 
-      $children = get_pages( 'child_of=' . $post->ID . '&post_type=' . get_post_type() );
+    <article id="post-<?php the_ID(); ?>">
+    <div class="row">
+      <header class="entry-header small-24 columns">
+        <h1 class="contrast"><?php echo get_the_title(); ?></h1>
+        </header>
+      </div>
+      <div class="row">
+        <div class="medium-24 columns">
+          <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
+            <?php if ($user_selected_template == 'tax_detail') : ?>
+              <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php else : ?>
+              <?php the_content(); ?>
+            <?php endif; ?>
+            </div>
+          </div>
+        </div>
+    </article><!-- #post-## -->
 
-      $this_content = get_the_content();
 
-      if ( ( count( $children ) == 0 ) && ( !$this_content == 0 ) && ( !$has_parent ) )  {
-
-        //single page, no children
-        get_template_part( 'templates/default', 'page' );
-
-      }elseif( ( $post->id = $post->post_parent ) ) {
-
-        //this is our normal content collection
-        get_template_part( 'templates/page', 'collection' );
-
-      }else {
-
-        //still show the menu, even if this page has content
-        get_template_part( 'templates/page', 'collection' );
-
-      }
-
-      endwhile; // end of the loop. ?>
+  <?php  endwhile; // end of the loop. ?>
 
   </main><!-- #main -->
 </div><!-- #primary -->
