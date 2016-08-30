@@ -90,7 +90,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'No Service Pages Found' ),
           'not_found_in_trash'   => __( 'Service Page not found in trash' ),
         ),
-        'taxonomies' => array('category', 'topics'),
+        'taxonomies' => array('category', 'service_type', 'topics' ),
         'supports' => array(
           'title',
           'editor',
@@ -343,7 +343,7 @@ class Phila_Gov_Custom_Post_Types{
           'thumbnail'
         ),
         'exclude_from_search' => true,
-        'public' => false,
+        'public' => true,
         'show_ui' => true,
         'has_archive' => false,
         'menu_icon' => 'dashicons-id',
