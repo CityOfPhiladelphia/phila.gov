@@ -371,6 +371,17 @@ function phila_breadcrumbs() {
       the_title();
       echo '</li>';
 
+      }elseif ( is_singular('notices') ) {
+        $categories = get_the_category($post->ID);
+
+        echo '<li><a href="/notices">Notices</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/notices/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
+        echo '<li>';
+        the_title();
+        echo '</li>';
+
       }elseif ( is_singular('phila_post') ) {
 
         echo '<li><a href="/posts">Posts</a></li>';
@@ -393,7 +404,7 @@ function phila_breadcrumbs() {
 
         echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
 
-    } elseif ( ( is_post_type_archive('news_post') && is_tax('topics') ) ) {
+    } elseif ( is_post_type_archive('news_post') ) {
 
         echo '<li><a href="/news">News</a></li>';
 
@@ -455,26 +466,6 @@ function phila_breadcrumbs() {
       }
       echo $output;
       echo '<li> '.$title.'</li>';
-
-    } elseif ( is_tax('topics') ) {
-
-      //BROWSE
-      $taxonomy = 'topics';
-      $queried_term = get_query_var($taxonomy);
-      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
-
-      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
-      $parent = get_term($term->parent, $taxonomy);
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
-      endif;
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li>' . $term_obj->name . '</li>';
-      else :
-        echo '<li>'. $term_obj->name . '</li>';
-      endif;
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
