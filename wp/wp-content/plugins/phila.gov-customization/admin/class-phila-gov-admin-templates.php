@@ -85,22 +85,14 @@ class Phila_Gov_Admin_Templates {
       'relation' => 'or'
     );
 
-    // $conditions['postdivrich'] = array(
-    //   'hidden' => array(
-    //     'when' => array(
-    //       array('phila_template_select', '=', 'service_stub' ),
-    //     ),
-    //   ),
-    //   'relation' => 'or'
-    // );
-
     $conditions['additional-content'] = array(
-      'hidden' => array(
+      'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'service_stub' ),
+          array('phila_template_select', '=', 'default' ),
+          array('phila_template_select', '=', 'tax_detail' ),
         ),
+        'relation' => 'or'
       ),
-      'relation' => 'or'
     );
 
     return $conditions;
@@ -123,7 +115,8 @@ class Phila_Gov_Admin_Templates {
           'options' => array(
             'default'   => 'Default',
             'service_stub' => 'Service Stub',
-            'tax_detail' => 'Tax Detail'
+            'tax_detail' => 'Tax Detail',
+            'topic_page' => 'Topic Page'
           )
         )
       ),
