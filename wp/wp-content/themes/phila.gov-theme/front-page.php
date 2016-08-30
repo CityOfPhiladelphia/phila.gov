@@ -55,22 +55,6 @@ get_header(); ?>
                 </a>
             </div>
           </div><!--#popular -->
-          <div class="row expanded topic-main-nav">
-          <?php
-             $args = array(
-              'orderby' => 'name',
-              'fields'=> 'all',
-              'parent' => 0,
-              'hide_empty'=> true
-             );
-            $terms = get_terms( 'topics', $args );
-              if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-                foreach ( $terms as $term ) {
-                  echo '<a href="/browse/' . $term->slug .  '">' . $term->name . '</a>';
-                 }
-              }
-            ?>
-          </div>
         </section>
       </div>
     </div>
