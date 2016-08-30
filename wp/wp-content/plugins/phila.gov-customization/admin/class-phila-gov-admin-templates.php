@@ -104,6 +104,7 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
+            'service_stub' => 'Service Stub',
             'tax_detail' => 'Tax Detail'
           )
         )
