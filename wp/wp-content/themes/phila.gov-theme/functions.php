@@ -371,17 +371,6 @@ function phila_breadcrumbs() {
       the_title();
       echo '</li>';
 
-      }elseif ( is_singular('notices') ) {
-        $categories = get_the_category($post->ID);
-
-        echo '<li><a href="/notices">Notices</a></li>';
-        if ( !$categories == 0 ) {
-          echo '<li><a href="/notices/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-        }
-        echo '<li>';
-        the_title();
-        echo '</li>';
-
       }elseif ( is_singular('phila_post') ) {
 
         echo '<li><a href="/posts">Posts</a></li>';
@@ -976,69 +965,6 @@ function phila_get_home_news(){
   echo '</div></a>';
 }
 
-/**
- * Gets the list of topics available used in:
- * templates/topics-child.php
- * templates/topics-parent.php
- * taxonomy-topics.php
- *
- */
-function phila_get_parent_topics(){
-
-  $args = array(
-    'orderby' => 'name',
-    'fields'=> 'all',
-    'parent' => 0,
-    'hide_empty'=> true
-  );
-
-  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
-  $terms = get_terms( 'topics', $args );
-
-  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-    echo '<ul class="tabs vertical">';
-
-    foreach ( $terms as $term ) {
-
-      if (isset($current_term->slug) ) {
-        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
-
-      }else {
-        $active = '';
-      }
-
-      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
-
-    }
-    echo '</ul>';
-  }
-}
-/**
- * Utility function to get a list of all topics and their children on the site.
- *
- */
-function phila_get_master_topics(){
-  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
-  echo '<ul>';
-  foreach($parent_terms as $key => $parent_term) {
-
-    echo '<li><h3>' . $parent_term->name . '</h3>';
-    echo  $parent_term->description;
-
-    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
-
-    if($child_terms) {
-      echo '<ul class="subtopics">';
-      foreach($child_terms as $key => $child_term) {
-        echo '<li><h4>' . $child_term->name . '</h4>';
-        echo  $child_term->description . '</li></li>';
-      }
-
-    }
-    echo '</ul>';
-  }
-}
 
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
