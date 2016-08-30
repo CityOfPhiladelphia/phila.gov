@@ -1715,7 +1715,7 @@ $meta_var_tax_costs = array(
       'options' => array(
         'percent' => '%',
         'dollar'  => '$',
-        'mil' => 'mil'
+        'mills' => 'mills'
       )
     ),
     array(
