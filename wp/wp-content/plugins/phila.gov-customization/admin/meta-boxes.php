@@ -2307,9 +2307,18 @@ $meta_boxes[] = array(
   'visible' => array('phila_template_select', 'default'),
 
   'fields' => array(
-    $meta_var_wysiwyg_address_content_unique
+    array(
+      'id' => $prefix . 'heading_groups',
+      'type'  => 'group',
+      'clone' => false,
+
+      'fields' => array(
+        $meta_var_wysiwyg_address_content_unique
+      )
+    )
   )
 );
+
 
 
 $meta_boxes[] = array(
