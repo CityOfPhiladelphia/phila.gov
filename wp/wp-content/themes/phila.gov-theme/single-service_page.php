@@ -1,13 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
- * In our theme, Pages are special.
- * We use pages to create "Content Collections."
- * Content collections are items that may stand alone, but also may have
- * children. If children exist, an internal page menu should be generated and
- * the parent item should redirect to it's first child.
- *
- * This is the template that displays all pages by default.
+ * This is the template that displays all service pages by default.
  *
  * @package phila-gov
  */
