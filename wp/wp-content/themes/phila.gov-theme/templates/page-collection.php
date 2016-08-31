@@ -90,6 +90,9 @@
           <?php if ( isset( $parent_content ) ) : ?>
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+              <?php //TODO: remove this else if. it is required in the short term, to accommodate Pages. Once these items have been separated, this can go away ?>
+            <?php elseif($user_selected_template == 'default'): ?>
+              <?php get_template_part('partials/content', 'service-default');?>
             <?php else: ?>
               <?php echo $parent_content ?>
             <?php endif; ?>
@@ -97,6 +100,8 @@
           <?php else : ?>
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php elseif($user_selected_template == 'default'): ?>
+              <?php get_template_part('partials/content', 'service-default');?>
             <?php else: ?>
               <?php the_content(); ?>
             <?php endif; ?>
