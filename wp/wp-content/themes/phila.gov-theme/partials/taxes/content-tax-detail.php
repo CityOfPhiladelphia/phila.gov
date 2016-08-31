@@ -56,7 +56,7 @@
                 <div class="h4"><br></div>
               <?php endif; ?>
               <span class="symbol">
-                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mills') ? 'mills' : '';
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mills') ? 'mills' : '';
                   ?></span>
               </span>
             </div>
@@ -171,9 +171,9 @@
                 <div class="vcard">
                   <span class="street-address"><?php echo $address_1; ?></span><br>
                   <?php if ( !empty($address_2) ) : ?>
-                    <span class="street-address"><?php echo $address_2; ?></span></br>
+                    <span class="street-address"><?php echo $address_2; ?></span><br>
                   <?php endif; ?>
-                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
+                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
                 <?php endif;?>
@@ -215,9 +215,9 @@
                 <div class="vcard">
                   <span class="street-address"><?php echo $address_1; ?></span><br>
                   <?php if ( !empty($address_2) ) : ?>
-                    <span class="street-address"><?php echo $address_2; ?></span></br>
+                    <span class="street-address"><?php echo $address_2; ?></span><br>
                   <?php endif; ?>
-                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
+                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
                 <?php endif; ?>
