@@ -1666,8 +1666,9 @@ $meta_var_tax_due_date = array(
       'hidden' => array('phila_tax_date_choice', 'misc'),
       'name'  => 'Brief Explanation',
       'id'  => $prefix . 'tax_date_summary_brief',
-      'type'  => 'textarea',
+      'type'  => 'wysiwyg',
       'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box . ',
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
     array(
@@ -1715,14 +1716,15 @@ $meta_var_tax_costs = array(
       'options' => array(
         'percent' => '%',
         'dollar'  => '$',
-        'mil' => 'mil'
+        'mills' => 'mills'
       )
     ),
     array(
       'name'  => 'Brief Explanation',
       'id'  => $prefix . 'tax_cost_summary_brief',
-      'type'  => 'textarea',
+      'type'  => 'wysiwyg',
       'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box . ',
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
     array(
