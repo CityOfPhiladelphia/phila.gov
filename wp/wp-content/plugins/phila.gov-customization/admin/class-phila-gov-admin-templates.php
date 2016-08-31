@@ -72,8 +72,8 @@ class Phila_Gov_Admin_Templates {
         'when' => array(
           array('phila_get_user_roles_callback()', false ),
         ),
+        'relation' => 'or'
       ),
-      'relation' => 'or'
     );
 
     $conditions['postdivrich'] = array(
@@ -81,8 +81,8 @@ class Phila_Gov_Admin_Templates {
         'when' => array(
           array('phila_template_select', '=', 'default' ),
         ),
+        'relation' => 'or'
       ),
-      'relation' => 'or'
     );
 
     $conditions['additional-content'] = array(
