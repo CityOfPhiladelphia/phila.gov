@@ -246,7 +246,7 @@
       <div class="phm-mu">
         <?php foreach ( $more['forms'] as $form ): ?>
           <div class="pvs">
-            <a href="<?php get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+            <a href="<?php echo get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
           </div>
         <?php endforeach; ?>
       </div>
