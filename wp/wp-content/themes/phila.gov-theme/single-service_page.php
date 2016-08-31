@@ -23,6 +23,32 @@
           <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <!-- Service Stub  -->
+            <?php elseif ($user_selected_template == 'service_stub') : ?>
+              <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
+                <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
+                <?php $post_id = intval( $stub_source );?>
+
+                <?php $stub_args = array(
+                  'p' => $post_id, // id of a page, post, or custom type
+                  'post_type' => 'service_page'
+                ); ?>
+                <?php $stub_post = new WP_Query($stub_args); ?>
+                <?php if ( $stub_post->have_posts() ): ?>
+                  <?php while ( $stub_post->have_posts() ) : ?>
+                    <?php $stub_post->the_post(); ?>
+                    <?php $source_template =  rwmb_meta( 'phila_template_select'); ?>
+                    <?php if ($source_template == 'default') :?>
+                      <?php the_content(); ?>
+                    <?php elseif ($source_template == 'tax_detail') : ?>
+                      <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
+                    <?php endif; ?>
+                  <?php endwhile; ?>
+                <?php endif; ?>
+                <?php wp_reset_query(); ?>
+              <?php endif; ?>
+              <!-- END Service Stub -->
+
             <?php else : ?>
               <?php the_content(); ?>
             <?php endif; ?>
