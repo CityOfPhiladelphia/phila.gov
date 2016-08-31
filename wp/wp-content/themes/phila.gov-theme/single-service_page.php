@@ -40,11 +40,12 @@
                     <?php $source_template =  rwmb_meta( 'phila_template_select'); ?>
                     <?php if ($source_template == 'default') :?>
                       <?php the_content(); ?>
-                      
+
                     <?php elseif ($source_template == 'tax_detail') : ?>
                       <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
 
                     <?php elseif ($source_template == 'topic_page') : ?>
+                      <?php get_template_part('partials/services/content', 'topic-page'); ?>
 
                     <?php endif; ?>
                   <?php endwhile; ?>
@@ -53,6 +54,7 @@
               <?php endif; ?>
               <!-- END Service Stub -->
             <?php elseif ($user_selected_template == 'topic_page'):?>
+              <?php get_template_part('partials/services/content', 'topic-page'); ?>
 
             <?php else : ?>
               <?php the_content(); ?>
