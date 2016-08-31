@@ -24,38 +24,45 @@
 ?>
 <div class="row equal-height">
   <div class="medium-12 columns">
-    <div class="panel info center heading equal">
+    <div class="panel info center heading">
       <div class="title pvxs">
         <i class="fa fa-calendar" aria-hidden="true"></i>
  Due Date</div>
-       <div class="pam">
-         <?php if ($tax['due']['type'] != 'misc') : ?>
-           <?php if( $tax['due']['type'] == 'yearly') : ?>
-             <div class="month"><span class="h4"><?php echo $tax['due']['month'] ?></span></div>
+       <div class="valign equal">
+         <div class="pam valign-cell">
+           <?php if ($tax['due']['type'] != 'misc') : ?>
+             <?php if( $tax['due']['type'] == 'yearly') : ?>
+               <span class="h4"><?php echo $tax['due']['month'] ?></span>
+             <?php endif; ?>
+              <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
+              <div class="mtm"><?php echo $tax['due']['summary_brief'] ?></div>
+           <?php else : ?>
+             <?php echo apply_filters( 'the_content', $tax['due']['misc']); ?>
            <?php endif; ?>
-            <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
-            <div class="mtm"><?php echo $tax['due']['summary_brief'] ?></div>
-         <?php else : ?>
-           <?php echo apply_filters( 'the_content', $tax['due']['misc']); ?>
-         <?php endif; ?>
+       </div>
       </div>
     </div>
   </div>
   <div class="medium-12 columns">
-    <div class="panel info center heading equal">
+    <div class="panel info center heading">
       <div class="title pvxs">
         <i class="fa fa-usd" aria-hidden="true"></i>
   Tax Rate</div>
-      <div class="pam">
+      <div class="valign equal">
+        <div class="pam valign-cell">
           <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
             <div class="numbers mbm">
+              <?php if( $tax['due']['type'] == 'yearly') : ?>
+                <div class="h4"><br></div>
+              <?php endif; ?>
               <span class="symbol">
-                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?><?php echo ($tax['cost']['unit'] == 'mil') ? 'mills' : '';
-                  ?>
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mills') ? 'mills' : '';
+                  ?></span>
               </span>
             </div>
-          <?php endif; ?>
-        <div><?php echo apply_filters( 'the_content', $tax['cost']['summary_brief'] ); ?></div>
+            <?php endif; ?>
+          <div><?php echo apply_filters( 'the_content', $tax['cost']['summary_brief'] ); ?></div>
+        </div>
       </div>
     </div>
   </div>
