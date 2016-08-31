@@ -58,29 +58,48 @@ function phila_gov_setup() {
   add_image_size( 'staff-thumb', 400, 400, true );
 
 
-  // This theme uses wp_nav_menu() in any number of locations.
+  // This theme uses wp_nav_menu() in any number of locations across department sites as well as service level pages.
   add_action( 'init', 'phila_register_category_menus' );
 
-    function phila_register_category_menus() {
+  function phila_register_category_menus() {
 
-        $phila_menu_cat_args = array(
-            'type'                     => 'post',
-            'child_of'                 => 0,
-            'parent'                   => '',
-            'orderby'                  => 'name',
-            'order'                    => 'ASC',
-            'hide_empty'               => 1,
-            'hierarchical'             => 0,
-            'taxonomy'                 => 'category',
-            'pad_counts'               => false
-        );
+    $phila_menu_cat_args = array(
+      'type'                     => 'post',
+      'child_of'                 => 0,
+      'parent'                   => '',
+      'orderby'                  => 'name',
+      'order'                    => 'ASC',
+      'hide_empty'               => 1,
+      'hierarchical'             => 0,
+      'taxonomy'                 => 'category',
+      'pad_counts'               => false
+    );
 
-        $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
-        foreach ( $phila_get_menu_cats as $phila_category ) {
-            register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
-        }
+    $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
+
+    foreach ( $phila_get_menu_cats as $phila_category ) {
+        register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
+      }
     }
 
+    add_action( 'init', 'phila_register_service_type_menus' );
+
+    function phila_register_service_type_menus() {
+
+      $terms = get_terms(
+        array(
+          'taxonomy' => 'service_type',
+          'hide_empty' => 1,
+          'parent'   => 0,
+          'orderby' => 'name',
+        )
+      );
+      foreach ( $terms as $term ) {
+        register_nav_menus( array(
+          'service-menu-' . $term->term_id => 'Service: ' . $term->name )
+        );
+      }
+    }
   /*
    * Switch default core markup for search form, comment form, and comments
    * to output valid HTML5.
@@ -614,6 +633,50 @@ function phila_get_department_menu() {
     }
   }
 }
+
+function phila_get_service_menu() {
+  /*
+
+  */
+  global $post;
+  $categories = get_the_category($post->ID);
+  if ( ! empty( $categories ) ){
+    if ( ! $categories[0]->cat_slug == 'Uncategorized' ){
+      $current_cat = $categories[0]->cat_ID;
+      $defaults = array(
+          'theme_location'  => 'menu-' . $current_cat,
+          'menu'            => '',
+          'container'       => '',
+          'container_class' => '',
+          'container_id'    => '',
+          'menu_class'      => 'department-menu medium-horizontal menu',
+          'menu_id'         => '',
+          'echo'            => true,
+          'fallback_cb'     => false,//if there is no menu, output nothing
+          'before'          => '',
+          'after'           => '',
+          'items_wrap'      => '
+          <div class="row department-nav">
+            <div class="small-24 columns">
+              <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
+              <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
+              </div>
+            <div class="top-bar mbm-mu" id="site-nav">
+              <nav data-swiftype-index="false">
+                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
+              </nav>
+            </div>
+          </div>
+        </div>',
+          'depth'           => 0,
+          'walker'          => new phila_gov_walker_nav_menu
+      );
+    //  wp_nav_menu( $defaults );
+    }
+  }
+}
+
+
 
 add_filter('nav_menu_css_class', 'phila_add_active_nav_class', 10, 2);
 
