@@ -30,7 +30,7 @@
                 <?php $post_id = intval( $stub_source );?>
 
                 <?php $stub_args = array(
-                  'p' => $post_id, // id of a page, post, or custom type
+                  'p' => $post_id,
                   'post_type' => 'service_page'
                 ); ?>
                 <?php $stub_post = new WP_Query($stub_args); ?>
