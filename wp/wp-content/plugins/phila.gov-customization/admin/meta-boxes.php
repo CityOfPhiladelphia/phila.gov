@@ -1577,6 +1577,83 @@ $meta_var_wysiwyg_address_content = array(
   )
 );
 
+//Purpose: To display content in a wysiwyg and include markup for an address
+//TODO: Merge these two almost-identical fields. The ID used to create the metabox will interfere with other metaboxes that are used on the same page. For now we will create a second version of the address content metabox so we can set a different ID.
+$meta_var_wysiwyg_address_content_unique = array(
+  'id'  => $prefix . 'wysiwyg_address_content',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+  'fields'  => array(
+    array(
+      //TODO: determine way to display step numbers in admin
+      'placeholder' => 'Heading',
+      'id'  => $prefix . 'wysiwyg_heading',
+      'type'  => 'text',
+      'class' => 'width-95'
+    ),
+    array(
+      'id'  => $prefix . 'unique_wysiwyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic
+    ),
+    array(
+      'desc'  => 'Include an address?',
+      'id'  => $prefix . 'address_select',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'id' => $prefix . 'std_address',
+      'type' => 'group',
+      'visible' => array('phila_address_select', true),
+
+      'fields' => array(
+        $meta_var_standard_address,
+      ),
+    ),
+  )
+);
+
+
+
+$meta_var_wysiwyg_address_content = array(
+  'id'  => $prefix . 'wysiwyg_address_content',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+  'fields'  => array(
+    array(
+      //TODO: determine way to display step numbers in admin
+      'placeholder' => 'Heading',
+      'id'  => $prefix . 'wysiwyg_heading',
+      'type'  => 'text',
+      'class' => 'width-95'
+    ),
+    array(
+      'id'  => $prefix . 'wysiwyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic
+    ),
+    array(
+      'desc'  => 'Include an address?',
+      'id'  => $prefix . 'address_select',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'id' => $prefix . 'std_address',
+      'type' => 'group',
+      'visible' => array('phila_address_select', true),
+
+      'fields' => array(
+        $meta_var_standard_address,
+      ),
+    ),
+  )
+);
+
+
 //Purpose: To display content in a stepped order on the front-end
 $meta_var_ordered_content = array(
   'id'  => $prefix . 'ordered_content',
@@ -2223,9 +2300,19 @@ $meta_boxes[] = array(
     )
   )
 );
+//default tax detail template
+$meta_boxes[] = array(
+  'title' => 'Heading Groups',
+  'pages' => array('service_page'),
+  'visible' => array('phila_template_select', 'default'),
+
+  'fields' => array(
+    $meta_var_wysiwyg_address_content_unique
+  )
+);
+
 
 $meta_boxes[] = array(
-  //TODO: determine if this should exist on all Pages
   'title' => 'Additional Content',
   'pages' => array('page', 'service_page'),
   'fields' => array(
