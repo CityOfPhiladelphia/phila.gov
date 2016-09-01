@@ -19,7 +19,10 @@
         </header>
       </div>
       <div class="row">
-        <div class="medium-24 columns">
+        <div class="medium-8 columns">
+          <?php phila_get_service_menu( $post_id = $post->ID ); ?>
+        </div>
+        <div class="medium-16 columns">
           <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/taxes/content', 'tax-detail');?>
