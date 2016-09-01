@@ -20,6 +20,40 @@ function phila_return_month_array(){
   return $month_array;
 }
 
+function phila_setup_tiny_mce_basic( array $options ){
+
+  $output = '';
+
+  $defaults = array(
+    'format_select' => false,
+    'heading_level' => 'h3',
+  );
+
+  $options = array_merge($defaults, $options);
+
+  if ( $options['format_select'] == true) {
+    $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+
+  }
+
+  if ( $options['heading_level'] == 'h3' ) {
+    $output['block_formats'] = 'Paragraph=p; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+
+  }elseif( $options['heading_level'] == 'h2' ){
+    $output['block_formats'] = 'Paragraph=p;  Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+  }else{
+    $output['block_formats'] = 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+  }
+
+  if ( $options['format_select'] == false ) {
+
+    $output['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+
+  }
+  return $output;
+
+}
+
 add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
@@ -30,12 +64,31 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
+
+  $wysiwyg_options_basic_heading = array(
+    'media_buttons' => false,
+    'teeny' => true,
+    'dfw' => false,
+    'quicktags' => false,
+    'tinymce' => phila_setup_tiny_mce_basic(
+      array(
+        'format_select' => true,
+        'heading_level' => 'h3'
+       )
+     ),
+    'editor_height' => 200,
+  );
+
   $wysiwyg_options_basic = array(
     'media_buttons' => false,
     'teeny' => true,
     'dfw' => false,
     'quicktags' => false,
-    'tinymce' => $basic_editor,
+    'tinymce' => phila_setup_tiny_mce_basic(
+      array(
+        'format_select' => false
+       )
+     ),
     'editor_height' => 200,
   );
 
@@ -1558,6 +1611,82 @@ $meta_var_wysiwyg_address_content = array(
     array(
       'id'  => $prefix . 'wysiwyg_content',
       'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic_heading
+    ),
+    array(
+      'desc'  => 'Include an address?',
+      'id'  => $prefix . 'address_select',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'id' => $prefix . 'std_address',
+      'type' => 'group',
+      'visible' => array('phila_address_select', true),
+
+      'fields' => array(
+        $meta_var_standard_address,
+      ),
+    ),
+  )
+);
+
+//Purpose: To display content in a wysiwyg and include markup for an address
+//TODO: Merge these two almost-identical fields. The ID used to create the metabox will interfere with other metaboxes that are used on the same page. For now we will create a second version of the address content metabox so we can set a different ID.
+$meta_var_wysiwyg_address_content_unique = array(
+  'id'  => $prefix . 'wysiwyg_address_content',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+  'fields'  => array(
+    array(
+      //TODO: determine way to display step numbers in admin
+      'placeholder' => 'Heading',
+      'id'  => $prefix . 'wysiwyg_heading',
+      'type'  => 'text',
+      'class' => 'width-95'
+    ),
+    array(
+      'id'  => $prefix . 'unique_wysiwyg_content',
+      'type'  => 'wysiwyg',
+      'options' => $wysiwyg_options_basic_heading
+    ),
+    array(
+      'desc'  => 'Include an address?',
+      'id'  => $prefix . 'address_select',
+      'type'  => 'checkbox',
+    ),
+    array(
+      'id' => $prefix . 'std_address',
+      'type' => 'group',
+      'visible' => array('phila_address_select', true),
+
+      'fields' => array(
+        $meta_var_standard_address,
+      ),
+    ),
+  )
+);
+
+
+
+$meta_var_wysiwyg_address_content = array(
+  'id'  => $prefix . 'wysiwyg_address_content',
+  'type'  => 'group',
+  'clone' => true,
+  'sort_clone'  => true,
+
+  'fields'  => array(
+    array(
+      //TODO: determine way to display step numbers in admin
+      'placeholder' => 'Heading',
+      'id'  => $prefix . 'wysiwyg_heading',
+      'type'  => 'text',
+      'class' => 'width-95'
+    ),
+    array(
+      'id'  => $prefix . 'wysiwyg_content',
+      'type'  => 'wysiwyg',
       'options' => $wysiwyg_options_basic
     ),
     array(
@@ -1576,6 +1705,7 @@ $meta_var_wysiwyg_address_content = array(
     ),
   )
 );
+
 
 //Purpose: To display content in a stepped order on the front-end
 $meta_var_ordered_content = array(
@@ -1666,8 +1796,9 @@ $meta_var_tax_due_date = array(
       'hidden' => array('phila_tax_date_choice', 'misc'),
       'name'  => 'Brief Explanation',
       'id'  => $prefix . 'tax_date_summary_brief',
-      'type'  => 'textarea',
+      'type'  => 'wysiwyg',
       'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box . ',
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
     array(
@@ -1715,14 +1846,15 @@ $meta_var_tax_costs = array(
       'options' => array(
         'percent' => '%',
         'dollar'  => '$',
-        'mil' => 'mil'
+        'mills' => 'mills'
       )
     ),
     array(
       'name'  => 'Brief Explanation',
       'id'  => $prefix . 'tax_cost_summary_brief',
-      'type'  => 'textarea',
+      'type'  => 'wysiwyg',
       'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box . ',
+      'options' => $wysiwyg_options_basic,
       'required'  => true
     ),
     array(
@@ -2176,7 +2308,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_who_pays',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic
+          'options' => $wysiwyg_options_basic_heading
         ),
         array(
           'name'  => 'What happens if the tax is not paid on time?',
@@ -2185,7 +2317,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_late_fees',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic
+          'options' => $wysiwyg_options_basic_heading
         ),
         array(
           'name' => 'Who is eligible for a discount?',
@@ -2194,7 +2326,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_discounts',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic
+          'options' => $wysiwyg_options_basic_heading
           ),
         array(
           'name'  => 'Can you be excused from paying the tax?',
@@ -2203,7 +2335,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_exemptions',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic
+          'options' => $wysiwyg_options_basic_heading
         )
       )
     )
@@ -2236,9 +2368,28 @@ $meta_boxes[] = array(
     )
   )
 );
+//default tax detail template
+$meta_boxes[] = array(
+  'title' => 'Heading Groups',
+  'pages' => array('service_page'),
+  'visible' => array('phila_template_select', 'default'),
+
+  'fields' => array(
+    array(
+      'id' => $prefix . 'heading_groups',
+      'type'  => 'group',
+      'clone' => false,
+
+      'fields' => array(
+        $meta_var_wysiwyg_address_content_unique
+      )
+    )
+  )
+);
+
+
 
 $meta_boxes[] = array(
-  //TODO: determine if this should exist on all Pages
   'title' => 'Additional Content',
   'pages' => array('page', 'service_page'),
   'fields' => array(

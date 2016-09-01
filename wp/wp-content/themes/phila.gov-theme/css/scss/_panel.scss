@@ -23,6 +23,11 @@
     vertical-align: top;
     line-height: $large-font-base / 1.5;
     font-size: $large-font-base / 2;
+
+    &.small{
+      line-height: $large-font-base / 2;
+      font-size: $large-font-base / 3;
+    }
   }
 }
 
