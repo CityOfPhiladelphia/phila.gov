@@ -56,7 +56,7 @@
                 <div class="h4"><br></div>
               <?php endif; ?>
               <span class="symbol">
-                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?></span><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mills') ? 'mills' : '';
+                <?php echo ($tax['cost']['unit'] == 'dollar') ? '$' : ''; ?><span class="large-text"><?php echo $tax['cost']['number']; ?></span><span class="symbol"><?php echo ($tax['cost']['unit'] == 'percent') ? '%' : ''; ?></span><span class="symbol small"><?php echo ($tax['cost']['unit'] == 'mills') ? 'mills' : '';
                   ?></span>
               </span>
             </div>
@@ -153,31 +153,29 @@
             <?php $wysiwyg_content = isset( $item['phila_wysiwyg_content'] ) ? $item['phila_wysiwyg_content'] : ''; ?>
             <?php $is_address = isset( $item['phila_address_select'] ) ? $item['phila_address_select'] : ''; ?>
             <?php if ( (!empty($wysiwyg_content) || (!empty($is_address) ) ) ) : ?>
-            <div class="plm">
-              <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
-                <?php
-                $address_1 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
+            <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
+              <?php
+              $address_1 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
 
-                $address_2 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_2'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_2'] : '';
+              $address_2 = isset( $item['phila_std_address']['address_group']['phila_std_address_st_2'] ) ? $item['phila_std_address']['address_group']['phila_std_address_st_2'] : '';
 
-                $city = isset( $item['phila_std_address']['address_group']['phila_std_address_city'] ) ? $item['phila_std_address']['address_group']['phila_std_address_city'] : '';
+              $city = isset( $item['phila_std_address']['address_group']['phila_std_address_city'] ) ? $item['phila_std_address']['address_group']['phila_std_address_city'] : '';
 
-                $state = isset( $item['phila_std_address']['address_group']['phila_std_address_state'] ) ? $item['phila_std_address']['address_group']['phila_std_address_state'] : '';
+              $state = isset( $item['phila_std_address']['address_group']['phila_std_address_state'] ) ? $item['phila_std_address']['address_group']['phila_std_address_state'] : '';
 
-                $zip = isset( $item['phila_std_address']['address_group']['phila_std_address_zip'] ) ? $item['phila_std_address']['address_group']['phila_std_address_zip'] : '';
-                ?>
+              $zip = isset( $item['phila_std_address']['address_group']['phila_std_address_zip'] ) ? $item['phila_std_address']['address_group']['phila_std_address_zip'] : '';
+              ?>
 
-                <?php if ( $is_address == 1 ) : ?>
-                <div class="vcard">
-                  <span class="street-address"><?php echo $address_1; ?></span><br>
-                  <?php if ( !empty($address_2) ) : ?>
-                    <span class="street-address"><?php echo $address_2; ?></span></br>
-                  <?php endif; ?>
-                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
-                  <span class="postal-code"><?php echo $zip; ?></span>
-                </div>
-                <?php endif;?>
-            </div>
+              <?php if ( $is_address == 1 ) : ?>
+              <div class="vcard">
+                <span class="street-address"><?php echo $address_1; ?></span><br>
+                <?php if ( !empty($address_2) ) : ?>
+                  <span class="street-address"><?php echo $address_2; ?></span><br>
+                <?php endif; ?>
+                <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
+                <span class="postal-code"><?php echo $zip; ?></span>
+              </div>
+              <?php endif;?>
             <?php endif;?>
           </div>
         <?php endforeach; ?>
@@ -215,9 +213,9 @@
                 <div class="vcard">
                   <span class="street-address"><?php echo $address_1; ?></span><br>
                   <?php if ( !empty($address_2) ) : ?>
-                    <span class="street-address"><?php echo $address_2; ?></span></br>
+                    <span class="street-address"><?php echo $address_2; ?></span><br>
                   <?php endif; ?>
-                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?>
+                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
                 <?php endif; ?>
