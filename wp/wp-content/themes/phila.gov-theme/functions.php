@@ -666,26 +666,16 @@ function phila_get_service_menu( $post_id ) {
   if ( ! empty( $terms ) ){
     $defaults = array(
       'theme_location'  => 'service-menu-' . $assigned_terms[0],
-      'menu'            => '',
-      'container'       => '',
-      'container_class' => '',
-      'container_id'    => '',
-      'menu_class'      => 'services-menu',
-      'menu_id'         => '',
+      'menu_class'      => 'services-menu vertical menu',
       'echo'            => true,
       //TODO:  function to render notice if there is nothing to output
       'fallback_cb'     => false,//if there is no menu, output nothing
       'before'          => '',
       'after'           => '',
       'items_wrap'      => '
-        <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
-        <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
-        </div>
-      <div class="top-bar mbm-mu">
         <nav data-swiftype-index="false" id="services-nav">
           <ul id="%1$s" class="%2$s"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
-        </nav>
-    </div>',
+        </nav>',
       'depth'           => 0,
       'walker'          => new phila_gov_walker_service_menu
   );
