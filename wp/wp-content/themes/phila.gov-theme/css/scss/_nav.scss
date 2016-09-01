@@ -1,6 +1,7 @@
 nav#services-nav{
   a{
     border-bottom: 1px solid $ghost-gray;
+    font-weight:600;
   }
 
   ul {
@@ -48,15 +49,13 @@ nav#services-nav{
         }
       }
       > a:after{
-        content: '\f068';
-        font-family: 'FontAwesome';
+        content: '+';
         float:right;
       }
     }
 
     > a:after{
-      content: '\f067';
-      font-family: 'FontAwesome';
+      content: '—';
       float:right;
     }
   }
