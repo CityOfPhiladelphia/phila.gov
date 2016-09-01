@@ -79,7 +79,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
            ),
            array(
              'name'  => 'Display End Time',
-             'id'    => $prefix . 'alert_end',
+             'id'    => $prefix . 'update_end',
              'type'  => 'datetime',
              'class' =>  'end-time',
              'size'  =>  25,
