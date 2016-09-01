@@ -130,6 +130,9 @@ class Phila_Gov_Custom_Post_Types{
           'not_found_in_trash'   => __( 'Service Update not found in trash' ),
         ),
       'taxonomies' => array('category'),
+      'supports' => array(
+        'title',
+      ),
       'exclude_from_search' => true,
       // TODO: Set public to true
       'public' => false,
