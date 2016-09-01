@@ -670,8 +670,8 @@ function phila_get_service_menu( $post_id ) {
       'echo'            => true,
       //TODO:  function to render notice if there is nothing to output
       'fallback_cb'     => false,//if there is no menu, output nothing
-      'before'          => '',
-      'after'           => '',
+      'link_before'          => '<span>',
+      'link_after'           => '</span>',
       'items_wrap'      => '
         <nav data-swiftype-index="false" id="services-nav">
           <ul id="%1$s" class="%2$s"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
