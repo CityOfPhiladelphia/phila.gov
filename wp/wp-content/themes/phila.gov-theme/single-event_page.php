@@ -32,7 +32,7 @@ get_header(); ?>
             $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
             // Set Event Detail vars
             $event_description = phila_get_item_meta_desc();
-            
+
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
             $event_location_link = rwmb_meta('phila_event_loc_link' , $args = array('type' => 'url'));
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
@@ -159,7 +159,7 @@ get_header(); ?>
             <div class="row">
               <div class="large-18 columns">
 
-                <?php $service_updates = phila_get_service_updates();?>
+                <?php $service_updates = phila_get_service_updates_events();?>
 
                 <?php if (is_array($service_updates)): ?>
                 <h2 class="contrast">City Service Updates &amp; Changes</h2>

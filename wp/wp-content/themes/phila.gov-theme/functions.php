@@ -1172,6 +1172,28 @@ function phila_get_event_content_blocks(){
 }
 
 function phila_get_service_updates(){
+  $update_message = rwmb_meta( 'service_update' );
+    if ( $update_message['phila_update_type'] != '' ):
+      switch ( $update_message['phila_update_type'] ) {
+        case 'city':
+          $update_message['phila_update_icon'] = 'fa-institution';
+          break;
+        case 'roads':
+          $update_message['phila_update_icon'] = 'fa-road';
+          break;
+        case 'transit':
+          $update_message['phila_update_icon'] = 'fa-subway';
+          break;
+        case 'trash':
+          $update_message['phila_update_icon'] = 'fa-trash';
+          break;
+      }
+    endif;
+
+    return $update_message;
+}
+
+function phila_get_service_updates_events(){
 
   $output_array = array();
   $service_updates = rwmb_meta( 'service_updates' );
