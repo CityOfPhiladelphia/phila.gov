@@ -365,6 +365,10 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load custom Department menu file.
  */
 require get_template_directory() . '/inc/department-menu.php';
+/**
+ * Load custom Services menu file.
+ */
+require get_template_directory() . '/inc/service-walker.php';
 
 /**
  * Add breadcrumb support
@@ -634,45 +638,58 @@ function phila_get_department_menu() {
   }
 }
 
-function phila_get_service_menu() {
-  /*
+/*
+  Set service page menus.
+*/
+function phila_get_service_menu( $post_id ) {
+  $terms = wp_get_post_terms( $post_id, 'service_type');
 
-  */
-  global $post;
-  $categories = get_the_category($post->ID);
-  if ( ! empty( $categories ) ){
-    if ( ! $categories[0]->cat_slug == 'Uncategorized' ){
-      $current_cat = $categories[0]->cat_ID;
-      $defaults = array(
-          'theme_location'  => 'menu-' . $current_cat,
-          'menu'            => '',
-          'container'       => '',
-          'container_class' => '',
-          'container_id'    => '',
-          'menu_class'      => 'department-menu medium-horizontal menu',
-          'menu_id'         => '',
-          'echo'            => true,
-          'fallback_cb'     => false,//if there is no menu, output nothing
-          'before'          => '',
-          'after'           => '',
-          'items_wrap'      => '
-          <div class="row department-nav">
-            <div class="small-24 columns">
-              <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
-              <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
-              </div>
-            <div class="top-bar mbm-mu" id="site-nav">
-              <nav data-swiftype-index="false">
-                <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
-              </nav>
-            </div>
-          </div>
-        </div>',
-          'depth'           => 0,
-          'walker'          => new phila_gov_walker_nav_menu
-      );
-    //  wp_nav_menu( $defaults );
+  $assigned_terms = array();
+
+  foreach ( $terms as $term ) {
+    if ( empty( $term->parent ) ){
+      $assigned_terms[] = $term->term_taxonomy_id;
+      array_unique($assigned_terms);
     }
+  }
+
+
+  if( count($assigned_terms) > 1 ){
+    echo '<div class="placeholder">For a menu to appear, only one service type can be selected at a time. Use the stub template if this content should appear in mutiple menus.</div>';
+    return;
+  }
+  if (empty($assigned_terms)){
+    echo '<div class="placeholder">For a menu to appear, select a service type.</div>';
+    return;
+  }
+
+  if ( ! empty( $terms ) ){
+    $defaults = array(
+      'theme_location'  => 'service-menu-' . $assigned_terms[0],
+      'menu'            => '',
+      'container'       => '',
+      'container_class' => '',
+      'container_id'    => '',
+      'menu_class'      => 'services-menu',
+      'menu_id'         => '',
+      'echo'            => true,
+      //TODO:  function to render notice if there is nothing to output
+      'fallback_cb'     => false,//if there is no menu, output nothing
+      'before'          => '',
+      'after'           => '',
+      'items_wrap'      => '
+        <div class="title-bar" data-responsive-toggle="site-nav" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
+        </div>
+      <div class="top-bar mbm-mu">
+        <nav data-swiftype-index="false" id="services-nav">
+          <ul id="%1$s" class="%2$s"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
+        </nav>
+    </div>',
+      'depth'           => 0,
+      'walker'          => new phila_gov_walker_service_menu
+  );
+    wp_nav_menu( $defaults );
   }
 }
 
