@@ -20,6 +20,40 @@ function phila_return_month_array(){
   return $month_array;
 }
 
+function phila_setup_tiny_mce_basic( array $options ){
+
+  $output = '';
+
+  $defaults = array(
+    'format_select' => false,
+    'heading_level' => 'h3',
+  );
+
+  $options = array_merge($defaults, $options);
+
+  if ( $options['format_select'] == true) {
+    $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+
+  }
+
+  if ( $options['heading_level'] == 'h3' ) {
+    $output['block_formats'] = 'Paragraph=p; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+
+  }elseif( $options['heading_level'] == 'h2' ){
+    $output['block_formats'] = 'Paragraph=p;  Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+  }else{
+    $output['block_formats'] = 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+  }
+
+  if ( $options['format_select'] == false ) {
+
+    $output['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+
+  }
+  return $output;
+
+}
+
 add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
@@ -30,18 +64,18 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
-  $basic_editor_heading['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
-  $heading_3_down['block_formats'] = 'Paragraph=p; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
-
-  $editor_heading_3_down = array_merge($basic_editor_heading, $heading_3_down);
-
-  $wysiwyg_options_basic_heading_3_down = array(
+  $wysiwyg_options_basic_heading = array(
     'media_buttons' => false,
     'teeny' => true,
     'dfw' => false,
     'quicktags' => false,
-    'tinymce' => $editor_heading_3_down,
+    'tinymce' => phila_setup_tiny_mce_basic(
+      array(
+        'format_select' => true,
+        'heading_level' => 'h3'
+       )
+     ),
     'editor_height' => 200,
   );
 
@@ -50,7 +84,11 @@ function phila_register_meta_boxes( $meta_boxes ){
     'teeny' => true,
     'dfw' => false,
     'quicktags' => false,
-    'tinymce' => $basic_editor,
+    'tinymce' => phila_setup_tiny_mce_basic(
+      array(
+        'format_select' => false
+       )
+     ),
     'editor_height' => 200,
   );
 
@@ -1573,7 +1611,7 @@ $meta_var_wysiwyg_address_content = array(
     array(
       'id'  => $prefix . 'wysiwyg_content',
       'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic_heading_3_down
+      'options' => $wysiwyg_options_basic_heading
     ),
     array(
       'desc'  => 'Include an address?',
@@ -1611,7 +1649,7 @@ $meta_var_wysiwyg_address_content_unique = array(
     array(
       'id'  => $prefix . 'unique_wysiwyg_content',
       'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic_heading_3_down
+      'options' => $wysiwyg_options_basic_heading
     ),
     array(
       'desc'  => 'Include an address?',
@@ -2255,7 +2293,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_who_pays',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading_3_down
+          'options' => $wysiwyg_options_basic_heading
         ),
         array(
           'name'  => 'What happens if the tax is not paid on time?',
@@ -2264,7 +2302,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_late_fees',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading_3_down
+          'options' => $wysiwyg_options_basic_heading
         ),
         array(
           'name' => 'Who is eligible for a discount?',
@@ -2273,7 +2311,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_discounts',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading_3_down
+          'options' => $wysiwyg_options_basic_heading
           ),
         array(
           'name'  => 'Can you be excused from paying the tax?',
@@ -2282,7 +2320,7 @@ $meta_boxes[] = array(
         array(
           'id'  => $prefix . 'tax_exemptions',
           'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading_3_down
+          'options' => $wysiwyg_options_basic_heading
         )
       )
     )
