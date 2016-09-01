@@ -14,11 +14,23 @@ nav#services-nav{
     &.current-menu-item {
     > ul {
         display: block;
+        background:$ghost-gray;
+        margin-left:10px;
+        a {
+          border-bottom: 2px solid $white;
+          padding: .5rem 1rem;
+        }
+      }
+      > a:after{
+        content: '\f068';
+        font-family: 'FontAwesome';
+        float:right;
       }
     }
 
-    a:after{
-      content: '+';
+    > a:after{
+      content: '\f067';
+      font-family: 'FontAwesome';
       float:right;
     }
   }
