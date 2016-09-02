@@ -98,21 +98,17 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty( $tax['cost']['summary_detailed'] ) || !empty( $payments['late_fees'] ) ) : ?>
+<?php if ( !empty( $tax['cost']['summary_detailed'] ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Rates, Penalties, & Fees</h3>
-      <?php if ( !empty( $tax['cost']['summary_detailed'] ) ) :?>
-        <div class="phm-mu">
-          <h4>How much is it?</h4>
-          <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
-        </div>
-      <?php endif; ?>
-      <?php if ( !empty( $tax['cost']['summary_detailed'] ) && !empty( $payments['late_fees'] ) ) : ?>
-        <hr class="mhm-mu">
-      <?php endif; ?>
+      <div class="phm-mu">
+        <h4>How much is it?</h4>
+        <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
+      </div>
       <?php if ( !empty( $payments['late_fees'] ) ) : ?>
+      <hr class="mhm-mu">
       <div class="phm-mu">
         <h4>What happens if you don't pay on time?</h4>
         <?php echo apply_filters( 'the_content', $payments['late_fees'] ); ?>
@@ -123,21 +119,17 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty( $payments['discounts'] ) || !empty( $payments['exemptions'] ) ) : ?>
+<?php if ( !empty( $payments['discounts'] ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Discounts & Exemptions</h3>
-      <?php if ( !empty( $payments['discounts'] ) ) : ?>
-        <div class="phm-mu">
-          <h4>Are you eligible for a discount?</h4>
-          <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
-        </div>
-      <?php endif; ?>
-      <?php if ( !empty( $payments['discounts'] ) && !empty( $payments['exemptions'] ) ) : ?>
-        <hr class="mhm-mu">
-      <?php endif; ?>
+      <div class="phm-mu">
+        <h4>Are you eligible for a discount?</h4>
+        <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
+      </div>
       <?php if ( !empty( $payments['exemptions'] ) ) : ?>
+      <hr class="mhm-mu">
       <div class="phm-mu">
         <h4>Can you be excused from paying the tax?</h4>
         <?php echo apply_filters( 'the_content', $payments['exemptions'] );?>

@@ -2242,21 +2242,6 @@ $meta_boxes[] = array(
   )
 );
 
-$meta_boxes[] = array(
-  'title' => 'Service Stub',
-  'pages' => array('page', 'service_page'),
-  'priority' => 'high',
-  'visible' => array('phila_template_select', 'service_stub'),
-
-  'fields'  => array(
-    array(
-      'id' => $prefix . 'stub_source',
-      'type' => 'post',
-      'post_type' => 'service_page',
-    )
-  )
-);
-
 //Tax Detail Template
 $meta_boxes[] = array(
   'title' => 'Tax Highlights',

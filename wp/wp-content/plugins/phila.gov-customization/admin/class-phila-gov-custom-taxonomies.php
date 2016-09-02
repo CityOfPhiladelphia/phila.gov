@@ -20,6 +20,31 @@ class Phila_Gov_Custom_Taxonomies {
   }
 
   function add_custom_taxonomies() {
+    register_taxonomy('topics',
+      array(
+        'page',
+        'service_page'
+      ), array(
+          'hierarchical' => true,
+          'labels' => array(
+            'name' => _x( 'Topics', 'phila-gov'),
+            'singular_name' => _x( 'Topic', 'phila-gov'),
+            'menu_name' =>     __('Topics'),
+            'search_items' =>  __( 'Search Topics' ),
+            'all_items' =>     __( 'All Topics' ),
+            'edit_item' =>     __( 'Edit Topic' ),
+            'update_item' =>   __( 'Update Topic' ),
+            'add_new_item' =>  __( 'Add New Topic' ),
+            'new_item_name' => __( 'New Topic Name' ),
+            'menu_name' =>     __( 'Topics' ),
+          ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'browse',
+        'with_front' => false,
+      ),
+    ));
     register_taxonomy('attachment_type',
       array(
         'attachment'
@@ -88,32 +113,6 @@ class Phila_Gov_Custom_Taxonomies {
       'public' => true,
       'show_admin_column' => true,
       'rewrite' => array(
-        'with_front' => false,
-      ),
-    ));
-    // Service Pages
-    register_taxonomy('service_type',
-      array(
-        'service_page'
-      ),
-      array(
-      'hierarchical' => true,
-      'labels' => array(
-        'name' => _x( 'Service Type', 'phila-gov'),
-        'singular_name' => _x( 'Service Type', 'phila-gov'),
-        'menu_name' =>     __('Service Types'),
-        'search_items' =>  __( 'Search Service Types' ),
-        'all_items' =>     __( 'All Service Types' ),
-        'edit_item' =>     __( 'Edit Service Type' ),
-        'update_item' =>   __( 'Update Service Type' ),
-        'add_new_item' =>  __( 'Add New Service Type' ),
-        'new_item_name' => __( 'New Service Type Name' ),
-        'menu_name' =>     __( 'Service Types' ),
-      ),
-      'public' => true,
-      'show_admin_column' => true,
-      'rewrite' => array(
-        'slug' => 'service-types',
         'with_front' => false,
       ),
     ));
