@@ -58,29 +58,48 @@ function phila_gov_setup() {
   add_image_size( 'staff-thumb', 400, 400, true );
 
 
-  // This theme uses wp_nav_menu() in any number of locations.
+  // This theme uses wp_nav_menu() in any number of locations across department sites as well as service level pages.
   add_action( 'init', 'phila_register_category_menus' );
 
-    function phila_register_category_menus() {
+  function phila_register_category_menus() {
 
-        $phila_menu_cat_args = array(
-            'type'                     => 'post',
-            'child_of'                 => 0,
-            'parent'                   => '',
-            'orderby'                  => 'name',
-            'order'                    => 'ASC',
-            'hide_empty'               => 1,
-            'hierarchical'             => 0,
-            'taxonomy'                 => 'category',
-            'pad_counts'               => false
-        );
+    $phila_menu_cat_args = array(
+      'type'                     => 'post',
+      'child_of'                 => 0,
+      'parent'                   => '',
+      'orderby'                  => 'name',
+      'order'                    => 'ASC',
+      'hide_empty'               => 1,
+      'hierarchical'             => 0,
+      'taxonomy'                 => 'category',
+      'pad_counts'               => false
+    );
 
-        $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
-        foreach ( $phila_get_menu_cats as $phila_category ) {
-            register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
-        }
+    $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
+
+    foreach ( $phila_get_menu_cats as $phila_category ) {
+        register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
+      }
     }
 
+    add_action( 'init', 'phila_register_service_type_menus' );
+
+    function phila_register_service_type_menus() {
+
+      $terms = get_terms(
+        array(
+          'taxonomy' => 'service_type',
+          'hide_empty' => 1,
+          'parent'   => 0,
+          'orderby' => 'name',
+        )
+      );
+      foreach ( $terms as $term ) {
+        register_nav_menus( array(
+          'service-menu-' . $term->term_id => 'Service: ' . $term->name )
+        );
+      }
+    }
   /*
    * Switch default core markup for search form, comment form, and comments
    * to output valid HTML5.
@@ -346,6 +365,10 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load custom Department menu file.
  */
 require get_template_directory() . '/inc/department-menu.php';
+/**
+ * Load custom Services menu file.
+ */
+require get_template_directory() . '/inc/service-walker.php';
 
 /**
  * Add breadcrumb support
@@ -404,7 +427,7 @@ function phila_breadcrumbs() {
 
         echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
 
-    } elseif ( ( is_post_type_archive('news_post') && is_tax('topics') ) ) {
+    } elseif ( is_post_type_archive('news_post') ) {
 
         echo '<li><a href="/news">News</a></li>';
 
@@ -466,26 +489,6 @@ function phila_breadcrumbs() {
       }
       echo $output;
       echo '<li> '.$title.'</li>';
-
-    } elseif ( is_tax('topics') ) {
-
-      //BROWSE
-      $taxonomy = 'topics';
-      $queried_term = get_query_var($taxonomy);
-      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
-
-      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
-      $parent = get_term($term->parent, $taxonomy);
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
-      endif;
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li>' . $term_obj->name . '</li>';
-      else :
-        echo '<li>'. $term_obj->name . '</li>';
-      endif;
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
@@ -634,6 +637,53 @@ function phila_get_department_menu() {
     }
   }
 }
+
+/*
+  Set service page menus.
+*/
+function phila_get_service_menu( $post_id ) {
+  $terms = wp_get_post_terms( $post_id, 'service_type');
+
+  $assigned_terms = array();
+
+  foreach ( $terms as $term ) {
+    if ( empty( $term->parent ) ){
+      $assigned_terms[] = $term->term_taxonomy_id;
+      array_unique($assigned_terms);
+    }
+  }
+
+
+  if( count($assigned_terms) > 1 ){
+    echo '<div class="placeholder">For a menu to appear, only one service type can be selected at a time. Use the stub template if this content should appear in mutiple menus.</div>';
+    return;
+  }
+  if (empty($assigned_terms)){
+    echo '<div class="placeholder">For a menu to appear, select a service type.</div>';
+    return;
+  }
+
+  if ( ! empty( $terms ) ){
+    $defaults = array(
+      'theme_location'  => 'service-menu-' . $assigned_terms[0],
+      'menu_class'      => 'services-menu vertical menu',
+      'echo'            => true,
+      //TODO:  function to render notice if there is nothing to output
+      'fallback_cb'     => false,//if there is no menu, output nothing
+      'link_before'          => '<span>',
+      'link_after'           => '</span>',
+      'items_wrap'      => '
+        <nav data-swiftype-index="false" id="services-nav">
+          <ul id="%1$s" class="%2$s"><li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back to alpha.phila.gov</a></li>%3$s</ul>
+        </nav>',
+      'depth'           => 0,
+      'walker'          => new phila_gov_walker_service_menu
+  );
+    wp_nav_menu( $defaults );
+  }
+}
+
+
 
 add_filter('nav_menu_css_class', 'phila_add_active_nav_class', 10, 2);
 
@@ -976,69 +1026,6 @@ function phila_get_home_news(){
   echo '</div></a>';
 }
 
-/**
- * Gets the list of topics available used in:
- * templates/topics-child.php
- * templates/topics-parent.php
- * taxonomy-topics.php
- *
- */
-function phila_get_parent_topics(){
-
-  $args = array(
-    'orderby' => 'name',
-    'fields'=> 'all',
-    'parent' => 0,
-    'hide_empty'=> true
-  );
-
-  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
-  $terms = get_terms( 'topics', $args );
-
-  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-    echo '<ul class="tabs vertical">';
-
-    foreach ( $terms as $term ) {
-
-      if (isset($current_term->slug) ) {
-        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
-
-      }else {
-        $active = '';
-      }
-
-      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
-
-    }
-    echo '</ul>';
-  }
-}
-/**
- * Utility function to get a list of all topics and their children on the site.
- *
- */
-function phila_get_master_topics(){
-  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
-  echo '<ul>';
-  foreach($parent_terms as $key => $parent_term) {
-
-    echo '<li><h3>' . $parent_term->name . '</h3>';
-    echo  $parent_term->description;
-
-    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
-
-    if($child_terms) {
-      echo '<ul class="subtopics">';
-      foreach($child_terms as $key => $child_term) {
-        echo '<li><h4>' . $child_term->name . '</h4>';
-        echo  $child_term->description . '</li></li>';
-      }
-
-    }
-    echo '</ul>';
-  }
-}
 
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.

@@ -1,46 +1,75 @@
 <?php
 /**
- * The template for displaying all pages.
- * In our theme, Pages are special.
- * We use pages to create "Content Collections."
- * Content collections are items that may stand alone, but also may have
- * children. If children exist, an internal page menu should be generated and
- * the parent item should redirect to it's first child.
- *
- * This is the template that displays all pages by default.
+ * This is the template that displays all service pages by default.
  *
  * @package phila-gov
  */
-  include( locate_template(  'partials/content-collection-header.php' ) );
-?>
+ get_header(); ?>
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
 
-    <?php while ( have_posts() ) : the_post();
+    <?php while ( have_posts() ) : the_post(); ?>
+    <?php $user_selected_template = phila_get_selected_template(); ?>
 
-      $children = get_pages( 'child_of=' . $post->ID . '&post_type=' . get_post_type() );
+    <article id="post-<?php the_ID(); ?>">
+    <div class="row">
+      <header class="entry-header small-24 columns">
+        <h1 class="contrast"><?php echo get_the_title(); ?></h1>
+        </header>
+      </div>
+      <div class="row">
+        <div class="medium-8 columns">
+          <?php phila_get_service_menu( $post_id = $post->ID ); ?>
+        </div>
+        <div class="medium-16 columns">
+          <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
+            <?php if ($user_selected_template == 'tax_detail') : ?>
+              <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <!-- Service Stub  -->
+            <?php elseif ($user_selected_template == 'service_stub') : ?>
+              <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
+                <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
+                <?php $post_id = intval( $stub_source );?>
 
-      $this_content = get_the_content();
+                <?php $stub_args = array(
+                  'p' => $post_id,
+                  'post_type' => 'service_page'
+                ); ?>
+                <?php $stub_post = new WP_Query($stub_args); ?>
+                <?php if ( $stub_post->have_posts() ): ?>
+                  <?php while ( $stub_post->have_posts() ) : ?>
+                    <?php $stub_post->the_post(); ?>
+                    <?php $source_template =  rwmb_meta( 'phila_template_select'); ?>
+                    <?php if ($source_template == 'default') :?>
+                      <?php get_template_part('partials/services/content', 'default'); ?>
 
-      if ( ( count( $children ) == 0 ) && ( !$this_content == 0 ) && ( !$has_parent ) )  {
+                    <?php elseif ($source_template == 'tax_detail') : ?>
+                      <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
 
-        //single page, no children
-        get_template_part( 'templates/default', 'page' );
+                    <?php elseif ($source_template == 'topic_page') : ?>
+                      <?php get_template_part('partials/services/content', 'topic-page'); ?>
 
-      }elseif( ( $post->id = $post->post_parent ) ) {
+                    <?php endif; ?>
+                  <?php endwhile; ?>
+                <?php endif; ?>
+                <?php wp_reset_query(); ?>
+              <?php endif; ?>
+              <!-- END Service Stub -->
+            <?php elseif ($user_selected_template == 'topic_page'):?>
+              <?php get_template_part('partials/services/content', 'topic-page'); ?>
 
-        //this is our normal content collection
-        get_template_part( 'templates/page', 'collection' );
+            <?php else : ?>
+              <?php get_template_part('partials/services/content', 'default'); ?>
 
-      }else {
+            <?php endif; ?>
+            </div>
+          </div>
+        </div>
+    </article><!-- #post-## -->
 
-        //still show the menu, even if this page has content
-        get_template_part( 'templates/page', 'collection' );
 
-      }
-
-      endwhile; // end of the loop. ?>
+  <?php  endwhile; // end of the loop. ?>
 
   </main><!-- #main -->
 </div><!-- #primary -->
