@@ -11,18 +11,25 @@
 
     <?php while ( have_posts() ) : the_post(); ?>
     <?php $user_selected_template = phila_get_selected_template(); ?>
-
+    <?php
+      $parent_id = get_post_ancestors ( $post );
+      $parent_title = get_the_title( array_pop( $parent_id ) ); ?>
     <article id="post-<?php the_ID(); ?>">
     <div class="row">
       <header class="entry-header small-24 columns">
-        <h1 class="contrast"><?php echo get_the_title(); ?></h1>
-        </header>
+        <h1 class="contrast">
+        <?php echo $parent_title; ?>
+        </h1>
+      </header>
       </div>
       <div class="row">
         <div class="medium-8 columns">
           <?php phila_get_service_menu( $post_id = $post->ID ); ?>
         </div>
         <div class="medium-16 columns">
+          <header class="entry-header">
+            <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
+          </header>
           <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/taxes/content', 'tax-detail');?>
