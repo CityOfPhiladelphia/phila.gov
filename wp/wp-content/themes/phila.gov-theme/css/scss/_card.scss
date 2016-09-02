@@ -1,0 +1,21 @@
+.card{
+  &.sub-topic{
+    background: rgba($ben-franklin-light, .5%);
+    border-bottom: none;
+    display: block;
+
+    .content-block{
+      padding: 1.5rem;
+    }
+    &::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid $white;
+      position: absolute;
+      margin-top: 20px;
+    }
+  }
+}
