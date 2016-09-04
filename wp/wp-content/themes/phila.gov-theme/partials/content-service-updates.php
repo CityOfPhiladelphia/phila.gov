@@ -7,10 +7,11 @@
  ?>
  <div class="service-update-row row expanded">
    <div class="columns">
-   <?php if ( $service_updates_loop->have_posts() ) : ?>
      <div class="row">
        <div class="large-24 columns">
          <h2 class="contrast">Service Updates</h2>
+         <?php if ( $service_updates_loop->have_posts() ) : ?>
+
          <?php $update_array = array(); ?>
 
          <?php while ( $service_updates_loop->have_posts() ) :?>
@@ -96,13 +97,11 @@
                  <?php ++$i; ?>
                <?php endforeach; ?>
              </div>
-           <?php else : ?>
-             <?php echo 'No Service updates to report at this time.'; ?>
            <?php endif; ?>
-         </div>
+         <?php else : ?>
+           <?php echo 'No Service updates to report at this time.'; ?>
+         <?php endif; ?>
        </div>
-     <?php else : ?>
-       <?php echo 'No Service updates to report at this time.'; ?>
-     <?php endif; ?>
+     </div>
    </div>
  </div>
