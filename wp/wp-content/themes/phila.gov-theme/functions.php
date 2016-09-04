@@ -1200,6 +1200,10 @@ function phila_get_service_updates(){
       if ( $service_effective_end['timestamp'] >= $current_date->getTimestamp() ):
         $valid_update = true;
       endif;
+    elseif ($service_date_format == 'none'):
+      $service_effective_start = '';
+      $service_effective_end = '';
+      $valid_update = true;
     endif;
 
     //Don't set any additional vars unless the update is current
