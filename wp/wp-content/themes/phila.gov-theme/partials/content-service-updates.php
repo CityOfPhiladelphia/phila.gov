@@ -68,11 +68,11 @@
                                <span class="date small-text"><em>
                                  In Effect:
                                  <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
-                                   <?php echo $start->format($start_month_format . ' jS'); ?>
+                                   <?php echo $start->format($start_month_format . ' j'); ?>
                                  <?php elseif ($start->format('m') === $end->format('m') ): ?>
-                                   <?php echo $start->format($start_month_format . ' jS') . ' - ' . $end->format('jS'); ?>
+                                   <?php echo $start->format($start_month_format . ' j') . ' - ' . $end->format('j'); ?>
                                  <?php else :?>
-                                   <?php echo $start->format($start_month_format . ' jS') . ' - ' . $end->format($end_month_format . ' jS'); ?>
+                                   <?php echo $start->format($start_month_format . ' j') . ' - ' . $end->format($end_month_format . ' j'); ?>
                                  <?php endif; ?>
                                </em></span>
 
@@ -81,11 +81,11 @@
                              <span class="date small-text"><em>
                                In Effect:
                                <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
-                                 <?php echo $start->format($start_month_format . ' jS \f\r\o\m g:i A') . ' - ' . $end->format('g:i A'); ?>
+                                 <?php echo $start->format($start_month_format . ' j \f\r\o\m g:i A') . ' - ' . $end->format('g:i A'); ?>
                                <?php elseif (intval($start->format('m')) === intval($end->format('m')) ): ?>
-                                 <?php echo $start->format($start_month_format . ' jS \a\t g:i A') . ' - ' . $end->format($end_month_format . ' jS \a\t g:i A'); ?>
+                                 <?php echo $start->format($start_month_format . ' j \a\t g:i A') . ' - ' . $end->format($end_month_format . ' j \a\t g:i A'); ?>
                                <?php else : ?>
-                                   <?php echo $start->format($start_month_format . ' jS \a\t g:i A') . ' - ' . $end->format($end_month_format . ' jS \a\t g:i A'); ?>
+                                   <?php echo $start->format($start_month_format . ' j \a\t g:i A') . ' - ' . $end->format($end_month_format . ' j \a\t g:i A'); ?>
                                <?php endif; ?>
                              </em></span>
 
