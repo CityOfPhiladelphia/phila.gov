@@ -55,53 +55,29 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
                 'critical' => 'Critical (Red)',
               ),
            ),
+          //  array(
+          //    'name' => 'Schedule an expiration date and time?',
+          //    'type' => 'heading',
+          //    'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The Display Start and End times set the window of time that the Service Update will appear on the site. This may be differ from the effective date of the update.<br/><em><strong>Example:</strong> Trash will not be collected on a specific date but we want to provide advanced notice.</em></p>',
+          //  ),
            array(
-             'name' => 'When should the Service Update be displayed?',
+             'name' => 'Service Update Timeframe',
              'type' => 'heading',
-             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The Display Start and End times set the window of time that the Service Update will appear on the site. This may be differ from the effective date of the update.<br/><em><strong>Example:</strong> Trash will not be collected on a specific date but we want to provide advanced notice.</em></p>',
+             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The Effective Start and End times are used to define the window of time a City Service will be impacted as well as when the update is removed from the site.</p>',
            ),
            array(
-             'name'  => 'Display Start Time',
-             'id'    => $prefix . 'update_start',
-             'class' =>  'start-time',
-             'type'  => 'datetime',
-             'size'  =>  25,
-             'js_options' =>  array(
-               'timeFormat' =>  'hh:mm tt',
-               'dateFormat'=>'mm-dd-yy',
-               'stepMinute' => 15,
-               'showHour' => 'true',
-               'controlType'=> 'select',
-               'oneLine'=> true,
-               'timeInput' => true,
+             'name' => 'Date/Time Format',
+             'id' => $prefix . 'date_format',
+             'type' => 'radio',
+             'options' => array(
+               'date' => 'Date only',
+               'datetime' => 'Date & Time',
+               'none' => 'No Date (must be unpublished when resolved)'
              ),
-             'timestamp' => true
-           ),
-           array(
-             'name'  => 'Display End Time',
-             'id'    => $prefix . 'update_end',
-             'type'  => 'datetime',
-             'class' =>  'end-time',
-             'size'  =>  25,
-             'js_options' =>  array(
-               'timeFormat' => 'hh:mm tt',
-               'dateFormat' => 'mm-dd-yy',
-               'stepMinute' => 15,
-               'showHour' => 'true',
-               'controlType'=> 'select',
-               'oneLine'=> true,
-               'timeInput' => true
-             ),
-             'timestamp' => true
-           ),
-           array(
-             'name' => 'When will the Service be disrupted? (optional)',
-             'type' => 'heading',
-             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The Effective Start and End times are used to define the window of time a City Service will be impacted.</p>',
            ),
            array(
              'name'  => 'Effective Start Time',
-             'id'    => $prefix . 'effective_start',
+             'id'    => $prefix . 'effective_start_datetime',
              'class' =>  'effective-start-time',
              'type'  => 'datetime',
              'size'  =>  25,
@@ -114,11 +90,12 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
                'oneLine'=> true,
                'timeInput' => true,
              ),
-             'timestamp' => true
+             'timestamp' => true,
+             'visible' => array('phila_date_format', '=', 'datetime'),
            ),
            array(
              'name'  => 'Effective End Time',
-             'id'    => $prefix . 'effective_end',
+             'id'    => $prefix . 'effective_end_datetime',
              'type'  => 'datetime',
              'class' =>  'effective-end-time',
              'size'  =>  25,
@@ -131,7 +108,42 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
                'oneLine'=> true,
                'timeInput' => true
              ),
-             'timestamp' => true
+             'timestamp' => true,
+             'visible' => array('phila_date_format', '=', 'datetime'),
+           ),
+           array(
+             'name'  => 'Effective Start Time',
+             'id'    => $prefix . 'effective_start_date',
+             'class' =>  'effective-start-time',
+             'type'  => 'date',
+             'size'  =>  25,
+             'js_options' =>  array(
+               'dateFormat'=>'mm-dd-yy',
+               'stepMinute' => 15,
+               'showHour' => 'true',
+               'controlType'=> 'select',
+               'oneLine'=> true,
+               'timeInput' => true,
+             ),
+             'timestamp' => true,
+             'visible' => array('phila_date_format', '=', 'date'),
+           ),
+           array(
+             'name'  => 'Effective End Time',
+             'id'    => $prefix . 'effective_end_date',
+             'type'  => 'date',
+             'class' =>  'effective-end-time',
+             'size'  =>  25,
+             'js_options' =>  array(
+               'dateFormat' => 'mm-dd-yy',
+               'stepMinute' => 15,
+               'showHour' => 'true',
+               'controlType'=> 'select',
+               'oneLine'=> true,
+               'timeInput' => true
+             ),
+             'timestamp' => true,
+             'visible' => array('phila_date_format', '=', 'date'),
            ),
            array(
              'name' => 'Service Update Message',

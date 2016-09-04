@@ -85,61 +85,11 @@ get_header(); ?>
         </nav>
       </div>
     </div>
-
-    <?php $args = array(
-      'post_type' => 'service_updates',
-    ); ?>
+    
+    <?php $args = array( 'post_type' => 'service_updates' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
-
-    <?php if ( $service_updates_loop->have_posts() ) : ?>
-      <div class="row">
-        <div class="large-24 columns">
-          <h2 class="contrast">Service Updates</h2>
-          <?php while ( $service_updates_loop->have_posts() ) :?>
-            <?php $service_update = $service_updates_loop->the_post(); ?>
-            <?php $update_message = phila_get_service_updates(); ?>
-            <?php if ($update_message['phila_update_start']['timestamp'] <= time() && $update_message['phila_update_end']['timestamp'] >= time() ): ?>
-              <div class="row">
-                <div class="small-24 columns centered service-update equal-height <?php if ( isset( $update_message['phila_update_level'] ) && !$update_message['phila_update_level'] == '' ) echo $update_message['phila_update_level']; ?> ">
-                  <div class="service-update-icon equal">
-                    <div class="valign">
-                      <div class="valign-cell pam">
-                        <i class="fa <?php if ( $update_message['phila_update_icon'] ) echo $update_message['phila_update_icon']; ?>  fa-2x" aria-hidden="true"></i>
-                        <span class="icon-label small-text"><?php if ( $update_message['phila_update_type'] ) echo $update_message['phila_update_type']; ?></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="service-update-details phm equal">
-                    <div class="valign">
-                      <div class="valign-cell pvm">
-                        <?php if ( isset( $update_message['phila_service_update_message'] ) && !$update_message['phila_service_update_message'] == '' ):?>
-                          <span><?php  echo $update_message['phila_service_update_message']; ?></span>                              <br/>
-                        <?php endif;?>
-                        <?php if ( isset( $update_message['phila_update_link_text'] ) && !$update_message['phila_update_link_text'] == '' && !$update_message['phila_update_link'] == '' ):?>
-                          <a href="<?php echo $update_message['phila_update_link']; ?>" class="external"><?php echo $update_message['phila_update_link_text']; ?></a>
-                          <br/>
-                        <?php endif;?>
-                        <?php if ( isset( $update_message['phila_effective_start'] ) && !$update_message['phila_effective_start'] == ''):?>
-                          <span class="date small-text"><em>
-                            In Effect: <?php  dateTimeFormat( $update_message['phila_effective_start']['timestamp'] ); ?>
-                            <?php if ( isset( $update_message['phila_effective_end'] ) && !$update_message['phila_effective_end'] == ''): ?>
-                              <?php echo ' through ';?>
-                              <?php dateTimeFormat(  $update_message['phila_effective_end']['timestamp'] );?>
-                            <?php endif; ?>
-                          </em></span>
-                        <?php endif;?>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <?php endif; ?>
-          <?php endwhile; ?>
-        </div>
-      </div>
-    <?php else : ?>
-      <?php echo 'No Service updates to report'; ?>
-    <?php endif; ?>
+    <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+    <?php wp_reset_query();?>
 
     <div class="news-row row expanded">
       <div class="columns">

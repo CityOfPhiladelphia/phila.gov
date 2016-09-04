@@ -1171,26 +1171,81 @@ function phila_get_event_content_blocks(){
     }
 }
 
+function phila_util_month_format($date){
+  if (strlen($date->format('F')) > 5){
+     return 'M.';
+  } else {
+    return 'F';
+  }
+}
+
 function phila_get_service_updates(){
-  $update_message = rwmb_meta( 'service_update' );
-    if ( $update_message['phila_update_type'] != '' ):
-      switch ( $update_message['phila_update_type'] ) {
-        case 'city':
-          $update_message['phila_update_icon'] = 'fa-institution';
-          break;
-        case 'roads':
-          $update_message['phila_update_icon'] = 'fa-road';
-          break;
-        case 'transit':
-          $update_message['phila_update_icon'] = 'fa-subway';
-          break;
-        case 'trash':
-          $update_message['phila_update_icon'] = 'fa-trash';
-          break;
-      }
+
+    $service_update_details = rwmb_meta( 'service_update' );
+    $current_date = new DateTime('NOW', new DateTimeZone('America/New_York'));
+    $valid_update = false;
+    $service_date_format = isset( $service_update_details['phila_date_format'] ) ? $service_update_details['phila_date_format'] : '';
+    if ( $service_date_format == 'date'):
+      $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
+      $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
+
+      $service_update_end_date = new DateTime( '@' .$service_effective_end['timestamp'] );
+
+      if ( intval( $service_update_end_date->format('mdY') ) >= intval( $current_date->format('mdY') ) ):
+        $valid_update = true;
+      endif;
+    elseif ( $service_date_format == 'datetime') :
+      $service_effective_start = isset( $service_update_details['phila_effective_start_datetime'] ) ? $service_update_details['phila_effective_start_datetime'] : '';
+      $service_effective_end = isset( $service_update_details['phila_effective_end_datetime'] ) ? $service_update_details['phila_effective_end_datetime'] : '';
+      if ( $service_effective_end['timestamp'] >= $current_date->getTimestamp() ):
+        $valid_update = true;
+      endif;
     endif;
 
-    return $update_message;
+    //Don't set any additional vars unless the update is current
+    if ( $valid_update ):
+      $service_type = isset( $service_update_details['phila_update_type'] ) ? $service_update_details['phila_update_type'] : '';
+      $service_level = isset( $service_update_details['phila_update_level'] ) ? $service_update_details['phila_update_level'] : '';
+      $service_message = isset( $service_update_details['phila_service_update_message'] ) ? $service_update_details['phila_service_update_message'] : '';
+      $service_link_text = isset( $service_update_details['phila_update_link_text'] ) ? $service_update_details['phila_update_link_text'] : '';
+      $service_link = isset( $service_update_details['phila_update_link'] ) ? $service_update_details['phila_update_link'] : '';
+
+      switch($service_type){
+        case 'city':
+          $service_icon = 'fa-institution';
+          break;
+          case 'roads':
+            $service_icon = 'fa-road';
+            break;
+          case 'transit':
+            $service_icon = 'fa-subway';
+            break;
+          case 'trash':
+            $service_icon = 'fa-trash';
+            break;
+          default :
+            $service_icon = '';
+            break;
+      }
+      $output_item ='';
+
+      $output_item = array(
+        'service_type' => $service_type,
+        'service_icon' => $service_icon,
+        'service_level' => $service_level,
+        'service_message' => $service_message,
+        'service_link_text' => $service_link_text,
+        'service_link' => $service_link,
+        'service_date_format' => $service_date_format,
+        'service_effective_start' => $service_effective_start,
+        'service_effective_end' => $service_effective_end,
+
+      );
+
+      return $output_item;
+    else :
+      return;
+    endif;
 }
 
 function phila_get_service_updates_events(){
