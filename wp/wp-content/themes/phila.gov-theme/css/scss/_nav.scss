@@ -20,6 +20,8 @@ nav#services-nav{
       span {
         display: inline-block;
         padding-left:2rem;
+        //TODO: Remove max-width, this is a temp fix
+        max-width: 300px;
       }
       ul li span{
         display: inline-block;
