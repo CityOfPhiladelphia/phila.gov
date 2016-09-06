@@ -6,7 +6,7 @@
  */
  ?>
 <section class="row">
-  <div class="medium-24">
+  <div class="medium-24 columns">
     <?php the_content(); ?>
   </div>
 </section>
