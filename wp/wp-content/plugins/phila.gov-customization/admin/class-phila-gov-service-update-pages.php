@@ -68,7 +68,8 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
            array(
              'name' => 'Date/Time Format',
              'id' => $prefix . 'date_format',
-             'type' => 'radio',
+             'type' => 'select',
+             'placeholder' => 'Choose date format...',
              'options' => array(
                'date' => 'Date only',
                'datetime' => 'Date & Time',
