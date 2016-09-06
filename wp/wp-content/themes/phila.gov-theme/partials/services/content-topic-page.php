@@ -15,7 +15,7 @@
   'posts_per_page' => -1,
   'post_parent'    => $post->ID,
   'order'          => 'ASC',
-  'orderby'        => 'title'
+  'orderby'        => 'menu_order'
 ); ?>
 <?php $counter = 0; ?>
 
