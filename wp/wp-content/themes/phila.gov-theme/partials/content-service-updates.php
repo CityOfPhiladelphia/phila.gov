@@ -8,8 +8,10 @@
  <div class="service-update-row row expanded">
    <div class="columns">
      <div class="row">
-       <div class="large-24 columns">
+       <div class="columns">
          <h2 class="contrast">Service Updates</h2>
+       </div>
+     </div>
          <?php if ( $service_updates_loop->have_posts() ) : ?>
 
          <?php $update_array = array(); ?>
@@ -103,5 +105,4 @@
          <?php endif; ?>
        </div>
      </div>
-   </div>
- </div>
+ 
