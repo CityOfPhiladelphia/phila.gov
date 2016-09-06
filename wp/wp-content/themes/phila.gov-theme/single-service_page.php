@@ -28,7 +28,7 @@
         </header>
         </div>
         <div class="row">
-          <div class="medium-8 columns">
+          <div class="medium-7 columns">
             <nav data-swiftype-index="false" id="services-nav">
               <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="services-menu vertical menu">
               <?php
