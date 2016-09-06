@@ -72,9 +72,9 @@
                                  <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
                                    <?php echo $start->format($start_month_format . ' j'); ?>
                                  <?php elseif ($start->format('m') === $end->format('m') ): ?>
-                                   <?php echo $start->format($start_month_format . ' j') . ' - ' . $end->format('j'); ?>
+                                   <?php echo $start->format($start_month_format . ' j') . '-' . $end->format('j'); ?>
                                  <?php else :?>
-                                   <?php echo $start->format($start_month_format . ' j') . ' - ' . $end->format($end_month_format . ' j'); ?>
+                                   <?php echo $start->format($start_month_format . ' j') . ' to' . $end->format($end_month_format . ' j'); ?>
                                  <?php endif; ?>
                                </em></span>
 
@@ -83,11 +83,11 @@
                              <span class="date small-text"><em>
                                In Effect:
                                <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
-                                 <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $start->format($start_month_format . ' j \f\r\o\m g:i a') . ' - ' . $end->format('g:i a') ); ?>
+                                 <?php echo str_replace(array('am','pm',':00'),array('a.m.','p.m.',''), $start->format($start_month_format . ' j \f\r\o\m g:i a') . '-' . $end->format('g:i a') ); ?>
                                <?php elseif (intval($start->format('m')) === intval($end->format('m')) ): ?>
-                                 <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $start->format($start_month_format . ' j \a\t g:i a') . ' - ' . $end->format($end_month_format . ' j \a\t g:i a') ); ?>
+                                 <?php echo str_replace(array('am','pm',':00'),array('a.m.','p.m.',''), $start->format($start_month_format . ' j \a\t g:i a') . ' to ' . $end->format($end_month_format . ' j \a\t g:i a') ); ?>
                                <?php else : ?>
-                                   <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $start->format($start_month_format . ' j \a\t g:i a') . ' - ' . $end->format($end_month_format . ' j \a\t g:i a') ); ?>
+                                   <?php echo str_replace(array('am','pm',':00'),array('a.m.','p.m.',''), $start->format($start_month_format . ' j \a\t g:i a') . ' to ' . $end->format($end_month_format . ' j \a\t g:i a') ); ?>
                                <?php endif; ?>
                              </em></span>
 
