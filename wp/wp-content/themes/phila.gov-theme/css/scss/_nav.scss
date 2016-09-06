@@ -56,7 +56,7 @@ nav#services-nav{
     }
   }
   .current_page_ancestor{
-    ul {
+    > ul {
       display: block;
     }
     > a:after{
