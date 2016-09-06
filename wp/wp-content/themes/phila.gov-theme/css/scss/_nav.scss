@@ -1,7 +1,8 @@
 nav#services-nav{
   a{
-    border-bottom: 1px solid $ghost-gray;
     font-weight:600;
+    border-bottom: 1px solid $ghost-gray;
+    display: block;
   }
 
   ul {
@@ -9,76 +10,59 @@ nav#services-nav{
     margin:0;
     padding:0;
 
-    > li.current-menu-item,
-    > li.current-menu-parent {
-      a{
+    > li.current_page_item {
+      > a{
         background: $ben-franklin-blue;
         color:white;
       }
     }
-  }
-  .current-menu-item a{
-    color:$black;
-  }
-  .current-menu-parent{
-    .current-menu-item{
+  li li {
+      span {
+        display: inline-block;
+        padding-left:2rem;
+      }
+      ul li span{
+        display: inline-block;
+        padding-left:3rem;
+      }
+    }
+    &.children{
       background:$ghost-gray;
-      > a{
-        background:$ghost-gray;
-        border-left:5px solid $ben-franklin-blue;
-        color:$ben-franklin-blue;
+      li a{
+        padding-right:1rem;
+        border-bottom: 2px solid $white;
       }
     }
   }
-  .menu-item-has-children{
-    &.current-menu-item {
-    > ul {
-        display: block;
-        background:$ghost-gray;
-        li{
-          border-bottom: 2px solid #fff;
-          a{
-            background:$ghost-gray;
-            color:$ben-franklin-blue;
-          }
-          > ul li a{
-            background: $white;
-            color:$ben-franklin-blue;
-            padding-left:30px;
-
-            span{
-              margin-left: 20px;
-            }
-          }
-        }
-        a {
-          padding: .5rem 1rem;
-
-          span{
-            margin-left: 10px;
-          }
-        }
-      }
-      > a:after{
-        content: '—';
-        float:right;
-      }
-      .current-menu-ancestor.current-menu-parent.menu-item-has-children{
-        > a{
-          background:$ghost-gray;
-          border-left:5px solid $ben-franklin-blue;
-
-        }
-        > ul li.current-menu-item a{
-          color:black;
-          border:none;
-        }
-      }
-    }
-
+  .page_item_has_children{
     > a:after{
       content: '+';
+      font-size:20px;
+      line-height: 20px;
+      float:right;
+    }
+    &.current_page_item {
+      > a:after{
+        content: '—';
+        font-size:15px;
+        line-height: 15px;
+        float:right;
+      }
+      > ul {
+        display: block;
+      }
+    }
+  }
+  .current_page_ancestor{
+    ul {
+      display: block;
+    }
+    > a:after{
+      content: '—';
+      font-size:15px;
+      line-height: 15px;
       float:right;
     }
   }
+
 }
