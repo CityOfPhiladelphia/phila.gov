@@ -28,8 +28,6 @@ body{
 }
 body.home header.site-header{
 
-  background: rgba(225, 225, 225, .4);
-
   .breadcrumbs{
     display: none;
   }
@@ -227,6 +225,10 @@ aside {
     }
 
   }
+}
+
+header.entry-header h2{
+  margin-top:0;
 }
 //TODO: add all these as utility to patterns
 .float-none{
