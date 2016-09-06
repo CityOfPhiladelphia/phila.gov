@@ -83,11 +83,11 @@
                              <span class="date small-text"><em>
                                In Effect:
                                <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
-                                 <?php echo $start->format($start_month_format . ' j \f\r\o\m g:i A') . ' - ' . $end->format('g:i A'); ?>
+                                 <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $start->format($start_month_format . ' j \f\r\o\m g:i a') . ' - ' . $end->format('g:i a') ); ?>
                                <?php elseif (intval($start->format('m')) === intval($end->format('m')) ): ?>
-                                 <?php echo $start->format($start_month_format . ' j \a\t g:i A') . ' - ' . $end->format($end_month_format . ' j \a\t g:i A'); ?>
+                                 <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $start->format($start_month_format . ' j \a\t g:i a') . ' - ' . $end->format($end_month_format . ' j \a\t g:i a') ); ?>
                                <?php else : ?>
-                                   <?php echo $start->format($start_month_format . ' j \a\t g:i A') . ' - ' . $end->format($end_month_format . ' j \a\t g:i A'); ?>
+                                   <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $start->format($start_month_format . ' j \a\t g:i a') . ' - ' . $end->format($end_month_format . ' j \a\t g:i a') ); ?>
                                <?php endif; ?>
                              </em></span>
 
@@ -101,8 +101,13 @@
              </div>
            <?php endif; ?>
          <?php else : ?>
-           <?php echo 'No Service updates to report at this time.'; ?>
+           <div class="row">
+             <div class="small-24 columns">
+               <div class="placeholder">
+                 <?php echo 'No <strong>Service Updates</strong> available at this time.'; ?>
+                </div>
+             </div>
+           </div>
          <?php endif; ?>
        </div>
      </div>
- 
