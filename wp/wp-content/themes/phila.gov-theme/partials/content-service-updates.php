@@ -44,7 +44,7 @@
                <?php $end_month_format = phila_util_month_format($end); ?>
              <?php endif; ?>
 
-             <?php if ($i > 3) break; ?>
+             <?php if ($i > 2) break; ?>
                <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
                      <div class="service-update-icon equal">
                        <div class="valign">
