@@ -361,7 +361,7 @@ function phila_breadcrumbs() {
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
-    phila_util_echo_website_url();
+    echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
@@ -403,6 +403,10 @@ function phila_breadcrumbs() {
     } elseif ( is_post_type_archive('department_page' ) ) {
 
         echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
+
+    } elseif ( is_post_type_archive('service_page' ) ) {
+
+        echo '<li>' . __( 'Services', 'phila.gov' ) . '</li>';
 
     } elseif ( is_post_type_archive('news_post') ) {
 
