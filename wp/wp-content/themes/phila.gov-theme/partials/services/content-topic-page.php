@@ -5,11 +5,13 @@
  *
  */
  ?>
-<section class="row mbl">
-  <div class="medium-24 columns">
-    <?php echo phila_get_item_meta_desc(); ?>
-  </div>
-</section>
+<?php if (!empty(phila_get_item_meta_desc( $bloginfo = false ) ) ) : ?>
+  <section class="row mbl">
+    <div class="medium-24 columns">
+      <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
+    </div>
+  </section>
+<?php endif; ?>
 <?php $topic_args = array(
   'post_type'      => 'service_page',
   'posts_per_page' => -1,
@@ -31,7 +33,7 @@
         <a href="<?php the_permalink(); ?>" class="card sub-topic equal">
           <div class="content-block">
             <h3><?php the_title(); ?></h3>
-            <?php echo phila_get_item_meta_desc(); ?>
+            <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
           </div>
         </a>
       </div>
