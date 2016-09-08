@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
         maxlength: 72
       });
       $('#phila_meta_desc').rules('add', {
-        maxlength: 280
+        maxlength: 140
       });
     }
 

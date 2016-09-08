@@ -103,7 +103,7 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
       array(
         'id'   => $prefix . 'meta_desc',
         'type' => 'textarea',
-        'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 280 character maximum.',
+        'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 140 character maximum.',
         'required'  => true
        ),
      ),
