@@ -1137,7 +1137,12 @@ function phila_get_service_updates(){
   }
 }
 
-function phila_get_item_meta_desc(){
+/**
+ * Returns the meta_desc for an item.
+ * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
+ *
+ **/
+function phila_get_item_meta_desc( $bloginfo = true ){
   global $post;
 
   $meta_desc = array();
@@ -1167,7 +1172,9 @@ function phila_get_item_meta_desc(){
   }
 
   if( is_archive() || is_search() || is_home() ) {
-    return bloginfo( 'description' );
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
   }
 
   if ( get_post_type() == 'department_page' ) {
@@ -1207,11 +1214,15 @@ function phila_get_item_meta_desc(){
       return mb_strimwidth( wp_strip_all_tags( $content ),  0, 140, '...');
 
     }else{
-      return bloginfo( 'description' );
+      if ($bloginfo) {
+        return bloginfo( 'description' );
+      }
     }
 
   }else{
-    return bloginfo( 'description' );
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
   }
 }
 
