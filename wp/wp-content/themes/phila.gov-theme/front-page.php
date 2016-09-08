@@ -85,7 +85,7 @@ get_header(); ?>
         </nav>
       </div>
     </div>
-    
+
     <?php $args = array( 'post_type' => 'service_updates' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
@@ -122,6 +122,133 @@ get_header(); ?>
         </div><!-- .row -->
       </div><!-- .home-news -->
     </div>
+
+   <section>
+      <div class="row">
+        <div class="columns">
+          <h2>Neighborhood resources</h2>
+        </div>
+      </div>
+      <div class="neighborhood-resources row expanded">
+
+          <div class="row phl equal-height">
+
+              <div class="medium-6 columns mvl">
+                <a href="http://www.freelibrary.org/" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-book fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Free Libraries</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="http://gsg.phila.gov/map#id=e7d139e404dd4fdaac4ae0bbaf637f79" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-tree fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Parks</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="http://www.phila.gov/parksandrecreation/findafacility/" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-paint-brush fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Recreation Centers</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="https://www.phillykeyspots.org/keyspot-finder" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-wifi fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Free Internet Access</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="http://gsg.phila.gov/map#id=aa5f6f59d35c45e9bc089b400694f43a" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-soccer-ball-o fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Playgrounds</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="/city-health-centers/" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="">Health Centers</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="http://www.phila.gov/fire/fac_and_equip/facil_firehouses.html" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-fire-extinguisher fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Fire Stations</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+              <div class="medium-6 columns mvl">
+                <a href="https://www.phillypolice.com/districts/" class="action-panel">
+                  <div class="panel equal" data-equalizer-watch="" >
+                    <header class="">
+                      <div class="icon">
+                        <span><i class="fa fa-shield fa-5x" aria-hidden="true"></i></span>
+                      </div>
+                      <span class="external">Police Stations</span>
+                    </header>
+                  </div>
+                </a>
+              </div>
+
+          </div>
+      </div>
+      <div class="row expanded feedback">
+        <div class="column call-to-action pas center">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i> What should we add to this section? <span>Tell us</span>.
+        </div>
+        <div class="column center">
+          <div class="arrow-down"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="active">
       <div class="row expanded">
         <div class="columns">
