@@ -156,4 +156,16 @@ jQuery(document).ready(function($) {
       $('[data-type="hero-tagline-emphasis"]').css('font-size', largeFontSize + 'rem');
     }
   }
+
+  //Homepage Feedback Form
+  $('[data-toggle="feedback"]').click(function() {
+    $('[data-type="feedback-form"]').toggle();
+    $('[data-type="feedback-footer"]').toggle();
+    if ( $('[data-type="feedback-indicator"]').hasClass('up') ){
+      $('[data-type="feedback-indicator"]').removeClass('up');
+    } else {
+      $('[data-type="feedback-indicator"]').addClass('up');
+    }
+  });
+
 });
