@@ -40,14 +40,13 @@ nav#services-nav{
     }
   }
     &.children{
-      background:$ghost-gray;
       li {
         border-bottom: 2px solid $white;
         &:last-child{
           border-bottom: none;
         }
         a{
-          padding:.5rem 1rem .5rem 1rem;
+          padding:1rem;
         }
       }
     }
@@ -70,19 +69,11 @@ nav#services-nav{
         display: block;
       }
     }
-    &.current_page_ancestor {
-      > a{
-        border-left:5px solid $ben-franklin-blue;
-        color:black;
-      }
-      &.current_page_parent > a{
-      //  border:none;
-        color:black;
-      }
-    }
   }
   .current_page_ancestor{
-    border-bottom:none;
+    &.page_item_has_children:not(.current_page_parent) > a{
+      border-bottom: 1px solid $ghost-gray;
+    }
 
     > ul {
       display: block;
