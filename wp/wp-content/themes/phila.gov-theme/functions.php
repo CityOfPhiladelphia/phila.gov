@@ -1185,10 +1185,10 @@ function phila_get_item_meta_desc(){
 
     }
 
-    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 280, '...');
+    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 140, '...');
 
   //special handing for content collection page types, when appropriate
-  }else if( is_page() || get_post_type() == 'service_page' ){
+  }else if( is_page() ){
 
     $parents = get_post_ancestors( $post->ID );
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
@@ -1204,7 +1204,7 @@ function phila_get_item_meta_desc(){
 
     }else if ( !empty( $content ) ) {
 
-      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 280, '...');
+      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 140, '...');
 
     }else{
       return bloginfo( 'description' );
