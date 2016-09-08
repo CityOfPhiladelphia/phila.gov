@@ -5,9 +5,9 @@
  *
  */
  ?>
-<section class="row">
+<section class="row mbl">
   <div class="medium-24 columns">
-    <?php the_content(); ?>
+    <?php echo phila_get_item_meta_desc(); ?>
   </div>
 </section>
 <?php $topic_args = array(
