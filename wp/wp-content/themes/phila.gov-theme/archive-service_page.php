@@ -32,11 +32,26 @@ get_header(); ?>
         </form>
       </div>
       <div class="medium-16 columns results mbm">
-        <?php
-          if ( have_posts() ) : ?>
-          <?php while ( have_posts() ) : the_post(); ?>
+        <?php $args = array(
+            'post_type'  => 'service_page',
+            'posts_per_page'  => -1,
+            'order' => 'ASC',
+            'orderby' => 'title',
+            'meta_query' => array(
+              array(
+                'key'     => 'phila_template_select',
+                'value'   => 'topic_page',
+                'compare' => 'NOT IN',
+              ),
+            ),
+          );
+          $service_pages = new WP_Query( $args );
+        ?>
+          <?php if ( $service_pages->have_posts() ) : ?>
+          <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
+
             <?php echo the_title('<h2>', '</h2>'); ?>
-            <?php echo phila_get_item_meta_desc( $blog_info = false ); ?>
+            <p class="hide-for-small-only"><?php echo phila_get_item_meta_desc( $blog_info = false ); ?></p>
           <?php endwhile; ?>
 
         <?php endif; ?>
