@@ -55,11 +55,6 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
                 'critical' => 'Critical (Red)',
               ),
            ),
-          //  array(
-          //    'name' => 'Schedule an expiration date and time?',
-          //    'type' => 'heading',
-          //    'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The Display Start and End times set the window of time that the Service Update will appear on the site. This may be differ from the effective date of the update.<br/><em><strong>Example:</strong> Trash will not be collected on a specific date but we want to provide advanced notice.</em></p>',
-          //  ),
            array(
              'name' => 'Service Update Timeframe',
              'type' => 'heading',
@@ -113,7 +108,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
              'visible' => array('phila_date_format', '=', 'datetime'),
            ),
            array(
-             'name'  => 'Effective Start Time',
+             'name'  => 'Effective Start Day',
              'id'    => $prefix . 'effective_start_date',
              'class' =>  'effective-start-time',
              'type'  => 'date',
@@ -130,7 +125,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
              'visible' => array('phila_date_format', '=', 'date'),
            ),
            array(
-             'name'  => 'Effective End Time',
+             'name'  => 'Effective End Day',
              'id'    => $prefix . 'effective_end_date',
              'type'  => 'date',
              'class' =>  'effective-end-time',

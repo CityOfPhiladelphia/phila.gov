@@ -74,7 +74,7 @@
                                  <?php elseif ($start->format('m') === $end->format('m') ): ?>
                                    <?php echo $start->format($start_month_format . ' j') . '-' . $end->format('j'); ?>
                                  <?php else :?>
-                                   <?php echo $start->format($start_month_format . ' j') . ' to' . $end->format($end_month_format . ' j'); ?>
+                                   <?php echo $start->format($start_month_format . ' j') . ' to ' . $end->format($end_month_format . ' j'); ?>
                                  <?php endif; ?>
                                </em></span>
 
