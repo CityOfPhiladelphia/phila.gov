@@ -50,9 +50,9 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
               'type' => 'select',
               'placeholder' => 'Choose type...',
               'options' => array(
-                'normal' => 'Normal (Green)',
-                'warning' => 'Warning (Yellow)',
-                'critical' => 'Critical (Red)',
+                '0' => 'Normal (Green)',
+                '1' => 'Warning (Yellow)',
+                '2' => 'Critical (Red)',
               ),
            ),
            array(

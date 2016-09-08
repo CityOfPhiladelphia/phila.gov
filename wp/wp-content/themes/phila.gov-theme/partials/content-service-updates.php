@@ -24,12 +24,14 @@
            <?php endif; ?>
          <?php endwhile; ?>
 
-         <?php usort($update_array, function($a, $b) {
-           // This comparison operator requires PHP7
-             return $a['service_type'] <=> $b['service_type'];
-         }); ?>
-
          <?php if (!empty($update_array) ): ?>
+
+           <?php //Sort by urgency level (critical to normal) and then A-Z ?>
+           <?php foreach ( $update_array as $key => $update_item ): ?>
+             <?php $urgency[$key] = $update_item['service_level']; ?>
+             <?php $type[$key] = $update_item['service_type']; ?>
+           <?php endforeach; ?>
+           <?php array_multisort($urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
 
            <div class="row">
            <?php $i=0; ?>
@@ -43,7 +45,7 @@
              <?php endif; ?>
 
              <?php if ($i > 3) break; ?>
-               <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level'] == '' ) echo $update['service_level']; ?> ">
+               <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
                      <div class="service-update-icon equal">
                        <div class="valign">
                          <div class="valign-cell pam">
