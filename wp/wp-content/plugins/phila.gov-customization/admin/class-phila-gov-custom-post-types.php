@@ -99,7 +99,7 @@ class Phila_Gov_Custom_Post_Types{
           'author'
         ),
         'public' => true,
-        'has_archive' => false,
+        'has_archive' => true,
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-admin-generic',
         'hierarchical' => true,
