@@ -1231,12 +1231,28 @@ function phila_get_service_updates(){
             $service_icon = '';
             break;
       }
+      switch($service_level){
+        case '0':
+          $service_level_label = 'normal';
+          break;
+          case '1':
+            $service_level_label = 'warning';
+            break;
+          case '2':
+            $service_level_label = 'critical';
+            break;
+          default :
+            $service_level_label = 'normal';
+            break;
+      }
+
       $output_item ='';
 
       $output_item = array(
         'service_type' => $service_type,
         'service_icon' => $service_icon,
         'service_level' => $service_level,
+        'service_level_label' => $service_level_label,
         'service_message' => $service_message,
         'service_link_text' => $service_link_text,
         'service_link' => $service_link,
