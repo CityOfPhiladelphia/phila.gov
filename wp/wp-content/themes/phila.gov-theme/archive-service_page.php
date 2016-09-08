@@ -50,8 +50,16 @@ get_header(); ?>
           <?php if ( $service_pages->have_posts() ) : ?>
           <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
 
-            <?php echo the_title('<h2>', '</h2>'); ?>
-            <p class="hide-for-small-only"><?php echo phila_get_item_meta_desc( $blog_info = false ); ?></p>
+            <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
+            <?php $page_terms = array(); ?>
+            <?php foreach ( $terms as $term ) : ?>
+              <?php array_push($page_terms, $term->slug); ?>
+            <?php endforeach; ?>
+
+              <div class="service" data-service="<?php echo implode( ' ', $page_terms ) ?>">
+                <a href="<?php echo get_permalink();?>"><?php echo the_title(); ?></a>
+                <p class="hide-for-small-only"><?php echo phila_get_item_meta_desc( $blog_info = false ); ?></p>
+              </div>
           <?php endwhile; ?>
 
         <?php endif; ?>
