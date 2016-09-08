@@ -239,14 +239,39 @@ get_header(); ?>
 
           </div>
       </div>
-      <div class="row expanded feedback">
-        <div class="column call-to-action pas center">
-          <i class="fa fa-lightbulb-o" aria-hidden="true"></i> What should we add to this section? <span>Tell us</span>.
+      <div class="feedback">
+        <div class="row expanded" data-toggle="feedback">
+          <div class="column call-to-action pas center">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i> What should we add to this section? <span>Tell us</span>.
+          </div>
         </div>
-        <div class="column center">
-          <div class="arrow-down"></div>
+        <div class="row expanded feedback-form" data-type="feedback-form" style="display:none;">
+          <div class="medium-18 column small-centered mvm" >
+            <div class="">
+              <p>There are many ways to connect with your neighbors, local organizations, and the City of Philadelphia. We’d like to help you find the neighborhood resources you need. Tell us what you find useful by answering the questions below.</p>
+              <p>Please don’t provide personal information, like your name or contact details, in your answers.</p>
+
+              <form>
+                <label>What would you add to the neighborhood resources list?</label>
+                <input>
+                <label>What neighborhood resources would you like to know more about and why?</label>
+                <input>
+                <label>What’s your zip code?</label>
+                <input>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="row expanded" data-type="feedback-indicator">
+          <div class="column center">
+            <div class="arrow"></div>
+          </div>
+        </div>
+        <div class="row expanded" data-toggle="feedback" data-type="feedback-footer" style="display:none;">
+          <div class="column call-to-action center" >
+            <div class="pas"><i class="fa fa-close" aria-hidden="true"></i> <span>Close</span> </div>
+          </div>
+        </div>
     </section>
 
     <section id="active">
