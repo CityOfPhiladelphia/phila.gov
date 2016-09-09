@@ -108,7 +108,7 @@ get_header(); ?>
               <?php
                 $first_c = strtolower($k[0]);
                 if( $a_k == $first_c && $a_v == true ) : ?>
-                  <div class="mvm" data-service="<?php echo implode(' ', $v['terms'] ); ?>">
+                  <div class="result mvm" data-service="<?php echo implode(' ', $v['terms'] ); ?>">
                     <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
                     <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
                   </div>
