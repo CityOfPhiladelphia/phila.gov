@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area services">
+<div id="primary" class="content-area service directory">
   <main id="main" class="site-main">
     <div class="row">
       <header class="small-24 columns">
@@ -15,7 +15,7 @@ get_header(); ?>
       </header>
     </div>
     <div class="row">
-      <div class="medium-8 columns">
+      <div class="medium-7 columns filter">
         <?php printf(__('<h2 class="h4 man">Filter by Service Categories</h2>', 'phila-gov') ); ?>
         <?php $terms = get_terms(
           array(
@@ -24,7 +24,7 @@ get_header(); ?>
             )
         );?>
         <form id="service_filter">
-          <ul class="no-bullet border-bottom-list mam pan">
+          <ul class="no-bullet mam pan">
             <li><input type="checkbox" name="all-services" value="all-services" id="all-services" checked="checked"><label for="all-services">All Services</label></li>
             <?php foreach ( $terms as $term ) : ?>
               <li><input type="checkbox" name="<?php echo $term->slug ?>" value="<?php echo $term->slug ?>" id="<?php echo $term->slug ?>"><label for="<?php echo $term->slug ?>"><?php echo $term->name ?></label></li>
@@ -32,7 +32,7 @@ get_header(); ?>
           </ul>
         </form>
       </div>
-      <div class="medium-16 columns a-z-list">
+      <div class="medium-16 columns results a-z-list">
       <?php $args = array(
         'post_type'  => 'service_page',
         'posts_per_page'  => -1,
