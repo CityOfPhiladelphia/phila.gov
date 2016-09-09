@@ -1,7 +1,27 @@
-.a-z-list{
-  border-top: 1px solid $dark-gray;
-  margin-top:3rem;
+.a-z-list {
+  nav{
+    font-size:1.5rem;
+    font-family: 'Montserrat';
+    text-align: center;
+    ul{
+      margin:0 auto;
+
+      li{
+        width:20px;
+
+        a:link, a:visited{
+
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .row{
+    border-top: 1px solid $dark-gray;
+    margin-top:2rem;
+
   .letter{
     font-size: $large-font-base / 1.75;
+    }
   }
 }
