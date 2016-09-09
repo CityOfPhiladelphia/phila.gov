@@ -96,25 +96,28 @@ get_header(); ?>
           <?php endforeach; ?>
         </ul>
         <?php foreach($a_z as $a_k => $a_v): ?>
-          <div class="a-z-list row">
           <?php if( $a_v == true): ?>
-            <div id="<?php echo $a_k ?>" class="medium-2 columns">
-              <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
-            </div>
-          <?php endif; ?>
-          <div class="medium-22 columns">
+            <div class="row collapse a-z-list">
+                <div id="<?php echo $a_k ?>" class="medium-2 columns">
+                  <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
+                </div>
+                <div class="medium-21 columns">
+            <?php endif; ?>
             <?php foreach($services as $k => $v) :?>
-                <?php
-                  $first_c = strtolower($k[0]);
-                  if( $a_k == $first_c && $a_v == true ) : ?>
-                    <div data-service="<?php echo implode(' ', $v['terms'] ); ?>">
-                      <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
-                      <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
-                    </div>
+              <?php
+                $first_c = strtolower($k[0]);
+                if( $a_k == $first_c && $a_v == true ) : ?>
+                  <div class="mvm" data-service="<?php echo implode(' ', $v['terms'] ); ?>">
+                    <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
+                    <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
+                  </div>
                 <?php endif; ?>
               <?php endforeach; ?>
+              <?php if( $a_v == true): ?>
+              </div>
             </div>
-          </div>
+            <?php endif; ?>
+
           <?php endforeach; ?>
         <?php endif; ?>
         <?php wp_reset_query(); ?>
