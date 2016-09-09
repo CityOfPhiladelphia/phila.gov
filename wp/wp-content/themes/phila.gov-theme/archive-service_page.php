@@ -85,25 +85,42 @@ get_header(); ?>
             ?>
           <?php endwhile; ?>
 
+        <ul class="inline-list man pan">
           <?php
-
           //spit out list of all letters with associated links
-          foreach($a_z as $k => $v){
-            if( $v == true) {
-              echo '<a href="#">' . $k . '</a>';
-            }else{
-              echo $k;
-            }
-          }
-          foreach($services as $k => $v) : ?>
-
-            <div class="service" data-service="<?php echo implode(' ', $v['terms'] ); ?>">
-              <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
-              <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
-            </div>
+          foreach($a_z as $k => $v): ?>
+            <li>
+              <?php if( $v == true) : ?>
+                <a href="#"><?php echo strtoupper($k); ?></a>
+              <?php else : ?>
+                <?php echo strtoupper($k);?>
+              <?php endif; ?>
+            </li>
           <?php endforeach; ?>
-
+        </ul>
+    <?php $last_c = '';
+      foreach($services as $k => $v) :?>
+      <div class="a-z-list row">
+        <?php $first_c = strtolower($k[0]); ?>
+        <div class="medium-2 columns">
+          <?php if ($first_c !== $last_c) :?>
+            <?php
+              //make sure the first letter renders
+              ($last_c !== '') ? '' : ''; ?>
+              <span class="letter h1"><?php echo strtoupper($first_c) ?></span>
+            <?php $last_c = $first_c; ?>
         <?php endif; ?>
+      </div>
+        <div class="medium-22 columns">
+          <div data-service="<?php echo implode(' ', $v['terms'] ); ?>">
+            <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
+            <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
+          </div>
+        </div>
+      </div>
+     <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
 
         <?php wp_reset_query(); ?>
       </div>
