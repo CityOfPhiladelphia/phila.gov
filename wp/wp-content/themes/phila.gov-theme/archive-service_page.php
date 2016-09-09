@@ -98,28 +98,28 @@ get_header(); ?>
             </li>
           <?php endforeach; ?>
         </ul>
-    <?php $last_c = '';
-      foreach($services as $k => $v) :?>
-      <div class="a-z-list row">
-        <?php $first_c = strtolower($k[0]); ?>
+<?php foreach($a_z as $a_k => $a_v): ?>
+  <div class="a-z-list row">
+      <?php if( $a_v == true): ?>
         <div class="medium-2 columns">
-          <?php if ($first_c !== $last_c) :?>
+          <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
+        </div>
+      <?php endif; ?>
+      <div class="medium-22 columns">
+        <?php foreach($services as $k => $v) :?>
             <?php
-              //make sure the first letter renders
-              ($last_c !== '') ? '' : ''; ?>
-              <span class="letter h1"><?php echo strtoupper($first_c) ?></span>
-            <?php $last_c = $first_c; ?>
-        <?php endif; ?>
-      </div>
-        <div class="medium-22 columns">
-          <div data-service="<?php echo implode(' ', $v['terms'] ); ?>">
-            <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
-            <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
-          </div>
+              $first_c = strtolower($k[0]);
+              if( $a_k == $first_c && $a_v == true ) : ?>
+                <div data-service="<?php echo implode(' ', $v['terms'] ); ?>">
+                  <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
+                  <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
+                </div>
+            <?php endif; ?>
+          <?php endforeach; ?>
         </div>
       </div>
-     <?php endforeach; ?>
-    </div>
+
+      <?php endforeach; ?>
     <?php endif; ?>
 
         <?php wp_reset_query(); ?>
