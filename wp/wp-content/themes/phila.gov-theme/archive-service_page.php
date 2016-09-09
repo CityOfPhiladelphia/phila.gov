@@ -32,7 +32,7 @@ get_header(); ?>
           </ul>
         </form>
       </div>
-      <div class="medium-16 columns results mbm">
+      <div class="medium-16 columns a-z-list">
       <?php $args = array(
         'post_type'  => 'service_page',
         'posts_per_page'  => -1,
@@ -83,21 +83,22 @@ get_header(); ?>
 
             ?>
           <?php endwhile; ?>
-
+      <nav>
         <ul class="inline-list man pan">
           <?php foreach($a_z as $k => $v): ?>
             <li>
               <?php if( $v == true) : ?>
                 <a href="#<?php echo $k ?>"><?php echo strtoupper($k); ?></a>
               <?php else : ?>
-                <?php echo strtoupper($k);?>
+                <span class="ghost-gray"><?php echo strtoupper($k);?></span>
               <?php endif; ?>
             </li>
           <?php endforeach; ?>
         </ul>
+      </nav>
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true): ?>
-            <div class="row collapse a-z-list">
+            <div class="row collapse">
                 <div id="<?php echo $a_k ?>" class="medium-2 columns">
                   <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
                 </div>
