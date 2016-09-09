@@ -12,8 +12,8 @@ jQuery(document).ready(function($) {
 
       });
     }else{
-      //when all services, uncheck everything else
       $('.result').show();
+
       $('#all-services').prop('checked', true);
     }
   });
