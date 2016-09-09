@@ -33,47 +33,45 @@ get_header(); ?>
         </form>
       </div>
       <div class="medium-16 columns results mbm">
-        <?php $args = array(
-            'post_type'  => 'service_page',
-            'posts_per_page'  => -1,
-            'order' => 'ASC',
-            'orderby' => 'title',
-            'meta_query' => array(
-              array(
-                'key'     => 'phila_template_select',
-                'value'   => 'topic_page',
-                'compare' => 'NOT IN',
-              ),
-            ),
-          );
-          $service_pages = new WP_Query( $args );
+      <?php $args = array(
+        'post_type'  => 'service_page',
+        'posts_per_page'  => -1,
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'meta_query' => array(
+          array(
+            'key'     => 'phila_template_select',
+            'value'   => 'topic_page',
+            'compare' => 'NOT IN',
+          ),
+        ),
+      );
+      $service_pages = new WP_Query( $args ); ?>
+
+      <?php if ( $service_pages->have_posts() ) : ?>
+        <?php
+          $a_z = range('a','z');
+          $a_z = array_fill_keys($a_z, false);
+          $service_title = array();
+          $service_desc = array();
+          $service_link = array();
         ?>
-          <?php if ( $service_pages->have_posts() ) : ?>
 
-            <?php $a_z = range('a','z'); ?>
-            <?php $a_z = array_fill_keys($a_z, false); ?>
-            <?php
-            $service_title = array();
-            $service_desc = array();
-            $service_link = array();
-            //$desc = array();
-              ?>
+        <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
 
-          <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
-
-            <?php
-            $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
-            <?php $page_terms['terms'] = array(); ?>
+          <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
+          <?php $page_terms['terms'] = array();?>
 
             <?php foreach ( $terms as $term ) : ?>
               <?php array_push($page_terms['terms'], $term->slug); ?>
             <?php endforeach; ?>
 
             <?php
-            //overwrite range array with values that exist
-            $a_z[strtolower(substr($post->post_title, 0, 1 ))] = true; ?>
+              //overwrite range array with values that exist
+              $a_z[strtolower(substr($post->post_title, 0, 1 ))] = true; ?>
 
-            <?php $service_title[$post->post_title] = $page_terms;
+            <?php
+            $service_title[$post->post_title] = $page_terms;
             $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
             $link['link'] = get_permalink();
 
@@ -82,13 +80,12 @@ get_header(); ?>
             $service_link[$post->post_title] = $link;
 
             $services = array_merge_recursive($service_title, $service_desc, $service_link);
+
             ?>
           <?php endwhile; ?>
 
         <ul class="inline-list man pan">
-          <?php
-          //spit out list of all letters with associated links
-          foreach($a_z as $k => $v): ?>
+          <?php foreach($a_z as $k => $v): ?>
             <li>
               <?php if( $v == true) : ?>
                 <a href="#"><?php echo strtoupper($k); ?></a>
@@ -98,30 +95,28 @@ get_header(); ?>
             </li>
           <?php endforeach; ?>
         </ul>
-<?php foreach($a_z as $a_k => $a_v): ?>
-  <div class="a-z-list row">
-      <?php if( $a_v == true): ?>
-        <div class="medium-2 columns">
-          <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
-        </div>
-      <?php endif; ?>
-      <div class="medium-22 columns">
-        <?php foreach($services as $k => $v) :?>
-            <?php
-              $first_c = strtolower($k[0]);
-              if( $a_k == $first_c && $a_v == true ) : ?>
-                <div data-service="<?php echo implode(' ', $v['terms'] ); ?>">
-                  <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
-                  <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
-                </div>
-            <?php endif; ?>
+        <?php foreach($a_z as $a_k => $a_v): ?>
+          <div class="a-z-list row">
+          <?php if( $a_v == true): ?>
+            <div class="medium-2 columns">
+              <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
+            </div>
+          <?php endif; ?>
+          <div class="medium-22 columns">
+            <?php foreach($services as $k => $v) :?>
+                <?php
+                  $first_c = strtolower($k[0]);
+                  if( $a_k == $first_c && $a_v == true ) : ?>
+                    <div data-service="<?php echo implode(' ', $v['terms'] ); ?>">
+                      <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
+                      <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
+                    </div>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </div>
+          </div>
           <?php endforeach; ?>
-        </div>
-      </div>
-
-      <?php endforeach; ?>
-    <?php endif; ?>
-
+        <?php endif; ?>
         <?php wp_reset_query(); ?>
       </div>
     </div> <!-- .row -->
