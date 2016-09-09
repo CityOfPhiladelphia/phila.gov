@@ -88,7 +88,7 @@ get_header(); ?>
           <?php foreach($a_z as $k => $v): ?>
             <li>
               <?php if( $v == true) : ?>
-                <a href="#"><?php echo strtoupper($k); ?></a>
+                <a href="#<?php echo $k ?>"><?php echo strtoupper($k); ?></a>
               <?php else : ?>
                 <?php echo strtoupper($k);?>
               <?php endif; ?>
@@ -98,7 +98,7 @@ get_header(); ?>
         <?php foreach($a_z as $a_k => $a_v): ?>
           <div class="a-z-list row">
           <?php if( $a_v == true): ?>
-            <div class="medium-2 columns">
+            <div id="<?php echo $a_k ?>" class="medium-2 columns">
               <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
             </div>
           <?php endif; ?>
