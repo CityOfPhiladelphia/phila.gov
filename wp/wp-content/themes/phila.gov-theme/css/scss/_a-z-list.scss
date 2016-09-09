@@ -1,0 +1,7 @@
+.a-z-list{
+  border-top: 1px solid $dark-gray;
+  margin-top:3rem;
+  .letter{
+    font-size: $large-font-base / 1.75;
+  }
+}
