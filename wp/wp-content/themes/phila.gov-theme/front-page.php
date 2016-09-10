@@ -85,6 +85,12 @@ get_header(); ?>
         </nav>
       </div>
     </div>
+    
+    <?php $args = array( 'post_type' => 'service_updates' ); ?>
+    <?php $service_updates_loop = new WP_Query( $args ); ?>
+    <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+    <?php wp_reset_query();?>
+
     <div class="news-row row expanded">
       <div class="columns">
         <div class="row">
