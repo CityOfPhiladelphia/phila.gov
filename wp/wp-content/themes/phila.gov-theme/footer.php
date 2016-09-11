@@ -7,12 +7,74 @@
  * @package phila-gov
  */
 ?>
-      <?php get_template_part( 'partials/content', 'feedback' ); ?>
-
     </div><!-- #content -->
  </div><!-- #page -->
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
+  <section class="philly311">
+    <div class="row">
+      <div class="columns">
+        <h2>Philly311</h2>
+        <p><a href="/" class="external">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 3-1-1 or tweet @philly311 for a quick response.</p>
+      </div>
+    </div>
+    <div class="row pal">
+      <div class="small-24 medium-8 columns plm prxl">
+        <h3>Interact with 311 online</h3>
+
+        <a href="#/" class="button icon clearfix">
+          <div class="valign">
+            <i class="fa fa-bullhorn valign-cell"></i>
+            <div class="button-label valign-cell">Report a problem</div>
+          </div>
+        </a>
+
+        <a href="#/" class="button icon clearfix">
+          <div class="valign">
+            <i class="fa fa-question valign-cell"></i>
+            <div class="button-label valign-cell">Ask a question</div>
+          </div>
+        </a>
+
+        <a href="#/" class="button icon clearfix">
+          <div class="valign">
+            <i class="fa fa-check-square-o valign-cell"></i>
+            <div class="button-label valign-cell">Track a request</div>
+          </div>
+        </a>
+
+      </div>
+      <div class="medium-16 columns trending-requests plxl">
+        <h3>Trending Requests</h3>
+          <ul class="columns-2">
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+            <li>
+              <a href="#" >Sample textarea</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </section>
   <div class="contact">
     <?php echo phila_get_dept_contact_blocks(); ?>
     <?php get_template_part( 'partials/content', 'modified' ) ?>

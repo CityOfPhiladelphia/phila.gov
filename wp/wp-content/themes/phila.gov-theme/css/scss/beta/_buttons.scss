@@ -1,0 +1,61 @@
+/*
+ *
+ * Buttons
+ *
+ *
+*/
+
+.button {
+  background: none;
+  margin: $spacing-small 0;
+
+  &.icon {
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    padding: 0;
+
+    .fa {
+      background: #444444;
+      color:#FFFFFF;
+      margin-right: .25rem;
+      padding: .4em .5em .5em .4em;
+      font-size: 1.7em;
+      max-height: 40px;
+      vertical-align: sub;
+      position: initial;
+      width: 2.85714rem;
+    }
+
+  }
+
+  .button-label {
+    background-color: $bike-share-blue;
+    height: 40px;
+    padding-right: 1.42857rem;
+    padding-left: 1.42857rem;
+  }
+}
+
+a.button:link, a.button:visited {
+    color: #444444;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+a.button:hover, a.button:active {
+    background: none;
+    .button-label {
+        color: $white;
+        background: $dark-gray;
+        transition: background-color 300ms ease-in-out;
+    }
+}
+
+footer {
+  a.button:link, a.button:visited {
+      color: #444444;
+      font-weight: 600;
+      font-size: 1rem;
+  }
+}
