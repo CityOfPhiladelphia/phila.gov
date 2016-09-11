@@ -1,3 +1,9 @@
+/*
+ *
+ * Home
+ *
+ *
+*/
 .neighborhood-resources {
   background:url("//alpha.phila.gov/media/20160526164514/calendar-bg.jpg") no-repeat center top;
   background-size: cover;
@@ -48,50 +54,4 @@
       border-top: 0px solid $bike-share-blue;
     }
   }
-}
-
-
-.button {
-background-color: $bike-share-blue;
-}
-
-a.button:link, a.button:visited {
-    color: #444444;
-    font-weight: 600;
-}
-
-a.button:hover {
-    color: #fff;
-}
-
-.button.icon {
-    display: inline-block;
-    position: relative;
-    height: 40px;
-    padding: 1rem 1.42857rem 0 4.28571rem;
-}
-
-.button.icon .fa {
-    color:#FFFFFF;
-    padding: .4em .5em .5em .4em;
-    font-size: 1.7em;
-    max-height: 40px;
-    vertical-align: sub;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2.85714rem;
-}
-
-.button.icon .fa {
-    background: #444444;
-    outline: .25rem solid #ffffff;
-    padding: .4em .5em .5em .4em;
-    font-size: 1.7em;
-    max-height: 40px;
-    vertical-align: sub;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2.85714rem;
 }

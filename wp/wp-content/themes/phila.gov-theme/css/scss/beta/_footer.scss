@@ -1,0 +1,92 @@
+/*
+ *
+ * Footers
+ *
+ *
+*/
+footer{
+
+  .philly311 {
+    background: $ghost-gray;
+    color: $dark-gray;
+
+    .button-label {
+      width: 100%;
+    }
+    a:link, a:visited {
+         color:$ben-franklin-blue;
+         font-weight:normal;
+       }
+    a:hover, a:active{
+     color:$dark-gray;
+    }
+    .columns {
+      border-right: 1px solid $sidewalk;
+
+      &:last-of-type {
+          border-right:0;
+      }
+    }
+  }
+
+  .links {
+    .contact{
+      background:$ghost-gray;
+      color:$dark-gray;
+      aside{
+        font-size: 0.85rem;
+
+        .content{
+          padding: 1rem;
+        }
+      }
+      aside{
+        border-bottom: 1px solid rgba(68,68,68, 0.5);
+      }
+
+      @media only screen and (min-width: 40em) {
+        aside {
+          border-bottom: 0;
+        }
+        aside:not(:last-child) {
+          border-right: 1px solid rgba(68,68,68, 0.5);
+        }
+      }
+      .logo{
+        padding:1rem 0;
+      }
+      .vcard,
+      .vcard-label,
+      .tel a:link,
+      .email a:link{
+        color:$dark-gray;
+        font-weight: normal;
+        text-transform: none;
+        margin: 1em 0;
+        .tel .vcard-label,
+        .fax .vcard-label,
+        .email .vcard-label{
+          font-weight: bold;
+        }
+        .email a:link{
+          color: $ben-franklin-blue;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .trending-requests {
+    a:link {
+      font-size: 1rem;
+    }
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+
+    li {
+      padding: $spacing-small 0;
+    }
+  }
+}
