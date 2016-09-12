@@ -8,7 +8,7 @@ footer{
   .philly311 {
     background: $ghost-gray;
     color: $dark-gray;
-    
+
     .button-label {
       width: 100%;
     }
@@ -18,6 +18,17 @@ footer{
        }
     a:hover, a:active{
      color:$dark-gray;
+    }
+    .interact-311 {
+      padding-right: $spacing-large;
+
+      @media only screen and (min-width: 40em) {
+        padding-right: $spacing-medium;
+      }
+      @media only screen and (min-width: 64em) {
+        padding-right: $spacing-large;
+      }
+
     }
   }
 
@@ -83,7 +94,8 @@ footer{
   }
   &.site-footer {
     .fat {
-      padding: $spacing-medium;
+      padding: $spacing-medium 0;
+      background: $dark-gray;
       h1, h2, h3, h4, h5, h6 {
         border-bottom: 0;
         padding: 0;
@@ -91,6 +103,10 @@ footer{
         text-transform: none;
       }
     }
+    a:hover, a:active{
+     color: $bike-share-blue;
+    }
+
     // TODO: move to utils
     // Inline list
     ul.inline-list {
