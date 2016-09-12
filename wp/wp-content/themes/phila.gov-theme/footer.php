@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="row pvn pvl-mu">
-      <div class="small-24 medium-8 columns phl prxl-mu pvm pvn-mu bdr-sidewalk vr-right-mu">
-        <h3>Interact with 311 online</h3>
+      <div class="small-24 medium-8 columns phl prxl-mu pvm pvn-mu sidewalk bdr-right-mu">
+        <h3 class="dark-gray">Interact with 311 online</h3>
 
         <a href="#/" class="button icon clearfix">
           <div class="valign">
@@ -45,7 +45,7 @@
 
       </div>
       <div class="medium-16 columns trending-requests phl plxl-mu pvm pvn-mu">
-        <h3>Trending Requests</h3>
+        <h3 class="dark-gray">Trending Requests</h3>
         <!-- TODO: Begin pulling these in from 311 -->
           <ul class="columns-2-mu">
             <li>
@@ -82,7 +82,7 @@
   </div>
   <section class="fat pvs">
     <div class="row">
-      <div class="medium-8 columns pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm vr-right-mu">
+      <div class="medium-8 columns pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm">Take action in your community</h1>
         <nav class="take-action">
           <ul>
@@ -96,7 +96,7 @@
           </ul>
         </nav>
       </div>
-      <div class="medium-8 columns pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm vr-right-mu">
+      <div class="medium-8 columns pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm"> Know your City government</h1>
         <nav class="take-action">
           <ul>
