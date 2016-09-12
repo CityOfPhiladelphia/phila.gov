@@ -9,26 +9,31 @@
   border-color:$dark-gray;
 }
 
-
 .bdr-bottom-sm {
   border-bottom: 1px;
   border-bottom-style: solid;
-
   @media screen and (min-width: 40em) {
     border-bottom-width: 0px;
   }
 }
 
 // Vertical rules
-.vr-right{
+.bdr-right{
   border-right-width: 1px;
   border-right-style: solid;
 }
 
-.vr-right-mu {
+.bdr-right-mu {
   border-right: 0;
   @media screen and (min-width: 40em) {
     border-right-width: 1px;
+    border-right-style: solid;
+  }
+}
+
+.nbdr-right-mu {
+  @media screen and (min-width: 40em) {
+    border-right-width: 0px;
     border-right-style: solid;
   }
 }

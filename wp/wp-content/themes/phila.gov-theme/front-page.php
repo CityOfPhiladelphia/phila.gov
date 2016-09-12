@@ -133,7 +133,7 @@ get_header(); ?>
 
           <div class="row phl equal-height">
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm ">
                 <a href="http://www.freelibrary.org/" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -146,7 +146,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-bottom-sm">
                 <a href="http://gsg.phila.gov/map#id=e7d139e404dd4fdaac4ae0bbaf637f79" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -159,7 +159,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
                 <a href="http://www.phila.gov/parksandrecreation/findafacility/" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -172,7 +172,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-bottom-sm">
                 <a href="https://www.phillykeyspots.org/keyspot-finder" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -185,7 +185,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
                 <a href="http://gsg.phila.gov/map#id=aa5f6f59d35c45e9bc089b400694f43a" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -198,7 +198,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-bottom-sm">
                 <a href="/city-health-centers/" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -211,7 +211,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu">
                 <a href="http://www.phila.gov/fire/fac_and_equip/facil_firehouses.html" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
@@ -224,7 +224,7 @@ get_header(); ?>
                 </a>
               </div>
 
-              <div class="medium-6 columns mvl">
+              <div class="small-12 medium-6 columns mvl-mu sidewalk">
                 <a href="https://www.phillypolice.com/districts/" class="action-panel">
                   <div class="panel equal" data-equalizer-watch="" >
                     <header class="">
