@@ -82,7 +82,7 @@
   </div>
   <section class="fat pvs">
     <div class="row phm">
-      <div class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+      <div class="medium-8 columns phm pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm">Take action in your community</h1>
         <nav class="take-action">
           <ul>
