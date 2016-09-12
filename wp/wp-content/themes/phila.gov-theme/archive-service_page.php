@@ -86,7 +86,7 @@ get_header(); ?>
       <nav>
         <ul class="inline-list man pan">
           <?php foreach($a_z as $k => $v): ?>
-            <li>
+            <li data-alphabet=<?php echo $k ?>>
               <?php if( $v == true) : ?>
                 <a href="#<?php echo $k ?>"><?php echo strtoupper($k); ?></a>
               <?php else : ?>
@@ -98,7 +98,7 @@ get_header(); ?>
       </nav>
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true): ?>
-            <div class="row collapse">
+            <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
                 <div id="<?php echo $a_k ?>" class="medium-2 columns">
                   <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
                 </div>
