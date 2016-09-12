@@ -44,3 +44,17 @@
     column-gap: 1.42857rem;
   }
 }
+
+
+.break-after {
+  &:after {
+    white-space: pre;
+    content: '\A';
+  }
+}
+.break-before {
+  &:before {
+    white-space: pre;
+    content: '\A';
+  }
+}
