@@ -4,6 +4,22 @@
  *
  *
 */
+.home{
+  .hero-content {
+    margin-top:200px;
+    section {
+      background:none;
+    }
+    .call-to-action {
+      a .fa, p {
+        color: $ben-franklin-blue;
+      }
+      p {
+        margin:0;
+      }
+    }
+  }
+}
 .neighborhood-resources {
   .row {
     .panel {

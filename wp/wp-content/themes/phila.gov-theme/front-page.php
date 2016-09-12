@@ -11,78 +11,42 @@ get_header(); ?>
   <main id="main" class="site-main home">
     <div class="hero-content">
       <div class="row">
-        <section class="medium-18 small-centered columns">
-          <header>
-            <h1><?php printf( __( 'What can we help you find?') ) ?></h1>
-          </header>
-          <?php get_search_form(); ?>
-          <div class="row call-to-action">
-            <div class="small-6 columns">
-              <a href="http://iframe.publicstuff.com/#?client_id=242">
-                <span class="fa-stack fa-3x" aria-hidden="true">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-stack-1x fa-inverse"><span class="h6">311</span></i>
-                </span>
-                <span class="show-for-sr">311</span>
-                  <p>Report a Problem</p>
+        <section class="medium-13 small-centered columns">
+          <div class="row collapse call-to-action bg-white pvs">
+            <div class="small-6 phs columns">
+              <a href="" class="phs">
+                <div class="pam bg-ben-franklin-light">
+                  <i class="fa fa-trash fa-4x"></i>
+                  <p>Find <span class="break-before">trash day</span></p>
+                </div>
               </a>
               </div>
               <div class="small-6 columns">
-                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/">
-                 <span class="fa-stack fa-3x" aria-hidden="true">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
-                  </span>
-                  <p>Pay a Bill</p>
+                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="prs">
+                  <div class="pam bg-ben-franklin-light">
+                    <i class="fa fa-credit-card fa-4x"></i>
+                    <p>Pay <span class="break-before">a bill</span></p>
+                  </div>
                 </a>
               </div>
               <div class="small-6 columns">
-                <a href="http://www.phila.gov/personnel/JobOpps.html">
-                  <span class="fa-stack fa-3x" aria-hidden="true">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
-                  </span>
-                  <p>Find a Job</p>
+                <a href="http://www.phila.gov/personnel/JobOpps.html" class="prs">
+                  <div class="pam bg-ben-franklin-light">
+                    <i class="fa fa-briefcase fa-4x"></i>
+                    <p>Explore <span class="break-before">jobs</span></p>
+                  </div>
                 </a>
               </div>
-              <div class="small-6 columns">
-                <a href="/property">
-                  <span class="fa-stack fa-3x" aria-hidden="true">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-home fa-stack-1x fa-inverse"></i>
-                  </span>
-                  <p>Property Search</p>
+              <div class="small-6 columns ">
+                <a href="/property" class="prs">
+                  <div class="pam bg-ben-franklin-light">
+                    <i class="fa fa-home fa-4x"></i>
+                    <p>Search for a <span class="break-before">property</span></p>
+                  </div>
                 </a>
             </div>
           </div><!--#popular -->
-          <div class="row expanded topic-main-nav">
-          <?php
-             $args = array(
-              'orderby' => 'name',
-              'fields'=> 'all',
-              'parent' => 0,
-              'hide_empty'=> true
-             );
-            $terms = get_terms( 'topics', $args );
-              if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-                foreach ( $terms as $term ) {
-                  echo '<a href="/browse/' . $term->slug .  '">' . $term->name . '</a>';
-                 }
-              }
-            ?>
-          </div>
         </section>
-      </div>
-    </div>
-    <div id="site-nav" class="row expanded">
-      <div class="small-24 columns links">
-        <nav>
-          <ul class="menu">
-            <li><a href="/departments"><i class="fa fa-sitemap"  aria-hidden="true"></i> <?php printf( __('City Government Directory', 'phila-gov') ); ?></a></li>
-            <li><a href="/departments/mayor"><i class="fa fa-university"  aria-hidden="true"></i> <?php printf( __('Office of the Mayor', 'phila-gov') ); ?></a></li>
-            <li><a href="http://www.phila.gov/map" class="external"><i class="fa fa-map-marker"  aria-hidden="true"></i> <?php printf( __('Maps', 'phila-gov') ); ?></a></li>
-          </ul>
-        </nav>
       </div>
     </div>
 
