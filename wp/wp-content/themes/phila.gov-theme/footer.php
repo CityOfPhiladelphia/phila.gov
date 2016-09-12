@@ -81,8 +81,8 @@
     <?php get_template_part( 'partials/content', 'modified' ) ?>
   </div>
   <section class="fat pvs">
-    <div class="row">
-      <div class="medium-8 columns phl pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+    <div class="row phm">
+      <div class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm">Take action in your community</h1>
         <nav class="take-action">
           <ul>
@@ -96,7 +96,7 @@
           </ul>
         </nav>
       </div>
-      <div class="medium-8 columns phl pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+      <div class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm"> Know your City government</h1>
         <nav class="take-action">
           <ul>
@@ -110,7 +110,7 @@
           </ul>
         </nav>
       </div>
-      <div class="medium-8 columns phl pll-mu pvm pvn-mu">
+      <div class="medium-8 columns phm pll-mu pvm pvn-mu">
         <h1 class="mtn mbm">Connect with City government</h1>
         <nav class="city-social">
           <ul class="inline-list">
