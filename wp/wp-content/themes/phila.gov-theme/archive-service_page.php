@@ -25,7 +25,7 @@ get_header(); ?>
         );?>
         <form id="service_filter">
           <ul class="no-bullet mam pan">
-            <li><input type="checkbox" name="all-services" value="all-services" id="all-services" checked="checked"><label for="all-services">All Services</label></li>
+            <li><input type="checkbox" name="all" value="all" id="all" checked="checked"><label for="all">All Services</label></li>
             <?php foreach ( $terms as $term ) : ?>
               <li><input type="checkbox" name="<?php echo $term->slug ?>" value="<?php echo $term->slug ?>" id="<?php echo $term->slug ?>"><label for="<?php echo $term->slug ?>"><?php echo $term->name ?></label></li>
             <?php endforeach; ?>
@@ -108,7 +108,7 @@ get_header(); ?>
               <?php
                 $first_c = strtolower($k[0]);
                 if( $a_k == $first_c && $a_v == true ) : ?>
-                  <div class="result mvm" data-service="<?php echo implode(' ', $v['terms'] ); ?>">
+                  <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
                     <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
                     <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
                   </div>
