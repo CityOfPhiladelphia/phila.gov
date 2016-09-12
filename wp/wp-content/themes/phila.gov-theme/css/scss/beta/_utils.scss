@@ -1,0 +1,41 @@
+// Border colors
+.bdr-ghost-gray {
+  border-color:$ghost-gray;
+}
+.bdr-sidewalk {
+  border-color:$sidewalk;
+}
+.bdr-dark-gray {
+  border-color:$dark-gray;
+}
+
+
+.bdr-bottom-sm {
+  border-bottom: 1px;
+  border-bottom-style: solid;
+
+  @media screen and (min-width: 40em) {
+    border-bottom-width: 0px;
+  }
+}
+
+// Vertical rules
+.vr-right{
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.vr-right-mu {
+  border-right: 0;
+  @media screen and (min-width: 40em) {
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+}
+
+.columns-2-mu {
+  @media screen and (min-width: 40em) {
+    column-count: 2;
+    column-gap: 1.42857rem;
+  }
+}
