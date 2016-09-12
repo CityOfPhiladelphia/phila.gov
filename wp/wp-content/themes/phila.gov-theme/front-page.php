@@ -131,7 +131,7 @@ get_header(); ?>
       </div>
       <div class="neighborhood-resources row expanded">
 
-          <div class="row phl equal-height">
+          <div class="row phl mbs mbn-mu equal-height">
 
               <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm ">
                 <a href="http://www.freelibrary.org/" class="action-panel">
@@ -239,10 +239,10 @@ get_header(); ?>
 
           </div>
       </div>
-      <div class="feedback">
+      <div class="feedback phm phn-mu">
         <div class="row expanded" data-toggle="feedback">
           <div class="column call-to-action pas center">
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i> What should we add to this section? <span>Tell us</span>.
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i> What should we add to this section? <span class="nowrap">Tell us</span>.
           </div>
         </div>
         <div class="row expanded feedback-form" data-type="feedback-form" style="display:none;">

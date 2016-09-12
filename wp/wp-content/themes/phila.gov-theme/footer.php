@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="row pvn pvl-mu">
-      <div class="small-24 medium-8 columns phl prxl-mu pvm pvn-mu sidewalk bdr-right-mu">
+      <div class="small-24 medium-8 columns pll pvm pvn-mu sidewalk bdr-right-mu interact-311">
         <h3 class="dark-gray">Interact with 311 online</h3>
 
         <a href="#/" class="button icon clearfix">
@@ -82,7 +82,7 @@
   </div>
   <section class="fat pvs">
     <div class="row">
-      <div class="medium-8 columns pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+      <div class="medium-8 columns phl pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm">Take action in your community</h1>
         <nav class="take-action">
           <ul>
@@ -96,7 +96,7 @@
           </ul>
         </nav>
       </div>
-      <div class="medium-8 columns pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+      <div class="medium-8 columns phl pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
         <h1 class="mtn mbm"> Know your City government</h1>
         <nav class="take-action">
           <ul>
@@ -110,7 +110,7 @@
           </ul>
         </nav>
       </div>
-      <div class="medium-8 columns pll-mu pvm pvn-mu">
+      <div class="medium-8 columns phl pll-mu pvm pvn-mu">
         <h1 class="mtn mbm">Connect with City government</h1>
         <nav class="city-social">
           <ul class="inline-list">
