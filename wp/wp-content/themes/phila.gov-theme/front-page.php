@@ -10,19 +10,19 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main home">
     <div class="hero-content">
-      <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/beta_homepage_CoverPhoto_light.jpg" alt="" width="" height="" />
-      <div>
-        <div class="row mvxl">
-          <div class="medium-12 small-centered columns">
-            <span class="h1 break-after">Beta.phila.gov</span> <span class="h4">is a work-in-progress.</span>
-            <p> We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <i class="fa fa-lightbulb-o fa-lg"></i> feedback links. </p>
+      <div class="hero-wrap">
+        <div class="mask" style=""></div>
+        <div class="row expanded pvl pvxl-mu">
+          <div class="medium-12 small-centered columns beta-message">
+            <span class="h1 break-after">Beta.phila.gov</span> <span class="h2 sub-title">is a work-in-progress.</span>
+            <p class="mvm"> We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <i class="fa fa-lightbulb-o fa-lg"></i> feedback links. </p>
           </div>
         </div>
         <div class="row common-requests">
           <section class="small-24 medium-15 large-13 small-centered columns">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
               <div class="small-12 medium-6 columns">
-                <a href="" class="mrs equal">
+                <a href="" class="mrs mbs equal">
                   <div class="pam cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
@@ -36,7 +36,7 @@ get_header(); ?>
                 </a>
                 </div>
                 <div class="small-12 medium-6 columns">
-                  <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs equal">
+                  <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal">
                     <div class="pam cta-block clearfix">
                       <div class="valign ">
                         <div class="valign-cell">
@@ -50,7 +50,7 @@ get_header(); ?>
                   </a>
                 </div>
                 <div class="small-12 medium-6 columns">
-                  <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs equal">
+                  <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs mbs equal">
                     <div class="pam cta-block clearfix">
                       <div class="valign ">
                         <div class="valign-cell">
@@ -64,7 +64,7 @@ get_header(); ?>
                   </a>
                 </div>
                 <div class="small-12 medium-6 columns">
-                  <a href="/property" class="mrs equal">
+                  <a href="/property" class="mrs mbs equal">
                     <div class="pam cta-block clearfix">
                       <div class="valign ">
                         <div class="valign-cell">
