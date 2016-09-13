@@ -53,6 +53,7 @@ jQuery(document).ready(function($) {
 
     }else{
       $('#all').prop('checked', false);
+
     }
 
     if( $('#service_filter :checkbox:checked').length > 0 ){
@@ -73,6 +74,7 @@ jQuery(document).ready(function($) {
       });
     }else{
       $('#all').prop('checked', true);
+      $('.result').show().removeClass('is-hidden');
     }
   });
 
