@@ -101,8 +101,8 @@ get_header(); ?>
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true): ?>
             <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
-                <div id="<?php echo $a_k ?>" class="medium-2 columns">
-                  <span class="letter h1"><?php echo strtoupper($a_k); ?></span>
+                <div class="medium-2 columns">
+                  <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
                 </div>
                 <div class="medium-21 columns">
             <?php endif; ?>
@@ -112,7 +112,7 @@ get_header(); ?>
                 if( $a_k == $first_c && $a_v == true ) : ?>
                   <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
                     <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
-                    <p class="hide-for-small-only"><?php echo $v['desc'] ?></p>
+                    <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
                   </div>
                 <?php endif; ?>
               <?php endforeach; ?>
