@@ -473,6 +473,8 @@ function phila_breadcrumbs() {
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
+      echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+
       if( $post->post_parent ){
 
         //$anc = array_reverse(get_post_ancestors( $post->ID ));
