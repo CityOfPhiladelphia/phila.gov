@@ -52,9 +52,26 @@
     content: '\A';
   }
 }
+.break-after-mu {
+  @media screen and (min-width: 40em) {
+    &:after {
+      white-space: pre;
+      content: '\A';
+    }
+  }
+}
+
 .break-before {
   &:before {
     white-space: pre;
     content: '\A';
+  }
+}
+.break-before-mu {
+  @media screen and (min-width: 40em) {
+    &:before {
+      white-space: pre;
+      content: '\A';
+    }
   }
 }
