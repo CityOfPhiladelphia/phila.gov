@@ -22,14 +22,18 @@ jQuery(document).ready(function($) {
       }
     });
 
-      $('.a-z-list nav li').each( function ( i, v ) {
-        $(hiddenLetter).each(function( index, value) {
-          if ($(v).data('alphabet') == value) {
-            $(v).addClass('ghost-gray is-disabled');
+      $('.a-z-list nav li a').each( function ( i, value ) {
+        var el = $(value);
+        console.log(el);
+          if ( el.data('alphabet') in hiddenLetter ) {
+            $(this).attr('disabled', 'disabled');
+            $(this).attr('aria-disabled', true);
+          }else{
+            $(this).removeAttr('disabled');
+            $(this).attr('aria-disabled', false);
           }
         });
 
-    });
 
   });
 
@@ -72,36 +76,3 @@ jQuery(document).ready(function($) {
   });
 
 });
-
-/*
-    var check = $(this);
-    if (check.prop('checked')) {
-      serviceType[check.attr('name')] = check.val();
-    } else {
-      delete serviceType[check.attr('name')];
-    }
-
-
-    $.each(serviceType, function (index, value){
-      console.log(value);
-      if (value != 'all'){
-        $('#all').prop('checked', false);
-
-        $('.result').each(function( ){
-          if ( $(this).data('service') != value ){
-            $(this).hide().addClass('is-hidden');
-          }else{
-            $(this).show().removeClass('is-hidden');
-          }
-        });
-
-      }else if( value == 'all' ){
-        $('#service_filter input:checkbox').not(this).attr('checked', false);
-        $('.result').show().removeClass('is-hidden');
-        $('#all').prop('checked', true);
-        parents.show();
-      }
-
-    });
-
-*/
