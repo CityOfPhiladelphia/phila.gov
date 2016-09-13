@@ -38,12 +38,14 @@ jQuery(document).ready(function($) {
 
   //Watch checkboxes
   $("#service_filter :checkbox").click(function() {
+
     $('.result').hide().addClass('is-hidden');
 
     if ( $(this).val() == 'all' ){
 
       $('#service_filter :checkbox').each(function(){
         $(this).prop('checked', false);
+
       });
 
       parents.show();
@@ -53,7 +55,6 @@ jQuery(document).ready(function($) {
 
     }else{
       $('#all').prop('checked', false);
-
     }
 
     if( $('#service_filter :checkbox:checked').length > 0 ){
@@ -69,12 +70,15 @@ jQuery(document).ready(function($) {
                 return $.inArray( serviceType, arr ) != -1;
               }).show().removeClass('is-hidden');
           });
-
-        $('.a-z-group .result').trigger('update');
+          $('.a-z-group .result').trigger('update');
       });
     }else{
+
       $('#all').prop('checked', true);
       $('.result').show().removeClass('is-hidden');
+      parents.show();
+      $('.a-z-group .result').trigger('update');
+
     }
   });
 
