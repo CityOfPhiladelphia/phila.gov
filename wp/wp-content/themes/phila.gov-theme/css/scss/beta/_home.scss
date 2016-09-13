@@ -6,20 +6,50 @@
 */
 .home{
   .hero-content {
-    margin-top:200px;
+    margin-top:0;
+    img {
+
+    }
+    .common-requests {
+      // position: relative;
+      // top: -80px;
+    }
     section {
       background:none;
     }
     .call-to-action {
+      margin: 0;
+      
       a .fa, p {
         color: $ben-franklin-blue;
       }
+      a .fa {
+        font-size: 3rem;
+        line-height: 4rem;
+        @media only screen and (min-width: 64em) {
+          font-size: 4rem;
+        }
+      }
+      a .fa-home {
+        font-size: 4rem;
+        line-height: 4rem;
+        @media only screen and (min-width: 64em) {
+          font-size: 5rem;
+        }
+      }
       p {
         margin:0;
+        font-size: .8rem;
+      }
+      a {
+        background-color: #daedfe;
+      }
+      .cta-block {
       }
     }
   }
 }
+
 .neighborhood-resources {
   .row {
     .panel {
