@@ -16,7 +16,7 @@ get_header(); ?>
     </div>
     <div class="row">
       <div class="medium-7 columns filter">
-        <?php printf(__('<h2 class="h4 man">Filter by Service Categories</h2>', 'phila-gov') ); ?>
+        <?php printf(__('<h2 class="h4 mtn">Filter by Service Categories</h2>', 'phila-gov') ); ?>
         <?php $terms = get_terms(
           array(
             'taxonomy' => 'service_type',
@@ -84,7 +84,7 @@ get_header(); ?>
             ?>
           <?php endwhile; ?>
       <nav>
-        <ul class="inline-list man pan">
+        <ul class="inline-list mbm pan mln h4">
           <?php foreach($a_z as $k => $v): ?>
             <?php //TODO: handle special characters and numbers in a better way ?>
             <?php $k_plain = preg_replace('/([^A-Za-z\-])/', '', $k);?>
