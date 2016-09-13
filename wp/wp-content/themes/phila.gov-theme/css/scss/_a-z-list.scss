@@ -4,13 +4,11 @@
     font-family: 'Montserrat';
     text-align: center;
     ul{
-      margin:0 auto;
 
       li{
-        width:20px;
+        width:21px;
 
         a:link, a:visited{
-
           font-weight: normal;
         }
       }
@@ -20,13 +18,41 @@
     border-top: 1px solid $dark-gray;
     margin-top:2rem;
 
-  .letter{
-    font-size: $large-font-base / 1.75;
+    &:first-of-type{
+      margin-top:0;
+    }
+
+    .letter{
+      font-size: $large-font-base / 1.75;
     }
   }
 
   a[disabled] {
     pointer-events: none;
     color:$ghost-gray;
+  }
+}
+
+.directory{
+
+  .filter{
+    //TODO: correct the base style that is providing the gray bg & padding
+    background:$white;
+    padding-top:0;
+
+    li{
+      padding:$spacing-small 0;
+      border-top:1px solid $ghost-gray;
+
+      input[type="checkbox"]{
+        margin:0;
+        cursor: pointer;
+      }
+      label{
+        color: $ben-franklin-blue;
+        font-weight:bold;
+        cursor: pointer;
+      }
+    }
   }
 }
