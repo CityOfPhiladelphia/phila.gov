@@ -7,6 +7,8 @@
 .home{
   .hero-content {
     margin-top:0;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+
     @media only screen and (min-width: 40em) {
       background: url('../img/beta_homepage_CoverPhoto_light.jpg');
       background-size: cover;
@@ -17,14 +19,20 @@
     }
     .beta-message {
       p {
-          font-weight: 700;
+          font-weight: 400;
       }
       .h1 {
-        font-size: 3.5rem;
-        line-height: 1
+        font-size: 2.5rem;
+        line-height: 1;
+        @media only screen and (min-width: 40em) {
+          font-size: 3.5rem;
+        }
       }
       .sub-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 2rem;
+        }
       }
     }
     .mask {

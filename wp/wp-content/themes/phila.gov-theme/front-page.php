@@ -12,7 +12,7 @@ get_header(); ?>
     <div class="hero-content">
       <div class="hero-wrap">
         <div class="mask" style=""></div>
-        <div class="row expanded pvl pvxl-mu">
+        <div class="row expanded ptl pbs pvxl-mu">
           <div class="medium-12 small-centered columns beta-message">
             <span class="h1 break-after">Beta.phila.gov</span> <span class="h2 sub-title">is a work-in-progress.</span>
             <p class="mvm"> We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <i class="fa fa-lightbulb-o fa-lg"></i> feedback links. </p>
