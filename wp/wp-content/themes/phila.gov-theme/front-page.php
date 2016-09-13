@@ -10,43 +10,76 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main home">
     <div class="hero-content">
-      <div class="row">
-        <section class="medium-13 small-centered columns">
-          <div class="row collapse call-to-action bg-white pvs">
-            <div class="small-6 phs columns">
-              <a href="" class="phs">
-                <div class="pam bg-ben-franklin-light">
-                  <i class="fa fa-trash fa-4x"></i>
-                  <p>Find <span class="break-before">trash day</span></p>
+      <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/beta_homepage_CoverPhoto_light.jpg" alt="" width="" height="" />
+      <div>
+        <div class="row mvxl">
+          <div class="medium-12 small-centered columns">
+            <span class="h1 break-after">Beta.phila.gov</span> <span class="h4">is a work-in-progress.</span>
+            <p> We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <i class="fa fa-lightbulb-o fa-lg"></i> feedback links. </p>
+          </div>
+        </div>
+        <div class="row common-requests">
+          <section class="small-24 medium-15 large-13 small-centered columns">
+            <div class="row collapse call-to-action bg-white pvs pls equal-height">
+              <div class="small-12 medium-6 columns">
+                <a href="" class="mrs equal">
+                  <div class="pam cta-block clearfix">
+                    <div class="valign">
+                      <div class="valign-cell">
+                        <i class="fa fa-trash fa-4x"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="h6">Find<span class="break-before"> trash day</span></p>
+                    </div>
+                  </div>
+                </a>
                 </div>
-              </a>
+                <div class="small-12 medium-6 columns">
+                  <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs equal">
+                    <div class="pam cta-block clearfix">
+                      <div class="valign ">
+                        <div class="valign-cell">
+                          <i class="fa fa-credit-card fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Pay<span class="break-before"> a bill</span></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="small-12 medium-6 columns">
+                  <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs equal">
+                    <div class="pam cta-block clearfix">
+                      <div class="valign ">
+                        <div class="valign-cell">
+                          <i class="fa fa-briefcase fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Explore<span class="break-before"> City jobs</span></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="small-12 medium-6 columns">
+                  <a href="/property" class="mrs equal">
+                    <div class="pam cta-block clearfix">
+                      <div class="valign ">
+                        <div class="valign-cell">
+                          <i class="fa fa-home fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Search for a<span class="break-before"> Property</span></p>
+                      </div>
+                    </div>
+                  </a>
               </div>
-              <div class="small-6 columns">
-                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="prs">
-                  <div class="pam bg-ben-franklin-light">
-                    <i class="fa fa-credit-card fa-4x"></i>
-                    <p>Pay <span class="break-before">a bill</span></p>
-                  </div>
-                </a>
-              </div>
-              <div class="small-6 columns">
-                <a href="http://www.phila.gov/personnel/JobOpps.html" class="prs">
-                  <div class="pam bg-ben-franklin-light">
-                    <i class="fa fa-briefcase fa-4x"></i>
-                    <p>Explore <span class="break-before">jobs</span></p>
-                  </div>
-                </a>
-              </div>
-              <div class="small-6 columns ">
-                <a href="/property" class="prs">
-                  <div class="pam bg-ben-franklin-light">
-                    <i class="fa fa-home fa-4x"></i>
-                    <p>Search for a <span class="break-before">property</span></p>
-                  </div>
-                </a>
-            </div>
-          </div><!--#popular -->
-        </section>
+            </div><!--#popular -->
+          </section>
+        </div>
       </div>
     </div>
 
