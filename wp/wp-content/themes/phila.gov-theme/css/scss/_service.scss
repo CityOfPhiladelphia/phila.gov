@@ -71,10 +71,12 @@
       }
       input[type="checkbox"]{
         margin:0;
+        cursor: pointer;
       }
       label{
         color: $ben-franklin-blue;
         font-weight:bold;
+        cursor: pointer;
       }
     }
   }
