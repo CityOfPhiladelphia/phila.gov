@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
 
   var parents = $('.a-z-group');
+  var hiddenLetter = {};
 
   $('.a-z-group .result').bind('update', function() {
 
@@ -12,15 +13,26 @@ jQuery(document).ready(function($) {
       var total = $item.find('.result');
 
       if (childElements.length === total.length) {
-          $item.hide();
+        $item.hide();
+        hiddenLetter[$item.data('alphabet')] =  $item.data('alphabet') ;
       }else{
         $item.show();
+        delete hiddenLetter[$item.data('alphabet')];
+
       }
     });
+
+      $('.a-z-list nav li').each( function ( i, v ) {
+        $(hiddenLetter).each(function( index, value) {
+          if ($(v).data('alphabet') == value) {
+            $(v).addClass('ghost-gray is-disabled');
+          }
+        });
+
+    });
+
   });
 
-
-//  var serviceType = {};
 
   $("#service_filter :checkbox").click(function() {
     $('.result').hide().addClass('is-hidden');
@@ -30,6 +42,7 @@ jQuery(document).ready(function($) {
       $('#service_filter :checkbox').each(function(){
         $(this).prop('checked', false);
       });
+
       parents.show();
       $(this).prop('checked', true);
       $('.result').show().removeClass('is-hidden');
@@ -59,3 +72,36 @@ jQuery(document).ready(function($) {
   });
 
 });
+
+/*
+    var check = $(this);
+    if (check.prop('checked')) {
+      serviceType[check.attr('name')] = check.val();
+    } else {
+      delete serviceType[check.attr('name')];
+    }
+
+
+    $.each(serviceType, function (index, value){
+      console.log(value);
+      if (value != 'all'){
+        $('#all').prop('checked', false);
+
+        $('.result').each(function( ){
+          if ( $(this).data('service') != value ){
+            $(this).hide().addClass('is-hidden');
+          }else{
+            $(this).show().removeClass('is-hidden');
+          }
+        });
+
+      }else if( value == 'all' ){
+        $('#service_filter input:checkbox').not(this).attr('checked', false);
+        $('.result').show().removeClass('is-hidden');
+        $('#all').prop('checked', true);
+        parents.show();
+      }
+
+    });
+
+*/
