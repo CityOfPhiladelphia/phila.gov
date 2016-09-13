@@ -56,28 +56,3 @@
 
   }
 }
-
-.directory{
-  .filter{
-    //TODO: correct the base style that is providing the gray bg & padding
-    background:$white;
-    padding-top:0;
-    li{
-      padding:$spacing-small 0;
-      border-bottom:1px solid $ghost-gray;
-
-      &:last-child{
-        border-bottom: none;
-      }
-      input[type="checkbox"]{
-        margin:0;
-        cursor: pointer;
-      }
-      label{
-        color: $ben-franklin-blue;
-        font-weight:bold;
-        cursor: pointer;
-      }
-    }
-  }
-}
