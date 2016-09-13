@@ -18,8 +18,8 @@
         <span><a href="/" class="external">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 3-1-1 or tweet @philly311 for a quick response.</span>
       </div>
     </div>
-    <div class="row pvn pvl-mu">
-      <div class="small-24 medium-8 columns pll pvm pvn-mu sidewalk bdr-right-mu interact-311">
+    <div class="row pvn pvl-mu equal-height">
+      <div class="small-24 medium-8 columns pll pvm pvn-mu sidewalk bdr-right-mu interact-311 equal">
         <h3 class="dark-gray">Interact with 311 online</h3>
 
         <a href="#/" class="button icon clearfix">
@@ -44,7 +44,7 @@
         </a>
 
       </div>
-      <div class="medium-16 columns trending-requests phl plxl-mu pvm pvn-mu">
+      <div class="medium-16 columns trending-requests phl plxl-mu pvm pvn-mu equal">
         <h3 class="dark-gray">Trending Requests</h3>
         <!-- TODO: Begin pulling these in from 311 -->
           <ul class="columns-2-mu">
