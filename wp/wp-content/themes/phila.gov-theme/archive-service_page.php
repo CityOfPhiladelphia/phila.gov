@@ -86,9 +86,9 @@ get_header(); ?>
       <nav>
         <ul class="inline-list man pan">
           <?php foreach($a_z as $k => $v): ?>
-            <li data-alphabet=<?php echo $k ?>>
+            <li>
               <?php if( $v == true) : ?>
-                <a href="#<?php echo $k ?>"><?php echo strtoupper($k); ?></a>
+                <a href="#<?php echo $k ?>" data-alphabet=<?php echo $k ?>><?php echo strtoupper($k); ?></a>
               <?php else : ?>
                 <span class="ghost-gray"><?php echo strtoupper($k);?></span>
               <?php endif; ?>
