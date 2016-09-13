@@ -86,13 +86,15 @@ get_header(); ?>
       <nav>
         <ul class="inline-list man pan">
           <?php foreach($a_z as $k => $v): ?>
-            <li>
-              <?php if( $v == true) : ?>
-                <a href="#<?php echo $k ?>" data-alphabet=<?php echo $k ?>><?php echo strtoupper($k); ?></a>
-              <?php else : ?>
-                <span class="ghost-gray"><?php echo strtoupper($k);?></span>
+            <?php //TODO: handle special characters and numbers in a better way ?>
+            <?php $k_plain = preg_replace('/([^A-Za-z\-])/', '', $k);?>
+            <?php if( $v == true && !empty( $k_plain) ) : ?>
+              <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?>><?php echo strtoupper($k_plain); ?></a></li>
+            <?php else : ?>
+              <?php if ( !empty( $k_plain) ) : ?>
+                <li><span class="ghost-gray"><?php echo strtoupper($k_plain);?></span></li>
               <?php endif; ?>
-            </li>
+            <?php endif; ?>
           <?php endforeach; ?>
         </ul>
       </nav>
