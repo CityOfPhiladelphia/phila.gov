@@ -30,7 +30,7 @@ get_header(); ?>
                       </div>
                     </div>
                     <div>
-                      <p class="h6">Find<span class="break-before"> trash day</span></p>
+                      <p class="h6">Find<span class="break-before-mu"> trash day</span></p>
                     </div>
                   </div>
                 </a>
@@ -44,7 +44,7 @@ get_header(); ?>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Pay<span class="break-before"> a bill</span></p>
+                        <p class="h6">Pay<span class="break-before-mu"> a bill</span></p>
                       </div>
                     </div>
                   </a>
@@ -58,7 +58,7 @@ get_header(); ?>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Explore<span class="break-before"> City jobs</span></p>
+                        <p class="h6">Explore<span class="break-before-mu"> City jobs</span></p>
                       </div>
                     </div>
                   </a>
@@ -72,7 +72,7 @@ get_header(); ?>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Search for a<span class="break-before"> Property</span></p>
+                        <p class="h6">Search for a<span class="break-before-mu"> Property</span></p>
                       </div>
                     </div>
                   </a>
