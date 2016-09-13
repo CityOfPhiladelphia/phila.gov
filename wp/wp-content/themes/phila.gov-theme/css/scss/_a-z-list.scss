@@ -17,11 +17,7 @@
   }
   .row{
     border-top: 1px solid $dark-gray;
-    margin-top:2rem;
-
-    &:first-of-type{
-      margin-top:0;
-    }
+    margin-bottom:2rem;
 
     .letter{
       font-size: $large-font-base / 1.75;
