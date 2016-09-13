@@ -54,6 +54,11 @@
       input[type="checkbox"]{
         margin:0;
         cursor: pointer;
+        &:checked{
+          + label{
+            color:$black;
+          }
+        }
       }
       label{
         color: $ben-franklin-blue;
