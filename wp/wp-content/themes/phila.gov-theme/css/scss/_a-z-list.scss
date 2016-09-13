@@ -4,7 +4,8 @@
     font-family: 'Montserrat';
     text-align: center;
     ul{
-
+      //specific margin here to ensure this lines up with "filter" heading next to it
+      margin-bottom: .64rem;
       li{
         width:21px;
 
@@ -31,6 +32,16 @@
     pointer-events: none;
     color:$ghost-gray;
   }
+
+  .a-z-group span:focus {
+    background: #444;
+    color: white;
+    padding: 0 10px;
+    margin: 0;
+    outline: none;
+    border: 0;
+  }
+
 }
 
 .directory{
