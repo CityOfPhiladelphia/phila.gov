@@ -24,4 +24,9 @@
     font-size: $large-font-base / 1.75;
     }
   }
+
+  a[disabled] {
+    pointer-events: none;
+    color:$ghost-gray;
+  }
 }
