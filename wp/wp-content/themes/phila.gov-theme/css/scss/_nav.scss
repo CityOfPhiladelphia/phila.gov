@@ -5,7 +5,7 @@ nav#services-nav{
     line-height: 16px;
   }
   > ul li{
-    border-bottom: 1px solid $ghost-gray;
+    border-bottom: 1px solid $sidewalk;
 
     &:last-of-type {
       border:none;
@@ -20,7 +20,7 @@ nav#services-nav{
     > li.current_page_item {
       > a{
         background: $ben-franklin-blue;
-        color:white;
+        color: $white;
       }
     }
   li{
@@ -72,12 +72,12 @@ nav#services-nav{
   }
   .current_page_ancestor{
     &.page_item_has_children:not(.current_page_parent) > a{
-      border-bottom: 1px solid $ghost-gray;
+      border-bottom: 1px solid $sidewalk;
     }
 
     > ul {
       display: block;
-      border-top: 2px solid white;
+      border-top: 2px solid $white;
     }
     > a:after{
       content: '—';
