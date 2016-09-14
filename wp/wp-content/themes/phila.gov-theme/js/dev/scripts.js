@@ -157,11 +157,40 @@ jQuery(document).ready(function($) {
     }
   }
 
-  $("#back-to-top").click(function(e){
-    e.preventDefault();
-    $('html,body').animate({
-      scrollTop: 0
-    }, 700);
-  });
+  if ( $('#back-to-top').length ) {
+    var fromBottom = $('footer').outerHeight();
+
+    var scrollTrigger = 100, // px
+      backToTop = function () {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop > scrollTrigger) {
+          $('#back-to-top').addClass('show');
+        } else {
+          $('#back-to-top').removeClass('show');
+        }
+      };
+
+    backToTop();
+
+    $(window).on('scroll', function () {
+      backToTop();
+      if ( $('footer').offset().top < $(this).height() + $(this).scrollTop() ){
+        $('#back-to-top').css({
+          'position': 'absolute',
+          'bottom': '1%'
+        });
+      }else{
+        $('#back-to-top').removeAttr( 'style' );
+      }
+
+    });
+
+    $('#back-to-top').on('click', function (e) {
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop: 0
+      }, 700);
+    });
+  }
 
 });
