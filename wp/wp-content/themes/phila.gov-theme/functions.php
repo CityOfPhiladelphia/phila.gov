@@ -406,7 +406,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('service_page' ) ) {
 
-        echo '<li>' . __( 'Services', 'phila.gov' ) . '</li>';
+        echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
 
     } elseif ( is_post_type_archive('news_post') ) {
 
