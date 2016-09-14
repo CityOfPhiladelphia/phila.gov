@@ -124,6 +124,7 @@ get_header(); ?>
           <?php endforeach; ?>
         <?php endif; ?>
         <?php wp_reset_query(); ?>
+        <div class="back-to-top"><a href="#page"><i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true"></i><br>Top</a></div>
       </div>
     </div> <!-- .row -->
   </main><!-- #main -->
