@@ -30,8 +30,8 @@
   }
 
   .a-z-group span:focus {
-    background: #444;
-    color: white;
+    background: $dark-gray;
+    color: $white;
     padding: 0 10px;
     margin: 0;
     outline: none;
@@ -49,7 +49,7 @@
 
     li{
       padding:$spacing-small 0;
-      border-top:1px solid $ghost-gray;
+      border-top:1px solid $sidewalk;
 
       input[type="checkbox"]{
         margin:0;
