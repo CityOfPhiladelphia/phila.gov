@@ -89,7 +89,7 @@ get_header(); ?>
             <?php //TODO: handle special characters and numbers in a better way ?>
             <?php $k_plain = preg_replace('/([^A-Za-z\-])/', '', $k);?>
             <?php if( $v == true && !empty( $k_plain) ) : ?>
-              <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?>><?php echo strtoupper($k_plain); ?></a></li>
+              <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?> class="scrollTo"><?php echo strtoupper($k_plain); ?></a></li>
             <?php else : ?>
               <?php if ( !empty( $k_plain) ) : ?>
                 <li><span class="ghost-gray"><?php echo strtoupper($k_plain);?></span></li>
