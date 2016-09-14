@@ -90,7 +90,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'No Service Pages Found' ),
           'not_found_in_trash'   => __( 'Service Page not found in trash' ),
         ),
-        'taxonomies' => array('category', 'topics'),
+        'taxonomies' => array('category', 'service_type'),
         'supports' => array(
           'title',
           'editor',
@@ -99,7 +99,7 @@ class Phila_Gov_Custom_Post_Types{
           'author'
         ),
         'public' => true,
-        'has_archive' => false,
+        'has_archive' => true,
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-admin-generic',
         'hierarchical' => true,
@@ -128,8 +128,7 @@ class Phila_Gov_Custom_Post_Types{
         'not_found_in_trash'   => __( 'News not found in trash' ),
       ),
       'taxonomies' => array(
-        'category',
-        'topics'
+        'category'
       ),
       'public' => true,
       'has_archive' => true,
@@ -343,7 +342,7 @@ class Phila_Gov_Custom_Post_Types{
           'thumbnail'
         ),
         'exclude_from_search' => true,
-        'public' => false,
+        'public' => true,
         'show_ui' => true,
         'has_archive' => false,
         'menu_icon' => 'dashicons-id',
