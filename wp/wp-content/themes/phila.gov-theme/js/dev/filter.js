@@ -81,5 +81,23 @@ jQuery(document).ready(function($) {
 
     }
   });
+  $("a.scrollTo").click(function(e){
+    var link = $(this);
+
+    $('html, body').animate({
+      scrollTop:
+        $( $(this).attr("href") ).offset().top
+    }, 1000, function(){
+
+      var anchor = link.attr("href").substr(1);
+      var el = document.getElementById(anchor);
+
+      el.focus();
+
+    });
+
+    return false;
+
+  });
 
 });
