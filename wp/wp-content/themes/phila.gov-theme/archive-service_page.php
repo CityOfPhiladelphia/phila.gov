@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-<?php get_page_template(); ?>
+<?php echo get_page_template(); ?>
 
 <div id="primary" class="content-area service directory">
   <main id="main" class="site-main">

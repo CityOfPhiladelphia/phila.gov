@@ -133,6 +133,8 @@ function phila_filter_title( $title ){
       $cat = get_the_category();
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
+    }elseif( is_post_type_archive('service_page') ) {
+      $title['title'] = 'Service Directory' . $sep . $site_title;
     }else{
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
@@ -1177,7 +1179,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
     }
   }
 
-  if( is_archive() || is_search() || is_home() ) {
+  if( is_archive() || is_search() || is_home() || is_post_type_archive( 'service_page' ) ) {
     if ($bloginfo) {
       return bloginfo( 'description' );
     }
