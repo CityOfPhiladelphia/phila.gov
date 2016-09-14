@@ -1,0 +1,20 @@
+#back-to-top {
+  display: none;
+  
+  @media screen and (min-width: 1190px) {
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+    z-index: 9999;
+    text-align: center;
+    cursor: pointer;
+    text-transform:uppercase;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+    display: block;
+  }
+  &.show {
+      opacity: 1;
+
+  }
+}

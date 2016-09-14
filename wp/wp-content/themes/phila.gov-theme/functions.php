@@ -58,29 +58,29 @@ function phila_gov_setup() {
   add_image_size( 'staff-thumb', 400, 400, true );
 
 
-  // This theme uses wp_nav_menu() in any number of locations.
+  // This theme uses wp_nav_menu() in any number of locations across department sites as well as service level pages.
   add_action( 'init', 'phila_register_category_menus' );
 
-    function phila_register_category_menus() {
+  function phila_register_category_menus() {
 
-        $phila_menu_cat_args = array(
-            'type'                     => 'post',
-            'child_of'                 => 0,
-            'parent'                   => '',
-            'orderby'                  => 'name',
-            'order'                    => 'ASC',
-            'hide_empty'               => 1,
-            'hierarchical'             => 0,
-            'taxonomy'                 => 'category',
-            'pad_counts'               => false
-        );
+    $phila_menu_cat_args = array(
+      'type'                     => 'post',
+      'child_of'                 => 0,
+      'parent'                   => '',
+      'orderby'                  => 'name',
+      'order'                    => 'ASC',
+      'hide_empty'               => 1,
+      'hierarchical'             => 0,
+      'taxonomy'                 => 'category',
+      'pad_counts'               => false
+    );
 
-        $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
-        foreach ( $phila_get_menu_cats as $phila_category ) {
-            register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
-        }
+    $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
+
+    foreach ( $phila_get_menu_cats as $phila_category ) {
+        register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
+      }
     }
-
   /*
    * Switch default core markup for search form, comment form, and comments
    * to output valid HTML5.
@@ -133,6 +133,8 @@ function phila_filter_title( $title ){
       $cat = get_the_category();
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
+    }elseif( is_post_type_archive('service_page') ) {
+      $title['title'] = 'Service Directory' . $sep . $site_title;
     }else{
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
@@ -361,7 +363,7 @@ function phila_breadcrumbs() {
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
-    phila_util_echo_website_url();
+    echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
@@ -404,7 +406,11 @@ function phila_breadcrumbs() {
 
         echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
 
-    } elseif ( ( is_post_type_archive('news_post') && is_tax('topics') ) ) {
+    } elseif ( is_post_type_archive('service_page' ) ) {
+
+        echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
+
+    } elseif ( is_post_type_archive('news_post') ) {
 
         echo '<li><a href="/news">News</a></li>';
 
@@ -467,27 +473,9 @@ function phila_breadcrumbs() {
       echo $output;
       echo '<li> '.$title.'</li>';
 
-    } elseif ( is_tax('topics') ) {
-
-      //BROWSE
-      $taxonomy = 'topics';
-      $queried_term = get_query_var($taxonomy);
-      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
-
-      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
-      $parent = get_term($term->parent, $taxonomy);
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
-      endif;
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li>' . $term_obj->name . '</li>';
-      else :
-        echo '<li>'. $term_obj->name . '</li>';
-      endif;
-
     } elseif ( is_page() || get_post_type() == 'service_page') {
+
+      echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
 
       if( $post->post_parent ){
 
@@ -976,69 +964,6 @@ function phila_get_home_news(){
   echo '</div></a>';
 }
 
-/**
- * Gets the list of topics available used in:
- * templates/topics-child.php
- * templates/topics-parent.php
- * taxonomy-topics.php
- *
- */
-function phila_get_parent_topics(){
-
-  $args = array(
-    'orderby' => 'name',
-    'fields'=> 'all',
-    'parent' => 0,
-    'hide_empty'=> true
-  );
-
-  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
-  $terms = get_terms( 'topics', $args );
-
-  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-    echo '<ul class="tabs vertical">';
-
-    foreach ( $terms as $term ) {
-
-      if (isset($current_term->slug) ) {
-        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
-
-      }else {
-        $active = '';
-      }
-
-      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
-
-    }
-    echo '</ul>';
-  }
-}
-/**
- * Utility function to get a list of all topics and their children on the site.
- *
- */
-function phila_get_master_topics(){
-  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
-  echo '<ul>';
-  foreach($parent_terms as $key => $parent_term) {
-
-    echo '<li><h3>' . $parent_term->name . '</h3>';
-    echo  $parent_term->description;
-
-    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
-
-    if($child_terms) {
-      echo '<ul class="subtopics">';
-      foreach($child_terms as $key => $child_term) {
-        echo '<li><h4>' . $child_term->name . '</h4>';
-        echo  $child_term->description . '</li></li>';
-      }
-
-    }
-    echo '</ul>';
-  }
-}
 
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
@@ -1220,7 +1145,12 @@ function phila_get_service_updates(){
   }
 }
 
-function phila_get_item_meta_desc(){
+/**
+ * Returns the meta_desc for an item.
+ * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
+ *
+ **/
+function phila_get_item_meta_desc( $bloginfo = true ){
   global $post;
 
   $meta_desc = array();
@@ -1249,8 +1179,10 @@ function phila_get_item_meta_desc(){
     }
   }
 
-  if( is_archive() || is_search() || is_home() ) {
-    return bloginfo( 'description' );
+  if( is_archive() || is_search() || is_home() || is_post_type_archive( 'service_page' ) ) {
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
   }
 
   if ( get_post_type() == 'department_page' ) {
@@ -1268,10 +1200,10 @@ function phila_get_item_meta_desc(){
 
     }
 
-    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 365, '...');
+    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 140, '...');
 
   //special handing for content collection page types, when appropriate
-  }else if( is_page() || get_post_type() == 'service_page' ){
+  }else if( is_page() ){
 
     $parents = get_post_ancestors( $post->ID );
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
@@ -1287,14 +1219,18 @@ function phila_get_item_meta_desc(){
 
     }else if ( !empty( $content ) ) {
 
-      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 365, '...');
+      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 140, '...');
 
     }else{
-      return bloginfo( 'description' );
+      if ($bloginfo) {
+        return bloginfo( 'description' );
+      }
     }
 
   }else{
-    return bloginfo( 'description' );
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
   }
 }
 

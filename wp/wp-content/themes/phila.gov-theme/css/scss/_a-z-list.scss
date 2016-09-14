@@ -1,0 +1,89 @@
+.a-z-list {
+  nav{
+    font-size:1.5rem;
+    font-family: 'Montserrat';
+    text-align: center;
+    ul{
+      //specific margin here to ensure this lines up with "filter" heading next to it
+      margin-bottom: .64rem;
+      li{
+        width:21px;
+
+        a:link, a:visited{
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .row{
+    border-top: 1px solid $dark-gray;
+    margin-bottom:2rem;
+
+    .letter{
+      font-size: $large-font-base / 1.75;
+    }
+  }
+
+  a[disabled] {
+    pointer-events: none;
+    color:$ghost-gray;
+  }
+
+  .a-z-group span:focus {
+    background: #444;
+    color: white;
+    padding: 0 10px;
+    margin: 0;
+    outline: none;
+    border: 0;
+  }
+
+}
+
+.directory{
+
+  .filter{
+    //TODO: correct the base style that is providing the gray bg & padding
+    background:$white;
+    padding-top:0;
+
+    li{
+      padding:$spacing-small 0;
+      border-top:1px solid $ghost-gray;
+
+      input[type="checkbox"]{
+        margin:0;
+        cursor: pointer;
+        &:checked{
+          + label{
+            color:$black;
+          }
+        }
+      }
+      label{
+        color: $ben-franklin-blue;
+        font-weight:bold;
+        cursor: pointer;
+      }
+    }
+  }
+}
+//custom checkboxes
+//TODO: add to patterns
+input[type=checkbox] {
+  display:none;
+
+  + label::before {
+    content: '\f096';
+    display:inline-block;
+    padding-right:10px;
+    font-family: FontAwesome;
+  }
+
+  &:checked + label::before {
+    content: '\f14a';
+    display:inline-block;
+    padding-right:10px;
+    font-family: FontAwesome;
+  }
+}
