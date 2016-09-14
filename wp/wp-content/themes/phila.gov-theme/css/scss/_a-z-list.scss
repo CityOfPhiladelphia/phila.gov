@@ -68,3 +68,22 @@
     }
   }
 }
+//custom checkboxes
+//TODO: add to patterns
+input[type=checkbox] {
+  display:none;
+
+  + label::before {
+    content: '\f096';
+    display:inline-block;
+    padding-right:10px;
+    font-family: FontAwesome;
+  }
+
+  &:checked + label::before {
+    content: '\f14a';
+    display:inline-block;
+    padding-right:10px;
+    font-family: FontAwesome;
+  }
+}
