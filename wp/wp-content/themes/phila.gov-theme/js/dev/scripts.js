@@ -156,5 +156,13 @@ jQuery(document).ready(function($) {
       $('[data-type="hero-tagline-emphasis"]').css('font-size', largeFontSize + 'rem');
     }
   }
+  
+  $('#page').on('click', function (e) {
+      e.preventDefault();
+      $('html,body').animate({
+          scrollTop: 0
+      }, 700);
+  });
+
 
 });
