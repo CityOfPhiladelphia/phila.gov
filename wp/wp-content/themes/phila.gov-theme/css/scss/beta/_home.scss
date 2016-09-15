@@ -78,7 +78,13 @@
       }
       p {
         margin:0;
-        font-size: .8rem;
+        font-size: 1rem;
+        @media only screen and (min-width: 40em) {
+          font-size: .85rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: .85rem;
+        }
       }
       a {
         background-color: #daedfe;
@@ -119,6 +125,9 @@
 
   .feedback-form {
     background: $ghost-gray;
+    p {
+      font-size: 1rem;
+    }
   }
 
   .call-to-action {
