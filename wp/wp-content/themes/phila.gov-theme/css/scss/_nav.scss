@@ -1,0 +1,99 @@
+nav#services-nav{
+  a{
+    font-weight:600;
+    display: block;
+    line-height: 16px;
+    padding: 1rem .5rem;
+  }
+  > ul li{
+    border-bottom: 1px solid $sidewalk;
+
+    &:last-of-type {
+      border:none;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+
+    > li.current_page_item {
+      > a{
+        background: $ben-franklin-blue;
+        color: $white;
+      }
+    }
+  li{
+    span{
+      display: inline-block;
+      //TODO: Remove max-width, this is a temp fix
+      max-width: 225px;
+    }
+  }
+  &.children{
+    li {
+      border-bottom: 2px solid $white;
+
+    a{
+      padding:.5rem;
+      margin-left: 1rem;
+    }
+
+      &:last-child{
+        border-bottom: none;
+        }
+      }
+      .children li a{
+        margin-left:2rem;
+      }
+    }
+  }
+  .page_item_has_children{
+    > a:after{
+      content: '+';
+      font-size:20px;
+      line-height: 20px;
+      float:right;
+    }
+    &.current_page_ancestor > a{
+      background: $ghost-gray;
+      color:$black;
+    }
+    &.current_page_item {
+      > a:after{
+        content: '—';
+        font-size:15px;
+        line-height: 15px;
+        float:right;
+      }
+      > ul {
+        display: block;
+      }
+    }
+  }
+  .current_page_ancestor{
+    &.page_item_has_children:not(.current_page_parent) > a{
+      border-bottom: 1px solid $sidewalk;
+    }
+
+    &.current_page_parent {
+
+      > a{
+        background: $ghost-gray;
+        color:$black;
+
+      }
+    }
+    > ul {
+      display: block;
+    }
+    > a:after{
+      content: '—';
+      font-size:15px;
+      line-height: 15px;
+      float:right;
+    }
+  }
+
+}

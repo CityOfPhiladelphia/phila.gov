@@ -8,7 +8,9 @@ body{
   clear: both;
 }
 
-
+#page {
+  position: relative;
+}
 .navigation {
   margin-top:1rem;
   font-family: 'Montserrat';
@@ -228,6 +230,25 @@ aside {
 
   }
 }
+
+header.entry-header h2{
+  margin-top:0;
+}
+
+@media screen and (min-width: 64em) {
+  .fat-gutter{
+    &.row,
+    &.row .row{
+        margin-left: -$spacing-large;
+        margin-right: -$spacing-large;
+      }
+    .column, .columns {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+    }
+  }
+}
+
 //TODO: add all these as utility to patterns
 .float-none{
   float:none;

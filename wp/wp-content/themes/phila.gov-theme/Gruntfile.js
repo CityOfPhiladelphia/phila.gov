@@ -26,6 +26,7 @@ module.exports = function(grunt) {
              'js/dependencies/jquery.swiftype.autocomplete.js',
              'js/dependencies/mustache.min.js',
              'js/dev/scripts.js',
+             'js/dev/filter.js',
              'js/dev/search.js',
              'js/dev/skip-link-focus-fix.js'
           ]
