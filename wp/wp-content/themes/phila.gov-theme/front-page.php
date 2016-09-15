@@ -56,6 +56,20 @@ get_header(); ?>
             </div>
           </div><!--#popular -->
           <div class="row expanded topic-main-nav">
+          <?php
+             $args = array(
+              'orderby' => 'name',
+              'fields'=> 'all',
+              'parent' => 0,
+              'hide_empty'=> true
+             );
+            $terms = get_terms( 'topics', $args );
+              if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+                foreach ( $terms as $term ) {
+                  echo '<a href="/browse/' . $term->slug .  '">' . $term->name . '</a>';
+                 }
+              }
+            ?>
           </div>
         </section>
       </div>
@@ -71,6 +85,12 @@ get_header(); ?>
         </nav>
       </div>
     </div>
+    
+    <?php $args = array( 'post_type' => 'service_updates' ); ?>
+    <?php $service_updates_loop = new WP_Query( $args ); ?>
+    <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+    <?php wp_reset_query();?>
+
     <div class="news-row row expanded">
       <div class="columns">
         <div class="row">

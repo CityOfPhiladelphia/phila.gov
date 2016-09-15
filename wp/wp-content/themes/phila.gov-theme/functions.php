@@ -58,29 +58,29 @@ function phila_gov_setup() {
   add_image_size( 'staff-thumb', 400, 400, true );
 
 
-  // This theme uses wp_nav_menu() in any number of locations across department sites as well as service level pages.
+  // This theme uses wp_nav_menu() in any number of locations.
   add_action( 'init', 'phila_register_category_menus' );
 
-  function phila_register_category_menus() {
+    function phila_register_category_menus() {
 
-    $phila_menu_cat_args = array(
-      'type'                     => 'post',
-      'child_of'                 => 0,
-      'parent'                   => '',
-      'orderby'                  => 'name',
-      'order'                    => 'ASC',
-      'hide_empty'               => 1,
-      'hierarchical'             => 0,
-      'taxonomy'                 => 'category',
-      'pad_counts'               => false
-    );
+        $phila_menu_cat_args = array(
+            'type'                     => 'post',
+            'child_of'                 => 0,
+            'parent'                   => '',
+            'orderby'                  => 'name',
+            'order'                    => 'ASC',
+            'hide_empty'               => 1,
+            'hierarchical'             => 0,
+            'taxonomy'                 => 'category',
+            'pad_counts'               => false
+        );
 
-    $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
-
-    foreach ( $phila_get_menu_cats as $phila_category ) {
-        register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
-      }
+        $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
+        foreach ( $phila_get_menu_cats as $phila_category ) {
+            register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
+        }
     }
+
   /*
    * Switch default core markup for search form, comment form, and comments
    * to output valid HTML5.
@@ -476,6 +476,26 @@ function phila_breadcrumbs() {
       }
       echo $output;
       echo '<li> '.$title.'</li>';
+
+    } elseif ( is_tax('topics') ) {
+
+      //BROWSE
+      $taxonomy = 'topics';
+      $queried_term = get_query_var($taxonomy);
+      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
+
+      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
+      $parent = get_term($term->parent, $taxonomy);
+
+      if ( ! is_wp_error( $parent ) ) :
+        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
+      endif;
+
+      if ( ! is_wp_error( $parent ) ) :
+        echo '<li>' . $term_obj->name . '</li>';
+      else :
+        echo '<li>'. $term_obj->name . '</li>';
+      endif;
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
@@ -968,6 +988,69 @@ function phila_get_home_news(){
   echo '</div></a>';
 }
 
+/**
+ * Gets the list of topics available used in:
+ * templates/topics-child.php
+ * templates/topics-parent.php
+ * taxonomy-topics.php
+ *
+ */
+function phila_get_parent_topics(){
+
+  $args = array(
+    'orderby' => 'name',
+    'fields'=> 'all',
+    'parent' => 0,
+    'hide_empty'=> true
+  );
+
+  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+  $terms = get_terms( 'topics', $args );
+
+  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+    echo '<ul class="tabs vertical">';
+
+    foreach ( $terms as $term ) {
+
+      if (isset($current_term->slug) ) {
+        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
+
+      }else {
+        $active = '';
+      }
+
+      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
+
+    }
+    echo '</ul>';
+  }
+}
+/**
+ * Utility function to get a list of all topics and their children on the site.
+ *
+ */
+function phila_get_master_topics(){
+  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
+  echo '<ul>';
+  foreach($parent_terms as $key => $parent_term) {
+
+    echo '<li><h3>' . $parent_term->name . '</h3>';
+    echo  $parent_term->description;
+
+    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
+
+    if($child_terms) {
+      echo '<ul class="subtopics">';
+      foreach($child_terms as $key => $child_term) {
+        echo '<li><h4>' . $child_term->name . '</h4>';
+        echo  $child_term->description . '</li></li>';
+      }
+
+    }
+    echo '</ul>';
+  }
+}
 
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
@@ -1100,7 +1183,104 @@ function phila_get_event_content_blocks(){
     }
 }
 
+function phila_util_month_format($date){
+  if (strlen($date->format('F')) > 5){
+     return 'M.';
+  } else {
+    return 'F';
+  }
+}
+
 function phila_get_service_updates(){
+
+    $service_update_details = rwmb_meta( 'service_update' );
+    $current_date = new DateTime('NOW', new DateTimeZone('America/New_York'));
+    $valid_update = false;
+    $service_date_format = isset( $service_update_details['phila_date_format'] ) ? $service_update_details['phila_date_format'] : '';
+    if ( $service_date_format == 'date'):
+      $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
+      $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
+
+      $service_update_end_date = new DateTime( '@' .$service_effective_end['timestamp'] );
+
+      if ( intval( $service_update_end_date->format('mdY') ) >= intval( $current_date->format('mdY') ) ):
+        $valid_update = true;
+      endif;
+    elseif ( $service_date_format == 'datetime') :
+      $service_effective_start = isset( $service_update_details['phila_effective_start_datetime'] ) ? $service_update_details['phila_effective_start_datetime'] : '';
+      $service_effective_end = isset( $service_update_details['phila_effective_end_datetime'] ) ? $service_update_details['phila_effective_end_datetime'] : '';
+      if ( $service_effective_end['timestamp'] >= $current_date->getTimestamp() ):
+        $valid_update = true;
+      endif;
+    elseif ($service_date_format == 'none'):
+      $service_effective_start = '';
+      $service_effective_end = '';
+      $valid_update = true;
+    endif;
+
+    //Don't set any additional vars unless the update is current
+    if ( $valid_update ):
+      $service_type = isset( $service_update_details['phila_update_type'] ) ? $service_update_details['phila_update_type'] : '';
+      $service_level = isset( $service_update_details['phila_update_level'] ) ? $service_update_details['phila_update_level'] : '';
+      $service_message = isset( $service_update_details['phila_service_update_message'] ) ? $service_update_details['phila_service_update_message'] : '';
+      $service_link_text = isset( $service_update_details['phila_update_link_text'] ) ? $service_update_details['phila_update_link_text'] : '';
+      $service_link = isset( $service_update_details['phila_update_link'] ) ? $service_update_details['phila_update_link'] : '';
+
+      switch($service_type){
+        case 'city':
+          $service_icon = 'fa-institution';
+          break;
+          case 'roads':
+            $service_icon = 'fa-road';
+            break;
+          case 'transit':
+            $service_icon = 'fa-subway';
+            break;
+          case 'trash':
+            $service_icon = 'fa-trash';
+            break;
+          default :
+            $service_icon = '';
+            break;
+      }
+      switch($service_level){
+        case '0':
+          $service_level_label = 'normal';
+          break;
+          case '1':
+            $service_level_label = 'warning';
+            break;
+          case '2':
+            $service_level_label = 'critical';
+            break;
+          default :
+            $service_level_label = 'normal';
+            break;
+      }
+
+      $output_item ='';
+
+      $output_item = array(
+        'service_type' => $service_type,
+        'service_icon' => $service_icon,
+        'service_level' => $service_level,
+        'service_level_label' => $service_level_label,
+        'service_message' => $service_message,
+        'service_link_text' => $service_link_text,
+        'service_link' => $service_link,
+        'service_date_format' => $service_date_format,
+        'service_effective_start' => $service_effective_start,
+        'service_effective_end' => $service_effective_end,
+
+      );
+
+      return $output_item;
+    else :
+      return;
+    endif;
+}
+
+function phila_get_service_updates_events(){
 
   $output_array = array();
   $service_updates = rwmb_meta( 'service_updates' );

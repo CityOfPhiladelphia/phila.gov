@@ -21,6 +21,8 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_service_pages' ) );
 
+    add_action( 'init', array( $this, 'create_phila_service_updates' ) );
+
     add_action( 'init', array( $this, 'create_phila_news_post' ) );
 
     add_action( 'init', array( $this, 'create_phila_press_release' ) );
@@ -90,7 +92,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'No Service Pages Found' ),
           'not_found_in_trash'   => __( 'Service Page not found in trash' ),
         ),
-        'taxonomies' => array('category', 'service_type'),
+        'taxonomies' => array('category', 'topics'),
         'supports' => array(
           'title',
           'editor',
@@ -112,6 +114,41 @@ class Phila_Gov_Custom_Post_Types{
     );
   }
 
+  function create_phila_service_updates() {
+    register_post_type( 'service_updates',
+      array(
+        'labels' => array(
+          'name' => __( 'Service Updates' ),
+          'singular_name' => __( 'Service Update' ),
+          'add_new'   => __( 'Add Service Update' ),
+          'all_items'   => __( 'All Service Updates' ),
+          'add_new_item' => __( 'Add Service Update' ),
+          'edit_item'   => __( 'Edit Service Update' ),
+          'view_item'   => __( 'View Service Update' ),
+          'search_items'   => __( 'Search Service Updates'),
+          'not_found'   => __( 'Service Update not found' ),
+          'not_found_in_trash'   => __( 'Service Update not found in trash' ),
+        ),
+      'taxonomies' => array('category'),
+      'supports' => array(
+        'title',
+      ),
+      'exclude_from_search' => true,
+      // TODO: Set public to true
+      'public' => false,
+      'show_ui' => true,
+      // TODO: Set has_archive to true
+      'has_archive' => false,
+      'menu_icon' => 'dashicons-warning',
+      'hierarchical' => false,
+      'rewrite' => array(
+        'slug' => 'service-updates',
+        'with_front' => false,
+        ),
+      )
+    );
+  }
+
  function create_phila_news_post() {
   register_post_type( 'news_post',
     array(
@@ -128,7 +165,8 @@ class Phila_Gov_Custom_Post_Types{
         'not_found_in_trash'   => __( 'News not found in trash' ),
       ),
       'taxonomies' => array(
-        'category'
+        'category',
+        'topics'
       ),
       'public' => true,
       'has_archive' => true,
@@ -342,7 +380,7 @@ class Phila_Gov_Custom_Post_Types{
           'thumbnail'
         ),
         'exclude_from_search' => true,
-        'public' => true,
+        'public' => false,
         'show_ui' => true,
         'has_archive' => false,
         'menu_icon' => 'dashicons-id',

@@ -195,4 +195,15 @@ jQuery(document).ready(function($) {
     });
   }
 
+  if ( ( typenow == 'service_updates' ) )  {
+    $.validator.setDefaults({
+      ignore: ''
+    });
+    $('#phila_update_type').prop('required', true);
+    $('#phila_update_level').prop('required', true);
+    $('#phila_date_format').prop('required', true);
+    $('[id^=phila_effective_start_date]').prop('required', true);
+    $('[id^=phila_effective_end_date]').prop('required', true);
+  }
+
 });
