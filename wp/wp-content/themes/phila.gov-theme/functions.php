@@ -155,6 +155,10 @@ function phila_filter_title( $title ){
     if ($post_type->name == 'page') {
       $title['title'] = $page_title . $sep . $site_title;
 
+    }elseif($post_type->name == 'service_page') {
+
+      $title['title'] = $page_title . $sep . 'Service' . $sep . $site_title;
+
     }else{
 
       if( $post_type->name == 'phila_post' || $post_type->name == 'news_post' || $post_type->name == 'press_release' ) {
@@ -1431,6 +1435,17 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
+/**
+ * Return a string representing the template currently applied to a page in the loop.
+ *
+ **/
+
+function phila_get_page_icon(){
+
+  $icon = rwmb_meta( 'phila_page_icon' );
+
+  return $icon;
+}
 
 function phila_return_ordinal($num){
   $j = $num % 10;

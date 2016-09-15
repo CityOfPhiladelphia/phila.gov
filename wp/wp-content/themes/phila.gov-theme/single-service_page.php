@@ -18,17 +18,21 @@
       if ( empty( $parent_id ) ) {
         $parent_id = $post->ID;
       }
+      $icon = phila_get_page_icon();
       ?>
     <article id="post-<?php the_ID(); ?>">
       <div class="row">
         <header class="entry-header small-24 columns">
           <h1 class="contrast">
-          <?php echo $parent_title; ?>
+            <?php if ( !empty( $icon ) ) : ?>
+              <i class="fa <?php echo $icon ?>" aria-hidden="true"></i>
+            <?php endif; ?>
+            <?php echo $parent_title; ?>
           </h1>
         </header>
         </div>
-        <div class="row">
-          <div class="medium-7 columns">
+        <div class="row equal-height border-bottom-sidewalk">
+          <div class="medium-7 columns border-right-sidewalk equal hide-for-small-only">
             <nav data-swiftype-index="false" id="services-nav">
               <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="services-menu vertical menu">
               <?php
@@ -46,7 +50,7 @@
               </ul>
             </nav>
         </div>
-        <div class="medium-16 columns">
+        <div class="medium-16 columns equal">
           <header class="entry-header">
             <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
           </header>
