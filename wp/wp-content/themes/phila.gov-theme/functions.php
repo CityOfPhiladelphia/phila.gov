@@ -133,6 +133,8 @@ function phila_filter_title( $title ){
       $cat = get_the_category();
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
+    }elseif( is_post_type_archive('service_page') ) {
+      $title['title'] = 'Service Directory' . $sep . $site_title;
     }else{
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
@@ -152,6 +154,10 @@ function phila_filter_title( $title ){
 
     if ($post_type->name == 'page') {
       $title['title'] = $page_title . $sep . $site_title;
+
+    }elseif($post_type->name == 'service_page') {
+
+      $title['title'] = $page_title . $sep . 'Service' . $sep . $site_title;
 
     }else{
 
@@ -361,7 +367,7 @@ function phila_breadcrumbs() {
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
-    phila_util_echo_website_url();
+    echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
@@ -404,7 +410,11 @@ function phila_breadcrumbs() {
 
         echo '<li>' . __( 'Departments', 'phila.gov' ) . '</li>';
 
-    } elseif ( ( is_post_type_archive('news_post') && is_tax('topics') ) ) {
+    } elseif ( is_post_type_archive('service_page' ) ) {
+
+        echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
+
+    } elseif ( is_post_type_archive('news_post') ) {
 
         echo '<li><a href="/news">News</a></li>';
 
@@ -488,6 +498,8 @@ function phila_breadcrumbs() {
       endif;
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
+
+      echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
 
       if( $post->post_parent ){
 
@@ -1317,7 +1329,12 @@ function phila_get_service_updates_events(){
   }
 }
 
-function phila_get_item_meta_desc(){
+/**
+ * Returns the meta_desc for an item.
+ * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
+ *
+ **/
+function phila_get_item_meta_desc( $bloginfo = true ){
   global $post;
 
   $meta_desc = array();
@@ -1346,8 +1363,10 @@ function phila_get_item_meta_desc(){
     }
   }
 
-  if( is_archive() || is_search() || is_home() ) {
-    return bloginfo( 'description' );
+  if( is_archive() || is_search() || is_home() || is_post_type_archive( 'service_page' ) ) {
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
   }
 
   if ( get_post_type() == 'department_page' ) {
@@ -1365,10 +1384,10 @@ function phila_get_item_meta_desc(){
 
     }
 
-    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 365, '...');
+    return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 140, '...');
 
   //special handing for content collection page types, when appropriate
-  }else if( is_page() || get_post_type() == 'service_page' ){
+  }else if( is_page() ){
 
     $parents = get_post_ancestors( $post->ID );
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
@@ -1384,14 +1403,18 @@ function phila_get_item_meta_desc(){
 
     }else if ( !empty( $content ) ) {
 
-      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 365, '...');
+      return mb_strimwidth( wp_strip_all_tags( $content ),  0, 140, '...');
 
     }else{
-      return bloginfo( 'description' );
+      if ($bloginfo) {
+        return bloginfo( 'description' );
+      }
     }
 
   }else{
-    return bloginfo( 'description' );
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
   }
 }
 
@@ -1592,6 +1615,17 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
+/**
+ * Return a string representing the template currently applied to a page in the loop.
+ *
+ **/
+
+function phila_get_page_icon(){
+
+  $icon = rwmb_meta( 'phila_page_icon' );
+
+  return $icon;
+}
 
 function phila_return_ordinal($num){
   $j = $num % 10;
