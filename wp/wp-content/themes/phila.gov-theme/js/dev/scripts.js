@@ -157,6 +157,20 @@ jQuery(document).ready(function($) {
     }
   }
 
+  //Homepage Feedback Form
+  $('[data-toggle="feedback"]').click(function() {
+    if ( $('[data-type="feedback-indicator"]').hasClass('up') ){
+      $('[data-type="feedback-form"]').slideToggle( function(){
+        $('[data-type="feedback-indicator"]').removeClass('up');
+        $('[data-type="feedback-footer"]').toggle();
+      });
+    } else {
+      $('[data-type="feedback-form"]').slideToggle();
+      $('[data-type="feedback-indicator"]').addClass('up');
+      $('[data-type="feedback-footer"]').toggle();
+    }
+  });
+
   if ( $('#back-to-top').length ) {
     var fromBottom = $('footer').outerHeight();
 
@@ -192,5 +206,5 @@ jQuery(document).ready(function($) {
       }, 700);
     });
   }
-
+  
 });

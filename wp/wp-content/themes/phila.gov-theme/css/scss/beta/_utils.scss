@@ -1,0 +1,92 @@
+// Border colors
+.bdr-ghost-gray {
+  border-color:$ghost-gray;
+}
+.bdr-sidewalk {
+  border-color:$sidewalk;
+}
+.bdr-dark-gray {
+  border-color:$dark-gray;
+}
+
+.bdr-bottom-sm {
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  @media screen and (min-width: 40em) {
+    border-bottom-width: 0px;
+  }
+}
+
+// Vertical rules
+.bdr-right{
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.bdr-right-mu {
+  border-right: 0;
+  @media screen and (min-width: 40em) {
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+}
+
+.nbdr-right-mu {
+  @media screen and (min-width: 40em) {
+    border-right-width: 0px;
+    border-right-style: solid;
+  }
+}
+
+.columns-2-mu {
+  @media screen and (min-width: 40em) {
+    column-count: 2;
+    column-gap: 1.42857rem;
+  }
+}
+
+
+.break-after {
+  &:after {
+    white-space: pre;
+    content: '\A';
+  }
+}
+.break-after-mu {
+  @media screen and (min-width: 40em) {
+    &:after {
+      white-space: pre;
+      content: '\A';
+    }
+  }
+}
+
+.break-before {
+  &:before {
+    white-space: pre;
+    content: '\A';
+  }
+}
+.break-before-mu {
+  @media screen and (min-width: 40em) {
+    &:before {
+      white-space: pre;
+      content: '\A';
+    }
+  }
+}
+
+//TODO: Move to patterns
+
+.border-bottom-sidewalk{
+  border-bottom:1px solid $sidewalk;
+}
+.border-right-sidewalk{
+  border-right:1px solid $sidewalk;
+}
+.border-left-sidewalk{
+  border-left:1px solid $sidewalk;
+}
+.border-top-sidewalk{
+  border-top:1px solid $sidewalk;
+}

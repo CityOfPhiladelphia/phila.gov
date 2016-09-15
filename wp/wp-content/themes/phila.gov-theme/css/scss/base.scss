@@ -17,7 +17,7 @@
 @import 'departments';
 @import 'documents';
 @import 'events';
-@import 'footer';
+// @import 'footer';
 @import 'forms';
 @import 'get-involved';
 @import 'hero-header';
@@ -38,4 +38,11 @@
 @import 'social-media';
 @import 'staff-directory';
 @import 'step-content';
-@import 'utilities';
+
+@import 'beta/variables';
+
+@import 'beta/home';
+@import 'beta/footer';
+
+@import 'beta/utils';
+@import 'beta/buttons';
