@@ -3,9 +3,10 @@ nav#services-nav{
     font-weight:600;
     display: block;
     line-height: 16px;
+    padding: 1rem .5rem;
   }
   > ul li{
-    border-bottom: 1px solid $ghost-gray;
+    border-bottom: 1px solid $sidewalk;
 
     &:last-of-type {
       border:none;
@@ -20,34 +21,31 @@ nav#services-nav{
     > li.current_page_item {
       > a{
         background: $ben-franklin-blue;
-        color:white;
+        color: $white;
       }
     }
   li{
     span{
       display: inline-block;
       //TODO: Remove max-width, this is a temp fix
-      max-width: 235px;
-    }
-    li {
-      span {
-        padding-left:1rem;
-        //TODO: Remove max-width, this is a temp fix
-      }
-      li span{
-        padding-left:2rem;
-      }
+      max-width: 225px;
     }
   }
-    &.children{
-      li {
-        border-bottom: 2px solid $white;
-        &:last-child{
-          border-bottom: none;
+  &.children{
+    li {
+      border-bottom: 2px solid $white;
+
+    a{
+      padding:.5rem;
+      margin-left: 1rem;
+    }
+
+      &:last-child{
+        border-bottom: none;
         }
-        a{
-          padding:1rem;
-        }
+      }
+      .children li a{
+        margin-left:2rem;
       }
     }
   }
@@ -57,6 +55,10 @@ nav#services-nav{
       font-size:20px;
       line-height: 20px;
       float:right;
+    }
+    &.current_page_ancestor > a{
+      background: $ghost-gray;
+      color:$black;
     }
     &.current_page_item {
       > a:after{
@@ -72,12 +74,19 @@ nav#services-nav{
   }
   .current_page_ancestor{
     &.page_item_has_children:not(.current_page_parent) > a{
-      border-bottom: 1px solid $ghost-gray;
+      border-bottom: 1px solid $sidewalk;
     }
 
+    &.current_page_parent {
+
+      > a{
+        background: $ghost-gray;
+        color:$black;
+
+      }
+    }
     > ul {
       display: block;
-      border-top: 2px solid white;
     }
     > a:after{
       content: '—';
