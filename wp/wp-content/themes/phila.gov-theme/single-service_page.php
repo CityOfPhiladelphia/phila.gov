@@ -18,12 +18,16 @@
       if ( empty( $parent_id ) ) {
         $parent_id = $post->ID;
       }
+      $icon = phila_get_page_icon();
       ?>
     <article id="post-<?php the_ID(); ?>">
       <div class="row">
         <header class="entry-header small-24 columns">
           <h1 class="contrast">
-          <?php echo $parent_title; ?>
+            <?php if ( !empty( $icon ) ) : ?>
+              <i class="fa <?php echo $icon ?>" aria-hidden="true"></i>
+            <?php endif; ?>
+            <?php echo $parent_title; ?>
           </h1>
         </header>
         </div>
