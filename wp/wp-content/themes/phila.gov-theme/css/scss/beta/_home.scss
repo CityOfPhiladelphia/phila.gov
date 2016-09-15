@@ -1,0 +1,162 @@
+/*
+ *
+ * Home
+ *
+ *
+*/
+.home{
+  .hero-content {
+    margin-top:0;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+
+    @media only screen and (min-width: 40em) {
+      background: url('../img/beta_homepage_CoverPhoto_light.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    img {
+
+    }
+    .beta-message {
+      p {
+          font-weight: 400;
+      }
+      .h1 {
+        font-size: 2.5rem;
+        line-height: 1;
+        @media only screen and (min-width: 40em) {
+          font-size: 3.5rem;
+        }
+      }
+      .sub-title {
+        font-size: 1.5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 2rem;
+        }
+      }
+    }
+    .mask {
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100px;
+      background-color: white;
+    }
+    section {
+      position: relative;
+      background:none;
+    }
+    .call-to-action {
+      margin: 0;
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+
+      a .fa, p {
+        color: $ben-franklin-blue;
+      }
+      a .fa {
+        font-size: 5rem;
+        line-height: 5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 3rem;
+          line-height: 4rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: 4rem;
+        }
+      }
+      a .fa-home {
+        font-size: 6rem;
+        line-height: 5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 4rem;
+          line-height: 4rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: 5rem;
+        }
+      }
+      p {
+        margin:0;
+        font-size: 1rem;
+        @media only screen and (min-width: 40em) {
+          font-size: .85rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: .85rem;
+        }
+      }
+      a {
+        background-color: #daedfe;
+      }
+      .cta-block {
+      }
+    }
+  }
+}
+
+.neighborhood-resources {
+  .row {
+    .panel {
+      background-color: rgba(255, 255, 255, 0.7);
+      margin: 0 auto;
+      header {
+        font-family: 'Montserrat', 'Tahoma', sans-serif;
+        font-weight: 400;
+      }
+      .icon {
+        margin-top: .75rem;
+        margin-bottom: .75rem;
+      }
+    }
+  }
+  @media only screen and (min-width: 40em) {
+    background:url("../img/beta_homepage_neighborhood_resources.jpg") no-repeat center top;
+    background-size: cover;
+
+    .panel {
+      max-width: 155px;
+      min-height: 161px;
+    }
+  }
+}
+
+.feedback{
+
+  .feedback-form {
+    background: $ghost-gray;
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .call-to-action {
+    background: $bike-share-blue;
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-weight: 400;
+    letter-spacing: .05rem;
+
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  // Thanks CSS Tricks - https://css-tricks.com/snippets/css/css-triangle/
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    margin: 0 auto;
+    border-top: 15px solid $bike-share-blue;
+  }
+  .up {
+    background: $ghost-gray;
+    .arrow {
+      border-bottom: 15px solid $bike-share-blue;
+      border-top: 0px solid $bike-share-blue;
+    }
+  }
+}
