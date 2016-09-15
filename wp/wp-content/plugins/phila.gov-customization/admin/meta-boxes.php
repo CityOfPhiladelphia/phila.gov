@@ -2257,6 +2257,21 @@ $meta_boxes[] = array(
   )
 );
 
+$meta_boxes[] = array(
+  'title' => 'Icon',
+  'pages' => array('service_page'),
+  'priority' => 'high',
+  'visible' => array('phila_template_select', 'topic_page'),
+
+  'fields'  => array(
+    array(
+      'id' => $prefix . 'page_icon',
+      'type' => 'text',
+      'desc'  => 'Choose a <a href="http://fontawesome.io/icons/">Font Awesome</a> icon to represent a top-level page. E.g.: fa-bell'
+    )
+  )
+);
+
 //Tax Detail Template
 $meta_boxes[] = array(
   'title' => 'Tax Highlights',

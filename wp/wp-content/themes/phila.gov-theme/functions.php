@@ -1435,6 +1435,17 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
+/**
+ * Return a string representing the template currently applied to a page in the loop.
+ *
+ **/
+
+function phila_get_page_icon(){
+
+  $icon = rwmb_meta( 'phila_page_icon' );
+
+  return $icon;
+}
 
 function phila_return_ordinal($num){
   $j = $num % 10;
