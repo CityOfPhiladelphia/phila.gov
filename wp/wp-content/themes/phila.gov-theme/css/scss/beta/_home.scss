@@ -20,6 +20,7 @@
     .beta-message {
       p {
           font-weight: 400;
+          font-size: 1.15rem;
       }
       .h1 {
         font-size: 2.5rem;
@@ -30,6 +31,8 @@
       }
       .sub-title {
         font-size: 1.5rem;
+        line-height: 1.25;
+        
         @media only screen and (min-width: 40em) {
           font-size: 2rem;
         }
@@ -79,11 +82,12 @@
       p {
         margin:0;
         font-size: 1rem;
+        line-height: 1.25;
         @media only screen and (min-width: 40em) {
           font-size: .85rem;
         }
         @media only screen and (min-width: 64em) {
-          font-size: .85rem;
+          font-size: 1rem;
         }
       }
       a {
