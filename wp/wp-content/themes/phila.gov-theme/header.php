@@ -70,43 +70,86 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="page" class="hfeed site">
 
   <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
+  <header class="global-nav">
+    <!-- Navigation -->
+    <div class="title-bar" data-responsive-toggle="beta-global-nav" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
+    </div>
 
-<header data-swiftype-index='false' id="masthead" class="site-header app">
+    <div class="top-bar" id="beta-global-nav">
+      <nav class ="top-bar-right" data-swiftype-index="false">
+        <ul class="medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+          <li class="service-menu-link" data-toggle="services-mega-menu">
+            <a href="#">Services</a>
+            <ul class="menu vertical">
+              <?php
+                $args = array(
+                  'post_type' => 'service_page',
+                  'orderby' => 'menu_order',
+                  'order' => 'ASC',
+                  'title_li' => '',
+                  'link_before' => '<span>',
+                  'link_after'  => '</span>',
+                );
+                wp_list_pages($args);
+              ?>
+            </ul>
+          </li>
+          <li role="menuitem">
+            <a href="#programs-and-initiatives">Programs & Initiatives</a>
+          </li>
+          <li role="menuitem">
+            <a href="#news-and-events">News &amp; Events</a>
+          </li>
+          <li role="menuitem">
+            <a href="#publications-and-forms">Publications &amp; Forms</a>
+          </li>
+        </ul>
+      </nav>
 
-  <div class="row site-branding">
-    <div class="small-16 columns">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo mbn-mu">
-        <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png" alt="home page"></a>
-        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-        <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-      </div>
-
-      <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) : ?>
-        <div class="search-site small-8 columns"> <?php get_search_form(); ?> </div>
-      <?php endif;?>
-
-    <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
-  </div>
-
-  <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
-
-    <?php //hide breadcrumbs on department page mobile views
-    if ( get_post_type() === 'department_page' ) : ?>
-      <div class="row expanded hide-for-small-only">
-    <?php else : ?>
-      <div class="row expanded">
-    <?php endif; ?>
-
-      <div class="columns">
-        <div class="row">
-          <div data-swiftype-index='false' class="large-24 columns">
-            <nav><?php phila_breadcrumbs(); ?></nav>
+      <div class="dropdown-pane" id="services-mega-menu" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true">
+        <div class="row expanded mbxs collapse">
+          <div class="medium-8 columns">
+            <a href="">Service Cat 1</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 2</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 3</a>
+          </div>
+        </div>
+        <div class="row expanded mbxs collapse">
+          <div class="medium-8 columns">
+            <a href="">Service Cat 4</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 5</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 6</a>
+          </div>
+        </div>
+        <div class="row expanded mbxs collapse">
+          <div class="medium-8 columns">
+            <a href="">Service Cat 7</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 8</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 9</a>
+          </div>
+        </div>
+        <div class="row expanded collapse bg-ghost-gray">
+          <div class="float-right pam pll white bg-ben-franklin-blue">
+            Services Directory
           </div>
         </div>
       </div>
     </div>
-  <?php endif; ?>
-</header><!-- #masthead -->
+  </header>
+<!-- #masthead -->
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>

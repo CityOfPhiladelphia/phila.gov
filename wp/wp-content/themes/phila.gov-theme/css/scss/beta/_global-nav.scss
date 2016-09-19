@@ -1,0 +1,58 @@
+.global-nav {
+  font-family: 'Montserrat', 'Tahoma', sans-serif;
+  text-transform: uppercase;
+  border-bottom: 1px solid $white;
+
+  a:link, a:visited {
+    font-weight: normal;
+  }
+
+  ul {
+    background-color:$white;
+  }
+
+  .dropdown-pane{
+    display: none;
+  }
+
+  @media only screen and (min-width: 40em) {
+    .menu>li {
+      > a {
+      padding: $spacing-large;
+      }
+      a:active, a:hover {
+        color: $white;
+        background-color: $ben-franklin-blue;
+      }
+    }
+    .service-menu-link ul li {
+      display:none;
+    }
+    .dropdown-pane{
+      display: block;
+      width: 100% !important;
+      border: 0;
+      padding: 0;
+      font-size: 1rem;
+      left: 0 !important;
+
+      .columns {
+        text-align: center;
+        padding-left: .25rem;
+        padding-right: .25rem;
+
+        &:first-of-type, &:last-of-type {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        a {
+          padding: $spacing-medium;
+          display:block;
+          background-color: $ghost-gray;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
