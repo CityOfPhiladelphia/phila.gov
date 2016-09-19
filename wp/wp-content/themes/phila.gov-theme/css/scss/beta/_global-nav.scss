@@ -7,23 +7,77 @@
     font-weight: normal;
     font-size: .85rem;
   }
-
-  ul {
-    background-color:$white;
+  .is-drilldown {
+    height: auto !important;
   }
+  .primary-nav {
+    ul {
+      background-color:$white;
+    }
+  }
+  .secondary-nav {
+    padding: .25rem 0;
+    font-size: .85rem;
+
+    ul {
+      padding-right: 1.5rem;
+
+      li {
+        a {
+          color: $white;
+          padding: 0 0 0 $spacing-small;
+          &:after {
+            content: '|';
+            padding-left: .5rem;
+          }
+        }
+        .fa {
+          padding: 0 0 0 $spacing-small;
+          color: $white;
+        }
+        &:last-of-type {
+          a {
+            padding: 0;
+            &:after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
 
   .dropdown-pane{
     display: none;
   }
 
-  @media only screen and (min-width: 40em) {
-    .menu>li {
-      > a {
-      padding: $spacing-large 1.5rem;
+  .title-bar {
+    color:$ben-franklin-blue;
+    .menu-icon {
+      &:after, &:before {
+        background: $ben-franklin-blue;
+        box-shadow: 0 7px 0 $ben-franklin-blue,0 14px 0 $ben-franklin-blue;
       }
-      a:active, a:hover {
-        color: $white;
-        background-color: $ben-franklin-blue;
+    }
+  }
+  .top-bar-right {
+    .is-drilldown {
+      ul {
+        background-color: $ghost-gray;
+      }
+    }
+  }
+  @media only screen and (min-width: 40em) {
+    .primary-menu {
+      .menu>li {
+        > a {
+        padding: $spacing-large 1.5rem;
+        }
+        a:active, a:hover {
+          color: $white;
+          background-color: $ben-franklin-blue;
+        }
       }
     }
     .service-menu-link ul li {
@@ -38,7 +92,7 @@
       left: 0 !important;
 
       .columns {
-        text-align: center;
+        text-align: left;
         padding-left: .25rem;
         padding-right: .25rem;
 
@@ -52,6 +106,22 @@
           display:block;
           background-color: $ghost-gray;
           width: 100%;
+        }
+      }
+      .mega-menu-footer {
+        a {
+          height: 50px;
+          color: $white;
+        }
+        .left-arrow-indent:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+          border-left: 20px solid $ghost-gray;
+          position: absolute;
+          margin-top: 0px;
         }
       }
     }

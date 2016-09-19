@@ -69,16 +69,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div id="page" class="hfeed site">
 
-  <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
+  <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
   <header class="global-nav">
-    <!-- Navigation -->
+    <!-- Secondary Navigation -->
+    <div class="top-bar bg-ben-franklin-blue">
+      <div class="top-bar-right secondary-nav">
+        <ul class="medium-horizontal menu show-for-medium">
+          <li role="menuitem">
+            <a href="">Mayor's Office</a>
+          </li>
+          <li role="menuitem">
+            <a href="">City Gov Directory</a>
+          </li>
+          <li role="menuitem">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
+              <script type="text/javascript">
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                }
+              </script>
+              <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Navigation Toggle -->
     <div class="title-bar" data-responsive-toggle="beta-global-nav" data-hide-for="medium">
       <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
     </div>
-
-    <div class="top-bar" id="beta-global-nav">
+    <!-- Primary Navigation -->
+    <div class="top-bar primary-menu" id="beta-global-nav">
       <nav class ="top-bar-right" data-swiftype-index="false">
         <ul class="medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
           <li class="service-menu-link" data-toggle="services-mega-menu">
             <a href="#">Services</a>
             <ul class="menu vertical">
@@ -104,6 +128,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li role="menuitem">
             <a href="#publications-and-forms">Publications &amp; Forms</a>
           </li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/">Mayor's Office</a></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/">City Gov Directory</a></li>
         </ul>
       </nav>
 
@@ -141,9 +167,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="">Service Cat 9</a>
           </div>
         </div>
-        <div class="row expanded collapse bg-ghost-gray">
-          <div class="float-right pam pll white bg-ben-franklin-blue">
-            Services Directory
+        <div class="row expanded mbxs collapse">
+          <div class="medium-8 columns">
+            <a href="">Service Cat 10</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 11</a>
+          </div>
+          <div class="medium-8 columns">
+            <a href="">Service Cat 12</a>
+          </div>
+        </div>
+        <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
+          <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
+            <div class="valign">
+              <a href="" class="phl valign-cell service-directory" style="">Services Directory</a>
+            </div>
           </div>
         </div>
       </div>

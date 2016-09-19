@@ -1,0 +1,44 @@
+#google_translate_element {
+display: inline-block;
+font-size: .8rem;
+line-height: 1;
+
+  .goog-te-gadget-simple{
+    background:none;
+    border:none;
+    text-transform: uppercase;
+    padding:0;
+
+    img {
+      display: none;
+    }
+    span {
+      vertical-align: top !important;
+    }
+    .goog-te-menu-value {
+      margin: 0 0;
+
+      span:first-of-type {
+        display:none;
+      }
+
+      span:last-of-type::before {
+        content: "Translate";
+        vertical-align:top !important;
+        padding-right:.25rem;
+        font-size: .85rem;
+      }
+      span:hover:last-of-type::before {
+        // color:$bell-yellow;
+      }
+
+      span {
+        font-family: 'Montserrat', 'Tahoma', sans-serif;
+        border:none !important;
+        padding: 0;
+        color:$white !important;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
