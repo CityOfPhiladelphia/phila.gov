@@ -11,6 +11,10 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
+  $('.menu-icon').click(function(){
+    $(this).toggleClass('active');
+  });
+
   //add search focus on tap or click
   $('.search-icon').click(function() {
 
@@ -35,6 +39,7 @@ jQuery(document).ready(function($) {
 
   var alphaAlertHeight = $("#alpha-alert").css( "height" );
 
+  // TODO: Should be unnecessary after switching to beta. Remove when appropriate.
   //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
   if (alphaAlertHeight){
     $('body.custom-background').css('background-position-y', alphaAlertHeight );
@@ -206,5 +211,5 @@ jQuery(document).ready(function($) {
       }, 700);
     });
   }
-  
+
 });

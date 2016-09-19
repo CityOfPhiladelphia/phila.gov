@@ -53,12 +53,35 @@
   }
 
   .title-bar {
+    padding-left: 0;
     color:$ben-franklin-blue;
+    padding: .75rem 0 0;
     .menu-icon {
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      padding: .75rem;
+      margin-left:0;
+
+      .fa {
+        display: block;
+      }
       &:after, &:before {
         background: $ben-franklin-blue;
-        box-shadow: 0 7px 0 $ben-franklin-blue,0 14px 0 $ben-franklin-blue;
+        box-shadow: none;
+        height: 0;
       }
+      &.active {
+        background-color: $ghost-gray;
+      }
+    }
+    .title-bar-title {
+      margin: 0;
+      font-size: .65rem;
     }
   }
   .top-bar-right {

@@ -96,7 +96,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <!-- Navigation Toggle -->
     <div class="title-bar" data-responsive-toggle="beta-global-nav" data-hide-for="medium">
-      <button class="menu-icon" type="button" data-toggle><span class="title-bar-title">Menu</span></button>
+      <button class="menu-icon" type="button" data-toggle>
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        <div class="title-bar-title">Menu</div>
+      </button>
     </div>
     <!-- Primary Navigation -->
     <div class="top-bar primary-menu" id="beta-global-nav">
