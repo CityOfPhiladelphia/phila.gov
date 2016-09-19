@@ -5,6 +5,7 @@
 
   a:link, a:visited {
     font-weight: normal;
+    font-size: .85rem;
   }
 
   ul {
@@ -18,7 +19,7 @@
   @media only screen and (min-width: 40em) {
     .menu>li {
       > a {
-      padding: $spacing-large;
+      padding: $spacing-large 1.5rem;
       }
       a:active, a:hover {
         color: $white;
@@ -47,7 +48,7 @@
         }
 
         a {
-          padding: $spacing-medium;
+          padding: $spacing-large;
           display:block;
           background-color: $ghost-gray;
           width: 100%;
