@@ -70,18 +70,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="page" class="hfeed site">
 
   <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
+
   <header class="global-nav">
     <!-- Secondary Navigation -->
     <div class="top-bar bg-ben-franklin-blue">
       <div class="top-bar-right secondary-nav">
         <ul class="medium-horizontal menu show-for-medium">
-          <li role="menuitem">
-            <a href="">Mayor's Office</a>
-          </li>
-          <li role="menuitem">
-            <a href="">City Gov Directory</a>
-          </li>
-          <li role="menuitem">
+          <li><a href="">Mayor's Office</a></li>
+          <li><a href="">City Government Directory</a></li>
+          <li>
             <i class="fa fa-globe" aria-hidden="true"></i>
             <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
               <script type="text/javascript">
@@ -95,110 +92,119 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
 
-    <!-- Navigation Toggle -->
-    <div class="title-bar" data-responsive-toggle="beta-global-nav" data-hide-for="medium">
-      <button class="menu-icon" type="button" data-toggle>
-        <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
-        <div class="title-bar-title">Menu</div>
-      </button>
-      <button class="search-icon" type="button">
-        <i class="fa fa-search fa-3x" aria-hidden="true"></i>
-        <div class="title-bar-title">Search</div>
-      </button>
-    </div>
-    <!-- Primary Navigation -->
-    <div class="top-bar primary-menu" id="beta-global-nav">
-      <nav class ="top-bar-right" data-swiftype-index="false">
-        <ul class="medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
-          <li class="service-menu-link" data-toggle="services-mega-menu">
-            <a href="#">Services</a>
-            <ul class="menu vertical">
-              <?php
-                $args = array(
-                  'post_type' => 'service_page',
-                  'orderby' => 'menu_order',
-                  'order' => 'ASC',
-                  'title_li' => '',
-                  'link_before' => '<span>',
-                  'link_after'  => '</span>',
-                );
-                wp_list_pages($args);
-              ?>
-            </ul>
-          </li>
-          <li role="menuitem">
-            <a href="#programs-and-initiatives">Programs &amp; Initiatives</a>
-          </li>
-          <li role="menuitem">
-            <a href="#news-and-events">News &amp; Events</a>
-          </li>
-          <li role="menuitem">
-            <a href="#publications-and-forms">Publications &amp; Forms</a>
-          </li>
-          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
-            <a href="/">Mayor's Office</a>
-          </li>
-          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
-            <a href="/">City Gov Directory</a>
-          </li>
-        </ul>
-
-      </nav>
-
-      <div class="dropdown-pane" id="services-mega-menu" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true">
-        <div class="row expanded mbxs collapse">
-          <div class="medium-8 columns">
-            <a href="">Service Cat 1</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 2</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 3</a>
-          </div>
-        </div>
-        <div class="row expanded mbxs collapse">
-          <div class="medium-8 columns">
-            <a href="">Service Cat 4</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 5</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 6</a>
-          </div>
-        </div>
-        <div class="row expanded mbxs collapse">
-          <div class="medium-8 columns">
-            <a href="">Service Cat 7</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 8</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 9</a>
-          </div>
-        </div>
-        <div class="row expanded mbxs collapse">
-          <div class="medium-8 columns">
-            <a href="">Service Cat 10</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 11</a>
-          </div>
-          <div class="medium-8 columns">
-            <a href="">Service Cat 12</a>
-          </div>
-        </div>
-        <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
-          <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
-            <div class="valign">
-              <a href="" class="phl valign-cell service-directory" style="">Services Directory</a>
-            </div>
-          </div>
-        </div>
+    <div class="row">
+      <!-- Navigation Toggle -->
+      <!-- title bar hides itself on large screens -->
+      <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
+        <button class="menu-icon" type="button" data-toggle>
+          <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+          <div class="title-bar-title">Menu</div>
+        </button>
       </div>
+
+      <div class="logo small-16 medium-6 columns"><a href=""><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a></div>
+
+      <div class="small-4 medium-push-17 medium-1 columns">
+        <button class="site-search" type="button">
+          <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+          <div class="show-for-small-only">Search</div>
+        </button>
+      </div>
+
+      <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns" id="beta-global-nav">
+        <!-- Primary Navigation -->
+        <div class="top-bar-right">
+          <nav data-swiftype-index="false">
+            <ul class="medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+              <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+              <li class="service-menu-link" data-toggle="services-mega-menu">
+                <a href="#">Services</a>
+                <ul class="menu vertical">
+                  <?php
+                    $args = array(
+                      'post_type' => 'service_page',
+                      'orderby' => 'menu_order',
+                      'order' => 'ASC',
+                      'title_li' => '',
+                      'link_before' => '<span>',
+                      'link_after'  => '</span>',
+                    );
+                    wp_list_pages($args);
+                  ?>
+                </ul>
+              </li>
+              <li role="menuitem">
+                <a href="#programs-and-initiatives">Programs &amp; Initiatives</a>
+              </li>
+              <li role="menuitem">
+                <a href="#news-and-events">News &amp; Events</a>
+              </li>
+              <li role="menuitem">
+                <a href="#publications-and-forms">Publications &amp; Forms</a>
+              </li>
+              <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
+                <a href="/">Mayor's Office</a>
+              </li>
+              <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
+                <a href="/">City Gov Directory</a>
+              </li>
+            </ul>
+
+            <div class="dropdown-pane" id="services-mega-menu" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true">
+              <div class="row expanded mbxs collapse">
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 1</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 2</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 3</a>
+                </div>
+              </div>
+              <div class="row expanded mbxs collapse">
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 4</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 5</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 6</a>
+                </div>
+              </div>
+              <div class="row expanded mbxs collapse">
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 7</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 8</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 9</a>
+                </div>
+              </div>
+              <div class="row expanded mbxs collapse">
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 10</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 11</a>
+                </div>
+                <div class="medium-8 columns">
+                  <a href="">Service Cat 12</a>
+                </div>
+              </div>
+              <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
+                <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
+                  <div class="valign">
+                    <a href="" class="phl valign-cell service-directory">Services Directory</a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end service lvl 1 -->
+          </div>
+        </div>
     </div>
   </header>
 <!-- #masthead -->
