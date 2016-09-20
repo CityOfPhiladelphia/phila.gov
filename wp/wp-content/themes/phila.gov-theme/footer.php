@@ -182,6 +182,6 @@
 </script>
 
 <?php wp_footer(); ?>
-
+<?php get_template_part( 'partials/content', 'service-mega-menu' ) ?>
 </body>
 </html>
