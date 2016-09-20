@@ -88,7 +88,7 @@ get_header(); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
 
-    <div class="news-row row expanded">
+    <div class="news-row row ptm expanded">
       <div class="columns">
         <div class="row">
           <div class="columns">
@@ -121,7 +121,7 @@ get_header(); ?>
     </div>
 
    <section>
-      <div class="row">
+      <div class="row ptm">
         <div class="columns">
           <h2>Neighborhood resources</h2>
         </div>
@@ -271,7 +271,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <section class="mbl phila-redesign">
+    <section class="ptm pbxl phila-redesign">
       <div class="row">
         <div class="columns">
           <h2 class="contrast">Redesigning Phila.gov</h2>
