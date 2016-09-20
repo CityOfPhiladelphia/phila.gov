@@ -9,9 +9,14 @@ footer{
     background: $ghost-gray;
     color: $dark-gray;
 
+    .button {
+      width: 100%;
+    }
+
     .button-label {
       width: 100%;
     }
+
     a:link, a:visited {
          color:$ben-franklin-blue;
          font-weight:normal;
