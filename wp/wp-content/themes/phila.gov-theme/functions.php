@@ -973,8 +973,8 @@ function phila_get_home_news(){
 
     echo '<div class="content-block">';
 
-    the_title('<h3>', '</h3>');
-    
+    the_title('<h3 class="pvm">', '</h3>');
+
     the_date('' ,'<span class="small-text">','</span>');
 
     if ($contributor === ''){
