@@ -92,7 +92,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
 
-    <div class="row">
+    <div class="row equal-height">
       <!-- Navigation Toggle -->
       <!-- title bar hides itself on large screens -->
       <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
@@ -102,20 +102,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </button>
       </div>
 
-      <div class="small-16 medium-6 columns">
-        <div class="logo mvs">
-          <a href="<?php echo get_home_url(); ?>"><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a>
+      <div class="small-16 medium-6 columns equal valign">
+        <div class="valign-cell">
+          <a href="<?php echo get_home_url(); ?>" class="logo"><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a>
         </div>
       </div>
 
-      <div class="small-4 medium-push-17 medium-1 columns">
-        <button class="site-search" type="button">
-          <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-          <div class="show-for-small-only">Search</div>
+      <div class="small-4 medium-push-17 medium-1 columns equal">
+        <button class="site-search valign" type="button">
+          <div class="valign-cell">
+            <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+            <div class="show-for-small-only">Search</div>
+          </div>
         </button>
       </div>
 
-      <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns" id="beta-global-nav">
+      <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns equal" id="beta-global-nav">
         <!-- Primary Navigation -->
         <div class="top-bar-right">
           <nav data-swiftype-index="false">
