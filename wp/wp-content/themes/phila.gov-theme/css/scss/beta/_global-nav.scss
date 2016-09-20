@@ -1,6 +1,7 @@
 .global-nav {
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   border-bottom: 1px solid $white;
+
   a:link, a:visited {
     font-weight: normal;
     font-size: .85rem;
@@ -58,11 +59,8 @@
     .menu-icon {
       position: relative;
     }
-    .search-icon {
-      background: none;
-      color: $ben-franklin-blue;
-    }
-    .menu-icon, .search-icon {
+
+    .menu-icon {
       text-align: center;
       display: inline-block;
       vertical-align: middle;
@@ -101,7 +99,7 @@
     .primary-menu {
       .menu>li {
         > a {
-        padding: $spacing-large 1.5rem;
+          padding: $spacing-medium 1.5rem;
         }
         a:active, a:hover {
           color: $white;
@@ -109,7 +107,7 @@
         }
       }
       button {
-      padding: $spacing-medium 1.5rem;
+        //padding: $spacing-medium 1.5rem;
       }
     }
     .service-menu-link ul li {
