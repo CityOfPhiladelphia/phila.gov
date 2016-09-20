@@ -102,7 +102,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </button>
       </div>
 
-      <div class="logo small-16 medium-6 columns"><a href=""><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a></div>
+      <div class="small-16 medium-6 columns">
+        <div class="logo mvs">
+          <a href="<?php echo get_home_url(); ?>"><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a>
+        </div>
+      </div>
 
       <div class="small-4 medium-push-17 medium-1 columns">
         <button class="site-search" type="button">
@@ -115,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <!-- Primary Navigation -->
         <div class="top-bar-right">
           <nav data-swiftype-index="false">
-            <ul class="medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+            <ul class="medium-horizontal menu pan" data-responsive-menu="drilldown medium-dropdown">
               <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
               <li class="service-menu-link" data-toggle="services-mega-menu">
                 <a href="#">Services</a>
@@ -149,63 +153,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <a href="/">City Gov Directory</a>
               </li>
             </ul>
-
-            <div class="dropdown-pane" id="services-mega-menu" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true">
-              <div class="row expanded mbxs collapse">
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 1</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 2</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 3</a>
-                </div>
-              </div>
-              <div class="row expanded mbxs collapse">
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 4</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 5</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 6</a>
-                </div>
-              </div>
-              <div class="row expanded mbxs collapse">
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 7</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 8</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 9</a>
-                </div>
-              </div>
-              <div class="row expanded mbxs collapse">
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 10</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 11</a>
-                </div>
-                <div class="medium-8 columns">
-                  <a href="">Service Cat 12</a>
-                </div>
-              </div>
-              <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
-                <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
-                  <div class="valign">
-                    <a href="" class="phl valign-cell service-directory">Services Directory</a>
-                  </div>
-                </div>
-              </div>
-            </div><!-- end service lvl 1 -->
           </div>
         </div>
-    </div>
+      </div>
+
   </header>
 <!-- #masthead -->
   <?php
