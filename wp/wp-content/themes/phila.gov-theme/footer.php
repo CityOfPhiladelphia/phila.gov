@@ -118,12 +118,6 @@
           <ul class="inline-list">
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-tv fa-3x" title="TV" aria-hidden="true"></i>
-                <span class="show-for-sr">TV</span>
-              </a>
-            </li>
-            <li class="pvxs">
-              <a href="" target="_blank" class="phm">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
@@ -134,13 +128,19 @@
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
-            <br/>
             <li class="pln pvxs">
               <a href="" target="_blank" class="phm">
                 <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
+            <li class="pvxs">
+              <a href="" target="_blank" class="phm">
+                <i class="fa fa-tv fa-3x" title="TV" aria-hidden="true"></i>
+                <span class="show-for-sr">TV</span>
+              </a>
+            </li>
+            <br/>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
@@ -153,7 +153,6 @@
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
-            <br/>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
                 <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
