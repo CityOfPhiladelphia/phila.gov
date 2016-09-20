@@ -11,8 +11,9 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
+  //TODO: Replace this temporary menu-icon snippet with fully fleshed out script
   $('.menu-icon').click(function(){
-    $(this).toggleClass('active');
+    $('.menu-icon').toggleClass('active');
   });
 
   //add search focus on tap or click
