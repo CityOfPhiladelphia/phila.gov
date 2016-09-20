@@ -118,45 +118,45 @@
           <ul class="inline-list">
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-tv fa-2x" title="TV" aria-hidden="true"></i>
+                <i class="fa fa-tv fa-3x" title="TV" aria-hidden="true"></i>
                 <span class="show-for-sr">TV</span>
               </a>
             </li>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
+                <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <br/>
             <li class="pln pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+                <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-youtube fa-2x" title="Youtube" aria-hidden="true"></i>
+                <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
+                <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <br/>
             <li class="pvxs">
               <a href="" target="_blank" class="phm">
-                <i class="fa fa-github fa-2x" title="GitHub" aria-hidden="true"></i>
+                <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>
             </li>
