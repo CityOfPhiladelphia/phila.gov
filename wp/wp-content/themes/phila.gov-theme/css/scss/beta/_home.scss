@@ -134,14 +134,16 @@
       font-size: 1rem;
     }
   }
-
+  .form-line-active {
+    background: none;
+  }
   .call-to-action {
     background: $bike-share-blue;
     text-transform: uppercase;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
     font-weight: 400;
     letter-spacing: .05rem;
-
+    cursor:pointer;
     span {
       text-decoration: underline;
     }
@@ -169,9 +171,52 @@
 .phila-redesign {
 
   .process {
+    .marker {
+      .fa {
+          width: 100%;
+      }
+      &:after {
+        content: '';
+        text-align: center;
+        border-right: 1px solid $ben-franklin-blue;
+        display: inline-block;
+        height:20px;
+        width:0px;
+      }
+    }
     .process-label {
       text-transform: uppercase;
       font-weight: bold;
+      width: 100%;
+      text-align: center;
+      height:40px;
+    }
+    .left-arrow-indent {
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 15px solid;
+        position: absolute;
+        margin-top: 0px;
+      }
+      &.left-arrow-white {
+        &:before {
+          border-left-color: $white;
+        }
+      }
+      &.left-arrow-medium-gray {
+        &:before {
+          border-left-color: $medium-gray;
+        }
+      }
+      &.left-arrow-ben-franklin-blue {
+        &:before {
+          border-left-color: $ben-franklin-blue;
+        }
+      }
     }
   }
 }
