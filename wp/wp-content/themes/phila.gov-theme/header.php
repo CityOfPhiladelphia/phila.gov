@@ -94,11 +94,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </ul>
       </div>
     </div>
+
     <!-- Navigation Toggle -->
     <div class="title-bar" data-responsive-toggle="beta-global-nav" data-hide-for="medium">
       <button class="menu-icon" type="button" data-toggle>
-        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
         <div class="title-bar-title">Menu</div>
+      </button>
+      <button class="search-icon" type="button">
+        <i class="fa fa-search fa-3x" aria-hidden="true"></i>
+        <div class="title-bar-title">Search</div>
       </button>
     </div>
     <!-- Primary Navigation -->
@@ -123,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </ul>
           </li>
           <li role="menuitem">
-            <a href="#programs-and-initiatives">Programs & Initiatives</a>
+            <a href="#programs-and-initiatives">Programs &amp; Initiatives</a>
           </li>
           <li role="menuitem">
             <a href="#news-and-events">News &amp; Events</a>
@@ -131,9 +136,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li role="menuitem">
             <a href="#publications-and-forms">Publications &amp; Forms</a>
           </li>
-          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/">Mayor's Office</a></li>
-          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/">City Gov Directory</a></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
+            <a href="/">Mayor's Office</a>
+          </li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
+            <a href="/">City Gov Directory</a>
+          </li>
         </ul>
+
       </nav>
 
       <div class="dropdown-pane" id="services-mega-menu" data-dropdown data-options="closeOnClick:true; hover: true; hoverPane: true">

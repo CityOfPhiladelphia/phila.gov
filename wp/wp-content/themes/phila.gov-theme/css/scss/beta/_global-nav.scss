@@ -2,7 +2,6 @@
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   text-transform: uppercase;
   border-bottom: 1px solid $white;
-
   a:link, a:visited {
     font-weight: normal;
     font-size: .85rem;
@@ -54,11 +53,18 @@
 
   .title-bar {
     padding-left: 0;
+    padding-right: 0;
     color:$ben-franklin-blue;
     padding: .75rem 0 0;
     .menu-icon {
-      text-align: center;
       position: relative;
+    }
+    .search-icon {
+      background: none;
+      color: $ben-franklin-blue;
+    }
+    .menu-icon, .search-icon {
+      text-align: center;
       display: inline-block;
       vertical-align: middle;
       cursor: pointer;
@@ -81,7 +87,8 @@
     }
     .title-bar-title {
       margin: 0;
-      font-size: .65rem;
+      font-size: .8rem;
+      text-transform: uppercase;
     }
   }
   .top-bar-right {
@@ -101,6 +108,9 @@
           color: $white;
           background-color: $ben-franklin-blue;
         }
+      }
+      button {
+      padding: $spacing-medium 1.5rem;
       }
     }
     .service-menu-link ul li {
