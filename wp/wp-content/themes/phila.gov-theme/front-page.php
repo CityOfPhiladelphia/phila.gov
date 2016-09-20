@@ -239,7 +239,7 @@ get_header(); ?>
       <div class="feedback phm phn-mu mvs mvn-mu">
         <div class="row expanded" data-toggle="feedback">
           <div class="column call-to-action pas center">
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i> What should we add to this section? <span class="nowrap">Tell us</span>.
+            <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> What should we add to this section? Tell us.
           </div>
         </div>
         <div class="feedback-form" data-type="feedback-form" style="display:none;">
@@ -266,7 +266,7 @@ get_header(); ?>
         </div>
         <div class="row expanded" data-toggle="feedback" data-type="feedback-footer" style="display:none;">
           <div class="column call-to-action center" >
-            <div class="pas"><i class="fa fa-close" aria-hidden="true"></i> <span>Close</span> </div>
+            <div class="pas"><i class="fa fa-close" aria-hidden="true"></i> Close</div>
           </div>
         </div>
     </section>
