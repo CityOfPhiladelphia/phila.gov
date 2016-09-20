@@ -1,13 +1,9 @@
 .global-nav {
   font-family: 'Montserrat', 'Tahoma', sans-serif;
-  text-transform: uppercase;
   border-bottom: 1px solid $white;
   a:link, a:visited {
     font-weight: normal;
     font-size: .85rem;
-  }
-  .is-drilldown {
-    height: auto !important;
   }
   .primary-nav {
     ul {
@@ -46,6 +42,9 @@
     }
   }
 
+  .top-bar{
+    text-transform: uppercase;
+  }
 
   .dropdown-pane{
     display: none;
