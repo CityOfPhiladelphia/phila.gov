@@ -134,12 +134,20 @@
           display:block;
           background-color: $ghost-gray;
           width: 100%;
+          &:hover {
+            color:$white;
+            background: $ben-franklin-blue;
+          }
         }
       }
       .mega-menu-footer {
         a {
           height: 50px;
           color: $white;
+          &:hover {
+            background:$white;
+            color:$ben-franklin-blue;
+          }
         }
         .left-arrow-indent:before {
           content: '';
