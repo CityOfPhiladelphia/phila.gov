@@ -73,22 +73,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <header class="global-nav">
     <!-- Secondary Navigation -->
-    <div class="top-bar bg-ben-franklin-blue">
-      <div class="top-bar-right secondary-nav">
-        <ul class="medium-horizontal menu show-for-medium">
-          <li><a href="">Mayor's Office</a></li>
-          <li><a href="">City Government Directory</a></li>
-          <li>
-            <i class="fa fa-globe" aria-hidden="true"></i>
-            <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
-              <script type="text/javascript">
-                function googleTranslateElementInit() {
-                  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-                }
-              </script>
-              <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          </li>
-        </ul>
+    <div class="row bg-ben-franklin-blue expanded">
+      <div class="columns">
+        <div class="row">
+          <div class="columns">
+            <div class="top-bar">
+              <div class="top-bar-right secondary-nav">
+                <ul class="medium-horizontal menu show-for-medium">
+                  <li><a href="">Mayor's Office</a></li>
+                  <li><a href="">City Government Directory</a></li>
+                  <li>
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                    <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
+                      <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                        }
+                      </script>
+                      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row expanded background-white" data-sticky-container>
@@ -111,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <div class="small-4 medium-push-17 medium-1 columns equal">
           <button class="site-search valign" type="button">
-            <div class="valign-cell">
+            <div class="valign-cell float-right">
               <i class="fa fa-search fa-2x" aria-hidden="true"></i>
               <div class="show-for-small-only">Search</div>
             </div>
