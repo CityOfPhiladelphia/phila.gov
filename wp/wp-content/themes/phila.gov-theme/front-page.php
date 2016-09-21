@@ -295,48 +295,45 @@ get_header(); ?>
           <h3>Where are we in the redesign process?</h3>
           <p>For the past couple of years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
           <div class="row collapse">
-            <div class="medium-8 pvs columns center small-centered ben-franklin-blue marker">
+            <div class="medium-8 columns center small-centered ben-franklin-blue marker">
               <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
             </div>
           </div>
-          <div class="row collapse white">
-
-            <div class="medium-8 columns bg-medium-gray left-arrow-indent left-arrow-white">
-              <div class="process-label valign">
-                <div class="valign-cell">
-                  <span class="">Alpha</span>
+          <div class="row collapse">
+            <div class="medium-8 columns">
+              <header class="bg-medium-gray">
+                <div class="process-label valign left-arrow-indent left-arrow-white">
+                  <div class="valign-cell">
+                    <h4 class="mbn h5 white">Alpha</h3>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </header>
 
-            <div class="medium-8 columns bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
-              <div class="process-label valign">
-                <div class="valign-cell">
-                  <span class="">Beta</span>
+              <span class="pvm phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+
+            </div>
+            <div class="medium-8 columns small-text">
+              <header class="bg-ben-franklin-blue">
+                <div class="process-label valign bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
+                  <div class="valign-cell">
+                    <span class="mbn h5 white">Beta</span>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </header>
 
-            <div class="medium-7 columns bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue">
-              <div class="process-label valign">
-                <div class="valign-cell">
-                  <span class="">Launch</span>
+              <span class="pvm phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+
+            </div>
+            <div class="medium-8 columns end">
+              <header>
+                <div class="process-label valign bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
+                  <div class="valign-cell">
+                    <h4 class="mbn h5 white">Launch</h3>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </header>
+              <span class="pvm phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
 
-            <div class="medium-1 columns bg-white left-arrow-indent left-arrow-medium-gray">
-            </div>
-          </div>
-          <div class="row">
-            <div class="medium-8 pvs columns">
-              Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.
-            </div>
-            <div class="medium-8 pvs columns">
-              Versions of beta.phila.gov will roll out in 2016 and 2017.
-            </div>
-            <div class="medium-8 pvs columns">
-              Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.
             </div>
           </div>
         </div>
