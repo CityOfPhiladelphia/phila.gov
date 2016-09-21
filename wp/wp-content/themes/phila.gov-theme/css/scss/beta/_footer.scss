@@ -5,121 +5,123 @@
  *
 */
 footer{
-  .philly311 {
-    background: $ghost-gray;
-    color: $dark-gray;
+  &.site-footer {
+    background: $white;
 
-    .button {
-      width: 100%;
-    }
+    .philly311 {
+      background: $ghost-gray;
+      color: $dark-gray;
 
-    .button-label {
-      width: 100%;
-    }
+      .button-label {
+        width: 100%;
+      }
 
-    a:link, a:visited {
+      .interact-311 {
+        padding-right: $spacing-large;
+
+        @media only screen and (min-width: 40em) {
+          padding-right: $spacing-medium;
+        }
+        @media only screen and (min-width: 64em) {
+          padding-right: $spacing-large;
+        }
+      }
+
+      .trending-requests {
+        a:link, a:visited {
          color:$ben-franklin-blue;
          font-weight:normal;
-       }
-    a:hover, a:active{
-     color:$dark-gray;
+        }
+        a:hover, a:active{
+         color:$dark-gray;
+        }
+      }
     }
-    .interact-311 {
-      padding-right: $spacing-large;
 
-      @media only screen and (min-width: 40em) {
-        padding-right: $spacing-medium;
-      }
-      @media only screen and (min-width: 64em) {
-        padding-right: $spacing-large;
-      }
-
-    }
-  }
-
-  .links {
-    .contact{
-      background:$ghost-gray;
-      color:$dark-gray;
-      aside{
-        font-size: 0.85rem;
-
-        .content{
-          padding: 1rem;
-        }
-      }
-      aside{
-        border-bottom: 1px solid $white;
-      }
-
-      @media only screen and (min-width: 40em) {
-        aside {
-          border-bottom: 0;
-        }
-        aside:not(:last-child) {
-          border-right: 1px solid rgba(68,68,68, 0.5);
-        }
-      }
-      .logo{
-        padding:1rem 0;
-      }
-      .vcard,
-      .vcard-label,
-      .tel a:link,
-      .email a:link{
+    .links {
+      .contact{
+        background:$ghost-gray;
         color:$dark-gray;
-        font-weight: normal;
-        text-transform: none;
-        margin: 1em 0;
-        .tel .vcard-label,
-        .fax .vcard-label,
-        .email .vcard-label{
-          font-weight: bold;
+        aside{
+          font-size: 0.85rem;
+
+          .content{
+            padding: 1rem;
+          }
         }
+        aside{
+          border-bottom: 1px solid $white;
+        }
+
+        @media only screen and (min-width: 40em) {
+          aside {
+            border-bottom: 0;
+          }
+          aside:not(:last-child) {
+            border-right: 1px solid rgba(68,68,68, 0.5);
+          }
+        }
+        .logo{
+          padding:1rem 0;
+        }
+        .vcard,
+        .vcard-label,
+        .tel a:link,
         .email a:link{
-          color: $ben-franklin-blue;
-          text-decoration: underline;
+          color:$dark-gray;
+          font-weight: normal;
+          text-transform: none;
+          margin: 1em 0;
+          .tel .vcard-label,
+          .fax .vcard-label,
+          .email .vcard-label{
+            font-weight: bold;
+          }
+          .email a:link{
+            color: $ben-franklin-blue;
+            text-decoration: underline;
+          }
         }
       }
     }
-  }
-  .trending-requests {
-    a:link {
-      font-size: 1rem;
-    }
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-
-    li {
-      padding: $spacing-small 0;
-    }
-  }
-  &.site-footer {
-    .fat {
-      padding: $spacing-medium 0;
-      background: $dark-gray;
-      h1, h2, h3, h4, h5, h6 {
-        border-bottom: 0;
-        padding: 0;
-        color: $white;
-        text-transform: none;
+    .trending-requests {
+      a:link {
+        font-size: 1rem;
       }
     }
-    a:hover, a:active{
-     color: $bike-share-blue;
-    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
 
-    // TODO: move to utils
-    // Inline list
-    ul.inline-list {
-      list-style-type: none;
-      margin: 0;
-      padding: $spacing-small 0 0;
       li {
-        padding: 0 0 $spacing-medium 0;
+        padding: $spacing-small 0;
+      }
+    }
+    &.site-footer {
+      .fat {
+        padding: $spacing-medium 0;
+        background: $dark-gray;
+        h1, h2, h3, h4, h5, h6 {
+          border-bottom: 0;
+          padding: 0;
+          color: $white;
+          text-transform: none;
+        }
+      }
+      a:hover, a:active{
+       color: $bike-share-blue;
+      }
+
+      // TODO: move to utils
+      // Inline list
+      ul.inline-list {
+        list-style-type: none;
+        margin: 0;
+        padding: $spacing-small 0 0;
+        li {
+          padding: 0 0 $spacing-medium 0;
+        }
       }
     }
   }
