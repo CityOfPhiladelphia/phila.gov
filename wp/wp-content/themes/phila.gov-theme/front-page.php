@@ -122,7 +122,7 @@ get_header(); ?>
       </div>
     </div>
     <!-- End News -->
-    
+
     <section>
       <div class="row ptm">
         <div class="columns">
@@ -281,7 +281,7 @@ get_header(); ?>
           </div>
         </div>
         <div class="row equal-height">
-          <div class="medium-10 columns border-right-sidewalk equal about">
+          <div class="medium-10 columns bdr-right-mu equal about">
             <section>
               <h3>About the Redesign</h3>
               <p>We understand that the City of Philadelphia’s current website, phila.gov, isn’t easy to use. So we’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
@@ -294,7 +294,7 @@ get_header(); ?>
               </ol>
             </section>
           </div>
-          <div class="medium-14 pll plm columns equal process">
+          <div class="show-for-medium medium-14 pll plm columns equal process">
             <section>
               <h3>Where are we in the redesign process?</h3>
               <p>For the past couple of years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
