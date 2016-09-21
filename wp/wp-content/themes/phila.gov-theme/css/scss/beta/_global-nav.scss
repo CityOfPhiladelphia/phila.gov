@@ -48,7 +48,9 @@
     background: $white;
     width: 100% !important;
     left:0 !important;
-    box-shadow: 0 3px 10px rgba($medium-gray, .5);
+    &.is-stuck{
+      box-shadow: 0 3px 10px rgba($medium-gray, .5);
+    }
   }
   .top-bar{
     text-transform: uppercase;
@@ -118,12 +120,15 @@
       display:none;
     }
     .dropdown-pane{
-      display: block;
       width: 100% !important;
       border: 0;
       padding: 0;
       font-size: 1rem;
       left: 0 !important;
+
+      &.is-open{
+        display: block;
+      }
 
       .columns {
         text-align: left;
