@@ -100,11 +100,13 @@
       background-color: $ghost-gray;
     }
   }
+
   @media only screen and (min-width: 40em) {
     .primary-menu {
       .menu>li {
         > a {
-          padding: $spacing-large 1.5rem;
+          padding: $spacing-large 1rem;
+          text-align: center;
         }
         a:active, a:hover {
           color: $white;
@@ -169,6 +171,16 @@
           border-left: 20px solid $ghost-gray;
           position: absolute;
           margin-top: 0px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 64em) {
+    .primary-menu {
+      .menu>li {
+        > a {
+          padding: $spacing-large 1.5rem;
         }
       }
     }
