@@ -73,27 +73,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <header class="global-nav">
     <!-- Secondary Navigation -->
-    <div class="row bg-ben-franklin-blue expanded">
-      <div class="columns">
-        <div class="row">
-          <div class="columns">
-            <div class="top-bar">
-              <div class="top-bar-right secondary-nav">
-                <ul class="medium-horizontal menu show-for-medium">
-                  <li><a href="">Mayor's Office</a></li>
-                  <li><a href="">City Government Directory</a></li>
-                  <li>
-                    <i class="fa fa-globe" aria-hidden="true"></i>
-                    <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
-                      <script type="text/javascript">
-                        function googleTranslateElementInit() {
-                          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-                        }
-                      </script>
-                      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                  </li>
-                </ul>
-              </div>
+    <div class="row columns bg-ben-franklin-blue expanded secondary-nav">
+      <div class="row">
+        <div class="columns">
+          <div class="top-bar">
+            <div class="top-bar-right">
+              <ul class="medium-horizontal menu show-for-medium">
+                <li><a href="">Mayor's Office</a></li>
+                <li><a href="">City Government Directory</a></li>
+                <li>
+                  <i class="fa fa-globe" aria-hidden="true"></i>
+                  <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
+                    <script type="text/javascript">
+                      function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                      }
+                    </script>
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -133,8 +131,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
                 <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
                 <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu">
-                  <a href="#"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i>
-  Services</a>
+                  <a href="#" class="services-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                   <ul class="menu vertical">
                     <?php
                       $args = array(
