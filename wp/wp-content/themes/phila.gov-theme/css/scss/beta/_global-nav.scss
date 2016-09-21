@@ -121,12 +121,12 @@
 
       .columns {
         text-align: left;
-        padding-left: .25rem;
-        padding-right: .25rem;
+        padding-left: 0;
+        padding-right: 0;
 
-        &:first-of-type, &:last-of-type {
-          padding-left: 0;
-          padding-right: 0;
+         &:nth-of-type(2){
+          padding-left: .25rem;
+          padding-right: .25rem;
         }
 
         a {
@@ -154,4 +154,41 @@
       }
     }
   }
+  //TODO: this is actually just a setting in foundation. When we update patterns, this should be removed and $dropdownmenu-arrows set to true.
+  .dropdown.menu > li.is-dropdown-submenu-parent {
+
+  > a {
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 5px;
+      border-color: $ben-franklin-blue transparent transparent;
+      border-top-style: solid;
+      border-bottom-width: 0;
+      right: 5px;
+      margin-top: -2px;
+    }
+      .is-active:hover {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 5px;
+        border-color: $white transparent transparent;
+        border-top-style: solid;
+        border-bottom-width: 0;
+        right: 5px;
+        margin-top: -2px;
+      }
+    }
+  }
+  .is-dropdown-submenu-parent a::after {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      margin-top: -2px;
+  }
+
 }
