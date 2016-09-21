@@ -38,23 +38,39 @@ jQuery(document).ready(function($) {
     }
   });
 
-  var alphaAlertHeight = $("#alpha-alert").css( "height" );
+  $('.services-link').click(function(e){
+    e.preventDefault();
+  });
 
-  // TODO: Should be unnecessary after switching to beta. Remove when appropriate.
-  //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
-  if (alphaAlertHeight){
-    $('body.custom-background').css('background-position-y', alphaAlertHeight );
-  }
+  //TODO: detect if the dropdown is no longer in the viewport, then hide it.
+  $( window ).scroll(function() {
+    if( ('.dropdown-pane.is-open' ).length) {
+      $('.dropdown-pane').removeClass('is-open');
+
+    }
+  });
+
+  $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
+    var navHeight = $('.global-nav').height();
+
+    if ( $('.sticky').hasClass('is-stuck') ) {
+      navHeight = navHeight - $('.secondary-nav').outerHeight();
+    }
+    $(this).css({
+      'top': navHeight,
+      'position': 'fixed'
+    });
+  });
 
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
-  $('.menu-icon').click(function() {
+  /*$('.menu-icon').click(function() {
     $('.is-drilldown').find('ul').addClass('vertical');
 
   });
   $( window ).resize(function() {
     $('.is-drilldown').find('ul').removeClass('vertical');
   });
-
+*/
 
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
