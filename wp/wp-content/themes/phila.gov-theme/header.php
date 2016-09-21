@@ -157,8 +157,8 @@ Services</a>
  Mayor's Office</a>
               </li>
               <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
-                <i class="fa fa-sitemap" aria-hidden="true"></i>
- <a href="/">City Gov Directory</a>
+ <a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> 
+City Gov Directory</a>
               </li>
             </ul>
           </div>
