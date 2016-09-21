@@ -15,7 +15,6 @@
     font-size: .85rem;
 
     ul {
-      padding-right: 1.5rem;
 
       li {
 
@@ -23,6 +22,7 @@
           color: $white;
           padding: 0 0 0 $spacing-small;
           display: block;
+          text-align: center;
 
           &:after {
             content: '|';
