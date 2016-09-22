@@ -123,14 +123,18 @@ get_header(); ?>
     </div>
     <!-- End News -->
 
-    <section>
-      <div class="row ptm">
+    <section class="neighborhood-resources">
+      <div class="row expanded ptm">
         <div class="columns">
-          <h2>Neighborhood resources</h2>
+          <div class="row">
+            <div class="columns">
+              <h2 class=contrast>Neighborhood resources</h2>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="neighborhood-resources row expanded">
-        <div class="row phl equal-height">
+      <div class="row expanded resource-row">
+        <div class="row phm phl-mu equal-height">
           <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu bdr-bottom-sm">
             <a href="http://www.freelibrary.org/" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
@@ -273,78 +277,80 @@ get_header(); ?>
     </section>
     <!-- End Neighborhood Resources -->
 
-    <div class="ptm pbxl phila-redesign">
-      <section>
-        <div class="row">
-          <div class="columns">
-            <h2 class="contrast">Redesigning Phila.gov</h2>
+    <div class="row ptm pbxl expanded phila-redesign">
+      <div class="columns">
+        <section>
+          <div class="row">
+            <div class="columns">
+              <h2 class="contrast">Redesigning Phila.gov</h2>
+            </div>
           </div>
-        </div>
-        <div class="row equal-height">
-          <div class="medium-10 columns bdr-right-mu equal about">
-            <section>
-              <h3>About the Redesign</h3>
-              <p>We understand that the City of Philadelphia’s current website, phila.gov, isn’t easy to use. So we’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
+          <div class="row equal-height">
+            <div class="medium-10 columns bdr-right-mu equal about">
+              <section>
+                <h3>About the Redesign</h3>
+                <p>We understand that the City of Philadelphia’s current website, phila.gov, isn’t easy to use. So we’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
 
-              <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:</p>
+                <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:</p>
 
-              <ol>
-                <li> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
-                <li><a href="#">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
-              </ol>
-            </section>
+                <ol>
+                  <li> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
+                  <li><a href="#">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
+                </ol>
+              </section>
+            </div>
+            <div class="show-for-medium medium-14 pll plm columns equal process">
+              <section>
+                <h3>Where are we in the redesign process?</h3>
+                <p>For the past couple of years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
+                <div class="row collapse">
+                  <div class="medium-8 columns center small-centered ben-franklin-blue marker">
+                    <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="row collapse">
+                  <div class="medium-8 columns">
+                    <section>
+                      <header class="bg-medium-gray">
+                        <div class="process-label valign left-arrow-indent left-arrow-white">
+                          <div class="valign-cell">
+                            <h4 class="mbn h5 white">Alpha</h3>
+                          </div>
+                        </div>
+                      </header>
+                      <span class="pvm phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                    </section>
+                  </div>
+                  <div class="medium-8 columns small-text">
+                    <section>
+                      <header class="bg-ben-franklin-blue">
+                        <div class="process-label valign bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
+                          <div class="valign-cell">
+                            <span class="mbn h5 white">Beta</span>
+                          </div>
+                        </div>
+                      </header>
+                      <span class="pvm phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                    </section>
+                  </div>
+                  <div class="medium-8 columns end">
+                    <section>
+                      <header>
+                        <div class="process-label valign bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
+                          <div class="valign-cell">
+                            <h4 class="mbn h5 white">Launch</h3>
+                          </div>
+                        </div>
+                      </header>
+                      <span class="pvm phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
-          <div class="show-for-medium medium-14 pll plm columns equal process">
-            <section>
-              <h3>Where are we in the redesign process?</h3>
-              <p>For the past couple of years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
-              <div class="row collapse">
-                <div class="medium-8 columns center small-centered ben-franklin-blue marker">
-                  <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="row collapse">
-                <div class="medium-8 columns">
-                  <section>
-                    <header class="bg-medium-gray">
-                      <div class="process-label valign left-arrow-indent left-arrow-white">
-                        <div class="valign-cell">
-                          <h4 class="mbn h5 white">Alpha</h3>
-                        </div>
-                      </div>
-                    </header>
-                    <span class="pvm phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
-                  </section>
-                </div>
-                <div class="medium-8 columns small-text">
-                  <section>
-                    <header class="bg-ben-franklin-blue">
-                      <div class="process-label valign bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
-                        <div class="valign-cell">
-                          <span class="mbn h5 white">Beta</span>
-                        </div>
-                      </div>
-                    </header>
-                    <span class="pvm phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
-                  </section>
-                </div>
-                <div class="medium-8 columns end">
-                  <section>
-                    <header>
-                      <div class="process-label valign bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
-                        <div class="valign-cell">
-                          <h4 class="mbn h5 white">Launch</h3>
-                        </div>
-                      </div>
-                    </header>
-                    <span class="pvm phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
-                  </section>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
     <!-- End Redesigning Phila.gov -->
 
