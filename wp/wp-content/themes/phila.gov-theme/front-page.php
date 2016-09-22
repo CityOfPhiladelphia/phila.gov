@@ -308,41 +308,47 @@ get_header(); ?>
                     <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
                   </div>
                 </div>
-                <div class="row collapse">
+                <div class="row collapse process-bar">
                   <div class="medium-8 columns">
                     <section>
                       <header class="bg-medium-gray">
-                        <div class="process-label valign left-arrow-indent left-arrow-white">
+                        <div class="valign process-label left-arrow-indent left-arrow-white">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Alpha</h3>
                           </div>
                         </div>
                       </header>
-                      <span class="pvm phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                      <div class="description">
+                        <span class="phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                      </div>
                     </section>
                   </div>
                   <div class="medium-8 columns small-text">
                     <section>
                       <header class="bg-ben-franklin-blue">
-                        <div class="process-label valign bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
+                        <div class="valign process-label bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
                           <div class="valign-cell">
                             <span class="mbn h5 white">Beta</span>
                           </div>
                         </div>
                       </header>
-                      <span class="pvm phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                      <div class="description current">
+                        <span class="phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                      </div>
                     </section>
                   </div>
                   <div class="medium-8 columns end">
                     <section>
                       <header>
-                        <div class="process-label valign bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
+                        <div class="valign process-label bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Launch</h3>
                           </div>
                         </div>
                       </header>
-                      <span class="pvm phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
+                      <div class="description">
+                        <span class="phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
+                      </div>
                     </section>
                   </div>
                 </div>

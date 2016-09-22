@@ -181,23 +181,54 @@
       .fa {
           width: 100%;
       }
+    }
+    .process-bar {
+      margin-top: -10px;
+
+      .description {
+        text-align: center;
+        &:before {
+          content: '';
+          border-right: 1px solid $medium-gray;
+          display: inline-block;
+          height: 30px;
+          width: 0;
+        }
+        &.current {
+          &:before {
+            border-right: 1px solid $ben-franklin-blue;
+          }
+        }
+        span {
+          text-align: left;
+        }
+      }
+    }
+    .process-label {
+      text-transform: uppercase;
+      width: 100%;
+      text-align: center;
+      height:40px;
+
+      .h5 {
+        font-weight: bold;
+      }
+    }
+    .marker {
       &:after {
         content: '';
         text-align: center;
         border-right: 1px solid $ben-franklin-blue;
         display: inline-block;
-        height:20px;
-        width:0px;
+        height: 20px;
+        width: 0px;
+        margin-top: -10px;
       }
     }
-    .process-label {
-      text-transform: uppercase;
-      font-weight: bold;
-      width: 100%;
-      text-align: center;
-      height:40px;
-    }
+
     .left-arrow-indent {
+      position: relative;
+
       &:before {
         content: '';
         width: 0;
@@ -207,6 +238,7 @@
         border-left: 15px solid;
         position: absolute;
         margin-top: 0px;
+        left: 0;
       }
       &.left-arrow-white {
         &:before {
