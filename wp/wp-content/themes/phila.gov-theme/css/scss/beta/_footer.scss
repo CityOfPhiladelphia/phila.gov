@@ -123,9 +123,16 @@ footer{
           color: $white;
           text-transform: none;
         }
-      }
-      a:hover, a:active{
-       color: $bike-share-blue;
+        section {
+          a:link,
+          a:visited {
+            color: #e5e5e5;
+          }
+          a:hover,
+          a:active {
+           color: $bike-share-blue;
+          }
+        }
       }
 
       // TODO: move to utils
