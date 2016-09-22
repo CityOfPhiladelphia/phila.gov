@@ -106,66 +106,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="row expanded background-white" data-sticky-container>
       <div class="columns sticky phn" data-sticky data-margin-top="0">
         <div class="row equal-height">
-          <!-- Navigation Toggle -->
 
-        <div class="small-16 medium-6 columns equal valign">
-          <div class="valign-cell">
-            <a href="<?php echo get_home_url(); ?>" class="logo"><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a>
-          </div>
-        </div>
-
-        <div class="small-4 medium-push-17 medium-1 columns equal">
-          <button class="site-search valign" type="button">
-            <div class="valign-cell float-right">
-              <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-              <span class="show-for-small-only">Search</span>
+          <div class="small-16 medium-6 columns equal valign small-push-4 medium-push-0">
+            <div class="valign-cell">
+              <a href="<?php echo get_home_url(); ?>" class="logo"><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a>
             </div>
-          </button>
-        </div>
+          </div>
 
-        <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns equal" id="beta-global-nav">
-          <!-- Primary Navigation -->
-          <div class="top-bar-right">
-            <nav data-swiftype-index="false">
-              <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
-                <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
-                <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu">
-                  <a href="#" class="services-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
-                  <ul class="menu vertical">
-                    <?php
-                      $args = array(
-                        'post_type' => 'service_page',
-                        'orderby' => 'menu_order',
-                        'order' => 'ASC',
-                        'title_li' => '',
-                        'link_before' => '<span>',
-                        'link_after'  => '</span>',
-                      );
-                      wp_list_pages($args);
-                    ?>
+          <div class="small-4 medium-push-17 medium-1 columns equal small-push-4">
+            <button class="site-search valign" type="button">
+              <div class="valign-cell float-right">
+                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                <span class="show-for-small-only">Search</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns equal" id="beta-global-nav">
+            <!-- Primary Navigation -->
+            <div class="top-bar-right">
+              <nav data-swiftype-index="false">
+                <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+                  <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu">
+                    <a href="#" class="services-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+                    <ul class="menu vertical">
+                      <?php
+                        $args = array(
+                          'post_type' => 'service_page',
+                          'orderby' => 'menu_order',
+                          'order' => 'ASC',
+                          'title_li' => '',
+                          'link_before' => '<span>',
+                          'link_after'  => '</span>',
+                        );
+                        wp_list_pages($args);
+                      ?>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#programs-and-initiatives"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+                  </li>
+                  <li>
+                    <a href="#news-and-events"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
+                  </li>
+                  <li>
+                    <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
+                  </li>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
+                    <a href="/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
+                  </li>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+                  </li>
                   </ul>
-                </li>
-                <li>
-                  <a href="#programs-and-initiatives"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
-                </li>
-                <li>
-                  <a href="#news-and-events"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
-                </li>
-                <li>
-                  <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
-                  <a href="/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
-                </li>
-                </ul>
-              </nav>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </header>
 <!-- #masthead -->
   <?php
