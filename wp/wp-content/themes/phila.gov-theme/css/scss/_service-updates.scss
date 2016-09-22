@@ -24,6 +24,7 @@
     max-height: none;
     background: #54C247;
     color:#fff;
+    font-size: 3rem;
 
     .fa{
       display: inline-block;
@@ -35,7 +36,15 @@
       font-weight: normal;
       font-family:'Montserrat', 'Tahoma', sans-serif;
       color: #fff;
-      font-size: .7rem;
+      font-size: .9rem;
+
+    }
+    @media only screen and (min-width: 40em) {
+      font-size: 2rem;
+
+      .icon-label{
+        font-size: .7rem;
+      }
     }
   }
 
