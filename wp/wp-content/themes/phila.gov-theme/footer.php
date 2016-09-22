@@ -13,8 +13,8 @@
  </div><!-- #page -->
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
+  <?php get_template_part( 'partials/content', 'modified' ) ?>
   <div class="contact">
-    <?php get_template_part( 'partials/content', 'modified' ) ?>
     <?php echo phila_get_dept_contact_blocks(); ?>
   </div>
   <div class="philly311">
