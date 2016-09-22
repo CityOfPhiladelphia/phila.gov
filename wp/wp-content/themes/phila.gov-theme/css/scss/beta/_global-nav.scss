@@ -1,5 +1,7 @@
 .global-nav {
   font-family: 'Montserrat', 'Tahoma', sans-serif;
+  position: relative;
+  z-index: 1000;
 
   a:link, a:visited {
     font-weight: normal;
@@ -51,9 +53,16 @@
     &.is-stuck{
       box-shadow: 0 3px 10px rgba($medium-gray, .5);
     }
+
+    @media screen and (max-width: 39.9375em) {
+      position: relative;
+      z-index: auto;
+    }
+
   }
   .top-bar{
     text-transform: uppercase;
+
   }
 
   .dropdown-pane{
@@ -63,6 +72,9 @@
   .title-bar {
     color:$ben-franklin-blue;
     padding: 0;
+    position: absolute;
+    z-index: 1000;
+
     .menu-icon {
       position: relative;
     }
@@ -96,6 +108,7 @@
     }
   }
   .is-drilldown {
+    width: 100%;
     ul {
       background-color: $ghost-gray;
     }
