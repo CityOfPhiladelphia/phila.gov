@@ -99,13 +99,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="row expanded background-white" data-sticky-container>
       <div class="columns sticky" data-sticky data-margin-top="0">
-          <div class="row equal-height">
+        <div class="row equal-height">
           <!-- Navigation Toggle -->
           <!-- title bar hides itself on large screens -->
           <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
             <button class="menu-icon" type="button" data-toggle>
               <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
-              <div class="title-bar-title">Menu</div>
+              <span class="title-bar-title">Menu</span>
             </button>
           </div>
 
@@ -119,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <button class="site-search valign" type="button">
             <div class="valign-cell float-right">
               <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-              <div class="show-for-small-only">Search</div>
+              <span class="show-for-small-only">Search</span>
             </div>
           </button>
         </div>
@@ -146,27 +146,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     ?>
                   </ul>
                 </li>
-                <li role="menuitem">
-                  <a href="#programs-and-initiatives"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i>
-   Programs &amp; Initiatives</a>
+                <li>
+                  <a href="#programs-and-initiatives"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
                 </li>
-                <li role="menuitem">
-                  <a href="#news-and-events"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i>
-   News &amp; Events</a>
+                <li>
+                  <a href="#news-and-events"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
                 </li>
-                <li role="menuitem">
-                  <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i>
-   Publications &amp; Forms</a>
+                <li>
+                  <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
                 </li>
                 <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
-                  <a href="/"><i class="fa fa-university" aria-hidden="true"></i>
-   Mayor's Office</a>
+                  <a href="/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
                 </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
-   <a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i>
-  City Gov Directory</a>
+                <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
                 </li>
-              </ul>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
