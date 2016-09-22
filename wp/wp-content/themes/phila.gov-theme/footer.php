@@ -119,44 +119,48 @@
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <li class="pln pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
-                <i class="fa fa-tv fa-3x" title="TV" aria-hidden="true"></i>
-                <span class="show-for-sr">TV</span>
+              <a href="" target="_blank" class="prl">
+                <span class="fa fa-stack fa-lg">
+                  <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
+                  <i class="fa fa-stack-1x">
+                    <span class="h4">64</span>
+                  </i>
+                  <span class="show-for-sr">TV 64</span>
+                </span>
               </a>
             </li>
-            <br/>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>
