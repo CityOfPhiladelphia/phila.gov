@@ -87,7 +87,7 @@
   <div class="fat">
     <div class="row pvs phm">
       <section class="medium-8 columns phm pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
-        <h1 class="mtn mbm">Take action in your community</h1>
+        <h2 class="mtn mbm">Take action in your community</h2>
         <nav class="take-action">
           <ul>
             <li class="pvxs"><a href="" class="external">PhillyRising Collaborative</a></li>
@@ -101,7 +101,7 @@
         </nav>
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
-        <h1 class="mtn mbm"> Know your City government</h1>
+        <h2 class="mtn mbm"> Know your City government</h2>
         <nav class="take-action">
           <ul>
             <li class="pvxs"><a href="" class="external">Mayor’s Office</a></li>
@@ -115,7 +115,7 @@
         </nav>
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu">
-        <h1 class="mtn mbm">Connect with City government</h1>
+        <h2 class="mtn mbm">Connect with City government</h2>
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pvxs">

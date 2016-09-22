@@ -314,7 +314,7 @@ get_header(); ?>
                       <header class="bg-medium-gray">
                         <div class="valign process-label left-arrow-indent left-arrow-white">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Alpha</h3>
+                            <h4 class="mbn h5 white">Alpha</h4>
                           </div>
                         </div>
                       </header>
@@ -328,7 +328,7 @@ get_header(); ?>
                       <header class="bg-ben-franklin-blue">
                         <div class="valign process-label bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
                           <div class="valign-cell">
-                            <span class="mbn h5 white">Beta</span>
+                            <h4 class="mbn h5 white">Beta</h4>
                           </div>
                         </div>
                       </header>
@@ -342,7 +342,7 @@ get_header(); ?>
                       <header>
                         <div class="valign process-label bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Launch</h3>
+                            <h4 class="mbn h5 white">Launch</h4>
                           </div>
                         </div>
                       </header>
