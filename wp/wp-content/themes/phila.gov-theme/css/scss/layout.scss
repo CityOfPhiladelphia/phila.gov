@@ -28,15 +28,6 @@ body{
     padding:5px;
   }
 }
-body.home header.site-header{
-
-  background: rgba(225, 225, 225, .4);
-
-  .breadcrumbs{
-    display: none;
-  }
-
-}
 
 header .site-branding {
   background: transparent;
@@ -110,10 +101,9 @@ aside {
 
   padding:0;
 
-   @media screen and (min-width: 64em) {
-     margin-left:55px;
-   }
-
+  .fa-home{
+    font-size: $large-font-base / 4.8;
+  }
 }
 
 .news-row{
