@@ -20,7 +20,7 @@
   <div class="philly311">
     <section>
       <div class="row">
-        <div class="columns">
+        <div class="columns intro">
           <h2>Philly311</h2>
           <span><a href="/" class="external">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 3-1-1 or tweet @philly311 for a quick response.</span>
         </div>
