@@ -97,17 +97,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </div>
     </div>
+    <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
+      <button class="menu-icon" type="button" data-toggle>
+        <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+        <span class="title-bar-title">Menu</span>
+      </button>
+    </div>
     <div class="row expanded background-white" data-sticky-container>
-      <div class="columns sticky" data-sticky data-margin-top="0">
+      <div class="columns sticky phn" data-sticky data-margin-top="0">
         <div class="row equal-height">
           <!-- Navigation Toggle -->
-          <!-- title bar hides itself on large screens -->
-          <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
-            <button class="menu-icon" type="button" data-toggle>
-              <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
-              <span class="title-bar-title">Menu</span>
-            </button>
-          </div>
 
         <div class="small-16 medium-6 columns equal valign">
           <div class="valign-cell">
