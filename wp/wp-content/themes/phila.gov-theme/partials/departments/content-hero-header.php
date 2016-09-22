@@ -59,7 +59,15 @@
             <p><?php echo $hero_header_body_copy; ?></p>
           <?php endif; ?>
           <?php if ( !empty( $hero_header_call_to_action_button_url ) ): ?>
-            <p><a href="<?php echo $hero_header_call_to_action_button_url; ?>" class="button alternate no-margin"><?php echo $hero_header_call_to_action_button_text; ?></a></p>
+            <div class="mbs-mu">
+              <a href="<?php echo $hero_header_call_to_action_button_url; ?>" class="button icon clearfix">
+                <div class="valign">
+                  <div class="button-label valign-cell">
+                    <?php echo $hero_header_call_to_action_button_text; ?>
+                  </div>
+                </div>
+              </a>
+            </div>
           <?php endif; ?>
         </div>
       </div>
