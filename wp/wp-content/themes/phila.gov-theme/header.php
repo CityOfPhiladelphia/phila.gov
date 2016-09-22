@@ -170,5 +170,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
-
+    <?php if ( !is_front_page() ) : ?>
+      <div class="row">
+        <div class="columns">
+          <?php echo phila_breadcrumbs(); ?>
+        </div>
+      </div>
+    <?php endif; ?>
 <div id="content" class="site-content">
