@@ -5,7 +5,7 @@
  *
  */
  ?>
- <div class="service-update-row row">
+ <div class="service-update-row row ptm">
    <div class="columns">
      <div class="row">
        <div class="columns">
