@@ -12,7 +12,30 @@ footer{
       color: $ben-franklin-blue;
       text-decoration: none;
     }
-
+    .classic {
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+      font-weight: 400;
+      .columns {
+        margin: .71429rem 0;
+        ul.inline-list {
+          font-size: .92857rem;
+          margin: 0;
+          padding: 0;
+          li {
+            margin: 0;
+            padding: 0 0 0 10px;
+            a:link,
+            a:visited {
+              color: $white;
+            }
+            a:hover,
+            a:active {
+             color: $bike-share-blue;
+            }
+          }
+        }
+      }
+    }
     .contact{
       background:$ghost-gray;
       color:$dark-gray;
