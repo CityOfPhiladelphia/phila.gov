@@ -100,6 +100,17 @@ footer{
       }
     }
     &.site-footer {
+      .fa {
+      vertical-align: middle;
+      }
+      .fa-stack {
+        .fa-tv{
+          font-size: 3rem;
+        }
+        .fa-stack-1x {
+          margin-left: 4px;
+        }
+      }
       .fat {
         padding: $spacing-medium 0;
         background: $dark-gray;
