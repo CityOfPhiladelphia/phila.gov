@@ -1,11 +1,11 @@
 #back-to-top {
   display: none;
-  
+
   @media screen and (min-width: 1190px) {
     position: fixed;
     bottom: 5%;
     right: 2%;
-    z-index: 9999;
+    z-index: 10;
     text-align: center;
     cursor: pointer;
     text-transform:uppercase;
