@@ -29,7 +29,7 @@
         <?php if ( $i % 3 == 1 ) :?>
           <div class="row expanded mbxs">
         <?php endif; ?>
-          <div class="medium-8 columns equal end">
+          <div class="medium-8 columns end">
             <div class="valign">
               <div class="valign-cell">
                 <a href="<?php echo get_the_permalink(); ?>"><span><i class="fa <?php echo $icon ?> fa-2x phm"></i> <?php echo get_the_title(); ?></span></a>
