@@ -2,8 +2,11 @@
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   position: relative;
   z-index: 1000;
-  //prevent content from jumping down after JS is loaded
-  min-height: 95px;
+
+  &.no-js {
+    //prevent content from jumping down after JS is loaded
+    min-height: 95px;
+  }
 
   a:link, a:visited {
     font-weight: normal;
@@ -62,13 +65,10 @@
     }
 
   }
-  .top-bar{
-    text-transform: uppercase;
-
-  }
 
   .dropdown-pane{
     display: none;
+    overflow: scroll;
   }
 
   .title-bar {
@@ -82,10 +82,6 @@
     }
 
     .menu-icon {
-      text-align: center;
-      display: inline-block;
-      vertical-align: middle;
-      cursor: pointer;
       width: auto;
       height: auto;
       padding: .75rem;
@@ -94,6 +90,7 @@
       .fa {
         display: block;
       }
+
       &:after, &:before {
         background: $ben-franklin-blue;
         box-shadow: none;
@@ -109,12 +106,43 @@
       text-transform: uppercase;
     }
   }
+
   .is-drilldown {
     width: 100%;
     ul {
-      background-color: $ghost-gray;
+      background: $ghost-gray;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding:0;
+
+      li {
+        background-color: $ghost-gray;
+        list-style: none;
+        a{
+          padding:1rem;
+          display: block;
+        }
+      }
+    }
+    //TODO: remvove this from patterns
+    .is-dropdown-submenu-parent {
+      position: static;
     }
   }
+
+  @media screen and (max-width: 39.9375em) {
+    .top-bar{
+      background: $ghost-gray;
+      position: fixed;
+      //overflow: scroll;
+      //height:200px;
+      //TODO: calcuate this w/ js
+      top:77px;
+    }
+
+  }
+
 
   @media only screen and (min-width: 40em) {
     .primary-menu {
@@ -129,10 +157,6 @@
         }
       }
     }
-    button.site-search {
-      font-size: .5rem;
-      color:$ben-franklin-blue;
-    }
     .service-menu-link ul li {
       display:none;
     }
@@ -142,6 +166,14 @@
       padding: 0;
       font-size: 1rem;
       left: 0 !important;
+      z-index: 10000;
+
+      @media screen and (max-width: 55rem) {
+
+        max-height:450px;
+        overflow:auto;
+
+      }
 
       &.is-open{
         display: block;
@@ -159,15 +191,18 @@
 
         a {
           @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-            min-height:90px;
+            min-height:65px;
           }
-          padding: $spacing-large;
+          padding: 1.5rem;
           display:block;
           background-color: $ghost-gray;
           width: 100%;
           &:hover {
             color:$white;
             background: $ben-franklin-blue;
+          }
+          span{
+            display:block;
           }
         }
       }
@@ -194,7 +229,10 @@
     }
   }
 
-  @media screen and (min-width: 64em) {
+  @media screen and (min-width: 40em) {
+    .top-bar{
+      text-transform: uppercase;
+    }
     .primary-menu {
       .menu>li {
         > a {
@@ -203,7 +241,6 @@
       }
     }
   }
-  //TODO: this is actually just a setting in foundation. When we update patterns, this should be removed and $dropdownmenu-arrows set to true.
   .dropdown.menu > li.is-dropdown-submenu-parent {
 
   > a {
