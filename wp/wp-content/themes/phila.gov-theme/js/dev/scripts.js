@@ -11,11 +11,6 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
-  //TODO: Replace this temporary menu-icon snippet with fully fleshed out script
-  $('.menu-icon').click(function(){
-    $('.menu-icon').toggleClass('active');
-  });
-
   //add search focus on tap or click
   $('.search-icon').click(function() {
 
@@ -42,35 +37,83 @@ jQuery(document).ready(function($) {
     e.preventDefault();
   });
 
-  //TODO: detect if the dropdown is no longer in the viewport, then hide it.
-  $( window ).scroll(function() {
-    if( ('.dropdown-pane.is-open' ).length) {
-      $('.dropdown-pane').removeClass('is-open');
+  $('.global-nav .menu-icon').click(function(){
+    $(this).toggleClass('active');
+    $('.top-bar').toggleClass('is-mobile');
 
-    }
   });
 
-  $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-    var navHeight = $('.global-nav').height();
+  $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
 
-    if ( $('.sticky').hasClass('is-stuck') ) {
-      navHeight = navHeight - $('.secondary-nav').outerHeight();
+    var parentLink = $(this).find('.is-active').last();
+
+    parentLink.addClass('current-parent');
+
+    var current = parentLink.prev();
+
+    $('.current-parent > li.js-drilldown-back a').text( current.text() );
+
+    //$(parentLink).children('li.js-drilldown-back a').text( 'Back to ' + current.text() );
+
+  });
+
+  $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
+    //On hide, revmove what was entered above
+  });
+
+  //ensure dropdown stays below header on scroll and open/close
+  var navHeight = $('.global-nav').outerHeight();
+
+  $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
+
+    $('.global-nav .menu-icon').addClass('active');
+    $('#back-to-top').css('display', 'none');
+
+    if ( $('.sticky').hasClass('is-stuck') ){
+
+      navHeight = $('.sticky-container').height();
+
+    }else{
+      navHeight = $('.global-nav').outerHeight();
     }
-    $(this).css({
-      'top': navHeight,
-      'position': 'fixed'
+
+     $(this).css({
+       'top': navHeight,
+       'position': 'fixed'
+     });
+
+  });
+
+
+  $('.sticky').on('sticky.zf.stuckto:top', function(){
+    var navHeight = $('.sticky-container').outerHeight();
+    $('#services-mega-menu').css({
+      'top': navHeight
     });
   });
 
+   $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
+     $('#services-mega-menu').css({
+       'top': navHeight
+     });
+  });
+
+
+  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
+
+    $('.global-nav .menu-icon').removeClass('active');
+
+  });
+
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
-  $('.menu-icon').click(function() {
+  /*$('.menu-icon').click(function() {
     $('.is-drilldown').find('ul').addClass('vertical');
 
   });
   $( window ).resize(function() {
     $('.is-drilldown').find('ul').removeClass('vertical');
   });
-
+  */
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
     if(event.keyCode == 13) {
