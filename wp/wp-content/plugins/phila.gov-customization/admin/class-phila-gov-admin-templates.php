@@ -80,6 +80,7 @@ class Phila_Gov_Admin_Templates {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'default' ),
+          array('phila_template_select', '=', '' ),
         ),
         'relation' => 'or'
       ),
