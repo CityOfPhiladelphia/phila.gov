@@ -24,6 +24,7 @@
 
       <?php while ( $top_service_pages->have_posts() ) : $top_service_pages->the_post(); ?>
         <?php $i++;?>
+        <?php $icon = rwmb_meta( 'phila_page_icon' ); ?>
 
         <?php if ( $i % 3 == 1 ) :?>
           <div class="row expanded mbxs">
@@ -31,7 +32,7 @@
           <div class="medium-8 columns equal end">
             <div class="valign">
               <div class="valign-cell">
-                <a href="<?php echo get_the_permalink(); ?>"><span><?php echo get_the_title(); ?></span></a>
+                <a href="<?php echo get_the_permalink(); ?>"><span><i class="fa <?php echo $icon ?> fa-2x phm"></i> <?php echo get_the_title(); ?></span></a>
               </div>
             </div>
           </div>
@@ -39,7 +40,9 @@
           </div>
         <?php endif;?>
     <?php endwhile; ?>
-    </div>
+    <?php if ( $i % 3 == 2 || $i % 3 == 1 ) :?>
+      </div>
+    <?php endif;?>
     <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
       <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
         <div class="valign">
