@@ -71,7 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header class="global-nav">
+  <header class="global-nav no-js">
     <!-- Secondary Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded secondary-nav">
       <div class="row">
@@ -128,11 +128,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <nav data-swiftype-index="false">
                 <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
-                  <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu">
+                  <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu" data-hover="false">
                     <a href="#" class="services-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical">
                       <?php
                         $args = array(
+                          //TODO: only display pages with taxonomy applied
                           'post_type' => 'service_page',
                           'orderby' => 'menu_order',
                           'order' => 'ASC',
@@ -164,14 +165,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         </div>
+        <?php get_template_part( 'partials/content', 'service-mega-menu' ) ?>
       </div>
   </header>
+
 <!-- #masthead -->
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
     <?php if ( !is_front_page() ) : ?>
-      <div class="row">
+      <div class="row mtm">
         <div class="columns">
           <?php echo phila_breadcrumbs(); ?>
         </div>
