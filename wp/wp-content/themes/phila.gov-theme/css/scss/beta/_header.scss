@@ -5,7 +5,21 @@ header {
 
     @media screen and (max-width: 39.9375em) {
       margin:$spacing-medium auto 0;
-      width:200px;
+      max-width:200px;
     }
+  }
+  button.site-search {
+    font-size:.5rem;
+
+    @media screen and (max-width: 39.9375em) {
+      font-size: .8rem;
+
+      .fa-search{
+        padding-bottom: $spacing-small;
+        font-size: 3em;
+      }
+    }
+    color:$ben-franklin-blue;
+    text-transform: uppercase;
   }
 }
