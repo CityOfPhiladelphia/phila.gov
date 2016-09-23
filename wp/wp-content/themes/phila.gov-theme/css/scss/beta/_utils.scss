@@ -94,3 +94,12 @@
 .border-top-sidewalk{
   border-top:1px solid $sidewalk;
 }
+
+.sentence-case {
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+.inline-block {
+  display: inline-block;
+}
