@@ -14,9 +14,7 @@
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
   <?php get_template_part( 'partials/content', 'modified' ) ?>
-  <div class="contact">
-    <?php echo phila_get_dept_contact_blocks(); ?>
-  </div>
+  <?php echo phila_get_dept_contact_blocks(); ?>
   <div class="philly311">
     <section>
       <div class="row">
