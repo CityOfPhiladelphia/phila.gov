@@ -122,7 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </button>
           </div>
 
-          <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns equal" id="beta-global-nav">
+          <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns equal no-js" id="beta-global-nav">
             <!-- Primary Navigation -->
             <div class="top-bar-right">
               <nav data-swiftype-index="false">
@@ -154,10 +154,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <li>
                     <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
                   </li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only">
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk">
                     <a href="/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
                   </li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk"><a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
                   </li>
                   </ul>
                 </nav>
