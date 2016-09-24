@@ -10,6 +10,11 @@ new List('filter-list', {
 });
 
 jQuery(document).ready(function($) {
+  //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
+  //determines if content is scrollable
+  $.fn.hasScrollBar = function() {
+    return this.get(0).scrollHeight > this.height();
+  }
 
   //add search focus on tap or click
   $('.search-icon').click(function() {
@@ -65,6 +70,19 @@ jQuery(document).ready(function($) {
   var navHeight = $('.global-nav').outerHeight();
 
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
+    //reflow for equal-height
+    $(this).foundation();
+
+    if ( $('#services-mega-menu').hasScrollBar() ){
+      $('body').addClass('no-scroll');
+      $(this).css({
+        //TODO: arbetary number here, need to investigate
+        'padding-bottom': navHeight + 100,
+        'top': 0
+      });
+    }else{
+      $('body').removeClass('no-scroll');
+    }
 
     $('.global-nav .menu-icon').addClass('active');
     $('#back-to-top').css('display', 'none');
