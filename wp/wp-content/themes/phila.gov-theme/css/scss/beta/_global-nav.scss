@@ -190,9 +190,7 @@
         }
 
         a {
-          @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-            min-height:65px;
-          }
+          min-height:65px;
           padding: 1.5rem;
           display:block;
           background-color: $ghost-gray;

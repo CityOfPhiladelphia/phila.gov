@@ -70,9 +70,6 @@ jQuery(document).ready(function($) {
   var navHeight = $('.global-nav').outerHeight();
 
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-    //reflow for equal-height
-    $(this).foundation();
-
     if ( $('#services-mega-menu').hasScrollBar() ){
       $('body').addClass('no-scroll');
       $(this).css({
