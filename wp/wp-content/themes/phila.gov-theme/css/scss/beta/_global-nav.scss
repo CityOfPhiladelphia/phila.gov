@@ -10,7 +10,10 @@
 
   a:link, a:visited {
     font-weight: normal;
-    font-size: .85rem;
+    @media screen and (min-width: 40em) {
+      font-size: .85rem;
+    }
+
   }
   .primary-nav {
     ul {
@@ -117,19 +120,48 @@
       padding:0;
 
       li {
-        background-color: $ghost-gray;
+        background: $ghost-gray;
         list-style: none;
+        border-bottom: 1px solid $white;
+        &.bg-sidewalk{
+          background: $sidewalk;
+        }
+        &.js-drilldown-back{
+          text-transform: uppercase;
+          font-size:.9rem;
+        }
         a{
           padding:1rem;
           display: block;
+          &:hover,
+          &:active {
+            background: $ben-franklin-blue;
+            color:$white;
+          }
         }
       }
     }
     //TODO: remvove this from patterns
     .is-dropdown-submenu-parent {
       position: static;
+      > a::after{
+          position: absolute;
+          top: 50%;
+          margin-top: -6px;
+          right: 1rem;
+
+          &:hover,
+          &:active{
+            border-color: transparent transparent transparent $white;
+          }
+        }
+      }
+      .js-current-section{
+        padding: .5rem 1rem;
+        font-size: 1.2rem;
+        text-transform: none;
+      }
     }
-  }
 
   @media screen and (max-width: 39.9375em) {
     .top-bar{
@@ -139,6 +171,9 @@
       //height:200px;
       //TODO: calcuate this w/ js
       top:77px;
+      &.no-js{
+        display:none;
+      }
     }
 
   }
