@@ -27,12 +27,12 @@
         <?php $icon = rwmb_meta( 'phila_page_icon' ); ?>
 
         <?php if ( $i % 3 == 1 ) :?>
-          <div class="row expanded mbxs equal-height">
+          <div class="row expanded mbxs" data-equalizer data-equalize-by-row="true">
         <?php endif; ?>
           <div class="medium-8 columns end">
             <div class="valign">
               <div class="valign-cell">
-                <a href="<?php echo get_the_permalink(); ?>" class="equal"><span><i class="fa <?php echo $icon ?> fa-2x phm"></i> <?php echo get_the_title(); ?></span></a>
+                <a href="<?php echo get_the_permalink(); ?>" data-equalizer-watch><span><i class="fa <?php echo $icon ?> fa-2x phm"></i> <?php echo get_the_title(); ?></span></a>
               </div>
             </div>
           </div>
