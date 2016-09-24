@@ -48,22 +48,41 @@ jQuery(document).ready(function($) {
 
   });
 
+  var parentLink = ['Main Menu'];
+
+  $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
+
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
 
-    var parentLink = $(this).find('.is-active').last();
+    parentLink.push( $(this).find('.is-active').last().prev().text() );
 
-    parentLink.addClass('current-parent');
+    $(this).find('.is-active').last().addClass('current-parent');
 
-    var current = parentLink.prev();
+    $('.current-parent > li.js-drilldown-back a').text( 'Back to ' + parentLink.slice(-2)[0] );
 
-    $('.current-parent > li.js-drilldown-back a').text( current.text() );
+    $('.js-current-section').html( parentLink.slice(-1)[0] );
+    
+    /* Ensure no events get through on titles */
+    $('.js-current-section').each(function( ) {
+      $(this).click(function(e) {
+        return false;
+      });
 
-    //$(parentLink).children('li.js-drilldown-back a').text( 'Back to ' + current.text() );
+    });
 
   });
 
-  $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
-    //On hide, revmove what was entered above
+  $(document).on('hide.zf.drilldown', '[data-drilldown]', function(){
+    parentLink.pop();
+
+    $('.current-parent > li.js-drilldown-back a').text( 'Back to ' + parentLink.slice(-2)[0] );
+
+    $('.js-current-section').html( parentLink.slice(-1)[0] );
+
+  });
+
+  $(document).on('closed.zf.drilldown', '[data-drilldown]', function(){
+    $('.menu-icon').removeClass('active');
   });
 
   //ensure dropdown stays below header on scroll and open/close
