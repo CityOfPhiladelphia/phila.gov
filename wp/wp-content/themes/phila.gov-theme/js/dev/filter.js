@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
   var parents = $('.a-z-group');
   var hiddenLetter = {};
-
+  var originalFilterOptions;
   //Hide/show sets of letter groups
   $('.a-z-group .result').bind('update', function() {
 
@@ -98,6 +98,33 @@ jQuery(document).ready(function($) {
 
     return false;
 
+  });
+
+  $('[data-open="mobile-filter"]').click(function(){
+      // $originalFilterOptions = $( '#service_filter' ).clone();
+      $filterForm = $( '#service_filter' );
+      $filterForm.detach();
+      $('[data-toggle="data-mobile-filter"]').append($filterForm);
+  });
+
+  function attachFilter(){
+    $filterForm = $( '#service_filter' );
+    $filterForm.detach();
+    $('div[data-desktop-filter-wrapper]').append($filterForm);
+  }
+
+  $('a[data-clear-filter]').click( function(){
+    $( '#service_filter input[type="checkbox"]' ).prop( 'checked', false);
+    $( '#service_filter #all[type="checkbox"]' ).trigger('click');
+  });
+
+  $('button[data-close], a[data-apply-filter]').on('close.zf.trigger', attachFilter);
+  $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize){
+    if (newSize == 'medium' || newSize == 'large' ){
+      attachFilter();
+      $('#mobile-filter[data-reveal]').trigger('close.zf');
+
+    }
   });
 
 });
