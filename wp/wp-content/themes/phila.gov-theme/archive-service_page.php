@@ -14,8 +14,31 @@ get_header(); ?>
         <?php printf(__('<h1 class="contrast ptm">Service Directory</h1>', 'phila-gov') ); ?>
       </header>
     </div>
+    <div class="row show-for-small-only">
+      <div class="small-24 columns">
+        <a data-open="mobile-filter" class="button full-width pan clearfix">
+          <div class="valign">
+            <div class="button-label center valign-cell">Filter by Service Categories</div>
+          </div>
+        </a>
+      </div>
+      <div class="small-12 columns">
+        <a class="button full-width pan clearfix">
+          <div class="valign">
+            <div class="button-label center valign-cell">A-Z</div>
+          </div>
+        </a>
+      </div>
+      <div class="small-12 columns">
+        <a href="#/" class="button full-width pan clearfix">
+          <div class="valign">
+            <div class="button-label center valign-cell">Z-A</div>
+          </div>
+        </a>
+      </div>
+    </div>
     <div class="row">
-      <div class="medium-7 columns filter">
+      <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper>
         <?php printf(__('<h2 class="h4 mtn">Filter by Service Categories</h2>', 'phila-gov') ); ?>
         <?php $terms = get_terms(
           array(
@@ -83,7 +106,7 @@ get_header(); ?>
 
             ?>
           <?php endwhile; ?>
-      <nav>
+      <nav class="show-for-medium">
         <ul class="inline-list mbm pan mln h4">
           <?php foreach($a_z as $k => $v): ?>
             <?php //TODO: handle special characters and numbers in a better way ?>
@@ -126,6 +149,41 @@ get_header(); ?>
         <?php wp_reset_query(); ?>
       </div>
     </div> <!-- .row -->
+    <div id="mobile-filter" class="reveal" data-reveal>
+      <div class="row">
+        <div class="columns">
+          <button class="close-button ben-franklin-blue" data-close aria-label="Close modal" type="button">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+          <h2>Filter by Service Categories</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <a href="#/" class="button full-width clearfix" aria-label="Clear filter selections" data-clear-filter>
+            <div class="valign">
+              <div class="button-label center valign-cell">Clear</div>
+            </div>
+          </a>
+        </div>
+        <div class="small-12 columns">
+          <a href="#/" class="button full-width clearfix" data-close aria-label="Apply modal" data-apply-filter>
+            <div class="valign">
+              <div class="button-label center valign-cell">Apply</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns">
+          <span>Choose all that apply</span>
+        </div>
+        <div class="small-24 columns">
+          <div data-toggle="data-mobile-filter" >
+          </div>
+        </div>
+      </div>
+    </div><!-- #mobile-filter -->
   </main><!-- #main -->
 </div><!-- #primary -->
 
