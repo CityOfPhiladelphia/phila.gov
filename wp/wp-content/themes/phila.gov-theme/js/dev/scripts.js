@@ -53,6 +53,7 @@ jQuery(document).ready(function($) {
   $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
+    //$('body').addClass('no-scroll');
 
     parentLink.push( $(this).find('.is-active').last().prev().text() );
 
@@ -61,7 +62,7 @@ jQuery(document).ready(function($) {
     $('.current-parent > li.js-drilldown-back a').text( 'Back to ' + parentLink.slice(-2)[0] );
 
     $('.js-current-section').html( parentLink.slice(-1)[0] );
-    
+
     /* Ensure no events get through on titles */
     $('.js-current-section').each(function( ) {
       $(this).click(function(e) {
@@ -82,7 +83,7 @@ jQuery(document).ready(function($) {
   });
 
   $(document).on('closed.zf.drilldown', '[data-drilldown]', function(){
-    $('.menu-icon').removeClass('active');
+    $('body').removeClass('no-scroll');
   });
 
   //ensure dropdown stays below header on scroll and open/close
@@ -92,15 +93,14 @@ jQuery(document).ready(function($) {
     if ( $('#services-mega-menu').hasScrollBar() ){
       $('body').addClass('no-scroll');
       $(this).css({
-        //TODO: arbetary number here, need to investigate
-        'padding-bottom': navHeight + 100,
         'top': 0
       });
     }else{
       $('body').removeClass('no-scroll');
     }
 
-    $('.global-nav .menu-icon').addClass('active');
+    //$('.global-nav .menu-icon').addClass('active');
+
     $('#back-to-top').css('display', 'none');
 
     if ( $('.sticky').hasClass('is-stuck') ){
@@ -117,7 +117,6 @@ jQuery(document).ready(function($) {
      });
 
   });
-
 
   $('.sticky').on('sticky.zf.stuckto:top', function(){
     var navHeight = $('.sticky-container').outerHeight();
@@ -136,7 +135,7 @@ jQuery(document).ready(function($) {
   $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
 
     $('.global-nav .menu-icon').removeClass('active');
-
+    $('body').removeClass('no-scroll');
   });
 
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
