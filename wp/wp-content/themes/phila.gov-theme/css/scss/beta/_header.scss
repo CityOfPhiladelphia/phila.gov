@@ -1,7 +1,12 @@
 header {
-  .logo{
+  .logo svg,
+  .logo img{
     max-width:170px;
     display: block;
+
+    &:hover{
+      opacity: .6;
+    }
 
     @media screen and (max-width: 39.9375em) {
       margin:$spacing-medium auto 0;
