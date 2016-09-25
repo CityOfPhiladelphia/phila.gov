@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
   var parents = $('.a-z-group');
   var hiddenLetter = {};
-  var originalFilterOptions;
+
   //Hide/show sets of letter groups
   $('.a-z-group .result').bind('update', function() {
 
@@ -100,30 +100,58 @@ jQuery(document).ready(function($) {
 
   });
 
-  $('[data-open="mobile-filter"]').click(function(){
-      // $originalFilterOptions = $( '#service_filter' ).clone();
-      $filterForm = $( '#service_filter' );
-      $filterForm.detach();
-      $('[data-toggle="data-mobile-filter"]').append($filterForm);
-  });
 
-  function attachFilter(){
-    $filterForm = $( '#service_filter' );
-    $filterForm.detach();
-    $('div[data-desktop-filter-wrapper]').append($filterForm);
+  // Mobile Filter
+  function getValues() {
+    confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
+      return this.value;
+    }).get();
   }
 
-  $('a[data-clear-filter]').click( function(){
-    $( '#service_filter input[type="checkbox"]' ).prop( 'checked', false);
-    $( '#service_filter #all[type="checkbox"]' ).trigger('click');
+  function applyValues() {
+    $( '#service_filter input[type="checkbox"]' ).prop( 'checked', false );
+    for ( i=0 ; i < confirmedValues.length ; i++ ){
+      $( 'input#' + confirmedValues[i] ).trigger( 'click' );
+    }
+  }
+
+  function attachFilter() {
+    var $filterForm = $( '#service_filter' );
+    $filterForm.detach();
+    $( 'div[data-desktop-filter-wrapper]' ).append( $filterForm );
+  }
+
+  getValues();
+
+  $( '[data-open="mobile-filter"]' ).click( function() {
+    getValues();
+    var $filterForm = $( '#service_filter' );
+    $filterForm.detach();
+    $( '[data-toggle="data-mobile-filter"]' ).append( $filterForm );
   });
 
-  $('button[data-close], a[data-apply-filter]').on('close.zf.trigger', attachFilter);
-  $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize){
-    if (newSize == 'medium' || newSize == 'large' ){
-      attachFilter();
-      $('#mobile-filter[data-reveal]').trigger('close.zf');
+  //Close button. Ignore unapplied changes.
+  $( 'button[data-close]' ).on( 'close.zf.trigger' , applyValues );
 
+  //Clear selection. Reset to 'All services'.
+  $( 'a[data-clear-filter]' ).click( function() {
+    $( '#service_filter #all[type="checkbox"]' ).trigger( 'click' );
+  });
+
+  //Apply filter selections.
+  $( 'a[data-apply-filter]' ).click( function() {
+    getValues();
+    attachFilter;
+  });
+
+  $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
+    if ( ( oldSize == 'medium' || oldSize == 'large' ) && ( newSize == 'small' ) ){
+      getValues();
+    }
+    else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
+      applyValues()
+      attachFilter();
+      $( '#mobile-filter[data-reveal]' ).trigger( 'close.zf' );
     }
   });
 
