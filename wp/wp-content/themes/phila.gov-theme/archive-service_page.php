@@ -149,7 +149,7 @@ get_header(); ?>
         <?php wp_reset_query(); ?>
       </div>
     </div> <!-- .row -->
-    <div id="mobile-filter" class="reveal" data-reveal>
+    <div id="mobile-filter" class="reveal" data-reveal data-options="closeOnClick:false;">
       <div class="row">
         <div class="columns">
           <button class="close-button ben-franklin-blue" data-close aria-label="Close modal" type="button">
