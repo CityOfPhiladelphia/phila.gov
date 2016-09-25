@@ -126,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <!-- Primary Navigation -->
             <div class="top-bar-right">
               <nav data-swiftype-index="false">
-                <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown equal-height">
+                <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
                   <li class="service-menu-link is-dropdown-submenu-parent equal"  data-toggle="services-mega-menu" data-hover="false">
                     <a href="#" class="services-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
@@ -145,13 +145,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       ?>
                     </ul>
                   </li>
-                  <li class="equal">
+                  <li>
                     <a href="#programs-and-initiatives"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
                   </li>
-                  <li class="equal">
+                  <li>
                     <a href="#news-and-events"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
                   </li>
-                  <li class="equal">
+                  <li>
                     <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
                   </li>
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk">
