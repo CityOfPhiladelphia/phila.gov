@@ -13,14 +13,12 @@
  </div><!-- #page -->
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
-  <div class="contact">
-    <?php get_template_part( 'partials/content', 'modified' ) ?>
-    <?php echo phila_get_dept_contact_blocks(); ?>
-  </div>
+  <?php get_template_part( 'partials/content', 'modified' ) ?>
+  <?php echo phila_get_dept_contact_blocks(); ?>
   <div class="philly311">
     <section>
       <div class="row">
-        <div class="columns">
+        <div class="columns intro">
           <h2>Philly311</h2>
           <span><a href="/" class="external">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 3-1-1 or tweet @philly311 for a quick response.</span>
         </div>
@@ -87,7 +85,7 @@
   <div class="fat">
     <div class="row pvs phm">
       <section class="medium-8 columns phm pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
-        <h1 class="mtn mbm">Take action in your community</h1>
+        <h2 class="mtn mbm">Take action in your community</h2>
         <nav class="take-action">
           <ul>
             <li class="pvxs"><a href="" class="external">PhillyRising Collaborative</a></li>
@@ -101,7 +99,7 @@
         </nav>
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
-        <h1 class="mtn mbm"> Know your City government</h1>
+        <h2 class="mtn mbm"> Know your City government</h2>
         <nav class="take-action">
           <ul>
             <li class="pvxs"><a href="" class="external">Mayor’s Office</a></li>
@@ -115,48 +113,52 @@
         </nav>
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu">
-        <h1 class="mtn mbm">Connect with City government</h1>
+        <h2 class="mtn mbm">Connect with City government</h2>
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <li class="pln pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
-                <i class="fa fa-tv fa-3x" title="TV" aria-hidden="true"></i>
-                <span class="show-for-sr">TV</span>
+              <a href="" target="_blank" class="prl">
+                <span class="fa fa-stack fa-lg">
+                  <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
+                  <i class="fa fa-stack-1x">
+                    <span class="h4">64</span>
+                  </i>
+                  <span class="show-for-sr">TV 64</span>
+                </span>
               </a>
             </li>
-            <br/>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="phm">
+              <a href="" target="_blank" class="prl">
                 <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>

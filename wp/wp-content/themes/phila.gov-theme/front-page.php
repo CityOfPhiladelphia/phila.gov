@@ -15,7 +15,7 @@ get_header(); ?>
         <div class="row expanded ptl pbs pvxl-mu">
           <div class="medium-14 small-centered columns beta-message">
             <span class="h1 break-after">Beta.phila.gov</span> <span class="h2 sub-title">is a work-in-progress.</span>
-            <p class="mvm"> We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg"></i> feedback links.</span></p>
+            <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg"></i> feedback links.</span></p>
           </div>
         </div>
         <!-- End Beta.phila.gov Message -->
@@ -73,7 +73,7 @@ get_header(); ?>
                       </div>
                     </div>
                     <div>
-                      <p class="h6">Search for a<span class="break-before-mu"> Property</span></p>
+                      <p class="h6">Search for a<span class="break-before-mu"> property</span></p>
                     </div>
                   </div>
                 </a>
@@ -142,7 +142,7 @@ get_header(); ?>
                   <div class="icon">
                     <span><i class="fa fa-book fa-5x" aria-hidden="true"></i></span>
                   </div>
-                  <span class="external">Free Libraries</span>
+                  <span class="external">Free libraries</span>
                 </header>
               </div>
             </a>
@@ -168,7 +168,7 @@ get_header(); ?>
                   <div class="icon">
                     <span><i class="fa fa-paint-brush fa-5x" aria-hidden="true"></i></span>
                   </div>
-                  <span class="external">Recreation Centers</span>
+                  <span class="external">Recreation centers</span>
                 </header>
               </div>
             </a>
@@ -181,7 +181,7 @@ get_header(); ?>
                   <div class="icon">
                     <span><i class="fa fa-wifi fa-5x" aria-hidden="true"></i></span>
                   </div>
-                  <span class="external">Free Internet Access</span>
+                  <span class="external">Free Internet access</span>
                 </header>
               </div>
             </a>
@@ -207,7 +207,7 @@ get_header(); ?>
                   <div class="icon">
                     <span><i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i></span>
                   </div>
-                  <span class="">Health Centers</span>
+                  <span class="">Health centers</span>
                 </header>
               </div>
             </a>
@@ -220,7 +220,7 @@ get_header(); ?>
                   <div class="icon">
                     <span><i class="fa fa-fire-extinguisher fa-5x" aria-hidden="true"></i></span>
                   </div>
-                  <span class="external">Fire Stations</span>
+                  <span class="external">Fire stations</span>
                 </header>
               </div>
             </a>
@@ -233,7 +233,7 @@ get_header(); ?>
                   <div class="icon">
                     <span><i class="fa fa-shield fa-5x" aria-hidden="true"></i></span>
                   </div>
-                  <span class="external">Police Stations</span>
+                  <span class="external">Police stations</span>
                 </header>
               </div>
             </a>
@@ -308,41 +308,47 @@ get_header(); ?>
                     <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
                   </div>
                 </div>
-                <div class="row collapse">
+                <div class="row collapse process-bar">
                   <div class="medium-8 columns">
                     <section>
                       <header class="bg-medium-gray">
-                        <div class="process-label valign left-arrow-indent left-arrow-white">
+                        <div class="valign process-label left-arrow-indent left-arrow-white">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Alpha</h3>
+                            <h4 class="mbn h5 white">Alpha</h4>
                           </div>
                         </div>
                       </header>
-                      <span class="pvm phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                      <div class="description">
+                        <span class="phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                      </div>
                     </section>
                   </div>
                   <div class="medium-8 columns small-text">
                     <section>
                       <header class="bg-ben-franklin-blue">
-                        <div class="process-label valign bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
+                        <div class="valign process-label bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
                           <div class="valign-cell">
-                            <span class="mbn h5 white">Beta</span>
+                            <h4 class="mbn h5 white">Beta</h4>
                           </div>
                         </div>
                       </header>
-                      <span class="pvm phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                      <div class="description current">
+                        <span class="phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                      </div>
                     </section>
                   </div>
                   <div class="medium-8 columns end">
                     <section>
                       <header>
-                        <div class="process-label valign bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
+                        <div class="valign process-label bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Launch</h3>
+                            <h4 class="mbn h5 white">Launch</h4>
                           </div>
                         </div>
                       </header>
-                      <span class="pvm phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
+                      <div class="description">
+                        <span class="phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
+                      </div>
                     </section>
                   </div>
                 </div>
