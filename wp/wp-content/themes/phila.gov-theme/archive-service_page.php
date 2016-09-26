@@ -23,14 +23,14 @@ get_header(); ?>
         </a>
       </div>
       <div class="small-12 columns">
-        <a class="button outline full-width pan clearfix">
+        <a class="button outline full-width pan clearfix" data-alpha-order>
           <div class="valign">
             <div class="button-label center valign-cell h2">A-Z</div>
           </div>
         </a>
       </div>
       <div class="small-12 columns">
-        <a href="#/" class="button full-width pan clearfix">
+        <a href="#/" class="button full-width pan clearfix" data-reverse-alpha-order>
           <div class="valign">
             <div class="button-label center valign-cell h2">Z-A</div>
           </div>

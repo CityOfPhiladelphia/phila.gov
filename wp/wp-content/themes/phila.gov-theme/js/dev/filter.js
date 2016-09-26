@@ -151,9 +151,32 @@ jQuery(document).ready(function($) {
     else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
       applyValues()
       attachFilter();
-      //Close modal if open and screen re-sized to medium or large.
+      //Auto-sort and close model on resize
+      $( '.button[data-alpha-order]' ).trigger( 'click' );
       $( '#mobile-filter[data-reveal]' ).trigger( 'close.zf' );
     }
   });
+
+  function sortAlpha( a , b ) {
+    return ( $(b).data('alphabet') < $(a).data('alphabet') ) ? 1 : -1;
+  }
+
+  function sortReverseAlpha( a , b ) {
+    return ( $(b).data('alphabet') > $(a).data('alphabet') ) ? 1 : -1;
+  }
+
+  $('.button[data-alpha-order]').click( function() {
+    var $servicelist = $( '.a-z-group' );
+    $servicelist.detach();
+    $servicelist.sort( sortAlpha );
+    $( '.a-z-list' ).append( $servicelist );
+  })
+
+  $('.button[data-reverse-alpha-order]').click( function() {
+    var $servicelist = $( '.a-z-group' );
+    $servicelist.detach();
+    $servicelist.sort( sortReverseAlpha );
+    $( '.a-z-list' ).append( $servicelist );
+  })
 
 });
