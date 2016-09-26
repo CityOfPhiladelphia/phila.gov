@@ -20,26 +20,26 @@
       <div class="row">
         <div class="columns intro">
           <h2>Philly311</h2>
-          <span><a href="/" class="external">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 3-1-1 or tweet @philly311 for a quick response.</span>
+          <span><a href="http://www.phila.gov/311" class="external">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 3-1-1 or <a href="http://www.phila.gov/311" class="external">tweet @philly311</a> for a quick response.</span>
         </div>
       </div>
       <div class="row pvn pvl-mu equal-height">
         <div class="small-24 medium-8 columns pll pvm pvn-mu sidewalk bdr-right-mu interact-311 equal">
           <section>
             <h3 class="dark-gray">Interact with 311 online</h3>
-            <a href="#/" class="button icon clearfix">
+            <a href="http://www.phila.gov/311/form/Pages/default.aspx" class="button icon clearfix">
               <div class="valign">
                 <i class="fa fa-bullhorn valign-cell"></i>
                 <div class="button-label valign-cell">Report a problem</div>
               </div>
             </a>
-            <a href="#/" class="button icon clearfix">
+            <a href="http://www.phila.gov/311/findananswer/Pages/default.aspx" class="button icon clearfix">
               <div class="valign">
                 <i class="fa fa-question valign-cell"></i>
                 <div class="button-label valign-cell">Ask a question</div>
               </div>
             </a>
-            <a href="#/" class="button icon clearfix">
+            <a href="https://cityofphiladelphia.github.io/service-request-tracker/?id=10901544" class="button icon clearfix">
               <div class="valign">
                 <i class="fa fa-check-square-o valign-cell"></i>
                 <div class="button-label valign-cell">Track a request</div>
@@ -53,28 +53,28 @@
             <!-- TODO: Begin pulling these in from 311 -->
               <ul class="columns-2-mu">
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="http://www.phila.gov/OPA/AbatementsExemptions/Pages/Homestead.aspx">Apply for a Homestead Exemption</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx">Correctional facilities</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="http://www.philapark.org/violations/">Pay a parking violation</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="https://secure.phila.gov/WRB/WaterBill/Account/GetAccount.aspx">Pay a water bill</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="https://ework.phila.gov/revenue/">Pay a Real Estate Tax bill</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="http://property.phila.gov/">Search for property information</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="http://www.philadelphiastreets.com/sanitation/residential/collection-schedules">Trash and recycling schedule</a>
                 </li>
                 <li>
-                  <a href="#" >Sample textarea</a>
+                  <a href="https://alpha.phila.gov/services/become-a-water-customer/property-owners/">Turn water service on or off</a>
                 </li>
               </ul>
             </section>
@@ -83,59 +83,44 @@
     <section>
   </div>
   <div class="fat">
-    <div class="row pvs phm">
-      <section class="medium-8 columns phm pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+    <div class="row pvs phm equal-height">
+      <section class="medium-8 columns phm pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu equal">
         <h2 class="mtn mbm">Take action in your community</h2>
         <nav class="take-action">
           <ul>
-            <li class="pvxs"><a href="" class="external">PhillyRising Collaborative</a></li>
-            <li class="pvxs"><a href="" class="external">Citizens Planning Institute</a></li>
-            <li class="pvxs"><a href="" class="external">Neighborhood Liaison program</a></li>
-            <li class="pvxs"><a href="" class="external">Citizen action toolkit</a></li>
-            <li class="pvxs"><a href="" class="external">Clean up your block</a></li>
-            <li class="pvxs"><a href="" class="external">Apply for an event permit</a></li>
-            <li class="pvxs"><a href="" class="external">City, District, Council, &amp; Ward maps</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/phillyrising//index.html" class="external">PhillyRising Collaborative</a></li>
+            <li class="pvxs"><a href="http://citizensplanninginstitute.org/" class="external">Citizens Planning Institute</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/311/aboutus/Pages/NeighborhoodLaison.aspx" class="external">Neighborhood Liaison program</a></li>
+            <li class="pvxs"><a href="http://citizensplanninginstitute.org/citizens-toolkit" class="external">Citizen action toolkit</a></li>
+            <li class="pvxs"><a href="http://www.philadelphiastreets.com/pmbc/" class="external">Clean up your block</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/MDO/SpecialEvents/Pages/PermitsandApplications.aspx" class="external">Apply for an event permit</a></li>
+            <li class="pvxs"><a href="http://gsg.phila.gov/map" class="external">City, District, Council, &amp; Ward maps</a></li>
           </ul>
         </nav>
       </section>
-      <section class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu">
+      <section class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu equal">
         <h2 class="mtn mbm"> Know your City government</h2>
         <nav class="take-action">
           <ul>
-            <li class="pvxs"><a href="" class="external">Mayor’s Office</a></li>
-            <li class="pvxs"><a href="" class="external">Citizens Planning Institute</a></li>
-            <li class="pvxs"><a href="" class="external">Neighborhood Liaison program</a></li>
-            <li class="pvxs"><a href="" class="external">Citizen action toolkit</a></li>
-            <li class="pvxs"><a href="" class="external">Clean up your block</a></li>
-            <li class="pvxs"><a href="" class="external">Apply for an event permit</a></li>
-            <li class="pvxs"><a href="" class="external">City, District, Council, &amp; Ward maps</a></li>
+            <li class="pvxs"><a href="https://alpha.phila.gov/departments/mayor/" class="">Mayor’s Office</a></li>
+            <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
+            <li class="pvxs"><a href="https://alpha.phila.gov/departments/" class="">City Government Directory</a></li>
+            <li class="pvxs"><a href="https://alpha.phila.gov/press-releases/mayor/mayor-releases-organizational-chart-of-his-administration-to-public/" class="">City organization charts</a></li>
+            <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/records/index.html" class="external">City records</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/ethicsboard/Pages/default.aspx" class="external">Honesty in government</a></li>
+            <li class="pvxs"><a href="http://www.philadelphiavotes.com/" class="external">Voting &amp; elections</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/data/" class="external">Open data</a></li>
+            <li class="pvxs"><a href="http://analytics.phila.gov/" class="external">City website analytics</a></li>
           </ul>
         </nav>
       </section>
-      <section class="medium-8 columns phm pll-mu pvm pvn-mu">
+      <section class="medium-8 columns phm pll-mu pvm pvn-mu equal">
         <h2 class="mtn mbm">Connect with City government</h2>
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pvxs">
-              <a href="" target="_blank" class="prl">
-                <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
-                <span class="show-for-sr">Facebook</span>
-              </a>
-            </li>
-            <li class="pvxs">
-              <a href="" target="_blank" class="prl">
-                <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
-                <span class="show-for-sr">Twitter</span>
-              </a>
-            </li>
-            <li class="pln pvxs">
-              <a href="" target="_blank" class="prl">
-                <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
-                <span class="show-for-sr">Instagram</span>
-              </a>
-            </li>
-            <li class="pvxs">
-              <a href="" target="_blank" class="prl">
+              <a href="http://www.phila.gov/channel64/Pages/default.aspx" target="_blank" class="prl">
                 <span class="fa fa-stack fa-lg">
                   <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
                   <i class="fa fa-stack-1x">
@@ -146,19 +131,37 @@
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="prl">
+              <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" target="_blank" class="prl">
+                <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
+                <span class="show-for-sr">Facebook</span>
+              </a>
+            </li>
+            <li class="pvxs">
+              <a href="https://twitter.com/PhiladelphiaGov" target="_blank" class="prl">
+                <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
+                <span class="show-for-sr">Twitter</span>
+              </a>
+            </li>
+            <li class="pln pvxs">
+              <a href="https://www.instagram.com/cityofphiladelphia/" target="_blank" class="prl">
+                <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
+                <span class="show-for-sr">Instagram</span>
+              </a>
+            </li>
+            <li class="pvxs">
+              <a href="https://www.youtube.com/user/PhilaGov" target="_blank" class="prl">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="prl">
+              <a href="https://www.flickr.com/photos/phillycityrep" target="_blank" class="prl">
                 <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="" target="_blank" class="prl">
+              <a href="https://github.com/CityOfPhiladelphia" target="_blank" class="prl">
                 <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>
