@@ -30,5 +30,22 @@ header {
     }
     color:$ben-franklin-blue;
     text-transform: uppercase;
+
+
+
+    &.hover::after{
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 1rem solid transparent;
+      border-right: 1rem solid transparent;
+
+      border-bottom: 1rem solid $ghost-gray;
+      bottom:0;
+      left:38%;
+      right:50%;
+      position: absolute;
+    }
   }
 }
