@@ -282,7 +282,7 @@ get_header(); ?>
         <section>
           <div class="row">
             <div class="columns">
-              <h2 class="contrast">Redesigning Phila.gov</h2>
+              <h2 class="contrast">Redesigning phila.gov</h2>
             </div>
           </div>
           <div class="row equal-height">
