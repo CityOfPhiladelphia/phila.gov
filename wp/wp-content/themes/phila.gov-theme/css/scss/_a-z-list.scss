@@ -21,6 +21,12 @@
 
     .letter{
       font-size: $large-font-base / 1.75;
+      line-height: 1;
+
+      @media screen and (min-width: 40em) {
+        line-height: inherit;
+      }
+
     }
   }
 
@@ -42,6 +48,16 @@
 
 .directory{
 
+  .button {
+    .button-label {
+      padding-top: $spacing-large;
+      padding-bottom: $spacing-large;
+      &.h2 {
+        font-weight: 400;
+      }
+    }
+  }
+
   .filter{
     //TODO: correct the base style that is providing the gray bg & padding
     background:$white;
@@ -49,7 +65,10 @@
 
     li{
       padding:$spacing-small 0;
-      border-top:1px solid $sidewalk;
+
+      @media screen and (min-width: 40em) {
+        border-top:1px solid $sidewalk;
+      }
 
       input[type="checkbox"]{
         margin:0;

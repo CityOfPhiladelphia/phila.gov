@@ -14,25 +14,25 @@ get_header(); ?>
         <?php printf(__('<h1 class="contrast ptm">Service Directory</h1>', 'phila-gov') ); ?>
       </header>
     </div>
-    <div class="row show-for-small-only">
+    <div class="row mbl show-for-small-only">
       <div class="small-24 columns">
         <a data-open="mobile-filter" class="button full-width pan clearfix">
           <div class="valign">
-            <div class="button-label center valign-cell">Filter by Service Categories</div>
+            <div class="button-label center valign-cell h2">Filter by Service Category</div>
           </div>
         </a>
       </div>
       <div class="small-12 columns">
-        <a class="button full-width pan clearfix">
+        <a class="button outline full-width pan clearfix">
           <div class="valign">
-            <div class="button-label center valign-cell">A-Z</div>
+            <div class="button-label center valign-cell h2">A-Z</div>
           </div>
         </a>
       </div>
       <div class="small-12 columns">
         <a href="#/" class="button full-width pan clearfix">
           <div class="valign">
-            <div class="button-label center valign-cell">Z-A</div>
+            <div class="button-label center valign-cell h2">Z-A</div>
           </div>
         </a>
       </div>
@@ -124,10 +124,10 @@ get_header(); ?>
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true): ?>
             <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
-                <div class="medium-2 columns">
+                <div class="small-3 medium-2 columns">
                   <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
                 </div>
-                <div class="medium-21 columns">
+                <div class="small-20 medium-21 columns">
             <?php endif; ?>
             <?php foreach($services as $k => $v) :?>
               <?php
@@ -149,34 +149,34 @@ get_header(); ?>
         <?php wp_reset_query(); ?>
       </div>
     </div> <!-- .row -->
-    <div id="mobile-filter" class="reveal" data-reveal data-options="closeOnClick:false;">
+    <div id="mobile-filter" class="reveal filter full" data-reveal data-options="closeOnClick:false;">
       <div class="row">
         <div class="columns">
           <button class="close-button ben-franklin-blue" data-close aria-label="Close modal" type="button">
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>
-          <h2>Filter by Service Categories</h2>
+          <h2>Filter by Service Category</h2>
         </div>
       </div>
       <div class="row">
         <div class="small-12 columns">
-          <a href="#/" class="button full-width clearfix" aria-label="Clear filter selections" data-clear-filter>
+          <a href="#/" class="button outline full-width pan clearfix" aria-label="Clear filter selections" data-clear-filter>
             <div class="valign">
-              <div class="button-label center valign-cell">Clear</div>
+              <div class="button-label center valign-cell h2">Clear</div>
             </div>
           </a>
         </div>
         <div class="small-12 columns">
-          <a href="#/" class="button full-width clearfix" data-close aria-label="Apply modal" data-apply-filter>
+          <a href="#/" class="button full-width pan clearfix" data-close aria-label="Apply modal" data-apply-filter>
             <div class="valign">
-              <div class="button-label center valign-cell">Apply</div>
+              <div class="button-label center valign-cell h2">Apply</div>
             </div>
           </a>
         </div>
       </div>
       <div class="row">
-        <div class="columns">
-          <span>Choose all that apply</span>
+        <div class="columns mvm">
+          <span>Choose all that apply.</span>
         </div>
         <div class="small-24 columns">
           <div data-toggle="data-mobile-filter" >

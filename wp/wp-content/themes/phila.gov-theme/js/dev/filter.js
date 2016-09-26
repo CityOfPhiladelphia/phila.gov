@@ -133,12 +133,12 @@ jQuery(document).ready(function($) {
   //Close button. Ignore unapplied changes.
   $( 'button[data-close]' ).on( 'close.zf.trigger' , applyValues );
 
-  //Clear selection. Reset to 'All services'.
+  //Clear selection. Reset to 'All services'. Not applied unless "Apply" btn is clicked.
   $( 'a[data-clear-filter]' ).click( function() {
     $( '#service_filter #all[type="checkbox"]' ).trigger( 'click' );
   });
 
-  //Apply filter selections.
+  //Apply current filter selections.
   $( 'a[data-apply-filter]' ).click( function() {
     getValues();
     attachFilter;
@@ -151,6 +151,7 @@ jQuery(document).ready(function($) {
     else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
       applyValues()
       attachFilter();
+      //Close modal if open and screen re-sized to medium or large.
       $( '#mobile-filter[data-reveal]' ).trigger( 'close.zf' );
     }
   });
