@@ -288,19 +288,20 @@
       border-bottom-width: 0;
       right: 5px;
       margin-top: -2px;
-    }
-      .is-active:hover {
-        content: '';
-        display: block;
-        width: 0;
-        height: 0;
-        border: inset 5px;
-        border-color: $white transparent transparent;
-        border-top-style: solid;
-        border-bottom-width: 0;
-        right: 5px;
-        margin-top: -2px;
       }
+    }
+    &.is-active > a:hover::after,
+    &.is-active > a:active::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 5px;
+      border-color: $white transparent transparent;
+      border-top-style: solid;
+      border-bottom-width: 0;
+      right: 5px;
+      margin-top: -2px;
     }
   }
   .is-dropdown-submenu-parent a::after {
