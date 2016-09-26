@@ -6,10 +6,19 @@
 
 //department filter list
 new List('filter-list', {
-    valueNames: ['item', 'item-desc']
+  valueNames: ['item', 'item-desc']
 });
 
 jQuery(document).ready(function($) {
+
+  var currentPath = document.location.pathname.split("/")[1].toString();
+
+  $( $( '.top-bar ul.dropdown > li a' ) ).each( function() {
+    if( currentPath == $( this ).attr('href').split("/")[1] ) {
+      $(this).addClass('js-is-current');
+    }
+  });
+
   //Generic class for links that should prevent clickthrough
   $('.no-link').click(function(e){
     e.preventDefault();
@@ -43,16 +52,12 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $('.global-nav .menu-icon').click(function(){
-    $(this).addClass('active');
-  });
-
+  /* Drilldown menu */
   var parentLink = ['Main Menu'];
 
   $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
-    //$('body').addClass('no-scroll');
 
     parentLink.push( $(this).find('.is-active').last().prev().text() );
 
@@ -72,6 +77,11 @@ jQuery(document).ready(function($) {
 
   });
 
+  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
+    $('body').removeClass('no-scroll');
+  });
+
+
   $(document).on('hide.zf.drilldown', '[data-drilldown]', function(){
     parentLink.pop();
 
@@ -83,8 +93,16 @@ jQuery(document).ready(function($) {
 
   $(document).on('closed.zf.drilldown', '[data-drilldown]', function(){
     $('body').removeClass('no-scroll');
+    console.log('closed.zf.drilldown');
   });
 
+  $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
+    $('body').addClass('no-scroll');
+    $('.global-nav .menu-icon').addClass('active');
+    console.log('toggled.zf.responsiveToggle');
+  });
+
+  /* Dropdown menu */
   //ensure dropdown stays below header on scroll and open/close
   var navHeight = $('.global-nav').outerHeight();
 
@@ -126,13 +144,6 @@ jQuery(document).ready(function($) {
      $('#services-mega-menu').css({
        'top': navHeight
      });
-  });
-
-
-  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
-
-    $('.global-nav .menu-icon').removeClass('active');
-    $('body').removeClass('no-scroll');
   });
 
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
