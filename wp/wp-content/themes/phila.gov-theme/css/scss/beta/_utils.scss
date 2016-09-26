@@ -106,3 +106,16 @@
 .full-width {
   width: 100%;
 }
+
+//This is a fix for issues related to scrolling on iOS
+//TODO: move to _shame.scss in patterns
+html.is-reveal-open{
+   overflow: hidden;
+}
+.directory{
+  .reveal {
+    &.full {
+      min-height: initial;
+    }
+  }
+}
