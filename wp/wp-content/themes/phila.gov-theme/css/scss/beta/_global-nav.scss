@@ -142,7 +142,7 @@
       }
     }
     //TODO: remvove this from patterns
-    .is-dropdown-submenu-parent {
+    .is-drilldown-submenu-parent {
       position: static;
       > a::after{
           position: absolute;
@@ -150,16 +150,22 @@
           margin-top: -6px;
           right: 1rem;
 
-          &:hover,
-          &:active{
-            border-color: transparent transparent transparent $white;
-          }
+        }
+      > a:hover::after,
+        a:active::after{
+          border-color: transparent transparent transparent $white;
         }
       }
       .js-current-section{
         padding: .5rem 1rem;
         font-size: 1.2rem;
         text-transform: none;
+      }
+    }
+    .js-drilldown-back{
+      >a:hover::before,
+      >a:active::before{
+        border-color: transparent $white transparent transparent;
       }
     }
 
@@ -310,5 +316,4 @@
       right: 5px;
       margin-top: -2px;
   }
-
 }
