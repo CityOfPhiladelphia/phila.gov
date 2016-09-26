@@ -31,8 +31,6 @@ header {
     color:$ben-franklin-blue;
     text-transform: uppercase;
 
-
-
     &.hover::after{
       content: '';
       display: block;
