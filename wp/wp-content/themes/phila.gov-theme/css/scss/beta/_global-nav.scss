@@ -3,6 +3,10 @@
   position: relative;
   z-index: 1000;
 
+  .js-is-current {
+    color:$white;
+    background: $ben-franklin-blue;
+  }
   &.no-js {
     //prevent content from jumping down after JS is loaded
     min-height: 95px;
@@ -13,7 +17,10 @@
     @media screen and (min-width: 40em) {
       font-size: .85rem;
     }
-
+    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+      font-size: .75rem;
+      padding: 2rem 1.3rem;
+    }
   }
   .primary-nav {
     ul {
@@ -112,6 +119,8 @@
 
   .is-drilldown {
     width: 100%;
+    //TODO: add to patterns
+    overflow: scroll;
     ul {
       background: $ghost-gray;
       width: 100%;
