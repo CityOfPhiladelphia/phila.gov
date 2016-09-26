@@ -29,29 +29,6 @@ jQuery(document).ready(function($) {
   $.fn.hasScrollBar = function() {
     return this.get(0).scrollHeight > this.height();
   }
-
-  //add search focus on tap or click
-  $('.search-icon').click(function() {
-
-    var fadeOn = $( ".fade" ).is( ":visible" );
-
-    $('.search-field').focus();
-
-    if ( !fadeOn ){
-      $('#page').prepend('<div class="fade"></div>');
-    }
-
-    $('.fade').click(function() {
-      $('.fade').remove();
-    });
-
-    var string = $('.search-field').val();
-
-    if( string.match(/\S/) ){
-      $('.search-submit').submit();
-    }
-  });
-
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
 
@@ -100,7 +77,7 @@ jQuery(document).ready(function($) {
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
 
     if ( Foundation.MediaQuery.atLeast('medium') ) {
-      if ( $('#services-mega-menu').hasScrollBar() ){
+      if ( $('.mega-menu-dropdown').hasScrollBar() ){
         $('body').addClass('no-scroll');
         $(this).css({
           'top': 0
@@ -135,13 +112,13 @@ jQuery(document).ready(function($) {
 
   $('.sticky').on('sticky.zf.stuckto:top', function(){
     var navHeight = $('.sticky-container').outerHeight();
-    $('#services-mega-menu').css({
+    $('.mega-menu-dropdown').css({
       'top': navHeight
     });
   });
 
    $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
-     $('#services-mega-menu').css({
+     $('.mega-menu-dropdown').css({
        'top': navHeight
      });
   });
