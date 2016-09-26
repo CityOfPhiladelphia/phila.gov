@@ -249,17 +249,9 @@ get_header(); ?>
         </div>
         <div class="feedback-form" data-type="feedback-form" style="display:none;">
           <div class="row expanded">
-            <div class="medium-16 column small-centered mvm">
-              <div class="mvm">
-                <p>There are many ways to connect with your neighbors, local organizations, and the City of Philadelphia. We’d like to help you find the neighborhood resources you need. Tell us what you find useful by answering the questions below.</p>
-                <p>Please don’t provide personal information, like your name or contact details, in your answers.</p>
-              </div>
-            </div>
-            <div class="row expanded">
-              <div class="medium-18 large-14 column small-centered mvm" data-type="form-wrapper" >
-                <?php // TODO: insert the form on click ?>
-                <script type="text/javascript" src="https://form.jotform.com/jsform/62516788470970"></script>
-              </div>
+            <div class="medium-18 large-14 column small-centered mbm" data-type="form-wrapper" >
+              <?php // TODO: insert the form on click ?>
+              <script type="text/javascript" src="https://form.jotform.com/jsform/62516788470970"></script>
             </div>
           </div>
         </div>
