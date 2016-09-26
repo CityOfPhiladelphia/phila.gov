@@ -103,3 +103,10 @@
 .inline-block {
   display: inline-block;
 }
+
+@media screen and (min-width: 40em) {
+  .valign-mu {
+    display: table;
+    height: inherit;
+  }
+}
