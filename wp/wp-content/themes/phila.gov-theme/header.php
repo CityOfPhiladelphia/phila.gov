@@ -129,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
                   <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu" data-hover="false">
-                    <a href="#" class="services-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+                    <a href="#" class="no-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical">
                       <?php
                         $args = array(
