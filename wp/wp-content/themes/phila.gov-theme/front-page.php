@@ -11,6 +11,9 @@ get_header(); ?>
   <main id="main" class="site-main home">
     <div class="hero-content">
       <div class="hero-wrap">
+        <div class="photo-credit small-text">
+          <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
+        </div>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
           <div class="medium-14 small-centered columns beta-message">
