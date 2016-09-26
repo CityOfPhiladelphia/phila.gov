@@ -101,6 +101,7 @@ jQuery(document).ready(function($) {
   });
 
 
+  //TODO: This can/should be refactored when time permits 
   // Mobile Filter
   function getValues() {
     confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
@@ -121,9 +122,19 @@ jQuery(document).ready(function($) {
     $( 'div[data-desktop-filter-wrapper]' ).append( $filterForm );
   }
 
+  function applyScrollFix() {
+    $('html').addClass('is-reveal-open');
+    $('body').addClass('no-scroll');
+  }
+  function removeScrollFix() {
+    $('html').removeClass('is-reveal-open');
+    $('body').removeClass('no-scroll');
+  }
+
   getValues();
 
   $( '[data-open="mobile-filter"]' ).click( function() {
+    applyScrollFix();
     getValues();
     var $filterForm = $( '#service_filter' );
     $filterForm.detach();
@@ -131,7 +142,10 @@ jQuery(document).ready(function($) {
   });
 
   //Close button. Ignore unapplied changes.
-  $( 'button[data-close]' ).on( 'close.zf.trigger' , applyValues );
+  $( 'button[data-close]' ).click( function() {
+    applyValues();
+    removeScrollFix();
+  });
 
   //Clear selection. Reset to 'All services'. Not applied unless "Apply" btn is clicked.
   $( 'a[data-clear-filter]' ).click( function() {
@@ -144,18 +158,18 @@ jQuery(document).ready(function($) {
     attachFilter;
   });
 
-  $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
-    if ( ( oldSize == 'medium' || oldSize == 'large' ) && ( newSize == 'small' ) ){
-      getValues();
-    }
-    else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
-      applyValues()
-      attachFilter();
-      //Auto-sort and close model on resize
-      $( '.button[data-alpha-order]' ).trigger( 'click' );
-      $( '#mobile-filter[data-reveal]' ).trigger( 'close.zf' );
-    }
-  });
+  if ( $( '.post-type-archive-service_page' ).length ) {
+    $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
+      if ( ( oldSize == 'medium' || oldSize == 'large' ) && ( newSize == 'small' ) ){
+        getValues();
+      }
+      else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
+        attachFilter();
+        $( '.button[data-alpha-order]' ).trigger( 'click' );
+        $( 'button[data-close]' ).trigger( 'click' );
+      }
+    });
+  }
 
   function sortAlpha( a , b ) {
     return ( $(b).data('alphabet') < $(a).data('alphabet') ) ? 1 : -1;
