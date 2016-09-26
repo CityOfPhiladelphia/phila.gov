@@ -77,10 +77,6 @@ jQuery(document).ready(function($) {
 
   });
 
-  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
-    $('body').removeClass('no-scroll');
-  });
-
 
   $(document).on('hide.zf.drilldown', '[data-drilldown]', function(){
     parentLink.pop();
@@ -91,15 +87,10 @@ jQuery(document).ready(function($) {
 
   });
 
-  $(document).on('closed.zf.drilldown', '[data-drilldown]', function(){
-    $('body').removeClass('no-scroll');
-    console.log('closed.zf.drilldown');
-  });
 
   $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
-    $('body').addClass('no-scroll');
-    $('.global-nav .menu-icon').addClass('active');
-    console.log('toggled.zf.responsiveToggle');
+    $('body').toggleClass('no-scroll');
+    $('.global-nav .menu-icon').toggleClass('active');
   });
 
   /* Dropdown menu */
@@ -107,13 +98,16 @@ jQuery(document).ready(function($) {
   var navHeight = $('.global-nav').outerHeight();
 
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-    if ( $('#services-mega-menu').hasScrollBar() ){
-      $('body').addClass('no-scroll');
-      $(this).css({
-        'top': 0
-      });
-    }else{
-      $('body').removeClass('no-scroll');
+
+    if ( Foundation.MediaQuery.atLeast('medium') ) {
+      if ( $('#services-mega-menu').hasScrollBar() ){
+        $('body').addClass('no-scroll');
+        $(this).css({
+          'top': 0
+        });
+      }else{
+        $('body').removeClass('no-scroll');
+      }
     }
 
     $('#back-to-top').css('display', 'none');
@@ -133,6 +127,12 @@ jQuery(document).ready(function($) {
 
   });
 
+  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
+    if ( Foundation.MediaQuery.atLeast('medium') ) {
+      $('body').removeClass('no-scroll');
+    }
+  });
+
   $('.sticky').on('sticky.zf.stuckto:top', function(){
     var navHeight = $('.sticky-container').outerHeight();
     $('#services-mega-menu').css({
@@ -145,6 +145,7 @@ jQuery(document).ready(function($) {
        'top': navHeight
      });
   });
+
 
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
   /*$('.menu-icon').click(function() {
