@@ -46,6 +46,26 @@
   }
 }
 
+// TODO: Consolidate these hover styles
+
+a {
+  &.button {
+    &:link, &:visited {
+      color: $dark-gray;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    &:hover, &:active {
+      background: none;
+      .button-label {
+            color: $white;
+            background: $dark-gray;
+            transition: background-color 300ms ease-in-out;
+      }
+    }
+  }
+}
+
 footer {
   a {
     &.button {

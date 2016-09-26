@@ -48,8 +48,8 @@
                <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
                      <div class="service-update-icon equal">
                        <div class="valign">
-                         <div class="valign-cell pam">
-                           <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                         <div class="valign-cell pas pam-mu">
+                           <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?> " aria-hidden="true"></i>
                            <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
                          </div>
                        </div>

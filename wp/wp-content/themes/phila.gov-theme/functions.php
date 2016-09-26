@@ -672,19 +672,24 @@ function phila_get_dept_contact_blocks() {
       $cat_id = $category->cat_ID;
       $current_sidebar_name = 'sidebar-' . $cat_slug .'-' . $cat_id;
     }
+    echo '<div class="contact">';
     if(is_active_sidebar( $current_sidebar_name )) {
-      echo '<div class="row equal-height ptm">';
+      echo '<div class="row equal-height pvm">';
       dynamic_sidebar( $current_sidebar_name );
       echo '</div>';
     } elseif(is_active_sidebar( $default_sidebar )) {
-        echo '<div class="row equal-height ptm">';
+        echo '<div class="row equal-height pvm">';
         dynamic_sidebar( $default_sidebar );
         echo '</div>';
     }
+    echo '</div>';
   } elseif( ( ! count( $categories ) == 1 ) && ( is_active_sidebar( $default_sidebar ) ) && ( $cat_slug == $default_category_slug ) ) {
-      echo '<div class="row equal-height ptm">';
+      echo '<div class="contact">';
+      echo '<div class="row equal-height pvm">';
       dynamic_sidebar( $default_sidebar );
       echo '</div>';
+      echo '</div>';
+
   }
 
 }

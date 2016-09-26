@@ -8,6 +8,75 @@ footer{
   &.site-footer {
     background: $white;
 
+    a:link, a:visited {
+      color: $ben-franklin-blue;
+      text-decoration: none;
+    }
+    .classic {
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+      font-weight: 400;
+      .columns {
+        margin: .71429rem 0;
+        ul.inline-list {
+          font-size: .92857rem;
+          margin: 0;
+          padding: 0;
+          li {
+            margin: 0;
+            padding: 0 0 0 10px;
+            a:link,
+            a:visited {
+              color: $white;
+            }
+            a:hover,
+            a:active {
+             color: $bike-share-blue;
+            }
+          }
+        }
+      }
+    }
+    .contact{
+      background:$ghost-gray;
+      color:$dark-gray;
+      border-bottom: 1px solid $sidewalk;
+
+      aside{
+        font-size: 0.85rem;
+
+        .content{
+          padding: 1rem;
+        }
+      }
+      aside{
+        border-bottom: 1px solid $white;
+      }
+
+      @media only screen and (min-width: 40em) {
+        aside {
+          border-bottom: 0;
+        }
+        aside:not(:last-child) {
+          border-right: 1px solid $sidewalk;
+        }
+      }
+      .logo{
+        padding:1rem 0;
+      }
+      .vcard,
+      .vcard-label,
+      .tel a:link,
+      .email a:link{
+        font-weight: normal;
+        text-transform: none;
+        margin: 1em 0;
+        .tel .vcard-label,
+        .fax .vcard-label,
+        .email .vcard-label{
+          font-weight: bold;
+        }
+      }
+    }
     .philly311 {
       background: $ghost-gray;
       color: $dark-gray;
@@ -27,6 +96,7 @@ footer{
         }
       }
 
+      .intro,
       .trending-requests {
         a:link, a:visited {
          color:$ben-franklin-blue;
@@ -39,50 +109,7 @@ footer{
     }
 
     .links {
-      .contact{
-        background:$ghost-gray;
-        color:$dark-gray;
-        aside{
-          font-size: 0.85rem;
 
-          .content{
-            padding: 1rem;
-          }
-        }
-        aside{
-          border-bottom: 1px solid $white;
-        }
-
-        @media only screen and (min-width: 40em) {
-          aside {
-            border-bottom: 0;
-          }
-          aside:not(:last-child) {
-            border-right: 1px solid rgba(68,68,68, 0.5);
-          }
-        }
-        .logo{
-          padding:1rem 0;
-        }
-        .vcard,
-        .vcard-label,
-        .tel a:link,
-        .email a:link{
-          color:$dark-gray;
-          font-weight: normal;
-          text-transform: none;
-          margin: 1em 0;
-          .tel .vcard-label,
-          .fax .vcard-label,
-          .email .vcard-label{
-            font-weight: bold;
-          }
-          .email a:link{
-            color: $ben-franklin-blue;
-            text-decoration: underline;
-          }
-        }
-      }
     }
     .trending-requests {
       a:link {
@@ -99,6 +126,17 @@ footer{
       }
     }
     &.site-footer {
+      .fa {
+      vertical-align: middle;
+      }
+      .fa-stack {
+        .fa-tv{
+          font-size: 3rem;
+        }
+        .fa-stack-1x {
+          margin-left: 4px;
+        }
+      }
       .fat {
         padding: $spacing-medium 0;
         background: $dark-gray;
@@ -108,9 +146,16 @@ footer{
           color: $white;
           text-transform: none;
         }
-      }
-      a:hover, a:active{
-       color: $bike-share-blue;
+        section {
+          a:link,
+          a:visited {
+            color: #e5e5e5;
+          }
+          a:hover,
+          a:active {
+           color: $bike-share-blue;
+          }
+        }
       }
 
       // TODO: move to utils
