@@ -10,6 +10,11 @@ new List('filter-list', {
 });
 
 jQuery(document).ready(function($) {
+  //Generic class for links that should prevent clickthrough
+  $('.no-link').click(function(e){
+    e.preventDefault();
+  });
+
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
   //determines if content is scrollable
   $.fn.hasScrollBar = function() {
@@ -38,14 +43,8 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $('.services-link').click(function(e){
-    e.preventDefault();
-  });
-
   $('.global-nav .menu-icon').click(function(){
-    $(this).toggleClass('active');
-    $('.top-bar').toggleClass('is-mobile');
-
+    $(this).addClass('active');
   });
 
   var parentLink = ['Main Menu'];
@@ -98,8 +97,6 @@ jQuery(document).ready(function($) {
     }else{
       $('body').removeClass('no-scroll');
     }
-
-    //$('.global-nav .menu-icon').addClass('active');
 
     $('#back-to-top').css('display', 'none');
 
