@@ -3,10 +3,6 @@
   position: relative;
   z-index: 1000;
 
-  .js-is-current {
-    color:$white;
-    background: $ben-franklin-blue;
-  }
   &.no-js {
     //prevent content from jumping down after JS is loaded
     min-height: 95px;
@@ -303,6 +299,15 @@
       border-bottom-width: 0;
       right: 5px;
       margin-top: -2px;
+    }
+
+      &.js-is-current {
+        color:$white;
+        background: $ben-franklin-blue;
+
+        &::after{
+          border-color: $white transparent transparent transparent;
+        }
       }
     }
     &.is-active > a:hover::after,
@@ -325,4 +330,5 @@
       right: 5px;
       margin-top: -2px;
   }
+
 }
