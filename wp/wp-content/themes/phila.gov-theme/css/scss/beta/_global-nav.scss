@@ -72,9 +72,11 @@
 
   }
 
-  .dropdown-pane{
-    display: none;
-    overflow: scroll;
+  #services-list {
+    .dropdown-pane{
+      display: none;
+      overflow: scroll;
+    }
   }
 
   .title-bar {
