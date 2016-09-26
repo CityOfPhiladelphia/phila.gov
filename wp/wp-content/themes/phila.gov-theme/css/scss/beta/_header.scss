@@ -1,0 +1,34 @@
+header {
+  .logo svg,
+  .logo img{
+    max-width:170px;
+    display: block;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+
+    &:hover{
+      opacity: .6;
+    }
+
+    @media screen and (max-width: 39.9375em) {
+      margin:$spacing-medium auto 0;
+      max-width:200px;
+    }
+  }
+  button.site-search {
+    font-size:.5rem;
+
+    @media screen and (max-width: 39.9375em) {
+      font-size: .8rem;
+
+      .fa-search{
+        padding-bottom: $spacing-small;
+        font-size: 3em;
+      }
+    }
+    color:$ben-franklin-blue;
+    text-transform: uppercase;
+  }
+}

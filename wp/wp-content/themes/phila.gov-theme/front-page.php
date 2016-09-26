@@ -91,7 +91,7 @@ get_header(); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
 
-    <div class="news-row row ptm expanded">
+    <div class="news-row row ptm">
       <div class="columns">
         <section>
           <div class="row">

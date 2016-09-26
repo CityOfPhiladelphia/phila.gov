@@ -1,0 +1,319 @@
+.global-nav {
+  font-family: 'Montserrat', 'Tahoma', sans-serif;
+  position: relative;
+  z-index: 1000;
+
+  &.no-js {
+    //prevent content from jumping down after JS is loaded
+    min-height: 95px;
+  }
+
+  a:link, a:visited {
+    font-weight: normal;
+    @media screen and (min-width: 40em) {
+      font-size: .85rem;
+    }
+
+  }
+  .primary-nav {
+    ul {
+      background-color:$white;
+    }
+  }
+  .secondary-nav {
+    padding: .25rem 0;
+    font-size: .85rem;
+
+    ul {
+
+      li {
+
+        a {
+          color: $white;
+          padding: 0 0 0 $spacing-small;
+          display: block;
+          text-align: center;
+
+          &:after {
+            content: '|';
+            padding-left: .5rem;
+          }
+        }
+        .fa {
+          padding: 0 0 0 $spacing-small;
+          color: $white;
+        }
+        &:last-of-type {
+          a {
+            padding: 0;
+            &:after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .sticky{
+    background: $white;
+    width: 100% !important;
+    left:0 !important;
+    &.is-stuck{
+      box-shadow: 0 3px 10px rgba($medium-gray, .5);
+    }
+
+    @media screen and (max-width: 39.9375em) {
+      position: relative;
+      z-index: auto;
+    }
+
+  }
+
+  .dropdown-pane{
+    display: none;
+    overflow: scroll;
+  }
+
+  .title-bar {
+    color:$ben-franklin-blue;
+    padding: 0;
+    position: absolute;
+    z-index: 1000;
+
+    .menu-icon {
+      position: relative;
+    }
+
+    .menu-icon {
+      width: auto;
+      height: auto;
+      padding: .75rem;
+      margin-left:0;
+
+      .fa {
+        display: block;
+      }
+
+      &:after, &:before {
+        background: $ben-franklin-blue;
+        box-shadow: none;
+        height: 0;
+      }
+      &.active {
+        background-color: $ghost-gray;
+      }
+    }
+    .title-bar-title {
+      margin: 0;
+      font-size: .8rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .is-drilldown {
+    width: 100%;
+    ul {
+      background: $ghost-gray;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding:0;
+
+      li {
+        background: $ghost-gray;
+        list-style: none;
+        border-bottom: 1px solid $white;
+        &.bg-sidewalk{
+          background: $sidewalk;
+        }
+        &.js-drilldown-back{
+          text-transform: uppercase;
+          font-size:.9rem;
+        }
+        a{
+          padding:1rem;
+          display: block;
+          &:hover,
+          &:active {
+            background: $ben-franklin-blue;
+            color:$white;
+          }
+        }
+      }
+    }
+    //TODO: remvove this from patterns
+    .is-drilldown-submenu-parent {
+      position: static;
+      > a::after{
+          position: absolute;
+          top: 50%;
+          margin-top: -6px;
+          right: 1rem;
+
+        }
+      > a:hover::after,
+        a:active::after{
+          border-color: transparent transparent transparent $white;
+        }
+      }
+      .js-current-section{
+        padding: .5rem 1rem;
+        font-size: 1.2rem;
+        text-transform: none;
+      }
+    }
+    .js-drilldown-back{
+      >a:hover::before,
+      >a:active::before{
+        border-color: transparent $white transparent transparent;
+      }
+    }
+
+  @media screen and (max-width: 39.9375em) {
+    .top-bar{
+      background: $ghost-gray;
+      position: fixed;
+      //overflow: scroll;
+      //height:200px;
+      //TODO: calcuate this w/ js
+      top:77px;
+      &.no-js{
+        display:none;
+      }
+    }
+
+  }
+
+
+  @media only screen and (min-width: 40em) {
+    .primary-menu {
+      .menu>li {
+        > a {
+          padding: $spacing-large 1rem;
+          text-align: center;
+        }
+        a:active, a:hover {
+          color: $white;
+          background-color: $ben-franklin-blue;
+        }
+      }
+    }
+    .service-menu-link ul li {
+      display:none;
+    }
+    .dropdown-pane{
+      width: 100% !important;
+      border: 0;
+      padding: 0;
+      font-size: 1rem;
+      left: 0 !important;
+      z-index: 10000;
+
+      @media screen and (max-width: 55rem) {
+
+        max-height:450px;
+        overflow:auto;
+
+      }
+
+      &.is-open{
+        display: block;
+      }
+
+      .columns {
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+
+         &:nth-of-type(2){
+          padding-left: .25rem;
+          padding-right: .25rem;
+        }
+
+        a {
+          min-height:65px;
+          padding: 1.5rem;
+          display:block;
+          background-color: $ghost-gray;
+          width: 100%;
+          &:hover {
+            color:$white;
+            background: $ben-franklin-blue;
+          }
+          span{
+            display:block;
+          }
+        }
+      }
+      .mega-menu-footer {
+        a {
+          height: 50px;
+          color: $white;
+          &:hover {
+            background:$white;
+            color:$ben-franklin-blue;
+          }
+        }
+        .left-arrow-indent:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+          border-left: 20px solid $ghost-gray;
+          position: absolute;
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 40em) {
+    .top-bar{
+      text-transform: uppercase;
+    }
+    .primary-menu {
+      .menu>li {
+        > a {
+          padding: $spacing-large 1.5rem;
+        }
+      }
+    }
+  }
+  .dropdown.menu > li.is-dropdown-submenu-parent {
+
+  > a {
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 5px;
+      border-color: $ben-franklin-blue transparent transparent;
+      border-top-style: solid;
+      border-bottom-width: 0;
+      right: 5px;
+      margin-top: -2px;
+      }
+    }
+    &.is-active > a:hover::after,
+    &.is-active > a:active::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 5px;
+      border-color: $white transparent transparent;
+      border-top-style: solid;
+      border-bottom-width: 0;
+      right: 5px;
+      margin-top: -2px;
+    }
+  }
+  .is-dropdown-submenu-parent a::after {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      margin-top: -2px;
+  }
+}

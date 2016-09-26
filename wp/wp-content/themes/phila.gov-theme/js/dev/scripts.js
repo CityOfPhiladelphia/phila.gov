@@ -10,6 +10,16 @@ new List('filter-list', {
 });
 
 jQuery(document).ready(function($) {
+  //Generic class for links that should prevent clickthrough
+  $('.no-link').click(function(e){
+    e.preventDefault();
+  });
+
+  //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
+  //determines if content is scrollable
+  $.fn.hasScrollBar = function() {
+    return this.get(0).scrollHeight > this.height();
+  }
 
   //add search focus on tap or click
   $('.search-icon').click(function() {
@@ -33,23 +43,107 @@ jQuery(document).ready(function($) {
     }
   });
 
-  var alphaAlertHeight = $("#alpha-alert").css( "height" );
+  $('.global-nav .menu-icon').click(function(){
+    $(this).addClass('active');
+  });
 
-  //push the custom image down, past the alpha-alert so it will not be cut/not displayed at the full height
-  if (alphaAlertHeight){
-    $('body.custom-background').css('background-position-y', alphaAlertHeight );
-  }
+  var parentLink = ['Main Menu'];
+
+  $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
+
+  $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
+    //$('body').addClass('no-scroll');
+
+    parentLink.push( $(this).find('.is-active').last().prev().text() );
+
+    $(this).find('.is-active').last().addClass('current-parent');
+
+    $('.current-parent > li.js-drilldown-back a').text( 'Back to ' + parentLink.slice(-2)[0] );
+
+    $('.js-current-section').html( parentLink.slice(-1)[0] );
+
+    /* Ensure no events get through on titles */
+    $('.js-current-section').each(function( ) {
+      $(this).click(function(e) {
+        return false;
+      });
+
+    });
+
+  });
+
+  $(document).on('hide.zf.drilldown', '[data-drilldown]', function(){
+    parentLink.pop();
+
+    $('.current-parent > li.js-drilldown-back a').text( 'Back to ' + parentLink.slice(-2)[0] );
+
+    $('.js-current-section').html( parentLink.slice(-1)[0] );
+
+  });
+
+  $(document).on('closed.zf.drilldown', '[data-drilldown]', function(){
+    $('body').removeClass('no-scroll');
+  });
+
+  //ensure dropdown stays below header on scroll and open/close
+  var navHeight = $('.global-nav').outerHeight();
+
+  $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
+    if ( $('#services-mega-menu').hasScrollBar() ){
+      $('body').addClass('no-scroll');
+      $(this).css({
+        'top': 0
+      });
+    }else{
+      $('body').removeClass('no-scroll');
+    }
+
+    $('#back-to-top').css('display', 'none');
+
+    if ( $('.sticky').hasClass('is-stuck') ){
+
+      navHeight = $('.sticky-container').height();
+
+    }else{
+      navHeight = $('.global-nav').outerHeight();
+    }
+
+     $(this).css({
+       'top': navHeight,
+       'position': 'fixed'
+     });
+
+  });
+
+  $('.sticky').on('sticky.zf.stuckto:top', function(){
+    var navHeight = $('.sticky-container').outerHeight();
+    $('#services-mega-menu').css({
+      'top': navHeight
+    });
+  });
+
+   $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
+     $('#services-mega-menu').css({
+       'top': navHeight
+     });
+  });
+
+
+  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
+
+    $('.global-nav .menu-icon').removeClass('active');
+    $('body').removeClass('no-scroll');
+  });
 
   //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
-  $('.menu-icon').click(function() {
+  /*$('.menu-icon').click(function() {
     $('.is-drilldown').find('ul').addClass('vertical');
 
   });
   $( window ).resize(function() {
     $('.is-drilldown').find('ul').removeClass('vertical');
   });
-
-
+  */
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
     if(event.keyCode == 13) {
@@ -206,5 +300,5 @@ jQuery(document).ready(function($) {
       }, 700);
     });
   }
-  
+
 });

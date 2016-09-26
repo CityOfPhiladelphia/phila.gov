@@ -69,46 +69,115 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div id="page" class="hfeed site">
 
-  <?php get_template_part( 'partials/content', 'alpha-alert' ); ?>
+  <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-<header data-swiftype-index='false' id="masthead" class="site-header app">
-
-  <div class="row site-branding">
-    <div class="small-16 columns">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo mbn-mu">
-        <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-white.png" alt="home page"></a>
-        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-        <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-      </div>
-
-      <?php if(!is_front_page() && !is_page_template('search-page.php') && !is_404()) : ?>
-        <div class="search-site small-8 columns"> <?php get_search_form(); ?> </div>
-      <?php endif;?>
-
-    <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'phila-gov' ); ?></a>
-  </div>
-
-  <?php if ( function_exists( 'phila_breadcrumbs' ) && !is_front_page() ) : ?>
-
-    <?php //hide breadcrumbs on department page mobile views
-    if ( get_post_type() === 'department_page' ) : ?>
-      <div class="row expanded hide-for-small-only">
-    <?php else : ?>
-      <div class="row expanded">
-    <?php endif; ?>
-
-      <div class="columns">
-        <div class="row">
-          <div data-swiftype-index='false' class="large-24 columns">
-            <nav><?php phila_breadcrumbs(); ?></nav>
+  <header class="global-nav no-js">
+    <!-- Secondary Navigation -->
+    <div class="row columns bg-ben-franklin-blue expanded secondary-nav">
+      <div class="row">
+        <div class="columns">
+          <div class="top-bar">
+            <div class="top-bar-right">
+              <ul class="medium-horizontal menu show-for-medium">
+                <li><a href="">Mayor's Office</a></li>
+                <li><a href="">City Government Directory</a></li>
+                <li>
+                  <i class="fa fa-globe" aria-hidden="true"></i>
+                  <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
+                    <script type="text/javascript">
+                      function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                      }
+                    </script>
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  <?php endif; ?>
-</header><!-- #masthead -->
+    <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
+      <button class="menu-icon" type="button" data-toggle>
+        <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+        <span class="title-bar-title">Menu</span>
+      </button>
+    </div>
+    <div class="row expanded background-white" data-sticky-container>
+      <div class="columns sticky phn" data-sticky data-margin-top="0">
+        <div class="row equal-height">
+
+          <div class="small-16 medium-6 columns equal valign small-push-4 medium-push-0">
+            <div class="valign-cell">
+              <a href="<?php echo get_home_url(); ?>" class="logo"><?php echo file_get_contents( get_template_directory() . '/img/city-of-philadelphia-logo.svg'); ?></a>
+            </div>
+          </div>
+
+          <div class="small-4 medium-push-17 medium-1 columns equal small-push-4">
+            <button class="site-search valign" type="button">
+              <div class="valign-cell float-right">
+                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                <span class="show-for-small-only">Search</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="top-bar primary-menu medium-pull-1 medium-16 small-24 columns equal no-js" id="beta-global-nav">
+            <!-- Primary Navigation -->
+            <div class="top-bar-right">
+              <nav data-swiftype-index="false">
+                <ul class="vertical medium-horizontal dropdown menu pan" data-responsive-menu="drilldown medium-dropdown">
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+                  <li class="service-menu-link is-dropdown-submenu-parent"  data-toggle="services-mega-menu" data-hover="false">
+                    <a href="#" class="no-link"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+                    <ul class="menu vertical">
+                      <?php
+                        $args = array(
+                          //TODO: only display pages with taxonomy applied
+                          'post_type' => 'service_page',
+                          'orderby' => 'menu_order',
+                          'order' => 'ASC',
+                          'title_li' => '',
+                          'link_before' => '<span>',
+                          'link_after'  => '</span>',
+                        );
+                        wp_list_pages($args);
+                      ?>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#programs-and-initiatives"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+                  </li>
+                  <li>
+                    <a href="#news-and-events"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
+                  </li>
+                  <li>
+                    <a href="#publications-and-forms"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
+                  </li>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk">
+                    <a href="/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
+                  </li>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk"><a href="/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+                  </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php get_template_part( 'partials/content', 'service-mega-menu' ) ?>
+      </div>
+  </header>
+
+<!-- #masthead -->
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
-
+    <?php if ( !is_front_page() ) : ?>
+      <div class="row mtm">
+        <div class="columns">
+          <?php echo phila_breadcrumbs(); ?>
+        </div>
+      </div>
+    <?php endif; ?>
 <div id="content" class="site-content">
