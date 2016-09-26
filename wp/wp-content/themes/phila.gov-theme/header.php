@@ -113,8 +113,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
 
-          <div class="small-4 medium-push-17 medium-1 columns equal small-push-4">
-            <button class="site-search valign" type="button">
+          <div class="small-4 medium-push-17 medium-1 columns equal small-push-4" >
+            <button class="site-search valign" type="button"  data-toggle="search-dropdown">
               <div class="valign-cell float-right">
                 <i class="fa fa-search fa-2x" aria-hidden="true"></i>
                 <span class="show-for-small-only">Search</span>
@@ -128,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
-                  <li class="service-menu-link is-dropdown-submenu-parent valign-cell"  data-toggle="services-mega-menu" data-hover="false">
+                  <li class="service-menu-link is-dropdown-submenu-parent valign-cell" data-toggle="services-mega-menu" data-hover="false">
                     <a href="/services" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical">
                       <?php
@@ -165,7 +165,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         </div>
-        <?php get_template_part( 'partials/content', 'service-mega-menu' ) ?>
+        <?php get_template_part( 'searchform' ); ?>
+        <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
       </div>
   </header>
 
