@@ -2386,7 +2386,7 @@ $meta_boxes[] = array(
 //default tax detail template
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
-  'pages' => array('service_page'),
+  'pages' => array('page', 'service_page'),
   'visible' => array('phila_template_select', 'default'),
 
   'fields' => array(

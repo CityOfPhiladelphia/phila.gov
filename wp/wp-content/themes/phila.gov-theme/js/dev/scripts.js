@@ -11,12 +11,15 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
-  var currentPath = document.location.pathname.split("/")[1].toString();
+ var currentPath = window.location.pathname;
 
-  $( $( '.top-bar ul.dropdown > li a' ) ).each( function() {
-    if( currentPath == $( this ).attr('href').split("/")[1] ) {
+  $( $( '.top-bar ul > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
+    if ( currentPath == $( this ).attr('href') ){
+
       $(this).addClass('js-is-current');
+
     }
+
   });
 
   //Generic class for links that should prevent clickthrough
@@ -122,16 +125,6 @@ jQuery(document).ready(function($) {
      });
   });
 
-
-  //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
-  /*$('.menu-icon').click(function() {
-    $('.is-drilldown').find('ul').addClass('vertical');
-
-  });
-  $( window ).resize(function() {
-    $('.is-drilldown').find('ul').removeClass('vertical');
-  });
-  */
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
     if(event.keyCode == 13) {
