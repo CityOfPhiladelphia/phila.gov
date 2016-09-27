@@ -26,6 +26,7 @@ header {
       .fa-search{
         padding-bottom: $spacing-small;
         font-size: 3em;
+        display: block;
       }
     }
     color:$ben-franklin-blue;
@@ -41,7 +42,7 @@ header {
 
       border-bottom: 1rem solid $ghost-gray;
       bottom:0;
-      left:38%;
+      left:0;
       right:50%;
       position: absolute;
     }
