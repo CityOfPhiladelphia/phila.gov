@@ -115,7 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <div class="small-4 medium-push-17 medium-1 columns equal small-push-4" >
             <button class="site-search valign" type="button"  data-toggle="search-dropdown">
-              <div class="valign-cell float-right">
+              <div class="valign-cell">
                 <i class="fa fa-search fa-2x" aria-hidden="true"></i>
                 <span class="show-for-small-only">Search</span>
               </div>
