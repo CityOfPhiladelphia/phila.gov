@@ -7,7 +7,7 @@
     //prevent content from jumping down after JS is loaded
     min-height: 95px;
   }
-  
+
   .js-is-current {
     color:$white;
     background: $ben-franklin-blue;
@@ -202,6 +202,7 @@
         > a {
           padding: $spacing-large 1rem;
           text-align: center;
+          height: inherit;
         }
         a:active, a:hover {
           color: $white;
@@ -280,6 +281,10 @@
   }
 
   @media screen and (min-width: 40em) {
+    //TODO: put in patterns
+    .menu.medium-horizontal>li{
+      height:inherit;
+    }
 
     .top-bar{
       text-transform: uppercase;
@@ -293,7 +298,7 @@
     }
   }
   .dropdown.menu > li.is-dropdown-submenu-parent {
-
+    //big arrow
     &.hover::after{
       content: '';
       display: block;
@@ -307,22 +312,31 @@
       left:38%;
       right:50%;
       position: absolute;
+
     }
 
 
 
   > a {
     &::after {
+      //little arrow
       content: '';
-      display: block;
+      display: inline;
       width: 0;
       height: 0;
       border: inset 5px;
       border-color: $ben-franklin-blue transparent transparent;
       border-top-style: solid;
       border-bottom-width: 0;
-      right: 5px;
-      margin-top: -2px;
+      left: 15%;
+      top: 31%;
+      position: relative;
+      margin: 0;
+      float:none;
+      @media screen and (min-width: 64em) {
+        top: 85%;
+      }
+
     }
 
       &.js-is-current {
@@ -337,22 +351,21 @@
     &.is-active > a:hover::after,
     &.is-active > a:active::after {
       content: '';
-      display: block;
+      display: inline;
       width: 0;
       height: 0;
       border: inset 5px;
       border-color: $white transparent transparent;
       border-top-style: solid;
       border-bottom-width: 0;
-      right: 5px;
-      margin-top: -2px;
+      left: 15%;
+      top: 31%;
+      position: relative;
+      margin: 0;
+      float:none;
+      @media screen and (min-width: 64em) {
+        top: 85%;
+      }
     }
   }
-  .is-dropdown-submenu-parent a::after {
-      position: absolute;
-      top: 50%;
-      right: 5px;
-      margin-top: -2px;
-  }
-
 }
