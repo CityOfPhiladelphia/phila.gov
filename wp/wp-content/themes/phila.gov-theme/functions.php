@@ -414,12 +414,6 @@ function phila_breadcrumbs() {
 
         echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
 
-    } elseif ( is_post_type_archive('news_post') ) {
-
-        echo '<li><a href="/news">News</a></li>';
-
-        echo '<li>'. $term_obj->name . '</li>';
-
     } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
 
         echo '<li><a href="/news">News</a></li>';
@@ -429,7 +423,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('news_post') ) {
 
-        echo '<li>News</li>';
+      echo '<li><a href="/news">News</a></li>';
 
     }elseif ( is_post_type_archive('phila_post') && is_category() )  {
 
