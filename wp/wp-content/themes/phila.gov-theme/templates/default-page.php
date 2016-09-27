@@ -23,7 +23,7 @@
         <?php echo $append_before_wysiwyg; ?>
       <?php endif; ?>
 
-        <?php the_content(); ?>
+        <?php get_template_part('partials/content', 'default');?>
 
         <!-- If Custom Markup append_after_wysiwyg is present print it -->
         <?php if (!$append_after_wysiwyg == ''):?>

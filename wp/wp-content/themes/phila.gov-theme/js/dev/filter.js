@@ -84,9 +84,11 @@ jQuery(document).ready(function($) {
   $("a.scrollTo").click(function(e){
     var link = $(this);
 
+    var stickyHeight = $('.sticky-container').outerHeight();
+
     $('html, body').animate({
       scrollTop:
-        $( $(this).attr("href") ).offset().top
+        $( $(this).attr("href") ).offset().top-stickyHeight
     }, 1000, function(){
 
       var anchor = link.attr("href").substr(1);
@@ -101,7 +103,7 @@ jQuery(document).ready(function($) {
   });
 
 
-  //TODO: This can/should be refactored when time permits 
+  //TODO: This can/should be refactored when time permits
   // Mobile Filter
   function getValues() {
     confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
