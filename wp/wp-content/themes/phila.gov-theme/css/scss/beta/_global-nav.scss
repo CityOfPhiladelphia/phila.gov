@@ -7,6 +7,11 @@
     //prevent content from jumping down after JS is loaded
     min-height: 95px;
   }
+  
+  .js-is-current {
+    color:$white;
+    background: $ben-franklin-blue;
+  }
 
   a:link, a:visited {
     font-weight: normal;
