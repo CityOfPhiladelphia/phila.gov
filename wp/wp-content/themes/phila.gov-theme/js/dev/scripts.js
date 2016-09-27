@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
   var currentPath = document.location.pathname.split("/")[1].toString();
 
   $( $( '.top-bar ul.dropdown > li a' ) ).each( function() {
+    console.log(currentPath);
     if( currentPath == $( this ).attr('href').split("/")[1] ) {
       $(this).addClass('js-is-current');
     }
@@ -122,16 +123,6 @@ jQuery(document).ready(function($) {
      });
   });
 
-
-  //force foudation menus to display horizontally on desktop and vertically when 'is-drilldown' is present ( aka, on mobile )
-  /*$('.menu-icon').click(function() {
-    $('.is-drilldown').find('ul').addClass('vertical');
-
-  });
-  $( window ).resize(function() {
-    $('.is-drilldown').find('ul').removeClass('vertical');
-  });
-  */
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
     if(event.keyCode == 13) {
