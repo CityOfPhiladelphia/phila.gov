@@ -180,9 +180,10 @@
 }
 #site-nav  {
   .is-drilldown{
-    //we are making this important to override some goofy inline styles foundation is trying to add.
-    height: auto !important;
-    width:320px !important;
+
+    li{
+      border-bottom: 1px solid $ghost-gray;
+    }
   }
 
   ul ul{
