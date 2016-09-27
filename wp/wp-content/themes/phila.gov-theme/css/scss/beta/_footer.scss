@@ -24,6 +24,9 @@ footer{
           li {
             margin: 0;
             padding: 0 0 0 10px;
+            &:first-of-type {
+              padding: 0;
+            }
             a:link,
             a:visited {
               color: $white;

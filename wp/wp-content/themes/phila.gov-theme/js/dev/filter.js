@@ -100,4 +100,97 @@ jQuery(document).ready(function($) {
 
   });
 
+
+  //TODO: This can/should be refactored when time permits 
+  // Mobile Filter
+  function getValues() {
+    confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
+      return this.value;
+    }).get();
+  }
+
+  function applyValues() {
+    $( '#service_filter input[type="checkbox"]' ).prop( 'checked', false );
+    for ( i=0 ; i < confirmedValues.length ; i++ ){
+      $( 'input#' + confirmedValues[i] ).trigger( 'click' );
+    }
+  }
+
+  function attachFilter() {
+    var $filterForm = $( '#service_filter' );
+    $filterForm.detach();
+    $( 'div[data-desktop-filter-wrapper]' ).append( $filterForm );
+  }
+
+  function applyScrollFix() {
+    $('html').addClass('is-reveal-open');
+    $('body').addClass('no-scroll');
+  }
+  function removeScrollFix() {
+    $('html').removeClass('is-reveal-open');
+    $('body').removeClass('no-scroll');
+  }
+
+  getValues();
+
+  $( '[data-open="mobile-filter"]' ).click( function() {
+    applyScrollFix();
+    getValues();
+    var $filterForm = $( '#service_filter' );
+    $filterForm.detach();
+    $( '[data-toggle="data-mobile-filter"]' ).append( $filterForm );
+  });
+
+  //Close button. Ignore unapplied changes.
+  $( 'button[data-close]' ).click( function() {
+    applyValues();
+    removeScrollFix();
+  });
+
+  //Clear selection. Reset to 'All services'. Not applied unless "Apply" btn is clicked.
+  $( 'a[data-clear-filter]' ).click( function() {
+    $( '#service_filter #all[type="checkbox"]' ).trigger( 'click' );
+  });
+
+  //Apply current filter selections.
+  $( 'a[data-apply-filter]' ).click( function() {
+    getValues();
+    attachFilter;
+  });
+
+  if ( $( '.post-type-archive-service_page' ).length ) {
+    $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
+      if ( ( oldSize == 'medium' || oldSize == 'large' ) && ( newSize == 'small' ) ){
+        getValues();
+      }
+      else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
+        attachFilter();
+        $( '.button[data-alpha-order]' ).trigger( 'click' );
+        $( 'button[data-close]' ).trigger( 'click' );
+      }
+    });
+  }
+
+  function sortAlpha( a , b ) {
+    return ( $(b).data('alphabet') < $(a).data('alphabet') ) ? 1 : -1;
+  }
+
+  function sortReverseAlpha( a , b ) {
+    return ( $(b).data('alphabet') > $(a).data('alphabet') ) ? 1 : -1;
+  }
+
+  $('.button[data-alpha-order]').click( function() {
+    var $servicelist = $( '.a-z-group' );
+    $servicelist.detach();
+    $servicelist.sort( sortAlpha );
+    $( '.a-z-list' ).append( $servicelist );
+  })
+
+  $('.button[data-reverse-alpha-order]').click( function() {
+    var $servicelist = $( '.a-z-group' );
+    $servicelist.detach();
+    $servicelist.sort( sortReverseAlpha );
+    $( '.a-z-list' ).append( $servicelist );
+  })
+
 });

@@ -15,6 +15,7 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
+
     img {
 
     }
@@ -50,6 +51,19 @@
     .overlap {
       position: relative;
       background:none;
+    }
+    .photo-credit.small-text {
+      display:none;
+      @media only screen and (min-width: 64em) {
+        display:inline-block;
+        font-style: italic;
+        font-size: .75rem;
+        color: $medium-gray;
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+        bottom: 105px;
+        right: 0;
+      }
     }
     .call-to-action {
       margin: 0;
