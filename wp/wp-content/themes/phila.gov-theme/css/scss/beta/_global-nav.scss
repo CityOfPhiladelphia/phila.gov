@@ -65,6 +65,7 @@
   .sticky{
     background: $white;
     width: 100% !important;
+    max-width: 100% !important;
     left:0 !important;
     &.is-stuck{
       box-shadow: 0 3px 10px rgba($medium-gray, .5);
@@ -114,7 +115,7 @@
   }
 
   .is-drilldown {
-    width: 100%;
+    width: 100% !important;
     //TODO: add to patterns
     overflow-y: scroll;
     ul {
@@ -215,7 +216,8 @@
     }
   }
   .dropdown-pane{
-    width: 100% !important;
+    max-width: 100% !important;
+    width:100%;
     border: 0;
     padding: 0;
     font-size: 1rem;
