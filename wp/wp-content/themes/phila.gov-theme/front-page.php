@@ -26,7 +26,7 @@ get_header(); ?>
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
               <div class="small-12 medium-6 columns">
-                <a href="https://cityofphiladelphia.github.io/trashday/" class="mrs mbs equal">
+                <a href="/trashday" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
