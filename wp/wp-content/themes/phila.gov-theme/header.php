@@ -134,6 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <li class="show-for-small-only is-dropdown-submenu-parent">
                     <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical">
+                      <li><a href="/services/">Service Directory</a></li>
                       <?php
                         $args = array(
                           //TODO: only display pages with taxonomy applied
