@@ -264,7 +264,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Related Content</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Related content</h3>
       <div class="phm-mu">
         <?php echo apply_filters( 'the_content', $more['related']); ?>
       </div>
