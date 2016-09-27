@@ -46,7 +46,7 @@
     <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
       <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
         <div class="valign">
-          <a href="" class="phl valign-cell service-directory">Services Directory</a>
+          <a href="/services/" class="phl valign-cell service-directory">Services Directory</a>
         </div>
       </div>
     </div>
