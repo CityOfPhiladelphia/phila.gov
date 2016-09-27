@@ -179,8 +179,7 @@
   }
 }
 #site-nav  {
-  //TODO: add to patterns
-  z-index: 10;
+
   .is-drilldown{
 
     li{
@@ -188,8 +187,13 @@
     }
   }
 
-  ul ul{
-    background: white;
+  ul {
+    //TODO: add to patterns
+    z-index: 10;
+
+    ul{
+      background: white;
+    }
   }
 
   .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
