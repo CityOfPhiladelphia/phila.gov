@@ -111,13 +111,13 @@ jQuery(document).ready(function($) {
 
   $('.sticky').on('sticky.zf.stuckto:top', function(){
     var navHeight = $('.sticky-container').outerHeight();
-    $('.mega-menu-dropdown').css({
+    $('.dropdown-pane').css({
       'top': navHeight
     });
   });
 
    $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
-     $('.mega-menu-dropdown').css({
+     $('.dropdown-pane').css({
        'top': navHeight
      });
   });
