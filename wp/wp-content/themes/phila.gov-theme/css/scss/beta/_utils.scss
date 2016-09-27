@@ -1,3 +1,8 @@
+//Background colors
+.bg-light-blue {
+  background-color: #DAEDFE;
+}
+
 // Border colors
 .bdr-ghost-gray {
   border-color:$ghost-gray;
@@ -102,6 +107,10 @@
 }
 .inline-block {
   display: inline-block;
+}
+
+.list-style-none {
+  list-style: none;
 }
 
 @media screen and (min-width: 40em) {
