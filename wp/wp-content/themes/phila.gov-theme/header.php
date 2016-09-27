@@ -128,7 +128,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
-                  <li class="service-menu-link is-dropdown-submenu-parent valign-cell" data-toggle="services-mega-menu" data-hover="false">
+                  <li class="service-menu-link is-dropdown-submenu-parent valign-cell show-for-medium" data-toggle="services-mega-menu" data-hover="false">
+                    <a href="/services" class="no-link valign-cell"> Services</a>
+                  </li>
+                  <li class="show-for-small-only is-dropdown-submenu-parent">
                     <a href="/services" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical">
                       <?php
