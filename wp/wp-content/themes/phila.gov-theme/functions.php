@@ -372,12 +372,20 @@ function phila_breadcrumbs() {
 
     if ( is_singular('news_post') ) {
 
-      echo '<li><a href="/news">News</a></li>';
+      echo '<li><a href="/news">News &amp; events</a></li>';
       echo '<li>';
       the_title();
       echo '</li>';
 
-      }elseif ( is_singular('notices') ) {
+    } elseif ( is_singular('document') ) {
+
+        echo '<li><a href="/news">Publications &amp; forms</a></li>';
+        echo '<li>';
+        the_title();
+        echo '</li>';
+
+        }
+      elseif ( is_singular('notices') ) {
         $categories = get_the_category($post->ID);
 
         echo '<li><a href="/notices">Notices</a></li>';
@@ -414,18 +422,29 @@ function phila_breadcrumbs() {
 
         echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
 
+    } elseif ( ( is_post_type_archive('document') && is_category() ) ) {
+
+        echo '<li><a href="/news">Publications &amp; forms</a></li>';
+        $category = get_the_category($post->ID);
+
+        echo '<li>' . $category[0]->name . '</li>';
+
+    } elseif ( is_post_type_archive('document') ) {
+
+      echo '<li><a href="/news">Publications &amp; forms</a></li>';
+
     } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
 
-        echo '<li><a href="/news">News</a></li>';
+        echo '<li><a href="/news">News &amp; events</a></li>';
         $category = get_the_category($post->ID);
 
         echo '<li>' . $category[0]->name . '</li>';
 
     } elseif ( is_post_type_archive('news_post') ) {
 
-      echo '<li><a href="/news">News</a></li>';
+      echo '<li><a href="/news">News &amp; events</a></li>';
 
-    }elseif ( is_post_type_archive('phila_post') && is_category() )  {
+    } elseif ( is_post_type_archive('phila_post') && is_category() )  {
 
         echo '<li><a href="/posts">Posts</a></li>';
         $category = get_the_category($post->ID);
