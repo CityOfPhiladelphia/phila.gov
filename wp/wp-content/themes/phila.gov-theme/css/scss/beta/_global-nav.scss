@@ -268,22 +268,29 @@
     }
     .mega-menu-footer {
       a {
-        height: 50px;
+        padding:2rem;
         color: $white;
         &:hover {
           background:$white;
           color:$ben-franklin-blue;
         }
       }
-      .left-arrow-indent:before {
-        content: '';
-        width: 0;
-        height: 0;
-        border-top: 25px solid transparent;
-        border-bottom: 25px solid transparent;
-        border-left: 20px solid $ghost-gray;
-        position: absolute;
-        margin-top: 0px;
+      .left-arrow-indent{
+        position: relative;
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+          border-left: 20px solid $ghost-gray;
+          position: absolute;
+          left:0;
+          right:0;
+          top:0;
+          bottom:0;
+          margin: auto 0;
+        }
       }
     }
   }

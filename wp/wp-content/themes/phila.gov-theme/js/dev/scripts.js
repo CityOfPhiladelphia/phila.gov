@@ -17,7 +17,9 @@ jQuery(document).ready(function($) {
     if ( currentPath == $( this ).attr('href') ){
 
       $(this).addClass('js-is-current');
-
+      //special handling for services
+    }else if( currentPath.includes('/services/') ){
+      $('.service-menu-link a').addClass('js-is-current');
     }
 
   });
