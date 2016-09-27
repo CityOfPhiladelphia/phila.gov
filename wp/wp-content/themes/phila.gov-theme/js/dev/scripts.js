@@ -13,8 +13,7 @@ jQuery(document).ready(function($) {
 
   var currentPath = document.location.pathname.split("/")[1].toString();
 
-  $( $( '.top-bar ul.dropdown > li a' ) ).each( function() {
-    console.log(currentPath);
+  $( $( '.top-bar ul.dropdown > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
     if( currentPath == $( this ).attr('href').split("/")[1] ) {
       $(this).addClass('js-is-current');
     }
