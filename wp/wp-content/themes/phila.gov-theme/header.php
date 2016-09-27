@@ -79,8 +79,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="top-bar">
             <div class="top-bar-right">
               <ul class="medium-horizontal menu show-for-medium">
-                <li><a href="">Mayor's Office</a></li>
-                <li><a href="">City Government Directory</a></li>
+                <li><a href="/departments/mayor/">Mayor's Office</a></li>
+                <li><a href="/departments/">City Government Directory</a></li>
                 <li>
                   <i class="fa fa-globe" aria-hidden="true"></i>
                   <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
@@ -129,10 +129,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
                   <li class="service-menu-link is-dropdown-submenu-parent valign-cell show-for-medium" data-toggle="services-mega-menu" data-hover="false">
-                    <a href="/services" class="no-link valign-cell"> Services</a>
+                    <a href="/services/" class="no-link valign-cell"> Services</a>
                   </li>
                   <li class="show-for-small-only is-dropdown-submenu-parent">
-                    <a href="/services" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+                    <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical">
                       <?php
                         $args = array(
@@ -152,15 +152,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <a href="#programs-and-initiatives" class="valign-cell"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
                   </li>
                   <li>
-                    <a href="/news" class="valign-cell"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
+                    <a href="/news/" class="valign-cell"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
                   </li>
                   <li>
-                    <a href="/documents" class="valign-cell"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
+                    <a href="/documents/" class="valign-cell"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
                   </li>
                   <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk">
-                    <a href="/mayor"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
+                    <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
                   </li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk"><a href="/departments"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
                   </li>
                 </ul>
                 </nav>

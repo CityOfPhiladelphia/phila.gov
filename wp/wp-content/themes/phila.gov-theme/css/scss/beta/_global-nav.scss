@@ -29,36 +29,42 @@
     }
   }
   .secondary-nav {
-    padding: .25rem 0;
     font-size: .85rem;
 
     ul {
 
       li {
-
-        a {
+        &:after {
+          content: '|';
+          display: inline;
+          background: $ben-franklin-blue;
           color: $white;
-          padding: 0 0 0 $spacing-small;
-          display: block;
-          text-align: center;
-
-          &:after {
-            content: '|';
-            padding-left: .5rem;
-          }
-        }
-        .fa {
-          padding: 0 0 0 $spacing-small;
-          color: $white;
-        }
-        &:last-of-type {
-          a {
-            padding: 0;
+          &:last-of-type{
             &:after {
               content: none;
             }
           }
         }
+
+        a {
+          color: $white;
+          padding: $spacing-small;
+          display: inline-block;
+          text-align: center;
+
+          &:hover:not(.goog-te-menu-value),
+          &:active:not(.goog-te-menu-value),
+          &.js-is-current{
+            background:$ghost-gray;
+            color:$dark-gray;
+          }
+
+        }
+        .fa {
+          padding: 0 0 0 $spacing-small;
+          color: $white;
+        }
+
       }
     }
   }
