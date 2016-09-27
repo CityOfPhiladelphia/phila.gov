@@ -11,12 +11,15 @@ new List('filter-list', {
 
 jQuery(document).ready(function($) {
 
-  var currentPath = document.location.pathname.split("/")[1].toString();
+ var currentPath = window.location.pathname;
 
-  $( $( '.top-bar ul.dropdown > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
-    if( currentPath == $( this ).attr('href').split("/")[1] ) {
+  $( $( '.top-bar ul > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
+    if ( currentPath == $( this ).attr('href') ){
+
       $(this).addClass('js-is-current');
+
     }
+
   });
 
   //Generic class for links that should prevent clickthrough
