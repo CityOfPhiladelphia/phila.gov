@@ -75,9 +75,8 @@ jQuery(document).ready(function($) {
   var navHeight = $('.global-nav').outerHeight();
 
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-
     if ( Foundation.MediaQuery.atLeast('medium') ) {
-      if ( $('.mega-menu-dropdown').hasScrollBar() ){
+      if ( $('.dropdown-pane.mega-menu-dropdown').hasScrollBar() ){
         $('body').addClass('no-scroll');
         $(this).css({
           'top': 0
