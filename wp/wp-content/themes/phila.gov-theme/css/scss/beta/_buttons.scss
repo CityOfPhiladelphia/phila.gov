@@ -38,11 +38,20 @@
 
   .button-label {
     background-color: $bike-share-blue;
-    height: 40px;
+    min-height: 40px;
+    padding-top:$spacing-small;
+    padding-bottom:$spacing-small;
     padding-right: 1.42857rem;
     padding-left: 1.42857rem;
     text-align: left;
     letter-spacing: .03rem;
+  }
+
+  &.outline {
+    .button-label {
+      background-color: $white;
+      border: 1px solid $bike-share-blue;
+    }
   }
 }
 

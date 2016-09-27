@@ -9,7 +9,7 @@
    <div class="columns">
      <div class="row">
        <div class="columns">
-         <h2 class="contrast">Service Updates</h2>
+         <h2 class="contrast">Service updates</h2>
        </div>
      </div>
          <?php if ( $service_updates_loop->have_posts() ) : ?>
