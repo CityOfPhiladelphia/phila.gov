@@ -28,7 +28,7 @@ get_header(); ?>
           <div class="bg-light-blue pam">
           <div class="row column">
             <div class="valign equal-height border-bottom-sidewalk">
-                <div class="valign-cell equal prm">
+                <div class="valign-cell equal prs">
                   <i class="fa fa-info-circle fa-3x" aria-hidden="true"></i>
                 </div>
                 <div class="valign-cell equal">
