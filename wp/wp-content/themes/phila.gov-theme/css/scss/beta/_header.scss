@@ -22,6 +22,8 @@ header {
 
     @media screen and (max-width: 39.9375em) {
       font-size: .8rem;
+      //matches padding on menu-icon
+      padding-top: .75rem;
 
       .fa-search{
         padding-bottom: $spacing-small;
