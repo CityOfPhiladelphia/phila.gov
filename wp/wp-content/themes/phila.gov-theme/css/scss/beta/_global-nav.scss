@@ -242,6 +242,11 @@
         padding: $spacing-large 1.5rem;
         height: inherit;
 
+        &:hover, &:active{
+          background: $ben-franklin-blue;
+          color:$white;
+        }
+
        &:hover::after,
        &:active::after{
          border-color: $white transparent transparent;
