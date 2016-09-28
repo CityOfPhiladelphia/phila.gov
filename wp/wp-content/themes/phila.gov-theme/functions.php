@@ -405,7 +405,7 @@ function phila_breadcrumbs() {
 
       }elseif ( is_singular('press_release') ) {
 
-        echo '<li><a href="/press-releases">Press Releases</a></li>';
+        echo '<li><a href="/press-releases">Press releases</a></li>';
         echo '<li>';
         the_title();
         echo '</li>';
@@ -457,14 +457,14 @@ function phila_breadcrumbs() {
 
     }elseif ( is_post_type_archive('press_release') && is_category() )  {
 
-      echo '<li><a href="/press-releases">Press Releases</a></li>';
+      echo '<li><a href="/press-releases">Press releases</a></li>';
       $category = get_the_category($post->ID);
 
       echo '<li>' . $category[0]->name . '</li>';
 
     } elseif ( is_post_type_archive('press_release') ) {
 
-      echo '<li>Press Releases</li>';
+      echo '<li>Press releases</li>';
 
     } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
 
