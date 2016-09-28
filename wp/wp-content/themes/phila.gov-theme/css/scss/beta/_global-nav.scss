@@ -266,7 +266,9 @@
          position: absolute;
          margin: auto 0;
          float: none;
-
+         top: 0;
+         bottom: 0;
+         height: 10px;
        }
 
          &.js-is-current {
