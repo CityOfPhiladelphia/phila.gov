@@ -1,7 +1,5 @@
 /*For all admins, to appear when logged in, on the front-end */
 
-var isLoggedIn = true;
-
 jQuery( document ).ready( function( $ ) {
   var wpAdminBar = $('#wpadminbar').height();
   var navHeight = $('.global-nav').outerHeight() + wpAdminBar;
