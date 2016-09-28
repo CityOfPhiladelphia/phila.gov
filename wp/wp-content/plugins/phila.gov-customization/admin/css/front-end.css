@@ -1,0 +1,9 @@
+body{
+  position: static !important;
+}
+
+#page { margin-top: 32px !important; }
+* html body #page{ margin-top: 32px !important; }
+@media screen and ( max-width: 782px ) {
+    html #page{ margin-top: 46px !important; }
+    * html body #page { margin-top: 46px !important; }
