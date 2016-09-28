@@ -42,6 +42,10 @@ jQuery(document).ready(function($) {
     $('.is-drilldown').foundation('toggleMenu');
   });
  */
+  $('.is-drilldown ul').css({
+   //TODO: this is a temp fix until a better solution is implemented
+   'height': $('.is-drilldown').height() *1.5 + 'px'
+  });
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
@@ -91,7 +95,7 @@ jQuery(document).ready(function($) {
 
   //ensure dropdown stays below header on scroll and open/close
   function updateMegaMenuNavHeight(){
-    if ( isLoggedIn  != null ){
+    if ( $('body').hasClass('logged-in') ) {
       return;
     }
 
@@ -143,7 +147,11 @@ jQuery(document).ready(function($) {
 
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
-    $('.sticky:visible').foundation('_calc', true);
+
+    if (Foundation.MediaQuery.atLeast('medium')) {
+
+      $('.sticky:visible').foundation('_calc', true);
+    }
   });
 
   //prevent enter from refreshing the page and stopping filter search
