@@ -42,6 +42,7 @@ jQuery(document).ready(function($) {
     $('.is-drilldown').foundation('toggleMenu');
   });
  */
+ $('.is-drilldown ul').css('margin-bottom', -$('.menu-icon').outerHeight() + 'px');
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
@@ -143,7 +144,11 @@ jQuery(document).ready(function($) {
 
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
-    $('.sticky:visible').foundation('_calc', true);
+
+    if (Foundation.MediaQuery.atLeast('medium')) {
+
+      $('.sticky:visible').foundation('_calc', true);
+    }
   });
 
   //prevent enter from refreshing the page and stopping filter search
