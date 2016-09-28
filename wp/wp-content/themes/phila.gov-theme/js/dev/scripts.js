@@ -35,12 +35,22 @@ jQuery(document).ready(function($) {
     return this.get(0).scrollHeight > this.height();
   }
 
+  /*
+  this will not close an open drilldown on click
+  $('.site-search').click('open', function(){
+
+    $('.is-drilldown').foundation('toggleMenu');
+  });
+ */
+
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
 
   $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
+
+    $('.dropdown-pane').foundation('close');
 
     parentLink.push( $(this).find('.is-active').last().prev().text() );
 
@@ -71,6 +81,8 @@ jQuery(document).ready(function($) {
 
 
   $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
+    //close dropdowns when sidenav is open
+    $('.dropdown-pane').foundation('close');
     $('body').toggleClass('no-scroll');
     $('.global-nav .menu-icon').toggleClass('active');
   });
@@ -79,6 +91,9 @@ jQuery(document).ready(function($) {
 
   //ensure dropdown stays below header on scroll and open/close
   function updateMegaMenuNavHeight(){
+    if ( isLoggedIn  != null ){
+      return;
+    }
 
     if ( $('.sticky').hasClass('is-stuck') ){
       navHeight = $('.sticky-container').height();
@@ -92,6 +107,11 @@ jQuery(document).ready(function($) {
     });
 
   }
+
+  $('.service-menu-link').click(function(){
+    $('.mega-menu-dropdown').foundation('open');
+
+  });
 
   /* Dropdown */
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
@@ -121,10 +141,9 @@ jQuery(document).ready(function($) {
      updateMegaMenuNavHeight();
   });
 
-  $('.sticky').foundation('_calc', true);
-
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
+    $('.sticky:visible').foundation('_calc', true);
   });
 
   //prevent enter from refreshing the page and stopping filter search
