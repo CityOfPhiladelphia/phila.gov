@@ -119,14 +119,20 @@
     }
   }
 
+  .is-dropdown-submenu-parent a::after {
+    margin-top:-6px;
+  }
+
   .is-drilldown {
     width: 100% !important;
+    height: auto !important;
     //TODO: add to patterns
     overflow-y: scroll;
     ul {
       background: $ghost-gray;
       width: 100%;
-      height: 100%;
+      //use vh to ensure full window height is used
+      height: 100vh;
       margin: 0;
       padding:0;
 
@@ -144,12 +150,20 @@
         a{
           padding:1rem;
           display: block;
+
+
           &:hover,
           &:active {
             background: $ben-franklin-blue;
             color:$white;
           }
         }
+      }
+    }
+    .is-drilldown-submenu-parent > a {
+      &:hover::after,
+      &:active::after{
+        border-color:transparent transparent transparent $white;
       }
     }
     .service-menu-link {
@@ -239,7 +253,7 @@
        }
 
       a {
-        padding: $spacing-large 1.5rem;
+        padding: $spacing-large $spacing-large $spacing-large 1.5rem;
         height: inherit;
 
         &:hover, &:active{
@@ -262,7 +276,7 @@
          border-color: $ben-franklin-blue transparent transparent;
          border-top-style: solid;
          border-bottom-width: 0;
-         left: 85%;
+         left: 80%;
          position: absolute;
          margin: auto 0;
          float: none;
@@ -307,11 +321,9 @@
     z-index: 10000;
     position: fixed;
 
-    @media screen and (max-width: 55rem) {
-      display: none;
-      max-height:450px;
-      overflow:auto;
-
+    &.mega-menu-dropdown{
+      height:100vh;
+      margin-bottom:-900px;
     }
 
     &.is-open{
