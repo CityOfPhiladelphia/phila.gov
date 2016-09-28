@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
 
   //ensure dropdown stays below header on scroll and open/close
   function updateMegaMenuNavHeight(){
-    if ( isLoggedIn  != null ){
+    if ( $('body').hasClass('logged-in') ) {
       return;
     }
 
