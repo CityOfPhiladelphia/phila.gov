@@ -811,13 +811,13 @@ add_filter( 'get_the_archive_title', 'phila_change_post_archive_title' );
 
 function phila_change_post_archive_title(){
   if ( is_post_type_archive( 'document' ) ){
-    _e('Publications &amp; Forms', 'phila-gov');
+    _e('Publications &amp; forms', 'phila-gov');
     single_cat_title(' | ');
   }elseif ( is_post_type_archive( 'phila_post' ) ){
     _e('Post Archive', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'news_post' ) ){
-    _e('News', 'phila-gov');
+    _e('News &amp; events', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'press_release' ) ){
     _e('Press Release Archive', 'phila-gov');
