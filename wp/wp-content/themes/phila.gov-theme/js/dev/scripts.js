@@ -42,10 +42,6 @@ jQuery(document).ready(function($) {
     $('.is-drilldown').foundation('toggleMenu');
   });
  */
-  $('.is-drilldown ul').css({
-   //TODO: this is a temp fix until a better solution is implemented
-   'height': $('.is-drilldown').height() *1.5 + 'px'
-  });
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
@@ -145,8 +141,25 @@ jQuery(document).ready(function($) {
      updateMegaMenuNavHeight();
   });
 
+  function drilldownMenuHeight(){
+    if (Foundation.MediaQuery.current == 'small') {
+
+      $('.is-drilldown ul.is-dropdown-submenu').css({
+       //TODO: this is a temp fix until a better solution is implemented
+       'height': $('.is-drilldown').height() *1.5 + 'px'
+      });
+    }else{
+      $('.is-drilldown ul.is-dropdown-submenu').css({
+       //TODO: this is a temp fix until a better solution is implemented
+       'height': 'auto'
+      });
+    }
+  }
+  drilldownMenuHeight();
+
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
+    drilldownMenuHeight();
 
     if (Foundation.MediaQuery.atLeast('medium')) {
 
