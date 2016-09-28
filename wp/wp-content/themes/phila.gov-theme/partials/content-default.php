@@ -14,13 +14,13 @@
   $more = phila_additional_content( $additional_content );
 
 ?>
-
+  <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 <div class="row">
   <div class="columns">
     <?php the_content(); ?>
   </div>
 </div>
-
+  <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 <?php if ( !empty($heading_content) ) : ?>
   <?php foreach ( $heading_content as $content ): ?>
 

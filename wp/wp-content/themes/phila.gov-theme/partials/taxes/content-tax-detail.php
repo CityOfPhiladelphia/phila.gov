@@ -67,13 +67,13 @@
     </div>
   </div>
 </div>
-
+  <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 <div class="row">
   <div class="columns">
     <?php the_content(); ?>
   </div>
 </div>
-
+  <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 <?php if ( !empty($payments['who_pays'] ) ) : ?>
 <div class="row">
   <div class="columns">
