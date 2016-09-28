@@ -14,7 +14,6 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
   }
 
   function phila_register_item_desc_meta_boxes( $meta_boxes ){
-    //TODO: remove deprecated code
     $post_types = array(
       'public'  => true,
       '_builtin'  => true
