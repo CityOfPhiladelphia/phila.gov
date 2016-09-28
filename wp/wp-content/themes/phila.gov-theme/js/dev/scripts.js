@@ -42,7 +42,10 @@ jQuery(document).ready(function($) {
     $('.is-drilldown').foundation('toggleMenu');
   });
  */
- $('.is-drilldown ul').css('margin-bottom', -$('.menu-icon').outerHeight() + 'px');
+  $('.is-drilldown ul').css({
+   //TODO: this is a temp fix until a better solution is implemented
+   'height': $('.is-drilldown').height() *1.5 + 'px'
+  });
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
