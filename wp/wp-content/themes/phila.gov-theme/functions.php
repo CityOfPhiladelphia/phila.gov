@@ -814,18 +814,18 @@ function phila_change_post_archive_title(){
     _e('Publications &amp; forms', 'phila-gov');
     single_cat_title(' | ');
   }elseif ( is_post_type_archive( 'phila_post' ) ){
-    _e('Post Archive', 'phila-gov');
+    _e('Posts', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'news_post' ) ){
     _e('News &amp; events', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_post_type_archive( 'press_release' ) ){
-    _e('Press Release Archive', 'phila-gov');
+    _e('Press releases', 'phila-gov');
     single_cat_title(' | ');
   }elseif( is_tag() ){
     single_tag_title('Tagged in: ');
   }elseif( is_author() ){
-    _e('Author Archive | ', 'phila-gov');
+    _e('Posts | ', 'phila-gov');
     echo get_the_author();
   }else{
     post_type_archive_title();
