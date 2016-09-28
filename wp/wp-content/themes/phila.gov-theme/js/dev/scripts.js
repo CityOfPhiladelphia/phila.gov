@@ -91,6 +91,9 @@ jQuery(document).ready(function($) {
 
   //ensure dropdown stays below header on scroll and open/close
   function updateMegaMenuNavHeight(){
+    if ( isLoggedIn  != null ){
+      return;
+    }
 
     if ( $('.sticky').hasClass('is-stuck') ){
       navHeight = $('.sticky-container').height();
