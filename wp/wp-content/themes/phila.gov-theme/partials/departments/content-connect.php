@@ -73,7 +73,12 @@
           <hr>
           <div class="ptxs pbn center">
             <?php if (!$connect_vars['cta']['summary'] == '') echo '<span>' . $connect_vars['cta']['summary'] . '</span>'; ?>
-            <br/><span class="center"><a href="<?php echo $connect_vars['cta']['url'];?>" class="button mbn"><?php echo $connect_vars['cta']['title']; ?></a></span>
+            <br/>
+              <a href="<?php echo $connect_vars['cta']['url'];?>" class="button icon clearfix mtm">
+                <div class="valign">
+                  <div class="button-label valign-cell"><?php echo $connect_vars['cta']['title']; ?></div>
+                </div>
+              </a>
           </div>
         <?php endif; ?>
       </div>

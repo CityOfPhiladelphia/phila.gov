@@ -133,10 +133,16 @@ jQuery(document).ready(function($) {
     $('body').removeClass('no-scroll');
   }
 
+  $(document).on('open.zf.reveal', '[data-reveal]', function () {
+    applyScrollFix();
+  });
+  $(document).on('closed.zf.reveal', '[data-reveal]', function () {
+    removeScrollFix();
+  });
+
   getValues();
 
   $( '[data-open="mobile-filter"]' ).click( function() {
-    applyScrollFix();
     getValues();
     var $filterForm = $( '#service_filter' );
     $filterForm.detach();
@@ -146,7 +152,6 @@ jQuery(document).ready(function($) {
   //Close button. Ignore unapplied changes.
   $( 'button[data-close]' ).click( function() {
     applyValues();
-    removeScrollFix();
   });
 
   //Clear selection. Reset to 'All services'. Not applied unless "Apply" btn is clicked.
