@@ -359,10 +359,8 @@
     }
     .mega-menu-footer {
       a {
-        padding:2rem;
-        @media screen and (min-width: 40em) and (max-width: 50em) {
-          padding: 1.5rem 2rem;
-        }
+        padding: 1.5rem 4rem;
+        
         color: $white;
         &:hover {
           background:$white;
@@ -375,9 +373,9 @@
           content: '';
           width: 0;
           height: 0;
-          border-top: 25px solid transparent;
-          border-bottom: 25px solid transparent;
-          border-left: 20px solid $ghost-gray;
+          border-top: 30px solid transparent;
+          border-bottom: 30px solid transparent;
+          border-left: 30px solid $ghost-gray;
           position: absolute;
           left:0;
           right:0;
