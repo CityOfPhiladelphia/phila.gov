@@ -9,6 +9,11 @@ new List('filter-list', {
   valueNames: ['item', 'item-desc']
 });
 
+//provide function for preventing link follow-through
+function noLink(e){
+  e.preventDefault();
+}
+
 jQuery(document).ready(function($) {
 
  var currentPath = window.location.pathname;
@@ -25,10 +30,19 @@ jQuery(document).ready(function($) {
   });
 
   //Generic class for links that should prevent clickthrough
+
   $('.no-link').click(function(e){
     e.preventDefault();
   });
 
+  //Listener for megamenu dropdown to ensure no-scroll gets removed
+  $('#services-mega-menu').hover( function(){
+    $('body').addClass('no-scroll');
+  }, function(){
+    $('body').removeClass('no-scroll');
+  });
+
+  //TODO: clean this up
   function removeNoScroll(){
     //this lets us remove the no-scroll class in the event it has been added.
     $('header').click( function() {
@@ -40,6 +54,13 @@ jQuery(document).ready(function($) {
     $('footer').click( function() {
       $('body').removeClass('no-scroll');
     });
+    $(document).keyup(function(e) {
+      //on escape, also remove no-scroll
+     if (e.keyCode == 27) {
+       $('body').removeClass('no-scroll');
+
+      }
+  });
   }
   removeNoScroll();
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
