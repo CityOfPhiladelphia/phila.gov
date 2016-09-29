@@ -283,7 +283,7 @@ get_header(); ?>
           <div class="row equal-height">
             <div class="medium-10 columns bdr-right-mu equal about">
               <section>
-                <h3>About the Redesign</h3>
+                <h3>About the redesign</h3>
                 <p>We understand that the City of Philadelphia’s current website, phila.gov, isn’t easy to use. So we’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
 
                 <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:</p>
@@ -292,7 +292,7 @@ get_header(); ?>
                   <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
                   <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="#">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
                 </ul>
-                
+
               </section>
             </div>
             <div class="show-for-medium medium-14 pll plm columns equal process">
