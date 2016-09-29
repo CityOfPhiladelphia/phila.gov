@@ -91,12 +91,6 @@ footer{
       .interact-311 {
         padding-right: $spacing-large;
 
-        @media only screen and (min-width: 40em) {
-          padding-right: $spacing-medium;
-        }
-        @media only screen and (min-width: 64em) {
-          padding-right: $spacing-large;
-        }
       }
 
       .intro,
@@ -118,16 +112,17 @@ footer{
       a:link {
         font-size: 1rem;
       }
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin-left: 0;
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin-left: 0;
 
-      li {
-        padding: $spacing-small 0;
+        li {
+          padding: $spacing-small 0;
+        }
       }
     }
+
     &.site-footer {
       .fa {
       vertical-align: middle;
@@ -157,6 +152,11 @@ footer{
           a:hover,
           a:active {
            color: $bike-share-blue;
+          }
+        }
+        .city-social {
+          li {
+            margin-bottom: .75rem;
           }
         }
       }
