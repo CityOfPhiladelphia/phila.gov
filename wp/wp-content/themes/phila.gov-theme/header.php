@@ -77,8 +77,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="top-bar">
             <div class="top-bar-right">
               <ul class="medium-horizontal menu show-for-medium">
-                <li><a href="/departments/mayor/">Mayor's Office</a></li>
-                <li><a href="/departments/">City Government Directory</a></li>
+                <li><a href="/departments/mayor/" aria-hidden="true">Mayor's Office</a></li>
+                <li><a href="/departments/" aria-hidden="true">City Government Directory</a></li>
                 <li>
                   <i class="fa fa-globe" aria-hidden="true"></i>
                   <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
@@ -121,11 +121,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </button>
           </div>
-
+          <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
           <div class="top-bar primary-menu medium-pull-1 medium-15 small-24 columns equal no-js valign-mu" id="beta-global-nav">
             <!-- Primary Navigation -->
             <div class="top-bar-right valign-mu">
-              <div class="service-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu">
+              <div class="service-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu" aria-hidden="true">
                 <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
               </div>
               <nav data-swiftype-index="false" class="valign-mu">
