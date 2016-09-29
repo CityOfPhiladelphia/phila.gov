@@ -65,16 +65,18 @@ jQuery(document).ready(function($) {
   });
 
   //TODO: clean this up
-  function removeNoScroll(){
+  function resetPage(){
     //this lets us remove the no-scroll class in the event it has been added.
-    $('header').click( function() {
-      $('body').removeClass('no-scroll');
-    });
+
     $('#page').click( function() {
       $('body').removeClass('no-scroll');
+      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
     });
     $('footer').click( function() {
       $('body').removeClass('no-scroll');
+      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
     });
     $(document).keyup(function(e) {
       //on escape, also remove no-scroll
@@ -84,20 +86,20 @@ jQuery(document).ready(function($) {
       }
   });
   }
-  removeNoScroll();
+  resetPage();
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
   //determines if content is scrollable
   $.fn.hasScrollBar = function() {
     return this.get(0).scrollHeight > this.height();
   }
 
-  /*
-  this will not close an open drilldown on click
-  $('.site-search').click('open', function(){
-
-    $('.is-drilldown').foundation('toggleMenu');
+  $('.site-search').click( function(){
+    $( '.site-search i' ).toggleClass('fa-close');
+    $('.site-search i' ).toggleClass('fa-search');
   });
- */
+
+
+
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
@@ -152,7 +154,7 @@ jQuery(document).ready(function($) {
     }
 
     if ( $('.sticky').hasClass('is-stuck') ){
-      navHeight = $('.sticky-container').height();
+      navHeight = $('.sticky-container').outerHeight();
 
     }else{
       navHeight = $('.global-nav').outerHeight();
@@ -197,7 +199,7 @@ jQuery(document).ready(function($) {
 
       $('.is-drilldown ul.is-dropdown-submenu').css({
        //TODO: this is a temp fix until a better solution is implemented
-       'height': $('.is-drilldown').height() *1.5 + 'px'
+       'height': $('.is-drilldown').outerHeight() *1.5 + 'px'
       });
     }else{
       $('.is-drilldown ul.is-dropdown-submenu').css({
