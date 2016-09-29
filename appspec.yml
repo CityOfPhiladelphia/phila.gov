@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /wp
+    destination: /home/ubuntu/app/wp
+permissions:
+  - object: /home/ubuntu/app/
+    owner: ubuntu
+    group: ubuntu
+hooks:
+  AfterInstall:
+    - location: scripts/postdeploy
