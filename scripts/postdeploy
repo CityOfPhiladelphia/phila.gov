@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source /home/ubuntu/app/environment
+
+_dir="$(dirname "$0")"
+
+echo 'Running grunt tasks'
+cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
+npm install
+grunt
+
+"$_dir/private-plugins.sh"
+
+wp rewrite flush
+wp core update-db
+mkdir -p /home/ubuntu/app/wp/wp-content/uploads
+chmod 777 -R /home/ubuntu/app/wp/wp-content/uploads
+
+rm -rf /var/run/nginx-cache
