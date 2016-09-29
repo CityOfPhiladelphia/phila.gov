@@ -29,6 +29,16 @@ jQuery(document).ready(function($) {
     e.preventDefault();
   });
 
+  function removeNoScroll(){
+    //this lets us remove the no-scroll class in the event it has been added.
+    $('#page').click( function() {
+      $('body').removeClass('no-scroll');
+    });
+    $('footer').lick( function() {
+      $('body').removeClass('no-scroll');
+    });
+  }
+  removeNoScroll();
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
   //determines if content is scrollable
   $.fn.hasScrollBar = function() {
@@ -108,28 +118,25 @@ jQuery(document).ready(function($) {
 
   }
 
-  $('.service-menu-link').click(function(){
-    $('.mega-menu-dropdown').foundation('open');
-
-  });
-
   /* Dropdown */
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
     //if ( Foundation.MediaQuery.atLeast('medium') ) {
-      if ( $('.dropdown-pane.mega-menu-dropdown').hasScrollBar() ){
-        $('body').addClass('no-scroll');
-
-      }else{
-        $('body').removeClass('no-scroll');
-      }
+    $('body').addClass('no-scroll');
     //}
     $('#back-to-top').css('display', 'none');
 
     updateMegaMenuNavHeight();
 
   });
-  $(document).on('closeme.zf.dropdown', '[data-dropdown]', function(){
+
+  $(document).on('close.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
+    console.log('the thing');
+  });
+
+  $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
+    $('body').removeClass('no-scroll');
+    console.log('click');
   });
 
   /* sticky nav */
