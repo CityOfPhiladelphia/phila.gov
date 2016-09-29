@@ -112,17 +112,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </a>
             </div>
           </div>
-
-          <div class="small-4 medium-push-17 medium-1 columns equal small-push-4" >
-            <button class="site-search valign" type="button"  data-toggle="search-dropdown">
-              <div class="valign-cell">
-                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-                <span class="show-for-small-only">Search</span>
-              </div>
-            </button>
-          </div>
           <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
-          <div class="top-bar primary-menu medium-pull-1 medium-15 small-24 columns equal no-js valign-mu" id="beta-global-nav">
+          <div class="top-bar primary-menu medium-15 medium-push-2 small-24 columns equal no-js valign-mu" id="beta-global-nav">
             <!-- Primary Navigation -->
             <div class="top-bar-right valign-mu">
               <div class="service-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu" aria-hidden="true">
@@ -167,6 +158,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
                 </nav>
               </div>
+            </div>
+            <div class="small-4 medium-1 columns equal">
+              <button class="site-search valign" type="button"  data-toggle="search-dropdown">
+                <div class="valign-cell">
+                  <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                  <span class="show-for-small-only">Search</span>
+                </div>
+              </button>
             </div>
           </div>
         </div>
