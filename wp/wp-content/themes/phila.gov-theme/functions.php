@@ -371,15 +371,19 @@ function phila_breadcrumbs() {
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
+      $categories = get_the_category($post->ID);
 
       echo '<li><a href="/news">News &amp; events</a></li>';
+      if ( !$categories == 0 ) {
+        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+      }
       echo '<li>';
       the_title();
       echo '</li>';
 
     } elseif ( is_singular('document') ) {
 
-        echo '<li><a href="/news">Publications &amp; forms</a></li>';
+        echo '<li><a href="/documents">Publications &amp; forms</a></li>';
         echo '<li>';
         the_title();
         echo '</li>';
@@ -397,15 +401,23 @@ function phila_breadcrumbs() {
         echo '</li>';
 
       }elseif ( is_singular('phila_post') ) {
+        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/posts">Posts</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
         echo '<li>';
         the_title();
         echo '</li>';
 
       }elseif ( is_singular('press_release') ) {
+        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/press-releases">Press releases</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
         echo '<li>';
         the_title();
         echo '</li>';
