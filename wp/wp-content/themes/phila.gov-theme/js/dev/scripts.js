@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
   $('.no-link').click(function(e){
     e.preventDefault();
   });
-
+  //TODO: clean this up
   function removeNoScroll(){
     //this lets us remove the no-scroll class in the event it has been added.
     $('header').click( function() {
@@ -40,6 +40,13 @@ jQuery(document).ready(function($) {
     $('footer').click( function() {
       $('body').removeClass('no-scroll');
     });
+    $(document).keyup(function(e) {
+      //on escape, also remove no-scroll
+     if (e.keyCode == 27) {
+       $('body').removeClass('no-scroll');
+
+      }
+  });
   }
   removeNoScroll();
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
