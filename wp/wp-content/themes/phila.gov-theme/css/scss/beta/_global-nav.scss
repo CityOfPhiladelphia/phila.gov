@@ -246,11 +246,43 @@
          position: absolute;
 
        }
+       //this is to account for when the dropdown panel is visible AND when the normal :hover state is active
+      &.hover {
+        background: $ben-franklin-blue;
+
+        a{
+          color: $white;
+          &.js-is-current{
+            &::after{
+              border-color: transparent transparent $white transparent;
+            }
+          }
+          &::after{
+            content: '';
+            display: inline;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid $white;
+            border-top: 5px solid transparent;
+            height: 0;
+            left: 74%;
+            position: absolute;
+            margin: auto 0;
+            float: none;
+            top: 0;
+            bottom: 0;
+            height: 10px;
+          }
+        }
+      }
 
       a {
-        padding: $spacing-large $spacing-large $spacing-large 1.5rem;
+        padding: $spacing-large 2.5rem $spacing-large 1.5rem;
+
         @media screen and (min-width: 40em) and (max-width: 50em) {
-          padding: 1rem 1.5rem;
+          padding: 1rem 2rem;
         }
         height: inherit;
 
@@ -261,37 +293,36 @@
 
        &:hover::after,
        &:active::after{
-         border-color: $white transparent transparent;
+        border-color: transparent transparent $white;
 
        }
        &::after {
-         //little arrow
-         content: '';
-         display: inline;
-         width: 0;
-         height: 0;
-         border: inset 5px;
-         border-color: $ben-franklin-blue transparent transparent;
-         border-top-style: solid;
-         border-bottom-width: 0;
-         left: 80%;
-         position: absolute;
-         margin: auto 0;
-         float: none;
-         top: 0;
-         bottom: 0;
-         height: 10px;
+        //little arrow
+        content: '';
+        display: inline;
+        width: 0;
+        height: 0;
+        border: inset 5px;
+        border-color: $ben-franklin-blue transparent transparent;
+        border-top-style: solid;
+        border-bottom-width: 0;
+        left: 74%;
+        position: absolute;
+        margin: auto 0;
+        float: none;
+        top: 0;
+        bottom: 0;
+        height: 10px;
        }
+        &.js-is-current {
+          color:$white;
+          background: $ben-franklin-blue;
 
-         &.js-is-current {
-           color:$white;
-           background: $ben-franklin-blue;
-
-           &::after{
-             border-color: $white transparent transparent transparent;
-           }
-         }
-       }
+          &::after{
+            border-color: $white transparent transparent transparent;
+          }
+        }
+      }
        &.is-active > a:hover::after,
        &.is-active > a:active::after {
          content: '';
@@ -299,7 +330,7 @@
          width: 0;
          height: 0;
          border: inset 5px;
-         border-color: $white transparent transparent;
+         border-color: $white transparent transparent transparent;
          border-top-style: solid;
          border-bottom-width: 0;
          left: 85%;
@@ -360,7 +391,7 @@
     .mega-menu-footer {
       a {
         padding: 1.5rem 4rem;
-        
+
         color: $white;
         &:hover {
           background:$white;
