@@ -5,7 +5,7 @@
  * @package phila-gov
  */
 ?>
-<div class="search-pane">
+<div class="search-pane global-nav">
   <div class="dropdown-pane" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-close-on-click="true" id="search-dropdown">
     <div class="row columns expanded bg-ghost-gray">
       <div class="row">
