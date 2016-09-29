@@ -124,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <!-- Primary Navigation -->
             <div class="top-bar-right valign-mu">
               <div class="service-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu">
-                <a href="/services/" class="no-link valign-cell"> Services</a>
+                <a class="no-link valign-cell" data-link="/services/"> Services</a>
               </div>
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
