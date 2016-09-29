@@ -20,7 +20,7 @@
 <?php $i = 0; ?>
 <?php if ( $top_service_pages->have_posts() ) : ?>
   <div id="services-list" class="global-nav show-for-medium">
-    <div class="dropdown-pane mega-menu-dropdown" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-close-on-click="true" id="services-mega-menu">
+    <div class="dropdown-pane mega-menu-dropdown" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-hover="true" data-close-on-click="true" id="services-mega-menu">
       <div class="inner-wrapper">
 
         <?php while ( $top_service_pages->have_posts() ) : $top_service_pages->the_post(); ?>
