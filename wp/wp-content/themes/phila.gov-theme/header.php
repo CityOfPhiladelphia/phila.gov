@@ -69,7 +69,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header class="global-nav no-js">
+  <header class="global-nav no-js mbm mbn-mu">
     <!-- Secondary Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded secondary-nav">
       <div class="row">
@@ -170,12 +170,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         </div>
-        <?php get_template_part( 'searchform' ); ?>
-        <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
       </div>
   </header>
 <div id="page" class="hfeed site">
-
 
 <!-- #masthead -->
   <?php
