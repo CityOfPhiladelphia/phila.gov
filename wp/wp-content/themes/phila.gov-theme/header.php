@@ -67,9 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MC6CR2');</script>
 <!-- End Google Tag Manager -->
 
-<div id="page" class="hfeed site">
-
-  <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
+<?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
   <header class="global-nav no-js">
     <!-- Secondary Navigation -->
@@ -174,6 +172,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
       </div>
   </header>
+<div id="page" class="hfeed site">
+
 
 <!-- #masthead -->
   <?php
