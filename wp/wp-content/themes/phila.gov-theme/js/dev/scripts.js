@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
  var currentPath = window.location.pathname;
 
   $( $( '.top-bar ul > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
-    if ( currentPath == $( this ).attr('href') ){
+    if ( currentPath == $( this ).attr('href') ||   currentPath == $( this ).data( 'link') ){
 
       $(this).addClass('js-is-current');
       //special handling for services
@@ -29,6 +29,19 @@ jQuery(document).ready(function($) {
     e.preventDefault();
   });
 
+  function removeNoScroll(){
+    //this lets us remove the no-scroll class in the event it has been added.
+    $('header').click( function() {
+      $('body').removeClass('no-scroll');
+    });
+    $('#page').click( function() {
+      $('body').removeClass('no-scroll');
+    });
+    $('footer').click( function() {
+      $('body').removeClass('no-scroll');
+    });
+  }
+  removeNoScroll();
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
   //determines if content is scrollable
   $.fn.hasScrollBar = function() {
@@ -42,10 +55,6 @@ jQuery(document).ready(function($) {
     $('.is-drilldown').foundation('toggleMenu');
   });
  */
-  $('.is-drilldown ul').css({
-   //TODO: this is a temp fix until a better solution is implemented
-   'height': $('.is-drilldown').height() *1.5 + 'px'
-  });
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
@@ -112,27 +121,22 @@ jQuery(document).ready(function($) {
 
   }
 
-  $('.service-menu-link').click(function(){
-    $('.mega-menu-dropdown').foundation('open');
-
-  });
-
   /* Dropdown */
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
     //if ( Foundation.MediaQuery.atLeast('medium') ) {
-      if ( $('.dropdown-pane.mega-menu-dropdown').hasScrollBar() ){
-        $('body').addClass('no-scroll');
-
-      }else{
-        $('body').removeClass('no-scroll');
-      }
+    $('body').addClass('no-scroll');
     //}
     $('#back-to-top').css('display', 'none');
 
     updateMegaMenuNavHeight();
 
   });
-  $(document).on('closeme.zf.dropdown', '[data-dropdown]', function(){
+
+  $(document).on('close.zf.dropdown', '[data-dropdown]', function(){
+    $('body').removeClass('no-scroll');
+  });
+
+  $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
   });
 
@@ -145,8 +149,25 @@ jQuery(document).ready(function($) {
      updateMegaMenuNavHeight();
   });
 
+  function drilldownMenuHeight(){
+    if (Foundation.MediaQuery.current == 'small') {
+
+      $('.is-drilldown ul.is-dropdown-submenu').css({
+       //TODO: this is a temp fix until a better solution is implemented
+       'height': $('.is-drilldown').height() *1.5 + 'px'
+      });
+    }else{
+      $('.is-drilldown ul.is-dropdown-submenu').css({
+       //TODO: this is a temp fix until a better solution is implemented
+       'height': 'auto'
+      });
+    }
+  }
+  drilldownMenuHeight();
+
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
+    drilldownMenuHeight();
 
     if (Foundation.MediaQuery.atLeast('medium')) {
 

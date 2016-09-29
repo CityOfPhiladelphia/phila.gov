@@ -67,9 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MC6CR2');</script>
 <!-- End Google Tag Manager -->
 
-<div id="page" class="hfeed site">
-
-  <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
+<?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
   <header class="global-nav no-js">
     <!-- Secondary Navigation -->
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <!-- Primary Navigation -->
             <div class="top-bar-right valign-mu">
               <div class="service-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu">
-                <a href="/services/" class="no-link valign-cell"> Services</a>
+                <a href="" class="no-link valign-cell" data-link="/services/"> Services</a>
               </div>
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
@@ -174,6 +172,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
       </div>
   </header>
+<div id="page" class="hfeed site">
+
 
 <!-- #masthead -->
   <?php
