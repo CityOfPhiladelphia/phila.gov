@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
  var currentPath = window.location.pathname;
 
   $( $( '.top-bar ul > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
-    if ( currentPath == $( this ).attr('href') ){
+    if ( currentPath == $( this ).attr('href') ||   currentPath == $( this ).data( 'link') ){
 
       $(this).addClass('js-is-current');
       //special handling for services
@@ -31,10 +31,13 @@ jQuery(document).ready(function($) {
 
   function removeNoScroll(){
     //this lets us remove the no-scroll class in the event it has been added.
+    $('header').click( function() {
+      $('body').removeClass('no-scroll');
+    });
     $('#page').click( function() {
       $('body').removeClass('no-scroll');
     });
-    $('footer').lick( function() {
+    $('footer').click( function() {
       $('body').removeClass('no-scroll');
     });
   }
@@ -122,6 +125,7 @@ jQuery(document).ready(function($) {
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
     //if ( Foundation.MediaQuery.atLeast('medium') ) {
     $('body').addClass('no-scroll');
+    console.log('yeeep');
     //}
     $('#back-to-top').css('display', 'none');
 
