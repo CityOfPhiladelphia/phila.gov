@@ -11,6 +11,9 @@
   </div><!-- #content -->
   <a href="#page" id="back-to-top"><i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true"></i><br>Top</a>
  </div><!-- #page -->
+ 
+ <?php get_template_part( 'searchform' ); ?>
+ <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
   <?php get_template_part( 'partials/content', 'modified' ) ?>
