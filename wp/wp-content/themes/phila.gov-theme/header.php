@@ -149,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </ul>
                   </li>
                   <li>
-                    <a href="#programs-and-initiatives" class="valign-cell"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+                    <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
                   </li>
                   <li>
                     <a href="/news/" class="valign-cell"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
