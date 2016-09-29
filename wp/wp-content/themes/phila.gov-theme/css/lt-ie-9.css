@@ -1,26 +1,28 @@
 /*
   Styles for IE 9 and later
 */
-body.custom-background{
-  background-image:none !important;
-}
 
 #page{
   width:900px;
   margin:0 auto;
 }
-
+header{
+  display: block;
+}
+header .columns{
+  float:none;
+}
 img, .card img {
   width: auto !important;
   /*purposefully break what is in patterns */
   max-width: auto !important;
   height:auto !important;
 }
-
 .logo img{
-  height:50px !important;
-  width:auto !important;
+  display: block;
+  height:180px !important;
 }
+
 img.hidden-hero, .small-thumb{
   width:50% !important;
 }
@@ -28,11 +30,6 @@ img.hidden-hero, .small-thumb{
 .browsehappy{
   padding:20px;
   background: #f2c612;
-}
-
-.site-branding, .hero-content{
-  background: #2176d2;
-  display: block;
 }
 
 nav li{
@@ -52,6 +49,10 @@ img.initial-hero,
 
 .column, .columns{
   padding:20px;
+}
+
+.column .column, .columns .columns{
+  padding:0 20px;
 }
 
 .row:after, .news ul li.group:after{
