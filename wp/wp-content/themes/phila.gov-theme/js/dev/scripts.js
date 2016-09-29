@@ -125,7 +125,6 @@ jQuery(document).ready(function($) {
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
     //if ( Foundation.MediaQuery.atLeast('medium') ) {
     $('body').addClass('no-scroll');
-    console.log('yeeep');
     //}
     $('#back-to-top').css('display', 'none');
 
@@ -135,12 +134,10 @@ jQuery(document).ready(function($) {
 
   $(document).on('close.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
-    console.log('the thing');
   });
 
   $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
-    console.log('click');
   });
 
   /* sticky nav */
