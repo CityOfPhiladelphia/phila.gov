@@ -19,7 +19,7 @@
 <?php $top_service_pages = new WP_Query( $service_args ); ?>
 <?php $i = 0; ?>
 <?php if ( $top_service_pages->have_posts() ) : ?>
-  <div id="services-list" class="global-nav show-for-medium">
+  <div id="services-list" class="global-nav show-for-medium" aria-hidden="true">
     <div class="dropdown-pane mega-menu-dropdown" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-hover="true" data-close-on-click="true" id="services-mega-menu">
       <div class="inner-wrapper">
 
