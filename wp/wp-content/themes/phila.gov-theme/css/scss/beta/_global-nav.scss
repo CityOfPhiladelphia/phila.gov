@@ -458,9 +458,9 @@
     font-size:.5rem;
 
     @media screen and (max-width: 39.9375em) {
-      font-size: .8rem;
+      font-size: .7rem;
       //matches padding on menu-icon
-      padding-top: .75rem;
+      padding-top: 1rem;
 
       .fa{
         padding-bottom: $spacing-small;
