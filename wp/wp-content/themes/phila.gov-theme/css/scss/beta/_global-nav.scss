@@ -33,16 +33,14 @@
     ul {
 
       li {
-        &:after {
+        &:last-of-type::after {
+          content: none;
+        }
+        &::after {
           content: '|';
           display: inline;
           background: $ben-franklin-blue;
-          color: $white;
-          &:last-of-type{
-            &:after {
-              content: none;
-            }
-          }
+          color: rgba($ben-franklin-light, .6);
         }
 
         a {
@@ -57,7 +55,6 @@
             background:$ghost-gray;
             color:$dark-gray;
           }
-
         }
         .fa {
           padding: 0 0 0 $spacing-small;
