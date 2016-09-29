@@ -52,8 +52,8 @@
           &:hover:not(.goog-te-menu-value),
           &:active:not(.goog-te-menu-value),
           &.js-is-current{
-            background:$ghost-gray;
-            color:$dark-gray;
+            background:$dark-gray;
+            color:$white;
           }
         }
         .fa {
