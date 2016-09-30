@@ -136,6 +136,11 @@
       margin: 0;
       padding:0;
 
+      &.menu-top-offset{
+        //TODO: This is here because we need to account for the non-generated "Home" link which is appearing on every menu
+        top:-45px;
+      }
+
       li {
         background: $ghost-gray;
         list-style: none;
@@ -168,6 +173,7 @@
     }
     .services-menu-link {
       position: static;
+
       > a::after{
           position: absolute;
           top: 50%;
@@ -231,8 +237,10 @@
       position: relative;
       height:inherit;
 
-      ul li {
-        display:none;
+      ul {
+        li {
+          display:none;
+        }
       }
        //big arrow
        &.hover::after{

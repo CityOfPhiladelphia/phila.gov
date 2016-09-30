@@ -121,11 +121,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+                  <li class="show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
 
                   <li class="show-for-small-only is-dropdown-submenu-parent">
                     <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
-                    <ul class="menu vertical">
+                    <ul class="menu vertical menu-top-offset">
                       <li><a href="/services/">Service Directory</a></li>
                       <?php
                         $args = array(
@@ -150,10 +150,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <li>
                     <a href="/documents/" class="valign-cell"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
                   </li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk">
+                  <li class="show-for-small-only bg-sidewalk">
                     <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
                   </li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom show-for-small-only bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+                  <li class="show-for-small-only bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
                   </li>
                 </ul>
                 </nav>
