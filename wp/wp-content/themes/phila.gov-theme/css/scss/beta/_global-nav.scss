@@ -162,7 +162,7 @@
         border-color:transparent transparent transparent $white;
       }
     }
-    .service-menu-link {
+    .services-menu-link {
       position: static;
       > a::after{
           position: absolute;
@@ -223,7 +223,7 @@
         }
       }
     }
-    .service-menu-link {
+    .services-menu-link {
       position: relative;
       height:inherit;
 
@@ -456,6 +456,7 @@
 
   button.site-search {
     font-size:.5rem;
+    position: relative;
 
     @media screen and (max-width: 39.9375em) {
       font-size: .7rem;
