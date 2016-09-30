@@ -57,9 +57,20 @@
       }
     }
   }
-  .close-button {
-    position:initial;
+  #mobile-filter {
+    background: rgba(0, 0, 0, 0.2);
+
+    .inner-modal {
+      background-color: #fff;
+      margin-top: 4rem;
+      padding-bottom: 2rem;
+
+      .close-button {
+        position:initial;
+      }
+    }
   }
+
   .filter{
     //TODO: correct the base style that is providing the gray bg & padding
     background:$white;
