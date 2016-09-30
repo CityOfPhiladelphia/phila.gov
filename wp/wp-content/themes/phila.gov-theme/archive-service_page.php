@@ -151,10 +151,12 @@ get_header(); ?>
     </div> <!-- .row -->
     <div id="mobile-filter" class="reveal filter full" data-reveal data-options="closeOnClick:false;">
       <div class="row">
-        <div class="columns">
-          <button class="close-button ben-franklin-blue" data-close aria-label="Close modal" type="button">
+        <div class="small-24 columns pts phn">
+          <button class="close-button float-right ben-franklin-blue" data-close aria-label="Close modal" type="button">
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>
+        </div>
+        <div class="columns">
           <h2>Filter by Service Category</h2>
         </div>
       </div>

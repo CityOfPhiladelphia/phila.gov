@@ -57,7 +57,9 @@
       }
     }
   }
-
+  .close-button {
+    position:initial;
+  }
   .filter{
     //TODO: correct the base style that is providing the gray bg & padding
     background:$white;
