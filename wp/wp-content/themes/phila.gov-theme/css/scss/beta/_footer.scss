@@ -145,12 +145,17 @@ footer{
           text-transform: none;
         }
         section {
-          border-right: 1px solid #a2a2a2;
-
+          border-bottom: 1px solid #a2a2a2;
           &:last-of-type {
-            border-right: none;
+            border-bottom: 0;
           }
-
+          @media only screen and (min-width: 40em) {
+            border-bottom: 0;
+            border-right: 1px solid #a2a2a2;
+            &:last-of-type {
+              border-right: 0;
+            }
+          }
           a:link,
           a:visited {
             color: #e5e5e5;
