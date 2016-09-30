@@ -150,38 +150,40 @@ get_header(); ?>
       </div>
     </div> <!-- .row -->
     <div id="mobile-filter" class="reveal filter full" data-reveal data-options="closeOnClick:false;">
-      <div class="row">
-        <div class="small-24 columns pts phn">
-          <button class="close-button float-right ben-franklin-blue" data-close aria-label="Close modal" type="button">
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </button>
+      <div class="inner-modal">
+        <div class="row">
+          <div class="small-24 columns pts">
+            <button class="close-button float-right ben-franklin-blue" data-close aria-label="Close modal" type="button">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="columns">
+            <h2>Filter by Service Category</h2>
+          </div>
         </div>
-        <div class="columns">
-          <h2>Filter by Service Category</h2>
+        <div class="row">
+          <div class="small-12 columns">
+            <a href="#/" class="button outline full-width pan clearfix" aria-label="Clear filter selections" data-clear-filter>
+              <div class="valign">
+                <div class="button-label center valign-cell h2">Clear</div>
+              </div>
+            </a>
+          </div>
+          <div class="small-12 columns">
+            <a href="#/" class="button full-width pan clearfix" data-close aria-label="Apply modal" data-apply-filter>
+              <div class="valign">
+                <div class="button-label center valign-cell h2">Apply</div>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="small-12 columns">
-          <a href="#/" class="button outline full-width pan clearfix" aria-label="Clear filter selections" data-clear-filter>
-            <div class="valign">
-              <div class="button-label center valign-cell h2">Clear</div>
+        <div class="row">
+          <div class="columns mvm">
+            <span>Choose all that apply.</span>
+          </div>
+          <div class="small-24 columns">
+            <div data-toggle="data-mobile-filter" >
             </div>
-          </a>
-        </div>
-        <div class="small-12 columns">
-          <a href="#/" class="button full-width pan clearfix" data-close aria-label="Apply modal" data-apply-filter>
-            <div class="valign">
-              <div class="button-label center valign-cell h2">Apply</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="columns mvm">
-          <span>Choose all that apply.</span>
-        </div>
-        <div class="small-24 columns">
-          <div data-toggle="data-mobile-filter" >
           </div>
         </div>
       </div>
