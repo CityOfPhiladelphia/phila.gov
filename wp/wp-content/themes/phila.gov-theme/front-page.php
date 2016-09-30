@@ -254,7 +254,7 @@ get_header(); ?>
         </div>
         <div class="feedback-form" data-type="feedback-form" style="display:none;">
           <div class="row expanded">
-            <div class="medium-18 large-14 column small-centered mbm" data-type="form-wrapper" >
+            <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
               <?php // TODO: insert the form on click ?>
               <script type="text/javascript" src="https://form.jotform.com/jsform/62516788470970"></script>
             </div>
