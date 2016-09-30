@@ -28,6 +28,10 @@
     }
   }
   .secondary-nav {
+    @media screen and (max-width: 39.9375em) {
+      height:10px;
+    }
+
     font-size: .85rem;
 
     ul {
