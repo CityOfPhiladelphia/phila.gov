@@ -181,7 +181,6 @@ jQuery(document).ready(function($) {
 
   $('.site-search').on('show.zf.dropdown', function(){
     $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
-    console.log('workie?');
   });
 
   $('.site-search').click(function(){
