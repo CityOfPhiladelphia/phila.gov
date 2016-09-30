@@ -32,7 +32,7 @@
         </header>
         </div>
         <div class="row equal-height border-bottom-sidewalk">
-          <div class="medium-7 columns border-right-sidewalk equal hide-for-small-only">
+          <div class="medium-7 columns border-right-sidewalk equal hide-for-small-only pbxl">
             <nav data-swiftype-index="false" id="services-nav">
               <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="services-menu vertical menu">
               <?php
@@ -50,7 +50,7 @@
               </ul>
             </nav>
         </div>
-        <div class="medium-16 columns equal">
+        <div class="medium-16 columns equal pbxl">
           <header class="entry-header">
             <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
           </header>
