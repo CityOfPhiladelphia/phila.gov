@@ -28,6 +28,10 @@
     }
   }
   .secondary-nav {
+    @media screen and (max-width: 39.9375em) {
+      height:10px;
+    }
+
     font-size: .85rem;
 
     ul {
@@ -52,8 +56,8 @@
           &:hover:not(.goog-te-menu-value),
           &:active:not(.goog-te-menu-value),
           &.js-is-current{
-            background:$ghost-gray;
-            color:$dark-gray;
+            background:$dark-gray;
+            color:$white;
           }
         }
         .fa {
@@ -162,7 +166,7 @@
         border-color:transparent transparent transparent $white;
       }
     }
-    .service-menu-link {
+    .services-menu-link {
       position: static;
       > a::after{
           position: absolute;
@@ -223,7 +227,7 @@
         }
       }
     }
-    .service-menu-link {
+    .services-menu-link {
       position: relative;
       height:inherit;
 
@@ -451,6 +455,40 @@
       height:100%;
       background: transparent;
       overflow: scroll;
+    }
+  }
+
+  button.site-search {
+    font-size:.5rem;
+    position: relative;
+
+    @media screen and (max-width: 39.9375em) {
+      font-size: .7rem;
+      //matches padding on menu-icon
+      padding-top: 1rem;
+
+      .fa{
+        padding-bottom: $spacing-small;
+        font-size: 3em;
+        display: block;
+      }
+    }
+    color:$ben-franklin-blue;
+    text-transform: uppercase;
+
+    &.hover::after{
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 1rem solid transparent;
+      border-right: 1rem solid transparent;
+
+      border-bottom: 1rem solid $ghost-gray;
+      bottom:0;
+      left:0;
+      right:50%;
+      position: absolute;
     }
   }
 

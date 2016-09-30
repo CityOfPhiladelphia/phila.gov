@@ -69,7 +69,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
 
-  <header class="global-nav no-js">
+  <header class="global-nav no-js mbm mbn-mu">
     <!-- Secondary Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded secondary-nav">
       <div class="row">
@@ -112,20 +112,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </a>
             </div>
           </div>
-
-          <div class="small-4 medium-push-17 medium-1 columns equal small-push-4" >
-            <button class="site-search valign" type="button"  data-toggle="search-dropdown">
-              <div class="valign-cell">
-                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-                <span class="show-for-small-only">Search</span>
-              </div>
-            </button>
-          </div>
           <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
-          <div class="top-bar primary-menu medium-pull-1 medium-15 small-24 columns equal no-js valign-mu" id="beta-global-nav">
+          <div class="top-bar primary-menu medium-15 medium-push-2 small-24 columns equal no-js valign-mu" id="beta-global-nav">
             <!-- Primary Navigation -->
             <div class="top-bar-right valign-mu">
-              <div class="service-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu" aria-hidden="true">
+              <div class="services-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu" aria-hidden="true">
                 <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
               </div>
               <nav data-swiftype-index="false" class="valign-mu">
@@ -168,21 +159,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </nav>
               </div>
             </div>
+            <div class="small-4 medium-1 columns equal">
+              <button class="site-search valign" type="button"  data-toggle="search-dropdown">
+                <div class="valign-cell">
+                  <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                  <span class="show-for-small-only">Search</span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-        <?php get_template_part( 'searchform' ); ?>
-        <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
       </div>
   </header>
 <div id="page" class="hfeed site">
-
 
 <!-- #masthead -->
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
     <?php if ( !is_front_page() ) : ?>
-      <div class="row mtm">
+      <div class="row mts mbm">
         <div class="columns">
           <?php echo phila_breadcrumbs(); ?>
         </div>
