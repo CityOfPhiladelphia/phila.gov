@@ -1,3 +1,12 @@
+h1 .fa{
+  font-size: 1.6rem;
+
+  @media screen and (min-width: 40em) {
+    font-size: 2rem;
+  }
+
+}
+
 .group::after {
   content: "";
   display: table;
