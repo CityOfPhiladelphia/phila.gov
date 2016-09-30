@@ -165,6 +165,16 @@
     font-weight: 400;
     letter-spacing: .05rem;
     cursor:pointer;
+
+    .fa {
+      &.fa-lightbulb-o {
+        font-size: 2rem;
+        @media only screen and (min-width: 40em) {
+          vertical-align: text-bottom;
+          font-size: 1.25rem;
+        }
+      }
+    }
   }
 
   // Thanks CSS Tricks - https://css-tricks.com/snippets/css/css-triangle/

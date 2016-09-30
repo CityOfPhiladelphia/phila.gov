@@ -76,6 +76,18 @@
     content: '\A';
   }
 }
+.break-before-sm {
+  &:before {
+    white-space: pre;
+    content: '\A';
+  }
+  @media screen and (min-width: 40em) {
+    &:before {
+      white-space: normal;
+      content: none;
+    }
+  }
+}
 .break-before-mu {
   @media screen and (min-width: 40em) {
     &:before {

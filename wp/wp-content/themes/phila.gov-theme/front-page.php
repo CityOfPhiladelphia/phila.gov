@@ -247,7 +247,8 @@ get_header(); ?>
       <div class="feedback phm phn-mu mvs mvn-mu">
         <div class="row expanded" data-toggle="feedback">
           <div class="column call-to-action pas center">
-            <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> What should we add to this section? Tell us.
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i><span class="break-before-sm"> What should we add to this section?</span>
+            <span class="break-before-sm"> Tell us</span>.
           </div>
         </div>
         <div class="feedback-form" data-type="feedback-form" style="display:none;">
