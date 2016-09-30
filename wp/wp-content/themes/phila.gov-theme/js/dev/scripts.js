@@ -145,6 +145,8 @@ jQuery(document).ready(function($) {
     $('.global-nav .menu-icon').toggleClass('active');
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() == 'Close') ? 'Menu' : 'Close');
+
   });
 
   var navHeight = $('.global-nav').outerHeight();
