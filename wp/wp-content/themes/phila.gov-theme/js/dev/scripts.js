@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
       $(this).addClass('js-is-current');
       //special handling for services
     }else if( currentPath.includes('/services/') ){
-      $('.service-menu-link a').addClass('js-is-current');
+      $('.services-menu-link a').addClass('js-is-current');
     }
 
   });
@@ -57,11 +57,22 @@ jQuery(document).ready(function($) {
     e.preventDefault();
   });
 
+  //click and hover handler for desktop service menu link
+  $('.services-menu-link').on('click mouseover', function () {
+    console.log('either or');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+  });
+
+
   //Listener for megamenu dropdown to ensure no-scroll gets removed
   $('#services-mega-menu').hover( function(){
     $('body').addClass('no-scroll');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
   }, function(){
     $('body').removeClass('no-scroll');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
   });
 
   //TODO: clean this up
@@ -71,7 +82,6 @@ jQuery(document).ready(function($) {
     $('#page').click( function() {
       $('body').removeClass('no-scroll');
       $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-
     });
     $('footer').click( function() {
       $('body').removeClass('no-scroll');
@@ -86,20 +96,11 @@ jQuery(document).ready(function($) {
       }
   });
   }
-  resetPage();
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
   //determines if content is scrollable
   $.fn.hasScrollBar = function() {
     return this.get(0).scrollHeight > this.height();
   }
-
-  $('.site-search').click( function(){
-    $( '.site-search i' ).toggleClass('fa-close');
-    $('.site-search i' ).toggleClass('fa-search');
-  });
-
-
-
 
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
@@ -143,6 +144,8 @@ jQuery(document).ready(function($) {
     $('.dropdown-pane').foundation('close');
     $('body').toggleClass('no-scroll');
     $('.global-nav .menu-icon').toggleClass('active');
+    $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
   });
 
   var navHeight = $('.global-nav').outerHeight();
@@ -177,9 +180,23 @@ jQuery(document).ready(function($) {
 
   });
 
+  $('.site-search').on('show.zf.dropdown', function(){
+    $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
+    console.log('workie?');
+  });
+
+  $('.site-search').click(function(){
+    $( '.site-search i' ).toggleClass('fa-close');
+    $('.site-search i').toggleClass('fa-search');
+  });
+
+  /*this doesn't actually do anything, but leaving it here for the day when it works... */
   $(document).on('close.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
   });
+
 
   $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
@@ -208,7 +225,7 @@ jQuery(document).ready(function($) {
       });
     }
   }
-  drilldownMenuHeight();
+
 
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
@@ -219,6 +236,10 @@ jQuery(document).ready(function($) {
       $('.sticky:visible').foundation('_calc', true);
     }
   });
+
+  drilldownMenuHeight();
+
+  resetPage();
 
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
