@@ -38,6 +38,7 @@ then
   if grep -q "$(curl http://169.254.169.254/latest/meta-data/instance-id)" /home/ubuntu/deploycheck
   then
     echo "yes" > /home/ubuntu/yes
+    aws cloudfront create-invalidation --distribution-id E2KKF4LEAU9DV5 --paths *
   fi
 fi
 
