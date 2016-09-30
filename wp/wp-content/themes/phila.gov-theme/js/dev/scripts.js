@@ -59,7 +59,6 @@ jQuery(document).ready(function($) {
 
   //click and hover handler for desktop service menu link
   $('.services-menu-link').on('click mouseover', function () {
-    console.log('either or');
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
   });
 
