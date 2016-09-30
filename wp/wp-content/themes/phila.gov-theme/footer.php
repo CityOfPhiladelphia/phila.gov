@@ -84,7 +84,7 @@
   </div>
   <div class="fat">
     <div class="row pvs ptl-mu phm equal-height">
-      <section class="medium-8 columns phm pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu equal">
+      <section class="medium-8 columns phm pvm pvn-mu equal">
         <h2 class="mtn mbm">Take action in your community</h2>
         <nav class="take-action">
           <ul>
@@ -98,7 +98,7 @@
           </ul>
         </nav>
       </section>
-      <section class="medium-8 columns phm pll-mu pvm pvn-mu bdr-sidewalk bdr-bottom-sm bdr-right-mu equal">
+      <section class="medium-8 columns phm pll-mu pvm pvn-mu equal">
         <h2 class="mtn mbm"> Know your City government</h2>
         <nav class="take-action">
           <ul>
