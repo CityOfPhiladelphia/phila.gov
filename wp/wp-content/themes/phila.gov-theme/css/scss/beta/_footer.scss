@@ -145,6 +145,12 @@ footer{
           text-transform: none;
         }
         section {
+          border-right: 1px solid #a2a2a2;
+
+          &:last-of-type {
+            border-right: none;
+          }
+
           a:link,
           a:visited {
             color: #e5e5e5;

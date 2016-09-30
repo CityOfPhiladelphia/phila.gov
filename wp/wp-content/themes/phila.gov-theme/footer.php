@@ -118,17 +118,6 @@
         <h2 class="mtn mbm">Connect with City government</h2>
         <nav class="city-social">
           <ul class="inline-list">
-            <li class="pvxs">
-              <a href="http://www.phila.gov/channel64/Pages/default.aspx" target="_blank" class="prl">
-                <span class="fa fa-stack fa-lg">
-                  <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
-                  <i class="fa fa-stack-1x">
-                    <span class="h4">64</span>
-                  </i>
-                  <span class="show-for-sr">TV 64</span>
-                </span>
-              </a>
-            </li>
             <li class="pbm">
               <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" target="_blank" class="prl">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
@@ -145,6 +134,17 @@
               <a href="https://www.instagram.com/cityofphiladelphia/" target="_blank" class="prl">
                 <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
+              </a>
+            </li>
+            <li class="pvxs">
+              <a href="http://www.phila.gov/channel64/Pages/default.aspx" target="_blank" class="prl">
+                <span class="fa fa-stack fa-lg">
+                  <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
+                  <i class="fa fa-stack-1x">
+                    <span class="h4">64</span>
+                  </i>
+                  <span class="show-for-sr">TV 64</span>
+                </span>
               </a>
             </li>
             <li class="pbm">
