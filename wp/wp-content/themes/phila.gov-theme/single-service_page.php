@@ -18,7 +18,7 @@
       if ( empty( $parent_id ) ) {
         $parent_id = $post->ID;
       }
-      $icon = phila_get_page_icon();
+      $icon = phila_get_page_icon( $parent_id );
       ?>
     <article id="post-<?php the_ID(); ?>">
       <div class="row">
