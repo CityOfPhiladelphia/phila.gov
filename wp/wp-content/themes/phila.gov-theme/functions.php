@@ -1652,9 +1652,9 @@ function phila_connect_panel($connect_panel) {
  *
  **/
 
-function phila_get_page_icon(){
+function phila_get_page_icon( $post ){
 
-  $icon = rwmb_meta( 'phila_page_icon' );
+  $icon = rwmb_meta( 'phila_page_icon', $args = array(), $post );
 
   return $icon;
 }
