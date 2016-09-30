@@ -42,3 +42,5 @@ then
 fi
 
 rm /home/ubuntu/deploycheck
+
+exit 0
