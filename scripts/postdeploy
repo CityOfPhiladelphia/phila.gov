@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH="$PATH:/usr/local/bin"
+
 source /home/ubuntu/app/environment
 
 CFflush=1
