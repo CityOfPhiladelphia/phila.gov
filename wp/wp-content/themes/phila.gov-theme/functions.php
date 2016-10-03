@@ -176,15 +176,17 @@ function phila_filter_title( $title ){
         }else{
           $category = get_the_category($post->ID);
 
-          if ( $category[0]->category_parent != 0 ){
+          if ( is_array($category) && !empty($category) ) {
+            if ( $category[0]->category_parent != 0 ){
 
-            $parent = get_category( $category[0]->category_parent);
-            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $site_title;
+              $parent = get_category( $category[0]->category_parent);
+              $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $site_title;
 
-          }else{
+            }else{
 
-            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $site_title;
+              $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $site_title;
 
+            }
           }
         }
       }
