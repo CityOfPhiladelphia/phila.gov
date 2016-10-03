@@ -56,7 +56,7 @@
         </div>
         <div class="medium-16 columns trending-requests phl pvm pvn-mu equal">
           <section>
-            <h3 class="h4 dark-gray">Trending Requests</h3>
+            <h3 class="h4 dark-gray">Trending requests</h3>
             <!-- TODO: Begin pulling these in from 311 -->
               <ul class="columns-2-mu">
                 <li>
@@ -112,12 +112,12 @@
             <li class="pvxs"><a href="https://alpha.phila.gov/departments/mayor/" class="">Mayor’s Office</a></li>
             <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
             <li class="pvxs"><a href="https://alpha.phila.gov/departments/" class="">City Government Directory</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/openbudget/" class="external">City budget</a></li>
             <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="http://www.phila.gov/records/index.html" class="external">City records</a></li>
             <li class="pvxs"><a href="http://www.phila.gov/ethicsboard/Pages/default.aspx" class="external">Honesty in government</a></li>
             <li class="pvxs"><a href="http://www.philadelphiavotes.com/" class="external">Voting &amp; elections</a></li>
             <li class="pvxs"><a href="http://www.phila.gov/data/" class="external">Open data</a></li>
-            <li class="pvxs"><a href="http://analytics.phila.gov/" class="external">City website analytics</a></li>
           </ul>
         </nav>
       </section>
