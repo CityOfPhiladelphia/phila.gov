@@ -6,24 +6,37 @@
 ?>
 <div class="row">
   <div class="small-24 columns">
-    <div class="panel center mbl mtm mtl-mu">
-      <p>We're still working on this page's design and content.
-        <?php
-        $link_text = "How can we make it better?";
-        if ( !is_home() && !is_404() && !is_tax() && !is_archive() ) :
-          $category = get_the_category();
-          $current_cats = phila_get_current_department_name( $category, false, false, true );
-          $dept = "?dept=" . $current_cats;
-          $feedback = '<a href="/feedback/%1$s">%2$s</a>';
-
-          echo sprintf($feedback, $dept, $link_text);
-        else :
-          $feedback = '<a href="/feedback/">%1$s</a>';
-
-          echo sprintf($feedback, $link_text);
-        endif;
-        ?>
-      </p>
+    <div class="feedback phm phn-mu mvs mtm-mu mbl-mu">
+      <div class="row" data-toggle="feedback">
+        <div class="small-24 columns">
+          <div class=" call-to-action phs pvl center">
+            <i class="fa fa-lightbulb-o fa-x2" aria-hidden="true"></i><span class="break-before-sm"> We're still working on this page's design and content.</span>
+            <span class="break-before-sm"> How can we make it better?</span>.
+          </div>
+        </div>
+      </div>
+      <div class="feedback-form" data-type="feedback-form" style="display:none;">
+        <div class="row">
+          <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
+            <?php // TODO: insert the form on click ?>
+            <script type="text/javascript" src="https://form.jotform.com/jsform/62765090493967?nojump"></script>
+          </div>
+        </div>
+      </div>
+      <div class="row" data-type="feedback-indicator">
+        <div class="small-24 columns center">
+          <div class="arrow-wrapper">
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row expanded" data-toggle="feedback" data-type="feedback-footer" style="display:none;">
+        <div class="small-24 columns">
+          <div class="call-to-action center">
+            <div class="pas"><i class="fa fa-close" aria-hidden="true"></i> Close</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
