@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /wp
     destination: /home/ubuntu/app/wp
+  - source: /nginx
+    destination: /home/ubuntu/app/nginx
 permissions:
   - object: /home/ubuntu/app/
     owner: ubuntu
