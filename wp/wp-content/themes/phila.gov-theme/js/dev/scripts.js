@@ -38,9 +38,9 @@ if (!svgasimg()){
 
 jQuery(document).ready(function($) {
 
- var currentPath = window.location.pathname;
+  var currentPath = window.location.pathname;
 
-  $( $( '.top-bar ul > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
+  $( $( '.desktop-nav a' ) ).each( function() {
     if ( currentPath == $( this ).attr('href') ||   currentPath == $( this ).data( 'link') ){
 
       $(this).addClass('js-is-current');
@@ -61,7 +61,6 @@ jQuery(document).ready(function($) {
   $('.services-menu-link').on('click mouseover', function () {
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
   });
-
 
   //Listener for megamenu dropdown to ensure no-scroll gets removed
   $('#services-mega-menu').hover( function(){
@@ -93,20 +92,22 @@ jQuery(document).ready(function($) {
        $('body').removeClass('no-scroll');
 
       }
-  });
+    });
   }
   //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
   //determines if content is scrollable
   $.fn.hasScrollBar = function() {
     return this.get(0).scrollHeight > this.height();
   }
-
+  var windowH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
 
   $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
+
+    var activeHeight = $('.is-active').outerHeight();
 
     $('.dropdown-pane').foundation('close');
 
@@ -139,13 +140,19 @@ jQuery(document).ready(function($) {
 
 
   $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
+
+    var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
     //close dropdowns when sidenav is open
     $('.dropdown-pane').foundation('close');
-    $('body').toggleClass('no-scroll');
+
+    $('html, body').toggleClass('no-scroll');
+
     $('.global-nav .menu-icon').toggleClass('active');
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
     $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() == 'Close') ? 'Menu' : 'Close');
+
+    drilldownMenuHeight();
 
   });
 
@@ -213,15 +220,13 @@ jQuery(document).ready(function($) {
 
   function drilldownMenuHeight(){
     if (Foundation.MediaQuery.current == 'small') {
+      var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-      $('.is-drilldown ul.is-dropdown-submenu').css({
-       //TODO: this is a temp fix until a better solution is implemented
-       'height': $('.is-drilldown').outerHeight() *1.5 + 'px'
-      });
-    }else{
-      $('.is-drilldown ul.is-dropdown-submenu').css({
-       //TODO: this is a temp fix until a better solution is implemented
-       'height': 'auto'
+      var drilldownHeight = $('.is-drilldown').outerHeight();
+
+      //TODO: this is a temp fix until a better solution is implemented
+      $('.is-drilldown ul').css({
+        'height': drilldownHeight + 'px'
       });
     }
   }
@@ -237,7 +242,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  drilldownMenuHeight();
+//  drilldownMenuHeight();
 
   resetPage();
 
