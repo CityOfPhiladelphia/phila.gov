@@ -95,16 +95,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </div>
     </div>
+
     <div class="title-bar small-4 columns" data-responsive-toggle="beta-global-nav">
       <button class="menu-icon" type="button" data-toggle>
         <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
         <span class="title-bar-title">Menu</span>
       </button>
     </div>
-    <div class="row expanded background-white" data-sticky-container>
+    <!--mobile nav -->
+    <div class="top-bar primary-menu medium-15 medium-push-2 small-24 columns equal no-js valign-mu" id="beta-global-nav">
+      <!-- Mobile Navigation -->
+      <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
+      <div class="top-bar-right valign-mu show-for-small-only">
+        <nav data-swiftype-index="false" class="valign-mu">
+          <ul class="vertical menu pan valign-mu" data-drilldown>
+            <li><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+
+            <li class="show-for-small-only is-drilldown-submenu-parent">
+              <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+              <ul class="menu vertical menu-top-offset">
+                <li><a href="/services/">Service Directory</a></li>
+                <?php
+                  $args = array(
+                    //TODO: only display pages with taxonomy applied
+                    'post_type' => 'service_page',
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
+                    'title_li' => '',
+                    'link_before' => '<span>',
+                    'link_after'  => '</span>',
+                  );
+                  wp_list_pages($args);
+                ?>
+              </ul>
+            </li>
+            <li>
+              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+            </li>
+            <li>
+              <a href="/news/" class="valign-cell"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
+            </li>
+            <li>
+              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
+            </li>
+            <li class="show-for-small-only bg-sidewalk">
+              <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
+            </li>
+            <li class="show-for-small-only bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+      </div>
+
+    <!--sticky/desktop nav -->
+    <div class="row expanded background-white primary-menu" data-sticky-container>
       <div class="columns sticky phn" data-sticky data-margin-top="0">
         <div class="row equal-height">
-
           <div class="small-16 medium-6 columns equal valign small-push-4 medium-push-0">
             <div class="valign-cell">
               <a href="<?php echo get_home_url(); ?>" class="logo">
@@ -112,48 +159,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </a>
             </div>
           </div>
-          <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
-          <div class="top-bar primary-menu medium-15 medium-push-2 small-24 columns equal no-js valign-mu" id="beta-global-nav">
-            <!-- Primary Navigation -->
+          <div class="medium-17 columns show-for-medium equal desktop-nav">
             <div class="top-bar-right valign-mu">
-              <div class="services-menu-link valign-cell show-for-medium" data-toggle="services-mega-menu" aria-hidden="true">
-                <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
-              </div>
               <nav data-swiftype-index="false" class="valign-mu">
-                <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
-                  <li class="show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
-
-                  <li class="show-for-small-only is-drilldown-submenu-parent">
-                    <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
-                    <ul class="menu vertical menu-top-offset">
-                      <li><a href="/services/">Service Directory</a></li>
-                      <?php
-                        $args = array(
-                          //TODO: only display pages with taxonomy applied
-                          'post_type' => 'service_page',
-                          'orderby' => 'menu_order',
-                          'order' => 'ASC',
-                          'title_li' => '',
-                          'link_before' => '<span>',
-                          'link_after'  => '</span>',
-                        );
-                        wp_list_pages($args);
-                      ?>
-                    </ul>
+                <ul class="horizontal menu pan valign-mu">
+                  <li class="services-menu-link" data-toggle="services-mega-menu">
+                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
+                    </li>
+                  <li>
+                    <a href="/programs-initiatives/" class="valign-cell">Programs &amp; Initiatives</a>
                   </li>
                   <li>
-                    <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle show-for-small-only" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+                    <a href="/news/" class="valign-cell"> News &amp; Events</a>
                   </li>
                   <li>
-                    <a href="/news/" class="valign-cell"><i class="fa fa-microphone show-for-small-only" aria-hidden="true"></i> News &amp; Events</a>
-                  </li>
-                  <li>
-                    <a href="/documents/" class="valign-cell"><i class="fa fa-file-text show-for-small-only" aria-hidden="true"></i> Publications &amp; Forms</a>
-                  </li>
-                  <li class="show-for-small-only bg-sidewalk">
-                    <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
-                  </li>
-                  <li class="show-for-small-only bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+                    <a href="/documents/" class="valign-cell"> Publications &amp; Forms</a>
                   </li>
                 </ul>
                 </nav>
