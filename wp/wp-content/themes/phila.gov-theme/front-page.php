@@ -248,7 +248,7 @@ get_header(); ?>
       <div class="feedback phm phn-mu mvs mvn-mu">
         <div class="row expanded" data-toggle="feedback">
           <div class="column call-to-action pas center">
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i><span class="break-before-sm"> What should we add to this section?</span>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i><span class="break-before-sm"> What should we we add to the neighborhood resources section?</span>
             <span class="break-before-sm"> Tell us</span>.
           </div>
         </div>
