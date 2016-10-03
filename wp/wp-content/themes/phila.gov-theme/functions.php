@@ -582,6 +582,11 @@ function phila_util_echo_website_url(){
   echo 'alpha.phila.gov';
 }
 
+//this form is used throughout the theme and can be updated as needed
+function phila_util_echo_tester_url(){
+  echo '/sign-up-to-be-a-phila-gov-tester';
+}
+
 //spits out a nice version of the department category name
 function phila_util_get_current_cat_name(){
   $category = get_the_category();
