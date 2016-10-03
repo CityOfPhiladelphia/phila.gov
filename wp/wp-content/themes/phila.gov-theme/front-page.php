@@ -262,7 +262,9 @@ get_header(); ?>
         </div>
         <div class="row expanded" data-type="feedback-indicator">
           <div class="column center">
-            <div class="arrow"></div>
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
           </div>
         </div>
         <div class="row expanded" data-toggle="feedback" data-type="feedback-footer" style="display:none;">
