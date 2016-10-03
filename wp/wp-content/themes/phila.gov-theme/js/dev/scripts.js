@@ -38,6 +38,11 @@ if (!svgasimg()){
 
 jQuery(document).ready(function($) {
 
+  var gNavHeight = $('.global-nav').height();
+
+  $('.top-bar').css('top', gNavHeight );
+
+
   var currentPath = window.location.pathname;
 
   $( $( '.desktop-nav a' ) ).each( function() {
@@ -48,9 +53,32 @@ jQuery(document).ready(function($) {
     }else if( currentPath.includes('/services/') ){
       $('.services-menu-link a').addClass('js-is-current');
     }
-
   });
 
+
+  $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
+
+    var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
+
+    if ( $( '.js-current-section').length == 0 ) {
+      $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
+    }
+
+    //close dropdowns when sidenav is open
+    $('.dropdown-pane').foundation('close');
+    var drilldownHeight = $('.is-drilldown').outerHeight();
+
+    $('#page').toggleClass('hide');
+    $('footer').toggleClass('hide');
+
+    $('.global-nav .menu-icon').toggleClass('active');
+    $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() == 'Close') ? 'Menu' : 'Close');
+
+    drilldownMenuHeight();
+
+  });
   //Generic class for links that should prevent clickthrough
 
   $('.no-link').click(function(e){
@@ -88,9 +116,8 @@ jQuery(document).ready(function($) {
     });
     $(document).keyup(function(e) {
       //on escape, also remove no-scroll
-     if (e.keyCode == 27) {
-       $('body').removeClass('no-scroll');
-
+      if (e.keyCode == 27) {
+        $('body').removeClass('no-scroll');
       }
     });
   }
@@ -99,11 +126,8 @@ jQuery(document).ready(function($) {
   $.fn.hasScrollBar = function() {
     return this.get(0).scrollHeight > this.height();
   }
-  var windowH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
-
-  $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
 
@@ -135,24 +159,6 @@ jQuery(document).ready(function($) {
     $('.current-parent > li.js-drilldown-back a').text( 'Back to ' + parentLink.slice(-2)[0] );
 
     $('.js-current-section').html( parentLink.slice(-1)[0] );
-
-  });
-
-
-  $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
-
-    var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
-    //close dropdowns when sidenav is open
-    $('.dropdown-pane').foundation('close');
-
-    $('html, body').toggleClass('no-scroll');
-
-    $('.global-nav .menu-icon').toggleClass('active');
-    $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
-    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-    $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() == 'Close') ? 'Menu' : 'Close');
-
-    drilldownMenuHeight();
 
   });
 
@@ -197,13 +203,6 @@ jQuery(document).ready(function($) {
     $('.site-search i').toggleClass('fa-search');
   });
 
-  /*this doesn't actually do anything, but leaving it here for the day when it works... */
-  $(document).on('close.zf.dropdown', '[data-dropdown]', function(){
-    $('body').removeClass('no-scroll');
-    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-
-  });
-
 
   $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
@@ -223,14 +222,12 @@ jQuery(document).ready(function($) {
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
       var drilldownHeight = $('.is-drilldown').outerHeight();
-
-      //TODO: this is a temp fix until a better solution is implemented
+      var singleHeight = $('.js-current-section').innerHeight();
       $('.is-drilldown ul').css({
-        'height': drilldownHeight + 'px'
+        'height': drilldownHeight +  singleHeight + 'px'
       });
     }
   }
-
 
   $( window ).resize(function() {
     updateMegaMenuNavHeight();
