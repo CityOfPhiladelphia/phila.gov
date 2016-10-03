@@ -123,7 +123,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul class="vertical medium-horizontal dropdown menu pan valign-mu" data-responsive-menu="drilldown medium-dropdown">
                   <li class="show-for-small-only"><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
 
-                  <li class="show-for-small-only is-dropdown-submenu-parent">
+                  <li class="show-for-small-only is-drilldown-submenu-parent">
                     <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
                     <ul class="menu vertical menu-top-offset">
                       <li><a href="/services/">Service Directory</a></li>
