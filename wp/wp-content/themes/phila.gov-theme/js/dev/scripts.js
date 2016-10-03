@@ -368,6 +368,11 @@ jQuery(document).ready(function($) {
     }
   });
 
+  //Site-Wide Feedback Form
+  $('[data-toggle="data-site-wide-feedback"]').click(function() {
+    $('[data-toggle="data-site-wide-feedback"], [data-site-wide-feedback]').toggle();
+  });
+
   if ( $('#back-to-top').length ) {
     var fromBottom = $('footer').outerHeight();
 

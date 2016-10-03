@@ -55,4 +55,35 @@
       border-top: 0px solid $bike-share-blue;
     }
   }
+  .site-wide-instructions {
+    font-size: 14px;
+    .button {
+      min-width: 175px;
+      .button-label {
+        text-align: center;
+      }
+      @media only screen and (min-width: 40em) {
+        float: right;
+      }
+    }
+
+    ul {
+      li {
+
+      }
+    }
+  }
+}
+
+footer {
+  &.sitefooter {
+    .feedback {
+      .site-wide-instructions {
+        font-size: 14px;
+        a:link, a:visited {
+          font-weight: 700;
+        }
+      }
+    }
+  }
 }
