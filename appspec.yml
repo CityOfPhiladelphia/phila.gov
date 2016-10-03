@@ -8,6 +8,9 @@ permissions:
     owner: ubuntu
     group: ubuntu
 hooks:
+  BeforeInstall:
+    - location: scripts/predeploy
+      runas: ubuntu
   AfterInstall:
     - location: scripts/postdeploy
       runas: ubuntu
