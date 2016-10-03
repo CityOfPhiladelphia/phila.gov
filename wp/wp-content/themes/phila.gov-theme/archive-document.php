@@ -45,7 +45,7 @@ get_header(); ?>
               <p>In the meantime, we’re happy to consider your suggestions. How can we better organize this page? Your insights might inform future design and content improvements to the site.</p>
               <ul class="list-style-none mln pln pvm">
                 <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design ideas.</li>
-                <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="">Sign up to be a beta.phila.gov tester.</a> We’ll contact you for specific feedback on the <em>Publications &amp; forms</em> section and other site features.</li>
+                <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="<?php phila_util_echo_tester_url()?>">Sign up to be a beta.phila.gov tester.</a> We’ll contact you for specific feedback on the <em>Publications &amp; forms</em> section and other site features.</li>
               </ul>
             </div>
           </div>

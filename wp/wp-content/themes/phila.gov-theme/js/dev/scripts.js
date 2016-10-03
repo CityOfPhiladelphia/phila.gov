@@ -355,6 +355,7 @@ jQuery(document).ready(function($) {
 
   //Homepage Feedback Form
   $('[data-toggle="feedback"]').click(function() {
+    $('[data-type="feedback-form"] iframe').css( 'height', '');
     if ( $('[data-type="feedback-indicator"]').hasClass('up') ){
       $('[data-type="feedback-form"]').slideToggle( function(){
         $('[data-type="feedback-indicator"]').removeClass('up');

@@ -254,7 +254,7 @@ get_header(); ?>
         </div>
         <div class="feedback-form" data-type="feedback-form" style="display:none;">
           <div class="row expanded">
-            <div class="medium-18 large-14 column small-centered mbm" data-type="form-wrapper" >
+            <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
               <?php // TODO: insert the form on click ?>
               <script type="text/javascript" src="https://form.jotform.com/jsform/62516788470970"></script>
             </div>
@@ -292,7 +292,7 @@ get_header(); ?>
 
                 <ul class="list-style-none mln pln pvm">
                   <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
-                  <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="#">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
+                  <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="<?php phila_util_echo_tester_url()?>">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
                 </ul>
 
               </section>
