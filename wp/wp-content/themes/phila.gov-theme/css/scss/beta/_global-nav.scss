@@ -27,6 +27,7 @@
       background-color:$white;
     }
   }
+  //utility nav
   .secondary-nav {
     @media screen and (max-width: 39.9375em) {
       height:10px;
@@ -68,11 +69,13 @@
       }
     }
   }
+
   .sticky{
     background: $white;
     width: 100% !important;
     max-width: 100% !important;
     left:0 !important;
+
     &.is-stuck{
       box-shadow: 0 3px 10px rgba($medium-gray, .5);
     }
@@ -120,26 +123,22 @@
     }
   }
 
-  .is-dropdown-submenu-parent a::after {
+  .is-drilldown-submenu-parent a::after {
     margin-top:-6px;
   }
+
 
   .is-drilldown {
     width: 100% !important;
     //TODO: add to patterns
-    overflow-y: scroll;
+    overflow: scroll;
     ul {
       background: $ghost-gray;
       width: 100%;
-      //use vh to ensure full window height is used
-      height: 100vh;
+      height: inherit;
       margin: 0;
       padding:0;
-
-      &.menu-top-offset{
-        //TODO: This is here because we need to account for the non-generated "Home" link which is appearing on every menu
-        top:-45px;
-      }
+      bottom:0;
 
       li {
         background: $ghost-gray;
@@ -171,27 +170,13 @@
         border-color:transparent transparent transparent $white;
       }
     }
-    .services-menu-link {
-      position: static;
-
-      > a::after{
-          position: absolute;
-          top: 50%;
-          margin-top: -6px;
-          right: 1rem;
-
-        }
-      > a:hover::after,
-        a:active::after {
-          border-color: transparent transparent transparent $white;
-        }
-      }
       .js-current-section{
         padding: .5rem 1rem;
         font-size: 1.3rem;
         text-transform: none;
       }
     }
+
     .js-drilldown-back{
       >a:hover::before,
       >a:active::before{
@@ -199,14 +184,33 @@
       }
     }
 
+    .services-menu-link {
+      position: static;
+
+      > a:hover::after,
+        a:active::after {
+          border-color: transparent transparent transparent $white;
+        }
+      }
+
   @media screen and (max-width: 39.9375em) {
+
+    nav{
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 87px;
+      bottom: 0;
+      overflow: scroll;
+      padding-bottom: 87px;
+    }
 
     .mega-menu-dropdown.dropdown-pane{
       display: none;
     }
 
     .top-bar{
-      background: $ghost-gray;
+      background-color: $ghost-gray;
       position: fixed;
       //overflow: scroll;
       //height:200px;
@@ -221,11 +225,22 @@
 
 
   @media only screen and (min-width: 40em) {
+    //TODO: put in patterns
+    .menu.medium-horizontal>li{
+      height:inherit;
+    }
     .primary-menu {
       .menu>li {
         > a {
           text-align: center;
           height: inherit;
+
+          text-transform: uppercase;
+
+          padding: $spacing-large 1.5rem;
+          @media screen and (min-width: 40em) and (max-width: 50em) {
+            padding:$spacing-small;
+          }
         }
         a:active, a:hover {
           color: $white;
@@ -291,12 +306,12 @@
       }
 
       a {
-        padding: $spacing-large 2.5rem $spacing-large 1.5rem;
+        padding: $spacing-large 2.5rem $spacing-large 1.5rem !important;
+        height: inherit;
 
         @media screen and (min-width: 40em) and (max-width: 50em) {
           padding: 1rem 2rem;
         }
-        height: inherit;
 
         &:hover, &:active{
           background: $ben-franklin-blue;
@@ -352,6 +367,7 @@
        }
     }
   }
+
   .dropdown-pane{
     max-width: 100% !important;
     width:100% !important;
@@ -430,26 +446,6 @@
     }
   }
 
-  @media screen and (min-width: 40em) {
-    //TODO: put in patterns
-    .menu.medium-horizontal>li{
-      height:inherit;
-    }
-
-    .top-bar{
-      text-transform: uppercase;
-    }
-    .primary-menu {
-      .menu>li {
-        > a {
-          padding: $spacing-large 1.5rem;
-          @media screen and (min-width: 40em) and (max-width: 50em) {
-            padding:$spacing-small;
-          }
-        }
-      }
-    }
-  }
   .dropdown.menu{
     a{
       //added to override patterns display:block
@@ -474,6 +470,7 @@
       font-size: .7rem;
       //matches padding on menu-icon
       padding-top: 1rem;
+      padding-bottom: 1rem;
 
       .fa{
         padding-bottom: $spacing-small;
