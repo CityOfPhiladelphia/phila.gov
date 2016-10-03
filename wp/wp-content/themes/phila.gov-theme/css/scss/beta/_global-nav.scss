@@ -131,7 +131,7 @@
   .is-drilldown {
     width: 100% !important;
     //TODO: add to patterns
-    overflow: scroll;
+    overflow: visible;
     ul {
       background: $ghost-gray;
       width: 100%;
@@ -195,27 +195,17 @@
 
   @media screen and (max-width: 39.9375em) {
 
-    nav{
-      position: fixed;
-      height: 100%;
-      width: 100%;
-      top: 87px;
-      bottom: 0;
-      overflow: scroll;
-      padding-bottom: 87px;
-    }
-
     .mega-menu-dropdown.dropdown-pane{
       display: none;
     }
 
     .top-bar{
       background-color: $ghost-gray;
-      position: fixed;
+      position: absolute;
       //overflow: scroll;
       //height:200px;
       //TODO: calcuate this w/ js
-      top:77px;
+      //top:83px;
       &.no-js{
         display:none;
       }
