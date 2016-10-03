@@ -112,6 +112,13 @@
       }
     }
   }
+
+  .feedback {
+    .up {
+      background: $ghost-gray;
+    }
+  }
+
 }
 
 .neighborhood-resources {
@@ -144,12 +151,6 @@
         min-height: 161px;
       }
     }
-  }
-}
-
-.feedback {
-  .up {
-    background: $ghost-gray;
   }
 }
 
