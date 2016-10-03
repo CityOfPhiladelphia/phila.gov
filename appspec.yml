@@ -3,8 +3,6 @@ os: linux
 files:
   - source: /wp
     destination: /home/ubuntu/app/wp
-  - source: /nginx
-    destination: /etc/nginx
 permissions:
   - object: /home/ubuntu/app/
     owner: ubuntu
@@ -12,6 +10,8 @@ permissions:
 hooks:
   BeforeInstall:
     - location: scripts/predeploy
+      runas: ubuntu
+    - location: scripts/deploy.sh
       runas: ubuntu
   AfterInstall:
     - location: scripts/postdeploy
