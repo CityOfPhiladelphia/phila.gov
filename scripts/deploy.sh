@@ -31,12 +31,14 @@ echo 'Reloading php-fpm'
 sudo service php7.0-fpm reload
 
 echo 'Refreshing WordPress'
+cd /home/ubuntu/app/wp
 wp rewrite flush
 wp core update-db
-mkdir -p wp/wp-content/uploads
-sudo chmod 777 -R wp/wp-content/uploads
+mkdir -p /home/ubuntu/app/wp/wp/wp-content/uploads
+sudo chmod 777 -R /home/ubuntu/app/wp/wp/wp-content/uploads
 
 echo 'Rendering nginx confs'
+cd /home/ubuntu/app
 # Render nginx confs into /etc with mo
 sudo rm -rf /etc/nginx
 shopt -s globstar
