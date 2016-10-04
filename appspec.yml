@@ -5,8 +5,13 @@ files:
     destination: /home/ubuntu/app/wp
   - source: /nginx
     destination: /home/ubuntu/app/nginx
+  - source: /scripts
+    destination: /home/ubuntu/app/scripts
 permissions:
-  - object: /home/ubuntu/app/
+  - object: /home/ubuntu/app/wp
+    owner: ubuntu
+    group: ubuntu
+  - object: /home/ubuntu/app/scripts
     owner: ubuntu
     group: ubuntu
 hooks:
