@@ -153,7 +153,7 @@ get_header(); ?>
           </div>
           <!-- Free Libraries -->
           <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-bottom-sm">
-            <a href="http://gsg.phila.gov/map#id=e7d139e404dd4fdaac4ae0bbaf637f79" class="action-panel">
+            <a href="http://phl.maps.arcgis.com/apps/View/index.html?appid=28b6efe281ba44efb378d0b29415b514" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
                   <div class="icon">
@@ -192,7 +192,7 @@ get_header(); ?>
           </div>
           <!-- Free Internet Access -->
           <div class="small-12 medium-6 columns mtm-mu mbxl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
-            <a href="http://gsg.phila.gov/map#id=aa5f6f59d35c45e9bc089b400694f43a" class="action-panel">
+            <a href="http://phl.maps.arcgis.com/apps/View/index.html?appid=a9bc69013f76464ca21ad6bb00167c90" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
                   <div class="icon">
