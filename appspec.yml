@@ -14,5 +14,7 @@ hooks:
     - location: scripts/predeploy
       runas: ubuntu
   AfterInstall:
+    - location: scripts/wp-config.sh
+      runas: ubuntu
     - location: scripts/deploy.sh
       runas: ubuntu
