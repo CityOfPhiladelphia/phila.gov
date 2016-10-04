@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 set -e
 
 _dir="$(dirname "$0")"
@@ -11,7 +10,7 @@ echo 'Running grunt tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
 grunt
-cd -
+cd /home/ubuntu/app
 
 echo 'Modifying php configs'
 sudo ed -s /etc/php/7.0/fpm/pool.d/www.conf <<'EOF'
@@ -31,7 +30,6 @@ echo 'Reloading php-fpm'
 sudo service php7.0-fpm reload
 
 echo 'Refreshing WordPress'
-cd /home/ubuntu/app
 wp rewrite flush
 wp core update-db
 mkdir -p /home/ubuntu/app/wp/wp-content/uploads
