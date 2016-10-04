@@ -166,7 +166,7 @@ jQuery(document).ready(function($) {
 
   });
 
-  function determineBrowserWidth( navHeight ){
+  function checkBrowserHeight( navHeight ){
     if ( $('body').hasClass('logged-in') ) {
       return;
     }
@@ -206,7 +206,7 @@ jQuery(document).ready(function($) {
   });
 
   $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
-    //determineBrowserWidth();
+    //checkBrowserHeight();
 
   });
   */
@@ -216,7 +216,7 @@ jQuery(document).ready(function($) {
 
     $('#back-to-top').css('display', 'none');
 
-    determineBrowserWidth( navHeight );
+    checkBrowserHeight( navHeight );
   });
 
   /* All dropdowns */
@@ -275,7 +275,7 @@ jQuery(document).ready(function($) {
   }
 
   $( window ).resize(function() {
-    determineBrowserWidth( navHeight ) ;
+    checkBrowserHeight( navHeight ) ;
 
     drilldownMenuHeight();
     $('.mega-menu-dropdown').foundation('close');
