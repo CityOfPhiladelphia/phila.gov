@@ -230,7 +230,7 @@ jQuery(document).ready(function($) {
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
       var drilldownHeight = $('.is-drilldown').outerHeight();
-      var singleHeight = $('.js-current-section').innerHeight();
+      var singleHeight = $('.is-drilldown li').outerHeight();
       $('.is-drilldown ul').css({
         'height': drilldownHeight +  singleHeight + 'px'
       });
