@@ -23,7 +23,11 @@ get_header(); ?>
             <p><?php _e( 'It looks like nothing was found at this location.', 'phila-gov' ); ?></p>
             <div class="find">
               <h2 class="h1 mtn">What can we help you find?</h2>
-              <?php get_search_form(); ?>
+              <form role="search" method="get" class="search" id="search-form" action="<?php echo home_url( '/search' ); ?>">
+                <label for="search-field"><span class="screen-reader-text"><?php echo _x( 'Search for:', 'label' ) ?></span></label>
+                  <input type="text" class="search-field" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" id="search-field"/>
+                  <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>">
+              </form>
             </div>
           </div>
         </section><!-- .error-404 -->
