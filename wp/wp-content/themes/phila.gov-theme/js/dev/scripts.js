@@ -101,19 +101,27 @@ jQuery(document).ready(function($) {
 
   });
 
+  function resetLayout(){
+    $('#page').removeClass('hide');
+    $('footer').removeClass('hide');
+    $('body').removeClass('no-scroll');
+    $('.menu-icon i').addClass('fa-bars').removeClass('fa-close');
+    $('.menu-icon .title-bar-title').text('Menu');
+    $('.menu-icon').removeClass('active');
+  }
+
   //TODO: clean this up
   function resetPage(){
-    //this lets us remove the no-scroll class in the event it has been added.
-
     $('#page').click( function() {
       $('body').removeClass('no-scroll');
       $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
     });
+
     $('footer').click( function() {
       $('body').removeClass('no-scroll');
       $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-
     });
+
     $(document).keyup(function(e) {
       //on escape, also remove no-scroll
       if (e.keyCode == 27) {
@@ -222,7 +230,7 @@ jQuery(document).ready(function($) {
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
       var drilldownHeight = $('.is-drilldown').outerHeight();
-      var singleHeight = $('.js-current-section').innerHeight();
+      var singleHeight = $('.is-drilldown li').outerHeight();
       $('.is-drilldown ul').css({
         'height': drilldownHeight +  singleHeight + 'px'
       });
@@ -237,6 +245,8 @@ jQuery(document).ready(function($) {
 
       $('.sticky:visible').foundation('_calc', true);
     }
+    resetLayout();
+
   });
 
 //  drilldownMenuHeight();

@@ -91,7 +91,7 @@
     color:$ben-franklin-blue;
     padding: 0;
     position: absolute;
-    z-index: 1000;
+    z-index: 10;
 
     .menu-icon {
       position: relative;
@@ -132,6 +132,7 @@
     width: 100% !important;
     //TODO: add to patterns
     overflow: visible;
+
     ul {
       background: $ghost-gray;
       width: 100%;
@@ -202,6 +203,7 @@
     .top-bar{
       background-color: $ghost-gray;
       position: absolute;
+      z-index:11;
       //overflow: scroll;
       //height:200px;
       //TODO: calcuate this w/ js
