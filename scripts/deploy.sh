@@ -4,6 +4,7 @@ set -e
 
 _dir="$(dirname "$0")"
 
+source /home/ubuntu/.ssh/environment
 source "$_dir/lib/mo"
 
 echo 'Running wp-config.sh'
