@@ -2,6 +2,7 @@
 
 echo 'Writing wp-config.php'
 
+cd /home/ubuntu/app/wp
 # Don't let any existing configs get in the way
 rm -f wp-config.php wp/wp-config.php
 
