@@ -361,11 +361,6 @@
 
     &.mega-menu-dropdown{
       height:100%;
-      @media screen and (min-width: 40em) and (max-width: 50em) {
-        .fa {
-          display: none;
-        }
-      }
     }
 
     .columns {
@@ -384,10 +379,6 @@
         background-color: $ghost-gray;
         width: 100%;
 
-        @media screen and (min-width: 40em) and (max-width: 50em) {
-          padding: .5rem;
-          min-height: auto;
-        }
         &:hover {
           color:$white;
           background: $ben-franklin-blue;
