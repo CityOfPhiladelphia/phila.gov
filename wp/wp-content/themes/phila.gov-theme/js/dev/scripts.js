@@ -210,6 +210,13 @@ jQuery(document).ready(function($) {
     $( '.site-search i' ).toggleClass('fa-close');
     $( '.site-search i' ).toggleClass('fa-search');
 
+    if ( $('.is-drilldown').is(':visible') ) {
+      $('.title-bar').foundation('toggleMenu');
+    }
+
+    //resetLayout();
+
+    console.log('.site-search click');
 
   $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
