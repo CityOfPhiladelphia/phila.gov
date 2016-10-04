@@ -23,9 +23,9 @@
               <p>We want to make sure you get the help you need. If you have a question or are interested in providing feedback to City government, please take note of the following.</p>
               <ul>
                 <li class="mvl">If you’re experiencing an emergency, please call 9-1-1 immediately.</li>
-                <li class="mvl">If you need to file a complaint, submit a service request, contact someone in City government, or ask a question, call 3-1-1 or visit <a href="http://www.phila.gov/311" class="external" target="_blank">phila.gov/311</a>.</li>
-                <li class="mvl">If your question or request requires a response from the City, call 3-1-1 or visit <a href="http://www.phila.gov/311" class="external" target="_blank">phila.gov/311</a>.</li>
-                <li class="mvl">If you have feedback for the Mayor, call the <a href="https://alpha.phila.gov/departments/mayor/" target="_blank">Office of the Mayor</a> at (215) 686-2181.</li>
+                <li class="mvl">If you need to file a complaint, submit a service request, contact someone in City government, or ask a question, call 3-1-1 or visit <a href="http://www.phila.gov/311" class="external">phila.gov/311</a>.</li>
+                <li class="mvl">If your question or request requires a response from the City, call 3-1-1 or visit <a href="http://www.phila.gov/311" class="external">phila.gov/311</a>.</li>
+                <li class="mvl">If you have feedback for the Mayor, call the <a href="https://alpha.phila.gov/departments/mayor/">Office of the Mayor</a> at (215) 686-2181.</li>
               </ul>
 
               <div data-type="data-continue-feedback">
