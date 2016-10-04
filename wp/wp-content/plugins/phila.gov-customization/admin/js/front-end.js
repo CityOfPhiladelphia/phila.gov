@@ -4,35 +4,48 @@ jQuery( document ).ready( function( $ ) {
   var wpAdminBar = $('#wpadminbar').height();
   var navHeight = $('.global-nav').outerHeight() + wpAdminBar;
 
-  function setGlobalNav(){
+  function checkBrowserHeight( navHeight ){
 
-    if ( $('.sticky').hasClass('is-stuck') ){
+    var wh = window.innerHeight;
+
+    var sh = $('#services-mega-menu').height();
+
+    sh = sh + navHeight;
+
+    if ( $('.sticky').hasClass('.is-stuck') ){
       navHeight = $('.sticky-container').height() + wpAdminBar;
-
-    }else{
-      navHeight = $('.global-nav').outerHeight() + wpAdminBar;
     }
 
-    $('.dropdown-pane').css({
-      'top': navHeight
-    });
-  }
+    if( wh <= sh ) {
+      $('#services-mega-menu').css({
+        'position': 'absolute',
+        'top': 0
+      });
+      $('#page').addClass('hide');
+      $('footer').addClass('hide');
+      $('body').removeClass('no-scroll');
 
+    }else{
+      $('body').addClass('no-scroll');
+      $('#page').removeClass('hide');
+      $('footer').removeClass('hide');
+
+    }
+
+  }
     $('.sticky').on('sticky.zf.stuckto:top', function(){
-      setGlobalNav();
 
       $('.sticky').css('top', wpAdminBar);
     });
 
      $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
-       setGlobalNav();
 
        $('.sticky').css('top', 0);
 
     });
 
-    $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-      setGlobalNav();
+    $('.mega-menu-dropdown').on('show.zf.dropdown', function() {
+      checkBrowserHeight(navHeight);
     });
 
 });
