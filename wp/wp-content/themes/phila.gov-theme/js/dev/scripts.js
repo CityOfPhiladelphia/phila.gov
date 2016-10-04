@@ -66,15 +66,17 @@ jQuery(document).ready(function($) {
 
     //close dropdowns when sidenav is open
     $('.dropdown-pane').foundation('close');
+
     var drilldownHeight = $('.is-drilldown').outerHeight();
 
     $('#page').toggleClass('hide');
     $('footer').toggleClass('hide');
 
     $('.global-nav .menu-icon').toggleClass('active');
+    $('body').removeClass('no-scroll');
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-    $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() == 'Close') ? 'Menu' : 'Close');
+    $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Close' ) ? 'Menu' : 'Close' );
 
     drilldownMenuHeight();
 
@@ -92,7 +94,7 @@ jQuery(document).ready(function($) {
 
   //Listener for megamenu dropdown to ensure no-scroll gets removed
   $('#services-mega-menu').hover( function(){
-    $('body').addClass('no-scroll');
+    //$('body').addClass('no-scroll');
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
 
   }, function(){
@@ -108,6 +110,7 @@ jQuery(document).ready(function($) {
     $('.menu-icon i').addClass('fa-bars').removeClass('fa-close');
     $('.menu-icon .title-bar-title').text('Menu');
     $('.menu-icon').removeClass('active');
+    console.log('layout reset');
   }
 
   //TODO: clean this up
@@ -129,17 +132,14 @@ jQuery(document).ready(function($) {
       }
     });
   }
-  //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
-  //determines if content is scrollable
-  $.fn.hasScrollBar = function() {
-    return this.get(0).scrollHeight > this.height();
-  }
+
   /* Drilldown menu */
   var parentLink = ['Main Menu'];
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
 
-    var activeHeight = $('.is-active').outerHeight();
+    var activeHeight = $('.is-active').height();
+    console.log(activeHeight);
 
     $('.dropdown-pane').foundation('close');
 
@@ -170,19 +170,19 @@ jQuery(document).ready(function($) {
 
   });
 
-  var navHeight = $('.global-nav').outerHeight();
+  var navHeight = $('.global-nav').height();
 
   //ensure dropdown stays below header on scroll and open/close
-  function updateMegaMenuNavHeight(){
+  function updateGlobalNavHeight(){
     if ( $('body').hasClass('logged-in') ) {
       return;
     }
 
     if ( $('.sticky').hasClass('is-stuck') ){
-      navHeight = $('.sticky-container').outerHeight();
+      navHeight = $('.sticky-container').height();
 
     }else{
-      navHeight = $('.global-nav').outerHeight();
+      navHeight = $('.global-nav').height();
     }
 
     $('.dropdown-pane').css({
@@ -193,36 +193,89 @@ jQuery(document).ready(function($) {
 
   /* Dropdown */
   $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-    //if ( Foundation.MediaQuery.atLeast('medium') ) {
-    $('body').addClass('no-scroll');
-    //}
+
     $('#back-to-top').css('display', 'none');
 
-    updateMegaMenuNavHeight();
+    var offset = $('.global-nav').height();
 
+    var wh = window.innerHeight;
+
+    var sh = $('#services-mega-menu').innerHeight();
+    updateGlobalNavHeight();
+
+    $('body').addClass('no-scroll');
+
+    /*console.log('wh: ' + wh);
+    console.log('sh: ' + sh);
+
+    if( wh <= sh ) {
+     wh = wh + offset;
+      $('#services-mega-menu').css({
+        'position': 'absolute',
+      });
+      $('#page').addClass('hide');
+      $('footer').addClass('hide');
+      console.log('my spoon is too big');
+
+    }else{
+      $('#page').removeClass('hide');
+      $('footer').removeClass('hide');
+      */
+
+      /* sticky nav */
+      /*$('.sticky').on('sticky.zf.stuckto:top', function(){
+        if( wh >= sh ) {
+          updateGlobalNavHeight();
+        }
+      });
+
+       $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
+         if( wh >= sh ) {
+           updateGlobalNavHeight();
+         }
+      });
+
+    }
+  */
   });
 
+  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
+    $('#page').removeClass('hide');
+    $('footer').removeClass('hide');
+  });
+
+  //this doesn't actually work....
   $('.site-search').on('show.zf.dropdown', function(){
     $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
+    $('.mobile-nav-drilldown').foundation('close');
+  });
+
+  $('.mobile-nav-drilldown').on('closed.zf.drilldown', function(){
+    console.log('closed.zf.drilldown')
+
   });
 
   $('.site-search').click(function(){
     $( '.site-search i' ).toggleClass('fa-close');
-    $('.site-search i').toggleClass('fa-search');
+    $( '.site-search i' ).toggleClass('fa-search');
+
+    if ( $('.is-drilldown').is(':visible') ) {
+      $('.title-bar').foundation('toggleMenu');
+    }
+
+    //resetLayout();
+
+
   });
 
+  $('document').on('click.zf.trigger', '[data-toggle]', function(){
+    console.log('click.zf.trigger');
+  });
 
   $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
     $('body').removeClass('no-scroll');
-  });
+    console.log('click.zf.dropdown');
 
-  /* sticky nav */
-  $('.sticky').on('sticky.zf.stuckto:top', function(){
-    updateMegaMenuNavHeight();
-  });
-
-   $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
-     updateMegaMenuNavHeight();
   });
 
   function drilldownMenuHeight(){
@@ -238,8 +291,9 @@ jQuery(document).ready(function($) {
   }
 
   $( window ).resize(function() {
-    updateMegaMenuNavHeight();
+    updateGlobalNavHeight();
     drilldownMenuHeight();
+
 
     if (Foundation.MediaQuery.atLeast('medium')) {
 
