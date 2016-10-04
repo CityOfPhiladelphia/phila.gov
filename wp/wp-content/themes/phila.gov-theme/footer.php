@@ -126,25 +126,25 @@
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pbm">
-              <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" target="_blank" class="prl">
+              <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" class="prl">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://twitter.com/PhiladelphiaGov" target="_blank" class="prl">
+              <a href="https://twitter.com/PhiladelphiaGov" class="prl">
                 <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.instagram.com/cityofphiladelphia/" target="_blank" class="prl">
+              <a href="https://www.instagram.com/cityofphiladelphia/" class="prl">
                 <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
             <li class="pvxs">
-              <a href="http://www.phila.gov/channel64/Pages/default.aspx" target="_blank" class="prl">
+              <a href="http://www.phila.gov/channel64/Pages/default.aspx" class="prl">
                 <span class="fa fa-stack fa-lg">
                   <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
                   <i class="fa fa-stack-1x">
@@ -155,19 +155,19 @@
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.youtube.com/user/PhilaGov" target="_blank" class="prl">
+              <a href="https://www.youtube.com/user/PhilaGov" class="prl">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.flickr.com/photos/phillycityrep" target="_blank" class="prl">
+              <a href="https://www.flickr.com/photos/phillycityrep" class="prl">
                 <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://github.com/CityOfPhiladelphia" target="_blank" class="prl">
+              <a href="https://github.com/CityOfPhiladelphia" class="prl">
                 <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>
