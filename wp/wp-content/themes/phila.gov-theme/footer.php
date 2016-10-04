@@ -111,7 +111,7 @@
           <ul>
             <li class="pvxs"><a href="https://alpha.phila.gov/departments/mayor/" class="">Mayor’s Office</a></li>
             <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
-            <li class="pvxs"><a href="https://alpha.phila.gov/departments/" class="">City Government Directory</a></li>
+            <li class="pvxs"><a href="https://alpha.phila.gov/departments/" class="">City government directory</a></li>
             <li class="pvxs"><a href="http://www.phila.gov/openbudget/" class="external">City budget</a></li>
             <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="http://www.phila.gov/records/index.html" class="external">City records</a></li>
