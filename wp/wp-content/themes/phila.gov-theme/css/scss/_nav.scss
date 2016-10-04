@@ -41,6 +41,7 @@ nav#services-nav{
     }
 
       &:last-child{
+        margin-bottom: $spacing-small;
         border-bottom: none;
         }
       }
@@ -89,5 +90,9 @@ nav#services-nav{
       content: '';
     }
   }
-
+  .service-menu {
+    > li {
+      margin-bottom:1rem;
+    }
+  }
 }
