@@ -134,7 +134,7 @@ function phila_filter_title( $title ){
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
     }elseif( is_post_type_archive('service_page') ) {
-      $title['title'] = 'Service Directory' . $sep . $site_title;
+      $title['title'] = 'Service directory' . $sep . $site_title;
     }else{
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
@@ -434,7 +434,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('service_page' ) ) {
 
-        echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
+        echo '<li>' . __( 'Service directory', 'phila.gov' ) . '</li>';
 
     } elseif ( ( is_post_type_archive('document') && is_category() ) ) {
 

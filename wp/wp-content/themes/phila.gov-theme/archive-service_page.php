@@ -1,6 +1,6 @@
 <?php
 /**
- * Archive for Service Directory
+ * Archive for Service directory
  *
  * @package phila-gov
  */
@@ -11,14 +11,14 @@ get_header(); ?>
   <main id="main" class="site-main">
     <div class="row">
       <header class="small-24 columns">
-        <?php printf(__('<h1 class="contrast ptm">Service Directory</h1>', 'phila-gov') ); ?>
+        <?php printf(__('<h1 class="contrast ptm">Service directory</h1>', 'phila-gov') ); ?>
       </header>
     </div>
     <div class="row mbl show-for-small-only">
       <div class="small-24 columns">
         <a data-open="mobile-filter" class="button full-width pan clearfix">
           <div class="valign">
-            <div class="button-label center valign-cell h2">Filter by Service Category</div>
+            <div class="button-label center valign-cell h2">Filter by service category</div>
           </div>
         </a>
       </div>
@@ -39,7 +39,7 @@ get_header(); ?>
     </div>
     <div class="row">
       <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper>
-        <?php printf(__('<h2 class="h4 mtn">Filter by Service Categories</h2>', 'phila-gov') ); ?>
+        <?php printf(__('<h2 class="h4 mtn">Filter by service category</h2>', 'phila-gov') ); ?>
         <?php $terms = get_terms(
           array(
             'taxonomy' => 'service_type',
@@ -158,7 +158,7 @@ get_header(); ?>
             </button>
           </div>
           <div class="columns">
-            <h2>Filter by Service Category</h2>
+            <h2>Filter by service category</h2>
           </div>
         </div>
         <div class="row">
