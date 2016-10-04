@@ -445,7 +445,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('document') ) {
 
-      echo '<li><a href="/news">Publications &amp; forms</a></li>';
+      echo '<li>Publications &amp; forms</li>';
 
     } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
 
@@ -456,7 +456,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('news_post') ) {
 
-      echo '<li><a href="/news">News &amp; events</a></li>';
+      echo '<li>News &amp; events</li>';
 
     } elseif ( is_post_type_archive('phila_post') && is_category() )  {
 
@@ -526,7 +526,9 @@ function phila_breadcrumbs() {
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
-      echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+      if ( get_post_type() == 'service_page') {
+        echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+      }
 
       if( $post->post_parent ){
 
