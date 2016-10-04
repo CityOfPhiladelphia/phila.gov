@@ -208,8 +208,7 @@ jQuery(document).ready(function($) {
 
   $('.site-search').click(function(){
     $( '.site-search i' ).toggleClass('fa-close');
-    $('.site-search i').toggleClass('fa-search');
-  });
+    $( '.site-search i' ).toggleClass('fa-search');
 
 
   $('document').on('click.zf.dropdown', '[data-dropdown]', function(){
