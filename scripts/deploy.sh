@@ -39,15 +39,15 @@ cd ..
 
 echo 'Rendering nginx confs'
 # Render nginx confs into /etc with mo
-#sudo rm -rf /etc/nginx
-#shopt -s globstar
+sudo rm -rf /etc/nginx
+shopt -s globstar
 # Defaults
-#[ ! "$ROBOTS_DISALLOW" ] && export ROBOTS_DISALLOW=/
-#for f in nginx/**; do
-#  [ ! -f "$f" ] && continue
-#  sudo mkdir -p "$(dirname "/etc/$f")"
-#  mo "$f" | sudo tee "/etc/$f" > /dev/null
-#done
+[ ! "$ROBOTS_DISALLOW" ] && export ROBOTS_DISALLOW=/
+for f in nginx/**; do
+  [ ! -f "$f" ] && continue
+  sudo mkdir -p "$(dirname "/etc/$f")"
+  mo "$f" | sudo tee "/etc/$f" > /dev/null
+done
 
 echo 'Testing nginx config'
 sudo nginx -t
