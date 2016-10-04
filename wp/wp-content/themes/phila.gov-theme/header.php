@@ -67,9 +67,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MC6CR2');</script>
 <!-- End Google Tag Manager -->
 
-<?php //get_template_part( 'partials/content', 'alpha-alert' ); ?>
-
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
+    <!-- Beta opt-out -->
+    <?php get_template_part( 'partials/content', 'beta-alert' ); ?>
     <!-- Secondary Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded secondary-nav">
       <div class="row">

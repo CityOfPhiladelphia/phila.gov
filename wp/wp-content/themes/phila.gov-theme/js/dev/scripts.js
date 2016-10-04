@@ -465,4 +465,9 @@ jQuery(document).ready(function($) {
     });
   }
 
+//Set cookie to 'opt-out' from beta-banner 
+  $('[data-action="beta-opt-out"]').on('click', function() {
+    Cookies.set('beta', 'opt-out');
+  });
+
 });
