@@ -2274,7 +2274,7 @@ $meta_boxes[] = array(
       'type'  => 'heading'
     ),
     array(
-      'id'  => $prefix . 'stub_contextual',
+      'id'  => $prefix . 'is_contextual',
       'type' => 'checkbox',
       'desc'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page title appended to them.'
     ),
