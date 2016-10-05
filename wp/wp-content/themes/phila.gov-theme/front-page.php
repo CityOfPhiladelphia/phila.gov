@@ -319,7 +319,7 @@ get_header(); ?>
                         </div>
                       </header>
                       <div class="description">
-                        <span class="phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                        <span class="phs small-text">Alpha.phila.gov went live in December 2014. The alpha prototype was revised throughout 2015.</span>
                       </div>
                     </section>
                   </div>
