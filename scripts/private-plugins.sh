@@ -9,5 +9,7 @@ plugins="meta-box-group-1.1.1.zip meta-box-include-exclude-1.0.3.zip meta-box-co
 
 cd /home/ubuntu/app/wp
 for plugin in $plugins; do
-  wp plugin install --quiet --force --activate "$("$_dir/s3url.sh" "$PHILA_PLUGIN_BUCKET" "$plugin")" > /dev/null
+  #wp plugin install --quiet --force --activate "$("$_dir/s3url.sh" "$PHILA_PLUGIN_BUCKET" "$plugin")" > /dev/null
+  echo "--- Installing $plugin ---"
+  wp plugin install --force --activate "$("$_dir/s3url.sh" "$PHILA_PLUGIN_BUCKET" "$plugin")"
 done
