@@ -42,6 +42,12 @@ jQuery(document).ready(function($) {
   var navHeight = $('.global-nav').height();
   var currentPath = window.location.pathname;
 
+
+  //Generic class for links that should prevent clickthrough
+  $('.no-link').click(function(e){
+    e.preventDefault();
+  });
+
   $('.top-bar').css( 'top', navHeight );
 
   $( $( '.desktop-nav a' ) ).each( function() {
@@ -82,6 +88,7 @@ jQuery(document).ready(function($) {
 
 
   }
+  /* Drilldown menu */
 
   $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
 
@@ -90,12 +97,6 @@ jQuery(document).ready(function($) {
     if ( $( '.js-current-section' ).length === 0 ) {
       $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
     }
-    $('.dropdown-pane').foundation('close');
-
-    //$('#page').toggleClass('hide');
-    //$('footer').toggleClass('hide');
-
-    togglePageBody( );
 
     $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Menu' ) ? 'Close' : 'Menu' );
 
@@ -104,71 +105,15 @@ jQuery(document).ready(function($) {
     $('body').removeClass('no-scroll');
 
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
-    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
 
     drilldownMenuHeight();
-
-  });
-  //Generic class for links that should prevent clickthrough
-
-  $('.no-link').click(function(e){
-    e.preventDefault();
-  });
-
-  //click and hover handler for desktop service menu link
-  $('.services-menu-link').on('click mouseover', function () {
-    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-  });
-
-  $('#services-mega-menu').hover( function(){
-    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-
-  }, function(){
-    $('body').removeClass('no-scroll');
-    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    togglePageBody();
 
   });
 
-  function resetLayout(){
-    togglePageBody( true );
-    $('body').removeClass('no-scroll');
-    $('.menu-icon i').addClass('fa-bars').removeClass('fa-close');
-    $('.menu-icon .title-bar-title').text('Menu');
-    $('.menu-icon').removeClass('active');
-    $('.dropdown-pane').foundation('close');
-
-    if ( $('.is-drilldown').is(':visible') ) {
-      $('.title-bar').foundation('toggleMenu');
-    }
-  }
-
-  function resetPage(){
-    $('#page').click( function() {
-      $('body').removeClass('no-scroll');
-      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-    });
-
-    $('footer').click( function() {
-      $('body').removeClass('no-scroll');
-      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-    });
-
-    $(document).keyup(function(e) {
-      //on escape, also remove no-scroll
-      if (e.keyCode == 27) {
-        $('body').removeClass('no-scroll');
-      }
-    });
-  }
-
-  /* Drilldown menu */
   var parentLink = ['Main Menu'];
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
-
-    var activeHeight = $('.is-active').height();
-
-    $('.dropdown-pane').foundation('close');
 
     parentLink.push( $(this).find('.is-active').last().prev().text() );
 
@@ -196,6 +141,48 @@ jQuery(document).ready(function($) {
     $('.js-current-section').html( parentLink.slice(-1)[0] );
 
   });
+
+  $('#services-mega-menu').hover( function(){
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
+  }, function(){
+    $('body').removeClass('no-scroll');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
+  });
+
+  function resetLayout(){
+    togglePageBody( true );
+    $('body').removeClass('no-scroll');
+    $('.menu-icon i').addClass('fa-bars').removeClass('fa-close');
+    $('.menu-icon .title-bar-title').text('Menu');
+    $('.menu-icon').removeClass('active');
+
+    $('#services-mega-menu').foundation('close');
+
+    if ( $('.is-drilldown').is(':visible') ) {
+      $('.title-bar').foundation('toggleMenu');
+    }
+  }
+
+  function resetScroll(){
+    $('#page').click( function() {
+      $('body').removeClass('no-scroll');
+      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    });
+
+    $('footer').click( function() {
+      $('body').removeClass('no-scroll');
+      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    });
+
+    $(document).keyup(function(e) {
+      //on escape, also remove no-scroll
+      if (e.keyCode == 27) {
+        $('body').removeClass('no-scroll');
+      }
+    });
+  }
 
   function checkBrowserHeight( navHeight ){
     if ( $('body').hasClass('logged-in') ) {
@@ -231,11 +218,16 @@ jQuery(document).ready(function($) {
   }
 
   /* Mega menu Dropdown */
-  $('.mega-menu-dropdown').on('show.zf.dropdown', function() {
+  $('#services-mega-menu').on('show.zf.dropdown', function() {
 
     $('#back-to-top').css('display', 'none');
 
     checkBrowserHeight( navHeight );
+  });
+
+  //click and hover handler for desktop service menu link
+  $('.services-menu-link').on('click mouseover', function () {
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
   });
 
   /* All dropdowns */
@@ -246,6 +238,7 @@ jQuery(document).ready(function($) {
 
   /* Site search dropdown */
   $('.site-search-dropdown').on('show.zf.dropdown', function(){
+
     $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
     $('body').addClass('no-scroll');
 
@@ -255,8 +248,6 @@ jQuery(document).ready(function($) {
 
       $('.title-bar').foundation('toggleMenu');
 
-      $('.site-search-dropdown').foundation('open');
-
       togglePageBody( true );
     }
   });
@@ -265,6 +256,7 @@ jQuery(document).ready(function($) {
     $( '.site-search i' ).removeClass('fa-close').addClass('fa-search');
     $('.site-search span').text('Search');
   });
+
 
   function drilldownMenuHeight(){
     if (Foundation.MediaQuery.current == 'small') {
@@ -282,17 +274,25 @@ jQuery(document).ready(function($) {
     checkBrowserHeight( navHeight ) ;
 
     drilldownMenuHeight();
-    $('.mega-menu-dropdown').foundation('close');
 
     if (Foundation.MediaQuery.atLeast('medium')) {
 
       $('.sticky:visible').foundation('_calc', true);
+      resetLayout();
+
     }
-    resetLayout();
+    /*only reset layout on mobile devices when the orienation changes.
+      Thanks - http://www.andreasnorman.com/dealing-androids-constant-browser-resizing/
+    */
+    $(window).bind( 'orientationchange', function(e){
+
+      resetLayout();
+
+    });
 
   });
 
-  resetPage();
+  resetScroll();
 
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
