@@ -179,7 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </nav>
               </div>
             </div>
-            <div class="small-4 medium-1 columns equal">
+            <div class="small-5 medium-1 columns equal">
               <button class="site-search valign" type="button"  data-toggle="search-dropdown">
                 <div class="valign-cell">
                   <i class="fa fa-search fa-2x" aria-hidden="true"></i>
