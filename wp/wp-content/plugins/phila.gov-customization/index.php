@@ -47,6 +47,7 @@ require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/news.php';
 require $dir. '/public/shortcodes/press-releases.php';
 require $dir. '/public/shortcodes/pullquote.php';
+require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';
 
 
