@@ -75,7 +75,6 @@ jQuery(document).ready(function($) {
     $('body').removeClass('no-scroll');
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
     $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
-    $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Close' ) ? 'Menu' : 'Close' );
 
     drilldownMenuHeight();
 
@@ -110,7 +109,6 @@ jQuery(document).ready(function($) {
     $('.menu-icon').removeClass('active');
   }
 
-  //TODO: clean this up
   function resetPage(){
     $('#page').click( function() {
       $('body').removeClass('no-scroll');
@@ -226,14 +224,18 @@ jQuery(document).ready(function($) {
   });
 
   /* Site search dropdown */
-
   $('.site-search-dropdown').on('show.zf.dropdown', function(){
     $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
-    $('.title-bar').foundation('toggleMenu');
+    //$('.title-bar').foundation('toggleMenu');
     $('body').addClass('no-scroll');
 
+    $('.site-search span').text( ( $('.site-search span' ).text() == 'Close' ) ? 'Search' : 'Close' );
+
     if ( $('.is-drilldown').is(':visible') ) {
+      $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Close' ) ? 'Menu' : 'Close' );
       $('.title-bar').foundation('toggleMenu');
+
+      $('.site-search-dropdown').foundation('open');
 
       $('#page').removeClass('hide');
       $('footer').removeClass('hide');
@@ -244,6 +246,10 @@ jQuery(document).ready(function($) {
 
   $('.site-search-dropdown').on('hide.zf.dropdown', function() {
     $( '.site-search i' ).removeClass('fa-close').addClass('fa-search');
+
+    $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Close' ) ? 'Menu' : 'Close' );
+
+    $('.site-search span').text( ( $('.site-search span' ).text() == 'Close' ) ? 'Search' : 'Close' );
   });
 
   /*
