@@ -2253,6 +2253,7 @@ $meta_boxes[] = array(
       'id' => $prefix . 'stub_source',
       'type' => 'post',
       'post_type' => 'service_page',
+      'desc'  => 'Display content from the selected page on the front-end.'
     )
   )
 );
