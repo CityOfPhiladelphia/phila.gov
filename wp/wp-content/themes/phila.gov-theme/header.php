@@ -114,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li class="is-drilldown-submenu-parent">
               <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
               <ul class="menu vertical menu-top-offset">
-                <li><a href="/services/">Service Directory</a></li>
+                <li><a href="/services/">Service directory</a></li>
                 <?php
                   $args = array(
                     //TODO: only display pages with taxonomy applied
@@ -130,18 +130,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </ul>
             </li>
             <li>
-              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle" aria-hidden="true"></i> Programs &amp; initiatives</a>
             </li>
             <li>
-              <a href="/news/" class="valign-cell"><i class="fa fa-microphone" aria-hidden="true"></i> News &amp; Events</a>
+              <a href="/news/" class="valign-cell"><i class="fa fa-microphone" aria-hidden="true"></i> News &amp; events</a>
             </li>
             <li>
-              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text" aria-hidden="true"></i> Publications &amp; Forms</a>
+              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text" aria-hidden="true"></i> Publications &amp; forms</a>
             </li>
             <li class="bg-sidewalk">
               <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
             </li>
-            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City government directory</a>
             </li>
           </ul>
           </nav>
@@ -164,16 +164,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="horizontal menu pan valign-mu">
                   <li class="services-menu-link" data-toggle="services-mega-menu">
-                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
+                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Service directory</a>
                     </li>
                   <li>
-                    <a href="/programs-initiatives/" class="valign-cell">Programs &amp; Initiatives</a>
+                    <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
                   </li>
                   <li>
-                    <a href="/news/" class="valign-cell"> News &amp; Events</a>
+                    <a href="/news/" class="valign-cell"> News &amp; events</a>
                   </li>
                   <li>
-                    <a href="/documents/" class="valign-cell"> Publications &amp; Forms</a>
+                    <a href="/documents/" class="valign-cell"> Publications &amp; forms</a>
                   </li>
                 </ul>
                 </nav>
