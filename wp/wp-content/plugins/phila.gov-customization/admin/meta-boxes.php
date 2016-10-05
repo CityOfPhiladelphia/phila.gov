@@ -2250,6 +2250,10 @@ $meta_boxes[] = array(
 
   'fields'  => array(
     array(
+      'name' => 'Page source',
+      'type'  => 'heading'
+    ),
+    array(
       'id' => $prefix . 'stub_source',
       'type' => 'post',
       'post_type' => 'service_page',
