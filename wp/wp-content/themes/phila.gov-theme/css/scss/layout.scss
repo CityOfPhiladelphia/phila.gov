@@ -155,9 +155,6 @@ aside {
 .no-scroll{
   height:100%;
   overflow: hidden;
-  @media screen and (max-width: 39.9375em) {
-    position: fixed !important;
-  }
 }
 
 header.entry-header h2{
