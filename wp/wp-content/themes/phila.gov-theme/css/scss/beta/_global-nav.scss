@@ -22,11 +22,6 @@
       font-size: .75rem;
     }
   }
-  .primary-nav {
-    ul {
-      background-color:$white;
-    }
-  }
   //utility nav
   .secondary-nav {
     @media screen and (max-width: 39.9375em) {
@@ -217,6 +212,9 @@
       height:inherit;
     }
     .primary-menu {
+      ul {
+        background-color:$white;
+      }
       .menu>li {
         > a {
           text-align: center;
@@ -225,9 +223,6 @@
           text-transform: uppercase;
 
           padding: $spacing-large 1.5rem;
-          @media screen and (min-width: 40em) and (max-width: 50em) {
-            padding:$spacing-small;
-          }
         }
         a:active, a:hover {
           color: $ben-franklin-blue;
