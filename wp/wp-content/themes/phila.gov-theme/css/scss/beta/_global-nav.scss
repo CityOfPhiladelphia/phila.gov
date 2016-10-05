@@ -22,11 +22,6 @@
       font-size: .75rem;
     }
   }
-  .primary-nav {
-    ul {
-      background-color:$white;
-    }
-  }
   //utility nav
   .secondary-nav {
     @media screen and (max-width: 39.9375em) {
@@ -120,6 +115,8 @@
       margin: 0;
       font-size: .8rem;
       text-transform: uppercase;
+      //TODO: Change in patterns
+      font-weight: normal;
     }
   }
 
@@ -215,6 +212,9 @@
       height:inherit;
     }
     .primary-menu {
+      ul {
+        background-color:$white;
+      }
       .menu>li {
         > a {
           text-align: center;
@@ -223,9 +223,6 @@
           text-transform: uppercase;
 
           padding: $spacing-large 1.5rem;
-          @media screen and (min-width: 40em) and (max-width: 50em) {
-            padding:$spacing-small;
-          }
         }
         a:active, a:hover {
           color: $ben-franklin-blue;
@@ -441,12 +438,12 @@
     @media screen and (max-width: 39.9375em) {
       font-size: .7rem;
       //matches padding on menu-icon
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: .75rem;
+      padding-bottom: .75rem;
 
       .fa{
         padding-bottom: $spacing-small;
-        font-size: 3em;
+        font-size: 3.7em;
         display: block;
       }
     }
