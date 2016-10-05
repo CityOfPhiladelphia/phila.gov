@@ -62,12 +62,26 @@ get_header(); ?>
         'order' => 'ASC',
         'orderby' => 'title',
         'meta_query' => array(
+          'relation' => 'OR',
           array(
             'key'     => 'phila_template_select',
-            'value'   => 'topic_page',
-            'compare' => 'NOT IN',
+            'value' => array('default', 'stub'),
+            'compare' => 'IN'
           ),
-        ),
+          array(
+            'relation' => 'AND',
+              array(
+                'key'     => 'phila_template_select',
+                'value'   => 'topic_page',
+                'compare' => 'IN',
+              ),
+              array(
+                'key' => 'phila_is_contextual',
+                'value' => '1',
+                'compare' => '=' ,
+              ),
+            ),
+          ),
       );
       $service_pages = new WP_Query( $args ); ?>
 
