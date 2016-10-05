@@ -261,3 +261,16 @@
     }
   }
 }
+
+.see-all-right {
+  &.see-all-arrow {
+    .see-all-label {
+      background: url("data:image/svg+xml,%3Csvg data-name='91974e0d-9b61-4d62-8282-0dadfa44fb48' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 114.8 33' width='115' height='33'%3E%3Cpath fill='%232176d2' d='M114.8 32H1V1H114.8V0H0v33h114.8v-1'/%3E%3C/svg%3E") no-repeat center left;
+      background-size: cover;
+    }
+    &:after {
+      content: none;
+    }
+  }
+
+}
