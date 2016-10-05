@@ -443,12 +443,12 @@
     @media screen and (max-width: 39.9375em) {
       font-size: .7rem;
       //matches padding on menu-icon
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: .75rem;
+      padding-bottom: .75rem;
 
       .fa{
         padding-bottom: $spacing-small;
-        font-size: 3em;
+        font-size: 3.7em;
         display: block;
       }
     }
