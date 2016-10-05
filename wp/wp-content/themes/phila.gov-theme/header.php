@@ -112,7 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
 
             <li class="is-drilldown-submenu-parent">
-              <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+              <a href="/services/" class="no-link valign-cell" onclick="noLink(event)"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
               <ul class="menu vertical menu-top-offset">
                 <li><a href="/services/">Service directory</a></li>
                 <?php
@@ -164,7 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="horizontal menu pan valign-mu">
                   <li class="services-menu-link" data-toggle="services-mega-menu">
-                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Service directory</a>
+                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
                     </li>
                   <li>
                     <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
