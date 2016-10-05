@@ -96,7 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
 
-    <div class="title-bar small-3 columns" data-responsive-toggle="mobile-nav">
+    <div class="title-bar small-5 columns" data-responsive-toggle="mobile-nav">
       <button class="menu-icon" type="button" data-toggle>
         <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
         <span class="title-bar-title">Menu</span>
