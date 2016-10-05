@@ -2,6 +2,8 @@
 #
 # Install private plugins
 
+source /home/ubuntu/.ssh/environment
+
 _dir="$(dirname "$0")"
 plugins="meta-box-group-1.1.1.zip meta-box-include-exclude-1.0.3.zip meta-box-conditional-logic-1.3.0.zip wpfront-user-role-editor-personal-pro-2.12.5.zip c3-cloudfront-clear-cache.zip"
 
