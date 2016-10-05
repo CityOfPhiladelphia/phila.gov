@@ -31,17 +31,17 @@ if (!svgasimg()){
     if (src.match(/svgz?$/)) {
       /* URL ends in svg or svgz */
       img.setAttribute('src',
-             img.getAttribute('data-fallback'));
+      img.getAttribute('data-fallback'));
     }
   }
 }
 
 jQuery(document).ready(function($) {
-  /*Globals */
 
+  /*Globals */
   var navHeight = $('.global-nav').height();
   var currentPath = window.location.pathname;
-
+  var windowWidth = $(window).width();
 
   //Generic class for links that should prevent clickthrough
   $('.no-link').click(function(e){
@@ -72,6 +72,7 @@ jQuery(document).ready(function($) {
     }
 
     if( show === false ){
+
       $('#page').hide();
       $('#page').addClass('hide');
 
@@ -79,7 +80,6 @@ jQuery(document).ready(function($) {
       $('footer').addClass('hide');
       return;
     }
-
     $('#page').toggle();
     $('#page').toggleClass('hide');
 
@@ -91,7 +91,6 @@ jQuery(document).ready(function($) {
   /* Drilldown menu */
 
   $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
-
     var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
 
     if ( $( '.js-current-section' ).length === 0 ) {
@@ -107,8 +106,13 @@ jQuery(document).ready(function($) {
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
 
     drilldownMenuHeight();
-    togglePageBody();
 
+    if($('.mobile-nav-drilldown').is(':visible')){
+      togglePageBody(false);
+
+    }else{
+      togglePageBody(true);
+    }
   });
 
   var parentLink = ['Main Menu'];
@@ -153,12 +157,13 @@ jQuery(document).ready(function($) {
 
   function resetLayout(){
     togglePageBody( true );
-    $('body').removeClass('no-scroll');
     $('.menu-icon i').addClass('fa-bars').removeClass('fa-close');
     $('.menu-icon .title-bar-title').text('Menu');
     $('.menu-icon').removeClass('active');
 
     $('#services-mega-menu').foundation('close');
+
+    $('body').removeClass('no-scroll');
 
     if ( $('.is-drilldown').is(':visible') ) {
       $('.title-bar').foundation('toggleMenu');
@@ -216,7 +221,6 @@ jQuery(document).ready(function($) {
     }
 
   }
-
   /* Mega menu Dropdown */
   $('#services-mega-menu').on('show.zf.dropdown', function() {
 
@@ -238,18 +242,17 @@ jQuery(document).ready(function($) {
 
   /* Site search dropdown */
   $('.site-search-dropdown').on('show.zf.dropdown', function(){
+    if ( $('.is-drilldown').is(':visible') ) {
+      $('.title-bar').foundation('toggleMenu');
+      togglePageBody(true);
+    }
 
     $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
-    $('body').addClass('no-scroll');
 
     $('.site-search span').text( ( $('.site-search span' ).text() == 'Search' ) ? 'Close' : 'Search' );
 
-    if ( $('.is-drilldown').is(':visible') ) {
+    $('body').addClass('no-scroll');
 
-      $('.title-bar').foundation('toggleMenu');
-
-      togglePageBody( true );
-    }
   });
 
   $('.site-search-dropdown').on('hide.zf.dropdown', function() {
@@ -257,13 +260,17 @@ jQuery(document).ready(function($) {
     $('.site-search span').text('Search');
   });
 
+  /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
+  document.addEventListener('focusout', function(e) {
+    window.scrollTo(0, 0);
+  });
 
   function drilldownMenuHeight(){
     if (Foundation.MediaQuery.current == 'small') {
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
       var drilldownHeight = $('.is-drilldown').outerHeight();
-      var singleHeight = $('.is-drilldown li').outerHeight();
+      var singleHeight = $('.is-drilldown li').outerHeight() + 10;
       $('.is-drilldown ul').css({
         'height': drilldownHeight +  singleHeight + 'px'
       });
@@ -271,26 +278,27 @@ jQuery(document).ready(function($) {
   }
 
   $( window ).resize(function() {
-    checkBrowserHeight( navHeight ) ;
 
-    drilldownMenuHeight();
+    //check window width for mobile devices to prevent window resize on scroll.
+    if ($(window).width() != windowWidth) {
+      windowWidth = $(window).width();
 
-    if (Foundation.MediaQuery.atLeast('medium')) {
+      checkBrowserHeight( navHeight ) ;
 
-      $('.sticky:visible').foundation('_calc', true);
-      resetLayout();
+      drilldownMenuHeight();
 
+      if (Foundation.MediaQuery.atLeast('medium')) {
+        $('.sticky:visible').foundation('_calc', true);
+        resetLayout();
+      }
     }
-    /*only reset layout on mobile devices when the orienation changes.
-      Thanks - http://www.andreasnorman.com/dealing-androids-constant-browser-resizing/
-    */
-    $(window).bind( 'orientationchange', function(e){
+    $(window).bind('orientationchange', function(e){
 
-      resetLayout();
-
-    });
+    resetLayout();
 
   });
+
+});
 
   resetScroll();
 
