@@ -78,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="top-bar-right">
               <ul class="medium-horizontal menu show-for-medium">
                 <li><a href="/departments/mayor/" aria-hidden="true">Mayor's Office</a></li>
-                <li><a href="/departments/" aria-hidden="true">City Government Directory</a></li>
+                <li><a href="/departments/" aria-hidden="true">City government directory</a></li>
                 <li>
                   <i class="fa fa-globe" aria-hidden="true"></i>
                   <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
@@ -96,7 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
 
-    <div class="title-bar small-3 columns" data-responsive-toggle="mobile-nav">
+    <div class="title-bar small-5 columns" data-responsive-toggle="mobile-nav">
       <button class="menu-icon" type="button" data-toggle>
         <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
         <span class="title-bar-title">Menu</span>
@@ -112,9 +112,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
 
             <li class="is-drilldown-submenu-parent">
-              <a href="/services/" class="no-link valign-cell"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+              <a href="/services/" class="no-link valign-cell" onclick="noLink(event)"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
               <ul class="menu vertical menu-top-offset">
-                <li><a href="/services/">Service Directory</a></li>
+                <li><a href="/services/">Service directory</a></li>
                 <?php
                   $args = array(
                     //TODO: only display pages with taxonomy applied
@@ -130,18 +130,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </ul>
             </li>
             <li>
-              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle" aria-hidden="true"></i> Programs &amp; Initiatives</a>
+              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle" aria-hidden="true"></i> Programs &amp; initiatives</a>
             </li>
             <li>
-              <a href="/news/" class="valign-cell"><i class="fa fa-microphone" aria-hidden="true"></i> News &amp; Events</a>
+              <a href="/news/" class="valign-cell"><i class="fa fa-microphone" aria-hidden="true"></i> News &amp; events</a>
             </li>
             <li>
-              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text" aria-hidden="true"></i> Publications &amp; Forms</a>
+              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text" aria-hidden="true"></i> Publications &amp; forms</a>
             </li>
             <li class="bg-sidewalk">
               <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
             </li>
-            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City Government Directory</a>
+            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City government directory</a>
             </li>
           </ul>
           </nav>
@@ -167,19 +167,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
                     </li>
                   <li>
-                    <a href="/programs-initiatives/" class="valign-cell">Programs &amp; Initiatives</a>
+                    <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
                   </li>
                   <li>
-                    <a href="/news/" class="valign-cell"> News &amp; Events</a>
+                    <a href="/news/" class="valign-cell"> News &amp; events</a>
                   </li>
                   <li>
-                    <a href="/documents/" class="valign-cell"> Publications &amp; Forms</a>
+                    <a href="/documents/" class="valign-cell"> Publications &amp; forms</a>
                   </li>
                 </ul>
                 </nav>
               </div>
             </div>
-            <div class="small-4 medium-1 columns equal">
+            <div class="small-5 medium-1 columns equal">
               <button class="site-search valign" type="button"  data-toggle="search-dropdown">
                 <div class="valign-cell">
                   <i class="fa fa-search fa-2x" aria-hidden="true"></i>
