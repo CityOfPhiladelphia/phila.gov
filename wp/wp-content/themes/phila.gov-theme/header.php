@@ -80,7 +80,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <li><a href="/departments/mayor/" aria-hidden="true">Mayor's Office</a></li>
                 <li><a href="/departments/" aria-hidden="true">City government directory</a></li>
                 <li>
-                  <i class="fa fa-globe" aria-hidden="true"></i>
                   <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
                     <script type="text/javascript">
                       function googleTranslateElementInit() {
