@@ -260,11 +260,6 @@ jQuery(document).ready(function($) {
     $('.site-search span').text('Search');
   });
 
-  /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
-  document.addEventListener('focusout', function(e) {
-    window.scrollTo(0, 0);
-  });
-
   function drilldownMenuHeight(){
     if (Foundation.MediaQuery.current == 'small') {
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -299,6 +294,13 @@ jQuery(document).ready(function($) {
   });
 
 });
+
+  /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
+  document.addEventListener('focusout', function(e) {
+    if ( Foundation.MediaQuery.current == 'small' ) {
+      window.scrollTo(0, 0);
+    }
+  });
 
   resetScroll();
 
