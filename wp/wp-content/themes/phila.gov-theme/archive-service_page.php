@@ -85,18 +85,47 @@ get_header(); ?>
       );
       $service_pages = new WP_Query( $args ); ?>
 
+      <?php
+      //TODO: clean up this rushed hackjob
+        $get_pages_args = array(
+          'hierarchical' => 0,
+          'meta_key' => 'phila_is_contextual',
+          'meta_value' => '1',
+          'post_type' => 'service_page',
+        );
+        $pages = get_pages($get_pages_args);
+
+        $children_array = array();
+        $contextual_pages  = array();
+
+        foreach ( $pages as $page ){
+          $args = array(
+            'post_parent' => $page->ID,
+          );
+          $children_array[] = get_children( $args, ARRAY_A );
+        }
+        foreach ($children_array as $k => $v){
+          foreach ($v as $arr => $thing){
+            array_push($contextual_pages, $thing['ID']);
+          }
+        }
+        ?>
+
       <?php if ( $service_pages->have_posts() ) : ?>
+
         <?php
           $a_z = range('a','z');
           $a_z = array_fill_keys($a_z, false);
           $service_title = array();
           $service_desc = array();
           $service_link = array();
+          $service_parent = array();
         ?>
 
         <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
 
           <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
+
           <?php $page_terms['terms'] = array();?>
 
             <?php foreach ( $terms as $term ) : ?>
@@ -108,6 +137,14 @@ get_header(); ?>
               $a_z[strtolower(substr($post->post_title, 0, 1 ))] = true; ?>
 
             <?php
+
+            foreach ( $contextual_pages as $id ) {
+              if($id === $post->ID) {
+                $parent['parent'] = $post->post_parent;
+                $service_parent[$post->post_title] = $parent;
+              }
+            }
+
             $service_title[$post->post_title] = $page_terms;
             $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
             $link['link'] = get_permalink();
@@ -116,10 +153,11 @@ get_header(); ?>
 
             $service_link[$post->post_title] = $link;
 
-            $services = array_merge_recursive($service_title, $service_desc, $service_link);
+            $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
 
             ?>
           <?php endwhile; ?>
+
       <nav class="show-for-medium">
         <ul class="inline-list mbm pan mln h4">
           <?php foreach($a_z as $k => $v): ?>
@@ -128,8 +166,8 @@ get_header(); ?>
             <?php if( $v == true && !empty( $k_plain) ) : ?>
               <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?> class="scrollTo"><?php echo strtoupper($k_plain); ?></a></li>
             <?php else : ?>
-              <?php if ( !empty( $k_plain) ) : ?>
-                <li><span class="ghost-gray"><?php echo strtoupper($k_plain);?></span></li>
+              <?php if ( !empty( $k_plain ) ) : ?>
+                <li><span class="ghost-gray"><?php echo strtoupper( $k_plain );?></span></li>
               <?php endif; ?>
             <?php endif; ?>
           <?php endforeach; ?>
@@ -148,7 +186,7 @@ get_header(); ?>
                 $first_c = strtolower($k[0]);
                 if( $a_k == $first_c && $a_v == true ) : ?>
                   <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
-                    <a href="<?php echo $v['link']?>"><?php echo $k ?></a>
+                    <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                     <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
                   </div>
                 <?php endif; ?>
@@ -196,7 +234,7 @@ get_header(); ?>
             <span>Choose all that apply.</span>
           </div>
           <div class="small-24 columns">
-            <div data-toggle="data-mobile-filter" >
+            <div data-toggle="data-mobile-filter">
             </div>
           </div>
         </div>
