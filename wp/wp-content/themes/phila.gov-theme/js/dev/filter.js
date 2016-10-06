@@ -87,7 +87,6 @@ jQuery(document).ready(function($) {
     var stickyHeight = $('.sticky-container').outerHeight();
 
     if ( $('#wpadminbar').length ){
-      console.log('is logged in');
       var wpadminbarHeight = $('#wpadminbar').outerHeight();
     } else {
       var wpadminbarHeight = 0;
