@@ -39,7 +39,6 @@ wp rewrite flush
 wp core update-db
 mkdir -p /home/ubuntu/app/wp/wp-content/uploads
 sudo chmod 777 -R /home/ubuntu/app/wp/wp-content/uploads
-sudo chmod 777 /home/ubuntu/app/wp/wp-content
 cd ..
 
 echo 'Rendering nginx confs'
