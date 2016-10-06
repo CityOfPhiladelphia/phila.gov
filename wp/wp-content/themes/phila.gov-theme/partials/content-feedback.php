@@ -6,7 +6,7 @@
 ?>
 <div class="row">
   <div class="small-24 columns">
-    <div class="feedback phm phn-mu mvs mtm-mu mbl-mu">
+    <div class="feedback phm phn-mu mvs mtm-mu mbxl-mu">
       <div class="row" data-toggle="feedback">
         <div class="small-24 columns">
           <div class=" call-to-action phs pvm center">
