@@ -86,9 +86,16 @@ jQuery(document).ready(function($) {
 
     var stickyHeight = $('.sticky-container').outerHeight();
 
+    if ( $('#wpadminbar').length ){
+      console.log('is logged in');
+      var wpadminbarHeight = $('#wpadminbar').outerHeight();
+    } else {
+      var wpadminbarHeight = 0;
+    }
+
     $('html, body').animate({
       scrollTop:
-        $( $(this).attr("href") ).offset().top-stickyHeight
+        $( $(this).attr("href") ).offset().top-(stickyHeight + wpadminbarHeight)
     }, 1000, function(){
 
       var anchor = link.attr("href").substr(1);
