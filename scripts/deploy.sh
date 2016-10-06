@@ -1,17 +1,20 @@
 #!/bin/bash
 
-
 set -e
 
 _dir="$(dirname "$0")"
 
+source /home/ubuntu/.ssh/environment
 source "$_dir/lib/mo"
 
+echo 'Running wp-config.sh'
+"$_dir/wp-config.sh"
+
 echo 'Running grunt tasks'
-cd wp/wp-content/themes/phila.gov-theme
+cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
 grunt
-cd -
+cd /home/ubuntu/app
 
 echo 'Modifying php configs'
 sudo ed -s /etc/php/7.0/fpm/pool.d/www.conf <<'EOF'
@@ -31,10 +34,12 @@ echo 'Reloading php-fpm'
 sudo service php7.0-fpm reload
 
 echo 'Refreshing WordPress'
+cd wp
 wp rewrite flush
 wp core update-db
-mkdir -p wp/wp-content/uploads
-sudo chmod 777 -R wp/wp-content/uploads
+mkdir -p /home/ubuntu/app/wp/wp-content/uploads
+sudo chmod 777 -R /home/ubuntu/app/wp/wp-content/uploads
+cd ..
 
 echo 'Rendering nginx confs'
 # Render nginx confs into /etc with mo
@@ -53,5 +58,6 @@ sudo nginx -t
 
 echo 'Purging nginx cache'
 sudo rm -rf /var/run/nginx-cache
+sudo rm -rf /home/ubuntu/app/wp/wp-content/cache
 
 sudo service nginx reload
