@@ -59,7 +59,5 @@ sudo nginx -t
 echo 'Purging nginx cache'
 sudo rm -rf /var/run/nginx-cache
 sudo rm -rf /home/ubuntu/app/wp/wp-content/cache
-mkdir /home/ubuntu/app/wp/wp-content/cache
-chmod 777 /home/ubuntu/app/wp/wp-content/cache
 
 sudo service nginx reload
