@@ -37,6 +37,9 @@ $DEBUG
 
 $SALTS
 
+/** WPCACHEHOME is used to identify the caching plugin */
+define('WPCACHEHOME', '$WPCACHEHOME');
+
 /** WP_SITEURL overrides DB to set WP core address */
 define('WP_SITEURL', 'https://$DOMAIN');
 
