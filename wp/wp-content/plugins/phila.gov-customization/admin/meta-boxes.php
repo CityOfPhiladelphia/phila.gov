@@ -2250,20 +2250,38 @@ $meta_boxes[] = array(
 
   'fields'  => array(
     array(
+      'name' => 'Page source',
+      'type'  => 'heading'
+    ),
+    array(
       'id' => $prefix . 'stub_source',
       'type' => 'post',
       'post_type' => 'service_page',
+      'desc'  => 'Display content from the selected page on the front-end.'
     )
   )
 );
 
 $meta_boxes[] = array(
-  'title' => 'Icon',
+  'title' => 'Topic Page Options',
   'pages' => array('service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'topic_page'),
 
   'fields'  => array(
+    array(
+      'name' => 'Contextual item',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'is_contextual',
+      'type' => 'checkbox',
+      'desc'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page title appended to them.'
+    ),
+    array(
+      'name' => 'Icon selection',
+      'type'  => 'heading'
+    ),
     array(
       'id' => $prefix . 'page_icon',
       'type' => 'text',
