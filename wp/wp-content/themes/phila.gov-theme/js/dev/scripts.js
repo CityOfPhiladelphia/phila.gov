@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
 
       $(this).addClass('js-is-current');
       //special handling for services
-    }else if( currentPath.includes('/services/') ){
+    }else if( currentPath.indexOf('/services/') ){
       $('.services-menu-link a').addClass('js-is-current');
     }
   });
