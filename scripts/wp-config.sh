@@ -38,7 +38,7 @@ $DEBUG
 $SALTS
 
 /** Enable W3 Total Cache */
-define('WP_CACHE', true);
+define('WP_CACHE', '${W3TC:-false}');
 
 /** WP_SITEURL overrides DB to set WP core address */
 define('WP_SITEURL', 'https://$DOMAIN');
