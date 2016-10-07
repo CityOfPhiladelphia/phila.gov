@@ -1392,15 +1392,19 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   //This order matters. If $canonical_meta_desc is found first, it should be used.
   array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc, $event_desc );
 
-  foreach ($meta_desc as $desc){
-    if ( !empty( $desc ) ) {
-      return wp_strip_all_tags($desc);
+  if( is_post_type_archive( 'service_page' ) ) {
+    return 'A directory of City service information from A to Z.';
+  }
+
+  if( is_archive() || is_search() || is_home() ) {
+    if ($bloginfo) {
+      return bloginfo( 'description' );
     }
   }
 
-  if( is_archive() || is_search() || is_home() || is_post_type_archive( 'service_page' ) ) {
-    if ($bloginfo) {
-      return bloginfo( 'description' );
+  foreach ($meta_desc as $desc){
+    if ( !empty( $desc ) ) {
+      return wp_strip_all_tags($desc);
     }
   }
 
