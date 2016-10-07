@@ -107,11 +107,24 @@
       }
       a {
         background-color: #daedfe;
+        transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -webkit-transition: opacity .2s ease-in-out;
+        &:hover {
+          opacity: .6;
+        }
       }
       .cta-block {
       }
     }
   }
+
+  .feedback {
+    .up {
+      background: $ghost-gray;
+    }
+  }
+
 }
 
 .neighborhood-resources {
@@ -143,45 +156,6 @@
         max-width: 155px;
         min-height: 161px;
       }
-    }
-  }
-}
-
-.feedback {
-
-  .feedback-form {
-    background: $ghost-gray;
-    p {
-      font-size: 1rem;
-    }
-  }
-  .form-line-active {
-    background: none;
-  }
-  .call-to-action {
-    background: $bike-share-blue;
-    text-transform: uppercase;
-    font-family: 'Montserrat', 'Tahoma', sans-serif;
-    font-weight: 400;
-    letter-spacing: .05rem;
-    cursor:pointer;
-  }
-
-  // Thanks CSS Tricks - https://css-tricks.com/snippets/css/css-triangle/
-
-  .arrow {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    margin: 0 auto;
-    border-top: 15px solid $bike-share-blue;
-  }
-  .up {
-    background: $ghost-gray;
-    .arrow {
-      border-bottom: 15px solid $bike-share-blue;
-      border-top: 0px solid $bike-share-blue;
     }
   }
 }
@@ -286,4 +260,17 @@
       }
     }
   }
+}
+
+.see-all-right {
+  &.see-all-arrow {
+    .see-all-label {
+      background: url("data:image/svg+xml,%3Csvg data-name='91974e0d-9b61-4d62-8282-0dadfa44fb48' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 114.8 33' width='115' height='33'%3E%3Cpath fill='%232176d2' d='M114.8 32H1V1H114.8V0H0v33h114.8v-1'/%3E%3C/svg%3E") no-repeat center left;
+      background-size: cover;
+    }
+    &:after {
+      content: none;
+    }
+  }
+
 }

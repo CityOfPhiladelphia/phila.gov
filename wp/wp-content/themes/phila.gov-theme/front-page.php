@@ -10,6 +10,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main home">
     <div class="hero-content">
+      <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta_homepage_coverphoto_full.jpg">
       <div class="hero-wrap">
         <div class="photo-credit small-text">
           <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
@@ -121,6 +122,14 @@ get_header(); ?>
               <div class="alert">No recent news.</div>
             <?php endif; ?>
           </div>
+          <a class="see-all-right see-all-arrow float-right" href="/news">
+            <div class="valign equal-height">
+              <div class="see-all-label phm prxs valign-cell equal">See all</div>
+              <div class="valign-cell equal">
+                <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg" ?>" alt="">
+              </div>
+            </div>
+          </a>
         </section>
       </div>
     </div>
@@ -137,8 +146,8 @@ get_header(); ?>
         </div>
       </div>
       <div class="row expanded resource-row">
-        <div class="row phm phl-mu equal-height">
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu bdr-bottom-sm">
+        <div class="row phm phl-mu pvm-mu equal-height">
+          <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-right nbdr-right-mu bdr-bottom-sm">
             <a href="http://www.freelibrary.org/" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
@@ -151,8 +160,8 @@ get_header(); ?>
             </a>
           </div>
           <!-- Free Libraries -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-bottom-sm">
-            <a href="http://gsg.phila.gov/map#id=e7d139e404dd4fdaac4ae0bbaf637f79" class="action-panel">
+          <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-bottom-sm">
+            <a href="http://phl.maps.arcgis.com/apps/View/index.html?appid=28b6efe281ba44efb378d0b29415b514" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
                   <div class="icon">
@@ -164,7 +173,7 @@ get_header(); ?>
             </a>
           </div>
           <!-- Parks -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
+          <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
             <a href="http://www.phila.gov/parksandrecreation/findafacility/" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
@@ -177,7 +186,7 @@ get_header(); ?>
             </a>
           </div>
           <!-- Recreation Centers -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-bottom-sm">
+          <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-bottom-sm">
             <a href="https://www.phillykeyspots.org/keyspot-finder" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
@@ -190,8 +199,8 @@ get_header(); ?>
             </a>
           </div>
           <!-- Free Internet Access -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
-            <a href="http://gsg.phila.gov/map#id=aa5f6f59d35c45e9bc089b400694f43a" class="action-panel">
+          <div class="small-12 medium-6 columns mtm-mu mbxl-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
+            <a href="http://phl.maps.arcgis.com/apps/View/index.html?appid=a9bc69013f76464ca21ad6bb00167c90" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
                   <div class="icon">
@@ -203,7 +212,7 @@ get_header(); ?>
             </a>
           </div>
           <!-- Playgrounds -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-bottom-sm">
+          <div class="small-12 medium-6 columns mtm-mu mbxl-mu sidewalk bdr-bottom-sm">
             <a href="/city-health-centers/" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
@@ -216,7 +225,7 @@ get_header(); ?>
             </a>
           </div>
           <!-- Health Centers -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk bdr-right nbdr-right-mu">
+          <div class="small-12 medium-6 columns mtm-mu mbxl-mu sidewalk bdr-right nbdr-right-mu">
             <a href="http://www.phila.gov/fire/fac_and_equip/facil_firehouses.html" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
@@ -229,7 +238,7 @@ get_header(); ?>
             </a>
           </div>
           <!-- Fire Stations -->
-          <div class="small-12 medium-6 columns mvl-mu sidewalk">
+          <div class="small-12 medium-6 columns mtm-mu mbxl-mu sidewalk">
             <a href="https://www.phillypolice.com/districts/" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
@@ -247,12 +256,13 @@ get_header(); ?>
       <div class="feedback phm phn-mu mvs mvn-mu">
         <div class="row expanded" data-toggle="feedback">
           <div class="column call-to-action pas center">
-            <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> What should we add to this section? Tell us.
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i><span class="break-before-sm"> What should we we add to the neighborhood resources section?</span>
+            <span class="break-before-sm"> Tell us</span>.
           </div>
         </div>
         <div class="feedback-form" data-type="feedback-form" style="display:none;">
           <div class="row expanded">
-            <div class="medium-18 large-14 column small-centered mbm" data-type="form-wrapper" >
+            <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
               <?php // TODO: insert the form on click ?>
               <script type="text/javascript" src="https://form.jotform.com/jsform/62516788470970"></script>
             </div>
@@ -260,7 +270,9 @@ get_header(); ?>
         </div>
         <div class="row expanded" data-type="feedback-indicator">
           <div class="column center">
-            <div class="arrow"></div>
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
           </div>
         </div>
         <div class="row expanded" data-toggle="feedback" data-type="feedback-footer" style="display:none;">
@@ -283,15 +295,16 @@ get_header(); ?>
           <div class="row equal-height">
             <div class="medium-10 columns bdr-right-mu equal about">
               <section>
-                <h3>About the Redesign</h3>
+                <h3>About the redesign</h3>
                 <p>We understand that the City of Philadelphia’s current website, phila.gov, isn’t easy to use. So we’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
 
                 <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:</p>
 
-                <ol>
-                  <li> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
-                  <li><a href="#">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
-                </ol>
+                <ul class="list-style-none mln pln pvm">
+                  <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
+                  <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="<?php phila_util_echo_tester_url()?>">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
+                </ul>
+
               </section>
             </div>
             <div class="show-for-medium medium-14 pll plm columns equal process">
@@ -314,7 +327,7 @@ get_header(); ?>
                         </div>
                       </header>
                       <div class="description">
-                        <span class="phs small-text">Alpha.phila.gov went live in late 2014. The alpha prototype was revised throughout 2015.</span>
+                        <span class="phs small-text">Alpha.phila.gov went live in December 2014. The alpha prototype was revised throughout 2015.</span>
                       </div>
                     </section>
                   </div>

@@ -134,7 +134,7 @@ function phila_filter_title( $title ){
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $cat[0]->name . $sep . $site_title;
 
     }elseif( is_post_type_archive('service_page') ) {
-      $title['title'] = 'Service Directory' . $sep . $site_title;
+      $title['title'] = 'Service directory' . $sep . $site_title;
     }else{
       $title['title'] = post_type_archive_title('', false) . $sep . 'Archive'. $sep . $site_title;
     }
@@ -176,15 +176,17 @@ function phila_filter_title( $title ){
         }else{
           $category = get_the_category($post->ID);
 
-          if ( $category[0]->category_parent != 0 ){
+          if ( is_array($category) && !empty($category) ) {
+            if ( $category[0]->category_parent != 0 ){
 
-            $parent = get_category( $category[0]->category_parent);
-            $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $site_title;
+              $parent = get_category( $category[0]->category_parent);
+              $title['title'] = $page_title  . $sep . $parent->cat_name . $sep . $site_title;
 
-          }else{
+            }else{
 
-            $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $site_title;
+              $title['title'] = $page_title  . $sep . $category[0]->name . $sep . $site_title;
 
+            }
           }
         }
       }
@@ -371,15 +373,19 @@ function phila_breadcrumbs() {
     echo '</a></li>';
 
     if ( is_singular('news_post') ) {
+      $categories = get_the_category($post->ID);
 
       echo '<li><a href="/news">News &amp; events</a></li>';
+      if ( !$categories == 0 ) {
+        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+      }
       echo '<li>';
       the_title();
       echo '</li>';
 
     } elseif ( is_singular('document') ) {
 
-        echo '<li><a href="/news">Publications &amp; forms</a></li>';
+        echo '<li><a href="/documents">Publications &amp; forms</a></li>';
         echo '<li>';
         the_title();
         echo '</li>';
@@ -397,15 +403,23 @@ function phila_breadcrumbs() {
         echo '</li>';
 
       }elseif ( is_singular('phila_post') ) {
+        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/posts">Posts</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
         echo '<li>';
         the_title();
         echo '</li>';
 
       }elseif ( is_singular('press_release') ) {
+        $categories = get_the_category($post->ID);
 
         echo '<li><a href="/press-releases">Press releases</a></li>';
+        if ( !$categories == 0 ) {
+          echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
+        }
         echo '<li>';
         the_title();
         echo '</li>';
@@ -420,7 +434,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('service_page' ) ) {
 
-        echo '<li>' . __( 'Service Directory', 'phila.gov' ) . '</li>';
+        echo '<li>' . __( 'Service directory', 'phila.gov' ) . '</li>';
 
     } elseif ( ( is_post_type_archive('document') && is_category() ) ) {
 
@@ -431,7 +445,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('document') ) {
 
-      echo '<li><a href="/news">Publications &amp; forms</a></li>';
+      echo '<li>Publications &amp; forms</li>';
 
     } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
 
@@ -442,7 +456,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('news_post') ) {
 
-      echo '<li><a href="/news">News &amp; events</a></li>';
+      echo '<li>News &amp; events</li>';
 
     } elseif ( is_post_type_archive('phila_post') && is_category() )  {
 
@@ -512,7 +526,9 @@ function phila_breadcrumbs() {
 
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
-      echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+      if ( get_post_type() == 'service_page') {
+        echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+      }
 
       if( $post->post_parent ){
 
@@ -568,6 +584,11 @@ function phila_breadcrumbs() {
 //this is used throughout the theme and is meant to be updated once the major switch happens
 function phila_util_echo_website_url(){
   echo 'alpha.phila.gov';
+}
+
+//this form is used throughout the theme and can be updated as needed
+function phila_util_echo_tester_url(){
+  echo '/sign-up-to-be-a-phila-gov-tester';
 }
 
 //spits out a nice version of the department category name
@@ -1640,9 +1661,9 @@ function phila_connect_panel($connect_panel) {
  *
  **/
 
-function phila_get_page_icon(){
+function phila_get_page_icon( $post ){
 
-  $icon = rwmb_meta( 'phila_page_icon' );
+  $icon = rwmb_meta( 'phila_page_icon', $args = array(), $post );
 
   return $icon;
 }

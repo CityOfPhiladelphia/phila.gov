@@ -204,6 +204,16 @@ jQuery(document).ready(function($) {
     $('#phila_date_format').prop('required', true);
     $('[id^=phila_effective_start_date]').prop('required', true);
     $('[id^=phila_effective_end_date]').prop('required', true);
+    $('textarea[id^="phila_service_update_message"]').each(function (i, el) {
+      $(this).rules('add', {
+        maxlength: 95
+      });
+    });
+    $('input[id^="phila_update_link_text"]').each(function (i, el) {
+      $(this).rules('add', {
+        maxlength: 80
+      });
+    });
   }
 
 });

@@ -9,52 +9,115 @@ new List('filter-list', {
   valueNames: ['item', 'item-desc']
 });
 
+//provide function for preventing link follow-through
+function noLink(e){
+  e.preventDefault();
+}
+
+//provide logo fallback for old browsers. Thanks https://css-tricks.com/a-complete-guide-to-svg-fallbacks/
+function svgasimg() {
+  return document.implementation.hasFeature(
+    'http://www.w3.org/TR/SVG11/feature#Image', '1.1');
+}
+
+if (!svgasimg()){
+  var e = document.getElementsByTagName('img');
+  if (!e.length){
+    e = document.getElementsByTagName('IMG');
+  }
+  for (var i=0, n=e.length; i<n; i++){
+    var img = e[i],
+        src = img.getAttribute('src');
+    if (src.match(/svgz?$/)) {
+      /* URL ends in svg or svgz */
+      img.setAttribute('src',
+      img.getAttribute('data-fallback'));
+    }
+  }
+}
+
 jQuery(document).ready(function($) {
 
- var currentPath = window.location.pathname;
-
-  $( $( '.top-bar ul > li a' ).not(' ul.is-dropdown-submenu li a') ).each( function() {
-    if ( currentPath == $( this ).attr('href') ){
-
-      $(this).addClass('js-is-current');
-      //special handling for services
-    }else if( currentPath.includes('/services/') ){
-      $('.service-menu-link a').addClass('js-is-current');
-    }
-
-  });
+  /*Globals */
+  var navHeight = $('.global-nav').height();
+  var currentPath = window.location.pathname;
+  var windowWidth = $(window).width();
 
   //Generic class for links that should prevent clickthrough
   $('.no-link').click(function(e){
     e.preventDefault();
   });
 
-  //thanks http://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
-  //determines if content is scrollable
-  $.fn.hasScrollBar = function() {
-    return this.get(0).scrollHeight > this.height();
+  $('.top-bar').css( 'top', navHeight );
+
+  $( $( '.desktop-nav a' ) ).each( function() {
+    if ( currentPath == $( this ).attr('href') ||   currentPath == $( this ).data( 'link') ){
+
+      $(this).addClass('js-is-current');
+      //special handling for services
+    }else if( currentPath.indexOf('/services/') == 0 ){
+      $('.services-menu-link a').addClass('js-is-current');
+    }
+  });
+
+  /* Provide option for explict show/hide declarations, with jQuery fallbacks for older (ios) browsers */
+  function togglePageBody( show ){
+    if( show === true ){
+      $('#page').show();
+      $('#page').removeClass('hide');
+
+      $('footer').show();
+      $('footer').removeClass('hide');
+      return;
+    }
+
+    if( show === false ){
+
+      $('#page').hide();
+      $('#page').addClass('hide');
+
+      $('footer').hide();
+      $('footer').addClass('hide');
+      return;
+    }
+    $('#page').toggle();
+    $('#page').toggleClass('hide');
+
+    $('footer').toggle();
+    $('footer').toggleClass('hide');
+
+
   }
-
-  /*
-  this will not close an open drilldown on click
-  $('.site-search').click('open', function(){
-
-    $('.is-drilldown').foundation('toggleMenu');
-  });
- */
-  $('.is-drilldown ul').css({
-   //TODO: this is a temp fix until a better solution is implemented
-   'height': $('.is-drilldown').height() *1.5 + 'px'
-  });
-
   /* Drilldown menu */
+
+  $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
+    var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
+
+    if ( $( '.js-current-section' ).length === 0 ) {
+      $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
+    }
+
+    $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Menu' ) ? 'Close' : 'Menu' );
+
+    $('.global-nav .menu-icon').toggleClass('active');
+
+    $('body').removeClass('no-scroll');
+
+    $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
+
+    drilldownMenuHeight();
+
+    if($('.mobile-nav-drilldown').is(':visible')){
+      togglePageBody(false);
+
+    }else{
+      togglePageBody(true);
+    }
+  });
+
   var parentLink = ['Main Menu'];
 
-  $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
-
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
-
-    $('.dropdown-pane').foundation('close');
 
     parentLink.push( $(this).find('.is-active').last().prev().text() );
 
@@ -83,76 +146,163 @@ jQuery(document).ready(function($) {
 
   });
 
+  $('#services-mega-menu').hover( function(){
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
 
-  $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
-    //close dropdowns when sidenav is open
-    $('.dropdown-pane').foundation('close');
-    $('body').toggleClass('no-scroll');
-    $('.global-nav .menu-icon').toggleClass('active');
+  }, function(){
+    $('body').removeClass('no-scroll');
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+
   });
 
-  var navHeight = $('.global-nav').outerHeight();
+  function resetLayout(){
+    togglePageBody( true );
+    $('.menu-icon i').addClass('fa-bars').removeClass('fa-close');
+    $('.menu-icon .title-bar-title').text('Menu');
+    $('.menu-icon').removeClass('active');
 
-  //ensure dropdown stays below header on scroll and open/close
-  function updateMegaMenuNavHeight(){
+    $('#services-mega-menu').foundation('close');
+
+    $('body').removeClass('no-scroll');
+
+    if ( $('.is-drilldown').is(':visible') ) {
+      $('.title-bar').foundation('toggleMenu');
+    }
+  }
+
+  function resetScroll(){
+    $('#page').click( function() {
+      $('body').removeClass('no-scroll');
+      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    });
+
+    $('footer').click( function() {
+      $('body').removeClass('no-scroll');
+      $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+    });
+
+    $(document).keyup(function(e) {
+      //on escape, also remove no-scroll
+      if (e.keyCode == 27) {
+        $('body').removeClass('no-scroll');
+      }
+    });
+  }
+
+  function checkBrowserHeight( navHeight ){
     if ( $('body').hasClass('logged-in') ) {
       return;
     }
 
-    if ( $('.sticky').hasClass('is-stuck') ){
-      navHeight = $('.sticky-container').height();
+    var wh = window.innerHeight;
 
-    }else{
-      navHeight = $('.global-nav').outerHeight();
+    var sh = $('#services-mega-menu').innerHeight();
+
+    sh = sh + navHeight;
+
+    if ( $('.sticky').hasClass('.is-stuck') ){
+      navHeight = $('.sticky-container').height();
     }
 
-    $('.dropdown-pane').css({
-      'top': navHeight
-    });
+    if ( wh <= sh ) {
+      $('#services-mega-menu').css({
+        'position': 'absolute',
+        'top': 0
+      });
+
+      togglePageBody( false );
+      $('body').removeClass('no-scroll');
+
+    }else{
+
+      togglePageBody( true );
+      $('body').addClass('no-scroll');
+
+    }
 
   }
+  /* Mega menu Dropdown */
+  $('#services-mega-menu').on('show.zf.dropdown', function() {
 
-  $('.service-menu-link').click(function(){
-    $('.mega-menu-dropdown').foundation('open');
-
-  });
-
-  /* Dropdown */
-  $(document).on('show.zf.dropdown', '[data-dropdown]', function() {
-    //if ( Foundation.MediaQuery.atLeast('medium') ) {
-      if ( $('.dropdown-pane.mega-menu-dropdown').hasScrollBar() ){
-        $('body').addClass('no-scroll');
-
-      }else{
-        $('body').removeClass('no-scroll');
-      }
-    //}
     $('#back-to-top').css('display', 'none');
 
-    updateMegaMenuNavHeight();
-
+    checkBrowserHeight( navHeight );
   });
-  $(document).on('closeme.zf.dropdown', '[data-dropdown]', function(){
+
+  //click and hover handler for desktop service menu link
+  $('.services-menu-link').on('click mouseover', function () {
+    $( '.site-search i' ).addClass('fa-search').removeClass('fa-close');
+  });
+
+  /* All dropdowns */
+  $(document).on('hide.zf.dropdown', '[data-dropdown]', function() {
+    togglePageBody( true );
     $('body').removeClass('no-scroll');
   });
 
-  /* sticky nav */
-  $('.sticky').on('sticky.zf.stuckto:top', function(){
-    updateMegaMenuNavHeight();
+  /* Site search dropdown */
+  $('.site-search-dropdown').on('show.zf.dropdown', function(){
+    if ( $('.is-drilldown').is(':visible') ) {
+      $('.title-bar').foundation('toggleMenu');
+      togglePageBody(true);
+    }
+
+    $( '.site-search i' ).addClass('fa-close').removeClass('fa-search');
+
+    $('.site-search span').text( ( $('.site-search span' ).text() == 'Search' ) ? 'Close' : 'Search' );
+
+    $('body').addClass('no-scroll');
+
   });
 
-   $('.sticky').on('sticky.zf.unstuckfrom:top', function(){
-     updateMegaMenuNavHeight();
+  $('.site-search-dropdown').on('hide.zf.dropdown', function() {
+    $( '.site-search i' ).removeClass('fa-close').addClass('fa-search');
+    $('.site-search span').text('Search');
   });
+
+  function drilldownMenuHeight(){
+    if (Foundation.MediaQuery.current == 'small') {
+      var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+      var drilldownHeight = $('.is-drilldown').outerHeight();
+      var singleHeight = $('.is-drilldown li').outerHeight() + 10;
+      $('.is-drilldown ul').css({
+        'height': drilldownHeight +  singleHeight + 'px'
+      });
+    }
+  }
 
   $( window ).resize(function() {
-    updateMegaMenuNavHeight();
 
-    if (Foundation.MediaQuery.atLeast('medium')) {
+    //check window width for mobile devices to prevent window resize on scroll.
+    if ($(window).width() != windowWidth) {
+      windowWidth = $(window).width();
 
-      $('.sticky:visible').foundation('_calc', true);
+      checkBrowserHeight( navHeight ) ;
+
+      drilldownMenuHeight();
+
+      if (Foundation.MediaQuery.atLeast('medium')) {
+        $('.sticky:visible').foundation('_calc', true);
+        resetLayout();
+      }
+    }
+    $(window).bind('orientationchange', function(e){
+
+    resetLayout();
+
+  });
+
+});
+
+  /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
+  document.addEventListener('focusout', function(e) {
+    if ( Foundation.MediaQuery.current == 'small' ) {
+      window.scrollTo(0, 0);
     }
   });
+
+  resetScroll();
 
   //prevent enter from refreshing the page and stopping filter search
   $('#filter-list input').keypress(function(event){
@@ -176,7 +326,7 @@ jQuery(document).ready(function($) {
   /* Hijack mailchimp signup forms to use ajax handler */
 
   /*NOTE: this method requires that the form action URL from mailchimp uses subscribe/post-json */
-  ajaxMailChimpForm($("#mc-embedded-subscribe-form"), $("#mc_embed_signup"));
+  ajaxMailChimpForm($('#mc-embedded-subscribe-form'), $('#mc_embed_signup'));
   // Turn the given MailChimp form into an ajax version of it.
   // If resultElement is given, the subscribe result is set as html to
   // that element.
@@ -185,22 +335,22 @@ jQuery(document).ready(function($) {
     $form.submit(function(e) {
       e.preventDefault();
       if (!isValidEmail($form)) {
-        var error =  "A valid email address must be provided.";
+        var error =  'A valid email address must be provided.';
         $resultElement.append(error);
-        $resultElement.css("color", "#f99300");
+        $resultElement.css('color', '#f99300');
       } else {
-        $resultElement.css("color", "black");
-        $resultElement.append("Subscribing...");
+        $resultElement.css('color', 'black');
+        $resultElement.append('Subscribing...');
         submitSubscribeForm($form, $resultElement);
       }
     });
   }
   // Validate the email address in the form
   function isValidEmail($form) {
-    var email = $form.find("input[type='email']").val();
+    var email = $form.find('input[type="email"]').val();
     if (!email || !email.length) {
         return false;
-    } else if (email.indexOf("@") == -1) {
+    } else if (email.indexOf('@') == -1) {
         return false;
     }
     return true;
@@ -209,31 +359,31 @@ jQuery(document).ready(function($) {
   // Based on http://stackoverflow.com/a/15120409/215821
   function submitSubscribeForm($form, $resultElement) {
     $.ajax({
-      type: "GET",
-      url: $form.attr("action"),
+      type: 'GET',
+      url: $form.attr('action'),
       data: $form.serialize(),
       cache: false,
-      dataType: "jsonp",
-      jsonp: "c", // trigger MailChimp to return a JSONP response
-      contentType: "application/json; charset=utf-8",
+      dataType: 'jsonp',
+      jsonp: 'c', // trigger MailChimp to return a JSONP response
+      contentType: 'application/json; charset=utf-8',
       error: function(error){
           // According to jquery docs, this is never called for cross-domain JSONP requests
       },
       success: function(data){
-        if (data.result != "success") {
-          var message = data.msg || "Sorry. Unable to subscribe. Please try again later.";
-          $resultElement.css("color", "#f99300");
-          if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
-            message = "You're already subscribed. Thank you.";
-            $resultElement.css("color", "black");
-          }else if (data.msg && data.msg.indexOf("zip code") >= 0) {
-            message = "Please enter a valid zip code.";
-            $resultElement.css("color", "f99300");
+        if (data.result != 'success') {
+          var message = data.msg || 'Sorry. Unable to subscribe. Please try again later.';
+          $resultElement.css('color', '#f99300');
+          if (data.msg && data.msg.indexOf('already subscribed') >= 0) {
+            message = 'You\'re already subscribed. Thank you.';
+            $resultElement.css('color', 'black');
+          }else if (data.msg && data.msg.indexOf('zip code') >= 0) {
+            message = 'Please enter a valid zip code.';
+            $resultElement.css('color', 'f99300');
           }
           $resultElement.append(message);
         } else {
-          $resultElement.css("color", "#58c04d");
-          $resultElement.html("Thank you!<br>You must confirm the subscription in your inbox.");
+          $resultElement.css('color', '#58c04d');
+          $resultElement.html('Thank you!<br>You must confirm the subscription in your inbox.');
         }
       }
     });
@@ -263,6 +413,7 @@ jQuery(document).ready(function($) {
 
   //Homepage Feedback Form
   $('[data-toggle="feedback"]').click(function() {
+    $('[data-type="feedback-form"] iframe').css( 'height', '');
     if ( $('[data-type="feedback-indicator"]').hasClass('up') ){
       $('[data-type="feedback-form"]').slideToggle( function(){
         $('[data-type="feedback-indicator"]').removeClass('up');
@@ -310,5 +461,12 @@ jQuery(document).ready(function($) {
       }, 700);
     });
   }
+
+  //Set cookie to 'opt-out' from beta-banner
+  $('[data-action="beta-opt-out"]').on('click', function() {
+    if (Cookies.get('beta') != undefined) {
+      Cookies.set('beta', 'opt-out');
+    }
+  });
 
 });

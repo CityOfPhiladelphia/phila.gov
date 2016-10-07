@@ -163,7 +163,7 @@ get_header(); ?>
 
                 <?php if (is_array($service_updates)): ?>
                 <h2 class="contrast">City Service Updates &amp; Changes</h2>
-                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
+                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 311.</p>
                 <div class="row">
                 <?php $i=0; ?>
                 <?php foreach ($service_updates as $update):?>

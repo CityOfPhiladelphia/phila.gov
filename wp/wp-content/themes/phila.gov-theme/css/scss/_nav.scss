@@ -41,6 +41,7 @@ nav#services-nav{
     }
 
       &:last-child{
+        margin-bottom: $spacing-small;
         border-bottom: none;
         }
       }
@@ -62,10 +63,7 @@ nav#services-nav{
     }
     &.current_page_item {
       > a:after{
-        content: '—';
-        font-size:15px;
-        line-height: 15px;
-        float:right;
+        content: '';
       }
       > ul {
         display: block;
@@ -89,11 +87,12 @@ nav#services-nav{
       display: block;
     }
     > a:after{
-      content: '—';
-      font-size:15px;
-      line-height: 15px;
-      float:right;
+      content: '';
     }
   }
-
+  .service-menu {
+    > li {
+      margin-bottom:1rem;
+    }
+  }
 }

@@ -2,6 +2,7 @@ header {
   .logo svg,
   .logo img{
     max-width:170px;
+    max-height:45px;
     display: block;
     opacity: 1;
     transition: opacity .25s ease-in-out;
@@ -14,39 +15,6 @@ header {
 
     @media screen and (max-width: 39.9375em) {
       margin:$spacing-medium auto 0;
-      max-width:200px;
-    }
-  }
-  button.site-search {
-    font-size:.5rem;
-
-    @media screen and (max-width: 39.9375em) {
-      font-size: .8rem;
-      //matches padding on menu-icon
-      padding-top: .75rem;
-
-      .fa-search{
-        padding-bottom: $spacing-small;
-        font-size: 3em;
-        display: block;
-      }
-    }
-    color:$ben-franklin-blue;
-    text-transform: uppercase;
-
-    &.hover::after{
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      border-left: 1rem solid transparent;
-      border-right: 1rem solid transparent;
-
-      border-bottom: 1rem solid $ghost-gray;
-      bottom:0;
-      left:0;
-      right:50%;
-      position: absolute;
     }
   }
 }
