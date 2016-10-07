@@ -80,13 +80,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <li><a href="/departments/mayor/" aria-hidden="true">Mayor's Office</a></li>
                 <li><a href="/departments/" aria-hidden="true">City government directory</a></li>
                 <li>
-                  <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
-                    <script type="text/javascript">
-                      function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-                      }
-                    </script>
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                  <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
                 </li>
               </ul>
             </div>
