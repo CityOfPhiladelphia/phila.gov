@@ -58,7 +58,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
            array(
              'name' => 'Service Update Timeframe',
              'type' => 'heading',
-             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The Effective Start and End times are used to define the window of time a City Service will be impacted as well as when the update is removed from the site.</p>',
+             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The <strong>Effective Start</strong> and <strong>End</strong> day/times are used to display the window of time a City Service will be impacted. These fields do <strong>not</strong> schedule posts. If you need a post to begin appearing on a particular day, use the <strong>Publish</strong> settings.</p>',
            ),
            array(
              'name' => 'Date/Time Format',
@@ -150,19 +150,21 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
              'id'    => $prefix . 'service_update_message',
              'class' => 'service-update-message',
              'desc'  => '95 character maximum.',
-             'type'  => 'wysiwyg',
-             'options' => array(
-               'media_buttons' => false,
-               'teeny' => true,
-               'dfw' => false,
-               'quicktags' => false,
-               'tinymce' => phila_setup_tiny_mce_basic(
-                 array(
-                   'format_select' => false
-                  )
-                ),
-               'editor_height' => 200,
-             ),
+             'type'  => 'textarea',
+            //TODO: Use a wysiwyg instead of textarea if we can give a maxcount
+            //  'type'  => 'wysiwyg',
+            //  'options' => array(
+            //    'media_buttons' => false,
+            //    'teeny' => true,
+            //    'dfw' => false,
+            //    'quicktags' => false,
+            //    'tinymce' => phila_setup_tiny_mce_basic(
+            //      array(
+            //        'format_select' => false
+            //       )
+            //     ),
+            //    'editor_height' => 200,
+            //  ),
            ),
            array(
              'name' => 'Link (optional)',
