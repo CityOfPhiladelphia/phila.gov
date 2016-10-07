@@ -38,7 +38,7 @@
               <?php
                 $args = array(
                   'post_type' => 'service_page',
-                  'sort_column' => 'menu_order',
+                  'sort_column' => 'menu_order, title',
                   'order' => 'ASC',
                   'title_li' => '',
                   'child_of'  => $parent_id,

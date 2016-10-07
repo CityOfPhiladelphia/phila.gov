@@ -16,8 +16,9 @@
   'post_type'      => 'service_page',
   'posts_per_page' => -1,
   'post_parent'    => $post->ID,
-  'order'          => 'ASC',
-  'orderby'        => 'menu_order'
+  'orderby' => 'menu_order title',
+  'order' => 'ASC'
+
 ); ?>
 <?php $counter = 0; ?>
 
