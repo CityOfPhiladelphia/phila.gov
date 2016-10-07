@@ -50,12 +50,14 @@ jQuery(document).ready(function($) {
 
   $('.top-bar').css( 'top', navHeight );
 
-  $( $( '.desktop-nav a' ) ).each( function() {
-    if ( currentPath == $( this ).attr('href') ||   currentPath == $( this ).data( 'link') ){
+  var translate = setTimeout(function() { $('#google_translate_element a').prepend('<i class="fa fa-globe"></i>'); }, 1000);
+
+  $( $( '.global-nav a' ) ).each( function() {
+    if ( currentPath == $( this ).attr('href') || currentPath == $( this ).data( 'link' ) ){
 
       $(this).addClass('js-is-current');
       //special handling for services
-    }else if( currentPath.indexOf('/services/') == 0 ){
+    }else if( currentPath.indexOf('/services/') === 0 ){
       $('.services-menu-link a').addClass('js-is-current');
     }
   });

@@ -24,12 +24,74 @@
   }
   //utility nav
   .secondary-nav {
+    font-size: .85rem;
+
     @media screen and (max-width: 39.9375em) {
       height:10px;
     }
 
-    font-size: .85rem;
+    //TODO: update this in patterns
+    #google_translate_element{
+      &.no-js{
+        display: none;
+      }
+      color:$white;
+      padding: 0 0.5rem;
 
+
+      a{
+        padding: .5rem 2rem .5rem .5rem;
+
+        &:hover{
+          color: $ben-franklin-blue;
+          background: $light-blue;
+
+          &::before {
+            color: $ben-franklin-blue;
+            background: $light-blue;
+          }
+        }
+      }
+      .goog-te-gadget{
+        display: inline-block;
+      }
+      .goog-te-gadget-simple .goog-te-menu-value{
+        position: relative;
+
+        &:hover::after{
+          color:$ben-franklin-blue;
+          border-color: $ben-franklin-blue transparent transparent;
+        }
+
+        &::after{
+          border: inset 5px;
+          border-color: #fff transparent transparent;
+          border-top-style: solid;
+          margin: 0;
+          display: inline;
+          border-bottom-width: 0;
+          content: '';
+          position: absolute;
+          line-height: 0;
+          right: 7px;
+          top: 10px;
+        }
+        .fa::after{
+          content: 'Translate';
+          display: inline-block;
+          font-family: 'Montserrat', 'Tahoma', sans-serif;
+          padding: 0 0 0 .5rem;
+        }
+
+       span{
+           display: none;
+
+          &:hover{
+            color: $ben-franklin-blue !important;
+          }
+        }
+      }
+    }
     ul {
 
       li {
@@ -49,18 +111,16 @@
           display: inline-block;
           text-align: center;
 
-          &:hover:not(.goog-te-menu-value),
-          &:active:not(.goog-te-menu-value),
+          &:hover,
+          &:active{
+            background: $light-blue;
+            color:$ben-franklin-blue;
+          }
           &.js-is-current{
             background:$dark-gray;
             color:$white;
           }
         }
-        .fa {
-          padding: 0 0 0 $spacing-small;
-          color: $white;
-        }
-
       }
     }
   }
