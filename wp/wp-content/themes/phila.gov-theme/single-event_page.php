@@ -162,7 +162,7 @@ get_header(); ?>
                           <div class="service-update-icon equal">
                             <div class="valign">
                               <div class="valign-cell pam">
-                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>" aria-hidden="true"></i>
                                 <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
                               </div>
                             </div>
