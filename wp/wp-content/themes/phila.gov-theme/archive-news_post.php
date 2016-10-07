@@ -38,7 +38,7 @@ get_header(); ?>
           </div>
           <div class="row column">
             <div class="pam">
-              <p>We’re in the process of creating a new City website from the ground up because we realize <a href="http://www.phila.gov" class="external">phila.gov</a> isn’t as easy to use as it should be.</p>
+              <p>We’re in the process of creating a new City website from the ground up because we realize phila.gov isn’t as easy to use as it should be.</p>
 
               <p>Below you’ll find the City’s news listing. However, it’s not a complete list. In the future, we’d like to centralize the City of Philadelphia’s news, events, service notifications, and blog posts in one place. We’ll update this page as we release enhanced designs. Stay tuned.</p>
 
