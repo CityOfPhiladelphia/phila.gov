@@ -346,7 +346,7 @@ class Phila_Gov_Custom_Post_Types{
           'thumbnail'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-tickets-alt',
         'hierarchical' => true,
