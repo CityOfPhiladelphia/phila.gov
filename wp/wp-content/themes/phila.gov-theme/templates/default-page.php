@@ -6,10 +6,7 @@
  */
 ?>
 
-<?php
-  $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-  $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'));
-?>
+<?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 <article id="post-<?php the_ID(); ?>">
   <div class="row">
     <header class="entry-header small-24 columns">
@@ -22,3 +19,4 @@
     </div><!-- .entry-content -->
   </div>
 </article><!-- #post-## -->
+<?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>

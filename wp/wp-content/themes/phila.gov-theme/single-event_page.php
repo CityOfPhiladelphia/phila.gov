@@ -18,11 +18,7 @@ get_header(); ?>
 
   <div data-swiftype-index='true' class="entry-content">
     <?php if (function_exists('rwmb_meta')): ?>
-      <?php // Set custom markup vars
-            $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-            $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-            $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'));
-            // Set hero-header vars
+      <?php // Set hero-header vars
             $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
             $hero_header_alt_text = rwmb_meta( 'phila_hero_header_image_alt_text', $args = array('type' => 'text'));
             $hero_header_credit = rwmb_meta( 'phila_hero_header_image_credit', $args = array('type' => 'text'));
@@ -53,14 +49,8 @@ get_header(); ?>
             ?>
     <?php endif; ?>
 
-    <!-- If Custom Markup append_before_wysiwyg is present print it -->
-    <?php if (!$append_before_wysiwyg == ''):?>
-      <div class="row before-wysiwyg">
-        <div class="small-24 columns">
-          <?php echo $append_before_wysiwyg; ?>
-        </div>
-      </div>
-    <?php endif; ?>
+    <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+
     <!-- Hero-Header MetaBox Modules -->
     <?php if (!$hero_header_image == ''): ?>
     <div class="row mtm">
@@ -315,14 +305,7 @@ get_header(); ?>
     <?php endif; ?>
     <!-- End WYSIWYG content -->
 
-    <!-- If Custom Markup append_after_wysiwyg is present print it -->
-    <?php if (!$append_after_wysiwyg == ''):?>
-     <div class="row after-wysiwyg">
-       <div class="small-24 columns">
-         <?php echo $append_after_wysiwyg; ?>
-       </div>
-     </div>
-    <?php endif; ?>
+    <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
   </div> <!-- End .entry-content -->
 </article><!-- #post-## -->
