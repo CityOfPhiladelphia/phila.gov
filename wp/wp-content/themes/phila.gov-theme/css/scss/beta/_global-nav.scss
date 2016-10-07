@@ -31,19 +31,26 @@
     }
 
     //TODO: update this in patterns
-    #google_translate_element {
-      color:$white;
-      padding: 0 10px;
-
-      &:hover{
-        color: $ben-franklin-blue;
-        background: $light-blue;
+    #google_translate_element{
+      &.no-js{
+        display: none;
       }
+      color:$white;
+      padding: 0 0.5rem;
 
-      &::before{
-        content: "\f0ac";
-        font-family: 'FontAwesome';
-        display: inline-block;
+
+      a{
+        padding: .5rem 2rem .5rem .5rem;
+
+        &:hover{
+          color: $ben-franklin-blue;
+          background: $light-blue;
+
+          &::before {
+            color: $ben-franklin-blue;
+            background: $light-blue;
+          }
+        }
       }
       .goog-te-gadget{
         display: inline-block;
@@ -53,6 +60,7 @@
 
         &:hover::after{
           color:$ben-franklin-blue;
+          border-color: $ben-franklin-blue transparent transparent;
         }
 
         &::after{
@@ -65,19 +73,19 @@
           content: '';
           position: absolute;
           line-height: 0;
-          right: -7px;
+          right: 7px;
           top: 10px;
         }
-        &::before{
+        .fa::after{
           content: 'Translate';
           display: inline-block;
           font-family: 'Montserrat', 'Tahoma', sans-serif;
+          padding: 0 0 0 .5rem;
         }
 
        span{
-         &:nth-child(5) {
            display: none;
-         }
+
           &:hover{
             color: $ben-franklin-blue !important;
           }
@@ -113,11 +121,6 @@
             color:$white;
           }
         }
-        .fa {
-          padding: 0 0 0 $spacing-small;
-          color: $white;
-        }
-
       }
     }
   }
