@@ -52,8 +52,8 @@ jQuery(document).ready(function($) {
 
   var translate = setTimeout(function() { $('#google_translate_element a').prepend('<i class="fa fa-globe"></i>'); }, 1000);
 
-  $( $( '.desktop-nav a' ) ).each( function() {
-    if ( currentPath == $( this ).attr('href') ||   currentPath == $( this ).data( 'link') ){
+  $( $( '.global-nav a' ) ).each( function() {
+    if ( currentPath == $( this ).attr('href') || currentPath == $( this ).data( 'link' ) ){
 
       $(this).addClass('js-is-current');
       //special handling for services
