@@ -9,9 +9,8 @@
 ?>
 
   </div><!-- #content -->
-  <a href="#page" id="back-to-top"><i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true"></i><br>Top</a>
  </div><!-- #page -->
-
+  <a href="#page" id="back-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i><br>Top</a>
  <?php get_template_part( 'searchform' ); ?>
  <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
 
@@ -22,7 +21,7 @@
     <?php get_template_part( 'partials/content', 'feedback' ); ?>
   <?php endif; ?>
   <?php echo phila_get_dept_contact_blocks(); ?>
-  <div class="philly311">
+  <div id="full-footer-start" class="philly311">
     <section>
       <div class="row">
         <div class="columns intro">

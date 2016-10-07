@@ -429,8 +429,6 @@ jQuery(document).ready(function($) {
   });
 
   if ( $('#back-to-top').length ) {
-    var fromBottom = $('footer').outerHeight();
-
     var scrollTrigger = 100, // px
       backToTop = function () {
         var scrollTop = $(window).scrollTop();
@@ -445,7 +443,7 @@ jQuery(document).ready(function($) {
 
     $(window).on('scroll', function () {
       backToTop();
-      if ( $('footer').offset().top < $(this).height() + $(this).scrollTop() ){
+      if ( $('#full-footer-start').offset().top < $(this).height() + $(this).scrollTop() ){
         $('#back-to-top').css({
           'position': 'absolute',
           'bottom': '1%'
