@@ -86,7 +86,7 @@
             </section>
         </div>
       </div>
-    <section>
+    </section>
   </div>
   <div class="fat">
     <div class="row pvs ptl-mu phm equal-height">
