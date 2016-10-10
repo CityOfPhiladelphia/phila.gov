@@ -68,6 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
+    <h1 class="accessible">City of Philadelphia</h1>
     <!-- Beta opt-out -->
     <?php get_template_part( 'partials/content', 'beta-alert' ); ?>
     <!-- Secondary Navigation -->
