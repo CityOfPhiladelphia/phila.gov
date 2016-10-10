@@ -10,7 +10,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main home">
     <div class="hero-content">
-      <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta_homepage_coverphoto_full.jpg">
+      <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta_homepage_coverphoto_full.jpg" alt="">
       <div class="hero-wrap">
         <div class="photo-credit small-text">
           <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
