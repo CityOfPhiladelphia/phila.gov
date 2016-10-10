@@ -215,9 +215,10 @@ function phila_open_graph() {
     if ( empty($hero_header_image) ) {
       $parent_id = get_post_ancestors( $post->ID );
 
-      $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'), $post_id = $parent_id[0]);
-
+      if ( isset($parent_id[0]) ) {
+        $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'), $post_id = $parent_id[0]);
       }
+    }
       $img_src = $hero_header_image;
     }elseif( has_post_thumbnail() ){
 
