@@ -1393,11 +1393,6 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   //This order matters. If $canonical_meta_desc is found first, it should be used.
   array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc, $event_desc );
 
-  if( is_archive() || is_search() || is_home() ) {
-    if ($bloginfo) {
-      return bloginfo( 'description' );
-    }
-  }
 
   foreach ($meta_desc as $desc){
     if ( !empty( $desc ) ) {
@@ -1405,6 +1400,12 @@ function phila_get_item_meta_desc( $bloginfo = true ){
     }
   }
 
+  if( is_archive() || is_search() || is_home() ) {
+    if ($bloginfo) {
+      return bloginfo( 'description' );
+    }
+  }
+  
   if ( get_post_type() == 'department_page' ) {
 
     if ( empty( $dept_desc ) && !empty( $post->post_content ) ){
