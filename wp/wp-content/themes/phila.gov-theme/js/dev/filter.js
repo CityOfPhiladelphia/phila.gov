@@ -192,11 +192,17 @@ jQuery(document).ready(function($) {
     return ( $(b).data('alphabet') > $(a).data('alphabet') ) ? 1 : -1;
   }
 
+// TODO: These alphabetical sorting click events can be condensed
+
   $('.button[data-alpha-order]').click( function() {
     var $servicelist = $( '.a-z-group' );
     $servicelist.detach();
     $servicelist.sort( sortAlpha );
     $( '.a-z-list' ).append( $servicelist );
+    if ( $('.button[data-alpha-order]').hasClass("outline") ){
+      $('.button[data-alpha-order]').removeClass("outline");
+      $('.button[data-reverse-alpha-order]').addClass("outline");
+    }
   })
 
   $('.button[data-reverse-alpha-order]').click( function() {
@@ -204,6 +210,11 @@ jQuery(document).ready(function($) {
     $servicelist.detach();
     $servicelist.sort( sortReverseAlpha );
     $( '.a-z-list' ).append( $servicelist );
+    console.log( $('.button[data-reverse-alpha-order]').hasClass("outline") );
+    if ( $('.button[data-reverse-alpha-order]').hasClass("outline") ){
+      $('.button[data-reverse-alpha-order]').removeClass("outline");
+      $('.button[data-alpha-order]').addClass("outline");
+    }
   })
 
 });
