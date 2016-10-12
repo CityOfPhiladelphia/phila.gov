@@ -10,6 +10,9 @@
   margin: $spacing-small 0;
   color: $dark-gray;
 
+  &:hover, &:focus {
+    background: none;
+  }
   &:link, &:visited {
     color: $dark-gray;
     font-weight: 600;
