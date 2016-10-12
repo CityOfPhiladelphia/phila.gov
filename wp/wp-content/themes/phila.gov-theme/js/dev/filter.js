@@ -149,6 +149,7 @@ jQuery(document).ready(function($) {
   getValues();
 
   $( '[data-open="mobile-filter"]' ).click( function() {
+    event.preventDefault();
     getValues();
     var $filterForm = $( '#service_filter' );
     $filterForm.detach();
@@ -162,11 +163,13 @@ jQuery(document).ready(function($) {
 
   //Clear selection. Reset to 'All services'. Not applied unless "Apply" btn is clicked.
   $( 'a[data-clear-filter]' ).click( function() {
+    event.preventDefault();
     $( '#service_filter #all[type="checkbox"]' ).trigger( 'click' );
   });
 
   //Apply current filter selections.
   $( 'a[data-apply-filter]' ).click( function() {
+    event.preventDefault();
     getValues();
     attachFilter;
   });
@@ -195,6 +198,7 @@ jQuery(document).ready(function($) {
 // TODO: These alphabetical sorting click events can be condensed
 
   $('.button[data-alpha-order]').click( function() {
+    event.preventDefault();
     var $servicelist = $( '.a-z-group' );
     $servicelist.detach();
     $servicelist.sort( sortAlpha );
@@ -206,6 +210,7 @@ jQuery(document).ready(function($) {
   })
 
   $('.button[data-reverse-alpha-order]').click( function() {
+    event.preventDefault();
     var $servicelist = $( '.a-z-group' );
     $servicelist.detach();
     $servicelist.sort( sortReverseAlpha );

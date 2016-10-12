@@ -23,14 +23,14 @@ get_header(); ?>
         </a>
       </div>
       <div class="small-12 columns">
-        <a class="button full-width pan clearfix" data-alpha-order>
+        <a href="#" class="button full-width pan clearfix" data-alpha-order>
           <div class="valign">
             <div class="button-label center valign-cell h2">A-Z</div>
           </div>
         </a>
       </div>
       <div class="small-12 columns">
-        <a href="#/" class="button outline full-width pan clearfix" data-reverse-alpha-order>
+        <a href="#" class="button outline full-width pan clearfix" data-reverse-alpha-order>
           <div class="valign">
             <div class="button-label center valign-cell h2">Z-A</div>
           </div>
@@ -215,14 +215,14 @@ get_header(); ?>
         </div>
         <div class="row">
           <div class="small-12 columns">
-            <a href="#/" class="button full-width pan clearfix" aria-label="Clear filter selections" data-clear-filter>
+            <a href="#" class="button full-width pan clearfix" aria-label="Clear filter selections" data-clear-filter>
               <div class="valign">
                 <div class="button-label center valign-cell h2">Clear</div>
               </div>
             </a>
           </div>
           <div class="small-12 columns">
-            <a href="#/" class="button full-width pan clearfix" data-close aria-label="Apply modal" data-apply-filter>
+            <a href="#" class="button full-width pan clearfix" data-close aria-label="Apply modal" data-apply-filter>
               <div class="valign">
                 <div class="button-label center valign-cell h2">Apply</div>
               </div>
