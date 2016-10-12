@@ -1510,3 +1510,22 @@ function phila_return_ordinal($num){
   }
   return 'th';
 }
+
+
+/*
+ * TODO: Remove this after beta switch
+ *
+*/
+
+add_filter( 'wp_login_errors', 'phila_gov_login_form_lock_down', 90, 2 );
+
+function phila_gov_login_form_lock_down( $errors, $redirect_to ){
+  login_header(__('Log In'), '', $errors);
+  echo '<p>alpha.phila.gov is currently in a content freeze. <br> Login and editing functionality will be restored on the morning of Thursday, October 13th.</p>';
+  echo '</div>';
+  do_action( 'login_footer' );
+  echo '</body></html>';
+  exit;
+
+  return $errors;
+}
