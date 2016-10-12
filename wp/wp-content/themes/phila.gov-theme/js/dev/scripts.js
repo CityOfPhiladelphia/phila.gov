@@ -295,6 +295,9 @@ jQuery(document).ready(function($) {
 
   });
 
+  //orientation doesn't matter, always remove the no-scroll class
+  $('body').removeClass('no-scroll');
+
 });
 
   /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
