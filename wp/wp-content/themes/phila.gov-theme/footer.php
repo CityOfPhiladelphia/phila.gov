@@ -33,19 +33,19 @@
         <div class="small-24 medium-8 columns pll prxl pvm ptn-mu pbl-mu pbl-mu sidewalk bdr-right-mu interact-311 clearfix equal">
           <section>
             <h3 class="h4 dark-gray">Interact with 311 online</h3>
-            <a href="http://iframe.publicstuff.com/#?client_id=242" class="button icon clearfix">
+            <a href="http://iframe.publicstuff.com/#?client_id=242" class="button icon full-width clearfix">
               <div class="valign">
                 <i class="fa fa-bullhorn valign-cell"></i>
                 <div class="button-label valign-cell">Report a problem</div>
               </div>
             </a>
-            <a href="http://www.phila.gov/311/findananswer/Pages/default.aspx" class="button icon clearfix">
+            <a href="http://www.phila.gov/311/findananswer/Pages/default.aspx" class="button icon full-width clearfix">
               <div class="valign">
                 <i class="fa fa-question valign-cell"></i>
                 <div class="button-label valign-cell">Ask a question</div>
               </div>
             </a>
-            <a href="https://cityofphiladelphia.github.io/service-request-tracker/" class="button icon clearfix">
+            <a href="https://cityofphiladelphia.github.io/service-request-tracker/" class="button icon full-width clearfix">
               <div class="valign">
                 <i class="fa fa-check-square-o valign-cell"></i>
                 <div class="button-label valign-cell">Track a request</div>
