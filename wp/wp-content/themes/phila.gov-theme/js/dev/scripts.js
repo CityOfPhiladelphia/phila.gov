@@ -138,6 +138,10 @@ jQuery(document).ready(function($) {
       });
 
     });
+    //don't let events bubble up and cause issues on ul click
+    $( 'ul.is-active' ).click(function( e ) {
+      e.stopPropagation();
+    });
 
   });
 
