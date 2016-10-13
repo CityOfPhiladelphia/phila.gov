@@ -65,7 +65,7 @@ get_header(); ?>
           'relation' => 'OR',
           array(
             'key'     => 'phila_template_select',
-            'value' => array('default', 'stub'),
+            'value' => array('default', 'tax_detail'),
             'compare' => 'IN'
           ),
           array(
