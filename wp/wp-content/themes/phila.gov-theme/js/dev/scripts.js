@@ -121,6 +121,8 @@ jQuery(document).ready(function($) {
 
   $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
 
+    $('body').scrollTop('0');
+
     parentLink.push( $(this).find('.is-active').last().prev().text() );
 
     $(this).find('.is-active').last().addClass('current-parent');
