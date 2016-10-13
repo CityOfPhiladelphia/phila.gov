@@ -236,7 +236,7 @@ function phila_open_graph() {
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
-  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://alpha.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
+  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://beta.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
   <?php
 }
 
@@ -578,7 +578,7 @@ function phila_breadcrumbs() {
 
 //this is used throughout the theme and is meant to be updated once the major switch happens
 function phila_util_echo_website_url(){
-  echo 'alpha.phila.gov';
+  echo 'beta.phila.gov';
 }
 
 //this form is used throughout the theme and can be updated as needed
@@ -889,37 +889,6 @@ function phila_get_department_homepage_list(){
 
   return $full_department_list_args;
 }
-
-/**
- * Find and displays the correct header images
- *
- * @since 0.22.0
- * @link https://codex.wordpress.org/Custom_Backgrounds,
- * @param $classes
- *
- */
-add_action('wp_head', 'phila_output_header_images', 100);
-
-
-function phila_output_header_images(){
-  global $post;
-
-  $page_bg_image_url = null;
-
-  if ( is_front_page() ) {
-    $page_bg_image_url = get_background_image();
-
-  }elseif( is_404() ) {
-    $page_bg_image_url = null;
-
-  }
-
-  $output = "<style type='text/css' id='alpha-custom-page-background'>body.custom-background { background-image: url('" . $page_bg_image_url . "') } </style>";
-
-  echo $output;
-
-}
-
 
 /**
  * Adds 'department-home' class to appropriate department homepages or a 'department-landing' class to departments with no bg selected
@@ -1405,7 +1374,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
       return bloginfo( 'description' );
     }
   }
-  
+
   if ( get_post_type() == 'department_page' ) {
 
     if ( empty( $dept_desc ) && !empty( $post->post_content ) ){
