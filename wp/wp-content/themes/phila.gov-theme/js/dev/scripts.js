@@ -301,7 +301,7 @@ jQuery(document).ready(function($) {
 });
 
   /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
-  document.addEventListener('focusout', function(e) {
+  $('.search-field').focusout(function() {
     if ( Foundation.MediaQuery.current == 'small' ) {
       window.scrollTo(0, 0);
     }
