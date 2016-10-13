@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
     var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
 
     if ( $( '.js-current-section' ).length === 0 ) {
-      $('li.js-drilldown-back').after( '<li class="js-current-section"></li>' );
+      $('li.js-drilldown-back').after( '<li class="js-current-section" aria-hidden="true"></li>' );
     }
 
     $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Menu' ) ? 'Close' : 'Menu' );
