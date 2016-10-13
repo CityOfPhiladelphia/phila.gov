@@ -10,4 +10,4 @@ then
 fi
 
 # Run the deployment
-aws --region us-east-1 deploy create-deployment --application-name beta.phila.gov --deployment-group-name beta.phila.gov --github-location commitId="$commitid",repository="cityofphiladelphia/phila.gov"%
+aws --region us-east-1 deploy create-deployment --application-name beta.phila.gov --deployment-group-name beta.phila.gov --github-location commitId="$commitid",repository="cityofphiladelphia/phila.gov"
