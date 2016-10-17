@@ -65,7 +65,7 @@
                   <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="external">Correctional facilities</a>
                 </li>
                 <li>
-                  <a href="http://www.philapark.org/violations/" class="external">Pay a parking violation</a>
+                  <a href="https://prodpci.etimspayments.com/pbw/include/philadelphia_parking/input.jsp" class="external">Pay a parking violation</a>
                 </li>
                 <li>
                   <a href="https://secure.phila.gov/WRB/WaterBill/Account/GetAccount.aspx" class="external">Pay a water bill</a>
