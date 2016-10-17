@@ -60,8 +60,15 @@ if (!empty($row_two_column_selection)) {
   <?php if ( !empty($row_two_full_col_cal_url) ):?>
     <div class="row">
       <div class="columns">
-        <a class="float-right see-all-right" href="<?php echo $row_two_full_col_cal_url; ?>">All Events</a>
-        </div>
+        <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_full_col_cal_url; ?>">
+          <div class="valign equal-height">
+            <div class="see-all-label phm prxs valign-cell equal">See all</div>
+            <div class="valign-cell equal">
+              <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg" ?>" alt="">
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   <?php endif; ?>
  <?php endif; ?>
@@ -76,7 +83,14 @@ if (!empty($row_two_column_selection)) {
            <?php echo do_shortcode('[calendar id="' . $row_two_col_one_cal_id .'"]'); ?>
          </div>
          <?php if ($row_two_col_one_cal_url):?>
-           <a class="float-right see-all-right" href="<?php echo $row_two_col_one_cal_url; ?>">All Events</a>
+           <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_one_cal_url; ?>">
+             <div class="valign equal-height">
+               <div class="see-all-label phm prxs valign-cell equal">See all</div>
+               <div class="valign-cell equal">
+                 <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg" ?>" alt="">
+               </div>
+             </div>
+           </a>
          <?php endif; ?>
        </div>
      <?php elseif ( $row_two_col_one_type  == 'phila_module_row_2_col_1_press_release' ): ?>
@@ -92,8 +106,14 @@ if (!empty($row_two_column_selection)) {
            <div class="event-box">
              <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
            </div>
-           <?php if ($row_two_col_one_cal_url):?>
-             <a class="float-right see-all-right" href="<?php echo $row_two_col_two_cal_url; ?>">All Events</a>
+           <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_two_cal_url; ?>">
+             <div class="valign equal-height">
+               <div class="see-all-label phm prxs valign-cell equal">See all</div>
+               <div class="valign-cell equal">
+                 <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg" ?>" alt="">
+               </div>
+             </div>
+           </a>
            <?php endif; ?>
         </div>
        <?php elseif ( $row_two_col_two_type  == 'phila_module_row_2_col_2_press_release' ): ?>
