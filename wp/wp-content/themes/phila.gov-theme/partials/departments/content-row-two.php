@@ -106,14 +106,15 @@ if (!empty($row_two_column_selection)) {
            <div class="event-box">
              <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
            </div>
-           <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_two_cal_url; ?>">
-             <div class="valign equal-height">
-               <div class="see-all-label phm prxs valign-cell equal">See all</div>
-               <div class="valign-cell equal">
-                 <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg" ?>" alt="">
+           <?php if ($row_two_col_one_cal_url):?>
+             <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_two_cal_url; ?>">
+               <div class="valign equal-height">
+                 <div class="see-all-label phm prxs valign-cell equal">See all</div>
+                 <div class="valign-cell equal">
+                   <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg" ?>" alt="">
+                 </div>
                </div>
-             </div>
-           </a>
+             </a>
            <?php endif; ?>
         </div>
        <?php elseif ( $row_two_col_two_type  == 'phila_module_row_2_col_2_press_release' ): ?>
