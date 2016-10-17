@@ -68,8 +68,15 @@ function press_release_shortcode($atts) {
     endwhile;
 
     $output .= '</ul>';
-
-    $output .= '<a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a></div>';
+    
+    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/press-releases/'. $category_slug . '">
+      <div class="valign equal-height">
+        <div class="see-all-label phm prxs valign-cell equal">See all</div>
+        <div class="valign-cell equal">
+          <img style="height:28px" src="' . get_stylesheet_directory_uri() . '/img/see-all-arrow.svg" alt="">
+        </div>
+      </div>
+    </a></div>';
 
     }else {
       $output .= __( 'Please enter at least one press release.', 'phila.gov' );
