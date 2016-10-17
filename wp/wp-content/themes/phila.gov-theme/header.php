@@ -78,8 +78,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="top-bar">
             <div class="top-bar-right">
               <ul class="medium-horizontal menu show-for-medium">
-                <li><a href="/departments/mayor/" aria-hidden="true">Mayor's Office</a></li>
-                <li><a href="/departments/" aria-hidden="true">City government directory</a></li>
+                <li><a href="/departments/mayor/">Mayor's Office</a></li>
+                <li><a href="/departments/">City government directory</a></li>
                 <li>
                   <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
                 </li>
@@ -103,10 +103,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="top-bar-right valign-mu show-for-small-only">
         <nav data-swiftype-index="false" class="valign-mu">
           <ul class="vertical menu pan valign-mu mobile-nav-drilldown">
-            <li><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+            <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
 
             <li class="is-drilldown-submenu-parent">
-              <a href="/services/" class="no-link valign-cell" onclick="noLink(event)"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
+              <a href="/services/" class="no-link valign-cell" onclick="noLink(event)"><i class="fa fa-list show-for-small-only"></i> Services</a>
               <ul class="menu vertical menu-top-offset">
                 <li><a href="/services/">Service directory</a></li>
                 <?php
@@ -124,18 +124,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </ul>
             </li>
             <li>
-              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle" aria-hidden="true"></i> Programs &amp; initiatives</a>
+              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle"></i> Programs &amp; initiatives</a>
             </li>
             <li>
-              <a href="/news/" class="valign-cell"><i class="fa fa-microphone" aria-hidden="true"></i> News &amp; events</a>
+              <a href="/news/" class="valign-cell"><i class="fa fa-microphone"></i> News &amp; events</a>
             </li>
             <li>
-              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text" aria-hidden="true"></i> Publications &amp; forms</a>
+              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text"></i> Publications &amp; forms</a>
             </li>
             <li class="bg-sidewalk">
-              <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
+              <a href="/mayor/"><i class="fa fa-university"></i> Mayor's Office</a>
             </li>
-            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City government directory</a>
+            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap"></i> City government directory</a>
             </li>
           </ul>
           </nav>
