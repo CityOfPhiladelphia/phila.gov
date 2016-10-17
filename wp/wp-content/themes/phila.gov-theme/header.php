@@ -99,7 +99,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!--mobile nav -->
     <div class="top-bar primary-menu medium-15 medium-push-2 small-24 columns equal no-js valign-mu" id="mobile-nav">
       <!-- Mobile Navigation -->
-      <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
       <div class="top-bar-right valign-mu show-for-small-only">
         <nav data-swiftype-index="false" class="valign-mu">
           <ul class="vertical menu pan valign-mu mobile-nav-drilldown">
@@ -153,12 +152,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </a>
             </div>
           </div>
+          <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
           <div class="medium-17 columns show-for-medium equal desktop-nav">
             <div class="top-bar-right valign-mu">
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="horizontal menu pan valign-mu">
                   <li class="services-menu-link" data-toggle="services-mega-menu">
-                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
+                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)">Services</a>
                     </li>
                   <li>
                     <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
