@@ -99,7 +99,7 @@
             <li class="pvxs"><a href="http://www.phila.gov/311/aboutus/Pages/NeighborhoodLaison.aspx" class="external">Neighborhood Liaison program</a></li>
             <li class="pvxs"><a href="http://citizensplanninginstitute.org/citizens-toolkit" class="external">Citizen action toolkit</a></li>
             <li class="pvxs"><a href="http://www.philadelphiastreets.com/pmbc/" class="external">Clean up your block</a></li>
-            <li class="pvxs"><a href="http://www.phila.gov/MDO/SpecialEvents/Pages/PermitsandApplications.aspx" class="external">Apply for an event permit</a></li>
+            <li class="pvxs"><a href="https://phlevents.org/applications/" class="external">Apply for an event permit</a></li>
             <li class="pvxs"><a href="http://gsg.phila.gov/map" class="external">City, District, Council, &amp; Ward maps</a></li>
           </ul>
         </nav>
