@@ -147,7 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="row equal-height">
           <div class="small-16 medium-6 columns equal valign small-push-4 medium-push-0">
             <div class="valign-cell">
-              <a href="<?php echo get_home_url(); ?>" class="logo">
+              <a href="<?php echo get_home_url(); ?>" class="logo" tabindex="1" aria-label="City of Philadelphia">
                 <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
               </a>
             </div>
