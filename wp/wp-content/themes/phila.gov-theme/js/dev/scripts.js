@@ -98,6 +98,11 @@ jQuery(document).ready(function($) {
     if ( $( '.js-current-section' ).length === 0 ) {
       $('li.js-drilldown-back').after( '<li class="js-current-section" aria-hidden="false"></li>' );
     }
+    $('li.js-drilldown-back').attr('tabindex', '1');
+
+    $('.mobile-nav-drilldown li').each( function() {
+        $(this).attr('tabindex', '0');
+    });
 
     $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Menu' ) ? 'Close' : 'Menu' );
 
@@ -204,6 +209,10 @@ jQuery(document).ready(function($) {
       //on escape, also remove no-scroll
       if (e.keyCode == 27) {
         $('body').removeClass('no-scroll');
+        if ( $('.is-drilldown').is(':visible') ) {
+          $('.title-bar').foundation('toggleMenu');
+          togglePageBody(true);
+        }
       }
     });
   }

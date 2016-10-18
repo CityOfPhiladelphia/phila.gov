@@ -104,10 +104,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <ul class="vertical menu pan valign-mu mobile-nav-drilldown">
             <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
 
-            <li class="is-drilldown-submenu-parent">
-              <a href="#services" class="valign-cell"><i class="fa fa-list show-for-small-only"></i> Services</a>
-              <ul class="menu vertical menu-top-offset">
-                <li><a href="/services/">Service directory</a></li>
+            <li class="is-drilldown-submenu-parent" tabindex="0">
+              <a href="#services" class="valign-cell"><i class="fa fa-list show-for-small-only"></i>Services</a>
+              <ul class="menu vertical menu-top-offset" tabindex="0">
+                <li tabindex="0"><a href="/services/">Service directory</a></li>
                 <?php
                   $args = array(
                     //TODO: only display pages with taxonomy applied
@@ -122,19 +122,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 ?>
               </ul>
             </li>
-            <li>
+            <li tabindex="0">
               <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle"></i> Programs &amp; initiatives</a>
             </li>
-            <li>
+            <li tabindex="0">
               <a href="/news/" class="valign-cell"><i class="fa fa-microphone"></i> News &amp; events</a>
             </li>
-            <li>
+            <li tabindex="0">
               <a href="/documents/" class="valign-cell"><i class="fa fa-file-text"></i> Publications &amp; forms</a>
             </li>
-            <li class="bg-sidewalk">
+            <li class="bg-sidewalk" tabindex="0">
               <a href="/mayor/"><i class="fa fa-university"></i> Mayor's Office</a>
             </li>
-            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap"></i> City government directory</a>
+            <li class="bg-sidewalk" tabindex="0"><a href="/departments/"><i class="fa fa-sitemap"></i> City government directory</a>
             </li>
           </ul>
           </nav>
