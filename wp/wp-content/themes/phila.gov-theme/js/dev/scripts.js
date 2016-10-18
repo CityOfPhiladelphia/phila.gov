@@ -107,6 +107,12 @@ jQuery(document).ready(function($) {
 
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
 
+    /* duplicate aria tags on drilldown parents, to allow full tap on item */
+    $('li.is-drilldown-submenu-parent').each(function() {
+      var aria = $(this).attr('aria-label');
+      $(this).children('a').first().attr('aria-label', aria);
+    });
+
     drilldownMenuHeight();
 
     if($('.mobile-nav-drilldown').is(':visible')){
