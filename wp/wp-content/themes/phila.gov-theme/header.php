@@ -105,7 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
 
             <li class="is-drilldown-submenu-parent">
-              <a href="/services/" class="no-link valign-cell" onclick="noLink(event)"><i class="fa fa-list show-for-small-only"></i> Services</a>
+              <a href="#services" class="valign-cell"><i class="fa fa-list show-for-small-only"></i> Services</a>
               <ul class="menu vertical menu-top-offset">
                 <li><a href="/services/">Service directory</a></li>
                 <?php
