@@ -149,6 +149,11 @@ jQuery(document).ready(function($) {
       e.stopPropagation();
     });
 
+    $(this).find('.is-active').attr('aria-hidden', 'false');
+
+    $(this).find('.is-drilldown-submenu').not('.is-active').attr('aria-hidden', 'true');
+
+
   });
 
   $(document).on('hide.zf.drilldown', '[data-drilldown]', function(){
