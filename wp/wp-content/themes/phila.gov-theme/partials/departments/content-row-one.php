@@ -180,7 +180,7 @@ if ( !empty( $row_one_col_two_module ) ){
           <div class="row mbn">
             <?php if ( !$row_one_col_two_connect_panel_facebook == '') : ?>
               <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $row_one_col_two_connect_panel_facebook; ?>" target="_blank" class="phs">
+                <a href="<?php echo $row_one_col_two_connect_panel_facebook; ?>" class="phs">
                   <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
                   <span class="show-for-sr">Facebook</span>
                 </a>
@@ -188,7 +188,7 @@ if ( !empty( $row_one_col_two_module ) ){
             <?php endif; ?>
             <?php if ( !$row_one_col_two_connect_panel_twitter == '') : ?>
               <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" target="_blank" class="phs">
+                <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" class="phs">
                   <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                   <span class="show-for-sr">Twitter</span>
                 </a>
@@ -196,7 +196,7 @@ if ( !empty( $row_one_col_two_module ) ){
             <?php endif; ?>
             <?php if ( !$row_one_col_two_connect_panel_instagram == '') : ?>
               <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" target="_blank" class="phs">
+                <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" class="phs">
                 <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
                   <span class="show-for-sr">Instagram</span>
                 </a>

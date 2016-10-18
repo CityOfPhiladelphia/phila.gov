@@ -65,12 +65,27 @@ add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 1 );
 function phila_load_admin_media_js(){
   wp_register_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__, array('jquery-validation') ) );
 
-  wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jQuery') ) );
+  wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jquery') ) );
 
   wp_enqueue_script( 'jquery-validation' );
 
   wp_enqueue_script( 'all-admin-scripts' );
 
+}
+add_action( 'wp_enqueue_scripts', 'phila_load_logged_in_js', 100 );
+
+function phila_load_logged_in_js(){
+  if  ( is_user_logged_in() ){
+    wp_enqueue_script( 'logged-in-js', plugins_url('js/front-end.js', __FILE__, array( 'phila-scripts' ) ), true );
+
+    wp_enqueue_style( 'logged-in-css', plugins_url( 'css/front-end.css', __FILE__));
+
+  }
+}
+add_action('get_header', 'phila_filter_head');
+
+function phila_filter_head() {
+  remove_action('wp_head', '_admin_bar_bump_cb');
 }
 
 add_action( 'admin_enqueue_scripts', 'phila_load_admin_css', 11 );

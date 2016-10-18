@@ -17,7 +17,7 @@
         <div class="row mbn">
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['facebook']; ?>" target="_blank" class="phs">
+              <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs">
                 <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
@@ -25,7 +25,7 @@
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['twitter']; ?>" target="_blank" class="phs">
+              <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs">
                 <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
@@ -33,7 +33,7 @@
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['instagram']; ?>" target="_blank" class="phs">
+              <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs">
               <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
@@ -73,7 +73,12 @@
           <hr>
           <div class="ptxs pbn center">
             <?php if (!$connect_vars['cta']['summary'] == '') echo '<span>' . $connect_vars['cta']['summary'] . '</span>'; ?>
-            <br/><span class="center"><a href="<?php echo $connect_vars['cta']['url'];?>" class="button mbn"><?php echo $connect_vars['cta']['title']; ?></a></span>
+            <br/>
+              <a href="<?php echo $connect_vars['cta']['url'];?>" class="button icon clearfix mtm">
+                <div class="valign">
+                  <div class="button-label valign-cell"><?php echo $connect_vars['cta']['title']; ?></div>
+                </div>
+              </a>
           </div>
         <?php endif; ?>
       </div>

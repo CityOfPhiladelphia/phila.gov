@@ -17,8 +17,6 @@ class Phila_Gov_Filter_Posts {
   public function __construct(){
 
     add_action( 'pre_get_posts', array( $this, 'archives_display_phila_post' ) );
-    add_filter( 'pre_get_posts',  array( $this, 'phila_filter_notices' ) );
-
 
   }
 

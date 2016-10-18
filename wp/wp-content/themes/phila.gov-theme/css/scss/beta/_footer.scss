@@ -1,0 +1,187 @@
+/*
+ *
+ * Footers
+ *
+ *
+*/
+footer{
+  &.site-footer {
+    background: $white;
+
+    a:link, a:visited {
+      color: $ben-franklin-blue;
+      text-decoration: none;
+    }
+    .classic {
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+      font-weight: 400;
+      .columns {
+        margin: .71429rem 0;
+        ul.inline-list {
+          font-size: .92857rem;
+          margin: 0;
+          padding: 0;
+          li {
+            margin: 0;
+            padding: 0 0 0 10px;
+            &:first-of-type {
+              padding: 0;
+            }
+            a:link,
+            a:visited {
+              color: $white;
+            }
+            a:hover,
+            a:active {
+             color: $bike-share-blue;
+            }
+          }
+        }
+      }
+    }
+    .contact{
+      background:$ghost-gray;
+      color:$dark-gray;
+      border-bottom: 1px solid $sidewalk;
+
+      aside{
+        font-size: 0.85rem;
+
+        .content{
+          padding: 1rem;
+        }
+      }
+      aside{
+        border-bottom: 1px solid $white;
+      }
+
+      @media only screen and (min-width: 40em) {
+        aside {
+          border-bottom: 0;
+        }
+        aside:not(:last-child) {
+          border-right: 1px solid $sidewalk;
+        }
+      }
+      .logo{
+        padding:1rem 0;
+      }
+      .vcard,
+      .vcard-label,
+      .tel a:link,
+      .email a:link{
+        font-weight: normal;
+        text-transform: none;
+        margin: 1em 0;
+        .tel .vcard-label,
+        .fax .vcard-label,
+        .email .vcard-label{
+          font-weight: bold;
+        }
+      }
+    }
+    .philly311 {
+      background: $ghost-gray;
+      color: $dark-gray;
+
+      .button-label {
+        width: 100%;
+      }
+
+      .interact-311 {
+        padding-right: $spacing-large;
+
+      }
+
+      .intro,
+      .trending-requests {
+        a:link, a:visited {
+         color:$ben-franklin-blue;
+         font-weight:normal;
+        }
+        a:hover, a:active{
+         color:$dark-gray;
+        }
+      }
+    }
+
+    .links {
+
+    }
+    .trending-requests {
+      a:link {
+        font-size: 1rem;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin-left: 0;
+
+        li {
+          padding: $spacing-small 0;
+        }
+      }
+    }
+
+    &.site-footer {
+      .fa {
+      vertical-align: middle;
+      }
+      .fa-stack {
+        .fa-tv{
+          font-size: 3rem;
+        }
+        .fa-stack-1x {
+          margin-left: 4px;
+        }
+      }
+      .fat {
+        padding: $spacing-medium 0;
+        background: $dark-gray;
+        h1, h2, h3, h4, h5, h6 {
+          border-bottom: 0;
+          padding: 0;
+          color: $white;
+          text-transform: none;
+        }
+        section {
+          border-bottom: 1px solid #a2a2a2;
+          &:last-of-type {
+            border-bottom: 0;
+          }
+          @media only screen and (min-width: 40em) {
+            border-bottom: 0;
+            border-right: 1px solid #a2a2a2;
+            &:last-of-type {
+              border-right: 0;
+            }
+          }
+          a:link,
+          a:visited {
+            color: #e5e5e5;
+          }
+          a:hover,
+          a:active {
+           color: $bike-share-blue;
+          }
+        }
+        .city-social {
+          li {
+            margin-bottom: .75rem;
+          }
+        }
+      }
+
+      // TODO: move to utils
+      // Inline list
+      ul.inline-list {
+        list-style-type: none;
+        margin: 0;
+        padding: $spacing-small 0 0;
+        li {
+          padding: 0 0 $spacing-medium 0;
+        }
+      }
+    }
+  }
+}

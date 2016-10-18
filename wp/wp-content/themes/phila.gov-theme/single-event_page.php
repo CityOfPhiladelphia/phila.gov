@@ -18,11 +18,7 @@ get_header(); ?>
 
   <div data-swiftype-index='true' class="entry-content">
     <?php if (function_exists('rwmb_meta')): ?>
-      <?php // Set custom markup vars
-            $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-            $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-            $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'));
-            // Set hero-header vars
+      <?php // Set hero-header vars
             $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
             $hero_header_alt_text = rwmb_meta( 'phila_hero_header_image_alt_text', $args = array('type' => 'text'));
             $hero_header_credit = rwmb_meta( 'phila_hero_header_image_credit', $args = array('type' => 'text'));
@@ -32,7 +28,7 @@ get_header(); ?>
             $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
             // Set Event Detail vars
             $event_description = phila_get_item_meta_desc();
-            
+
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
             $event_location_link = rwmb_meta('phila_event_loc_link' , $args = array('type' => 'url'));
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
@@ -53,14 +49,8 @@ get_header(); ?>
             ?>
     <?php endif; ?>
 
-    <!-- If Custom Markup append_before_wysiwyg is present print it -->
-    <?php if (!$append_before_wysiwyg == ''):?>
-      <div class="row before-wysiwyg">
-        <div class="small-24 columns">
-          <?php echo $append_before_wysiwyg; ?>
-        </div>
-      </div>
-    <?php endif; ?>
+    <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+
     <!-- Hero-Header MetaBox Modules -->
     <?php if (!$hero_header_image == ''): ?>
     <div class="row mtm">
@@ -159,11 +149,11 @@ get_header(); ?>
             <div class="row">
               <div class="large-18 columns">
 
-                <?php $service_updates = phila_get_service_updates();?>
+                <?php $service_updates = phila_get_service_updates_events();?>
 
                 <?php if (is_array($service_updates)): ?>
                 <h2 class="contrast">City Service Updates &amp; Changes</h2>
-                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
+                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 311.</p>
                 <div class="row">
                 <?php $i=0; ?>
                 <?php foreach ($service_updates as $update):?>
@@ -172,7 +162,7 @@ get_header(); ?>
                           <div class="service-update-icon equal">
                             <div class="valign">
                               <div class="valign-cell pam">
-                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>" aria-hidden="true"></i>
                                 <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
                               </div>
                             </div>
@@ -315,14 +305,7 @@ get_header(); ?>
     <?php endif; ?>
     <!-- End WYSIWYG content -->
 
-    <!-- If Custom Markup append_after_wysiwyg is present print it -->
-    <?php if (!$append_after_wysiwyg == ''):?>
-     <div class="row after-wysiwyg">
-       <div class="small-24 columns">
-         <?php echo $append_after_wysiwyg; ?>
-       </div>
-     </div>
-    <?php endif; ?>
+    <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
   </div> <!-- End .entry-content -->
 </article><!-- #post-## -->

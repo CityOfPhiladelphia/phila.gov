@@ -2242,6 +2242,54 @@ $meta_boxes[] = array(
   )
 );
 
+$meta_boxes[] = array(
+  'title' => 'Service Stub',
+  'pages' => array('page', 'service_page'),
+  'priority' => 'high',
+  'visible' => array('phila_template_select', 'service_stub'),
+
+  'fields'  => array(
+    array(
+      'name' => 'Page source',
+      'type'  => 'heading'
+    ),
+    array(
+      'id' => $prefix . 'stub_source',
+      'type' => 'post',
+      'post_type' => 'service_page',
+      'desc'  => 'Display content from the selected page on the front-end.'
+    )
+  )
+);
+
+$meta_boxes[] = array(
+  'title' => 'Topic Page Options',
+  'pages' => array('service_page'),
+  'priority' => 'high',
+  'visible' => array('phila_template_select', 'topic_page'),
+
+  'fields'  => array(
+    array(
+      'name' => 'Contextual item',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => $prefix . 'is_contextual',
+      'type' => 'checkbox',
+      'desc'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page title appended to them.'
+    ),
+    array(
+      'name' => 'Icon selection',
+      'type'  => 'heading'
+    ),
+    array(
+      'id' => $prefix . 'page_icon',
+      'type' => 'text',
+      'desc'  => 'Choose a <a href="http://fontawesome.io/icons/">Font Awesome</a> icon to represent a top-level page. E.g.: fa-bell'
+    )
+  )
+);
+
 //Tax Detail Template
 $meta_boxes[] = array(
   'title' => 'Tax Highlights',
@@ -2356,7 +2404,7 @@ $meta_boxes[] = array(
 //default tax detail template
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
-  'pages' => array('service_page'),
+  'pages' => array('page', 'service_page'),
   'visible' => array('phila_template_select', 'default'),
 
   'fields' => array(

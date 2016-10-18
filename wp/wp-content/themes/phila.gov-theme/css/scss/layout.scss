@@ -1,14 +1,22 @@
-body{
-  //required to override wp setting on bg images
-  position: static !important;
+//TODO: Add to patterns
+h1 .fa{
+  font-size: 1.6rem;
+
+  @media screen and (min-width: 40em) {
+    font-size: 2rem;
+  }
+
 }
+
 .group::after {
   content: "";
   display: table;
   clear: both;
 }
 
-
+#page {
+  position: relative;
+}
 .navigation {
   margin-top:1rem;
   font-family: 'Montserrat';
@@ -25,15 +33,6 @@ body{
     background:$bell-yellow;
     padding:5px;
   }
-}
-body.home header.site-header{
-
-  background: rgba(225, 225, 225, .4);
-
-  .breadcrumbs{
-    display: none;
-  }
-
 }
 
 header .site-branding {
@@ -108,10 +107,9 @@ aside {
 
   padding:0;
 
-   @media screen and (min-width: 64em) {
-     margin-left:55px;
-   }
-
+  .fa-home{
+    font-size: $large-font-base / 4.8;
+  }
 }
 
 .news-row{
@@ -139,81 +137,6 @@ aside {
   z-index: 5;
 }
 
-@media screen and (max-width: 39.9375em) {
-
-  header{
-    $tl: 0.6s; // transition length
-
-    .search{
-      z-index: 10;
-    }
-
-    .search-site{
-      position: absolute;
-      width:100%;
-    }
-
-    .search-field {
-      float:right;
-      transition: width $tl, background $tl;
-      width: 1px;
-      //need to override foundation style here
-      height: 42px !important;
-      border: 1px solid $bell-yellow;
-      cursor: pointer;
-      background: $white;
-      & + label .search-icon {
-        color: white;
-      }
-      &:hover {
-        color: white;
-        background: rgb(255, 255, 255);
-        & + label .search-icon {
-          color: white;
-        }
-      }
-      &:focus {
-        transition: width $tl cubic-bezier(0,1,.66,1), background $tl;
-        border: 1px solid $bell-yellow;
-        outline: none;
-        box-shadow: none;
-        padding-left: 15px;
-        cursor: text;
-        width: 100%;
-        background: rgb(235, 235, 235);
-        color: black;
-        & + label .search-icon {
-          color: black;
-        }
-      }
-      &:not(:focus) {
-        text-indent:-5000px;
-      } // for more-graceful falling back (:not browsers likely support indent)
-    }
-
-    .search-submit {
-      position: relative;
-      left: -5000px;
-    }
-
-    .search:before{
-      content: '';
-      width: 0;
-      height:0;
-      background: transparent;
-    }
-
-    .search-icon {
-      padding:1rem;
-      background: $bell-yellow;
-      position: absolute;
-      right:0;
-      color: $white;
-      cursor: pointer;
-    }
-  }
-}
-
 .clickable-row.is-hover{
   cursor:pointer;
 
@@ -228,6 +151,30 @@ aside {
 
   }
 }
+
+.no-scroll{
+  height:100%;
+  overflow: hidden;
+}
+
+header.entry-header h2{
+  margin-top:0;
+}
+
+@media screen and (min-width: 64em) {
+  .fat-gutter{
+    &.row,
+    &.row .row{
+        margin-left: -$spacing-large;
+        margin-right: -$spacing-large;
+      }
+    .column, .columns {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+    }
+  }
+}
+
 //TODO: add all these as utility to patterns
 .float-none{
   float:none;
