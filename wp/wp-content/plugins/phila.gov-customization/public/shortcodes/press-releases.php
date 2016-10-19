@@ -14,6 +14,7 @@ function press_release_shortcode($atts) {
   $category = get_the_category();
   $a = shortcode_atts( array(
    'posts' => 1,
+   'name' => 'Press Releases',
   ), $atts );
 
   $current_category = $category[0]->cat_ID;
@@ -68,8 +69,8 @@ function press_release_shortcode($atts) {
     endwhile;
 
     $output .= '</ul>';
-    
-    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/press-releases/'. $category_slug . '">
+
+    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/press-releases/'. $category_slug . '" aria-label="See all ' . $a['name'] . '">
       <div class="valign equal-height">
         <div class="see-all-label phm prxs valign-cell equal">See all</div>
         <div class="valign-cell equal">
