@@ -60,7 +60,7 @@ if (!empty($row_two_column_selection)) {
   <?php if ( !empty($row_two_full_col_cal_url) ):?>
     <div class="row">
       <div class="columns">
-        <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_full_col_cal_url; ?>">
+        <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_full_col_cal_url; ?>" aria-label="See all events">
           <div class="valign equal-height">
             <div class="see-all-label phm prxs valign-cell equal">See all</div>
             <div class="valign-cell equal">
@@ -83,7 +83,7 @@ if (!empty($row_two_column_selection)) {
            <?php echo do_shortcode('[calendar id="' . $row_two_col_one_cal_id .'"]'); ?>
          </div>
          <?php if ($row_two_col_one_cal_url):?>
-           <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_one_cal_url; ?>">
+           <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_one_cal_url; ?>" aria-label="See all events">
              <div class="valign equal-height">
                <div class="see-all-label phm prxs valign-cell equal">See all</div>
                <div class="valign-cell equal">
@@ -107,7 +107,7 @@ if (!empty($row_two_column_selection)) {
              <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
            </div>
            <?php if ($row_two_col_one_cal_url):?>
-             <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_two_cal_url; ?>">
+             <a class="see-all-right see-all-arrow float-right" href="<?php echo $row_two_col_two_cal_url; ?>" aria-label="See all events">
                <div class="valign equal-height">
                  <div class="see-all-label phm prxs valign-cell equal">See all</div>
                  <div class="valign-cell equal">
