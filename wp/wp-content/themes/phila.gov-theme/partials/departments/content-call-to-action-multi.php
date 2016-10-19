@@ -78,7 +78,7 @@
         <div class="valign equal-height">
           <div class="see-all-label phm prxs valign-cell equal">See all</div>
           <div class="valign-cell equal">
-            <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . '/img/see-all-arrow.svg'; ?>" alt="">
+            <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
           </div>
         </div>
       </a>
