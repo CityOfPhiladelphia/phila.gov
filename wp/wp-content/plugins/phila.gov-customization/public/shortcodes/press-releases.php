@@ -14,6 +14,7 @@ function press_release_shortcode($atts) {
   $category = get_the_category();
   $a = shortcode_atts( array(
    'posts' => 1,
+   'name' => 'Press releases',
   ), $atts );
 
   $current_category = $category[0]->cat_ID;
@@ -33,7 +34,7 @@ function press_release_shortcode($atts) {
   if( $press_release_loop->have_posts() ) {
     $post_counter = 0;
 
-    $output .= '<div class="large-24 columns"><h2 class="contrast">' . __('Press Releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
+    $output .= '<div class="large-24 columns"><h2 class="contrast">' . __('Press releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
 
     while( $press_release_loop->have_posts() ) :
       $press_release_loop->the_post();
@@ -69,7 +70,14 @@ function press_release_shortcode($atts) {
 
     $output .= '</ul>';
 
-    $output .= '<a class="see-all-right float-right" href="/press-releases/'. $category_slug . '">All ' . __('Press Releases', 'phila-gov'). '</a></div>';
+    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/press-releases/'. $category_slug . '" aria-label="See all ' . strtolower($a['name']) . '">
+      <div class="valign equal-height">
+        <div class="see-all-label phm prxs valign-cell equal">See all</div>
+        <div class="valign-cell equal">
+          <img style="height:28px" src="' . get_stylesheet_directory_uri() . '/img/see-all-arrow.svg" alt="">
+        </div>
+      </div>
+    </a></div>';
 
     }else {
       $output .= __( 'Please enter at least one press release.', 'phila.gov' );

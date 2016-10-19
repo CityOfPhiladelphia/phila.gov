@@ -74,7 +74,14 @@
   <?php endforeach; ?>
 <?php if ( $link_url != '' && $link_title != ''):?>
     <div class="columns">
-      <a class="see-all-right float-right" href="<?php echo $link_url; ?>"><?php echo $link_title; ?></a>
+      <a class="see-all-right see-all-arrow float-right" href="<?php echo $link_url; ?>" aria-label="See all <?php echo $action_panel_title; ?>">
+        <div class="valign equal-height">
+          <div class="see-all-label phm prxs valign-cell equal">See all</div>
+          <div class="valign-cell equal">
+            <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
+          </div>
+        </div>
+      </a>
     </div>
 <?php endif; ?>
 </section>
