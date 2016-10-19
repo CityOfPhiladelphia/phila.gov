@@ -96,8 +96,13 @@ jQuery(document).ready(function($) {
     var mobileMenu = new Foundation.Drilldown( $('.mobile-nav-drilldown') );
 
     if ( $( '.js-current-section' ).length === 0 ) {
-      $('li.js-drilldown-back').after( '<li class="js-current-section" aria-hidden="true"></li>' );
+      $('li.js-drilldown-back').after( '<li class="js-current-section" aria-hidden="false"></li>' );
     }
+    $('li.js-drilldown-back').attr('tabindex', '1');
+
+    $('.mobile-nav-drilldown li').each( function() {
+        $(this).attr('tabindex', '0');
+    });
 
     $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() == 'Menu' ) ? 'Close' : 'Menu' );
 
@@ -106,6 +111,12 @@ jQuery(document).ready(function($) {
     $('body').removeClass('no-scroll');
 
     $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-close');
+
+    /* duplicate aria tags on drilldown parents, to allow full tap on item */
+    $('li.is-drilldown-submenu-parent').each(function() {
+      var aria = $(this).attr('aria-label');
+      $(this).children('a').first().attr('aria-label', aria);
+    });
 
     drilldownMenuHeight();
 
@@ -142,6 +153,11 @@ jQuery(document).ready(function($) {
     $( 'ul.is-active' ).click(function( e ) {
       e.stopPropagation();
     });
+
+    $(this).find('.is-active').attr('aria-hidden', 'false');
+
+    $(this).find('.is-drilldown-submenu').not('.is-active').attr('aria-hidden', 'true');
+
 
   });
 
@@ -193,6 +209,10 @@ jQuery(document).ready(function($) {
       //on escape, also remove no-scroll
       if (e.keyCode == 27) {
         $('body').removeClass('no-scroll');
+        if ( $('.is-drilldown').is(':visible') ) {
+          $('.title-bar').foundation('toggleMenu');
+          togglePageBody(true);
+        }
       }
     });
   }
@@ -478,12 +498,7 @@ jQuery(document).ready(function($) {
     $(window).on('scroll', function () {
       backToTop();
       if ( $('#full-footer-start').offset().top < $(this).height() + $(this).scrollTop() ){
-        $('#back-to-top').css({
-          'position': 'absolute',
-          'bottom': '1%'
-        });
-      }else{
-        $('#back-to-top').removeAttr( 'style' );
+        $('#back-to-top').removeClass('show');
       }
 
     });

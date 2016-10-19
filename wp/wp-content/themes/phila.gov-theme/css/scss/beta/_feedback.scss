@@ -25,7 +25,16 @@
     letter-spacing: .05rem;
     cursor:pointer;
 
+    a:link,
+    a:active,
+    a:hover{
+      font-weight: 400;
+      color: $dark-gray;
+    }
+
     .fa {
+      color: $dark-gray;
+
       &.fa-lightbulb-o {
         font-size: 2rem;
         @media only screen and (min-width: 40em) {
