@@ -131,7 +131,7 @@ function recent_news_shortcode($atts) {
     //  $output .= '</div>';
     }
 
-    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/news/'. $a['category'] . '" aria-label="See all ' . $a['name'] . '">
+    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/news/'. $a['category'] . '" aria-label="See all ' . strtolower($a['name']) . '">
       <div class="valign equal-height">
         <div class="see-all-label phm prxs valign-cell equal">See all</div>
         <div class="valign-cell equal">
