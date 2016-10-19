@@ -498,12 +498,7 @@ jQuery(document).ready(function($) {
     $(window).on('scroll', function () {
       backToTop();
       if ( $('#full-footer-start').offset().top < $(this).height() + $(this).scrollTop() ){
-        $('#back-to-top').css({
-          'position': 'absolute',
-          'bottom': '1%'
-        });
-      }else{
-        $('#back-to-top').removeAttr( 'style' );
+        $('#back-to-top').removeClass('show');
       }
 
     });
