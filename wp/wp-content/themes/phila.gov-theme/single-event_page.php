@@ -35,7 +35,9 @@ get_header(); ?>
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
 
+            //FIXME: incorrect var names. should be event_content_blocks
             $event_contact_blocks_header = rwmb_meta('phila_event_content_blocks_heading' , $args = array('type' => 'text'));
+            //TODO: remove phila_event_content_blocks_link_text meta-box option
             $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
 
@@ -278,8 +280,15 @@ get_header(); ?>
             </div>
           <?php endif; ?>
           <?php if (!$event_contact_blocks_link == ''): ?>
-            <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : "More"; ?>
-            <a class="see-all-right float-right" href="<?php echo $event_contact_blocks_link;?>"><?php echo $link_text ?></a>
+            <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : ""; ?>
+            <a class="see-all-right see-all-arrow float-right" href="<?php echo $event_contact_blocks_link;?>" aria-label="See all <?php echo strtolower( $event_contact_blocks_header ); ?>">
+              <div class="valign equal-height">
+                <div class="see-all-label phm prxs valign-cell equal">See all</div>
+                <div class="valign-cell equal">
+                  <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . '/img/see-all-arrow.svg'; ?>" alt="">
+                </div>
+              </div>
+            </a>
           <?php endif; ?>
         </div>
       </div>
