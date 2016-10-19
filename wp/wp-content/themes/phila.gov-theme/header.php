@@ -78,8 +78,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="top-bar">
             <div class="top-bar-right">
               <ul class="medium-horizontal menu show-for-medium">
-                <li><a href="/departments/mayor/" aria-hidden="true">Mayor's Office</a></li>
-                <li><a href="/departments/" aria-hidden="true">City government directory</a></li>
+                <li><a href="/departments/mayor/">Mayor's Office</a></li>
+                <li><a href="/departments/">City government directory</a></li>
                 <li>
                   <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
                 </li>
@@ -99,16 +99,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!--mobile nav -->
     <div class="top-bar primary-menu medium-15 medium-push-2 small-24 columns equal no-js valign-mu" id="mobile-nav">
       <!-- Mobile Navigation -->
-      <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
       <div class="top-bar-right valign-mu show-for-small-only">
         <nav data-swiftype-index="false" class="valign-mu">
           <ul class="vertical menu pan valign-mu mobile-nav-drilldown">
-            <li><a href="/"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+            <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
 
-            <li class="is-drilldown-submenu-parent">
-              <a href="/services/" class="no-link valign-cell" onclick="noLink(event)"><i class="fa fa-list show-for-small-only" aria-hidden="true"></i> Services</a>
-              <ul class="menu vertical menu-top-offset">
-                <li><a href="/services/">Service directory</a></li>
+            <li class="is-drilldown-submenu-parent" tabindex="0">
+              <a href="#services" class="valign-cell"><i class="fa fa-list show-for-small-only"></i>Services</a>
+              <ul class="menu vertical menu-top-offset" tabindex="0">
+                <li tabindex="0"><a href="/services/">Service directory</a></li>
                 <?php
                   $args = array(
                     //TODO: only display pages with taxonomy applied
@@ -123,19 +122,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 ?>
               </ul>
             </li>
-            <li>
-              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle" aria-hidden="true"></i> Programs &amp; initiatives</a>
+            <li tabindex="0">
+              <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle"></i> Programs &amp; initiatives</a>
             </li>
-            <li>
-              <a href="/news/" class="valign-cell"><i class="fa fa-microphone" aria-hidden="true"></i> News &amp; events</a>
+            <li tabindex="0">
+              <a href="/news/" class="valign-cell"><i class="fa fa-microphone"></i> News &amp; events</a>
             </li>
-            <li>
-              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text" aria-hidden="true"></i> Publications &amp; forms</a>
+            <li tabindex="0">
+              <a href="/documents/" class="valign-cell"><i class="fa fa-file-text"></i> Publications &amp; forms</a>
             </li>
-            <li class="bg-sidewalk">
-              <a href="/mayor/"><i class="fa fa-university" aria-hidden="true"></i> Mayor's Office</a>
+            <li class="bg-sidewalk" tabindex="0">
+              <a href="/mayor/"><i class="fa fa-university"></i> Mayor's Office</a>
             </li>
-            <li class="bg-sidewalk"><a href="/departments/"><i class="fa fa-sitemap" aria-hidden="true"></i> City government directory</a>
+            <li class="bg-sidewalk" tabindex="0"><a href="/departments/"><i class="fa fa-sitemap"></i> City government directory</a>
             </li>
           </ul>
           </nav>
@@ -148,17 +147,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="row equal-height">
           <div class="small-16 medium-6 columns equal valign small-push-4 medium-push-0">
             <div class="valign-cell">
-              <a href="<?php echo get_home_url(); ?>" class="logo">
+              <a href="<?php echo get_home_url(); ?>" class="logo" tabindex="1" aria-label="City of Philadelphia">
                 <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
               </a>
             </div>
           </div>
+          <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
           <div class="medium-17 columns show-for-medium equal desktop-nav">
             <div class="top-bar-right valign-mu">
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul class="horizontal menu pan valign-mu">
                   <li class="services-menu-link" data-toggle="services-mega-menu">
-                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)"> Services</a>
+                    <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)">Services</a>
                     </li>
                   <li>
                     <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
