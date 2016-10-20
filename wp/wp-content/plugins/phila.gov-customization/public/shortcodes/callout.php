@@ -7,29 +7,31 @@
 *
 * @package phila-gov_customization
 */
-function callout_shortcode($atts){
+function callout_shortcode($atts, $content=null){
   $a = shortcode_atts( array(
-    'summary' => '',
+    //'summary' => '',
     'type' => '',
     'inline' => 'true',
   ), $atts);
 
   $output = '';
 
-  if ( $a['summary'] != '' ){
+  if ( $content != '' ){
     $output .= '<div class="callout';
 
-    if($a['type'] == 'important') {
-      $output .= ' ' . $a['type'] . ' ';
-    }
+    $output .= $a['type'] == 'important' ? ' ' . $a['type'] . ' ' : ' ';
+    // if($a['type'] == 'important') {
+    //   $output .= ' ' . $a['type'] . ' ';
+    // }
 
-    if($a['inline'] == 'true') {
-      $output .= 'mtl">';
-    } else  {
-        $output .= 'mbn">';
-    }
+    $output .= $a['inline'] == 'true' ? 'mtl">' : 'mbn">';
+    // if($a['inline'] == 'true') {
+    //   $output .= 'mtl">';
+    // } else  {
+    //     $output .= 'mbn">';
+    // }
 
-    $output .= '<p>' . $a['summary'] . '</p>';
+    $output .= '<p>' . $content . '</p>';
     $output .= '</div>';
 
     return $output;
