@@ -13,6 +13,16 @@ function callout_shortcode($atts, $content=null){
     'inline' => 'true',
   ), $atts);
 
+  $allowed_html = [
+    'a'      => [
+        'href'  => [],
+        'title' => [],
+      ],
+    'br'     => [],
+    'em'     => [],
+    'strong' => [],
+  ];
+
   $output = '';
 
   if ( $content != '' ){
@@ -22,7 +32,7 @@ function callout_shortcode($atts, $content=null){
 
     $output .= $a['inline'] == 'true' ? 'mtl">' : 'mbn">';
 
-    $output .= '<p>' . $content . '</p>';
+    $output .= '<p>' . wp_kses($content, $allowed_html). '</p>';
     $output .= '</div>';
 
     return $output;
