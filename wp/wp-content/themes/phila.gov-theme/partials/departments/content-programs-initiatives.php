@@ -69,7 +69,7 @@
               <!-- Display Callout -->
               <section class="row mvm">
                 <div class="large-24 column">
-                    <?php echo do_shortcode('[callout summary="' . $callout_text . '" type="' . $callout_type . '" inline="false"]'); ?>
+                    <?php echo do_shortcode('[callout type="' . $callout_type . '" inline="false"]' . $callout_text . '[/callout]'); ?>
                 </div>
               </section>
             <?php endif;?>
