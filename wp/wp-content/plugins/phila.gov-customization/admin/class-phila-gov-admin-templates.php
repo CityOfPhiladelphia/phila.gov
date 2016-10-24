@@ -82,8 +82,9 @@ class Phila_Gov_Admin_Templates {
     $conditions['postdivrich'] = array(
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'default' ),
-          array('phila_template_select', '=', '' ),
+          array( 'phila_template_select', '=', 'default' ),
+          array( 'phila_template_select', '=', '' ),
+          array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
         ),
         'relation' => 'or'
       ),

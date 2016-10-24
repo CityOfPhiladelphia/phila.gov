@@ -1863,7 +1863,7 @@ $meta_forms_instructions = array(
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('page', 'service_page'),
-  'visible' => array('phila_template_select', 'default'),
+  'visible' => array( 'phila_template_select', 'default', 'one_quarter_headings_v2' ),
 
   'fields' => array(
     array(
