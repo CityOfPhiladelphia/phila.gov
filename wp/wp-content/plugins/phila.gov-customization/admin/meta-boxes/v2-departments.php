@@ -4,7 +4,7 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_department_meta_boxes' );
 
 function phila_register_department_meta_boxes( $meta_boxes ){
 
-
+  //Department Homepage
   $meta_boxes[] = array(
     'title' => 'Our services',
     'pages'    => array( 'department_page' ),

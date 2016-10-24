@@ -131,7 +131,6 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
     ),
   );
 
-
   //Tax Detail Template
   $meta_boxes[] = array(
     'title' => 'Tax Highlights',
