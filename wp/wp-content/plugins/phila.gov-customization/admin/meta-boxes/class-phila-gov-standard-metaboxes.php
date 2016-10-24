@@ -305,11 +305,13 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   //NOTE: While these fields are potentially cloneable, having multiple fields appear in different groups will fail. As we saw with multiple cloneable address fields.
   public static function phila_v2_icon_selection(){
     return $meta_var_v2_icon_selection = array(
-        'id'  => 'phila_v2_icon',
-        'name'  => 'Select icon',
-        'type'  => 'text',
-      );
-    }
+      //TODO: swap this out for an icon picker
+      'id'  => 'phila_v2_icon',
+      'desc' => 'Example: fa-icon-name',
+      'name'  => 'Select icon',
+      'type'  => 'text',
+    );
+  }
 
   public static function phila_v2_service_page_selector(){
     return $meta_var_v2_service_page = array(
