@@ -8,7 +8,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Our services',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'department_homepage_v2' ),
+    'visible' => array( 'phila_template_select', 'homepage_v2' ),
 
     'fields' => array(
       array(
