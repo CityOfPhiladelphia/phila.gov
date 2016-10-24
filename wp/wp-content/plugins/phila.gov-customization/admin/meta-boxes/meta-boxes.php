@@ -63,33 +63,6 @@ function phila_register_meta_boxes( $meta_boxes ){
   $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
 
 
-  $wysiwyg_options_basic_heading = array(
-    'media_buttons' => false,
-    'teeny' => true,
-    'dfw' => false,
-    'quicktags' => false,
-    'tinymce' => phila_setup_tiny_mce_basic(
-      array(
-        'format_select' => true,
-        'heading_level' => 'h3'
-       )
-     ),
-    'editor_height' => 200,
-  );
-
-  $wysiwyg_options_basic = array(
-    'media_buttons' => false,
-    'teeny' => true,
-    'dfw' => false,
-    'quicktags' => false,
-    'tinymce' => phila_setup_tiny_mce_basic(
-      array(
-        'format_select' => false
-       )
-     ),
-    'editor_height' => 200,
-  );
-
   $meta_boxes[] = array(
     'id'       => 'news-admin-only',
     'title'    => 'Homepage Display',
@@ -130,7 +103,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         array(
          'id'   => 'phila_document_description',
          'type' => 'wysiwyg',
-         'options' => $wysiwyg_options_basic,
+         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
          'desc' => 'Information describing the collection of documents on this page. This content will appear above the document list.'
        ),
        array(
@@ -1221,21 +1194,6 @@ $meta_var_call_to_action_multi = array(
   ),
 );
 
-// Full Width Calendar
-$meta_var_calendar_full = array(
-  array(
-    'name' => 'Calender ID',
-    'id'   => 'phila_full_width_calendar_id',
-    'desc'  => 'ID of the calendar',
-    'type' => 'number'
-  ),
-  array(
-    'name' => 'Calendar URL',
-    'id'   => 'phila_full_width_calendar_url',
-    'desc'  => 'URL of the full calendar',
-    'type' => 'url'
-  ),
-);
 
 // Callout
 $meta_var_callout = array(
@@ -1393,35 +1351,6 @@ $meta_var_connect = array(
   ),
 );
 
-// Custom Text
-$meta_var_textarea = array(
-  array(
-    'name' => 'Custom Text Title',
-    'id'   => 'phila_custom_text_title',
-    'type' => 'text',
-  ),
-  array(
-    'name' => 'Custom Text Content',
-    'id'   => 'phila_custom_text_content',
-    'type' => 'textarea',
-  ),
-);
-
-// Custom Text Multi
-$meta_var_textarea_multi = array(
-  array(
-    'name' => 'Row Title',
-    'id'   => 'phila_custom_row_title',
-    'type' => 'text',
-  ),
-  array(
-    'id'   => 'phila_custom_text_group',
-    'type' => 'group',
-    'clone' => true,
-    'max_clone' => 3,
-    'fields' => $meta_var_textarea,
-  )
-);
 
 // Pullquote
 $meta_var_pullquote = array(
@@ -1489,25 +1418,6 @@ $meta_var_list_items = array(
   ),
 );
 
-//WYSIWYG with Title
-$meta_var_wysiwyg = array(
-  'id'  =>  'phila_custom_wysiwyg',
-  'type'  => 'group',
-  'clone' => false,
-
-  'fields'  => array(
-    array(
-      'name'  => 'Section Title',
-      'id'  => 'phila_wysiwyg_title',
-      'type'  => 'text'
-    ),
-    array(
-      'id'  => 'phila_wysiwyg_content',
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
-    )
-  )
-);
 
 //Clonable WYSIWYG with title
 $meta_var_wysiwyg_multi = array(
@@ -1526,342 +1436,8 @@ $meta_var_wysiwyg_multi = array(
     array(
       'id'  => 'phila_wysiwyg_content',
       'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
+      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
     )
-  )
-);
-
-//Default address fields
-$meta_var_standard_address = array(
-  'id'  =>  'address_group',
-  'type'  => 'group',
-  'fields'  => array(
-
-    array(
-      'type' => 'heading',
-      'name' => 'Address',
-    ),
-    array(
-      'name' => 'Street Address 1',
-      'id'   => 'phila_std_address_st_1',
-      'type' => 'text',
-    ),
-    array(
-      'name' => 'Street Address 2',
-      'id'   => 'phila_std_address_st_2',
-      'type' => 'text',
-    ),
-    array(
-      'name' => 'City',
-      'id'   => 'phila_std_address_city',
-      'type' => 'text',
-      'std' => 'Philadelphia',
-    ),
-    array(
-      'name' => 'State',
-      'id'   => 'phila_std_address_state',
-      'type' => 'text',
-      'std' => 'PA',
-    ),
-    array(
-      'name' => 'Zip',
-      'id'   => 'phila_std_address_zip',
-      'type' => 'text',
-      'std' => '19107',
-    ),
-  ),
-);
-
-
-//Purpose: To display content in a wysiwyg and include markup for an address
-$meta_var_wysiwyg_address_content = array(
-  'id'  => 'phila_wysiwyg_address_content',
-  'type'  => 'group',
-  'clone' => true,
-  'sort_clone'  => true,
-
-  'fields'  => array(
-    array(
-      //TODO: determine way to display step numbers in admin
-      'placeholder' => 'Heading',
-      'id'  => 'phila_wysiwyg_heading',
-      'type'  => 'text',
-      'class' => 'width-95'
-    ),
-    array(
-      'id'  => 'phila_wysiwyg_content',
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic_heading
-    ),
-    array(
-      'desc'  => 'Include an address?',
-      'id'  => 'phila_address_select',
-      'type'  => 'checkbox',
-    ),
-    array(
-      'id' => 'phila_std_address',
-      'type' => 'group',
-      'visible' => array('phila_address_select', true),
-
-      'fields' => array(
-        $meta_var_standard_address,
-      ),
-    ),
-  )
-);
-
-//Purpose: To display content in a wysiwyg and include markup for an address
-//TODO: Merge these two almost-identical fields. The ID used to create the metabox will interfere with other metaboxes that are used on the same page. For now we will create a second version of the address content metabox so we can set a different ID.
-$meta_var_wysiwyg_address_content_unique = array(
-  'id'  => 'phila_wysiwyg_address_content',
-  'type'  => 'group',
-  'clone' => true,
-  'sort_clone'  => true,
-
-  'fields'  => array(
-    array(
-      //TODO: determine way to display step numbers in admin
-      'placeholder' => 'Heading',
-      'id'  => 'phila_wysiwyg_heading',
-      'type'  => 'text',
-      'class' => 'width-95'
-    ),
-    array(
-      'id'  => 'phila_unique_wysiwyg_content',
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic_heading
-    ),
-    array(
-      'desc'  => 'Include an address?',
-      'id'  => 'phila_address_select',
-      'type'  => 'checkbox',
-    ),
-    array(
-      'id' => 'phila_std_address',
-      'type' => 'group',
-      'visible' => array('phila_address_select', true),
-
-      'fields' => array(
-        $meta_var_standard_address,
-      ),
-    ),
-  )
-);
-
-
-
-$meta_var_wysiwyg_address_content = array(
-  'id'  => 'phila_wysiwyg_address_content',
-  'type'  => 'group',
-  'clone' => true,
-  'sort_clone'  => true,
-
-  'fields'  => array(
-    array(
-      //TODO: determine way to display step numbers in admin
-      'placeholder' => 'Heading',
-      'id'  => 'phila_wysiwyg_heading',
-      'type'  => 'text',
-      'class' => 'width-95'
-    ),
-    array(
-      'id'  => 'phila_wysiwyg_content',
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
-    ),
-    array(
-      'desc'  => 'Include an address?',
-      'id'  => 'phila_address_select',
-      'type'  => 'checkbox',
-    ),
-    array(
-      'id' => 'phila_std_address',
-      'type' => 'group',
-      'visible' => array('phila_address_select', true),
-
-      'fields' => array(
-        $meta_var_standard_address,
-      ),
-    ),
-  )
-);
-
-
-//Purpose: To display content in a stepped order on the front-end
-$meta_var_ordered_content = array(
-  'id'  => 'phila_ordered_content',
-  'type'  => 'group',
-  'clone' => true,
-  'sort_clone'  => true,
-
-  'fields'  => array(
-    array(
-      //TODO: determine way to display step numbers in admin
-      'placeholder' => 'Step Heading',
-      'id'  => 'phila_step_wysiwyg_heading',
-      'type'  => 'text',
-      'class' => 'width-95'
-    ),
-    array(
-      'id'  => 'phila_step_wysiwyg_content',
-      'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
-    ),
-    array(
-      'desc'  => 'Does this step contain an address?',
-      'id'  => 'phila_address_step',
-      'type'  => 'checkbox',
-    ),
-    array(
-      'id' => 'phila_std_address',
-      'type' => 'group',
-      'visible' => array('phila_address_step', true),
-
-      'fields' => array(
-        $meta_var_standard_address,
-      ),
-    ),
-  )
-);
-
-//Specific for tax detail template.
-$meta_var_tax_due_date = array(
-  'id'  =>  'phila_tax_due_date',
-  'type'  => 'group',
-  'clone' => false,
-
-  'fields' => array(
-    array(
-      'name'  => 'Due Date Callout',
-      'type' => 'heading',
-    ),
-
-    array(
-      'name'  => 'Due Date Type',
-      'id'  => 'phila_tax_date_choice',
-      'type'  => 'select',
-      'options' => array(
-        'monthly' => 'Tax is due monthly',
-        'yearly'  => 'Tax is due yearly',
-        'misc'  => 'Tax is miscellaneous'
-      ),
-    ),
-    array(
-      'visible' => array(
-        'when' => array(
-          array('phila_tax_date_choice', 'monthly'),
-          array('phila_tax_date_choice', 'yearly'),
-        ),
-        'relation' => 'or',
-      ),
-      'name'  =>  'Tax Due Date',
-      'id'  => 'phila_tax_date',
-      'desc'  => 'Enter the day of the month this tax is due.',
-      'type'  =>  'number',
-      'min' => '1',
-      'max' => '31',
-      'required'  => true
-    ),
-
-    array(
-      'visible' => array('phila_tax_date_choice', 'yearly'),
-      'name'  => 'Month Due',
-      'id'  => 'phila_tax_date_month',
-      'desc'  => 'Enter the month of the year this tax is due.',
-      'type'  => 'select',
-      'placeholder' => 'Choose month...',
-      'options' => phila_return_month_array(),
-    ),
-    array(
-      'hidden' => array('phila_tax_date_choice', 'misc'),
-      'name'  => 'Brief Explanation',
-      'id'  => 'phila_tax_date_summary_brief',
-      'type'  => 'wysiwyg',
-      'desc'  => 'Example: "of each month, for the prior month\'s activity." <br>This content will appear in the date callout box . ',
-      'options' => $wysiwyg_options_basic,
-      'required'  => true
-    ),
-    array(
-      'visible' => array('phila_tax_date_choice', 'misc'),
-      'id'  => 'phila_tax_date_misc_details',
-      'type'  => 'wysiwyg',
-      'desc'  => 'This content will appear in the date callout box . ',
-      'options' => $wysiwyg_options_basic,
-      'required'  => true
-    ),
-    array(
-      'name'  => 'Due Date Details',
-      'type'  => 'heading',
-    ),
-    array(
-      'id'  => 'phila_tax_date_summary_detailed',
-      'type'  => 'wysiwyg',
-      'desc'  => 'Provide detailed date information. This content will appear in the "Important Dates" section.',
-      'options' => $wysiwyg_options_basic,
-      'required'  => true
-    ),
-  ),
-);
-//Specific to the tax detail template
-$meta_var_tax_costs = array(
-  'id'  =>  'phila_tax_costs',
-  'type'  => 'group',
-  'clone' => false,
-
-  'fields' => array(
-    array(
-      'name'  => 'Tax Rate Callout',
-      'type' => 'heading',
-    ),
-    array(
-      'name'  =>  'Tax Cost',
-      'id'  => 'phila_tax_cost_number',
-      'type'  =>  'number',
-      'step'  => 'any',
-    ),
-    array(
-      'name'  => 'Unit',
-      'id'  =>  'phila_tax_cost_unit',
-      'type'  => 'select',
-      'options' => array(
-        'percent' => '%',
-        'dollar'  => '$',
-        'mills' => 'mills'
-      )
-    ),
-    array(
-      'name'  => 'Brief Explanation',
-      'id'  => 'phila_tax_cost_summary_brief',
-      'type'  => 'wysiwyg',
-      'desc'  => 'Example: "of the admission charge." <br> This content will appear in the tax callout box . ',
-      'options' => $wysiwyg_options_basic,
-      'required'  => true
-    ),
-    array(
-      'name'  => 'Cost Details',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => 'phila_tax_cost_summary_detailed',
-      'type'  => 'wysiwyg',
-      'desc'  => 'Provide detailed cost information. This content will appear under the "Tax Rates, Penalties & Fees" section.',
-      'options' => $wysiwyg_options_basic,
-      'required'  => true
-    ),
-  ),
-);
-
-//Specific to the tax detail template
-$meta_forms_instructions = array(
-  'id'  => 'phila_forms_instructions',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Forms & Instructions',
-      'type'  => 'heading'
-    ),
-    Phila_Gov_Standard_Metaboxes::phila_metabox_document_page_selector()
   )
 );
 
@@ -1878,10 +1454,11 @@ $meta_related_content = array(
     array(
       'id'  => 'phila_related_content',
       'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
+      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
     ),
   )
 );
+
 //Questions metabox, used for Pages
 $meta_questions = array(
   'id'  => 'phila_questions',
@@ -1895,7 +1472,7 @@ $meta_questions = array(
     array(
       'id'  => 'phila_question_content',
       'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
+      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
     ),
   )
 );
@@ -1913,7 +1490,7 @@ $meta_did_you_know = array(
     array(
       'id'  => 'phila_did_you_know_content',
       'type'  => 'wysiwyg',
-      'options' => $wysiwyg_options_basic
+      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
     ),
   )
 );
@@ -1964,7 +1541,7 @@ $metabox_full_options = array(
      'id' => 'phila_full_width_calendar',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
-     'fields' => $meta_var_calendar_full,
+     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
    ),
    array(
      'id'   => 'phila_callout',
@@ -1976,7 +1553,7 @@ $metabox_full_options = array(
      'id'   => 'phila_custom_text',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
-     'fields' => $meta_var_textarea,
+     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
    ),
    array(
      'id'  => 'phila_call_to_action_multi',
@@ -2038,13 +1615,13 @@ $metabox_thirds_option_one = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
-      'fields' => $meta_var_textarea,
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
     ),
     array(
       'id'   => 'phila_custom_text_multi',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
-      'fields' => $meta_var_textarea_multi,
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea_multi(),
     ),
   ),
 );
@@ -2076,7 +1653,7 @@ $metabox_thirds_option_two = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
-      'fields' => $meta_var_textarea,
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
     ),
     array(
       'id'   => 'phila_custom_feature',
@@ -2129,7 +1706,7 @@ $metabox_half_option_one = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
-      'fields' => $meta_var_textarea,
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
     ),
     array(
       'id'   => 'phila_pullquote',
@@ -2160,7 +1737,7 @@ $metabox_half_option_two = array(
        'id'   => 'phila_custom_text',
        'type' => 'group',
        'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
-       'fields' => $meta_var_textarea,
+       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
      ),
      array(
        'id'   => 'phila_pullquote',
@@ -2270,118 +1847,19 @@ $meta_boxes[] = array(
   )
 );
 
-//Tax Detail Template
-$meta_boxes[] = array(
-  'title' => 'Tax Highlights',
-  'pages' => array('page', 'service_page'),
-  'priority' => 'high',
-
-  'visible' => array('phila_template_select', 'tax_detail'),
+$meta_forms_instructions = array(
+  'id'  => 'phila_forms_instructions',
+  'type'  => 'group',
 
   'fields'  => array(
     array(
-      'id'  => 'phila_tax_highlights',
-      'type'   => 'group',
-
-      'fields'  => array(
-        $meta_var_tax_due_date,
-        array(
-          'type'  => 'divider'
-        ),
-        $meta_var_tax_costs,
-        array(
-          'type'  => 'divider'
-        ),
-        array(
-          'id'  => 'phila_tax_code',
-          'name'  => 'Tax Type Code',
-          'type'  => 'number'
-        ),
-      ),
-    )
+      'name'  => 'Forms & Instructions',
+      'type'  => 'heading'
+    ),
+    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector()
   )
 );
 
-$meta_boxes[] = array(
-  'title' => 'Tax Details',
-  'pages' => array('page', 'service_page'),
-  'priority' => 'high',
-  'visible' => array('phila_template_select', 'tax_detail'),
-
-  'fields'  => array(
-    array(
-      'id'  => 'phila_tax_payment_info',
-      'type'   => 'group',
-
-      'fields'  => array(
-        array(
-          'name' => 'Who has to pay the tax?',
-          'type'  => 'heading'
-        ),
-        array(
-          'id'  => 'phila_tax_who_pays',
-          'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading
-        ),
-        array(
-          'name'  => 'What happens if the tax is not paid on time?',
-          'type'  => 'heading'
-        ),
-        array(
-          'id'  => 'phila_tax_late_fees',
-          'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading
-        ),
-        array(
-          'name' => 'Who is eligible for a discount?',
-          'type'  => 'heading'
-        ),
-        array(
-          'id'  => 'phila_tax_discounts',
-          'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading
-          ),
-        array(
-          'name'  => 'Can you be excused from paying the tax?',
-          'type'  => 'heading'
-        ),
-        array(
-          'id'  => 'phila_tax_exemptions',
-          'type'  => 'wysiwyg',
-          'options' => $wysiwyg_options_basic_heading
-        )
-      )
-    )
-  )
-);
-
-$meta_boxes[] = array(
-  'title' => 'How to pay',
-  'pages' => array('page', 'service_page'),
-  'priority' => 'high',
-  'visible' => array('phila_template_select', 'tax_detail'),
-
-  'fields'  => array(
-    array(
-      'id'  => 'phila_payment_group',
-      'type'  => 'group',
-
-    'fields' => array(
-        array(
-          'name' => 'Introduction',
-          'type'  => 'heading',
-        ),
-        $meta_var_wysiwyg_address_content,
-        array(
-          'name' => 'Steps in payment process',
-          'type'  => 'heading',
-        ),
-        $meta_var_ordered_content
-      ),
-    )
-  )
-);
-//default tax detail template
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('page', 'service_page'),
@@ -2394,13 +1872,11 @@ $meta_boxes[] = array(
       'clone' => false,
 
       'fields' => array(
-        $meta_var_wysiwyg_address_content_unique
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_unique()
       )
     )
   )
 );
-
-
 
 $meta_boxes[] = array(
   'title' => 'Additional Content',
