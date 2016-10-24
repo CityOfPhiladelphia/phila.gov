@@ -8,11 +8,11 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Our services',
     'pages'    => array( 'department_page' ),
-    'visible' => array('phila_template_select', 'department_homepage_v2'),
+    'visible' => array( 'phila_template_select', 'department_homepage_v2' ),
 
     'fields' => array(
       array(
-        'id'       => 'phila_v2_homepages',
+        'id'       => 'phila_v2_homepage_services',
         'title'    => 'Service Picker',
         'context'  => 'normal',
         'priority' => 'high',
@@ -22,12 +22,10 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
           Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
-          ),
         ),
       ),
-
-
-    );
+    ),
+  );
 
   return $meta_boxes;
 }
