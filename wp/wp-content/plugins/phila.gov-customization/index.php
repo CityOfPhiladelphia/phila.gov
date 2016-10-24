@@ -44,6 +44,7 @@ require $dir. '/admin/tiny-mce.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-standard-metaboxes.php';
 require $dir. '/admin/meta-boxes/tax-detail-fields.php';
+require $dir. '/admin/meta-boxes/v2-departments.php';
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 
 require $dir. '/public/shortcodes/blogs.php';
