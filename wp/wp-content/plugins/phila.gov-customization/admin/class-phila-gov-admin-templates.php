@@ -55,6 +55,7 @@ class Phila_Gov_Admin_Templates {
           'disabled'  => '──────────',
           'homepage_v2' => 'Homepage Version 2',
           'one_quarter_headings_v2' => '1/4 Headings',
+          'contact_us_v2' => 'Contact Page',
           ),
        ),
        array(
