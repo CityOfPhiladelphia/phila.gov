@@ -32,19 +32,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       ),
 
       'fields' => array(
-
-        array(
-          'name'  => 'Description',
-          'desc'  => 'This field is deprecated. Please use the Short Description field at the top of the page.',
-          'id'    => $prefix . 'dept_desc',
-          'type'  => 'textarea',
-          'class' => 'dept-description',
-          'attributes' => array(
-            'data-readonly'  => 'true'
-          ),
-          'clone' => false,
-        ),
-
+        
         array(
           'name'  => 'External URL of Department',
           'desc'  => 'If the department does not live on this website, enter the location here. Eg. http://phila.gov/health/. <br>If the department lives off-site, then the transition template is displayed, instead of the body content.',
