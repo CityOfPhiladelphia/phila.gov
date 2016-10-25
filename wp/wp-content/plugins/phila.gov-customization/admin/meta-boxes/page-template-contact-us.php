@@ -7,6 +7,7 @@ function phila_register_department_contact_us( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Contact us',
     'pages' => array('department_page'),
+    'visible' => array( 'phila_template_select', 'contact_us_v2' ),
 
     'fields' => array(
       array(
@@ -15,16 +16,16 @@ function phila_register_department_contact_us( $meta_boxes ){
         'priority' => 'high',
         'type'  => 'group',
         'clone' => true,
-        'visible' => array( 'phila_template_select', 'contact_us_v2' ),
 
         'fields' => array(
           array(
             'type' => 'heading',
-            'name' => 'Contact row title',
+            'name' => 'Contact row heading',
           ),
           array(
             'id'  => 'phila_contact_row_title',
             'type' => 'text',
+            'class' => 'width-95'
           ),
           array(
             'id'     => 'phila_contact_group',
@@ -33,6 +34,7 @@ function phila_register_department_contact_us( $meta_boxes ){
             'max_clone' => 3,
 
             'fields' => array(
+              Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
               array(
                 'type' => 'heading',
                 'name'  => 'Column title'
@@ -40,9 +42,8 @@ function phila_register_department_contact_us( $meta_boxes ){
               array(
                 'id' => 'phila_contact_column_title',
                 'type'  => 'text',
-                'desc'  => 'Enter the title for this column of contact junk'
+                'class' => 'width-95'
               ),
-              Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
               Phila_Gov_Standard_Metaboxes::phila_v2_phone(),
               Phila_Gov_Standard_Metaboxes::phila_v2_fax(),
