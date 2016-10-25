@@ -50,6 +50,7 @@ require $dir. '/admin/meta-boxes/meta-boxes.php';
 
 require $dir. '/public/shortcodes/blogs.php';
 require $dir. '/public/shortcodes/callout.php';
+require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/news.php';
 require $dir. '/public/shortcodes/press-releases.php';
 require $dir. '/public/shortcodes/pullquote.php';
