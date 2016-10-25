@@ -8,7 +8,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
   public static function phila_wysiwyg_options_basic(){
 
-    return $wysiwyg_options_basic = array(
+    return array(
       'media_buttons' => false,
       'teeny' => true,
       'dfw' => false,
@@ -24,7 +24,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
   public static function phila_wysiwyg_options_basic_heading(){
 
-    return $wysiwyg_options_basic_heading = array(
+    return array(
       'media_buttons' => false,
       'teeny' => true,
       'dfw' => false,
@@ -42,7 +42,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   public static function phila_metabox_v2_address_fields(){
 
     //Default address fields
-    return $meta_var_standard_address = array(
+    return array(
       'id'  =>  'address_group',
       'type'  => 'group',
       'fields'  => array(
@@ -88,7 +88,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
   public static function phila_metabox_v2_address_fields_unique(){
 
-    return $meta_var_wysiwyg_address_content_unique = array(
+    return array(
       'id'  => 'phila_wysiwyg_address_content',
       'type'  => 'group',
       'clone' => true,
@@ -127,7 +127,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
   public static function phila_metabox_v2_calendar_full(){
 
-    return $meta_var_calendar_full = array(
+    return array(
       array(
         'name' => 'Calender ID',
         'id'   => 'phila_full_width_calendar_id',
@@ -146,7 +146,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
   public static function phila_metabox_v2_document_page_selector(){
 
-    return $meta_var_document_page_selector = array(
+    return array(
       'id'  => 'phila_document_page_picker',
       'type'  => 'post',
       'post_type' => 'document',
@@ -169,7 +169,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   public static function phila_metabox_v2_textarea(){
 
     // Custom Text
-    return $meta_var_textarea = array(
+    return array(
       array(
         'name' => 'Custom Text Title',
         'id'   => 'phila_custom_text_title',
@@ -186,7 +186,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   public static function phila_metabox_v2_textarea_multi(){
 
     // Custom Text Multi
-    return $meta_var_textarea_multi = array(
+    return array(
       array(
         'name' => 'Row Title',
         'id'   => 'phila_custom_row_title',
@@ -205,7 +205,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   public static function phila_metabox_v2_wysiwyg(){
 
     //WYSIWYG with Title
-    return $meta_var_wysiwyg = array(
+    return array(
       'id'  =>  'phila_custom_wysiwyg',
       'type'  => 'group',
       'clone' => false,
@@ -226,7 +226,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
   public static function phila_metabox_v2_wysiwyg_address(){
     //Purpose: To display content in a wysiwyg and include markup for an address
-    return $meta_var_wysiwyg_address_content = array(
+    return array(
       'id'  => 'phila_wysiwyg_address_content',
       'type'  => 'group',
       'clone' => true,
@@ -266,7 +266,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   public static function phila_metabox_v2_ordered_content(){
 
     //Purpose: To display content in a stepped order on the front-end
-   return $meta_var_ordered_content = array(
+   return array(
       'id'  => 'phila_ordered_content',
       'type'  => 'group',
       'clone' => true,
@@ -304,7 +304,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
   //NOTE: While these fields are potentially cloneable, having multiple fields appear in different groups will fail. As we saw with multiple cloneable address fields.
   public static function phila_v2_icon_selection(){
-    return $meta_var_v2_icon_selection = array(
+    return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
       'desc' => 'Example: fa-icon-name',
@@ -314,7 +314,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
   public static function phila_v2_service_page_selector(){
-    return $meta_var_v2_service_page = array(
+    return array(
       'id'  => 'phila_v2_service_page',
       'name' => 'Select service page',
       'type'  => 'post',
