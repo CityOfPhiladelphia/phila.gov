@@ -22,17 +22,17 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     $meta_boxes[] = array(
       'id'       => 'departments',
-      'title'    => 'Department General Information',
+      'title'    => 'External Site',
       'pages'    => array( 'department_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
 
-      'exclude' => array(
-        'phila_is_department_homepage'  => 0,
+      'visible' => array(
+        'phila_template_select', '=', 'off_site_department',
       ),
 
       'fields' => array(
-        
+
         array(
           'name'  => 'External URL of Department',
           'desc'  => 'If the department does not live on this website, enter the location here. Eg. http://phila.gov/health/. <br>If the department lives off-site, then the transition template is displayed, instead of the body content.',
@@ -40,9 +40,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'type'  => 'URL',
           'class' => 'dept-url',
           'clone' => false,
-          'visible' => array(
-            'phila_template_select', '=', 'off_site_department',
-          ),
         ),
       )
     );//External department link
