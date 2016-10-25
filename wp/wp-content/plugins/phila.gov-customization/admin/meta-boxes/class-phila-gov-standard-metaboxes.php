@@ -334,4 +334,33 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
+  public static function phila_v2_phone(){
+    return array(
+      'id'  => 'phila_v2_phone',
+      'name'  => 'Phone',
+      'type'  => 'phone',
+    );
+  }
+  public static function phila_v2_fax(){
+    return array(
+      'id'  => 'phila_v2_fax',
+      'name'  => 'Fax',
+      'type'  => 'phone',
+    );
+  }
+  public static function phila_v2_email(){
+    return array(
+      'id'  => 'phila_v2_email',
+      'name'  => 'Email',
+      'type'  => 'email',
+    );
+  }
+  public static function phila_v2_hours(){
+    return array(
+      'id'  => 'phila_v2_hours',
+      'name'  => 'Hours',
+      'type'  => 'text',
+    );
+  }
+
 }
