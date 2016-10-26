@@ -26,7 +26,6 @@ require $dir. '/admin/admin-documentation.php';
 require $dir. '/admin/admin-ui.php';
 require $dir. '/admin/class-phila-gov-admin-documents.php';
 require $dir. '/admin/class-phila-gov-admin-menu.php';
-require $dir. '/admin/class-phila-gov-admin-templates.php';
 require $dir. '/admin/class-phila-gov-custom-post-types.php';
 require $dir. '/admin/class-phila-gov-custom-taxonomies.php';
 //require $dir. '/admin/class-phila-gov-department-author-media.php';
@@ -40,6 +39,7 @@ require $dir. '/admin/class-phila-gov-staff-directory.php';
 require $dir. '/admin/define-roles.php';
 require $dir. '/admin/tiny-mce.php';
 
+require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-item-meta-desc.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-standard-metaboxes.php';
