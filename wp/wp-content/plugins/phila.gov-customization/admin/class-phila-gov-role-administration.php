@@ -164,22 +164,31 @@ class Phila_Gov_Role_Administration {
    * @since    0.14.0
    */
   public function change_dropdown_args( $dropdown_args, $post ) {
-
     $current_user_cat = $this->get_current_user_category();
+    $exclude = '';
 
-      $dropdown_args = array(
-        'post_type'        => $post->post_type,
-        'exclude_tree'     => $post->ID,
-        'selected'         => $post->post_parent,
-        'name'             => 'parent_id',
-        'show_option_none' => __('(no parent)'),
-        'sort_column'      => 'menu_order',
-        'echo'             => 0,
-        'meta_key'         =>'_category',
-        'meta_value'       => $current_user_cat
-      );
+    $args = array(
+      'post_type'  => get_post_type(),
+      'posts_per_page'   => -1,
+      'post_status' => 'publish',
+      'meta_query' => array(
+        array(
+          'key' => '_category',
+          'value' => $current_user_cat,
+          'compare' => 'NOT IN'
+        )
+      ),
+    );
 
-      return $dropdown_args;
+    $pages = get_posts( $args );
+    foreach($pages as $page){
+      $exclude = $page->ID . "," . $exclude;
+    }
+    $exclude = rtrim($exclude, ', ');
+    $dropdown_args['exclude_tree'] = $exclude;
+    $dropdown_args['post_status'] = array( 'publish' );
+    return $dropdown_args;
+
   }
   /**
    * Ensures the change_dropdown_args runs at the correct time.
