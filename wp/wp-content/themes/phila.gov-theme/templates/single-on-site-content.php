@@ -20,6 +20,7 @@
 
 <div data-swiftype-index='true' class="entry-content">
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+
   <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
 
   <?php if( get_the_content() != '' ) : ?>
@@ -33,6 +34,11 @@
     </section>
     <!-- End WYSIWYG content -->
   <?php endif; ?>
+
+  <?php //Begin v2 templates ?>
+  <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
+    <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
+  <?php endif;?>
 
   <?php if ($user_selected_template == 'department_homepage') : ?>
     <!-- Begin Department Homepage Display -->
