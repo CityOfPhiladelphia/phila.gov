@@ -40,7 +40,7 @@ get_header(); ?>
         }
         $parent = get_post( $id );
 
-        if (strpos($user_selected_template, '_v2') !== false) : ?>
+        if ( phila_util_is_v2_template() ) : ?>
 
           <div class="hero-content">
             <?php // TODO: Get the actual hero image and call it in the img src ?>
