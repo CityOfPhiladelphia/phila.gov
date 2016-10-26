@@ -22,6 +22,9 @@ if ( $children && count( $ancestors ) == 1 ) {
   wp_redirect(get_permalink($firstchild->ID));
   exit;
 }
+
+$user_selected_template = phila_get_selected_template();
+
 get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
@@ -37,8 +40,6 @@ get_header(); ?>
         }
         $parent = get_post( $id );
         ?>
-
-        <?php $user_selected_template = phila_get_selected_template();?>
 
         <?php
           // TODO: check if this is one of an array of v2 templates... currently only checks homepage
@@ -99,21 +100,16 @@ get_header(); ?>
   <?php endif; ?>
 
   <?php
-  if (function_exists('rwmb_meta')) {
-    $external_site = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
-    if (!$external_site == ''){
+    if ( $user_selected_template === 'off_site_department' ){
 
       get_template_part( 'templates/single', 'off-site' );
 
-     } else {
-       //loop for our regularly scheduled content
-       while ( have_posts() ) : the_post();
-
+     }else{
+       
+      while ( have_posts() ) : the_post();
         get_template_part( 'templates/single', 'on-site-content' );
-
-        endwhile;
-      }
-  }
+      endwhile;
+    }
   ?>
 </article><!-- #post-## -->
 <?php get_footer(); ?>
