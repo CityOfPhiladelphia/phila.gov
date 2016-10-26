@@ -78,7 +78,11 @@ get_header(); ?>
         </header>
       </div>
         <?php else: ?>
-          <h1 class="entry-title contrast mbn"><?php echo $parent->post_title;?></h1>
+          <div class="row">
+            <div class="columns">
+              <h1 class="entry-title contrast mbn"><?php echo $parent->post_title;?></h1>
+            </div>
+          </div>
       </header>
     <?php
     //get department homepage alerts
