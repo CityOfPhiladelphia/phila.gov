@@ -18,11 +18,7 @@ get_header(); ?>
 
   <div data-swiftype-index='true' class="entry-content">
     <?php if (function_exists('rwmb_meta')): ?>
-      <?php // Set custom markup vars
-            $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-            $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'));
-            $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'));
-            // Set hero-header vars
+      <?php // Set hero-header vars
             $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
             $hero_header_alt_text = rwmb_meta( 'phila_hero_header_image_alt_text', $args = array('type' => 'text'));
             $hero_header_credit = rwmb_meta( 'phila_hero_header_image_credit', $args = array('type' => 'text'));
@@ -32,14 +28,16 @@ get_header(); ?>
             $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
             // Set Event Detail vars
             $event_description = phila_get_item_meta_desc();
-            
+
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
             $event_location_link = rwmb_meta('phila_event_loc_link' , $args = array('type' => 'url'));
             $event_start_date = rwmb_meta('phila_event_start' , $args = array('type' => 'date'));
             $event_end_date = rwmb_meta('phila_event_end' , $args = array('type' => 'date'));
             $event_connect = rwmb_meta('phila_event_connect' , $args = array('type' => 'textarea'));
 
+            //FIXME: incorrect var names. should be event_content_blocks
             $event_contact_blocks_header = rwmb_meta('phila_event_content_blocks_heading' , $args = array('type' => 'text'));
+            //TODO: remove phila_event_content_blocks_link_text meta-box option
             $event_contact_blocks_link_text = rwmb_meta('phila_event_content_blocks_link_text' , $args = array('type' => 'text'));
             $event_contact_blocks_link = rwmb_meta('phila_event_content_blocks_link' , $args = array('type' => 'url'));
 
@@ -53,14 +51,8 @@ get_header(); ?>
             ?>
     <?php endif; ?>
 
-    <!-- If Custom Markup append_before_wysiwyg is present print it -->
-    <?php if (!$append_before_wysiwyg == ''):?>
-      <div class="row before-wysiwyg">
-        <div class="small-24 columns">
-          <?php echo $append_before_wysiwyg; ?>
-        </div>
-      </div>
-    <?php endif; ?>
+    <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+
     <!-- Hero-Header MetaBox Modules -->
     <?php if (!$hero_header_image == ''): ?>
     <div class="row mtm">
@@ -159,11 +151,11 @@ get_header(); ?>
             <div class="row">
               <div class="large-18 columns">
 
-                <?php $service_updates = phila_get_service_updates();?>
+                <?php $service_updates = phila_get_service_updates_events();?>
 
                 <?php if (is_array($service_updates)): ?>
                 <h2 class="contrast">City Service Updates &amp; Changes</h2>
-                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 3-1-1.</p>
+                <p>Please continue to access this page for up-to-date information. To ask questions or report an issue, contact 311.</p>
                 <div class="row">
                 <?php $i=0; ?>
                 <?php foreach ($service_updates as $update):?>
@@ -172,7 +164,7 @@ get_header(); ?>
                           <div class="service-update-icon equal">
                             <div class="valign">
                               <div class="valign-cell pam">
-                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>  fa-2x" aria-hidden="true"></i>
+                                <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?>" aria-hidden="true"></i>
                                 <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
                               </div>
                             </div>
@@ -288,8 +280,15 @@ get_header(); ?>
             </div>
           <?php endif; ?>
           <?php if (!$event_contact_blocks_link == ''): ?>
-            <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : "More"; ?>
-            <a class="see-all-right float-right" href="<?php echo $event_contact_blocks_link;?>"><?php echo $link_text ?></a>
+            <?php $link_text = (!$event_contact_blocks_link_text=='') ? $event_contact_blocks_link_text : ""; ?>
+            <a class="see-all-right see-all-arrow float-right" href="<?php echo $event_contact_blocks_link;?>" aria-label="See all <?php echo strtolower( $event_contact_blocks_header ); ?>">
+              <div class="valign equal-height">
+                <div class="see-all-label phm prxs valign-cell equal">See all</div>
+                <div class="valign-cell equal">
+                  <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
+                </div>
+              </div>
+            </a>
           <?php endif; ?>
         </div>
       </div>
@@ -315,14 +314,7 @@ get_header(); ?>
     <?php endif; ?>
     <!-- End WYSIWYG content -->
 
-    <!-- If Custom Markup append_after_wysiwyg is present print it -->
-    <?php if (!$append_after_wysiwyg == ''):?>
-     <div class="row after-wysiwyg">
-       <div class="small-24 columns">
-         <?php echo $append_after_wysiwyg; ?>
-       </div>
-     </div>
-    <?php endif; ?>
+    <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
   </div> <!-- End .entry-content -->
 </article><!-- #post-## -->

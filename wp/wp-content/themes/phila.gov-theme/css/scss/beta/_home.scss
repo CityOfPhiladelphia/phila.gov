@@ -1,0 +1,276 @@
+/*
+ *
+ * Home
+ *
+ *
+*/
+.home{
+
+  .hero-content {
+    margin-top:0;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+
+    @media only screen and (min-width: 40em) {
+      background: url('../img/beta_homepage_CoverPhoto_light.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    img {
+
+    }
+    .beta-message {
+      p {
+          font-weight: 400;
+          font-size: 1.15rem;
+      }
+      .h1 {
+        font-size: 2.5rem;
+        line-height: 1;
+        @media only screen and (min-width: 40em) {
+          font-size: 3.5rem;
+        }
+      }
+      .sub-title {
+        font-size: 1.5rem;
+        line-height: 1.25;
+
+        @media only screen and (min-width: 40em) {
+          font-size: 2rem;
+        }
+      }
+    }
+    .mask {
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100px;
+      background-color: white;
+    }
+    .overlap {
+      position: relative;
+      background:none;
+    }
+    .photo-credit.small-text {
+      display:none;
+      @media only screen and (min-width: 64em) {
+        display:inline-block;
+        font-style: italic;
+        font-size: .75rem;
+        color: $medium-gray;
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+        bottom: 105px;
+        right: 0;
+      }
+    }
+    .call-to-action {
+      margin: 0;
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+
+      a .fa, p {
+        color: $ben-franklin-blue;
+      }
+      a .fa {
+        font-size: 5rem;
+        line-height: 5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 3rem;
+          line-height: 4rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: 4rem;
+        }
+      }
+      a .fa-home {
+        font-size: 6rem;
+        line-height: 5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 4rem;
+          line-height: 4rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: 5rem;
+        }
+      }
+      p {
+        margin:0;
+        font-size: 1rem;
+        line-height: 1.25;
+        @media only screen and (min-width: 40em) {
+          font-size: .85rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: 1rem;
+        }
+      }
+      a {
+        background-color: #daedfe;
+        transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -webkit-transition: opacity .2s ease-in-out;
+        &:hover {
+          opacity: .6;
+        }
+      }
+      .cta-block {
+      }
+    }
+  }
+
+  .feedback {
+    .up {
+      background: $ghost-gray;
+    }
+  }
+
+}
+
+.neighborhood-resources {
+  .resource-row {
+    .row {
+      .panel {
+        background-color: rgba(255, 255, 255, 0.7);
+        margin: 0 auto;
+        header {
+          font-family: 'Montserrat', 'Tahoma', sans-serif;
+          font-weight: 400;
+        }
+        .icon {
+          margin-top: .75rem;
+          margin-bottom: .75rem;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 40em) {
+    .contrast {
+      border-bottom: 0;
+    }
+    .resource-row {
+      background:url("../img/beta_homepage_neighborhood_resources.jpg") no-repeat center top;
+      background-size: cover;
+
+      .panel {
+        max-width: 155px;
+        min-height: 161px;
+      }
+    }
+  }
+}
+
+.phila-redesign {
+  .about {
+    border-color: $sidewalk;
+  }
+  .process {
+    .marker {
+      .fa {
+          width: 100%;
+      }
+    }
+    .process-bar {
+      margin-top: -10px;
+
+      .description {
+        text-align: center;
+        &:before {
+          content: '';
+          border-right: 1px solid $medium-gray;
+          display: inline-block;
+          height: 30px;
+          width: 0;
+        }
+        &.current {
+          &:before {
+            border-right: 1px solid $ben-franklin-blue;
+          }
+        }
+        span {
+          text-align: left;
+        }
+      }
+    }
+    .process-label {
+      text-transform: uppercase;
+      width: 100%;
+      text-align: center;
+      height:40px;
+
+      .h5 {
+        font-weight: bold;
+      }
+    }
+    .marker {
+      &:after {
+        content: '';
+        text-align: center;
+        border-right: 1px solid $ben-franklin-blue;
+        display: inline-block;
+        height: 20px;
+        width: 0px;
+        margin-top: -10px;
+      }
+    }
+
+    .left-arrow-indent {
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 15px solid;
+        position: absolute;
+        margin-top: 0px;
+        left: 0;
+      }
+      &.left-arrow-white {
+        &:before {
+          border-left-color: $white;
+        }
+      }
+      &.left-arrow-medium-gray {
+        &:before {
+          border-left-color: $medium-gray;
+        }
+      }
+      &.left-arrow-ben-franklin-blue {
+        &:before {
+          border-left-color: $ben-franklin-blue;
+        }
+      }
+    }
+    .right-arrow {
+      position:relative;
+
+      &:after {
+        position: absolute;
+        background-color: $white;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 15px solid $medium-gray;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        right: 0px;
+      }
+    }
+  }
+}
+
+.see-all-right {
+  &.see-all-arrow {
+    .see-all-label {
+      background: url("data:image/svg+xml,%3Csvg data-name='91974e0d-9b61-4d62-8282-0dadfa44fb48' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 114.8 33' width='115' height='33'%3E%3Cpath fill='%232176d2' d='M114.8 32H1V1H114.8V0H0v33h114.8v-1'/%3E%3C/svg%3E") no-repeat center left;
+      background-size: cover;
+    }
+    &:after {
+      content: none;
+    }
+  }
+
+}

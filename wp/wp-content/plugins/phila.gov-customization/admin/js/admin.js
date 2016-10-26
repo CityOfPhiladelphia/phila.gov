@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
         maxlength: 72
       });
       $('#phila_meta_desc').rules('add', {
-        maxlength: 365
+        maxlength: 140
       });
     }
 
@@ -192,6 +192,27 @@ jQuery(document).ready(function($) {
         $( '#phila_department_home_page' ).prop( 'checked', false );
         $('.postarea').show();
       }
+    });
+  }
+
+  if ( ( typenow == 'service_updates' ) )  {
+    $.validator.setDefaults({
+      ignore: ''
+    });
+    $('#phila_update_type').prop('required', true);
+    $('#phila_update_level').prop('required', true);
+    $('#phila_date_format').prop('required', true);
+    $('[id^=phila_effective_start_date]').prop('required', true);
+    $('[id^=phila_effective_end_date]').prop('required', true);
+    $('textarea[id^="phila_service_update_message"]').each(function (i, el) {
+      $(this).rules('add', {
+        maxlength: 95
+      });
+    });
+    $('input[id^="phila_update_link_text"]').each(function (i, el) {
+      $(this).rules('add', {
+        maxlength: 80
+      });
     });
   }
 

@@ -1,0 +1,55 @@
+#site-wide-alert a,
+#site-wide-alert a:visited {
+  color:$white;
+}
+#site-wide-alert a:hover {
+  color: $dark-gray;
+}
+
+#site-wide-alert{
+  background: $critical-red;
+  text-align: center;
+  color:$white;
+  margin-bottom: 0;
+  font-size: .9rem;
+
+  @media screen and (min-width: 40em) {
+    font-size: 1rem;
+    h2{
+      font-size: 1.78571rem;
+    }
+  }
+  .large-9, .large-15{
+    width:100%;
+  }
+  .alert-start, .ionicons{
+
+  }
+  a:hover, a:active{
+    color:$bell-yellow;
+  }
+}
+
+//TODO: Propose replacing patterns #alpha-alert with more generic class .alert-persistent
+.alert {
+  &.alert-persistent {
+    background:$dark-gray;
+    color: $white;
+    padding: $spacing-small $spacing-none;
+
+    p {
+      font-size: .85rem;
+      display:block;
+      margin: 0;
+    }
+    a:link, a:visited{
+      font-size: .85rem;
+      color:$white;
+      text-transform: uppercase;
+    }
+    a:hover, a:active{
+      font-size: .85rem;
+      color:$bike-share-blue;
+    }
+  }
+}

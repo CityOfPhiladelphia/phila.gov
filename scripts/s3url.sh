@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /home/ubuntu/.ssh/environment
+
 bucket=$1
 key=$2
 

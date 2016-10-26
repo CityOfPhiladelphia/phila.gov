@@ -14,9 +14,6 @@
   );
   $parent_exists = get_pages( $this_parent );
 
-  $append_before_wysiwyg = rwmb_meta( 'phila_append_before_wysiwyg', $args = array('type' => 'textarea'), $post->ID);
-  $append_after_wysiwyg = rwmb_meta( 'phila_append_after_wysiwyg', $args = array('type' => 'textarea'), $post->ID);
-
   if( $post->post_parent ) {
     //it's a child
     $children = wp_list_pages(array(
@@ -82,10 +79,7 @@
           <header class="entry-header">
             <?php the_title( '<h2 class="entry-title mvn">', '</h2>' ); ?>
           </header><!-- .entry-header -->
-          <!-- If Custom Markup append_before_wysiwyg is present print it -->
-          <?php if (!$append_before_wysiwyg == ''):?>
-            <?php echo $append_before_wysiwyg; ?>
-          <?php endif; ?>
+          <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
           <?php if ( isset( $parent_content ) ) : ?>
             <?php if ($user_selected_template == 'tax_detail') : ?>
@@ -107,10 +101,8 @@
             <?php endif; ?>
         <?php endif; ?>
 
-          <!-- If Custom Markup append_after_wysiwyg is present print it -->
-          <?php if (!$append_after_wysiwyg == ''):?>
-            <?php echo $append_after_wysiwyg; ?>
-          <?php endif; ?>
+        <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
+
         </div>
       </div>
     </div>

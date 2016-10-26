@@ -25,11 +25,11 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
       if ( !$date == '' ) {
         $date_obj = new DateTime("@$date");
         if( strlen($date_obj->format('F')) > 5 ){
-          $formatted_date = $date_obj->format('g:i a \o\n l, M\. d, Y');
+          $formatted_date = $date_obj->format('g:i a \o\n l, M\. d');
         } else {
-          $formatted_date = $date_obj->format('g:i a \o\n l, F d, Y');
+          $formatted_date = $date_obj->format('g:i a \o\n l, F d');
         }
-        echo str_replace(array('am','pm'),array('a.m.','p.m.'),$formatted_date);
+        echo str_replace(array('Sep','12:00 am','12:00 pm','am','pm'),array('Sept','midnight','noon','a.m.','p.m.'),$formatted_date);
       }
     }
 
@@ -83,24 +83,18 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         echo '<div class="large-9 columns">';
         echo '<h2><i class="ionicons ' . $alert_icon . '"></i>' . get_the_title() .'</h2>';
 
+        $content = get_the_content();
+        echo $content;
         echo '<div class="alert-start">';
-        echo '<strong>Begins:</strong> ';
+        echo '<strong>In effect:</strong> ';
+        echo '<div class="sentence-case inline-block">';
         dateTimeFormat($alert_start);
-        echo '<br>';
-        echo '<strong>Ends:</strong> ';
+        echo ' to ';
         dateTimeFormat($alert_end);
         echo '</div>';
         echo '</div>';
+        echo '</div>';
         echo '<div class="large-15 columns">';
-
-        if ($alert_type != 'Other'){
-          echo '<strong>'.$alert_type . ': </strong>';
-        } elseif ( $alert_type == 'Other' && isset( $alert_type_other ) && $alert_type_other != '' ){
-          echo '<strong>' . $alert_type_other . ': </strong>';
-        }
-
-        $content = get_the_content();
-        echo $content;
         echo '</div></div></div>';
       endif;
       }//end while
