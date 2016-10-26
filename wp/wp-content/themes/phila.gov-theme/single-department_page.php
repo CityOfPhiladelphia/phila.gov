@@ -6,6 +6,7 @@
  */
 
 global $post;
+
 $children = get_posts( array(
   'post_parent' => $post->ID,
   'orderby' => 'menu_order',
@@ -28,8 +29,7 @@ $user_selected_template = phila_get_selected_template();
 get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
-  <div class="row">
-    <header class="entry-header small-24 columns">
+  <header class="entry-header">
       <?php
        /* Get an array of Ancestors and Parents if they exist */
         $parents = get_post_ancestors( $post->ID );
@@ -39,12 +39,8 @@ get_header(); ?>
 
         }
         $parent = get_post( $id );
-        ?>
 
-        <?php
-          // TODO: check if this is one of an array of v2 templates... currently only checks homepage
-          if ($user_selected_template == 'department_homepage_v2') :
-        ?>
+        if (strpos($user_selected_template, '_v2') !== false) : ?>
 
           <div class="hero-content">
             <?php // TODO: Get the actual hero image and call it in the img src ?>
@@ -55,7 +51,7 @@ get_header(); ?>
                 <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
               </div> -->
               <?php // TODO: Get the actual hero image and apply as background via inline css ?>
-              <div class="row expanded ptl pbs pvxl-mu" style="">
+              <div class="row expanded ptl pbs pvxl-mu">
                 <div class="medium-14 small-centered columns beta-message">
 
                   <?php
@@ -66,8 +62,7 @@ get_header(); ?>
                   $new_title = str_replace($target_phrases,$break_after_phrases, $parent->post_title );
                   echo  '<h1 style="line-height:1">' . $new_title . '</h1>';
                   ?>
-                  <?php //TODO: Use shortcode in below <p></p> ?>
-                  <p class="mvs mbn-mu"><em>Collecting taxes due to the City and the School District of Philadelphia.</em></p>
+                  <p class="mvs mbn-mu"><em><?php echo phila_get_item_meta_desc(); ?></em></p>
                 </div>
               </div>
               <?php
@@ -85,7 +80,6 @@ get_header(); ?>
         <?php else: ?>
           <h1 class="entry-title contrast mbn"><?php echo $parent->post_title;?></h1>
       </header>
-    </div>
     <?php
     //get department homepage alerts
     call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
@@ -105,7 +99,7 @@ get_header(); ?>
       get_template_part( 'templates/single', 'off-site' );
 
      }else{
-       
+
       while ( have_posts() ) : the_post();
         get_template_part( 'templates/single', 'on-site-content' );
       endwhile;
