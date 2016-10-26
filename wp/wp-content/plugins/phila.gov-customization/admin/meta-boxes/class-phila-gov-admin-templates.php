@@ -37,7 +37,7 @@ class Phila_Gov_Admin_Templates {
     'fields' => array(
       array(
         'desc'  => '',
-        'id'    => $prefix . 'template_select',
+        'id'    => 'phila_template_select',
         'type'  => 'select',
         'class' => 'template-select',
         'clone' => false,
