@@ -1435,6 +1435,21 @@ function phila_get_selected_template(){
 
   return $user_selected_template;
 }
+
+/**
+ * Utility function to determine if selected template is v2 or not
+**/
+
+function phila_util_is_v2_template(){
+  $user_selected_template = phila_get_selected_template();
+
+  if( strpos( $user_selected_template, '_v2' ) === false ){
+    return false;
+  }else{
+    return true;
+  }
+}
+
 /**
  * Do the math to determine the correct column span for X items on a 24 column grid.
  *
