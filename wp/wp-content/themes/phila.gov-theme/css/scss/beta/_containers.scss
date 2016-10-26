@@ -1,1 +1,7 @@
-
+.one-quarter-layout div.row{
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  &:last-of-type{
+    border-bottom-width: 0px;
+  }
+}
