@@ -24,9 +24,24 @@ get_header(); ?>
         </div>
         <!-- End Beta.phila.gov Message -->
         <div class="row common-requests">
-          <div class="small-24 medium-15 large-13 small-centered columns overlap">
+          <?php //Reminder: remove the columns-5 class when dropping down to 4 items ?>
+          <div class="small-24 medium-15 large-15 small-centered columns overlap columns-5">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
-              <div class="small-12 medium-6 columns">
+              <div class="small-24 medium-5 columns">
+                <a href="/services/crime-law-justice/where-to-vote/" class="mrs mbs equal">
+                  <div class="phs pvm cta-block clearfix">
+                    <div class="valign">
+                      <div class="valign-cell">
+                        <i class="fa fa-check-square-o fa-4x"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="h6">Find where<span class="break-before-mu"> to vote</span></p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="small-12 medium-5 columns">
                 <a href="/trashday" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
@@ -40,7 +55,7 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="small-12 medium-6 columns">
+              <div class="small-12 medium-5 columns">
                 <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
@@ -54,7 +69,7 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="small-12 medium-6 columns">
+              <div class="small-12 medium-5 columns">
                 <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
@@ -68,7 +83,7 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="small-12 medium-6 columns">
+              <div class="small-12 medium-5 columns">
                 <a href="/property" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
