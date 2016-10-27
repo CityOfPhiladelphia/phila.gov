@@ -511,4 +511,17 @@ jQuery(document).ready(function($) {
     });
   }
 
+
+  $(".feedback").click(function(){
+    postscribe('#feedback-form', '<script src="https://form.jotform.com/jsform/62765090493967"><\/script>', {
+        done: function() {
+          console.info('Dblclick script has been delivered.');
+        }
+      });
+      $('html,body').animate({
+        scrollTop: $('.feedback').position().top - $('header .is-stuck').height()
+      }, 700);
+    });
+
+
 });
