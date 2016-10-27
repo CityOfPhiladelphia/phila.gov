@@ -6,6 +6,23 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   //Department Homepage
   $meta_boxes[] = array(
+    'title' => 'Hero Header V2',
+    'pages'    => array( 'department_page' ),
+    'visible' => array( 'phila_template_select', 'homepage_v2' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+
+    'fields' => array(
+      array(
+        'id'       => 'phila_v2_homepage_hero',
+        'title'    => 'Select image',
+        'type'  => 'image_advanced',
+        'max_file_uploads' => 1,
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
     'title' => 'Our services',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
