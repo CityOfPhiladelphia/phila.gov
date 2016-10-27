@@ -66,6 +66,11 @@ a[href*="google.com/calendar"]:after{
   }
 }
 
+// TODO: remove the border in Patterns _events_block.css
+.event-box{
+    border: 0px;
+}
+
 @media only screen and (min-width: 40.063em) {
   .calendar-row{
     background:url('//alpha.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center center;

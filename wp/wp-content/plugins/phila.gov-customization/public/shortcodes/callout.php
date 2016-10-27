@@ -7,29 +7,32 @@
 *
 * @package phila-gov_customization
 */
-function callout_shortcode($atts){
+function callout_shortcode($atts, $content=null){
   $a = shortcode_atts( array(
-    'summary' => '',
     'type' => '',
     'inline' => 'true',
   ), $atts);
 
+  $allowed_html = [
+    'a'      => [
+        'href'  => [],
+        'title' => [],
+      ],
+    'br'     => [],
+    'em'     => [],
+    'strong' => [],
+  ];
+
   $output = '';
 
-  if ( $a['summary'] != '' ){
+  if ( $content != '' ){
     $output .= '<div class="callout';
 
-    if($a['type'] == 'important') {
-      $output .= ' ' . $a['type'] . ' ';
-    }
+    $output .= $a['type'] == 'important' ? ' ' . $a['type'] . ' ' : ' ';
 
-    if($a['inline'] == 'true') {
-      $output .= 'mtl">';
-    } else  {
-        $output .= 'mbn">';
-    }
+    $output .= $a['inline'] == 'true' ? 'mtl">' : 'mbn">';
 
-    $output .= '<p>' . $a['summary'] . '</p>';
+    $output .= '<p>' . wp_kses($content, $allowed_html). '</p>';
     $output .= '</div>';
 
     return $output;
