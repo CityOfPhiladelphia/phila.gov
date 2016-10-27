@@ -11,7 +11,7 @@ get_header(); ?>
   <main id="main" class="site-main">
     <div class="row">
       <header class="small-24 columns">
-        <?php printf(__('<h1 class="contrast ptm">City Government Directory</h1>', 'phila-gov') ); ?>
+        <?php printf(__('<h1 class="contrast ptm">City government directory</h1>', 'phila-gov') ); ?>
       </header>
     </div>
     <div class="row">

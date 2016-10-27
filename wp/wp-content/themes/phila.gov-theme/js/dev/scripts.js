@@ -292,9 +292,9 @@ jQuery(document).ready(function($) {
     if (Foundation.MediaQuery.current == 'small') {
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-      var drilldownHeight = $('.is-drilldown').outerHeight();
-      var singleHeight = $('.is-drilldown li').outerHeight() + 10;
-      $('.is-drilldown ul').css({
+      var drilldownHeight = $('.global-nav .is-drilldown').outerHeight();
+      var singleHeight = $('.global-nav .is-drilldown li').outerHeight() + 10;
+      $('.global-nav .is-drilldown ul').css({
         'height': drilldownHeight +  singleHeight + 'px'
       });
     }
