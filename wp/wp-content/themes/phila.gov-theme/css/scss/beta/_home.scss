@@ -54,7 +54,7 @@
     }
     .photo-credit.small-text {
       display:none;
-      @media only screen and (min-width: 64em) {
+      @media only screen and (min-width: 66em) {
         display:inline-block;
         font-style: italic;
         font-size: .75rem;
@@ -115,6 +115,14 @@
         }
       }
       .cta-block {
+      }
+    }
+
+    .columns-5 {
+    @media screen and (min-width: 40em){
+      .medium-5 {
+          width: 19.99999999%;
+        }
       }
     }
   }
