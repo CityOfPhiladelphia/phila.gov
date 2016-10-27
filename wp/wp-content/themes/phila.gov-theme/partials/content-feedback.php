@@ -19,7 +19,7 @@
         <div class="row">
           <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
             <?php // TODO: insert the form on click ?>
-            <script type="text/javascript" src="https://form.jotform.com/jsform/62765090493967"></script>
+            <div id="feedback-form"></div>
           </div>
         </div>
       </div>
