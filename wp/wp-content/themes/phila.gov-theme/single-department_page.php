@@ -87,12 +87,14 @@ get_header(); ?>
     //get department homepage alerts
     call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
 
-    /*
-    Our navigation menu. We use categories to drive functionality.
-    This checks to make sure a category exists for the given page,
-    if it does, we render our menu w/ markup.
-    */
-      phila_get_department_menu();
+    if ( $user_selected_template != 'off_site_department' ){
+      /*
+      Our navigation menu. We use categories to drive functionality.
+      This checks to make sure a category exists for the given page,
+      if it does, we render our menu w/ markup.
+      */
+        phila_get_department_menu();
+    }
     ?>
   <?php endif; ?>
 
