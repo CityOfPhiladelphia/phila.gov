@@ -146,7 +146,7 @@ jQuery(document).ready(function($) {
     $('.postarea').hide();
   }
 
-  if ( ( typenow == 'department_page' ) )  {
+  if ( ( typenow == 'department_page' ) && adminpage.indexOf( 'post' ) > -1 )  {
     var templateSelect = $('#phila_template_select');
 
     //Set character limits for hero-taglines
@@ -192,7 +192,7 @@ jQuery(document).ready(function($) {
     });
   }
 
-  if ( ( typenow == 'service_updates' ) )  {
+  if ( ( typenow == 'service_updates' ) && adminpage.indexOf( 'post' ) > -1 )  {
     $.validator.setDefaults({
       ignore: ''
     });
