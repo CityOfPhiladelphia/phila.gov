@@ -1636,11 +1636,6 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
-/**
- * Return a string representing the template currently applied to a page in the loop.
- *
- **/
-
 function phila_get_page_icon( $post ){
 
   $icon = rwmb_meta( 'phila_page_icon', $args = array(), $post );
@@ -1661,4 +1656,21 @@ function phila_return_ordinal($num){
     return 'rd';
   }
   return 'th';
+}
+
+function phila_get_hero_header_v2( $post ){
+  $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
+    'size'=>'full'
+  ), $post );
+
+  $output = array();
+
+  if ( !empty($img) ){
+
+    foreach ($img as $k){
+      $output = $k['full_url'];
+    }
+    return $output;
+  }
+
 }

@@ -37,18 +37,15 @@ get_header(); ?>
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
 
     $parent = get_post( $id );
-
     if ( phila_util_is_v2_template() ) : ?>
-
-      <div class="hero-content">
-        <?php // TODO: Get the actual hero image and call it in the img src ?>
-        <img class="show-for-small-only" src="https://ec2-54-165-91-192.compute-1.amazonaws.com/wp-content/themes/phila.gov-theme/img/beta_homepage_coverphoto_full.jpg" alt="">
+    <?php $bg_img = phila_get_hero_header_v2( $parent->ID )?>
+      <div class="hero-content" style="background-image:url(<?php echo $bg_img?>) ">
+        <img class="show-for-small-only" src="<?php echo $bg_img?>" alt="">
         <div class="hero-wrap">
         <?php // TODO: Determine whether or not we need photo credits ?>
           <!-- <div class="photo-credit small-text">
             <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
           </div> -->
-          <?php // TODO: Get the actual hero image and apply as background via inline css ?>
           <div class="row expanded ptl pbs pvxl-mu">
             <div class="medium-14 small-centered columns">
               <?php
