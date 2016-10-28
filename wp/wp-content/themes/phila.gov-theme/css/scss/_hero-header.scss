@@ -7,6 +7,23 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+  .text-overlay{
+    h1 {
+      font-size: 2.5rem;
+      line-height: 1;
+      @media only screen and (min-width: 40em) {
+        font-size: 3.5rem;
+      }
+    }
+    .sub-title {
+      font-size: 1rem;
+      line-height: 1.25;
+
+      @media only screen and (min-width: 40em) {
+        font-size: 1.25rem;
+      }
+    }
+  }
   .department-nav {
     #site-nav {
       text-align: left;

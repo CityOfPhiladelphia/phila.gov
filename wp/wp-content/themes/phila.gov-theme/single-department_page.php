@@ -39,15 +39,19 @@ get_header(); ?>
     $parent = get_post( $id );
     if ( phila_util_is_v2_template() ) : ?>
     <?php $bg_img = phila_get_hero_header_v2( $parent->ID )?>
-      <div class="hero-content" style="background-image:url(<?php echo $bg_img?>) ">
+
+      <?php if ($user_selected_template == 'homepage_v2') : ?>
+        <?php //TODO: unify desktop and mobile headers ?>
+        <div class="hero-content" style="background-image:url(<?php echo $bg_img?>) ">
+      <?php endif; ?>
         <img class="show-for-small-only" src="<?php echo $bg_img?>" alt="">
         <div class="hero-wrap">
         <?php // TODO: Determine whether or not we need photo credits ?>
           <!-- <div class="photo-credit small-text">
             <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
           </div> -->
-          <div class="row expanded ptl pbs pvxl-mu">
-            <div class="medium-14 small-centered columns">
+          <div class="row expanded <?php echo ($user_selected_template === 'homepage_v2') ? 'pbs pbxxl-mu ptxl-mu' : 'pbl' ?>">
+            <div class="medium-14 small-centered columns text-overlay">
               <?php
               // TODO: Call title with $parent->post_title, regex match on 'Department of', 'Office of' to add line break. This can be refactored and should become a util if we intend to reuse
 
@@ -56,8 +60,8 @@ get_header(); ?>
               $new_title = str_replace($target_phrases,$break_after_phrases, $parent->post_title );
               echo  '<h1 style="line-height:1">' . $new_title . '</h1>';
               ?>
-              <?php if ($user_selected_template == 'homepage_v2'): ?>
-                <p class="mvs mbn-mu"><em><?php echo phila_get_item_meta_desc(); ?></em></p>
+              <?php if ($user_selected_template === 'homepage_v2'): ?>
+                <p class="sub-title mvs mbn-mu"><em><?php echo phila_get_item_meta_desc(); ?></em></p>
               <?php endif;?>
             </div>
           </div>
