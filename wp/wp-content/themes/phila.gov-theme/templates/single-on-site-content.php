@@ -9,7 +9,7 @@
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php if ( phila_util_is_v2_template() && phila_get_selected_template() !== 'homepage_v2') : ?>
-  <div class="row mts mbm">
+  <div class="row mtl mbm">
     <div class="columns">
       <?php echo phila_breadcrumbs(); ?>
     </div>
