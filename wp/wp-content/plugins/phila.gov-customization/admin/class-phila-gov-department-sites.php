@@ -22,28 +22,16 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     $meta_boxes[] = array(
       'id'       => 'departments',
-      'title'    => 'Department General Information',
+      'title'    => 'External Site',
       'pages'    => array( 'department_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
 
-      'exclude' => array(
-        'phila_is_department_homepage'  => 0,
+      'visible' => array(
+        'phila_template_select', '=', 'off_site_department',
       ),
 
       'fields' => array(
-
-        array(
-          'name'  => 'Description',
-          'desc'  => 'This field is deprecated. Please use the Short Description field at the top of the page.',
-          'id'    => $prefix . 'dept_desc',
-          'type'  => 'textarea',
-          'class' => 'dept-description',
-          'attributes' => array(
-            'data-readonly'  => 'true'
-          ),
-          'clone' => false,
-        ),
 
         array(
           'name'  => 'External URL of Department',
@@ -52,9 +40,6 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           'type'  => 'URL',
           'class' => 'dept-url',
           'clone' => false,
-          'visible' => array(
-            'phila_template_select', '=', 'off_site_department',
-          ),
         ),
       )
     );//External department link

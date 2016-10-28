@@ -26,31 +26,36 @@ require $dir. '/admin/admin-documentation.php';
 require $dir. '/admin/admin-ui.php';
 require $dir. '/admin/class-phila-gov-admin-documents.php';
 require $dir. '/admin/class-phila-gov-admin-menu.php';
-require $dir. '/admin/class-phila-gov-admin-templates.php';
 require $dir. '/admin/class-phila-gov-custom-post-types.php';
 require $dir. '/admin/class-phila-gov-custom-taxonomies.php';
 //require $dir. '/admin/class-phila-gov-department-author-media.php';
 require $dir. '/admin/class-phila-gov-department-sites.php';
 require $dir. '/admin/class-phila-gov-filter-post-type-links.php';
-require $dir. '/admin/class-phila-gov-item-meta-desc.php';
 require $dir. '/admin/class-phila-gov-role-administration.php';
 require $dir. '/admin/class-phila-gov-service-update-pages.php';
 require $dir. '/admin/class-phila-gov-site-wide-alert.php';
 require $dir. '/admin/class-phila-gov-event-pages.php';
 require $dir. '/admin/class-phila-gov-staff-directory.php';
 require $dir. '/admin/define-roles.php';
-require $dir. '/admin/meta-boxes.php';
 require $dir. '/admin/tiny-mce.php';
+
+require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
+require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
+require $dir. '/admin/meta-boxes/class-phila-gov-item-meta-desc.php';
+require $dir. '/admin/meta-boxes/class-phila-gov-standard-metaboxes.php';
+require $dir. '/admin/meta-boxes/page-template-contact-us.php';
+require $dir. '/admin/meta-boxes/tax-detail-fields.php';
+require $dir. '/admin/meta-boxes/v2-departments.php';
+require $dir. '/admin/meta-boxes/meta-boxes.php';
 
 require $dir. '/public/shortcodes/blogs.php';
 require $dir. '/public/shortcodes/callout.php';
+require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/news.php';
 require $dir. '/public/shortcodes/press-releases.php';
 require $dir. '/public/shortcodes/pullquote.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';
-
-
 
 require $dir. '/public/class-content-collection-walker.php';
 require $dir. '/public/class-phila-gov-filter-posts.php';
