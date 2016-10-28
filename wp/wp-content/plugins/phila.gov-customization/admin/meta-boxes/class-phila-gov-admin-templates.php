@@ -37,7 +37,7 @@ class Phila_Gov_Admin_Templates {
     'fields' => array(
       array(
         'desc'  => '',
-        'id'    => $prefix . 'template_select',
+        'id'    => 'phila_template_select',
         'type'  => 'select',
         'class' => 'template-select',
         'clone' => false,
@@ -52,10 +52,14 @@ class Phila_Gov_Admin_Templates {
           'programs_initiatives' => 'Programs and Initiatives',
           'resource_list' => 'Resource List',
           'staff_directory' => 'Staff Directory',
+          'disabled'  => '──────────',
+          'homepage_v2' => 'Homepage Version 2',
+          'one_quarter_headings_v2' => '1/4 Headings',
+          'contact_us_v2' => 'Contact Page',
           ),
        ),
        array(
-        'desc'  => 'Is this a department homepage?',
+        'desc'  => 'Should this page appear in the City government directory?',
         'id'    => $prefix . 'department_home_page',
         'type'  => 'checkbox',
       ),
@@ -79,8 +83,9 @@ class Phila_Gov_Admin_Templates {
     $conditions['postdivrich'] = array(
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'default' ),
-          array('phila_template_select', '=', '' ),
+          array( 'phila_template_select', '=', 'default' ),
+          array( 'phila_template_select', '=', '' ),
+          array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
         ),
         'relation' => 'or'
       ),

@@ -1435,6 +1435,21 @@ function phila_get_selected_template(){
 
   return $user_selected_template;
 }
+
+/**
+ * Utility function to determine if selected template is v2 or not
+**/
+
+function phila_util_is_v2_template(){
+  $user_selected_template = phila_get_selected_template();
+
+  if( strpos( $user_selected_template, '_v2' ) === false ){
+    return false;
+  }else{
+    return true;
+  }
+}
+
 /**
  * Do the math to determine the correct column span for X items on a 24 column grid.
  *
@@ -1621,11 +1636,6 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
-/**
- * Return a string representing the template currently applied to a page in the loop.
- *
- **/
-
 function phila_get_page_icon( $post ){
 
   $icon = rwmb_meta( 'phila_page_icon', $args = array(), $post );
@@ -1646,4 +1656,21 @@ function phila_return_ordinal($num){
     return 'rd';
   }
   return 'th';
+}
+
+function phila_get_hero_header_v2( $post ){
+  $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
+    'size'=>'full'
+  ), $post );
+
+  $output = array();
+
+  if ( !empty($img) ){
+
+    foreach ($img as $k){
+      $output = $k['full_url'];
+    }
+    return $output;
+  }
+
 }
