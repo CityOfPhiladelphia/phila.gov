@@ -107,13 +107,14 @@ if (has_category()):
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
           $staff_leadership_output .= '</div>';
           $staff_leadership_output .= '<div class="medium-14 columns staff-summary">';
-          if ( strnlen( $staff_summary ) > 700 ):
+          /*if ( strnlen( $staff_summary ) > 700 ):
 
             $staff_leadership_output .=  '<div class="expandable">' . $staff_summary . '<div class="float-right"> + Expand </div></div>';
 
           else:
+          */
             $staff_leadership_output .= $staff_summary . '</div>';
-          endif;
+          /* endif;*/
 
         endif;
         $staff_leadership_output .= '</div>';
