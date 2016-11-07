@@ -12,6 +12,7 @@
          <h2 class="contrast">Service updates</h2>
        </div>
      </div>
+
          <?php if ( $service_updates_loop->have_posts() ) : ?>
 
          <?php $update_array = array(); ?>
@@ -34,6 +35,25 @@
            <?php array_multisort($urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
 
            <div class="row">
+             <?php //TODO: remove after election day ?>
+             <div class="small-24 columns centered service-update equal-height normal">
+               <div class="service-update-icon equal" data-equalizer-watch="" style="height: 84px;">
+                 <div class="valign">
+                   <div class="valign-cell pas pam-mu">
+                     <i class="fa fa-check-square-o " aria-hidden="true"></i>
+                     <span class="icon-label small-text">vote</span>
+                   </div>
+                 </div>
+               </div>
+               <div class="service-update-details phm equal" data-equalizer-watch="" style="height: 84px;">
+                 <div class="valign">
+                   <div class="valign-cell pvm">
+                     <span>
+                        Election day is Tuesday, November 8th. Polls are open from 7:00 a.m. to 8:00 p.m. Access the <a href="https://beta.phila.gov/news/mayor/election-day-guide/">Election Day Guide</a> for more information.                                             </span>
+                  </div>
+                 </div>
+               </div>
+             </div>
            <?php $i=0; ?>
 
            <?php foreach ($update_array as $update):?>
