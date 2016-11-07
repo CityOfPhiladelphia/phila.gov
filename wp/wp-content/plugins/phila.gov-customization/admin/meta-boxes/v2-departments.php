@@ -6,7 +6,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   //Department Homepage
   $meta_boxes[] = array(
-    'title' => 'Hero Header V2',
+    'title' => 'Hero header v2',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'context'  => 'normal',
@@ -30,7 +30,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     'fields' => array(
       array(
         'id'       => 'phila_v2_homepage_services',
-        'title'    => 'Service Picker',
+        'title'    => 'Top services',
         'context'  => 'normal',
         'priority' => 'high',
         'type'  => 'group',
@@ -43,6 +43,28 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       ),
     ),
   );
+
+  $meta_boxes[] = array(
+    'title' => 'Services list',
+    'pages'    => array( 'department_page' ),
+    'visible' => array( 'phila_template_select', 'service_list_v2' ),
+
+    'fields' => array(
+      array(
+        'id'       => 'phila_v2_services_list',
+        'title'    => 'Services',
+        'context'  => 'normal',
+        'priority' => 'high',
+        'type'  => 'group',
+        'clone' => true,
+
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
+        ),
+      ),
+    ),
+  );
+
 
   return $meta_boxes;
 }
