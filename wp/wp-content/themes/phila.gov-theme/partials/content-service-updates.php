@@ -36,7 +36,7 @@
 
            <div class="row">
              <?php //TODO: remove after election day ?>
-             <div class="small-24 columns centered service-update equal-height normal">
+             <div class="small-24 columns centered service-update equal-height critical">
                <div class="service-update-icon equal" data-equalizer-watch="" style="height: 84px;">
                  <div class="valign">
                    <div class="valign-cell pas pam-mu">
@@ -49,7 +49,8 @@
                  <div class="valign">
                    <div class="valign-cell pvm">
                      <span>
-                        Election day is Tuesday, November 8th. Polls are open from 7:00 a.m. to 8:00 p.m. Access the <a href="https://beta.phila.gov/news/mayor/election-day-guide/">Election Day Guide</a> for more information.                                             </span>
+                        Polls are closed. You're still allowed to vote if you were in line when polls closed at 8 p.m.
+                      </span>
                   </div>
                  </div>
                </div>
