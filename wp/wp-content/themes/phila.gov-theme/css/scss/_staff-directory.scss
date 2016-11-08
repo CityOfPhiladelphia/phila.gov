@@ -15,7 +15,16 @@
   }
   .staff-leadership {
     // margin-bottom: $spacing-medium;
+    .staff-highlight{
+      padding-bottom: $spacing-extra;
 
+      &:first-of-type{
+        padding-top: $spacing-medium;
+      }
+      &:last-of-type{
+        padding-bottom: $spacing-large;
+      }
+    }
     .staff-thumbnail {
       width:100%;
     }
@@ -44,7 +53,26 @@
 
     }
     .staff-summary {
+      .staff-bio{
+        min-height: 200px;
+      }
+      .expandable {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          height: 50px;
+          width: 100%;
+          background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0) 0%, white);
+          // thanks https://css-tricks.com/text-fade-read-more/ for the following line:
+          background-image: linear-gradient(to bottom, transparent, white);
 
+        }
+      }
     }
     &:last-of-type {
       margin-bottom: 0;
