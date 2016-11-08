@@ -74,7 +74,7 @@ if (has_category()):
         $staff_options = rwmb_meta('phila_leadership_options');
         $staff_display_order = intval( $staff_options['phila_display_order'] );
         $staff_summary = $staff_options['phila_summary'];
-        $staff_leadership_output .= '<div class="row">';
+        $staff_leadership_output .= '<div class="row staff-highlight">';
         // Leadership Thumbnail
         if ( has_post_thumbnail() ):
           $staff_photo = get_the_post_thumbnail( $post->ID, 'staff-thumb', 'class= staff-thumbnail' );
@@ -108,15 +108,14 @@ if (has_category()):
           $staff_leadership_output .= '</div>';
           $staff_leadership_output .= '<div class="medium-14 columns staff-summary">';
 
-          if ( strlen( $staff_summary ) > 700 ):
-
-            $staff_leadership_output .=  '<div class="expandable">' . $staff_summary . $staff_summary . '<div class="float-right"> + Expand </div></div>';
+          if ( strlen( $staff_summary ) > 820 ):
+            $staff_leadership_output .=  '<div class="staff-bio expandable">' . $staff_summary . '</div><div class="float-right"> <a href="#" data-toggle="data-staff-bio"> Expand + </a></div>';
           else:
-            $staff_leadership_output .= $staff_summary . '</div>';
-
+            $staff_leadership_output .= '<div class="staff-bio">' . $staff_summary . '</div>';
           endif;
+          $staff_leadership_output .= '</div></div>';
+
         endif;
-        $staff_leadership_output .= '</div>';
 
         if ( key_exists( $staff_display_order, $staff_leadership_array ) ):
           ++$staff_display_order;
@@ -141,9 +140,6 @@ if (has_category()):
     if (!empty($staff_leadership_array)):?>
       <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
           <div class="large-24 columns">
-          <?php if ($user_selected_template != 'staff_directory') : ?>
-            <h2 class="contrast">Leadership</h2>
-          <?php endif; ?>
             <?php
             ksort($staff_leadership_array);
             foreach ($staff_leadership_array as $key => $value):
