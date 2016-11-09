@@ -24,7 +24,6 @@ get_header(); ?>
         </div>
         <!-- End Beta.phila.gov Message -->
         <div class="row common-requests">
-          <?php //Reminder: remove the columns-5 class when dropping down to 4 items ?>
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
               <div class="small-12 medium-6 columns">
