@@ -35,26 +35,6 @@
            <?php array_multisort($urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
 
            <div class="row">
-             <?php //TODO: remove after election day ?>
-             <div class="small-24 columns centered service-update equal-height critical">
-               <div class="service-update-icon equal" data-equalizer-watch="" style="height: 84px;">
-                 <div class="valign">
-                   <div class="valign-cell pas pam-mu">
-                     <i class="fa fa-check-square-o " aria-hidden="true"></i>
-                     <span class="icon-label small-text">vote</span>
-                   </div>
-                 </div>
-               </div>
-               <div class="service-update-details phm equal" data-equalizer-watch="" style="height: 84px;">
-                 <div class="valign">
-                   <div class="valign-cell pvm">
-                     <span>
-                        Polls are closed. You're still allowed to vote if you were in line when polls closed at 8 p.m.
-                      </span>
-                  </div>
-                 </div>
-               </div>
-             </div>
            <?php $i=0; ?>
 
            <?php foreach ($update_array as $update):?>
