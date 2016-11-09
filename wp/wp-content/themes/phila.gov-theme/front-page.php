@@ -22,7 +22,7 @@ get_header(); ?>
             <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg"></i> feedback links.</span></p>
           </div>
         </div>
-        <!-- End Beta.phila.gov Message -->
+        <!-- End beta.phila.gov message -->
         <div class="row common-requests">
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
