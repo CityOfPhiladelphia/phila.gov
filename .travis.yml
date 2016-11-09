@@ -1,5 +1,13 @@
-sudo: false
-language: generic
-script: .travis/deploy.sh
-branches:
-  only: master
+deploy:
+  provider: codedeploy
+  access_key_id: $AWS_ID
+  secret_access_key: $AWS_SECRET
+  application: $AWS_CODEDEPLOY_APPLICATION
+  deployment_group: $AWS_CODEDEPLOY_DEPLOYMENT_GROUP
+  revision_type: github
+  commit_id: $TRAVIS_COMMIT
+  repository: cityofphiladelphia/phila.gov
+  wait-until-deployed: true
+  region: $AWS_CODEDEPLOY_REGION
+  on:
+    branch: beta
