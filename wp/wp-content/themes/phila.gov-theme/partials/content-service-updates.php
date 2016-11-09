@@ -12,6 +12,7 @@
          <h2 class="contrast">Service updates</h2>
        </div>
      </div>
+
          <?php if ( $service_updates_loop->have_posts() ) : ?>
 
          <?php $update_array = array(); ?>
