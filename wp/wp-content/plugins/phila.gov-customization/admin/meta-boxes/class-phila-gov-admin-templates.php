@@ -69,7 +69,7 @@ class Phila_Gov_Admin_Templates {
    return $meta_boxes;
   }
 
-
+  //TODO: break these callbacks out into individual functions
   function phila_hide_categories( $conditions ) {
 
     $conditions['categorydiv'] = array(
@@ -87,6 +87,8 @@ class Phila_Gov_Admin_Templates {
           array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', '' ),
           array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
+          array( 'phila_template_select', '=', 'service_list_v2' ),
+
         ),
         'relation' => 'or'
       ),
