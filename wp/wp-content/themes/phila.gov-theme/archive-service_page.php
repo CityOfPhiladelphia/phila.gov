@@ -146,7 +146,7 @@ get_header(); ?>
             }
 
             $service_title[$post->post_title] = $page_terms;
-            $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
+            $desc['desc'] = phila_get_item_meta_desc( $post, $blog_info = false );
             $link['link'] = get_permalink();
 
             $service_desc[$post->post_title] = $desc;

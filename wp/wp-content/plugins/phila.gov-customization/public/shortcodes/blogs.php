@@ -62,7 +62,7 @@ function latest_posts_shortcode($atts) {
     while( $blog_loop->have_posts() ) : $blog_loop->the_post();
     $post_counter++;
 
-    $desc = phila_get_item_meta_desc();
+    $desc = phila_get_item_meta_desc( $post );
 
     $link = get_permalink();
 

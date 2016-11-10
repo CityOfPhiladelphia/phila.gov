@@ -78,7 +78,7 @@ function recent_news_shortcode($atts) {
     $post_counter++;
 
     $contributor = rwmb_meta('phila_news_contributor', $args = array('type'=>'text'));
-    $desc = phila_get_item_meta_desc();
+    $desc = phila_get_item_meta_desc( $post );
 
     $link = get_permalink();
 

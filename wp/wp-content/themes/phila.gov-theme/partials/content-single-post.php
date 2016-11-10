@@ -14,7 +14,7 @@
     <div data-swiftype-index='true' class="entry-content medium-18 medium-push-6 columns">
 
     <?php
-      $desc = phila_get_item_meta_desc();
+      $desc = phila_get_item_meta_desc( $post );
 
       if ($post->post_content != ''):
         the_content();
