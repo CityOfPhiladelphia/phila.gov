@@ -61,7 +61,7 @@ get_header(); ?>
               echo  '<h1 style="line-height:1">' . $new_title . '</h1>';
               ?>
               <?php if ($user_selected_template === 'homepage_v2'): ?>
-                <p class="sub-title mvs mbn-mu"><em><?php echo phila_get_item_meta_desc(); ?></em></p>
+                <p class="sub-title mvs mbn-mu"><em><?php echo phila_get_item_meta_desc( $post ); ?></em></p>
               <?php endif;?>
             </div>
           </div>

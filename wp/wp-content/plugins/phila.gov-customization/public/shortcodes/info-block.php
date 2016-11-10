@@ -23,7 +23,7 @@ function info_block_shortcode($a, $content=null){
   if ( $content != '' ){
     $output .= '<div class="row">';
     $output .= '<div class="columns">';
-    $output .= '<div class="panel info info-block">';
+    $output .= '<div class="panel info info-block mbl">';
 
     $output .= '<p>' . wp_kses($content, $allowed_html). '</p>';
 

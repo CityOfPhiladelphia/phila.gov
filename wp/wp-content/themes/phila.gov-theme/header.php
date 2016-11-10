@@ -11,7 +11,7 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
 
-  <meta name="description" content="<?php echo phila_get_item_meta_desc(); ?>">
+  <meta name="description" content="<?php echo phila_get_item_meta_desc( $post ); ?>">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
