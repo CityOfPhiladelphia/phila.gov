@@ -232,7 +232,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo phila_get_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo phila_get_item_meta_desc( $post ); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -986,7 +986,7 @@ function phila_get_home_news(){
         echo '<span>' . $contributor . '</span>';
     }
 
-    echo '<p>' . phila_get_item_meta_desc()  . '</p>';
+    echo '<p>' . phila_get_item_meta_desc( $post )  . '</p>';
 
   }
 
@@ -1337,10 +1337,10 @@ function phila_get_service_updates_events(){
 /**
  * Returns the meta_desc for an item.
  * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
+ * @param $post Int. Pass post ID if we are not in the loop.
  *
  **/
-function phila_get_item_meta_desc( $bloginfo = true ){
-  global $post;
+function phila_get_item_meta_desc( $post, $blog_info = true ){
 
   $meta_desc = array();
 
@@ -1561,6 +1561,20 @@ function phila_extract_stepped_content($parent_group){
   return $output;
 }
 
+function phila_get_curated_service_list_v2( $service_group ){
+
+  $output = array();
+
+  if ( !empty($service_group) ){
+    $ids = isset($service_group['phila_v2_service_page'] ) ? $service_group['phila_v2_service_page'] : $output;
+
+    foreach ( $service_group as $k => $v ){
+      $output[$k] = $v;
+    }
+  }
+  return $output;
+}
+
 function phila_additional_content( $input ){
   $output = array();
   if ( !empty($input) ) {
@@ -1635,6 +1649,7 @@ function phila_connect_panel($connect_panel) {
   }
   // return $connect_panel;
 }
+
 
 function phila_get_page_icon( $post ){
 
