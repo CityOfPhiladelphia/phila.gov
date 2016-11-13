@@ -1,48 +1,19 @@
 <?php
 /**
- * The template used for displaying Connect Panels
+ * Display Connect Panels
  * TODO: Pull content from CPT
  *
  * @package phila-gov
  */
 ?>
+<?php
+$connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
+$connect_vars = phila_connect_panel($connect_panel);
+?>
 
 <div class="large-6 columns connect">
   <h2 class="contrast">Connect</h2>
   <div class="vcard panel no-margin">
-    <div>
-      <?php if ( ! empty( $connect_vars['social'] ) ):
-        $item_count = count( $connect_vars['social'] );
-        $columns = phila_grid_column_counter( $item_count );
-      ?>
-        <div class="row mbn">
-          <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
-            <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs">
-                <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
-                <span class="show-for-sr">Facebook</span>
-              </a>
-            </div>
-          <?php endif; ?>
-          <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
-            <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs">
-                <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
-                <span class="show-for-sr">Twitter</span>
-              </a>
-            </div>
-          <?php endif; ?>
-          <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
-            <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs">
-              <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
-                <span class="show-for-sr">Instagram</span>
-              </a>
-            </div>
-          <?php endif; ?>
-        </div>
-        <hr>
-      <?php endif; ?>
       <div>
         <div class="adr mbs">
           <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
@@ -83,6 +54,39 @@
           </div>
         <?php endif; ?>
       </div>
+      <div>
+        <?php if ( ! empty( $connect_vars['social'] ) ):
+          $item_count = count( $connect_vars['social'] );
+          $columns = phila_grid_column_counter( $item_count );
+        ?>
+          <div class="row mbn">
+            <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
+              <div class="small-<?php echo $columns;?> columns center pvxs">
+                <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs">
+                  <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
+                  <span class="show-for-sr">Facebook</span>
+                </a>
+              </div>
+            <?php endif; ?>
+            <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
+              <div class="small-<?php echo $columns;?> columns center pvxs">
+                <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs">
+                  <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                  <span class="show-for-sr">Twitter</span>
+                </a>
+              </div>
+            <?php endif; ?>
+            <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
+              <div class="small-<?php echo $columns;?> columns center pvxs">
+                <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs">
+                <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+                  <span class="show-for-sr">Instagram</span>
+                </a>
+              </div>
+            <?php endif; ?>
+          </div>
+          <hr>
+        <?php endif; ?>
     </div>
   </div>
 </div>
