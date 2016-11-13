@@ -53,11 +53,11 @@ class Phila_Gov_Admin_Templates {
           'resource_list' => 'Resource List',
           'staff_directory' => 'Staff Directory',
           'disabled'  => '──────────',
-          'homepage_v2' => 'Homepage Version 2',
+          'homepage_v2' => 'Department Homepage Version 2',
           'one_quarter_headings_v2' => '1/4 Headings',
           'contact_us_v2' => 'Contact Page',
           //'service_list_v2'  => 'Service List',
-          'all_services_v2' => 'All Services'
+          'all_services_v2' => 'All Services',
           ),
        ),
        array(
