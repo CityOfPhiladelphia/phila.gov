@@ -1,4 +1,11 @@
 .content-list{
+  &.inverse{
+    .content-list-items{
+      border-right: 2px solid $white;
+      border-top: 2px solid $white;
+      background: $ghost-gray;
+    }
+  }
   @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     margin-top:1rem;
   }
