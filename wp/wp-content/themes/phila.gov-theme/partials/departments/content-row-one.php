@@ -5,6 +5,8 @@
  *
  */
 ?>
+<?php $user_selected_template = phila_get_selected_template(); ?>
+
 <?php
 // Set module row vars
 $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1' );
@@ -161,81 +163,19 @@ if ( !empty( $row_one_col_two_module ) ){
       <?php endif; ?>
     </div>
     <!-- End Column Two -->
-  <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ): ?>
-    <div class="large-6 columns connect">
-      <h2 class="contrast">Connect</h2>
-      <div class="vcard panel no-margin">
-        <div>
-          <!-- TODO: Determine which content is required and show appropriate placeholder -->
-         <?php //if ( empty( $connect_social_array ) && $row_one_col_two_connect_panel_st_1 == '' ): ?>
-           <!-- <div class="placeholder">
-             Please enter an address or social media links.
-           </div> -->
-         <?php //endif; ?>
+  <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ):
+    ?>
 
-        <?php if ( ! empty( $connect_social_array ) ):
-          $item_count = count( $connect_social_array );
-          $columns = phila_grid_column_counter( $item_count );
-        ?>
-          <div class="row mbn">
-            <?php if ( !$row_one_col_two_connect_panel_facebook == '') : ?>
-              <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $row_one_col_two_connect_panel_facebook; ?>" class="phs">
-                  <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
-                  <span class="show-for-sr">Facebook</span>
-                </a>
-              </div>
-            <?php endif; ?>
-            <?php if ( !$row_one_col_two_connect_panel_twitter == '') : ?>
-              <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $row_one_col_two_connect_panel_twitter; ?>" class="phs">
-                  <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
-                  <span class="show-for-sr">Twitter</span>
-                </a>
-              </div>
-            <?php endif; ?>
-            <?php if ( !$row_one_col_two_connect_panel_instagram == '') : ?>
-              <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $row_one_col_two_connect_panel_instagram; ?>" class="phs">
-                <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
-                  <span class="show-for-sr">Instagram</span>
-                </a>
-              </div>
-            <?php endif; ?>
-          </div>
-          <hr>
-        <?php endif; ?>
-          <div>
-            <div class="adr mbs">
-              <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
-                <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_1; ?></span><br/>
-              <?php endif; ?>
-             <?php if ( !$row_one_col_two_connect_panel_st_2 == '') : ?>
-               <span class="street-address"><?php echo $row_one_col_two_connect_panel_st_2; ?></span><br/>
-             <?php endif; ?>
-             <?php if ( !$row_one_col_two_connect_panel_st_1 == '') : ?>
-               <span class="locality"><?php echo $row_one_col_two_connect_panel_city; ?></span>, <span class="region" title="Pennsylvania"> <?php echo $row_one_col_two_connect_panel_state; ?></span> <span class="postal-code"><?php echo $row_one_col_two_connect_panel_zip; ?></span>
-             <?php endif; ?>
-            </div>
-            <?php if ( !$row_one_col_two_connect_panel_phone == '') : ?>
-              <div class="tel pbxs">
-                <span class="type vcard-label">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $row_one_col_two_connect_panel_phone); ?>"><?php echo  $row_one_col_two_connect_panel_phone; ?></a>
-              </div>
-           <?php endif; ?>
-           <?php if ( !$row_one_col_two_connect_panel_fax == '') : ?>
-             <div class="fax pbxs">
-               <span class="type vcard-label">Fax: </span><?php echo $row_one_col_two_connect_panel_fax; ?>
-             </div>
-           <?php endif; ?>
-           <?php if ( !$row_one_col_two_connect_panel_email == '') : ?>
-             <div class="email pbxs">
-               <span class="vcard-label">Email: </span><a href="mailto:<?php echo $row_one_col_two_connect_panel_email; ?>"><?php echo $row_one_col_two_connect_panel_email; ?></a>
-             </div>
-           <?php endif; ?>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php if ($user_selected_template == 'homepage_v2') : ?>
+      <?php get_template_part( 'partials/departments/v2/content', 'connect' ); ?>
+    <?php else: ?>
+      <?php
+      $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
+      $connect_vars = phila_connect_panel($connect_panel);
+      include(locate_template('partials/departments/content-connect.php'));
+      ?>
+    <?php endif; ?>
+
 <?php endif; ?>
   </div>
 </section>
