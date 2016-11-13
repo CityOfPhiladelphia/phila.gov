@@ -24,7 +24,7 @@
       </span>
         <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
   	</header><!-- .entry-header -->
-    <?php $desc = phila_get_item_meta_desc( $post ); ?>
+    <?php $desc = phila_get_item_meta_desc( ); ?>
       <p class="description"><?php echo $desc ?> </p>
   </div>
 </article><!-- #post-## -->

@@ -232,7 +232,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo phila_get_item_meta_desc( $post ); ?>"/>
+  <meta property="og:description" content="<?php echo phila_get_item_meta_desc( ); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -986,7 +986,7 @@ function phila_get_home_news(){
         echo '<span>' . $contributor . '</span>';
     }
 
-    echo '<p>' . phila_get_item_meta_desc( $post )  . '</p>';
+    echo '<p>' . phila_get_item_meta_desc( )  . '</p>';
 
   }
 
@@ -1340,7 +1340,8 @@ function phila_get_service_updates_events(){
  * @param $post Int. Pass post ID if we are not in the loop.
  *
  **/
-function phila_get_item_meta_desc( $post, $blog_info = true ){
+function phila_get_item_meta_desc( $bloginfo = true ){
+  global $post;
 
   $meta_desc = array();
 
