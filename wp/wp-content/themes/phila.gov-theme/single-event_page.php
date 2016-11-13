@@ -27,7 +27,7 @@ get_header(); ?>
             $hero_header_call_to_action_button_url = rwmb_meta( 'phila_hero_header_call_to_action_button_url', $args = array('type' => 'URL'));
             $hero_header_call_to_action_button_text = rwmb_meta( 'phila_hero_header_call_to_action_button_text', $args = array('type' => 'text'));
             // Set Event Detail vars
-            $event_description = phila_get_item_meta_desc( $post );
+            $event_description = phila_get_item_meta_desc( );
 
             $event_location = rwmb_meta('phila_event_loc' , $args = array('type' => 'textarea'));
             $event_location_link = rwmb_meta('phila_event_loc_link' , $args = array('type' => 'url'));
