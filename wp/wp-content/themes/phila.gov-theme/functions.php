@@ -1579,7 +1579,6 @@ function phila_loop_clonable_metabox( $metabox_name ){
 
   $output = array();
 
-var_dump($metabox_name);
   if ( !empty($metabox_name) ){
 
     foreach ( $metabox_name as $k => $v ){
