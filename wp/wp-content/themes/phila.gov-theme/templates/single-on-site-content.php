@@ -44,6 +44,9 @@
   <?php endif; ?>
 
   <?php //Begin v2 templates ?>
+  <?php if ($user_selected_template == 'all_services_v2') : ?>
+    <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
+  <?php endif;?>
   <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
   <?php endif;?>
