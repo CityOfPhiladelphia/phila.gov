@@ -31,6 +31,7 @@ get_header(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
   <header class="entry-header">
   <?php
+  //TODO: clean up menu rendering
     /* Get an array of Ancestors and Parents if they exist */
     $parents = get_post_ancestors( $post->ID );
     /* Get the top Level page->ID count base 1, array base 0 so -1 */
@@ -65,17 +66,29 @@ get_header(); ?>
               <?php endif;?>
             </div>
           </div>
-          <?php
-            /*
-            Our navigation menu. We use categories to drive functionality.
-            This checks to make sure a category exists for the given page,
-            if it does, we render our menu w/ markup.
-            */
-              phila_get_department_menu();
-          ?>
+            <div class="show-for-medium">
+            <?php
+              /*
+              Our navigation menu. We use categories to drive functionality.
+              This checks to make sure a category exists for the given page,
+              if it does, we render our menu w/ markup.
+              */
+                phila_get_department_menu();
+            ?>
+          </div>
         </div>
       </div>
     </header>
+    <div class="show-for-small-only">
+    <?php
+      /*
+      Our navigation menu. We use categories to drive functionality.
+      This checks to make sure a category exists for the given page,
+      if it does, we render our menu w/ markup.
+      */
+        phila_get_department_menu();
+    ?>
+  </div>
     <?php else: ?>
       <div class="row">
         <div class="columns">
