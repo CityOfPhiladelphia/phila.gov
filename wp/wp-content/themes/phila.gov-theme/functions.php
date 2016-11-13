@@ -1567,9 +1567,22 @@ function phila_get_curated_service_list_v2( $service_group ){
   $output = array();
 
   if ( !empty($service_group) ){
-    $ids = isset($service_group['phila_v2_service_page'] ) ? $service_group['phila_v2_service_page'] : $output;
 
     foreach ( $service_group as $k => $v ){
+      $output[$k] = $v;
+    }
+  }
+  return $output;
+}
+
+function phila_loop_clonable_metabox( $metabox_name ){
+
+  $output = array();
+
+var_dump($metabox_name);
+  if ( !empty($metabox_name) ){
+
+    foreach ( $metabox_name as $k => $v ){
       $output[$k] = $v;
     }
   }

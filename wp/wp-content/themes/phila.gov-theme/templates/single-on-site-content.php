@@ -43,6 +43,15 @@
     <!-- End WYSIWYG content -->
   <?php endif; ?>
 
+  <?php //Begin v2 homepage specific templates ?>
+  <?php if ($user_selected_template == 'homepage_v2') : ?>
+
+    <?php //TODO: Add service alerts ?>
+
+    <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
+
+  <?php endif;?>
+
   <?php //Begin v2 templates ?>
   <?php if ($user_selected_template == 'all_services_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
