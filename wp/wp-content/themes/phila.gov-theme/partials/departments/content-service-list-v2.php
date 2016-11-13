@@ -1,6 +1,6 @@
 <?php
 /*
- *
+ * //NOTE: This template is not in use.
  * Partial for rendering service list
  *
  */
