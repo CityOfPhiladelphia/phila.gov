@@ -11,21 +11,21 @@ $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
 $connect_vars = phila_connect_panel($connect_panel);
 ?>
 
-<div class="large-6 columns connect vcard content-list inverse">
+<div class="large-6 columns connect vcard">
   <div class="row">
     <div class="columns">
       <h2 class="contrast">Connect</h2>
     </div>
   </div>
-    <div class="row collapse equal-height content-list-items">
-      <div class="small-5 columns equal center content-list-item">
+    <div class="row collapse equal-height inside-border-group">
+      <div class="small-5 columns equal center inside-border-group-item">
         <div class="valign">
           <div class="valign-cell">
             <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
           </div>
         </div>
       </div>
-      <div class="small-19 columns equal content-list-item">
+      <div class="small-19 columns equal inside-border-group-item">
         <div class="valign">
           <div class="adr valign-cell pam">
             <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
@@ -42,15 +42,15 @@ $connect_vars = phila_connect_panel($connect_panel);
       </div>
     </div>
 
-  <div class="row collapse equal-height content-list-items">
-    <div class="small-5 columns equal center content-list-item">
+  <div class="row collapse equal-height inside-border-group">
+    <div class="small-5 columns equal center inside-border-group-item">
       <div class="valign">
         <div class="valign-cell">
           <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     </div>
-    <div class="small-19 columns equal content-list-item">
+    <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
         <?php if ( !$connect_vars['email'] == '') : ?>
         <div class="email valign-cell pam">
@@ -61,15 +61,15 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
   </div>
 
-  <div class="row collapse equal-height content-list-items">
-    <div class="small-5 columns equal center content-list-item">
+  <div class="row collapse equal-height inside-border-group">
+    <div class="small-5 columns equal center inside-border-group-item">
       <div class="valign">
         <div class="valign-cell">
           <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     </div>
-    <div class="small-19 columns equal content-list-item">
+    <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
         <div class="valign-cell pam">
           <?php if ( !$connect_vars['phone'] == '') : ?>
@@ -87,17 +87,17 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
   </div>
 
-  <div class="row collapse equal-height content-list-items">
-    <div class="small-5 columns equal center content-list-item">
+  <div class="row collapse equal-height inside-border-group">
+    <div class="small-5 columns equal center inside-border-group-item">
       <div class="valign">
         <div class="valign-cell">
           <i class="fa fa-at fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     </div>
-    <div class="small-19 columns equal content-list-item">
+    <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
-        <div class="valign-cell pam content-list-item row collapse">
+        <div class="valign-cell pam inside-border-group-item row collapse">
           <?php if ( ! empty( $connect_vars['social'] ) ):
             $item_count = count( $connect_vars['social'] );
             $columns = phila_grid_column_counter( $item_count );
