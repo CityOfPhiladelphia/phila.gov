@@ -363,4 +363,76 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
+
+  public static function phila_metabox_cta_multi_title( $name, $id){
+    return array(
+      'name'  => $name,
+      'id'    => $id,
+      'type'  => 'text',
+      'class' => 'metabox-title',
+    );
+  }
+
+  public static function phila_metabox_cta_multi_summary(){
+        return array(
+          'name'  => 'Summary',
+          'id'    => 'phila_action_panel_summary_multi',
+          'type'  => 'textarea',
+          'class' => 'action-panel-details',
+        );
+  }
+
+  public static function phila_metabox_cta_multi_icon(){
+
+        return array(
+          'name'  => 'Icon',
+          'id'    => 'phila_action_panel_fa_multi',
+          'type'  => 'text',
+          'class' => 'action-panel-fa',
+          'hidden' => array(
+            'phila_template_select', '=', 'one_page_department',
+          ),
+        );
+  }
+  public static function phila_metabox_cta_multi_icon_circle(){
+
+        return array(
+          'name'  => 'Icon Background Circle',
+          'id'    => 'phila_action_panel_fa_circle_multi',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-fa',
+          'hidden' => array(
+            'phila_template_select', '=', 'one_page_department',
+          ),
+        );
+  }
+  public static function phila_metabox_url( $name, $id ){
+        return array(
+          'name'  => $name,
+          'id'    => $id,
+          'type'  => 'url',
+          'class' => 'metabox-url',
+        );
+  }
+
+  public static function phila_metabox_cta_multi_external_link(){
+
+        return array(
+          'name'  => 'External Link',
+          'id'    => 'phila_action_panel_link_loc_multi',
+          'type'  => 'checkbox',
+          'class' => 'action-panel-link-loc',
+          'desc'  => 'This link directs users away from alpha.phila.gov',
+        );
+  }
+
+  public static function phila_metabox_cta_post_picker( $name, $id, $post_type ){
+
+    return array(
+      'name' => $name,
+      'id' => $id,
+      'type' => 'post',
+      'post_type' => $post_type,
+    );
+  }
 }
