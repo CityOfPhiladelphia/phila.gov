@@ -19,6 +19,20 @@ function phila_return_month_array(){
   }
   return $month_array;
 }
+function phila_return_week_array(){
+
+  $week_array = array(
+    'monday'  => 'Monday',
+    'tuesday' => 'Tuesday',
+    'wednesday' => 'Wednesday',
+    'thursday'  => 'Thursday',
+    'friday'  => 'Friday',
+    'saturday'  => 'Saturday',
+    'sunday'  => 'Sunday'
+  );
+
+  return $week_array;
+}
 
 function phila_setup_tiny_mce_basic( array $options ){
 
@@ -1922,6 +1936,12 @@ function phila_group_add_clone_button_text( $text, $field ) {
   }
   if ( 'phila_cloneable_wysiwyg' == $field['id'] ){
     $text = '+ Add a Section';
+  }
+  if ( 'phila_contact_us' == $field['id'] ){
+    $text = '+ Add a Row';
+  }
+  if ( 'phila_contact_group' == $field['id'] ){
+    $text = '+ Add a Column';
   }
   return $text;
 }
