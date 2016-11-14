@@ -367,12 +367,14 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
           'name' => 'Start day',
           'id'   => 'phila_day_start',
           'type' => 'select',
+          'placeholder' => 'Select day',
           'options' => phila_return_week_array(),
          ),
          array(
            'name' => 'End day',
            'id'   => 'phila_day_end',
            'type' => 'select',
+           'placeholder' => 'Select day',
            'options' => phila_return_week_array(),
           ),
           array(
