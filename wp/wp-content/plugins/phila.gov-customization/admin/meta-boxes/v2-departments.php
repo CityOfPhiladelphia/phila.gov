@@ -65,6 +65,47 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     ),
   );
 
+  $meta_boxes[] = array(
+    'title' => 'Forms and Documents',
+    'pages'    => array( 'department_page' ),
+    'visible' => array( 'phila_template_select', 'forms_and_documents_v2' ),
+
+    'fields' => array(
+      array(
+        'id'  => 'phila_forms_documents_cta',
+        'type' => 'group',
+        'clone'  => true,
+        'max_clone' => 4,
+        'sort_clone' => true,
+
+        'fields' => array(
+          //TODO: decide whether or not we want to use arguments as demonstrated below
+          Phila_Gov_Standard_Metaboxes::phila_metabox_cta_multi_title('Call to Action Title', 'phila_action_panel_cta_text_multi' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_cta_multi_summary(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_cta_multi_icon(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_cta_multi_icon_circle(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link to Content','phila_action_panel_link_multi'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_cta_multi_external_link(),
+          array(
+            'name' => 'Featured Documents (optional)',
+            'type'  => 'heading'
+          ),
+          array(
+            'id'   => 'phila_featured_documents',
+            'type' => 'group',
+            //TODO: Nested clones with max_clone does not work properly with post picker... Find a better solution?
+            'fields' => array(
+              Phila_Gov_Standard_Metaboxes::phila_metabox_cta_post_picker('Select Document 1', 'phila_featured_document_item_0', 'document' ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_cta_post_picker('Select Document 2', 'phila_featured_document_item_1', 'document' ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_cta_post_picker('Select Document 3', 'phila_featured_document_item_2', 'document' ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+
 
   return $meta_boxes;
 }
