@@ -18,13 +18,15 @@
     <div class="row collapse" data-equalizer>
       <?php foreach ( $services as $service ) : ?>
         <div class="content-list-items medium-8 columns">
+          <div class="content-list-item">
+            <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
 
-          <div class="content-list-item valign pvm phm phl-l" data-equalizer-watch>
-            <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign-cell">
+            <div class="valign-cell pvm phm phl-l" data-equalizer-watch>
 
-              <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
+                <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
 
-             <div> <?php echo get_the_title( $service['phila_v2_service_page'] ) ?> </div>
+               <div> <?php echo get_the_title( $service['phila_v2_service_page'] ) ?> </div>
+             </div>
            </a>
          </div>
        </div>
