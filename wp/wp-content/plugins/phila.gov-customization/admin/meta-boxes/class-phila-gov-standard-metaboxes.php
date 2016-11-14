@@ -326,6 +326,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         //TODO: only show services pages that are not stubs
       ),
       'multiple'  => false,
+      'max_clone' => 3,
       'placeholder' => ' ',
       'js_options'  => array(
         'width' => '100%',
@@ -412,7 +413,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         ),
     );
   }
- 
+
   public static function phila_metabox_cta_multi_title( $name, $id){
     return array(
       'name'  => $name,
