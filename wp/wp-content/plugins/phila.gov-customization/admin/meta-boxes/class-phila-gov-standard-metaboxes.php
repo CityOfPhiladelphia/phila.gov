@@ -355,15 +355,64 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'type'  => 'email',
     );
   }
+
   public static function phila_v2_hours(){
     return array(
       'id'  => 'phila_v2_hours',
-      'name'  => 'Hours',
-      'type'  => 'text',
+      'type'  => 'group',
+      'clone'  => false,
+
+      'fields' => array(
+        array(
+          'name' => 'Start day',
+          'id'   => 'phila_day_start',
+          'type' => 'select',
+          'options' => phila_return_week_array(),
+         ),
+         array(
+           'name' => 'End day',
+           'id'   => 'phila_day_end',
+           'type' => 'select',
+           'options' => phila_return_week_array(),
+          ),
+          array(
+            'name' => 'Start time',
+            'id'   => 'phila_time_start',
+            'type' => 'datetime',
+            'js_options'  => array(
+              'timeFormat' =>  'hh:mm t.t.',
+              //'dateFormat'  => '',
+              'timeOnly'  => true,
+              'stepMinute' => 15,
+              'controlType'=> 'select',
+              'oneLine'=> true,
+            )
+          ),
+          array(
+            'name' => 'End time',
+            'id'   => 'phila_time_end',
+            'type' => 'datetime',
+            'js_options'  => array(
+              'timeFormat' =>  'hh:mm t.t.',
+              //'dateFormat'  => '',
+              'timeOnly'  => true,
+              'stepMinute' => 15,
+              'controlType'=> 'select',
+              'oneLine'=> true,
+            )
+          ),
+          array(
+            'type' => 'heading',
+            'name'  => 'More details'
+          ),
+          array(
+            'id'   => 'phila_hours_other',
+            'type' => 'textarea',
+          ),
+        ),
     );
   }
-
-
+ 
   public static function phila_metabox_cta_multi_title( $name, $id){
     return array(
       'name'  => $name,
