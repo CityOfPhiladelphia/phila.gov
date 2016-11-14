@@ -11,82 +11,124 @@ $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
 $connect_vars = phila_connect_panel($connect_panel);
 ?>
 
-<div class="large-6 columns connect">
-  <h2 class="contrast">Connect</h2>
-  <div class="vcard panel no-margin">
-      <div>
-        <div class="adr mbs">
-          <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
-            <span class="street-address"><?php echo $connect_vars['address']['st_1']; ?></span><br/>
+<div class="large-6 columns connect vcard content-list inverse">
+  <div class="row">
+    <div class="columns">
+      <h2 class="contrast">Connect</h2>
+    </div>
+  </div>
+    <div class="row collapse equal-height content-list-items">
+      <div class="small-5 columns equal center content-list-item">
+        <div class="valign">
+          <div class="valign-cell">
+            <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="small-19 columns equal content-list-item">
+        <div class="valign">
+          <div class="adr valign-cell pam">
+            <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
+              <span class="street-address"><?php echo $connect_vars['address']['st_1']; ?></span><br/>
+            <?php endif; ?>
+            <?php if ( !$connect_vars['address']['st_2'] == '') : ?>
+              <span class="street-address"><?php echo $connect_vars['address']['st_2']; ?></span><br/>
+            <?php endif; ?>
+            <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
+              <span class="locality"><?php echo $connect_vars['address']['city']; ?></span>, <span class="region" title="Pennsylvania"> <?php echo $connect_vars['address']['state']; ?></span> <span class="postal-code"><?php echo $connect_vars['address']['zip']; ?></span>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row collapse equal-height content-list-items">
+    <div class="small-5 columns equal center content-list-item">
+      <div class="valign">
+        <div class="valign-cell">
+          <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="small-19 columns equal content-list-item">
+      <div class="valign">
+        <?php if ( !$connect_vars['email'] == '') : ?>
+        <div class="email valign-cell pam">
+          <span class="type accessible">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>" class="value"><?php echo $connect_vars['email']; ?></a>
+        </div>
+      <?php endif; ?>
+    </div>
+    </div>
+  </div>
+
+  <div class="row collapse equal-height content-list-items">
+    <div class="small-5 columns equal center content-list-item">
+      <div class="valign">
+        <div class="valign-cell">
+          <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="small-19 columns equal content-list-item">
+      <div class="valign">
+        <div class="valign-cell pam">
+          <?php if ( !$connect_vars['phone'] == '') : ?>
+            <div class="tel">
+              <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $connect_vars['phone']); ?>" class="value"><?php echo $connect_vars['phone']; ?></a>
+            </div>
           <?php endif; ?>
-          <?php if ( !$connect_vars['address']['st_2'] == '') : ?>
-            <span class="street-address"><?php echo $connect_vars['address']['st_2']; ?></span><br/>
-          <?php endif; ?>
-          <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
-            <span class="locality"><?php echo $connect_vars['address']['city']; ?></span>, <span class="region" title="Pennsylvania"> <?php echo $connect_vars['address']['state']; ?></span> <span class="postal-code"><?php echo $connect_vars['address']['zip']; ?></span>
+          <?php if ( !$connect_vars['fax'] == '') : ?>
+            <div class="fax">
+              <span class="type">Fax: </span><span class="value"><?php echo $connect_vars['fax']; ?></span>
+            </div>
           <?php endif; ?>
         </div>
-        <?php if ( !$connect_vars['phone'] == '') : ?>
-          <div class="tel pbxs">
-            <span class="type vcard-label">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $connect_vars['phone']); ?>"><?php echo  $connect_vars['phone']; ?></a>
-          </div>
-        <?php endif; ?>
-        <?php if ( !$connect_vars['fax'] == '') : ?>
-         <div class="fax pbxs">
-           <span class="type vcard-label">Fax: </span><?php echo $connect_vars['fax']; ?>
-         </div>
-        <?php endif; ?>
-        <?php if ( !$connect_vars['email'] == '') : ?>
-         <div class="email pbxs">
-           <span class="vcard-label">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>"><?php echo $connect_vars['email']; ?></a>
-         </div>
-        <?php endif; ?>
-        <?php if ( !$connect_vars['cta']['title'] == '' && !$connect_vars['cta']['url'] == '' ) : ?>
-          <hr>
-          <div class="ptxs pbn center">
-            <?php if (!$connect_vars['cta']['summary'] == '') echo '<span>' . $connect_vars['cta']['summary'] . '</span>'; ?>
-            <br/>
-              <a href="<?php echo $connect_vars['cta']['url'];?>" class="button icon clearfix mtm">
-                <div class="valign">
-                  <div class="button-label valign-cell"><?php echo $connect_vars['cta']['title']; ?></div>
-                </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row collapse equal-height content-list-items">
+    <div class="small-5 columns equal center content-list-item">
+      <div class="valign">
+        <div class="valign-cell">
+          <i class="fa fa-at fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="small-19 columns equal content-list-item">
+      <div class="valign">
+        <div class="valign-cell pam content-list-item row collapse">
+          <?php if ( ! empty( $connect_vars['social'] ) ):
+            $item_count = count( $connect_vars['social'] );
+            $columns = phila_grid_column_counter( $item_count );
+          ?>
+          <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
+            <div class="small-<?php echo $columns;?> columns pvxs">
+              <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs">
+                <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
+                <span class="show-for-sr">Facebook</span>
               </a>
-          </div>
+            </div>
+          <?php endif; ?>
+          <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
+            <div class="small-<?php echo $columns;?> columns pvxs">
+              <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs">
+                <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                <span class="show-for-sr">Twitter</span>
+              </a>
+            </div>
+          <?php endif; ?>
+          <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
+            <div class="small-<?php echo $columns;?> columns pvxs">
+              <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs">
+              <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+                <span class="show-for-sr">Instagram</span>
+              </a>
+            </div>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
-      <div>
-        <?php if ( ! empty( $connect_vars['social'] ) ):
-          $item_count = count( $connect_vars['social'] );
-          $columns = phila_grid_column_counter( $item_count );
-        ?>
-          <div class="row mbn">
-            <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
-              <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs">
-                  <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
-                  <span class="show-for-sr">Facebook</span>
-                </a>
-              </div>
-            <?php endif; ?>
-            <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
-              <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs">
-                  <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
-                  <span class="show-for-sr">Twitter</span>
-                </a>
-              </div>
-            <?php endif; ?>
-            <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
-              <div class="small-<?php echo $columns;?> columns center pvxs">
-                <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs">
-                <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
-                  <span class="show-for-sr">Instagram</span>
-                </a>
-              </div>
-            <?php endif; ?>
-          </div>
-          <hr>
-        <?php endif; ?>
+      </div>
     </div>
   </div>
 </div>
