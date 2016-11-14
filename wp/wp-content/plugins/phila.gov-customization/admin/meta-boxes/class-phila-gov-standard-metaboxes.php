@@ -326,7 +326,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         //TODO: only show services pages that are not stubs
       ),
       'multiple'  => false,
-      'max_clone' => 3,
+      'max_clone' => 6,
       'placeholder' => ' ',
       'js_options'  => array(
         'width' => '100%',
