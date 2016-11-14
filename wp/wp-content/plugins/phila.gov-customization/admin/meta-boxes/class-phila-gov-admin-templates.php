@@ -53,11 +53,12 @@ class Phila_Gov_Admin_Templates {
           'resource_list' => 'Resource List',
           'staff_directory' => 'Staff Directory',
           'disabled'  => '──────────',
-          'homepage_v2' => 'Homepage Version 2',
+          'homepage_v2' => 'Department Homepage Version 2',
           'one_quarter_headings_v2' => '1/4 Headings',
           'contact_us_v2' => 'Contact Page',
+          //'service_list_v2'  => 'Service List',
+          'all_services_v2' => 'All Services',
           'forms_and_documents_v2' => 'Forms & Documents',
-          'service_list_v2'  => 'Service List',
           ),
        ),
        array(
@@ -70,7 +71,7 @@ class Phila_Gov_Admin_Templates {
    return $meta_boxes;
   }
 
-
+  //TODO: break these callbacks out into individual functions
   function phila_hide_categories( $conditions ) {
 
     $conditions['categorydiv'] = array(
@@ -88,6 +89,7 @@ class Phila_Gov_Admin_Templates {
           array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', '' ),
           array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
+          //array( 'phila_template_select', '=', 'service_list_v2' ),
         ),
         'relation' => 'or'
       ),

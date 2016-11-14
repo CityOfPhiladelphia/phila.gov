@@ -23,7 +23,7 @@
               $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
               the_post_thumbnail( 'news-thumb' , array( 'class' => 'float-left hide-for-small-only' ) );
       endif;
-      $desc = phila_get_item_meta_desc();
+      $desc = phila_get_item_meta_desc( );
       if ($post->post_content != ''):
         the_content();
       else :

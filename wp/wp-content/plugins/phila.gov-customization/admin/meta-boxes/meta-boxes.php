@@ -1793,6 +1793,8 @@ $meta_boxes[] = array(
   'pages' => array( 'department_page' ),
   'priority' => 'high',
 
+  'hidden'  => array('phila_template_select', 'ends with', 'v2'),
+
   'fields' => array(
     $meta_var_programs_initiatives_images,
     $metabox_grid_row,

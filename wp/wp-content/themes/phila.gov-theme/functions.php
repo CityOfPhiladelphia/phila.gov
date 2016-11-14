@@ -232,7 +232,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo phila_get_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo phila_get_item_meta_desc( ); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -986,7 +986,7 @@ function phila_get_home_news(){
         echo '<span>' . $contributor . '</span>';
     }
 
-    echo '<p>' . phila_get_item_meta_desc()  . '</p>';
+    echo '<p>' . phila_get_item_meta_desc( )  . '</p>';
 
   }
 
@@ -1337,6 +1337,7 @@ function phila_get_service_updates_events(){
 /**
  * Returns the meta_desc for an item.
  * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
+ * @param $post Int. Pass post ID if we are not in the loop.
  *
  **/
 function phila_get_item_meta_desc( $bloginfo = true ){
@@ -1561,6 +1562,32 @@ function phila_extract_stepped_content($parent_group){
   return $output;
 }
 
+function phila_get_curated_service_list_v2( $service_group ){
+
+  $output = array();
+
+  if ( !empty($service_group) ){
+
+    foreach ( $service_group as $k => $v ){
+      $output[$k] = $v;
+    }
+  }
+  return $output;
+}
+
+function phila_loop_clonable_metabox( $metabox_name ){
+
+  $output = array();
+
+  if ( !empty($metabox_name) ){
+
+    foreach ( $metabox_name as $k => $v ){
+      $output[$k] = $v;
+    }
+  }
+  return $output;
+}
+
 function phila_additional_content( $input ){
   $output = array();
   if ( !empty($input) ) {
@@ -1636,6 +1663,7 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
+
 function phila_get_page_icon( $post ){
 
   $icon = rwmb_meta( 'phila_page_icon', $args = array(), $post );
@@ -1673,4 +1701,13 @@ function phila_get_hero_header_v2( $post ){
     return $output;
   }
 
+}
+/* Use in the loop to get an array of current category IDs */
+function phila_util_cat_ids(){
+  $categories = get_the_category();
+  $cat_ids = array();
+  foreach ($categories as $category ){
+    array_push($cat_ids, $category->cat_ID);
+  }
+  return $cat_ids;
 }
