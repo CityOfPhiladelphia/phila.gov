@@ -213,8 +213,13 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'page' ),
     'context'  => 'normal',
     'priority' => 'high',
-    'visible' => array('phila_template_select', 'resource_list'),
-
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'resource_list'),
+        array(  'phila_template_select','=', 'resource_list_v2'),
+      ),
+      'relation' => 'or'
+    ),
 
     'fields' => array(
       array(
