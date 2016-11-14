@@ -326,6 +326,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         //TODO: only show services pages that are not stubs
       ),
       'multiple'  => false,
+      'max_clone' => 6,
       'placeholder' => ' ',
       'js_options'  => array(
         'width' => '100%',
@@ -382,8 +383,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
             'id'   => 'phila_time_start',
             'type' => 'datetime',
             'js_options'  => array(
-              'timeFormat' =>  'hh:mm t.t.',
-              //'dateFormat'  => '',
+              'timeFormat' =>  'hh:mm tt',
               'timeOnly'  => true,
               'stepMinute' => 15,
               'controlType'=> 'select',
@@ -395,8 +395,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
             'id'   => 'phila_time_end',
             'type' => 'datetime',
             'js_options'  => array(
-              'timeFormat' =>  'hh:mm t.t.',
-              //'dateFormat'  => '',
+              'timeFormat' =>  'hh:mm tt',
               'timeOnly'  => true,
               'stepMinute' => 15,
               'controlType'=> 'select',
@@ -415,7 +414,8 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_title( $name, $id){
+
+  public static function phila_metabox_title( $name, $id ){
     return array(
       'name'  => $name,
       'id'    => $id,

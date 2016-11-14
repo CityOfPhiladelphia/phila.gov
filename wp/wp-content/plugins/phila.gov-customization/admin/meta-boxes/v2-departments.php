@@ -6,7 +6,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   //Department Homepage
   $meta_boxes[] = array(
-    'title' => 'Hero header v2',
+    'title' => 'Department media',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'context'  => 'normal',
@@ -14,8 +14,22 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
     'fields' => array(
       array(
-        'id'       => 'phila_v2_homepage_hero',
-        'title'    => 'Select image',
+        'type' => 'heading',
+        'name'  => 'Hero image'
+      ),
+      array(
+        'id' => 'phila_v2_homepage_hero',
+        'title' => 'Select image',
+        'type' => 'image_advanced',
+        'max_file_uploads' => 1,
+      ),
+      array(
+        'type' => 'heading',
+        'name'  => 'Department logo'
+      ),
+      array(
+        'id'  => 'phila_v2_logo',
+        'title' => 'Department logo',
         'type'  => 'image_advanced',
         'max_file_uploads' => 1,
       ),
