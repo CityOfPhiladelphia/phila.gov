@@ -1,9 +1,18 @@
 .inside-border-group{
-  border-bottom: 2px solid $white;
   background: $ghost-gray;
 
+  &.break-thirds{
+    .inside-border-group-item{
+      @media only screen and (min-width: 40em) {
+        &:nth-of-type(3){
+          border-right: 0;
+        }
+      }
+    }
+  }
   .inside-border-group-item{
-    border-right:2px solid $white;
+    border-right: 2px solid $white;
+    border-bottom: 2px solid $white;
 
     &:last-of-type{
       border-right: 0;
