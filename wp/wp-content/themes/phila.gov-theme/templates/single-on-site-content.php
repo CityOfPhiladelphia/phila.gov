@@ -43,15 +43,34 @@
     <!-- End WYSIWYG content -->
   <?php endif; ?>
 
+  <?php //Begin v2 homepage specific templates ?>
+  <?php if ($user_selected_template == 'homepage_v2') : ?>
+
+    <?php
+
+    $args = array( 'post_type' => 'service_updates', 'category__in' => phila_util_cat_ids()); ?>
+    <?php $service_updates_loop = new WP_Query( $args ); ?>
+    <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+    <?php wp_reset_query();?>
+
+    <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
+
+  <?php endif;?>
+
   <?php //Begin v2 templates ?>
+  <?php if ($user_selected_template == 'all_services_v2') : ?>
+    <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
+  <?php endif;?>
   <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
   <?php endif;?>
-
+  <?php if ($user_selected_template == 'service_list_v2') : ?>
+    <?php get_template_part( 'partials/departments/content', 'service-list-v2' ); ?>
+  <?php endif;?>
   <?php if ($user_selected_template == 'forms_and_documents_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'forms-documents-v2' ); ?>
   <?php endif;?>
-
+  
   <?php if ($user_selected_template == 'department_homepage') : ?>
     <!-- Begin Department Homepage Display -->
     <section class="apply-template">
