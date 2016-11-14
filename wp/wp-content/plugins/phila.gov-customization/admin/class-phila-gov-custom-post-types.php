@@ -60,7 +60,8 @@ class Phila_Gov_Custom_Post_Types{
           'title',
           'editor',
           'page-attributes',
-          'revisions'
+          'revisions',
+          'thumbnail',
         ),
         'public' => true,
         'has_archive' => true,
