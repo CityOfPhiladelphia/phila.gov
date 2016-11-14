@@ -1,0 +1,29 @@
+@media screen and (max-width: 39.9375em) {
+
+  .icon-list{
+    background: $white;
+    text-align: center;
+
+    div{
+      display: block !important;
+    }
+
+    .inside-border-group-item{
+      border-right: 2px solid $sidewalk;
+      border-bottom: 2px solid $sidewalk;
+
+      &:last-of-type,
+      &:nth-of-type(2n){
+        border-right: 0;
+      }
+      &:last-of-type,
+      &:nth-last-of-type(2){
+        border-bottom: none;
+      }
+    }
+    .fa{
+      font-size: $large-font-base / 1.5;
+    }
+  }
+
+}
