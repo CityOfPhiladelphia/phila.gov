@@ -1,5 +1,5 @@
 .inside-border-group{
-  border-top: 2px solid $white;
+  border-bottom: 2px solid $white;
   background: $ghost-gray;
 
   .inside-border-group-item{
@@ -7,6 +7,15 @@
 
     &:last-of-type{
       border-right: 0;
+    }
+  }
+  a {
+    div {
+      .fa {
+        margin-right:$spacing-medium;
+      }
+      display:table-cell;
+      vertical-align:middle;
     }
   }
 }
