@@ -382,8 +382,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
             'id'   => 'phila_time_start',
             'type' => 'datetime',
             'js_options'  => array(
-              'timeFormat' =>  'hh:mm t.t.',
-              //'dateFormat'  => '',
+              'timeFormat' =>  'hh:mm tt',
               'timeOnly'  => true,
               'stepMinute' => 15,
               'controlType'=> 'select',
@@ -395,8 +394,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
             'id'   => 'phila_time_end',
             'type' => 'datetime',
             'js_options'  => array(
-              'timeFormat' =>  'hh:mm t.t.',
-              //'dateFormat'  => '',
+              'timeFormat' =>  'hh:mm tt',
               'timeOnly'  => true,
               'stepMinute' => 15,
               'controlType'=> 'select',

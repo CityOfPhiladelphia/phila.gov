@@ -67,10 +67,15 @@
   <?php if ($user_selected_template == 'service_list_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'service-list-v2' ); ?>
   <?php endif;?>
+
   <?php if ($user_selected_template == 'forms_and_documents_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'forms-documents-v2' ); ?>
   <?php endif;?>
-  
+
+  <?php if ($user_selected_template == 'contact_us_v2') : ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'contact-us' ); ?>
+  <?php endif;?>
+
   <?php if ($user_selected_template == 'department_homepage') : ?>
     <!-- Begin Department Homepage Display -->
     <section class="apply-template">
