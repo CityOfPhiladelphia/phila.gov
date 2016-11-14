@@ -16,17 +16,12 @@ get_header(); ?>
 <div class="row">
   <div class="columns results a-z-list border-top-none">
   <?php
-  $categories = get_the_category();
-  $cat_ids = array();
-  foreach ($categories as $category ){
-    array_push($cat_ids, $category->cat_ID);
-  }
   $args = array(
     'post_type'  => 'service_page',
     'posts_per_page'  => -1,
     'order' => 'ASC',
     'orderby' => 'title',
-    'category__in' => $cat_ids,
+    'category__in' => phila_util_cat_ids(),
     'meta_query' => array(
       'relation' => 'OR',
       array(

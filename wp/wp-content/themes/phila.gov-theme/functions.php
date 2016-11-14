@@ -1702,3 +1702,12 @@ function phila_get_hero_header_v2( $post ){
   }
 
 }
+/* Use in the loop to get an array of current category IDs */
+function phila_util_cat_ids(){
+  $categories = get_the_category();
+  $cat_ids = array();
+  foreach ($categories as $category ){
+    array_push($cat_ids, $category->cat_ID);
+  }
+  return $cat_ids;
+}
