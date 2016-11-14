@@ -34,7 +34,6 @@ function phila_register_department_contact_us( $meta_boxes ){
             'max_clone' => 3,
 
             'fields' => array(
-              Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
               array(
                 'type' => 'heading',
                 'name'  => 'Column title'
@@ -44,10 +43,15 @@ function phila_register_department_contact_us( $meta_boxes ){
                 'type'  => 'text',
                 'class' => 'width-95'
               ),
+              Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
               Phila_Gov_Standard_Metaboxes::phila_v2_phone(),
               Phila_Gov_Standard_Metaboxes::phila_v2_fax(),
               Phila_Gov_Standard_Metaboxes::phila_v2_email(),
+              array(
+                'type' => 'heading',
+                'name'  => 'Open hours'
+              ),
               Phila_Gov_Standard_Metaboxes::phila_v2_hours(),
 
             ),
