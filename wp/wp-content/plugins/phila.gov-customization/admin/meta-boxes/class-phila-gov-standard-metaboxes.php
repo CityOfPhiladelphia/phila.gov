@@ -414,8 +414,8 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         ),
     );
   }
- 
-  public static function phila_metabox_cta_multi_title( $name, $id){
+
+  public static function phila_metabox_title( $name, $id){
     return array(
       'name'  => $name,
       'id'    => $id,
@@ -477,7 +477,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         );
   }
 
-  public static function phila_metabox_cta_post_picker( $name, $id, $post_type ){
+  public static function phila_metabox_post_picker( $name, $id, $post_type ){
 
     return array(
       'name' => $name,
