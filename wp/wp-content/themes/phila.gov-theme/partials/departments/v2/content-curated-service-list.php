@@ -15,7 +15,6 @@
     <h2>Services</h2>
     <div class="row collapse inside-border-group break-thirds icon-list" data-equalizer>
       <?php foreach ( $services as $service ) : ?>
-
         <div class="inside-border-group-item medium-8 small-12 columns">
           <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
           <div class="valign-cell pvm phm phl-l" data-equalizer-watch>
@@ -23,7 +22,7 @@
             <div><?php echo get_the_title( $service['phila_v2_service_page'] ) ?> </div>
           </div>
         </a>
-    </div>
+      </div>
     <?php endforeach; ?>
   </div>
  </div>
