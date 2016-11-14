@@ -1,0 +1,12 @@
+.inside-border-group{
+  border-top: 2px solid $white;
+  background: $ghost-gray;
+
+  .inside-border-group-item{
+    border-right:2px solid $white;
+
+    &:last-of-type{
+      border-right: 0;
+    }
+  }
+}
