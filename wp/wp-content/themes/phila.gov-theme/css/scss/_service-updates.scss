@@ -1,7 +1,14 @@
 //Service Updates
+.home{
+  .service-update-row{
+    padding-top: $spacing-medium;
+  }
+}
 .service-update-row{
   background: $white;
+  padding-top: $spacing-large;
 }
+
 .service-update{
   color: #444444;
   margin-bottom: .5rem;
