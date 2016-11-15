@@ -8,6 +8,10 @@ footer{
   &.site-footer {
     background: $white;
 
+    .department-logo{
+      width: 400px;
+      height:auto;
+    }
     a:link, a:visited {
       color: $ben-franklin-blue;
       text-decoration: none;
