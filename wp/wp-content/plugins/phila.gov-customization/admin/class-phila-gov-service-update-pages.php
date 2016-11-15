@@ -42,6 +42,9 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
                 'roads' => 'Roads',
                 'transit' => 'Transit',
                 'trash' => 'Trash',
+                'phones' => 'Phones',
+                'offices' => 'Offices',
+
               ),
            ),
            array(
