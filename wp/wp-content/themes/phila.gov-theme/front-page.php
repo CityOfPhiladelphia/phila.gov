@@ -89,8 +89,7 @@ get_header(); ?>
       </div>
     </div>
     <!-- End Hero Content -->
-
-    <?php $args = array( 'post_type' => 'service_updates' ); ?>
+    <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
