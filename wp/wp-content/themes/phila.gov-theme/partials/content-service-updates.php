@@ -5,13 +5,15 @@
  *
  */
  ?>
- <div class="service-update-row row ptm">
-   <div class="columns">
-     <div class="row">
-       <div class="columns">
-         <h2 class="contrast">Service updates</h2>
-       </div>
-     </div>
+    <?php if ( is_home() ):?>
+    <div class="service-update-row row ptm">
+      <div class="columns">
+         <div class="row">
+           <div class="columns">
+             <h2 class="contrast">Service updates</h2>
+           </div>
+         </div>
+    <?php endif;?>
 
          <?php if ( $service_updates_loop->have_posts() ) : ?>
 
@@ -21,23 +23,23 @@
            <?php $service_update = $service_updates_loop->the_post(); ?>
            <?php $update_details = phila_get_service_updates(); ?>
            <?php if ( !empty( $update_details ) ) :?>
-             <?php array_push($update_array, $update_details); ?>
+             <?php array_push( $update_array, $update_details ); ?>
            <?php endif; ?>
          <?php endwhile; ?>
 
-         <?php if (!empty($update_array) ): ?>
+         <?php if (!empty( $update_array ) ): ?>
 
            <?php //Sort by urgency level (critical to normal) and then A-Z ?>
            <?php foreach ( $update_array as $key => $update_item ): ?>
              <?php $urgency[$key] = $update_item['service_level']; ?>
              <?php $type[$key] = $update_item['service_type']; ?>
            <?php endforeach; ?>
-           <?php array_multisort($urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
+           <?php array_multisort( $urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
 
            <div class="row">
            <?php $i=0; ?>
 
-           <?php foreach ($update_array as $update):?>
+           <?php foreach ( $update_array as $update ):?>
              <?php if ($update['service_date_format'] != 'none') :?>
                <?php $start = new DateTime("@" . $update['service_effective_start']['timestamp']); ?>
                <?php $end = new DateTime("@" . $update['service_effective_end']['timestamp']); ?>
@@ -101,7 +103,7 @@
                <?php endforeach; ?>
              </div>
            <?php endif; ?>
-         <?php else : ?>
+         <?php elseif ( is_home() && empty( $update_array ) ) : ?>
            <div class="row">
              <div class="small-24 columns">
                <div class="placeholder">
@@ -110,5 +112,7 @@
              </div>
            </div>
          <?php endif; ?>
-       </div>
-     </div>
+         <?php if ( is_home() ):?>
+             </div>
+           </div>
+         <?php endif; ?>
