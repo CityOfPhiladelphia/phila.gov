@@ -53,6 +53,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
           Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
         ),
       ),
     ),
