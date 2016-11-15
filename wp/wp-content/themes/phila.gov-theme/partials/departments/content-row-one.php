@@ -13,7 +13,7 @@ $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1' );
 
 if ( !empty( $row_one_col_one_module ) ){
   $row_one_col_one_type = isset( $row_one_col_one_module['phila_module_row_1_col_1_type'] ) ? $row_one_col_one_module['phila_module_row_1_col_1_type'] : '';
-  if ( $row_one_col_one_type == 'phila_module_row_1_col_1_blog_posts' ){
+  if ( $row_one_col_one_type == 'phila_module_row_1_col_1_blog_posts' || $row_one_col_one_type == 'phila_module_row_1_col_1_news_posts' ){
     $row_one_col_one_post_style = $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_post_style'];
   } else {
     $row_one_col_one_text_title = isset( $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'] ) ? $row_one_col_one_module['module_row_1_col_1_options']['phila_module_row_1_col_1_texttitle'] : '';
@@ -103,6 +103,18 @@ if ( !empty( $row_one_col_two_module ) ){
       <?php endif;?>
       </div>
     </div>
+  <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_news_posts' ): ?>
+  <!-- Begin Column One -->
+    <div class="large-18 columns">
+      <div class="row">
+      <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
+      <!-- TURN SHORTCODE STRING INTO VAR -->
+        <?php echo do_shortcode('[recent-news list posts="3"]'); ?>
+      <?php else: ?>
+        <?php echo do_shortcode('[recent-news posts="3"]'); ?>
+      <?php endif;?>
+      </div>
+    </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
     <div class="large-18 columns">
       <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
@@ -122,6 +134,13 @@ if ( !empty( $row_one_col_two_module ) ){
     <div class="large-6 columns">
       <div class="row">
         <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
+      </div>
+    </div>
+  <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_news_posts' ): ?>
+    <!-- Begin Column Two -->
+    <div class="large-6 columns">
+      <div class="row">
+        <?php echo do_shortcode('[recent-news posts="1"]'); ?>
       </div>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_custom_text' ): ?>

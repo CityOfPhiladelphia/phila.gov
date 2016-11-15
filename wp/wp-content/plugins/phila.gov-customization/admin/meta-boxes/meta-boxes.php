@@ -497,6 +497,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'options' => array(
             'phila_module_row_1_col_1_blog_posts' => 'Blog Posts',
             'phila_module_row_1_col_1_custom_text' => 'Custom Text',
+            'phila_module_row_1_col_1_news_posts' => 'News Posts',
             ),
           ),
           array(
@@ -505,7 +506,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             // List of sub-fields
             'fields' => array(
               array(
-               'name' => 'Blog Post Style',
+               'name' => 'Post Style',
                'id'   => 'phila_module_row_1_col_1_post_style',
                'desc'  => 'Recent posts are displayed as "Cards" by default.',
                'type' => 'select',
@@ -515,7 +516,14 @@ function phila_register_meta_boxes( $meta_boxes ){
                  'phila_module_row_1_col_1_post_style_cards' => 'Card',
                  'phila_module_row_1_col_1_post_style_list' => 'List',
                ),
-               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_blog_posts'),
+              //  'hidden' => array('phila_module_row_1_col_1_type', '=', 'phila_module_row_1_col_1_custom_text'),
+               'hidden' => array(
+                 'when'  => array(
+                   array('phila_module_row_1_col_1_type', '=', 'phila_module_row_1_col_1_custom_text' ),
+                   array('phila_module_row_1_col_1_type', '=', '' ),
+                 ),
+                 'relation' => 'or',
+               ),
 
              ),
              array(
@@ -560,9 +568,10 @@ function phila_register_meta_boxes( $meta_boxes ){
           'placeholder' => 'Select...',
           'options' => array(
             'phila_module_row_1_col_2_blog_posts' => 'Blog Posts',
-            'phila_module_row_1_col_2_custom_text' => 'Custom Text',
             'phila_module_row_1_col_2_call_to_action_panel' => 'Call to Action Panel',
             'phila_module_row_1_col_2_connect_panel' => 'Connect Panel',
+            'phila_module_row_1_col_2_custom_text' => 'Custom Text',
+            'phila_module_row_1_col_2_news_posts' => 'News Posts',
           ),
         ),
         array(
