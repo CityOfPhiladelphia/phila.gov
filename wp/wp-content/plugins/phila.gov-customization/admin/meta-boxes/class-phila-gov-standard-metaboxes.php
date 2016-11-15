@@ -424,12 +424,12 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_cta_multi_summary(){
+  public static function phila_metabox_textarea( $name, $id){
         return array(
-          'name'  => 'Summary',
-          'id'    => 'phila_action_panel_summary_multi',
+          'name'  => $name,
+          'id'    => $id,
           'type'  => 'textarea',
-          'class' => 'action-panel-details',
+          'class' => 'metabox-summary',
         );
   }
 

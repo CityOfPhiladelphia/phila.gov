@@ -95,7 +95,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'fields' => array(
           //TODO: decide whether or not we want to use arguments as demonstrated below
           Phila_Gov_Standard_Metaboxes::phila_metabox_title('Call to Action Title', 'phila_action_panel_cta_text_multi' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_cta_multi_summary(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Summary', 'phila_action_panel_summary_multi'),
           Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link to Content','phila_action_panel_link_multi'),
           array(
             'name' => 'Featured Documents (optional)',
