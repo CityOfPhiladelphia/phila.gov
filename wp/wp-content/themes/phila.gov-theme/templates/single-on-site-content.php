@@ -52,9 +52,7 @@
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
-
     <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
-
   <?php endif;?>
 
   <?php //Begin v2 templates ?>
