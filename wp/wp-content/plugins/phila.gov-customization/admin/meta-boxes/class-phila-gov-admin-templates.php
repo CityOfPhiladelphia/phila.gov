@@ -58,7 +58,8 @@ class Phila_Gov_Admin_Templates {
           'contact_us_v2' => 'Contact Page',
           'all_services_v2' => 'All Services',
           'forms_and_documents_v2' => 'Forms & Documents',
-          'resource_list_v2' => 'Resource List'
+          'resource_list_v2' => 'Resource List',
+          'staff_directory_v2' => 'Staff Directory',
           ),
        ),
        array(

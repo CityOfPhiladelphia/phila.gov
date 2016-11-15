@@ -59,9 +59,11 @@
   <?php if ($user_selected_template == 'all_services_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
   <?php endif;?>
+
   <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
   <?php endif;?>
+
   <?php if ($user_selected_template == 'service_list_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'service-list-v2' ); ?>
   <?php endif;?>
@@ -78,6 +80,10 @@
     <section class="apply-template">
       <?php get_template_part( 'partials/resource', 'list' ); ?>
     </section>
+  <?php endif;?>
+
+  <?php if ($user_selected_template == 'staff_directory_v2') : ?>
+    <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'department_homepage') : ?>
