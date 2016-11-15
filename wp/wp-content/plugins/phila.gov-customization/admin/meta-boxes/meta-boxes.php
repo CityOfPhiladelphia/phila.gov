@@ -22,13 +22,13 @@ function phila_return_month_array(){
 function phila_return_week_array(){
 
   $week_array = array(
-    'monday'  => 'Monday',
-    'tuesday' => 'Tuesday',
-    'wednesday' => 'Wednesday',
-    'thursday'  => 'Thursday',
-    'friday'  => 'Friday',
-    'saturday'  => 'Saturday',
-    'sunday'  => 'Sunday'
+    'Monday'  => 'Monday',
+    'Tuesday' => 'Tuesday',
+    'Wednesday' => 'Wednesday',
+    'Thursday'  => 'Thursday',
+    'Friday'  => 'Friday',
+    'Saturday'  => 'Saturday',
+    'Sunday'  => 'Sunday'
   );
 
   return $week_array;
