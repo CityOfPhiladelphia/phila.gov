@@ -169,7 +169,6 @@ jQuery(document).ready(function($) {
 
     if ( templateSelect.val() == 'forms_and_documents_v2' ){
       $( '[id^=phila_action_panel_]' ).prop('required', true);
-
     }
 
     templateSelect.change(function() {
