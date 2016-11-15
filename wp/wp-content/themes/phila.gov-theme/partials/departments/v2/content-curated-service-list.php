@@ -17,7 +17,7 @@
       <?php foreach ( $services as $service ) : ?>
         <div class="inside-border-group-item medium-8 small-12 columns">
           <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
-          <div class="valign-cell pvm phm phl-l" data-equalizer-watch>
+          <div class="valign-cell pal phl-l" data-equalizer-watch>
             <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
             <div><?php echo get_the_title( $service['phila_v2_service_page'] ) ?> </div>
           </div>
