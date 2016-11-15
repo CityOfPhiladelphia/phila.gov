@@ -366,21 +366,21 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'fields' => array(
         array(
           'name' => 'Start day',
-          'id'   => 'phila_day_start',
+          'id'   => 'day_start',
           'type' => 'select',
           'placeholder' => 'Select day',
           'options' => phila_return_week_array(),
          ),
          array(
            'name' => 'End day',
-           'id'   => 'phila_day_end',
+           'id'   => 'day_end',
            'type' => 'select',
            'placeholder' => 'Select day',
            'options' => phila_return_week_array(),
           ),
           array(
             'name' => 'Start time',
-            'id'   => 'phila_time_start',
+            'id'   => 'time_start',
             'type' => 'datetime',
             'js_options'  => array(
               'timeFormat' =>  'hh:mm tt',
@@ -392,7 +392,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
           ),
           array(
             'name' => 'End time',
-            'id'   => 'phila_time_end',
+            'id'   => 'time_end',
             'type' => 'datetime',
             'js_options'  => array(
               'timeFormat' =>  'hh:mm tt',
@@ -407,7 +407,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
             'name'  => 'More details'
           ),
           array(
-            'id'   => 'phila_hours_other',
+            'id'   => 'hours_other',
             'type' => 'textarea',
           ),
         ),
