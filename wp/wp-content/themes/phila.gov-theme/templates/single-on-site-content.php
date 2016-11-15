@@ -76,6 +76,12 @@
     <?php get_template_part( 'partials/departments/v2/content', 'contact-us' ); ?>
   <?php endif;?>
 
+  <?php if ($user_selected_template == 'resource_list_v2') : ?>
+    <section class="apply-template">
+      <?php get_template_part( 'partials/resource', 'list' ); ?>
+    </section>
+  <?php endif;?>
+
   <?php if ($user_selected_template == 'department_homepage') : ?>
     <!-- Begin Department Homepage Display -->
     <section class="apply-template">
