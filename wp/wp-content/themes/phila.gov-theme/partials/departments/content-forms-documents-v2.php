@@ -11,7 +11,7 @@
 
 <?php if ( !empty($forms_documents) ) : ?>
   <section>
-    <div class="row">
+    <div class="forms-documents row">
   <?php foreach ($forms_documents as $key => $value): ?>
       <div class="large-8 columns">
         <a href="<?php echo $forms_documents[$key]['phila_action_panel_link_multi']; ?>
