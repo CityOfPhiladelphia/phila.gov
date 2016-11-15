@@ -15,6 +15,7 @@
  <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
+  <?php get_template_part( 'partials/departments/v2/content', 'footer' ) ?>
 
   <?php get_template_part( 'partials/content', 'modified' ) ?>
   <?php if( !is_home() ) : ?>

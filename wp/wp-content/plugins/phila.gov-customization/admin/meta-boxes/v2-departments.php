@@ -28,7 +28,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'name'  => 'Department logo'
       ),
       array(
-        'id'  => 'phila_v2_logo',
+        'id'  => 'phila_v2_department_logo',
         'title' => 'Department logo',
         'type'  => 'image_advanced',
         'max_file_uploads' => 1,

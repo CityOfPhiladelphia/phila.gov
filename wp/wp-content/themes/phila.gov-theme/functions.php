@@ -1711,3 +1711,19 @@ function phila_util_cat_ids(){
   }
   return $cat_ids;
 }
+
+function phila_get_department_logo_v2( $post ){
+  $img = rwmb_meta( 'phila_v2_department_logo', $args = array(
+      'size'=>'full'
+    ), $post );
+
+    $output = array();
+
+    if ( !empty($img) ){
+
+      foreach ($img as $k){
+        $output = $k['full_url'];
+      }
+      return $output;
+    }
+}
