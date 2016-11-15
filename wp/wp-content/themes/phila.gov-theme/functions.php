@@ -1244,6 +1244,12 @@ function phila_get_service_updates(){
           case 'trash':
             $service_icon = 'fa-trash';
             break;
+          case 'phones':
+            $service_icon = 'fa-phone';
+            break;
+          case 'offices':
+            $service_icon = 'fa-building-o';
+            break;
           default :
             $service_icon = '';
             break;
