@@ -22,6 +22,7 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
       <?php endif; ?>
       <div class="row custom-text-multi equal-height">
         <?php foreach($row['phila_contact_group'] as $column ): ?>
+          <?php //TODO: Clean up ?>
           <?php $column_title = isset( $column['phila_contact_column_title']) ? $column['phila_contact_column_title'] : '';?>
           <?php $icon = isset( $column['phila_v2_icon']) ? $column['phila_v2_icon'] : '';?>
           <?php $address_1 = isset( $column['address_group']['phila_std_address_st_1']) ? $column['address_group']['phila_std_address_st_1'] : '';?>
