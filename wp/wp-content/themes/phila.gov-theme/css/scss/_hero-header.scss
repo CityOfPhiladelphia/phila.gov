@@ -31,24 +31,83 @@
         background: none;
         margin-bottom:0;
         text-align: center;
+
+        //TODO: Remove this from patterns
+        ul.submenu {
+          background: none;
+          border: none;
+        }
         .department-menu {
           background: none;
+          .dropdown li{
+            border-bottom:2px solid $white;
+            &:last-child{
+              border-bottom:2px solid $white;
+            }
+          }
           >li {
             display: inline-block;
             background-color: $ben-franklin-blue;
+            &.is-right-arrow{
+              >a {
+                padding: $spacing-small $spacing-large;
+              }
+              > a::after{
+                content: '';
+                display: inline;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid $white;
+                border-bottom: none;
+                left: 5px;
+                position: relative;
+                margin: auto 0;
+                float: none;
+                top: 10px;
+                bottom: 0;
+              }
+             &.is-active,
+             &.current-menu-ancestor{
+               > a{
+                 background: $dark-gray;
+                 color:$white;
+                 &::after{
+                   border-top: none;
+                   border-bottom: 5px solid $white;
+                   top: -10px;
+                 }
+                }
+              }
+            }
             >a {
               color: $white;
               padding: $spacing-small $spacing-medium;
             }
           }
           a {
+            border:none;
             &:hover, &:active {
               background: $dark-gray;
+              color:$white;
             }
           }
           .is-dropdown-submenu {
             top: auto;
             left:0;
+            a{
+              background: $ghost-gray;
+              color:$ben-franklin-blue;
+              &:hover, &:active {
+                background: $dark-gray;
+                color:$white;
+              }
+            }
+          }
+          .current-menu-item {
+            > a{
+              background: $dark-gray;
+              color:$white;
+            }
           }
         }
       }
