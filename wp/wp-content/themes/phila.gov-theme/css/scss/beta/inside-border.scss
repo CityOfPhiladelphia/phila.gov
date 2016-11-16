@@ -14,11 +14,16 @@
     border-right: 2px solid $white;
     border-bottom: 2px solid $white;
 
+    @extend .hover-fade;
+
     &:last-of-type{
       border-right: 0;
     }
   }
   a {
+    &:hover{
+      color:$ben-franklin-blue;
+    }
     div {
       .fa {
         margin-right:$spacing-medium;
