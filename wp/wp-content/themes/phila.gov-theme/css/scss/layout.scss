@@ -140,13 +140,10 @@ aside {
 .clickable-row {
   &.is-hover {
     background-color: #f0f0f0;
-    opacity: .6;
-    transition: opacity .2s ease-in-out;
-    -moz-transition: opacity .2s ease-in-out;
-    -webkit-transition: opacity .2s ease-in-out;
     cursor: pointer;
+    @extend .hover-fade;
     &:hover a{
-    color: $ben-franklin-blue;
+      color: $ben-franklin-blue;
     }
   }
 }
