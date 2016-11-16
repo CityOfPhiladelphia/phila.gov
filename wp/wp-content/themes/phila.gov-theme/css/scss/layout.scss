@@ -137,18 +137,17 @@ aside {
   z-index: 5;
 }
 
-.clickable-row.is-hover{
-  cursor:pointer;
-
-  &:hover {
-    background:$medium-gray;
-    .small-text{
-      color:$ghost-gray;
+.clickable-row {
+  &.is-hover {
+    background-color: #f0f0f0;
+    opacity: .6;
+    transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
+    cursor: pointer;
+    &:hover a{
+    color: $ben-franklin-blue;
     }
-    a {
-      color:$black;
-    }
-
   }
 }
 
