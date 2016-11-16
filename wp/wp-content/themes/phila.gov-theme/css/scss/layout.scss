@@ -141,10 +141,7 @@ aside {
   &.is-hover {
     background-color: #f0f0f0;
     cursor: pointer;
-    @extend .hover-fade;
-    &:hover a{
-      color: $ben-franklin-blue;
-    }
+    @extend .hover-fade-keep-a;
   }
 }
 
