@@ -170,6 +170,13 @@ html.is-reveal-open{
   -webkit-transition: opacity .25s ease-in-out;
 
   &:hover{
-    opacity: .6;
+    opacity: .5;
   }
+}
+/*provides option to apply a hover-fade to items in which the link state should not change*/
+.hover-fade-keep-a{
+  a:hover {
+    color: $ben-franklin-blue;
+  }
+  @extend .hover-fade;
 }
