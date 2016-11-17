@@ -56,6 +56,13 @@ function phila_register_department_meta_boxes( $meta_boxes ){
           Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
         ),
       ),
+      array(
+        'id' => 'phila_v2_service_link',
+        'title' => 'All services link',
+        'name'  => 'All services link',
+        'type'  => 'url',
+        'class' => 'metabox-url',
+      ),
     ),
   );
 
