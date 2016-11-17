@@ -11,7 +11,7 @@
   $services = phila_loop_clonable_metabox( $services_list );
 ?>
 <?php if ( !empty( $services ) ) :?>
-<div class="row">
+<div class="row mtl">
   <div class="columns">
     <h2>Services</h2>
     <div class="row collapse inside-border-group break-thirds icon-list" data-equalizer>
