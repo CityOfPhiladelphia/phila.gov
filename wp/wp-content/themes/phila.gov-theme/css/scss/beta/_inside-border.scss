@@ -17,6 +17,12 @@
     &:last-of-type{
       border-right: 0;
     }
+    > a{
+      &:hover{
+        background:$ben-franklin-blue;
+        color:$white;
+      }
+    }
   }
   a {
     div {
