@@ -18,7 +18,7 @@
 ?>
 
 <?php if( null !== phila_get_department_logo_v2($id)  ) : ?>
-  <div class="row">
+  <div class="row mtxl">
     <div class="columns center">
       <img src="<?php echo phila_get_department_logo_v2( $id ) ?>" class="department-logo" alt="">
     </div>
