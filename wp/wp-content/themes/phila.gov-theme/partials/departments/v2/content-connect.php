@@ -27,7 +27,7 @@ $connect_vars = phila_connect_panel($connect_panel);
       </div>
       <div class="small-19 columns equal inside-border-group-item">
         <div class="valign">
-          <div class="adr valign-cell pam">
+          <div class="adr valign-cell phm pvl">
             <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
               <span class="street-address"><?php echo $connect_vars['address']['st_1']; ?></span><br/>
             <?php endif; ?>
@@ -53,7 +53,7 @@ $connect_vars = phila_connect_panel($connect_panel);
     <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
         <?php if ( !$connect_vars['email'] == '') : ?>
-        <div class="email valign-cell pam">
+        <div class="email valign-cell phm pvl">
           <span class="type accessible">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>" class="value"><?php echo $connect_vars['email']; ?></a>
         </div>
       <?php endif; ?>
@@ -71,7 +71,7 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
     <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
-        <div class="valign-cell pam">
+        <div class="valign-cell phm pvl">
           <?php if ( !$connect_vars['phone'] == '') : ?>
             <div class="tel">
               <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $connect_vars['phone']); ?>" class="value"><?php echo $connect_vars['phone']; ?></a>
@@ -97,7 +97,7 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
     <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
-        <div class="valign-cell pam inside-border-group-item row collapse">
+        <div class="valign-cell phm pvl inside-border-group-item row collapse">
           <?php if ( ! empty( $connect_vars['social'] ) ):
             $item_count = count( $connect_vars['social'] );
             $columns = phila_grid_column_counter( $item_count );
