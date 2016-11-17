@@ -17,7 +17,7 @@
   <?php endwhile; ?>
 
   <?php if ( !empty( $update_array ) ): ?>
-  <div class="service-update-row row">
+  <div class="row mtxl">
     <div class="columns">
     <?php if ( is_home() ):?>
       <div class="row">
