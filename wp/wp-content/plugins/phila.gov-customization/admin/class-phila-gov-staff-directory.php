@@ -155,20 +155,8 @@ class Phila_Gov_Staff_Directory {
             array(
               'name'  => 'Display Order',
               'id'    => $prefix . 'display_order',
-              'type'  => 'select',
+              'type'  => 'text',
               'class' => 'display-order',
-              'options' => array(
-                '1' => '1',
-                '2' => '2',
-                '3' => '3',
-                '4' => '4',
-                '5' => '5',
-                '6' => '6',
-                '7' => '7',
-                '8' => '8',
-                '9' => '9',
-                '10' => '10',
-              ),
             ),
             array(
               'name'  => 'Summary',

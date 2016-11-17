@@ -90,9 +90,21 @@ jQuery(document).ready(function($) {
 
     }
     if ( typenow == 'staff_directory' && adminpage.indexOf( 'post' ) > -1 ) {
-      $("#phila_first_name").prop('required', true);
-      $("#phila_last_name").prop('required', true);
-      $("#phila_job_title").prop('required', true);
+      $('#phila_first_name').prop('required', true);
+      $('#phila_last_name').prop('required', true);
+      $('#phila_job_title').prop('required', true);
+      $('#phila_display_order').attr('data-msg', 'This field is required and must be a number.');
+      $('#phila_display_order').rules('add', {
+        required: true,
+        //Check whether this value is a number, if not return a failing value.
+        normalizer: function( value ) {
+          if ( !isNaN( value ) ){
+            return ( value );
+          } else {
+            return '';
+          }
+        }
+      });
     }
   }
   function setOnePageInputVals(){
