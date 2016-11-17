@@ -17,7 +17,7 @@
     <div class="row collapse inside-border-group break-thirds icon-list" data-equalizer>
       <?php foreach ( $services as $service ) : ?>
         <?php $alt_title = isset( $service['alt_title'] ) ? $service['alt_title'] : ''; ?>
-        <div class="inside-border-group-item hover-fade-keep-a medium-8 small-12 columns">
+        <div class="inside-border-group-item medium-8 small-12 columns">
           <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
             <div class="valign-cell pal phl-l" data-equalizer-watch>
               <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
