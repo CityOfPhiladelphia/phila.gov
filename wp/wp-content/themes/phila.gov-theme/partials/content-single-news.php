@@ -19,10 +19,10 @@
     <div data-swiftype-index='true' class="entry-content medium-24 columns">
       <?php
       if ( has_post_thumbnail() ) : ?>
-            <?php
-              $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-              the_post_thumbnail( 'news-thumb' , array( 'class' => 'float-left hide-for-small-only' ) );
-      endif;
+      <div class="phila-thumb float-left mrm mvm">
+        <?php echo phila_get_thumbnails(); ?>
+      </div>
+      <?php endif;
       $desc = phila_get_item_meta_desc( );
       if ($post->post_content != ''):
         the_content();
