@@ -28,8 +28,9 @@
       <div class="posted-on row column pvs">
       <?php if ( has_post_thumbnail() ): ?>
         <div class="columns hide-for-small-only medium-24 pan">
-          <?php $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-          the_post_thumbnail( 'news-thumb' ); ?>
+          <div class="phila-thumb float-left mrm mvm">
+            <?php echo phila_get_thumbnails(); ?>
+          </div>
         </div>
         <?php endif; ?>
         <div class="byline small-24 column pvm pvs-mu">
