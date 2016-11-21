@@ -91,7 +91,7 @@ function recent_news_shortcode($atts) {
 
       $output .= '<a href="' . $link .'" class="group">';
 
-      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
+      $output .=  get_the_post_thumbnail( $post->ID, 'phila-thumb', 'class=alignleft small-thumb' );
       $output .= '<div class="pbm"><span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
       $output .= '<span class="small-text">' . wp_strip_all_tags( $desc ) . '</span>';
