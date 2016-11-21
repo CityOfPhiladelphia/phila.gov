@@ -11,4 +11,4 @@ deploy:
   wait-until-deployed: true
   region: $AWS_CODEDEPLOY_REGION
   on:
-    branch: beta
+    branch: master
