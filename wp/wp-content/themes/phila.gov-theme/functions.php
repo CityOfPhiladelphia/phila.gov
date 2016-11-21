@@ -49,8 +49,6 @@ function phila_gov_setup() {
   // Current default
   add_image_size( 'phila-thumb', 660, 430, true);
 
-  add_image_size( 'news-thumb', 250, 165, true );
-
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
   add_image_size( 'home-thumb', 550, 360, true );
 
