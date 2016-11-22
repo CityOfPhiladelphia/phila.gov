@@ -50,7 +50,7 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
 
           <?php $hours_other = isset( $column['phila_v2_hours']['hours_other']) ? $column['phila_v2_hours']['hours_other'] : '';?>
 
-          <div class="columns medium-8 end phxl equal">
+          <div class="columns medium-8 end phxl-mu pbl pbn-mu equal">
             <div class="vcard">
               <h3><?php if(!$icon == '') :?><i class="fa <?php echo $icon ?>" aria-hidden="true"></i> <?php endif; ?><?php echo $column_title ?></h3>
 
