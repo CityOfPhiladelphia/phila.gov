@@ -84,7 +84,7 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
                 </div>
               <?php endif; ?>
 
-              <?php if( !$hours_day_start == '' || !$hours_other == ''  ) : ?>
+              <?php if( !$hours_day_start == '' ) : ?>
                 <div class="inline-block">Hours: </div>
 
                 <div class="inline-block valign-top">
@@ -92,9 +92,10 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
                     <?php echo $hours_day_start . ' &mdash; ' . $hours_day_end ?>, <br>
                      <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $hours_time_start . ' &mdash; ' . $hours_time_end); ?>
                   <?php endif; ?>
-
-                  <?php echo $hours_other ?>
                 </div>
+                <?php endif; ?>
+              <?php if( !$hours_other == '' ) : ?>
+                <div><?php echo $hours_other ?> </div>
               <?php endif; ?>
             </div>
           </div>
