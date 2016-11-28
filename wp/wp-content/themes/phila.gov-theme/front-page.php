@@ -13,7 +13,7 @@ get_header(); ?>
       <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta-homepage-mobile-winter.jpg" alt="">
       <div class="hero-wrap">
         <div class="photo-credit small-text">
-          <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
+          <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Fischetti for Visit Philadelphia</span>
         </div>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
