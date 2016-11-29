@@ -51,14 +51,6 @@ function recent_news_shortcode($atts) {
   'orderby' => 'date',
   'post_type'  => 'news_post',
   'category_name' => $a['category'],
-  'tax_query'=> array(
-    array(
-      'taxonomy' => 'news_type',
-      'field'    => 'slug',
-			'terms'    => 'notice',
-      'operator' => 'NOT IN'
-      ),
-    ),
   );
 
   $news_loop = new WP_Query( $args );
