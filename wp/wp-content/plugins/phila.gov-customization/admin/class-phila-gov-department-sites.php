@@ -101,7 +101,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
               'id'    => $prefix . 'block_link',
               'type'  => 'url',
               'class' => 'block-url',
-              'desc'  => 'Enter a URL. E.g. http://alpha.phila.gov/oem',
+              'desc'  => 'Enter a URL. E.g. http://beta.phila.gov/oem',
               'size'  => '60',
             ),
           )
