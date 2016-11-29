@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Add alerts to alpha homepage
+* Add alerts to homepage
 *
 * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
 *
