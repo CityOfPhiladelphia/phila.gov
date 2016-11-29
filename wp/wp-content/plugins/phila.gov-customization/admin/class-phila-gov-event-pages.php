@@ -238,7 +238,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
           'id'    => $prefix . 'action_panel_link_loc',
           'type'  => 'checkbox',
           'class' => 'action-panel-link-loc',
-          'desc'  => 'This link directs users away from alpha.phila.gov',
+          'desc'  => 'This link directs users away from beta.phila.gov',
           'clone' => false,
         ),
       )
@@ -321,7 +321,7 @@ if ( class_exists("Phila_Gov_Event_Pages" ) ){
               'id'    => $prefix . 'event_block_link',
               'type'  => 'url',
               'class' => 'event-block-url',
-              'desc'  => 'Enter a URL. E.g. http://alpha.phila.gov/oem',
+              'desc'  => 'Enter a URL. E.g. http://beta.phila.gov/oem',
               'size'  => '60',
             ),
           )

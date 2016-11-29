@@ -15,10 +15,10 @@ function phila_documentation_content(){
   }
   </style>
   <div class="wrap">
-    <h2>alpha.phila.gov Documentation</h2>
+    <h2>beta.phila.gov Documentation</h2>
   </div>
   <section id="intro">
-    <p>The following documentation is intended to address workflows specific to alpha.phila.gov. If you don't see a topic listed, assume that the workflow is unchanged from that of a standard WordPress implementation and consult the original source of documentation.</p>
+    <p>The following documentation is intended to address workflows specific to beta.phila.gov. If you don't see a topic listed, assume that the workflow is unchanged from that of a standard WordPress implementation and consult the original source of documentation.</p>
   </section>
   <nav>
     <span>Help Topics: <a href="#mailchimp">MailChimp</a> <br>
@@ -27,7 +27,7 @@ function phila_documentation_content(){
   <hr>
   <section id="mailchimp">
     <h2>MailChimp</h2>
-    <h3>Adding a new MailChimp form to Alpha</h3>
+    <h3>Adding a new MailChimp form</h3>
       <ol class="new-mailchimp-form">
         <li>
           Create a "naked" embedded form in mailchimp.
