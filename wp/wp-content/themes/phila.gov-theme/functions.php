@@ -1228,6 +1228,7 @@ function phila_get_service_updates(){
       $service_message = isset( $service_update_details['phila_service_update_message'] ) ? $service_update_details['phila_service_update_message'] : '';
       $service_link_text = isset( $service_update_details['phila_update_link_text'] ) ? $service_update_details['phila_update_link_text'] : '';
       $service_link = isset( $service_update_details['phila_update_link'] ) ? $service_update_details['phila_update_link'] : '';
+      $service_off_site = isset( $service_update_details['phila_off_site'] ) ? $service_update_details['phila_off_site'] : '';
 
       switch($service_type){
         case 'city':
@@ -1277,10 +1278,10 @@ function phila_get_service_updates(){
         'service_message' => $service_message,
         'service_link_text' => $service_link_text,
         'service_link' => $service_link,
+        'service_off_site'  => $service_off_site,
         'service_date_format' => $service_date_format,
         'service_effective_start' => $service_effective_start,
         'service_effective_end' => $service_effective_end,
-
       );
 
       return $output_item;
