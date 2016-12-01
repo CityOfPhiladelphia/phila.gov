@@ -190,6 +190,12 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
              'class' => 'update-link',
              'size'  => '60'
            ),
+           array(
+             'name'  => 'Off-site link',
+             'id'    => $prefix . 'off_site',
+             'type'  => 'checkbox',
+             'desc'  => 'This website is not part of beta.phila.gov',
+           ),
           )
         )
       )
