@@ -62,7 +62,7 @@
                        <span>
                          <?php  echo $update['service_message']; ?>
                          <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
-                           <a href="<?php echo $update['service_link']; ?>" class="external"><?php echo $update['service_link_text']; ?></a>
+                           <a href="<?php echo $update['service_link']; ?>" <?php echo ( $update['service_off_site'] == 1 ) ?  'class="external"' : '' ?>><?php echo $update['service_link_text']; ?></a>
                          <?php endif;?>
                        </span>
                      <?php endif;?>
