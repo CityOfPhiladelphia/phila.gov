@@ -89,4 +89,21 @@ jQuery(document).ready(function($){
       $('[id^=phila_block_id]').parent().parent().hide();
     }
   }
+
+  if ( ( typenow == 'service_updates') && adminpage.indexOf('post') > -1 ){
+    if( !phila_WP_User.includes('multi_department_access') ) {
+
+      $('#phila_update_type option').each( function () {
+        if( $(this).val() !== '' && $(this).val() !== 'phones' &&  $(this).val() !== 'offices'){
+          $(this).css('display', 'none');
+        }
+      });
+      $('#phila_update_level option').each( function () {
+        //2 === Critcal (Red)
+        if( $(this).val() !== '' && $(this).val() !== '2' ){
+          $(this).css('display', 'none');
+        }
+      });
+    }
+  }
 });
