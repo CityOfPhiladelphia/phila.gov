@@ -68,8 +68,7 @@
           height: 50px;
           width: 100%;
           background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0) 0%, white);
-          // thanks https://css-tricks.com/text-fade-read-more/ for the following line:
-          background-image: linear-gradient(to bottom, transparent, white);
+          background-image: linear-gradient(rgba(255, 255, 255, 0), white);
 
         }
       }
