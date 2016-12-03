@@ -155,7 +155,7 @@
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.youtube.com/user/PhilaGov" class="prl">
+              <a href="https://www.youtube.com/user/PhilaGov" class="prl" data-analytics="social">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
