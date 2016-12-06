@@ -140,6 +140,9 @@ if (has_category()):
     if (!empty($staff_leadership_array)):?>
       <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
           <div class="large-24 columns">
+            <?php if ($user_selected_template != 'staff_directory_v2') : ?>
+              <h2 class="contrast">Leadership</h2>
+            <?php endif; ?>
             <?php
             ksort($staff_leadership_array);
             foreach ($staff_leadership_array as $key => $value):
