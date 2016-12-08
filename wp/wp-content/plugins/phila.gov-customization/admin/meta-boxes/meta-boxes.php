@@ -459,7 +459,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    'title'    => 'Row 1',
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
-   'priority' => 'low',
+   'priority' => 'default',
 
    'include' => array(
      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
@@ -771,7 +771,7 @@ $meta_boxes[] = array(
   'title'    => 'Row 2',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
-  'priority' => 'low',
+  'priority' => 'default',
 
   'include' => array(
     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
