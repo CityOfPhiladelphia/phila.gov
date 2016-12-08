@@ -52,7 +52,9 @@
   ?>
   <script>
     dataLayer = [{
-      "contentModifiedDepartment": "<?php echo $departments ?>"
+      "contentModifiedDepartment": "<?php echo $departments ?>",
+      "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
+      "templateType": "<?php echo phila_get_selected_template() ?>"
     }];
   </script>
 <?php endif; ?>
