@@ -368,6 +368,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    'hidden' => array(
      'phila_template_select', '=', 'off_site_department',
    ),
+   'hidden'  => array('phila_template_select', 'ends with', 'v2'),
 
    'fields' => array(
      array(
@@ -463,8 +464,12 @@ function phila_register_meta_boxes( $meta_boxes ){
    'include' => array(
      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
    ),
-   'hidden' => array(
-     'phila_template_select', '=', 'off_site_department',
+   'visible' => array(
+     'when'  => array(
+       array('phila_template_select', '=', 'homepage_v2' ),
+       array('phila_template_select', '=', 'department_homepage' ),
+     ),
+     'relation' => 'or',
    ),
 
    'fields' => array(
@@ -771,13 +776,14 @@ $meta_boxes[] = array(
   'include' => array(
     'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
   ),
-  'hidden' => array(
+  'visible' => array(
     'when'  => array(
-      array('phila_template_select', '=', 'one_page_department' ),
-      array('phila_template_select', '=', 'off_site_department' ),
+      array('phila_template_select', '=', 'homepage_v2' ),
+      array('phila_template_select', '=', 'department_homepage' ),
     ),
     'relation' => 'or',
   ),
+
       // List of sub-fields
       'fields' => array(
         array(
@@ -788,7 +794,7 @@ $meta_boxes[] = array(
           'placeholder' => 'Choose single column or two columns',
           'options' => array(
             'phila_module_row_2_full_column' => 'One Column (Full-Width Calendar)',
-            'phila_module_row_2_2_column' => 'Two Columns (Calendar and Press Releases)',
+            'phila_module_row_2_2_column' => 'Two Columns (Calendar and Press Releases) (deprecated)',
           ),
         ),
         array(
