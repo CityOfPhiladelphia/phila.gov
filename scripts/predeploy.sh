@@ -6,3 +6,5 @@ export DEBIAN_FRONTEND=noninteractive
 
 sudo apt-get update
 sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+
+exit 0
