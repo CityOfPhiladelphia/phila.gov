@@ -32,7 +32,9 @@
 .panel.survey{
   //TODO: remove border in patterns
   border:none;
-  @include check-bg( 84%, 17% );
+  @media screen and (min-width: 40em) {
+    @include check-bg( 84%, 17% );
+  }
 }
 
 .info-block {
