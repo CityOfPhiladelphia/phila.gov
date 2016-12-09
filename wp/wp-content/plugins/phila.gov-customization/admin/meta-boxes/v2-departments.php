@@ -104,7 +104,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'survey_title' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'survey_description' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Link details', 'survey_link'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'survey_link'),
         ),
       ),
     ),
