@@ -29,6 +29,11 @@
     }
   }
 }
+.panel.survey{
+  //TODO: remove border in patterns
+  border:none;
+  @include check-bg( 84%, 17% );
+}
 
 .info-block {
   font-size: $large-font-base / 4.5;
