@@ -432,21 +432,23 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
 
-  public static function phila_metabox_title( $name, $id ){
+  public static function phila_metabox_title( $name, $id, $desc = null ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'text',
       'class' => 'metabox-title',
+      'desc'  => $desc
     );
   }
 
-  public static function phila_metabox_textarea( $name, $id ){
+  public static function phila_metabox_textarea( $name, $id, $desc = null ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'textarea',
       'class' => 'metabox-summary',
+      'desc'  => $desc
     );
   }
 
