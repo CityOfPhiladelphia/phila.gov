@@ -102,8 +102,8 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'clone' => false,
 
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'survey_title' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'survey_description' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'survey_title', '50 character maximum.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'survey_description', '140 character maximum.' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'survey_link'),
         ),
       ),
