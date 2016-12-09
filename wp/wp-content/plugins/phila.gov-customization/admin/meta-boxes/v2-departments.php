@@ -88,7 +88,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'title' => 'Survey display',
+    'title' => 'Survey information',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
 
@@ -104,8 +104,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'survey_title' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'survey_description' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link to survey (URL)', 'survey_url' ),
-
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Link details', 'survey_link'),
         ),
       ),
     ),
