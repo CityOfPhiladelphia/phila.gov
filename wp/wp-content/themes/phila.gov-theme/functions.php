@@ -1541,6 +1541,24 @@ function phila_tax_payment_info( $payment_info ){
   return $output;
 }
 
+function phila_survey_display( $survey ){
+  $output = array();
+
+  if ( !empty($survey) ) {
+    foreach ( $survey as $k ){
+
+      $output['title'] = isset($survey['survey_title'] ) ? $survey['survey_title'] : '';
+      $output['description'] = isset($survey['survey_description'] ) ? $survey['survey_description'] : '';
+      $output['link'] = isset($survey['survey_link'] ) ? $survey['survey_link'] : '';
+      $output['link_text'] = isset($survey['survey_link']['link_text'] ) ? $survey['survey_link']['link_text'] : '';
+      $output['url'] = isset($survey['survey_link']['link_url'] ) ? $survey['survey_link']['link_url'] : '';
+      $output['external'] = isset($survey['survey_link']['is_external'] ) ? $survey['survey_link']['is_external'] : '';
+
+    }
+  }
+  return $output;
+}
+
 function phila_extract_clonable_wysiwyg($parent_group){
   $output = array();
 

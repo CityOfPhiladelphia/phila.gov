@@ -64,10 +64,6 @@
     <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
   <?php endif;?>
 
-  <?php if ($user_selected_template == 'service_list_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'service-list-v2' ); ?>
-  <?php endif;?>
-
   <?php if ($user_selected_template == 'forms_and_documents_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'forms-documents-v2' ); ?>
   <?php endif;?>
@@ -137,8 +133,11 @@
     </section>
     <!-- End Staff Directory Display -->
   <?php else: ?>
+
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-survey');?>
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
+
   <?php endif; ?>
 
   <?php if ($user_selected_template == 'one_page_department') : ?>

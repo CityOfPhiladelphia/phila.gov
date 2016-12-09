@@ -302,6 +302,23 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       )
     );
   }
+
+  public static function phila_metabox_v2_link_fields( $name, $id ){
+    return array(
+      'id'  => $id,
+      'name'  => $name,
+      'type'  => 'group',
+      'clone' => false,
+      'sort_clone'  => false,
+
+      'fields'  => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text' ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link URL', 'link_url' ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_external('External link', 'is_external' ),
+      )
+    );
+  }
+
   //NOTE: While these fields are potentially cloneable, having multiple fields appear in different groups will fail. As we saw with multiple cloneable address fields.
   public static function phila_v2_icon_selection(){
     return array(
@@ -415,31 +432,42 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
 
-  public static function phila_metabox_title( $name, $id ){
+  public static function phila_metabox_title( $name, $id, $desc = null ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'text',
       'class' => 'metabox-title',
+      'desc'  => $desc
     );
   }
 
-  public static function phila_metabox_textarea( $name, $id){
-        return array(
-          'name'  => $name,
-          'id'    => $id,
-          'type'  => 'textarea',
-          'class' => 'metabox-summary',
-        );
+  public static function phila_metabox_textarea( $name, $id, $desc = null ){
+    return array(
+      'name'  => $name,
+      'id'    => $id,
+      'type'  => 'textarea',
+      'class' => 'metabox-summary',
+      'desc'  => $desc
+    );
   }
 
   public static function phila_metabox_url( $name, $id ){
-        return array(
-          'name'  => $name,
-          'id'    => $id,
-          'type'  => 'url',
-          'class' => 'metabox-url',
-        );
+    return array(
+      'name'  => $name,
+      'id'    => $id,
+      'type'  => 'url',
+      'class' => 'metabox-url',
+    );
+  }
+
+  public static function phila_metabox_external( $name, $id ){
+    return array(
+      'name'  => $name,
+      'id'    => $id,
+      'type'  => 'checkbox',
+      'desc'  => 'This link directs users away from phila.gov',
+    );
   }
 
   public static function phila_metabox_post_picker( $name, $id, $post_type ){
