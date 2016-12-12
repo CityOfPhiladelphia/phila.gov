@@ -18,8 +18,7 @@
       <div class="feedback-form" data-type="feedback-form" style="display:none;">
         <div class="row">
           <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
-            <?php // TODO: insert the form on click ?>
-            <div id="feedback-form"></div>
+            <div id="form-container"></div>
           </div>
         </div>
       </div>
