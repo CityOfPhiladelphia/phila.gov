@@ -17,7 +17,7 @@
         <div class="row mbn">
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs">
+              <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs" data-analytics="social">
                 <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
@@ -25,7 +25,7 @@
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs">
+              <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs" data-analytics="social">
                 <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
@@ -33,7 +33,7 @@
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
-              <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs">
+              <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs" data-analytics="social">
               <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>

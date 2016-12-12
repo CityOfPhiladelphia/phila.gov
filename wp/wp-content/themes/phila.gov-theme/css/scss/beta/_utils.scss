@@ -147,3 +147,41 @@ html.is-reveal-open{
     }
   }
 }
+
+.item-fa-left-indent{
+  margin-left:1.4rem;
+}
+//TODO: remove this from patterns
+.vcard{
+  margin: 0;
+}
+
+.valign-top{
+  vertical-align: top;
+}
+.valign-bottom{
+  vertical-align: bottom;
+}
+
+.hover-fade{
+  opacity:1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+
+  &:hover{
+    opacity: .5;
+  }
+}
+/*provides option to apply a hover-fade to items in which the link state should not change*/
+.hover-fade-keep-a{
+  a:hover {
+    color: $ben-franklin-blue;
+  }
+  @extend .hover-fade;
+}
+//TODO: increase this size
+.phila-thumb img{
+  max-width: 250px;
+  height: auto;
+}

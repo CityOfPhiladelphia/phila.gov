@@ -3,7 +3,6 @@
 .panel.info{
   background: rgba($ben-franklin-light, .3);
   border:none;
-  margin: $spacing-small 0;
 
   &.heading{
     padding:0;
@@ -29,6 +28,18 @@
       font-size: $large-font-base / 3;
     }
   }
+}
+.panel.survey{
+  //TODO: remove border in patterns
+  border:none;
+  @media screen and (min-width: 40em) {
+    @include check-bg( 84%, 17% );
+  }
+}
+
+.info-block {
+  font-size: $large-font-base / 4.5;
+  font-style: italic;
 }
 
 .large-text{

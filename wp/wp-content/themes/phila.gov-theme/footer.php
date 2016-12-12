@@ -15,6 +15,7 @@
  <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
+  <?php get_template_part( 'partials/departments/v2/content', 'footer' ) ?>
 
   <?php get_template_part( 'partials/content', 'modified' ) ?>
   <?php if( !is_home() ) : ?>
@@ -125,19 +126,19 @@
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pbm">
-              <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" class="prl">
+              <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" class="prl" data-analytics="social">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://twitter.com/PhiladelphiaGov" class="prl">
+              <a href="https://twitter.com/PhiladelphiaGov" class="prl"  data-analytics="social">
                 <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.instagram.com/cityofphiladelphia/" class="prl">
+              <a href="https://www.instagram.com/cityofphiladelphia/" class="prl" data-analytics="social">
                 <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
@@ -154,19 +155,19 @@
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.youtube.com/user/PhilaGov" class="prl">
+              <a href="https://www.youtube.com/user/PhilaGov" class="prl" data-analytics="social">
                 <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://www.flickr.com/photos/phillycityrep" class="prl">
+              <a href="https://www.flickr.com/photos/phillycityrep" class="prl" data-analytics="social">
                 <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pbm">
-              <a href="https://github.com/CityOfPhiladelphia" class="prl">
+              <a href="https://github.com/CityOfPhiladelphia" class="prl"  data-analytics="social">
                 <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>

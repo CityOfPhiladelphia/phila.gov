@@ -49,8 +49,6 @@ function phila_gov_setup() {
   // Current default
   add_image_size( 'phila-thumb', 660, 430, true);
 
-  add_image_size( 'news-thumb', 250, 165, true );
-
   //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
   add_image_size( 'home-thumb', 550, 360, true );
 
@@ -232,7 +230,7 @@ function phila_open_graph() {
   ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo phila_get_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo phila_get_item_meta_desc( ); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -986,7 +984,7 @@ function phila_get_home_news(){
         echo '<span>' . $contributor . '</span>';
     }
 
-    echo '<p>' . phila_get_item_meta_desc()  . '</p>';
+    echo '<p>' . phila_get_item_meta_desc( )  . '</p>';
 
   }
 
@@ -1230,6 +1228,7 @@ function phila_get_service_updates(){
       $service_message = isset( $service_update_details['phila_service_update_message'] ) ? $service_update_details['phila_service_update_message'] : '';
       $service_link_text = isset( $service_update_details['phila_update_link_text'] ) ? $service_update_details['phila_update_link_text'] : '';
       $service_link = isset( $service_update_details['phila_update_link'] ) ? $service_update_details['phila_update_link'] : '';
+      $service_off_site = isset( $service_update_details['phila_off_site'] ) ? $service_update_details['phila_off_site'] : '';
 
       switch($service_type){
         case 'city':
@@ -1243,6 +1242,12 @@ function phila_get_service_updates(){
             break;
           case 'trash':
             $service_icon = 'fa-trash';
+            break;
+          case 'phones':
+            $service_icon = 'fa-phone';
+            break;
+          case 'offices':
+            $service_icon = 'fa-building-o';
             break;
           default :
             $service_icon = '';
@@ -1273,10 +1278,10 @@ function phila_get_service_updates(){
         'service_message' => $service_message,
         'service_link_text' => $service_link_text,
         'service_link' => $service_link,
+        'service_off_site'  => $service_off_site,
         'service_date_format' => $service_date_format,
         'service_effective_start' => $service_effective_start,
         'service_effective_end' => $service_effective_end,
-
       );
 
       return $output_item;
@@ -1337,6 +1342,7 @@ function phila_get_service_updates_events(){
 /**
  * Returns the meta_desc for an item.
  * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
+ * @param $post Int. Pass post ID if we are not in the loop.
  *
  **/
 function phila_get_item_meta_desc( $bloginfo = true ){
@@ -1433,8 +1439,27 @@ function phila_get_selected_template(){
 
   $user_selected_template = rwmb_meta( 'phila_template_select' );
 
+  if ( empty( $user_selected_template) ){
+    return get_post_type();
+  }
+
   return $user_selected_template;
 }
+
+/**
+ * Utility function to determine if selected template is v2 or not
+**/
+
+function phila_util_is_v2_template(){
+  $user_selected_template = phila_get_selected_template();
+
+  if( strpos( $user_selected_template, '_v2' ) === false ){
+    return false;
+  }else{
+    return true;
+  }
+}
+
 /**
  * Do the math to determine the correct column span for X items on a 24 column grid.
  *
@@ -1516,6 +1541,24 @@ function phila_tax_payment_info( $payment_info ){
   return $output;
 }
 
+function phila_survey_display( $survey ){
+  $output = array();
+
+  if ( !empty($survey) ) {
+    foreach ( $survey as $k ){
+
+      $output['title'] = isset($survey['survey_title'] ) ? $survey['survey_title'] : '';
+      $output['description'] = isset($survey['survey_description'] ) ? $survey['survey_description'] : '';
+      $output['link'] = isset($survey['survey_link'] ) ? $survey['survey_link'] : '';
+      $output['link_text'] = isset($survey['survey_link']['link_text'] ) ? $survey['survey_link']['link_text'] : '';
+      $output['url'] = isset($survey['survey_link']['link_url'] ) ? $survey['survey_link']['link_url'] : '';
+      $output['external'] = isset($survey['survey_link']['is_external'] ) ? $survey['survey_link']['is_external'] : '';
+
+    }
+  }
+  return $output;
+}
+
 function phila_extract_clonable_wysiwyg($parent_group){
   $output = array();
 
@@ -1541,6 +1584,32 @@ function phila_extract_stepped_content($parent_group){
 
       $output[$k] = $v;
 
+    }
+  }
+  return $output;
+}
+
+function phila_get_curated_service_list_v2( $service_group ){
+
+  $output = array();
+
+  if ( !empty($service_group) ){
+
+    foreach ( $service_group as $k => $v ){
+      $output[$k] = $v;
+    }
+  }
+  return $output;
+}
+
+function phila_loop_clonable_metabox( $metabox_name ){
+
+  $output = array();
+
+  if ( !empty($metabox_name) ){
+
+    foreach ( $metabox_name as $k => $v ){
+      $output[$k] = $v;
     }
   }
   return $output;
@@ -1621,10 +1690,6 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
-/**
- * Return a string representing the template currently applied to a page in the loop.
- *
- **/
 
 function phila_get_page_icon( $post ){
 
@@ -1646,4 +1711,46 @@ function phila_return_ordinal($num){
     return 'rd';
   }
   return 'th';
+}
+
+function phila_get_hero_header_v2( $post ){
+  $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
+    'size'=>'full'
+  ), $post );
+
+  $output = array();
+
+  if ( !empty($img) ){
+
+    foreach ($img as $k){
+      $output = $k['full_url'];
+    }
+    return $output;
+  }
+
+}
+/* Use in the loop to get an array of current category IDs */
+function phila_util_cat_ids(){
+  $categories = get_the_category();
+  $cat_ids = array();
+  foreach ($categories as $category ){
+    array_push($cat_ids, $category->cat_ID);
+  }
+  return $cat_ids;
+}
+
+function phila_get_department_logo_v2( $post ){
+  $img = rwmb_meta( 'phila_v2_department_logo', $args = array(
+      'size'=>'full'
+    ), $post );
+
+    $output = array();
+
+    if ( !empty($img) ){
+
+      foreach ($img as $k){
+        $output = $k['full_url'];
+      }
+      return $output;
+    }
 }

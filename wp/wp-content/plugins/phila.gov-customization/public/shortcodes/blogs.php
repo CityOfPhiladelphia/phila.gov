@@ -62,7 +62,7 @@ function latest_posts_shortcode($atts) {
     while( $blog_loop->have_posts() ) : $blog_loop->the_post();
     $post_counter++;
 
-    $desc = phila_get_item_meta_desc();
+    $desc = phila_get_item_meta_desc( );
 
     $link = get_permalink();
 
@@ -72,7 +72,7 @@ function latest_posts_shortcode($atts) {
     if ( is_flag( 'list', $atts ) ){
       $output .= '<li class="group mbm pbm">';
 
-      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class= small-thumb mrm' );
+      $output .=  get_the_post_thumbnail( $post->ID, 'phila-thumb', 'class= small-thumb mrm' );
 
       $output .= 	'<span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .= '<a href="' . get_permalink() .'"><h3>' . get_the_title( $post->ID ) . '</h3></a>';

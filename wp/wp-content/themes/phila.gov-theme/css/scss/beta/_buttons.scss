@@ -9,6 +9,7 @@
   background: none;
   margin: $spacing-small 0;
   color: $dark-gray;
+  height: 40px;
 
   &:hover, &:focus {
     background: none;
@@ -22,7 +23,6 @@
   &.icon {
     display: inline-block;
     position: relative;
-    height: 40px;
     padding: 0;
 
     .fa {
@@ -37,6 +37,10 @@
       width: 2.85714rem;
     }
 
+  }
+  i.fa {
+    //TODO: override in patterns
+    color: $dark-gray;
   }
 
   .button-label {
@@ -67,12 +71,17 @@ a {
       font-weight: 600;
       font-size: 1rem;
     }
-    &:hover, &:active {
+    &:hover,
+    &:active{
+      i.fa {
+        color:white;
+      }
       background: none;
+      color: $white;
       .button-label {
-            color: $white;
-            background: $dark-gray;
-            transition: background-color 300ms ease-in-out;
+        color: $white;
+        background: $dark-gray;
+        transition: background-color 300ms ease-in-out;
       }
     }
   }

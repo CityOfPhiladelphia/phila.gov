@@ -51,14 +51,6 @@ function recent_news_shortcode($atts) {
   'orderby' => 'date',
   'post_type'  => 'news_post',
   'category_name' => $a['category'],
-  'tax_query'=> array(
-    array(
-      'taxonomy' => 'news_type',
-      'field'    => 'slug',
-			'terms'    => 'notice',
-      'operator' => 'NOT IN'
-      ),
-    ),
   );
 
   $news_loop = new WP_Query( $args );
@@ -78,7 +70,8 @@ function recent_news_shortcode($atts) {
     $post_counter++;
 
     $contributor = rwmb_meta('phila_news_contributor', $args = array('type'=>'text'));
-    $desc = phila_get_item_meta_desc();
+
+    $desc = phila_get_item_meta_desc( );
 
     $link = get_permalink();
 
@@ -90,7 +83,7 @@ function recent_news_shortcode($atts) {
 
       $output .= '<a href="' . $link .'" class="group">';
 
-      $output .=  get_the_post_thumbnail( $post->ID, 'news-thumb', 'class=alignleft small-thumb' );
+      $output .=  get_the_post_thumbnail( $post->ID, 'phila-thumb', 'class=alignleft small-thumb' );
       $output .= '<div class="pbm"><span class="entry-date small-text">'. get_the_date() . '</span>';
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
       $output .= '<span class="small-text">' . wp_strip_all_tags( $desc ) . '</span>';

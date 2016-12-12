@@ -15,6 +15,11 @@
       }
     }
   }
+  &.border-top-none{
+    .row:first-of-type{
+      border-top:none;
+    }
+  }
   .row{
     border-top: 1px solid $dark-gray;
     margin-bottom:2rem;

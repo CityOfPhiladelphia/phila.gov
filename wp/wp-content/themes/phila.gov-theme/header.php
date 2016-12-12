@@ -11,7 +11,7 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
 
-  <meta name="description" content="<?php echo phila_get_item_meta_desc(); ?>">
+  <meta name="description" content="<?php echo phila_get_item_meta_desc( ); ?>">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,7 +52,9 @@
   ?>
   <script>
     dataLayer = [{
-      "contentModifiedDepartment": "<?php echo $departments ?>"
+      "contentModifiedDepartment": "<?php echo $departments ?>",
+      "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
+      "templateType": "<?php echo phila_get_selected_template() ?>"
     }];
   </script>
 <?php endif; ?>
@@ -184,16 +186,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
   </header>
 <div id="page" class="hfeed site">
-
-<!-- #masthead -->
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
-    <?php if ( !is_front_page() ) : ?>
+
+    <?php if ( !phila_util_is_v2_template() && !is_front_page() ) : ?>
       <div class="row mts mbm">
         <div class="columns">
           <?php echo phila_breadcrumbs(); ?>
         </div>
       </div>
     <?php endif; ?>
+
 <div id="content" class="site-content">

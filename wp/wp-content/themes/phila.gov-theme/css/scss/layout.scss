@@ -137,18 +137,11 @@ aside {
   z-index: 5;
 }
 
-.clickable-row.is-hover{
-  cursor:pointer;
-
-  &:hover {
-    background:$medium-gray;
-    .small-text{
-      color:$ghost-gray;
-    }
-    a {
-      color:$black;
-    }
-
+.clickable-row {
+  &.is-hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    @extend .hover-fade-keep-a;
   }
 }
 
