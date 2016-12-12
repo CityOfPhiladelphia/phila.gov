@@ -10,10 +10,10 @@ get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main home">
     <div class="hero-content">
-      <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta_homepage_coverphoto_full.jpg" alt="">
+      <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta-homepage-mobile-winter.jpg" alt="">
       <div class="hero-wrap">
         <div class="photo-credit small-text">
-          <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Edlow for Visit Philadelphia</span>
+          <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by M. Fischetti for Visit Philadelphia</span>
         </div>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
@@ -22,26 +22,11 @@ get_header(); ?>
             <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg"></i> feedback links.</span></p>
           </div>
         </div>
-        <!-- End Beta.phila.gov Message -->
+        <!-- End beta.phila.gov message -->
         <div class="row common-requests">
-          <?php //Reminder: remove the columns-5 class when dropping down to 4 items ?>
-          <div class="small-24 medium-15 large-15 small-centered columns overlap columns-5">
+          <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
-              <div class="small-24 medium-5 columns">
-                <a href="/services/crime-law-justice/where-to-vote/" class="mrs mbs equal">
-                  <div class="phs pvm cta-block clearfix">
-                    <div class="valign">
-                      <div class="valign-cell">
-                        <i class="fa fa-check-square-o fa-4x"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <p class="h6">Find where<span class="break-before-mu"> to vote</span></p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="small-12 medium-5 columns">
+              <div class="small-12 medium-6 columns">
                 <a href="/trashday" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
@@ -55,7 +40,7 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="small-12 medium-5 columns">
+              <div class="small-12 medium-6 columns">
                 <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
@@ -69,7 +54,7 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="small-12 medium-5 columns">
+              <div class="small-12 medium-6 columns">
                 <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
@@ -83,7 +68,7 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="small-12 medium-5 columns">
+              <div class="small-12 medium-6 columns">
                 <a href="/property" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
@@ -104,8 +89,7 @@ get_header(); ?>
       </div>
     </div>
     <!-- End Hero Content -->
-
-    <?php $args = array( 'post_type' => 'service_updates' ); ?>
+    <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>

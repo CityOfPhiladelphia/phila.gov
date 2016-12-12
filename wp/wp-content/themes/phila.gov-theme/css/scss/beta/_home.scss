@@ -11,7 +11,7 @@
     font-family: 'Montserrat', 'Tahoma', sans-serif;
 
     @media only screen and (min-width: 40em) {
-      background: url('../img/beta_homepage_CoverPhoto_light.jpg');
+      background: url('../img/beta-homepage-shade-winter.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }
@@ -115,14 +115,6 @@
         }
       }
       .cta-block {
-      }
-    }
-
-    .columns-5 {
-    @media screen and (min-width: 40em){
-      .medium-5 {
-          width: 19.99999999%;
-        }
       }
     }
   }

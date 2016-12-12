@@ -90,11 +90,20 @@ jQuery(document).ready(function($) {
 
     }
     if ( typenow == 'staff_directory' && adminpage.indexOf( 'post' ) > -1 ) {
-      $("#phila_first_name").prop('required', true);
-      $("#phila_last_name").prop('required', true);
-      $("#phila_job_title").prop('required', true);
-      $('#phila_summary').rules('add', {
-        maxlength: 700
+      $('#phila_first_name').prop('required', true);
+      $('#phila_last_name').prop('required', true);
+      $('#phila_job_title').prop('required', true);
+      $('#phila_display_order').attr('data-msg', 'This field is required and must be a number.');
+      $('#phila_display_order').rules('add', {
+        required: true,
+        //Check whether this value is a number, if not return a failing value.
+        normalizer: function( value ) {
+          if ( !isNaN( value ) ){
+            return ( value );
+          } else {
+            return '';
+          }
+        }
       });
     }
   }
@@ -149,7 +158,7 @@ jQuery(document).ready(function($) {
     $('.postarea').hide();
   }
 
-  if ( ( typenow == 'department_page' ) )  {
+  if ( ( typenow == 'department_page' ) && adminpage.indexOf( 'post' ) > -1 )  {
     var templateSelect = $('#phila_template_select');
 
     //Set character limits for hero-taglines
@@ -168,7 +177,10 @@ jQuery(document).ready(function($) {
     if ( templateSelect.val() == 'off_site_department' ){
       setOffSiteInputVals();
       $('#phila_template_select').click();
+    }
 
+    if ( templateSelect.val() == 'forms_and_documents_v2' ){
+      $( '[id^=phila_action_panel_]' ).prop('required', true);
     }
 
     templateSelect.change(function() {
@@ -193,9 +205,17 @@ jQuery(document).ready(function($) {
         $('.postarea').show();
       }
     });
+    //set character lengths for survey module
+    $( '#survey_title' ).rules( 'add', {
+      maxlength: 50
+    });
+    $( '#survey_description' ).rules( 'add', {
+      maxlength: 140
+    });
+
   }
 
-  if ( ( typenow == 'service_updates' ) )  {
+  if ( ( typenow == 'service_updates' ) && adminpage.indexOf( 'post' ) > -1 )  {
     $.validator.setDefaults({
       ignore: ''
     });
