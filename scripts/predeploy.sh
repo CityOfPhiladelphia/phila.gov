@@ -2,9 +2,5 @@
 
 /usr/local/bin/aws s3 cp s3://phila-prod-environment/environment /home/ubuntu/.ssh/environment
 
-export DEBIAN_FRONTEND=noninteractive
-
 sudo apt-get update
-sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
-
-exit 0
+sudo DEBIAN_FRONTEND=noninteractive apt-get -yq upgrade
