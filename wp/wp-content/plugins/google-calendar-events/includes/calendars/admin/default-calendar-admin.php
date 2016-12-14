@@ -294,7 +294,7 @@ class Default_Calendar_Admin {
 							'no'               => __( 'No, display only on first day of event', 'google-calendar-events' ),
 							'current_day_only' => __( 'No, display on all days of event up to current day (list view only)', 'google-calendar-events' ),
 						),
-						'default' => 'current_day_only',
+						'default' => 'yes',
 					) );
 
 					?>
@@ -303,10 +303,11 @@ class Default_Calendar_Admin {
 			</tbody>
 			<?php
 
+			// TODO Defaults repeated here and in process_meta(). Need to consolidate at some point.
 			$settings                   = get_option( 'simple-calendar_settings_calendars' );
 			$default_theme              = isset( $settings['default-calendar']['theme'] ) ? $settings['default-calendar']['theme'] : 'light';
-			$default_today_color        = /*isset( $settings['default-calendar']['today_color'] ) ? $settings['default-calendar']['today_color'] :*/ '#1e73be';
-			$default_days_events_color  = /*isset( $settings['default-calendar']['days_events_color'] ) ? $settings['default-calendar']['days_events_color'] :*/ '#000000';
+			$default_today_color        = isset( $settings['default-calendar']['today_color'] ) ? $settings['default-calendar']['today_color'] : '#1e73be';
+			$default_days_events_color  = isset( $settings['default-calendar']['days_events_color'] ) ? $settings['default-calendar']['days_events_color'] : '#000000';
 
 			?>
 			<tbody class="simcal-panel-section">
@@ -397,7 +398,7 @@ class Default_Calendar_Admin {
 		update_post_meta( $post_id, '_default_calendar_style_theme', $theme );
 
 		// Today color.
-		$today_color = isset( $_POST['_default_calendar_style_today'] ) ? sanitize_text_field( $_POST['_default_calendar_style_today'] ) : '#FF000';
+		$today_color = isset( $_POST['_default_calendar_style_today'] ) ? sanitize_text_field( $_POST['_default_calendar_style_today'] ) : '#1e73be';
 		update_post_meta( $post_id, '_default_calendar_style_today', $today_color );
 
 		// Days with events color.
@@ -437,7 +438,7 @@ class Default_Calendar_Admin {
 		update_post_meta( $post_id, '_default_calendar_trim_titles_chars', $chars );
 
 		// Expand multiple day events on each day.
-		$multi_day = isset( $_POST['_default_calendar_expand_multi_day_events'] ) && ! empty( $_POST['_default_calendar_expand_multi_day_events'] ) ? sanitize_key( $_POST['_default_calendar_expand_multi_day_events'] ) : 'current_day_only';
+		$multi_day = isset( $_POST['_default_calendar_expand_multi_day_events'] ) && ! empty( $_POST['_default_calendar_expand_multi_day_events'] ) ? sanitize_key( $_POST['_default_calendar_expand_multi_day_events'] ) : 'yes';
 		update_post_meta( $post_id, '_default_calendar_expand_multi_day_events', $multi_day );
 
 	}
