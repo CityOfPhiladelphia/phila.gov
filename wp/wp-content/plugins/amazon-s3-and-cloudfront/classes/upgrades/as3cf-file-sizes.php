@@ -25,28 +25,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AS3CF_Upgrade_File_Sizes extends AS3CF_Upgrade {
 
 	/**
-	 * Initiate the upgrade
-	 *
-	 * @param object $as3cf Instance of calling class
+	 * @var int
 	 */
-	public function __construct( $as3cf ) {
-		$this->upgrade_id   = 2;
-		$this->upgrade_name = 'file_sizes';
-		$this->upgrade_type = 'attachments';
+	protected $upgrade_id = 2;
 
-		$this->running_update_text = __( 'and updating the metadata with the sizes of files that have been removed from the server. This will allow us to serve the correct size for media items and the total space used in Multisite subsites.', 'amazon-s3-and-cloudfront' );
+	/**
+	 * @var string
+	 */
+	protected $upgrade_name = 'file_sizes';
 
-		parent::__construct( $as3cf );
+	/**
+	 * @var string 'metadata', 'attachment'
+	 */
+	protected $upgrade_type = 'attachments';
+
+	/**
+	 * Get running update text.
+	 *
+	 * @return string
+	 */
+	protected function get_running_update_text() {
+		return __( 'and updating the metadata with the sizes of files that have been removed from the server. This will allow us to serve the correct size for media items and the total space used in Multisite subsites.', 'amazon-s3-and-cloudfront' );
 	}
 
 	/**
 	 * Get the total file sizes for an attachment and associated files.
 	 *
-	 * @param $attachment
+	 * @param mixed $attachment
 	 *
 	 * @return bool
 	 */
-	function upgrade_attachment( $attachment ) {
+	protected function upgrade_item( $attachment ) {
 		$s3object = unserialize( $attachment->s3object );
 		if ( false === $s3object ) {
 			AS3CF_Error::log( 'Failed to unserialize S3 meta for attachment ' . $attachment->ID . ': ' . $attachment->s3object );
@@ -130,7 +139,7 @@ class AS3CF_Upgrade_File_Sizes extends AS3CF_Upgrade {
 	 *
 	 * @return int
 	 */
-	function count_attachments_to_process() {
+	protected function count_items_to_process() {
 		// get the table prefixes for all the blogs
 		$table_prefixes = $this->as3cf->get_all_blog_table_prefixes();
 		$all_count      = 0;
@@ -146,12 +155,13 @@ class AS3CF_Upgrade_File_Sizes extends AS3CF_Upgrade {
 	/**
 	 * Get all attachments that don't have region in their S3 meta data for a blog
 	 *
-	 * @param string $prefix
-	 * @param int    $limit
+	 * @param string     $prefix
+	 * @param int        $limit
+	 * @param bool|mixed $offset
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	function get_attachments_to_process( $prefix, $limit ) {
+	protected function get_items_to_process( $prefix, $limit, $offset = false ) {
 		$attachments = $this->get_attachments_removed_from_server( $prefix, false, $limit );
 
 		return $attachments;
@@ -166,7 +176,7 @@ class AS3CF_Upgrade_File_Sizes extends AS3CF_Upgrade {
 	 *
 	 * @return mixed
 	 */
-	function get_s3_attachments( $prefix, $limit = null ) {
+	protected function get_s3_attachments( $prefix, $limit = null ) {
 		global $wpdb;
 
 		$sql = "SELECT pm1.`post_id` as `ID`, pm1.`meta_value` AS 's3object'
@@ -195,7 +205,7 @@ class AS3CF_Upgrade_File_Sizes extends AS3CF_Upgrade {
 	 *
 	 * @return array|int
 	 */
-	function get_attachments_removed_from_server( $prefix, $count = false, $limit = null ) {
+	protected function get_attachments_removed_from_server( $prefix, $count = false, $limit = null ) {
 		$all_attachments = $this->get_s3_attachments( $prefix, $limit );
 		$attachments     = array();
 
