@@ -335,8 +335,11 @@ class System_Status extends Admin_Page {
 		 * ==================
 		 */
 
-		if ( version_compare( PHP_VERSION, '5.5.19', '<' ) ) {
-			$php = '<mark class="error">' . sprintf( __( '%1$s - It is recomendend to upgrade at least to PHP version 5.5.19 for security reasons. <a href="%2$s" target="_blank">Read more.</a>', 'google-calendar-events' ), PHP_VERSION, 'http://www.wpupdatephp.com/update/' ) . '</mark>';
+		if ( version_compare( PHP_VERSION, '7.0', '<' ) ) {
+			$php = '<mark>' . PHP_VERSION . ' - ' .
+			       __( 'WordPress.org recommends upgrading to PHP 7 or higher for better security.', 'google-calendar-events' ) .
+			       ' <a href="https://wordpress.org/about/requirements/" target="_blank">' . __( 'Read more.', 'google-calendar-events' ) . '</a>' .
+		           '</mark>';
 		} else {
 			$php = '<mark class="ok">' . PHP_VERSION . '</mark>';
 		}
@@ -344,7 +347,7 @@ class System_Status extends Admin_Page {
 		if ( $wpdb->use_mysqli ) {
 			$mysql = @mysqli_get_server_info( $wpdb->dbh );
 		} else {
-			$mysql = @mysql_get_server_info();
+			$mysql = '<mark class="error">' . __( 'Cannot connect to MySQL database.', 'google-calendar-events' ) . '</mark>';
 		}
 
 		$host = $_SERVER['SERVER_SOFTWARE'];
@@ -446,11 +449,6 @@ class System_Status extends Admin_Page {
 				'label'  => 'Display Errors',
 				'result' => ( ini_get( 'display_errors' ) ) ? __( 'Yes', 'google-calendar-events' ) . ' (' . ini_get( 'display_errors' ) . ')' : '-',
 				'result_export' => ( ini_get( 'display_errors' ) ) ? 'Yes' : 'No',
-			),
-			'php_safe_mode'       => array(
-				'label'  => 'Safe Mode',
-				'result' => ( ini_get( 'safe_mode' ) ) ? __( 'Yes', 'google-calendar-events' ) : __( 'No', 'google-calendar-events' ),
-				'result_export' => ( ini_get( 'safe_mode' ) ) ? 'Yes' : 'No',
 			),
 			'php_memory_limit'    => array(
 				'label'  => 'Memory Limit',

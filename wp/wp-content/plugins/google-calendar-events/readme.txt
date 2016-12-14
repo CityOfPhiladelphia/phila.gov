@@ -2,8 +2,8 @@
 Contributors: moonstonemedia, pderksen, nickyoung87, nekojira, rosshanney
 Tags: google calendar, calendar, calendars, google, event calendar, custom calendar, custom calendars, event, events
 Requires at least: 4.2
-Tested up to: 4.6
-Stable tag: 3.1.2
+Tested up to: 4.7
+Stable tag: 3.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ Add Google Calendar events to your WordPress site in minutes. Beautiful calendar
 * Combine multiple calendars into single displays explicitly or using categories.
 * Intuitive, simple display configuration changes for fine tuning.
 * Advanced settings to adjust time zones, date/time formats and start of the week.
+* Integration with [Event Calendar Newsletter](https://wordpress.org/plugins/event-calendar-newsletter/) for quickly turning your events into a newsletter-friendly format.
 * Additional functionality offered with [add-ons](https://simplecalendar.io/addons/?utm_source=wordpress.org&utm_medium=link&utm_campaign=simple-cal-readme&utm_content=description).
 * Translations available with more being added on a regular basis. [Translations welcome!](https://translate.wordpress.org/projects/wp-plugins/google-calendar-events)
 * Open source with code hosted on GitHub. [Contributions welcome!](https://github.com/moonstonemedia/Simple-Calendar)
@@ -37,8 +38,10 @@ Add Google Calendar events to your WordPress site in minutes. Beautiful calendar
 * Configure header navigation buttons to allow site visitors to easily switch between views.
 * Intuitive design for multi-day events.
 * Customizable calendar heights with optional scroll bars.
+* Set default start time for week and day views.
+* Limit display times for week and day views.
 * Works with our Google Calendar Pro add-on to display **color-coded events** within each view.
-* Priority email support and product updates for one year backed by a top-notch team.
+* Priority email support with a 24-hour response time during weekdays backed by a top-notch team.
 
 = Google Calendar Pro Add-on Features =
 
@@ -49,7 +52,7 @@ Add Google Calendar events to your WordPress site in minutes. Beautiful calendar
 * Display a list of attachments with links to their original source.
 * Secure connection established between your site and Google using the OAuth standard.
 * Works with our FullCalendar add-on to display beautiful month, week and day views with color-coded events.
-* Priority email support and product updates for one year backed by a top-notch team.
+* Priority email support with a 24-hour response time during weekdays backed by a top-notch team.
 
 >**[Get ALL these features with our Premium Add-ons](https://simplecalendar.io/addons/?utm_source=wordpress.org&utm_medium=link&utm_campaign=simple-cal-readme&utm_content=description)**
 
@@ -92,6 +95,51 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.1.9 - December 9, 2016 =
+
+* Feature: Add [if-today] and [if-not-today] event template tags. Props [@followfung](https://github.com/followfung)
+* Fix: List view incorrectly shifts events between 12 & 1am, or all day events, to previous day.
+* Fix: Navigation disabled incorrectly in some cases.
+* Dev: System report tweaks for PHP 7 compatibility.
+* Dev: Tested up to WordPress 4.7.
+
+= 3.1.8 - October 18, 2016 =
+
+* Fix: Multi-day events should not show duplicate events in one day in some time zones.
+* Fix: List view heading dates corrected for some time zones.
+* Fix: Grid view starting month corrected for some time zones.
+* Fix: Remove duplicate "Event source default" option when add-on enabled.
+* Tweak: Set "Expand multi-day events" default value to "No, display only on first day of event".
+
+= 3.1.7 - October 4, 2016 =
+
+* Fix: Add month/day/time translations back in that stopped working after 3.1.5.
+
+= 3.1.6 - September 26, 2016 =
+
+* Fix: Account for events without an end date/time when using the [when] tag.
+
+= 3.1.5 - September 25, 2016 =
+
+* Fix: Multi-day events in the future should now display first day of event when selecting "No, display on all days of event up to current day".
+* Fix: Correct dates in day headings in list view being off for some time zones.
+* Tweak: Clearer warning about using timezone setting "Event source default".
+* Dev: Added filters to add your own custom event template tags. Props [@Brummolix](https://github.com/Brummolix)
+* Dev: Remove all calls to date_default_timezone_set() due to the way WordPress core sets it to 'UTC' to calculate offsets from there.
+
+= 3.1.4 - September 19, 2016 =
+
+* Fix: "Add to Google Calendar" link now uses source calendar's timezone (except for all-day and UTC timezone events).
+
+= 3.1.3 - September 12, 2016 =
+
+* Feature: Added "Add to Google Calendar" link event template tag.
+* Fix: Corrected all structured data/schema.org output errors caught by Google's structured data testing tool.
+* Fix: Default colors specified for today and events with days should now work even when colors blanked out.
+* Dev: System report tweaks for PHP 7 compatibility.
+* Dev: Sass 3.4 compatibility.
+* Dev: Move load_plugin_textdomain call to plugins_loaded hook. Not needed with WP 4.6+.
 
 = 3.1.2 - July 13, 2016 =
 

@@ -616,46 +616,48 @@ abstract class Calendar {
 			return;
 		}
 
-		$this->start = Carbon::now( $this->timezone )->getTimestamp();
+		$start_dt = Carbon::now( $this->timezone );
 
 		$calendar_begins = esc_attr( get_post_meta( $this->id, '_calendar_begins', true ) );
 		$nth = max( absint( get_post_meta( $this->id, '_calendar_begins_nth', true ) ), 1 );
 
 		if ( 'today' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->getTimestamp();
+			$start_dt = Carbon::today( $this->timezone );
 		} elseif ( 'days_before' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->subDays( $nth )->getTimestamp();
+			$start_dt = Carbon::today( $this->timezone )->subDays( $nth );
 		} elseif ( 'days_after' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->addDays( $nth )->getTimestamp();
+			$start_dt = Carbon::today( $this->timezone )->addDays( $nth );
 		} elseif ( 'this_week' == $calendar_begins ) {
 			$week = new Carbon( 'now', $this->timezone );
 			$week->setWeekStartsAt( $this->week_starts );
-			$this->start = $week->startOfWeek()->getTimestamp();
+			$start_dt = $week->startOfWeek();
 		} elseif ( 'weeks_before' == $calendar_begins ) {
 			$week = new Carbon( 'now', $this->timezone );
 			$week->setWeekStartsAt( $this->week_starts );
-			$this->start = $week->startOfWeek()->subWeeks( $nth )->getTimestamp();
+			$start_dt = $week->startOfWeek()->subWeeks( $nth );
 		} elseif ( 'weeks_after' == $calendar_begins ) {
 			$week = new Carbon( 'now', $this->timezone );
 			$week->setWeekStartsAt( $this->week_starts );
-			$this->start = $week->startOfWeek()->addWeeks( $nth )->getTimestamp();
+			$start_dt = $week->startOfWeek()->addWeeks( $nth );
 		} elseif ( 'this_month' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->startOfMonth()->getTimeStamp();
+			$start_dt = Carbon::today( $this->timezone )->startOfMonth();
 		} elseif ( 'months_before' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->subMonths( $nth )->startOfMonth()->getTimeStamp();
+			$start_dt = Carbon::today( $this->timezone )->subMonths( $nth )->startOfMonth();
 		} elseif ( 'months_after' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->addMonths( $nth )->startOfMonth()->getTimeStamp();
+			$start_dt = Carbon::today( $this->timezone )->addMonths( $nth )->startOfMonth();
 		} elseif ( 'this_year' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->startOfYear()->getTimestamp();
+			$start_dt = Carbon::today( $this->timezone )->startOfYear()->addHour();
 		} elseif ( 'years_before' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->subYears( $nth )->startOfYear()->getTimeStamp();
+			$start_dt = Carbon::today( $this->timezone )->subYears( $nth )->startOfYear();
 		} elseif ( 'years_after' == $calendar_begins ) {
-			$this->start = Carbon::today( $this->timezone )->addYears( $nth )->startOfYear()->getTimeStamp();
+			$start_dt = Carbon::today( $this->timezone )->addYears( $nth )->startOfYear();
 		} elseif ( 'custom_date' == $calendar_begins ) {
 			if ( $date = get_post_meta( $this->id, '_calendar_begins_custom_date', true ) ) {
-				$this->start = Carbon::createFromFormat( 'Y-m-d', esc_attr( $date ), $this->timezone )->setTimezone( $this->timezone )->startOfDay()->getTimestamp();
+				$start_dt = Carbon::createFromFormat( 'Y-m-d', esc_attr( $date ), $this->timezone )->setTimezone( $this->timezone )->startOfDay();
 			}
 		}
+
+		$this->start = $start_dt->timestamp;
 	}
 
 	/**
@@ -732,6 +734,51 @@ abstract class Calendar {
 	}
 
 	/**
+	 * Get "Add to Google Calendar" link.
+	 *
+	 * @since  3.1.3
+	 *
+	 * @param  Event  $event    Event object to be parsed.
+	 *
+	 * @return string
+	 */
+	public function get_add_to_gcal_url( Event $event ) {
+		$base_url = 'https://calendar.google.com/calendar/render';
+		// Was https://www.google.com/calendar/render
+
+		// Start & end date/time in specific format for GCal.
+		// &dates=20160504T110000/20160504T170000
+		// No "Z"s tacked on to preserve source timezone.
+		// All day events remove time component, but need to add a full day to show up correctly.
+		$is_all_day     = ( true == $event->whole_day );
+		$gcal_dt_format = $is_all_day ? 'Ymd' : 'Ymd\THi00';
+		$gcal_begin_dt  = $event->start_dt->format( $gcal_dt_format );
+		$end_dt_raw     = $is_all_day ? $event->end_dt->addDay() : $event->end_dt;
+		$gcal_end_dt    = $end_dt_raw->format( $gcal_dt_format );
+		$gcal_dt_string = $gcal_begin_dt . '/' . $gcal_end_dt;
+
+		// "details" (description) should work even when blank.
+		// "location" (address) should work with an address, just a name or blank.
+		$params = array(
+			'action'   => 'TEMPLATE',
+			'text'     => urlencode( strip_tags( $event->title ) ),
+			'dates'    => $gcal_dt_string,
+			'details'  => urlencode( $event->description ),
+			'location' => urlencode( $event->start_location['address'] ),
+			'trp'      => 'false',
+		);
+
+		// "ctz" (timezone) arg should be included unless all-day OR 'UTC'.
+		if ( ! $is_all_day && ( 'UTC' !== $event->timezone ) ) {
+			$params['ctz'] = urlencode( $event->timezone );
+		}
+
+		$url = add_query_arg( $params, $base_url );
+
+		return $url;
+	}
+
+	/**
 	 * Output the calendar markup.
 	 *
 	 * @since 3.0.0
@@ -775,13 +822,11 @@ abstract class Calendar {
 									. 'data-events-last="'    . $this->latest_event . '"'
 									. '>';
 
-				date_default_timezone_set( $this->timezone );
 				do_action( 'simcal_calendar_html_before', $this->id );
 
 				$view->html();
 
 				do_action( 'simcal_calendar_html_after', $this->id );
-				date_default_timezone_set( $this->site_timezone );
 
 				//$settings = get_option( 'simple-calendar_settings_calendars' );
 				$poweredby = get_post_meta( $this->id, '_poweredby', true );

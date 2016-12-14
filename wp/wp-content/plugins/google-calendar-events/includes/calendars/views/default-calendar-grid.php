@@ -118,19 +118,16 @@ class Default_Calendar_Grid implements Calendar_View {
 			'simcal-qtip' => array(
 				'src'       => SIMPLE_CALENDAR_ASSETS . 'js/vendor/jquery.qtip' . $min . '.js',
 				'deps'      => array( 'jquery' ),
-				'ver'       => '2.2.1',
 				'in_footer' => true,
 			),
 			'simcal-fullcal-moment' => array(
 				'src'       => SIMPLE_CALENDAR_ASSETS . 'js/vendor/moment' . $min . '.js',
 				'deps'      => array( 'jquery' ),
-				'ver'       => '',
 				'in_footer' => true,
 			),
 			'simcal-moment-timezone' => array(
 				'src'       => SIMPLE_CALENDAR_ASSETS . 'js/vendor/moment-timezone-with-data' . $min . '.js',
 				'deps'      => array( 'jquery' ),
-				'ver'       => '',
 				'in_footer' => true,
 			),
 			'simcal-default-calendar' => array(
@@ -141,7 +138,6 @@ class Default_Calendar_Grid implements Calendar_View {
 					'simcal-fullcal-moment',
 					'simcal-moment-timezone',
 				),
-				'var'       => SIMPLE_CALENDAR_VERSION,
 				'in_footer' => true,
 				'localize'  => array(
 					'simcal_default_calendar' => simcal_common_scripts_variables(),
@@ -165,7 +161,6 @@ class Default_Calendar_Grid implements Calendar_View {
 		return array(
 			'simcal-qtip' => array(
 				'src'   => SIMPLE_CALENDAR_ASSETS . 'css/vendor/jquery.qtip' . $min . '.css',
-				'ver'   => '2.2.1',
 				'media' => 'all',
 			),
 			'simcal-default-calendar-grid' => array(
@@ -173,7 +168,6 @@ class Default_Calendar_Grid implements Calendar_View {
 				'deps'  => array(
 					'simcal-qtip',
 				),
-				'ver'   => SIMPLE_CALENDAR_VERSION,
 				'media' => 'all',
 			),
 			'simcal-default-calendar-list' => array(
@@ -181,7 +175,6 @@ class Default_Calendar_Grid implements Calendar_View {
 				'deps'  => array(
 					'simcal-qtip',
 				),
-				'ver'   => SIMPLE_CALENDAR_VERSION,
 				'media' => 'all',
 			),
 		);
@@ -318,9 +311,6 @@ class Default_Calendar_Grid implements Calendar_View {
 
 		$events = $calendar->events;
 
-		$feed          = simcal_get_feed( $calendar );
-		$feed_timezone = get_post_meta( $feed->post_id, '_feed_timezone', true );
-
 		// Variables to cycle days in current month and find today in calendar.
 		$now         = $calendar->now;
 		$current     = Carbon::create( $year, $month, 1, 0, 0, 0, $calendar->timezone );
@@ -335,7 +325,7 @@ class Default_Calendar_Grid implements Calendar_View {
 
 		// Set current month events timestamp boundaries.
 		$this->start = $current_min;
-		$this->end   = $current->endOfMonth()->timestamp;
+		$this->end   = $current->endOfMonth()->getTimestamp();
 
 		// Get daily events for this month.
 		if ( $events && is_array( $events ) ) {
@@ -351,7 +341,7 @@ class Default_Calendar_Grid implements Calendar_View {
 			foreach ( $filtered as $timestamp => $events_in_day ) {
 				foreach ( $events_in_day as $event ) {
 					if ( $event instanceof Event ){
-						$day = intval( Carbon::createFromTimestamp( $timestamp, $event->timezone )->endOfDay()->day );
+						$day = intval( Carbon::createFromTimestamp( $timestamp, $calendar->timezone )->endOfDay()->day );
 						$day_events[ $day ][] = $event;
 					}
 				}
@@ -427,12 +417,6 @@ class Default_Calendar_Grid implements Calendar_View {
 					$event_classes = $event_visibility = '';
 
 					if ( $event instanceof Event ) :
-
-						if ( $feed->type == 'grouped-calendars' ) {
-							date_default_timezone_set( $feed_timezone );
-						} else {
-							date_default_timezone_set( $event->timezone );
-						}
 
 						// Store the calendar id where the event belongs (useful in grouped calendar feeds)
 						$calendar_class  = 'simcal-events-calendar-' . strval( $event->calendar );
@@ -572,8 +556,6 @@ class Default_Calendar_Grid implements Calendar_View {
 
 		echo "\t" . '</tr>' . "\n";
 		echo '</tbody>' . "\n";
-
-		date_default_timezone_set( $calendar->site_timezone );
 
 		return ob_get_clean();
 	}
