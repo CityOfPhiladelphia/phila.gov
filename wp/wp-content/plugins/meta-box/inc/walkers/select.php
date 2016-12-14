@@ -3,8 +3,8 @@
  * Select Walker
  * For generating Select fields
  */
-class RWMB_Select_Walker extends RWMB_Walker
-{
+class RWMB_Walker_Select extends RWMB_Walker_Base {
+
 	/**
 	 * @see Walker::start_el()
 	 *
@@ -14,19 +14,18 @@ class RWMB_Select_Walker extends RWMB_Walker
 	 * @param int    $current_object_id Item id.
 	 * @param array  $args
 	 */
-	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 )
-	{
+	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
 		$label  = $this->db_fields['label'];
 		$id     = $this->db_fields['id'];
 		$meta   = $this->meta;
-		$indent = str_repeat( "&nbsp;", $depth * 4 );
+		$indent = str_repeat( '&nbsp;', $depth * 4 );
 
 		$output .= sprintf(
 			'<option value="%s" %s>%s%s</option>',
 			$object->$id,
 			selected( in_array( $object->$id, $meta ), 1, false ),
 			$indent,
-			$object->$label
+			RWMB_Field::filter( 'choice_label', $object->$label, $this->field, $object )
 		);
 	}
 }

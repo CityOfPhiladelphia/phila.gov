@@ -3,35 +3,53 @@
 /**
  * Datetime field class.
  */
-class RWMB_Datetime_Field extends RWMB_Text_Field
-{
+class RWMB_Datetime_Field extends RWMB_Text_Field {
+
 	/**
 	 * Translate date format from jQuery UI date picker to PHP date()
 	 * It's used to store timestamp value of the field
 	 * Missing:  '!' => '', 'oo' => '', '@' => '', "''" => "'"
+	 *
 	 * @var array
 	 */
 	protected static $date_formats = array(
-		'd' => 'j', 'dd' => 'd', 'oo' => 'z', 'D' => 'D', 'DD' => 'l',
-		'm' => 'n', 'mm' => 'm', 'M' => 'M', 'MM' => 'F', 'y' => 'y', 'yy' => 'Y', 'o' => 'z',
+		'd' => 'j',
+	'dd' => 'd',
+	'oo' => 'z',
+	'D' => 'D',
+	'DD' => 'l',
+		'm' => 'n',
+	'mm' => 'm',
+	'M' => 'M',
+	'MM' => 'F',
+	'y' => 'y',
+	'yy' => 'Y',
+	'o' => 'z',
 	);
 
 	/**
 	 * Translate time format from jQuery UI time picker to PHP date()
 	 * It's used to store timestamp value of the field
 	 * Missing: 't' => '', T' => '', 'm' => '', 's' => ''
+	 *
 	 * @var array
 	 */
 	protected static $time_formats = array(
-		'H'  => 'G', 'HH' => 'H', 'h' => 'g', 'hh' => 'h',
-		'mm' => 'i', 'ss' => 's', 'l' => 'u', 'tt' => 'a', 'TT' => 'A',
+		'H'  => 'G',
+	'HH' => 'H',
+	'h' => 'g',
+	'hh' => 'h',
+		'mm' => 'i',
+	'ss' => 's',
+	'l' => 'u',
+	'tt' => 'a',
+	'TT' => 'A',
 	);
 
 	/**
 	 * Register scripts and styles
 	 */
-	public static function admin_register_scripts()
-	{
+	public static function admin_register_scripts() {
 		$url = RWMB_CSS_URL . 'jqueryui';
 		wp_register_style( 'jquery-ui-core', "$url/jquery.ui.core.css", array(), '1.8.17' );
 		wp_register_style( 'jquery-ui-theme', "$url/jquery.ui.theme.css", array(), '1.8.17' );
@@ -51,6 +69,7 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 
 		/**
 		 * Add data to scripts. Prevent loading localized string twice.
+		 *
 		 * @link https://github.com/rilwis/meta-box/issues/850
 		 */
 		$wp_scripts   = wp_scripts();
@@ -61,20 +80,15 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 			'locale'      => $locale,
 			'localeShort' => $locale_short,
 		);
-		foreach ( $handles as $handle )
-		{
-			if ( ! $wp_scripts->get_data( "rwmb-$handle", 'data' ) )
-			{
-				wp_localize_script( "rwmb-$handle", 'RWMB_' . ucfirst( $handle ), $data );
-			}
+		foreach ( $handles as $handle ) {
+			self::localize_script( "rwmb-$handle", 'RWMB_' . ucfirst( $handle ), $data );
 		}
 	}
 
 	/**
 	 * Enqueue scripts and styles
 	 */
-	public static function admin_enqueue_scripts()
-	{
+	public static function admin_enqueue_scripts() {
 		self::admin_register_scripts();
 		wp_enqueue_style( 'jquery-ui-timepicker' );
 		wp_enqueue_script( 'rwmb-datetime' );
@@ -88,12 +102,10 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 	 *
 	 * @return string
 	 */
-	public static function html( $meta, $field )
-	{
+	public static function html( $meta, $field ) {
 		$output = '';
 
-		if ( $field['timestamp'] )
-		{
+		if ( $field['timestamp'] ) {
 			$name  = $field['field_name'];
 			$field = wp_parse_args( array( 'field_name' => $name . '[formatted]' ), $field );
 			$output .= sprintf(
@@ -106,8 +118,7 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 
 		$output .= parent::html( $meta, $field );
 
-		if ( $field['inline'] )
-		{
+		if ( $field['inline'] ) {
 			$output .= '<div class="rwmb-datetime-inline"></div>';
 		}
 
@@ -125,28 +136,8 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 	 *
 	 * @return string|int
 	 */
-	public static function value( $new, $old, $post_id, $field )
-	{
-		if ( $field['timestamp'] )
-		{
-			$new = self::prepare_value( $new, $field );
-		}
-		return $new;
-	}
-
-	/**
-	 * Prepare value before saving if set 'timestamp'
-	 * @param array|string $value The submitted value
-	 * @param array        $field Field parameter
-	 * @return array
-	 */
-	protected static function prepare_value( $value, $field )
-	{
-		if ( $field['clone'] )
-		{
-			return array_map( __METHOD__, $value );
-		}
-		return isset( $value['timestamp'] ) ? $value['timestamp'] : null;
+	public static function value( $new, $old, $post_id, $field ) {
+		return  $field['timestamp'] ? $new['timestamp'] : $new;
 	}
 
 	/**
@@ -158,11 +149,9 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 	 *
 	 * @return mixed
 	 */
-	public static function meta( $post_id, $saved, $field )
-	{
+	public static function meta( $post_id, $saved, $field ) {
 		$meta = parent::meta( $post_id, $saved, $field );
-		if ( $field['timestamp'] )
-		{
+		if ( $field['timestamp'] ) {
 			$meta = self::prepare_meta( $meta, $field );
 		}
 		return $meta;
@@ -170,14 +159,13 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 
 	/**
 	 * Format meta value if set 'timestamp'
+	 *
 	 * @param array|string $meta  The meta value
 	 * @param array        $field Field parameter
 	 * @return array
 	 */
-	protected static function prepare_meta( $meta, $field )
-	{
-		if ( is_array( $meta ) )
-		{
+	protected static function prepare_meta( $meta, $field ) {
+		if ( is_array( $meta ) ) {
 			return array_map( __METHOD__, $meta );
 		}
 		return array(
@@ -192,8 +180,7 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 	 * @param array $field
 	 * @return array
 	 */
-	public static function normalize( $field )
-	{
+	public static function normalize( $field ) {
 		$field = wp_parse_args( $field, array(
 			'timestamp'  => false,
 			'inline'     => false,
@@ -209,14 +196,13 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 			'showButtonPanel' => true,
 		) );
 
-		if ( $field['inline'] )
-		{
+		if ( $field['inline'] ) {
 			$field['js_options'] = wp_parse_args( $field['js_options'], array(
 				'altFieldTimeOnly' => false,
 			) );
 		}
 
-		$field = RWMB_Text_Field::normalize( $field );
+		$field = parent::normalize( $field );
 
 		return $field;
 	}
@@ -229,8 +215,7 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 	 *
 	 * @return array
 	 */
-	public static function get_attributes( $field, $value = null )
-	{
+	public static function get_attributes( $field, $value = null ) {
 		$attributes = parent::get_attributes( $field, $value );
 		$attributes = wp_parse_args( $attributes, array(
 			'data-options' => wp_json_encode( $field['js_options'] ),
@@ -248,8 +233,7 @@ class RWMB_Datetime_Field extends RWMB_Text_Field
 	 *
 	 * @return string
 	 */
-	public static function translate_format( $field )
-	{
+	public static function translate_format( $field ) {
 		return strtr( $field['js_options']['dateFormat'], self::$date_formats )
 		. $field['js_options']['separator']
 		. strtr( $field['js_options']['timeFormat'], self::$time_formats );

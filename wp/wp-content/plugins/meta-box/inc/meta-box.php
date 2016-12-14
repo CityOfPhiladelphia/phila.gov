@@ -8,8 +8,8 @@
  * @license GNU GPL2+
  * @package Meta Box
  */
-class RW_Meta_Box
-{
+class RW_Meta_Box {
+
 	/**
 	 * @var array Meta box information
 	 */
@@ -27,10 +27,10 @@ class RW_Meta_Box
 
 	/**
 	 * Create meta box based on given data
+	 *
 	 * @param array $meta_box Meta box definition
 	 */
-	public function __construct( $meta_box )
-	{
+	public function __construct( $meta_box ) {
 		$meta_box           = self::normalize( $meta_box );
 		$meta_box['fields'] = self::normalize_fields( $meta_box['fields'] );
 
@@ -42,16 +42,15 @@ class RW_Meta_Box
 		// 2nd action applies to only current meta box
 		$show = apply_filters( 'rwmb_show', true, $this->meta_box );
 		$show = apply_filters( "rwmb_show_{$this->meta_box['id']}", $show, $this->meta_box );
-		if ( ! $show )
+		if ( ! $show ) {
 			return;
+		}
 
 		// Enqueue common styles and scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		// Add additional actions for fields
-		$fields = self::get_fields( $this->fields );
-		foreach ( $fields as $field )
-		{
+		foreach ( $this->fields as $field ) {
 			RWMB_Field::call( $field, 'add_actions' );
 		}
 
@@ -62,17 +61,13 @@ class RW_Meta_Box
 		add_filter( 'default_hidden_meta_boxes', array( $this, 'hide' ), 10, 2 );
 
 		// Save post meta
-		foreach ( $this->meta_box['post_types'] as $post_type )
-		{
-			if ( 'attachment' === $post_type )
-			{
+		foreach ( $this->meta_box['post_types'] as $post_type ) {
+			if ( 'attachment' === $post_type ) {
 				// Attachment uses other hooks
 				// @see wp_update_post(), wp_insert_attachment()
 				add_action( 'edit_attachment', array( $this, 'save_post' ) );
 				add_action( 'add_attachment', array( $this, 'save_post' ) );
-			}
-			else
-			{
+			} else {
 				add_action( "save_post_{$post_type}", array( $this, 'save_post' ) );
 			}
 		}
@@ -81,68 +76,47 @@ class RW_Meta_Box
 	/**
 	 * Enqueue common scripts and styles.
 	 */
-	public function enqueue()
-	{
-		if ( ! $this->is_edit_screen() )
+	public function enqueue() {
+		if ( ! $this->is_edit_screen() ) {
 			return;
+		}
 
 		wp_enqueue_style( 'rwmb', RWMB_CSS_URL . 'style.css', array(), RWMB_VER );
-		if ( is_rtl() )
+		if ( is_rtl() ) {
 			wp_enqueue_style( 'rwmb-rtl', RWMB_CSS_URL . 'style-rtl.css', array(), RWMB_VER );
+		}
 
 		// Load clone script conditionally
-		$fields = self::get_fields( $this->fields );
-		foreach ( $fields as $field )
-		{
-			if ( $field['clone'] )
-			{
+		foreach ( $this->fields as $field ) {
+			if ( $field['clone'] ) {
 				wp_enqueue_script( 'rwmb-clone', RWMB_JS_URL . 'clone.js', array( 'jquery-ui-sortable' ), RWMB_VER, true );
 				break;
 			}
 		}
 
 		// Enqueue scripts and styles for fields
-		foreach ( $fields as $field )
-		{
+		foreach ( $this->fields as $field ) {
 			RWMB_Field::call( $field, 'admin_enqueue_scripts' );
 		}
 
 		// Auto save
-		if ( $this->meta_box['autosave'] )
+		if ( $this->meta_box['autosave'] ) {
 			wp_enqueue_script( 'rwmb-autosave', RWMB_JS_URL . 'autosave.js', array( 'jquery' ), RWMB_VER, true );
+		}
 
 		/**
 		 * Allow developers to enqueue more scripts and styles
+		 *
 		 * @param RW_Meta_Box $object Meta Box object
 		 */
 		do_action( 'rwmb_enqueue_scripts', $this );
 	}
 
 	/**
-	 * Get all fields of a meta box, recursively
-	 * @param array $fields
-	 * @return array
-	 */
-	public static function get_fields( $fields )
-	{
-		$all_fields = array();
-		foreach ( $fields as $field )
-		{
-			$all_fields[] = $field;
-			if ( isset( $field['fields'] ) )
-				$all_fields = array_merge( $all_fields, self::get_fields( $field['fields'] ) );
-		}
-
-		return $all_fields;
-	}
-
-	/**
 	 * Add meta box for multiple post types
 	 */
-	public function add_meta_boxes()
-	{
-		foreach ( $this->meta_box['post_types'] as $post_type )
-		{
+	public function add_meta_boxes() {
+		foreach ( $this->meta_box['post_types'] as $post_type ) {
 			add_meta_box(
 				$this->meta_box['id'],
 				$this->meta_box['title'],
@@ -162,10 +136,8 @@ class RW_Meta_Box
 	 *
 	 * @return array
 	 */
-	public function hide( $hidden, $screen )
-	{
-		if ( $this->is_edit_screen( $screen ) && $this->meta_box['default_hidden'] )
-		{
+	public function hide( $hidden, $screen ) {
+		if ( $this->is_edit_screen( $screen ) && $this->meta_box['default_hidden'] ) {
 			$hidden[] = $this->meta_box['id'];
 		}
 
@@ -175,8 +147,7 @@ class RW_Meta_Box
 	/**
 	 * Callback function to show fields in meta box
 	 */
-	public function show()
-	{
+	public function show() {
 		$saved = $this->is_saved();
 
 		// Container
@@ -193,8 +164,7 @@ class RW_Meta_Box
 		do_action( 'rwmb_before', $this );
 		do_action( "rwmb_before_{$this->meta_box['id']}", $this );
 
-		foreach ( $this->fields as $field )
-		{
+		foreach ( $this->fields as $field ) {
 			RWMB_Field::call( 'show', $field, $saved );
 		}
 
@@ -210,30 +180,36 @@ class RW_Meta_Box
 
 	/**
 	 * Save data from meta box
+	 *
 	 * @param int $post_id Post ID
 	 */
-	public function save_post( $post_id )
-	{
-		if ( ! $this->validate() )
+	public function save_post( $post_id ) {
+		if ( ! $this->validate() ) {
 			return;
+		}
 		$this->saved = true;
 
 		// Make sure meta is added to the post, not a revision
-		if ( $the_post = wp_is_post_revision( $post_id ) )
+		if ( $the_post = wp_is_post_revision( $post_id ) ) {
 			$post_id = $the_post;
+		}
 
 		// Before save action
 		do_action( 'rwmb_before_save_post', $post_id );
 		do_action( "rwmb_{$this->meta_box['id']}_before_save_post", $post_id );
 
-		foreach ( $this->fields as $field )
-		{
+		foreach ( $this->fields as $field ) {
 			$single = $field['clone'] || ! $field['multiple'];
-			$old    = get_post_meta( $post_id, $field['id'], $single );
-			$new    = isset( $_POST[$field['id']] ) ? $_POST[$field['id']] : ( $single ? '' : array() );
+			$old    = RWMB_Field::call( $field, 'raw_meta', $post_id );
+			$new    = isset( $_POST[ $field['id'] ] ) ? $_POST[ $field['id'] ] : ( $single ? '' : array() );
 
 			// Allow field class change the value
-			$new = RWMB_Field::call( $field, 'value', $new, $old, $post_id );
+			if ( $field['clone'] ) {
+				$new = RWMB_Clone::value( $new, $old, $post_id, $field );
+			} else {
+				$new = RWMB_Field::call( $field, 'value', $new, $old, $post_id );
+				$new = RWMB_Field::filter( 'sanitize', $new, $field );
+			}
 			$new = RWMB_Field::filter( 'value', $new, $field, $old );
 
 			// Call defined method to save meta value, if there's no methods, call common one
@@ -250,10 +226,10 @@ class RW_Meta_Box
 	 * - If this function is called to prevent duplicated calls like revisions, manual hook to wp_insert_post, etc.
 	 * - Autosave
 	 * - If form is submitted properly
+	 *
 	 * @return bool
 	 */
-	protected function validate()
-	{
+	protected function validate() {
 		$nonce = (string) filter_input( INPUT_POST, "nonce_{$this->meta_box['id']}" );
 		return
 			true !== $this->saved
@@ -263,11 +239,11 @@ class RW_Meta_Box
 
 	/**
 	 * Normalize parameters for meta box
+	 *
 	 * @param array $meta_box Meta box definition
 	 * @return array $meta_box Normalized meta box
 	 */
-	public static function normalize( $meta_box )
-	{
+	public static function normalize( $meta_box ) {
 		// Set default values for meta box
 		$meta_box = wp_parse_args( $meta_box, array(
 			'id'             => sanitize_title( $meta_box['title'] ),
@@ -280,82 +256,58 @@ class RW_Meta_Box
 
 		/**
 		 * Use 'post_types' for better understanding and fallback to 'pages' for previous versions
+		 *
 		 * @since 4.4.1
 		 */
-		if ( ! empty( $meta_box['pages'] ) )
-		{
+		if ( ! empty( $meta_box['pages'] ) ) {
 			$meta_box['post_types'] = $meta_box['pages'];
 		}
 
-		// Allow to set 'post_types' param by string
-		if ( is_string( $meta_box['post_types'] ) )
-		{
-			$meta_box['post_types'] = array( $meta_box['post_types'] );
-		}
-
-		// Allow to add default values for meta box
-		$meta_box = apply_filters( 'rwmb_normalize_meta_box', $meta_box );
-		$meta_box = apply_filters( "rwmb_normalize_{$meta_box['id']}_meta_box", $meta_box );
+		// Make sure the post type is an array.
+		$meta_box['post_types'] = (array) $meta_box['post_types'];
 
 		return $meta_box;
 	}
 
 	/**
 	 * Normalize an array of fields
+	 *
 	 * @param array $fields Array of fields
 	 * @return array $fields Normalized fields
 	 */
-	public static function normalize_fields( $fields )
-	{
-		foreach ( $fields as $k => $field )
-		{
+	public static function normalize_fields( $fields ) {
+		foreach ( $fields as $k => $field ) {
 			$field = RWMB_Field::call( 'normalize', $field );
-
-			if ( isset( $field['fields'] ) )
-				$field['fields'] = self::normalize_fields( $field['fields'] );
 
 			// Allow to add default values for fields
 			$field = apply_filters( 'rwmb_normalize_field', $field );
 			$field = apply_filters( "rwmb_normalize_{$field['type']}_field", $field );
 			$field = apply_filters( "rwmb_normalize_{$field['id']}_field", $field );
 
-			$fields[$k] = $field;
+			$fields[ $k ] = $field;
 		}
 
 		return $fields;
 	}
 
 	/**
-	 * Get field class name. Only for backward compatibility.
-	 * @param array $field Field array
-	 * @return string Field class name
-	 */
-	public static function get_class_name( $field )
-	{
-		return RWMB_Field::get_class_name( $field );
-	}
-
-	/**
 	 * Check if meta box is saved before.
 	 * This helps saving empty value in meta fields (text, check box, etc.) and set the correct default values.
+	 *
 	 * @return bool
 	 */
-	public function is_saved()
-	{
+	public function is_saved() {
 		$post = get_post();
 
-		foreach ( $this->fields as $field )
-		{
-			if ( empty( $field['id'] ) )
-			{
+		foreach ( $this->fields as $field ) {
+			if ( empty( $field['id'] ) ) {
 				continue;
 			}
-			$value = get_post_meta( $post->ID, $field['id'], ! $field['multiple'] );
+			$value = RWMB_Field::call( $field, 'raw_meta', $post->ID );
 			if (
 				( ! $field['multiple'] && '' !== $value )
 				|| ( $field['multiple'] && array() !== $value )
-			)
-			{
+			) {
 				return true;
 			}
 		}
@@ -369,10 +321,8 @@ class RW_Meta_Box
 	 * @param WP_Screen $screen Screen object. Optional. Use current screen object by default.
 	 * @return bool
 	 */
-	public function is_edit_screen( $screen = null )
-	{
-		if ( ! ( $screen instanceof WP_Screen ) )
-		{
+	public function is_edit_screen( $screen = null ) {
+		if ( ! ( $screen instanceof WP_Screen ) ) {
 			$screen = get_current_screen();
 		}
 		return 'post' == $screen->base && in_array( $screen->post_type, $this->meta_box['post_types'] );
