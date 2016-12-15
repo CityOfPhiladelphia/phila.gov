@@ -1480,6 +1480,8 @@ function phila_tax_highlight( $info_panel ){
   if ( !empty($info_panel) ){
 
     foreach ( $info_panel as $k ){
+      $output['callout'] = isset( $info_panel['phila_wysiwyg_callout'] ) ? $info_panel['phila_wysiwyg_callout'] : '';
+
       $output['due'] = array();
 
       $output['due']['type'] = isset(

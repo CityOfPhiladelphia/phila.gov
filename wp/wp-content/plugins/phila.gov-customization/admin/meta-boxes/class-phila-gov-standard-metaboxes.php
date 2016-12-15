@@ -6,7 +6,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
  class Phila_Gov_Standard_Metaboxes {
 
-  public static function phila_wysiwyg_options_basic(){
+  public static function phila_wysiwyg_options_basic( $editor_height = 200 ){
 
     return array(
       'media_buttons' => false,
@@ -18,7 +18,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
           'format_select' => false
          )
        ),
-      'editor_height' => 200,
+      'editor_height' => $editor_height,
     );
   }
 
