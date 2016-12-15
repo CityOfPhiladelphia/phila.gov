@@ -1,10 +1,10 @@
 === Meta Box ===
 Contributors: metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, ruanmer, Omnicia
-Donate link: http://www.deluxeblogtips.com/donate
+Donate link: http://paypal.me/anhtnt
 Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, matrix, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
 Requires at least: 4.1
-Tested up to: 4.5.2
-Stable tag: 4.8.7
+Tested up to: 4.6.1
+Stable tag: 4.9.8
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional solution to create custom meta boxes and custom fields for WordPress websites.
@@ -33,7 +33,8 @@ See more documentation [here](https://metabox.io/docs/).
 
 ### Extensions
 
-- [Meta Box Geolocation](https://metabox.io/plugins/meta-box-geolocation/)|Automatically and instantly populate location data with the power of Google Maps Geolocation API.
+- [MB User Meta](https://metabox.io/plugins/mb-user-meta/): Add custom fields to user profile (user meta) quickly with simple syntax.
+- [Meta Box Geolocation](https://metabox.io/plugins/meta-box-geolocation/): Automatically and instantly populate location data with the power of Google Maps Geolocation API.
 - [MB Admin Columns](https://metabox.io/plugins/mb-admin-columns/): Display custom fields in table columns in admin screens for All Posts (types).
 - [MB Term Meta](https://metabox.io/plugins/mb-term-meta/): Add meta data to categories, tags or any custom taxonomy with simple syntax.
 - [MB Settings Page](https://metabox.io/plugins/mb-settings-page/): Create settings pages for themes, plugins or websites with beautiful syntax.
@@ -78,6 +79,52 @@ To getting started with the plugin API, please read [this tutorial](https://meta
 1. Post Taxonomy Fields
 
 == Changelog ==
+
+#### 4.9.8
+* Fix: Quick fix for enqueueing validation script
+
+= 4.9.7 =
+* Improvement: Re-add change event on media fields to make Conditional Logic extension works with media fields.
+* Improvement: Add `rwmb_choice_label`, `rwmv_{$field_type}_choice_label` and `rwmb_{field_id}_choice_label` filters for post, user, taxonomy fields, allowing users to customize the labels of choice fields.
+* Improvement: Change coding styles to follow WordPress Coding Standards.
+* Various improvements to reduce duplicated code.
+* Fix: Map field now works in the frontend.
+* Fix: `std` now works for taxonomy fields.
+
+= 4.9.6 =
+* Fix: Wrong CSS selector when cloning wysiwyg field
+* Fix: Remove preview for oembed field when cloning
+* Fix: 'std' for taxonomy field now works
+
+= 4.9.5 =
+* Fix: Quick fix for wrong field wrapper class which causes color field to render incorrectly
+
+= 4.9.4 =
+* Fix: Quick fix for cloning bug
+
+= 4.9.3 =
+* Fix: Quick fix saving datetime field
+
+= 4.9.2 =
+* Fix: Quick fix validation
+
+= 4.9.1 =
+* Fix: Quick fix for `rwmb_meta()` to be better backward compatible
+
+= 4.9 =
+* Improvement: Update Chinese language. Add Chinese Taiwan.
+* Improvement: Add support for Google Maps API key. Default API key is added, however users should replace it with their own key.
+* Improvement: Add additional methods for jQuery validation module which makes it understand HTML5 "pattern" attribute.
+* Improvement: Fully WPML compatibility (supported by WPML team)
+* Improvement: Add placeholders for `key_value` field
+* Fix: Toggle remove clone buttons for nested groups.
+* Fix: Error on date field, not save
+* Fix: Add fix for date/datetime when both inline and timestamp used
+* Fix: Set default language for date/time picker.
+* Fix: rwmb_meta for images returns incorrect width/height
+* Fix: PHP warning when uploading files in Settings Pages extension.
+* Fix: Blank space in the footer when using plupload_image.
+* Fix: Cloning wysiwyg when deleting the 1st clone
 
 = 4.8.7 =
 * Improvement: Refactor the code to reduce the complexity in the fields' inheritance

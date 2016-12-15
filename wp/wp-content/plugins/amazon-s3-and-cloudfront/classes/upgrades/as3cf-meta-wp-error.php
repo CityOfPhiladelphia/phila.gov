@@ -26,28 +26,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AS3CF_Upgrade_Meta_WP_Error extends AS3CF_Upgrade {
 
 	/**
-	 * Initiate the upgrade
-	 *
-	 * @param object $as3cf Instance of calling class
+	 * @var int
 	 */
-	public function __construct( $as3cf ) {
-		$this->upgrade_id   = 3;
-		$this->upgrade_name = 'meta_error';
-		$this->upgrade_type = 'attachments';
+	protected $upgrade_id = 3;
 
-		$this->running_update_text = __( 'and rebuilding the metadata for attachments that may have been corrupted.', 'amazon-s3-and-cloudfront' );
+	/**
+	 * @var string
+	 */
+	protected $upgrade_name = 'meta_error';
 
-		parent::__construct( $as3cf );
+	/**
+	 * @var string 'metadata', 'attachment'
+	 */
+	protected $upgrade_type = 'attachments';
+
+	/**
+	 * Get running update text.
+	 *
+	 * @return string
+	 */
+	protected function get_running_update_text() {
+		return __( 'and rebuilding the metadata for attachments that may have been corrupted.', 'amazon-s3-and-cloudfront' );
 	}
 
 	/**
 	 * Rebuild the attachment metadata for an attachment
 	 *
-	 * @param $attachment
+	 * @param mixed $attachment
 	 *
 	 * @return bool
 	 */
-	function upgrade_attachment( $attachment ) {
+	protected function upgrade_item( $attachment ) {
 		$s3object = unserialize( $attachment->s3object );
 		if ( false === $s3object ) {
 			AS3CF_Error::log( 'Failed to unserialize S3 meta for attachment ' . $attachment->ID . ': ' . $attachment->s3object );
@@ -91,7 +100,7 @@ class AS3CF_Upgrade_Meta_WP_Error extends AS3CF_Upgrade {
 	 *
 	 * @return int
 	 */
-	function count_attachments_to_process() {
+	protected function count_items_to_process() {
 		// get the table prefixes for all the blogs
 		$table_prefixes = $this->as3cf->get_all_blog_table_prefixes();
 		$all_count      = 0;
@@ -107,12 +116,13 @@ class AS3CF_Upgrade_Meta_WP_Error extends AS3CF_Upgrade {
 	/**
 	 * Get all attachments that don't have region in their S3 meta data for a blog
 	 *
-	 * @param string $prefix
-	 * @param int    $limit
+	 * @param string     $prefix
+	 * @param int        $limit
+	 * @param bool|mixed $offset
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	function get_attachments_to_process( $prefix, $limit ) {
+	protected function get_items_to_process( $prefix, $limit, $offset = false ) {
 		$attachments = $this->get_attachments_with_error_metadata( $prefix, false, $limit );
 
 		return $attachments;
@@ -127,7 +137,7 @@ class AS3CF_Upgrade_Meta_WP_Error extends AS3CF_Upgrade {
 	 *
 	 * @return array|int
 	 */
-	function get_attachments_with_error_metadata( $prefix, $count = false, $limit = null ) {
+	protected function get_attachments_with_error_metadata( $prefix, $count = false, $limit = null ) {
 		global $wpdb;
 
 		$sql = "FROM `{$prefix}postmeta` pm1
