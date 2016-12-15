@@ -96,6 +96,7 @@
         <nav class="take-action">
           <ul>
             <li class="pvxs"><a href="http://serve.phila.gov/" class="external">SERVE Philadelphia</a></li>
+            <li class="pvxs"><a href="https://beta.phila.gov/departments/office-of-sustainability/greenworks/greenworks-on-the-ground/">Greenworks on the Ground initiative</a></li>
             <li class="pvxs"><a href="http://citizensplanninginstitute.org/" class="external">Citizens Planning Institute</a></li>
             <li class="pvxs"><a href="http://www.phila.gov/311/aboutus/Pages/NeighborhoodLaison.aspx" class="external">Neighborhood Liaison program</a></li>
             <li class="pvxs"><a href="http://citizensplanninginstitute.org/citizens-toolkit" class="external">Citizen action toolkit</a></li>
