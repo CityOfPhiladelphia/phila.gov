@@ -5,7 +5,7 @@
 source /home/ubuntu/.ssh/environment
 
 _dir="$(dirname "$0")"
-plugins="meta-box-group-1.1.1.zip meta-box-include-exclude-1.0.3.zip meta-box-conditional-logic-1.3.0.zip wpfront-user-role-editor-personal-pro-2.12.5.zip"
+plugins="meta-box-group-1.1.6.zip meta-box-include-exclude-1.0.5.zip meta-box-conditional-logic-1.3.4.zip wpfront-user-role-editor-personal-pro-2.13.zip"
 
 cd /home/ubuntu/app
 for plugin in $plugins; do
