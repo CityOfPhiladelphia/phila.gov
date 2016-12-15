@@ -22,6 +22,13 @@
   $more = phila_additional_content( $additional_content );
 
 ?>
+<?php if ($tax['callout'] != '') :?>
+<div class="row">
+  <div class="columns mbl">
+    <?php echo do_shortcode('[callout type="important" inline="false"]' . $tax['callout'] . '[/callout]'); ?>
+  </div>
+</div>
+<?php endif; ?>
 <div class="row equal-height">
   <div class="medium-12 columns">
     <div class="panel info center heading">
