@@ -145,6 +145,16 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
         'type'   => 'group',
 
         'fields'  => array(
+          array(
+            'name' => 'Important changes about this tax',
+            'type'  => 'heading'
+          ),
+          array(
+            'id'  => 'phila_wysiwyg_callout',
+            'type'  => 'wysiwyg',
+            'options' =>
+            Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic( 100 )
+          ),
           $meta_var_tax_due_date,
           array(
             'type'  => 'divider'
