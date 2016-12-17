@@ -9,17 +9,11 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
 
   public function __construct(){
 
-    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_item_desc_meta_boxes' ), 10, 1 );
+    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_item_desc_meta_boxes' ), 1000, 1 );
 
   }
 
   function phila_register_item_desc_meta_boxes( $meta_boxes ){
-    $post_types = array(
-      'public'  => true,
-      '_builtin'  => true
-    );
-
-    $public_post_types = get_post_types( $post_types, $output = 'names', $operator = 'or' );
 
     $prefix = 'phila_';
 
@@ -28,8 +22,11 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
       'title' => 'Short Description',
       'context'  => 'advanced',
       'priority' => 'high',
-
-      'pages' => $public_post_types,
+      
+      //TODO: replace this with a function that pulls the post types we need. It had been set up this way, but after a WP update, get_post_types was not returning CPTs. A quick fix needed to be put in place, and this is it.
+      'post_types' => array(
+        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'event_page', 'page'
+      ),
 
       'fields' => array(
         array(
