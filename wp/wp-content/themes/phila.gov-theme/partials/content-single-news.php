@@ -22,16 +22,9 @@
       <div class="phila-thumb float-left mrm mvm">
         <?php echo phila_get_thumbnails(); ?>
       </div>
-      <?php endif;
-      $desc = phila_get_item_meta_desc( );
-      if ($post->post_content != ''):
-        the_content();
-      else :
-        if ($news_desc) :
-          echo '<p class="description">' . $desc . '</p>';
-        endif;
-      endif;
-      ?>
+    <?php endif; ?>
+
+      <?php the_content(); ?>
     </div><!-- .entry-content -->
   </div><!-- .row -->
 </article><!-- #post-## -->
