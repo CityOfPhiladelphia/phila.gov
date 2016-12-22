@@ -85,7 +85,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Who Pays the Tax</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Who pays the tax</h3>
       <div class="phm-mu">
         <?php echo apply_filters( 'the_content', $payments['who_pays'] ); ?>
       </div>
