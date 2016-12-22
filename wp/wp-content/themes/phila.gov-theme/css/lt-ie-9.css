@@ -51,7 +51,7 @@ img.initial-hero,
 .column, .columns{
   padding:20px;
 }
-
+/*nested grid*/
 .column .column, .columns .columns{
   padding:0 20px;
 }
@@ -73,7 +73,7 @@ img.initial-hero,
 .columns{
   float:left;
 }
-
+/*TODO: recreate entire grid system for IE with fixed widths) */
 .medium-1{
   width:35px;
 }
