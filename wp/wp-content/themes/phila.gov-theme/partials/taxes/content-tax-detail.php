@@ -34,7 +34,7 @@
     <div class="panel info center heading">
       <div class="title pvxs">
         <i class="fa fa-calendar" aria-hidden="true"></i>
- Due Date</div>
+ Due date</div>
        <div class="valign equal">
          <div class="pam valign-cell">
            <?php if ($tax['due']['type'] != 'misc') : ?>
@@ -54,7 +54,7 @@
     <div class="panel info center heading">
       <div class="title pvxs">
         <i class="fa fa-usd" aria-hidden="true"></i>
-  Tax Rate</div>
+  Tax rate</div>
       <div class="valign equal">
         <div class="pam valign-cell">
           <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
@@ -98,7 +98,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Important Dates</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Important dates</h3>
       <div class="phm-mu"><?php echo apply_filters( 'the_content', $tax['due']['summary_detailed']); ?></div>
     </section>
   </div>
@@ -109,7 +109,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Rates, Penalties, & Fees</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax rates, penalties, & fees</h3>
       <div class="phm-mu">
         <h4>How much is it?</h4>
         <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
@@ -130,7 +130,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Discounts & Exemptions</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Discounts & exemptions</h3>
       <div class="phm-mu">
         <h4>Are you eligible for a discount?</h4>
         <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
@@ -150,7 +150,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to Pay</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to pay</h3>
       <div class="phm-mu">
         <?php foreach ( $intro as $item ): ?>
           <div class="mbm">
@@ -241,7 +241,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax Code</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax code</h3>
         <div class="phm-mu">
           <span class="border-black-thin pas inline-block"><?php echo $tax['code'] ?></span>
         </div>
@@ -254,7 +254,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & Instructions</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & instructions</h3>
       <div class="phm-mu">
         <?php foreach ( $more['forms'] as $form ): ?>
           <div class="pvs">
