@@ -27,7 +27,7 @@
   <?php wp_head(); ?>
 
   <!--[if lte IE 9]>
-  <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience. If you can't switch browsers, turn off  compatibility mode.</p>
   <![endif]-->
 
   <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
@@ -175,11 +175,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </nav>
               </div>
             </div>
-            <div class="small-5 medium-1 columns equal">
-              <button class="site-search valign" type="button"  data-toggle="search-dropdown">
-                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-                <span class="show-for-small-only">Search</span>
-              </button>
+            <div class="small-5 medium-1 columns equal valign">
+              <div class="valign-cell">
+                <button class="site-search" type="button"  data-toggle="search-dropdown">
+                  <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                  <span class="show-for-small-only">Search</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
