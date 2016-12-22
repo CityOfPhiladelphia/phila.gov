@@ -27,7 +27,7 @@
   <?php wp_head(); ?>
 
   <!--[if lte IE 9]>
-  <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience. If you can't switch browsers, turn off  compatibility mode.</p>
   <![endif]-->
 
   <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
