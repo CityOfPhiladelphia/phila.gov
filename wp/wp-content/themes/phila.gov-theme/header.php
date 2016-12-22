@@ -175,11 +175,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </nav>
               </div>
             </div>
-            <div class="small-5 medium-1 columns equal">
-              <button class="site-search valign" type="button"  data-toggle="search-dropdown">
-                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-                <span class="show-for-small-only">Search</span>
-              </button>
+            <div class="small-5 medium-1 columns equal valign">
+              <div class="valign-cell">
+                <button class="site-search" type="button"  data-toggle="search-dropdown">
+                  <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                  <span class="show-for-small-only">Search</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
