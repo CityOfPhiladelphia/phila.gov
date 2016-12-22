@@ -12,15 +12,11 @@ header{
 header .columns{
   float:none;
 }
-img, .card img {
+img{
   width: auto !important;
   /*purposefully break what is in patterns */
   max-width: auto !important;
   height:auto !important;
-}
-.logo img{
-  display: block;
-  height:180px !important;
 }
 
 img.hidden-hero, .small-thumb{
@@ -42,9 +38,14 @@ nav li{
 img.initial-hero,
 /*hide what we would normally show on mobile */
 .show-for-small-only,
-.fa,
-.fa-stack{
+.home .hero-content,
+.home .process,
+.top-bar{
   display:none !important;
+}
+
+.fa{
+  padding:10px;
 }
 
 .column, .columns{
@@ -54,12 +55,40 @@ img.initial-hero,
 .column .column, .columns .columns{
   padding:0 20px;
 }
+.card {
+  width: 300px;
+}
+.card img{
+  width:250px;
+}
 
-.row:after, .news ul li.group:after{
+.row::after {
   visibility: hidden;
   display: block;
   font-size: 0;
   content: " ";
   clear: both;
   height: 0;
+}
+.columns{
+  float:left;
+}
+
+.medium-1{
+  width:35px;
+}
+.medium-6{
+  width:210px;
+}
+.medium-8{
+  width: 280px;
+}
+
+.medium-17{
+  width:595px;
+}
+
+footer.site-footer{
+  background: white;
+  color: black !important;
 }
