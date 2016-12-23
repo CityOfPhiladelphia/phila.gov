@@ -1017,18 +1017,12 @@ $meta_boxes[] = array(
               'id'    => 'phila_action_panel_fa_multi',
               'type'  => 'text',
               'class' => 'action-panel-fa',
-              'hidden' => array(
-                'phila_template_select', '=', 'one_page_department',
-              ),
             ),
             array(
               'name'  => 'Icon Background Circle',
               'id'    => 'phila_action_panel_fa_circle_multi',
               'type'  => 'checkbox',
               'class' => 'action-panel-fa',
-              'hidden' => array(
-                'phila_template_select', '=', 'one_page_department',
-              ),
             ),
             array(
               'name'  => 'Link to Content',
