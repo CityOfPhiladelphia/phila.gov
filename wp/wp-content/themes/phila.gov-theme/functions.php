@@ -1442,7 +1442,7 @@ function phila_get_selected_template(){
 
   $user_selected_template = rwmb_meta( 'phila_template_select' );
 
-  if ( empty( $user_selected_template) ){
+  if ( empty( $user_selected_template ) ){
     return get_post_type();
   }
 
