@@ -79,16 +79,11 @@
           <header class="entry-header">
             <?php the_title( '<h2 class="entry-title mvn">', '</h2>' ); ?>
           </header><!-- .entry-header -->
-          <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
-
           <?php if ( isset( $parent_content ) ) : ?>
             <?php echo $parent_content ?>
           <?php else : ?>
-            <?php the_content(); ?>
+            <?php get_template_part( 'partials/content', 'default' ); ?>
           <?php endif; ?>
-
-          <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
-
         </div>
       </div>
     </div>
