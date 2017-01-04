@@ -1200,22 +1200,25 @@ function phila_util_month_format($date){
 function phila_get_service_updates(){
 
     $service_update_details = rwmb_meta( 'service_update' );
-    $current_date = new DateTime('NOW', new DateTimeZone('America/New_York'));
+    $current_time = current_time('timestamp');
     $valid_update = false;
+
     $service_date_format = isset( $service_update_details['phila_date_format'] ) ? $service_update_details['phila_date_format'] : '';
+
     if ( $service_date_format == 'date'):
       $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
       $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
 
-      $service_update_end_date = new DateTime( '@' .$service_effective_end['timestamp'] );
-
-      if ( intval( $service_update_end_date->format('mdY') ) >= intval( $current_date->format('mdY') ) ):
+      //Add the number of seconds in 24 hours to the base date, which will always be 00:00:00 of the selected day. This ensures the update will remain visible for the duration of the selected day.
+      if ( (intval( $service_effective_end['timestamp'] ) + 86400 ) >= $current_time ) :
         $valid_update = true;
       endif;
     elseif ( $service_date_format == 'datetime') :
       $service_effective_start = isset( $service_update_details['phila_effective_start_datetime'] ) ? $service_update_details['phila_effective_start_datetime'] : '';
+
       $service_effective_end = isset( $service_update_details['phila_effective_end_datetime'] ) ? $service_update_details['phila_effective_end_datetime'] : '';
-      if ( $service_effective_end['timestamp'] >= $current_date->getTimestamp() ):
+
+      if ( intval($service_effective_end['timestamp'] ) >= $current_time ):
         $valid_update = true;
       endif;
     elseif ($service_date_format == 'none'):
