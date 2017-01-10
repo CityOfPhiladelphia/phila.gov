@@ -1210,7 +1210,7 @@ function phila_get_service_updates(){
       $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
 
       //Add the number of seconds in 24 hours to the base date, which will always be 00:00:00 of the selected day. This ensures the update will remain visible for the duration of the selected day.
-      if ( (intval( $service_effective_end['timestamp'] ) + 86400 ) >= $current_time ) :
+      if ( ( intval( $service_effective_start['timestamp'] ) <= $current_time ) && ( intval( $service_effective_end['timestamp'] ) + 86400 ) >= $current_time ) :
         $valid_update = true;
       endif;
     elseif ( $service_date_format == 'datetime') :
@@ -1218,7 +1218,7 @@ function phila_get_service_updates(){
 
       $service_effective_end = isset( $service_update_details['phila_effective_end_datetime'] ) ? $service_update_details['phila_effective_end_datetime'] : '';
 
-      if ( intval($service_effective_end['timestamp'] ) >= $current_time ):
+      if ( ( intval($service_effective_start['timestamp'] ) <= $current_time ) && ( intval($service_effective_end['timestamp'] ) >= $current_time ) ):
         $valid_update = true;
       endif;
     elseif ($service_date_format == 'none'):
