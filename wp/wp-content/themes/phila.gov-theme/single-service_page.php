@@ -56,7 +56,9 @@
           </header>
           <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
           <?php if ($user_selected_template == 'tax_detail') : ?>
-            <?php get_template_part('partials/taxes/content', 'tax-detail');?>
+            <?php get_template_part('partials/services/content', 'tax-detail');?>
+          <?php elseif ($user_selected_template == 'start_process') : ?>
+              <?php get_template_part('partials/services/content', 'start-process');?>
               <!-- Service Stub  -->
           <?php elseif ($user_selected_template == 'service_stub') : ?>
             <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
@@ -76,10 +78,13 @@
                         <?php get_template_part('partials/content', 'default'); ?>
 
                       <?php elseif ($source_template == 'tax_detail') : ?>
-                        <?php get_template_part('partials/taxes/content', 'tax-detail'); ?>
+                        <?php get_template_part('partials/services/content', 'tax-detail'); ?>
 
                       <?php elseif ($source_template == 'topic_page') : ?>
                         <?php get_template_part('partials/services/content', 'topic-page'); ?>
+
+                      <?php elseif ($source_template == 'start_process') : ?>
+                        <?php get_template_part('partials/services/content', 'start-process'); ?>
 
                       <?php endif; ?>
                     <?php endwhile; ?>
