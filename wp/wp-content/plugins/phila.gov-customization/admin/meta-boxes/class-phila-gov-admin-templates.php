@@ -90,7 +90,7 @@ class Phila_Gov_Admin_Templates {
           array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', '' ),
           array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
-          array( 'phila_template_select', '=', 'process_start' ),
+          array( 'phila_template_select', '=', 'start_process' ),
         ),
         'relation' => 'or'
       ),
@@ -101,7 +101,7 @@ class Phila_Gov_Admin_Templates {
         'when' => array(
           array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', 'tax_detail' ),
-          array( 'phila_template_select', '=', 'process_start' ),
+          array( 'phila_template_select', '=', 'start_process' ),
         ),
         'relation' => 'or'
       ),
@@ -129,7 +129,7 @@ class Phila_Gov_Admin_Templates {
             'service_stub' => 'Service stub',
             'tax_detail' => 'Tax detail',
             'topic_page' => 'Topic page',
-            'process_start' => 'Process start'
+            'start_process' => 'Start a process'
           )
         )
       ),
