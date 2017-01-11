@@ -1642,6 +1642,25 @@ function phila_additional_content( $input ){
   return $output;
 }
 
+function phila_get_start_process( $input ){
+  $output = array();
+
+  if ( !empty($input) ) {
+
+    foreach ($input as $k => $v) {
+      $output['content'] = isset( $input['phila_wysiwyg_process_content'] ) ? $input['phila_wysiwyg_process_content'] : '';
+
+      $output['button_text'] = isset( $input['phila_start_button']['link_text'] ) ? $input['phila_start_button']['link_text'] : '';
+
+      $output['button_url'] = isset( $input['phila_start_button']['link_url'] ) ? $input['phila_start_button']['link_url'] : '';
+
+      $output['button_external'] = isset( $input['phila_start_button']['is_external'] ) ? $input['phila_start_button']['is_external'] : '';
+
+    }
+  }
+
+  return $output;
+}
 
 function phila_connect_panel($connect_panel) {
 

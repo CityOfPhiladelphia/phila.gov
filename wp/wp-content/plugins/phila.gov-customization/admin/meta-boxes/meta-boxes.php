@@ -1891,14 +1891,41 @@ $meta_forms_instructions = array(
 );
 
 $meta_boxes[] = array(
+  'title' => 'Before you start',
+  'pages' => array('service_page'),
+  'visible' => array(
+    'when' => array(
+      array( 'phila_template_select', '=', 'start_process' ),
+    ),
+  ),
+  'fields' => array(
+    array(
+      'id' => 'phila_start_process',
+      'type'  => 'group',
+      'clone' => false,
+
+      'fields' => array(
+        array(
+          'id'  => 'phila_wysiwyg_process_content',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+        ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
+      )
+    )
+  )
+);
+
+
+$meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('department_page', 'page', 'service_page'),
 
   'visible' => array(
     'when' => array(
       array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
-
       array( 'phila_template_select', '=', 'default'),
+      array( 'phila_template_select', '=', 'start_process'),
     ),
     'relation' => 'or',
   ),
