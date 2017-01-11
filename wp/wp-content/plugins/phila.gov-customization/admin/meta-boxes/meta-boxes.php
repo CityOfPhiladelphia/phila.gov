@@ -1895,12 +1895,12 @@ $meta_boxes[] = array(
   'pages' => array('service_page'),
   'visible' => array(
     'when' => array(
-      array( 'phila_template_select', '=', 'process_start' ),
+      array( 'phila_template_select', '=', 'start_process' ),
     ),
   ),
   'fields' => array(
     array(
-      'id' => 'phila_process_start',
+      'id' => 'phila_start_process',
       'type'  => 'group',
       'clone' => false,
 
@@ -1925,7 +1925,7 @@ $meta_boxes[] = array(
     'when' => array(
       array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
       array( 'phila_template_select', '=', 'default'),
-      array( 'phila_template_select', '=', 'process_start'),
+      array( 'phila_template_select', '=', 'start_process'),
     ),
     'relation' => 'or',
   ),
