@@ -127,7 +127,8 @@ class Phila_Gov_Admin_Templates {
             'default'   => 'Default',
             'service_stub' => 'Service Stub',
             'tax_detail' => 'Tax Detail',
-            'topic_page' => 'Topic Page'
+            'topic_page' => 'Topic Page',
+            'begin_process' => 'Begin Process'
           )
         )
       ),
