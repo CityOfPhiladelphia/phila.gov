@@ -1,7 +1,7 @@
 <?php
 /*
  *
- * Start a process Template
+ * Start a process partial
  *
  */
  ?>
@@ -10,7 +10,8 @@
   $start_process = phila_get_start_process( $process );
 ?>
 <p><?php echo phila_get_item_meta_desc() ?></p>
-<div class="row columns">
+
+<div class="row columns mvm">
   <div class="panel info small-24 intro-item columns pal">
     <div class="row">
       <div class="medium-2 columns show-for-medium">
@@ -35,3 +36,14 @@
     </div>
   </div>
 </div>
+
+<?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+<div class="row">
+  <div class="columns">
+    <?php the_content(); ?>
+  </div>
+</div>
+<?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
+
+<?php get_template_part( 'partials/content', 'heading-groups' ); ?>
+<?php get_template_part( 'partials/content', 'additional' ); ?>
