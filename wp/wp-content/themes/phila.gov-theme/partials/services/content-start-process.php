@@ -20,7 +20,7 @@
         </div>
         <div class="medium-22 small-24 columns">
           <h2 class="h4 mtn">Before you start</h2>
-          <?php echo $start_process['content'] ?>
+          <?php echo apply_filters( 'the_content', $start_process['content'] ); ?>
         </div>
       </div>
       <?php if ( !empty( $start_process['button_url'] ) && !empty( $start_process['button_text'] ) ): ?>
