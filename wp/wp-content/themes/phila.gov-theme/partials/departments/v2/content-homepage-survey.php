@@ -32,7 +32,7 @@
                 <div class="valign">
                   <div class="button-label valign-cell center"><?php echo $survey['link_text']?>
                     <?php if ( $survey['external'] == 1 ) :?>
-                      <i class="fa fa-external-link"></i>
+                      <i class="fa fa-external-link" aria-hidden="true"></i> <span class="accessible"> External link</span>
                     <?php endif;?>
                   </div>
                 </div>
