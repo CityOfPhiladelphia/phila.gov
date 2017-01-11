@@ -99,8 +99,9 @@ class Phila_Gov_Admin_Templates {
     $conditions['additional-content'] = array(
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'default' ),
-          array('phila_template_select', '=', 'tax_detail' ),
+          array( 'phila_template_select', '=', 'default' ),
+          array( 'phila_template_select', '=', 'tax_detail' ),
+          array( 'phila_template_select', '=', 'process_start' ),
         ),
         'relation' => 'or'
       ),
