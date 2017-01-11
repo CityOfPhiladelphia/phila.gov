@@ -25,7 +25,7 @@
       </div>
       <?php if ( !empty( $start_process['button_url'] ) && !empty( $start_process['button_text'] ) ): ?>
         <div class="row">
-          <div class="ptl center columns">
+          <div class="center columns">
             <a data-swiftype-index="false" href="<?php echo $start_process['button_url']; ?>" class="button clearfix">
               <div class="valign">
                 <div class="button-label valign-cell"><?php echo $start_process['button_text'] ?>
