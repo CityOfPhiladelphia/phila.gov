@@ -83,6 +83,9 @@
                       <?php elseif ($source_template == 'topic_page') : ?>
                         <?php get_template_part('partials/services/content', 'topic-page'); ?>
 
+                      <?php elseif ($source_template == 'start_process') : ?>
+                        <?php get_template_part('partials/services/content', 'start-process'); ?>
+
                       <?php endif; ?>
                     <?php endwhile; ?>
                   <?php endif; ?>
