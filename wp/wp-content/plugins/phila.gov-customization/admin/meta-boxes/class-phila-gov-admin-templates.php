@@ -29,7 +29,7 @@ class Phila_Gov_Admin_Templates {
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
-    'title'    => 'Select Page Template',
+    'title'    => 'Select Template',
     'pages'    => array( 'department_page' ),
     'context'  => 'advanced',
     'priority' => 'high',
@@ -45,21 +45,21 @@ class Phila_Gov_Admin_Templates {
 
         'options' => array(
           'default'   => 'Default',
-          'off_site_department' => 'Off-site Department',
-          'one_page_department' => 'One Page Department',
-          'department_homepage' => 'Department Homepage',
-          'department_subpage' => 'Department Subpage',
-          'programs_initiatives' => 'Programs and Initiatives',
-          'resource_list' => 'Resource List',
-          'staff_directory' => 'Staff Directory',
+          'off_site_department' => 'Off-site department',
+          'one_page_department' => 'One Page department',
+          'department_homepage' => 'Department homepage',
+          'department_subpage' => 'Department subpage',
+          'programs_initiatives' => 'Programs and initiatives',
+          'resource_list' => 'Resource list',
+          'staff_directory' => 'Staff directory',
           'disabled'  => '──────────',
-          'homepage_v2' => 'Department Homepage Version 2',
-          'one_quarter_headings_v2' => '1/4 Headings',
-          'contact_us_v2' => 'Contact Page',
-          'all_services_v2' => 'All Services',
-          'forms_and_documents_v2' => 'Forms & Documents',
-          'resource_list_v2' => 'Resource List',
-          'staff_directory_v2' => 'Staff Directory',
+          'homepage_v2' => 'Department homepage version 2',
+          'one_quarter_headings_v2' => '1/4 headings',
+          'contact_us_v2' => 'Contact page',
+          'all_services_v2' => 'All services',
+          'forms_and_documents_v2' => 'Forms & documents',
+          'resource_list_v2' => 'Resource list',
+          'staff_directory_v2' => 'Staff directory',
           ),
        ),
        array(
@@ -118,17 +118,17 @@ class Phila_Gov_Admin_Templates {
       'pages'    => array( 'page', 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
-
       'fields' => array(
         array(
+          'placeholder'  => 'Select a template',
           'id'  => $prefix . 'template_select',
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
-            'service_stub' => 'Service Stub',
-            'tax_detail' => 'Tax Detail',
-            'topic_page' => 'Topic Page',
-            'begin_process' => 'Begin Process'
+            'service_stub' => 'Service stub',
+            'tax_detail' => 'Tax detail',
+            'topic_page' => 'Topic page',
+            'process_start' => 'Process start'
           )
         )
       ),
