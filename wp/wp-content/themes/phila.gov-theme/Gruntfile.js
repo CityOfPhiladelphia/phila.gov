@@ -6,11 +6,22 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          style: 'compressed'
+          sourceMap: true,
         },
         files: {
           'css/styles.css': 'css/scss/base.scss'
         }
+      }
+    },
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'css',
+          src: ['*.css', '!*.min.css', '!lt-ie-9.css'],
+          dest: 'css',
+          ext: '.min.css'
+        }]
       }
     },
     uglify: {
@@ -38,6 +49,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['sass', 'uglify']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'uglify']);
 };
