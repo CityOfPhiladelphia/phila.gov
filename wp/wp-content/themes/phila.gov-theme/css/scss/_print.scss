@@ -1,0 +1,48 @@
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+  body{
+    font-size: 12pt;
+    line-height: 1.3;
+  }
+  img{
+    max-width:250px !important;
+  }
+
+  footer #full-footer-start,
+  footer .fat,
+  .feedback,
+  .alert-persistent,
+  .secondary-nav,
+  .desktop-nav
+  .top-bar,
+  .see-all-right,
+  .site-search,
+  button,
+  .button,
+  nav
+  {
+    display:none !important;
+  }
+  //TODO: change in patterns
+  a:after {
+  content: " " !important;
+  }
+  div[style]{
+    height:auto;
+  }
+  /*
+    Taken from jotform css
+    For printing live forms
+  */
+  .form-section {
+      display: inline !important;
+  }
+  .form-pagebreak {
+      display: none !important;
+  }
+  .form-section-closed {
+      height: auto !important;
+  }
+}
