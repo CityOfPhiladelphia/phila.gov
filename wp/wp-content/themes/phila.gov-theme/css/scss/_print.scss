@@ -9,7 +9,16 @@
   img{
     max-width:250px !important;
   }
-
+  .logo img {
+    max-width:100% !important;
+  }
+  //disable sticky header
+  .sticky.is-stuck {
+    position: relative !important;
+  }
+  .sticky.is-anchored[style]{
+    top:0;
+  }
   footer #full-footer-start,
   footer .fat,
   .feedback,
@@ -21,7 +30,9 @@
   .site-search,
   button,
   .button,
-  nav
+  nav,
+  //if it is hidden for small screens, we probably want to hide it for print too
+  .show-for-medium
   {
     display:none !important;
   }
@@ -29,8 +40,14 @@
   a:after {
   content: " " !important;
   }
+  //remove equal height
   div[style]{
     height:auto;
+  }
+
+  .medium-8{
+    float:left;
+    width:33.3333%;
   }
   /*
     Taken from jotform css
@@ -44,5 +61,9 @@
   }
   .form-section-closed {
       height: auto !important;
+  }
+
+  .form-all .form-label{
+    margin:0;
   }
 }
