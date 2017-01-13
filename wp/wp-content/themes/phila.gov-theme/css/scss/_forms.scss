@@ -20,8 +20,8 @@
     padding: 0.85em 1em;
     margin: 0 0 1rem 0;
     font-size: .9rem;
-    background-color: #f99300;
-    color: #fff;
+    background-color: $bike-share-blue;
+    color: $dark-gray;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -294,8 +294,8 @@
     border-style: solid;
     border-width: 0;
     cursor: pointer;
-    background: #f99300;
-    border-color: #f99300;
+    background: $bike-share-blue;
+    border-color: $bike-share-blue;
     display: inline-block;
     text-align: center;
     line-height: 1;
@@ -390,11 +390,10 @@
       font-weight: bold;
     }
     .button{
-      color: #f9621a;
+      color: $bike-share-blue;
       background-color: rgba(0, 0, 0, 0);
       border-collapse: collapse;
       box-sizing: border-box;
-      color: rgb(249, 98, 26);
       cursor: auto;
       display: table-cell;
       font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
