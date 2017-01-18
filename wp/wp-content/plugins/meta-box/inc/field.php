@@ -19,16 +19,20 @@ abstract class RWMB_Field {
 	}
 
 	/**
-	 * ELocalize scripts
+	 * Localize scripts with prevention of loading localized data twice.
+	 *
+	 * @link https://github.com/rilwis/meta-box/issues/850
+	 *
+	 * @param string $handle Script handle.
+	 * @param string $name Object name.
+	 * @param mixed $data Localized data.
 	 */
 	public static function localize_script( $handle, $name, $data ) {
-		/**
-		 * Prevent loading localized string twice.
-		 *
-		 * @link https://github.com/rilwis/meta-box/issues/850
+		/*
+		 * Check with function_exists to make it work in WordPress 4.1
+		 * @link https://github.com/rilwis/meta-box/issues/1009
 		 */
-		$wp_scripts = wp_scripts();
-		if ( ! $wp_scripts->get_data( $handle, 'data' ) ) {
+		if ( ! function_exists( 'wp_scripts' ) || ! wp_scripts()->get_data( $handle, 'data' ) ) {
 			wp_localize_script( $handle, $name, $data );
 		}
 	}
@@ -390,7 +394,7 @@ abstract class RWMB_Field {
 		}
 
 		// Get raw meta value in the database, no escape
-		$value  = RWMB_Field::call( $field, 'raw_meta', $post_id );
+		$value  = self::call( $field, 'raw_meta', $post_id );
 
 		// Make sure meta value is an array for cloneable and multiple fields
 		if ( $field['clone'] || $field['multiple'] ) {
@@ -478,19 +482,33 @@ abstract class RWMB_Field {
 	}
 
 	/**
+	 * Map types
+	 *
+	 * @param array $field Field array
+	 * @return string Field mapped type
+	 */
+	public static function map_types( $field ) {
+		$type = isset( $field['type'] ) ? $field['type'] : 'input';
+		$type_map = apply_filters(
+			'rwmb_type_map',
+			array(
+				'file_advanced'  => 'media',
+				'plupload_image' => 'image_upload',
+				'url'            => 'text'
+			)
+		);
+
+		return isset( $type_map[ $type ] ) ? $type_map[ $type ] : $type;
+	}
+
+	/**
 	 * Get field class name
 	 *
 	 * @param array $field Field array
 	 * @return string Field class name
 	 */
 	public static function get_class_name( $field ) {
-		$type = $field['type'];
-		if ( 'file_advanced' == $field['type'] ) {
-			$type = 'media';
-		}
-		if ( 'plupload_image' == $field['type'] ) {
-			$type = 'image_upload';
-		}
+		$type = self::map_types( $field );
 		$type  = str_replace( array( '-', '_' ), ' ', $type );
 		$class = 'RWMB_' . ucwords( $type ) . '_Field';
 		$class = str_replace( ' ', '_', $class );
