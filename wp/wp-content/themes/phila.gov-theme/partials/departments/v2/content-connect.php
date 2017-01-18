@@ -60,7 +60,7 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
     </div>
   </div>
-
+  <?php if ( ( !$connect_vars['phone'] == '' ) || (!$connect_vars['fax'] == '' ) ) : ?>
   <div class="row collapse equal-height inside-border-group">
     <div class="small-5 columns equal center inside-border-group-item">
       <div class="valign">
@@ -72,11 +72,9 @@ $connect_vars = phila_connect_panel($connect_panel);
     <div class="small-19 columns equal inside-border-group-item">
       <div class="valign">
         <div class="valign-cell phm pvl">
-          <?php if ( !$connect_vars['phone'] == '') : ?>
             <div class="tel">
               <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $connect_vars['phone']); ?>" class="value"><?php echo $connect_vars['phone']; ?></a>
             </div>
-          <?php endif; ?>
           <?php if ( !$connect_vars['fax'] == '') : ?>
             <div class="fax">
               <span class="type">Fax: </span><span class="value"><?php echo $connect_vars['fax']; ?></span>
@@ -86,6 +84,7 @@ $connect_vars = phila_connect_panel($connect_panel);
       </div>
     </div>
   </div>
+<?php endif; ?>
 
   <div class="row collapse equal-height inside-border-group">
     <div class="small-5 columns equal center inside-border-group-item">
