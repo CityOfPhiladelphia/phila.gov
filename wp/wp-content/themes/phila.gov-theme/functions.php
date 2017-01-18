@@ -1707,6 +1707,9 @@ function phila_connect_panel($connect_panel) {
 
       );
 
+      $output_array['see_all'] =
+        isset( $connect_panel['phila_connect_general']['connect_see_all'] ) ? $connect_panel['phila_connect_general']['connect_see_all'] :'';
+
   }
 
   if (array_key_exists( 'social' , $output_array )){
