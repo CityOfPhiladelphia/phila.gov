@@ -758,6 +758,8 @@ function phila_register_meta_boxes( $meta_boxes ){
                   'type' => 'email',
                   'desc' => 'example@phila.gov',
                 ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link', 'connect_see_all'),
+
               ),
             ),
           ),
