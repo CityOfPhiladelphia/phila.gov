@@ -456,7 +456,7 @@ function phila_register_meta_boxes( $meta_boxes ){
  // First row of modules - recent posts, custom markup, call to action panel
  $meta_boxes[] = array(
    'id'       => 'phila_module_row_1',
-   'title'    => 'Row 1',
+   'title'    => 'Two-thirds row',
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'default',
@@ -770,7 +770,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 // Second row of modules - press release and/or calendar
 $meta_boxes[] = array(
   'id'       => 'phila_module_row_2',
-  'title'    => 'Row 2',
+  'title'    => 'Full row',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'default',
