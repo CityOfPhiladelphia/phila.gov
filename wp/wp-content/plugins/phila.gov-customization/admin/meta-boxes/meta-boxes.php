@@ -926,17 +926,22 @@ $meta_boxes[] = array(
     'priority' => 'low',
 
     'include' => array(
-      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+      'user_role'  => array(
+        'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'phila_template_select', '=', 'one_page_department',
+      'when' => array(
+        array( 'phila_template_select', '=', 'one_page_department' ),
+        array( 'phila_template_select', '=', 'homepage_v2'),
+      ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
       array(
         'name' => '',
         'id'   => 'phila_staff_directory_selected',
-        'desc'  => 'Include a staff directory section?',
+        'desc'  => 'Include a staff directory list?',
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
       ),
