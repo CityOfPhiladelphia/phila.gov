@@ -107,23 +107,22 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'title' => 'Survey information',
+    'title' => 'Full-width call to action',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
 
     'fields' => array(
       array(
-        'id'       => 'phila_v2_survey',
-        'title'    => 'Survey',
+        'id'       => 'phila_v2_cta_full',
         'context'  => 'normal',
         'priority' => 'default',
         'type'  => 'group',
         'clone' => false,
 
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'survey_title', '50 character maximum.' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'survey_description', '140 character maximum.' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'survey_link'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'cta_full_title', '50 character maximum.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'cta_full_description', '140 character maximum.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'cta_full_link'),
         ),
       ),
     ),
