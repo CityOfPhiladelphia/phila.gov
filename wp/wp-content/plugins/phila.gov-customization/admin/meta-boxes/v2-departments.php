@@ -120,9 +120,14 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'clone' => false,
 
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Title', 'cta_full_title', '50 character maximum.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Title', 'cta_full_title', '50 character maximum.' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'cta_full_description', '140 character maximum.' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'cta_full_link'),
+          array(
+            'id' => 'cta_is_survey',
+            'desc'  => 'Is this a link to a survey or other form of feedback gathering?',
+            'type'  => 'checkbox',
+          ),
         ),
       ),
     ),
