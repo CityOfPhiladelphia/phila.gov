@@ -975,16 +975,20 @@ $meta_boxes[] = array(
 
   $meta_boxes[] = array(
     'id'  => 'phila_call_to_action_multi',
-    'title' => 'Call to action links',
+    'title' => 'Call to action cards',
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority'  => 'low',
 
     'include' => array(
-      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'phila_template_select', '=', 'one_page_department',
+      'when' => array(
+        array( 'phila_template_select', '=', 'one_page_department'),
+        array( 'phila_template_select', '=', 'homepage_v2'),
+      ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
