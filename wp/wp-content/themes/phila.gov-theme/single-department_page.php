@@ -39,13 +39,14 @@ get_header(); ?>
 
     $parent = get_post( $id );
     if ( phila_util_is_v2_template() ) : ?>
-    <?php $bg_img = phila_get_hero_header_v2( $parent->ID )?>
+    <?php $bg_img = phila_get_hero_header_v2( $parent->ID ); ?>
+    <?php $bg_img_mobile = phila_get_hero_header_v2( $parent->ID, true ); ?>
+
       <?php //TODO: unify desktop and mobile headers ?>
       <div class="hero-content" style="background-image:url(<?php echo $bg_img?>) ">
       <?php if ($user_selected_template == 'homepage_v2') : ?>
-        <img class="show-for-small-only" src="<?php echo $bg_img?>" alt="">
+        <img class="show-for-small-only" src="<?php echo $bg_img_mobile?>" alt="">
       <?php endif; ?>
-
         <div class="hero-wrap">
         <?php // TODO: Determine whether or not we need photo credits ?>
           <!-- <div class="photo-credit small-text">
