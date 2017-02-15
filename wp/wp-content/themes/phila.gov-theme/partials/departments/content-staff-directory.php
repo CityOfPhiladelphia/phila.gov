@@ -65,6 +65,10 @@ if (has_category()):
             $staff_social_output .= '<a href="' . $staff_social['phila_staff_instagram'] . '" class="social-link"  data-analytics="social"><i class="fa fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
           endif;
 
+          if ( isset( $staff_social['phila_staff_linkedin'] ) ):
+            $staff_social_output .= '<a href="' . $staff_social['phila_staff_linkedin'] . '" class="social-link"  data-analytics="social"><i class="fa fa-linkedin fa-lg" title="LinkedIn" aria-hidden="true"></i><span class="show-for-sr">LinkedIn</span></a>';
+          endif;
+
         endif;
 
 
