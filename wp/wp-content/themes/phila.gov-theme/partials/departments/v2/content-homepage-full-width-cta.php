@@ -12,7 +12,7 @@
 ?>
 <?php if ( !empty( $link ) ) :?>
   <div class="row mvxl">
-    <div class="columns panel <?php echo isset($cta_survey ) ? 'survey' : '' ?>">
+    <div class="columns panel <?php echo (!empty( $link['is_survey'] ) ) ? 'survey' : '' ?>">
       <div class="row equal-height">
         <div class="small-24 medium-18 columns valign equal">
           <div class="valign-cell">
@@ -27,16 +27,18 @@
         <?php if ( !empty( $link['url'] ) ) : ?>
         <div class="small-24 medium-6 columns valign equal center">
           <div class="valign-cell">
-            <a href="<?php echo $link['url'] ?>" class="button clearfix">
+            <a href="<?php echo $link['url'] ?>" class="button <?php echo ( !empty($link['external']) ) ? 'icon ' : '';?>full-width clearfix">
               <?php if ( !empty( $link['link_text'] ) ) :?>
-                <div class="valign">
-                  <div class="button-label valign-cell center"><?php echo $link['link_text']?>
-                    <?php if ( $link['external'] == 1 ) :?>
-                      <i class="fa fa-external-link" aria-hidden="true"></i> <span class="accessible"> External link</span>
-                    <?php endif;?>
+              <div class="valign">
+                <?php if ( $link['external'] == 1 ) :?>
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                  <span class="accessible">External link</span>
+                  <?php endif; ?>
+                  <div class="button-label valign-cell">
+                    <?php echo $link['link_text']?>
                   </div>
                 </div>
-              <?php endif;?>
+              <?php endif; ?>
             </a>
           </div>
         </div>
