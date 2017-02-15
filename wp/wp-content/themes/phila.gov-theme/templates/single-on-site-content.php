@@ -135,7 +135,7 @@
   <?php else: ?>
 
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-survey');?>
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
     <?php if ( $staff_directory_listing ): ?>
