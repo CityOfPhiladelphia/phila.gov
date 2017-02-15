@@ -3,9 +3,15 @@
   margin-top:0;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
 
+  @media screen and (max-width: 39.9375em) {
+    //important to override inline style
+    background-image:none !important;
+  }
+
   @media only screen and (min-width: 40em) {
     background-size: cover;
     background-repeat: no-repeat;
+    background-image: inherit;
   }
   .text-overlay{
     h1 {

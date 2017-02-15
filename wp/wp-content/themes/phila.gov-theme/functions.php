@@ -1549,18 +1549,19 @@ function phila_tax_payment_info( $payment_info ){
   return $output;
 }
 
-function phila_survey_display( $survey ){
+function phila_cta_full_display( $cta_full ){
   $output = array();
 
-  if ( !empty($survey) ) {
-    foreach ( $survey as $k ){
+  if ( !empty($cta_full) ) {
+    foreach ( $cta_full as $k ){
 
-      $output['title'] = isset($survey['survey_title'] ) ? $survey['survey_title'] : '';
-      $output['description'] = isset($survey['survey_description'] ) ? $survey['survey_description'] : '';
-      $output['link'] = isset($survey['survey_link'] ) ? $survey['survey_link'] : '';
-      $output['link_text'] = isset($survey['survey_link']['link_text'] ) ? $survey['survey_link']['link_text'] : '';
-      $output['url'] = isset($survey['survey_link']['link_url'] ) ? $survey['survey_link']['link_url'] : '';
-      $output['external'] = isset($survey['survey_link']['is_external'] ) ? $survey['survey_link']['is_external'] : '';
+      $output['title'] = isset($cta_full['cta_full_title'] ) ? $cta_full['cta_full_title'] : '';
+      $output['description'] = isset($cta_full['cta_full_description'] ) ? $cta_full['cta_full_description'] : '';
+      $output['link'] = isset($cta_full['cta_full_link'] ) ? $cta_full['cta_full_link'] : '';
+      $output['link_text'] = isset($cta_full['cta_full_link']['link_text'] ) ? $cta_full['cta_full_link']['link_text'] : '';
+      $output['url'] = isset($cta_full['cta_full_link']['link_url'] ) ? $cta_full['cta_full_link']['link_url'] : '';
+      $output['external'] = isset($cta_full['cta_full_link']['is_external'] ) ? $cta_full['cta_full_link']['is_external'] : '';
+      $output['is_survey'] = isset($cta_survey['cta_is_survey'] ) ? $cta_survey['cta_is_survey'] : '';
 
     }
   }
@@ -1743,10 +1744,16 @@ function phila_return_ordinal($num){
   return 'th';
 }
 
-function phila_get_hero_header_v2( $post ){
-  $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
-    'size'=>'full'
-  ), $post );
+function phila_get_hero_header_v2( $post, $mobile = false ){
+  if ( $mobile ) {
+    $img = rwmb_meta( 'phila_v2_homepage_hero_mobile', $args = array(
+      'size'=>'full'
+    ), $post );
+  }else{
+    $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
+      'size'=>'full'
+    ), $post );
+  }
 
   $output = array();
 
@@ -1757,8 +1764,8 @@ function phila_get_hero_header_v2( $post ){
     }
     return $output;
   }
-
 }
+
 /* Use in the loop to get an array of current category IDs */
 function phila_util_cat_ids(){
   $categories = get_the_category();

@@ -135,6 +135,12 @@ class Phila_Gov_Staff_Directory {
              'type' => 'url',
              'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
             ),
+            array(
+             'name' => 'LinkedIn URL',
+             'id'   => $prefix . 'staff_linkedin',
+             'type' => 'url',
+             'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia'
+            ),
           ),
         ),
         array(

@@ -32,6 +32,7 @@
       margin-top: $spacing-medium;
       margin-bottom: $spacing-medium;
 
+
       .name,
       .job-title,
       .tel,
@@ -40,6 +41,9 @@
       }
       .social {
         a {
+          padding-left: .5rem;
+          padding-right: .5rem;
+          
           &:first-of-type{
             padding-left: 0;
           }
