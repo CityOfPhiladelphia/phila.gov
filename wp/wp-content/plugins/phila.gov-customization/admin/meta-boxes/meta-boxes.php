@@ -456,7 +456,7 @@ function phila_register_meta_boxes( $meta_boxes ){
  // First row of modules - recent posts, custom markup, call to action panel
  $meta_boxes[] = array(
    'id'       => 'phila_module_row_1',
-   'title'    => 'Row 1',
+   'title'    => 'Two-thirds row',
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'default',
@@ -770,7 +770,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 // Second row of modules - press release and/or calendar
 $meta_boxes[] = array(
   'id'       => 'phila_module_row_2',
-  'title'    => 'Row 2',
+  'title'    => 'Full row',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'default',
@@ -926,17 +926,22 @@ $meta_boxes[] = array(
     'priority' => 'low',
 
     'include' => array(
-      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+      'user_role'  => array(
+        'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'phila_template_select', '=', 'one_page_department',
+      'when' => array(
+        array( 'phila_template_select', '=', 'one_page_department' ),
+        array( 'phila_template_select', '=', 'homepage_v2'),
+      ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
       array(
         'name' => '',
         'id'   => 'phila_staff_directory_selected',
-        'desc'  => 'Include a staff directory section?',
+        'desc'  => 'Include a staff directory list?',
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
       ),
@@ -970,16 +975,20 @@ $meta_boxes[] = array(
 
   $meta_boxes[] = array(
     'id'  => 'phila_call_to_action_multi',
-    'title' => 'Call to action links',
+    'title' => 'Call to action cards',
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority'  => 'low',
 
     'include' => array(
-      'user_role'  => array( 'administrator', 'primary_department_homepage_editor' ),
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'phila_template_select', '=', 'one_page_department',
+      'when' => array(
+        array( 'phila_template_select', '=', 'one_page_department'),
+        array( 'phila_template_select', '=', 'homepage_v2'),
+      ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
