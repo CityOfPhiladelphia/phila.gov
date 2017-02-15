@@ -15,23 +15,42 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     'fields' => array(
       array(
         'type' => 'heading',
-        'name'  => 'Hero image'
+        'name'  => 'Hero image',
+        'columns' => '4'
+      ),
+      array(
+        'type' => 'heading',
+        'name'  => 'Hero image for mobile',
+        'columns' => '4'
+      ),
+      array(
+        'type' => 'heading',
+        'name'  => 'Department logo',
+        'columns' => '4'
       ),
       array(
         'id' => 'phila_v2_homepage_hero',
         'title' => 'Select image',
         'type' => 'image_advanced',
+        'desc'  => 'Required. Image must be 1110px wide & 315px tall.',
         'max_file_uploads' => 1,
+        'columns' => '4'
       ),
       array(
-        'type' => 'heading',
-        'name'  => 'Department logo'
+        'id' => 'phila_v2_homepage_hero_mobile',
+        'title' => 'Select image',
+        'type' => 'image_advanced',
+        'desc'  => 'Required. Image must be 800px wide & 227px tall.',
+        'max_file_uploads' => 1,
+        'columns' => '4'
       ),
       array(
         'id'  => 'phila_v2_department_logo',
         'title' => 'Department logo',
         'type'  => 'image_advanced',
+        'desc'  => 'Optional. Image must be at least 600px wide.',
         'max_file_uploads' => 1,
+        'columns' => '4'
       ),
     ),
   );
