@@ -14,7 +14,7 @@ if (has_category()):
   $category_id = $categories[0]->cat_ID;
   $staff_leadership_array = array();
   // The Staff Directory Loop
-  $args = array ( 'orderby' => 'title', 'order' => 'ASC', 'post_type' => 'staff_directory', 'cat' => $category_id );
+  $args = array ( 'orderby' => 'title', 'order' => 'ASC', 'post_type' => 'staff_directory', 'cat' => $category_id, 'posts_per_page' => -1 );
   $staff_member_loop = new WP_Query( $args );
 
   if ( $staff_member_loop->have_posts() ):
@@ -121,9 +121,10 @@ if (has_category()):
 
         endif;
 
-        if ( key_exists( $staff_display_order, $staff_leadership_array ) ):
+        if ( key_exists( $staff_display_order, $staff_leadership_array ) ) :
           ++$staff_display_order;
         endif;
+        var_dump($staff_display_order);
 
         $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
 
