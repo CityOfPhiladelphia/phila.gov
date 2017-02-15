@@ -1744,10 +1744,16 @@ function phila_return_ordinal($num){
   return 'th';
 }
 
-function phila_get_hero_header_v2( $post ){
-  $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
-    'size'=>'full'
-  ), $post );
+function phila_get_hero_header_v2( $post, $mobile = false ){
+  if ( $mobile ) {
+    $img = rwmb_meta( 'phila_v2_homepage_hero_mobile', $args = array(
+      'size'=>'full'
+    ), $post );
+  }else{
+    $img = rwmb_meta( 'phila_v2_homepage_hero', $args = array(
+      'size'=>'full'
+    ), $post );
+  }
 
   $output = array();
 
@@ -1758,8 +1764,8 @@ function phila_get_hero_header_v2( $post ){
     }
     return $output;
   }
-
 }
+
 /* Use in the loop to get an array of current category IDs */
 function phila_util_cat_ids(){
   $categories = get_the_category();
