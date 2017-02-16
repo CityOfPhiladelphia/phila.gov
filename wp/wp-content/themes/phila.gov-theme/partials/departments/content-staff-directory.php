@@ -9,9 +9,18 @@
 
 $user_selected_template = phila_get_selected_template();
 
-if (has_category()):
+$category_override = rwmb_meta('phila_staff_category');
+
+
+if( has_category() ):
+
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
+
+  if (isset( $category_override ) ) :
+    $category_id = $category_override->term_id;
+  endif;
+
   $staff_leadership_array = array();
   // The Staff Directory Loop
   $args = array ( 'orderby' => 'title', 'order' => 'ASC', 'post_type' => 'staff_directory', 'cat' => $category_id, 'posts_per_page' => -1 );
