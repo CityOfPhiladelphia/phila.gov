@@ -124,7 +124,6 @@ if (has_category()):
         if ( key_exists( $staff_display_order, $staff_leadership_array ) ) :
           ++$staff_display_order;
         endif;
-        var_dump($staff_display_order);
 
         $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
 
