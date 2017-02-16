@@ -177,8 +177,11 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     'visible' => array( 'phila_template_select', 'staff_directory_v2' ),
 
     'fields' => array(
-      Phila_Gov_Standard_Metaboxes::phila_metabox_category_single_select('Get staff in this category only (overrides page Category selection)', 'phila_staff_category')
-    ),
+      'name' => 'Get staff in this category only -- overrides page Category selection',
+      'id' => 'phila_staff_category',
+      'type' => 'taxonomy_advanced',
+      'taxonomy' => 'category',
+    )
   );
 
 
