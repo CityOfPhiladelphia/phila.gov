@@ -177,10 +177,11 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     'visible' => array( 'phila_template_select', 'staff_directory_v2' ),
 
     'fields' => array(
-      'name' => 'Get staff in this category only -- overrides page Category selection',
-      'id' => 'phila_staff_category',
-      'type' => 'taxonomy_advanced',
-      'taxonomy' => 'category',
+      array(
+        'id' => 'phila_staff_category',
+        'name' => 'Get staff in this category only -- overrides page Category selection',
+        'type' => 'text',
+      )
     )
   );
 
