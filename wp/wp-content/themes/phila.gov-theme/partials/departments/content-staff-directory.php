@@ -11,14 +11,13 @@ $user_selected_template = phila_get_selected_template();
 
 $category_override = rwmb_meta('phila_staff_category');
 
-
-if( has_category() ):
+if ( has_category() ):
 
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
 
-  if (isset( $category_override ) ) :
-    $category_id = $category_override->term_id;
+  if ( !empty( $category_override ) ) :
+    $category_id = $category_override;
   endif;
 
   $staff_leadership_array = array();
