@@ -471,7 +471,6 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
   public static function phila_metabox_post_picker( $name, $id, $post_type ){
-
     return array(
       'name' => $name,
       'id' => $id,
@@ -484,7 +483,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     return array(
       'name' => $name,
       'id' => $id,
-      'type' => 'taxonomy',
+      'type' => 'taxonomy_advanced',
       'taxonomy' => 'category',
       'field_type'  => 'select',
     );
