@@ -479,4 +479,14 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'post_type' => $post_type,
     );
   }
+
+  public static function phila_metabox_category_single_select( $name, $id ){
+    return array(
+      'name' => $name,
+      'id' => $id,
+      'type' => 'taxonomy',
+      'taxonomy' => 'category',
+      'field_type'  => 'select',
+    );
+  }
 }
