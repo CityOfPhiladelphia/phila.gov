@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
       }
     });
 
-    $('#phila_module_row_1_col_1_texttitle').val('What We Do').prop( 'readOnly', true );
+    $('#phila_module_row_1_col_1_texttitle').val('What we do').prop( 'readOnly', true );
 
     $('#phila_module_row_1_col_1_textarea').rules('add', {
       maxlength: 850
