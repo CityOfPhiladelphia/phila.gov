@@ -17,6 +17,7 @@ $connect_vars = phila_connect_panel($connect_panel);
       <h2 class="contrast">Connect</h2>
     </div>
   </div>
+  <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
     <div class="row collapse equal-height inside-border-group">
       <div class="small-5 columns equal center inside-border-group-item">
         <div class="valign">
@@ -41,7 +42,7 @@ $connect_vars = phila_connect_panel($connect_panel);
         </div>
       </div>
     </div>
-
+  <?php endif; ?>
   <?php if ( !$connect_vars['email'] == '') : ?>
     <div class="row collapse equal-height inside-border-group">
       <div class="small-5 columns equal center inside-border-group-item">
