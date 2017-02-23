@@ -14,7 +14,7 @@
   <div class="row mvxl">
     <div class="columns panel <?php echo (!empty( $link['is_survey'] ) ) ? 'survey' : '' ?>">
       <div class="row equal-height">
-        <div class="small-24 medium-18 columns valign equal">
+        <div class="small-24 medium-17 columns valign equal">
           <div class="valign-cell">
             <?php if ( !empty( $link['title'] ) ) : ?>
               <h3><?php echo $link['title'] ?></h3>
@@ -25,9 +25,9 @@
           </div>
         </div>
         <?php if ( !empty( $link['url'] ) ) : ?>
-        <div class="small-24 medium-6 columns valign equal center">
+        <div class="small-24 medium-7 columns valign equal center">
           <div class="valign-cell">
-            <a href="<?php echo $link['url'] ?>" class="button <?php echo ( !empty($link['external']) ) ? 'icon ' : '';?>full-width clearfix">
+            <a href="<?php echo $link['url'] ?>" class="button <?php echo ( !empty($link['external']) ) ? 'icon ' : '';?> clearfix float-right">
               <?php if ( !empty( $link['link_text'] ) ) :?>
               <div class="valign">
                 <?php if ( $link['external'] == 1 ) :?>

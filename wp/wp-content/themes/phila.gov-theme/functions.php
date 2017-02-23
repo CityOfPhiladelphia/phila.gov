@@ -1561,7 +1561,7 @@ function phila_cta_full_display( $cta_full ){
       $output['link_text'] = isset($cta_full['cta_full_link']['link_text'] ) ? $cta_full['cta_full_link']['link_text'] : '';
       $output['url'] = isset($cta_full['cta_full_link']['link_url'] ) ? $cta_full['cta_full_link']['link_url'] : '';
       $output['external'] = isset($cta_full['cta_full_link']['is_external'] ) ? $cta_full['cta_full_link']['is_external'] : '';
-      $output['is_survey'] = isset($cta_survey['cta_is_survey'] ) ? $cta_survey['cta_is_survey'] : '';
+      $output['is_survey'] = isset($cta_full['cta_is_survey'] ) ? $cta_full['cta_is_survey'] : '';
 
     }
   }

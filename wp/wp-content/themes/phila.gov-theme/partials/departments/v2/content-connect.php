@@ -17,6 +17,7 @@ $connect_vars = phila_connect_panel($connect_panel);
       <h2 class="contrast">Connect</h2>
     </div>
   </div>
+  <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
     <div class="row collapse equal-height inside-border-group">
       <div class="small-5 columns equal center inside-border-group-item">
         <div class="valign">
@@ -41,25 +42,26 @@ $connect_vars = phila_connect_panel($connect_panel);
         </div>
       </div>
     </div>
-
-  <div class="row collapse equal-height inside-border-group">
-    <div class="small-5 columns equal center inside-border-group-item">
-      <div class="valign">
-        <div class="valign-cell">
-          <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+  <?php endif; ?>
+  <?php if ( !$connect_vars['email'] == '') : ?>
+    <div class="row collapse equal-height inside-border-group">
+      <div class="small-5 columns equal center inside-border-group-item">
+        <div class="valign">
+          <div class="valign-cell">
+            <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
+      <div class="small-19 columns equal inside-border-group-item">
+        <div class="valign">
+          <div class="email valign-cell phm pvl">
+            <span class="type accessible">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>" class="value"><?php echo $connect_vars['email']; ?></a>
+          </div>
+      </div>
+      </div>
     </div>
-    <div class="small-19 columns equal inside-border-group-item">
-      <div class="valign">
-        <?php if ( !$connect_vars['email'] == '') : ?>
-        <div class="email valign-cell phm pvl">
-          <span class="type accessible">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>" class="value"><?php echo $connect_vars['email']; ?></a>
-        </div>
-      <?php endif; ?>
-    </div>
-    </div>
-  </div>
+  <?php endif; ?>
+
   <?php if ( ( !$connect_vars['phone'] == '' ) || (!$connect_vars['fax'] == '' ) ) : ?>
   <div class="row collapse equal-height inside-border-group">
     <div class="small-5 columns equal center inside-border-group-item">
@@ -85,7 +87,7 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
   </div>
 <?php endif; ?>
-
+<?php if ( ! empty( $connect_vars['social'] ) ) :?>
   <div class="row collapse equal-height inside-border-group">
     <div class="small-5 columns equal center inside-border-group-item">
       <div class="valign">
@@ -145,3 +147,4 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
   <?php endif; ?>
 </div>
+<?php endif; ?>
