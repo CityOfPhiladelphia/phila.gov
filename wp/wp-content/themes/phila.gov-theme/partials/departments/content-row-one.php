@@ -119,7 +119,7 @@ if ( !empty( $row_one_col_two_module ) ){
     <div class="large-18 columns">
       <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
       <div>
-        <?php echo($row_one_col_one_textarea); ?>
+        <?php echo apply_filters( 'the_content', $row_one_col_one_textarea ); ?>
       </div>
       <?php if ( $row_one_col_one_textarea == '' ) :?>
         <div class="placeholder">
@@ -148,7 +148,7 @@ if ( !empty( $row_one_col_two_module ) ){
       <h2 class="contrast"><?php echo($row_one_col_two_text_title); ?></h2>
       <div class="panel no-margin">
         <div>
-          <?php echo($row_one_col_two_textarea); ?>
+          <?php  echo apply_filters( 'the_content', $row_one_col_two_textarea ); ?>
         </div>
       </div>
     </div>
