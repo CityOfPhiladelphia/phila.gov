@@ -52,6 +52,11 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'max_file_uploads' => 1,
         'columns' => '4'
       ),
+      array(
+        'type' => 'heading',
+        'name'  => 'Photo credit',
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_title('Name & organization', 'phila_v2_photo_credit', 'E.g.: N. Santos for VISIT PHILADELPHIA™', '60' ),
     ),
   );
 
