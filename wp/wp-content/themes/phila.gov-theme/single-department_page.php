@@ -57,7 +57,7 @@ get_header(); ?>
               <?php
               // TODO: Call title with $parent->post_title, regex match on 'Department of', 'Office of' to add line break. This can be refactored and should become a util if we intend to reuse
 
-              $target_phrases = array("Department of","Office of");
+              $target_phrases = array("Department of","Office of", "Office of the");
               $break_after_phrases = array('<span class="h3 break-after" style="line-height:1;">Department of</span>','<span class="h3 break-after" style="line-height:1;">Office of</span>');
               $new_title = str_replace($target_phrases,$break_after_phrases, $parent->post_title );
               echo  '<h1 style="line-height:1">' . $new_title . '</h1>';
