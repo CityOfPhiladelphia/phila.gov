@@ -49,7 +49,6 @@ get_header(); ?>
         <img class="show-for-small-only" src="<?php echo $bg_img_mobile?>" alt="">
       <?php endif; ?>
         <div class="hero-wrap">
-        <?php // TODO: Determine whether or not we need photo credits ?>
         <?php if (!empty($photo_credit) ): ?>
           <div class="photo-credit small-text">
             <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo $photo_credit ?></span>
