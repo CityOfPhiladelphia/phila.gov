@@ -432,13 +432,14 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
 
-  public static function phila_metabox_title( $name, $id, $desc = null ){
+  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'text',
       'class' => 'metabox-title',
-      'desc'  => $desc
+      'desc'  => $desc,
+      'size'  => $size,
     );
   }
 
