@@ -148,7 +148,7 @@ if ( !empty( $row_one_col_two_module ) ){
       <h2 class="contrast"><?php echo($row_one_col_two_text_title); ?></h2>
       <div class="panel no-margin">
         <div>
-          <?php  echo apply_filters( 'the_content', $row_one_col_two_textarea ); ?>
+          <?php echo $row_one_col_two_textarea; ?>
         </div>
       </div>
     </div>
