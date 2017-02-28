@@ -75,8 +75,10 @@ function addressSearch () {
   var queryEncoded = encodeURIComponent(query);
 
   if (addressRe.test(params.stq)) {
-    $.ajax('https://api.phila.gov/opa/v1.1/address/' + queryEncoded + '/?format=json',
-      {dataType: $.support.cors ? 'json' : 'jsonp'})
+    $.ajax('https://api.phila.gov/ais/v1/addresses/' + queryEncoded, {
+        dataType: $.support.cors ? 'json' : 'jsonp',
+        data: { gatekeeperKey: '1e4f98f7cb9f4c2ffeb9eb369cfb26bf' }
+      })
       .done(function (data) {
         if (data.total) {
           $propertyLink.prop('href', '/property/?a=' + queryEncoded + '&u=');
