@@ -77,7 +77,7 @@ function addressSearch () {
   if (addressRe.test(params.stq)) {
     $.ajax('https://api.phila.gov/ais/v1/addresses/' + queryEncoded, {
         dataType: $.support.cors ? 'json' : 'jsonp',
-        data: { gatekeeperKey: '1e4f98f7cb9f4c2ffeb9eb369cfb26bf' }
+        data: { gatekeeperKey: 'ad0050d3c6e40064546a18af371f7826' }
       })
       .done(function (data) {
         if (data.total) {
