@@ -1,14 +1,19 @@
 <?php
 /**
+ * The HTML5 range field.
+ *
+ * @package Meta Box
+ */
+
+/**
  * HTML5 range field class.
  */
 class RWMB_Range_Field extends RWMB_Number_Field {
-
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
 	public static function html( $meta, $field ) {
@@ -18,7 +23,7 @@ class RWMB_Range_Field extends RWMB_Number_Field {
 	}
 
 	/**
-	 * Enqueue styles
+	 * Enqueue styles.
 	 */
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'rwmb-range', RWMB_CSS_URL . 'range.css', array(), RWMB_VER );
@@ -28,7 +33,7 @@ class RWMB_Range_Field extends RWMB_Number_Field {
 	/**
 	 * Normalize parameters for field.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 * @return array
 	 */
 	public static function normalize( $field ) {
@@ -42,10 +47,10 @@ class RWMB_Range_Field extends RWMB_Number_Field {
 	/**
 	 * Ensure number in range.
 	 *
-	 * @param mixed $new
-	 * @param mixed $old
-	 * @param int   $post_id
-	 * @param array $field
+	 * @param mixed $new     The submitted meta value.
+	 * @param mixed $old     The existing meta value.
+	 * @param int   $post_id The post ID.
+	 * @param array $field   The field parameters.
 	 *
 	 * @return int
 	 */

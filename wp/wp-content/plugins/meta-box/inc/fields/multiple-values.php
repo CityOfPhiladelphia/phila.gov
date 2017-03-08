@@ -7,17 +7,22 @@
  * meta value. Briefly:
  * - If field is cloneable, value is saved as a single entry in the database
  * - Otherwise value is saved as multiple entries
+ *
+ * @package Meta Box
+ */
+
+/**
+ * Multiple values field class.
  */
 abstract class RWMB_Multiple_Values_Field extends RWMB_Field {
-
 	/**
-	 * Normalize parameters for field
+	 * Normalize parameters for field.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 *
 	 * @return array
 	 */
-	static function normalize( $field ) {
+	public static function normalize( $field ) {
 		$field               = parent::normalize( $field );
 		$field['multiple']   = true;
 		$field['field_name'] = $field['id'];
@@ -31,11 +36,11 @@ abstract class RWMB_Multiple_Values_Field extends RWMB_Field {
 	/**
 	 * Format a single value for the helper functions.
 	 *
-	 * @param array  $field Field parameter
-	 * @param string $value The value
+	 * @param array  $field Field parameters.
+	 * @param string $value The value.
 	 * @return string
 	 */
-	static function format_single_value( $field, $value ) {
+	public static function format_single_value( $field, $value ) {
 		return $field['options'][ $value ];
 	}
 }
