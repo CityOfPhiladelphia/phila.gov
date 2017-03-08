@@ -65,10 +65,9 @@ hashQuery();
 
 var addressRe = /\d+ \w+/;
 var $propertyLink = $('#property-link');
+
 function addressSearch () {
   // Also check OPA API for results if it looks like an address
-
-  $propertyLink.hide();
 
   var params = $.deparam(location.hash.substr(1));
   var query = params.stq;
