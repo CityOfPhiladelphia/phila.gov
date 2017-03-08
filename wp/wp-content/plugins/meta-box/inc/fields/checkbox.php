@@ -1,10 +1,14 @@
 <?php
+/**
+ * The checkbox field.
+ *
+ * @package Meta Box
+ */
 
 /**
  * Checkbox field class.
  */
 class RWMB_Checkbox_Field extends RWMB_Input_Field {
-
 	/**
 	 * Enqueue scripts and styles.
 	 */
@@ -13,10 +17,10 @@ class RWMB_Checkbox_Field extends RWMB_Input_Field {
 	}
 
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
 	public static function html( $meta, $field ) {
@@ -35,18 +39,28 @@ class RWMB_Checkbox_Field extends RWMB_Input_Field {
 	/**
 	 * Do not show field description.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
-	public static function element_description( $field ) {
+	public static function input_description( $field ) {
+		return '';
+	}
+
+	/**
+	 * Do not show field label description.
+	 *
+	 * @param array $field Field parameters.
+	 * @return string
+	 */
+	public static function label_description( $field ) {
 		return '';
 	}
 
 	/**
 	 * Format a single value for the helper functions.
 	 *
-	 * @param array  $field Field parameter
-	 * @param string $value The value
+	 * @param array  $field Field parameters.
+	 * @param string $value The value.
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value ) {

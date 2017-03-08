@@ -1,12 +1,16 @@
 <?php
-
 /**
  * Media field class which users WordPress media popup to upload and select files.
+ *
+ * @package Meta Box
+ */
+
+/**
+ * The media field class.
  */
 class RWMB_Media_Field extends RWMB_File_Field {
-
 	/**
-	 * Enqueue scripts and styles
+	 * Enqueue scripts and styles.
 	 */
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_media();
@@ -30,7 +34,7 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Add actions
+	 * Add actions.
 	 */
 	public static function add_actions() {
 		$args  = func_get_args();
@@ -39,35 +43,32 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 *
 	 * @return string
 	 */
 	public static function html( $meta, $field ) {
 		$meta       = (array) $meta;
 		$meta       = implode( ',', $meta );
-		$attributes = $load_test_attr = self::get_attributes( $field, $meta );
+		$attributes = self::get_attributes( $field, $meta );
 
 		$html = sprintf(
 			'<input %s>
-			<div class="rwmb-media-view" data-mime-type="%s" data-max-files="%s" data-force-delete="%s" data-show-status="%s"></div>',
+			<div class="rwmb-media-view" data-options="%s"></div>',
 			self::render_attributes( $attributes ),
-			$field['mime_type'],
-			$field['max_file_uploads'],
-			$field['force_delete'] ? 'true' : 'false',
-			$field['max_status']
+			esc_attr( wp_json_encode( $field['js_options'] ) )
 		);
 
 		return $html;
 	}
 
 	/**
-	 * Normalize parameters for field
+	 * Normalize parameters for field.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 *
 	 * @return array
 	 */
@@ -79,6 +80,14 @@ class RWMB_Media_Field extends RWMB_File_Field {
 			'max_file_uploads' => 0,
 			'force_delete'     => false,
 			'max_status'       => true,
+			'js_options'       => array(),
+		) );
+
+		$field['js_options'] = wp_parse_args( $field['js_options'], array(
+			'mimeType'    => $field['mime_type'],
+			'maxFiles'    => $field['max_file_uploads'],
+			'forceDelete' => $field['force_delete'] ? true : false,
+			'maxStatus'   => $field['max_status'],
 		) );
 
 		$field['multiple'] = true;
@@ -87,10 +96,10 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Get the attributes for a field
+	 * Get the attributes for a field.
 	 *
-	 * @param array $field
-	 * @param mixed $value
+	 * @param array $field Field parameters.
+	 * @param mixed $value Meta value.
 	 *
 	 * @return array
 	 */
@@ -121,20 +130,20 @@ class RWMB_Media_Field extends RWMB_File_Field {
 			if ( empty( $extensions[ $mime_parts[0] ] ) ) {
 				$extensions[ $mime_parts[0] ] = array();
 			}
-			$extensions[ $mime_parts[0] ] = $extensions[ $mime_parts[0] . '/*' ] = array_merge( $extensions[ $mime_parts[0] ], $ext );
-
+			$extensions[ $mime_parts[0] ]        = array_merge( $extensions[ $mime_parts[0] ], $ext );
+			$extensions[ $mime_parts[0] . '/*' ] = $extensions[ $mime_parts[0] ];
 		}
 
 		return $extensions;
 	}
 
 	/**
-	 * Get meta values to save
+	 * Get meta values to save.
 	 *
-	 * @param mixed $new
-	 * @param mixed $old
-	 * @param int   $post_id
-	 * @param array $field
+	 * @param mixed $new     The submitted meta value.
+	 * @param mixed $old     The existing meta value.
+	 * @param int   $post_id The post ID.
+	 * @param array $field   The field parameters.
 	 *
 	 * @return array|mixed
 	 */
@@ -144,12 +153,12 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Save meta value
+	 * Save meta value.
 	 *
-	 * @param $new
-	 * @param $old
-	 * @param $post_id
-	 * @param $field
+	 * @param mixed $new     The submitted meta value.
+	 * @param mixed $old     The existing meta value.
+	 * @param int   $post_id The post ID.
+	 * @param array $field   The field parameters.
 	 */
 	public static function save( $new, $old, $post_id, $field ) {
 		delete_post_meta( $post_id, $field['id'] );
@@ -157,7 +166,7 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Template for media item
+	 * Template for media item.
 	 */
 	public static function print_templates() {
 		require_once RWMB_INC_DIR . 'templates/media.php';

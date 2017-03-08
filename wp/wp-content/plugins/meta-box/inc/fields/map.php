@@ -1,15 +1,18 @@
 <?php
 /**
+ * The Google Maps field.
+ *
+ * @package Meta Box
+ */
+
+/**
  * Map field class.
  */
 class RWMB_Map_Field extends RWMB_Field {
-
 	/**
-	 * Enqueue scripts and styles
-	 *
-	 * @return void
+	 * Enqueue scripts and styles.
 	 */
-	static function admin_enqueue_scripts() {
+	public static function admin_enqueue_scripts() {
 		/**
 		 * Since June 2016, Google Maps requires a valid API key.
 		 *
@@ -32,14 +35,14 @@ class RWMB_Map_Field extends RWMB_Field {
 	}
 
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 *
 	 * @return string
 	 */
-	static function html( $meta, $field ) {
+	public static function html( $meta, $field ) {
 		$html = '<div class="rwmb-map-field">';
 
 		$html .= sprintf(
@@ -50,7 +53,8 @@ class RWMB_Map_Field extends RWMB_Field {
 			esc_attr( $meta )
 		);
 
-		if ( $address = $field['address_field'] ) {
+		$address = $field['address_field'];
+		if ( $address ) {
 			$html .= sprintf(
 				'<button class="button rwmb-map-goto-address-button" value="%s">%s</button>',
 				is_array( $address ) ? implode( ',', $address ) : $address,
@@ -64,13 +68,13 @@ class RWMB_Map_Field extends RWMB_Field {
 	}
 
 	/**
-	 * Normalize parameters for field
+	 * Normalize parameters for field.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 *
 	 * @return array
 	 */
-	static function normalize( $field ) {
+	public static function normalize( $field ) {
 		$field = parent::normalize( $field );
 		$field = wp_parse_args( $field, array(
 			'std'           => '',
@@ -85,33 +89,33 @@ class RWMB_Map_Field extends RWMB_Field {
 	}
 
 	/**
-	 * Get the field value
+	 * Get the field value.
 	 * The difference between this function and 'meta' function is 'meta' function always returns the escaped value
-	 * of the field saved in the database, while this function returns more meaningful value of the field
+	 * of the field saved in the database, while this function returns more meaningful value of the field.
 	 *
-	 * @param  array    $field   Field parameters
-	 * @param  array    $args    Not used for this field
+	 * @param  array    $field   Field parameters.
+	 * @param  array    $args    Not used for this field.
 	 * @param  int|null $post_id Post ID. null for current post. Optional.
 	 *
 	 * @return mixed Array(latitude, longitude, zoom)
 	 */
-	static function get_value( $field, $args = array(), $post_id = null ) {
+	public static function get_value( $field, $args = array(), $post_id = null ) {
 		$value = parent::get_value( $field, $args, $post_id );
 		list( $latitude, $longitude, $zoom ) = explode( ',', $value . ',,' );
 		return compact( 'latitude', 'longitude', 'zoom' );
 	}
 
 	/**
-	 * Output the field value
-	 * Display Google maps
+	 * Output the field value.
+	 * Display Google maps.
 	 *
-	 * @param  array    $field   Field parameters
+	 * @param  array    $field   Field parameters.
 	 * @param  array    $args    Additional arguments. Not used for these fields.
 	 * @param  int|null $post_id Post ID. null for current post. Optional.
 	 *
 	 * @return mixed Field value
 	 */
-	static function the_value( $field, $args = array(), $post_id = null ) {
+	public static function the_value( $field, $args = array(), $post_id = null ) {
 		$value = self::get_value( $field, $args, $post_id );
 		if ( ! $value['latitude'] || ! $value['longitude'] ) {
 			return '';
@@ -126,8 +130,8 @@ class RWMB_Map_Field extends RWMB_Field {
 			'width'        => '100%',
 			'height'       => '480px',
 			'marker'       => true, // Display marker?
-			'marker_title' => '', // Marker title, when hover
-			'info_window'  => '', // Content of info window (when click on marker). HTML allowed
+			'marker_title' => '', // Marker title, when hover.
+			'info_window'  => '', // Content of info window (when click on marker). HTML allowed.
 			'js_options'   => array(),
 
 			// Default API key, required by Google Maps since June 2016.
@@ -136,9 +140,9 @@ class RWMB_Map_Field extends RWMB_Field {
 		) );
 
 		/*
-		 * Enqueue scripts
-		 * API key is get from $field (if found by RWMB_Helper::find_field()) or $args as a fallback
-		 * Note: We still can enqueue script which outputs in the footer
+		 * Enqueue scripts.
+		 * API key is get from $field (if found by RWMB_Helper::find_field()) or $args as a fallback.
+		 * Note: We still can enqueue script which outputs in the footer.
 		 */
 		$api_key = isset( $field['api_key'] ) ? $field['api_key'] : $args['api_key'];
 		$google_maps_url = add_query_arg( 'key', $api_key, 'https://maps.google.com/maps/api/js' );
@@ -152,16 +156,16 @@ class RWMB_Map_Field extends RWMB_Field {
 		wp_enqueue_script( 'rwmb-map-frontend', RWMB_JS_URL . 'map-frontend.js', array( 'google-maps' ), '', true );
 
 		/*
-		 * Google Maps options
-		 * Option name is the same as specified in Google Maps documentation
-		 * This array will be convert to Javascript Object and pass as map options
+		 * Google Maps options.
+		 * Option name is the same as specified in Google Maps documentation.
+		 * This array will be convert to Javascript Object and pass as map options.
 		 * @link https://developers.google.com/maps/documentation/javascript/reference
 		 */
 		$args['js_options'] = wp_parse_args( $args['js_options'], array(
-			// Default to 'zoom' level set in admin, but can be overwritten
+			// Default to 'zoom' level set in admin, but can be overwritten.
 			'zoom'      => $value['zoom'],
 
-			// Map type, see https://developers.google.com/maps/documentation/javascript/reference#MapTypeId
+			// Map type, see https://developers.google.com/maps/documentation/javascript/reference#MapTypeId.
 			'mapTypeId' => 'ROADMAP',
 		) );
 

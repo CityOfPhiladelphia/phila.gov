@@ -1,25 +1,29 @@
 <?php
+/**
+ * The key-value field which allows users to add pairs of keys and values.
+ *
+ * @package Meta Box
+ */
 
 /**
  * Key-value field class.
  */
-abstract class RWMB_Key_Value_Field extends RWMB_Text_Field {
-
+class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
-	static function html( $meta, $field ) {
-		// Key
+	public static function html( $meta, $field ) {
+		// Key.
 		$key                       = isset( $meta[0] ) ? $meta[0] : '';
 		$attributes                = self::get_attributes( $field, $key );
 		$attributes['placeholder'] = $field['placeholder']['key'];
 		$html                      = sprintf( '<input %s>', self::render_attributes( $attributes ) );
 
-		// Value
+		// Value.
 		$val                       = isset( $meta[1] ) ? $meta[1] : '';
 		$attributes                = self::get_attributes( $field, $val );
 		$attributes['placeholder'] = $field['placeholder']['value'];
@@ -29,13 +33,13 @@ abstract class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	}
 
 	/**
-	 * Show begin HTML markup for fields
+	 * Show begin HTML markup for fields.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
-	static function begin_html( $meta, $field ) {
+	public static function begin_html( $meta, $field ) {
 		$desc = $field['desc'] ? "<p id='{$field['id']}_description' class='description'>{$field['desc']}</p>" : '';
 
 		if ( empty( $field['name'] ) ) {
@@ -57,20 +61,30 @@ abstract class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	/**
 	 * Do not show field description.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
-	public static function element_description( $field ) {
+	public static function input_description( $field ) {
 		return '';
 	}
 
 	/**
-	 * Escape meta for field output
+	 * Do not show field description.
 	 *
-	 * @param mixed $meta
+	 * @param array $field Field parameters.
+	 * @return string
+	 */
+	public static function label_description( $field ) {
+		return '';
+	}
+
+	/**
+	 * Escape meta for field output.
+	 *
+	 * @param mixed $meta Meta value.
 	 * @return mixed
 	 */
-	static function esc_meta( $meta ) {
+	public static function esc_meta( $meta ) {
 		foreach ( (array) $meta as $k => $pairs ) {
 			$meta[ $k ] = array_map( 'esc_attr', (array) $pairs );
 		}
@@ -80,14 +94,14 @@ abstract class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	/**
 	 * Sanitize field value.
 	 *
-	 * @param mixed $new
-	 * @param mixed $old
-	 * @param int   $post_id
-	 * @param array $field
+	 * @param mixed $new     The submitted meta value.
+	 * @param mixed $old     The existing meta value.
+	 * @param int   $post_id The post ID.
+	 * @param array $field   The field parameters.
 	 *
 	 * @return string
 	 */
-	static function value( $new, $old, $post_id, $field ) {
+	public static function value( $new, $old, $post_id, $field ) {
 		foreach ( $new as &$arr ) {
 			if ( empty( $arr[0] ) && empty( $arr[1] ) ) {
 				$arr = false;
@@ -98,19 +112,19 @@ abstract class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	}
 
 	/**
-	 * Normalize parameters for field
+	 * Normalize parameters for field.
 	 *
-	 * @param array $field
+	 * @param array $field Field parameters.
 	 * @return array
 	 */
-	static function normalize( $field ) {
+	public static function normalize( $field ) {
 		$field                       = parent::normalize( $field );
 		$field['clone']              = true;
 		$field['multiple']           = true;
 		$field['attributes']['type'] = 'text';
 		$field['placeholder']        = wp_parse_args( (array) $field['placeholder'], array(
-			'key'   => 'Key',
-			'value' => 'Value',
+			'key'   => __( 'Key', 'meta-box' ),
+			'value' => __( 'Value', 'meta-box' ),
 		) );
 		return $field;
 	}
@@ -118,8 +132,8 @@ abstract class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	/**
 	 * Format value for the helper functions.
 	 *
-	 * @param array        $field Field parameter
-	 * @param string|array $value The field meta value
+	 * @param array        $field Field parameters.
+	 * @param string|array $value The field meta value.
 	 * @return string
 	 */
 	public static function format_value( $field, $value ) {

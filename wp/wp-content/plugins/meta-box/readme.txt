@@ -3,8 +3,8 @@ Contributors: metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, rua
 Donate link: http://paypal.me/anhtnt
 Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, matrix, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
 Requires at least: 4.1
-Tested up to: 4.7
-Stable tag: 4.10
+Tested up to: 4.7.2
+Stable tag: 4.10.4
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional developer toolkit to create custom meta boxes and custom fields for WordPress.
@@ -91,10 +91,33 @@ To getting started with the plugin API, please read [this tutorial](https://meta
 
 == Changelog ==
 
-#### 4.10.1
+= 4.10.4 =
+* Improvement: Add support for validate user edit and term edit forms (requires MB Term Meta or MB User Meta extension).
+* Improvement: Add new parameter `label_description` for fields to display a description below field label (name).
+* Improvement: Add support for edit custom fields in the media modal. Requires `post_type` set to `attachment` and `media_modal` set to true. [See demo](https://github.com/rilwis/meta-box/blob/master/demo/media-modal.php).
+* Improvement: For WPML users: Add support to hide fields in "Do not translate" mode and disable editing fields in "Copy" mode.
+* Fix: Users can't select same images for 2 different `image_advanced` fields.
+* Fix: `max_status` doesn't work.
+
+= 4.10.3 =
+* Fix: `force_delete` causes files to be deleted even when set to `false`.
+* Fix: `max_file_uploads` not working.
+
+= 4.10.2 =
+* Improvement: Add `max_file_size` to upload fields (`File_Upload`, `Image_Upload`, `Plupload_Image`).
+* Improvement: Add support for attributes for file input.
+* Improvement: Update Polish translation.
+* Improvement: Add translation support for Key and Value strings (@prop saqibsarwar).
+* Fix: Shorter width of email field vs. other fields (@prop saqibsarwar).
+* Fix: Fix cloneable datetime field with timestamp=true.
+* Fix: Remove margin bottom in select_advanced options.
+* Fix: Showing the correct selected value for select_advanced field when the option value contains '&' character.
+* Fix: Fix default values not working with taxonomy and taxonomy_advanced fields.
+
+= 4.10.1 =
 * Fix: Fix `image_upload` and `plupload_image` field when select images to upload.
 
-#### 4.10
+= 4.10 =
 * Improvement: Add `video` field type which allows users to upload or select video from the Media Library. See [demo](https://github.com/rilwis/meta-box/blob/master/demo/video.php).
 * Improvement: Update Turkish. Prop Emre Tuna <tunaemre@windowslive.com>.
 * Improvement: Use WP 4.6 date picker localization instead of JS localized file to reduce plugin size.
@@ -102,7 +125,7 @@ To getting started with the plugin API, please read [this tutorial](https://meta
 * Fix: `taxonomy_advanced` field now can be cloned.
 * Fix: Make localize_script works with WP 4.1.
 
-#### 4.9.8
+= 4.9.8 =
 * Fix: Quick fix for enqueueing validation script
 
 = 4.9.7 =
