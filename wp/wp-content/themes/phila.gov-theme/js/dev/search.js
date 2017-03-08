@@ -78,12 +78,12 @@ function addressSearch () {
         dataType: $.support.cors ? 'json' : 'jsonp',
         data: { gatekeeperKey: 'ad0050d3c6e40064546a18af371f7826' }
       })
-      .done(function (data) {
-        if (data.total) {
-          $propertyLink.prop('href', '/property/?a=' + queryEncoded + '&u=');
-          $propertyLink.show();
-        }
-      });
+    .done(function (data) {
+      if (data.total_size) {
+        $propertyLink.prop('href', '/property/?a=' + queryEncoded + '&u=');
+        $propertyLink.css('display', 'block');
+      }
+    });
   }
 }
 
