@@ -1,10 +1,10 @@
 === Easy WP SMTP ===
 Contributors: wpecommerce
 Donate link: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
-Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, outgoing mail, privacy, security, sendmail, ssl, tls, wp-phpmailer, mail smtp, wp smtp  
+Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, outgoing mail, privacy, security, sendmail, ssl, tls, wp-phpmailer, mail smtp, wp smtp
 Requires at least: 4.3
-Tested up to: 4.5
-Stable tag: 1.2.3
+Tested up to: 4.7
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,108 +75,86 @@ Inspired by [WP Mail SMTP](http://wordpress.org/plugins/wp-mail-smtp/) plugin
 
 == Changelog ==
 
-= 1.2.3 =
+= 1.2.4 =
+* Improved the admin interface.
+* The test email details now gets saved after you use it. So you don't need to type it every single time you want to send a test email.
 
+= 1.2.3 =
 * Easy WP SMTP is now compatible with WordPress 4.5.
 
 = 1.2.2 =
-
 * Easy WP SMTP is now compatible with WordPress 4.4.
 
 = 1.2.1 =
-
 * Set SMTPAutoTLS to false by default as it might cause issues if the server is advertising TLS with an invalid certificate.
 * Display an error message near the top of admin pages if SMTP credentials are not configured.
 
 = 1.2.0 =
-
 * Set email charset to utf-8 for test email functionality.
 * Run additional checks on the password only if mbstring is enabled on the server. This should fix the issue with password input field not appearing on some servers.
 
 = 1.1.9 =
-
 * Easy SMTP is now compatible with WordPress 4.3
 
 = 1.1.8 =
-
 * Easy SMTP now removes slashes from the "From Name" field.
 
 = 1.1.7 =
-
 * Made some improvements to the encoding option.
 
 = 1.1.7 =
-
 * Made some improvements to the encoding option.
 
 = 1.1.6 =
-
 * Fixed some character encoding issues of test email functionality
 * Plugin will now force the from name and email address saved in the settings (just like version 1.1.1)
 
 = 1.1.5 =
-
 * Fixed a typo in the plugin settings
 * SMTP Password is now encoded before saving it to the wp_options table
 
 = 1.1.4 =
-
 * Plugin will now also override the default from name and email (WordPress)
 
 = 1.1.3 =
-
 * Removed "ReplyTo" attribute since it was causing compatibility issues with some form plugins
 
 = 1.1.2 =
-
 * "ReplyTo" attribute will now be set when sending an email
 * The plugin will only override "From Email Address" and "Name" if they are not present
 
 = 1.1.1 =
-
 * Fixed an issue where the plugin CSS was affecting other input fields on the admin side.
 
 = 1.1.0 =
-
 * "The settings have been changed" notice will only be displayed if a input field is changed
 
 = 1.0.9 =
-
 * Fixed some bugs in the SMTP configuration and mail functionality
 
 = 1.0.8 =
-
 * Plugin now works with WordPress 3.9
 
 = 1.0.7 =
-
 * Plugin now works with WordPress 3.8
 
 = 1.0.6 =
-
 * Plugin is now compatible with WordPress 3.7
 
 = 1.0.5 =
-
 * "Reply-To" text will no longer be added to the email header
 * From Name field can now contain quotes. It will no longer be converted to '\'
 
 = 1.0.4 =
-
 * Plugin is now compatible with WordPress 3.6
 
 = 1.0.3 =
-
 * Added a new option to the settings which allows a user to enable/disable SMTP debug
-
 = 1.0.2 =
-
 * Fixed a bug where the debug output was being displayed on the front end
 
 = 1.0.1 =
-
 * First commit of the plugin
 
 == Upgrade Notice ==
-
 There were some major changes in version 1.0.8. So you will need to reconfigure the SMTP options after the upgrade.
