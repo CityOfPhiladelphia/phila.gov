@@ -1,19 +1,23 @@
 <?php
+/**
+ * The text list field which allows users to enter multiple texts.
+ *
+ * @package Meta Box
+ */
 
 /**
  * Text list field class.
  */
 class RWMB_Text_List_Field extends RWMB_Multiple_Values_Field {
-
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param mixed $meta
-	 * @param array $field
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 *
 	 * @return string
 	 */
-	static function html( $meta, $field ) {
+	public static function html( $meta, $field ) {
 		$html  = array();
 		$input = '<label><input type="text" class="rwmb-text-list" name="%s" value="%s" placeholder="%s"> %s</label>';
 
@@ -35,8 +39,8 @@ class RWMB_Text_List_Field extends RWMB_Multiple_Values_Field {
 	/**
 	 * Format value for the helper functions.
 	 *
-	 * @param array        $field Field parameter
-	 * @param string|array $value The field meta value
+	 * @param array        $field Field parameters.
+	 * @param string|array $value The field meta value.
 	 * @return string
 	 */
 	public static function format_value( $field, $value ) {
@@ -60,8 +64,8 @@ class RWMB_Text_List_Field extends RWMB_Multiple_Values_Field {
 	/**
 	 * Format a single value for the helper functions.
 	 *
-	 * @param array $field Field parameter
-	 * @param array $value The value
+	 * @param array $field Field parameters.
+	 * @param array $value The value.
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value ) {
