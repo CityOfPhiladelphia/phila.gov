@@ -1,10 +1,14 @@
 <?php
+/**
+ * The image field which uploads images via HTML <input type="file">.
+ *
+ * @package Meta Box
+ */
 
 /**
  * Image field class which uses <input type="file"> to upload.
  */
 class RWMB_Image_Field extends RWMB_File_Field {
-
 	/**
 	 * Enqueue scripts and styles.
 	 */
@@ -14,9 +18,9 @@ class RWMB_Image_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Get HTML markup for ONE uploaded image
+	 * Get HTML markup for ONE uploaded image.
 	 *
-	 * @param int $image Image ID
+	 * @param int $image Image ID.
 	 * @return string
 	 */
 	public static function file_html( $image ) {
@@ -39,8 +43,8 @@ class RWMB_Image_Field extends RWMB_File_Field {
 	/**
 	 * Format a single value for the helper functions.
 	 *
-	 * @param array $field Field parameter
-	 * @param array $value The value
+	 * @param array $field Field parameters.
+	 * @param array $value The value.
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value ) {
@@ -59,15 +63,16 @@ class RWMB_Image_Field extends RWMB_File_Field {
 	}
 
 	/**
-	 * Get uploaded file information
+	 * Get uploaded file information.
 	 *
 	 * @param int   $file Attachment image ID (post ID). Required.
 	 * @param array $args Array of arguments (for size).
 	 *
-	 * @return array|bool False if file not found. Array of image info on success
+	 * @return array|bool False if file not found. Array of image info on success.
 	 */
 	public static function file_info( $file, $args = array() ) {
-		if ( ! $path = get_attached_file( $file ) ) {
+		$path = get_attached_file( $file );
+		if ( ! $path ) {
 			return false;
 		}
 
@@ -93,7 +98,7 @@ class RWMB_Image_Field extends RWMB_File_Field {
 
 		$info = wp_parse_args( $info, wp_get_attachment_metadata( $file ) );
 
-		// Do not overwrite width and height by returned value of image meta
+		// Do not overwrite width and height by returned value of image meta.
 		$info['width']  = $image[1];
 		$info['height'] = $image[2];
 
