@@ -1,14 +1,19 @@
 /**
  * Settings page
  */
-.swpsmtp_info {
-    font-size: 10px;
-    color: #888;
-}
-#swpsmtp_settings_form input[type='text'], 
-input[type='password']{
-    width: 250px;
+#swpsmtp_settings_form input[type='text'], input[type='password']{
+    width: 350px;
 }
 textarea#swpsmtp_message{
-    width: 250px;
+    width: 350px;
+}
+
+.swpsmtp-yellow-box{
+    margin: 10px 0px;
+    padding: 10px;
+    background-color: #FFFFE0;
+    border-color: #E6DB55;
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;    
 }
