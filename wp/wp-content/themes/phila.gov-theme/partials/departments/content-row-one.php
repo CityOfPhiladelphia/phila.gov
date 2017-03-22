@@ -93,7 +93,7 @@ if ( !empty( $row_one_col_two_module ) ){
   <div class="row">
   <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
   <!-- Begin Column One -->
-    <div class="large-18 columns">
+    <div class="large-17 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
       <!-- TURN SHORTCODE STRING INTO VAR -->
@@ -105,7 +105,7 @@ if ( !empty( $row_one_col_two_module ) ){
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_news_posts' ): ?>
   <!-- Begin Column One -->
-    <div class="large-18 columns">
+    <div class="large-17 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
       <!-- TURN SHORTCODE STRING INTO VAR -->
@@ -116,10 +116,10 @@ if ( !empty( $row_one_col_two_module ) ){
       </div>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
-    <div class="large-18 columns">
+    <div class="large-17 columns">
       <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
       <div>
-        <?php echo($row_one_col_one_textarea); ?>
+        <?php echo apply_filters( 'the_content', $row_one_col_one_textarea ); ?>
       </div>
       <?php if ( $row_one_col_one_textarea == '' ) :?>
         <div class="placeholder">
@@ -148,7 +148,7 @@ if ( !empty( $row_one_col_two_module ) ){
       <h2 class="contrast"><?php echo($row_one_col_two_text_title); ?></h2>
       <div class="panel no-margin">
         <div>
-          <?php echo($row_one_col_two_textarea); ?>
+          <?php echo $row_one_col_two_textarea; ?>
         </div>
       </div>
     </div>

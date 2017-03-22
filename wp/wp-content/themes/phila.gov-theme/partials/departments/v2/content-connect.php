@@ -11,7 +11,7 @@ $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
 $connect_vars = phila_connect_panel($connect_panel);
 ?>
 
-<div class="large-6 columns connect vcard">
+<div class="large-7 columns connect vcard">
   <div class="row">
     <div class="columns">
       <h2 class="contrast">Connect</h2>
@@ -102,6 +102,10 @@ $connect_vars = phila_connect_panel($connect_panel);
           <?php if ( ! empty( $connect_vars['social'] ) ):
             $item_count = count( $connect_vars['social'] );
             $columns = phila_grid_column_counter( $item_count );
+
+            if ( $columns == '12' ) :
+              $columns = '8 end';
+            endif;
           ?>
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns pvxs">
