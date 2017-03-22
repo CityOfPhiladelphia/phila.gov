@@ -2,6 +2,7 @@
 .hero-content {
   margin-top:0;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
+  position:relative;
 
   @media screen and (max-width: 39.9375em) {
     //important to override inline style
@@ -28,6 +29,19 @@
       @media only screen and (min-width: 40em) {
         font-size: 1.25rem;
       }
+    }
+  }
+  .photo-credit.small-text {
+    display:none;
+    @media only screen and (min-width: 64em) {
+      display: inline-block;
+      font-style: italic;
+      font-size: .75rem;
+      color: $medium-gray;
+      padding: .25rem .5rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
   .department-nav {
