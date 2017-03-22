@@ -29,7 +29,7 @@ $user_selected_template = phila_get_selected_template();
 get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
-  <header class="entry-header">
+  <header class="hero-header">
   <?php
   //TODO: clean up menu rendering
     /* Get an array of Ancestors and Parents if they exist */
