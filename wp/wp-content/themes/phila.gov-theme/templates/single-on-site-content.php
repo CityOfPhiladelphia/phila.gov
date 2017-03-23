@@ -53,9 +53,20 @@
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
     <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
+
+    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
+    <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
+
+    <?php if ( $staff_directory_listing ): ?>
+      <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
+    <?php endif; ?>
+
+    <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
+
   <?php endif;?>
 
-  <?php //Begin v2 templates ?>
+  <?php //Begin v2 non-homepage templates ?>
   <?php if ($user_selected_template == 'all_services_v2') : ?>
     <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
   <?php endif;?>
@@ -115,8 +126,8 @@
       <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
       </section>
-    <?php endif; ?>
     <!-- End One Page Template Display -->
+    <?php endif; ?>
 
   <?php elseif ($user_selected_template == 'resource_list') : ?>
     <!-- Begin Resource List Display -->
@@ -131,18 +142,6 @@
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     </section>
     <!-- End Staff Directory Display -->
-    <?php //else, this is still a v2 homepage and we need to render the rest of the page ?>
-  <?php else: ?>
-
-    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
-    <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
-
-    <?php if ( $staff_directory_listing ): ?>
-      <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
-    <?php endif; ?>
-    <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
-
 
   <?php endif; ?>
 
