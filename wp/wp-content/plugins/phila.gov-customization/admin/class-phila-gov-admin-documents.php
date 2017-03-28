@@ -44,7 +44,7 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
     if(!$documents == null) {
 
       foreach ($documents as $document){
-        $current_pdf = $document[ID];
+        $current_pdf = $document['ID'];
 
         $categories = get_the_category($post_id);
 
