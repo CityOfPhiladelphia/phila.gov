@@ -9,7 +9,7 @@
   </header><!-- .entry-header -->
 </div>
 <div class="row">
-  <div data-swiftype-index='true' class="entry-content small-24 columns">
+  <div data-swiftype-index="true" class="entry-content small-24 columns">
     <?php
     //Documents are using a wysiwyg editor for body content
     $document_description = rwmb_meta( 'phila_document_description' );
