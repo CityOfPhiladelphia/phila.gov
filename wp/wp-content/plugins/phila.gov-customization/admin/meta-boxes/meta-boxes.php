@@ -125,7 +125,12 @@ function phila_register_meta_boxes( $meta_boxes ){
          'name' => ' Release Date',
        ),
        array(
-        'desc'  => 'Set the release date for all items on this document page. You can change an individual release date by editing the document below.',
+         'name' => '',
+         'id'   => 'phila_override_release_date',
+         'desc'  => 'Override all individual release dates on this document page with the date selected below?',
+         'type' => 'checkbox',
+       ),
+       array(
         'id'    => 'phila_document_released',
         'type'  => 'date',
         'class' =>  'document-released',
