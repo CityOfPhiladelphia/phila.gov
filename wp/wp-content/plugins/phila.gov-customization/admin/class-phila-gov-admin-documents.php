@@ -44,7 +44,7 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
     if(!$documents == null) {
 
       foreach ($documents as $document){
-        $current_pdf = $document[ID];
+        $current_pdf = $document['ID'];
 
         $categories = get_the_category($post_id);
 
@@ -55,12 +55,6 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
           wp_add_object_terms( $current_pdf, $category_ids, 'category' );
         }
 
-        $types =  get_the_terms( $post_id, 'document_type' );
-
-        foreach ($types as $type){
-          $type_ids[] = $type->term_id;
-          wp_set_object_terms( $current_pdf, $type_ids, 'document_type', false );
-        }
       }
       $list = get_post_meta($post_id, 'phila_documents');
     }
