@@ -3,7 +3,9 @@
   "version": "0.16.10",
   "description": "A custom wordpress theme for phila.gov",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "node-sass --include-path node_modules/phila-standards/dist/css --output-style compressed -o css/ css/scss/base.scss",
+    "build:js": "browserify js/dev/main.js > js/main.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,10 @@
   "homepage": "https://github.com/CityOfPhiladelphia/phila.gov-theme",
   "devDependencies": {
     "browserify": "^14.1.0",
+    "browserify-shim": "^3.8.14",
     "node-sass": "^4.5.1"
   },
   "dependencies": {
-    "phila-standards": "^0.3.7"
+    "phila-standards": "^0.4.2"
   }
 }
