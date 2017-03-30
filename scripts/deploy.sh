@@ -10,10 +10,10 @@ source "$_dir/lib/mo"
 echo 'Running wp-config.sh'
 "$_dir/wp-config.sh"
 
-echo 'Running grunt tasks'
+echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-npm install
-grunt
+yarn install
+yarn build:js && yarn build:css
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'
