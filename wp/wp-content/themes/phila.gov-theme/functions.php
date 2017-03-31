@@ -294,9 +294,7 @@ add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 function phila_gov_scripts() {
   wp_deregister_script( 'jquery' );
 
-  wp_enqueue_style( 'font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.5.0' );
-
-  wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/base.css' );
+  wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles.css' );
 
   wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'theme-styles' )  );
 
