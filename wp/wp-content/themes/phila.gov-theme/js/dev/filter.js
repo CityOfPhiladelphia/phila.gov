@@ -40,7 +40,7 @@ module.exports = jQuery(document).ready(function($) {
 
     $('.result').hide().addClass('is-hidden');
 
-    if ( $(this).val() == 'all' ){
+    if ( $(this).val() === 'all' ){
 
       $('#service_filter :checkbox').each(function(){
         $(this).prop('checked', false);
@@ -175,10 +175,10 @@ module.exports = jQuery(document).ready(function($) {
 
   if ( $( '.post-type-archive-service_page' ).length ) {
     $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
-      if ( ( oldSize == 'medium' || oldSize == 'large' ) && ( newSize == 'small' ) ){
+      if ( ( oldSize === 'medium' || oldSize === 'large' ) && ( newSize === 'small' ) ){
         getValues();
       }
-      else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
+      else if ( ( newSize === 'medium' || newSize === 'large' ) && ( oldSize === 'small' ) ){
         attachFilter();
         $( '.button[data-alpha-order]' ).trigger( 'click' );
         $( 'button[data-close]' ).trigger( 'click' );
