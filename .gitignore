@@ -7,6 +7,7 @@ wp/wp-content/uploads/
 wp/wp-content/plugins/wordfence/tmp/configCache.php
 wp/wp-content/plugins/meta-box-*
 wp/wp-content/plugins/wpfront-user-role-editor-personal-pro/
+wp/wp-content/themes/phila.gov-theme/yarn-error.log
 
 # Ignore compiled files
 wp/wp-content/themes/phila.gov-theme/css/styles.css
