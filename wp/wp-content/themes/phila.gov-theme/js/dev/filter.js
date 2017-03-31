@@ -1,5 +1,4 @@
-jQuery(document).ready(function($) {
-
+module.exports = jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
   var parents = $('.a-z-group');
   var hiddenLetter = {};
@@ -207,7 +206,7 @@ jQuery(document).ready(function($) {
       $('.button[data-alpha-order]').removeClass("outline");
       $('.button[data-reverse-alpha-order]').addClass("outline");
     }
-  })
+  });
 
   $('.button[data-reverse-alpha-order]').click( function() {
     event.preventDefault();
@@ -220,6 +219,6 @@ jQuery(document).ready(function($) {
       $('.button[data-reverse-alpha-order]').removeClass("outline");
       $('.button[data-alpha-order]').addClass("outline");
     }
-  })
+  });
 
 });
