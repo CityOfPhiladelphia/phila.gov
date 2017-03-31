@@ -2,8 +2,6 @@
 /*
  * Partial for the "beta alert," i.e. the bar says this site is a work in progress
 */
-
-//TODO: Move away from using id based styles / remove reference to #alpha-alert
 ?>
 <div data-swiftype-index='false' class="alert alert-persistent">
   <div class="row">
