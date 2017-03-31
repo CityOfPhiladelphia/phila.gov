@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cp -R node_modules/font-awesome/fonts ./",
     "build:css": "node-sass --include-path node_modules/phila-standards/dist/css --output-style compressed --source-map true css/scss/base.scss css/styles.css",
-    "build:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js"
+    "build:js": "browserify js/dev/main.js -o js/phila-scripts.js",
+    "prod:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js"
   },
   "repository": {
     "type": "git",
