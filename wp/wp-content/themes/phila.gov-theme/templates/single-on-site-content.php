@@ -145,12 +145,14 @@
     <?php //else it's an old v1 department page and we still need to render the row one, etc. content ?>
 
     <?php else :?>
+      <?php if ($user_selected_template != 'homepage_v2') : ?>
+      <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
+      <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
+      <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
-    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
-    <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
+      <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
+    <?php endif; ?>
 
-    <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
 
   <?php endif; ?>
 
