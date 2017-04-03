@@ -233,7 +233,6 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'taxonomies' => array(
           'category',
-          'document_type'
         ),
         'supports' => array(
           'title',
