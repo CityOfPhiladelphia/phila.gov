@@ -9,10 +9,11 @@
   </header><!-- .entry-header -->
 </div>
 <div class="row">
-  <div data-swiftype-index='true' class="entry-content small-24 columns">
+  <div data-swiftype-index="true" class="entry-content small-24 columns">
     <?php
     //Documents are using a wysiwyg editor for body content
     $document_description = rwmb_meta( 'phila_document_description' );
+    $date_override = rwmb_meta( 'phila_override_release_date' );
     $global_document_published = rwmb_meta( 'phila_document_released', $args = array( 'type' => 'date' ) );
 
     $documents = rwmb_meta( 'phila_files', $args = array( 'type' => 'file_advanced' ) );
@@ -44,6 +45,10 @@
       $file_type = $attachment_data['subtype'];
       $content = $attachment_data['description'];
       $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id[0] );
+
+      if ( empty($document_published) ){
+        $document_published = get_the_date( $d = '', $id[0] );
+      }
       ?>
       <tr class="clickable-row" data-href="<?php echo $document['url']; ?>">
         <td>
@@ -57,10 +62,10 @@
             <?php endif; ?>
           </td>
           <td>
-            <?php if( ! $document_published == '' ): ?>
-              <?php echo $document_published; ?>
-            <?php else: ?>
+            <?php if ($date_override === '1') : ?>
               <?php echo $global_document_published; ?>
+            <?php else: ?>
+              <?php echo $document_published; ?>
             <?php endif; ?>
           </td>
           <td>
