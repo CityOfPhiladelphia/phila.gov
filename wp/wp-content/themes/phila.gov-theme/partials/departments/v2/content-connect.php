@@ -137,18 +137,9 @@ $connect_vars = phila_connect_panel($connect_panel);
     </div>
   </div>
   <?php if ( !empty( $connect_vars['see_all'] ) ) : ?>
-    <div class="row">
-      <div class="columns mtm">
-        <a class="see-all-right see-all-arrow float-right" href="<?php echo $connect_vars['see_all']; ?>" aria-label="See all">
-          <div class="valign equal-height">
-            <div class="see-all-label phm prxs valign-cell equal">See all</div>
-            <div class="valign-cell equal">
-              <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
+    <?php $see_all_URL = $connect_vars['see_all']; ?>
+    <?php $see_all_content_type = 'contact information';?>
+    <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
   <?php endif; ?>
 </div>
 <?php endif; ?>
