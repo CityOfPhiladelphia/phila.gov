@@ -43,8 +43,9 @@
                     </div>
                   </div>
                   <?php if ( !empty( $cal_url ) ):?>
-                      <?php phila_output_see_all( $cal_url, 'Calendar' ); ?>
-                      <?php echo 'yeah'?>
+                    <?php $see_all_URL = $cal_url ?>
+                    <?php $see_all_content_type = 'events'?>
+                    <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
                   <?php endif; ?>
                 </section>
               <?php endif;?>
