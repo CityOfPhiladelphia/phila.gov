@@ -1,11 +1,7 @@
-//TODO: Add to patterns
-.panel{
-  border:none;
-}
-
 .panel.info{
-  background: rgba($ben-franklin-light, .3);
+  background: transparentize( color(light-ben-franklin), 0.7);
   border:none;
+  padding: $spacing-medium;
 
   &.heading{
     padding:0;
@@ -33,8 +29,6 @@
   }
 }
 .panel.survey{
-  //TODO: remove border in patterns
-  border:none;
   @media screen and (min-width: 40em) {
     @include check-bg( 84%, 17% );
   }
