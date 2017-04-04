@@ -33,7 +33,6 @@
      <?php endforeach; ?>
      <?php array_multisort( $urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
 
-     <div class="row">
      <?php $i=0; ?>
 
      <?php foreach ( $update_array as $update ):?>
@@ -45,38 +44,36 @@
        <?php endif; ?>
 
        <?php if ($i > 2) break; ?>
-         <div class="small-24 columns centered service-update equal-height <?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
-               <div class="service-update-icon equal">
-                 <div class="valign">
-                   <div class="valign-cell pas pam-mu">
-                     <i class="fa <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?> " aria-hidden="true"></i>
-                     <span class="icon-label small-text"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
-                   </div>
-                 </div>
+       <div class="row collapse equal-height service-update service-update--<?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
+         <div class="small-4 columns equal">
+           <div class="icon valign">
+             <div class="valign-cell phl-mu">
+                 <i class="fa  fa-2x fa-fw <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?> " aria-hidden="true"></i>
+                 <span class="icon-label"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
                </div>
-               <div class="service-update-details phm equal">
-                 <div class="valign">
-                   <div class="valign-cell pvm">
-
-                     <?php if ( !$update['service_message'] == '' ):?>
-                       <span>
-                         <?php  echo $update['service_message']; ?>
-                         <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
-                           <a href="<?php echo $update['service_link']; ?>" <?php echo ( $update['service_off_site'] == 1 ) ?  'class="external"' : '' ?>><?php echo $update['service_link_text']; ?></a>
-                         <?php endif;?>
-                       </span>
+             </div>
+           </div>
+           <div class="small-20 columns equal">
+             <div class="details valign">
+               <div class="valign-cell pam">
+                 <?php if ( !$update['service_message'] == '' ):?>
+                   <span>
+                     <?php  echo $update['service_message']; ?>
+                     <?php if ( !$update['service_link_text'] == '' && !$update['service_link'] == '' ):?>
+                       <a href="<?php echo $update['service_link']; ?>" <?php echo ( $update['service_off_site'] == 1 ) ?  'class="external"' : '' ?>><?php echo $update['service_link_text']; ?></a>
                      <?php endif;?>
+                   </span>
+                 <?php endif;?>
 
-                     <?php if ( isset( $update['service_date_format'] ) && $update['service_date_format'] == 'date'):?>
-
-                         <span class="date small-text"><em>
-                           In Effect:
-                           <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
-                             <?php echo str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j')); ?>
-                           <?php else :?>
-                             <?php echo str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j') . ' to ' . $end->format( 'l, ' . $end_month_format . ' j') ); ?>
-                           <?php endif; ?>
-                         </em></span>
+                 <?php if ( isset( $update['service_date_format'] ) && $update['service_date_format'] == 'date'):?>
+                     <span class="date small-text"><em>
+                       In Effect:
+                       <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
+                         <?php echo str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j')); ?>
+                       <?php else :?>
+                         <?php echo str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j') . ' to ' . $end->format( 'l, ' . $end_month_format . ' j') ); ?>
+                       <?php endif; ?>
+                     </em></span>
 
                      <?php elseif ( isset( $update['service_date_format'] ) && $update['service_date_format'] == 'datetime' ) : ?>
 
@@ -98,7 +95,6 @@
              </div>
            <?php ++$i; ?>
          <?php endforeach; ?>
-       </div>
      </div>
    </div>
  <?php endif; ?>
