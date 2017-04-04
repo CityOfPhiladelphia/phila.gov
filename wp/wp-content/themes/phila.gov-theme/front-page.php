@@ -120,15 +120,9 @@ get_header(); ?>
               <div class="alert">No recent news.</div>
             <?php endif; ?>
           </div>
-          <div class="row">
-            <div class="small-24 columns">
-              <a class="button see-all-right float-right mrm" href="/news" aria-label="See all news">
-                <div class="valign">
-                  <div class="button-label valign-cell">See all  »</div>
-                </div>
-              </a>
-            </div>
-          </div>
+          <?php $see_all_URL = '/news' ?>
+          <?php $see_all_content_type = 'news'?>
+          <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </section>
       </div>
     </div>
