@@ -120,14 +120,15 @@ get_header(); ?>
               <div class="alert">No recent news.</div>
             <?php endif; ?>
           </div>
-          <a class="see-all-right see-all-arrow float-right" href="/news" aria-label="See all news">
-            <div class="valign equal-height">
-              <div class="see-all-label phm prxs valign-cell equal">See all</div>
-              <div class="valign-cell equal">
-                <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
-              </div>
+          <div class="row">
+            <div class="small-24 columns">
+              <a class="button see-all-right float-right mrm" href="/news" aria-label="See all news">
+                <div class="valign">
+                  <div class="button-label valign-cell">See all  »</div>
+                </div>
+              </a>
             </div>
-          </a>
+          </div>
         </section>
       </div>
     </div>
