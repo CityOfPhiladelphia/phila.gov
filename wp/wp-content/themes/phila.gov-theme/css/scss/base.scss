@@ -1,5 +1,7 @@
 @import 'phila-standards';
 
+@import 'node_modules/phila-standards/src/sass/utils/variables';
+
 @import 'variables';
 @import 'mixins';
 @import 'layout';
@@ -41,9 +43,7 @@
 @import 'staff-directory';
 @import 'step-content';
 
-@import 'beta/header';
 @import 'beta/home';
-@import 'beta/global-nav';
 
 @import 'beta/containers';
 @import 'beta/inside-border';
