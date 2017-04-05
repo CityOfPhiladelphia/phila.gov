@@ -108,6 +108,8 @@ function recent_news_shortcode($atts) {
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 
+      $output .= '<span class="entry-date small-text">'. get_the_date() . '</span>';
+
       if ( function_exists('rwmb_meta' ) ) {
         if ( $contributor != ''){
           $output .= '<span class="small-text">' . $contributor . '</span>';
