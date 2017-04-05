@@ -643,7 +643,7 @@ function phila_get_department_menu() {
           'container'       => '',
           'container_class' => '',
           'container_id'    => '',
-          'menu_class'      => 'department-menu vertical medium-horizontal menu',
+          'menu_class'      => 'secondary-menu vertical medium-horizontal menu',
           'menu_id'         => '',
           'echo'            => true,
           'fallback_cb'     => false,//if there is no menu, output nothing
