@@ -1,7 +1,7 @@
 .panel {
   background:color(ghost-gray);
   padding: 1.5rem;
-  
+
   &.info{
     background: transparentize( color(light-ben-franklin), 0.7);
     border:none;
@@ -46,14 +46,4 @@
       padding: 0;
     }
   }
-}
-
-.info-block {
-  font-size: $large-font-base / 4.5;
-  font-style: italic;
-}
-
-.large-text{
-  font-size: $large-font-base;
-  font-weight: 600;
 }
