@@ -6,6 +6,9 @@
  */
 ?>
 <?php
+// set category vars for news/blogs
+$category = get_the_category();
+$category_slug = $category[0]->slug;
 
 //set row 2 vars
 $row_two_column_selection = rwmb_meta('phila_module_row_2_column_selection');
@@ -82,8 +85,11 @@ if (!empty($row_two_column_selection)) {
      <?php elseif ( $row_two_col_one_type  == 'phila_module_row_2_col_1_press_release' ): ?>
          <div class="medium-12 columns">
            <div class="row">
-           <?php echo do_shortcode('[press-releases posts=5]');?>
+             <?php echo do_shortcode('[press-releases posts=5]');?>
            </div>
+           <?php $see_all_URL = '/press-releases/' . $category_slug . '/';
+           $see_all_content_type = 'press releases';
+           include( locate_template( 'partials/content-see-all.php' ) );?>
          </div>
        <?php endif; ?>
        <?php if ( $row_two_col_two_type  == 'phila_module_row_2_col_2_calendar' ): ?>
@@ -103,6 +109,9 @@ if (!empty($row_two_column_selection)) {
            <div class="row">
              <?php echo do_shortcode('[press-releases posts=5]');?>
            </div>
+           <?php $see_all_URL = '/press-releases/' . $category_slug . '/';
+           $see_all_content_type = 'press releases';
+           include( locate_template( 'partials/content-see-all.php' ) );?>
          </div>
        <?php endif; ?>
    </div>

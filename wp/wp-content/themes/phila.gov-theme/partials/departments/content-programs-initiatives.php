@@ -6,6 +6,10 @@
  */
 ?>
 <?php
+  // set category vars for news/blogs
+  $category = get_the_category();
+  $category_slug = $category[0]->slug;
+
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
 ?>
@@ -23,9 +27,12 @@
           if ( $current_row_option == 'phila_blog_posts'):
             $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : ''; ?>
             <!-- Blog Content -->
-            <section class="row mvl">
+            <div class="row mvl">
                 <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
-            </section>
+            </div>
+            <?php $see_all_URL = '/posts/' . $blog_category ?>
+            <?php $see_all_content_type = 'posts'?>
+            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
@@ -76,6 +83,9 @@
               <section class="row mvl">
                 <?php echo do_shortcode('[press-releases posts=5]');?>
               </section>
+              <?php $see_all_URL = '/press-releases/' . $category_slug ?>
+              <?php $see_all_content_type = 'press releases'?>
+              <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
@@ -166,6 +176,9 @@
                 <div class="row">
                   <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
                 </div>
+                <?php $see_all_URL = '/posts/' . $blog_category ?>
+                <?php $see_all_content_type = 'posts'?>
+                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               </div>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
