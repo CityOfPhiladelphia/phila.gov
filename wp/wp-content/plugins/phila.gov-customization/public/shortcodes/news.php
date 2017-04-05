@@ -63,7 +63,7 @@ function recent_news_shortcode($atts) {
   if ( is_flag ( 'list', $atts ) ) {
       $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="news"><ul>';
     }else{
-      $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row equal-height">';
+      $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row" data-equalizer="news">';
     }
 
     while( $news_loop->have_posts() ) : $news_loop->the_post();
@@ -100,13 +100,13 @@ function recent_news_shortcode($atts) {
         $output .=  '<div class="medium-24 columns">';
       }
 
-      $output .= '<a href="' . get_permalink() .'" class="card equal">';
+      $output .= '<a href="' . get_permalink() .'" class="card" data-equalizer-watch="news">';
 
       $output .= $thumbnail;
 
       $output .= '<div class="content-block">';
 
-      $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
+      $output .=  '<h3 class="man">' . get_the_title( $post->ID ) . '</h3>';
 
       $output .= '<span class="entry-date small-text">'. get_the_date() . '</span>';
 
