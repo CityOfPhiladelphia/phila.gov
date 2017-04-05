@@ -16,14 +16,17 @@
         $current_row = $page_rows[$key];?>
         <!-- Grid Row -->
         <?php if ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full' ) &&  isset( $current_row['phila_full_options']['phila_full_options_select'] ) ):
-
-            $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
-
-            if ( $current_row_option == 'phila_blog_posts'): ?>
-              <!-- Blog Content -->
-                <section class="row mvl">
-                  <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-                </section>
+        $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
+        if ( $current_row_option == 'phila_blog_posts'): ?>
+        <!-- Blog Content -->
+          <section class="row mvl">
+            <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+            <?php
+            $see_all_URL = '/posts';
+            $see_all_content_type = 'posts';
+            include( locate_template( 'partials/content-see-all.php' ) );
+            ?>
+          </section>
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
               $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '' ;
@@ -99,6 +102,10 @@
               <div class="row">
                 <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
               </div>
+              <?php
+              $see_all_URL = '/posts';
+              $see_all_content_type = 'posts';
+              include( locate_template( 'partials/content-see-all.php' ) );?>
             </div>
 
           <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
