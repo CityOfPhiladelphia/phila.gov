@@ -31,8 +31,6 @@ function latest_posts_shortcode($atts) {
     $category_slug = $category[0]->slug;
   }
 
-
-
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
        $a['posts'] = 3;
@@ -108,14 +106,9 @@ function latest_posts_shortcode($atts) {
       $output .= '</ul>';
     }
 
-    $output .= '</div><a class="see-all-right see-all-arrow float-right" href="/posts/'. $category_slug . '" aria-label="See all ' . strtolower($a['name']) . '">
-      <div class="valign equal-height">
-        <div class="see-all-label phm prxs valign-cell equal">See all</div>
-        <div class="valign-cell equal">
-          <img style="height:28px" src="' . get_stylesheet_directory_uri() . '/img/see-all-arrow.svg" alt="">
-        </div>
-      </div>
-    </a></div>';
+    $output .= '</div>';
+
+    $output .= '</div>';
 
     }else {
       $output .= __( 'Please enter at least one post.', 'phila.gov' );
