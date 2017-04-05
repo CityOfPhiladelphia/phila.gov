@@ -6,6 +6,10 @@
  */
 ?>
 <?php
+  // set category vars for news/blogs
+  $category = get_the_category();
+  $category_slug = $category[0]->slug;
+
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
 ?>
@@ -21,8 +25,7 @@
         <!-- Blog Content -->
           <section class="row mvl">
             <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-            <?php
-            $see_all_URL = '/posts';
+            <?php $see_all_URL = '/posts/' . $category_slug . '/';
             $see_all_content_type = 'posts';
             include( locate_template( 'partials/content-see-all.php' ) );
             ?>
@@ -66,9 +69,13 @@
                 endif; ?>
             <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
               <!-- Press Releases -->
-                <section class="row mvl">
+                <div class="row mvl">
                   <?php echo do_shortcode('[press-releases posts=5]');?>
-                </section>
+                </div>
+                <?php $see_all_URL = '/press-releases/' . $category_slug . '/';
+                <?php $see_all_content_type = 'press releases'?>
+                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+
 
             <?php elseif ($current_row_option == 'phila_resource_list'): ?>
               <!-- Display Multi Call to Action as Resource List -->
@@ -102,8 +109,7 @@
               <div class="row">
                 <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
               </div>
-              <?php
-              $see_all_URL = '/posts';
+              <?php $see_all_URL = '/posts/' . $category_slug . '/';
               $see_all_content_type = 'posts';
               include( locate_template( 'partials/content-see-all.php' ) );?>
             </div>

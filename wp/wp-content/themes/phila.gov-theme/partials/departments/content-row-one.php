@@ -8,6 +8,10 @@
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php
+// set category vars for news/blogs
+$category = get_the_category();
+$category_slug = $category[0]->slug;
+
 // Set module row vars
 $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1' );
 
@@ -102,8 +106,6 @@ if ( !empty( $row_one_col_two_module ) ){
       <?php endif;?>
       </div>
       <?php
-        $category = get_the_category();
-        $category_slug = $category[0]->slug;
         $see_all_URL = '/posts/' . $category_slug . '/';
         $see_all_content_type = 'posts';
         include( locate_template( 'partials/content-see-all.php' ) );?>
@@ -113,12 +115,15 @@ if ( !empty( $row_one_col_two_module ) ){
     <div class="large-17 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
-      <!-- TURN SHORTCODE STRING INTO VAR -->
         <?php echo do_shortcode('[recent-news list posts="3"]'); ?>
       <?php else: ?>
         <?php echo do_shortcode('[recent-news posts="3"]'); ?>
       <?php endif;?>
       </div>
+      <?php
+        $see_all_URL = '/news/' . $category_slug . '/';
+        $see_all_content_type = 'news';
+        include( locate_template( 'partials/content-see-all.php' ) );?>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
     <div class="large-17 columns">
@@ -140,6 +145,10 @@ if ( !empty( $row_one_col_two_module ) ){
       <div class="row">
         <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
       </div>
+      <?php
+        $see_all_URL = '/posts/' . $category_slug . '/';
+        $see_all_content_type = 'posts';
+        include( locate_template( 'partials/content-see-all.php' ) );?>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_news_posts' ): ?>
     <!-- Begin Column Two -->
@@ -147,6 +156,10 @@ if ( !empty( $row_one_col_two_module ) ){
       <div class="row">
         <?php echo do_shortcode('[recent-news posts="1"]'); ?>
       </div>
+      <?php
+        $see_all_URL = '/news/' . $category_slug . '/';
+        $see_all_content_type = 'news';
+        include( locate_template( 'partials/content-see-all.php' ) );?>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_custom_text' ): ?>
     <div class="large-6 columns">
