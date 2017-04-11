@@ -49,9 +49,6 @@ function phila_gov_setup() {
   // Current default
   add_image_size( 'phila-thumb', 660, 430, true);
 
-  //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
-  add_image_size( 'home-thumb', 550, 360, true );
-
   //Staff Directory thumbnails
   add_image_size( 'staff-thumb', 400, 400, true );
 

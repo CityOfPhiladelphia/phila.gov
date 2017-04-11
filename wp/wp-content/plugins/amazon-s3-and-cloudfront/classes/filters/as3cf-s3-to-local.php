@@ -12,11 +12,27 @@ class AS3CF_S3_To_Local extends AS3CF_Filter {
 		add_filter( 'pre_set_theme_mod_background_image', array( $this, 'filter_customizer_image' ), 10, 2 );
 		add_filter( 'pre_set_theme_mod_header_image', array( $this, 'filter_customizer_image' ), 10, 2 );
 		add_filter( 'pre_set_theme_mod_header_image_data', array( $this, 'filter_header_image_data' ), 10, 2 );
+		add_filter( 'update_custom_css_data', array( $this, 'filter_update_custom_css_data' ), 10, 2 );
 		// Posts
 		add_filter( 'content_save_pre', array( $this, 'filter_post' ) );
 		add_filter( 'excerpt_save_pre', array( $this, 'filter_post' ) );
+		add_filter( 'as3cf_filter_post_s3_to_local', array( $this, 'filter_post' ) );
 		// Widgets
 		add_filter( 'widget_update_callback', array( $this, 'filter_widget_update' ), 10, 4 );
+	}
+
+	/**
+	 * Filter update custom CSS data.
+	 *
+	 * @param array $data
+	 * @param array $args
+	 *
+	 * @return array
+	 */
+	public function filter_update_custom_css_data( $data, $args ) {
+		$data['css'] = $this->filter_custom_css( $data['css'], $args['stylesheet'] );
+
+		return $data;
 	}
 
 	/**
@@ -39,9 +55,24 @@ class AS3CF_S3_To_Local extends AS3CF_Filter {
 		$to_cache         = array();
 		$instance['text'] = $this->process_content( $instance['text'], $cache, $to_cache );
 
+		// Editing Text Widget in Customizer throws an error if more than one option record is updated.
+		// Therefore cache updating has to wait until render or edit via Appearance menu.
+		if ( isset( $_POST['wp_customize'] ) && 'on' === $_POST['wp_customize'] ) {
+			return $instance;
+		}
+
 		$this->maybe_update_option_cache( $to_cache );
 
 		return $instance;
+	}
+
+	/**
+	 * Should filter content.
+	 *
+	 * @return bool
+	 */
+	protected function should_filter_content() {
+		return true;
 	}
 
 	/**
