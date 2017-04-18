@@ -41,7 +41,7 @@ function swpsmtp_settings() {
         $swpsmtp_options['smtp_settings']['type_encryption'] = ( isset($_POST['swpsmtp_smtp_type_encryption']) ) ? sanitize_text_field($_POST['swpsmtp_smtp_type_encryption']) : 'none';
         $swpsmtp_options['smtp_settings']['autentication'] = ( isset($_POST['swpsmtp_smtp_autentication']) ) ? sanitize_text_field($_POST['swpsmtp_smtp_autentication']) : 'yes';
         $swpsmtp_options['smtp_settings']['username'] = sanitize_text_field($_POST['swpsmtp_smtp_username']);
-        $smtp_password = trim($_POST['swpsmtp_smtp_password']);
+        $smtp_password = sanitize_text_field($_POST['swpsmtp_smtp_password']);
         $swpsmtp_options['smtp_settings']['password'] = base64_encode($smtp_password);
 
         /* Check value from "SMTP port" option */
@@ -64,16 +64,18 @@ function swpsmtp_settings() {
     }
 
     /* Send test letter */
+    $swpsmtp_to = '';
     if (isset($_POST['swpsmtp_test_submit']) && check_admin_referer(plugin_basename(__FILE__), 'swpsmtp_nonce_name')) {
         if (isset($_POST['swpsmtp_to'])) {
-            if (is_email($_POST['swpsmtp_to'])) {
-                $swpsmtp_to = $_POST['swpsmtp_to'];
+            $to_email = sanitize_text_field($_POST['swpsmtp_to']);
+            if (is_email($to_email)) {
+                $swpsmtp_to = $to_email;
             } else {
                 $error .= __("Please enter a valid email address in the recipient email field.", 'easy-wp-smtp');
             }
         }
-        $swpsmtp_subject = isset($_POST['swpsmtp_subject']) ? $_POST['swpsmtp_subject'] : '';
-        $swpsmtp_message = isset($_POST['swpsmtp_message']) ? $_POST['swpsmtp_message'] : '';
+        $swpsmtp_subject = isset($_POST['swpsmtp_subject']) ? sanitize_text_field($_POST['swpsmtp_subject']) : '';
+        $swpsmtp_message = isset($_POST['swpsmtp_message']) ? sanitize_text_field($_POST['swpsmtp_message']) : '';
         
         //Save the test mail details so it doesn't need to be filled in everytime.
         $smtp_test_mail['swpsmtp_to'] = $swpsmtp_to;
@@ -192,21 +194,21 @@ function swpsmtp_settings() {
                     <tr valign="top">
                         <th scope="row"><?php _e("To", 'easy-wp-smtp'); ?>:</th>
                         <td>
-                            <input type="text" name="swpsmtp_to" value="<?php echo $smtp_test_mail['swpsmtp_to']; ?>" /><br />
+                            <input type="text" name="swpsmtp_to" value="<?php echo esc_html($smtp_test_mail['swpsmtp_to']); ?>" /><br />
                             <p class="description"><?php _e("Enter the recipient's email address", 'easy-wp-smtp'); ?></p>
                         </td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><?php _e("Subject", 'easy-wp-smtp'); ?>:</th>
                         <td>
-                            <input type="text" name="swpsmtp_subject" value="<?php echo $smtp_test_mail['swpsmtp_subject']; ?>" /><br />
+                            <input type="text" name="swpsmtp_subject" value="<?php echo esc_html($smtp_test_mail['swpsmtp_subject']); ?>" /><br />
                             <p class="description"><?php _e("Enter a subject for your message", 'easy-wp-smtp'); ?></p>
                         </td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><?php _e("Message", 'easy-wp-smtp'); ?>:</th>
                         <td>
-                            <textarea name="swpsmtp_message" id="swpsmtp_message" rows="5"><?php echo $smtp_test_mail['swpsmtp_message']; ?></textarea><br />
+                            <textarea name="swpsmtp_message" id="swpsmtp_message" rows="5"><?php echo esc_textarea($smtp_test_mail['swpsmtp_message']); ?></textarea><br />
                             <p class="description"><?php _e("Write your email message", 'easy-wp-smtp'); ?></p>
                         </td>
                     </tr>				
