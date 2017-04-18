@@ -148,7 +148,7 @@ jQuery( function ( $ ) {
 		$button.toggle( isNaN( maxClone ) || ( maxClone && numClone < maxClone ) );
 	}
 
-	$( '#wpbody-content' )
+	$( document )
 		// Add clones
 		.on( 'click', '.add-clone', function ( e ) {
 			e.preventDefault();
@@ -189,7 +189,7 @@ jQuery( function ( $ ) {
 				items: '.rwmb-clone',
 				start: function ( event, ui ) {
 					// Make the placeholder has the same height as dragged item
-					ui.placeholder.height( ui.item.height() );
+					ui.placeholder.height( ui.item.outerHeight() );
 				}
 			} );
 	} );
