@@ -1788,3 +1788,21 @@ function phila_get_department_logo_v2( $post ){
       return $output;
     }
 }
+
+function phila_get_department_homepage_typography( $parent ){
+
+  $target_phrases = array(
+    "Office of the",
+    "Department of",
+    "Office of"
+  );
+
+  $page_title = $parent->post_title;
+
+  foreach ( $target_phrases as $phrase ) {
+    if ( strpos( $page_title, $phrase ) !== false ) {
+      $c  = strlen( $phrase );
+      return $break_after_phrases = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+    }
+  }
+}
