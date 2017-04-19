@@ -55,12 +55,8 @@ get_header(); ?>
           </div>
         <?php endif; ?>
           <div class="row expanded <?php echo ($user_selected_template === 'homepage_v2') ? 'pbs pbxxl-mu ptxl-mu' : 'pbl' ?>">
-            <div class="medium-14 small-centered columns text-overlay">
-              <?php
-
-              echo phila_get_department_homepage_typography( $parent );
-
-              ?>
+            <div class="medium-18 small-centered columns text-overlay">
+              <?php echo phila_get_department_homepage_typography( $parent ); ?>
               <?php if ($user_selected_template === 'homepage_v2'): ?>
                 <p class="sub-title mvs mbn-mu"><em><?php echo phila_get_item_meta_desc( ); ?></em></p>
               <?php endif;?>
