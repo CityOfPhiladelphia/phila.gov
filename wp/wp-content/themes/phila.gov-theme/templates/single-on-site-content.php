@@ -31,7 +31,11 @@
 <div data-swiftype-index='true' class="entry-content">
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
-  <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
+  <?php if ($user_selected_template != 'homepage_v2') : ?>
+
+    <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
+
+  <?php endif; ?>
 
   <?php if( get_the_content() != '' ) : ?>
     <!-- WYSIWYG content -->
