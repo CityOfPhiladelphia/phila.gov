@@ -1792,6 +1792,9 @@ function phila_get_department_logo_v2( $post ){
 function phila_get_department_homepage_typography( $parent ){
 
   $target_phrases = array(
+    "Mayor's Office of",
+    "Commission on",
+    "Board of",
     "Office of the",
     "Department of",
     "Office of"
