@@ -48,13 +48,11 @@ abstract class RWMB_Field {
 	 * That ensures the returned value are always been applied filters.
 	 * This method is not meant to be overwritten in specific fields.
 	 *
-	 * @param array $field Field parameters.
-	 * @param bool  $saved Whether the meta box is saved at least once.
+	 * @param array $field   Field parameters.
+	 * @param bool  $saved   Whether the meta box is saved at least once.
+	 * @param int   $post_id Post ID.
 	 */
-	public static function show( $field, $saved ) {
-		$post    = get_post();
-		$post_id = isset( $post->ID ) ? $post->ID : 0;
-
+	public static function show( $field, $saved, $post_id = 0 ) {
 		$meta = self::call( $field, 'meta', $post_id, $saved );
 		$meta = self::filter( 'field_meta', $meta, $field, $saved );
 
@@ -213,6 +211,17 @@ abstract class RWMB_Field {
 		// Use $field['std'] only when the meta box hasn't been saved (i.e. the first time we run).
 		$meta = ! $saved ? $field['std'] : $meta;
 
+		// Ensue multiple fields are arrays.
+		if ( $field['multiple'] ) {
+			if ( $field['clone'] ) {
+				$meta = (array) $meta;
+				foreach ( $meta as $key => $m ) {
+					$meta[ $key ] = (array) $m;
+				}
+			} else {
+				$meta = (array) $meta;
+			}
+		}
 		// Escape attributes.
 		$meta = self::call( $field, 'esc_meta', $meta );
 
@@ -290,6 +299,8 @@ abstract class RWMB_Field {
 
 		// If field is multiple, value is saved as multiple entries in the database (WordPress behaviour).
 		if ( $field['multiple'] ) {
+			$old = (array) $old;
+			$new = (array) $new;
 			$new_values = array_diff( $new, $old );
 			foreach ( $new_values as $new_value ) {
 				add_post_meta( $post_id, $name, $new_value, false );
@@ -329,6 +340,7 @@ abstract class RWMB_Field {
 			'clone'      => false,
 			'max_clone'  => 0,
 			'sort_clone' => false,
+			'add_button' => __( '+ Add more', 'meta-box' ),
 
 			'class'      => '',
 			'disabled'   => false,

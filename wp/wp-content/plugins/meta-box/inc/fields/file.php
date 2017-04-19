@@ -88,25 +88,18 @@ class RWMB_File_Field extends RWMB_Field {
 	 * @return string
 	 */
 	public static function html( $meta, $field ) {
-		$i18n_title = apply_filters( 'rwmb_file_upload_string', _x( 'Upload Files', 'file upload', 'meta-box' ), $field );
+		$meta = (array) $meta;
+		$meta = array_filter( $meta );
 		$i18n_more  = apply_filters( 'rwmb_file_add_string', _x( '+ Add new file', 'file upload', 'meta-box' ), $field );
 
-		// Uploaded files.
-		$html    = self::get_uploaded_files( $meta, $field );
-		$classes = 'new-files';
-		if ( ! empty( $field['max_file_uploads'] ) && count( $meta ) >= (int) $field['max_file_uploads'] ) {
-			$classes .= ' hidden';
-		}
+		$html = self::get_uploaded_files( $meta, $field );
 
 		// Show form upload.
 		$html .= sprintf(
-			'<div class="%s">
-				<h4>%s</h4>
-				<div class="file-input"><input type="file" name="%s[]" /></div>
+			'<div class="rwmb-new-files">
+				<div class="rwmb-file-input"><input type="file" name="%s[]" /></div>
 				<a class="rwmb-add-file" href="#"><strong>%s</strong></a>
 			</div>',
-			$classes,
-			$i18n_title,
 			$field['id'],
 			$i18n_more
 		);
@@ -125,17 +118,11 @@ class RWMB_File_Field extends RWMB_Field {
 		$reorder_nonce = wp_create_nonce( "rwmb-reorder-files_{$field['id']}" );
 		$delete_nonce  = wp_create_nonce( "rwmb-delete-file_{$field['id']}" );
 
-		$classes = 'rwmb-uploaded';
-		if ( count( $files ) <= 0 ) {
-			$classes .= ' hidden';
-		}
-
 		foreach ( (array) $files as $k => $file ) {
 			$files[ $k ] = self::call( $field, 'file_html', $file );
 		}
 		return sprintf(
-			'<ul class="%s" data-field_id="%s" data-delete_nonce="%s" data-reorder_nonce="%s" data-force_delete="%s" data-max_file_uploads="%s" data-mime_type="%s">%s</ul>',
-			$classes,
+			'<ul class="rwmb-uploaded" data-field_id="%s" data-delete_nonce="%s" data-reorder_nonce="%s" data-force_delete="%s" data-max_file_uploads="%s" data-mime_type="%s">%s</ul>',
 			$field['id'],
 			$delete_nonce,
 			$reorder_nonce,
@@ -196,59 +183,38 @@ class RWMB_File_Field extends RWMB_Field {
 		}
 
 		$new   = array();
-		// @codingStandardsIgnoreLine
-		$files = self::transform( $_FILES[ $field['id'] ] );
-		foreach ( $files as $file ) {
-			$new[] = self::upload( $file, $post_id );
+		$count = self::transform( $field['id'] );
+		for ( $i = 0; $i <= $count; $i ++ ) {
+			$attachment = media_handle_upload( "{$field['id']}_{$i}", $post_id );
+			if ( ! is_wp_error( $attachment ) ) {
+				$new[] = $attachment;
+			}
 		}
 
 		return array_filter( array_unique( array_merge( (array) $old, $new ) ) );
 	}
 
 	/**
-	 * Handle upload file.
+	 * Transform $_FILES from $_FILES['field']['key']['index'] to $_FILES['field_index']['key'].
 	 *
-	 * @param array $file Uploaded file info.
-	 * @param int   $post Post parent ID.
-	 * @return int Attachment ID on success, false on failure.
-	 */
-	protected static function upload( $file, $post ) {
-		$file = wp_handle_upload( $file, array(
-			'test_form' => false,
-		) );
-		if ( ! isset( $file['file'] ) ) {
-			return false;
-		}
-
-		$attachment = wp_insert_attachment( array(
-			'post_mime_type' => $file['type'],
-			'guid'           => $file['url'],
-			'post_parent'    => $post,
-			'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $file['file'] ) ),
-			'post_content'   => '',
-		), $file['file'], $post );
-		if ( is_wp_error( $attachment ) || ! $attachment ) {
-			return false;
-		}
-		wp_update_attachment_metadata( $attachment, wp_generate_attachment_metadata( $attachment, $file['file'] ) );
-		return $attachment;
-	}
-
-	/**
-	 * Transform $_FILES from $_FILES['field']['key']['index'] to $_FILES['field']['index']['key'].
+	 * @param string $field_id The field ID.
 	 *
-	 * @param array $files Uploaded files info.
-	 * @return array
+	 * @return int The number of uploaded files.
 	 */
-	protected static function transform( $files ) {
-		$output = array();
-		foreach ( $files as $key => $list ) {
+	protected static function transform( $field_id ) {
+		// @codingStandardsIgnoreLine
+		foreach ( $_FILES[ $field_id ] as $key => $list ) {
 			foreach ( $list as $index => $value ) {
-				$output[ $index ][ $key ] = $value;
+				// @codingStandardsIgnoreLine
+				if ( ! isset( $_FILES[ "{$field_id}_{$index}" ] ) ) {
+					$_FILES[ "{$field_id}_{$index}" ] = array();
+				}
+				$_FILES[ "{$field_id}_{$index}" ][ $key ] = $value;
 			}
 		}
 
-		return $output;
+		// @codingStandardsIgnoreLine
+		return count( $_FILES[ $field_id ]['name'] );
 	}
 
 	/**
