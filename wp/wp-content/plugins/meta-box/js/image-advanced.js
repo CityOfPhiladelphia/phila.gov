@@ -15,7 +15,11 @@ jQuery( function ( $ ) {
 				controller: this.controller,
 				itemView: MediaItem.extend( {
 					className: 'rwmb-image-item',
-					template: wp.template( 'rwmb-image-item' )
+					template: wp.template( 'rwmb-image-item' ),
+					initialize: function( models, options ) {
+						MediaItem.prototype.initialize.call( this, models, options );
+						this.$el.addClass( this.controller.get( 'imageSize' ) );
+					}
 				} )
 			} );
 		}
@@ -29,5 +33,5 @@ jQuery( function ( $ ) {
 	}
 
 	$( 'input.rwmb-image_advanced' ).each( initImageField );
-	$( '#wpbody' ).on( 'clone', 'input.rwmb-image_advanced', initImageField )
+	$( document ).on( 'clone', 'input.rwmb-image_advanced', initImageField )
 } );
