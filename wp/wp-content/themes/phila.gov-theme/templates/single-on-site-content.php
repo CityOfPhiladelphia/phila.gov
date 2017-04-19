@@ -9,6 +9,8 @@
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
+<?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
+
 
 <?php if ( phila_util_is_v2_template() && phila_get_selected_template() !== 'homepage_v2') : ?>
   <div class="row mtl mbm">
@@ -56,14 +58,24 @@
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
+
     <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
 
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
+
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
+
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
+    <?php endif; ?>
+
+    <?php if ( $full_row_blog): ?>
+      <section class="row">
+        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+      </section>
+    <!-- End One Page Template Display -->
     <?php endif; ?>
 
     <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
@@ -125,8 +137,8 @@
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     <?php endif; ?>
-    <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
-    <?php if ( $full_row_blog == 1): ?>
+
+    <?php if ( $full_row_blog ): ?>
       <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
       </section>
