@@ -75,7 +75,6 @@
       <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
       </section>
-    <!-- End One Page Template Display -->
     <?php endif; ?>
 
     <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
