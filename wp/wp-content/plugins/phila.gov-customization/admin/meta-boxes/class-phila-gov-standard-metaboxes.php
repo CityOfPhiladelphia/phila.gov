@@ -432,7 +432,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
 
-  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30' ){
+  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30', $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
@@ -440,16 +440,18 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'class' => 'metabox-title',
       'desc'  => $desc,
       'size'  => $size,
+      'columns' => $columns
     );
   }
 
-  public static function phila_metabox_textarea( $name, $id, $desc = null ){
+  public static function phila_metabox_textarea( $name, $id, $desc = null, $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'textarea',
       'class' => 'metabox-summary',
-      'desc'  => $desc
+      'desc'  => $desc,
+      'columns' => $columns
     );
   }
 
@@ -471,12 +473,15 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_post_picker( $name, $id, $post_type ){
+  public static function phila_metabox_post_picker( $name, $id, $post_type, $clone = false, $max_clone = 3, $columns = '12' ){
     return array(
       'name' => $name,
       'id' => $id,
       'type' => 'post',
       'post_type' => $post_type,
+      'clone' => $clone,
+      'max_clone' => $max_clone,
+      'columns' => $columns
     );
   }
 
