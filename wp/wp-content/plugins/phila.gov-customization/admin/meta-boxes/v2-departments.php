@@ -197,6 +197,14 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
     'fields' => array(
       array(
+        'id'       => 'phila_v2_homepage_featured_section',
+        'title'    => 'Title',
+        'type'  => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Section title', 'title', '', '60' ),
+        ),
+      ),
+      array(
         'id'       => 'phila_v2_homepage_featured',
         'title'    => 'Title',
         'type'  => 'group',
@@ -216,7 +224,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('', 'phila_featured_page', 'department_page', false, '', '6' ),
 
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('', 'phila_featured_title', '', '50', '6' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title('', 'phila_featured_title', 'Optional.', '50', '6' ),
           array(
             'name' => 'Image',
             'type'  => 'heading',
