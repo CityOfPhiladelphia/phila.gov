@@ -6,6 +6,7 @@
 *
 */
 ?>
+<?php $parent = phila_util_get_furthest_ancestor($post); ?>
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
@@ -14,7 +15,7 @@
 <?php $featured_meta = rwmb_meta( 'phila_v2_homepage_featured' ) ; ?>
 <?php $featured = phila_loop_clonable_metabox($featured_meta); ?>
 
-<?php if ( phila_util_is_v2_template() && phila_get_selected_template() !== 'homepage_v2') : ?>
+<?php if ( phila_util_is_v2_template( $parent->ID ) && phila_get_selected_template() !== 'homepage_v2') : ?>
   <div class="row mtl mbm">
     <div class="columns">
       <?php echo phila_breadcrumbs(); ?>
@@ -73,7 +74,7 @@
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     <?php endif; ?>
 
-    <?php if ( $full_row_blog): ?>
+    <?php if ( $full_row_blog ): ?>
       <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
       </section>
