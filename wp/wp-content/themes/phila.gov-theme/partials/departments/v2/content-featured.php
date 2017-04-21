@@ -1,7 +1,7 @@
 <?php
 /*
  *
-
+ Featured homepage content
  *
  */
 ?>
