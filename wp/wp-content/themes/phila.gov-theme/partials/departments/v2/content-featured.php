@@ -15,11 +15,10 @@
   </div>
   <section class="row equal-height mbl">
     <?php
-      //FIXME: Need to count featured pages and set appropriate column widths
+      $c = phila_grid_column_counter(count($featured));
       foreach ($featured as $key => $value):
     ?>
-      <article class="large-8 medium-24 columns featured-content programs equal">
-
+      <article class="large-<?php echo $c ?> medium-24 columns featured-content programs equal">
         <?php
           $post_id = get_post( $featured[$key]['phila_featured_page'] );
 
