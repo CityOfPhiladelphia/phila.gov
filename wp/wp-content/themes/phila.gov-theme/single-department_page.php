@@ -32,13 +32,9 @@ get_header(); ?>
   <header class="entry-header">
   <?php
   //TODO: clean up menu rendering
-    /* Get an array of Ancestors and Parents if they exist */
-    $parents = get_post_ancestors( $post->ID );
-    /* Get the top Level page->ID count base 1, array base 0 so -1 */
-    $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+    $parent = phila_util_get_furthest_ancestor($post);
 
-    $parent = get_post( $id );
-    if ( phila_util_is_v2_template() ) : ?>
+    if ( phila_util_is_v2_template( $parent->ID ) ) : ?>
     <?php $bg_img = phila_get_hero_header_v2( $parent->ID ); ?>
     <?php $bg_img_mobile = phila_get_hero_header_v2( $parent->ID, true ); ?>
     <?php $photo_credit = rwmb_meta( 'phila_v2_photo_credit', $parent->ID ); ?>
