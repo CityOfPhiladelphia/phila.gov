@@ -1433,14 +1433,26 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   }
 }
 
+/* Return post data for the furthest parent */
+
+function phila_util_get_furthest_ancestor( $post ) {
+
+  /* Get an array of Ancestors and Parents if they exist */
+  $parents = get_post_ancestors( $post->ID );
+  /* Get the top Level page->ID count base 1, array base 0 so -1 */
+  $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+  return $parent = get_post( $id );
+}
+
 /**
  * Return a string representing the template currently applied to a page in the loop.
  *
  **/
 
-function phila_get_selected_template(){
+function phila_get_selected_template( $post_id = null ){
 
-  $user_selected_template = rwmb_meta( 'phila_template_select' );
+  $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
   if ( empty( $user_selected_template ) ){
     return get_post_type();
@@ -1453,9 +1465,8 @@ function phila_get_selected_template(){
  * Utility function to determine if selected template is v2 or not
 **/
 
-function phila_util_is_v2_template(){
-  $user_selected_template = phila_get_selected_template();
-
+function phila_util_is_v2_template( $post_id = null ){
+  $user_selected_template = phila_get_selected_template( $post_id );
   if( strpos( $user_selected_template, '_v2' ) === false ){
     return false;
   }else{
