@@ -1433,14 +1433,26 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   }
 }
 
+/* Return post data for the furthest parent */
+
+function phila_util_get_furthest_ancestor( $post ) {
+
+  /* Get an array of Ancestors and Parents if they exist */
+  $parents = get_post_ancestors( $post->ID );
+  /* Get the top Level page->ID count base 1, array base 0 so -1 */
+  $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+  return $parent = get_post( $id );
+}
+
 /**
  * Return a string representing the template currently applied to a page in the loop.
  *
  **/
 
-function phila_get_selected_template(){
+function phila_get_selected_template( $post_id = null ){
 
-  $user_selected_template = rwmb_meta( 'phila_template_select' );
+  $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
   if ( empty( $user_selected_template ) ){
     return get_post_type();
@@ -1453,9 +1465,8 @@ function phila_get_selected_template(){
  * Utility function to determine if selected template is v2 or not
 **/
 
-function phila_util_is_v2_template(){
-  $user_selected_template = phila_get_selected_template();
-
+function phila_util_is_v2_template( $post_id = null ){
+  $user_selected_template = phila_get_selected_template( $post_id );
   if( strpos( $user_selected_template, '_v2' ) === false ){
     return false;
   }else{
@@ -1674,6 +1685,8 @@ function phila_connect_panel($connect_panel) {
 
       if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_social']['phila_connect_social_instagram'];
 
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_youtube'] ) && $connect_panel['phila_connect_social']['phila_connect_social_youtube'] != '' ) $output_array['social']['youtube'] = $connect_panel['phila_connect_social']['phila_connect_social_youtube'];
+
     $output_array['address'] = array(
       'st_1' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'',
 
@@ -1787,4 +1800,25 @@ function phila_get_department_logo_v2( $post ){
       }
       return $output;
     }
+}
+
+function phila_get_department_homepage_typography( $parent ){
+
+  $target_phrases = array(
+    "Mayor's Office of",
+    "Commission on",
+    "Board of",
+    "Office of the",
+    "Department of",
+    "Office of"
+  );
+
+  $page_title = $parent->post_title;
+
+  foreach ( $target_phrases as $phrase ) {
+    if ( strpos( $page_title, $phrase ) !== false ) {
+      $c  = strlen( $phrase );
+      return $break_after_phrases = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+    }
+  }
 }
