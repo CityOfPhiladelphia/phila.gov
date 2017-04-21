@@ -31,8 +31,6 @@ function latest_posts_shortcode($atts) {
     $category_slug = $category[0]->slug;
   }
 
-
-
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
        $a['posts'] = 3;
@@ -96,6 +94,8 @@ function latest_posts_shortcode($atts) {
       $output .= '<div class="content-block">';
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
+
+      $output .= '<div class="pbm"><span class="entry-date small-text">'. get_the_date() . '</span></div>';
 
       $output .= '<p>' . $desc  . '</p>';
 

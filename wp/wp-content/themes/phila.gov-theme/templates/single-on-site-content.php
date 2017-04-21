@@ -6,11 +6,16 @@
 *
 */
 ?>
+<?php $parent = phila_util_get_furthest_ancestor($post); ?>
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
+<?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
 
-<?php if ( phila_util_is_v2_template() && phila_get_selected_template() !== 'homepage_v2') : ?>
+<?php $featured_meta = rwmb_meta( 'phila_v2_homepage_featured' ) ; ?>
+<?php $featured = phila_loop_clonable_metabox($featured_meta); ?>
+
+<?php if ( phila_util_is_v2_template( $parent->ID ) && phila_get_selected_template() !== 'homepage_v2') : ?>
   <div class="row mtl mbm">
     <div class="columns">
       <?php echo phila_breadcrumbs(); ?>
@@ -31,7 +36,11 @@
 <div data-swiftype-index='true' class="entry-content">
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
-  <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
+  <?php if ($user_selected_template != 'homepage_v2') : ?>
+
+    <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
+
+  <?php endif; ?>
 
   <?php if( get_the_content() != '' ) : ?>
     <!-- WYSIWYG content -->
@@ -52,17 +61,32 @@
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
+
     <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
 
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
+
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
+
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     <?php endif; ?>
 
+    <?php if ( $full_row_blog ): ?>
+      <section class="row">
+        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+      </section>
+    <?php endif; ?>
+
     <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
+
+    <?php
+      if ( !empty( $featured ) ):
+        include(locate_template('partials/departments/v2/content-featured.php'));
+      endif;
+    ?>
 
   <?php endif;?>
 
@@ -121,8 +145,8 @@
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     <?php endif; ?>
-    <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
-    <?php if ( $full_row_blog == 1): ?>
+
+    <?php if ( $full_row_blog ): ?>
       <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
       </section>

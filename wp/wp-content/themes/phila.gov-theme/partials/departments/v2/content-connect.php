@@ -131,6 +131,14 @@ $connect_vars = phila_connect_panel($connect_panel);
               </a>
             </div>
           <?php endif; ?>
+          <?php if ( isset( $connect_vars['social']['youtube'] ) && !$connect_vars['social']['youtube'] == '') : ?>
+            <div class="small-<?php echo $columns;?> columns pvxs">
+              <a href="<?php echo $connect_vars['social']['youtube']; ?>" class="phs" data-analytics="social">
+              <i class="fa fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
+                <span class="show-for-sr">Youtube channel</span>
+              </a>
+            </div>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
       </div>
