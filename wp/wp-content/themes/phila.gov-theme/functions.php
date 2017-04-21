@@ -1685,6 +1685,8 @@ function phila_connect_panel($connect_panel) {
 
       if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_social']['phila_connect_social_instagram'];
 
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_youtube'] ) && $connect_panel['phila_connect_social']['phila_connect_social_youtube'] != '' ) $output_array['social']['youtube'] = $connect_panel['phila_connect_social']['phila_connect_social_youtube'];
+
     $output_array['address'] = array(
       'st_1' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'',
 

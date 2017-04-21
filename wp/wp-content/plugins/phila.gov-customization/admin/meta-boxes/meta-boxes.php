@@ -694,6 +694,12 @@ function phila_register_meta_boxes( $meta_boxes ){
                  'type' => 'url',
                  'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
                 ),
+                array(
+                 'name' => 'YouTube URL',
+                 'id'   => 'phila_connect_social_youtube',
+                 'type' => 'url',
+                 'desc' => 'Example: https://www.youtube.com/user/philly311center'
+                ),
               ),
             ),
             array(
