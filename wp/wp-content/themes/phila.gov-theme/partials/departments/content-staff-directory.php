@@ -169,7 +169,7 @@ if ( has_category() ):
       <section class="row mvl all-staff-table">
           <div class="large-24 columns">
             <?php if ($user_selected_template != 'staff_directory') : ?>
-              <h2 class="contrast">All staff</h2>
+              <h2 class="contrast">Staff</h2>
             <?php endif; ?>
             <table role="grid" class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
               <thead>
