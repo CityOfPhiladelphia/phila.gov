@@ -1819,6 +1819,8 @@ function phila_get_department_homepage_typography( $parent ){
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
       return $break_after_phrases = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+    }else{
+      return '<h1>' . $page_title . '</h1>';
     }
   }
 }
