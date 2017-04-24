@@ -1700,7 +1700,7 @@ function phila_connect_panel($connect_panel) {
     );
 
     $output_array['phone'] = array(
-      'area' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['area'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['area'] : '', 
+      'area' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['area'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['area'] : '',
 
       'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] : '',
 
@@ -1823,9 +1823,10 @@ function phila_get_department_homepage_typography( $parent ){
   foreach ( $target_phrases as $phrase ) {
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
-      return $break_after_phrases = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+      $new_title = $break_after_phrases = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
     }else{
-      return '<h1>' . $page_title . '</h1>';
+      $new_title = '<h1>' . $page_title . '</h1>';
     }
   }
+  return $new_title;
 }
