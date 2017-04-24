@@ -61,8 +61,7 @@ $connect_vars = phila_connect_panel($connect_panel);
       </div>
     </div>
   <?php endif; ?>
-
-  <?php if ( ( !$connect_vars['phone'] == '' ) || (!$connect_vars['fax'] == '' ) ) : ?>
+  <?php if ( ( !phila_util_is_array_empty($connect_vars['phone']) ) || (!$connect_vars['fax'] == '' ) ) : ?>
   <div class="row collapse equal-height inside-border-group">
     <div class="small-5 columns equal center inside-border-group-item">
       <div class="valign">
