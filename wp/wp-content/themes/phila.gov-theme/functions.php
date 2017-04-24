@@ -1833,19 +1833,22 @@ function phila_get_department_homepage_typography( $parent ){
     "Commission on",
     "Board of",
     "Office of the",
+    "Office of",
     "Department of",
-    "Office of"
   );
 
   $page_title = $parent->post_title;
 
-  foreach ( $target_phrases as $phrase ) {
+  while (list(, $phrase) = each($target_phrases)) {
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
-      $new_title = $break_after_phrases = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+      $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+      break;
     }else{
       $new_title = '<h1>' . $page_title . '</h1>';
     }
   }
+
+
   return $new_title;
 }
