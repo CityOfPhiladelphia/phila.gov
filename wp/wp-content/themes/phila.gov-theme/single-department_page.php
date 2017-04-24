@@ -54,7 +54,7 @@ get_header(); ?>
             <div class="medium-18 small-centered columns text-overlay">
               <?php echo phila_get_department_homepage_typography( $parent ); ?>
               <?php if ($user_selected_template === 'homepage_v2'): ?>
-                <p class="sub-title mvs mbn-mu"><em><?php echo phila_get_item_meta_desc( ); ?></em></p>
+                <p class="sub-title mvs mbn-mu"><strong><?php echo phila_get_item_meta_desc( ); ?></strong></p>
               <?php endif;?>
             </div>
           </div>
