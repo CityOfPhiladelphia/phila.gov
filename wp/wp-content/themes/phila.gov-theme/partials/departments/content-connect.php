@@ -54,7 +54,7 @@
             <span class="locality"><?php echo $connect_vars['address']['city']; ?></span>, <span class="region" title="Pennsylvania"> <?php echo $connect_vars['address']['state']; ?></span> <span class="postal-code"><?php echo $connect_vars['address']['zip']; ?></span>
           <?php endif; ?>
         </div>
-        <?php if ( !$connect_vars['phone'] == '') : ?>
+        <?php if ( !phila_util_is_array_empty($connect_vars['phone'])) : ?>
           <div class="tel">
             <?php
             $area = ( $connect_vars['phone']['area'] != '' ) ? '(' .  $connect_vars['phone']['area'] . ') ' : '';

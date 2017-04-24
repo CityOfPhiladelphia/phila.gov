@@ -1807,6 +1807,25 @@ function phila_get_department_logo_v2( $post ){
     }
 }
 
+function phila_util_is_array_empty($input){
+   $result = true;
+
+   if (is_array($input) && count($input) > 0)
+   {
+      foreach ($input as $v)
+      {
+         $result = $result && phila_util_is_array_empty($v);
+      }
+   }
+   else
+   {
+      $result = empty($input);
+   }
+
+   return $result;
+}
+
+
 function phila_get_department_homepage_typography( $parent ){
 
   $target_phrases = array(
