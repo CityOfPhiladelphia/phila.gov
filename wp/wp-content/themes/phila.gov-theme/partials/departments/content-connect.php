@@ -54,9 +54,18 @@
             <span class="locality"><?php echo $connect_vars['address']['city']; ?></span>, <span class="region" title="Pennsylvania"> <?php echo $connect_vars['address']['state']; ?></span> <span class="postal-code"><?php echo $connect_vars['address']['zip']; ?></span>
           <?php endif; ?>
         </div>
-        <?php if ( !$connect_vars['phone'] == '') : ?>
-          <div class="tel pbxs">
-            <span class="type vcard-label">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $connect_vars['phone']); ?>"><?php echo  $connect_vars['phone']; ?></a>
+        <?php if ( !phila_util_is_array_empty($connect_vars['phone'])) : ?>
+          <div class="tel">
+            <?php
+            $area = ( $connect_vars['phone']['area'] != '' ) ? '(' .  $connect_vars['phone']['area'] . ') ' : '';
+
+            $co_code = ( $connect_vars['phone']['co-code'] != '' ) ? $connect_vars['phone']['co-code'] : '';
+
+            $subscriber_number = ( $connect_vars['phone']['subscriber-number'] != '' ) ? '-' . $connect_vars['phone']['subscriber-number'] : '';
+
+            $full_phone = $area . $co_code . $subscriber_number;
+            ?>
+            <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span><a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
           </div>
         <?php endif; ?>
         <?php if ( !$connect_vars['fax'] == '') : ?>
