@@ -14,12 +14,12 @@
     <div data-swiftype-index='true' class="entry-content medium-18 medium-push-6 columns">
     <?php the_content(); ?>
     </div>
-    <aside id="secondary" class="small-24 medium-6 medium-pull-18 columns prm">
+    <aside id="secondary" class="small-24 medium-6 medium-pull-18 columns">
       <?php $posted_on_values = phila_get_posted_on(); ?>
-      <div class="posted-on row column pvs">
+      <div class="posted-on row">
       <?php if ( has_post_thumbnail() ): ?>
-        <div class="columns hide-for-small-only medium-24 pan">
-          <div class="phila-thumb float-left mrm mvm">
+        <div class="columns hide-for-small-only medium-24 ptxs">
+          <div class="phila-thumb float-left">
             <?php echo phila_get_thumbnails(); ?>
           </div>
         </div>
