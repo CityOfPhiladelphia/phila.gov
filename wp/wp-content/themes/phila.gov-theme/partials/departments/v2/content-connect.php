@@ -11,7 +11,7 @@ $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
 $connect_vars = phila_connect_panel($connect_panel);
 ?>
 
-<div class="large-7 columns connect vcard">
+<div class="large-8 columns connect vcard">
   <div class="row">
     <div class="columns">
       <h2 class="contrast">Connect</h2>

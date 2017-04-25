@@ -84,7 +84,7 @@ if ( !empty( $row_one_col_two_module ) ){
       </div>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
-    <div class="large-17 columns">
+    <div class="large-16 columns">
       <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
       <div>
         <?php echo apply_filters( 'the_content', $row_one_col_one_textarea ); ?>
