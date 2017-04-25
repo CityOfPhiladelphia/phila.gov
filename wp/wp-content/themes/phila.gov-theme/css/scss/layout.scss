@@ -179,3 +179,7 @@ header.entry-header h2{
 .inline-block{
   display: inline-block;
 }
+
+td:empty {
+  display: none;
+}

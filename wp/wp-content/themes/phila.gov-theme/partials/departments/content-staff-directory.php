@@ -11,6 +11,8 @@ $user_selected_template = phila_get_selected_template();
 
 $category_override = rwmb_meta('phila_staff_category');
 
+$social_flag = false;
+
 if ( has_category() ):
 
   $categories = get_the_category();
@@ -79,7 +81,6 @@ if ( has_category() ):
 
         endif;
 
-
         $staff_leadership = rwmb_meta('phila_leadership', $args = array('type'=>'checkbox'));
       }
       if ( $staff_leadership ):
@@ -136,14 +137,15 @@ if ( has_category() ):
         $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
 
       else:
-
         $all_staff_table_output .= '<tr>
           <td>' . $staff_member_name_output . '</td>
           <td>' . $staff_title . '</td>
           <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
-          <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>
-          <td class="social">' . $staff_social_output . '</td>
-        </tr>';
+          <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          if ( !empty( $staff_social_output ) ) :
+            $social_flag = true;
+          endif;
+            $all_staff_table_output .= '<td class="social">' . $staff_social_output . '</td></tr>';
       endif;
     endwhile;
 
@@ -178,7 +180,9 @@ if ( has_category() ):
                   <th scope="col">Job Title</th>
                   <th scope="col">Email</th>
                   <th scope="col">Phone #</th>
+                  <?php if ( $social_flag ) : ?>
                   <th scope="col">Social</th>
+                  <?php endif; ?>
                 </tr>
               </thead>
               <tbody>
