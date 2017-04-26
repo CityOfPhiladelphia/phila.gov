@@ -146,8 +146,13 @@ class Phila_Gov_Admin_Templates {
             'tax_detail' => 'Tax detail',
             'topic_page' => 'Topic page',
             'start_process' => 'Start a process'
-          )
-        )
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Template' ),
+            'sort'     => true,
+          ),
+        ),
       ),
     );
      return $meta_boxes;
