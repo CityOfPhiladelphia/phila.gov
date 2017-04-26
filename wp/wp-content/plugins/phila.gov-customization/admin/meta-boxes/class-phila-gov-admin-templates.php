@@ -65,6 +65,18 @@ class Phila_Gov_Admin_Templates {
         'desc'  => 'Should this page appear in the City government directory?',
         'id'    => $prefix . 'department_home_page',
         'type'  => 'checkbox',
+        'hidden' => array(
+          'when' => array(
+            array('phila_template_select', '=', 'homepage_v2' ),
+            array('phila_template_select', '=', 'one_quarter_headings_v2' ),
+            array('phila_template_select', '=', 'contact_us_v2' ),
+            array('phila_template_select', '=', 'all_services_v2' ),
+            array('phila_template_select', '=', 'forms_and_documents_v2' ),
+            array('phila_template_select', '=', 'resource_list_v2' ),
+            array('phila_template_select', '=', 'staff_directory_v2' ),
+          ),
+          'relation' => 'or'
+        ),
       ),
     ),
   );
