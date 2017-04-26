@@ -12,7 +12,6 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'media_buttons' => false,
       'teeny' => true,
       'dfw' => false,
-      'quicktags' => false,
       'tinymce' => phila_setup_tiny_mce_basic(
         array(
           'format_select' => false
@@ -28,7 +27,6 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'media_buttons' => false,
       'teeny' => true,
       'dfw' => false,
-      'quicktags' => false,
       'tinymce' => phila_setup_tiny_mce_basic(
         array(
           'format_select' => true,
