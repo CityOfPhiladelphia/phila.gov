@@ -64,7 +64,7 @@ class Phila_Gov_Admin_Templates {
             'position' => 'after date',
             'title'    => __( 'Template' ),
             'sort'     => true,
-        ),
+          ),
        ),
        array(
         'desc'  => 'Should this page appear in the City government directory?',
