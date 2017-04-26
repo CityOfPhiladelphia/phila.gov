@@ -269,6 +269,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'type'  => 'group',
       'clone' => true,
       'sort_clone'  => true,
+      'add_button'  => '+ Add a step',
 
       'fields'  => array(
         array(
