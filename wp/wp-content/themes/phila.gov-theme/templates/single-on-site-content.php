@@ -92,15 +92,15 @@
 
   <?php //Begin v2 non-homepage templates ?>
   <?php if ($user_selected_template == 'all_services_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'all-services' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content/', 'one-quarter' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'forms_and_documents_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'forms-documents-v2' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'forms-documents' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'contact_us_v2') : ?>
