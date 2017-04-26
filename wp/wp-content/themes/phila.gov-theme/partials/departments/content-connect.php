@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="large-6 columns connect">
+<div class="large-8 columns connect">
   <h2 class="contrast">Connect</h2>
   <div class="vcard panel no-margin">
     <div>

@@ -17,7 +17,7 @@ if ( !empty( $list_item_group ) ): ?>
       <h2 class="contrast"><?php echo( $row_title ); ?></h2>
     <?php endif; ?>
       <div class="row">
-        <div class="large-6 columns">
+        <div class="large-8 columns">
           <?php
             if ( !empty( $summary ) ):
               echo( $summary );
@@ -26,7 +26,7 @@ if ( !empty( $list_item_group ) ): ?>
             endif;
           ?>
         </div>
-        <div class="large-18 columns content-list">
+        <div class="large-16 columns content-list">
           <div class="row collapse" data-equalizer>
             <?php
               foreach ($list_item_group as $key => $value) :
