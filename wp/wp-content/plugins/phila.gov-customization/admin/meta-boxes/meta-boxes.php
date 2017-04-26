@@ -365,14 +365,22 @@ function phila_register_meta_boxes( $meta_boxes ){
    'context'  => 'normal',
    'priority' => 'high',
 
-
    'include' => array(
      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
    ),
    'hidden' => array(
-     'phila_template_select', '=', 'off_site_department',
+     'when'  => array(
+       array('phila_template_select', 'ends with', 'v2')
+     ),
+     'relation' => 'or',
    ),
-   'hidden'  => array('phila_template_select', 'ends with', 'v2'),
+   'visible'  => array(
+     'when' => array(
+       array('phila_template_select', '=', 'default' ),
+       array('phila_template_select', '=', 'department_homepage' ),
+     ),
+     'relation' => 'or',
+   ),
 
    'fields' => array(
      array(
@@ -406,9 +414,6 @@ function phila_register_meta_boxes( $meta_boxes ){
        'class' => 'hero-header-body-copy',
        'desc'  => 'Text that will be placed over the header image and below the Hero Header Title.',
        'size'  => '60',
-       'hidden' => array(
-         'phila_template_select', '=', 'one_page_department',
-       ),
      ),
      array(
        'name'  => 'Call to Action Button URL',
@@ -416,9 +421,6 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'    => 'phila_hero_header_call_to_action_button_url',
        'type'  => 'URL',
        'class' => 'hero-header-call-to-action-button-url',
-       'hidden' => array(
-         'phila_template_select', '=', 'one_page_department',
-       ),
      ),
      array(
        'name'  => 'Call to Action Button Text',
@@ -427,9 +429,6 @@ function phila_register_meta_boxes( $meta_boxes ){
        'class' => 'hero-header-call-to-action-button-text',
        'desc'  => 'Text that appears on the "call to action" button.',
        'size'  => '30',
-       'hidden' => array(
-         'phila_template_select', '=', 'one_page_department',
-       ),
      ),
      array(
        'name'  => 'Image',
@@ -482,15 +481,9 @@ function phila_register_meta_boxes( $meta_boxes ){
       'id'   => 'phila_module_row_1_description',
       'type' => 'custom_html',
       'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
-      'hidden' => array(
-        'phila_template_select', '=', 'one_page_department',
-      ),
      ),
      array(
        'type' => 'divider',
-       'hidden' => array(
-         'phila_template_select', '=', 'one_page_department',
-       ),
      ),
      array(
       'id' => 'module_row_1_col_1',
@@ -565,9 +558,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     array(
       'id' => 'module_row_1_col_2',
       'type' => 'group',
-      'hidden' => array(
-        'phila_template_select', '=', 'one_page_department',
-      ),
       'fields' => array(
          array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
@@ -941,7 +931,6 @@ $meta_boxes[] = array(
     ),
     'visible' => array(
       'when' => array(
-        array( 'phila_template_select', '=', 'one_page_department' ),
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
       'relation' => 'or',
@@ -970,7 +959,6 @@ $meta_boxes[] = array(
     ),
     'visible' => array(
       'when' => array(
-        array( 'phila_template_select', '=', 'one_page_department' ),
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
       'relation' => 'or',
@@ -999,7 +987,6 @@ $meta_boxes[] = array(
     ),
     'visible' => array(
       'when' => array(
-        array( 'phila_template_select', '=', 'one_page_department'),
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
       'relation' => 'or',
@@ -1197,18 +1184,12 @@ $meta_var_call_to_action_multi = array(
             'id'    => 'phila_action_panel_fa_multi',
             'type'  => 'text',
             'class' => 'action-panel-fa',
-            'hidden' => array(
-              'phila_template_select', '=', 'one_page_department',
-            ),
           ),
           array(
             'name'  => 'Icon Background Circle',
             'id'    => 'phila_action_panel_fa_circle_multi',
             'type'  => 'checkbox',
             'class' => 'action-panel-fa',
-            'hidden' => array(
-              'phila_template_select', '=', 'one_page_department',
-            ),
           ),
           array(
             'name'  => 'Link to Content',
