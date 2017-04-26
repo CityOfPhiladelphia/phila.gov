@@ -61,7 +61,7 @@ if ( !empty( $row_one_col_two_module ) ){
   <div class="row">
   <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
   <!-- Begin Column One -->
-    <div class="large-17 columns">
+    <div class="large-16 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
       <!-- TURN SHORTCODE STRING INTO VAR -->
@@ -73,7 +73,7 @@ if ( !empty( $row_one_col_two_module ) ){
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_news_posts' ): ?>
   <!-- Begin Column One -->
-    <div class="large-17 columns">
+    <div class="large-16 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
       <!-- TURN SHORTCODE STRING INTO VAR -->
@@ -99,20 +99,20 @@ if ( !empty( $row_one_col_two_module ) ){
   <?php endif; ?>
   <?php if ( $row_one_col_two_type  == 'phila_module_row_1_col_2_blog_posts' ): ?>
     <!-- Begin Column Two -->
-    <div class="large-6 columns">
+    <div class="large-8 columns">
       <div class="row">
         <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
       </div>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_news_posts' ): ?>
     <!-- Begin Column Two -->
-    <div class="large-6 columns">
+    <div class="large-8 columns">
       <div class="row">
         <?php echo do_shortcode('[recent-news posts="1"]'); ?>
       </div>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_custom_text' ): ?>
-    <div class="large-6 columns">
+    <div class="large-8 columns">
       <h2 class="contrast"><?php echo($row_one_col_two_text_title); ?></h2>
       <div class="panel no-margin">
         <div>
@@ -121,7 +121,7 @@ if ( !empty( $row_one_col_two_module ) ){
       </div>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_call_to_action_panel' ): ?>
-    <div class="large-6 columns">
+    <div class="large-8 columns">
       <h2 class="contrast"><?php echo $row_one_col_two_action_panel_title; ?></h2>
       <?php if (!$row_one_col_two_action_panel_link == ''): ?>
       <a href="<?php echo $row_one_col_two_action_panel_link; ?>"  class="action-panel">
