@@ -96,7 +96,7 @@
   <?php endif;?>
 
   <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
-    <?php get_template_part( 'partials/departments/v2/content/', 'one-quarter' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'one-quarter' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'forms_and_documents_v2') : ?>
