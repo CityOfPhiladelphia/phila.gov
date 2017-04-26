@@ -46,7 +46,6 @@ class Phila_Gov_Admin_Templates {
         'options' => array(
           'default'   => 'Default',
           'off_site_department' => 'Off-site department',
-          'one_page_department' => 'One Page department',
           'department_homepage' => 'Department homepage',
           'department_subpage' => 'Department subpage',
           'programs_initiatives' => 'Programs and initiatives',
