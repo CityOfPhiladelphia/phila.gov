@@ -55,40 +55,6 @@ jQuery(document).ready(function($) {
       }
 
     }
-    if ( ( typenow == 'event_page') && adminpage.indexOf( 'post' ) > -1 ) {
-      $("#post").validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
-      $('#phila_event_loc').rules('add', {
-        required:true
-      });
-      $('#phila_event_permit_details').rules('add', {
-        maxlength: 200
-      });
-      $('input[id^="phila_event_block_content_title"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 70
-        });
-      });
-      $('textarea[id^="phila_event_block_summary"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 200
-        });
-      });
-      $('textarea[id^="phila_service_update_message"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 95
-        });
-      });
-      $('input[id^="phila_update_link_text"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 80
-        });
-      });
-
-    }
     if ( typenow == 'staff_directory' && adminpage.indexOf( 'post' ) > -1 ) {
       $('#phila_first_name').prop('required', true);
       $('#phila_last_name').prop('required', true);

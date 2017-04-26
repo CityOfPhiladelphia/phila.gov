@@ -324,7 +324,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_custom_markup',
     'title'    => 'Custom Markup',
-    'pages'    => array( 'department_page', 'event_page' , 'page', 'service_page' ),
+    'pages'    => array( 'department_page', 'page', 'service_page' ),
     'context'  => 'normal',
     'priority' => 'low',
 
@@ -361,7 +361,7 @@ function phila_register_meta_boxes( $meta_boxes ){
  $meta_boxes[] = array(
    'id'       => 'hero-header',
    'title'    => 'Hero Header',
-   'pages'    => array( 'department_page' , 'event_page' ),
+   'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'high',
 
