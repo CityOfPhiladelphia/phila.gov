@@ -60,6 +60,11 @@ class Phila_Gov_Admin_Templates {
           'resource_list_v2' => 'Resource list',
           'staff_directory_v2' => 'Staff directory',
           ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Template' ),
+            'sort'     => true,
+        ),
        ),
        array(
         'desc'  => 'Should this page appear in the City government directory?',
