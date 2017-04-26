@@ -245,6 +245,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type' => 'group',
         'clone'  => true,
         'sort_clone' => true,
+        'add_button' => '+ Add a Resource List',
 
         'fields' => array(
           array(
@@ -258,6 +259,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'type' => 'group',
             'clone'  => true,
             'sort_clone' => true,
+            'add_button' => '+ Add an item',
 
             'fields' => array(
                 array(
@@ -1459,6 +1461,7 @@ $meta_var_wysiwyg_multi = array(
   'type'  => 'group',
   'clone' => true,
   'sort_clone'  => true,
+  'add_button'  => '+ Add a section',
 
   'fields'  => array(
     array(
@@ -1967,32 +1970,8 @@ $meta_boxes[] = array(
     )
   )
 );
-
 return $meta_boxes;
-
 }
-
-add_filter( 'rwmb_group_add_clone_button_text', 'phila_group_add_clone_button_text', 10, 2 );
-
-function phila_group_add_clone_button_text( $text, $field ) {
-  if ( 'phila_resource_list' == $field['id'] ) {
-    $text = '+ Add a Resource List';
-  }
-  if ( 'phila_ordered_content' == $field['id'] ) {
-    $text = '+ Add a Step';
-  }
-  if ( 'phila_cloneable_wysiwyg' == $field['id'] ){
-    $text = '+ Add a Section';
-  }
-  if ( 'phila_contact_us' == $field['id'] ){
-    $text = '+ Add a Row';
-  }
-  if ( 'phila_contact_group' == $field['id'] ){
-    $text = '+ Add a Column';
-  }
-  return $text;
-}
-
 
 /**
  *
