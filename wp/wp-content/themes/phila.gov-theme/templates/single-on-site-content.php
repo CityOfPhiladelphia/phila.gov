@@ -138,21 +138,6 @@
     </section>
     <!-- End Department Program & Initiatives Display -->
 
-  <?php elseif ($user_selected_template == 'one_page_department') : ?>
-    <!-- Begin One Page Template Display -->
-    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-
-    <?php if ( $staff_directory_listing ): ?>
-      <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
-    <?php endif; ?>
-
-    <?php if ( $full_row_blog ): ?>
-      <section class="row">
-        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-      </section>
-    <!-- End One Page Template Display -->
-    <?php endif; ?>
-
   <?php elseif ($user_selected_template == 'resource_list') : ?>
     <!-- Begin Resource List Display -->
     <section class="apply-template">
@@ -179,10 +164,6 @@
 
 
   <?php endif; ?>
-
-  <?php if ($user_selected_template == 'one_page_department') : ?>
-    <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
-  <?php endif;?>
 
   <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 </div> <!-- End .entry-content -->
