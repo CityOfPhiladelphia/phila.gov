@@ -19,7 +19,7 @@
     <div data-swiftype-index='true' class="entry-content medium-24 columns">
       <?php
       if ( has_post_thumbnail() ) : ?>
-      <div class="phila-thumb float-left mrm mvm">
+      <div class="phila-thumb float-left mrm mbm mtxs">
         <?php echo phila_get_thumbnails(); ?>
       </div>
     <?php endif; ?>
