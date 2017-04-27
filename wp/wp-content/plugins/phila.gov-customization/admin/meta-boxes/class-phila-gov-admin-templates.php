@@ -46,7 +46,6 @@ class Phila_Gov_Admin_Templates {
         'options' => array(
           'default'   => 'Default',
           'off_site_department' => 'Off-site department',
-          'one_page_department' => 'One Page department',
           'department_homepage' => 'Department homepage',
           'department_subpage' => 'Department subpage',
           'programs_initiatives' => 'Programs and initiatives',
@@ -61,11 +60,28 @@ class Phila_Gov_Admin_Templates {
           'resource_list_v2' => 'Resource list',
           'staff_directory_v2' => 'Staff directory',
           ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Template' ),
+            'sort'     => true,
+          ),
        ),
        array(
         'desc'  => 'Should this page appear in the City government directory?',
         'id'    => $prefix . 'department_home_page',
         'type'  => 'checkbox',
+        'hidden' => array(
+          'when' => array(
+            array('phila_template_select', '=', 'homepage_v2' ),
+            array('phila_template_select', '=', 'one_quarter_headings_v2' ),
+            array('phila_template_select', '=', 'contact_us_v2' ),
+            array('phila_template_select', '=', 'all_services_v2' ),
+            array('phila_template_select', '=', 'forms_and_documents_v2' ),
+            array('phila_template_select', '=', 'resource_list_v2' ),
+            array('phila_template_select', '=', 'staff_directory_v2' ),
+          ),
+          'relation' => 'or'
+        ),
       ),
     ),
   );
@@ -130,8 +146,13 @@ class Phila_Gov_Admin_Templates {
             'tax_detail' => 'Tax detail',
             'topic_page' => 'Topic page',
             'start_process' => 'Start a process'
-          )
-        )
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Template' ),
+            'sort'     => true,
+          ),
+        ),
       ),
     );
      return $meta_boxes;

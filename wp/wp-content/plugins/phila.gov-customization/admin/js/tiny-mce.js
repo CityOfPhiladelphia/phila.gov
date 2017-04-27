@@ -6,7 +6,7 @@
 
 		// Add function that includes the external link checkbox in the insert link modal.
 		wpLink.addexternalCheckbox = function () {
-			$( '#wp-link .link-target' ).append( '<label><span> </span><input type="checkbox" id="link-external-checkbox" />This website is not part of phila.gov</label>' );
+			$( '#wp-link .link-target' ).replaceWith( '<div><label><span> </span><input type="checkbox" id="link-external-checkbox" />This website is not part of phila.gov</label></div>' );
 		}
 
 		// Add the checkbox to the wplink modal (on post.php and post-new.php pages).

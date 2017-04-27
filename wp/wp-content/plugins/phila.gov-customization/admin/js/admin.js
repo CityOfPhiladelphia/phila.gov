@@ -55,40 +55,6 @@ jQuery(document).ready(function($) {
       }
 
     }
-    if ( ( typenow == 'event_page') && adminpage.indexOf( 'post' ) > -1 ) {
-      $("#post").validate({
-        rules: {
-          'post_title': 'required'
-        }
-      });
-      $('#phila_event_loc').rules('add', {
-        required:true
-      });
-      $('#phila_event_permit_details').rules('add', {
-        maxlength: 200
-      });
-      $('input[id^="phila_event_block_content_title"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 70
-        });
-      });
-      $('textarea[id^="phila_event_block_summary"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 200
-        });
-      });
-      $('textarea[id^="phila_service_update_message"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 95
-        });
-      });
-      $('input[id^="phila_update_link_text"]').each(function (i, el) {
-        $(this).rules('add', {
-          maxlength: 80
-        });
-      });
-
-    }
     if ( typenow == 'staff_directory' && adminpage.indexOf( 'post' ) > -1 ) {
       $('#phila_first_name').prop('required', true);
       $('#phila_last_name').prop('required', true);
@@ -107,39 +73,6 @@ jQuery(document).ready(function($) {
       });
     }
   }
-  function setOnePageInputVals(){
-    //Hide row and column description. This can't be done using rwmb conditionals, because it will hide the whole group.
-    $('#phila_module_row_1_col_1_type').parent().parent().hide();
-
-    $('#phila_module_row_1_col_1_type').val('phila_module_row_1_col_1_custom_text');
-
-    $('#phila_module_row_1_col_2_type').val('phila_module_row_1_col_2_connect_panel');
-
-    $("#phila_module_row_1_col_1_type option").each(function(){
-      if ( $(this).val() != 'phila_module_row_1_col_1_custom_text' ){
-        $(this).prop('disabled', true);
-      }
-    });
-
-    $("#phila_module_row_1_col_2_type option").each(function(){
-      if ( $(this).val() != 'phila_module_row_1_col_2_connect_panel' ){
-        $(this).prop('disabled', true);
-      }
-    });
-
-    $('#phila_module_row_1_col_1_texttitle').val('What we do').prop( 'readOnly', true );
-
-    $('#phila_module_row_1_col_1_textarea').rules('add', {
-      maxlength: 850
-    });
-    $('[id^=phila_action_panel_summary_multi_]').rules('add', {
-      maxlength: 180
-    });
-    $( '#phila_department_home_page' ).prop( 'checked', true );
-
-    $('.postarea').hide();
-
-  }
   function setOffSiteInputVals(){
     $( '#phila_department_home_page' ).prop( 'checked', true );
     $('.postarea').hide();
@@ -156,11 +89,6 @@ jQuery(document).ready(function($) {
       maxlength: 15
     });
 
-    if ( templateSelect.val() == 'one_page_department' ){
-      setOnePageInputVals();
-      $('#phila_template_select').click();
-    }
-
     if ( templateSelect.val() == 'off_site_department' ){
       setOffSiteInputVals();
       $('#phila_template_select').click();
@@ -172,9 +100,7 @@ jQuery(document).ready(function($) {
 
     templateSelect.change(function() {
       //set fields based on template selection
-      if ( templateSelect.val() == 'one_page_department' ){
-        setOnePageInputVals();
-      }else if( templateSelect.val() == 'off_site_department'){
+      if( templateSelect.val() == 'off_site_department'){
         setOffSiteInputVals();
 
       }else{

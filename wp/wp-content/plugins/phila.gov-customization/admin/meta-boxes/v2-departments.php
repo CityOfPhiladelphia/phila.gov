@@ -73,6 +73,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'priority' => 'high',
         'type'  => 'group',
         'clone' => true,
+        'add_button'  => '+ Add a link',
 
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
