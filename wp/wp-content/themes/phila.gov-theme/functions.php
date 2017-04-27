@@ -1153,39 +1153,6 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
-function phila_get_event_content_blocks(){
-
-  $output_array = array();
-  $content_blocks = rwmb_meta( 'event_content_blocks' );
-
-  foreach( $content_blocks as $key => $array_value ) {
-    $output_item ='';
-
-    $block_title = isset( $array_value['phila_event_block_content_title'] ) ? $array_value['phila_event_block_content_title'] : '';
-    $block_link = isset( $array_value['phila_event_block_link'] ) ? $array_value['phila_event_block_link'] : '';
-    $block_summary = isset( $array_value['phila_event_block_summary'] ) ? $array_value['phila_event_block_summary'] : '';
-    $block_image = isset( $array_value['phila_event_block_image'] ) ? $array_value['phila_event_block_image'] : '';
-    $block_image_credit = isset( $array_value['phila_event_block_image_credit'] ) ? $array_value['phila_event_block_image_credit'] : '';
-
-
-    $output_item = array(
-      'block_title' => $block_title,
-      'block_summary' => $block_summary,
-      'block_link' => $block_link,
-      'block_image' => $block_image,
-      'block_image_credit' => $block_image_credit,
-    );
-
-    array_push($output_array, $output_item);
-
-  }
-  if (array_key_exists( 0 , $output_array )){
-      return $output_array;
-    } else {
-      return;
-    }
-}
-
 function phila_util_month_format($date){
   if (strlen($date->format('F')) > 5){
      return 'M.';
@@ -1292,56 +1259,6 @@ function phila_get_service_updates(){
       return;
     endif;
 }
-
-function phila_get_service_updates_events(){
-
-  $output_array = array();
-  $service_updates = rwmb_meta( 'service_updates' );
-
-  foreach( $service_updates as $key => $array_value ) {
-    $output_item ='';
-
-    $service_type = isset( $array_value['phila_update_type'] ) ? $array_value['phila_update_type'] : '';
-    $service_level = isset( $array_value['phila_update_level'] ) ? $array_value['phila_update_level'] : '';
-    $service_message = isset( $array_value['phila_service_update_message'] ) ? $array_value['phila_service_update_message'] : '';
-    $service_link_text = isset( $array_value['phila_update_link_text'] ) ? $array_value['phila_update_link_text'] : '';
-    $service_link = isset( $array_value['phila_update_link'] ) ? $array_value['phila_update_link'] : '';
-    $service_effective_date = isset( $array_value['phila_update_effective_date'] ) ? $array_value['phila_update_effective_date'] : '';
-    switch($service_type){
-      case 'city':
-        $service_icon = 'fa-institution';
-        break;
-        case 'roads':
-          $service_icon = 'fa-road';
-          break;
-        case 'transit':
-          $service_icon = 'fa-subway';
-          break;
-        case 'trash':
-          $service_icon = 'fa-trash';
-          break;
-    }
-
-    $output_item = array(
-      'service_type' => $service_type,
-      'service_icon' => $service_icon,
-      'service_level' => $service_level,
-      'service_message' => $service_message,
-      'service_link_text' => $service_link_text,
-      'service_link' => $service_link,
-      'service_effective_date' => $service_effective_date,
-    );
-
-    array_push($output_array, $output_item);
-
-  }
-  if (array_key_exists( 0 , $output_array )){
-    return $output_array;
-  } else {
-    return;
-  }
-}
-
 /**
  * Returns the meta_desc for an item.
  * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
@@ -1364,12 +1281,10 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 
   $page_desc = rwmb_meta( 'phila_page_desc' );
 
-  $event_desc = rwmb_meta( 'phila_event_desc' );
-
   $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
 
   //This order matters. If $canonical_meta_desc is found first, it should be used.
-  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc, $event_desc );
+  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc);
 
 
   foreach ($meta_desc as $desc){
