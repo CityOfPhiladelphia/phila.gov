@@ -21,6 +21,9 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
+    add_filter( 'wp_dropdown_users_args', array( $this, 'add_subscribers_to_author_dropdown'), 10, 2 );
+
+
   }
 
   /**
@@ -295,6 +298,13 @@ class Phila_Gov_Role_Administration {
     if ( is_admin() ){
       $current_user_cat = $this->get_current_user_category();
     }
+
+  }
+
+  function add_subscribers_to_author_dropdown( $query_args, $r ) {
+
+    $query_args['who'] = '';
+    return $query_args;
 
   }
 
