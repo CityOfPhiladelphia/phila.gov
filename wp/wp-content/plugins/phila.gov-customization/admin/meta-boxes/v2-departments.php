@@ -134,6 +134,17 @@ function phila_register_department_meta_boxes( $meta_boxes ){
             'desc'  => 'Is this a link to a survey or other form of feedback gathering?',
             'type'  => 'checkbox',
           ),
+          array(
+            'id' => 'cta_is_modal',
+            'desc'  => 'Should this content appear in a modal?',
+            'type'  => 'checkbox',
+          ),
+          array(
+            'name' => 'Modal content',
+            'id'   => 'cta_modal_content',
+            'type' => 'textarea',
+            'visible' => array( 'cta_is_modal', '1' ),
+          ),
         ),
       ),
     ),
