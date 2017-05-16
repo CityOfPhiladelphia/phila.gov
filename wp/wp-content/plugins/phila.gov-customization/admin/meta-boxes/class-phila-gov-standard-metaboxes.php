@@ -311,7 +311,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'sort_clone'  => false,
 
       'fields'  => array(
-        Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text' ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text', '', $size = 50, $columns = 12  ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link URL', 'link_url' ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_external('External link', 'is_external' ),
       )
@@ -323,7 +323,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
-      'desc' => 'Example: fa-icon-name',
+      'desc' => 'Example: fa-icon-name. You can find icons on <a href="http://fontawesome.io/">Fontawesome.io</a>.',
       'name'  => 'Select icon',
       'type'  => 'text',
     );
@@ -454,21 +454,24 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_url( $name, $id ){
+  public static function phila_metabox_url( $name, $id, $desc = null, $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'url',
       'class' => 'metabox-url',
+      'desc'  => $desc,
+      'columns' => $columns
     );
   }
 
-  public static function phila_metabox_external( $name, $id ){
+  public static function phila_metabox_external( $name, $id, $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'checkbox',
-      'desc'  => 'This link directs users away from phila.gov',
+      'desc'  => 'Does this link direct users away from phila.gov?',
+      'columns' => $columns
     );
   }
 
