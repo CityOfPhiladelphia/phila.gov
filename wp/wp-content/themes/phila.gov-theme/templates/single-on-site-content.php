@@ -67,6 +67,12 @@
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
 
     <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
+    
+    <?php if ( $full_row_blog ): ?>
+      <section class="row">
+        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+      </section>
+    <?php endif; ?>
 
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
@@ -74,11 +80,6 @@
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     <?php endif; ?>
 
-    <?php if ( $full_row_blog ): ?>
-      <section class="row">
-        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-      </section>
-    <?php endif; ?>
 
     <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
 
