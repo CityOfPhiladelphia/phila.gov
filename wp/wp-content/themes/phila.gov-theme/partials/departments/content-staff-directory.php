@@ -52,6 +52,19 @@ if ( has_category() ):
 
         $staff_title = rwmb_meta('phila_job_title', $args = array('type'=>'text'));
         $staff_email = rwmb_meta('phila_email', $args = array('type'=>'email'));
+/*
+        $parsed_email = explode('@', $staff_email);
+        $staff_email_parsed = '';
+
+        if (count($parsed_email) === 2){
+          $staff_email_parsed .=  $parsed_email[0];
+          $staff_email_parsed .= "<wbr>@";
+          $staff_email_parsed .= $parsed_email[1];
+          $staff_email_parsed .= "</wbr>";
+        }
+        */
+
+
         $staff_phone = rwmb_meta('phila_phone', $args = array('type'=>'phone'));
         if( !$staff_phone['area'] == '' && !$staff_phone['phone-co-code'] == '' && !$staff_phone['phone-subscriber-number'] == '' ){
           $staff_phone_unformatted = $staff_phone['area'] . $staff_phone['phone-co-code'] . $staff_phone['phone-subscriber-number'];
@@ -95,7 +108,7 @@ if ( has_category() ):
         endif;
 
         // Leadership Contact Info
-        $staff_leadership_output .= '<div class="small-24 medium-5 columns staff-contact">';
+        $staff_leadership_output .= '<div class="small-24 medium-6 columns staff-contact">';
 
         $staff_leadership_output .= '<div class="name">';
         $staff_leadership_output .= $staff_member_name_output;
@@ -110,7 +123,7 @@ if ( has_category() ):
         endif;
 
         if ( isset( $staff_email ) && !$staff_email == ''):
-          $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
+          $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . phila_util_return_parsed_email($staff_email) . '</a></div>';
         endif;
 
         if ( isset( $staff_social_output ) && !$staff_social_output == ''):
@@ -119,7 +132,7 @@ if ( has_category() ):
 
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
           $staff_leadership_output .= '</div>';
-          $staff_leadership_output .= '<div class="medium-14 columns staff-summary">';
+          $staff_leadership_output .= '<div class="medium-13 columns staff-summary">';
 
           if ( strlen( $staff_summary ) > 820 ):
             $staff_leadership_output .=  '<div class="staff-bio expandable">' . $staff_summary . '</div><div class="float-right"> <a href="#" data-toggle="data-staff-bio"> Expand + </a></div>';
