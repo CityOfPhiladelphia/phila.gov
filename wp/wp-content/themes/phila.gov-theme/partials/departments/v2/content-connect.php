@@ -111,7 +111,7 @@ $connect_vars = phila_connect_panel($connect_panel);
             $item_count = count( $connect_vars['social'] );
             $columns = phila_grid_column_counter( $item_count );
             if ( $columns == '12' ) :
-              $columns == '8';
+              $columns = '8';
             endif;
             ?>
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
