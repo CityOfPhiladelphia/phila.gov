@@ -692,6 +692,12 @@ function phila_register_meta_boxes( $meta_boxes ){
                  'type' => 'url',
                  'desc' => 'Example: https://www.youtube.com/user/philly311center'
                 ),
+                array(
+                 'name' => 'Flickr URL',
+                 'id'   => 'phila_connect_social_flickr',
+                 'type' => 'url',
+                 'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
+                ),
               ),
             ),
             array(
