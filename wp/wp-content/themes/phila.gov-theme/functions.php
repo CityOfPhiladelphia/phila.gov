@@ -1398,10 +1398,15 @@ function phila_util_is_v2_template( $post_id = null ){
 
 function phila_grid_column_counter( $item_count ){
 
-  $column_count = 24 / $item_count;
-
+  if ( $item_count % 24 == 0 ){
+    $column_count = 24 / $item_count;
+  }else{
+    $column_count = round( 24 / $item_count );
+    if ( $item_count >= 5 ) {
+      $column_count -= 1;
+    }
+  }
   return $column_count;
-
 }
 
 function phila_tax_highlight( $info_panel ){
