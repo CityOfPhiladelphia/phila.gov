@@ -147,6 +147,14 @@ $connect_vars = phila_connect_panel($connect_panel);
               </a>
             </div>
           <?php endif; ?>
+          <?php if ( isset( $connect_vars['social']['flickr'] ) && !$connect_vars['social']['flickr'] == '') : ?>
+            <div class="small-<?php echo $columns;?> columns pvxs">
+              <a href="<?php echo $connect_vars['social']['flickr']; ?>" class="phs" data-analytics="social">
+              <i class="fa fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
+                <span class="show-for-sr">Flickr stream</span>
+              </a>
+            </div>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
       </div>
