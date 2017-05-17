@@ -1491,6 +1491,13 @@ function phila_cta_full_display( $cta_full ){
       $output['external'] = isset($cta_full['cta_full_link']['is_external'] ) ? $cta_full['cta_full_link']['is_external'] : '';
       $output['is_survey'] = isset($cta_full['cta_is_survey'] ) ? $cta_full['cta_is_survey'] : '';
 
+      $output['is_modal'] = isset($cta_full['cta_is_modal'] ) ? $cta_full['cta_is_modal'] : '';
+
+      if( !empty($output['is_modal']) ){
+        $output['modal_content'] =  isset($cta_full['cta_modal']['cta_modal_content'] ) ? $cta_full['cta_modal']['cta_modal_content'] : '';
+
+        $output['modal_icon'] =  isset($cta_full['cta_modal']['phila_v2_icon'] ) ? $cta_full['cta_modal']['phila_v2_icon'] : '';
+      }
     }
   }
   return $output;
