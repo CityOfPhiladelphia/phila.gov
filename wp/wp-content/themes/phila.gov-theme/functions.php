@@ -302,7 +302,7 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
 
-  wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
+  wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
 
   wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.4.1/js/patterns.min.js', array('jquery', 'foundation-js'), true );
 
@@ -1398,10 +1398,15 @@ function phila_util_is_v2_template( $post_id = null ){
 
 function phila_grid_column_counter( $item_count ){
 
-  $column_count = 24 / $item_count;
-
+  if ( $item_count % 24 == 0 ){
+    $column_count = 24 / $item_count;
+  }else{
+    $column_count = round( 24 / $item_count );
+    if ( $item_count >= 5 ) {
+      $column_count -= 1;
+    }
+  }
   return $column_count;
-
 }
 
 function phila_tax_highlight( $info_panel ){
@@ -1486,6 +1491,13 @@ function phila_cta_full_display( $cta_full ){
       $output['external'] = isset($cta_full['cta_full_link']['is_external'] ) ? $cta_full['cta_full_link']['is_external'] : '';
       $output['is_survey'] = isset($cta_full['cta_is_survey'] ) ? $cta_full['cta_is_survey'] : '';
 
+      $output['is_modal'] = isset($cta_full['cta_is_modal'] ) ? $cta_full['cta_is_modal'] : '';
+
+      if( !empty($output['is_modal']) ){
+        $output['modal_content'] =  isset($cta_full['cta_modal']['cta_modal_content'] ) ? $cta_full['cta_modal']['cta_modal_content'] : '';
+
+        $output['modal_icon'] =  isset($cta_full['cta_modal']['phila_v2_icon'] ) ? $cta_full['cta_modal']['phila_v2_icon'] : '';
+      }
     }
   }
   return $output;
@@ -1601,6 +1613,8 @@ function phila_connect_panel($connect_panel) {
       if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_social']['phila_connect_social_instagram'];
 
       if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_youtube'] ) && $connect_panel['phila_connect_social']['phila_connect_social_youtube'] != '' ) $output_array['social']['youtube'] = $connect_panel['phila_connect_social']['phila_connect_social_youtube'];
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_flickr'] ) && $connect_panel['phila_connect_social']['phila_connect_social_flickr'] != '' ) $output_array['social']['flickr'] = $connect_panel['phila_connect_social']['phila_connect_social_flickr'];
 
     $output_array['address'] = array(
       'st_1' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'',

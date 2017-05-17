@@ -11,6 +11,7 @@ $user_selected_template = phila_get_selected_template();
 
 $category_override = rwmb_meta('phila_staff_category');
 
+$phone_flag = false;
 $social_flag = false;
 
 if ( has_category() ):
@@ -52,20 +53,9 @@ if ( has_category() ):
 
         $staff_title = rwmb_meta('phila_job_title', $args = array('type'=>'text'));
         $staff_email = rwmb_meta('phila_email', $args = array('type'=>'email'));
-/*
-        $parsed_email = explode('@', $staff_email);
-        $staff_email_parsed = '';
-
-        if (count($parsed_email) === 2){
-          $staff_email_parsed .=  $parsed_email[0];
-          $staff_email_parsed .= "<wbr>@";
-          $staff_email_parsed .= $parsed_email[1];
-          $staff_email_parsed .= "</wbr>";
-        }
-        */
-
 
         $staff_phone = rwmb_meta('phila_phone', $args = array('type'=>'phone'));
+
         if( !$staff_phone['area'] == '' && !$staff_phone['phone-co-code'] == '' && !$staff_phone['phone-subscriber-number'] == '' ){
           $staff_phone_unformatted = $staff_phone['area'] . $staff_phone['phone-co-code'] . $staff_phone['phone-subscriber-number'];
           $staff_phone_formatted = '(' . $staff_phone['area'] . ') ' . $staff_phone['phone-co-code'] . '-' . $staff_phone['phone-subscriber-number'];
@@ -153,8 +143,12 @@ if ( has_category() ):
         $all_staff_table_output .= '<tr>
           <td>' . $staff_member_name_output . '</td>
           <td>' . $staff_title . '</td>
-          <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
-          <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
+          if ( isset( $staff_phone_unformatted ) && isset( $staff_phone_formatted ) ):
+            $phone_flag = true;
+            $all_staff_table_output .= '<td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          endif;
+
           if ( !empty( $staff_social_output ) ) :
             $social_flag = true;
           endif;
@@ -191,10 +185,12 @@ if ( has_category() ):
                 <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Job Title</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone #</th>
+                    <th scope="col">Email</th>
+                  <?php if ( $phone_flag ) : ?>
+                    <th scope="col">Phone #</th>
+                  <?php endif; ?>
                   <?php if ( $social_flag ) : ?>
-                  <th scope="col">Social</th>
+                    <th scope="col">Social</th>
                   <?php endif; ?>
                 </tr>
               </thead>
