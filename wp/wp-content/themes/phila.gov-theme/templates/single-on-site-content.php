@@ -10,6 +10,9 @@
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
+
+<?php $full_width_press_releases = rwmb_meta( 'phila_full_row_press_releases_selected' ); ?>
+
 <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
 
 <?php $featured_meta = rwmb_meta( 'phila_v2_homepage_featured' ) ; ?>
@@ -67,7 +70,7 @@
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
 
     <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
-    
+
     <?php if ( $full_row_blog ): ?>
       <section class="row">
         <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
@@ -75,6 +78,13 @@
     <?php endif; ?>
 
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
+
+    <?php if ( $full_width_press_releases ): ?>
+      <div class="row">
+        <?php echo do_shortcode('[press-releases posts=3]');?>
+      </div>
+    <?php endif; ?>
+
 
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
