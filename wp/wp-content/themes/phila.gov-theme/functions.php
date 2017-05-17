@@ -1781,3 +1781,19 @@ function phila_get_department_homepage_typography( $parent ){
 
   return $new_title;
 }
+
+
+function phila_util_return_parsed_email( $email_address ){
+  $parsed_email = explode('@', $email_address);
+  $staff_email_parsed = '';
+
+  if (count($parsed_email) === 2){
+    $staff_email_parsed .=  $parsed_email[0];
+    $staff_email_parsed .= "<wbr>@";
+    $staff_email_parsed .= $parsed_email[1];
+    $staff_email_parsed .= "</wbr>";
+  }
+
+  return $staff_email_parsed;
+
+}

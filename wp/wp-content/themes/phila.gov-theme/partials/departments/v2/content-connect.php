@@ -55,7 +55,7 @@ $connect_vars = phila_connect_panel($connect_panel);
       <div class="small-19 columns equal inside-border-group-item">
         <div class="valign">
           <div class="email valign-cell phm pvl">
-            <span class="type accessible">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>" class="value"><?php echo $connect_vars['email']; ?></a>
+            <span class="type accessible">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>" class="value"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
           </div>
       </div>
       </div>
