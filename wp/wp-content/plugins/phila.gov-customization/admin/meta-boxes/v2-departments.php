@@ -140,7 +140,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
             'type'  => 'checkbox',
           ),
           array(
-            'id'   => 'phila_v2_cta_modal',
+            'id'   => 'cta_modal',
             'type'  => 'group',
             'visible' => array( 'cta_is_modal', '1' ),
 
