@@ -45,7 +45,7 @@
         </div>
       <?php endif;?>
       <div class="row expanded collapse bg-ghost-gray mega-menu-footer">
-        <div class="medium-8 float-right white bg-ben-franklin-blue left-arrow-indent">
+        <div class="medium-8 float-right white bg-dark-ben-franklin left-arrow-indent">
           <div class="valign">
             <a href="/services/" class="phl valign-cell service-directory">Service directory</a>
           </div>
