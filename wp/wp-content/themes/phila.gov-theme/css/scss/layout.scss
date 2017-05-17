@@ -167,6 +167,65 @@ header.entry-header h2{
     }
   }
 }
+//TODO: remove these, they are temporary until we update to standards
+body.is-reveal-open{
+  overflow: visible;
+}
+
+.button{
+  font-weight: bold;
+}
+.reveal {
+  border:none;
+  border-top:5px solid $ben-franklin-blue;
+}
+#mc_embed_signup {
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea, select {
+    border:none;
+    background-color: $ghost-gray;
+    box-shadow: none;
+    margin-bottom:1rem;
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $dark-gray;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $dark-gray;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: $dark-gray;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $dark-gray;
+    }
+  }
+  .button {
+    height:auto;
+    width:100%;
+    text-align: center;
+    margin:0;
+    padding:0;
+    .button-label{
+      border:none;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .reveal{
+    left: 26%;
+    padding: 3rem;
+    .fa{
+      font-size:10rem;
+      color: $bike-share-blue;
+    }
+  }
+
+}
+
+//end TODO
 
 //TODO: add all these as utility to patterns
 .float-none{
