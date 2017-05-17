@@ -85,11 +85,9 @@
       </div>
     <?php endif; ?>
 
-
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
     <?php endif; ?>
-
 
     <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
 
