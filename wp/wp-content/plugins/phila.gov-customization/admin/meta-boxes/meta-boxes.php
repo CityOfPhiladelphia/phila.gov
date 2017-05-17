@@ -956,6 +956,34 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
+    'id'       => 'phila_full_row_press_releases',
+    'title'    => 'Full row press releases posts (3 total)',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'homepage_v2'),
+      ),
+      'relation' => 'or',
+    ),
+
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => 'phila_full_row_press_releases_selected',
+        'desc'  => 'Should this page show a full row of press releases?',
+        'type' => 'checkbox',
+        'after' => '<p class="description">Enter at least three press releases in the <a href="/wp-admin/edit.php?post_type=press_release">Press release</a> section.</p>'
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'phila_full_row_blog',
     'title'    => 'Full row blog posts (3 total)',
     'pages'    => array( 'department_page' ),
