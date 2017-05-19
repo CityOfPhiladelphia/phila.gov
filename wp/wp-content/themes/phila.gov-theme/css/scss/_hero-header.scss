@@ -297,3 +297,17 @@
       }
     }
 }
+
+
+//hack b/c foundation broke menus apparently.
+.dropdown.menu.medium-horizontal>li.is-dropdown-submenu-parent>a::after {
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 6px;
+  content: '';
+  border-bottom-width: 0;
+  border-top-style: solid;
+  border-color: #fff transparent transparent;
+  right: 5px;
+}
