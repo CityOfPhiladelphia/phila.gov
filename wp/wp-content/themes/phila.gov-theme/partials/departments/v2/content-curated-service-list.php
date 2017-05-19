@@ -14,7 +14,7 @@
 <div class="row mtl">
   <div class="columns">
     <h2>Services</h2>
-    <div class="row collapse inside-border-group break-thirds" data-equalizer>
+    <div class="row inside-border-group" data-equalizer>
       <?php $item_count = count($services); ?>
       <?php $columns = phila_grid_column_counter( $item_count ); ?>
       <?php
@@ -26,7 +26,7 @@
       ?>
       <?php foreach ( $services as $service ) : ?>
         <?php $alt_title = isset( $service['alt_title'] ) ? $service['alt_title'] : ''; ?>
-        <div class="inside-border-group-item medium-<?php echo $columns ?> small-12 columns">
+        <div class="inside-border-group-item medium-<?php echo $columns ?> small-12 columns end">
           <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
             <div class="valign-cell pal phl-l" data-equalizer-watch>
               <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
