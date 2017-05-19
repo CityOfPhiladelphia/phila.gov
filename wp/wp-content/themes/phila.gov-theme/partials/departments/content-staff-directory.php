@@ -180,7 +180,7 @@ if ( has_category() ):
             <?php if ($user_selected_template != 'staff_directory') : ?>
               <h2 class="contrast">Staff</h2>
             <?php endif; ?>
-            <table role="grid" class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+            <table role="grid" class="tablesaw tablesaw-stack staff" data-tablesaw-mode="stack">
               <thead>
                 <tr>
                   <th scope="col">Name</th>
