@@ -72,11 +72,6 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 
 function phila_register_meta_boxes( $meta_boxes ){
 
-  $department_col_1_custom_content['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
-
-  $basic_editor['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
-
-
   $meta_boxes[] = array(
     'id'       => 'news-admin-only',
     'title'    => 'Homepage Display',
@@ -542,13 +537,7 @@ function phila_register_meta_boxes( $meta_boxes ){
               'id'   => 'phila_module_row_1_col_1_textarea',
               'type' => 'wysiwyg',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-              'options' => array(
-                'media_buttons' => false,
-                'teeny' => true,
-                'dfw' => false,
-                'quicktags' => false,
-                'tinymce' => $department_col_1_custom_content,
-              ),
+              'options' =>                     Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
              ),
             ),
           ),
