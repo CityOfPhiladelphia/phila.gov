@@ -542,4 +542,17 @@ jQuery(document).ready(function($) {
     $(this).feedbackify('https://form.jotform.com/jsform/62516788470970');
   });
 
+  function hideEmptyCols(table) {
+    var rows = $("tr", table).length-1;
+    var numCols = $("th", table).length;
+    for ( var i=1; i<=numCols; i++ ) {
+        if ( $("span:empty", $("td:nth-child(" + i + ")", table)).length == rows ) {
+            $("td:nth-child(" + i + ")", table).hide(); //hide <td>'s
+            $("th:nth-child(" + i + ")", table).hide(); //hide header <th>
+        }
+    }
+  }
+
+  hideEmptyCols('.staff');
+
 });
