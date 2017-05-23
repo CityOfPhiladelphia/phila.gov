@@ -254,6 +254,7 @@
             text-transform: uppercase;
           }
           .break-after {
+            font-size: 2rem;
             &:after {
               content: '\A';
             }
