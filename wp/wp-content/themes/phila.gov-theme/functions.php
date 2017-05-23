@@ -1764,7 +1764,8 @@ function phila_get_department_homepage_typography( $parent ){
     "Office of the",
     "Office of",
     "Department of",
-    "Bureau of"
+    "Bureau of",
+    "Philadelphia"
   );
 
   $page_title = $parent->post_title;
