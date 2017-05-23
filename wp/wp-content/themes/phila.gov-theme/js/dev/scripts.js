@@ -366,13 +366,16 @@ jQuery(document).ready(function($) {
     $form.submit(function(e) {
       e.preventDefault();
       if (!isValidEmail($form)) {
-        var error =  'A valid email address must be provided.';
-        $resultElement.append(error);
-        $resultElement.css('color', '#f99300');
+        if(!$resultElement.children().hasClass('error')){
+          var error = '<span class="error">A valid email address must be provided.</span>';
+          $resultElement.append(error);
+          $resultElement.css('color', '#f99300');
+        }
       } else {
         $resultElement.css('color', 'black');
         $resultElement.append('Subscribing...');
         submitSubscribeForm($form, $resultElement);
+        $('.error').remove();
       }
     });
   }
