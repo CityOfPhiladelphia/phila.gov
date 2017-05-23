@@ -11,9 +11,6 @@ $user_selected_template = phila_get_selected_template();
 
 $category_override = rwmb_meta('phila_staff_category');
 
-$phone_flag = false;
-$social_flag = false;
-
 if ( has_category() ):
 
   $categories = get_the_category();
@@ -59,6 +56,8 @@ if ( has_category() ):
         if( !$staff_phone['area'] == '' && !$staff_phone['phone-co-code'] == '' && !$staff_phone['phone-subscriber-number'] == '' ){
           $staff_phone_unformatted = $staff_phone['area'] . $staff_phone['phone-co-code'] . $staff_phone['phone-subscriber-number'];
           $staff_phone_formatted = '(' . $staff_phone['area'] . ') ' . $staff_phone['phone-co-code'] . '-' . $staff_phone['phone-subscriber-number'];
+        }else{
+          $staff_phone_formatted = '';
         }
 
         $staff_social = rwmb_meta( 'phila_staff_social' );
@@ -141,18 +140,26 @@ if ( has_category() ):
 
       else:
         $all_staff_table_output .= '<tr>
-          <td>' . $staff_member_name_output . '</td>
-          <td>' . $staff_title . '</td>
-          <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
-          if ( isset( $staff_phone_unformatted ) && isset( $staff_phone_formatted ) ):
-            $phone_flag = true;
-            $all_staff_table_output .= '<td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          <td class="name">' . $staff_member_name_output . '</td>
+          <td class="title">' . $staff_title . '</td>';
+          if (!empty($staff_email)) :
+          $all_staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
+          else:
+            $all_staff_table_output .= '<td class="email"></td>';
+          endif;
+
+          if ( !empty( $staff_phone_unformatted ) && !empty( $staff_phone_formatted ) ):
+            $all_staff_table_output .= '<td class="phone"><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          else :
+            $all_staff_table_output .= '<td class="phone"></td>';
           endif;
 
           if ( !empty( $staff_social_output ) ) :
-            $social_flag = true;
-          endif;
             $all_staff_table_output .= '<td class="social">' . $staff_social_output . '</td></tr>';
+          else :
+            $all_staff_table_output .= '<td class="social"></td>';
+          endif;
+          $all_staff_table_output .= '</tr>';
       endif;
     endwhile;
 
@@ -185,13 +192,9 @@ if ( has_category() ):
                 <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Job Title</th>
-                    <th scope="col">Email</th>
-                  <?php if ( $phone_flag ) : ?>
-                    <th scope="col">Phone #</th>
-                  <?php endif; ?>
-                  <?php if ( $social_flag ) : ?>
-                    <th scope="col">Social</th>
-                  <?php endif; ?>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone #</th>
+                  <th scope="col">Social</th>
                 </tr>
               </thead>
               <tbody>
