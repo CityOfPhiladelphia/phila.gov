@@ -13,6 +13,7 @@ echo 'Running wp-config.sh'
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 yarn install
+npm rebuild node-sass
 yarn build:js && yarn build:css
 cd /home/ubuntu/app
 
