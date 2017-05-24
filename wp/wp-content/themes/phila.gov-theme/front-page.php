@@ -7,8 +7,8 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area">
-  <main id="main" class="site-main home">
+<div class="site-main home">
+  <main>
     <div class="hero-content">
       <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta-homepage-mobile.jpg" alt="">
       <div class="hero-wrap">
@@ -361,6 +361,6 @@ get_header(); ?>
     <!-- End Redesigning Phila.gov -->
 
   </main><!-- #main -->
-</div><!-- #primary -->
+</div><!-- .site-main .home -->
 
 <?php get_footer(); ?>
