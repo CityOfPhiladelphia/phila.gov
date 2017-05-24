@@ -49,9 +49,6 @@ function phila_gov_setup() {
   // Current default
   add_image_size( 'phila-thumb', 660, 430, true);
 
-  //This is temporary, until we decide how to handle responsive images more effectively and in what ratios.
-  add_image_size( 'home-thumb', 550, 360, true );
-
   //Staff Directory thumbnails
   add_image_size( 'staff-thumb', 400, 400, true );
 
@@ -301,8 +298,10 @@ function phila_gov_scripts() {
   wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
   wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
+
   //TODO set flag to use minified js in prod
   wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.js', 1.0, true );
+
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
@@ -1149,39 +1148,6 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
-function phila_get_event_content_blocks(){
-
-  $output_array = array();
-  $content_blocks = rwmb_meta( 'event_content_blocks' );
-
-  foreach( $content_blocks as $key => $array_value ) {
-    $output_item ='';
-
-    $block_title = isset( $array_value['phila_event_block_content_title'] ) ? $array_value['phila_event_block_content_title'] : '';
-    $block_link = isset( $array_value['phila_event_block_link'] ) ? $array_value['phila_event_block_link'] : '';
-    $block_summary = isset( $array_value['phila_event_block_summary'] ) ? $array_value['phila_event_block_summary'] : '';
-    $block_image = isset( $array_value['phila_event_block_image'] ) ? $array_value['phila_event_block_image'] : '';
-    $block_image_credit = isset( $array_value['phila_event_block_image_credit'] ) ? $array_value['phila_event_block_image_credit'] : '';
-
-
-    $output_item = array(
-      'block_title' => $block_title,
-      'block_summary' => $block_summary,
-      'block_link' => $block_link,
-      'block_image' => $block_image,
-      'block_image_credit' => $block_image_credit,
-    );
-
-    array_push($output_array, $output_item);
-
-  }
-  if (array_key_exists( 0 , $output_array )){
-      return $output_array;
-    } else {
-      return;
-    }
-}
-
 function phila_util_month_format($date){
   if (strlen($date->format('F')) > 5){
      return 'M.';
@@ -1288,56 +1254,6 @@ function phila_get_service_updates(){
       return;
     endif;
 }
-
-function phila_get_service_updates_events(){
-
-  $output_array = array();
-  $service_updates = rwmb_meta( 'service_updates' );
-
-  foreach( $service_updates as $key => $array_value ) {
-    $output_item ='';
-
-    $service_type = isset( $array_value['phila_update_type'] ) ? $array_value['phila_update_type'] : '';
-    $service_level = isset( $array_value['phila_update_level'] ) ? $array_value['phila_update_level'] : '';
-    $service_message = isset( $array_value['phila_service_update_message'] ) ? $array_value['phila_service_update_message'] : '';
-    $service_link_text = isset( $array_value['phila_update_link_text'] ) ? $array_value['phila_update_link_text'] : '';
-    $service_link = isset( $array_value['phila_update_link'] ) ? $array_value['phila_update_link'] : '';
-    $service_effective_date = isset( $array_value['phila_update_effective_date'] ) ? $array_value['phila_update_effective_date'] : '';
-    switch($service_type){
-      case 'city':
-        $service_icon = 'fa-institution';
-        break;
-        case 'roads':
-          $service_icon = 'fa-road';
-          break;
-        case 'transit':
-          $service_icon = 'fa-subway';
-          break;
-        case 'trash':
-          $service_icon = 'fa-trash';
-          break;
-    }
-
-    $output_item = array(
-      'service_type' => $service_type,
-      'service_icon' => $service_icon,
-      'service_level' => $service_level,
-      'service_message' => $service_message,
-      'service_link_text' => $service_link_text,
-      'service_link' => $service_link,
-      'service_effective_date' => $service_effective_date,
-    );
-
-    array_push($output_array, $output_item);
-
-  }
-  if (array_key_exists( 0 , $output_array )){
-    return $output_array;
-  } else {
-    return;
-  }
-}
-
 /**
  * Returns the meta_desc for an item.
  * @param $bloginfo Boolean. Default true. Determines if bloginfo description should render, or nothing. Typically for use in front-end rendering, as meta description should always have a fallback.
@@ -1360,12 +1276,10 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 
   $page_desc = rwmb_meta( 'phila_page_desc' );
 
-  $event_desc = rwmb_meta( 'phila_event_desc' );
-
   $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
 
   //This order matters. If $canonical_meta_desc is found first, it should be used.
-  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc, $event_desc );
+  array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc);
 
 
   foreach ($meta_desc as $desc){
@@ -1429,14 +1343,26 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   }
 }
 
+/* Return post data for the furthest parent */
+
+function phila_util_get_furthest_ancestor( $post ) {
+
+  /* Get an array of Ancestors and Parents if they exist */
+  $parents = get_post_ancestors( $post->ID );
+  /* Get the top Level page->ID count base 1, array base 0 so -1 */
+  $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+
+  return $parent = get_post( $id );
+}
+
 /**
  * Return a string representing the template currently applied to a page in the loop.
  *
  **/
 
-function phila_get_selected_template(){
+function phila_get_selected_template( $post_id = null ){
 
-  $user_selected_template = rwmb_meta( 'phila_template_select' );
+  $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
   if ( empty( $user_selected_template ) ){
     return get_post_type();
@@ -1449,9 +1375,8 @@ function phila_get_selected_template(){
  * Utility function to determine if selected template is v2 or not
 **/
 
-function phila_util_is_v2_template(){
-  $user_selected_template = phila_get_selected_template();
-
+function phila_util_is_v2_template( $post_id = null ){
+  $user_selected_template = phila_get_selected_template( $post_id );
   if( strpos( $user_selected_template, '_v2' ) === false ){
     return false;
   }else{
@@ -1468,10 +1393,15 @@ function phila_util_is_v2_template(){
 
 function phila_grid_column_counter( $item_count ){
 
-  $column_count = 24 / $item_count;
-
+  if ( $item_count % 24 == 0 ){
+    $column_count = 24 / $item_count;
+  }else{
+    $column_count = round( 24 / $item_count );
+    if ( $item_count >= 5 ) {
+      $column_count -= 1;
+    }
+  }
   return $column_count;
-
 }
 
 function phila_tax_highlight( $info_panel ){
@@ -1556,6 +1486,13 @@ function phila_cta_full_display( $cta_full ){
       $output['external'] = isset($cta_full['cta_full_link']['is_external'] ) ? $cta_full['cta_full_link']['is_external'] : '';
       $output['is_survey'] = isset($cta_full['cta_is_survey'] ) ? $cta_full['cta_is_survey'] : '';
 
+      $output['is_modal'] = isset($cta_full['cta_is_modal'] ) ? $cta_full['cta_is_modal'] : '';
+
+      if( !empty($output['is_modal']) ){
+        $output['modal_content'] =  isset($cta_full['cta_modal']['cta_modal_content'] ) ? $cta_full['cta_modal']['cta_modal_content'] : '';
+
+        $output['modal_icon'] =  isset($cta_full['cta_modal']['phila_v2_icon'] ) ? $cta_full['cta_modal']['phila_v2_icon'] : '';
+      }
     }
   }
   return $output;
@@ -1670,6 +1607,10 @@ function phila_connect_panel($connect_panel) {
 
       if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_social']['phila_connect_social_instagram'];
 
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_youtube'] ) && $connect_panel['phila_connect_social']['phila_connect_social_youtube'] != '' ) $output_array['social']['youtube'] = $connect_panel['phila_connect_social']['phila_connect_social_youtube'];
+
+      if ( isset( $connect_panel['phila_connect_social']['phila_connect_social_flickr'] ) && $connect_panel['phila_connect_social']['phila_connect_social_flickr'] != '' ) $output_array['social']['flickr'] = $connect_panel['phila_connect_social']['phila_connect_social_flickr'];
+
     $output_array['address'] = array(
       'st_1' => isset( $connect_panel['phila_connect_address']['phila_connect_address_st_1'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_st_1'] :'',
 
@@ -1682,8 +1623,13 @@ function phila_connect_panel($connect_panel) {
       'zip' => isset( $connect_panel['phila_connect_address']['phila_connect_address_zip'] ) ? $connect_panel['phila_connect_address']['phila_connect_address_zip'] :'19107',
     );
 
-    $output_array['phone'] =
-       isset( $connect_panel['phila_connect_general']['phila_connect_phone'] ) && is_array( $connect_panel['phila_connect_general']['phila_connect_phone'] ) ? '(' . $connect_panel['phila_connect_general']['phila_connect_phone']['area'] . ') ' . $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] . '-' . $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number'] :'';
+    $output_array['phone'] = array(
+      'area' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['area'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['area'] : '',
+
+      'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] : '',
+
+     'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number']  : '',
+    );
 
     $output_array['fax'] =
       isset( $connect_panel['phila_connect_general']['phila_connect_fax'] ) && is_array( $connect_panel['phila_connect_general']['phila_connect_fax'] ) ? $connect_panel_fax = '(' . $connect_panel['phila_connect_general']['phila_connect_fax']['area'] . ') ' . $connect_panel['phila_connect_general']['phila_connect_fax']['phone-co-code'] . '-' . $connect_panel['phila_connect_general']['phila_connect_fax']['phone-subscriber-number'] : '' ;
@@ -1783,4 +1729,68 @@ function phila_get_department_logo_v2( $post ){
       }
       return $output;
     }
+}
+
+function phila_util_is_array_empty($input){
+   $result = true;
+
+   if (is_array($input) && count($input) > 0)
+   {
+      foreach ($input as $v)
+      {
+         $result = $result && phila_util_is_array_empty($v);
+      }
+   }
+   else
+   {
+      $result = empty($input);
+   }
+
+   return $result;
+}
+
+
+function phila_get_department_homepage_typography( $parent ){
+
+  $target_phrases = array(
+    "Mayor's Office of",
+    "Commission on",
+    "Board of",
+    "Office of the",
+    "Office of",
+    "Department of",
+    "Bureau of",
+    "Philadelphia"
+  );
+
+  $page_title = $parent->post_title;
+
+  while (list(, $phrase) = each($target_phrases)) {
+    if ( strpos( $page_title, $phrase ) !== false ) {
+      $c  = strlen( $phrase );
+      $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+      break;
+    }else{
+      $new_title = '<h1>' . $page_title . '</h1>';
+    }
+  }
+
+
+  return $new_title;
+}
+
+
+function phila_util_return_parsed_email( $email_address ){
+  $parsed_email = explode('@', $email_address);
+  $staff_email_parsed = '';
+
+  if (count($parsed_email) === 2){
+    $staff_email_parsed .=  $parsed_email[0];
+    $staff_email_parsed .= "<wbr>@";
+    $staff_email_parsed .= $parsed_email[1];
+    $staff_email_parsed .= "</wbr>";
+  }
+
+  return $staff_email_parsed;
+
 }

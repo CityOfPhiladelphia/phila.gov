@@ -73,6 +73,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'priority' => 'high',
         'type'  => 'group',
         'clone' => true,
+        'add_button'  => '+ Add a link',
 
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
@@ -127,11 +128,34 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Title', 'cta_full_title', '50 character maximum.' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'cta_full_description', '140 character maximum.' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'cta_full_link'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
           array(
             'id' => 'cta_is_survey',
             'desc'  => 'Is this a link to a survey or other form of feedback gathering?',
             'type'  => 'checkbox',
+          ),
+          array(
+            'id' => 'cta_is_modal',
+            'desc'  => 'Should this content appear in a modal?',
+            'type'  => 'checkbox',
+          ),
+          array(
+            'id'   => 'cta_modal',
+            'type'  => 'group',
+            'visible' => array( 'cta_is_modal', '1' ),
+
+            'fields' => array(
+              array(
+                'type' => 'heading',
+                'name'  => 'Modal content',
+              ),
+              array(
+                'name' => '',
+                'id'   => 'cta_modal_content',
+                'type' => 'textarea',
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection( ),
+            ),
           ),
         ),
       ),
@@ -188,6 +212,65 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'type' => 'text',
       )
     )
+  );
+
+  $meta_boxes[] = array(
+    'title' => 'Featured programs or content',
+    'pages'    => array( 'department_page' ),
+    'visible' => array( 'phila_template_select', 'homepage_v2' ),
+
+    'fields' => array(
+      array(
+        'id'       => 'phila_v2_homepage_featured_section',
+        'title'    => 'Title',
+        'type'  => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Section title', 'title', '', '60' ),
+        ),
+      ),
+      array(
+        'id'       => 'phila_v2_homepage_featured',
+        'title'    => 'Title',
+        'type'  => 'group',
+        'clone' => true,
+        'max_clone' => 3,
+
+        'fields' => array(
+          array(
+            'name' => 'Select page',
+            'type'  => 'heading',
+            'columns' => '6'
+          ),
+          array(
+            'name' => 'Alternate title',
+            'type'  => 'heading',
+            'columns' => '6'
+          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('', 'phila_featured_page', 'department_page', false, '', '6' ),
+
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title('', 'phila_featured_title', 'Optional.', '50', '6' ),
+          array(
+            'name' => 'Image',
+            'type'  => 'heading',
+            'columns' => '6'
+          ),
+          array(
+            'name' => 'Description',
+            'type'  => 'heading',
+            'columns' => '6'
+          ),
+          array(
+            'id' => 'phila_featured_img',
+            'title' => 'Select image',
+            'type' => 'image_advanced',
+            'desc'  => 'Required. Image must be square and a minimum of 150px by 150px.',
+            'max_file_uploads' => 1,
+            'columns' => '6'
+          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('', 'phila_featured_description', '220 characters maximum.', '6' ),
+        ),
+      ),
+    ),
   );
 
 

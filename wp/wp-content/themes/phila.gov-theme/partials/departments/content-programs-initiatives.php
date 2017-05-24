@@ -172,7 +172,7 @@
                 $blog_category = isset( $current_row_option_one['phila_blog_options']['phila_category'] ) ? $current_row_option_one['phila_blog_options']['phila_category'] : '';
               ?>
               <!-- Blog Content -->
-              <div class="large-18 columns">
+              <div class="large-16 columns">
                 <div class="row">
                   <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
                 </div>
@@ -183,7 +183,7 @@
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
-                  <div class="large-18 columns">
+                  <div class="large-16 columns">
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
                 <?php endif;?>
@@ -212,7 +212,7 @@
                 $feature_url = isset( $feature_panel['phila_feature_url'] ) ? $feature_panel['phila_feature_url'] : '';
                 $feature_url_text = isset( $feature_panel['phila_feature_url_text'] ) ? $feature_panel['phila_feature_url_text'] : '';
               ?>
-              <div class="large-6 columns">
+              <div class="large-8 columns">
                 <h2 class="contrast"><?php echo $feature_title;?></h2>
                 <?php if( $feature_url != '' ): ?>
                 <a href="<?php echo $feature_url;?>" class="card action-panel mbn">

@@ -24,23 +24,32 @@
             <?php endif; ?>
           </div>
         </div>
-        <?php if ( !empty( $link['url'] ) ) : ?>
         <div class="small-24 medium-8 columns valign equal center">
           <div class="valign-cell">
-            <a href="<?php echo $link['url'] ?>" class="button <?php echo ( !empty($link['external']) ) ? 'icon ' : '';?> clearfix float-right">
+            <a <?php echo ( !empty( $link['url'] ) && (empty($link['is_modal'] ) ) ) ?  "href=" . $link['url'] : "" ?> class="button <?php echo ( !empty($link['external']) || !empty($link['modal_icon']) ) ? 'icon ' : '';?> clearfix float-right" <?php echo ( !empty($link['is_modal'] ) && ( empty( $link['url'] ) ) ) ? "data-open=action-modal" : "" ?>>
               <?php if ( !empty( $link['link_text'] ) ) :?>
               <div class="valign">
                 <?php if ( $link['external'] == 1 ) :?>
                   <i class="fa fa-external-link" aria-hidden="true"></i>
                   <span class="accessible">External link</span>
-                  <?php endif; ?>
+                <?php elseif (!empty( $link['modal_icon'] ) ) :?>
+                  <i class="fa <?php echo $link['modal_icon'] ?>" aria-hidden="true"></i>
+                  <span class="accessible">Open modal</span>
+                <?php endif; ?>
                   <div class="button-label valign-cell">
                     <?php echo $link['link_text']?>
                   </div>
                 </div>
-              <?php endif; ?>
             </a>
           </div>
+        </div>
+      <?php endif; ?>
+      <?php if ( !empty( $link['is_modal'] ) ) : ?>
+        <div class="reveal center" id="action-modal" data-reveal>
+          <?php echo $link['modal_content']; ?>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+           <span aria-hidden="true">&times;</span>
+         </button>
         </div>
       <?php endif; ?>
       </div>

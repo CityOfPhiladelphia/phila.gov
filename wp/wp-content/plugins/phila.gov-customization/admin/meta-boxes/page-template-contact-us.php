@@ -16,6 +16,7 @@ function phila_register_department_contact_us( $meta_boxes ){
         'priority' => 'high',
         'type'  => 'group',
         'clone' => true,
+        'add_button'  => '+ Add a row',
 
         'fields' => array(
           array(
@@ -32,6 +33,7 @@ function phila_register_department_contact_us( $meta_boxes ){
             'type'   => 'group',
             'clone'  => true,
             'max_clone' => 3,
+            'add_button'  => '+ Add a column',
 
             'fields' => array(
               array(

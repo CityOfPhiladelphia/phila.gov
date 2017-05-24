@@ -12,7 +12,6 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'media_buttons' => false,
       'teeny' => true,
       'dfw' => false,
-      'quicktags' => false,
       'tinymce' => phila_setup_tiny_mce_basic(
         array(
           'format_select' => false
@@ -28,7 +27,6 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'media_buttons' => false,
       'teeny' => true,
       'dfw' => false,
-      'quicktags' => false,
       'tinymce' => phila_setup_tiny_mce_basic(
         array(
           'format_select' => true,
@@ -271,6 +269,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'type'  => 'group',
       'clone' => true,
       'sort_clone'  => true,
+      'add_button'  => '+ Add a step',
 
       'fields'  => array(
         array(
@@ -312,7 +311,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'sort_clone'  => false,
 
       'fields'  => array(
-        Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text' ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text', '', $size = 50, $columns = 12  ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link URL', 'link_url' ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_external('External link', 'is_external' ),
       )
@@ -324,7 +323,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
-      'desc' => 'Example: fa-icon-name',
+      'desc' => 'Example: fa-icon-name. You can find icons on <a href="http://fontawesome.io/">Fontawesome.io</a>.',
       'name'  => 'Select icon',
       'type'  => 'text',
     );
@@ -432,7 +431,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   }
 
 
-  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30' ){
+  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30', $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
@@ -440,43 +439,51 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'class' => 'metabox-title',
       'desc'  => $desc,
       'size'  => $size,
+      'columns' => $columns
     );
   }
 
-  public static function phila_metabox_textarea( $name, $id, $desc = null ){
+  public static function phila_metabox_textarea( $name, $id, $desc = null, $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'textarea',
       'class' => 'metabox-summary',
-      'desc'  => $desc
+      'desc'  => $desc,
+      'columns' => $columns
     );
   }
 
-  public static function phila_metabox_url( $name, $id ){
+  public static function phila_metabox_url( $name, $id, $desc = null, $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'url',
       'class' => 'metabox-url',
+      'desc'  => $desc,
+      'columns' => $columns
     );
   }
 
-  public static function phila_metabox_external( $name, $id ){
+  public static function phila_metabox_external( $name, $id, $columns = '12' ){
     return array(
       'name'  => $name,
       'id'    => $id,
       'type'  => 'checkbox',
-      'desc'  => 'This link directs users away from phila.gov',
+      'desc'  => 'Does this link direct users away from phila.gov?',
+      'columns' => $columns
     );
   }
 
-  public static function phila_metabox_post_picker( $name, $id, $post_type ){
+  public static function phila_metabox_post_picker( $name, $id, $post_type, $clone = false, $max_clone = 3, $columns = '12' ){
     return array(
       'name' => $name,
       'id' => $id,
       'type' => 'post',
       'post_type' => $post_type,
+      'clone' => $clone,
+      'max_clone' => $max_clone,
+      'columns' => $columns
     );
   }
 

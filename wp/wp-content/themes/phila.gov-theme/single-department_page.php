@@ -32,13 +32,9 @@ get_header(); ?>
   <header class="entry-header">
   <?php
   //TODO: clean up menu rendering
-    /* Get an array of Ancestors and Parents if they exist */
-    $parents = get_post_ancestors( $post->ID );
-    /* Get the top Level page->ID count base 1, array base 0 so -1 */
-    $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+    $parent = phila_util_get_furthest_ancestor($post);
 
-    $parent = get_post( $id );
-    if ( phila_util_is_v2_template() ) : ?>
+    if ( phila_util_is_v2_template( $parent->ID ) ) : ?>
     <?php $bg_img = phila_get_hero_header_v2( $parent->ID ); ?>
     <?php $bg_img_mobile = phila_get_hero_header_v2( $parent->ID, true ); ?>
     <?php $photo_credit = rwmb_meta( 'phila_v2_photo_credit', $parent->ID ); ?>
@@ -55,17 +51,14 @@ get_header(); ?>
           </div>
         <?php endif; ?>
           <div class="row expanded <?php echo ($user_selected_template === 'homepage_v2') ? 'pbs pbxxl-mu ptxl-mu' : 'pbl' ?>">
-            <div class="medium-14 small-centered columns text-overlay">
-              <?php
-              // TODO: Call title with $parent->post_title, regex match on 'Department of', 'Office of' to add line break. This can be refactored and should become a util if we intend to reuse
-
-              $target_phrases = array("Department of", "Office of", "Office of the");
-              $break_after_phrases = array('<span class="h3 break-after" style="line-height:1;">Department of</span>','<span class="h3 break-after" style="line-height:1;">Office of</span>','<span class="h3 break-after" style="line-height:1;">Office of the</span>');
-              $new_title = str_replace($target_phrases,$break_after_phrases, $parent->post_title );
-              echo  '<h1 style="line-height:1">' . $new_title . '</h1>';
-              ?>
+            <div class="medium-18 small-centered columns text-overlay">
+              <?php echo phila_get_department_homepage_typography( $parent ); ?>
               <?php if ($user_selected_template === 'homepage_v2'): ?>
-                <p class="sub-title mvs mbn-mu"><em><?php echo phila_get_item_meta_desc( ); ?></em></p>
+                <div class="row">
+                  <div class="medium-16 small-centered columns text-overlay">
+                    <p class="sub-title mbn-mu"><strong><?php echo phila_get_item_meta_desc( ); ?></strong></p>
+                  </div>
+                </div>
               <?php endif;?>
             </div>
           </div>

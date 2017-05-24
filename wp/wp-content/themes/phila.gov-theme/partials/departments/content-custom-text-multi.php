@@ -11,7 +11,7 @@ if ( !empty( $custom_text )):
 $custom_text_title = $custom_text['phila_custom_row_title'];
 $custom_text_group = $custom_text['phila_custom_text_group'];
 ?>
-<div class="large-18 columns custom-text-multi">
+<div class="large-16 columns custom-text-multi">
 <h2 class="contrast"><?php echo($custom_text['phila_custom_row_title']); ?></h2>
 <?php if ( is_array( $custom_text_group ) ):?>
 <?php $item_count = count($custom_text_group); ?>

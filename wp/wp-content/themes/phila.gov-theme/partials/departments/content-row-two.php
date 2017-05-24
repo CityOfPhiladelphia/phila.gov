@@ -1,8 +1,8 @@
 <?php
 /*
  *
- * Partial for rendering Department Row Two Content
- *
+ * Partial for rendering Department Row Two Content AKA "Full row"
+ * TODO: deprecate this template
  */
 ?>
 <?php
