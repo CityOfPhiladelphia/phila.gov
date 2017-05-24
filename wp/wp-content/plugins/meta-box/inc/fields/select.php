@@ -14,7 +14,7 @@ class RWMB_Select_Field extends RWMB_Choice_Field {
 	 */
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'rwmb-select', RWMB_CSS_URL . 'select.css', array(), RWMB_VER );
-		wp_enqueue_script( 'rwmb-select', RWMB_JS_URL . 'select.js', array(), RWMB_VER, true );
+		wp_enqueue_script( 'rwmb-select', RWMB_JS_URL . 'select.js', array( 'jquery' ), RWMB_VER, true );
 	}
 
 	/**
@@ -53,7 +53,6 @@ class RWMB_Select_Field extends RWMB_Choice_Field {
 		$field = parent::normalize( $field );
 		$field = $field['multiple'] ? RWMB_Multiple_Values_Field::normalize( $field ) : $field;
 		$field = wp_parse_args( $field, array(
-			'size'            => $field['multiple'] ? 5 : 0,
 			'select_all_none' => false,
 		) );
 
@@ -72,7 +71,6 @@ class RWMB_Select_Field extends RWMB_Choice_Field {
 		$attributes = parent::get_attributes( $field, $value );
 		$attributes = wp_parse_args( $attributes, array(
 			'multiple' => $field['multiple'],
-			'size'     => $field['size'],
 		) );
 
 		return $attributes;

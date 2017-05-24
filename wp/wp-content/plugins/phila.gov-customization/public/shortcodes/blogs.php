@@ -95,6 +95,8 @@ function latest_posts_shortcode($atts) {
 
       $output .=  '<h3>' . get_the_title( $post->ID ) . '</h3>';
 
+      $output .= '<div class="pbm"><span class="entry-date small-text">'. get_the_date() . '</span></div>';
+
       $output .= '<p>' . $desc  . '</p>';
 
       $output .= '</div></a></div>'; //content-block, columns

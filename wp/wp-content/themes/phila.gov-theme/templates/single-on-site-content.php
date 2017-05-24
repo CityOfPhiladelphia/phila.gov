@@ -6,11 +6,19 @@
 *
 */
 ?>
+<?php $parent = phila_util_get_furthest_ancestor($post); ?>
 <?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php $staff_directory_listing = rwmb_meta( 'phila_staff_directory_selected' ); ?>
 
-<?php if ( phila_util_is_v2_template() && phila_get_selected_template() !== 'homepage_v2') : ?>
+<?php $full_width_press_releases = rwmb_meta( 'phila_full_row_press_releases_selected' ); ?>
+
+<?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
+
+<?php $featured_meta = rwmb_meta( 'phila_v2_homepage_featured' ) ; ?>
+<?php $featured = phila_loop_clonable_metabox($featured_meta); ?>
+
+<?php if ( phila_util_is_v2_template( $parent->ID ) && phila_get_selected_template() !== 'homepage_v2') : ?>
   <div class="row mtl mbm">
     <div class="columns">
       <?php echo phila_breadcrumbs(); ?>
@@ -31,7 +39,11 @@
 <div data-swiftype-index='true' class="entry-content">
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
-  <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
+  <?php if ($user_selected_template != 'homepage_v2') : ?>
+
+    <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
+
+  <?php endif; ?>
 
   <?php if( get_the_content() != '' ) : ?>
     <!-- WYSIWYG content -->
@@ -52,11 +64,26 @@
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
+
     <?php get_template_part( 'partials/departments/v2/content', 'curated-service-list' ); ?>
 
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');?>
+
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
+
+    <?php if ( $full_row_blog ): ?>
+      <section class="row">
+        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+      </section>
+    <?php endif; ?>
+
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
+
+    <?php if ( $full_width_press_releases ): ?>
+      <div class="row">
+        <?php echo do_shortcode('[press-releases posts=3]');?>
+      </div>
+    <?php endif; ?>
 
     <?php if ( $staff_directory_listing ): ?>
       <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
@@ -64,19 +91,25 @@
 
     <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
 
+    <?php
+      if ( !empty( $featured ) ):
+        include(locate_template('partials/departments/v2/content-featured.php'));
+      endif;
+    ?>
+
   <?php endif;?>
 
   <?php //Begin v2 non-homepage templates ?>
   <?php if ($user_selected_template == 'all_services_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'all-services-v2' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'all-services' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'one_quarter_headings_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'one-quarter-v2' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'one-quarter' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'forms_and_documents_v2') : ?>
-    <?php get_template_part( 'partials/departments/content', 'forms-documents-v2' ); ?>
+    <?php get_template_part( 'partials/departments/v2/content', 'forms-documents' ); ?>
   <?php endif;?>
 
   <?php if ($user_selected_template == 'contact_us_v2') : ?>
@@ -114,21 +147,6 @@
     </section>
     <!-- End Department Program & Initiatives Display -->
 
-  <?php elseif ($user_selected_template == 'one_page_department') : ?>
-    <!-- Begin One Page Template Display -->
-    <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
-
-    <?php if ( $staff_directory_listing ): ?>
-      <?php get_template_part( 'partials/departments/content', 'staff-directory' ); ?>
-    <?php endif; ?>
-    <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
-    <?php if ( $full_row_blog == 1): ?>
-      <section class="row">
-        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-      </section>
-    <!-- End One Page Template Display -->
-    <?php endif; ?>
-
   <?php elseif ($user_selected_template == 'resource_list') : ?>
     <!-- Begin Resource List Display -->
     <section class="apply-template">
@@ -155,10 +173,6 @@
 
 
   <?php endif; ?>
-
-  <?php if ($user_selected_template == 'one_page_department') : ?>
-    <?php get_template_part( 'partials/departments/content', 'call-to-action-multi' ); ?>
-  <?php endif;?>
 
   <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 </div> <!-- End .entry-content -->

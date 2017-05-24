@@ -50,10 +50,14 @@ if ( has_category() ):
 
         $staff_title = rwmb_meta('phila_job_title', $args = array('type'=>'text'));
         $staff_email = rwmb_meta('phila_email', $args = array('type'=>'email'));
+
         $staff_phone = rwmb_meta('phila_phone', $args = array('type'=>'phone'));
+
         if( !$staff_phone['area'] == '' && !$staff_phone['phone-co-code'] == '' && !$staff_phone['phone-subscriber-number'] == '' ){
           $staff_phone_unformatted = $staff_phone['area'] . $staff_phone['phone-co-code'] . $staff_phone['phone-subscriber-number'];
           $staff_phone_formatted = '(' . $staff_phone['area'] . ') ' . $staff_phone['phone-co-code'] . '-' . $staff_phone['phone-subscriber-number'];
+        }else{
+          $staff_phone_formatted = '';
         }
 
         $staff_social = rwmb_meta( 'phila_staff_social' );
@@ -79,7 +83,6 @@ if ( has_category() ):
 
         endif;
 
-
         $staff_leadership = rwmb_meta('phila_leadership', $args = array('type'=>'checkbox'));
       }
       if ( $staff_leadership ):
@@ -94,7 +97,7 @@ if ( has_category() ):
         endif;
 
         // Leadership Contact Info
-        $staff_leadership_output .= '<div class="small-24 medium-5 columns staff-contact">';
+        $staff_leadership_output .= '<div class="small-24 medium-6 columns staff-contact">';
 
         $staff_leadership_output .= '<div class="name">';
         $staff_leadership_output .= $staff_member_name_output;
@@ -109,7 +112,7 @@ if ( has_category() ):
         endif;
 
         if ( isset( $staff_email ) && !$staff_email == ''):
-          $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></div>';
+          $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . phila_util_return_parsed_email($staff_email) . '</a></div>';
         endif;
 
         if ( isset( $staff_social_output ) && !$staff_social_output == ''):
@@ -118,7 +121,7 @@ if ( has_category() ):
 
         if ( isset( $staff_summary ) && !$staff_summary == '' ):
           $staff_leadership_output .= '</div>';
-          $staff_leadership_output .= '<div class="medium-14 columns staff-summary">';
+          $staff_leadership_output .= '<div class="medium-13 columns staff-summary">';
 
           if ( strlen( $staff_summary ) > 820 ):
             $staff_leadership_output .=  '<div class="staff-bio expandable">' . $staff_summary . '</div><div class="float-right"> <a href="#" data-toggle="data-staff-bio"> Expand + </a></div>';
@@ -136,14 +139,27 @@ if ( has_category() ):
         $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
 
       else:
-
         $all_staff_table_output .= '<tr>
-          <td>' . $staff_member_name_output . '</td>
-          <td>' . $staff_title . '</td>
-          <td><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>
-          <td><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>
-          <td class="social">' . $staff_social_output . '</td>
-        </tr>';
+          <td class="name">' . $staff_member_name_output . '</td>
+          <td class="title">' . $staff_title . '</td>';
+          if (!empty($staff_email)) :
+          $all_staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
+          else:
+            $all_staff_table_output .= '<td class="email"></td>';
+          endif;
+
+          if ( !empty( $staff_phone_unformatted ) && !empty( $staff_phone_formatted ) ):
+            $all_staff_table_output .= '<td class="phone"><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          else :
+            $all_staff_table_output .= '<td class="phone"></td>';
+          endif;
+
+          if ( !empty( $staff_social_output ) ) :
+            $all_staff_table_output .= '<td class="social">' . $staff_social_output . '</td></tr>';
+          else :
+            $all_staff_table_output .= '<td class="social"></td>';
+          endif;
+          $all_staff_table_output .= '</tr>';
       endif;
     endwhile;
 
@@ -152,7 +168,7 @@ if ( has_category() ):
     if (!empty($staff_leadership_array)):?>
       <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
           <div class="large-24 columns">
-            <?php if ($user_selected_template == 'one_page_department') : ?>
+            <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
               <h2 class="contrast">Leadership</h2>
             <?php endif; ?>
             <?php
@@ -169,9 +185,9 @@ if ( has_category() ):
       <section class="row mvl all-staff-table">
           <div class="large-24 columns">
             <?php if ($user_selected_template != 'staff_directory') : ?>
-              <h2 class="contrast">All Staff</h2>
+              <h2 class="contrast">Staff</h2>
             <?php endif; ?>
-            <table role="grid" class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+            <table role="grid" class="tablesaw tablesaw-stack staff" data-tablesaw-mode="stack">
               <thead>
                 <tr>
                   <th scope="col">Name</th>
