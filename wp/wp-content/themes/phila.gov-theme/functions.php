@@ -297,8 +297,6 @@ function phila_gov_scripts() {
 
   wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
-  wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
-
   //TODO set flag to use minified js in prod
   wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.js', 1.0, true );
 
