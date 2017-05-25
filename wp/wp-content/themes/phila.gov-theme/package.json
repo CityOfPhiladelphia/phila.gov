@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cp -R node_modules/font-awesome/fonts ./",
-    "build:css": "node-sass --include-path node_modules/phila-standards/dist/css --output-style compressed --source-map true css/scss/base.scss css/styles.css",
+    "build:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.css ",
     "build:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "prod:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js"
   },
@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "js-cookie": "^2.1.3",
+    "list.js": "^1.5.0",
     "mustache": "^2.3.0",
-    "phila-standards": "^0.5.1"
+    "phila-standards": "^0.5.2"
   }
 }
