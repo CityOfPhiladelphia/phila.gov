@@ -172,7 +172,7 @@ html.is-reveal-open{
 /*provides option to apply a hover-fade to items in which the link state should not change*/
 .hover-fade-keep-a{
   a:hover {
-    color: $ben-franklin-blue;
+    color: color(ben-franklin-blue);
   }
   @extend .hover-fade;
 }

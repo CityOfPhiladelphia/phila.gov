@@ -49,7 +49,7 @@ form input.st-search-input {
 .swiftype-widget .autocomplete li.active {
   border-top: 1px solid #145A93;
   border-bottom: 1px solid #086aa8;
-  background-color: $ben-franklin-blue;
+  background-color: color(ben-franklin-blue);
 }
 
 .swiftype-widget .autocomplete li.active a {

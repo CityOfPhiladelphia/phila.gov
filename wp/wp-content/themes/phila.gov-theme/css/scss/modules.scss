@@ -6,7 +6,7 @@
   }
 
   section{
-    background:$ben-franklin-blue;
+    background:color(ben-franklin-blue);
   }
   .call-to-action {
     margin: 40px 0;
@@ -50,9 +50,9 @@
       padding:.5rem 0;
       width:100%;
       display: inline-block;
-      border-left:1px solid $ben-franklin-blue;
-      border-right:1px solid $ben-franklin-blue;
-      border-top: 2px solid $ben-franklin-blue;
+      border-left:1px solid color(ben-franklin-blue);
+      border-right:1px solid color(ben-franklin-blue);
+      border-top: 2px solid color(ben-franklin-blue);
       color:white;
       text-transform: uppercase;
       font-weight: normal;

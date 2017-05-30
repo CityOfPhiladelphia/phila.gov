@@ -14,7 +14,7 @@ dl.simcal-events-list-container{
   margin-bottom: 1rem;
 }
 .simcal-default-calendar-light .simcal-nav-button{
-  color:$ben-franklin-blue !important;
+  color:color(ben-franklin-blue) !important;
 }
 
 .events-block{
@@ -53,7 +53,7 @@ a[href*="google.com/calendar"]:after{
   text-align:center;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   float:left;
-  color:$ben-franklin-blue;
+  color:color(ben-franklin-blue);
 
   .month{
     display: block;
@@ -82,6 +82,6 @@ a[href*="google.com/calendar"]:after{
   }
   .calendar-date{
     color:$white;
-    background:$ben-franklin-blue;
+    background:color(ben-franklin-blue);
   }
 }
