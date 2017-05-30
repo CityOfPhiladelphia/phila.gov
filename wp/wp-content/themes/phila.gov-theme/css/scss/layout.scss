@@ -103,15 +103,6 @@ aside {
     }
 }
 
-.breadcrumbs{
-
-  padding:0;
-
-  .fa-home{
-    font-size: $large-font-base / 4.8;
-  }
-}
-
 .news-row{
   background:$white;
 }
@@ -143,11 +134,6 @@ aside {
     cursor: pointer;
     @extend .hover-fade-keep-a;
   }
-}
-
-.no-scroll{
-  height:100%;
-  overflow: hidden;
 }
 
 header.entry-header h2{
