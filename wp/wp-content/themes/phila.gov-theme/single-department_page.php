@@ -29,7 +29,7 @@ $user_selected_template = phila_get_selected_template();
 get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
-  <header class="entry-header">
+  <header>
   <?php
   //TODO: clean up menu rendering
     $parent = phila_util_get_furthest_ancestor($post);
@@ -62,7 +62,6 @@ get_header(); ?>
               <?php endif;?>
             </div>
           </div>
-            <div class="show-for-medium">
             <?php
               /*
               Our navigation menu. We use categories to drive functionality.
@@ -71,20 +70,9 @@ get_header(); ?>
               */
                 phila_get_department_menu();
             ?>
-          </div>
         </div>
       </div>
     </header>
-    <div class="show-for-small-only">
-    <?php
-      /*
-      Our navigation menu. We use categories to drive functionality.
-      This checks to make sure a category exists for the given page,
-      if it does, we render our menu w/ markup.
-      */
-        phila_get_department_menu();
-    ?>
-  </div>
     <?php else: ?>
       <div class="row">
         <div class="columns">
@@ -92,21 +80,23 @@ get_header(); ?>
         </div>
       </div>
   </header>
+
+  <div class="menu-old">
     <?php
-    //get department homepage alerts
-    call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
+      //get department homepage alerts
+      call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
 
-    if ( $user_selected_template != 'off_site_department' ){
-      /*
-      Our navigation menu. We use categories to drive functionality.
-      This checks to make sure a category exists for the given page,
-      if it does, we render our menu w/ markup.
-      */
-        phila_get_department_menu();
-    }
-    ?>
-  <?php endif; ?>
-
+      if ( $user_selected_template != 'off_site_department' ){
+        /*
+        Our navigation menu. We use categories to drive functionality.
+        This checks to make sure a category exists for the given page,
+        if it does, we render our menu w/ markup.
+        */
+          phila_get_department_menu();
+      }
+      ?>
+    <?php endif; ?>
+  </div>
   <?php
     if ( $user_selected_template === 'off_site_department' ){
 
