@@ -1,6 +1,6 @@
 //Call to Action panel
 a.action-panel {
-  color: $dark-gray;
+  color: color(dark-gray);
   font-weight: normal;
   border-bottom: 0;
 
@@ -10,11 +10,11 @@ a.action-panel {
     margin-bottom: 1rem;
 
     header {
-      color: $ben-franklin-blue;
+      color: color(dark-ben-franklin);
       font-weight: 700;
       text-align: center;
       .fa-circle {
-        color: $bell-yellow;
+        color: color(bell-yellow);
       }
     }
     @media only screen and (min-width: 64em) {
