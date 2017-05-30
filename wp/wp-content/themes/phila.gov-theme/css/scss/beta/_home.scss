@@ -15,14 +15,10 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
-
-    img {
-
-    }
     .beta-message {
       p {
-          font-weight: 400;
-          font-size: 1.15rem;
+        font-weight: 400;
+        font-size: 1.15rem;
       }
       .h1 {
         font-size: 2.5rem;
@@ -69,31 +65,34 @@
       margin: 0;
       font-family: 'Montserrat', 'Tahoma', sans-serif;
 
-      a .fa, p {
-        color: $ben-franklin-blue;
-      }
-      a .fa {
-        font-size: 5rem;
-        line-height: 5rem;
-        @media only screen and (min-width: 40em) {
-          font-size: 3rem;
-          line-height: 4rem;
+      a {
+        color:black;
+        .fa, p {
+          color: $ben-franklin-blue;
         }
-        @media only screen and (min-width: 64em) {
-          font-size: 4rem;
-        }
-      }
-      a .fa-home {
-        font-size: 6rem;
-        line-height: 5rem;
-        @media only screen and (min-width: 40em) {
-          font-size: 4rem;
-          line-height: 4rem;
-        }
-        @media only screen and (min-width: 64em) {
+        .fa {
           font-size: 5rem;
+          line-height: 5rem;
+          @media only screen and (min-width: 40em) {
+            font-size: 3rem;
+            line-height: 4rem;
+          }
+          @media only screen and (min-width: 64em) {
+            font-size: 4rem;
+          }
         }
-      }
+        .fa-home {
+          font-size: 6rem;
+          line-height: 5rem;
+          @media only screen and (min-width: 40em) {
+            font-size: 4rem;
+            line-height: 4rem;
+          }
+          @media only screen and (min-width: 64em) {
+            font-size: 5rem;
+          }
+        }
+    }
       p {
         margin:0;
         font-size: 1rem;
@@ -107,25 +106,25 @@
       }
       a {
         background-color: #daedfe;
-        transition: opacity .2s ease-in-out;
-        -moz-transition: opacity .2s ease-in-out;
-        -webkit-transition: opacity .2s ease-in-out;
-        &:hover {
-          opacity: .6;
+        display: block;
+        @include transition(opacity, .25s);
+
+
+        &:hover{
+          @include transition(opacity, .25s);
+          opacity: .5;
+          }
         }
-      }
-      .cta-block {
       }
     }
   }
 
   .feedback {
-    .up {
-      background: $ghost-gray;
-    }
+  .up {
+    background: $ghost-gray;
   }
-
 }
+
 
 .neighborhood-resources {
   .resource-row {
@@ -133,6 +132,11 @@
       .panel {
         background-color: rgba(255, 255, 255, 0.7);
         margin: 0 auto;
+        @include transition(opacity, .25s);
+        &:hover{
+          @include transition(opacity, .25s);
+          opacity: .5;
+        }
         header {
           font-family: 'Montserrat', 'Tahoma', sans-serif;
           font-weight: 400;
