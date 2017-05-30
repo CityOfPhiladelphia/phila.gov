@@ -139,38 +139,17 @@
     text-align: center;
   }
 }
-.department-nav{
-  .top-bar, .top-bar ul {
+.menu-old{
+  #site-nav {
     @media screen and (min-width: 40em){
       background-color:#daedfe;
     }
-  }
-}
-#site-nav  {
 
-  .is-drilldown{
-
-    li{
-      border-bottom: 1px solid $ghost-gray;
-    }
-  }
-
-  ul {
-    //TODO: add to patterns
-    z-index: 10;
-
-    ul{
-      background: white;
-    }
-  }
-
-  .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
-    border-color: transparent transparent transparent #fff;
-    border-left-style: solid;
-    border-right-width: 0;
-  }
-
-  .department-menu{
+      .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
+        border-color: transparent transparent transparent #fff;
+        border-left-style: solid;
+        border-right-width: 0;
+      }
 
     .dropdown li{
       border-bottom:1px solid $sidewalk;
@@ -186,6 +165,7 @@
         color:$black;
       }
     }
+
   }
 }
 
