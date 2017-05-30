@@ -7,6 +7,7 @@
     "dev": "cp -R node_modules/font-awesome/fonts ./",
     "build:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.css ",
     "build:js": "browserify js/dev/main.js -o js/phila-scripts.js",
+    "postbuild": "postcss --use autoprefixer -b 'last 2 versions' < css/styles.css -o css/styles.css",
     "prod:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js"
   },
   "repository": {
@@ -23,9 +24,12 @@
   },
   "homepage": "https://github.com/CityOfPhiladelphia/phila.gov-theme",
   "devDependencies": {
+    "autoprefixer": "^7.1.1",
     "browserify": "^14.1.0",
     "browserify-shim": "^3.8.14",
     "node-sass": "^4.5.1",
+    "postcss": "^6.0.1",
+    "postcss-cli": "^4.0.0",
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
