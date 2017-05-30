@@ -159,7 +159,7 @@
       }
     }
     li[class*="current-menu-item"] > a{
-      background: $ben-franklin-blue;
+      background: color(ben-franklin-blue);
       color:$white;
       &:hover{
         color:$black;
