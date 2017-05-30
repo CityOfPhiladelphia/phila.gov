@@ -640,18 +640,18 @@ function phila_get_department_menu() {
           'container'       => '',
           'container_class' => '',
           'container_id'    => '',
-          'menu_class'      => 'secondary-menu vertical medium-horizontal menu',
+          'menu_class'      => 'secondary-menu vertical medium-horizontal menu dropdown',
           'menu_id'         => '',
           'echo'            => true,
           'fallback_cb'     => false,//if there is no menu, output nothing
           'before'          => '',
           'after'           => '',
           'items_wrap'      => '
-          <div class="row department-nav">
+          <div class="row">
             <div class="small-24 columns">
-              <div class="top-bar mbm-mu" id="site-nav">
+              <div class="mbm-mu" id="site-nav">
                 <nav data-swiftype-index="false">
-                  <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
+                  <ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown">%3$s</ul>
                   </nav>
                 </div>
                 </div>
