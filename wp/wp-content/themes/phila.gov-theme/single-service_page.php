@@ -22,7 +22,7 @@
       ?>
     <article id="post-<?php the_ID(); ?>">
       <div class="row">
-        <header class="entry-header small-24 columns">
+        <header class="small-24 columns">
           <h1 class="contrast">
             <?php if ( !empty( $icon ) ) : ?>
               <i class="fa <?php echo $icon ?>" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
         </div>
         <div class="row equal-height border-bottom-sidewalk mtm">
           <div class="medium-7 columns border-right-sidewalk equal hide-for-small-only pbxl">
-            <nav data-swiftype-index="false" id="services-nav">
+            <nav data-swiftype-index="false" id="side-nav">
               <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="services-menu vertical menu">
               <?php
                 $args = array(

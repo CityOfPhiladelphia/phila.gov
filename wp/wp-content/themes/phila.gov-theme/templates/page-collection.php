@@ -52,7 +52,7 @@
 
 <article id="post-<?php the_ID(); ?>">
 <div class="row">
-  <header class="entry-header small-24 columns">
+  <header class="small-24 columns">
       <?php if ( isset( $parent_title ) ) : ?>
         <h1 class="contrast"><?php echo $parent_title ?></h1>
       <?php else : ?>
