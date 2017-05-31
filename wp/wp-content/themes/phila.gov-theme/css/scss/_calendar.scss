@@ -81,7 +81,7 @@ a[href*="google.com/calendar"]:after{
     border-left:none;
   }
   .calendar-date{
-    color:$white;
+    color:color(white);
     background:color(ben-franklin-blue);
   }
 }

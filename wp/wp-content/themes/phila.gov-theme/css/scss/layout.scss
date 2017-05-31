@@ -29,7 +29,7 @@ h1 .fa{
     }
   }
   i{
-    color:$white;
+    color:color(white);
     background:color(bell-yellow);
     padding:5px;
   }
@@ -104,12 +104,12 @@ aside {
 }
 
 .news-row{
-  background:$white;
+  background:color(white);
 }
 
 @media screen and (min-width: 64em) {
   .border-right{
-    border-right:1px solid $dark-gray;
+    border-right:1px solid color(dark-gray);
   }
 }
 .top-bar{
@@ -117,7 +117,7 @@ aside {
 }
 
 .bg-white{
-  background-color:$white;
+  background-color:color(white);
 }
 
 .fade{
@@ -172,16 +172,16 @@ body.is-reveal-open{
     box-shadow: none;
     margin-bottom:1rem;
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: $dark-gray;
+      color: color(dark-gray);
     }
     &::-moz-placeholder { /* Firefox 19+ */
-      color: $dark-gray;
+      color: color(dark-gray);
     }
     &:-ms-input-placeholder { /* IE 10+ */
-      color: $dark-gray;
+      color: color(dark-gray);
     }
     &:-moz-placeholder { /* Firefox 18- */
-      color: $dark-gray;
+      color: color(dark-gray);
     }
   }
   .button {

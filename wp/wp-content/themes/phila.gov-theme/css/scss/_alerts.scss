@@ -1,15 +1,15 @@
 #site-wide-alert a,
 #site-wide-alert a:visited {
-  color:$white;
+  color:color(white);
 }
 #site-wide-alert a:hover {
-  color: $dark-gray;
+  color: color(dark-gray);
 }
 
 #site-wide-alert.subtle{
-  background: $dark-gray;
+  background: color(dark-gray);
   text-align: center;
-  color:$white;
+  color:color(white);
 
   @media screen and (min-width: 40em) {
     h2{

@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
     i {
-      color:$dark-gray;
+      color:color(dark-gray);
       vertical-align: middle;
       padding: 0 1rem 0 0;
     }
@@ -47,7 +47,7 @@
     @media only screen and (min-width: 40em) {
       &:last-of-type{
         border-top: 0;
-        border-left: 2px solid $white;
+        border-left: 2px solid color(white);
       }
     }
     .button{
