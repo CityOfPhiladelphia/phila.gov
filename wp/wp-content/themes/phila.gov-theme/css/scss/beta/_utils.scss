@@ -8,7 +8,7 @@
   border-color:color(ghost-gray);
 }
 .bdr-sidewalk {
-  border-color:$sidewalk;
+  border-color:color(sidewalk);
 }
 .bdr-dark-gray {
   border-color:color(dark-gray);
@@ -100,16 +100,16 @@
 //TODO: Move to patterns
 
 .border-bottom-sidewalk{
-  border-bottom:1px solid $sidewalk;
+  border-bottom:1px solid color(sidewalk);
 }
 .border-right-sidewalk{
-  border-right:1px solid $sidewalk;
+  border-right:1px solid color(sidewalk);
 }
 .border-left-sidewalk{
-  border-left:1px solid $sidewalk;
+  border-left:1px solid color(sidewalk);
 }
 .border-top-sidewalk{
-  border-top:1px solid $sidewalk;
+  border-top:1px solid color(sidewalk);
 }
 
 .sentence-case {
