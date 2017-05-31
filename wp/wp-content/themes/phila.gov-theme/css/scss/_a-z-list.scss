@@ -93,7 +93,7 @@
         cursor: pointer;
         &:checked{
           + label{
-            color:$black;
+            color:color(black);
           }
         }
       }
