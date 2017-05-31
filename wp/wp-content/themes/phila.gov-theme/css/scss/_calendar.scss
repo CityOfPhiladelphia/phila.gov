@@ -44,7 +44,7 @@ a[href*="google.com/calendar"]:after{
   background-color:rgba(255, 255, 255, .8);
   padding:0 1rem;
   min-height:94px;
-  border-left:1px solid $black;
+  border-left:1px solid color(black);
 }
 .simcal-event {
   margin-bottom:1rem;

@@ -5,7 +5,7 @@
 
   .step-label {
     margin-left: -$spacing-medium;
-    background: $black;
+    background: color(black);
     border-radius: $spacing-extra-large;
     color:$white;
     padding: 0 $spacing-small;
@@ -20,7 +20,7 @@
     margin-top: -$spacing-large;
     padding-left: $spacing-large;
     padding-bottom: $spacing-large;
-    border-left:1px solid $black;
+    border-left:1px solid color(black);
 
     &:last-of-type {
       border:none;
