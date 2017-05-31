@@ -21,7 +21,7 @@
     }
   }
   .row{
-    border-top: 1px solid $dark-gray;
+    border-top: 1px solid color(dark-gray);
     margin-bottom:2rem;
 
     .letter{
@@ -41,8 +41,8 @@
   }
 
   .a-z-group span:focus {
-    background: $dark-gray;
-    color: $white;
+    background: color(dark-gray);
+    color: color(white);
     padding: 0 10px;
     margin: 0;
     outline: none;
@@ -78,7 +78,7 @@
 
   .filter{
     //TODO: correct the base style that is providing the gray bg & padding
-    background:$white;
+    background:color(white);
     padding-top:0;
 
     li{

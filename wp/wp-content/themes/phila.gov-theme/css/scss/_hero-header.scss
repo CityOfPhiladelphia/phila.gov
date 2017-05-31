@@ -199,12 +199,12 @@
         }
       }
       .photo-credit {
-        color: $white;
+        color: color(white);
         padding: $spacing-extra-small $spacing-small;
         position:absolute;
         bottom:0;
         right:0;
-        text-shadow: 1px 1px 1px $dark-gray;
+        text-shadow: 1px 1px 1px color(dark-gray);
         // background-color: rgba(0,0,0,.3);
       }
     }

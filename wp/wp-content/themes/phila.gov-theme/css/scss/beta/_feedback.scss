@@ -6,7 +6,7 @@
 */
 
 .feedback {
-  color: $dark-gray;
+  color: color(dark-gray);
 
   .feedback-form {
     background: $ghost-gray;
@@ -34,7 +34,7 @@
     }
 
     .fa {
-      color: $dark-gray;
+      color: color(dark-gray);
 
       &.fa-lightbulb-o {
         font-size: 2rem;

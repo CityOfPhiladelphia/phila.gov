@@ -160,7 +160,7 @@
     }
     li[class*="current-menu-item"] > a{
       background: color(ben-franklin-blue);
-      color:$white;
+      color:color(white);
       &:hover{
         color:color(black);
       }
