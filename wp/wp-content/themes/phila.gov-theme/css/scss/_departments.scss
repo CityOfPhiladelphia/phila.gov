@@ -35,7 +35,7 @@
   }
 
   .contact{
-    background:$ghost-gray;
+    background:color(ghost-gray);
     padding:$spacing-medium;
 
     aside{
@@ -48,7 +48,7 @@
   }
 
   .inner {
-    background:$ghost-gray;
+    background:color(ghost-gray);
     padding:20px;
   }
 
@@ -170,7 +170,7 @@
 }
 
 .post-type-archive-department_page .list li{
-  border-bottom: 1px solid $ghost-gray;
+  border-bottom: 1px solid color(ghost-gray);
   margin: 1rem 0;
 }
 

@@ -37,7 +37,7 @@
 
   a[disabled] {
     pointer-events: none;
-    color:$ghost-gray;
+    color:color(ghost-gray);
   }
 
   .a-z-group span:focus {
