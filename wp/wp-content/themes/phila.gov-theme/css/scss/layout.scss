@@ -5,7 +5,6 @@ h1 .fa{
   @media screen and (min-width: 40em) {
     font-size: 2rem;
   }
-
 }
 
 .group::after {
@@ -34,15 +33,6 @@ h1 .fa{
     padding:5px;
   }
 }
-
-header .site-branding {
-  background: transparent;
-}
-
-body.custom-background{
-  background-size:100%;
-}
-
 
 .filter {
   background:color(ghost-gray);
