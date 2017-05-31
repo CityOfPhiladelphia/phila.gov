@@ -54,7 +54,7 @@
         display:inline-block;
         font-style: italic;
         font-size: .75rem;
-        color: $medium-gray;
+        color: color(medium-gray);
         padding: 0.25rem 0.5rem;
         position: absolute;
         bottom: 105px;
@@ -181,7 +181,7 @@
         text-align: center;
         &:before {
           content: '';
-          border-right: 1px solid $medium-gray;
+          border-right: 1px solid color(medium-gray);
           display: inline-block;
           height: 30px;
           width: 0;
@@ -239,7 +239,7 @@
       }
       &.left-arrow-medium-gray {
         &:before {
-          border-left-color: $medium-gray;
+          border-left-color: color(medium-gray);
         }
       }
       &.left-arrow-ben-franklin-blue {
@@ -257,7 +257,7 @@
         content: '';
         width: 0;
         height: 0;
-        border-left: 15px solid $medium-gray;
+        border-left: 15px solid color(medium-gray);
         border-top: 20px solid transparent;
         border-bottom: 20px solid transparent;
         right: 0px;

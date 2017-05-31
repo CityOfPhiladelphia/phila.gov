@@ -37,7 +37,7 @@
       display: inline-block;
       font-style: italic;
       font-size: .75rem;
-      color: $medium-gray;
+      color: color(medium-gray);
       padding: .25rem .5rem;
       position: absolute;
       bottom: 0;
@@ -87,7 +87,7 @@
       display:inline-block;
       font-style: italic;
       font-size: .75rem;
-      color: $medium-gray;
+      color: color(medium-gray);
       padding: 0.25rem 0.5rem;
       position: absolute;
       bottom: 105px;
