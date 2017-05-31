@@ -51,7 +51,7 @@ body.custom-background{
 }
 
 .filter {
-  background:$ghost-gray;
+  background:color(ghost-gray);
   padding:10px;
   ul {
     list-style:none;
@@ -168,7 +168,7 @@ body.is-reveal-open{
 #mc_embed_signup {
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea, select {
     border:none;
-    background-color: $ghost-gray;
+    background-color: color(ghost-gray);
     box-shadow: none;
     margin-bottom:1rem;
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */

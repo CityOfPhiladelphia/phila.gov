@@ -9,7 +9,7 @@
   color: color(dark-gray);
 
   .feedback-form {
-    background: $ghost-gray;
+    background: color(ghost-gray);
     min-height:500px;
     p {
       font-size: 1rem;
@@ -58,7 +58,7 @@
   .up {
     background: none;
     .arrow-wrapper {
-      background: $ghost-gray;
+      background: color(ghost-gray);
     }
     .arrow {
       border-bottom: 15px solid color(electric-blue);
