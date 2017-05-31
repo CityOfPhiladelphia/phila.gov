@@ -16,7 +16,7 @@
     }
     i{
        padding-left:5px;
-       color:$sidewalk;
+       color:color(sidewalk);
     }
   }
   h3{
@@ -48,7 +48,7 @@
         background-color: color(ghost-gray);
       }
       tr:nth-of-type(even){
-        background-color: $sidewalk;
+        background-color: color(sidewalk);
       }
       td{
         border-bottom: 2px solid color(white);

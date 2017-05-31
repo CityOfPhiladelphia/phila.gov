@@ -152,7 +152,7 @@
       }
 
     .dropdown li{
-      border-bottom:1px solid $sidewalk;
+      border-bottom:1px solid color(sidewalk);
 
       &:last-child{
         border-bottom: none;
