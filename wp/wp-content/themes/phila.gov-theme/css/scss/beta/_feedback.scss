@@ -19,7 +19,7 @@
     background: none;
   }
   .call-to-action {
-    background: $bike-share-blue;
+    background: color(electric-blue);
     text-transform: uppercase;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
     font-weight: 400;
@@ -53,7 +53,7 @@
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     margin: 0 auto;
-    border-top: 15px solid $bike-share-blue;
+    border-top: 15px solid color(electric-blue);
   }
   .up {
     background: none;
@@ -61,8 +61,8 @@
       background: $ghost-gray;
     }
     .arrow {
-      border-bottom: 15px solid $bike-share-blue;
-      border-top: 0px solid $bike-share-blue;
+      border-bottom: 15px solid color(electric-blue);
+      border-top: 0px solid color(electric-blue);
     }
   }
   .site-wide-instructions {
