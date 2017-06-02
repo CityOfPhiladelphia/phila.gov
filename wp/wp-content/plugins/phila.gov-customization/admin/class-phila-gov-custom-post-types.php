@@ -99,6 +99,8 @@ class Phila_Gov_Custom_Post_Types{
           'author'
         ),
         'public' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'services',
         'has_archive' => true,
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-admin-generic',
@@ -174,7 +176,8 @@ class Phila_Gov_Custom_Post_Types{
         'title',
         'editor',
         'thumbnail',
-        'revisions'
+        'revisions',
+        'author'
       ),
       'rewrite' => array(
         'slug' => 'news',
@@ -234,7 +237,8 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'supports' => array(
           'title',
-          'revisions'
+          'revisions',
+          'author'
         ),
         'public' => true,
         'has_archive' => true,
@@ -306,7 +310,8 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array(
           'editor',
           'title',
-          'revisions'
+          'revisions',
+          'author'
         ),
         'public' => true,
         'has_archive' => true,
