@@ -176,7 +176,8 @@ class Phila_Gov_Custom_Post_Types{
         'title',
         'editor',
         'thumbnail',
-        'revisions'
+        'revisions',
+        'author'
       ),
       'rewrite' => array(
         'slug' => 'news',
@@ -236,7 +237,8 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'supports' => array(
           'title',
-          'revisions'
+          'revisions',
+          'author'
         ),
         'public' => true,
         'has_archive' => true,
@@ -308,7 +310,8 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array(
           'editor',
           'title',
-          'revisions'
+          'revisions',
+          'author'
         ),
         'public' => true,
         'has_archive' => true,
