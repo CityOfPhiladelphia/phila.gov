@@ -487,7 +487,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_category_picker( $name, $id, $desc){
+  public static function phila_metabox_category_picker( $name, $id, $desc = ''){
     return array(
       'name'  => $name,
       'id'  => $id,
