@@ -200,16 +200,12 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
 
   $meta_boxes[] = array(
-    'title' => 'Select category',
+    'title' => 'Select categories',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'staff_directory_v2' ),
 
     'fields' => array(
-      array(
-        'id' => 'phila_staff_category',
-        'name' => 'Get staff in this category only -- overrides page Category selection',
-        'type' => 'text',
-      )
+      Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select categories', 'phila_staff_category', 'Display staff from these categories. This will override page category selection entirely.'),
     )
   );
 
