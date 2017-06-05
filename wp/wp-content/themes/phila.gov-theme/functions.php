@@ -1758,6 +1758,7 @@ function phila_util_is_array_empty($input){
 function phila_get_department_homepage_typography( $parent ){
 
   $target_phrases = array(
+    "Mayor's Commission on",
     "Mayor's Office of",
     "Commission on",
     "Board of",
@@ -1765,12 +1766,12 @@ function phila_get_department_homepage_typography( $parent ){
     "Office of",
     "Department of",
     "Bureau of",
-    "Philadelphia"
+    "Philadelphia",
   );
 
   $page_title = $parent->post_title;
 
-  while (list(, $phrase) = each($target_phrases)) {
+  while ( list(, $phrase) = each( $target_phrases ) ) {
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
       $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
