@@ -136,7 +136,6 @@ class Phila_Gov_Custom_Post_Types{
       'exclude_from_search' => true,
       'public' => false,
       'show_in_rest' => true,
-      'rest_base' => 'service_updates',
       'show_ui' => true,
       'has_archive' => false,
       'menu_icon' => 'dashicons-warning',
