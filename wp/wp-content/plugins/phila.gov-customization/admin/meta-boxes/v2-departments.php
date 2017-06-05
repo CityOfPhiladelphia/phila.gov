@@ -200,13 +200,21 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
 
   $meta_boxes[] = array(
-    'title' => 'Select categories',
+    'title' => 'Override page category selection',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'staff_directory_v2' ),
+    'context'  => 'normal',
+    'priority' => 'high',
 
     'fields' => array(
-      Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select categories', 'phila_staff_category', 'Display staff from these categories. This will override page category selection entirely.'),
-    )
+      array(
+        'id'  => 'phila_get_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_staff_category', 'Display staff from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
+    ),
   );
 
   $meta_boxes[] = array(
