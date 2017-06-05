@@ -134,10 +134,10 @@ class Phila_Gov_Custom_Post_Types{
         'title',
       ),
       'exclude_from_search' => true,
-      // TODO: Set public to true
       'public' => false,
+      'show_in_rest' => true,
+      'rest_base' => 'service_updates',
       'show_ui' => true,
-      // TODO: Set has_archive to true
       'has_archive' => false,
       'menu_icon' => 'dashicons-warning',
       'hierarchical' => false,
