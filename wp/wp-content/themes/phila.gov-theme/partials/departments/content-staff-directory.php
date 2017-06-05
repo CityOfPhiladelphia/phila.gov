@@ -16,7 +16,6 @@ if ( has_category() ):
   $category_id = $categories[0]->cat_ID;
 
   if ( !empty( $category_override ) ) :
-    phila_loop_clonable_metabox($category_override);
     $category_id = implode(", ", $category_override['phila_staff_category']);
   endif;
 
