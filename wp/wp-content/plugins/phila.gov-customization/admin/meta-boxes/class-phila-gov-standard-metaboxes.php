@@ -487,15 +487,16 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_category_picker( $name, $id, $post_type, $columns = '12' ){
+  public static function phila_metabox_category_picker( $name, $id, $desc){
     return array(
       'name'  => $name,
       'id'  => $id,
-      'post_type' => $post_type,
-      'columns' => $columns,
+      'desc'  => $desc,
       'type'  => 'taxonomy_advanced',
       'taxonomy'  => 'category',
-      'field_type'  => 'select_advanced'
+      'field_type'  => 'select_advanced',
+      'multiple'  => true,
+      'allowClear' => true
     );
   }
 
