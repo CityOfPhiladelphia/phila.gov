@@ -14,6 +14,7 @@
 <?php $full_width_press_releases = rwmb_meta( 'phila_full_row_press_releases_selected' ); ?>
 
 <?php $full_row_blog = rwmb_meta( 'phila_full_row_blog_selected' ); ?>
+<?php $full_row_news = rwmb_meta( 'phila_full_row_news_selected' ); ?>
 
 <?php $featured_meta = rwmb_meta( 'phila_v2_homepage_featured' ) ; ?>
 <?php $featured = phila_loop_clonable_metabox($featured_meta); ?>
@@ -69,8 +70,6 @@
 
     <?php get_template_part( 'partials/departments/content', 'row-one' ); ?>
 
-    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
-
     <?php if ( $full_row_blog ): ?>
       <?php
         $blog_cat_override = rwmb_meta('phila_get_post_cats');
@@ -87,11 +86,39 @@
       </section>
     <?php endif; ?>
 
+    <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
+
+    <?php if ( $full_row_news ): ?>
+      <?php
+        $news_cat_override = rwmb_meta('phila_get_news_cats');
+
+        $categories = get_the_category();
+        $category_id = $categories[0]->cat_ID;
+
+        if ( !empty( $news_cat_override ) ) :
+          $category_id = implode(", ", $news_cat_override['phila_news_category']);
+        endif;
+        ?>
+      <section class="row">
+        <?php echo do_shortcode('[recent-news posts="3" category=" ' . $category_id .' "]'); ?>
+      </section>
+    <?php endif; ?>
+
     <?php get_template_part( 'partials/departments/content', 'row-two' ); ?>
 
     <?php if ( $full_width_press_releases ): ?>
+      <?php
+        $press_cat_override = rwmb_meta('phila_get_press_cats');
+
+        $categories = get_the_category();
+        $category_id = $categories[0]->cat_ID;
+
+        if ( !empty( $press_cat_override ) ) :
+          $category_id = implode(", ", $press_cat_override['phila_press_release_category']);
+        endif;
+        ?>
       <div class="row">
-        <?php echo do_shortcode('[press-releases posts=3]');?>
+        <?php echo do_shortcode('[press-releases posts=3 category="' . $category_id . '"]');?>
       </div>
     <?php endif; ?>
 
