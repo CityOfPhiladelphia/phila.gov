@@ -1012,10 +1012,10 @@ $meta_boxes[] = array(
         'after' => '<p class="description">Enter at least three blog posts in the <a href="/wp-admin/edit.php?post_type=phila_post">Blog Post</a> section.</p>'
       ),
       array(
-        'id'  => 'phila_get_blog_cats',
+        'id'  => 'phila_get_post_cats',
         'type' => 'group',
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_blog_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
         ),
       ),
     ),
