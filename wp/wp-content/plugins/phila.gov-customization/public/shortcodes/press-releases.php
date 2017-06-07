@@ -15,10 +15,17 @@ function press_release_shortcode($atts) {
   $a = shortcode_atts( array(
    'posts' => 1,
    'name' => 'Press releases',
+    'category' => '',
   ), $atts );
 
-  $current_category = $category[0]->cat_ID;
-  $category_slug = $category[0]->slug;
+  if ($a['category'] != ''){
+    $current_category = $a['category'];
+    $category_slug = get_category($a['category'])->slug;
+  } else {
+    $category = get_the_category();
+    $current_category = $category[0]->cat_ID;
+    $category_slug = $category[0]->slug;
+  }
 
   $args = array( 'posts_per_page' => $a['posts'],
   'order'=> 'DESC',
