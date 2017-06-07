@@ -941,6 +941,13 @@ $meta_boxes[] = array(
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
       ),
+      array(
+        'id'  => 'phila_get_staff_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_staff_category', 'Display staff members from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
     ),
   );
 
@@ -969,6 +976,13 @@ $meta_boxes[] = array(
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least three press releases in the <a href="/wp-admin/edit.php?post_type=press_release">Press release</a> section.</p>'
       ),
+      array(
+        'id'  => 'phila_get_press_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_press_release_category', 'Display press releases from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
     ),
   );
 
@@ -996,6 +1010,13 @@ $meta_boxes[] = array(
         'desc'  => 'Should this page show a full row of blog posts?',
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least three blog posts in the <a href="/wp-admin/edit.php?post_type=phila_post">Blog Post</a> section.</p>'
+      ),
+      array(
+        'id'  => 'phila_get_blog_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_blog_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+        ),
       ),
     ),
   );
