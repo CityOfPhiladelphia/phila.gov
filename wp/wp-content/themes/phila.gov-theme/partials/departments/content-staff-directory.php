@@ -9,7 +9,7 @@
 
 $user_selected_template = phila_get_selected_template();
 
-$category_override = rwmb_meta('phila_get_cats');
+$category_override = rwmb_meta('phila_get_staff_cats');
 
 if ( has_category() ):
   $categories = get_the_category();
