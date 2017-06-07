@@ -36,9 +36,18 @@ function recent_news_shortcode($atts) {
    'posts' => 1,
     0 => 'list',
     'name' => 'News',
-    'category' => $category_slug,
+    'category' => '',
  ), $atts );
 
+
+  if ($a['category'] != ''){
+   $current_category = $a['category'];
+   $category_slug = get_category($a['category'])->slug;
+  } else {
+   $category = get_the_category();
+   $current_category = $category[0]->cat_ID;
+   $category_slug = $category[0]->slug;
+  }
 
    if ( ! is_flag( 'list', $atts ) ){
      if ( $a['posts'] > 4 || $a['posts'] == 2 ){
@@ -50,7 +59,7 @@ function recent_news_shortcode($atts) {
   'order'=> 'DESC',
   'orderby' => 'date',
   'post_type'  => 'news_post',
-  'category_name' => $a['category'],
+  'cat' => $current_category,
   );
 
   $news_loop = new WP_Query( $args );
