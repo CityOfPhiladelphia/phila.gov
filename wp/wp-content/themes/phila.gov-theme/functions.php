@@ -1758,20 +1758,21 @@ function phila_util_is_array_empty($input){
 function phila_get_department_homepage_typography( $parent ){
 
   $target_phrases = array(
+    "City of Philadelphia",
     "Mayor's Commission on",
     "Mayor's Office of",
+    "Philadelphia ",
     "Commission on",
     "Board of",
     "Office of the",
     "Office of",
     "Department of",
     "Bureau of",
-    "Philadelphia",
   );
 
   $page_title = $parent->post_title;
 
-  while ( list(, $phrase) = each( $target_phrases ) ) {
+  while ( list(, $phrase ) = each( $target_phrases ) ) {
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
       $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
@@ -1780,7 +1781,6 @@ function phila_get_department_homepage_typography( $parent ){
       $new_title = '<h1>' . $page_title . '</h1>';
     }
   }
-
 
   return $new_title;
 }
