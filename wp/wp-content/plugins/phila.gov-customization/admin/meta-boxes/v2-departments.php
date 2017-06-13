@@ -176,7 +176,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'sort_clone' => true,
 
         'fields' => array(
-          //TODO: decide whether or not we want to use arguments as demonstrated below
           Phila_Gov_Standard_Metaboxes::phila_metabox_title('Call to Action Title', 'phila_action_panel_cta_text_multi' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Summary', 'phila_action_panel_summary_multi'),
           Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link to Content','phila_action_panel_link_multi'),
@@ -201,17 +200,21 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
 
   $meta_boxes[] = array(
-    'title' => 'Select category',
+    'title' => 'Override page category selection',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'staff_directory_v2' ),
+    'context'  => 'normal',
+    'priority' => 'high',
 
     'fields' => array(
       array(
-        'id' => 'phila_staff_category',
-        'name' => 'Get staff in this category only -- overrides page Category selection',
-        'type' => 'text',
-      )
-    )
+        'id'  => 'phila_get_staff_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_staff_category', 'Display staff from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
+    ),
   );
 
   $meta_boxes[] = array(
