@@ -9,20 +9,27 @@
 
 $user_selected_template = phila_get_selected_template();
 
-$category_override = rwmb_meta('phila_staff_category');
+$category_override = rwmb_meta('phila_get_staff_cats');
 
 if ( has_category() ):
-
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
 
   if ( !empty( $category_override ) ) :
-    $category_id = $category_override;
+    $category_id = implode(", ", $category_override['phila_staff_category']);
   endif;
+
 
   $staff_leadership_array = array();
   // The Staff Directory Loop
-  $args = array ( 'orderby' => 'title', 'order' => 'ASC', 'post_type' => 'staff_directory', 'cat' => $category_id, 'posts_per_page' => -1 );
+  $args = array(
+    'orderby' => 'title',
+    'order' => 'ASC',
+    'post_type' => 'staff_directory',
+    'cat' => array($category_id),
+    'posts_per_page' => -1
+  );
+
   $staff_member_loop = new WP_Query( $args );
 
   if ( $staff_member_loop->have_posts() ):

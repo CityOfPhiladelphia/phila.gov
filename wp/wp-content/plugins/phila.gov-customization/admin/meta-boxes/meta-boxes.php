@@ -941,6 +941,13 @@ $meta_boxes[] = array(
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
       ),
+      array(
+        'id'  => 'phila_get_staff_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_staff_category', 'Display staff members from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
     ),
   );
 
@@ -969,6 +976,13 @@ $meta_boxes[] = array(
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least three press releases in the <a href="/wp-admin/edit.php?post_type=press_release">Press release</a> section.</p>'
       ),
+      array(
+        'id'  => 'phila_get_press_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_press_release_category', 'Display press releases from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
     ),
   );
 
@@ -996,6 +1010,48 @@ $meta_boxes[] = array(
         'desc'  => 'Should this page show a full row of blog posts?',
         'type' => 'checkbox',
         'after' => '<p class="description">Enter at least three blog posts in the <a href="/wp-admin/edit.php?post_type=phila_post">Blog Post</a> section.</p>'
+      ),
+      array(
+        'id'  => 'phila_get_post_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+        ),
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'       => 'phila_full_row_news',
+    'title'    => 'Full row news posts (3 total)',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'low',
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'homepage_v2'),
+      ),
+      'relation' => 'or',
+    ),
+
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => 'phila_full_row_news_selected',
+        'desc'  => 'Should this page show a full row of news items?',
+        'type' => 'checkbox',
+        'after' => '<p class="description">Enter at least three news posts in the <a href="/wp-admin/edit.php?post_type=news_post">News</a> section.</p>'
+      ),
+      array(
+        'id'  => 'phila_get_news_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_news_category', 'Display news from these categories. This will override page category selection entirely.' ),
+        ),
       ),
     ),
   );
