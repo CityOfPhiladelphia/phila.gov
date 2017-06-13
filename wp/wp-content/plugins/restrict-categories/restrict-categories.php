@@ -492,10 +492,16 @@ class RestrictCategories{
 
 					// Build the category list
 					foreach ( $settings[ $key . '_cats' ] as $category ) {
-						$term_id = get_term_by( 'slug', $category, 'category' )->term_id;
+
+						$term = get_term_by( 'slug', $category, 'category' );
+
+            //EDIT - after WP update 4.8, if get_term_by was false, editor role threw SQL exception. Checking if the term exists corrects it.
+            if ($term) {
+              $term_id = $term->term_id;
+            }
 
 						// If WPML is installed, return the translated ID
-						if ( function_exists( 'icl_object_id' ) )
+						if ( function_exists( 'icl_object_id' ) ) 
 							$term_id = icl_object_id( $term_id, 'category', true );
 
 						$this->cat_list .= $term_id . ',';
@@ -568,7 +574,9 @@ class RestrictCategories{
 	 * @return $excluded string Appended clause on WHERE of get_taxonomy
 	 */
 	public function exclusions(){
+
     $this->cat_list = rtrim($this->cat_list, ",");
+
 
 		$excluded = " AND ( t.term_id IN ( $this->cat_list ) OR tt.taxonomy NOT IN ( 'category' ) )";
 
