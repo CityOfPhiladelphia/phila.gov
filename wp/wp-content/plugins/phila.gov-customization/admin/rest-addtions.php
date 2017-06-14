@@ -16,5 +16,5 @@ function phila_register_icon_service_pages(){
       'single'       => true,
       'show_in_rest' => true,
   );
-  register_meta( $object_type, 'phila_page_icon', $args1 );
+  register_meta( $object_type, 'phila_page_icon', $args );
 }
