@@ -96,7 +96,8 @@ class Phila_Gov_Custom_Post_Types{
           'editor',
           'page-attributes',
           'revisions',
-          'author'
+          'author',
+          'custom-fields'
         ),
         'public' => true,
         'show_in_rest' => true,
