@@ -1890,9 +1890,9 @@ performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
-phila-standards@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/phila-standards/-/phila-standards-0.5.2.tgz#0a5ef164fd176bccf085bc90eebc0b05452a7f41"
+phila-standards@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/phila-standards/-/phila-standards-0.6.0.tgz#358c06dafa11d4fc8db2a1b2d177aae5e8ee5d11"
   dependencies:
     font-awesome "^4.7.0"
     foundation-sites "^6.3.1"
