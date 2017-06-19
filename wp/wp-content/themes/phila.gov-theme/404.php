@@ -19,8 +19,8 @@ get_header(); ?>
         </div>
       </div>
       <div class="row">
-        <div class="medium-centered medium-12 small-24 columns">
-          <p>Here are some options: <a href="/trashday">find your trash day</a>, <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/">pay a bill</a>, <a href="http://www.phila.gov/personnel/JobOpps.html">explore City jobs</a> or <a href="/property">search for a property</a>.</p>
+        <div class="medium-centered medium-12 small-24 columns mbxl">
+          <p>You might be interested in: <a href="/trashday">finding your trash day</a>, <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/">paying a bill</a>, <a href="http://www.phila.gov/personnel/JobOpps.html">exploring City jobs</a> or <a href="/property">searching for a property</a>.</p>
           <div class="page-content not-found">
             <div class="find mbl">
               <form role="search" method="get" class="search" id="search-form" action="<?php echo home_url( '/search' ); ?>">
