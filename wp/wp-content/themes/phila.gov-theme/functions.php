@@ -357,7 +357,7 @@ function phila_breadcrumbs() {
   global $i;
 
   echo '<ul class="breadcrumbs">';
-  if ( !is_front_page() ) { //no breadcrumb on the homepage
+  if ( !is_front_page() && !is_404() ) { //no breadcrumb on the homepage
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
@@ -473,10 +473,6 @@ function phila_breadcrumbs() {
       $category = get_the_category($post->ID);
 
       echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_post_type_archive('notices') ) {
-
-      echo '<li>Notices</li>';
 
     } elseif ( is_singular('department_page') ) {
 
