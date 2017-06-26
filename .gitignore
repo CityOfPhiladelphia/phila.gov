@@ -4,8 +4,8 @@ wp/readme.*
 wp/xmlrpc.php
 wp/wp-config.php
 wp/wp-content/uploads/
-wp/wp-content/plugins/wordfence/tmp/configCache.php
 wp/wp-content/plugins/meta-box-*
+wp/wp-content/plugins/mb-*
 wp/wp-content/plugins/wpfront-user-role-editor-personal-pro/
 wp/wp-content/themes/phila.gov-theme/yarn-error.log
 
