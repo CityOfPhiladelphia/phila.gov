@@ -8,7 +8,7 @@
     "build:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.css ",
     "build:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "postbuild": "postcss --use autoprefixer -b 'last 2 versions' < css/styles.css -o css/styles.css",
-    "prod:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js"
+    "prod:js": "browserify js/dev/main.js | uglify-js -c > js/phila-scripts.min.js"
   },
   "repository": {
     "type": "git",
@@ -29,13 +29,13 @@
     "browserify-shim": "^3.8.14",
     "node-sass": "^4.5.1",
     "postcss": "^6.0.1",
-    "postcss-cli": "^4.0.0",
-    "uglifyjs": "^2.4.10"
+    "postcss-cli": "^4.0.0"
   },
   "dependencies": {
     "js-cookie": "^2.1.3",
     "list.js": "^1.5.0",
     "mustache": "^2.3.0",
-    "phila-standards": "^0.6.0"
+    "phila-standards": "^0.6.0",
+    "uglify-js": "^3.0.20"
   }
 }
