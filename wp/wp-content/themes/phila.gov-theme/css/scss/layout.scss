@@ -34,22 +34,6 @@ h1 .fa{
   }
 }
 
-.filter {
-  background:color(ghost-gray);
-  padding:10px;
-  ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
-   li {
-    margin:0;
-    padding-bottom:10px;
-    &:last-child {
-      padding:0;
-    }
-  }
-}
 img.float-left{
   margin: 1em 1em 1em 0;
   float:left;
