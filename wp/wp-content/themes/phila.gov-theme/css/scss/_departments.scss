@@ -61,7 +61,7 @@
   .button.alternate.full{
     margin-bottom: 0;
   }
-  
+
   .featured-content{
     font-size: .95rem;
     position: relative;
@@ -148,8 +148,6 @@
       }
 
     .dropdown li{
-      border-bottom:1px solid color(sidewalk);
-
       &:last-child{
         border-bottom: none;
       }
