@@ -26,7 +26,7 @@
     </div>
   </div>
 <?php endif; ?>
-
+<article>
 <?php if ($user_selected_template == 'programs_initiatives') : ?>
   <?php get_template_part( 'partials/departments/content', 'programs-initiatives-header' ); ?>
 <?php else : ?>
@@ -212,4 +212,5 @@
   <?php endif; ?>
 
   <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
+</article>
 </div> <!-- End .entry-content -->
