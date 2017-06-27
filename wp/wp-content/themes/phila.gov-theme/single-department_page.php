@@ -28,7 +28,7 @@ $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
   <header>
   <?php
   //TODO: clean up menu rendering
@@ -109,5 +109,5 @@ get_header(); ?>
       endwhile;
     }
   ?>
-</article><!-- #post-## -->
+</div><!-- #post-## -->
 <?php get_footer(); ?>
