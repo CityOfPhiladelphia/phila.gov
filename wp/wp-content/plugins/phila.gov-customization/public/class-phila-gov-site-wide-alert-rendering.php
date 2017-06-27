@@ -6,7 +6,7 @@ if ( class_exists( "Phila_Gov_Site_Wide_Alert_Rendering" ) ){
 class Phila_Gov_Site_Wide_Alert_Rendering {
 
   /**
-  *
+  * TODO: set cookie when button is closed, remember until alert is updated
   * Display alert if display is true, also show on preview
   *
   */
@@ -54,9 +54,9 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
-        ?><div id="site-wide-alert" data-swiftype-index="false">
+        ?><div id="site-wide-alert" data-swiftype-index="false" data-closable>
             <div class="row">
-              <div class="medium-18 medium-centered">
+              <div class="medium-16 medium-centered">
                 <div class="row equal-height pvs">
                   <div class="small-1 columns center equal icon hide-for-small-only">
                     <div class="valign">
@@ -67,7 +67,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                   </div>
               <div class="small-24 medium-23 columns equal message">
 
-        <?php echo '<strong>' . get_the_title() . '</strong>';
+        <?php echo '<strong>' . get_the_title() . ' </strong>';
 
         $content = get_the_content();
         echo $content;
@@ -77,7 +77,11 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         echo ' to ';
         dateTimeFormat($alert_end);
         ?>
-      </div></div></div></div></div></div>
+        </div></div></div>
+        <button class="close-button" data-close>&times;</button>
+        </div>
+      </div>
+    </div>
       <?php endif;
       }//end while
     }
