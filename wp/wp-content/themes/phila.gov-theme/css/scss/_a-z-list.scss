@@ -77,50 +77,14 @@
   }
 
   .filter{
-    //TODO: correct the base style that is providing the gray bg & padding
-    background:color(white);
-    padding-top:0;
-
     li{
       padding:$spacing-small 0;
-
       @media screen and (min-width: 40em) {
         border-top:1px solid color(sidewalk);
       }
-
-      input[type="checkbox"]{
-        margin:0;
-        cursor: pointer;
-        &:checked{
-          + label{
-            color:color(black);
-          }
-        }
-      }
       label{
-        color: color(ben-franklin-blue);
-        font-weight:bold;
-        cursor: pointer;
+        margin:0;
       }
     }
-  }
-}
-//custom checkboxes
-//TODO: add to patterns
-input[type=checkbox] {
-  display:none;
-
-  + label::before {
-    content: '\f096';
-    display:inline-block;
-    padding-right:10px;
-    font-family: FontAwesome;
-  }
-
-  &:checked + label::before {
-    content: '\f14a';
-    display:inline-block;
-    padding-right:10px;
-    font-family: FontAwesome;
   }
 }
