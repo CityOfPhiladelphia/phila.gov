@@ -67,15 +67,14 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                   </div>
               <div class="small-24 medium-23 columns equal message">
 
-        <?php echo '<strong>' . get_the_title() . ' </strong>';
-
-        $content = get_the_content();
-        echo $content;
-        ?><div class="dates pts"><?php
-        echo 'In effect: ';
-        dateTimeFormat($alert_start);
-        echo ' to ';
-        dateTimeFormat($alert_end);
+        <?php
+          $content = get_the_content();
+          echo $content;
+          ?><div class="dates pts"><?php
+          echo 'In effect: ';
+          dateTimeFormat($alert_start);
+          echo ' to ';
+          dateTimeFormat($alert_end);
         ?>
         </div></div></div>
         <button class="close-button" data-close>&times;</button>
