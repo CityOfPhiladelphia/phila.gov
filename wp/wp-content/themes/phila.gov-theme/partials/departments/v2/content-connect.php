@@ -22,7 +22,7 @@ $connect_vars = phila_connect_panel($connect_panel);
     <tr>
       <th scope="row">
         <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
-        <span class="accessible">Address</span></th>
+        <span class="accessible">Address</span>
       </th>
       <td class="pvl">
         <div class="adr">
