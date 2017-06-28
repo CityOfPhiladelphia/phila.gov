@@ -35,9 +35,9 @@ get_header(); ?>
     $parent = phila_util_get_furthest_ancestor($post);
 
     if ( phila_util_is_v2_template( $parent->ID ) ) : ?>
-    <?php $bg_img = phila_get_hero_header_v2( $parent->ID ); ?>
-    <?php $bg_img_mobile = phila_get_hero_header_v2( $parent->ID, true ); ?>
-    <?php $photo_credit = rwmb_meta( 'phila_v2_photo_credit', $parent->ID ); ?>
+      <?php $bg_img = phila_get_hero_header_v2( $parent->ID ); ?>
+      <?php $bg_img_mobile = phila_get_hero_header_v2( $parent->ID, true ); ?>
+      <?php $photo_credit = rwmb_meta( 'phila_v2_photo_credit', $parent->ID ); ?>
 
       <?php //TODO: unify desktop and mobile headers ?>
       <div class="hero-content" style="background-image:url(<?php echo $bg_img?>) ">
@@ -73,30 +73,28 @@ get_header(); ?>
         </div>
       </div>
     </header>
-    <?php else: ?>
+  <?php else: //it's an old-style department ?>
       <div class="row">
         <div class="columns">
           <h1 class="entry-title contrast mbn"><?php echo $parent->post_title;?></h1>
         </div>
       </div>
-  </header>
+    </header>
+    <div class="menu-old">
+      <?php
+        //get department homepage alerts
+        call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
 
-  <div class="menu-old">
-    <?php
-      //get department homepage alerts
-      call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
-
-      if ( $user_selected_template != 'off_site_department' ){
-        /*
-        Our navigation menu. We use categories to drive functionality.
-        This checks to make sure a category exists for the given page,
-        if it does, we render our menu w/ markup.
-        */
-          phila_get_department_menu();
-      }
-      ?>
-    <?php endif; ?>
-  </div>
+        if ( $user_selected_template != 'off_site_department' ){
+          /*
+          Our navigation menu. We use categories to drive functionality.
+          This checks to make sure a category exists for the given page,
+          if it does, we render our menu w/ markup.
+          */
+            phila_get_department_menu();
+        }
+        ?>
+      <?php endif; ?>
   <?php
     if ( $user_selected_template === 'off_site_department' ){
 
