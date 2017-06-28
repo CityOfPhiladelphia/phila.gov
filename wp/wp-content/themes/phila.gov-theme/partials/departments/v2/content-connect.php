@@ -131,9 +131,11 @@ $connect_vars = phila_connect_panel($connect_panel);
             </a>
           </div>
         <?php endif; ?>
-      <?php endif; ?>
       </td>
     </tr>
+  <?php endif; ?>
+<?php endif; ?>
+
   </table>
   <?php if ( !empty( $connect_vars['see_all'] ) ) : ?>
     <?php $see_all_URL = $connect_vars['see_all']; ?>
@@ -141,4 +143,3 @@ $connect_vars = phila_connect_panel($connect_panel);
     <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
   <?php endif; ?>
 </div>
-<?php endif; ?>
