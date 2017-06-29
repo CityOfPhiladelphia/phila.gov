@@ -194,7 +194,7 @@ if ( has_category() ):
             <?php if ($user_selected_template != 'staff_directory') : ?>
               <h2 class="contrast">Staff</h2>
             <?php endif; ?>
-            <table role="grid" class="staff responsive">
+            <table role="grid" class="staff responsive js-hide-empty">
               <thead>
                 <tr>
                   <th scope="col">Name</th>
