@@ -38,6 +38,6 @@
     "list.js": "^1.5.0",
     "mustache": "^2.3.0",
     "phila-standards": "^0.6.1",
-    "uglify-js": "^3.0.20"
+    "uglify-js": "^3.0.21"
   }
 }
