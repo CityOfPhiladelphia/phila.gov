@@ -13,7 +13,7 @@ echo 'Running wp-config.sh'
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
-sudo npm install -g browserify
+sudo npm i -g browserify uglify-js
 npm rebuild node-sass
 npm run build:js && npm run build:css
 cd /home/ubuntu/app
