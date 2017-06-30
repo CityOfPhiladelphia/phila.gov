@@ -1,4 +1,14 @@
 // v2 hero content
+
+.department-landing{
+  .hero-content{
+    min-height: 340px;
+    @media screen and (max-width: 39.9375em) {
+      min-height: auto;
+    }
+  }
+}
+
 .hero-content {
   margin-top:0;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
