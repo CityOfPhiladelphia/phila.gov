@@ -50,7 +50,7 @@ get_header(); ?>
             <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo $photo_credit ?></span>
           </div>
         <?php endif; ?>
-          <div class="row expanded <?php echo ($user_selected_template === 'homepage_v2') ? 'pbs pbxxl-mu ptxl-mu' : 'pbl' ?>">
+          <div class="row expanded <?php echo ($user_selected_template === 'homepage_v2') ? 'pbs pvxxl-mu' : 'pbl' ?>">
             <div class="medium-18 small-centered columns text-overlay">
               <?php echo phila_get_department_homepage_typography( $parent ); ?>
               <?php if ($user_selected_template === 'homepage_v2'): ?>
