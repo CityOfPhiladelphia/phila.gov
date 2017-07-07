@@ -88,6 +88,11 @@ get_header(); ?>
       </div>
     </div>
     <!-- End Hero Content -->
+    <div class="row">
+      <div class="columns">
+        <h2 class="contrast">Service updates</h2>
+      </div>
+    </div>
     <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
