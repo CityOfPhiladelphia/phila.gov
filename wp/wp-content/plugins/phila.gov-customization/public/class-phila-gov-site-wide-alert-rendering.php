@@ -6,7 +6,7 @@ if ( class_exists( "Phila_Gov_Site_Wide_Alert_Rendering" ) ){
 class Phila_Gov_Site_Wide_Alert_Rendering {
 
   /**
-  * TODO: set cookie when button is closed, remember until alert is updated
+  *
   * Display alert if display is true, also show on preview
   *
   */
@@ -42,8 +42,32 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         $alert_active = rwmb_meta( 'phila_active', $args = array('type' => 'radio'));
 
+        $alert_type = rwmb_meta( 'phila_type', $args = array('type' => 'select'));
         $alert_start = rwmb_meta( 'phila_alert_start', $args = array('type' => 'datetime'));
         $alert_end = rwmb_meta( 'phila_alert_end', $args = array('type' => 'datetime'));
+
+        $alert_icon = 'ion-alert-circled';
+
+        switch($alert_type){
+          case 'Code Blue Effective':
+            $alert_icon = 'ion-ios-snowy';
+            break;
+          case 'Code Red Effective':
+            $alert_icon = 'ion-ios-sunny';
+            break;
+          case 'Code Orange Effective':
+            $alert_icon = 'ion-cloud';
+            break;
+          case 'Code Grey Effective':
+            $alert_icon = 'ion-ios-rainy';
+            break;
+          case 'Other':
+            $alert_type_other = rwmb_meta( 'phila_type-other', $args = array('type' => 'text'));
+            $alert_class = rwmb_meta( 'phila_alert-class', $args = array('type' => 'text'));
+            $alert_icon = rwmb_meta( 'phila_icon', $args = array('type' => 'text'));
+            ($alert_icon == '') ? $alert_icon = 'ion-alert-circled' : $alert_icon;
+            break;
+        }
 
         $date_seperator = ' <strong>to</strong> ';
         if(($alert_start == '') || ($alert_end == '')){
@@ -54,34 +78,25 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
-        ?><div id="site-wide-alert" data-swiftype-index="false" data-closable>
-            <div class="row">
-              <div class="medium-16 medium-centered">
-                <div class="row equal-height pvs">
-                  <div class="small-1 columns center equal icon hide-for-small-only">
-                    <div class="valign">
-                      <div class="valign-cell">
-                        <i class="fa fa-exclamation fa-3x" aria-hidden="true"></i>
-                      </div>
-                    </div>
-                  </div>
-              <div class="small-24 medium-23 columns equal message">
+        ?><div id="site-wide-alert" <?php if ( $alert_type == 'Other' && $alert_class ) echo 'class="subtle"'; ?> data-swiftype-index='false'>
+            <div class="row"><?php
+        echo '<div class="large-9 columns">';
+        echo '<h2><i class="ionicons ' . $alert_icon . '"></i>' . get_the_title() .'</h2>';
 
-        <?php
-          $content = get_the_content();
-          echo $content;
-          ?><div class="dates pts"><?php
-          echo 'In effect: ';
-          dateTimeFormat($alert_start);
-          echo ' to ';
-          dateTimeFormat($alert_end);
-        ?>
-        </div></div></div>
-        <button class="close-button" data-close>&times;</button>
-        </div>
-      </div>
-    </div>
-      <?php endif;
+        $content = get_the_content();
+        echo $content;
+        echo '<div class="alert-start">';
+        echo '<strong>In effect:</strong> ';
+        echo '<div class="sentence-case inline-block">';
+        dateTimeFormat($alert_start);
+        echo ' to ';
+        dateTimeFormat($alert_end);
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="large-15 columns">';
+        echo '</div></div></div>';
+      endif;
       }//end while
     }
 

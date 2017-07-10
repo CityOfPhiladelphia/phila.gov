@@ -6,13 +6,13 @@
   }
 
   section{
-    background:color(ben-franklin-blue);
+    background:$ben-franklin-blue;
   }
   .call-to-action {
     margin: 40px 0;
 
     p{
-      color:color(white);
+      color:$white;
       font-size:.9rem;
       @media screen and (max-width: 48em) {
         font-size: .8rem;
@@ -50,9 +50,9 @@
       padding:.5rem 0;
       width:100%;
       display: inline-block;
-      border-left:1px solid color(ben-franklin-blue);
-      border-right:1px solid color(ben-franklin-blue);
-      border-top: 2px solid color(ben-franklin-blue);
+      border-left:1px solid $ben-franklin-blue;
+      border-right:1px solid $ben-franklin-blue;
+      border-top: 2px solid $ben-franklin-blue;
       color:white;
       text-transform: uppercase;
       font-weight: normal;
@@ -62,7 +62,7 @@
       }
 
       &:hover, &:active{
-        background: color(light-ben-franklin);
+        background: $ben-franklin-light;
       }
     }
   }
@@ -72,7 +72,7 @@
   .find {
     @extend .group;
     background-color:#F9F9F9;
-    border: 1px solid color(ghost-gray);
+    border: 1px solid $ghost-gray;
     padding:1.5em;
     margin-bottom: 0;
 
@@ -91,5 +91,5 @@
 
 .vr{
   padding: 0 0 0 $spacing-medium;
-  border-left: 4px solid color(ghost-gray);
+  border-left: 4px solid $ghost-gray;
 }

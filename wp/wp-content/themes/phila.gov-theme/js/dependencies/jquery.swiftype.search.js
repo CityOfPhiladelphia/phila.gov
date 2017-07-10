@@ -1,4 +1,4 @@
-module.exports = (function ($) {
+(function ($) {
   var queryParser = function (a) {
       var i, p, b = {};
       if (a === "") {
@@ -118,13 +118,7 @@ module.exports = (function ($) {
           params['sort_direction'] = handleFunctionParam(config.sortDirection);
           params['spelling'] = handleFunctionParam(config.spelling);
 
-          $.ajax({
-            dataType: "json",
-            url: Swiftype.root_url + "/api/v1/public/engines/search.json?callback=?",
-            data: params,
-            xhrFields: { withCredentials: true },
-            success: renderSearchResults
-          });
+          $.getJSON(Swiftype.root_url + "/api/v1/public/engines/search.json?callback=?", params).success(renderSearchResults);
         };
 
       $(window).hashchange(function () {

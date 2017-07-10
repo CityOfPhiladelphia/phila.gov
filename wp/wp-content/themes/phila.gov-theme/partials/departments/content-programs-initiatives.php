@@ -6,10 +6,6 @@
  */
 ?>
 <?php
-  // set category vars for news/blogs
-  $category = get_the_category();
-  $category_slug = $category[0]->slug;
-
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
 ?>
@@ -27,12 +23,9 @@
           if ( $current_row_option == 'phila_blog_posts'):
             $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : ''; ?>
             <!-- Blog Content -->
-            <div class="row mvl">
+            <section class="row mvl">
                 <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
-            </div>
-            <?php $see_all_URL = '/posts/' . $blog_category ?>
-            <?php $see_all_content_type = 'posts'?>
-            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+            </section>
 
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
@@ -52,9 +45,18 @@
                   </div>
                 </div>
                 <?php if ( !empty( $cal_url ) ):?>
-                  <?php $see_all_URL = $cal_url; ?>
-                  <?php $see_all_content_type = 'events';?>
-                  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                  <div class="row">
+                    <div class="columns">
+                      <a class="see-all-right see-all-arrow float-right" href="<?php echo $cal_url; ?>" aria-label="See all events">
+                        <div class="valign equal-height">
+                          <div class="see-all-label phm prxs valign-cell equal">See all</div>
+                          <div class="valign-cell equal">
+                            <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 <?php endif; ?>
               </section>
             <?php endif;?>
@@ -83,9 +85,6 @@
               <section class="row mvl">
                 <?php echo do_shortcode('[press-releases posts=5]');?>
               </section>
-              <?php $see_all_URL = '/press-releases/' . $category_slug ?>
-              <?php $see_all_content_type = 'press releases'?>
-              <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
@@ -176,9 +175,6 @@
                 <div class="row">
                   <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
                 </div>
-                <?php $see_all_URL = '/posts/' . $blog_category ?>
-                <?php $see_all_content_type = 'posts'?>
-                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               </div>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
