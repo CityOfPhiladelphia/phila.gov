@@ -2,7 +2,7 @@
   margin: 0;
 }
 .swiftype-widget .autocomplete li p.title {
-  color: color(dark-ben-franklin);
+  color: $ben-franklin-blue;
 }
 .result-count {
   margin-top: 0.75rem;
@@ -26,7 +26,7 @@
     margin-top: 0;
   }
   .property-link {
-    border: 3px solid color(flyers-orange);
+    border: 3px solid $flyers-orange;
     display: none;
     padding: 0.3rem 0.5rem;
 
@@ -41,7 +41,7 @@
   }
   .entry-summary {
     em {
-      background-color: color(ghost-gray);
+      background-color: $ghost-gray;
       padding: 0 0.25rem;
       margin: 0 -0.15rem;
     }

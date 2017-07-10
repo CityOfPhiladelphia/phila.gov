@@ -35,7 +35,7 @@
   }
 
   .contact{
-    background:color(ghost-gray);
+    background:$ghost-gray;
     padding:$spacing-medium;
 
     aside{
@@ -48,7 +48,7 @@
   }
 
   .inner {
-    background:color(ghost-gray);
+    background:$ghost-gray;
     padding:20px;
   }
 
@@ -58,10 +58,43 @@
     margin-bottom: 0;
   }
 
+  .notices li{
+    border-bottom: 1px solid $ghost-gray;
+    padding:10px 0;
+
+    &:first-child{
+      padding-top: 0;
+      padding-bottom: 10px;
+    }
+    &:last-child{
+      padding-bottom: 0;
+      border:none;
+    }
+
+  }
+  .event-box{
+
+    .simcal-day:last-of-type .event-row{
+      border-bottom: none;
+    }
+    .event-row{
+      border-bottom:1px solid $ghost-gray;
+    }
+    .simcal-default-calendar-list{
+      padding:0;
+    }
+    .simcal-default-calendar-list ul.simcal-events li.simcal-event {
+      margin-bottom: 0;
+    }
+  }
   .button.alternate.full{
     margin-bottom: 0;
   }
 
+  //TODO: Apply this to a class instead of the section element. Creates need for overrides like the one at the top of _resource-list.scss
+  section{
+    margin-bottom: 1rem;
+  }
   .featured-content{
     font-size: .95rem;
     position: relative;
@@ -135,36 +168,58 @@
     text-align: center;
   }
 }
-.menu-old{
-  #site-nav {
+.department-nav{
+  .top-bar, .top-bar ul {
     @media screen and (min-width: 40em){
       background-color:#daedfe;
     }
+  }
+}
+#site-nav  {
 
-      .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
-        border-color: transparent transparent transparent #fff;
-        border-left-style: solid;
-        border-right-width: 0;
-      }
+  .is-drilldown{
+
+    li{
+      border-bottom: 1px solid $ghost-gray;
+    }
+  }
+
+  ul {
+    //TODO: add to patterns
+    z-index: 10;
+
+    ul{
+      background: white;
+    }
+  }
+
+  .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
+    border-color: transparent transparent transparent #fff;
+    border-left-style: solid;
+    border-right-width: 0;
+  }
+
+  .department-menu{
 
     .dropdown li{
+      border-bottom:1px solid $sidewalk;
+
       &:last-child{
         border-bottom: none;
       }
     }
     li[class*="current-menu-item"] > a{
-      background: color(ben-franklin-blue);
-      color:color(white);
+      background: $ben-franklin-blue;
+      color:$white;
       &:hover{
-        color:color(black);
+        color:$black;
       }
     }
-
   }
 }
 
 .post-type-archive-department_page .list li{
-  border-bottom: 1px solid color(ghost-gray);
+  border-bottom: 1px solid $ghost-gray;
   margin: 1rem 0;
 }
 
@@ -174,12 +229,5 @@
   }
   .email{
     word-break: break-word;
-  }
-}
-.panel {
-  &.survey{
-    @media screen and (min-width: 40em) {
-      @include check-bg( 84%, 17% );
-    }
   }
 }
