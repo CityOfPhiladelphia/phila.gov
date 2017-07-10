@@ -191,6 +191,11 @@
   </div>
 </footer><!-- #colophon -->
 
+<script type="text/javascript">
+  // For search.js
+  var SWIFTYPE_ENGINE = '<?php echo SWIFTYPE_ENGINE?>';
+</script>
+
 <?php wp_footer(); ?>
   <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -198,6 +203,7 @@
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script>$(document).foundation();</script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.6/postscribe.min.js"></script>
+
 </body>
 </html>

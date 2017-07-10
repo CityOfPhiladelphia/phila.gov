@@ -6,7 +6,7 @@
     text-align: center;
 
     h2 {
-      color: color(ben-franklin-blue);
+      color: $ben-franklin-blue;
       font-family: "Open Sans",sans-serif;
       font-size: 2.5rem;
       text-transform: uppercase;
@@ -30,9 +30,9 @@
           position: relative;
           z-index: 2;
           display: inline-block;
-          color: color(ben-franklin-blue);
-          // border-bottom: 1px solid color(ben-franklin-blue);
-          // border-top: 1px solid color(ben-franklin-blue);
+          color: $ben-franklin-blue;
+          // border-bottom: 1px solid $ben-franklin-blue;
+          // border-top: 1px solid $ben-franklin-blue;
           font-size: 3.5rem;
           font-weight: 700;
           margin: 0;
@@ -41,8 +41,8 @@
         display: block;
         height: 1px;
         border: 0;
-        border-top: 1px solid color(ben-franklin-blue);
-        // background: color(ben-franklin-blue);
+        border-top: 1px solid $ben-franklin-blue;
+        // background: $ben-franklin-blue;
         margin: 0 32%;
       }
       img {

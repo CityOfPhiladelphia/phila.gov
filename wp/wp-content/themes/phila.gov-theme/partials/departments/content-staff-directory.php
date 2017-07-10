@@ -95,7 +95,7 @@ if ( has_category() ):
       if ( $staff_leadership ):
         $staff_options = rwmb_meta('phila_leadership_options');
         $staff_display_order = intval( $staff_options['phila_display_order'] );
-        $staff_summary = wpautop($staff_options['phila_summary']);
+        $staff_summary = $staff_options['phila_summary'];
         $staff_leadership_output .= '<div class="row staff-highlight">';
         // Leadership Thumbnail
         if ( has_post_thumbnail() ):
@@ -194,7 +194,7 @@ if ( has_category() ):
             <?php if ($user_selected_template != 'staff_directory') : ?>
               <h2 class="contrast">Staff</h2>
             <?php endif; ?>
-            <table role="grid" class="staff responsive js-hide-empty">
+            <table role="grid" class="tablesaw tablesaw-stack staff" data-tablesaw-mode="stack">
               <thead>
                 <tr>
                   <th scope="col">Name</th>

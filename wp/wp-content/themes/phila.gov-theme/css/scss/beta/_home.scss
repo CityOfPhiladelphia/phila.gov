@@ -15,10 +15,14 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
+
+    img {
+
+    }
     .beta-message {
       p {
-        font-weight: 400;
-        font-size: 1.15rem;
+          font-weight: 400;
+          font-size: 1.15rem;
       }
       .h1 {
         font-size: 2.5rem;
@@ -54,7 +58,7 @@
         display:inline-block;
         font-style: italic;
         font-size: .75rem;
-        color: color(medium-gray);
+        color: $medium-gray;
         padding: 0.25rem 0.5rem;
         position: absolute;
         bottom: 105px;
@@ -65,34 +69,31 @@
       margin: 0;
       font-family: 'Montserrat', 'Tahoma', sans-serif;
 
-      a {
-        color:black;
-        .fa, p {
-          color: color(dark-ben-franklin);
+      a .fa, p {
+        color: $ben-franklin-blue;
+      }
+      a .fa {
+        font-size: 5rem;
+        line-height: 5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 3rem;
+          line-height: 4rem;
         }
-        .fa {
+        @media only screen and (min-width: 64em) {
+          font-size: 4rem;
+        }
+      }
+      a .fa-home {
+        font-size: 6rem;
+        line-height: 5rem;
+        @media only screen and (min-width: 40em) {
+          font-size: 4rem;
+          line-height: 4rem;
+        }
+        @media only screen and (min-width: 64em) {
           font-size: 5rem;
-          line-height: 5rem;
-          @media only screen and (min-width: 40em) {
-            font-size: 3rem;
-            line-height: 4rem;
-          }
-          @media only screen and (min-width: 64em) {
-            font-size: 4rem;
-          }
         }
-        .fa-home {
-          font-size: 6rem;
-          line-height: 5rem;
-          @media only screen and (min-width: 40em) {
-            font-size: 4rem;
-            line-height: 4rem;
-          }
-          @media only screen and (min-width: 64em) {
-            font-size: 5rem;
-          }
-        }
-    }
+      }
       p {
         margin:0;
         font-size: 1rem;
@@ -106,27 +107,25 @@
       }
       a {
         background-color: #daedfe;
-        display: block;
-        @include transition(opacity, .25s);
-
-
-        &:hover{
-          @include transition(opacity, .25s);
-          opacity: .5;
-          }
+        transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -webkit-transition: opacity .2s ease-in-out;
+        &:hover {
+          opacity: .6;
         }
       }
+      .cta-block {
+      }
     }
+  }
+
   .feedback {
     .up {
-      background: color(ghost-gray);
+      background: $ghost-gray;
     }
   }
-  .service-update th{
-    width:25%;
-  }
-}
 
+}
 
 .neighborhood-resources {
   .resource-row {
@@ -134,12 +133,6 @@
       .panel {
         background-color: rgba(255, 255, 255, 0.7);
         margin: 0 auto;
-        text-align: center;
-        @include transition(opacity, .25s);
-        &:hover{
-          @include transition(opacity, .25s);
-          opacity: .5;
-        }
         header {
           font-family: 'Montserrat', 'Tahoma', sans-serif;
           font-weight: 400;
@@ -169,7 +162,7 @@
 
 .phila-redesign {
   .about {
-    border-color: color(sidewalk);
+    border-color: $sidewalk;
   }
   .process {
     .marker {
@@ -184,14 +177,14 @@
         text-align: center;
         &:before {
           content: '';
-          border-right: 1px solid color(medium-gray);
+          border-right: 1px solid $medium-gray;
           display: inline-block;
           height: 30px;
           width: 0;
         }
         &.current {
           &:before {
-            border-right: 1px solid color(ben-franklin-blue);
+            border-right: 1px solid $ben-franklin-blue;
           }
         }
         span {
@@ -213,7 +206,7 @@
       &:after {
         content: '';
         text-align: center;
-        border-right: 1px solid color(ben-franklin-blue);
+        border-right: 1px solid $ben-franklin-blue;
         display: inline-block;
         height: 20px;
         width: 0px;
@@ -237,17 +230,17 @@
       }
       &.left-arrow-white {
         &:before {
-          border-left-color: color(white);
+          border-left-color: $white;
         }
       }
       &.left-arrow-medium-gray {
         &:before {
-          border-left-color: color(medium-gray);
+          border-left-color: $medium-gray;
         }
       }
       &.left-arrow-ben-franklin-blue {
         &:before {
-          border-left-color: color(ben-franklin-blue);
+          border-left-color: $ben-franklin-blue;
         }
       }
     }
@@ -256,15 +249,28 @@
 
       &:after {
         position: absolute;
-        background-color: color(white);
+        background-color: $white;
         content: '';
         width: 0;
         height: 0;
-        border-left: 15px solid color(medium-gray);
+        border-left: 15px solid $medium-gray;
         border-top: 20px solid transparent;
         border-bottom: 20px solid transparent;
         right: 0px;
       }
     }
   }
+}
+
+.see-all-right {
+  &.see-all-arrow {
+    .see-all-label {
+      background: url("data:image/svg+xml,%3Csvg data-name='91974e0d-9b61-4d62-8282-0dadfa44fb48' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 114.8 33' width='115' height='33'%3E%3Cpath fill='%232176d2' d='M114.8 32H1V1H114.8V0H0v33h114.8v-1'/%3E%3C/svg%3E") no-repeat center left;
+      background-size: cover;
+    }
+    &:after {
+      content: none;
+    }
+  }
+
 }
