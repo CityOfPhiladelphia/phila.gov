@@ -14,7 +14,7 @@ dl.simcal-events-list-container{
   margin-bottom: 1rem;
 }
 .simcal-default-calendar-light .simcal-nav-button{
-  color:$ben-franklin-blue !important;
+  color:color(ben-franklin-blue) !important;
 }
 
 .events-block{
@@ -25,6 +25,7 @@ ul.simcal-events{
   margin:0;
   padding:0;
   list-style:none;
+  display: block;
 }
 
 .month, .day{
@@ -44,7 +45,7 @@ a[href*="google.com/calendar"]:after{
   background-color:rgba(255, 255, 255, .8);
   padding:0 1rem;
   min-height:94px;
-  border-left:1px solid $black;
+  border-left:1px solid color(black);
 }
 .simcal-event {
   margin-bottom:1rem;
@@ -53,7 +54,7 @@ a[href*="google.com/calendar"]:after{
   text-align:center;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   float:left;
-  color:$ben-franklin-blue;
+  color:color(dark-ben-franklin);
 
   .month{
     display: block;
@@ -73,7 +74,7 @@ a[href*="google.com/calendar"]:after{
 
 @media only screen and (min-width: 40.063em) {
   .calendar-row{
-    background:url('//alpha.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center center;
+    background:url('//beta.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center center;
     background-size:cover;
   }
   .columns.calendar-details {
@@ -81,7 +82,7 @@ a[href*="google.com/calendar"]:after{
     border-left:none;
   }
   .calendar-date{
-    color:$white;
-    background:$ben-franklin-blue;
+    color:color(white);
+    background:color(dark-ben-franklin);
   }
 }

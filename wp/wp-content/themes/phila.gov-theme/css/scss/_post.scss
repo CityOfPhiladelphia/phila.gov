@@ -11,10 +11,10 @@
       float:none;
     }
     .icon {
-    color: $ben-franklin-blue;
+    color: color(ben-franklin-blue);
     }
     .byline{
-      border-top: 1px solid $sidewalk;
+      border-top: 1px solid color(sidewalk);
       @media only screen and (min-width: 40em) {
           border-top: 0;
       }

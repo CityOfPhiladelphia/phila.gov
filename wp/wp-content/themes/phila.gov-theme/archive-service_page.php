@@ -47,7 +47,7 @@ get_header(); ?>
             )
         );?>
         <form id="service_filter">
-          <ul class="no-bullet mam pan">
+          <ul class="no-bullet pan">
             <li><input type="checkbox" name="all" value="all" id="all" checked="checked"><label for="all">All Services</label></li>
             <?php foreach ( $terms as $term ) : ?>
               <li><input type="checkbox" name="<?php echo $term->slug ?>" value="<?php echo $term->slug ?>" id="<?php echo $term->slug ?>"><label for="<?php echo $term->slug ?>"><?php echo $term->name ?></label></li>
