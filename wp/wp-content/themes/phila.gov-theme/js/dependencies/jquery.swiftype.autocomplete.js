@@ -1,4 +1,4 @@
-(function ($) {
+module.exports = (function ($) {
   var queryParser = function (a) {
       var i, p, b = {};
       if (a === "") {
@@ -317,8 +317,11 @@
       type: 'GET',
       dataType: 'jsonp',
       url: endpoint,
-      data: params
-    }).success(function(data) {
+      data: params,
+      success: autoCompleteResults
+    });
+
+    var autoCompleteResults = function( data ){
       var norm = normalize(term);
       if (data.record_count > 0) {
         $this.cache.put(norm, data.records);
@@ -329,7 +332,7 @@
         return;
       }
       processData($this, data.records, term);
-    });
+    };
   };
 
   var getResults = function($this, term) {
@@ -382,6 +385,18 @@
         }
       }
     };
+
+  var renderSearchResults = function (data) {
+       if (typeof config.preRenderFunction === 'function') {
+         config.preRenderFunction.call($this, data);
+       }
+
+       config.renderResultsFunction($this.getContext(), data);
+
+       if (typeof config.postRenderFunction === 'function') {
+         config.postRenderFunction.call($this, data);
+       }
+     };
 
   var defaultResultRenderFunction = function(ctx, results) {
     var $list = ctx.list,

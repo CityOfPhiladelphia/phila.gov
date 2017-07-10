@@ -1,5 +1,5 @@
 .placeholder{
-  border: 1px dashed $dark-gray;
-  background: rgba($flyers-orange, 0.35);
+  border: 1px dashed color(dark-gray);
+  background: rgba(color(flyers-orange), 0.35);
   padding: $spacing-medium;
 }
