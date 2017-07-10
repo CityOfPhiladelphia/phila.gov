@@ -240,7 +240,7 @@
     <section>
       <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax code</h3>
         <div class="phm-mu">
-          <span class="bdr-all bdr-black pas inline-block"><?php echo $tax['code'] ?></span>
+          <span class="border-black-thin pas inline-block"><?php echo $tax['code'] ?></span>
         </div>
     </section>
   </div>

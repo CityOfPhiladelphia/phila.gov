@@ -1,4 +1,4 @@
-module.exports = (function ($) {
+(function ($) {
   var queryParser = function (a) {
       var i, p, b = {};
       if (a === "") {
@@ -317,11 +317,8 @@ module.exports = (function ($) {
       type: 'GET',
       dataType: 'jsonp',
       url: endpoint,
-      data: params,
-      success: autoCompleteResults
-    });
-
-    var autoCompleteResults = function( data ){
+      data: params
+    }).success(function(data) {
       var norm = normalize(term);
       if (data.record_count > 0) {
         $this.cache.put(norm, data.records);
@@ -332,7 +329,7 @@ module.exports = (function ($) {
         return;
       }
       processData($this, data.records, term);
-    };
+    });
   };
 
   var getResults = function($this, term) {
@@ -385,18 +382,6 @@ module.exports = (function ($) {
         }
       }
     };
-
-  var renderSearchResults = function (data) {
-       if (typeof config.preRenderFunction === 'function') {
-         config.preRenderFunction.call($this, data);
-       }
-
-       config.renderResultsFunction($this.getContext(), data);
-
-       if (typeof config.postRenderFunction === 'function') {
-         config.postRenderFunction.call($this, data);
-       }
-     };
 
   var defaultResultRenderFunction = function(ctx, results) {
     var $list = ctx.list,

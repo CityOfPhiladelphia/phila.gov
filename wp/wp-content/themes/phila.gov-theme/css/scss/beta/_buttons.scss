@@ -1,0 +1,108 @@
+/*
+ *
+ * Buttons
+ *
+ *
+*/
+
+.button {
+  background: none;
+  margin: $spacing-small 0;
+  color: $dark-gray;
+  height: 40px;
+
+  &:hover, &:focus {
+    background: none;
+  }
+  &:link, &:visited {
+    color: $dark-gray;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  &.icon {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+
+    .fa {
+      background: #444444;
+      color:#FFFFFF;
+      margin-right: .25rem;
+      padding: .4em .5em .5em .4em;
+      font-size: 1.7em;
+      max-height: 42px;
+      vertical-align: sub;
+      position: static;
+      width: 2.85714rem;
+    }
+
+  }
+  i.fa {
+    //TODO: override in patterns
+    color: $dark-gray;
+  }
+
+  .button-label {
+    background-color: $bike-share-blue;
+    min-height: 40px;
+    padding-top:$spacing-small;
+    padding-bottom:$spacing-small;
+    padding-right: 1.42857rem;
+    padding-left: 1.42857rem;
+    text-align: left;
+    letter-spacing: .03rem;
+  }
+
+  &.outline {
+    .button-label {
+      background-color: $white;
+      border: 1px solid $bike-share-blue;
+    }
+  }
+}
+
+// TODO: Consolidate these hover styles
+
+a {
+  &.button {
+    &:link, &:visited {
+      color: $dark-gray;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    &:hover,
+    &:active{
+      i.fa {
+        color:white;
+      }
+      background: none;
+      color: $white;
+      .button-label {
+        color: $white;
+        background: $dark-gray;
+        transition: background-color 300ms ease-in-out;
+      }
+    }
+  }
+}
+
+footer {
+  a {
+    &.button {
+      &:link, &:visited {
+        color: $dark-gray;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+      &:hover, &:active {
+        background: none;
+        .button-label {
+              color: $white;
+              background: $dark-gray;
+              transition: background-color 300ms ease-in-out;
+        }
+      }
+    }
+  }
+}

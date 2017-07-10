@@ -1,0 +1,10 @@
+//TODO: Add the .important style to the Pattern entry for this element http://cityofphiladelphia.github.io/patterns/#p-callout
+.callout{
+  &.important {
+    background-color: $ghost-gray;
+    border-left-color: $flyers-orange;
+    p {
+      color: $dark-gray;
+    }
+  }
+}

@@ -32,6 +32,10 @@ nav li{
   padding:5px;
 }
 
+/*hide breadcrumbs*/
+.row.site-branding + .row.expanded,
+/*hide alternative image */
+img.initial-hero,
 /*hide what we would normally show on mobile */
 .show-for-small-only,
 .home .hero-content,

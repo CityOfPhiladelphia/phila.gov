@@ -1,0 +1,32 @@
+//Call to Action panel
+a.action-panel {
+  color: $dark-gray;
+  font-weight: normal;
+  border-bottom: 0;
+
+  .panel {
+    border:none;
+    padding:1rem;
+    margin-bottom: 1rem;
+
+    header {
+      color: $ben-franklin-blue;
+      font-weight: 700;
+      text-align: center;
+      .fa-circle {
+        color: $bell-yellow;
+      }
+    }
+    @media only screen and (min-width: 64em) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+//Overrides a style set in _calendar.scss
+a.action-panel[href*="google.com/calendar"]{
+  &:after {
+   content: "";
+   padding: 0;
+  }
+}

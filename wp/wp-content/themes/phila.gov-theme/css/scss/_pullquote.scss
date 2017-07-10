@@ -1,0 +1,40 @@
+//TODO: Add to Pattern library
+.pullquote-wrapper {
+
+  .pullquote {
+    outline: $spacing-medium solid rgba($ben-franklin-light, 0.20);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box;
+    background: rgba($ben-franklin-light, 0.40);
+    font-family: Times, "Times New Roman", Georgia, serif;
+    text-align: center;
+    margin: $spacing-large;
+    padding: $spacing-medium;
+    // margin-top: .92857rem;
+      p {
+        font-size: 1.6em;
+        font-style: italic;
+      }
+      .attribution {
+        font-size: 1.25em;
+      }
+      .quote-icon {
+        font-size: 100px;
+        line-height: 0px;
+        margin: 35px 0 15px;
+      }
+    }
+    @media only screen and (min-width: 64em) {
+        .pullquote {
+          margin: $spacing-large $spacing-medium $spacing-medium $spacing-medium;
+        }
+        &.pullquote-inline{
+
+          .pullquote {
+            float:right;
+            width:400px;
+          }
+
+        }
+    }
+  }
