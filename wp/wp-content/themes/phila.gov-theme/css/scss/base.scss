@@ -1,4 +1,5 @@
-@import 'variables';
+@import 'phila-standards';
+
 @import 'mixins';
 @import 'layout';
 @import 'modules';
@@ -7,49 +8,23 @@
 @import 'swiftype-autocomplete';
 
 @import 'a-z-list';
-@import 'alerts';
-@import 'back-to-top';
-@import 'borders';
 @import 'calendar';
-@import 'callout';
-@import 'card';
-@import 'call-to-action';
 @import 'custom-text';
 @import 'departments';
 @import 'documents';
-// @import 'footer';
-@import 'forms';
 @import 'get-involved';
 @import 'hero-header';
-@import 'home';
-@import 'list-items';
-@import 'nav';
+@import 'jotform';
 @import 'news';
-@import 'panel';
 @import 'placeholder';
 @import 'post';
-@import 'press-release';
 @import 'programs-initiatives';
-@import 'pullquote';
 @import 'resource-list';
 @import 'search';
-@import 'service';
 @import 'service-updates';
 @import 'social-media';
 @import 'staff-directory';
-@import 'step-content';
 
-@import 'beta/header';
 @import 'beta/home';
-@import 'beta/global-nav';
-@import 'beta/footer';
 
 @import 'beta/containers';
-@import 'beta/inside-border';
-@import 'beta/alerts';
-@import 'beta/utils';
-@import 'beta/buttons';
-@import 'beta/feedback';
-@import 'beta/google-translate';
-
-@import 'print';

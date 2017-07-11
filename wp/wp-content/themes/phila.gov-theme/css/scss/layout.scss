@@ -5,7 +5,6 @@ h1 .fa{
   @media screen and (min-width: 40em) {
     font-size: 2rem;
   }
-
 }
 
 .group::after {
@@ -29,43 +28,12 @@ h1 .fa{
     }
   }
   i{
-    color:$white;
-    background:$bell-yellow;
+    color:color(white);
+    background:color(bell-yellow);
     padding:5px;
   }
 }
 
-header .site-branding {
-  background: transparent;
-}
-
-body.custom-background{
-  background-size:100%;
-}
-
-.departments .topic {
-    clear:both;
-    width:100%;
-    height: auto;
-  //  border-bottom:1px solid $black;
-}
-
-.filter {
-  background:$ghost-gray;
-  padding:10px;
-  ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
-   li {
-    margin:0;
-    padding-bottom:10px;
-    &:last-child {
-      padding:0;
-    }
-  }
-}
 img.float-left{
   margin: 1em 1em 1em 0;
   float:left;
@@ -74,85 +42,24 @@ img.float-right{
   margin: 1em 0 1em 1em;
   float:right;
 }
-.title-offset, .title-long-offset {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  margin-left: -0.78125rem;
-  margin-right: -0.78125rem;
-  padding-left: 0.78125rem;
-  padding-right: 0.78125rem;
-}
-.title-offset + div{
-  margin-top:40px;
-}
-.title-long-offset + div{
-  margin-top:55px;
-}
-.row.title-push {
-  width:100%;
-  margin:0;
-  display: block;
-}
-
-aside {
-  h3.alternate,
-  h4.alternate {
-      margin-top:10px;
-      margin-bottom:0;
-    }
-}
-
-.breadcrumbs{
-
-  padding:0;
-
-  .fa-home{
-    font-size: $large-font-base / 4.8;
-  }
-}
-
-.news-row{
-  background:$white;
-}
 
 @media screen and (min-width: 64em) {
   .border-right{
-    border-right:1px solid $dark-gray;
+    border-right:1px solid color(dark-gray);
   }
-}
-.top-bar{
-  padding:0;
-}
-
-.bg-white{
-  background-color:$white;
-}
-
-.fade{
-  position: fixed;
-  background: rgba(0, 0, 0, .7);
-  width: 100%;
-  height: 100%;
-  z-index: 5;
 }
 
 .clickable-row {
-  &.is-hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-    @extend .hover-fade-keep-a;
+  cursor: pointer;
+  opacity: 1;
+  @include transition( background, .2s );
+
+  &:hover {
+    opacity: .5;
+    background: transparent;
   }
 }
 
-.no-scroll{
-  height:100%;
-  overflow: hidden;
-}
-
-header.entry-header h2{
-  margin-top:0;
-}
 
 @media screen and (min-width: 64em) {
   .fat-gutter{
@@ -167,65 +74,6 @@ header.entry-header h2{
     }
   }
 }
-//TODO: remove these, they are temporary until we update to standards
-body.is-reveal-open{
-  overflow: visible;
-}
-
-.button{
-  font-weight: bold;
-}
-.reveal {
-  border:none;
-  border-top:5px solid $ben-franklin-blue;
-}
-#mc_embed_signup {
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea, select {
-    border:none;
-    background-color: $ghost-gray;
-    box-shadow: none;
-    margin-bottom:1rem;
-    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: $dark-gray;
-    }
-    &::-moz-placeholder { /* Firefox 19+ */
-      color: $dark-gray;
-    }
-    &:-ms-input-placeholder { /* IE 10+ */
-      color: $dark-gray;
-    }
-    &:-moz-placeholder { /* Firefox 18- */
-      color: $dark-gray;
-    }
-  }
-  .button {
-    height:auto;
-    width:100%;
-    text-align: center;
-    margin:0;
-    padding:0;
-    .button-label{
-      border:none;
-      width: 100%;
-      text-align: center;
-      text-transform: uppercase;
-    }
-  }
-}
-
-@media screen and (min-width: 40em) {
-  .reveal{
-    left: 26%;
-    padding: 3rem;
-    .fa{
-      font-size:10rem;
-      color: $bike-share-blue;
-    }
-  }
-
-}
-
-//end TODO
 
 //TODO: add all these as utility to patterns
 .float-none{

@@ -11,7 +11,7 @@ class phila_gov_walker_nav_menu extends Walker_Nav_Menu {
   function start_lvl( &$output, $depth = 0, $args = Array() ) {
 
    $indent = str_repeat("\t", $depth);
-   $output .= "$indent<ul class=\"menu dropdown vertical\">";
+   $output .= "$indent<ul class=\"menu vertical nested\">";
 
   }
 
