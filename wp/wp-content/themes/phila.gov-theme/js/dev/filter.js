@@ -1,5 +1,4 @@
-jQuery(document).ready(function($) {
-
+module.exports = jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
   var parents = $('.a-z-group');
   var hiddenLetter = {};
@@ -41,7 +40,7 @@ jQuery(document).ready(function($) {
 
     $('.result').hide().addClass('is-hidden');
 
-    if ( $(this).val() == 'all' ){
+    if ( $(this).val() === 'all' ){
 
       $('#service_filter :checkbox').each(function(){
         $(this).prop('checked', false);
@@ -176,10 +175,10 @@ jQuery(document).ready(function($) {
 
   if ( $( '.post-type-archive-service_page' ).length ) {
     $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
-      if ( ( oldSize == 'medium' || oldSize == 'large' ) && ( newSize == 'small' ) ){
+      if ( ( oldSize === 'medium' || oldSize === 'large' ) && ( newSize === 'small' ) ){
         getValues();
       }
-      else if ( ( newSize == 'medium' || newSize == 'large' ) && ( oldSize == 'small' ) ){
+      else if ( ( newSize === 'medium' || newSize === 'large' ) && ( oldSize === 'small' ) ){
         attachFilter();
         $( '.button[data-alpha-order]' ).trigger( 'click' );
         $( 'button[data-close]' ).trigger( 'click' );
@@ -207,7 +206,7 @@ jQuery(document).ready(function($) {
       $('.button[data-alpha-order]').removeClass("outline");
       $('.button[data-reverse-alpha-order]').addClass("outline");
     }
-  })
+  });
 
   $('.button[data-reverse-alpha-order]').click( function() {
     event.preventDefault();
@@ -220,6 +219,6 @@ jQuery(document).ready(function($) {
       $('.button[data-reverse-alpha-order]').removeClass("outline");
       $('.button[data-alpha-order]').addClass("outline");
     }
-  })
+  });
 
 });

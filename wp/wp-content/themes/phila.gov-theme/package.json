@@ -3,7 +3,12 @@
   "version": "0.16.10",
   "description": "A custom wordpress theme for phila.gov",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cp -R node_modules/font-awesome/fonts ./",
+    "build:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.min.css ",
+    "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
+    "build:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js",
+    "postbuild": "postcss --use autoprefixer -b 'last 2 versions' < css/styles.min.css -o css/styles.min.css"
   },
   "repository": {
     "type": "git",
@@ -12,17 +17,26 @@
   "keywords": [
     "theme"
   ],
-  "author": "Karissa Demi",
+  "author": "City of Philadelphia",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
   },
   "homepage": "https://github.com/CityOfPhiladelphia/phila.gov-theme",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-cssmin": "^1.0.2",
-    "grunt-contrib-uglify": "^0.7.0",
-    "grunt-sass": "^1.1.0"
+    "autoprefixer": "^7.1.2",
+    "browserify": "^14.1.0",
+    "browserify-shim": "^3.8.14",
+    "node-sass": "^4.5.1",
+    "postcss": "^6.0.6"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "js-cookie": "^2.1.3",
+    "list.js": "^1.5.0",
+    "mustache": "^2.3.0",
+    "phila-standards": "^0.7.2",
+    "uglify-js": "^3.0.24"
   }
 }

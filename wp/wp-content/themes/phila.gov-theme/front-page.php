@@ -7,8 +7,8 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area">
-  <main id="main" class="site-main home">
+<div class="site-main home">
+  <main>
     <div class="hero-content">
       <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta-homepage-mobile.jpg" alt="">
       <div class="hero-wrap">
@@ -88,6 +88,11 @@ get_header(); ?>
       </div>
     </div>
     <!-- End Hero Content -->
+    <div class="row">
+      <div class="columns">
+        <h2 class="contrast">Service updates</h2>
+      </div>
+    </div>
     <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
@@ -120,14 +125,9 @@ get_header(); ?>
               <div class="alert">No recent news.</div>
             <?php endif; ?>
           </div>
-          <a class="see-all-right see-all-arrow float-right" href="/news" aria-label="See all news">
-            <div class="valign equal-height">
-              <div class="see-all-label phm prxs valign-cell equal">See all</div>
-              <div class="valign-cell equal">
-                <img style="height:28px" src="<?php echo get_stylesheet_directory_uri() . "/img/see-all-arrow.svg"; ?>" alt="">
-              </div>
-            </div>
-          </a>
+          <?php $see_all_URL = '/news' ?>
+          <?php $see_all_content_type = 'news'?>
+          <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </section>
       </div>
     </div>
@@ -366,6 +366,6 @@ get_header(); ?>
     <!-- End Redesigning Phila.gov -->
 
   </main><!-- #main -->
-</div><!-- #primary -->
+</div><!-- .site-main .home -->
 
 <?php get_footer(); ?>
