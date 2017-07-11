@@ -15,3 +15,9 @@ function phila_last_modified() {
     }
   }
 }
+
+add_action('template_redirect', 'phila_allow_gzip');
+
+function phila_allow_gzip(){
+  header("Accept-Encoding: gzip");
+}
