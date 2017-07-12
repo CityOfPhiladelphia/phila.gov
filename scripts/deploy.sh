@@ -10,10 +10,14 @@ source "$_dir/lib/mo"
 echo 'Running wp-config.sh'
 "$_dir/wp-config.sh"
 
-echo 'Running grunt tasks'
+echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-npm install
-grunt
+sudo npm install
+sudo npm i -g browserify uglify-js postcss-cli autoprefixer
+sudo npm update
+npm rebuild node-sass
+npm run build:js && npm run build:css
+npm run postbuild
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'

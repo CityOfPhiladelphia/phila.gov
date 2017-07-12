@@ -14,7 +14,7 @@
   <?php } ?>
 
   <div class="medium-17 columns">
-  	<header class="entry-header small-text">
+  	<header class="small-text">
       <?php
         $categories = get_the_category($post->ID);
         ?>

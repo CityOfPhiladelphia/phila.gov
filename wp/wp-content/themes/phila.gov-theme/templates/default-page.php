@@ -8,7 +8,7 @@
 
 <article id="post-<?php the_ID(); ?>">
   <div class="row">
-    <header class="entry-header small-24 columns">
+    <header class="small-24 columns">
       <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
     </header><!-- .entry-header -->
   </div>
