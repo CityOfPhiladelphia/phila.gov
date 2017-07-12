@@ -44,14 +44,9 @@
             </ul>
           </div>
         <?php endif; ?>
-          <a class="see-all-right see-all-arrow float-right" href="<?php echo $forms_documents[$key]['phila_action_panel_link_multi']; ?>" aria-label="See all <?php echo strtolower( $forms_documents[$key]['phila_action_panel_cta_text_multi'] ); ?>">
-            <div class="valign equal-height">
-              <div class="see-all-label phm prxs valign-cell equal">See all</div>
-              <div class="valign-cell equal">
-                <img style="height:28px" src="<?php echo get_stylesheet_directory_uri(); ?>/img/see-all-arrow.svg" alt="">
-              </div>
-            </div>
-          </a>
+        <?php $see_all_URL = $forms_documents[$key]['phila_action_panel_link_multi']; ?>
+        <?php $see_all_content_type = strtolower( $forms_documents[$key]['phila_action_panel_cta_text_multi'] );?>
+        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       <?php endforeach; ?>
     </div>

@@ -54,7 +54,7 @@
         <div class="medium-<?php echo $columns; ?> columns">
           <?php if ( !empty( $action_panel_link ) ): ?>
           <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
-            <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
+            <div class="panel hover-fade <?php if( $item_count > 1 ) echo 'equal';?>">
             <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
             <?php if ($action_panel_fa_circle): ?>
               <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?> icon">

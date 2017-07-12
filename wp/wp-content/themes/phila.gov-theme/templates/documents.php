@@ -4,7 +4,7 @@
 */
 ?>
 <div class="row">
-  <header class="entry-header small-24 columns">
+  <header class="small-24 columns">
     <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
   </header><!-- .entry-header -->
 </div>
@@ -19,20 +19,20 @@
     $documents = rwmb_meta( 'phila_files', $args = array( 'type' => 'file_advanced' ) );
     ?>
     <p class="description"><?php echo $document_description; ?></p>
-    <table class="no-borders align-left mvm mvl-mu tablesaw tablesaw-stack" data-tablesaw-mode="stack">
-      <thead class="light-head">
+    <table class="responsive">
+      <thead>
         <tr>
           <th>
-            <span class="h3 alternate">Name</span>
+            Name
           </th>
           <th>
-            <span class="h3 alternate">Description</span>
+            Description
           </th>
           <th>
-            <span class="h3 alternate">Released</span>
+            Released
           </th>
           <th>
-            <span class="h3 alternate">Format</span>
+            Format
           </th>
         </tr>
       </thead>

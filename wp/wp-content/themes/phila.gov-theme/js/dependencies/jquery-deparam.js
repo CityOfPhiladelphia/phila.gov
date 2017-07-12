@@ -1,112 +1,113 @@
-(function(deparam){
-    if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
-        var jquery = require('jquery');
-        module.exports = deparam(jquery);
-    } else if (typeof define === 'function' && define.amd){
-        define(['jquery'], function(jquery){
-            return deparam(jquery);
-        });
-    } else {
-        var global
-        try {
-          global = (false || eval)('this'); // best cross-browser way to determine global for < ES5
-        } catch (e) {
-          global = window; // fails only if browser (https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives)
+/*! skinny.js v0.1.0 | Copyright 2013 Vistaprint | vistaprint.github.io/SkinnyJS/LICENSE
+http://vistaprint.github.io/SkinnyJS/download-builder.html?modules=jquery.delimitedString,jquery.queryString*/
+
+module.exports = (function ($) {
+
+    // Takes a plain javascript object (key value pairs), and encodes it as a string
+    // using the specified delimiters and encoders
+    $.encodeDelimitedString = function (data, itemDelimiter, pairDelimiter, keyEncoder, valueEncoder) {
+        if (!data) {
+            return "";
         }
-        global.deparam = deparam(jQuery); // assume jQuery is in global namespace
-    }
-})(function ($) {
-    var deparam = function( params, coerce ) {
-        var obj = {},
-        coerce_types = { 'true': !0, 'false': !1, 'null': null };
 
-        // Iterate over all name=value pairs.
-        params.replace(/\+/g, ' ').split('&').forEach(function(v){
-            var param = v.split( '=' ),
-            key = decodeURIComponent( param[0] ),
-            val,
-            cur = obj,
-            i = 0,
+        keyEncoder = keyEncoder || function (s) {
+            return s;
+        };
+        valueEncoder = valueEncoder || keyEncoder;
 
-            // If key is more complex than 'foo', like 'a[]' or 'a[b][c]', split it
-            // into its component parts.
-            keys = key.split( '][' ),
-            keys_last = keys.length - 1;
+        var sb = [];
 
-            // If the first keys part contains [ and the last ends with ], then []
-            // are correctly balanced.
-            if ( /\[/.test( keys[0] ) && /\]$/.test( keys[ keys_last ] ) ) {
-                // Remove the trailing ] from the last keys part.
-                keys[ keys_last ] = keys[ keys_last ].replace( /\]$/, '' );
-
-                // Split first keys part into two parts on the [ and add them back onto
-                // the beginning of the keys array.
-                keys = keys.shift().split('[').concat( keys );
-
-                keys_last = keys.length - 1;
-            } else {
-                // Basic 'foo' style key.
-                keys_last = 0;
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                sb.push(keyEncoder(key) + pairDelimiter + valueEncoder(data[key]));
             }
+        }
 
-            // Are we dealing with a name=value pair, or just a name?
-            if ( param.length === 2 ) {
-                val = decodeURIComponent( param[1] );
-
-                // Coerce values.
-                if ( coerce ) {
-                    val = val && !isNaN(val) && ((+val + '') === val) ? +val        // number
-                    : val === 'undefined'                       ? undefined         // undefined
-                    : coerce_types[val] !== undefined           ? coerce_types[val] // true, false, null
-                    : val;                                                          // string
-                }
-
-                if ( keys_last ) {
-                    // Complex key, build deep object structure based on a few rules:
-                    // * The 'cur' pointer starts at the object top-level.
-                    // * [] = array push (n is set to array length), [n] = array if n is
-                    //   numeric, otherwise object.
-                    // * If at the last keys part, set the value.
-                    // * For each keys part, if the current level is undefined create an
-                    //   object or array based on the type of the next keys part.
-                    // * Move the 'cur' pointer to the next level.
-                    // * Rinse & repeat.
-                    for ( ; i <= keys_last; i++ ) {
-                        key = keys[i] === '' ? cur.length : keys[i];
-                        cur = cur[key] = i < keys_last
-                        ? cur[key] || ( keys[i+1] && isNaN( keys[i+1] ) ? {} : [] )
-                        : val;
-                    }
-
-                } else {
-                    // Simple key, even simpler rules, since only scalars and shallow
-                    // arrays are allowed.
-
-                    if ( Object.prototype.toString.call( obj[key] ) === '[object Array]' ) {
-                        // val is already an array, so push on the next value.
-                        obj[key].push( val );
-
-                    } else if ( {}.hasOwnProperty.call(obj, key) ) {
-                        // val isn't an array, but since a second value has been specified,
-                        // convert val into an array.
-                        obj[key] = [ obj[key], val ];
-
-                    } else {
-                        // val is a scalar.
-                        obj[key] = val;
-                    }
-                }
-
-            } else if ( key ) {
-                // No value was defined, so set something meaningful.
-                obj[key] = coerce
-                ? undefined
-                : '';
-            }
-        });
-
-        return obj;
+        return sb.join(itemDelimiter);
     };
-    $.prototype.deparam = $.deparam = deparam;
-    return deparam;
-});
+
+    // Takes an encoded string, and parses it into a plain javascript object (key value pairs)
+    // using the specified delimiters and decoders
+    $.parseDelimitedString = function (delimitedString, itemDelimiter, pairDelimiter, keyDecoder, valueDecoder) {
+        keyDecoder = keyDecoder || function (s) {
+            return s;
+        };
+        valueDecoder = valueDecoder || keyDecoder;
+
+        var ret = {};
+
+        if (delimitedString) {
+            var pairs = delimitedString.split(itemDelimiter);
+            var len = pairs.length;
+            for (var i = 0; i < len; i++) {
+                var pair = pairs[i];
+
+                if (pair.length > 0) {
+                    var delimIndex = pair.indexOf(pairDelimiter);
+                    var key, value;
+
+                    if (delimIndex > 0 && delimIndex <= pair.length - 1) {
+                        key = pair.substring(0, delimIndex);
+                        value = pair.substring(delimIndex + 1);
+                    } else {
+                        key = pair;
+                    }
+
+                    ret[keyDecoder(key)] = valueDecoder(value);
+                }
+            }
+        }
+
+        return ret;
+    };
+
+})(jQuery);
+;/// <reference path="jquery.delimitedString.js" />
+
+(function ($) {
+    var PLUS_RE = /\+/gi;
+
+    var urlDecode = function (s) {
+        // Specifically treat null/undefined as empty string
+        if (s == null) {
+            return "";
+        }
+
+        // Replace plus with space- jQuery.param() explicitly encodes them,
+        // and decodeURIComponent explicitly does not.
+        return decodeURIComponent(s.replace(PLUS_RE, " "));
+    };
+
+    // Given a querystring (as a string), deserializes it to a javascript object.
+    $.deparam = function (queryString) {
+        if (typeof queryString != "string") {
+            throw new Error("$.deparam() expects a string for 'queryString' argument.");
+        }
+
+        // Remove "?", which starts querystrings
+        if (queryString && queryString.charAt(0) == "?") {
+            queryString = queryString.substring(1, queryString.length);
+        }
+
+        return $.parseDelimitedString(queryString, "&", "=", urlDecode);
+    };
+
+    // Alias
+    $.parseQueryString = $.deparam;
+
+    // Gets the querystring from the current document.location as a javascript object.
+    $.currentQueryString = function () {
+        return $.deparam(window.location.search);
+    };
+
+    // Given a url (pathname) and an object representing a querystring, constructs a full URL
+    $.appendQueryString = function (url, parsedQueryString) {
+        var qs = $.param(parsedQueryString);
+        if (qs.length > 0) {
+            qs = "?" + qs;
+        }
+
+        return url + qs;
+    };
+
+})(jQuery);

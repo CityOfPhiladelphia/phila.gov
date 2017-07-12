@@ -285,30 +285,22 @@ function phila_gov_widgets_init() {
  * Enqueue scripts and styles.
  */
 
+
 add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
+  wp_deregister_script( 'jquery' );
 
-  wp_enqueue_style( 'pattern_portfolio', '//cityofphiladelphia.github.io/patterns/dist/1.4.1/css/patterns.css' );
-
-  wp_enqueue_style( 'font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.5.0' );
-
-  wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css', array(), '2.0.0' );
-
-  wp_enqueue_style( 'theme-styles', get_stylesheet_directory_uri() . '/css/styles.min.css', array('pattern_portfolio') );
+  wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles.min.css' );
 
   wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'theme-styles' )  );
+
   wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
-  wp_enqueue_script( 'text-filtering', '//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', array(), '1.1.1', true );
-
-  wp_enqueue_script( 'foundation-js', '//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js', array('jquery',  'jquery-migrate'), '2.8.3', true );
-
-  wp_enqueue_script( 'pattern-scripts', '//cityofphiladelphia.github.io/patterns/dist/1.4.1/js/patterns.min.js', array('jquery', 'foundation-js'), true );
-
-  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array('jquery', 'text-filtering', 'foundation-js', 'pattern-scripts'), 1.0, true );
+  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts.min.js', array(), '0.7.0', true );
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
+
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
 }
@@ -643,18 +635,18 @@ function phila_get_department_menu() {
           'container'       => '',
           'container_class' => '',
           'container_id'    => '',
-          'menu_class'      => 'department-menu vertical medium-horizontal menu',
+          'menu_class'      => 'secondary-menu vertical medium-horizontal menu dropdown',
           'menu_id'         => '',
           'echo'            => true,
           'fallback_cb'     => false,//if there is no menu, output nothing
           'before'          => '',
           'after'           => '',
           'items_wrap'      => '
-          <div class="row department-nav">
+          <div class="row">
             <div class="small-24 columns">
-              <div class="top-bar mbm-mu" id="site-nav">
+              <div class="mbm-mu" id="site-nav">
                 <nav data-swiftype-index="false">
-                  <ul id="%1$s" class="%2$s" data-responsive-menu="drilldown medium-dropdown">%3$s</ul>
+                  <ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown">%3$s</ul>
                   </nav>
                 </div>
                 </div>

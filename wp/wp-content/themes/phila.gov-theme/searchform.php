@@ -8,7 +8,7 @@
 <div class="search-pane global-nav">
   <div class="dropdown-pane site-search-dropdown" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-close-on-click="true" data-auto-focus="true" id="search-dropdown">
     <div class="row columns expanded bg-ghost-gray">
-      <div class="row">
+      <div class="row arrow">
         <div class="medium-12 columns small-centered">
           <div class="paxl">
             <form role="search" method="get" class="search" id="search-form" action="<?php echo home_url( '/search' ); ?>">
