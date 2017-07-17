@@ -351,6 +351,11 @@ function phila_register_meta_boxes( $meta_boxes ){
        'id'   => 'phila_append_after_wysiwyg',
        'type' => 'textarea'
      ),
+     array(
+        'name' => 'Append to Footer',
+        'id'   => 'phila_append_to_footer',
+        'type' => 'textarea'
+      ),
    ),
  );
 
