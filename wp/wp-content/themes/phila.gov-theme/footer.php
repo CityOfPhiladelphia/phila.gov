@@ -189,6 +189,17 @@
       </nav>
     </div>
   </div>
+
+  <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
+      <?php if (function_exists('rwmb_meta')): ?>
+        <?php $append_to_footer = rwmb_meta( 'phila_append_to_footer', $args = array('type' => 'textarea'), $post->ID); ?>
+        <?php if ( !$append_to_footer == '' ): ?>
+          <!-- Begin Custom Markup Metabox: Append to Footer -->
+          <?php echo $append_to_footer; ?>
+          <!-- End Custom Markup Metabox: Append to Footer -->
+        <?php endif;?>
+      <?php endif; ?>
+  <?php endif; ?>
 </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>
