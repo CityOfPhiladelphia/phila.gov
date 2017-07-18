@@ -10,7 +10,7 @@
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js",
     "dev:build": "npm run dev:css && npm run dev:js",
-    "build": "npm run build:css && npm run build:css",
+    "build": "npm run build:css && npm run build:js",
     "postbuild": "postcss --use autoprefixer -b 'last 2 versions' < css/styles.min.css -o css/styles.min.css"
   },
   "repository": {
