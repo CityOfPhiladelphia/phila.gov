@@ -12,12 +12,16 @@ echo 'Running wp-config.sh'
 
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-sudo npm install
-sudo npm i -g browserify uglify-js postcss-cli autoprefixer
 sudo npm update
-npm rebuild node-sass
-npm run build:js && npm run build:css
-npm run postbuild
+if [ "$PHILA_TEST" ]; then
+  echo 'Running test machine tasks'
+  sudo npm rebuild node-sass
+  sudo npm run dev:build
+else
+  echo 'Running prod tasks'
+  sudo npm run build
+  sudo npm run postbuild
+fi
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'
@@ -30,9 +34,6 @@ g/^post_max_size/s/8/100
 g/^upload_max_filesize/s/2/100
 w
 EOF
-
-echo 'Installing private plugins'
-"$_dir/private-plugins.sh"
 
 echo 'Reloading php-fpm'
 sudo service php7.0-fpm reload
