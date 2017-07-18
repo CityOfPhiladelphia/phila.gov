@@ -31,7 +31,7 @@
     "browserify": "^14.1.0",
     "browserify-shim": "^3.8.14",
     "node-sass": "^4.5.1",
-    "postcss": "^6.0.6"
+    "postcss": "^6.0.7"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
@@ -40,6 +40,6 @@
     "list.js": "^1.5.0",
     "mustache": "^2.3.0",
     "phila-standards": "^0.8.0",
-    "uglify-js": "^3.0.24"
+    "uglify-js": "^3.0.25"
   }
 }
