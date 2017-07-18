@@ -35,9 +35,6 @@ g/^upload_max_filesize/s/2/100
 w
 EOF
 
-echo 'Installing private plugins'
-"$_dir/private-plugins.sh"
-
 echo 'Reloading php-fpm'
 sudo service php7.0-fpm reload
 
