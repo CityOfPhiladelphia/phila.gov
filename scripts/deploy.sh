@@ -14,9 +14,11 @@ echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 sudo npm update
 if [ "$PHILA_TEST" ]; then
+  echo 'Running test machine tasks'
   sudo npm rebuild node-sass
   sudo npm run dev:build
 else
+  echo 'Running prod tasks'
   sudo npm run build
   sudo npm run postbuild
 fi
