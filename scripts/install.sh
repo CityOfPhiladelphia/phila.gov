@@ -13,7 +13,6 @@ echo "Install npm & command line utilities"
 sudo npm i -g browserify uglify-js postcss-cli autoprefixer
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 sudo npm install
-sudo npm update
 cd /home/ubuntu/app
 
 if [ "$PHILA_TEST" ]; then

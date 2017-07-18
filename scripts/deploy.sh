@@ -12,6 +12,7 @@ echo 'Running wp-config.sh'
 
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
+sudo npm update
 if [ "$PHILA_TEST" ]; then
   sudo npm rebuild node-sass
   sudo npm run dev:build
