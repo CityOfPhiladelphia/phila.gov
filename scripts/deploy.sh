@@ -35,6 +35,11 @@ g/^upload_max_filesize/s/2/100
 w
 EOF
 
+if [ ! "$PHILA_TEST" ]; then
+echo 'Installing private plugins'
+"$_dir/private-plugins.sh"
+fi
+
 echo 'Reloading php-fpm'
 sudo service php7.0-fpm reload
 
