@@ -92,7 +92,6 @@ module.exports = jQuery(document).ready(function($) {
 
   function addressSearch () {
     // Also check OPA API for results if it looks like an address
-
     var params = $.deparam(location.hash.substr(1));
     var query = params.stq;
     var queryEncoded = encodeURIComponent(query);
@@ -111,11 +110,10 @@ module.exports = jQuery(document).ready(function($) {
     }
   }
 
-  function locationHashChanged() {
-    addressSearch();
-  }
 
-  window.onhashchange = locationHashChanged;
+  $(window).on('hashchange', function (e) {
+    addressSearch();
+  }).trigger('hashchange');
 
   function getPath (url) {
     // Use this to only get the path on the URL
