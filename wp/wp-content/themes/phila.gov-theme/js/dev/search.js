@@ -41,7 +41,7 @@ module.exports = jQuery(document).ready(function($) {
     if (totalResultCount === 0) {
       $resultCount.text("No results found");
     } else {
-      $resultCount.html("Found <b>" + totalResultCount + "</b> results");
+      $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results");
     }
 
     if (spellingSuggestion !== null) {
