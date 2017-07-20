@@ -49,12 +49,28 @@ module.exports = jQuery(document).ready(function($) {
     }
   };
 
+  function customRenderPaginationForType(type, currentPage, totalPages) {
+    var pages = '<nav class="navigation paging-navigation">',
+      previousPage, nextPage;
+    if (currentPage != 1) {
+      previousPage = currentPage - 1;
+      pages = pages + '<a href="#" class="st-prev prev page-numbers" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> previous</a>';
+    }
+    if (currentPage < totalPages) {
+      nextPage = currentPage + 1;
+      pages = pages + '<a href="#" class="st-next next page-numbers" data-hash="true" data-page="' + nextPage + '">next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+    }
+    pages += '</nav>';
+    return pages;
+  };
+
   var $stSearchInput = $("#st-search-input");
   $stSearchInput.swiftypeSearch({
-    engineKey: SWIFTYPE_ENGINE, // Env var set in footer by php
+    engineKey: SWIFTYPE_ENGINE,
     resultContainingElement: '#st-results-container',
     renderFunction: customRenderer,
-    postRenderFunction: customPostRenderFunction
+    postRenderFunction: customPostRenderFunction,
+    renderPaginationForType: customRenderPaginationForType
   });
 
   $("#search-form").submit(function (e) {
