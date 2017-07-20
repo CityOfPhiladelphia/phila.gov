@@ -1,5 +1,4 @@
 var deparam = require('../dependencies/jquery-deparam.js');
-require('../dependencies/jquery.ba-hashchange.min.js');
 require('../dependencies/jquery.swiftype.search.js');
 require('../dependencies/jquery.swiftype.autocomplete.js');
 require('js-cookie');
@@ -96,8 +95,11 @@ module.exports = jQuery(document).ready(function($) {
     }
   }
 
-  addressSearch();
-  $(window).hashchange(addressSearch);
+  function locationHashChanged() {
+    addressSearch();
+  }
+
+  window.onhashchange = locationHashChanged;
 
   function getPath (url) {
     // Use this to only get the path on the URL
