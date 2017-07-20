@@ -127,21 +127,20 @@ module.exports = (function ($) {
           });
         };
 
-      $(window).hashchange(function () {
-        var params = $.hashParams();
-        if (params.stq) {
-          submitSearch(params.stq, {
-            page: params.stp
-          });
-        } else {
-          var $contentCache = $this.getContentCache();
-          if ($contentCache.length) {
-            $resultContainer.html($contentCache.html());
-            $contentCache.remove();
+        window.addEventListener("hashchange",function(event){
+          var params = $.hashParams();
+          if (params.stq) {
+            submitSearch(params.stq, {
+              page: params.stp
+            });
+          } else {
+            var $contentCache = $this.getContentCache();
+            if ($contentCache.length) {
+              $resultContainer.html($contentCache.html());
+              $contentCache.remove();
+            }
           }
-        }
-      });
-
+        });
       var $containingForm = $this.parents('form');
       if ($containingForm) {
         $containingForm.bind('submit', function (e) {
@@ -182,8 +181,7 @@ module.exports = (function ($) {
           registerResult: $this.registerResult
         };
       };
-
-      $(window).hashchange(); // if the swiftype query hash is present onload (maybe the user is pressing the back button), submit a query onload
+      window.location.hash; // if the swiftype query hash is present onload (maybe the user is pressing the back button), submit a query onload
     });
   };
 
