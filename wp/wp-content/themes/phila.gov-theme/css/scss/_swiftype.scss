@@ -41,9 +41,10 @@
   }
   .entry-summary {
     em {
-      background-color: color(ghost-gray);
-      padding: 0 0.25rem;
-      margin: 0 -0.15rem;
+      background-color: color(medium-gray);
+      color: color(white);
+      font-weight: bold;
+      padding: 0 0.35rem;
     }
   }
 }

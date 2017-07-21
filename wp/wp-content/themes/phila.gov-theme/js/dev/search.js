@@ -1,5 +1,4 @@
 var deparam = require('../dependencies/jquery-deparam.js');
-require('../dependencies/jquery.ba-hashchange.min.js');
 require('../dependencies/jquery.swiftype.search.js');
 require('../dependencies/jquery.swiftype.autocomplete.js');
 require('js-cookie');
@@ -42,7 +41,7 @@ module.exports = jQuery(document).ready(function($) {
     if (totalResultCount === 0) {
       $resultCount.text("No results found");
     } else {
-      $resultCount.html("Found <b>" + totalResultCount + "</b> results");
+      $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results");
     }
 
     if (spellingSuggestion !== null) {
@@ -50,12 +49,28 @@ module.exports = jQuery(document).ready(function($) {
     }
   };
 
+  function customRenderPaginationForType(type, currentPage, totalPages) {
+    var pages = '<nav class="navigation paging-navigation">',
+      previousPage, nextPage;
+    if (currentPage != 1) {
+      previousPage = currentPage - 1;
+      pages = pages + '<a href="#" class="st-prev prev page-numbers" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> previous</a>';
+    }
+    if (currentPage < totalPages) {
+      nextPage = currentPage + 1;
+      pages = pages + '<a href="#" class="st-next next page-numbers" data-hash="true" data-page="' + nextPage + '">next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+    }
+    pages += '</nav>';
+    return pages;
+  };
+
   var $stSearchInput = $("#st-search-input");
   $stSearchInput.swiftypeSearch({
-    engineKey: SWIFTYPE_ENGINE, // Env var set in footer by php
+    engineKey: SWIFTYPE_ENGINE,
     resultContainingElement: '#st-results-container',
     renderFunction: customRenderer,
-    postRenderFunction: customPostRenderFunction
+    postRenderFunction: customPostRenderFunction,
+    renderPaginationForType: customRenderPaginationForType
   });
 
   $("#search-form").submit(function (e) {
@@ -77,7 +92,6 @@ module.exports = jQuery(document).ready(function($) {
 
   function addressSearch () {
     // Also check OPA API for results if it looks like an address
-
     var params = $.deparam(location.hash.substr(1));
     var query = params.stq;
     var queryEncoded = encodeURIComponent(query);
@@ -96,8 +110,10 @@ module.exports = jQuery(document).ready(function($) {
     }
   }
 
-  addressSearch();
-  $(window).hashchange(addressSearch);
+
+  $(window).on('hashchange', function (e) {
+    addressSearch();
+  }).trigger('hashchange');
 
   function getPath (url) {
     // Use this to only get the path on the URL
