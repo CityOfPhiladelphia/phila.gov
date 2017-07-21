@@ -55,17 +55,17 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
         ?><div id="site-wide-alert" data-swiftype-index="false" data-closable>
-            <div class="row">
-              <div class="medium-16 medium-centered">
-                <div class="row equal-height pvs">
-                  <div class="small-1 columns center equal icon hide-for-small-only">
-                    <div class="valign">
-                      <div class="valign-cell">
-                        <i class="fa fa-exclamation fa-3x" aria-hidden="true"></i>
-                      </div>
-                    </div>
+        <div class="row">
+          <div class="medium-centered">
+            <div class="row equal-height pvs">
+              <div class="small-1 columns center equal icon hide-for-small-only">
+                <div class="valign">
+                  <div class="valign-cell">
+                    <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
                   </div>
-              <div class="small-24 medium-23 columns equal message">
+                </div>
+              </div>
+            <div class="small-22 columns equal message">
 
         <?php
           $content = get_the_content();
@@ -76,16 +76,19 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
           echo ' to ';
           dateTimeFormat($alert_end);
         ?>
-        </div></div></div>
-        <button class="close-button" data-close>&times;</button>
+        </div>
+          </div>
+          <div class="small-1 columns equal message">
+            <button class="close-button" data-close>&times;</button>
+          </div>
         </div>
       </div>
     </div>
-      <?php endif;
-      }//end while
-    }
-
-    wp_reset_postdata();
+  </div>
+    <?php endif;
+    }//end while
+  }
+  wp_reset_postdata();
 
   }
 }
