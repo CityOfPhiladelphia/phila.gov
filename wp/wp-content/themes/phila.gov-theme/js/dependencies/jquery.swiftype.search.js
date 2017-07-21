@@ -127,21 +127,6 @@ module.exports = (function ($) {
           });
         };
 
-      $(window).hashchange(function () {
-        var params = $.hashParams();
-        if (params.stq) {
-          submitSearch(params.stq, {
-            page: params.stp
-          });
-        } else {
-          var $contentCache = $this.getContentCache();
-          if ($contentCache.length) {
-            $resultContainer.html($contentCache.html());
-            $contentCache.remove();
-          }
-        }
-      });
-
       var $containingForm = $this.parents('form');
       if ($containingForm) {
         $containingForm.bind('submit', function (e) {
@@ -182,8 +167,21 @@ module.exports = (function ($) {
           registerResult: $this.registerResult
         };
       };
-
-      $(window).hashchange(); // if the swiftype query hash is present onload (maybe the user is pressing the back button), submit a query onload
+      // Modified by KD, the hashchange library was no longer working and had not been updated in years. This replaces the need for it. 
+      $(window).on('hashchange', function (e) {
+        var params = $.hashParams();
+        if (params.stq) {
+          submitSearch(params.stq, {
+            page: params.stp
+          });
+        } else {
+          var $contentCache = $this.getContentCache();
+          if ($contentCache.length) {
+            $resultContainer.html($contentCache.html());
+            $contentCache.remove();
+          }
+        }
+      }).trigger('hashchange');;
     });
   };
 

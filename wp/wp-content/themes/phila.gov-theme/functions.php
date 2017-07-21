@@ -305,6 +305,12 @@ function phila_gov_scripts() {
 
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
+  if  ( is_user_logged_in() ){
+    wp_enqueue_script( 'logged-in-js', get_stylesheet_directory_uri() . '/admin/js/front-end.js', array( 'phila-scripts' ), '', true );
+
+    wp_enqueue_style( 'logged-in-css', get_stylesheet_directory_uri() . '/admin/css/front-end.css');
+  }
+
 }
 
 add_action('init', 'enqueue_scripts_styles_init');
