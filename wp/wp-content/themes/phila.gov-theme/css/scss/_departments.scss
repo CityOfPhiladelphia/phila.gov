@@ -146,12 +146,14 @@
       background-color:#daedfe;
     }
 
-      .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
-        border-color: transparent transparent transparent #fff;
-        border-left-style: solid;
-        border-right-width: 0;
-      }
-
+    .dropdown.menu.medium-horizontal > li.is-dropdown-submenu-parent > a::after{
+      border-color: color(dark-gray) transparent transparent;
+    }
+    .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
+      border-color: transparent transparent transparent #fff;
+      border-left-style: solid;
+      border-right-width: 0;
+    }
     .dropdown li{
       &:last-child{
         border-bottom: none;
