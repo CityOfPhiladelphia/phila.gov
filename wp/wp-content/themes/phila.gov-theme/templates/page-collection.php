@@ -5,54 +5,16 @@
  * @package phila-gov
  */
 
-  $walker_menu = new Content_Collection_Walker();
-  $has_parent = get_post_ancestors( $post );
-
-  $this_parent = array(
-    'include' => $has_parent,
-    'post_type' => get_post_type()
-  );
-  $parent_exists = get_pages( $this_parent );
-
-  if( $post->post_parent ) {
-    //it's a child
-    $children = wp_list_pages(array(
-      'sort_column' => 'menu_order',
-      'title_li' => '',
-      'child_of' => $post->post_parent,
-      'echo' => 0,
-      'walker' => $walker_menu,
-      'post_type' => get_post_type()
-      )
-    );
-
-    $page_title = get_the_title($post->post_parent);
-    $parent_link = get_permalink( $post->post_parent );
-
-  }else{
-    //it's a parent with content
-    $parent_link = get_permalink();
-    $current = true;
-    $parent_title = get_the_title();
-
-    $parent_content = get_the_content();
-
-    $children = wp_list_pages(array(
-      'sort_column' => 'menu_order',
-      'title_li' => '',
-      'child_of' => $post->ID,
-      'echo' => 0,
-      'walker' => $walker_menu,
-      'post_type' => get_post_type()
-      )
-    );
+  $parent_anc = get_post_ancestors ( $post );
+  $parent_id = array_pop( $parent_anc );
+  $parent_title = get_the_title( $parent_id );
+  if ( empty( $parent_id ) ) {
+    $parent_id = $post->ID;
   }
 ?>
-<?php $user_selected_template = phila_get_selected_template(); ?>
-
-<article id="post-<?php the_ID(); ?>">
-<div class="row">
-  <header class="small-24 columns">
+<div id="post-<?php the_ID(); ?>">
+  <div class="row">
+    <header class="small-24 columns">
       <?php if ( isset( $parent_title ) ) : ?>
         <h1 class="contrast"><?php echo $parent_title ?></h1>
       <?php else : ?>
@@ -61,31 +23,31 @@
     </header>
   </div>
   <div class="row">
-    <div class="medium-6 columns">
-      <aside>
-        <ul class="tabs vertical">
-          <?php if ( count($parent_exists) > 1 || !empty( $parent_exists[0]->post_content ) ) : ?>
-            <li class="tabs-title<?php echo isset( $current ) ? ' is-active' : ''?>">
-              <a href="<?php echo $parent_link ?>">Overview</a>
-            </li>
-          <?php endif; ?>
-          <?php echo $children; ?>
+    <div class="side-menu medium-7 columns bdr-right bdr-sidewalk equal hide-for-small-only pbxl">
+        <nav data-swiftype-index="false" id="side-nav">
+          <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="vertical menu">
+          <?php $args = array(
+              'post_type' => 'page',
+              'sort_column' => 'menu_order, title',
+              'order' => 'ASC',
+              'title_li' => '',
+              'child_of'  => $parent_id,
+              'link_before' => '<span>',
+              'link_after'  => '</span>',
+            );
+            wp_list_pages($args); ?>
         </ul>
-      </aside>
+      </nav>
     </div>
-    <div class="medium-18 columns">
-      <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content tabs-content vertical">
-        <div class="tabs-panel is-active">
-          <header class="entry-header">
-            <?php the_title( '<h2 class="entry-title mvn">', '</h2>' ); ?>
-          </header><!-- .entry-header -->
-          <?php if ( isset( $parent_content ) ) : ?>
-            <?php echo $parent_content ?>
-          <?php else : ?>
-            <?php get_template_part( 'partials/content', 'default' ); ?>
-          <?php endif; ?>
-        </div>
+  <div class="medium-16 columns equal pbxl">
+    <article>
+      <header class="entry-header">
+        <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
+      </header><!-- .entry-header -->
+      <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
+        <?php get_template_part( 'partials/content', 'default' ); ?>
       </div>
+    </article>
     </div>
   </div>
-</article><!-- #post-## -->
+</div>

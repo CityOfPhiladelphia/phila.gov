@@ -12,32 +12,22 @@
  * @package phila-gov
  */
 
-  include( locate_template(  'partials/content-collection-header.php' ) );
+  get_header();
 ?>
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
 
     <?php while ( have_posts() ) : the_post();
-
       $children = get_pages( 'child_of=' . $post->ID );
-      $this_content = get_the_content();
+      $has_parent = get_post_ancestors( $post );
 
-      if ( ( count( $children ) == 0 ) && ( !$this_content == 0 ) && ( !$has_parent ) )  {
-
-        //single page, no children
+      if ( ( count( $children ) == 0 ) && ( !$has_parent ) )  {
+        //single page, no children, full-width content
         get_template_part( 'templates/default', 'page' );
-
-      }elseif( ( $post->id = $post->post_parent ) ) {
-
-        //this is our normal content collection
-        get_template_part( 'templates/page', 'collection' );
-
       }else {
-
-        //still show the menu, even if this page has content
+        //render side menu
         get_template_part( 'templates/page', 'collection' );
-
       }
 
       endwhile; // end of the loop. ?>
