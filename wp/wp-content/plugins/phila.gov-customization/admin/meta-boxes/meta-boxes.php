@@ -1932,7 +1932,12 @@ $meta_boxes[] = array(
       'id' => 'phila_stub_source',
       'type' => 'post',
       'post_type' => 'service_page',
-      'desc'  => 'Display content from the selected page on the front-end.'
+      'desc'  => 'Display content from the selected page on the front-end.',
+      'query_args'  => array(
+        'meta_key' => 'phila_template_select',
+        'meta_value' => 'service_stub',
+        'meta_compare' => '!=',
+      ),
     )
   )
 );
@@ -2048,7 +2053,14 @@ $meta_boxes[] = array(
         $meta_questions
       )
     )
-  )
+  ),
+  'hidden' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'topic_page'),
+      array('phila_template_select', '=', 'service_stub')
+    ),
+    'relation' => 'or',
+  ),
 );
 return $meta_boxes;
 }
