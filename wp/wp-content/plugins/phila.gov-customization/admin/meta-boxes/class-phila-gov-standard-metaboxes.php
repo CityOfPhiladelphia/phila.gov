@@ -339,8 +339,10 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'query_args'  => array(
         'orderby' => 'title',
         'order' => 'ASC',
-        //TODO: only show services pages that are not stubs
-      ),
+        'meta_key' => 'phila_template_select',
+        'meta_value' => 'service_stub',
+        'meta_compare' => '!=',
+        ),
       'multiple'  => false,
       'max_clone' => 6,
       'placeholder' => ' ',
