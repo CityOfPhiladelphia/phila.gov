@@ -138,26 +138,6 @@ function phila_breadcrumbs() {
       echo $output;
       echo '<li> '.$title.'</li>';
 
-    } elseif ( is_tax('topics') ) {
-
-      //BROWSE
-      $taxonomy = 'topics';
-      $queried_term = get_query_var($taxonomy);
-      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
-
-      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
-      $parent = get_term($term->parent, $taxonomy);
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
-      endif;
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li>' . $term_obj->name . '</li>';
-      else :
-        echo '<li>'. $term_obj->name . '</li>';
-      endif;
-
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if ( get_post_type() == 'service_page') {
