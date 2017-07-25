@@ -25,7 +25,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
-#wp-link-target,{
+#wp-link-target,
+#slugdiv{
   display: none !important;
 }
 #ui-datepicker-div {
