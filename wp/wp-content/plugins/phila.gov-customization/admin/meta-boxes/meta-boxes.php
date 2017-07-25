@@ -1919,7 +1919,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Service Stub',
-  'pages' => array('page', 'service_page'),
+  'pages' => array('service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'service_stub'),
 
