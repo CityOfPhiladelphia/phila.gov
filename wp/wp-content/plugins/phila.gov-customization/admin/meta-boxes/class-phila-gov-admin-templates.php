@@ -140,10 +140,10 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
-            'service_stub' => 'Service stub',
             'tax_detail' => 'Tax detail',
+            'start_process' => 'Start a process',
             'topic_page' => 'Topic page',
-            'start_process' => 'Start a process'
+            'service_stub' => 'Service stub'
           ),
           'admin_columns' => array(
             'position' => 'after date',
