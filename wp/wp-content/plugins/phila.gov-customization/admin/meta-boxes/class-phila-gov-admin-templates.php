@@ -25,7 +25,6 @@ class Phila_Gov_Admin_Templates {
  }
 
  function phila_register_template_selection_metabox_departments( $meta_boxes ){
-  $prefix = 'phila_';
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
@@ -68,7 +67,7 @@ class Phila_Gov_Admin_Templates {
        ),
        array(
         'desc'  => 'Should this page appear in the City government directory?',
-        'id'    => $prefix . 'department_home_page',
+        'id'    => 'phila_department_home_page',
         'type'  => 'checkbox',
         'hidden' => array(
           'when' => array(
@@ -103,8 +102,8 @@ class Phila_Gov_Admin_Templates {
     $conditions['postdivrich'] = array(
       'visible' => array(
         'when' => array(
-          array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', '' ),
+          array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
           array( 'phila_template_select', '=', 'start_process' ),
         ),
@@ -127,7 +126,6 @@ class Phila_Gov_Admin_Templates {
   }
 
   function phila_register_template_selection_metabox_wp_pages( $meta_boxes ){
-    $prefix = 'phila_';
 
     $meta_boxes[] = array(
       'id'       => 'page_template_selection',
@@ -138,7 +136,7 @@ class Phila_Gov_Admin_Templates {
       'fields' => array(
         array(
           'placeholder'  => 'Select a template',
-          'id'  => $prefix . 'template_select',
+          'id'  => 'phila_template_select',
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
