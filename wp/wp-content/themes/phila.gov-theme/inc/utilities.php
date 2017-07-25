@@ -48,3 +48,60 @@ function phila_util_month_format($date){
     return 'F';
   }
 }
+
+/**
+ * Utility function to determine if selected template is v2 or not
+**/
+
+function phila_util_is_v2_template( $post_id = null ){
+  $user_selected_template = phila_get_selected_template( $post_id );
+  if( strpos( $user_selected_template, '_v2' ) === false ){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+/* Use in the loop to get an array of current category IDs */
+function phila_util_cat_ids(){
+  $categories = get_the_category();
+  $cat_ids = array();
+  foreach ($categories as $category ){
+    array_push($cat_ids, $category->cat_ID);
+  }
+  return $cat_ids;
+}
+
+
+function phila_util_is_array_empty($input){
+   $result = true;
+
+   if (is_array($input) && count($input) > 0)
+   {
+      foreach ($input as $v)
+      {
+         $result = $result && phila_util_is_array_empty($v);
+      }
+   }
+   else
+   {
+      $result = empty($input);
+   }
+
+   return $result;
+}
+
+function phila_util_return_parsed_email( $email_address ){
+  $parsed_email = explode('@', $email_address);
+  $staff_email_parsed = '';
+
+  if (count($parsed_email) === 2){
+    $staff_email_parsed .=  $parsed_email[0];
+    $staff_email_parsed .= "<wbr>@";
+    $staff_email_parsed .= $parsed_email[1];
+    $staff_email_parsed .= "</wbr>";
+  }
+
+  return $staff_email_parsed;
+
+}
