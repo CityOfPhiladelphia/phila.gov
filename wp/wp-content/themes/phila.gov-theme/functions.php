@@ -235,52 +235,6 @@ function phila_open_graph() {
   <?php
 }
 
-
-/**
- * Register widget areas for all categories. To appear on department pages.
- *
- * TODO: This could be a scalability issue. More research needs to be done.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-add_action( 'widgets_init', 'phila_gov_widgets_init', 10 );
-
-function phila_gov_widgets_init() {
-  $args = array(
-    'orderby' => 'name',
-    'parent' => 0,
-    'hide_empty' => false
-    );
-  $categories = get_categories( $args );
-
-  foreach ( $categories as $category ) {
-
-    $slug = $category->slug;
-    $name = $category->name;
-    $cat_id = $category->cat_ID;
-
-    register_sidebar( array(
-      'name'          => __( $name . ' Sidebar', 'phila-gov' ),
-      'id'            => 'sidebar-' . $slug .'-' . $cat_id,
-      'description'   => '',
-      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center equal">',
-      'after_widget'  => '</aside>',
-      'before_title'  => '<h1 class="h4 widget-title">',
-      'after_title'   => '</h1>',
-    ) );
-  }
-  //only one of these
-  register_sidebar( array(
-    'name'          => __( 'News Sidebar', 'phila-gov' ),
-    'id'            => 'sidebar-news',
-    'description'   => '',
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</aside>',
-    'before_title'  => '<h1 class="widget-title">',
-    'after_title'   => '</h1>',
-  ) );
-}
-
 /**
  * Enqueue scripts and styles.
  */
