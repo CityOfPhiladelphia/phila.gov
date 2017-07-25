@@ -16,6 +16,6 @@ a[href$="nav-menus.php?action=locations"],
 .manage-menus option,
 .page-title-action,
 /* don't allow users to create tags */
-.jaxtag{
+.tagsdiv-post_tag{
   display: none !important;
 }
