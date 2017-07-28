@@ -1,6 +1,6 @@
 var deparam = require('../dependencies/jquery-deparam.js');
-require('../dependencies/jquery.swiftype.search.js');
 require('../dependencies/jquery.swiftype.autocomplete.js');
+require('../dependencies/jquery.swiftype.search.js');
 require('js-cookie');
 var Mustache = require('mustache');
 
@@ -130,7 +130,8 @@ module.exports = jQuery(document).ready(function($) {
   // Autocomplete
   $('.search-field').swiftype({
     engineKey: SWIFTYPE_ENGINE,
-    renderFunction: customAutocompleteRender
+    renderFunction: customAutocompleteRender,
+    resultLimit: 5
   })
 
 });
