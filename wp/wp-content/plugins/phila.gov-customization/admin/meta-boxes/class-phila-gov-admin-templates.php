@@ -25,7 +25,6 @@ class Phila_Gov_Admin_Templates {
  }
 
  function phila_register_template_selection_metabox_departments( $meta_boxes ){
-  $prefix = 'phila_';
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
@@ -45,13 +44,6 @@ class Phila_Gov_Admin_Templates {
 
         'options' => array(
           'default'   => 'Default',
-          'off_site_department' => 'Off-site department',
-          'department_homepage' => 'Department homepage',
-          'department_subpage' => 'Department subpage',
-          'programs_initiatives' => 'Programs and initiatives',
-          'resource_list' => 'Resource list',
-          'staff_directory' => 'Staff directory',
-          'disabled'  => '──────────',
           'homepage_v2' => 'Department homepage version 2',
           'one_quarter_headings_v2' => '1/4 headings',
           'contact_us_v2' => 'Contact page',
@@ -59,6 +51,13 @@ class Phila_Gov_Admin_Templates {
           'forms_and_documents_v2' => 'Forms & documents',
           'resource_list_v2' => 'Resource list',
           'staff_directory_v2' => 'Staff directory',
+          'disabled'  => '──────────',
+          'off_site_department' => 'Off-site department',
+          'department_homepage' => 'Department homepage',
+          'department_subpage' => 'Department subpage',
+          'programs_initiatives' => 'Programs and initiatives',
+          'resource_list' => 'Resource list',
+          'staff_directory' => 'Staff directory',
           ),
           'admin_columns' => array(
             'position' => 'after date',
@@ -68,7 +67,7 @@ class Phila_Gov_Admin_Templates {
        ),
        array(
         'desc'  => 'Should this page appear in the City government directory?',
-        'id'    => $prefix . 'department_home_page',
+        'id'    => 'phila_department_home_page',
         'type'  => 'checkbox',
         'hidden' => array(
           'when' => array(
@@ -103,8 +102,8 @@ class Phila_Gov_Admin_Templates {
     $conditions['postdivrich'] = array(
       'visible' => array(
         'when' => array(
-          array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', '' ),
+          array( 'phila_template_select', '=', 'default' ),
           array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
           array( 'phila_template_select', '=', 'start_process' ),
         ),
@@ -127,25 +126,24 @@ class Phila_Gov_Admin_Templates {
   }
 
   function phila_register_template_selection_metabox_wp_pages( $meta_boxes ){
-    $prefix = 'phila_';
 
     $meta_boxes[] = array(
       'id'       => 'page_template_selection',
       'title'    => 'Select Template',
-      'pages'    => array( 'page', 'service_page' ),
+      'pages'    => array( 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
       'fields' => array(
         array(
           'placeholder'  => 'Select a template',
-          'id'  => $prefix . 'template_select',
+          'id'  => 'phila_template_select',
           'type'  => 'select',
           'options' => array(
             'default'   => 'Default',
-            'service_stub' => 'Service stub',
             'tax_detail' => 'Tax detail',
+            'start_process' => 'Start a process',
             'topic_page' => 'Topic page',
-            'start_process' => 'Start a process'
+            'service_stub' => 'Service stub'
           ),
           'admin_columns' => array(
             'position' => 'after date',

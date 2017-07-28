@@ -235,52 +235,6 @@ function phila_open_graph() {
   <?php
 }
 
-
-/**
- * Register widget areas for all categories. To appear on department pages.
- *
- * TODO: This could be a scalability issue. More research needs to be done.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-add_action( 'widgets_init', 'phila_gov_widgets_init', 10 );
-
-function phila_gov_widgets_init() {
-  $args = array(
-    'orderby' => 'name',
-    'parent' => 0,
-    'hide_empty' => false
-    );
-  $categories = get_categories( $args );
-
-  foreach ( $categories as $category ) {
-
-    $slug = $category->slug;
-    $name = $category->name;
-    $cat_id = $category->cat_ID;
-
-    register_sidebar( array(
-      'name'          => __( $name . ' Sidebar', 'phila-gov' ),
-      'id'            => 'sidebar-' . $slug .'-' . $cat_id,
-      'description'   => '',
-      'before_widget' => '<aside id="%1$s" class="medium-8 columns widget %2$s center equal">',
-      'after_widget'  => '</aside>',
-      'before_title'  => '<h1 class="h4 widget-title">',
-      'after_title'   => '</h1>',
-    ) );
-  }
-  //only one of these
-  register_sidebar( array(
-    'name'          => __( 'News Sidebar', 'phila-gov' ),
-    'id'            => 'sidebar-news',
-    'description'   => '',
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</aside>',
-    'before_title'  => '<h1 class="widget-title">',
-    'after_title'   => '</h1>',
-  ) );
-}
-
 /**
  * Enqueue scripts and styles.
  */
@@ -355,246 +309,15 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/department-menu.php';
 
 /**
- * Add breadcrumb support
- *
+ * Load custom Breadcrumb file.
  */
-function phila_breadcrumbs() {
-  global $post;
-  global $output;
-  global $i;
-
-  echo '<ul class="breadcrumbs">';
-  if ( !is_front_page() && !is_404() ) { //no breadcrumb on the homepage
-    echo '<li><a href="';
-    echo get_option('home');
-    echo '">';
-    echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
-    echo '</a></li>';
-
-    if ( is_singular('news_post') ) {
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/news">News &amp; events</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
-      echo '<li>';
-      the_title();
-      echo '</li>';
-
-    } elseif ( is_singular('document') ) {
-
-        echo '<li><a href="/documents">Publications &amp; forms</a></li>';
-        echo '<li>';
-        the_title();
-        echo '</li>';
-
-    }elseif ( is_singular('phila_post') ) {
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/posts">Posts</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
-      echo '<li>';
-      the_title();
-      echo '</li>';
-
-    }elseif ( is_singular('event_page') ) {
-
-      echo '<li>';
-      the_title();
-      echo '</li>';
-
-    }elseif ( is_singular('press_release') ) {
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/press-releases">Press releases</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
-      echo '<li>';
-      the_title();
-      echo '</li>';
-
-    }elseif ( is_singular('calendar') ) {
-
-      echo '<li>Calendar: ' . get_the_title() . '</li>';
-
-    } elseif ( is_post_type_archive('department_page' ) ) {
-
-        echo '<li>' . __( 'City government directory', 'phila.gov' ) . '</li>';
-
-    } elseif ( is_post_type_archive('service_page' ) ) {
-
-        echo '<li>' . __( 'Service directory', 'phila.gov' ) . '</li>';
-
-    } elseif ( ( is_post_type_archive('document') && is_category() ) ) {
-
-        echo '<li><a href="/news">Publications &amp; forms</a></li>';
-        $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_post_type_archive('document') ) {
-
-      echo '<li>Publications &amp; forms</li>';
-
-    } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
-
-        echo '<li><a href="/news">News &amp; events</a></li>';
-        $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_post_type_archive('news_post') ) {
-
-      echo '<li>News &amp; events</li>';
-
-    } elseif ( is_post_type_archive('phila_post') && is_category() )  {
-
-        echo '<li><a href="/posts">Posts</a></li>';
-        $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif( is_post_type_archive( 'phila_post' ) ) {
-
-        echo '<li>Posts</li>';
-
-    }elseif ( is_post_type_archive('press_release') && is_category() )  {
-
-      echo '<li><a href="/press-releases">Press releases</a></li>';
-      $category = get_the_category($post->ID);
-
-      echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_post_type_archive('press_release') ) {
-
-      echo '<li>Press releases</li>';
-
-    } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
-
-      echo '<li><a href="/notices">Notices</a></li>';
-
-      $category = get_the_category($post->ID);
-
-      echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_singular('department_page') ) {
-
-      $anc = get_post_ancestors( $post->ID );
-      $title = get_the_title();
-
-      foreach ( $anc as $ancestor ) {
-
-        $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
-      }
-      echo $output;
-      echo '<li> '.$title.'</li>';
-
-    } elseif ( is_tax('topics') ) {
-
-      //BROWSE
-      $taxonomy = 'topics';
-      $queried_term = get_query_var($taxonomy);
-      $term_obj = get_term_by( 'slug', $queried_term, 'topics');
-
-      $term = get_term_by( 'slug',   $queried_term, 'topics' ); // get current term
-      $parent = get_term($term->parent, $taxonomy);
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li><a href="/browse/' . $parent->slug . '">' . $parent->name . '</a></li>';
-      endif;
-
-      if ( ! is_wp_error( $parent ) ) :
-        echo '<li>' . $term_obj->name . '</li>';
-      else :
-        echo '<li>'. $term_obj->name . '</li>';
-      endif;
-
-    } elseif ( is_page() || get_post_type() == 'service_page') {
-
-      if ( get_post_type() == 'service_page') {
-        echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
-      }
-
-      if( $post->post_parent ){
-
-        //$anc = array_reverse(get_post_ancestors( $post->ID ));
-        $anc = get_post_ancestors( $post->ID );
-        $title = get_the_title();
-        foreach ( $anc as $ancestor ) {
-          $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
-        }
-        echo $output;
-        echo '<li>'.$title.'</li>';
-
-      } else {
-          echo '<li>'.get_the_title().'</li>';
-      }
-
-    } elseif( is_tag() ){
-
-      echo '<li><a href="/posts">Posts</a></li>';
-      echo '<li>';
-       '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
-
-    } elseif( is_archive() && is_category() ){
-
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/posts">Posts</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li>' . $categories[0]->name . '</li>';
-      }
-    } elseif ( is_author() ) {
-
-      echo '<li><a href="/posts">Posts</a></li>';
-      echo '<li>';
-        printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
-      echo '</li>';
-
-    } elseif ( is_category() ) {
-
-        echo '<li>';
-        the_title();
-        echo '</li>';
-    }
-
-  }//end is front page
-  echo '</ul>';
-}//end breadcrumbs
+require get_template_directory() . '/inc/breadcrumbs.php';
 
 /**
- * Utility functions
+ * Load custom Utilities file.
  */
+require get_template_directory() . '/inc/utilities.php';
 
-//this is used throughout the theme and is meant to be updated once the major switch happens
-function phila_util_echo_website_url(){
-  echo 'beta.phila.gov';
-}
-
-//this form is used throughout the theme and can be updated as needed
-function phila_util_echo_tester_url(){
-  echo '/sign-up-to-be-a-phila-gov-tester';
-}
-
-//spits out a nice version of the department category name
-function phila_util_get_current_cat_name(){
-  $category = get_the_category();
-  foreach( $category as $cat){
-    return $cat->name;
-  }
-}
-
-//spits out a nice version of the department category slug
-function phila_util_get_current_cat_slug(){
-  $category = get_the_category();
-  foreach( $category as $cat){
-    return $cat->slug;
-  }
-}
 
 // TODO: Remove additional fallback logic (foreach) as when possible
 function phila_get_thumbnails(){
@@ -988,70 +711,6 @@ function phila_get_home_news(){
 }
 
 /**
- * Gets the list of topics available used in:
- * templates/topics-child.php
- * templates/topics-parent.php
- * taxonomy-topics.php
- *
- */
-function phila_get_parent_topics(){
-
-  $args = array(
-    'orderby' => 'name',
-    'fields'=> 'all',
-    'parent' => 0,
-    'hide_empty'=> true
-  );
-
-  $current_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
-  $terms = get_terms( 'topics', $args );
-
-  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-    echo '<ul class="tabs vertical">';
-
-    foreach ( $terms as $term ) {
-
-      if (isset($current_term->slug) ) {
-        $active = ( $current_term->slug === $term->slug ) ? ' is-active' : '';
-
-      }else {
-        $active = '';
-      }
-
-      echo '<li class="tabs-title ' . $term->slug . $active . '"><a href="/browse/' . $term->slug . '">' . $term->name . '</a></li>';
-
-    }
-    echo '</ul>';
-  }
-}
-/**
- * Utility function to get a list of all topics and their children on the site.
- *
- */
-function phila_get_master_topics(){
-  $parent_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => 0, 'hide_empty' => 0));
-  echo '<ul>';
-  foreach($parent_terms as $key => $parent_term) {
-
-    echo '<li><h3>' . $parent_term->name . '</h3>';
-    echo  $parent_term->description;
-
-    $child_terms = get_terms('topics', array('orderby' => 'slug', 'parent' => $parent_term->term_id, 'hide_empty' => 0));
-
-    if($child_terms) {
-      echo '<ul class="subtopics">';
-      foreach($child_terms as $key => $child_term) {
-        echo '<li><h4>' . $child_term->name . '</h4>';
-        echo  $child_term->description . '</li></li>';
-      }
-
-    }
-    echo '</ul>';
-  }
-}
-
-/**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
  * TODO: investigate a better way of handling the match.
  * @param $category String or array of categories applied to a page. Required.
@@ -1146,14 +805,6 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     }else{
       return implode(', ', $full_links);
     }
-  }
-}
-
-function phila_util_month_format($date){
-  if (strlen($date->format('F')) > 5){
-     return 'M.';
-  } else {
-    return 'F';
   }
 }
 
@@ -1344,18 +995,6 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   }
 }
 
-/* Return post data for the furthest parent */
-
-function phila_util_get_furthest_ancestor( $post ) {
-
-  /* Get an array of Ancestors and Parents if they exist */
-  $parents = get_post_ancestors( $post->ID );
-  /* Get the top Level page->ID count base 1, array base 0 so -1 */
-  $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-
-  return $parent = get_post( $id );
-}
-
 /**
  * Return a string representing the template currently applied to a page in the loop.
  *
@@ -1370,19 +1009,6 @@ function phila_get_selected_template( $post_id = null ){
   }
 
   return $user_selected_template;
-}
-
-/**
- * Utility function to determine if selected template is v2 or not
-**/
-
-function phila_util_is_v2_template( $post_id = null ){
-  $user_selected_template = phila_get_selected_template( $post_id );
-  if( strpos( $user_selected_template, '_v2' ) === false ){
-    return false;
-  }else{
-    return true;
-  }
 }
 
 /**
@@ -1706,16 +1332,6 @@ function phila_get_hero_header_v2( $post, $mobile = false ){
   }
 }
 
-/* Use in the loop to get an array of current category IDs */
-function phila_util_cat_ids(){
-  $categories = get_the_category();
-  $cat_ids = array();
-  foreach ($categories as $category ){
-    array_push($cat_ids, $category->cat_ID);
-  }
-  return $cat_ids;
-}
-
 function phila_get_department_logo_v2( $post ){
   $img = rwmb_meta( 'phila_v2_department_logo', $args = array(
       'size'=>'full'
@@ -1731,25 +1347,6 @@ function phila_get_department_logo_v2( $post ){
       return $output;
     }
 }
-
-function phila_util_is_array_empty($input){
-   $result = true;
-
-   if (is_array($input) && count($input) > 0)
-   {
-      foreach ($input as $v)
-      {
-         $result = $result && phila_util_is_array_empty($v);
-      }
-   }
-   else
-   {
-      $result = empty($input);
-   }
-
-   return $result;
-}
-
 
 function phila_get_department_homepage_typography( $parent ){
 
@@ -1779,20 +1376,4 @@ function phila_get_department_homepage_typography( $parent ){
   }
 
   return $new_title;
-}
-
-
-function phila_util_return_parsed_email( $email_address ){
-  $parsed_email = explode('@', $email_address);
-  $staff_email_parsed = '';
-
-  if (count($parsed_email) === 2){
-    $staff_email_parsed .=  $parsed_email[0];
-    $staff_email_parsed .= "<wbr>@";
-    $staff_email_parsed .= $parsed_email[1];
-    $staff_email_parsed .= "</wbr>";
-  }
-
-  return $staff_email_parsed;
-
 }

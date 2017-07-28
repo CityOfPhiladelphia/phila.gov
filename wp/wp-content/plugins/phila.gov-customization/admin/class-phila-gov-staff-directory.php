@@ -165,7 +165,7 @@ class Phila_Gov_Staff_Directory {
               'class' => 'display-order',
             ),
             array(
-              'name'  => 'Summary',
+              'name'  => 'Short biography',
               'id'    => $prefix . 'summary',
               'type'  => 'wysiwyg',
               'class' => 'summary',

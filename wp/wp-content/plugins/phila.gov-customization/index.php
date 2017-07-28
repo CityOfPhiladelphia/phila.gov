@@ -58,7 +58,6 @@ require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';
 
 require $dir. '/public/add-headers.php';
-require $dir. '/public/class-content-collection-walker.php';
 require $dir. '/public/class-phila-gov-filter-posts.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
 require $dir. '/public/modify-post-type-links.php';
