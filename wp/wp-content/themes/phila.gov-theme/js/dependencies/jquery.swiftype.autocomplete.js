@@ -1,4 +1,4 @@
-module.exports = $(function() {
+(function ($) {
   var queryParser = function (a) {
       var i, p, b = {};
       if (a === "") {
@@ -91,7 +91,7 @@ module.exports = $(function() {
       };
 
       var styles = config.dropdownStylesFunction($this);
-      var $swiftypeWidget = $('<div class="' + config.widgetContainerClass + '" />');
+      var $swiftypeWidget = $('<div class="swiftype-widget" />');
       var $listContainer = $('<div />').addClass(config.suggestionListClass).appendTo($swiftypeWidget).css(styles).hide();
       $swiftypeWidget.appendTo(config.autocompleteContainingElement);
       var $list = $('<' + config.suggestionListType + ' />').appendTo($listContainer);
@@ -210,10 +210,6 @@ module.exports = $(function() {
         $listContainer.css(config.dropdownStylesFunction($this));
       };
 
-      $(window).resize(function (event) {
-        $this.styleDropdown();
-      });
-
       $this.keydown(function (event) {
         $this.styleDropdown();
         // enter = 13; up = 38; down = 40; esc = 27
@@ -318,10 +314,8 @@ module.exports = $(function() {
       dataType: 'jsonp',
       url: endpoint,
       data: params,
-      success: autoCompleteResults
-    });
+      success : function(data) {
 
-    var autoCompleteResults = function( data ){
       var norm = normalize(term);
       if (data.record_count > 0) {
         $this.cache.put(norm, data.records);
@@ -332,9 +326,9 @@ module.exports = $(function() {
         return;
       }
       processData($this, data.records, term);
-    };
-  };
-
+    }
+  });
+};
   var getResults = function($this, term) {
     var norm = normalize(term);
     if ($this.isEmpty(norm)) {
@@ -385,18 +379,6 @@ module.exports = $(function() {
         }
       }
     };
-
-  var renderSearchResults = function (data) {
-       if (typeof config.preRenderFunction === 'function') {
-         config.preRenderFunction.call($this, data);
-       }
-
-       config.renderResultsFunction($this.getContext(), data);
-
-       if (typeof config.postRenderFunction === 'function') {
-         config.postRenderFunction.call($this, data);
-       }
-     };
 
   var defaultResultRenderFunction = function(ctx, results) {
     var $list = ctx.list,
@@ -568,8 +550,7 @@ module.exports = $(function() {
     setWidth: true,
     typingDelay: 80,
     disableAutocomplete: false,
-    autocompleteContainingElement: 'body',
-    widgetContainerClass: 'swiftype-widget'
+    autocompleteContainingElement: 'body'
   };
 
-});
+})(jQuery);
