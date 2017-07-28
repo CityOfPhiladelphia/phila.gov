@@ -128,7 +128,7 @@ module.exports = jQuery(document).ready(function($) {
   }
 
   // Autocomplete
-  $('#search-field').swiftype({
+  $('.search-field').swiftype({
     engineKey: SWIFTYPE_ENGINE,
     renderFunction: customAutocompleteRender,
     resultLimit: 5
