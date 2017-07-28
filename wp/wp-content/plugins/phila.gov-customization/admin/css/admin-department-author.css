@@ -14,9 +14,8 @@ a[href$="nav-menus.php?action=locations"],
 .add-new-menu-action,
 #menu-appearance,
 .manage-menus option,
-.edit-slug,
 .page-title-action,
 /* don't allow users to create tags */
-.jaxtag{
+.tagsdiv-post_tag{
   display: none !important;
 }
