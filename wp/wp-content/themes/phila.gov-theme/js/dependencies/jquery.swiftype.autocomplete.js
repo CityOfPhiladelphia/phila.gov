@@ -1,4 +1,4 @@
-module.exports = (function ($) {
+module.exports = $(function() {
   var queryParser = function (a) {
       var i, p, b = {};
       if (a === "") {
@@ -572,4 +572,4 @@ module.exports = (function ($) {
     widgetContainerClass: 'swiftype-widget'
   };
 
-})(jQuery);
+});
