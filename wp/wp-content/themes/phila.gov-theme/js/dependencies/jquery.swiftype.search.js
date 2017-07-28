@@ -1,4 +1,4 @@
-module.exports = (function ($) {
+module.exports = $(function() {
   var queryParser = function (a) {
       var i, p, b = {};
       if (a === "") {
@@ -167,7 +167,7 @@ module.exports = (function ($) {
           registerResult: $this.registerResult
         };
       };
-      // Modified by KD, the hashchange library was no longer working and had not been updated in years. This replaces the need for it. 
+      // Modified by KD, the hashchange library was no longer working and had not been updated in years. This replaces the need for it.
       $(window).on('hashchange', function (e) {
         var params = $.hashParams();
         if (params.stq) {
@@ -298,4 +298,4 @@ module.exports = (function ($) {
     perPage: 10,
     spelling: 'strict'
   };
-})(jQuery);
+});
