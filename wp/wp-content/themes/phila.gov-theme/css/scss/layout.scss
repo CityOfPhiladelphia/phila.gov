@@ -95,3 +95,7 @@ img.float-right{
     position: static;
   }
 }
+//prevent page content from being hidden when modal is open
+body.is-reveal-open.no-scroll{
+  height:auto;
+}
