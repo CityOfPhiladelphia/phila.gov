@@ -323,7 +323,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
-      'desc' => 'Example: fa-icon-name. You can find icons on <a href="http://fontawesome.io/">Fontawesome.io</a>.',
+      'desc' => 'Example: fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
       'name'  => 'Select icon',
       'type'  => 'text',
     );

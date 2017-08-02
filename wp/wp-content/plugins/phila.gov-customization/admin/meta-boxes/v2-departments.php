@@ -73,6 +73,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'priority' => 'high',
         'type'  => 'group',
         'clone' => true,
+        'max_clone' => 6,
         'add_button'  => '+ Add a link',
 
         'fields' => array(
