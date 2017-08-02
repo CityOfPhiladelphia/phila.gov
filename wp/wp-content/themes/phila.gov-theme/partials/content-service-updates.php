@@ -16,7 +16,9 @@
     <?php endif; ?>
   <?php endwhile; ?>
 
+
   <?php if ( !empty( $update_array ) ): ?>
+
   <div class="row">
     <div class="columns">
       <table class="service-update">
@@ -27,6 +29,15 @@
            <?php $type[$key] = $update_item['service_type']; ?>
          <?php endforeach; ?>
          <?php array_multisort( $urgency, SORT_DESC, $type , SORT_ASC, $update_array );?>
+
+         <?php
+         //Remove duplicate service types. We've already sorted by urgency, so the normal or less urgent alert will drop off.
+         $temp_array = array();
+          foreach ($update_array as &$v) {
+              if (!isset($temp_array[$v['service_type']]))
+                  $temp_array[$v['service_type']] =& $v;
+          }
+          $update_array = array_values($temp_array); ?>
 
          <?php $i=0; ?>
 
