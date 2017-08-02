@@ -311,9 +311,13 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'sort_clone'  => false,
 
       'fields'  => array(
+        array(
+          'type' => 'heading',
+          'name' => 'Link details',
+        ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text', '', $size = 50, $columns = 12  ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link URL', 'link_url' ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_external('External link', 'is_external' ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_external('', 'is_external' ),
       )
     );
   }
@@ -344,7 +348,6 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         'meta_compare' => '!=',
         ),
       'multiple'  => false,
-      'max_clone' => 6,
       'placeholder' => ' ',
       'js_options'  => array(
         'width' => '100%',
