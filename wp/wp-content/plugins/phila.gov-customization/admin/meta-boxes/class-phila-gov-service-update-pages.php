@@ -36,6 +36,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
             'id'   => 'phila_update_type',
             'type' => 'select',
             'placeholder' => 'Choose type...',
+            'desc' => 'Note: only one type of alert will display at a time, prioritized by urgency.',
             'admin_columns' => 'after title',
             'options' => array(
               'city' => 'City',
