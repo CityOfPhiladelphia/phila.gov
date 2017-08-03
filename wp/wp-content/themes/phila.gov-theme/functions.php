@@ -204,23 +204,15 @@ function phila_open_graph() {
   global $post;
   global $title;
 
-  if( 'department_page' == get_post_type() ){
-    $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'));
-
-    if ( empty($hero_header_image) ) {
-      $parent_id = get_post_ancestors( $post->ID );
-
-      if ( isset($parent_id[0]) ) {
-        $hero_header_image = rwmb_meta( 'phila_hero_header_image', $args = array('type' => 'file_input'), $post_id = $parent_id[0]);
-      }
-    }
-      $img_src = $hero_header_image;
-    }elseif( has_post_thumbnail() ){
+  if( has_post_thumbnail() ){
 
     $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
     $img_src = array_shift( $img );
     $type = 'article';
   }
+
+
+
   $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
   //TODO: Determine which twitter account should be used for site attribution

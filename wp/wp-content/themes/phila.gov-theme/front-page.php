@@ -352,7 +352,7 @@ get_header(); ?>
                         </div>
                       </header>
                       <div class="description">
-                        <span class="phs small-text">Beta.phila.gov will become the City’s new website in 2017. With your help, we’ll continue to improve it after that.</span>
+                        <span class="phs small-text">Beta.phila.gov will become the City’s new website in 2018. With your help, we’ll continue to improve it after that.</span>
                       </div>
                     </section>
                   </div>
