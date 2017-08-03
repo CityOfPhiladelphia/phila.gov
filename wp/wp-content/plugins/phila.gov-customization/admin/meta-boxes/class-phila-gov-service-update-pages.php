@@ -14,7 +14,6 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
   }
 
   function phila_register_service_update_meta_boxes( $meta_boxes ){
-    $prefix = 'phila_';
 
     $meta_boxes[] = array(
       'title'    => 'Service Updates Details',
@@ -34,9 +33,11 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           ),
           array(
             'name' => 'Update Type',
-            'id'   => $prefix . 'update_type',
+            'id'   => 'phila_update_type',
             'type' => 'select',
             'placeholder' => 'Choose type...',
+            'desc' => 'Note: only one type of alert will display at a time, prioritized by urgency.',
+            'admin_columns' => 'after title',
             'options' => array(
               'city' => 'City',
               'roads' => 'Roads',
@@ -44,14 +45,14 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
               'trash' => 'Trash',
               'phones' => 'Phones',
               'offices' => 'Offices',
-
             ),
           ),
           array(
             'name' => 'Urgency Level',
-            'id'   => $prefix . 'update_level',
+            'id'   => 'phila_update_level',
             'type' => 'select',
             'placeholder' => 'Choose type...',
+            'admin_columns' => 'after title',
             'options' => array(
               '0' => 'Normal (Green)',
               '1' => 'Warning (Yellow)',
@@ -65,7 +66,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
            ),
           array(
             'name' => 'Date/Time Format',
-            'id' => $prefix . 'date_format',
+            'id' => 'phila_date_format',
             'type' => 'select',
             'placeholder' => 'Choose date format...',
             'options' => array(
@@ -76,7 +77,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           ),
           array(
             'name'  => 'Effective Start Time',
-            'id'    => $prefix . 'effective_start_datetime',
+            'id'    => 'phila_effective_start_datetime',
             'class' =>  'effective-start-time',
             'type'  => 'datetime',
             'size'  =>  25,
@@ -94,7 +95,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           ),
           array(
             'name'  => 'Effective End Time',
-            'id'    => $prefix . 'effective_end_datetime',
+            'id'    => 'phila_effective_end_datetime',
             'type'  => 'datetime',
             'class' =>  'effective-end-time',
             'size'  =>  25,
@@ -112,7 +113,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           ),
           array(
             'name'  => 'Effective Start Day',
-            'id'    => $prefix . 'effective_start_date',
+            'id'    => 'phila_effective_start_date',
             'class' =>  'effective-start-time',
             'type'  => 'date',
             'size'  =>  25,
@@ -129,7 +130,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           ),
           array(
             'name'  => 'Effective End Day',
-            'id'    => $prefix . 'effective_end_date',
+            'id'    => 'phila_effective_end_date',
             'type'  => 'date',
             'class' =>  'effective-end-time',
             'size'  =>  25,
@@ -151,7 +152,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">A brief description of the Service Update.</p>'
            ),
           array(
-            'id'    => $prefix . 'service_update_message',
+            'id'    => 'phila_service_update_message',
             'class' => 'service-update-message',
             'desc'  => '95 character maximum.',
             'type'  => 'textarea',
@@ -177,7 +178,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
            ),
           array(
             'name'  => 'Link Text',
-            'id'    => $prefix . 'update_link_text',
+            'id'    => 'phila_update_link_text',
             'type'  => 'text',
             'class' => 'update-link-text',
             'desc'  => '80 character maximum.',
@@ -185,7 +186,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
            ),
           array(
             'name'  => 'Link URL',
-            'id'    => $prefix . 'update_link',
+            'id'    => 'phila_update_link',
             'type'  => 'url',
             'desc'  => 'Example: http://www.phila.gov',
             'class' => 'update-link',
@@ -193,7 +194,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           ),
           array(
             'name'  => 'Off-site link',
-            'id'    => $prefix . 'off_site',
+            'id'    => 'phila_off_site',
             'type'  => 'checkbox',
             'desc'  => 'This website is not part of beta.phila.gov',
           ),
