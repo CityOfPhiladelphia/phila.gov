@@ -337,20 +337,25 @@ function phila_register_meta_boxes( $meta_boxes ){
        'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
      ),
      array(
-        'name' => 'Append to Head',
+        'name' => 'Append to head',
         'id'   => 'phila_append_to_head',
         'type' => 'textarea'
       ),
       array(
-       'name' => 'Append Before WYSIWYG',
+       'name' => 'Append before WYSIWYG',
        'id'   => 'phila_append_before_wysiwyg',
        'type' => 'textarea'
      ),
      array(
-       'name' => 'Append After WYSIWYG',
+       'name' => 'Append after WYSIWYG',
        'id'   => 'phila_append_after_wysiwyg',
        'type' => 'textarea'
      ),
+     array(
+        'name' => 'Append after footer',
+        'id'   => 'phila_append_after_footer',
+        'type' => 'textarea'
+      ),
    ),
  );
 

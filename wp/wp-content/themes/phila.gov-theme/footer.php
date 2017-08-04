@@ -199,5 +199,15 @@
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>$(document).foundation();</script>
+  <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
+      <?php if (function_exists('rwmb_meta')): ?>
+        <?php $append_after_footer = rwmb_meta( 'phila_append_after_footer', $args = array('type' => 'textarea'), $post->ID); ?>
+        <?php if ( !$append_after_footer == '' ): ?>
+          <!-- Begin Custom Markup Metabox: Append to Footer -->
+          <?php echo $append_after_footer; ?>
+          <!-- End Custom Markup Metabox: Append to Footer -->
+        <?php endif;?>
+      <?php endif; ?>
+  <?php endif; ?>
 </body>
 </html>
