@@ -127,7 +127,7 @@
         <nav class="city-social">
           <ul class="inline-list">
             <li class="pbm">
-              <a href="https://www.facebook.com/PhiladelphiaCityGovernment/" class="prl" data-analytics="social">
+              <a href="https://www.facebook.com/cityofphiladelphia" class="prl" data-analytics="social">
                 <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
