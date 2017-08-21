@@ -92,8 +92,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="small-24 columns">
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="columns sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
-            <div class="row equal-height sticky-header-width">
-              <div class="small-16 medium-6 columns equal valign small-push-4 medium-push-0">
+            <div class="row sticky-header-width">
+              <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
                   <a href="<?php echo get_home_url(); ?>" class="logo" tabindex="1" aria-label="City of Philadelphia">
                     <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
@@ -101,7 +101,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
               </div>
               <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
-              <div class="medium-17 columns show-for-medium equal desktop-nav">
+              <div class="medium-17 columns show-for-medium desktop-nav">
                 <div class="top-bar-right valign-mu">
                   <nav data-swiftype-index="false" class="valign-mu">
                     <ul class="horizontal menu pan valign-mu">
@@ -121,7 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </nav>
               </div>
             </div>
-            <div class="small-5 medium-1 columns equal valign phn-m">
+            <div class="small-5 medium-1 columns valign phn-m">
               <div class="valign-cell">
                 <button class="site-search" type="button"  data-toggle="search-dropdown">
                   <i class="fa fa-search fa-2x" aria-hidden="true"></i>
@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span class="title-bar-title">Menu</span>
               </button>
             </div>
-            <div class="primary-menu medium-15 medium-push-2 small-24 columns equal valign-mu" id="mobile-nav">
+            <div class="primary-menu medium-15 medium-push-2 small-24 columns valign-mu" id="mobile-nav">
               <div class="top-bar-right valign-mu show-for-small-only">
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
