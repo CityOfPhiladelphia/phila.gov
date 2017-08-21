@@ -80,7 +80,7 @@ msgid "Your mail server"
 msgstr ""
 
 #: easy-wp-smtp.php:267
-msgid "Type of Encription"
+msgid "Type of Encryption"
 msgstr ""
 
 #: easy-wp-smtp.php:269

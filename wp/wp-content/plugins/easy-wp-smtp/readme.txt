@@ -1,10 +1,10 @@
 === Easy WP SMTP ===
-Contributors: wpecommerce
+Contributors: wpecommerce, wp.insider
 Donate link: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, outgoing mail, privacy, security, sendmail, ssl, tls, wp-phpmailer, mail smtp, wp smtp
 Requires at least: 4.3
-Tested up to: 4.7
-Stable tag: 1.2.5
+Tested up to: 4.8
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,10 @@ Inspired by [WP Mail SMTP](http://wordpress.org/plugins/wp-mail-smtp/) plugin
 
 
 == Changelog ==
+
+= 1.2.6 =
+* Some special characters in the password field were getting removed when the text sanitization was done. This has been improved.
+* The settings configuration will not be deleted if you deactivated the plugin. This will prevent configuration loss if you accidentally deactivate the plugin.
 
 = 1.2.5 =
 * Fixed possible XSS vulnerability with the email subject and email body input fields.

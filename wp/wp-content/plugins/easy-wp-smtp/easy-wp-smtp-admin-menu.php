@@ -41,7 +41,7 @@ function swpsmtp_settings() {
         $swpsmtp_options['smtp_settings']['type_encryption'] = ( isset($_POST['swpsmtp_smtp_type_encryption']) ) ? sanitize_text_field($_POST['swpsmtp_smtp_type_encryption']) : 'none';
         $swpsmtp_options['smtp_settings']['autentication'] = ( isset($_POST['swpsmtp_smtp_autentication']) ) ? sanitize_text_field($_POST['swpsmtp_smtp_autentication']) : 'yes';
         $swpsmtp_options['smtp_settings']['username'] = sanitize_text_field($_POST['swpsmtp_smtp_username']);
-        $smtp_password = sanitize_text_field($_POST['swpsmtp_smtp_password']);
+        $smtp_password = stripslashes($_POST['swpsmtp_smtp_password']);
         $swpsmtp_options['smtp_settings']['password'] = base64_encode($smtp_password);
 
         /* Check value from "SMTP port" option */
@@ -132,7 +132,7 @@ function swpsmtp_settings() {
                         </td>
                     </tr>
                     <tr class="ad_opt swpsmtp_smtp_options">
-                        <th><?php _e('Type of Encription', 'easy-wp-smtp'); ?></th>
+                        <th><?php _e('Type of Encryption', 'easy-wp-smtp'); ?></th>
                         <td>
                             <label for="swpsmtp_smtp_type_encryption_1"><input type="radio" id="swpsmtp_smtp_type_encryption_1" name="swpsmtp_smtp_type_encryption" value='none' <?php if ('none' == $swpsmtp_options['smtp_settings']['type_encryption']) echo 'checked="checked"'; ?> /> <?php _e('None', 'easy-wp-smtp'); ?></label>
                             <label for="swpsmtp_smtp_type_encryption_2"><input type="radio" id="swpsmtp_smtp_type_encryption_2" name="swpsmtp_smtp_type_encryption" value='ssl' <?php if ('ssl' == $swpsmtp_options['smtp_settings']['type_encryption']) echo 'checked="checked"'; ?> /> <?php _e('SSL', 'easy-wp-smtp'); ?></label>
