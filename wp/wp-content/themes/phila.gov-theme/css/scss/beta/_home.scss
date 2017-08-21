@@ -237,7 +237,7 @@
       }
       &.left-arrow-white {
         &:before {
-          border-left-color: color(white);
+          border-left-color: white;
         }
       }
       &.left-arrow-medium-gray {
@@ -256,7 +256,7 @@
 
       &:after {
         position: absolute;
-        background-color: color(white);
+        background-color: white;
         content: '';
         width: 0;
         height: 0;
