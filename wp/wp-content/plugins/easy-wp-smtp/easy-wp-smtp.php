@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy WP SMTP
-Version: 1.2.5
+Version: 1.2.6
 Plugin URI: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Author: wpecommerce
 Author URI: https://wp-ecommerce.net/
@@ -252,9 +252,10 @@ if (!function_exists('swpsmtp_credentials_configured')) {
 if (!function_exists('swpsmtp_send_uninstall')) {
 
     function swpsmtp_send_uninstall() {
-        /* delete plugin options */
-        delete_site_option('swpsmtp_options');
-        delete_option('swpsmtp_options');
+        /* Don't delete plugin options. It is better to retain the options so if someone accidentally deactivates, the configuration is not lost. */
+        
+        //delete_site_option('swpsmtp_options');
+        //delete_option('swpsmtp_options');
     }
 
 }
