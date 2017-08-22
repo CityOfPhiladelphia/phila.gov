@@ -60,12 +60,8 @@
           <?php endif; ?>
           <?php if ( !empty( $hero_header_call_to_action_button_url ) ): ?>
             <div class="mbs-mu">
-              <a href="<?php echo $hero_header_call_to_action_button_url; ?>" class="button icon clearfix">
-                <div class="valign">
-                  <div class="button-label valign-cell">
-                    <?php echo $hero_header_call_to_action_button_text; ?>
-                  </div>
-                </div>
+              <a href="<?php echo $hero_header_call_to_action_button_url; ?>" class="button clearfix">
+                <?php echo $hero_header_call_to_action_button_text; ?>
               </a>
             </div>
           <?php endif; ?>
