@@ -15,11 +15,9 @@ get_header(); ?>
       </header>
     </div>
     <div class="row mbl show-for-small-only">
-      <div class="small-24 columns">
+      <div class="small-24 columns mbm">
         <a data-open="mobile-filter" class="button full-width pan clearfix">
-          <div class="valign">
-            <div class="button-label center valign-cell h2">Filter by service category</div>
-          </div>
+          <div class="center h2">Filter by service category</div>
         </a>
       </div>
       <div class="small-12 columns">
@@ -205,7 +203,7 @@ get_header(); ?>
       <div class="inner-modal">
         <div class="row">
           <div class="small-24 columns pts">
-            <button class="close-button float-right ben-franklin-blue" data-close aria-label="Close modal" type="button">
+            <button class="close-button float-right dark-ben-franklin bg-white" data-close aria-label="Close modal" type="button">
               <i class="fa fa-times" aria-hidden="true"></i>
             </button>
           </div>
