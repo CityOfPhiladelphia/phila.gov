@@ -9,7 +9,7 @@
   <?php if ( has_post_thumbnail() ) {
     $thumb_active = true;  ?>
     <div class="logo columns medium-7">
-      <?php the_post_thumbnail('phila-thumb'); ?>
+      <?php echo phila_get_thumbnails() ?>
     </div>
   <?php } ?>
 
