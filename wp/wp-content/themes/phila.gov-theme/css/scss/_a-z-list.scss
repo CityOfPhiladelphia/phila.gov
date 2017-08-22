@@ -52,16 +52,7 @@
 }
 
 .directory{
-  .button {
-    height: auto;
-    .button-label {
-      padding-top: $spacing-large;
-      padding-bottom: $spacing-large;
-      &.h2 {
-        font-weight: 400;
-      }
-    }
-  }
+
   #mobile-filter {
     background: rgba(0, 0, 0, 0.2);
 
