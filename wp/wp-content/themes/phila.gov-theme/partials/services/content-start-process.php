@@ -27,12 +27,10 @@
         <div class="row">
           <div class="center columns">
             <a data-swiftype-index="false" href="<?php echo $start_process['button_url']; ?>" class="button clearfix">
-              <div class="valign">
-                <div class="button-label valign-cell"><?php echo $start_process['button_text'] ?>
-                  <?php if ( $start_process['button_external'] == 1 ) :?>
-                    <i class="fa fa-external-link" aria-hidden="true"></i> <span class="accessible"> External link</span>
-                  <?php endif;?></div>
-              </div>
+              <?php echo $start_process['button_text'] ?>
+                <?php if ( $start_process['button_external'] == 1 ) :?>
+                  <i class="fa fa-external-link" aria-hidden="true"></i> <span class="accessible"> External link</span>
+                <?php endif;?>
             </a>
           </div>
         </div>
