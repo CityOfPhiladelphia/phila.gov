@@ -7,7 +7,7 @@
     "fonts": "cp -R node_modules/font-awesome/fonts ./",
     "dev:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --source-map true css/scss/base.scss css/styles.css",
     "prebuild": "npm run fonts",
-    "build:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.min.css",
+    "build:css": "node-sass --include-path node_modules/font-awesome/scss --include-path node_modules/phila-standards/src/vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.min.css",
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify js/dev/main.js | uglifyjs -c > js/phila-scripts.min.js",
     "dev:build": "npm run dev:css && npm run dev:js",
