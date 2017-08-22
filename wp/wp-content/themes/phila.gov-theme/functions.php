@@ -46,7 +46,10 @@ function phila_gov_setup() {
    */
   add_theme_support( 'post-thumbnails' );
 
-  // Current default
+  // Enable cropping on medium images
+  update_option( 'medium_crop', true );
+
+  // old default
   add_image_size( 'phila-thumb', 660, 430, true);
 
   //Staff Directory thumbnails
@@ -316,23 +319,26 @@ function phila_get_thumbnails(){
   if (has_post_thumbnail()){
     $id = get_post_thumbnail_id();
     $thumbs = array(
-      '0' => 'phila',
-      '1' => 'home',
-      '2' => 'news'
+      '0' => 'medium',
+      '1' => 'phila-thumb',
+      '2' => 'home-thumb',
+      '3' => 'news-thumb'
     );
     $output = '';
-
     // echo 'Using phila_get_thumb';
     foreach ($thumbs as $key => $value) {
-      $image = wp_get_attachment_image_src($id, $value . '-thumb');
-      if ($image[1] == 660 && $image[2] == 430 ) {
+
+      $image = wp_get_attachment_image_src($id, $value);
+      if ($image[1] == 700 && $image[2] == 400 ) {
+        $output .= get_the_post_thumbnail( $post=null, 'medium' );
+        break;
+      }else if ($image[1] == 660 && $image[2] == 430 ) {
         $output .= get_the_post_thumbnail( $post=null, 'phila-thumb' );
         break;
-      } elseif ( $image[1] == 550 && $image[2] == 360 ) {
+      }else if ( $image[1] == 550 && $image[2] == 360 ){
         $output .= get_the_post_thumbnail( $post=null, 'home-thumb' );
         break;
-      }
-      elseif ( $image[1] == 250 && $image[2] == 165  ) {
+      }elseif ( $image[1] == 250 && $image[2] == 165  ) {
         $output .=  get_the_post_thumbnail( $post=null, 'news-thumb' );
         break;
       }
