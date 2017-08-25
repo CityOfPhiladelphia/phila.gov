@@ -961,7 +961,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 
     return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 140, '...');
 
-  //special handing for content collection page types, when appropriate
+  //special handing for hierarchical content
   }else if( is_page() ){
 
     $parents = get_post_ancestors( $post->ID );
