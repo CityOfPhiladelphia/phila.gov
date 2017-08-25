@@ -4,7 +4,7 @@
  * @package phila-gov
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
   <div class="row">
     <header class="small-24 columns mbs">
       <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
