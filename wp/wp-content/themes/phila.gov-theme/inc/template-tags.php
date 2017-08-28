@@ -76,24 +76,6 @@ function phila_gov_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'phila_gov_entry_footer' ) ) :
-/**
- * Prints HTML with meta information for the categories, tags and comments.
- */
-function phila_gov_entry_footer() {
-  // Hide category and tag text for pages.
-  if ( 'phila_post' == get_post_type() ) {
-    /* translators: used between list items, there is a space after the comma */
-    $tags_list = get_the_tag_list( '', __( ', ', 'phila-gov' ) );
-    if ( $tags_list ) {
-      echo '<div class="mvs"><span>Tagged in:<br>';
-      printf(  __( '%1$s', 'phila-gov' ), $tags_list );
-      echo '</span</div>';
-    }
-  }
-}
-endif;
-
 /**
  * Returns true if a blog has more than 1 category.
  *
