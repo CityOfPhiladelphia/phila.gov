@@ -3,40 +3,6 @@
  * Add social media scripts to the page for sharing purposes
 */
 ?>
-<!-- facebook -->
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '115304222529365',
-      xfbml      : true,
-      version    : 'v2.10'
-    });
-    FB.AppEvents.logPageView();
-  };
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+window.fbAsyncInit=function(){FB.init({appId:"115304222529365",xfbml:!0,version:"v2.10"}),FB.AppEvents.logPageView()},function(e,t,n){var r,o=e.getElementsByTagName(t)[0];e.getElementById(n)||((r=e.createElement(t)).id=n,r.src="//connect.facebook.net/en_US/sdk.js",o.parentNode.insertBefore(r,o))}(document,"script","facebook-jssdk"),window.twttr=function(e,t,n){var r,o=e.getElementsByTagName(t)[0],i=window.twttr||{};return e.getElementById(n)?i:(r=e.createElement(t),r.id=n,r.src="https://platform.twitter.com/widgets.js",o.parentNode.insertBefore(r,o),i._e=[],i.ready=function(e){i._e.push(e)},i)}(document,"script","twitter-wjs");
 </script>
-<!-- /facebook -->
-<!-- twitter -->
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-<!-- /twitter -->
