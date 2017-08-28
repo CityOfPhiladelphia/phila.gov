@@ -11,3 +11,4 @@ require('./hide-empty-table');
 require('./mailchimp');
 require('./search');
 require('./skip-link-focus-fix');
+require('./social-media');
