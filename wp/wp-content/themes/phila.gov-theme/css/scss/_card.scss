@@ -1,0 +1,15 @@
+a{
+  &.card--list {
+    @include xy-grid;
+    border-bottom: none;
+
+    h1 {
+      font-size: $large-font-base / 4;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
