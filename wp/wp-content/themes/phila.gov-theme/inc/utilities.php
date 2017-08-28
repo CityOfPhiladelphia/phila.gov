@@ -105,3 +105,17 @@ function phila_util_return_parsed_email( $email_address ){
   return $staff_email_parsed;
 
 }
+/* Used to determine if this item is a "post" --- in our case, this can mean legacy post types like "news", "phila_post" & "press_release" */
+function phila_util_return_is_post( $current_post_type ){
+  $possibilities = array(
+    0 => 'phila_post',
+    1 => 'news_post',
+    2 => 'press_release',
+    3 => 'post'
+  );
+  if ( in_array( $current_post_type, $possibilities) ) {
+    return true;
+  }else{
+    return false;
+  }
+}
