@@ -24,15 +24,21 @@
       <div class="border-bottom-fat"></div>
     </div>
     <div class="post-meta">
-      <span class="date-published">
-        <?php echo $posted_on_values['time_string']; ?>
-      </span>
-      <span class="author">
-        <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a>
-      </span>
-      <span class="departments">
-        <?php echo phila_get_current_department_name( $category, false, false ); ?>
-      </span>
+      <?php if ( get_post_type() == 'press_release'): ?>
+        <div class="mbm">
+          <?php get_template_part( 'partials/press-release', 'meta' ); ?>
+        </div>
+      <?php else : ?>
+        <span class="date-published">
+          <?php echo $posted_on_values['time_string']; ?>
+        </span>
+        <span class="author">
+          <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a>
+        </span>
+        <span class="departments">
+          <?php echo phila_get_current_department_name( $category, false, false ); ?>
+        </span>
+      <?php endif; ?>
     </div>
   </header>
   <?php if ( has_post_thumbnail() ): ?>
@@ -46,6 +52,9 @@
     <div class="medium-18 medium-centered">
       <?php the_content(); ?>
     </div>
+    <?php if ( get_post_type() == 'press_release'): ?>
+      <div class="mvm center">###</div>
+    <?php endif; ?>
   </div>
   <hr />
 </article>
