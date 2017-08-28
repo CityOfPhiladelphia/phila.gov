@@ -55,19 +55,6 @@
     margin: $spacing-large auto;
   }
 
-  .post-meta {
-    span {
-      &::after {
-        display: inline-block;
-        content: '|';
-        padding: 0 $spacing-small;
-      }
-
-      &:last-of-type::after {
-        content: '';
-      }
-    }
-  }
 }
 
 .border-bottom-fat {
@@ -75,4 +62,18 @@
   width: 100%;
   border-bottom: 10px solid color(ben-franklin-blue);
   margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  span {
+    &::after {
+      display: inline-block;
+      content: '|';
+      padding: 0 $spacing-small;
+    }
+
+    &:last-of-type::after {
+      content: '';
+    }
+  }
 }
