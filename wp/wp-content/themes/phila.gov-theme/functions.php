@@ -799,14 +799,11 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       array_push( $basename, $urls );
       array_push( $full_links, $markup );
       array_push( $names, $v );
+    }
 
-      if ( $name_list == true ) {
-        $name_listed = str_replace( "&#8217;", "'", $names );
-
-        return implode(', ',  $name_listed);
-
-      }
-
+    if ( $name_list == true ) {
+      $name_listed = str_replace( "&#8217;", "'", $names );
+      return implode(', ',  $name_listed);
     }
 
     if ( $break_tags == true ) {
