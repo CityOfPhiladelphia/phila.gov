@@ -5,27 +5,30 @@
  * @package phila-gov
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('news-item row'); ?>>
-  <?php if ( has_post_thumbnail() ) {
-    $thumb_active = true;  ?>
-    <div class="logo columns medium-7">
-      <?php echo phila_get_thumbnails() ?>
-    </div>
-  <?php } ?>
+<?php $categories = get_the_category($post->ID); ?>
+<?php $desc = phila_get_item_meta_desc( ); ?>
 
-  <div class="medium-17 columns">
-  	<header class="small-text">
-      <?php
-        $categories = get_the_category($post->ID);
-        ?>
-      <span class="entry-date"><strong><?php echo get_the_date(); ?></strong> | </span>
-      <span class="category">
-        <?php echo phila_get_current_department_name( $categories, $break_tags = false ); ?>
-      </span>
-        <a href="<?php echo the_permalink(); ?>"><?php the_title('<h2 class="h4">', '</h2>' ); ?></a>
-  	</header><!-- .entry-header -->
-    <?php $desc = phila_get_item_meta_desc( ); ?>
-      <p class="description"><?php echo $desc ?> </p>
-  </div>
-</article><!-- #post-## -->
-<hr>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <a href="<?php echo the_permalink(); ?>" class="card card--list grid-x">
+    <?php if ( has_post_thumbnail() ) : ?>
+      <div class="cell medium-7">
+        <?php echo phila_get_thumbnails(); ?>
+      </div>
+    <?php endif; ?>
+    <div class="content-block cell medium-17 grid-x">
+      <div class="cell align-self-top">
+        <header>
+          <h1><?php echo get_the_title(); ?></h1>
+        </header>
+        <p><?php echo $desc ?></p>
+      </div>
+      <div class="cell align-self-bottom">
+        <div class="post-meta">
+          <span class="date-published"><?php echo get_the_date();?></span>
+          <span class="departments"><?php echo phila_get_current_department_name( $categories, $byline = false, $break_tags = false, $name_list = true ); ?></span>
+        </div>
+      </div>
+    </div>
+  </a>
+</article>
