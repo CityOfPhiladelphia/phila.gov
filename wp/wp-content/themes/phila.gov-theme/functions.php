@@ -231,6 +231,17 @@ function phila_open_graph() {
 }
 
 /**
+ * Clean up post titles for social media display
+**/
+
+function phila_encode_title( $title ) {
+  $title = html_entity_decode( $title );
+  $title = urlencode( $title );
+  return $title;
+}
+
+
+/**
  * Enqueue scripts and styles.
  */
 
