@@ -1,6 +1,7 @@
 <?php
 /**
- * The content of a single phila_post
+ * The content of a single post
+ * Updated: 8/28/17
  * @package phila-gov
  */
 ?>
@@ -33,7 +34,7 @@
           <?php echo $posted_on_values['time_string']; ?>
         </span>
         <span class="author">
-          <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a>
+          <?php echo $posted_on_values['author']; ?>
         </span>
         <span class="departments">
           <?php echo phila_get_current_department_name( $category, false, false ); ?>
