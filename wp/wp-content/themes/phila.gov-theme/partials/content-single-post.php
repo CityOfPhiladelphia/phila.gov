@@ -4,40 +4,48 @@
  * @package phila-gov
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
-  <div class="row">
-    <header class="small-24 columns">
-      <?php the_title( '<h1 class="entry-title contrast">', '</h1>' ); ?>
-    </header><!-- .entry-header -->
-  </div>
-  <div class="row mvm">
-    <div data-swiftype-index='true' class="entry-content medium-18 medium-push-6 columns">
-    <?php the_content(); ?>
-    </div>
-    <aside id="secondary" class="small-24 medium-6 medium-pull-18 columns">
-      <?php $posted_on_values = phila_get_posted_on(); ?>
-      <div class="posted-on row">
-      <?php if ( has_post_thumbnail() ): ?>
-        <div class="columns hide-for-small-only medium-24 ptxs">
-          <div class="phila-thumb float-left">
-            <?php echo phila_get_thumbnails(); ?>
-          </div>
-        </div>
-        <?php endif; ?>
-        <div class="byline small-24 column pvm pvs-mu">
-          <div class="details small-text center">
-            <span>Posted by <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a></span><br>
-            <?php $category = get_the_category(); ?>
-              <?php echo phila_get_current_department_name( $category, false, true ); ?>
-            <br>
-            <span>
-              <?php echo $posted_on_values['time_string']; ?>
-            </span>
-            <br>
-            <?php phila_gov_entry_footer();?>
-          </div>
-        </div>
+<?php $category = get_the_category(); ?>
+<?php $posted_on_values = phila_get_posted_on(); ?>
+<?php $the_title =  get_the_title();?>
+<?php $email_title = urlencode(html_entity_decode($the_title)); ?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
+  <header class="post-header grid-container">
+    <div class="grid-x grid-padding-x align-bottom">
+      <div class="cell medium-18 post-title">
+        <?php the_title( '<h1>', '</h1>' ); ?>
       </div>
-    </aside>
-  </div><!-- .row -->
-</article><!-- #post-## -->
+      <div class="cell medium-6 align-self-bottom social-media">
+        <a href="#" id="fb-share" data-analytics="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/intent/tweet?text=<?php echo phila_encode_title($the_title)?>&url=<?php echo get_permalink()?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="mailto:?subject=<?php echo str_replace('+', '%20', $email_title) ?>&body=<?php echo get_permalink()?>" data-analytics="social"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="javascript:window.print()" data-analytics="social"><i class="fa fa-print" aria-hidden="true"></i></a>
+      </div>
+      <div class="border-bottom-fat"></div>
+    </div>
+    <div class="post-meta">
+      <span class="date-published">
+        <?php echo $posted_on_values['time_string']; ?>
+      </span>
+      <span class="author">
+        <a href="<?php echo $posted_on_values['authorURL']; ?>"><?php echo $posted_on_values['author']; ?></a>
+      </span>
+      <span class="departments">
+        <?php echo phila_get_current_department_name( $category, false, false ); ?>
+      </span>
+    </div>
+  </header>
+  <?php if ( has_post_thumbnail() ): ?>
+    <div class="grid-container featured-image">
+      <div class="grid-x medium-16 medium-centered align-middle">
+        <?php echo phila_get_thumbnails(); ?>
+      </div>
+    </div>
+  <?php endif ?>
+  <div class="grid-container post-content">
+    <div class="medium-18 medium-centered">
+      <?php the_content(); ?>
+    </div>
+  </div>
+  <hr />
+</article>
