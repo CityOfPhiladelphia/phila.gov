@@ -51,6 +51,16 @@
     }
   }
 
+  .thumbnail-image{
+    float:right;
+    display: none;
+  }
+  .post-content{
+    .thumbnail-image{
+      display: inline-block;
+    }
+  }
+
   .featured-image {
     margin: $spacing-large auto;
     img{
