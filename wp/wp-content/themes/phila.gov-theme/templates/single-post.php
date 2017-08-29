@@ -46,7 +46,7 @@
     <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( !strpos(phila_get_thumbnails(), 'phila-thumb') && !strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
-          <div class="thumbnail-image">
+          <div class="js-thumbnail-image">
             <?php echo phila_get_thumbnails(); ?>
           </div>
         <?php else : ?>
