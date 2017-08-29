@@ -266,7 +266,7 @@ function phila_gov_scripts() {
 
   wp_deregister_script( 'jquery' );
 
-  wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'theme-styles' )  );
+  wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'standards' )  );
 
   wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
