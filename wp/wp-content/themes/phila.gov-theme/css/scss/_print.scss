@@ -6,9 +6,6 @@
     font-size: 12pt;
     line-height: 1.3;
   }
-  img{
-    max-width:250px !important;
-  }
   .logo img {
     max-width:100% !important;
   }
@@ -24,13 +21,15 @@
   .feedback,
   .alert-persistent,
   .utility-nav,
-  .desktop-nav
+  .desktop-nav,
   .top-bar,
   .see-all-right,
   .site-search,
   button,
   .button,
   nav,
+  .social-media,
+
   //if it is hidden for small screens, we probably want to hide it for print too
   .show-for-medium
   {
