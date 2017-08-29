@@ -450,7 +450,7 @@ function phila_get_posted_on(){
 
   $posted_on_meta['author'] = esc_html( get_the_author() );
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
-  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
     esc_html( get_the_date() ),
