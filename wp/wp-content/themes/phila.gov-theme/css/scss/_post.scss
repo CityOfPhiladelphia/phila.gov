@@ -53,6 +53,12 @@
 
   .featured-image {
     margin: $spacing-large auto;
+    img{
+      margin: 0 auto;
+    }
+    @include breakpoint(small only) {
+      padding:0;
+    }
   }
 
 }
