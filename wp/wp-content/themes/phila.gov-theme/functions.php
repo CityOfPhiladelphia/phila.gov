@@ -349,10 +349,10 @@ function phila_get_thumbnails(){
       '3' => 'news-thumb'
     );
     $output = '';
-    // echo 'Using phila_get_thumb';
     foreach ($thumbs as $key => $value) {
 
       $image = wp_get_attachment_image_src($id, $value);
+
       if ($image[1] == 700 && $image[2] == 400 ) {
         $output .= get_the_post_thumbnail( $post=null, 'medium' );
         break;
