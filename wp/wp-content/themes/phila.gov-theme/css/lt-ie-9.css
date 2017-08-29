@@ -33,6 +33,7 @@ nav li{
 }
 
 /*hide what we would normally show on mobile */
+#mobile-nav,
 .show-for-small-only,
 .home .hero-content,
 .home .process,
@@ -82,6 +83,9 @@ nav li{
 
 .medium-17{
   width:595px;
+}
+.cell{
+  float:right;
 }
 
 footer.site-footer{
