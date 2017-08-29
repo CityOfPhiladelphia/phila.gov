@@ -100,6 +100,19 @@ function phila_filter_sep(){
 
 }
 
+/* Custom image sizes for responsive images */
+
+add_filter( 'wp_calculate_image_sizes', 'phila_content_image_sizes_attr', 10 , 2 );
+
+
+function phila_content_image_sizes_attr( $sizes, $size ) {
+  $width = $size[0];
+
+  $width && $sizes = '(max-width: 640px) 300px, (max-width: 1024px) 768px, (max-width: 1440px) 1024px,  700px';
+
+  return $sizes;
+}
+
 add_filter('pre_get_document_title', 'phila_filter_title');
 
 function phila_filter_title( $title ){
