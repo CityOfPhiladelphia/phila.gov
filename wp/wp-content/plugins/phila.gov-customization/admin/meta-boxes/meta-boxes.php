@@ -1674,7 +1674,7 @@ $metabox_full_options = array(
      'id'   => 'phila_custom_text',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
-     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
    ),
    array(
      'id'  => 'phila_call_to_action_multi',
@@ -1736,7 +1736,7 @@ $metabox_thirds_option_one = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
     ),
     array(
       'id'   => 'phila_custom_text_multi',
@@ -1774,7 +1774,7 @@ $metabox_thirds_option_two = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
     ),
     array(
       'id'   => 'phila_custom_feature',
@@ -1827,7 +1827,7 @@ $metabox_half_option_one = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
     ),
     array(
       'id'   => 'phila_pullquote',
@@ -1858,7 +1858,7 @@ $metabox_half_option_two = array(
        'id'   => 'phila_custom_text',
        'type' => 'group',
        'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
-       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
      ),
      array(
        'id'   => 'phila_pullquote',
