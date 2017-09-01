@@ -1,0 +1,227 @@
+body.login {
+  font-family: "Helvetica Neue",sans-serif;
+  font-size:100%;
+  line-height:1.5;
+  height:100%;
+  color: #fff;
+  border-top: 2px solid #00a0d2;
+
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAQACAIAAAAP+8yGAAACoklEQVR4Xu3dwQ0CMQxEUTtKvbRCC3RqjtwR3g3WSwP/MDOObaIlH89XdJ4VzQcAACBiZzcgMvs1AAAAAFCu3WiR3YCYcKMBACh2AKopgFJBA7Xoo4Fip1TQAEAtkmQASXZlalsAJLk/aC59AICdSQNJ7ge4DwRN0ORAbypociAHgsamliHWmlwkB7oKnZ0caH7lQA40v3LApmqRHPiBAsBCSvsOYCHFpuZkfZEcsCmbsqn2/XSbchGAHLApm3q9D6Cz07YAaB19oZWLaCAHbHoiwBf52BRADtiUTb1KAJAD384B8Gkbzx4APOyWAwAjlKCx6eQky4GgyYGgCZocAAiapSCAoLkPJBnA03QASZZkGgAoFVpHczKAWmQIVIsAAOxNARQ7AAB9kUEcQLn+/gCopgAAbjQ3Gg1cOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANV8aAAAAADwi7Pr/5+DVt2tAQAAgGK3I6oZUANEBgDQtigVACFoYQBhUwBBEzQAORA0NmVTOWBTADYlMptyEQCbEhnAOzsALjpPA88e6rJ3FUTmIi7Sm3IRF3ERkS1miaxUEFmpILJSURN6UyIT2QhlALHxIjKRiUxk+yKTPpGJbNInMpEN4sMARAawDBG06SIL2goi21UIGpFpcJlNjbFENuEQmQY0MGUaQEyZRBY0QRM0U6YpkwZEFjTrHFMmDTS/RCayKdOUacoUNH+4I2hENmX2AIhMZGMskWlgjCUyke2LNF5EJjINiExkGy8bL8uQCSIbxIlspcZFJn0iE1mpsEogsjGWi7iIi4jMRVzERfamAJaC52sAwEUANl5sCsCmXGRG89e6bEoDOWBTADmQAwBBk4MRAABJFjQAAIBqPvdrAPAGv7GBbaSCtb0AAAAASUVORK5CYII=");
+  background-attachment: fixed;
+  background-size: contain;
+
+
+  h1 a {
+    text-indent: 0 !important;
+    overflow:hidden;
+    display:block;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.75rem;
+    font-weight: 300;
+    height: auto !important;
+    width: 100%;
+    background-image: none !important;
+    &:hover {
+      color: white;
+    }
+  }
+
+
+  // errors and messages
+  .message,
+  div.updated,
+  #login_error {
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    &,
+    * {
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.25em;
+      font-weight: 300;
+    }
+
+  }
+
+  // dont know
+  #nav a,
+  #backtoblog a {
+    color:#fff !important;
+    text-shadow:none;
+    border-radius:3px;
+  }
+
+  form {
+    padding:0;
+    font-weight:normal;
+    background:transparent;
+    border:none;
+    border-radius:3px;
+    box-shadow:none;
+
+    .input {
+      width:100%;
+      padding:6px 10px;
+      margin-top:2px;
+      margin-bottom:10px;
+      border:1px solid #fff;
+      background: #fff;
+      -webkit-font-smoothing: subpixel-antialiased;
+      color: #333333;
+      font-size: 21px;
+    }
+
+
+    label {
+      color: rgba(255,255,255,0.95);
+      font-weight: 300 !important;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.5px;
+    }
+
+  }
+
+  a,
+  input {
+    outline: none!important;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+  }
+
+} ///////////////////////////////.login
+
+
+#login {
+
+  width:300px;
+  padding:114px 10px 0;
+
+  form {
+
+    // p.forgetmenot,
+    p.submit {
+      display:block;
+      position:relative;
+      clear:left;
+      margin:10px 0;
+    }
+
+    p.forgetmenot {
+      display: none;
+    }
+
+
+    // p.forgetmenot label,
+    p.submit input {
+      width:100%;
+      display:block;
+      font-size:16px;
+    }
+
+
+  }
+
+  &:after {
+    content: 'Site Crafted in Orlando - Florida';
+    text-align: center;
+    text-indent: 0 !important;
+    display: block;
+    font-size: 0.8rem;
+    color: #5F7883;
+    margin-top: 50px;
+  }
+
+} /////////////////////////////// #login
+
+
+.login form,
+.login #nav,
+.login #backtoblog {
+  width:100% !important;
+  margin:5px auto;
+  padding:0;
+}
+
+#login form p.forgetmenot:after,
+#login form p.submit:after,
+body.login:after {
+  content:'';
+  display:table;
+  clear:both;
+}
+
+
+#login form p.submit input,
+.login #nav a,
+.login #backtoblog a {
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica Neue",sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.2;
+
+  height:auto;
+  text-align:center;
+  line-height:2.75em;
+  // line-height:3em;
+  text-decoration:none;
+   letter-spacing: 1px;
+  border:none;
+
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+
+  text-transform:uppercase;
+}
+
+
+.login #nav a {
+  font-size: 13px;
+
+
+  &:hover {
+    color: #123 !important;
+  }
+}
+
+
+input#wp-submit:hover,
+.login #nav a.hover,
+// .login #nav a:hover,
+.login #nav a.focus,
+.login #nav a:focus,
+.login #backtoblog a.hover,
+.login #backtoblog a:hover,
+.login #backtoblog a.focus,
+.login #backtoblog a:focus {
+  background-color:#123 !important;
+  color:#fff !important;
+}
+
+
+#backtoblog {
+  display:none;
+}
+
+
+// body {
+
+//   &.login,
+//   &.login-action-register {
+
+//     #nav a:nth-of-type(1) {
+//       display: block;
+//       width: 100%;
+//       background-color: #7ad03a;
+
+//       &:hover {
+//         background-color: #123;
+//       }
+//     }
+//   }
+
+// }

@@ -164,7 +164,11 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_metabox_v2_textarea(){
+  /*
+  * With an update to the metabox plguin, mutiple, clonable, grouped wysiwyg areas are now possible meaning that the old textarea function below can be replaced with a wysiwyg. To preserve the IDs, we'll simply change the name of this function and update it in all the relevant areas. This can probably be phased out in favor of the original phila_metabox_v2_wysiwyg function.
+  *
+  */
+  public static function phila_metabox_v2_wysiwyg_upgraded(){
 
     // Custom Text
     return array(
@@ -176,7 +180,8 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       array(
         'name' => 'Custom Text Content',
         'id'   => 'phila_custom_text_content',
-        'type' => 'textarea',
+        'type' => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
       ),
     );
   }
@@ -195,7 +200,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         'type' => 'group',
         'clone' => true,
         'max_clone' => 3,
-        'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
       )
     );
   }
