@@ -14,7 +14,7 @@ a[href$="nav-menus.php?action=locations"],
 .add-new-menu-action,
 #menu-appearance,
 .manage-menus option,
-.page-title-action,
+.post-type-department_page .page-title-action,
 /* don't allow users to create tags */
 #tagsdiv-post_tag{
   display: none !important;
