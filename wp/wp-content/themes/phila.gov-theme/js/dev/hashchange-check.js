@@ -1,7 +1,7 @@
 function anchorOffset() {
   /* Account for sticky header when anchor links are present */
-  const $anchor = $(':target');
-  const fixedElementHeight = $('.sticky').outerHeight();
+  var $anchor = $(':target');
+  var fixedElementHeight = $('.sticky').outerHeight();
   if ($anchor.length > 0)
     window.scrollTo(0, $anchor.offset().top - fixedElementHeight);
 }
