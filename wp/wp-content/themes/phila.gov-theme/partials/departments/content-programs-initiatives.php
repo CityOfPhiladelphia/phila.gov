@@ -141,7 +141,8 @@
 
             <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
-                  $custom_text = $current_row_option_two['phila_custom_text']; ?>
+                  $custom_text = $current_row_option_two['phila_custom_text'];
+                  var_dump($custom_text); ?>
                   <div class="large-12 columns">
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
@@ -202,6 +203,14 @@
                   $connect_vars = phila_connect_panel($connect_panel);
                   include(locate_template('partials/departments/content-connect.php'));
                 endif; ?>
+
+            <?php elseif ( $current_row_option_two['phila_one_third_col_option'] == 'phila_custom_text'):?>
+                <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
+                  $custom_text = $current_row_option_two['phila_custom_text']; ?>
+                  <div class="large-8 columns">
+                    <?php include(locate_template('partials/departments/content-custom-text.php'));?>
+                  </div>
+              <?php endif;?>
 
             <?php elseif ( $current_row_option_two['phila_one_third_col_option'] == 'phila_custom_feature'):?>
               <?php if ( isset( $current_row_option_two['phila_custom_feature'] ) ):
