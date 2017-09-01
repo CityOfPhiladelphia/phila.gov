@@ -1,0 +1,13 @@
+span.wpcmsb-not-valid-tip {
+	direction: rtl;
+}
+
+.use-floating-validation-tip span.wpcmsb-not-valid-tip { 
+	left: auto;
+	right: 20%;
+}
+
+span.wpcmsb-list-item {
+	margin-left: 0;
+	margin-right: 0.5em;
+}
