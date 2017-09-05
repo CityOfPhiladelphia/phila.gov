@@ -137,6 +137,8 @@ class Phila_Gov_Custom_Post_Types{
       'exclude_from_search' => true,
       'public' => false,
       'show_in_rest' => true,
+      'rest_base' => 'service-updates',
+      //'query_var' => true,
       'show_ui' => true,
       'has_archive' => false,
       'menu_icon' => 'dashicons-warning',
@@ -170,6 +172,8 @@ class Phila_Gov_Custom_Post_Types{
       ),
       'public' => true,
       'has_archive' => true,
+      'show_in_rest' => true,
+      'rest_base' => 'news',
       'menu_icon' => 'dashicons-media-document',
       'hierarchical' => false,
       'supports'  => array(
@@ -281,6 +285,8 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'phila-news',
         'menu_icon' => 'dashicons-admin-post',
         'hierarchical' => false,
         'rewrite' => array(
@@ -315,6 +321,8 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'press-releases',
         'menu_icon' => 'dashicons-editor-justify',
         'hierarchical' => false,
         'rewrite' => array(
