@@ -1,7 +1,7 @@
 <?php
 /**
  * The content of a single post
- * Updated: 8/28/17
+ * Updated: 9/5/17
  * @package phila-gov
  */
 ?>
@@ -9,6 +9,9 @@
 <?php $posted_on_values = phila_get_posted_on(); ?>
 <?php $the_title =  get_the_title();?>
 <?php $email_title = urlencode(html_entity_decode($the_title)); ?>
+<?php $post_type = get_post_type(); ?>
+<?php $post_obj = get_post_type_object( $post_type );?>
+<?php $post_id = get_the_id(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
@@ -65,3 +68,37 @@
   </div>
   <hr />
 </article>
+<?php wp_reset_postdata(); ?>
+
+<?php
+  $cat_ids = array();
+
+  foreach( $category as $cat ){
+    array_push( $cat_ids, $cat->cat_ID );
+  }
+
+  $cat_id_string = implode( ', ', $cat_ids );
+
+  $args = array(
+    'post_type' => $post_type,
+    'category__and' => array($cat_id_string),
+    'posts_per_page'  => 3,
+    'post__not_in'  => array($post_id)
+  );
+?>
+
+<?php $related_posts = new WP_Query( $args ); ?>
+
+<?php if ( $related_posts->have_posts() ) : ?>
+  <div class="grid-container">
+    <h2><?php _e( 'Related' ); ?>
+    <?php echo strtolower($post_obj->labels->singular_name); ?></h2>
+  </div>
+  <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
+    <div class="grid-container">
+       <?php get_template_part( 'partials/content', 'list-featured-image' ); ?>
+    </div>
+  <?php endwhile; ?>
+
+  <?php wp_reset_postdata(); ?>
+<?php endif; ?>
