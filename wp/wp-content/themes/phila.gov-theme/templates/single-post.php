@@ -53,7 +53,9 @@
             <?php echo phila_get_thumbnails(); ?>
           </div>
         <?php else : ?>
-          <?php echo phila_get_thumbnails(); ?>
+          <div class="lightbox-link" data-open="phila-lightbox">
+            <?php echo phila_get_thumbnails(); ?>
+          </div>
         <?php endif;?>
       </div>
     </div>
@@ -67,7 +69,15 @@
     <?php endif; ?>
   </div>
   <hr />
+  <div id="phila-lightbox" data-reveal class="reveal center">
+    <div class="lightbox-content"></div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
 </article>
+
 <?php wp_reset_postdata(); ?>
 
 <?php
@@ -92,7 +102,7 @@
 <?php if ( $related_posts->have_posts() ) : ?>
   <div class="grid-container">
     <h2><?php _e( 'Related' ); ?>
-    <?php echo strtolower($post_obj->labels->singular_name); ?></h2>
+    <?php echo strtolower($post_obj->labels->name); ?></h2>
   </div>
   <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
     <div class="grid-container">
