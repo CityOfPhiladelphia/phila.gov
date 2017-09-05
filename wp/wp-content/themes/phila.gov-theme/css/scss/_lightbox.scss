@@ -1,0 +1,31 @@
+.lightbox-link{
+  cursor: pointer;
+  @include transition( opacity, .2s );
+  &:hover{
+    @extend %lower-opacity;
+  }
+}
+
+#phila-lightbox{
+  width:auto;
+}
+//make sure page body stays centered when modal is open
+html.is-reveal-open,
+html.is-reveal-open body{
+  width:100%;
+}
+.reveal{
+  .lightbox-content{
+    margin:2rem;
+    p{
+      margin-top:1rem;
+    }
+  }
+  .close-button{
+    background: none;
+    &:hover{
+      background: none;
+      color:color(ben-franklin-blue);
+    }
+  }
+}
