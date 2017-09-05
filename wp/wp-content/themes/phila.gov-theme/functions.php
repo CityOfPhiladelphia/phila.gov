@@ -92,6 +92,10 @@ function phila_gov_setup() {
 }
 endif; // phila_gov_setup
 
+
+/* Get up globals */
+$phila_is_minified = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '' : '.min';
+
 add_filter('document_title_separator', 'phila_filter_sep');
 
 function phila_filter_sep(){
@@ -262,7 +266,8 @@ function phila_encode_title( $title ) {
 add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
-  $minified = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '' : '.min';
+  global $post;
+  $post_obj = get_post_type_object( $post->post_type );
 
   wp_deregister_script( 'jquery' );
 
