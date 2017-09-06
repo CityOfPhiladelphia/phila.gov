@@ -1,9 +1,7 @@
 <div class="row">
   <div class="columns">
-    <a class="button see-all-right float-right mrm" href="<?php echo $see_all_URL ?>" aria-label="See all <?php echo $see_all_content_type ?>">
-      <div class="valign">
-        <div class="button-label valign-cell">See all »</div>
-      </div>
+    <a class="button button--inverse float-right content-type-<?php echo $see_all_content_type?>" href="<?php echo $see_all_URL ?>" aria-label="See all <?php echo $see_all_content_type ?>">
+      See all <?php echo $see_all_content_type ?> <i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>
     </a>
   </div>
 </div>
