@@ -27,3 +27,9 @@ if (typeof phila_js_vars !== 'undefined') {
     }
   });
 }
+//disable lightboxes on mobile
+$(function(){
+  if (Foundation.MediaQuery.current === 'small') {
+    $('#phila-lightbox').foundation('_destroy');
+  }
+});
