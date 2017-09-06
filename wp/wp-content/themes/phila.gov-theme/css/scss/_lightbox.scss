@@ -29,3 +29,7 @@ html.is-reveal-open body{
     }
   }
 }
+html.is-reveal-open,
+html.is-reveal-open body{
+  user-select: inherit;
+}
