@@ -9,7 +9,7 @@ dl.simcal-events-list-container{
     }
   }
 }
-.single-calendar .simcal-event-details{
+.event-row{  
   cursor: pointer;
   @include transition( opacity, .2s );
   a:link, a:visited{
