@@ -1,0 +1,18 @@
+.button{
+  &.button--inverse{
+    color:white;
+    min-width:15rem;
+    text-align: center;
+    &:hover, &:active, &:focus{
+      background: color(dark-gray);
+    }
+  }
+  &[class*='content-type']{
+    .fa {
+      padding-left:.5rem;
+    }
+  }
+  &.content-type-events{
+    background: color(phanatic-green);
+  }
+}
