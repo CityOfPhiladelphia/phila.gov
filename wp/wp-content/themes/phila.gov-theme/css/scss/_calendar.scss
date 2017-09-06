@@ -11,10 +11,15 @@ dl.simcal-events-list-container{
 }
 .single-calendar .simcal-event-details{
   cursor: pointer;
+  @include transition( opacity, .2s );
   a:link, a:visited{
     font-weight:normal;
   }
+  &:hover{
+    @extend %lower-opacity;
+  }
 }
+
 .simcal-default-calendar-light .simcal-nav-button{
   color:color(phanatic-green) !important;
 }
