@@ -102,3 +102,7 @@ body.is-reveal-open.no-scroll{
 table.connect{
   margin:0;
 }
+
+:focus{
+  outline: color(dark-gray) solid 3px;
+}
