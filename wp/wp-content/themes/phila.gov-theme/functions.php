@@ -267,7 +267,6 @@ add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
   global $post;
-  $post_obj = get_post_type_object( $post->post_type );
 
   wp_deregister_script( 'jquery' );
 
@@ -277,14 +276,17 @@ function phila_gov_scripts() {
 
   wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts'. $GLOBALS['phila_is_minified'] . '.js', array(), '0.7.0', true );
 
-  wp_localize_script('phila-scripts', 'phila_js_vars', array(
-    'postID' => $post->ID,
-    'postType' => $post->post_type,
-    'postRestBase' => $post_obj->rest_base,
-    )
-  );
-
   wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles' . $GLOBALS['phila_is_minified'] . '.css' );
+
+  if ( ( !is_404() ) && (!is_front_page()) ) {
+    $post_obj = get_post_type_object( $post->post_type );
+    wp_localize_script('phila-scripts', 'phila_js_vars', array(
+      'postID' => $post->ID,
+      'postType' => $post->post_type,
+      'postRestBase' => $post_obj->rest_base,
+      )
+    );
+  }
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
 
