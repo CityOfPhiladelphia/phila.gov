@@ -1424,6 +1424,7 @@ function phila_filter_allowed_html($allowed, $context){
     $allowed['a']['data-open'] = true;
     $allowed['div']['data-reveal'] = true;
     $allowed['button']['data-close'] = true;
+    $allowed['div']['data-deep-link'] = true;
   }
   return $allowed;
 }
