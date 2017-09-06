@@ -1408,3 +1408,20 @@ function phila_get_department_homepage_typography( $parent ){
 
   return $new_title;
 }
+
+add_filter('wp_kses_allowed_html', 'phila_filter_allowed_html', 10, 2);
+
+function phila_filter_allowed_html($allowed, $context){
+
+  if ( is_array($context) ){
+    return $allowed;
+  }
+
+  if ($context === 'post'){
+    $allowed['div']['data-open'] = true;
+    $allowed['a']['data-open'] = true;
+    $allowed['div']['data-reveal'] = true;
+    $allowed['button']['data-close'] = true;
+  }
+  return $allowed;
+}
