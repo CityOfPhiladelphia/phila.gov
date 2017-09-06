@@ -4,6 +4,12 @@
   &:hover{
     @extend %lower-opacity;
   }
+  @include breakpoint(small only) {
+    cursor: auto;
+    &:hover{
+      opacity: 1;
+    }
+  }
 }
 
 #phila-lightbox{
