@@ -99,3 +99,14 @@ img.float-right{
 body.is-reveal-open.no-scroll{
   height:auto;
 }
+
+.inside-border-group{
+  .short-desc {
+    font-weight: normal;
+    color:color(dark-gray);
+    border-left: 1px solid color(dark-gray);
+  }
+}
+.inside-border-group-item a:hover .short-desc{
+  color: white;
+}
