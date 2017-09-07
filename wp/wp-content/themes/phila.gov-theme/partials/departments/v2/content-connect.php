@@ -140,6 +140,7 @@ $connect_vars = phila_connect_panel($connect_panel);
   <?php if ( !empty( $connect_vars['see_all'] ) ) : ?>
     <?php $see_all_URL = $connect_vars['see_all']; ?>
     <?php $see_all_content_type = 'contact information';?>
+    <?php $is_full = true; ?>
     <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
   <?php endif; ?>
 </div>
