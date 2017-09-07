@@ -9,8 +9,6 @@ require_once wpcmsb_PLUGIN_DIR . '/includes/cms-block.php';
 require_once wpcmsb_PLUGIN_DIR . '/includes/upgrade.php';
 require_once wpcmsb_PLUGIN_DIR . '/includes/integration.php';
 
-
-require_once wpcmsb_PLUGIN_DIR . '/includes/options.php';
 require_once wpcmsb_PLUGIN_DIR . '/includes/viewport.php';
 require_once wpcmsb_PLUGIN_DIR . '/includes/login.php';
 require_once wpcmsb_PLUGIN_DIR . '/includes/show-template.php';
