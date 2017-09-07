@@ -31,5 +31,6 @@ if (typeof phila_js_vars !== 'undefined') {
 $(function(){
   if (Foundation.MediaQuery.current === 'small') {
     $('#phila-lightbox').foundation('_destroy');
+    $('.lightbox-link').blur();
   }
 });
