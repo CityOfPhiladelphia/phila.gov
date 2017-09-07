@@ -18,7 +18,7 @@
       <?php $item_count = count($services); ?>
       <?php $columns = phila_grid_column_counter( $item_count ); ?>
       <?php
-      if ( $item_count % 3 == 0) :
+      if ( ($item_count % 3 == 0) || $item_count == '5'  ) :
         $columns = "8";
       elseif( $item_count == 4) :
         $columns = "12";
