@@ -56,6 +56,16 @@
     display: none;
     max-width:300px;
     padding: 0 0 1rem 1rem;
+
+    @include breakpoint(small only) {
+      @include grid-column-collapse;
+      max-width: none;
+      padding: 0;
+      float:none;
+      margin-left: - rem-calc(15);
+      margin-right: - rem-calc(15);
+
+    }
   }
   .post-content{
     .js-thumbnail-image{
