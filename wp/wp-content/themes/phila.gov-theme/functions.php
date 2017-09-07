@@ -1411,6 +1411,7 @@ function phila_get_department_homepage_typography( $parent ){
   return $new_title;
 }
 
+//Allow some HTML5 data-* attributes to appear in the TinyMCE WYSIWYG editor
 add_filter('wp_kses_allowed_html', 'phila_filter_allowed_html', 10, 2);
 
 function phila_filter_allowed_html($allowed, $context){
@@ -1427,4 +1428,14 @@ function phila_filter_allowed_html($allowed, $context){
     $allowed['div']['data-deep-link'] = true;
   }
   return $allowed;
+}
+//Stop stripping span tags from TinyMCE WYSIWYG
+add_filter('tiny_mce_before_init', 'phila_allow_spans', 10, 1);
+
+function phila_allow_spans($allowed){
+
+    $allowed['extended_valid_elements'] = 'span[*]';
+
+  return $allowed;
+
 }
