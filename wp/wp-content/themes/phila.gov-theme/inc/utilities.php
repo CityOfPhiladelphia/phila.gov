@@ -105,6 +105,7 @@ function phila_util_return_parsed_email( $email_address ){
   return $staff_email_parsed;
 
 }
+
 /* Used to determine if this item is a "post" --- in our case, this can mean legacy post types like "news", "phila_post" & "press_release" */
 function phila_util_return_is_post( $current_post_type ){
   $possibilities = array(
@@ -118,4 +119,16 @@ function phila_util_return_is_post( $current_post_type ){
   }else{
     return false;
   }
+}
+
+//thanks https://stackoverflow.com/questions/5305879/automatic-clean-and-seo-friendly-url-slugs/9535967#9535967
+function phila_format_uri( $string, $separator = '-' ) {
+    $accents_regex = '~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i';
+    $special_cases = array( '&' => 'and', "'" => '');
+    $string = mb_strtolower( trim( $string ), 'UTF-8' );
+    $string = str_replace( array_keys($special_cases), array_values( $special_cases), $string );
+    $string = preg_replace( $accents_regex, '$1', htmlentities( $string, ENT_QUOTES, 'UTF-8' ) );
+    $string = preg_replace("/[^a-z0-9]/u", "$separator", $string);
+    $string = preg_replace("/[$separator]+/u", "$separator", $string);
+    return $string;
 }

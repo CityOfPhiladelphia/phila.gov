@@ -50,7 +50,7 @@
         $document_published = get_the_date( $d = '', $id[0] );
       }
       ?>
-      <tr class="clickable-row" data-href="<?php echo $document['url']; ?>">
+      <tr class="clickable-row" data-href="<?php echo $document['url']; ?>" id="<?php echo phila_format_uri($document['title']); ?>">
         <td>
           <a href="<?php echo $document['url'] ?>"><?php echo $document['title']; ?> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
         </td>

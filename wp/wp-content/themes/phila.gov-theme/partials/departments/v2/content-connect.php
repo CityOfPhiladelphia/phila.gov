@@ -52,9 +52,8 @@ $connect_vars = phila_connect_panel($connect_panel);
   <?php endif; ?>
   <?php if ( ( !phila_util_is_array_empty($connect_vars['phone']) ) || (!$connect_vars['fax'] == '' ) ) : ?>
     <tr>
-      <th scope="row">
+      <th scope="row" aria-label="phone">
         <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
-        <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span>
       </th>
       <td class="pvl">
         <div class="p-tel">
@@ -67,6 +66,7 @@ $connect_vars = phila_connect_panel($connect_panel);
 
           $full_phone = $area . $co_code . $subscriber_number;
           ?>
+          <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span>
           <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
         </div>
       <?php if ( !$connect_vars['fax'] == '') : ?>

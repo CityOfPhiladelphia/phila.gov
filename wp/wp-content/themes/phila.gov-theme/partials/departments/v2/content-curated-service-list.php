@@ -16,31 +16,42 @@
     <h2>Services</h2>
     <div class="row" data-equalizer>
       <div class="columns small-collapse">
-        <?php $item_count = count($services); ?>
-        <?php $columns = phila_grid_column_counter( $item_count ); ?>
-        <?php
-        if ( $item_count % 3 == 0) :
-          $columns = "8";
-        elseif( $item_count == 4) :
-          $columns = "12";
-        endif;
-        ?>
-        <div class="row inside-border-group">
-        <?php foreach ( $services as $service ) : ?>
-          <?php $alt_title = isset( $service['alt_title'] ) ? $service['alt_title'] : ''; ?>
-          <div class="inside-border-group-item medium-<?php echo $columns ?> small-12 columns end">
-            <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
-              <div class="valign-cell pal phl-l" data-equalizer-watch>
-                <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
-                <?php if( $alt_title == '' ) : ?>
-                  <div><?php echo get_the_title( $service['phila_v2_service_page'] ) ?> </div>
-                <?php else: ?>
-                  <div><?php echo $service['alt_title'] ?> </div>
-                <?php endif; ?>
-              </div>
-            </a>
-          </div>
-        <?php endforeach; ?>
+        <div class="row inside-border-group" data-equalizer>
+          <?php $item_count = count($services); ?>
+          <?php $columns = phila_grid_column_counter( $item_count ); ?>
+          <?php
+          if ( ($item_count % 3 == 0) || $item_count == '5'  ) :
+            $columns = "8";
+          elseif( $item_count == 4) :
+            $columns = "12";
+          endif;
+          ?>
+          <?php foreach ( $services as $service ) : ?>
+            <?php if ($item_count == '1') :
+              $short_desc = rwmb_meta('phila_meta_desc', $args = null, $service['phila_v2_service_page']);
+            endif;
+            ?>
+            <?php $alt_title = isset( $service['alt_title'] ) ? $service['alt_title'] : ''; ?>
+            <div class="inside-border-group-item medium-<?php echo $columns ?> small-12 columns end">
+              <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
+                <div class="valign-cell pal phl-l" data-equalizer-watch>
+                  <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
+                  <div class="<?php echo isset($short_desc) ? 'prl' : ''?>">
+                  <?php if( $alt_title == '' ) : ?>
+                    <?php echo get_the_title( $service['phila_v2_service_page'] ) ?>
+                  <?php else: ?>
+                    <?php echo $service['alt_title'] ?>
+                  <?php endif; ?>
+                </div>
+                  <?php if ( isset($short_desc) ) : ?>
+                    <div class="short-desc pll">
+                      <?php echo $short_desc ?>
+                    </div>
+                  <?php endif; ?>
+                </div>
+              </a>
+            </div>
+          <?php endforeach; ?>
       </div>
     </div>
     </div>
