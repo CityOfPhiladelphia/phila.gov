@@ -222,7 +222,6 @@ class RestrictCategories{
 				'options'  => $cats
 			);
 		}
-
 		return $rc_user_options;
 	}
 
@@ -257,18 +256,23 @@ class RestrictCategories{
 		$users = array();
 
 		$args = array();
-
+    //KD edit - 8/31/17 - use display name instead of username & allow search on any part of name, instead of only exact usernames
 		if ( isset( $_POST['rc-search-users'] ) ) {
+      global $wpdb;
 			$search = ( isset( $_REQUEST['rc-search'] ) && !empty( $_REQUEST['rc-search'] ) ) ? esc_html( $_POST['rc-search'] ) : '';
 			$args = array( 'search' => $search );
+      $results = $wpdb->get_results( "SELECT * FROM wp_users WHERE display_name LIKE '%{$search}%'" );
 		}
-
 		$blogusers = get_users( $args );
 
 		foreach ( $blogusers as $login ) {
-			$users[ $login->user_login ] = $login->user_nicename;
+  		$users[ $login->display_name ] = $login->name;
 		}
-
+    if ( isset($results) ){
+      foreach ($results as $result) {
+        $users[$result->display_name] = $result->user_login;
+      }
+    }
 		return $users;
 	}
 
@@ -311,7 +315,6 @@ class RestrictCategories{
 				$options[ $k ] = $v;
 			}
 		}
-
 		return $options;
 	}
 
@@ -501,7 +504,7 @@ class RestrictCategories{
             }
 
 						// If WPML is installed, return the translated ID
-						if ( function_exists( 'icl_object_id' ) ) 
+						if ( function_exists( 'icl_object_id' ) )
 							$term_id = icl_object_id( $term_id, 'category', true );
 
 						$this->cat_list .= $term_id . ',';

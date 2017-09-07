@@ -7,6 +7,7 @@ require('./collapsible-div');
 require('./feedback-forms');
 require('./filter');
 require('./global-is-active');
+require('./hashchange-check');
 require('./hide-empty-table');
 require('./mailchimp');
 require('./posts');

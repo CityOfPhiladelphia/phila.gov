@@ -14,7 +14,7 @@
   <?php endif; ?>
   <?php if ( !empty( $custom_text_content ) ) :?>
     <div>
-      <?php echo( $custom_text_content ); ?>
+      <?php echo do_shortcode(wpautop( $custom_text_content )); ?>
     </div>
   <?php else :?>
     <div class="placeholder">

@@ -106,3 +106,14 @@ table.connect{
 :focus{
   outline: color(dark-gray) solid 3px;
 }
+
+.inside-border-group{
+  .short-desc {
+    font-weight: normal;
+    color:color(dark-gray);
+    border-left: 1px solid color(dark-gray);
+  }
+}
+.inside-border-group-item a:hover .short-desc{
+  color: white;
+}

@@ -465,6 +465,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    'pages'    => array( 'department_page' ),
    'context'  => 'normal',
    'priority' => 'default',
+   'revision' => true,
 
    'include' => array(
      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
@@ -776,6 +777,7 @@ $meta_boxes[] = array(
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'default',
+  'revision' => true,
 
   'include' => array(
     'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
@@ -1067,6 +1069,7 @@ $meta_boxes[] = array(
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority'  => 'low',
+    'revision' => true,
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
@@ -1674,7 +1677,7 @@ $metabox_full_options = array(
      'id'   => 'phila_custom_text',
      'type' => 'group',
      'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
-     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
    ),
    array(
      'id'  => 'phila_call_to_action_multi',
@@ -1736,12 +1739,14 @@ $metabox_thirds_option_one = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+      'revision' => true,
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
     ),
     array(
       'id'   => 'phila_custom_text_multi',
       'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
+      'revision'  => true,
       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea_multi(),
     ),
   ),
@@ -1774,7 +1779,7 @@ $metabox_thirds_option_two = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
     ),
     array(
       'id'   => 'phila_custom_feature',
@@ -1790,6 +1795,8 @@ $metabox_thirds_options = array(
   'name' => '2/3 x 1/3 Options',
   'id'   => 'phila_two_thirds_options',
   'type' => 'group',
+  'revision' => true,
+
   'hidden' => array(
     'phila_grid_options',
     '!=',
@@ -1827,7 +1834,7 @@ $metabox_half_option_one = array(
       'id'   => 'phila_custom_text',
       'type' => 'group',
       'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
     ),
     array(
       'id'   => 'phila_pullquote',
@@ -1858,7 +1865,7 @@ $metabox_half_option_two = array(
        'id'   => 'phila_custom_text',
        'type' => 'group',
        'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
-       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea(),
+       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
      ),
      array(
        'id'   => 'phila_pullquote',
@@ -1913,6 +1920,7 @@ $meta_boxes[] = array(
   'title'    => 'Page Content',
   'pages' => array( 'department_page' ),
   'priority' => 'high',
+  'revision' => true,
 
   'hidden'  => array('phila_template_select', 'ends with', 'v2'),
 
@@ -1927,6 +1935,7 @@ $meta_boxes[] = array(
   'pages' => array('service_page'),
   'priority' => 'high',
   'visible' => array('phila_template_select', 'service_stub'),
+  'revision' => true,
 
   'fields'  => array(
     array(
@@ -1991,6 +2000,7 @@ $meta_forms_instructions = array(
 $meta_boxes[] = array(
   'title' => 'Before you start',
   'pages' => array('service_page'),
+  'revision' => true,
   'visible' => array(
     'when' => array(
       array( 'phila_template_select', '=', 'start_process' ),
@@ -2018,6 +2028,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('department_page', 'page', 'service_page'),
+  'revision' => true,
 
   'visible' => array(
     'when' => array(
@@ -2045,6 +2056,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Additional Content',
   'pages' => array('page', 'service_page'),
+  'revision' => true,
   'fields' => array(
     array(
       'id' => 'phila_additional_content',
