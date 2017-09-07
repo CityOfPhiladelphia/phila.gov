@@ -1,4 +1,7 @@
 .lightbox-link{
+  &:focus {
+    outline: none;
+  }
   cursor: pointer;
   @include transition( opacity, .2s );
   &:hover{
@@ -14,11 +17,6 @@
 
 #phila-lightbox{
   width:auto;
-}
-//make sure page body stays centered when modal is open
-html.is-reveal-open,
-html.is-reveal-open body{
-  width:100%;
 }
 .reveal{
   .lightbox-content{
@@ -37,5 +35,14 @@ html.is-reveal-open body{
 }
 html.is-reveal-open,
 html.is-reveal-open body{
+  //allow users to select content in the modal
   user-select: inherit;
+  //foundation-defaults to position: relative, which moves the background content to the top of the page. we don't want that.
+  position: static;
+  //make sure page body stays centered when modal is open
+  width:100%;
+}
+//prevent page content from being hidden when modal is open
+body.is-reveal-open.no-scroll{
+  height:auto;
 }
