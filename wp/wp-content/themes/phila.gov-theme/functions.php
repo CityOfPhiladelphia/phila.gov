@@ -1439,3 +1439,13 @@ function phila_allow_spans($allowed){
   return $allowed;
 
 }
+
+add_filter('the_content', 'add_lightbox_rel');
+
+function add_lightbox_rel($content) {
+   global $post;
+   $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)(.*?)\">/i";
+   $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link" data-open="phila-lightbox">';
+   $content = preg_replace($pattern, $replacement, $content);
+   return $content;
+}
