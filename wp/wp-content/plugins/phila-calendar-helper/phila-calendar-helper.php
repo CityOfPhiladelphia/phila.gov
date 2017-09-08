@@ -2,7 +2,7 @@
 /*
 Plugin Name: Phila Calendar Helper
 Plugin URI: http://phila.gov
-Description: This plugin is a helper for for City of Philadelphia to meet the admin Simple Calendar requirements 
+Description: This plugin is a helper for for City of Philadelphia to meet the admin Simple Calendar requirements
 Version: 0.0.1
 Author: Oscar Lopez
 Author URI: http://phila.gov
@@ -50,15 +50,15 @@ require_once PHILA_CALENDAR_PATH . "classes/class.phila-calendar-options.php";
 require_once PHILA_CALENDAR_PATH . "classes/class.phila-calendar-main.php";
 require_once PHILA_CALENDAR_PATH . "classes/class.phila-calendar-config.php";
 
-function phcplugin_install() {
-	update_option( "phc_force_simple_calendar_admin", 1, false );
+function pch_plugin_install() {
+	update_option( "pch_force_simple_calendar_admin", 1, false );
 }
-register_activation_hook( PHILA_CALENDAR_MAIN_FILE, 'phcplugin_install' );
+register_activation_hook( PHILA_CALENDAR_MAIN_FILE, 'pch_plugin_install' );
 
-function phcplugin_unistall() {
-	delete_option( "phc_force_simple_calendar_admin" );
+function pch_plugin_unistall() {
+	delete_option( "pch_force_simple_calendar_admin" );
 	delete_option( JP_Easy_Admin_Notices::NOTICES_OPTION_KEY );
 }
-register_deactivation_hook( PHILA_CALENDAR_MAIN_FILE, 'phcplugin_unistall' );
+register_deactivation_hook( PHILA_CALENDAR_MAIN_FILE, 'pch_plugin_unistall' );
 
 new Phila_Calendar_Configuration();
