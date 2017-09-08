@@ -34,7 +34,7 @@ class Phila_Calendar_Main{
 		add_filter( 'parse_query', array( $this, 'phila_admin_posts_filter' ) );
 		add_action( 'restrict_manage_posts', array( $this, 'phila_admin_posts_filter_restrict_manage_posts' ) );
 
-		if( get_option( "phc_force_simple_calendar_admin", false ) ) {
+		if( get_option( "pch_force_simple_calendar_admin", false ) ) {
 			add_filter( 'register_post_type_args', array( $this, 'modify_wordpress_post_types' ), 20, 2 );
 		}
 	}
@@ -44,7 +44,7 @@ class Phila_Calendar_Main{
 	 *
 	 * @param $args post type arguments
 	 * @param $post_type post type name
-	 * @return Array 
+	 * @return Array
 	 */
 	public function modify_wordpress_post_types( $args = array(), $post_type ){
 		if( $post_type === "calendar" ) {
@@ -62,18 +62,18 @@ class Phila_Calendar_Main{
 
 		return $args;
 	}
-	
+
 
 	public function phila_admin_posts_filter( $wp_query ) {
 		global $pagenow;
 
-		if( is_admin() && 'edit.php' === $pagenow 
+		if( is_admin() && 'edit.php' === $pagenow
 			&& 'calendar' === $this->get_current_post_type() ) {
 
 			global $wpdb;
 			$IDs = $wpdb->get_col( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_name = %s OR post_name = %s",
 				'master-list-calendar', 'master-grid-calendar' ) );
-			
+
 			if( is_array( $IDs ) ) {
 				if( isset( $_GET['show'] ) && $_GET['show'] === 'masters' ) {
 					$wp_query->query_vars['post__in'] = $IDs;
@@ -82,13 +82,13 @@ class Phila_Calendar_Main{
 				}
 			}
 		}
-	
+
 		return $wp_query;
 	}
 
 	public function phila_admin_posts_filter_restrict_manage_posts() {
 		global $pagenow;
-		if( is_admin() && 'edit.php' === $pagenow 
+		if( is_admin() && 'edit.php' === $pagenow
 			&& 'calendar' === $this->get_current_post_type() ) {
 		?>
 		<select name="show" id="show">
@@ -191,7 +191,7 @@ class Phila_Calendar_Main{
 
 				$this->set_actions();
 			}
-			
+
 		}
 	}
 
@@ -269,7 +269,7 @@ class Phila_Calendar_Main{
 		 * We check if it is a master post and update public sub-posts related to it.
 		 */
 		global $master_list, $master_grid;
-		if( ( isset( $master_list ) && $master_list[ 'ID' ] !== $post_id ) 
+		if( ( isset( $master_list ) && $master_list[ 'ID' ] !== $post_id )
 			&& ( isset( $master_grid ) && $master_grid[ 'ID' ] !== $post_id ) ) {
 			return false;
 		}
@@ -279,8 +279,8 @@ class Phila_Calendar_Main{
 		 if( "calendar" !== $post->post_type ) {
 			 return false;
 		 }
-		 
-		 if( "master-list-calendar" == $post->post_name 
+
+		 if( "master-list-calendar" == $post->post_name
 			|| "master-grid-calendar" == $post->post_name ) {
 				$this->update_calendars_by_master( $post );
 		 }
@@ -359,7 +359,7 @@ class Phila_Calendar_Main{
 				'menu_position'      => null,
 				'menu_icon'          => 'dashicons-calendar',
 				'register_meta_box_cb' => array($this, 'phila_calendar_add_metaboxes'),
-				'supports'           => array( 'title', 'author' )
+				'supports'           => array( 'title' )
 			);
 
 			register_post_type( PHILA_CALENDAR_POST_TYPE, $args );
@@ -397,17 +397,17 @@ class Phila_Calendar_Main{
 
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'phila_calendar_google_input_box', 'phila_calendar_google_input_nonce' );
- 
+
 		// Use get_post_meta to retrieve an existing value from the database.
 		$calendar_id = $this->get_phila_calendar_meta_id( $post->ID );
-		
+
 		// Display the form, using the current value.
 		?>
 		<label for="phila_calendar_google_calendar_id">
 			<?php _e( 'Google Calendar ID:', PHILA_CALENDAR_DOMAIN ); ?>
 		</label>
 		<input type="text" id="phila_calendar_google_calendar_id" name="phila_calendar_google_calendar_id" value="<?php echo esc_attr( $calendar_id ); ?>" style="width: 100%;" required />
-		
+
 		<!-- This funcionality is going to be added in the future -->
 		<div style="display: none; visibility: hidden; opacity: 0; height: 0; width: 0;">
 			<p>Calendar Style</p>
@@ -472,7 +472,7 @@ class Phila_Calendar_Main{
 	 * @return void
 	 */
 	public function clone_master_calendar( $layout = 'list', $post_related ) {
-		
+
 		if( ! isset($post_related) || ! is_a( $post_related, 'WP_Post' ) ) {
 			return null;
 		}
@@ -506,7 +506,7 @@ class Phila_Calendar_Main{
 				unset( $master["comment_count"] );
 
 				$duplicate_id = wp_insert_post( $master );
-				
+
 				$taxonomies = get_object_taxonomies( $master["post_type"] );
 				foreach ( $taxonomies as $taxonomy ) {
 					$terms = wp_get_post_terms( $post_id, $taxonomy, array( 'fields' => 'names' ) );
@@ -563,7 +563,7 @@ class Phila_Calendar_Main{
 		$taxonomies = get_object_taxonomies( $master["post_type"] );
 		foreach ( $taxonomies as $taxonomy ) {
 			wp_set_object_terms( $post_id, null, $taxonomy );
-			
+
 			$terms = wp_get_post_terms( $master["ID"], $taxonomy, array( 'fields' => 'names' ) );
 			wp_set_object_terms( $post_id, $terms, $taxonomy );
 		}
@@ -575,15 +575,15 @@ class Phila_Calendar_Main{
 				update_post_meta( $post_id, $key, maybe_unserialize( $value[0] ) );
 			}
 		}
-		
+
 		return $post_id;
 	}
 
 	/**
 	 * This functions takes an existing Simple Calendar Post from a Simple Calendar Master Post
-	 * If it gets a "from_post" value, it should be an object and it means we have to update the post_author, 
+	 * If it gets a "from_post" value, it should be an object and it means we have to update the post_author,
 	 * post_title, post_name, post_date and post_date_gmt from this given post.
-	 * 
+	 *
 	 * @param object $post
 	 * @param string $layout
 	 * @param object $from_post
@@ -608,10 +608,10 @@ class Phila_Calendar_Main{
 		if( empty( $master ) ) {
 			$master = self::get_master_calendar( $layout );
 		}
-		
+
 		if ( ! empty( $master ) ) {
 			$postarr = array('ID' => $post->ID);
-			
+
 			if( is_a( $from_post, 'WP_Post' ) ) {
 				$postarr['post_author']    = $from_post->post_author;
 				$postarr['post_title']     = $from_post->post_title;
@@ -651,23 +651,23 @@ class Phila_Calendar_Main{
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return $post_id;
 		}
- 
+
 		/*
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
 		 */
-		 
+
 		 $_is_quick_edit = ( isset( $_POST['_inline_edit'] ) ) ? true : false;
-		 
+
 		 if( ! $_is_quick_edit ) {
 
 			// Check if our nonce is set.
 			if ( ! isset( $_POST['phila_calendar_google_input_nonce'] ) ) {
 				return $post_id;
 			}
-	
+
 			$nonce = $_POST['phila_calendar_google_input_nonce'];
-	
+
 			// Verify that the nonce is valid.
 			if ( ! wp_verify_nonce( $nonce, 'phila_calendar_google_input_box' ) ) {
 				return $post_id;
@@ -680,12 +680,12 @@ class Phila_Calendar_Main{
 			}
 
 		 }
- 
+
 		// Check the user's permissions.
 		if ( ! current_user_can( 'edit_posts', $post_id ) ) {
 			return $post_id;
 		}
- 
+
 		/* OK, it's safe for us to save the data now. */
 
 		// Sanitize the user input.
@@ -701,11 +701,11 @@ class Phila_Calendar_Main{
 
 			return $post_id;
 		}
-		
+
 
 		$calendar_ids    = $this->get_simple_calendar_related_id( $post_id );
 		$cloned_post_ids = array();
-		
+
 		$this->unset_actions();
 		$attempt         = '';
 		if( ! is_array( $calendar_ids ) ) {
@@ -739,7 +739,7 @@ class Phila_Calendar_Main{
 				simcal_delete_feed_transients($cloned_post_ids['grid']);
 				$attempt = 'Update. meta exists, post exists, it is correct post type';
 			}
-		   
+
 			if( $do_list ) {
 				$attempt = 'Update. meta exists, post doesn\'t exists or is a wrong type, LIST';
 				$cloned_post_ids['list'] = $this->clone_master_calendar( 'list', $post );
@@ -755,7 +755,7 @@ class Phila_Calendar_Main{
 		{
 			$message = __( 'ATTENTION! We couldn\'t create the calendar relation with Simple Calendar', PHILA_CALENDAR_DOMAIN ) . '<br>' . __( 'Please try again doing click on "Publish" if error persists please contact your web administrator.', PHILA_CALENDAR_DOMAIN );
 			jp_notices_add_error($message);
-			
+
 			// Web log the error for future purposes
 			log_me( array( 'Object' => $this, 'message' => 'There was an error duplicating calendar master from Simple Calendar', 'Phila Calendar Post' => $post, 'Attempt' => $attempt ) );
 		}else{
