@@ -17,31 +17,31 @@ class Phila_Calendar_Options {
 			'Phila Calendar',
 			'Phila Calendar',
 			'manage_options',
-			'phc_options',
+			'pch_options',
 			array( $this, 'content_custom_options' ) 
 		);
 	}
  
 	function register_settings(){
 		register_setting( 
-			'phc_plugin_options',
-			'phc_force_simple_calendar_admin',
+			'pch_plugin_options',
+			'pch_force_simple_calendar_admin',
 			array( $this, 'check_checkbox_true' )
 		);
 
 		add_settings_section( 
-			'phc_options_section',
+			'pch_options_section',
 			'Main Settings',
 			false,
-			'phc_options'
+			'pch_options'
 		);
 
 		add_settings_field( 
-			'phc_force_simple_calendar_admin',
+			'pch_force_simple_calendar_admin',
 			'Force Simple Calendar to be modified only by admin',
-			array( $this, 'phc_checkboxes' ),
-			'phc_options',
-			'phc_options_section'
+			array( $this, 'pch_checkboxes' ),
+			'pch_options',
+			'pch_options_section'
 		);
 	}
 
@@ -49,11 +49,11 @@ class Phila_Calendar_Options {
 		return ( $value == 1 ) ? 1 : 0;
 	}
 
-	 function phc_checkboxes( $args = array() ) {
-		$checked = get_option( "phc_force_simple_calendar_admin", array() );
+	 function pch_checkboxes( $args = array() ) {
+		$checked = get_option( "pch_force_simple_calendar_admin", array() );
 		?>
 		<label>
-			<input type="checkbox" name="phc_force_simple_calendar_admin" id="phc_force_simple_calendar_admin" value="1" <?php checked( $checked, 1 ); ?> />
+			<input type="checkbox" name="pch_force_simple_calendar_admin" id="pch_force_simple_calendar_admin" value="1" <?php checked( $checked, 1 ); ?> />
 			Yes
 		</label>
 		<?php
@@ -65,9 +65,9 @@ class Phila_Calendar_Options {
 			<h1>Phila calendar configuration</h1>
 			<form method="post" action="options.php">
 			<?php
-				settings_fields( 'phc_plugin_options' );
+				settings_fields( 'pch_plugin_options' );
  
-				do_settings_sections( 'phc_options' );
+				do_settings_sections( 'pch_options' );
 				submit_button();
 			?>
 			</form>
