@@ -72,7 +72,7 @@ class Phila_Calendar_Main{
 
 			global $wpdb;
 			$IDs = $wpdb->get_col( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_name = %s OR post_name = %s",
-				'master-list-calendar', 'master-grid-calendar' ) );
+				'master-list-calendar' ) );
 
 			if( is_array( $IDs ) ) {
 				if( isset( $_GET['show'] ) && $_GET['show'] === 'masters' ) {
@@ -259,18 +259,14 @@ class Phila_Calendar_Main{
 				if( is_numeric( $to_update_ids['list'] ) && $post_id != $to_update_ids['list']  ) {
 					update_post_meta( $to_update_ids['list'], "_google_calendar_id", $calendar_id );
 				}
-				if( is_numeric( $to_update_ids['grid'] ) && $post_id != $to_update_ids['grid'] ) {
-					update_post_meta( $to_update_ids['grid'], "_google_calendar_id", $calendar_id );
-				}
 			}
 		}
 
 		/**
 		 * We check if it is a master post and update public sub-posts related to it.
 		 */
-		global $master_list, $master_grid;
-		if( ( isset( $master_list ) && $master_list[ 'ID' ] !== $post_id )
-			&& ( isset( $master_grid ) && $master_grid[ 'ID' ] !== $post_id ) ) {
+		global $master_list;
+		if( ( isset( $master_list ) && $master_list[ 'ID' ] !== $post_id ) ) {
 			return false;
 		}
 
@@ -280,8 +276,7 @@ class Phila_Calendar_Main{
 			 return false;
 		 }
 
-		 if( "master-list-calendar" == $post->post_name
-			|| "master-grid-calendar" == $post->post_name ) {
+		 if( "master-list-calendar" == $post->post_name ) {
 				$this->update_calendars_by_master( $post );
 		 }
 	}
@@ -477,15 +472,11 @@ class Phila_Calendar_Main{
 			return null;
 		}
 
-		global $master_grid, $master_list;
+		global $master_list;
 
 		$master = null;
 		if( 'list' === $layout && ! empty( $master_list ) ) {
 			$master = $master_list;
-		}
-
-		if( 'grid' === $layout && ! empty( $master_grid ) ) {
-			$master = $master_grid;
 		}
 
 		if( empty( $master ) ) {
@@ -496,7 +487,6 @@ class Phila_Calendar_Main{
 
 			$post_id = $master["ID"];
 			if ( 'calendar' == $master["post_type"] ) {
-				$master["post_author"] = $post_related->post_author;
 				$master["post_title"]  = $post_related->post_title;
 				$master["post_status"] = $post_related->post_status;
 				$master["post_name"]   = $post_related->post_name . '-' . $layout;
@@ -594,15 +584,11 @@ class Phila_Calendar_Main{
 			return null;
 		}
 
-		global $master_grid, $master_list;
+		global $master_list;
 
 		$master = null;
 		if( 'list' === $layout && ! empty( $master_list ) ) {
 			$master = $master_list;
-		}
-
-		if( 'grid' === $layout && ! empty( $master_grid ) ) {
-			$master = $master_grid;
 		}
 
 		if( empty( $master ) ) {
@@ -613,7 +599,6 @@ class Phila_Calendar_Main{
 			$postarr = array('ID' => $post->ID);
 
 			if( is_a( $from_post, 'WP_Post' ) ) {
-				$postarr['post_author']    = $from_post->post_author;
 				$postarr['post_title']     = $from_post->post_title;
 				$postarr['post_name']      = $from_post->post_name . '-' . $layout;
 				$postarr['post_status']    = $from_post->post_status;
@@ -704,6 +689,7 @@ class Phila_Calendar_Main{
 
 
 		$calendar_ids    = $this->get_simple_calendar_related_id( $post_id );
+    var_dump($calendar_ids);
 		$cloned_post_ids = array();
 
 		$this->unset_actions();
@@ -711,7 +697,6 @@ class Phila_Calendar_Main{
 		if( ! is_array( $calendar_ids ) ) {
 			//There is not calendar related post, then I have to create it.
 			$cloned_post_ids['list'] = $this->clone_master_calendar( 'list', $post );
-			$cloned_post_ids['grid'] = $this->clone_master_calendar( 'grid', $post );
 			$attempt = 'Clone. meta doesn\'t Exists';
 		}else{
 			$cloned_post_list = get_post( $calendar_ids['list'] );
@@ -727,47 +712,19 @@ class Phila_Calendar_Main{
 				$attempt = 'Update. meta exists, post exists, it is correct post type';
 			}
 
-			$cloned_post_grid = get_post( $calendar_ids['grid'] );
-			$do_grid = false;
-			if( ! is_a( $cloned_post_grid, 'WP_Post' ) ) {
-				$do_grid = true;
-			}elseif( $cloned_post_grid->post_type !== 'calendar' ){
-				$do_grid = true;
-			}else{
-				//Meta ID exists, the post exists and it is the correct post type (Simple Calendar)
-				$cloned_post_ids['grid'] = $this->update_post_from_master( get_post( $calendar_ids['grid'] ), 'grid', $post );
-				simcal_delete_feed_transients($cloned_post_ids['grid']);
-				$attempt = 'Update. meta exists, post exists, it is correct post type';
-			}
-
 			if( $do_list ) {
 				$attempt = 'Update. meta exists, post doesn\'t exists or is a wrong type, LIST';
 				$cloned_post_ids['list'] = $this->clone_master_calendar( 'list', $post );
 			}
+      var_dump($cloned_post_ids['list']);
 
-			if( $do_list ) {
-				$attempt = 'Update. meta exists, post doesn\'t exists or is a wrong type, GRID';
-				$cloned_post_ids['grid'] = $this->clone_master_calendar( 'grid', $post );
-			}
-		}
-
-		if( ! is_numeric( $cloned_post_ids['list'] ) || ! is_numeric( $cloned_post_ids['grid'] ) )
-		{
-			$message = __( 'ATTENTION! We couldn\'t create the calendar relation with Simple Calendar', PHILA_CALENDAR_DOMAIN ) . '<br>' . __( 'Please try again doing click on "Publish" if error persists please contact your web administrator.', PHILA_CALENDAR_DOMAIN );
-			jp_notices_add_error($message);
-
-			// Web log the error for future purposes
-			log_me( array( 'Object' => $this, 'message' => 'There was an error duplicating calendar master from Simple Calendar', 'Phila Calendar Post' => $post, 'Attempt' => $attempt ) );
-		}else{
 			$cloned_post_ids['phila'] = $post_id;
 			update_post_meta( $cloned_post_ids['list'], '_google_calendar_id', base64_encode( $google_calendar_id ) );
-			update_post_meta( $cloned_post_ids['grid'], '_google_calendar_id', base64_encode( $google_calendar_id ) );
 
 
 			update_post_meta( $cloned_post_ids['list'], "_phila_calendar_calendar_id", $cloned_post_ids );
-			update_post_meta( $cloned_post_ids['grid'], "_phila_calendar_calendar_id", $cloned_post_ids );
 			update_post_meta( $post_id, "_phila_calendar_calendar_id", $cloned_post_ids );
-		}
+
 
 		// Update the meta field.
 		if( ! $_is_quick_edit ) {
@@ -775,6 +732,7 @@ class Phila_Calendar_Main{
 		}
 		$this->set_actions();
 	}
+}
 
 	/**
 	 * Get a required master Simple Calendar object
@@ -784,9 +742,6 @@ class Phila_Calendar_Main{
 	 */
 	public static function get_master_calendar( $layout = 'list' ) {
 		$slug = 'master-list-calendar';
-		if( 'grid' == $layout ) {
-			$slug = 'master-grid-calendar';
-		}
 
 		$args = array(
 			'name'        => $slug,
@@ -813,24 +768,13 @@ class Phila_Calendar_Main{
 			return false;
 		};
 
-		global $master_grid, $master_list;
+		global $master_list;
 		$master_list = self::get_master_calendar( 'list' );
-		$master_grid = self::get_master_calendar( 'grid' );
 
 		if( empty( $master_list ) ) {
 			add_action( 'admin_notices', function() {
 				echo '<div class="error"><p>' .
 						__( 'ATTENTION! please tell your web administrator that "Simple Calendar Master List is missing!", this plugin only works if the calendar master list page is created.', PHILA_CALENDAR_DOMAIN ) .
-						'<br>' .
-						__( 'We encourage you not to keep using this service until the missing resources are created.', PHILA_CALENDAR_DOMAIN ) .
-						'</p></div>';
-			} );
-		}
-
-		if( empty( $master_grid ) ) {
-			add_action( 'admin_notices', function() {
-				echo '<div class="error"><p>' .
-						__( 'ATTENTION! please tell your web administrator that "Simple Calendar Master Grid is missing!", this plugin only works if the calendar master grid page is created.', PHILA_CALENDAR_DOMAIN ) .
 						'<br>' .
 						__( 'We encourage you not to keep using this service until the missing resources are created.', PHILA_CALENDAR_DOMAIN ) .
 						'</p></div>';
