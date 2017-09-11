@@ -11,7 +11,10 @@ rm -f wp-config.php wp/wp-config.php
 if [ "$PHILA_TEST" ]; then
   read -r -d '' DEBUG <<EOF
 /* Debug true on test instances */
-define('WP_DEBUG', true);
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', true );
+
 EOF
 fi
 
