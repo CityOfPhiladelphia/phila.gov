@@ -70,13 +70,9 @@ if ( !empty( $row_one_col_two_module ) ){
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
         <?php echo do_shortcode('[recent-posts list posts="3"]'); ?>
       <?php else: ?>
-        <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+        <?php get_template_part( 'partials/departments/full', 'row-blog' ); ?>
       <?php endif;?>
       </div>
-      <?php
-        $see_all_URL = '/posts/' . $category_slug . '/';
-        $see_all_content_type = 'posts';
-        include( locate_template( 'partials/content-see-all.php' ) );?>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_news_posts' ): ?>
   <!-- Begin Column One -->
