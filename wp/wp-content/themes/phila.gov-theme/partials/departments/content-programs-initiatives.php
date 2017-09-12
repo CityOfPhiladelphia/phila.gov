@@ -28,7 +28,7 @@
             $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : ''; ?>
             <!-- Blog Content -->
             <div class="mvl">
-              <?php get_template_part( 'partials/departments/full', 'row-blog' ); ?>
+              <?php get_template_part( 'partials/departments/row', 'blog' ); ?>
             </div>
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
