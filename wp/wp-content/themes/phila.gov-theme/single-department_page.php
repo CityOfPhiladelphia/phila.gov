@@ -5,24 +5,6 @@
  * @package phila-gov
  */
 
-global $post;
-
-$children = get_posts( array(
-  'post_parent' => $post->ID,
-  'orderby' => 'menu_order',
-  'order' => 'ASC',
-  'post_type' => 'department_page',
-  'post_status' => 'publish'
-));
-
-$ancestors = get_post_ancestors($post);
-
-//if there are grandchildren, don't redirect those.
-if ( $children && count( $ancestors ) == 1 ) {
-  $firstchild = $children[0];
-  wp_redirect(get_permalink($firstchild->ID));
-  exit;
-}
 
 $user_selected_template = phila_get_selected_template();
 
