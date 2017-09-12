@@ -4,8 +4,7 @@ for users who do not have the PHILA_ADMIN capability */
 jQuery(document).ready(function($){
 
   //force top category to be checked all the time, unless the user has access to mutiple categories
-
-  if( !phila_WP_User.includes('multi_department_access') ) {
+  if( !phila_WP_User.includes('multi_department_access') && !phila_WP_User.includes('secondary_all_departments')) {
     var required_cat = $('#categorychecklist li:first-child input');
     if( !required_cat.attr('checked')  ) {
       required_cat.attr('checked','checked');
