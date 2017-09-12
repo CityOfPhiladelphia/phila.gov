@@ -1645,21 +1645,22 @@ $metabox_full_options_select = array(
  );
 
 $metabox_full_options = array(
- 'name' => 'Full Width Options',
- 'id'   => 'phila_full_options',
- 'type' => 'group',
- 'visible' => array(
-   'phila_grid_options',
-   '=',
-   'phila_grid_options_full'
- ),
- 'fields' => array(
-   $metabox_full_options_select,
-   array(
-     'id' => 'phila_blog_options',
-     'type' => 'group',
-     'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
-     'fields' => $meta_var_blogs,
+  'name' => 'Full Width Options',
+  'id'   => 'phila_full_options',
+  'type' => 'group',
+  'visible' => array(
+    'phila_grid_options',
+    '=',
+    'phila_grid_options_full'
+  ),
+  'fields' => array(
+    $metabox_full_options_select,
+    array(
+      'id' => 'phila_blog_options',
+      'type' => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
+      'fields' => array(   Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker( 'Category ID (optional)', 'phila_category'),
+     ),
    ),
    array(
      'id' => 'phila_full_width_calendar',
