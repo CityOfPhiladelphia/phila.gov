@@ -17,8 +17,6 @@ class Phila_Gov_Role_Administration {
 
     add_action('admin_head', array( $this, 'tinyMCE_edits' ) );
 
-    //add_filter( 'default_hidden_meta_boxes',  array( $this, 'phila_hide_non_admin_meta_boxes'), 10, 2 );
-
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
     add_filter( 'wp_dropdown_users_args', array( $this, 'add_subscribers_to_author_dropdown'), 10, 2 );
