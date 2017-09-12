@@ -30,7 +30,7 @@
         endif;
         ?>
         <?php $alt_title = isset( $service['alt_title'] ) ? $service['alt_title'] : ''; ?>
-        <div class="inside-border-group-item medium-<?php echo $columns ?> small-12 columns end">
+        <div class="inside-border-group-item medium-<?php echo $columns; ?> <?php echo ($item_count == '1') ? 'small-24' : 'small-12';?> columns end">
           <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
             <div class="valign-cell pal phl-l" data-equalizer-watch>
               <div><i class="fa <?php echo $service['phila_v2_icon'] ?> fa-2x" aria-hidden="true"></i></div>
