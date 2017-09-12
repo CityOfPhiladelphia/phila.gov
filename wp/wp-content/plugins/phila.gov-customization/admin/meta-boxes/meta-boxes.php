@@ -1659,7 +1659,7 @@ $metabox_full_options = array(
       'id' => 'phila_blog_options',
       'type' => 'group',
       'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
-      'fields' => array(   Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker( 'Category ID (optional)', 'phila_category'),
+      'fields' => array(   Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker( 'Select new categories', 'phila_category'),
      ),
    ),
    array(
