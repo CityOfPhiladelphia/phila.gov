@@ -24,7 +24,7 @@
         if ( $current_row_option == 'phila_blog_posts'): ?>
         <!-- Blog Content -->
           <section class="mvl">
-            <?php get_template_part( 'partials/departments/row', 'blog' ); ?>
+            <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
           </section>
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
@@ -103,7 +103,7 @@
             <!-- Blog Content -->
             <div class="large-16 columns">
               <div class="row">
-                <?php get_template_part( 'partials/departments/row', 'blog' ); ?>
+                <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
               </div>
             </div>
 
