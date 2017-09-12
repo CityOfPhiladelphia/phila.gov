@@ -84,6 +84,14 @@
         <section class="row">
           <?php echo do_shortcode('[recent-posts posts="3" category=" ' . $category_id .' "]'); ?>
         </section>
+
+        <?php
+        if ( empty( $blog_cat_override ) ) :
+          $see_all_URL = '/posts/' . $categories[0]->slug . '/';
+        $see_all_content_type = 'posts';
+        include( locate_template( 'partials/content-see-all.php' ) ); ?>
+        <?php endif; ?>
+
       <?php endif; ?>
 
       <?php get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta'); ?>
