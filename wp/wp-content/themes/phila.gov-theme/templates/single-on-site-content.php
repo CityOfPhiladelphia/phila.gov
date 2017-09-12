@@ -72,7 +72,7 @@
 
       <?php if ( $full_row_blog ): ?>
 
-        <?php get_template_part( 'partials/departments/full', 'row-blog' ); ?>
+        <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
 
       <?php endif; ?>
 
