@@ -70,7 +70,7 @@ if ( !empty( $row_one_col_two_module ) ){
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
         <?php echo do_shortcode('[recent-posts list posts="3"]'); ?>
       <?php else: ?>
-        <?php get_template_part( 'partials/departments/row', 'blog' ); ?>
+        <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
       <?php endif;?>
       </div>
     </div>
