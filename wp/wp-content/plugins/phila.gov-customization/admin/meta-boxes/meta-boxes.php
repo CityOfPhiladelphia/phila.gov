@@ -1151,15 +1151,6 @@ $meta_boxes[] = array(
 *
 **/
 
-// Blogs
-$meta_var_blogs = array(
-  array(
-    'name' => 'Category ID (optional)',
-    'id' => 'phila_category',
-    'type' => 'number',
-  ),
-);
-
 // Program and Initiatives
 $meta_var_programs_initiatives_images = array(
   'id' => 'phila_p_i_images',
