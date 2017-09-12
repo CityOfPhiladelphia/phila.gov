@@ -601,7 +601,7 @@ function phila_get_department_homepage_list(){
     'orderby' => 'title',
     'order' => 'asc',
   );
-
+  var_dump($full_department_list_args);
   return $full_department_list_args;
 }
 
@@ -739,7 +739,10 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     $cat_id_string = implode( ', ', $cat_ids );
 
-    $args = phila_get_department_homepage_list();
+    $args = array(
+      'post_type'=> 'department_page',
+      'posts_per_page' => -1
+    );
 
     $args['category__in'] = $cat_ids;
 
