@@ -601,7 +601,6 @@ function phila_get_department_homepage_list(){
     'orderby' => 'title',
     'order' => 'asc',
   );
-  var_dump($full_department_list_args);
   return $full_department_list_args;
 }
 
@@ -741,10 +740,9 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     $args = array(
       'post_type'=> 'department_page',
-      'posts_per_page' => -1
+      'posts_per_page' => -1,
+      'category__in'  => $cat_ids
     );
-
-    $args['category__in'] = $cat_ids;
 
     $get_links = new WP_Query( $args );
 
@@ -770,31 +768,28 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     if ( $byline == true ) {
       echo ' by ';
     }
-    //FIXME: Find a better way to identify category/url relationship
     foreach( $all_available_pages as $k=>$v ) {
 
       $formatted_v = str_replace( "&#8217;", "'", $v );
 
       foreach ( $cat_name as $name ) {
-
-        if( preg_match("/\b$name\b/i", $formatted_v ) ) {
+        if( preg_match("/^$name$/", $formatted_v ) ) {
 
           $final_list[$k] = $v;
 
         }
       }
     }
-
     foreach ( $final_list as $k => $v ){
       $markup = '<a href="' . $k . '">' . $v . '</a>';
       $urls = basename( $k );
       array_push( $basename, $urls );
-      array_push( $full_links, $markup );
       array_push( $names, $v );
+
+      array_push( $full_links, $markup );
 
       if ( $name_list == true ) {
         $name_listed = str_replace( "&#8217;", "'", $names );
-
         return implode(', ',  $name_listed);
 
       }
