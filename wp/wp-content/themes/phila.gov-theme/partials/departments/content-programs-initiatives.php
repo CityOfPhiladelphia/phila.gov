@@ -27,13 +27,9 @@
           if ( $current_row_option == 'phila_blog_posts'):
             $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : ''; ?>
             <!-- Blog Content -->
-            <div class="row mvl">
-                <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
+            <div class="mvl">
+              <?php get_template_part( 'partials/departments/full', 'row-blog' ); ?>
             </div>
-            <?php $see_all_URL = '/posts/' . $blog_category ?>
-            <?php $see_all_content_type = 'posts'?>
-            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
             $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : ''; ?>
