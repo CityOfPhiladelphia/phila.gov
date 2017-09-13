@@ -23,12 +23,8 @@
         $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
         if ( $current_row_option == 'phila_blog_posts'): ?>
         <!-- Blog Content -->
-          <section class="row mvl">
-            <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
-            <?php $see_all_URL = '/posts/' . $category_slug . '/';
-            $see_all_content_type = 'posts';
-            include( locate_template( 'partials/content-see-all.php' ) );
-            ?>
+          <section class="mvl">
+            <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
           </section>
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
@@ -107,11 +103,8 @@
             <!-- Blog Content -->
             <div class="large-16 columns">
               <div class="row">
-                <?php echo do_shortcode('[recent-posts posts="3"]'); ?>
+                <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
               </div>
-              <?php $see_all_URL = '/posts/' . $category_slug . '/';
-              $see_all_content_type = 'posts';
-              include( locate_template( 'partials/content-see-all.php' ) );?>
             </div>
 
           <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>

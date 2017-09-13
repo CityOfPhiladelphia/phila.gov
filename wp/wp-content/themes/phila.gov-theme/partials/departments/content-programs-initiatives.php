@@ -24,16 +24,13 @@
           // Begin full width row
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
-          if ( $current_row_option == 'phila_blog_posts'):
-            $blog_category = isset( $current_row['phila_full_options']['phila_blog_options']['phila_category'] ) ? $current_row['phila_full_options']['phila_blog_options']['phila_category'] : ''; ?>
-            <!-- Blog Content -->
-            <div class="row mvl">
-                <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
-            </div>
-            <?php $see_all_URL = '/posts/' . $blog_category ?>
-            <?php $see_all_content_type = 'posts'?>
-            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+          if ( $current_row_option == 'phila_blog_posts'):?>
 
+            <!-- Blog Content -->
+            <div class="mvl">
+              <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']) ? $current_row['phila_full_options']['phila_get_post_cats'] : ''; ?>
+              <?php include( locate_template( 'partials/departments/row-posts.php' ) ); ?>
+            </div>
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
             $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : ''; ?>
@@ -170,17 +167,8 @@
         <section class="row mvl">
             <?php
               if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'):
-                $blog_category = isset( $current_row_option_one['phila_blog_options']['phila_category'] ) ? $current_row_option_one['phila_blog_options']['phila_category'] : '';
-              ?>
-              <!-- Blog Content -->
-              <div class="large-16 columns">
-                <div class="row">
-                  <?php echo do_shortcode('[recent-posts posts="3" category="' . $blog_category . '"]'); ?>
-                </div>
-                <?php $see_all_URL = '/posts/' . $blog_category ?>
-                <?php $see_all_content_type = 'posts'?>
-                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-              </div>
+                $blog_cat_override = isset( $current_row['phila_two_thirds_col_option']['phila_get_post_cats']) ? $current_row['phila_two_thirds_col_option']['phila_get_post_cats'] : '';
+                include(locate_template( 'partials/departments/row', 'posts') ); ?>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
