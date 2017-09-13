@@ -35,7 +35,7 @@ class RestrictCategories{
 		if ( is_admin() ) {
 			$post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : false;
 
-  			// If the page is the Posts screen, do our thing, otherwise chill
+				// If the page is the Posts screen, do our thing, otherwise chill
 			if ( $post_type == false || $post_type == 'post' )
 				add_action( 'admin_init', array( &$this, 'posts' ) );
 
@@ -254,28 +254,27 @@ class RestrictCategories{
 	 */
 	public function get_logins(){
 		$users = array();
-
 		$args = array();
-    //KD edit - 8/31/17 - use display name instead of username & allow search on any part of name, instead of only exact usernames
-		if ( isset( $_POST['rc-search-users'] ) ) {
-      global $wpdb;
-			$search = ( isset( $_REQUEST['rc-search'] ) && !empty( $_REQUEST['rc-search'] ) ) ? esc_html( $_POST['rc-search'] ) : '';
-			$args = array( 'search' => $search );
-      $results = $wpdb->get_results( "SELECT * FROM wp_users WHERE display_name LIKE '%{$search}%'" );
-		}
-		$blogusers = get_users( $args );
 
-		foreach ( $blogusers as $login ) {
-  		$users[ $login->display_name ] = $login->name;
-		}
-    if ( isset($results) ){
-      foreach ($results as $result) {
-        $users[$result->display_name] = $result->user_login;
-      }
-    }
-		return $users;
-	}
 
+		//KD edit - 8/31/17 - use display name instead of username & allow search on any part of name, instead of only exact usernames
+			if ( isset( $_POST['rc-search-users'] ) ) {
+				global $wpdb;
+				$search = ( isset( $_REQUEST['rc-search'] ) && !empty( $_REQUEST['rc-search'] ) ) ? esc_html( $_POST['rc-search'] ) : '';
+				$args = array( 'search' => $search );
+				$results = $wpdb->get_results( "SELECT * FROM wp_users WHERE display_name LIKE '%{$search}%'" );
+			}
+			$blogusers = get_users( $args );
+			foreach ( $blogusers as $login ) {
+				$users[ $login->display_name ] = $login->user_nicename;
+			}
+			if ( isset($results) ){
+				foreach ($results as $result) {
+					$users[$result->display_name] = $result->user_nicename;
+				}
+			}
+			return $users;
+		}
 
 	/**
 	 * Adds the Screen Options tab
@@ -315,6 +314,7 @@ class RestrictCategories{
 				$options[ $k ] = $v;
 			}
 		}
+
 		return $options;
 	}
 
@@ -368,65 +368,65 @@ class RestrictCategories{
 			?>
 			</h2>
 
-            <h2 class="nav-tab-wrapper">
-            	<a href="<?php echo $roles_tab; ?>" class="nav-tab <?php echo ( $tab == 'roles' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Roles', 'restrict-categories' ); ?></a>
-                <a href="<?php echo $users_tab; ?>" class="nav-tab <?php echo ( $tab == 'users' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Users', 'restrict-categories' ); ?></a>
-            </h2>
+						<h2 class="nav-tab-wrapper">
+							<a href="<?php echo $roles_tab; ?>" class="nav-tab <?php echo ( $tab == 'roles' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Roles', 'restrict-categories' ); ?></a>
+								<a href="<?php echo $users_tab; ?>" class="nav-tab <?php echo ( $tab == 'users' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Users', 'restrict-categories' ); ?></a>
+						</h2>
 
 			<?php
-                // Create a new instance of our user/roles boxes class
-                $boxes = new RestrictCats_User_Role_Boxes();
+								// Create a new instance of our user/roles boxes class
+								$boxes = new RestrictCats_User_Role_Boxes();
 
-                if ( $tab == 'roles' ) :
+								if ( $tab == 'roles' ) :
 
-                	$rc_options = $this->populate_opts();
+									$rc_options = $this->populate_opts();
 
-            ?>
-            	<form method="post" action="options.php">
-	                <fieldset>
-	                    <?php
-	                    	settings_fields( 'RestrictCats_options_group' );
+						?>
+							<form method="post" action="options.php">
+									<fieldset>
+											<?php
+												settings_fields( 'RestrictCats_options_group' );
 
-	                        // Create boxes for Roles
-	                        $boxes->start_box( get_option( 'RestrictCats_options' ), $rc_options, 'RestrictCats_options' );
-	                    ?>
-	                </fieldset>
-	                <?php submit_button(); ?>
-            	</form>
+													// Create boxes for Roles
+													$boxes->start_box( get_option( 'RestrictCats_options' ), $rc_options, 'RestrictCats_options' );
+											?>
+									</fieldset>
+									<?php submit_button(); ?>
+							</form>
 			<?php
 				elseif ( $tab == 'users' ) :
 
 					$rc_user_options = $this->populate_user_opts();
-            ?>
-            	<form method="post" action="options-general.php?page=restrict-categories&type=users">
-            		<fieldset>
+						?>
+							<form method="post" action="options-general.php?page=restrict-categories&type=users">
+								<fieldset>
 						<p style="float: left; margin-top:8px;">Selecting categories for a user will <em>override</em> the categories you have chosen for that user's role.</p>
 						<p style="float:right; margin-top:8px;">
 							<input type="search" id="rc-search-users" name="rc-search" value="">
 							<?php submit_button( __( 'Search Users', 'restrict-categories' ), 'secondary', 'rc-search-users', false ); ?>
 						</p>
-            		</fieldset>
+								</fieldset>
 				</form>
 
 				<form method="post" action="options.php">
-	                <fieldset>
-	                    <?php
-	                    	settings_fields( 'RestrictCats_user_options_group' );
+									<fieldset>
+											<?php
+												settings_fields( 'RestrictCats_user_options_group' );
 
-	                        // Create boxes for Users
-	                        $boxes->start_box( get_option( 'RestrictCats_user_options' ), $rc_user_options, 'RestrictCats_user_options' );
-	                    ?>
-	                </fieldset>
-	                <?php submit_button(); ?>
-                </form>
-                <?php endif; ?>
+													// Create boxes for Users
+													$boxes->start_box( get_option( 'RestrictCats_user_options' ), $rc_user_options, 'RestrictCats_user_options' );
+											?>
+									</fieldset>
+									<?php submit_button(); ?>
+								</form>
+								<?php endif; ?>
 
-            <h3><?php _e('Reset to Default Settings', 'restrict-categories'); ?></h3>
+						<h3><?php _e('Reset to Default Settings', 'restrict-categories'); ?></h3>
 			<p><?php _e('This option will reset all changes you have made to the default configuration.  <strong>You cannot undo this process</strong>.', 'restrict-categories'); ?></p>
 			<form method="post">
 				<?php submit_button( __( 'Reset', 'restrict-categories' ), 'secondary', 'reset' ); ?>
-                <input type="hidden" name="action" value="reset" />
-                <?php wp_nonce_field( 'rc-reset-nonce' ); ?>
+								<input type="hidden" name="action" value="reset" />
+								<?php wp_nonce_field( 'rc-reset-nonce' ); ?>
 			</form>
 		</div>
 	<?php
@@ -498,10 +498,10 @@ class RestrictCategories{
 
 						$term = get_term_by( 'slug', $category, 'category' );
 
-            //EDIT - after WP update 4.8, if get_term_by was false, editor role threw SQL exception. Checking if the term exists corrects it.
-            if ($term) {
-              $term_id = $term->term_id;
-            }
+						//EDIT - after WP update 4.8, if get_term_by was false, editor role threw SQL exception. Checking if the term exists corrects it.
+						if ($term) {
+							$term_id = $term->term_id;
+						}
 
 						// If WPML is installed, return the translated ID
 						if ( function_exists( 'icl_object_id' ) )
@@ -523,9 +523,9 @@ class RestrictCategories{
 	 * @global $cat_list string The global comma-separated list of restricted categories.
 	 */
 	public function cat_filters( $categories ){
-  //$this->var = $categories;
+	//$this->var = $categories;
 		// Clean up the category list
-    //by commenting out this line, we allow for an OR instead of an AND on category selection
+		//by commenting out this line, we allow for an OR instead of an AND on category selection
 		//$this->cat_list = rtrim( $categories, ',' );
 
 		// If there are no categories, don't do anything
@@ -578,7 +578,7 @@ class RestrictCategories{
 	 */
 	public function exclusions(){
 
-    $this->cat_list = rtrim($this->cat_list, ",");
+		$this->cat_list = rtrim($this->cat_list, ",");
 
 
 		$excluded = " AND ( t.term_id IN ( $this->cat_list ) OR tt.taxonomy NOT IN ( 'category' ) )";
@@ -675,12 +675,12 @@ class RestrictCats_User_Role_Boxes {
 				<div class="postbox">
 					<h3 class="hndle"><span><?php echo $value['name']; ?></span></h3>
 
-	                <div class="inside" style="padding:0 10px;">
+									<div class="inside" style="padding:0 10px;">
 						<div class="taxonomydiv">
-	                    	<ul id="taxonomy-category-tabs" class="taxonomy-tabs add-menu-item-tabs">
-	                        	<li<?php echo ( 'all' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo add_query_arg( $id . '-tab', 'all', $roles_tab ); ?>" class="nav-tab-link">View All</a></li>
-	                            <li<?php echo ( 'popular' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo $users_tab; ?>" class="nav-tab-link">Most Used</a></li>
-	                        </ul>
+												<ul id="taxonomy-category-tabs" class="taxonomy-tabs add-menu-item-tabs">
+														<li<?php echo ( 'all' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo add_query_arg( $id . '-tab', 'all', $roles_tab ); ?>" class="nav-tab-link">View All</a></li>
+															<li<?php echo ( 'popular' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo $users_tab; ?>" class="nav-tab-link">Most Used</a></li>
+													</ul>
 							<div id="<?php echo $id; ?>-all" class="tabs-panel <?php echo ( 'all' == $current_tab ? 'tabs-panel-active' : 'tabs-panel-inactive' ); ?>">
 								<ul class="categorychecklist form-no-clear">
 								<?php
@@ -698,11 +698,11 @@ class RestrictCats_User_Role_Boxes {
 
 									$disable_checkbox = ( 'all' == $current_tab ) ? '' : 'disabled="disabled"';
 								?>
-	                            <input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
+															<input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
 								</ul>
 							</div>
-	                        <div id="<?php echo $id; ?>-popular" class="tabs-panel <?php echo ( 'popular' == $current_tab ? 'tabs-panel-active' : 'tabs-panel-inactive' ); ?>">
-	                        	<ul class="categorychecklist form-no-clear">
+													<div id="<?php echo $id; ?>-popular" class="tabs-panel <?php echo ( 'popular' == $current_tab ? 'tabs-panel-active' : 'tabs-panel-inactive' ); ?>">
+														<ul class="categorychecklist form-no-clear">
 								<?php
 									wp_list_categories(
 										array(
@@ -720,12 +720,12 @@ class RestrictCats_User_Role_Boxes {
 
 									$disable_checkbox = ( 'popular' == $current_tab ) ? '' : 'disabled="disabled"';
 								?>
-	                            <input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
+															<input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
 								</ul>
 							</div>
 						</div>
 
-	                    <?php
+											<?php
 							$shift_default = array_diff( $selected, array( 'RestrictCategoriesDefault' ) );
 							$selected = array_values( $shift_default );
 						?>

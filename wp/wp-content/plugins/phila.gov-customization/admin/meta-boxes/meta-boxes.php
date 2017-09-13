@@ -1151,15 +1151,6 @@ $meta_boxes[] = array(
 *
 **/
 
-// Blogs
-$meta_var_blogs = array(
-  array(
-    'name' => 'Category ID (optional)',
-    'id' => 'phila_category',
-    'type' => 'number',
-  ),
-);
-
 // Program and Initiatives
 $meta_var_programs_initiatives_images = array(
   'id' => 'phila_p_i_images',
@@ -1645,22 +1636,24 @@ $metabox_full_options_select = array(
  );
 
 $metabox_full_options = array(
- 'name' => 'Full Width Options',
- 'id'   => 'phila_full_options',
- 'type' => 'group',
- 'visible' => array(
-   'phila_grid_options',
-   '=',
-   'phila_grid_options_full'
- ),
- 'fields' => array(
-   $metabox_full_options_select,
-   array(
-     'id' => 'phila_blog_options',
-     'type' => 'group',
-     'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
-     'fields' => $meta_var_blogs,
-   ),
+  'name' => 'Full Width Options',
+  'id'   => 'phila_full_options',
+  'type' => 'group',
+  'visible' => array(
+    'phila_grid_options',
+    '=',
+    'phila_grid_options_full'
+  ),
+  'fields' => array(
+    $metabox_full_options_select,
+    array(
+      'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
+      'id'  => 'phila_get_post_cats',
+      'type' => 'group',
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+      ),
+     ),
    array(
      'id' => 'phila_full_width_calendar',
      'type' => 'group',
@@ -1730,10 +1723,12 @@ $metabox_thirds_option_one = array(
         ),
     ),
     array(
-      'id' => 'phila_blog_options',
-      'type' => 'group',
       'visible' => array('phila_two_thirds_col_option', '=', 'phila_blog_posts'),
-      'fields' => $meta_var_blogs,
+      'id'  => 'phila_get_post_cats',
+      'type' => 'group',
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+      ),
     ),
     array(
       'id'   => 'phila_custom_text',
