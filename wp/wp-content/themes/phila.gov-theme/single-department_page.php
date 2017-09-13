@@ -4,8 +4,26 @@
  *
  * @package phila-gov
  */
+ global $post;
+$content = $post->post_content;
 
+$children = get_posts( array(
+  'post_parent' => $post->ID,
+  'orderby' => 'menu_order',
+  'order' => 'ASC',
+  'post_type' => 'department_page',
+  'post_status' => 'publish'
+));
 
+$ancestors = get_post_ancestors($post);
+$template = phila_get_selected_template();
+
+//Don't redirect when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
+if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
+  $firstchild = $children[0];
+  wp_redirect(get_permalink($firstchild->ID));
+  exit;
+}
 $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
