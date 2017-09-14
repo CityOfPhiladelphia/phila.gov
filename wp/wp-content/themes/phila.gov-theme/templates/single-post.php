@@ -12,7 +12,6 @@
 <?php $post_type = get_post_type(); ?>
 <?php $post_obj = get_post_type_object( $post_type );?>
 <?php $post_id = get_the_id(); ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
@@ -50,12 +49,12 @@
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
           <div class="js-thumbnail-image">
-            <div class="lightbox-link" data-open="phila-lightbox">
+            <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
               <?php echo phila_get_thumbnails(); ?>
             </div>
           </div>
         <?php else : ?>
-          <div class="lightbox-link" data-open="phila-lightbox">
+          <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
           </div>
         <?php endif;?>
@@ -71,13 +70,6 @@
     <?php endif; ?>
   </div>
   <hr />
-  <div id="phila-lightbox" data-reveal class="reveal center">
-    <div class="lightbox-content"></div>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
 </article>
 
 <?php wp_reset_postdata(); ?>
@@ -114,3 +106,5 @@
 
   <?php wp_reset_postdata(); ?>
 <?php endif; ?>
+<div id="phila-lightbox-feature" data-reveal class="reveal center"></div>
+<div id="phila-lightbox" data-reveal class="reveal center"></div>
