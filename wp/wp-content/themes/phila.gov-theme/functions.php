@@ -818,7 +818,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
         }
       }
     }
-    
+
     foreach ( $final_list as $k => $v ){
       $markup = '<a href="' . $k . '">' . $v . '</a>';
       $urls = basename( $k );
@@ -1443,9 +1443,10 @@ function phila_allow_spans($allowed){
 add_filter('the_content', 'add_lightbox_rel');
 
 function add_lightbox_rel($content) {
-   global $post;
-   $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)(.*?)\">/i";
-   $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link" data-open="phila-lightbox">';
-   $content = preg_replace($pattern, $replacement, $content);
-   return $content;
+  global $post;
+  $count = 0;
+  $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)(.*?)\">/i";
+  $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link lightbox-all" data-open="phila-lightbox">';
+  $content = preg_replace($pattern, $replacement, $content);
+  return $content;
 }
