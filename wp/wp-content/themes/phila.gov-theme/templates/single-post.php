@@ -106,5 +106,5 @@
 
   <?php wp_reset_postdata(); ?>
 <?php endif; ?>
-<div id="phila-lightbox-feature" data-reveal class="reveal center"></div>
-<div id="phila-lightbox" data-reveal class="reveal center"></div>
+<div id="phila-lightbox-feature" data-reveal class="reveal reveal--auto center"></div>
+<div id="phila-lightbox" data-reveal class="reveal reveal--auto center"></div>
