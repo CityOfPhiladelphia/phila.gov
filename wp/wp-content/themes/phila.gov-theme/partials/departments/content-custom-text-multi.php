@@ -8,11 +8,11 @@
 ?>
 <?php
 if ( !empty( $custom_text )):
-$custom_text_title = $custom_text['phila_custom_row_title'];
+$custom_text_title = isset($custom_text['phila_custom_row_title']) ? $custom_text['phila_custom_row_title'] : '';
 $custom_text_group = $custom_text['phila_custom_text_group'];
 ?>
 <div class="large-16 columns custom-text-multi">
-<h2 class="contrast"><?php echo($custom_text['phila_custom_row_title']); ?></h2>
+<h2 class="contrast"><?php echo isset($custom_text['phila_custom_row_title']) ? $custom_text['phila_custom_row_title'] : ''; ?></h2>
 <?php if ( is_array( $custom_text_group ) ):?>
 <?php $item_count = count($custom_text_group); ?>
 <?php $columns = phila_grid_column_counter( $item_count ); ?>
@@ -25,7 +25,7 @@ $custom_text_group = $custom_text['phila_custom_text_group'];
       <?php endif;?>
 
       <?php if ( isset( $custom_text_group[$key]['phila_custom_text_content'] ) && $custom_text_group[$key]['phila_custom_text_content'] != '') : ?>
-        <p><?php echo $custom_text_group[$key]['phila_custom_text_content']; ?></p>
+        <p><?php echo do_shortcode(wpautop($custom_text_group[$key]['phila_custom_text_content'] )); ?></p>
       <?php else :?>
         <div class="placeholder">
           Please enter content.
