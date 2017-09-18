@@ -8,6 +8,8 @@
  * @since beta.phila.gov
  */
 
+
+
 if ( class_exists( "Phila_Gov_Calendar_Helper" ) ){
   $admin_menu_labels = new Phila_Gov_Calendar_Helper();
 }
@@ -16,11 +18,10 @@ class Phila_Gov_Calendar_Helper {
 
   public function __construct(){
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_master_cal_meta'), 10, 1 );
-    //add_filter('admin_init', array($this, 'copy_post_meta'));
-
+    
     add_action( 'save_post', array($this, 'copy_master_calendar') );
 
-    add_action( 'admin_init', array($this, 'update_calendars') );
+    add_action( 'save_post', array($this, 'update_calendars') );
 
   }
 
@@ -69,9 +70,9 @@ class Phila_Gov_Calendar_Helper {
     if( ! empty( $query->posts ) ) {
       foreach( $query->posts as $post ) {
         //NOTE: this assumes there is only one "master", should probably be handled in the future
-       $master = $post->ID;
-        return $master;
+        $master = $post->ID;
       }
+      return $master;
     }
   }
 
@@ -105,11 +106,14 @@ class Phila_Gov_Calendar_Helper {
     //we do not know the post type!
     return null;
   }
+
   function get_all_non_masters(){
     $non_masters = array();
     $query = new WP_Query(
         array(
         'post_type' => 'calendar',
+        'posts_per_page' -1,
+        'post_status' => 'any',
         'meta_query' => array(
           array(
             'relation' => 'AND',
@@ -150,7 +154,7 @@ class Phila_Gov_Calendar_Helper {
     $id = $this->get_master();
     $content = get_post($id);
 
-    //All we really want is the content & post type
+    //All we really want is the content
     foreach ($content as $key => $post) {
       if ( ($key != 'post_content') ) {
         unset($content->$key);
@@ -159,9 +163,9 @@ class Phila_Gov_Calendar_Helper {
     $content = get_object_vars($content);
     return $content;
   }
-
+  //this isn't working
   function copy_master_post_data($post_id){
-    $post_content = $this-> get_master_content();
+    $post_content = $this->get_master_content();
 
     $post_data = array(
       'ID'       => $post_id,
@@ -173,11 +177,13 @@ class Phila_Gov_Calendar_Helper {
 
     wp_update_post( $post_data, true );
 
+    do_action('wp_ajax_simcal_clear_cache');
+
     add_action( 'save_post', array( $this, 'copy_master_calendar' ) );
 
   }
 
-  function copy_master_calendar(){
+  public function copy_master_calendar(){
     if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
        return;
 
@@ -186,18 +192,36 @@ class Phila_Gov_Calendar_Helper {
       return;
     }
 
+    $master_content = $this->get_master_content();
+
+
     $posts = $this->get_all_non_masters();
     $post_meta = $this->get_master_meta();
 
     foreach( $posts as $post ) {
+
       foreach($post_meta as $k => $v) {
         update_post_meta( $post, $k, wp_slash(maybe_unserialize($v[0])) );
       }
-      $this->copy_master_post_data($post);
+
+      $post_data = array(
+        'ID'       => $post,
+        'post_status' => 'private',
+        'post_content' => maybe_unserialize($master_content['post_content']),
+      );
+      remove_action( 'save_post', array( $this, 'copy_master_calendar' ) );
+
+      wp_update_post( $post_data, true );
+      if (is_wp_error($post)) {
+        $errors = $post_id->get_error_messages();
+			     log_me( array( 'Object' => $this, 'message' => $errors, 'Post to update' => $post, 'From post' => $master_content ) );
+      }
+
+      add_action( 'save_post', array( $this, 'copy_master_calendar' ) );
     }
   }
 
-  function update_calendars(){
+  public function update_calendars(){
     if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
       return;
 
@@ -207,20 +231,25 @@ class Phila_Gov_Calendar_Helper {
       return;
 
       global $post;
+
       $post_ID = isset($post->ID) ? $post->ID : '';
 
       $master_id = $this->get_master();
 
       if( $post_ID == $master_id ) {
         $post_obj = get_post($master_id);
+        if( $post_obj->post_modified_gmt == $post_obj->post_date_gmt ){
+          //this is a new master, not a revision of an existing one
+          return;
+        }else{
+          remove_action( 'save_post', array( $this, 'update_calendars' ) );
 
-      if( $post_obj->post_modified_gmt == $post_obj->post_date_gmt ){
-        //this is a new master, not a revision of an existing one
-        return;
-      }else{
-        $this->copy_master_calendar();
-      }
+          $this->copy_master_calendar();
+
+
+          add_action( 'save_post', array( $this, 'update_calendars' ) );
+
+        }
       }
     }
-
 }
