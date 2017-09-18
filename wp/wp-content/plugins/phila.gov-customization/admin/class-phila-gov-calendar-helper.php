@@ -18,10 +18,8 @@ class Phila_Gov_Calendar_Helper {
 
   public function __construct(){
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_master_cal_meta'), 10, 1 );
-    
-    add_action( 'save_post', array($this, 'copy_master_calendar') );
 
-    add_action( 'save_post', array($this, 'update_calendars') );
+    add_action( 'save_post', array($this, 'copy_master_calendar'));
 
   }
 
@@ -145,25 +143,39 @@ class Phila_Gov_Calendar_Helper {
     $id = $this->get_master();
     $meta = get_post_meta($id);
 
-    $meta = array_diff_key($meta, ['is_master_calendar'=> '', 'phila_use_master'=> '', '_google_calendar_id'=> '']);
+    if ( isset($id) ) {
+      //don't save this meta. 
+      $meta = array_diff_key($meta, [
+        'is_master_calendar'=> '',
+        'phila_use_master'=> '',
+        '_google_calendar_id'=> '',
+        '_default_calendar_list_range_type' => ''
+      ]);
 
-    return $meta;
+      return $meta;
+    }else{
+      return;
+    }
   }
 
   function get_master_content(){
     $id = $this->get_master();
-    $content = get_post($id);
+    if (isset($id)) {
+      $content = get_post($id);
 
-    //All we really want is the content
-    foreach ($content as $key => $post) {
-      if ( ($key != 'post_content') ) {
-        unset($content->$key);
+      //All we really want is the content
+      foreach ($content as $key => $post) {
+        if ( ($key != 'post_content') ) {
+          unset($content->$key);
+        }
       }
+      $content = get_object_vars($content);
+      return $content;
+    }else{
+      return;
     }
-    $content = get_object_vars($content);
-    return $content;
   }
-  //this isn't working
+
   function copy_master_post_data($post_id){
     $post_content = $this->get_master_content();
 
@@ -175,12 +187,12 @@ class Phila_Gov_Calendar_Helper {
 
     remove_action( 'save_post', array( $this, 'copy_master_calendar' ) );
 
-    wp_update_post( $post_data, true );
+    wp_update_post( $post_data );
 
-    do_action('wp_ajax_simcal_clear_cache');
+    //Forces update on front end
+    simcal_delete_feed_transients($post_id);
 
     add_action( 'save_post', array( $this, 'copy_master_calendar' ) );
-
   }
 
   public function copy_master_calendar(){
@@ -194,62 +206,20 @@ class Phila_Gov_Calendar_Helper {
 
     $master_content = $this->get_master_content();
 
-
     $posts = $this->get_all_non_masters();
     $post_meta = $this->get_master_meta();
+
+    $master = $this->get_master();
+    if (!isset($master))
+      return;
 
     foreach( $posts as $post ) {
 
       foreach($post_meta as $k => $v) {
         update_post_meta( $post, $k, wp_slash(maybe_unserialize($v[0])) );
       }
-
-      $post_data = array(
-        'ID'       => $post,
-        'post_status' => 'private',
-        'post_content' => maybe_unserialize($master_content['post_content']),
-      );
-      remove_action( 'save_post', array( $this, 'copy_master_calendar' ) );
-
-      wp_update_post( $post_data, true );
-      if (is_wp_error($post)) {
-        $errors = $post_id->get_error_messages();
-			     log_me( array( 'Object' => $this, 'message' => $errors, 'Post to update' => $post, 'From post' => $master_content ) );
-      }
-
-      add_action( 'save_post', array( $this, 'copy_master_calendar' ) );
+      $this->copy_master_post_data($post);
     }
   }
 
-  public function update_calendars(){
-    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
-      return;
-
-    $post_type = $this->get_current_post_type();
-
-    if ($post_type != 'calendar')
-      return;
-
-      global $post;
-
-      $post_ID = isset($post->ID) ? $post->ID : '';
-
-      $master_id = $this->get_master();
-
-      if( $post_ID == $master_id ) {
-        $post_obj = get_post($master_id);
-        if( $post_obj->post_modified_gmt == $post_obj->post_date_gmt ){
-          //this is a new master, not a revision of an existing one
-          return;
-        }else{
-          remove_action( 'save_post', array( $this, 'update_calendars' ) );
-
-          $this->copy_master_calendar();
-
-
-          add_action( 'save_post', array( $this, 'update_calendars' ) );
-
-        }
-      }
-    }
 }
