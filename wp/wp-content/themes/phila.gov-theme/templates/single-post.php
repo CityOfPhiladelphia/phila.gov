@@ -35,7 +35,7 @@
         <span class="date-published">
           <?php echo $posted_on_values['time_string']; ?>
         </span>
-        <?php if ( get_post_type() == 'phila_news'): ?>
+        <?php if ( get_post_type() != 'news_post'): ?>
           <span class="author">
             <?php echo $posted_on_values['author']; ?>
           </span>
