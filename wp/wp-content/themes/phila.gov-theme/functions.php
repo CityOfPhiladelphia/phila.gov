@@ -826,7 +826,6 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       $urls = basename( $k );
       array_push( $basename, $urls );
       array_push( $names, $v );
-      var_dump($markup);
     }
 
     array_push( $full_links, $markup );
