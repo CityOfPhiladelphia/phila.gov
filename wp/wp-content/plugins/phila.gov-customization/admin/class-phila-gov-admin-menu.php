@@ -24,6 +24,8 @@ class Phila_Gov_Admin_Menu {
 
     add_filter( 'menu_order', array($this, 'admin_menu_order' ) );
 
+    add_action( 'init', array($this, 'phila_change_post_label') );
+
 
  }
 
@@ -34,35 +36,47 @@ class Phila_Gov_Admin_Menu {
     }
     return array(
         'index.php',
+        'edit.php',
         'edit.php?post_type=page',
         'edit.php?post_type=service_page',
         'separator1',
         'edit.php?post_type=department_page',
-        'edit.php?post_type=phila_post',
-        'edit.php?post_type=news_post',
-        'edit.php?post_type=press_release',
         'edit.php?post_type=staff_directory',
         'edit.php?post_type=document',
         'separator2',
         'edit.php?post_type=calendar',
-        'edit.php?post_type=notices',
         'edit.php?post_type=site_wide_alert',
         'upload.php',
         'separator-last',
     );
   }
 
+  function phila_change_post_label() {
+      global $wp_post_types;
+      $labels = &$wp_post_types['post']->labels;
+      $labels->name = 'The latest news + events';
+      $labels->singular_name = 'Latest';
+      $labels->add_new = 'Add new item to the latest';
+      $labels->add_new_item = 'Add new item';
+      $labels->edit_item = 'Edit item';
+      $labels->new_item = 'New item in the latest';
+      $labels->view_item = 'View item';
+      $labels->search_items = 'Search the latest';
+      $labels->not_found = 'Nothing found';
+      $labels->not_found_in_trash = 'Nothing found in trash';
+      $labels->all_items = 'All items';
+      $labels->menu_name = 'The latest';
+      $labels->name_admin_bar = 'The latest';
+  }
+
   function change_admin_post_label(){
 
     // Add Menus as a Department Site submenu
-
     add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
+    add_submenu_page( 'edit.php', 'V1 - Blogs', 'V1 - Blogs', 'edit_posts', 'edit.php?post_type=phila_post');
+    add_submenu_page( 'edit.php', 'V1 - News', 'V1 - News', 'edit_posts', 'edit.php?post_type=news_post');
+    add_submenu_page( 'edit.php', 'V1 - Press Releases', 'V1 - Press Releases', 'edit_posts', 'edit.php?post_type=press_release');
 
-    //remove comments, this is here b/c we are using the add_action hook
-    remove_menu_page('edit-comments.php');
-
-    //remove WP posts, we are using phila_post instead.
-    remove_menu_page( 'edit.php' );
   }
 
   function phila_register_categories_for_pages(){
