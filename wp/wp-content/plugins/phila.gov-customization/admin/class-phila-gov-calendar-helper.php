@@ -144,12 +144,16 @@ class Phila_Gov_Calendar_Helper {
     $meta = get_post_meta($id);
 
     if ( isset($id) ) {
-      //don't save this meta. 
+      //don't save this meta.
       $meta = array_diff_key($meta, [
         'is_master_calendar'=> '',
         'phila_use_master'=> '',
         '_google_calendar_id'=> '',
-        '_default_calendar_list_range_type' => ''
+        '_default_calendar_list_range_type' => '',
+        '_google_events_search_query' => '',
+        '_feed_type' => '',
+        '_grouped_calendars_source' => '',
+        '_grouped_calendars_ids' =>'',
       ]);
 
       return $meta;
