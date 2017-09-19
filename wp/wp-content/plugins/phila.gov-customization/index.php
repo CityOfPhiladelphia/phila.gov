@@ -42,6 +42,7 @@ require $dir. '/admin/tiny-mce.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-item-meta-desc.php';
+require $dir. '/admin/meta-boxes/class-phila-gov-post.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-service-update-pages.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-standard-metaboxes.php';
 require $dir. '/admin/meta-boxes/page-template-contact-us.php';
