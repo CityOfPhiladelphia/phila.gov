@@ -806,26 +806,30 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     if ( $byline == true ) {
       echo ' by ';
     }
+
     foreach( $all_available_pages as $k=>$v ) {
 
-      $formatted_v = str_replace( "&#8217;", "'", $v );
-
+      $formatted_v = phila_make_regular_quote( $v );
       foreach ( $cat_name as $name ) {
-        if( preg_match("/^$name$/", $formatted_v ) ) {
+        $formatted_name = phila_make_regular_quote( $name );
 
+        if( preg_match("/^$formatted_name/", $formatted_v ) ) {
           $final_list[$k] = $v;
 
         }
       }
-    }
 
+    }
     foreach ( $final_list as $k => $v ){
-      $markup = '<a href="' . $k . '">' . $v . '</a>';
+
+      $markup = '<a href="' . addslashes($k) . '">' . $v . '</a>';
       $urls = basename( $k );
       array_push( $basename, $urls );
       array_push( $names, $v );
+      var_dump($markup);
     }
-      array_push( $full_links, $markup );
+
+    array_push( $full_links, $markup );
 
     if ( $name_list == true ) {
       $name_listed = str_replace( "&#8217;", "'", $names );
