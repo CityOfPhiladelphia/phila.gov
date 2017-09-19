@@ -35,9 +35,11 @@
         <span class="date-published">
           <?php echo $posted_on_values['time_string']; ?>
         </span>
-        <span class="author">
-          <?php echo $posted_on_values['author']; ?>
-        </span>
+        <?php if ( get_post_type() == 'phila_news'): ?>
+          <span class="author">
+            <?php echo $posted_on_values['author']; ?>
+          </span>
+        <?php endif?>
         <span class="departments">
           <?php echo phila_get_current_department_name( $category, false, false ); ?>
         </span>
