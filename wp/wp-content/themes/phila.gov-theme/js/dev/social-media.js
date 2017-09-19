@@ -8,7 +8,6 @@ if (fbElement) {
       mobile_iframe: true,
       href: window.location.href,
     }, function(response){
-       console.log(response);
     });
   }
 }
