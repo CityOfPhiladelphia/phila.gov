@@ -131,3 +131,14 @@ add_filter( 'default_hidden_meta_boxes', 'phila_hide_meta_boxes', 10, 2 );
 function phila_hide_meta_boxes( $hidden, $screen ) {
   return array( 'tagsdiv-post_tag', 'tagsdiv', 'formatdiv');
 }
+
+
+/**
+ * No tags for posts.
+ */
+
+add_action( 'init', 'phila_unregister_tags' );
+
+function phila_unregister_tags() {
+  unregister_taxonomy_for_object_type( 'post_tag', 'post' );
+}
