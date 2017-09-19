@@ -67,8 +67,8 @@ function phila_gov_setup() {
             'parent'                   => '',
             'orderby'                  => 'name',
             'order'                    => 'ASC',
-            'hide_empty'               => 1,
-            'hierarchical'             => 0,
+            'hide_empty'               => false,
+            'hierarchical'             => false,
             'taxonomy'                 => 'category',
             'pad_counts'               => false
         );

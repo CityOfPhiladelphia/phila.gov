@@ -42,8 +42,8 @@
     "list.js": "^1.5.0",
     "mustache": "^2.3.0",
     "phila-standards": "^0.11.2",
-    "uglify-js": "^3.1.0",
-    "vue": "^2.4.2"
+    "uglify-js": "^3.1.1",
+    "vue": "^2.4.4"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
