@@ -18,8 +18,8 @@ if ( class_exists("Phila_Gov_Post" ) ){
       'id'  => 'social_intent',
       'title'    => 'Social media call to action',
       'pages'    => array( 'post' ),
-      'context'  => 'normal',
-      'priority' => 'high',
+      'context'  => 'advanced',
+      'priority' => 'default',
       'fields'  => array(
         array(
           'type' => 'textarea',
@@ -34,7 +34,12 @@ if ( class_exists("Phila_Gov_Post" ) ){
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
-      'priority' => 'low',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'post'),
+        ),
+      ),
 
       'fields' => array(
         array(
