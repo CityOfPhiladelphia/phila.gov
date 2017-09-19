@@ -779,7 +779,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     $args = array(
       'post_type'=> 'department_page',
       'posts_per_page' => -1,
-      'category__in'  => $cat_ids
+      'category__in'  => $cat_ids,
     );
 
     $get_links = new WP_Query( $args );
@@ -810,25 +810,27 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     foreach( $all_available_pages as $k=>$v ) {
 
       $formatted_v = phila_make_regular_quote( $v );
+
       foreach ( $cat_name as $name ) {
         $formatted_name = phila_make_regular_quote( $name );
 
-        if( preg_match("/^$formatted_name/", $formatted_v ) ) {
+        if( preg_match("/^$formatted_name?$/", $formatted_v ) ) {
           $final_list[$k] = $v;
 
         }
       }
 
     }
+
     foreach ( $final_list as $k => $v ){
 
       $markup = '<a href="' . addslashes($k) . '">' . $v . '</a>';
       $urls = basename( $k );
       array_push( $basename, $urls );
       array_push( $names, $v );
-    }
+      array_push( $full_links, $markup );
 
-    array_push( $full_links, $markup );
+    }
 
     if ( $name_list == true ) {
       $name_listed = str_replace( "&#8217;", "'", $names );
