@@ -153,6 +153,7 @@ class Phila_Gov_Calendar_Helper {
         '_google_events_search_query' => '',
         '_feed_type' => '',
         '_grouped_calendars_source' => '',
+        '_grouped_calendars_category'=> '',
         '_grouped_calendars_ids' =>'',
       ]);
 
@@ -199,6 +200,11 @@ class Phila_Gov_Calendar_Helper {
     add_action( 'save_post', array( $this, 'copy_master_calendar' ) );
   }
 
+  /*
+  * Updates all non-master posts with Master post meta and wysiwyg content.
+  *
+  */
+
   public function copy_master_calendar(){
     if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
        return;
@@ -225,5 +231,4 @@ class Phila_Gov_Calendar_Helper {
       $this->copy_master_post_data($post);
     }
   }
-
 }
