@@ -26,7 +26,10 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
 #wp-link-target,
-#slugdiv{
+#slugdiv,
+/*Don't display user role editor on every single page*/
+#wpfront-user-role-editor-role-permission
+{
   display: none !important;
 }
 #ui-datepicker-div {
