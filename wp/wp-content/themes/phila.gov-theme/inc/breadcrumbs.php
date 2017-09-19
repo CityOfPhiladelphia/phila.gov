@@ -16,7 +16,13 @@ function phila_breadcrumbs() {
     echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
 
-    if ( is_singular('news_post') ) {
+    if ( is_singular('post') ){
+      echo '<li><a href="/the-latest">The latest</a></li>';
+      echo '<li>';
+      the_title();
+      echo '</li>';
+
+    } elseif ( is_singular('news_post') ) {
       $categories = get_the_category($post->ID);
 
       echo '<li><a href="/news">News &amp; events</a></li>';
