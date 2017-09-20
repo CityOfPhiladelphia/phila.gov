@@ -55,8 +55,8 @@ if (!empty($row_two_column_selection)) {
     </div>
   </div>
 
-  <div class="row expanded calendar-row mbm ptm">
-    <div class="medium-centered large-16 columns">
+  <div class="row calendar-row mbm ptm">
+    <div class="columns">
       <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
     </div>
   </div>

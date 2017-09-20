@@ -1,0 +1,48 @@
+.lightbox-link{
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
+  @include transition( opacity, .2s );
+  &:hover{
+    @extend %lower-opacity;
+  }
+  @include breakpoint(small only) {
+    cursor: auto;
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
+
+.reveal{
+  &.reveal--auto{
+    width:auto;
+  }
+  .lightbox-content{
+    margin:2rem;
+    p{
+      margin-top:1rem;
+    }
+  }
+  .close-button{
+    background: none;
+    &:hover{
+      background: none;
+      color:color(ben-franklin-blue);
+    }
+  }
+}
+html.is-reveal-open,
+html.is-reveal-open body{
+  //allow users to select content in the modal
+  user-select: inherit;
+  //foundation-defaults to position: relative, which moves the background content to the top of the page. we don't want that.
+  position: static;
+  //make sure page body stays centered when modal is open
+  width:100%;
+}
+//prevent page content from being hidden when modal is open
+body.is-reveal-open.no-scroll{
+  height:auto;
+}

@@ -92,12 +92,29 @@ function phila_gov_setup() {
 }
 endif; // phila_gov_setup
 
+
+/* Get up globals */
+$phila_is_minified = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '' : '.min';
+
 add_filter('document_title_separator', 'phila_filter_sep');
 
 function phila_filter_sep(){
 
   return '|';
 
+}
+
+/* Custom image sizes for responsive images */
+
+add_filter( 'wp_calculate_image_sizes', 'phila_content_image_sizes_attr', 10 , 2 );
+
+
+function phila_content_image_sizes_attr( $sizes, $size ) {
+  $width = $size[0];
+
+  $width && $sizes = '(max-width: 640px) 300px, (max-width: 1024px) 768px, (max-width: 1440px) 1024px,  700px';
+
+  return $sizes;
 }
 
 add_filter('pre_get_document_title', 'phila_filter_title');
@@ -231,6 +248,17 @@ function phila_open_graph() {
 }
 
 /**
+ * Clean up post titles for social media display
+**/
+
+function phila_encode_title( $title ) {
+  $title = html_entity_decode( $title );
+  $title = urlencode( $title );
+  return $title;
+}
+
+
+/**
  * Enqueue scripts and styles.
  */
 
@@ -238,17 +266,27 @@ function phila_open_graph() {
 add_action( 'wp_enqueue_scripts', 'phila_gov_scripts');
 
 function phila_gov_scripts() {
-  $minified = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '' : '.min';
+  global $post;
 
   wp_deregister_script( 'jquery' );
 
-  wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'theme-styles' )  );
+  wp_enqueue_style( 'ie-only', get_stylesheet_directory_uri() . '/css/lt-ie-9.css', array( 'standards' )  );
 
   wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
-  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts'. $minified . '.js', array(), '0.7.0', true );
+  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts'. $GLOBALS['phila_is_minified'] . '.js', array(), '0.7.0', true );
 
-  wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles' . $minified . '.css' );
+  wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles' . $GLOBALS['phila_is_minified'] . '.css' );
+
+  if ( ( !is_404() ) && (!is_front_page()) ) {
+    $post_obj = get_post_type_object( $post->post_type );
+    wp_localize_script('phila-scripts', 'phila_js_vars', array(
+      'postID' => $post->ID,
+      'postType' => $post->post_type,
+      'postRestBase' => $post_obj->rest_base,
+      )
+    );
+  }
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
 
@@ -325,10 +363,10 @@ function phila_get_thumbnails(){
       '3' => 'news-thumb'
     );
     $output = '';
-    // echo 'Using phila_get_thumb';
     foreach ($thumbs as $key => $value) {
 
       $image = wp_get_attachment_image_src($id, $value);
+
       if ($image[1] == 700 && $image[2] == 400 ) {
         $output .= get_the_post_thumbnail( $post=null, 'medium' );
         break;
@@ -439,7 +477,7 @@ function phila_get_posted_on(){
 
   $posted_on_meta['author'] = esc_html( get_the_author() );
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
-  $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
     esc_html( get_the_date() ),
@@ -741,7 +779,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     $args = array(
       'post_type'=> 'department_page',
       'posts_per_page' => -1,
-      'category__in'  => $cat_ids
+      'category__in'  => $cat_ids,
     );
 
     $get_links = new WP_Query( $args );
@@ -768,31 +806,35 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     if ( $byline == true ) {
       echo ' by ';
     }
+
     foreach( $all_available_pages as $k=>$v ) {
 
-      $formatted_v = str_replace( "&#8217;", "'", $v );
+      $formatted_v = phila_make_regular_quote( $v );
 
       foreach ( $cat_name as $name ) {
-        if( preg_match("/^$name$/", $formatted_v ) ) {
+        $formatted_name = phila_make_regular_quote( $name );
 
+        if( preg_match("/^$formatted_name?$/", $formatted_v ) ) {
           $final_list[$k] = $v;
 
         }
       }
+
     }
+
     foreach ( $final_list as $k => $v ){
-      $markup = '<a href="' . $k . '">' . $v . '</a>';
+
+      $markup = '<a href="' . addslashes($k) . '">' . $v . '</a>';
       $urls = basename( $k );
       array_push( $basename, $urls );
       array_push( $names, $v );
-
       array_push( $full_links, $markup );
 
-      if ( $name_list == true ) {
-        $name_listed = str_replace( "&#8217;", "'", $names );
-        return implode(', ',  $name_listed);
+    }
 
-      }
+    if ( $name_list == true ) {
+      $name_listed = str_replace( "&#8217;", "'", $names );
+      return implode(', ',  $name_listed);
 
     }
 
@@ -959,7 +1001,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 
     return mb_strimwidth( wp_strip_all_tags($dept_desc), 0, 140, '...');
 
-  //special handing for content collection page types, when appropriate
+  //special handing for hierarchical content
   }else if( is_page() ){
 
     $parents = get_post_ancestors( $post->ID );
@@ -1372,4 +1414,44 @@ function phila_get_department_homepage_typography( $parent ){
   }
 
   return $new_title;
+}
+
+//Allow some HTML5 data-* attributes to appear in the TinyMCE WYSIWYG editor
+add_filter('wp_kses_allowed_html', 'phila_filter_allowed_html', 10, 2);
+
+function phila_filter_allowed_html($allowed, $context){
+
+  if ( is_array($context) ){
+    return $allowed;
+  }
+
+  if ($context === 'post'){
+    $allowed['div']['data-open'] = true;
+    $allowed['a']['data-open'] = true;
+    $allowed['div']['data-reveal'] = true;
+    $allowed['button']['data-close'] = true;
+    $allowed['div']['data-deep-link'] = true;
+  }
+  return $allowed;
+}
+//Stop stripping span tags from TinyMCE WYSIWYG
+add_filter('tiny_mce_before_init', 'phila_allow_spans', 10, 1);
+
+function phila_allow_spans($allowed){
+
+    $allowed['extended_valid_elements'] = 'span[*]';
+
+  return $allowed;
+
+}
+
+add_filter('the_content', 'add_lightbox_rel');
+
+function add_lightbox_rel($content) {
+  global $post;
+  $count = 0;
+  $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)(.*?)\">/i";
+  $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link lightbox-all" data-open="phila-lightbox">';
+  $content = preg_replace($pattern, $replacement, $content);
+  return $content;
 }

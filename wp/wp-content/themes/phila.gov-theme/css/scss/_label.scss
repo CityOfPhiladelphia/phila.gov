@@ -1,0 +1,13 @@
+.post-label{
+  padding-bottom:1rem;
+  text-transform: uppercase;
+  span{
+    @include secondary-font(normal);
+    font-size: .8rem;
+    vertical-align: -webkit-baseline-middle;
+  }
+
+  &.post-label--calendar{
+    color:color(phanatic-green);
+  }
+}

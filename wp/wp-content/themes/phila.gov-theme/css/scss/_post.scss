@@ -1,23 +1,107 @@
-.phila_post{
-  aside#secondary {
-  border: 0;
+.post {
+  p {
+    line-height: 1.8rem;
+    font-size: 1rem;
   }
-  .entry-content p:first-child{
-    margin-top: 0px;
-  }
-  .posted-on{
-    .details{
-      overflow: hidden;
-      float:none;
+
+  .post-header {
+    h1 {
+      margin-bottom: 0;
     }
-    .icon {
-    color: color(ben-franklin-blue);
-    }
-    .byline{
-      border-top: 1px solid color(sidewalk);
-      @media only screen and (min-width: 40em) {
-          border-top: 0;
+    .social-media {
+      text-align: right;
+      @include breakpoint(small only) {
+        order: 1;
+        text-align: center;
+        margin: 1rem 0;
       }
+
+      a {
+        display: inline-block;
+        padding: $spacing-small;
+      }
+
+      .fa {
+        font-size: 1.5rem;
+        @include breakpoint(small only) {
+          font-size: 2rem;
+        }
+      }
+    }
+    @include breakpoint(small only) {
+      h1 {
+        margin: 0;
+      }
+
+      .post-title {
+        order: 2;
+      }
+
+      .border-bottom-fat {
+        order: 3;
+      }
+      .author{
+        &::after{
+          content: '';
+        }
+      }
+      .departments{
+          display: block;
+      }
+    }
+  }
+
+  .js-thumbnail-image{
+    float:right;
+    display: none;
+    max-width:300px;
+    padding: 0 0 1rem 1rem;
+
+    @include breakpoint(small only) {
+      @include grid-column-collapse;
+      max-width: none;
+      padding: 0;
+      float:none;
+      margin-left: - rem-calc(15);
+      margin-right: - rem-calc(15);
+
+    }
+  }
+  .post-content{
+    .js-thumbnail-image{
+      display: inline-block;
+    }
+  }
+
+  .featured-image {
+    margin: $spacing-large auto;
+    img{
+      margin: 0 auto;
+    }
+    @include breakpoint(small only) {
+      padding:0;
+    }
+  }
+
+}
+
+.border-bottom-fat {
+  @include xy-gutters($gutter-position: left right);
+  width: 100%;
+  border-bottom: 10px solid color(ben-franklin-blue);
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  span {
+    &::after {
+      display: inline-block;
+      content: '|';
+      padding: 0 $spacing-small;
+    }
+
+    &:last-of-type::after {
+      content: '';
     }
   }
 }
