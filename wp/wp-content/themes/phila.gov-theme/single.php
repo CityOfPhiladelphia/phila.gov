@@ -17,17 +17,9 @@ get_header(); ?>
 
         get_template_part( 'templates/default', 'page' );
 
-      elseif ( get_post_type() === 'phila_post'):
+      elseif ( phila_util_return_is_post( get_post_type() ) ):
 
-        get_template_part('partials/content', 'single-post');
-
-      elseif ( get_post_type() === 'news_post'):
-
-        get_template_part('partials/content', 'single-news');
-
-      elseif ( get_post_type() === 'press_release'):
-
-      get_template_part('partials/content', 'press-release');
+        get_template_part( 'templates/single', 'post' );
 
       else :
 

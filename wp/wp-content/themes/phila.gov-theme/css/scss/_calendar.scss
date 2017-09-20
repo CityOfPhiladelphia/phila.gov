@@ -1,5 +1,5 @@
 dl.simcal-events-list-container{
-  background-color:rgba(255, 255, 255, .8);
+  background-color:color(ghost-gray);
   margin-top:1rem;
 
   p {
@@ -9,18 +9,23 @@ dl.simcal-events-list-container{
     }
   }
 }
-.single-calendar .simcal-event-details{
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-.simcal-default-calendar-light .simcal-nav-button{
-  color:color(ben-franklin-blue) !important;
+.row.event-row{
+  cursor: pointer;
+  margin-right:0;
+  margin-left:0;
+  @include transition( opacity, .2s );
+  a:link, a:visited{
+    font-weight:normal;
+  }
+  &:hover{
+    @extend %lower-opacity;
+  }
 }
 
-.events-block{
-  border:none;
+.simcal-default-calendar-light .simcal-nav-button{
+  color:color(phanatic-green) !important;
 }
-//PLUGIN OVERRIDES
+
 ul.simcal-events{
   margin:0;
   padding:0;
@@ -31,21 +36,19 @@ ul.simcal-events{
 .month, .day{
   display: inline
 }
-a[href*="google.com/calendar"]:after{
-  font-family: "FontAwesome";
-  content: "\f08e";
-  font-size: 0.75rem;
-  padding: 0 5px;
-}
 
 .event-row{
   margin-bottom:1rem;
 }
 .calendar-details{
-  background-color:rgba(255, 255, 255, .8);
+  background-color:color(ghost-gray);
   padding:0 1rem;
   min-height:94px;
   border-left:1px solid black;
+  .title{
+    font-size:1.4rem;
+    margin-bottom:.9rem;
+  }
 }
 .simcal-event {
   margin-bottom:1rem;
@@ -53,36 +56,35 @@ a[href*="google.com/calendar"]:after{
 .calendar-date{
   text-align:center;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
+  font-weight: normal;
   float:left;
-  color:color(dark-ben-franklin);
+  color:color(phanatic-green);
+  background: color(ghost-gray);
 
   .month{
     display: block;
     text-transform: uppercase;
+    font-size:1.2rem;
   }
   .day{
-    font-size: 4rem;
-    line-height: 3rem;
+    font-size: 5rem;
+    line-height: 4rem;
     display: block;
   }
 }
 
-// TODO: remove the border in Patterns _events_block.css
-.event-box{
-    border: 0px;
+.reveal--calendar{
+  border-top:0;
+  border-bottom:10px solid color(phanatic-green);
 }
 
 @media only screen and (min-width: 40.063em) {
-  .calendar-row{
-    background:url('//beta.phila.gov/media/20160526164514/calendar-bg.jpg') no-repeat center center;
-    background-size:cover;
-  }
   .columns.calendar-details {
-    padding:1rem;
+    padding:1.2rem;
     border-left:none;
   }
   .calendar-date{
     color:white;
-    background:color(dark-ben-franklin);
+    background:color(phanatic-green);
   }
 }

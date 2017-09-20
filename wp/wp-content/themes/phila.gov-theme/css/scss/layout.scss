@@ -99,6 +99,13 @@ img.float-right{
 body.is-reveal-open.no-scroll{
   height:auto;
 }
+table.connect{
+  margin:0;
+}
+
+:focus{
+  outline: color(dark-gray) solid 3px;
+}
 
 .inside-border-group{
   .short-desc {
