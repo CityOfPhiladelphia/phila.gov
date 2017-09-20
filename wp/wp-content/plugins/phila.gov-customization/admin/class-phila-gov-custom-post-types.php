@@ -62,6 +62,8 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'public' => true,
         'has_archive' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'departments',
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-groups',
         'hierarchical' => true,
