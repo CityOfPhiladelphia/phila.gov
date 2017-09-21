@@ -110,7 +110,8 @@ class Phila_Gov_Calendar_Helper {
     $query = new WP_Query(
         array(
         'post_type' => 'calendar',
-        'posts_per_page' -1,
+        'nopaging'  => true,
+        'posts_per_page' => -1,
         'post_status' => 'any',
         'meta_query' => array(
           array(
@@ -131,6 +132,7 @@ class Phila_Gov_Calendar_Helper {
       foreach( $query->posts as $post ) {
         array_push($non_masters, $post->ID);
       }
+      var_dump($non_masters);
       return $non_masters;
     }else{
       return null;
