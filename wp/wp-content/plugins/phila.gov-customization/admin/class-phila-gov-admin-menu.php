@@ -73,9 +73,6 @@ class Phila_Gov_Admin_Menu {
 
     // Add Menus as a Department Site submenu
     add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
-    add_submenu_page( 'edit.php', 'V1 - Blogs', 'V1 - Blogs', 'edit_posts', 'edit.php?post_type=phila_post');
-    add_submenu_page( 'edit.php', 'V1 - News', 'V1 - News', 'edit_posts', 'edit.php?post_type=news_post');
-    add_submenu_page( 'edit.php', 'V1 - Press Releases', 'V1 - Press Releases', 'edit_posts', 'edit.php?post_type=press_release');
 
   }
 
