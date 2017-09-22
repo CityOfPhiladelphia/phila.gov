@@ -23,17 +23,18 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_service_updates' ) );
 
-    add_action( 'init', array( $this, 'create_phila_news_post' ) );
-
-    add_action( 'init', array( $this, 'create_phila_press_release' ) );
-
     add_action( 'init', array( $this, 'create_phila_site_wide_alert' ) );
 
     add_action( 'init', array( $this, 'create_phila_document' ) );
 
-    add_action( 'init', array( $this, 'create_phila_posts' ) );
-
     add_action( 'init', array( $this, 'create_phila_staff_directory' ) );
+
+    add_action( 'init', array( $this, 'create_phila_annoucements' ) );
+
+    //deprecated content types.
+    add_action( 'init', array( $this, 'create_phila_posts' ) );
+    add_action( 'init', array( $this, 'create_phila_news_post' ) );
+    add_action( 'init', array( $this, 'create_phila_press_release' ) );
 
   }
 
@@ -148,6 +149,41 @@ class Phila_Gov_Custom_Post_Types{
       'rewrite' => array(
         'slug' => 'service-updates',
         'with_front' => false,
+        ),
+      )
+    );
+  }
+
+  function create_phila_annoucements() {
+    register_post_type( 'announcements',
+      array(
+        'labels' => array(
+          'name' => __( 'Announcements' ),
+          'singular_name' => __( 'Announcement' ),
+          'add_new'   => __( 'Add Announcement' ),
+          'all_items'   => __( 'All Announcements' ),
+          'add_new_item' => __( 'Add Announcement' ),
+          'edit_item'   => __( 'Edit Announcements' ),
+          'view_item'   => __( 'View Announcements' ),
+          'search_items'   => __( 'Search Announcements'),
+          'not_found'   => __( 'Announcement not found' ),
+          'not_found_in_trash'   => __( 'Announcement entry not found in trash' ),
+        ),
+        'taxonomies' => array('category'),
+        'supports' => array(
+          'title',
+          'editor',
+          'revisions'
+        ),
+        'exclude_from_search' => true,
+        'show_in_rest'  => true,
+        'public' => false,
+        'show_ui' => true,
+        'has_archive' => false,
+        'menu_icon' => 'dashicons-id',
+        'hierarchical' => false,
+        'rewrite' => array(
+          'slug' => 'announcements',
         ),
       )
     );
