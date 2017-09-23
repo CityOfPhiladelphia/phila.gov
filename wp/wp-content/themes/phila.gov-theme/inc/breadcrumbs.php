@@ -9,7 +9,8 @@ function phila_breadcrumbs() {
   global $i;
 
   echo '<ul class="breadcrumbs">';
-  if ( !is_front_page() && !is_404() ) { //no breadcrumb on the homepage
+  //no breadcumbs on these templates
+  if ( !is_front_page() && !is_404() && !is_page_template('templates/the-latest.php') ) {
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
