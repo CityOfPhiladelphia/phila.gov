@@ -92,7 +92,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
     <!--sticky/desktop nav -->
-    <div class="row">
+    <div id="global-sticky-nav" class="row">
       <div class="small-24 columns">
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="columns sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
