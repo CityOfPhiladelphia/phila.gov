@@ -10,7 +10,7 @@
   <div class="row">
     <header class="small-24 columns">
       <?php the_title( '<h1 class="contrast">', '</h1>' ); ?>
-    </header><!-- .entry-header -->
+    </header>
   </div>
   <div class="row">
     <div data-swiftype-index='true' class="entry-content columns">
