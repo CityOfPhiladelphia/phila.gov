@@ -196,7 +196,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
 
-    if ( !phila_util_is_v2_template( $parent->ID ) && !is_front_page() ) : ?>
+    if ( !phila_util_is_v2_template( $parent->ID ) && !is_front_page() && !is_404() && !is_page_template('templates/the-latest.php')) : ?>
       <div class="row mts mbm">
         <div class="columns">
           <?php echo phila_breadcrumbs(); ?>
