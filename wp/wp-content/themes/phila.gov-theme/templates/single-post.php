@@ -12,6 +12,8 @@
 <?php $post_type = get_post_type(); ?>
 <?php $post_obj = get_post_type_object( $post_type );?>
 <?php $post_id = get_the_id(); ?>
+<?php $template_type = phila_get_selected_template();?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
@@ -75,7 +77,6 @@
 </article>
 
 <?php wp_reset_postdata(); ?>
-
 <?php
   $cat_ids = array();
 
@@ -85,28 +86,30 @@
 
   $cat_id_string = implode( ', ', $cat_ids );
 
-  $args = array(
-    'post_type' => $post_type,
+  $related_post_type = array( $post_type );
+  $posts_per = 3;
+  //fallback for old post types
+  if( $template_type == 'phila_post' || $template_type == 'post' ) {
+    array_push( $related_post_type, 'phila_post' );
+
+  }elseif( $template_type == 'press_release' ) {
+    array_push($related_post_type, 'press_release' );
+    $posts_per = 4;
+  }
+
+  $related_content_args = array(
+    'post_type' => $related_post_type,
     'category__and' => array($cat_id_string),
-    'posts_per_page'  => 3,
+    'posts_per_page'  => $posts_per,
     'post__not_in'  => array($post_id)
   );
+
+  if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
+    $is_press_release = true;
+  }
 ?>
 
-<?php $related_posts = new WP_Query( $args ); ?>
+<?php include( locate_template( 'partials/content-related.php' ) ); ?>
 
-<?php if ( $related_posts->have_posts() ) : ?>
-  <div class="grid-container">
-    <h2><?php _e( 'Related' ); ?>
-    <?php echo strtolower($post_obj->labels->name); ?></h2>
-  </div>
-  <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
-    <div class="grid-container">
-       <?php get_template_part( 'partials/content', 'list-featured-image' ); ?>
-    </div>
-  <?php endwhile; ?>
-
-  <?php wp_reset_postdata(); ?>
-<?php endif; ?>
 <div id="phila-lightbox-feature" data-reveal class="reveal reveal--auto center"></div>
 <div id="phila-lightbox" data-reveal class="reveal reveal--auto center"></div>
