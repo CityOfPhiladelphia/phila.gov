@@ -1,0 +1,37 @@
+.sticky {
+  &.sticky--in-page {
+    text-transform: uppercase;
+    a:link {
+      color:color(dark-gray);
+    }
+    i{
+      padding-bottom:1rem;
+    }
+    li{
+      border-right: 1px solid color(dark-gray);
+      &.featured{
+        a:hover{
+          color:color(dark-ben-franklin);
+        }
+      }
+      &.posts{
+        a:hover{
+          color:color(pride-purple);
+        }
+      }
+      &.press-relases{
+        a:hover{
+          color:color(love-park-red);
+        }
+      }
+      &.events{
+        a:hover{
+          color:color(phanatic-green);
+        }
+      }
+      &:last-of-type{
+        border: none;
+      }
+    }
+  }
+}
