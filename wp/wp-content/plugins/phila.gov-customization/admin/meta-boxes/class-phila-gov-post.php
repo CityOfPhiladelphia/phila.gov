@@ -15,8 +15,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
   function register_meta_boxes_posts($meta_boxes){
 
     $meta_boxes[] = array(
-      'id'  => 'social_intent',
-      'title'    => 'Social media call to action',
+      'title'    => 'Social media share pre-filled text',
       'pages'    => array( 'post' ),
       'context'  => 'advanced',
       'priority' => 'default',
@@ -24,13 +23,13 @@ if ( class_exists("Phila_Gov_Post" ) ){
         array(
           'type' => 'textarea',
           'required'  => true,
-          'desc'  => 'Enter a 72 character attention-grabbing tweet to pre-fill Twitter and Facebook shares.',
+          'id'  => 'social_intent',
+          'desc'  => 'Curate Tweet and Facebook sharing text. E.g.: ',
         )
       ),
     );
 
     $meta_boxes[] = array(
-      'id'  => 'post_read_cta',
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
