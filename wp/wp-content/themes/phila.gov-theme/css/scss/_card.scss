@@ -1,5 +1,4 @@
 a{
-  color: color(dark-gray);
   &.card--list {
     @include xy-grid;
     border-bottom: none;
@@ -7,6 +6,7 @@ a{
     h1 {
       font-size: $large-font-base / 4;
       margin: 0;
+      color:color(dark-gray);
     }
 
     p {
