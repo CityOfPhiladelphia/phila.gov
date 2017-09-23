@@ -14,19 +14,21 @@
   </div>
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
+      <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
+        <?php $count++; ?>
+        <?php if ( isset( $is_press_release ) ):  ?>
+          <div class="cell medium-12">
 
-  <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
-    <?php $count++; ?>
-    <?php if ( isset( $is_press_release ) ):  ?>
-        <?php include( locate_template( 'partials/content-card.php' ) ); ?>
-      <?php else :  ?>
-      <div class="grid-container">
-        <?php get_template_part( 'partials/content', 'list-featured-image' ); ?>
-      </div>
+              <?php include( locate_template( 'partials/content-card.php' ) ); ?>
+            </div>
+          <?php else :  ?>
+          <div class="grid-container">
+            <?php get_template_part( 'partials/content', 'list-featured-image' ); ?>
+          </div>
 
-     <?php endif; ?>
-  <?php endwhile; ?>
-</div>
+         <?php endif; ?>
+      <?php endwhile; ?>
+  </div>
 
 </div>
   <?php wp_reset_postdata(); ?>
