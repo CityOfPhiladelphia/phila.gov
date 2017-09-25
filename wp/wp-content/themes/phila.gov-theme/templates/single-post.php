@@ -106,6 +106,7 @@
 
   if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
     $is_press_release = true;
+    $label = 'press-release';
   }
 ?>
 
