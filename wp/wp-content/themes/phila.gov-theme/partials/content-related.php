@@ -18,11 +18,11 @@
         <?php $count++; ?>
         <?php if ( isset( $is_press_release ) ):  ?>
           <div class="cell medium-12">
-            <?php include( locate_template( 'partials/content-card.php' ) ); ?>
+            <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
             </div>
           <?php else :  ?>
           <div class="grid-container">
-            <?php get_template_part( 'partials/content', 'list-featured-image' ); ?>
+            <?php get_template_part( 'partials/posts/content', 'list-featured-image' ); ?>
           </div>
 
          <?php endif; ?>

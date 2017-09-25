@@ -47,8 +47,12 @@
         </nav>
       </div>
     </header>
-
-    <?php get_template_part('partials/content', 'featured'); ?>
+    <div id="featured">
+      <?php get_template_part('partials/posts/content', 'featured'); ?>
+    </div>
+    <div id="posts">
+      <?php get_template_part('partials/posts/content', 'post-announcement'); ?>
+    </div>
 
   </main><!-- #main -->
 </div><!-- #primary -->
