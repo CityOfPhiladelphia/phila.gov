@@ -1,14 +1,13 @@
-a{
+a.card{
+  h1 {
+    font-size: $large-font-base / 4;
+    margin: 0;
+    color:color(dark-gray);
+  }
+
   &.card--list {
     @include xy-grid;
     border-bottom: none;
-
-    h1 {
-      font-size: $large-font-base / 4;
-      margin: 0;
-      color:color(dark-gray);
-    }
-
     p {
       font-size: 1.1rem;
     }
@@ -20,8 +19,11 @@ a{
         font-size: 1rem;
       }
     }
-    &.card--press-release{
-      border-bottom:5px solid color(love-park-red);
-    }
+  }
+  &.card--press-release{
+    border-bottom:5px solid color(love-park-red);
+  }
+  &.card--featured{
+    border-bottom:5px solid color(dark-ben-franklin);
   }
 }
