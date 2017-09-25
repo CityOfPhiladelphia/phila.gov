@@ -12,7 +12,8 @@
   'order' => 'asc',
   'orderby' => 'post_date',
   'meta_key' => 'phila_is_feature',
-  'meta_value' => '1'
+  'meta_value' => '1',
+  'ignore_sticky_posts' => 1
 ); ?>
 
 <?php $feature_args  = array(
@@ -28,7 +29,7 @@
 <?php $label = 'featured'; ?>
 
 <header class="row columns mtl">
-  <h1 class="contrast" id="featured">Featured</h1>
+  <h2 id="featured">Featured</h2>
 </header>
 <div class="grid-container">
   <div class="grid-x grid-margin-x">
@@ -41,7 +42,7 @@
 
             <?php $post_obj = get_post_type_object( $post_type ); ?>
 
-            <?php include( locate_template( 'partials/content-list-featured-image.php' ) ); ?>
+            <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
 
           <?php endwhile; ?>
         </div>
@@ -58,7 +59,7 @@
 
             <?php $post_obj = get_post_type_object( $post_type ); ?>
 
-            <?php include( locate_template( 'partials/content-card.php' ) ); ?>
+            <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
           <?php endwhile; ?>
         </div>
     <?php endif; ?>
