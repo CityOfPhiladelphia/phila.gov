@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying a featured image, description and link
+ * The template used for displaying a featured image, description and link in a list
  *
  * @package phila-gov
  */
