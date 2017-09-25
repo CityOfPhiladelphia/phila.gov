@@ -13,9 +13,11 @@ if ( isset( $label ) ) :
   switch( $label ) {
     case 'press-release':
       $label_nice = 'Press Release';
+      $icon = 'file-text-o';
       break;
     case 'featured':
       $label_nice = 'Featured';
+      $icon = 'newspaper-o';
       break;
   }
   endif;
@@ -24,7 +26,7 @@ if ( isset( $label ) ) :
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <a href="<?php echo the_permalink(); ?>" class="card card--<?php echo $label ?> pam">
     <div class="post-label post-label--<?php echo $label?>">
-      <i class="fa fa-file-text-o" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
+      <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
     </div>
       <header class="mbm">
         <h1><?php echo get_the_title(); ?></h1>
