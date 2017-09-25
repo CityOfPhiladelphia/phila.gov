@@ -47,6 +47,9 @@
         </nav>
       </div>
     </header>
+
+    <?php get_template_part('partials/content', 'featured'); ?>
+
   </main><!-- #main -->
 </div><!-- #primary -->
 
