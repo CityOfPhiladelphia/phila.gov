@@ -30,6 +30,30 @@ if ( class_exists("Phila_Gov_Post" ) ){
     );
 
     $meta_boxes[] = array(
+      'title'    => 'Elevate to feature',
+      'pages'    => array( 'post' ),
+      'context'  => 'side',
+      'priority' => 'high',
+      'include' => array(
+        'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
+        'relation' => 'OR',
+       ),
+       'fields' => array(
+         array(
+           'name'  => '',
+           'desc'  => 'Feature this item in the latest?',
+           'id'    => 'phila_is_feature',
+           'type'  => 'radio',
+           'std'=> '0',
+           'options' =>  array(
+               '0' => 'No',
+               '1' => 'Yes'
+           )
+         ),
+       )
+    );
+
+    $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
