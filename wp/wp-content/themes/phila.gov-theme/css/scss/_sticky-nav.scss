@@ -1,28 +1,28 @@
 .sticky {
   &.sticky--in-page {
     text-transform: uppercase;
-    a:link {
+    a:link, a:visited {
       color:color(dark-gray);
     }
     li{
       border-right: 1px solid color(dark-gray);
       &.featured{
-        a:hover{
+        a:hover, a:active{
           color:color(dark-ben-franklin);
         }
       }
       &.posts{
-        a:hover{
+        a:hover, a:active{
           color:color(pride-purple);
         }
       }
       &.press-relases{
-        a:hover{
+        a:hover, a:active{
           color:color(love-park-red);
         }
       }
       &.events{
-        a:hover{
+        a:hover, a:active{
           color:color(phanatic-green);
         }
       }
