@@ -9,15 +9,14 @@
 <?php $desc = phila_get_item_meta_desc( ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <a href="<?php echo the_permalink(); ?>" class="card card--list card--<?php echo isset( $is_press_release ) ? 'press-release' : ''; ?> pam">
+  <a href="<?php echo the_permalink(); ?>" class="card card--list card--<?php echo isset( $is_press_release ) ? 'press-release' : ''; ?><?php echo isset( $is_featured ) ? 'featured' : ''; ?> pam">
     <div class="post-label post-label--<?php echo isset( $is_press_release ) ? 'press-release' : ''; ?>">
-      <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span><?php echo strtolower($post_obj->labels->name); ?></span>
+      <i class="fa fa-file-text-o" aria-hidden="true"></i> <span><?php echo isset($is_featured) ? 'Featured' : strtolower($post_obj->labels->name); ?></span>
     </div>
       <header class="mbm">
         <h1><?php echo get_the_title(); ?></h1>
       </header>
-      <?php if( !isset( $is_press_release ) ): ?>
+      <?php if( !isset( $is_press_release ) && !isset($is_featured) ): ?>
         <p><?php echo $desc ?></p>
       <?php endif;?>
     <div class="align-self-bottom">
