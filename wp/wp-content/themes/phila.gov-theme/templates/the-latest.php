@@ -10,11 +10,13 @@
 
 <div id="primary" class="the-latest content-area">
   <main id="main" class="site-main">
-    <div class="row">
-      <header class="small-24 columns">
-        <?php the_title( '<h1 class="contrast">', '</h1>' ); ?>
-        <div class="data-sticky-container">
-          <nav class="sticky sticky--in-page center" data-sticky data-top-anchor="global-sticky-nav:bottom">
+    <header>
+      <div class="grid-container">
+        <?php the_title( '<h1 class="contrast">', '</h1>' );  ?>
+      </div>
+      <div data-sticky-container class="bg-white">
+        <nav class="sticky sticky--in-page center bg-white" data-sticky data-top-anchor="global-sticky-nav:bottom" style="width:100%">
+          <div class="grid-container">
             <ul class="inline-list grid-x grid-margin-x">
               <li class="featured auto cell">
                 <a href="#featured">
@@ -41,11 +43,10 @@
                 </a>
               </li>
             </ul>
-          </nav>
-        </div>
-      </header>
-    </div>
-
+          </div>
+        </nav>
+      </div>
+    </header>
   </main><!-- #main -->
 </div><!-- #primary -->
 
