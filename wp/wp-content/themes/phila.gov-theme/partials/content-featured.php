@@ -25,7 +25,7 @@
   'meta_value' => '1'
 ); ?>
 
-<?php $is_featured = true; ?>
+<?php $label = 'featured'; ?>
 
 <header class="row columns mtl">
   <h1 class="contrast" id="featured">Featured</h1>
