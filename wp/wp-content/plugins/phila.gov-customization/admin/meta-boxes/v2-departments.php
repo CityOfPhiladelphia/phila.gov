@@ -276,7 +276,19 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       ),
     ),
   );
-
+  
+  $meta_boxes[] = array(
+    'title' => 'Department code',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'side',
+    'priority' => 'low',
+    'fields' => array(
+      array(
+        'type'  => 'number',
+        'id'  => 'phila_department_code'
+      ),
+    )
+  );
 
   return $meta_boxes;
 }
