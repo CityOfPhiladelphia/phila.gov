@@ -2,7 +2,7 @@
 /*
  * Featured content block
  *
- *
+ * TODO: Remove fallback for old news_post content type
 */
 ?>
 
