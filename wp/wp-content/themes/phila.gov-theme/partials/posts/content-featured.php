@@ -8,26 +8,25 @@
 
 <?php $main_feature_args  = array(
   'posts_per_page' => 1,
-  'post_type' => array('post'),
-  'order' => 'asc',
-  'orderby' => 'post_date',
-  'meta_key' => 'phila_is_feature',
-  'meta_value' => '1',
-  'ignore_sticky_posts' => 1
-); ?>
-
-<?php $feature_args  = array(
-  'posts_per_page' => 3,
-  'offset'  => 1,
-  'post_type' => array('post'),
-  'order' => 'asc',
-  'orderby' => 'post_date',
-  'meta_key' => 'phila_is_feature',
-  'meta_value' => '1'
+  'post_type' => array('post', 'phila_post'),
+  'order' => 'desc',
+  'orderby' => 'date',
+  'meta_query'  => array(
+    'relation'  => 'AND',
+    array(
+      'meta_key' => 'phila_is_feature',
+      'meta_value' => '1',
+    ),
+    array(
+      'key' => '_thumbnail_id',
+      'compare' => 'EXISTS'
+    ),
+  ),
+  'ignore_sticky_posts' => 1 // We have to ignore sticky, otherwise we might show more than one post
 ); ?>
 
 <?php $label = 'featured'; ?>
-
+<?php $main_feature_id = ''; ?>
 <header class="row columns mtl">
   <h2 id="featured">Featured</h2>
 </header>
@@ -36,32 +35,47 @@
     <?php $main_feature = new WP_Query( $main_feature_args ); ?>
 
     <?php if ( $main_feature->have_posts() ) : ?>
-        <div class="cell medium-16 feature-main">
-          <?php while ( $main_feature->have_posts() ) : $main_feature->the_post(); ?>
-            <?php $post_type = get_post_type(); ?>
+      <div class="cell medium-16 feature-main">
+        <?php while ( $main_feature->have_posts() ) : $main_feature->the_post(); ?>
+          <?php $post_type = get_post_type(); ?>
 
-            <?php $post_obj = get_post_type_object( $post_type ); ?>
+          <?php $post_obj = get_post_type_object( $post_type ); ?>
+          <?php $main_feature_id = get_the_ID();?>
 
-            <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
+          <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
 
-          <?php endwhile; ?>
-        </div>
+        <?php endwhile; ?>
+      </div>
     <?php endif; ?>
+
     <?php wp_reset_postdata(); ?>
 
-
+    <?php $feature_args  = array(
+      'posts_per_page' => 3,
+      'post_type' => array('post', 'phila_post'),
+      'order' => 'desc',
+      'orderby' => 'date',
+      'meta_key' => 'phila_is_feature',
+      'meta_value' => '1',
+      'post__not_in' => array( $main_feature_id ),
+    ); ?>
+    <?php $count = 0; ?>
     <?php $feature = new WP_Query( $feature_args ); ?>
 
     <?php if ( $feature->have_posts() ) : ?>
-        <div class="cell medium-8 feature-more">
-          <?php while ( $feature->have_posts() ) : $feature->the_post(); ?>
-            <?php $post_type = get_post_type(); ?>
+      <div class="cell medium-8 feature-more">
+        <?php while ( $feature->have_posts() ) : $feature->the_post(); ?>
+          <?php $post_type = get_post_type(); ?>
 
-            <?php $post_obj = get_post_type_object( $post_type ); ?>
+          <?php $post_obj = get_post_type_object( $post_type ); ?>
+          <?php $count++;?>
+          <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
 
-            <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
-          <?php endwhile; ?>
-        </div>
+        <?php endwhile; ?>
+        <?php $see_all_content_type = $label; ?>
+        <?php $is_full = true; ?>
+        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+      </div>
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
   </div>
