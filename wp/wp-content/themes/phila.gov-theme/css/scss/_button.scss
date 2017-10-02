@@ -16,4 +16,8 @@
     @include inverse-button();
     background: color(phanatic-green);
   }
+  &.content-type-featured{
+    @include inverse-button();
+    background: color(dark-ben-franklin);
+  }
 }
