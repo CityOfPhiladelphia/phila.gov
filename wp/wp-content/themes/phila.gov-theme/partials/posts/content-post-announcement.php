@@ -23,17 +23,16 @@
     <?php $posts = new WP_Query( $posts_announcements ); ?>
 
     <?php if ( $posts->have_posts() ) : ?>
-      whaever
-        <div class="cell medium-16">
-          <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
-            <?php $post_type = get_post_type(); ?>
+      <div class="cell medium-16">
+        <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+          <?php $post_type = get_post_type(); ?>
 
-            <?php $post_obj = get_post_type_object( $post_type ); ?>
+          <?php $post_obj = get_post_type_object( $post_type ); ?>
 
-            <?php include( locate_template( 'partials/posts/content-list-featured-image.php' ) ); ?>
+          <?php include( locate_template( 'partials/posts/content-list-featured-image.php' ) ); ?>
 
-          <?php endwhile; ?>
-        </div>
+        <?php endwhile; ?>
+      </div>
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
 
