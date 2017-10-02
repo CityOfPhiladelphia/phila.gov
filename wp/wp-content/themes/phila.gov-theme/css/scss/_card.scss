@@ -1,6 +1,6 @@
 a.card{
   h1 {
-    font-size: $large-font-base / 4;
+    font-size: rem-calc(25);
     margin: 0;
     color:color(dark-gray);
   }
@@ -24,17 +24,14 @@ a.card{
     border-bottom:5px solid color(love-park-red);
   }
   &.card--featured{
-    .h1, h1 {
-      font-size: rem-calc(16);
-    }
     border-bottom:5px solid color(dark-ben-franklin);
   }
 }
 
-.main-feature {
+.feature-more {
   .card--featured{
     .h1, h1 {
-      font-size: rem-calc(25);
+      font-size: rem-calc(16);
     }
   }
 }
