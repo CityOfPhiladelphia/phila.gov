@@ -61,9 +61,13 @@ if (!empty($row_two_column_selection)) {
     </div>
   </div>
   <?php if ( !empty($row_two_full_col_cal_url) ):?>
-    <?php $see_all_URL = $row_two_full_col_cal_url; ?>
-    <?php $see_all_content_type = 'events'; ?>
-    <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+    <div class="row">
+      <div class="columns">
+        <?php $see_all_URL = $row_two_full_col_cal_url; ?>
+        <?php $see_all_content_type = 'events'; ?>
+        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+      </div>
+    </div>
   <?php endif; ?>
  <?php endif; ?>
 
