@@ -24,6 +24,17 @@ a.card{
     border-bottom:5px solid color(love-park-red);
   }
   &.card--featured{
+    .h1, h1 {
+      font-size: rem-calc(16);
+    }
     border-bottom:5px solid color(dark-ben-franklin);
+  }
+}
+
+.main-feature {
+  .card--featured{
+    .h1, h1 {
+      font-size: rem-calc(25);
+    }
   }
 }
