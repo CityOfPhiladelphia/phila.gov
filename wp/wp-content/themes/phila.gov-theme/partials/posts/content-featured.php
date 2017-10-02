@@ -36,7 +36,7 @@
     <?php $main_feature = new WP_Query( $main_feature_args ); ?>
 
     <?php if ( $main_feature->have_posts() ) : ?>
-        <div class="cell medium-16 main-feature">
+        <div class="cell medium-16 feature-main">
           <?php while ( $main_feature->have_posts() ) : $main_feature->the_post(); ?>
             <?php $post_type = get_post_type(); ?>
 
@@ -53,7 +53,7 @@
     <?php $feature = new WP_Query( $feature_args ); ?>
 
     <?php if ( $feature->have_posts() ) : ?>
-        <div class="cell medium-8">
+        <div class="cell medium-8 feature-more">
           <?php while ( $feature->have_posts() ) : $feature->the_post(); ?>
             <?php $post_type = get_post_type(); ?>
 
