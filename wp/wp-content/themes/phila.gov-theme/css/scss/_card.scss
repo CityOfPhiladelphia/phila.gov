@@ -5,6 +5,10 @@ a.card{
     color:color(dark-gray);
   }
 
+  &.card--last {
+    border-bottom: none;
+    margin-bottom:5px;
+  }
   &.card--list {
     @include xy-grid;
     border-bottom: none;
@@ -24,7 +28,15 @@ a.card{
     border-bottom:5px solid color(love-park-red);
   }
   &.card--featured{
-    border-bottom:5px solid color(dark-ben-franklin);
+    &:not(.card--last){
+      border-bottom:5px solid color(dark-ben-franklin);
+    }
+  }
+}
+
+.feature-main{
+  .card--content{
+    min-height: rem-calc(165);
   }
 }
 
@@ -33,5 +45,8 @@ a.card{
     .h1, h1 {
       font-size: rem-calc(16);
     }
+  }
+  .card--content{
+    min-height: rem-calc(130);
   }
 }
