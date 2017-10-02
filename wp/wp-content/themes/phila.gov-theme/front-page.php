@@ -100,7 +100,6 @@ get_header(); ?>
 
   <section class="the-latest">
     <?php include( locate_template( 'partials/posts/content-featured.php' ) ); ?>
-
   </section>
 
     <section class="neighborhood-resources">
