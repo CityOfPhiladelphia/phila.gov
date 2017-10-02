@@ -1455,3 +1455,13 @@ function add_lightbox_rel($content) {
   $content = preg_replace($pattern, $replacement, $content);
   return $content;
 }
+
+add_filter( 'post_class', 'phila_rename_sticky_class' );
+
+function phila_rename_sticky_class( $classes ) {
+  if ( in_array( 'sticky', $classes, true ) ) {
+      $classes = array_diff($classes, array('sticky'));
+      $classes[] = 'wp-sticky';
+  }
+  return $classes;
+}
