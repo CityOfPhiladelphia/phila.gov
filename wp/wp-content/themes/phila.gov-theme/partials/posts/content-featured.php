@@ -8,18 +8,27 @@
 
 <?php $main_feature_args  = array(
   'posts_per_page' => 1,
-  'post_type' => array('post', 'phila_post'),
+  'post_type' => array('post', 'news_post'),
   'order' => 'desc',
   'orderby' => 'date',
   'meta_query'  => array(
-    'relation'  => 'AND',
+    'relation'  => 'OR',
     array(
-      'meta_key' => 'phila_is_feature',
-      'meta_value' => '1',
+      'key' => 'phila_show_on_home',
+      'value' => '1',
+      'compare' => '=',
     ),
     array(
-      'key' => '_thumbnail_id',
-      'compare' => 'EXISTS'
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_is_feature',
+        'value' => '1',
+        'compare' => '=',
+      ),
+      array(
+        'key' => '_thumbnail_id',
+        'compare' => 'EXISTS'
+      ),
     ),
   ),
   'ignore_sticky_posts' => 1 // We have to ignore sticky, otherwise we might show more than one post
@@ -52,12 +61,23 @@
 
     <?php $feature_args  = array(
       'posts_per_page' => 3,
-      'post_type' => array('post', 'phila_post'),
+      'post_type' => array('post', 'news_post'),
       'order' => 'desc',
       'orderby' => 'date',
-      'meta_key' => 'phila_is_feature',
-      'meta_value' => '1',
       'post__not_in' => array( $main_feature_id ),
+      'meta_query'  => array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_show_on_home',
+          'value' => '1',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_is_feature',
+          'value' => '1',
+          'compare' => '=',
+        ),
+      ),
     ); ?>
     <?php $count = 0; ?>
     <?php $feature = new WP_Query( $feature_args ); ?>
