@@ -36,7 +36,7 @@
     <?php $main_feature = new WP_Query( $main_feature_args ); ?>
 
     <?php if ( $main_feature->have_posts() ) : ?>
-        <div class="cell medium-16">
+        <div class="cell medium-16 main-feature">
           <?php while ( $main_feature->have_posts() ) : $main_feature->the_post(); ?>
             <?php $post_type = get_post_type(); ?>
 
