@@ -73,11 +73,13 @@
     </div>
   <?php endforeach; ?>
 <?php if ( $link_url != '' && $link_title != ''):?>
-
-  <?php $see_all_URL = $link_url ?>
-  <?php $see_all_content_type = $action_panel_title?>
-  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-
+  <div class="row">
+    <div class="columns">
+      <?php $see_all_URL = $link_url ?>
+      <?php $see_all_content_type = $action_panel_title?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+    </div>
+  </div>
 <?php endif; ?>
 </section>
 <?php endif; ?>

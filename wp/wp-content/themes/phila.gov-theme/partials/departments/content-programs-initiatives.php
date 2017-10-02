@@ -49,9 +49,13 @@
                   </div>
                 </div>
                 <?php if ( !empty( $cal_url ) ):?>
-                  <?php $see_all_URL = $cal_url; ?>
-                  <?php $see_all_content_type = 'events';?>
-                  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                  <div class="row">
+                    <div class="columns">
+                      <?php $see_all_URL = $cal_url; ?>
+                      <?php $see_all_content_type = 'events';?>
+                      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                    </div>
+                  </div>
                 <?php endif; ?>
               </section>
             <?php endif;?>
