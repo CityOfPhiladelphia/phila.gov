@@ -98,40 +98,10 @@ get_header(); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
 
-    <div class="news-row row ptm">
-      <div class="columns">
-        <section>
-          <div class="row">
-            <div class="columns">
-              <h2 class="contrast"><?php printf( __( 'News' ) ) ?> </h2>
-            </div>
-          </div>
-          <div class="row equal-height">
-          <?php
-            $args = array(
-              'post_type' => array ('news_post'),
-              'posts_per_page'    => 3,
-              'meta_key'          => 'phila_show_on_home',
-              //only show if "yes" is selected
-              'meta_value'     => '1'
-            );
-            $news_query = new WP_Query( $args );
-            if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
-              <div class="small-24 medium-8 columns">
-                <?php phila_get_home_news(); ?>
-              </div>
-            <?php endwhile; ?>
-            <?php else : ?>
-              <div class="alert">No recent news.</div>
-            <?php endif; ?>
-          </div>
-          <?php $see_all_URL = '/news' ?>
-          <?php $see_all_content_type = 'news'?>
-          <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-        </section>
-      </div>
-    </div>
-    <!-- End News -->
+  <section class="the-latest">
+    <?php include( locate_template( 'partials/posts/content-featured.php' ) ); ?>
+
+  </section>
 
     <section class="neighborhood-resources">
       <div class="row expanded ptm">
