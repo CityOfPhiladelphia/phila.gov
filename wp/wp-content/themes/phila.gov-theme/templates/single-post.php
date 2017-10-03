@@ -29,7 +29,7 @@
       <div class="border-bottom-fat"></div>
     </div>
     <div class="post-meta">
-      <?php if ( get_post_type() == 'press_release'): ?>
+      <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ): ?>
         <div class="mbm">
           <?php get_template_part( 'partials/press-release', 'meta' ); ?>
         </div>
