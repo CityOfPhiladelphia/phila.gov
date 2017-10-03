@@ -27,6 +27,10 @@ a.card{
   &.card--press-release{
     border-bottom:5px solid color(love-park-red);
   }
+  &.card--announcement,
+  &.card--post{
+    border-bottom:5px solid color(pride-purple);
+  }
   &.card--featured{
     &:not(.card--last){
       border-bottom:5px solid color(dark-ben-franklin);
