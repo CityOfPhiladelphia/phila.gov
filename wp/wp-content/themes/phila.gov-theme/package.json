@@ -28,12 +28,12 @@
   },
   "homepage": "https://github.com/CityOfPhiladelphia/phila.gov-theme",
   "devDependencies": {
-    "browserify": "^14.4.0",
     "autoprefixer": "^7.1.4",
+    "browserify": "^14.4.0",
     "browserify-shim": "^3.8.14",
     "envify": "^4.1.0",
     "node-sass": "^4.5.1",
-    "postcss": "^6.0.11"
+    "postcss": "^6.0.12"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
@@ -42,6 +42,6 @@
     "list.js": "^1.5.0",
     "mustache": "^2.3.0",
     "phila-standards": "^0.11.2",
-    "uglify-js": "^3.1.1"
+    "uglify-js": "^3.1.3"
   }
 }
