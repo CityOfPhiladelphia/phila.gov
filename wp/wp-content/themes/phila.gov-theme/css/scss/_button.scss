@@ -20,4 +20,13 @@
     @include inverse-button();
     background: color(dark-ben-franklin);
   }
+  &.content-type-press-release{
+    @include inverse-button();
+    background: color(love-park-red);
+  }
+  &.content-type-post,
+  &.content-type-announcement{
+    @include inverse-button();
+    background: color(pride-purple);
+  }
 }
