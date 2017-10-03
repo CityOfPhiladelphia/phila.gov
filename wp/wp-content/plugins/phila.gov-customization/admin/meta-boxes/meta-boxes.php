@@ -162,10 +162,14 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'press-release-date',
     'title'    => 'Release Date',
-    'pages'    => array( 'press_release' ),
+    'pages'    => array( 'post' ),
     'context'  => 'advanced',
     'priority' => 'high',
-
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'press_release'),
+      ),
+    ),
 
     'fields' => array(
       array(
@@ -185,10 +189,14 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title'    => 'Contact Information',
-    'pages'    => array( 'press_release' ),
+    'pages'    => array( 'post' ),
     'context'  => 'advanced',
     'priority' => 'high',
-
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'press_release'),
+      ),
+    ),
 
     'fields' => array(
       array(
@@ -204,8 +212,8 @@ function phila_register_meta_boxes( $meta_boxes ){
            ),
           array(
             'name' => 'Contact phone',
-            'id'   => 'phila_press_release_contact_phone',
-            'type' => 'text',
+            'id'   => 'phila_press_release_contact_phone_number',
+            'type' => 'phone',
             'placeholder' => '(215) 686-2181'
           ),
           array(
