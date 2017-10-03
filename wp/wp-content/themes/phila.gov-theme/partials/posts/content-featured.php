@@ -36,9 +36,7 @@
 
 <?php $label = 'featured'; ?>
 <?php $main_feature_id = ''; ?>
-<header class="row columns mtl">
-  <h2 id="featured">Featured</h2>
-</header>
+
 <div class="grid-container">
   <div class="grid-x grid-margin-x">
     <?php $main_feature = new WP_Query( $main_feature_args ); ?>
