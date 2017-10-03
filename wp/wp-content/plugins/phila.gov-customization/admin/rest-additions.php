@@ -48,3 +48,17 @@ function phila_register_dept_code(){
     return $meta;
   }
 }
+
+//Expose template type
+add_action('rest_api_init', 'phila_register_template_type');
+
+function phila_register_template_type(){
+  $object_type = 'post';
+  $args = array(
+      'type'         => 'string',
+      'description'  => 'Metakey for template type. String.',
+      'single'       => true,
+      'show_in_rest' => true,
+  );
+  register_meta( $object_type, 'phila_template_select', $args );
+}
