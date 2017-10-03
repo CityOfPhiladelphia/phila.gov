@@ -48,12 +48,25 @@
       </div>
     </header>
     <div id="featured">
+      <header class="row columns mtl">
+        <h2 id="featured">Featured</h2>
+      </header>
       <?php get_template_part('partials/posts/content', 'featured'); ?>
     </div>
     <div id="posts">
+      <header class="row columns mtl">
+        <h2>The latest from departments</h2>
+      </header>
       <?php get_template_part('partials/posts/content', 'post-announcement'); ?>
+      <?php get_template_part('partials/posts/content', 'content-card'); ?>
     </div>
+    <div id="events">
 
+    </div>
+    <div id="press-releases">
+
+      <?php get_template_part('partials/posts/content', 'content-card'); ?>
+    </div>
   </main><!-- #main -->
 </div><!-- #primary -->
 
