@@ -31,6 +31,20 @@ function phila_register_dept_meta(){
     $meta = get_post_meta($post_id, 'module_row_1_col_2_connect_panel');
 
     return $meta;
+  }
+}
 
+add_action('rest_api_init', 'phila_register_dept_code');
+
+function phila_register_dept_code(){
+  register_rest_field('department_page', 'department_code', array(
+    get_callback => 'get_dept_code' )
+  );
+  function get_dept_code($object){
+    $post_id = $object['id'];
+
+    $meta = get_post_meta($post_id, 'phila_department_code');
+
+    return $meta;
   }
 }
