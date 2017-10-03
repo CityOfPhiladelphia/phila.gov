@@ -11,23 +11,41 @@
     $press_contacts = phila_loop_clonable_metabox($press_contact_vars);
 
     $press_date = rwmb_meta( 'phila_press_release_date', $args = array('type' => 'date'));
-    printf( _e( '<span class="date-released"><strong>For immediate release: </strong>' . $press_date . '</span>', 'phila-gov' ) );
+    if (!empty($press_date) ) :
+      printf( _e( '<span class="date-released"><strong>For immediate release: </strong>' . $press_date . '</span>', 'phila-gov' ) );
+    else :
+      printf( _e( '<span class="date-released"><strong>For immediate release: </strong>' . get_the_date() . '</span>', 'phila-gov' ) );
+    endif;
 
     printf ( _e('<span><strong>Published by:</strong> ' . $category . '</span>', 'phila-gov' ) ) ;
+    if (!empty($press_contacts)) : ?>
 
-    if (isset($press_contacts)) : ?>
     <span><strong>Contact: </strong>
       <?php foreach( $press_contacts as $contact ) :
 
-      $press_name = isset( $contact['phila_press_release_contact_name'] ) ? trim($contact['phila_press_release_contact_name'] ) : '';
+        $press_name = isset( $contact['phila_press_release_contact_name'] ) ? trim($contact['phila_press_release_contact_name'] ) : '';
 
-      $press_phone = isset( $contact['phila_press_release_contact_phone'] ) ? trim($contact['phila_press_release_contact_phone']) : '';
+        $area = isset( $contact['phila_press_release_contact_phone_number']['area']) ? '(' .  $contact['phila_press_release_contact_phone_number']['area'] . ') ' : '';
 
-      $press_email = isset( $contact['phila_press_release_contact_email'] ) ? trim($contact['phila_press_release_contact_email']) : '';
+        $co_code = isset( $contact['phila_press_release_contact_phone_number']['phone-co-code'] ) ? $contact['phila_press_release_contact_phone_number']['phone-co-code'] : '';
+
+        $subscriber_number = isset( $contact['phila_press_release_contact_phone_number']['phone-subscriber-number'] ) ? '-' . $contact['phila_press_release_contact_phone_number']['phone-subscriber-number'] : '';
+
+        $full_phone = $area . $co_code . $subscriber_number;
+
+        $old_phone = isset( $contact['phila_press_release_contact_phone'] ) ? trim($contact['phila_press_release_contact_phone']) : '';
+
+        $press_email = isset( $contact['phila_press_release_contact_email'] ) ? trim($contact['phila_press_release_contact_email']) : '';
       ?>
       <?php echo (!empty($press_name) ) ? ($press_name) : ''; ?>
       <?php echo (!empty($press_email) ) ? ('<a href="mailto:' . $press_email . '">' . $press_email . '</a>') : ''; ?>
-      <?php echo (!empty($press_phone) ) ? ($press_phone) : ''; ?>
+      <?php if (!empty($old_phone) || !empty($full_phone) ) : ?>
+        <span class="tel">
+          <?php echo (!empty($old_phone) ) ? ($old_phone) : ''; ?>
+          <?php echo (!empty($full_phone) ) ? ($full_phone) : '';?>
+        </span>
+      <?php endif;?>
+
     <?php endforeach;?>
   </span>
 
