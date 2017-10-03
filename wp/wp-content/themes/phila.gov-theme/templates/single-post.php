@@ -69,7 +69,7 @@
     <div class="medium-18 medium-centered">
       <?php the_content(); ?>
     </div>
-    <?php if ( get_post_type() == 'press_release'): ?>
+    <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
     <?php endif; ?>
   </div>
@@ -110,7 +110,7 @@
   }
 ?>
 
-<?php include( locate_template( 'partials/content-related.php' ) ); ?>
+<?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
 
 <div id="phila-lightbox-feature" data-reveal class="reveal reveal--auto center"></div>
 <div id="phila-lightbox" data-reveal class="reveal reveal--auto center"></div>
