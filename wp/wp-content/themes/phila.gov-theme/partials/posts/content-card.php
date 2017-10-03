@@ -15,6 +15,14 @@ if ( isset( $label ) ) :
       $label_nice = 'Press Release';
       $icon = 'file-text-o';
       break;
+    case 'announcement':
+      $label_nice = 'Announcement';
+      $icon = 'bullhorn';
+      break;
+    case 'post':
+      $label_nice = 'Post';
+      $icon = 'pencil';
+      break;
     case 'featured':
       $label_nice = 'Featured';
       $icon = 'newspaper-o';
