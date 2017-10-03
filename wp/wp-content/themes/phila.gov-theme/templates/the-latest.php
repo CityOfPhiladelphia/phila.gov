@@ -47,25 +47,27 @@
         </nav>
       </div>
     </header>
-    <div id="featured">
+    <div class="featured">
       <header class="row columns mtl">
         <h2 id="featured">Featured</h2>
       </header>
       <?php get_template_part('partials/posts/content', 'featured'); ?>
     </div>
-    <div id="posts">
+    <div class="posts">
       <header class="row columns mtl">
-        <h2>The latest from departments</h2>
+        <h2 id="posts">The latest from departments</h2>
       </header>
-      <?php get_template_part('partials/posts/content', 'post-announcement'); ?>
+      <?php get_template_part('partials/posts/post', 'announcement'); ?>
       <?php get_template_part('partials/posts/content', 'content-card'); ?>
     </div>
-    <div id="events">
+    <div class="events">
 
     </div>
-    <div id="press-releases">
-
-      <?php get_template_part('partials/posts/content', 'content-card'); ?>
+    <div class="press-releases">
+      <header class="row columns mtl">
+        <h2 id="press-releases">Press Releases</h2>
+      </header>
+      <?php get_template_part('partials/posts/press', 'releases'); ?>
     </div>
   </main><!-- #main -->
 </div><!-- #primary -->
