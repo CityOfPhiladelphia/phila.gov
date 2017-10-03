@@ -35,7 +35,7 @@ if ( isset( $label ) ) :
 <?php endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <a href="<?php echo the_permalink(); ?>" class="card card--<?php echo $label ?> <?php echo isset($is_last) ? 'card--last' : ''; ?> pam">
+  <a href="<?php echo ($label !== 'announcement') ? the_permalink() : '#' ?>" class="card card--<?php echo $label ?> <?php echo isset($is_last) ? 'card--last' : ''; ?> pam" <?php echo ($label == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
     <div class="grid-x card--content">
       <div class="cell post-label post-label--<?php echo $label?>">
         <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
@@ -47,10 +47,16 @@ if ( isset( $label ) ) :
         <div class="post-meta">
           <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
           <?php if( $label != 'featured') : ?>
-            <span class="departments"><?php echo phila_get_current_department_name( $categories, $byline = false, $break_tags = false, $name_list = true ); ?></span>
+            <!--<span class="departments"><?php //echo phila_get_current_department_name( $categories, $byline = false, $break_tags = false, $name_list = true ); ?></span> -->
           <?php endif; ?>
         </div>
       </div>
     </div>
   </a>
 </article>
+
+<?php if($label == 'announcement') : ?>
+  <div id="announcement-<?php the_ID(); ?>" class="reveal" data-reveal>
+    <?php echo get_the_content(); ?>
+  </div>
+<?php endif; ?>
