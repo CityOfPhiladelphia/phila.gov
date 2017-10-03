@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: The latest
- * Description: Custom Page template for the
+ * Description: Custom Page template for The Latest
  * @package phila-gov
  */
 
