@@ -6,7 +6,13 @@
     font-size: .8rem;
     vertical-align: -webkit-baseline-middle;
   }
-
+  &.post-label--post,
+  &.post-label--announcement{
+    color:color(pride-purple);
+  }
+  &.post-label--featured{
+    color:color(dark-ben-franklin);
+  }
   &.post-label--calendar{
     color:color(phanatic-green);
   }
