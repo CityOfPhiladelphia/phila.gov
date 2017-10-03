@@ -16,15 +16,12 @@
 <?php $label = 'announcement'; ?>
 <?php $count = 0; ?>
 
-<header class="row columns mtl">
-  <h2>The latest from departments</h2>
-</header>
 <div class="grid-container">
   <div class="grid-x grid-margin-x">
     <?php $posts = new WP_Query( $posts_announcements ); ?>
 
     <?php if ( $posts->have_posts() ) : ?>
-      <div class="cell medium-16">
+      <div class="cell medium-8">
         <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
