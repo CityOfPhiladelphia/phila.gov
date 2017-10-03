@@ -1,6 +1,8 @@
 <?php
 /**
  * The template used for displaying a card, containing a title and link
+ * Variables to pass to this file include:
+ * $count, $label
  *
  * @package phila-gov
  */
@@ -31,6 +33,10 @@ if ( isset( $label ) ) :
   endif;
 ?>
 <?php if ($count == 3 && $label == 'featured') : ?>
+  <?php $is_last = true; ?>
+<?php endif; ?>
+
+<?php if ($count == 4 && $label == 'press-release') : ?>
   <?php $is_last = true; ?>
 <?php endif; ?>
 
