@@ -2,6 +2,7 @@ var $ = require('jquery');
 
 require('phila-standards');
 
+require('./archives');
 require('./city-directory-list');
 require('./collapsible-div');
 require('./feedback-forms');
