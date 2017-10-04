@@ -81,7 +81,7 @@
     <?php $feature = new WP_Query( $feature_args ); ?>
 
     <?php if ( $feature->have_posts() ) : ?>
-      <div class="cell medium-8 feature-more">
+      <div class="cell medium-8 feature-more flex-container flex-dir-column">
         <?php while ( $feature->have_posts() ) : $feature->the_post(); ?>
           <?php $post_type = get_post_type(); ?>
 
