@@ -13,24 +13,25 @@
 <?php
 if ( isset( $label ) ) :
   switch( $label ) {
-    case 'press-release':
-      $label_nice = 'Press Release';
-      $icon = 'file-text-o';
-      break;
     case 'announcement':
       $label_nice = 'Announcement';
       $icon = 'bullhorn';
-      break;
-    case 'post':
-      $label_nice = 'Post';
-      $icon = 'pencil';
       break;
     case 'featured':
       $label_nice = 'Featured';
       $icon = 'newspaper-o';
       break;
+    case 'press-release':
+      $label_nice = 'Press Release';
+      $icon = 'file-text-o';
+      break;
+    case 'post':
+      $label_nice = 'Post';
+      $icon = 'pencil';
+      break;
   }
   endif;
+  $extra_classes = 'flex-child-auto ';
 ?>
 <?php if ($count == 3 && $label == 'featured') : ?>
   <?php $is_last = true; ?>
@@ -39,8 +40,12 @@ if ( isset( $label ) ) :
 <?php if ($count == 4 && $label == 'press-release') : ?>
   <?php $is_last = true; ?>
 <?php endif; ?>
+<?php if ($label == 'press-release') {
+  $extra_classes .= 'type-press_release';
+  $extra_classes .= isset($is_last) ? ' card--last' : '';
+}?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $extra_classes ); ?>>
   <a href="<?php echo ($label !== 'announcement') ? the_permalink() : '#' ?>" class="card card--<?php echo $label ?> <?php echo isset($is_last) ? 'card--last' : ''; ?> pam" <?php echo ($label == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
     <div class="grid-x card--content">
       <div class="cell post-label post-label--<?php echo $label?>">
