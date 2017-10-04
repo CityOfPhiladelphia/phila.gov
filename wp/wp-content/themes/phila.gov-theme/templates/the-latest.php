@@ -17,7 +17,7 @@
       <div data-sticky-container class="bg-white">
         <nav class="sticky sticky--in-page center bg-white" data-sticky data-top-anchor="global-sticky-nav:bottom" style="width:100%">
           <div class="grid-container">
-            <ul class="inline-list grid-x grid-margin-x">
+            <ul class="inline-list grid-x grid-margin-x" data-magellan data-options="offset: 106; deepLinking: true;">
               <li class="featured auto cell">
                 <a href="#featured">
                   <i class="fa fa-3x fa-newspaper-o" aria-hidden="true"></i>
@@ -47,15 +47,16 @@
         </nav>
       </div>
     </header>
-    <div class="featured">
+    <div id="featured" class="featured" data-magellan-target="featured">
       <header class="row columns mtl">
-        <h2 id="featured">Featured</h2>
+        <h2>Featured</h2>
       </header>
       <?php get_template_part('partials/posts/content', 'featured'); ?>
     </div>
-    <div class="posts">
+
+    <div id="posts" class="posts" data-magellan-target="posts">
       <header class="row columns mtl">
-        <h2 id="posts">The latest from departments</h2>
+        <h2>The latest from departments</h2>
       </header>
       <?php get_template_part('partials/posts/post', 'announcement'); ?>
       <?php get_template_part('partials/posts/content', 'content-card'); ?>
@@ -63,9 +64,9 @@
     <div class="events">
 
     </div>
-    <div class="press-releases">
+    <div id="press-releases" class="press-releases" data-magellan-target="press-releases">
       <header class="row columns mtl">
-        <h2 id="press-releases">Press Releases</h2>
+        <h2>Press Releases</h2>
       </header>
       <?php get_template_part('partials/posts/press', 'releases'); ?>
     </div>
