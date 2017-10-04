@@ -98,9 +98,14 @@ get_header(); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
 
-  <section class="the-latest">
-    <?php include( locate_template( 'partials/posts/content-featured.php' ) ); ?>
-  </section>
+    <section class="the-latest mvxl">
+      <div class="row">
+        <div class="columns">
+          <h1>The latest news + events</h1>
+        </div>
+      </div>
+      <?php include( locate_template( 'partials/posts/content-featured.php' ) ); ?>
+    </section>
 
     <section class="neighborhood-resources">
       <div class="row expanded ptm">
