@@ -13,13 +13,21 @@
 //TODO: turn this into function
 if ( isset( $label ) ) :
   switch( $label ) {
-    case 'press-release':
-      $label_nice = 'Press Release';
-      $icon = 'file-text-o';
+    case 'announcement':
+      $label_nice = 'Announcement';
+      $icon = 'bullhorn';
       break;
     case 'featured':
       $label_nice = 'Featured';
       $icon = 'newspaper-o';
+      break;
+    case 'press-release':
+      $label_nice = 'Press Release';
+      $icon = 'file-text-o';
+      break;
+    case 'post':
+      $label_nice = 'Post';
+      $icon = 'pencil';
       break;
   }
   endif;
