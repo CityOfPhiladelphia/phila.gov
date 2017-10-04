@@ -15,7 +15,9 @@ get_header(); ?>
   </header>
 </div>
 
-<section id="primary" class="content-area archive">
+
+<section id="archive-page" class="content-area archive">
+
   <div class="row">
     <main id="main" class="site-main small-18 columns medium-centered">
       <form>
@@ -39,30 +41,8 @@ get_header(); ?>
       </form>
     </div>
 
-    <div class="results">
-      <table>
-        <thead>
-          <th>
-            Title
-          </th>
-          <th>
-            Published date
-          </th>
-          <th>
-            Department name
-          </th>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="title"></td>
-            <td class="date"></td>
-            <td class="department"></td>
 
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
+      <div class="results"></div>
 
       <?php phila_gov_paging_nav(); ?>
 
