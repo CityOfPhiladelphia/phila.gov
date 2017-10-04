@@ -92,6 +92,7 @@
         <?php endwhile; ?>
         <?php $see_all_content_type = $label; ?>
         <?php $is_full = true; ?>
+        <?php $see_all_URL = 'archive'?>
         <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
       </div>
     <?php endif; ?>
