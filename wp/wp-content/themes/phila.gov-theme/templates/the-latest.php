@@ -47,28 +47,39 @@
         </nav>
       </div>
     </header>
-    <div id="featured" class="featured" data-magellan-target="featured">
+    <div id="featured" data-magellan-target="featured">
       <header class="row columns mtl">
         <h2>Featured</h2>
       </header>
       <?php get_template_part('partials/posts/content', 'featured'); ?>
     </div>
 
-    <div id="posts" class="posts" data-magellan-target="posts">
+    <div id="posts" data-magellan-target="posts">
       <header class="row columns mtl">
         <h2>The latest from departments</h2>
       </header>
       <?php get_template_part('partials/posts/post', 'announcement'); ?>
       <?php get_template_part('partials/posts/content', 'content-card'); ?>
     </div>
-    <div class="events">
 
-    </div>
-    <div id="press-releases" class="press-releases" data-magellan-target="press-releases">
+    <div id="press-releases" data-magellan-target="press-releases">
       <header class="row columns mtl">
         <h2>Press Releases</h2>
       </header>
       <?php get_template_part('partials/posts/press', 'releases'); ?>
+    </div>
+
+    <div id="events" data-magellan-target="events">
+      <header class="row columns mtl">
+        <h2>Upcoming events</h2>
+      </header>
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell small-24">
+            <?php echo do_shortcode('[calendar id="26996"]')?>
+          </div>
+        </div>
+      </div>
     </div>
   </main><!-- #main -->
 </div><!-- #primary -->
