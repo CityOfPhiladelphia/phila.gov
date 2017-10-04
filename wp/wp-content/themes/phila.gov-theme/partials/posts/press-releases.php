@@ -18,10 +18,16 @@
   'order' => 'desc',
   'orderby' => 'post_date',
   'meta_query'  => array(
-      array(
-        'key' => 'phila_template_select',
-        'value' => 'press_release',
-        'compare' => '=',
+    'relation'=> 'AND',
+    array(
+      'key' => 'phila_template_select',
+      'value' => 'press_release',
+      'compare' => '=',
+    ),
+    array(
+      'key' => 'phila_is_feature',
+      'value' => '0',
+      'compare' => '=',
     ),
   ),
 ); ?>
