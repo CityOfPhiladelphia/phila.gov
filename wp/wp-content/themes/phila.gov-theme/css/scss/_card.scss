@@ -1,13 +1,9 @@
 a.card{
+  margin-bottom:0;
   h1 {
     font-size: rem-calc(25);
     margin: 0;
     color:color(dark-gray);
-  }
-
-  &.card--last {
-    border-bottom: none;
-    margin-bottom:5px;
   }
   &.card--list {
     @include xy-grid;
@@ -28,10 +24,14 @@ a.card{
     h1{
       font-size: rem-calc(16);
     }
-
     &:not(.card--last){
+      margin-bottom:1rem;
+      height:100%;
       border-bottom:5px solid color(love-park-red);
     }
+  }
+  &.card--announcement{
+    height:100%;
   }
   &.card--announcement,
   &.card--post{
@@ -68,4 +68,15 @@ a.card{
       font-size: rem-calc(25);
     }
   }
+}
+
+.type-announcements{
+  height:100%;
+}
+
+a.card.card--last,
+.card--last {
+  border-bottom: none;
+  margin-bottom:5px;
+  height:auto;
 }
