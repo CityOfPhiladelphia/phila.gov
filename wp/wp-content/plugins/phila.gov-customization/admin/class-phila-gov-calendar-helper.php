@@ -132,7 +132,6 @@ class Phila_Gov_Calendar_Helper {
       foreach( $query->posts as $post ) {
         array_push($non_masters, $post->ID);
       }
-      var_dump($non_masters);
       return $non_masters;
     }else{
       return null;
