@@ -76,7 +76,7 @@
       <div class="grid-container">
         <div class="grid-x">
           <div class="cell small-24">
-            <?php echo do_shortcode('[calendar id="26996"]')?>
+            <?php echo do_shortcode('[calendar id="26997"]')?>
           </div>
         </div>
       </div>
