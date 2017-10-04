@@ -1,6 +1,26 @@
 .sticky {
   &.sticky--in-page {
     text-transform: uppercase;
+
+    &.is-stuck{
+      background: color(dark-ben-franklin);
+
+      li{
+        border-right:none;
+
+        .fa{
+          visibility: hidden;
+        }
+
+        a:link, a:visited {
+          color:white;
+        }
+        a.is-active, a:hover{
+          color:color(electric-blue);
+        }
+      }
+
+    }
     a:link, a:visited {
       color:color(dark-gray);
     }
