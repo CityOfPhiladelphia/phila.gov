@@ -88,6 +88,7 @@
 
   $related_post_type = array( $post_type );
   $posts_per = 3;
+
   //fallback for old post types
   if( $template_type == 'phila_post' || $template_type == 'post' ) {
     array_push( $related_post_type, 'phila_post' );
@@ -104,13 +105,20 @@
     'post__not_in'  => array($post_id)
   );
 
+  $template = 'partials/content-related.php';
+
   if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
     $is_press_release = true;
     $label = 'press-release';
+    $count = 4;
+    $template = 'partials/posts/press-releases.php';
   }
 ?>
-
-<?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+<div class="grid-container">
+  <div class="grid-x">
+    <?php include( locate_template( $template ) ); ?>
+  </div>
+</div>
 
 <div id="phila-lightbox-feature" data-reveal class="reveal reveal--auto center"></div>
 <div id="phila-lightbox" data-reveal class="reveal reveal--auto center"></div>
