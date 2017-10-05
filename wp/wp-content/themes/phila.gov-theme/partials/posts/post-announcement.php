@@ -32,12 +32,21 @@
     ),
   ),
 ); ?>
+
+<?php $phila_posts_args  = array(
+  'posts_per_page' => 1,
+  'post_type' => array( 'phila_post' ),
+  'order' => 'desc',
+  'orderby' => 'post_date',
+); ?>
+
 <?php
 //special handling for old press release CPT
   $announcements = new WP_Query( $announcements_args );
   $posts = new WP_Query( $posts_args );
+  $phila_posts = new WP_Query( $phila_posts_args );
   $result = new WP_Query();
-  $result->posts = array_merge( $announcements->posts, $posts->posts );
+  $result->posts = array_merge( $announcements->posts, $posts->posts, $phila_posts->posts );
   $result->post_count = count( $result->posts );
 ?>
 
@@ -51,16 +60,18 @@
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
           <?php $count++; ?>
-          <?php if ($post_type == 'announcements') : ?>
-            <div class="cell medium-8">
-              <?php $label = 'announcement'; ?>
-              <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
-          </div>
-          <?php else: ?>
-            <?php $label = 'post'; ?>
-            <div class="cell medium-16">
-            <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-          </div>
+          <?php if ($count <= 2 ): ?>
+            <?php if ($post_type == 'announcements') : ?>
+              <div class="cell medium-8">
+                <?php $label = 'announcement'; ?>
+                <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+            </div>
+            <?php else: ?>
+              <?php $label = 'post'; ?>
+              <div class="cell medium-16">
+              <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
+            </div>
+            <?php endif; ?>
           <?php endif; ?>
 
         <?php endwhile; ?>
