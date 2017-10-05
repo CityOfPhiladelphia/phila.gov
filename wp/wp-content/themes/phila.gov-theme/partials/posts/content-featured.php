@@ -90,10 +90,15 @@
           <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
 
         <?php endwhile; ?>
-        <?php $see_all_content_type = $label; ?>
         <?php $is_full = true; ?>
-        <?php $see_all_URL = 'archive'?>
-        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+        <?php $see_all_content_type = $label; ?>
+        <?php if (is_home() ) : ?>
+          <?php $see_all_URL = 'the-latest'?>
+        <?php else:  ?>
+          <?php $see_all_URL = 'archive'?>
+        <?php endif; ?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+
       </div>
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
