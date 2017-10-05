@@ -47,8 +47,12 @@
         <?php $see_all_URL = $forms_documents[$key]['phila_action_panel_link_multi']; ?>
         <?php $see_all_content_type = strtolower( $forms_documents[$key]['phila_action_panel_cta_text_multi'] );?>
         <?php $is_full = true; ?>
-        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+        <div class="row mtm">
+          <div class="columns">
+            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+          </div>
         </div>
+      </div>
       <?php endforeach; ?>
     </div>
   </section>

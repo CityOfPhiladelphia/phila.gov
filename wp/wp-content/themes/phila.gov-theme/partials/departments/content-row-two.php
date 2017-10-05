@@ -103,9 +103,13 @@ if (!empty($row_two_column_selection)) {
              <?php echo do_shortcode('[calendar id="' . $row_two_col_two_cal_id .'"]'); ?>
            </div>
            <?php if ($row_two_col_one_cal_url):?>
-             <?php $see_all_URL = $row_two_col_one_cal_url;?>
-             <?php $see_all_content_type = 'events'; ?>
-             <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+             <div class="row mtm">
+               <div class="columns">
+                 <?php $see_all_URL = $row_two_col_one_cal_url;?>
+                 <?php $see_all_content_type = 'events'; ?>
+                 <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+               </div>
+             </div>
            <?php endif; ?>
         </div>
        <?php elseif ( $row_two_col_two_type  == 'phila_module_row_2_col_2_press_release' ): ?>
@@ -113,9 +117,13 @@ if (!empty($row_two_column_selection)) {
            <div class="row">
              <?php echo do_shortcode('[press-releases posts=5]');?>
            </div>
-           <?php $see_all_URL = '/press-releases/' . $category_slug . '/';
-           $see_all_content_type = 'press releases';
-           include( locate_template( 'partials/content-see-all.php' ) );?>
+           <div class="row mtm">
+            <div class="columns">
+              <?php $see_all_URL = '/press-releases/' . $category_slug . '/';
+              $see_all_content_type = 'press releases';
+             include( locate_template( 'partials/content-see-all.php' ) );?>
+            </div>
+          </div>
          </div>
        <?php endif; ?>
    </div>
