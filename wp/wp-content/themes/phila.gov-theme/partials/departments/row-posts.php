@@ -25,6 +25,10 @@ if ( !isset($blog_cat_override) ) {
   else:
     $cat = get_category($category_id);
     $see_all_URL = '/posts/' . $cat->slug . '/';
-  endif;
-    $see_all_content_type = 'posts';
-    include( locate_template( 'partials/content-see-all.php' ) ); ?>
+  endif; ?>
+  <div class="row mtm">
+    <div class="columns">
+      <?php $see_all_content_type = 'posts';
+      include( locate_template( 'partials/content-see-all.php' ) ); ?>
+    </div>
+  </div>
