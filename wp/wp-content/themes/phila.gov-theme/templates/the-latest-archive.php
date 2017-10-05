@@ -27,20 +27,23 @@ get_header(); ?>
         </div>
       </form>
 
-    <div id="filter-results" class="bg-ghost-gray pam">
-      <form>
-        <fieldset>
-          <legend class="h4">Filter results</legend>
-          <input id="featured" type="checkbox" name="featured" value="featured">
-          <label for="featured">Featured</label>
-          <input id="posts" type="checkbox" name="posts" value="posts">
-          <label for="posts">Posts</label>
-          <input id="press-releases" type="checkbox" name="press-releases" value="press-releases">
-          <label for="press-releases">Press releases</label>
-        </fieldset>
-      </form>
-    </div>
-
+      <div class="accordion bg-ghost-gray pam" data-accordion>
+        <div id="filter-results" class="accordion-item is-active" data-accordion-item>
+          <a class="h4" class="accordion-title">Filter results</a>
+          <div class="accordion-content" data-tab-content>
+            <form>
+              <fieldset>
+                <input id="featured" type="checkbox" name="featured" value="featured">
+                <label for="featured">Featured</label>
+                <input id="posts" type="checkbox" name="posts" value="posts">
+                <label for="posts">Posts</label>
+                <input id="press-releases" type="checkbox" name="press-releases" value="press-releases">
+                <label for="press-releases">Press releases</label>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
 
       <div class="results"></div>
 
