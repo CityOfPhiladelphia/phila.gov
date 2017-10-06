@@ -54,7 +54,6 @@
 
 <div class="grid-container">
   <div class="grid-x grid-margin-x">
-
     <?php if ( $result->have_posts() ) : ?>
         <?php while ( $result->have_posts() ) : $result->the_post(); ?>
           <?php $post_type = get_post_type(); ?>
