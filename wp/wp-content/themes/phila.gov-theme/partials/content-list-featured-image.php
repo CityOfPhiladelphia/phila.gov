@@ -8,7 +8,7 @@
 <?php $categories = get_the_category($post->ID); ?>
 <?php $desc = phila_get_item_meta_desc( ); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
   <a href="<?php echo the_permalink(); ?>" class="card card--list grid-x">
     <?php if ( has_post_thumbnail() ) : ?>
       <div class="cell medium-7">
