@@ -42,7 +42,7 @@
     <?php $main_feature = new WP_Query( $main_feature_args ); ?>
 
     <?php if ( $main_feature->have_posts() ) : ?>
-      <div class="cell medium-16 feature-main">
+      <div class="cell medium-16 feature-main align-self-stretch">
         <?php while ( $main_feature->have_posts() ) : $main_feature->the_post(); ?>
           <?php $post_type = get_post_type(); ?>
 
