@@ -70,6 +70,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
   <div class="grid-container post-content">
     <div class="medium-18 medium-centered">
       <?php the_content(); ?>
+      <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
     </div>
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
@@ -121,6 +122,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     <?php include( locate_template( $template ) ); ?>
   </div>
 </div>
+
 
 <div id="phila-lightbox-feature" data-reveal class="reveal reveal--auto center"></div>
 <div id="phila-lightbox" data-reveal class="reveal reveal--auto center"></div>
