@@ -1,10 +1,10 @@
 .post-label{
   padding-bottom:1rem;
-  text-transform: uppercase;
   span{
     @include secondary-font(normal);
     font-size: .8rem;
     vertical-align: -webkit-baseline-middle;
+    text-transform: uppercase;
   }
   &.post-label--post,
   &.post-label--announcement{
