@@ -68,12 +68,6 @@ jQuery(document).ready(function($){
 
   }else{
 
-    if ( ( typenow == 'news_post') && adminpage.indexOf('post') > -1 ){
-      $( '#title' ).rules( 'add', {
-        maxlength: 70
-      });
-    }
-
     if ( ( typenow == 'attachment') && adminpage.indexOf('post') > -1 ){
       $('#post').validate({
         rules: {
