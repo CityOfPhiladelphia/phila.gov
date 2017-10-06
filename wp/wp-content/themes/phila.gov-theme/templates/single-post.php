@@ -5,15 +5,17 @@
  * @package phila-gov
  */
 ?>
-<?php $category = get_the_category(); ?>
-<?php $posted_on_values = phila_get_posted_on(); ?>
-<?php $the_title =  get_the_title();?>
-<?php $email_title = urlencode(html_entity_decode($the_title)); ?>
-<?php $post_type = get_post_type(); ?>
-<?php $post_obj = get_post_type_object( $post_type );?>
-<?php $post_id = get_the_id(); ?>
-<?php $template_type = phila_get_selected_template();?>
-
+<?php
+$category = get_the_category();
+$posted_on_values = phila_get_posted_on();
+$the_title =  get_the_title();
+$email_title = urlencode(html_entity_decode($the_title));
+$post_type = get_post_type();
+$post_obj = get_post_type_object( $post_type );
+$post_id = get_the_id();
+$template_type = phila_get_selected_template();
+$tweet_intent = rwmb_meta('phila_social_intent');
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
@@ -22,7 +24,7 @@
       </div>
       <div class="cell medium-6 align-self-bottom social-media">
         <a href="#" id="fb-share" data-analytics="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="https://twitter.com/intent/tweet?text=<?php echo phila_encode_title($the_title)?>&url=<?php echo get_permalink()?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/intent/tweet?text=<?php echo ( $tweet_intent != '' ) ? phila_encode_title(rwmb_meta('phila_social_intent') ) :  phila_encode_title( $the_title );?>&url=<?php echo get_permalink()?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
         <a href="mailto:?subject=<?php echo str_replace('+', '%20', $email_title) ?>&body=<?php echo get_permalink()?>" data-analytics="social"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
         <a href="javascript:window.print()" data-analytics="social"><i class="fa fa-print" aria-hidden="true"></i></a>
       </div>
