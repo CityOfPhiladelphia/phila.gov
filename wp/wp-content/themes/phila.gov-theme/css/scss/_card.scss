@@ -25,13 +25,8 @@ a.card{
       font-size: rem-calc(16);
     }
     &:not(.card--last){
-      margin-bottom:1rem;
-      height:100%;
       border-bottom:5px solid color(love-park-red);
     }
-  }
-  &.card--announcement{
-    height:100%;
   }
   &.card--announcement,
   &.card--post{
@@ -47,25 +42,25 @@ a.card{
       font-size: rem-calc(16);
     }
   }
-
-  @include breakpoint(medium up) {
-    &.card--press-release{
-      .card--content{
-        min-height:rem-calc(150);
-      }
-      &.card--last .card--content {
-        min-height:rem-calc(115);
-      }
+}
+.feature-main{
+  article, a.card{
+    height:100%;
+  }
+  .card--content{
+    max-height:rem-calc(150);
+  }
+}
+.feature-more{
+  .card--featured{
+    &:not(.card--last){
+      margin-bottom: 1rem;
     }
   }
 }
 
-@include breakpoint(medium only) {
-  .card--content{
-    min-height:rem-calc(150);
-  }
-
-}
+.card--content,
+.card--announcement,
 .type-announcements{
   height:100%;
 }
@@ -75,4 +70,12 @@ a.card.card--last,
   border-bottom: none;
   margin-bottom:5px;
   height:auto;
+}
+
+.grid-full-height {
+  article, a.card{
+    &:not(.card--last) {
+      height:100%;
+    }
+  }
 }
