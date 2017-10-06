@@ -31,7 +31,7 @@ if ( isset( $label ) ) :
       break;
   }
   endif;
-  $extra_classes = 'flex-child-auto ';
+  $article_classes = 'flex-child-auto ';
 ?>
 <?php if ($count == 3 && $label == 'featured') : ?>
   <?php $is_last = true; ?>
@@ -41,19 +41,19 @@ if ( isset( $label ) ) :
   <?php $is_last = true; ?>
 <?php endif; ?>
 <?php if ($label == 'press-release') {
-  $extra_classes .= 'type-press_release';
-  $extra_classes .= isset($is_last) ? ' card--last' : '';
+  $article_classes .= 'type-press_release';
+  $article_classes .= isset($is_last) ? ' card--last' : '';
 }?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( $extra_classes ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $article_classes ); ?>>
   <a href="<?php echo ($label !== 'announcement') ? the_permalink() : '#' ?>" class="card card--<?php echo $label ?> <?php echo isset($is_last) ? 'card--last' : ''; ?> pam" <?php echo ($label == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
-    <div class="grid-x card--content">
-      <div class="cell post-label post-label--<?php echo $label?>">
+    <div class="grid-x flex-dir-column card--content">
+      <div class="cell align-self-top post-label post-label--<?php echo $label?>">
         <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
+        <header class="cell mvm">
+          <h1><?php echo get_the_title(); ?></h1>
+        </header>
       </div>
-      <header class="cell mbm">
-        <h1><?php echo get_the_title(); ?></h1>
-      </header>
       <div class="cell align-self-bottom">
         <div class="post-meta">
           <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
