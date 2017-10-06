@@ -23,8 +23,8 @@ if ( class_exists("Phila_Gov_Post" ) ){
         array(
           'type' => 'textarea',
           'required'  => true,
-          'id'  => 'social_intent',
-          'desc'  => 'Curate Tweet and Facebook sharing text. E.g.: ',
+          'id'  => 'phila_social_intent',
+          'desc'  => 'Curate Tweet sharing text. Required. 116 character limit.<br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
         )
       ),
     );
@@ -70,6 +70,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
           'type' => 'group',
           'clone' => true,
           'sort'  => true,
+          'max_clone' => 2,
           'fields' => array(
             array(
               'type'=> 'custom_html',
@@ -87,7 +88,6 @@ if ( class_exists("Phila_Gov_Post" ) ){
         )
       )
     );
-
 
     return $meta_boxes;
   }
