@@ -16,18 +16,18 @@ function phila_breadcrumbs() {
     echo '</a></li>';
 
     if ( is_singular('post') ){
-      echo '<li><a href="/the-latest">The latest</a></li>';
-      echo '<li>';
-      the_title();
-      echo '</li>';
+      echo '<li><a href="/the-latest">The latest news + events</a></li>';
+      if(phila_get_selected_template( $post->ID ) == 'press_release') {
+        echo '<li><a href="/the-latest/archive?type=press-release">Press releases</a></li>';
+      }else{
+        echo '<li><a href="/the-latest/archive?type=post">Posts</a></li>';
+      }
+        echo '<li>';
+        the_title();
+        echo '</li>';
 
     } elseif ( is_singular('news_post') ) {
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/news">News &amp; events</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/news/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
+      echo '<li><a href="/the-latest">The latest news + events</a></li>';
       echo '<li>';
       the_title();
       echo '</li>';
@@ -40,29 +40,15 @@ function phila_breadcrumbs() {
         echo '</li>';
 
     }elseif ( is_singular('phila_post') ) {
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/posts">Posts</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/posts/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
-      echo '<li>';
-      the_title();
-      echo '</li>';
-
-    }elseif ( is_singular('event_page') ) {
-
+      echo '<li><a href="/the-latest">The latest news + events</a></li>';
+      echo '<li><a href="/the-latest/archive/?type=posts">Posts</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
 
     }elseif ( is_singular('press_release') ) {
-      $categories = get_the_category($post->ID);
-
-      echo '<li><a href="/press-releases">Press releases</a></li>';
-      if ( !$categories == 0 ) {
-        echo '<li><a href="/press-releases/' . $categories[0]->slug . '">'. $categories[0]->name . '</a></li>';
-      }
+      echo '<li><a href="/the-latest">The latest news + events</a></li>';
+      echo '<li><a href="/the-latest/archive/?type=press-releases">Press releases</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
@@ -89,47 +75,6 @@ function phila_breadcrumbs() {
     } elseif ( is_post_type_archive('document') ) {
 
       echo '<li>Publications &amp; forms</li>';
-
-    } elseif ( ( is_post_type_archive('news_post') && is_category() ) ) {
-
-        echo '<li><a href="/news">News &amp; events</a></li>';
-        $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_post_type_archive('news_post') ) {
-
-      echo '<li>News &amp; events</li>';
-
-    } elseif ( is_post_type_archive('phila_post') && is_category() )  {
-
-        echo '<li><a href="/posts">Posts</a></li>';
-        $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif( is_post_type_archive( 'phila_post' ) ) {
-
-        echo '<li>Posts</li>';
-
-    }elseif ( is_post_type_archive('press_release') && is_category() )  {
-
-      echo '<li><a href="/press-releases">Press releases</a></li>';
-      $category = get_the_category($post->ID);
-
-      echo '<li>' . $category[0]->name . '</li>';
-
-    } elseif ( is_post_type_archive('press_release') ) {
-
-      echo '<li>Press releases</li>';
-
-    } elseif ( ( is_post_type_archive('notices') && is_category() ) ) {
-
-      echo '<li><a href="/notices">Notices</a></li>';
-
-      $category = get_the_category($post->ID);
-
-      echo '<li>' . $category[0]->name . '</li>';
 
     } elseif ( is_singular('department_page') ) {
 
