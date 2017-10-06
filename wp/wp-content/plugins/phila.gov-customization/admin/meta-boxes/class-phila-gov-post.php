@@ -63,7 +63,6 @@ if ( class_exists("Phila_Gov_Post" ) ){
           array('phila_template_select', '=', 'post'),
         ),
       ),
-
       'fields' => array(
         array(
           'id' => 'post_read_cta',
@@ -71,6 +70,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
           'clone' => true,
           'sort'  => true,
           'max_clone' => 2,
+          'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
           'fields' => array(
             array(
               'type'=> 'custom_html',
