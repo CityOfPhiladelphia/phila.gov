@@ -38,13 +38,7 @@ jQuery(document).ready(function($) {
       });
     }
 
-    if ( typenow == 'phila_post' && adminpage.indexOf( 'post' ) > -1 ) {
-
-      $('a#link-post_tag').click();
-
-    }
-
-    if ( ( typenow == 'press_release' || typenow == 'document' ) && adminpage.indexOf( 'post' ) > -1 ) {
+    if ( ( typenow == 'document' ) && adminpage.indexOf( 'post' ) > -1 ) {
 
       $('.rwmb-date').datepicker();
       if ($(".rwmb-date").datepicker("getDate") === null) {
@@ -148,5 +142,11 @@ jQuery(document).ready(function($) {
       });
     });
   }
+  if ( ( typenow == 'post' ) && adminpage.indexOf( 'post' ) > -1 )  {
+    $( '#phila_social_intent' ).rules( 'add', {
+      maxlength: 116
+    });
+  }
+
 
 });
