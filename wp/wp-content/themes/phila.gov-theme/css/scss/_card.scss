@@ -48,28 +48,24 @@ a.card{
     }
   }
 
+  @include breakpoint(medium up) {
+    &.card--press-release{
+      .card--content{
+        min-height:rem-calc(150);
+      }
+      &.card--last .card--content {
+        min-height:rem-calc(115);
+      }
+    }
+  }
+}
+
+@include breakpoint(medium only) {
   .card--content{
-    min-height: rem-calc(130);
+    min-height:rem-calc(150);
   }
 
-  &.card--press-release.card--last{
-    .card--content{
-      min-height:inherit;
-    }
-  }
 }
-
-.feature-main{
-  a.card{
-    .card--content{
-      min-height: rem-calc(160);
-    }
-    h1{
-      font-size: rem-calc(25);
-    }
-  }
-}
-
 .type-announcements{
   height:100%;
 }
