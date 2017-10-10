@@ -20,20 +20,21 @@ var config = {
 var archives = new Vue ({
   el: '.results',
   template:`
-    <table>
+    <table class="theme-light">
       <thead>
-        <tr><th>Title</th><th>Date</th><th>Department</th></tr>
+        <tr><th>Title</th><th>Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
         <tr v-for="post in posts"
         :key="post.id">
           <td class="title"><a v-bind:href="post.link">
-          <span v-if="post.template.includes('post')">
-            <i class="fa fa-pencil"></i>
-          </span>
-          <span v-else>
-            <i class="fa fa-file-text-o"></i>
-          </span> {{ post.title }}</a>
+            <span v-if="post.template.includes('post')">
+              <i class="fa fa-pencil pride-purple"></i>
+            </span>
+            <span v-else>
+              <i class="fa fa-file-text-o love-park-red"></i>
+            </span>
+          {{ post.title }}</a>
           </td>
           <td class="date">{{ post.date  | formatDate }}</td>
           <td class="categories">
