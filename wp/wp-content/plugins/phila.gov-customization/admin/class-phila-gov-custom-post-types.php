@@ -29,7 +29,7 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_staff_directory' ) );
 
-    add_action( 'init', array( $this, 'create_phila_annoucements' ) );
+    add_action( 'init', array( $this, 'create_phila_annoucement' ) );
 
     //deprecated content types.
     add_action( 'init', array( $this, 'create_phila_posts' ) );
@@ -153,8 +153,8 @@ class Phila_Gov_Custom_Post_Types{
     );
   }
 
-  function create_phila_annoucements() {
-    register_post_type( 'announcements',
+  function create_phila_annoucement() {
+    register_post_type( 'announcement',
       array(
         'labels' => array(
           'name' => __( 'Announcements' ),
