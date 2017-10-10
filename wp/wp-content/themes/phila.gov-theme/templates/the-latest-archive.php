@@ -42,6 +42,21 @@ get_header(); ?>
               </fieldset>
             </form>
           </div>
+          <div class="grid-x grid-margin-x">
+          <div class="cell medium-9">
+            <start date></start>
+              <i class="fa fa-arrow"></i>
+            <end date></end>
+          </div>
+          <div class="cell medium-9">
+            <select id="departments" name="select">
+              <option value="all-departments" selected="selected">All departments</option>
+            </select>
+          </div>
+          <div class="cell medium-6">
+            <button class="full">Clear filters</button>
+          </div>
+          </div>
         </div>
       </div>
 
