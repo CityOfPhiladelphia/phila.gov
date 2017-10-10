@@ -1034,7 +1034,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 }
 
 /**
- * Return a string representing the template currently applied to a page in the loop. Without a template applied, default back to post type. 
+ * Return a string representing the template currently applied to a page in the loop. Without a template applied, default back to post type.
  *
  **/
 
@@ -1386,7 +1386,7 @@ function phila_get_department_logo_v2( $post ){
     }
 }
 
-function phila_get_department_homepage_typography( $parent ){
+function phila_get_department_homepage_typography( $parent, $return_stripped = false, $page_title = null ){
 
   $target_phrases = array(
     "City of Philadelphia",
@@ -1401,17 +1401,29 @@ function phila_get_department_homepage_typography( $parent ){
     "Bureau of",
   );
 
-  $page_title = $parent->post_title;
+  if ( !isset( $page_title ) ) {
+    $page_title = $parent->post_title;
+  }
 
   while ( list(, $phrase ) = each( $target_phrases ) ) {
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
+
+      if( $return_stripped === true ){
+        return $new_title = substr( $page_title, $c );
+      }
       $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+
       break;
-    }else{
+    }elseif($return_stripped == false){
       $new_title = '<h1>' . $page_title . '</h1>';
+    }else{
+      $new_title = $page_title;
     }
   }
+
+
+
 
   return $new_title;
 }
