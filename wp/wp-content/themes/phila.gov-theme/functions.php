@@ -108,7 +108,6 @@ function phila_filter_sep(){
 
 add_filter( 'wp_calculate_image_sizes', 'phila_content_image_sizes_attr', 10 , 2 );
 
-
 function phila_content_image_sizes_attr( $sizes, $size ) {
   $width = $size[0];
 
@@ -116,6 +115,9 @@ function phila_content_image_sizes_attr( $sizes, $size ) {
 
   return $sizes;
 }
+
+
+
 
 add_filter('pre_get_document_title', 'phila_filter_title');
 
@@ -218,6 +220,8 @@ function phila_filter_title( $title ){
   return $title;
 }
 
+
+
 add_action('wp_head', 'phila_open_graph', 5);
 
 function phila_open_graph() {
@@ -246,6 +250,8 @@ function phila_open_graph() {
   <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://beta.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
   <?php
 }
+
+
 
 /**
  * Clean up post titles for social media display
@@ -300,11 +306,15 @@ function phila_gov_scripts() {
 
 }
 
+
+
 add_action('init', 'enqueue_scripts_styles_init');
 
 function enqueue_scripts_styles_init() {
   wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ); // setting ajaxurl
 }
+
+
 
 add_action( 'wp_ajax_ajax_action', 'ajax_action_stuff' ); // ajax for logged in users
 add_action( 'wp_ajax_nopriv_ajax_action', 'ajax_action_stuff' ); // ajax for not logged in users
@@ -350,6 +360,12 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  * Load custom Utilities file.
  */
 require get_template_directory() . '/inc/utilities.php';
+
+
+/**
+ * Include a template file and(optionally) pass arguments to it.
+ */
+require get_template_directory() . '/inc/phila_get_template_part.php';
 
 
 // TODO: Remove additional fallback logic (foreach) as when possible
@@ -426,6 +442,8 @@ function phila_get_department_menu() {
   }
 }
 
+
+
 add_filter('nav_menu_css_class', 'phila_add_active_nav_class', 10, 2);
 
 function phila_add_active_nav_class( $classes, $item ){
@@ -434,6 +452,8 @@ function phila_add_active_nav_class( $classes, $item ){
   }
   return $classes;
 }
+
+
 
 function phila_get_dept_contact_blocks() {
   $categories = get_the_category();
@@ -470,11 +490,11 @@ function phila_get_dept_contact_blocks() {
       echo '</div>';
 
   }
-
 }
 
-function phila_get_posted_on(){
 
+
+function phila_get_posted_on(){
   $posted_on_meta['author'] = esc_html( get_the_author() );
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
   $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
@@ -489,8 +509,9 @@ function phila_get_posted_on(){
   wp_reset_postdata();
 
   return $posted_on_meta;
-
 }
+
+
 
 /**
  * Return an ID of an attachment by searching the database with the file URL.
@@ -537,6 +558,10 @@ function phila_format_document_type($document_type){
       break;
   }
 }
+
+
+
+
 /**
  * Look up author by slug and use author ID
  *
@@ -557,6 +582,7 @@ function phila_gov_request( $query_vars ){
   }
   return $query_vars;
 }
+
 /**
  * Swaps author user name with author nickname
  *
@@ -1416,6 +1442,7 @@ function phila_get_department_homepage_typography( $parent ){
   return $new_title;
 }
 
+
 //Allow some HTML5 data-* attributes to appear in the TinyMCE WYSIWYG editor
 add_filter('wp_kses_allowed_html', 'phila_filter_allowed_html', 10, 2);
 
@@ -1455,3 +1482,7 @@ function add_lightbox_rel($content) {
   $content = preg_replace($pattern, $replacement, $content);
   return $content;
 }
+
+
+
+
