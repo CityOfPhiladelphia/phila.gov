@@ -19,7 +19,7 @@ get_header(); ?>
 <section id="archive-page" class="content-area archive">
 
   <div class="row">
-    <main id="main" class="site-main small-18 columns medium-centered">
+    <main id="main" class="site-main medium-20 columns medium-centered">
       <form>
         <div class="search">
           <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field">
