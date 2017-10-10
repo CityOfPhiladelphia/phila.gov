@@ -1034,7 +1034,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 }
 
 /**
- * Return a string representing the template currently applied to a page in the loop.
+ * Return a string representing the template currently applied to a page in the loop. Without a template applied, default back to post type. 
  *
  **/
 
@@ -1043,7 +1043,7 @@ function phila_get_selected_template( $post_id = null ){
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
   if ( empty( $user_selected_template ) ){
-    return get_post_type();
+    return get_post_type( $post_id );
   }
 
   return $user_selected_template;
