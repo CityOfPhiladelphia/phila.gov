@@ -13,7 +13,7 @@ class Phila_Archives_Controller {
   // Register the endpoint for collections.
     register_rest_route( $this->namespace, '/' . $this->resource_name, array(
       array(
-        'methods'   => 'GET',
+        'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
@@ -21,7 +21,7 @@ class Phila_Archives_Controller {
     //Register individual items
     register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
       array(
-        'methods'   => 'GET',
+        'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_item' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
