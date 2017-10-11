@@ -6,6 +6,7 @@
  */
 global $post;
 
+
 /**
  * Get a department specific partial template with scoped args
  * @param  string $partial_name name of partial after hyphen
@@ -48,7 +49,9 @@ get_header(); ?>
 
     if ( phila_util_is_v2_template( $parent->ID ) ) :
 
-
+      /**
+       * Department Homepage V2 Hero
+       */
       $hero_data = array(
         'parent' => phila_util_get_furthest_ancestor($post),
         'is_homepage_v2' => $user_selected_template == 'homepage_v2',
@@ -93,6 +96,7 @@ get_header(); ?>
      }else{
 
       while ( have_posts() ) : the_post();
+
         get_template_part( 'templates/single', 'on-site-content' );
       endwhile;
     }
