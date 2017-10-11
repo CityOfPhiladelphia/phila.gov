@@ -36,6 +36,7 @@ class Phila_Archives_Controller {
   public function get_items( $request ) {
     $args = array(
       'posts_per_page' => 40,
+      's' => $request['s'],
       'post_type' => array(
         'post',
         'announcements',

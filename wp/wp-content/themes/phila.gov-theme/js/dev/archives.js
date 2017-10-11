@@ -71,7 +71,7 @@ var archives = new Vue ({
 
     <table class="theme-light">
       <thead>
-        <tr><th>Title</th><th>Publish date</th><th>Department</th></tr>
+        <tr><th>Title</th><th style="width:125px;">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
         <tr v-for="post in posts"
