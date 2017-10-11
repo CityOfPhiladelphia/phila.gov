@@ -20,4 +20,11 @@ table.theme-light{
     border-left:none;
     border-right:none;
   }
+  a:link, a:visited{
+    color:color(dark-gray);
+  }
+  .clickable-row:hover{
+    opacity: 1;
+    background:color(ghost-gray);
+  }
 }
