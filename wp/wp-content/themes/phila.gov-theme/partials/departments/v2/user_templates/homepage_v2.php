@@ -70,11 +70,14 @@
 
 
 
-
-
  // TODO: get curent user value (wp_get_current_user()->ID) when not logged in to admin
-    $meta_box_order = get_user_meta(wp_get_current_user()->ID ,sprintf( 'meta-box-order_%s', get_post_type() ),true);
-    $meta_box_order_arr = explode(',',$meta_box_order['normal']);
+    // $meta_box_order = get_user_meta(wp_get_current_user()->ID ,sprintf( 'meta-box-order_%s', get_post_type() ),true);
+    // $meta_box_order_arr = explode(',',$meta_box_order['normal']);
+
+    $meta_box_order_arr = get_post_meta(get_the_ID(), 'phila_meta-box-order');
+    d(
+        explode(',',$meta_box_order_arr[0])
+    );
 
     // re-orders position fo full-width cta based on placement in admin
     $cta_postiion = array_search('full-width-call-to-action', $meta_box_order_arr);
