@@ -1,10 +1,8 @@
 var Vue = require('vue')
-var VueResource = require('vue-resource')
+
 var moment = require('moment')
-
+var axios = require('axios')
 var Datepicker = require('vuejs-datepicker');
-
-Vue.use(VueResource)
 
 Vue.filter('formatDate', function(value) {
   if (value) {
@@ -69,9 +67,9 @@ var archives = new Vue ({
       </div>
     </div>
 
-    <table class="theme-light">
+    <table class="stack theme-light">
       <thead>
-        <tr><th>Title</th><th style="width:125px;">Publish date</th><th>Department</th></tr>
+        <tr><th>Title</th><th width="125">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
         <tr v-for="post in posts"
@@ -110,16 +108,22 @@ var archives = new Vue ({
   },
   methods: {
     getPosts: function () {
-      this.$http.get(config.api.post_data).then(response => {
-      this.posts = response.data
-      console.log(response.data)
+      axios.get('/wp-json/the-latest/v1/archives')
+      .then(response => {
 
-      }, response => {
-         console.log('fail')
-      });
+        this.posts = response.data
+
+        console.log(response.data)
+      })
+      .catch(e => {
+        console.log(error)
+      })
     },
     openURL: function (post){
       window.location.href = post.link;
+    },
+    searchSubmit: function (search){
+      console.log(search);
     }
   },
 
