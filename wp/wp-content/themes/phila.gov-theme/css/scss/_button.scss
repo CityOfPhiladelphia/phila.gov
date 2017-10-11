@@ -1,6 +1,5 @@
 @mixin inverse-button(){
   color:white;
-  min-width:15rem;
   text-align: center;
   &:hover, &:active, &:focus{
     background: color(dark-gray);
