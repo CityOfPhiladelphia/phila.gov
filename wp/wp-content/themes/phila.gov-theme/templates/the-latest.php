@@ -30,17 +30,17 @@
                   <div>Posts</div>
                 </a>
               </li>
-              <li class="press-releases auto cell">
-                <a href="#press-releases">
-                  <i class="fa fa-3x fa-file-text-o" aria-hidden="true"></i>
-                <div>Press releases</div>
-              </a>
-              </li>
               <li class="events auto cell">
                 <a href="#events">
                   <i class="fa fa-3x fa-calendar-check-o" aria-hidden="true"></i>
                   <div>Events</div>
                 </a>
+              </li>
+              <li class="press-releases auto cell">
+                <a href="#press-releases">
+                  <i class="fa fa-3x fa-file-text-o" aria-hidden="true"></i>
+                <div>Press releases</div>
+              </a>
               </li>
             </ul>
           </div>
@@ -62,13 +62,6 @@
       <?php get_template_part('partials/posts/content', 'content-card'); ?>
     </div>
 
-    <div id="press-releases" data-magellan-target="press-releases">
-      <header class="row columns mtl">
-        <h2>Press Releases</h2>
-      </header>
-      <?php get_template_part('partials/posts/press', 'releases'); ?>
-    </div>
-
     <div id="events" data-magellan-target="events">
       <header class="row columns mtl">
         <h2>Upcoming events</h2>
@@ -81,6 +74,14 @@
         </div>
       </div>
     </div>
+
+    <div id="press-releases" data-magellan-target="press-releases">
+      <header class="row columns mtl">
+        <h2>Press Releases</h2>
+      </header>
+      <?php get_template_part('partials/posts/press', 'releases'); ?>
+    </div>
+
   </main><!-- #main -->
 </div><!-- #primary -->
 
