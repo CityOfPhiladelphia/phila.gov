@@ -20,45 +20,6 @@ get_header(); ?>
 
   <div class="row">
     <main id="main" class="site-main medium-20 columns medium-centered">
-      <form>
-        <div class="search">
-          <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field">
-          <input type="submit" value="submit" class="search-submit">
-        </div>
-      </form>
-
-      <div class="accordion bg-ghost-gray pam" data-accordion>
-        <div id="filter-results" class="accordion-item is-active" data-accordion-item>
-          <a class="h4" class="accordion-title">Filter results</a>
-          <div class="accordion-content" data-tab-content>
-            <form>
-              <fieldset>
-                <input id="featured" type="checkbox" name="featured" value="featured">
-                <label for="featured">Featured</label>
-                <input id="posts" type="checkbox" name="posts" value="posts">
-                <label for="posts">Posts</label>
-                <input id="press-releases" type="checkbox" name="press-releases" value="press-releases">
-                <label for="press-releases">Press releases</label>
-              </fieldset>
-            </form>
-          </div>
-          <div class="grid-x grid-margin-x">
-          <div class="cell medium-9">
-            <start date></start>
-              <i class="fa fa-arrow"></i>
-            <end date></end>
-          </div>
-          <div class="cell medium-9">
-            <select id="departments" name="select">
-              <option value="all-departments" selected="selected">All departments</option>
-            </select>
-          </div>
-          <div class="cell medium-6">
-            <button class="full">Clear filters</button>
-          </div>
-          </div>
-        </div>
-      </div>
 
       <div class="results"></div>
 
