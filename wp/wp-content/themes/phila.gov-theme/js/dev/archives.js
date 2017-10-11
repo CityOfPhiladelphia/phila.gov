@@ -10,12 +10,7 @@ Vue.filter('formatDate', function(value) {
   }
 })
 
-var config = {
-  api: {
-    //uses custom endpoint to get only the data we need
-    post_data: '/wp-json/the-latest/v1/archives'
-  }
-};
+var endpoint = '/wp-json/the-latest/v1/archives'
 
 var archives = new Vue ({
   el: '.results',
@@ -24,10 +19,12 @@ var archives = new Vue ({
   },
   template:`
   <div class="root">
-    <div class="search">
-      <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field">
-      <input type="submit" value="submit" class="search-submit">
-    </div>
+    <form v-on:submit.prevent="onSubmit">
+      <div class="search">
+        <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field">
+        <input type="submit" value="submit" class="search-submit">
+      </div>
+    </form>
     <div class="accordion" data-accordion data-allow-all-closed="true">
       <div id="filter-results" class="accordion-item is-active" data-accordion-item>
         <a class="h5 accordion-title">Filter results</a>
@@ -69,7 +66,7 @@ var archives = new Vue ({
 
     <table class="stack theme-light">
       <thead>
-        <tr><th>Title</th><th width="125">Publish date</th><th>Department</th></tr>
+        <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
         <tr v-for="post in posts"
@@ -108,22 +105,37 @@ var archives = new Vue ({
   },
   methods: {
     getPosts: function () {
-      axios.get('/wp-json/the-latest/v1/archives')
+      axios.get(endpoint)
       .then(response => {
-
         this.posts = response.data
+        console.log(response.data);
 
-        console.log(response.data)
       })
       .catch(e => {
-        console.log(error)
+        console.log(e)
       })
     },
     openURL: function (post){
-      window.location.href = post.link;
+      window.location.href = post.link
+
     },
     searchSubmit: function (search){
       console.log(search);
+    },
+    onSubmit: function (event) {
+      axios.get(endpoint, {
+        params : {
+          's' : event.target.search.value
+          }
+        })
+        .then(response => {
+          this.posts = response.data
+          console.log(response.data);
+        })
+        .catch(e => {
+
+        console.log(e);
+      })
     }
   },
 
