@@ -72,6 +72,18 @@
 
 
 
+ // TODO: get curent user value (wp_get_current_user()->ID) when not logged in to admin
+    $meta_box_order = get_user_meta(wp_get_current_user()->ID ,sprintf( 'meta-box-order_%s', get_post_type() ),true);
+    $meta_box_order_arr = explode(',',$meta_box_order['normal']);
+
+    // re-orders position fo full-width cta based on placement in admin
+    $cta_postiion = array_search('full-width-call-to-action', $meta_box_order_arr);
+    // TODO: more accurate postion values
+    if($cta_postiion == 21 ){
+        $v = $HOMEPAGE_V2_CONTENT_PARTIALS['homepage-full-width-cta'];
+        unset($HOMEPAGE_V2_CONTENT_PARTIALS['homepage-full-width-cta']);
+        $HOMEPAGE_V2_CONTENT_PARTIALS['homepage-full-width-cta'] = $v;
+    }
 
 
 
