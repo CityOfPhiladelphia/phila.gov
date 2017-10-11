@@ -14,11 +14,18 @@ table.theme-light{
     background-color: white;
   }
   td{
-    padding: 1.5rem .5rem;
-    border-bottom: 1px solid color(dark-gray);
+    @include breakpoint(medium up) {
+      padding: 1.5rem .5rem;
+      border-bottom: 1px solid color(dark-gray);
+    }
     border-top:none;
     border-left:none;
     border-right:none;
+  }
+  @include breakpoint(small only) {
+    tr{
+      border-bottom: 1px solid color(dark-gray);
+    }
   }
   a:link, a:visited{
     color:color(dark-gray);
