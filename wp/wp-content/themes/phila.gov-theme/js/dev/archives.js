@@ -78,8 +78,11 @@ var archives = new Vue ({
               <span v-if="post.template.includes('post')">
                 <i class="fa fa-pencil pride-purple"></i>
               </span>
-              <span v-else>
+              <span v-else-if="post.template == 'press_release'">
                 <i class="fa fa-file-text-o love-park-red"></i>
+              </span>
+              <span v-else>
+                <i class="fa fa-newspaper-o ben-franklin-blue"></i>
               </span>
             </span>
             {{ post.title }}</a>
