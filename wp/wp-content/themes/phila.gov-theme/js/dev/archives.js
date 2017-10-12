@@ -49,7 +49,7 @@ var archives = new Vue ({
                 </select>
               </div>
               <div class="cell medium-6">
-                <a class="button content-type-featured full">Clear filters</a>
+                <a class="button content-type-featured full" @click="reset">Clear filters</a>
               </div>
             </div>
         </div>
@@ -93,7 +93,7 @@ var archives = new Vue ({
   data: function() {
     return{
       posts: [],
-      templates: ['post', 'featured', 'press_release'],
+      templates: [ 'post', 'featured', 'press_release' ],
       checkedTemplates: []
     }
   },
@@ -114,10 +114,6 @@ var archives = new Vue ({
     },
     openURL: function (post){
       window.location.href = post.link
-
-    },
-    searchSubmit: function (search){
-      console.log(search);
     },
     onSubmit: function (event) {
       axios.get(endpoint, {
@@ -134,12 +130,18 @@ var archives = new Vue ({
         console.log(e);
       })
     },
+    reset () {
+      location.reload();
+    },
     checkedPost : function (event){
       var filtered =
       console.log(event);
       console.log(event.target.id)
 
-    }
+    },
+    changePost() {
+        this.template = 'Post'
+      }
   },
   computed:{
     filteredPosts(){
@@ -149,9 +151,6 @@ var archives = new Vue ({
       return this.posts.filter(
         j => this.checkedTemplates.includes(j.template)
       )
-    },
-    makeNice() {
-       return this.search.toLowerCase().trim();
-     }
+    }
   }
 })
