@@ -1052,6 +1052,10 @@ function phila_get_selected_template( $post_id = null ){
   if ( $old_feature != 0 || $new_feature != 0  ){
     $user_selected_template = 'featured';
   }
+  //clean up the data by assigning "phila_post" to "post"
+  if(get_post_type($post_id) == 'phila_post') {
+    $user_selected_template = 'post';
+  }
 
   return $user_selected_template;
 }
