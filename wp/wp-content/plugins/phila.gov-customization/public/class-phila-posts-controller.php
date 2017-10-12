@@ -109,7 +109,18 @@ class Phila_Archives_Controller {
     }
 
     if (isset( $schema['properties']['link'] )) {
-      $post_data['link']  = (string) get_permalink($post->ID);
+      if ($post->post_type == 'phila_post'){
+
+        $date = get_the_date('Y-m-d', $post->ID);
+        $url = get_permalink($post->ID);
+        $pattern = '/-';
+        $replacement = '/' . $date . '-';
+
+        $new_url = str_replace($pattern, $replacement, $url );
+        $post_data['link']  = (string) $new_url;
+      }else{
+        $post_data['link']  = (string) get_permalink($post->ID);
+     }
     }
 
     if (isset( $schema['properties']['categories'] )) {
