@@ -18,6 +18,7 @@ class Phila_Archives_Controller {
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
+    
     //Register individual items
     register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
       array(
@@ -34,17 +35,14 @@ class Phila_Archives_Controller {
    * @param WP_REST_Request $request Current request.
    */
   public function get_items( $request ) {
+    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release');
+
     $args = array(
       'posts_per_page' => 40,
       's' => $request['s'],
-      'post_type' => array(
-        'post',
-        'announcements',
-        //legacy CPTS
-        'phila_post',
-        'press_release'
-      ),
-      'orderby' => 'date'
+      'post_type' => $post_type,
+      'orderby' => 'date',
+      'template'  => $post_type,
     );
     $posts = get_posts( $args );
 
