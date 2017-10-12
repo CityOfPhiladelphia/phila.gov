@@ -1043,7 +1043,14 @@ function phila_get_selected_template( $post_id = null ){
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
   if ( empty( $user_selected_template ) ){
-    return get_post_type( $post_id );
+    $user_selected_template = get_post_type( $post_id );
+  }
+  //used to force "featured" template type. The user doesn't select this value from the normal template dropdpown and this can be applied to any post, press release or other item.
+  $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+  $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+
+  if ( $old_feature != 0 || $new_feature != 0  ){
+    $user_selected_template = 'featured';
   }
 
   return $user_selected_template;
