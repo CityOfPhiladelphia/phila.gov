@@ -308,9 +308,7 @@ function phila_gov_scripts() {
 
 
 function my_enqueue($hook) {
-  d(get_stylesheet_directory_uri() . '/admin/js/departments-meta-box-sorting.js' );
 
-  // if ( 'post.php' != $hook ) { return;}
 
     wp_enqueue_script( 'my_custom_script', get_stylesheet_directory_uri() . '/admin/js/departments-meta-box-sorting.js', array('jquery','wp-api'),'', true );
 }
