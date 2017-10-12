@@ -5,6 +5,9 @@
  * TODO: deprecate this template
  */
 ?>
+
+
+
 <?php
 // set category vars for news/blogs
 $category = get_the_category();
