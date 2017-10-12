@@ -64,8 +64,8 @@ var archives = new Vue ({
       </div>
     </div>
 
-    <table class="stack theme-light">
-      <thead>
+    <table class="stack theme-light"  data-sticky-container>
+      <thead class="sticky center bg-white" data-sticky data-top-anchor="global-sticky-nav:bottom" data-options="marginTop:4.8;">
         <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
