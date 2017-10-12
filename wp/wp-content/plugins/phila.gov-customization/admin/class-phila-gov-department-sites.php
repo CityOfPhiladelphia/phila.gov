@@ -26,7 +26,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
      if( $query->is_main_query() ){
 
       if ( !metadata_exists('post', $query->post->ID,  $this->prefix.'meta-box-order') ) {
-        update_post_meta ( $query->post->ID,  $this->prefix.'meta-box-order', 'default' );
+        update_post_meta ( $query->post->ID,  $this->prefix.'meta-box-order', array('default') );
       }
      }
 

@@ -1,9 +1,9 @@
 <?php
 
     $HOMEPAGE_V2_CONTENT_PARTIALS_PATHS = array(
-        'global' => 'partials/content-',
+        'global' => 'partials/',
         'v1'     => 'partials/departments/',
-        'v2'     => 'partials/departments/v2/content-'
+        'v2'     => 'partials/departments/v2/'
     );
 
     /**
@@ -11,94 +11,92 @@
      * key is partial name, value is version name
      * @var array
      */
-
-    $HOMEPAGE_V2_CONTENT_PARTIALS = array(
-        'service-updates'              => array(
-                                                'type' => 'global',
-                                                'shown'   => true
+    $homepage_v2_content_partials = array(
+        'content-service-updates'   => array(
+                                                'type'         => 'global',
+                                                'shown'        => true
                                             ),
-        'curated-service-list'         => array(
+        'our-services'         => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
-        'content-row-one'              => array(
+        'phila_module_row_1'              => array(
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'row-posts'                    => array(
+        'phila_full_row_blog'                    => array(
                                                 'type'=>'v1',
                                                 'shown'=>$this->full_row_blog
                                             ),
-        'homepage-full-width-cta'      => array(
+        'full-width-call-to-action'      => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
-        'full_row_news'                => array(
+        'phila_full_row_news'                => array(
                                                 'type'  => 'shortcode',
                                                 'shown' => $this->full_row_news['exists'],
                                                 'data'  => array(
                                                     'shortcode'=>'[recent-news posts="3" category=" ' . $this->full_row_news['category_id'] .' "]'
                                                 )
                                             ),
-        'content-row-two'               => array(
+        'phila_module_row_2'               => array(
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
 
-        'full_width_press_releases'    => array(
+        'phila_full_row_press_releases'    => array(
                                                 'type'  => 'shortcode',
                                                 'shown' => $this->full_width_press_releases['exists'],
                                                 'data'  => array(
                                                     'shortcode'=>'[press-releases posts="3" category=" ' . $this->full_width_press_releases['category_id'] .' "]'
                                                 )
                                             ),
-        'content-staff-directory'      => array(
+        'phila_staff_directory_listing'    => array(
                                                 'type'=>'v1',
                                                 'shown'=>$this->staff_directory_listing
                                             ),
-        'content-call-to-action-multi' => array(
+        'phila_call_to_action_multi'    => array(
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'featured'                     => array(
-                                                'type'=>'v1',
-                                                'shown'=>!empty( $this->featured )
+        'featured-programs-or-content'   => array(
+                                                'type'=>'v2',
+                                                'shown'=>!empty( $this->featured ),
+                                                'data'=> array(
+                                                    'featured'=>$this->featured
+                                                )
                                              ),
     );
 
 
+    //get the order of the visible (non-collpased) meta boxes from the Department Site Homepage adin
+    $meta_box_order_arr                     = explode(',', get_post_meta(get_the_ID(), 'phila_meta-box-order')[0] );
+    // placeholder array for our final template include order
+    // defaults to our original content order
+    $homepage_v2_content_paritals_include_order = $meta_box_order_arr[0] == "default" ?  $homepage_v2_content_partials :  array();
 
 
+    /**
+     * loop through our meta box order and populate the our final
+     *  template include array with the proper template meta values
+     * @var [type]
+     */
+    foreach ($meta_box_order_arr as $key => $value ) {
 
- // TODO: get curent user value (wp_get_current_user()->ID) when not logged in to admin
-    // $meta_box_order = get_user_meta(wp_get_current_user()->ID ,sprintf( 'meta-box-order_%s', get_post_type() ),true);
-    // $meta_box_order_arr = explode(',',$meta_box_order['normal']);
+        if(key_exists($value,$homepage_v2_content_partials)){
+            $_template_meta = $homepage_v2_content_partials[$value];
+            // move the template_name to the meta so that we can retain an indexed array order
+            $_template_meta['template_name'] = $value;
 
-    $meta_box_order_arr = get_post_meta(get_the_ID(), 'phila_meta-box-order');
-    d(
-        explode(',',$meta_box_order_arr[0])
-    );
-
-    // re-orders position fo full-width cta based on placement in admin
-    $cta_postiion = array_search('full-width-call-to-action', $meta_box_order_arr);
-    // TODO: more accurate postion values
-    if($cta_postiion == 21 ){
-        $v = $HOMEPAGE_V2_CONTENT_PARTIALS['homepage-full-width-cta'];
-        unset($HOMEPAGE_V2_CONTENT_PARTIALS['homepage-full-width-cta']);
-        $HOMEPAGE_V2_CONTENT_PARTIALS['homepage-full-width-cta'] = $v;
+            array_push($homepage_v2_content_paritals_include_order, $_template_meta);
+        }
     }
-
-
-
-
-
 
 
     /**
      * Loop through all template partials and add to page according to type
      */
-    foreach ($HOMEPAGE_V2_CONTENT_PARTIALS as $partial_name => $partial_meta) {
-
+    foreach ($homepage_v2_content_paritals_include_order as $partial_name => $partial_meta ) {
 
         switch ($partial_meta['type']) {
 
@@ -114,7 +112,8 @@
             case 'v1':
             case 'v2':
                 // template includes
-                $template_path =  $HOMEPAGE_V2_CONTENT_PARTIALS_PATHS[$partial_meta['type']].$partial_name;
+                $template_name =  key_exists('template_name',$partial_meta) ? $partial_meta['template_name'] : $partial_name;
+                $template_path =  $HOMEPAGE_V2_CONTENT_PARTIALS_PATHS[$partial_meta['type']] .$template_name;
                 $template_data =  key_exists('data',$partial_meta) ? $partial_meta['data'] : array();
 
                 if($partial_meta['shown']):
