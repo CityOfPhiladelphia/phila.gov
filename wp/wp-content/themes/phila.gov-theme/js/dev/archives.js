@@ -28,21 +28,13 @@ var archives = new Vue ({
     <div class="accordion" data-accordion data-allow-all-closed="true">
       <div id="filter-results" class="accordion-item is-active" data-accordion-item>
         <a class="h5 accordion-title">Filter results</a>
-        <div class="accordion-content" data-tab-content>
+          <div class="accordion-content" data-tab-content>
             <fieldset>
               <div class="grid-x grid-margin-x mbl">
-                <div class="cell auto">
-                  <input id="featured" type="checkbox" name="featured" value="featured">
-                  <label for="featured" class="post-label post-label--featured">Featured</label>
+                <div v-for="template in templates" class="cell auto">
+                  <input type="checkbox" v-model="checkedTemplates" v-bind:value="template" v-bind:name="template" v-bind:id="template" />
+                  <label v-bind:for="template" class="post-label" v-bind:class="'post-label--' + template">{{ template }}</label>
                 </div>
-                <div class="cell auto">
-                <input id="posts" type="checkbox" name="posts" value="posts">
-                <label for="posts" class="post-label post-label--post">Posts</label>
-              </div>
-              <div class="cell auto">
-                <input id="press-releases" type="checkbox" name="press-releases" value="press-releases">
-                <label for="press-releases" class="post-label post-label--press-release">Press releases</label>
-              </div>
               </div>
             </fieldset>
             <div class="grid-x grid-margin-x">
@@ -69,7 +61,7 @@ var archives = new Vue ({
         <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
-        <tr v-for="post in posts"
+        <tr v-for="post in filteredPosts"
         :key="post.id"
         class="clickable-row"
         v-on:click="openURL(post)">
@@ -100,7 +92,9 @@ var archives = new Vue ({
 `,
   data: function() {
     return{
-      posts: []
+      posts: [],
+      templates: ['post', 'featured', 'press_release'],
+      checkedTemplates: []
     }
   },
   mounted: function () {
@@ -111,7 +105,7 @@ var archives = new Vue ({
       axios.get(endpoint)
       .then(response => {
         this.posts = response.data
-        console.log(response.data);
+        console.log(response.data)
 
       })
       .catch(e => {
@@ -139,7 +133,25 @@ var archives = new Vue ({
 
         console.log(e);
       })
+    },
+    checkedPost : function (event){
+      var filtered =
+      console.log(event);
+      console.log(event.target.id)
+
     }
   },
+  computed:{
+    filteredPosts(){
+      if (!this.checkedTemplates.length)
+        return this.posts
 
+      return this.posts.filter(
+        j => this.checkedTemplates.includes(j.template)
+      )
+    },
+    makeNice() {
+       return this.search.toLowerCase().trim();
+     }
+  }
 })
