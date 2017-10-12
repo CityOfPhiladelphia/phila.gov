@@ -8,15 +8,28 @@
   }
   &.post-label--post,
   &.post-label--announcement{
-    color:color(pride-purple);
+    color:color(pride-purple) !important;
+    &::before{
+      color:color(pride-purple) !important;
+    }
   }
   &.post-label--featured{
-    color:color(dark-ben-franklin);
+    color:color(dark-ben-franklin)!important;
+    &::before{
+      color:color(dark-ben-franklin)!important;
+    }
   }
   &.post-label--calendar{
-    color:color(phanatic-green);
+    color:color(phanatic-green)!important;
+
+    &::before{
+      color:color(phanatic-green)!important;
+    }
   }
   &.post-label--press-release{
-    color:color(love-park-red);
+    color:color(love-park-red)!important;
+    &::before{
+      color:color(love-park-red)!important;
+    }
   }
 }
