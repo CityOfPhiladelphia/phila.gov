@@ -1,8 +1,21 @@
 var Vue = require('vue')
-
 var moment = require('moment')
 var axios = require('axios')
-var Datepicker = require('vuejs-datepicker');
+var Datepicker = require('vuejs-datepicker')
+var VueRouter = require('vue-router')
+
+Vue.use(VueRouter)
+
+var router = new VueRouter({
+ route,
+ mode: 'history'
+})
+
+var route = [
+    { path: '/archives',
+      component: archives
+   },
+  ]
 
 Vue.filter('formatDate', function(value) {
   if (value) {
@@ -14,11 +27,13 @@ var endpoint = '/wp-json/the-latest/v1/archives'
 
 var archives = new Vue ({
   el: '.results',
+  router,
   components: {
       Datepicker
   },
   template:`
   <div class="root">
+
     <form v-on:submit.prevent="onSubmit">
       <div class="search">
         <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field">
@@ -31,9 +46,9 @@ var archives = new Vue ({
           <div class="accordion-content" data-tab-content>
             <fieldset>
               <div class="grid-x grid-margin-x mbl">
-                <div v-for="template in templates" class="cell auto">
-                  <input type="checkbox" v-model="checkedTemplates" v-bind:value="template" v-bind:name="template" v-bind:id="template" />
-                  <label v-bind:for="template" class="post-label" v-bind:class="'post-label--' + template">{{ template }}</label>
+                <div v-for="(value, key) in  templates" class="cell auto">
+                  <input type="checkbox" v-model="checkedTemplates" v-bind:value="key" v-bind:name="key" v-bind:id="key" />
+                  <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
                 </div>
               </div>
             </fieldset>
@@ -55,7 +70,6 @@ var archives = new Vue ({
         </div>
       </div>
     </div>
-
     <table class="stack theme-light"  data-sticky-container>
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-options="marginTop:4.8;">
         <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
@@ -64,7 +78,7 @@ var archives = new Vue ({
         <tr v-for="post in filteredPosts"
         :key="post.id"
         class="clickable-row"
-        v-on:click="openURL(post)">
+        v-on:click="goToPost(post)">
           <td class="title"><a v-bind:href="post.link">
             <span class="prm">
               <span v-if="post.template.includes('post')">
@@ -93,27 +107,56 @@ var archives = new Vue ({
   data: function() {
     return{
       posts: [],
-      templates: [ 'post', 'featured', 'press_release' ],
+      templates: {
+          post : 'Post',
+          featured : "Featured",
+          press_release : 'Press release'
+        },
       checkedTemplates: []
     }
   },
   mounted: function () {
     this.getPosts()
   },
+  watch: {
+    '$route': 'changePost'
+  },
   methods: {
     getPosts: function () {
       axios.get(endpoint)
       .then(response => {
+
+        if (this.$route.query.type){
+          this.fetchTypes()
+        }
+
         this.posts = response.data
-        console.log(response.data)
 
       })
       .catch(e => {
         console.log(e)
       })
     },
-    openURL: function (post){
+    goToPost: function (post){
       window.location.href = post.link
+    },
+    fetchTypes: function(){
+      var type = this.$route.query.type
+
+      axios.get(endpoint, {
+        params : {
+          'template' : type
+          }
+        })
+        .then(response => {
+          this.posts = response.data
+          console.log(response.data);
+        })
+        .catch(e => {
+
+        console.log(e);
+      })
+
     },
     onSubmit: function (event) {
       axios.get(endpoint, {
@@ -133,18 +176,13 @@ var archives = new Vue ({
     reset () {
       location.reload();
     },
-    checkedPost : function (event){
-      var filtered =
-      console.log(event);
-      console.log(event.target.id)
-
-    },
     changePost() {
-        this.template = 'Post'
-      }
+      console.log(this.$route.query)
+    }
   },
   computed:{
     filteredPosts(){
+
       if (!this.checkedTemplates.length)
         return this.posts
 
@@ -152,5 +190,5 @@ var archives = new Vue ({
         j => this.checkedTemplates.includes(j.template)
       )
     }
-  }
+  },
 })
