@@ -27,7 +27,7 @@ class Phila_Archives_Controller {
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
-  }
+}
 
   /**
    * Get the 40 latest posts within the "archives" umbrella
@@ -37,13 +37,16 @@ class Phila_Archives_Controller {
   public function get_items( $request ) {
     $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post');
 
+    $count = isset( $request['count'] ) ? $request['count'] : '40';
+
     $args = array(
-      'posts_per_page' => 40,
+      'posts_per_page' => $count,
       's' => $request['s'],
       'post_type' => $post_type,
       'orderby' => 'date',
-      'template'  => $post_type,
+      'category' => $request['category'],
     );
+
     $posts = get_posts( $args );
 
     $data = array();
@@ -54,7 +57,28 @@ class Phila_Archives_Controller {
 
     foreach ( $posts as $post ) {
       $response = $this->prepare_item_for_response( $post, $request );
+
       $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    if( isset($request['template'] ) ){
+
+      $template = explode(',', $request['template']);
+
+      if (!$template){
+        $template = $request['template'];
+      }
+      
+      $array = array();
+
+      foreach ( $data as $item ){
+        foreach($template as $t) {
+          if ( in_array( $t, $item )){
+            array_push($array, $item);
+          }
+        }
+      }
+      $data = $array;
     }
 
     // Return all response data.
