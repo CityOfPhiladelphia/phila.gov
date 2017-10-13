@@ -12,7 +12,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     add_action( 'init', array( $this, 'register_content_blocks_shortcode' ) );
 
-    add_action( 'loop_start', array( $this, 'add_post_meta' ) );
+    add_action( 'add_meta_boxes', array( $this, 'register_homepage_metabox_order' ),10, 2);
 
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
@@ -22,16 +22,38 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
   }
 
-   public function add_post_meta($query){
-     if( $query->is_main_query() ){
 
-      if ( !metadata_exists('post', $query->post->ID,  $this->prefix.'meta-box-order') ) {
-        update_post_meta ( $query->post->ID,  $this->prefix.'meta-box-order', array('default') );
+   public function register_homepage_metabox_order( $post_type, $post){
+    global $wpdb;
+
+    if($post_type === "department_page"){
+
+      // get all Department Site Homepage IDs
+      $department_homepages = $wpdb->get_results( $wpdb->prepare(
+        "SELECT $wpdb->posts.ID, $wpdb->posts.post_title
+         FROM $wpdb->posts INNER JOIN $wpdb->postmeta
+         ON $wpdb->posts.ID = $wpdb->postmeta.post_id
+         WHERE $wpdb->posts.post_status = 'publish' AND
+         $wpdb->posts.post_type = %s AND
+         $wpdb->postmeta.meta_key = 'phila_template_select' AND
+         meta_value = 'homepage_v2'"
+      , $post_type ) );
+
+
+      //check if the "phila_meta-box-order" post meta has been set
+      //if not set it as default
+      foreach ($department_homepages as $post) {
+        if ( !metadata_exists('post', $post->ID,  $this->prefix.'meta-box-order') ) {
+          add_post_meta( $post->ID,  $this->prefix.'meta-box-order', 'default' );
+        }
       }
-     }
 
+
+    }
 
   }
+
+
 
   function phila_register_department_meta_boxes( $meta_boxes ){
     // $prefix = 'phila_';
