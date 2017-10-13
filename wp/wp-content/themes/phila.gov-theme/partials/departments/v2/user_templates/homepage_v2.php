@@ -69,8 +69,10 @@
     );
 
 
+    $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');
     //get the order of the visible (non-collpased) meta boxes from the Department Site Homepage adin
-    $meta_box_order_arr                     = explode(',', get_post_meta(get_the_ID(), 'phila_meta-box-order')[0] );
+    $meta_box_order_arr  = explode(',', $meta_box_order[0] );
+
     // placeholder array for our final template include order
     // defaults to our original content order
     $homepage_v2_content_paritals_include_order = $meta_box_order_arr[0] == "default" ?  $homepage_v2_content_partials :  array();
