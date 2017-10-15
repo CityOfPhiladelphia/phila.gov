@@ -95,7 +95,7 @@
         <?php if (is_home() ) : ?>
           <?php $see_all_URL = 'the-latest'?>
         <?php else:  ?>
-          <?php $see_all_URL = 'archive'?>
+          <?php $see_all_URL = 'archive?template=featured'?>
         <?php endif; ?>
       <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
