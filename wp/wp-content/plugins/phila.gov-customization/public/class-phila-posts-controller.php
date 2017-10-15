@@ -27,7 +27,7 @@ class Phila_Archives_Controller {
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
-}
+  }
 
   /**
    * Get the 40 latest posts within the "archives" umbrella
@@ -39,15 +39,95 @@ class Phila_Archives_Controller {
 
     $count = isset( $request['count'] ) ? $request['count'] : '40';
 
-    $args = array(
-      'posts_per_page' => $count,
-      's' => $request['s'],
-      'post_type' => $post_type,
-      'orderby' => 'date',
-      'category' => $request['category'],
-    );
+    if ( isset( $request['template'] ) ) {
+      $template = $request['template'] ;
+      switch($template) {
+        case 'featured':
+          $args = array(
+            'posts_per_page' => $request['count'],
+            'post_type' => array('post', 'news_post'),
+            'order' => 'desc',
+            'orderby' => 'date',
+            'meta_query'  => array(
+              'relation'  => 'OR',
+              array(
+                'key' => 'phila_show_on_home',
+                'value' => '1',
+                'compare' => '=',
+              ),
+              array(
+                'relation'  => 'AND',
+                array(
+                  'key' => 'phila_is_feature',
+                  'value' => '1',
+                  'compare' => '=',
+                ),
+                array(
+                  'key' => '_thumbnail_id',
+                  'compare' => 'EXISTS'
+                ),
+              ),
+            ),
+          );
+          $posts = get_posts( $args );
 
-    $posts = get_posts( $args );
+          break;
+        case 'post':
+          $args = array(
+            'posts_per_page' => $request['count'],
+            's' => $request['s'],
+            'post_type' => $post_type,
+            'orderby' => 'date',
+            'category' => $request['category'],
+          );
+          $posts = get_posts( $args );
+
+          break;
+        case 'press_release' :
+          $press_release_args  = array(
+          'posts_per_page' => $request['count'],
+          'post_type' => array( 'press_release' ),
+          'order' => 'desc',
+          'orderby' => 'post_date',
+        );
+        $press_release_template_args  = array(
+          'posts_per_page' => $request['count'],
+          'post_type' => array( 'post' ),
+          'order' => 'desc',
+          'orderby' => 'post_date',
+          'meta_query'  => array(
+            'relation'=> 'AND',
+            array(
+              'key' => 'phila_template_select',
+              'value' => 'press_release',
+              'compare' => '=',
+            ),
+            array(
+              'key' => 'phila_is_feature',
+              'value' => '0',
+              'compare' => '=',
+            ),
+          ),
+        );
+        //special handling for old press release CPT
+          $old_press = get_posts( $press_release_args );
+          $new_press = get_posts( $press_release_template_args );
+          $posts = array();
+          $posts = array_merge( $new_press, $old_press );
+        break;
+      }
+    }else{
+      $args = array(
+        'posts_per_page' => $count,
+        's' => $request['s'],
+        'post_type' => $post_type,
+        'orderby' => 'date',
+        'category' => $request['category'],
+      );
+    }
+    if( !isset( $template ) ) {
+      $posts = get_posts( $args );
+    }
 
     $data = array();
 
@@ -58,27 +138,7 @@ class Phila_Archives_Controller {
     foreach ( $posts as $post ) {
       $response = $this->prepare_item_for_response( $post, $request );
 
-      $data[] = $this->prepare_response_for_collection( $response );
-    }
-
-    if( isset($request['template'] ) ){
-
-      $template = explode(',', $request['template']);
-
-      if (!$template){
-        $template = $request['template'];
-      }
-      
-      $array = array();
-
-      foreach ( $data as $item ){
-        foreach($template as $t) {
-          if ( in_array( $t, $item )){
-            array_push($array, $item);
-          }
-        }
-      }
-      $data = $array;
+      $data[] = $this ->prepare_response_for_collection( $response );
     }
 
     // Return all response data.
