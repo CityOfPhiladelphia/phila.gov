@@ -79,7 +79,7 @@ var archives = new Vue ({
         :key="post.id"
         class="clickable-row"
         v-on:click="goToPost(post)">
-          <td class="title"><a v-bind:href="post.link">
+          <td width="500" class="title"><a v-bind:href="post.link">
             <span class="prm">
               <span v-if="post.template.includes('post')">
                 <i class="fa fa-pencil pride-purple"></i>
@@ -93,7 +93,7 @@ var archives = new Vue ({
             </span>
             {{ post.title }}</a>
           </td>
-          <td class="date">{{ post.date  | formatDate }}</td>
+          <td width="125" class="date">{{ post.date  | formatDate }}</td>
           <td class="categories">
             <span v-for="(category, i) in post.categories">
               <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
@@ -126,8 +126,8 @@ var archives = new Vue ({
       axios.get(endpoint)
       .then(response => {
 
-        if (this.$route.query.type){
-          this.fetchTypes()
+        if (this.$route.query.template){
+          this.fetchTemplate()
         }
 
         this.posts = response.data
@@ -140,17 +140,24 @@ var archives = new Vue ({
     goToPost: function (post){
       window.location.href = post.link
     },
-    fetchTypes: function(){
-      var type = this.$route.query.type
+    fetchTemplate: function(){
+      var template = this.$route.query.template
+      this.$forceUpdate();
+
+      console.log(template);
 
       axios.get(endpoint, {
         params : {
-          'template' : type
+          'template' : template,
+          //'count' : '-1'
           }
         })
         .then(response => {
+
           this.posts = response.data
-          console.log(response.data);
+
+          console.log(response.data)
+          console.log(endpoint)
         })
         .catch(e => {
 
@@ -174,7 +181,7 @@ var archives = new Vue ({
       })
     },
     reset () {
-      location.reload();
+      window.location = window.location.href.split("?")[0];
     },
     changePost() {
       console.log(this.$route.query)
