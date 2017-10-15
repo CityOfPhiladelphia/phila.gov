@@ -8,7 +8,8 @@ Vue.use(VueRouter)
 
 var router = new VueRouter({
  route,
- mode: 'history'
+  mode: 'history',
+  props: true
 })
 
 var route = [
@@ -47,7 +48,7 @@ var archives = new Vue ({
             <fieldset>
               <div class="grid-x grid-margin-x mbl">
                 <div v-for="(value, key) in  templates" class="cell auto">
-                  <input type="checkbox" v-model="checkedTemplates" v-bind:value="key" v-bind:name="key" v-bind:id="key" />
+                  <input type="checkbox" v-model="checkedTemplates" v-bind:value="key" v-bind:name="key" v-bind:id="key"/>
                   <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
                 </div>
               </div>
@@ -128,9 +129,9 @@ var archives = new Vue ({
 
         if (this.$route.query.template){
           this.fetchTemplate()
+        }else{
+          this.posts = response.data
         }
-
-        this.posts = response.data
 
       })
       .catch(e => {
@@ -145,6 +146,8 @@ var archives = new Vue ({
       this.$forceUpdate();
 
       console.log(template);
+
+      document.getElementById(template).click()
 
       axios.get(endpoint, {
         params : {
@@ -173,6 +176,9 @@ var archives = new Vue ({
         })
         .then(response => {
           this.posts = response.data
+          if (this.posts.length > 0) {
+            posts.title = "Sorry, nothing found."
+          }
           console.log(response.data);
         })
         .catch(e => {
@@ -189,6 +195,12 @@ var archives = new Vue ({
   },
   computed:{
     filteredPosts(){
+      if (this.$route.query.template) {
+
+        this.$forceUpdate();
+
+        return this.posts
+      }
 
       if (!this.checkedTemplates.length)
         return this.posts
