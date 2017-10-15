@@ -18,9 +18,9 @@ function phila_breadcrumbs() {
     if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if(phila_get_selected_template( $post->ID ) == 'press_release') {
-        echo '<li><a href="/the-latest/archive?type=press-release">Press releases</a></li>';
+        echo '<li><a href="/the-latest/archive?template=press_release">Press releases</a></li>';
       }else{
-        echo '<li><a href="/the-latest/archive?type=post">Posts</a></li>';
+        echo '<li><a href="/the-latest/archive?template=post">Posts</a></li>';
       }
         echo '<li>';
         the_title();
@@ -41,14 +41,14 @@ function phila_breadcrumbs() {
 
     }elseif ( is_singular('phila_post') ) {
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      echo '<li><a href="/the-latest/archive/?type=posts">Posts</a></li></li>';
+      echo '<li><a href="/the-latest/archive/?template=post">Posts</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
 
     }elseif ( is_singular('press_release') ) {
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      echo '<li><a href="/the-latest/archive/?type=press-releases">Press releases</a></li></li>';
+      echo '<li><a href="/the-latest/archive/?template=press_release">Press releases</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
