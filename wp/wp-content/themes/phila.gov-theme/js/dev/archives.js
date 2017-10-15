@@ -72,7 +72,7 @@ var archives = new Vue ({
       </div>
     </div>
     <table class="stack theme-light"  data-sticky-container>
-      <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-options="marginTop:4.8;">
+      <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
@@ -196,10 +196,13 @@ var archives = new Vue ({
   computed:{
     filteredPosts(){
       if (this.$route.query.template) {
-
-        this.$forceUpdate();
-
-        return this.posts
+        axios.get(endpoint)
+        .then(response => {
+          this.posts = response.data
+        })
+        .catch(e => {
+          console.log(e)
+        })
       }
 
       if (!this.checkedTemplates.length)
