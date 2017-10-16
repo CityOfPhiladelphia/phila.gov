@@ -21,7 +21,7 @@ if ( isset( $label ) ) :
       $label_nice = 'Featured';
       $icon = 'newspaper-o';
       break;
-    case 'press-release':
+    case 'press_release':
       $label_nice = 'Press Release';
       $icon = 'file-text-o';
       break;
