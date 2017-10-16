@@ -40,7 +40,7 @@
   $result->post_count = count( $result->posts );
 ?>
 
-<?php $label = 'press-release'; ?>
+<?php $label = 'press_release'; ?>
 <?php $count = 0; ?>
 
 <div class="grid-container">
