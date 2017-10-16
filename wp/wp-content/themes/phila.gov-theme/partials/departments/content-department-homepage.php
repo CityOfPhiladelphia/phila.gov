@@ -73,7 +73,7 @@
                   <?php echo do_shortcode('[press-releases posts=5]');?>
                 </div>
                 <?php $see_all_URL = '/press-releases/' . $category_slug . '/'; ?>
-                <?php $see_all_content_type = 'press releases'?>
+                <?php $see_all_content_type = 'press_release'?>
                 <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
 
