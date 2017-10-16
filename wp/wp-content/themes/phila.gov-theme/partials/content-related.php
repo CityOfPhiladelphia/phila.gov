@@ -7,9 +7,12 @@
 
 <?php $related_posts = new WP_Query( $related_content_args ); ?>
 <?php $count = -1;?>
+<?php $label = phila_get_selected_template($post->ID); ?>
+
 <?php if ( $related_posts->have_posts() ) : ?>
     <h2><?php _e( 'Related' ); ?>
     <?php echo strtolower($post_obj->labels->name); ?></h2>
+
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
       <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
@@ -19,12 +22,11 @@
             <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
             </div>
           <?php else :  ?>
-          <?php get_template_part( 'partials/content', 'list-featured-image' ); ?>
+          <?php include( locate_template( 'partials/content-list-featured-image.php') ); ?>
 
          <?php endif; ?>
       <?php endwhile; ?>
   </div>
-
 </div>
   <?php wp_reset_postdata(); ?>
 <?php endif; ?>
