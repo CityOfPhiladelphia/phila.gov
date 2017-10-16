@@ -21,7 +21,7 @@ if ( isset( $label ) ) :
       $label_nice = 'Featured';
       $icon = 'newspaper-o';
       break;
-    case 'press-release':
+    case 'press_release':
       $label_nice = 'Press Release';
       $icon = 'file-text-o';
       break;
@@ -37,10 +37,10 @@ if ( isset( $label ) ) :
   <?php $is_last = true; ?>
 <?php endif; ?>
 
-<?php if ($count == 4 && $label == 'press-release') : ?>
+<?php if ($count == 4 && $label == 'press_release') : ?>
   <?php $is_last = true; ?>
 <?php endif; ?>
-<?php if ($label == 'press-release') {
+<?php if ($label == 'press_release') {
   $article_classes .= 'type-press_release';
   $article_classes .= isset($is_last) ? ' card--last' : '';
 }?>
