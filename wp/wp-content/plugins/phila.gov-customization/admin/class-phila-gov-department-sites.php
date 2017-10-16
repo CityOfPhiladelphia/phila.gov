@@ -33,8 +33,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         "SELECT $wpdb->posts.ID, $wpdb->posts.post_title
          FROM $wpdb->posts INNER JOIN $wpdb->postmeta
          ON $wpdb->posts.ID = $wpdb->postmeta.post_id
-         WHERE $wpdb->posts.post_status = 'publish' AND
-         $wpdb->posts.post_type = %s AND
+         WHERE $wpdb->posts.post_type = %s AND
          $wpdb->postmeta.meta_key = 'phila_template_select' AND
          meta_value = 'homepage_v2'"
       , $post_type ) );
