@@ -28,7 +28,6 @@ a.card{
       border-bottom:5px solid color(love-park-red);
     }
   }
-  &.card--announcement,
   &.card--post{
     &:not(.card--last){
       border-bottom:5px solid color(pride-purple);
@@ -60,8 +59,8 @@ a.card{
 }
 
 .card--content,
-.card--announcement,
-.type-announcements{
+.type-announcement,
+.card--announcement{
   height:100%;
 }
 
