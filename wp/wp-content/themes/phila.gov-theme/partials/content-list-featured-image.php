@@ -9,13 +9,13 @@
 <?php $desc = phila_get_item_meta_desc( ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
-  <a href="<?php echo the_permalink(); ?>" class="card card--list grid-x">
+  <a href="<?php echo the_permalink(); ?>" class="grid-x grid-margin-x">
     <?php if ( has_post_thumbnail() ) : ?>
       <div class="cell medium-7">
         <?php echo phila_get_thumbnails(); ?>
       </div>
     <?php endif; ?>
-    <div class="content-block cell medium-17 grid-x">
+    <div class="cell medium-17 grid-x card card--<?php echo $label ?>">
       <div class="cell align-self-top">
         <header>
           <h1><?php echo get_the_title(); ?></h1>
