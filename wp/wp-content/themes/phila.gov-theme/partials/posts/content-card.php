@@ -50,7 +50,7 @@ if ( isset( $label ) ) :
     <div class="grid-x flex-dir-column card--content">
       <div class="cell align-self-top post-label post-label--<?php echo $label?>">
         <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
-        <header class="cell mvm">
+        <header class="mvm">
           <h1><?php echo get_the_title(); ?></h1>
         </header>
       </div>
