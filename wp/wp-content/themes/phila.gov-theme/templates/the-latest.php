@@ -24,9 +24,15 @@
                   <div>Featured</div>
                 </a>
               </li>
+              <li class="announcements auto cell">
+                <a href="#announcements">
+                  <i class="fa fa-3x fa-bullhorn" aria-hidden="true"></i>
+                  <div>Announcements</div>
+                </a>
+              </li>
               <li class="posts auto cell">
                 <a href="#posts">
-                  <i class="fa fa-3x fa-bullhorn" aria-hidden="true"></i>
+                  <i class="fa fa-3x fa-pencil" aria-hidden="true"></i>
                   <div>Posts</div>
                 </a>
               </li>
@@ -54,12 +60,18 @@
       <?php get_template_part('partials/posts/content', 'featured'); ?>
     </div>
 
+    <div id="announcements" data-magellan-target="announcements">
+      <header class="row columns mtl">
+        <h2>Announcements</h2>
+      </header>
+      <?php get_template_part('partials/posts/announcements', 'grid'); ?>
+    </div>
+
     <div id="posts" data-magellan-target="posts">
       <header class="row columns mtl">
         <h2>The latest from departments</h2>
       </header>
-      <?php get_template_part('partials/posts/post', 'announcement'); ?>
-      <?php get_template_part('partials/posts/content', 'content-card'); ?>
+      <?php get_template_part('partials/posts/post', 'grid'); ?>
     </div>
 
     <div id="events" data-magellan-target="events">
