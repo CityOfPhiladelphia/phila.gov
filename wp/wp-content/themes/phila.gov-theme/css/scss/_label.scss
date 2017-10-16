@@ -6,12 +6,14 @@
     vertical-align: -webkit-baseline-middle;
     text-transform: uppercase;
   }
-  &.post-label--post,
-  &.post-label--announcement{
+  &.post-label--post{
     color:color(pride-purple) !important;
     &::before{
       color:color(pride-purple) !important;
     }
+  }
+  &.post-label--announcement{
+    color:color(ben-franklin-blue) !important;
   }
   &.post-label--featured{
     color:color(dark-ben-franklin)!important;
