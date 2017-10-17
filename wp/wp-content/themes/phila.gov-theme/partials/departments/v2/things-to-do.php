@@ -1,3 +1,5 @@
+<?php if(rwmb_meta('phila_v2_homepage_things_to_do_image','limit=1')): ?>
+
 <div class="row mtl" style="margin-bottom:2rem;">
 
     <div class="large-24 columns" >
@@ -7,3 +9,5 @@
     </div>
 
 </div>
+
+<?php endif; ?>
