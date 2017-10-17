@@ -16,46 +16,48 @@
 
     <?php foreach ( $heading_content as $content ): ?>
 
-      <?php  d($content); ?>
 
       <div class="row mvl">
 
         <div class="medium-6 columns">
 
           <?php
-            $heading_link_set =  isset($content['phila_heading_link']) && $content['phila_heading_link'] !=='';
+            $heading_link_set     =  isset($content['phila_heading_link']) && $content['phila_heading_link'] !== '';
             $heading_link_new_tab = (isset($content['phila_heading_link_new_tab']) && $content['phila_heading_link_new_tab']) ? '_blank' : null;
+            $heading_has_image    = isset($content['phila_heading_image_selected']) && $content['phila_heading_image_selected'];
           ?>
 
           <?php
             // conditionally linked header wysiwyg content
-            if ( isset( $content['phila_wysiwyg_heading'] ) &&  !$content['phila_heading_image_selected'] ):
+            if ( isset( $content['phila_wysiwyg_heading'] ) &&  !$heading_has_image ):
           ?>
+
             <?php if($heading_link_set): ?>
               <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
                 <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
               <a href=""></a>
             <?php else: ?>
               <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
-          <?php endif;  ?>
+            <?php endif;  ?>
 
 
 
-          <?php elseif($content['phila_heading_image_selected'] ): ?>
+          <?php elseif($heading_has_image ): ?>
 
 
-            <?php
-              // conditionally linked header image
-              if($heading_link_set):
-            ?>
+              <?php
+                // conditionally linked header image
+                if($heading_link_set):
+              ?>
                 <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>">
                   <img src="<?= $content['phila_heading_image']; ?> " alt="">
                 </a>
-            <?php else: ?>
+              <?php else: ?>
                 <img src="<?= $content['phila_heading_image']; ?> " alt="">
-            <?php endif;  ?>
+              <?php endif;  ?>
 
-          <?php endif; ?>
+
+          <?php endif; //END if conditionally linked header wysiwyg content?>
         </div>
 
 

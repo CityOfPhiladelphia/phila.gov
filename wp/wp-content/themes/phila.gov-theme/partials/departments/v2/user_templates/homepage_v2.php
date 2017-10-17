@@ -74,7 +74,6 @@
 
 
     $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');
-    d($meta_box_order);
 
     //get the order of the visible (non-collpased) meta boxes from the Department Site Homepage adin
     $meta_box_order_arr  = explode(',', isset($meta_box_order[0]) ? $meta_box_order[0] : 'default');
