@@ -24,6 +24,10 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
+        'things-to-do'              => array(
+                                                'type'=>'v2',
+                                                'shown'=>true
+                                            ),
         'phila_full_row_blog'                    => array(
                                                 'type'=>'v1',
                                                 'shown'=>$this->full_row_blog
@@ -70,6 +74,8 @@
 
 
     $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');
+    d($meta_box_order);
+
     //get the order of the visible (non-collpased) meta boxes from the Department Site Homepage adin
     $meta_box_order_arr  = explode(',', isset($meta_box_order[0]) ? $meta_box_order[0] : 'default');
 

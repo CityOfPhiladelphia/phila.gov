@@ -218,6 +218,29 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     ),
   );
 
+
+   $meta_boxes[] = array(
+      'title'    => 'Things To Do',
+      'pages'    => array( 'department_page' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+
+      'visible' => array(
+        'phila_template_select', '=', 'homepage_v2',
+      ),
+
+      'fields' => array(
+          array(
+            'id' => 'phila_v2_homepage_things_to_do_image',
+            'title' => 'Select image',
+            'type' => 'image_advanced',
+            'desc'  => 'Required. Image must be square and a minimum of 150px by 150px.',
+            'max_file_uploads' => 1,
+          ),
+      )
+    );//Things To Do
+
+
   $meta_boxes[] = array(
     'title' => 'Featured programs or content',
     'pages'    => array( 'department_page' ),
