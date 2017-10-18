@@ -25,7 +25,6 @@
       <div class="cell align-self-bottom">
         <div class="post-meta">
           <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
-          <span class="departments"><?php echo phila_get_current_department_name( $categories, $byline = false, $break_tags = false, $name_list = true ); ?></span>
         </div>
       </div>
     </div>
