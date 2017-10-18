@@ -1,7 +1,7 @@
 var Vue = require('vue')
 var moment = require('moment')
 var axios = require('axios')
-var Datepicker = require('vuejs-datepicker')
+//var Datepicker = require('vuejs-datepicker')
 var VueRouter = require('vue-router')
 
 Vue.use(VueRouter)
@@ -24,17 +24,16 @@ Vue.filter('formatDate', function(value) {
   }
 })
 
-var endpoint = '/wp-json/the-latest/v1/archives'
+var endpoint = '/wp-json/the-latest/v1/'
 
 var archives = new Vue ({
   el: '.results',
   router,
   components: {
-      Datepicker
+      //Datepicker
   },
   template:`
   <div class="root">
-
     <form v-on:submit.prevent="onSubmit">
       <div class="search">
         <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field">
@@ -54,14 +53,17 @@ var archives = new Vue ({
               </div>
             </fieldset>
             <div class="grid-x grid-margin-x">
+            <!--
               <div class="cell medium-9">
                 <datepicker placeholder="Start date" v-on:closed=""></datepicker>
                   <i class="fa fa-arrow-right"></i>
                 <datepicker placeholder="End date" v-on:closed=""></datepicker>
               </div>
+              -->
               <div class="cell medium-9">
-                <select id="departments" name="select">
-                  <option value="all-departments" selected="selected">All departments</option>
+                <select id="departments" name="select" @change="filterByCategory" v-model="selected">
+                  <option value="All departments" selected>All departments</option>
+                  <option v-for="category in categories" v-bind:value="category.id"> {{ category.slang_name }} - {{category.id}}</option>
                 </select>
               </div>
               <div class="cell medium-6">
@@ -108,29 +110,36 @@ var archives = new Vue ({
   data: function() {
     return{
       posts: [],
+      categories: [],
+      selected: (this.$route.query.category ? this.$route.query.category : 'All departments'),
       templates: {
           post : 'Post',
           featured : "Featured",
           press_release : 'Press release'
         },
-      checkedTemplates: []
+      checkedTemplates: [],
     }
   },
   mounted: function () {
     this.getPosts()
+    this.getDropdownCategories();
   },
-  watch: {
-    '$route': 'changePost'
-  },
+  // watch: {
+  //   '$route': 'changePost'
+  // },
   methods: {
     getPosts: function () {
-      axios.get(endpoint)
+      axios.get(endpoint + 'archives')
       .then(response => {
+        console.log(this.$route.query)
 
-        if (this.$route.query.template){
-          this.fetchTemplate()
+        if ( Object.keys(this.$route.query).length != 0){
+
+          this.parseQueryStrings()
         }else{
           this.posts = response.data
+          console.log(response.data)
+          //this.filteredPosts()
         }
 
       })
@@ -138,21 +147,37 @@ var archives = new Vue ({
         console.log(e)
       })
     },
+    getDropdownCategories: function () {
+      axios.get(endpoint + 'categories')
+      .then(response => {
+        this.categories = response.data
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    },
     goToPost: function (post){
+      console.log(post.link)
       window.location.href = post.link
     },
-    fetchTemplate: function(){
+    parseQueryStrings: function(){
       var template = this.$route.query.template
+      var chosenCat = this.$route.query.category
+      var count = this.$route.query.count
+
       this.$forceUpdate();
 
       console.log(template);
+      if(template){
+        document.getElementById(template).click()
+      }
 
-      document.getElementById(template).click()
 
-      axios.get(endpoint, {
+      axios.get(endpoint + 'archives', {
         params : {
           'template' : template,
-          //'count' : '-1'
+          'category': chosenCat,
+          'count': -1
           }
         })
         .then(response => {
@@ -169,7 +194,7 @@ var archives = new Vue ({
 
     },
     onSubmit: function (event) {
-      axios.get(endpoint, {
+      axios.get(endpoint + 'archives', {
         params : {
           's' : event.target.search.value
           }
@@ -177,9 +202,28 @@ var archives = new Vue ({
         .then(response => {
           this.posts = response.data
           if (this.posts.length > 0) {
-            posts.title = "Sorry, nothing found."
+            posts.title = "No titles match."
           }
           console.log(response.data);
+        })
+        .catch(e => {
+
+        //console.log(e);
+      })
+    },
+    filterByCategory: function(event){
+      axios.get(endpoint + 'archives', {
+        params : {
+          'category' : this.selected
+          }
+        })
+        .then(response => {
+          this.posts = response.data
+          console.log(this.posts);
+
+          if (this.posts.length > 0) {
+            response.data = "Sorry, nothing matches that category."
+          }
         })
         .catch(e => {
 
@@ -195,22 +239,26 @@ var archives = new Vue ({
   },
   computed:{
     filteredPosts(){
-      if (this.$route.query.template) {
-        axios.get(endpoint)
-        .then(response => {
-          this.posts = response.data
-        })
-        .catch(e => {
-          console.log(e)
-        })
+      // if (this.$route.query.template) {
+      //   axios.get(endpoint + 'archives')
+      //   .then(response => {
+      //     console.log('running');
+      //     this.posts = response.data
+      //   })
+      //   .catch(e => {
+      //     console.log(e)
+      //   })
+      // }
+      //
+       if (!this.checkedTemplates.length) {
+         console.log('none selected')
+        return this.posts
+      }else{
+        return this.posts.filter(
+          j => this.checkedTemplates.includes(j.template)
+        )
       }
 
-      if (!this.checkedTemplates.length)
-        return this.posts
-
-      return this.posts.filter(
-        j => this.checkedTemplates.includes(j.template)
-      )
     }
-  },
+  }
 })
