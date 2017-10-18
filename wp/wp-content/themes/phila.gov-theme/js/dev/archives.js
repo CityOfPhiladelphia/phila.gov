@@ -3,6 +3,8 @@ var moment = require('moment')
 var axios = require('axios')
 //var Datepicker = require('vuejs-datepicker')
 var VueRouter = require('vue-router')
+//var vSelect = require('vue-select')
+
 
 Vue.use(VueRouter)
 
@@ -27,11 +29,12 @@ Vue.filter('formatDate', function(value) {
 var endpoint = '/wp-json/the-latest/v1/'
 
 var archives = new Vue ({
-  el: '.results',
+  el: '#archive-results',
   router,
   components: {
-      //Datepicker
-  },
+      //Datepicker,
+      //vSelect
+    },
   template:`
   <div class="root">
     <form v-on:submit.prevent="onSubmit">
@@ -60,10 +63,10 @@ var archives = new Vue ({
                 <datepicker placeholder="End date" v-on:closed=""></datepicker>
               </div>
               -->
-              <div class="cell medium-9">
+              <div class="cell medium-9 auto">
                 <select id="departments" name="select" @change="filterByCategory" v-model="selected">
                   <option value="All departments" selected>All departments</option>
-                  <option v-for="category in categories" v-bind:value="category.id"> {{ category.slang_name }} - {{category.id}}</option>
+                  <option v-for="category in categories" v-bind:value="category.id">{{ category.slang_name }}</option>
                 </select>
               </div>
               <div class="cell medium-6">
@@ -171,7 +174,6 @@ var archives = new Vue ({
       if(template){
         document.getElementById(template).click()
       }
-
 
       axios.get(endpoint + 'archives', {
         params : {
