@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/CityOfPhiladelphia/phila.gov-theme",
   "devDependencies": {
-    "autoprefixer": "^7.1.4",
+    "autoprefixer": "^7.1.5",
     "browserify": "^14.4.0",
     "browserify-shim": "^3.8.14",
     "envify": "^4.1.0",
@@ -36,16 +36,19 @@
     "postcss": "^6.0.13"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "js-cookie": "^2.1.3",
     "list.js": "^1.5.0",
-    "moment": "^2.18.1",
+    "moment": "^2.19.1",
     "mustache": "^2.3.0",
     "phila-standards": "^0.11.2",
-    "uglify-js": "^3.1.3",
-    "vue": "^2.4.4",
-    "vue-resource": "^1.3.4"
+    "uglify-js": "^3.1.4",
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1",
+    "vue-select": "^2.3.0",
+    "vuejs-datepicker": "^0.9.17"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
