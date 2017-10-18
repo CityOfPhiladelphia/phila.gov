@@ -17,7 +17,7 @@
       <div data-sticky-container class="bg-white">
         <nav class="sticky sticky--in-page center bg-white" data-sticky data-top-anchor="global-sticky-nav:bottom" style="width:100%">
           <div class="grid-container">
-            <ul class="inline-list grid-x grid-margin-x" data-magellan data-options="offset: 106; deepLinking: true;">
+            <ul class="inline-list grid-x" data-magellan data-options="offset: 106; deepLinking: true;">
               <li class="featured auto cell">
                 <a href="#featured">
                   <i class="fa fa-3x fa-newspaper-o" aria-hidden="true"></i>
