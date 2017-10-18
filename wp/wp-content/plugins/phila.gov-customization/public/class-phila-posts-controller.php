@@ -6,6 +6,7 @@ class Phila_Archives_Controller {
   public function __construct() {
     $this->namespace     = 'the-latest/v1';
     $this->resource_name = 'archives';
+    $this->category_resource = 'categories';
   }
 
   // Register our routes.
@@ -26,6 +27,15 @@ class Phila_Archives_Controller {
         'callback'  => array( $this, 'get_item' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+    //Register individual items
+    register_rest_route( $this->namespace, '/' . $this->category_resource, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_categories' ),
+      ),
+      'schema' => array( $this, 'get_category_schema' ),
     ) );
   }
 
@@ -48,6 +58,7 @@ class Phila_Archives_Controller {
             'post_type' => array('post', 'news_post'),
             'order' => 'desc',
             'orderby' => 'date',
+            'category' => $request['category'],
             'meta_query'  => array(
               'relation'  => 'OR',
               array(
@@ -83,18 +94,21 @@ class Phila_Archives_Controller {
           $posts = get_posts( $args );
 
           break;
+
         case 'press_release' :
           $press_release_args  = array(
           'posts_per_page' => $request['count'],
           'post_type' => array( 'press_release' ),
           'order' => 'desc',
           'orderby' => 'post_date',
+          'category' => $request['category'],
         );
         $press_release_template_args  = array(
           'posts_per_page' => $request['count'],
           'post_type' => array( 'post' ),
           'order' => 'desc',
           'orderby' => 'post_date',
+          'category' => $request['category'],
           'meta_query'  => array(
             'relation'=> 'AND',
             array(
@@ -144,6 +158,32 @@ class Phila_Archives_Controller {
     // Return all response data.
     return rest_ensure_response( $data );
   }
+
+  /**
+   * Outputs category data
+   *
+   * @param WP_REST_Request $request Current request.
+   */
+   public function get_categories($request){
+
+    $categories = get_categories();
+
+    $data = array();
+
+    if ( empty( $categories ) ) {
+      return rest_ensure_response( $array() );
+    }
+
+    foreach ( $categories as $category ) {
+      $response = $this->prepare_category_for_response( $category, $request );
+
+      $data[] = $this ->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+
+   }
 
   /**
    * Outputs an individual item's data
@@ -211,7 +251,7 @@ class Phila_Archives_Controller {
       foreach ($categories as $category){
         $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
 
-        $category->slang_name = $trimmed_name;
+        $category->slang_name = trim($trimmed_name);
       }
 
       $post_data['categories']  = (array) $categories;
@@ -294,6 +334,84 @@ class Phila_Archives_Controller {
     );
 
     return $schema;
+  }
+
+  /**
+   * Matches the post data to the schema. Also, rename the fields to nicer names.
+   *
+   * @param WP_Post $post The comment object whose response is being prepared.
+   */
+
+  public function prepare_category_for_response( $category, $request ) {
+
+    $post_data = array();
+
+    $schema = $this->get_category_schema( $request );
+
+    if ( isset( $schema['properties']['id'] ) ) {
+        $post_data['id'] = (int) $category->term_id;
+    }
+
+    if (isset( $schema['properties']['name'] )) {
+      $post_data['name']  =  (string) $category->name;
+    }
+
+    if (isset( $schema['properties']['slug'] )) {
+      $post_data['slug']  =  (string) $category->slug;
+    }
+
+    if (isset( $schema['properties']['slang_name'] )) {
+
+      $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
+
+      $post_data['slang_name']  = (string) trim($trimmed_name);
+    }
+
+    return rest_ensure_response( $post_data );
+
+  }
+
+  /**
+   * Get sample schema for a category.
+   *
+   * @param WP_REST_Request $request Current request.
+   */
+  public function get_category_schema( $request ) {
+
+    $schema = array(
+      // This tells the spec of JSON Schema we are using which is draft 4.
+      '$schema'              => 'http://json-schema.org/draft-04/schema#',
+      // The title property marks the identity of the resource.
+      'title'                => 'post',
+      'type'                 => 'object',
+      // Specify object properties in the properties attribute.
+      'properties'           => array(
+        'id' => array(
+          'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
+          'type'         => 'integer',
+          'context'      => array( 'view', 'edit', 'embed' ),
+          'readonly'     => true,
+        ),
+        'name'=> array(
+          'description'  => esc_html__( 'Name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'slug'=> array(
+          'description'  => esc_html__( 'Slug of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'slang_name'=> array(
+          'description'  => esc_html__( 'Slang name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+      ),
+    );
+
+    return $schema;
+
   }
 
 }
