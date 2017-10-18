@@ -21,7 +21,7 @@ get_header(); ?>
   <div class="row">
     <main id="main" class="site-main medium-20 columns medium-centered">
 
-      <div class="results"></div>
+      <div id="archive-results"></div>
 
       <?php phila_gov_paging_nav(); ?>
 
