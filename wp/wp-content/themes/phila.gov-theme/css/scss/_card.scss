@@ -1,4 +1,4 @@
-a.card, 
+a.card,
 .card{
   margin-bottom:0;
   h1 {
@@ -78,4 +78,8 @@ a.card.card--last,
       height:100%;
     }
   }
+}
+.faux-card:link,
+.faux-card:visited{
+  font-weight: 400;
 }

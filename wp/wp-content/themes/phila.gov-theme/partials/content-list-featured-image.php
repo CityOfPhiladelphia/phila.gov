@@ -9,7 +9,7 @@
 <?php $desc = phila_get_item_meta_desc( ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
-  <a href="<?php echo the_permalink(); ?>" class="grid-x grid-margin-x hover-fade">
+  <a href="<?php echo the_permalink(); ?>" class="grid-x grid-margin-x hover-fade faux-card">
     <?php if ( has_post_thumbnail() ) : ?>
       <div class="cell medium-7">
         <?php echo phila_get_thumbnails(); ?>
