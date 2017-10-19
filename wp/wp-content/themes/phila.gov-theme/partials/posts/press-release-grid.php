@@ -1,36 +1,48 @@
 <?php
-/* Related content
-*  at the bottom of posts, etc.
-* $related_content_args should be passed by the file this is included in.
+/* Press release grid
 */
 ?>
+<?php $press_categories = isset( $category ) ? $category : '';?>
 
 <?php $press_release_args  = array(
   'posts_per_page' => 4,
   'post_type' => array( 'press_release' ),
   'order' => 'desc',
   'orderby' => 'post_date',
+  'cat' => $press_categories,
 ); ?>
 
-<?php $press_release_template_args  = array(
+<?php
+ $press_release_template_args  = array(
   'posts_per_page' => 4,
   'post_type' => array( 'post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
-  'meta_query'  => array(
-    'relation'=> 'AND',
-    array(
-      'key' => 'phila_template_select',
-      'value' => 'press_release',
-      'compare' => '=',
-    ),
-    array(
-      'key' => 'phila_is_feature',
-      'value' => '0',
-      'compare' => '=',
-    ),
-  ),
-); ?>
+  'cat' => $press_categories,
+);
+
+//if this is a department homepage (i.e. categories are set, show all press releases, not just featured ones)
+if ( ( $press_categories == '' ) ) {
+  $meta_query = array(
+    'meta_query'  => array(
+      'relation'=> 'AND',
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'press_release',
+        'compare' => '=',
+      ),
+      array(
+        'key' => 'phila_is_feature',
+        'value' => '0',
+        'compare' => '=',
+      ),
+    )
+  );
+  var_dump($press_release_template_args);
+  $press_release_template_args = array_merge($press_release_template_args, $meta_query );
+} ?>
+
+
 <?php
 //special handling for old press release CPT
   $old_press = new WP_Query( $press_release_args );
