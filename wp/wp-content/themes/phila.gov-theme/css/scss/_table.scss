@@ -25,6 +25,9 @@ table.theme-light{
     border-right:none;
   }
   @include breakpoint(small only) {
+    td{
+      border-bottom:none;
+    }
     tr{
       border-bottom: 1px solid color(dark-gray);
     }
@@ -35,5 +38,16 @@ table.theme-light{
   .clickable-row:hover{
     opacity: 1;
     background:color(ghost-gray);
+  }
+}
+
+.archive-results{
+  @include breakpoint(medium up) {
+    tr.title{
+      width:500px;
+    }
+    tr.date{
+      width:125px;
+    }
   }
 }
