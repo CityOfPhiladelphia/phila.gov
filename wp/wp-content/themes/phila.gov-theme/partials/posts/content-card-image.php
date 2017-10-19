@@ -6,9 +6,6 @@
  */
 ?>
 
-<?php $categories = get_the_category($post->ID); ?>
-<?php $desc = phila_get_item_meta_desc( ); ?>
-
 <?php
 //TODO: turn this into function
 if ( isset( $label ) ) :
