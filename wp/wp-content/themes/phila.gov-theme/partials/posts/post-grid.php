@@ -63,7 +63,7 @@
           <div class="grid-container">
             <div class="grid-x grid-margin-x">
               <div class="cell medium-24 post-<?php echo $count ?>">
-                <?php include( locate_template( 'partials/content-list-featured-image.php' ) ); ?>
+                <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
               </div>
             </div>
           <?php endif; ?>
