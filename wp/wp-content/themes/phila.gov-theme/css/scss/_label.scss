@@ -10,31 +10,31 @@
     text-transform: uppercase;
   }
   &.post-label--post{
-    color:color(pride-purple) !important;
+    color:map-get($post_content_types, post) !important;
     &::before{
-      color:color(pride-purple) !important;
+      color:map-get($post_content_types, post) !important;
     }
   }
   &.post-label--announcement{
-    color:color(ben-franklin-blue) !important;
+    color: map-get($post_content_types, announcement) !important;
   }
   &.post-label--featured{
-    color:color(dark-ben-franklin)!important;
+    color: map-get($post_content_types, featured)!important;
     &::before{
-      color:color(dark-ben-franklin)!important;
+      color:map-get($post_content_types, featured)!important;
     }
   }
   &.post-label--calendar{
-    color:color(phanatic-green)!important;
+    color:map-get($post_content_types, calendar)!important;
 
     &::before{
-      color:color(phanatic-green)!important;
+      color:map-get($post_content_types, calendar)!important;
     }
   }
   &.post-label--press_release{
-    color:color(love-park-red)!important;
+    color:map-get($post_content_types, press_release)!important;
     &::before{
-      color:color(love-park-red)!important;
+      color:map-get($post_content_types, press_release)!important;
     }
   }
 }

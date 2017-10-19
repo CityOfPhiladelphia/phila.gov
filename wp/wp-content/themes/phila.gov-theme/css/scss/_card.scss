@@ -26,17 +26,17 @@ a.card,
       font-size: rem-calc(16);
     }
     &:not(.card--last){
-      border-bottom:5px solid color(love-park-red);
+      border-bottom:5px solid map-get($post_content_types, press_release);
     }
   }
   &.card--post{
     &:not(.card--last){
-      border-bottom:5px solid color(pride-purple);
+      border-bottom:5px solid map-get($post_content_types, post);
     }
   }
   &.card--featured{
     &:not(.card--last){
-      border-bottom:5px solid color(dark-ben-franklin);
+      border-bottom:5px solid map-get($post_content_types, featured);
     }
     h1 {
       font-size: rem-calc(16);
