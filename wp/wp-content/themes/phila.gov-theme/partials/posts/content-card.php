@@ -68,6 +68,12 @@ if ( isset( $label ) ) :
 
 <?php if($label == 'announcement') : ?>
   <div id="announcement-<?php the_ID(); ?>" class="reveal" data-reveal>
+    <div class="cell align-self-top post-label post-label--<?php echo $label?>">
+      <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
+    </div>
+    <header class="mvm">
+      <h1><?php echo get_the_title(); ?></h1>
+    </header>
     <?php echo get_the_content(); ?>
   </div>
 <?php endif; ?>
