@@ -33,7 +33,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     <div class="post-meta">
       <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ): ?>
         <div class="mbm">
-          <?php get_template_part( 'partials/press-release', 'meta' ); ?>
+          <?php get_template_part( 'partials/posts/press-release', 'meta' ); ?>
         </div>
       <?php else : ?>
         <span class="date-published">
@@ -108,13 +108,13 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     'post__not_in'  => array($post_id)
   );
 
-  $template = 'partials/content-related.php';
+  $template = 'partials/posts/content-related.php';
 
   if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
     $is_press_release = true;
     $label = 'press-release';
     $count = 4;
-    $template = 'partials/posts/press-releases.php';
+    $template = 'partials/posts/press-release-grid.php';
   }
 ?>
 <div class="grid-container">
