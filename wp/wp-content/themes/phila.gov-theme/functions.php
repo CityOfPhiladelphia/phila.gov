@@ -351,6 +351,10 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  */
 require get_template_directory() . '/inc/utilities.php';
 
+foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
+  require $filename;
+}
+
 
 // TODO: Remove additional fallback logic (foreach) as when possible
 function phila_get_thumbnails(){
