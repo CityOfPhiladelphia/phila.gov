@@ -13,34 +13,34 @@
 ); ?>
 
 <?php
+
+//if this is a department homepage (i.e. categories are set, show all press releases, not just featured ones)
+if ( ( $press_categories == '' ) ) {
+  $press_meta_query  = array(
+    'key' => 'phila_is_feature',
+    'value' => '0',
+    'compare' => '=',
+  );
+}else{
+  $press_meta_query = array();
+}
  $press_release_template_args  = array(
   'posts_per_page' => 4,
   'post_type' => array( 'post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
   'cat' => $press_categories,
-);
-
-//if this is a department homepage (i.e. categories are set, show all press releases, not just featured ones)
-if ( ( $press_categories == '' ) ) {
-  $meta_query = array(
-    'meta_query'  => array(
-      'relation'=> 'AND',
-      array(
-        'key' => 'phila_template_select',
-        'value' => 'press_release',
-        'compare' => '=',
+  'meta_query'  => array(
+    'relation'=> 'AND',
+    array(
+      'key' => 'phila_template_select',
+      'value' => 'press_release',
+      'compare' => '=',
       ),
-      array(
-        'key' => 'phila_is_feature',
-        'value' => '0',
-        'compare' => '=',
-      ),
-    )
+      $press_meta_query
+    ),
   );
-  var_dump($press_release_template_args);
-  $press_release_template_args = array_merge($press_release_template_args, $meta_query );
-} ?>
+?>
 
 
 <?php
