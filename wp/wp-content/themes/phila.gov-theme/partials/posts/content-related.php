@@ -10,8 +10,7 @@
 <?php $label = phila_get_selected_template($post->ID); ?>
 
 <?php if ( $related_posts->have_posts() ) : ?>
-    <h2><?php _e( 'Related' ); ?>
-    <?php echo strtolower($post_obj->labels->name); ?></h2>
+    <h2><?php _e( 'Related content' ); ?></h2>
 
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
