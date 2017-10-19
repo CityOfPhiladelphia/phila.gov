@@ -4,13 +4,13 @@
  *
 */
 ?>
-<?php $categories = isset($category) ? $category : ''; ?>
+<?php $post_categories = isset($category) ? $category : ''; ?>
 <?php $posts_args  = array(
   'posts_per_page' => 3,
   'post_type' => array( 'post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
-  'cat' => $categories,
+  'cat' => $post_categories,
   'meta_query'  => array(
     'relation'  => 'AND',
     array(
@@ -31,7 +31,7 @@
   'post_type' => array( 'phila_post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
-  'cat' => $categories,
+  'cat' => $post_categories,
 ); ?>
 
 <?php
@@ -76,8 +76,8 @@
         <div class="grid-container">
           <?php $see_all_content_type = $label; ?>
           <?php $see_all_URL = '/the-latest/archive?template=post'; ?>
-          <?php if( isset( $categories ) ) :
-            $see_all_URL .= '&category=' . $categories;
+          <?php if( isset( $post_categories ) ) :
+            $see_all_URL .= '&category=' . $post_categories;
             endif; ?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
