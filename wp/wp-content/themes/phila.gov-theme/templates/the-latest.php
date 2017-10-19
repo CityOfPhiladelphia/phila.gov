@@ -57,7 +57,7 @@
       <header class="row columns mtl">
         <h2>Featured</h2>
       </header>
-      <?php get_template_part('partials/posts/featured', 'block'); ?>
+      <?php get_template_part('partials/posts/featured', 'grid'); ?>
     </div>
 
     <div id="announcements" data-magellan-target="announcements">
