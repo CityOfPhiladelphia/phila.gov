@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* Shortcode for displaying posts on department homepage
+* Shortcode for displaying filtered posts
 * @param @atts - category can be set to display from a different category, accepts cat ID
 *
 */
@@ -27,6 +27,7 @@ function latest_posts_shortcode( $atts ) {
     }
   }
 
+  include( locate_template( 'partials/posts/announcements-grid.php' ) );
   include( locate_template( 'partials/posts/post-grid.php' ) );
 
   wp_reset_postdata();
