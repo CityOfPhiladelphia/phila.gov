@@ -5,8 +5,6 @@
  * @package phila-gov
  */
 ?>
-<?php $categories = get_the_category($post->ID); ?>
-<?php $desc = phila_get_item_meta_desc( ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
   <a href="<?php echo the_permalink(); ?>" class="grid-x grid-margin-x hover-fade faux-card">
