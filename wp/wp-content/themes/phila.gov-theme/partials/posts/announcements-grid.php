@@ -21,6 +21,7 @@
     <?php if ( $announcements->have_posts() ) : ?>
       <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
+        <?php $cats = get_the_category($post->ID); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
             <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
@@ -38,7 +39,7 @@
             <?php echo get_the_content(); ?>
             <div class="post-meta mtxl">
               <span class="date-published">Announced on: <time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
-              <span class="departments"><?php echo phila_get_current_department_name( $categories, $byline = false, $break_tags = false ); ?></span>
+              <span class="departments"><?php echo phila_get_current_department_name( $cats, $byline = false, $break_tags = false ); ?></span>
             </div>
           </div>
         <?php endwhile; ?>
