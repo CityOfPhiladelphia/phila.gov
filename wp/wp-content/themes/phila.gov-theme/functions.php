@@ -719,36 +719,6 @@ function phila_is_department_homepage( $post ) {
   }
 }
 
-function phila_get_home_news(){
-
-  $category = get_the_category();
-  $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-
-  echo '<a href="' . get_permalink() .'" class="card equal">';
-
-  echo phila_get_thumbnails();
-
-  if (function_exists('rwmb_meta')) {
-
-    echo '<div class="content-block">';
-
-    the_title('<h3 class="pvm">', '</h3>');
-
-    the_date('' ,'<span class="small-text">','</span>');
-
-    if ($contributor === ''){
-        echo '<span>' . $category[0]->cat_name . '</span>';
-    }else {
-        echo '<span>' . $contributor . '</span>';
-    }
-
-    echo '<p>' . phila_get_item_meta_desc( )  . '</p>';
-
-  }
-
-  echo '</div></a>';
-}
-
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
  * TODO: investigate a better way of handling the match.
