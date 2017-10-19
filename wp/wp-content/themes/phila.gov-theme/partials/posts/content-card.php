@@ -67,13 +67,20 @@ if ( isset( $label ) ) :
 </article>
 
 <?php if($label == 'announcement') : ?>
-  <div id="announcement-<?php the_ID(); ?>" class="reveal" data-reveal>
-    <div class="cell align-self-top post-label post-label--<?php echo $label?>">
+  <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label?>" data-reveal>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="post-label post-label--<?php echo $label?>">
       <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
     </div>
     <header class="mvm">
       <h1><?php echo get_the_title(); ?></h1>
     </header>
     <?php echo get_the_content(); ?>
+    <div class="post-meta mtxl">
+      <span class="date-published">Announced on: <time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
+      <span class="departments"><?php echo phila_get_current_department_name( $categories, $byline = false, $break_tags = false ); ?></span>
+    </div>
   </div>
 <?php endif; ?>
