@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying a featured image, description and link in a list
+ * The template used for displaying an image, description and link in a list
  *
  * @package phila-gov
  */
@@ -15,7 +15,9 @@
     <?php endif; ?>
     <div class="cell medium-<?php echo (has_post_thumbnail() ) ? '17' : '24' ?> grid-x bg-ghost-gray card <?php echo isset($label) ? 'card--' . $label : '' ?> pam">
       <div class="cell align-self-top post-label <?php echo isset($label) ? 'post-label--' . $label : '' ?>">
-        <i class="fa fa-<?php echo isset($icon) ? $icon : '' ?> fa-lg" aria-hidden="true"></i> <span><?php echo isset($label_nice) ? $label_nice : '' ?></span>
+        <?php if ( isset( $label_nice ) ) : ?>
+          <i class="fa fa-<?php echo isset($icon) ? $icon : '' ?> fa-lg" aria-hidden="true"></i> <span><?php echo isset($label_nice) ? $label_nice : '' ?></span>
+        <?php endif; ?>
         <header class="mvm">
           <h1><?php echo get_the_title(); ?></h1>
         </header>
