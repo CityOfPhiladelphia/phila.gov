@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* Shortcode for displaying press releases on department homepage
+* Shortcode for displaying filtered press releases
 * @param @atts - change category
 *
 * @package phila-gov_customization
