@@ -43,10 +43,10 @@ table.theme-light{
 
 .archive-results{
   @include breakpoint(medium up) {
-    tr.title{
+    .title{
       width:500px;
     }
-    tr.date{
+    .date{
       width:125px;
     }
   }
