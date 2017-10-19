@@ -4,8 +4,7 @@
  *
 */
 ?>
-<?php $categories = isset($category) ? $category : ''?>
-
+<?php $categories = isset($category) ? $category : ''; ?>
 <?php $posts_args  = array(
   'posts_per_page' => 3,
   'post_type' => array( 'post' ),
@@ -76,7 +75,10 @@
       <?php endwhile; ?>
       <div class="grid-container">
         <?php $see_all_content_type = $label; ?>
-        <?php $see_all_URL = 'archive?template=post'?>
+        <?php $see_all_URL = '/the-latest/archive?template=post'; ?>
+        <?php if( isset( $categories ) ) :
+          $see_all_URL .= '&category=' . $categories;
+          endif; ?>
         <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
       </div>
     <?php endif; ?>
