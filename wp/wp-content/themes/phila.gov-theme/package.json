@@ -48,7 +48,7 @@
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-select": "^2.3.0",
-    "vuejs-datepicker": "^0.9.17"
+    "vuejs-datepicker": "^0.9.18"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
