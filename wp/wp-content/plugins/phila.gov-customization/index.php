@@ -50,7 +50,6 @@ require $dir. '/admin/meta-boxes/tax-detail-fields.php';
 require $dir. '/admin/meta-boxes/v2-departments.php';
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 
-require $dir. '/public/shortcodes/blogs.php';
 require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/news.php';
