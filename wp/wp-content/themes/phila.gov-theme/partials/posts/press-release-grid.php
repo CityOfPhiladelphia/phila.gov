@@ -74,8 +74,11 @@ if ( ( $press_categories == '' ) ) {
               <?php if ($count == 4) : ?>
                 <?php $see_all_content_type = $label; ?>
                 <?php $is_full = true; ?>
-                <?php $see_all_URL = 'archive?template=press_release'?>
-                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                <?php $see_all_URL = '/the-latest/archive?template=press_release'; ?>
+                <?php if( isset( $press_categories ) ) :
+                  $see_all_URL .= '&category=' . $press_categories[0];
+                  endif; ?>
+                  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               <?php endif;?>
               <?php if ($count == 2 || $count == 4) :?>
               </div>
