@@ -44,42 +44,43 @@
 
 <?php $count = 0; ?>
 <?php $label = 'post'; ?>
-
-<div class="grid-container mbm">
-  <div class="grid-x grid-margin-x align-stretch">
-    <?php if ( $result->have_posts() ) : ?>
-      <?php while ( $result->have_posts() ) : $result->the_post(); ?>
-        <?php $post_type = get_post_type(); ?>
-        <?php $post_obj = get_post_type_object( $post_type ); ?>
-        <?php $count++; ?>
-        <?php if ($count <= 3 ): ?>
-          <?php if ($count == 1 ): ?>
-            <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
-            <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-          <?php elseif( $count == 2 ):?>
-            <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
-            <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-          <?php else : ?>
-            </div>
-          </div>
-          <div class="grid-container">
-            <div class="grid-x grid-margin-x">
-              <div class="cell medium-24 post-<?php echo $count ?>">
-                <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+<div class="post-grid">
+  <div class="grid-container mbm">
+    <div class="grid-x grid-margin-x align-stretch">
+      <?php if ( $result->have_posts() ) : ?>
+        <?php while ( $result->have_posts() ) : $result->the_post(); ?>
+          <?php $post_type = get_post_type(); ?>
+          <?php $post_obj = get_post_type_object( $post_type ); ?>
+          <?php $count++; ?>
+          <?php if ($count <= 3 ): ?>
+            <?php if ($count == 1 ): ?>
+              <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
+              <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
+            <?php elseif( $count == 2 ):?>
+              <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
+              <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
+            <?php else : ?>
               </div>
             </div>
+            <div class="grid-container">
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-24 post-<?php echo $count ?>">
+                  <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+                </div>
+              </div>
+            <?php endif; ?>
+          </div>
           <?php endif; ?>
-        </div>
-        <?php endif; ?>
 
-      <?php endwhile; ?>
-      <div class="grid-container">
-        <?php $see_all_content_type = $label; ?>
-        <?php $see_all_URL = '/the-latest/archive?template=post'; ?>
-        <?php if( isset( $categories ) ) :
-          $see_all_URL .= '&category=' . $categories;
-          endif; ?>
-        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-      </div>
-    <?php endif; ?>
-    <?php wp_reset_postdata(); ?>
+        <?php endwhile; ?>
+        <div class="grid-container">
+          <?php $see_all_content_type = $label; ?>
+          <?php $see_all_URL = '/the-latest/archive?template=post'; ?>
+          <?php if( isset( $categories ) ) :
+            $see_all_URL .= '&category=' . $categories;
+            endif; ?>
+          <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+        </div>
+      <?php endif; ?>
+      <?php wp_reset_postdata(); ?>
+</div>
