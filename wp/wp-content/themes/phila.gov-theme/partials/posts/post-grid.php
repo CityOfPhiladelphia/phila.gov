@@ -4,12 +4,14 @@
  *
 */
 ?>
+<?php $categories = isset($category) ? $category : ''?>
 
 <?php $posts_args  = array(
   'posts_per_page' => 3,
   'post_type' => array( 'post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
+  'cat' => $categories,
   'meta_query'  => array(
     'relation'  => 'AND',
     array(
@@ -30,6 +32,7 @@
   'post_type' => array( 'phila_post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
+  'cat' => $categories,
 ); ?>
 
 <?php
