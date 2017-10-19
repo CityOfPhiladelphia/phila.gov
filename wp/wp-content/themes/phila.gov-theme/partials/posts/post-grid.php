@@ -5,7 +5,20 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
-<?php $posts_args  = array(
+
+<?php
+
+if ( ( $post_categories == '' ) ) {
+  $post_meta_query = array(
+    'key' => 'phila_is_feature',
+    'value' => '0',
+    'compare' => '=',
+  );
+}else{
+  $post_meta_query = array();
+}
+
+$posts_args  = array(
   'posts_per_page' => 3,
   'post_type' => array( 'post' ),
   'order' => 'desc',
@@ -18,15 +31,11 @@
       'value' => 'post',
       'compare' => '=',
     ),
-    array(
-      'key' => 'phila_is_feature',
-      'value' => '0',
-      'compare' => '=',
-    ),
-  ),
-); ?>
+    $post_meta_query
+  )
+);
 
-<?php $phila_posts_args  = array(
+$phila_posts_args  = array(
   'posts_per_page' => 3,
   'post_type' => array( 'phila_post' ),
   'order' => 'desc',
