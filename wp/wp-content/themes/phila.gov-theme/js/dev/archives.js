@@ -78,7 +78,7 @@ var archives = new Vue ({
     </div>
     <table class="stack theme-light archive-results"  data-sticky-container>
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
-        <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
+        <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
         <tr v-for="post in filteredPosts"
