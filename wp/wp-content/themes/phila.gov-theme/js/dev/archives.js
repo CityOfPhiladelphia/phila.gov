@@ -76,7 +76,7 @@ var archives = new Vue ({
         </div>
       </div>
     </div>
-    <table class="stack theme-light"  data-sticky-container>
+    <table class="stack theme-light archive-results"  data-sticky-container>
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th width="500">Title</th><th width="125">Publish date</th><th>Department</th></tr>
       </thead>
@@ -84,8 +84,9 @@ var archives = new Vue ({
         <tr v-for="post in filteredPosts"
         :key="post.id"
         class="clickable-row"
-        v-on:click="goToPost(post)">
-          <td width="500" class="title"><a v-bind:href="post.link">
+        v-on:click.stop.prevent="goToPost(post.link)">
+          <td class="title">
+          <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
             <span class="prm">
               <span v-if="post.template.includes('post')">
                 <i class="fa fa-pencil pride-purple"></i>
@@ -97,9 +98,10 @@ var archives = new Vue ({
                 <i class="fa fa-newspaper-o ben-franklin-blue"></i>
               </span>
             </span>
-            {{ post.title }}</a>
+            {{ post.title }}
+            </a>
           </td>
-          <td width="125" class="date">{{ post.date  | formatDate }}</td>
+          <td class="date">{{ post.date  | formatDate }}</td>
           <td class="categories">
             <span v-for="(category, i) in post.categories">
               <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
@@ -160,8 +162,7 @@ var archives = new Vue ({
       })
     },
     goToPost: function (post){
-      console.log(post.link)
-      window.location.href = post.link
+      window.location.href = post
     },
     parseQueryStrings: function(){
       var template = this.$route.query.template
