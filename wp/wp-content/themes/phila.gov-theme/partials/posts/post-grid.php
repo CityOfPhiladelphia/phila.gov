@@ -86,7 +86,7 @@ $phila_posts_args  = array(
           <?php $see_all_content_type = $label; ?>
           <?php $see_all_URL = '/the-latest/archive?template=post'; ?>
           <?php if( isset( $post_categories ) ) :
-            $see_all_URL .= '&category=' . $post_categories;
+            $see_all_URL .= '&category=' . $post_categories[0];
             endif; ?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>

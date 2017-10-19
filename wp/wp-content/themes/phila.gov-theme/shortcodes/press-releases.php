@@ -19,7 +19,7 @@ function press_release_shortcode($atts) {
 
   if ($a['category'] != ''){
     //get page category
-    $category = get_category($a['category'])->term_id;
+    $category = array(get_category($a['category'])->term_id);
   } else {
     $cats = get_the_category();
     foreach ($cats as $cat) {
