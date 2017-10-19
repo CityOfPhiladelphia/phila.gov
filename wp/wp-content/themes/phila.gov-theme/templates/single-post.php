@@ -118,9 +118,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
   }
 ?>
 <div class="grid-container">
-  <div class="grid-x">
     <?php include( locate_template( $template ) ); ?>
-  </div>
 </div>
 
 
