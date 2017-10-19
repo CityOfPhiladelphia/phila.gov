@@ -104,7 +104,22 @@ get_header(); ?>
           <h1>The latest news + events</h1>
         </div>
       </div>
-      <?php include( locate_template( 'partials/posts/content-featured.php' ) ); ?>
+      <?php include( locate_template( 'partials/posts/featured-grid.php' ) ); ?>
+      <div class="row mvxl">
+        <div class="columns panel">
+          <div class="row equal-height">
+            <div class="small-24 medium-16 columns valign equal">
+              <div class="valign-cell">
+                <h3 class="mbn">More from the City of Philadelphia</h3>
+                <p class="mts">Get the latest posts, announcements and events.</p>
+              </div>
+            </div>
+            <div class="small-24 medium-8 columns valign equal center">
+              <a href="/the-latest" class="button full mts">Go to The latest</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="neighborhood-resources">
