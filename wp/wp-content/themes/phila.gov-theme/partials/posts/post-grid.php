@@ -52,17 +52,17 @@
         <?php $count++; ?>
         <?php if ($count <= 3 ): ?>
           <?php if ($count == 1 ): ?>
-            <div class="cell medium-16 align-self-stretch">
+            <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
             <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-          <?php elseif($count ==2):?>
-            <div class="cell medium-8 align-self-stretch">
+          <?php elseif( $count == 2 ):?>
+            <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
             <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
           <?php else : ?>
             </div>
           </div>
           <div class="grid-container">
             <div class="grid-x grid-margin-x">
-              <div class="cell medium-24">
+              <div class="cell medium-24 post-<?php echo $count ?>">
                 <?php include( locate_template( 'partials/content-list-featured-image.php' ) ); ?>
               </div>
             </div>
