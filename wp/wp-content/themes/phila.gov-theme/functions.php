@@ -1464,3 +1464,42 @@ function phila_rename_sticky_class( $classes ) {
   }
   return $classes;
 }
+
+add_action('template_redirect', 'phila_get_post_label');
+
+function phila_get_post_label( $label ){
+  if ( isset( $label ) ) {
+    $original_label = $label;
+    switch( $original_label ) {
+      case 'announcement':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Announcement',
+          'icon' => 'bullhorn',
+        );
+        break;
+      case 'featured':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Featured',
+          'icon' => 'newspaper-o',
+        );
+        break;
+      case 'press_release':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Press Release',
+          'icon' => 'file-text-o',
+        );
+        break;
+      case 'post':
+        $label = array(
+         'label' => $original_label,
+         'nice' => 'Post',
+         'icon' => 'pencil',
+        );
+        break;
+    }
+    return $label;
+  }
+}
