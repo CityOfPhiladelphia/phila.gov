@@ -112,8 +112,10 @@ $tweet_intent = rwmb_meta('phila_social_intent');
 
   if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
     $is_press_release = true;
-    $label = 'press-release';
+    $label = 'press_release';
     $count = 4;
+    $category = array($cat_id_string);
+
     $template = 'partials/posts/press-release-grid.php';
   }
 ?>
