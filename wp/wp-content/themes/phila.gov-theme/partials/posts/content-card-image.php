@@ -6,32 +6,10 @@
  */
 ?>
 
-<?php
-//TODO: turn this into function
-if ( isset( $label ) ) :
-  switch( $label ) {
-    case 'announcement':
-      $label_nice = 'Announcement';
-      $icon = 'bullhorn';
-      break;
-    case 'featured':
-      $label_nice = 'Featured';
-      $icon = 'newspaper-o';
-      break;
-    case 'press_release':
-      $label_nice = 'Press Release';
-      $icon = 'file-text-o';
-      break;
-    case 'post':
-      $label_nice = 'Post';
-      $icon = 'pencil';
-      break;
-  }
-  endif;
-?>
+<?php $label_arr = phila_get_post_label($label); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('full-height'); ?>>
-  <a href="<?php echo the_permalink(); ?>" class="card card--<?php echo $label ?> flex-container flex-dir-row full-height">
+  <a href="<?php echo the_permalink(); ?>" class="card card--<?php echo $label_arr['label'] ?> flex-container flex-dir-row full-height">
     <div class="grid-x flex-dir-column">
       <div class="flex-child-shrink">
         <?php if ( has_post_thumbnail() ) : ?>
@@ -39,8 +17,8 @@ if ( isset( $label ) ) :
         <?php endif; ?>
       </div>
       <div class="card--content pam flex-child-auto">
-        <div class="cell align-self-top post-label post-label--<?php echo $label?>">
-          <i class="fa fa-<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_nice; ?></span>
+        <div class="cell align-self-top post-label post-label--<?php echo $label_arr['label']?>">
+          <i class="fa fa-<?php echo $label_arr['icon'] ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_arr['nice']; ?></span>
           <header class="cell mbm">
             <h1><?php echo get_the_title(); ?></h1>
           </header>

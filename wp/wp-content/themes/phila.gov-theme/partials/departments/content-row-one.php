@@ -86,9 +86,11 @@ if ( !empty( $row_one_col_two_module ) ){
       </div>
       <div class="row mtm">
         <div class="columns">
-          <?php
-            $see_all_URL = '/news/' . $category_slug . '/';
-            $see_all_content_type = 'news';
+          <?php $see_all = array(
+              'URL' => '/news/' . $category_slug . '/',
+              'content_type' => 'news',
+              'nice_name' => 'news'
+            );
             include( locate_template( 'partials/content-see-all.php' ) );?>
           </div>
         </div>
@@ -115,10 +117,12 @@ if ( !empty( $row_one_col_two_module ) ){
       </div>
       <div class="row mtm">
         <div class="columns">
-      <?php
-        $see_all_URL = '/posts/' . $category_slug . '/';
-        $see_all_content_type = 'posts';
-        include( locate_template( 'partials/content-see-all.php' ) );?>
+          <?php $see_all = array(
+          'URL' => '/posts/' . $category_slug . '/',
+          'content_type' => 'posts',
+          'nice_name' => 'Posts'
+        ); ?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) );?>
       </div>
     </div>
     </div>
@@ -130,10 +134,12 @@ if ( !empty( $row_one_col_two_module ) ){
       </div>
       <div class="row mtm">
         <div class="columns">
-      <?php
-        $see_all_URL = '/news/' . $category_slug . '/';
-        $see_all_content_type = 'news';
-        include( locate_template( 'partials/content-see-all.php' ) );?>
+          <?php $see_all = array(
+          'URL' => '/news/' . $category_slug . '/',
+          'content_type' => 'news',
+          'nice_name' => 'News'
+        ); ?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) );?>
       </div>
     </div>
     </div>

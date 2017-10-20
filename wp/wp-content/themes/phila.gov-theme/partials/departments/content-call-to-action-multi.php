@@ -75,8 +75,12 @@
 <?php if ( $link_url != '' && $link_title != ''):?>
   <div class="row">
     <div class="columns">
-      <?php $see_all_URL = $link_url ?>
-      <?php $see_all_content_type = $action_panel_title?>
+
+      <?php $see_all = array(
+          'URL' => $link_url,
+          'content_type' => $action_panel_title,
+          'nice_name' => $action_panel_title
+        );?>
       <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
     </div>
   </div>

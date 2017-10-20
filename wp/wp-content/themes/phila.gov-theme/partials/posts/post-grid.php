@@ -83,11 +83,18 @@ $phila_posts_args  = array(
 
         <?php endwhile; ?>
         <div class="grid-container">
-          <?php $see_all_content_type = $label; ?>
-          <?php $see_all_URL = '/the-latest/archive?template=post'; ?>
-          <?php if( $post_categories != '' ) :
-            $see_all_URL .= '&category=' . $post_categories[0];
-            endif; ?>
+          <?php $see_all = array(
+            'URL' => '/the-latest/archive?template=post',
+            'content_type' => $label,
+            'nice_name' => 'posts'
+          );
+          ?>
+          <?php if( !empty( $post_categories ) ) :
+            $see_all_URL = array(
+              'URL' => '/the-latest/archive?template=post&category=' . $post_categories[0],
+            );
+            $see_all = array_replace($see_all, $see_all_URL );
+            endif;?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       <?php endif; ?>
