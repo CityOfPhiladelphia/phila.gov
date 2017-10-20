@@ -72,8 +72,9 @@
     <?php endif; ?>
     </div>
   <?php endforeach; ?>
+</section>
 <?php if ( $link_url != '' && $link_title != ''):?>
-  <div class="row">
+  <div class="row mtm">
     <div class="columns">
 
       <?php $see_all = array(
@@ -85,5 +86,4 @@
     </div>
   </div>
 <?php endif; ?>
-</section>
 <?php endif; ?>
