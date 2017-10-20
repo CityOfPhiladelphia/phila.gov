@@ -15,7 +15,6 @@ get_header(); ?>
   </header>
 </div>
 
-
 <section id="archive-page" class="content-area archive">
 
   <div class="row">
