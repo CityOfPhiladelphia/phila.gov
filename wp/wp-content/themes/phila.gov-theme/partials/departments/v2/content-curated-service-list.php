@@ -62,8 +62,11 @@
 
   <div class="row mtm">
     <div class="columns">
-      <?php $see_all_URL = $all_services ?>
-      <?php $see_all_content_type = 'Services';?>
+      <?php $see_all = array(
+          'URL' => $all_services,
+          'content_type' => 'services',
+          'nice_name' => 'Services'
+        );?>
       <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
     </div>
   </div>

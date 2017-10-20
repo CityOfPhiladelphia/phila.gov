@@ -15,7 +15,7 @@
 <?php
 
 //if this is a department homepage (i.e. categories are set, show all press releases, not just featured ones)
-if ( ( $press_categories == '' ) ) {
+if ( !empty( $press_categories ) ) {
   $press_meta_query  = array(
     'key' => 'phila_is_feature',
     'value' => '0',
@@ -24,6 +24,7 @@ if ( ( $press_categories == '' ) ) {
 }else{
   $press_meta_query = array();
 }
+
  $press_release_template_args  = array(
   'posts_per_page' => 4,
   'post_type' => array( 'post' ),
@@ -52,10 +53,10 @@ if ( ( $press_categories == '' ) ) {
   $result->post_count = count( $result->posts );
 ?>
 
-<?php $label = 'press_release'; ?>
+<?php $label = 'press_release' ?>
 <?php $count = 0; ?>
-<div class="press-grid">
 
+<div class="press-grid">
   <div class="grid-container">
     <?php if ( $result->have_posts() ) : ?>
       <?php while ( $result->have_posts() ) : $result->the_post(); ?>
@@ -72,11 +73,17 @@ if ( ( $press_categories == '' ) ) {
             <div class="cell medium-12 align-self-stretch">
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
               <?php if ($count == 4) : ?>
-                <?php $see_all_content_type = $label; ?>
-                <?php $is_full = true; ?>
-                <?php $see_all_URL = '/the-latest/archive?template=press_release'; ?>
-                <?php if( isset( $press_categories ) ) :
-                  $see_all_URL .= '&category=' . $press_categories[0];
+                <?php $see_all = array(
+                  'URL' => '/the-latest/archive?template=press_release',
+                  'content_type' => 'press_release',
+                  'nice_name' => 'Press releases',
+                  'is_full' => true
+                ); ?>
+                <?php if( !empty( $press_categories ) ) :
+                  $see_all_URL = array(
+                    'URL' => '/the-latest/archive?template=press_release&category=' . $press_categories[0]
+                  );
+                  $see_all = array_replace($see_all, $see_all_URL );
                   endif; ?>
                   <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               <?php endif;?>
