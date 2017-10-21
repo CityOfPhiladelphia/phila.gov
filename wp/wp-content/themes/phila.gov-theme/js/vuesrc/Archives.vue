@@ -12,7 +12,7 @@
           <div class="accordion-content" data-tab-content>
             <fieldset>
               <div class="grid-x grid-margin-x mbl">
-                <div v-for="(value, key) in  templates" class="cell auto">
+                <div v-for="(value, key) in templates" class="cell auto">
                   <input type="checkbox" v-model="checkedTemplates" v-bind:value="key" v-bind:name="key" v-bind:id="key"/>
                   <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
                 </div>
@@ -26,11 +26,17 @@
                 <datepicker placeholder="End date" v-on:closed=""></datepicker>
               </div>
               -->
-              <div class="cell medium-9 auto">
-                <select id="departments" name="select" @change="filterByCategory" v-model="selected">
+              <div class="cell medium-9 auto filter-by-owner">
+                <v-select
+                label="slang_name"
+                :value.sync="selected"
+                :options="categories"
+                :on-change="filterByCategory">
+              </v-select>
+                <!--<select id="departments" name="select" @change="filterByCategory" v-model="selected">
                   <option value="All departments" selected>All departments</option>
                   <option v-for="category in categories" v-bind:value="category.id">{{ category.slang_name }}</option>
-                </select>
+                </select>-->
               </div>
               <div class="cell medium-6">
                 <a class="button content-type-featured full" @click="reset">Clear filters</a>
@@ -80,22 +86,24 @@
 import Search from './components/phila-search.vue'
 import moment from 'moment'
 import axios from 'axios'
+import vSelect from 'vue-select'
 
 //var Datepicker = require('vuejs-datepicker')
-
-//var vSelect = require('vue-select')
 
 var endpoint = '/wp-json/the-latest/v1/'
 
 export default {
   components: {
-      'phila-search': Search
-    },
+    'v-select': vSelect
+  },
   data: function() {
     return{
       posts: [],
-      categories: [],
-      selected: (this.$route.query.category ? this.$route.query.category : 'All departments'),
+      categories: [{
+        value: this.id,
+        label: this.slang_name
+      }],
+      selected: (this.$route.query.category ? this.getCategoryName : 'All departments'),
       templates: {
           post : 'Post',
           featured : "Featured",
@@ -198,15 +206,15 @@ export default {
         //console.log(e);
       })
     },
-    filterByCategory: function(event){
+    filterByCategory: function(selectedVal){
       axios.get(endpoint + 'archives', {
         params : {
-          'category' : this.selected
+          'category' : selectedVal.id
           }
         })
         .then(response => {
           this.posts = response.data
-          console.log(this.posts);
+          console.log(this.posts)
 
           if (this.posts.length > 0) {
             response.data = "Sorry, nothing matches that category."
@@ -250,3 +258,51 @@ export default {
   }
 }
 </script>
+
+<style>
+.filter-by-owner{
+  font-family:"Open Sans", Helvetica, Roboto, Arial, sans-serif !important;
+}
+.filter-by-owner .v-select .dropdown-toggle{
+  border:none;
+  background:white;
+}
+.filter-by-owner .v-select .open-indicator{
+  bottom:0;
+  top:0;
+  right:0;
+  background: #0f4d90;
+  padding:1rem 1.5rem 1rem 1rem;
+  height: inherit;
+}
+
+.filter-by-owner .v-select input[type=search],
+.v-select input[type=search]:focus{
+  background: white !important;
+  border:none;
+}
+.filter-by-owner .v-select .open-indicator:before{
+  border-color:white;
+}
+.filter-by-owner ul.dropdown-menu{
+  border:none;
+  font-weight: bold;
+}
+.filter-by-owner ul.dropdown-menu li{
+  border-bottom: 1px solid #f0f0f0;
+
+}
+.filter-by-owner ul.dropdown-menu li a{
+  color: #0f4d90;
+  padding:1rem;
+}
+.filter-by-owner ul.dropdown-menu li a:hover{
+  background: #0f4d90;
+  color:white;
+}
+.filter-by-owner  .dropdown-menu > .highlight > a {
+  background: #0f4d90;
+  color: white;
+}
+
+</style>
