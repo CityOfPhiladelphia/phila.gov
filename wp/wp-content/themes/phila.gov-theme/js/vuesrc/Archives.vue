@@ -278,7 +278,6 @@ export default {
 
 .filter-by-owner .v-select input[type=search],
 .v-select input[type=search]:focus{
-  background: white !important;
   border:none;
 }
 .filter-by-owner .v-select .open-indicator:before{
@@ -300,9 +299,12 @@ export default {
   background: #0f4d90;
   color:white;
 }
-.filter-by-owner  .dropdown-menu > .highlight > a {
+.filter-by-owner .v-select .dropdown-menu > .highlight > a {
   background: #0f4d90;
   color: white;
 }
-
+.filter-by-owner .v-select.single .selected-tag{
+  background-color: #f0f0f0;
+  border: none;
+}
 </style>
