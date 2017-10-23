@@ -115,7 +115,7 @@ get_header(); ?>
               </div>
             </div>
             <div class="small-24 medium-8 columns valign equal center">
-              <a href="/the-latest" class="button full mts">Go to The latest</a>
+              <a href="/the-latest/archive" class="button full mts">Go to The latest</a>
             </div>
           </div>
         </div>
