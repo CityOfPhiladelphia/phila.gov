@@ -13,7 +13,12 @@
             <fieldset>
               <div class="grid-x grid-margin-x mbl">
                 <div v-for="(value, key) in templates" class="cell auto">
-                  <input type="checkbox" v-model="checkedTemplates" v-bind:value="key" v-bind:name="key" v-bind:id="key"/>
+                  <input type="radio"
+                  :checked="key"
+                  v-model="checkedTemplates"
+                  v-bind:value="key"
+                  v-bind:name="key"
+                  v-bind:id="key" />
                   <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
                 </div>
               </div>
@@ -50,7 +55,7 @@
         <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
       <tbody>
-        <tr v-for="post in filteredPosts"
+        <tr v-for="post in paginatedPosts"
         :key="post.id"
         class="clickable-row"
         v-on:click.stop.prevent="goToPost(post.link)">
@@ -79,6 +84,19 @@
         </tr>
       </tbody>
     </table>
+    <ul class="phila-paginate float-right">
+      <!--<li class="prev-item">
+        <a href="" @click.prevent="stepDown(n)">Previous {{n-1}}</a>
+      </li>-->
+      <li v-for="n in numOfPages">
+        <a href=""
+        @click.prevent="setPage(n)"
+        v-bind:class="{active : isActive}"> {{ n }}</a>
+      </li>
+    <!--<li class="next-item">
+      <a href="" @click.prevent="stepUp(n)">Next {{n+1}}</a>
+    </li>-->
+    </ul>
   </div>
   </template>
 
@@ -94,7 +112,7 @@ var endpoint = '/wp-json/the-latest/v1/'
 
 export default {
   components: {
-    'v-select': vSelect
+    vSelect
   },
   data: function() {
     return{
@@ -104,12 +122,16 @@ export default {
         label: this.slang_name
       }],
       selected: (this.$route.query.category ? this.getCategoryName : 'All departments'),
+
       templates: {
           post : 'Post',
           featured : "Featured",
           press_release : 'Press release'
         },
       checkedTemplates: [],
+      currentPage: 1,
+      perPage: 40,
+      isActive: false,
     }
   },
   filters: {
@@ -225,36 +247,56 @@ export default {
         console.log(e);
       })
     },
-    reset () {
+    reset() {
       window.location = window.location.href.split("?")[0];
     },
-    changePost() {
-      console.log(this.$route.query)
-    }
+    setPage(n) {
+      this.currentPage = n
+      if(this.currentPage = n)
+        this.isActive = true
+    },
+    stepDown(n) {
+      console.log(n)
+      this.currentPage = n-1
+      this.paginatedPosts
+    },
+    stepUp(n) {
+      console.log(n)
+      this.currentPage = n+1;
+      this.paginatedPosts
+    },
   },
   computed:{
-    filteredPosts(){
-      // if (this.$route.query.template) {
-      //   axios.get(endpoint + 'archives')
-      //   .then(response => {
-      //     console.log('running');
-      //     this.posts = response.data
-      //   })
-      //   .catch(e => {
-      //     console.log(e)
-      //   })
-      // }
-      //
-       if (!this.checkedTemplates.length) {
-         console.log('none selected')
-        return this.posts
-      }else{
-        return this.posts.filter(
-          j => this.checkedTemplates.includes(j.template)
-        )
+    paginatedPosts (){
+      if (this.offset > this.posts.length) {
+        this.currentPage = this.numOfPages;
       }
-
+      return this.posts.slice(this.offset, this.limit);
+    },
+    numOfPages() {
+      return Math.ceil(this.posts.length / this.perPage);
+    },
+    offset() {
+        return ((this.currentPage - 1) * this.perPage);
+      },
+    limit() {
+      return (this.offset + this.perPage);
     }
+  },
+  watch: {
+    checkedTemplates: function(newVal, oldVal){
+      axios.get(endpoint + 'archives', {
+        params : {
+          'template' : newVal,
+          'count' : -1
+          }
+        })
+      .then(response => {
+        console.log(this.$route.query)
+          this.posts = response.data
+          console.log(response.data)
+        })
+      }
   }
 }
 </script>
@@ -272,7 +314,7 @@ export default {
   top:0;
   right:0;
   background: #0f4d90;
-  padding:1rem 1.5rem 1rem 1rem;
+  padding: 1rem 1.5rem 1rem 1rem;
   height: inherit;
 }
 
@@ -306,5 +348,28 @@ export default {
 .filter-by-owner .v-select.single .selected-tag{
   background-color: #f0f0f0;
   border: none;
+}
+ul.phila-paginate {
+  display: inline-block;
+  margin:0;
+  padding:0;
+}
+.phila-paginate li{
+  display: inline-block;
+  border-right: 2px solid white;
+  margin-bottom:1rem;
+}
+.phila-paginate a:link{
+  display: block;
+  padding: .5rem;
+  background: #0f4d90;
+  color:white;
+}
+.phila-paginate a:link,
+.phila-paginate a:visited{
+  color:white;
+}
+.phila-paginate a.activeClass:link{
+  background: white;
 }
 </style>
