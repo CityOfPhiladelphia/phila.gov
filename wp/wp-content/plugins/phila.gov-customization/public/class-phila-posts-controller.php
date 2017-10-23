@@ -87,9 +87,30 @@ class Phila_Archives_Controller {
           $args = array(
             'posts_per_page' => $request['count'],
             's' => $request['s'],
-            'post_type' => $post_type,
+            'post_type' => array('post', 'phila_post'),
             'orderby' => 'date',
             'category' => $request['category'],
+            'meta_query'  => array(
+              'relation'  => 'OR',
+              array(
+                'key' => 'phila_show_on_home',
+                'value' => '0',
+                'compare' => '=',
+              ),
+              array(
+                'relation'  => 'OR',
+                array(
+                  'key' => 'phila_is_feature',
+                  'value' => '0',
+                  'compare' => '=',
+                ),
+                array(
+                  'key' => 'phila_template_select',
+                  'value' => 'post',
+                  'compare' => '=',
+                ),
+              ),
+            ),
           );
           $posts = get_posts( $args );
 
