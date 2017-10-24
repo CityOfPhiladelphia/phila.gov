@@ -55,6 +55,7 @@ class Phila_Archives_Controller {
         case 'featured':
           $args = array(
             'posts_per_page' => $request['count'],
+            's' => $request['s'],
             'post_type' => array('post', 'news_post'),
             'order' => 'desc',
             'orderby' => 'date',
@@ -119,6 +120,7 @@ class Phila_Archives_Controller {
         case 'press_release' :
           $press_release_args  = array(
           'posts_per_page' => $request['count'],
+          's' => $request['s'],
           'post_type' => array( 'press_release' ),
           'order' => 'desc',
           'orderby' => 'post_date',
@@ -126,6 +128,7 @@ class Phila_Archives_Controller {
         );
         $press_release_template_args  = array(
           'posts_per_page' => $request['count'],
+          's' => $request['s'],
           'post_type' => array( 'post' ),
           'order' => 'desc',
           'orderby' => 'post_date',
