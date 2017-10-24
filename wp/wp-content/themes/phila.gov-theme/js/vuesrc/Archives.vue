@@ -2,7 +2,8 @@
   <div id="archive-results">
     <form v-on:submit.prevent="onSubmit">
       <div class="search">
-        <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field">
+        <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field"
+        v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
     </form>
@@ -34,7 +35,6 @@
               <div class="cell medium-9 auto filter-by-owner">
                 <v-select
                 label="slang_name"
-                :value.sync="selected"
                 :options="categories"
                 :on-change="filterByCategory">
               </v-select>
@@ -54,8 +54,12 @@
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
-      <tbody>
-        <tr v-for="post in paginatedPosts"
+      <paginate name="posts"
+        :list="posts"
+        class="paginate-list"
+        tag="tbody"
+        :per="40">
+        <tr v-for="post in paginated('posts')"
         :key="post.id"
         class="clickable-row"
         v-on:click.stop.prevent="goToPost(post.link)">
@@ -82,37 +86,31 @@
             </span>
           </td>
         </tr>
-      </tbody>
+      </paginate>
     </table>
-    <ul class="phila-paginate float-right">
-      <!--<li class="prev-item">
-        <a href="" @click.prevent="stepDown(n)">Previous {{n-1}}</a>
-      </li>-->
-      <li v-for="n in numOfPages">
-        <a href=""
-        @click.prevent="setPage(n)"
-        v-bind:class="{active : isActive}"> {{ n }}</a>
-      </li>
-    <!--<li class="next-item">
-      <a href="" @click.prevent="stepUp(n)">Next {{n+1}}</a>
-    </li>-->
-    </ul>
+    <paginate-links for="posts"
+    :limit="10"
+    :show-step-links="true"
+    :step-links="{
+      next: 'Next',
+      prev: 'Previous'
+    }"></paginate-links>
   </div>
   </template>
 
 <script>
 import Search from './components/phila-search.vue'
+
 import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
-
-//var Datepicker = require('vuejs-datepicker')
 
 var endpoint = '/wp-json/the-latest/v1/'
 
 export default {
   components: {
-    vSelect
+    vSelect,
+    'search' : Search,
   },
   data: function() {
     return{
@@ -121,17 +119,20 @@ export default {
         value: this.id,
         label: this.slang_name
       }],
-      selected: (this.$route.query.category ? this.getCategoryName : 'All departments'),
-
+      selectedCat: (this.$route.query.category) ? this.$route.query.category : 'All departments',
       templates: {
-          post : 'Post',
-          featured : "Featured",
-          press_release : 'Press release'
-        },
+        post : 'Post',
+        featured : "Featured",
+        press_release : 'Press release'
+      },
       checkedTemplates: [],
-      currentPage: 1,
-      perPage: 40,
-      isActive: false,
+      templateFiltered: [],
+      searchedVal: '',
+
+      loading:false,
+
+      paginate: ['posts'],
+
     }
   },
   filters: {
@@ -142,12 +143,16 @@ export default {
     }
   },
   mounted: function () {
-    this.getPosts()
+    this.getAllPosts()
     this.getDropdownCategories();
   },
   methods: {
-    getPosts: function () {
-      axios.get(endpoint + 'archives')
+    getAllPosts: function () {
+      axios.get(endpoint + 'archives',{
+        params: {
+          'count': -1
+        }
+      })
       .then(response => {
         console.log(this.$route.query)
 
@@ -210,10 +215,16 @@ export default {
 
     },
     onSubmit: function (event) {
-      console.log('submit ')
+      console.log(this.searchedVal)
+      console.log(this.checkedTemplates)
+      console.log(this.selectedCat)
+
       axios.get(endpoint + 'archives', {
         params : {
-          's' : event.target.search.value
+          's': this.searchedVal,
+          'template': this.checkedTemplates,
+          'category': this.selectedCat,
+          'count': -1
           }
         })
         .then(response => {
@@ -229,9 +240,18 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
+      this.selectedCat = selectedVal.id
+
+      console.log(selectedVal.id)
+      console.log('filterByCategory : s : '+ this.searchedVal)
+
       axios.get(endpoint + 'archives', {
         params : {
-          'category' : selectedVal.id
+          'category' : selectedVal.id,
+          'template' : this.checkedTemplates,
+          //'category': this.selectedCat,
+          'count' : -1,
+          's': this.searchedVal
           }
         })
         .then(response => {
@@ -250,53 +270,26 @@ export default {
     reset() {
       window.location = window.location.href.split("?")[0];
     },
-    setPage(n) {
-      this.currentPage = n
-      if(this.currentPage = n)
-        this.isActive = true
-    },
-    stepDown(n) {
-      console.log(n)
-      this.currentPage = n-1
-      this.paginatedPosts
-    },
-    stepUp(n) {
-      console.log(n)
-      this.currentPage = n+1;
-      this.paginatedPosts
-    },
   },
   computed:{
-    paginatedPosts (){
-      if (this.offset > this.posts.length) {
-        this.currentPage = this.numOfPages;
-      }
-      return this.posts.slice(this.offset, this.limit);
-    },
-    numOfPages() {
-      return Math.ceil(this.posts.length / this.perPage);
-    },
-    offset() {
-        return ((this.currentPage - 1) * this.perPage);
-      },
-    limit() {
-      return (this.offset + this.perPage);
-    }
   },
   watch: {
     checkedTemplates: function(newVal, oldVal){
+      console.log( this.searchedVal )
       axios.get(endpoint + 'archives', {
         params : {
           'template' : newVal,
-          'count' : -1
+          'category': this.selectedCat.id,
+          'count' : -1,
+          's': this.searchedVal
           }
         })
       .then(response => {
         console.log(this.$route.query)
-          this.posts = response.data
-          console.log(response.data)
-        })
-      }
+        this.posts = response.data
+        console.log(response.data)
+      })
+    }
   }
 }
 </script>
@@ -349,27 +342,28 @@ export default {
   background-color: #f0f0f0;
   border: none;
 }
-ul.phila-paginate {
+ul.paginate-links {
   display: inline-block;
   margin:0;
   padding:0;
+  float:right;
 }
-.phila-paginate li{
+.paginate-links li{
   display: inline-block;
   border-right: 2px solid white;
   margin-bottom:1rem;
 }
-.phila-paginate a:link{
+.paginate-links a{
   display: block;
   padding: .5rem;
   background: #0f4d90;
   color:white;
 }
-.phila-paginate a:link,
-.phila-paginate a:visited{
+.paginate-links a{
   color:white;
 }
-.phila-paginate a.activeClass:link{
+.paginate-links li.active a{
   background: white;
+  color: #444;
 }
 </style>
