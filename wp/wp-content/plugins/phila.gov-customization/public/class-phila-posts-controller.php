@@ -99,7 +99,7 @@ class Phila_Archives_Controller {
                 'compare' => '=',
               ),
               array(
-                'relation'  => 'OR',
+                'relation'  => 'AND',
                 array(
                   'key' => 'phila_is_feature',
                   'value' => '0',
