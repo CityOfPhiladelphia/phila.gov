@@ -85,19 +85,20 @@ class Phila_Archives_Controller {
 
           break;
         case 'post':
-          $args = array(
+          $old_args = array(
             'posts_per_page' => $request['count'],
             's' => $request['s'],
-            'post_type' => array('post', 'phila_post'),
+            'post_type' => array('phila_post'),
+            'orderby' => 'date',
+            'category' => $request['category'],
+          );
+          $new_args = array(
+            'posts_per_page' => $request['count'],
+            's' => $request['s'],
+            'post_type' => array('post'),
             'orderby' => 'date',
             'category' => $request['category'],
             'meta_query'  => array(
-              'relation'  => 'OR',
-              array(
-                'key' => 'phila_show_on_home',
-                'value' => '0',
-                'compare' => '=',
-              ),
               array(
                 'relation'  => 'AND',
                 array(
@@ -113,8 +114,11 @@ class Phila_Archives_Controller {
               ),
             ),
           );
-          $posts = get_posts( $args );
-
+          // //special handling for old phila_post CPT
+            $old_posts = get_posts( $old_args );
+            $new_posts = get_posts( $new_args );
+            $posts = array();
+            $posts = array_merge( $old_posts, $new_posts );
           break;
 
         case 'press_release' :
