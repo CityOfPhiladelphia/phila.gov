@@ -25,24 +25,27 @@
               </div>
             </fieldset>
             <div class="grid-x grid-margin-x">
-            <!--
-              <div class="cell medium-9">
-                <datepicker placeholder="Start date" v-on:closed=""></datepicker>
-                  <i class="fa fa-arrow-right"></i>
-                <datepicker placeholder="End date" v-on:closed=""></datepicker>
+              <div class="cell medium-4">
+                <datepicker
+                placeholder="Start date"
+                v-on:closed=""
+                v-model="state.startDate"></datepicker>
               </div>
-              -->
+              <div class="cell medium-1">
+                <i class="fa fa-arrow-right"></i>
+              </div>
+              <div class="cell medium-4">
+                <datepicker placeholder="End date"
+                v-on:closed="runDateQuery"
+                v-model="state.endDate"></datepicker>
+              </div>
               <div class="cell medium-9 auto filter-by-owner">
                 <v-select
                 label="slang_name"
                 :value.sync="selectedCat"
                 :options="categories"
                 :on-change="filterByCategory">
-              </v-select>
-                <!--<select id="departments" name="select" @change="filterByCategory" v-model="selected">
-                  <option value="All departments" selected>All departments</option>
-                  <option v-for="category in categories" v-bind:value="category.id">{{ category.slang_name }}</option>
-                </select>-->
+                </v-select>
               </div>
               <div class="cell medium-6">
                 <a class="button content-type-featured full" @click="reset">Clear filters</a>
@@ -101,20 +104,22 @@
   </template>
 
 <script>
-import Search from './components/phila-search.vue'
-
 import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
+import Datepicker from 'vuejs-datepicker';
 
 const endpoint = '/wp-json/the-latest/v1/'
-const chosenTemplate = this.$route.query.template
-const chosenCat = this.$route.query.category
+
+
+var state = {
+    date: new Date()
+}
 
 export default {
   components: {
     vSelect,
-    'search' : Search,
+    Datepicker
   },
   data: function() {
     return{
@@ -125,8 +130,8 @@ export default {
       }],
       selectedCat: (this.$route.query.category) ? '' : 'All departments',
       templates: {
-        post : 'Post',
         featured : "Featured",
+        post : 'Posts',
         press_release : 'Press release'
       },
       checkedTemplates: [],
@@ -136,6 +141,12 @@ export default {
       loading: false,
 
       paginate: ['posts'],
+
+      format: 'd MMMM yyyy',
+      state: {
+        startDate: '',
+        endDate: ''
+      },
 
     }
   },
@@ -191,12 +202,11 @@ export default {
       window.location.href = post
     },
     parseQueryStrings: function(){
+      var chosenTemplate = this.$route.query.template
+      var chosenCat = this.$route.query.category
 
-      this.$forceUpdate();
-
-      console.log(template);
-      if(template){
-        document.getElementById(template).click()
+      if(chosenTemplate){
+        document.getElementById(chosenTemplate).click()
       }
 
       axios.get(endpoint + 'archives', {
@@ -217,7 +227,11 @@ export default {
       function isChosenCat(element) {
         return element.id = chosenCat;
       }
+      console.log(this.categories.find(isChosenCat))
+
       this.selectedCat = this.categories.find(isChosenCat)
+
+      this.$forceUpdate();
 
     },
     onSubmit: function (event) {
@@ -271,13 +285,36 @@ export default {
           }
         })
         .catch(e => {
-
         console.log(e);
       })
     },
     reset() {
       window.location = window.location.href.split("?")[0];
     },
+    runDateQuery(){
+      console.log(this.state)
+
+      axios.get(endpoint + 'archives', {
+        params : {
+          //'category' : selectedVal,
+          'template' : this.checkedTemplates,
+          'count' : -1,
+          's': this.searchedVal,
+          //'a_y': 2017
+          }
+        })
+        .then(response => {
+          this.posts = response.data
+          console.log(this.posts)
+
+          if (this.posts.length > 0) {
+            response.data = "Sorry, nothing matches that category."
+          }
+        })
+        .catch(e => {
+        console.log(e);
+      })
+    }
   },
   computed:{
   },
