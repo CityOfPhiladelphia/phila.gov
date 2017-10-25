@@ -81,6 +81,28 @@ class Phila_Archives_Controller {
               ),
             ),
           );
+          if ( isset( $request['a_y'] ) ){
+            $date_query = array(
+              'date_query' => array(
+                array(
+                  'after'     => array(
+                    'year'  => $request['a_y'], // 2017
+                    'month' => $request['a_m'], // 12
+                    'day' => $request['a_d'] // 12
+                  ),
+                  'before'    => array(
+                    'year'  => $request['b_y'],
+                    'month' => $request['b_m'],
+                    'day'   => $request['b_d'],
+                  ),
+                  'inclusive' => true,
+                ),
+              ),
+            );
+
+            $args = array_merge($args, $date_query);
+          }
+
           $posts = get_posts( $args );
 
           break;
@@ -192,9 +214,9 @@ class Phila_Archives_Controller {
    *
    * @param WP_REST_Request $request Current request.
    */
-   public function get_categories($request){
+   public function get_categories( $request ){
 
-    $categories = get_categories();
+    $categories = get_categories( array( 'parent' => 0 ) );
 
     $data = array();
 
@@ -277,9 +299,9 @@ class Phila_Archives_Controller {
       $categories = get_the_category($post->ID);
 
       foreach ($categories as $category){
-        $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
+          $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
 
-        $category->slang_name = trim($trimmed_name);
+          $category->slang_name = trim($trimmed_name);
       }
 
       $post_data['categories']  = (array) $categories;
