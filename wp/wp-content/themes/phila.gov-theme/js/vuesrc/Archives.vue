@@ -27,15 +27,17 @@
             <div class="grid-x grid-margin-x">
               <div class="cell medium-4">
                 <datepicker
+                name="startDate"
                 placeholder="Start date"
-                v-on:closed=""
+                v-on:closed="runDateQuery"
                 v-model="state.startDate"></datepicker>
               </div>
-              <div class="cell medium-1">
+              <div class="cell medium-1 mts">
                 <i class="fa fa-arrow-right"></i>
               </div>
               <div class="cell medium-4">
                 <datepicker placeholder="End date"
+                name="endDate"
                 v-on:closed="runDateQuery"
                 v-model="state.endDate"></datepicker>
               </div>
@@ -94,7 +96,7 @@
       </paginate>
     </table>
     <paginate-links for="posts"
-    :limit="10"
+    :limit="3"
     :show-step-links="true"
     :step-links="{
       next: 'Next',
@@ -111,9 +113,8 @@ import Datepicker from 'vuejs-datepicker';
 
 const endpoint = '/wp-json/the-latest/v1/'
 
-
 var state = {
-    date: new Date()
+  date: new Date()
 }
 
 export default {
@@ -244,7 +245,9 @@ export default {
           's': this.searchedVal,
           'template': this.checkedTemplates,
           'category': this.selectedCat,
-          'count': -1
+          'count': -1,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
           }
         })
         .then(response => {
@@ -269,11 +272,13 @@ export default {
 
       axios.get(endpoint + 'archives', {
         params : {
-          'category' : selectedVal,
+          //'category' : selectedVal,
           'template' : this.checkedTemplates,
-          //'category': this.selectedCat,
+          'category': this.selectedCat,
           'count' : -1,
-          's': this.searchedVal
+          's': this.searchedVal,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
           }
         })
         .then(response => {
@@ -292,20 +297,22 @@ export default {
       window.location = window.location.href.split("?")[0];
     },
     runDateQuery(){
-      console.log(this.state)
+      if ( !this.state.startDate || !this.state.endDate )
+        return;
 
       axios.get(endpoint + 'archives', {
         params : {
-          //'category' : selectedVal,
+          'category' : this.selectedVal,
           'template' : this.checkedTemplates,
-          'count' : -1,
           's': this.searchedVal,
-          //'a_y': 2017
+          'count' : -1,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
           }
         })
         .then(response => {
           this.posts = response.data
-          console.log(this.posts)
+          console.log(axios.get)
 
           if (this.posts.length > 0) {
             response.data = "Sorry, nothing matches that category."
@@ -326,11 +333,12 @@ export default {
           'template' : newVal,
           'category': this.selectedCat,
           'count' : -1,
-          's': this.searchedVal
+          's': this.searchedVal,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
           }
         })
       .then(response => {
-        console.log(this.$route.query)
         this.posts = response.data
         console.log(response.data)
       })
@@ -362,6 +370,10 @@ export default {
 }
 .filter-by-owner .v-select .open-indicator:before{
   border-color:white;
+}
+.filter-by-owner .v-select input[type=search],
+.filter-by-owner .v-select input[type=search]:focus {
+  width:10em;
 }
 .filter-by-owner ul.dropdown-menu{
   border:none;
@@ -410,5 +422,17 @@ ul.paginate-links {
 .paginate-links li.active a{
   background: white;
   color: #444;
+}
+.vdp-datepicker [type='text'] {
+  height: 2.4rem;
+}
+.vdp-datepicker input:read-only{
+  background: white;
+  cursor: pointer;
+}
+#archive-results .vdp-datepicker__calendar .cell.selected,
+#archive-results .vdp-datepicker__calendar .cell.selected.highlighted,
+#archive-results .vdp-datepicker__calendar .cell.selected:hover{
+  background: #25cef7;
 }
 </style>
