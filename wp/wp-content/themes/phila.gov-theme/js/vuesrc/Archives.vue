@@ -25,23 +25,23 @@
               </div>
             </fieldset>
             <div class="grid-x grid-margin-x">
-              <div class="cell medium-4">
+              <div class="cell medium-4 small-11">
                 <datepicker
                 name="startDate"
                 placeholder="Start date"
                 v-on:closed="runDateQuery"
                 v-model="state.startDate"></datepicker>
               </div>
-              <div class="cell medium-1 mts">
+              <div class="cell medium-1 small-2 mts">
                 <i class="fa fa-arrow-right"></i>
               </div>
-              <div class="cell medium-4">
+              <div class="cell medium-4 small-11">
                 <datepicker placeholder="End date"
                 name="endDate"
                 v-on:closed="runDateQuery"
                 v-model="state.endDate"></datepicker>
               </div>
-              <div class="cell medium-9 auto filter-by-owner">
+              <div class="cell medium-9 small-24 auto filter-by-owner">
                 <v-select
                 label="slang_name"
                 :value.sync="selectedCat"
@@ -49,15 +49,18 @@
                 :on-change="filterByCategory">
                 </v-select>
               </div>
-              <div class="cell medium-6">
+              <div class="cell medium-6 small-24">
                 <a class="button content-type-featured full" @click="reset">Clear filters</a>
               </div>
             </div>
         </div>
       </div>
     </div>
-    <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-    <table class="stack theme-light archive-results"  data-sticky-container>
+    <i v-show="loading" class="fa fa-spinner fa-spin fa-2x"></i>
+    <div v-show="emptyResponse">Sorry, there are no results.</div>
+    <div v-show="failure">Sorry, there was a problem. Please try again.</div>
+
+    <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
@@ -101,7 +104,8 @@
     :step-links="{
       next: 'Next',
       prev: 'Previous'
-    }"></paginate-links>
+    }"
+    v-show="!loading && !emptyResponse && !failure"></paginate-links>
   </div>
   </template>
 
@@ -113,7 +117,7 @@ import Datepicker from 'vuejs-datepicker';
 
 const endpoint = '/wp-json/the-latest/v1/'
 
-var state = {
+let state = {
   date: new Date()
 }
 
@@ -140,6 +144,8 @@ export default {
       searchedVal: '',
 
       loading: false,
+      emptyResponse: false,
+      failure: false,
 
       paginate: ['posts'],
 
@@ -160,18 +166,19 @@ export default {
   },
   mounted: function () {
     this.getAllPosts()
-    this.getDropdownCategories();
+    this.getDropdownCategories()
+    this.loading = true
   },
   methods: {
     getPostCategory(){
-      var catID = this.$route.query.category
+      let catID = this.$route.query.category
       if (this.categories.value == this.$route.query.category) {
         return this.categories.label
       }
 
     },
     getAllPosts: function () {
-      loading: true
+      this.loading = true
       if ( Object.keys(this.$route.query).length != 0){
         this.parseQueryStrings()
       }else{
@@ -181,12 +188,10 @@ export default {
           }
         })
         .then(response => {
-          console.log(this.$route.query)
-          loading: false
-
+          this.loading = false
         })
         .catch(e => {
-          console.log(e)
+          this.failure = true
         })
       }
     },
@@ -203,8 +208,10 @@ export default {
       window.location.href = post
     },
     parseQueryStrings: function(){
-      var chosenTemplate = this.$route.query.template
-      var chosenCat = this.$route.query.category
+      this.loading = true
+
+      let chosenTemplate = this.$route.query.template
+      let chosenCat = this.$route.query.category
 
       if(chosenTemplate){
         document.getElementById(chosenTemplate).click()
@@ -219,16 +226,16 @@ export default {
         })
         .then(response => {
           this.posts = response.data
+          this.loading = false
 
         })
         .catch(e => {
-          console.log(e);
+          this.failure = true
         })
 
       function isChosenCat(element) {
         return element.id = chosenCat;
       }
-      console.log(this.categories.find(isChosenCat))
 
       this.selectedCat = this.categories.find(isChosenCat)
 
@@ -236,10 +243,7 @@ export default {
 
     },
     onSubmit: function (event) {
-      console.log(this.searchedVal)
-      console.log(this.checkedTemplates)
-      console.log(this.selectedCat)
-
+      this.loading = true
       axios.get(endpoint + 'archives', {
         params : {
           's': this.searchedVal,
@@ -252,23 +256,23 @@ export default {
         })
         .then(response => {
           this.posts = response.data
-          if (this.posts.length > 0) {
-            posts.title = "No titles match."
-          }
-          console.log(response.data);
+          this.loading = false
+          this.noResponse
+
+
+          // if (this.posts.length == 0) {
+          //   this.emptyResponse = true
+          //   console.log('no data')
+          // }
         })
         .catch(e => {
-
-        //console.log(e);
+          this.failure = true
       })
     },
     filterByCategory: function(selectedVal){
-      console.log( selectedVal )
+      this.loading = true
 
       this.selectedCat = selectedVal
-
-      console.log(selectedVal)
-      console.log('filterByCategory : s : '+ this.searchedVal)
 
       axios.get(endpoint + 'archives', {
         params : {
@@ -283,22 +287,30 @@ export default {
         })
         .then(response => {
           this.posts = response.data
-          console.log(this.posts)
+          this.loading = false
 
-          if (this.posts.length > 0) {
-            response.data = "Sorry, nothing matches that category."
-          }
+          this.noResponse
         })
         .catch(e => {
         console.log(e);
       })
     },
     reset() {
-      window.location = window.location.href.split("?")[0];
+      axios.get(endpoint + 'archives')
+        .then(response => {
+          this.posts = response.data
+          this.loading = false
+
+        })
+        .catch(e => {
+        console.log(e);
+      })
+
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
         return;
+        this.loading = true
 
       axios.get(endpoint + 'archives', {
         params : {
@@ -312,9 +324,10 @@ export default {
         })
         .then(response => {
           this.posts = response.data
-          console.log(axios.get)
+          this.loading = false
 
           if (this.posts.length > 0) {
+
             response.data = "Sorry, nothing matches that category."
           }
         })
@@ -324,10 +337,16 @@ export default {
     }
   },
   computed:{
+    noResponse: function(){
+      if (this.posts.length == 0) {
+        this.emptyResponse = true
+        console.log('no data')
+      }
+    }
   },
   watch: {
     checkedTemplates: function(newVal, oldVal){
-      console.log( this.selectedCat )
+      this.loading = true
       axios.get(endpoint + 'archives', {
         params : {
           'template' : newVal,
@@ -340,7 +359,7 @@ export default {
         })
       .then(response => {
         this.posts = response.data
-        console.log(response.data)
+        this.loading = false
       })
     }
   }
@@ -373,7 +392,7 @@ export default {
 }
 .filter-by-owner .v-select input[type=search],
 .filter-by-owner .v-select input[type=search]:focus {
-  width:10em;
+  width:7rem !important;
 }
 .filter-by-owner ul.dropdown-menu{
   border:none;
