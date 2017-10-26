@@ -259,7 +259,6 @@ export default {
           this.loading = false
           this.noResponse
 
-
           // if (this.posts.length == 0) {
           //   this.emptyResponse = true
           //   console.log('no data')
@@ -300,12 +299,12 @@ export default {
         .then(response => {
           this.posts = response.data
           this.loading = false
-
+          console.log(reset)
         })
         .catch(e => {
-        console.log(e);
-      })
-
+          console.log(e);
+        })
+      },
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
