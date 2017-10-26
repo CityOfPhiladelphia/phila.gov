@@ -56,9 +56,11 @@
         </div>
       </div>
     </div>
-    <i v-show="loading" class="fa fa-spinner fa-spin fa-2x"></i>
-    <div v-show="emptyResponse">Sorry, there are no results.</div>
-    <div v-show="failure">Sorry, there was a problem. Please try again.</div>
+    <div v-show="loading" class="mtm center">
+      <i class="fa fa-spinner fa-spin fa-3x"></i>
+    </div>
+    <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+    <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
 
     <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
@@ -170,21 +172,10 @@ export default {
     this.loading = true
   },
   methods: {
-    successfulResponse: function(){
-      this.loading = false
-      this.posts = response.data
-      if (this.posts.length == 0) {
-        this.emptyResponse = true
-        console.log('no data')
-      }else{
-        this.emptyResponse = false
-      }
-    },
     getPostCategory(){
       let catID = this.$route.query.category
 
       if (this.categories.value == this.$route.query.category) {
-        console.log('looking for cats')
         return this.categories.label
       }
 
@@ -200,6 +191,8 @@ export default {
           }
         })
         .then(response => {
+          this.loading = false
+          this.posts = response.data
           this.successfulResponse
         })
         .catch(e => {
@@ -213,7 +206,7 @@ export default {
         this.categories = response.data
       })
       .catch(e => {
-        console.log(e)
+        this.categories = 'Sorry, there was a problem.'
       })
     },
     goToPost: function (post){
@@ -237,6 +230,8 @@ export default {
           }
         })
         .then(response => {
+          this.loading = false
+          this.posts = response.data
           this.successfulResponse
         })
         .catch(e => {
@@ -265,6 +260,8 @@ export default {
           }
         })
         .then(response => {
+          this.loading = false
+          this.posts = response.data
           this.successfulResponse
         })
         .catch(e => {
@@ -275,7 +272,6 @@ export default {
       this.loading = true
 
       this.selectedCat = selectedVal
-
       axios.get(endpoint + 'archives', {
         params : {
           //'category' : selectedVal,
@@ -288,10 +284,12 @@ export default {
           }
         })
         .then(response => {
+          this.loading = false
+          this.posts = response.data
           this.successfulResponse
         })
         .catch(e => {
-        console.log(e);
+          this.failure = true
       })
     },
     reset() {
@@ -299,10 +297,15 @@ export default {
         .then(response => {
           this.posts = response.data
           this.loading = false
+          this.searchedVal = ''
+          this.checkedTemplates = []
+          this.selectedCat = ''
+          this.state.startDate = ''
+          this.state.endDate = ''
 
         })
         .catch(e => {
-        console.log(e);
+          this.failure = true
       })
 
     },
@@ -322,15 +325,23 @@ export default {
           }
         })
         .then(response => {
+          this.loading = false
+          this.posts = response.data
           this.successfulResponse
         })
         .catch(e => {
-        console.log(e);
+          this.failure = true
       })
     }
   },
   computed:{
-
+    successfulResponse: function(){
+      if (this.posts.length == 0) {
+        this.emptyResponse = true
+      }else{
+        this.emptyResponse = false
+      }
+    },
   },
   watch: {
     checkedTemplates: function(newVal, oldVal){
