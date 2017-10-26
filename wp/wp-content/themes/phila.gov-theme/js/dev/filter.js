@@ -108,10 +108,11 @@ jQuery(document).ready(function($) {
   });
 
 
+
   //TODO: This can/should be refactored when time permits
   // Mobile Filter
   function getValues() {
-    confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
+    var confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
       return this.value;
     }).get();
   }
