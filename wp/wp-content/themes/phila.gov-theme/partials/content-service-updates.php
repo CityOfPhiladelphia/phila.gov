@@ -4,17 +4,8 @@
  * Default Services Updates Template
  *
  */
-
  ?>
-
-
-
-<?php
-$_service_updates_args = array( 'post_type' => 'service_updates', 'category__in' => phila_util_cat_ids());
-$service_updates_loop = new WP_Query($_service_updates_args);
-wp_reset_query();
-
-if ( $service_updates_loop->have_posts() ) : ?>
+<?php if ( $service_updates_loop->have_posts() ) : ?>
   <?php $update_array = array(); ?>
 
   <?php while ( $service_updates_loop->have_posts() ) :?>
