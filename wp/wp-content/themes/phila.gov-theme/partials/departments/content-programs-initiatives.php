@@ -29,7 +29,7 @@
             <!-- Blog Content -->
             <div class="mvl">
               <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']) ? $current_row['phila_full_options']['phila_get_post_cats'] : ''; ?>
-              <?php include( locate_template( 'partials/departments/row-posts.php' ) ); ?>
+              <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>
             </div>
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
@@ -87,7 +87,7 @@
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
                 $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
-                include(locate_template('partials/departments/content-call-to-action-multi.php'));
+                include(locate_template('partials/departments/phila_call_to_action_multi.php'));
             endif; ?>
 
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
