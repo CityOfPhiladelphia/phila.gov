@@ -12,6 +12,7 @@
 $category = get_the_category();
 $category_slug = $category[0]->slug;
 
+
 // Set module row vars
 $row_one_col_one_module = rwmb_meta( 'module_row_1_col_1' );
 
@@ -64,23 +65,27 @@ if ( !empty( $row_one_col_two_module ) ){
 <section class="department-module-row-one mvl">
   <div class="row">
   <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_blog_posts' ): ?>
-  <!-- Begin Column One -->
+  <!-- Begin Column One - blog posts -->
     <div class="large-16 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
+        <!-- Begin Column One - blog posts - list -->
         <?php echo do_shortcode('[recent-posts list posts="3"]'); ?>
       <?php else: ?>
-        <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
+        <!-- Begin Column One - blog posts - row -->
+        <?php get_template_part( 'partials/departments/phila_full_row_blog' ); ?>
       <?php endif;?>
       </div>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_news_posts' ): ?>
-  <!-- Begin Column One -->
+  <!-- Begin Column One - news posts -->
     <div class="large-16 columns">
       <div class="row">
       <?php if ($row_one_col_one_post_style == 'phila_module_row_1_col_1_post_style_list'):?>
+        <!-- Begin Column One - news posts - list -->
         <?php echo do_shortcode('[recent-news list posts="3"]'); ?>
       <?php else: ?>
+        <!-- Begin Column One - news posts - no list -->
         <?php echo do_shortcode('[recent-news posts="3"]'); ?>
       <?php endif;?>
       </div>
@@ -90,6 +95,7 @@ if ( !empty( $row_one_col_two_module ) ){
         include( locate_template( 'partials/content-see-all.php' ) );?>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
+    <!-- Begin Column One - cutsom text -->
     <div class="large-16 columns">
       <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
       <div>
