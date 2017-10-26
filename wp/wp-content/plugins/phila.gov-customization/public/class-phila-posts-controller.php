@@ -44,7 +44,7 @@ class Phila_Archives_Controller {
       's' => $request['s'],
       'order' => 'desc',
       'orderby' => 'date',
-      'category' => $request['category']
+      'category' => $request['category'],
     );
 
     if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
@@ -104,18 +104,10 @@ class Phila_Archives_Controller {
           break;
         case 'post':
           $old_args = array(
-            'posts_per_page' => $request['count'],
-            's' => $request['s'],
             'post_type' => array('phila_post'),
-            'orderby' => 'date',
-            'category' => $request['category'],
           );
           $new_args = array(
-            'posts_per_page' => $request['count'],
-            's' => $request['s'],
             'post_type' => array('post'),
-            'orderby' => 'date',
-            'category' => $request['category'],
             'meta_query'  => array(
               array(
                 'relation'  => 'AND',
@@ -132,60 +124,61 @@ class Phila_Archives_Controller {
               ),
             ),
           );
-          // //special handling for old phila_post CPT
-            $old_posts = get_posts( $old_args );
-            $new_posts = get_posts( $new_args );
+          // special handling for old phila_post CPT
+            $query_defaults_old = $this->set_query_defaults($request);
+            $full_query_old = array_merge($query_defaults_old, $old_args);
+
+            $query_defaults_new = $this->set_query_defaults($request);
+            $full_query_new = array_merge($query_defaults_new, $new_args);
+
+            $posts_old = get_posts( $full_query_old );
+            $posts_new = get_posts( $full_query_new );
+
             $posts = array();
-            $posts = array_merge( $old_posts, $new_posts );
+            $posts = array_merge( $posts_new, $posts_old );
           break;
 
         case 'press_release' :
-          $press_release_args  = array(
-          'posts_per_page' => $request['count'],
-          's' => $request['s'],
-          'post_type' => array( 'press_release' ),
-          'order' => 'desc',
-          'orderby' => 'post_date',
-          'category' => $request['category'],
-        );
-        $press_release_template_args  = array(
-          'posts_per_page' => $request['count'],
-          's' => $request['s'],
-          'post_type' => array( 'post' ),
-          'order' => 'desc',
-          'orderby' => 'post_date',
-          'category' => $request['category'],
-          'meta_query'  => array(
-            'relation'=> 'AND',
-            array(
-              'key' => 'phila_template_select',
-              'value' => 'press_release',
-              'compare' => '=',
+          $old_args  = array(
+            'post_type' => array( 'press_release' ),
+          );
+          $new_args  = array(
+            'post_type' => array( 'post' ),
+            'meta_query'  => array(
+              'relation'=> 'AND',
+              array(
+                'key' => 'phila_template_select',
+                'value' => 'press_release',
+                'compare' => '=',
+              ),
+              array(
+                'key' => 'phila_is_feature',
+                'value' => '0',
+                'compare' => '=',
+              ),
             ),
-            array(
-              'key' => 'phila_is_feature',
-              'value' => '0',
-              'compare' => '=',
-            ),
-          ),
-        );
-        //special handling for old press release CPT
-          $old_press = get_posts( $press_release_args );
-          $new_press = get_posts( $press_release_template_args );
+          );
+
+          $query_defaults_old = $this->set_query_defaults($request);
+          $full_query_old = array_merge($query_defaults_old, $old_args);
+
+          $query_defaults_new = $this->set_query_defaults($request);
+          $full_query_new = array_merge($query_defaults_new, $new_args);
+
+          $press_old = get_posts( $full_query_old );
+          $press_new = get_posts( $full_query_new );
+
           $posts = array();
-          $posts = array_merge( $new_press, $old_press );
+          $posts = array_merge( $press_new, $press_old );
         break;
       }
     }else{
       $args = array(
-        'posts_per_page' => $count,
-        's' => $request['s'],
         'post_type' => $post_type,
-        'orderby' => 'date',
-        'category' => $request['category'],
       );
-    }
-    if( !isset( $template ) ) {
+      $query_defaults = $this->set_query_defaults($request);
+      $args = array_merge($query_defaults, $args);
+
       $posts = get_posts( $args );
     }
 
