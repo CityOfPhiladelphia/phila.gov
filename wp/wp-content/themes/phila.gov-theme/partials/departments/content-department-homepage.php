@@ -22,9 +22,9 @@
         <?php if ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full' ) &&  isset( $current_row['phila_full_options']['phila_full_options_select'] ) ):
         $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
         if ( $current_row_option == 'phila_blog_posts'): ?>
-        <!-- Blog Content -->
+        <!-- Blog Content 1-->
           <section class="mvl">
-            <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
+            <?php include(locate_template('partials/departments/phila_full_row_blog.php'));?>
           </section>
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
@@ -100,10 +100,10 @@
           <section class="row mvl">
 
           <?php if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'): ?>
-            <!-- Blog Content -->
+            <!-- Blog Content 2-->
             <div class="large-16 columns">
               <div class="row">
-                <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
+                <?php include(locate_template('partials/departments/phila_full_row_blog.php'));?>
               </div>
             </div>
 

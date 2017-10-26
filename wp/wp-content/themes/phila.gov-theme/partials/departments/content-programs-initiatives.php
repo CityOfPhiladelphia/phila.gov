@@ -168,7 +168,7 @@
             <?php
               if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'):
                 $blog_cat_override = isset( $current_row['phila_two_thirds_col_option']['phila_get_post_cats']) ? $current_row['phila_two_thirds_col_option']['phila_get_post_cats'] : '';
-                include(locate_template( 'partials/departments/row', 'posts') ); ?>
+                include(locate_template('partials/departments/phila_full_row_blog.php'));?>
             <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
