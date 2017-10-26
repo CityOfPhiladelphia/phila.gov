@@ -38,7 +38,29 @@ class Phila_Archives_Controller {
       'schema' => array( $this, 'get_category_schema' ),
     ) );
   }
+  public function set_query_defaults($request){
+    $query_defaults = array(
+      'posts_per_page' => $request['count'],
+      's' => $request['s'],
+      'order' => 'desc',
+      'orderby' => 'date',
+      'category' => $request['category']
+    );
 
+    if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
+      $date_query = array(
+        'date_query' => array(
+          array(
+            'after'     => $request['start_date'],
+            'before'    => $request['end_date']
+            ),
+            'inclusive' => true,
+          ),
+        );
+      return $query_defaults = array_merge($query_defaults, $date_query);
+    }
+    return $query_defaults;
+  }
   /**
    * Get the 40 latest posts within the "archives" umbrella
    *
@@ -53,13 +75,8 @@ class Phila_Archives_Controller {
       $template = $request['template'] ;
       switch($template) {
         case 'featured':
-          $args = array(
-            'posts_per_page' => $request['count'],
-            's' => $request['s'],
+          $posts_args = array(
             'post_type' => array('post', 'news_post'),
-            'order' => 'desc',
-            'orderby' => 'date',
-            'category' => $request['category'],
             'meta_query'  => array(
               'relation'  => 'OR',
               array(
@@ -81,30 +98,9 @@ class Phila_Archives_Controller {
               ),
             ),
           );
-          if ( isset( $request['a_y'] ) ){
-            $date_query = array(
-              'date_query' => array(
-                array(
-                  'after'     => array(
-                    'year'  => $request['a_y'], // 2017
-                    'month' => $request['a_m'], // 12
-                    'day' => $request['a_d'] // 12
-                  ),
-                  'before'    => array(
-                    'year'  => $request['b_y'],
-                    'month' => $request['b_m'],
-                    'day'   => $request['b_d'],
-                  ),
-                  'inclusive' => true,
-                ),
-              ),
-            );
-
-            $args = array_merge($args, $date_query);
-          }
-
-          $posts = get_posts( $args );
-
+          $query_defaults = $this->set_query_defaults($request);
+          $full_query = array_merge($query_defaults, $posts_args);
+          $posts = get_posts( $full_query );
           break;
         case 'post':
           $old_args = array(
