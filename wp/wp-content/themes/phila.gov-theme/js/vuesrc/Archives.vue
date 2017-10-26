@@ -137,7 +137,7 @@ export default {
       templates: {
         featured : "Featured",
         post : 'Posts',
-        press_release : 'Press release'
+        press_release : 'Press releases'
       },
       checkedTemplates: [],
       templateFiltered: [],
@@ -170,9 +170,21 @@ export default {
     this.loading = true
   },
   methods: {
+    successfulResponse: function(){
+      this.loading = false
+      this.posts = response.data
+      if (this.posts.length == 0) {
+        this.emptyResponse = true
+        console.log('no data')
+      }else{
+        this.emptyResponse = false
+      }
+    },
     getPostCategory(){
       let catID = this.$route.query.category
+
       if (this.categories.value == this.$route.query.category) {
+        console.log('looking for cats')
         return this.categories.label
       }
 
@@ -188,7 +200,7 @@ export default {
           }
         })
         .then(response => {
-          this.loading = false
+          this.successfulResponse
         })
         .catch(e => {
           this.failure = true
@@ -225,9 +237,7 @@ export default {
           }
         })
         .then(response => {
-          this.posts = response.data
-          this.loading = false
-
+          this.successfulResponse
         })
         .catch(e => {
           this.failure = true
@@ -255,14 +265,7 @@ export default {
           }
         })
         .then(response => {
-          this.posts = response.data
-          this.loading = false
-          this.noResponse
-
-          // if (this.posts.length == 0) {
-          //   this.emptyResponse = true
-          //   console.log('no data')
-          // }
+          this.successfulResponse
         })
         .catch(e => {
           this.failure = true
@@ -285,10 +288,7 @@ export default {
           }
         })
         .then(response => {
-          this.posts = response.data
-          this.loading = false
-
-          this.noResponse
+          this.successfulResponse
         })
         .catch(e => {
         console.log(e);
@@ -299,12 +299,12 @@ export default {
         .then(response => {
           this.posts = response.data
           this.loading = false
-          console.log(reset)
+
         })
         .catch(e => {
-          console.log(e);
-        })
-      },
+        console.log(e);
+      })
+
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -322,13 +322,7 @@ export default {
           }
         })
         .then(response => {
-          this.posts = response.data
-          this.loading = false
-
-          if (this.posts.length > 0) {
-
-            response.data = "Sorry, nothing matches that category."
-          }
+          this.successfulResponse
         })
         .catch(e => {
         console.log(e);
@@ -336,12 +330,7 @@ export default {
     }
   },
   computed:{
-    noResponse: function(){
-      if (this.posts.length == 0) {
-        this.emptyResponse = true
-        console.log('no data')
-      }
-    }
+
   },
   watch: {
     checkedTemplates: function(newVal, oldVal){
