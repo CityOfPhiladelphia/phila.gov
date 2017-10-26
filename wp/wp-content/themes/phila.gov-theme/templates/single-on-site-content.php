@@ -142,7 +142,7 @@ HTML;
 
 
     case 'staff_directory_v2':
-      get_template_part( 'partials/departments/content', 'staff-directory' );
+      get_template_part( 'partials/departments/phila_staff_directory_listing' );
       break;
 
 
@@ -175,7 +175,7 @@ HTML;
 
 
     case 'staff_directory':
-      apply_template_section(get_template_part( 'partials/departments/content', 'staff-directory' ));
+      apply_template_section(get_template_part( 'partials/departments/phila_staff_directory_listing' ));
       break;
 
 
