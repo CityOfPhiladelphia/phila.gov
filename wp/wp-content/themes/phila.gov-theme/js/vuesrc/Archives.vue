@@ -43,10 +43,11 @@
               </div>
               <div class="cell medium-9 small-24 auto filter-by-owner">
                 <v-select
-                label="slang_name"
-                :value.sync="selectedCat"
+                label="id"
+                :value.sync="finalCat"
                 :options="categories"
-                :on-change="filterByCategory">
+                :on-change="filterByCategory"
+                id="department-select">
                 </v-select>
               </div>
               <div class="cell medium-6 small-24">
@@ -116,6 +117,8 @@ import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
 import Datepicker from 'vuejs-datepicker';
+//import Multiselect from 'vue-multiselect'
+
 
 const endpoint = '/wp-json/the-latest/v1/'
 
@@ -124,18 +127,18 @@ let state = {
 }
 
 export default {
+  name: 'archives',
   components: {
     vSelect,
-    Datepicker
+    Datepicker,
+//Multiselect
   },
   data: function() {
     return{
       posts: [],
-      categories: [{
-        value: this.id,
-        label: this.slang_name
-      }],
-      selectedCat: (this.$route.query.category) ? '' : 'All departments',
+      categories: [{}],
+      //selectedCat: (this.$route.query.category) ? '' : 'All departments',
+      finalCat: '',
       templates: {
         featured : "Featured",
         post : 'Posts',
@@ -144,7 +147,6 @@ export default {
       checkedTemplates: [],
       templateFiltered: [],
       searchedVal: '',
-
       loading: false,
       emptyResponse: false,
       failure: false,
@@ -172,13 +174,8 @@ export default {
     this.loading = true
   },
   methods: {
-    getPostCategory(){
-      let catID = this.$route.query.category
-
-      if (this.categories.value == this.$route.query.category) {
-        return this.categories.label
-      }
-
+    onSelect (item) {
+      this.item = item
     },
     getAllPosts: function () {
       this.loading = true
@@ -204,6 +201,7 @@ export default {
       axios.get(endpoint + 'categories')
       .then(response => {
         this.categories = response.data
+        console.log(this.categories)
       })
       .catch(e => {
         this.categories = 'Sorry, there was a problem.'
@@ -214,12 +212,12 @@ export default {
     },
     parseQueryStrings: function(){
       this.loading = true
-
+      console.log('parseQueryStrings')
       let chosenTemplate = this.$route.query.template
       let chosenCat = this.$route.query.category
 
       if(chosenTemplate){
-        document.getElementById(chosenTemplate).click()
+        //document.getElementById(chosenTemplate).click()
       }
 
       axios.get(endpoint + 'archives', {
@@ -233,16 +231,12 @@ export default {
           this.loading = false
           this.posts = response.data
           this.successfulResponse
+          console.log(this.posts)
+          this.selectedCat(chosenCat)
         })
         .catch(e => {
-          this.failure = true
+          //this.failure = true
         })
-
-      function isChosenCat(element) {
-        return element.id = chosenCat;
-      }
-
-      this.selectedCat = this.categories.find(isChosenCat)
 
       this.$forceUpdate();
 
@@ -269,14 +263,18 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
+      //this.selectedCat
       this.loading = true
+      //this.cat = selectedVal
+      console.log(selectedVal)
+      console.log('filterByCategory')
+      let thiscat = this.$route.query.category
 
-      this.selectedCat = selectedVal
       axios.get(endpoint + 'archives', {
         params : {
           //'category' : selectedVal,
           'template' : this.checkedTemplates,
-          'category': this.selectedCat,
+          'category': thiscat,
           'count' : -1,
           's': this.searchedVal,
           'start_date': this.state.startDate,
@@ -287,6 +285,7 @@ export default {
           this.loading = false
           this.posts = response.data
           this.successfulResponse
+
         })
         .catch(e => {
           this.failure = true
@@ -332,7 +331,8 @@ export default {
         .catch(e => {
           this.failure = true
       })
-    }
+    },
+
   },
   computed:{
     successfulResponse: function(){
@@ -342,14 +342,39 @@ export default {
         this.emptyResponse = false
       }
     },
+    selectedCat: function(query){
+      console.log( query )
+
+      if ( typeof query !== 'undefined' ) {
+
+        this.categories.forEach(function(el){
+          if (el.id == query){
+            console.log(this.el.slang_name)
+
+            console.log(this.finalCat)
+
+            this.selectedCat.value = el.slang_name
+
+            console.log(this.selectedCat.value)
+            return
+
+          }
+        })
+      }else{
+        console.log(this.finalCat)
+        return this.finalCat
+      }
+    }
   },
   watch: {
     checkedTemplates: function(newVal, oldVal){
       this.loading = true
+      console.log('this cat: ' + this.finalCat)
+      console.log('fired')
       axios.get(endpoint + 'archives', {
         params : {
           'template' : newVal,
-          'category': this.selectedCat,
+          'category': this.finalCat,
           'count' : -1,
           's': this.searchedVal,
           'start_date': this.state.startDate,
@@ -453,4 +478,5 @@ ul.paginate-links {
 #archive-results .vdp-datepicker__calendar .cell.selected:hover{
   background: #25cef7;
 }
+
 </style>
