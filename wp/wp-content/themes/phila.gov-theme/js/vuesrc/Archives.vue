@@ -43,6 +43,7 @@
               </div>
               <div class="cell medium-9 small-24 auto filter-by-owner">
                 <v-select
+                ref="categorySelect"
                 label="slang_name"
                 :value="queryCat"
                 :options="categories"
@@ -132,11 +133,8 @@ export default {
   data: function() {
     return{
       posts: [],
-      categories: [{
-
-      }],
-      selectedCat: '',
-
+      categories: [{ }],
+      selectedCategory: '',
       templates: {
         featured : "Featured",
         post : 'Posts',
@@ -193,6 +191,7 @@ export default {
       }
     },
     getDropdownCategories: function () {
+      console.log('getDropdownCategories')
       axios.get(endpoint + 'categories')
       .then(response => {
         this.categories = response.data
@@ -210,37 +209,42 @@ export default {
       let chosenTemplate = this.$route.query.template
       let chosenCat = this.$route.query.category
 
-      if(chosenTemplate){
-        document.getElementById(chosenTemplate).click()
+      if (chosenCat == '') {
+        console.log('no preselected cat')
+        axios.get(endpoint + 'archives', {
+          params : {
+            'template' : chosenTemplate,
+            //'category': chosenCat,
+            'count': -1
+            }
+          })
+          .then(response => {
+            this.loading = false
+            this.posts = response.data
+            console.log(this.posts)
+            //this.successfulResponse
+
+          })
+          .catch(e => {
+            //this.failure = true
+          })
+
+        //this.$forceUpdate();
       }
-      console.log(chosenCat)
-      axios.get(endpoint + 'archives', {
-        params : {
-          'template' : chosenTemplate,
-          'category': chosenCat,
-          'count': -1
-          }
-        })
-        .then(response => {
-          this.loading = false
-          this.posts = response.data
-          this.successfulResponse
 
-        })
-        .catch(e => {
-          //this.failure = true
-        })
 
-      this.$forceUpdate();
-
+      if(chosenTemplate !=  ''){
+        //document.getElementById(chosenTemplate).click()
+      }
     },
     onSubmit: function (event) {
+      console.log('onSubmit')
       this.loading = true
       axios.get(endpoint + 'archives', {
         params : {
           's': this.searchedVal,
           'template': this.checkedTemplates,
-          'category': this.selectedCat,
+          'category': this.selectedCategory,
           'count': -1,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
@@ -257,15 +261,9 @@ export default {
     },
     filterByCategory: function(selectedVal){
       this.loading = true
-      let selctedQueryCat = this.$route.query.category
-      //this.selectedCat = selcted
-      if (selctedQueryCat){
-        return;
-      }
-
-      console.log('filterByCategory ' + selectedVal )
-
-        axios.get(endpoint + 'archives', {
+      console.log(selectedVal)
+      this.selectedCategory = selectedVal
+      axios.get(endpoint + 'archives', {
         params : {
           //'category' : selectedVal,
           'template' : this.checkedTemplates,
@@ -278,26 +276,28 @@ export default {
         })
         .then(response => {
           this.loading = false
-          this.posts = response.data
-          this.successfulResponse
-          console.log(this.posts)
-          return
+          console.log(selectedVal)
+          //Don't let empty value change the rendered view
+          if ('id' in selectedVal){
+            this.posts = response.data
+          }
         })
         .catch(e => {
           this.failure = true
       })
     },
     reset() {
+      console.log('reset')
+      this.$refs.categorySelect.onEscape()
       axios.get(endpoint + 'archives')
         .then(response => {
           this.posts = response.data
           this.loading = false
           this.searchedVal = ''
           this.checkedTemplates = []
-          this.selectedCat = ''
+          this.selectedCategory = ''
           this.state.startDate = ''
           this.state.endDate = ''
-          this.queryCat = ''
         })
         .catch(e => {
           this.failure = true
@@ -339,19 +339,21 @@ export default {
       }
     },
     queryCat: function(){
+      console.log('queryCat')
       let c = this.$route.query.category
-      let catName = ''
-
+      let catName = {}
       if (c) {
         let mycats = this.categories
         this.categories.forEach(function(el){
           if (c == el.id) {
-            catName = el.slang_name
+            catName = {
+              id: el.id,
+              slang_name: el.slang_name
+            }
           }
         })
+        return catName
       }
-      console.log('catName: ' + catName)
-      return catName.toString()
     },
   },
   watch: {
@@ -360,7 +362,7 @@ export default {
       axios.get(endpoint + 'archives', {
         params : {
           'template' : newVal,
-          'category': this.selectedCat,
+          'category': this.selectedCategory,
           'count' : -1,
           's': this.searchedVal,
           'start_date': this.state.startDate,
