@@ -18,11 +18,11 @@
 <?php $announcements = new WP_Query( $announcements )?>
 <?php $count = $announcements->post_count ?>
 <div class="grid-container">
-  <div class="grid-x grid-margin-x">
-    <?php if ( $announcements->have_posts() ) : ?>
-      <?php if (!is_page_template('templates/the-latest.php')): ?>
-        <h2>Announcements</h2>
-      <?php endif ?>
+  <?php if ( $announcements->have_posts() ) : ?>
+    <?php if (!is_page_template('templates/the-latest.php')): ?>
+      <h2>Announcements</h2>
+    <?php endif; ?>
+    <div class="grid-x grid-margin-x">
       <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
         <?php $cats = get_the_category($post->ID); ?>

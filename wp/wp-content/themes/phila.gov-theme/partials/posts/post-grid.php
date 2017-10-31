@@ -55,8 +55,11 @@ $phila_posts_args  = array(
 <?php $label = 'post'; ?>
 <div class="post-grid">
   <div class="grid-container mbm">
-    <div class="grid-x grid-margin-x align-stretch">
-      <?php if ( $result->have_posts() ) : ?>
+    <?php if ( $result->have_posts() ) : ?>
+      <?php if (!is_page_template('templates/the-latest.php')): ?>
+        <h2>Posts</h2>
+      <?php endif; ?>
+      <div class="grid-x grid-margin-x align-stretch">
         <?php while ( $result->have_posts() ) : $result->the_post(); ?>
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
