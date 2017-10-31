@@ -1,6 +1,7 @@
 <?php
 
 if ( class_exists("Phila_Gov_Department_Sites" ) ){
+
   $phila_department_sites = new Phila_Gov_Department_Sites();
 }
 
@@ -11,14 +12,50 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
     add_action( 'init', array( $this, 'register_content_blocks_shortcode' ) );
 
+    add_action( 'add_meta_boxes', array( $this, 'register_homepage_metabox_order' ),10, 2);
+
     add_action( 'theme_loaded', array( $this, 'department_homepage_alert' ) );
 
     add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_department_meta_boxes' ), 100 );
 
+    $this->prefix = "phila_";
+
   }
 
+
+   public function register_homepage_metabox_order( $post_type, $post){
+    global $wpdb;
+
+    if($post_type === "department_page"){
+
+      // get all Department Site Homepage IDs
+      $department_homepages = $wpdb->get_results( $wpdb->prepare(
+        "SELECT $wpdb->posts.ID, $wpdb->posts.post_title
+         FROM $wpdb->posts INNER JOIN $wpdb->postmeta
+         ON $wpdb->posts.ID = $wpdb->postmeta.post_id
+         WHERE $wpdb->posts.post_type = %s AND
+         $wpdb->postmeta.meta_key = 'phila_template_select' AND
+         meta_value = 'homepage_v2'"
+      , $post_type ) );
+
+
+      //check if the "phila_meta-box-order" post meta has been set
+      //if not set it as default
+      foreach ($department_homepages as $post) {
+        if ( !metadata_exists('post', $post->ID,  $this->prefix.'meta-box-order') ) {
+          add_post_meta( $post->ID,  $this->prefix.'meta-box-order', 'default' );
+        }
+      }
+
+
+    }
+
+  }
+
+
+
   function phila_register_department_meta_boxes( $meta_boxes ){
-    $prefix = 'phila_';
+    // $prefix = 'phila_';
 
     $meta_boxes[] = array(
       'id'       => 'departments',
@@ -36,13 +73,16 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
         array(
           'name'  => 'External URL of Department',
           'desc'  => 'If the department does not live on this website, enter the location here. Eg. http://phila.gov/health/. <br>If the department lives off-site, then the transition template is displayed, instead of the body content.',
-          'id'    => $prefix . 'dept_url',
+          'id'    => $this->prefix . 'dept_url',
           'type'  => 'URL',
           'class' => 'dept-url',
           'clone' => false,
         ),
       )
     );//External department link
+
+
+
 
     $meta_boxes[] = array(
       'title'    => 'Content Blocks',
@@ -62,28 +102,28 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
          'fields' => array(
            array(
              'name' => 'ID',
-             'id'   => $prefix . 'block_id',
+             'id'   => $this->prefix . 'block_id',
              'type' => 'text',
              'class' => 'block-number',
              'desc' => 'Use this value when adding blocks to the wysiwyg.'
            ),
             array(
               'name'  => 'Block Heading',
-              'id'    => $prefix . 'block_heading',
+              'id'    => $this->prefix . 'block_heading',
               'type'  => 'text',
               'class' => 'block-title',
               'desc'  => '20 character maximum'
             ),
             array(
               'name'  => 'Image',
-              'id'    => $prefix . 'block_image',
+              'id'    => $this->prefix . 'block_image',
               'type'  => 'file_input',
               'class' => 'block-image',
               'desc'  => 'Image should be no smaller than 274px by 180px.'
             ),
             array(
               'name'  => 'Title',
-              'id'    => $prefix . 'block_content_title',
+              'id'    => $this->prefix . 'block_content_title',
               'type'  => 'text',
               'class' => 'block-content-title',
               'desc'  => '70 character maximum.',
@@ -91,14 +131,14 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
             ),
             array(
               'name'  => 'Summary',
-              'id'    => $prefix . 'block_summary',
+              'id'    => $this->prefix . 'block_summary',
               'type'  => 'textarea',
               'class' => 'block-summary',
               'desc'  => '225 character maximum.'
             ),
             array(
               'name'  => 'Link to Content',
-              'id'    => $prefix . 'block_link',
+              'id'    => $this->prefix . 'block_link',
               'type'  => 'url',
               'class' => 'block-url',
               'desc'  => 'Enter a URL. E.g. http://beta.phila.gov/oem',
@@ -114,6 +154,8 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
   }
 
   function content_blocks_shortcode( $atts ) {
+
+
     $a = shortcode_atts( array(
       'id' => ''
     ), $atts );

@@ -22,9 +22,10 @@
         <?php if ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full' ) &&  isset( $current_row['phila_full_options']['phila_full_options_select'] ) ):
         $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
         if ( $current_row_option == 'phila_blog_posts'): ?>
-        <!-- Blog Content -->
+
+        <!-- Blog Content 1-->
           <section class="mvl">
-            <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
+            <?php include(locate_template('partials/departments/phila_full_row_blog.php'));?>
           </section>
 
             <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
@@ -92,18 +93,19 @@
               <?php endif; ?>
 
           <?php endif; ?>
-        <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds') && ( isset( $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options'] ['phila_one_third_col'] ) ) ):
+        <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds') && ( isset( $current_row['phila_two_thirds_options']['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options']['phila_one_third_col'] ) ) ):
 
           $current_row_option_one = $current_row['phila_two_thirds_options'] ['phila_two_thirds_col'];
+
           $current_row_option_two = $current_row['phila_two_thirds_options'] ['phila_one_third_col']; ?>
 
           <section class="row mvl">
 
           <?php if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'): ?>
-            <!-- Blog Content -->
+            <!-- Blog Content 2-->
             <div class="large-16 columns">
               <div class="row">
-                <?php get_template_part( 'partials/departments/row', 'posts' ); ?>
+                <?php include(locate_template('partials/departments/phila_full_row_blog.php'));?>
               </div>
             </div>
 
@@ -117,14 +119,24 @@
 
           <?php endif;?>
 
-            <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):?>
+          <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):?>
               <?php if ( isset( $current_row_option_two['phila_connect_panel'] ) ):
                 $connect_panel = $current_row_option_two['phila_connect_panel'];
                 $connect_vars = phila_connect_panel($connect_panel);
                 include(locate_template('partials/departments/content-connect.php'));
               endif; ?>
-
             <?php endif; ?>
+
+            <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
+
+              $custom_text = $current_row_option_two['phila_custom_text']; ?>
+
+              <div class="large-8 columns">
+
+                <?php include(locate_template('partials/departments/content-custom-text.php'));?>
+              </div>
+          <?php endif;?>
+
           </section>
         <?php endif; ?>
       <!-- Grid Row -->
