@@ -7,7 +7,7 @@
 
 <?php $related_posts = new WP_Query( $related_content_args ); ?>
 <?php $count = -1;?>
-<?php $label = phila_get_selected_template($post->ID); ?>
+<?php $label_arr = phila_get_post_label(phila_get_selected_template($post->ID)); ?>
 
 <?php if ( $related_posts->have_posts() ) : ?>
     <h2><?php _e( 'Related content' ); ?></h2>
