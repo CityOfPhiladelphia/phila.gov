@@ -38,13 +38,15 @@ function press_release_shortcode($atts) {
 
   $output = '';
 
+
   if( $press_release_loop->have_posts() ) {
     $post_counter = 0;
 
-    $output .= '<div class="large-24 columns press-releases"><h2 class="contrast">' . __('Press releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
+    $output .= '<div class="row"><div class="large-24 columns press-releases"><h2 class="contrast">' . __('Press releases', 'phila-gov') . '</h2><ul class="no-bullet pan border-bottom-list">';
 
     while( $press_release_loop->have_posts() ) :
       $press_release_loop->the_post();
+
       $post_counter++;
       $link = get_permalink();
 
@@ -77,7 +79,7 @@ function press_release_shortcode($atts) {
 
     $output .= '</ul>';
 
-    $output .= '</div></div>';
+    $output .= '</div></div></div>';
 
     }else {
       $output .= __( 'Please enter at least one press release.', 'phila.gov' );
@@ -86,7 +88,6 @@ function press_release_shortcode($atts) {
   wp_reset_postdata();
 
   return $output;
-
 }
 add_action( 'init', 'register_press_release_shortcode' );
 

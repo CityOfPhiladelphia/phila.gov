@@ -52,7 +52,7 @@
                                                 'type'  => 'shortcode',
                                                 'shown' => $this->full_width_press_releases['exists'],
                                                 'data'  => array(
-                                                    'shortcode'=>'[press-releases posts="3" category=" ' . $this->full_width_press_releases['category_id'] .' "]'
+                                                    'shortcode'=>'[press-releases posts="3" category="' . $this->full_width_press_releases['category_id'] .'"]'
                                                 )
                                             ),
         'phila_staff_directory_listing'    => array(
@@ -71,7 +71,6 @@
                                                 )
                                              ),
     );
-
 
     $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');
 
@@ -108,9 +107,10 @@
         switch ($partial_meta['type']) {
 
             case 'shortcode':
+
                 // shortcode calls
                 if($partial_meta['shown']):
-                    do_shortcode($partial_meta['data']['shortcode']);
+                    echo do_shortcode($partial_meta['data']['shortcode']);
                 endif;
 
             break;
