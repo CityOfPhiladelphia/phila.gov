@@ -46,7 +46,7 @@
                 ref="categorySelect"
                 label="slang_name"
                 placeholder="All departments"
-                :value="queriedCategory"
+                :value="parseCategory"
                 :options="categories"
                 :on-change="filterByCategory">
                 </v-select>
@@ -158,8 +158,8 @@ export default {
         endDate: ''
       },
 
-      chosenTemplate : this.$route.query.template,
-      chosenCat: this.$route.query.category
+      queriedTemplate : this.$route.query.template,
+      queriedCategory: this.$route.query.category
 
     }
   },
@@ -178,29 +178,24 @@ export default {
   methods: {
     getAllPosts: function () {
       this.loading = true
-      console.log(this.chosenCat)
-
-        axios.get(endpoint + 'archives', {
-          params: {
-            's': this.searchedVal,
-            'template': this.checkedTemplates,
-            'category': this.selectedCategory,
-            'count': -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-          }
-        })
-        .then(response => {
-          this.loading = false
-          this.posts = response.data
-          console.log(this.posts)
-          this.successfulResponse
-          console.log(response.config);
-        })
-        .catch(e => {
-          this.failure = true
-        })
-    //  }
+      axios.get(endpoint + 'archives', {
+        params: {
+          's': this.searchedVal,
+          'template': this.checkedTemplates,
+          'category': this.selectedCategory,
+          'count': -1,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
+        }
+      })
+      .then(response => {
+        this.loading = false
+        this.posts = response.data
+        this.successfulResponse
+      })
+      .catch(e => {
+        this.failure = true
+      })
     },
     getDropdownCategories: function () {
       axios.get(endpoint + 'categories')
@@ -216,26 +211,20 @@ export default {
     },
     parseTemplateQuery: function(){
       this.loading = true
-      console.log(this.chosenCat)
-      //if (this.chosenCat == '') {
-        console.log('no cat')
-        axios.get(endpoint + 'archives', {
-          params : {
-            'template' : this.chosenTemplate,
-            'count': -1
-            }
-          })
-          .then(response => {
-            this.loading = false
-            this.posts = response.data
-            this.successfulResponse
-            console.log('query string, no cat')
-          })
-          .catch(e => {
-            this.failure = true
-          })
-      //}
-
+      axios.get(endpoint + 'archives', {
+        params : {
+          'template' : this.queriedTemplate,
+          'count': -1
+          }
+        })
+        .then(response => {
+          this.loading = false
+          this.posts = response.data
+          this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+        })
     },
     onSubmit: function (event) {
       this.loading = true
@@ -255,7 +244,6 @@ export default {
             this.loading = false
             this.posts = response.data
             this.successfulResponse
-            console.log(response.config);
           })
           .catch(e => {
             this.failure = true
@@ -272,21 +260,19 @@ export default {
           'count': -1
         }
       })
-        .then(response => {
-          this.posts = response.data
-          this.loading = false
-          this.searchedVal = ''
-          this.checkedTemplates = ''
-          this.selectedCategory = ''
-          this.state.startDate = ''
-          this.state.endDate = ''
-              console.log(response.config);
-        })
-        .catch(e => {
-          this.failure = true
+      .then(response => {
+        this.posts = response.data
+        this.loading = false
+        this.searchedVal = ''
+        this.checkedTemplates = ''
+        this.selectedCategory = ''
+        this.state.startDate = ''
+        this.state.endDate = ''
       })
-      this.$forceUpdate();
-
+      .catch(e => {
+        this.failure = true
+    })
+    this.$forceUpdate();
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -308,15 +294,12 @@ export default {
           this.loading = false
           this.posts = response.data
           this.successfulResponse
-              console.log(response.config);
         })
         .catch(e => {
           this.failure = true
       })
     },
     filterByCategory: function(selectedVal){
-      console.log('filterByCategory')
-
       this.loading = true
       this.selectedCategory = selectedVal
 
@@ -332,10 +315,8 @@ export default {
         })
         .then(response => {
           this.loading = false
-              console.log(response.config);
           //Don't let empty value change the rendered view
-          if ('id' in selectedVal && this.chosenCat != ''){
-            console.log('no query string')
+          if ('id' in selectedVal && this.queriedCategory != ''){
             this.posts = response.data
           }
         })
@@ -352,7 +333,7 @@ export default {
         this.emptyResponse = false
       }
     },
-    queriedCategory: function(){
+    parseCategory: function(){
       let c = this.$route.query.category
       let catName = {}
       if (c) {
