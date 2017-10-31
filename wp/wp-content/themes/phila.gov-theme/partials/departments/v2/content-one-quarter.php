@@ -13,13 +13,54 @@
 ?>
 <?php if ( !empty($heading_content) ) : ?>
   <div class="one-quarter-layout bdr-dark-gray">
+
     <?php foreach ( $heading_content as $content ): ?>
+
+
       <div class="row mvl">
+
         <div class="medium-6 columns">
-          <?php if ( isset( $content['phila_wysiwyg_heading'] ) ): ?>
-            <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
-          <?php endif; ?>
+
+          <?php
+            $heading_link_set     =  isset($content['phila_heading_link']) && $content['phila_heading_link'] !== '';
+            $heading_link_new_tab = (isset($content['phila_heading_link_new_tab']) && $content['phila_heading_link_new_tab']) ? '_blank' : null;
+            $heading_has_image    = isset($content['phila_heading_image_selected']) && $content['phila_heading_image_selected'];
+          ?>
+
+          <?php
+            // conditionally linked header wysiwyg content
+            if ( isset( $content['phila_wysiwyg_heading'] ) &&  !$heading_has_image ):
+          ?>
+
+            <?php if($heading_link_set): ?>
+              <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
+                <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+              <a href=""></a>
+            <?php else: ?>
+              <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+            <?php endif;  ?>
+
+
+
+          <?php elseif($heading_has_image ): ?>
+
+
+              <?php
+                // conditionally linked header image
+                if($heading_link_set):
+              ?>
+                <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>">
+                  <img src="<?= $content['phila_heading_image']; ?> " alt="">
+                </a>
+              <?php else: ?>
+                <img src="<?= $content['phila_heading_image']; ?> " alt="">
+              <?php endif;  ?>
+
+
+          <?php endif; //END if conditionally linked header wysiwyg content?>
         </div>
+
+
         <div class="medium-18 columns pbxl">
           <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
           <?php $is_address = isset( $content['phila_address_select'] ) ? $content['phila_address_select'] : ''; ?>

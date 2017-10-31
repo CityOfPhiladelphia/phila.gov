@@ -346,6 +346,8 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'field_type' => 'select_advanced',
       'post_type' => 'service_page',
       'query_args'  => array(
+        'posts_per_page' => -1,
+        'post_status' => 'any',
         'orderby' => 'title',
         'order' => 'ASC',
         'meta_key' => 'phila_template_select',
