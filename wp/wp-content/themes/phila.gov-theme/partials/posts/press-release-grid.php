@@ -58,7 +58,10 @@ if ( !empty( $press_categories ) ) {
 
 <div class="press-grid">
   <div class="grid-container">
-    <?php if ( $result->have_posts() ) : ?>
+  <?php if ( $result->have_posts() ) : ?>
+    <?php if (!is_page_template('templates/the-latest.php')): ?>
+      <h2>Press releases</h2>
+    <?php endif; ?>
       <?php while ( $result->have_posts() ) : $result->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
