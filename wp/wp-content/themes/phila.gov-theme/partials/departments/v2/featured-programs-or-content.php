@@ -15,20 +15,20 @@
   </div>
   <section class="row equal-height mbl">
     <?php
-      $c = phila_grid_column_counter(count($featured));
-      foreach ($featured as $key => $value):
+      $c = phila_grid_column_counter(count($this->featured));
+      foreach ($this->featured as $key => $value):
     ?>
       <article class="large-<?php echo $c ?> medium-24 columns featured-content programs equal">
         <?php
-          $post_id = get_post( $featured[$key]['phila_featured_page'] );
+          $post_id = get_post( $this->featured[$key]['phila_featured_page'] );
 
-          $title = (isset($featured[$key]['phila_featured_title'])) ? $featured[$key]['phila_featured_title'] : $post_id->post_title;
+          $title = (isset($this->featured[$key]['phila_featured_title'])) ? $this->featured[$key]['phila_featured_title'] : $post_id->post_title;
 
-          $image_id = isset( $featured[$key]['phila_featured_img'][0] ) ? $featured[$key]['phila_featured_img'][0] : '';
+          $image_id = isset( $this->featured[$key]['phila_featured_img'][0] ) ? $this->featured[$key]['phila_featured_img'][0] : '';
 
           $img = wp_get_attachment_image_src($image_id, $size = 'full');
 
-          $description = isset( $featured[$key]['phila_featured_description'] ) ? $featured[$key]['phila_featured_description'] : '';
+          $description = isset( $this->featured[$key]['phila_featured_description'] ) ? $this->featured[$key]['phila_featured_description'] : '';
         ?>
           <div class="featured-thumbnail">
             <img src="<?php echo (isset($img) ) ? $img[0] : '' ; ?>" alt="" class="mrm">

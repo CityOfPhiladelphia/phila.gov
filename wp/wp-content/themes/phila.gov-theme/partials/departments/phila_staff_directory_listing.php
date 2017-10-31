@@ -6,7 +6,7 @@
  */
 ?>
 <?php
-
+global $post;
 $user_selected_template = phila_get_selected_template();
 
 $category_override = rwmb_meta('phila_get_staff_cats');
