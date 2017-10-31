@@ -70,7 +70,7 @@ function recent_news_shortcode($atts) {
     $post_counter = 0;
 
   if ( is_flag ( 'list', $atts ) ) {
-      $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="news"><ul>';
+      $output .= '<div class="row"><div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="news"><ul>';
     }else{
       $output .= '<div class="large-24 columns"><h2 class="contrast">' . $a['name'] . '</h2><div class="row" data-equalizer="news">';
     }
@@ -135,7 +135,7 @@ function recent_news_shortcode($atts) {
     //  $output .= '</div>';
     }
 
-    $output .= '</div></div>';
+    $output .= '</div></div></div>';
 
     }else {
       $output .= __( 'Please enter at least one news story.', 'phila.gov' );
