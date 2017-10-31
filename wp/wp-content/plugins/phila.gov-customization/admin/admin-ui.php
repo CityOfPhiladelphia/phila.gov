@@ -54,6 +54,16 @@ function phila_allow_draft_dropdown_pages_args($dropdown_args) {
     return $dropdown_args;
 }
 
+/**
+* Add query argument for selecting pages to add to a menu
+*/
+add_filter( 'nav_menu_meta_box_object', 'phila_show_private_pages_menu_selection' );
+
+function phila_show_private_pages_menu_selection( $args ){
+    $args->_default_query['post_status'] = array( 'publish','private' );
+    return $args;
+}
+
 add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 1 );
 
 function phila_load_admin_media_js(){
