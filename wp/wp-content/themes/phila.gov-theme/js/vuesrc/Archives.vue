@@ -178,6 +178,9 @@ export default {
   methods: {
     getAllPosts: function () {
       this.loading = true
+      //TODO use in instead of undefined
+      if (this.queriedCategory == undefined ) {
+        console.log('empty')
       axios.get(endpoint + 'archives', {
         params: {
           's': this.searchedVal,
@@ -192,10 +195,12 @@ export default {
         this.loading = false
         this.posts = response.data
         this.successfulResponse
+        console.log(response.config);
       })
       .catch(e => {
         this.failure = true
       })
+    }
     },
     getDropdownCategories: function () {
       axios.get(endpoint + 'categories')
@@ -208,23 +213,6 @@ export default {
     },
     goToPost: function (post){
       window.location.href = post
-    },
-    parseTemplateQuery: function(){
-      this.loading = true
-      axios.get(endpoint + 'archives', {
-        params : {
-          'template' : this.queriedTemplate,
-          'count': -1
-          }
-        })
-        .then(response => {
-          this.loading = false
-          this.posts = response.data
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
-        })
     },
     onSubmit: function (event) {
       this.loading = true
@@ -244,6 +232,7 @@ export default {
             this.loading = false
             this.posts = response.data
             this.successfulResponse
+            console.log(response.config);
           })
           .catch(e => {
             this.failure = true
@@ -260,19 +249,21 @@ export default {
           'count': -1
         }
       })
-      .then(response => {
-        this.posts = response.data
-        this.loading = false
-        this.searchedVal = ''
-        this.checkedTemplates = ''
-        this.selectedCategory = ''
-        this.state.startDate = ''
-        this.state.endDate = ''
+        .then(response => {
+          this.posts = response.data
+          this.loading = false
+          this.searchedVal = ''
+          this.checkedTemplates = ''
+          this.selectedCategory = ''
+          this.state.startDate = ''
+          this.state.endDate = ''
+          console.log(response.config);
+        })
+        .catch(e => {
+          this.failure = true
       })
-      .catch(e => {
-        this.failure = true
-    })
-    this.$forceUpdate();
+      this.$forceUpdate();
+
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -294,19 +285,23 @@ export default {
           this.loading = false
           this.posts = response.data
           this.successfulResponse
+              console.log(response.config);
         })
         .catch(e => {
           this.failure = true
       })
     },
     filterByCategory: function(selectedVal){
+      console.log('filterByCategory')
+      this.$nextTick(function () {
+
       this.loading = true
       this.selectedCategory = selectedVal
-
+      console.log(selectedVal)
       axios.get(endpoint + 'archives', {
         params : {
           'template' : this.checkedTemplates,
-          'category': selectedVal,
+          'category': this.selectedCategory,
           'count' : -1,
           's': this.searchedVal,
           'start_date': this.state.startDate,
@@ -317,12 +312,16 @@ export default {
           this.loading = false
           //Don't let empty value change the rendered view
           if ('id' in selectedVal && this.queriedCategory != ''){
+            console.log(response.config);
+
+            console.log('no query string')
             this.posts = response.data
           }
         })
         .catch(e => {
           this.failure = true
       })
+    })
     },
   },
   computed:{
