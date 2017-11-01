@@ -91,10 +91,6 @@ class Phila_Archives_Controller {
                   'value' => '1',
                   'compare' => '=',
                 ),
-                array(
-                  'key' => '_thumbnail_id',
-                  'compare' => 'EXISTS'
-                ),
               ),
             ),
           );
@@ -116,26 +112,21 @@ class Phila_Archives_Controller {
                   'value' => '0',
                   'compare' => '=',
                 ),
-                array(
-                  'key' => 'phila_template_select',
-                  'value' => 'post',
-                  'compare' => '=',
-                ),
               ),
             ),
           );
           // special handling for old phila_post CPT
-            $query_defaults_old = $this->set_query_defaults($request);
-            $full_query_old = array_merge($query_defaults_old, $old_args);
+          $query_defaults_old = $this->set_query_defaults($request);
+          $full_query_old = array_merge($query_defaults_old, $old_args);
 
-            $query_defaults_new = $this->set_query_defaults($request);
-            $full_query_new = array_merge($query_defaults_new, $new_args);
+          $query_defaults_new = $this->set_query_defaults($request);
+          $full_query_new = array_merge($query_defaults_new, $new_args);
 
-            $posts_old = get_posts( $full_query_old );
-            $posts_new = get_posts( $full_query_new );
+          $posts_old = get_posts( $full_query_old );
+          $posts_new = get_posts( $full_query_new );
 
-            $posts = array();
-            $posts = array_merge( $posts_new, $posts_old );
+          $posts = array();
+          $posts = array_merge( $posts_new, $posts_old );
           break;
 
         case 'press_release' :
@@ -149,11 +140,6 @@ class Phila_Archives_Controller {
               array(
                 'key' => 'phila_template_select',
                 'value' => 'press_release',
-                'compare' => '=',
-              ),
-              array(
-                'key' => 'phila_is_feature',
-                'value' => '0',
                 'compare' => '=',
               ),
             ),
