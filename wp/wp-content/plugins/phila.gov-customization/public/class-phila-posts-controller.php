@@ -105,11 +105,9 @@ class Phila_Archives_Controller {
           $new_args = array(
             'post_type' => array('post'),
             'meta_query'  => array(
-              array(
-                'relation'  => 'AND',
                 array(
-                  'key' => 'phila_is_feature',
-                  'value' => '0',
+                  'key' => 'phila_template_select',
+                  'value' => 'post',
                   'compare' => '=',
                 ),
               ),
@@ -136,7 +134,6 @@ class Phila_Archives_Controller {
           $new_args  = array(
             'post_type' => array( 'post' ),
             'meta_query'  => array(
-              'relation'=> 'AND',
               array(
                 'key' => 'phila_template_select',
                 'value' => 'press_release',
