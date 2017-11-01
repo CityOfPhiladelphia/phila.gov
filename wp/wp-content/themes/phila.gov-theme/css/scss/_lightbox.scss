@@ -16,6 +16,8 @@
 }
 
 .reveal{
+  min-height:400px;
+
   &.reveal--auto{
     width:auto;
   }
@@ -31,6 +33,11 @@
       background: none;
       color:color(ben-franklin-blue);
     }
+  }
+  .reveal-footer{
+    position: absolute;
+    bottom:0;
+    margin-bottom:1rem;
   }
 }
 
