@@ -84,6 +84,10 @@ a.card.card--last,
   font-weight: 400;
 }
 
+.feature-main a.card h1, .card h1{
+  font-size: 1.78571rem;
+}
+
 @include breakpoint(medium up) {
   .post-2 .post-label{
     min-height: 280px; //TODO: find a better solution to force date to stay at bottom of card. Currently, the image in this card prevents the flex grid from calcuating the available height correctly.

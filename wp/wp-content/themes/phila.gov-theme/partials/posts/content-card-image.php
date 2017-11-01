@@ -19,7 +19,7 @@
       <div class="card--content pam flex-child-auto">
         <div class="cell align-self-top post-label post-label--<?php echo $label_arr['label']?>">
           <i class="fa fa-<?php echo $label_arr['icon'] ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_arr['nice']; ?></span>
-          <header class="cell mbm">
+          <header class="cell mvm">
             <h1><?php echo get_the_title(); ?></h1>
           </header>
         </div>
