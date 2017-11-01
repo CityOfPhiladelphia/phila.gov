@@ -169,7 +169,6 @@ export default {
       this.loading = true
       //TODO use in instead of undefined
       if (this.queriedCategory == undefined ) {
-        console.log('empty')
       axios.get(endpoint + 'archives', {
         params: {
           's': this.searchedVal,
@@ -184,7 +183,6 @@ export default {
         this.loading = false
         this.posts = response.data
         this.successfulResponse
-        console.log(response.config);
       })
       .catch(e => {
         this.failure = true
@@ -221,7 +219,6 @@ export default {
             this.loading = false
             this.posts = response.data
             this.successfulResponse
-            console.log(response.config);
           })
           .catch(e => {
             this.failure = true
@@ -246,7 +243,6 @@ export default {
           this.selectedCategory = ''
           this.state.startDate = ''
           this.state.endDate = ''
-          console.log(response.config);
         })
         .catch(e => {
           this.failure = true
@@ -274,7 +270,6 @@ export default {
           this.loading = false
           this.posts = response.data
           this.successfulResponse
-              console.log(response.config);
         })
         .catch(e => {
           this.failure = true
@@ -286,7 +281,6 @@ export default {
 
       this.loading = true
       this.selectedCategory = selectedVal
-      console.log(selectedVal)
       axios.get(endpoint + 'archives', {
         params : {
           'template' : this.checkedTemplates,
@@ -301,11 +295,9 @@ export default {
           this.loading = false
           //Don't let empty value change the rendered view
           if ('id' in selectedVal && this.queriedCategory != ''){
-            console.log(response.config);
-
-            console.log('no query string')
             this.posts = response.data
           }
+          this.successfulResponse
         })
         .catch(e => {
           this.failure = true
