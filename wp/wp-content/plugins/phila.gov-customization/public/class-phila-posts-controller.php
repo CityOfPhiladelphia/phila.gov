@@ -109,7 +109,6 @@ class Phila_Archives_Controller {
                   'key' => 'phila_template_select',
                   'value' => 'post',
                   'compare' => '=',
-                ),
               ),
             ),
           );
