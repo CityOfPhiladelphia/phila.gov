@@ -5,25 +5,54 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
-
 <?php
+/* Get all sticky posts for department homepages */
+$sticky = get_option( 'sticky_posts' );
 
-if ( ( $post_categories == '' ) ) {
+/* if categories aren't set, this is the latest, so don't show featured. */
+if ( $post_categories == '' ) {
   $post_meta_query = array(
     'key' => 'phila_is_feature',
     'value' => '0',
     'compare' => '=',
   );
+  //empty object + empty array for dealing with this grid but on the latest display
+  $sticky_posts = (object) [
+    'posts' => array(),
+  ];
 }else{
+  /* Sort sticky posts, newest at the top */
+  rsort( $sticky );
+
+  /* Get top 3 sticky posts, we could only have 3 max */
+  $sticky = array_slice( $sticky, 0, 3 );
+  $sticky_args = array(
+    'posts_per_page' => -1,
+    'post__in'  => $sticky,
+    'cat' => $post_categories,
+    'meta_query'  => array(
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'post',
+        'compare' => '=',
+      )
+    ),
+  );
+
+  $sticky_posts = new WP_Query( $sticky_args );
+
+  //post_meta should be blank
   $post_meta_query = array();
+
 }
 
 $posts_args  = array(
   'posts_per_page' => 3,
-  'post_type' => array( 'post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
   'cat' => $post_categories,
+  'post__not_in'  => $sticky,
+  'ignore_sticky_posts' => 1,
   'meta_query'  => array(
     'relation'  => 'AND',
     array(
@@ -47,7 +76,7 @@ $phila_posts_args  = array(
   $posts = new WP_Query( $posts_args );
   $phila_posts = new WP_Query( $phila_posts_args );
   $result = new WP_Query();
-  $result->posts = array_merge( $posts->posts, $phila_posts->posts );
+  $result->posts = array_merge( $sticky_posts->posts, $posts->posts, $phila_posts->posts );
   $result->post_count = count( $result->posts );
 ?>
 
@@ -90,8 +119,7 @@ $phila_posts_args  = array(
             'URL' => '/the-latest/archive?template=post',
             'content_type' => $label,
             'nice_name' => 'posts'
-          );
-          ?>
+          ); ?>
           <?php if( !empty( $post_categories ) ) :
             $see_all_URL = array(
               'URL' => '/the-latest/archive?template=post&category=' . $post_categories[0],

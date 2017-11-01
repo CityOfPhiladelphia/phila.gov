@@ -31,7 +31,7 @@
       ),
     ),
   ),
-  'ignore_sticky_posts' => 1 // We have to ignore sticky, otherwise we might show more than one post
+  'ignore_sticky_posts' => 1, // We have to ignore sticky, otherwise we might show more than one post
 ); ?>
 
 <?php $label = 'featured'; ?>
@@ -64,6 +64,7 @@
         'order' => 'desc',
         'orderby' => 'date',
         'post__not_in' => array( $main_feature_id ),
+        'ignore_sticky_posts' => 1,
         'meta_query'  => array(
           'relation'  => 'OR',
           array(
