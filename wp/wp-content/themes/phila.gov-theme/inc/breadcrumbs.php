@@ -17,7 +17,7 @@ function phila_breadcrumbs() {
 
     if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      if(phila_get_selected_template( $post->ID ) == 'press_release') {
+      if(phila_get_selected_template( $post->ID, false ) == 'press_release') {
         echo '<li><a href="/the-latest/archive?template=press_release">Press releases</a></li>';
       }else{
         echo '<li><a href="/the-latest/archive?template=post">Posts</a></li>';
