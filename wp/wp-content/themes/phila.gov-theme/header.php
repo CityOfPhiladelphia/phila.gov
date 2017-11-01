@@ -116,7 +116,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
                       </li>
                       <li>
-                        <a href="/news/" class="valign-cell"> News &amp; events</a>
+                        <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
                       </li>
                       <li>
                         <a href="/documents/" class="valign-cell"> Publications &amp; forms</a>
