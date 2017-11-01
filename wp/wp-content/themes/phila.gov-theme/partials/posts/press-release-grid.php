@@ -3,7 +3,6 @@
 */
 ?>
 <?php $press_categories = isset( $category ) ? $category : '';?>
-
 <?php $press_release_args  = array(
   'posts_per_page' => 4,
   'post_type' => array( 'press_release' ),
@@ -30,6 +29,7 @@ if ( !empty( $press_categories ) ) {
   'post_type' => array( 'post' ),
   'order' => 'desc',
   'orderby' => 'post_date',
+  'ignore_sticky_posts' => 1,
   'cat' => $press_categories,
   'meta_query'  => array(
     'relation'=> 'AND',
