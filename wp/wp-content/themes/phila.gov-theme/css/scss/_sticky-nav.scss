@@ -88,3 +88,9 @@
     top: 0 !important;
   }
 }
+
+.page-template-the-latest{
+  .global-nav .sticky.is-stuck {
+    box-shadow: none;
+  }
+}
