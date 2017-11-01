@@ -91,21 +91,11 @@
             <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
 
           <?php endwhile; ?>
-
-          <?php if (is_home() ) : ?>
-
-          <?php $see_all = array(
-              'URL' => 'the-latest',
-              'content_type' => $label,
-              'nice_name' => $label,
-            ); ?>
-          <?php else:  ?>
             <?php $see_all = array(
               'URL' => 'archive?template=featured',
               'content_type' => $label,
               'nice_name' => $label,
             ); ?>
-          <?php endif; ?>
         <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
         </div>
