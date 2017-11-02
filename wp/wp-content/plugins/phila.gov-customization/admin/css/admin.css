@@ -29,13 +29,13 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #slugdiv,
 /*Don't display user role editor on every single page*/
 #wpfront-user-role-editor-role-permission,
-#dashboard_quick_press /* no quick press on dashboard */
-.menu-icon-comments, /* no comments */
+#dashboard_quick_press,
+.menu-icon-comments,
+#trackbacksdiv,
+#postexcerpt,
+#commentstatusdiv,
 {
   display: none !important;
-}
-#ui-datepicker-div {
-  z-index: 100000 !important;
 }
 
 .rwmb-button.remove-clone:hover {
