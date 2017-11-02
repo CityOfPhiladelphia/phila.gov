@@ -13,8 +13,9 @@
 
 <?php
 
-//if this is a department homepage (i.e. categories are set, show all press releases, not just featured ones)
-if ( !empty( $press_categories ) ) {
+//if categories aren't set this is the latest, don't show featured
+
+if ( empty( $press_categories ) ) {
   $press_meta_query  = array(
     'key' => 'phila_is_feature',
     'value' => '0',
