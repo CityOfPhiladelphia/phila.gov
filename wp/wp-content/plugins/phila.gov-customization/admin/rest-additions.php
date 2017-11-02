@@ -38,7 +38,7 @@ add_action('rest_api_init', 'phila_register_dept_code');
 
 function phila_register_dept_code(){
   register_rest_field('department_page', 'department_code', array(
-    get_callback => 'get_dept_code' )
+    'get_callback' => 'get_dept_code' )
   );
   function get_dept_code($object){
     $post_id = $object['id'];
