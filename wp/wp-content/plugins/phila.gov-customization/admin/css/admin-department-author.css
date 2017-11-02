@@ -16,6 +16,8 @@ a[href$="nav-menus.php?action=locations"],
 .manage-menus option,
 .post-type-department_page .page-title-action,
 /* don't allow users to create tags */
-#tagsdiv-post_tag{
+#tagsdiv-post_tag,
+.update-nag, /* no need to see WP updates */
+.notice.notice-error.is-dismissible /* don't show dismissable errors */{
   display: none !important;
 }
