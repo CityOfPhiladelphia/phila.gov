@@ -13,8 +13,7 @@
 
 <?php
 
-//if categories aren't set this is the latest, don't show featured
-
+//if categories aren't set then, this is the latest, don't show featured
 if ( empty( $press_categories ) ) {
   $press_meta_query  = array(
     'key' => 'phila_is_feature',
