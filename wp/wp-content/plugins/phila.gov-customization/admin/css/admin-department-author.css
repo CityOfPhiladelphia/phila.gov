@@ -17,6 +17,7 @@ a[href$="nav-menus.php?action=locations"],
 /* don't allow users to create tags */
 #tagsdiv-post_tag,
 #wpfront-user-role-editor-role-permission,
+#wp-content-media-buttons,
 .update-nag,
 .notice.notice-error.is-dismissible,
 #postcustom,
