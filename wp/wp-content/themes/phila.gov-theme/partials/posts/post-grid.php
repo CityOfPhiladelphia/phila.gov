@@ -10,7 +10,7 @@
 $sticky = get_option( 'sticky_posts' );
 
 /* if categories aren't set, this is the latest, so don't show featured. */
-if ( $post_categories == '' ) {
+if ( empty( $post_categories ) ) {
   $post_meta_query = array(
     'key' => 'phila_is_feature',
     'value' => '0',
