@@ -28,7 +28,9 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #wp-link-target,
 #slugdiv,
 /*Don't display user role editor on every single page*/
-#wpfront-user-role-editor-role-permission
+#wpfront-user-role-editor-role-permission,
+#dashboard_quick_press /* no quick press on dashboard */
+.menu-icon-comments, /* no comments */
 {
   display: none !important;
 }
