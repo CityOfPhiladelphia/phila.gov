@@ -73,33 +73,6 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 function phila_register_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
-    'id'       => 'news-admin-only',
-    'title'    => 'Homepage Display',
-    'pages'    => array( 'news_post' ),
-    'context'  => 'side',
-    'priority' => 'high',
-
-    'include' => array(
-      'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
-      'relation' => 'OR',
-     ),
-
-    'fields' => array(
-      array(
-        'name'  => '',
-        'desc'  => 'Should this story appear on the homepage?',
-        'id'    => 'phila_show_on_home',
-        'type'  => 'radio',
-        'std'=> '0',
-        'options' =>  array(
-            '0' => 'No',
-            '1' => 'Yes'
-        )
-      ),
-    )
-  );//news homepage display
-
-  $meta_boxes[] = array(
     'id'       => 'document-description',
     'title'    => 'Document Information',
     'pages'    => array( 'document' ),
@@ -507,10 +480,9 @@ function phila_register_meta_boxes( $meta_boxes ){
           'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
           'placeholder' => 'Select...',
+          'std' => 'phila_module_row_1_col_1_custom_text',
           'options' => array(
-            'phila_module_row_1_col_1_blog_posts' => 'Blog Posts',
             'phila_module_row_1_col_1_custom_text' => 'Custom Text',
-            'phila_module_row_1_col_1_news_posts' => 'News Posts',
             ),
           ),
           array(
@@ -529,7 +501,6 @@ function phila_register_meta_boxes( $meta_boxes ){
                  'phila_module_row_1_col_1_post_style_cards' => 'Card',
                  'phila_module_row_1_col_1_post_style_list' => 'List',
                ),
-              //  'hidden' => array('phila_module_row_1_col_1_type', '=', 'phila_module_row_1_col_1_custom_text'),
                'hidden' => array(
                  'when'  => array(
                    array('phila_module_row_1_col_1_type', '=', 'phila_module_row_1_col_1_custom_text' ),
@@ -575,7 +546,6 @@ function phila_register_meta_boxes( $meta_boxes ){
             'phila_module_row_1_col_2_call_to_action_panel' => 'Call to Action Panel',
             'phila_module_row_1_col_2_connect_panel' => 'Connect Panel',
             'phila_module_row_1_col_2_custom_text' => 'Custom Text',
-            'phila_module_row_1_col_2_news_posts' => 'News Posts',
           ),
         ),
         array(
@@ -1031,41 +1001,6 @@ $meta_boxes[] = array(
         'type' => 'group',
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
-        ),
-      ),
-    ),
-  );
-
-  $meta_boxes[] = array(
-    'id'       => 'phila_full_row_news',
-    'title'    => 'Full row news posts (3 total)',
-    'pages'    => array( 'department_page' ),
-    'context'  => 'normal',
-    'priority' => 'low',
-
-    'include' => array(
-      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-    ),
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
-      ),
-      'relation' => 'or',
-    ),
-
-    'fields' => array(
-      array(
-        'name' => '',
-        'id'   => 'phila_full_row_news_selected',
-        'desc'  => 'Should this page show a full row of news items?',
-        'type' => 'checkbox',
-        'after' => '<p class="description">Enter at least three news posts in the <a href="/wp-admin/edit.php?post_type=news_post">News</a> section.</p>'
-      ),
-      array(
-        'id'  => 'phila_get_news_cats',
-        'type' => 'group',
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_news_category', 'Display news from these categories. This will override page category selection entirely.' ),
         ),
       ),
     ),
