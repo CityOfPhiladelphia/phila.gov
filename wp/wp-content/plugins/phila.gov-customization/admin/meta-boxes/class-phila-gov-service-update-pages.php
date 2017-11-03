@@ -174,7 +174,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           array(
             'name' => 'Link (optional)',
             'type' => 'heading',
-            'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">Use this area if the Service Update has a related web site, news article, press release, etc..</p>',
+            'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">Use this area if the Service Update has a related web site, post, press release, etc..</p>',
            ),
           array(
             'name'  => 'Link Text',
