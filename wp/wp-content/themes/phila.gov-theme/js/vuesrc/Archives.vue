@@ -13,7 +13,7 @@
           <div class="accordion-content" data-tab-content>
             <fieldset>
               <div class="grid-x grid-margin-x mbl">
-                <div v-for="(value, key) in templates" class="cell small-24 auto">
+                <div v-for="(value, key) in templates" class="cell medium-auto">
                   <input type="radio"
                   v-model="checkedTemplates"
                   v-bind:value="key"
