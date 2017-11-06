@@ -39,9 +39,9 @@
     "browserify": "^14.5.0",
     "browserify-shim": "^3.8.14",
     "envify": "^4.1.0",
-    "node-sass": "^4.5.1",
-    "postcss": "^6.0.13",
-    "vueify": "^9.4.1"
+    "node-sass": "^4.6.0",
+    "postcss": "^6.0.14",
+    "vueify": "^9.4.0"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -52,12 +52,13 @@
     "moment": "^2.19.1",
     "mustache": "^2.3.0",
     "phila-standards": "^0.11.2",
-    "uglify-js": "^3.1.6",
-    "vue": "^2.5.2",
+    "uglify-js": "^3.1.7",
+    "vue": "^2.5.3",
     "vue-paginate": "^3.5.1",
     "vue-router": "^3.0.1",
     "vue-select": "^2.3.0",
-    "vuejs-datepicker": "^0.9.18"
+    "vue-template-compiler": "^2.5.3",
+    "vuejs-datepicker": "^0.9.19"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
