@@ -73,12 +73,37 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_meta_boxes' );
 function phila_register_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
+    'id'       => 'announcement_end',
+    'title'    => 'Announcement end time',
+    'pages'    => array( 'announcement' ),
+    'context'  => 'side',
+    'priority' => 'high',
+
+    'fields' => array(
+      array(
+        'name'  => 'When should this announcement end?',
+        'id'    => 'phila_announce_end_date',
+        'type'  => 'date',
+        'class' =>  'effective-end-time',
+        'desc'  => 'Choose a time for this announcement to expire. Announcements will automatically expire two weeks from their publish date.',
+        'timestamp' => true,
+        'size'  =>  25,
+        'js_options' =>  array(
+          'dateFormat' => 'mm-dd-yy',
+          'controlType'=> 'select',
+          'oneLine'=> true,
+          'maxDate:' => '+2w'
+        ),
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'document-description',
     'title'    => 'Document Information',
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
-
 
     'fields' => array(
         array(
