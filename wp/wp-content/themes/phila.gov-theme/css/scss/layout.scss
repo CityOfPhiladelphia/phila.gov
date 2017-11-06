@@ -113,6 +113,16 @@ table.connect{
     color:color(dark-gray);
     border-left: 1px solid color(dark-gray);
   }
+  @media screen and (max-width: 39.9375em) {
+    a div {
+      display: block;
+      text-align: center;
+      .fa {
+        margin:0;
+        font-size: 4rem;
+      }
+    }
+  }
 }
 .inside-border-group-item a:hover .short-desc{
   color: white;
