@@ -36,13 +36,6 @@
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
-        'phila_full_row_news'                => array(
-                                                'type'  => 'shortcode',
-                                                'shown' => $this->full_row_news['exists'],
-                                                'data'  => array(
-                                                    'shortcode'=>'[recent-news posts="3" category=" ' . $this->full_row_news['category_id'] .' "]'
-                                                )
-                                            ),
         'phila_module_row_2'               => array(
                                                 'type'=>'v1',
                                                 'shown'=>true

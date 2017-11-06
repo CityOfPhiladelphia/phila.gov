@@ -15,24 +15,24 @@ function phila_news_rewrite() {
 
   add_rewrite_rule("^news/([^/]+)/([^/]+)/?$",'index.php?post_type=news_post&category_name=$matches[1]&news_post=$matches[2]','top');
 
-  add_rewrite_rule("^news/([^/]+)/?$",'index.php?post_type=news_post&category_name=$matches[1]','top');
+  //add_rewrite_rule("^news/([^/]+)/?$",'index.php?post_type=news_post&category_name=$matches[1]','top');
 
-  add_rewrite_rule("^news/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=news_post&category_name=$matches[1]&paged=$matches[2]','top');
+  //add_rewrite_rule("^news/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=news_post&category_name=$matches[1]&paged=$matches[2]','top');
 
 
   add_rewrite_rule("^posts/([^/]+)/([0-9]{4,})-([0-9]{2,})-([0-9]{2,})-([^/]+)?$",'index.php?post_type=phila_post&category_name=$matches[1]&year=$matches[2]&monthnum=$matches[3]&day=$matches[4]&phila_post=$matches[5]','top');
 
-  add_rewrite_rule("^posts/([^/]+)/?$",'index.php?post_type=phila_post&category_name=$matches[1]','top');
+  //add_rewrite_rule("^posts/([^/]+)/?$",'index.php?post_type=phila_post&category_name=$matches[1]','top');
 
-  add_rewrite_rule("^posts/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=phila_post&category_name=$matches[1]&paged=$matches[2]','top');
+  //add_rewrite_rule("^posts/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=phila_post&category_name=$matches[1]&paged=$matches[2]','top');
 
   add_rewrite_rule("^posts/author/([^/]+)/?$",'index.php?author_name=$matches[1]','top');
 
   add_rewrite_rule("^press-releases/([^/]+)/([^/]+)/?$",'index.php?post_type=press_release&category_name=$matches[1]&press_release=$matches[2]','top');
 
-  add_rewrite_rule("^press-releases/([^/]+)/?$",'index.php?post_type=press_release&category_name=$matches[1]','top');
+  //add_rewrite_rule("^press-releases/([^/]+)/?$",'index.php?post_type=press_release&category_name=$matches[1]','top');
 
-  add_rewrite_rule("^press-releases/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=press_release&category_name=$matches[1]&paged=$matches[2]','top');
+  //add_rewrite_rule("^press-releases/([^/]+)/page/?([0-9]{1,})/?$",'index.php?post_type=press_release&category_name=$matches[1]&paged=$matches[2]','top');
 
 }
 
