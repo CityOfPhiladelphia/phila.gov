@@ -226,10 +226,11 @@ export default {
       })
     },
     reset() {
-      this.loading = true
-      console.log(this.$refs.categorySelect)
-      console.log(this.$refs.categorySelect.$el.textContent)
-      this.selectedCategory = ''
+      //this.loading = true
+      //console.log(this.$refs.categorySelect)
+      //console.log(this.$refs.categorySelect.$el.textContent)
+      window.location = window.location.pathname;
+      /*this.selectedCategory = ''
       axios.get(endpoint + 'archives', {
        params : {
           'count': -1
@@ -248,7 +249,7 @@ export default {
           this.failure = true
       })
       this.$forceUpdate();
-
+      */
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
