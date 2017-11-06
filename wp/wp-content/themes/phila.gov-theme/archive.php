@@ -22,7 +22,7 @@ get_header(); ?>
       <main id="main" class="site-main small-24 columns">
         <?php while ( have_posts() ) : the_post(); ?>
 
-          <?php get_template_part( 'partials/content', 'list-featured-image' ) ?>
+          <?php get_template_part( 'partials/posts/content', 'list-featured-image' ) ?>
 
         <?php endwhile; ?>
 

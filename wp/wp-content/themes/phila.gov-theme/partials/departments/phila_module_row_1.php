@@ -89,10 +89,16 @@ if ( !empty( $row_one_col_two_module ) ){
         <?php echo do_shortcode('[recent-news posts="3"]'); ?>
       <?php endif;?>
       </div>
-      <?php
-        $see_all_URL = '/news/' . $category_slug . '/';
-        $see_all_content_type = 'news';
-        include( locate_template( 'partials/content-see-all.php' ) );?>
+      <div class="row mtm">
+        <div class="columns">
+          <?php $see_all = array(
+              'URL' => '/news/' . $category_slug . '/',
+              'content_type' => 'news',
+              'nice_name' => 'news'
+            );
+            include( locate_template( 'partials/content-see-all.php' ) );?>
+          </div>
+        </div>
     </div>
   <?php elseif ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
     <!-- Begin Column One - cutsom text -->
@@ -115,10 +121,16 @@ if ( !empty( $row_one_col_two_module ) ){
       <div class="row">
         <?php echo do_shortcode('[recent-posts posts="1"]'); ?>
       </div>
-      <?php
-        $see_all_URL = '/posts/' . $category_slug . '/';
-        $see_all_content_type = 'posts';
-        include( locate_template( 'partials/content-see-all.php' ) );?>
+      <div class="row mtm">
+        <div class="columns">
+          <?php $see_all = array(
+          'URL' => '/posts/' . $category_slug . '/',
+          'content_type' => 'posts',
+          'nice_name' => 'Posts'
+        ); ?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) );?>
+      </div>
+    </div>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_news_posts' ): ?>
     <!-- Begin Column Two -->
@@ -126,10 +138,16 @@ if ( !empty( $row_one_col_two_module ) ){
       <div class="row">
         <?php echo do_shortcode('[recent-news posts="1"]'); ?>
       </div>
-      <?php
-        $see_all_URL = '/news/' . $category_slug . '/';
-        $see_all_content_type = 'news';
-        include( locate_template( 'partials/content-see-all.php' ) );?>
+      <div class="row mtm">
+        <div class="columns">
+          <?php $see_all = array(
+          'URL' => '/news/' . $category_slug . '/',
+          'content_type' => 'news',
+          'nice_name' => 'News'
+        ); ?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) );?>
+      </div>
+    </div>
     </div>
   <?php elseif ( $row_one_col_two_type  == 'phila_module_row_1_col_2_custom_text' ): ?>
     <div class="large-8 columns">

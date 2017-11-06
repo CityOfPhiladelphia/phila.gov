@@ -1,6 +1,5 @@
 @mixin inverse-button(){
   color:white;
-  min-width:15rem;
   text-align: center;
   &:hover, &:active, &:focus{
     background: color(dark-gray);
@@ -15,5 +14,18 @@
   &.content-type-events{
     @include inverse-button();
     background: color(phanatic-green);
+  }
+  &.content-type-featured{
+    @include inverse-button();
+    background: color(dark-ben-franklin);
+  }
+  &.content-type-press_release{
+    @include inverse-button();
+    background: color(love-park-red);
+  }
+  &.content-type-post,
+  &.content-type-announcement{
+    @include inverse-button();
+    background: color(pride-purple);
   }
 }

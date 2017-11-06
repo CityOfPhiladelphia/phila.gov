@@ -277,7 +277,7 @@ class Phila_Gov_Role_Administration {
 
 
   /**
-   * Display all tags on post tag, instead of 'popluar'
+   * Display all tags on post tag, instead of 'popular'
    *
    * @since   0.22.0
    * @return $output The filtered author dropdown

@@ -1,0 +1,53 @@
+table.theme-light{
+  thead{
+    border-bottom:5px solid color(dark-gray);
+    background: white;
+  }
+  th{
+    background: white;
+    text-transform: uppercase;
+    color:color(dark-gray);
+  }
+  tbody{
+    border:none;
+    background-color:white;
+  }
+  tbody tr:nth-child(even){
+    background-color: white;
+  }
+  td{
+    @include breakpoint(medium up) {
+      padding: 1.5rem .5rem;
+      border-bottom: 1px solid color(dark-gray);
+    }
+    border-top:none;
+    border-left:none;
+    border-right:none;
+  }
+  @include breakpoint(small only) {
+    td{
+      border-bottom:none;
+    }
+    tr{
+      border-bottom: 1px solid color(dark-gray);
+    }
+  }
+  a:link, a:visited{
+    color:color(dark-gray);
+  }
+  .clickable-row:hover{
+    opacity: 1;
+    background:color(ghost-gray);
+  }
+}
+
+.archive-results{
+  @include breakpoint(medium up) {
+    .title{
+      width:500px;
+    }
+    .date{
+      width:125px;
+    }
+  }
+}

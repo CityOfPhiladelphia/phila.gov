@@ -1,13 +1,14 @@
-a{
+a.card,
+.card{
+  margin-bottom:0;
+  h1 {
+    font-size: rem-calc(25);
+    margin: 0;
+    color:color(dark-gray);
+  }
   &.card--list {
     @include xy-grid;
     border-bottom: none;
-
-    h1 {
-      font-size: $large-font-base / 4;
-      margin: 0;
-    }
-
     p {
       font-size: 1.1rem;
     }
@@ -19,5 +20,84 @@ a{
         font-size: 1rem;
       }
     }
+  }
+  &.card--press_release{
+    h1{
+      font-size: rem-calc(16);
+    }
+    &:not(.card--last){
+      border-bottom:5px solid map-get($post_content_types, press_release);
+    }
+  }
+  &.card--post{
+    &:not(.card--last){
+      border-bottom:5px solid map-get($post_content_types, post);
+    }
+  }
+  &.card--featured{
+    &:not(.card--last){
+      border-bottom:5px solid map-get($post_content_types, featured);
+    }
+    h1 {
+      font-size: rem-calc(16);
+    }
+  }
+}
+.feature-main{
+  article, a.card{
+    height:100%;
+  }
+  .card--content{
+    height:auto;
+  }
+}
+.feature-more{
+  .card--featured{
+    &:not(.card--last){
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.card--content,
+.type-announcement,
+.card--announcement{
+  height:100%;
+}
+
+a.card.card--last,
+.card--last {
+  border-bottom: none;
+  margin-bottom:5px;
+  height:auto;
+}
+
+.grid-full-height {
+  article, a.card{
+    &:not(.card--last) {
+      height:100%;
+    }
+  }
+}
+.faux-card:link,
+.faux-card:visited{
+  font-weight: 400;
+}
+
+.feature-main a.card h1, .card h1{
+  font-size: 1.78571rem;
+}
+
+@include breakpoint(medium up) {
+  .post-2 .post-label{
+    min-height: 280px; //TODO: find a better solution to force date to stay at bottom of card. Currently, the image in this card prevents the flex grid from calcuating the available height correctly.
+  }
+}
+
+
+@include breakpoint(small only) {
+  .cell{
+    //Add breathing room to mobile view
+    margin-bottom:1rem;
   }
 }

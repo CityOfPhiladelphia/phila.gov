@@ -138,9 +138,16 @@ $connect_vars = phila_connect_panel($connect_panel);
 
   </table>
   <?php if ( !empty( $connect_vars['see_all'] ) ) : ?>
-    <?php $see_all_URL = $connect_vars['see_all']; ?>
-    <?php $see_all_content_type = 'contact information';?>
-    <?php $is_full = true; ?>
-    <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+    <div class="row mtm">
+      <div class="columns">
+        <?php $see_all = array(
+          'URL' => $connect_vars['see_all'],
+          'content_type' => 'contact information',
+          'nice_name' => 'contact information',
+          'is_full' => true
+        ); ?>
+        <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+      </div>
+    </div>
   <?php endif; ?>
 </div>

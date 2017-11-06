@@ -49,9 +49,16 @@
                   </div>
                 </div>
                 <?php if ( !empty( $cal_url ) ):?>
-                  <?php $see_all_URL = $cal_url; ?>
-                  <?php $see_all_content_type = 'events';?>
-                  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                  <div class="row">
+                    <div class="columns">
+                      <?php $see_all = array(
+                        'URL' => $cal_url,
+                        'content_type' => 'events',
+                        'nice_name' => 'events'
+                      ); ?>
+                      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                    </div>
+                  </div>
                 <?php endif; ?>
               </section>
             <?php endif;?>
@@ -80,8 +87,11 @@
               <section class="row mvl">
                 <?php echo do_shortcode('[press-releases posts=5]');?>
               </section>
-              <?php $see_all_URL = '/press-releases/' . $category_slug ?>
-              <?php $see_all_content_type = 'press releases'?>
+              <?php $see_all = array(
+                'URL' => '/press-releases/' . $category_slug ,
+                'content_type' => 'press_release',
+                'nice_name' => 'Press releases'
+              ); ?>
               <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>

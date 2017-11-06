@@ -1,0 +1,15 @@
+.accordion-item{
+  border-bottom: 5px solid white;
+  .accordion-title{
+    text-transform: uppercase;
+    color:color(dark-gray);
+  }
+}
+
+.accordion-content{
+  background: color(ghost-gray);
+}
+
+.accordion-item .accordion-title::before{
+  border-left:none;
+}

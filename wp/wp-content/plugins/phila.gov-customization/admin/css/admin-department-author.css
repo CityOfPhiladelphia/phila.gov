@@ -1,10 +1,9 @@
 /*no cloning abilities*/
+
 #content-blocks .add-clone,
 #content-blocks .remove-clone,
-
 /*non-admins should not create new categories*/
 #category-adder,
-
 a[href^="nav-menus.php"],
 a[href$="nav-menus.php?action=locations"],
 #wp-admin-bar-new-content,
@@ -16,6 +15,19 @@ a[href$="nav-menus.php?action=locations"],
 .manage-menus option,
 .post-type-department_page .page-title-action,
 /* don't allow users to create tags */
-#tagsdiv-post_tag{
+#tagsdiv-post_tag,
+#wpfront-user-role-editor-role-permission,
+#wp-content-media-buttons,
+.update-nag,
+.notice.notice-error.is-dismissible,
+#postcustom,
+#dashboard_quick_press,
+.menu-icon-comments,
+#trackbacksdiv,
+#postexcerpt,
+#commentstatusdiv,
+#commentsdiv,
+#slugdiv
+{
   display: none !important;
 }
