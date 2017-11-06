@@ -272,7 +272,7 @@ class Phila_Archives_Controller {
       foreach ($categories as $category){
           $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
 
-          $category->slang_name = trim($trimmed_name);
+          $category->slang_name = html_entity_decode(trim($trimmed_name));
       }
 
       $post_data['categories']  = (array) $categories;
@@ -374,7 +374,7 @@ class Phila_Archives_Controller {
     }
 
     if (isset( $schema['properties']['name'] )) {
-      $post_data['name']  =  (string) $category->name;
+      $post_data['name']  =  (string) html_entity_decode($category->name);
     }
 
     if (isset( $schema['properties']['slug'] )) {
@@ -385,7 +385,7 @@ class Phila_Archives_Controller {
 
       $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
 
-      $post_data['slang_name']  = (string) trim($trimmed_name);
+      $post_data['slang_name']  = (string) html_entity_decode(trim($trimmed_name));
     }
 
     return rest_ensure_response( $post_data );
