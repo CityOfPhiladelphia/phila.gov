@@ -86,6 +86,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type'  => 'date',
         'class' =>  'effective-end-time',
         'desc'  => 'Choose a time for this announcement to expire. Announcements will automatically expire two weeks from their publish date.',
+        'required'=> true,
         'timestamp' => true,
         'size'  =>  25,
         'js_options' =>  array(
