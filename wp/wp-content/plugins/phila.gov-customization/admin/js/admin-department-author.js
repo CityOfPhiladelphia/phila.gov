@@ -68,12 +68,6 @@ jQuery(document).ready(function($){
 
   }else{
 
-    if ( ( typenow == 'news_post') && adminpage.indexOf('post') > -1 ){
-      $( '#title' ).rules( 'add', {
-        maxlength: 70
-      });
-    }
-
     if ( ( typenow == 'attachment') && adminpage.indexOf('post') > -1 ){
       $('#post').validate({
         rules: {
@@ -105,4 +99,15 @@ jQuery(document).ready(function($){
       });
     }
   }
+  if ( ( typenow == 'post') && adminpage.indexOf('post') > -1 ){
+    if( !phila_WP_User.includes('secondary_press_release_editor') && !phila_WP_User.includes('secondary_press_release_contributor') ) {
+      $('#phila_template_select option').each( function () {
+        if( $(this).val() !== '' && $(this).val() !== 'post' ){
+          $(this).css('display', 'none');
+        }
+      });
+      $("#phila_template_select").val('post');
+    }
+  }
+
 });

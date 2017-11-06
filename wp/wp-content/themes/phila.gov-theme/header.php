@@ -92,7 +92,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
     <!--sticky/desktop nav -->
-    <div class="row">
+    <div id="global-sticky-nav" class="row">
       <div class="small-24 columns">
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="columns sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
@@ -116,7 +116,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
                       </li>
                       <li>
-                        <a href="/news/" class="valign-cell"> News &amp; events</a>
+                        <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
                       </li>
                       <li>
                         <a href="/documents/" class="valign-cell"> Publications &amp; forms</a>
@@ -196,7 +196,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
 
-    if ( !phila_util_is_v2_template( $parent->ID ) && !is_front_page() ) : ?>
+    if ( !phila_util_is_v2_template( $parent->ID ) && !is_front_page() && !is_404() && !is_page_template('templates/the-latest.php')) : ?>
       <div class="row mts mbm">
         <div class="columns">
           <?php echo phila_breadcrumbs(); ?>

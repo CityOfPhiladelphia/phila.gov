@@ -16,6 +16,8 @@
 }
 
 .reveal{
+  min-height:400px;
+
   &.reveal--auto{
     width:auto;
   }
@@ -32,7 +34,22 @@
       color:color(ben-franklin-blue);
     }
   }
+  .reveal-footer{
+    position: absolute;
+    bottom:0;
+    margin-bottom:1rem;
+  }
 }
+
+.reveal--calendar{
+  border-top:0;
+  border-bottom:10px solid map-get($post_content_types, calendar);
+}
+
+.reveal--announcement{
+  border-bottom:10px solid map-get($post_content_types, announcement);
+}
+
 html.is-reveal-open,
 html.is-reveal-open body{
   //allow users to select content in the modal

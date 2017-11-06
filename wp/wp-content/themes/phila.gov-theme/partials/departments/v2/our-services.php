@@ -60,9 +60,15 @@
 <?php $all_services = rwmb_meta( 'phila_v2_service_link' ) ?>
 <?php if ( $all_services != '' ) :?>
 
-  <?php $see_all_URL = $all_services ?>
-  <?php $see_all_content_type = 'Services';?>
-  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-
+  <div class="row mtm">
+    <div class="columns">
+      <?php $see_all = array(
+          'URL' => $all_services,
+          'content_type' => 'services',
+          'nice_name' => 'Services'
+        );?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+    </div>
+  </div>
 <?php endif; ?>
 <?php endif; ?>

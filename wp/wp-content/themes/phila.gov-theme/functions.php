@@ -294,6 +294,10 @@ function phila_gov_scripts() {
     );
   }
 
+  if( is_page_template( 'templates/the-latest-archive.php' ) ){
+    wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
+  }
+
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
 
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
@@ -367,6 +371,10 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  * Load custom Utilities file.
  */
 require get_template_directory() . '/inc/utilities.php';
+
+foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
+  require $filename;
+}
 
 
 /**
@@ -748,36 +756,6 @@ function phila_is_department_homepage( $post ) {
   }
 }
 
-function phila_get_home_news(){
-
-  $category = get_the_category();
-  $contributor = rwmb_meta( 'phila_news_contributor', $args = array( 'type'=>'text') );
-
-  echo '<a href="' . get_permalink() .'" class="card equal">';
-
-  echo phila_get_thumbnails();
-
-  if (function_exists('rwmb_meta')) {
-
-    echo '<div class="content-block">';
-
-    the_title('<h3 class="pvm">', '</h3>');
-
-    the_date('' ,'<span class="small-text">','</span>');
-
-    if ($contributor === ''){
-        echo '<span>' . $category[0]->cat_name . '</span>';
-    }else {
-        echo '<span>' . $contributor . '</span>';
-    }
-
-    echo '<p>' . phila_get_item_meta_desc( )  . '</p>';
-
-  }
-
-  echo '</div></a>';
-}
-
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
  * TODO: investigate a better way of handling the match.
@@ -1067,16 +1045,29 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 }
 
 /**
- * Return a string representing the template currently applied to a page in the loop.
+ * Return a string representing the template currently applied to a page in the loop. Without a template applied, default back to post type.
  *
  **/
 
-function phila_get_selected_template( $post_id = null ){
+function phila_get_selected_template( $post_id = null, $modify_response = true ){
 
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
   if ( empty( $user_selected_template ) ){
-    return get_post_type();
+    $user_selected_template = get_post_type( $post_id );
+  }
+  if ($modify_response == true ){
+    //used to force "featured" template type. The user doesn't select this value from the normal template dropdpown and this can be applied to any post, press release or other item.
+    $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+    $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+
+    if ( $old_feature != 0 || $new_feature != 0  ){
+      $user_selected_template = 'featured';
+    }
+    //clean up the data by assigning "phila_post" to "post"
+    if(get_post_type($post_id) == 'phila_post') {
+      $user_selected_template = 'post';
+    }
   }
 
   return $user_selected_template;
@@ -1419,7 +1410,7 @@ function phila_get_department_logo_v2( $post ){
     }
 }
 
-function phila_get_department_homepage_typography( $parent ){
+function phila_get_department_homepage_typography( $parent, $return_stripped = false, $page_title = null ){
 
   $target_phrases = array(
     "City of Philadelphia",
@@ -1434,17 +1425,29 @@ function phila_get_department_homepage_typography( $parent ){
     "Bureau of",
   );
 
-  $page_title = $parent->post_title;
+  if ( !isset( $page_title ) ) {
+    $page_title = $parent->post_title;
+  }
 
   while ( list(, $phrase ) = each( $target_phrases ) ) {
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
+
+      if( $return_stripped === true ){
+        return $new_title = substr( $page_title, $c );
+      }
       $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+
       break;
-    }else{
+    }elseif($return_stripped == false){
       $new_title = '<h1>' . $page_title . '</h1>';
+    }else{
+      $new_title = $page_title;
     }
   }
+
+
+
 
   return $new_title;
 }
@@ -1490,6 +1493,51 @@ function add_lightbox_rel($content) {
   return $content;
 }
 
+add_filter( 'post_class', 'phila_rename_sticky_class' );
 
+function phila_rename_sticky_class( $classes ) {
+  if ( in_array( 'sticky', $classes, true ) ) {
+      $classes = array_diff($classes, array('sticky'));
+      $classes[] = 'wp-sticky';
+  }
+  return $classes;
+}
 
+add_action('template_redirect', 'phila_get_post_label');
 
+function phila_get_post_label( $label ){
+  if ( isset( $label ) ) {
+    $original_label = $label;
+    switch( $original_label ) {
+      case 'announcement':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Announcement',
+          'icon' => 'bullhorn',
+        );
+        break;
+      case 'featured':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Featured',
+          'icon' => 'newspaper-o',
+        );
+        break;
+      case 'press_release':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Press Release',
+          'icon' => 'file-text-o',
+        );
+        break;
+      case 'post':
+        $label = array(
+         'label' => $original_label,
+         'nice' => 'Post',
+         'icon' => 'pencil',
+        );
+        break;
+    }
+    return $label;
+  }
+}

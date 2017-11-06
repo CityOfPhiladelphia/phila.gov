@@ -16,15 +16,18 @@ class Phila_Gov_Admin_Templates {
 
   public function __construct(){
 
-    add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_departments'), 10, 1 );
+    add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_departments'), 10, 1 );
 
-    add_filter( 'rwmb_outside_conditions', array( $this, 'phila_hide_categories' ), 10, 1 );
+    add_filter( 'rwmb_outside_conditions', array( $this, 'hide_categories' ), 10, 1 );
 
-    add_filter( 'rwmb_meta_boxes', array( $this, 'phila_register_template_selection_metabox_wp_pages' ), 10, 1 );
+    add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_service_pages' ), 10, 1 );
+
+    add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_posts' ), 10, 1 );
+
 
  }
 
- function phila_register_template_selection_metabox_departments( $meta_boxes ){
+ function register_template_selection_metabox_departments( $meta_boxes ){
 
   $meta_boxes[] = array(
     'id'       => 'template_selection',
@@ -88,7 +91,7 @@ class Phila_Gov_Admin_Templates {
   }
 
   //TODO: break these callbacks out into individual functions
-  function phila_hide_categories( $conditions ) {
+  function hide_categories( $conditions ) {
 
     $conditions['categorydiv'] = array(
       'hidden' => array(
@@ -125,7 +128,7 @@ class Phila_Gov_Admin_Templates {
     return $conditions;
   }
 
-  function phila_register_template_selection_metabox_wp_pages( $meta_boxes ){
+  function register_template_selection_metabox_service_pages( $meta_boxes ){
 
     $meta_boxes[] = array(
       'id'       => 'page_template_selection',
@@ -154,6 +157,38 @@ class Phila_Gov_Admin_Templates {
       ),
     );
      return $meta_boxes;
+  }
+
+  function register_template_selection_metabox_posts( $meta_boxes ){
+
+    $meta_boxes[] = array(
+      'id'       => 'page_template_selection',
+      'title'    => 'Select Template',
+      'pages'    => array( 'post' ),
+      'context'  => 'advanced',
+      'priority' => 'high',
+      'fields' => array(
+        array(
+          'placeholder'  => 'Select a template',
+          'id'  => 'phila_template_select',
+          'type'  => 'select',
+          'required'  => true,
+          'options' => array(
+            'post'   => 'Post',
+            'press_release' => 'Press Release',
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Template' ),
+            'sort'     => true,
+          ),
+        ),
+      ),
+    );
+
+
+    return $meta_boxes;
+
   }
 
 }

@@ -1,13 +1,40 @@
 .post-label{
   padding-bottom:1rem;
-  text-transform: uppercase;
+  i {
+    margin-right:.5rem;
+  }
   span{
     @include secondary-font(normal);
     font-size: .8rem;
     vertical-align: -webkit-baseline-middle;
+    text-transform: uppercase;
   }
-
+  &.post-label--post{
+    color:map-get($post_content_types, post) !important;
+    &::before{
+      color:map-get($post_content_types, post) !important;
+    }
+  }
+  &.post-label--announcement{
+    color: map-get($post_content_types, announcement) !important;
+  }
+  &.post-label--featured{
+    color: map-get($post_content_types, featured)!important;
+    &::before{
+      color:map-get($post_content_types, featured)!important;
+    }
+  }
   &.post-label--calendar{
-    color:color(phanatic-green);
+    color:map-get($post_content_types, calendar)!important;
+
+    &::before{
+      color:map-get($post_content_types, calendar)!important;
+    }
+  }
+  &.post-label--press_release{
+    color:map-get($post_content_types, press_release)!important;
+    &::before{
+      color:map-get($post_content_types, press_release)!important;
+    }
   }
 }
