@@ -36,6 +36,12 @@
                   <div>Posts</div>
                 </a>
               </li>
+              <li class="action_guide cell medium-auto small-24">
+                <a href="#action-guides">
+                  <i class="fa fa-fw fa-3x fa-users" aria-hidden="true"></i>
+                  <div>Action guides</div>
+                </a>
+              </li>
               <li class="event cell medium-auto small-24">
                 <a href="#events">
                   <i class="fa fa-fw fa-3x fa-calendar-check-o" aria-hidden="true"></i>
@@ -69,9 +75,16 @@
 
     <div id="posts" data-magellan-target="posts">
       <header class="row columns mtl">
-        <h2>The latest from departments</h2>
+        <h2>The latest posts from departments</h2>
       </header>
       <?php get_template_part('partials/posts/post', 'grid'); ?>
+    </div>
+
+    <div id="action-guides" data-magellan-target="action-guides">
+      <header class="row columns mtl">
+        <h2>Action guides</h2>
+      </header>
+      <?php get_template_part('partials/posts/action-guide', 'grid'); ?>
     </div>
 
     <div id="events" data-magellan-target="events">
