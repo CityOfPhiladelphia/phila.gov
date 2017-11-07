@@ -72,7 +72,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     </div>
   <?php endif ?>
   <div class="grid-container post-content">
-    <div class="medium-18 medium-centered">
+    <div class="medium-18 medium-centered mtm">
       <?php the_content(); ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
     </div>
