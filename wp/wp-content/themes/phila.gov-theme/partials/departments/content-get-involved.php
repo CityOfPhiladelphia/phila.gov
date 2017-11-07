@@ -46,8 +46,6 @@
 
         $action_panel_link_loc = isset(  $call_to_action['phila_action_panel_link_loc_multi'] ) ? $call_to_action['phila_action_panel_link_loc_multi'] : '';
 
-        $action_panel_fa_circle = isset( $call_to_action['phila_action_panel_fa_circle_multi'] ) ? $call_to_action['phila_action_panel_fa_circle_multi'] : '' ;
-
         $action_panel_fa = isset( $call_to_action['phila_action_panel_fa_multi'] ) ? $call_to_action['phila_action_panel_fa_multi'] : '';
         ?>
         <?php phila_grid_column_counter( $item_count ); ?>
@@ -56,17 +54,13 @@
           <a href="<?php echo $action_panel_link; ?>"  class="action-panel">
             <div class="panel hover-fade <?php if( $item_count > 1 ) echo 'equal';?>">
             <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
-            <?php if ($action_panel_fa_circle): ?>
+            <?php if ($action_panel_fa): ?>
               <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?> icon">
                 <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
-            <?php else: ?>
-             <div class="icon">
-               <span><i class="fa <?php echo $action_panel_fa; ?> fa-4x" aria-hidden="true"></i></span>
-             </div>
             <?php endif; ?>
             <?php if ( !empty( $action_panel_cta_text ) ): ?>
               <span class="<?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
