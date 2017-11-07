@@ -515,7 +515,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   public static function phila_call_to_action_group_content(){
     return array(
       array(
-        'name'  => 'Call to Action Text',
+        'name'  => 'Link title',
         'id'    => 'phila_action_panel_cta_text_multi',
         'type'  => 'text',
         'class' => 'action-panel-cta-text',
@@ -531,9 +531,10 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         'id'    => 'phila_action_panel_fa_multi',
         'type'  => 'text',
         'class' => 'action-panel-fa',
+        'desc'  => 'Uses <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icons. Eg: fa-bell'
       ),
       array(
-        'name'  => 'Link to Content',
+        'name'  => 'Link url',
         'id'    => 'phila_action_panel_link_multi',
         'type'  => 'url',
         'class' => 'action-panel-link',
@@ -543,7 +544,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
         'id'    => 'phila_action_panel_link_loc_multi',
         'type'  => 'checkbox',
         'class' => 'action-panel-link-loc',
-        'desc'  => 'This link directs users away from beta.phila.gov',
+        'desc'  => 'Does this link directs users away from beta.phila.gov?',
       )
     );
   }
