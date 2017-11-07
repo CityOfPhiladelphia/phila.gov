@@ -20,7 +20,11 @@ $tweet_intent = rwmb_meta('phila_social_intent');
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-18 post-title">
-        <?php the_title( '<h1>', '</h1>' ); ?>
+        <?php if ( $template_type == 'action_guide' ) : ?>
+          <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
+        <?php else:  ?>
+          <?php the_title( '<h1>', '</h1>' ); ?>
+        <?php endif; ?>
       </div>
       <div class="cell medium-6 align-self-bottom social-media">
         <a href="#" id="fb-share" data-analytics="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -74,6 +78,9 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     </div>
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
+    <?php endif; ?>
+    <?php if ( $template_type == 'action_guide' ) : ?>
+      <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
     <?php endif; ?>
   </div>
   <hr />
