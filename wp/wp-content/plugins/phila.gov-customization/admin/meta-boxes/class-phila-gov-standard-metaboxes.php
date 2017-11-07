@@ -512,13 +512,15 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-  public static function phila_call_to_action_group_content(){
+  public static function phila_call_to_action_group_content( $datalist = null ){
     return array(
       array(
         'name'  => 'Link title',
         'id'    => 'phila_action_panel_cta_text_multi',
         'type'  => 'text',
         'class' => 'action-panel-cta-text',
+        'size'  => '40',
+        'datalist' => $datalist
       ),
       array(
         'name'  => 'Summary',
