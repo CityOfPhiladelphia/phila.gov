@@ -512,4 +512,40 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
+  public static function phila_call_to_action_group_content(){
+    return array(
+      array(
+        'name'  => 'Call to Action Text',
+        'id'    => 'phila_action_panel_cta_text_multi',
+        'type'  => 'text',
+        'class' => 'action-panel-cta-text',
+      ),
+      array(
+        'name'  => 'Summary',
+        'id'    => 'phila_action_panel_summary_multi',
+        'type'  => 'textarea',
+        'class' => 'action-panel-details',
+      ),
+      array(
+        'name'  => 'Icon',
+        'id'    => 'phila_action_panel_fa_multi',
+        'type'  => 'text',
+        'class' => 'action-panel-fa',
+      ),
+      array(
+        'name'  => 'Link to Content',
+        'id'    => 'phila_action_panel_link_multi',
+        'type'  => 'url',
+        'class' => 'action-panel-link',
+      ),
+      array(
+        'name'  => 'External Link',
+        'id'    => 'phila_action_panel_link_loc_multi',
+        'type'  => 'checkbox',
+        'class' => 'action-panel-link-loc',
+        'desc'  => 'This link directs users away from beta.phila.gov',
+      )
+    );
+  }
+
 }
