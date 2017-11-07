@@ -34,6 +34,11 @@ if ( class_exists("Phila_Gov_Post" ) ){
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'action_guide'),
+        ),
+      ),
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
         'relation' => 'OR',
@@ -88,6 +93,91 @@ if ( class_exists("Phila_Gov_Post" ) ){
         )
       )
     );
+
+    /* Action guide specific metaboxes */
+
+    $meta_boxes[] = array(
+      'title'    => 'Get informed',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_action_get_informed',
+          'type' => 'wysiwyg',
+        )
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title'    => 'Know the facts',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_action_facts',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        )
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title' => 'Take action',
+      'pages' => array('post'),
+      'context' => 'normal',
+      'priority'  => 'high',
+
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide'),
+        ),
+      ),
+
+      'fields' => array(
+        array(
+          'id'  => 'phila_call_to_action_section',
+          'type' => 'group',
+
+          'fields' => array(
+            array(
+              'id'  => 'phila_call_to_action_multi_group',
+              'type' => 'group',
+              'clone'  => true,
+              'max_clone' => 4,
+              'sort_clone' => true,
+
+              'fields' =>
+                Phila_Gov_Standard_Metaboxes::phila_call_to_action_group_content($datalist = array(
+                   'options' => array(
+                      'Contact',
+                      'Give back',
+                      'Share',
+                      'Attend'
+                   )
+                ))
+              ),
+          ),
+        ),
+      ),
+    );
+
+
 
     return $meta_boxes;
   }
