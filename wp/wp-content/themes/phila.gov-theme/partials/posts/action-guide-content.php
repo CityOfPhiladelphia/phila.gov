@@ -5,10 +5,11 @@
 
 $get_facts = rwmb_meta( 'phila_action_facts' );
 $facts = phila_loop_clonable_metabox( $get_facts );
+
 ?>
 
-
 <div class="one-quarter-layout bdr-dark-gray">
+  
   <div class="row mvl">
     <div class="medium-6 columns">
       <h3 id="get-informed">Get informed</h3>
@@ -30,6 +31,11 @@ $facts = phila_loop_clonable_metabox( $get_facts );
         </div>
       <?php endforeach; ?>
     </div>
+  </div>
+
+  <div class="row mvl">
+    <h1 id="take-action" class="mbn">Take action</h1>
+    <?php include( locate_template( 'partials/departments/phila_call_to_action_multi.php' ) ); ?>
   </div>
 
 </div>
