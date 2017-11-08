@@ -22,9 +22,6 @@ a.card,
     }
   }
   &.card--action_guide{
-    h1{
-      font-size: rem-calc(16);
-    }
     &:not(.card--last){
       border-bottom:5px solid map-get($post_content_types, action_guide);
     }
