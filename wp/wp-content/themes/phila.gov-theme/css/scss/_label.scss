@@ -15,6 +15,12 @@
       color:map-get($post_content_types, post) !important;
     }
   }
+  &.post-label--action_guide{
+    color:map-get($post_content_types, action_guide) !important;
+    &::before{
+      color:map-get($post_content_types, action_guide) !important;
+    }
+  }
   &.post-label--announcement{
     color: map-get($post_content_types, announcement) !important;
   }
