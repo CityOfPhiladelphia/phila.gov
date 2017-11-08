@@ -22,7 +22,7 @@
 <?php $label = 'action_guide'; ?>
 
 <?php $action = new WP_Query( $action_args ); ?>
-<div class="grid-container">
+<div class="grid-container grid--action_guide">
   <div class="grid-x grid-margin-x">
     <?php if ( $action->have_posts() ) : ?>
       <div class="cell medium-8 feature-more flex-container flex-dir-column">
