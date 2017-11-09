@@ -74,10 +74,16 @@ $phila_posts_args  = array(
 
 <?php
   $posts = new WP_Query( $posts_args );
+
   $phila_posts = new WP_Query( $phila_posts_args );
+  
   $result = new WP_Query();
-  $result->posts = array_merge( $sticky_posts->posts, $posts->posts, $phila_posts->posts );
+
+  //if sticky posts is empty, don't add it to the results array
+  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts, $phila_posts->posts );
+
   $result->post_count = count( $result->posts );
+
 ?>
 
 <?php $count = 0; ?>
