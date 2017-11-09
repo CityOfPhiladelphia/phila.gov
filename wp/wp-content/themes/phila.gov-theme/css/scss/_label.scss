@@ -16,7 +16,6 @@
     }
   }
   &.post-label--action_guide{
-    min-height:20rem;
     color:map-get($post_content_types, action_guide) !important;
     &::before{
       color:map-get($post_content_types, action_guide) !important;
