@@ -11,6 +11,11 @@
       padding-left:.5rem;
     }
   }
+  &.content-type-action_guide{
+    @include inverse-button();
+    margin-top:5px soild white;
+    background: color(punk-pink);
+  }
   &.content-type-events{
     @include inverse-button();
     background: color(phanatic-green);
