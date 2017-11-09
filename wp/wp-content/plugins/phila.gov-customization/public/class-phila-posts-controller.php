@@ -153,6 +153,20 @@ class Phila_Archives_Controller {
           $posts = array();
           $posts = array_merge( $press_new, $press_old );
         break;
+        case 'action_guide':
+          $ac_arg = array(
+            'post_type' => array('post'),
+            'meta_query'  => array(
+              array(
+                'key' => 'phila_template_select',
+                'value' => 'action_guide',
+                'compare' => '=',
+              ),
+            ),
+          );
+          $query_defaults = $this->set_query_defaults($request);
+          $full_query = array_merge($query_defaults, $ac_args);
+          $posts = get_posts( $full_query );
       }
     }else{
       $args = array(
