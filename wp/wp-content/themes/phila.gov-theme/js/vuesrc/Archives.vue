@@ -75,11 +75,12 @@
         :per="40">
         <tr v-for="post in paginated('posts')"
         :key="post.id"
-        class="clickable-row"
-        v-on:click.stop.prevent="goToPost(post.link)">
+        :data-href="post.link"
+        class="clickable-row">
           <td class="title">
-          <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
-            {{ post.title }}
+            <a
+            v-bind:href="post.link">
+              {{ post.title }}
             </a>
           </td>
           <td class="date">{{ post.date  | formatDate }}</td>
@@ -198,9 +199,6 @@ export default {
       .catch(e => {
         this.categories = 'Sorry, there was a problem.'
       })
-    },
-    goToPost: function (post){
-      window.location.href = post
     },
     onSubmit: function (event) {
       this.loading = true
