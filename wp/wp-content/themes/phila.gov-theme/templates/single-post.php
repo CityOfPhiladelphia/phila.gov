@@ -115,8 +115,6 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     'post__not_in'  => array($post_id)
   );
 
-  $template = 'partials/posts/content-related.php';
-
   if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
     $is_press_release = true;
     $label = 'press_release';
@@ -124,6 +122,11 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     $category = array($cat_id_string);
 
     $template = 'partials/posts/press-release-grid.php';
+  }elseif($template_type == 'action_guide'){
+    $template = 'partials/posts/action-guide-grid.php';
+
+  }else{
+    $template = 'partials/posts/content-related.php';
   }
 ?>
 <div class="grid-container">
