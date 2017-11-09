@@ -43,7 +43,7 @@
         a {
           padding-left: .5rem;
           padding-right: .5rem;
-          
+
           &:first-of-type{
             padding-left: 0;
           }
@@ -59,22 +59,6 @@
     .staff-summary {
       .staff-bio{
         min-height: 200px;
-      }
-      .expandable {
-        height: 200px;
-        overflow: hidden;
-        position: relative;
-        &:after {
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: 0;
-          height: 50px;
-          width: 100%;
-          background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0) 0%, white);
-          background-image: linear-gradient(rgba(255, 255, 255, 0), white);
-
-        }
       }
     }
     &:last-of-type {
