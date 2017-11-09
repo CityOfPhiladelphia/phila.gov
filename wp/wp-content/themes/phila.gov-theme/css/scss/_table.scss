@@ -35,7 +35,9 @@ table.theme-light{
   a:link, a:visited{
     color:color(dark-gray);
   }
+  .vue-clickable-row:hover,
   .clickable-row:hover{
+    cursor: pointer;
     opacity: 1;
     background:color(ghost-gray);
   }
