@@ -26,7 +26,7 @@
   <div class="grid-x grid-margin-x">
     <?php if ( $action->have_posts() ) : ?>
         <?php while ( $action->have_posts() ) : $action->the_post(); ?>
-          <div class="cell medium-8 flex-container flex-dir-column mbm">
+          <div class="cell medium-8 flex-container flex-dir-column mbm hide-for-small-only">
             <?php $post_type = get_post_type(); ?>
 
             <?php $post_obj = get_post_type_object( $post_type ); ?>
