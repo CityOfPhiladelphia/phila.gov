@@ -37,7 +37,7 @@
         <?php endwhile; ?>
         <?php if ($count <= 6) : ?>
           <div class="cell medium-8 flex-container flex-dir-column mbm">
-            <div class="bg-punk-pink white pam flex-child-auto">
+            <div class="see-all-card bg-punk-pink white pal flex-child-auto">
               <h1>City of Philadelphia Action Guides</h1>
               <div class="description">
                 Content content content
@@ -46,8 +46,8 @@
           <?php $see_all = array(
             'URL' => 'archive?template=action_guide',
             'content_type' => $label,
-            'nice_name' => $label,
-        ); ?>
+            'nice_name' => 'Action guides',
+          );?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
         <?php endif; ?>
