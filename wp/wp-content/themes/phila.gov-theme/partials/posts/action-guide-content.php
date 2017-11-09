@@ -61,7 +61,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
             break;
           endswitch;
           ?>
-          <div class="panel info mbm hide-for-small">
+          <div class="panel info mbm">
             <h4 class="mvn all-caps"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
 
             <?php echo $action['phila_wysiwyg_content'] ?>
