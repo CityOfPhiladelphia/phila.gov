@@ -151,27 +151,29 @@ if ( class_exists("Phila_Gov_Post" ) ){
 
       'fields' => array(
         array(
-          'id'  => 'phila_call_to_action_section',
+          'id'  => 'phila_take_action',
           'type' => 'group',
+          'clone'  => true,
+          'max_clone' => 4,
+          'sort_clone' => true,
 
           'fields' => array(
             array(
-              'id'  => 'phila_call_to_action_multi_group',
-              'type' => 'group',
-              'clone'  => true,
-              'max_clone' => 4,
-              'sort_clone' => true,
-
-              'fields' =>
-                Phila_Gov_Standard_Metaboxes::phila_call_to_action_group_content($datalist = array(
-                   'options' => array(
-                      'Contact',
-                      'Give back',
-                      'Share',
-                      'Attend'
-                   )
-                ))
+              'id'  => 'phila_select_action',
+              'type'  => 'select',
+              'std' => 'share',
+              'options' => array(
+                'share' => 'Share',
+                'contact' => 'Contact',
+                'give_back' => 'Give back',
+                'attend'  => 'Attend'
               ),
+            ),
+              array(
+                'id'  => 'phila_action_content',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              )
           ),
         ),
       ),
