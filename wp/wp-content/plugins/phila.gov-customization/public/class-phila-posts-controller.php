@@ -165,7 +165,7 @@ class Phila_Archives_Controller {
             ),
           );
           $query_defaults = $this->set_query_defaults($request);
-          $full_query = array_merge($query_defaults, $ac_args);
+          $full_query = array_merge($query_defaults, $ac_arg);
           $posts = get_posts( $full_query );
       }
     }else{
