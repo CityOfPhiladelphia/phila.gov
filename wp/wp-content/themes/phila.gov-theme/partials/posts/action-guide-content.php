@@ -26,7 +26,7 @@ $facts = phila_loop_clonable_metabox( $get_facts );
     <div class="medium-18 columns pbxl">
       <?php foreach( $facts as $fact ) :?>
         <div class="mbl">
-          <h4><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h4>
+          <h2 class="black bg-ghost-gray h2 phm-mu mtl mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
           <?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
         </div>
       <?php endforeach; ?>
