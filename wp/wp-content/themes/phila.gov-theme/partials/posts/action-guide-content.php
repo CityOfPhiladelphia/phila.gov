@@ -6,6 +6,9 @@
 $get_facts = rwmb_meta( 'phila_action_facts' );
 $facts = phila_loop_clonable_metabox( $get_facts );
 
+$get_actions = rwmb_meta( 'phila_take_action' );
+$actions = phila_loop_clonable_metabox( $get_actions );
+
 ?>
 
 <div class="one-quarter-layout bdr-dark-gray content-action_guide">
@@ -34,8 +37,38 @@ $facts = phila_loop_clonable_metabox( $get_facts );
   </div>
 
   <div class="row mvl">
-    <h3 id="take-action" class="mbn">Take action</h3>
-    <?php include( locate_template( 'partials/departments/phila_call_to_action_multi.php' ) ); ?>
+    <div class="medium-6 columns">
+      <h3 id="take-action" class="mbn">Take action</h3>
+    </div>
+    <div class="medium-18 columns">
+      <?php foreach( $actions as $action ) : ?>
+        <?php switch ( $action['phila_select_action'] ):
+          case 'share':
+            $icon = 'share';
+            $text = 'Share';
+            break;
+          case 'contact':
+            $icon = 'address-book-o';
+            $text = 'Contact';
+            break;
+          case 'give_back':
+            $icon = 'handshake-o';
+            $text = 'Give back';
+            break;
+          case 'attend':
+            $icon = 'calendar-check-o';
+            $text = 'Attend';
+            break;
+          endswitch;
+          ?>
+          <div class="panel info mbm">
+            <h4 class="mvn all-caps"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
+
+            <?php echo $action['phila_wysiwyg_content'] ?>
+        </div>
+
+      <?php endforeach; ?>
+    </div>
   </div>
 
 </div>
