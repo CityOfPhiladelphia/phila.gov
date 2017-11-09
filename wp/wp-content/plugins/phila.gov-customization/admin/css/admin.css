@@ -95,3 +95,11 @@ input.error, textarea.error, select.error {
   border-color: #c00 !important;
   background: #ffebe8 !important;
 }
+
+/*action guide clean up */
+#know-the-facts .rwmb-label{
+  width: 100%;
+}
+#know-the-facts .rwmb-input input{
+  width: 100%;
+}
