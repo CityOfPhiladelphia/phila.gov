@@ -25,24 +25,32 @@
 <div class="grid-container grid--action_guide">
   <div class="grid-x grid-margin-x">
     <?php if ( $action->have_posts() ) : ?>
-      <div class="cell medium-8 feature-more flex-container flex-dir-column">
         <?php while ( $action->have_posts() ) : $action->the_post(); ?>
-          <?php $post_type = get_post_type(); ?>
+          <div class="cell medium-8 flex-container flex-dir-column mbm">
+            <?php $post_type = get_post_type(); ?>
 
-          <?php $post_obj = get_post_type_object( $post_type ); ?>
-          <?php $count++;?>
-          <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+            <?php $post_obj = get_post_type_object( $post_type ); ?>
+            <?php $count++;?>
+            <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+          </div>
 
         <?php endwhile; ?>
-        <?php if ($count == 5) : ?>
+        <?php if ($count <= 6) : ?>
+          <div class="cell medium-8 flex-container flex-dir-column mbm">
+            <div class="bg-punk-pink white pam flex-child-auto">
+              <h1>City of Philadelphia Action Guides</h1>
+              <div class="description">
+                Content content content
+              </div>
+            </div>
           <?php $see_all = array(
             'URL' => 'archive?template=action_guide',
             'content_type' => $label,
             'nice_name' => $label,
         ); ?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+        </div>
         <?php endif; ?>
-      </div>
     <?php endif; ?>
   </div>
 </div>
