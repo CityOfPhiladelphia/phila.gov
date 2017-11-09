@@ -1,5 +1,6 @@
 a.card,
 .card{
+  position: relative;
   margin-bottom:0;
   h1 {
     font-size: rem-calc(25);
@@ -22,7 +23,7 @@ a.card,
     }
   }
   &.card--action_guide{
-    min-height:20rem;
+    min-height:24rem;
     &:not(.card--last){
       border-bottom:5px solid map-get($post_content_types, action_guide);
     }
@@ -47,6 +48,10 @@ a.card,
     h1 {
       font-size: rem-calc(16);
     }
+  }
+  .post-meta{
+    position: absolute;
+    bottom:1rem;
   }
 }
 .feature-main{
