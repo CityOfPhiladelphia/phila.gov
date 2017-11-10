@@ -23,6 +23,9 @@
 
 <?php $action = new WP_Query( $action_args ); ?>
 <div class="grid-container grid--action_guide">
+  <?php if (!is_page_template('templates/the-latest.php')): ?>
+    <h2>More action guides</h2>
+  <?php endif; ?>
   <div class="grid-x grid-margin-x">
     <?php if ( $action->have_posts() ) : ?>
         <?php while ( $action->have_posts() ) : $action->the_post(); ?>
@@ -35,7 +38,7 @@
           </div>
 
         <?php endwhile; ?>
-        <?php if ($count <= 6) : ?>
+        <?php if ($count >= 6) : ?>
           <div class="cell medium-8 flex-container flex-dir-column mbm">
             <div class="see-all-card bg-punk-pink white pal flex-child-auto">
               <h1>City of Philadelphia Action Guides</h1>
