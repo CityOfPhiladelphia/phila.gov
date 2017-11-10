@@ -17,6 +17,7 @@
 
 .panel.info .expandable{
   &:after{
-    background-image:none;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #e0efff);
+    background-image: linear-gradient(rgba(255, 255, 255, 0), #e0efff);
   }
 }
