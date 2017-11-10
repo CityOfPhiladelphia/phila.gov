@@ -63,7 +63,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
           <?php ( strlen( $action['phila_action_content'] ) > 820 ) ? $expand = true : $expand = false; ?>
           <div class="panel info clearfix mbm">
             <div class="<?php echo ($expand) ? 'expandable' : ''?>">
-              <h4 class="mvn all-caps"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
+              <h4 class="mbm"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
               <?php echo $action['phila_action_content'] ?>
             </div>
             <?php if ( $expand ): ?>
