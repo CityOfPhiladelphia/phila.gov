@@ -12,21 +12,20 @@ $actions = phila_loop_clonable_metabox( $get_actions );
 ?>
 
 <div class="one-quarter-layout bdr-dark-gray content-action_guide">
-
-  <div class="row mvl">
-    <div class="medium-6 columns">
+  <div class="grid-x grid-margin-x mvl">
+    <div class="cell medium-6 print-stack">
       <h3 id="get-informed">Get informed</h3>
     </div>
-    <div class="medium-18 columns pbxl">
+    <div class="medium-18 cell pbxl">
       <?php echo rwmb_meta('phila_action_get_informed'); ?>
     </div>
   </div>
 
-  <div class="row mvl">
-    <div class="medium-6 columns">
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-6 cell">
       <h3 id="know-the-facts">Know the facts</h3>
     </div>
-    <div class="medium-18 columns pbxl">
+    <div class="medium-18 cell pbxl">
       <?php foreach( $facts as $fact ) :?>
         <div class="mbl">
           <h4 class="h3 black bg-ghost-gray h2 phm-mu mtn mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
@@ -36,11 +35,11 @@ $actions = phila_loop_clonable_metabox( $get_actions );
     </div>
   </div>
 
-  <div class="row mvl">
-    <div class="medium-6 columns">
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-6 cell print-stack">
       <h3 id="take-action" class="mbn">Take action</h3>
     </div>
-    <div class="medium-18 columns">
+    <div class="medium-18 cell">
       <?php foreach( $actions as $action ) : ?>
         <?php switch ( $action['phila_select_action'] ):
           case 'share':
