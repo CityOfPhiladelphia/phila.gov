@@ -61,16 +61,17 @@ $actions = phila_loop_clonable_metabox( $get_actions );
             break;
           endswitch;
           ?>
-          <div class="panel info mbm collapsible">
-            <h4 class="mvn all-caps"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
-            <?php if ( strlen( $action['phila_action_content'] ) > 820 ): ?>
-              <?php echo $action['phila_action_content'] ?>
-              <div class="float-right"> <a href="#" data-toggle="data-expandable"> Expand + </a></div>
-            <?php else: ?>
-            <div><?php echo $action['phila_action_content'] ?> </div>
-          <?php endif; ?>
-        </div>
+          <?php ( strlen( $action['phila_action_content'] ) > 820 ) ? $expand = true : $expand = false; ?>
 
+          <div class="panel info clearfix mbm">
+            <div class="<?php echo ($expand) ? 'expandable' : ''?>">
+              <h4 class="mvn all-caps"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
+              <?php echo $action['phila_action_content'] ?>
+            </div>
+            <?php if ( $expand ): ?>
+              <a href="#" data-toggle="data-expandable" class="float-right"> Expand + </a>
+            <?php endif; ?>
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
