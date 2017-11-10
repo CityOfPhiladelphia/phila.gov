@@ -38,7 +38,7 @@
           </div>
 
         <?php endwhile; ?>
-        <?php if ($count >= 6) : ?>
+        <?php if ( $count >= 5 ) : ?>
           <div class="cell medium-8 flex-container flex-dir-column mbm">
             <div class="see-all-card bg-punk-pink white pal flex-child-auto">
               <h1>City of Philadelphia Action Guides</h1>
