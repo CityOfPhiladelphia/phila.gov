@@ -131,7 +131,7 @@ if ( has_category() ):
           $staff_leadership_output .= '<div class="medium-13 columns staff-summary">';
 
           if ( strlen( $staff_summary ) > 820 ):
-            $staff_leadership_output .=  '<div class="staff-bio expandable">' . $staff_summary . '</div><a href="#" data-toggle="data-expandable" class="float-right"> Expand + </a>';
+            $staff_leadership_output .=  '<div class="staff-bio expandable">' . $staff_summary . '</div><a href="#" data-toggle="expandable" class="float-right"> Expand + </a>';
           else:
             $staff_leadership_output .= '<div class="staff-bio collapsible">' . $staff_summary . '</div>';
           endif;
