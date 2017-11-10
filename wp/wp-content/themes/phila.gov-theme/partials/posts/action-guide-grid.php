@@ -40,7 +40,7 @@
             <div class="see-all-card bg-punk-pink white pal flex-child-auto">
               <h1>City of Philadelphia Action Guides</h1>
               <div class="description">
-                Content content content
+                Get the facts on complex issues and then take action.
               </div>
             </div>
           <?php $see_all = array(
