@@ -29,7 +29,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
     <div class="medium-18 columns pbxl">
       <?php foreach( $facts as $fact ) :?>
         <div class="mbl">
-          <h2 class="black bg-ghost-gray h2 phm-mu mtl mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
+          <h4 class="h3 black bg-ghost-gray h2 phm-mu mtn mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
           <?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
         </div>
       <?php endforeach; ?>
@@ -62,14 +62,13 @@ $actions = phila_loop_clonable_metabox( $get_actions );
           endswitch;
           ?>
           <?php ( strlen( $action['phila_action_content'] ) > 820 ) ? $expand = true : $expand = false; ?>
-
           <div class="panel info clearfix mbm">
             <div class="<?php echo ($expand) ? 'expandable' : ''?>">
               <h4 class="mvn all-caps"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
               <?php echo $action['phila_action_content'] ?>
             </div>
             <?php if ( $expand ): ?>
-              <a href="#" data-toggle="data-expandable" class="float-right"> Expand + </a>
+              <a href="#" data-toggle="expandable" class="float-right"> Expand + </a>
             <?php endif; ?>
         </div>
       <?php endforeach; ?>
