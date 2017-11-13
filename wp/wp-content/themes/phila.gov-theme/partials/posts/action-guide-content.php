@@ -40,6 +40,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
       <h3 id="take-action" class="mbn">Take action</h3>
     </div>
     <div class="medium-18 cell">
+      <?php echo rwmb_meta('phila_action_intro'); ?>
       <?php foreach( $actions as $action ) : ?>
         <?php switch ( $action['phila_select_action'] ):
           case 'share':
