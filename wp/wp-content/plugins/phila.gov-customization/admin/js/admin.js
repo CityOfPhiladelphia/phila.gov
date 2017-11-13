@@ -148,14 +148,6 @@ jQuery(document).ready(function($) {
       maxlength: 116
     });
 
-    if( !phila_WP_User.includes('administrator') && !phila_WP_User.includes('editor') && !phila_WP_User.includes('secondary_action_guide_editor')) {
-      $('#phila_template_select option').each( function () {
-        if( $(this).val() !== '' && $(this).val() !== 'action_guide' ){
-          $(this).css('display', 'none');
-        }
-      });
-    }
-
   }
 
 });
