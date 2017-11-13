@@ -2,7 +2,7 @@
   <div id="archive-results">
     <form v-on:submit.prevent="onSubmit">
       <div class="search">
-        <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field"
+        <input id="post-search" type="text" name="search" placeholder="Search by author, title, or keyword" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>

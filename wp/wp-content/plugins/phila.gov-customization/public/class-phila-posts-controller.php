@@ -38,15 +38,41 @@ class Phila_Archives_Controller {
       'schema' => array( $this, 'get_category_schema' ),
     ) );
   }
+
   public function set_query_defaults($request){
-    $query_defaults = array(
-      'posts_per_page' => $request['count'],
-      's' => $request['s'],
-      'order' => 'desc',
-      'orderby' => 'date',
-      'category' => $request['category'],
+
+    $search = sanitize_text_field( $request['s'] );
+
+    $args = array(
+      'count_total' => false,
+      'search' => sprintf( '*%s*', $search ),
+      'search_fields' => array(
+        'display_name',
+        'user_login',
+      ),
+      'fields' => 'ID',
     );
 
+    $matching_users = get_users( $args );
+
+    // Don't modify the query if there aren't any matching users
+    if ( empty( $matching_users ) ) {
+      $query_defaults = array(
+        'posts_per_page' => $request['count'],
+        's' => $request['s'],
+        'order' => 'desc',
+        'orderby' => 'date',
+        'category' => $request['category'],
+      );
+    }else {
+      $query_defaults = array(
+        'posts_per_page' => $request['count'],
+        'author__in' => $matching_users,
+        'order' => 'desc',
+        'orderby' => 'date',
+        'category' => $request['category'],
+      );
+    }
     if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
       $date_query = array(
         'date_query' => array(
@@ -61,11 +87,12 @@ class Phila_Archives_Controller {
     }
     return $query_defaults;
   }
+
   /**
    * Get the 40 latest posts within the "archives" umbrella
    *
    * @param WP_REST_Request $request Current request.
-   */
+  */
   public function get_items( $request ) {
     $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post');
 
@@ -259,6 +286,10 @@ class Phila_Archives_Controller {
 
     if (isset( $schema['properties']['template'] )) {
       $post_data['template']  = (string) phila_get_selected_template($post->ID);
+    }
+
+    if (isset( $schema['properties']['author'] )) {
+      $post_data['author']  = (string) $post->author_name;
     }
 
     if (isset( $schema['properties']['date'] )) {
