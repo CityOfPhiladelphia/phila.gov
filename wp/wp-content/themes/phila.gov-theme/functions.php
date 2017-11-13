@@ -1509,6 +1509,13 @@ function phila_get_post_label( $label ){
   if ( isset( $label ) ) {
     $original_label = $label;
     switch( $original_label ) {
+      case 'action_guide':
+        $label = array(
+          'label' => $original_label,
+          'nice' => 'Action guide',
+          'icon' => 'users',
+        );
+        break;
       case 'announcement':
         $label = array(
           'label' => $original_label,

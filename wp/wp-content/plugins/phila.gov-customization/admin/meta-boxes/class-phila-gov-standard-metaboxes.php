@@ -512,4 +512,43 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
+  public static function phila_call_to_action_group_content( $datalist = null ){
+    return array(
+      array(
+        'name'  => 'Link title',
+        'id'    => 'phila_action_panel_cta_text_multi',
+        'type'  => 'text',
+        'class' => 'action-panel-cta-text',
+        'size'  => '40',
+        'datalist' => $datalist
+      ),
+      array(
+        'name'  => 'Summary',
+        'id'    => 'phila_action_panel_summary_multi',
+        'type'  => 'textarea',
+        'class' => 'action-panel-details',
+      ),
+      array(
+        'name'  => 'Icon',
+        'id'    => 'phila_action_panel_fa_multi',
+        'type'  => 'text',
+        'class' => 'action-panel-fa',
+        'desc'  => 'Uses <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icons. Eg: fa-bell'
+      ),
+      array(
+        'name'  => 'Link url',
+        'id'    => 'phila_action_panel_link_multi',
+        'type'  => 'url',
+        'class' => 'action-panel-link',
+      ),
+      array(
+        'name'  => 'External Link',
+        'id'    => 'phila_action_panel_link_loc_multi',
+        'type'  => 'checkbox',
+        'class' => 'action-panel-link-loc',
+        'desc'  => 'Does this link directs users away from beta.phila.gov?',
+      )
+    );
+  }
+
 }

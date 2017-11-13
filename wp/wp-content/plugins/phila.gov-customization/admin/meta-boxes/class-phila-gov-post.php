@@ -34,6 +34,11 @@ if ( class_exists("Phila_Gov_Post" ) ){
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'action_guide'),
+        ),
+      ),
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
         'relation' => 'OR',
@@ -52,6 +57,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
          ),
        )
     );
+
 
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',
@@ -88,6 +94,102 @@ if ( class_exists("Phila_Gov_Post" ) ){
         )
       )
     );
+
+    /* Action guide specific metaboxes */
+
+    $meta_boxes[] = array(
+      'title'    => 'Get informed',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_action_get_informed',
+          'type' => 'wysiwyg',
+        )
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title'    => 'Know the facts',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_action_facts',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        )
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title' => 'Take action',
+      'pages' => array('post'),
+      'context' => 'normal',
+      'priority'  => 'high',
+
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide'),
+        ),
+      ),
+
+      'fields' => array(
+        array(
+          'type'  => 'heading',
+          'name' => 'Take action intro',
+        ),
+        array(
+          'id'  => 'phila_action_intro',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+        array(
+          'id'  => 'phila_take_action',
+          'type' => 'group',
+          'clone'  => true,
+          'max_clone' => 4,
+          'sort_clone' => true,
+
+          'fields' => array(
+            array(
+              'id'  => 'phila_select_action',
+              'type'  => 'select',
+              'std' => 'share',
+              'options' => array(
+                'share' => 'Share',
+                'contact' => 'Contact',
+                'give_back' => 'Give back',
+                'attend'  => 'Attend'
+              ),
+            ),
+              array(
+                'id'  => 'phila_action_content',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              )
+          ),
+        ),
+      ),
+    );
+
+
 
     return $meta_boxes;
   }
