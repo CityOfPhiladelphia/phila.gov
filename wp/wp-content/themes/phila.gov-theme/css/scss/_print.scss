@@ -29,7 +29,7 @@
   .button,
   nav,
   .social-media,
-
+  [data-toggle="expandable"]
   //if it is hidden for small screens, we probably want to hide it for print too
   .show-for-medium
   {
@@ -64,5 +64,11 @@
 
   .form-all .form-label{
     margin:0;
+  }
+  .expandable{
+    height:100%;
+  }
+  .print-stack{
+    width:100% !important;
   }
 }

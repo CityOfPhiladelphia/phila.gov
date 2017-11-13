@@ -128,7 +128,8 @@ export default {
       selectedCategory: '',
 
       templates: {
-        featured : "Featured",
+        featured : 'Featured',
+        action_guide: 'Action guides',
         post : 'Posts',
         press_release : 'Press releases'
       },
@@ -218,6 +219,7 @@ export default {
           .then(response => {
             this.loading = false
             this.posts = response.data
+
             this.successfulResponse
           })
           .catch(e => {
@@ -259,9 +261,9 @@ export default {
 
       axios.get(endpoint + 'archives', {
         params : {
+          's': this.searchedVal,
           'category': this.selectedCategory,
           'template' : this.checkedTemplates,
-          's': this.searchedVal,
           'count' : -1,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
@@ -270,6 +272,7 @@ export default {
         .then(response => {
           this.loading = false
           this.posts = response.data
+
           this.successfulResponse
         })
         .catch(e => {
@@ -277,17 +280,16 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
-      console.log('filterByCategory')
       this.$nextTick(function () {
 
       this.loading = true
       this.selectedCategory = selectedVal
       axios.get(endpoint + 'archives', {
         params : {
+          's': this.searchedVal,
           'template' : this.checkedTemplates,
           'category': this.selectedCategory,
           'count' : -1,
-          's': this.searchedVal,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
           }

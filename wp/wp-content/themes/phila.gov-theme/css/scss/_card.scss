@@ -1,5 +1,6 @@
 a.card,
 .card{
+  position: relative;
   margin-bottom:0;
   h1 {
     font-size: rem-calc(25);
@@ -19,6 +20,12 @@ a.card,
       p {
         font-size: 1rem;
       }
+    }
+  }
+  &.card--action_guide{
+    min-height:24rem;
+    &:not(.card--last){
+      border-bottom:5px solid map-get($post_content_types, action_guide);
     }
   }
   &.card--press_release{
@@ -41,6 +48,10 @@ a.card,
     h1 {
       font-size: rem-calc(16);
     }
+  }
+  .post-meta{
+    position: absolute;
+    bottom:1rem;
   }
 }
 .feature-main{
@@ -99,5 +110,12 @@ a.card.card--last,
   .cell{
     //Add breathing room to mobile view
     margin-bottom:1rem;
+  }
+}
+
+.see-all-card{
+  border-bottom:5px solid white;
+  h1{
+    margin:0;
   }
 }
