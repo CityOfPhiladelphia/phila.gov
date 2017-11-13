@@ -41,27 +41,22 @@ class Phila_Archives_Controller {
 
   public function set_query_defaults($request){
 
-    // Get all of the users of the blog and see if the search query matches either
-  	// the display name or the user login
-  	add_filter( 'pre_user_query', 'db_filter_user_query' );
+    $search = sanitize_text_field( $request['s'] );
 
-  	$search = sanitize_text_field( $request['s'] );
+    $args = array(
+      'count_total' => false,
+      'search' => sprintf( '*%s*', $search ),
+      'search_fields' => array(
+        'display_name',
+        'user_login',
+      ),
+      'fields' => 'ID',
+    );
 
-  	$args = array(
-  		'count_total' => false,
-  		'search' => sprintf( '*%s*', $search ),
-  		'search_fields' => array(
-  			'display_name',
-  			'user_login',
-  		),
-  		'fields' => 'ID',
-  	);
+    $matching_users = get_users( $args );
 
-  	$matching_users = get_users( $args );
-  	remove_filter( 'pre_user_query', 'db_filter_user_query' );
-
-  	// Don't modify the query if there aren't any matching users
-  	if ( empty( $matching_users ) ) {
+    // Don't modify the query if there aren't any matching users
+    if ( empty( $matching_users ) ) {
       $query_defaults = array(
         'posts_per_page' => $request['count'],
         's' => $request['s'],
