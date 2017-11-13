@@ -58,6 +58,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
        )
     );
 
+
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
@@ -150,6 +151,15 @@ if ( class_exists("Phila_Gov_Post" ) ){
       ),
 
       'fields' => array(
+        array(
+          'type'  => 'heading',
+          'name' => 'Take action intro',
+        ),
+        array(
+          'id'  => 'phila_action_intro',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
         array(
           'id'  => 'phila_take_action',
           'type' => 'group',
