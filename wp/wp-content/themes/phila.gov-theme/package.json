@@ -59,7 +59,7 @@
     "vue-router": "^3.0.1",
     "vue-select": "^2.3.0",
     "vue-template-compiler": "^2.5.3",
-    "vuejs-datepicker": "^0.9.19"
+    "vuejs-datepicker": "^0.9.20"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"

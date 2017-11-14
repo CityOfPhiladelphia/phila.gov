@@ -7,9 +7,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
-  <a href="<?php echo the_permalink(); ?>" class="grid-x grid-margin-x hover-fade faux-card">
+  <a href="<?php echo the_permalink(); ?>" class="grid-x hover-fade faux-card cell medium-24">
     <?php if ( has_post_thumbnail() ) : ?>
-      <div class="cell medium-8">
+      <div class="cell medium-8 prm">
         <?php echo phila_get_thumbnails(); ?>
       </div>
     <?php endif; ?>
