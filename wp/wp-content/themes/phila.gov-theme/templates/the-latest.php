@@ -99,7 +99,7 @@
     <section>
       <div id="events" data-magellan-target="events">
         <header class="row columns mtl">
-          <h2>Upcoming events</h2>
+          <h1>Upcoming events</h1>
         </header>
         <div class="grid-container">
           <div class="grid-x">
