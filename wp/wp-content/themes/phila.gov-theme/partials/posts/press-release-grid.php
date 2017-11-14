@@ -81,14 +81,9 @@ if ( empty( $press_categories ) ) {
                   'content_type' => 'press_release',
                   'nice_name' => 'Press releases',
                   'is_full' => true
-                ); ?>
-                <?php if( !empty( $press_categories ) ) :
-                  $see_all_URL = array(
-                    'URL' => '/the-latest/archive?template=press_release&category=' . $press_categories[0]
-                  );
-                  $see_all = array_replace($see_all, $see_all_URL );
-                  endif; ?>
-                  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                );
+                ?>
+                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               <?php endif;?>
               <?php if ($count == 2 || $count == 4) :?>
               </div>

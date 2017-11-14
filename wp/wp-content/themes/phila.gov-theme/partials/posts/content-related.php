@@ -11,9 +11,6 @@
 
 <?php if ( $related_posts->have_posts() ) : ?>
     <h2><?php _e( 'Related content' ); ?></h2>
-
-  <div class="grid-container">
-    <div class="grid-x grid-margin-x">
       <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
         <?php $count++; ?>
         <?php if ( isset( $is_press_release ) ):  ?>
@@ -24,7 +21,5 @@
             <?php include( locate_template( 'partials/posts/content-list-image.php') ); ?>
          <?php endif; ?>
       <?php endwhile; ?>
-  </div>
-</div>
   <?php wp_reset_postdata(); ?>
 <?php endif; ?>
