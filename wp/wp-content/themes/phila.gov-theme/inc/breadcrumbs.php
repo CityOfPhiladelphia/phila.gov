@@ -14,17 +14,21 @@ function phila_breadcrumbs() {
     echo '">';
     echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
-
+    //TODO: loop through template
     if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if(phila_get_selected_template( $post->ID, false ) == 'press_release') {
         echo '<li><a href="/the-latest/archive?template=press_release">Press releases</a></li>';
-      }else{
+      }elseif (phila_get_selected_template( $post->ID, false ) == 'post'){
         echo '<li><a href="/the-latest/archive?template=post">Posts</a></li>';
+      }elseif (phila_get_selected_template( $post->ID, false ) == 'action_guide') {
+        echo '<li><a href="/the-latest/archive?template=action_guide">Action guides</a></li>';
+      }else {
+        echo '<li><a href="/the-latest/archive?template=featured">Featured</a></li>';
       }
-        echo '<li>';
-        the_title();
-        echo '</li>';
+      echo '<li>';
+      the_title();
+      echo '</li>';
 
     } elseif ( is_singular('news_post') ) {
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
