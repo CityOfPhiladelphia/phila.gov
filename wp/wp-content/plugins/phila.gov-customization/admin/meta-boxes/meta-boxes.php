@@ -74,29 +74,52 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'id'       => 'announcement_end',
-    'title'    => 'Announcement end time',
+    'title'    => 'When should this end?',
     'pages'    => array( 'announcement' ),
     'context'  => 'side',
     'priority' => 'high',
 
     'fields' => array(
       array(
-        'name'  => 'When should this announcement end?',
+        'name'  => 'End date',
         'id'    => 'phila_announce_end_date',
         'type'  => 'date',
         'class' =>  'effective-end-time',
-        'desc'  => 'Choose a time for this announcement to expire. Announcements will automatically expire two weeks from their publish date.',
+        'desc'  => 'Choose a time for this announcement to expire. Announcements can only exist for a maximum of two weeks.',
+        'admin_columns' => 'after date',
         'required'=> true,
-        'timestamp' => true,
         'size'  =>  25,
         'js_options' =>  array(
           'dateFormat' => 'mm-dd-yy',
           'controlType'=> 'select',
           'oneLine'=> true,
-          'maxDate:' => '+2w'
+          'maxDate' => '+2w'
         ),
       ),
     ),
+  );
+  $meta_boxes[] = array(
+    'title'    => 'Show on homepage',
+    'pages'    => array( 'announcement' ),
+    'context'  => 'side',
+    'priority' => 'high',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
+      'relation' => 'OR',
+     ),
+     'fields' => array(
+       array(
+         'name'  => '',
+         'desc'  => 'Display on phila.gov homepage?',
+         'id'    => 'show_on_home',
+         'type'  => 'radio',
+         'std'=> '0',
+         'options' =>  array(
+             '0' => 'No',
+             '1' => 'Yes'
+         )
+       ),
+     )
   );
 
   $meta_boxes[] = array(
