@@ -45,7 +45,7 @@
               <header class="mvm">
                 <h1><?php echo get_the_title(); ?></h1>
               </header>
-              <?php echo get_the_content(); ?>
+              <?php the_content(); ?>
               <div class="post-meta mbm reveal-footer">
                 <span class="date-published">Announced on: <time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
                 <span class="departments"><?php echo phila_get_current_department_name( $cats, $byline = false, $break_tags = false ); ?></span>
