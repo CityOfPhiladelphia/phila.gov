@@ -11,6 +11,8 @@ $actions = phila_loop_clonable_metabox( $get_actions );
 
 ?>
 
+<p class="lead"><i>To help you understand your rights and protections, the City of Philadelphia is creating action guides on federal policies. The action guides include facts, ways you can help, and other resources.</i></p>
+
 <div class="one-quarter-layout bdr-dark-gray content-action_guide">
   <div class="grid-x grid-margin-x mvl">
     <div class="cell medium-6 print-stack">
