@@ -6,7 +6,7 @@
 <?php $ann_categories = isset( $category ) ? $category : '';?>
 <?php $current_time = current_time('m-d-y'); ?>
 
-<?php $announcements = array(
+<?php $announcement_args = array(
   'posts_per_page' => 4,
   'post_type' => array( 'announcement' ),
   'order' => 'desc',
@@ -23,7 +23,7 @@
 
 <?php $label = 'announcement'; ?>
 
-<?php $announcements = new WP_Query( $announcements )?>
+<?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
 <div class="grid-container mbxl">
   <?php if ( $announcements->have_posts() ) : ?>
