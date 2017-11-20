@@ -107,6 +107,11 @@ get_header(); ?>
       <?php include( locate_template( 'partials/posts/featured-grid.php' ) ); ?>
 
       <div class="mtl">
+        <?php $home_filter = array(
+          'key' => 'show_on_home',
+          'value'   => '1' ,
+          'compare' => '='
+        );?>
         <?php include( locate_template( 'partials/posts/announcements-grid.php' ) ); ?>
       </div>
 
