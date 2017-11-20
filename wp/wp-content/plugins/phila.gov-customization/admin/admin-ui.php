@@ -64,9 +64,9 @@ function phila_show_private_pages_menu_selection( $args ){
     return $args;
 }
 
-add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 1 );
+add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 10, 1 );
 
-function phila_load_admin_media_js(){
+function phila_load_admin_media_js( $hook ) {
   wp_register_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__, array('jquery-validation') ) );
 
   wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jquery') ) );
@@ -75,6 +75,20 @@ function phila_load_admin_media_js(){
 
   wp_enqueue_script( 'all-admin-scripts' );
 
+  // Javascript code only for edit or new post 
+  if ( $hook == 'post-new.php' || $hook == 'post.php' ) { 
+      global $post; 
+  
+      // Create some helpful data to send to Javascript 
+      $helpful_data = array( 
+          'post_type' => ( isset( $post->post_type ) ) ? $post->post_type : '' 
+      ); 
+  
+      wp_register_script( 'admin-edit-post-script', plugins_url( 'js/admin-edit.post.js' , __FILE__, array('jquery') ) );  
+      wp_localize_script( 'admin-edit-post-script', 'php_values', $helpful_data ); 
+  
+      wp_enqueue_script( 'admin-edit-post-script' ); 
+  } 
 }
 
 add_action('get_header', 'phila_filter_head');
