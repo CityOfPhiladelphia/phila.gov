@@ -18,7 +18,7 @@ class Phila_Gov_Admin_Templates {
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_departments'), 10, 1 );
 
-    add_filter( 'rwmb_outside_conditions', array( $this, 'hide_categories' ), 10, 1 );
+    add_filter( 'rwmb_outside_conditions', array( $this, 'post_box_hide_from_non_admins' ), 10, 1 );
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_service_pages' ), 10, 1 );
 
@@ -91,18 +91,17 @@ class Phila_Gov_Admin_Templates {
   }
 
   //TODO: break these callbacks out into individual functions
-  function hide_categories( $conditions ) {
+  function post_box_hide_from_non_admins( $conditions ) {
 
-    $conditions['categorydiv'] = array(
+    $conditions['#categorydiv'] = array(
       'hidden' => array(
         'when' => array(
           array('phila_get_user_roles_callback()', false ),
         ),
-        'relation' => 'or'
       ),
     );
 
-    $conditions['postdivrich'] = array(
+    $conditions['#postdivrich'] = array(
       'visible' => array(
         'when' => array(
           array( 'phila_template_select', '=', '' ),
@@ -114,7 +113,7 @@ class Phila_Gov_Admin_Templates {
       ),
     );
 
-    $conditions['additional-content'] = array(
+    $conditions['.additional-content'] = array(
       'visible' => array(
         'when' => array(
           array( 'phila_template_select', '=', 'default' ),
@@ -124,7 +123,14 @@ class Phila_Gov_Admin_Templates {
         'relation' => 'or'
       ),
     );
-
+    //hide submit div when user is a readonly user
+    $conditions['#submitdiv'] = array(
+      'hidden' => array(
+        'when' => array(
+          array('phila_user_read_only()', true ),
+        ),
+      ),
+    );
     return $conditions;
   }
 
