@@ -20,13 +20,12 @@
     ),
   ),
 ); ?>
-<?php var_dump($announcements )?>
 
 <?php $label = 'announcement'; ?>
 
 <?php $announcements = new WP_Query( $announcements )?>
 <?php $count = $announcements->post_count ?>
-<div class="grid-container">
+<div class="grid-container mbxl">
   <?php if ( $announcements->have_posts() ) : ?>
     <?php if (!is_page_template('templates/the-latest.php')): ?>
       <h2>Announcements</h2>
