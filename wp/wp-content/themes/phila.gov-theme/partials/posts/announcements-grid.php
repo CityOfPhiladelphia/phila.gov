@@ -5,6 +5,7 @@
 ?>
 <?php $ann_categories = isset( $category ) ? $category : '';?>
 <?php $current_time = current_time('m-d-y'); ?>
+<?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
 <?php $announcement_args = array(
   'posts_per_page' => 4,
@@ -13,11 +14,13 @@
   'orderby' => 'post_date',
   'cat' => $ann_categories,
   'meta_query'  => array(
+    'relation'  => 'AND',
     array(
       'key' => 'phila_announce_end_date',
       'value'   => $current_time ,
       'compare' => '>=',
     ),
+    $home_filter
   ),
 ); ?>
 
