@@ -1,0 +1,9 @@
+/* Modify admin for users that can't make any changes */
+#submitdiv,
+.edit,
+.trash,
+.inline.hide-if-no-js,
+.media-toolbar,
+.page-title-action{
+  display: none;
+}

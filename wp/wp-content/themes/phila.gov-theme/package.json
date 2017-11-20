@@ -54,11 +54,11 @@
     "mustache": "^2.3.0",
     "phila-standards": "^0.12.0",
     "uglify-js": "^3.1.10",
-    "vue": "^2.5.6",
+    "vue": "^2.5.7",
     "vue-paginate": "^3.5.1",
     "vue-router": "^3.0.1",
     "vue-select": "^2.3.0",
-    "vue-template-compiler": "^2.5.6",
+    "vue-template-compiler": "^2.5.7",
     "vuejs-datepicker": "^0.9.20"
   },
   "browser": {

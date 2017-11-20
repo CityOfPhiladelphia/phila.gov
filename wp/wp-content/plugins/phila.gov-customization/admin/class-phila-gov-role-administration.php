@@ -242,6 +242,15 @@ class Phila_Gov_Role_Administration {
 
       wp_enqueue_style( 'admin-department-author' );
 
+      $user = wp_get_current_user();
+
+      if ( in_array( 'primary_admin_read_only',  $user->caps ) ) {
+        wp_register_style( 'admin-read-only', plugins_url( 'css/read-only-user.css' , __FILE__  ) );
+
+        wp_enqueue_style( 'admin-read-only' );
+
+      }
+
     }
   }
 
