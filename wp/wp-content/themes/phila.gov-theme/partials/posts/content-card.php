@@ -17,13 +17,16 @@
 <?php if ($count == 4 && $label_arr['label'] == 'press_release') : ?>
   <?php $is_last = true; ?>
 <?php endif; ?>
-<?php if ($label_arr['label'] == 'press_release') {
+<?php if ($label_arr['label'] == 'press_release') :
   $article_classes .= 'type-press_release';
   $article_classes .= isset($is_last) ? ' card--last' : '';
-}?>
+  endif; ?>
+<?php if ( $label_arr['label'] == 'announcement' ) : ?>
+  <?php $is_last = false; ?>
+<?php endif;?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $article_classes ); ?>>
-  <a <?php echo ($label_arr['label'] !== 'announcement') ? 'href=' . get_permalink() : '' ?> class="card card--<?php echo $label_arr['label'] ?> <?php echo isset($is_last) ? 'card--last' : ''; ?> pam" <?php echo ($label_arr['label'] == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
+  <a <?php echo ($label_arr['label'] !== 'announcement') ? 'href=' . get_permalink() : '' ?> class="card card--<?php echo $label_arr['label'] ?> <?php echo ($is_last) ? 'card--last' : ''; ?> pam" <?php echo ($label_arr['label'] == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
     <div class="grid-x flex-dir-column card--content">
       <div class="cell align-self-top post-label post-label--<?php echo $label_arr['label']?>">
         <i class="fa fa-<?php echo $label_arr['icon'] ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_arr['nice']; ?></span>

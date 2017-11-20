@@ -54,7 +54,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
       <?php endif; ?>
     </div>
   </header>
-  <?php if ( has_post_thumbnail() ): ?>
+  <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') ): ?>
     <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>

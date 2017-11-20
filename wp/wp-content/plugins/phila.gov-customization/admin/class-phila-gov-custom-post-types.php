@@ -31,11 +31,41 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_annoucement' ) );
 
-    //deprecated content types.
+    add_action( 'admin_init', array($this, 'redirect_admin_pages'));
+
+
+
+    //deprecated CPTs
     add_action( 'init', array( $this, 'create_phila_posts' ) );
     add_action( 'init', array( $this, 'create_phila_news_post' ) );
     add_action( 'init', array( $this, 'create_phila_press_release' ) );
 
+  }
+
+
+  /**
+  * Redirect admin pages from old CPTs to Posts
+  *
+  * Redirect admin page to another admin page.
+  *
+  * @access public
+  *
+  * @return void
+  */
+  function redirect_admin_pages(){
+    global $pagenow;
+    if($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'phila_post'){
+        wp_redirect(admin_url('edit.php', 'http'), 301);
+        exit;
+    }
+    if($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'news_post'){
+        wp_redirect(admin_url('edit.php', 'http'), 301);
+        exit;
+    }
+    if($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'press_release'){
+        wp_redirect(admin_url('edit.php', 'http'), 301);
+        exit;
+    }
   }
 
   function create_phila_department_pages() {

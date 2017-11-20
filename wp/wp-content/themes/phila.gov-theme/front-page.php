@@ -106,6 +106,15 @@ get_header(); ?>
       </div>
       <?php include( locate_template( 'partials/posts/featured-grid.php' ) ); ?>
 
+      <div class="mtl">
+        <?php $home_filter = array(
+          'key' => 'show_on_home',
+          'value'   => '1' ,
+          'compare' => '='
+        );?>
+        <?php include( locate_template( 'partials/posts/announcements-grid.php' ) ); ?>
+      </div>
+
       <?php $the_latest = array(
         'post_type' => 'page',
         'meta_key' => '_wp_page_template',
