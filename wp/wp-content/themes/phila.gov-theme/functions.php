@@ -294,15 +294,16 @@ function phila_gov_scripts() {
     );
   }
 
-  if( is_page_template( 'templates/the-latest-archive.php' ) ){
+  if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive( 'document' ) ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
   }
+
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
 
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
-  if  ( is_user_logged_in() ){
+  if ( is_user_logged_in() ){
     wp_enqueue_script( 'logged-in-js', get_stylesheet_directory_uri() . '/admin/js/front-end.js', array( 'phila-scripts' ), '', true );
 
     wp_enqueue_style( 'logged-in-css', get_stylesheet_directory_uri() . '/admin/css/front-end.css');
