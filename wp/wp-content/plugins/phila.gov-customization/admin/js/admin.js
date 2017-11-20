@@ -5,6 +5,11 @@ function phila_get_user_roles_callback() {
     return false;
   }
 }
+function phila_user_read_only(){
+  if ( phila_WP_User.includes( 'primary_admin_read_only' ) ){
+    return true;
+  }
+}
 
 
 /* For all admins */
