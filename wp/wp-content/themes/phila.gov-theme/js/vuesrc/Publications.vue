@@ -1,7 +1,8 @@
 <template>
   <div id="publications">
     <phila-search
-    placeholder="Search by document title"></phila-search>
+    placeholder="Search by document title"
+    aria-label="Search by document title"></phila-search>
     <div id="filter-results" class="bg-ghost-gray pam">
       <div class="h5">Filter results</div>
         <div class="grid-x grid-margin-x">
@@ -167,7 +168,7 @@ export default {
     },
     goToPost: function (link){
       window.location.href = link
-    },
+     },
     onSubmit: function (event) {
       console.log('fired')
       this.loading = true
@@ -225,6 +226,7 @@ export default {
 
       this.loading = true
 
+      console.log(this.search)
       axios.get(pubsEndpoint + 'archives', {
         params : {
           's': this.search,
