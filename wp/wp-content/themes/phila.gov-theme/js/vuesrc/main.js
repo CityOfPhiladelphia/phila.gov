@@ -16,15 +16,14 @@ const router = new VueRouter({
 const route = [
   { path: '/archives' },
 ]
-
-new Vue({
-  el: '#archive-results',
-  router,
-  render: h => h(App)
-})
+//
+// new Vue({
+//   el: '#archive-results',
+//   router,
+//   render: h => h(App)
+// })
 
 new Vue({
   el: '#publication-search',
-  router,
   render: h => h(Pubs)
 })
