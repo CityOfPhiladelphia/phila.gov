@@ -24,7 +24,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
           'type' => 'textarea',
           'required'  => true,
           'id'  => 'phila_social_intent',
-          'desc'  => 'Curate tweet sharing text. Required. 256 character limit. A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+          'desc'  => 'Curate Tweet sharing text. Required. 116 character limit.<br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
         )
       ),
     );
