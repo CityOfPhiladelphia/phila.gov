@@ -4,10 +4,10 @@
     <div class="search">
       <input class="search-field"
       type="text"
+      name="search"
       :id="id"
-      :name="name"
       :placeholder="placeholder"
-      :ref="search-field">
+      :aria-label="search">
       <input type="submit" value="submit" class="search-submit">
     </div>
   </form>
@@ -16,11 +16,28 @@
 <script>
 export default {
   name: 'search',
-  props: ['submit'],
-  methods: {
-    onSubmit: function(event) {
-        console.log(this)
+  data: function () {
+    return {
+      value: {
+        default: null
+      },
     }
+  },
+  props: {
+    id: String,
+    placeholder: String,
+    ariaLabel: {
+      type: String,
+      default: 'Search'
+    },
+    onSubmit: {
+      default: function (val) {
+        this.$emit('input', val)
+      }
+    }
+  },
+  methods: {
+
   }
 }
 </script>
