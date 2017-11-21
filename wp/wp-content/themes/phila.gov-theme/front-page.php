@@ -95,17 +95,17 @@ get_header(); ?>
     </div>
     <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
     <?php $service_updates_loop = new WP_Query( $args ); ?>
-    <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+    <div class="mbxl">
+      <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+    </div>
     <?php wp_reset_query();?>
 
-    <div class="mtl">
-      <?php $home_filter = array(
-        'key' => 'show_on_home',
-        'value'   => '1' ,
-        'compare' => '='
-      );?>
-      <?php include( locate_template( 'partials/posts/announcements-grid.php' ) ); ?>
-    </div>
+    <?php $home_filter = array(
+      'key' => 'show_on_home',
+      'value'   => '1' ,
+      'compare' => '='
+    );?>
+    <?php include( locate_template( 'partials/posts/announcements-grid.php' ) ); ?>
 
     <section class="the-latest mvm">
       <div class="row">
