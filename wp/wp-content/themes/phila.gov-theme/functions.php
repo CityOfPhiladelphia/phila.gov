@@ -237,12 +237,10 @@ function phila_open_graph() {
 
   $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-  $blog_info = get_bloginfo('description');
-
   //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? $blog_info : phila_get_item_meta_desc(); ?>"/>
+  <meta property="og:description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description'): phila_get_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -977,6 +975,8 @@ function phila_get_item_meta_desc( $bloginfo = true ){
   $page_desc = rwmb_meta( 'phila_page_desc' );
 
   $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
+
+  $blog_info = get_bloginfo('description');
 
   //This order matters. If $canonical_meta_desc is found first, it should be used.
   array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc);
