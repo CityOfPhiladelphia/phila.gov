@@ -1,26 +1,28 @@
 <template>
   <form
-    @submit.prevent="onSubmit">
+    v-on:submit.prevent="onSubmit">
     <div class="search">
       <input class="search-field"
       type="text"
       name="search"
       :id="id"
       :placeholder="placeholder"
-      :aria-label="search">
-      <input type="submit" value="submit" class="search-submit">
+      :aria-label="search"
+      v-model="search">
+      <input
+      type="submit"
+      value="submit"
+      class="search-submit">
     </div>
   </form>
 </template>
 
 <script>
 export default {
-  name: 'search',
+  name: 'phila-search',
   data: function () {
     return {
-      value: {
-        default: null
-      },
+      search: ''
     }
   },
   props: {
@@ -30,14 +32,11 @@ export default {
       type: String,
       default: 'Search'
     },
-    onSubmit: {
-      default: function (val) {
-        this.$emit('input', val)
-      }
-    }
   },
   methods: {
-
+    onSubmit: function (event) {
+      return this.search
+    }
   }
 }
 </script>
