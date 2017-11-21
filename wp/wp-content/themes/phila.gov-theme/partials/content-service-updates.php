@@ -21,7 +21,7 @@
 
   <div class="row">
     <div class="columns">
-      <table class="service-update mvn">
+      <table class="service-update">
         <tbody>
          <?php //Sort by urgency level (critical to normal) and then A-Z ?>
          <?php foreach ( $update_array as $key => $update_item ): ?>
