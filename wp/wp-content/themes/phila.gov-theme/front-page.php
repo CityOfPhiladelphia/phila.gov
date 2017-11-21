@@ -90,7 +90,7 @@ get_header(); ?>
     <!-- End Hero Content -->
     <div class="row">
       <div class="columns">
-        <h2 class="contrast">Service updates</h2>
+        <h2>Service updates</h2>
       </div>
     </div>
     <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
@@ -98,22 +98,23 @@ get_header(); ?>
     <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     <?php wp_reset_query();?>
 
-    <section class="the-latest mvxl">
+    <div class="mtl">
+      <?php $home_filter = array(
+        'key' => 'show_on_home',
+        'value'   => '1' ,
+        'compare' => '='
+      );?>
+      <?php include( locate_template( 'partials/posts/announcements-grid.php' ) ); ?>
+    </div>
+
+    <section class="the-latest mvm">
       <div class="row">
         <div class="columns">
-          <h1>The latest news + events</h1>
+          <h2>The latest news + events</h2>
         </div>
       </div>
       <?php include( locate_template( 'partials/posts/featured-grid.php' ) ); ?>
 
-      <div class="mtl">
-        <?php $home_filter = array(
-          'key' => 'show_on_home',
-          'value'   => '1' ,
-          'compare' => '='
-        );?>
-        <?php include( locate_template( 'partials/posts/announcements-grid.php' ) ); ?>
-      </div>
 
       <?php $the_latest = array(
         'post_type' => 'page',
@@ -146,7 +147,7 @@ get_header(); ?>
         <div class="columns">
           <div class="row">
             <div class="columns">
-              <h2 class=contrast>Neighborhood resources</h2>
+              <h2 class="contrast">Neighborhood resources</h2>
             </div>
           </div>
         </div>
