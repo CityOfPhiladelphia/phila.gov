@@ -50,6 +50,9 @@ class Phila_Publications_Controller {
       'post_type' => array('document'),
       'posts_per_page'  => $request['count'],
       'category'  => array($request['category']),
+      's' => $request['s'],
+      'order' => 'desc',
+      'orderby' => 'date',
     );
 
     if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
