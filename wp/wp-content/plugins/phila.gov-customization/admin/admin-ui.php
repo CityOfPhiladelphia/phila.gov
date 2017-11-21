@@ -74,21 +74,6 @@ function phila_load_admin_media_js( $hook ) {
   wp_enqueue_script( 'jquery-validation' );
 
   wp_enqueue_script( 'all-admin-scripts' );
-
-  // Javascript code only for edit or new post 
-  if ( $hook == 'post-new.php' || $hook == 'post.php' ) { 
-      global $post; 
-  
-      // Create some helpful data to send to Javascript 
-      $helpful_data = array( 
-          'post_type' => ( isset( $post->post_type ) ) ? $post->post_type : '' 
-      ); 
-  
-      wp_register_script( 'admin-edit-post-script', plugins_url( 'js/admin-edit.post.js' , __FILE__, array('jquery') ) );  
-      wp_localize_script( 'admin-edit-post-script', 'php_values', $helpful_data ); 
-  
-      wp_enqueue_script( 'admin-edit-post-script' ); 
-  } 
 }
 
 add_action('get_header', 'phila_filter_head');
@@ -165,4 +150,43 @@ add_action( 'init', 'phila_unregister_tags' );
 
 function phila_unregister_tags() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
+}
+
+/**
+ * Validate custom post type Services, if has a parent selected.
+ */
+add_action( 'save_post_service_page', 'validate_service_pages', 13, 1 );
+
+function validate_service_pages( $post_id ) {
+  if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return;
+
+  if ( ! current_user_can('edit_post', $post_id) ) return;
+
+  if( ! isset( $_POST['parent_id'] ) || empty( $_POST['parent_id'] ) ) {
+    // remove the save action to prevent infinite loop.
+    remove_action( 'save_post_service_page', 'validate_service_pages', 13, 1 );
+    // Force to save as draft untill there is a parent selected.
+    $my_post = array(
+      'ID' => $post_id,
+      'post_status' => 'draft'
+    );
+    wp_update_post( $my_post );
+
+    // Set the error to display on "admin_actions"
+    set_transient( 'phila_transient__error', new WP_Error( 'force_draft', __( "It is required to set a 'Parent' for this service, it was updated as Draft" ) ) );
+    // set the action again.
+    add_action( 'save_post_service_page', 'validate_service_pages', 13, 1 );
+  }
+}
+
+add_action( 'admin_notices', 'phila_admin_notice_transient__error' );
+function phila_admin_notice_transient__error() {
+  if ( $error = get_transient( "phila_transient__error" ) ) {
+  ?>
+    <div class="notice notice-error is-dismissible">
+        <p><strong><?php echo $error->get_error_message(); ?></strong></p>
+    </div>
+  <?php
+    delete_transient("phila_transient__error");
+  }
 }
