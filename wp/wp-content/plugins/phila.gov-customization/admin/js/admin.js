@@ -150,7 +150,7 @@ jQuery(document).ready(function($) {
 
   if ( ( typenow == 'post' ) && adminpage.indexOf( 'post' ) > -1 )  {
     $( '#phila_social_intent' ).rules( 'add', {
-      maxlength: 256
+      maxlength: 116
     });
 
   }
