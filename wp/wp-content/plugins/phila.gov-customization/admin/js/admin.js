@@ -11,9 +11,34 @@ function phila_user_read_only(){
   }
 }
 
-
 /* For all admins */
 jQuery(document).ready(function($) {
+
+  // Set error placement, and highlights for custom taxonomy checkboxes
+  // MAYBE WE WILL NEED THIS IN THE FUTURE.
+  jQuery.validator.setDefaults({
+    errorPlacement: function( error, element ) {
+      if( error.attr('id').indexOf('tax_input') > -1 ) {
+          error.insertAfter( $( element ).parents('.categorydiv').eq(0) );
+      } else {
+          error.insertAfter( element );
+      }
+    },
+    highlight: function( element, errorClass ) {
+      if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
+        jQuery( element ).parents('.categorydiv').eq(0).addClass( errorClass );
+      } else {
+        jQuery( element ).addClass( errorClass );
+      }
+    },
+    unhighlight: function( element, errorClass ) {
+      if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
+        jQuery( element ).parents('.categorydiv').eq(0).removeClass( errorClass );
+      } else {
+        jQuery( element ).removeClass( errorClass );
+      }
+    }
+  });
 
   $('[data-readonly="true"]').attr('readonly','readonly');
 
@@ -29,6 +54,11 @@ jQuery(document).ready(function($) {
 
   } else {
 
+    // Remove slug on attachment to prevent clicks on the link
+    if ( typenow == 'attachment' && adminpage.indexOf( 'post' ) > -1 ) {
+      jQuery( '#edit-slug-box' ).hide();
+    }
+
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
         rules: {
@@ -41,6 +71,19 @@ jQuery(document).ready(function($) {
       $('#phila_meta_desc').rules('add', {
         maxlength: 140
       });
+
+      // Set validations for custom post type Service Page
+      if ( typenow == 'service_page' && adminpage.indexOf( 'post' ) > -1 ) {
+        $('select[name="parent_id"]' ).rules( 'add', {
+          'required': true
+        });
+
+        // HOW TO VALIDATE A REQUIRED TAXONOMY! 
+        // jQuery( "input[name='tax_input[service_type][]']" ).rules( 'add', {
+        //       'required': true
+        //     }
+        // );
+      }
     }
 
     if ( ( typenow == 'document' ) && adminpage.indexOf( 'post' ) > -1 ) {
