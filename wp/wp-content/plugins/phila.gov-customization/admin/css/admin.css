@@ -34,6 +34,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #trackbacksdiv,
 #postexcerpt,
 #commentstatusdiv,
+/*Hide View Attachment Page on Admin*/ 
+.attachment-info .view-attachment 
 {
   display: none !important;
 }
