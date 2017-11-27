@@ -235,15 +235,12 @@ function phila_open_graph() {
     $type = 'article';
   }
 
-
-
   $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-  //TODO: Determine which twitter account should be used for site attribution
-  ?>
+  //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary">
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
-  <meta property="og:description" content="<?php echo str_replace('"',  '&quot;', phila_get_item_meta_desc()); ?>"/>
+  <meta property="og:description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description'): phila_get_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
@@ -979,22 +976,16 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 
   $canonical_meta_desc = rwmb_meta( 'phila_meta_desc' );
 
-  if( is_archive() || is_search() || is_home() ) {
-    if ($bloginfo) {
-      return bloginfo( 'description' );
-    }
-  }
+  $blog_info = get_bloginfo('description');
 
   //This order matters. If $canonical_meta_desc is found first, it should be used.
   array_push($meta_desc, $canonical_meta_desc, $page_desc, $document_desc, $news_desc, $post_desc, $dept_desc);
 
-
   foreach ($meta_desc as $desc){
     if ( !empty( $desc ) ) {
-      return wp_strip_all_tags($desc);
+      return str_replace('"',  '&quot;', ( wp_strip_all_tags( $desc ) ) );
     }
   }
-
 
   if ( get_post_type() == 'department_page' ) {
 
@@ -1034,13 +1025,13 @@ function phila_get_item_meta_desc( $bloginfo = true ){
 
     }else{
       if ($bloginfo) {
-        return bloginfo( 'description' );
+        return $blog_info;
       }
     }
 
   }else{
     if ($bloginfo) {
-      return bloginfo( 'description' );
+      return $blog_info;
     }
   }
 }
