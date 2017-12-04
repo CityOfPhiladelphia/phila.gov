@@ -1,8 +1,12 @@
 <template>
   <div id="publications">
-    <phila-search
-    placeholder="Search by document title"
-    aria-label="Search by document title"></phila-search>
+    <form v-on:submit.prevent="onSubmit">
+      <div class="search">
+        <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field" ref="search-field"
+        v-model="searchedVal">
+        <input type="submit" value="submit" class="search-submit">
+      </div>
+    </form>
     <div id="filter-results" class="bg-ghost-gray pam">
       <div class="h5">Filter results</div>
         <div class="grid-x grid-margin-x">
@@ -27,7 +31,6 @@
             ref="categorySelect"
             label="slang_name"
             placeholder="All departments"
-            :value="parseCategory"
             :options="categories"
             :on-change="filterByCategory">
             </v-select>
@@ -47,30 +50,30 @@
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
-      <paginate name="posts"
-        :list="posts"
+      <paginate name="documents"
+        :list="documents"
         class="paginate-list"
         tag="tbody"
         :per="40">
-        <tr v-for="post in paginated('posts')"
-        :key="post.id"
+        <tr v-for="document in paginated('documents')"
+        :key="document.id"
         class="vue-clickable-row"
-        v-on:click.stop.prevent="goToPost(post.link)">
+        v-on:click.stop.prevent="goToDoc(document.link)">
           <td class="title">
-            <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
-              {{ post.title }}
+            <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
+              {{ document.title }}
             </a>
           </td>
-          <td class="date">{{ post.date  | formatDate }}</td>
+          <td class="date">{{ document.date  | formatDate }}</td>
           <td class="categories">
-            <span v-for="(category, i) in post.categories">
-              <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
+            <span v-for="(category, i) in document.categories">
+              <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
             </span>
           </td>
         </tr>
       </paginate>
     </table>
-    <paginate-links for="posts"
+    <paginate-links for="documents"
     :limit="3"
     :show-step-links="true"
     :step-links="{
@@ -104,18 +107,19 @@ export default {
   },
   data: function() {
     return{
-      posts: [],
+      documents: [],
       categories: [{ }],
 
       selectedCategory: '',
 
       search: '',
+      searchedVal: '',
 
       loading: false,
       emptyResponse: false,
       failure: false,
 
-      paginate: ['posts'],
+      paginate: ['documents'],
 
       state: {
         startDate: '',
@@ -134,14 +138,14 @@ export default {
     }
   },
   mounted: function () {
-    this.getAllPosts()
+    this.getAllDocs()
     this.getDropdownCategories()
     this.loading = true
   },
   methods: {
-    getAllPosts: function () {
+    getAllDocs: function () {
       this.loading = true
-      //TODO use in instead of undefined
+
       axios.get(pubsEndpoint + 'archives', {
         params: {
           'count': -1,
@@ -149,7 +153,7 @@ export default {
       })
       .then(response => {
         this.loading = false
-        this.posts = response.data
+        this.documents = response.data
         this.successfulResponse
       })
       .catch(e => {
@@ -166,17 +170,16 @@ export default {
         this.categories = 'Sorry, there was a problem.'
       })
     },
-    goToPost: function (link){
+    goToDoc: function (link){
       window.location.href = link
      },
     onSubmit: function (event) {
-      console.log('fired')
       this.loading = true
 
       this.$nextTick(function () {
         axios.get(pubsEndpoint + 'archives', {
           params : {
-            's': this.search,
+            's': this.searchedVal,
             'category': this.selectedCategory,
             'count': -1,
             'start_date': this.state.startDate,
@@ -185,8 +188,7 @@ export default {
           })
           .then(response => {
             this.loading = false
-            this.posts = response.data
-
+            this.documents = response.data
             this.successfulResponse
           })
           .catch(e => {
@@ -206,9 +208,9 @@ export default {
         }
       })
         .then(response => {
-          this.posts = response.data
+          this.documents = response.data
           this.loading = false
-          this.search = ''
+          this.searchedVal = ''
           this.checkedTemplates = ''
           this.selectedCategory = ''
           this.state.startDate = ''
@@ -226,20 +228,18 @@ export default {
 
       this.loading = true
 
-      console.log(this.search)
       axios.get(pubsEndpoint + 'archives', {
         params : {
-          's': this.search,
+          's': this.searchedVal,
           'category': this.selectedCategory,
-          'count' : -1,
+          'count': -1,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
           }
         })
         .then(response => {
           this.loading = false
-          this.posts = response.data
-
+          this.documents = response.data
           this.successfulResponse
         })
         .catch(e => {
@@ -247,42 +247,45 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
+      this.selectedCategory = selectedVal
+
       this.$nextTick(function () {
 
-      this.loading = true
-      this.selectedCategory = selectedVal
-      axios.get(pubsEndpoint + 'archives', {
-        params : {
-          's': this.search,
-          'category': this.selectedCategory,
-          'count' : -1,
-          'start_date': this.state.startDate,
-          'end_date': this.state.endDate,
-          }
+        this.loading = true
+
+        axios.get(pubsEndpoint + 'archives', {
+          params : {
+            's': this.searchedVal,
+            'category': this.selectedCategory.id,
+            'count' : -1,
+            'start_date': this.state.startDate,
+            'end_date': this.state.endDate,
+            }
+          })
+          .then(response => {
+            this.loading = false
+            //Don't let empty value change the rendered view
+            if ( 'id' in selectedVal ){
+              this.documents = response.data
+            }
+            this.successfulResponse
+          })
+          .catch(e => {
+            this.failure = true
         })
-        .then(response => {
-          this.loading = false
-          //Don't let empty value change the rendered view
-          if ('id' in selectedVal && this.queriedCategory != ''){
-            this.posts = response.data
-          }
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
       })
-    })
     },
   },
   computed:{
     successfulResponse: function(){
-      if (this.posts.length == 0) {
+      if (this.documents.length == 0) {
         this.emptyResponse = true
       }else{
         this.emptyResponse = false
       }
     },
   },
+
 }
 </script>
 
