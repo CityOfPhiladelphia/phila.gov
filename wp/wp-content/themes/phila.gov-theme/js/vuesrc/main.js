@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from './Archives.vue'
+import Posts from './Archives.vue'
 import Pubs from './Publications.vue'
 import VuePaginate from 'vue-paginate'
 
@@ -16,14 +16,17 @@ const router = new VueRouter({
 const route = [
   { path: '/archives' },
 ]
-//
-// new Vue({
-//   el: '#archive-results',
-//   router,
-//   render: h => h(App)
-// })
 
-new Vue({
-  el: '#publication-search',
-  render: h => h(Pubs)
-})
+//check which page we're on before adding Vue
+if (window.location.pathname == '/the-latest/archives/') {
+  new Vue({
+    el: '#archive-results',
+    router,
+    render: h => h(Posts)
+  })
+}else{
+  new Vue({
+    el: '#publication-search',
+    render: h => h(Pubs)
+  })
+}
