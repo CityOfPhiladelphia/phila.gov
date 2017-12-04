@@ -65,7 +65,7 @@ class Phila_Publications_Controller {
             'inclusive' => true,
           ),
         );
-      return $args = array_merge($args, $date_query);
+      $args = array_merge($args, $date_query);
     }
 
     $posts = get_posts( $args );
