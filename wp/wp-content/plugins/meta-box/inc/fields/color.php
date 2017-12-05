@@ -13,9 +13,15 @@ class RWMB_Color_Field extends RWMB_Text_Field {
 	 * Enqueue scripts and styles.
 	 */
 	public static function admin_enqueue_scripts() {
+		$args = func_get_args();
+		$field = $args[0];
+		$js_dependency = array( 'wp-color-picker' );
 		wp_enqueue_style( 'rwmb-color', RWMB_CSS_URL . 'color.css', array( 'wp-color-picker' ), RWMB_VER );
-		wp_enqueue_script( 'wp-color-picker-alpha', RWMB_JS_URL . 'wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), RWMB_VER, true );
-		wp_enqueue_script( 'rwmb-color', RWMB_JS_URL . 'color.js', array( 'wp-color-picker', 'wp-color-picker-alpha' ), RWMB_VER, true );
+		if ( $field['alpha_channel'] ) {
+			wp_enqueue_script( 'wp-color-picker-alpha', RWMB_JS_URL . 'wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), RWMB_VER, true );
+			$js_dependency = array( 'wp-color-picker-alpha' );
+		}
+		wp_enqueue_script( 'rwmb-color', RWMB_JS_URL . 'color.js', $js_dependency, RWMB_VER, true );
 	}
 
 	/**
@@ -26,11 +32,8 @@ class RWMB_Color_Field extends RWMB_Text_Field {
 	 */
 	public static function normalize( $field ) {
 		$field = wp_parse_args( $field, array(
-			'size'       => 7,
-			'maxlength'  => 7,
 			'alpha_channel' => false,
-			// 'pattern'    => '^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$',
-			'js_options' => array(),
+			'js_options'    => array(),
 		) );
 
 		$field['js_options'] = wp_parse_args( $field['js_options'], array(
@@ -66,13 +69,16 @@ class RWMB_Color_Field extends RWMB_Text_Field {
 	}
 
 	/**
-	 * Format a single value for the helper functions.
+	 * Format a single value for the helper functions. Sub-fields should overwrite this method if necessary.
 	 *
-	 * @param array  $field Field parameters.
-	 * @param string $value The value.
+	 * @param array    $field   Field parameters.
+	 * @param string   $value   The value.
+	 * @param array    $args    Additional arguments. Rarely used. See specific fields for details.
+	 * @param int|null $post_id Post ID. null for current post. Optional.
+	 *
 	 * @return string
 	 */
-	public static function format_single_value( $field, $value ) {
+	public static function format_single_value( $field, $value, $args, $post_id ) {
 		return sprintf( "<span style='display:inline-block;width:20px;height:20px;border-radius:50%%;background:%s;'></span>", $value );
 	}
 }
