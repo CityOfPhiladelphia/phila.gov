@@ -3,6 +3,7 @@
  * Grouped Calendars Feed - Admin
  *
  * @package SimpleCalendar/Feeds
+ * KD edits - force allow private calendars to appear in group calendar lists
  */
 namespace SimpleCalendar\Feeds\Admin;
 
