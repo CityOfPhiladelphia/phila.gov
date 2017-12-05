@@ -61,6 +61,9 @@ define('SWIFTYPE_ENGINE', '$SWIFTYPE_ENGINE');
 /** Don't let stuff sit around too long */
 define('EMPTY_TRASH_DAYS', 7);
 
+/** We manually update WP, so disable auto updates */
+define( 'WP_AUTO_UPDATE_CORE', false );
+
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
