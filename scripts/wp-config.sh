@@ -58,6 +58,9 @@ define( 'WPOS3_SETTINGS', serialize( array(
 /** For Swiftype search */
 define('SWIFTYPE_ENGINE', '$SWIFTYPE_ENGINE');
 
+/** Don't let stuff sit around too long */
+define('EMPTY_TRASH_DAYS', 7);
+
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
