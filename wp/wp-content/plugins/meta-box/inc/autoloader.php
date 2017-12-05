@@ -84,10 +84,15 @@ class RWMB_Autoloader {
 			'clone',
 			'meta-box',
 			'meta-box-registry',
+			'storage-registry',
+			'interfaces/storage.php',
+			'storages/base.php',
+			'storages/post.php',
 			'validation',
 			'sanitizer',
 			'media-modal',
 			'wpml',
+			'about/about.php',
 
 			// Walkers.
 			'walkers/walker',
