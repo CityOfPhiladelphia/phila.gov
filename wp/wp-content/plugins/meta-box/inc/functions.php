@@ -217,7 +217,7 @@ if ( ! function_exists( 'rwmb_get_registry' ) ) {
 		$class = 'RWMB_' . ucwords( $type ) . '_Registry';
 		$class = str_replace( ' ', '_', $class );
 		if ( ! isset( $data[ $type ] ) ) {
-			$data[ $type ] = new $class;
+			$data[ $type ] = new $class();
 		}
 
 		return $data[ $type ];
@@ -249,13 +249,15 @@ if ( ! function_exists( 'rwmb_get_storage' ) ) {
 	/**
 	 * Get storage instance.
 	 *
-	 * @param string $object_type Object type. Use post or term.
+	 * @param string      $object_type Object type. Use post or term.
+	 * @param RW_Meta_Box $meta_box    Meta box object. Optional.
 	 * @return RWMB_Storage_Interface
 	 */
-	function rwmb_get_storage( $object_type ) {
+	function rwmb_get_storage( $object_type, $meta_box = null ) {
 		$class_name = rwmb_get_storage_class_name( $object_type );
+		$storage = rwmb_get_registry( 'storage' )->get( $class_name );
 
-		return rwmb_get_registry( 'storage' )->get( $class_name );
+		return apply_filters( 'rwmb_get_storage', $storage, $object_type, $meta_box );
 	}
 }
 

@@ -350,10 +350,11 @@ abstract class RWMB_Field {
 			'field_name'        => isset( $field['id'] ) ? $field['id'] : '',
 			'placeholder'       => '',
 
-			'clone'      => false,
-			'max_clone'  => 0,
-			'sort_clone' => false,
-			'add_button' => __( '+ Add more', 'meta-box' ),
+			'clone'         => false,
+			'max_clone'     => 0,
+			'sort_clone'    => false,
+			'add_button'    => __( '+ Add more', 'meta-box' ),
+			'clone_default' => false,
 
 			'class'      => '',
 			'disabled'   => false,
@@ -361,6 +362,13 @@ abstract class RWMB_Field {
 			'autofocus'  => false,
 			'attributes' => array(),
 		) );
+
+		if ( $field['clone_default'] ) {
+			$field['attributes'] = wp_parse_args( $field['attributes'], array(
+				'data-default'       => $field['std'],
+				'data-clone-default' => 'true',
+			) );
+		}
 
 		return $field;
 	}
@@ -468,23 +476,31 @@ abstract class RWMB_Field {
 	 */
 	public static function the_value( $field, $args = array(), $post_id = null ) {
 		$value = self::call( 'get_value', $field, $args, $post_id );
-		return self::call( 'format_value', $field, $value );
+
+		if ( false === $value ) {
+			return '';
+		}
+
+		return self::call( 'format_value', $field, $value, $args, $post_id );
 	}
 
 	/**
 	 * Format value for the helper functions.
 	 *
-	 * @param array        $field Field parameters.
-	 * @param string|array $value The field meta value.
+	 * @param array        $field   Field parameters.
+	 * @param string|array $value   The field meta value.
+	 * @param array        $args    Additional arguments. Rarely used. See specific fields for details.
+	 * @param int|null     $post_id Post ID. null for current post. Optional.
+	 *
 	 * @return string
 	 */
-	public static function format_value( $field, $value ) {
+	public static function format_value( $field, $value, $args, $post_id ) {
 		if ( ! is_array( $value ) ) {
-			return self::call( 'format_single_value', $field, $value );
+			return self::call( 'format_single_value', $field, $value, $args, $post_id );
 		}
 		$output = '<ul>';
 		foreach ( $value as $subvalue ) {
-			$output .= '<li>' . self::call( 'format_value', $field, $subvalue ) . '</li>';
+			$output .= '<li>' . self::call( 'format_value', $field, $subvalue, $args, $post_id ) . '</li>';
 		}
 		$output .= '</ul>';
 		return $output;
@@ -493,11 +509,14 @@ abstract class RWMB_Field {
 	/**
 	 * Format a single value for the helper functions. Sub-fields should overwrite this method if necessary.
 	 *
-	 * @param array  $field Field parameters.
-	 * @param string $value The value.
+	 * @param array    $field   Field parameters.
+	 * @param string   $value   The value.
+	 * @param array    $args    Additional arguments. Rarely used. See specific fields for details.
+	 * @param int|null $post_id Post ID. null for current post. Optional.
+	 *
 	 * @return string
 	 */
-	public static function format_single_value( $field, $value ) {
+	public static function format_single_value( $field, $value, $args, $post_id ) {
 		return $value;
 	}
 

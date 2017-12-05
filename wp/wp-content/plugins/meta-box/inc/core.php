@@ -18,7 +18,9 @@ class RWMB_Core {
 		load_plugin_textdomain( 'meta-box', false, plugin_basename( RWMB_DIR ) . '/languages/' );
 
 		add_filter( 'plugin_action_links_meta-box/meta-box.php', array( $this, 'plugin_links' ) );
-		add_action( 'init', array( $this, 'register_meta_boxes' ) );
+
+		// Uses priority 20 to support custom port types registered using the default priority.
+		add_action( 'init', array( $this, 'register_meta_boxes' ), 20 );
 		add_action( 'edit_page_form', array( $this, 'fix_page_template' ) );
 	}
 
@@ -30,7 +32,7 @@ class RWMB_Core {
 	 * @return array
 	 */
 	public function plugin_links( $links ) {
-		$links[] = '<a href="https://metabox.io/docs/">' . esc_html__( 'Documentation', 'meta-box' ) . '</a>';
+		$links[] = '<a href="https://docs.metabox.io">' . esc_html__( 'Documentation', 'meta-box' ) . '</a>';
 		$links[] = '<a href="https://metabox.io/plugins/">' . esc_html__( 'Extensions', 'meta-box' ) . '</a>';
 		return $links;
 	}
