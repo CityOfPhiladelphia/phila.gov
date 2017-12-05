@@ -1,10 +1,10 @@
 === Easy WP SMTP ===
-Contributors: wpecommerce, wp.insider
+Contributors: wpecommerce, wp.insider, alexanderfoxc
 Donate link: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, outgoing mail, privacy, security, sendmail, ssl, tls, wp-phpmailer, mail smtp, wp smtp
 Requires at least: 4.3
-Tested up to: 4.8
-Stable tag: 1.2.6
+Tested up to: 4.9
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,8 @@ Easy WP SMTP allows you to configure and send all outgoing emails via a SMTP ser
 * You can use Gmail, Yahoo, Hotmail's SMTP server if you have an account with them.
 * Seamlessly connect your WordPress blog with a mail server to handle all outgoing emails (it's as if the email has been composed inside your mail account).
 * Securely deliver emails to your recipients.
+* Option to enable debug logging to see if the emails are getting sent out successfully or not.
+* Ability to specify a Reply-to email address.
 
 = Easy WP SMTP Plugin Usage =
 
@@ -74,6 +76,29 @@ Inspired by [WP Mail SMTP](http://wordpress.org/plugins/wp-mail-smtp/) plugin
 
 
 == Changelog ==
+
+= 1.3.1 =
+* Fixed potential issue with passwords that had special characters.
+* Check if variables are set before interacting with them (removes PHP notices when WP debug mode is enabled) (thanks to rubas and matward).
+* Test email message body is no longer having excess slashes inserted (thanks to tdcsforeveryone).
+* Added option for plugin to block ALL emails if Domain Check option enabled and domain check fails (thanks to erikmolenaar).
+
+= 1.3.0 =
+* Plugin will display an error message if log file is not writeable when "Clear Log" is clicked.
+* Actual SMTP password is replaced by a gag on the settings page.
+* Fixed minor bug in Reply-To option handling (thanks to arildur).
+* Some improvements in developers-related options (thanks to erikmolenaar).
+
+= 1.2.9 =
+* Added additional setting option to deal with email aliases (thanks to bradclarke365).
+* Fixed "Reply-To" option wasn't saving if it is blank.
+
+= 1.2.8 =
+* New settings option to specify a reply-to email address.
+* There is a new settings option to enable debug logging.
+
+= 1.2.7 =
+* Added extra debug info (when test email function is used). This debug info will show more details if anything fails. This will be helpful to debug SMTP connection failure on your server.
 
 = 1.2.6 =
 * Some special characters in the password field were getting removed when the text sanitization was done. This has been improved.
