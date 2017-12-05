@@ -46,7 +46,7 @@ function phila_setup_tiny_mce_basic( array $options ){
   $options = array_merge($defaults, $options);
 
   if ( $options['format_select'] == true) {
-    $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+    $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript';
 
   }
 
@@ -61,7 +61,7 @@ function phila_setup_tiny_mce_basic( array $options ){
 
   if ( $options['format_select'] == false ) {
 
-    $output['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext';
+    $output['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript';
 
   }
   return $output;
