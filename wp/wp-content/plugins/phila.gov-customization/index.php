@@ -27,6 +27,7 @@ require $dir. '/admin/admin-ui.php';
 require $dir. '/admin/class-phila-gov-admin-documents.php';
 require $dir. '/admin/class-phila-gov-admin-menu.php';
 require $dir. '/admin/class-phila-gov-calendar-helper.php';
+require $dir. '/admin/class-phila-gov-calendars.php';
 require $dir. '/admin/class-phila-gov-custom-post-types.php';
 require $dir. '/admin/class-phila-gov-custom-taxonomies.php';
 //require $dir. '/admin/class-phila-gov-department-author-media.php';
@@ -51,6 +52,7 @@ require $dir. '/admin/meta-boxes/v2-departments.php';
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 
 require $dir. '/public/shortcodes/callout.php';
+require $dir. '/public/shortcodes/get-item-category.php';
 require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/pullquote.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
