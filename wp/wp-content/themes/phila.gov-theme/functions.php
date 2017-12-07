@@ -291,7 +291,7 @@ function phila_gov_scripts() {
     );
   }
 
-  if( is_page_template( 'templates/the-latest-archive.php' ) ){
+  if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive('document') ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
   }
 
