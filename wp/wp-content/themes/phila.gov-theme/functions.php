@@ -291,8 +291,10 @@ function phila_gov_scripts() {
     );
   }
 
-  if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive('document') ){
+  if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive('document') || is_page_template('templates/the-latest-events-archive.php') ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
+    wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
+
   }
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
