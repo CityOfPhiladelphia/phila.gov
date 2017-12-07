@@ -1,25 +1,41 @@
 <template>
   <form
-    @submit.prevent="onSubmit">
+    v-on:submit.prevent="onSubmit">
     <div class="search">
       <input class="search-field"
       type="text"
+      name="search"
       :id="id"
-      :name="name"
       :placeholder="placeholder"
-      :ref="search-field">
-      <input type="submit" value="submit" class="search-submit">
+      :aria-label="search"
+      v-model="search">
+      <input
+      type="submit"
+      value="submit"
+      class="search-submit">
     </div>
   </form>
 </template>
 
 <script>
 export default {
-  name: 'search',
-  props: ['submit'],
+  name: 'phila-search',
+  data: function () {
+    return {
+      search: ''
+    }
+  },
+  props: {
+    id: String,
+    placeholder: String,
+    ariaLabel: {
+      type: String,
+      default: 'Search'
+    },
+  },
   methods: {
-    onSubmit: function(event) {
-        console.log(this)
+    onSubmit: function (event) {
+      return this.search
     }
   }
 }
