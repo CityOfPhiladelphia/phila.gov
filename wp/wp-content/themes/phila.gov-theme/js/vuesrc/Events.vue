@@ -50,30 +50,30 @@
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
-      <paginate name="documents"
-        :list="documents"
+      <paginate name="events"
+        :list="events"
         class="paginate-list"
         tag="tbody"
         :per="40">
-        <tr v-for="document in paginated('documents')"
-        :key="document.id"
+        <tr v-for="event in paginated('events')"
+        :key="event.id"
         class="vue-clickable-row"
-        v-on:click.stop.prevent="goToDoc(document.link)">
+        v-on:click.stop.prevent="goToDoc(event.link)">
           <td class="title">
-            <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
-              {{ document.title }}
+            <a v-bind:href="event.link" v-on:click.prevent="goToDoc(event.link)">
+              {{ event.title }}
             </a>
           </td>
-          <td class="date">{{ document.date  | formatDate }}</td>
+          <td class="date">{{ event.date  | formatDate }}</td>
           <td class="categories">
-            <span v-for="(category, i) in document.categories">
-              <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
+            <span v-for="(category, i) in event.categories">
+              <span>{{ category.slang_name }}</span><span v-if="i < event.categories.length - 1">,&nbsp;</span>
             </span>
           </td>
         </tr>
       </paginate>
     </table>
-    <paginate-links for="documents"
+    <paginate-links for="events"
     :limit="3"
     :show-step-links="true"
     :step-links="{
@@ -92,13 +92,11 @@ import Datepicker from 'vuejs-datepicker';
 import Search from './components/phila-search.vue'
 
 
-const pubsEndpoint = '/wp-json/events/v1/'
+const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
 
 let state = {
   date: new Date()
 }
-
-console.log(JSON.parse(g_cal_data.json));
 
 export default {
   name: 'events',
@@ -109,7 +107,8 @@ export default {
   },
   data: function() {
     return{
-      documents: [],
+      calendars: JSON.parse(g_cal_data.json),
+      events: [],
       categories: [{ }],
 
       selectedCategory: '',
@@ -121,7 +120,7 @@ export default {
       emptyResponse: false,
       failure: false,
 
-      paginate: ['documents'],
+      paginate: ['events'],
 
       state: {
         startDate: '',
@@ -140,22 +139,17 @@ export default {
     }
   },
   mounted: function () {
-    this.getAllDocs()
-    this.getDropdownCategories()
+    this.getUpcomingEvents()
+    //this.getDropdownCategories()
     this.loading = true
   },
   methods: {
-    getAllDocs: function () {
+    getUpcomingEvents: function () {
       this.loading = true
-
-      axios.get(pubsEndpoint + 'archives', {
-        params: {
-          'count': -1,
-        }
-      })
+      axios.get(gCalEndpoint + this.calendars[1] + '/events/?key=' + process.env.GOOGLE_CALENDAR)
       .then(response => {
         this.loading = false
-        this.documents = response.data
+        this.events = response.data
         this.successfulResponse
       })
       .catch(e => {
@@ -179,7 +173,7 @@ export default {
       this.loading = true
 
       this.$nextTick(function () {
-        axios.get(pubsEndpoint + 'archives', {
+        axios.get(gCalEndpoint + 'archives', {
           params : {
             's': this.searchedVal,
             'category': this.selectedCategory,
@@ -190,7 +184,7 @@ export default {
           })
           .then(response => {
             this.loading = false
-            this.documents = response.data
+            this.events = response.data
             this.successfulResponse
           })
           .catch(e => {
@@ -204,13 +198,13 @@ export default {
       //console.log(this.$refs.categorySelect.$el.textContent)
       window.location = window.location.pathname;
       /*this.selectedCategory = ''
-      axios.get(pubsEndpoint + 'archives', {
+      axios.get(gCalEndpoint + 'archives', {
        params : {
           'count': -1
         }
       })
         .then(response => {
-          this.documents = response.data
+          this.events = response.data
           this.loading = false
           this.searchedVal = ''
           this.checkedTemplates = ''
@@ -230,7 +224,7 @@ export default {
 
       this.loading = true
 
-      axios.get(pubsEndpoint + 'archives', {
+      axios.get(gCalEndpoint + 'archives', {
         params : {
           's': this.searchedVal,
           'category': this.selectedCategory,
@@ -241,7 +235,7 @@ export default {
         })
         .then(response => {
           this.loading = false
-          this.documents = response.data
+          this.events = response.data
           this.successfulResponse
         })
         .catch(e => {
@@ -255,7 +249,7 @@ export default {
 
         this.loading = true
 
-        axios.get(pubsEndpoint + 'archives', {
+        axios.get(gCalEndpoint + 'archives', {
           params : {
             's': this.searchedVal,
             'category': this.selectedCategory.id,
@@ -268,7 +262,7 @@ export default {
             this.loading = false
             //Don't let empty value change the rendered view
             if ( 'id' in selectedVal ){
-              this.documents = response.data
+              this.events = response.data
             }
             this.successfulResponse
           })
@@ -280,7 +274,7 @@ export default {
   },
   computed:{
     successfulResponse: function(){
-      if (this.documents.length == 0) {
+      if (this.events.length == 0) {
         this.emptyResponse = true
       }else{
         this.emptyResponse = false
