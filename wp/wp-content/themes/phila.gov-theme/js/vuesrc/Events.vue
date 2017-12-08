@@ -151,8 +151,6 @@ export default {
 
     const calendars = JSON.parse(g_cal_data.json)
 
-    console.log( Array.from(calendars) )
-
 
       for( var i = 0; i < calendars.length; i++ ){
         links.push(gCalEndpoint + calendars[i] + '/events/?key=' + gCalId )
