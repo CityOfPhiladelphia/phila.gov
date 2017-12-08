@@ -35,6 +35,7 @@ if ( $calendar_q->have_posts() ) : ?>
 <?php endforeach;
   $final_array = array_filter($cal_ids);
   $final_array = array_unique($final_array);
+  $final_array = array_values($final_array);
 ?>
 
 <?php $json_final = json_encode($final_array);
@@ -44,6 +45,7 @@ if ( $calendar_q->have_posts() ) : ?>
     'json' => __($json_final)
       )
     );
+    wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
 ?>
 
 <section id="events-archive" class="content-area archive">
