@@ -97,6 +97,7 @@ const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
 let state = {
   date: new Date()
 }
+const gCalId = g_cal_id
 
 export default {
   name: 'events',
@@ -145,16 +146,29 @@ export default {
   },
   methods: {
     getUpcomingEvents: function () {
-      this.loading = true
-      axios.get(gCalEndpoint + this.calendars[1] + '/events/?key=' + process.env.GOOGLE_CALENDAR)
-      .then(response => {
-        this.loading = false
-        this.events = response.data
-        this.successfulResponse
-      })
-      .catch(e => {
-        this.failure = true
-      })
+    //  this.loading = true
+    const links = []
+
+    const calendars = JSON.parse(g_cal_data.json)
+
+    console.log( Array.from(calendars) )
+
+
+      for( var i = 0; i < calendars.length; i++ ){
+        links.push(gCalEndpoint + calendars[i] + '/events/?key=' + gCalId )
+      }
+      console.log(links)
+
+        //
+        // .then(response => {
+        //   this.loading = false
+        //   console.log(response.data)
+        //   this.events = response.data
+        //   //this.successfulResponse
+        // })
+        // .catch(e => {
+        //   this.failure = true
+        // })
 
     },
     getDropdownCategories: function () {
