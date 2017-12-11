@@ -10,7 +10,7 @@
     <div id="filter-results" class="bg-ghost-gray pam">
       <div class="h5">Filter results</div>
         <div class="grid-x grid-margin-x">
-          <div class="cell medium-4 small-11">
+          <div class="cell medium-6 small-11">
             <datepicker
             name="startDate"
             placeholder="Start date"
@@ -20,20 +20,11 @@
           <div class="cell medium-1 small-2 mts">
             <i class="fa fa-arrow-right"></i>
           </div>
-          <div class="cell medium-4 small-11">
+          <div class="cell medium-6 small-11">
             <datepicker placeholder="End date"
             name="endDate"
             v-on:closed="runDateQuery"
             v-model="state.endDate"></datepicker>
-          </div>
-          <div class="cell medium-9 small-24 auto filter-by-owner">
-            <v-select
-            ref="categorySelect"
-            label="slang_name"
-            placeholder="All departments"
-            :options="categories"
-            :on-change="filterByCategory">
-            </v-select>
           </div>
           <div class="cell medium-6 small-24">
             <a class="button content-type-featured full" @click="reset">Clear filters</a>
@@ -45,42 +36,65 @@
     </div>
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
-
-    <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
-      <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
-        <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
-      </thead>
-      <paginate name="events"
+    <div class="" v-show="!loading && !emptyResponse && !failure">
+      <div name="events"
         :list="events"
         class="paginate-list"
-        tag="tbody"
+        tag="div"
         :per="40">
-        <tr v-for="event in paginated('events')"
-        :key="event.id"
-        class="vue-clickable-row"
-        v-on:click.stop.prevent="goToDoc(event.link)">
-          <td class="title">
-            <a v-bind:href="event.link" v-on:click.prevent="goToDoc(event.link)">
-              {{ event.title }}
-            </a>
-          </td>
-          <td class="date">{{ event.date  | formatDate }}</td>
-          <td class="categories">
-            <span v-for="(category, i) in event.categories">
-              <span>{{ category.slang_name }}</span><span v-if="i < event.categories.length - 1">,&nbsp;</span>
-            </span>
-          </td>
-        </tr>
-      </paginate>
-    </table>
-    <paginate-links for="events"
-    :limit="3"
-    :show-step-links="true"
-    :step-links="{
-      next: 'Next',
-      prev: 'Previous'
-    }"
-    v-show="!loading && !emptyResponse && !failure"></paginate-links>
+        <div v-for="event in events"
+        :key="event.id">
+        <div class="row event-row medium-collapse equal-height"
+        v-bind:data-open="event.id">
+        <div class="small-6 medium-3 columns calendar-date equal">
+          <div class="valign">
+            <div class="valign-cell">
+              <div class="month"></div>
+              <div class="day"><!--{{event.start.dateTime}}--></div>
+            </div>
+          </div>
+        </div>
+        <div class="small-18 medium-21 columns calendar-details equal">
+          <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+          <span>Event</span></div>
+          <div class="title">{{event.summary}}</div>
+          <div class="start-end">
+            [if-whole-day]All Day[/if-whole-day][if-not-whole-day]
+            <!--{{event.start.dateTime}} to {{event.end.dateTime}}[/if-not-whole-day]--></div>
+          <div class="location">{{event.locaton}}</div>
+          </div>
+        </div>
+        <div
+          v-bind:id="event.id"
+          class="reveal reveal--calendar"
+          data-reveal=""
+          data-deep-link="true"
+          data-update-history="true"><button class="close-button" type="button" data-close="" aria-label="Close modal">
+        <span aria-hidden="true">×</span>
+        </button>
+        <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span></div>
+        <h3>{{event.summary}}</h3>
+        <div class="mbm"><!--{{event.start.dateTime}}-->
+        <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
+        <div class="location">{{event.location}}</div>
+        [end-location-link]map[/end-location-link]
+
+        </div>
+        {{event.description}}
+        <div class="post-meta mbm reveal-footer">[display_category]</div>
+        </div>
+        </div>
+      </div>
+      <!--<paginate-links for="events.items"
+      :limit="3"
+      :show-step-links="true"
+      :step-links="{
+        next: 'Next',
+        prev: 'Previous'
+      }"
+      :async="true"
+      v-show="!loading && !emptyResponse && !failure"></paginate-links>-->
+  </div>
   </div>
   </template>
 
@@ -100,7 +114,7 @@ let state = {
 const gCalId = g_cal_id
 
 export default {
-  name: 'events',
+  name: 'events-archive',
   components: {
     vSelect,
     Datepicker,
@@ -109,8 +123,11 @@ export default {
   data: function() {
     return{
       calendars: JSON.parse(g_cal_data.json),
-      events: [],
-      categories: [{ }],
+      calData: [{}],
+
+      events: [{
+        items: {}
+      }],
 
       selectedCategory: '',
 
@@ -142,41 +159,49 @@ export default {
   mounted: function () {
     this.getUpcomingEvents()
     //this.getDropdownCategories()
-    this.loading = true
+    //this.loading = true
   },
   methods: {
     getUpcomingEvents: function () {
     //  this.loading = true
     const links = []
 
-    const calendars = JSON.parse(g_cal_data.json)
+    //const calendars = JSON.parse(g_cal_data.json)
 
-
-      for( var i = 0; i < calendars.length; i++ ){
-        links.push(gCalEndpoint + calendars[i] + '/events/?key=' + gCalId )
+      for( var i = 0; i < this.calendars.length; i++ ){
+        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20')
       }
-      console.log(links)
+      axios.all( links.map( l => axios.get( l ) ) )
+        .then(response =>  {
+          this.calData = response
 
-        //
-        // .then(response => {
-        //   this.loading = false
-        //   console.log(response.data)
-        //   this.events = response.data
-        //   //this.successfulResponse
-        // })
-        // .catch(e => {
-        //   this.failure = true
-        // })
+          for (var j = 0; j < this.calData.length; j++ ){
+            for(var k = 0; k < response[j].data.items.length; k++) {
+              this.events.push(response[j].data.items[k])
 
-    },
-    getDropdownCategories: function () {
-      axios.get('/wp-json/the-latest/v1/categories')
-      .then(response => {
-        this.categories = response.data
-      })
-      .catch(e => {
-        this.categories = 'Sorry, there was a problem.'
-      })
+           }
+          }
+
+          console.log(this.events)
+
+        })
+        .catch( e => {
+            this.failure = true
+        })
+
+      //
+      //
+      // axios.get('/wp-json/the-latest/v1/categories')
+      //   .then(response => {
+      //     this.loading = false
+      //     console.log(response.data)
+      //     this.events = response.data
+      //     //this.successfulResponse
+      //   })
+      //   .catch(e => {
+      //     this.failure = true
+      //   })
+
     },
     goToDoc: function (link){
       window.location.href = link
