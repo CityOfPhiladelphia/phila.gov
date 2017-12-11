@@ -10,23 +10,23 @@
     <div id="filter-results" class="bg-ghost-gray pam">
       <div class="h5">Filter results</div>
         <div class="grid-x grid-margin-x">
-          <div class="cell medium-6 small-11">
+          <div class="cell medium-8 small-11">
             <datepicker
             name="startDate"
-            placeholder="Start date"
+            :value="state.onLoad"
             v-on:closed="runDateQuery"
             v-model="state.startDate"></datepicker>
           </div>
           <div class="cell medium-1 small-2 mts">
             <i class="fa fa-arrow-right"></i>
           </div>
-          <div class="cell medium-6 small-11">
+          <div class="cell medium-8 small-11">
             <datepicker placeholder="End date"
             name="endDate"
             v-on:closed="runDateQuery"
             v-model="state.endDate"></datepicker>
           </div>
-          <div class="cell medium-6 small-24">
+          <div class="cell medium-7 small-24">
             <a class="button content-type-featured full" @click="reset">Clear filters</a>
           </div>
         </div>
@@ -37,55 +37,62 @@
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
     <div class="" v-show="!loading && !emptyResponse && !failure">
-      <div name="events"
+      <paginate name="events"
         :list="events"
         class="paginate-list"
         tag="div"
-        :per="40">
-        <div v-for="event in events"
+        :per="20">
+        <div v-for="(event, index) in events"
         :key="event.id">
-        <div class="row event-row medium-collapse equal-height"
-        v-bind:data-open="event.id">
-        <div class="small-6 medium-3 columns calendar-date equal">
-          <div class="valign">
-            <div class="valign-cell">
-              <div class="month"></div>
-              <div class="day"><!--{{event.start.dateTime}}--></div>
+          <div v-if="event.id">
+            <div class="row event-row medium-collapse equal-height"
+            :data-open="event.id">
+              <div class="small-6 medium-3 columns calendar-date equal">
+                <div class="valign">
+                  <div class="valign-cell">
+                    <div class="month">{{ event.start.dateTime | formatMonth }}</div>
+                    <div class="day">
+                      <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
+                       <span v-else>
+                         {{event.start.date | formatDay }}
+                       </span>
+                       </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-18 medium-21 columns calendar-details equal">
+                <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+                <span>Event</span></div>
+                <div class="title">{{event.summary}}</div>
+                <div class="start-end">
+                  {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}</div>
+                <div class="location">{{event.location}}</div>
+              </div>
+            </div>
+            <div
+              v-bind:id="event.id"
+              class="reveal reveal--calendar"
+              data-reveal=""
+              data-deep-link="true"
+              data-update-history="true"><button class="close-button" type="button" data-close="" aria-label="Close modal">
+            <span aria-hidden="true">×</span>
+            </button>
+            <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span></div>
+            <h3>{{event.summary}}</h3>
+            <div class="mbm">{{event.start.dateTime | formatDate}}
+              <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
+              <div class="location">{{event.location}}</div>
+              [end-location-link]map[/end-location-link]
+
+              </div>
+              {{event.description}}
+              <div class="post-meta mbm reveal-footer">[display_category]</div>
             </div>
           </div>
         </div>
-        <div class="small-18 medium-21 columns calendar-details equal">
-          <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
-          <span>Event</span></div>
-          <div class="title">{{event.summary}}</div>
-          <div class="start-end">
-            [if-whole-day]All Day[/if-whole-day][if-not-whole-day]
-            <!--{{event.start.dateTime}} to {{event.end.dateTime}}[/if-not-whole-day]--></div>
-          <div class="location">{{event.locaton}}</div>
-          </div>
-        </div>
-        <div
-          v-bind:id="event.id"
-          class="reveal reveal--calendar"
-          data-reveal=""
-          data-deep-link="true"
-          data-update-history="true"><button class="close-button" type="button" data-close="" aria-label="Close modal">
-        <span aria-hidden="true">×</span>
-        </button>
-        <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span></div>
-        <h3>{{event.summary}}</h3>
-        <div class="mbm"><!--{{event.start.dateTime}}-->
-        <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
-        <div class="location">{{event.location}}</div>
-        [end-location-link]map[/end-location-link]
-
-        </div>
-        {{event.description}}
-        <div class="post-meta mbm reveal-footer">[display_category]</div>
-        </div>
-        </div>
+        </paginate>
       </div>
-      <!--<paginate-links for="events.items"
+      <!--<paginate-links for="events"
       :limit="3"
       :show-step-links="true"
       :step-links="{
@@ -126,10 +133,17 @@ export default {
       calData: [{}],
 
       events: [{
-        items: {}
+        start: {
+          dateTime: '',
+          date: ''
+        },
+        end: {
+          dateTime: '',
+          date: ''
+        },
       }],
 
-      selectedCategory: '',
+      //selectedCategory: '',
 
       search: '',
       searchedVal: '',
@@ -141,6 +155,7 @@ export default {
       paginate: ['events'],
 
       state: {
+        onLoad: moment(),
         startDate: '',
         endDate: ''
       },
@@ -150,11 +165,26 @@ export default {
     }
   },
   filters: {
+    'formatMonth': function(value) {
+      if (value) {
+        return moment( String(value) ).format('MMM')
+      }
+    },
+    'formatDay': function(value) {
+      if (value) {
+        return moment( String(value) ).format('D')
+      }
+    },
     'formatDate': function(value) {
       if (value) {
         return moment( String(value) ).format('MMM. DD, YYYY')
       }
-    }
+    },
+    'formatTime': function(value) {
+      if (value) {
+        return moment( String(value) ).format('LT')
+      }
+    },
   },
   mounted: function () {
     this.getUpcomingEvents()
@@ -162,6 +192,30 @@ export default {
     //this.loading = true
   },
   methods: {
+    sortArray: function (prop, arr) {
+      console.log('yeah')
+      prop = prop.split('.');
+      var len = prop.length;
+
+      arr.sort(function (a, b) {
+          var i = 0;
+          while( i < len ) {
+              a = a[prop[i]];
+              b = b[prop[i]];
+              i++;
+          }
+          if (a < b) {
+            console.log(a)
+              return -1;
+          } else if (a > b) {
+          console.log(b)
+              return 1;
+          } else {
+              return 0;
+          }
+      });
+      return arr;
+  },
     getUpcomingEvents: function () {
     //  this.loading = true
     const links = []
@@ -169,16 +223,18 @@ export default {
     //const calendars = JSON.parse(g_cal_data.json)
 
       for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20')
+        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&timeMax=' + moment().format("YYYY-MM-DDTHH:mm:ssZ") )
       }
+      console.log(links)
+
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
+          const temp = []
 
           for (var j = 0; j < this.calData.length; j++ ){
             for(var k = 0; k < response[j].data.items.length; k++) {
               this.events.push(response[j].data.items[k])
-
            }
           }
 
