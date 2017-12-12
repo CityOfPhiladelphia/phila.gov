@@ -153,7 +153,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
       'query_args'  => array(
         'orderby' => 'title',
         'order' => 'ASC',
-        //TODO: only show document pages that match the current category
+        'post_status' => 'any'
       ),
       'multiple'  => true,
       'placeholder' => ' ',
