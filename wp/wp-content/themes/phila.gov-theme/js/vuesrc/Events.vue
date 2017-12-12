@@ -1,8 +1,9 @@
 <template>
   <div id="events">
-    <form v-on:submit.prevent="onSubmit">
+    <form v-on:submit.prevent>
       <div class="search">
-        <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field" ref="search-field"
+        <input id="post-search" type="text" name="search"
+        placeholder="Begin typing to filter by title" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
@@ -12,8 +13,8 @@
         <div class="grid-x grid-margin-x">
           <div class="cell medium-8 small-11">
             <datepicker
+            placeholder="Today"
             name="startDate"
-            :value="state.onLoad"
             v-on:closed="runDateQuery"
             v-model="state.startDate"></datepicker>
           </div>
@@ -21,7 +22,7 @@
             <i class="fa fa-arrow-right"></i>
           </div>
           <div class="cell medium-8 small-11">
-            <datepicker placeholder="End date"
+            <datepicker
             name="endDate"
             v-on:closed="runDateQuery"
             v-model="state.endDate"></datepicker>
@@ -37,32 +38,28 @@
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
     <div class="" v-show="!loading && !emptyResponse && !failure">
-      <paginate name="events"
-        :list="events"
-        class="paginate-list"
-        tag="div"
-        :per="20">
-        <div v-for="(event, index) in events"
+      <div v-for="(event, index) in filteredList"
         :key="event.id">
-          <div v-if="event.id">
+          <div v-if="event.id" class="event-container">
             <div class="row event-row medium-collapse equal-height"
             :data-open="event.id">
               <div class="small-6 medium-3 columns calendar-date equal">
                 <div class="valign">
                   <div class="valign-cell">
                     <div class="month">{{ event.start.dateTime | formatMonth }}</div>
-                    <div class="day">
-                      <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
-                       <span v-else>
-                         {{event.start.date | formatDay }}
-                       </span>
-                       </div>
+                      <div class="day">
+                        <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
+                        <span v-else>
+                          {{event.start.date | formatDay }}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
               </div>
               <div class="small-18 medium-21 columns calendar-details equal">
                 <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
-                <span>Event</span></div>
+                  <span>Event</span>
+                </div>
                 <div class="title">{{event.summary}}</div>
                 <div class="start-end">
                   {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}</div>
@@ -72,38 +69,29 @@
             <div
               v-bind:id="event.id"
               class="reveal reveal--calendar"
-              data-reveal=""
+              data-reveal
               data-deep-link="true"
-              data-update-history="true"><button class="close-button" type="button" data-close="" aria-label="Close modal">
-            <span aria-hidden="true">×</span>
-            </button>
-            <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span></div>
-            <h3>{{event.summary}}</h3>
-            <div class="mbm">{{event.start.dateTime | formatDate}}
-              <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
-              <div class="location">{{event.location}}</div>
-              [end-location-link]map[/end-location-link]
+              data-update-history="true">
+              <button class="close-button" type="button" data-close="" aria-label="Close modal">
+              <span aria-hidden="true">×</span>
+              </button>
+              <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span></div>
+              <h3>{{event.summary}}</h3>
+              <div class="mbm">{{event.start.dateTime | formatDate}}
+                <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
+                <div class="location">{{event.location}}</div>
+                [end-location-link]map[/end-location-link]
 
-              </div>
-              {{event.description}}
+                </div>
+                {{event.description}}
               <div class="post-meta mbm reveal-footer">[display_category]</div>
             </div>
           </div>
         </div>
-        </paginate>
       </div>
-      <!--<paginate-links for="events"
-      :limit="3"
-      :show-step-links="true"
-      :step-links="{
-        next: 'Next',
-        prev: 'Previous'
-      }"
-      :async="true"
-      v-show="!loading && !emptyResponse && !failure"></paginate-links>-->
+    </div>
   </div>
-  </div>
-  </template>
+</template>
 
 <script>
 import moment from 'moment'
@@ -114,6 +102,7 @@ import Search from './components/phila-search.vue'
 
 
 const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
+const links = []
 
 let state = {
   date: new Date()
@@ -133,6 +122,7 @@ export default {
       calData: [{}],
 
       events: [{
+        summary: '',
         start: {
           dateTime: '',
           date: ''
@@ -152,10 +142,9 @@ export default {
       emptyResponse: false,
       failure: false,
 
-      paginate: ['events'],
-
       state: {
-        onLoad: moment(),
+        loadStartDate: moment().format(),
+        loadEndDate: moment().format(),
         startDate: '',
         endDate: ''
       },
@@ -218,14 +207,14 @@ export default {
   },
     getUpcomingEvents: function () {
     //  this.loading = true
-    const links = []
 
     //const calendars = JSON.parse(g_cal_data.json)
 
       for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&timeMax=' + moment().format("YYYY-MM-DDTHH:mm:ssZ") )
+        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment().format() )
       }
-      console.log(links)
+
+      console.log(links);
 
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
@@ -239,7 +228,7 @@ export default {
           }
 
           console.log(this.events)
-
+          this.successfulResponse
         })
         .catch( e => {
             this.failure = true
@@ -286,6 +275,8 @@ export default {
       })
     },
     reset() {
+      //Object.assign(this.$data, this.$options.data.call(this));
+
       //this.loading = true
       //console.log(this.$refs.categorySelect)
       //console.log(this.$refs.categorySelect.$el.textContent)
@@ -315,25 +306,47 @@ export default {
       if ( !this.state.startDate || !this.state.endDate )
         return;
 
-      this.loading = true
+        //reset data
 
-      axios.get(gCalEndpoint + 'archives', {
-        params : {
-          's': this.searchedVal,
-          'category': this.selectedCategory,
-          'count': -1,
-          'start_date': this.state.startDate,
-          'end_date': this.state.endDate,
+        this.events = [{
+          summary: '',
+          start: {
+            dateTime: '',
+            date: ''
+          },
+          end: {
+            dateTime: '',
+            date: ''
           }
-        })
-        .then(response => {
-          this.loading = false
-          this.events = response.data
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
-      })
+        }]
+        //reset links
+        const links = []
+
+        console.log(this.state.startDate)
+        console.log(this.state.endDate)
+
+        for( var i = 0; i < this.calendars.length; i++ ){
+          links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        }
+        console.log(links);
+        axios.all( links.map( l => axios.get( l ) ) )
+          .then(response =>  {
+            this.calData = response
+            const temp = []
+
+            for (var j = 0; j < this.calData.length; j++ ){
+              for(var k = 0; k < response[j].data.items.length; k++) {
+                this.events.push(response[j].data.items[k])
+             }
+            }
+
+            console.log(this.events)
+            this.successfulResponse
+          })
+          .catch( e => {
+              this.failure = true
+          })
+
     },
     filterByCategory: function(selectedVal){
       this.selectedCategory = selectedVal
@@ -366,6 +379,15 @@ export default {
     },
   },
   computed:{
+    filteredList() {
+      return this.events.filter((event) => {
+        if (typeof event.summary === 'undefined'){
+          return
+        }else{
+          return event.summary.toLowerCase().indexOf(this.searchedVal.toLowerCase()) > -1
+        }
+      })
+    },
     successfulResponse: function(){
       if (this.events.length == 0) {
         this.emptyResponse = true
@@ -375,6 +397,10 @@ export default {
     },
   },
 
+}
+
+function getByTitle(list) {
+  return list.filter( item => item.category )
 }
 </script>
 
@@ -429,30 +455,6 @@ export default {
 .filter-by-owner .v-select.single .selected-tag{
   background-color: #f0f0f0;
   border: none;
-}
-ul.paginate-links {
-  display: inline-block;
-  margin:0;
-  padding:0;
-  float:right;
-}
-.paginate-links li{
-  display: inline-block;
-  border-right: 2px solid white;
-  margin-bottom:1rem;
-}
-.paginate-links a{
-  display: block;
-  padding: .5rem;
-  background: #0f4d90;
-  color:white;
-}
-.paginate-links a{
-  color:white;
-}
-.paginate-links li.active a{
-  background: white;
-  color: #444;
 }
 .vdp-datepicker [type='text'] {
   height: 2.4rem;
