@@ -40,7 +40,7 @@ ul.simcal-events{
 
 .calendar-details{
   background-color:color(ghost-gray);
-  padding:0 1rem;
+  padding:1rem;
   min-height:94px;
   border-left:1px solid black;
   .title{
@@ -73,7 +73,8 @@ ul.simcal-events{
 
 @media only screen and (min-width: 40.063em) {
   .calendar-details {
-    padding:1.2rem;
+    //important to override column padding
+    padding:1.2rem !important;
     border-left:10px solid white;
   }
   .calendar-date{
