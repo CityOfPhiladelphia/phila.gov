@@ -10,34 +10,34 @@
     </form>
     <div id="filter-results" class="bg-ghost-gray pam">
       <div class="h5">Filter results</div>
-        <div class="grid-x grid-margin-x">
-          <div class="cell medium-8 small-11">
-            <datepicker
-            placeholder="Today"
-            name="startDate"
-            v-on:closed="runDateQuery"
-            v-model="state.startDate"></datepicker>
-          </div>
-          <div class="cell medium-1 small-2 mts">
-            <i class="fa fa-arrow-right"></i>
-          </div>
-          <div class="cell medium-8 small-11">
-            <datepicker
-            name="endDate"
-            v-on:closed="runDateQuery"
-            v-model="state.endDate"></datepicker>
-          </div>
-          <div class="cell medium-7 small-24">
-            <a class="button content-type-featured full" @click="reset">Clear filters</a>
-          </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-8 small-11">
+          <datepicker
+          placeholder="Today"
+          name="startDate"
+          v-on:closed="runDateQuery"
+          v-model="state.startDate"></datepicker>
+        </div>
+        <div class="cell medium-1 small-2 mts">
+          <i class="fa fa-arrow-right"></i>
+        </div>
+        <div class="cell medium-8 small-11">
+          <datepicker
+          name="endDate"
+          v-on:closed="runDateQuery"
+          v-model="state.endDate"></datepicker>
+        </div>
+        <div class="cell medium-7 small-24">
+          <a class="button content-type-featured full" @click="reset">Clear filters</a>
         </div>
       </div>
+    </div>
     <div v-show="loading" class="mtm center">
       <i class="fa fa-spinner fa-spin fa-3x"></i>
     </div>
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
-    <div class="" v-show="!loading && !emptyResponse && !failure">
+    <div v-show="!loading && !emptyResponse && !failure">
       <div v-for="(event, index) in filteredList"
         :key="event.id">
           <div v-if="event.id" class="event-container">
@@ -46,47 +46,60 @@
               <div class="small-6 medium-3 columns calendar-date equal">
                 <div class="valign">
                   <div class="valign-cell">
-                    <div class="month">{{ event.start.dateTime | formatMonth }}</div>
-                      <div class="day">
-                        <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
-                        <span v-else>
-                          {{event.start.date | formatDay }}
-                        </span>
-                      </div>
+                    <div class="month">
+                      <span v-if="event.start.dateTime">{{ event.start.dateTime | formatMonth }}</span>
+                      <span v-else>{{ event.start.date | formatMonth }}</span>
+                    </div>
+                    <div class="day">
+                      <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
+                      <span v-else>
+                        {{event.start.date | formatDay }}
+                      </span>
                     </div>
                   </div>
+                </div>
               </div>
               <div class="small-18 medium-21 columns calendar-details equal">
                 <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
                   <span>Event</span>
                 </div>
                 <div class="title">{{event.summary}}</div>
-                <div class="start-end">
-                  {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}</div>
+                <div
+                v-if="event.start.dateTime"
+                class="start-end">
+                  {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}
+                </div>
+                <div v-else>
+                  All day
+                </div>
                 <div class="location">{{event.location}}</div>
               </div>
             </div>
-            <div
-              v-bind:id="event.id"
-              class="reveal reveal--calendar"
-              data-reveal
-              data-deep-link="true"
-              data-update-history="true">
-              <button class="close-button" type="button" data-close="" aria-label="Close modal">
-              <span aria-hidden="true">×</span>
-              </button>
-              <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span></div>
-              <h3>{{event.summary}}</h3>
-              <div class="mbm">{{event.start.dateTime | formatDate}}
-                <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
-                <div class="location">{{event.location}}</div>
-                [end-location-link]map[/end-location-link]
-
-                </div>
-                {{event.description}}
-              <div class="post-meta mbm reveal-footer">[display_category]</div>
-            </div>
           </div>
+        </div>
+      </div>
+      <div v-for="(event, index) in events"
+        :key="event.id">
+        <div
+          v-bind:id="event.id"
+          class="reveal reveal--calendar"
+          data-reveal
+          data-deep-link="true"
+          data-update-history="true">
+          <button class="close-button" type="button" data-close="" aria-label="Close modal">
+            <span aria-hidden="true">×</span>
+          </button>
+          <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span>
+          </div>
+          <h3>{{event.summary}}</h3>
+          <div class="mbm">{{event.start.dateTime | formatDate}}
+            <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
+            <div class="location">{{event.location}}</div>
+            [end-location-link]map[/end-location-link]
+
+            </div>
+            {{event.description}}
+          <div class="post-meta mbm reveal-footer">[display_category]</div>
         </div>
       </div>
     </div>
