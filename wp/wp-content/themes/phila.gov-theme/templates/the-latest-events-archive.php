@@ -18,7 +18,8 @@ get_header(); ?>
 <?php
 $cal_a = array(
   'post_type' => 'calendar',
-  'posts_per_page'  => -1
+  'posts_per_page'  => -1,
+  'post_status' => 'any'
 );
 $calendar_q = new WP_Query( $cal_a );
 if ( $calendar_q->have_posts() ) : ?>
