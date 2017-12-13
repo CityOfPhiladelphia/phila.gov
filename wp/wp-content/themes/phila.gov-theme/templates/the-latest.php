@@ -108,6 +108,13 @@
             </div>
           </div>
         </div>
+        <div class="grid-container">
+          <div class="grid-x">
+            <div class="cell small-24">
+              <a href="/the-latest/all-events" class="button float-right content-type-events">See all events</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
