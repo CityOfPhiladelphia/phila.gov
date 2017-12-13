@@ -8,7 +8,7 @@
         <input type="submit" value="submit" class="search-submit">
       </div>
     </form>
-    <div id="filter-results" class="bg-ghost-gray pam">
+    <div id="filter-results" class="bg-ghost-gray pam mbm">
       <div class="h5">Filter results</div>
       <div class="grid-x grid-margin-x">
         <div class="cell medium-8 small-11">
@@ -38,28 +38,26 @@
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
     <div v-show="!loading && !emptyResponse && !failure">
-      <div v-for="(event, index) in filteredList"
+      <div v-for="(event, index) in filteredEvents"
         :key="event.id">
           <div v-if="event.id" class="event-container">
-            <div class="row event-row medium-collapse equal-height"
-            :data-open="event.id">
-              <div class="small-6 medium-3 columns calendar-date equal">
-                <div class="valign">
-                  <div class="valign-cell">
-                    <div class="month">
-                      <span v-if="event.start.dateTime">{{ event.start.dateTime | formatMonth }}</span>
-                      <span v-else>{{ event.start.date | formatMonth }}</span>
-                    </div>
-                    <div class="day">
-                      <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
-                      <span v-else>
-                        {{event.start.date | formatDay }}
-                      </span>
-                    </div>
+            <div class="grid-x grid-padding-x event-row medium-collapse"
+            @click="$modal.show(event.id)">
+              <div class="small-6 medium-3 cell calendar-date pam">
+                <div class="align-self-middle">
+                  <div class="month">
+                    <span v-if="event.start.dateTime">{{ event.start.dateTime | formatMonth }}</span>
+                    <span v-else>{{ event.start.date | formatMonth }}</span>
+                  </div>
+                  <div class="day">
+                    <span v-if="event.start.dateTime">{{event.start.dateTime | formatDay}}</span>
+                    <span v-else>
+                      {{event.start.date | formatDay }}
+                    </span>
                   </div>
                 </div>
               </div>
-              <div class="small-18 medium-21 columns calendar-details equal">
+              <div class="small-18 medium-21 cell calendar-details pam">
                 <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
                   <span>Event</span>
                 </div>
@@ -76,32 +74,42 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
+    </div>
       <div v-for="(event, index) in events"
         :key="event.id">
-        <div
-          v-bind:id="event.id"
-          class="reveal reveal--calendar"
-          data-reveal
-          data-deep-link="true"
-          data-update-history="true">
-          <button class="close-button" type="button" data-close="" aria-label="Close modal">
-            <span aria-hidden="true">×</span>
-          </button>
-          <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <span>Event</span>
+        <modal
+        :name="event.id"
+        height="auto"
+        :adaptive="adaptive"
+        :scrollable="true">
+        <div class="v--modal-container">
+          <div slot="top-right">
+            <button @click="$modal.hide(event.id)" class="close-button" type="button" aria-label="Close modal">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+            <span>Event</span>
           </div>
           <h3>{{event.summary}}</h3>
-          <div class="mbm">{{event.start.dateTime | formatDate}}
-            <div class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] to [end-time], [duration][/if-not-whole-day]</div>
-            <div class="location">{{event.location}}</div>
-            [end-location-link]map[/end-location-link]
-
-            </div>
-            {{event.description}}
-          <div class="post-meta mbm reveal-footer">[display_category]</div>
+          <div class="location mvm">{{event.location}}</div>
+          <div
+          v-if="event.start.dateTime"
+          class="start-end mvm">
+          {{event.start.dateTime | formatDate }}<br />
+            {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}<br />
+          </div>
+          <div class="mvm" v-else>
+            {{event.start.date | formatDate }}<br />
+            All day
+          </div>
+          <div class="mbm">
+            <div v-html="event.description"></div>
+          </div>
+          <div class="post-meta mbm reveal-footer"></div>
         </div>
-      </div>
+      </modal>
     </div>
   </div>
 </template>
@@ -112,7 +120,6 @@ import axios from 'axios'
 import vSelect from 'vue-select'
 import Datepicker from 'vuejs-datepicker';
 import Search from './components/phila-search.vue'
-
 
 const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
 const links = []
@@ -179,7 +186,7 @@ export default {
     },
     'formatDate': function(value) {
       if (value) {
-        return moment( String(value) ).format('MMM. DD, YYYY')
+        return moment( String(value) ).format('MMMM DD, YYYY')
       }
     },
     'formatTime': function(value) {
@@ -190,45 +197,15 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
+    this.sortedItems(this.events)
     //this.getDropdownCategories()
-    //this.loading = true
+    this.loading = true
   },
   methods: {
-    sortArray: function (prop, arr) {
-      console.log('yeah')
-      prop = prop.split('.');
-      var len = prop.length;
-
-      arr.sort(function (a, b) {
-          var i = 0;
-          while( i < len ) {
-              a = a[prop[i]];
-              b = b[prop[i]];
-              i++;
-          }
-          if (a < b) {
-            console.log(a)
-              return -1;
-          } else if (a > b) {
-          console.log(b)
-              return 1;
-          } else {
-              return 0;
-          }
-      });
-      return arr;
-  },
     getUpcomingEvents: function () {
-    //  this.loading = true
-
-    //const calendars = JSON.parse(g_cal_data.json)
-
       for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment().format() )
+        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
       }
-
-      console.log(links);
-
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
@@ -239,31 +216,15 @@ export default {
               this.events.push(response[j].data.items[k])
            }
           }
-
-          console.log(this.events)
           this.successfulResponse
+          this.loading = false
+
         })
         .catch( e => {
             this.failure = true
         })
 
-      //
-      //
-      // axios.get('/wp-json/the-latest/v1/categories')
-      //   .then(response => {
-      //     this.loading = false
-      //     console.log(response.data)
-      //     this.events = response.data
-      //     //this.successfulResponse
-      //   })
-      //   .catch(e => {
-      //     this.failure = true
-      //   })
-
     },
-    goToDoc: function (link){
-      window.location.href = link
-     },
     onSubmit: function (event) {
       this.loading = true
 
@@ -288,12 +249,9 @@ export default {
       })
     },
     reset() {
+      window.location = window.location.pathname;
       //Object.assign(this.$data, this.$options.data.call(this));
 
-      //this.loading = true
-      //console.log(this.$refs.categorySelect)
-      //console.log(this.$refs.categorySelect.$el.textContent)
-      window.location = window.location.pathname;
       /*this.selectedCategory = ''
       axios.get(gCalEndpoint + 'archives', {
        params : {
@@ -319,87 +277,67 @@ export default {
       if ( !this.state.startDate || !this.state.endDate )
         return;
 
-        //reset data
-
-        this.events = [{
-          summary: '',
-          start: {
-            dateTime: '',
-            date: ''
-          },
-          end: {
-            dateTime: '',
-            date: ''
-          }
-        }]
-        //reset links
-        const links = []
-
-        console.log(this.state.startDate)
-        console.log(this.state.endDate)
-
-        for( var i = 0; i < this.calendars.length; i++ ){
-          links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      //reset data
+      this.events = [{
+        summary: '',
+        start: {
+          dateTime: '',
+          date: ''
+        },
+        end: {
+          dateTime: '',
+          date: ''
         }
-        console.log(links);
-        axios.all( links.map( l => axios.get( l ) ) )
-          .then(response =>  {
-            this.calData = response
-            const temp = []
+      }]
 
-            for (var j = 0; j < this.calData.length; j++ ){
-              for(var k = 0; k < response[j].data.items.length; k++) {
-                this.events.push(response[j].data.items[k])
-             }
-            }
+      //reset links
+      const links = []
 
-            console.log(this.events)
-            this.successfulResponse
-          })
-          .catch( e => {
-              this.failure = true
-          })
+      for( var i = 0; i < this.calendars.length; i++ ){
+        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      }
+      axios.all( links.map( l => axios.get( l ) ) )
+        .then(response =>  {
+          this.calData = response
+          const temp = []
 
-    },
-    filterByCategory: function(selectedVal){
-      this.selectedCategory = selectedVal
+          for (var j = 0; j < this.calData.length; j++ ){
+            for(var k = 0; k < response[j].data.items.length; k++) {
+              this.events.push(response[j].data.items[k])
+           }
+          }
+          this.successfulResponse
+          this.loading = false
 
-      this.$nextTick(function () {
-
-        this.loading = true
-
-        axios.get(gCalEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory.id,
-            'count' : -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.loading = false
-            //Don't let empty value change the rendered view
-            if ( 'id' in selectedVal ){
-              this.events = response.data
-            }
-            this.successfulResponse
-          })
-          .catch(e => {
+        })
+        .catch( e => {
             this.failure = true
         })
-      })
+
     },
-  },
-  computed:{
-    filteredList() {
-      return this.events.filter((event) => {
+    filteredList: function ( list, searchedVal ) {
+      const searched = this.searchedVal.trim();
+      return list.filter((event) => {
         if (typeof event.summary === 'undefined'){
           return
         }else{
-          return event.summary.toLowerCase().indexOf(this.searchedVal.toLowerCase()) > -1
+          return event.summary.toLowerCase().indexOf(searched.toLowerCase()) > -1
         }
       })
+    },
+    sortedItems: function ( list ) {
+      return list.sort((a, b) => {
+        if (a.start.dateTime) {
+          return moment(a.start.dateTime) - moment(b.start.dateTime)
+        }else {
+          return moment(a.start.date) - moment(b.start.date)
+        }
+      })
+    }
+ },
+  computed:{
+    filteredEvents: function(){
+      return this.sortedItems(this.filteredList(this.events, this.searchedVal) )
     },
     successfulResponse: function(){
       if (this.events.length == 0) {
@@ -409,65 +347,33 @@ export default {
       }
     },
   },
-
-}
-
-function getByTitle(list) {
-  return list.filter( item => item.category )
 }
 </script>
 
 <style>
-.filter-by-owner{
-  font-family:"Open Sans", Helvetica, Roboto, Arial, sans-serif !important;
+@media screen and (max-width: 39.9375em) {
+  .v--modal-overlay.scrollable .v--modal-box{
+    width:100% !important;
+    height:100% important;
+  }
 }
-.filter-by-owner .v-select .dropdown-toggle{
-  border:none;
-  background:white;
+.v--modal-container{
+  position: relative;
 }
-.filter-by-owner .v-select .open-indicator{
-  bottom:0;
-  top:0;
-  right:0;
-  background: #0f4d90;
-  padding: .6rem 1.5rem 1rem .8rem;
-  height: inherit;
+.v--modal-container button{
+  background: transparent;
+  padding:0;
 }
-
-.filter-by-owner .v-select input[type=search],
-.v-select input[type=search]:focus{
-  border:none;
+.v--modal-overlay{
+  z-index:9990 !important;
 }
-.filter-by-owner .v-select .open-indicator:before{
-  border-color:white;
-}
-.filter-by-owner .v-select input[type=search],
-.filter-by-owner .v-select input[type=search]:focus {
-  width:8rem !important;
-}
-.filter-by-owner ul.dropdown-menu{
-  border:none;
-  font-weight: bold;
-}
-.filter-by-owner ul.dropdown-menu li{
-  border-bottom: 1px solid #f0f0f0;
-
-}
-.filter-by-owner ul.dropdown-menu li a{
-  color: #0f4d90;
+.v--modal-overlay .v--modal-box{
+  border-bottom:5px solid green;
   padding:1rem;
 }
-.filter-by-owner ul.dropdown-menu li a:hover{
-  background: #0f4d90;
-  color:white;
-}
-.filter-by-owner .v-select .dropdown-menu > .highlight > a {
-  background: #0f4d90;
-  color: white;
-}
-.filter-by-owner .v-select.single .selected-tag{
-  background-color: #f0f0f0;
-  border: none;
+.v--modal{
+  border-radius: 0;
+  box-shadow:none;
 }
 .vdp-datepicker [type='text'] {
   height: 2.4rem;
