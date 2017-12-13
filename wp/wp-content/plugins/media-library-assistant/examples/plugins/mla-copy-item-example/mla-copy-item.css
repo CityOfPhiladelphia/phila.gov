@@ -1,0 +1,97 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for the Media/Assistant submenu
+ * Generate Thumbnails area.
+ */
+
+#mla-copy-item-titles {
+	line-height: 140%;
+	display: block;
+	height: 12em;
+	border: 1px solid #ddd;
+	overflow-y: scroll;
+	padding: 0 5px;
+	margin: 0 0 5px;
+}
+
+#mla-copy-item-titles div {
+	margin: 0.8em 0.3em;
+	font-style: normal;
+	font-size: 11px;
+}
+
+#mla-copy-item-titles div a {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 18px;
+	margin: 0 3px 0 -2px;
+	overflow: hidden;
+	position: relative;
+	width: 20px;
+}
+
+#mla-copy-item-titles div a:before {
+	position: relative;
+	top: -3px;
+}
+
+#mla-copy-item-titles div a:before {
+	background: none;
+	color: #bbb;
+	content: '\f153';
+	display: block !important;
+	font: normal 16px/1 'dashicons';
+	speak: none;
+	margin: 2px 0;
+	height: 20px;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+#mla-copy-item-titles div a:hover:before {
+	color: #c00;
+}
+
+/**
+ * HiDPI Displays
+ */
+@media print,
+  (-o-min-device-pixel-ratio: 5/4),
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 120dpi) {
+	#pll-bulk-titles div a,
+	#pll-bulk-titles div a:hover {
+		background: none !important;
+	}
+}
+
+/*
+ * Generate Thumbnails settings
+ */
+ 
+#wpbody-content .bulk-copy-item-row-attachment fieldset.inline-edit-col-left {
+	width: 30%
+ }
+ 
+#wpbody-content .bulk-copy-item-row-attachment fieldset.inline-edit-col-right {
+	width: 69%
+ }
+ 
+#mla-copy-item-settings label {
+	display: inline;
+	float:none;
+ }
+ 
+#mla-copy-item-settings label span.title {
+	display: inline;
+	float:none;
+ }
+ 
+#mla-copy-item-settings td {
+	text-align:left;
+ }
+ 

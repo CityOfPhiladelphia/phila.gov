@@ -1,0 +1,174 @@
+/*
+ * This stylesheet is used for the "Search Terms" popup window.
+ */
+
+#mla-terms-search-div {
+	background-color: #fff;
+	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	width: 500px;
+	overflow: hidden;
+	margin-left: -250px;
+	position: fixed;
+	top: 30px;
+	bottom: 30px;
+	left: 50%;
+	z-index: 200105;
+}
+
+#mla-terms-search-div .spinner {
+	padding: 4px 10px 0;
+	vertical-align: top;
+	float: right;
+}
+
+#mla-terms-search-head-div {
+	background: #fcfcfc;
+	border-bottom: 1px solid #dfdfdf;
+	height: 36px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 36px;
+	padding: 0 36px 0 16px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#mla-terms-search-close-div {
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 24px;
+	font-family: "Open Sans", sans-serif
+	color: #666;
+}
+
+#mla-terms-search-close-div:hover {
+	color: #2ea2cc;
+}
+
+/* Added in JavaScript code */
+.mla-terms-search-close-div-dashicons:before {
+	font: normal 20px/36px 'dashicons';
+	vertical-align: top;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: '\f158';
+}
+
+#mla-terms-search-inside-div {
+	overflow: auto;
+	padding: 16px;
+	background-color: #fff;
+	position: absolute;
+	top: 37px;
+	bottom: 45px;
+	overflow-y: scroll;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#mla-terms-search-search-div {
+	padding-bottom: 16px;
+}
+
+#mla-terms-search-search-div .spinner {
+	float: none;
+	left: 125px;
+	position: absolute;
+	top: 18px;
+}
+
+#mla-terms-search-input,
+#mla-terms-search-search {
+	float: left;
+}
+
+#mla-terms-search-input {
+	width: 300px;
+	height: 28px;
+	margin: 0 4px;
+}
+
+#mla-terms-search-radio-div {
+	border: 1px solid #dfdfdf;
+	width: 100%; /*360px;*/
+}
+
+#mla-terms-search-radio-phrases-div,
+#mla-terms-search-radio-terms-div {
+	display:inline-block;
+	margin-right: 10px;
+	padding: 0px 10px;
+	border-right: 1px solid #dfdfdf;
+}
+
+#mla-terms-search-exact-div {
+	display:inline-block;
+	padding-right: 10px;
+	vertical-align:top
+}
+
+#mla-terms-search-buttons-div {
+	padding: 8px 16px;
+	background: #fcfcfc;
+	border-top: 1px solid #dfdfdf;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+@media screen and ( max-width: 782px ) {
+	#mla-terms-search-inside-div {
+		bottom: 57px;
+	}
+}
+
+@media screen and ( max-width: 660px ) {
+
+	#mla-terms-search-head-div {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+		width: 100%;
+	}
+
+}
+
+#mla-terms-search-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	z-index: 200100;
+}
+
+/* Styling */
+
+/* Specific Elements */
+
+#mla-terms-search-titles-div {
+	font-size: 12px;
+	line-height: 14px;
+	margin-bottom: 10px;
+}
