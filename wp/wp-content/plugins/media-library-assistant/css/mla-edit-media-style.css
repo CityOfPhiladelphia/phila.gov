@@ -1,0 +1,35 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for the Media/Edit Media page, if any.
+ */
+
+#mla_featured_in,
+#mla_inserted_in,
+#mla_gallery_in,
+#mla_mla_gallery_in,
+#mla_image_metadata {
+	width: 100%;
+}
+
+/*
+ * Parent Info meta box
+ */
+ 
+#mla_post_parent {
+	width: 4em;
+}
+
+#mla_set_parent {
+	line-height: 16px;
+	margin: 1px 4px;
+}
+
+#mla_parent_info {
+	height: 25px;
+	line-height: 16px;
+	width: 100%;
+	margin: 4px 0;
+}
+
