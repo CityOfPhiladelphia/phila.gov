@@ -46,7 +46,6 @@ if ( $calendar_q->have_posts() ) : ?>
     'json' => __($json_final)
       )
     );
-    wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
 ?>
 
 <section id="events-archive" class="content-area archive">
