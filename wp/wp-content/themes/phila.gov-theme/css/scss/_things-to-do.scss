@@ -1,0 +1,35 @@
+.photo-callout-block{
+    align-items: stretch;
+}
+
+.photo-callout-block__img.cell{
+    overflow: hidden;
+    margin-bottom:0;
+    img{
+        width:100%;
+        display: block;
+        margin:0;
+        padding:0
+    }
+
+}
+
+
+.photo-callout-block__txt.cell{
+    max-height: 350px;
+    padding: 4% 8%;
+    background: color(ghost-gray);
+}
+
+.photo-callout-block__txt-sub-header{
+    color: color(dark-ben-franklin);
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+
+.photo-callout-block__txt-header{
+    font-weight: 700;
+}
+.photo-callout-block__txt-btn{
+    margin-top: 20px;
+}
