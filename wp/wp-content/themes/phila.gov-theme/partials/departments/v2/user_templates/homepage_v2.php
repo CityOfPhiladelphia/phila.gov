@@ -24,7 +24,7 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'things-to-do'              => array(
+        'photo-callout-block'              => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
