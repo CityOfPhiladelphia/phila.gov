@@ -1,5 +1,5 @@
 <?php
-/* Displays list of PDFs assigned to category. */
+/* Displays list of PDFs assigned to this page's category. */
 
 ?>
 <?php $cat = get_the_category();
@@ -15,9 +15,10 @@ $attachments = get_posts($attachment_args);?>
       <thead>
         <tr>
           <th>Title</th>
-          <th>Type</th>
+          <th>Category</th>
           <th>Author</th>
           <th>Date</th>
+          <th>Format</th>
         </tr>
       </thead>
       <?php foreach( $attachments as $attachment ) : ?>
@@ -28,33 +29,55 @@ $attachments = get_posts($attachment_args);?>
 
         $attachment_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $attachment->ID );
 
+        $attachment_url = get_post_meta($attachment->ID, 'amazonS3_info');
+
+        $url = get_site_url() . '/' . $attachment_url[0]['key'];
+
+        $date_override = rwmb_meta( 'phila_override_release_date' );
+
         $type = get_the_terms($attachment->ID, 'media_type');
         $author = get_the_terms($attachment->ID, 'media_author');
         $types = array();
         $authors = array();
-        if ( empty($attachment_published ) ){
+
+        if ( empty( $attachment_published ) ){
           $attachment_published = get_the_date( $d = '', $attachment->ID );
-        }?>
-        <tr class="clickable-row" data-href="<?php echo $attachment->guid; ?>" id="<?php echo phila_format_uri($attachment->title); ?>">
+        }
+        ?>
+        <tr class="clickable-row" data-href="<?php echo $url; ?>" id="<?php echo phila_format_uri($attachment->title); ?>">
           <td>
-            <?php echo $attachment->post_title;
-            echo $file_type;
-             ?>
+            <a href="<?php echo $url ?>"><?php echo $attachment->post_title ?> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
           </td>
           <td>
-            <?php foreach ($type as $t) :
-              array_push($types, $t->name);
-            endforeach;
-            echo implode(", ", $types);?>
+            <?php
+            if( !empty( $type ) ) :
+              foreach ( $type as $t ) :
+                array_push( $types, $t->name );
+              endforeach;
+              echo implode( ', ', $types );
+            endif;?>
           </td>
           <td>
-            <?php foreach ($author as $a) :
-              array_push($authors, $a->name);
-            endforeach;
-            echo implode(", ", $authors);?>
+            <?php
+            if( !empty( $author ) ) :
+              foreach ( $author as $a ) :
+                array_push( $authors, $a->name );
+              endforeach;
+              echo implode( ', ', $authors );
+            endif;
+            ?>
           </td>
           <td>
             <?php echo $attachment_published ?>
+          </td>
+          <td>
+            <?php if ( $file_type ): ?>
+            <div aria-hidden="true">
+              <span class="file-type prs"><?php phila_format_document_type( $file_type ); ?></span>
+              <a href="<?php echo $url ?>" data-file-name="<?php echo $attachment->title ?>" aria-hidden="true"><i class="fa fa-download fa-2x"></i>
+              </a>
+            </div>
+            <?php endif; ?>
           </td>
         </tr>
       <?php endforeach; ?>
