@@ -1,0 +1,515 @@
+@charset "utf-8";
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes, adapted from wp-admin.css and given unique names
+ * to avoid conflicts.
+ */
+
+/*
+ * MLA List Table, single edit and settings page message DIV
+ */
+div.mla_messages {
+	background:#FFFFE0;
+	border:1px solid #CCC;
+	padding:0 10px;
+	margin-top:5px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+div.mla_errors {
+	background:#FFE0E0;
+	border:1px solid #CCC;
+	padding:0 10px;
+	margin-top:5px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+/*
+ * MLA List Table Filter, Terms Search, Empty Trash and Clear Filter-by buttons
+ */
+.actions #post-query-submit,
+.actions #mla-terms-search-open,
+.actions #delete_all,
+.actions #clear_filter_by {
+	float: left;
+	margin: 1px 4px 0 0;
+}
+
+/*
+ * MLA Inline editing - adapted from load-styles.php
+ */
+.mla_bulk_taxonomy_options {
+	margin-top: 8px;
+	margin-bottom: 8px
+}
+
+#wpbody-content .quick-edit-row-attachment .inline-edit-col-left {
+	width: 40%
+}
+
+#wpbody-content .quick-edit-row-attachment .inline-edit-col-center {
+	width: 20%
+}
+
+#wpbody-content .quick-edit-row-attachment .inline-edit-col-right {
+	width: 39%
+}
+
+#wpbody-content .bulk-edit-row-attachment .inline-edit-col-left {
+	width: 25%
+}
+
+#wpbody-content .bulk-edit-row-attachment .inline-edit-col-center {
+	width: 25%
+}
+
+#wpbody-content .bulk-edit-row-attachment .inline-edit-col-right {
+	width: 49%
+}
+
+#wpbody-content tr#bulk-progress .inline-edit-col-left {
+	width: 30%
+}
+
+#wpbody-content tr#bulk-progress .inline-edit-col-center {
+	width: 30%
+}
+
+#wpbody-content tr#bulk-progress .inline-edit-col-right {
+	width: 40%
+}
+
+.bulk-edit-row-attachment fieldset.inline-edit-col-left .reset {
+	margin: 0px 5px
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label span.title,
+.quick-edit-row-attachment fieldset.inline-edit-col-right label span.title,
+.bulk-edit-row-attachment fieldset.inline-edit-col-right label span.title {
+	width: 6em;
+	line-height: 1.2
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-center span.catshow,
+.bulk-edit-row-attachment fieldset.inline-edit-col-center span.catshow {
+	display: none
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label span.input-text-wrap,
+.quick-edit-row-attachment fieldset.inline-edit-col-right label span.input-text-wrap,
+.bulk-edit-row-attachment fieldset.inline-edit-col-right label span.input-text-wrap {
+	margin-left: 6em
+}
+
+.bulk-edit-row-attachment fieldset.inline-edit-col-right label.inline-edit-post-content textarea.wp-editor-area {
+	height: auto
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label.inline-edit-post-parent span.input-text-wrap,
+.bulk-edit-row-attachment fieldset.inline-edit-col-right label.inline-edit-post-parent span.input-text-wrap {
+	width: 5em
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label.inline-edit-post-author,
+.quick-edit-row-attachment fieldset.inline-edit-col-left label.inline-edit-post-parent-title {
+	display:inline;
+	padding-top: 2px;
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left input#inline-edit-post-set-parent {
+	display:inline;
+	line-height: 16px;
+	margin: .2em .4em .2em .0em;
+}
+
+.bulk-edit-row-attachment fieldset.inline-edit-col-right input#bulk-edit-set-parent {
+	display:inline;
+	line-height: 16px;
+	margin: .2em .4em .2em .4em;
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label.inline-edit-post-parent-title .input-text-wrap input[type=text] {
+	width: auto;
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label.inline-edit-author span.title {
+	width:auto;
+	margin-right: 0.5em;
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-left label.inline-edit-menu-order span.input-text-wrap {
+	width: 3em
+}
+
+.quick-edit-row-attachment fieldset.inline-edit-col-right label.inline-edit-tags span.title,
+.bulk-edit-row-attachment fieldset.inline-edit-col-right label.inline-edit-tags span.title {
+	width: 99%
+}
+
+.inline-edit-save #bulk_map,
+.inline-edit-save #bulk_custom_field_map {
+	margin-right: 1em
+}
+
+.bulk-progress-titles div a:before {
+	background: none;
+	color: #bbb;
+	content: '\f153';
+	display: block !important;
+	font: normal 16px/1 'dashicons';
+	speak: none;
+	height: 20px;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+.bulk-progress-titles div a:before {
+	margin: 2px 0;
+}
+
+.bulk-progress-titles div a:hover:before {
+	color: #c00;
+}
+
+.bulk-progress-titles {
+	display: block;
+	height: 12em;
+	border: 1px solid #ddd;
+	overflow-y: scroll;
+	padding: 0 5px;
+	margin: 0 0 5px;
+}
+
+.bulk-progress-titles div {
+	font-style: normal;
+	font-size: 11px;
+}
+
+.bulk-progress-titles {
+	line-height: 140%;
+}
+.bulk-progress-titles div {
+	margin: 0.2em 0.3em;
+}
+
+.bulk-progress-titles div a {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 18px;
+	margin: 0 3px 0 -2px;
+	overflow: hidden;
+	position: relative;
+	width: 20px;
+}
+
+.bulk-progress-titles div a:before {
+	position: relative;
+	top: -3px;
+}
+
+@media screen and ( max-width: 782px ) {
+	/* Quick Edit and Bulk Edit */
+	#wpbody-content .quick-edit-row-attachment .inline-edit-col-left,
+	#wpbody-content .quick-edit-row-attachment .inline-edit-col-right,
+	#wpbody-content .inline-edit-row-attachment .inline-edit-col-center,
+	#wpbody-content .bulk-edit-row-attachment .inline-edit-col-left,
+	#wpbody-content .bulk-edit-row-attachment .inline-edit-col-right {
+		float: none;
+		width: 100%;
+	}
+
+	.quick-edit-row-attachment fieldset.inline-edit-col-left label span.title,
+	.quick-edit-row-attachment fieldset.inline-edit-col-right label span.title,
+	.bulk-edit-row-attachment fieldset.inline-edit-col-right label span.title {
+		width: 100%;
+		line-height: 2.5
+	}
+
+	.quick-edit-row-attachment fieldset.inline-edit-col-left label span.input-text-wrap,
+	.quick-edit-row-attachment fieldset.inline-edit-col-right label span.input-text-wrap,
+	.bulk-edit-row-attachment fieldset.inline-edit-col-right label span.input-text-wrap {
+		margin-left: 0em
+	}
+
+	.bulk-progress-titles div {
+		font-size: 16px;
+	}
+
+	.bulk-progress-titles div {
+		margin: 0.8em 0.3em;
+	}
+
+	.bulk-progress-titles div a {
+		height: 22px;
+	}
+}
+
+/*
+ * MLA Settings page, Views, Uploads and Custom Fields tab inline editing - adapted from load-styles.php
+ */
+
+#wpbody-content .bulk-edit-row-upload .inline-edit-col-left,
+#wpbody-content .bulk-edit-row-custom .inline-edit-col-left,
+#wpbody-content .bulk-edit-row-view .inline-edit-col-left {
+	width: 30%
+}
+
+#wpbody-content .bulk-edit-row-upload .inline-edit-col-right,
+#wpbody-content .bulk-edit-row-custom .inline-edit-col-right,
+#wpbody-content .bulk-edit-row-view .inline-edit-col-right {
+	width: 69%
+}
+
+#wpbody-content .quick-edit-row-custom fieldset.inline-edit-col label span.title,
+#wpbody-content .bulk-edit-row-custom fieldset.inline-edit-col-right label span.title {
+	width: 8em;
+	text-align: right
+}
+
+#wpbody-content .quick-edit-row-custom fieldset.inline-edit-col label span.checkbox-title,
+#wpbody-content .bulk-edit-row-custom fieldset.inline-edit-col-right label span.checkbox-title {
+	margin-left: .25em;
+	margin-right: 2em;
+}
+
+#wpbody-content .quick-edit-row-custom fieldset.inline-edit-col label span.dropdown-title,
+#wpbody-content .bulk-edit-row-custom fieldset.inline-edit-col-right label span.dropdown-title {
+	float:left;
+	margin-right: .25em;
+	margin-left: 2em;
+}
+
+#wpbody-content .quick-edit-row-custom fieldset.inline-edit-col label span.input-text-wrap {
+	margin-left: 8.5em;
+	width: 24em
+}
+
+#wpbody-content .quick-edit-row-custom fieldset.inline-edit-col label span.input-dropdown-wrap {
+	float:left;
+}
+
+.quick-edit-row-upload fieldset.inline-edit-col label span.title,
+.bulk-edit-row-upload fieldset.inline-edit-col-right label span.title,
+.quick-edit-row-view fieldset.inline-edit-col label span.title,
+.bulk-edit-row-view fieldset.inline-edit-col-right label span.title {
+	width: 8em
+}
+
+.quick-edit-row-upload fieldset.inline-edit-col label span.input-text-wrap,
+.bulk-edit-row-upload fieldset.inline-edit-col-right label span.input-text-wrap,
+.quick-edit-row-view fieldset.inline-edit-col label span.input-text-wrap,
+.bulk-edit-row-view fieldset.inline-edit-col-right label span.input-text-wrap {
+	margin-left: 8em;
+	width: 12em
+}
+
+.quick-edit-row-upload fieldset.inline-edit-col label,
+.quick-edit-row-view fieldset.inline-edit-col label {
+	width: 21em
+}
+
+.quick-edit-row-upload fieldset.inline-edit-col label.checkbox-label,
+.quick-edit-row-view fieldset.inline-edit-col label.checkbox-label {
+	width: 10.5em
+}
+
+.quick-edit-row-upload fieldset.inline-edit-col input.inline-edit-menu-order,
+.bulk-edit-row-upload fieldset.inline-edit-col-right label.inline-edit-menu-order span.input-text-wrap,
+.quick-edit-row-view fieldset.inline-edit-col input.inline-edit-menu-order,
+.bulk-edit-row-view fieldset.inline-edit-col-right label.inline-edit-menu-order span.input-text-wrap {
+	width: 5em
+}
+
+@media screen and ( max-width: 782px ) {
+	#wpbody-content .bulk-edit-row-upload .inline-edit-col-left,
+	#wpbody-content .bulk-edit-row-view .inline-edit-col-left,
+	#wpbody-content .bulk-edit-row-upload .inline-edit-col-right,
+	#wpbody-content .bulk-edit-row-view .inline-edit-col-right {
+		float: none;
+		width: 100%
+	}
+
+	.quick-edit-row-upload fieldset.inline-edit-col label span.title,
+	.bulk-edit-row-upload fieldset.inline-edit-col-right label span.title,
+	.quick-edit-row-view fieldset.inline-edit-col label span.title,
+	.bulk-edit-row-view fieldset.inline-edit-col-right label span.title {
+		width: 100%
+	}
+
+	.quick-edit-row-upload fieldset.inline-edit-col label span.input-text-wrap,
+	.bulk-edit-row-upload fieldset.inline-edit-col-right label span.input-text-wrap,
+	.quick-edit-row-view fieldset.inline-edit-col label span.input-text-wrap,
+	.bulk-edit-row-view fieldset.inline-edit-col-right label span.input-text-wrap {
+		margin-left: 0px;
+		width: 100%
+	}
+
+	.quick-edit-row-upload fieldset.inline-edit-col label,
+	.quick-edit-row-view fieldset.inline-edit-col label {
+		float: none;
+		width: 100%
+	}
+
+	.quick-edit-row-upload fieldset.inline-edit-col input.inline-edit-menu-order,
+	.bulk-edit-row-upload fieldset.inline-edit-col-right label.inline-edit-menu-order span.input-text-wrap,
+	.quick-edit-row-view fieldset.inline-edit-col input.inline-edit-menu-order,
+	.bulk-edit-row-view fieldset.inline-edit-col-right label.inline-edit-menu-order span.input-text-wrap {
+		width: 100%
+	}
+}
+
+/*
+ * MLA Settings page
+ */
+
+#donate-button-div {
+	margin-top: 5px;
+}
+
+#wpbody-content .optiontable th {
+	padding-right: 10px;
+}
+
+.mla-settings-taxonomy-th {
+	padding: 0px 5px;
+	text-align:center;
+	border-right: 1px solid
+}
+
+.mla-settings-enable-form {
+	margin-left: 0px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom:thin solid #888888;
+}
+
+span.submit.mla-settings-submit,
+p.submit.mla-settings-submit {
+	padding-bottom: 0px
+}
+
+#mla-shortcode-list  {
+	width: 90%;
+	padding-left: 5%;
+}
+
+.mla-settings-help {
+	font-size: 8pt;
+	padding-bottom: 5px;
+}
+
+#mla-display-settings-iptc-exif-tab .mla-mapping,
+#mla-display-settings-custom-field-tab .mla-mapping {
+	margin-left: 10px;
+}
+
+ul.mla_settings { 
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ul.mla_settings li { 
+	margin-left: 2em;
+}
+
+#mla-add-iptc-exif-table,
+#mla-add-custom-field-table {
+	margin-bottom: 15px;
+}
+
+#mla-add-iptc-exif-table th,
+#mla-add-custom-field-table th {
+	padding: 5px 5px 5px 0px;
+	width: 10px;
+}
+
+#mla-add-iptc-exif-table td,
+#mla-add-custom-field-table td {
+	padding: 5px 0px 5px 0px;
+}
+
+#mla-add-custom-field-toggle {
+	text-decoration:none;
+}
+
+#mla-add-iptc-exif-table input[type="text"],
+#mla-add-iptc-exif-table select,
+#mla-add-custom-field-table input[type="text"],
+#mla-add-custom-field-table select {
+	width: 100%;
+}
+
+/*
+ * Help and Documentation content
+ */
+
+.mla-doc-toc-list {
+	list-style-position:inside;
+	list-style:disc;
+	line-height: 15px;
+	padding-left: 20px
+}
+
+.mla-doc-hook-label {
+	text-align: right;
+	padding: 0 1em 2em 0;
+	vertical-align: top;
+	font-weight:bold
+}
+
+.mla-doc-hook-definition {
+	vertical-align: top;
+}
+
+.mla-doc-table-label {
+	text-align: right;
+	padding-right: 10px;
+	vertical-align: top;
+	font-weight:bold
+}
+
+.mla-doc-table-sublabel {
+	padding-right: 10px;
+	vertical-align: top
+}
+
+.mla-doc-table-reverse {
+	text-align: right;
+	padding-right: 10px;
+	vertical-align:top
+}
+
+.mla-doc-table-definition {
+	vertical-align: top;
+}
+
+.mla-doc-bold-link {
+	font-size:14px;
+	font-weight:bold
+}
+
+.mla-doc-dropdown-padding {
+	padding-left: 40px
+}
+
+#mla-doc-gallery-shortcode {
+	float:left;
+	margin-right: 15px
+}
+
+#mla-doc-cloud-shortcode {
+	float:left;
+	margin-left: 15px
+}
+
+#mla-doc-list-shortcode {
+	float:left;
+	margin-left: 15px
+}

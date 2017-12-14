@@ -16,10 +16,13 @@ if (class_exists("Phila_Gov_Custom_Taxonomies") ){
 class Phila_Gov_Custom_Taxonomies {
 
   public function __construct(){
-    add_action( 'init', array($this, 'add_custom_taxonomies') );
+    add_action( 'init', array($this, 'add_service_type') );
+    add_action( 'init', array($this, 'add_media_type') );
+    add_action( 'init', array($this, 'add_media_author') );
+
   }
 
-  function add_custom_taxonomies() {
+  function add_service_type() {
     // Service Pages
     register_taxonomy('service_type',
       array(
@@ -43,6 +46,62 @@ class Phila_Gov_Custom_Taxonomies {
       'show_admin_column' => true,
       'rewrite' => array(
         'slug' => 'service-types',
+        'with_front' => false,
+      ),
+    ));
+  }
+  function add_media_type() {
+    // Service Pages
+    register_taxonomy('media_type',
+      array(
+        'attachment'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Media Type', 'phila-gov'),
+        'singular_name' => _x( 'Media Type', 'phila-gov'),
+        'menu_name' =>     __('Media Types'),
+        'search_items' =>  __( 'Search Media Types' ),
+        'all_items' =>     __( 'All Media Types' ),
+        'edit_item' =>     __( 'Edit Media Type' ),
+        'update_item' =>   __( 'Update Media Type' ),
+        'add_new_item' =>  __( 'Add New Media Type' ),
+        'new_item_name' => __( 'New Media Type Name' ),
+        'menu_name' =>     __( 'Media Types' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'media-types',
+        'with_front' => false,
+      ),
+    ));
+  }
+  function add_media_author() {
+    // Service Pages
+    register_taxonomy('media_author',
+      array(
+        'attachment'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Media Author', 'phila-gov'),
+        'singular_name' => _x( 'Media Author', 'phila-gov'),
+        'menu_name' =>     __('Media Author'),
+        'search_items' =>  __( 'Search Media Author' ),
+        'all_items' =>     __( 'All Media Authors' ),
+        'edit_item' =>     __( 'Edit Media Author' ),
+        'update_item' =>   __( 'Update Media Author' ),
+        'add_new_item' =>  __( 'Add New Media Author' ),
+        'new_item_name' => __( 'New Media Author Name' ),
+        'menu_name' =>     __( 'Media Author' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'media-author',
         'with_front' => false,
       ),
     ));

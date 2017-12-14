@@ -1,0 +1,4014 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Media Library Assistant\n"
+"POT-Creation-Date: 2016-01-23 23:01-0800\n"
+"PO-Revision-Date: 2016-04-02 18:28+0100\n"
+"Last-Translator: David Lingren <david@fairtradejudaica.org>\n"
+"Language-Team: David Lingren <david@fairtradejudaica.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: includes\n"
+"X-Poedit-SearchPath-1: tests\n"
+
+#. translators: Name of the plugin/theme
+msgid "Media Library Assistant"
+msgstr "Media Library Assistant"
+
+msgid "Assistant"
+msgstr "Assistent"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "(no title)"
+msgstr "(geen titel)"
+
+msgid "Published"
+msgstr "Gepubliceerd"
+
+msgid "Scheduled"
+msgstr "Gepland"
+
+msgid "Pending Review"
+msgstr "Wacht op Review"
+
+msgid "Draft"
+msgstr "Voorstel"
+
+#. translators: date format in table columns, see http://php.net/date
+#. translators: format for upload/last modified date
+msgid "Y/m/d"
+msgstr "Y/m/d"
+
+msgid "ERROR"
+msgstr "FOUT"
+
+msgid "No post ID found"
+msgstr "Geen post ID gevonden"
+
+msgid "You are not allowed to edit this Attachment."
+msgstr "U mag deze Attachment niet bewerken."
+
+msgid "Attachment Categories"
+msgstr "Attachment Categorieën"
+
+msgid "Check this option to add support for Attachment Categories."
+msgstr ""
+"Kies deze optie om ondersteuning voor Attachment Categorieën toe te voegen."
+
+msgid "Attachment Tags"
+msgstr "Attachment Tags"
+
+msgid "Check this option to add support for Attachment Tags."
+msgstr "Kies deze optie om ondersteuning voor Attachment Tags toe te voegen."
+
+msgid "Where-used Reporting"
+msgstr "Waar-gebruikt Rapportage"
+
+msgid "Exclude Revisions"
+msgstr "Sluit Revisies Uit"
+
+msgid "Check this option to exclude revisions from where-used reporting."
+msgstr ""
+"Kies deze optie om revisies van de waar-gebruikt rapportage uit te sluiten."
+
+msgid "Where-used database access tuning"
+msgstr "Waar-gebruikt database toegang tuning"
+
+msgid "Featured in"
+msgstr "Komt voor in"
+
+msgid "Enabled"
+msgstr "Gekozen"
+
+msgid "Disabled"
+msgstr "Uitgezet"
+
+msgid "Search database posts and pages for Featured Image attachments."
+msgstr ""
+"Doorzoek database berichten en paginas naar Gekoppelde Afbeelding "
+"attachments."
+
+msgid "Inserted in"
+msgstr "Toegevoegd aan"
+
+msgid "Base"
+msgstr "Basis"
+
+msgid ""
+"Search database posts and pages for attachments embedded in content."
+"<br>&nbsp;&nbsp;Base = ignore intermediate size suffixes; use path, base "
+"name and extension only."
+msgstr ""
+"Doorzoek database berichten en paginas naar attachments opgenomen in de "
+"inhoud.<br>&nbsp;&nbsp;Basis = negeer gemiddelde omvang suffixen; gebruik "
+"alleen pad, basis naam en extensie."
+
+msgid "Gallery in"
+msgstr "Galerij in"
+
+msgid "Dynamic"
+msgstr "Dynamisch"
+
+msgid "Refresh"
+msgstr "Ververs"
+
+msgid "Cached"
+msgstr "Gecachet"
+
+msgid ""
+"Search database posts and pages for [gallery] shortcode results.<br>&nbsp;"
+"&nbsp;Dynamic = once every page load, Cached = once every login, Disabled = "
+"never.<br>&nbsp;&nbsp;Refresh = update references, then set to Cached."
+msgstr ""
+"Doorzoek database berichten en paginas naar [gallery] shortcode resultaten."
+"<br>&nbsp;&nbsp;Dynamisch = eenmaal per pagina load, Gecachet = eenmaal elke "
+"login, Niet gekozen = nooit.<br>&nbsp;&nbsp;Ververs = werk referenties bij, "
+"daarna op Gecachet."
+
+msgid "MLA Gallery in"
+msgstr "MLA Galerij in"
+
+msgid ""
+"Search database posts and pages for [mla_gallery] shortcode results."
+"<br>&nbsp;&nbsp;Dynamic = once every page load, Cached = once every login, "
+"Disabled = never.<br>&nbsp;&nbsp;Refresh = update references, then set to "
+"Cached."
+msgstr ""
+"Doorzoek database berichten en paginas naar [mla_gallery] shortcode "
+"resultaten.<br>&nbsp;&nbsp;Dynamisch = eenmaal per pagina load, Gecachet = "
+"eenmaal per login, Niet gekozen = nooit.<br>&nbsp;&nbsp;Ververs = werk "
+"referenties bij, daarna op Gecachet."
+
+msgid "Taxonomy Support"
+msgstr "Taxonomie Ondersteuning"
+
+msgid "Compute Attachments Column"
+msgstr "Bereken Attachments Kolom"
+
+msgid ""
+"Check this option to calculate attachments per term in the Attachments "
+"Column."
+msgstr ""
+"Kies deze optie om attachments per term in de Attachments Kolom te berekenen."
+
+msgid ""
+"Check the \"<strong>Support</strong>\" box to add the taxonomy to the "
+"Assistant and the Edit Media screen."
+msgstr ""
+"Kies de \"<strong>Ondersteuning</strong>\" box om de taxonomie toe te voegen "
+"aan het Assistant en Bewerk Media scherm."
+
+msgid ""
+"Check the \"<strong>Inline Edit</strong>\" box to display the taxonomy in "
+"the Quick Edit and Bulk Edit areas."
+msgstr ""
+"Kies de \"<strong>Inline Bewerk</strong>\" box om de taxonomie te tonen in "
+"de Quick Edit en Bulk Edit gebieden."
+
+msgid ""
+"Check the \"<strong>Term Search</strong>\" box to add the taxonomy to the "
+"\"Search Media/Terms\" list."
+msgstr ""
+"Kies de \"<strong>Zoek Term</strong>\" box om de taxonomie toe te voegen aan "
+"de \"Zoek Media/Termen\" lijst."
+
+msgid "For complete documentation"
+msgstr "Voor volledige documentatie"
+
+msgid "click here"
+msgstr "klik hier"
+
+msgid ""
+"Check the \"<strong>Checklist</strong>\" box to enable the checklist-style "
+"meta box for a flat taxonomy."
+msgstr ""
+"Kies de \"<strong>Checklist</strong>\" box om de checklist-stijl meta box te "
+"activeren voor een platte taxonomie."
+
+msgid ""
+"You must also check the <strong>\"Enable enhanced checklist taxonomies\"</"
+"strong> box below to enable this feature."
+msgstr ""
+"U moet ook de <strong>\"Activeer uitgebreide checklist taxonomieën\"</"
+"strong> box kiezen om deze mogelijkheid te kunnen activeren."
+
+msgid ""
+"Check the \"<strong>Checked On Top</strong>\" box to moved checked terms to "
+"the top of the checklist-style meta box."
+msgstr ""
+"Kies de \"<strong>Gekozen bovenaan</strong>\" box om gekozen termen aan de "
+"bovenkant van de checklist-stijl meta box te tonen."
+
+msgid ""
+"Use the \"<strong>List Filter</strong>\" option to select the taxonomy on "
+"which to filter the Assistant table listing."
+msgstr ""
+"Gebruik de \"<strong>Lijst Filter</strong>\" optie om de taxonomie waarop "
+"gefilterd moet worden in de Assistant tabel listing."
+
+msgid "Media/Assistant Screen Options"
+msgstr "Media/Assistant Scherm Opties"
+
+msgid "Admin Menu Options"
+msgstr "Admin Menu Opties"
+
+msgid "Page Title"
+msgstr "Pagina Titel"
+
+msgid "Enter the title for the Media/Assistant submenu page"
+msgstr "Geef de titel voor de Media/Assistant submenu pagina"
+
+msgid "Menu Title"
+msgstr "Menu Titel"
+
+msgid "Enter the title for the Media/Assistant submenu entry"
+msgstr "Geef de titel voor het Media/Assistant submenu bericht"
+
+msgid "Submenu Order"
+msgstr "Submenu Volgorde"
+
+msgid ""
+"Enter the position of the Media/Assistant submenu entry.<br>&nbsp;&nbsp;0 = "
+"natural order (at bottom),&nbsp;&nbsp;&nbsp;&nbsp;1 - 4 = at top<br>&nbsp;"
+"&nbsp;6-9 = after \"Library\",&nbsp;&nbsp;&nbsp;&nbsp;11-16 = after \"Add New"
+"\""
+msgstr ""
+"Geef de positie op voor het Media/Assistant submenu bericht.<br>&nbsp;"
+"&nbsp;0 = natuurlijke volgorde (aan de onderkant),&nbsp;&nbsp;&nbsp;&nbsp;1 "
+"- 4 = aan de bovenkant<br>&nbsp;&nbsp;6-9 = na \"Bibliotheek\",&nbsp;&nbsp;"
+"&nbsp;&nbsp;11-16 = na \"Voeg Toe\""
+
+msgid "Display Media/Library"
+msgstr "Toon Media/Bibliotheek"
+
+msgid ""
+"Check/uncheck this option to display/remove the WordPress Media/Library "
+"submenu entry."
+msgstr ""
+"Gebruik deze optie om het WordPress Media/Bibliotheek submenu bericht te "
+"tonen/verbergen."
+
+msgid "Table Defaults"
+msgstr "Tabel Defaults"
+
+msgid "Order By"
+msgstr "Sorteer Op"
+
+msgid "None"
+msgstr "Geen"
+
+msgid "ID/Parent"
+msgstr "ID/Ouder"
+
+msgid "Select the column for the sort order of the Assistant table listing."
+msgstr ""
+"Selecteer de kolom voor de sorteervolgorde van de Assistant tabel listing."
+
+msgid "Order"
+msgstr "Volgorde"
+
+msgid "Ascending"
+msgstr "Oplopend"
+
+msgid "Descending"
+msgstr "Aflopend"
+
+msgid "Choose the sort order."
+msgstr "Kies de sorteervolgorde."
+
+msgid "Views Width"
+msgstr "View Breedte"
+
+msgid "Enter the width for the views list, in pixels (px) or percent (%)"
+msgstr "Geef de breedte op voor de views list, in pixels (px) of procent (%)"
+
+msgid "Icon Size"
+msgstr "Symbool Grootte"
+
+msgid "Enter the size of the thumbnail/icon images, in pixels"
+msgstr "Geef de grootte van de thumbnail/symbool afbeeldingen, in pixels"
+
+msgid "Bulk Chunk Size"
+msgstr "Bulk Chunk Grootte"
+
+msgid "Enter the size of the Bulk Edit and Map All processing chunks"
+msgstr "Geef de grootte van de Bulk Edit en Vertaal alle verwerking chunks"
+
+msgid "Taxonomy Filter parameters"
+msgstr "Taxonomie Filter parameters"
+
+msgid "Maximum Depth"
+msgstr "Maximum Diepte"
+
+msgid ""
+"Enter the number of levels displayed for hierarchial taxonomies; enter zero "
+"for no limit."
+msgstr ""
+"Geef het aantal te tonen levels voor hierarchische taxonomieën; toets nul "
+"voor geen limiet."
+
+msgid "Include Children"
+msgstr "Inclusief Kinderen"
+
+msgid ""
+"Check/uncheck this option to include/exclude children for hierarchical "
+"taxonomies."
+msgstr ""
+"Gebruik deze optie om kinderen wel/niet op te nemen in hierarchische "
+"taxonomieën."
+
+msgid "Search Media Defaults"
+msgstr "Zoek Media Defaults"
+
+msgid "Display Search Controls"
+msgstr "Toon Zoek Besturing"
+
+msgid ""
+"Check/uncheck this option to display/hide the and/or connector and search "
+"fields controls."
+msgstr ""
+"Gebruik deze optie om en/of connectoren en zoek veld besturing te tonen/"
+"verbergen."
+
+msgid ""
+"Use these controls to set defaults for the and/or connector and search "
+"fields controls.<br>These defaults will be used for the Search Media boxes "
+"on both the Media/Assistant submenu<br>and the Media Manager Modal Window."
+msgstr ""
+"Gebruik deze besturing om defaults voor de en/of connector en zoek veld "
+"besturing te zetten.<br>Deze defaults zullen voor de Zoek Media boxen bij "
+"zowel het Media/Assistant submenu<br>en de Media Manager Modal Window worden "
+"gebruikt."
+
+msgid "Media/Edit Media Enhancements"
+msgstr "Media/Bewerk Media Toevoegingen"
+
+msgid "Enable &quot;enhanced checklist&quot; taxonomies"
+msgstr "Activeer &quot;verbeterde checklist&quot; taxonomieën"
+
+msgid ""
+"Check this option to enable the \"? Search\" feature for hierarchical "
+"taxonomies, e.g., Att. Categories.<br>&nbsp;&nbsp;This option also enables "
+"the \"checklist-style\" support for flat taxonomies, e.g., Att. Tags."
+msgstr ""
+"Kies deze optie om de \"? Zoek\" mogelijkheid voor hierarchische taxonomieën "
+"te gebruiken, bijv., Gekopp. Categorieën.<br>&nbsp;&nbsp;Deze optie "
+"activeert ook de mogelijkheid van de \"checklist-stijl\" ondersteuning van "
+"platte taxonomieën, bijv., Gekopp. Tags."
+
+msgid "Enable Edit Media additional meta boxes"
+msgstr "Activeer Bewerk Media additionele meta boxen"
+
+msgid ""
+"Check this option to add \"Parent Info\", \"Menu Order\", \"Attachment "
+"Metadata\" and four \"where-used\" meta boxes to the Edit Media screen."
+msgstr ""
+"Kies deze optie om \"Parent Info\", \"Menu Volgorde\", \"Attachment Metadata"
+"\" en vier \"waar-gebruikt\" meta boxen toe te voegen aan het Bewerk Media "
+"scherm."
+
+msgid "You can also use Filters to customize the meta boxes."
+msgstr "U kunt ook Filters gebruiken om de meta boxen te wijzigen."
+
+msgid "Media/Add New Enhancements"
+msgstr "Media/Voeg Nieuwe Uitbreidingen Toe"
+
+msgid "Enable &quot;bulk edit&quot; area"
+msgstr "Activeer &quot;bulk edit&quot; gebied"
+
+msgid ""
+"Check this option to enable the \"Bulk Edit area\" feature on the Media/Add "
+"New screen."
+msgstr ""
+"Kies deze optie om de \"Bulk Edit gebied\" mogelijkheid te activeren op het "
+"Media/Voeg Toe scherm."
+
+msgid "&quot;bulk edit&quot; area on top"
+msgstr "&quot;bulk edit&quot; gebied bovenaan"
+
+msgid ""
+"Check this option to move the \"Bulk Edit area\" to the top of the Media/Add "
+"New screen."
+msgstr ""
+"Kies deze optie om het \"Bulk Edit gebied\" bovenaan het Media/Voeg Nieuw "
+"Toe scherm te plaatsen."
+
+msgid "&quot;bulk edit&quot; area initially open"
+msgstr "&quot;bulk edit&quot; gebied initieel open"
+
+msgid ""
+"Check this option to automatically open the \"Bulk Edit area\" when the "
+"Media/Add New screen is displayed."
+msgstr ""
+"Kies deze optie om automatisch het \"Bulk Edit gebied\" te openen wanneer "
+"het Media/Voeg Nieuw Toe scherm getoond wordt."
+
+msgid "Media Manager/Media Grid Enhancements"
+msgstr "Media Manager/Media Grid Uitbreidingen"
+
+msgid "Enable Media Grid Enhancements"
+msgstr "Activeer Media Grid Uitbreidingen"
+
+msgid ""
+"Check/uncheck this option to enable/disable Media Library Grid View "
+"Enhancements."
+msgstr ""
+"Gebruik deze optie om de Media Bibliotheek Grid View Uitbreidingen te "
+"activeren."
+
+msgid "Enable Media Manager Enhancements"
+msgstr "Activeer Media Manager Uitbreidingen"
+
+msgid ""
+"Check/uncheck this option to enable/disable Media Manager Modal Window "
+"Enhancements."
+msgstr ""
+"Gebruik deze optie om de Media Manager Modal Window Uitbreidingen te "
+"activeren."
+
+msgid "Media Manager Enhanced MIME Type filter"
+msgstr "Media Manager Enhanced MIME Type filter"
+
+msgid ""
+"Check this option to filter by more MIME Types, e.g., text, applications."
+msgstr ""
+"Gebruik deze optie om op meer MIME Typen te filteren, bijv., tekst, "
+"applicaties."
+
+msgid "Media Manager Month and Year filter"
+msgstr "Media Manager Maand en Jaar filter"
+
+msgid "Check this option to filter by month and year uploaded."
+msgstr "Gebruik deze optie om op maand en jaar van upload te filteren."
+
+msgid "Media Manager Category/Tag filter"
+msgstr "Media Manager Categorie/Tag filter"
+
+msgid "Check this option to filter by taxonomy terms."
+msgstr "Gebruik deze optie om op taxonomie termen te filteren."
+
+msgid "Media Manager Terms Search popup"
+msgstr "Media Manager Zoek Termen popup"
+
+msgid "Check this option to enable the \"Terms Search\" popup window."
+msgstr "Gebruik deze optie om het \"Zoek Termen\" popup window te activeren."
+
+msgid "Media Manager Enhanced Search Media box"
+msgstr "Media Manager Enhanced Zoek Media box"
+
+msgid "Check this option to enable search box enhancements."
+msgstr "Gebruik deze optie om zoek box uitbreidingen te activeren."
+
+msgid "Media Manager Enhanced Search Media Controls"
+msgstr "Media Manager Enhanced Zoek Media Besturing"
+
+msgid "Media Manager Checklist meta boxes"
+msgstr "Media Manager Checklist meta boxen"
+
+msgid ""
+"Check this option to enable MLA-enhanced meta boxes in the \"ATTACHMENT "
+"DETAILS\" pane.<br>&nbsp;&nbsp;This option is for any taxonomy that uses a "
+"<strong>\"checklist-style\"</strong> meta box."
+msgstr ""
+"Kies deze optie om MLA-verbeterde meta boxen te activeren in het "
+"\"ATTACHMENT DETAILS\" scherm.<br>&nbsp;&nbsp;Deze optie is voor elke "
+"taxonomie die een <strong>\"checklist-stijl\"</strong> meta box gebruikt."
+
+msgid "Media Manager Flat meta boxes"
+msgstr "Media Manager Platte meta boxen"
+
+msgid ""
+"Check this option to enable MLA-enhanced meta boxes in the \"ATTACHMENT "
+"DETAILS\" pane.<br>&nbsp;&nbsp;This option is for <strong>flat taxonomies</"
+"strong>, e.g., \"Tags\" or \"Att. Tags\", that do not use the \"checklist-"
+"style\" meta box."
+msgstr ""
+"Gebruik deze optie om MLA-uitgebreide meta boxen te activeren in het "
+"\"ATTACHMENT DETAILS\" deel te activeren.<br>&nbsp;&nbsp;Deze optie is voor "
+"<strong>platte taxonomieën</strong>, bijv., \"Tags\" of \"Gekopp. Tags\", "
+"die de \"checklist-stijl\" meta box niet gebruiken."
+
+msgid "Media Manager auto-fill meta boxes"
+msgstr "Media Manager auto-vul meta boxen"
+
+msgid ""
+"Check this option to automatically fill MLA-enhanced meta boxes in the "
+"\"ATTACHMENT DETAILS\" pane<br>&nbsp;&nbsp;when the item is selected."
+msgstr ""
+"Gebruik deze optie om MLA-uitgebreide meta boxen automatisch te vullen in "
+"het \"ATTACHMENT DETAILS\" deel<br>&nbsp;&nbsp;wanner het onderdeel is "
+"geselecteerd."
+
+msgid "Media Manager Order By"
+msgstr "Media Manager Sorteer Op"
+
+msgid "Media Manager Default"
+msgstr "Media Manager Default"
+
+msgid "Title/Name"
+msgstr "Titel/Naam"
+
+msgid ""
+"If you want to override the Media Manager default,<br>&nbsp;&nbsp;select a "
+"column for the sort order of the Media Library listing."
+msgstr ""
+"Als u de Media Manager default wilt wijzigen,<br>&nbsp;&nbsp;selecteer dan "
+"een kolom voor de sorteervolgorde van de Media Library listing."
+
+msgid "Media Manager Order"
+msgstr "Media Manager Volgorde"
+
+msgid "Attachment Display Settings"
+msgstr "Attachment Display Instellingen"
+
+msgid "Media Manager Apply Display Settings"
+msgstr "Media Manager Activeer Display Instellingen"
+
+msgid ""
+"Check this option to always start with the Attachment Display Settings set "
+"here,<br>&nbsp;&nbsp;overriding browser-/cookie-based defaults."
+msgstr ""
+"Kies deze optie om altijd met de Attachment Display Instellingen te starten,"
+"<br>&nbsp;&nbsp;browser-/cookie-gebaseerde defaults worden overschreven."
+
+msgid "Alignment"
+msgstr "Uitlijning"
+
+#. translators: 1: option name, e.g., Alignment, Link To or Size
+#, php-format
+msgid ""
+"Select a value for the default %1$s option in the Attachment Display "
+"Settings."
+msgstr ""
+"Selecteer een waarde als default voor de %1$s optie in de Attachment Display "
+"Instellingen."
+
+msgid "Left"
+msgstr "Links"
+
+msgid "Center"
+msgstr "Centraal"
+
+msgid "Right"
+msgstr "Rechts"
+
+msgid "Link To"
+msgstr "Link Naar"
+
+msgid "Media File"
+msgstr "Media Bestand"
+
+msgid "Attachment Page"
+msgstr "Attachment Pagina"
+
+msgid "Custom URL"
+msgstr "Custom URL"
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+msgid "Medium"
+msgstr "Medium"
+
+msgid "Large"
+msgstr "Groot"
+
+msgid "Full Size"
+msgstr "Volledig"
+
+msgid "Default [mla_gallery] Templates and Settings"
+msgstr "Default [mla_gallery] Templates en Instellingen"
+
+msgid "Style Template"
+msgstr "Stijl Template"
+
+#. translators: 1: template type 2: shortcode
+#, php-format
+msgid "Select the default %1$s for your %2$s shortcodes."
+msgstr "Selecteer de default %1$s voor uw %2$s shortcodes."
+
+msgid "Markup Template"
+msgstr "Markup Template"
+
+msgid "markup template"
+msgstr "markup template"
+
+msgid "Default columns"
+msgstr "Default kolommen"
+
+msgid ""
+"Enter the number of [mla_tag_cloud] columns; must be a positive integer."
+msgstr ""
+"Geef het aantal van [mla_tag_cloud] kolommen; moet een positief getal zijn."
+
+msgid "Default mla_margin"
+msgstr "Default mla_margin"
+
+msgid ""
+"Enter the CSS \"margin\" property value, in length (px, em, pt, etc.), "
+"percent (%), \"auto\" or \"inherit\".<br>&nbsp;&nbsp;Enter \"none\" to "
+"remove the property entirely."
+msgstr ""
+"Geef de CSS \"margin\" eigenschap waarde, in lengte (px, em, pt, etc.), "
+"procent (%), \"auto\" of \"inherit\".<br>&nbsp;&nbsp;Geef \"none\" om de "
+"eigenschap in zijn geheel te verwijderen."
+
+msgid "Default mla_itemwidth"
+msgstr "Default mla_itemwidth"
+
+msgid ""
+"Enter the CSS \"width\" property value, in length (px, em, pt, etc.), "
+"percent (%), \"auto\" or \"inherit\".<br>&nbsp;&nbsp;Enter \"calculate"
+"\" (the default) to calculate the value taking the \"margin\" value into "
+"account.<br>&nbsp;&nbsp;Enter \"exact\" to calculate the value without "
+"considering the \"margin\" value.<br>&nbsp;&nbsp;Enter \"none\" to remove "
+"the property entirely."
+msgstr ""
+"Geef de CSS \"width\" eigenschap waarde, in lengte (px, em, pt, etc.), "
+"procent (%), \"auto\" of \"inherit\".<br>&nbsp;&nbsp;Geef \"calculate\" (de "
+"default) om de waarde te berekenen met in acht neming van de \"margin\" "
+"waarde.<br>&nbsp;&nbsp;Geef \"exact\" om de waarde te berekenen zonder de "
+"\"margin\" waarde in acht te nemen.<br>&nbsp;&nbsp;Geef \"none\" om de "
+"eigenschap in zijn geheel te verwijderen."
+
+msgid "Enter the number of [mla_gallery] columns; must be a positive integer."
+msgstr ""
+"Geef het aantal van [mla_gallery] kolommen; moet een positief getal zijn."
+
+msgid "Thumbnail Substitution Support, mla_viewer"
+msgstr "Thumbnail Vervanging Support, mla_viewer"
+
+msgid "Enable thumbnail substitution"
+msgstr "Activeer thumbnail vervanging"
+
+msgid ""
+"Check this option to allow the \"mla_viewer\" to generate thumbnail images "
+"for PDF  documents. Thumbnails are generated dynamically, each time the item "
+"appears in an [mla_gallery] display.<br>&nbsp;&nbsp;<strong>IMPORTANT: both "
+"Ghostscript and Imagick/ImageMagick must be installed for this feature.</"
+"strong>"
+msgstr ""
+"Kies deze optie om de \"mla_viewer\" toe te staan om thumbnail afbeeldingen "
+"aan te maken voor PDF documenten. Thumbnails worden dynamisch gegenereerd, "
+"elke keer als een item in een [mla_gallery] display voorkomt.<br>&nbsp;&nbsp;"
+"<strong>BELANGRIJK: zowel Ghostscript als Imagick/ImageMagick moeten "
+"geïnstalleerd zijn voor deze optie.</strong>"
+
+msgid "Enable Featured Images"
+msgstr "Activeer Uitgelichte Afbeeldingen"
+
+msgid ""
+"Check this option to extend Featured Image support to all Media Library "
+"items. The Featured Image can be used as a thumbnail image for the item in "
+"an [mla_gallery] display."
+msgstr ""
+"Kies deze optie om de Uitgelichte Afbeelding ondersteuning uit te breiden "
+"naar alle Media Bibliotheek items. De Uitgelichte Afbeelding kan als "
+"thumbnail afbeelding voor het item in een [mla_gallery] display worden "
+"gebruikt."
+
+msgid "Enable Featured Image Generation"
+msgstr "Activeer Uitgelichte Afbeelding Aanmaak"
+
+msgid ""
+"Check this option to enable the \"Thumbnail\" generation action in the Media/"
+"Assistant submenu Bulk Actions dropdown."
+msgstr ""
+"Kies deze optie om de \"Thumbnail\" aanmaak actie te activeren in de Media/"
+"Assistent submenu Bulk Acties dropdown."
+
+msgid "Enable explicit Ghostscript check"
+msgstr "Activeer uitdrukkelijke Ghostscript controle"
+
+msgid ""
+"Check this option to enable the explicit check for Ghostscript support "
+"required for thumbnail generation. If your Ghostscript software is in a non-"
+"standard location, unchecking this option bypasses the check. Bad things can "
+"happen if Ghostscript is missing but Imagick/ImageMagick is present, so "
+"leave this option checked unless you know it is safe to turn it off."
+msgstr ""
+"Kies deze optie om het uitdrukkelijk controleren te activeren van "
+"Ghostscript ondersteuning bij thumbnail aanmaak. Als uw Ghostscript software "
+"zich op een niet-standaard locatie bevindt, wordt deze controle overgeslagen "
+"als u deze optie uit zet. Er kunnen zaken fout gaan als Ghostscript afwezig "
+"is en Imagick/ImageMagick niet, dus laat deze optie aan staan tenzij u zeker "
+"weet dat het veilig is om hem uit te zetten."
+
+msgid "Ghostscript path"
+msgstr "Ghostscript pad"
+
+msgid ""
+"If your &ldquo;gs&rdquo; executable is in a non-standard location, enter the "
+"full path and filename here, e.g., &ldquo;/usr/bin/gs&rdquo;. It will "
+"override the search for Ghostscript in other places."
+msgstr ""
+"Als uw &ldquo;gs&rdquo; executable zich op een niet-standaard locatie "
+"bevindt, geef dan hier de volledige locatie op, b.v., &ldquo;/usr/bin/"
+"gs&rdquo;. Deze waarde zal dan gebruikt worden op andere plaatsen voor het "
+"gebruik van Ghostscript."
+
+msgid "Enable custom field mapping when adding new media"
+msgstr "Activeer custom veld vertaling bij het toevoegen van nieuwe media"
+
+msgid ""
+"Check this option to enable mapping when uploading new media (attachments)."
+"<br>&nbsp;&nbsp;Click Save Changes at the bottom of the screen if you change "
+"this option.<br>&nbsp;&nbsp;Does NOT affect the operation of the \"Map\" "
+"buttons on the bulk edit, single edit and settings screens."
+msgstr ""
+"Gebruik deze optie om vertaling te activeren bij het uploaden van nieuwe "
+"media (attachments).<br>&nbsp;&nbsp;Klik Sla Wijzigingen Op onderaan het "
+"scherm als u deze optie wijzigt.<br>&nbsp;&nbsp;Beïnvloedt de werking van de "
+"\"Vertaal\" knoppen NIET op de bulk edit, single edit en instelling schermen."
+
+msgid "Enable custom field mapping when updating media metadata"
+msgstr "Activeer custom veld vertaling bij het wijzigen van media metadata"
+
+msgid ""
+"Check this option to enable mapping when media (attachments) metadata is "
+"regenerated,<br>&nbsp;&nbsp;e.g., when the Media/Edit Media \"Edit Image\" "
+"functions are used."
+msgstr ""
+"Gebruik deze optie om vertaling te activeren wanneer media (attachments) "
+"metadata wordt geregenereerd,<br>&nbsp;&nbsp;bijv., wanneer de Media/Bewerk "
+"Media \"Bewerk Afbeelding\" functies worden gebruikt."
+
+msgid ""
+"Update the custom field mapping values above, then click Save Changes to "
+"make the updates permanent.<br>You can also make temporary updates and click "
+"a Map All Attachments button to apply the rule(s) to all attachments without "
+"saving any rule changes."
+msgstr ""
+"Werk de custom veld vertaling waarden hierboven bij, klik daarna Sla "
+"Wijzigingen Op om de wijzigingen permanent te maken.<br>U kunt ook "
+"tijdelijke wijzigingen maken en de Vertaal Alle Attachments knop klikken om "
+"de regel(s) toe te passen op alle attachments zonder dat de regelwijzigingen "
+"opgeslagen worden."
+
+msgid "Enable IPTC/EXIF Mapping when adding new media"
+msgstr "Activeer IPTC/EXIF Vertaling bij het toevoegen van nieuwe media"
+
+msgid ""
+"Check this option to enable mapping when uploading new media (attachments)."
+"<br>&nbsp;&nbsp;Does NOT affect the operation of the \"Map\" buttons on the "
+"bulk edit, single edit and settings screens."
+msgstr ""
+"Gebruik deze optie om het vertalen te activeren bij het uploaden van nieuwe "
+"media (attachments).<br>&nbsp;&nbsp;Beïnvloedt de werking van de \"Vertaal\" "
+"knoppen NIET op de bulk edit, single edit en instellingen schermen."
+
+msgid "Enable IPTC/EXIF Mapping when updating media metadata"
+msgstr "Activeer IPTC/EXIF Vertaling bij het wijzigen van media metadata"
+
+msgid ""
+"Update the standard field mapping values above, then click <strong>Save "
+"Changes</strong> to make the updates permanent.<br>You can also make "
+"temporary updates and click <strong>Map All Attachments, Standard Fields "
+"Now</strong> to apply the updates to all attachments without saving the rule "
+"changes."
+msgstr ""
+"Werk de standaard veld vertaling waarden hierboven bij, klik daarna "
+"<strong>Sla Wijzigingen Op</strong> om de wijzigingen permanent te maken."
+"<br>U kunt ook tijdelijke wijzigingen aanbrengen en <strong>Vertaal Alle "
+"Attachments, Standaard Velden Nu</strong> klikken om de wijzigingen aan te "
+"brengen op alle attachments zonder dat de regelwijzigingen opgeslagen worden."
+
+msgid ""
+"Update the taxonomy term mapping values above, then click <strong>Save "
+"Changes</strong> or <strong>Map All Attachments, Taxonomy Terms Now</strong>."
+msgstr ""
+"Werk de taxonomie term vertaling waarden hierboven bij, klik daarna "
+"<strong>Sla Wijzigingen Op</strong> of <strong>Vertaal Alle Attachments, "
+"Taxonomieën Termen Nu</strong>."
+
+msgid ""
+"<strong>Update</strong> individual custom field mapping values above, or "
+"make several updates and click <strong>Save Changes</strong> below to apply "
+"them all at once.<br>You can also <strong>add a new rule</strong> for an "
+"existing field or <strong>add a new field</strong> and rule.<br>You can make "
+"temporary updates and click <strong>Map All Attachments, Custom Fields Now</"
+"strong> to apply the updates to all attachments without saving the rule "
+"changes."
+msgstr ""
+"<strong>Wijzig</strong> individuele custom veld vertaling waarden hierboven, "
+"of maak verschillende wijzigingen en klik <strong>Sla Wijzigingen Op</"
+"strong> hieronder om de wijzigingen in een keer aan te brengen.<br>U kunt "
+"ook een <strong>nieuwe regel toevoegen</strong> voor een bestaand veld of "
+"<strong>een nieuw veld toevoegen</strong> en een regel toevoegen.<br>U kunt "
+"tijdelijke wijzigingen aanbrengen en <strong>Vertaal Alle Attachments, "
+"Custom Velden Nu</strong> klikken om de wijzigingen aan te brengen op alle "
+"attachments zonder dat de regels gewijzigd worden."
+
+msgid "IPTC/EXIF Mapping help"
+msgstr "IPTC/EXIF Vertaal hulp"
+
+msgid "Name/Slug"
+msgstr "Naam/Slug"
+
+msgid "ALT Text"
+msgstr "ALT Tekst"
+
+msgid "Caption"
+msgstr "Onderschrift"
+
+msgid "Description"
+msgstr "Beschrijving"
+
+msgid "Enable View and Post MIME Type Support"
+msgstr "Activeer View en Post MIME Type Ondersteuning"
+
+msgid ""
+"Check/uncheck this option to enable/disable Post MIME Type Support, then "
+"click <strong>Save Changes</strong> to record the new setting."
+msgstr ""
+"Gebruik deze optie om Post MIME Type Ondersteuning te activeren, klik daarna "
+"<strong>Sla Wijzigingen Op</strong> om de nieuwe instelling op te slaan."
+
+msgid "Post MIME Types help."
+msgstr "Post MIME Typen hulp."
+
+msgctxt "table_view_singular"
+msgid "All"
+msgstr "Alles"
+
+msgctxt "table_view_plural"
+msgid "All"
+msgstr "Alles"
+
+msgctxt "post_mime_types_description"
+msgid "Built-in view"
+msgstr "Ingebouwde view"
+
+msgctxt "table_view_singular"
+msgid "Image"
+msgstr "Afbeelding"
+
+msgctxt "table_view_plural"
+msgid "Images"
+msgstr "Afbeeldingen"
+
+msgctxt "post_mime_types_description"
+msgid "All image subtypes"
+msgstr "Alle afbeelding subtypen"
+
+msgctxt "table_view_singular"
+msgid "Audio"
+msgstr "Audio"
+
+msgctxt "table_view_plural"
+msgid "Audio"
+msgstr "Audio"
+
+msgctxt "post_mime_types_description"
+msgid "All audio subtypes"
+msgstr "Alle audio subtypen"
+
+msgctxt "table_view_singular"
+msgid "Video"
+msgstr "Video"
+
+msgctxt "table_view_plural"
+msgid "Video"
+msgstr "Video"
+
+msgctxt "post_mime_types_description"
+msgid "All video subtypes"
+msgstr "Alle video subtypen"
+
+msgctxt "table_view_singular"
+msgid "Text"
+msgstr "Tekst"
+
+msgctxt "table_view_plural"
+msgid "Text"
+msgstr "Tekst"
+
+msgctxt "post_mime_types_description"
+msgid "All text subtypes"
+msgstr "Alle tekst subtypen"
+
+msgctxt "table_view_singular"
+msgid "Application"
+msgstr "Applicatie"
+
+msgctxt "table_view_plural"
+msgid "Applications"
+msgstr "Applicaties"
+
+msgctxt "post_mime_types_description"
+msgid "All application subtypes"
+msgstr "Alle applicatie subtypen"
+
+msgctxt "table_view_singular"
+msgid "Unattached"
+msgstr "Ongekoppeld"
+
+msgctxt "table_view_plural"
+msgid "Unattached"
+msgstr "Ongekoppeld"
+
+msgctxt "table_view_singular"
+msgid "Attached"
+msgstr "Gekoppeld"
+
+msgctxt "table_view_plural"
+msgid "Attached"
+msgstr "Gekoppeld"
+
+msgctxt "table_view_singular"
+msgid "Trash"
+msgstr "Prullenbak"
+
+msgctxt "table_view_plural"
+msgid "Trash"
+msgstr "Prullenbak"
+
+msgid "Enable Upload MIME Type Support"
+msgstr "Activeer Upload MIME Type Ondersteuning"
+
+msgid ""
+"Check/uncheck this option to enable/disable Upload MIME Type Support, then "
+"click <strong>Save Changes</strong> to record the new setting."
+msgstr ""
+"Gebruik deze optie om Upload MIME Type Ondersteuning te activeren, klik "
+"daarna <strong>Sla Wijzigingen Op</strong> om de nieuwe instelling op te "
+"slaan."
+
+msgid "Upload MIME Types help."
+msgstr "Upload MIME Typen hulp."
+
+msgid "Enable MLA File Type Icons Support"
+msgstr "Activeer MLA Bestandstype Symbolen Ondersteuning"
+
+msgid ""
+"Check/uncheck this option to enable/disable MLA File Type Icons Support, "
+"then click <strong>Save Changes</strong> to record the new setting."
+msgstr ""
+"Gebruik deze optie om MLA Bestandstype Symbolen Ondersteuning te activeren, "
+"klik daarna <strong>Sla Wijzigingen Op</strong> om de nieuwe instelling op "
+"te slaan."
+
+msgid "Display Limit"
+msgstr "Display Limiet"
+
+msgid ""
+"Enter the maximum number of debug log characters to display; enter zero or "
+"leave blank for no limit."
+msgstr ""
+"Geef het maximum aantal te tonen karakters van de debug log; toets nul of "
+"laat waarde leeg voor geen limiet."
+
+msgid "Debug File"
+msgstr "Debug Bestand"
+
+msgid ""
+"Enter the name of an alternate, MLA-specific debug log file; leave blank to "
+"use the PHP error_log."
+msgstr ""
+"Geef de naam van een alternatief MLA-specifiek debug log bestand; laat blank "
+"om de PHP error_log te gebruiken."
+
+msgid "Replace PHP error_log file"
+msgstr "Vervang PHP error_log file"
+
+msgid ""
+"Check this option to replace the PHP error_log file with the MLA Debug File."
+"<br>&nbsp;&nbsp;allows capture of PHP messages in the MLA Debug File."
+msgstr ""
+"Kies deze optie om de PHP error_log file te vervangen door de MLA Debug File."
+"<br>&nbsp;&nbsp;maakt het mogelijk om PHP meldingen op te vangen in de MLA "
+"Debug File."
+
+msgid "PHP Reporting"
+msgstr "PHP Rapportage"
+
+msgid ""
+"Enter a numeric error_reporting value, e.g., 0x7FFF or 32767; leave blank to "
+"use the existing PHP error_reporting value."
+msgstr ""
+"Geef een numerieke error_reporting waarde, bijv., 0x7FFF of 32767; laat leeg "
+"om de bestaande PHP error_reporting waarde te gebruiken."
+
+msgid "MLA Reporting"
+msgstr "MLA Rapportage"
+
+msgid ""
+"Enter a numeric MLA_DEBUG_LEVEL value, e.g., 0x0003 or 3; leave blank to use "
+"the existing MLA_DEBUG_LEVEL value."
+msgstr ""
+"Geef een numerieke MLA_DEBUG_LEVEL waarde, bijv., 0x0003 of 3; laat leeg om "
+"de bestaande MLA_DEBUG_LEVEL waarde te gebruiken."
+
+#. translators: 1: ERROR tag 2: path and file name
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" not found."
+msgstr "%1$s: mla_load_template file \"%2$s\" niet gevonden."
+
+#. translators: 1: ERROR tag 2: path and file name 3: source type, e.g., file, option, string
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_load_template file \"%2$s\" bad source type \"%3$s\"."
+msgstr "%1$s: mla_load_template file \"%2$s\" verkeerd source type \"%3$s\"."
+
+#. translators: 1: ERROR tag 2: raw_mime_type
+#, php-format
+msgid "%1$s: Bad specification part \"%2$s\""
+msgstr "%1$s: Foutief specificatie deel \"%2$s\""
+
+#. translators: 1: ERROR tag 2: option, e.g., any, match, null
+#, php-format
+msgid "%1$s: Bad specification option \"%2$s\""
+msgstr "%1$s: Foutieve specificatie optie \"%2$s\""
+
+#. translators: 1: ERROR tag 2: prefix, e.g., custom
+#, php-format
+msgid "%1$s: Bad specification prefix \"%2$s\""
+msgstr "%1$s: Foutieve specificatie prefix \"%2$s\""
+
+msgid "Most Used"
+msgstr "Meest Gebruikt"
+
+#. translators: %s: add new taxonomy label
+#, php-format
+msgid "+ %s"
+msgstr "+ %s"
+
+msgid "Search"
+msgstr "Zoek"
+
+#. translators: 1: ERROR tag 2: index
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _build_pdf_indirect_objects bad value at $index = \"%2$d\"."
+msgstr ""
+"%1$s: _build_pdf_indirect_objects foutieve waarde bij $index = \"%2$d\"."
+
+#. translators: 1: ERROR tag 2: source offset 3: nest level
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary offset = %2$d, nest = %3$d."
+msgstr "%1$s: _parse_pdf_dictionary offset = %2$d, nest = %3$d."
+
+#. translators: 1: ERROR tag 2: dictionary excerpt
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary no end delimiter dump = %2$s."
+msgstr "%1$s: _parse_pdf_dictionary geen einde delimiter dump = %2$s."
+
+#. translators: 1: ERROR tag 2: entry name 3: value excerpt
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _parse_pdf_dictionary bad value [ %2$s ] dump = %3$s"
+msgstr "%1$s: _parse_pdf_dictionary foutieve waarde [ %2$s ] dump = %3$s"
+
+#. translators: 1: ERROR tag 2: path and file
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: File \"%2$s\", startxref not found."
+msgstr "%1$s: File \"%2$s\", startxref niet gevonden."
+
+msgctxt "list_table_column"
+msgid "ID/Parent"
+msgstr "ID/Parent"
+
+msgctxt "list_table_column"
+msgid "Title/Name"
+msgstr "Titel/Naam"
+
+msgctxt "list_table_column"
+msgid "Title"
+msgstr "Titel"
+
+msgctxt "list_table_column"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "list_table_column"
+msgid "Parent ID"
+msgstr "Parent ID"
+
+msgctxt "list_table_column"
+msgid "Menu Order"
+msgstr "Menu Volgorde"
+
+msgctxt "list_table_column"
+msgid "Featured in"
+msgstr "Komt voor in"
+
+msgctxt "list_table_column"
+msgid "Inserted in"
+msgstr "Toegevoegd aan"
+
+msgctxt "list_table_column"
+msgid "Gallery in"
+msgstr "Galerij in"
+
+msgctxt "list_table_column"
+msgid "MLA Gallery in"
+msgstr "MLA Galerij in"
+
+msgctxt "list_table_column"
+msgid "ALT Text"
+msgstr "ALT Tekst"
+
+msgctxt "list_table_column"
+msgid "Caption"
+msgstr "Onderschrift"
+
+msgctxt "list_table_column"
+msgid "Description"
+msgstr "Beschrijving"
+
+msgctxt "list_table_column"
+msgid "MIME Type"
+msgstr "MIME Type"
+
+msgctxt "list_table_column"
+msgid "File URL"
+msgstr "Bestand URL"
+
+msgctxt "list_table_column"
+msgid "Base File"
+msgstr "Bron Bestand"
+
+msgctxt "list_table_column"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "list_table_column"
+msgid "Last Modified"
+msgstr "Laatst Gewijzigd"
+
+msgctxt "list_table_column"
+msgid "Author"
+msgstr "Auteur"
+
+msgctxt "list_table_column"
+msgid "Attached to"
+msgstr "Gekoppeld aan"
+
+#. translators: 1: ERROR tag 2: function name 3: non-array value
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s non-array \"%3$s\""
+msgstr "%1$s: %2$s non-array \"%3$s\""
+
+#. translators: 1: DEBUG tag 2: query filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+
+msgid "DEBUG"
+msgstr "DEBUG"
+
+#. translators: 1: DEBUG tag 2: query details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL statement
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+msgstr "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: search filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: where filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: join filter details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: orderby details details
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+
+#. translators: 1: DEBUG tag 2: SQL clauses
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+msgstr "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+
+msgid "NO REFERENCE TESTS"
+msgstr "GEEN REFERENTIE TESTEN"
+
+msgid "ORPHAN"
+msgstr "WEES"
+
+msgid "UNUSED"
+msgstr "ONGEBRUIKT"
+
+msgid "UNATTACHED"
+msgstr "ONGEKOPPELD"
+
+msgid "INVALID PARENT"
+msgstr "FOUTIEVE PARENT"
+
+#. translators: 1: post_type, 2: post_title, 3: post ID, 4: query string, 5: error message
+#, php-format
+msgid "(%1$s) %2$s (ID %3$d) query \"%4$s\" failed, returning \"%5$s\""
+msgstr "(%1$s) %2$s (ID %3$d) query \"%4$s\" fout gegaan, resultaat \"%5$s\""
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: _find_template_substring no template end delimiter, tail = \"%2$s\"."
+msgstr ""
+"%1$s: _find_template_substring geen template einde delimiter, slot = \"%2$s"
+"\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_parse_array_template no template end delimiter, tail = \"%2$s\"."
+msgstr ""
+"%1$s: mla_parse_array_template geen template einde delimiter, slot = \"%2$s"
+"\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_parse_template no end delimiter, tail = \"%2$s\"."
+msgstr "%1$s: mla_parse_template geen einde delimiter, slot = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template string
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _find_test_substring no end delimiter, tail = \"%2$s\"."
+msgstr "%1$s: _find_test_substring geen einde delimiter, slot = \"%2$s\"."
+
+msgid "Test; no closing parenthesis "
+msgstr "Test; geen sluithaakje "
+
+#. translators: 1: ERROR tag 2: node type, e.g., template
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _evaluate_template_array_node unknown type \"%2$s\"."
+msgstr "%1$s: _evaluate_template_array_node onbekend type \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: node type, e.g., template
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _evaluate_template_node unknown type \"%2$s\"."
+msgstr "%1$s: _evaluate_template_node onbekend type \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template excerpt
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_get_template_placeholders no template-end delimiter dump = \"%2$s"
+"\"."
+msgstr ""
+"%1$s: mla_get_template_placeholders geen template-end delimiter dump = \"%2$s"
+"\"."
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_get_attachment_by_id(%2$d) not found."
+msgstr "%1$s: mla_get_attachment_by_id(%2$d) niet gevonden."
+
+#. translators: 1: ERROR tag 2: post ID 3: post_type
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: mla_get_attachment_by_id(%2$d) wrong post_type \"%3$s\"."
+msgstr "%1$s: mla_get_attachment_by_id(%2$d) verkeerd post_type \"%3$s\"."
+
+msgctxt "error_log"
+msgid "mla_parse_xmp_metadata xml_parse_into_struct failed."
+msgstr "mla_parse_xmp_metadata xml_parse_into_struct is fout gegaan."
+
+msgctxt "error_log"
+msgid "mla_parse_xmp_metadata set option failed."
+msgstr "mla_parse_xmp_metadata set option is fout gegaan."
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nee"
+
+#. translators: 1: meta_key
+#, php-format
+msgid "Deleting %1$s"
+msgstr "Verwijderen %1$s"
+
+#. translators: 1: ERROR tag 2: meta_key
+#, php-format
+msgid "%1$s: meta:%2$s not found"
+msgstr "%1$s: meta:%2$s niet gevonden"
+
+#. translators: 1: meta_key 2: meta_value
+#. translators: 1: meta_key 2: new_value
+#. translators: 1: meta_key 2: meta_value
+#, php-format
+msgid "Adding %1$s = %2$s"
+msgstr "Toevoegen %1$s = %2$s"
+
+#. translators: 1: ERROR tag 2: meta_key
+#, php-format
+msgid "%1$s: Adding meta:%2$s; not found"
+msgstr "%1$s: Toevoegen meta:%2$s; niet gevonden"
+
+#. translators: 1: meta_key
+#, php-format
+msgid "Deleting Null meta:%1$s"
+msgstr "Verwijder Lege meta:%1$s"
+
+#. translators: 1: element name 2: old_value 3: new_value
+#, php-format
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\""
+msgstr "Wijzig %1$s van \"%2$s\" in \"%3$s\""
+
+#. translators: 1: ERROR tag 2: meta_key
+#, php-format
+msgid "%1$s: Changing meta:%2$s; not found"
+msgstr "%1$s: Wijzig meta:%2$s; niet gevonden"
+
+#. translators: 1: meta_key
+#, php-format
+msgid "Deleting old %1$s values"
+msgstr "Verwijder oude %1$s waarden"
+
+#. translators: 1: meta_key 2: old_value 3: new_value 4: update count
+#, php-format
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\"; %4$d updates"
+msgstr "Wijzig %1$s van \"%2$s\" in \"%3$s\"; %4$d wijzigingen"
+
+msgid "Could not retrieve Attachment."
+msgstr "Kan Attachment niet vinden."
+
+#. translators: 1: ERROR tag 2: old_value
+#, php-format
+msgid "%1$s: Could not change Name/Slug \"%2$s\"; name already exists"
+msgstr "%1$s: Kon Naam/Slug \"%2$s\" niet wijzigen; naam bestaat al"
+
+#. translators: 1: old_value
+#, php-format
+msgid "Deleting ALT Text, was \"%1$s\""
+msgstr "Wijzig ALT Tekst, was \"%1$s\""
+
+#. translators: 1: ERROR tag 2: old_value
+#, php-format
+msgid "%1$s: Could not delete ALT Text, remains \"%2$s\""
+msgstr "%1$s: Kon ALT Tekst niet wijzigen, blijft \"%2$s\""
+
+#. translators: 1: ERROR tag 2: old_value 3: new_value
+#, php-format
+msgid "%1$s: Could not change ALT Text from \"%2$s\" to \"%3$s\""
+msgstr "%1$s: Kon ALT Tekst niet wijzigen van \"%2$s\" in \"%3$s\""
+
+msgid "Parent"
+msgstr "Parent"
+
+msgid "Menu Order"
+msgstr "Menu Volgorde"
+
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Comments"
+msgstr "Commentaar"
+
+msgid "Pings"
+msgstr "Pings"
+
+msgid "Adding"
+msgstr "Toevoegen"
+
+msgid "Removing"
+msgstr "Verwijderen"
+
+msgid "Replacing"
+msgstr "Vervangen"
+
+msgid "Ignoring"
+msgstr "Negeren"
+
+#. translators: 1: action_name, 2: taxonomy
+#, php-format
+msgid "%1$s \"%2$s\" terms"
+msgstr "%1$s \"%2$s\" termen"
+
+#. translators: 1: taxonomy
+#, php-format
+msgid "You cannot assign \"%1$s\" terms"
+msgstr "Je kunt geen \"%1$s\" termen toekennen"
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d, no changes detected."
+msgstr "Onderdeel %1$d, geen wijzigingen gevonden."
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d updated."
+msgstr "Onderdeel %1$d gewijzigd."
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d update failed."
+msgstr "%1$s: Onderdeel %2$d wijziging fout gegaan."
+
+msgctxt "tag_delimiter"
+msgid ","
+msgstr ","
+
+msgid "Upload New Media items"
+msgstr "Upload Nieuwe Media onderdelen"
+
+msgid "Open Bulk Edit area"
+msgstr "Open Bulk Edit gebied"
+
+msgid "Close Bulk Edit area"
+msgstr "Sluit Bulk Edit gebied"
+
+msgid "An ajax.fail error has occurred. Please reload the page and try again."
+msgstr ""
+"Een ajax.fail fout is opgetreden. Herlaad de pagina en probeer opnieuw."
+
+msgid "An ajax.done error has occurred. Please reload the page and try again."
+msgstr ""
+"Een ajax.done fout is opgetreden. Herlaad de pagina en probeer opnieuw."
+
+msgid "more"
+msgstr "meer"
+
+msgid "less"
+msgstr "minder"
+
+msgid "Add"
+msgstr "Voeg toe"
+
+msgid "Remove"
+msgstr "Verwijder"
+
+msgid "Replace"
+msgstr "Vervang"
+
+msgid ""
+"IMPORTANT: Make your entries BEFORE uploading new items. Pull down the Help "
+"menu for more information."
+msgstr ""
+"BELANGRIJK: Maak uw berichten VOORDAT nieuwe items te uploaden. Kies het "
+"Help menu voor meer informatie."
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "No Change"
+msgstr "Geen Wijziging"
+
+msgid "Allow"
+msgstr "Sta toe"
+
+msgid "Do not allow"
+msgstr "Sta niet toe"
+
+msgid "Parent ID"
+msgstr "Parent ID"
+
+msgid "Select"
+msgstr "Selecteer"
+
+msgid "Custom field mapping updated."
+msgstr "Custom veld vertaling gewijzigd."
+
+msgid "IPTC/EXIF mapping updated."
+msgstr "IPTC/EXIF vertaling gewijzigd."
+
+#. translators: date_i18n format for last modified date and time
+msgid "M j, Y @ G:i"
+msgstr "j M, Y @ G:i"
+
+msgid "Last modified"
+msgstr "Laatst gewijzigd"
+
+msgid "Map Custom Field metadata for this item"
+msgstr "Vertaal Custom Veld metadata voor dit onderdeel"
+
+msgid "Map Custom Field metadata"
+msgstr "Vertaal Custom Veld Metadata"
+
+msgid "Map IPTC/EXIF metadata for this item"
+msgstr "Vertaal IPTC/EXIF metadata voor dit onderdeel"
+
+msgid "Map IPTC/EXIF metadata"
+msgstr "Vertaal IPTC/EXIF metadata"
+
+msgid "Parent Info"
+msgstr "Parent Informatie"
+
+msgid "Attachment Metadata"
+msgstr "Attachment Metadata"
+
+#. translators: 1: ERROR tag 2: function name 3: template key
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s discarding \"%3$s\"; no title/order"
+msgstr "%1$s: %2$s negeert \"%3$s\"; geen titel/volgorde"
+
+msgctxt "post state"
+msgid "Pending"
+msgstr "Wacht"
+
+msgid "Post Parent"
+msgstr "Post Parent"
+
+msgid "Select Parent"
+msgstr "Selecteer Parent"
+
+msgid "PARENT"
+msgstr "PARENT"
+
+msgid "All"
+msgstr "Alles"
+
+msgid "List View"
+msgstr "Lijst weergave"
+
+msgid "Filter by"
+msgstr "Filter"
+
+msgid "Not Supported"
+msgstr "Niet Ondersteund"
+
+#. translators: 1: column_name 2: column_values
+#, php-format
+msgid "column_default: %1$s, %2$s"
+msgstr "column_default: %1$s, %2$s"
+
+msgid "Edit"
+msgstr "Wijzig"
+
+msgid "Trash"
+msgstr "Prullenbak"
+
+msgid "Restore this item from the Trash"
+msgstr "Herstel dit onderdeel vanuit de Prullenbak"
+
+msgid "Restore"
+msgstr "Herstel"
+
+msgid "Edit this item"
+msgstr "Wijzig dit onderdeel"
+
+msgid "Edit this item inline"
+msgstr "Wijzig dit onderdeel \"inline\""
+
+msgid "Quick Edit"
+msgstr "Snel Wijzig"
+
+msgid "Move this item to the Trash"
+msgstr "Gooi dit onderdeel in de Prullenbak"
+
+msgid "Move to Trash"
+msgstr "Gooi in Prullenbak"
+
+msgid "Delete this item Permanently"
+msgstr "Verwijder dit onderdeel Permanent"
+
+msgid "Delete Permanently"
+msgstr "Verwijder Permanent"
+
+msgid "Download"
+msgstr "Download"
+
+msgid "View"
+msgstr "View"
+
+msgid "(no title: bad ID)"
+msgstr "(geen titel: foutief ID)"
+
+msgid "MIME Type"
+msgstr "MIME Type"
+
+msgid "Base File"
+msgstr "Bron Bestand"
+
+msgid "Unpublished"
+msgstr "Niet gepubliceerd"
+
+#. translators: 1: upload/last modified date and time
+#, php-format
+msgid "%1$s from now"
+msgstr "%1$s van nu"
+
+#. translators: 1: upload/last modified date and time
+#, php-format
+msgid "%1$s ago"
+msgstr "%1$s geleden"
+
+msgid "Set Parent"
+msgstr "Zet Parent"
+
+msgctxt "uploaded files"
+msgid "All"
+msgid_plural "All"
+msgstr[0] "Een"
+msgstr[1] "Alle"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Terms Search"
+msgstr "Termen Zoeken"
+
+msgid "Clear Filter-by"
+msgstr "Schoon Filter-door"
+
+msgid "Empty Trash"
+msgstr "Leeg Prullenbak"
+
+msgid "Error while saving the changes."
+msgstr "Fout tijdens opslaan wijzigingen."
+
+msgid "Remove From Bulk Edit"
+msgstr "Verwijder Uit Bulk Edit"
+
+msgid "Bulk Edit items"
+msgstr "Bulk Edit onderdelen"
+
+msgid "Waiting"
+msgstr "Wacht"
+
+msgid "Complete"
+msgstr "Gereed"
+
+msgid "Unchanged"
+msgstr "Ongewijzigd"
+
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgid "Failed"
+msgstr "Mislukt"
+
+msgid "CANCELED"
+msgstr "GESTOPT"
+
+#, php-format
+msgid "Item permanently deleted."
+msgid_plural "%d items permanently deleted."
+msgstr[0] "Onderdeel permanent verwijderd."
+msgstr[1] "%d onderdelen permanent verwijderd."
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d moved to Trash."
+msgstr "Onderdeel %1$d in Prullenbak geplaatst."
+
+msgid "Entries per page"
+msgstr "Berichten per pagina"
+
+msgid "You are not allowed to edit Attachment: "
+msgstr "U mag deze Attachment niet wijzigen: "
+
+#. translators: 1: ERROR tag 2: bulk action
+#, php-format
+msgid "%1$s: Unknown bulk action %2$s"
+msgstr "%1$s: Onbekende bulk actie %2$s"
+
+msgid "no changes detected"
+msgstr "geen wijzigingen gevonden"
+
+#. translators: 1: action name, e.g., edit
+#, php-format
+msgid "Bulk Action %1$s - no items selected."
+msgstr "Bulk Actie %1$s - geen onderdelen geselecteerd."
+
+msgid "You do not have permission to manage attachments."
+msgstr "U heeft geen rechten om attachments te beheren."
+
+#. translators: 1: number of items
+#, php-format
+msgctxt "deleted items"
+msgid "%s item deleted."
+msgid_plural "%s items deleted."
+msgstr[0] "%s onderdeel verwijderd."
+msgstr[1] "%s onderdelen verwijderd."
+
+msgid "No items deleted."
+msgstr "Geen onderdelen verwijderd."
+
+msgid "Empty Terms Search; ignored"
+msgstr "Leeg Termen Zoek; genegeerd"
+
+#. translators: 1: row-level action, e.g., single_item_delete, single_item_edit
+#. translators: 1: bulk_action, e.g., single_item_delete, single_item_edit
+#, php-format
+msgid "Unknown mla_admin_action - \"%1$s\""
+msgstr "Onbekende mla_admin_action - \"%1$s\""
+
+msgid "term search results for"
+msgstr "zoekterm resultaat voor"
+
+msgid "post/parent results for"
+msgstr "post/parent resultaat voor"
+
+msgid "search results for"
+msgstr "zoekresultaat voor"
+
+msgid "Update"
+msgstr "Bijwerken"
+
+msgid "All Post Types"
+msgstr "Alle Post Types"
+
+msgid "For"
+msgstr "Voor"
+
+msgid "Unattached"
+msgstr "Ongekoppeld"
+
+msgid "Cancel"
+msgstr "Beëindig"
+
+msgid "Bulk Edit"
+msgstr "Bulk Edit"
+
+msgid "In-process"
+msgstr "In bewerking"
+
+msgid "You are not allowed to delete this item."
+msgstr "U mag dit onderdeel niet verwijderen."
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d could NOT be deleted."
+msgstr "%1$s: Onderdeel %2$d kon NIET verwijderd worden."
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d permanently deleted."
+msgstr "Onderdeel %1$d permanent verwijderd."
+
+msgid "You are not allowed to move this item out of the Trash."
+msgstr "U mag dit onderdeel niet uit de Prullenbak verwijderen."
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d could NOT be restored from Trash."
+msgstr "%1$s: Onderdeel %2$d kon NIET hersteld worden uit de Prullenbak."
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d restored from Trash."
+msgstr "Onderdeel %1$d hersteld vanuit Prullenbak."
+
+msgid "You are not allowed to move this item to the Trash."
+msgstr "U mag dit onderdeel niet verwijderen uit de Prullenbak."
+
+#. translators: 1: ERROR tag 2: post ID
+#, php-format
+msgid "%1$s: Item %2$d could NOT be moved to Trash."
+msgstr "%1$s: Onderdeel %2$d kon NIET verwijderd worden uit de Prullenbak."
+
+msgid "Click to toggle"
+msgstr "Klik om te switchen"
+
+msgid "Tags"
+msgstr "Tags"
+
+#. translators: %s: add new taxonomy label
+#. translators: %s: add new View
+#. translators: %s: add new Upload MIME Type
+#, php-format
+msgid "Add New %1$s"
+msgstr "Voeg Nieuwe %1$s Toe"
+
+msgid "Choose from the most used tags"
+msgstr "Kies vanuit de meest gebruikte tags"
+
+msgid "Show all dates"
+msgstr "Toon alle data"
+
+#. translators: 1: month name, 2: 4-digit year
+#, php-format
+msgid "%1$s %2$d"
+msgstr "%1$s %2$d"
+
+msgid "Search Box"
+msgstr "Zoek Box"
+
+msgid "Loading..."
+msgstr "Laden..."
+
+msgid "Search Terms"
+msgstr "Zoek Termen"
+
+msgid "There are no taxonomies to search"
+msgstr "Er zijn geen taxonomieën te doorzoeken"
+
+msgid "All phrases"
+msgstr "Alle regels"
+
+msgid "Any phrase"
+msgstr "Willekeurige regel"
+
+msgid "All terms"
+msgstr "Alle termen"
+
+msgid "Any term"
+msgstr "Willekeurige term"
+
+msgid "Exact"
+msgstr "Exact"
+
+msgctxt "post_mime_types"
+msgid "Manage"
+msgstr "Beheer"
+
+msgctxt "post_mime_types_description"
+msgid "Copied from previous filter/plugin"
+msgstr "Gekopieerd van vorig(e) filter/plugin"
+
+msgid "Ignoring specification for Post MIME Type; using slug"
+msgstr "Negeer specificatie voor Post MIME Type; gebruik slug"
+
+#. translators: 1: element name 2: bad_value 3: good_value
+#, php-format
+msgid "<br>Changing %1$s \"%2$s\" to valid value \"%3$s\""
+msgstr "<br>Wijzig %1$s \"%2$s\" naar juiste waarde \"%3$s\""
+
+msgid "Slug"
+msgstr "Slug"
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Could not add Slug \"%2$s\"; value already exists"
+msgstr "%1$s: Kon Slug \"%2$s\" niet toevoegen; waarde bestaat al"
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit view \"%1$s\"; added"
+msgstr "Bewerk view \"%1$s\"; toegevoegd"
+
+#. translators: 1: element name 2: bad_value 3: good_value
+#, php-format
+msgid "<br>Changing new %1$s \"%2$s\" to valid value \"%3$s\""
+msgstr "<br>Wijzig nieuwe %1$s \"%2$s\" naar juiste waarde \"%3$s\""
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit view \"%1$s\"; no changes detected"
+msgstr "Bewerk view \"%1$s\"; geen wijzigingen gevonden"
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit view \"%1$s\"; updated"
+msgstr "Bewerk view \"%1$s\"; gewijzigd"
+
+#. translators: 1: slug
+#, php-format
+msgid "View \"%1$s\" reverted to standard"
+msgstr "View \"%1$s\" teruggezet naar standaard"
+
+#. translators: 1: slug
+#, php-format
+msgid "View \"%1$s\" deleted"
+msgstr "View \"%1$s\" verwijderd"
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Did not find view \"%2$s\""
+msgstr "%1$s: Kon view \"%2$s\" niet vinden"
+
+msgctxt "table_view_singular"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "table_view_plural"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "table_view_singular"
+msgid "Inactive"
+msgstr "Inactief"
+
+msgctxt "table_view_plural"
+msgid "Inactive"
+msgstr "Inactief"
+
+msgctxt "table_view_singular"
+msgid "WordPress"
+msgstr "WordPress"
+
+msgctxt "table_view_plural"
+msgid "WordPress"
+msgstr "WordPress"
+
+msgctxt "table_view_singular"
+msgid "MLA"
+msgstr "MLA"
+
+msgctxt "table_view_plural"
+msgid "MLA"
+msgstr "MLA"
+
+msgctxt "table_view_singular"
+msgid "Custom"
+msgstr "Custom"
+
+msgctxt "table_view_plural"
+msgid "Custom"
+msgstr "Custom"
+
+msgid "icon"
+msgstr "symbool"
+
+msgid "Cannot load Upload MIME Types"
+msgstr "Kan Upload MIME Types niet laden"
+
+msgid "Extension is required"
+msgstr "Extensie is verplicht"
+
+msgid "Extension"
+msgstr "Extensie"
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Could not add extension \"%2$s\"; value already exists"
+msgstr "%1$s: Kon extensie \"%2$s\" niet toevoegen; waarde bestaat al"
+
+msgid "MIME type is required"
+msgstr "MIME type is verplicht"
+
+#. translators: 1: ERROR tag 2: clean_mime_type
+#, php-format
+msgid "%1$s: Bad MIME type; try \"%2$s\""
+msgstr "%1$s: Foutief MIME type; probeer \"%2$s\""
+
+#. translators: 1: slug
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; added"
+msgstr "Upload MIME Type \"%1$s\"; toegevoegd"
+
+msgid "Cannot update Upload MIME Types"
+msgstr "Kan Upload MIME Types niet bijwerken"
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Could not add new extension \"%2$s\"; value already exists"
+msgstr "%1$s: Kon nieuwe extensie \"%2$s\" niet toevoegen; waarde bestaat al"
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit type \"%1$s\"; no changes detected"
+msgstr "Bewerk type \"%1$s\"; geen wijzigingen gevonden"
+
+#. translators: 1: slug
+#, php-format
+msgid "Edit type \"%1$s\"; updated"
+msgstr "Bewerk type \"%1$s\"; bijgewerkt"
+
+#. translators: 1: slug
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; reverted to standard"
+msgstr "Upload MIME Type \"%1$s\"; teruggezet naar standaard"
+
+#. translators: 1: slug
+#, php-format
+msgid "Upload MIME Type \"%1$s\"; deleted"
+msgstr "Upload MIME Type \"%1$s\"; verwijderd"
+
+#. translators: 1: ERROR tag 2: slug
+#, php-format
+msgid "%1$s: Did not find Upload type \"%2$s\""
+msgstr "%1$s: Kon Upload type \"%2$s\" niet vinden"
+
+msgctxt "taxonomy_name_plural"
+msgid "Att. Categories"
+msgstr "Gekopp. Categorieën"
+
+msgctxt "taxonomy_name_singular"
+msgid "Att. Category"
+msgstr "Gekopp. Categorie"
+
+msgid "Search Att. Categories"
+msgstr "Zoek Gekopp. Categorieën"
+
+msgid "All Att. Categories"
+msgstr "Alle Gekopp. Categorieën"
+
+msgid "Parent Att. Category"
+msgstr "Parent Gekopp. Categorie"
+
+msgid "Edit Att. Category"
+msgstr "Bewerk Gekopp. Categorie"
+
+msgid "Update Att. Category"
+msgstr "Wijzig Gekopp. Categorie"
+
+msgid "Att. Category"
+msgstr "Gekopp. Categorie"
+
+msgid "New Att. Category Name"
+msgstr "Nieuwe Gekopp. Categorie Naam"
+
+msgctxt "taxonomy_name_plural"
+msgid "Att. Tags"
+msgstr "Gekopp. Tags"
+
+msgctxt "taxonomy_name_singular"
+msgid "Att. Tag"
+msgstr "Gekopp. Tag"
+
+msgid "Search Att. Tags"
+msgstr "Zoek Gekopp. Tags"
+
+msgid "All Att. Tags"
+msgstr "Alle Gekopp. Tags"
+
+msgid "Parent Att. Tag"
+msgstr "Parent Gekopp. Tag"
+
+msgid "Edit Att. Tag"
+msgstr "Bewerk Gekopp. Tag"
+
+msgid "Update Att. Tag"
+msgstr "Wijzig Gekopp. Tag"
+
+msgid "Att. Tag"
+msgstr "Gekopp. Tag"
+
+msgid "New Att. Tag Name"
+msgstr "Nieuwe Gekopp. Tag Naam"
+
+msgid "Attachments"
+msgstr "Attachments"
+
+#. translators: 1: ERROR tag 2: taxonomy 3: error message
+#, php-format
+msgctxt "error_log"
+msgid ""
+"%1$s: mla_taxonomy_column_filter( \"%2$s\" ) - get_term failed: \"%3$s\""
+msgstr ""
+"%1$s: mla_taxonomy_column_filter( \"%2$s\" ) - get_term foutief: \"%3$s\""
+
+msgid "click to search"
+msgstr "klik om te zoeken"
+
+msgid "Shortcode(s), HTML and/or Plain Text"
+msgstr "Shortcode(s), HTML en/of Gewone Tekst"
+
+msgid "MLA Text"
+msgstr "MLA Tekst"
+
+msgid "Automatically add paragraphs"
+msgstr "Voeg automatisch paragrafen toe"
+
+msgid "error loading tpls/mla-option-templates.tpl"
+msgstr "fout bij laden tpls/mla-option-templates.tpl"
+
+msgid "tpls/mla-option-templates.tpl not found"
+msgstr "tpls/mla-option-templates.tpl niet gevonden"
+
+msgid "no templates exist"
+msgstr "er bestaan geen templates"
+
+#. translators: 1: ERROR tag 2: option name 3: action, e.g., update, delete, reset
+#, php-format
+msgid "%1$s: Custom %2$s unknown action \"%3$s\""
+msgstr "%1$s: Custom %2$s onbekende actie \"%3$s\""
+
+msgid "Support"
+msgstr "Ondersteuning"
+
+msgid "Inline Edit"
+msgstr "Inline Edit"
+
+msgid "Term Search"
+msgstr "Zoek Term"
+
+msgid "Checklist"
+msgstr "Checklist"
+
+msgid "Checked On Top"
+msgstr "Bovenaan Gekozen"
+
+msgid "List Filter"
+msgstr "Lijst Filter"
+
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#. translators: 1: taxonomy name
+#, php-format
+msgid "List Filter ignored; %1$s not supported."
+msgstr "Lijst Filter genegeerd; %1$s niet ondersteund."
+
+#. translators: 1: taxonomy name
+#, php-format
+msgid "Inline Edit ignored; %1$s not supported."
+msgstr "Inline Edit genegeerd; %1$s niet ondersteund."
+
+#. translators: 1: taxonomy name
+#, php-format
+msgid "Term Search ignored; %1$s not supported."
+msgstr "Zoek Term genegeerd; %1$s niet ondersteund."
+
+#. translators: 1: taxonomy name
+#, php-format
+msgid "Checklist ignored; %1$s not supported."
+msgstr "Checklist genegeerd; %1$s niet ondersteund."
+
+#. translators: 1: taxonomy name
+#, php-format
+msgid "Checked On Top ignored; %1$s not supported."
+msgstr "Bovenaan Gekozen genegeerd; %1$s niet ondersteund."
+
+#. translators: 1: option name, e.g., taxonomy_support
+#, php-format
+msgid "Update custom %1$s"
+msgstr "Wijzig custom %1$s"
+
+#. translators: 1: option name, e.g., taxonomy_support
+#, php-format
+msgid "Reset custom %1$s"
+msgstr "Herstel custom %1$s"
+
+msgid "and"
+msgstr "en"
+
+msgid "or"
+msgstr "of"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Terms"
+msgstr "Termen"
+
+msgid "None (select a value)"
+msgstr "Geen (selecteer een waarde)"
+
+msgid "Metadata (see below)"
+msgstr "Metadata (zie hieronder)"
+
+msgid "Template (see below)"
+msgstr "Template (zie hieronder)"
+
+#. translators: 1: ERROR tag 2: custom field name
+#, php-format
+msgid "%1$s: New field %2$s already exists."
+msgstr "%1$s: Nieuw veld %2$s bestaat al."
+
+#. translators: 1: custom field name
+#, php-format
+msgid "Adding new field %1$s."
+msgstr "Voeg nieuw veld toe %1$s."
+
+#. translators: 1: custom field name
+#, php-format
+msgid "Adding new rule for %1$s."
+msgstr "Voeg nieuwe regel toe voor %1$s."
+
+#. translators: 1: custom field name
+#, php-format
+msgid "Deleting rule for %1$s."
+msgstr "Verwijder regel voor %1$s."
+
+#. translators: 1: custom field name 2: attribute 3: old value 4: new value
+#, php-format
+msgid "%1$s changing %2$s from %3$s to %4$s."
+msgstr "%1$s wijzigen %2$s van %3$s naar %4$s."
+
+msgid "Data Source"
+msgstr "Data Bron"
+
+msgid "Replace to Keep"
+msgstr "Vervang om te Behouden"
+
+msgid "Keep to Replace"
+msgstr "Behoud om te Vervangen"
+
+#. translators: 1: custom field name 2: attribute 3: old value 'to' new value
+#, php-format
+msgid "%1$s changing %2$s value from %3$s."
+msgstr "%1$s wijzigen %2$s waarde van %3$s."
+
+msgid "Existing Text"
+msgstr "Bestaande Tekst"
+
+msgid "Format"
+msgstr "Formaat"
+
+msgid "unchecked to checked"
+msgstr "niet gekozen naar gekozen"
+
+msgid "checked to unchecked"
+msgstr "gekozen naar niet gekozen"
+
+msgid "MLA Column"
+msgstr "MLA kolom"
+
+msgid "Metavalue name"
+msgstr "Metawaarde naam"
+
+msgid "Option"
+msgstr "Optie"
+
+msgid "Delete NULL values"
+msgstr "Verwijder NULL waarden"
+
+msgid "No Custom Field Mapping Rules Defined"
+msgstr "Geen Custom Veld Vertaalregels Gedefinieerd"
+
+msgid "Keep"
+msgstr "Behoud"
+
+msgid "Native"
+msgstr "Eigen"
+
+msgid "Commas"
+msgstr "Komma's"
+
+msgid "Raw"
+msgstr "Ruw"
+
+msgid "Text"
+msgstr "Tekst"
+
+msgid "Single"
+msgstr "Enige"
+
+msgid "Export"
+msgstr "Exporteer"
+
+msgid "Array"
+msgstr "Array"
+
+msgid "Multi"
+msgstr "Meervoudig"
+
+msgid "Delete Rule"
+msgstr "Verwijder Regel"
+
+msgid "Delete Rule AND Field"
+msgstr "Verwijder Regel EN Veld"
+
+msgid "Update Rule"
+msgstr "Wijzig Regel"
+
+msgid "Map All Attachments"
+msgstr "Vertaal Alle Attachments"
+
+msgid "Add a new Mapping Rule"
+msgstr "Voeg een nieuwe Vertaal Regel toe"
+
+msgid "Add Rule"
+msgstr "Voeg Regel toe"
+
+msgid "Add Rule and Map All Attachments"
+msgstr "Voeg Regel toe en Vertaal Alle Attachments"
+
+msgid "Add a new Field and Mapping Rule"
+msgstr "Voeg een nieuw Veld en Vertaal Regel toe"
+
+msgid "Add Field"
+msgstr "Voeg Veld toe"
+
+msgid "Add Field and Map All Attachments"
+msgstr "Voeg Veld toe en Vertaal Alle Attachments"
+
+msgid "Field Title"
+msgstr "Veld Titel"
+
+msgid "Custom field mapping rules updated."
+msgstr "Custom veld vertaal regels gewijzigd."
+
+msgid "Custom field mapping rules update failed."
+msgstr "Custom veld vertaal regels wijziging is fout gegaan."
+
+msgid "Custom field no mapping rule changes detected."
+msgstr "Geen wijzigingen gevonden in custom veld vertaal regel."
+
+msgid "Custom field mapping settings saved."
+msgstr "Custom veld vertaal instellingen opgeslagen."
+
+msgid "Custom field mapping settings reset failed."
+msgstr "Herstel custom veld vertaal instelling is fout gegaan."
+
+#. translators: 1: ERROR tag 2: custom field name
+#, php-format
+msgid "%1$s: No old values for %2$s."
+msgstr "%1$s: Geen oude waarden voor %2$s."
+
+msgid "IPTC Value"
+msgstr "IPTC Waarde"
+
+msgid "EXIF Value"
+msgstr "EXIF Waarde"
+
+msgid "EXIF to IPTC"
+msgstr "EXIF naar IPTC"
+
+msgid "IPTC to EXIF"
+msgstr "IPTC naar EXIF"
+
+msgid "Priority"
+msgstr "Prioriteit"
+
+msgid "Delimiter(s)"
+msgstr "Scheidingsteken(s)"
+
+msgid "IPTC"
+msgstr "IPTC"
+
+msgid "EXIF"
+msgstr "EXIF"
+
+msgid "EXIF/Template Value"
+msgstr "EXIF/Template Waarde"
+
+#. translators: 1: ERROR tag 2: option name
+#, php-format
+msgid "%1$s: Render unknown custom %2$s."
+msgstr "%1$s: Render onbekende custom %2$s."
+
+#. translators: 1: ERROR tag 2: option name
+#, php-format
+msgid "%1$s: Update/delete unknown custom %2$s."
+msgstr "%1$s: Wijzig/verwijder onbekende custom %2$s."
+
+msgid "IPTC/EXIF mapping settings updated."
+msgstr "IPTC/EXIF vertaal instellingen bijgewerkt."
+
+msgid "IPTC/EXIF settings update failed."
+msgstr "IPTC/EXIF instellingen wijziging is fout gegaan."
+
+msgid "IPTC/EXIF no mapping changes detected."
+msgstr "IPTC/EXIF geen vertaling wijziging gedetecteerd."
+
+#. translators: 1: field type
+#, php-format
+msgid "%1$s settings saved."
+msgstr "%1$s instellingen opgeslagen."
+
+msgid "Standard field"
+msgstr "Standaard veld"
+
+#. translators: 1: ERROR tag 2: field type
+#, php-format
+msgid "%1$s: IPTC/EXIF %2$s settings update failed."
+msgstr "%1$s: IPTC/EXIF %2$s instellingen wijziging is fout gegaan."
+
+msgid "Taxonomy term"
+msgstr "Taxonomie term"
+
+msgid "Custom field"
+msgstr "Custom veld"
+
+#. translators: 1: ERROR tag 2: option name, e.g., taxonomy_support
+#, php-format
+msgid "%1$s: Reset unknown custom %2$s"
+msgstr "%1$s: Herstel onbekende custom %2$s"
+
+msgid "ERROR: No post ID found"
+msgstr "FOUT: Geen post ID gevonden"
+
+msgid "Error while saving the translations."
+msgstr "Fout tijdens opslaan vertalingen."
+
+msgid "Remove From Bulk Translate"
+msgstr "Verwijder van Bulk Vertaal"
+
+msgid "Bulk Translate items"
+msgstr "Bulk Vertaal items"
+
+msgid "Add new"
+msgstr "Voeg nieuwe toe"
+
+msgid "Bulk Translations"
+msgstr "Bulk Vertalingen"
+
+msgid "Translate"
+msgstr "Vertaal"
+
+msgid "All Languages"
+msgstr "Alle Talen"
+
+msgid "Quick Translate"
+msgstr "Snel Vertalen"
+
+msgid "Set Language"
+msgstr "Zet Taal"
+
+msgid "Bulk Translate"
+msgstr "Bulk Vertaal"
+
+msgid "Add or Modify Translation"
+msgstr "Wijzig of voeg een vertaling toe"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "Translate this item inline"
+msgstr "Vertaal dit item inline"
+
+msgid "Media/Assistant submenu table"
+msgstr "Media/Assistent submenu tabel"
+
+msgid "Language Column"
+msgstr "Taal Kolom"
+
+msgid ""
+"Check this option to add a Language column to the Media/Assistant submenu "
+"table."
+msgstr ""
+"Kies deze optie om een Taal kolom toe te voegen aan de Media/Assistent "
+"submenu tabel."
+
+msgid "Translations Column"
+msgstr "Vertalingen Kolom"
+
+msgid ""
+"Check this option to add a Translation Status column to the Media/Assistant "
+"submenu table."
+msgstr ""
+"Kies deze optie om een Vertaal Status kolom toe te voegen aan de Media/"
+"Assistent subment tabel."
+
+msgid ""
+"Check this option to add a Quick Translate rollover action to the Media/"
+"Assistant submenu table."
+msgstr ""
+"Kies deze optie om een Snel Vertaal actie toe te voegen aan de Media/"
+"Asssitent submenu tabel."
+
+msgid ""
+"Check this option to add \"Translate\" to the \"Bulk Actions\" control on "
+"the Media/Assistant submenu table."
+msgstr ""
+"Kies deze optie om \"Vertaal\" aan de \"Bulk Acties\" besturing toe te "
+"voegen aan de Media/Assistent submenu tabel."
+
+msgid "Term Management"
+msgstr "Term Beheer"
+
+msgid "Term Assignment"
+msgstr "Term Toekennings"
+
+msgid ""
+"Check this option to assign language-specific terms when items are updated."
+msgstr ""
+"Kies deze optie om taal-specifieke termen toe te kennen wanneer items "
+"bijgewerkt worden."
+
+msgid "Term Synchronization"
+msgstr "Term Synchronisatie"
+
+msgid ""
+"Check this option to synchronize common terms among all item translations."
+msgstr ""
+"Kies deze optie om algemene termen te synchroniseren in alle item "
+"vertalingen."
+
+msgid "Term Mapping Replication"
+msgstr "Term Mapping Replicatie"
+
+msgid ""
+"When mapping IPTC/EXIF metadata to taxonomy terms, make them available in "
+"all languages."
+msgstr ""
+"Wanneer IPTC/EXIF metadata gemapt worden naar taxonomie termen, maak ze dan "
+"beschikbaar in alle talen."
+
+msgid "Language Options"
+msgstr "Taal Opties"
+
+#. translators: 1: - 4: page subheader values
+#, php-format
+msgid ""
+"In this tab you can find a number of options for controlling Polylang-"
+"specific operations. Scroll down to find options for %1$s and %2$s. Be sure "
+"to click \"Save Changes\" at the bottom of the tab to save any changes you "
+"make."
+msgstr ""
+"In deze tab kunt u een aantal opties vinden om Polylang-specifieke "
+"bewerkingen te besturen. Scroll naar beneden om de opties te vinden voor "
+"%1$s en %2$s. Klik wel op \"Opslaan\" onderaan om de wijzigingen op te slaan."
+
+#. translators: 1: Documentation hyperlink
+#, php-format
+msgid ""
+"You can find more information about multilingual features in the %1$s "
+"section of the Documentation."
+msgstr ""
+"U kunt meer informatie over multilingual mogelijkheden vinden in het %1$s "
+"deel van de Documentatie."
+
+msgid "Language Options documentation"
+msgstr "Tall Opties documentatie"
+
+msgid "WPML &amp; Polylang Multilingual Support; the MLA Language Tab"
+msgstr "WPML &amp; Polylang Multilingual Ondersteuning; de MLA Taal Tab"
+
+msgid "Save Changes"
+msgstr "Sla Wijzigingen Op"
+
+msgid "Delete Language options and restore default settings"
+msgstr "Verwijder Taal opties en herstel default instellingen"
+
+msgid "Go to Top"
+msgstr "Ga naar Boven"
+
+msgid "Language settings saved."
+msgstr "Taal instellingen opgeslagen."
+
+#. translators: 1: option name
+#, php-format
+msgctxt "message_list"
+msgid "delete_option \"%1$s\""
+msgstr "delete_option \"%1$s\""
+
+msgid "Language settings reset to default values."
+msgstr "Taal instellingen reset naar default waarden."
+
+msgid "Error while making the changes."
+msgstr "Fout tijdens het aanbrengen van de wijzigingen."
+
+msgid "no slug"
+msgstr "geen slug"
+
+msgid "Running"
+msgstr "Loopt"
+
+msgid "Skipped"
+msgstr "Overgeslagen"
+
+msgid "Reprocessed"
+msgstr "Opnieuw uitgevoerd"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Views per page"
+msgstr "Views per pagina"
+
+msgid "Types per page"
+msgstr "Typen per pagina"
+
+msgid "Upload types per page"
+msgstr "Upload typen per pagina"
+
+msgid "No view slug found"
+msgstr "Geen view slug gevonden"
+
+msgid "No upload slug found"
+msgstr "Geen upload slug gevonden"
+
+msgid "Map All Rules, All Attachments Now"
+msgstr "Vertaal Alle Regels, Alle Attachments Nu"
+
+msgid "Map All Attachments, Standard Fields Now"
+msgstr "Vertaal Alle Attachments, Standaard Velden Nu"
+
+msgid "Map All Attachments, Taxonomy Terms Now"
+msgstr "Vertaal Alle Attachments, Taxonomie Termen Nu"
+
+msgid "Map All Attachments, Custom Fields Now"
+msgstr "Vertaal Alle Attachments, Custom Velden Nu"
+
+#. translators: 1: ERROR tag 2: function name 3: option type, e.g., radio, select, text
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: %2$s unknown type = \"%3$s\""
+msgstr "%1$s: %2$s onbekend type = \"%3$s\""
+
+msgid "General"
+msgstr "Algemeen"
+
+msgid "Views"
+msgstr "Views"
+
+msgid "Uploads"
+msgstr "Uploads"
+
+msgid "MLA Gallery"
+msgstr "MLA Galerij"
+
+msgid "Custom Fields"
+msgstr "Custom Velden"
+
+msgid "Documentation"
+msgstr "Documentatie"
+
+msgid "Debug"
+msgstr "Debug"
+
+msgid "General Processing Options"
+msgstr "Algemene Verwerk Opties"
+
+#. translators: 1: - 4: page subheader values
+#, php-format
+msgid ""
+"In this tab you can find a number of options for controlling the "
+"plugin&rsquo;s operation. Scroll down to find options for %1$s, %2$s, %3$s "
+"and %4$s. Be sure to click \"Save Changes\" at the bottom of the tab to save "
+"any changes you make."
+msgstr ""
+"In dit onderdeel kunt u een aantal opties vinden waarmee de werking van de "
+"plugin bepaald kan worden. Blader naar beneden om de opties voor %1$s, %2$s, "
+"%3$s en %4$s te vinden. Klik wel op \"Sla Wijzigingen Op\" onderaan het deel "
+"om de wijzigingen die u maakt op te slaan."
+
+msgid "Media/Assistant Table Defaults"
+msgstr "Media/Assistant Tabel Defaults"
+
+msgid "Media Manager Enhancements"
+msgstr "Media Manager Uitbreidingen"
+
+msgid "Export ALL Settings"
+msgstr "Exporteer ALLE Instellingen"
+
+msgid "Delete General options and restore default settings"
+msgstr "Verwijder Algemene opties en herstel default instellingen"
+
+msgid "Support Our Work"
+msgstr "Ondersteun Ons Werk"
+
+msgid "Donate to FTJ"
+msgstr "Doneer aan FTJ"
+
+msgid "Donate"
+msgstr "Doneer"
+
+#. translators: 1: donation hyperlink
+#, php-format
+msgid ""
+"This plugin was inspired by my work on the WordPress web site for our "
+"nonprofit, Fair Trade Judaica. If you find the Media Library Assistant "
+"plugin useful and would like to support a great cause, consider a %1$s to "
+"our work. Thank you!"
+msgstr ""
+"Deze plugin is ge&iuml;nspireerd door mijn werk op de WordPress website voor "
+"onze zonder winstbejag instelling, Fair Trade Judaica. Als u de Media "
+"Library Assistant plugin handig vindt en u wilt een goede zaak steunen, "
+"overweeg dan een %1$s voor ons werk. Dank u!"
+
+msgid "tax-deductible donation"
+msgstr "aftrekbare donatie"
+
+msgid "enhanced version of the WordPress [gallery] shortcode."
+msgstr "verbeterde versie van de WordPress [gallery] shortcode."
+
+msgid "enhanced version of the WordPress Tag Cloud."
+msgstr "verbeterde versie van de WordPress Tag Cloud."
+
+msgid "Shortcodes made available by this plugin"
+msgstr "Shortcodes die beschikbaar gemaakt worden door deze plugin"
+
+msgid "Edit View"
+msgstr "Bewerk View"
+
+msgid ""
+"The &#8220;slug&#8221; is the URL-friendly, unique key for the view. It must "
+"be all lowercase and contain only letters, numbers, periods (.), slashes (/) "
+"and hyphens (-). For &#8220;<strong>Post MIME Type</strong>&#8221; views, "
+"the slug is also the MIME type specification and <strong>must be a valid "
+"MIME</strong> type, e.g., &#8220;image&#8221; or &#8220;image/jpeg&#8221;."
+msgstr ""
+"De &#8220;slug&#8221; is een URL-vriendelijke, unieke sleutel voor de view. "
+"Inhoud moet kleine letters zijn en alleen letters, getallen, punten (.), "
+"slashes (/) en streepjes (-) bevatten. Voor &#8220;<strong>Post MIME Type</"
+"strong>&#8221; views, fungeert de slug ook als MIME type specificatie en "
+"<strong>moet een juist MIME</strong> type zijn, bijv., &#8220;image&#8221; "
+"of &#8220;image/jpeg&#8221;."
+
+msgid "Singular Label"
+msgstr "Enkelvoud Label"
+
+msgid "Plural Label"
+msgstr "Meervoud Label"
+
+msgid ""
+"The labels, e.g., &#8220;Image&#8221; and &#8220;Images&#8221; are used for "
+"column headers and other display purposes."
+msgstr ""
+"De labels, bijv., &#8220;Afbeelding&#8221; en &#8220;Afbeeldingen&#8221; "
+"worden gebruikt als kolomkoppen en andere display onderdelen."
+
+msgid "Specification"
+msgstr "Specificatie"
+
+msgid ""
+"If the MIME type specification differs from the slug, enter it here. You may "
+"include multiple MIME types, e.g., &#8220;audio,video&#8221; and/or wildcard "
+"specs, e.g.,  &#8220;*/*ms*&#8221;. This field will be ignored if the Post "
+"MIME Type box is checked."
+msgstr ""
+"Als de MIME type specificatie anders is dan de slug, geef dit dan hier op. U "
+"mag meerdere MIME typen, bijv., &#8220;audio,video&#8221; en/of wildcards, "
+"bijv.,  &#8220;*/*ms*&#8221; opgeven. Dit veld zal genegeerd worden als de "
+"Post MIME Type box gekozen is."
+
+msgid "Post MIME Type"
+msgstr "Post MIME Type"
+
+msgid ""
+"Check this box if you want to add this entry to the list of MIME types "
+"returned by wp_get_mime_types()."
+msgstr ""
+"Gebruik deze optie als u deze waarde toe wilt voegen aan de lijst van MIME "
+"typen die geretourneerd wordt door wp_get_mime_types()."
+
+msgid "Table View"
+msgstr "Tabel View"
+
+msgid ""
+"Check this box if you want to add this entry to the list of Media/Assistant "
+"table views."
+msgstr ""
+"Gebruik deze optie als u deze waarde wilt toevoegen aan de lijst van Media/"
+"Assistant tabel views."
+
+msgid ""
+"You can choose your own table view order by entering a number (1 for first, "
+"etc.) in this field."
+msgstr ""
+"U kunt uw eigen tabel view volgorde opgeven via het opgeven van een getal (1 "
+"voor eerste, etc.)."
+
+msgid ""
+"The description can contain any documentation or notes you need to "
+"understand or use the item."
+msgstr ""
+"De omschrijving kan alle documentatie of notities bevatten die u nodig hebt "
+"om het onderdeel te begrijpen of te gebruiken."
+
+#. translators: 1: bulk_action, e.g., delete, edit, restore, trash
+#, php-format
+msgid "Unknown bulk action %1$s"
+msgstr "Onbekende bulk actie %1$s"
+
+#. translators: 1: view name/slug
+#, php-format
+msgid "Edit view \"%1$s\" cancelled."
+msgstr "Bewerken view \"%1$s\" gestopt."
+
+msgid "View and Post MIME Type Support is disabled"
+msgstr "View en Post MIME Type Ondersteuning is uitgezet"
+
+msgid "Library Views/Post MIME Type Processing"
+msgstr "Bibliotheek Views/Post MIME Type Verwerking"
+
+msgid ""
+"In this tab you can manage the list of \"Post MIME Types\", which are used "
+"by WordPress to define the views for the <em><strong>Media/Library</strong></"
+"em> screen and the <em><strong>Media Manager/Add Media</strong></em> \"media "
+"items\" drop down list. MLA&rsquo;s <em><strong>Media/Assistant</strong></"
+"em> screen uses an enhanced version of the list, <em>Table Views</em>, to "
+"support views with multiple MIME Types (e.g., \"audio,video\") and wildcard "
+"specifications (e.g. \"*/*ms*\")."
+msgstr ""
+"In dit deel kunt u de lijst beheren van \"Post MIME Typen\", die gebruikt "
+"wordt door WordPress om de views te defini&euml;ren voor het "
+"<em><strong>Media/Library</strong></em> scherm en de <em><strong>Media "
+"Manager/Voeg Media Toe</strong></em> \"media items\" drop down lijst. "
+"MLA&rsquo;s <em><strong>Media/Assistant</strong></em> scherm gebruikt een "
+"verbeterde versie van de lijst, <em>Table Views</em>, om views met meerdere "
+"MIME Typen (bijv., \"audio,video\") en wildcards (bijv. \"*/*ms*\") te "
+"ondersteunen."
+
+#. translators: 1: Documentation hyperlink
+#, php-format
+msgid ""
+"You can find more information about library views, Post MIME types and how "
+"MLA and WordPress use them in the %1$s section of the Documentation or by "
+"clicking the <strong>\"Help\"</strong> tab in the upper-right corner of this "
+"screen."
+msgstr ""
+"U kunt meer informatie vinden over bibliotheek views, Post MIME typen en hoe "
+"MLA en WordPress deze gebruiken in de %1$s sectie van de Documentatie of "
+"door het klikken van <strong>\"Help\"</strong> in de rechterbovenhoek van "
+"het scherm."
+
+msgid "Library View Processing documentation"
+msgstr "Bibliotheek View Verwerk documentatie"
+
+msgid "Displaying search results for"
+msgstr "Toon zoekresultaten voor"
+
+msgid "Search Views"
+msgstr "Zoek Views"
+
+msgid "Add View"
+msgstr "Voeg View Toe"
+
+msgid "<strong>Quick Edit</strong>"
+msgstr "<strong>Snel Bewerk</strong>"
+
+msgid "Edit Upload MIME Type"
+msgstr "Bewerk Upload MIME Type"
+
+msgid ""
+"The &#8220;extension&#8221; is the file extension for this type, and a "
+"unique key for the item. It must be all lowercase and contain only letters "
+"and numbers."
+msgstr ""
+"De &#8220;extensie&#8221; is de bestandsextensie voor dit type, en een "
+"unieke sleutel voor het onderdeel. De waarde moet kleine letters zijn en "
+"alleen letters en cijfers bevatten."
+
+msgid ""
+"The MIME Type must be all lowercase and contain only letters, numbers, "
+"periods (.), slashes (/) and hyphens (-). It <strong>must be a valid MIME</"
+"strong> type, e.g., &#8220;image&#8221; or &#8220;image/jpeg&#8221;."
+msgstr ""
+"Het MIME Type moet alleen kleine letters zijn en slechts letters, getallen, "
+"punten (.), slashes (/) en streepjes (-) bevatten.Hett <strong>moet een "
+"juist MIME</strong> type zijn, bijv., &#8220;image&#8221; of &#8220;image/"
+"jpeg&#8221;."
+
+msgid "Icon Type"
+msgstr "Afbeelding Type"
+
+msgid ""
+"The Icon Type selects a thumbnail image displayed for non-image file types, "
+"such as PDF documents."
+msgstr ""
+"Het Afbeelding Type selecteert het tonen van een miniatuur afbeelding voor "
+"niet-afbeelding file typen, zoals PDF documenten."
+
+msgid "Inactive"
+msgstr "Inactief"
+
+msgid ""
+"Check this box if you want to remove this entry from the list of Upload MIME "
+"Types returned by get_allowed_mime_types()."
+msgstr ""
+"Gebruik deze optie als u deze waarde wilt verwijderen van de lijst van "
+"Upload MIME Typen die geretourneerd wordt door get_allowed_mime_types()."
+
+msgid "Known File Extension/MIME Type Associations"
+msgstr "Bekende Bestandsextensie/MIME Type Associaties"
+
+msgid "Search Known MIME Types"
+msgstr "Zoek Bekende MIME Typen"
+
+msgid "To search by extension, use \".\", e.g., \".doc\""
+msgstr "Om op extensie te zoeken, gebruik \".\", bijv., \".doc\""
+
+msgid "Upload MIME Type Support is disabled"
+msgstr "Upload MIME Type Ondersteuning is uitgezet"
+
+msgid "File Extension and MIME Type Processing"
+msgstr "Bestandsextensie en MIME Type Verwerking"
+
+msgid ""
+"In this tab you can manage the list of file extension/MIME Type "
+"associations, which are used by WordPress to decide what kind of files can "
+"be uploaded to the Media Library and to fill in the "
+"<strong><em>post_mime_type</em></strong> value. To upload a file, the file "
+"extension must be in this list and be active."
+msgstr ""
+"In dit deel kunt u de lijst beheren van bestandsnaamextensies/MIME Typen "
+"associaties, die door WordPress gebruikt wordt om te bepalen welk soort "
+"bestanden ge&uuml; pload kunnen worden naar de Media Bibliotheek en welke "
+"waarde te vullen voor de <strong><em>post_mime_type</em></strong>. Om een "
+"bestand te uploaden moet de bestandsnaamextensie in de lijst staan en actief "
+"zijn."
+
+#. translators: 1: Documentation hyperlink
+#, php-format
+msgid ""
+"You can find more information about file extensions, MIME types and how "
+"WordPress uses them in the %1$s section of the Documentation or by clicking "
+"the <strong>\"Help\"</strong> tab in the upper-right corner of this screen."
+msgstr ""
+"U kunt meer informatie vinden over bestandsnaamextensies, MIME typen en hoe "
+"WordPress ze gebruikt in de %1$s sectie van de Documentatie of door het "
+"klikken van <strong>\"Help\"</strong> in de rechterbovenhoek van dit scherm."
+
+msgid "File Extension Processing documentation"
+msgstr "Bestandsnaamextensie Verwerk documentatie"
+
+msgid "Search Uploads"
+msgstr "Zoek Uploads"
+
+msgid "Upload MIME Type"
+msgstr "Upload MIME Type"
+
+msgid ""
+"To search the database of over 1,500 known extension/type associations, "
+"click \"Search Known Types\" below the form."
+msgstr ""
+"Om de database met meer danr 1.500 bekende extensies/type associaties te "
+"doorzoeken, klik \"Zoek Bekende Typen\" onder het formulier."
+
+msgid ""
+"The &#8220;extension&#8221; is the file extension for this type, and unique "
+"key for the item. It must be all lowercase and contain only letters and "
+"numbers."
+msgstr ""
+"De &#8220;extensie&#8221; is de bestandsnaamextensie voor dit type, en een "
+"unieke sleutel voor dit onderdeel. Het moet kleine letters zijn en alleen "
+"letters en cijfers bevatten."
+
+msgid "Add Upload MIME Type"
+msgstr "Voeg Upload MIME Type Toe"
+
+msgid "Search Known Types"
+msgstr "Zoek Bekende Typen"
+
+msgid "Active"
+msgstr "Actief"
+
+msgid "MLA Gallery Options"
+msgstr "MLA Gallery Opties"
+
+msgid "Go to Style Templates"
+msgstr "Ga naar Stijl Templates"
+
+msgid "Go to Markup Templates"
+msgstr "Ga naar Markup Templates"
+
+msgid ""
+"In this tab you can view the default style and markup templates. You can "
+"also define additional templates and use the <code>mla_style</code> and "
+"<code>mla_markup</code> parameters to apply them in your "
+"<code>[mla_gallery]</code> shortcodes. <strong>NOTE:</strong> template "
+"additions and changes will not be made permanent until you click \"Save "
+"Changes\" at the bottom of this page."
+msgstr ""
+"In dit deel kunt u de default stijl en markup templates bekijken. U kunt ook "
+"extra templates maken en de <code>mla_style</code> en <code>mla_markup</"
+"code> parameters gebruiken om ze te activeren voor uw <code>[mla_gallery]</"
+"code> shortcodes. <strong>OPMERKING:</strong> template toevoegingen en "
+"wijzigingen worden pas permanent als u klikt op \"Sla Wijzigingen Op\" "
+"onderaan de pagina."
+
+msgid "Style Templates"
+msgstr "Stijl Templates"
+
+msgid "Markup Templates"
+msgstr "Markup Templates"
+
+msgid "Theme"
+msgstr "Thema"
+
+msgid "Imagick support is not installed."
+msgstr "Imagick ondersteuning is niet geïnstalleerd."
+
+msgid "Ghostscript support is not installed."
+msgstr "Ghostscript ondersteuning is niet geïnstalleerd"
+
+msgid "WARNING:"
+msgstr "WAARSCHUWING:"
+
+msgid " MLA Viewer support may not be available"
+msgstr " MLA Viewer support zou niet bechikbaar kunnen zijn"
+
+msgid ""
+"This default template cannot be altered or deleted, but you can copy the "
+"styles."
+msgstr ""
+"Dit default template kan niet gewijzigd of verwijderd worden, u kunt wel de "
+"stijl kopi&euml;ren."
+
+msgid "Styles"
+msgstr "Stijlen"
+
+msgid ""
+"List of substitution parameters, e.g., [+selector+], on Documentation tab."
+msgstr ""
+"Lijst van vervang parameters, bijv., [+selector+], op Documentatie tab."
+
+msgid "Delete this template"
+msgstr "Verwijder dit template"
+
+msgid ""
+"Check the box to delete this template when you press Update at the bottom of "
+"the page."
+msgstr ""
+"Gebruik deze optie om het template te verwijderen wanneer u op Update "
+"onderaan de pagina klikt."
+
+msgid "Fill in a name and styles to add a new template."
+msgstr "Vul een naam in en stijlen om een nieuw template toe te voegen."
+
+msgid ""
+"This default template cannot be altered or deleted, but you can copy the "
+"markup."
+msgstr ""
+"Dit default template kan niet gewijzigd of verwijderd worden, maar u kan de "
+"markup kopi&euml;ren."
+
+msgid "Open"
+msgstr "Open"
+
+msgid ""
+"Markup for the beginning of the gallery. List of parameters, e.g., [+selector"
+"+], on Documentation tab."
+msgstr ""
+"Markup voor het being van de galerij. Lijst van parameters, bijv., [+selector"
+"+], op Documentatie tab."
+
+msgid "Row"
+msgstr "Rij"
+
+msgid "Markup for the beginning of each row in the gallery."
+msgstr "Markup voor het begin van elke rij in de galerij."
+
+msgid "Item"
+msgstr "Onderdeel"
+
+msgid "Markup for each item/cell of the gallery."
+msgstr "Markup voor elk onderdeel/cel van de galerij."
+
+msgid "Close"
+msgstr "Sluit"
+
+msgid "Markup for the end of each row in the gallery."
+msgstr "Markup voor het einde van elke rij in de galerij."
+
+msgid "Markup for the end of the gallery."
+msgstr "Markup voor het einde van de galerij."
+
+msgid "Markup for the beginning of each row."
+msgstr "Markup voor het begin van elke rij."
+
+msgid "Markup for each item/cell."
+msgstr "Markup voor elk onderdeel/cel."
+
+msgid "Markup for the end of each row."
+msgstr "Markup voor het einde van elke rij."
+
+msgid "Fill in a name and markup to add a new template."
+msgstr "Vul een naam in en markup om een nieuw template toe te voegen."
+
+msgid "Custom Field Mapping Progress"
+msgstr "Aangepast Veld Mapping Voortgang"
+
+msgid "DO NOT DO THE FOLLOWING (they will cause mapping to fail)"
+msgstr "DOE HET VOLGENDE NIET (dan zal het mappen fout gaan)"
+
+msgid "Close the window"
+msgstr "Sluit het window"
+
+msgid "Reload the page"
+msgstr "Herlaad de pagina"
+
+msgid "Click the browser&rsquo;s Stop, Back or forward buttons"
+msgstr "Klik de Stop, Back of forward knoppen van de browser"
+
+msgid "Progress"
+msgstr "Voortgang"
+
+msgid "Resume"
+msgstr "Hervat"
+
+msgid "Custom Field and Attachment Metadata Processing Options"
+msgstr "Aangepaste Veld en Attachment Metadata Verwerkopties"
+
+#. translators: 1: Documentation hyperlink
+#, php-format
+msgid ""
+"In this tab you can define the rules for mapping several types of image "
+"metadata to WordPress custom fields. You can also use this screen to define "
+"rules for adding or updating fields within the WordPress-supplied "
+"\"Attachment Metadata\", stored in the \"_wp_attachment_metadata\" custom "
+"field. See the %1$s section of the Documentation for details."
+msgstr ""
+"In dit deel kunt u de regels defini&euml;ren voor het mappen van "
+"verschillende typen van afbeelding metadata naar WordPress aangepaste "
+"velden. U kunt ook dit scherm gebruiken om velden toe te voegen of bij te "
+"werken binnen de door WordPress-geleverde \"Attachment Metadata\", "
+"opgeslagen in het \"_wp_attachment_metadata\" aangepast veld. Zie de %1$s "
+"sectie van de Documentatie voor details."
+
+msgid "Updating Attachment Metadata Documentation"
+msgstr "Bijwerken Attachment Metadata Documentatie"
+
+msgid "Adding or changing Attachment Metadata"
+msgstr "Toevoegen of wijzigen Attachment Metadata"
+
+#. translators: 1: Documentation hyperlink
+#, php-format
+msgid ""
+"You can find more information about using the controls in this tab to define "
+"mapping rules and apply them in the %1$s section of the Documentation."
+msgstr ""
+"U kunt meer informatie vinden over het gebruik van de aansturing in dit deel "
+"om mapping regels te defini&euml;ren en toe te passen in de %1$s sectie van "
+"de Documentatie."
+
+msgid "Custom Field Options documentation"
+msgstr "Aangepast Veld Opties documentatie"
+
+msgid "Custom field mapping"
+msgstr "Aangepast veld mapping"
+
+#. translators: 1: "Save Changes"
+#, php-format
+msgid ""
+"Click %1$s to update the \"Enable custom field mapping...\" checkbox and/or "
+"all rule changes and additions at once. <strong>No rule mapping will be "
+"performed.</strong>"
+msgstr ""
+"Klik %1$s om de \"Activeer aangepaste veld mapping...\" en/of alle "
+"regelwijzigingen en -toevoegingen in 1 keer toe te passen. <strong>Er wordt "
+"geen regel mapping uitgevoerd.</strong>"
+
+#. translators: 1: "Map All Rules..."
+#, php-format
+msgid ""
+"Click %1$s to apply all the rules at once (rule changes will be applied but "
+"not saved)."
+msgstr ""
+"Klik %1$s om alle regels in 1 keer toe te passen (regelwijzigingen worden "
+"toegepast maar niet opgeslagen)."
+
+msgid "IPTC &amp; EXIF Mapping Progress"
+msgstr "IPTC &amp; EXIF Mapping Voortgang"
+
+msgid "IPTC &amp; EXIF Processing Options"
+msgstr "IPTC &amp; EXIF Verwerkopties"
+
+msgid ""
+"In this tab you can define the rules for mapping IPTC (International Press "
+"Telecommunications Council) and EXIF (EXchangeable Image File) metadata to "
+"WordPress standard attachment fields, taxonomy terms and custom fields. "
+"<strong>NOTE:</strong> settings changes will not be made permanent until you "
+"click \"Save Changes\" at the bottom of this page."
+msgstr ""
+"In dit deel kunt u de regels defini&euml;ren voor de mapping van IPTC "
+"(International Press Telecommunications Council) en EXIF (EXchangeable Image "
+"File) metadata naar WordPress standaard attachment velden, taxonomie termen "
+"en aangepaste velden. <strong>OPMERKING:</strong> instellingswijzigingen "
+"worden niet permanent tot u \"Sla Wijzigingen Op\" klikt onderaan de pagina."
+
+msgid "IPTC/EXIF Options documentation"
+msgstr "IPTC/EXIF Opties documentatie"
+
+msgid "Standard field mapping"
+msgstr "Standaard veld mapping"
+
+msgid "Taxonomy term mapping"
+msgstr "Taxonomie term mapping"
+
+#. translators: 1: "Save Changes"
+#, php-format
+msgid ""
+"Click %1$s to update the \"Enable IPTC/EXIF mapping...\" checkbox and/or all "
+"rule changes and additions at once. <strong>No rule mapping will be "
+"performed.</strong>"
+msgstr ""
+"Klik %1$s om de \"Activeer IPTC/EXIF mapping...\" te activeren en/of "
+"regelwijzigingen en -toevoegingen in 1 keer toe te passen. <strong>Er wordt "
+"geen regelmapping uitgevoerd.</strong>"
+
+msgid "Debug settings saved."
+msgstr "Debug instellingen opgeslagen."
+
+#. translators: 1: ERROR tag 2: file type 3: file name 4: error message
+#, php-format
+msgid "%1$s: Reseting the %2$s file ( %3$s ) \"%4$s\"."
+msgstr "%1$s: Het %2$s bestand aan het resetten ( %3$s ) \"%4$s\"."
+
+msgid "Error Log"
+msgstr "Fouten log"
+
+#. translators: 1: ERROR tag 2: file type 3: file name 4: error message
+#, php-format
+msgid "%1$s: Reading the %2$s file ( %3$s ) \"%4$s\"."
+msgstr "%1$s: Het %2$s bestand aan het lezen ( %3$s ) \"%4$s\"."
+
+#. translators: 1: file name
+#, php-format
+msgid "Error log file (%1$s) not found; click Reset to create it."
+msgstr "Error log file (%1$s) niet gevonden; klik Reset om hem aan te maken."
+
+msgid "Debug Options"
+msgstr "Debug Opties"
+
+msgid "Debug Settings"
+msgstr "Debug Instellingen"
+
+#. translators: 1: "Save Changes"
+#, php-format
+msgid "Click %1$s to update the %2$s."
+msgstr "Klik %1$s om de %2$s te updaten."
+
+msgid "You do not have permission to manage plugin settings."
+msgstr "U heeft geen toegang om plugin instellingen te beheren."
+
+msgid "Cannot render content tab"
+msgstr "Kan de inhoud tab niet renderen"
+
+msgid "Unknown content tab"
+msgstr "Onbekende inhoud tab"
+
+#. translators: 1: template type 2: template name
+#, php-format
+msgctxt "message_list"
+msgid "Deleting %1$s \"%2$s\"."
+msgstr "Verwijder %1$s \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template name 3: template type
+#, php-format
+msgid "%1$s: Reserved name \"%2$s\", new %3$s discarded."
+msgstr "%1$s: Gereserveerde naam \"%2$s\", nieuw %3$s overgeslagen."
+
+#. translators: 1: ERROR tag 2: template name 3: template type
+#, php-format
+msgid "%1$s: Duplicate name \"%2$s\", new %3$s discarded."
+msgstr "%1$s: Dubbele naam \"%2$s\", nieuwe %3$s overgeslagen."
+
+#. translators: 1: template type 2: template name
+#, php-format
+msgctxt "message_list"
+msgid "Adding new %1$s \"%2$s\"."
+msgstr "Voeg nieuw %1$s \"%2$s\" toe."
+
+#. translators: 1: ERROR tag 2: element name 3: old value
+#, php-format
+msgid "%1$s: Blank %2$s, reverting to \"%3$s\"."
+msgstr "%1$s: Leeg %2$s, ga terug naar \"%3$s\"."
+
+msgid "style template name"
+msgstr "stijl template naam"
+
+#. translators: 1: ERROR tag 2: element name 3: new value 4: old value
+#, php-format
+msgid "%1$s: Duplicate new %2$s \"%3$s\", reverting to \"%4$s\"."
+msgstr "%1$s: Dubbele nieuwe %2$s \"%3$s\", ga terug naar \"%4$s\"."
+
+#. translators: 1: element name 2: old_value 3: new_value
+#, php-format
+msgctxt "message_list"
+msgid "Changing %1$s from \"%2$s\" to \"%3$s\""
+msgstr "Wijzig %1$s van \"%2$s\" naar \"%3$s\""
+
+#. translators: 1: template type 2: template name
+#, php-format
+msgctxt "message_list"
+msgid "Updating contents of %1$s \"%2$s\"."
+msgstr "Werk inhoud bij van %1$s \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: template type
+#, php-format
+msgid "%1$s: Update of %2$s failed."
+msgstr "%1$s: Update van %2$s fout gegaan."
+
+msgid "markup template name"
+msgstr "markup template naam"
+
+#. translators: 1: template name
+#, php-format
+msgctxt "message_list"
+msgid "Updating open markup for \"%1$s\"."
+msgstr "Werk open markup bij voor \"%1$s\"."
+
+#. translators: 1: template name
+#, php-format
+msgctxt "message_list"
+msgid "Updating row open markup for \"%1$s\"."
+msgstr "Werk rij open markup bij voor \"%1$s\"."
+
+#. translators: 1: template name
+#, php-format
+msgctxt "message_list"
+msgid "Updating item markup for \"%1$s\"."
+msgstr "Werk onderdeel markup bij voor \"%1$s\"."
+
+#. translators: 1: template name
+#, php-format
+msgctxt "message_list"
+msgid "Updating row close markup for \"%1$s\"."
+msgstr "Werk rij sluit markup bij voor \"%1$s\"."
+
+#. translators: 1: template name
+#, php-format
+msgctxt "message_list"
+msgid "Updating close markup for \"%1$s\"."
+msgstr "Werk sluit markup bij voor \"%1$s\"."
+
+#. translators: 1: field type
+#, php-format
+msgid "%1$s no changes detected."
+msgstr "%1$s geen wijzigingen gedetecteerd."
+
+msgid "View settings saved."
+msgstr "View instellingen opgeslagen."
+
+msgid "Upload MIME Type settings saved."
+msgstr "Upload MIME Type instellingen opgeslagen."
+
+msgid "No custom field mapping rules to process."
+msgstr "Geen aangepaste veld mapping regels om te verwerken."
+
+#. translators: 1: field type 2: examined count 3: updated count
+#, php-format
+msgid "%1$s mapping completed; %2$d attachment(s) examined, %3$d updated."
+msgstr "%1$s mapping afgerond; %2$d attachment(s) bekeken, %3$d bijgewerkt."
+
+#. translators: 1: field type 2: examined count
+#, php-format
+msgid ""
+"%1$s mapping completed; %2$d attachment(s) examined, no changes detected."
+msgstr ""
+"%1$s mapping afgerond; %2$d attachment(s) bekeken, geen wijzigingen "
+"gedetecteerd."
+
+#. translators: 1: number of attachments
+#, php-format
+msgid "%s attachment"
+msgid_plural "%s attachments"
+msgstr[0] "%s attachment"
+msgstr[1] "%s attachments"
+
+#. translators: 1: singular/plural number of attachments
+#, php-format
+msgid "Deleted custom field value from %1$s."
+msgstr "Aangepaste veld waarde(n) verwijderd van %1$s."
+
+msgid "No attachments contained this custom field."
+msgstr "Geen attachments bevatten dit aangepaste veld."
+
+#. translators: 1: ERROR tag 2: field type
+#, php-format
+msgid "%1$s: No %2$s settings to process."
+msgstr "%1$s: Geen %2$s instellingen om te verwerken."
+
+msgid "updated."
+msgstr "bijgewerkt."
+
+#. translators: 1: reference type, e.g., Gallery in
+#, php-format
+msgctxt "message_list"
+msgid "%1$s - references updated."
+msgstr "%1$s - referenties bijgewerkt."
+
+msgid "General settings saved."
+msgstr "Algemene instellingen opgeslagen."
+
+msgid "General settings reset to default values."
+msgstr "Algemene instellingen teruggezet naar default waarden."
+
+msgid "select settings"
+msgstr "selecteer instellingen"
+
+msgid "Import ALL Settings"
+msgstr "Importeer ALLE Instellingen"
+
+msgctxt "message_list"
+msgid "exported"
+msgstr "ge&euml;xporteerd"
+
+msgctxt "message_list"
+msgid "skipped"
+msgstr "overgeslagen"
+
+msgid "ALL settings exported."
+msgstr "ALLE instellingen ge&euml;xporteerd."
+
+#. translators: 1: ERROR tag 2: backup directory name
+#, php-format
+msgid "%1$s: The settings directory ( %2$s ) cannot be created."
+msgstr "%1$s: De instellingsdirectory ( %2$s ) kan niet gemaakt worden."
+
+#. translators: 1: ERROR tag 2: backup directory name
+#, php-format
+msgid "%1$s: The settings directory ( %2$s ) is not writable."
+msgstr "%1$s: De instellingsdirectory ( %2$s ) is niet beschrijfbaar."
+
+#. translators: 1: ERROR tag 2: backup file name
+#, php-format
+msgid "%1$s: The settings file ( %2$s ) could not be opened."
+msgstr "%1$s: Het instellingsbestand ( %2$s ) kan niet geopend worden."
+
+#. translators: 1: ERROR tag 2: PHP error information
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _export_settings $error_info = \"%2$s\"."
+msgstr "%1$s: _export_settings $error_info = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: backup file name 3: error message
+#, php-format
+msgid "%1$s: Writing the settings file ( %2$s ) \"%3$s\"."
+msgstr "%1$s: Schrijf het instellingsbestand ( %2$s ) \"%3$s\"."
+
+#. translators: 1: number of option settings
+#, php-format
+msgid "Settings exported; %1$s settings recorded."
+msgstr "Instellingen ge&euml;xporteerd; %1$s instellingen opgeslagen."
+
+msgid "No settings imported."
+msgstr "Geen instellingen ge&iuml;mporteerd."
+
+msgid "Please select an import settings file from the dropdown list."
+msgstr "Selecteer een import instellingsbestand in de dropdown lijst."
+
+msgid "The import settings dropdown selection is missing."
+msgstr "De import instellingsselectie in de dropdown lijst ontbreekt."
+
+#. translators: 1: ERROR tag 2: PHP error information
+#, php-format
+msgctxt "error_log"
+msgid "%1$s: _import_settings $error_info = \"%2$s\"."
+msgstr "%1$s: _import_settings $error_info = \"%2$s\"."
+
+#. translators: 1: ERROR tag 2: backup file name 3: error message
+#, php-format
+msgid "%1$s: Reading the settings file ( %2$s ) \"%3$s\"."
+msgstr "%1$s: Lees het instellingsbestand ( %2$s ) \"%3$s\"."
+
+msgctxt "message_list"
+msgid "updated"
+msgstr "bijgewerkt"
+
+msgctxt "message_list"
+msgid "unchanged"
+msgstr "ongewijzigd"
+
+#. translators: 1: number of option settings updated 2: number of option settings unchanged
+#, php-format
+msgid "Settings imported; %1$s updated, %2$s unchanged."
+msgstr "Instellingen ge&iuml;mporteerd; %1$s bijgewerkt, %2$s ongewijzigd."
+
+msgid "not found"
+msgstr "niet gevonden"
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Next"
+msgstr "Volgende"
+
+msgid "mla_debug empty gallery"
+msgstr "mla_debug lege galerij"
+
+msgid ""
+"<strong>Photonic-enhanced [mla_gallery]</strong> type must be "
+"<strong>default</strong>, query = "
+msgstr ""
+"<strong>Photonisch-uitgebreide [mla_gallery]</strong> type moet "
+"<strong>default</strong> zijn, query = "
+
+msgid "unknown"
+msgstr "onbekend"
+
+msgid "mla_debug attributes"
+msgstr "mla_debug attributen"
+
+msgid "mla_debug arguments"
+msgstr "mla_debug argumenten"
+
+msgid "mla_debug empty cloud"
+msgstr "mla_debug lege cloud"
+
+msgid "Invalid mla_gallery"
+msgstr "Foutieve mla_gallery"
+
+msgid "mla_debug query"
+msgstr "mla_debug query"
+
+msgid "mla_debug request"
+msgstr "mla_debug verzoek"
+
+msgid "mla_debug query_vars"
+msgstr "mla_debug query_vars"
+
+msgid "mla_debug post_count"
+msgstr "mla_debug post_count"
+
+msgid "mla_debug WHERE filter"
+msgstr "mla_debug WHERE filter"
+
+msgid "mla_debug modified WHERE filter"
+msgstr "mla_debug gewijzigd WHERE filter"
+
+msgid "mla_debug ORDER BY filter, incoming"
+msgstr "mla_debug ORDER BY filter, inkomend"
+
+msgid "Replacement ORDER BY clause"
+msgstr "Vervang ORDER BY clausule"
+
+msgid "mla_debug posts_clauses filter"
+msgstr "mla_debug posts_clauses filter"
+
+msgid "mla_debug posts_clauses_request filter"
+msgstr "mla_debug posts_clauses_request filter"
+
+msgid "Invalid taxonomy"
+msgstr "Foutieve taxonomie"
+
+msgid "mla_debug query arguments"
+msgstr "mla_debug query arguments"
+
+msgid "mla_debug last_query"
+msgstr "mla_debug last_query"
+
+msgid "mla_debug last_error"
+msgstr "mla_debug last_error"
+
+msgid "mla_debug num_rows"
+msgstr "mla_debug num_rows"
+
+msgid "mla_debug found_rows"
+msgstr "mla_debug found_rows"
+
+msgid "Error while saving the thumbnails."
+msgstr "Fout tijdens opslaan van de thumbnails."
+
+msgid "Remove From"
+msgstr "Verwijder Van"
+
+msgid "Generate Thumbnails"
+msgstr "Genereer Thumbnails"
+
+#. translators: 1: post ID
+#, php-format
+msgid "Item %1$d"
+msgstr "Item %1$d"
+
+msgid "has native thumbnail."
+msgstr "heeft originele thumbnail."
+
+msgid "Featured Image retained."
+msgstr "Uitgelichte Afbeelding behouden."
+
+#. translators: 1: ERROR tag 2: Item post ID
+#, php-format
+msgid "%1$s: %2$sno attached file."
+msgstr "%1$s: %2$sgeen gekoppeld bestand."
+
+msgid "unsupported file type."
+msgstr "niet ondersteund bestandstype."
+
+#. translators: 1: ERROR tag 2: Item post ID
+#, php-format
+msgid "%1$s: %2$sthumbnail generation failed"
+msgstr "%1$s: %2$sthumbnail aanmaak fout gegaan"
+
+#. translators: 1: ERROR tag 2: Item post ID
+#, php-format
+msgid "%1$s: %2$swp_insert_attachment failed."
+msgstr "%1$s: %2$swp_insert_attachment fout gegaan."
+
+#. translators: 1: Item post ID, 2: new thumbnail item ID
+#, php-format
+msgid "%1$sthumbnail generated as new item %2$s."
+msgstr "%1$sthumbnail aangemaakt als nieuw item %2$s."
+
+msgid "Generated Thumbnails"
+msgstr "Maak Thumbnails Aan"
+
+msgid ""
+"Pull down the Help menu and select Thumbnail Generation for setting details"
+msgstr ""
+"Kies het Help menu en selecteer Thumbnail Aanmaak voor instellingdetails"
+
+msgid "Width"
+msgstr "Breedte"
+
+msgid "Height"
+msgstr "Hoogte"
+
+msgid "Best Fit"
+msgstr "Best Passend"
+
+msgid "Page"
+msgstr "Pagina"
+
+msgid "Resolution"
+msgstr "Resolutie"
+
+msgid "Quality"
+msgstr "Kwaliteit"
+
+msgid "Existing Items"
+msgstr "Bestaande Items"
+
+msgid "Ignore"
+msgstr "Negeer"
+
+msgid "Delete"
+msgstr "Verwijder"
+
+msgid "Suffix"
+msgstr "Suffix"
+
+msgctxt "list_table_column"
+msgid "Extension"
+msgstr "Extensie"
+
+msgctxt "list_table_column"
+msgid "Icon Type"
+msgstr "Afbeelding Type"
+
+msgctxt "list_table_column"
+msgid "Source"
+msgstr "Bron"
+
+msgctxt "list_table_column"
+msgid "Status"
+msgstr "Status"
+
+msgctxt "list_table_column"
+msgid "WordPress Type"
+msgstr "WordPress Type"
+
+msgctxt "list_table_column"
+msgid "MLA Type"
+msgstr "MLA Type"
+
+msgctxt "list_table_column"
+msgid "Std. Source"
+msgstr "Std. Bron"
+
+msgctxt "list_table_column"
+msgid "Std. Icon Type"
+msgstr "Std. Afbeelding Type"
+
+msgid "Revert to standard item"
+msgstr "Terug naar standaard onderdeel"
+
+msgid "Revert to Standard"
+msgstr "Terug naar Standaard"
+
+msgid "Delete/Revert Custom"
+msgstr "Verwijder/Terug naar Custom"
+
+msgid "Select this entry"
+msgstr "Selecteer dit bericht"
+
+msgid "Select these entries"
+msgstr "Selecteer deze berichten"
+
+msgctxt "list_table_column"
+msgid "Slug"
+msgstr "Slug"
+
+msgctxt "list_table_column"
+msgid "Specification"
+msgstr "Specificatie"
+
+msgctxt "list_table_column"
+msgid "Post Mime"
+msgstr "Post Mime"
+
+msgctxt "list_table_column"
+msgid "Table View"
+msgstr "Tabel View"
+
+msgctxt "list_table_column"
+msgid "Singular Name"
+msgstr "Enkelvoud Naam"
+
+msgctxt "list_table_column"
+msgid "Plural Name"
+msgstr "Meervoud Naam"
+
+msgctxt "list_table_column"
+msgid "Order"
+msgstr "Volgorde"
+
+msgid "Duplicate translation created; update as desired."
+msgstr "Dubbele vertaling aangemaakt; update eventueel."
+
+msgid "Make media available in all languages"
+msgstr "Maak media beschikbaar in alle talen"
+
+msgid " WPML Media is not installed."
+msgstr " WPML Media is niet ge&iuml;nstalleerd."
+
+msgid " WPML Media is not active."
+msgstr " WPML Media is niet actief."
+
+#. translators: 1: - 4: page subheader values
+#, php-format
+msgid ""
+"In this tab you can find a number of options for controlling WPML-specific "
+"operations. Scroll down to find options for %1$s and %2$s. Be sure to click "
+"\"Save Changes\" at the bottom of the tab to save any changes you make."
+msgstr ""
+"In deze tab staan een aantal opties voor het besturen van WPML-specifieke "
+"operaties. Scroll naar beneden om opties te vinden voor %1$s en %2$s. Denk "
+"eraan om \"Sla Wijzigingen Op\" onderaan te klikken om de wijzigingen op te "
+"slaan."
+
+#, php-format
+msgid "Edit the %s translation"
+msgstr "Wijzig de %s vertaling"
+
+#, php-format
+msgid "Add translation to %s"
+msgstr "Voeg vertaling toe aan %s"
+
+msgid "Search Media"
+msgstr "Zoek Media"
+
+msgid "The Media Library Assistant cannot load."
+msgstr "De Media Library Assistant kan niet geladen worden."
+
+msgid "You must resolve these conflicts before this plugin can safely load."
+msgstr ""
+"U moet deze conflicten oplossen voordat de plugin veilig geladen kan worden."
+
+#. translators: Description of the plugin/theme
+msgid ""
+"Enhances the Media Library; powerful [mla_gallery], taxonomy support, IPTC/"
+"EXIF processing, bulk & quick edit actions and where-used reporting."
+msgstr ""
+"Verbetert de Media Biblbiotheek; uitgebreide [mla_gallery], taxonomie "
+"ondersteuning, IPTC/EXIF verwerking, bulk & snel bewerken acties en waar-"
+"gebruikt bepaling."
+
+#~ msgid "WARNING: MLA Viewer support may not be available"
+#~ msgstr "WAARSCHUWING: MLA Viewer ondersteuning kan niet beschikbaar zijn"
+
+#~ msgid "Enable enhanced \"checklist\" taxonomies"
+#~ msgstr "Kies uitgebreide \"checklist\" taxonomieën"
+
+#~ msgid "Enable \"bulk edit\" area"
+#~ msgstr "Activeer \"bulk edit\" gebied"
+
+#~ msgid ""
+#~ "Check this option to enable MLA-enhanced meta boxes in the \"ATTACHMENT "
+#~ "DETAILS\" pane.<br>&nbsp;&nbsp;This option is for any taxonomy that uses "
+#~ "a <strong>\"checklist-style\"</strong> meta box.</strong>"
+#~ msgstr ""
+#~ "Gebruik deze optie om MLA-uitgebreide meta boxen te activeren in het "
+#~ "\"ATTACHMENT DETAILS\" deel.<br>&nbsp;&nbsp;Deze optie is voor een "
+#~ "willekeurige taxonomie die de <strong>\"checklist-stijl\"</strong> meta "
+#~ "box gebruikt."
+
+#~ msgid "Attached"
+#~ msgstr "Gekoppeld"
+
+#~ msgid "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+#~ msgstr "%1$s: _execute_list_table_query $wp_filter = \"%2$s\"."
+
+#~ msgid "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+#~ msgstr "%1$s: _execute_list_table_query WP_Query = \"%2$s\"."
+
+#~ msgid "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+#~ msgstr "%1$s: _execute_list_table_query SQL_request = \"%2$s\"."
+
+#~ msgid "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+#~ msgstr "%1$s: mla_query_posts_search_filter = \"%2$s\"."
+
+#~ msgid "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+#~ msgstr "%1$s: mla_query_posts_where_filter = \"%2$s\"."
+
+#~ msgid "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+#~ msgstr "%1$s: mla_query_posts_join_filter = \"%2$s\"."
+
+#~ msgid "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+#~ msgstr "%1$s: mla_query_posts_orderby_filter = \"%2$s\"."
+
+#~ msgid "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+#~ msgstr "%1$s: mla_query_posts_clauses_filter = \"%2$s\"."
+
+#~ msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+#~ msgstr "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
+
+#~ msgctxt "error_log"
+#~ msgid "_parse_xmp_metadata xml_parse_into_struct failed."
+#~ msgstr "_parse_xmp_metadata xml_parse_into_struct is fout gegaan."
+
+#~ msgctxt "error_log"
+#~ msgid "_parse_xmp_metadata set option failed."
+#~ msgstr "_parse_xmp_metadata optie zetten is fout gegaan."
+
+#~ msgid "Map Custom Field Metadata"
+#~ msgstr "Vertaal Custom Veld Metadata"
+
+#~ msgid "Map IPTC/EXIF Metadata"
+#~ msgstr "Vertaal IPTC/EXIF Metadata"
+
+#~ msgid "?&nbsp;Search"
+#~ msgstr "?&nbsp;Zoek"
+
+#~ msgid "not supported"
+#~ msgstr "niet ondersteund"
+
+#~ msgid "Filter by Parent ID"
+#~ msgstr "Filter op Parent ID"
+
+#~ msgid "Filter by Author ID"
+#~ msgstr "Filter op Author ID"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Unattached"
+#~ msgstr "Ongekoppeld"
+
+#~ msgid "Edit single item"
+#~ msgstr "Bewerk een enkel onderdeel"
+
+#~ msgid "Item %1$d cancelled."
+#~ msgstr "Onderdeel %1$d gestopt."
+
+#~ msgctxt "error_log"
+#~ msgid "%1$s: MLA::_display_single_item \\$page_template_array = \"%2$s\""
+#~ msgstr "%1$s: MLA::_display_single_item \\$page_template_array = \"%2$s\""
+
+#~ msgid "File name"
+#~ msgstr "Bestandsnaam"
+
+#~ msgid "File type"
+#~ msgstr "Bestandstype"
+
+#~ msgid "Upload date"
+#~ msgstr "Upload datum"
+
+#~ msgid "Dimensions"
+#~ msgstr "Dimensies"
+
+#~ msgid "required"
+#~ msgstr "verplicht"
+
+#~ msgid "Must be unique; will be validated."
+#~ msgstr "Moet uniek zijn; zal gevalideerd worden."
+
+#~ msgid "Alternate text for the image, e.g. &#8220;The Mona Lisa&#8221;"
+#~ msgstr ""
+#~ "Alternatieve tekst voor de afbeelding, bijv. &#8220;De Mona Lisa&#8221;"
+
+#~ msgid "ID, type and title of parent, if any."
+#~ msgstr "ID, type en titel van parent, zo die bestaat."
+
+#~ msgid "File URL"
+#~ msgstr "Bestand URL"
+
+#~ msgid "Location of the uploaded file."
+#~ msgstr "Locatie van het geüploade bestand."
+
+#~ msgid "Image Metadata"
+#~ msgstr "Afbeelding Metadata"
+
+#~ msgctxt "tag delimiter"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgctxt "upload_list_table_view_singular"
+#~ msgid "All"
+#~ msgstr "Alle"
+
+#~ msgctxt "upload_list_table_view_plural"
+#~ msgid "All"
+#~ msgstr "Alle"
+
+#~ msgctxt "upload_list_table_view_singular"
+#~ msgid "Active"
+#~ msgstr "Actieve"
+
+#~ msgctxt "upload_list_table_view_plural"
+#~ msgid "Active"
+#~ msgstr "Actieve"
+
+#~ msgctxt "upload_list_table_view_singular"
+#~ msgid "Inactive"
+#~ msgstr "Inactieve"
+
+#~ msgctxt "upload_list_table_view_plural"
+#~ msgid "Inactive"
+#~ msgstr "Inactieve"
+
+#~ msgctxt "upload_list_table_view_singular"
+#~ msgid "WordPress"
+#~ msgstr "WordPress"
+
+#~ msgctxt "upload_list_table_view_plural"
+#~ msgid "WordPress"
+#~ msgstr "WordPress"
+
+#~ msgctxt "upload_list_table_view_singular"
+#~ msgid "MLA"
+#~ msgstr "MLA"
+
+#~ msgctxt "upload_list_table_view_plural"
+#~ msgid "MLA"
+#~ msgstr "MLA"
+
+#~ msgctxt "upload_list_table_view_singular"
+#~ msgid "Custom"
+#~ msgstr "Custom"
+
+#~ msgctxt "upload_list_table_view_plural"
+#~ msgid "Custom"
+#~ msgstr "Custom"
+
+#~ msgid "extension"
+#~ msgstr "extensie"
+
+#~ msgid "style template"
+#~ msgstr "stijl template"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "All"
+#~ msgstr "Alle"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "All"
+#~ msgstr "Alle"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Image"
+#~ msgstr "Afbeelding"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Images"
+#~ msgstr "Afbeeldingen"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Text"
+#~ msgstr "Tekst"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Text"
+#~ msgstr "Tekst"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Application"
+#~ msgstr "Applicatie"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Applications"
+#~ msgstr "Applicaties"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Unattached"
+#~ msgstr "Ongekoppeld"
+
+#~ msgctxt "post_mime_types_singular"
+#~ msgid "Trash"
+#~ msgstr "Prullenbak"
+
+#~ msgctxt "post_mime_types_plural"
+#~ msgid "Trash"
+#~ msgstr "Prullenbak"
+
+#~ msgid "Media Library Assistant Settings"
+#~ msgstr "Media Library Assistant Instellingen"
+
+#~ msgid "Media Library Assistant - Error"
+#~ msgstr "Media Library Assistant - Fout"
