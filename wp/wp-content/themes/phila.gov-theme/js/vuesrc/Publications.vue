@@ -1,59 +1,45 @@
 <template>
-  <div id="archives">
+  <div id="publications">
     <form v-on:submit.prevent="onSubmit">
       <div class="search">
-        <input id="post-search" type="text" name="search" placeholder="Search by author, title, or keyword" class="search-field" ref="search-field"
+        <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
     </form>
-      <div id="filter-results" class="bg-ghost-gray pam">
+    <div id="filter-results" class="bg-ghost-gray pam">
       <div class="h5">Filter results</div>
-      <fieldset>
-        <div class="grid-x grid-margin-x mbl">
-          <div v-for="(value, key) in templates" class="cell medium-auto">
-            <input type="radio"
-            v-model="checkedTemplates"
-            v-bind:value="key"
-            v-bind:name="key"
-            v-bind:id="key"
-            @click="onSubmit" />
-            <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
+        <div class="grid-x grid-margin-x">
+          <div class="cell medium-4 small-11">
+            <datepicker
+            name="startDate"
+            placeholder="Start date"
+            v-on:closed="runDateQuery"
+            v-model="state.startDate"></datepicker>
+          </div>
+          <div class="cell medium-1 small-2 mts">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+          <div class="cell medium-4 small-11">
+            <datepicker placeholder="End date"
+            name="endDate"
+            v-on:closed="runDateQuery"
+            v-model="state.endDate"></datepicker>
+          </div>
+          <div class="cell medium-9 small-24 auto filter-by-owner">
+            <v-select
+            ref="categorySelect"
+            label="slang_name"
+            placeholder="All departments"
+            :options="categories"
+            :on-change="filterByCategory">
+            </v-select>
+          </div>
+          <div class="cell medium-6 small-24">
+            <a class="button content-type-featured full" @click="reset">Clear filters</a>
           </div>
         </div>
-      </fieldset>
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-4 small-11">
-          <datepicker
-          name="startDate"
-          placeholder="Start date"
-          v-on:closed="runDateQuery"
-          v-model="state.startDate"></datepicker>
-        </div>
-        <div class="cell medium-1 small-2 mts">
-          <i class="fa fa-arrow-right"></i>
-        </div>
-        <div class="cell medium-4 small-11">
-          <datepicker placeholder="End date"
-          name="endDate"
-          v-on:closed="runDateQuery"
-          v-model="state.endDate"></datepicker>
-        </div>
-        <div class="cell medium-9 small-24 auto filter-by-owner">
-          <v-select
-          ref="categorySelect"
-          label="slang_name"
-          placeholder="All departments"
-          :value="parseCategory"
-          :options="categories"
-          :on-change="filterByCategory">
-          </v-select>
-        </div>
-        <div class="cell medium-6 small-24">
-          <a class="button content-type-featured full" @click="reset">Clear filters</a>
-        </div>
       </div>
-    </div>
     <div v-show="loading" class="mtm center">
       <i class="fa fa-spinner fa-spin fa-3x"></i>
     </div>
@@ -64,30 +50,30 @@
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
       </thead>
-      <paginate name="posts"
-        :list="posts"
+      <paginate name="documents"
+        :list="documents"
         class="paginate-list"
         tag="tbody"
         :per="40">
-        <tr v-for="post in paginated('posts')"
-        :key="post.id"
+        <tr v-for="document in paginated('documents')"
+        :key="document.id"
         class="vue-clickable-row"
-        v-on:click.stop.prevent="goToPost(post.link)">
+        v-on:click.stop.prevent="goToDoc(document.link)">
           <td class="title">
-            <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
-              {{ post.title }}
+            <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
+              {{ document.title }}
             </a>
           </td>
-          <td class="date">{{ post.date  | formatDate }}</td>
+          <td class="date">{{ document.date  | formatDate }}</td>
           <td class="categories">
-            <span v-for="(category, i) in post.categories">
-              <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
+            <span v-for="(category, i) in document.categories">
+              <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
             </span>
           </td>
         </tr>
       </paginate>
     </table>
-    <paginate-links for="posts"
+    <paginate-links for="documents"
     :limit="3"
     :show-step-links="true"
     :step-links="{
@@ -103,49 +89,44 @@ import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
 import Datepicker from 'vuejs-datepicker';
+import Search from './components/phila-search.vue'
 
-const endpoint = '/wp-json/the-latest/v1/'
+
+const pubsEndpoint = '/wp-json/publications/v1/'
 
 let state = {
   date: new Date()
 }
 
 export default {
-  name: 'archives',
+  name: 'publications',
   components: {
     vSelect,
     Datepicker,
+    'phila-search': Search
   },
   data: function() {
     return{
-      posts: [],
+      documents: [],
       categories: [{ }],
 
       selectedCategory: '',
 
-      templates: {
-        featured : 'Featured',
-        action_guide: 'Action guides',
-        post : 'Posts',
-        press_release : 'Press releases'
-      },
-      checkedTemplates: this.$route.query.template,
-
+      search: '',
       searchedVal: '',
 
       loading: false,
       emptyResponse: false,
       failure: false,
 
-      paginate: ['posts'],
+      paginate: ['documents'],
 
       state: {
         startDate: '',
         endDate: ''
       },
 
-      queriedTemplate: this.$route.query.template,
-      queriedCategory: this.$route.query.category
+      //queriedCategory: this.$route.query.category
 
     }
   },
@@ -157,37 +138,31 @@ export default {
     }
   },
   mounted: function () {
-    this.getAllPosts()
+    this.getAllDocs()
     this.getDropdownCategories()
     this.loading = true
   },
   methods: {
-    getAllPosts: function () {
+    getAllDocs: function () {
       this.loading = true
-      //TODO use in instead of undefined
-      if (this.queriedCategory == undefined ) {
-      axios.get(endpoint + 'archives', {
+
+      axios.get(pubsEndpoint + 'archives', {
         params: {
-          's': this.searchedVal,
-          'template': this.checkedTemplates,
-          'category': this.selectedCategory,
           'count': -1,
-          'start_date': this.state.startDate,
-          'end_date': this.state.endDate,
         }
       })
       .then(response => {
-        this.posts = response.data
+        this.documents = response.data
         this.successfulResponse
       })
       .catch(e => {
         this.failure = true
         this.loading = false
       })
-    }
+
     },
     getDropdownCategories: function () {
-      axios.get(endpoint + 'categories')
+      axios.get('/wp-json/the-latest/v1/categories')
       .then(response => {
         this.categories = response.data
       })
@@ -195,17 +170,16 @@ export default {
         this.categories = 'Sorry, there was a problem.'
       })
     },
-    goToPost: function (link){
+    goToDoc: function (link){
       window.location.href = link
-    },
+     },
     onSubmit: function (event) {
       this.loading = true
 
       this.$nextTick(function () {
-        axios.get(endpoint + 'archives', {
+        axios.get(pubsEndpoint + 'archives', {
           params : {
             's': this.searchedVal,
-            'template': this.checkedTemplates,
             'category': this.selectedCategory,
             'count': -1,
             'start_date': this.state.startDate,
@@ -213,7 +187,7 @@ export default {
             }
           })
           .then(response => {
-            this.posts = response.data
+            this.documents = response.data
             this.successfulResponse
           })
           .catch(e => {
@@ -228,13 +202,13 @@ export default {
       //console.log(this.$refs.categorySelect.$el.textContent)
       window.location = window.location.pathname;
       /*this.selectedCategory = ''
-      axios.get(endpoint + 'archives', {
+      axios.get(pubsEndpoint + 'archives', {
        params : {
           'count': -1
         }
       })
         .then(response => {
-          this.posts = response.data
+          this.documents = response.data
           this.loading = false
           this.searchedVal = ''
           this.checkedTemplates = ''
@@ -254,18 +228,17 @@ export default {
 
       this.loading = true
 
-      axios.get(endpoint + 'archives', {
+      axios.get(pubsEndpoint + 'archives', {
         params : {
           's': this.searchedVal,
           'category': this.selectedCategory,
-          'template': this.checkedTemplates,
           'count': -1,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
           }
         })
         .then(response => {
-          this.posts = response.data
+          this.documents = response.data
           this.successfulResponse
         })
         .catch(e => {
@@ -274,64 +247,49 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
+      this.selectedCategory = selectedVal
+
       this.$nextTick(function () {
 
-      this.loading = true
-      this.selectedCategory = selectedVal
-      axios.get(endpoint + 'archives', {
-        params : {
-          's': this.searchedVal,
-          'template': this.checkedTemplates,
-          'category': this.selectedCategory,
-          'count': -1,
-          'start_date': this.state.startDate,
-          'end_date': this.state.endDate,
-          }
+        this.loading = true
+
+        axios.get(pubsEndpoint + 'archives', {
+          params : {
+            's': this.searchedVal,
+            'category': this.selectedCategory.id,
+            'count' : -1,
+            'start_date': this.state.startDate,
+            'end_date': this.state.endDate,
+            }
+          })
+          .then(response => {
+            this.loading = false
+            //Don't let empty value change the rendered view
+            if ( 'id' in selectedVal ){
+              this.documents = response.data
+            }
+            this.successfulResponse
+          })
+          .catch(e => {
+            this.failure = true
+            this.loading = false
         })
-        .then(response => {
-          this.loading = false
-          //Don't let empty value change the rendered view
-          if ('id' in selectedVal && this.queriedCategory != ''){
-            this.posts = response.data
-          }
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
-          this.loading = false
       })
-    })
     },
   },
   computed:{
     successfulResponse: function(){
-      if (this.posts.length == 0) {
+      if (this.documents.length == 0) {
         this.emptyResponse = true
         this.loading = false
         this.failure = false
       }else{
         this.emptyResponse = false
-        this.loading = false
         this.failure = false
       }
     },
-    parseCategory: function(){
-      let c = this.$route.query.category
-      let catName = {}
-      if (c) {
-        let mycats = this.categories
-        this.categories.forEach(function(el){
-          if (c == el.id) {
-            catName = {
-              id: el.id,
-              slang_name: el.slang_name
-            }
-          }
-        })
-        return catName
-      }
-    },
   },
+
 }
 </script>
 
