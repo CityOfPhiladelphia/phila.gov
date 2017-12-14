@@ -51,6 +51,9 @@ require $dir. '/admin/meta-boxes/tax-detail-fields.php';
 require $dir. '/admin/meta-boxes/v2-departments.php';
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 
+require $dir. 'admin/programs-initiatives/class-phila-gov-custom-post-type.php';
+require $dir. 'admin/programs-initiatives/class-phila-gov-templates.php';
+
 require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/pullquote.php';
