@@ -217,11 +217,10 @@ export default {
            }
           }
           this.successfulResponse
-          this.loading = false
-
         })
         .catch( e => {
-            this.failure = true
+          this.failure = true
+          this.loading = false
         })
 
     },
@@ -239,12 +238,12 @@ export default {
             }
           })
           .then(response => {
-            this.loading = false
             this.events = response.data
             this.successfulResponse
           })
           .catch(e => {
             this.failure = true
+            this.loading = false
         })
       })
     },
@@ -311,7 +310,7 @@ export default {
 
         })
         .catch( e => {
-            this.failure = true
+          this.failure = true
         })
 
     },
@@ -342,8 +341,12 @@ export default {
     successfulResponse: function(){
       if (this.events.length == 0) {
         this.emptyResponse = true
+        this.loading = false
+        this.failure = false
       }else{
         this.emptyResponse = false
+        this.loading = false
+        this.failure = false
       }
     },
   },

@@ -152,12 +152,12 @@ export default {
         }
       })
       .then(response => {
-        this.loading = false
         this.documents = response.data
         this.successfulResponse
       })
       .catch(e => {
         this.failure = true
+        this.loading = false
       })
 
     },
@@ -187,12 +187,12 @@ export default {
             }
           })
           .then(response => {
-            this.loading = false
             this.documents = response.data
             this.successfulResponse
           })
           .catch(e => {
             this.failure = true
+            this.loading = false
         })
       })
     },
@@ -238,12 +238,12 @@ export default {
           }
         })
         .then(response => {
-          this.loading = false
           this.documents = response.data
           this.successfulResponse
         })
         .catch(e => {
           this.failure = true
+          this.loading = false
       })
     },
     filterByCategory: function(selectedVal){
@@ -272,6 +272,7 @@ export default {
           })
           .catch(e => {
             this.failure = true
+            this.loading = false
         })
       })
     },
@@ -280,8 +281,11 @@ export default {
     successfulResponse: function(){
       if (this.documents.length == 0) {
         this.emptyResponse = true
+        this.loading = false
+        this.failure = false
       }else{
         this.emptyResponse = false
+        this.failure = false
       }
     },
   },
