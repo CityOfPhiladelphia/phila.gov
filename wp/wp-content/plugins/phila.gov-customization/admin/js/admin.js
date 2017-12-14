@@ -45,10 +45,6 @@ jQuery(document).ready(function($) {
   //no one can clone rn
   $('#department-content-blocks .add-clone').css('visibility', 'hidden');
 
-  if ( $('.misc-pub-attachment input[value*=".pdf"]').val() ) {
-    $('.post-type-attachment #categorydiv input').prop('disabled', true);
-    $('.post-type-attachment #publication_typediv input').prop('disabled', true);
-  }
   if ( typeof typenow === 'undefined' ) {
     return;
 
@@ -78,7 +74,7 @@ jQuery(document).ready(function($) {
           'required': true
         });
 
-        // HOW TO VALIDATE A REQUIRED TAXONOMY! 
+        // HOW TO VALIDATE A REQUIRED TAXONOMY!
         // jQuery( "input[name='tax_input[service_type][]']" ).rules( 'add', {
         //       'required': true
         //     }

@@ -1,0 +1,183 @@
+@charset "utf-8";
+
+/**
+ * CSS Document
+ *
+ * This file contains styling attributes for the Media Manager Modal Window,
+ * when used in the "front end", e.g., the Beaver Builder plugin.
+ * Adapted from /wp-admin/css/edit.css and common.css.
+ */
+
+.tagchecklist span a:before {
+	background: none;
+	color: #b4b9be;
+	content: "\f153";
+	display: block;
+	font: normal 16px/20px dashicons;
+	speak: none;
+	height: 20px;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.tagchecklist span a:before {
+	margin: 1px 0;
+}
+
+.tagchecklist span a:hover:before {
+	color: #c00;
+}
+
+.tagchecklist {
+	margin-right: 14px;
+	font-size: 12px;
+	overflow: auto;
+}
+
+.tagchecklist br {
+	display: none;
+}
+
+.tagchecklist strong {
+	margin-right: -8px;
+	position: absolute;
+}
+
+.tagchecklist span {
+	margin-left: 25px;
+	display: block;
+	float: right;
+	font-size: 13px;
+	line-height: 1.8em;
+	cursor: default;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tagchecklist span a {
+	margin: 1px 0 0 -17px;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	display: block;
+	float: right;
+	text-indent: 0;
+	overflow: hidden;
+	position: absolute;
+}
+
+.mla-taxonomy-field h4 {
+	font-size: 1em;
+	margin: 1.33em 0;
+}
+
+.mla-taxonomy-field p {
+	font-size: 13px;
+	line-height: 1.5;
+	margin: 1em 0;
+}
+
+.category-add input[type="text"],
+.category-add select {
+	width: 100%;
+	max-width: 260px;
+	vertical-align: baseline;
+}
+
+#side-sortables .category-add input[type="text"],
+#side-sortables .category-add select {
+	margin: 0 0 1em;
+}
+
+ul.category-tabs li,
+#side-sortables .add-menu-item-tabs li,
+.wp-tab-bar li {
+	display: inline;
+	line-height: 1.35em;
+}
+
+.no-js .category-tabs li.hide-if-no-js {
+	display: none;
+}
+
+.category-tabs a,
+#side-sortables .add-menu-item-tabs a,
+.wp-tab-bar a {
+	text-decoration: none;
+}
+
+ul.category-tabs,
+ul.add-menu-item-tabs,
+ul.wp-tab-bar {
+	margin-top: 12px;
+}
+
+ul.category-tabs li,
+ul.add-menu-item-tabs li {
+	border: solid 1px transparent;
+	position: relative;
+}
+
+ul.category-tabs li.tabs,
+ul.add-menu-item-tabs li.tabs,
+.wp-tab-active {
+	border: 1px solid #ddd;
+	border-bottom-color: #fdfdfd;
+	background-color: #fdfdfd;
+}
+
+ul.category-tabs li,
+ul.add-menu-item-tabs li,
+ul.wp-tab-bar li {
+	padding: 3px 5px 5px;
+}
+
+.wp-tab-panel,
+.categorydiv div.tabs-panel,
+.customlinkdiv div.tabs-panel,
+.posttypediv div.tabs-panel,
+.taxonomydiv div.tabs-panel {
+	min-height: 42px;
+	max-height: 200px;
+	overflow: auto;
+	padding: 0 0.9em;
+	border: solid 1px #ddd;
+	background-color: #fdfdfd;
+}
+
+div.tabs-panel-active {
+	display:block;
+}
+
+div.tabs-panel-inactive {
+	display:none;
+}
+
+#front-page-warning,
+#front-static-pages ul,
+ul.export-filters,
+.inline-editor ul.cat-checklist ul,
+.categorydiv ul.categorychecklist ul,
+.customlinkdiv ul.categorychecklist ul,
+.posttypediv ul.categorychecklist ul,
+.taxonomydiv ul.categorychecklist ul {
+	margin-right: 18px;
+}
+
+ul.categorychecklist li {
+	margin: 0;
+	padding: 0;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+.categorydiv .tabs-panel,
+.customlinkdiv .tabs-panel,
+.posttypediv .tabs-panel,
+.taxonomydiv .tabs-panel {
+	border-width: 3px;
+	border-style: solid;
+}
