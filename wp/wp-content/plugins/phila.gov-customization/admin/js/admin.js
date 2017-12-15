@@ -194,4 +194,29 @@ jQuery(document).ready(function($) {
 
   }
 
+  if($('body').hasClass('nav-menus-php')){
+    $.ajaxSetup({
+      success: function(data){
+        console.log(data);
+      },
+      dataFilter: function (data) {
+        var $data = $(data);
+        var $itemType = $data.find('.menu-item-object');
+        if ($itemType.length > 0){
+          // console.log($itemType);
+          if ($itemType[0].value == "department_page") {
+            var $checkboxes = $data.find('.menu-item-checkbox');
+            if ($checkboxes.length > 0){
+              var deptPageIds = [];
+              $checkboxes.each(function(){
+                deptPageIds.push($(this).val());
+              });
+              //Stopped here. Need to make ajax request for each id to grab parent.
+              console.log(deptPageIds);
+            }
+          }
+        }
+      }
+    });  
+  }
 });
