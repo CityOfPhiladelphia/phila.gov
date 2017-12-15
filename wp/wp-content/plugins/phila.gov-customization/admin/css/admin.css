@@ -38,7 +38,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 .attachment-info .view-attachment,
 /*No comment columns*/
 #comments,
-.comments
+.comments,
+.column-comments
 {
   display: none !important;
 }
