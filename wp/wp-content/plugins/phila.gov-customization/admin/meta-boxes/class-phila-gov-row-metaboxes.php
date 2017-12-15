@@ -18,7 +18,7 @@ class Phila_Gov_Row_Metaboxes {
       Phila_Gov_Row_Select_Options::phila_metabox_grid_options(),
       Phila_Gov_Row_Metaboxes::phila_metabox_full_options(),
       Phila_Gov_Row_Select_Options::phila_metabox_thirds_options(),
-      //  $metabox_half_options ),
+      Phila_Gov_Row_Select_Options::phila_metabox_half_options(),
       ),
     );
   }
@@ -180,4 +180,68 @@ class Phila_Gov_Row_Metaboxes {
      );
    }
 
+   // 1/2 x 1/2: Column 1 Options
+  public static function phila_metabox_half_option_one( ){
+    return array(
+    'id' => 'phila_half_col_1',
+    'type' => 'group',
+    'fields' => array(
+       array(
+         'name' => 'Column 1 <br/><small>(1/2 width column)</small>',
+         'id'   => 'phila_half_col_1_option',
+         'desc'  => 'Choose to display recent blog posts or custom markup text.',
+         'type' => 'select',
+         'placeholder' => 'Select...',
+         'options' => array(
+           'phila_custom_text' => 'Custom Text',
+           'phila_pullquote' => 'Pullquote',
+           ),
+       ),
+       array(
+         'id'   => 'phila_custom_text',
+         'type' => 'group',
+         'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
+         'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
+       ),
+       array(
+         'id'   => 'phila_pullquote',
+         'type' => 'group',
+         'visible' => array('phila_half_col_1_option', '=', 'phila_pullquote'),
+         'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_pullquote(),
+       ),
+     ),
+   );
+  }
+   // 1/2 x 1/2: Column 1 Options
+   public static function phila_metabox_half_option_two( ){
+    return array(
+     'id' => 'phila_half_col_2',
+     'type' => 'group',
+     'fields' => array(
+        array(
+          'name' => 'Column 2 <br/><small>(1/2 width column)</small>',
+          'id'   => 'phila_half_col_2_option',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
+          'type' => 'select',
+          'placeholder' => 'Select...',
+          'options' => array(
+            'phila_custom_text' => 'Custom Text',
+            'phila_pullquote' => 'Pullquote',
+            ),
+        ),
+        array(
+          'id'   => 'phila_custom_text',
+          'type' => 'group',
+          'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
+          'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
+        ),
+        array(
+          'id'   => 'phila_pullquote',
+          'type' => 'group',
+          'visible' => array('phila_half_col_2_option', '=', 'phila_pullquote'),
+          'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_pullquote(),
+        ),
+      ),
+    );
+  }
 }
