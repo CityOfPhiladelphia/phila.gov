@@ -40,18 +40,18 @@ require $dir. '/admin/define-roles.php';
 require $dir. '/admin/rest-additions.php';
 require $dir. '/admin/tiny-mce.php';
 
+require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-item-meta-desc.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-post.php';
-require $dir. '/admin/meta-boxes/class-phila-gov-row-meta-options.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-row-select-options.php';
+require $dir. '/admin/meta-boxes/class-phila-gov-row-metaboxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-service-update-pages.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-standard-metaboxes.php';
 require $dir. '/admin/meta-boxes/page-template-contact-us.php';
 require $dir. '/admin/meta-boxes/tax-detail-fields.php';
 require $dir. '/admin/meta-boxes/v2-departments.php';
-require $dir. '/admin/meta-boxes/meta-boxes.php';
 
 require $dir. 'admin/programs-initiatives/class-phila-gov-custom-post-type.php';
 require $dir. 'admin/programs-initiatives/class-phila-gov-templates.php';
