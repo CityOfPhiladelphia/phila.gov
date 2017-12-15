@@ -206,7 +206,7 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_wysiwyg(){
+  public static function phila_metabox_v2_wysiwyg($section_name = 'Section title', $wysiwyg_desc = ''){
 
     //WYSIWYG with Title
     return array(
@@ -216,13 +216,14 @@ class Phila_Gov_Standard_Metaboxes {
 
       'fields'  => array(
         array(
-          'name'  => 'Section Title',
+          'name'  => $section_name,
           'id'  => 'phila_wysiwyg_title',
           'type'  => 'text'
         ),
         array(
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
+          'desc'  => $wysiwyg_desc,
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
         )
       )
