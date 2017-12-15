@@ -33,3 +33,67 @@
 .photo-callout-block__txt-btn{
     margin-top: 20px;
 }
+
+
+
+/* =======================================================================
+  Featured Activities
+========================================================================== */
+#ppr-feat-activites__grid{
+
+}
+.ppr-feat-activity{
+    border: 1px solid black;
+    padding: 25px 20px;
+    position: relative;
+    h3{
+        font-weight: 700;
+        padding-bottom:10px;
+    }
+    & > *:not(.ppr-feat-activity__loader){
+        transition: all 0.5s ease;
+        opacity: 0;
+    }
+    &.loaded{
+        *{opacity: 1;}
+    }
+}
+.ppr-feat-activity__desc{
+    margin-bottom:0;
+}
+.ppr-feat-activity__learn-more{
+    margin: 0;
+    padding-top: 5px;
+}
+
+.ppr-feat-activity__location{
+    width: 100%;
+    margin: 20px 0 30px 0;
+    * {color: color(dark-ben-franklin);}
+    .fa-map-marker{ padding-right: 10px; }
+}
+
+
+.ppr-feat-activity__location-header{
+    margin: 0;
+    padding:0;
+    font-weight: 700;
+}
+
+.ppr-feat-activity__meta{
+    h5{
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.ppr-feat-activity__loader{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) scale(1.7);
+    path {
+        fill: color(light-blue) !important;
+    }
+}
+
