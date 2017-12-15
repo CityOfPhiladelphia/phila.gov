@@ -4,11 +4,11 @@
  *
  */
 
-if ( class_exists( "Phila_Gov_Row_Select_Metaboxes" ) ){
-  $admin_menu_labels = new Phila_Gov_Row_Select_Metaboxes();
+if ( class_exists( "Phila_Gov_Row_Select_Options" ) ){
+  $admin_menu_labels = new Phila_Gov_Row_Select_Options();
 }
 
-class Phila_Gov_Row_Select_Metaboxes {
+class Phila_Gov_Row_Select_Options {
 
   public static function phila_metabox_full_options_select(){
     return array(
@@ -46,4 +46,24 @@ class Phila_Gov_Row_Select_Metaboxes {
     );
   }
 
+  // 2/3 x 1/3 Options
+  public static function phila_metabox_thirds_options( ){
+
+    return array(
+      'name' => '2/3 x 1/3 Options',
+      'id'   => 'phila_two_thirds_options',
+      'type' => 'group',
+      'revision' => true,
+
+      'hidden' => array(
+        'phila_grid_options',
+        '!=',
+        'phila_grid_options_thirds'
+    ),
+      'fields' => array(
+        Phila_Gov_Row_Metaboxes::phila_metabox_thirds_option_one(),
+        Phila_Gov_Row_Metaboxes::phila_metabox_thirds_option_two(),
+      ),
+    );
+  }
 }

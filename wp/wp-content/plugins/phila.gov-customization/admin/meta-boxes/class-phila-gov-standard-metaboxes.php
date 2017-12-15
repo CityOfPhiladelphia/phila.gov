@@ -728,6 +728,178 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  // Connect Panel
+  public static function phila_meta_var_connect(){
+
+    return array(
+      array(
+       'name' => 'Connect Panel',
+       'id'   => 'phila_connect_description',
+       'type' => 'custom_html',
+       'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
+       <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
+      ),
+      array(
+        'id' => 'phila_connect_social',
+        'type' => 'group',
+        // List of sub-fields
+        'fields' => array(
+          array(
+            'type' => 'heading',
+            'name' => 'Social',
+          ),
+          array(
+           'name' => 'Facebook URL',
+           'id'   => 'phila_connect_social_facebook',
+           'type' => 'url',
+           'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+          ),
+          array(
+           'name' => 'Twitter URL',
+           'id'   => 'phila_connect_social_twitter',
+           'type' => 'url',
+           'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+          ),
+          array(
+           'name' => 'Instagram URL',
+           'id'   => 'phila_connect_social_instagram',
+           'type' => 'url',
+           'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+          ),
+        ),
+      ),
+      array(
+        'id' => 'phila_connect_address',
+        'type' => 'group',
+        // List of sub-fields
+        'fields' => array(
+          array(
+            'type' => 'heading',
+            'name' => 'Address',
+          ),
+          array(
+           'name' => 'Street Address 1',
+           'id'   => 'phila_connect_address_st_1',
+           'type' => 'text',
+          ),
+          array(
+           'name' => 'Street Address 2',
+           'id'   => 'phila_connect_address_st_2',
+           'type' => 'text',
+          ),
+          array(
+           'name' => 'City',
+           'id'   => 'phila_connect_address_city',
+           'type' => 'text',
+           'std' => 'Philadelphia',
+          ),
+          array(
+           'name' => 'State',
+           'id'   => 'phila_connect_address_state',
+           'type' => 'text',
+           'std' => 'PA',
+          ),
+          array(
+           'name' => 'Zip',
+           'id'   => 'phila_connect_address_zip',
+           'type' => 'text',
+           'std' => '19107',
+          ),
+        ),
+      ),
+      array(
+        'id' => 'phila_connect_general',
+        'type' => 'group',
+        // List of sub-fields
+        'fields' => array(
+          array(
+            'type' => 'heading',
+            'name' => 'Contact',
+          ),
+          array(
+             'name' => 'Phone',
+             'id'   => 'phila_connect_phone',
+             'type' => 'phone',
+             'desc' => '(###)-###-####',
+           ),
+          array(
+            'name' => 'Fax',
+            'id'   => 'phila_connect_fax',
+            'type' => 'phone',
+            'desc' => '(###)-###-####',
+          ),
+          array(
+            'name' => 'Email',
+            'id'   => 'phila_connect_email',
+            'type' => 'email',
+            'desc' => 'example@phila.gov',
+          ),
+        ),
+      ),
+      array(
+        'id' => 'phila_connect_include_cta',
+        'desc' => 'Include optional call to action button?',
+        'type' => 'checkbox',
+      ),
+      array(
+        'name' => 'Call to Action Button',
+        'id' => 'phila_connect_cta',
+        'type' => 'group',
+        'hidden' => array( 'phila_connect_include_cta', '!=', true ),
+
+        // List of sub-fields
+        'fields' => array(
+          array(
+            'name' => 'Title',
+            'id' => 'phila_connect_cta_title',
+            'type' => 'text',
+          ),
+          array(
+            'name' => 'URL',
+            'id' => 'phila_connect_cta_url',
+            'type' => 'url',
+          ),
+          array(
+            'name' => 'Summary',
+            'id' => 'phila_connect_cta_summary',
+            'type' => 'textarea',
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Custom Featured Content
+  public static function phila_meta_var_custom_feature(){
+
+    return array(
+      array(
+        'name' => 'Feature Title',
+        'id' => 'phila_feature_title',
+        'type' => 'text',
+      ),
+      array(
+        'name' => 'Feature Image',
+        'id' => 'phila_feature_image',
+        'type' => 'file_input',
+      ),
+      array(
+        'name' => 'Feature Text',
+        'id' => 'phila_feature_text',
+        'type' => 'textarea',
+      ),
+      array(
+        'name' => 'Feature URL Text',
+        'id' => 'phila_feature_url_text',
+        'type' => 'text',
+      ),
+      array(
+        'name' => 'URL',
+        'id' => 'phila_feature_url',
+        'type' => 'url',
+      ),
+    );
+  }
 
 
 }//end Class
