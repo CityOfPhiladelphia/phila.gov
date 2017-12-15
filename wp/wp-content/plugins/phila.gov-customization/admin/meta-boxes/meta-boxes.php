@@ -1135,21 +1135,6 @@ $meta_var_programs_initiatives_images = array(
 );
 
 
-
-// Pullquote
-$meta_var_pullquote = array(
-  array(
-    'name' => 'Quote',
-    'id'   => 'phila_quote',
-    'type' => 'textarea',
-  ),
-  array(
-    'name' => 'Attribution',
-    'id'   => 'phila_attribution',
-    'type' => 'text',
-  ),
-);
-
 //Clonable WYSIWYG with title
 $meta_var_wysiwyg_multi = array(
   'id'  =>  'phila_cloneable_wysiwyg',
@@ -1226,104 +1211,6 @@ $meta_did_you_know = array(
     ),
   )
 );
-
-
-/**
-*
-* Begin Full Width Column MetaBox content
-*
-**/
-
-/**
-*
-* Begin 2/3 x 1/3 Column MetaBox content
-*
-**/
-
-
-/**
-*
-* Begin 1/2 x 1/2 Column MetaBox content
-*
-**/
-
-// 1/2 x 1/2: Column 1 Options
-$metabox_half_option_one = array(
- 'id' => 'phila_half_col_1',
- 'type' => 'group',
- 'fields' => array(
-    array(
-      'name' => 'Column 1 <br/><small>(1/2 width column)</small>',
-      'id'   => 'phila_half_col_1_option',
-      'desc'  => 'Choose to display recent blog posts or custom markup text.',
-      'type' => 'select',
-      'placeholder' => 'Select...',
-      'options' => array(
-        'phila_custom_text' => 'Custom Text',
-        'phila_pullquote' => 'Pullquote',
-        ),
-    ),
-    array(
-      'id'   => 'phila_custom_text',
-      'type' => 'group',
-      'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-    ),
-    array(
-      'id'   => 'phila_pullquote',
-      'type' => 'group',
-      'visible' => array('phila_half_col_1_option', '=', 'phila_pullquote'),
-      'fields' => $meta_var_pullquote,
-    ),
-  ),
-);
-
-// 1/2 x 1/2: Column 1 Options
-$metabox_half_option_two = array(
-  'id' => 'phila_half_col_2',
-  'type' => 'group',
-  'fields' => array(
-     array(
-       'name' => 'Column 2 <br/><small>(1/2 width column)</small>',
-       'id'   => 'phila_half_col_2_option',
-       'desc'  => 'Choose to display recent blog posts or custom markup text.',
-       'type' => 'select',
-       'placeholder' => 'Select...',
-       'options' => array(
-         'phila_custom_text' => 'Custom Text',
-         'phila_pullquote' => 'Pullquote',
-         ),
-     ),
-     array(
-       'id'   => 'phila_custom_text',
-       'type' => 'group',
-       'visible' => array('phila_half_col_2_option', '=', 'phila_custom_text'),
-       'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-     ),
-     array(
-       'id'   => 'phila_pullquote',
-       'type' => 'group',
-       'visible' => array('phila_half_col_2_option', '=', 'phila_pullquote'),
-       'fields' => $meta_var_pullquote,
-     ),
-   ),
- );
-
-$metabox_half_options = array(
-  'name' => '1/2 x 1/2 Options',
-  'id'   => 'phila_half_options',
-  'type' => 'group',
-  'hidden' => array(
-    'phila_grid_options',
-    '!=',
-    'phila_grid_options_half'
-  ),
-  'fields' => array(
-    $metabox_half_option_one,
-    $metabox_half_option_two,
-  ),
-);
-
 
 //Department Homepage metaboxes
 $meta_boxes[] = array(

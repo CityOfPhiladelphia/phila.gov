@@ -902,5 +902,20 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  // Pullquote
+  public static function phila_meta_var_pullquote(){
+    return array(
+      array(
+        'name' => 'Quote',
+        'id'   => 'phila_quote',
+        'type' => 'textarea',
+      ),
+      array(
+        'name' => 'Attribution',
+        'id'   => 'phila_attribution',
+        'type' => 'text',
+      ),
+    );
+  }
 
 }//end Class
