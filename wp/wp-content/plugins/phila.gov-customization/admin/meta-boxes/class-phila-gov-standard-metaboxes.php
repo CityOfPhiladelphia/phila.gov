@@ -1,10 +1,11 @@
 <?php
+/* Registers discrete, reusable metaboxes */
 
 if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
   $phila_standard_metaboxes_load = new Phila_Gov_Standard_Metaboxes();
 }
 
- class Phila_Gov_Standard_Metaboxes {
+class Phila_Gov_Standard_Metaboxes {
 
   public static function phila_wysiwyg_options_basic( $editor_height = 200 ){
 
@@ -551,4 +552,182 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
     );
   }
 
-}
+  public static function phila_meta_var_callout (){
+    return array(
+       array(
+         'name' => 'Status',
+         'id'   => 'phila_callout_type',
+         'type' => 'select',
+         'options' => array(
+           'default' => 'Default',
+           'important' => 'Important'
+         ),
+       ),
+       array(
+         'name' => ' Text',
+         'id'   => 'phila_callout_text',
+         'type' => 'textarea',
+       ),
+     );
+   }
+
+
+   // Multiple Call to Action (CTA) Panels
+  public static function phila_meta_var_call_to_action_multi (){
+
+    return array(
+      array(
+        'id'  => 'phila_call_to_action_section',
+         'type' => 'group',
+         'fields' => array(
+           array(
+             'name'  => 'Section Title',
+             'id'    => 'phila_action_section_title_multi',
+             'type'  => 'text',
+           ),
+           array(
+             'id'  => 'phila_call_to_action_multi_group',
+             'type' => 'group',
+             'clone'  => true,
+             'max_clone' => 4,
+             'sort_clone' => true,
+             'fields' => array(
+               array(
+                 'name'  => 'Call to Action Text',
+                 'id'    => 'phila_action_panel_cta_text_multi',
+                 'type'  => 'text',
+                 'class' => 'action-panel-cta-text',
+               ),
+               array(
+                 'name'  => 'Summary',
+                 'id'    => 'phila_action_panel_summary_multi',
+                 'type'  => 'textarea',
+                 'class' => 'action-panel-details',
+               ),
+               array(
+                 'name'  => 'Icon',
+                 'id'    => 'phila_action_panel_fa_multi',
+                 'type'  => 'text',
+                 'class' => 'action-panel-fa',
+               ),
+               array(
+                 'name'  => 'Icon Background Circle',
+                 'id'    => 'phila_action_panel_fa_circle_multi',
+                 'type'  => 'checkbox',
+                 'class' => 'action-panel-fa',
+               ),
+               array(
+                 'name'  => 'Link to Content',
+                 'id'    => 'phila_action_panel_link_multi',
+                 'type'  => 'url',
+                 'class' => 'action-panel-link',
+               ),
+               array(
+                 'name'  => 'External Link',
+                 'id'    => 'phila_action_panel_link_loc_multi',
+                 'type'  => 'checkbox',
+                 'class' => 'action-panel-link-loc',
+                 'desc'  => 'This link directs users away from beta.phila.gov',
+               ),
+             ),
+           ),
+           array(
+             'name'  =>  'Additional URL Title (optional)',
+             'id'    => 'phila_url_title',
+             'type'  => 'text',
+             'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
+           ),
+           array(
+             'name'  =>  'Additional URL (optional)',
+             'id'    => 'phila_url',
+             'type'  => 'url',
+             'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
+           ),
+           array(
+             'name'  =>  'Background Image',
+             'id'    => 'phila_bg_image',
+             'type'  => 'file_input',
+             'visible' => array('phila_full_options_select', '=', 'phila_get_involved'),
+           ),
+         ),
+       ),
+     );
+   }
+  // List of links with FontAwesome icons
+  public static function phila_meta_var_list_items (){
+
+    return array(
+     array(
+       'name' => 'Row Title',
+       'id'   => 'phila_row_title',
+       'type' => 'text',
+     ),
+     array(
+       'name' => 'Summary',
+       'id'   => 'phila_summary',
+       'type' => 'textarea',
+     ),
+     array(
+       'id'  => 'phila_list',
+       'type' => 'group',
+       'clone'  => true,
+       'sort_clone' => true,
+
+       'fields' => array(
+         array(
+           'std' => '<strong>Row</strong>',
+           'type' => 'custom_html',
+         ),
+         array(
+           'id'   => 'phila_list_items',
+           'type' => 'group',
+           'clone'  => true,
+           'sort_clone' => true,
+           'fields' => array(
+             array(
+               'name' => __('Item Title', 'rwmb'),
+               'id'   => 'phila_list_item_title',
+               'type' => 'text',
+               'required' => true,
+             ),
+             array(
+               'name' => __('Item URL', 'rwmb'),
+               'id'   => 'phila_list_item_url',
+               'type' => 'url',
+               'required' => true,
+             ),
+             array(
+                'name' => __('Item Icon', 'rwmb'),
+                'id'   => 'phila_list_item_type',
+                'type' => 'text',
+             ),
+           ),
+         ),
+       ),
+     ),
+   );
+  }
+
+  // Feature Programs and Initiatives
+  public static function phila_meta_var_feature_programs_initiatives (){
+   return array(
+      array(
+        'id' => 'phila_p_i',
+        'type' => 'group',
+        'fields' => array(
+          array(
+            'name' => 'Feature Program',
+            'id' => 'phila_p_i_items',
+            'type' => 'post',
+            'post_type' => 'department_page',
+            'clone' => true,
+            'max_clone' => 3,
+          ),
+        ),
+      ),
+    );
+  }
+
+
+
+}//end Class

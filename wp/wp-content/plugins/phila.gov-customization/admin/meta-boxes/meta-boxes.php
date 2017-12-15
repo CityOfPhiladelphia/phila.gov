@@ -1,10 +1,7 @@
 <?php
 /**
- * Registers all the metaboxes we ever will need
+ * Registers metaboxes
  *
- * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
- *
- * @package phila-gov_customization
  */
 
 add_action('admin_init', 'phila_return_month_array');
@@ -1137,24 +1134,6 @@ $meta_var_programs_initiatives_images = array(
   'visible' => array('phila_template_select', '=', 'programs_initiatives'),
 );
 
-// Feature Programs and Initiatives
-$meta_var_feature_programs_initiatives = array(
-  array(
-    'id' => 'phila_p_i',
-    'type' => 'group',
-    'fields' => array(
-      array(
-        'name' => 'Feature Program',
-        'id' => 'phila_p_i_items',
-        'type' => 'post',
-        'post_type' => 'department_page',
-        'clone' => true,
-        'max_clone' => 3,
-      ),
-    ),
-  ),
-);
-
 // Custom Featured Content
 $meta_var_custom_feature = array(
   array(
@@ -1184,103 +1163,7 @@ $meta_var_custom_feature = array(
   ),
 );
 
-// Multiple Call to Action (CTA) Panels
-$meta_var_call_to_action_multi = array(
-  array(
-    'id'  => 'phila_call_to_action_section',
-    'type' => 'group',
-    'fields' => array(
-      array(
-        'name'  => 'Section Title',
-        'id'    => 'phila_action_section_title_multi',
-        'type'  => 'text',
-      ),
-      array(
-        'id'  => 'phila_call_to_action_multi_group',
-        'type' => 'group',
-        'clone'  => true,
-        'max_clone' => 4,
-        'sort_clone' => true,
-        'fields' => array(
-          array(
-            'name'  => 'Call to Action Text',
-            'id'    => 'phila_action_panel_cta_text_multi',
-            'type'  => 'text',
-            'class' => 'action-panel-cta-text',
-          ),
-          array(
-            'name'  => 'Summary',
-            'id'    => 'phila_action_panel_summary_multi',
-            'type'  => 'textarea',
-            'class' => 'action-panel-details',
-          ),
-          array(
-            'name'  => 'Icon',
-            'id'    => 'phila_action_panel_fa_multi',
-            'type'  => 'text',
-            'class' => 'action-panel-fa',
-          ),
-          array(
-            'name'  => 'Icon Background Circle',
-            'id'    => 'phila_action_panel_fa_circle_multi',
-            'type'  => 'checkbox',
-            'class' => 'action-panel-fa',
-          ),
-          array(
-            'name'  => 'Link to Content',
-            'id'    => 'phila_action_panel_link_multi',
-            'type'  => 'url',
-            'class' => 'action-panel-link',
-          ),
-          array(
-            'name'  => 'External Link',
-            'id'    => 'phila_action_panel_link_loc_multi',
-            'type'  => 'checkbox',
-            'class' => 'action-panel-link-loc',
-            'desc'  => 'This link directs users away from beta.phila.gov',
-          ),
-        ),
-      ),
-      array(
-        'name'  =>  'Additional URL Title (optional)',
-        'id'    => 'phila_url_title',
-        'type'  => 'text',
-        'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
-      ),
-      array(
-        'name'  =>  'Additional URL (optional)',
-        'id'    => 'phila_url',
-        'type'  => 'url',
-        'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
-      ),
-      array(
-        'name'  =>  'Background Image',
-        'id'    => 'phila_bg_image',
-        'type'  => 'file_input',
-        'visible' => array('phila_full_options_select', '=', 'phila_get_involved'),
-      ),
-    ),
-  ),
-);
-
-
 // Callout
-$meta_var_callout = array(
-   array(
-     'name' => 'Status',
-     'id'   => 'phila_callout_type',
-     'type' => 'select',
-     'options' => array(
-       'default' => 'Default',
-       'important' => 'Important'
-     ),
-   ),
-   array(
-     'name' => ' Text',
-     'id'   => 'phila_callout_text',
-     'type' => 'textarea',
-   ),
- );
 
 // Connect Panel
 $meta_var_connect = array(
@@ -1435,59 +1318,6 @@ $meta_var_pullquote = array(
   ),
 );
 
-// List of links with FontAwesome icons
-$meta_var_list_items = array(
-  array(
-    'name' => 'Row Title',
-    'id'   => 'phila_row_title',
-    'type' => 'text',
-  ),
-  array(
-    'name' => 'Summary',
-    'id'   => 'phila_summary',
-    'type' => 'textarea',
-  ),
-  array(
-    'id'  => 'phila_list',
-    'type' => 'group',
-    'clone'  => true,
-    'sort_clone' => true,
-
-    'fields' => array(
-      array(
-        'std' => '<strong>Row</strong>',
-        'type' => 'custom_html',
-      ),
-      array(
-        'id'   => 'phila_list_items',
-        'type' => 'group',
-        'clone'  => true,
-        'sort_clone' => true,
-        'fields' => array(
-          array(
-            'name' => __('Item Title', 'rwmb'),
-            'id'   => 'phila_list_item_title',
-            'type' => 'text',
-            'required' => true,
-          ),
-          array(
-            'name' => __('Item URL', 'rwmb'),
-            'id'   => 'phila_list_item_url',
-            'type' => 'url',
-            'required' => true,
-          ),
-          array(
-             'name' => __('Item Icon', 'rwmb'),
-             'id'   => 'phila_list_item_type',
-             'type' => 'text',
-          ),
-        ),
-      ),
-    ),
-  ),
-);
-
-
 //Clonable WYSIWYG with title
 $meta_var_wysiwyg_multi = array(
   'id'  =>  'phila_cloneable_wysiwyg',
@@ -1571,88 +1401,6 @@ $meta_did_you_know = array(
 * Begin Full Width Column MetaBox content
 *
 **/
-
-$metabox_full_options_select = array(
- 'id'   => 'phila_full_options_select',
- 'desc'  => 'Choose to display full width content.',
- 'type' => 'select',
- 'placeholder' => 'Select...',
- 'options' => array(
-   'phila_blog_posts' => 'Blog Posts',
-   'phila_full_width_calendar' => 'Calendar',
-   'phila_callout' => 'Callout',
-   'phila_custom_text' => 'Custom Text',
-   'phila_feature_p_i' => 'Feature Program or Initiative',
-   'phila_get_involved' => 'Get Involved',
-   'phila_list_items' => 'List Items',
-   'phila_full_width_press_releases' => 'Press Releases',
-   'phila_resource_list' => 'Resource List',
-   ),
- );
-
-$metabox_full_options = array(
-  'name' => 'Full Width Options',
-  'id'   => 'phila_full_options',
-  'type' => 'group',
-  'visible' => array(
-    'phila_grid_options',
-    '=',
-    'phila_grid_options_full'
-  ),
-  'fields' => array(
-    $metabox_full_options_select,
-    array(
-      'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
-      'id'  => 'phila_get_post_cats',
-      'type' => 'group',
-      'fields' => array(
-        Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
-      ),
-     ),
-   array(
-     'id' => 'phila_full_width_calendar',
-     'type' => 'group',
-     'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
-     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
-   ),
-   array(
-     'id'   => 'phila_callout',
-     'type' => 'group',
-     'visible' => array('phila_full_options_select', '=', 'phila_callout'),
-     'fields' => $meta_var_callout,
-   ),
-   array(
-     'id'   => 'phila_custom_text',
-     'type' => 'group',
-     'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
-     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-   ),
-   array(
-     'id'  => 'phila_call_to_action_multi',
-     'type' => 'group',
-     'visible' => array(
-       'when' => array(
-         array('phila_full_options_select', '=', 'phila_get_involved'),
-         array('phila_full_options_select', '=', 'phila_resource_list'),
-       ),
-       'relation' => 'or',
-     ),
-     'fields' => $meta_var_call_to_action_multi,
-  ),
-  array(
-    'id'   => 'phila_list_items',
-    'type' => 'group',
-    'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
-    'fields' => $meta_var_list_items,
-  ),
-  array(
-    'id'   => 'phila_feature_p_i',
-    'type' => 'group',
-    'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
-    'fields' => $meta_var_feature_programs_initiatives,
-  ),
- ),
-);
 
 /**
 *
@@ -1841,28 +1589,6 @@ $metabox_half_options = array(
   ),
 );
 
-// Grid Options
-$metabox_grid_options = array(
- 'name' => 'Row Layout',
- 'id'   => 'phila_grid_options',
- 'desc'  => 'Choose the row layout.',
- 'type' => 'select',
- 'placeholder' => 'Select...',
- 'options' => array(
-   'phila_grid_options_full' => 'Full Width',
-   'phila_grid_options_half' => '1/2 x 1/2',
-   'phila_grid_options_thirds' => '2/3 x 1/3',
-   ),
- );
-
- $metabox_grid_row = array(
-   'id'    => 'phila_row',
-   'class'    => 'phila_row',
-   'type'  => 'group',
-   'clone' => true,
-   'sort_clone' => true,
-   'fields' => array( $metabox_grid_options , $metabox_full_options, $metabox_thirds_options, $metabox_half_options ),
- );
 
 //Department Homepage metaboxes
 $meta_boxes[] = array(
@@ -1876,7 +1602,22 @@ $meta_boxes[] = array(
 
   'fields' => array(
     $meta_var_programs_initiatives_images,
-    $metabox_grid_row,
+    Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+  )
+);
+
+
+$meta_boxes[] = array(
+  'id'       => 'phila_program',
+  'title'    => 'Page Content',
+  'pages' => array( 'programs' ),
+  'priority' => 'high',
+  'revision' => true,
+
+  'visible'  => array('phila_template_select', '=', 'prog_landing_page'),
+
+  'fields' => array(
+    Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
   )
 );
 

@@ -33,10 +33,11 @@ class Phila_Gov_Program_Templates {
          'class' => 'template-select',
          'clone' => false,
          'placeholder'  => 'Select a template',
+         'required' => true,
 
          'options' => array(
-           'prog_init_landing_page'                 => 'Landing page',
-           'prog_init_subpage'    => 'Subpage',
+           'prog_landing_page'  => 'Homepage',
+           'prog_subpage'    => 'Subpage',
            ),
            'admin_columns' => array(
              'position' => 'after date',
@@ -48,4 +49,7 @@ class Phila_Gov_Program_Templates {
    );
     return $meta_boxes;
    }
+
+
+
  }
