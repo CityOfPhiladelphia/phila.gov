@@ -61,38 +61,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'title' => 'Our services',
-    'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'homepage_v2' ),
-
-    'fields' => array(
-      array(
-        'id'       => 'phila_v2_homepage_services',
-        'title'    => 'Top services',
-        'context'  => 'normal',
-        'priority' => 'high',
-        'type'  => 'group',
-        'clone' => true,
-        'max_clone' => 6,
-        'add_button'  => '+ Add a service',
-
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
-          Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
-        ),
-      ),
-      array(
-        'id' => 'phila_v2_service_link',
-        'title' => 'All services link',
-        'name'  => 'All services link',
-        'type'  => 'url',
-        'class' => 'metabox-url',
-      ),
-    ),
-  );
-
-  $meta_boxes[] = array(
     'title' => 'Services list',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'service_list_v2' ),
@@ -299,7 +267,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       ),
     ),
   );
-  
+
   $meta_boxes[] = array(
     'title' => 'Department code',
     'pages'    => array( 'department_page' ),
