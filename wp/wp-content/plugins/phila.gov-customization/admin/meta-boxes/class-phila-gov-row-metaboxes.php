@@ -10,10 +10,11 @@ class Phila_Gov_Row_Metaboxes {
   public static function phila_metabox_grid_row (){
     return array(
     'id'    => 'phila_row',
-    'class'    => 'phila_row',
+    'class' => 'phila_row',
     'type'  => 'group',
     'clone' => true,
     'sort_clone' => true,
+    'add_button'  => 'Add row',
     'fields' => array(
       Phila_Gov_Row_Select_Options::phila_metabox_grid_options(),
       Phila_Gov_Row_Metaboxes::phila_metabox_full_options(),
@@ -79,15 +80,42 @@ class Phila_Gov_Row_Metaboxes {
        'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_list_items(),
      ),
-     array(
-       'id'   => 'phila_feature_p_i',
-       'type' => 'group',
-       'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
-       'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_feature_programs_initiatives(),
-     ),
+    array(
+      'id'   => 'phila_feature_p_i',
+      'type' => 'group',
+     'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_feature_programs_initiatives(),
     ),
-   );
- }
+    array(
+      'id'       => 'phila_image_list',
+      'type'     => 'group',
+      'visible'  => array('phila_full_options_select', '=', 'phila_image_list'),
+      'fields'   => array(
+        array(
+          'name'  => 'Image list heading (optional)',
+          'id'    => 'title',
+          'type'  => 'text',
+        ),
+        array(
+          'name'  => 'List of images',
+          'id'    => 'phila_image_list',
+          'type'  => 'image_advanced'
+        ),
+      ),
+    ),
+     array(
+      'id'   => 'phila_link_list',
+       'type' => 'group',
+       'clone' => true,
+       'visible' => array('phila_full_options_select', '=', 'phila_link_list'),
+
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('','phila_links')
+        )
+      ),
+    ),
+  );
+}
 
   /**
   *
