@@ -102,7 +102,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'priority' => 'high',
     'include' => array(
       'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
-      'relation' => 'OR',
+      'relation' => 'or',
      ),
      'fields' => array(
        array(
@@ -1110,20 +1110,6 @@ $meta_boxes[] = array(
 
 
 $meta_boxes[] = array(
-  'id'       => 'phila_program',
-  'title'    => 'Page Content',
-  'pages' => array( 'programs' ),
-  'priority' => 'high',
-  'revision' => true,
-
-  'visible'  => array('phila_template_select', '=', 'prog_landing_page'),
-
-  'fields' => array(
-    Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
-  )
-);
-
-$meta_boxes[] = array(
   'title' => 'Service Stub',
   'pages' => array('service_page'),
   'priority' => 'high',
@@ -1277,6 +1263,11 @@ $meta_boxes[] = array(
   'title' => 'Document tables',
   'pages' => array('department_page'),
   'revision' => true,
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'document_finder_v2'),
+    ),
+  ),
   'fields' => array(
     array(
       'id' => 'phila_document_table',
@@ -1301,9 +1292,42 @@ $meta_boxes[] = array(
       )
     )
   ),
-  'show' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'document_finder_v2'),
+);
+
+$meta_boxes[] = array(
+  'title' => 'Our services',
+  'pages'    => array( 'department_page', 'programs' ),
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'prog_landing_page')
+      ),
+    'relation'  => 'or'
+  ),
+
+  'fields' => array(
+    array(
+      'id'       => 'phila_v2_homepage_services',
+      'title'    => 'Top services',
+      'context'  => 'normal',
+      'priority' => 'high',
+      'type'  => 'group',
+      'clone' => true,
+      'max_clone' => 6,
+      'add_button'  => '+ Add a service',
+
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
+        Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
+      ),
+    ),
+    array(
+      'id' => 'phila_v2_service_link',
+      'title' => 'All services link',
+      'name'  => 'All services link',
+      'type'  => 'url',
+      'class' => 'metabox-url',
     ),
   ),
 );
