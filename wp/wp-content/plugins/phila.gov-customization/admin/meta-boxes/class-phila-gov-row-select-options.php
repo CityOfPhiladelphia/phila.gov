@@ -33,18 +33,18 @@ class Phila_Gov_Row_Select_Options {
       'type' => 'select',
       'placeholder' => 'Select...',
       'options' => array(
-        'phila_blog_posts' => 'Blog Posts',
+        'phila_blog_posts' => 'Blog posts',
         'phila_full_width_calendar' => 'Calendar',
+        'phila_full_cta'  => 'Call to action (single, full)',
+        'phila_resource_list' => 'Call to action (multiple)',
         'phila_callout' => 'Callout',
-        'phila_full_cta'  => 'Call to action (full)',
-        'phila_custom_text' => 'Custom Text',
-        'phila_feature_p_i' => 'Feature Program or Initiative',
+        'phila_custom_text' => 'Custom text',
+        'phila_custom_text_multi' => 'Custom text (multiple)',
+        'phila_feature_p_i' => 'Featured page content',
         'phila_get_involved' => 'Get Involved',
-        'phila_list_items' => 'List Items',
-        'phila_full_width_press_releases' => 'Press Releases',
-        'phila_resource_list' => 'Resource List',
         'phila_image_list' => 'Image list',
-        'phila_link_list' => 'Link list'
+        'phila_list_items' => 'List items (grid)',
+        'phila_full_width_press_releases' => 'Press Releases',
       ),
     );
   }
