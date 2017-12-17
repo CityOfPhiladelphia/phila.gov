@@ -904,4 +904,40 @@ public static function phila_meta_var_connect(){
     );
   }
 
+  public static function phila_meta_var_full_width_cta(){
+    return array(
+      Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Title', 'cta_full_title', '50 character maximum.' ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'cta_full_description', '140 character maximum.' ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
+      array(
+        'id' => 'cta_is_survey',
+        'desc'  => 'Is this a link to a survey or other form of feedback gathering?',
+        'type'  => 'checkbox',
+      ),
+      array(
+        'id' => 'cta_is_modal',
+        'desc'  => 'Should this content appear in a modal?',
+        'type'  => 'checkbox',
+      ),
+      array(
+        'id'   => 'cta_modal',
+        'type'  => 'group',
+        'visible' => array( 'cta_is_modal', '1' ),
+
+        'fields' => array(
+          array(
+            'type' => 'heading',
+            'name'  => 'Modal content',
+          ),
+          array(
+            'name' => '',
+            'id'   => 'cta_modal_content',
+            'type' => 'textarea',
+          ),
+          Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection( ),
+        ),
+      ),
+    );
+  }
+
 }//end Class
