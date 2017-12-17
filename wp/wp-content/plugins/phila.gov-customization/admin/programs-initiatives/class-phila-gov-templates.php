@@ -37,7 +37,7 @@ class Phila_Gov_Program_Templates {
 
          'options' => array(
            'prog_landing_page'  => 'Homepage',
-           'prog_subpage'    => 'Subpage',
+           'phila_one_quarter'    => '1/4 Headings',
            ),
            'admin_columns' => array(
              'position' => 'after date',
