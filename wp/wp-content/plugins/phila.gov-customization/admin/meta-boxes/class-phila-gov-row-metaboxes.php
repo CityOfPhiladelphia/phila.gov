@@ -14,7 +14,7 @@ class Phila_Gov_Row_Metaboxes {
     'type'  => 'group',
     'clone' => true,
     'sort_clone' => true,
-    'add_button'  => 'Add row',
+    'add_button'  => '+ Add row',
     'fields' => array(
       Phila_Gov_Row_Select_Options::phila_metabox_grid_options(),
       Phila_Gov_Row_Metaboxes::phila_metabox_full_options(),
