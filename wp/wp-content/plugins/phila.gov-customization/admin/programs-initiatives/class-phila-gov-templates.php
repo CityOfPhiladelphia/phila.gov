@@ -49,18 +49,33 @@ class Phila_Gov_Program_Templates {
    );
 
    $meta_boxes[] = array(
-     'id'       => 'phila_program',
-     'title'    => 'Page Content',
+     'id'       => 'phila_header',
+     'title'    => 'Header image',
      'pages' => array( 'programs' ),
      'priority' => 'high',
-     'revision' => true,
-
-     'visible'  => array('phila_template_select', '=', 'prog_landing_page'),
-
+     'visible' => array('phila_template_select', '=', 'prog_landing_page'),
      'fields' => array(
-       Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+       array(
+         'id' => 'prog_header_img',
+         'type'  => 'image_advanced',
+         'max_file_uploads' => 1,
+       ),
      )
    );
+
+  $meta_boxes[] = array(
+    'id'       => 'phila_program',
+    'title'    => 'Page content',
+    'pages' => array( 'programs' ),
+    'priority' => 'high',
+    'revision' => true,
+
+    'visible'  => array('phila_template_select', '=', 'prog_landing_page'),
+
+    'fields' => array(
+      Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+    )
+  );
 
     return $meta_boxes;
   }
