@@ -619,7 +619,6 @@ function phila_register_meta_boxes( $meta_boxes ){
         'id' => 'module_row_1_col_2_call_to_action_panel',
         'type' => 'group',
         'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_call_to_action_panel'),
-
         'fields' => array(
           array(
             'name'  => 'Section Title',
@@ -670,126 +669,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type' => 'group',
         'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_connect_panel'),
 
-        'fields' => array(
-            array(
-             'name' => 'Connect Panel',
-             'id'   => 'phila_connect_description',
-             'type' => 'custom_html',
-             'std'  => '<span>Use any of the optional fields below to add social media, address, and contact information.</span><br/>
-             <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
-            ),
-            array(
-              'id' => 'phila_connect_social',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'type' => 'heading',
-                  'name' => 'Social',
-                ),
-                array(
-                 'name' => 'Facebook URL',
-                 'id'   => 'phila_connect_social_facebook',
-                 'type' => 'url',
-                 'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
-                ),
-                array(
-                 'name' => 'Twitter URL',
-                 'id'   => 'phila_connect_social_twitter',
-                 'type' => 'url',
-                 'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
-                ),
-                array(
-                 'name' => 'Instagram URL',
-                 'id'   => 'phila_connect_social_instagram',
-                 'type' => 'url',
-                 'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
-                ),
-                array(
-                 'name' => 'YouTube URL',
-                 'id'   => 'phila_connect_social_youtube',
-                 'type' => 'url',
-                 'desc' => 'Example: https://www.youtube.com/user/philly311center'
-                ),
-                array(
-                 'name' => 'Flickr URL',
-                 'id'   => 'phila_connect_social_flickr',
-                 'type' => 'url',
-                 'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
-                ),
-              ),
-            ),
-            array(
-              'id' => 'phila_connect_address',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'type' => 'heading',
-                  'name' => 'Address',
-                ),
-                array(
-                 'name' => 'Street Address 1',
-                 'id'   => 'phila_connect_address_st_1',
-                 'type' => 'text',
-                ),
-                array(
-                 'name' => 'Street Address 2',
-                 'id'   => 'phila_connect_address_st_2',
-                 'type' => 'text',
-                ),
-                array(
-                 'name' => 'City',
-                 'id'   => 'phila_connect_address_city',
-                 'type' => 'text',
-                 'std' => 'Philadelphia',
-                ),
-                array(
-                 'name' => 'State',
-                 'id'   => 'phila_connect_address_state',
-                 'type' => 'text',
-                 'std' => 'PA',
-                ),
-                array(
-                 'name' => 'Zip',
-                 'id'   => 'phila_connect_address_zip',
-                 'type' => 'text',
-                 'std' => '19107',
-                ),
-              ),
-            ),
-            array(
-              'id' => 'phila_connect_general',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'type' => 'heading',
-                  'name' => 'Contact',
-                ),
-                array(
-                   'name' => 'Phone',
-                   'id'   => 'phila_connect_phone',
-                   'type' => 'phone',
-                   'desc' => '(###)-###-####',
-                 ),
-                array(
-                  'name' => 'Fax',
-                  'id'   => 'phila_connect_fax',
-                  'type' => 'phone',
-                  'desc' => '(###)-###-####',
-                ),
-                array(
-                  'name' => 'Email',
-                  'id'   => 'phila_connect_email',
-                  'type' => 'email',
-                  'desc' => 'example@phila.gov',
-                ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link', 'connect_see_all'),
-
-              ),
-            ),
-          ),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect()
         ),
     )
   );

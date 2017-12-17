@@ -728,11 +728,8 @@ class Phila_Gov_Standard_Metaboxes {
       ),
     );
   }
-
-  // Connect Panel
-  public static function phila_meta_var_connect(){
-
-    return array(
+public static function phila_meta_var_connect(){
+  return array(
       array(
        'name' => 'Connect Panel',
        'id'   => 'phila_connect_description',
@@ -743,7 +740,6 @@ class Phila_Gov_Standard_Metaboxes {
       array(
         'id' => 'phila_connect_social',
         'type' => 'group',
-        // List of sub-fields
         'fields' => array(
           array(
             'type' => 'heading',
@@ -766,6 +762,18 @@ class Phila_Gov_Standard_Metaboxes {
            'id'   => 'phila_connect_social_instagram',
            'type' => 'url',
            'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+          ),
+          array(
+           'name' => 'YouTube URL',
+           'id'   => 'phila_connect_social_youtube',
+           'type' => 'url',
+           'desc' => 'Example: https://www.youtube.com/user/philly311center'
+          ),
+          array(
+           'name' => 'Flickr URL',
+           'id'   => 'phila_connect_social_flickr',
+           'type' => 'url',
+           'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
           ),
         ),
       ),
@@ -835,41 +843,18 @@ class Phila_Gov_Standard_Metaboxes {
             'type' => 'email',
             'desc' => 'example@phila.gov',
           ),
-        ),
-      ),
-      array(
-        'id' => 'phila_connect_include_cta',
-        'desc' => 'Include optional call to action button?',
-        'type' => 'checkbox',
-      ),
-      array(
-        'name' => 'Call to Action Button',
-        'id' => 'phila_connect_cta',
-        'type' => 'group',
-        'hidden' => array( 'phila_connect_include_cta', '!=', true ),
-
-        // List of sub-fields
-        'fields' => array(
           array(
-            'name' => 'Title',
-            'id' => 'phila_connect_cta_title',
-            'type' => 'text',
-          ),
-          array(
-            'name' => 'URL',
-            'id' => 'phila_connect_cta_url',
+            'name'  => 'Website',
+            'id'  => 'phila_connect_website',
             'type' => 'url',
+            'desc'  => 'Optional external wesbite',
           ),
-          array(
-            'name' => 'Summary',
-            'id' => 'phila_connect_cta_summary',
-            'type' => 'textarea',
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link', 'connect_see_all'),
         ),
-      ),
+      )
     );
   }
-
+  
   // Custom Featured Content
   public static function phila_meta_var_custom_feature(){
 
