@@ -63,6 +63,13 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
       ),
       array(
+        'id'   => 'phila_custom_text_multi_full',
+        'type' => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_custom_text_multi'),
+        'revision'  => true,
+        'fields' =>   Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea_multi(),
+      ),
+      array(
         'id'  => 'phila_call_to_action_multi',
         'type' => 'group',
         'visible' => array(
@@ -109,16 +116,6 @@ class Phila_Gov_Row_Metaboxes {
         ),
       ),
     ),
-     array(
-      'id'   => 'phila_link_list',
-       'type' => 'group',
-       'clone' => true,
-       'visible' => array('phila_full_options_select', '=', 'phila_link_list'),
-
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('','phila_links')
-        )
-      ),
     ),
   );
 }
