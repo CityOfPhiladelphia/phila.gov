@@ -36,6 +36,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_blog_posts' => 'Blog Posts',
         'phila_full_width_calendar' => 'Calendar',
         'phila_callout' => 'Callout',
+        'phila_full_cta'  => 'Full width CTA',
         'phila_custom_text' => 'Custom Text',
         'phila_feature_p_i' => 'Feature Program or Initiative',
         'phila_get_involved' => 'Get Involved',

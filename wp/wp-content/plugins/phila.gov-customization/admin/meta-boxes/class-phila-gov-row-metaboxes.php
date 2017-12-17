@@ -75,10 +75,16 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_call_to_action_multi(),
      ),
      array(
-       'id'   => 'phila_list_items',
-       'type' => 'group',
-       'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
-       'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_list_items(),
+      'id' => 'phila_full_width_cta',
+      'type' => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_full_cta'),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
+     ),
+     array(
+      'id'   => 'phila_list_items',
+      'type' => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_list_items(),
      ),
     array(
       'id'   => 'phila_feature_p_i',
