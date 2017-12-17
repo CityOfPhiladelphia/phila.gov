@@ -616,6 +616,7 @@ class Phila_Gov_Standard_Metaboxes {
                  'id'    => 'phila_action_panel_fa_circle_multi',
                  'type'  => 'checkbox',
                  'class' => 'action-panel-fa',
+                 'std'  => 1,
                ),
                array(
                  'name'  => 'Link to Content',
@@ -854,7 +855,7 @@ public static function phila_meta_var_connect(){
       )
     );
   }
-  
+
   // Custom Featured Content
   public static function phila_meta_var_custom_feature(){
 
