@@ -15,7 +15,7 @@
 ?>
 <header class="hero-half">
   <div class="grid-x">
-    <div class="cell large-12 bg-shade bg-ben-franklin-blue white hero-half--container medium-center">
+    <div class="cell large-12 bg-shade bg-ben-franklin-blue white hero-half--container">
       <div class="grid-x grid-container align-right">
         <div class="hero-half--title mvm">
           <h1><?php echo the_title() ?></h1>
