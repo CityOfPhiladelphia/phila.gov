@@ -139,18 +139,9 @@ class Phila_Gov_Row_Metaboxes {
            'type' => 'select',
            'placeholder' => 'Select...',
            'options' => array(
-             'phila_blog_posts' => 'Blog Posts',
              'phila_custom_text' => 'Custom Text',
              'phila_custom_text_multi' => 'Custom Text (multi)',
              ),
-         ),
-         array(
-           'visible' => array('phila_two_thirds_col_option', '=', 'phila_blog_posts'),
-           'id'  => 'phila_get_post_cats',
-           'type' => 'group',
-           'fields' => array(
-             Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
-           ),
          ),
          array(
            'id'   => 'phila_custom_text',
