@@ -195,28 +195,46 @@ jQuery(document).ready(function($) {
   }
 
   if($('body').hasClass('nav-menus-php')){
-    $.ajaxSetup({
-      success: function(data){
-        console.log(data);
-      },
-      dataFilter: function (data) {
-        var $data = $(data);
-        var $itemType = $data.find('.menu-item-object');
-        if ($itemType.length > 0){
-          // console.log($itemType);
-          if ($itemType[0].value == "department_page") {
-            var $checkboxes = $data.find('.menu-item-checkbox');
-            if ($checkboxes.length > 0){
-              var deptPageIds = [];
-              $checkboxes.each(function(){
-                deptPageIds.push($(this).val());
-              });
-              //Stopped here. Need to make ajax request for each id to grab parent.
-              console.log(deptPageIds);
-            }
+    $(document).ajaxSuccess(function(event, request, settings){
+
+      var params = settings.data;
+      var action = params.match(/action=(.+?)&/);
+      var type = params.match(/&type=(.+)/);
+
+      if(action[1] == 'menu-quick-search' && type[1] == 'quick-search-posttype-department_page') {
+        var $responseText = $(request.responseText);
+        var $checkboxes = $responseText.find('.menu-item-checkbox');
+        if ($checkboxes.length > 0){
+          var deptPageIds = [];
+          $checkboxes.each(function(){
+            deptPageIds.push($(this).val());
+          });
+          if(deptPageIds.length > 0){
+            updateResponseCheckboxes(deptPageIds); 
           }
         }
       }
-    });  
+      function updateResponseCheckboxes(postIds){
+        $.ajax({
+          url: myAjax.ajaxurl,
+          dataType: 'json',
+          type: 'POST',
+          data: {
+            action: 'addDepartmentParent',
+            postIds: postIds,
+            nonce: myAjax.ajax_nonce,
+          }
+        }).success(function(response) {
+          if (response) {
+            $.each(response, function(id,parent){
+              value = id.replace("p=", "");
+              parent = "<br/><small>Page Parent: " + parent + "</small>";
+              $('#department_page-search-checklist .menu-item-title input[value="' + value + '"]').parent("label").append(parent);
+            });
+          }
+        });
+      }
+    });
   }
+
 });
