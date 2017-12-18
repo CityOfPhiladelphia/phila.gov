@@ -23,7 +23,6 @@ $user_selected_template = phila_get_selected_template();
      */
     $hero_data = array(
       'parent' => phila_util_get_furthest_ancestor($post),
-      'is_homepage_v2' => $user_selected_template == 'homepage_v2',
       'bg' => array(
         'desktop'      => phila_get_hero_header_v2( $parent->ID ),
         'mobile'       => phila_get_hero_header_v2( $parent->ID, true ),
@@ -35,8 +34,9 @@ $user_selected_template = phila_get_selected_template();
 
 
       while ( have_posts() ) : the_post();
-      get_template_part( 'partials/departments/v2/our', 'services' );
-      get_template_part( 'partials/departments/content', 'programs-initiatives' );
+        include( locate_template( 'partials/programs/header.php' ) );
+        get_template_part( 'partials/departments/v2/our', 'services' );
+        get_template_part( 'partials/departments/content', 'programs-initiatives' );
       endwhile;
 
   ?>
