@@ -91,6 +91,7 @@ function phila_breadcrumbs() {
       }
       echo $output;
       echo '<li> '.$title.'</li>';
+      
     }elseif ( is_singular('programs') ) {
 
        $anc = get_post_ancestors( $post->ID );
