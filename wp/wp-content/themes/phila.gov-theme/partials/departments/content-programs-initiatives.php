@@ -65,14 +65,13 @@
           <?php endif;?>
 
         <?php elseif ( $current_row_option == 'phila_callout'):
-          $callout_type = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_type'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_type'] : '';
           $callout_text = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_text'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_text'] : ''; ?>
 
           <?php if ( !empty( $callout_text ) ): ?>
             <!-- Display Callout -->
             <section class="row mvm">
               <div class="large-24 column">
-                  <?php echo do_shortcode('[callout type="' . $callout_type . '" inline="false"]' . $callout_text . '[/callout]'); ?>
+                  <?php echo do_shortcode('[callout type="default" inline="false"]' . $callout_text . '[/callout]'); ?>
               </div>
             </section>
           <?php endif;?>
