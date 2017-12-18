@@ -7,9 +7,7 @@
 
 get_header();
 
-$user_selected_template = phila_get_selected_template();
-
-?>
+$user_selected_template = phila_get_selected_template(); ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
   <header>

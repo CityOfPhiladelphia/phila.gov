@@ -7,11 +7,12 @@
  */
 ?>
 <?php
-$connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
-if ( !isset($connect_vars) ) {
-  $connect_vars = phila_connect_panel($connect_panel);
-  }
+  $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
+  if ( !isset( $connect_vars ) ) :
+    $connect_vars = phila_connect_panel($connect_panel);
+  endif;
 ?>
+
 <div class="large-8 columns">
   <div class="row">
     <div class="columns">
