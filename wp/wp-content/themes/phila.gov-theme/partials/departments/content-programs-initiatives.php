@@ -25,6 +25,7 @@
       // Begin full width row
       $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
+
       if ( $current_row_option == 'phila_blog_posts'):?>
 
         <!-- Blog Content -->
@@ -124,6 +125,17 @@
 
            include(locate_template('partials/departments/v2/full-width-call-to-action.php')); ?>
          <?php endif; ?>
+
+       <?php elseif ( $current_row_option == 'phila_custom_text_multi'):?>
+         <?php if ( isset( $current_row['phila_full_options']['phila_custom_text_multi_full'] ) ):
+           $custom_text = $current_row['phila_full_options']['phila_custom_text_multi_full'];
+           $multi_full_row = true;
+           ?>
+           <div class="row">
+             <?php include(locate_template('partials/departments/content-custom-text-multi.php')); ?>
+          </div>
+         <?php endif; ?>
+
       <?php endif;  /*end full row */?>
 
       <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
