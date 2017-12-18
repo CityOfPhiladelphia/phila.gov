@@ -57,6 +57,13 @@ class Phila_Gov_Program_Templates {
      'fields' => array(
        array(
          'id' => 'prog_header_img',
+         'name' => 'Program header image',
+         'type'  => 'image_advanced',
+         'max_file_uploads' => 1,
+       ),
+       array(
+         'id' => 'prog_header_img_shade',
+         'name' => 'Subpage header image',
          'type'  => 'image_advanced',
          'max_file_uploads' => 1,
        ),
