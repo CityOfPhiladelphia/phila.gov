@@ -555,15 +555,15 @@ class Phila_Gov_Standard_Metaboxes {
 
   public static function phila_meta_var_callout (){
     return array(
-       array(
-         'name' => 'Status',
-         'id'   => 'phila_callout_type',
-         'type' => 'select',
-         'options' => array(
-           'default' => 'Default',
-           'important' => 'Important'
-         ),
-       ),
+       // array(
+       //   'name' => 'Status',
+       //   'id'   => 'phila_callout_type',
+       //   'type' => 'select',
+       //   'options' => array(
+       //     'default' => 'Default',
+       //     'important' => 'Important'
+       //   ),
+       // ),
        array(
          'name' => ' Text',
          'id'   => 'phila_callout_text',
