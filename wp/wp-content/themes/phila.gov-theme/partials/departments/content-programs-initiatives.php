@@ -198,8 +198,11 @@
             <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):?>
                 <?php if ( isset( $current_row_option_two['phila_connect_panel'] ) ):
                   $connect_panel = $current_row_option_two['phila_connect_panel'];
+
                   $connect_vars = phila_connect_panel($connect_panel);
-                  include(locate_template('partials/departments/content-connect.php'));
+                  
+                  include(locate_template('partials/departments/v2/content-connect.php'));
+
                 endif; ?>
 
             <?php elseif ( $current_row_option_two['phila_one_third_col_option'] == 'phila_custom_text'):?>
