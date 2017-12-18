@@ -15,8 +15,8 @@
 ?>
 <?php if ( !empty( $link ) ) :?>
   <div class="grid-container">
-    <div class="grix-x mvxl">
-      <div class="columns panel <?php echo (!empty( $link['is_survey'] ) ) ? 'survey' : '' ?>">
+    <div class="grid-x mvxl">
+      <div class="cell panel <?php echo (!empty( $link['is_survey'] ) ) ? 'survey' : '' ?>">
         <div class="grid-x align-middle">
           <div class="small-24 medium-18 cell">
             <?php if ( !empty( $link['title'] ) ) : ?>
@@ -44,16 +44,16 @@
                 </div>
               </a>
             </div>
-        <?php endif; ?>
-        <?php if ( !empty( $link['is_modal'] ) ) : ?>
-          <div class="reveal center" id="action-modal" data-reveal data-deep-link="true">
-            <?php echo $link['modal_content']; ?>
-            <button class="close-button bg-white" data-close aria-label="Close modal" type="button">
-             <span aria-hidden="true">&times;</span>
-           </button>
           </div>
         <?php endif; ?>
-        </div>
+          <?php if ( !empty( $link['is_modal'] ) ) : ?>
+            <div class="reveal center" id="action-modal" data-reveal data-deep-link="true">
+              <?php echo $link['modal_content']; ?>
+              <button class="close-button bg-white" data-close aria-label="Close modal" type="button">
+               <span aria-hidden="true">&times;</span>
+             </button>
+            </div>
+          <?php endif; ?>
       </div>
     </div>
   </div>
