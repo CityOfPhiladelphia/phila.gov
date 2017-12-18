@@ -18,57 +18,59 @@ class Phila_Gov_Program_Templates {
 
   function register_template_selection_metabox_programs( $meta_boxes ){
 
-   $meta_boxes[] = array(
-     'id'       => 'template_selection',
-     'title'    => 'Select Template',
-     'pages'    => array( 'programs' ),
-     'context'  => 'advanced',
-     'priority' => 'high',
+  $meta_boxes[] = array(
+    'id'       => 'template_selection',
+    'title'    => 'Select Template',
+    'pages'    => array( 'programs' ),
+    'context'  => 'advanced',
+    'priority' => 'high',
 
-     'fields' => array(
-       array(
-         'desc'  => '',
-         'id'    => 'phila_template_select',
-         'type'  => 'select',
-         'class' => 'template-select',
-         'clone' => false,
-         'placeholder'  => 'Select a template',
-         'required' => true,
+    'fields' => array(
+      array(
+        'desc'  => '',
+        'id'    => 'phila_template_select',
+        'type'  => 'select',
+        'class' => 'template-select',
+        'clone' => false,
+        'placeholder'  => 'Select a template',
+        'required' => true,
 
-         'options' => array(
-           'prog_landing_page'  => 'Homepage',
-           'phila_one_quarter'    => '1/4 Headings',
-           ),
-           'admin_columns' => array(
-             'position' => 'after date',
-             'title'    => __( 'Template' ),
-             'sort'     => true,
-           ),
+        'options' => array(
+          'prog_landing_page'  => 'Homepage',
+          'phila_one_quarter'    => '1/4 Headings',
         ),
-     ),
-   );
+        'admin_columns' => array(
+          'position' => 'after date',
+          'title'    => __( 'Template' ),
+          'sort'     => true,
+        ),
+      ),
+    ),
+  );
 
-   $meta_boxes[] = array(
-     'id'       => 'phila_header',
-     'title'    => 'Header image',
-     'pages' => array( 'programs' ),
-     'priority' => 'high',
-     'visible' => array('phila_template_select', '=', 'prog_landing_page'),
-     'fields' => array(
-       array(
-         'id' => 'prog_header_img',
-         'name' => 'Program header image',
-         'type'  => 'image_advanced',
-         'max_file_uploads' => 1,
-       ),
-       array(
-         'id' => 'prog_header_img_shade',
-         'name' => 'Subpage header image',
-         'type'  => 'image_advanced',
-         'max_file_uploads' => 1,
-       ),
-     )
-   );
+  $meta_boxes[] = array(
+    'id'       => 'phila_header',
+    'title'    => 'Header image',
+    'pages' => array( 'programs' ),
+    'priority' => 'high',
+    'visible' => array('phila_template_select', '=', 'prog_landing_page'),
+    'fields' => array(
+      array(
+        'id' => 'prog_header_img',
+        'name' => 'Program header image',
+        'type'  => 'image_advanced',
+        'max_file_uploads' => 1,
+        'columns' => 6,
+      ),
+      array(
+        'id' => 'prog_header_img_shade',
+        'name' => 'Subpage header image',
+        'type'  => 'image_advanced',
+        'max_file_uploads' => 1,
+        'columns' => 6,
+      ),
+    )
+  );
 
   $meta_boxes[] = array(
     'id'       => 'phila_program',
@@ -87,6 +89,4 @@ class Phila_Gov_Program_Templates {
     return $meta_boxes;
   }
 
-
-
- }
+}
