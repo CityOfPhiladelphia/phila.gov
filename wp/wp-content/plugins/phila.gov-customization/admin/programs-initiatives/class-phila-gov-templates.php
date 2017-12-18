@@ -63,12 +63,17 @@ class Phila_Gov_Program_Templates {
         'columns' => 6,
       ),
       array(
-        'id' => 'prog_header_img_shade',
+        'id' => 'prog_header_img_sub',
         'name' => 'Subpage header image',
         'type'  => 'image_advanced',
         'max_file_uploads' => 1,
         'columns' => 6,
       ),
+      array(
+        'type' => 'heading',
+        'name'  => 'Photo credit',
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_title('Name & organization', 'phila_photo_credit', 'E.g.: N. Santos for VISIT PHILADELPHIA™', '60' ),
     )
   );
 
