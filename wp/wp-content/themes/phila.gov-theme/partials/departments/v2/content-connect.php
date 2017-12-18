@@ -12,7 +12,6 @@ if ( !isset($connect_vars) ) {
   $connect_vars = phila_connect_panel($connect_panel);
   }
 ?>
-
 <div class="large-8 columns">
   <div class="row">
     <div class="columns">
@@ -78,6 +77,18 @@ if ( !isset($connect_vars) ) {
       <?php endif; ?>
       </td>
     </tr>
+    <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
+      <tr>
+        <th scope="row" aria-label="website">
+          <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
+        </th>
+        <td>
+          <a href="<?php echo $connect_vars['website']['url'] ?>" class="<?php echo isset($connect_vars['website']['external']) ? 'external' : ''?>">
+            <?php echo $connect_vars['website']['text'] ?>
+          </a>
+        </td>
+      </tr>
+    <?php endif; ?>
   <?php endif; ?>
   <?php if ( ! empty( $connect_vars['social'] ) ) :?>
     <tr>

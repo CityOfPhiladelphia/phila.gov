@@ -294,7 +294,7 @@ function phila_gov_scripts() {
   if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive('document') || is_page_template('templates/the-latest-events-archive.php') ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
-    
+
     wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
 
   }
@@ -1322,15 +1322,15 @@ function phila_connect_panel($connect_panel) {
     $output_array['email'] =
       isset( $connect_panel['phila_connect_general']['phila_connect_email'] ) ? $connect_panel['phila_connect_general']['phila_connect_email'] :'';
 
-      $output_array['cta'] = array(
+    $output_array['website'] = array(
 
-        'title' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_title'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_title'] :'',
+      'text' => isset( $connect_panel['phila_connect_general']['phila_web_link']['link_text'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['link_text'] :'',
 
-        'url' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_url'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_url'] :'',
+      'url' => isset( $connect_panel['phila_connect_general']['phila_web_link']['link_url'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['link_url'] :'',
 
-        'summary' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_summary'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_summary'] :'',
+      'external' => isset( $connect_panel['phila_connect_general']['phila_web_link']['is_external'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['is_external'] :'',
 
-      );
+    );
 
       $output_array['see_all'] =
         isset( $connect_panel['phila_connect_general']['connect_see_all'] ) ? $connect_panel['phila_connect_general']['connect_see_all'] :'';

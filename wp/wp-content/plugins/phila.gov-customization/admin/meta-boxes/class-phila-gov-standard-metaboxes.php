@@ -844,12 +844,7 @@ public static function phila_meta_var_connect(){
             'type' => 'email',
             'desc' => 'example@phila.gov',
           ),
-          array(
-            'name'  => 'Website',
-            'id'  => 'phila_connect_website',
-            'type' => 'url',
-            'desc'  => 'Optional external wesbite',
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link'),
           Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link', 'connect_see_all'),
         ),
       )
