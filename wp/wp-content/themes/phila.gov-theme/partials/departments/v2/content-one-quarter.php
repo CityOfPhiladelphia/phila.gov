@@ -34,11 +34,9 @@
             <?php if($heading_link_set): ?>
               <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
                 <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
-              <a href=""></a>
             <?php else: ?>
-              <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+              <h3 id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
             <?php endif;  ?>
-
 
 
           <?php elseif($heading_has_image ): ?>

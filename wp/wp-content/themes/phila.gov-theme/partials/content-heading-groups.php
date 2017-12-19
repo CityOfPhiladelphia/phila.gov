@@ -15,7 +15,7 @@
     <div class="columns">
       <section>
       <?php if ( isset( $content['phila_wysiwyg_heading'] ) ): ?>
-        <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+        <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h3>
       <?php endif; ?>
       <div class="phm-mu">
         <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
