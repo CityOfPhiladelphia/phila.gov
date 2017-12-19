@@ -487,7 +487,7 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       'name'  => $name,
       'id'    => $id,
-      'type'  => 'url',
+      'type'  => 'text',
       'class' => 'metabox-url',
       'desc'  => $desc,
       'columns' => $columns
