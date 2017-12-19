@@ -136,6 +136,13 @@
           </div>
          <?php endif; ?>
 
+        <?php elseif ( $current_row_option == 'phila_image_list'):?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_image_list'] ) ):
+            $custom_text = $current_row['phila_full_options']['phila_image_list'];
+            ?>
+            <?php include(locate_template('partials/programs/image-list.php')); ?>
+          <?php endif; ?>
+
       <?php endif;  /*end full row */?>
 
       <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
