@@ -8,7 +8,6 @@
 <?php
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
-
   if ( !empty($heading_content) ) : ?>
   <?php foreach ( $heading_content as $content ): ?>
 
@@ -16,7 +15,7 @@
     <div class="columns">
       <section>
       <?php if ( isset( $content['phila_wysiwyg_heading'] ) ): ?>
-        <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+        <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h3>
       <?php endif; ?>
       <div class="phm-mu">
         <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
@@ -46,6 +45,16 @@
               <span class="postal-code"><?php echo $zip; ?></span>
             </div>
             <?php endif;?>
+
+            <?php if ( !empty($content['phila_stepped_select']) ) :?>
+
+              <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);
+
+              include( locate_template( 'partials/stepped-content.php' ) );
+              ?>
+
+            <?php endif;?>
+
           </div>
         <?php endif;?>
         </section>
