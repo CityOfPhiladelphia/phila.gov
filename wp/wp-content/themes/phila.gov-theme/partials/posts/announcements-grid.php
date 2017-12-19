@@ -4,7 +4,7 @@
 */
 ?>
 <?php $ann_categories = isset( $category ) ? $category : '';?>
-<?php $current_time = current_time('m-d-y'); ?>
+<?php $current_time = current_time('U'); ?>
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
 <?php $announcement_args = array(
@@ -17,12 +17,14 @@
     'relation'  => 'AND',
     array(
       'key' => 'phila_announce_end_date',
-      'value'   => $current_time ,
+      'value'   => $current_time,
       'compare' => '>=',
     ),
     $home_filter
   ),
-); ?>
+);
+
+?>
 
 <?php $label = 'announcement'; ?>
 
