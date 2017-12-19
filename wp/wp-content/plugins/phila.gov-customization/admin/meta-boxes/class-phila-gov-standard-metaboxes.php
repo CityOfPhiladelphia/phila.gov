@@ -92,6 +92,7 @@ class Phila_Gov_Standard_Metaboxes {
       'type'  => 'group',
       'clone' => true,
       'sort_clone'  => true,
+      'add_button' => '+ Add row',
 
       'fields'  => array(
         array(
@@ -119,6 +120,20 @@ class Phila_Gov_Standard_Metaboxes {
           'fields' => array(
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
           ),
+        ),
+        array(
+          'desc'  => 'Add stepped content?',
+          'id'  => 'phila_stepped_select',
+          'type'  => 'checkbox'
+        ),
+        array(
+          'id' => 'phila_stepped_content',
+          'type' => 'group',
+          'visible' => array('phila_stepped_select', true),
+
+          'fields'  => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
+          )
         ),
       )
     );

@@ -9,7 +9,6 @@
 
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
-
 ?>
 <?php if ( !empty($heading_content) ) : ?>
   <div class="one-quarter-layout bdr-dark-gray">
@@ -89,6 +88,14 @@
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
               <?php endif;?>
+            <?php endif;?>
+            <?php if ( !empty($content['phila_stepped_select']) ) :?>
+
+              <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);
+
+              include( locate_template( 'partials/stepped-content.php' ) );
+              ?>
+
             <?php endif;?>
           </div>
         </div>
