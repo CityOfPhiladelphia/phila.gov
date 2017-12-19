@@ -83,9 +83,9 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type'  => 'date',
         'class' =>  'effective-end-time',
         'desc'  => 'Choose a time for this announcement to expire. Announcements can only exist for a maximum of two weeks.',
-        'admin_columns' => 'after date',
         'required'=> true,
         'size'  =>  25,
+        'timestamp'  => true,
         'js_options' =>  array(
           'dateFormat' => 'mm-dd-yy',
           'controlType'=> 'select',
