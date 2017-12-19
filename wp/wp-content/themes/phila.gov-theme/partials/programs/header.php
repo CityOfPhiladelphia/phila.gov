@@ -23,6 +23,14 @@
         </div>
       </div>
     </div>
+    <?php get_template_part( 'partials/breadcrumbs' ); ?>
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell">
+          <h2 class="contrast"><?php echo the_title(); ?></h2>
+        </div>
+      </div>
+    </div>
   <?php else: ?>
     <div class="hero-half">
       <div class="grid-x">
