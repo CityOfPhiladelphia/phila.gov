@@ -729,7 +729,7 @@ function phila_home_classes( $classes ) {
 }
 
 /* Returns true if this page is a department page, has children and no other parents - i.e. department homepage
-Or, has metadata t
+Or, has metadata
 */
 
 function phila_is_department_homepage( $post ) {
