@@ -60,14 +60,22 @@ class Phila_Gov_Program_Templates {
         'name' => 'Program header image',
         'type'  => 'image_advanced',
         'max_file_uploads' => 1,
-        'columns' => 6,
+        'columns' => 4,
       ),
       array(
         'id' => 'prog_header_img_sub',
         'name' => 'Subpage header image',
         'type'  => 'image_advanced',
         'max_file_uploads' => 1,
-        'columns' => 6,
+        'columns' => 4,
+      ),
+      array(
+        'id'  => 'phila_v2_department_logo',
+        'name' => 'Program logo',
+        'type'  => 'image_advanced',
+        'desc'  => 'Optional. Image must be at least 600px wide.',
+        'max_file_uploads' => 1,
+        'columns' => 4
       ),
       array(
         'type' => 'heading',
