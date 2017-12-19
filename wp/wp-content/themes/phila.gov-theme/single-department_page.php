@@ -40,8 +40,6 @@ $user_selected_template = phila_get_selected_template();
 get_header(); ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
-  <header>
-
 
   <?php
 
@@ -66,7 +64,7 @@ get_header(); ?>
 
 
     else: //it's an old-style department ?>
-
+    <header>
       <div class="row">
         <div class="columns">
           <h1 class="entry-title contrast mbn"><?php echo $parent->post_title;?></h1>
