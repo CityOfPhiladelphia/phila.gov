@@ -1206,13 +1206,14 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
-  'pages' => array('department_page', 'page', 'service_page'),
+  'pages' => array('department_page', 'page', 'service_page', 'programs'),
   'revision' => true,
 
   'visible' => array(
     'when' => array(
       array( 'phila_template_select', '=', ''),
       array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
+      array( 'phila_template_select', '=', 'phila_one_quarter' ),
       array( 'phila_template_select', '=', 'default'),
       array( 'phila_template_select', '=', 'start_process'),
     ),
