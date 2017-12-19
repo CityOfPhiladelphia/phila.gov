@@ -6,7 +6,6 @@
   if ( !isset( $image_list_vars ) ) :
     $image_list_vars = phila_image_list($image_list);
   endif;
-  d($image_list_vars);
 ?>
 <section>
   <div class="grid-container">
