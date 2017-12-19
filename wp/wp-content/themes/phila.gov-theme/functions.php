@@ -1345,6 +1345,27 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
+function phila_image_list($image_list) {
+
+  $output_array = array();
+
+  foreach ($image_list as $key => $value) {
+
+    $output_array['title'] = isset( $image_list['title'] ) ? $image_list['title'] : '';
+  }
+
+  if( isset($image_list['phila_image_list']) ) {
+    $output_array['urls'] = array();
+    foreach( $image_list['phila_image_list'] as $image ) {
+      array_push($output_array['urls'], wp_get_attachment_url($image) );
+    }
+  }
+
+  return $output_array;
+
+}
+
+
 
 function phila_get_page_icon( $post ){
 
