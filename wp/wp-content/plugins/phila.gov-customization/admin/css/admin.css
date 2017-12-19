@@ -44,7 +44,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   display: none !important;
 }
 
-th#title{
+th#title,
+th#phila_template_select{
   width:20rem;
 }
 

@@ -196,13 +196,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
-
-    if ( !phila_util_is_v2_template( $parent->ID ) && !is_front_page() && !is_404() && !is_page_template('templates/the-latest.php')) : ?>
-      <div class="row mts mbm">
-        <div class="columns">
-          <?php echo phila_breadcrumbs(); ?>
-        </div>
-      </div>
+    $post_type = get_post_type();
+    if ( !phila_util_is_v2_template( $parent->ID ) &&
+        !is_front_page() &&
+        !is_404() &&
+        !is_page_template('templates/the-latest.php') &&
+        $post_type != 'programs') :
+        get_template_part( 'partials/breadcrumbs' );
+      ?>
     <?php endif; ?>
 
   <div id="content">
