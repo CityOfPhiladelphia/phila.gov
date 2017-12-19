@@ -1227,8 +1227,8 @@ $meta_boxes[] = array(
       'clone' => false,
 
       'fields' => array(
-        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_unique()
-      )
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_unique(),
+      ),
     )
   )
 );
