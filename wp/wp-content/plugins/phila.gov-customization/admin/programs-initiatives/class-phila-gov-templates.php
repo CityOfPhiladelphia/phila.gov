@@ -92,8 +92,6 @@ class Phila_Gov_Program_Templates {
     'priority' => 'high',
     'revision' => true,
 
-    'visible'  => array('phila_template_select', '=', 'prog_landing_page'),
-
     'fields' => array(
       Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
     )
