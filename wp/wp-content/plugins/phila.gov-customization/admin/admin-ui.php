@@ -151,3 +151,57 @@ add_action( 'init', 'phila_unregister_tags' );
 function phila_unregister_tags() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 }
+
+
+/**
+ * Hooks into users columns and add new column to display which categories this user can access. This is modified version of the same function used by the Restrict Categories plugin.
+ *
+ * @since   0.22.0
+ */
+function add_user_retricted_categories_column($columns) {
+    return array_merge( $columns, array('user_restricted_cats' => __(' Restricted Categories ')) );
+  }
+  add_filter('manage_users_columns' , 'add_user_retricted_categories_column');
+  
+function user_restricted_category_column_values($val, $column_name, $user_id) {
+    $cat_list = '';
+      if($column_name == "user_restricted_cats"){
+        $defaults = array( 'RestrictCategoriesDefault' );
+        // Get the current user in the admin
+            $user = new WP_User( $user_id );
+      
+          // Get the user role
+          $user_cap = $user->roles;
+      
+          // Get the user login name/ID
+          if ( function_exists( 'get_users' ) )
+            $user_login = $user->user_nicename;
+          elseif ( function_exists( 'get_users_of_blog' ) )
+            $user_login = $user->ID;
+      
+          // Get selected categories for Roles
+          $settings = get_option( 'RestrictCats_options' );
+      
+          // Get selected categories for Users
+          $settings_user = get_option( 'RestrictCats_user_options' );
+      
+          // For users, strip out the placeholder category, which is only used to make sure the checkboxes work
+          if ( is_array( $settings_user ) && array_key_exists( $user_login . '_user_cats', $settings_user ) ) {
+            $settings_user[ $user_login . '_user_cats' ] = array_values( array_diff( $settings_user[ $user_login . '_user_cats' ], $defaults ) );
+            // Selected categories for User overwrites Roles selection
+          if ( is_array( $settings_user ) && !empty( $settings_user[ $user_login . '_user_cats' ] ) ) {
+        
+              // Build the category list
+              foreach ( $settings_user[ $user_login . '_user_cats' ] as $category ) {
+                $term = get_term_by( 'slug', $category, 'category' );
+                $cat_list[] = $term->name;
+              }
+    
+            }
+          }
+      }
+      
+      return (is_array($cat_list) ? implode(', ' , $cat_list) : '');
+  }
+  
+  add_action( 'manage_users_custom_column', 'user_restricted_category_column_values', 10, 3 );
