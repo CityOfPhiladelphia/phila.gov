@@ -56,7 +56,7 @@ if ( empty( $press_categories ) ) {
 <?php $label = 'press_release' ?>
 <?php $count = 0; ?>
 
-<div class="press-grid">
+<div class="press-grid<?= ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
     <?php if (!is_page_template('templates/the-latest.php')): ?>

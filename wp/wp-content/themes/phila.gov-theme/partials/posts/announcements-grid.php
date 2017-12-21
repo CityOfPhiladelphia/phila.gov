@@ -23,15 +23,15 @@
     $home_filter
   ),
 );
-
 ?>
 
 <?php $label = 'announcement'; ?>
 
 <?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
-<div class="grid-container mbxl">
   <?php if ( $announcements->have_posts() ) : ?>
+    <div class="grid-container mbxl">
+
     <?php if (!is_page_template('templates/the-latest.php')): ?>
       <h2>Announcements</h2>
     <?php endif; ?>
@@ -61,8 +61,7 @@
           </div>
 
         <?php endwhile; ?>
-      <?php endif; ?>
-    <?php wp_reset_postdata(); ?>
-
-  </div>
-</div>
+      </div>
+    </div>
+  <?php endif; ?>
+<?php wp_reset_postdata(); ?>

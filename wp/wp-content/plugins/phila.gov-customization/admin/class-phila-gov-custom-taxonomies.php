@@ -26,14 +26,14 @@ class Phila_Gov_Custom_Taxonomies {
     // Service Pages
     register_taxonomy('service_type',
       array(
-        'service_page'
+        'service_page',
+        'programs'
       ),
       array(
       'hierarchical' => true,
       'labels' => array(
         'name' => _x( 'Service Type', 'phila-gov'),
         'singular_name' => _x( 'Service Type', 'phila-gov'),
-        'menu_name' =>     __('Service Types'),
         'search_items' =>  __( 'Search Service Types' ),
         'all_items' =>     __( 'All Service Types' ),
         'edit_item' =>     __( 'Edit Service Type' ),
@@ -50,6 +50,36 @@ class Phila_Gov_Custom_Taxonomies {
       ),
     ));
   }
+
+  function add_audiences() {
+    // Service Pages
+    register_taxonomy('audience',
+      array(
+        'programs'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Audiences', 'phila-gov'),
+        'singular_name' => _x( 'Audience', 'phila-gov' ),
+        'search_items' =>  __( 'Search Audiences' ),
+        'all_items' =>     __( 'All Audiences' ),
+        'edit_item' =>     __( 'Edit Audience' ),
+        'update_item' =>   __( 'Update Audience' ),
+        'add_new_item' =>  __( 'Add New Audience' ),
+        'new_item_name' => __( 'New Audience' ),
+        'menu_name' =>     __( 'Audiences' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'audiences',
+        'with_front' => false,
+      ),
+    ));
+  }
+
+
   function add_media_type() {
     // Service Pages
     register_taxonomy('media_type',
@@ -61,7 +91,6 @@ class Phila_Gov_Custom_Taxonomies {
       'labels' => array(
         'name' => _x( 'Media Type', 'phila-gov'),
         'singular_name' => _x( 'Media Type', 'phila-gov'),
-        'menu_name' =>     __('Media Types'),
         'search_items' =>  __( 'Search Media Types' ),
         'all_items' =>     __( 'All Media Types' ),
         'edit_item' =>     __( 'Edit Media Type' ),
@@ -89,7 +118,6 @@ class Phila_Gov_Custom_Taxonomies {
       'labels' => array(
         'name' => _x( 'Media Author', 'phila-gov'),
         'singular_name' => _x( 'Media Author', 'phila-gov'),
-        'menu_name' =>     __('Media Author'),
         'search_items' =>  __( 'Search Media Author' ),
         'all_items' =>     __( 'All Media Authors' ),
         'edit_item' =>     __( 'Edit Media Author' ),
