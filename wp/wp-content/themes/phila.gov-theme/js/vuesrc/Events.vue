@@ -13,7 +13,7 @@
       <div class="grid-x grid-margin-x">
         <div class="cell medium-8 small-11">
           <datepicker
-          placeholder="Today"
+          placeholder="Start date"
           name="startDate"
           v-on:closed="runDateQuery"
           v-model="state.startDate"
@@ -26,6 +26,7 @@
         <div class="cell medium-8 small-11">
           <datepicker
           name="endDate"
+          placeholder="End date"
           v-on:closed="runDateQuery"
           v-model="state.endDate"
           format="MMM. dd, yyyy"
