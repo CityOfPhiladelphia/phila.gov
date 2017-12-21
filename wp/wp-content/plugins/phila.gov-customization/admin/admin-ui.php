@@ -212,9 +212,9 @@ function user_restricted_category_column_values($val, $column_name, $user_id) {
 add_filter('manage_posts_columns', 'remove_posts_count_columns');
 
 function remove_posts_count_columns( $columns ) {
-   unset(
-     $columns['comments']
-   );
+  unset(
+    $columns['comments']
+  );
 
   return $columns;
 }
