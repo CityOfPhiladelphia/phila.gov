@@ -35,13 +35,14 @@ endif;
   <div class="columns">
     <table class="service-update">
       <tbody>
+        <?php $type = array()?>
        <?php //Sort by urgency level (critical to normal) and then A-Z ?>
        <?php foreach ($update_array as $key => $row ): ?>
          <?php $urgency[$key] = $row['service_level'];
          ?>
-         <?php $type[$key] = $row['service_type'];?>
-
+         <?php array_push($type, $row['service_type']);?>
        <?php endforeach; ?>
+
        <?php array_multisort( $urgency, SORT_DESC, $type, SORT_ASC, $update_array );?>
 
        <?php
