@@ -16,7 +16,9 @@
           placeholder="Today"
           name="startDate"
           v-on:closed="runDateQuery"
-          v-model="state.startDate"></datepicker>
+          v-model="state.startDate"
+          format="MMM. dd, yyyy"
+          :disabled="state.disabled"></datepicker>
         </div>
         <div class="cell medium-1 small-2 mts">
           <i class="fa fa-arrow-right"></i>
@@ -25,7 +27,9 @@
           <datepicker
           name="endDate"
           v-on:closed="runDateQuery"
-          v-model="state.endDate"></datepicker>
+          v-model="state.endDate"
+          format="MMM. dd, yyyy"
+          :disabled="state.disabled"></datepicker>
         </div>
         <div class="cell medium-7 small-24">
           <a class="button content-type-featured full" @click="reset">Clear filters</a>
@@ -124,9 +128,6 @@ import Search from './components/phila-search.vue'
 const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
 const links = []
 
-let state = {
-  date: new Date()
-}
 const gCalId = g_cal_id
 
 export default {
@@ -166,7 +167,11 @@ export default {
         loadStartDate: moment().format(),
         loadEndDate: moment().format(),
         startDate: '',
-        endDate: ''
+        endDate: '',
+        disabled: {
+          to: new Date(2015, 1, 1),
+          from: new Date()
+        }
       },
 
       //queriedCategory: this.$route.query.category
