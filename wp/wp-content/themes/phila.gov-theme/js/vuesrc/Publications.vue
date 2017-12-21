@@ -23,7 +23,8 @@
             <i class="fa fa-arrow-right"></i>
           </div>
           <div class="cell medium-4 small-11">
-            <datepicker placeholder="End date"
+            <datepicker
+            placeholder="End date"
             name="endDate"
             v-on:closed="runDateQuery"
             v-model="state.endDate"
