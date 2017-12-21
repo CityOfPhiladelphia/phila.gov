@@ -281,7 +281,7 @@ class Phila_Archives_Controller {
     }
 
     if (isset( $schema['properties']['title'] )) {
-      $post_data['title']  =  (string) $post->post_title;
+      $post_data['title']  =  (string) html_entity_decode($post->post_title);
     }
 
     if (isset( $schema['properties']['template'] )) {
