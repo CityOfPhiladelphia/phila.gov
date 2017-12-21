@@ -78,18 +78,6 @@
            <span class="vcard-label">Email: </span><a href="mailto:<?php echo $connect_vars['email']; ?>"><?php echo $connect_vars['email']; ?></a>
          </div>
         <?php endif; ?>
-        <?php if ( !$connect_vars['cta']['title'] == '' && !$connect_vars['cta']['url'] == '' ) : ?>
-          <hr>
-          <div class="ptxs pbn center">
-            <?php if (!$connect_vars['cta']['summary'] == '') echo '<span>' . $connect_vars['cta']['summary'] . '</span>'; ?>
-            <br/>
-              <a href="<?php echo $connect_vars['cta']['url'];?>" class="button icon clearfix mtm">
-                <div class="valign">
-                  <div class="button-label valign-cell"><?php echo $connect_vars['cta']['title']; ?></div>
-                </div>
-              </a>
-          </div>
-        <?php endif; ?>
       </div>
     </div>
   </div>
