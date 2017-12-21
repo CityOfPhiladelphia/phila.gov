@@ -17,6 +17,7 @@ class Phila_Gov_Custom_Taxonomies {
 
   public function __construct(){
     add_action( 'init', array($this, 'add_service_type') );
+    add_action( 'init', array($this, 'add_audiences') );
     add_action( 'init', array($this, 'add_media_type') );
     add_action( 'init', array($this, 'add_media_author') );
 
@@ -52,7 +53,7 @@ class Phila_Gov_Custom_Taxonomies {
   }
 
   function add_audiences() {
-    // Service Pages
+    // Program pages
     register_taxonomy('audience',
       array(
         'programs'
