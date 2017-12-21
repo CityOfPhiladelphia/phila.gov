@@ -42,10 +42,10 @@
             <section class="expanded">
               <div class="row">
                 <div class="columns">
-                  <h2>Events</h2>
+                  <h2 class="mbn">Events</h2>
                 </div>
               </div>
-              <div class="row expanded calendar-row mbm ptm">
+              <div class="row expanded calendar-row">
                 <div class="medium-centered large-16 columns">
                   <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
                 </div>

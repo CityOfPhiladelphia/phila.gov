@@ -54,11 +54,11 @@ if (!empty($row_two_column_selection)) {
 <?php if ( !empty( $row_two_full_col_cal_id ) ) : ?>
   <div class="row">
     <div class="columns">
-      <h2>Events</h2>
+      <h2 class="mbn">Events</h2>
     </div>
   </div>
 
-  <div class="row calendar-row mbm ptm">
+  <div class="row calendar-row">
     <div class="columns">
       <?php echo do_shortcode('[calendar id="' . $row_two_full_col_cal_id . '"]'); ?>
     </div>

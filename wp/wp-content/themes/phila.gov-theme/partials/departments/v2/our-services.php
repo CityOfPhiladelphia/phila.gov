@@ -6,6 +6,8 @@
  */
 ?>
 
+<?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
+
 <?php
   $services_list = rwmb_meta( 'phila_v2_homepage_services' );
   $services = phila_loop_clonable_metabox( $services_list );

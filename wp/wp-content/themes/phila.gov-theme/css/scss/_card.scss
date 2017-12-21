@@ -6,6 +6,7 @@ a.card,
     font-size: rem-calc(25);
     margin: 0;
     color:color(dark-gray);
+    word-break: break-word;
   }
   &.card--list {
     @include xy-grid;

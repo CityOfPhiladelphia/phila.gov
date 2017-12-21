@@ -17,7 +17,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & Instructions</h3>
+      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Forms & instructions</h3>
       <div class="phm-mu">
         <?php foreach ( $more['forms'] as $form ): ?>
           <div class="pvs">
