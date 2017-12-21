@@ -37,10 +37,10 @@
                 <section class="expanded">
                   <div class="row">
                     <div class="columns">
-                      <h2>Events</h2>
+                      <h2 class="mbn">Events</h2>
                     </div>
                   </div>
-                  <div class="row calendar-row mbm ptm">
+                  <div class="row calendar-row">
                     <div class="columns">
                       <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
                     </div>
