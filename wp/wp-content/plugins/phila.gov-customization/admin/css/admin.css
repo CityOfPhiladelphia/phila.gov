@@ -35,18 +35,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #postexcerpt,
 #commentstatusdiv,
 /*Hide View Attachment Page on Admin*/
-.attachment-info .view-attachment,
-/*No comment columns*/
-#comments,
-.comments,
-.column-comments
-{
+.attachment-info .view-attachment{
   display: none !important;
-}
-
-th#title,
-th#phila_template_select{
-  width:20rem;
 }
 
 .rwmb-button.remove-clone:hover {
