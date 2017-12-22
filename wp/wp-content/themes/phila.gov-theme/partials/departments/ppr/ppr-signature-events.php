@@ -4,7 +4,7 @@
     </div>
     <div class="columns">
         <div class="grid-container">
-        <div class="grid-x grid-margin-x align-justify">
+        <div class="grid-x grid-margin-x align-spaced">
             <?php
                 include(locate_template('partials/departments/ppr/ppr-signature-event.php'));
                 include(locate_template('partials/departments/ppr/ppr-signature-event.php'));
