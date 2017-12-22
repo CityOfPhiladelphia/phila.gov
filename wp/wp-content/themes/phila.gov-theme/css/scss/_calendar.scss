@@ -9,10 +9,11 @@ dl.simcal-events-list-container{
     }
   }
 }
-.row.event-row{
+.event-row{
   cursor: pointer;
   margin-right:0;
   margin-left:0;
+  margin-bottom:1rem;
   @include transition( opacity, .2s );
   a:link, a:visited{
     font-weight:normal;
@@ -37,12 +38,9 @@ ul.simcal-events{
   display: inline
 }
 
-.event-row{
-  margin-bottom:1rem;
-}
 .calendar-details{
   background-color:color(ghost-gray);
-  padding:0 1rem;
+  padding:1rem;
   min-height:94px;
   border-left:1px solid black;
   .title{
@@ -74,8 +72,9 @@ ul.simcal-events{
 }
 
 @media only screen and (min-width: 40.063em) {
-  .columns.calendar-details {
-    padding:1.2rem;
+  .calendar-details {
+    //important to override column padding
+    padding:1.2rem !important;
     border-left:10px solid white;
   }
   .calendar-date{

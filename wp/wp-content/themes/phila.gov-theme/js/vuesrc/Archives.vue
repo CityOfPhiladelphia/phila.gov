@@ -1,5 +1,5 @@
 <template>
-  <div id="archive-results">
+  <div id="archives">
     <form v-on:submit.prevent="onSubmit">
       <div class="search">
         <input id="post-search" type="text" name="search" placeholder="Search by author, title, or keyword" class="search-field" ref="search-field"
@@ -7,54 +7,50 @@
         <input type="submit" value="submit" class="search-submit">
       </div>
     </form>
-    <div class="accordion" data-accordion data-allow-all-closed="true">
-      <div id="filter-results" class="accordion-item is-active" data-accordion-item>
-        <a class="h5 accordion-title">Filter results</a>
-          <div class="accordion-content" data-tab-content>
-            <fieldset>
-              <div class="grid-x grid-margin-x mbl">
-                <div v-for="(value, key) in templates" class="cell medium-auto">
-                  <input type="radio"
-                  v-model="checkedTemplates"
-                  v-bind:value="key"
-                  v-bind:name="key"
-                  v-bind:id="key"
-                  @click="onSubmit" />
-                  <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
-                </div>
-              </div>
-            </fieldset>
-            <div class="grid-x grid-margin-x">
-              <div class="cell medium-4 small-11">
-                <datepicker
-                name="startDate"
-                placeholder="Start date"
-                v-on:closed="runDateQuery"
-                v-model="state.startDate"></datepicker>
-              </div>
-              <div class="cell medium-1 small-2 mts">
-                <i class="fa fa-arrow-right"></i>
-              </div>
-              <div class="cell medium-4 small-11">
-                <datepicker placeholder="End date"
-                name="endDate"
-                v-on:closed="runDateQuery"
-                v-model="state.endDate"></datepicker>
-              </div>
-              <div class="cell medium-9 small-24 auto filter-by-owner">
-                <v-select
-                ref="categorySelect"
-                label="slang_name"
-                placeholder="All departments"
-                :value="parseCategory"
-                :options="categories"
-                :on-change="filterByCategory">
-                </v-select>
-              </div>
-              <div class="cell medium-6 small-24">
-                <a class="button content-type-featured full" @click="reset">Clear filters</a>
-              </div>
-            </div>
+      <div id="filter-results" class="bg-ghost-gray pam">
+      <div class="h5">Filter results</div>
+      <fieldset>
+        <div class="grid-x grid-margin-x mbl">
+          <div v-for="(value, key) in templates" class="cell medium-auto">
+            <input type="radio"
+            v-model="checkedTemplates"
+            v-bind:value="key"
+            v-bind:name="key"
+            v-bind:id="key"
+            @click="onSubmit" />
+            <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
+          </div>
+        </div>
+      </fieldset>
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-4 small-11">
+          <datepicker
+          name="startDate"
+          placeholder="Start date"
+          v-on:closed="runDateQuery"
+          v-model="state.startDate"></datepicker>
+        </div>
+        <div class="cell medium-1 small-2 mts">
+          <i class="fa fa-arrow-right"></i>
+        </div>
+        <div class="cell medium-4 small-11">
+          <datepicker placeholder="End date"
+          name="endDate"
+          v-on:closed="runDateQuery"
+          v-model="state.endDate"></datepicker>
+        </div>
+        <div class="cell medium-9 small-24 auto filter-by-owner">
+          <v-select
+          ref="categorySelect"
+          label="slang_name"
+          placeholder="All departments"
+          :value="parseCategory"
+          :options="categories"
+          :on-change="filterByCategory">
+          </v-select>
+        </div>
+        <div class="cell medium-6 small-24">
+          <a class="button content-type-featured full" @click="reset">Clear filters</a>
         </div>
       </div>
     </div>
@@ -148,7 +144,7 @@ export default {
         endDate: ''
       },
 
-      queriedTemplate : this.$route.query.template,
+      queriedTemplate: this.$route.query.template,
       queriedCategory: this.$route.query.category
 
     }
@@ -181,12 +177,12 @@ export default {
         }
       })
       .then(response => {
-        this.loading = false
         this.posts = response.data
         this.successfulResponse
       })
       .catch(e => {
         this.failure = true
+        this.loading = false
       })
     }
     },
@@ -217,13 +213,12 @@ export default {
             }
           })
           .then(response => {
-            this.loading = false
             this.posts = response.data
-
             this.successfulResponse
           })
           .catch(e => {
             this.failure = true
+            this.loading = false
         })
       })
     },
@@ -263,20 +258,19 @@ export default {
         params : {
           's': this.searchedVal,
           'category': this.selectedCategory,
-          'template' : this.checkedTemplates,
-          'count' : -1,
+          'template': this.checkedTemplates,
+          'count': -1,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
           }
         })
         .then(response => {
-          this.loading = false
           this.posts = response.data
-
           this.successfulResponse
         })
         .catch(e => {
           this.failure = true
+          this.loading = false
       })
     },
     filterByCategory: function(selectedVal){
@@ -287,9 +281,9 @@ export default {
       axios.get(endpoint + 'archives', {
         params : {
           's': this.searchedVal,
-          'template' : this.checkedTemplates,
+          'template': this.checkedTemplates,
           'category': this.selectedCategory,
-          'count' : -1,
+          'count': -1,
           'start_date': this.state.startDate,
           'end_date': this.state.endDate,
           }
@@ -304,6 +298,7 @@ export default {
         })
         .catch(e => {
           this.failure = true
+          this.loading = false
       })
     })
     },
@@ -312,8 +307,12 @@ export default {
     successfulResponse: function(){
       if (this.posts.length == 0) {
         this.emptyResponse = true
+        this.loading = false
+        this.failure = false
       }else{
         this.emptyResponse = false
+        this.loading = false
+        this.failure = false
       }
     },
     parseCategory: function(){
@@ -349,7 +348,7 @@ export default {
   top:0;
   right:0;
   background: #0f4d90;
-  padding: 1rem 1.5rem 1rem 1rem;
+  padding: .6rem 1.5rem 1rem .8rem;
   height: inherit;
 }
 
