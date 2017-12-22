@@ -12,10 +12,6 @@
      * @var array
      */
     $homepage_v2_content_partials = array(
-        'content-service-updates'   => array(
-                                                'type'         => 'global',
-                                                'shown'        => true
-                                            ),
         'our-services'         => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
@@ -108,6 +104,13 @@
 
             break;
 
+            case 'global':
+              $template_name =  key_exists('template_name', $partial_meta) ? $partial_meta['template_name'] : $partial_name;
+              $template_path =  $HOMEPAGE_V2_CONTENT_PARTIALS_PATHS[$partial_meta['type']] .$template_name;
+              $template_data =  key_exists('data',$partial_meta) ? $partial_meta['data'] : array();
+              if($partial_meta['shown']):
+                  phila_get_template_part( $template_path, $template_data);
+              endif;
 
             case 'v1':
             case 'v2':

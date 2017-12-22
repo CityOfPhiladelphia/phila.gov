@@ -87,6 +87,12 @@ class Phila_Gov_Admin_Templates {
           'relation' => 'or'
         ),
       ),
+      array(
+        'id' => 'phila_template_select_staff',
+        'type' => 'custom_html',
+        'std' => 'Visit <a href="/wp-admin/edit.php?post_type=staff_directory">staff members</a> section to add/edit staff.',
+        'visible' => array('phila_template_select', 'in', ['staff_directory_v2','staff_directory'])
+      )
     ),
   );
    return $meta_boxes;
