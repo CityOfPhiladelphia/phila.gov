@@ -73,7 +73,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <?php if (phila_util_return_is_post(get_post_type()) ) : ?>
   <?php get_template_part( 'partials/social', 'media' ); ?>
 <?php endif ?>
-
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
     <!-- Beta opt-out -->
