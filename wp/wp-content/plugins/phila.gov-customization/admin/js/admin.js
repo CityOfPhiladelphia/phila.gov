@@ -222,7 +222,7 @@ jQuery(document).ready(function($) {
           data: {
             action: 'addDepartmentParent',
             postIds: postIds,
-            nonce: myAjax.ajax_nonce,
+            security: myAjax.ajax_nonce,
           }
         }).success(function(response) {
           if (response) {
