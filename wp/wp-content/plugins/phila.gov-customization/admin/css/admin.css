@@ -112,3 +112,21 @@ input.error, textarea.error, select.error {
 #know-the-facts .rwmb-input input{
   width: 100%;
 }
+
+/*Appearance -> Menus -> Departments Sidebar*/
+ul#department_page-search-checklist li .menu-item-title small.pparent {
+  line-height: 1.3 !important;
+  display: block;
+  margin-bottom: 10px;
+  font-style: italic;
+  color:#8f9bab;
+}
+
+ul#department_page-search-checklist li .menu-item-title small.pparent span {
+  font-weight:600;
+}
+
+ul#department_page-search-checklist li{
+  line-height: 1.2;
+  margin-bottom: 20px;
+}

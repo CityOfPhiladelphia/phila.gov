@@ -228,7 +228,7 @@ jQuery(document).ready(function($) {
           if (response) {
             $.each(response, function(id,parent){
               value = id.replace("p=", "");
-              parent = "<br/><small>Page Parent: " + parent + "</small>";
+              parent = "<small class='pparent'><span>Parent:</span> " + parent + "</small>";
               $('#department_page-search-checklist .menu-item-title input[value="' + value + '"]').parent("label").append(parent);
             });
           }
