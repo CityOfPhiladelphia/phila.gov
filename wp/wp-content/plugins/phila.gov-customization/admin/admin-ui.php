@@ -160,9 +160,8 @@ function phila_unregister_tags() {
 }
 
 /**
- * Ajax: Add Department Parents to Nav Menu search results
+ * Ajax: Add Departments parent pages to Appearance -> Menus -> Departments search results, and returns upmost parent of each child page. See admin.js for ajax intercept.
  */
-
 function addDepartmentParent() {
 
     check_ajax_referer( 'search-results-update', 'security' );

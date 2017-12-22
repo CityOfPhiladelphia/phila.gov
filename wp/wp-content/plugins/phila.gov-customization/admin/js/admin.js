@@ -194,6 +194,10 @@ jQuery(document).ready(function($) {
 
   }
 
+  /*
+  * Intercepts the ajax response sent from Apperance -> Menu -> Departments search results and adds the upmost parent of each child page found. This should make it easier to identify child pages that have the same name".
+  */
+
   if($('body').hasClass('nav-menus-php')){
     $(document).ajaxSuccess(function(event, request, settings){
 
