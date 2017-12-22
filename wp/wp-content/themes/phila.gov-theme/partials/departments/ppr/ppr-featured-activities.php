@@ -5,7 +5,7 @@
 
     <div class="columns">
         <div class="grid-container">
-        <div id="ppr-feat-activites__grid" class="grid-x grid-margin-x align-stretch">
+        <div id="ppr-feat-activites__grid" class="grid-x grid-margin-x align-stretch align-center">
           <?php
             include(locate_template('partials/departments/ppr/ppr-feat-activity-card.php'));
             include(locate_template('partials/departments/ppr/ppr-feat-activity-card.php'));
