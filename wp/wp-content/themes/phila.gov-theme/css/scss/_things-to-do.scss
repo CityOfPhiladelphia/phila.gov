@@ -1,0 +1,145 @@
+.category-philadelphia-parks-recreation-staged,
+.category-philadelphia-parks-recreation{
+    .things-to-do{
+        & > .row:not(:first-child){
+            margin: 50px auto;
+        }
+    }
+}
+
+.photo-callout-block{
+    align-items: stretch;
+}
+
+.photo-callout-block__img.cell{
+    overflow: hidden;
+    margin-bottom:0;
+    img{
+        width:100%;
+        display: block;
+        margin:0;
+        padding:0
+    }
+
+}
+
+
+.photo-callout-block__txt.cell{
+    max-height: 350px;
+    padding: 4% 8%;
+    background: color(ghost-gray);
+}
+
+.photo-callout-block__txt-sub-header{
+    color: color(dark-ben-franklin);
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+
+.photo-callout-block__txt-header{
+    font-weight: 700;
+}
+.photo-callout-block__txt-btn{
+    margin-top: 20px;
+}
+
+
+
+/* =======================================================================
+  Featured Activities
+========================================================================== */
+.ppr-feat-activites{
+    .grid-container{
+        padding:10px 0 0 0;
+    }
+}
+#ppr-feat-activites__grid{
+
+}
+.ppr-feat-activity{
+    border: 1px solid black;
+    padding: 25px 20px;
+    position: relative;
+    border-bottom: 5px solid color(dark-ben-franklin);
+    h3{
+        font-weight: 700;
+        padding-bottom:10px;
+    }
+    & > *:not(.ppr-feat-activity__loader){
+        transition: all 0.5s ease;
+        opacity: 0;
+    }
+    &.loaded{
+        *{opacity: 1;}
+    }
+}
+.ppr-feat-activity__desc{
+    margin-bottom:0;
+}
+.ppr-feat-activity__learn-more{
+    margin: 0;
+    padding-top: 5px;
+}
+
+.ppr-feat-activity__location{
+    width: 100%;
+    margin: 20px 0 30px 0;
+    * {color: color(dark-ben-franklin);}
+    .fa-map-marker{ padding-right: 10px; }
+}
+
+
+.ppr-feat-activity__location-header{
+    margin: 0;
+    padding:0;
+    font-weight: 700;
+}
+
+.ppr-feat-activity__meta{
+    h5{
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.ppr-feat-activity__loader{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) scale(1.7);
+    path {
+        fill: color(light-blue) !important;
+    }
+}
+
+/* =======================================================================
+  Signature Events
+========================================================================== */
+.ppr-signature-events{
+    .grid-container{
+        padding:10px 0 0 0;
+    }
+
+}
+
+.ppr-signature-events__grid{
+
+}
+
+.ppf-signature-event__card{
+    margin-bottom: 50px;
+}
+/* =======================================================================
+  Prorams and initiatives
+========================================================================== */
+.progs-inits-grid__item{
+    padding: 20px;
+    &:nth-child(-n+4){
+        border-bottom: 1px solid black;
+    }
+    &:nth-child(2n+2),
+    &:nth-child(4n+3)
+    {
+        border-left: 1px solid black;
+    }
+}

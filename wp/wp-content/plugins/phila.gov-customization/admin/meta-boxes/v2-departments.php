@@ -115,8 +115,16 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title' => 'Full-width call to action',
-    'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'homepage_v2' ),
+    'pages'    => array( 'department_page','things-to-do' ),
+    // 'visible' => array( 'phila_template_select', 'homepage_v2' ),
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', 'homepage_v2'),
+        array('phila_template_select', 'things-to-do')
+      ),
+      'relation' => 'or'
+
+    ),
 
     'fields' => array(
       array(
