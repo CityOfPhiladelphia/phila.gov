@@ -93,12 +93,10 @@ get_header(); ?>
         <h2>Service updates</h2>
       </div>
     </div>
-    <?php $args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
-    <?php $service_updates_loop = new WP_Query( $args ); ?>
+    <?php $service_args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
     <div class="mbxl">
       <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     </div>
-    <?php wp_reset_query();?>
 
     <?php $home_filter = array(
       'key' => 'show_on_home',

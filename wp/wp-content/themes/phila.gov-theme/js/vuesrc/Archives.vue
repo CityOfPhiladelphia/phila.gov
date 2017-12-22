@@ -28,16 +28,21 @@
           name="startDate"
           placeholder="Start date"
           v-on:closed="runDateQuery"
-          v-model="state.startDate"></datepicker>
+          v-model="state.startDate"
+          format="MMM. dd, yyyy"
+          :disabled="state.disabled"></datepicker>
         </div>
         <div class="cell medium-1 small-2 mts">
           <i class="fa fa-arrow-right"></i>
         </div>
         <div class="cell medium-4 small-11">
-          <datepicker placeholder="End date"
+          <datepicker
           name="endDate"
+          placeholder="End date"
           v-on:closed="runDateQuery"
-          v-model="state.endDate"></datepicker>
+          v-model="state.endDate"
+          format="MMM. dd, yyyy"
+          :disabled="state.disabled"></datepicker>
         </div>
         <div class="cell medium-9 small-24 auto filter-by-owner">
           <v-select
@@ -102,13 +107,9 @@
 import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vuejs-datepicker'
 
 const endpoint = '/wp-json/the-latest/v1/'
-
-let state = {
-  date: new Date()
-}
 
 export default {
   name: 'archives',
@@ -141,7 +142,11 @@ export default {
 
       state: {
         startDate: '',
-        endDate: ''
+        endDate: '',
+        disabled: {
+          to: new Date(2015, 1, 1),
+          from: new Date()
+        }
       },
 
       queriedTemplate: this.$route.query.template,

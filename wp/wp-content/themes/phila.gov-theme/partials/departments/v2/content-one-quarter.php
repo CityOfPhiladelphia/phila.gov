@@ -9,7 +9,6 @@
 
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
-
 ?>
 <?php if ( !empty($heading_content) ) : ?>
   <div class="one-quarter-layout bdr-dark-gray">
@@ -35,11 +34,9 @@
             <?php if($heading_link_set): ?>
               <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
                 <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
-              <a href=""></a>
             <?php else: ?>
-              <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+              <h3 id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
             <?php endif;  ?>
-
 
 
           <?php elseif($heading_has_image ): ?>
@@ -89,6 +86,14 @@
                   <span class="postal-code"><?php echo $zip; ?></span>
                 </div>
               <?php endif;?>
+            <?php endif;?>
+            <?php if ( !empty($content['phila_stepped_select']) ) :?>
+
+              <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);
+
+              include( locate_template( 'partials/stepped-content.php' ) );
+              ?>
+
             <?php endif;?>
           </div>
         </div>

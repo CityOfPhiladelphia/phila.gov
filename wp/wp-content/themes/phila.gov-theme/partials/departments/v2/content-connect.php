@@ -7,8 +7,10 @@
  */
 ?>
 <?php
-$connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
-$connect_vars = phila_connect_panel($connect_panel);
+  $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel');
+  if ( !isset( $connect_vars ) ) :
+    $connect_vars = phila_connect_panel($connect_panel);
+  endif;
 ?>
 
 <div class="large-8 columns">
@@ -76,6 +78,18 @@ $connect_vars = phila_connect_panel($connect_panel);
       <?php endif; ?>
       </td>
     </tr>
+    <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
+      <tr>
+        <th scope="row" aria-label="website">
+          <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
+        </th>
+        <td>
+          <a href="<?php echo $connect_vars['website']['url'] ?>" class="<?php echo isset($connect_vars['website']['external']) ? 'external' : ''?>">
+            <?php echo $connect_vars['website']['text'] ?>
+          </a>
+        </td>
+      </tr>
+    <?php endif; ?>
   <?php endif; ?>
   <?php if ( ! empty( $connect_vars['social'] ) ) :?>
     <tr>
