@@ -1,5 +1,17 @@
+.category-philadelphia-parks-recreation-staged,
+.category-philadelphia-parks-recreation{
+    .things-to-do{
+        & > .row:not(:first-child){
+            margin: 50px auto;
+        }
+    }
+}
+
 .photo-callout-block{
     align-items: stretch;
+}
+.photo-callout-block__txt {
+    & > .grid {height: 100%;}
 }
 
 .photo-callout-block__img.cell{
@@ -16,22 +28,38 @@
 
 
 .photo-callout-block__txt.cell{
-    max-height: 350px;
-    padding: 4% 8%;
+    // max-height: 350px;
     background: color(ghost-gray);
+    @media screen and (max-width: 39.9375em) {
+        padding: 5%;
+    }
+
+    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        padding:0 10px;
+    }
 }
 
 .photo-callout-block__txt-sub-header{
     color: color(dark-ben-franklin);
     padding-bottom: 20px;
     font-weight: 700;
+    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        padding:0; margin:0;
+    }
 }
 
 .photo-callout-block__txt-header{
     font-weight: 700;
+    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        margin:0; padding:0;
+    }
 }
 .photo-callout-block__txt-btn{
     margin-top: 20px;
+    .button-label{display: inline-block;}
+    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        margin-top: 0px;
+    }
 }
 
 
@@ -39,6 +67,11 @@
 /* =======================================================================
   Featured Activities
 ========================================================================== */
+.ppr-feat-activites{
+    .grid-container{
+        padding:10px 0 0 0;
+    }
+}
 #ppr-feat-activites__grid{
 
 }
@@ -46,6 +79,7 @@
     border: 1px solid black;
     padding: 25px 20px;
     position: relative;
+    border-bottom: 5px solid color(dark-ben-franklin);
     h3{
         font-weight: 700;
         padding-bottom:10px;
@@ -97,3 +131,48 @@
     }
 }
 
+/* =======================================================================
+  Signature Events
+========================================================================== */
+.ppr-signature-events{
+    .grid-container{
+        padding:10px 0 0 0;
+    }
+
+}
+
+.ppr-signature-events__grid{
+
+}
+
+.ppf-signature-event__card{
+    margin-bottom: 50px;
+    img{
+        margin: 0 auto;
+    }
+}
+/* =======================================================================
+  Prorams and initiatives
+========================================================================== */
+.progs-inits-grid__item{
+    padding: 20px;
+
+    @media screen and (max-width: 63.9375em) {
+        border-bottom: 1px solid $black;
+        &:nth-child(odd){
+            border-right: 1px solid $black;
+        }
+    }
+
+    @media screen and (min-width: 64em) {
+        &:nth-child(-n+4){
+            border-bottom: 1px solid black;
+        }
+        &:nth-child(2n+2),
+        &:nth-child(4n+3)
+        {
+            border-left: 1px solid black;
+        }
+
+    }
+}
