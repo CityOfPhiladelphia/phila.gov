@@ -74,7 +74,7 @@ function phila_load_admin_media_js( $hook ) {
   wp_localize_script( 'all-admin-scripts', 'myAjax', 
 	array(
 	  'ajaxurl' => admin_url( 'admin-ajax.php' ),
-	  'ajax_nonce' => wp_create_nonce( 'any_value_here' ),
+	  'ajax_nonce' => wp_create_nonce( 'search-results-update' ),
 	)
 );
 
@@ -160,13 +160,12 @@ function phila_unregister_tags() {
 }
 
 /**
- * Add Department Parents to Nav Menu search results
+ * Ajax: Add Department Parents to Nav Menu search results
  */
 
-add_action("wp_ajax_addDepartmentParent", "addDepartmentParent");
-add_action("wp_ajax_nopriv_addDepartmentParent", "addDepartmentParent");
-
 function addDepartmentParent() {
+
+    check_ajax_referer( 'search-results-update', 'security' );
 
 	$response = [];
 
@@ -192,3 +191,6 @@ function addDepartmentParent() {
 	wp_send_json( $response );
 
 }
+
+add_action( 'wp_ajax_addDepartmentParent', 'addDepartmentParent' );
+add_action( 'wp_ajax_nopriv_addDepartmentParent', 'addDepartmentParent' );
