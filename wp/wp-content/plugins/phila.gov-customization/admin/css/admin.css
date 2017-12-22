@@ -34,10 +34,17 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #trackbacksdiv,
 #postexcerpt,
 #commentstatusdiv,
-/*Hide View Attachment Page on Admin*/ 
-.attachment-info .view-attachment 
+/*Hide View Attachment Page on Admin*/
+.attachment-info .view-attachment,
+/*No comment columns*/
+#comments,
+.comments
 {
   display: none !important;
+}
+
+th#title{
+  width:20rem;
 }
 
 .rwmb-button.remove-clone:hover {

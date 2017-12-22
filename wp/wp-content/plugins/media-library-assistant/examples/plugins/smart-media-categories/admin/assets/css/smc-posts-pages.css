@@ -1,0 +1,564 @@
+/*
+ * This stylesheet is used for the All Posts/All Pages modal windows.
+ */
+
+#smc-sync-all-bulk {
+	margin-right: .5em;
+}
+
+#smc-posts-modal-div {
+	background-color: #fff;
+	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	width: 600px;
+	overflow: hidden;
+	margin-left: -300px;
+	position: fixed;
+	top: 30px;
+	bottom: 30px;
+	left: 50%;
+	z-index: 100105;
+}
+
+@media screen and ( max-width: 660px ) {
+	#smc-posts-modal-div {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+		width: 100%;
+	}
+}
+
+#smc-posts-modal-head-div {
+	background: #fcfcfc;
+	border-bottom: 1px solid #dfdfdf;
+	height: 36px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 36px;
+	padding: 0 36px 0 16px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#smc-sync-close,
+#smc-posts-modal-close-div {
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 24px;
+	font-family: "Open Sans", sans-serif
+	color: #666;
+}
+
+#smc-sync-close:hover,
+#smc-posts-modal-close-div:hover {
+	color: #2ea2cc;
+}
+
+#smc-posts-modal-inside-div {
+	overflow: auto;
+	padding: 16px;
+	background-color: #fff;
+	position: absolute;
+	top: 37px;
+	bottom: 45px;
+	overflow-y: scroll;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media screen and ( max-width: 782px ) {
+	#smc-posts-modal-inside-div {
+		bottom: 57px;
+	}
+}
+
+#smc-posts-modal-search-div {
+	padding-bottom: 16px;
+}
+
+#smc-posts-modal-input {
+	float: left;
+	width: 140px;
+	height: 28px;
+	margin: 0 4px 0 0;
+}
+
+#smc-posts-modal-search-div .spinner {
+	float: none;
+	left: 125px;
+	position: absolute;
+	top: 18px;
+	padding: 4px 10px 0;
+}
+
+#smc-posts-modal-search {
+	float: left;
+}
+
+#smc-posts-modal-current-title-div {
+	float:left;
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+#smc-posts-modal-pagination-div {
+	float: right;
+	padding-bottom: 4px;
+}
+
+/* Added or modified in JavaScript code */
+.smc-sync-close-dashicons:before,
+.smc-posts-modal-close-div-dashicons:before {
+	font: normal 20px/36px 'dashicons';
+	vertical-align: top;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: '\f158';
+}
+
+#smc-posts-modal-buttons-div {
+	padding: 8px 16px;
+	background: #fcfcfc;
+	border-top: 1px solid #dfdfdf;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+#smc-find-overlay,
+#smc-sync-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	z-index: 100100;
+}
+
+/*
+ * Sync box styles, adapted from /wp-admin/css/media.css
+ */
+
+#smc-sync-div {
+	background-color: #fff;
+	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	width: 800px;
+	overflow: hidden;
+	margin-left: -300px;
+	position: fixed;
+	top: 30px;
+	bottom: 30px;
+	left: 50%;
+	z-index: 100105;
+}
+
+@media screen and ( max-width: 660px ) {
+	#smc-sync-div {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+		width: 100%;
+	}
+}
+
+#smc-sync-head {
+	background: #fcfcfc;
+	border-bottom: 1px solid #dfdfdf;
+	height: 36px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 36px;
+	padding: 0 36px 0 16px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#smc-sync-inside {
+	overflow: auto;
+	padding: 16px;
+	background-color: #fff;
+	position: absolute;
+	top: 37px;
+	bottom: 45px;
+	overflow-y: scroll;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media screen and ( max-width: 782px ) {
+	#smc-sync-inside {
+		bottom: 57px;
+	}
+}
+
+#smc-sync-buttons-div {
+	padding: 8px 16px;
+	background: #fcfcfc;
+	border-top: 1px solid #dfdfdf;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+/*
+ * smc-sync-box-inside styles, adapted from /wp-admin/css/list-tables.css
+ */
+
+#smc-sync-inside .smc-sync-col-left {
+	width: 25%;
+}
+
+#smc-sync-inside .smc-sync-col-center {
+	width: 25%;
+}
+
+#smc-sync-inside .smc-sync-col-right {
+	width: 49%;
+}
+
+#smc-sync-inside .smc-sync-group {
+	clear: both;
+}
+
+#smc-sync-inside .smc-sync-group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+#smc-sync-inside #smc-sync-error {
+	line-height: 22px;
+	margin: 0 15px;
+	padding: 3px 5px;
+}
+
+/*
+#smc-sync-inside h4 {
+	margin: .2em 0;
+	padding: 0;
+	line-height: 23px;
+	text-transform: uppercase;
+}
+*/
+
+#smc-sync-inside .input-text-wrap input[type=text] {
+	width: 100%;
+}
+
+#smc-sync-inside fieldset {
+	font-size: 12px;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#smc-sync-inside fieldset .smc-sync-col {
+	padding: 0 0.5em;
+}
+
+#smc-sync-inside fieldset span.title,
+#smc-sync-inside fieldset span.checkbox-title {
+	margin: 0;
+	padding: 0;
+	line-height: 27px;
+}
+
+#smc-sync-inside fieldset label {
+	display: block;
+	margin: .2em 0;
+}
+
+/*
+#smc-sync-inside fieldset label.inline-edit-tags {
+	margin-top: 0;
+}
+
+#smc-sync-inside fieldset label.inline-edit-tags span.title {
+	margin: .2em 0;
+	width: auto;
+}
+*/
+ 
+#smc-sync-inside fieldset label span.title {
+	display: block;
+	float: left;
+	width: 5em;
+}
+
+#smc-sync-inside fieldset label span.input-text-wrap {
+	display: block;
+	margin-left: 5em;
+}
+
+#smc-sync-inside fieldset.smc-sync-col-right label span.title {
+	width: auto;
+	padding-right: 0.5em;
+}
+
+#smc-sync-inside fieldset label input[type=checkbox] {
+	vertical-align: text-bottom;
+}
+
+#smc-sync-inside fieldset label textarea {
+	width: 100%;
+	height: 4em;
+}
+
+#smc-sync-inside fieldset .smc-sync-group label {
+	max-width: 50%;
+}
+
+#smc-sync-inside fieldset .smc-sync-group label.alignleft:first-child {
+	margin-right: 0.5em
+}
+
+#smc-sync-inside fieldset span.title,
+#smc-sync-inside fieldset span.checkbox-title {
+	font-style: italic;
+	line-height: 1.8em;
+}
+
+.smc-sync-true {
+	font-style:normal;
+	color:#555555;
+}
+
+.column-smc_children .smc-sync-true {
+	color: #0074A2;
+}
+
+.column-smc_children a.smc-sync-true:hover,
+.column-smc_children a.smc-sync-true:active {
+	color: #2ea2cc;
+}
+
+.smc-sync-false {
+	font-style: italic;
+	color:#F00;
+}
+
+/*	Specific Elements */
+
+#smc-sync-parent-block {
+	margin-top: 10px;
+}
+
+#smc-current-parent {
+	font-size: 14px;
+}
+
+#smc-sync-reattach {
+	font-size: 12px;
+	height: 20px;
+	line-height: 14px;
+}
+
+/*
+#smc-sync-inside fieldset .inline-edit-date {
+	float: left;
+}
+
+#smc-sync-inside fieldset input[name=jj],
+#smc-sync-inside fieldset input[name=hh],
+#smc-sync-inside fieldset input[name=mn] {
+	font-size: 12px;
+	width: 2.1em;
+}
+
+#smc-sync-inside fieldset input[name=aa] {
+	font-size: 12px;
+	width: 3.5em;
+}
+
+#smc-sync-inside fieldset label input.inline-edit-password-input {
+	width: 8em;
+}
+*/
+
+.smc-sync-col ul.cat-checklist {
+	height: 12em;
+	border: solid 1px #ddd;
+	overflow-y: scroll;
+	padding: 0 5px;
+	margin: 0;
+	background-color: #fff;
+}
+
+.smc-sync-col ul.cat-checklist ul {
+	margin-left: 18px;
+}
+
+#smc-sync-inside fieldset ul.cat-checklist li,
+#smc-sync-inside fieldset ul.cat-checklist input {
+	margin: 0;
+	position: relative; /* RTL fix, #WP27629 */
+}
+
+#smc-sync-inside fieldset ul.cat-checklist label {
+	font-style: normal;
+	font-size: 11px;
+}
+
+/*
+smc-sync-inside fieldset label input.inline-edit-menu-order-input {
+	width: 3em;
+}
+
+#smc-sync-inside fieldset label input.inline-edit-slug-input {
+	width: 75%;
+}
+
+#smc-sync-inside #post_parent,
+#smc-sync-inside select[name="page_template"] {
+	max-width: 80%;
+}
+
+.ie8 #smc-sync-inside #post_parent,
+.ie8 #smc-sync-inside select[name="page_template"] {
+	width: 250px;
+}
+
+#smc-sync-inside fieldset label.inline-edit-status {
+	float: left;
+}
+*/
+
+#smc-sync-children-div {
+	display: block;
+	height: 12em;
+	border: 1px solid #ddd;
+	overflow-y: scroll;
+	padding: 0 5px;
+	margin: 0 0 5px;
+	line-height: 140%;
+}
+
+#smc-sync-children-div div {
+	margin: 0.2em 0.3em;
+	font-family: "Open Sans", sans-serif
+	font-style: normal;
+	font-size: 11px;
+}
+
+.smc-sync-children-a-dashicons {
+	background: none !important;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 18px;
+	margin: 0 3px 0 -2px;
+	overflow: hidden;
+	position: relative;
+	width: 20px;
+}
+
+.smc-sync-children-a-dashicons:before {
+	position: relative;
+	top: -3px;
+	background: none;
+	color: #bbb;
+	content: '\f153';
+	display: block !important;
+	font: normal 16px/1 'dashicons';
+	speak: none;
+	height: 20px;
+	margin: 2px 0;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+.smc-sync-children-a-dashicons:hover {
+	background: none !important;
+}
+
+.smc-sync-children-a-dashicons:hover:before {
+	color: #c00;
+}
+
+.smc-sync-children-a-gif {
+	background: url(/wp-admin/images/xit.gif) no-repeat;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 10px;
+	margin: 3px 3px 0 -2px;
+	overflow: hidden;
+	position: relative;
+	text-indent: -9999px;
+	width: 10px;
+}
+
+.smc-sync-children-a-gif:hover {
+	background: url(/wp-admin/images/xit.gif) no-repeat -10px 0;
+}
+
+/*
+#smc-sync-children-div div a {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 18px;
+	margin: 0 3px 0 -2px;
+	overflow: hidden;
+	position: relative;
+	width: 20px;
+}
+
+#smc-sync-children-div div a,
+#smc-sync-children-div div a:hover {
+	background: none !important;
+}
+
+#smc-sync-children-div div a:before {
+	position: relative;
+	top: -3px;
+	background: none;
+	color: #bbb;
+	content: '\f153';
+	display: block !important;
+	font: normal 16px/1 'dashicons';
+	speak: none;
+	height: 20px;
+	margin: 2px 0;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+#smc-sync-children-div div a:hover:before {
+	color: #c00;
+}
+*/

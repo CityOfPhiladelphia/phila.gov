@@ -61,11 +61,7 @@ $user_selected_template    = phila_get_selected_template();
       <!-- End WYSIWYG content -->
     <?php endif; ?>
 
-
-
   <?php
-
-
 
 
 /**
@@ -73,14 +69,12 @@ $user_selected_template    = phila_get_selected_template();
  * @param  string $_template HTML, ideally returned from a call to get_template_part()
  * @return HTML            template markup to be included in page
  */
-function apply_template_section($_template =''){
+function apply_template_section( $_template = '' ){
 $apply_template_markup = <<<HTML
-  <section class="apply-template">$_template<section>
+  <section class="apply-template">$_template</section>
 HTML;
   return $apply_template_markup;
 }
-
-
 
   switch ($user_selected_template) {
 
@@ -120,6 +114,9 @@ HTML;
       get_template_part( 'partials/departments/v2/content', 'one-quarter' );
       break;
 
+    case 'things-to-do':
+      get_template_part( 'partials/departments/v2/content', 'things-to-do' );
+      break;
 
     case 'contact_us_v2':
       get_template_part( 'partials/departments/v2/content', 'contact-us' );
@@ -143,6 +140,10 @@ HTML;
 
     case 'staff_directory_v2':
       get_template_part( 'partials/departments/phila_staff_directory_listing' );
+      break;
+
+    case 'document_finder_v2':
+      get_template_part( 'partials/departments/v2/document-finder' );
       break;
 
 
