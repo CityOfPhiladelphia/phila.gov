@@ -14,8 +14,12 @@
   <div class="row">
     <div class="columns">
       <section>
-      <?php if ( isset( $content['phila_wysiwyg_heading'] ) ): ?>
-        <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h3>
+        <?php if (array_key_exists('phila_stepped_select', $content) ) : ?>
+          <h4 class="mbm phm-mu" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h4>
+        <?php else : ?>
+        <?php if ( isset( $content['phila_wysiwyg_heading'] ) ): ?>
+          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h3>
+        <?php endif; ?>
       <?php endif; ?>
       <div class="phm-mu">
         <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
@@ -45,18 +49,14 @@
               <span class="postal-code"><?php echo $zip; ?></span>
             </div>
             <?php endif;?>
-
-            <?php if ( !empty($content['phila_stepped_select']) ) :?>
-
-              <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);
-
-              include( locate_template( 'partials/stepped-content.php' ) );
-              ?>
-
             <?php endif;?>
-
+            <?php if ( !empty($content['phila_stepped_select']) ) :?>
+              <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);?>
+              <div class="phm-mu">
+                <?php include( locate_template( 'partials/stepped-content.php' ) );?>
+              </div>
+            <?php endif;?>
           </div>
-        <?php endif;?>
         </section>
       </div>
     </div>
