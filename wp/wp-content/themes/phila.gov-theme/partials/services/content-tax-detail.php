@@ -82,7 +82,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Who pays the tax</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Who pays the tax</h3>
       <div class="phm-mu">
         <?php echo apply_filters( 'the_content', $payments['who_pays'] ); ?>
       </div>
@@ -95,7 +95,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Important dates</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Important dates</h3>
       <div class="phm-mu"><?php echo apply_filters( 'the_content', $tax['due']['summary_detailed']); ?></div>
     </section>
   </div>
@@ -106,7 +106,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax rates, penalties, & fees</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Tax rates, penalties, & fees</h3>
       <div class="phm-mu">
         <h4>How much is it?</h4>
         <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
@@ -127,7 +127,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Discounts & exemptions</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Discounts & exemptions</h3>
       <div class="phm-mu">
         <h4>Are you eligible for a discount?</h4>
         <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
@@ -147,7 +147,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to pay</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">How to pay</h3>
       <div class="phm-mu">
         <?php foreach ( $intro as $item ): ?>
           <div class="mbm">
@@ -200,7 +200,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax code</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Tax code</h3>
         <div class="phm-mu">
           <span class="bdr-all bdr-black pas inline-block"><?php echo $tax['code'] ?></span>
         </div>
