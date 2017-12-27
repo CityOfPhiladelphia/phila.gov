@@ -34,7 +34,7 @@
   <?php else: ?>
     <div class="hero-half">
       <div class="grid-x">
-        <div class="cell large-12 bg-shade bg-ben-franklin-blue white hero-half--container">
+        <div class="cell medium-12 bg-shade bg-ben-franklin-blue white hero-half--container">
           <div class="grid-x grid-container align-right">
             <div class="hero-half--title mvm">
               <h1><?php echo the_title() ?></h1>
@@ -42,8 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="cell large-12 align-self-stretch hero-image">
-          <img src="<?php echo $hero['full_url'] ?>" alt="" class="show-for-large">
+        <div class="cell medium-12 align-self-stretch hero-image hide-for-small-only" style="background-image:url(<?php echo $hero['full_url']  ?>) ">
           <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?>
         </div>
       </div>
