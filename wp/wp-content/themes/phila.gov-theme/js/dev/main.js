@@ -14,3 +14,4 @@ require('./posts');
 require('./search');
 require('./skip-link-focus-fix');
 require('./social-media');
+require('./header-sticky');
