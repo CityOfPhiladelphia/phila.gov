@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    var featActivitiesQueryURL = 'https://phl.carto.com/api/v2/sql?q=SELECT *, facility->>0 as facility, gender->>0 as gender FROM ppr_programs INNER JOIN ppr_facilities ON ppr_facilities.id = ppr_programs.facility->>0 LIMIT 3'
+    var featActivitiesQueryURL = 'https://phl.carto.com/api/v2/sql?q=SELECT *, facility->>0 as facility, gender->>0 as gender FROM ppr_programs INNER JOIN ppr_facilities ON ppr_facilities.id = ppr_programs.facility->>0 AND ppr_programs.program_is_featured AND ppr_programs.program_is_public AND ppr_programs.program_is_approved LIMIT 3'
     var $activityCards = $('.ppr-feat-activity')
 
     var render = function(card, data){
@@ -21,9 +21,16 @@ jQuery(document).ready(function($) {
 
     $.get(featActivitiesQueryURL, function(results){
         var activityData = results.rows
-        console.log(activityData)
         $activityCards.each(function(idx, card){
-            render(card, activityData[idx])
+            if(activityData[idx]){
+               render(card, activityData[idx])
+            } else {
+                $(card)
+                  .find('.ppr-feat-activity__loader')
+                  .html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>')
+                $(card).addClass('error')
+            }
+
         })
     })
 
