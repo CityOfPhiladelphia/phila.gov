@@ -216,6 +216,45 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       )
     );//Things To Do
 
+$meta_boxes[] = array(
+    'title' => 'PPR Signature Events',
+    'pages'    => array( 'department_page' ),
+    'visible' => array( 'phila_template_select', 'things-to-do' ),
+
+    'fields' => array(
+      array(
+        'id'       => 'phila_v2_ppr_signature_events',
+        'title'    => 'PPR Signature Events',
+        'context'  => 'normal',
+        'priority' => 'high',
+        'type'  => 'group',
+        'clone' => true,
+
+        'fields' => array(
+          array(
+            'id' => 'phila_v2_ppr_sig_event__photo',
+            'title' => 'Select image',
+            'type' => 'image_advanced',
+            'max_file_uploads' => 1,
+          ),
+
+          array(
+            'id' => 'phila_v2_ppr_sig_event__header',
+            'type' => 'text',
+            'name' => 'Header'
+          ),
+
+          array(
+            'id' => 'phila_v2_ppr_sig_event__link',
+            'type' => 'url',
+            'desc' => '* event must have a link to appear on the page',
+            'name' => 'Link to Event Page'
+          ),
+
+        ),
+      ),
+    ),
+  );
 
   $meta_boxes[] = array(
     'title' => 'Featured programs or content',
