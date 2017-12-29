@@ -348,7 +348,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_custom_markup',
     'title'    => 'Custom Markup',
-    'pages'    => array( 'department_page', 'page', 'service_page' ),
+    'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
     'context'  => 'normal',
     'priority' => 'low',
 
