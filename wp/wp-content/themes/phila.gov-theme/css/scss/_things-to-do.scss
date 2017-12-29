@@ -80,6 +80,8 @@
     padding: 25px 20px;
     position: relative;
     border-bottom: 5px solid color(dark-ben-franklin);
+    transition: all 1s ease-in-out;
+
     h3{
         font-weight: 700;
         padding-bottom:10px;
@@ -87,6 +89,9 @@
     & > *:not(.ppr-feat-activity__loader){
         transition: all 0.5s ease;
         opacity: 0;
+    }
+    &.error{
+        border-bottom: 3px solid color(love-park-red);
     }
     &.loaded{
         *{opacity: 1;}

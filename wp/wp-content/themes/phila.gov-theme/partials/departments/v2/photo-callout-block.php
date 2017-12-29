@@ -1,3 +1,15 @@
+<?php if (rwmb_meta( 'phila_v2_photo_callout_block__photo' )): ?>
+
+<?php
+    $imagePath = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'full', 'limit' => 1))[0]['url'];
+    $subHeader = rwmb_meta('phila_v2_photo_callout_block__txt-sub-header');
+    $header = rwmb_meta('phila_v2_photo_callout_block__txt-header');
+    $description = rwmb_meta('phila_v2_photo-callout-block__desc');
+    $btnLink = rwmb_meta('phila_v2_photo_callout_block__link');
+    $btnTxt = rwmb_meta('phila_v2_photo-callout-block__txt-btn-label');
+?>
+
+
 <section class="row ">
     <div class="grid-container columns">
     <div class="
@@ -10,26 +22,29 @@
             align-center
             photo-callout-block ">
 
+
         <div class="photo-callout-block__img large-13 medium-12 small-20 cell">
-            <img src="http://via.placeholder.com/568x350" alt="" class="float-center">
+            <img src="<?= $imagePath ?>" alt="" class="float-center">
         </div>
 
         <div class="photo-callout-block__txt large-11 medium-12 small-20 cell">
                 <div class="grid align-center-middle grid-x grid-padding-x">
                     <div class="cell small-22 large-18 ">
-                        <h4 class="h4 photo-callout-block__txt-sub-header">Parks & Recreation Finder</h4>
-                        <h2 class="h2 photo-callout-block__txt-header">Lorem ipsum dolor sit</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                        <a href="#" class="photo-callout-block__txt-btn button icon">
+                        <h4 class="h4 photo-callout-block__txt-sub-header"><?= $subHeader ?></h4>
+                        <h2 class="h2 photo-callout-block__txt-header"><?= $header ?></h2>
+                        <p class="photo-callout-block__desc"><?= $description ?></p>
+                        <?php if($btnLink): ?>
+                        <a href="<?= $btnLink ?>" class="photo-callout-block__txt-btn button icon">
                           <div class="valign">
                             <i class="fa fa-map-o valign-cell"></i>
-                            <div class="button-label valign-cell">Go To The Finder</div>
+                            <div class="button-label valign-cell"><?= $btnTxt ?></div>
                           </div>
                         </a>
+                        <?php endif; ?>
                     </div>
                 </div>
         </div>
 
 
 </section>
+<?php endif; ?>
