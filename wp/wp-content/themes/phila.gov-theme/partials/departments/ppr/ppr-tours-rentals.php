@@ -1,8 +1,13 @@
-<?php if(rwmb_meta('phila_v2_ppr_tours_rentals__link-text')): ?>
+<?php
+    $custom_wysiwyg = rwmb_meta('phila_custom_wysiwyg');
+    if($custom_wysiwyg):
+?>
+
 <section class="row mvl ppr-tours-rentals">
     <div class="columns">
-        <h2 class="contrast">Tours and rentals</h2>
-        <p><?= rwmb_meta('phila_v2_ppr_tours_rentals__link-text'); ?></p> <a href="<?= rwmb_meta('phila_v2_ppr_tours_rentals__link'); ?>"><?= rwmb_meta('phila_v2_ppr_tours_rentals__link-text'); ?></a>
+        <h2 class="contrast"><?= $custom_wysiwyg['phila_wysiwyg_title']; ?></h2>
+        <?= $custom_wysiwyg['phila_wysiwyg_content']; ?>
     </div>
 </section>
+
 <?php endif; ?>
