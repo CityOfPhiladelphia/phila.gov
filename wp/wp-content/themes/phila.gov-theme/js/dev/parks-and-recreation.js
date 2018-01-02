@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    var featActivitiesQueryURL = 'https://phl.carto.com/api/v2/sql?q=SELECT *, facility->>0 as facility, gender->>0 as gender FROM ppr_programs INNER JOIN ppr_facilities ON ppr_facilities.id = ppr_programs.facility->>0 AND ppr_programs.program_is_featured AND ppr_programs.program_is_public AND ppr_programs.program_is_approved LIMIT 3'
+    var featActivitiesQueryURL = 'https://phl.carto.com/api/v2/sql?q=SELECT *, facility->>0 as facility, gender->>0 as gender FROM ppr_programs INNER JOIN ppr_facilities ON ppr_facilities.id = ppr_programs.facility->>0 AND ppr_programs.program_is_featured AND ppr_programs.program_is_public AND ppr_programs.program_is_approved AND ppr_programs.program_is_active  LIMIT 3'
     var $activityCards = $('.ppr-feat-activity')
 
     var render = function(card, data){

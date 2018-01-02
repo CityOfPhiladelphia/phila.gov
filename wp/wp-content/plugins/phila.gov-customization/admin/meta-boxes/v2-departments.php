@@ -262,6 +262,24 @@ $meta_boxes[] = array(
       )
     );//Things To Do
 
+
+$meta_boxes[] = array(
+      'title'    => 'Featured Activities Grid',
+
+      'pages'    => array( 'department_page' ),
+      'visible' => array( 'phila_template_select', 'things-to-do' ),
+      'context'  => 'normal',
+
+      'fields' => array(
+          array(
+            'name' => '',
+            'id'   => 'phila_feat_activites_grid_shown',
+            'desc'  => 'Should this page show the Featured Activities Grid?',
+            'type' => 'checkbox'
+          )
+      )
+    );//Things To Do
+
  $meta_boxes[] = array(
       'title'    => 'wysiwyg section w/ Header',
 
