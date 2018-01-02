@@ -170,9 +170,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       'context'  => 'normal',
       'priority' => 'high',
 
-      // 'visible' => array(
-      //   'phila_template_select', '=', 'homepage_v2',
-      // ),
       'visible' =>  array(
          'when' => array(
             array( 'phila_template_select', '=', 'homepage_v2'),
@@ -247,6 +244,23 @@ $meta_boxes[] = array(
       ),
     ),
   );
+
+$meta_boxes[] = array(
+      'title'    => 'Programs and Initiatives Grid',
+
+      'pages'    => array( 'department_page' ),
+      'visible' => array( 'phila_template_select', 'things-to-do' ),
+      'context'  => 'normal',
+
+      'fields' => array(
+          array(
+            'name' => '',
+            'id'   => 'phila_progs_inits_grid_shown',
+            'desc'  => 'Should this page show Programs and Initiatives Grid?',
+            'type' => 'checkbox'
+          )
+      )
+    );//Things To Do
 
  $meta_boxes[] = array(
       'title'    => 'wysiwyg section w/ Header',
