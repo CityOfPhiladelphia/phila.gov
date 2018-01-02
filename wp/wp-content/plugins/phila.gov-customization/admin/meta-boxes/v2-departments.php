@@ -61,38 +61,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'title' => 'Our services',
-    'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'homepage_v2' ),
-
-    'fields' => array(
-      array(
-        'id'       => 'phila_v2_homepage_services',
-        'title'    => 'Top services',
-        'context'  => 'normal',
-        'priority' => 'high',
-        'type'  => 'group',
-        'clone' => true,
-        'max_clone' => 6,
-        'add_button'  => '+ Add a service',
-
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
-          Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
-        ),
-      ),
-      array(
-        'id' => 'phila_v2_service_link',
-        'title' => 'All services link',
-        'name'  => 'All services link',
-        'type'  => 'url',
-        'class' => 'metabox-url',
-      ),
-    ),
-  );
-
-  $meta_boxes[] = array(
     'title' => 'Services list',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'service_list_v2' ),
@@ -126,39 +94,8 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         'type'  => 'group',
         'clone' => false,
 
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Title', 'cta_full_title', '50 character maximum.' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'cta_full_description', '140 character maximum.' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
-          array(
-            'id' => 'cta_is_survey',
-            'desc'  => 'Is this a link to a survey or other form of feedback gathering?',
-            'type'  => 'checkbox',
-          ),
-          array(
-            'id' => 'cta_is_modal',
-            'desc'  => 'Should this content appear in a modal?',
-            'type'  => 'checkbox',
-          ),
-          array(
-            'id'   => 'cta_modal',
-            'type'  => 'group',
-            'visible' => array( 'cta_is_modal', '1' ),
-
-            'fields' => array(
-              array(
-                'type' => 'heading',
-                'name'  => 'Modal content',
-              ),
-              array(
-                'name' => '',
-                'id'   => 'cta_modal_content',
-                'type' => 'textarea',
-              ),
-              Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection( ),
-            ),
-          ),
-        ),
+        'fields' =>
+          Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
       ),
     ),
   );
@@ -299,7 +236,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       ),
     ),
   );
-  
+
   $meta_boxes[] = array(
     'title' => 'Department code',
     'pages'    => array( 'department_page' ),

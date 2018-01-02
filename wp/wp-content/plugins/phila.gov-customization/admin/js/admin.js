@@ -42,9 +42,6 @@ jQuery(document).ready(function($) {
 
   $('[data-readonly="true"]').attr('readonly','readonly');
 
-  //no one can clone rn
-  $('#department-content-blocks .add-clone').css('visibility', 'hidden');
-
   if ( typeof typenow === 'undefined' ) {
     return;
 
