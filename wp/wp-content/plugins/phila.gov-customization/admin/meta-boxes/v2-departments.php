@@ -170,13 +170,12 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       'context'  => 'normal',
       'priority' => 'high',
 
-      // 'visible' => array(
-      //   'phila_template_select', '=', 'homepage_v2',
-      // ),
+
       'visible' =>  array(
          'when' => array(
             array( 'phila_template_select', '=', 'homepage_v2'),
-            array( 'phila_template_select', '=', 'things-to-do')
+            array( 'phila_template_select', '=', 'things-to-do'),
+            array( 'phila_template_select', '=', 'our-locations')
           ),
           'relation' => 'or'
       ),
