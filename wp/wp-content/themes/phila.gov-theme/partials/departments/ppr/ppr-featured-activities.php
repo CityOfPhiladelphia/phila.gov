@@ -1,3 +1,4 @@
+<?php if ( rwmb_meta('phila_feat_activites_grid_shown') ) : ?>
 <section class="row ppr-feat-activites">
     <div class="columns">
         <h2 class="contrast">Featured activities</h2>
@@ -17,3 +18,4 @@
 
 </section>
 
+<?php endif; ?>
