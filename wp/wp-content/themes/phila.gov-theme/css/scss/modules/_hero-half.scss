@@ -13,6 +13,7 @@
 
   h1 {
     font-size: 3rem;
+    margin-top:0;
   }
 
   .description{
@@ -34,6 +35,17 @@
       position: absolute;
       bottom: 0;
       right: 0;
+    }
+  }
+  .owner-logo{
+    img{
+      max-height: 50px;
+    }
+    .sep{
+      height: 1px;
+      background: white;
+      width: 150px;
+      margin-bottom:1rem;
     }
   }
 
