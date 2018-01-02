@@ -1,14 +1,12 @@
 <section class="row ppr-signature-events">
     <div class="columns">
-        <h2 class="contrast">Parks & Rec's signature events</h2>
+        <h2 class="contrast">Parks &amp; Rec's signature events</h2>
     </div>
     <div class="columns">
         <div class="grid-container">
         <div class="grid-x grid-margin-x align-spaced">
         <?php
             $group_values = rwmb_meta( 'phila_v2_ppr_signature_events' );
-            // var_dump($group_values);
-
             if ( ! empty( $group_values ) ) {
                 foreach ( $group_values as $group_value ) {
                     $image_id = isset( $group_value['phila_v2_ppr_sig_event__photo'][0]) ? $group_value['phila_v2_ppr_sig_event__photo'][0] : null;
@@ -25,7 +23,8 @@
                 }
             }
          ?>
-    </div>
+        </div>
+        </div>
     </div>
 
 </section>
