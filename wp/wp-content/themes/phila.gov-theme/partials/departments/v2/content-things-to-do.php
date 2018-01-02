@@ -9,7 +9,7 @@
 </div>
 <?php
 
-    include(locate_template('partials/departments/ppr/ppr-signature-events.php'));
+    include(locate_template('partials/departments/phila_linked_image_grid.php'));
     include(locate_template('partials/departments/ppr/programs-initiatives-grid.php'));
     include(locate_template('partials/departments/ppr/ppr-tours-rentals.php'));
 ?>

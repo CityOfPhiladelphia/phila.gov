@@ -170,12 +170,10 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       'context'  => 'normal',
       'priority' => 'high',
 
-
       'visible' =>  array(
          'when' => array(
             array( 'phila_template_select', '=', 'homepage_v2'),
-            array( 'phila_template_select', '=', 'things-to-do'),
-            array( 'phila_template_select', '=', 'our-locations')
+            array( 'phila_template_select', '=', 'things-to-do')
           ),
           'relation' => 'or'
       ),
@@ -216,14 +214,19 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     );//Things To Do
 
 $meta_boxes[] = array(
-    'title' => 'PPR Signature Events',
+    'title' => 'Image Grid with Links',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'things-to-do' ),
 
     'fields' => array(
       array(
-        'id'       => 'phila_v2_ppr_signature_events',
-        'title'    => 'PPR Signature Events',
+            'id' => 'phila_v2_linked_image_grid__header',
+            'type' => 'text',
+            'name' => 'Header'
+          ),
+      array(
+        'id'       => 'phila_v2_linked_image_grid',
+        'title'    => 'Image Grid with Links',
         'context'  => 'normal',
         'priority' => 'high',
         'type'  => 'group',
@@ -231,54 +234,62 @@ $meta_boxes[] = array(
 
         'fields' => array(
           array(
-            'id' => 'phila_v2_ppr_sig_event__photo',
+            'id' => 'phila_v2_linked_image_grid__image',
             'title' => 'Select image',
             'type' => 'image_advanced',
             'max_file_uploads' => 1,
           ),
-
-          array(
-            'id' => 'phila_v2_ppr_sig_event__header',
-            'type' => 'text',
-            'name' => 'Header'
-          ),
-
-          array(
-            'id' => 'phila_v2_ppr_sig_event__link',
-            'type' => 'url',
-            'desc' => '* event must have a link to appear on the page',
-            'name' => 'Link to Event Page'
-          ),
-
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('PPR Signature Events', 'phila_v2_linked_image_grid__link')
         ),
       ),
     ),
   );
 
- $meta_boxes[] = array(
-      'title'    => 'PPR Tours and rentals',
+$meta_boxes[] = array(
+      'title'    => 'Programs and Initiatives Grid',
 
       'pages'    => array( 'department_page' ),
       'visible' => array( 'phila_template_select', 'things-to-do' ),
       'context'  => 'normal',
 
       'fields' => array(
-           array(
-            'id' => 'phila_v2_ppr_tours_rentals__desc',
-            'type' => 'textarea',
-            'name' => 'Description'
-          ),
-            array(
-            'id' => 'phila_v2_ppr_tours_rentals__link-text',
-            'type' => 'text',
-            'name' => 'Link Text'
-          ),
           array(
-            'id' => 'phila_v2_ppr_tours_rentals__link',
-            'type' => 'url',
-            'name' => 'Link'
+            'name' => '',
+            'id'   => 'phila_progs_inits_grid_shown',
+            'desc'  => 'Should this page show Programs and Initiatives Grid?',
+            'type' => 'checkbox'
           )
       )
+    );//Things To Do
+
+
+$meta_boxes[] = array(
+      'title'    => 'Featured Activities Grid',
+
+      'pages'    => array( 'department_page' ),
+      'visible' => array( 'phila_template_select', 'things-to-do' ),
+      'context'  => 'normal',
+
+      'fields' => array(
+          array(
+            'name' => '',
+            'id'   => 'phila_feat_activites_grid_shown',
+            'desc'  => 'Should this page show the Featured Activities Grid?',
+            'type' => 'checkbox'
+          )
+      )
+    );//Things To Do
+
+ $meta_boxes[] = array(
+      'title'    => 'wysiwyg section w/ Header',
+
+      'pages'    => array( 'department_page' ),
+      'visible' => array( 'phila_template_select', 'things-to-do' ),
+      'context'  => 'normal',
+
+      'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg()
+       )
     );//Things To Do
 
   $meta_boxes[] = array(
