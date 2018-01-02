@@ -86,7 +86,7 @@
         font-weight: 700;
         padding-bottom:10px;
     }
-    & > *:not(.ppr-feat-activity__loader){
+    & > *:not(.ppr-loader){
         transition: all 0.5s ease;
         opacity: 0;
     }
@@ -126,7 +126,7 @@
     }
 }
 
-.ppr-feat-activity__loader{
+.ppr-loader{
     position: absolute;
     top:50%;
     left:50%;
