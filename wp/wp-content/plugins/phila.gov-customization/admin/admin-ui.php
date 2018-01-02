@@ -21,17 +21,17 @@ function phila_restrict_categories_custom_loader() {
 
   class RestrictCategoriesCustom extends RestrictCategories {
 
-    public function  __construct() {
+	public function  __construct() {
 
-      if ( is_admin() ) {
-         $post_type = get_post_types();
+	  if ( is_admin() ) {
+		 $post_type = get_post_types();
 
-         foreach ($post_type as $post) {
-           add_action( 'admin_init', array( &$this, 'posts' ) );
-          }
+		 foreach ($post_type as $post) {
+		   add_action( 'admin_init', array( &$this, 'posts' ) );
+		  }
 
-       }
-    }
+	   }
+	}
 
   }
 
@@ -49,9 +49,9 @@ add_filter('page_attributes_dropdown_pages_args', 'phila_allow_draft_dropdown_pa
 
 function phila_allow_draft_dropdown_pages_args($dropdown_args) {
 
-    $dropdown_args['post_status'] = array('publish','draft', 'private');
+	$dropdown_args['post_status'] = array('publish','draft', 'private');
 
-    return $dropdown_args;
+	return $dropdown_args;
 }
 
 /**
@@ -60,8 +60,8 @@ function phila_allow_draft_dropdown_pages_args($dropdown_args) {
 add_filter( 'nav_menu_meta_box_object', 'phila_show_private_pages_menu_selection' );
 
 function phila_show_private_pages_menu_selection( $args ){
-    $args->_default_query['post_status'] = array( 'publish','private' );
-    return $args;
+	$args->_default_query['post_status'] = array( 'publish','private' );
+	return $args;
 }
 
 add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 10, 1 );
@@ -70,6 +70,13 @@ function phila_load_admin_media_js( $hook ) {
   wp_register_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__, array('jquery-validation') ) );
 
   wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jquery') ) );
+
+  wp_localize_script( 'all-admin-scripts', 'myAjax',
+	array(
+	  'ajaxurl' => admin_url( 'admin-ajax.php' ),
+	  'ajax_nonce' => wp_create_nonce( 'search-results-update' ),
+	)
+);
 
   wp_enqueue_script( 'jquery-validation' );
 
@@ -151,6 +158,41 @@ add_action( 'init', 'phila_unregister_tags' );
 function phila_unregister_tags() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 }
+
+/**
+ * Ajax: Add Departments parent pages to Appearance -> Menus -> Departments search results, and returns upmost parent of each child page. See admin.js for ajax intercept.
+ */
+function addDepartmentParent() {
+
+    check_ajax_referer( 'search-results-update', 'security' );
+
+	$response = [];
+
+	$query = new WP_Query(
+		array(
+			'post__in' => $_POST['postIds'],
+			'post_type' => 'department_page',
+			'posts_per_page' => 50,
+		)
+	);
+
+	if ( $query->found_posts > 0 ) {
+		foreach ( $query->posts as $post ) {
+			if ( $post->post_parent ) {
+				$ancestors = get_post_ancestors( $post->ID );
+				$root = count( $ancestors ) - 1;
+				$parent = get_post( $ancestors[ $root ] );
+				$response[ 'p=' . $post->ID ] = $parent->post_title;
+			}
+		}
+	}
+
+	wp_send_json( $response );
+
+}
+
+add_action( 'wp_ajax_addDepartmentParent', 'addDepartmentParent' );
+add_action( 'wp_ajax_nopriv_addDepartmentParent', 'addDepartmentParent' );
 
 
 /**
