@@ -1,7 +1,7 @@
 // Smooth Sticky Header
 $(function() {
     var stickyHeaderOffset = $('#global-sticky-nav').offset().top;
-    var stickyBar = $('#global-sticky-nav .my-sticky');
+    var stickyBar = $('#global-sticky-nav .phila-sticky');
     var isLoggedIn = $('#wpadminbar').length || false;
     if (isLoggedIn) {
         stickyHeaderOffset -= $('#wpadminbar').outerHeight();
