@@ -249,29 +249,15 @@ $meta_boxes[] = array(
   );
 
  $meta_boxes[] = array(
-      'title'    => 'PPR Tours and rentals',
+      'title'    => 'wysiwyg section w/ Header',
 
       'pages'    => array( 'department_page' ),
       'visible' => array( 'phila_template_select', 'things-to-do' ),
       'context'  => 'normal',
 
       'fields' => array(
-           array(
-            'id' => 'phila_v2_ppr_tours_rentals__desc',
-            'type' => 'textarea',
-            'name' => 'Description'
-          ),
-            array(
-            'id' => 'phila_v2_ppr_tours_rentals__link-text',
-            'type' => 'text',
-            'name' => 'Link Text'
-          ),
-          array(
-            'id' => 'phila_v2_ppr_tours_rentals__link',
-            'type' => 'url',
-            'name' => 'Link'
-          )
-      )
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg()
+       )
     );//Things To Do
 
   $meta_boxes[] = array(
