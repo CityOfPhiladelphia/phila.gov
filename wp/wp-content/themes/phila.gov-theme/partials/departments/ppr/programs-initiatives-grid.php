@@ -1,8 +1,11 @@
 <?php
-    wp_reset_query();
-    $programs_query = new WP_Query( array( 'post_type' => 'programs', 'category_name' => 'philadelphia-parks-recreation-staged') );
+
+ $categories = get_the_category();
+  $category_slug = $categories[0]->slug;
+  $programs_query = new WP_Query( array( 'post_type' => 'programs', 'category_name' => $category_slug) );
 ?>
-<?php if ( $programs_query->have_posts() ) : ?>
+
+<?php if ( rwmb_meta('phila_progs_inits_grid_shown') ) : ?>
 <section class="row progs-inits-grid">
     <div class="columns">
         <h2 class="contrast">Programs and initiatives</h2>
