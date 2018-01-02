@@ -82,7 +82,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Who pays the tax</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Who pays the tax</h3>
       <div class="phm-mu">
         <?php echo apply_filters( 'the_content', $payments['who_pays'] ); ?>
       </div>
@@ -95,7 +95,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Important dates</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Important dates</h3>
       <div class="phm-mu"><?php echo apply_filters( 'the_content', $tax['due']['summary_detailed']); ?></div>
     </section>
   </div>
@@ -106,7 +106,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax rates, penalties, & fees</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Tax rates, penalties, & fees</h3>
       <div class="phm-mu">
         <h4>How much is it?</h4>
         <?php echo apply_filters( 'the_content', $tax['cost']['summary_detailed'] ); ?>
@@ -127,7 +127,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Discounts & exemptions</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Discounts & exemptions</h3>
       <div class="phm-mu">
         <h4>Are you eligible for a discount?</h4>
         <?php echo apply_filters( 'the_content',  $payments['discounts'] );?>
@@ -147,7 +147,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">How to pay</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">How to pay</h3>
       <div class="phm-mu">
         <?php foreach ( $intro as $item ): ?>
           <div class="mbm">
@@ -187,49 +187,11 @@
 
       <?php
       //display if there is more than one step
-      if ( isset($steps) && count($steps) > 1 ) : ?>
+      if ( isset($steps) && count($steps) > 1 ) :
 
-      <div class="step-group">
-        <?php $counter = 0; ?>
-        <?php foreach ( $steps as $step ): ?>
-          <?php $is_address = isset( $step['phila_address_step'] ) ? $step['phila_address_step'] : '';
-          $counter++; ?>
-          <div class="step-label"><?php echo $counter; ?></div>
+        include( locate_template( 'partials/stepped-content.php' ) );
 
-          <div class="step">
-            <div class="step-title"><?php echo isset( $step['phila_step_wysiwyg_heading'] ) ? $step['phila_step_wysiwyg_heading'] : ''; ?></div>
-            <div class="step-content">
-              <?php $step_wysiwyg_content = isset( $step['phila_step_wysiwyg_content'] ) ? $step['phila_step_wysiwyg_content'] : ''; ?>
-              <?php echo apply_filters( 'the_content', $step_wysiwyg_content ); ?>
-                <?php
-                $address_1 = isset( $step['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $step['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
-
-                $address_2 = isset( $step['phila_std_address']['address_group']['phila_std_address_st_2'] ) ? $step['phila_std_address']['address_group']['phila_std_address_st_2'] : '';
-
-                $city = isset( $step['phila_std_address']['address_group']['phila_std_address_city'] ) ? $step['phila_std_address']['address_group']['phila_std_address_city'] : '';
-
-                $state = isset( $step['phila_std_address']['address_group']['phila_std_address_state'] ) ? $step['phila_std_address']['address_group']['phila_std_address_state'] : '';
-
-                $zip = isset( $step['phila_std_address']['address_group']['phila_std_address_zip'] ) ? $step['phila_std_address']['address_group']['phila_std_address_zip'] : '';
-                ?>
-
-                <?php if ( !empty( $address_1 ) ) : ?>
-                <div class="vcard">
-                  <span class="street-address"><?php echo $address_1; ?></span><br>
-                  <?php if ( !empty($address_2) ) : ?>
-                    <span class="street-address"><?php echo $address_2; ?></span><br>
-                  <?php endif; ?>
-                  <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
-                  <span class="postal-code"><?php echo $zip; ?></span>
-                </div>
-                <?php endif; ?>
-
-            </div>
-          </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    <?php endif; ?>
+      endif; ?>
     </section>
   </div>
 </div>
@@ -238,7 +200,7 @@
 <div class="row">
   <div class="columns">
     <section>
-      <h3 class="black bg-ghost-gray h2 phm-mu mtl mbm">Tax code</h3>
+      <h3 class="black bg-ghost-gray phm-mu mtl mbm">Tax code</h3>
         <div class="phm-mu">
           <span class="bdr-all bdr-black pas inline-block"><?php echo $tax['code'] ?></span>
         </div>

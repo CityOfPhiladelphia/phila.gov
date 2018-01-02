@@ -4,7 +4,7 @@
 */
 ?>
 <?php $ann_categories = isset( $category ) ? $category : '';?>
-<?php $current_time = current_time('m-d-y'); ?>
+<?php $current_time = current_time('U'); ?>
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
 <?php $announcement_args = array(
@@ -17,19 +17,21 @@
     'relation'  => 'AND',
     array(
       'key' => 'phila_announce_end_date',
-      'value'   => $current_time ,
+      'value'   => $current_time,
       'compare' => '>=',
     ),
     $home_filter
   ),
-); ?>
+);
+?>
 
 <?php $label = 'announcement'; ?>
 
 <?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
-<div class="grid-container mbxl">
   <?php if ( $announcements->have_posts() ) : ?>
+    <div class="grid-container mbxl">
+
     <?php if (!is_page_template('templates/the-latest.php')): ?>
       <h2>Announcements</h2>
     <?php endif; ?>
@@ -59,8 +61,7 @@
           </div>
 
         <?php endwhile; ?>
-      <?php endif; ?>
-    <?php wp_reset_postdata(); ?>
-
-  </div>
-</div>
+      </div>
+    </div>
+  <?php endif; ?>
+<?php wp_reset_postdata(); ?>

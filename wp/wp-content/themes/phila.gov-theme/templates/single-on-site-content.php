@@ -13,15 +13,9 @@ $user_selected_template    = phila_get_selected_template();
 ?>
 
 
-<?php if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'homepage_v2') : ?>
-
-  <div class="row mtl mbm">
-    <div class="columns">
-      <?php echo phila_breadcrumbs(); ?>
-    </div>
-  </div>
-
-<?php endif; ?>
+<?php if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'homepage_v2') :
+  get_template_part( 'partials/breadcrumbs' );
+endif; ?>
 
 
 

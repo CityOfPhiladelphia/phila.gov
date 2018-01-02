@@ -30,8 +30,10 @@ $actions = phila_loop_clonable_metabox( $get_actions );
     <div class="medium-18 cell pbxl">
       <?php foreach( $facts as $fact ) :?>
         <div class="mbl">
-          <h4 class="h3 black bg-ghost-gray h2 phm-mu mtn mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
-          <?php echo apply_filters( 'the_content', $fact['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+          <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
+            <div class="phm">
+              <?php echo apply_filters( 'the_content', $fact['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+            </div>
         </div>
       <?php endforeach; ?>
     </div>

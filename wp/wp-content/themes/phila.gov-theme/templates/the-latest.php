@@ -121,7 +121,7 @@
     <section>
       <div id="press-releases" data-magellan-target="press-releases">
         <header class="row columns mtl">
-          <h2>Press Releases</h2>
+          <h1>Press Releases</h1>
         </header>
         <?php get_template_part('partials/posts/press-release', 'grid'); ?>
       </div>

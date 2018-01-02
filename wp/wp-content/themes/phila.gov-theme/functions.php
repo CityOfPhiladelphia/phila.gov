@@ -294,7 +294,7 @@ function phila_gov_scripts() {
   if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive('document') || is_page_template('templates/the-latest-events-archive.php') ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
-    
+
     wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
 
   }
@@ -538,7 +538,7 @@ function phila_get_attachment_id_by_url( $url ) {
   //Filter out everything before /media/ because we are matching on the aws url and not what is in wp-content
   preg_match('/\/media\/(.+)/', $url, $matches);
 
-  $parsed_url = $matches[1];
+  $parsed_url = urldecode($matches[1]);
 
   $attachment = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'amazonS3_info' AND meta_value LIKE %s;", '%"' .'media/' .$parsed_url .'"%' ));
 
@@ -729,7 +729,7 @@ function phila_home_classes( $classes ) {
 }
 
 /* Returns true if this page is a department page, has children and no other parents - i.e. department homepage
-Or, has metadata t
+Or, has metadata
 */
 
 function phila_is_department_homepage( $post ) {
@@ -1322,15 +1322,15 @@ function phila_connect_panel($connect_panel) {
     $output_array['email'] =
       isset( $connect_panel['phila_connect_general']['phila_connect_email'] ) ? $connect_panel['phila_connect_general']['phila_connect_email'] :'';
 
-      $output_array['cta'] = array(
+    $output_array['website'] = array(
 
-        'title' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_title'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_title'] :'',
+      'text' => isset( $connect_panel['phila_connect_general']['phila_web_link']['link_text'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['link_text'] :'',
 
-        'url' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_url'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_url'] :'',
+      'url' => isset( $connect_panel['phila_connect_general']['phila_web_link']['link_url'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['link_url'] :'',
 
-        'summary' => isset( $connect_panel['phila_connect_cta']['phila_connect_cta_summary'] ) ? $connect_panel['phila_connect_cta']['phila_connect_cta_summary'] :'',
+      'external' => isset( $connect_panel['phila_connect_general']['phila_web_link']['is_external'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['is_external'] :'',
 
-      );
+    );
 
       $output_array['see_all'] =
         isset( $connect_panel['phila_connect_general']['connect_see_all'] ) ? $connect_panel['phila_connect_general']['connect_see_all'] :'';
@@ -1344,6 +1344,27 @@ function phila_connect_panel($connect_panel) {
   }
   // return $connect_panel;
 }
+
+function phila_image_list($image_list) {
+
+  $output_array = array();
+
+  foreach ($image_list as $key => $value) {
+
+    $output_array['title'] = isset( $image_list['title'] ) ? $image_list['title'] : '';
+  }
+
+  if( isset($image_list['phila_image_list']) ) {
+    $output_array['urls'] = array();
+    foreach( $image_list['phila_image_list'] as $image ) {
+      array_push($output_array['urls'], wp_get_attachment_url($image) );
+    }
+  }
+
+  return $output_array;
+
+}
+
 
 
 function phila_get_page_icon( $post ){
