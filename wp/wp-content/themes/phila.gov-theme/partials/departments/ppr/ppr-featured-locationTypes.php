@@ -5,7 +5,7 @@
 
     <div class="columns">
         <div class="grid-container">
-        <div id="ppr-feat-locations__grid" class="grid-x grid-margin-x align-stretch align-center">
+        <div id="ppr-feat-locations__grid" class="grid-x grid-margin-x align-justify">
           <?php
             include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
             include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));

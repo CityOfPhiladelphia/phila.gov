@@ -4,60 +4,109 @@ jQuery(document).ready(function($) {
     var featLocationTypesQueryURL = 'https://phl.carto.com/api/v2/sql?q=SELECT count(*) AS count, ppr_location_types.location_type_name, ppr_location_types.location_type_description, ppr_location_types.location_type_photo, ppr_location_types.id , ppr_location_types.location_type_is_published, ppr_location_types.location_type_is_featured FROM ppr_location_types AS ppr_location_types  INNER JOIN ppr_facilities ON (ppr_facilities.location_type->>0 = ppr_location_types.id)  INNER JOIN ppr_website_locatorpoints ON (ppr_facilities.website_locator_points_link_id = ppr_website_locatorpoints.linkid)  WHERE ppr_location_types.location_type_is_published AND ppr_location_types.location_type_is_featured GROUP BY ppr_location_types.location_type_name, ppr_location_types.location_type_description, ppr_location_types.location_type_photo,  ppr_location_types.id, ppr_location_types.location_type_is_published, ppr_location_types.location_type_is_featured LIMIT 6';
     var $locationTypeCards = $('.ppr-feat-locationType')
 
-    var render = function(card, data){
+    /**
+     * Render a single PPR Card with its loaded data
+     * This finds elements with data attributes named for
+     * the properites that will be hydrating them with data
+     */
+    var renderCard = function(card, data){
         for(var prop in data) {
             // go go gadget recursion
+            // Walk through a data object to find our values
             if(typeof data[prop] == 'object'){
                 render(card, data[prop])
             }
-
+            // find our html
             var template = $(card).find('[data-'+prop+']')
+
             if(template.length){
                 $(card).find('.ppr-loader').remove()
                 $(card).addClass('loaded')
+                // if we are not recursing through a data object
+                // replace the innner html of our template with data
                 if(typeof data[prop] != 'object') {
+                    // check if it's an image field
                     let imageRegex = /(photo)|(image)|(img)/;
+                    if(imageRegex.test(prop)){
+                        console.log(data.location_type_name, data[prop])
+                        if(data[prop] == '' || data[prop] == null ){
+                            template.remove()
+                            return
+                        }
+                        template.attr('src', data[prop])
+                    }
 
-                    // if(imageRegex.test(prop)){
-                    //     if(data[prop] == '' || data[prop] == null ){
-                    //         template.remove()
-                    //     }
-                    //     template.attr('src', data[prop])
-                    // }
-                    //
-                    //
                     template.html(data[prop])
                 }
             }
         }
     }
 
+    // get image sizes from the PPR Flickr account
+    function getFlickrPhoto (photoID) {
+        var flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=d725fbb674d097510cba546d70aa0244&photo_id='+photoID+'&format=json&nojsoncallback=1'
+        return $.get(flickrAPI)
+    }
 
-
-    function loadCardData (queryURL, $cards) {
-        $.get(queryURL, function(results){
-            var data = results.rows
-            $cards.each(function(idx, card){
-                if(data[idx]){
-                   render(card, data[idx])
-                } else {
-                    $(card)
-                      .find('.ppr-loader')
-                      .html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>')
-                    $(card).addClass('error')
-                    $(card).animate({opacity: 0}, 250)
-                }
-
-            })
+    // convenience function to render all cards with data
+    function renderCards ($cards, data) {
+        $cards.each(function(idx, card){
+            if(data[idx]){
+               renderCard(card, data[idx])
+            } else {
+                // if no data fade out card
+                $(card)
+                  .find('.ppr-loader')
+                  .html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>')
+                $(card).addClass('error')
+                $(card).animate({opacity: 0}, 250)
+            }
         })
     }
 
-    if($activityCards.length) {
-        loadCardData(featActivitiesQueryURL, $activityCards)
+    // get our card data from the CartoAPI
+    function loadCardData (queryURL, $cards, shouldRender) {
+        return $.get(queryURL, function(results){
+            var data = results.rows
+            if(shouldRender){
+                renderCards ($cards, data)
+            }
+        })
     }
 
+
+    /* =======================================================================
+      Load Things to do cards
+    ========================================================================== */
+    if($activityCards.length) {
+        loadCardData(featActivitiesQueryURL, $activityCards, true)
+    }
+
+    /* =======================================================================
+      Load Our Locations cards
+    ========================================================================== */
     if($locationTypeCards.length) {
-        loadCardData(featLocationTypesQueryURL, $locationTypeCards)
+        // 1. grab location types from CartoAPI
+        loadCardData(featLocationTypesQueryURL, $locationTypeCards, false)
+        .then(function(data){
+            var locationTypes = data.rows
+            // 2. get Flickr image sizes for each location type
+            var photos = locationTypes.map(function(lType){
+                return getFlickrPhoto(lType.location_type_photo)
+            })
+
+            Promise.all(photos).then(locationPhotos =>{
+                let small_320_photos = locationPhotos.map(photosData => photosData.sizes.size[4].source)
+                // 3. once we have all the location types photos map the medium 320 x 214 photo
+                //    back into the locationTypes data
+                locationTypes = locationTypes.map((type, idx) =>{
+                    type.location_type_photo = small_320_photos[idx]
+                    return type
+                })
+                // 4. render all of our cards w/ photos at the same time
+                renderCards ($locationTypeCards, locationTypes)
+            })
+        })
     }
 
 
