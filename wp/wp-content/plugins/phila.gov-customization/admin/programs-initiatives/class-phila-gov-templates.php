@@ -55,6 +55,11 @@ class Phila_Gov_Program_Templates {
       'title' => 'Program link',
       'type'  => 'URL',
       'pages' => array( 'programs' ),
+      'visible' => array(
+        'when' => array(
+          array( 'phila_template_select', '=', 'prog_off_site' )
+        ),
+      ),
       'fields' => array(
         array(
           'type'  => 'URL',
@@ -87,7 +92,7 @@ class Phila_Gov_Program_Templates {
           'name' => 'Program header image',
           'type'  => 'image_advanced',
           'max_file_uploads' => 1,
-          'desc'  => 'Required. Minimum size 700px by 500px.',
+          'desc'  => 'Required if subpages exist. Minimum size 700px by 500px.',
           'columns' => 3,
         ),
         array(
@@ -97,6 +102,11 @@ class Phila_Gov_Program_Templates {
           'max_file_uploads' => 1,
           'desc'  => 'Required. Minimum size 700px by 500px.',
           'columns' => 3,
+          'hidden' => array(
+            'when' => array(
+              array( 'phila_template_select', '=', 'prog_off_site' )
+            ),
+          ),
         ),
         array(
           'id'  => 'phila_v2_department_logo',
@@ -104,7 +114,12 @@ class Phila_Gov_Program_Templates {
           'type'  => 'image_advanced',
           'desc'  => 'Optional. Image must be at least 600px wide.',
           'max_file_uploads' => 1,
-          'columns' => 3
+          'columns' => 3,
+          'hidden' => array(
+            'when' => array(
+              array( 'phila_template_select', '=', 'prog_off_site' )
+            ),
+          ),
         ),
         array(
           'id'  => 'phila_program_owner_logo',
@@ -112,7 +127,12 @@ class Phila_Gov_Program_Templates {
           'type'  => 'image_advanced',
           'desc'  => 'Optional. Appears in header. Must be white with no background.',
           'max_file_uploads' => 1,
-          'columns' => 3
+          'columns' => 3,
+          'hidden' => array(
+            'when' => array(
+              array( 'phila_template_select', '=', 'prog_off_site' )
+            ),
+          ),
         ),
         array(
           'type' => 'heading',
