@@ -9,7 +9,6 @@
 <section class="row progs-inits-grid">
     <div class="columns">
         <h2 class="contrast">Programs and initiatives</h2>
-        <p>Find out about how our programs help make Philly a great place to live for everyone!</p>
     </div>
 
     <div class="columns">
@@ -21,6 +20,6 @@
             </div>
         </div>
     </div>
-
 </section>
 <?php endif; ?>
+<?php wp_reset_query();?>
