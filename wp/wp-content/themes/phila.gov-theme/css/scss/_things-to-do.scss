@@ -143,14 +143,17 @@
 .progs-inits-grid__item{
     padding: 20px;
 
-    @media screen and (max-width: 63.9375em) {
-        border-bottom: 1px solid $black;
+    @include breakpoint(medium down) {
+        // border-bottom: 1px solid $black;
+        border-bottom: none;
         &:nth-child(odd){
-            border-right: 1px solid $black;
+            border-right: none;
+            // border-right: 1px solid $black;
         }
     }
 
-    @media screen and (min-width: 64em) {
+
+    @include breakpoint(large) {
         // &:nth-child(-n+4){
         //     border-bottom: 1px solid black;
         // }
