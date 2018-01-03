@@ -1,9 +1,6 @@
-.category-philadelphia-parks-recreation-staged,
-.category-philadelphia-parks-recreation{
-    .things-to-do{
-        & > .row:not(:first-child){
-            margin: 50px auto;
-        }
+.things-to-do{
+    & > .row:not(:first-child){
+        margin: 50px auto;
     }
 }
 
