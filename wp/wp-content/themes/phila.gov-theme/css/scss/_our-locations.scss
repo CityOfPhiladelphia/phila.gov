@@ -2,6 +2,7 @@
   Featured Locations
 ========================================================================== */
 .ppr-feat-locations{
+    margin-top: 50px;
     .grid-container{
         padding:10px 0 0 0;
     }
@@ -9,6 +10,7 @@
 #ppr-feat-locations__grid{
 
 }
+
 .ppr-feat-locationType{
     position: relative;
     transition: all 1s ease-in-out;
@@ -16,7 +18,15 @@
 
     .ppr-feat-locationType__img-container{
         position: relative;
+        max-width: 320px;
+        margin: 0 auto;
+        img{
+            width: 100%;
+            display: block;
+        }
     }
+
+
     .ppr-feat-locationType__count-badge{
         position: absolute;
         top: 10px;
@@ -28,16 +38,10 @@
         border-bottom: 2px solid color(pride-purple);
         opacity: 0;
         border-radius: 3px;
-        .fa{
-            padding: 0 10px 0 5px;
-        }
+        .fa{ padding: 0 10px 0 5px; }
     }
 
-    h4{
-        color: color(ben-franklin-blue);
-        padding:10px 0;
-        margin:0;
-    }
+
     & > *:not(.ppr-loader){
         transition: all 0.5s ease;
         opacity: 0;
@@ -49,6 +53,19 @@
         *{opacity: 1;}
     }
 }
+
+.ppr-feat-locationType__name{
+    color: color(ben-franklin-blue);
+    padding:10px 0;
+}
+
+.ppr-feat-locationType__name,
+.ppr-feat-locationType__desc{
+    display: block;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
 .ppr-feat-locationType__desc{
     margin-bottom:0;
 }
