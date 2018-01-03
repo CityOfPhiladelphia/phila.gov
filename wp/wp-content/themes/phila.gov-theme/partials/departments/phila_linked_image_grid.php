@@ -4,7 +4,7 @@
     </div>
     <div class="columns">
         <div class="grid-container phila-linked-image-grid">
-        <div class="grid-x grid-margin-x align-spaced">
+        <div class="grid-x grid-margin-x align-justify">
         <?php
             $group_values = rwmb_meta( 'phila_v2_linked_image_grid' );
             if ( ! empty( $group_values ) ):
@@ -20,13 +20,12 @@
                     if($linkURL):
              ?>
 
-                    <div class="cell large-7 medium-7 small-18 phila-linked-image-grid__item">
-                        <div class="columns">
-                            <a class="phila-linked-image-grid__item-photo" href="<?= $linkURL ?>" target="_blank">
-                                <?php if($imageUrl): ?> <img src="<?= $imageUrl ?>" alt=""><?php endif; ?>
-                            </a>
-                            <a href="<?= $linkURL ?>" target="_blank" class="phila-linked-image-grid__item-title <?= $linkIsExternal ? 'external' : ''  ?>"><?= $linkTitle ?></a>
-                        </div>
+                    <div class="cell phila-linked-image-grid__item large-7 medium-7 small-auto">
+                        <a class="phila-linked-image-grid__item-photo" href="<?= $linkURL ?>" target="_blank">
+                            <?php if($imageUrl): ?> <img src="<?= $imageUrl ?>" alt=""><?php endif; ?>
+                            <!-- <?php if($imageUrl): ?> <img src="http://via.placeholder.com/320x214" alt=""><?php endif; ?> -->
+                        </a>
+                        <a href="<?= $linkURL ?>" target="_blank" class="phila-linked-image-grid__item-title <?= $linkIsExternal ? 'external' : ''  ?>"><?= $linkTitle ?></a>
                     </div>
                 <?php endif; ?>
 
