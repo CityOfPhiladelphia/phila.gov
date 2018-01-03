@@ -231,6 +231,8 @@ $meta_boxes[] = array(
         'priority' => 'high',
         'type'  => 'group',
         'clone' => true,
+        'max_clone' => 6,
+        'sort_clone'  => true,
 
         'fields' => array(
           array(
@@ -239,7 +241,7 @@ $meta_boxes[] = array(
             'type' => 'image_advanced',
             'max_file_uploads' => 1,
           ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('PPR Signature Events', 'phila_v2_linked_image_grid__link')
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_v2_linked_image_grid__link')
         ),
       ),
     ),
