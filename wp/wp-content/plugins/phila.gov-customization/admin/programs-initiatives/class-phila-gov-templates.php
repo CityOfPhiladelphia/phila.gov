@@ -39,7 +39,7 @@ class Phila_Gov_Program_Templates {
 
           'options' => array(
             'prog_landing_page'  => 'Homepage',
-            'phila_one_quarter'    => '1/4 Headings',
+            'phila_one_quarter'    => '1/4 Headings (subpage)',
             'prog_off_site' => 'Off-site program'
           ),
           'admin_columns' => array(
@@ -65,18 +65,15 @@ class Phila_Gov_Program_Templates {
           'type'  => 'URL',
           'id' => 'prog_off_site_link',
           'name' => 'URL',
-        ),
-        array(
-          'type'  => 'checkbox',
-          'id' => 'is_external',
-          'name' => 'Does this program exist outside of phila.gov?',
+          'required'  => true,
+          'desc'  => 'Once a URL is entered, this page will automatically redirect to this URL. To render this page normally, change the "Off-site program" template.'
         ),
       ),
     );
 
     $meta_boxes[] = array(
       'id'       => 'phila_header',
-      'title'    => 'Header image',
+      'title'    => 'Program images',
       'pages' => array( 'programs' ),
       'priority' => 'high',
       'visible' => array(
@@ -89,10 +86,10 @@ class Phila_Gov_Program_Templates {
       'fields' => array(
         array(
           'id' => 'prog_header_img',
-          'name' => 'Program header image',
+          'name' => 'Program hero image',
           'type'  => 'image_advanced',
           'max_file_uploads' => 1,
-          'desc'  => 'Required if subpages exist. Minimum size 700px by 500px.',
+          'desc'  => 'Minimum size 700px by 500px. Used on the Programs + initiatives landing page and hero header.',
           'columns' => 3,
         ),
         array(
@@ -100,7 +97,7 @@ class Phila_Gov_Program_Templates {
           'name' => 'Subpage header image',
           'type'  => 'image_advanced',
           'max_file_uploads' => 1,
-          'desc'  => 'Required. Minimum size 700px by 500px.',
+          'desc'  => 'Required if subpages exist. Minimum size 700px by 500px.',
           'columns' => 3,
           'hidden' => array(
             'when' => array(
