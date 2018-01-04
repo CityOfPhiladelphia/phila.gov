@@ -89,7 +89,9 @@ module.exports = jQuery(document).ready(function($) {
     //create link back to phila.gov with search param
     var link = "https://cse.google.com/cse?oe=utf8&ie=utf8&source=uds&start=0&cx=003474906032785030072:utbav7zeaky&hl=en&q=" + params.stq + "#gsc.tab=0&gsc.q=" + params.stq + "&gsc.sort=";
     var a = $('.classic-gov-search');
-    a[0].href = link;
+    if (a.length != 0) {
+      a[0].href = link;
+    }
 
   }
 

@@ -21,11 +21,10 @@
              ?>
 
                     <div class="cell phila-linked-image-grid__item large-7 medium-7 small-auto">
-                        <a class="phila-linked-image-grid__item-photo" href="<?= $linkURL ?>" target="_blank">
+                        <a class="phila-linked-image-grid__item-photo hover-fade" href="<?= $linkURL ?>">
                             <?php if($imageUrl): ?> <img src="<?= $imageUrl ?>" alt=""><?php endif; ?>
-                            <!-- <?php if($imageUrl): ?> <img src="http://via.placeholder.com/320x214" alt=""><?php endif; ?> -->
+                            <div href="<?= $linkURL ?>" class=" phila-linked-image-grid__item-title <?= $linkIsExternal ? 'external' : ''  ?>"><?= $linkTitle ?></div>
                         </a>
-                        <a href="<?= $linkURL ?>" target="_blank" class="phila-linked-image-grid__item-title <?= $linkIsExternal ? 'external' : ''  ?>"><?= $linkTitle ?></a>
                     </div>
                 <?php endif; ?>
 
