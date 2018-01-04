@@ -3,11 +3,21 @@
  * The template used for displaying program sites
  *
  * @package phila-gov
- */
+*/
+
+$user_selected_template = phila_get_selected_template();
+
+if ( $user_selected_template == 'prog_off_site' ){
+  $url = rwmb_meta('prog_off_site_link');
+  if ( isset($url) ) {
+    wp_redirect($url, 302);
+    exit;
+  }
+}
 
 get_header();
 
-$user_selected_template = phila_get_selected_template(); ?>
+?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
   <?php

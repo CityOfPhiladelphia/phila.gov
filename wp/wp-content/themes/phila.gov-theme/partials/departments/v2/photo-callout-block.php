@@ -30,7 +30,7 @@
         <div class="photo-callout-block__txt large-10 medium-12 small-20 cell">
                 <div class="grid align-center-middle grid-x grid-padding-x">
                     <div class="cell small-22 large-18 ">
-                        <h4 class="h4 photo-callout-block__txt-sub-header"><?= $subHeader ?></h4>
+                        <h4 class="h5 photo-callout-block__txt-sub-header"><?= $subHeader ?></h4>
                         <h2 class="h2 photo-callout-block__txt-header"><?= $header ?></h2>
                         <p class="photo-callout-block__desc"><?= $description ?></p>
                         <?php if($btnLink): ?>

@@ -1136,6 +1136,19 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'title' => 'Program + initiatives association',
+  'pages' => array('service_page'),
+  'context'  => 'side',
+  'fields'  => array(
+    array(
+      'id'  => 'display_prog_init',
+      'desc'  => 'Should this page appear as "Related content" on the programs and initiatives landing page?',
+      'type'  => 'checkbox',
+    )
+  ),
+);
+
+$meta_boxes[] = array(
   'title' => 'Topic Page Options',
   'pages' => array('service_page'),
   'priority' => 'high',
