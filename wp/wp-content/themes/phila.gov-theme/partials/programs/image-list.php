@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="grid-container">
-    <div class="grid-x center align-middle">
+    <div class="grid-x <?= ( $count == 1 ) ? '' : 'center' ?> align-middle">
         <?php foreach( $image_list_vars['urls'] as $url ) : ?>
           <div class="cell image-list medium-<?= $grid_count ?> mbl">
 
