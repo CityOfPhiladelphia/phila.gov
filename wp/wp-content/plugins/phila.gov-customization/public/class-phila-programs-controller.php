@@ -32,13 +32,13 @@ class Phila_Programs_Controller {
     ) );
 
     //Register individual items
-    register_rest_route( $this->namespace, '/' . $this->category_resource, array(
-      array(
-        'methods'   => WP_REST_Server::READABLE,
-        'callback'  => array( $this, 'get_categories' ),
-      ),
-      'schema' => array( $this, 'get_category_schema' ),
-    ) );
+    // register_rest_route( $this->namespace, '/' . $this->category_resource, array(
+    //   array(
+    //     'methods'   => WP_REST_Server::READABLE,
+    //     'callback'  => array( $this, 'get_categories' ),
+    //   ),
+    //   'schema' => array( $this, 'get_category_schema' ),
+    // ) );
   }
 
   public function set_query_defaults($request){
@@ -197,6 +197,18 @@ class Phila_Programs_Controller {
       $post_data['categories']  = (array) $categories;
     }
 
+    if (isset( $schema['properties']['audiences'] )) {
+      $audiences = get_the_terms($post->ID, 'audience');
+
+      $post_data['audiences']  = (array) $audiences;
+    }
+
+    if (isset( $schema['properties']['services'] )) {
+      $services = get_the_terms($post->ID, 'service_type');
+
+      $post_data['services']  = (array) $services;
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -264,6 +276,14 @@ class Phila_Programs_Controller {
         ),
         'categories'  => array(
           'description' => esc_html__('The categories assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'audiences'  => array(
+          'description' => esc_html__('The audience taxonomy assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'services'  => array(
+          'description' => esc_html__('The service category assigned to this object.', 'phila-gov'),
           'type'  => 'array',
         ),
       ),
