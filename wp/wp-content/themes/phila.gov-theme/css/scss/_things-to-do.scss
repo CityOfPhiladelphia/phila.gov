@@ -152,10 +152,7 @@
 
 
     @include breakpoint(large) {
-        // &:nth-child(-n+4){
-        //     border-bottom: 1px solid black;
-        // }
-        &:nth-child(-n+8){
+        &:nth-child(-n+4){
             border-bottom: 1px solid black;
         }
         &:nth-child(2n+2),
