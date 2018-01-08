@@ -209,6 +209,20 @@ class Phila_Programs_Controller {
       $post_data['services']  = (array) $services;
     }
 
+    if (isset( $schema['properties']['image'] )) {
+      $img = rwmb_meta( 'prog_header_img', array( 'limit' => 1 ), $post->ID );
+      $img = reset($img);
+      $medium_image = substr_replace($img['full_url'], '-768x432.jpg', -4, 4);
+
+      $post_data['image']  = (array) $medium_image;
+    }
+
+    if (isset( $schema['properties']['external_link'] )) {
+      $link = rwmb_meta( 'prog_off_site_link', array(), $post->ID );
+
+      $post_data['external_link']  = (string) $link;
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -285,6 +299,14 @@ class Phila_Programs_Controller {
         'services'  => array(
           'description' => esc_html__('The service category assigned to this object.', 'phila-gov'),
           'type'  => 'array',
+        ),
+        'image'  => array(
+          'description' => esc_html__('The medium size image associated with this program.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'external_link'  => array(
+          'description' => esc_html__('Link to this program if it is not part of this website.', 'phila-gov'),
+          'type'  => 'string',
         ),
       ),
     );
