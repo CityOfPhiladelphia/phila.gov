@@ -83,7 +83,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title' => 'Full-width call to action',
-    'pages'    => array( 'department_page','things-to-do' ),
+    'pages'    => array( 'department_page','things-to-do','our-locations' ),
     // 'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'visible' => array(
       'when' => array(
@@ -174,7 +174,8 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       'visible' =>  array(
          'when' => array(
             array( 'phila_template_select', '=', 'homepage_v2'),
-            array( 'phila_template_select', '=', 'things-to-do')
+            array( 'phila_template_select', '=', 'things-to-do'),
+            array( 'phila_template_select', '=', 'our-locations')
           ),
           'relation' => 'or'
       ),
@@ -279,7 +280,34 @@ $meta_boxes[] = array(
             'type' => 'checkbox'
           )
       )
-    );//Things To Do
+    );
+
+$meta_boxes[] = array(
+      'title'    => 'Featured Locations Grid',
+
+      'pages'    => array( 'department_page' ),
+      'visible' => array( 'our-locations' ),
+      'context'  => 'normal',
+
+      'fields' => array(
+          array(
+            'name' => '',
+            'id'   => 'phila_feat_locations_grid_shown',
+            'desc'  => 'Should this page show the Featured Locations Grid?',
+            'type' => 'checkbox'
+          ),
+          array(
+            'id' => 'phila_feat_locations_grid__header',
+            'type' => 'text',
+            'name' => 'Header'
+          ),
+          array(
+            'id'  => 'phila_feat_locations_grid__desc',
+            'type'  => 'wysiwyg',
+            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        )
+      )
+    );
 
  $meta_boxes[] = array(
       'title'    => 'wysiwyg section w/ Header',
