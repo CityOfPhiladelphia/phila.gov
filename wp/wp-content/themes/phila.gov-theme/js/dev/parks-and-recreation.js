@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
             // go go gadget recursion
             // Walk through a data object to find our values
             if(typeof data[prop] == 'object'){
-                render(card, data[prop])
+                renderCard(card, data[prop])
             }
             // find our html
             var template = $(card).find('[data-'+prop+']')
