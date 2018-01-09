@@ -3,14 +3,17 @@
    * Programs and initiatives header
   */
   $parent = phila_util_get_furthest_ancestor($post);
-  $hero = rwmb_meta('prog_header_img', array( 'limit' => 1 ) );
+  $hero = rwmb_meta( 'prog_header_img', array( 'limit' => 1 ) );
   $hero = reset($hero);
 
-  $sub_hero = rwmb_meta('prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
+  $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
   $sub_hero = reset( $sub_hero );
 
-  $credit = rwmb_meta('phila_photo_credit');
-  $description = rwmb_meta('phila_meta_desc');
+  $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
+  $owner = reset($owner);
+
+  $credit = rwmb_meta( 'phila_photo_credit' );
+  $description = rwmb_meta( 'phila_meta_desc' );
 ?>
 <header>
   <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
@@ -34,16 +37,21 @@
   <?php else: ?>
     <div class="hero-half">
       <div class="grid-x">
-        <div class="cell large-12 bg-shade bg-ben-franklin-blue white hero-half--container">
+        <div class="cell medium-12 bg-shade bg-ben-franklin-blue white hero-half--container">
           <div class="grid-x grid-container align-right">
-            <div class="hero-half--title mvm">
+            <div class="hero-half--title mvl">
               <h1><?php echo the_title() ?></h1>
               <p class="description"><?php echo $description ?></p>
+              <?php if ( !empty( $owner ) ) : ?>
+                <div class="owner-logo">
+                  <div class="sep"></div>
+                  <img src="<?= $owner['full_url']?>" alt="<?= $owner['alt']?>">
+                </div>
+              <?php endif;?>
             </div>
           </div>
         </div>
-        <div class="cell large-12 align-self-stretch hero-image">
-          <img src="<?php echo $hero['full_url'] ?>" alt="" class="show-for-large">
+        <div class="cell medium-12 align-self-stretch hero-image hide-for-small-only" style="background-image:url(<?php echo $hero['full_url']  ?>) ">
           <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?>
         </div>
       </div>

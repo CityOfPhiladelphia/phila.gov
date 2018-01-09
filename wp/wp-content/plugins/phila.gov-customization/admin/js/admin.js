@@ -191,4 +191,51 @@ jQuery(document).ready(function($) {
 
   }
 
+  /*
+  * Intercepts the ajax response sent from Apperance -> Menu -> Departments search results and adds the upmost parent of each child page found. This should make it easier to identify child pages that have the same name".
+  */
+
+  if($('body').hasClass('nav-menus-php')){
+    $(document).ajaxSuccess(function(event, request, settings){
+
+      var params = settings.data;
+      var action = params.match(/action=(.+?)&/);
+      var type = params.match(/&type=(.+)/);
+
+      if(action[1] == 'menu-quick-search' && type[1] == 'quick-search-posttype-department_page') {
+        var $responseText = $(request.responseText);
+        var $checkboxes = $responseText.find('.menu-item-checkbox');
+        if ($checkboxes.length > 0){
+          var deptPageIds = [];
+          $checkboxes.each(function(){
+            deptPageIds.push($(this).val());
+          });
+          if(deptPageIds.length > 0){
+            updateResponseCheckboxes(deptPageIds); 
+          }
+        }
+      }
+      function updateResponseCheckboxes(postIds){
+        $.ajax({
+          url: myAjax.ajaxurl,
+          dataType: 'json',
+          type: 'POST',
+          data: {
+            action: 'addDepartmentParent',
+            postIds: postIds,
+            security: myAjax.ajax_nonce,
+          }
+        }).success(function(response) {
+          if (response) {
+            $.each(response, function(id,parent){
+              value = id.replace("p=", "");
+              parent = "<small class='pparent'><span>Parent:</span> " + parent + "</small>";
+              $('#department_page-search-checklist .menu-item-title input[value="' + value + '"]').parent("label").append(parent);
+            });
+          }
+        });
+      }
+    });
+  }
+
 });

@@ -538,7 +538,7 @@ function phila_get_attachment_id_by_url( $url ) {
   //Filter out everything before /media/ because we are matching on the aws url and not what is in wp-content
   preg_match('/\/media\/(.+)/', $url, $matches);
 
-  $parsed_url = $matches[1];
+  $parsed_url = urldecode($matches[1]);
 
   $attachment = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'amazonS3_info' AND meta_value LIKE %s;", '%"' .'media/' .$parsed_url .'"%' ));
 

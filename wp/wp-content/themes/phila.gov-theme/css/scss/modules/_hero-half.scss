@@ -13,13 +13,16 @@
 
   h1 {
     font-size: 3rem;
+    margin-top:0;
   }
 
   .description{
     font-size: 1.6rem;
   }
   .hero-image{
-    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 400px;
   }
   .photo-credit {
     display:none;
@@ -32,6 +35,17 @@
       position: absolute;
       bottom: 0;
       right: 0;
+    }
+  }
+  .owner-logo{
+    img{
+      max-height: 50px;
+    }
+    .sep{
+      height: 1px;
+      background: white;
+      width: 150px;
+      margin-bottom:1rem;
     }
   }
 
