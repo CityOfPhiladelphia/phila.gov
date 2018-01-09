@@ -48,7 +48,8 @@ class Phila_Gov_Admin_Templates {
         'options' => array(
           'default'                 => 'Default',
           'homepage_v2'             => 'Department homepage version 2',
-          'things-to-do'             => 'Things to do',
+          'things-to-do'            => 'Things to do',
+          'our-locations'           => 'Our locations',
           'one_quarter_headings_v2' => '1/4 headings',
           'contact_us_v2'           => 'Contact page',
           'all_services_v2'         => 'All services',
