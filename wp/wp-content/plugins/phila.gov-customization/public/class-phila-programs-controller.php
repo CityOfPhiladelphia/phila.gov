@@ -214,7 +214,7 @@ class Phila_Programs_Controller {
       $img = reset($img);
       $medium_image = substr_replace($img['full_url'], '-768x432.jpg', -4, 4);
 
-      $post_data['image']  = (array) $medium_image;
+      $post_data['image']  = (string) $medium_image;
     }
 
     if (isset( $schema['properties']['external_link'] )) {
@@ -302,7 +302,7 @@ class Phila_Programs_Controller {
         ),
         'image'  => array(
           'description' => esc_html__('The medium size image associated with this program.', 'phila-gov'),
-          'type'  => 'array',
+          'type'  => 'string',
         ),
         'external_link'  => array(
           'description' => esc_html__('Link to this program if it is not part of this website.', 'phila-gov'),
