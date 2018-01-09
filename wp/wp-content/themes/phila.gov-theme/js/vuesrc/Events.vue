@@ -17,8 +17,7 @@
           name="startDate"
           v-on:closed="runDateQuery"
           v-model="state.startDate"
-          format="MMM. dd, yyyy"
-          :disabled="state.disabled"></datepicker>
+          format="MMM. dd, yyyy"></datepicker>
         </div>
         <div class="cell medium-1 small-2 mts">
           <i class="fa fa-arrow-right"></i>
@@ -29,8 +28,7 @@
           placeholder="End date"
           v-on:closed="runDateQuery"
           v-model="state.endDate"
-          format="MMM. dd, yyyy"
-          :disabled="state.disabled"></datepicker>
+          format="MMM. dd, yyyy"></datepicker>
         </div>
         <div class="cell medium-7 small-24">
           <a class="button content-type-featured full" @click="reset">Clear filters</a>
@@ -169,10 +167,6 @@ export default {
         loadEndDate: moment().format(),
         startDate: '',
         endDate: '',
-        disabled: {
-          to: new Date(2015, 1, 1),
-          from: new Date()
-        }
       },
 
       //queriedCategory: this.$route.query.category

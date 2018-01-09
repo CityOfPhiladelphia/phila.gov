@@ -1,9 +1,6 @@
-.category-philadelphia-parks-recreation-staged,
-.category-philadelphia-parks-recreation{
-    .things-to-do{
-        & > .row:not(:first-child){
-            margin: 50px auto;
-        }
+.things-to-do{
+    & > .row:not(:first-child){
+        margin: 50px auto;
     }
 }
 
@@ -43,6 +40,7 @@
     color: color(dark-ben-franklin);
     padding-bottom: 20px;
     font-weight: 700;
+    text-transform: uppercase;
     @media screen and (min-width: 40em) and (max-width: 63.9375em) {
         padding:0; margin:0;
     }
@@ -154,10 +152,7 @@
 
 
     @include breakpoint(large) {
-        // &:nth-child(-n+4){
-        //     border-bottom: 1px solid black;
-        // }
-        &:nth-child(-n+8){
+        &:nth-child(-n+4){
             border-bottom: 1px solid black;
         }
         &:nth-child(2n+2),
