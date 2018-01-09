@@ -83,7 +83,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title' => 'Full-width call to action',
-    'pages'    => array( 'department_page','things-to-do','our-locations' ),
+    'pages'    => array( 'department_page' ),
     // 'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'visible' => array(
       'when' => array(
@@ -92,7 +92,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
         array('phila_template_select', 'our-locations')
       ),
       'relation' => 'or'
-
     ),
 
     'fields' => array(
@@ -282,11 +281,13 @@ $meta_boxes[] = array(
       )
     );
 
-$meta_boxes[] = array(
+    $meta_boxes[] = array(
       'title'    => 'Featured Locations Grid',
 
       'pages'    => array( 'department_page' ),
-      'visible' => array( 'our-locations' ),
+      'visible' => array(
+          array('phila_template_select', 'our-locations')
+      ),
       'context'  => 'normal',
 
       'fields' => array(
