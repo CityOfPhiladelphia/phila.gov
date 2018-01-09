@@ -212,7 +212,7 @@ class Phila_Programs_Controller {
     if (isset( $schema['properties']['image'] )) {
       $img = rwmb_meta( 'prog_header_img', array( 'limit' => 1 ), $post->ID );
       $img = reset($img);
-      $medium_image = substr_replace($img['full_url'], '-768x432.jpg', -4, 4);
+      $medium_image = str_replace('.jpg', '-700x400.jpg', $img['full_url']);
 
       $post_data['image']  = (string) $medium_image;
     }
