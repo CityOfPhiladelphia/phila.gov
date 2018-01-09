@@ -91,6 +91,8 @@ class Phila_Programs_Controller {
 
     $args = array(
       'post_type' => $post_type,
+      'posts_per_page'=> $count,
+      'post_parent' => 0
     );
     $query_defaults = $this->set_query_defaults($request);
     $args = array_merge($query_defaults, $args);
@@ -175,6 +177,12 @@ class Phila_Programs_Controller {
 
     if (isset( $schema['properties']['title'] )) {
       $post_data['title']  =  (string) html_entity_decode($post->post_title);
+    }
+
+    if (isset( $schema['properties']['short_description'] )) {
+      $short_desc = rwmb_meta( 'phila_meta_desc', array(), $post->ID );
+
+      $post_data['short_description']  =  (string) html_entity_decode($short_desc);
     }
 
     if (isset( $schema['properties']['template'] )) {
@@ -277,6 +285,11 @@ class Phila_Programs_Controller {
         ),
         'title'=> array(
           'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'short_description'=> array(
+          'description'  => esc_html__( 'Short description.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
