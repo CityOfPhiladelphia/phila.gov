@@ -324,7 +324,7 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_link_fields( $name, $id ){
+  public static function phila_metabox_v2_link_fields( $name, $id, $required = true ){
     return array(
       'id'  => $id,
       'name'  => $name,
@@ -337,7 +337,14 @@ class Phila_Gov_Standard_Metaboxes {
           'type' => 'heading',
           'name' => 'Link details',
         ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_title('Clickable link text', 'link_text', '', $size = 50, $columns = 12  ),
+        array(
+          'name' => 'Clickable link text',
+          'id' => 'link_text',
+          'type'  => 'text',
+          'size' => 50,
+          'columns' => 12,
+          'required' => $required
+         ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link URL', 'link_url' ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_external('', 'is_external' ),
       )
@@ -862,7 +869,7 @@ public static function phila_meta_var_connect(){
             'type' => 'email',
             'desc' => 'example@phila.gov',
           ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link', false),
           Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link', 'connect_see_all'),
         ),
       )
