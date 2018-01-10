@@ -97,7 +97,10 @@
 }
 .ppr-feat-activity__desc{
     margin-bottom:0;
+    color: #000;
+    font-weight: 100;
 }
+
 .ppr-feat-activity__learn-more{
     margin: 0;
     padding-top: 5px;
@@ -118,6 +121,10 @@
 }
 
 .ppr-feat-activity__meta{
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
     h5{
         display: inline-block;
         text-align: center;
