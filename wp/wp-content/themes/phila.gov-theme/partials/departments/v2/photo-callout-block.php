@@ -10,18 +10,9 @@
 ?>
 
 
-<section class="row ">
+<section class="row">
     <div class="grid-container columns">
-    <div class="
-            mtl
-            grid-x
-            large-padding-collapse
-            medium-padding-collapse
-            small-padding-collapse
-            small-margin-collapse
-            align-center
-            photo-callout-block ">
-
+    <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
 
         <div class="photo-callout-block__img large-14 medium-12 small-20 cell">
             <img src="<?= $imagePath ?>" alt="" class="float-center">
