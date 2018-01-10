@@ -189,12 +189,12 @@ class Phila_Gov_Standard_Metaboxes {
     // Custom Text
     return array(
       array(
-        'name' => 'Custom Text Title',
+        'name' => 'Heading',
         'id'   => 'phila_custom_text_title',
         'type' => 'text',
       ),
       array(
-        'name' => 'Custom Text Content',
+        'name' => 'Content',
         'id'   => 'phila_custom_text_content',
         'type' => 'wysiwyg',
         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
@@ -555,7 +555,7 @@ class Phila_Gov_Standard_Metaboxes {
       array(
         'name'  => 'Link url',
         'id'    => 'phila_action_panel_link_multi',
-        'type'  => 'url',
+        'type'  => 'text',
         'class' => 'action-panel-link',
       ),
       array(
@@ -609,9 +609,10 @@ class Phila_Gov_Standard_Metaboxes {
              'sort_clone' => true,
              'fields' => array(
                array(
-                 'name'  => 'Call to Action Text',
+                 'name'  => 'Link text',
                  'id'    => 'phila_action_panel_cta_text_multi',
                  'type'  => 'text',
+                 'required' => true,
                  'class' => 'action-panel-cta-text',
                ),
                array(
@@ -627,24 +628,26 @@ class Phila_Gov_Standard_Metaboxes {
                  'class' => 'action-panel-fa',
                ),
                array(
-                 'name'  => 'Icon Background Circle',
+                 'name'  => 'Icon background',
                  'id'    => 'phila_action_panel_fa_circle_multi',
                  'type'  => 'checkbox',
                  'class' => 'action-panel-fa',
                  'std'  => 1,
+                 'desc'  => 'Should this icon have a circle background?',
+
                ),
                array(
-                 'name'  => 'Link to Content',
+                 'name'  => 'URL to content',
                  'id'    => 'phila_action_panel_link_multi',
-                 'type'  => 'url',
+                 'type'  => 'text',
                  'class' => 'action-panel-link',
                ),
                array(
-                 'name'  => 'External Link',
+                 'name'  => 'External link',
                  'id'    => 'phila_action_panel_link_loc_multi',
                  'type'  => 'checkbox',
                  'class' => 'action-panel-link-loc',
-                 'desc'  => 'This link directs users away from beta.phila.gov',
+                 'desc'  => 'Does this link directs users away from beta.phila.gov?',
                ),
              ),
            ),
