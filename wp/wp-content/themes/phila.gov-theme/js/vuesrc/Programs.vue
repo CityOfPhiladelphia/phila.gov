@@ -20,8 +20,7 @@
                 v-model="checkedAudiences"
                 v-bind:value="value.slug"
                 v-bind:name="value.slug"
-                v-bind:id="value.slug"
-                @click="onSubmit" />
+                v-bind:id="value.slug"/>
                 <label v-bind:for="value.slug">{{ value.name }}</label>
               </div>
           </fieldset>
@@ -32,26 +31,31 @@
                 v-model="checkedServiceType"
                 v-bind:value="value.slug"
                 v-bind:name="value.slug"
-                v-bind:id="value.slug"
-                @click="onSubmit" />
+                v-bind:id="value.slug"/>
                 <label v-bind:for="value.slug"><span v-html="value.name"></span></label>
               </div>
           </fieldset>
         </section>
       </div>
-      <div id="program-results">
-        <div v-show="loading" class="mtm center">
-          <i class="fa fa-spinner fa-spin fa-3x"></i>
-        </div>
-        <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
-        <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
-        <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure">
-          <div class="program-card card medium-12">
-            <h3 data-title="program-title"></h3>
-            <div data-image></div>
-            <div data-template></div>
-            <div data-short_description></div>
-            <div data-link></div>
+      <div class="cell medium-16">
+        <div id="program-results" class="grid-x grid-margin-x grid-padding-x">
+          <div v-show="loading" class="mtm center">
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
+          </div>
+          <!--<div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+          <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
+          <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure"></div>-->
+          <div v-for="program in programs"
+          :key="program.id"
+          class="medium-12 cell mbl">
+            <a class="card program-card" v-bind:href="program.link">
+              <img v-bind:src="program.image" />
+              <div class="content-block">
+                <h3>{{program.title}}</h3>
+                <p>{{program.short_description}}</p>
+              </div>
+            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -62,9 +66,18 @@
 <script>
 import axios from 'axios'
 
-const programsEndpoint = '/wp-json/programs/v1'
-const audienceEndpoint = '/wp-json/wp/v2/audience'
-const serviceTypeEndpoint = '/wp-json/wp/v2/service_type'
+const programsEndpoint = '/wp-json/programs/v1/'
+const audienceEndpoint = '/wp-json/wp/v2/audience/'
+const serviceTypeEndpoint = '/wp-json/wp/v2/service_type/'
+
+function getByServiceType(list, service) {
+  if ( !service )
+  return list
+  //service.forEach(function(e, other){
+    console.log(list)
+    return list.filter(item => item.service === service)
+//  })
+}
 
 export default {
   name: 'program-archives',
@@ -72,7 +85,7 @@ export default {
   },
   data: function() {
     return{
-      programs: [],
+      programs: [{ }],
 
       audience: [{ }],
       service_type: [{ }],
@@ -92,11 +105,6 @@ export default {
     }
   },
   filters: {
-    decodeHtml: function( html ) {
-      var txt = document.createElement('textarea');
-      txt.innerHTML = html;
-      return txt.value;
-    }
   },
   mounted: function () {
     this.getAudiences()
@@ -107,18 +115,21 @@ export default {
   methods: {
     getAllPrograms: function () {
       this.loading = true
+      console.log('yeah its happening')
       //TODO use in instead of undefined
+
       axios.get(programsEndpoint + 'archives', {
         params: {
-          's': this.searchedVal,
           'per_page': 20,
         }
       })
       .then(response => {
         this.programs = response.data
+        console.log(response.data)
         this.successfulResponse
       })
       .catch(e => {
+        console.log('fail')
         this.failure = true
         this.loading = false
       })
@@ -160,14 +171,15 @@ export default {
       this.loading = true
 
       this.$nextTick(function () {
-        axios.get(programsEndpoint, {
+        axios.get(programsEndpoint + 'archives', {
           params : {
             's': this.searchedVal,
-            'count': -1,
+            'per_page': 20,
             }
           })
           .then(response => {
             console.log('fired')
+            console.log(response.data)
             this.programs = response.data
             this.successfulResponse
           })
@@ -204,7 +216,16 @@ export default {
       */
     },
   },
-  computed:{
+  computed: {
+    filteredByAll() {
+      return getByServiceType(this.programs, this.service_type)
+    },
+    filteredByServiceType() {
+      return getByServiceType(this.programs, this.service_type)
+    },
+    // filteredByCategory() {
+    //   return getByAudience(this.list, this.category)
+    // },
     successfulResponse: function(){
       if (this.programs.length == 0) {
         this.emptyResponse = true
@@ -216,113 +237,13 @@ export default {
         this.failure = false
       }
     },
-    parseCategory: function(){
-      let c = this.$route.query.category
-      let catName = {}
-      if (c) {
-        let mycats = this.categories
-        this.categories.forEach(function(el){
-          if (c == el.id) {
-            catName = {
-              id: el.id,
-              slang_name: el.slang_name
-            }
-          }
-        })
-        return catName
-      }
-    },
   },
 }
 </script>
 
 <style>
-.filter-by-owner{
-  font-family:"Open Sans", Helvetica, Roboto, Arial, sans-serif !important;
+/* TODO: remove base card styles in standards */
+a.card{
+  border-bottom: none;
 }
-.filter-by-owner .v-select .dropdown-toggle{
-  border:none;
-  background:white;
-}
-.filter-by-owner .v-select .open-indicator{
-  bottom:0;
-  top:0;
-  right:0;
-  background: #0f4d90;
-  padding: .6rem 1.5rem 1rem .8rem;
-  height: inherit;
-}
-
-.filter-by-owner .v-select input[type=search],
-.v-select input[type=search]:focus{
-  border:none;
-}
-.filter-by-owner .v-select .open-indicator:before{
-  border-color:white;
-}
-.filter-by-owner .v-select input[type=search],
-.filter-by-owner .v-select input[type=search]:focus {
-  width:8rem !important;
-}
-.filter-by-owner ul.dropdown-menu{
-  border:none;
-  font-weight: bold;
-}
-.filter-by-owner ul.dropdown-menu li{
-  border-bottom: 1px solid #f0f0f0;
-
-}
-.filter-by-owner ul.dropdown-menu li a{
-  color: #0f4d90;
-  padding:1rem;
-}
-.filter-by-owner ul.dropdown-menu li a:hover{
-  background: #0f4d90;
-  color:white;
-}
-.filter-by-owner .v-select .dropdown-menu > .highlight > a {
-  background: #0f4d90;
-  color: white;
-}
-.filter-by-owner .v-select.single .selected-tag{
-  background-color: #f0f0f0;
-  border: none;
-}
-ul.paginate-links {
-  display: inline-block;
-  margin:0;
-  padding:0;
-  float:right;
-}
-.paginate-links li{
-  display: inline-block;
-  border-right: 2px solid white;
-  margin-bottom:1rem;
-}
-.paginate-links a{
-  display: block;
-  padding: .5rem;
-  background: #0f4d90;
-  color:white;
-}
-.paginate-links a{
-  color:white;
-}
-.paginate-links li.active a{
-  background: white;
-  color: #444;
-}
-.vdp-datepicker [type='text'] {
-  height: 2.4rem;
-}
-.vdp-datepicker input:read-only{
-  background: white;
-  cursor: pointer;
-}
-#archive-results .vdp-datepicker__calendar .cell.selected,
-#archive-results .vdp-datepicker__calendar .cell.selected.highlighted,
-#archive-results .vdp-datepicker__calendar .cell.selected:hover{
-  background: #25cef7;
-}
-
 </style>
