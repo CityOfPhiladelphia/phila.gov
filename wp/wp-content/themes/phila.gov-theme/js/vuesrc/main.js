@@ -5,6 +5,8 @@ import vmodal from 'vue-js-modal'
 import Posts from './Archives.vue'
 import Pubs from './Publications.vue'
 import Events from './Events.vue'
+import Programs from './Programs.vue'
+
 
 Vue.use(VuePaginate)
 Vue.use(VueRouter)
@@ -31,6 +33,11 @@ if (window.location.pathname === '/the-latest/archives/') {
   new Vue({
     el: '#publication-search',
     render: h => h(Pubs)
+  })
+}else if(window.location.pathname === '/programs/'){
+  new Vue({
+    el: '#programs-initiatives-landing',
+    render: h => h(Programs)
   })
 }else{
   new Vue({
