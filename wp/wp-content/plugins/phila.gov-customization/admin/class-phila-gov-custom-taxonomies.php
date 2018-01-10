@@ -45,6 +45,7 @@ class Phila_Gov_Custom_Taxonomies {
       ),
       'public' => true,
       'show_admin_column' => true,
+      'show_in_rest' => true,
       'rewrite' => array(
         'slug' => 'service-types',
         'with_front' => false,
@@ -74,6 +75,7 @@ class Phila_Gov_Custom_Taxonomies {
       ),
       'public' => true,
       'show_admin_column' => true,
+      'show_in_rest' => true,
       'rewrite' => array(
         'slug' => 'audiences',
         'with_front' => false,
