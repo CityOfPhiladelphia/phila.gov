@@ -138,7 +138,7 @@ export default {
     getAudiences: function () {
       axios.get(audienceEndpoint, {
         params: {
-          'count': 30,
+          'per_page': 30,
           'hide_empty': true
         }
       })
@@ -153,7 +153,7 @@ export default {
     getServices: function () {
       axios.get(serviceTypeEndpoint, {
         params: {
-          'count': 30,
+          'per_page': 30,
           'hide_empty': true
         }
       })
