@@ -29,6 +29,7 @@
             <h4>Filter by category</h4>
               <div v-for="(value, key) in service_type">
                 <input type="checkbox"
+                v-model="checkedServiceType"
                 v-bind:value="value.slug"
                 v-bind:name="value.slug"
                 v-bind:id="value.slug"
@@ -91,8 +92,8 @@ export default {
       audience: [{ }],
       service_type: [{ }],
 
-      checkedAudiences: [{ }],
-      checkedServiceType: [{ }],
+      checkedAudiences: [],
+      checkedServiceType: [],
 
       searchedVal: '',
 
@@ -197,14 +198,22 @@ export default {
         axios.get(programsEndpoint + 'archives', {
           params : {
             's': this.searchedVal,
-            'count': 100,
-            'audience' : this.checkedAudiences,
+            'count': 20,
+            'audience': this.checkedAudiences,
             'service_type': this.checkedServiceType
-            }
+          },
+          headers: {
+           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+         },
           })
           .then(response => {
             console.log('fired')
             console.log(response.data)
+            console.log(this.checkedAudiences)
+            console.log(this.checkedServiceType)
+            console.log(response.headers)
+            console.log(response.config)
+
             this.programs = response.data
             this.successfulResponse
           })
