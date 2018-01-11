@@ -7,8 +7,8 @@ class Phila_Programs_Controller {
     $this->namespace     = 'programs/v1';
     $this->resource_name = 'archives';
     //$this->category_resource = 'categories';
-    $this->audience_resource = 'audience';
-    $this->service_resource = 'service';
+    //$this->audience_resource = 'audience';
+    //$this->service_resource = 'service';
   }
 
   // Register our routes.
@@ -80,20 +80,20 @@ class Phila_Programs_Controller {
   }
 
   /**
-   * Get the 40 latest posts within the "archives" umbrella
+   * Get Programs
    *
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
-    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('programs');
 
-    $count = isset( $request['count'] ) ? $request['count'] : '40';
+    $count = isset( $request['count'] ) ? $request['count'] : '20';
 
     $args = array(
-      'post_type' => $post_type,
-      'posts_per_page'=> $count,
-      'post_parent' => 0
+      'per_page'=> $request['count'],
+      'post_parent' => 0,
+      'post_type' => 'programs'
     );
+
     $query_defaults = $this->set_query_defaults($request);
     $args = array_merge($query_defaults, $args);
 
@@ -189,8 +189,19 @@ class Phila_Programs_Controller {
       $post_data['template']  = (string) phila_get_selected_template($post->ID);
     }
 
+    if (isset( $schema['properties']['external_link'] )) {
+      $link = rwmb_meta( 'prog_off_site_link', array(), $post->ID );
+
+      $post_data['external_link']  = (string) $link;
+    }
+
     if (isset( $schema['properties']['link'] )) {
+      $external_link = rwmb_meta( 'prog_off_site_link', array(), $post->ID );
+      if( empty($external_link) ) {
         $post_data['link']  = (string) get_permalink($post->ID);
+      }else{
+        $post_data['link']  = (string) $external_link;
+      }
     }
 
     if (isset( $schema['properties']['categories'] )) {
@@ -222,13 +233,11 @@ class Phila_Programs_Controller {
       $img = reset($img);
       $medium_image = str_replace('.jpg', '-700x400.jpg', $img['full_url']);
 
+      if( !isset( $img['sizes']['medium'] ) ){
+        $medium_image = $img['full_url'];
+      }
+
       $post_data['image']  = (string) $medium_image;
-    }
-
-    if (isset( $schema['properties']['external_link'] )) {
-      $link = rwmb_meta( 'prog_off_site_link', array(), $post->ID );
-
-      $post_data['external_link']  = (string) $link;
     }
 
     return rest_ensure_response( $post_data );
@@ -315,10 +324,6 @@ class Phila_Programs_Controller {
         ),
         'image'  => array(
           'description' => esc_html__('The medium size image associated with this program.', 'phila-gov'),
-          'type'  => 'string',
-        ),
-        'external_link'  => array(
-          'description' => esc_html__('Link to this program if it is not part of this website.', 'phila-gov'),
           'type'  => 'string',
         ),
       ),
