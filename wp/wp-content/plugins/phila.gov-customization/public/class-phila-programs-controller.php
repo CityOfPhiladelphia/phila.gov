@@ -41,42 +41,47 @@ class Phila_Programs_Controller {
     // ) );
   }
 
-  public function set_query_defaults($request){
+  public function run_search_query($request){
 
     $search = sanitize_text_field( $request['s'] );
+    $count = isset( $request['count'] ) ? $request['count'] : '20';
+    $all_searches = array();
 
-    $args = array(
-      'count_total' => false,
-      'search' => sprintf( '*%s*', $search ),
-      'search_fields' => array(
-        'display_name',
-        'user_login',
-      ),
-      'fields' => 'ID',
-    );
+    if ( $request['s'] ) {
+      $meta_query = array(
+        'posts_per_page'=> $request['count'],
+        'post_parent' => 0,
+        'post_type' => 'programs',
+        'orderby' => 'title',
+        'order' => 'asc',
+        'meta_query' => array(
+          array(
+            'key' => 'phila_meta_desc',
+            'value' => $search,
+            'compare' => 'LIKE'
+          )
+        )
+      );
 
-    $matching_users = get_users( $args );
+      $meta_results = get_posts( $meta_query );
 
-    // Don't modify the query if there aren't any matching users
-    if ( empty( $matching_users ) ) {
-      $query_defaults = array(
-        'posts_per_page' => $request['count'],
+      $search_query = array(
+        'posts_per_page'=> $request['count'],
+        'post_parent' => 0,
+        'post_type' => 'programs',
+        'orderby' => 'title',
+        'order' => 'asc',
         's' => $request['s'],
-        'order' => 'desc',
-        'orderby' => 'date',
-        'category' => $request['category'],
       );
-    }else {
-      $query_defaults = array(
-        'posts_per_page' => $request['count'],
-        'author__in' => $matching_users,
-        'order' => 'desc',
-        'orderby' => 'date',
-        'category' => $request['category'],
-      );
+
+      $search_results = get_posts( $search_query );
+
+      $all_searches = array_merge($search_results, $meta_results);
+      $all_searches = array_unique($all_searches, SORT_REGULAR);
     }
 
-    return $query_defaults;
+    return array_filter($all_searches);
+
   }
 
   /**
@@ -85,20 +90,20 @@ class Phila_Programs_Controller {
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
+    if ( !isset($request['s']) ) {
+      $args = array(
+        'posts_per_page'=> $request['count'],
+        'post_parent' => 0,
+        'post_type' => 'programs',
+        'orderby' => 'title',
+        'order' => 'asc',
+      );
 
-    $count = isset( $request['count'] ) ? $request['count'] : '20';
+      $posts = get_posts( $args );
 
-    $args = array(
-      'per_page'=> $request['count'],
-      'post_parent' => 0,
-      'post_type' => 'programs'
-    );
-
-    $query_defaults = $this->set_query_defaults($request);
-    $args = array_merge($query_defaults, $args);
-
-    $posts = get_posts( $args );
-
+    }else{
+      $posts = $this->run_search_query($request);
+    }
 
     $data = array();
 
