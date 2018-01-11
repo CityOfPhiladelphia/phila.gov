@@ -20,7 +20,8 @@
                 v-model="checkedAudiences"
                 v-bind:value="value.slug"
                 v-bind:name="value.slug"
-                v-bind:id="value.slug"/>
+                v-bind:id="value.slug"
+                @click="filterResults"/>
                 <label v-bind:for="value.slug">{{ value.name }}</label>
               </div>
           </fieldset>
@@ -28,10 +29,10 @@
             <h4>Filter by category</h4>
               <div v-for="(value, key) in service_type">
                 <input type="checkbox"
-                v-model="checkedServiceType"
                 v-bind:value="value.slug"
                 v-bind:name="value.slug"
-                v-bind:id="value.slug"/>
+                v-bind:id="value.slug"
+                @click="filterResults"/>
                 <label v-bind:for="value.slug"><span v-html="value.name"></span></label>
               </div>
           </fieldset>
@@ -120,7 +121,7 @@ export default {
 
       axios.get(programsEndpoint + 'archives', {
         params: {
-          'per_page': 20,
+          'count': 20,
         }
       })
       .then(response => {
@@ -137,7 +138,7 @@ export default {
     getAudiences: function () {
       axios.get(audienceEndpoint, {
         params: {
-          'per_page': 30,
+          'count': 30,
           'hide_empty': true
         }
       })
@@ -152,7 +153,7 @@ export default {
     getServices: function () {
       axios.get(serviceTypeEndpoint, {
         params: {
-          'per_page': 30,
+          'count': 30,
           'hide_empty': true
         }
       })
@@ -174,7 +175,7 @@ export default {
         axios.get(programsEndpoint + 'archives', {
           params : {
             's': this.searchedVal,
-            'per_page': 20,
+            'count': 20,
             }
           })
           .then(response => {
@@ -189,43 +190,32 @@ export default {
         })
       })
     },
-    reset() {
-      //this.loading = true
-      //console.log(this.$refs.categorySelect)
-      //console.log(this.$refs.categorySelect.$el.textContent)
-      window.location = window.location.pathname;
-      /*this.selectedCategory = ''
-      axios.get(programsEndpoint + 'archives', {
-       params : {
-          'count': -1
-        }
-      })
-        .then(response => {
-          this.programs = response.data
-          this.loading = false
-          this.searchedVal = ''
-          this.checkedTemplates = ''
-          this.selectedCategory = ''
-          this.state.startDate = ''
-          this.state.endDate = ''
+    filterResults: function (event) {
+      this.loading = true
+
+      this.$nextTick(function () {
+        axios.get(programsEndpoint + 'archives', {
+          params : {
+            's': this.searchedVal,
+            'count': 100,
+            'audience' : this.checkedAudiences,
+            'service_type': this.checkedServiceType
+            }
+          })
+          .then(response => {
+            console.log('fired')
+            console.log(response.data)
+            this.programs = response.data
+            this.successfulResponse
+          })
+          .catch(e => {
+            this.failure = true
+            this.loading = false
         })
-        .catch(e => {
-          this.failure = true
       })
-      this.$forceUpdate();
-      */
     },
   },
   computed: {
-    filteredByAll() {
-      return getByServiceType(this.programs, this.service_type)
-    },
-    filteredByServiceType() {
-      return getByServiceType(this.programs, this.service_type)
-    },
-    // filteredByCategory() {
-    //   return getByAudience(this.list, this.category)
-    // },
     successfulResponse: function(){
       if (this.programs.length == 0) {
         this.emptyResponse = true
