@@ -97,8 +97,31 @@ class Phila_Programs_Controller {
         'post_type' => 'programs',
         'orderby' => 'title',
         'order' => 'asc',
-      );
+        );
 
+        if ( isset( $request['audience']) || isset($request['service_type']) ){
+          $args = array(
+            'posts_per_page'=> $request['count'],
+            'post_parent' => 0,
+            'post_type' => 'programs',
+            'orderby' => 'title',
+            'order' => 'asc',
+            'tax_query' => array(
+              'relation' => 'OR',
+               array(
+                   'taxonomy' => 'audience',
+                   'field' => 'slug',
+                   'terms' => $request['audience'],
+               ),
+               array(
+                   'taxonomy' => 'service_type',
+                   'field' => 'slug',
+                   'terms' => $request['service_type'],
+               )
+
+             )
+          );
+        }
       $posts = get_posts( $args );
 
     }else{
