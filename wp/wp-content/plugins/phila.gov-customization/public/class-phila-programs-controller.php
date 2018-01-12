@@ -6,9 +6,8 @@ class Phila_Programs_Controller {
   public function __construct() {
     $this->namespace     = 'programs/v1';
     $this->resource_name = 'archives';
-    //$this->category_resource = 'categories';
-    //$this->audience_resource = 'audience';
-    //$this->service_resource = 'service';
+    $this->service_resource = 'related_service';
+
   }
 
   // Register our routes.
@@ -32,13 +31,13 @@ class Phila_Programs_Controller {
     ) );
 
     //Register individual items
-    // register_rest_route( $this->namespace, '/' . $this->category_resource, array(
-    //   array(
-    //     'methods'   => WP_REST_Server::READABLE,
-    //     'callback'  => array( $this, 'get_categories' ),
-    //   ),
-    //   'schema' => array( $this, 'get_category_schema' ),
-    // ) );
+    register_rest_route( $this->namespace, '/' . $this->service_resource, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_services' ),
+      ),
+      'schema' => array( $this, 'get_services_schema' ),
+    ) );
   }
 
   public function run_search_query($request){
@@ -137,7 +136,7 @@ class Phila_Programs_Controller {
     foreach ( $posts as $post ) {
       $response = $this->prepare_item_for_response( $post, $request );
 
-      $data[] = $this ->prepare_response_for_collection( $response );
+      $data[] = $this->prepare_response_for_collection( $response );
     }
 
     // Return all response data.
@@ -145,30 +144,41 @@ class Phila_Programs_Controller {
   }
 
   /**
-   * Outputs category data
+   * Outputs service data
    *
    * @param WP_REST_Request $request Current request.
    */
-   // public function get_categories( $request ){
-   //
-   //  $categories = get_categories( array( 'parent' => 0 ) );
-   //
-   //  $data = array();
-   //
-   //  if ( empty( $categories ) ) {
-   //    return rest_ensure_response( $array() );
-   //  }
-   //
-   //  foreach ( $categories as $category ) {
-   //    $response = $this->prepare_category_for_response( $category, $request );
-   //
-   //    $data[] = $this ->prepare_response_for_collection( $response );
-   //  }
-   //
-   //  // Return all response data.
-   //  return rest_ensure_response( $data );
-   //
-   // }
+   public function get_services( $request ){
+
+    $args = array(
+      'post_type' => 'service_page',
+      'meta_query'  => array(
+        array(
+          'key' => 'display_prog_init',
+          'value' => 1,
+          'compare' => '='
+          )
+        ),
+      );
+
+    $services = get_posts( $args );
+
+    $data = array();
+
+    if ( empty( $services ) ) {
+      return rest_ensure_response( array() );
+    }
+
+    foreach ( $services as $service ) {
+      $response = $this->prepare_service_for_response( $service, $request );
+
+      $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+
+   }
 
   /**
    * Outputs an individual item's data
@@ -366,77 +376,69 @@ class Phila_Programs_Controller {
    * @param WP_Post $post The comment object whose response is being prepared.
    */
 
-  // public function prepare_category_for_response( $category, $request ) {
-  //
-  //   $post_data = array();
-  //
-  //   $schema = $this->get_category_schema( $request );
-  //
-  //   if ( isset( $schema['properties']['id'] ) ) {
-  //       $post_data['id'] = (int) $category->term_id;
-  //   }
-  //
-  //   if (isset( $schema['properties']['name'] )) {
-  //     $post_data['name']  =  (string) html_entity_decode($category->name);
-  //   }
-  //
-  //   if (isset( $schema['properties']['slug'] )) {
-  //     $post_data['slug']  =  (string) $category->slug;
-  //   }
-  //
-  //   if (isset( $schema['properties']['slang_name'] )) {
-  //
-  //     $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
-  //
-  //     $post_data['slang_name']  = (string) html_entity_decode(trim($trimmed_name));
-  //   }
-  //
-  //   return rest_ensure_response( $post_data );
-  //
-  // }
+  public function prepare_service_for_response( $service, $request ) {
+
+    $post_data = array();
+
+    $schema = $this->get_service_schema( $request );
+
+    if ( isset( $schema['properties']['id'] ) ) {
+        $post_data['id'] = (int) $service->ID;
+    }
+
+    if (isset( $schema['properties']['name'] )) {
+      $post_data['name']  =  (string) html_entity_decode($service->post_title);
+    }
+
+    if (isset( $schema['properties']['short_description'] )) {
+
+      $short_desc = rwmb_meta( 'phila_meta_desc', array(), $service->ID );
+
+      $post_data['short_description']  =  (string) html_entity_decode($short_desc);
+
+    }
+
+    return rest_ensure_response( $post_data );
+
+  }
 
   /**
-   * Get sample schema for a category.
+   * Get sample schema for a service.
    *
    * @param WP_REST_Request $request Current request.
    */
-  // public function get_category_schema( $request ) {
-  //
-  //   $schema = array(
-  //     // This tells the spec of JSON Schema we are using which is draft 4.
-  //     '$schema'              => 'http://json-schema.org/draft-04/schema#',
-  //     // The title property marks the identity of the resource.
-  //     'title'                => 'post',
-  //     'type'                 => 'object',
-  //     // Specify object properties in the properties attribute.
-  //     'properties'           => array(
-  //       'id' => array(
-  //         'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
-  //         'type'         => 'integer',
-  //         'context'      => array( 'view', 'edit', 'embed' ),
-  //         'readonly'     => true,
-  //       ),
-  //       'name'=> array(
-  //         'description'  => esc_html__( 'Name of the object.', 'phila-gov' ),
-  //         'type'         => 'string',
-  //         'readonly'     => true,
-  //       ),
-  //       'slug'=> array(
-  //         'description'  => esc_html__( 'Slug of the object.', 'phila-gov' ),
-  //         'type'         => 'string',
-  //         'readonly'     => true,
-  //       ),
-  //       'slang_name'=> array(
-  //         'description'  => esc_html__( 'Slang name of the object.', 'phila-gov' ),
-  //         'type'         => 'string',
-  //         'readonly'     => true,
-  //       ),
-  //     ),
-  //   );
-  //
-  //   return $schema;
-  //
-  // }
+  public function get_service_schema( $request ) {
+
+    $schema = array(
+      // This tells the spec of JSON Schema we are using which is draft 4.
+      '$schema'              => 'http://json-schema.org/draft-04/schema#',
+      // The title property marks the identity of the resource.
+      'title'                => 'post',
+      'type'                 => 'object',
+      // Specify object properties in the properties attribute.
+      'properties'           => array(
+        'id' => array(
+          'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
+          'type'         => 'integer',
+          'context'      => array( 'view', 'edit', 'embed' ),
+          'readonly'     => true,
+        ),
+        'name'=> array(
+          'description'  => esc_html__( 'Name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'short_description' => array(
+          'description'  => esc_html__( 'Short description.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+      ),
+    );
+
+    return $schema;
+
+  }
 
 }
 
