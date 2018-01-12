@@ -54,7 +54,7 @@
           <div v-show="loading" class="mtm center">
             <i class="fa fa-spinner fa-spin fa-3x"></i>
           </div>
-          <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+          <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no program results.</div>
           <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
           <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure"></div>
         </div>
@@ -69,6 +69,18 @@
                 <p>{{program.short_description}}</p>
               </div>
             </a>
+            </div>
+          </div>
+            <div id="related-services" class="grid-x grid-margin-x grid-padding-x" v-if="relatedServices.length !== 0">
+              <div class="medium-24 cell">
+                <h3 class="black bg-ghost-gray phm-mu mtl mbm">Related services</h3>
+                <ul class="phm-mu">
+                  <li v-for="relatedService in relatedServices"
+                  :key="relatedService.id">
+                  <a v-bind:href="relatedService.link">{{relatedService.name}}</a>
+                </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -97,6 +109,8 @@ export default {
 
       checkedAudiences: [],
       checkedServiceType: [],
+
+      relatedServices: [],
 
       searchedVal: '',
 
@@ -161,11 +175,22 @@ export default {
         this.service_type = 'Sorry, there was a problem.'
       })
     },
-    goToPost: function (link){
-      window.location.href = link
+    getRelatedServices: function(params){
+      axios.get(programsEndpoint + 'related_service', { params
+        })
+        .then(response => {
+          this.relatedServices = response.data
+          console.log(this.relatedServices)
+          this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+          this.loading = false
+      })
     },
     onSubmit: function (event) {
       this.loading = true
+
       var params = {
         'count': 50,
         'audience': this.checkedAudiences,
@@ -175,6 +200,9 @@ export default {
           params.s = this.searchedVal
 
       this.$nextTick(function () {
+
+        this.getRelatedServices(params)
+
         axios.get(programsEndpoint + 'archives', { params
         })
           .then(response => {
@@ -198,6 +226,8 @@ export default {
         }
         if (this.searchedVal != '')
             params.s = this.searchedVal
+
+          this.getRelatedServices(params)
 
         axios.get(programsEndpoint + 'archives', {
           params
