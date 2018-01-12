@@ -7,36 +7,46 @@
             <h3>Search within Programs</h3>
             <form v-on:submit.prevent="onSubmit">
               <div class="search">
-                <input id="post-search" type="text" name="search" placeholder="Search by title, or keyword" class="search-field" ref="search-field"
+                <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field"
                 v-model="searchedVal">
                 <input type="submit" value="submit" class="search-submit">
               </div>
             </form>
           </div>
-          <fieldset>
-            <h4>Filter by audience</h4>
-              <div v-for="(value, key) in audience">
-                <input type="checkbox"
-                v-model="checkedAudiences"
-                v-bind:value="value.slug"
-                v-bind:name="value.slug"
-                v-bind:id="value.slug"
-                @click="filterResults"/>
-                <label v-bind:for="value.slug">{{ value.name }}</label>
+          <div class="accordion" data-accordion data-allow-all-closed="true"  data-multi-expand="true">
+            <div class="accordion-item is-active mvl " data-accordion-item>
+              <a href="#" class="h4 accordion-title mbn">Filter by audience</a>
+              <div class="accordion-content" data-tab-content>
+                <fieldset>
+                  <div v-for="(value, key) in audience">
+                    <input type="checkbox"
+                    v-model="checkedAudiences"
+                    v-bind:value="value.slug"
+                    v-bind:name="value.slug"
+                    v-bind:id="value.slug"
+                    @click="filterResults"/>
+                    <label v-bind:for="value.slug">{{ value.name }}</label>
+                  </div>
+                </fieldset>
               </div>
-          </fieldset>
-          <fieldset>
-            <h4>Filter by category</h4>
-              <div v-for="(value, key) in service_type">
-                <input type="checkbox"
-                v-model="checkedServiceType"
-                v-bind:value="value.slug"
-                v-bind:name="value.slug"
-                v-bind:id="value.slug"
-                @click="filterResults"/>
-                <label v-bind:for="value.slug"><span v-html="value.name"></span></label>
+            </div>
+            <div class="accordion-item is-active" data-accordion-item>
+              <a href="#" class="h4 accordion-title mbn">Filter by category</a>
+                <div class="accordion-content" data-tab-content>
+                  <fieldset>
+                    <div v-for="(value, key) in service_type">
+                      <input type="checkbox"
+                      v-model="checkedServiceType"
+                      v-bind:value="value.slug"
+                      v-bind:name="value.slug"
+                      v-bind:id="value.slug"
+                      @click="filterResults"/>
+                      <label v-bind:for="value.slug"><span v-html="value.name"></span></label>
+                    </div>
+                </fieldset>
               </div>
-          </fieldset>
+            </div>
+          </div>
         </section>
       </div>
       <div class="cell medium-16">
