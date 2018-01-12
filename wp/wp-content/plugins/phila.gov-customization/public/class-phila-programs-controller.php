@@ -111,12 +111,12 @@ class Phila_Programs_Controller {
                array(
                    'taxonomy' => 'audience',
                    'field' => 'slug',
-                   'terms' => $request['audience'],
+                   'terms' => $request['audience']
                ),
                array(
                    'taxonomy' => 'service_type',
                    'field' => 'slug',
-                   'terms' => $request['service_type'],
+                   'terms' => $request['service_type']
                )
 
              )
