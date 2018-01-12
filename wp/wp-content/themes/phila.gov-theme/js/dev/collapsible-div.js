@@ -9,4 +9,9 @@ module.exports = $(function(){
       $(this).html(' Expand + ');
     }
   });
+
+  if(Foundation.MediaQuery.current == 'small') {
+    $('.accordion').foundation('up', $('.accordion-content'));
+  }
+
 });
