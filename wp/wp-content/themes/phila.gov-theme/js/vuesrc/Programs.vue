@@ -50,13 +50,15 @@
         </section>
       </div>
       <div class="cell medium-16">
-        <div id="program-results" class="grid-x grid-margin-x grid-padding-x">
+        <div>
           <div v-show="loading" class="mtm center">
             <i class="fa fa-spinner fa-spin fa-3x"></i>
           </div>
-          <!--<div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+          <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
           <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
-          <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure"></div>-->
+          <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure"></div>
+        </div>
+        <div id="program-results" class="grid-x grid-margin-x grid-padding-x">
           <div v-for="program in programs"
           :key="program.id"
           class="medium-12 cell mbl">
@@ -254,8 +256,14 @@ export default {
 </script>
 
 <style>
-/* TODO: remove base card styles in standards */
+/* TODO: remove base card styles in standards as they are no longer in use */
 a.card{
   border-bottom: none;
+}
+a.card .content-block{
+  min-height:135px;
+}
+a.card img{
+  max-height:177px;
 }
 </style>
