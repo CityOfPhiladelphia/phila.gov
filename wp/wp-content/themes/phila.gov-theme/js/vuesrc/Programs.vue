@@ -122,7 +122,7 @@ export default {
 
       axios.get(programsEndpoint + 'archives', {
         params: {
-          'count': 20,
+          'count': 50,
         }
       })
       .then(response => {
@@ -171,14 +171,17 @@ export default {
     },
     onSubmit: function (event) {
       this.loading = true
+      var params = {
+        'count': 50,
+        'audience': this.checkedAudiences,
+        'service_type': this.checkedServiceType
+      }
+      if (this.searchedVal != '')
+          params.s = this.searchedVal
 
       this.$nextTick(function () {
-        axios.get(programsEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'count': 20,
-            }
-          })
+        axios.get(programsEndpoint + 'archives', { params
+        })
           .then(response => {
             console.log('fired')
             console.log(response.data)
@@ -195,16 +198,16 @@ export default {
       this.loading = true
 
       this.$nextTick(function () {
+        var params = {
+          'count': 50,
+          'audience': this.checkedAudiences,
+          'service_type': this.checkedServiceType
+        }
+        if (this.searchedVal != '')
+            params.s = this.searchedVal
+
         axios.get(programsEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'count': 20,
-            'audience': this.checkedAudiences,
-            'service_type': this.checkedServiceType
-          },
-          headers: {
-           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-         },
+          params
           })
           .then(response => {
             console.log('fired')
