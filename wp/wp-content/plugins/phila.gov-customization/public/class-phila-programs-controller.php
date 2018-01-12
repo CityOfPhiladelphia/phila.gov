@@ -150,16 +150,58 @@ class Phila_Programs_Controller {
    */
    public function get_services( $request ){
 
-    $args = array(
-      'post_type' => 'service_page',
-      'meta_query'  => array(
-        array(
-          'key' => 'display_prog_init',
-          'value' => 1,
-          'compare' => '='
-          )
-        ),
-      );
+     $args = array(
+       'post_type' => 'service_page',
+       'meta_query'  => array(
+         array(
+           'key' => 'display_prog_init',
+           'value' => 1,
+           'compare' => '='
+           )
+         ),
+     );
+
+    if ( !isset($request['s']) ) {
+      $args = array(
+        'post_type' => 'service_page',
+        's'  => $request['s'],
+        'meta_query'  => array(
+          array(
+            'key' => 'display_prog_init',
+            'value' => 1,
+            'compare' => '='
+            )
+           )
+         );
+       }
+
+     if ( isset( $request['audience']) || isset($request['service_type']) ){
+
+      $args = array(
+        'post_type' => 'service_page',
+        's' => $request['s'],
+        'tax_query' => array(
+          'relation' => 'OR',
+           array(
+               'taxonomy' => 'audience',
+               'field' => 'slug',
+               'terms' => $request['audience']
+           ),
+           array(
+               'taxonomy' => 'service_type',
+               'field' => 'slug',
+               'terms' => $request['service_type']
+           ),
+         ),
+        'meta_query'  => array(
+          array(
+            'key' => 'display_prog_init',
+            'value' => 1,
+            'compare' => '='
+            )
+          ),
+        );
+      }
 
     $services = get_posts( $args );
 
@@ -390,12 +432,27 @@ class Phila_Programs_Controller {
       $post_data['name']  =  (string) html_entity_decode($service->post_title);
     }
 
+    if (isset( $schema['properties']['link'] )) {
+      $post_data['link']  =  (string)  get_permalink($service->ID);
+    }
+
     if (isset( $schema['properties']['short_description'] )) {
 
       $short_desc = rwmb_meta( 'phila_meta_desc', array(), $service->ID );
 
       $post_data['short_description']  =  (string) html_entity_decode($short_desc);
 
+    }
+    if (isset( $schema['properties']['audiences'] )) {
+      $audiences = get_the_terms($service->ID, 'audience');
+
+      $post_data['audiences']  = (array) $audiences;
+    }
+
+    if (isset( $schema['properties']['service_type'] )) {
+      $services = get_the_terms($service->ID, 'service_type');
+
+      $post_data['service_type']  = (array) $services;
     }
 
     return rest_ensure_response( $post_data );
@@ -423,8 +480,13 @@ class Phila_Programs_Controller {
           'context'      => array( 'view', 'edit', 'embed' ),
           'readonly'     => true,
         ),
-        'name'=> array(
+        'name' => array(
           'description'  => esc_html__( 'Name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'link' => array(
+          'description'  => esc_html__( 'Link to the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
@@ -432,6 +494,14 @@ class Phila_Programs_Controller {
           'description'  => esc_html__( 'Short description.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
+        ),
+        'audiences'  => array(
+          'description' => esc_html__('The audience taxonomy assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'service_type'  => array(
+          'description' => esc_html__('The service category assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
         ),
       ),
     );
