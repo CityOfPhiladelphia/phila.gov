@@ -104,9 +104,6 @@ export default {
       emptyResponse: false,
       failure: false,
 
-      //queriedTemplate: this.$route.query.template,
-      //queriedCategory: this.$route.query.category
-
     }
   },
   filters: {
