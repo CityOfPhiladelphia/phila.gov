@@ -260,10 +260,11 @@ export default {
 a.card{
   border-bottom: none;
 }
+a.card h3{
+  font-size:1.4rem;
+  margin-top:.5rem;
+}
 a.card .content-block{
   min-height:135px;
-}
-a.card img{
-  max-height:177px;
 }
 </style>
