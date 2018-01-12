@@ -14,7 +14,7 @@
             </form>
           </div>
           <div class="accordion" data-accordion data-allow-all-closed="true"  data-multi-expand="true">
-            <div class="accordion-item is-active mvl " data-accordion-item>
+            <div class="accordion-item is-active mtl" data-accordion-item>
               <a href="#" class="h4 accordion-title mbn">Filter by audience</a>
               <div class="accordion-content" data-tab-content>
                 <fieldset>
