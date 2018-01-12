@@ -84,15 +84,6 @@ const programsEndpoint = '/wp-json/programs/v1/'
 const audienceEndpoint = '/wp-json/wp/v2/audience/'
 const serviceTypeEndpoint = '/wp-json/wp/v2/service_type/'
 
-function getByServiceType(list, service) {
-  if ( !service )
-  return list
-  //service.forEach(function(e, other){
-    console.log(list)
-    return list.filter(item => item.service === service)
-//  })
-}
-
 export default {
   name: 'program-archives',
   components: {
@@ -129,7 +120,6 @@ export default {
   methods: {
     getAllPrograms: function () {
       this.loading = true
-      console.log('yeah its happening')
       //TODO use in instead of undefined
 
       axios.get(programsEndpoint + 'archives', {
@@ -139,11 +129,9 @@ export default {
       })
       .then(response => {
         this.programs = response.data
-        console.log(response.data)
         this.successfulResponse
       })
       .catch(e => {
-        console.log('fail')
         this.failure = true
         this.loading = false
       })
@@ -157,7 +145,6 @@ export default {
       })
       .then(response => {
         this.audience = response.data
-        console.log(response.data)
       })
       .catch(e => {
         this.audience = 'Sorry, there was a problem.'
@@ -172,7 +159,6 @@ export default {
       })
       .then(response => {
         this.service_type = response.data
-        console.log(response.data)
       })
       .catch(e => {
         this.service_type = 'Sorry, there was a problem.'
@@ -195,8 +181,6 @@ export default {
         axios.get(programsEndpoint + 'archives', { params
         })
           .then(response => {
-            console.log('fired')
-            console.log(response.data)
             this.programs = response.data
             this.successfulResponse
           })
@@ -222,13 +206,6 @@ export default {
           params
           })
           .then(response => {
-            console.log('fired')
-            console.log(response.data)
-            console.log(this.checkedAudiences)
-            console.log(this.checkedServiceType)
-            console.log(response.headers)
-            console.log(response.config)
-
             this.programs = response.data
             this.successfulResponse
           })
