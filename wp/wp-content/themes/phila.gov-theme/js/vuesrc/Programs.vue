@@ -1,8 +1,8 @@
 <template>
   <div id="programs-initiatives-landing">
     <div class="grid-x grid-margin-x">
-      <div class="small-24 medium-8 cell">
-        <section>
+      <div class="small-24 medium-8 cell" data-sticky-container>
+        <section class="sticky" data-sticky data-top-anchor="programs-initiatives-landing:top" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
           <div class="panel phm">
             <h3>Search within Programs</h3>
             <form v-on:submit.prevent="onSubmit">
