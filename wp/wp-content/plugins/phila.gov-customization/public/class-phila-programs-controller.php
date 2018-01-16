@@ -151,6 +151,7 @@ class Phila_Programs_Controller {
    public function get_services( $request ){
 
      $args = array(
+       's'  => $request['s'],
        'post_type' => 'service_page',
        'meta_query'  => array(
          array(
@@ -160,20 +161,6 @@ class Phila_Programs_Controller {
            )
          ),
      );
-
-    if ( !isset($request['s']) ) {
-      $args = array(
-        'post_type' => 'service_page',
-        's'  => $request['s'],
-        'meta_query'  => array(
-          array(
-            'key' => 'display_prog_init',
-            'value' => 1,
-            'compare' => '='
-            )
-           )
-         );
-       }
 
      if ( isset( $request['audience']) || isset($request['service_type']) ){
 
