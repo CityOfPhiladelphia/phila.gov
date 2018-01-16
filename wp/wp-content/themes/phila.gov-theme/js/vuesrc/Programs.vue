@@ -176,17 +176,26 @@ export default {
       })
     },
     getRelatedServices: function(params){
-      axios.get(programsEndpoint + 'related_service', { params
+
+      if ( Object.keys(this.checkedAudiences).length === 0 &&
+        Object.keys(this.checkedServiceType).length == '' &&
+        this.searchedVal === ''
+      ){
+        this.relatedServices = ''
+      }else{
+        this.$nextTick(function () {
+          axios.get(programsEndpoint + 'related_service', { params
+            })
+            .then(response => {
+              this.relatedServices = response.data
+              this.successfulResponse
+            })
+            .catch(e => {
+              this.failure = true
+              this.loading = false
+          })
         })
-        .then(response => {
-          this.relatedServices = response.data
-          console.log(this.relatedServices)
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
-          this.loading = false
-      })
+      }
     },
     onSubmit: function (event) {
       this.loading = true
@@ -196,13 +205,11 @@ export default {
         'audience': this.checkedAudiences,
         'service_type': this.checkedServiceType
       }
-      if (this.searchedVal != '')
-          params.s = this.searchedVal
 
-      this.$nextTick(function () {
-
+      if (this.searchedVal != '') {
+        params.s = this.searchedVal
         this.getRelatedServices(params)
-
+      }
         axios.get(programsEndpoint + 'archives', { params
         })
           .then(response => {
@@ -213,7 +220,6 @@ export default {
             this.failure = true
             this.loading = false
         })
-      })
     },
     filterResults: function (event) {
       this.loading = true
