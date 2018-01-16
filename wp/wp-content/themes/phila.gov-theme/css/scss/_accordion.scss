@@ -1,13 +1,13 @@
 .accordion-item{
   border-bottom: 5px solid white;
   .accordion-title{
-    text-transform: uppercase;
+    text-transform: none;
     color:color(dark-gray);
+    font-weight: 400;
+    &::before {
+      color:color(dark-ben-franklin)
+    }
   }
-}
-
-.accordion-content{
-  background: color(ghost-gray);
 }
 
 .accordion-item .accordion-title::before{
