@@ -275,6 +275,6 @@ a.card h3{
   margin-top:.5rem;
 }
 a.card .content-block{
-  min-height:135px;
+  min-height:165px;
 }
 </style>
