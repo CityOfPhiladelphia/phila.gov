@@ -13,9 +13,8 @@ module.exports = $(function(){
     var table = new List('sortable-table-' + i, options)
   })
 
-
   //prevent enter from refreshing the page and stopping filter search
-  $('#filter-list input').keypress(function(event){
+  $('.document-table input["submit"]').keypress(function(event){
     if(event.keyCode === 13) {
       event.preventDefault();
       return false;
