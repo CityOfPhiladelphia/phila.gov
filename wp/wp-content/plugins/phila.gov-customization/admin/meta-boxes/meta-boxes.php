@@ -1291,7 +1291,7 @@ $meta_boxes[] = array(
 
       'fields' =>
       array(
-        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter an optional description to describe the contents of this table.'),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter a description to describe the contents of this table for users with screenreaders. '),
         array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',
