@@ -5,7 +5,7 @@ module.exports = $(function(){
     searchClass: 'table-search',
     listClass: 'search-sortable',
     sortClass: 'table-sort',
-    valueNames: [ 'title', 'category', 'date', 'author' ]
+    valueNames: [ 'title', 'category', 'date', 'author', 'description' ]
   }
 
   $('.document-table').each(function( i ) {
