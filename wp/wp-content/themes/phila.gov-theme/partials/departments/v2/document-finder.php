@@ -15,11 +15,11 @@ $c = -1;
         ?>
         <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>
         <div id="sortable-table-<?php echo $c?>" class="document-table">
-          <form role="search" class="search">
-            <label for="table-search"><span class="screen-reader-text">Search documents by title, category, or author</span></label>
+          <div class="search">
+            <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
             <input type="text" class="table-search search-field" placeholder="Search documents by title, category, or author" />
             <input type="submit" class="search-submit" />
-          </form>
+          </div>
           <table class="responsive mbxl">
             <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? '<caption class="ptn accessible">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] . '</caption>' : ''; ?>
             <thead>
@@ -28,7 +28,7 @@ $c = -1;
                 <th class="table-sort" data-sort="category"><span>Category</span></th>
                 <th class="table-sort" data-sort="author"><span>Author</span></th>
                 <th class="table-sort" data-sort="date"><span>Date</span></th>
-                <th class="table-sort" data-sort="format"><span>Format</span></th>
+                <th><span>Format</span></th>
               </tr>
             </thead>
             <tbody class="search-sortable">
