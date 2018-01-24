@@ -17,7 +17,7 @@ $c = -1;
         <div id="sortable-table-<?php echo $c?>" class="document-table">
           <div class="search">
             <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
-            <input type="text" class="table-search search-field" placeholder="Search documents by title, category, or author" />
+            <input type="text" class="table-search search-field" placeholder="Filter documents by title, category, or author" />
             <input type="submit" class="search-submit" />
           </div>
           <table class="responsive mbxl">
@@ -52,8 +52,8 @@ $c = -1;
                 $authors = array();
                 ?>
                 <tr class="clickable-row" data-href="<?php echo $full_url; ?>" id="<?php echo phila_format_uri( $file['title'] ); ?>">
-                  <td class="title">
-                    <a href="<?php echo $full_url ?>"><?php echo $file['title'] ?> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
+                  <td>
+                    <a href="<?php echo $full_url ?>"><span class="title"><?php echo $file['title'] ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
                   </td>
                   <td class="category">
                     <?php
