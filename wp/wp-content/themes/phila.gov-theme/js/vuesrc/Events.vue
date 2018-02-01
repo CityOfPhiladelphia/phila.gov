@@ -77,6 +77,9 @@
               </div>
             </div>
           </div>
+        </div>
+      <div v-if="filteredEvents == ''">
+        <p class="h3 mtm center">Sorry, there are no results for that search.</p>
       </div>
     </div>
       <div v-for="(event, index) in events"
