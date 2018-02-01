@@ -72,7 +72,7 @@
                   <a href="https://secure.phila.gov/WRB/WaterBill/Account/GetAccount.aspx" class="external">Pay a water bill</a>
                 </li>
                 <li>
-                  <a href="https://ework.phila.gov/revenue/" class="external">Pay a Real Estate Tax bill</a>
+                  <a href="http://www.phila.gov/revenue/realestatetax/" class="external">Pay a Real Estate Tax bill</a>
                 </li>
                 <li>
                   <a href="http://property.phila.gov/">Search for property information</a>
