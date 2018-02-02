@@ -3,7 +3,7 @@
     <form v-on:submit.prevent>
       <div class="search">
         <input id="post-search" type="text" name="search"
-        placeholder="Begin typing to filter by title" class="search-field" ref="search-field"
+        placeholder="Filter events by title" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
