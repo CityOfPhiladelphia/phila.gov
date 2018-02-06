@@ -12,7 +12,7 @@ get_header(); ?>
     <div class="hero-content">
       <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta-homepage-mobile.jpg" alt="">
       <div class="hero-wrap">
-        <div class="photo-credit small-text">Photo by R. Kennedy for Visit Philadelphia™
+        <div class="photo-credit small-text">
         </div>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
