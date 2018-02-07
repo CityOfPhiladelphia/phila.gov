@@ -17,7 +17,10 @@ get_header(); ?>
       </div>
     </div>
     <div class="grid-container">
-      <div id="programs-initiatives-landing"></div>
+      <p class="panel info info-block">Not all of the City's programs and initiatives are listed here yet. If you don't see what you're looking for, <a href="https://cse.google.com/cse?oe=utf8&ie=utf8&source=uds&start=0&cx=003474906032785030072:utbav7zeaky&hl=en&q=programs#gsc.tab=0&gsc.q=programs&gsc.page=1">search our classic site</a>. </p>
+      <div id="programs-initiatives-landing">
+        <div class="center"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+      </div>
     </div>
   </main><!-- #main -->
 </div><!-- #primary -->

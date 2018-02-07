@@ -24,12 +24,14 @@ endif;
 <?php while ( $service_updates_loop->have_posts() ) :?>
   <?php $service_update = $service_updates_loop->the_post(); ?>
   <?php $update_details = phila_get_service_updates(); ?>
+
   <?php if ( !empty( $update_details ) ) :?>
     <?php array_push( $update_array, $update_details ); ?>
   <?php endif; ?>
 <?php endwhile; ?>
 <?php endif;?>
 <?php wp_reset_query();?>
+
 <?php if ( !empty( $update_array ) ): ?>
 <div class="row <?= ( !is_home() ) ? 'mtl' : ''?>">
   <div class="columns">
@@ -38,8 +40,7 @@ endif;
         <?php $type = array()?>
        <?php //Sort by urgency level (critical to normal) and then A-Z ?>
        <?php foreach ($update_array as $key => $row ): ?>
-         <?php $urgency[$key] = $row['service_level'];
-         ?>
+         <?php $urgency[$key] = $row['service_level'];?>
          <?php array_push($type, $row['service_type']);?>
        <?php endforeach; ?>
 
@@ -65,7 +66,7 @@ endif;
            <?php $end_month_format = phila_util_month_format($end); ?>
          <?php endif; ?>
 
-         <?php if ($i > 2) break; ?>
+         <?php if ($i > 3) break; ?>
 
          <tr scope="row" class="service-update--<?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
             <th class="phl-mu">
