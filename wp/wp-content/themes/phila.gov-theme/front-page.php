@@ -68,7 +68,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="/property" class="mrs mbs equal">
+                <a href="http://property.phila.gov/" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
