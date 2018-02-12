@@ -3,7 +3,7 @@
     <form v-on:submit.prevent>
       <div class="search">
         <input id="post-search" type="text" name="search"
-        placeholder="Begin typing to filter by title" class="search-field" ref="search-field"
+        placeholder="Filter events by title" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
@@ -17,8 +17,7 @@
           name="startDate"
           v-on:closed="runDateQuery"
           v-model="state.startDate"
-          format="MMM. dd, yyyy"
-          :disabled="state.disabled"></datepicker>
+          format="MMM. dd, yyyy"></datepicker>
         </div>
         <div class="cell medium-1 small-2 mts">
           <i class="fa fa-arrow-right"></i>
@@ -29,8 +28,7 @@
           placeholder="End date"
           v-on:closed="runDateQuery"
           v-model="state.endDate"
-          format="MMM. dd, yyyy"
-          :disabled="state.disabled"></datepicker>
+          format="MMM. dd, yyyy"></datepicker>
         </div>
         <div class="cell medium-7 small-24">
           <a class="button content-type-featured full" @click="reset">Clear filters</a>
@@ -79,6 +77,9 @@
               </div>
             </div>
           </div>
+        </div>
+      <div v-if="filteredEvents == ''">
+        <p class="h3 mtm center">Sorry, there are no results for that search.</p>
       </div>
     </div>
       <div v-for="(event, index) in events"
@@ -169,10 +170,6 @@ export default {
         loadEndDate: moment().format(),
         startDate: '',
         endDate: '',
-        disabled: {
-          to: new Date(2015, 1, 1),
-          from: new Date()
-        }
       },
 
       //queriedCategory: this.$route.query.category

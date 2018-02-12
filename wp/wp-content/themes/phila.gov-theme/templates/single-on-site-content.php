@@ -108,6 +108,13 @@ HTML;
       get_template_part( 'partials/departments/v2/content', 'one-quarter' );
       break;
 
+    case 'things-to-do':
+      get_template_part( 'partials/departments/v2/content', 'things-to-do' );
+      break;
+
+    case 'our-locations':
+      get_template_part( 'partials/departments/v2/content', 'our-locations' );
+      break;
 
     case 'contact_us_v2':
       get_template_part( 'partials/departments/v2/content', 'contact-us' );
