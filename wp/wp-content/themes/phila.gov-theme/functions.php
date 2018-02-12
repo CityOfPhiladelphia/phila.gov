@@ -291,7 +291,8 @@ function phila_gov_scripts() {
     );
   }
 
-  if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive('document') || is_page_template('templates/the-latest-events-archive.php') ){
+  if( is_page_template( 'templates/the-latest-archive.php' ) ||     is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
+  is_post_type_archive( 'programs' ) ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
 
@@ -866,14 +867,11 @@ function phila_get_service_updates(){
 
     $service_date_format = isset( $service_update_details['phila_date_format'] ) ? $service_update_details['phila_date_format'] : '';
 
-    if ( $service_date_format == 'date'):
-      $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
-      $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
+    if ($service_date_format == 'none'):
+      $service_effective_start = '';
+      $service_effective_end = '';
+      $valid_update = true;
 
-      //Add the number of seconds in 24 hours to the base date, which will always be 00:00:00 of the selected day. This ensures the update will remain visible for the duration of the selected day.
-      if ( ( intval( $service_effective_start['timestamp'] ) <= $current_time ) && ( intval( $service_effective_end['timestamp'] ) + 86400 ) >= $current_time ) :
-        $valid_update = true;
-      endif;
     elseif ( $service_date_format == 'datetime') :
       $service_effective_start = isset( $service_update_details['phila_effective_start_datetime'] ) ? $service_update_details['phila_effective_start_datetime'] : '';
 
@@ -882,10 +880,17 @@ function phila_get_service_updates(){
       if ( ( intval($service_effective_start['timestamp'] ) <= $current_time ) && ( intval($service_effective_end['timestamp'] ) >= $current_time ) ):
         $valid_update = true;
       endif;
-    elseif ($service_date_format == 'none'):
-      $service_effective_start = '';
-      $service_effective_end = '';
-      $valid_update = true;
+
+    elseif ( $service_date_format == 'date'):
+
+      $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
+      $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
+
+      //Add the number of seconds in 24 hours to the base date, which will always be 00:00:00 of the selected day. This ensures the update will remain visible for the duration of the selected day.
+      if ( ( intval( $service_effective_start['timestamp'] ) <= $current_time ) && ( intval( $service_effective_end['timestamp'] ) + 86400 ) >= $current_time ) :
+        $valid_update = true;
+      endif;
+
     endif;
 
     //Don't set any additional vars unless the update is current
@@ -917,22 +922,22 @@ function phila_get_service_updates(){
             $service_icon = 'fa-building-o';
             break;
           default :
-            $service_icon = '';
+            $service_icon = 'fa-institution';
             break;
       }
       switch($service_level){
         case '0':
           $service_level_label = 'normal';
           break;
-          case '1':
-            $service_level_label = 'warning';
-            break;
-          case '2':
-            $service_level_label = 'critical';
-            break;
-          default :
-            $service_level_label = 'normal';
-            break;
+        case '1':
+          $service_level_label = 'warning';
+          break;
+        case '2':
+          $service_level_label = 'critical';
+          break;
+        default :
+          $service_level_label = 'normal';
+          break;
       }
 
       $output_item ='';
@@ -952,6 +957,7 @@ function phila_get_service_updates(){
       );
 
       return $output_item;
+
     else :
       return;
     endif;

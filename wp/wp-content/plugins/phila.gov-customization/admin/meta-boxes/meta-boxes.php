@@ -348,7 +348,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_custom_markup',
     'title'    => 'Custom Markup',
-    'pages'    => array( 'department_page', 'page', 'service_page' ),
+    'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
     'context'  => 'normal',
     'priority' => 'low',
 
@@ -1136,6 +1136,19 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'title' => 'Program + initiatives association',
+  'pages' => array('service_page'),
+  'context'  => 'side',
+  'fields'  => array(
+    array(
+      'id'  => 'display_prog_init',
+      'desc'  => 'Should this page appear as "Related content" on the programs and initiatives landing page?',
+      'type'  => 'checkbox',
+    )
+  ),
+);
+
+$meta_boxes[] = array(
   'title' => 'Topic Page Options',
   'pages' => array('service_page'),
   'priority' => 'high',
@@ -1278,7 +1291,7 @@ $meta_boxes[] = array(
 
       'fields' =>
       array(
-        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter an optional description to describe the contents of this table.'),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter a description to describe the contents of this table for users with screenreaders. '),
         array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',
