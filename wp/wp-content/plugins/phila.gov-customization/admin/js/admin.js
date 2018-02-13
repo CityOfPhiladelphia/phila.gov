@@ -116,14 +116,6 @@ jQuery(document).ready(function($) {
   if ( ( typenow == 'department_page' ) && adminpage.indexOf( 'post' ) > -1 )  {
     var templateSelect = $('#phila_template_select');
 
-    //Set character limits for hero-taglines
-    $('#phila_hero_header_title_l1').rules( 'add' , {
-      maxlength: 20
-    });
-    $('#phila_hero_header_title_l2').rules( 'add' , {
-      maxlength: 15
-    });
-
     if ( templateSelect.val() == 'off_site_department' ){
       setOffSiteInputVals();
       $('#phila_template_select').click();
@@ -211,7 +203,7 @@ jQuery(document).ready(function($) {
             deptPageIds.push($(this).val());
           });
           if(deptPageIds.length > 0){
-            updateResponseCheckboxes(deptPageIds); 
+            updateResponseCheckboxes(deptPageIds);
           }
         }
       }
