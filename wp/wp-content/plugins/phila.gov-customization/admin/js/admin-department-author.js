@@ -68,7 +68,6 @@ jQuery(document).ready(function($){
   //show menus that match current user roles
   for (var i = 0; i < allMenuNames.length ; i++) {
     var currentMenuName = allMenuNames[i];
-    console.log(currentMenuName)
     $( '.manage-menus option:contains("" + currentMenuName + "")').show();
   }
   //add correct menu classes to 'nav menu' link
