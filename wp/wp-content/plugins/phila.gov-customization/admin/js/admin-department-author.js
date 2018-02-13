@@ -2,6 +2,14 @@
 for users who do not have the PHILA_ADMIN capability */
 
 jQuery(document).ready(function($){
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(obj, start) {
+       for (var i = (start || 0), j = this.length; i < j; i++) {
+           if (this[i] === obj) { return i; }
+       }
+       return -1;
+     }
+   }
 
   //force top category to be checked all the time, unless the user has access to mutiple categories
   if( !phila_WP_User.includes('multi_department_access') && !phila_WP_User.includes('secondary_all_departments')) {
@@ -10,6 +18,15 @@ jQuery(document).ready(function($){
       required_cat.attr('checked','checked');
     }
   }
+
+  //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button
+  phila_WP_User.some(
+    function(v){
+      if (v.indexOf(typenow)>=0){
+        $('#publish').css('display', 'none')
+      }
+    }
+  )
 
   if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
   //At least one category must be selected
@@ -38,6 +55,7 @@ jQuery(document).ready(function($){
 
   //hide all menu locations
   $('.menu-theme-locations input').parent().css('display', 'none');
+
   //display menu locations that match current user roles
   for (var i = 0; i < allMenuIDs.length ; i++) {
     var currentMenuId = document.getElementById( allMenuIDs[i] );
@@ -50,6 +68,7 @@ jQuery(document).ready(function($){
   //show menus that match current user roles
   for (var i = 0; i < allMenuNames.length ; i++) {
     var currentMenuName = allMenuNames[i];
+    console.log(currentMenuName)
     $( '.manage-menus option:contains("" + currentMenuName + "")').show();
   }
   //add correct menu classes to 'nav menu' link
