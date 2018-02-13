@@ -5,6 +5,29 @@ if ( class_exists( "Phila_Gov_Site_Wide_Alert_Rendering" ) ){
 
 class Phila_Gov_Site_Wide_Alert_Rendering {
 
+  /** 
+   * Create the ajax actions to set a session when the alert is closed. 
+   */ 
+  public static function create_city_wide_alerts_ajax_actions() {
+    if( ! session_id() ) { session_start(); }
+
+    add_action( 'wp_ajax_alert_closed_session', array( 'Phila_Gov_Site_Wide_Alert_Rendering', 'alert_closed_session' ) );
+    add_action( 'wp_ajax_nopriv_alert_closed_session', array( 'Phila_Gov_Site_Wide_Alert_Rendering', 'alert_closed_session' ) );
+  }
+
+  /**
+   * Set the session when the alert is closed. 
+   */
+  static function alert_closed_session() {
+    if ( isset( $_POST['id_alert'] ) && is_numeric( $_POST['id_alert'] ) ) {
+      // Init session just in case if does not exists.
+      if( ! session_id() ) { session_start(); }
+
+      $_SESSION['closed-alert-' . $_POST['id_alert'] ] = true;
+    }
+    wp_die("Done!");
+  }
+
   /**
   * TODO: set cookie when button is closed, remember until alert is updated
   * Display alert if display is true, also show on preview
@@ -52,7 +75,9 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         $now = current_time('timestamp');
 
-        if ( ( $alert_start <= $now && $alert_end >= $now ) || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
+        if ( ( ( $alert_start <= $now && $alert_end >= $now )
+          && ! isset( $_SESSION['closed-alert-' . get_the_ID()] ) )
+          || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
 
         ?><div id="site-wide-alert" data-swiftype-index="false" data-closable>
         <div class="row">
@@ -79,7 +104,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         </div>
           </div>
           <div class="small-1 columns equal message">
-            <button class="close-button" data-close>&times;</button>
+            <button class="close-button" data-id-alert="<?php the_ID();  ?>" data-close>&times;</button>
           </div>
         </div>
       </div>
