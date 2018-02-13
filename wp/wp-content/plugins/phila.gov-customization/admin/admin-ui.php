@@ -45,11 +45,11 @@ function phila_restrict_categories_custom_loader() {
  * @since   0.8.5
  */
 
-add_filter('page_attributes_dropdown_pages_args', 'phila_allow_draft_dropdown_pages_args', 1, 1);
+add_filter('page_attributes_dropdown_pages_args', 'phila_allow_more_dropdown_pages_args', 1, 1);
 
-function phila_allow_draft_dropdown_pages_args($dropdown_args) {
+function phila_allow_more_dropdown_pages_args($dropdown_args) {
 
-	$dropdown_args['post_status'] = array('publish','draft', 'private');
+	$dropdown_args['post_status'] = array('publish','draft', 'private', 'pending');
 
 	return $dropdown_args;
 }
@@ -57,10 +57,10 @@ function phila_allow_draft_dropdown_pages_args($dropdown_args) {
 /**
 * Add query argument for selecting pages to add to a menu
 */
-add_filter( 'nav_menu_meta_box_object', 'phila_show_private_pages_menu_selection' );
+add_filter( 'nav_menu_meta_box_object', 'phila_show_all_pages_menu_selection' );
 
-function phila_show_private_pages_menu_selection( $args ){
-	$args->_default_query['post_status'] = array( 'publish','private' );
+function phila_show_all_pages_menu_selection( $args ){
+	$args->_default_query['post_status'] = array( 'publish','private', 'draft', 'pending' );
 	return $args;
 }
 
@@ -140,12 +140,6 @@ add_action('do_meta_boxes', 'phila_remove_thumbnails_from_pages');
 
 function phila_remove_thumbnails_from_pages() {
   remove_meta_box( 'postimagediv','page','side' );
-}
-
-add_filter( 'default_hidden_meta_boxes', 'phila_hide_meta_boxes', 10, 2 );
-
-function phila_hide_meta_boxes( $hidden, $screen ) {
-  return array( 'tagsdiv-post_tag', 'tagsdiv', 'formatdiv');
 }
 
 
