@@ -58,9 +58,16 @@ jQuery(document).ready(function($) {
           'post_title': 'required'
         }
       });
+      var title = $( "#title" ).val();
+      if( title.match('[Duplicated]') != null ){
+        $('#title').rules('add', {
+            maxlength: 72 + 14
+          });
+      }else{
       $('#title').rules('add', {
-        maxlength: 72
-      });
+          maxlength: 72
+        });
+      }
       $('#phila_meta_desc').rules('add', {
         maxlength: 140
       });
