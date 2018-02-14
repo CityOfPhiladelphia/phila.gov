@@ -47,7 +47,7 @@ class Phila_Gov_Role_Administration {
     if ( is_array( $settings_user ) && array_key_exists( $user_login . '_user_cats', $settings_user ) ) {
       $settings_user[ $user_login . '_user_cats' ] = array_values( array_diff( $settings_user[ $user_login . '_user_cats' ], $defaults ) );
       // Selected categories for User overwrites Roles selection
-    if ( is_array( $settings_user ) && !empty( $settings_user[ $user_login . '_user_cats' ] ) ) {
+      if ( is_array( $settings_user ) && !empty( $settings_user[ $user_login . '_user_cats' ] ) ) {
 
         // Build the category list
         foreach ( $settings_user[ $user_login . '_user_cats' ] as $category ) {
@@ -131,8 +131,6 @@ class Phila_Gov_Role_Administration {
 
       add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'change_dropdown_args' ), 9, 2 );
 
-      add_filter('wp_dropdown_users', array( $this, 'display_users_in_same_role' ) );
-
     }
   }
 
@@ -161,38 +159,6 @@ class Phila_Gov_Role_Administration {
 
     }
   }
-
-  /**
-   * Only allow users to change the post author to users in the same category.
-   *
-   * @since   0.22.0
-   * @return $output The filtered author dropdown
-   */
-  function display_users_in_same_role( $output ){
-    global $post;
-
-    global $current_user;
-
-    $secondary_role_name = $current_user->roles;
-    $user_role = array_shift($secondary_role_name);
-
-    $users = get_users( array(
-      'role__in' => $secondary_role_name,
-      )
-    );
-
-    $output = "<select id=\"post_author_override\" name=\"post_author_override\" class=\"\">";
-
-    foreach($users as $user) {
-      $sel = ($post->post_author == $user->ID)?"selected='selected'":'';
-      $output .= '<option value="'.$user->ID.'"'.$sel.'>'.$user->display_name.'</option>';
-    }
-    $output .= "</select>";
-
-    return $output;
-  }
-
-
 
   function add_subscribers_to_author_dropdown( $query_args, $r ) {
 
