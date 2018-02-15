@@ -1,6 +1,6 @@
 <?php
 /**
- *  Custom Post type for Programs Initiatives
+ *  Custom Post type for Departments
  *
  */
 if ( class_exists( "Phila_Gov_Departments" ) ){
