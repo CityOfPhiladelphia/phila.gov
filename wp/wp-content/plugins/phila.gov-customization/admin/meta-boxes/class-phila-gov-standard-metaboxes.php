@@ -362,7 +362,7 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_v2_service_page_selector(){
+  public static function phila_v2_service_page_selector( $multiple = false ){
     return array(
       'id'  => 'phila_v2_service_page',
       'name' => 'Select service page',
@@ -378,8 +378,31 @@ class Phila_Gov_Standard_Metaboxes {
         'meta_value' => 'service_stub',
         'meta_compare' => '!=',
         ),
-      'multiple'  => false,
+      'multiple'  => $multiple,
       'placeholder' => ' ',
+      'js_options'  => array(
+        'width' => '100%',
+        'closeOnSelect' => false,
+      )
+    );
+  }
+
+  public static function phila_program_page_selector( $multiple = false ){
+
+    return array(
+      'name'          => 'Select program pages',
+      'id'          => 'phila_select_programs',
+      'type'        => 'post',
+      'post_type'   => 'programs',
+      'field_type'  => 'select_advanced',
+      'placeholder' => 'Type to filter by title',
+      'desc'        =>  'Programs will appear in order selected.',
+      'multiple'  => $multiple,
+
+      'query_args'  => array(
+        'post_status'    => 'any',
+        'posts_per_page' => - 1,
+      ),
       'js_options'  => array(
         'width' => '100%',
         'closeOnSelect' => false,
