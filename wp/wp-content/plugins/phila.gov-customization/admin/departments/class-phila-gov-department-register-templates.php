@@ -8,7 +8,7 @@
  */
 
 if ( class_exists( "Phila_Gov_Deparment_Templates" ) ){
-  $admin_menu_labels = new Phila_Gov_Deparment_Templates();
+  $department_templates = new Phila_Gov_Deparment_Templates();
 }
 
 class Phila_Gov_Deparment_Templates {
