@@ -57,6 +57,7 @@ class Phila_Gov_Admin_Templates {
           'resource_list_v2'        => 'Resource list',
           'staff_directory_v2'      => 'Staff directory',
           'document_finder_v2'      => 'Document finder',
+          'collection_page_v2'      => 'Collection page',
           'disabled'                => '──────────',
           'off_site_department'     => 'Off-site department',
           'department_homepage'     => 'Department homepage',
