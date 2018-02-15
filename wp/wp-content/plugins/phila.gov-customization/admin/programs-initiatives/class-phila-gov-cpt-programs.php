@@ -4,7 +4,7 @@
  *
  */
 if ( class_exists( "Phila_Gov_Programs_Initiatives" ) ){
-  $custom_post_types = new Phila_Gov_Programs_Initiatives();
+  $cpt_programs = new Phila_Gov_Programs_Initiatives();
 }
 
 

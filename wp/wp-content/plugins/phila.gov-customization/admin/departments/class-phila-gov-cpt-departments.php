@@ -4,7 +4,7 @@
  *
  */
 if ( class_exists( "Phila_Gov_Departments" ) ){
-  $custom_post_types = new Phila_Gov_Departments();
+  $cpt_departments = new Phila_Gov_Departments();
 }
 
 
