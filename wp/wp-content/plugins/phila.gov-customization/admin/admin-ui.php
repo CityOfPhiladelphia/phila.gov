@@ -242,8 +242,26 @@ function user_restricted_category_column_values($val, $column_name, $user_id) {
   return (is_array($cat_list) ? implode(', ' , $cat_list) : '');
 }
 
-/*  Remove admin comment count column */
+add_action( 'init', 'phila_change_category_object_label' );
 
+function phila_change_category_object_label() {
+    global $wp_taxonomies;
+    $labels = &$wp_taxonomies['category']->labels;
+    $labels->name = 'Department Category';
+    $labels->singular_name = 'Department Category';
+    $labels->add_new = 'Add a Department Category';
+    $labels->add_new_item = 'Add a Department Category';
+    $labels->edit_item = 'Edit Department Category';
+    $labels->new_item = 'Department Category';
+    $labels->view_item = 'View Department Category';
+    $labels->search_items = 'Search Department Categories';
+    $labels->not_found = 'No Department Category found';
+    $labels->not_found_in_trash = 'No Department Category found in Trash';
+    $labels->all_items = 'All Department Categories';
+    $labels->menu_name = 'Department Category';
+    $labels->name_admin_bar = 'Department Category';
+}
+/*  Remove admin comment count column */
 add_filter('manage_posts_columns', 'remove_posts_count_columns');
 
 function remove_posts_count_columns( $columns ) {
