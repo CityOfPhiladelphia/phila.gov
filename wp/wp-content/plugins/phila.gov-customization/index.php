@@ -40,6 +40,9 @@ require $dir. '/admin/define-roles.php';
 require $dir. '/admin/rest-additions.php';
 require $dir. '/admin/tiny-mce.php';
 
+
+require $dir. 'admin/departments/class-phila-gov-cpt-departments.php';
+
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
@@ -53,7 +56,7 @@ require $dir. '/admin/meta-boxes/page-template-contact-us.php';
 require $dir. '/admin/meta-boxes/tax-detail-fields.php';
 require $dir. '/admin/meta-boxes/v2-departments.php';
 
-require $dir. 'admin/programs-initiatives/class-phila-gov-custom-post-type.php';
+require $dir. 'admin/programs-initiatives/class-phila-gov-cpt-programs.php';
 require $dir. 'admin/programs-initiatives/class-phila-gov-templates.php';
 
 require $dir. '/public/shortcodes/callout.php';
