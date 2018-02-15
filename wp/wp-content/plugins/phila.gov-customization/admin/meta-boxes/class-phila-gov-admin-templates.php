@@ -51,7 +51,7 @@ class Phila_Gov_Admin_Templates {
           'one_quarter_headings_v2' => '1/4 headings',
           'all_services_v2'         => 'All services',
           'collection_page_v2'      => 'Collection page',
-          'contact_us_v2'           => 'Contact page',
+          'contact_us_v2'           => 'Contact us',
           'document_finder_v2'      => 'Document finder',
           'forms_and_documents_v2'  => 'Forms & documents',
           'things-to-do'            => 'Things to do',
