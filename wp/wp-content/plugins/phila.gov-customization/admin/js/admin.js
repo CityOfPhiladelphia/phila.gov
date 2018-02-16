@@ -51,6 +51,8 @@ jQuery(document).ready(function($) {
     if ( typenow == 'attachment' && adminpage.indexOf( 'post' ) > -1 ) {
       jQuery( '#edit-slug-box' ).hide();
     }
+    //remove attachment from post type list
+    delete philaAllPostTypes[2];
 
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
       $('#post').validate({
@@ -211,7 +213,7 @@ jQuery(document).ready(function($) {
             deptPageIds.push($(this).val());
           });
           if(deptPageIds.length > 0){
-            updateResponseCheckboxes(deptPageIds); 
+            updateResponseCheckboxes(deptPageIds);
           }
         }
       }
