@@ -247,19 +247,19 @@ add_action( 'init', 'phila_change_category_object_label' );
 function phila_change_category_object_label() {
     global $wp_taxonomies;
     $labels = &$wp_taxonomies['category']->labels;
-    $labels->name = 'Department Owner';
-    $labels->singular_name = 'Department Owner';
-    $labels->add_new = 'Add a Department Owner';
-    $labels->add_new_item = 'Add a Department Owner';
-    $labels->edit_item = 'Edit Department Owner';
-    $labels->new_item = 'Department Owner';
-    $labels->view_item = 'View Department Owner';
-    $labels->search_items = 'Search Department Owners';
-    $labels->not_found = 'No Department Owners found';
-    $labels->not_found_in_trash = 'No Department Owners found in Trash';
-    $labels->all_items = 'All Department Owners';
-    $labels->menu_name = 'Department Owners';
-    $labels->name_admin_bar = 'Department Owners';
+    $labels->name = 'Owner';
+    $labels->singular_name = 'Owner';
+    $labels->add_new = 'Add an Owner';
+    $labels->add_new_item = 'Add an Owner';
+    $labels->edit_item = 'Edit Owner';
+    $labels->new_item = 'Owner';
+    $labels->view_item = 'View Owner';
+    $labels->search_items = 'Search Owners';
+    $labels->not_found = 'No Owners found';
+    $labels->not_found_in_trash = 'No Owners found in Trash';
+    $labels->all_items = 'All Owners';
+    $labels->menu_name = 'Owners';
+    $labels->name_admin_bar = 'Owners';
 }
 /*  Remove admin comment count column */
 add_filter('manage_posts_columns', 'remove_posts_count_columns');
