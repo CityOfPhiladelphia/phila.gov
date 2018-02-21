@@ -44,6 +44,11 @@ jQuery(document).ready(function($){
      }
      return true;
    });
+
+   $( '#dem_notify_emails' ).rules( 'add', {
+      required: true
+   });
+
   }
 
   //hide all category and tag menu items, department authors shouldn't see those.
