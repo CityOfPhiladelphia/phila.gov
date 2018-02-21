@@ -297,7 +297,6 @@ class DuplicatePost{
 
 				?>
 				<div id="publishing-action-update">
-						<span class="spinner"></span>
 						<input name="original_publish" type="hidden" id="original_publish" value="Update">
 							<a class="button" href="<?php echo esc_url( get_permalink( $original_post_id ) ); ?>">Go to original <?php echo get_post_type_object(get_post_type())->labels->singular_name; ?></a>
 
@@ -340,20 +339,24 @@ class DuplicatePost{
 						text-align: center;
 					}
 					.button.button-primary.button-large.save_as_new {
-						background: rgb(0, 144, 0);
-				border-color: rgb(0, 144, 0);
-				-webkit-box-shadow: none;
-				box-shadow: none;
-				color: #fff;
-				text-decoration: none;
-					}
+						-webkit-box-shadow: none;
+						box-shadow: none;
+						color: #fff;
+						text-decoration: none;
+						}
 					.button.button-primary.button-large.waiting {
-				background: #5E757E;
-				border-color: #5E757E;
-				-webkit-box-shadow: none;
-				box-shadow: none;
-				color: #fff;
-				text-decoration: none;
+						-webkit-box-shadow: none;
+						box-shadow: none;
+						color: #fff;
+						text-decoration: none;
+					}
+					#merge_back{
+						background: rgb(0, 144, 0);
+						border-color: rgb(0, 144, 0);
+					}
+					#save_as_new{
+						background: #5E757E;
+						border-color: #5E757E;
 					}
 				</style>
 			<script type="text/javascript">
@@ -500,11 +503,10 @@ class DuplicatePost{
 						$new_post = get_post($post_id);
 
 						$message = implode( array(
-						"An update has been made for ",
+						"<strong>".$current_user->display_name . "</strong> has requested changes to: ",
 						"<a href='".get_permalink($post->ID)."'>'".$post->post_title."'</a> ",
-						"by <strong>".$current_user->display_name . "</strong>",
 						"<br><br> To review and approve the change, follow this link: ",
-						"<a href='".get_permalink($new_post->ID)."'>'".$new_post->post_title."'</a>."
+						"<a href='".get_permalink($new_post->ID)."'>'".$new_post->post_title."'</a>.<br /><br /> <i>Note: You must be logged in to the website in order to view changes.</i>"
 					) );
 
 						$message = apply_filters("duplicate_post_notification_message", $message, $post, $new_post, $current_user );
@@ -566,8 +568,8 @@ class DuplicatePost{
 
 		$merge_back_link = admin_url()."?action=duplicate_post_save_to_original&post=".$post_id;
 		echo "<div class='show_diff_actions'>";
-			echo "<a class='button' href='".get_edit_post_link($original_post_id)."'>Go to original" . get_post_type_object(get_post_type())->labels->singular_name . "</a>";
-			echo "<a class='button' href='".get_edit_post_link($post_id)."'>Go to duplicated" . get_post_type_object(get_post_type())->labels->singular_name  ."</a>";
+			echo "<a class='button' href='".get_edit_post_link($original_post_id)."'>View original" . get_post_type_object(get_post_type())->labels->singular_name . "</a>";
+			echo "<a class='button' href='".get_edit_post_link($post_id)."'>View duplicated" . get_post_type_object(get_post_type())->labels->singular_name  ."</a>";
 			if($allow_merge_back){
 				 echo "<a class='button button-primary' href='". esc_url( $merge_back_link ) ."'>Merge back to Original " . get_post_type_object(get_post_type())->labels->singular_name  ."</a>";
 			}
@@ -917,9 +919,9 @@ class DuplicatePost{
 			add_action( 'post_submitbox_start', array($this,'duplicate_post_add_duplicate_post_button') );
 		}
 
-		if ($this->get_option('duplicate_post_show_adminbar') == 1){
-			add_action( 'wp_before_admin_bar_render', array($this,'duplicate_post_admin_bar_render') );
-		}
+		// if ($this->get_option('duplicate_post_show_adminbar') == 1){
+		// 	add_action( 'wp_before_admin_bar_render', array($this,'duplicate_post_admin_bar_render') );
+		// }
 
 		add_action('admin_action_duplicate_post_save_as_new_post', array($this,'duplicate_post_save_as_new_post'));
 		add_action('admin_action_duplicate_post_save_as_new_post_draft', array($this,'duplicate_post_save_as_new_post_draft'));
@@ -950,8 +952,8 @@ class DuplicatePost{
 	function duplicate_post_make_duplicate_link_row($actions, $post) {
 		if (DuplicatePost::duplicate_post_is_current_user_allowed_to_copy()) {
 			$actions['clone'] = '<a href="'.DuplicatePost::duplicate_post_get_clone_post_link( $post->ID , 'display', false).'" title="'
-			. esc_attr(__("Clone this item", 'dem'))
-			. '">' .  __('Clone', 'dem') . '</a>';
+			. esc_attr(__("Duplicate this item", 'dem'))
+			. '">' .  __('Duplicate', 'dem') . '</a>';
 			/*$actions['edit_as_new_draft'] = '<a href="'. DuplicatePost::duplicate_post_get_clone_post_link( $post->ID ) .'" title="'
 			. esc_attr(__('Copy to a new draft', 'dem'))
 			. '">' .  __('New Draft', 'dem') . '</a>';*/
