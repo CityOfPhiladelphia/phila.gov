@@ -182,7 +182,6 @@ HTML;
 
 
     default:
-      # code...
       break;
 
 
