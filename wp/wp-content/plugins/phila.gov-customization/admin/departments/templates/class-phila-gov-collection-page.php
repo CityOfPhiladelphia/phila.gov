@@ -45,8 +45,8 @@ class Phila_Gov_Collection_Page {
               'options' => array(
                 'service' => 'Service pages',
                 'program' => 'Program pages',
-                'textarea' => 'Free text area',
-                'documents' => 'Document pages'
+                'free_text' => 'Free text area',
+                'document' => 'Document pages'
                 ),
               ),
               array(
@@ -90,7 +90,7 @@ class Phila_Gov_Collection_Page {
               'type' => 'group',
               'visible' => array(
                 'when' => array(
-                  array('phila_collection_options', '=', 'textarea'),
+                  array('phila_collection_options', '=', 'free_text'),
                 ),
               ),
               'clone'  => true,
@@ -105,7 +105,7 @@ class Phila_Gov_Collection_Page {
               'type'  => 'group',
               'visible' => array(
                 'when' => array(
-                  array('phila_collection_options', '=', 'documents'),
+                  array('phila_collection_options', '=', 'document'),
                 ),
               ),
               'fields'  => array(
