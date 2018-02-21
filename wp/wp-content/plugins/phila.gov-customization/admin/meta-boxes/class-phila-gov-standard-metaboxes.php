@@ -163,6 +163,7 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       'id'  => 'phila_document_page_picker',
       'type'  => 'post',
+      'name'  => 'Select document page',
       'post_type' => 'document',
       'field_type'  => 'select_advanced',
       'desc'  => 'Add document pages. You can narrow your search options by typing in the field above.',
@@ -239,7 +240,7 @@ class Phila_Gov_Standard_Metaboxes {
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
           'desc'  => $wysiwyg_desc,
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         )
       )
     );
@@ -380,6 +381,7 @@ class Phila_Gov_Standard_Metaboxes {
         ),
       'multiple'  => $multiple,
       'placeholder' => ' ',
+      'desc'     =>  'Add service pages. You can narrow your search options by typing in the field above.',
       'js_options'  => array(
         'width' => '100%',
         'closeOnSelect' => false,
@@ -395,8 +397,8 @@ class Phila_Gov_Standard_Metaboxes {
       'type'        => 'post',
       'post_type'   => 'programs',
       'field_type'  => 'select_advanced',
-      'placeholder' => 'Type to filter by title',
-      'desc'        =>  'Programs will appear in order selected.',
+      'placeholder' => '',
+      'desc'     =>  'Add program pages. You can narrow your search options by typing in the field above.',
       'multiple'  => $multiple,
 
       'query_args'  => array(
