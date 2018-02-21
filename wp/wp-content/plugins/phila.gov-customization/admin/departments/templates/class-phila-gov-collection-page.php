@@ -37,7 +37,7 @@ class Phila_Gov_Collection_Page {
 
           'fields' => array(
             array(
-              'name' => 'Select rows',
+              'name' => 'Select row',
               'id'   => 'phila_collection_options',
               'desc'  => 'Choose a collection',
               'type' => 'select',
@@ -82,7 +82,39 @@ class Phila_Gov_Collection_Page {
                   'id'   => 'phila_custom_text_title',
                   'type' => 'text',
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector( $multiple = true),
+                Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector( $multiple = true ),
+              )
+            ),
+            array(
+              'id' => 'free_text',
+              'type' => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'phila_collection_options_textbox'),
+                ),
+              ),
+              'clone'  => true,
+              'sort_clone' => true,
+              'add_button'  => '+ Add section',
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+              )
+            ),
+            array(
+              'id'    => 'document_pages',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'phila_collection_options_documents'),
+                ),
+              ),
+              'fields'  => array(
+                array(
+                  'name' => 'Heading',
+                  'id'   => 'phila_custom_text_title',
+                  'type' => 'text',
+                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector(),
               )
             )
           ),
