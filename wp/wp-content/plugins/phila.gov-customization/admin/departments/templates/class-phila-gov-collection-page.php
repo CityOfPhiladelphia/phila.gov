@@ -43,10 +43,10 @@ class Phila_Gov_Collection_Page {
               'type' => 'select',
               'placeholder' => 'Select...',
               'options' => array(
-                'phila_collection_option_service' => 'Service pages',
-                'phila_collection_option_program' => 'Program pages',
-                'phila_collection_options_textbox' => 'Free text area',
-                'phila_collection_options_documents' => 'Document pages'
+                'service' => 'Service pages',
+                'program' => 'Program pages',
+                'textarea' => 'Free text area',
+                'documents' => 'Document pages'
                 ),
               ),
               array(
@@ -55,7 +55,7 @@ class Phila_Gov_Collection_Page {
 
                 'visible' => array(
                   'when' => array(
-                    array('phila_collection_options', '=', 'phila_collection_option_program'),
+                    array('phila_collection_options', '=', 'program'),
                   ),
                 ),
 
@@ -73,7 +73,7 @@ class Phila_Gov_Collection_Page {
               'type'  => 'group',
               'visible' => array(
                 'when' => array(
-                  array('phila_collection_options', '=', 'phila_collection_option_service'),
+                  array('phila_collection_options', '=', 'service'),
                 ),
               ),
               'fields'  => array(
@@ -90,7 +90,7 @@ class Phila_Gov_Collection_Page {
               'type' => 'group',
               'visible' => array(
                 'when' => array(
-                  array('phila_collection_options', '=', 'phila_collection_options_textbox'),
+                  array('phila_collection_options', '=', 'textarea'),
                 ),
               ),
               'clone'  => true,
@@ -105,7 +105,7 @@ class Phila_Gov_Collection_Page {
               'type'  => 'group',
               'visible' => array(
                 'when' => array(
-                  array('phila_collection_options', '=', 'phila_collection_options_documents'),
+                  array('phila_collection_options', '=', 'documents'),
                 ),
               ),
               'fields'  => array(
