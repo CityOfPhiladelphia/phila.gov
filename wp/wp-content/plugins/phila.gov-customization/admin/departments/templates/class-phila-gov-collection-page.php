@@ -61,7 +61,7 @@ class Phila_Gov_Collection_Page {
 
               'fields'  => array(
                 array(
-                  'name' => 'Heading',
+                  'name' => '1/4 Heading',
                   'id'   => 'phila_custom_text_title',
                   'type' => 'text',
                 ),
@@ -78,7 +78,7 @@ class Phila_Gov_Collection_Page {
               ),
               'fields'  => array(
                 array(
-                  'name' => 'Heading',
+                  'name' => '1/4 Heading',
                   'id'   => 'phila_custom_text_title',
                   'type' => 'text',
                 ),
@@ -97,7 +97,7 @@ class Phila_Gov_Collection_Page {
               'sort_clone' => true,
               'add_button'  => '+ Add section',
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = '1/4 Heading'),
               )
             ),
             array(
@@ -110,11 +110,22 @@ class Phila_Gov_Collection_Page {
               ),
               'fields'  => array(
                 array(
-                  'name' => 'Heading',
+                  'name' => '1/4 Heading',
                   'id'   => 'phila_custom_text_title',
                   'type' => 'text',
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector(),
+                array(
+                  'id'    => 'document_page_group',
+                  'type'  => 'group',
+                  'clone' => true,
+                  'sort_clone'  => true,
+                  'add_button'  => '+ Add document group',
+                  'fields' => array(
+                    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = 'Document group title'),
+                    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector(),
+                  )
+                ),
+
               )
             )
           ),
