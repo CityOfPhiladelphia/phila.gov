@@ -1,5 +1,8 @@
 a.card,
 .card{
+  &.program-card{
+    border-bottom: none;
+  }
   position: relative;
   margin-bottom:0;
   h1 {
