@@ -1,30 +1,23 @@
 <?php
 /* Displays contents of a Collection Page Template. */
 
-$row_content = rwmb_meta('collection_row');
+$row_content = rwmb_meta('collection_row');?>
 
-foreach ($row_content as $key => $value ) :
+<div class="one-quarter-layout bdr-dark-gray">
+
+<?php foreach ($row_content as $key => $value ) :
   $current_row = $row_content[$key];
+  $current_row_option = $current_row['phila_collection_options']; ?>
+  <?php if ($current_row_option === 'service') : ?>
 
-  $current_row_option = $current_row['phila_collection_options'];
-
-  if ($current_row_option === 'service') :
-
-    $headline = $current_row['service_pages']['phila_custom_text_title'];
-
-    ?>
-    <div class="row">
+    <?php $headline = $current_row['service_pages']['phila_custom_text_title']; ?>
+    <div class="row one-quarter-row mvl">
       <div class="columns medium-6">
         <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
       </div>
       <div class="columns medium-18 pbxl">
-        <?php $counter = 0; ?>
-
+        <div class="row equal-height fat-gutter">
         <?php foreach( $current_row['service_pages']['phila_v2_service_page'] as $service_page ) : ?>
-          <?php $counter++; ?>
-          <?php if($counter % 3 == 1) :?>
-          <div class="row equal-height fat-gutter">
-          <?php endif;?>
           <div class="small-24 medium-8 column end">
             <a href="<?php echo get_the_permalink($service_page);?>" class="card sub-topic equal">
               <div class="content-block">
@@ -33,18 +26,15 @@ foreach ($row_content as $key => $value ) :
               </div>
             </a>
           </div>
-        <?php if($counter % 3 == 0) :?>
-          </div>
-        <?php endif;?>
       <?php endforeach; ?>
       </div>
     </div>
+  </div>
   <?php endif; ?>
 
   <?php if ($current_row_option === 'document') :  ?>
-
     <?php $headline = $current_row['document_pages']['phila_custom_text_title'];?>
-    <div class="row">
+    <div class="row one-quarter-row mvl">
       <div class="columns medium-6">
         <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
       </div>
@@ -60,7 +50,6 @@ foreach ($row_content as $key => $value ) :
               <?php endforeach; ?>
             </ul>
           </div>
-
       <?php endforeach; ?>
       </div>
     </div>
@@ -70,7 +59,7 @@ foreach ($row_content as $key => $value ) :
 
     <?php $headline = $current_row['program_pages']['phila_custom_text_title'];?>
 
-    <div class="row">
+    <div class="row one-quarter-row mvl">
       <div class="columns medium-6">
         <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
       </div>
@@ -100,7 +89,7 @@ foreach ($row_content as $key => $value ) :
     <?php foreach( $current_row['free_text'] as $free_text ) : ?>
       <?php $headline = $free_text['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?>
 
-      <div class="row">
+      <div class="row one-quarter-row mvl">
         <div class="columns medium-6">
             <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
         </div>
@@ -112,6 +101,5 @@ foreach ($row_content as $key => $value ) :
       <?php endforeach; ?>
 
   <?php endif; ?>
-
-
 <?php endforeach ?>
+</div>
