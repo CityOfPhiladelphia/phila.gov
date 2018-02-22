@@ -8,9 +8,9 @@ $row_content = rwmb_meta('collection_row');?>
 <?php foreach ($row_content as $key => $value ) :
   $current_row = $row_content[$key];
   $current_row_option = $current_row['phila_collection_options']; ?>
-  <?php if ($current_row_option === 'service') : ?>
 
-    <?php $headline = $current_row['service_pages']['phila_custom_text_title']; ?>
+  <?php if ($current_row_option === 'service') : ?>
+    <?php $headline = $current_row['service_pages']['phila_custom_text_title'];?>
     <div class="row one-quarter-row mvl">
       <div class="columns medium-6">
         <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
@@ -73,7 +73,7 @@ $row_content = rwmb_meta('collection_row');?>
                 $img = reset( $img );?>
                 <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
                 <div class="content-block">
-                  <h4 class="h4"><?php echo get_the_title($program_page); ?></h3>
+                  <h4 class="h3"><?php echo get_the_title($program_page); ?></h3>
                   <?php echo rwmb_meta( 'phila_meta_desc', $args = '', $program_page ); ?></h4>
                 </div>
               </a>
