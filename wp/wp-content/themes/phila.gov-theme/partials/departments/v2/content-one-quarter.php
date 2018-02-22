@@ -16,7 +16,7 @@
     <?php foreach ( $heading_content as $content ): ?>
 
 
-      <div class="row mvl">
+      <div class="row one-quarter-row mvl">
 
         <div class="medium-6 columns">
 
