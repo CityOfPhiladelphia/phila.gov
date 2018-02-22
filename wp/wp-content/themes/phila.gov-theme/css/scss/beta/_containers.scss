@@ -1,6 +1,6 @@
 //TODO: Remove row fallback once migration to xy-grid is complete
-.one-quarter-layout div.row,
-.one-quarter-layout div.grid-x,{
+.one-quarter-layout div.row.one-quarter-row,
+.one-quarter-layout div.grid-x.one-quarter-row,{
   border-bottom: 1px;
   border-bottom-style: solid;
   &:last-of-type{
