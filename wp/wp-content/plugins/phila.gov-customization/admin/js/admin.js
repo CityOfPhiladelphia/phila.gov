@@ -16,29 +16,29 @@ jQuery(document).ready(function($) {
 
   // Set error placement, and highlights for custom taxonomy checkboxes
   // MAYBE WE WILL NEED THIS IN THE FUTURE.
-  jQuery.validator.setDefaults({
-    errorPlacement: function( error, element ) {
-      if( error.attr('id').indexOf('tax_input') > -1 ) {
-          error.insertAfter( $( element ).parents('.categorydiv').eq(0) );
-      } else {
-          error.insertAfter( element );
-      }
-    },
-    highlight: function( element, errorClass ) {
-      if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
-        jQuery( element ).parents('.categorydiv').eq(0).addClass( errorClass );
-      } else {
-        jQuery( element ).addClass( errorClass );
-      }
-    },
-    unhighlight: function( element, errorClass ) {
-      if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
-        jQuery( element ).parents('.categorydiv').eq(0).removeClass( errorClass );
-      } else {
-        jQuery( element ).removeClass( errorClass );
-      }
-    }
-  });
+  // jQuery.validator.setDefaults({
+  //   errorPlacement: function( error, element ) {
+  //     if( error.attr('id').indexOf('tax_input') > -1 ) {
+  //         error.insertAfter( $( element ).parents('.categorydiv').eq(0) );
+  //     } else {
+  //         error.insertAfter( element );
+  //     }
+  //   },
+  //   highlight: function( element, errorClass ) {
+  //     if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
+  //       jQuery( element ).parents('.categorydiv').eq(0).addClass( errorClass );
+  //     } else {
+  //       jQuery( element ).addClass( errorClass );
+  //     }
+  //   },
+  //   unhighlight: function( element, errorClass ) {
+  //     if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
+  //       jQuery( element ).parents('.categorydiv').eq(0).removeClass( errorClass );
+  //     } else {
+  //       jQuery( element ).removeClass( errorClass );
+  //     }
+  //   }
+  // });
 
   $('[data-readonly="true"]').attr('readonly','readonly');
 

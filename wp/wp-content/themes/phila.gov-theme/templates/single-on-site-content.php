@@ -144,6 +144,9 @@ HTML;
       get_template_part( 'partials/departments/v2/document-finder' );
       break;
 
+    case 'collection_page_v2':
+      get_template_part( 'partials/departments/v2/collection-page' );
+      break;
 
     case 'disabled':
       break;
@@ -179,7 +182,6 @@ HTML;
 
 
     default:
-      # code...
       break;
 
 
