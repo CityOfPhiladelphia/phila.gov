@@ -54,11 +54,6 @@ jQuery(document).ready(function($) {
 
     if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
 
-      //Disable submit for review button if user hasn't saved a draft
-      if ($('.misc-pub-revisions').length == 0) {
-        $('#submit_for_review').prop('disabled', true)
-      }
-
       $('#post').validate({
         rules: {
           'post_title': 'required'
