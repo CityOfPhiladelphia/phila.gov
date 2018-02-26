@@ -11,8 +11,8 @@ dl.simcal-events-list-container{
 }
 .event-row{
   cursor: pointer;
-  margin-right:0;
-  margin-left:0;
+  margin-right:0 !important;
+  margin-left:0 !important;
   margin-bottom:1rem;
   @include transition( opacity, .2s );
   a:link, a:visited{
