@@ -267,16 +267,4 @@ export default {
 }
 </script>
 
-<style>
-/* TODO: remove base card styles in standards as they are no longer in use */
-a.card{
-  border-bottom: none;
-}
-a.card h3{
-  font-size:1.4rem;
-  margin-top:.5rem;
-}
-a.card .content-block{
-  min-height:165px;
-}
-</style>
+<style></style>
