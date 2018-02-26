@@ -103,6 +103,10 @@ jQuery(document).ready(function($){
     }
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
+      //hide short description
+      if ( $('#phila_template_select').val() == 'homepage_v2') {
+        $('#item_description').css('display', 'none');
+      }
     }
   }
 
