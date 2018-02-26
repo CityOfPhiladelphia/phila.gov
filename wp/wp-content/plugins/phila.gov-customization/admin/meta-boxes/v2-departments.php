@@ -11,6 +11,9 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'context'  => 'normal',
     'priority' => 'high',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+    ),
 
     'fields' => array(
       array(
