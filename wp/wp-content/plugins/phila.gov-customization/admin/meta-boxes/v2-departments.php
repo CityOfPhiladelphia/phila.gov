@@ -384,14 +384,35 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
-    'title' => 'Department code',
+    'title' => 'Department metadata',
     'pages'    => array( 'department_page' ),
     'context'  => 'side',
     'priority' => 'low',
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', 'homepage_v2'),
+        array('phila_template_select', 'department_homepage'),
+        array('phila_template_select', 'off_site_department')
+      ),
+      'relation' => 'or'
+    ),
     'fields' => array(
       array(
         'type'  => 'number',
-        'id'  => 'phila_department_code'
+        'id'  => 'phila_department_code',
+        'name' => 'Official code'
+      ),
+      array(
+        'type'  => 'text',
+        'id'  => 'phila_department_acronym',
+        'name' => 'Acronym',
+        'desc' => 'E.g. Parks & Rec'
+      ),
+      array(
+        'type'  => 'textarea',
+        'id'  => 'phila_department_keywords',
+        'name' => 'Keywords',
+        'desc'  => 'Separate keywords with commas. E.g. Parks & Rec, trees, recreation centers'
       ),
     )
   );
