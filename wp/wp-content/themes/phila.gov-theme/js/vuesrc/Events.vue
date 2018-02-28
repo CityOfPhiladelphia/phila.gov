@@ -103,7 +103,7 @@
           <div
           v-if="event.start.dateTime"
           class="start-end mvm">
-          {{event.start.dateTime | formatDate }}<br />
+            {{event.start.dateTime | formatDate }}<br />
             {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}<br />
           </div>
           <div class="mvm" v-else>
@@ -141,7 +141,8 @@ export default {
   },
   data: function() {
     return{
-      calendars: JSON.parse(g_cal_data.json),
+      //g_cal_data set in the-latest-events-archive.php
+      calendars: [JSON.parse(g_cal_data.json)],
       calData: [{}],
 
       events: [{
@@ -206,13 +207,15 @@ export default {
   },
   methods: {
     getUpcomingEvents: function () {
-      for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+      var cal_ids = this.calendars.map(d=>{ return Object.values(d) });
+
+      for( var i = 0; i < cal_ids[0].length; i++ ){
+        console.log(cal_ids[0][i])
+        links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
       }
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
-          const temp = []
 
           for (var j = 0; j < this.calData.length; j++ ){
             for(var k = 0; k < response[j].data.items.length; k++) {
@@ -301,7 +304,6 @@ export default {
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
-          const temp = []
 
           for (var j = 0; j < this.calData.length; j++ ){
             for(var k = 0; k < response[j].data.items.length; k++) {
