@@ -73,7 +73,9 @@
                 <div v-else>
                   All day
                 </div>
-                <div class="location">{{event.location}}</div>
+                <div class="location">{{event.location}}
+                  {{event.owners}}
+                </div>
               </div>
             </div>
           </div>
@@ -83,13 +85,14 @@
       </div>
     </div>
       <div v-for="(event, index) in events"
-        :key="event.id">
+        :key="event.index">
         <modal
         :name="event.id"
         height="auto"
         :adaptive="adaptive"
         :scrollable="true">
         <div class="v--modal-container">
+          {{index}}
           <div slot="top-right">
             <button @click="$modal.hide(event.id)" class="close-button" type="button" aria-label="Close modal">
               <span aria-hidden="true">×</span>
@@ -113,7 +116,10 @@
           <div class="mbm">
             <div v-html="event.description"></div>
           </div>
-          <div class="post-meta mbm reveal-footer"></div>
+          <div class="post-meta mbm reveal-footer">Posted by: <span v-html="event.owners"></span>
+            {{event.creator}}
+          </div>
+
         </div>
       </modal>
     </div>
@@ -121,6 +127,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
@@ -141,11 +148,16 @@ export default {
   },
   data: function() {
     return{
-      //g_cal_data set in the-latest-events-archive.php
+      //g_cal_data & calendar_owners set in the-latest-events-archive.php
       calendars: [JSON.parse(g_cal_data.json)],
+      owner: [calendar_owners.json],
+      eventOwners: [{}],
+
       calData: [{}],
 
       events: [{
+        id: '',
+        owners: {},
         summary: '',
         start: {
           dateTime: '',
@@ -201,7 +213,8 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
-    this.sortedItems(this.events)
+    //this.addOwners()
+    //this.sortedItems(this.events)
     //this.getDropdownCategories()
     this.loading = true
   },
@@ -209,50 +222,52 @@ export default {
     getUpcomingEvents: function () {
       var cal_ids = this.calendars.map(d=>{ return Object.values(d) });
 
+      //reindex this.owner
+      var cal_owners = this.owner.map(d=>{ return Object.values(d) });
+
       for( var i = 0; i < cal_ids[0].length; i++ ){
-        console.log(cal_ids[0][i])
+        //console.log(cal_ids[0][i])
         links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
       }
-      axios.all( links.map( l => axios.get( l ) ) )
-        .then(response =>  {
-          this.calData = response
+        axios.all( links.map( l => axios.get( l ) ) )
+          .then(response =>  {
+            this.calData = response
 
-          for (var j = 0; j < this.calData.length; j++ ){
-            for(var k = 0; k < response[j].data.items.length; k++) {
-              this.events.push(response[j].data.items[k])
-           }
-          }
-          this.successfulResponse
-        })
-        .catch( e => {
-          this.failure = true
-          this.loading = false
-        })
+            //j is length of all Data
+            for (var j = 0; j < this.calData.length; j++ ){
+              //console.log(cal_owners[0][j])
 
-    },
-    onSubmit: function (event) {
-      this.loading = true
+              //k is length of ITEMS per calendar
+              for(var k = 0; k < response[j].data.items.length; k++) {
+                this.events.push(response[j].data.items[k])
 
-      this.$nextTick(function () {
-        axios.get(gCalEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory,
-            'count': -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
+                this.eventOwners.push(cal_owners[0][j])
+
+             }
+
+             //this.$set(this.events[j], 'owners', this.eventOwners[k])
+             //this.$set(this.events[j], 'owners', this.eventOwners[j])
+
             }
-          })
-          .then(response => {
-            this.events = response.data
+
+            for (var l = 0; l < this.events.length; l++){
+              console.log()
+              this.$set(this.events[l], 'owners', this.eventOwners[l])
+
+            }
+
+            console.log(this.eventOwners)
+            //this.events = Object.assign({}, this.events)
+            console.log(this.events)
+
             this.successfulResponse
           })
-          .catch(e => {
+          .catch( e => {
             this.failure = true
             this.loading = false
-        })
-      })
-    },
+          })
+
+      },
     reset() {
       window.location = window.location.pathname;
       //Object.assign(this.$data, this.$options.data.call(this));
@@ -298,8 +313,10 @@ export default {
       //reset links
       const links = []
 
+      var cal_ids = this.calendars.map(d=>{ return Object.values(d) });
+
       for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       }
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
@@ -320,7 +337,7 @@ export default {
 
     },
     filteredList: function ( list, searchedVal ) {
-      const searched = this.searchedVal.trim();
+      const searched = this.searchedVal.trim()
       return list.filter((event) => {
         if (typeof event.summary === 'undefined'){
           return
