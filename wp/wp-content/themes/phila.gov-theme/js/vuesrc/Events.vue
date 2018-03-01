@@ -73,9 +73,7 @@
                 <div v-else>
                   All day
                 </div>
-                <div class="location">{{event.location}}
-                  {{event.owners}}
-                </div>
+                <div class="location">{{event.location}}</div>
               </div>
             </div>
           </div>
@@ -213,8 +211,7 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
-    //this.addOwners()
-    //this.sortedItems(this.events)
+    this.sortedItems(this.events)
     //this.getDropdownCategories()
     this.loading = true
   },
