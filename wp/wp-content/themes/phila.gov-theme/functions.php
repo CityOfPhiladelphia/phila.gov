@@ -764,7 +764,7 @@ function phila_is_department_homepage( $post ) {
 /**
  * Echo a title and link to the department currently in the loop. Matches on category and page nice names, which *should* always be the same.
  * TODO: investigate a better way of handling the match.
- * @param $category String or array of categories applied to a page. Required.
+ * @param $category Category object. Required.
  * @param $byline Boolean Include ' by ' in display. Default true. Optional.
  * @param $name_list Boolean Return comma separated list of nice department names. Optional.
  *
