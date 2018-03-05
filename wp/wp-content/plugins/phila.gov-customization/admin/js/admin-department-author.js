@@ -2,6 +2,14 @@
 for users who do not have the PHILA_ADMIN capability */
 
 jQuery(document).ready(function($){
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(obj, start) {
+       for (var i = (start || 0), j = this.length; i < j; i++) {
+           if (this[i] === obj) { return i; }
+       }
+       return -1;
+     }
+   }
 
   //force top category to be checked all the time, unless the user has access to mutiple categories
   if( !phila_WP_User.includes('multi_department_access') && !phila_WP_User.includes('secondary_all_departments')) {
@@ -11,22 +19,21 @@ jQuery(document).ready(function($){
     }
   }
 
+  //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button
+  phila_WP_User.some(
+    function(v){
+      if (v.indexOf(typenow)>=0){
+        $('#publish').css('display', 'none')
+      }
+    }
+  )
+
   if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
-  //At least one category must be selected
-  $("#publish").one('click', function () {
 
-    var categories = document.getElementsByName("post_category[]");
+    $( '#dem_notify_emails' ).rules( 'add', {
+      required: true
+    });
 
-     if(categories[0].checked==false && categories[1].checked==false && categories[2].checked==false) {
-
-      $('#categorydiv').addClass('error');
-
-      $('#categorydiv').before('<label id="title-error" class="error" for="categorydiv">Category selection is required.</label>');
-
-      return false;
-     }
-     return true;
-   });
   }
 
   //hide all category and tag menu items, department authors shouldn't see those.
@@ -38,6 +45,7 @@ jQuery(document).ready(function($){
 
   //hide all menu locations
   $('.menu-theme-locations input').parent().css('display', 'none');
+
   //display menu locations that match current user roles
   for (var i = 0; i < allMenuIDs.length ; i++) {
     var currentMenuId = document.getElementById( allMenuIDs[i] );
@@ -80,6 +88,10 @@ jQuery(document).ready(function($){
     }
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
+      //hide short description
+      if ( $('#phila_template_select').val() == 'homepage_v2') {
+        $('#item_description').css('display', 'none');
+      }
     }
   }
 
