@@ -1287,6 +1287,7 @@ $meta_boxes[] = array(
       'id' => 'phila_document_table',
       'type'  => 'group',
       'clone' => true,
+      'sort_clone' => true,
       'add_button'  => 'Add another table',
 
       'fields' =>
@@ -1301,7 +1302,8 @@ $meta_boxes[] = array(
           application/vnd.ms-powerpointtd, application/vnd.openxmlformats-officedocument.presentationml.presentation,
           application/vnd.ms-excel,
           application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
-          text/plain'
+          text/plain,
+          application/zip'
         ),
       )
     )

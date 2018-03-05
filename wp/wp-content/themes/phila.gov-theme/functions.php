@@ -573,6 +573,9 @@ function phila_format_document_type($document_type){
     case 'plain':
       echo  'txt';
       break;
+    case 'zip':
+      echo 'zip';
+      break;
   }
 }
 

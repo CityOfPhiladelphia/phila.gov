@@ -111,7 +111,12 @@
         <div class="grid-container">
           <div class="grid-x">
             <div class="cell small-24">
-              <a href="/the-latest/all-events" class="button float-right content-type-events">See all events</a>
+              <?php $see_all = array(
+                'URL' => '/the-latest/all-events',
+                'content_type' => 'events',
+                'nice_name' => 'events',
+              );?>
+              <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
             </div>
           </div>
         </div>

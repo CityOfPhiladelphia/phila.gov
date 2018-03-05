@@ -14,11 +14,12 @@
   <div class="row">
     <div class="columns">
       <section>
+        <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
         <?php if (array_key_exists('phila_stepped_select', $content) ) : ?>
-          <h4 class="mbm phm-mu" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h4>
+          <h4 class="mbm phm-mu" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h4>
         <?php else : ?>
-        <?php if ( isset( $content['phila_wysiwyg_heading'] ) ): ?>
-          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?= $content['phila_wysiwyg_heading']; ?></h3>
+        <?php if ( $wysiwyg_heading != '' ): ?>
+          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
         <?php endif; ?>
       <?php endif; ?>
       <div class="phm-mu">
@@ -40,7 +41,7 @@
             ?>
 
             <?php if ( $is_address == 1 ) : ?>
-            <div class="vcard">
+            <div class="vcard mbm">
               <span class="street-address"><?php echo $address_1; ?></span><br>
               <?php if ( !empty($address_2) ) : ?>
                 <span class="street-address"><?php echo $address_2; ?></span><br>
