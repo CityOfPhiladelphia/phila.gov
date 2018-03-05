@@ -29,25 +29,10 @@ jQuery(document).ready(function($){
   )
 
   if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
-  //At least one category must be selected
-  $("#publish").one('click', function () {
 
-    var categories = document.getElementsByName("post_category[]");
-
-     if(categories[0].checked==false && categories[1].checked==false && categories[2].checked==false) {
-
-      $('#categorydiv').addClass('error');
-
-      $('#categorydiv').before('<label id="title-error" class="error" for="categorydiv">Category selection is required.</label>');
-
-      return false;
-     }
-     return true;
-   });
-
-   $( '#dem_notify_emails' ).rules( 'add', {
+    $( '#dem_notify_emails' ).rules( 'add', {
       required: true
-   });
+    });
 
   }
 
