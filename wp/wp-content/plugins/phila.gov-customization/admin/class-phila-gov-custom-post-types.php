@@ -17,8 +17,6 @@ class Phila_Gov_Custom_Post_Types{
 
   public function __construct(){
 
-    add_action( 'init', array( $this, 'create_phila_department_pages' ) );
-
     add_action( 'init', array( $this, 'create_phila_service_pages' ) );
 
     add_action( 'init', array( $this, 'create_phila_service_updates' ) );
@@ -66,45 +64,6 @@ class Phila_Gov_Custom_Post_Types{
         wp_redirect(admin_url('edit.php', 'http'), 301);
         exit;
     }
-  }
-
-  function create_phila_department_pages() {
-    register_post_type( 'department_page',
-      array(
-        'labels' => array(
-          'name' => __( 'Department Pages' ),
-          'menu_name' => __('Department Site'),
-          'singular_name' => __( 'Department Page' ),
-          'add_new'   => __( 'Add a Department Page' ),
-          'all_items'   => __( 'All Department Pages' ),
-          'add_new_item' => __( 'Add a Department Page' ),
-          'edit_item'   => __( 'Edit Department Page' ),
-          'view_item'   => __( 'View Department Page' ),
-          'search_items'   => __( 'Search Department Pages' ),
-          'not_found'   => __( 'No Department Pages Found' ),
-          'not_found_in_trash'   => __( 'Department Page not found in trash' ),
-        ),
-        'taxonomies' => array('category'),
-        'supports' => array(
-          'title',
-          'editor',
-          'page-attributes',
-          'revisions'
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'show_in_rest' => true,
-        'rest_base' => 'departments',
-        'show_in_nav_menus' => true,
-        'menu_icon' => 'dashicons-groups',
-        'hierarchical' => true,
-        'query_var' => true,
-        'rewrite' => array(
-          'slug' => 'departments',
-          'with_front' => false,
-        ),
-      )
-    );
   }
 
   function create_phila_service_pages() {

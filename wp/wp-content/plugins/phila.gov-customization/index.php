@@ -40,6 +40,10 @@ require $dir. '/admin/define-roles.php';
 require $dir. '/admin/rest-additions.php';
 require $dir. '/admin/tiny-mce.php';
 
+require $dir. 'admin/departments/class-phila-gov-cpt-departments.php';
+require $dir. 'admin/departments/class-phila-gov-department-register-templates.php';
+require $dir. 'admin/departments/templates/class-phila-gov-collection-page.php';
+
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
@@ -53,11 +57,12 @@ require $dir. '/admin/meta-boxes/page-template-contact-us.php';
 require $dir. '/admin/meta-boxes/tax-detail-fields.php';
 require $dir. '/admin/meta-boxes/v2-departments.php';
 
-require $dir. 'admin/programs-initiatives/class-phila-gov-custom-post-type.php';
-require $dir. 'admin/programs-initiatives/class-phila-gov-templates.php';
+require $dir. 'admin/programs-initiatives/class-phila-gov-cpt-programs.php';
+require $dir. 'admin/programs-initiatives/class-phila-gov-program-register-templates.php';
 
 require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/info-block.php';
+require $dir. '/public/shortcodes/modal.php';
 require $dir. '/public/shortcodes/pullquote.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';

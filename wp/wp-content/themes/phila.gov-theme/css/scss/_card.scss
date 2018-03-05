@@ -1,5 +1,15 @@
 a.card,
 .card{
+  &.program-card{
+    border-bottom: none;
+    h3, .h3 {
+      font-size: 1.4rem;
+      margin-top: .5rem;
+    }
+    .content-block{
+      min-height:165px;
+    }
+  }
   position: relative;
   margin-bottom:0;
   h1 {

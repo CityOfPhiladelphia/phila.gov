@@ -4,11 +4,11 @@
  *
  */
 
-if ( class_exists( "Phila_Gov_Program_Templates" ) ){
-  $admin_menu_labels = new Phila_Gov_Program_Templates();
+if ( class_exists( "Phila_Gov_Register_Program_Templates" ) ){
+  $program_templates = new Phila_Gov_Register_Program_Templates();
 }
 
-class Phila_Gov_Program_Templates {
+class Phila_Gov_Register_Program_Templates {
 
   public function __construct(){
 

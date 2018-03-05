@@ -163,6 +163,7 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       'id'  => 'phila_document_page_picker',
       'type'  => 'post',
+      'name'  => 'Select document page',
       'post_type' => 'document',
       'field_type'  => 'select_advanced',
       'desc'  => 'Add document pages. You can narrow your search options by typing in the field above.',
@@ -239,7 +240,7 @@ class Phila_Gov_Standard_Metaboxes {
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
           'desc'  => $wysiwyg_desc,
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         )
       )
     );
@@ -362,7 +363,7 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_v2_service_page_selector(){
+  public static function phila_v2_service_page_selector( $multiple = false ){
     return array(
       'id'  => 'phila_v2_service_page',
       'name' => 'Select service page',
@@ -378,8 +379,32 @@ class Phila_Gov_Standard_Metaboxes {
         'meta_value' => 'service_stub',
         'meta_compare' => '!=',
         ),
-      'multiple'  => false,
+      'multiple'  => $multiple,
       'placeholder' => ' ',
+      'desc'     =>  'Add service pages. You can narrow your search options by typing in the field above.',
+      'js_options'  => array(
+        'width' => '100%',
+        'closeOnSelect' => false,
+      )
+    );
+  }
+
+  public static function phila_program_page_selector( $multiple = false ){
+
+    return array(
+      'name'          => 'Select program pages',
+      'id'          => 'phila_select_programs',
+      'type'        => 'post',
+      'post_type'   => 'programs',
+      'field_type'  => 'select_advanced',
+      'placeholder' => '',
+      'desc'     =>  'Add program pages. You can narrow your search options by typing in the field above.',
+      'multiple'  => $multiple,
+
+      'query_args'  => array(
+        'post_status'    => 'any',
+        'posts_per_page' => - 1,
+      ),
       'js_options'  => array(
         'width' => '100%',
         'closeOnSelect' => false,
@@ -942,7 +967,7 @@ public static function phila_meta_var_connect(){
       array(
         'id'   => 'cta_modal',
         'type'  => 'group',
-        'visible' => array( 'cta_is_modal', '1' ),
+        'visible' => array( 'cta_is_modal', true ),
 
         'fields' => array(
           array(
