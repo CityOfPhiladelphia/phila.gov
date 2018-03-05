@@ -14,25 +14,25 @@ function phila_user_read_only(){
 /* For all admins */
 jQuery(document).ready(function($) {
 
-  // Set error placement, and highlights for custom taxonomy checkboxes
-  // MAYBE WE WILL NEED THIS IN THE FUTURE.
+
+  // Set error placement, and highlights for category selection
   jQuery.validator.setDefaults({
     errorPlacement: function( error, element ) {
-      if( error.attr('id').indexOf('tax_input') > -1 ) {
+      if( error.attr('id').indexOf('post_category') > -1 ) {
           error.insertAfter( $( element ).parents('.categorydiv').eq(0) );
       } else {
           error.insertAfter( element );
       }
     },
     highlight: function( element, errorClass ) {
-      if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
+      if( jQuery( element ).attr('name').indexOf('post_category') > -1 ) {
         jQuery( element ).parents('.categorydiv').eq(0).addClass( errorClass );
       } else {
         jQuery( element ).addClass( errorClass );
       }
     },
     unhighlight: function( element, errorClass ) {
-      if( jQuery( element ).attr('name').indexOf('tax_input') > -1 ) {
+      if( jQuery( element ).attr('name').indexOf('post_category') > -1 ) {
         jQuery( element ).parents('.categorydiv').eq(0).removeClass( errorClass );
       } else {
         jQuery( element ).removeClass( errorClass );
@@ -192,6 +192,14 @@ jQuery(document).ready(function($) {
       maxlength: 256
     });
 
+  }
+  //Force category selection on all content types, except for attachments
+  if ( ( typenow != 'attachment' ) && adminpage.indexOf( 'post' ) > -1 )  {
+
+    $( 'input[name="post_category[]"]' ).rules( 'add', {
+         'required': true
+       }
+     );
   }
 
   /*
