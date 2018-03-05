@@ -1,5 +1,5 @@
 function phila_get_user_roles_callback() {
-  if (phila_WP_User.includes('multi_department_access') || phila_WP_User.includes('administrator') || phila_WP_User.includes('editor') ){
+  if (phila_WP_User.includes('multi_department_access') || phila_WP_User.includes('administrator') || phila_WP_User.includes('editor') || phila_WP_User.includes('secondary_all_departments') ){
     return true;
   }else{
     return false;
