@@ -158,7 +158,7 @@ export default {
       //g_cal_data & calendar_owners set in the-latest-events-archive.php
       calendars: [JSON.parse(g_cal_data.json)],
       owner: [calendar_owners.json],
-      nice_names: JSON.parse(calendar_nice_names.json),
+      dropdown: Object.values(JSON.parse(calendar_nice_names)),
       eventOwners: [{}],
 
       calData: [{}],
@@ -177,7 +177,6 @@ export default {
         },
       }],
 
-      dropdown: [],
       selectedCategory: '',
       queriedCategory: this.$route.query.category,
 
@@ -195,7 +194,7 @@ export default {
         endDate: '',
       },
 
-      //queriedCategory: this.$route.query.category
+      queriedCategory: this.$route.query.category
 
     }
   },
@@ -223,28 +222,16 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
-    this.dropDownOptions()
     this.sortedItems(this.events)
     this.loading = true
   },
   methods: {
-    dropDownOptions: function(){
-      for( var i = 0; i < this.nice_names.length; i++ ){
-        console.log(this.nice_names[i])
-        this.$set(this.dropdown, '', this.nice_names[i])
-        console.log(this.dropdown)
-      //  this.dropdown = this.nice_names[i]
-      }
-
-    },
     getUpcomingEvents: function () {
 
       var cal_ids = this.calendars.map(d=>{ return Object.values(d) });
 
       //reindex this.owner
       var cal_owners = this.owner.map(d=>{ return Object.values(d) });
-
-
 
       if (this.queriedCategory == undefined ) {
 
@@ -276,9 +263,9 @@ export default {
 
               }
 
-              console.log(this.eventOwners)
+              //console.log(this.eventOwners)
               //this.events = Object.assign({}, this.events)
-              console.log(this.events)
+              //console.log(this.events)
 
               this.successfulResponse
             })
@@ -320,6 +307,8 @@ export default {
 
       //reset data
       this.events = [{
+        id: '',
+        owners: {},
         summary: '',
         start: {
           dateTime: '',
@@ -328,7 +317,7 @@ export default {
         end: {
           dateTime: '',
           date: ''
-        }
+        },
       }]
 
       //reset links
