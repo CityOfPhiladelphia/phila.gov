@@ -11,7 +11,7 @@
     <div id="filter-results" class="bg-ghost-gray pam mbm">
       <div class="h5">Filter results</div>
       <div class="grid-x grid-margin-x">
-        <div class="cell medium-8 small-11">
+        <div class="cell medium-4 small-11">
           <datepicker
           placeholder="Start date"
           name="startDate"
@@ -22,7 +22,7 @@
         <div class="cell medium-1 small-2 mts">
           <i class="fa fa-arrow-right"></i>
         </div>
-        <div class="cell medium-8 small-11">
+        <div class="cell medium-4 small-11">
           <datepicker
           name="endDate"
           placeholder="End date"
@@ -30,7 +30,16 @@
           v-model="state.endDate"
           format="MMM. dd, yyyy"></datepicker>
         </div>
-        <div class="cell medium-7 small-24">
+        <div class="cell medium-9 small-24 filter-by-owner">
+          <v-select
+          ref="categorySelect"
+          placeholder="All departments"
+          :options="dropdown"
+          label="name"
+          :on-change="filterByCategory">
+          </v-select>
+        </div>
+        <div class="cell medium-6 small-24">
           <a class="button content-type-featured full" @click="reset">Clear filters</a>
         </div>
       </div>
@@ -149,6 +158,7 @@ export default {
       //g_cal_data & calendar_owners set in the-latest-events-archive.php
       calendars: [JSON.parse(g_cal_data.json)],
       owner: [calendar_owners.json],
+      nice_names: JSON.parse(calendar_nice_names.json),
       eventOwners: [{}],
 
       calData: [{}],
@@ -167,7 +177,9 @@ export default {
         },
       }],
 
-      //selectedCategory: '',
+      dropdown: [],
+      selectedCategory: '',
+      queriedCategory: this.$route.query.category,
 
       search: '',
       searchedVal: '',
@@ -211,58 +223,70 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
+    this.dropDownOptions()
     this.sortedItems(this.events)
-    //this.getDropdownCategories()
     this.loading = true
   },
   methods: {
+    dropDownOptions: function(){
+      for( var i = 0; i < this.nice_names.length; i++ ){
+        console.log(this.nice_names[i])
+        this.$set(this.dropdown, '', this.nice_names[i])
+        console.log(this.dropdown)
+      //  this.dropdown = this.nice_names[i]
+      }
+
+    },
     getUpcomingEvents: function () {
+
       var cal_ids = this.calendars.map(d=>{ return Object.values(d) });
 
       //reindex this.owner
       var cal_owners = this.owner.map(d=>{ return Object.values(d) });
 
-      for( var i = 0; i < cal_ids[0].length; i++ ){
-        //console.log(cal_ids[0][i])
-        links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
-      }
-        axios.all( links.map( l => axios.get( l ) ) )
-          .then(response =>  {
-            this.calData = response
 
-            //j is length of all Data
-            for (var j = 0; j < this.calData.length; j++ ){
-              //console.log(cal_owners[0][j])
 
-              //k is length of ITEMS per calendar
-              for(var k = 0; k < response[j].data.items.length; k++) {
-                this.events.push(response[j].data.items[k])
+      if (this.queriedCategory == undefined ) {
 
-                this.eventOwners.push(cal_owners[0][j])
 
-             }
+        for( var i = 0; i < cal_ids[0].length; i++ ){
+          //console.log(cal_ids[0][i])
+          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+        }
+          axios.all( links.map( l => axios.get( l ) ) )
+            .then(response =>  {
+              this.calData = response
 
-             //this.$set(this.events[j], 'owners', this.eventOwners[k])
-             //this.$set(this.events[j], 'owners', this.eventOwners[j])
+              //j is length of all Data
+              for (var j = 0; j < this.calData.length; j++ ){
+                //console.log(cal_owners[0][j])
 
-            }
+                //k is length of ITEMS per calendar
+                for(var k = 0; k < response[j].data.items.length; k++) {
+                  this.events.push(response[j].data.items[k])
 
-            for (var l = 0; l < this.events.length; l++){
-              console.log()
-              this.$set(this.events[l], 'owners', this.eventOwners[l])
+                  this.eventOwners.push(cal_owners[0][j])
 
-            }
+               }
 
-            console.log(this.eventOwners)
-            //this.events = Object.assign({}, this.events)
-            console.log(this.events)
+              }
 
-            this.successfulResponse
-          })
-          .catch( e => {
-            this.failure = true
-            this.loading = false
-          })
+              for (var l = 0; l < this.events.length; l++){
+                this.$set(this.events[l], 'owners', this.eventOwners[l])
+
+              }
+
+              console.log(this.eventOwners)
+              //this.events = Object.assign({}, this.events)
+              console.log(this.events)
+
+              this.successfulResponse
+            })
+            .catch( e => {
+              this.failure = true
+              this.loading = false
+            })
+          }
 
       },
     reset() {
