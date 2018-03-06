@@ -28,14 +28,6 @@ jQuery(document).ready(function($){
     }
   )
 
-  if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
-
-    $( '#dem_notify_emails' ).rules( 'add', {
-      required: true
-    });
-
-  }
-
   //hide all category and tag menu items, department authors shouldn't see those.
   $('a[href*="edit-tags.php"]').parent().css('display', 'none');
 
