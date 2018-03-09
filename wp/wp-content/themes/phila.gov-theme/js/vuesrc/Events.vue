@@ -36,7 +36,8 @@
           placeholder="All departments"
           :options="dropdown"
           label="name"
-          :on-change="filterByCategory">
+          :on-change="categoryFilter"
+          v-model="selectedCategory">
           </v-select>
         </div>
         <div class="cell medium-6 small-24">
@@ -160,6 +161,7 @@ export default {
       owner: [calendar_owners.json],
       dropdown: Object.values(JSON.parse(calendar_nice_names)),
       eventOwners: [{}],
+      eventCategory: [{}],
 
       calData: [{}],
 
@@ -178,7 +180,6 @@ export default {
           date: ''
         },
       }],
-
       selectedCategory: '',
       queriedCategory: this.$route.query.category,
 
@@ -235,14 +236,14 @@ export default {
       //reindex this.owner
       const cal_owners = this.owner.map(d=>{ return Object.values(d) });
 
-      if (this.queriedCategory == undefined ) {
+      const cal_cat = Object.keys(this.owner[0])
 
+      if (this.queriedCategory == undefined ) {
 
         for( var i = 0; i < cal_ids[0].length; i++ ){
           //console.log(cal_ids[0][i])
           links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
         }
-        console.log(links)
 
           axios.all( links.map( l => axios.get( l ) ) )
             .then(response =>  {
@@ -251,14 +252,25 @@ export default {
               for (var j = 0; j < this.calData.length; j++ ){
 
                 for(var k = 0; k < response[j].data.items.length; k++) {
+
                   this.events.push(response[j].data.items[k])
+                  this.$set(this.events, response[j].data.items,
+
+                  response[j].data.items[k])
+
                   //TODO: this is kind of convoluted
                   this.eventOwners.push(cal_owners[0][j])
+                  this.eventCategory.push(cal_cat[j])
+                  console.log(cal_owners[0][j])
+                  console.log(cal_cat[j])
+
                 }
               }
 
               for (var l = 0; l < this.events.length; l++){
                 this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
+                this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
+
               }
 
               this.successfulResponse
@@ -294,44 +306,6 @@ export default {
       })
       this.$forceUpdate();
       */
-    },
-    filterByCategory: function(selectedVal){
-      this.$nextTick(function () {
-
-      this.loading = true
-
-      console.log(this.calendars)
-
-      this.selectedCategory = selectedVal
-      console.log(this.selectedCategory.id)
-      //gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format()
-      axios.get(gCalEndpoint + this.calendars[0][this.selectedCategory.id] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format())
-        .then(response => {
-          this.calData = response
-
-          console.log(this.calData)
-          for (var j = 0; j < this.calData.length; j++ ){
-
-            for(var k = 0; k < response[j].data.items.length; k++) {
-              this.events.push(response[j].data.items[k])
-              //TODO: this is kind of convoluted
-              this.eventOwners.push(cal_owners[0][j])
-              console.log(this.eventOwners)
-              console.log(this.events)
-            }
-          }
-
-          for (var l = 0; l < this.events.length; l++){
-            this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
-          }
-
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
-          this.loading = false
-        })
-      })
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -397,11 +371,21 @@ export default {
           return moment(a.start.date) - moment(b.start.date)
         }
       })
+    },
+    categoryFilter: function (list, selectedVal){
+
+      this.$nextTick(function () {
+        this.selectedCategory = selectedVal
+
+        console.log(selectedVal)
+      })
     }
  },
   computed:{
     filteredEvents: function(){
-      return this.sortedItems(this.filteredList(this.events, this.searchedVal) )
+      return this.sortedItems(
+        this.filteredList(this.events, this.searchedVal)
+      )
     },
     successfulResponse: function(){
       if (this.events.length == 0) {
