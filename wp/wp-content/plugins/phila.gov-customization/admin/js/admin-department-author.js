@@ -19,14 +19,23 @@ jQuery(document).ready(function($){
     }
   }
 
-  //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button
-  phila_WP_User.some(
-    function(v){
-      if (v.indexOf(typenow)>=0){
-        $('#publish').css('display', 'none')
+  //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button, allow publishing action on document pages
+
+  if ( ( typenow != 'document') && adminpage.indexOf('post') > -1 ){
+    phila_WP_User.some(
+      function(v){
+        if (v.indexOf(typenow)>=0){
+          $('#publish').css('display', 'none')
+        }
       }
-    }
-  )
+    )
+  }
+  //disable dupliate action on document pages, document meta not saving state propery. 
+  if ( ( typenow === 'document') && adminpage.indexOf('post') > -1 ){
+    $('#duplicate-action').css('display', 'none')
+  }
+
+
 
   //hide all category and tag menu items, department authors shouldn't see those.
   $('a[href*="edit-tags.php"]').parent().css('display', 'none');

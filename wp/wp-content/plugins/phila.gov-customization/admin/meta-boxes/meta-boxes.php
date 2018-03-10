@@ -125,6 +125,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
+    'revision' => true,
 
     'fields' => array(
         array(
@@ -161,7 +162,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
-
+    'revision' => true,
 
     'fields' => array(
       array(
