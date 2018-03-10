@@ -32,12 +32,11 @@
         </div>
         <div class="cell medium-9 small-24 filter-by-owner">
           <v-select
-          ref="categorySelect"
           placeholder="All departments"
           :options="dropdown"
           label="name"
-          :on-change="categoryFilter"
-          v-model="selectedCategory">
+          :value="selectedCategory"
+          :on-change="filterByCategory">
           </v-select>
         </div>
         <div class="cell medium-6 small-24">
@@ -50,7 +49,7 @@
     </div>
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
-    <div v-show="!loading && !emptyResponse && !failure">
+    <!--<div v-show="!loading && !emptyResponse && !failure"> -->
       <div v-for="(event, index) in filteredEvents"
         :key="event.id">
           <div v-if="event.id" class="event-container">
@@ -58,6 +57,9 @@
             @click="$modal.show(event.id)">
               <div class="small-6 medium-3 cell calendar-date pam">
                 <div class="align-self-middle">
+                  <div>
+                    {{event.ownerCategoryId}}
+                  </div>
                   <div class="month">
                     <span v-if="event.start.dateTime">{{ event.start.dateTime | formatMonth }}</span>
                     <span v-else>{{ event.start.date | formatMonth }}</span>
@@ -87,7 +89,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!--</div>-->
       <div v-if="filteredEvents == ''">
         <p class="h3 mtm center">Sorry, there are no results for that search.</p>
       </div>
@@ -144,6 +146,8 @@ import Search from './components/phila-search.vue'
 
 const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
 const links = []
+var bus = new Vue()
+
 
 const gCalId = g_cal_id
 
@@ -180,6 +184,7 @@ export default {
           date: ''
         },
       }],
+
       selectedCategory: '',
       queriedCategory: this.$route.query.category,
 
@@ -225,7 +230,9 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
+
     this.sortedItems(this.events)
+
     this.loading = true
   },
   methods: {
@@ -261,8 +268,8 @@ export default {
                   //TODO: this is kind of convoluted
                   this.eventOwners.push(cal_owners[0][j])
                   this.eventCategory.push(cal_cat[j])
-                  console.log(cal_owners[0][j])
-                  console.log(cal_cat[j])
+                  //console.log(cal_owners[0][j])
+                  //console.log(cal_cat[j])
 
                 }
               }
@@ -280,7 +287,9 @@ export default {
               this.loading = false
             })
           }
+          bus.$emit('calsLoaded', this.eventCategory)
 
+          console.log(this.selectedCategory)
       },
     reset() {
       window.location = window.location.pathname;
@@ -354,6 +363,7 @@ export default {
 
     },
     filteredList: function ( list, searchedVal ) {
+      console.log('filteredList')
       const searched = this.searchedVal.trim()
       return list.filter((event) => {
         if (typeof event.summary === 'undefined'){
@@ -364,28 +374,57 @@ export default {
       })
     },
     sortedItems: function ( list ) {
-      return list.sort((a, b) => {
-        if (a.start.dateTime) {
-          return moment(a.start.dateTime) - moment(b.start.dateTime)
-        }else {
-          return moment(a.start.date) - moment(b.start.date)
-        }
-      })
+    //  bus.$on('calsLoaded', function (id) {
+
+        return list.sort((a, b) => {
+          if (a.start.dateTime) {
+            return moment(a.start.dateTime) - moment(b.start.dateTime)
+          }else {
+            return moment(a.start.date) - moment(b.start.date)
+          }
+        })
+    //  }.bind(this))
     },
-    categoryFilter: function (list, selectedVal){
+    filterByCategory: function (value){
 
       this.$nextTick(function () {
-        this.selectedCategory = selectedVal
 
-        console.log(selectedVal)
+
+        const mySelectedVal = value.id
+        if (this.selectedCategory === undefined) {
+          return
+        }else{
+          console.log(this.events)
+          //return this.events.filter(event => {
+          //  console.log(event)
+
+
+        //  })
+
+        return this.events.filter(function (event) {
+          console.log(event)
+          var values = Object.values(event)
+          console.log(values)
+          return values.filter(function(e){
+            e === mySelectedVal
+          })
+
+        });
+        }
       })
+
     }
- },
+  },
+  mutable: {
+  },
   computed:{
     filteredEvents: function(){
-      return this.sortedItems(
-        this.filteredList(this.events, this.searchedVal)
-      )
+    //  bus.$on('calsLoaded', function (id) {
+        return this.sortedItems(
+        //  this.categoryFilter(this.events, this.selectedCategory)
+           this.filteredList(this.events, this.searchedVal)
+          )
+    //  }.bind(this))
     },
     successfulResponse: function(){
       if (this.events.length == 0) {
