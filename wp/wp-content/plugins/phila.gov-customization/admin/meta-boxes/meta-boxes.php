@@ -695,17 +695,7 @@ $meta_boxes[] = array(
   ),
 
     // List of sub-fields
-    'fields' => array(
-      array(
-        'name' => '',
-        'id'   => 'phila_include_calendar',
-        'desc'  => 'Include a calendar?',
-        'type' => 'checkbox',
-        'after' => '<p class="description">You must include the calendar shortcode ID.',
-      ),
-    ),
-
-    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
+    'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
   );
 
   $meta_boxes[] = array(
