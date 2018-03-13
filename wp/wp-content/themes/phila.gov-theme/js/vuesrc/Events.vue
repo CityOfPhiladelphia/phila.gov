@@ -190,10 +190,8 @@ export default {
       failure: false,
 
       state: {
-        loadStartDate: moment().format(),
-        loadEndDate: moment().format(),
-        startDate: '',
-        endDate: '',
+        startDate: moment().format(),
+        endDate: moment().add(30, 'days').format(),
       },
 
     }
@@ -226,17 +224,18 @@ export default {
   },
   methods: {
     getUpcomingEvents: function () {
-      console.log(this.queriedCategory)
+      //set data for use later
+      this.selectedCategory = this.queriedCategory
 
-      const cal_ids = this.calendars.map(d=>{ return Object.values(d) });
-      console.log(this.calendars)
+      let cal_ids = this.calendars.map(d=>{ return Object.values(d) });
+
       //reindex this.owner
-      const cal_owners = this.owner.map(d=>{ return Object.values(d) });
+      let cal_owners = this.owner.map(d=>{ return Object.values(d) });
 
-      const cal_cat = Object.keys(this.owner[0])
+      let cal_cat = Object.keys(this.owner[0])
 
-      if (this.queriedCategory == undefined ) {
-        for( var i = 0; i < cal_ids[0].length; i++ ){
+      if ( this.selectedCategory == undefined) {
+        for( let i = 0; i < cal_ids[0].length; i++ ){
           //console.log(cal_ids[0][i])
           links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
         }
@@ -245,9 +244,9 @@ export default {
         .then(response =>  {
           this.calData = response
 
-          for (var j = 0; j < this.calData.length; j++ ){
+          for (let j = 0; j < this.calData.length; j++ ){
 
-            for(var k = 0; k < response[j].data.items.length; k++) {
+            for(let k = 0; k < response[j].data.items.length; k++) {
 
               this.events.push(response[j].data.items[k])
               this.$set(this.events, response[j].data.items,
@@ -261,7 +260,7 @@ export default {
             }
           }
 
-          for (var l = 0; l < this.events.length; l++){
+          for (let l = 0; l < this.events.length; l++){
             this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
             this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
 
@@ -298,30 +297,29 @@ export default {
         },
       }]
 
-      //reset links
-      const links = []
-      const cal_ids = this.calendars.map(d=>{ return Object.values(d) });
+      let links = []
+      let cal_ids = this.calendars.map(d=>{ return Object.values(d) });
 
-      const cal_owners = this.owner.map(d=>{ return Object.values(d) });
+      let cal_owners = this.owner.map(d=>{ return Object.values(d) });
 
-      const cal_cat = Object.keys(this.owner[0])
+      let cal_cat = Object.keys(this.owner[0])
 
-      console.log(this.selectedCategory)
+      if (this.queriedCategory != this.selectedCategory){
 
-      if (this.selectedCategory === ''){
-        for( var i = 0; i < this.calendars.length; i++ ){
-          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
-        }
-      }else{
-        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory.id] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+
+      }else if (this.queriedCategory != ''){
+
+        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       }
+
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
 
-          for (var j = 0; j < this.calData.length; j++ ){
+          for (let j = 0; j < this.calData.length; j++ ){
 
-            for(var k = 0; k < response[j].data.items.length; k++) {
+            for(let k = 0; k < response[j].data.items.length; k++) {
 
               this.events.push(response[j].data.items[k])
               this.$set(this.events, response[j].data.items,response[j].data.items[k])
@@ -333,7 +331,7 @@ export default {
             }
           }
 
-          for (var l = 0; l < this.events.length; l++){
+          for (let l = 0; l < this.events.length; l++){
             this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
             this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
 
@@ -347,7 +345,7 @@ export default {
 
     },
     filteredList: function ( list, searchedVal ) {
-      const searched = this.searchedVal.trim()
+      let searched = this.searchedVal.trim()
       return list.filter((event) => {
         //console.log(event)
         if (typeof event.summary === 'undefined'){
@@ -366,26 +364,9 @@ export default {
         }
       })
     },
-    filterByCategory: function ( list, value ){
-      const mySelectedVal = value.id
-
-      if (mySelectedVal === undefined) {
-        return list
-      }else{
-        return list.filter(event => {
-          if (typeof event.ownerCategoryId === 'undefined' ||     Object.keys(event.ownerCategoryId).length === 0){
-            return
-          }else{
-            console.log(event.ownerCategoryId.indexOf(mySelectedVal) > -1)
-            return event.ownerCategoryId.indexOf(mySelectedVal) > -1
-          }
-        })
-      }
-    },
-
     getByCategory: function(selectedVal){
-     this.$nextTick(function () {
       this.loading = true
+      this.selectedCategory = selectedVal.id
 
       //reset data
       this.events = [{
@@ -407,13 +388,16 @@ export default {
       this.eventOwners = [{}]
       this.eventCategory = [{}]
 
-      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+      if (selectedVal.id == null){
+        this.getUpcomingEvents()
+        return
+      }
+
+      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       .then(response =>  {
         this.calData = response
-        console.log(this.calData)
 
-
-        for(var k = 0; k < response.data.items.length; k++) {
+        for(let k = 0; k < response.data.items.length; k++) {
           this.events.push(response.data.items[k])
           this.$set(this.events, response.data.items, response.data.items[k])
 
@@ -422,9 +406,7 @@ export default {
           this.eventCategory.push(this.owner[0][selectedVal.id])
         }
 
-        console.log(this.eventOwners)
-
-        for (var l = 0; l < this.events.length; l++){
+        for (let l = 0; l < this.events.length; l++){
           this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
           this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
 
@@ -436,7 +418,6 @@ export default {
           this.failure = true
           this.loading = false
         })
-      })
     },
   },
   computed:{
@@ -451,7 +432,6 @@ export default {
       let catName = {}
       if (c) {
         let mycats = this.dropdown
-        console.log(this.dropdown)
         this.dropdown.forEach(function(el){
           if (c == el.id) {
             catName = {
