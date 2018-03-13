@@ -143,16 +143,21 @@ class Phila_Gov_Standard_Metaboxes {
 
     return array(
       array(
-        'name' => 'Calender ID',
+        'name' => 'Calendar Shortcode ID',
         'id'   => 'phila_full_width_calendar_id',
         'desc'  => 'ID of the calendar',
         'type' => 'number'
       ),
       array(
-        'name' => 'Calendar URL',
-        'id'   => 'phila_full_width_calendar_url',
-        'desc'  => 'URL of the full calendar',
-        'type' => 'url'
+        'name' => 'Calendar owner',
+        'id'   => 'phila_calendar_owner',
+        'type' => 'taxonomy',
+        'desc'  => 'Determines what owner filter will be applied when a user clicks "see all events". Default is this item\'s category.',
+        'query_args' => array(
+          'taxonomy' => 'category',
+          'hide_empty' => false,
+        ),
+        'field_type'  => 'select_advanced'
       ),
     );
   }
