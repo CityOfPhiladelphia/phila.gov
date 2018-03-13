@@ -35,6 +35,7 @@
           placeholder="All departments"
           :options="dropdown"
           label="name"
+          :value="parseCategory"
           :on-change="getByCategory">
           </v-select>
         </div>
@@ -56,9 +57,6 @@
             @click="$modal.show(event.id)">
               <div class="small-6 medium-3 cell calendar-date pam">
                 <div class="align-self-middle">
-                  <div>
-                    {{event.ownerCategoryId}}
-                  </div>
                   <div class="month">
                     <span v-if="event.start.dateTime">{{ event.start.dateTime | formatMonth }}</span>
                     <span v-else>{{ event.start.date | formatMonth }}</span>
@@ -101,7 +99,6 @@
         :adaptive="adaptive"
         :scrollable="true">
         <div class="v--modal-container">
-          {{index}}
           <div slot="top-right">
             <button @click="$modal.hide(event.id)" class="close-button" type="button" aria-label="Close modal">
               <span aria-hidden="true">×</span>
@@ -126,7 +123,6 @@
             <div v-html="event.description"></div>
           </div>
           <div class="post-meta mbm reveal-footer">Posted by: <span v-html="event.ownerMarkup"></span>
-            {{event.creator}}
           </div>
 
         </div>
@@ -244,8 +240,6 @@ export default {
           //console.log(cal_ids[0][i])
           links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
         }
-      }else{
-        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
       }
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
@@ -312,8 +306,14 @@ export default {
 
       const cal_cat = Object.keys(this.owner[0])
 
-      for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      console.log(this.selectedCategory)
+
+      if (this.selectedCategory === ''){
+        for( var i = 0; i < this.calendars.length; i++ ){
+          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        }
+      }else{
+        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory.id] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
       }
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
@@ -446,8 +446,26 @@ export default {
               )
         )
     },
+    parseCategory: function(){
+      let c = this.$route.query.category
+      let catName = {}
+      if (c) {
+        let mycats = this.dropdown
+        console.log(this.dropdown)
+        this.dropdown.forEach(function(el){
+          if (c == el.id) {
+            catName = {
+              id: el.id,
+              name: el.name
+            }
+          }
+        })
+        return catName
+      }
+    },
     successfulResponse: function(){
-      if (this.events.length == 0) {
+      //account for empty data object
+      if (this.events.length == 1 || this.events.length == 0 ) {
         this.emptyResponse = true
         this.loading = false
         this.failure = false
