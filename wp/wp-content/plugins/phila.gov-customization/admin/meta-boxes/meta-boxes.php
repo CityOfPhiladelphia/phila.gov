@@ -674,10 +674,10 @@ function phila_register_meta_boxes( $meta_boxes ){
     )
   );
 
-// Second row of modules - press release and/or calendar
+// Second row of modules - Calendar
 $meta_boxes[] = array(
   'id'       => 'phila_module_row_2',
-  'title'    => 'Full row',
+  'title'    => 'Full row calendar',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'priority' => 'default',
@@ -694,137 +694,19 @@ $meta_boxes[] = array(
     'relation' => 'or',
   ),
 
-      // List of sub-fields
-      'fields' => array(
-        array(
-          'name' => 'Column Selection',
-          'id'   => 'phila_module_row_2_column_selection',
-          'type'  => 'select',
-          'desc' => 'Use this area to choose a single full-width column or two equal width columns.',
-          'placeholder' => 'Choose single column or two columns',
-          'options' => array(
-            'phila_module_row_2_full_column' => 'One Column (Full-Width Calendar)',
-            'phila_module_row_2_2_column' => 'Two Columns (Calendar and Press Releases) (deprecated)',
-          ),
-        ),
-        array(
-          'type' => 'divider',
-          'visible' => array(
-            'when' => array(
-              array( 'module_row_2_column_selection', '=', 'phila_module_row_2_2_column' ),
-
-              array( 'module_row_2_column_selection', '=', 'module_row_2_one_column'),
-            ),
-          'relation' => 'or',
-          ),
-        ),
-        array(
-          'name' => 'Full Width Calendar',
-          'id' => 'phila_module_row_two_full_cal_col',
-          'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_full_column'),
-          'type' => 'group',
-          // List of sub-fields
-          'fields' => array(
-            array(
-              'name' => 'Calender ID',
-              'id'   => 'phila_module_row_2_full_col_cal_id',
-              'desc'  => 'ID of the calendar',
-              'type' => 'number'
-            ),
-            array(
-              'name' => 'Calendar URL',
-              'id'   => 'phila_module_row_2_full_col_cal_url',
-              'desc'  => 'URL of the full calendar',
-              'type' => 'url'
-            ),
-          ),
-        ),
-        array(
-          'id' => 'module_row_2_col_1',
-          'type' => 'group',
-          // List of sub-fields
-          'fields' => array(
-            array(
-              'name' => 'Column 1',
-              'id'   => 'phila_module_row_2_col_1_type',
-              'desc'  => 'Choose to display calendar events or press releases.',
-              'type' => 'select',
-              'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_2_column'),
-              'placeholder' => 'Select...',
-              'options' => array(
-                'phila_module_row_2_col_1_calendar' => 'Calendar',
-                'phila_module_row_2_col_1_press_release' => 'Press Releases',
-              ),
-            ),
-            array(
-              'id' => 'module_row_2_col_1_options',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'name' => 'Calendar ID',
-                  'id'   => 'phila_module_row_2_col_1_cal_id',
-                  'desc'  => 'ID of the calendar',
-                  'type' => 'number',
-                  'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
-                ),
-                array(
-                  'name' => 'Calendar URL',
-                  'id'   => 'phila_module_row_2_col_1_cal_url',
-                  'desc'  => 'URL of the full calendar',
-                  'type' => 'url',
-                  'hidden' => array('phila_module_row_2_col_1_type', '!=', 'phila_module_row_2_col_1_calendar'),
-                ),
-              ),
-            ),
-          ),
-        ),
-        array(
-          'type' => 'divider',
-          'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_2_column'),
-        ),
-        array(
-          'id' => 'module_row_2_col_2',
-          'type' => 'group',
-          // List of sub-fields
-          'fields' => array(
-            array(
-              'name' => 'Column 2',
-              'id'   => 'phila_module_row_2_col_2_type',
-              'desc'  => 'Choose to display calendar events or press releases.',
-              'type' => 'select',
-              'placeholder' => 'Select...',
-              'visible' => array('module_row_2_column_selection', '=', 'phila_module_row_2_2_column'),
-              'options' => array(
-                'phila_module_row_2_col_2_calendar' => 'Calendar',
-                'phila_module_row_2_col_2_press_release' => 'Press Releases',
-              ),
-            ),
-            array(
-              'id' => 'module_row_2_col_2_options',
-              'type' => 'group',
-              // List of sub-fields
-              'fields' => array(
-                array(
-                  'name' => 'Calender ID',
-                  'id'   => 'phila_module_row_2_col_2_cal_id',
-                  'desc'  => 'ID of the calendar',
-                  'type' => 'text',
-                  'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
-                ),
-                array(
-                  'name' => 'Calender URL',
-                  'id'   => 'phila_module_row_2_col_2_cal_url',
-                  'desc'  => 'URL of the full calendar',
-                  'type' => 'url',
-                  'hidden' => array('phila_module_row_2_col_2_type', '!=', 'phila_module_row_2_col_2_calendar'),
-                ),
-              ),
-            ),
-          ),
-        ),
+    // List of sub-fields
+    'fields' => array(
+      array(
+        'name' => '',
+        'id'   => 'phila_include_calendar',
+        'desc'  => 'Include a calendar?',
+        'type' => 'checkbox',
+        'after' => '<p class="description">You must include the calendar shortcode ID.',
       ),
-    );
+    ),
+
+    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
+  );
 
   $meta_boxes[] = array(
     'id'       => 'phila_staff_directory_listing',
