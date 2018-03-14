@@ -11,7 +11,7 @@
     <div id="filter-results" class="bg-ghost-gray pam mbm">
       <div class="h5">Filter results</div>
       <div class="grid-x grid-margin-x">
-        <div class="cell medium-8 small-11">
+        <div class="cell medium-4 small-11">
           <datepicker
           placeholder="Start date"
           name="startDate"
@@ -22,7 +22,7 @@
         <div class="cell medium-1 small-2 mts">
           <i class="fa fa-arrow-right"></i>
         </div>
-        <div class="cell medium-8 small-11">
+        <div class="cell medium-4 small-11">
           <datepicker
           name="endDate"
           placeholder="End date"
@@ -30,7 +30,16 @@
           v-model="state.endDate"
           format="MMM. dd, yyyy"></datepicker>
         </div>
-        <div class="cell medium-7 small-24">
+        <div class="cell medium-9 small-24 filter-by-owner">
+          <v-select
+          placeholder="All departments"
+          :options="dropdown"
+          label="name"
+          :value="parseCategory"
+          :on-change="getByCategory">
+          </v-select>
+        </div>
+        <div class="cell medium-6 small-24">
           <a class="button content-type-featured full" @click="reset">Clear filters</a>
         </div>
       </div>
@@ -83,7 +92,7 @@
       </div>
     </div>
       <div v-for="(event, index) in events"
-        :key="event.id">
+        :key="event.index">
         <modal
         :name="event.id"
         height="auto"
@@ -103,7 +112,7 @@
           <div
           v-if="event.start.dateTime"
           class="start-end mvm">
-          {{event.start.dateTime | formatDate }}<br />
+            {{event.start.dateTime | formatDate }}<br />
             {{event.start.dateTime | formatTime }} to {{event.end.dateTime | formatTime }}<br />
           </div>
           <div class="mvm" v-else>
@@ -113,7 +122,9 @@
           <div class="mbm">
             <div v-html="event.description"></div>
           </div>
-          <div class="post-meta mbm reveal-footer"></div>
+          <div class="post-meta mbm reveal-footer">Posted by: <span v-html="event.ownerMarkup"></span>
+          </div>
+
         </div>
       </modal>
     </div>
@@ -121,6 +132,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
@@ -141,10 +153,21 @@ export default {
   },
   data: function() {
     return{
-      calendars: JSON.parse(g_cal_data.json),
+      //g_cal_data & calendar_owners set in the-latest-events-archive.php
+      calendars: [JSON.parse(g_cal_data.json)],
+      owner: [calendar_owners.json],
+      dropdown: Object.values(JSON.parse(calendar_nice_names)),
+
+      eventOwners: [{}],
+      eventCategory: [{}],
+
       calData: [{}],
 
       events: [{
+        id: '',
+        ownerMarkup: {},
+        ownerCategoryId: '',
+
         summary: '',
         start: {
           dateTime: '',
@@ -156,7 +179,8 @@ export default {
         },
       }],
 
-      //selectedCategory: '',
+      selectedCategory: '',
+      queriedCategory: this.$route.query.category,
 
       search: '',
       searchedVal: '',
@@ -166,13 +190,9 @@ export default {
       failure: false,
 
       state: {
-        loadStartDate: moment().format(),
-        loadEndDate: moment().format(),
-        startDate: '',
-        endDate: '',
+        startDate: moment().format(),
+        endDate: moment().add(90, 'days').format(),
       },
-
-      //queriedCategory: this.$route.query.category
 
     }
   },
@@ -200,80 +220,61 @@ export default {
   },
   mounted: function () {
     this.getUpcomingEvents()
-    this.sortedItems(this.events)
-    //this.getDropdownCategories()
     this.loading = true
   },
   methods: {
     getUpcomingEvents: function () {
-      for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+      //set data for use later
+      this.selectedCategory = this.queriedCategory
+
+      let cal_ids = this.calendars.map(d=>{ return Object.values(d) });
+
+      //reindex this.owner
+      let cal_owners = this.owner.map(d=>{ return Object.values(d) });
+
+      let cal_cat = Object.keys(this.owner[0])
+
+      if ( this.selectedCategory == undefined) {
+        for( let i = 0; i < cal_ids[0].length; i++ ){
+          //console.log(cal_ids[0][i])
+          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+        }
       }
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
-          const temp = []
 
-          for (var j = 0; j < this.calData.length; j++ ){
-            for(var k = 0; k < response[j].data.items.length; k++) {
+          for (let j = 0; j < this.calData.length; j++ ){
+
+            for(let k = 0; k < response[j].data.items.length; k++) {
+
               this.events.push(response[j].data.items[k])
-           }
+              this.$set(this.events, response[j].data.items,
+
+              response[j].data.items[k])
+
+              //TODO: this is kind of convoluted
+              this.eventOwners.push(cal_owners[0][j])
+              this.eventCategory.push(cal_cat[j])
+
+            }
           }
+
+          for (let l = 0; l < this.events.length; l++){
+            this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
+            this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
+
+          }
+
           this.successfulResponse
         })
         .catch( e => {
           this.failure = true
           this.loading = false
         })
-
-    },
-    onSubmit: function (event) {
-      this.loading = true
-
-      this.$nextTick(function () {
-        axios.get(gCalEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory,
-            'count': -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.events = response.data
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
-        })
-      })
     },
     reset() {
       window.location = window.location.pathname;
-      //Object.assign(this.$data, this.$options.data.call(this));
-
-      /*this.selectedCategory = ''
-      axios.get(gCalEndpoint + 'archives', {
-       params : {
-          'count': -1
-        }
-      })
-        .then(response => {
-          this.events = response.data
-          this.loading = false
-          this.searchedVal = ''
-          this.checkedTemplates = ''
-          this.selectedCategory = ''
-          this.state.startDate = ''
-          this.state.endDate = ''
-        })
-        .catch(e => {
-          this.failure = true
-      })
-      this.$forceUpdate();
-      */
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -281,6 +282,10 @@ export default {
 
       //reset data
       this.events = [{
+        id: '',
+        ownerMarkup: {},
+        ownerCategoryId: '',
+
         summary: '',
         start: {
           dateTime: '',
@@ -289,28 +294,50 @@ export default {
         end: {
           dateTime: '',
           date: ''
-        }
+        },
       }]
 
-      //reset links
-      const links = []
+      let links = []
+      let cal_ids = this.calendars.map(d=>{ return Object.values(d) });
 
-      for( var i = 0; i < this.calendars.length; i++ ){
-        links.push(gCalEndpoint + this.calendars[i] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      let cal_owners = this.owner.map(d=>{ return Object.values(d) });
+
+      let cal_cat = Object.keys(this.owner[0])
+
+      if (this.queriedCategory != this.selectedCategory){
+
+        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+
+      }else if (this.queriedCategory != ''){
+
+        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       }
+
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
-          const temp = []
 
-          for (var j = 0; j < this.calData.length; j++ ){
-            for(var k = 0; k < response[j].data.items.length; k++) {
+          for (let j = 0; j < this.calData.length; j++ ){
+
+            for(let k = 0; k < response[j].data.items.length; k++) {
+
               this.events.push(response[j].data.items[k])
-           }
-          }
-          this.successfulResponse
-          this.loading = false
+              this.$set(this.events, response[j].data.items,response[j].data.items[k])
 
+              //TODO: this is kind of convoluted
+              this.eventOwners.push(cal_owners[0][j])
+              this.eventCategory.push(cal_cat[j])
+
+            }
+          }
+
+          for (let l = 0; l < this.events.length; l++){
+            this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
+            this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
+
+          }
+
+          this.successfulResponse
         })
         .catch( e => {
           this.failure = true
@@ -318,8 +345,9 @@ export default {
 
     },
     filteredList: function ( list, searchedVal ) {
-      const searched = this.searchedVal.trim();
+      let searched = this.searchedVal.trim()
       return list.filter((event) => {
+        //console.log(event)
         if (typeof event.summary === 'undefined'){
           return
         }else{
@@ -335,14 +363,90 @@ export default {
           return moment(a.start.date) - moment(b.start.date)
         }
       })
-    }
- },
+    },
+    getByCategory: function(selectedVal){
+      this.loading = true
+
+      //reset data
+      this.events = [{
+        id: '',
+        ownerMarkup: {},
+        ownerCategoryId: '',
+
+        summary: '',
+        start: {
+          dateTime: '',
+          date: ''
+        },
+        end: {
+          dateTime: '',
+          date: ''
+        },
+      }]
+
+      this.eventOwners = [{}]
+      this.eventCategory = [{}]
+
+      if (selectedVal == null){
+        this.getUpcomingEvents()
+        return
+      }else{
+        this.selectedCategory = selectedVal.id
+      }
+
+      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      .then(response =>  {
+        this.calData = response
+
+        for(let k = 0; k < response.data.items.length; k++) {
+          this.events.push(response.data.items[k])
+          this.$set(this.events, response.data.items, response.data.items[k])
+
+          //TODO: this is kind of convoluted
+          this.eventOwners.push(this.owner[0][selectedVal.id])
+          this.eventCategory.push(this.owner[0][selectedVal.id])
+        }
+
+        for (let l = 0; l < this.events.length; l++){
+          this.$set(this.events[l], 'ownerMarkup', this.eventOwners[l])
+          this.$set(this.events[l], 'ownerCategoryId', this.eventCategory[l])
+
+        }
+
+        this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+          this.loading = false
+        })
+    },
+  },
   computed:{
     filteredEvents: function(){
-      return this.sortedItems(this.filteredList(this.events, this.searchedVal) )
+        return this.sortedItems(
+                this.filteredList(this.events, this.searchedVal
+              )
+        )
+    },
+    parseCategory: function(){
+      let c = this.$route.query.category
+      let catName = {}
+      if (c) {
+        let mycats = this.dropdown
+        this.dropdown.forEach(function(el){
+          if (c == el.id) {
+            catName = {
+              id: el.id,
+              name: el.name
+            }
+          }
+        })
+        return catName
+      }
     },
     successfulResponse: function(){
-      if (this.events.length == 0) {
+      //account for empty data object
+      if (this.events.length == 1 || this.events.length == 0 ) {
         this.emptyResponse = true
         this.loading = false
         this.failure = false
