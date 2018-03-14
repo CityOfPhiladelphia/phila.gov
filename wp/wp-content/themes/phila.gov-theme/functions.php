@@ -1456,8 +1456,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
   }
 
   while ( list(, $phrase ) = each( $target_phrases ) ) {
-    //check match & ensure "Philadelphia" starts at the beginning of the title
-    if ( strpos( $page_title, $phrase ) !== false && substr( $page_title, 0, 12 ) === "Philadelphia") {
+    if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
 
       if( $return_stripped === true ){
