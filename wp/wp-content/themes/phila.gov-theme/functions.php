@@ -1442,7 +1442,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "City of Philadelphia",
     "Mayor's Commission on",
     "Mayor's Office of",
-    "Philadelphia ",
+    "Philadelphia",
     "Commission on",
     "Board of",
     "Office of the",
@@ -1456,7 +1456,8 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
   }
 
   while ( list(, $phrase ) = each( $target_phrases ) ) {
-    if ( strpos( $page_title, $phrase ) !== false ) {
+    //check match & ensure "Philadelphia" starts at the beginning of the title
+    if ( strpos( $page_title, $phrase ) !== false && substr( $page_title, 0, 12 ) === "Philadelphia") {
       $c  = strlen( $phrase );
 
       if( $return_stripped === true ){
@@ -1471,9 +1472,6 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
       $new_title = $page_title;
     }
   }
-
-
-
 
   return $new_title;
 }
