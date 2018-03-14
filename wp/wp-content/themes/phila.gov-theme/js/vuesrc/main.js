@@ -42,6 +42,7 @@ if (window.location.pathname === '/the-latest/archives/') {
 }else{
   new Vue({
     el: '#all-events',
+    router,
     render: h => h(Events)
   })
 }
