@@ -152,7 +152,6 @@ class Phila_Gov_Standard_Metaboxes {
         'name' => 'Calendar owner',
         'id'   => 'phila_calendar_owner',
         'type' => 'taxonomy',
-        'required'  => true,
         'desc'  => 'Determines what owner filter will be applied when a user clicks "see all events". Default is this item\'s category.',
         'query_args' => array(
           'taxonomy' => 'category',
