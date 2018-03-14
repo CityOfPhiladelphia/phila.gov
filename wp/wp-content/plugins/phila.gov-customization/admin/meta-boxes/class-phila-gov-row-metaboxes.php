@@ -41,7 +41,7 @@ class Phila_Gov_Row_Metaboxes {
          'id'  => 'phila_get_post_cats',
          'type' => 'group',
          'fields' => array(
-           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection entirely.' ),
          ),
         ),
       array(

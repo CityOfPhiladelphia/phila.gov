@@ -166,7 +166,7 @@ get_header(); ?>
           </div>
           <!-- Free Libraries -->
           <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-bottom-sm">
-            <a href="http://phl.maps.arcgis.com/apps/View/index.html?appid=28b6efe281ba44efb378d0b29415b514" class="action-panel">
+            <a href="https://beta.phila.gov/parks-rec-finder/#/locations/parks" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
                   <div class="icon">
@@ -179,7 +179,7 @@ get_header(); ?>
           </div>
           <!-- Parks -->
           <div class="small-12 medium-6 columns mtxl-mu mbm-mu sidewalk bdr-right nbdr-right-mu  bdr-bottom-sm">
-            <a href="http://www.phila.gov/parksandrecreation/findafacility/" class="action-panel">
+            <a href="https://beta.phila.gov/parks-rec-finder/#/locations/recreation-centers" class="action-panel">
               <div class="panel equal" data-equalizer-watch="" >
                 <header class="">
                   <div class="icon">

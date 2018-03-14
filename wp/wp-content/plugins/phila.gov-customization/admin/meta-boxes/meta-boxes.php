@@ -125,6 +125,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
+    'revision' => true,
 
     'fields' => array(
         array(
@@ -161,7 +162,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
-
+    'revision' => true,
 
     'fields' => array(
       array(
@@ -728,7 +729,7 @@ $meta_boxes[] = array(
         'id'  => 'phila_get_staff_cats',
         'type' => 'group',
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_staff_category', 'Display staff members from these categories. This will override page category selection entirely.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
         ),
       ),
     ),

@@ -13,9 +13,7 @@ class Phila_Gov_Role_Administration {
 
     add_action( 'init', array( $this, 'abstract_user_role') );
 
-    add_action( 'admin_head', array( $this, 'add_meta_data') );
-
-    add_action('admin_head', array( $this, 'tinyMCE_edits' ) );
+    add_action( 'admin_head', array( $this, 'tinyMCE_edits' ) );
 
     add_action( 'admin_enqueue_scripts', array( $this, 'administration_admin_scripts'), 1000 );
 
@@ -24,106 +22,43 @@ class Phila_Gov_Role_Administration {
 
   }
 
-  /**
-   * Outputs all categories into an array w/ just slugs.
-   *
-   * @since 0.11.0
-   * @return $cat_slugs array Returns an array of all categories.
-   */
-  public function get_categories(){
-    $categories_args = array(
-        'type'                     => 'post',
-        'child_of'                 => 0,
-        'parent'                   => '',
-        'orderby'                  => 'name',
-        'order'                    => 'ASC',
-        'hide_empty'               => 1,
-        'hierarchical'             => 0,
-        'taxonomy'                 => 'category',
-        'pad_counts'               => false
-    );
+  public function get_user_category_from_category_plugin(){
+    $cat_list = '';
+    $defaults = array( 'RestrictCategoriesDefault' );
+    // Get the current user in the admin
+    $user = new WP_User(wp_get_current_user()->ID);
 
-    $categories = get_categories( $categories_args );
+    // Get the user role
+    $user_cap = $user->roles;
 
-    $cat_slugs = [];
+    // Get the user login name/ID
+    if ( function_exists( 'get_users' ) )
+      $user_login = $user->user_nicename;
+    elseif ( function_exists( 'get_users_of_blog' ) )
+      $user_login = $user->ID;
 
-    //loop through and push slugs to $cat_slugs
-    foreach( $categories as $category ){
-      array_push( $cat_slugs, $category->slug );
+    // Get selected categories for Roles
+    $settings = get_option( 'RestrictCats_options' );
+
+    // Get selected categories for Users
+    $settings_user = get_option( 'RestrictCats_user_options' );
+
+    // For users, strip out the placeholder category, which is only used to make sure the checkboxes work
+    if ( is_array( $settings_user ) && array_key_exists( $user_login . '_user_cats', $settings_user ) ) {
+      $settings_user[ $user_login . '_user_cats' ] = array_values( array_diff( $settings_user[ $user_login . '_user_cats' ], $defaults ) );
+      // Selected categories for User overwrites Roles selection
+      if ( is_array( $settings_user ) && !empty( $settings_user[ $user_login . '_user_cats' ] ) ) {
+
+        // Build the category list
+        foreach ( $settings_user[ $user_login . '_user_cats' ] as $category ) {
+          $term = get_term_by( 'slug', $category, 'category' );
+          $cat_list[] = $term->term_id;
+        }
+
+      }
     }
-    //add category slugs to their own array
-    return $cat_slugs;
+    return (is_array($cat_list) ? implode(', ' , $cat_list) : '');
   }
-
-  /**
-   * Returns a match of every category this user has.
-   *
-   * @since 0.11.0
-   * @uses get_categories() Outputs all categories into an array w/ just slugs.
-   * @uses wp_get_current_user()   https://codex.wordpress.org/Function_Reference/wp_get_current_user
-   * @return $cat_slugs array Returns an array of all categories.
-   */
-
-    public function get_current_user_category() {
-
-      $cat_slugs = $this->get_categories();
-
-      if ( is_user_logged_in() && ! current_user_can( PHILA_ADMIN ) ){
-        //define current_user, we should only do this when we are logged in
-        $user = wp_get_current_user();
-
-        $all_user_roles = $user->roles;
-
-        $all_user_roles_to_cats = str_replace('_', '-', $all_user_roles);
-
-        //matches rely on Category SLUG and user role SLUG matching
-        //if there are matches, then you have a secondary role that should not be allowed to see other's menus, etc.
-
-
-        $current_user_cat_assignment = array_intersect( $all_user_roles_to_cats, $cat_slugs );
-
-        return $current_user_cat_assignment;
-      }
-    }
-
-  /**
-   * Outputs an array of Term Objects that correspond to secondary roles applied to the logged in user.
-   *
-   * @since 0.12.0
-   * @uses get_current_user_category() Outputs all categories into an array w/ just slugs.
-   */
-
-   public function secondary_roles(){
-
-    $current_user_cat_assignment = $this->get_current_user_category();
-
-    if ( is_user_logged_in() && !current_user_can( PHILA_ADMIN )  ){
-
-      if( count( $current_user_cat_assignment ) > 1 ) {
-
-        $assigned_roles = [];
-
-        foreach ( $current_user_cat_assignment as $cat_assignment ) {
-          array_push( $assigned_roles, get_category_by_slug( $cat_assignment ) );
-        }
-
-        //returns an array of objects
-        return $assigned_roles;
-
-      }elseif( count( $current_user_cat_assignment ) == 1 ) {
-
-
-        //handle key assignment
-        $assigned_role = get_category_by_slug( reset( $current_user_cat_assignment ) );
-
-        //returns a single object
-        return $assigned_role;
-
-      }else {
-          return null;
-        }
-      }
-    }
 
   /**
   * Removes "Add Media" Button from the editor.
@@ -165,29 +100,23 @@ class Phila_Gov_Role_Administration {
    * @since    0.14.0
    */
   public function change_dropdown_args( $dropdown_args, $post ) {
-    $current_user_cat = $this->get_current_user_category();
-    $exclude = '';
+    $current_user_cat = $this->get_user_category_from_category_plugin();
+    $include = '';
 
     $args = array(
       'post_type'  => get_post_type(),
       'posts_per_page'   => -1,
-      'post_status' => 'publish',
-      'meta_query' => array(
-        array(
-          'key' => '_category',
-          'value' => $current_user_cat,
-          'compare' => 'NOT IN'
-        )
-      ),
+      'post_status' => 'any',
+      'category'  => array($current_user_cat),
+      'offset'           => 0,
     );
 
     $pages = get_posts( $args );
     foreach($pages as $page){
-      $exclude = $page->ID . "," . $exclude;
+      $include = $page->ID . "," . $include;
     }
-    $exclude = rtrim($exclude, ', ');
-    $dropdown_args['exclude_tree'] = $exclude;
-    $dropdown_args['post_status'] = array( 'publish' );
+    $include = rtrim($include, ', ');
+    $dropdown_args['include'] = $include;
     return $dropdown_args;
 
   }
@@ -202,28 +131,6 @@ class Phila_Gov_Role_Administration {
 
       add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'change_dropdown_args' ), 9, 2 );
 
-      add_filter('wp_dropdown_users', array( $this, 'display_users_in_same_role' ) );
-
-      add_filter( 'get_terms_args', array( $this, 'show_all_tags_on_phila_post' ) );
-
-    }
-  }
-  /**
-   * Adds category as metadata for filtering the page attribute dropdown box.
-   *
-   * @since 0.14.0
-   *
-   */
-  public function add_meta_data( $post ){
-    global $post;
-    if ( isset( $post->ID ) ){
-        $categories = get_the_category( $post->ID );
-
-        if ( $post->post_type == 'department_page' ){
-            foreach ( $categories as $cat ){
-              update_post_meta( $post->ID, '_category', $cat->slug );
-            }
-        }
     }
   }
 
@@ -243,6 +150,7 @@ class Phila_Gov_Role_Administration {
       wp_enqueue_style( 'admin-department-author' );
 
       $user = wp_get_current_user();
+
       if ( array_key_exists( 'primary_admin_read_only',  $user->caps ) ) {
         wp_register_style( 'admin-read-only', plugins_url( 'css/read-only-user.css' , __FILE__  ) );
         wp_enqueue_style( 'admin-read-only' );
@@ -250,60 +158,6 @@ class Phila_Gov_Role_Administration {
       }
 
     }
-  }
-
-  /**
-   * On phila_posts only allow users to change the post author to users in the same secondary role.
-   *
-   * @since   0.22.0
-   * @return $output The filtered author dropdown
-   */
-  function display_users_in_same_role( $output ){
-    global $post;
-
-    global $current_user;
-
-    $secondary_role_name = $current_user->roles;
-    $user_role = array_shift($secondary_role_name);
-
-    $users = get_users( array(
-      'role__in' => $secondary_role_name,
-      )
-    );
-
-    $output = "<select id=\"post_author_override\" name=\"post_author_override\" class=\"\">";
-
-    foreach($users as $user) {
-      $sel = ($post->post_author == $user->ID)?"selected='selected'":'';
-      $output .= '<option value="'.$user->ID.'"'.$sel.'>'.$user->display_name.'</option>';
-    }
-    $output .= "</select>";
-
-    return $output;
-  }
-
-
-  /**
-   * Display all tags on post tag, instead of 'popular'
-   *
-   * @since   0.22.0
-   * @return $output The filtered author dropdown
-   */
-  function show_all_tags_on_phila_post ( $args ) {
-    if ( is_admin() ) {
-      if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_POST['action'] ) && $_POST['action'] === 'get-tagcloud' ) {;
-        $args['number'] == 90000;
-        $args['hide_empty'] = false;
-      }
-    }
-    return $args;
-  }
-
-  function check_assigned_role(){
-    if ( is_admin() ){
-      $current_user_cat = $this->get_current_user_category();
-    }
-
   }
 
   function add_subscribers_to_author_dropdown( $query_args, $r ) {
