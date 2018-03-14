@@ -191,7 +191,7 @@ export default {
 
       state: {
         startDate: moment().format(),
-        endDate: moment().add(30, 'days').format(),
+        endDate: moment().add(90, 'days').format(),
       },
 
     }
@@ -366,7 +366,6 @@ export default {
     },
     getByCategory: function(selectedVal){
       this.loading = true
-      this.selectedCategory = selectedVal.id
 
       //reset data
       this.events = [{
@@ -388,9 +387,11 @@ export default {
       this.eventOwners = [{}]
       this.eventCategory = [{}]
 
-      if (selectedVal.id == null){
+      if (selectedVal == null){
         this.getUpcomingEvents()
         return
+      }else{
+        this.selectedCategory = selectedVal.id
       }
 
       axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
