@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Carbon;
-
 /*
  * This file is part of the Carbon package.
  *
@@ -11,7 +9,11 @@ namespace Tests\Carbon;
  * file that was distributed with this source code.
  */
 
+namespace Tests\Carbon;
+
 use Carbon\Carbon;
+use DateTime;
+use DateTimeZone;
 use Tests\AbstractTestCase;
 
 class NowAndOtherStaticHelpersTest extends AbstractTestCase
@@ -38,41 +40,41 @@ class NowAndOtherStaticHelpersTest extends AbstractTestCase
     public function testTodayWithTimezone()
     {
         $dt = Carbon::today('Europe/London');
-        $dt2 = new \DateTime('now', new \DateTimeZone('Europe/London'));
+        $dt2 = new DateTime('now', new DateTimeZone('Europe/London'));
         $this->assertSame($dt2->format('Y-m-d 00:00:00'), $dt->toDateTimeString());
     }
 
     public function testTomorrow()
     {
         $dt = Carbon::tomorrow();
-        $dt2 = new \DateTime('tomorrow');
+        $dt2 = new DateTime('tomorrow');
         $this->assertSame($dt2->format('Y-m-d 00:00:00'), $dt->toDateTimeString());
     }
 
     public function testTomorrowWithTimezone()
     {
         $dt = Carbon::tomorrow('Europe/London');
-        $dt2 = new \DateTime('tomorrow', new \DateTimeZone('Europe/London'));
+        $dt2 = new DateTime('tomorrow', new DateTimeZone('Europe/London'));
         $this->assertSame($dt2->format('Y-m-d 00:00:00'), $dt->toDateTimeString());
     }
 
     public function testYesterday()
     {
         $dt = Carbon::yesterday();
-        $dt2 = new \DateTime('yesterday');
+        $dt2 = new DateTime('yesterday');
         $this->assertSame($dt2->format('Y-m-d 00:00:00'), $dt->toDateTimeString());
     }
 
     public function testYesterdayWithTimezone()
     {
         $dt = Carbon::yesterday('Europe/London');
-        $dt2 = new \DateTime('yesterday', new \DateTimeZone('Europe/London'));
+        $dt2 = new DateTime('yesterday', new DateTimeZone('Europe/London'));
         $this->assertSame($dt2->format('Y-m-d 00:00:00'), $dt->toDateTimeString());
     }
 
     public function testMinValue()
     {
-        $this->assertLessThanOrEqual(- 2147483647, Carbon::minValue()->getTimestamp());
+        $this->assertLessThanOrEqual(-2147483647, Carbon::minValue()->getTimestamp());
     }
 
     public function testMaxValue()

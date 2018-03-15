@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Carbon;
-
 /*
  * This file is part of the Carbon package.
  *
@@ -10,6 +8,8 @@ namespace Tests\Carbon;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
+namespace Tests\Carbon;
 
 use Carbon\Carbon;
 use Tests\AbstractTestCase;
@@ -54,6 +54,66 @@ class IsTest extends AbstractTestCase
     public function testIsTodayTrue()
     {
         $this->assertTrue(Carbon::now()->isToday());
+    }
+
+    public function testIsNextWeekTrue()
+    {
+        $this->assertTrue(Carbon::now()->addWeek()->isNextWeek());
+    }
+
+    public function testIsLastWeekTrue()
+    {
+        $this->assertTrue(Carbon::now()->subWeek()->isLastWeek());
+    }
+
+    public function testIsNextWeekFalse()
+    {
+        $this->assertFalse(Carbon::now()->addWeek(2)->isNextWeek());
+    }
+
+    public function testIsLastWeekFalse()
+    {
+        $this->assertFalse(Carbon::now()->subWeek(2)->isLastWeek());
+    }
+
+    public function testIsNextMonthTrue()
+    {
+        $this->assertTrue(Carbon::now()->addMonth()->isNextMonth());
+    }
+
+    public function testIsLastMonthTrue()
+    {
+        $this->assertTrue(Carbon::now()->subMonth()->isLastMonth());
+    }
+
+    public function testIsNextMonthFalse()
+    {
+        $this->assertFalse(Carbon::now()->addMonth(2)->isNextMonth());
+    }
+
+    public function testIsLastMonthFalse()
+    {
+        $this->assertFalse(Carbon::now()->subMonth(2)->isLastMonth());
+    }
+
+    public function testIsNextYearTrue()
+    {
+        $this->assertTrue(Carbon::now()->addYear()->isNextYear());
+    }
+
+    public function testIsLastYearTrue()
+    {
+        $this->assertTrue(Carbon::now()->subYear()->isLastYear());
+    }
+
+    public function testIsNextYearFalse()
+    {
+        $this->assertFalse(Carbon::now()->addYear(2)->isNextYear());
+    }
+
+    public function testIsLastYearFalse()
+    {
+        $this->assertFalse(Carbon::now()->subYear(2)->isLastYear());
     }
 
     public function testIsTodayFalseWithYesterday()
@@ -109,6 +169,14 @@ class IsTest extends AbstractTestCase
     public function testIsPastFalse()
     {
         $this->assertFalse(Carbon::now()->addSecond()->isPast());
+    }
+
+    public function testNowIsPastFalse()
+    {
+        if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
+            $this->markTestSkipped();
+        }
+
         $this->assertFalse(Carbon::now()->isPast());
     }
 
@@ -120,6 +188,56 @@ class IsTest extends AbstractTestCase
     public function testIsLeapYearFalse()
     {
         $this->assertFalse(Carbon::createFromDate(2014, 1, 1)->isLeapYear());
+    }
+
+    public function testIsCurrentYearTrue()
+    {
+        $this->assertTrue(Carbon::now()->isCurrentYear());
+    }
+
+    public function testIsCurrentYearFalse()
+    {
+        $this->assertFalse(Carbon::now()->subYear()->isCurrentYear());
+    }
+
+    public function testIsSameYearTrue()
+    {
+        $this->assertTrue(Carbon::now()->isSameYear(Carbon::now()));
+    }
+
+    public function testIsSameYearFalse()
+    {
+        $this->assertFalse(Carbon::now()->isSameYear(Carbon::now()->subYear()));
+    }
+
+    public function testIsCurrentMonthTrue()
+    {
+        $this->assertTrue(Carbon::now()->isCurrentMonth());
+    }
+
+    public function testIsCurrentMonthFalse()
+    {
+        $this->assertFalse(Carbon::now()->subMonth()->isCurrentMonth());
+    }
+
+    public function testIsSameMonthTrue()
+    {
+        $this->assertTrue(Carbon::now()->isSameMonth(Carbon::now()));
+    }
+
+    public function testIsSameMonthFalse()
+    {
+        $this->assertFalse(Carbon::now()->isSameMonth(Carbon::now()->subMonth()));
+    }
+
+    public function testIsSameMonthAndYearTrue()
+    {
+        $this->assertTrue(Carbon::now()->isSameMonth(Carbon::now(), true));
+    }
+
+    public function testIsSameMonthAndYearFalse()
+    {
+        $this->assertFalse(Carbon::now()->isSameMonth(Carbon::now()->subYear(), true));
     }
 
     public function testIsSameDayTrue()

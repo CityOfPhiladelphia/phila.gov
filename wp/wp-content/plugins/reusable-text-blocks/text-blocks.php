@@ -7,7 +7,7 @@ Author: Hal Gatewood
 Author URI: http://www.halgatewood.com
 Text Domain: text-blocks
 Domain Path: /languages
-Version: 1.5.1
+Version: 1.5.3
 */
 
 /*
@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 
-
 // ADDS
 add_action( 'plugins_loaded', 'text_block_setup' );
 function text_block_setup()
@@ -35,7 +34,7 @@ function text_block_setup()
 	add_action( 'admin_head', 'textblocks_css' );
 	add_filter( 'manage_edit-text-blocks_columns', 'textblocks_columns' );
 	add_action( 'manage_text-blocks_posts_custom_column', 'textblocks_add_columns' );
-	add_action( 'widgets_init', create_function('', 'return register_widget("TextBlocksWidget");') );
+	add_action( 'widgets_init', 'text_block_register_widget' );
 	add_shortcode( 'text-blocks', 'text_blocks_shortcode');
 	add_action( 'add_meta_boxes', 'text_blocks_create_metaboxes' );
 	
@@ -47,7 +46,10 @@ function text_block_setup()
 	
 }
 
-
+function text_block_register_widget()
+{
+	register_widget("TextBlocksWidget");
+}
 
 // INIT:
 // LANGUAGES
@@ -271,7 +273,7 @@ function show_text_block($id, $plain = false, $atts = false)
 	
 	// LOOK FOR TEMPLATE IN THEME
 	$template = isset($atts['template']) ? $atts['template'] : $id;
-	$template = locate_template( array( "text-blocks-{$template}.php" ) );
+	$template = locate_template( apply_filters( 'text_blocks_template_location', array( "text-blocks/text-blocks-{$template}.php", "text-blocks-{$template}.php" ) ) );
 	
 	
 	// LOAD TEMPLATE IF FOUND
@@ -346,6 +348,7 @@ function text_blocks_media_button()
 	echo $output;
 }
 
+
 // MEDIA BUTTON FUNCTIONALITY
 function text_blocks_admin_footer_for_thickbox() 
 {
@@ -363,7 +366,6 @@ function text_blocks_admin_footer_for_thickbox()
                     alert('<?php _e( "You must choose a block", "text-blocks" ); ?>');
                     return;
                 }
-                
                 
                 var slug = jQuery('#text-blocks-select-box option:selected').data('slug');
                 
@@ -398,5 +400,3 @@ function text_blocks_admin_footer_for_thickbox()
 	<?php
 	}
 }
-
-
