@@ -95,7 +95,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="global-sticky-nav" class="row">
       <div class="small-24 columns">
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
-          <div class="columns sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
+          <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
             <div class="row sticky-header-width">
               <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
