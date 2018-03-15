@@ -5,12 +5,12 @@
  * @package phila-gov
  */
 
-get_header(); ?>
-
+get_header();
+?>
 <div class="row">
   <header class="columns">
     <h1 class="contrast">
-      <?php echo get_the_title(); ?>
+       <?php echo get_the_title(); ?>
     </h1>
   </header>
 </div>
@@ -22,32 +22,73 @@ $cal_a = array(
   'post_status' => 'any'
 );
 $calendar_q = new WP_Query( $cal_a );
-if ( $calendar_q->have_posts() ) : ?>
-<?php $post_ids = array();?>
-<?php $cal_ids = array(); ?>
-  <?php while ( $calendar_q->have_posts() ) : $calendar_q->the_post(); ?>
-    <?php array_push($post_ids, get_the_id() ); ?>
-  <?php endwhile; ?>
-  <?php wp_reset_postdata(); ?>
-<?php endif; ?>
 
-<?php foreach ($post_ids as $post_id) : ?>
-  <?php array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) ); ?>
-<?php endforeach;
-  $final_array = array_filter($cal_ids);
-  $final_array = array_unique($final_array);
-  $final_array = array_values($final_array);
-?>
+if ( $calendar_q->have_posts() ) {
+  $post_ids = array();
+  $cal_ids = array();
+  $cal_cat_ids = array();
+  $cal_nice_name = array();
+  $names = array();
+  $links = array();
+  $i = 0;
 
-<?php $json_final = json_encode($final_array);
+  while ( $calendar_q->have_posts() ) : $calendar_q->the_post();
+    $categories = get_the_category( get_the_id() );
+    if ($categories != null) {
+      $i++;
+      array_push($post_ids, get_the_id() );
+      array_push($cal_cat_ids, $categories[0]->cat_ID);
+      array_push($cal_nice_name, $categories);
+      $names[$i]['id'] = $categories[0]->cat_ID;
+      $names[$i]['name'] = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
+    }
+  endwhile;
 
+    wp_reset_postdata();
+  }
+  foreach ($post_ids as $post_id) {
+    array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
+  }
+  $i=0;
+  foreach ($cal_nice_name as $nice){
+    $i++;
+    $links[$nice[0]->cat_ID] = phila_get_current_department_name($nice);
+  }
+  $final_array = array_combine($cal_cat_ids, $cal_ids);
+  $final_array = array_filter($final_array);
+
+  //remove duplicates
+  $names = array_map("unserialize", array_unique(array_map("serialize", $names)));
+
+  $links = array_filter($links);
+
+  $calendar_ids = json_encode($final_array);
+
+  function sort_by_name($a, $b){
+    return strcmp($a['name'], $b['name']);
+  }
+
+  usort($names, 'sort_by_name');
+
+  $names = json_encode($names);
+
+  /* g_cal_data - Object: key is category ID, value is calendar ids*/
   wp_localize_script('vuejs-app',
   'g_cal_data', array(
-    'json' => __($json_final)
+    'json' => __($calendar_ids)
       )
     );
-?>
+    /*calendar_owners - Array: key is category ID, value is department link */
+    wp_localize_script('vuejs-app',
+    'calendar_owners', array(
+      'json' => __($links)
+      )
+    );
+    /* calendar_nice_names - Array. key is category ID, value is department nice name */
+    wp_localize_script('vuejs-app',
+    'calendar_nice_names', array($names) );
 
+?>
 <section id="events-archive" class="content-area archive">
 
   <div class="row">
@@ -60,4 +101,5 @@ if ( $calendar_q->have_posts() ) : ?>
     </main><!-- #main -->
   </div>
 </section><!-- #primary -->
-<?php get_footer(); ?>
+
+<?php get_footer();?>

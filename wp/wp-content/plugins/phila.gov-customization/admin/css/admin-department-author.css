@@ -1,32 +1,34 @@
-/*no cloning abilities*/
-
-#content-blocks .add-clone,
-#content-blocks .remove-clone,
-/*non-admins should not create new categories*/
+/*can't create create new categories*/
 #category-adder,
+/* can't edit menus */
 a[href^="nav-menus.php"],
 a[href$="nav-menus.php?action=locations"],
+.manage-menus option,
 #wp-admin-bar-new-content,
 #wp-admin-bar-wp-logo,
 /*hide content on editing pages */
 #news_type-adder,
-.add-new-menu-action,
-#menu-appearance,
-.manage-menus option,
-.post-type-department_page .page-title-action,
-/* don't allow users to create tags */
+/* no tag creation  */
 #tagsdiv-post_tag,
+/* no per-page role editor */
 #wpfront-user-role-editor-role-permission,
+/* hide media buttons */
 #wp-content-media-buttons,
+/* no update nag */
 .update-nag,
 .notice.notice-error.is-dismissible,
+/* no need to see custom fields */
 #postcustom,
+/* no quick posts from dash */
 #dashboard_quick_press,
+/* no commnets */
 .menu-icon-comments,
-#trackbacksdiv,
-#postexcerpt,
 #commentstatusdiv,
 #commentsdiv,
+/* no trackbacks */
+#trackbacksdiv,
+
+#postexcerpt,
 #slugdiv
 {
   display: none !important;
