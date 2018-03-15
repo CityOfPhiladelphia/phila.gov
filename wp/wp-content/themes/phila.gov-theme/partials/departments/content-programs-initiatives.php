@@ -35,35 +35,10 @@
         </div>
         <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
           $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
-          $cal_url = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_url'] : ''; ?>
+          $cal_category = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; ?>
 
-          <?php if ( !empty( $cal_id ) ):?>
-            <!-- Full Width Calendar -->
-            <section class="expanded">
-              <div class="row">
-                <div class="columns">
-                  <h2 class="mbn">Events</h2>
-                </div>
-              </div>
-              <div class="row expanded calendar-row">
-                <div class="medium-centered large-16 columns">
-                  <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
-                </div>
-              </div>
-              <?php if ( !empty( $cal_url ) ):?>
-                <div class="row">
-                  <div class="columns">
-                    <?php $see_all = array(
-                      'URL' => $cal_url,
-                      'content_type' => 'events',
-                      'nice_name' => 'events'
-                    ); ?>
-                    <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-                  </div>
-                </div>
-              <?php endif; ?>
-            </section>
-          <?php endif;?>
+          <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
+
 
         <?php elseif ( $current_row_option == 'phila_callout'):
           $callout_text = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_text'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_text'] : ''; ?>
