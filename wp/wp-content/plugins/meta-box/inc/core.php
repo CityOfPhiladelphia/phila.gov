@@ -22,13 +22,16 @@ class RWMB_Core {
 		// Uses priority 20 to support custom port types registered using the default priority.
 		add_action( 'init', array( $this, 'register_meta_boxes' ), 20 );
 		add_action( 'edit_page_form', array( $this, 'fix_page_template' ) );
+		$this->add_context_hooks();
 	}
 
 	/**
 	 * Add links to Documentation and Extensions in plugin's list of action links.
 	 *
 	 * @since 4.3.11
+	 *
 	 * @param array $links Array of plugin links.
+	 *
 	 * @return array
 	 */
 	public function plugin_links( $links ) {
@@ -60,6 +63,7 @@ class RWMB_Core {
 	 * Unset the page template if the page does not exist to allow the post to save.
 	 *
 	 * @param WP_Post $post Post object.
+	 *
 	 * @since 4.3.10
 	 */
 	public function fix_page_template( WP_Post $post ) {
@@ -82,5 +86,32 @@ class RWMB_Core {
 	public static function get_meta_boxes() {
 		$meta_boxes = rwmb_get_registry( 'meta_box' )->all();
 		return wp_list_pluck( $meta_boxes, 'meta_box' );
+	}
+
+	/**
+	 * Add hooks for extra contexts.
+	 */
+	public function add_context_hooks() {
+		$hooks = array(
+			'edit_form_top',
+			'edit_form_after_title',
+			'edit_form_after_editor',
+			'edit_form_before_permalink',
+		);
+
+		foreach ( $hooks as $hook ) {
+			add_action( $hook, array( $this, 'add_context' ) );
+		}
+	}
+
+	/**
+	 * Add new meta box context.
+	 *
+	 * @param WP_Post $post The current post object.
+	 */
+	public function add_context( $post ) {
+		$hook    = current_filter();
+		$context = 'edit_form_top' === $hook ? 'form_top' : substr( $hook, 10 );
+		do_meta_boxes( null, $context, $post );
 	}
 }
