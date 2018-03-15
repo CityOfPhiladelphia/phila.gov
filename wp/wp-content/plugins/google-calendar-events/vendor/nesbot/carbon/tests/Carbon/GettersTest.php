@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Carbon;
-
 /*
  * This file is part of the Carbon package.
  *
@@ -11,15 +9,19 @@ namespace Tests\Carbon;
  * file that was distributed with this source code.
  */
 
+namespace Tests\Carbon;
+
 use Carbon\Carbon;
 use Tests\AbstractTestCase;
 
 class GettersTest extends AbstractTestCase
 {
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testGettersThrowExceptionOnUnknownGetter()
     {
-        $this->setExpectedException('InvalidArgumentException');
-        Carbon::create(1234, 5, 6, 7, 8, 9)->sdfsdfss;
+        Carbon::create(1234, 5, 6, 7, 8, 9)->doesNotExit;
     }
 
     public function testYearGetter()
@@ -73,6 +75,10 @@ class GettersTest extends AbstractTestCase
 
     public function testMicroGetterWithDefaultNow()
     {
+        if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
+            $this->markTestSkipped();
+        }
+
         $d = Carbon::now();
         $this->assertSame(0, $d->micro);
     }
@@ -116,40 +122,58 @@ class GettersTest extends AbstractTestCase
         $this->assertSame($age, $d->age);
     }
 
-    public function testGetQuarterFirst()
+    public function dataProviderTestQuarter()
     {
-        $d = Carbon::createFromDate(2012, 1, 1);
-        $this->assertSame(1, $d->quarter);
+        return array(
+            array(1, 1),
+            array(2, 1),
+            array(3, 1),
+            array(4, 2),
+            array(5, 2),
+            array(6, 2),
+            array(7, 3),
+            array(8, 3),
+            array(9, 3),
+            array(10, 4),
+            array(11, 4),
+            array(12, 4),
+        );
     }
 
-    public function testGetQuarterFirstEnd()
+    /**
+     * @dataProvider \Tests\Carbon\GettersTest::dataProviderTestQuarter
+     *
+     * @param int $month
+     * @param int $quarter
+     */
+    public function testQuarterFirstOfMonth($month, $quarter)
     {
-        $d = Carbon::createFromDate(2012, 3, 31);
-        $this->assertSame(1, $d->quarter);
+        $c = Carbon::create(2015, $month)->startOfMonth();
+        $this->assertSame($quarter, $c->quarter);
     }
 
-    public function testGetQuarterSecond()
+    /**
+     * @dataProvider \Tests\Carbon\GettersTest::dataProviderTestQuarter
+     *
+     * @param int $month
+     * @param int $quarter
+     */
+    public function testQuarterMiddleOfMonth($month, $quarter)
     {
-        $d = Carbon::createFromDate(2012, 4, 1);
-        $this->assertSame(2, $d->quarter);
+        $c = Carbon::create(2015, $month, 15, 12, 13, 14);
+        $this->assertSame($quarter, $c->quarter);
     }
 
-    public function testGetQuarterThird()
+    /**
+     * @dataProvider \Tests\Carbon\GettersTest::dataProviderTestQuarter
+     *
+     * @param int $month
+     * @param int $quarter
+     */
+    public function testQuarterLastOfMonth($month, $quarter)
     {
-        $d = Carbon::createFromDate(2012, 7, 1);
-        $this->assertSame(3, $d->quarter);
-    }
-
-    public function testGetQuarterFourth()
-    {
-        $d = Carbon::createFromDate(2012, 10, 1);
-        $this->assertSame(4, $d->quarter);
-    }
-
-    public function testGetQuarterFirstLast()
-    {
-        $d = Carbon::createFromDate(2012, 12, 31);
-        $this->assertSame(4, $d->quarter);
+        $c = Carbon::create(2015, $month)->endOfMonth();
+        $this->assertSame($quarter, $c->quarter);
     }
 
     public function testGetLocalTrue()
@@ -234,6 +258,16 @@ class GettersTest extends AbstractTestCase
         $this->assertFalse(Carbon::createFromDate(2011, 1, 1)->isLeapYear());
     }
 
+    public function testIsLongYearTrue()
+    {
+        $this->assertTrue(Carbon::createFromDate(2015, 1, 1)->isLongYear());
+    }
+
+    public function testIsLongYearFalse()
+    {
+        $this->assertFalse(Carbon::createFromDate(2016, 1, 1)->isLongYear());
+    }
+
     public function testWeekOfMonth()
     {
         $this->assertSame(5, Carbon::createFromDate(2012, 9, 30)->weekOfMonth);
@@ -259,30 +293,35 @@ class GettersTest extends AbstractTestCase
     {
         $dt = Carbon::createFromDate(2000, 1, 1, 'America/Toronto');
         $this->assertSame('America/Toronto', $dt->timezone->getName());
+
+        $dt = Carbon::createFromDate(2000, 1, 1, -5);
+        $this->assertSame('America/Chicago', $dt->timezone->getName());
     }
 
     public function testGetTz()
     {
         $dt = Carbon::createFromDate(2000, 1, 1, 'America/Toronto');
         $this->assertSame('America/Toronto', $dt->tz->getName());
+
+        $dt = Carbon::createFromDate(2000, 1, 1, -5);
+        $this->assertSame('America/Chicago', $dt->tz->getName());
     }
 
     public function testGetTimezoneName()
     {
         $dt = Carbon::createFromDate(2000, 1, 1, 'America/Toronto');
         $this->assertSame('America/Toronto', $dt->timezoneName);
+
+        $dt = Carbon::createFromDate(2000, 1, 1, -5);
+        $this->assertSame('America/Chicago', $dt->timezoneName);
     }
 
     public function testGetTzName()
     {
         $dt = Carbon::createFromDate(2000, 1, 1, 'America/Toronto');
         $this->assertSame('America/Toronto', $dt->tzName);
-    }
 
-    public function testInvalidGetter()
-    {
-        $this->setExpectedException('InvalidArgumentException');
-        $d = Carbon::now();
-        $bb = $d->doesNotExit;
+        $dt = Carbon::createFromDate(2000, 1, 1, -5);
+        $this->assertSame('America/Chicago', $dt->timezoneName);
     }
 }

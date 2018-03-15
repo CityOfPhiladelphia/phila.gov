@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\CarbonInterval;
-
 /*
  * This file is part of the Carbon package.
  *
@@ -11,8 +9,10 @@ namespace Tests\CarbonInterval;
  * file that was distributed with this source code.
  */
 
-use Carbon\CarbonInterval;
+namespace Tests\CarbonInterval;
+
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use DateInterval;
 use Tests\AbstractTestCase;
 
@@ -229,10 +229,10 @@ class ConstructTest extends AbstractTestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testInstanceWithDaysThrowsException()
     {
-        $ci = CarbonInterval::instance(Carbon::now()->diff(Carbon::now()->addWeeks(3)));
+        CarbonInterval::instance(Carbon::now()->diff(Carbon::now()->addWeeks(3)));
     }
 }
