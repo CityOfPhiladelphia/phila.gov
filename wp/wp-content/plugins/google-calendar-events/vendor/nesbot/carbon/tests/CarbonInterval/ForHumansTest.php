@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\CarbonInterval;
-
 /*
  * This file is part of the Carbon package.
  *
@@ -11,9 +9,11 @@ namespace Tests\CarbonInterval;
  * file that was distributed with this source code.
  */
 
+namespace Tests\CarbonInterval;
+
 use Carbon\CarbonInterval;
-use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\Loader\ArrayLoader;
+use Symfony\Component\Translation\Translator;
 use Tests\AbstractTestCase;
 
 class ForHumansTest extends AbstractTestCase
@@ -59,7 +59,7 @@ class ForHumansTest extends AbstractTestCase
     public function testYearToString()
     {
         CarbonInterval::setLocale('en');
-        $this->assertSame('1 year:abc', CarbonInterval::year() . ':abc');
+        $this->assertSame('1 year:abc', CarbonInterval::year().':abc');
     }
 
     public function testYears()
@@ -100,14 +100,14 @@ class ForHumansTest extends AbstractTestCase
         $this->assertSame('1 година 1 месец', CarbonInterval::create(1, 1)->forHumans());
         $this->assertSame('2 години 1 месец', CarbonInterval::create(2, 1)->forHumans());
     }
-    
+
     public function testYearsAndMonthInCatalan()
     {
         CarbonInterval::setLocale('ca');
         $this->assertSame('1 any 1 mes', CarbonInterval::create(1, 1)->forHumans());
         $this->assertSame('2 anys 1 mes', CarbonInterval::create(2, 1)->forHumans());
     }
-    
+
     public function testYearsAndMonthInCzech()
     {
         CarbonInterval::setLocale('cs');

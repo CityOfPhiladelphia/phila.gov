@@ -2,8 +2,9 @@
 Contributors: simplecalendar, sureswiftcapital, pderksen, nickyoung87, nekojira, rosshanney
 Tags: google calendar, calendar, calendars, google, event calendar, custom calendar, custom calendars, event, events
 Requires at least: 4.2
+Requires PHP: 5.3+
 Tested up to: 4.9
-Stable tag: 3.1.10
+Stable tag: 3.1.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +96,23 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.1.14 - February 15, 2018 =
+* Fix: Issue where navigation to next month would be disabled when multi-day events extended to future months.
+
+= 3.1.13 - February 5, 2018 =
+* Fix: Issue where calendar event pop-ups would display without content.
+
+= 3.1.12 - January 4, 2018 =
+* Backwards Compat: Restored previous version (v1) of Google API Client lib to support older versions of PHP.
+* Fix: Fixed bug present in PHP 7.2 which was causing fatal errors.
+
+= 3.1.11.1 - January 3, 2018 =
+* Fix: Bump required PHP version to match 3.1.11 requiring PHP 5.5 so site's running older versions don't crash when updating.
+
+= 3.1.11 - January 2, 2018 =
+* Dev: Update Google API Client libraries to v2. NOTE: Version 5.5+ for PHP now required.
+* Fix: Default calendar list view not showing pro calendar coloring when Calendar Settings > Appearance > Limit Visible Events is set.
 
 = 3.1.10 - August 22, 2017 =
 
