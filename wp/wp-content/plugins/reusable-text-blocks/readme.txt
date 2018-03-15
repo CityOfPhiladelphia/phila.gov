@@ -3,7 +3,7 @@ Contributors: halgatewood
 Donate link: https://halgatewood.com/donate/
 Tags: content, block, reusable content, reusable text, widget, shortcode, dry, text blocks, content blocks
 Requires at least: 3.5
-Tested up to: 4.8
+Tested up to: 5.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -64,6 +64,10 @@ A PHP function has been setup so you do not have to use the do_shortcode functio
 5. Create custom templates
 
 == Changelog ==
+
+= 1.5.2 =
+* New: checks for customs templates in a folder called 'text-blocks' first
+* New: filter to check where templates are checked - text_blocks_template_location
 
 = 1.5.1 =
 * Fixed no attribute error
