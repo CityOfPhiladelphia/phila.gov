@@ -1,11 +1,29 @@
 /*For all admins, to appear when logged in, on the front-end */
 
-body{
+body {
   position: static !important;
 }
 
-body { margin-top: 32px !important; }
-* html body { margin-top: 32px !important; }
-@media screen and ( max-width: 782px ) {
-    html body{ margin-top: 46px !important; }
-    * html body { margin-top: 46px !important; }
+.phila-sticky.sticky.is-stuck {
+  top: 32px !important;
+}
+
+body {
+  margin-top: 32px !important;
+}
+
+* html body {
+  margin-top: 32px !important;
+}
+
+@media screen and ( max-width: 782px) {
+  html body {
+    margin-top: 46px !important;
+  }
+  * html body {
+    margin-top: 46px !important;
+  }
+  .phila-sticky.sticky.is-stuck {
+    top: 46px !important;
+  }
+}
