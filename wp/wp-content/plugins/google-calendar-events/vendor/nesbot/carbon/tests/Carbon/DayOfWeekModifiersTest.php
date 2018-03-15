@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Carbon;
-
 /*
  * This file is part of the Carbon package.
  *
@@ -11,11 +9,32 @@ namespace Tests\Carbon;
  * file that was distributed with this source code.
  */
 
+namespace Tests\Carbon;
+
 use Carbon\Carbon;
 use Tests\AbstractTestCase;
 
 class DayOfWeekModifiersTest extends AbstractTestCase
 {
+    public function testGetWeekendDays()
+    {
+        $this->assertSame(array(Carbon::SATURDAY, Carbon::SUNDAY), Carbon::getWeekendDays());
+    }
+
+    public function testGetWeekEndsAt()
+    {
+        Carbon::setWeekEndsAt(Carbon::SATURDAY);
+        $this->assertSame(Carbon::SATURDAY, Carbon::getWeekEndsAt());
+        Carbon::setWeekEndsAt(Carbon::SUNDAY);
+    }
+
+    public function testGetWeekStartsAt()
+    {
+        Carbon::setWeekStartsAt(Carbon::TUESDAY);
+        $this->assertSame(Carbon::TUESDAY, Carbon::getWeekStartsAt());
+        Carbon::setWeekStartsAt(Carbon::MONDAY);
+    }
+
     public function testStartOfWeek()
     {
         $d = Carbon::create(1980, 8, 7, 12, 11, 9)->startOfWeek();
@@ -52,6 +71,26 @@ class DayOfWeekModifiersTest extends AbstractTestCase
         $d = Carbon::createFromDate(2013, 12, 31, 'GMT');
         $d->endOfWeek();
         $this->assertCarbon($d, 2014, 1, 5, 23, 59, 59);
+    }
+
+    /**
+     * @see https://github.com/briannesbitt/Carbon/issues/735
+     */
+    public function testStartOrEndOfWeekFromWeekWithUTC()
+    {
+        $d = Carbon::create(2016, 7, 27, 17, 13, 7, 'UTC');
+        $this->assertCarbon($d->copy()->startOfWeek(), 2016, 7, 25, 0, 0, 0);
+        $this->assertCarbon($d->copy()->endOfWeek(), 2016, 7, 31, 23, 59, 59);
+    }
+
+    /**
+     * @see https://github.com/briannesbitt/Carbon/issues/735
+     */
+    public function testStartOrEndOfWeekFromWeekWithOtherTimezone()
+    {
+        $d = Carbon::create(2016, 7, 27, 17, 13, 7, 'America/New_York');
+        $this->assertCarbon($d->copy()->startOfWeek(), 2016, 7, 25, 0, 0, 0);
+        $this->assertCarbon($d->copy()->endOfWeek(), 2016, 7, 31, 23, 59, 59);
     }
 
     public function testNext()
@@ -287,5 +326,81 @@ class DayOfWeekModifiersTest extends AbstractTestCase
     {
         $d = Carbon::createFromDate(1975, 8, 5)->nthOfYear(3, 3);
         $this->assertCarbon($d, 1975, 1, 15, 0, 0, 0);
+    }
+
+    public function testNextWeekday()
+    {
+        // Friday to Monday
+        $d = Carbon::create(2016, 7, 15)->nextWeekday();
+        $this->assertCarbon($d, 2016, 7, 18);
+
+        // Saturday to Monday
+        $d = Carbon::create(2016, 7, 16)->nextWeekday();
+        $this->assertCarbon($d, 2016, 7, 18);
+
+        // Sunday to Monday
+        $d = Carbon::create(2016, 7, 16)->nextWeekday();
+        $this->assertCarbon($d, 2016, 7, 18);
+
+        // Monday to Tuesday
+        $d = Carbon::create(2016, 7, 17)->nextWeekday();
+        $this->assertCarbon($d, 2016, 7, 18);
+    }
+
+    public function testPreviousWeekday()
+    {
+        // Tuesday to Monday
+        $d = Carbon::create(2016, 7, 19)->previousWeekday();
+        $this->assertCarbon($d, 2016, 7, 18);
+
+        // Monday to Friday
+        $d = Carbon::create(2016, 7, 18)->previousWeekday();
+        $this->assertCarbon($d, 2016, 7, 15);
+
+        // Sunday to Friday
+        $d = Carbon::create(2016, 7, 17)->previousWeekday();
+        $this->assertCarbon($d, 2016, 7, 15);
+
+        // Saturday to Friday
+        $d = Carbon::create(2016, 7, 16)->previousWeekday();
+        $this->assertCarbon($d, 2016, 7, 15);
+    }
+
+    public function testNextWeekendDay()
+    {
+        // Thursday to Saturday
+        $d = Carbon::create(2016, 7, 14)->nextWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 16);
+
+        // Friday to Saturday
+        $d = Carbon::create(2016, 7, 15)->nextWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 16);
+
+        // Saturday to Sunday
+        $d = Carbon::create(2016, 7, 16)->nextWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 17);
+
+        // Sunday to Saturday
+        $d = Carbon::create(2016, 7, 17)->nextWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 23);
+    }
+
+    public function testPreviousWeekendDay()
+    {
+        // Thursday to Sunday
+        $d = Carbon::create(2016, 7, 14)->previousWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 10);
+
+        // Friday to Sunday
+        $d = Carbon::create(2016, 7, 15)->previousWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 10);
+
+        // Saturday to Sunday
+        $d = Carbon::create(2016, 7, 16)->previousWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 10);
+
+        // Sunday to Saturday
+        $d = Carbon::create(2016, 7, 17)->previousWeekendDay();
+        $this->assertCarbon($d, 2016, 7, 16);
     }
 }
