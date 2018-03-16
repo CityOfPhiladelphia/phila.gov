@@ -351,8 +351,8 @@ class Phila_Gov_Standard_Metaboxes {
           'columns' => 12,
           'required' => $required
          ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link URL', 'link_url' ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_external('', 'is_external' ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_url('URL', 'link_url', '', 6 ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_external($name = '', $id = 'is_external', 6 ),
       )
     );
   }
@@ -535,9 +535,12 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       'name'  => $name,
       'id'    => $id,
-      'type'  => 'checkbox',
+      'type'  => 'switch',
+      'on_label'  => 'Yes',
+      'off_label' => 'No',
       'desc'  => 'Does this link direct users away from phila.gov?',
-      'columns' => $columns
+      'columns' => $columns,
+      'class' => 'is-external',
     );
   }
 
@@ -594,14 +597,9 @@ class Phila_Gov_Standard_Metaboxes {
         'id'    => 'phila_action_panel_link_multi',
         'type'  => 'text',
         'class' => 'action-panel-link',
+        'columns' => 6,
       ),
-      array(
-        'name'  => 'External Link',
-        'id'    => 'phila_action_panel_link_loc_multi',
-        'type'  => 'checkbox',
-        'class' => 'action-panel-link-loc',
-        'desc'  => 'Does this link directs users away from beta.phila.gov?',
-      )
+      Phila_Gov_Standard_Metaboxes::phila_metabox_external($name = '', $id = 'phila_action_panel_link_loc_multi', 6),
     );
   }
 
@@ -678,14 +676,9 @@ class Phila_Gov_Standard_Metaboxes {
                  'id'    => 'phila_action_panel_link_multi',
                  'type'  => 'text',
                  'class' => 'action-panel-link',
+                 'columns'  => 6,
                ),
-               array(
-                 'name'  => 'External link',
-                 'id'    => 'phila_action_panel_link_loc_multi',
-                 'type'  => 'checkbox',
-                 'class' => 'action-panel-link-loc',
-                 'desc'  => 'Does this link directs users away from beta.phila.gov?',
-               ),
+               Phila_Gov_Standard_Metaboxes::phila_metabox_external($name = '', $id = 'phila_action_panel_link_loc_multi', 6)
              ),
            ),
            array(
@@ -900,7 +893,6 @@ public static function phila_meta_var_connect(){
             'desc' => 'example@phila.gov',
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link', false),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link', 'connect_see_all'),
         ),
       )
     );
