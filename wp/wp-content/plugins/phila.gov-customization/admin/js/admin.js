@@ -51,10 +51,8 @@ jQuery(document).ready(function($) {
     if ( typenow == 'attachment' && adminpage.indexOf( 'post' ) > -1 ) {
       jQuery( '#edit-slug-box' ).hide();
     }
-    //remove attachment from post type list
-    delete philaAllPostTypes[2];
 
-    if ( philaAllPostTypes.indexOf( typenow ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
+    if ( ( typenow != 'attachment' ) && adminpage.indexOf( 'post' ) > -1 )  {
 
       $('#post').validate({
         rules: {
@@ -198,8 +196,8 @@ jQuery(document).ready(function($) {
     });
 
   }
-  //Force category selection on all content types, except for attachments
-  if ( ( typenow != 'attachment' ) && adminpage.indexOf( 'post' ) > -1 )  {
+  //Force category selection on all content types
+  if ( ( typenow != 'attachment' ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
 
     $( 'input[name="post_category[]"]' ).rules( 'add', {
          'required': true
