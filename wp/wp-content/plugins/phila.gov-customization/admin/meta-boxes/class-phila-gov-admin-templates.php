@@ -73,9 +73,11 @@ class Phila_Gov_Admin_Templates {
           ),
        ),
        array(
-        'desc'  => 'Should this page appear in the City government directory?',
+        'name'  => 'Should this page appear in the City government directory?',
         'id'    => 'phila_department_home_page',
-        'type'  => 'checkbox',
+        'type'  => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
         'hidden' => array(
           'when' => array(
             array('phila_template_select', '=', 'homepage_v2' ),

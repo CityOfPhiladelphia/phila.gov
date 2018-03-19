@@ -139,10 +139,11 @@ function phila_register_meta_boxes( $meta_boxes ){
          'name' => ' Release Date',
        ),
        array(
-         'name' => '',
          'id'   => 'phila_override_release_date',
-         'desc'  => 'Override all individual release dates on this document page with the date selected below?',
-         'type' => 'checkbox',
+         'name'  => 'Override all release dates on this page with the date below?',
+         'type' => 'switch',
+         'on_label'  => 'Yes',
+         'off_label' => 'No'
        ),
        array(
         'id'    => 'phila_document_released',
@@ -346,47 +347,6 @@ function phila_register_meta_boxes( $meta_boxes ){
         ),
       );
 
-  $meta_boxes[] = array(
-    'id'       => 'phila_custom_markup',
-    'title'    => 'Custom Markup',
-    'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
-    'context'  => 'normal',
-    'priority' => 'low',
-
-     'include' => array(
-       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-     ),
-
-    'fields' => array(
-      array(
-       'name' => 'Description',
-       'id'   => 'phila_custom_markup_description',
-       'type' => 'custom_html',
-       'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
-     ),
-     array(
-        'name' => 'Append to head',
-        'id'   => 'phila_append_to_head',
-        'type' => 'textarea'
-      ),
-      array(
-       'name' => 'Append before WYSIWYG',
-       'id'   => 'phila_append_before_wysiwyg',
-       'type' => 'textarea'
-     ),
-     array(
-       'name' => 'Append after WYSIWYG',
-       'id'   => 'phila_append_after_wysiwyg',
-       'type' => 'textarea'
-     ),
-     array(
-        'name' => 'Append after footer',
-        'id'   => 'phila_append_after_footer',
-        'type' => 'textarea'
-      ),
-   ),
- );
-
  // Hero Header
  $meta_boxes[] = array(
    'id'       => 'hero-header',
@@ -486,7 +446,7 @@ function phila_register_meta_boxes( $meta_boxes ){
    )
  );
 
- // First row of modules - recent posts, custom markup, call to action panel
+ // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
  $meta_boxes[] = array(
    'id'       => 'phila_module_row_1',
    'title'    => 'Two-thirds row',
@@ -647,8 +607,10 @@ function phila_register_meta_boxes( $meta_boxes ){
         array(
           'name'  => 'Icon Background Circle',
           'id'    => 'phila_action_panel_fa_circle',
-          'type'  => 'checkbox',
+          'type'  => 'switch',
           'class' => 'action-panel-fa',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
         ),
         array(
           'name'  => 'Link to Content',
@@ -657,11 +619,12 @@ function phila_register_meta_boxes( $meta_boxes ){
           'class' => 'action-panel-link',
         ),
         array(
-          'name'  => 'External Link',
+          'name'  => 'This link directs users away from beta.phila.gov',
           'id'    => 'phila_action_panel_link_loc',
-          'type'  => 'checkbox',
+          'type'  => 'switch',
           'class' => 'action-panel-link-loc',
-          'desc'  => 'This link directs users away from beta.phila.gov',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
           ),
         ),
       ),
@@ -704,7 +667,8 @@ $meta_boxes[] = array(
     'title'    => 'Staff Directory Listing',
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
-    'priority' => 'low',
+    'priority' => 'default',
+
 
     'include' => array(
       'user_role'  => array(
@@ -719,10 +683,11 @@ $meta_boxes[] = array(
 
     'fields' => array(
       array(
-        'name' => '',
         'id'   => 'phila_staff_directory_selected',
-        'desc'  => 'Include a staff directory list?',
-        'type' => 'checkbox',
+        'name'  => 'Display a staff directory list?',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
         'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
       ),
       array(
@@ -740,7 +705,8 @@ $meta_boxes[] = array(
     'title'    => 'Full row press releases posts (3 total)',
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
-    'priority' => 'low',
+    'priority' => 'default',
+
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
@@ -754,17 +720,18 @@ $meta_boxes[] = array(
 
     'fields' => array(
       array(
-        'name' => '',
+        'name'  => 'Display a full row of press releases?',
         'id'   => 'phila_full_row_press_releases_selected',
-        'desc'  => 'Should this page show a full row of press releases?',
-        'type' => 'checkbox',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
         'after' => '<p class="description">Enter at least three press releases in the <a href="/wp-admin/edit.php?post_type=press_release">Press release</a> section.</p>'
       ),
       array(
         'id'  => 'phila_get_press_cats',
         'type' => 'group',
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_press_release_category', 'Display press releases from these categories. This will override page category selection entirely.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_press_release_category', 'Display press releases from these owners. This will override page ownership selection entirely.' ),
         ),
       ),
     ),
@@ -775,7 +742,7 @@ $meta_boxes[] = array(
     'title'    => 'Full row blog posts (3 total)',
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
-    'priority' => 'low',
+    'priority' => 'default',
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
@@ -789,17 +756,18 @@ $meta_boxes[] = array(
 
     'fields' => array(
       array(
-        'name' => '',
+        'name' => 'Display a full row of blog posts?',
         'id'   => 'phila_full_row_blog_selected',
-        'desc'  => 'Should this page show a full row of blog posts?',
-        'type' => 'checkbox',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
         'after' => '<p class="description">Enter at least three blog posts in the <a href="/wp-admin/edit.php?post_type=phila_post">Blog Post</a> section.</p>'
       ),
       array(
         'id'  => 'phila_get_post_cats',
         'type' => 'group',
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new categories', 'phila_post_category', 'Display posts from these categories. This will override page category selection entirely.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection entirely.' ),
         ),
       ),
     ),
@@ -1016,7 +984,9 @@ $meta_boxes[] = array(
     array(
       'id'  => 'display_prog_init',
       'desc'  => 'Should this page appear as "Related content" on the programs and initiatives landing page?',
-      'type'  => 'checkbox',
+      'type'  => 'switch',
+      'on_label'  => 'Yes',
+      'off_label' => 'No'
     )
   ),
 );
@@ -1034,8 +1004,10 @@ $meta_boxes[] = array(
     ),
     array(
       'id'  => 'phila_is_contextual',
-      'type' => 'checkbox',
-      'desc'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page title appended to them.'
+      'type' => 'switch',
+      'on_label'  => 'Yes',
+      'off_label' => 'No',
+      'name'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page\'s title appended to them.'
     ),
     array(
       'name' => 'Icon selection',
@@ -1203,7 +1175,7 @@ $meta_boxes[] = array(
       'type'  => 'group',
       'clone' => true,
       'max_clone' => 6,
-      'add_button'  => '+ Add a service',
+      'add_button'  => '+ Add another service link',
 
       'fields' => array(
         Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
@@ -1213,12 +1185,53 @@ $meta_boxes[] = array(
     ),
     array(
       'id' => 'phila_v2_service_link',
-      'title' => 'All services link',
-      'name'  => 'All services link',
+      'title' => 'All services url',
+      'name'  => 'All services url',
       'type'  => 'url',
       'class' => 'metabox-url',
     ),
   ),
+);
+
+$meta_boxes[] = array(
+  'id'       => 'phila_custom_markup',
+  'title'    => 'Custom Markup',
+  'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
+  'context'  => 'normal',
+  'priority' => 'low',
+
+   'include' => array(
+     'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+   ),
+
+  'fields' => array(
+    array(
+     'name' => 'Description',
+     'id'   => 'phila_custom_markup_description',
+     'type' => 'custom_html',
+     'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
+   ),
+   array(
+      'name' => 'Append to head',
+      'id'   => 'phila_append_to_head',
+      'type' => 'textarea'
+    ),
+    array(
+     'name' => 'Append before WYSIWYG',
+     'id'   => 'phila_append_before_wysiwyg',
+     'type' => 'textarea'
+   ),
+   array(
+     'name' => 'Append after WYSIWYG',
+     'id'   => 'phila_append_after_wysiwyg',
+     'type' => 'textarea'
+   ),
+   array(
+      'name' => 'Append after footer',
+      'id'   => 'phila_append_after_footer',
+      'type' => 'textarea'
+    ),
+ ),
 );
 
 
