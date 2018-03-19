@@ -778,7 +778,7 @@ $meta_boxes[] = array(
     'title' => 'Call to action cards',
     'pages' => array( 'department_page' ),
     'context' => 'normal',
-    'priority'  => 'low',
+    'priority' => 'default',
     'revision' => true,
 
     'include' => array(
