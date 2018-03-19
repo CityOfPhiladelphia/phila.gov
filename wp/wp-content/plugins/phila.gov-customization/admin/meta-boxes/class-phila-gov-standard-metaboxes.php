@@ -108,9 +108,11 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'desc'  => 'Include an address?',
+          'name'  => 'Include an address?',
           'id'  => 'phila_address_select',
-          'type'  => 'checkbox',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
         ),
         array(
           'id' => 'phila_std_address',
@@ -122,9 +124,11 @@ class Phila_Gov_Standard_Metaboxes {
           ),
         ),
         array(
-          'desc'  => 'Add stepped content?',
+          'name'  => 'Add stepped content?',
           'id'  => 'phila_stepped_select',
-          'type'  => 'checkbox'
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
         ),
         array(
           'id' => 'phila_stepped_content',
@@ -152,7 +156,7 @@ class Phila_Gov_Standard_Metaboxes {
         'name' => 'Calendar owner',
         'id'   => 'phila_calendar_owner',
         'type' => 'taxonomy_advanced',
-        'desc'  => 'Determines what owner filter will be applied when a user clicks "see all events". Default is this item\'s category.',
+        'desc'  => 'Determines what owner filter will be applied when a user clicks "see all events". Default is this item\'s owner.',
         'query_args' => array(
           'taxonomy' => 'category',
           'hide_empty' => false,
@@ -272,9 +276,11 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'desc'  => 'Include an address?',
+          'name'  => 'Include an address?',
           'id'  => 'phila_address_select',
-          'type'  => 'checkbox',
+          'type'  => 'slider',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
         ),
         array(
           'id' => 'phila_std_address',
@@ -313,9 +319,11 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
         ),
         array(
-          'desc'  => 'Does this step contain an address?',
+          'name'  => 'Does this step contain an address?',
           'id'  => 'phila_address_step',
-          'type'  => 'checkbox',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
         ),
         array(
           'id' => 'phila_std_address',
@@ -352,7 +360,7 @@ class Phila_Gov_Standard_Metaboxes {
           'required' => $required
          ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_url('URL', 'link_url', '', 6 ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_external($name = '', $id = 'is_external', 6 ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'is_external'),
       )
     );
   }
@@ -531,14 +539,13 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_external( $name, $id, $columns = '12' ){
+  public static function phila_metabox_external( $id, $columns = 12 ){
     return array(
-      'name'  => $name,
+      'name'  => 'Does this link direct users away from phila.gov?',
       'id'    => $id,
       'type'  => 'switch',
       'on_label'  => 'Yes',
       'off_label' => 'No',
-      'desc'  => 'Does this link direct users away from phila.gov?',
       'columns' => $columns,
       'class' => 'is-external',
     );
@@ -599,7 +606,7 @@ class Phila_Gov_Standard_Metaboxes {
         'class' => 'action-panel-link',
         'columns' => 6,
       ),
-      Phila_Gov_Standard_Metaboxes::phila_metabox_external($name = '', $id = 'phila_action_panel_link_loc_multi', 6),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi'),
     );
   }
 
@@ -663,12 +670,13 @@ class Phila_Gov_Standard_Metaboxes {
                  'class' => 'action-panel-fa',
                ),
                array(
-                 'name'  => 'Icon background',
+                 'name'  => 'Add a circle background?',
                  'id'    => 'phila_action_panel_fa_circle_multi',
-                 'type'  => 'checkbox',
+                 'type'  => 'switch',
                  'class' => 'action-panel-fa',
                  'std'  => 1,
-                 'desc'  => 'Should this icon have a circle background?',
+                 'on_label'  => 'Yes',
+                 'off_label' => 'No'
 
                ),
                array(
@@ -678,7 +686,7 @@ class Phila_Gov_Standard_Metaboxes {
                  'class' => 'action-panel-link',
                  'columns'  => 6,
                ),
-               Phila_Gov_Standard_Metaboxes::phila_metabox_external($name = '', $id = 'phila_action_panel_link_loc_multi', 6)
+               Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
              ),
            ),
            array(
@@ -893,6 +901,7 @@ public static function phila_meta_var_connect(){
             'desc' => 'example@phila.gov',
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link', false),
+
         ),
       )
     );
@@ -953,13 +962,17 @@ public static function phila_meta_var_connect(){
       Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
       array(
         'id' => 'cta_is_survey',
-        'desc'  => 'Is this a link to a survey or other form of feedback gathering?',
-        'type'  => 'checkbox',
+        'name'  => 'Is this a link to a survey or other form of feedback gathering?',
+        'type'  => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
       ),
       array(
         'id' => 'cta_is_modal',
-        'desc'  => 'Should this content appear in a modal?',
-        'type'  => 'checkbox',
+        'name'  => 'Should this content appear in a modal?',
+        'type'  => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
       ),
       array(
         'id'   => 'cta_modal',
