@@ -394,6 +394,9 @@ $meta_boxes[] = array(
     'pages'    => array( 'department_page' ),
     'context'  => 'side',
     'priority' => 'low',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+    ),
     'visible' => array(
       'when' => array(
         array('phila_template_select', 'homepage_v2'),
