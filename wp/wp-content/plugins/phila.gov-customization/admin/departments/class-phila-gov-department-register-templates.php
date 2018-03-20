@@ -68,6 +68,9 @@ class Phila_Gov_Deparment_Templates {
         'type'  => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
+        'include' => array(
+          'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+        ),
         'hidden' => array(
           'when' => array(
             array('phila_template_select', '=', 'homepage_v2' ),
