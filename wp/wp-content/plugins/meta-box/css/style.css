@@ -122,3 +122,22 @@ select.rwmb-error {
 #side-sortables .rwmb-input {
 	width: 100%;
 }
+
+/* Seamless style
+--------------------------------------------------------------*/
+.rwmb-seamless {
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+.rwmb-seamless .inside {
+	padding-left: 0;
+	padding-right: 0;
+}
+.postbox.rwmb-seamless .hndle,
+.postbox.rwmb-seamless .handlediv {
+	display: none;
+}
+.rwmb-seamless .rwmb-clone {
+	background: none;
+}

@@ -22,7 +22,6 @@ class Phila_Gov_Deparment_Templates {
  function register_template_selection_metabox_departments( $meta_boxes ){
 
   $meta_boxes[] = array(
-    'id'       => 'template_selection',
     'title'    => 'Select Templates',
     'pages'    => array( 'department_page' ),
     'context'  => 'advanced',
@@ -60,7 +59,7 @@ class Phila_Gov_Deparment_Templates {
           ),
           'admin_columns' => array(
             'position' => 'after date',
-            'title'    => __( 'Templates' ),
+            'title'    => __( 'Template' ),
             'sort'     => true,
           ),
        ),

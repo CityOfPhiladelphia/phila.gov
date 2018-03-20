@@ -260,10 +260,11 @@ $meta_boxes[] = array(
 
       'fields' => array(
           array(
-            'name' => '',
+            'name' => 'Display a Programs and Initiatives grid?',
             'id'   => 'phila_progs_inits_grid_shown',
-            'desc'  => 'Should this page show Programs and Initiatives Grid?',
-            'type' => 'checkbox'
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No'
           )
       )
     );//Things To Do
@@ -278,10 +279,11 @@ $meta_boxes[] = array(
 
       'fields' => array(
           array(
-            'name' => '',
+            'name' => 'Display a Featured Activities grid?',
             'id'   => 'phila_feat_activites_grid_shown',
-            'desc'  => 'Should this page show the Featured Activities Grid?',
-            'type' => 'checkbox'
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
           )
       )
     );
@@ -297,10 +299,11 @@ $meta_boxes[] = array(
 
       'fields' => array(
           array(
-            'name' => '',
+            'name' => 'Display a Featured Locations grid?',
             'id'   => 'phila_feat_locations_grid_shown',
-            'desc'  => 'Should this page show the Featured Locations Grid?',
-            'type' => 'checkbox'
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
           ),
           array(
             'id' => 'phila_feat_locations_grid__header',

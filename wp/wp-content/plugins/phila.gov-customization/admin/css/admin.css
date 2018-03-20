@@ -18,6 +18,25 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   width:10%;
 }
 
+/*Clean up admin */
+#phila_module_row_1 .rwmb-column .rwmb-label,
+.rwmb-group-clone .rwmb-column .rwmb-label{
+  width:25%;
+}
+#phila_module_row_1 .rwmb-column .rwmb-label ~ .rwmb-input,
+.rwmb-group-clone .rwmb-label ~ .rwmb-input{
+  width:75%;
+}
+
+.rwmb-group-clone .rwmb-group-wrapper .rwmb-label {
+  padding: 0 0 20px 0;
+}
+
+.rwmb-field .rwmb-row {
+  margin-bottom:10px;
+}
+
+
 .manage-column.column-wpfront-user-role-editor-role-permission-column-key, .column-wpfront-user-role-editor-role-permission-column-key {
   width: 15%;
   text-align: left;
