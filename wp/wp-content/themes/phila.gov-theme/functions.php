@@ -1510,8 +1510,8 @@ add_filter('the_content', 'add_lightbox_rel');
 function add_lightbox_rel($content) {
   global $post;
   $count = 0;
-  $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)(.*?)\">/i";
-  $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link lightbox-all" data-open="phila-lightbox">';
+  $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)\"/i";
+  $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link lightbox-all" data-open="phila-lightbox"';
   $content = preg_replace($pattern, $replacement, $content);
   return $content;
 }
