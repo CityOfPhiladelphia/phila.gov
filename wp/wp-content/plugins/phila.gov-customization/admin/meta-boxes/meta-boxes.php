@@ -983,7 +983,7 @@ $meta_boxes[] = array(
   'fields'  => array(
     array(
       'id'  => 'display_prog_init',
-      'desc'  => 'Should this page appear as "Related content" on the programs and initiatives landing page?',
+      'name'  => 'Should this page appear as "Related content" on the programs and initiatives landing page?',
       'type'  => 'switch',
       'on_label'  => 'Yes',
       'off_label' => 'No'
@@ -1007,7 +1007,9 @@ $meta_boxes[] = array(
       'type' => 'switch',
       'on_label'  => 'Yes',
       'off_label' => 'No',
-      'name'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page\'s title appended to them.'
+      'name'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page\'s title appended to them.',
+      'columns' => 6,
+
     ),
     array(
       'name' => 'Icon selection',
