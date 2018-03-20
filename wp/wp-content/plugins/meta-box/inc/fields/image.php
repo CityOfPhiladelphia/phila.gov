@@ -24,13 +24,14 @@ class RWMB_Image_Field extends RWMB_File_Field {
 	 * @param int   $file  Attachment (file) ID.
 	 * @param int   $index File index.
 	 * @param array $field Field data.
+	 *
 	 * @return string
 	 */
 	protected static function file_html( $file, $index, $field ) {
-		$attributes  = self::get_attributes( $field, $file );
+		$attributes = self::get_attributes( $field, $file );
 
 		return sprintf(
-			'<li class="rwmb-image-item attachment thumbnail">
+			'<li class="rwmb-image-item attachment %s">
 				<input type="hidden" name="%s[%s]" value="%s">
 				<div class="attachment-preview">
 					<div class="thumbnail">
@@ -45,11 +46,29 @@ class RWMB_Image_Field extends RWMB_File_Field {
 					<a href="#" class="rwmb-image-delete rwmb-file-delete" data-attachment_id="%s"><span class="dashicons dashicons-no-alt"></span></a>
 				</div>
 			</li>',
+			esc_attr( $field['image_size'] ),
 			$attributes['name'], $index, $file,
-			wp_get_attachment_image( $file, 'thumbnail' ),
+			wp_get_attachment_image( $file, $field['image_size'] ),
 			get_edit_post_link( $file ),
 			$file
 		);
+	}
+
+
+	/**
+	 * Normalize field settings.
+	 *
+	 * @param array $field Field settings.
+	 *
+	 * @return array
+	 */
+	public static function normalize( $field ) {
+		$field = parent::normalize( $field );
+		$field = wp_parse_args( $field, array(
+			'image_size' => 'thumbnail',
+		) );
+
+		return $field;
 	}
 
 	/**
@@ -63,17 +82,12 @@ class RWMB_Image_Field extends RWMB_File_Field {
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value, $args, $post_id ) {
-		$output = '<ul>';
-		foreach ( $value as $file ) {
-			$img = sprintf( '<img src="%s" alt="%s">', esc_url( $file['url'] ), esc_attr( $file['alt'] ) );
+		$output = sprintf( '<img src="%s" alt="%s">', esc_url( $value['url'] ), esc_attr( $value['alt'] ) );
 
-			// Link thumbnail to full size image?
-			if ( isset( $args['link'] ) && $args['link'] ) {
-				$img = sprintf( '<a href="%s" title="%s">%s</a>', esc_url( $file['full_url'] ), esc_attr( $file['title'] ), $img );
-			}
-			$output .= "<li>$img</li>";
+		// Link thumbnail to full size image?
+		if ( ! empty( $args['link'] ) ) {
+			$output = sprintf( '<a href="%s" title="%s">%s</a>', esc_url( $value['full_url'] ), esc_attr( $value['title'] ), $output );
 		}
-		$output .= '</ul>';
 		return $output;
 	}
 

@@ -58,6 +58,9 @@ class RW_Meta_Box {
 		}
 
 		$this->meta_box['fields'] = self::normalize_fields( $meta_box['fields'], $storage );
+
+		$this->meta_box = apply_filters( 'rwmb_meta_box_settings', $this->meta_box );
+
 		if ( $this->is_shown() ) {
 			$this->global_hooks();
 			$this->object_hooks();
@@ -141,6 +144,10 @@ class RW_Meta_Box {
 			wp_enqueue_style( 'rwmb-rtl', RWMB_CSS_URL . 'style-rtl.css', array(), RWMB_VER );
 		}
 
+		if ( 'seamless' === $this->style ) {
+			wp_enqueue_script( 'rwmb', RWMB_JS_URL . 'script.js', array( 'jquery' ), RWMB_VER, true );
+		}
+
 		// Load clone script conditionally.
 		foreach ( $this->fields as $field ) {
 			if ( $field['clone'] ) {
@@ -208,7 +215,8 @@ class RW_Meta_Box {
 
 		// Container.
 		printf(
-			'<div class="rwmb-meta-box" data-autosave="%s" data-object-type="%s">',
+			'<div class="rwmb-meta-box%s" data-autosave="%s" data-object-type="%s">',
+			esc_attr( 'seamless' === $this->style ? ' rwmb-meta-box--seamless' : '' ),
 			esc_attr( $this->autosave ? 'true' : 'false' ),
 			esc_attr( $this->object_type )
 		);
@@ -303,8 +311,7 @@ class RW_Meta_Box {
 	public function validate() {
 		$nonce = filter_input( INPUT_POST, "nonce_{$this->id}", FILTER_SANITIZE_STRING );
 
-		return
-			! $this->saved
+		return ! $this->saved
 			&& ( ! defined( 'DOING_AUTOSAVE' ) || $this->autosave )
 			&& wp_verify_nonce( $nonce, "rwmb-save-{$this->id}" );
 	}
@@ -325,6 +332,7 @@ class RW_Meta_Box {
 			'post_types'     => 'post',
 			'autosave'       => false,
 			'default_hidden' => false,
+			'style'          => 'default',
 		) );
 
 		/**

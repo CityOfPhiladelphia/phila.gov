@@ -120,11 +120,17 @@ jQuery( function ( $ ) {
 	MediaField = views.MediaField = Backbone.View.extend( {
 		className: 'rwmb-media-view',
 		initialize: function ( options ) {
-			var that = this;
+			var that = this,
+				fieldName = options.input.name;
 			this.$input = $( options.input );
+
+			if ( 1 != this.$input.attr( 'data-single-image' ) ) {
+				fieldName += '[]';
+			}
+
 			this.controller = new Controller( _.extend(
 				{
-					fieldName: this.$input.attr( 'name' ) + '[]',
+					fieldName: fieldName,
 					ids: this.$input.val().split( ',' )
 				},
 				this.$input.data( 'options' )
