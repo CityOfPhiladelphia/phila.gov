@@ -977,7 +977,7 @@ public static function phila_meta_var_connect(){
       array(
         'id'   => 'cta_modal',
         'type'  => 'group',
-        'visible' => array( 'cta_is_modal', true ),
+        'visible' => array( 'cta_is_modal', 1 ),
 
         'fields' => array(
           array(
