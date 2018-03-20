@@ -45,15 +45,12 @@ if ( class_exists("Phila_Gov_Post" ) ){
        ),
        'fields' => array(
          array(
-           'name'  => '',
-           'desc'  => 'Feature this item in the latest?',
+           'name'  => 'Feature this item in the latest and on the homepage?',
            'id'    => 'phila_is_feature',
-           'type'  => 'radio',
+           'type'  => 'switch',
            'std'=> '0',
-           'options' =>  array(
-               '0' => 'No',
-               '1' => 'Yes'
-           )
+           'on_label'  => 'Yes',
+           'off_label' => 'No',
          ),
        )
     );
