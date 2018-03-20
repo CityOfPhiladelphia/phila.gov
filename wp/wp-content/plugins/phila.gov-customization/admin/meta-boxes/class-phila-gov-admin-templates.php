@@ -30,9 +30,8 @@ class Phila_Gov_Admin_Templates {
  function register_template_selection_metabox_departments( $meta_boxes ){
 
   $meta_boxes[] = array(
-    'id'       => 'template_selection',
     'title'    => 'Select Template',
-    'pages'    => array( 'department_page' ),
+    'post_types'    => array( 'department_page' ),
     'context'  => 'advanced',
     'priority' => 'high',
 
@@ -69,7 +68,6 @@ class Phila_Gov_Admin_Templates {
           'admin_columns' => array(
             'position' => 'after date',
             'title'    => __( 'Template' ),
-            'sort'     => true,
           ),
        ),
        array(
@@ -137,9 +135,9 @@ class Phila_Gov_Admin_Templates {
   function register_template_selection_metabox_service_pages( $meta_boxes ){
 
     $meta_boxes[] = array(
-      'id'       => 'page_template_selection',
+      'id'       => 'service_template_selection',
       'title'    => 'Select Template',
-      'pages'    => array( 'service_page' ),
+      'post_types'    => array( 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
       'fields' => array(
@@ -168,9 +166,8 @@ class Phila_Gov_Admin_Templates {
   function register_template_selection_metabox_posts( $meta_boxes ){
 
     $meta_boxes[] = array(
-      'id'       => 'page_template_selection',
       'title'    => 'Select Template',
-      'pages'    => array( 'post' ),
+      'post_types'    => array( 'post' ),
       'context'  => 'advanced',
       'priority' => 'high',
       'fields' => array(
