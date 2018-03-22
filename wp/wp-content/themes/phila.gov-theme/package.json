@@ -41,7 +41,7 @@
     "browserify-shim": "^3.8.14",
     "envify": "^4.1.0",
     "node-sass": "^4.8.3",
-    "postcss": "^6.0.20",
+    "postcss": "^6.0.21",
     "vueify": "^9.4.0"
   },
   "dependencies": {
