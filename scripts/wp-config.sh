@@ -64,6 +64,9 @@ define('GOOGLE_CALENDAR', '$GOOGLE_CALENDAR');
 /** Don't let stuff sit around too long */
 define('EMPTY_TRASH_DAYS', 7);
 
+/** Disable WP cron, it runs on every page load! */
+define('DISABLE_WP_CRON', true);
+
 /** We manually update WP, so disable auto updates */
 define('WP_AUTO_UPDATE_CORE', false);
 
