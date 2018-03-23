@@ -1,8 +1,8 @@
 <template>
   <div id="publications">
-    <form v-on:submit.prevent="onSubmit">
+    <form v-on:submit.prevent>
       <div class="search">
-        <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field" ref="search-field"
+        <input id="post-search" type="text" name="search" placeholder="Begin typing to filter by title" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
@@ -16,7 +16,7 @@
             placeholder="Start date"
             v-on:closed="runDateQuery"
             v-model="state.startDate"
-            format="MMM. dd, yyyy"
+            format="MMM. dd, yyyy"z
             :disabled="state.disabled"></datepicker>
           </div>
           <div class="cell medium-1 small-2 mts">
@@ -56,7 +56,7 @@
         <tr>
           <th class="title" @click="sort('title')">Title</th>
           <th class="date" @click="sort('date')">Publish date</th>
-          <th @click="sort('department')">Department</th>
+          <th class="department" @click="sort('department')">Department</th>
         </tr>
       </thead>
       <paginate name="documents"
@@ -185,29 +185,6 @@ export default {
     },
     goToDoc: function (link){
       window.location.href = link
-     },
-    onSubmit: function (event) {
-      this.loading = true
-
-      this.$nextTick(function () {
-        axios.get(pubsEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory,
-            'count': -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.documents = response.data
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
-        })
-      })
     },
     reset() {
       //this.loading = true
@@ -295,7 +272,13 @@ export default {
        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
      }
      this.currentSort = s;
-   }
+   },
+   filteredList: function ( list, searchedVal ) {
+     let searched = this.searchedVal.trim()
+     return list.filter((document) => {
+        return document.title.toLowerCase().indexOf(searched.toLowerCase()) > -1
+     })
+   },
   },
   computed:{
     successfulResponse: function(){
@@ -310,13 +293,13 @@ export default {
       }
     },
     sortedDocuments:function() {
-      return this.documents.sort((a,b) => {
+      return this.filteredList(this.documents.sort((a,b) => {
         let modifier = 1;
         if(this.currentSortDir === 'desc') modifier = -1;
         if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
         if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
         return 0;
-      });
+      }), this.searchedVal)
     }
   }
 
