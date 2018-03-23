@@ -16,7 +16,7 @@
             placeholder="Start date"
             v-on:closed="runDateQuery"
             v-model="state.startDate"
-            format="MMM. dd, yyyy"z
+            format="MMM. dd, yyyy"
             :disabled="state.disabled"></datepicker>
           </div>
           <div class="cell medium-1 small-2 mts">
@@ -86,6 +86,7 @@
     <paginate-links for="documents"
     :limit="3"
     :show-step-links="true"
+    :hide-single-page="true"
     :step-links="{
       next: 'Next',
       prev: 'Previous'
@@ -151,9 +152,26 @@ export default {
     }
   },
   mounted: function () {
-    this.getAllDocs()
+    //this.getAllDocs()
     this.getDropdownCategories()
     this.loading = true
+  },
+  created: function(){
+    this.loading = true
+
+    axios.get(pubsEndpoint + 'archives', {
+      params: {
+        'count': -1,
+      }
+    })
+    .then(response => {
+      this.documents = response.data
+      this.successfulResponse
+    })
+    .catch(e => {
+      this.failure = true
+      this.loading = false
+    })
   },
   methods: {
     getAllDocs: function () {
@@ -187,30 +205,13 @@ export default {
       window.location.href = link
     },
     reset() {
-      //this.loading = true
-      //console.log(this.$refs.categorySelect)
-      //console.log(this.$refs.categorySelect.$el.textContent)
-      window.location = window.location.pathname;
-      /*this.selectedCategory = ''
-      axios.get(pubsEndpoint + 'archives', {
-       params : {
-          'count': -1
-        }
-      })
-        .then(response => {
-          this.documents = response.data
-          this.loading = false
-          this.searchedVal = ''
-          this.checkedTemplates = ''
-          this.selectedCategory = ''
-          this.state.startDate = ''
-          this.state.endDate = ''
-        })
-        .catch(e => {
-          this.failure = true
-      })
-      this.$forceUpdate();
-      */
+      console.log('Reseting the form')
+      var self = this; //you need this because *this* will refer to Object.keys below`
+
+      this.searchedVal = ''
+      this.state.startDate = ''
+      this.state.endDate = ''
+
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
