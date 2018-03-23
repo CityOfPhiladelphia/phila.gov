@@ -53,10 +53,14 @@
 
     <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
-        <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
+        <tr>
+          <th class="title" @click="sort('title')">Title</th>
+          <th class="date" @click="sort('date')">Publish date</th>
+          <th @click="sort('department')">Department</th>
+        </tr>
       </thead>
       <paginate name="documents"
-        :list="documents"
+        :list="sortedDocuments"
         class="paginate-list"
         tag="tbody"
         :per="40">
@@ -78,6 +82,7 @@
         </tr>
       </paginate>
     </table>
+    debug: sort={{currentSort}}, dir={{currentSortDir}}
     <paginate-links for="documents"
     :limit="3"
     :show-step-links="true"
@@ -110,6 +115,9 @@ export default {
     return{
       documents: [],
       categories: [{ }],
+
+      currentSort:'date',
+      currentSortDir:'desc',
 
       selectedCategory: '',
 
@@ -281,6 +289,13 @@ export default {
         })
       })
     },
+    sort: function( s ) {
+      //if s == current sort, reverse
+     if(s === this.currentSort) {
+       this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+     }
+     this.currentSort = s;
+   }
   },
   computed:{
     successfulResponse: function(){
@@ -294,7 +309,16 @@ export default {
         this.failure = false
       }
     },
-  },
+    sortedDocuments:function() {
+      return this.documents.sort((a,b) => {
+        let modifier = 1;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      });
+    }
+  }
 
 }
 </script>
