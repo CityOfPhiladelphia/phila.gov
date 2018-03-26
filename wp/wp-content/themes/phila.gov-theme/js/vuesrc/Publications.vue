@@ -54,9 +54,13 @@
     <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
         <tr>
-          <th class="title" @click="sort('title')">Title</th>
-          <th class="date" @click="sort('date')">Publish date</th>
-          <th class="department" @click="sort('department')">Department</th>
+          <th class="table-sort title"
+          @click="sort('title')" v-bind:class="sortTitle"><span>Title</span></th>
+
+          <th class="table-sort date"
+          @click="sort('date')"
+          v-bind:class="sortDate"><span>Publish date</span></th>
+          <th class="department">Department</th>
         </tr>
       </thead>
       <paginate name="documents"
@@ -118,6 +122,7 @@ export default {
 
       currentSort:'date',
       currentSortDir:'desc',
+
       selected: null,
 
       selectedCategory: '',
@@ -266,12 +271,13 @@ export default {
           this.loading = false
       })
     },
-    sort: function( s ) {
-      //if s == current sort, reverse
-     if(s === this.currentSort) {
-       this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
-     }
-     this.currentSort = s;
+    sort: function( column ) {
+      console.log( column )
+      //if column == current sort, reverse
+      if(column === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+      this.currentSort = column;
    },
    filteredList: function ( list, searchedVal ) {
      let searched = this.searchedVal.trim()
@@ -281,6 +287,17 @@ export default {
    },
   },
   computed:{
+    sortTitle: function(clicked){
+      if (this.currentSort == 'title') {
+        return this.currentSortDir
+      }
+    },
+    sortDate: function(){
+      if (this.currentSort == 'date'){
+        return this.currentSortDir
+      }
+
+    },
     successfulResponse: function(){
       if (this.documents.length == 0) {
         this.emptyResponse = true
