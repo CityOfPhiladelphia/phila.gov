@@ -458,9 +458,9 @@ function phila_get_menu() {
       'before'          => '',
       'after'           => '',
       'items_wrap'      => '
-      <div class="row">
+      <div class="row center">
         <div class="small-24 columns">
-          <div class="mbm-mu" id="site-nav">
+          <div id="site-nav">
             <nav data-swiftype-index="false">
               <ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown">%3$s</ul>
               </nav>
