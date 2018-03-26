@@ -33,7 +33,6 @@
           </div>
           <div class="cell medium-9 small-24 auto filter-by-owner">
             <v-select
-            ref="categorySelect"
             label="slang_name"
             placeholder="All departments"
             :options="categories"
@@ -82,7 +81,6 @@
         </tr>
       </paginate>
     </table>
-    debug: sort={{currentSort}}, dir={{currentSortDir}}
     <paginate-links for="documents"
     :limit="3"
     :show-step-links="true"
@@ -139,8 +137,6 @@ export default {
           from: new Date()
         }
       },
-
-      //queriedCategory: this.$route.query.category
 
     }
   },
@@ -205,12 +201,13 @@ export default {
       window.location.href = link
     },
     reset() {
-      console.log('Reseting the form')
-      var self = this; //you need this because *this* will refer to Object.keys below`
 
       this.searchedVal = ''
       this.state.startDate = ''
       this.state.endDate = ''
+      this.selectedCategory = ''
+      this.runDateQuery()
+      this.filterByCategory()
 
     },
     runDateQuery(){
@@ -238,33 +235,32 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
-      this.selectedCategory = selectedVal
+      if (selectedVal == null){
+        this.selectedCategory = ''
+      }else{
+        this.selectedCategory = selectedVal.id
+      }
 
-      this.$nextTick(function () {
+      this.loading = true
 
-        this.loading = true
-
-        axios.get(pubsEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory.id,
-            'count' : -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.loading = false
-            //Don't let empty value change the rendered view
-            if ( 'id' in selectedVal ){
-              this.documents = response.data
-            }
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
+      axios.get(pubsEndpoint + 'archives', {
+        params : {
+          's': this.searchedVal,
+          'category': this.selectedCategory,
+          'count' : -1,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
+          }
         })
+        .then(response => {
+          this.loading = false
+          this.documents = response.data
+
+          this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+          this.loading = false
       })
     },
     sort: function( s ) {
@@ -301,7 +297,7 @@ export default {
         if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
         return 0;
       }), this.searchedVal)
-    }
+    },
   }
 
 }
