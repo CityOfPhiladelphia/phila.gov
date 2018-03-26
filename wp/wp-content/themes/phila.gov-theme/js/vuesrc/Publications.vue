@@ -155,7 +155,6 @@ export default {
     }
   },
   mounted: function () {
-    //this.getAllDocs()
     this.getDropdownCategories()
     this.loading = true
   },
@@ -177,24 +176,6 @@ export default {
     })
   },
   methods: {
-    getAllDocs: function () {
-      this.loading = true
-
-      axios.get(pubsEndpoint + 'archives', {
-        params: {
-          'count': -1,
-        }
-      })
-      .then(response => {
-        this.documents = response.data
-        this.successfulResponse
-      })
-      .catch(e => {
-        this.failure = true
-        this.loading = false
-      })
-
-    },
     getDropdownCategories: function () {
       axios.get('/wp-json/the-latest/v1/categories')
       .then(response => {
