@@ -436,7 +436,7 @@ function phila_get_thumbnails(){
   }
 }
 
-function phila_get_department_menu() {
+function phila_get_menu() {
   /*
     Set the menus. Menus are created when a page is registered with a homepage template. Look for the furthest ancestor, get its ID and if there is a menu registered, display it.
   */
