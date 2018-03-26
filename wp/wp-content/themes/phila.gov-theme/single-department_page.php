@@ -82,7 +82,7 @@ get_header(); ?>
           This checks to make sure a category exists for the given page,
           if it does, we render our menu w/ markup.
           */
-            phila_get_department_menu();
+            phila_get_menu();
         }
         ?>
       <?php endif; ?>
