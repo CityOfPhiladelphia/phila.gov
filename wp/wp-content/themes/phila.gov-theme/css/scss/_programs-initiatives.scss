@@ -61,3 +61,80 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.program #site-nav {
+  text-align: left;
+  @include breakpoint(medium up) {
+    margin-bottom:0;
+    margin-top:-15px;
+    text-align: center;
+    .menu{
+      display: inline-block;
+    }
+    .secondary-menu {
+      border: 3px solid white;
+      background: white;
+
+      .dropdown li{
+        border-bottom:2px solid white;
+        &:last-child{
+          border-bottom:2px solid white;
+        }
+      }
+      >li {
+        display: inline-block;
+        background-color: color(ben-franklin-blue);
+        &.opens-right{
+          >a {
+            padding: $spacing-small $spacing-large;
+          }
+          > a::after{
+            display: inline;
+            margin: auto 0;
+            left: 5px;
+            position: relative;
+            float: none;
+            top: 10px;
+            bottom: 0;
+          }
+          &.is-active,
+          &.current-menu-ancestor{
+            > a{
+              background: color(dark-gray);
+              color:white;
+            }
+          }
+        }
+        >a {
+          color: white;
+          padding: $spacing-small $spacing-medium;
+        }
+      }
+      a {
+        border:none;
+        &:hover, &:active {
+          background: color(dark-gray);
+          color:white;
+        }
+      }
+      .is-dropdown-submenu {
+        top: auto;
+        left:0;
+        a{
+          background: color(ghost-gray);
+          color:color(ben-franklin-blue);
+          &:hover, &:active {
+            background: color(dark-gray);
+            color:white;
+          }
+        }
+      }
+      .current-menu-item {
+        > a{
+          background: color(dark-gray);
+          color:white;
+        }
+      }
+    }
+  }
+}
