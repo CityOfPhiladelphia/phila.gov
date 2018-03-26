@@ -55,28 +55,46 @@ function phila_gov_setup() {
   //Staff Directory thumbnails
   add_image_size( 'staff-thumb', 400, 400, true );
 
-
-  // This theme uses wp_nav_menu() in any number of locations.
+  // This theme uses wp_nav_menu() in any template that registers a "homepage" template.
   add_action( 'init', 'phila_register_category_menus' );
 
     function phila_register_category_menus() {
 
-        $phila_menu_cat_args = array(
-            'type'                     => 'post',
-            'child_of'                 => 0,
-            'parent'                   => '',
-            'orderby'                  => 'name',
-            'order'                    => 'ASC',
-            'hide_empty'               => false,
-            'hierarchical'             => false,
-            'taxonomy'                 => 'category',
-            'pad_counts'               => false
-        );
+      $get_possible_pages = array(
+      	'post_type' => array('department_page', 'programs'),
+        'posts_per_page'  => -1,
+        'order' => 'asc',
+        'orderby' => 'title',
+        'meta_query' => array(
+      		'relation' => 'OR',
+      		array(
+      			'key'     => 'phila_template_select',
+      			'value'   => 'prog_landing_page',
+      			'compare' => '=',
+      		),
+      		array(
+      			'key'     => 'phila_template_select',
+      			'value'   => 'homepage_v2',
+      			'compare' => '=',
+      		),
+          array(
+            'key'     => 'phila_template_select',
+            'value'   => 'department_homepage',
+            'compare' => '=',
+          ),
+      	),
+      );
+      $query = new WP_Query( $get_possible_pages );
 
-        $phila_get_menu_cats = get_categories( $phila_menu_cat_args );
-        foreach ( $phila_get_menu_cats as $phila_category ) {
-            register_nav_menus( array( 'menu-' . $phila_category->term_id => $phila_category->name ) );
-        }
+      // The Loop
+      if ( $query->have_posts() ) {
+      	while ( $query->have_posts() ) {
+      		$query->the_post();
+          register_nav_menus( array( 'menu-' . get_the_id() => get_the_title() . ' (' . get_post_type_object(get_post_type())->labels->singular_name . ')' ) );
+      	}
+      	/* Restore original Post Data */
+      	wp_reset_postdata();
+      }
     }
 
   /*
@@ -420,43 +438,40 @@ function phila_get_thumbnails(){
 
 function phila_get_department_menu() {
   /*
-    Set the menus. We use categories to drive functionality.
-    Pass the current category (there should only ever be 1)
-    as the menu-id.
+    Set the menus. Menus are created when a page is registered with a homepage template. Look for the furthest ancestor, get its ID and if there is a menu registered, display it.
   */
   global $post;
-  $categories = get_the_category($post->ID);
-  if ( ! empty( $categories ) ){
-    if ( ! $categories[0]->cat_slug == 'Uncategorized' ){
-      $current_cat = $categories[0]->cat_ID;
-      $defaults = array(
-          'theme_location'  => 'menu-' . $current_cat,
-          'menu'            => '',
-          'container'       => '',
-          'container_class' => '',
-          'container_id'    => '',
-          'menu_class'      => 'secondary-menu vertical medium-horizontal menu dropdown',
-          'menu_id'         => '',
-          'echo'            => true,
-          'fallback_cb'     => false,//if there is no menu, output nothing
-          'before'          => '',
-          'after'           => '',
-          'items_wrap'      => '
-          <div class="row">
-            <div class="small-24 columns">
-              <div class="mbm-mu" id="site-nav">
-                <nav data-swiftype-index="false">
-                  <ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown">%3$s</ul>
-                  </nav>
-                </div>
-                </div>
-              </div>',
-          'depth'           => 0,
-          'walker'          => new phila_gov_walker_nav_menu
-      );
-      wp_nav_menu( $defaults );
-    }
-  }
+  $parents = get_post_ancestors( $post->ID );
+  $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+  $parent = get_post( $id );
+
+  $defaults = array(
+      'theme_location'  => 'menu-' . $parent->ID,
+      'menu'            => '',
+      'container'       => '',
+      'container_class' => '',
+      'container_id'    => '',
+      'menu_class'      => 'secondary-menu vertical medium-horizontal menu dropdown',
+      'menu_id'         => '',
+      'echo'            => true,
+      'fallback_cb'     => false, //if there is no menu, output nothing
+      'before'          => '',
+      'after'           => '',
+      'items_wrap'      => '
+      <div class="row">
+        <div class="small-24 columns">
+          <div class="mbm-mu" id="site-nav">
+            <nav data-swiftype-index="false">
+              <ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown">%3$s</ul>
+              </nav>
+            </div>
+            </div>
+          </div>',
+      'depth'           => 0,
+      'walker'          => new phila_gov_walker_nav_menu
+  );
+  wp_nav_menu( $defaults );
+
 }
 
 
