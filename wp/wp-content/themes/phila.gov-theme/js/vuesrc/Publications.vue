@@ -35,6 +35,7 @@
             <v-select
             label="slang_name"
             placeholder="All departments"
+            v-model="selected"
             :options="categories"
             :on-change="filterByCategory">
             </v-select>
@@ -117,6 +118,7 @@ export default {
 
       currentSort:'date',
       currentSortDir:'desc',
+      selected: null,
 
       selectedCategory: '',
 
@@ -205,7 +207,8 @@ export default {
       this.searchedVal = ''
       this.state.startDate = ''
       this.state.endDate = ''
-      this.selectedCategory = ''
+      //a little convoluted, but will change the state of selected if the reset button is used mutiple times in a session
+      this.selected = (this.selected == null ? '' : null)
       this.runDateQuery()
       this.filterByCategory()
 
