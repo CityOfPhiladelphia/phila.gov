@@ -1,39 +1,48 @@
 /* searchable, sortable document table */
 
-.document-table{
-  .table-sort{
-    position: relative;
-    cursor: pointer;
-    color: white;
-    padding-right: 2rem;
+.table-sort{
+  position: relative;
+  cursor: pointer;
+  color: white;
+  padding-right: 2rem;
 
-    span::after{
-      position: absolute;
-      display: inline;
-      content: '';
-      margin: auto 10px auto;
-      width: 0;
-      height: 0;
-      border: inset 5px;
-      border-color: white transparent transparent;
-      border-top-style: solid;
-      border-bottom-width: 0;
-      float: none;
-      top: 0;
-      bottom: 0;
-      height: 10px;
-    }
+  span::after{
+    position: absolute;
+    display: inline;
+    content: '';
+    margin: auto 10px auto;
+    width: 0;
+    height: 0;
+    border: inset 5px;
+    border-color: white transparent transparent;
+    border-top-style: solid;
+    border-bottom-width: 0;
+    float: none;
+    top: 0;
+    bottom: 0;
+    height: 10px;
   }
-  .table-sort.asc {
-    span::after{
-      border-color: transparent transparent white;
-      border-bottom-style: solid;
-      border-bottom-width: 5px;
-    }
+}
+.table-sort.asc {
+  span::after{
+    border-color: transparent transparent white;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
   }
 }
 
+
 table.theme-light{
+  .table-sort {
+    span::after{
+      border-color: color(dark-gray) transparent transparent;
+    }
+    &.asc{
+      span::after{
+        border-color: transparent transparent color(dark-gray);
+      }
+    }
+  }
   thead{
     border-bottom:5px solid color(dark-gray);
     background: white;
@@ -84,7 +93,7 @@ table.theme-light{
       width:500px;
     }
     .date{
-      width:125px;
+      width:150px;
     }
   }
 }
