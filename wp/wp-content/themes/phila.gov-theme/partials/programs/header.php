@@ -56,4 +56,5 @@
         </div>
       </div>
   <?php endif; ?>
+  <?php phila_get_menu(); ?>
 </header>
