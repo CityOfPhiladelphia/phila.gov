@@ -65,6 +65,7 @@ function phila_gov_setup() {
         'posts_per_page'  => -1,
         'order' => 'asc',
         'orderby' => 'title',
+        'post_status' => 'any',
         'meta_query' => array(
       		'relation' => 'OR',
       		array(
@@ -90,7 +91,7 @@ function phila_gov_setup() {
       if ( $query->have_posts() ) {
       	while ( $query->have_posts() ) {
       		$query->the_post();
-          register_nav_menus( array( 'menu-' . get_the_id() => get_the_title() . ' (' . get_post_type_object(get_post_type())->labels->singular_name . ')' ) );
+          register_nav_menus( array( 'menu-' . get_the_id() => get_the_title() . ' - <span class="theme-location-set">' . get_post_type_object(get_post_type())->labels->singular_name . '</span>' ) );
       	}
       	/* Restore original Post Data */
       	wp_reset_postdata();
