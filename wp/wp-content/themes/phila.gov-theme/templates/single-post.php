@@ -112,7 +112,14 @@ $tweet_intent = rwmb_meta('phila_social_intent');
     'post_type' => $related_post_type,
     'category__and' => array($cat_id_string),
     'posts_per_page'  => $posts_per,
-    'post__not_in'  => array($post_id)
+    'post__not_in'  => array($post_id),
+    'meta_query' => array(
+      array(
+        'key'     => 'phila_template_select',
+        'value'   => $template_type,
+        'compare' => '=',
+      ),
+    ),
   );
 
   if ( ($post_type == 'press_release' || $template_type == 'press_release') ) {
