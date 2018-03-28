@@ -77,7 +77,7 @@ if ( empty( $press_categories ) ) {
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
               <?php if ($count == 4) : ?>
                 <?php $see_all = array(
-                  'URL' => '/the-latest/archive?template=press_release',
+                  'URL' => '/the-latest/archives/?template=press_release',
                   'content_type' => 'press_release',
                   'nice_name' => 'Press releases',
                   'is_full' => true

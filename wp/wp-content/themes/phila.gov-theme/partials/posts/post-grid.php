@@ -76,7 +76,7 @@ $phila_posts_args  = array(
   $posts = new WP_Query( $posts_args );
 
   $phila_posts = new WP_Query( $phila_posts_args );
-  
+
   $result = new WP_Query();
 
   //if sticky posts is empty, don't add it to the results array
@@ -122,13 +122,13 @@ $phila_posts_args  = array(
         <?php endwhile; ?>
         <div class="grid-container">
           <?php $see_all = array(
-            'URL' => '/the-latest/archive?template=post',
+            'URL' => '/the-latest/archives/?template=post',
             'content_type' => $label,
             'nice_name' => 'posts'
           ); ?>
           <?php if( !empty( $post_categories ) ) :
             $see_all_URL = array(
-              'URL' => '/the-latest/archive?template=post&category=' . $post_categories[0],
+              'URL' => '/the-latest/archives/?template=post&category=' . $post_categories[0],
             );
             $see_all = array_replace($see_all, $see_all_URL );
             endif;?>
