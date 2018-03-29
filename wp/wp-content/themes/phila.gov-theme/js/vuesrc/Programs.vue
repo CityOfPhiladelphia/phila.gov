@@ -58,7 +58,7 @@
           <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
           <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure"></div>
         </div>
-        <div id="program-results" class="grid-x grid-margin-x grid-padding-x">
+        <div id="program-results" class="grid-x grid-margin-x">
           <div v-for="program in programs"
           :key="program.id"
           class="medium-12 cell mbl">

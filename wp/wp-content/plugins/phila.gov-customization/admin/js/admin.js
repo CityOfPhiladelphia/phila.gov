@@ -202,7 +202,7 @@ jQuery(document).ready(function($) {
 
   }
   //Force category selection on all content types
-  if ( ( typenow != 'attachment' ) !== -1 && adminpage.indexOf( 'post' ) > -1 ) {
+  if ( ( typenow != 'attachment' ) && adminpage.indexOf( 'post' ) > -1 ) {
 
     $( 'input[name="post_category[]"]' ).rules( 'add', {
          'required': true

@@ -64,19 +64,16 @@ class Phila_Gov_Standard_Metaboxes {
           'name' => 'City',
           'id'   => 'phila_std_address_city',
           'type' => 'text',
-          'std' => 'Philadelphia',
         ),
         array(
           'name' => 'State',
           'id'   => 'phila_std_address_state',
           'type' => 'text',
-          'std' => 'PA',
         ),
         array(
           'name' => 'Zip',
           'id'   => 'phila_std_address_zip',
           'type' => 'text',
-          'std' => '19107',
         ),
       ),
     );
@@ -117,7 +114,7 @@ class Phila_Gov_Standard_Metaboxes {
         array(
           'id' => 'phila_std_address',
           'type' => 'group',
-          'visible' => array('phila_address_select', true),
+          'hidden' => array('phila_address_select', false),
 
           'fields' => array(
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
@@ -278,14 +275,14 @@ class Phila_Gov_Standard_Metaboxes {
         array(
           'name'  => 'Include an address?',
           'id'  => 'phila_address_select',
-          'type'  => 'slider',
+          'type'  => 'switch',
           'on_label'  => 'Yes',
           'off_label' => 'No'
         ),
         array(
           'id' => 'phila_std_address',
           'type' => 'group',
-          'visible' => array('phila_address_select', true),
+          'hidden' => array('phila_address_select', false),
 
           'fields' => array(
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),

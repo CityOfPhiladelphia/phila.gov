@@ -38,7 +38,8 @@ class Phila_Gov_Filter_Post_Type_Links {
       $cat = $cat_obj->slug;
     }
 
-      $post_date = get_the_date('Y-m-d');
+    $post_date = get_the_date('Y-m-d' , $post);
+
     return home_url( user_trailingslashit( "posts/$cat/$post_date-$post->post_name" ) );
 
   }
