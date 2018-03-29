@@ -54,7 +54,6 @@ class Phila_Publications_Controller {
       'order' => 'desc',
       'orderby' => 'date',
     );
-
     if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
       $date_query = array(
         'date_query' => array(
@@ -68,7 +67,40 @@ class Phila_Publications_Controller {
       $args = array_merge($args, $date_query);
     }
 
-    $posts = get_posts( $args );
+    $department_pages = array(
+      'post_type' => array('department_page'),
+      'posts_per_page'  => -1,
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value'   => 'document_finder_v2',
+          'compare' => '=',
+        ),
+      ),
+      'category'  => array($request['category']),
+      's' => $request['s'],
+      'order' => 'desc',
+      'orderby' => 'date',
+    );
+
+    if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
+      $date_query = array(
+        'date_query' => array(
+          array(
+            'after'     => $request['start_date'],
+            'before'    => $request['end_date']
+            ),
+            'inclusive' => true,
+          ),
+        );
+      $department_pages = array_merge($department_pages, $date_query);
+    }
+
+    $docs = get_posts( $args );
+
+    $department_site = get_posts($department_pages);
+
+    $posts = array_merge( $docs, $department_site );
 
     $data = array();
 

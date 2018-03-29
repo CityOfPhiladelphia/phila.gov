@@ -42,7 +42,7 @@
                   */
                     //TODO: clean up menu rendering
                     //
-                    phila_get_department_menu();
+                    phila_get_menu();
                 ?>
 
             </div> <!-- END .hero-wrap  -->

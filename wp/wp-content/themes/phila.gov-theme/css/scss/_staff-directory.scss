@@ -59,6 +59,9 @@
     .staff-summary {
       .staff-bio{
         min-height: 200px;
+        div{
+          margin-bottom: 1rem;
+        }
       }
     }
     &:last-of-type {

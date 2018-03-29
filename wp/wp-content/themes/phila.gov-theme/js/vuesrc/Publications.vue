@@ -1,8 +1,8 @@
 <template>
   <div id="publications">
-    <form v-on:submit.prevent="onSubmit">
+    <form v-on:submit.prevent>
       <div class="search">
-        <input id="post-search" type="text" name="search" placeholder="Search by title" class="search-field" ref="search-field"
+        <input id="post-search" type="text" name="search" placeholder="Begin typing to filter by title" class="search-field" ref="search-field"
         v-model="searchedVal">
         <input type="submit" value="submit" class="search-submit">
       </div>
@@ -33,9 +33,9 @@
           </div>
           <div class="cell medium-9 small-24 auto filter-by-owner">
             <v-select
-            ref="categorySelect"
             label="slang_name"
             placeholder="All departments"
+            v-model="selected"
             :options="categories"
             :on-change="filterByCategory">
             </v-select>
@@ -53,10 +53,18 @@
 
     <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
       <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
-        <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
+        <tr>
+          <th class="table-sort title"
+          @click="sort('title')" v-bind:class="sortTitle"><span>Title</span></th>
+
+          <th class="table-sort date"
+          @click="sort('date')"
+          v-bind:class="sortDate"><span>Publish date</span></th>
+          <th class="department">Department</th>
+        </tr>
       </thead>
       <paginate name="documents"
-        :list="documents"
+        :list="sortedDocuments"
         class="paginate-list"
         tag="tbody"
         :per="40">
@@ -81,6 +89,7 @@
     <paginate-links for="documents"
     :limit="3"
     :show-step-links="true"
+    :hide-single-page="true"
     :step-links="{
       next: 'Next',
       prev: 'Previous'
@@ -111,6 +120,11 @@ export default {
       documents: [],
       categories: [{ }],
 
+      currentSort:'date',
+      currentSortDir:'desc',
+
+      selected: null,
+
       selectedCategory: '',
 
       search: '',
@@ -131,8 +145,6 @@ export default {
         }
       },
 
-      //queriedCategory: this.$route.query.category
-
     }
   },
   filters: {
@@ -143,29 +155,27 @@ export default {
     }
   },
   mounted: function () {
-    this.getAllDocs()
     this.getDropdownCategories()
     this.loading = true
   },
+  created: function(){
+    this.loading = true
+
+    axios.get(pubsEndpoint + 'archives', {
+      params: {
+        'count': -1,
+      }
+    })
+    .then(response => {
+      this.documents = response.data
+      this.successfulResponse
+    })
+    .catch(e => {
+      this.failure = true
+      this.loading = false
+    })
+  },
   methods: {
-    getAllDocs: function () {
-      this.loading = true
-
-      axios.get(pubsEndpoint + 'archives', {
-        params: {
-          'count': -1,
-        }
-      })
-      .then(response => {
-        this.documents = response.data
-        this.successfulResponse
-      })
-      .catch(e => {
-        this.failure = true
-        this.loading = false
-      })
-
-    },
     getDropdownCategories: function () {
       axios.get('/wp-json/the-latest/v1/categories')
       .then(response => {
@@ -177,55 +187,17 @@ export default {
     },
     goToDoc: function (link){
       window.location.href = link
-     },
-    onSubmit: function (event) {
-      this.loading = true
-
-      this.$nextTick(function () {
-        axios.get(pubsEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory,
-            'count': -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.documents = response.data
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
-        })
-      })
     },
     reset() {
-      //this.loading = true
-      //console.log(this.$refs.categorySelect)
-      //console.log(this.$refs.categorySelect.$el.textContent)
-      window.location = window.location.pathname;
-      /*this.selectedCategory = ''
-      axios.get(pubsEndpoint + 'archives', {
-       params : {
-          'count': -1
-        }
-      })
-        .then(response => {
-          this.documents = response.data
-          this.loading = false
-          this.searchedVal = ''
-          this.checkedTemplates = ''
-          this.selectedCategory = ''
-          this.state.startDate = ''
-          this.state.endDate = ''
-        })
-        .catch(e => {
-          this.failure = true
-      })
-      this.$forceUpdate();
-      */
+
+      this.searchedVal = ''
+      this.state.startDate = ''
+      this.state.endDate = ''
+      //a little convoluted, but will change the state of selected if the reset button is used mutiple times in a session
+      this.selected = (this.selected == null ? '' : null)
+      this.runDateQuery()
+      this.filterByCategory()
+
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -252,37 +224,61 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
-      this.selectedCategory = selectedVal
+      if (selectedVal == null){
+        this.selectedCategory = ''
+      }else{
+        this.selectedCategory = selectedVal.id
+      }
 
-      this.$nextTick(function () {
+      this.loading = true
 
-        this.loading = true
-
-        axios.get(pubsEndpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'category': this.selectedCategory.id,
-            'count' : -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.loading = false
-            //Don't let empty value change the rendered view
-            if ( 'id' in selectedVal ){
-              this.documents = response.data
-            }
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
+      axios.get(pubsEndpoint + 'archives', {
+        params : {
+          's': this.searchedVal,
+          'category': this.selectedCategory,
+          'count' : -1,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
+          }
         })
+        .then(response => {
+          this.loading = false
+          this.documents = response.data
+
+          this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+          this.loading = false
       })
     },
+    sort: function( column ) {
+      console.log( column )
+      //if column == current sort, reverse
+      if(column === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+      this.currentSort = column;
+   },
+   filteredList: function ( list, searchedVal ) {
+     let searched = this.searchedVal.trim()
+     return list.filter((document) => {
+        return document.title.toLowerCase().indexOf(searched.toLowerCase()) > -1
+     })
+   },
   },
   computed:{
+    sortTitle: function(clicked){
+      if (this.currentSort == 'title') {
+        return this.currentSortDir
+      }
+    },
+    sortDate: function(){
+      if (this.currentSort == 'date'){
+        return this.currentSortDir
+      }
+
+    },
     successfulResponse: function(){
       if (this.documents.length == 0) {
         this.emptyResponse = true
@@ -294,7 +290,16 @@ export default {
         this.failure = false
       }
     },
-  },
+    sortedDocuments:function() {
+      return this.filteredList(this.documents.sort((a,b) => {
+        let modifier = 1;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      }), this.searchedVal)
+    },
+  }
 
 }
 </script>
