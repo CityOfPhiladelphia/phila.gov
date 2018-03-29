@@ -8,8 +8,9 @@ class Phila_Gov_Role_Administration {
 
   public function __construct(){
 
-    //no media uploads
     add_action( 'admin_head', array( $this, 'remove_media_controls' ) );
+
+    add_action( 'admin_head', array( $this, 'remove_parent_page_div' ) );
 
     add_action( 'init', array( $this, 'abstract_user_role') );
 
@@ -69,11 +70,23 @@ class Phila_Gov_Role_Administration {
       remove_action( 'media_buttons', 'media_buttons' );
     }
   }
+
+  /**
+   * Removes Page Attribute section from editor this means users don't need to worry about IA (which is handled by Editors) and in the event the user doesn't have access to the parent page category (like in the case of services) we don't have to worry about the pages becoming un-nested.
+   */
+
+  function remove_parent_page_div() {
+    if ( ! current_user_can( PHILA_ADMIN )  ){
+      remove_meta_box('pageparentdiv', 'service_page', 'side');
+      remove_meta_box('pageparentdiv', 'department_page', 'side');
+      remove_meta_box('pageparentdiv', 'programs', 'side');
+    }
+  }
+
   /**
   * Removes unwanted buttons from TinyMCE
   * @since 0.13.0
   */
-
   function remove_top_tinymce_button( $buttons ){
     $remove = array( 'alignleft', 'aligncenter', 'alignright', 'wp-more', 'fullscreen', 'strikethrough' );
 
