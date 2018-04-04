@@ -152,6 +152,30 @@ function phila_unregister_tags() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 }
 
+add_action('admin_menu', 'remove_submenus');
+
+function remove_submenus() {
+  if(!current_user_can( PHILA_ADMIN ) ) {
+    global $submenu;
+    unset($submenu['edit.php?post_type=service_page'][10]);
+    unset($submenu['edit.php?post_type=department_page'][10]);
+    unset($submenu['edit.php?post_type=programs'][10]);
+
+  }
+}
+
+add_action('admin_init', 'hide_that_stuff');
+
+function hide_that_stuff() {
+  if( !current_user_can( PHILA_ADMIN ) ) {
+    echo '<style type="text/css">
+    .post-type-service_page .page-title-action,
+    .post-type-department_page .page-title-action,
+    .post-type-programs .page-title-action {display:none;}
+    </style>';
+  }
+}
+
 /**
  * Ajax: Add Departments parent pages to Appearance -> Menus -> Departments search results, and returns upmost parent of each child page. See admin.js for ajax intercept.
  */
