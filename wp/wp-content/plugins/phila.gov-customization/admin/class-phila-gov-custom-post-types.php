@@ -17,19 +17,19 @@ class Phila_Gov_Custom_Post_Types{
 
   public function __construct(){
 
-    add_action( 'init', array( $this, 'create_phila_service_pages' ) );
+    add_action( 'init', array( $this, 'create_phila_service_pages' ), 1 );
 
-    add_action( 'init', array( $this, 'create_phila_service_updates' ) );
+    add_action( 'init', array( $this, 'create_phila_service_updates' ), 1 );
 
-    add_action( 'init', array( $this, 'create_phila_site_wide_alert' ) );
+    add_action( 'init', array( $this, 'create_phila_site_wide_alert' ), 1 );
 
-    add_action( 'init', array( $this, 'create_phila_document' ) );
+    add_action( 'init', array( $this, 'create_phila_document' ), 1 );
 
-    add_action( 'init', array( $this, 'create_phila_staff_directory' ) );
+    add_action( 'init', array( $this, 'create_phila_staff_directory' ), 1 );
 
-    add_action( 'init', array( $this, 'create_phila_annoucement' ) );
+    add_action( 'init', array( $this, 'create_phila_annoucement' ), 1 );
 
-    add_action( 'admin_init', array($this, 'redirect_admin_pages'));
+    add_action( 'admin_init', array($this, 'redirect_admin_pages'), 1);
 
 
 
