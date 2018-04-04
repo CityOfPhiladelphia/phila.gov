@@ -29,7 +29,19 @@ a[href$="nav-menus.php?action=locations"],
 #trackbacksdiv,
 
 #postexcerpt,
-#slugdiv
+#slugdiv,
+/* users can't remove sections, generally */
+.rwmb-button.remove-clone,
+/* users can't add new sections, generally*/
+.rwmb-button.add-clone
 {
-  display: none !important;
+  display:none !important;
+}
+
+/* Users can add/remove our services content */
+#our-services .rwmb-button.add-clone,
+#our-services .rwmb-button.remove-clone
+
+{
+  display: inline-block !important;
 }
