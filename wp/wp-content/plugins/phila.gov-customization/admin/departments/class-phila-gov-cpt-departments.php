@@ -12,7 +12,7 @@ class Phila_Gov_Departments{
 
   public function __construct(){
 
-    add_action( 'init', array( $this, 'create_phila_department_pages' ) );
+    add_action( 'init', array( $this, 'create_phila_department_pages' ), 1 );
 
   }
 
