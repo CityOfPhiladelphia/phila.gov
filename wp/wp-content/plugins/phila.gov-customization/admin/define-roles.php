@@ -1,10 +1,10 @@
 <?php
 /**
- * Define our custom role. If a user is not PHILA_ADMIN, then they get things hidden.
+ * Define our custom roles.
  *
  * @since   0.11.0
  */
-// define the custom capability name for protected content
+// If a user is not PHILA_ADMIN, then much of the admin is hidden.
 define ( 'PHILA_ADMIN', 'phila_see_all_content' );
 
 add_action( 'wp_loaded', 'phila_roles_and_capabilities' );
