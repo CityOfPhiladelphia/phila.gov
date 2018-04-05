@@ -45,3 +45,7 @@ a[href$="nav-menus.php?action=locations"],
 {
   display: inline-block !important;
 }
+/*  /* Don't allow edits to "What we do" */
+#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap{
+  display: none;
+}
