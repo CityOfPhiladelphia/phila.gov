@@ -33,7 +33,8 @@ a[href$="nav-menus.php?action=locations"],
 /* users can't remove sections, generally */
 .rwmb-button.remove-clone,
 /* users can't add new sections, generally*/
-.rwmb-button.add-clone
+.rwmb-button.add-clone,
+.hide-from-non-admin
 {
   display:none !important;
 }
@@ -44,10 +45,6 @@ a[href$="nav-menus.php?action=locations"],
 {
   display: inline-block !important;
 }
-/* Fix what the above breaks, I.E. When there is conditional logic applied, hide the clone button at #6 */
-#our-services [data-max-clone="6"] .rwmb-button.add-clone{
-display: none !important;
-}
 /*  /* Don't allow edits to "What we do" */
 #wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap{
   display: none;
@@ -56,8 +53,14 @@ display: none !important;
 .post-type-programs select.rwmb-select,
 .post-type-service_page #postbox-container-2 input[type='text'],
 .post-type-programs #phila_template_select,
+.post-type-programs #phila_meta_desc,
 .post-type-service_page #phila_template_select,
-.post-type-department_page #phila_template_select {
+.post-type-department_page #phila_template_select,
+.post-type-department_page #phila_meta_desc,
+/*What we do*/
+#module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle,
+#module_row_1_col_1_phila_module_row_1_col_1_type,
+#module_row_1_col_2_phila_module_row_1_col_2_type {
   opacity: 0.7;
   pointer-events: none;
 }
