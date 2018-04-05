@@ -1,5 +1,4 @@
-/* only loads in the admin,
-for users who do not have the PHILA_ADMIN capability */
+/* loads for users who do not have the PHILA_ADMIN capability */
 
 jQuery(document).ready(function($){
   if (!Array.prototype.indexOf) {
@@ -20,11 +19,10 @@ jQuery(document).ready(function($){
   }
 
   //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button, allow publishing action on document pages
-
   if ( ( typenow != 'document') && adminpage.indexOf('post') > -1 ){
     phila_WP_User.some(
       function(v){
-        if (v.indexOf(typenow)>=0){
+        if ( v.indexOf(typenow) >= 0) {
           $('#publish').css('display', 'none')
         }
       }
@@ -125,5 +123,13 @@ jQuery(document).ready(function($){
     }
 
   }
+  /* Don't allow edits to "What we do" */
+  $('#module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle').prop('disabled', true)
+
+  $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to What we do content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
+
+  /* Disable Two-third row select option */
+  $('#module_row_1_col_1_phila_module_row_1_col_1_type').prop('disabled', true)
+  $('#module_row_1_col_2_phila_module_row_1_col_2_type').prop('disabled', true)
 
 });
