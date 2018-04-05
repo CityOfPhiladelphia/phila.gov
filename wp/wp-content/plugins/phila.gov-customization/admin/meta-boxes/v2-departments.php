@@ -332,8 +332,7 @@ $meta_boxes[] = array(
     );
 
  $meta_boxes[] = array(
-      'title'    => 'wysiwyg section w/ Header',
-
+      'title'    => 'WYSIWYG section with header',
       'pages'    => array( 'department_page' ),
       'visible' => array( 'phila_template_select', 'things-to-do' ),
       'context'  => 'normal',
