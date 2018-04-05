@@ -17,6 +17,21 @@ jQuery(document).ready(function($){
       required_cat.attr('checked','checked');
     }
   }
+  //force contributrors to add email for review
+  if ( phila_WP_User.includes('secondary_department_page_contributror') || phila_WP_User.includes('secondary_service_page_contributor') || phila_WP_User.includes('secondary_programs__initiatives_contributor') ){
+    $('#dem_notify_emails').prop('required', 'required')
+  }
+  
+  //Don't allow non-admins or editors to create new pages from a duplicated page
+  if (!phila_WP_User.includes('administrator') || !phila_WP_User.includes('editor')){
+    $('#save_as_new').css('display', 'none')
+  }
+
+  //don't allow template changes unless it's a post
+  if ( ( typenow != 'post') && adminpage.indexOf('post') > -1 ){
+    $('#phila_template_select').prop('disabled', true)
+  }
+
 
   //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button, allow publishing action on document pages
   if ( ( typenow != 'document') && adminpage.indexOf('post') > -1 ){
@@ -79,7 +94,7 @@ jQuery(document).ready(function($){
         maxlength: 225, required: true
       });
     }
-    
+
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
       //hide short description
