@@ -38,8 +38,8 @@ class Phila_Gov_Admin_Menu {
         'index.php',
         'edit.php',
         'edit.php?post_type=page',
-        'edit.php?post_type=service_page',
         'separator1',
+        'edit.php?post_type=service_page',
         'edit.php?post_type=department_page',
         'edit.php?post_type=programs',
         'edit.php?post_type=staff_directory',
@@ -74,7 +74,7 @@ class Phila_Gov_Admin_Menu {
 
     // Add Menus as a Department Site submenu and program pages
     add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
-    
+
     add_submenu_page( 'edit.php?post_type=programs', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
 
     remove_menu_page( 'edit.php?post_type=announcement' );
