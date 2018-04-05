@@ -123,13 +123,16 @@ jQuery(document).ready(function($){
     }
 
   }
-  /* Don't allow edits to "What we do" */
-  $('#module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle').prop('disabled', true)
+  if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
 
-  $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to What we do content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
+    /* Don't allow edits to "What we do" */
+    $('#module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle').prop('disabled', true)
 
-  /* Disable Two-third row select option */
-  $('#module_row_1_col_1_phila_module_row_1_col_1_type').prop('disabled', true)
-  $('#module_row_1_col_2_phila_module_row_1_col_2_type').prop('disabled', true)
+    $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
+
+    /* Disable Two-third row select option */
+    $('#module_row_1_col_1_phila_module_row_1_col_1_type').prop('disabled', true)
+    $('#module_row_1_col_2_phila_module_row_1_col_2_type').prop('disabled', true)
+  }
 
 });
