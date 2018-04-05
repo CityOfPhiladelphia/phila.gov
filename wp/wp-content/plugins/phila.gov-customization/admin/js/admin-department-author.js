@@ -79,6 +79,7 @@ jQuery(document).ready(function($){
         maxlength: 225, required: true
       });
     }
+    
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
       //hide short description
