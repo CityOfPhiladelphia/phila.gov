@@ -57,6 +57,7 @@ a[href$="nav-menus.php?action=locations"],
 .post-type-service_page #phila_template_select,
 .post-type-department_page #phila_template_select,
 .post-type-department_page #phila_meta_desc,
+#heading-groups input[type='text'],
 /*What we do*/
 #module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle,
 #module_row_1_col_1_phila_module_row_1_col_1_type,
