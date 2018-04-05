@@ -41,11 +41,23 @@ a[href$="nav-menus.php?action=locations"],
 /* Users can add/remove our services content */
 #our-services .rwmb-button.add-clone,
 #our-services .rwmb-button.remove-clone
-
 {
   display: inline-block !important;
+}
+/* Fix what the above breaks, I.E. When there is conditional logic applied, hide the clone button at #6 */
+#our-services [data-max-clone="6"] .rwmb-button.add-clone{
+display: none !important;
 }
 /*  /* Don't allow edits to "What we do" */
 #wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap{
   display: none;
+}
+/* Disable with CSS so duplicated page won't loose element value when edited */
+.post-type-programs select.rwmb-select,
+.post-type-service_page #postbox-container-2 input[type='text'],
+.post-type-programs #phila_template_select,
+.post-type-service_page #phila_template_select,
+.post-type-department_page #phila_template_select {
+  opacity: 0.7;
+  pointer-events: none;
 }
