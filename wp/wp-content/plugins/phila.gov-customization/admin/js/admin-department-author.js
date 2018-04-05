@@ -93,10 +93,7 @@ jQuery(document).ready(function($){
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
       //hide short description and let users know what they can do to change it
-      if ( $('#phila_template_select').val() == 'homepage_v2') {
-        $('#phila_meta_desc').prop('disabled', true);
-        $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
-      }
+      $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
     }
   }
 
@@ -118,12 +115,7 @@ jQuery(document).ready(function($){
   }
 
   if ( ( typenow == 'programs') && adminpage.indexOf('post') > -1 ){
-    //hide short description
-    if ( $('#phila_template_select').val() == 'prog_landing_page') {
-      $('#phila_meta_desc').prop('disabled', true);
-
-      $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
-    }
+    $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
   }
 
   if ( ( typenow == 'post') && adminpage.indexOf('post') > -1 ){
@@ -147,14 +139,8 @@ jQuery(document).ready(function($){
   }
   if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
 
-    /* Don't allow edits to "What we do" */
-    $('#module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle').prop('disabled', true)
-
     $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
 
-    /* Disable Two-third row select option */
-    $('#module_row_1_col_1_phila_module_row_1_col_1_type').prop('disabled', true)
-    $('#module_row_1_col_2_phila_module_row_1_col_2_type').prop('disabled', true)
   }
 
 });
