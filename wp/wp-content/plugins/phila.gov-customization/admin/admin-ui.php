@@ -152,6 +152,7 @@ function phila_unregister_tags() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 }
 
+//TODO: consider doing this using the role plugin instead.
 add_action('admin_menu', 'remove_submenus');
 
 function remove_submenus() {
@@ -164,11 +165,11 @@ function remove_submenus() {
   }
 }
 
-add_action('admin_init', 'hide_that_stuff');
+add_action('admin_head', 'hide_title_add_buttons');
 
-function hide_that_stuff() {
+function hide_title_add_buttons() {
   if( !current_user_can( PHILA_ADMIN ) ) {
-    echo '<style type="text/css">
+    echo '<style type="text/css" scoped>
     .post-type-service_page .page-title-action,
     .post-type-department_page .page-title-action,
     .post-type-programs .page-title-action {display:none;}
