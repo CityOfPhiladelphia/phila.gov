@@ -80,14 +80,14 @@ if ( ! class_exists('cnSettingsAPI') )
 		public function init()
 		{
 			// Register the settings tabs.
-			add_action( 'admin_init' , array( &$this , 'registerTabs' ), .1 );
+			add_action( 'admin_init' , array( &$this , 'registerTabs' ), 2 );
 
 			// Register the settings sections.
-			add_action( 'admin_init' , array( &$this , 'registerSections' ), .1 );
+			add_action( 'admin_init' , array( &$this , 'registerSections' ), 2 );
 
 			// Register the sections fields.
-			add_action( 'admin_init' , array( &$this , 'addSettingsField' ), .1 );
-			add_action( 'init' , array( &$this , 'registerFields' ), .1 );
+			add_action( 'admin_init' , array( &$this , 'addSettingsField' ), 2 );
+			add_action( 'init' , array( &$this , 'registerFields' ), 2 );
 		}
 
 		/**
