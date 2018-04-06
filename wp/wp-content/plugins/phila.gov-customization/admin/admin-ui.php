@@ -152,16 +152,35 @@ function phila_unregister_tags() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 }
 
+/* Check if user is in role, and if so, unhide create new button */
 add_action('admin_head', 'hide_title_add_buttons');
 
 function hide_title_add_buttons() {
-  if( !current_user_can( PHILA_ADMIN ) ) {
-    echo '<style type="text/css" scoped>
-    .post-type-service_page .page-title-action,
-    .post-type-department_page .page-title-action,
-    .post-type-programs .page-title-action {display:none;}
-    </style>';
+  if ( current_user_can( PHILA_ADMIN )  )
+  return;
+
+  $user = wp_get_current_user();
+
+  $style = '<style type="text/css" scoped>
+  .post-type-service_page .page-title-action,
+  .post-type-department_page .page-title-action,
+  .post-type-programs .page-title-action { display:none; }';
+
+  foreach($user->caps as $key => $value) {
+    if ( $key == 'secondary_service_page_creator' ) {
+      $style .= '.post-type-service_page .page-title-action {display: inline-block !important }';
+    }
+    if ( $key == 'secondary_department_page_creator' ) {
+      $style .=  '.post-type-department_page .page-title-action { display:inline-block !important; }';
+    }
+    if ($key ==  'secondary_program_creator' ) {
+      $style .= '.post-type-programs .page-title-action { display:inline-block !important }';
+    }
   }
+
+  $style .= '</style>';
+
+  echo $style;
 }
 
 /**
