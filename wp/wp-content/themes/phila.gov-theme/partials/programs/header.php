@@ -26,6 +26,7 @@
         </div>
       </div>
     </div>
+    <?php phila_get_menu(); ?>
     <?php get_template_part( 'partials/breadcrumbs' ); ?>
     <div class="grid-container">
       <div class="grid-x">
@@ -55,6 +56,6 @@
           <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?>
         </div>
       </div>
+    <?php phila_get_menu(); ?>
   <?php endif; ?>
-  <?php phila_get_menu(); ?>
 </header>
