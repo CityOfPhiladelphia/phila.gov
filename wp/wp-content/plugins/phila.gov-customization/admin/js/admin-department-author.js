@@ -28,12 +28,14 @@ jQuery(document).ready(function($){
   }
 
 
-  //If department "author" AKA "contributor" doesn't have access to this post type, hide the publish button, allow publishing action on document pages
+  //If department "contributor" doesn't have access to this post type, hide the publish button, allow publishing action on document pages
   if ( ( typenow != 'document') && adminpage.indexOf('post') > -1 ){
     phila_WP_User.some(
       function(v){
         if ( v.indexOf(typenow) >= 0) {
-          $('#publish').css('display', 'none')
+          if ($('#publish').val() === 'Publish' || $('#publish').val() === 'Update') {
+            $('#publish').css('display', 'none')
+          }
         }
       }
     )
