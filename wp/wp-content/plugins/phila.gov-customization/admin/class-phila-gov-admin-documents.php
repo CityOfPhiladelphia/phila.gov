@@ -9,8 +9,6 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
   public function __construct(){
     add_action( 'save_post', array( $this, 'save_document_meta'), 10, 3 );
 
-    add_action( 'rwmb_after', array( $this, 'load_document_media_js'), 1000 );
-
     add_filter( 'wp_default_editor', array( $this, 'set_default_editor' ) );
 
     //TODO: move this to the canonical location for metaboxes
@@ -57,13 +55,6 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
 
       }
       $list = get_post_meta($post_id, 'phila_documents');
-    }
-  }
-
-  public function load_document_media_js(){
-    global $post_type;
-    if( 'document' == $post_type ) {
-    	wp_enqueue_script( 'admin-document-script', plugins_url( 'js/admin-documents.js' , __FILE__, array('jQuery') ) );
     }
   }
 

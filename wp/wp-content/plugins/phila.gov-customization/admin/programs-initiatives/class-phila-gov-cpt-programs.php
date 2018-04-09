@@ -12,7 +12,7 @@ class Phila_Gov_Programs_Initiatives{
 
   public function __construct(){
 
-    add_action( 'init', array( $this, 'create_phila_programs_initiatives' ) );
+    add_action( 'init', array( $this, 'create_phila_programs_initiatives' ), 1 );
 
   }
 

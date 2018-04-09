@@ -96,6 +96,9 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       ),
       'relation' => 'or'
     ),
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+    ),
 
     'fields' => array(
       array(
@@ -173,6 +176,10 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       'context'  => 'normal',
       'priority' => 'high',
 
+      'include' => array(
+        'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+      ),
+
       'visible' =>  array(
          'when' => array(
             array( 'phila_template_select', '=', 'homepage_v2'),
@@ -188,32 +195,38 @@ function phila_register_department_meta_boxes( $meta_boxes ){
             'title' => 'Select image',
             'type' => 'image_advanced',
             'max_file_uploads' => 1,
+            'columns' => 3
           ),
            array(
             'id' => 'phila_v2_photo_callout_block__txt-sub-header',
             'type' => 'text',
-            'name' => 'Sub-header'
+            'name' => 'Sub-header',
+            'columns' => 4
           ),
            array(
             'id' => 'phila_v2_photo_callout_block__txt-header',
             'type' => 'text',
-            'name' => 'Header'
+            'name' => 'Header',
+            'columns' => 5
           ),
-           array(
-              'id' => 'phila_v2_photo-callout-block__desc',
-              'type' => 'textarea',
-              'name' => 'Description'
-            ),
           array(
             'id'   => 'phila_v2_photo_callout_block__link',
             'type' => 'url',
-            'name' => 'Button Link'
+            'name' => 'Button URL',
+            'columns' => 7
           ),
            array(
             'id' => 'phila_v2_photo-callout-block__txt-btn-label',
             'type' => 'text',
-            'name' => 'Button Text'
-          )
+            'name' => 'Button Text',
+            'columns' => 5
+          ),
+          array(
+             'id' => 'phila_v2_photo-callout-block__desc',
+             'type' => 'textarea',
+             'name' => 'Description',
+             'columns' => 12
+          ),
       )
     );//Things To Do
 
@@ -319,8 +332,7 @@ $meta_boxes[] = array(
     );
 
  $meta_boxes[] = array(
-      'title'    => 'wysiwyg section w/ Header',
-
+      'title'    => 'WYSIWYG section with header',
       'pages'    => array( 'department_page' ),
       'visible' => array( 'phila_template_select', 'things-to-do' ),
       'context'  => 'normal',
@@ -334,6 +346,10 @@ $meta_boxes[] = array(
     'title' => 'Featured programs or content',
     'pages'    => array( 'department_page' ),
     'visible' => array( 'phila_template_select', 'homepage_v2' ),
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+    ),
 
     'fields' => array(
       array(
@@ -394,6 +410,9 @@ $meta_boxes[] = array(
     'pages'    => array( 'department_page' ),
     'context'  => 'side',
     'priority' => 'low',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+    ),
     'visible' => array(
       'when' => array(
         array('phila_template_select', 'homepage_v2'),

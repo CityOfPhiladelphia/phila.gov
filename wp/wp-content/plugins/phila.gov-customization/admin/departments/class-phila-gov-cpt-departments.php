@@ -12,7 +12,7 @@ class Phila_Gov_Departments{
 
   public function __construct(){
 
-    add_action( 'init', array( $this, 'create_phila_department_pages' ) );
+    add_action( 'init', array( $this, 'create_phila_department_pages' ), 1 );
 
   }
 
@@ -20,9 +20,9 @@ class Phila_Gov_Departments{
     register_post_type( 'department_page',
       array(
         'labels' => array(
-          'name' => __( 'Departments' ),
+          'name' => __( 'Department page' ),
           'menu_name' => __('Department Site'),
-          'singular_name' => __( 'Department' ),
+          'singular_name' => __( 'Department page' ),
           'add_new'   => __( 'Add a Page' ),
           'all_items'   => __( 'All Pages' ),
           'add_new_item' => __( 'Add a Department Page' ),
