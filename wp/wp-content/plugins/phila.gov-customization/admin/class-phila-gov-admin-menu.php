@@ -26,6 +26,7 @@ class Phila_Gov_Admin_Menu {
 
     add_action( 'init', array($this, 'phila_change_post_label') );
 
+    add_action('admin_menu', array( $this, 'phila_hide_create_in_menu' ) );
 
  }
 
@@ -88,5 +89,20 @@ class Phila_Gov_Admin_Menu {
     register_taxonomy_for_object_type('category', 'page');
     register_taxonomy_for_object_type('category', 'attachment');
 
+  }
+
+  function phila_hide_create_in_menu(){
+    global $submenu;
+    $user = wp_get_current_user();
+    
+    if ( !array_key_exists('secondary_service_page_creator', $user->caps) ) {
+      unset($submenu['edit.php?post_type=service_page'][10]);
+    }
+    if ( !array_key_exists('secondary_department_page_creator', $user->caps) ) {
+      unset($submenu['edit.php?post_type=department_page'][10]);
+    }
+    if ( !array_key_exists('secondary_program_creator', $user->caps) ) {
+      unset($submenu['edit.php?post_type=programs'][10]);
+    }
   }
 }
