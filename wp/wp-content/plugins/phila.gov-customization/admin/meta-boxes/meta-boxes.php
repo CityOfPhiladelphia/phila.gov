@@ -455,9 +455,6 @@ function phila_register_meta_boxes( $meta_boxes ){
    'priority' => 'default',
    'revision' => true,
 
-   'include' => array(
-     'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
-   ),
    'visible' => array(
      'when'  => array(
        array('phila_template_select', '=', 'homepage_v2' ),
