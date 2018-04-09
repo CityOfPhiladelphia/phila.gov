@@ -49,19 +49,19 @@ a[href$="nav-menus.php?action=locations"],
 #wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap{
   display: none;
 }
-/* Disable with CSS so duplicated page won't loose element value when edited */
-.post-type-programs select.rwmb-select,
-.post-type-service_page #postbox-container-2 input[type='text'],
-.post-type-programs #phila_template_select,
-.post-type-programs #phila_meta_desc,
-.post-type-service_page #phila_template_select,
-.post-type-department_page #phila_template_select,
-.post-type-department_page #phila_meta_desc,
-#heading-groups input[type='text'],
+/* Disable a number of form fields with CSS so duplicated items won't lose element value when edited. Applies only to existing items */
+.publish.post-php.post-type-programs select.rwmb-select,
+.publish.post-php.post-type-service_page #postbox-container-2 input[type='text'],
+.publish.post-php.post-type-programs #phila_template_select,
+.publish.post-php.post-type-programs #phila_meta_desc,
+.publish.post-php.post-type-service_page #phila_template_select,
+.publish.post-php.post-type-department_page #phila_template_select,
+.publish.post-php.post-type-department_page #phila_meta_desc,
+.publish.post-php #heading-groups input[type='text'],
 /*What we do*/
-#module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle,
-#module_row_1_col_1_phila_module_row_1_col_1_type,
-#module_row_1_col_2_phila_module_row_1_col_2_type {
+.publish.post-php #module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_texttitle,
+.publish.post-php #module_row_1_col_1_phila_module_row_1_col_1_type,
+.publish.post-php #module_row_1_col_2_phila_module_row_1_col_2_type {
   opacity: 0.7;
   pointer-events: none;
 }

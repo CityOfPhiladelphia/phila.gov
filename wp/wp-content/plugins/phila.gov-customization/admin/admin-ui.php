@@ -306,3 +306,9 @@ function remove_media_columns( $columns ) {
   unset( $columns['comments'] );
   return $columns;
 }
+
+add_filter( 'admin_body_class', 'phila_add_post_status' );
+
+function phila_add_post_status( $classes ) {
+    return $classes . ' ' . get_post_status() . ' ';
+}
