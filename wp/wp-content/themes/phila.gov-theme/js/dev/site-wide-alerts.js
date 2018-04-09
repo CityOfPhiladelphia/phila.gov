@@ -1,6 +1,13 @@
-$(function() { 
-    $('#site-wide-alert .close-button').on('click', function() { 
-        var id_alert = $(this).data('id-alert'); 
-        $.post( phila_js_vars.ajaxurl, { action: 'alert_closed_session', id_alert: id_alert } ); 
-    }); 
+jQuery( window ).on('load', function() {
+    if ( window.sessionStorage ) {
+        if ( ! sessionStorage.getItem('hideAlerts') ) {
+            jQuery('#site-wide-alert').slideDown();
+        }
+    }
+});
+
+jQuery('#site-wide-alert .close-button').on('click', function() {
+    if ( window.sessionStorage ) {
+        sessionStorage.setItem( 'hideAlerts', true );
+    }
 });

@@ -281,23 +281,20 @@ function phila_gov_scripts() {
 
   wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles' . $GLOBALS['phila_is_minified'] . '.css' );
 
+  // Set the admin ajax URL global.
+  $js_vars = array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' )
+  );
+
   if ( ( !is_404() ) && (!is_front_page()) ) {
     $post_obj = get_post_type_object( $post->post_type );
-
-    // Set the admin ajax URL global.
-    $js_vars = array(
-      'ajaxurl' => admin_url( 'admin-ajax.php' )
-    );
-    if ( ( !is_404() ) && (!is_front_page()) ) {
-      $post_obj = get_post_type_object( $post->post_type );
-      $js_vars = array_merge( $js_vars, array(
-        'postID' => $post->ID,
-        'postType' => $post->post_type,
-        'postRestBase' => $post_obj->rest_base,
-      ));
-    }
-    wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
+    $js_vars = array_merge( $js_vars, array(
+      'postID' => $post->ID,
+      'postType' => $post->post_type,
+      'postRestBase' => $post_obj->rest_base,
+    ));
   }
+  wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
 
   if( is_page_template( 'templates/the-latest-archive.php' ) ||     is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
   is_post_type_archive( 'programs' ) ){
@@ -1578,9 +1575,4 @@ function phila_get_post_label( $label ){
     }
     return $label;
   }
-}
-
-// Initialize the Site wide alert ajax session actions
-if ( function_exists('Phila_Gov_Site_Wide_Alert_Rendering') ) {
-  Phila_Gov_Site_Wide_Alert_Rendering::create_city_wide_alerts_ajax_actions();
 }

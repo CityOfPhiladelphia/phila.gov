@@ -4,26 +4,12 @@ if ( class_exists( "Phila_Gov_Site_Wide_Alert_Rendering" ) ){
 }
 
 class Phila_Gov_Site_Wide_Alert_Rendering {
-
-  /** 
-   * Create the ajax actions to set a session when the alert is closed. 
-   */ 
-  public static function create_city_wide_alerts_ajax_actions() {
-    if( ! session_id() ) { session_start(); }
-
-    add_action( 'wp_ajax_alert_closed_session', array( 'Phila_Gov_Site_Wide_Alert_Rendering', 'alert_closed_session' ) );
-    add_action( 'wp_ajax_nopriv_alert_closed_session', array( 'Phila_Gov_Site_Wide_Alert_Rendering', 'alert_closed_session' ) );
-  }
-
   /**
    * Set the session when the alert is closed. 
    */
   static function alert_closed_session() {
     if ( isset( $_POST['id_alert'] ) && is_numeric( $_POST['id_alert'] ) ) {
-      // Init session just in case if does not exists.
-      if( ! session_id() ) { session_start(); }
-
-      $_SESSION['closed-alert-' . $_POST['id_alert'] ] = true;
+      setcookie( "closed-alert-{$_POST['id_alert']}", 1, 0, '/' );
     }
     wp_die("Done!");
   }
@@ -44,7 +30,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
       'posts_per_page'    => 1
     );
 
-    function dateTimeFormat($date){
+    function dateTimeFormat($date) {
       if ( !$date == '' ) {
         $date_obj = new DateTime("@$date");
         if( strlen($date_obj->format('F')) > 5 ){
@@ -75,45 +61,52 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         $now = current_time('timestamp');
 
-        if ( ( ( $alert_start <= $now && $alert_end >= $now )
-          && ! isset( $_SESSION['closed-alert-' . get_the_ID()] ) )
-          || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
+        // Get off the "if", if the alert_end time is past today.
+        if ( ! empty( $alert_end ) && $alert_end < $now ) {
+          wp_reset_postdata();
+          return;
+        };
 
-        ?><div id="site-wide-alert" data-swiftype-index="false" data-closable>
-        <div class="row">
-          <div class="medium-centered">
-            <div class="row equal-height pvs">
-              <div class="small-1 columns center equal icon hide-for-small-only">
-                <div class="valign">
-                  <div class="valign-cell">
-                    <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
+        if ( $alert_start <= $now || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
+        ?>
+        <div id="site-wide-alert" data-swiftype-index="false" data-closable>
+          <div class="row">
+            <div class="medium-centered">
+              <div class="grid-x align-middle pvs">
+                <div class="small-1 cell center icon hide-for-small-only">
+                  <div class="valign">
+                    <div class="valign-cell">
+                      <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
+                    </div>
                   </div>
                 </div>
+              <div class="small-22 cell message">
+                <?php
+                  $content = get_the_content();
+                  echo $content;
+                  ?><div class="dates pts"><?php
+                  echo 'In effect: ';
+                  dateTimeFormat($alert_start);
+                  echo ' to ';
+                  if ( empty( $alert_end ) ) {
+                    echo ' until further notice';
+                  } else {
+                    dateTimeFormat($alert_end);
+                  }
+                ?>
               </div>
-            <div class="small-22 columns equal message">
-
+                </div>
+                <div class="small-1 cell message">
+                  <button class="close-button" data-id-alert="<?php the_ID();  ?>" data-close>&times;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <?php
-          $content = get_the_content();
-          echo $content;
-          ?><div class="dates pts"><?php
-          echo 'In effect: ';
-          dateTimeFormat($alert_start);
-          echo ' to ';
-          dateTimeFormat($alert_end);
-        ?>
-        </div>
-          </div>
-          <div class="small-1 columns equal message">
-            <button class="close-button" data-id-alert="<?php the_ID();  ?>" data-close>&times;</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    <?php endif;
-    }//end while
-  }
-  wp_reset_postdata();
-
+        endif;
+      }//end while
+    }
+    wp_reset_postdata();
   }
 }
