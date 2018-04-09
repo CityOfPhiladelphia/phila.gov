@@ -5,16 +5,6 @@ if ( class_exists( "Phila_Gov_Site_Wide_Alert_Rendering" ) ){
 
 class Phila_Gov_Site_Wide_Alert_Rendering {
   /**
-   * Set the session when the alert is closed. 
-   */
-  static function alert_closed_session() {
-    if ( isset( $_POST['id_alert'] ) && is_numeric( $_POST['id_alert'] ) ) {
-      setcookie( "closed-alert-{$_POST['id_alert']}", 1, 0, '/' );
-    }
-    wp_die("Done!");
-  }
-
-  /**
   * TODO: set cookie when button is closed, remember until alert is updated
   * Display alert if display is true, also show on preview
   *
