@@ -34,6 +34,7 @@ a[href$="nav-menus.php?action=locations"],
 .rwmb-button.remove-clone,
 /* users can't add new sections, generally*/
 .rwmb-button.add-clone,
+/* custom class to hide from class param on regsiterd metabox */
 .hide-from-non-admin
 {
   display:none !important;
@@ -64,4 +65,10 @@ a[href$="nav-menus.php?action=locations"],
 .post-php #module_row_1_col_2_phila_module_row_1_col_2_type {
   opacity: 0.7;
   pointer-events: none;
+}
+#phila_resource_list .rwmb-button.add-clone,
+#phila_resource_list .rwmb-button.remove-clone,
+#document-tables .rwmb-button.add-clone,
+#document-tables .rwmb-button.remove-clone{
+  display:inline-block !important;
 }

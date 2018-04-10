@@ -1170,9 +1170,11 @@ $meta_boxes[] = array(
       'id'       => 'phila_v2_homepage_services',
       'title'    => 'Top services',
       'context'  => 'normal',
+      'name'  => '<div>Add a maximum of 6 services to a homepage.</div>',
       'priority' => 'high',
       'type'  => 'group',
       'clone' => true,
+      'sort_clone' => true,
       'max_clone' => 6,
       'add_button'  => '+ Add another service link',
 
