@@ -13,7 +13,7 @@ $c = -1;
       <?php if( !empty( $table['phila_files'] ) ) :
         $c++;
         ?>
-        <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>
+        <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>
         <div id="sortable-table-<?php echo $c?>" class="document-table">
           <div class="search">
             <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
