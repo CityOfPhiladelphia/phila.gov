@@ -237,10 +237,10 @@ $meta_boxes[] = array(
 
     'fields' => array(
       array(
-            'id' => 'phila_v2_linked_image_grid__header',
-            'type' => 'text',
-            'name' => 'Header'
-          ),
+        'id' => 'phila_v2_linked_image_grid__header',
+        'type' => 'text',
+        'title' => 'Header'
+      ),
       array(
         'id'       => 'phila_v2_linked_image_grid',
         'title'    => 'Image Grid with Links',
@@ -257,8 +257,10 @@ $meta_boxes[] = array(
             'title' => 'Select image',
             'type' => 'image_advanced',
             'max_file_uploads' => 1,
+            'desc' => 'Images should be exactly 320px by 214px.',
+            'columns' => 4
           ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_v2_linked_image_grid__link')
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_v2_linked_image_grid__link', true, 8)
         ),
       ),
     ),
