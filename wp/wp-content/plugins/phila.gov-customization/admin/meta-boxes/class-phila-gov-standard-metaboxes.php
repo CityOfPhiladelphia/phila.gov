@@ -335,13 +335,14 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_link_fields( $name, $id, $required = true ){
+  public static function phila_metabox_v2_link_fields( $name, $id, $required = true, $columns = 12 ){
     return array(
       'id'  => $id,
       'name'  => $name,
       'type'  => 'group',
       'clone' => false,
       'sort_clone'  => false,
+      'columns' => $columns,
 
       'fields'  => array(
         array(
