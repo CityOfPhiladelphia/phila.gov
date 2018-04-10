@@ -900,8 +900,13 @@ public static function phila_meta_var_connect(){
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link', false),
 
+          array(
+            'name' => 'See all contact information',
+            'id'  => 'connect_see_all',
+            'type' => 'URL'
+          )
         ),
-      )
+      ),
     );
   }
 
