@@ -77,10 +77,10 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                   ?><div class="dates pts"><?php
                   echo 'In effect: ';
                   dateTimeFormat($alert_start);
-                  echo ' to ';
                   if ( empty( $alert_end ) ) {
                     echo ' until further notice';
                   } else {
+                    echo ' to ';
                     dateTimeFormat($alert_end);
                   }
                 ?>
