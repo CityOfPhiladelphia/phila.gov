@@ -357,11 +357,7 @@ export default {
     },
     sortedItems: function ( list ) {
       return list.sort((a, b) => {
-        if (a.start.dateTime) {
-          return moment(a.start.dateTime) - moment(b.start.dateTime)
-        }else {
-          return moment(a.start.date) - moment(b.start.date)
-        }
+        return moment(a.start.dateTime) - moment(b.start.dateTime) + moment(a.start.date) - moment(b.start.date)
       })
     },
     getByCategory: function(selectedVal){
