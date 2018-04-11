@@ -59,7 +59,7 @@ class Phila_Gov_Site_Wide_Alert {
           'type'  => 'datetime',
           'class' =>  'end-time',
           'size'  =>  25,
-          'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times also define when an alert is visible on the site\'s homepage.',
+          'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times also define when an alert is visible on the site\'s homepage. <b>Leaving the end time blank will render "until further notice" on the alert. The alert will then need to be unpublished, or given an explicit end time.</b>',
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
             'dateFormat' => 'mm-dd-yy',
