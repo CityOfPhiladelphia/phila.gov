@@ -228,13 +228,14 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_wysiwyg($section_name = 'Section title', $wysiwyg_desc = ''){
+  public static function phila_metabox_v2_wysiwyg($section_name = 'Section title', $wysiwyg_desc = '', $columns = 12){
 
     //WYSIWYG with Title
     return array(
       'id'  =>  'phila_custom_wysiwyg',
       'type'  => 'group',
       'clone' => false,
+      'columns'=> $columns,
 
       'fields'  => array(
         array(
@@ -335,14 +336,16 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_link_fields( $name, $id, $required = true, $columns = 12 ){
+  public static function phila_metabox_v2_link_fields( $name, $id, $required = true, $columns = 12, $clone = false, $max_clone = 2){
     return array(
       'id'  => $id,
       'name'  => $name,
       'type'  => 'group',
-      'clone' => false,
+      'clone' => $clone,
+      'max_clone' => $max_clone,
       'sort_clone'  => false,
       'columns' => $columns,
+      'add_button'  => 'Add another link',
 
       'fields'  => array(
         array(

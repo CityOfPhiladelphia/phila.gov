@@ -141,3 +141,6 @@ ul#department_page-search-checklist li{
   line-height: 1.2;
   margin-bottom: 20px;
 }
+.percent-75 .rwmb-select.rwmb-select{
+  width: 75%;
+}
