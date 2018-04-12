@@ -29,9 +29,10 @@ class Phila_Gov_Row_Select_Options {
   public static function phila_metabox_full_options_select(){
     return array(
       'id'   => 'phila_full_options_select',
-      'desc'  => 'Choose to display full width content.',
+      'desc'  => 'Choose full width content.',
       'type' => 'select',
-      'placeholder' => 'Select...',
+      'class' => 'percent-75',
+      'placeholder' => 'Full-width row select',
       'options' => array(
         'phila_blog_posts' => 'Blog posts',
         'phila_full_width_calendar' => 'Calendar',
@@ -45,7 +46,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_image_list' => 'Image list',
         'phila_list_items' => 'List items (grid)',
         'phila_full_width_press_releases' => 'Press Releases',
-        'phila_enrollment'  => 'Enrollment or signup'
+        'phila_enrollment'  => 'Registration available'
       ),
     );
   }

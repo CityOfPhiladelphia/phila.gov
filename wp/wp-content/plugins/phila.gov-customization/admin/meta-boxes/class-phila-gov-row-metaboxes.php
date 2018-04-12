@@ -26,7 +26,7 @@ class Phila_Gov_Row_Metaboxes {
 
   public static function phila_metabox_full_options( ){
     return array(
-     'name' => 'Full Width Options',
+     'name' => '',
      'id'   => 'phila_full_options',
      'type' => 'group',
      'visible' => array(
@@ -93,29 +93,64 @@ class Phila_Gov_Row_Metaboxes {
       'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
       'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_list_items(),
      ),
-    array(
-      'id'   => 'phila_feature_p_i',
-      'type' => 'group',
-     'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
-      'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_feature_programs_initiatives(),
-    ),
-    array(
-      'id'       => 'phila_image_list',
-      'type'     => 'group',
-      'visible'  => array('phila_full_options_select', '=', 'phila_image_list'),
-      'fields'   => array(
-        array(
-          'name'  => 'Image list heading (optional)',
-          'id'    => 'title',
-          'type'  => 'text',
-        ),
-        array(
-          'name'  => 'List of images',
-          'id'    => 'phila_image_list',
-          'type'  => 'image_advanced'
+      array(
+        'id'   => 'phila_feature_p_i',
+        'type' => 'group',
+       'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_feature_programs_initiatives(),
+      ),
+      array(
+        'id'       => 'phila_image_list',
+        'type'     => 'group',
+        'visible'  => array('phila_full_options_select', '=', 'phila_image_list'),
+        'fields'   => array(
+          array(
+            'name'  => 'Image list heading (optional)',
+            'id'    => 'title',
+            'type'  => 'text',
+          ),
+          array(
+            'name'  => 'List of images',
+            'id'    => 'phila_image_list',
+            'type'  => 'image_advanced'
+          ),
         ),
       ),
-    ),
+      array(
+        'id'      => 'phila_registration',
+        'type'    => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_registration'),
+        'fields'  => array(
+          array(
+            'name'  => 'Registration row title',
+            'id'    => 'title',
+            'type'  => 'text'
+          ),
+          array(
+            'id'  => 'open',
+            'type'  => 'group',
+            'fields'  => array(
+              array(
+                'type' => 'heading',
+                'name' => 'Registration open title, description and links',
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 6),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields($name = '', $id = 'enrollment_open', $required  = false, $columns = 6, $clone = true),
+            )
+          ),
+          array(
+            'id'  => 'closed',
+            'type'  => 'group',
+            'fields'  => array(
+              array(
+                'type' => 'heading',
+                'name' => 'Registration closed title and description',
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 12),
+            )
+          )
+        ),
+      ),
     ),
   );
 }
