@@ -125,7 +125,23 @@ class Phila_Gov_Row_Metaboxes {
             'name'  => 'Registration row title',
             'id'    => 'title',
             'type'  => 'text',
-            'class' => 'percent-100'
+            'class' => 'percent-100',
+            'placeholder' => 'E.g. Enrollment',
+            'desc'  => 'Registration is closed by default. Start and end dates determine when registration should be displayed as open. Start and end dates are not displayed.',
+          ),
+          array(
+            'name' => 'Registration start date',
+            'id'  => 'start_date',
+            'type'  => 'date',
+            'timestamp' => true,
+            'columns' => 6,
+          ),
+          array(
+            'name' => 'Registration closed date',
+            'id'  => 'end_date',
+            'type'  => 'date',
+            'timestamp' => true,
+            'columns' => 6,
           ),
           array(
             'id'  => 'open',
@@ -133,7 +149,7 @@ class Phila_Gov_Row_Metaboxes {
             'fields'  => array(
               array(
                 'type' => 'heading',
-                'name' => 'Registration is open heading, description, and links',
+                'name' => 'Registration is open -  Heading, description, and links',
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 6),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields($name = '', $id = 'enrollment_open', $required  = false, $columns = 6, $clone = true),
@@ -145,7 +161,7 @@ class Phila_Gov_Row_Metaboxes {
             'fields'  => array(
               array(
                 'type' => 'heading',
-                'name' => 'Registration is closed heading and description',
+                'name' => 'Registration is closed - Heading and description',
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 12),
             )
