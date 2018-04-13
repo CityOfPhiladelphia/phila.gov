@@ -1196,6 +1196,22 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'id'       => 'phila_v2_homepage_programs',
+  'title'    => 'Top programs',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+      ),
+    ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
+  )
+);
+
+
+$meta_boxes[] = array(
   'id'       => 'phila_custom_markup',
   'title'    => 'Custom Markup',
   'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
