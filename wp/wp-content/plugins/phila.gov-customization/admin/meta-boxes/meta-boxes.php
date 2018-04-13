@@ -582,6 +582,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'name'  => 'Section Title',
             'id'    => 'phila_action_section_title',
             'type'  => 'text',
+            'class' => 'percent-100'
           ),
         array(
           'name'  => 'Call to Action Text',
@@ -866,7 +867,7 @@ $meta_var_wysiwyg_multi = array(
       'placeholder'  => 'Section Heading',
       'id'  => 'phila_wysiwyg_heading',
       'type'  => 'text',
-      'class' => 'width-95'
+      'class' => 'percent-100'
     ),
     array(
       'id'  => 'phila_wysiwyg_content',

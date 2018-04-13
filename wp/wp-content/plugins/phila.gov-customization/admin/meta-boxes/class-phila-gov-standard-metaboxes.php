@@ -97,7 +97,7 @@ class Phila_Gov_Standard_Metaboxes {
           'placeholder' => 'Heading',
           'id'  => 'phila_wysiwyg_heading',
           'type'  => 'text',
-          'class' => 'width-95'
+          'class' => 'percent-95'
         ),
         array(
           'id'  => 'phila_unique_wysiwyg_content',
@@ -199,6 +199,7 @@ class Phila_Gov_Standard_Metaboxes {
         'name' => 'Heading',
         'id'   => 'phila_custom_text_title',
         'type' => 'text',
+        'class' => 'percent-100'
       ),
       array(
         'name' => 'Content',
@@ -217,6 +218,7 @@ class Phila_Gov_Standard_Metaboxes {
         'name' => 'Row Title',
         'id'   => 'phila_custom_row_title',
         'type' => 'text',
+        'class' => 'percent-100'
       ),
       array(
         'id'   => 'phila_custom_text_group',
@@ -241,7 +243,8 @@ class Phila_Gov_Standard_Metaboxes {
         array(
           'name'  => $section_name,
           'id'  => 'phila_wysiwyg_title',
-          'type'  => 'text'
+          'type'  => 'text',
+          'class' => 'percent-100'
         ),
         array(
           'id'  => 'phila_wysiwyg_content',
@@ -266,7 +269,7 @@ class Phila_Gov_Standard_Metaboxes {
           'placeholder' => 'Heading',
           'id'  => 'phila_wysiwyg_heading',
           'type'  => 'text',
-          'class' => 'width-95'
+          'class' => 'percent-95'
         ),
         array(
           'id'  => 'phila_wysiwyg_content',
@@ -309,7 +312,7 @@ class Phila_Gov_Standard_Metaboxes {
           'placeholder' => 'Step Heading',
           'id'  => 'phila_step_wysiwyg_heading',
           'type'  => 'text',
-          'class' => 'width-95'
+          'class' => 'percent-95'
         ),
         array(
           'id'  => 'phila_step_wysiwyg_content',
@@ -360,7 +363,7 @@ class Phila_Gov_Standard_Metaboxes {
           'columns' => 12,
           'required' => $required
          ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_url('URL', 'link_url', '', 6 ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_url('URL', 'link_url', '', 12 ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'is_external'),
       )
     );
@@ -536,7 +539,8 @@ class Phila_Gov_Standard_Metaboxes {
       'type'  => 'text',
       'class' => 'metabox-url',
       'desc'  => $desc,
-      'columns' => $columns
+      'columns' => $columns,
+      'class' => 'percent-100',
     );
   }
 
@@ -643,6 +647,7 @@ class Phila_Gov_Standard_Metaboxes {
              'name'  => 'Section Title',
              'id'    => 'phila_action_section_title_multi',
              'type'  => 'text',
+             'class'  => 'percent-100'
            ),
            array(
              'id'  => 'phila_call_to_action_multi_group',
@@ -685,7 +690,7 @@ class Phila_Gov_Standard_Metaboxes {
                  'id'    => 'phila_action_panel_link_multi',
                  'type'  => 'text',
                  'class' => 'action-panel-link',
-                 'columns'  => 6,
+                 'columns'  => 12,
                ),
                Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
              ),

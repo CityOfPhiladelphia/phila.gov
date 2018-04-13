@@ -31,8 +31,8 @@ class Phila_Gov_Row_Select_Options {
       'id'   => 'phila_full_options_select',
       'desc'  => 'Choose full width content.',
       'type' => 'select',
-      'class' => 'percent-75',
-      'placeholder' => 'Full-width row select',
+      'class' => 'percent-100',
+      'placeholder' => 'Select full-width row module...',
       'options' => array(
         'phila_blog_posts' => 'Blog posts',
         'phila_full_width_calendar' => 'Calendar',
