@@ -112,8 +112,8 @@
          <?php endif; ?>
 
         <?php elseif ( $current_row_option == 'phila_image_list'):?>
-          <?php if ( isset( $current_row['phila_full_options']['phila_image_list'] ) ):
 
+          <?php if ( isset( $current_row['phila_full_options']['phila_image_list'] ) ):
 
             $image_list = $current_row['phila_full_options']['phila_image_list'];
 
@@ -121,6 +121,14 @@
 
             ?>
             <?php include(locate_template('partials/programs/image-list.php')); ?>
+          <?php endif; ?>
+
+        <?php elseif ( $current_row_option == 'phila_registration'):?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_registration'] ) ):
+
+            $registration = $current_row['phila_full_options']['phila_registration']; ?>
+
+            <?php include(locate_template('partials/programs/registration.php')); ?>
           <?php endif; ?>
 
       <?php endif;  /*end full row */?>
