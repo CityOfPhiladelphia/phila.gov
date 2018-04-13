@@ -152,7 +152,7 @@ class Phila_Gov_Row_Metaboxes {
                 'name' => 'Registration is open -  Heading, description, and links',
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 6),
-              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields($name = '', $id = 'enrollment_open', $required  = false, $columns = 6, $clone = true),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields($name = '', $id = 'links', $required  = false, $columns = 6, $clone = true),
             )
           ),
           array(
