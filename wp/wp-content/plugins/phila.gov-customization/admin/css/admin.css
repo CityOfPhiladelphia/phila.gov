@@ -6,10 +6,21 @@ input[type="url"],
 #post_name{
   width:100%;
 }
-.width-95,
-.width-95 > .rwmb-input > .rwmb-text{
+.percent-95,
+.percent-100 .rwmb-input,
+.percent-100 .rwmb-select.rwmb-select,
+.percent-95 > .rwmb-input > .rwmb-text{
   width:95%;
 }
+
+.percent-100,
+.percent-100 .rwmb-input,
+.percent-100 .rwmb-select.rwmb-select,
+.percent-100 > .rwmb-input > .rwmb-text,
+.rwmb-column-6 .percent-100 .rwmb-input{
+  width:100%;
+}
+
 /*better column widths*/
 .fixed .column-categories, .fixed .column-role {
     width: 25%;
@@ -31,11 +42,10 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 .rwmb-group-clone .rwmb-group-wrapper .rwmb-label {
   padding: 0 0 20px 0;
 }
-
-.rwmb-field .rwmb-row {
-  margin-bottom:10px;
+/*Add breathing room between inputs */
+.rwmb-input{
+  padding-bottom: 10px;
 }
-
 
 .manage-column.column-wpfront-user-role-editor-role-permission-column-key, .column-wpfront-user-role-editor-role-permission-column-key {
   width: 15%;

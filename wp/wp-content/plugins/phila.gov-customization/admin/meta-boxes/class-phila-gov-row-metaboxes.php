@@ -124,7 +124,8 @@ class Phila_Gov_Row_Metaboxes {
           array(
             'name'  => 'Registration row title',
             'id'    => 'title',
-            'type'  => 'text'
+            'type'  => 'text',
+            'class' => 'percent-100'
           ),
           array(
             'id'  => 'open',
@@ -132,7 +133,7 @@ class Phila_Gov_Row_Metaboxes {
             'fields'  => array(
               array(
                 'type' => 'heading',
-                'name' => 'Registration open title, description and links',
+                'name' => 'Registration is open heading, description, and links',
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 6),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields($name = '', $id = 'enrollment_open', $required  = false, $columns = 6, $clone = true),
@@ -144,7 +145,7 @@ class Phila_Gov_Row_Metaboxes {
             'fields'  => array(
               array(
                 'type' => 'heading',
-                'name' => 'Registration closed title and description',
+                'name' => 'Registration is closed heading and description',
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 12),
             )

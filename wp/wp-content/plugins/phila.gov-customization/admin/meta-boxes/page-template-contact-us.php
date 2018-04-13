@@ -26,7 +26,7 @@ function phila_register_department_contact_us( $meta_boxes ){
           array(
             'id'  => 'phila_contact_row_title',
             'type' => 'text',
-            'class' => 'width-95'
+            'class' => 'percent-95'
           ),
           array(
             'id'     => 'phila_contact_group',
@@ -43,7 +43,7 @@ function phila_register_department_contact_us( $meta_boxes ){
               array(
                 'id' => 'phila_contact_column_title',
                 'type'  => 'text',
-                'class' => 'width-95'
+                'class' => 'percent-95'
               ),
               Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
