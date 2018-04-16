@@ -1513,14 +1513,19 @@ function phila_filter_allowed_html($allowed, $context){
     $allowed['button']['data-close'] = true;
     $allowed['div']['data-deep-link'] = true;
   }
+
+  $allowed['canvas'] = true;
+  
   return $allowed;
 }
 //Stop stripping span tags from TinyMCE WYSIWYG
-add_filter('tiny_mce_before_init', 'phila_allow_spans', 10, 1);
+add_filter('tiny_mce_before_init', 'phila_allowed_html', 10, 1);
 
-function phila_allow_spans($allowed){
+function phila_allowed_html($allowed){
 
     $allowed['extended_valid_elements'] = 'span[*]';
+    $allowed['extended_valid_elements'] = 'canvas[*]';
+
 
   return $allowed;
 
