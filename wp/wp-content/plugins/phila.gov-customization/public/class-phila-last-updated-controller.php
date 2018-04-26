@@ -53,8 +53,6 @@ class Phila_Last_Updated_Controller {
 
     $posts = get_posts( $args );
 
-    //var_dump($posts);
-
     $data = array();
 
     if ( empty( $posts ) ) {
