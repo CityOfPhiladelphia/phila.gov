@@ -3,12 +3,12 @@
  *  Custom Post type for Event Spotlight
  *
  */
-if ( class_exists( "Phila_Gov_Event_Spotlight" ) ){
-  $cpt_event_spotlight = new Phila_Gov_Event_Spotlight();
+if ( class_exists( "Phila_Gov_CPT_Event_Spotlight" ) ){
+  $cpt_event_spotlight = new Phila_Gov_CPT_Event_Spotlight();
 }
 
 
-class Phila_Gov_Event_Spotlight{
+class Phila_Gov_CPT_Event_Spotlight{
 
   public function __construct(){
 
