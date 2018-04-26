@@ -47,6 +47,8 @@ require $dir. '/admin/departments/class-phila-gov-department-register-templates.
 require $dir. '/admin/departments/templates/class-phila-gov-collection-page.php';
 
 require $dir. '/admin/event-spotlight/class-phila-gov-cpt-event-spotlight.php';
+require $dir. '/admin/event-spotlight/templates/class-phila-gov-spotlight.php';
+
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
