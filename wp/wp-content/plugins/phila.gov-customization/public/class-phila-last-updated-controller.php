@@ -41,8 +41,6 @@ class Phila_Last_Updated_Controller {
       'public' => true
     ) );
 
-    echo time();
-
     $args = array(
       'posts_per_page'=> -1,
       'post_parent' => 0,
