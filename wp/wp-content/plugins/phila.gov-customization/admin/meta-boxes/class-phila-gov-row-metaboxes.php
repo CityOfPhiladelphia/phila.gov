@@ -116,7 +116,12 @@ class Phila_Gov_Row_Metaboxes {
           ),
         ),
       ),
-      Phila_Gov_Standard_Metaboxes::phila_meta_registration(),
+      array(
+        'id'      => 'phila_registration',
+        'type'    => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_registration'),
+        'fields'  => Phila_Gov_Standard_Metaboxes::phila_meta_registration(),
+      )
     ),
   );
 }

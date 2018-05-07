@@ -31,6 +31,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'type'  => 'image_advanced',
           'max_file_uploads' => 1,
           'desc'  => '1440px by 375px.',
+          'columns' => 6
         ),
         array(
           'id'  => 'owner_logo',
@@ -38,6 +39,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'type'  => 'image_advanced',
           'desc'  => 'Optional. Appears above footer. 600px by 600px.',
           'max_file_uploads' => 1,
+          'columns' => 6
         ),
         array(
           'type' => 'heading',
@@ -66,7 +68,7 @@ class Phila_Gov_Event_Spotlight_Template {
             array(
               'name' => 'Select row',
               'id'   => 'spotlight_options',
-              'desc'  => 'Choose a spotlight',
+              'desc'  => 'Choose a spotlight row',
               'type' => 'select',
               'placeholder' => 'Select...',
               'options' => array(
@@ -75,10 +77,10 @@ class Phila_Gov_Event_Spotlight_Template {
                 'accordion' => 'Accordions',
                 'free_text' => 'Free text',
                 'call_to_action_multi' => 'Call to action (multi)'
-                ),
               ),
+            ),
             array(
-              'id' => 'free_text',
+              'id' => 'free_text_option',
               'type' => 'group',
               'visible' => array(
                 'when' => array(
@@ -91,6 +93,26 @@ class Phila_Gov_Event_Spotlight_Template {
               'fields' => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = '1/4 Heading'),
               )
+            ),
+            array(
+              'id' => 'phila_registration',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array( 'spotlight_options', '=', 'registration' )
+                )
+              ),
+              'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_registration(),
+            ),
+            array(
+              'id'  => 'calendar_row',
+              'type'  => 'group',
+              'visible'  => array(
+                'when'  => array(
+                  array('spotlight_options', '=', 'calendar')
+                  ),
+                ),
+                'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
             ),
           ),
         ),

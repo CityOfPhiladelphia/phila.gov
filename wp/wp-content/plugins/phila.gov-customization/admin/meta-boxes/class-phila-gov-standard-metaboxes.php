@@ -1007,10 +1007,6 @@ public static function phila_meta_var_connect(){
   }
   public static function phila_meta_registration() {
     return array(
-      'id'      => 'phila_registration',
-      'type'    => 'group',
-      'visible' => array('phila_full_options_select', '=', 'phila_registration'),
-      'fields'  => array(
         array(
           'name'  => 'Registration row title',
           'id'    => 'title',
@@ -1056,7 +1052,6 @@ public static function phila_meta_var_connect(){
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('', $wysiwyg_desc = '', $columns = 12),
           )
         )
-      ),
     );
   }
 
