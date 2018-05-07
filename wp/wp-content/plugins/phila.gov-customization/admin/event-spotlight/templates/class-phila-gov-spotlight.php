@@ -17,7 +17,7 @@ class Phila_Gov_Event_Spotlight_Template {
 
     $meta_boxes[] = array(
       'id'       => 'phila_spotlight_header',
-      'title'    => 'Spotlight overview',
+      'title'    => 'Official event information',
       'pages' => array( 'event_spotlight' ),
       'priority' => 'high',
       'include' => array(
@@ -46,9 +46,11 @@ class Phila_Gov_Event_Spotlight_Template {
           'name'  => 'Photo credit',
         ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_title('Name & organization', 'photo_credit', 'E.g.: N. Santos for VISIT PHILADELPHIA™', '60' ),
-
         array(
-          'name' => 'Date/Time Format',
+          'type' => 'heading',
+          'name'  => 'Date/Time format',
+        ),
+        array(
           'id' => 'phila_date_format',
           'type' => 'select',
           'placeholder' => 'Choose date format...',
@@ -63,7 +65,6 @@ class Phila_Gov_Event_Spotlight_Template {
           'class' =>  'effective-start-time',
           'type'  => 'datetime',
           'size'  =>  25,
-          'columns' => 6,
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'mm-dd-yy',
@@ -82,7 +83,6 @@ class Phila_Gov_Event_Spotlight_Template {
           'type'  => 'datetime',
           'class' =>  'effective-end-time',
           'size'  =>  25,
-          'columns' => 6,
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
             'dateFormat' => 'mm-dd-yy',
@@ -101,7 +101,6 @@ class Phila_Gov_Event_Spotlight_Template {
           'class' =>  'effective-start-time',
           'type'  => 'date',
           'size'  =>  25,
-          'columns' => 6,
           'js_options' =>  array(
             'dateFormat'=>'mm-dd-yy',
             'stepMinute' => 15,
@@ -119,7 +118,6 @@ class Phila_Gov_Event_Spotlight_Template {
           'type'  => 'date',
           'class' =>  'effective-end-time',
           'size'  =>  25,
-          'columns' => 6,
           'js_options' =>  array(
             'dateFormat' => 'mm-dd-yy',
             'stepMinute' => 15,
@@ -132,17 +130,51 @@ class Phila_Gov_Event_Spotlight_Template {
           'visible' => array('phila_date_format', '=', 'date'),
         ),
         array(
-          'name' => 'Address',
-          'id'  => 'address',
-          'type'  => 'text'
+          'type' => 'heading',
+          'name'  => 'Location',
         ),
         array(
-          'name'  => 'Location',
-          'id'  => 'location',
-          'type'  => 'map',
-          'api_key' => '',
-          'address_field' => 'address'
-        )
+          'id'  => 'address',
+          'type'  => 'group',
+          'fields'  => array(
+            array(
+              'id'  => 'venue_name',
+              'placeholder'  => 'Venue name',
+              'type'  => 'text'
+            ),
+            array(
+              'id'  => 'address',
+              'placeholder'  => 'Address',
+              'type'  => 'text'
+            ),
+            array(
+              'id'  => 'address_2',
+              'placeholder'  => 'Address 2',
+              'type'  => 'text'
+            ),
+            array(
+              'id'  => 'city',
+              'type'  => 'text',
+              'std' => 'Philadelphia',
+              'placeholder' => 'City',
+              'columns' => 4,
+            ),
+            array(
+              'id'  => 'state',
+              'type'  => 'text',
+              'placeholder' => 'State',
+              'columns' => 2,
+              'std' => 'PA'
+            ),
+            array(
+              'id'  => 'zip',
+              'type'  => 'text',
+              'columns' => 2,
+              'placeholder' => 'Zip',
+              'std' => '19107'
+            ),
+          ),
+        ),
       ),
     );
 
