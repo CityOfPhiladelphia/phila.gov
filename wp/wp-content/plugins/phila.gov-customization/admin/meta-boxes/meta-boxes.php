@@ -582,6 +582,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'name'  => 'Section Title',
             'id'    => 'phila_action_section_title',
             'type'  => 'text',
+            'class' => 'percent-100'
           ),
         array(
           'name'  => 'Call to Action Text',
@@ -866,7 +867,7 @@ $meta_var_wysiwyg_multi = array(
       'placeholder'  => 'Section Heading',
       'id'  => 'phila_wysiwyg_heading',
       'type'  => 'text',
-      'class' => 'width-95'
+      'class' => 'percent-100'
     ),
     array(
       'id'  => 'phila_wysiwyg_content',
@@ -1193,6 +1194,22 @@ $meta_boxes[] = array(
     ),
   ),
 );
+
+$meta_boxes[] = array(
+  'id'       => 'phila_v2_homepage_programs',
+  'title'    => 'Top programs',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+      ),
+    ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
+  )
+);
+
 
 $meta_boxes[] = array(
   'id'       => 'phila_custom_markup',
