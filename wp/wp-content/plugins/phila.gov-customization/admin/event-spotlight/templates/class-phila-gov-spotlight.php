@@ -182,6 +182,14 @@ class Phila_Gov_Event_Spotlight_Template {
             ),
           ),
         ),
+        array(
+          'type' => 'heading',
+          'name'  => 'Event information',
+        ),
+        array(
+          'id'  => 'event_info',
+          'type'  => 'wysiwyg',
+        ),
       ),
     );
 
