@@ -188,7 +188,7 @@ class Phila_Gov_Standard_Metaboxes {
   }
 
   /*
-  * With an update to the metabox plguin, mutiple, clonable, grouped wysiwyg areas are now possible meaning that the old textarea function below can be replaced with a wysiwyg. To preserve the IDs, we'll simply change the name of this function and update it in all the relevant areas. This can probably be phased out in favor of the original phila_metabox_v2_wysiwyg function.
+  * With an update to the metabox plugin, multiple, clonable, grouped wysiwyg areas are now possible meaning that the old textarea function below can be replaced with a wysiwyg. To preserve the IDs, we'll simply change the name of this function and update it in all the relevant areas. This can probably be phased out in favor of the original phila_metabox_v2_wysiwyg function.
   *
   */
   public static function phila_metabox_v2_wysiwyg_upgraded(){

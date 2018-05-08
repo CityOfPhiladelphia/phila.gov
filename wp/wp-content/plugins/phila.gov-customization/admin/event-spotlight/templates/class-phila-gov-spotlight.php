@@ -65,6 +65,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'class' =>  'effective-start-time',
           'type'  => 'datetime',
           'size'  =>  25,
+          'columns' => 4,
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'mm-dd-yy',
@@ -83,6 +84,8 @@ class Phila_Gov_Event_Spotlight_Template {
           'type'  => 'datetime',
           'class' =>  'effective-end-time',
           'size'  =>  25,
+          'columns' => 8,
+
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
             'dateFormat' => 'mm-dd-yy',
@@ -101,6 +104,8 @@ class Phila_Gov_Event_Spotlight_Template {
           'class' =>  'effective-start-time',
           'type'  => 'date',
           'size'  =>  25,
+          'columns' => 4,
+
           'js_options' =>  array(
             'dateFormat'=>'mm-dd-yy',
             'stepMinute' => 15,
@@ -118,6 +123,8 @@ class Phila_Gov_Event_Spotlight_Template {
           'type'  => 'date',
           'class' =>  'effective-end-time',
           'size'  =>  25,
+          'columns' => 8,
+
           'js_options' =>  array(
             'dateFormat' => 'mm-dd-yy',
             'stepMinute' => 15,
@@ -216,11 +223,8 @@ class Phila_Gov_Event_Spotlight_Template {
                   array('spotlight_options', '=', 'free_text'),
                 ),
               ),
-              'clone'  => true,
-              'sort_clone' => true,
-              'add_button'  => '+ Add section',
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = '1/4 Heading'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
               )
             ),
             array(
@@ -243,7 +247,36 @@ class Phila_Gov_Event_Spotlight_Template {
                 ),
                 'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
             ),
-
+            array(
+              'id' => 'accordion_row',
+              'type' => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('spotlight_options', '=', 'accordion'),
+                ),
+              ),
+              'clone'  => true,
+              'sort_clone' => true,
+              'add_button'  => '+ Add accordion',
+              'fields' => array(
+                array(
+                  'type'  => 'text',
+                  'id'  => 'accordion_section_title',
+                  'name'  => 'Section title',
+                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = 'Accordion title', $wysiwyg_desc = '', $columns = 12, $clone = true),
+              ),
+            ),
+            array(
+              'id'  => 'call_to_action_multi_row',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('spotlight_options', '=', 'call_to_action_multi'),
+                ),
+              ),
+              'fields'  =>  Phila_Gov_Standard_Metaboxes::phila_meta_var_call_to_action_multi()
+            ),
           ),
         ),
       )
