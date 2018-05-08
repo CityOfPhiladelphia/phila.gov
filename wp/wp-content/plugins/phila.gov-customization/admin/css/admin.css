@@ -64,7 +64,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #postexcerpt,
 #commentstatusdiv,
 /*Hide View Attachment Page on Admin*/
-.attachment-info .view-attachment{
+.attachment-info .view-attachment,
+.post-type-event_spotlight #postdivrich{
   display: none !important;
 }
 
