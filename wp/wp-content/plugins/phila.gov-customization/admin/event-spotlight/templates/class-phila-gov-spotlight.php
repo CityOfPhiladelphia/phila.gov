@@ -58,10 +58,12 @@ class Phila_Gov_Event_Spotlight_Template {
             'date' => 'Date only',
             'datetime' => 'Date & Time',
           ),
+          'desc'  => 'Choose <b>date & time</b> when the event occurs on a single day, at a single time.
+          <br />Choose <b>date only</b> when the event spans multiple days and is comprised of a number of smaller events or, if the event is on a single day, but is comprised of a number of smaller events.'
         ),
         array(
           'name'  => 'Start Day and Time',
-          'id'    => 'phila_effective_start_datetime',
+          'id'    => 'start_datetime',
           'class' =>  'effective-start-time',
           'type'  => 'datetime',
           'size'  =>  25,
@@ -80,7 +82,7 @@ class Phila_Gov_Event_Spotlight_Template {
         ),
         array(
           'name'  => 'End Day and Time',
-          'id'    => 'phila_effective_end_datetime',
+          'id'    => 'end_datetime',
           'type'  => 'datetime',
           'class' =>  'effective-end-time',
           'size'  =>  25,
@@ -100,7 +102,7 @@ class Phila_Gov_Event_Spotlight_Template {
         ),
         array(
           'name'  => 'Start Date',
-          'id'    => 'phila_effective_start_date',
+          'id'    => 'start_date',
           'class' =>  'effective-start-time',
           'type'  => 'date',
           'size'  =>  25,
@@ -119,7 +121,7 @@ class Phila_Gov_Event_Spotlight_Template {
         ),
         array(
           'name'  => 'End Date',
-          'id'    => 'phila_effective_end_date',
+          'id'    => 'end_date',
           'type'  => 'date',
           'class' =>  'effective-end-time',
           'size'  =>  25,
