@@ -49,8 +49,12 @@
 
         <?php endif; ?>
       <?php elseif ( $current_row['spotlight_options'] == 'calendar'): ?>
-        <?php if(!isset($current_row['calendar_row'])): ?>
-          <?php include(locate_template('partials/departments/phila_module_row_2.php')); ?>
+        <?php if(!isset($current_row['spotlight_options']['calendar_row'])): ?>
+          <?php
+          $cal_id = isset( $current_row['calendar_row']['phila_full_width_calendar_id'] ) ? $current_row['calendar_row']['phila_full_width_calendar_id'] : '';
+
+          $cal_category = isset( $current_row['calendar_row']['phila_calendar_owner'] ) ? $current_row['calendar_row']['phila_calendar_owner'] : '';
+        include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
         <?php endif;?>
 
     <?php endif;  /*end full row */?>
