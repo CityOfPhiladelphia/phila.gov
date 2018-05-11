@@ -22,6 +22,9 @@
     $start = rwmb_meta('start_date');
     $end = rwmb_meta('end_date');
   }
+
+  $address = rwmb_meta( 'address', array( 'limit' => 1 ) );
+
 ?>
 <header class="spotlight">
   <div class="grid-x">
@@ -40,31 +43,37 @@
           <?php $end_month_format = phila_util_month_format($end); ?>
 
           <?php
-          //TODO: Make this its own template or function
             if (isset( $date_option ) && $date_option == 'date' ):?>
                 <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
-                  <?php echo str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j Y')); ?>
+                  <?php $date_output =  str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j, Y'));
+                  echo $date_output;
+                  ?>
                 <?php else :?>
-                  <?php echo str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j') . ' - ' . $end->format( 'l, ' . $end_month_format . ' j Y') ); ?>
+                  <?php $date_output = str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j') . ' - ' . $end->format( 'l, ' . $end_month_format . ' j, Y') );
+                  echo $date_output;
+                  ?>
+
                 <?php endif; ?>
 
             <?php elseif (isset( $date_option ) && $date_option) : ?>
 
                   <?php if ($start->format('m-d') === $end->format('m-d') && $start->format('a') === $end->format('a')):
                     //single day with time range ?>
-                    <?php echo str_replace(
+                    <?php $date_output = str_replace(
                       array('Sep','am','pm',':00'),
                       array('Sept','a.m.','p.m.',''),
-                     $end->format(' l, ' . $start_month_format . ', j Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a')
-                    ); ?>
+                     $end->format(' l, ' . $start_month_format . ', j, Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a'));
+                     echo $date_output; ?>
                   <?php elseif ($start->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
-                    <?php echo str_replace(
+                    <?php $date_output = str_replace(
                         array('Sep','12:00 am','12:00 pm','am','pm',':00'),
-                        array('Sept','midnight','noon','a.m.','p.m.',''), $start->format( 'g:i a' ) . ' – ' . $end->format(' l, ' . $start_month_format . ' g:i a j Y') ); ?>
+                        array('Sept','midnight','noon','a.m.','p.m.',''), $start->format( 'g:i a' ) . ' – ' . $end->format(' l, ' . $start_month_format . ' g:i a j, Y') );
+                        echo $date_output;?>
                   <?php else : //date range with time ?>
-                    <?php echo str_replace(
+                    <?php $date_output = str_replace(
                       array('Sep','12:00 am','12:00 pm','am','pm',':00'),
                       array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('l, ' . $start_month_format . ' j') . ' - ' . $end->format('l, ' . $end_month_format . ' j, Y' ) .  '<br />'. $start->format('g:i a') . ' - '  . $end->format('g:i a'));
+                      echo $date_output;
                       ?>
                       <i class="fa fa-refresh" aria-hidden="true"></i> Recurring daily
                   <?php endif; ?>
@@ -90,10 +99,20 @@
     <h2>Official event information</h2>
     <div class="grid-x">
       <div class="cell medium-12">
-        <?php echo $event_info ?>
+        <h3>When</h3>
+        <?php echo isset($date_output) ? $date_output : ''?>
+
+        <h3 class="mtl">Where</h3>
+        <address>
+          <b><?php echo $address['venue_name'] ?></b><br />
+          <?php echo $address['address'] ?><br />
+          <?php echo $address['address_2'] ?><br />
+          <?php echo $address['city'] ?>, <?php echo $address['state'] ?> <?php echo $address['zip'] ?>
+
+        </address>
       </div>
       <div class="cell medium-12">
-
+        <?php echo $event_info ?>
       </div>
     </div>
   </div>
