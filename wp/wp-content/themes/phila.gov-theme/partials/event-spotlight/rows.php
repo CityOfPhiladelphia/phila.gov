@@ -6,17 +6,12 @@
  */
 ?>
 <?php
-
-  // MetaBox variables
   $page_rows = rwmb_meta('spotlight_row');
-  //var_dump($page_rows);
 ?>
 <div>
 <?php
   foreach ($page_rows as $key => $value):
-    $current_row = $page_rows[$key];
-    //var_dump($current_row);
-    ?>
+    $current_row = $page_rows[$key]; ?>
     <!-- Grid Row -->
       <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
         <?php if ( isset( $current_row['free_text_option'] ) ):
@@ -56,6 +51,16 @@
           $cal_category = isset( $current_row['calendar_row']['phila_calendar_owner'] ) ? $current_row['calendar_row']['phila_calendar_owner'] : '';
         include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
         <?php endif;?>
+      <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
+      <!-- Accordion group  -->
+      <?php if ( !isset( $current_row['accordion_group_title']) ):
+        $accordion_title = $current_row['accordion_row']['accordion_row_title'];
+
+        $accordion_group = $current_row['accordion_row']['accordion_group'];
+
+        include(locate_template('partials/global/accordion.php')); ?>
+
+        <?php endif; ?>
 
     <?php endif;  /*end full row */?>
 
