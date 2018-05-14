@@ -265,16 +265,23 @@ class Phila_Gov_Event_Spotlight_Template {
                   array('spotlight_options', '=', 'accordion'),
                 ),
               ),
-              'clone'  => true,
-              'sort_clone' => true,
-              'add_button'  => '+ Add accordion',
               'fields' => array(
                 array(
-                  'type'  => 'text',
-                  'id'  => 'accordion_section_title',
-                  'name'  => 'Section title',
+                  'name' => ('Accordion row title'),
+                  'id'   => 'accordion_row_title',
+                  'type' => 'text',
+                  'required' => true,
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = 'Accordion title', $wysiwyg_desc = '', $columns = 12, $clone = true),
+                array(
+                  'id'   => 'accordion_group',
+                  'type' => 'group',
+                  'clone'  => true,
+                  'sort_clone' => true,
+                  'add_button' => '+ Add accordion',
+                  'fields' => array(
+                    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = 'Accordion title', $wysiwyg_desc = '', $columns = 12, $clone = true),
+                  )
+                )
               ),
             ),
             array(
