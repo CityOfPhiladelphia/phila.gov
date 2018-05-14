@@ -20,7 +20,7 @@
           <!-- Custom Text -->
           <section class="row mvl">
             <div class="large-24 column">
-              <h2 id="<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ?>"><?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
+              <h2 id="<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ?>" data-magellan-target="<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ?>"><?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
               <div>
                 <?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
               </div>

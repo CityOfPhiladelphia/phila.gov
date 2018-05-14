@@ -200,7 +200,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         !is_front_page() &&
         !is_404() &&
         !is_page_template('templates/the-latest.php') &&
-        $post_type != 'programs') :
+        $post_type != 'programs' &&
+        $post_type != 'event_spotlight') :
         get_template_part( 'partials/breadcrumbs' );
       ?>
     <?php endif; ?>
