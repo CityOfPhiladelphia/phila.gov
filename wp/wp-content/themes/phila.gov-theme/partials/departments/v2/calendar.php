@@ -9,7 +9,7 @@
   <section class="expanded mtm">
     <div class="row">
       <div class="columns">
-        <h2>Events</h2>
+        <h2 id="calendar">Events</h2>
       </div>
     </div>
     <div class="row calendar-row">

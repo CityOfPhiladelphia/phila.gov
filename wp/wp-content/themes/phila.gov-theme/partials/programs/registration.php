@@ -18,7 +18,7 @@ endif;
   <section class="registration">
     <div class="row">
       <div class="columns">
-        <h2><?php echo $registration['title']?></h2>
+        <h2 id="<?php echo phila_format_uri( $registration['title'] )?>"><?php echo $registration['title']?></h2>
       </div>
     </div>
     <div class="row">
