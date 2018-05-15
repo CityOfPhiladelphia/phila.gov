@@ -19,9 +19,6 @@ $spotlight_args  = array(
   $hero = rwmb_meta( 'header_img', array( 'limit' => 1 ) );
   $hero = reset($hero);
 
-  $owner = rwmb_meta( 'owner_logo', array( 'limit' => 1 ) );
-  $owner = reset($owner);
-
   $credit = rwmb_meta( 'phila_photo_credit' );
   $description = rwmb_meta( 'phila_meta_desc' );
   $date_option = rwmb_meta('phila_date_format');
