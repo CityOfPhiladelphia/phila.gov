@@ -28,7 +28,7 @@
 ?>
 <header id="spotlight-header" class="spotlight">
   <div class="grid-x">
-    <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image">
+    <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image" alt="<?php echo $hero['alt'] ?>">
     <?php if ( !empty($credit) ): ?>
       <div class="photo-credit small-text">
         <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?></span>

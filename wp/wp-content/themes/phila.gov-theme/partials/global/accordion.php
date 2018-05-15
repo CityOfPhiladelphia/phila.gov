@@ -6,7 +6,7 @@
 ?>
 <section class="mvl">
   <div class="grid-container">
-    <h2 id="#<?php phila_format_uri($accordion_title)?>"><?php echo isset($accordion_title) ? $accordion_title : '' ?></h2>
+    <h2 id="#<?php echo phila_format_uri($accordion_title)?>"><?php echo isset($accordion_title) ? $accordion_title : '' ?></h2>
     <div class="accordion" data-accordion data-multi-expand="true">
       <?php foreach ($accordion_group as $accordion ) : ?>
         <div class="accordion-item" data-accordion-item>
