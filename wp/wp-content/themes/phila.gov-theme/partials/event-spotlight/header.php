@@ -98,7 +98,7 @@
       <ul class="inline-list grid-x man pan">
       <?php foreach ($page_rows as $key => $value): ?>
         <?php $current_row = $page_rows[$key]; ?>
-          <li class="borderless event pam">
+          <li class="borderless event pam pan-mu">
           <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
             <?php $custom_text = $current_row['free_text_option']; ?>
             <a href="#<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ?>">
