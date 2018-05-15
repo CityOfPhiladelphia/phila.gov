@@ -49,7 +49,7 @@ $spotlight_args  = array(
       </div>
     <?php endif; ?>
   </div>
-  <div class="bg-ghost-gray card card--calendar pvm" href="<?php echo get_the_permalink() ?>">
+  <a class="bg-ghost-gray card card--calendar pvm" href="<?php echo get_the_permalink() ?>">
     <div class="grid-container">
       <div class="grid-x">
         <div class="cell">
@@ -102,7 +102,7 @@ $spotlight_args  = array(
         </div>
       </div>
     </div>
-  </div>
+  </a>
 </header>
 <?php endwhile; ?>
 <?php endif ?>
