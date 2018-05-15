@@ -13,7 +13,7 @@
   <?php
     foreach ($page_rows as $key => $value):
       $current_row = $page_rows[$key]; ?>
-    <!-- Grid Row -->
+      <!-- Grid Row -->
       <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
         <?php if ( isset( $current_row['free_text_option'] ) ):
           $custom_text = $current_row['free_text_option']; ?>
@@ -22,7 +22,7 @@
             <div class="large-24 column">
               <h2 id="<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ?>" data-magellan-target="<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ?>"><?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
               <div>
-                <?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
+                <?php echo isset($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '' ?>
               </div>
             </div>
           </section>
