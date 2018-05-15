@@ -40,7 +40,9 @@
       color:color(dark-gray);
     }
     li{
-      border-right: 1px solid color(dark-gray);
+      &:not(.borderless){
+        border-right: 1px solid color(dark-gray);
+      }
       &.featured{
         a:hover, a:active{
           color:color(dark-ben-franklin);
