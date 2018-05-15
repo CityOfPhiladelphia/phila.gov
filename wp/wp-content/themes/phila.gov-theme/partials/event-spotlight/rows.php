@@ -9,10 +9,10 @@
   $page_rows = rwmb_meta('spotlight_row');
 ?>
 
-<div>
-<?php
-  foreach ($page_rows as $key => $value):
-    $current_row = $page_rows[$key]; ?>
+<div class="spotlight-content">
+  <?php
+    foreach ($page_rows as $key => $value):
+      $current_row = $page_rows[$key]; ?>
     <!-- Grid Row -->
       <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
         <?php if ( isset( $current_row['free_text_option'] ) ):
@@ -59,7 +59,28 @@
         <?php endif; ?>
 
     <?php endif;  /*end full row */?>
-
     <!-- Grid Row -->
     <?php endforeach; ?>
+</div>
+<hr>
+<div class="grid-container">
+  <div class="grid-x mvxl">
+    <div class="cell panel <?php echo (!empty( $link['is_survey'] ) ) ? 'survey' : '' ?>">
+      <div class="grid-x align-middle">
+        <div class="small-24 medium-18 cell">
+            <h3 class="mbn">More from the City of Philadelphia</h3>
+            <p class="mts">Get the latest announcements, posts, press releases, and events.</p>
+        </div>
+        <div class="small-24 medium-6 cell center">
+          <a class="button full" href="/the-latest">
+            <div class="valign">
+                <div class="button-label valign-cell">
+                  Go to the latest
+                </div>
+              </div>
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>

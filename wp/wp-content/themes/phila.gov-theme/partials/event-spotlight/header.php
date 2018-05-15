@@ -29,21 +29,24 @@
 <header id="spotlight-header" class="spotlight">
   <div class="grid-x">
     <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image">
-      <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?>
-      <?php echo $description ?>
+    <?php if ( !empty($credit) ): ?>
+      <div class="photo-credit small-text">
+        <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?></span>
+      </div>
+    <?php endif; ?>
   </div>
-  <div class="bg-ghost-gray">
+  <div class="bg-ghost-gray card card--calendar pvm">
     <div class="grid-container">
       <div class="grid-x">
         <div class="cell">
-          <div><i class="fa fa-calendar"></i> Event</div>
+          <div class="post-label post-label--calendar"><i class="fa fa-calendar"></i><span>Event</span></div>
           <?php $start = new DateTime("@" . $start); ?>
           <?php $end = new DateTime("@" . $end); ?>
           <?php $start_month_format = phila_util_month_format($start); ?>
           <?php $end_month_format = phila_util_month_format($end); ?>
-
-          <?php
-            if (isset( $date_option ) && $date_option == 'date' ):?>
+          <div class="spotlight-date">
+            <?php
+              if (isset( $date_option ) && $date_option == 'date' ):?>
                 <?php if ($start->format('m-d') === $end->format('m-d') ): ?>
                   <?php $date_output =  str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j, Y'));
                   echo $date_output;
@@ -79,15 +82,15 @@
                   <?php endif; ?>
 
                 <?php endif; ?>
-
+            </div>
           <h1><?php echo the_title() ?></h1>
-          <p><?php echo $description ?></p>
+          <div><?php echo $description ?></div>
         </div>
       </div>
     </div>
   </div>
 </header>
-<?php  $page_rows = rwmb_meta('spotlight_row'); ?>
+<?php $page_rows = rwmb_meta('spotlight_row'); ?>
 <div data-sticky-container class="bg-white">
   <nav class="sticky sticky--in-page center bg-white menu" data-sticky data-top-anchor="spotlight-header:bottom" style="width:100%" data-sticky-on="medium" data-margin-top="4.8">
     <div class="grid-container">
@@ -114,7 +117,7 @@
           </li>
         <?php elseif ( $current_row['spotlight_options'] == 'calendar'): ?>
           <li>
-            <a href="#events">Event listings</a>
+            <a href="#calendar">Event listings</a>
           </li>
         <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
           <?php $accordion_title = $current_row['accordion_row']['accordion_row_title']; ?>
@@ -150,12 +153,3 @@
     </div>
   </div>
 </section>
-<style>
-.spotlight{
-  border-bottom: 5px solid #000;
-}
-.spotlight-header{
-  width:100%;
-  height: 100%;
-}
-</style>
