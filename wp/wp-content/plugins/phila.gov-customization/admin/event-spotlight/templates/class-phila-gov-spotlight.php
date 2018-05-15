@@ -34,7 +34,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'columns' => 6
         ),
         array(
-          'id'  => 'owner_logo',
+          'id'  => 'phila_v2_department_logo',
           'name' => 'Event owner logo',
           'type'  => 'image_advanced',
           'desc'  => 'Optional. Appears above footer. 600px by 600px.',
