@@ -112,7 +112,7 @@ get_header(); ?>
         </div>
       </div>
       <?php include( locate_template( 'partials/posts/featured-grid.php' ) ); ?>
-      <?php include( locate_template( 'partials/global/go-to-latest.php' ) ); ?>
+      <?php include( locate_template( 'partials/global/cta-go-to-latest.php' ) ); ?>
     </section>
 
     <section class="neighborhood-resources">
