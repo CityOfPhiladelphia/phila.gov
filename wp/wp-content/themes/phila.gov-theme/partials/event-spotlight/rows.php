@@ -63,4 +63,4 @@
   <?php endforeach; ?>
 </div>
 <hr>
-<?php include( locate_template( 'partials/global/go-to-latest.php' ) ); ?>
+<?php include( locate_template( 'partials/global/cta-go-to-latest.php' ) ); ?>
