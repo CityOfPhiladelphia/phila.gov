@@ -1,8 +1,21 @@
 <?php
-  /*
-   * Event spotlight page header
-  */
- 
+/*
+ * Event spotlight card
+*/
+
+$spotlight_args  = array(
+  'posts_per_page' => 1,
+  'post_type' => array('event_spotlight'),
+  'order' => 'desc',
+  'orderby' => 'date',
+  'ignore_sticky_posts' => 1,
+); ?>
+<?php $label = 'event_spotlight'; ?>
+
+<?php $spotlight = new WP_Query( $spotlight_args ); ?>
+<?php if ( $spotlight->have_posts() ) : ?>
+    <?php while ( $spotlight->have_posts() ) : $spotlight->the_post(); ?>
+<?php
   $hero = rwmb_meta( 'header_img', array( 'limit' => 1 ) );
   $hero = reset($hero);
 
@@ -36,7 +49,7 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="bg-ghost-gray card card--calendar pvm">
+  <div class="bg-ghost-gray card card--calendar pvm" href="<?php echo get_the_permalink() ?>">
     <div class="grid-container">
       <div class="grid-x">
         <div class="cell">
@@ -91,66 +104,5 @@
     </div>
   </div>
 </header>
-<?php $page_rows = rwmb_meta('spotlight_row'); ?>
-<div data-sticky-container class="bg-white">
-  <nav class="sticky sticky--in-page center bg-white menu" data-sticky data-top-anchor="spotlight-header:bottom" style="width:100%" data-sticky-on="medium" data-margin-top="4.8">
-    <div class="grid-container">
-      <ul class="inline-list grid-x man">
-      <?php foreach ($page_rows as $key => $value): ?>
-        <?php $current_row = $page_rows[$key]; ?>
-
-      <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
-        <?php $custom_text = $current_row['free_text_option']; ?>
-          <li>
-            <a href="#<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ?>">
-              <?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></a>
-          </li>
-      <?php elseif ( $current_row['spotlight_options'] == 'registration'): ?>
-        <?php $registration = $current_row['phila_registration']; ?>
-          <li>
-            <a href="#<?php echo phila_format_uri($registration['title'])?>"><?php echo $registration['title'] ?></a>
-          </li>
-        <?php elseif ( $current_row['spotlight_options'] == 'call_to_action_multi'): ?>
-          <?php $phila_dept_homepage_cta =
-          $current_row['call_to_action_multi_row']['phila_call_to_action_section']; ?>
-          <li>
-            <a href="#<?php echo phila_format_uri($phila_dept_homepage_cta['phila_action_section_title_multi'])?>"><?php echo $phila_dept_homepage_cta['phila_action_section_title_multi']?></a>
-          </li>
-        <?php elseif ( $current_row['spotlight_options'] == 'calendar'): ?>
-          <li>
-            <a href="#calendar">Event listings</a>
-          </li>
-        <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
-          <?php $accordion_title = $current_row['accordion_row']['accordion_row_title']; ?>
-          <li>
-            <a href="#<?php echo phila_format_uri($accordion_title)?>"><?php echo $accordion_title ?></a>
-          </li>
-        <?php endif; ?>
-      <?php endforeach; ?>
-      </ul>
-    </div>
-  </nav>
-</div>
-<section>
-  <div class="grid-container">
-    <h2 id="official-event-information">Official event information</h2>
-    <div class="grid-x">
-      <div class="cell medium-12">
-        <h3>When</h3>
-        <?php echo isset($date_output) ? $date_output : ''?>
-
-        <h3 class="mtl">Where</h3>
-        <address>
-          <b><?php echo $address['venue_name'] ?></b><br />
-          <?php echo $address['address'] ?><br />
-          <?php echo $address['address_2'] ?><br />
-          <?php echo $address['city'] ?>, <?php echo $address['state'] ?> <?php echo $address['zip'] ?>
-
-        </address>
-      </div>
-      <div class="cell medium-12">
-        <?php echo $event_info ?>
-      </div>
-    </div>
-  </div>
-</section>
+<?php endwhile; ?>
+<?php endif ?>
