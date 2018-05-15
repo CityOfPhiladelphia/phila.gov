@@ -31,7 +31,7 @@
         <?php if ( isset( $current_row['phila_registration'] ) ):
 
           $registration = $current_row['phila_registration']; ?>
-          <?php include(locate_template('partials/programs/registration.php')); ?>
+          <?php include(locate_template('partials/global/registration.php')); ?>
         <?php endif; ?>
 
       <?php elseif ( $current_row['spotlight_options'] == 'call_to_action_multi'): ?>

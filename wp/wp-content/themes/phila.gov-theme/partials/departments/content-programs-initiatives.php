@@ -128,7 +128,7 @@
 
             $registration = $current_row['phila_full_options']['phila_registration']; ?>
 
-            <?php include(locate_template('partials/programs/registration.php')); ?>
+            <?php include(locate_template('partials/global/registration.php')); ?>
           <?php endif; ?>
 
       <?php endif;  /*end full row */?>
