@@ -12,6 +12,7 @@
   if ( !isset( $link ) ) :
     $link = phila_cta_full_display( $cta_link );
   endif;
+  var_dump($link);
 ?>
 <?php if ( !empty( $link ) ) :?>
   <div class="grid-container">
