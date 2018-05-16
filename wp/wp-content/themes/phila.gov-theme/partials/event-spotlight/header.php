@@ -126,15 +126,15 @@
       <div class="cell medium-12">
         <h3>When</h3>
         <?php echo isset($date_output) ? $date_output : ''?>
-
-        <h3 class="mtl">Where</h3>
-        <address>
-          <b><?php echo $address['venue_name'] ?></b><br />
-          <?php echo $address['address'] ?><br />
-          <?php echo $address['address_2'] ?><br />
-          <?php echo $address['city'] ?>, <?php echo $address['state'] ?> <?php echo $address['zip'] ?>
-
-        </address>
+        <?php if ( isset($address['address'] )): ?>
+          <h3 class="mtl">Where</h3>
+          <address>
+            <b><?php echo $address['venue_name'] ?></b><br />
+            <?php echo $address['address'] ?><br />
+            <?php echo $address['address_2'] ?><br />
+            <?php echo $address['city'] ?>, <?php echo $address['state'] ?> <?php echo $address['zip'] ?>
+          </address>
+        <?php endif ?>
       </div>
       <div class="cell medium-12">
         <?php echo $event_info ?>
