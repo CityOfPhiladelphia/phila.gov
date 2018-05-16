@@ -106,11 +106,21 @@
     }
   }
 }
+.event-spotlight{
+  .menu a{
+    padding: 0 1rem;
+  }
+}
 
 @include breakpoint(small only) {
   .sticky{
     //TODO: Add to standards
     top: 0 !important;
+  }
+  .event-spotlight{
+    .menu a{
+      padding: 1rem;
+    }
   }
 }
 
