@@ -12,7 +12,7 @@
         <div class="accordion-item" data-accordion-item>
           <a href="#" class="accordion-title"><?php echo $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></a>
           <div class="accordion-content" data-tab-content>
-          <?php echo $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
+          <?php echo apply_filters('the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
           </div>
         </div>
       <?php endforeach;?>
