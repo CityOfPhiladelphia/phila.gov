@@ -30,7 +30,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'name' => 'Event hero image',
           'type'  => 'image_advanced',
           'max_file_uploads' => 1,
-          'desc'  => '1200px by 375px.',
+          'desc'  => '1400px by 375px.',
           'columns' => 6
         ),
         array(
