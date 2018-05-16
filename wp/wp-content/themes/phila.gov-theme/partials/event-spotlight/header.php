@@ -82,7 +82,7 @@
                 <?php endif; ?>
             </div>
           <h1><?php echo the_title() ?></h1>
-          <div><?php echo $description ?></div>
+          <div><?php echo apply_filters('the_content', $description); ?></div>
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
         <?php endif ?>
       </div>
       <div class="cell medium-12">
-        <?php echo $event_info ?>
+        <?php echo apply_filters('the_content', $event_info); ?>
       </div>
     </div>
   </div>
