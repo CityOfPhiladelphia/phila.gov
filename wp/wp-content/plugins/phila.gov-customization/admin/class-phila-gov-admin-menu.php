@@ -46,6 +46,7 @@ class Phila_Gov_Admin_Menu {
         'edit.php?post_type=staff_directory',
         'edit.php?post_type=document',
         'separator2',
+        'edit.php?post_type=event_spotlight',
         'edit.php?post_type=calendar',
         'edit.php?post_type=site_wide_alert',
         'upload.php',
@@ -94,7 +95,7 @@ class Phila_Gov_Admin_Menu {
   function phila_hide_create_in_menu(){
     global $submenu;
     $user = wp_get_current_user();
-    
+
     if ( !array_key_exists('secondary_service_page_creator', $user->caps) ) {
       unset($submenu['edit.php?post_type=service_page'][10]);
     }
