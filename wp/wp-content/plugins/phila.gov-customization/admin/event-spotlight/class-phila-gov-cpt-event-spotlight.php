@@ -42,13 +42,13 @@ class Phila_Gov_CPT_Event_Spotlight{
         'public' => true,
         'has_archive' => true,
         'show_in_rest' => true,
-        'rest_base' => 'event-spotlight',
+        'rest_base' => 'spotlight',
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-calendar',
         'hierarchical' => true,
         'query_var' => true,
         'rewrite' => array(
-          'slug' => 'event-spotlight',
+          'slug' => 'spotlight',
           'with_front' => false,
         ),
       )
