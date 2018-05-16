@@ -61,17 +61,20 @@
       <?php endif;?>
 
     <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
-
-    <!-- Accordion group  -->
-    <?php if ( !isset( $current_row['accordion_group_title']) ):
-      $accordion_title = $current_row['accordion_row']['accordion_row_title'];
-      $accordion_group = $current_row['accordion_row']['accordion_group'];?>
-      <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
-        <?php include(locate_template('partials/global/accordion.php')); ?>
-      </div>
+      <!-- Accordion group  -->
+      <?php if ( !isset( $current_row['accordion_group_title']) ):
+        $accordion_title = $current_row['accordion_row']['accordion_row_title'];
+        $accordion_group = $current_row['accordion_row']['accordion_group'];?>
+        <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
+          <?php include(locate_template('partials/global/accordion.php')); ?>
+        </div>
       <?php endif; ?>
 
-  <?php endif;  /*end full row */?>
+    <?php elseif ( $current_row['spotlight_options'] == 'full_width_cta' ):
+      $link = phila_cta_full_display($current_row['full_width_cta']); ?>
+        <?php include(locate_template('partials/departments/v2/full-width-call-to-action.php')); ?>
+    <?php endif; ?>
+
   <?php endforeach; ?>
 </div>
 <hr>

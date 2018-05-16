@@ -222,7 +222,8 @@ class Phila_Gov_Event_Spotlight_Template {
                 'calendar' => 'Calendar',
                 'accordion' => 'Accordions',
                 'free_text' => 'Free text',
-                'call_to_action_multi' => 'Call to action (multi)'
+                'call_to_action_multi' => 'Call to action (multi)',
+                'full_width_cta'  => 'Full-width call to action'
               ),
             ),
             array(
@@ -293,6 +294,17 @@ class Phila_Gov_Event_Spotlight_Template {
                 ),
               ),
               'fields'  =>  Phila_Gov_Standard_Metaboxes::phila_meta_var_call_to_action_multi()
+            ),
+            array(
+              'id'  => 'full_width_cta',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('spotlight_options', '=', 'full_width_cta'),
+                ),
+              ),
+              'fields'  =>
+                Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
             ),
           ),
         ),
