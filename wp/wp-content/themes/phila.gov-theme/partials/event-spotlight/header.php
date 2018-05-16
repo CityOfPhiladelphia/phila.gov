@@ -96,7 +96,7 @@
     <?php foreach ($page_rows as $key => $value): ?>
       <?php $c++; ?>
       <?php $current_row = $page_rows[$key]; ?>
-        <li class="borderless event medium-auto pas">
+        <li class="event medium-auto pas">
         <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
           <?php $custom_text = $current_row['free_text_option']; ?>
           <a href="#anchor-<?php echo $c ?>">
