@@ -91,11 +91,10 @@
 <?php $page_rows = rwmb_meta('spotlight_row'); ?>
 <div data-sticky-container class="bg-white">
   <nav class="sticky sticky--in-page center bg-white menu" data-sticky data-top-anchor="spotlight-header:bottom" style="width:100%" data-sticky-on="medium" data-margin-top="4.8">
-    <div class="grid-container">
-      <ul class="inline-list grid-x man pan">
+      <ul class="inline-list mbn man pam pan-mu">
       <?php foreach ($page_rows as $key => $value): ?>
         <?php $current_row = $page_rows[$key]; ?>
-          <li class="borderless event pam pan-mu">
+          <li class="borderless event medium-auto pas">
           <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
             <?php $custom_text = $current_row['free_text_option']; ?>
             <a href="#<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ?>">
@@ -116,7 +115,6 @@
           </li>
       <?php endforeach; ?>
       </ul>
-    </div>
   </nav>
 </div>
 <section class="mvxl">
