@@ -89,32 +89,34 @@
   </div>
 </header>
 <?php $page_rows = rwmb_meta('spotlight_row'); ?>
+<?php $c = 0; ?>
 <div data-sticky-container class="bg-white">
   <nav class="sticky sticky--in-page center bg-white menu" data-sticky data-top-anchor="spotlight-header:bottom" style="width:100%" data-sticky-on="medium" data-margin-top="4.8">
-      <ul class="inline-list mbn man pam pan-mu">
-      <?php foreach ($page_rows as $key => $value): ?>
-        <?php $current_row = $page_rows[$key]; ?>
-          <li class="borderless event medium-auto pas">
-          <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
-            <?php $custom_text = $current_row['free_text_option']; ?>
-            <a href="#<?php echo phila_format_uri($custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ?>">
-              <?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></a>
-            <?php elseif ( $current_row['spotlight_options'] == 'registration'): ?>
-              <?php $registration = $current_row['phila_registration']; ?>
-              <a href="#<?php echo phila_format_uri($registration['title'])?>"><?php echo $registration['title'] ?></a>
-            <?php elseif ( $current_row['spotlight_options'] == 'call_to_action_multi'): ?>
-              <?php $phila_dept_homepage_cta =
-              $current_row['call_to_action_multi_row']['phila_call_to_action_section']; ?>
-                <a href="#<?php echo phila_format_uri($phila_dept_homepage_cta['phila_action_section_title_multi'])?>"><?php echo $phila_dept_homepage_cta['phila_action_section_title_multi']?></a>
-              <?php elseif ( $current_row['spotlight_options'] == 'calendar'): ?>
-                <a href="#calendar">Event listings</a>
-              <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
-              <?php $accordion_title = $current_row['accordion_row']['accordion_row_title']; ?>
-                <a href="#<?php echo phila_format_uri($accordion_title)?>"><?php echo $accordion_title ?></a>
-            <?php endif; ?>
-          </li>
+    <ul class="inline-list mbn man pam pan-mu" data-magellan data-options="offset: 106;">
+    <?php foreach ($page_rows as $key => $value): ?>
+      <?php $c++; ?>
+      <?php $current_row = $page_rows[$key]; ?>
+        <li class="borderless event medium-auto pas">
+        <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
+          <?php $custom_text = $current_row['free_text_option']; ?>
+          <a href="#anchor-<?php echo $c ?>">
+            <?php echo $custom_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></a>
+          <?php elseif ( $current_row['spotlight_options'] == 'registration'): ?>
+            <?php $registration = $current_row['phila_registration']; ?>
+            <a href="#anchor-<?php echo $c ?>"><?php echo $registration['title'] ?></a>
+          <?php elseif ( $current_row['spotlight_options'] == 'call_to_action_multi'): ?>
+            <?php $phila_dept_homepage_cta =
+            $current_row['call_to_action_multi_row']['phila_call_to_action_section']; ?>
+              <a href="#anchor-<?php echo $c ?>"><?php echo $phila_dept_homepage_cta['phila_action_section_title_multi']?></a>
+            <?php elseif ( $current_row['spotlight_options'] == 'calendar'): ?>
+              <a href="#anchor-<?php echo $c ?>">Event listings</a>
+            <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
+            <?php $accordion_title = $current_row['accordion_row']['accordion_row_title']; ?>
+              <a href="#anchor-<?php echo $c ?>"><?php echo $accordion_title ?></a>
+          <?php endif; ?>
+        </li>
       <?php endforeach; ?>
-      </ul>
+    </ul>
   </nav>
 </div>
 <section class="mvxl">
