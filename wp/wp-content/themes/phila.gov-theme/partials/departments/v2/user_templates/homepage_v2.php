@@ -24,6 +24,10 @@
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
+        'homepage_programs' => array(
+            'type'  => 'v2',
+            'shown' => true,
+        ),
         'phila_full_row_blog'                    => array(
                                                 'type'=>'v1',
                                                 'shown'=>$this->full_row_blog
@@ -63,13 +67,12 @@
 
     $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');
 
-    //get the order of the visible (non-collpased) meta boxes from the Department Site Homepage adin
+    //get the order of the visible (non-collpased) meta boxes from the Department Site Homepage admin
     $meta_box_order_arr  = explode(',', isset($meta_box_order[0]) ? $meta_box_order[0] : 'default');
 
     // placeholder array for our final template include order
     // defaults to our original content order
     $homepage_v2_content_paritals_include_order = $meta_box_order_arr[0] == "default" ?  $homepage_v2_content_partials :  array();
-
 
     /**
      * loop through our meta box order and populate the our final
@@ -78,7 +81,7 @@
      */
     foreach ($meta_box_order_arr as $key => $value ) {
 
-        if(key_exists($value,$homepage_v2_content_partials)){
+        if(key_exists($value, $homepage_v2_content_partials)){
             $_template_meta = $homepage_v2_content_partials[$value];
             // move the template_name to the meta so that we can retain an indexed array order
             $_template_meta['template_name'] = $value;
