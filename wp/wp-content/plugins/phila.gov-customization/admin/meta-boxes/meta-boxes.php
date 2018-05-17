@@ -1196,8 +1196,8 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-  'id'       => 'phila_v2_homepage_programs',
-  'title'    => 'Top programs',
+  'id'       => 'homepage_programs',
+  'title'    => 'Our programs',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
