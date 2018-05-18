@@ -1007,10 +1007,6 @@ public static function phila_meta_var_connect(){
       'sort_clone' => true,
       'fields'  => array(
         array(
-          'name'  => 'Board or commission members',
-          'type'  => 'heading',
-        ),
-        array(
           'id'  => 'full_name',
           'name'  => 'Full name',
           'type'  => 'text',
