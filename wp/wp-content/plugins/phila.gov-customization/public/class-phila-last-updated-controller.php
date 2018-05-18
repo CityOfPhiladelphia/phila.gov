@@ -43,7 +43,6 @@ class Phila_Last_Updated_Controller {
 
     $args = array(
       'posts_per_page'=> -1,
-      'post_parent' => 0,
       'post_type' => $post_types,
       'orderby' => 'modified',
       'order' => 'desc',

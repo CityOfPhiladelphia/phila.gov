@@ -691,6 +691,12 @@ $meta_boxes[] = array(
       array(
         'id'  => 'phila_get_staff_cats',
         'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_staff_directory_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
         ),
@@ -699,12 +705,40 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
+    'id'  => 'phila_board_commission_members',
+    'title' => 'Commission or board member listing',
+    'pages' => array('department_page'),
+    'context' => 'normal',
+    'priority'  => 'default',
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'homepage_v2'),
+        array( 'phila_template_select', '=', 'staff_directory_v2'),
+      ),
+      'relation' => 'or',
+    ),
+
+    'fields'  => array(
+      array(
+        'id'  => 'section_title',
+        'type'  => 'text',
+        'name'  => 'Optional row title',
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
+    ),
+
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'phila_full_row_press_releases',
     'title'    => 'Full row press releases posts (3 total)',
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
     'priority' => 'default',
-
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
@@ -728,6 +762,12 @@ $meta_boxes[] = array(
       array(
         'id'  => 'phila_get_press_cats',
         'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_row_press_releases_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_press_release_category', 'Display press releases from these owners. This will override page ownership selection entirely.' ),
         ),
@@ -764,6 +804,12 @@ $meta_boxes[] = array(
       array(
         'id'  => 'phila_get_post_cats',
         'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_row_blog_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection entirely.' ),
         ),

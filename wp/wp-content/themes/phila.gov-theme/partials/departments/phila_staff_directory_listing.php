@@ -235,3 +235,5 @@ if ( has_category() ):
   </div>
 <?php endif; ?>
 <?php echo '</section>'; ?>
+
+<?php get_template_part( 'partials/departments/v2/board-commission-members' ); ?>
