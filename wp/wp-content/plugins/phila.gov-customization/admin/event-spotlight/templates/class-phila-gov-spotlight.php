@@ -16,6 +16,23 @@ class Phila_Gov_Event_Spotlight_Template {
   function register_event_spotlight_metaboxes( $meta_boxes ){
 
     $meta_boxes[] = array(
+      'title'    => 'Status',
+      'pages' => array( 'event_spotlight' ),
+      'priority' => 'high',
+      'context'    => 'side',
+      'fields'  => array(
+        array(
+          'id'  => 'spotlight_is_active',
+          'type'  => 'switch',
+          'std'=> '0',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+          'name'  => 'This is an active event spotlight?',
+        )
+      )
+    );
+
+    $meta_boxes[] = array(
       'id'       => 'phila_spotlight_header',
       'title'    => 'Official event information',
       'pages' => array( 'event_spotlight' ),

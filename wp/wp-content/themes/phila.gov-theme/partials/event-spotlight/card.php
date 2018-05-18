@@ -9,34 +9,49 @@ $spotlight_args  = array(
   'order' => 'desc',
   'orderby' => 'date',
   'ignore_sticky_posts' => 1,
-); ?>
+  'meta_query'  => array(
+    array(
+      'key' => 'spotlight_is_active',
+      'value' => '1',
+      'compare' => '='
+    )
+  )
+);
+ ?>
 <?php $label = 'event_spotlight'; ?>
 
 <?php $spotlight = new WP_Query( $spotlight_args ); ?>
 <?php if ( $spotlight->have_posts() ) : ?>
     <?php while ( $spotlight->have_posts() ) : $spotlight->the_post(); ?>
-<?php
-  $hero = rwmb_meta( 'header_img', array( 'limit' => 1 ) );
-  $hero = reset($hero);
+    <?php if (is_page_template('templates/the-latest.php')): ?>
+      <section>
+        <div id="event-spotlight" data-magellan-target="event-spotlight">
+        <header class="row columns mtl">
+          <h1>Event spotlight</h1>
+        </header>
+      <?php endif; ?>
+    <?php
+      $hero = rwmb_meta( 'header_img', array( 'limit' => 1 ) );
+      $hero = reset($hero);
 
-  $credit = rwmb_meta( 'phila_photo_credit' );
-  $description = rwmb_meta( 'phila_meta_desc' );
-  $date_option = rwmb_meta('phila_date_format');
+      $credit = rwmb_meta( 'phila_photo_credit' );
+      $description = rwmb_meta( 'phila_meta_desc' );
+      $date_option = rwmb_meta('phila_date_format');
 
-  $event_info = rwmb_meta('event_info');
+      $event_info = rwmb_meta('event_info');
 
-  if ($date_option == 'datetime'){
-    $start = rwmb_meta('start_datetime');
-    $end = rwmb_meta('end_datetime');
+      if ($date_option == 'datetime'){
+        $start = rwmb_meta('start_datetime');
+        $end = rwmb_meta('end_datetime');
 
-  }else{
-    $start = rwmb_meta('start_date');
-    $end = rwmb_meta('end_date');
-  }
+      }else{
+        $start = rwmb_meta('start_date');
+        $end = rwmb_meta('end_date');
+      }
 
-  $address = rwmb_meta( 'address', array( 'limit' => 1 ) );
+      $address = rwmb_meta( 'address', array( 'limit' => 1 ) );
 
-?>
+    ?>
 <header id="spotlight-header" class="spotlight">
   <div class="grid-x">
     <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image" alt="<?php echo $hero['alt'] ?>">
@@ -94,12 +109,16 @@ $spotlight_args  = array(
 
                 <?php endif; ?>
             </div>
-          <h1><?php echo the_title() ?></h1>
+          <h2 class="h1"><?php echo the_title() ?></h2>
           <div><?php echo $description ?></div>
         </div>
       </div>
     </div>
   </a>
 </header>
+<?php if (is_page_template('templates/the-latest.php')): ?>
+  </div>
+  </section>
+<?php endif;?>
 <?php endwhile; ?>
 <?php endif ?>

@@ -5,9 +5,16 @@
   }
 }
 
-#spotlight-header img{
-  width:100%;
-  height: 100%;
+#spotlight-header {
+  h2{
+    font-size: 1.78571rem;
+    margin: .5rem 0;
+    color: color(dark-gray);
+  }
+  img{
+    width:100%;
+    height: 100%;
+  }
 }
 .spotlight-date{
   font-size: 1rem;
