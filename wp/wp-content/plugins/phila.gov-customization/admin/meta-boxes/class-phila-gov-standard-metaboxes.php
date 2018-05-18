@@ -150,6 +150,15 @@ class Phila_Gov_Standard_Metaboxes {
         'type' => 'number'
       ),
       array(
+        'name'  => 'Event spotlight',
+        'id'  => 'phila_active_event_spotlight',
+        'desc'  => 'Display active event spotlight?',
+        'type'  => 'switch',
+        'std'=> '0',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+      ),
+      array(
         'name' => 'Calendar owner',
         'id'   => 'phila_calendar_owner',
         'type' => 'taxonomy_advanced',
