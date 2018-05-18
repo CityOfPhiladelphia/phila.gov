@@ -705,7 +705,7 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
-    'id'  => 'phila_board_commission_members',
+    'id'  => 'board_commission_member_list',
     'title' => 'Commission or board member listing',
     'pages' => array('department_page'),
     'context' => 'normal',

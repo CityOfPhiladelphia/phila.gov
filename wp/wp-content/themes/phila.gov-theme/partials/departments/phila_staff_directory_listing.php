@@ -211,16 +211,6 @@ if ( has_category() ):
           </div>
       </section>
     <?php endif; ?>
-    <?php else: ?>
-      <div class="mvm">
-        <div class="row">
-          <div class="large-24 columns">
-            <div class="placeholder center mbl mtm mtl-mu">
-              <p>No staff content found.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     <?php endif; ?>
   <?php wp_reset_query();?>
 <?php else: ?>
