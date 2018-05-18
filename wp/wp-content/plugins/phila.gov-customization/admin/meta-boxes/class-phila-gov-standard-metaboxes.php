@@ -1055,4 +1055,51 @@ public static function phila_meta_var_connect(){
     );
   }
 
+  public static function phila_meta_var_commission_members(){
+    return array(
+      'id' => 'phila_commission_members',
+      'type'  => 'group',
+      'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order above.',
+      'clone' => true,
+      'sort_clone' => true,
+      'fields'  => array(
+        array(
+          'id'  => 'full_name',
+          'name'  => 'Full name',
+          'type'  => 'text',
+          'desc'  => 'Enter the full name, with honorific e.g.: Dr. Herbert West, PhD'
+        ),
+        array(
+          'id'  => 'title',
+          'name'  => 'Title',
+          'type'  => 'text',
+          'desc'  => 'E.g.: Chief of Staff/Reanimator'
+        ),
+        array(
+          'id'  => 'email',
+          'name'  => 'Email address',
+          'type'  => 'email',
+        ),
+        array(
+          'id'  => 'phone',
+          'name'  => 'Phone',
+          'type'  => 'phone'
+        ),
+        array(
+          'id'  => 'headshot',
+          'name'  => 'Headshot',
+          'type'  => 'file_advanced',
+          'max_file_uploads' => 1,
+          'desc'  => 'Image size: 400px by 400px.'
+        ),
+        array(
+          'name' => 'Bio',
+          'id'   => 'bio',
+          'type' => 'wysiwyg',
+          'options' =>    Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
+        ),
+      )
+    );
+  }
+
 }//end Class
