@@ -59,6 +59,10 @@
                                                     'featured'=>$this->featured
                                                 )
                                              ),
+       'phila_board_commission_members'   => array(
+                                         'type'=>'v2',
+                                         'shown'=> true,
+                                  ),
     );
 
     $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');
