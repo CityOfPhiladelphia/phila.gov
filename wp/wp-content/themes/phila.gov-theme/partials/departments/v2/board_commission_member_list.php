@@ -20,7 +20,7 @@
 
               <a href="#" class="accordion-title"><?php echo isset( $member['full_name']) ? $member['full_name'] : ''; ?><?php echo isset($member['title']) ? ', <i>' . $member['title'] . '</i>': '';?></a>
           <?php endif; ?>
-            <div class="accordion-content" data-tab-content>
+            <div class="accordion-content group" data-tab-content>
               <?php if( isset($member['headshot'])) : ?>
                 <?php $image = wp_get_attachment_image_src($member['headshot'][0], $size = 'full');
                 echo isset($member['headshot']) ? '<img src="' . $image[0] . '" alt="' . $member['full_name'] .'" class="float-left" width="200" height="200">'  : ''; ?>
