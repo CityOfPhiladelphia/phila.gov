@@ -211,6 +211,7 @@ if ( has_category() ):
           </div>
       </section>
     <?php endif; ?>
+    <?php else: ?>
     <?php endif; ?>
   <?php wp_reset_query();?>
 <?php else: ?>
@@ -226,4 +227,4 @@ if ( has_category() ):
 <?php endif; ?>
 <?php echo '</section>'; ?>
 
-<?php get_template_part( 'partials/departments/v2/board-commission-members' ); ?>
+<?php get_template_part( 'partials/departments/v2/board_commission_member_list' ); ?>
