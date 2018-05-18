@@ -63,7 +63,7 @@
                                                     'featured'=>$this->featured
                                                 )
                                              ),
-       'phila_board_commission_members'   => array(
+       'board_commission_member_list'   => array(
                                          'type'=>'v2',
                                          'shown'=> true,
                                   ),
