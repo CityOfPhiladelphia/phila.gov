@@ -13,3 +13,12 @@
 .accordion-item .accordion-title::before{
   border-left:none;
 }
+
+.accordion-title.disabled{
+  cursor: default;
+  color: color(dark-gray);
+  &::before {
+    content: '';
+
+  }
+}
