@@ -73,6 +73,17 @@
     <?php elseif ( $current_row['spotlight_options'] == 'full_width_cta' ):
       $link = phila_cta_full_display($current_row['full_width_cta']); ?>
         <?php include(locate_template('partials/departments/v2/full-width-call-to-action.php')); ?>
+
+      <?php elseif ( $current_row['spotlight_options'] == 'image_list' ):
+
+        $image_list = $current_row['phila_image_list'];
+
+        $image_list_vars = phila_image_list($image_list);
+
+      ?>
+      <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
+        <?php include(locate_template('partials/programs/image-list.php')); ?>
+      </div>
     <?php endif; ?>
 
   <?php endforeach; ?>
