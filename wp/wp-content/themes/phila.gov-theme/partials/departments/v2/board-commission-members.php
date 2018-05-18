@@ -24,7 +24,7 @@
             <?php echo isset( $member['email'] ) ? '<a href="mailto:' . $member['email'] .'"> ' .  $member['email']. '</a>' : ''
             ?>
             <?php if ($member['email'] != '' && $member['phone'] !=
-            '' ? ' | ' : '') ?>
+            '' ) echo ' | ' ?>
             <?php echo isset($member['phone']) ?
             '(' . $member['phone']['area'] . ') ' . $member['phone']['phone-co-code'] .'-' . $member['phone']['phone-subscriber-number']  : ''?>
 
