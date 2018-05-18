@@ -10,7 +10,7 @@
     <?php if (!empty($section_title)) :?>
       <h2 class="contrast"><?php echo $section_title ?></h2>
     <?php endif; ?>
-    <div class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+    <div class="accordion commissions" data-accordion data-multi-expand="true" data-allow-all-closed="true">
       <?php foreach ($members as $member):?>
           <!-- Accordion tab title -->
           <?php if( empty($member['headshot']) && empty($member['bio']) && empty($member['email']) && empty($member['phone']) ) : ?>
