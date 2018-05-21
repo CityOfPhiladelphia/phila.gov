@@ -15,14 +15,17 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
-    .beta-message {
-      p {
-        font-weight: 400;
-        font-size: 1.15rem;
+    .welcome-message {
+      .small-text{
+        font-style: italic;
+        font-family: 'Times New Roman';
+        font-size: 2rem;
       }
       .h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         line-height: 1;
+        margin-top: 0;
+        text-transform: uppercase;
         @media only screen and (min-width: 40em) {
           font-size: 3.5rem;
         }

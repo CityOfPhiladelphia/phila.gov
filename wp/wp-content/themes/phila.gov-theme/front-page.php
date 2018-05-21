@@ -16,12 +16,11 @@ get_header(); ?>
         </div>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
-          <div class="medium-14 small-centered columns beta-message">
-            <span class="h1 break-after">Beta.phila.gov</span> <span class="h2 sub-title">is a work-in-progress.</span>
-            <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg"></i> feedback links.</span></p>
+          <div class="medium-14 small-centered columns welcome-message">
+            <div class="small-text"><i>welcome to</i></div>
+            <div class="h1">phila.gov</div>
           </div>
         </div>
-        <!-- End beta.phila.gov message -->
         <div class="row common-requests">
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
@@ -321,7 +320,7 @@ get_header(); ?>
                   </div>
                 </div>
                 <div class="row collapse process-bar">
-                  <div class="medium-8 columns">
+                  <div class="medium-4 columns">
                     <section>
                       <header class="bg-medium-gray">
                         <div class="valign process-label left-arrow-indent left-arrow-white">
@@ -330,9 +329,17 @@ get_header(); ?>
                           </div>
                         </div>
                       </header>
-                      <div class="description">
-                        <span class="phs small-text">Alpha.phila.gov went live in December 2014. The alpha prototype was revised throughout 2015.</span>
-                      </div>
+                    </section>
+                  </div>
+                  <div class="medium-4 columns small-text">
+                    <section>
+                      <header class="bg-medium-gray">
+                        <div class="valign process-label left-arrow-indent left-arrow-medium-gray">
+                          <div class="valign-cell">
+                            <h4 class="mbn h5 white">Beta</h4>
+                          </div>
+                        </div>
+                      </header>
                     </section>
                   </div>
                   <div class="medium-8 columns small-text">
@@ -340,12 +347,12 @@ get_header(); ?>
                       <header class="bg-ben-franklin-blue">
                         <div class="valign process-label bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Beta</h4>
+                            <h4 class="mbn h5 white">phila.gov</h4>
                           </div>
                         </div>
                       </header>
                       <div class="description current">
-                        <span class="phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                        <span class="phs small-text">The homepage of beta.phila.gov became the official City homepage in 2018 and the content of beta.phila.gov and phila.gov were merged.</span>
                       </div>
                     </section>
                   </div>
@@ -354,12 +361,12 @@ get_header(); ?>
                       <header>
                         <div class="valign process-label bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Launch</h4>
+                            <h4 class="mbn h5 white">Migration</h4>
                           </div>
                         </div>
                       </header>
                       <div class="description">
-                        <span class="phs small-text">Beta.phila.gov will become the City’s new website in 2018. With your help, we’ll continue to improve it after that.</span>
+                        <span class="phs small-text">We're continuing to bring content onto this new platform. With your help, we’ll continue to improve it.</span>
                       </div>
                     </section>
                   </div>
