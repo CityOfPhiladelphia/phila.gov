@@ -226,5 +226,6 @@ if ( has_category() ):
   </div>
 <?php endif; ?>
 <?php echo '</section>'; ?>
-
-<?php get_template_part( 'partials/departments/v2/board_commission_member_list' ); ?>
+<?php if (phila_get_selected_template() != 'homepage_v2') : ?>
+  <?php get_template_part( 'partials/departments/v2/board_commission_member_list' ); ?>
+<?php endif?>
