@@ -75,8 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <?php endif ?>
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
-    <!-- Beta opt-out -->
-    <?php get_template_part( 'partials/content', 'wip' ); ?>
+
     <!-- Utility Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
       <div class="row">

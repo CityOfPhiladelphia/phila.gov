@@ -313,7 +313,7 @@ get_header(); ?>
             <div class="show-for-medium medium-14 pll plm columns equal process">
               <section>
                 <h3>Where are we in the redesign process?</h3>
-                <p>For the past couple of years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
+                <p>For the past few years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
                 <div class="row collapse">
                   <div class="medium-8 columns center small-centered ben-franklin-blue marker">
                     <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
@@ -323,7 +323,7 @@ get_header(); ?>
                   <div class="medium-4 columns">
                     <section>
                       <header class="bg-medium-gray">
-                        <div class="valign process-label left-arrow-indent left-arrow-white">
+                        <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Alpha</h4>
                           </div>
@@ -334,7 +334,7 @@ get_header(); ?>
                   <div class="medium-4 columns small-text">
                     <section>
                       <header class="bg-medium-gray">
-                        <div class="valign process-label left-arrow-indent left-arrow-medium-gray">
+                        <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Beta</h4>
                           </div>
@@ -345,7 +345,7 @@ get_header(); ?>
                   <div class="medium-8 columns small-text">
                     <section>
                       <header class="bg-ben-franklin-blue">
-                        <div class="valign process-label bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
+                        <div class="valign process-label bg-ben-franklin-blue left-arrow-indent right-arrow-ben-franklin-blue right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">phila.gov</h4>
                           </div>
@@ -359,7 +359,7 @@ get_header(); ?>
                   <div class="medium-8 columns end">
                     <section>
                       <header>
-                        <div class="valign process-label bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
+                        <div class="valign process-label bg-medium-gray left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Migration</h4>
                           </div>
