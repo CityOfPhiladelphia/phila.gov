@@ -25,11 +25,11 @@ fi
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'
-sudo ed -s /etc/php/7.0/fpm/pool.d/www.conf <<'EOF'
+sudo ed -s /etc/php/7.2/fpm/pool.d/www.conf <<'EOF'
 g/^pm\.max_children/s/5/10
 w
 EOF
-sudo ed -s /etc/php/7.0/fpm/php.ini <<'EOF'
+sudo ed -s /etc/php/7.2/fpm/php.ini <<'EOF'
 g/^post_max_size/s/8/100
 g/^upload_max_filesize/s/2/100
 w
@@ -41,7 +41,7 @@ echo 'Installing private plugins'
 fi
 
 echo 'Reloading php-fpm'
-sudo service php7.0-fpm reload
+sudo service php7.2-fpm reload
 
 echo 'Refreshing WordPress'
 wp rewrite flush
