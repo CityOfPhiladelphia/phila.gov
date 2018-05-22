@@ -63,7 +63,7 @@
                     <?php $date_output = str_replace(
                       array('Sep','am','pm',':00'),
                       array('Sept','a.m.','p.m.',''),
-                     $end->format(' l, ' . $start_month_format . ', j, Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a'));
+                     $end->format(' l, ' . $start_month_format . ' j, Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a'));
                      echo $date_output; ?>
                   <?php elseif ($start->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
                     <?php $date_output = str_replace(
