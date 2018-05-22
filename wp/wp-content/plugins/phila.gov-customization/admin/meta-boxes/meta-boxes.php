@@ -33,7 +33,8 @@ function phila_return_week_array(){
 
 function phila_setup_tiny_mce_basic( array $options ){
 
-  $output = '';
+  $output['block_formats'] = 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
+;
 
   $defaults = array(
     'format_select' => false,
@@ -43,6 +44,7 @@ function phila_setup_tiny_mce_basic( array $options ){
   $options = array_merge($defaults, $options);
 
   if ( $options['format_select'] == true) {
+
     $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript';
 
   }
@@ -52,8 +54,6 @@ function phila_setup_tiny_mce_basic( array $options ){
 
   }elseif( $options['heading_level'] == 'h2' ){
     $output['block_formats'] = 'Paragraph=p;  Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
-  }else{
-    $output['block_formats'] = 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
   }
 
   if ( $options['format_select'] == false ) {
