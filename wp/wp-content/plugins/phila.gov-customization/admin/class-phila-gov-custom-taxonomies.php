@@ -20,11 +20,12 @@ class Phila_Gov_Custom_Taxonomies {
     add_action( 'init', array($this, 'add_audiences') );
     add_action( 'init', array($this, 'add_media_type') );
     add_action( 'init', array($this, 'add_media_author') );
+    add_action( 'init', array($this, 'event_tags') );
 
   }
 
   function add_service_type() {
-    // Service Pages
+
     register_taxonomy('service_type',
       array(
         'service_page',
@@ -85,7 +86,7 @@ class Phila_Gov_Custom_Taxonomies {
 
 
   function add_media_type() {
-    // Service Pages
+
     register_taxonomy('media_type',
       array(
         'attachment'
@@ -112,7 +113,6 @@ class Phila_Gov_Custom_Taxonomies {
     ));
   }
   function add_media_author() {
-    // Service Pages
     register_taxonomy('media_author',
       array(
         'attachment'
@@ -134,6 +134,33 @@ class Phila_Gov_Custom_Taxonomies {
       'show_admin_column' => true,
       'rewrite' => array(
         'slug' => 'media-author',
+        'with_front' => false,
+      ),
+    ));
+  }
+  function event_tags() {
+    register_taxonomy('event_tags',
+      array(
+        'post',
+        'event_spotlight'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Event tag', 'phila-gov'),
+        'singular_name' => _x( 'Event tag', 'phila-gov'),
+        'search_items' =>  __( 'Search Event tag' ),
+        'all_items' =>     __( 'All Event tags' ),
+        'edit_item' =>     __( 'Edit Event tag' ),
+        'update_item' =>   __( 'Update Event tag' ),
+        'add_new_item' =>  __( 'Add New Event tag' ),
+        'new_item_name' => __( 'New Event tag Name' ),
+        'menu_name' =>     __( 'Event tag' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'event-tag',
         'with_front' => false,
       ),
     ));
