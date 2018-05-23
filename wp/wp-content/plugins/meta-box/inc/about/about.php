@@ -37,6 +37,10 @@ class RWMB_About {
 
 		// Redirect to about page after activation.
 		add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );
+
+		if ( isset( $_GET['page'] ) && 'meta-box-about' === $_GET['page'] ) {
+			add_filter( 'admin_footer_text', array( $this, 'change_footer_text' ) );
+		}
 	}
 
 	/**
@@ -76,10 +80,24 @@ class RWMB_About {
 	 */
 	public function render() {
 		?>
-		<div class="wrap about-wrap">
-			<?php include dirname( __FILE__ ) . '/sections/welcome.php'; ?>
-			<?php include dirname( __FILE__ ) . '/sections/tabs.php'; ?>
-			<?php include dirname( __FILE__ ) . '/sections/getting-started.php'; ?>
+		<div class="wrap">
+			<div id="poststuff">
+				<div id="post-body" class="metabox-holder columns-2">
+					<div id="post-body-content">
+						<div class="about-wrap">
+							<?php include dirname( __FILE__ ) . '/sections/welcome.php'; ?>
+							<?php include dirname( __FILE__ ) . '/sections/tabs.php'; ?>
+							<?php include dirname( __FILE__ ) . '/sections/getting-started.php'; ?>
+							<?php include dirname( __FILE__ ) . '/sections/extensions.php'; ?>
+							<?php include dirname( __FILE__ ) . '/sections/support.php'; ?>
+						</div>
+					</div>
+					<div id="postbox-container-1" class="postbox-container">
+						<?php include dirname( __FILE__ ) . '/sections/newsletter.php'; ?>
+						<?php include dirname( __FILE__ ) . '/sections/upgrade.php'; ?>
+					</div>
+				</div>
+			</div>
 		</div>
 		<?php
 	}
@@ -94,6 +112,22 @@ class RWMB_About {
 		}
 		wp_enqueue_style( 'meta-box-about', RWMB_URL . 'inc/about/css/style.css' );
 		wp_enqueue_script( 'meta-box-about', RWMB_URL . 'inc/about/js/script.js', array( 'jquery' ), '', true );
+	}
+
+	/**
+	 * Change WordPress footer text on about page.
+	 */
+	public function change_footer_text() {
+		$allowed_html = array(
+			'a'      => array(
+				'href'   => array(),
+				'target' => array(),
+			),
+			'strong' => array(),
+		);
+
+		// Translators: %1$s - link to review form.
+		echo wp_kses( sprintf( __( 'Please rate <strong>Meta Box</strong> <a href="%1$s" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a> on <a href="%1$s" target="_blank">WordPress.org</a> to help us spread the word. Thank you from the Meta Box team!', 'meta-box' ), 'https://wordpress.org/support/view/plugin-reviews/meta-box?filter=5#new-post' ), $allowed_html );
 	}
 
 	/**
