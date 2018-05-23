@@ -4,8 +4,9 @@
   * $cal_category - required
   */
   $display_spotlight = rwmb_meta('phila_active_event_spotlight');
- ?>
-<?php if ( !empty( $cal_id ) ):?>
+  $spotlight_id = rwmb_meta('phila_event_spotlight');
+  ?>
+<?php if ( !empty( $cal_id )  || !empty($display_spotlight)):?>
   <!-- Full Width Calendar -->
   <section class="expanded mtm">
     <div class="row">
@@ -15,7 +16,7 @@
     </div>
     <?php if ( !is_singular('event_spotlight') && $display_spotlight == 1 ): ?>
       <div class="grid-container mbl">
-        <?php get_template_part('partials/event-spotlight/card'); ?>
+        <?php include(locate_template('partials/event-spotlight/card.php')); ?>
       </div>
     <?php endif;?>
     <div class="row calendar-row">

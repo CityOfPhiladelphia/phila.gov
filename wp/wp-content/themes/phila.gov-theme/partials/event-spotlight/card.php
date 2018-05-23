@@ -3,21 +3,32 @@
  * Event spotlight card
 */
 
-$spotlight_args  = array(
-  'posts_per_page' => 1,
-  'post_type' => array('event_spotlight'),
-  'order' => 'desc',
-  'orderby' => 'date',
-  'ignore_sticky_posts' => 1,
-  'meta_query'  => array(
-    array(
-      'key' => 'spotlight_is_active',
-      'value' => '1',
-      'compare' => '='
+if ( is_singular('department_page') ) {
+  $spotlight_args  = array(
+    'posts_per_page' => 1,
+    'post_type' => array('event_spotlight'),
+    'order' => 'desc',
+    'orderby' => 'date',
+    'ignore_sticky_posts' => 1,
+    'p' => $spotlight_id
+  );
+}else{
+  $spotlight_args  = array(
+    'posts_per_page' => 1,
+    'post_type' => array('event_spotlight'),
+    'order' => 'desc',
+    'orderby' => 'date',
+    'ignore_sticky_posts' => 1,
+    'meta_query'  => array(
+      array(
+        'key' => 'spotlight_is_active',
+        'value' => '1',
+        'compare' => '='
+      )
     )
-  )
-);
- ?>
+  );
+  }
+?>
 <?php $label = 'event_spotlight'; ?>
 
 <?php $spotlight = new WP_Query( $spotlight_args ); ?>

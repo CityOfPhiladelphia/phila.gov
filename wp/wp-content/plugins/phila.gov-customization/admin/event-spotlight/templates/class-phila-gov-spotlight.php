@@ -27,7 +27,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'std'=> '0',
           'on_label'  => 'Yes',
           'off_label' => 'No',
-          'name'  => 'This is an active event spotlight?',
+          'name'  => 'Display this event spotlight on the latest landing page?',
         )
       )
     );
