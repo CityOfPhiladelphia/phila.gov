@@ -152,7 +152,7 @@ class Phila_Gov_Standard_Metaboxes {
       array(
         'name'  => 'Event spotlight',
         'id'  => 'phila_active_event_spotlight',
-        'desc'  => 'Display active event spotlight?',
+        'desc'  => 'Display this event spotlight on the latest landing page.',
         'type'  => 'switch',
         'std'=> '0',
         'on_label'  => 'Yes',
@@ -1110,5 +1110,4 @@ public static function phila_meta_var_connect(){
       )
     );
   }
-
 }//end Class
