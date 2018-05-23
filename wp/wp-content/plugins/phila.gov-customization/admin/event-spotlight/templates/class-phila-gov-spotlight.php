@@ -414,7 +414,6 @@ class Phila_Gov_Event_Spotlight_Template {
                         'timeInput' => true,
                       ),
                       'timestamp' => true,
-                      'visible' => array('phila_date_format', '=', 'datetime'),
                     ),
                     array(
                       'name'  => 'End Day and Time',
@@ -433,7 +432,6 @@ class Phila_Gov_Event_Spotlight_Template {
                         'timeInput' => true
                       ),
                       'timestamp' => true,
-                      'visible' => array('phila_date_format', '=', 'datetime'),
                     ),
                   )
                 ),
