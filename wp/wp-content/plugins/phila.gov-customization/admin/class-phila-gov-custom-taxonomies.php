@@ -16,15 +16,15 @@ if (class_exists("Phila_Gov_Custom_Taxonomies") ){
 class Phila_Gov_Custom_Taxonomies {
 
   public function __construct(){
-    add_action( 'init', array($this, 'add_service_type') );
-    add_action( 'init', array($this, 'add_audiences') );
-    add_action( 'init', array($this, 'add_media_type') );
-    add_action( 'init', array($this, 'add_media_author') );
+    add_action( 'init', array($this, 'service_type') );
+    add_action( 'init', array($this, 'audiences') );
+    add_action( 'init', array($this, 'media_type') );
+    add_action( 'init', array($this, 'media_author') );
     add_action( 'init', array($this, 'event_tags') );
 
   }
 
-  function add_service_type() {
+  function service_type() {
 
     register_taxonomy('service_type',
       array(
@@ -54,7 +54,7 @@ class Phila_Gov_Custom_Taxonomies {
     ));
   }
 
-  function add_audiences() {
+  function audiences() {
     // Program pages
     register_taxonomy('audience',
       array(
@@ -85,7 +85,7 @@ class Phila_Gov_Custom_Taxonomies {
   }
 
 
-  function add_media_type() {
+  function media_type() {
 
     register_taxonomy('media_type',
       array(
@@ -112,7 +112,7 @@ class Phila_Gov_Custom_Taxonomies {
       ),
     ));
   }
-  function add_media_author() {
+  function media_author() {
     register_taxonomy('media_author',
       array(
         'attachment'
