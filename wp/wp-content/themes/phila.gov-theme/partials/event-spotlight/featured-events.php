@@ -4,7 +4,7 @@
   */
 
   $title = $featured_events['title'];
-
+  $grid = phila_grid_column_counter(count($featured_events['features']));
 ?>
 <section class="mvxl">
   <?php if (isset($title) ) : ?>
@@ -16,15 +16,15 @@
     <div class="grid-x grid-margin-x align-stretch">
 
     <?php foreach($featured_events['features'] as $feature) : ?>
-      <div class="cell medium-8 bdr-all feature pam">
+      <div class="cell medium-<?php echo $grid ?> bdr-all feature pam">
         <h3><?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h3>
         <p>
           <?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
         </p>
         <?php if (isset($feature['venue_name']) || isset($feature['address_1'])) :?>
-        <div class="mvm group">
-          <i class="fa fa-map-marker fa-fw fa-lg float-left mrm"></i>
-          <div class="float-left">
+        <div class="mvm grid-x align-top">
+          <i class="fa fa-map-marker fa-fw fa-lg inline-block mrm cell small-1"></i>
+          <div class="cell small-21">
             <address>
               <?php echo isset($feature['venue_name']) ? '<b>' . $feature['venue_name'] . '</b> <br />' : ''; ?>
               <?php echo isset($feature['address']) ? $feature['address'] . '<br />' : '' ?>
@@ -35,9 +35,9 @@
           </div>
         </div>
         <?php endif; ?>
-        <div class="mvm group">
-          <i class="fa fa-calendar fa-fw fa-lg float-left mrm"></i>
-          <div class="float-left">
+        <div class="mvm grid-x align-top">
+          <i class="fa fa-calendar fa-fw fa-lg inline-block mrm cell small-1"></i>
+          <div class="cell small-21">
             <?php $start = new DateTime("@" . $feature['start_datetime']['timestamp']); ?>
             <?php $end = new DateTime("@" .  $feature['end_datetime']['timestamp']); ?>
             <?php $start_month_format = phila_util_month_format($start); ?>
