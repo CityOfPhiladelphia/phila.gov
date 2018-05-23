@@ -13,7 +13,6 @@
   <?php $c = 0 ?>
   <?php foreach ($page_rows as $key => $value):
     $current_row = $page_rows[$key];
-    d($current_row);
     $c++; ?>
     <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
       <?php if ( isset( $current_row['free_text_option'] ) ):

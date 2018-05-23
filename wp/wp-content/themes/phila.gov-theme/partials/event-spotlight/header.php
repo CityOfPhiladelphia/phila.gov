@@ -127,6 +127,11 @@
               <li class="event medium-auto">
                 <a href="#anchor-<?php echo $c ?>"><?php echo $title ?></a>
               </li>
+            <?php elseif ( $current_row['spotlight_options'] == 'featured_events'): ?>
+            <?php $title = $current_row['featured_events']['title']; ?>
+              <li class="event medium-auto">
+                <a href="#anchor-<?php echo $c ?>"><?php echo $title ?></a>
+              </li>
             <?php else: ?>
           <?php endif; ?>
       <?php endforeach; ?>
