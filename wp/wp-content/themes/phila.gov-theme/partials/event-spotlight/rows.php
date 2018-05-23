@@ -13,6 +13,7 @@
   <?php $c = 0 ?>
   <?php foreach ($page_rows as $key => $value):
     $current_row = $page_rows[$key];
+    d($current_row);
     $c++; ?>
     <?php if ( $current_row['spotlight_options'] == 'free_text'): ?>
       <?php if ( isset( $current_row['free_text_option'] ) ):
@@ -74,7 +75,7 @@
       $link = phila_cta_full_display($current_row['full_width_cta']); ?>
         <?php include(locate_template('partials/departments/v2/full-width-call-to-action.php')); ?>
 
-      <?php elseif ( $current_row['spotlight_options'] == 'image_list' ):
+    <?php elseif ( $current_row['spotlight_options'] == 'image_list' ):
 
         $image_list = $current_row['phila_image_list'];
 
@@ -84,6 +85,16 @@
       <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
         <?php include(locate_template('partials/programs/image-list.php')); ?>
       </div>
+
+    <?php elseif ( $current_row['spotlight_options'] == 'featured_events' ):
+
+        $featured_events = $current_row['featured_events'];
+
+      ?>
+      <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
+        <?php include(locate_template('partials/event-spotlight/featured-events.php')); ?>
+      </div>
+
     <?php endif; ?>
 
   <?php endforeach; ?>

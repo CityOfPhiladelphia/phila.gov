@@ -163,43 +163,43 @@ class Phila_Gov_Event_Spotlight_Template {
           'id'  => 'address',
           'type'  => 'group',
           'fields'  => array(
-            array(
-              'id'  => 'venue_name',
-              'placeholder'  => 'Venue name',
-              'type'  => 'text'
-            ),
-            array(
-              'id'  => 'address',
-              'placeholder'  => 'Address',
-              'type'  => 'text'
-            ),
-            array(
-              'id'  => 'address_2',
-              'placeholder'  => 'Address 2',
-              'type'  => 'text'
-            ),
-            array(
-              'id'  => 'city',
-              'type'  => 'text',
-              'std' => 'Philadelphia',
-              'placeholder' => 'City',
-              'columns' => 4,
-            ),
-            array(
-              'id'  => 'state',
-              'type'  => 'text',
-              'placeholder' => 'State',
-              'columns' => 2,
-              'std' => 'PA'
-            ),
-            array(
-              'id'  => 'zip',
-              'type'  => 'text',
-              'columns' => 2,
-              'placeholder' => 'Zip',
-              'std' => '19107'
-            ),
-          ),
+              array(
+                'id'  => 'venue_name',
+                'placeholder'  => 'Venue name',
+                'type'  => 'text'
+              ),
+              array(
+                'id'  => 'address',
+                'placeholder'  => 'Address',
+                'type'  => 'text'
+              ),
+              array(
+                'id'  => 'address_2',
+                'placeholder'  => 'Address 2',
+                'type'  => 'text'
+              ),
+              array(
+                'id'  => 'city',
+                'type'  => 'text',
+                'std' => 'Philadelphia',
+                'placeholder' => 'City',
+                'columns' => 4,
+              ),
+              array(
+                'id'  => 'state',
+                'type'  => 'text',
+                'placeholder' => 'State',
+                'columns' => 2,
+                'std' => 'PA'
+              ),
+              array(
+                'id'  => 'zip',
+                'type'  => 'text',
+                'columns' => 2,
+                'placeholder' => 'Zip',
+                'std' => '19107'
+              ),
+          )
         ),
         array(
           'type' => 'heading',
@@ -345,9 +345,6 @@ class Phila_Gov_Event_Spotlight_Template {
             array(
               'id'  => 'featured_events',
               'type'  => 'group',
-              'clone' => true,
-              'sort_clone'  => true,
-              'add_button'  => 'Add another feature',
               'visible'  => array('spotlight_options', '=', 'featured_events'),
               'fields'  => array(
                 array(
@@ -355,11 +352,93 @@ class Phila_Gov_Event_Spotlight_Template {
                   'id'    => 'title',
                   'type'  => 'text',
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('Event title'),
-              )
-            ),
-            
+                array(
+                  'id'  => 'features',
+                  'type' => 'group',
+                  'clone' => true,
+                  'sort_clone'  => true,
+                  'max_clone' => 4,
+                  'add_button'  => 'Add another feature',
+                  'fields'  => array(
 
+                    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg('Event title'),
+                      array(
+                        'id'  => 'venue_name',
+                        'placeholder'  => 'Venue name',
+                        'type'  => 'text'
+                      ),
+                      array(
+                        'id'  => 'address',
+                        'placeholder'  => 'Address',
+                        'type'  => 'text'
+                      ),
+                      array(
+                        'id'  => 'address_2',
+                        'placeholder'  => 'Address 2',
+                        'type'  => 'text'
+                      ),
+                      array(
+                        'id'  => 'city',
+                        'type'  => 'text',
+                        'std' => 'Philadelphia',
+                        'placeholder' => 'City',
+                        'columns' => 4,
+                      ),
+                      array(
+                        'id'  => 'state',
+                        'type'  => 'text',
+                        'placeholder' => 'State',
+                        'columns' => 2,
+                        'std' => 'PA'
+                      ),
+                      array(
+                        'id'  => 'zip',
+                        'type'  => 'text',
+                        'columns' => 2,
+                        'placeholder' => 'Zip',
+                        'std' => '19107'
+                      ),
+                    array(
+                      'name'  => 'Start Day and Time',
+                      'id'    => 'start_datetime',
+                      'type'  => 'datetime',
+                      'size'  =>  25,
+                      'columns' => 6,
+                      'js_options' =>  array(
+                        'timeFormat' =>  'hh:mm tt',
+                        'dateFormat'=>'mm-dd-yy',
+                        'stepMinute' => 15,
+                        'showHour' => 'true',
+                        'controlType'=> 'select',
+                        'oneLine'=> true,
+                        'timeInput' => true,
+                      ),
+                      'timestamp' => true,
+                      'visible' => array('phila_date_format', '=', 'datetime'),
+                    ),
+                    array(
+                      'name'  => 'End Day and Time',
+                      'id'    => 'end_datetime',
+                      'type'  => 'datetime',
+                      'size'  =>  25,
+                      'columns' => 6,
+
+                      'js_options' =>  array(
+                        'timeFormat' => 'hh:mm tt',
+                        'dateFormat' => 'mm-dd-yy',
+                        'stepMinute' => 15,
+                        'showHour' => 'true',
+                        'controlType'=> 'select',
+                        'oneLine'=> true,
+                        'timeInput' => true
+                      ),
+                      'timestamp' => true,
+                      'visible' => array('phila_date_format', '=', 'datetime'),
+                    ),
+                  )
+                ),
+              )
+            )
           ),
         ),
       )
