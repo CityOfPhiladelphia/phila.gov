@@ -1,7 +1,7 @@
 .event-spotlight nav {
   a:hover,
   a:active{
-    color: color(kelly-drive-green);
+    color: color(phanatic-green);
   }
 }
 
@@ -19,4 +19,10 @@
 .spotlight-date{
   font-size: 1rem;
   font-family: "Montserrat";
+}
+
+.featured-events{
+  .feature{
+    border-bottom: 5px solid color(phanatic-green);
+  }
 }
