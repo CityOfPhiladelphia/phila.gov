@@ -152,11 +152,19 @@ class Phila_Gov_Standard_Metaboxes {
       array(
         'name'  => 'Event spotlight',
         'id'  => 'phila_active_event_spotlight',
-        'desc'  => 'Display this event spotlight on the latest landing page.',
+        'desc'  => 'Display an event spotlight?',
         'type'  => 'switch',
         'std'=> '0',
         'on_label'  => 'Yes',
         'off_label' => 'No',
+      ),
+      array(
+        'name'  => 'Select event spotlight',
+        'id'  => 'phila_event_spotlight',
+        'type'  => 'post',
+        'visible' => array('phila_active_event_spotlight', '=', 1),
+        'post_type' => 'event_spotlight',
+        'field_type'  => 'select_advanced',
       ),
       array(
         'name' => 'Calendar owner',
