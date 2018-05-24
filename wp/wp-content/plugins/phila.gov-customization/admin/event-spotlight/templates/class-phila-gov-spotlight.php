@@ -71,6 +71,7 @@ class Phila_Gov_Event_Spotlight_Template {
           'id' => 'phila_date_format',
           'type' => 'select',
           'placeholder' => 'Choose date format...',
+          'required'  => true,
           'options' => array(
             'date' => 'Date only',
             'datetime' => 'Date & Time',
@@ -403,6 +404,7 @@ class Phila_Gov_Event_Spotlight_Template {
                       'id'    => 'start_datetime',
                       'type'  => 'datetime',
                       'size'  =>  25,
+                      'desc'  => 'For an all day event, enter the same start and end day and time.',
                       'columns' => 6,
                       'js_options' =>  array(
                         'timeFormat' =>  'hh:mm tt',
