@@ -16,21 +16,20 @@
     <div class="grid-x grid-margin-x align-stretch">
 
     <?php foreach($featured_events['features'] as $feature) : ?>
-      <div class="cell medium-<?php echo $grid ?> bdr-all feature pam">
-        <h3><?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h3>
-        <p>
+      <div class="cell medium-<?php echo $grid ?> bdr-all feature pam grid-x">
+        <h3 class="cell align-self-top"><?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h3>
+        <p class="feature-detail cell align-self-top">
           <?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
         </p>
         <?php if (isset($feature['venue_name']) || isset($feature['address_1'])) :?>
-        <div class="mvm grid-x align-top">
+        <div class="mvm grid-x align-top cell align-self-bottom">
           <i class="fa fa-map-marker fa-fw fa-lg inline-block mrm cell small-1"></i>
           <div class="cell small-21">
-            <address>
               <?php echo isset($feature['venue_name']) ? '<b>' . $feature['venue_name'] . '</b> <br />' : ''; ?>
+              <address>
               <?php echo isset($feature['address']) ? $feature['address'] . '<br />' : '' ?>
               <?php echo isset($feature['address_2'] ) ? $feature['address_2'] . '<br />': '' ?>
               <?php echo isset( $feature['city'] ) ? $feature['city'] . ', ': '' ?><?php echo isset( $feature['state']) ? $feature['state'] : ''; ?> <?php echo isset($feature['zip']) ? $feature['zip'] : '' ?>
-
             </address>
           </div>
         </div>
@@ -43,12 +42,12 @@
             <?php $start_month_format = phila_util_month_format($start); ?>
             <?php $end_month_format = phila_util_month_format($end); ?>
             <?php if ($start->format('m-d') === $end->format('m-d') && $start->format('a') === $end->format('a')):
-              //single day with time range ?>
+              //single all day ?>
               <?php $date_output = str_replace(
                 array('Sep','am','pm',':00'),
                 array('Sept','a.m.','p.m.',''),
 
-               $start->format('<b>' . 'l, ' . $start_month_format . ' j, Y') . '</b>'. '<br /><i>' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a') . '</i>');
+               $start->format('<b>' . 'l, ' . $start_month_format . ' j, Y') . '</b>'. '<br /><i>All day event</i>');
                echo $date_output; ?>
             <?php elseif ($start ->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
               <?php $date_output = str_replace(
