@@ -212,15 +212,6 @@ if ( has_category() ):
       </section>
     <?php endif; ?>
     <?php else: ?>
-      <div class="mvm">
-        <div class="row">
-          <div class="large-24 columns">
-            <div class="placeholder center mbl mtm mtl-mu">
-              <p>No staff content found.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     <?php endif; ?>
   <?php wp_reset_query();?>
 <?php else: ?>
@@ -235,3 +226,6 @@ if ( has_category() ):
   </div>
 <?php endif; ?>
 <?php echo '</section>'; ?>
+<?php if (phila_get_selected_template() != 'homepage_v2') : ?>
+  <?php get_template_part( 'partials/departments/v2/board_commission_member_list' ); ?>
+<?php endif?>

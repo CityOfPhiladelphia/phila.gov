@@ -16,15 +16,16 @@ if (class_exists("Phila_Gov_Custom_Taxonomies") ){
 class Phila_Gov_Custom_Taxonomies {
 
   public function __construct(){
-    add_action( 'init', array($this, 'add_service_type') );
-    add_action( 'init', array($this, 'add_audiences') );
-    add_action( 'init', array($this, 'add_media_type') );
-    add_action( 'init', array($this, 'add_media_author') );
+    add_action( 'init', array($this, 'service_type') );
+    add_action( 'init', array($this, 'audiences') );
+    add_action( 'init', array($this, 'media_type') );
+    add_action( 'init', array($this, 'media_author') );
+    add_action( 'init', array($this, 'event_tags') );
 
   }
 
-  function add_service_type() {
-    // Service Pages
+  function service_type() {
+
     register_taxonomy('service_type',
       array(
         'service_page',
@@ -53,7 +54,7 @@ class Phila_Gov_Custom_Taxonomies {
     ));
   }
 
-  function add_audiences() {
+  function audiences() {
     // Program pages
     register_taxonomy('audience',
       array(
@@ -84,8 +85,8 @@ class Phila_Gov_Custom_Taxonomies {
   }
 
 
-  function add_media_type() {
-    // Service Pages
+  function media_type() {
+
     register_taxonomy('media_type',
       array(
         'attachment'
@@ -111,8 +112,7 @@ class Phila_Gov_Custom_Taxonomies {
       ),
     ));
   }
-  function add_media_author() {
-    // Service Pages
+  function media_author() {
     register_taxonomy('media_author',
       array(
         'attachment'
@@ -134,6 +134,33 @@ class Phila_Gov_Custom_Taxonomies {
       'show_admin_column' => true,
       'rewrite' => array(
         'slug' => 'media-author',
+        'with_front' => false,
+      ),
+    ));
+  }
+  function event_tags() {
+    register_taxonomy('event_tags',
+      array(
+        'post',
+        'event_spotlight'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Event tag', 'phila-gov'),
+        'singular_name' => _x( 'Event tag', 'phila-gov'),
+        'search_items' =>  __( 'Search Event tag' ),
+        'all_items' =>     __( 'All Event tags' ),
+        'edit_item' =>     __( 'Edit Event tag' ),
+        'update_item' =>   __( 'Update Event tag' ),
+        'add_new_item' =>  __( 'Add New Event tag' ),
+        'new_item_name' => __( 'New Event tag Name' ),
+        'menu_name' =>     __( 'Event tag' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'event-tag',
         'with_front' => false,
       ),
     ));

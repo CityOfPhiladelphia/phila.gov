@@ -60,6 +60,8 @@
       </div>
     </header>
 
+    <?php get_template_part('partials/event-spotlight/card'); ?>
+
     <section>
       <div id="featured" data-magellan-target="featured">
         <header class="row columns mtl">
