@@ -9,13 +9,8 @@
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
 
-/* if categories aren't set, this is the latest, so don't show featured. */
+/* if categories aren't set, this is the latest. */
 if ( empty( $post_categories ) ) {
-  $post_meta_query = array(
-    'key' => 'phila_is_feature',
-    'value' => '0',
-    'compare' => '=',
-  );
   //empty object + empty array for dealing with this grid but on the latest display
   $sticky_posts = (object) [
     'posts' => array(),
@@ -41,8 +36,6 @@ if ( empty( $post_categories ) ) {
 
   $sticky_posts = new WP_Query( $sticky_args );
 
-  //post_meta should be blank
-  $post_meta_query = array();
 
 }
 
@@ -60,7 +53,6 @@ $posts_args  = array(
       'value' => 'post',
       'compare' => '=',
     ),
-    $post_meta_query
   )
 );
 
