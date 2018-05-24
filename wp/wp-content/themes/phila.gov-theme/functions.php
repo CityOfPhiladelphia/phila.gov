@@ -1476,12 +1476,13 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     $page_title = $parent->post_title;
   }
 
-  while ( list(, $phrase ) = each( $target_phrases ) ) {
+  foreach ($target_phrases as $phrase) {
+
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
 
       if( $return_stripped === true ){
-        return $new_title = substr( $page_title, $c );
+        return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
       }
       $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
 
@@ -1492,6 +1493,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
       $new_title = $page_title;
     }
   }
+
 
   return $new_title;
 }
@@ -1515,7 +1517,7 @@ function phila_filter_allowed_html($allowed, $context){
   }
 
   $allowed['canvas'] = true;
-  
+
   return $allowed;
 }
 //Stop stripping span tags from TinyMCE WYSIWYG
