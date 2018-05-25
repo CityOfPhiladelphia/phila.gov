@@ -5,6 +5,8 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
+<?php $event_tags = isset($event_tags) ? $event_tags : ''; ?>
+
 <?php
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
@@ -36,8 +38,17 @@ if ( empty( $post_categories ) ) {
 
   $sticky_posts = new WP_Query( $sticky_args );
 
-
 }
+if($event_tags) {
+  $event_tag_query = array(
+      'taxonomy' => 'event_tags',
+      'field' => 'term_id',
+      'terms' => $event_tags,
+  );
+}else{
+  $event_tag_query = array();
+}
+
 
 $posts_args  = array(
   'posts_per_page' => 3,
@@ -46,6 +57,7 @@ $posts_args  = array(
   'cat' => $post_categories,
   'post__not_in'  => $sticky,
   'ignore_sticky_posts' => 1,
+  'tax_query' => array($event_tag_query),
   'meta_query'  => array(
     'relation'  => 'AND',
     array(
@@ -62,6 +74,7 @@ $phila_posts_args  = array(
   'order' => 'desc',
   'orderby' => 'post_date',
   'cat' => $post_categories,
+  'tax_query' => array($event_tag_query),
 ); ?>
 
 <?php
