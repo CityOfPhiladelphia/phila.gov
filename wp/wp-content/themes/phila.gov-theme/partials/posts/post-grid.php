@@ -39,34 +39,6 @@ if ( empty( $post_categories ) ) {
   $sticky_posts = new WP_Query( $sticky_args );
 
 }
-if($event_tags) {
-  $event_tag_query = array(
-      'taxonomy' => 'event_tags',
-      'field' => 'term_id',
-      'terms' => $event_tags,
-  );
-}else{
-  $event_tag_query = array();
-}
-
-
-$posts_args  = array(
-  'posts_per_page' => 3,
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'cat' => $post_categories,
-  'post__not_in'  => $sticky,
-  'ignore_sticky_posts' => 1,
-  'tax_query' => array($event_tag_query),
-  'meta_query'  => array(
-    'relation'  => 'AND',
-    array(
-      'key' => 'phila_template_select',
-      'value' => 'post',
-      'compare' => '=',
-    ),
-  )
-);
 
 $phila_posts_args  = array(
   'posts_per_page' => 3,
@@ -74,20 +46,63 @@ $phila_posts_args  = array(
   'order' => 'desc',
   'orderby' => 'post_date',
   'cat' => $post_categories,
-  'tax_query' => array($event_tag_query),
 ); ?>
 
 <?php
-  $posts = new WP_Query( $posts_args );
 
+if($event_tags) {
+
+  $posts_args  = array(
+    'posts_per_page' => 3,
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'ignore_sticky_posts' => 1,
+    'tax_query' => array(
+      array(
+          'taxonomy' => 'event_tags',
+          'field' => 'term_id',
+          'terms' => $event_tags,
+      )
+    ),
+    'meta_query'  => array(
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'post',
+        'compare' => '=',
+      ),
+    )
+  );
+
+  $result = new WP_Query( $posts_args );
+
+}else{
+
+  $posts_args  = array(
+    'posts_per_page' => 3,
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'cat' => $post_categories,
+    'post__not_in'  => $sticky,
+    'ignore_sticky_posts' => 1,
+    'meta_query'  => array(
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'post',
+        'compare' => '=',
+      ),
+    )
+  );
+  $posts = new WP_Query( $posts_args );
   $phila_posts = new WP_Query( $phila_posts_args );
 
   $result = new WP_Query();
-
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts, $phila_posts->posts );
+}
 
-  $result->post_count = count( $result->posts );
+$result->post_count = count( $result->posts );
 
 ?>
 
