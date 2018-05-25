@@ -243,7 +243,8 @@ class Phila_Gov_Event_Spotlight_Template {
                 'call_to_action_multi' => 'Call to action (multi)',
                 'full_width_cta'  => 'Full-width call to action',
                 'image_list'  => 'Image list',
-                'featured_events'  => 'Featured events'
+                'featured_events'  => 'Featured events',
+                'posts'  => 'Posts'
               ),
             ),
             array(
@@ -436,6 +437,26 @@ class Phila_Gov_Event_Spotlight_Template {
                       'timestamp' => true,
                     ),
                   )
+                ),
+              )
+            ),
+            array(
+              'id'  => 'blog_posts',
+              'type'  => 'group',
+              'visible'  => array('spotlight_options', '=', 'posts'),
+              'fields'  => array(
+                array(
+                  'name' => 'Display a full row of blog posts?',
+                  'id'   => 'blog_posts',
+                  'type' => 'switch',
+                  'on_label'  => 'Yes',
+                  'off_label' => 'No',
+                ),
+                array(
+                  'name' => 'Choose tag',
+                  'id'  => 'event_tags',
+                  'type' => 'taxonomy_advanced',
+                  'taxonomy'  => 'event_tags',
                 ),
               )
             )
