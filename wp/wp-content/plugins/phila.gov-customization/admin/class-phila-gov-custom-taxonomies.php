@@ -142,7 +142,6 @@ class Phila_Gov_Custom_Taxonomies {
     register_taxonomy('event_tags',
       array(
         'post',
-        'event_spotlight'
       ),
       array(
       'hierarchical' => true,
