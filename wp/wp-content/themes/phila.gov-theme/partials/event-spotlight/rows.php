@@ -95,7 +95,7 @@
       </div>
 
     <?php elseif ( $current_row['spotlight_options'] == 'posts' ):
-        $event_tags = $current_row['blog_posts']['event_tags'] ?>
+        $spotlight_tags = $current_row['blog_posts']['spotlight_tag']; ?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
           <?php include(locate_template('partials/posts/post-grid.php')); ?>
         </div>

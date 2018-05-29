@@ -453,10 +453,10 @@ class Phila_Gov_Event_Spotlight_Template {
                   'off_label' => 'No',
                 ),
                 array(
-                  'name' => 'Choose tag',
-                  'id'  => 'event_tags',
+                  'name' => 'Choose spotlight tag',
+                  'id'  => 'spotlight_tag',
                   'type' => 'taxonomy_advanced',
-                  'taxonomy'  => 'event_tags',
+                  'taxonomy'  => 'spotlight_tag',
                 ),
               )
             )
