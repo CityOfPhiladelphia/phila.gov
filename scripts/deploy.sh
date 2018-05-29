@@ -15,6 +15,7 @@ cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 sudo npm update
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
+  sudo chown -R ubuntu:ubuntu node_modules/
   sudo npm rebuild node-sass
   sudo npm run dev:build
 else

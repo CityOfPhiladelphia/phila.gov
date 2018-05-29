@@ -93,6 +93,7 @@
       </paginate>
     </table>
     <paginate-links for="posts"
+    :async="true"
     :limit="3"
     :show-step-links="true"
     :step-links="{
@@ -122,6 +123,10 @@ export default {
       posts: [],
       categories: [{ }],
 
+      spotlightVal: this.$route.query.spotlight,
+      checkedTemplates: this.$route.query.template,
+      queriedCategory: this.$route.query.category,
+
       selectedCategory: '',
 
       templates: {
@@ -130,9 +135,8 @@ export default {
         post : 'Posts',
         press_release : 'Press releases'
       },
-      checkedTemplates: this.$route.query.template,
 
-      searchedVal: '',
+      searchedVal: this.$route.query.spotlight,
 
       loading: false,
       emptyResponse: false,
@@ -148,9 +152,6 @@ export default {
           from: new Date()
         }
       },
-
-      queriedTemplate: this.$route.query.template,
-      queriedCategory: this.$route.query.category
 
     }
   },
@@ -174,6 +175,7 @@ export default {
       axios.get(endpoint + 'archives', {
         params: {
           's': this.searchedVal,
+          'spotlight': this.spotlightVal,
           'template': this.checkedTemplates,
           'category': this.selectedCategory,
           'count': -1,
@@ -182,6 +184,8 @@ export default {
         }
       })
       .then(response => {
+        console.log(response.data)
+
         this.posts = response.data
         this.successfulResponse
       })
@@ -210,6 +214,7 @@ export default {
         axios.get(endpoint + 'archives', {
           params : {
             's': this.searchedVal,
+            'spotlight': this.spotlightVal,
             'template': this.checkedTemplates,
             'category': this.selectedCategory,
             'count': -1,
@@ -218,6 +223,7 @@ export default {
             }
           })
           .then(response => {
+            console.log(response.data)
             this.posts = response.data
             this.successfulResponse
           })
@@ -262,6 +268,7 @@ export default {
       axios.get(endpoint + 'archives', {
         params : {
           's': this.searchedVal,
+          'spotlight': this.spotlightVal,
           'category': this.selectedCategory,
           'template': this.checkedTemplates,
           'count': -1,
@@ -280,32 +287,35 @@ export default {
     },
     filterByCategory: function(selectedVal){
       this.$nextTick(function () {
+        this.loading = true
 
-      this.loading = true
-      this.selectedCategory = selectedVal
-      axios.get(endpoint + 'archives', {
-        params : {
-          's': this.searchedVal,
-          'template': this.checkedTemplates,
-          'category': this.selectedCategory,
-          'count': -1,
-          'start_date': this.state.startDate,
-          'end_date': this.state.endDate,
-          }
+        this.selectedCategory = (selectedVal) ? selectedVal.id : ''
+
+        axios.get(endpoint + 'archives', {
+          params : {
+            's': this.searchedVal,
+            'spotlight': this.spotlightVal,
+            'template': this.checkedTemplates,
+            'category': this.selectedCategory,
+            'count': -1,
+            'start_date': this.state.startDate,
+            'end_date': this.state.endDate,
+            }
+          })
+          .then(response => {
+            this.loading = false
+            //Don't let empty value change the rendered view
+          //  if ('id' in selectedVal && this.queriedCategory != ''){
+              this.posts = response.data
+          //  }
+
+            this.successfulResponse
+          })
+          .catch(e => {
+            this.failure = true
+            this.loading = false
         })
-        .then(response => {
-          this.loading = false
-          //Don't let empty value change the rendered view
-          if ('id' in selectedVal && this.queriedCategory != ''){
-            this.posts = response.data
-          }
-          this.successfulResponse
-        })
-        .catch(e => {
-          this.failure = true
-          this.loading = false
       })
-    })
     },
   },
   computed:{
@@ -334,6 +344,8 @@ export default {
           }
         })
         return catName
+      }else{
+        catName
       }
     },
   },

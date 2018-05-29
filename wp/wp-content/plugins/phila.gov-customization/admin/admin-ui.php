@@ -259,7 +259,7 @@ function user_restricted_category_column_values($val, $column_name, $user_id) {
         $settings_user[ $user_login . '_user_cats' ] = array_values( array_diff( $settings_user[ $user_login . '_user_cats' ], $defaults ) );
         // Selected categories for User overwrites Roles selection
       if ( is_array( $settings_user ) && !empty( $settings_user[ $user_login . '_user_cats' ] ) ) {
-
+        $cat_list = array();
           // Build the category list
           foreach ( $settings_user[ $user_login . '_user_cats' ] as $category ) {
             $term = get_term_by( 'slug', $category, 'category' );

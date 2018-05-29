@@ -5,7 +5,7 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
-<?php $event_tags = isset($event_tags) ? $event_tags : ''; ?>
+<?php $spotlight_tags = isset($spotlight_tags) ? $spotlight_tags : ''; ?>
 
 <?php
 /* Get all sticky posts for department homepages */
@@ -50,7 +50,7 @@ $phila_posts_args  = array(
 
 <?php
 
-if($event_tags) {
+if($spotlight_tags) {
 
   $posts_args  = array(
     'posts_per_page' => 3,
@@ -59,9 +59,9 @@ if($event_tags) {
     'ignore_sticky_posts' => 1,
     'tax_query' => array(
       array(
-          'taxonomy' => 'event_tags',
+          'taxonomy' => 'spotlight_tag',
           'field' => 'term_id',
-          'terms' => $event_tags,
+          'terms' => $spotlight_tags,
       )
     ),
     'meta_query'  => array(
@@ -152,6 +152,13 @@ $result->post_count = count( $result->posts );
             );
             $see_all = array_replace($see_all, $see_all_URL );
             endif;?>
+            <?php if( !empty( $spotlight_tags ) ) :
+              $term = get_term($spotlight_tags, 'spotlight_tag');
+              $see_all_URL = array(
+                'URL' => '/the-latest/archives/?spotlight=' . $term->name,
+              );
+              $see_all = array_replace($see_all, $see_all_URL );
+              endif;?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       <?php endif; ?>
