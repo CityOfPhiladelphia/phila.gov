@@ -183,6 +183,8 @@ export default {
         }
       })
       .then(response => {
+        console.log(response.data)
+
         this.posts = response.data
         this.successfulResponse
       })
@@ -220,6 +222,7 @@ export default {
             }
           })
           .then(response => {
+            console.log(response.data)
             this.posts = response.data
             this.successfulResponse
           })
@@ -282,7 +285,7 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
-      this.$nextTick(function () {
+      //this.$nextTick(function () {
 
       this.loading = true
       this.selectedCategory = selectedVal
@@ -303,13 +306,15 @@ export default {
           if ('id' in selectedVal && this.queriedCategory != ''){
             this.posts = response.data
           }
+          console.log(response.data)
+
           this.successfulResponse
         })
         .catch(e => {
           this.failure = true
           this.loading = false
       })
-    })
+  //  })
     },
   },
   computed:{

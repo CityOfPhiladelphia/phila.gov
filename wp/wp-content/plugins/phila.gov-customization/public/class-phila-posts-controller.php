@@ -80,7 +80,6 @@ class Phila_Archives_Controller {
         'category' => $request['category'],
       );
     }else{ //default
-      echo 'poop';
       $query_defaults = array(
         'posts_per_page' => $request['count'],
         's' => $request['s'],
