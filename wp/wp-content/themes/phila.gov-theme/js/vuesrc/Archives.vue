@@ -122,6 +122,10 @@ export default {
       posts: [],
       categories: [{ }],
 
+      spotlightVal: this.$route.query.spotlight,
+      checkedTemplates: this.$route.query.template,
+      queriedCategory: this.$route.query.category,
+
       selectedCategory: '',
 
       templates: {
@@ -130,9 +134,8 @@ export default {
         post : 'Posts',
         press_release : 'Press releases'
       },
-      checkedTemplates: this.$route.query.template,
 
-      searchedVal: '',
+      searchedVal: this.$route.query.spotlight,
 
       loading: false,
       emptyResponse: false,
@@ -148,9 +151,6 @@ export default {
           from: new Date()
         }
       },
-
-      queriedTemplate: this.$route.query.template,
-      queriedCategory: this.$route.query.category
 
     }
   },
@@ -174,6 +174,7 @@ export default {
       axios.get(endpoint + 'archives', {
         params: {
           's': this.searchedVal,
+          'spotlight': this.spotlightVal,
           'template': this.checkedTemplates,
           'category': this.selectedCategory,
           'count': -1,
@@ -210,6 +211,7 @@ export default {
         axios.get(endpoint + 'archives', {
           params : {
             's': this.searchedVal,
+            'spotlight': this.spotlightVal,
             'template': this.checkedTemplates,
             'category': this.selectedCategory,
             'count': -1,
@@ -262,6 +264,7 @@ export default {
       axios.get(endpoint + 'archives', {
         params : {
           's': this.searchedVal,
+          'spotlight': this.spotlightVal,
           'category': this.selectedCategory,
           'template': this.checkedTemplates,
           'count': -1,
@@ -286,6 +289,7 @@ export default {
       axios.get(endpoint + 'archives', {
         params : {
           's': this.searchedVal,
+          'spotlight': this.spotlightVal,
           'template': this.checkedTemplates,
           'category': this.selectedCategory,
           'count': -1,

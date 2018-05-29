@@ -55,16 +55,23 @@ class Phila_Archives_Controller {
 
     $matching_users = get_users( $args );
 
+    $matching_spotlight = get_term_by( $field = 'name', $value = $request['spotlight'], $taxonomy = 'spotlight_tag' );
+
     // Don't modify the query if there aren't any matching users
-    if ( empty( $matching_users ) ) {
+    if ( $matching_spotlight != false ) {
       $query_defaults = array(
         'posts_per_page' => $request['count'],
-        's' => $request['s'],
         'order' => 'desc',
         'orderby' => 'date',
-        'category' => $request['category'],
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'spotlight_tag',
+            'field'    => 'slug',
+            'terms'    => $matching_spotlight->slug,
+          ),
+        ),
       );
-    }else {
+    }elseif(!empty( $matching_users )) {
       $query_defaults = array(
         'posts_per_page' => $request['count'],
         'author__in' => $matching_users,
@@ -72,7 +79,17 @@ class Phila_Archives_Controller {
         'orderby' => 'date',
         'category' => $request['category'],
       );
+    }else{ //default
+      echo 'poop';
+      $query_defaults = array(
+        'posts_per_page' => $request['count'],
+        's' => $request['s'],
+        'order' => 'desc',
+        'orderby' => 'date',
+        'category' => $request['category'],
+      );
     }
+
     if ( isset( $request['start_date'] ) && isset( $request['end_date'] ) ){
       $date_query = array(
         'date_query' => array(
