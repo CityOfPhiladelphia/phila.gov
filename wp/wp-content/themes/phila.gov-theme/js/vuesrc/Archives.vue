@@ -93,6 +93,7 @@
       </paginate>
     </table>
     <paginate-links for="posts"
+    :async="true"
     :limit="3"
     :show-step-links="true"
     :step-links="{
@@ -285,36 +286,36 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
-      //this.$nextTick(function () {
+      this.$nextTick(function () {
+        this.loading = true
 
-      this.loading = true
-      this.selectedCategory = selectedVal
-      axios.get(endpoint + 'archives', {
-        params : {
-          's': this.searchedVal,
-          'spotlight': this.spotlightVal,
-          'template': this.checkedTemplates,
-          'category': this.selectedCategory,
-          'count': -1,
-          'start_date': this.state.startDate,
-          'end_date': this.state.endDate,
-          }
-        })
-        .then(response => {
-          this.loading = false
-          //Don't let empty value change the rendered view
-          if ('id' in selectedVal && this.queriedCategory != ''){
-            this.posts = response.data
-          }
-          console.log(response.data)
+        this.selectedCategory = (selectedVal) ? selectedVal.id : ''
 
-          this.successfulResponse
+        axios.get(endpoint + 'archives', {
+          params : {
+            's': this.searchedVal,
+            'spotlight': this.spotlightVal,
+            'template': this.checkedTemplates,
+            'category': this.selectedCategory,
+            'count': -1,
+            'start_date': this.state.startDate,
+            'end_date': this.state.endDate,
+            }
+          })
+          .then(response => {
+            this.loading = false
+            //Don't let empty value change the rendered view
+          //  if ('id' in selectedVal && this.queriedCategory != ''){
+              this.posts = response.data
+          //  }
+
+            this.successfulResponse
+          })
+          .catch(e => {
+            this.failure = true
+            this.loading = false
         })
-        .catch(e => {
-          this.failure = true
-          this.loading = false
       })
-  //  })
     },
   },
   computed:{
@@ -343,6 +344,8 @@ export default {
           }
         })
         return catName
+      }else{
+        catName
       }
     },
   },
