@@ -306,11 +306,11 @@ export default {
 
       if (this.queriedCategory != this.selectedCategory){
 
-        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
 
       }else if (this.queriedCategory != ''){
 
-        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&orderBy=startTime&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&singleEvents=true&orderBy=startTime&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       }
 
       axios.all( links.map( l => axios.get( l ) ) )
@@ -390,7 +390,7 @@ export default {
         this.selectedCategory = selectedVal.id
       }
 
-      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       .then(response =>  {
         this.calData = response
 
