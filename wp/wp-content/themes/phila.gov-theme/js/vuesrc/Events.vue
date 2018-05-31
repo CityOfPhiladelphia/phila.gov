@@ -237,7 +237,7 @@ export default {
       if ( this.selectedCategory == undefined) {
         for( let i = 0; i < cal_ids[0].length; i++ ){
           //console.log(cal_ids[0][i])
-          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&timeMin=' + moment().format() )
+          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
         }
       }
       axios.all( links.map( l => axios.get( l ) ) )
@@ -306,11 +306,11 @@ export default {
 
       if (this.queriedCategory != this.selectedCategory){
 
-        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
 
       }else if (this.queriedCategory != ''){
 
-        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&orderBy=startTime&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       }
 
       axios.all( links.map( l => axios.get( l ) ) )
@@ -390,7 +390,7 @@ export default {
         this.selectedCategory = selectedVal.id
       }
 
-      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&maxResults=20&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       .then(response =>  {
         this.calData = response
 
