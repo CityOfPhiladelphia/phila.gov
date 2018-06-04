@@ -12,16 +12,15 @@ echo 'Running wp-config.sh'
 
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-sudo npm update
+npm update
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
-  sudo chown -R ubuntu:ubuntu node_modules/
-  sudo npm rebuild node-sass
-  sudo npm run dev:build
+  npm rebuild node-sass
+  npm run dev:build
 else
   echo 'Running prod tasks'
-  sudo npm run build
-  sudo npm run postbuild
+  npm run build
+  npm run postbuild
 fi
 cd /home/ubuntu/app
 

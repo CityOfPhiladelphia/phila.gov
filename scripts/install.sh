@@ -11,8 +11,8 @@ echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDde/ohFVNJyZgI3KXXt9uwipFNpu0oVFxZze
 
 echo "Install npm"
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-sudo npm install
-sudo npm cache verify
+npm install
+npm cache verify
 cd /home/ubuntu/app
 
 if [ "$PHILA_TEST" ]; then
