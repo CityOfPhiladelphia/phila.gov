@@ -123,27 +123,27 @@ get_header(); ?>
         <div class="grid-container">
           <div class="grid-x grid-margin-x">
             <div class="cell medium-12">
-              <div class="card">
-                <a href="<?php phila_util_echo_website_url()?>/parks-rec-finder">
+              <div class="card hover-fade">
+                <a href="https://<?php phila_util_echo_website_url()?>/parks-rec-finder" class="hover-fade">
                   <?php $image = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'medium', 'limit' => 1), $post = '27984')[0]['url']; ?>
                   <img src="<?php echo $image ?>" alt="">
                   <?php wp_reset_query(); ?>
-                  <div class="card-content phl">
+                  <div class="card-description phl pvm">
                     <h3>Parks & Rec Finder</h3>
                     <p>Looking for something to do?</p>
                   </div>
                 </a>
               </div>
             </div>
-            <div class="cell medium-12">
-              <div class="card">
-                <a href="/contracts">
-                  <div class="grid-x">
-                    <div class="cell shrink pal">
-                      <i class="fa fa-copy fa-5x"></i>
+            <div class="cell medium-12 grid-x">
+              <div class="card cell shrink align-self-top full hover-fade">
+                <a href="/contracts" class="hover-fade">
+                  <div class="grid-x grid-padding-x">
+                    <div class="cell shrink pvxl">
+                      <i class="fa fa-copy fa-5x fa-fw"></i>
                     </div>
-                    <div class="cell auto pal">
-                      <div class="card-content phl">
+                    <div class="cell auto pvxl">
+                      <div class="card-description phl">
                         <h3>Contracts</h3>
                         <p>Looking for something to do? </p>
                       </div>
@@ -151,15 +151,15 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="card">
+              <div class="card cell shrink align-self-bottom full hover-fade">
                 <a href="/contracts">
-                  <div class="grid-x">
-                    <div class="cell shrink pal">
-                      <i class="fa fa-copy fa-5x"></i>
+                  <div class="grid-x grid-padding-x">
+                    <div class="cell shrink pvxl">
+                      <i class="fa fa-file fa-5x  fa-fw"></i>
                     </div>
-                    <div class="cell auto pal">
-                      <div class="card-content phl">
-                        <h3>Contracts</h3>
+                    <div class="cell auto pvxl">
+                      <div class="card-description phl">
+                        <h3>Permits, violations & licenses</h3>
                         <p>Looking for something to do? </p>
                       </div>
                     </div>
