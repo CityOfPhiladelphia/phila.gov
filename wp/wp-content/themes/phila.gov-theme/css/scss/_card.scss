@@ -67,6 +67,12 @@ a.card,
     position: absolute;
     bottom:1rem;
   }
+  .card-description{
+    font-weight: normal;
+    p{
+      color: color(dark-gray);
+    }
+  }
 }
 .feature-main{
   article, a.card{
