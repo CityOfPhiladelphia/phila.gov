@@ -165,6 +165,10 @@ function phila_make_regular_quote($string){
   $rpl = array_values($chr_map);
 
   $string = str_replace($chr, $rpl, html_entity_decode($string, ENT_QUOTES, "UTF-8"));
-  
+
   return $string;
+}
+//TODO: move this to the customizer so anyone can update name.
+function phila_return_mayor_name(){
+  return 'Mayor Jim Kenney';
 }
