@@ -155,7 +155,7 @@ get_header(); ?>
                 <a href="/contracts">
                   <div class="grid-x grid-padding-x">
                     <div class="cell shrink pvxl">
-                      <i class="fa fa-file fa-5x  fa-fw"></i>
+                      <i class="fa fa-file-text fa-5x  fa-fw"></i>
                     </div>
                     <div class="cell auto pvxl">
                       <div class="card-description phl">
