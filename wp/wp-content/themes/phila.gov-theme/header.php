@@ -82,9 +82,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="row">
         <div class="medium-24 columns float-right">
           <ul class="medium-horizontal menu show-for-medium float-right">
-            <li><a href="/departments/mayor/"><?php echo phila_return_mayor_name(); ?></a></li>
+            <li><a href="/departments/mayor/">Office of the Mayor</a></li>
             <li><a href="/departments/">City government directory</a></li>
-            <li><a href="https://www.visitphilly.com" class="external">visitphilly.com</a></li>
             <li>
               <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
             </li>

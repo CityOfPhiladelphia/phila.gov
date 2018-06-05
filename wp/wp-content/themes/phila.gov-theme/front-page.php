@@ -136,13 +136,13 @@ get_header(); ?>
               </div>
             </div>
             <div class="cell medium-12 grid-x">
-              <div class="card cell shrink align-self-top full hover-fade">
+              <div class="card card-fixed-height cell shrink align-self-top full hover-fade">
                 <a href="http://www.phila.gov/contracts/pages/default.aspx" class="hover-fade">
                   <div class="grid-x">
-                    <div class="cell shrink align-self-middle pvxl">
-                      <i class="fa fa-copy fa-5x fa-fw"></i>
+                    <div class="cell shrink align-self-middle pas">
+                      <i class="fa fa-copy fa-4x fa-fw"></i>
                     </div>
-                    <div class="cell auto align-self-middle pvl">
+                    <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
                         <h3>Contracts</h3>
                         <p>Find, bid on, get alerts for contract opportunities with the City.</p>
@@ -151,16 +151,31 @@ get_header(); ?>
                   </div>
                 </a>
               </div>
-              <div class="card cell shrink align-self-bottom full hover-fade">
+              <div class="card card-fixed-height cell shrink align-self-middle full hover-fade">
                 <a href="https://beta.phila.gov/departments/department-of-licenses-and-inspections/">
                   <div class="grid-x">
-                    <div class="cell shrink align-self-middle pvxl">
-                      <i class="fa fa-file-text fa-5x  fa-fw"></i>
+                    <div class="cell shrink align-self-middle pas">
+                      <i class="fa fa-file-text fa-4x  fa-fw"></i>
                     </div>
-                    <div class="cell auto align-self-middle pvl">
+                    <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
                         <h3>Licenses, inspections & permits </h3>
                         <p>Get a license, schedule an inspection, apply for a building permit.</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="card card-fixed-height cell shrink align-self-bottom full hover-fade">
+                <a href="https://visitphilly.com">
+                  <div class="grid-x">
+                    <div class="cell shrink align-self-middle pas">
+                      <i class="fa fa-users fa-4x fa-fw"></i>
+                    </div>
+                    <div class="cell auto align-self-middle pvm">
+                      <div class="card-description phl">
+                        <h3 class="external">Visit Philadelphia</h3>
+                        <p>Visitphilly.com is the official visitor site for Greater Philadelphia.</p>
                       </div>
                     </div>
                   </div>
