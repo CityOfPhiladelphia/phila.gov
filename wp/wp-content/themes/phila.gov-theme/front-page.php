@@ -138,8 +138,8 @@ get_header(); ?>
             <div class="cell medium-12 grid-x">
               <div class="card cell shrink align-self-top full hover-fade">
                 <a href="http://www.phila.gov/contracts/pages/default.aspx" class="hover-fade">
-                  <div class="grid-x grid-padding-x">
-                    <div class="cell shrink align-self-middle pvl">
+                  <div class="grid-x">
+                    <div class="cell shrink align-self-middle pvxl">
                       <i class="fa fa-copy fa-5x fa-fw"></i>
                     </div>
                     <div class="cell auto align-self-middle pvl">
@@ -153,8 +153,8 @@ get_header(); ?>
               </div>
               <div class="card cell shrink align-self-bottom full hover-fade">
                 <a href="https://beta.phila.gov/departments/department-of-licenses-and-inspections/">
-                  <div class="grid-x grid-padding-x">
-                    <div class="cell shrink align-self-middle pvl">
+                  <div class="grid-x">
+                    <div class="cell shrink align-self-middle pvxl">
                       <i class="fa fa-file-text fa-5x  fa-fw"></i>
                     </div>
                     <div class="cell auto align-self-middle pvl">
