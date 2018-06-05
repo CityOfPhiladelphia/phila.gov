@@ -129,38 +129,38 @@ get_header(); ?>
                   <img src="<?php echo $image ?>" alt="">
                   <?php wp_reset_query(); ?>
                   <div class="card-description phl pvm">
-                    <h3>Parks & Rec Finder</h3>
-                    <p>Looking for something to do?</p>
+                    <h3>Parks & Recreation Finder</h3>
+                    <p>Use our app to search for activities, parks, rec centers, and more.</p>
                   </div>
                 </a>
               </div>
             </div>
             <div class="cell medium-12 grid-x">
               <div class="card cell shrink align-self-top full hover-fade">
-                <a href="/contracts" class="hover-fade">
+                <a href="http://www.phila.gov/contracts/pages/default.aspx" class="hover-fade">
                   <div class="grid-x grid-padding-x">
-                    <div class="cell shrink pvxl">
+                    <div class="cell shrink align-self-middle pvl">
                       <i class="fa fa-copy fa-5x fa-fw"></i>
                     </div>
-                    <div class="cell auto pvxl">
+                    <div class="cell auto align-self-middle pvl">
                       <div class="card-description phl">
                         <h3>Contracts</h3>
-                        <p>Looking for something to do? </p>
+                        <p>Find, bid on, get alerts for contract opportunities with the City.</p>
                       </div>
                     </div>
                   </div>
                 </a>
               </div>
               <div class="card cell shrink align-self-bottom full hover-fade">
-                <a href="/contracts">
+                <a href="https://beta.phila.gov/departments/department-of-licenses-and-inspections/">
                   <div class="grid-x grid-padding-x">
-                    <div class="cell shrink pvxl">
+                    <div class="cell shrink align-self-middle pvl">
                       <i class="fa fa-file-text fa-5x  fa-fw"></i>
                     </div>
-                    <div class="cell auto pvxl">
+                    <div class="cell auto align-self-middle pvl">
                       <div class="card-description phl">
-                        <h3>Permits, violations & licenses</h3>
-                        <p>Looking for something to do? </p>
+                        <h3>Licenses, inspections & permits </h3>
+                        <p>Get a license, schedule an inspection, apply for a building permit.</p>
                       </div>
                     </div>
                   </div>
