@@ -73,6 +73,9 @@ a.card,
       color: color(dark-gray);
     }
   }
+  &.card-fixed-height{
+    min-height: 120px;
+  }
 }
 .feature-main{
   article, a.card{

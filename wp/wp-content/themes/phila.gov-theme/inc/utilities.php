@@ -168,7 +168,3 @@ function phila_make_regular_quote($string){
 
   return $string;
 }
-//TODO: move this to the customizer so anyone can update name.
-function phila_return_mayor_name(){
-  return 'Mayor Jim Kenney';
-}
