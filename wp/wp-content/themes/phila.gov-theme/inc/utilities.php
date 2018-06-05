@@ -165,6 +165,6 @@ function phila_make_regular_quote($string){
   $rpl = array_values($chr_map);
 
   $string = str_replace($chr, $rpl, html_entity_decode($string, ENT_QUOTES, "UTF-8"));
-  
+
   return $string;
 }
