@@ -30,7 +30,6 @@ function modal_shortcode( $atts, $content = null ){
 
     return $output;
   } else {
-    echo 'poop';
     return;
   }
 }

@@ -13,7 +13,7 @@ function phila_user_read_only(){
 
 /* For all admins */
 jQuery(document).ready(function($) {
-
+  
   //disable dupliate action on document pages, document meta not saving state propery.
   if ( ( typenow === 'document') && adminpage.indexOf('post') > -1 ){
     $('#duplicate-action').css('display', 'none')

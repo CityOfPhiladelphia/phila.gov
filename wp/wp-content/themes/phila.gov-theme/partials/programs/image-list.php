@@ -14,6 +14,9 @@
   if ($count == 6) {
     $grid_count = 8;
   }
+  if($count >= 9){
+    $grid_count = 6;
+  }
 ?>
 <section>
   <div class="grid-container">

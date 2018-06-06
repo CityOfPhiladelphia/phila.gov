@@ -92,33 +92,32 @@
   <div class="fat">
     <div class="row pvs ptl-mu phm equal-height">
       <section class="medium-8 columns phm pvm pvn-mu equal">
-        <h2 class="mtn mbm">Take action in your community</h2>
+        <h2 class="mtn mbm">Elected officials</h2>
         <nav class="take-action">
           <ul>
-            <li class="pvxs"><a href="http://serve.phila.gov/" class="external">SERVE Philadelphia</a></li>
-            <li class="pvxs"><a href="https://beta.phila.gov/departments/office-of-sustainability/greenworks/greenworks-on-the-ground/">Greenworks on the Ground initiative</a></li>
-            <li class="pvxs"><a href="http://citizensplanninginstitute.org/" class="external">Citizens Planning Institute</a></li>
-            <li class="pvxs"><a href="http://www.phila.gov/311/aboutus/Pages/NeighborhoodLaison.aspx" class="external">Neighborhood Liaison program</a></li>
-            <li class="pvxs"><a href="http://citizensplanninginstitute.org/citizens-toolkit" class="external">Citizen action toolkit</a></li>
-            <li class="pvxs"><a href="http://www.philadelphiastreets.com/pmbc/" class="external">Clean up your block</a></li>
-            <li class="pvxs"><a href="https://phlevents.org/applications/" class="external">Apply for an event permit</a></li>
-            <li class="pvxs"><a href="http://gsg.phila.gov/map" class="external">City, District, Council, &amp; Ward maps</a></li>
+            <li class="pvxs"><a href="https://beta.phila.gov/departments/mayor/">Mayor</a></li>
+            <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
+            <li class="pvxs"><a href="http://www.courts.phila.gov/">Courts</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/districtattorney/pages/default.aspx">District Attorney</a></li>
+            <li class="pvxs"><a href="http://www.philadelphiacontroller.org/" class="external">City Controller</a></li>
+            <li class="pvxs"><a href="http://www.officeofphiladelphiasheriff.com/" class="external">Sheriff</a></li>
+            <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">City Commissioners</a></li>
+            <li class="pvxs"><a href="http://secureprod.phila.gov/wills/">Register of Wills</a></li>
           </ul>
         </nav>
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu equal">
-        <h2 class="mtn mbm"> Know your City government</h2>
+        <h2 class="mtn mbm">Open government</h2>
         <nav class="take-action">
           <ul>
-            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url() ?>/departments/mayor/" class="">Mayor’s Office</a></li>
-            <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
-            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url() ?>/departments/" class="">City government directory</a></li>
-            <li class="pvxs"><a href="http://www.phila.gov/openbudget/" class="external">City budget</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/openbudget/" class="">City Budget</a></li>
             <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
-            <li class="pvxs"><a href="http://www.phila.gov/records/index.html" class="external">City records</a></li>
-            <li class="pvxs"><a href="http://www.phila.gov/ethicsboard/Pages/default.aspx" class="external">Honesty in government</a></li>
-            <li class="pvxs"><a href="http://www.philadelphiavotes.com/" class="external">Voting &amp; elections</a></li>
-            <li class="pvxs"><a href="http://www.phila.gov/data/" class="external">Open data</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/records/index.html">City records</a></li>
+            <li class="pvxs"><a href="http://regulations.phila-records.com/">City agency regulations</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/executiveorders/pages/default.aspx">Executive orders</a></li>
+            <li class="pvxs"><a href="http://www.phila.gov/integrityworks/pages/default.aspx">Honesty in government</a></li>
+            <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">Voting & elections</a></li>
+            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url(); ?>/programs/open-data-program/">Open data</a></li>
           </ul>
         </nav>
       </section>
@@ -173,6 +172,14 @@
                 <span class="show-for-sr">GitHub</span>
               </a>
             </li>
+          </ul>
+        </nav>
+        <nav>
+          <ul>
+            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url() ?>/departments/">City government directory</a></li>
+            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url() ?>/services/">Service directory</a></li>
+            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url() ?>/programs/">Programs & initiatives </a></li>
+            <li class="pvxs"><a href="https://<?php phila_util_echo_website_url() ?>/documents/">Publications & forms </a></li>
           </ul>
         </nav>
       </section>

@@ -5,17 +5,14 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
+<?php $spotlight_tags = isset($spotlight_tags) ? $spotlight_tags : ''; ?>
+
 <?php
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
 
-/* if categories aren't set, this is the latest, so don't show featured. */
+/* if categories aren't set, this is the latest. */
 if ( empty( $post_categories ) ) {
-  $post_meta_query = array(
-    'key' => 'phila_is_feature',
-    'value' => '0',
-    'compare' => '=',
-  );
   //empty object + empty array for dealing with this grid but on the latest display
   $sticky_posts = (object) [
     'posts' => array(),
@@ -41,28 +38,7 @@ if ( empty( $post_categories ) ) {
 
   $sticky_posts = new WP_Query( $sticky_args );
 
-  //post_meta should be blank
-  $post_meta_query = array();
-
 }
-
-$posts_args  = array(
-  'posts_per_page' => 3,
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'cat' => $post_categories,
-  'post__not_in'  => $sticky,
-  'ignore_sticky_posts' => 1,
-  'meta_query'  => array(
-    'relation'  => 'AND',
-    array(
-      'key' => 'phila_template_select',
-      'value' => 'post',
-      'compare' => '=',
-    ),
-    $post_meta_query
-  )
-);
 
 $phila_posts_args  = array(
   'posts_per_page' => 3,
@@ -73,16 +49,60 @@ $phila_posts_args  = array(
 ); ?>
 
 <?php
-  $posts = new WP_Query( $posts_args );
 
+if($spotlight_tags) {
+
+  $posts_args  = array(
+    'posts_per_page' => 3,
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'ignore_sticky_posts' => 1,
+    'tax_query' => array(
+      array(
+          'taxonomy' => 'spotlight_tag',
+          'field' => 'term_id',
+          'terms' => $spotlight_tags,
+      )
+    ),
+    'meta_query'  => array(
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'post',
+        'compare' => '=',
+      ),
+    )
+  );
+
+  $result = new WP_Query( $posts_args );
+
+}else{
+
+  $posts_args  = array(
+    'posts_per_page' => 3,
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'cat' => $post_categories,
+    'post__not_in'  => $sticky,
+    'ignore_sticky_posts' => 1,
+    'meta_query'  => array(
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'post',
+        'compare' => '=',
+      ),
+    )
+  );
+  $posts = new WP_Query( $posts_args );
   $phila_posts = new WP_Query( $phila_posts_args );
 
   $result = new WP_Query();
-
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts, $phila_posts->posts );
+}
 
-  $result->post_count = count( $result->posts );
+$result->post_count = count( $result->posts );
 
 ?>
 
@@ -132,6 +152,13 @@ $phila_posts_args  = array(
             );
             $see_all = array_replace($see_all, $see_all_URL );
             endif;?>
+            <?php if( !empty( $spotlight_tags ) ) :
+              $term = get_term($spotlight_tags, 'spotlight_tag');
+              $see_all_URL = array(
+                'URL' => '/the-latest/archives/?spotlight=' . $term->name,
+              );
+              $see_all = array_replace($see_all, $see_all_URL );
+              endif;?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       <?php endif; ?>

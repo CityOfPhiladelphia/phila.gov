@@ -34,7 +34,6 @@ function phila_return_week_array(){
 function phila_setup_tiny_mce_basic( array $options ){
 
   $output['block_formats'] = 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6;';
-;
 
   $defaults = array(
     'format_select' => false,
@@ -582,6 +581,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'name'  => 'Section Title',
             'id'    => 'phila_action_section_title',
             'type'  => 'text',
+            'class' => 'percent-100'
           ),
         array(
           'name'  => 'Call to Action Text',
@@ -690,6 +690,12 @@ $meta_boxes[] = array(
       array(
         'id'  => 'phila_get_staff_cats',
         'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_staff_directory_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
         ),
@@ -698,12 +704,40 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
+    'id'  => 'board_commission_member_list',
+    'title' => 'Commission or board member listing',
+    'pages' => array('department_page'),
+    'context' => 'normal',
+    'priority'  => 'default',
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'homepage_v2'),
+        array( 'phila_template_select', '=', 'staff_directory_v2'),
+      ),
+      'relation' => 'or',
+    ),
+
+    'fields'  => array(
+      array(
+        'id'  => 'section_title',
+        'type'  => 'text',
+        'name'  => 'Optional row title',
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
+    ),
+
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'phila_full_row_press_releases',
     'title'    => 'Full row press releases posts (3 total)',
     'pages'    => array( 'department_page' ),
     'context'  => 'normal',
     'priority' => 'default',
-
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
@@ -727,6 +761,12 @@ $meta_boxes[] = array(
       array(
         'id'  => 'phila_get_press_cats',
         'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_row_press_releases_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_press_release_category', 'Display press releases from these owners. This will override page ownership selection entirely.' ),
         ),
@@ -763,6 +803,12 @@ $meta_boxes[] = array(
       array(
         'id'  => 'phila_get_post_cats',
         'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_row_blog_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection entirely.' ),
         ),
@@ -866,7 +912,7 @@ $meta_var_wysiwyg_multi = array(
       'placeholder'  => 'Section Heading',
       'id'  => 'phila_wysiwyg_heading',
       'type'  => 'text',
-      'class' => 'width-95'
+      'class' => 'percent-100'
     ),
     array(
       'id'  => 'phila_wysiwyg_content',
@@ -1193,6 +1239,22 @@ $meta_boxes[] = array(
     ),
   ),
 );
+
+$meta_boxes[] = array(
+  'id'       => 'homepage_programs',
+  'title'    => 'Our programs',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+      ),
+    ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
+  )
+);
+
 
 $meta_boxes[] = array(
   'id'       => 'phila_custom_markup',

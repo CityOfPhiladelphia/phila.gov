@@ -1,9 +1,6 @@
 .accordion-item{
   border-bottom: 5px solid white;
   .accordion-title{
-    text-transform: none;
-    color:color(dark-gray);
-    font-weight: 400;
     &::before {
       color:color(dark-ben-franklin)
     }
@@ -12,4 +9,17 @@
 
 .accordion-item .accordion-title::before{
   border-left:none;
+}
+
+.accordion-title.disabled{
+  cursor: default;
+  color: color(dark-gray);
+  &::before {
+    content: '';
+
+  }
+}
+
+.accordion.commissions a{
+  text-transform: none;
 }

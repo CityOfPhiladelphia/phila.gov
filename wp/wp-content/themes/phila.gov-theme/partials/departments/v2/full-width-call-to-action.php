@@ -11,8 +11,7 @@
   $cta_link = rwmb_meta( 'phila_v2_cta_full' );
   if ( !isset( $link ) ) :
     $link = phila_cta_full_display( $cta_link );
-  endif;
-?>
+  endif; ?>
 <?php if ( !empty( $link ) ) :?>
   <div class="grid-container">
     <div class="grid-x mvxl">
