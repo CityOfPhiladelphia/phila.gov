@@ -60,19 +60,19 @@
             <!-- TODO: Begin pulling these in from 311 -->
               <ul class="columns-2-mu">
                 <li>
-                  <a href="http://www.phila.gov/OPA/AbatementsExemptions/Pages/Homestead.aspx" class="external">Apply for a Homestead Exemption</a>
+                  <a href="https://beta.phila.gov/services/property-lots-housing/get-the-homestead-exemption/">Apply for a Homestead Exemption</a>
                 </li>
                 <li>
-                  <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="external">Correctional facilities</a>
+                  <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx">Correctional facilities</a>
                 </li>
                 <li>
-                  <a href="https://prodpci.etimspayments.com/pbw/include/philadelphia_parking/input.jsp" class="external">Pay a parking violation</a>
+                  <a href="https://prodpci.etimspayments.com/pbw/include/philadelphia_parking/input.jsp">Pay a parking violation</a>
                 </li>
                 <li>
-                  <a href="https://secure.phila.gov/WRB/WaterBill/Account/GetAccount.aspx" class="external">Pay a water bill</a>
+                  <a href="https://secure.phila.gov/WRB/WaterBill/Account/GetAccount.aspx">Pay a water bill</a>
                 </li>
                 <li>
-                  <a href="http://www.phila.gov/revenue/realestatetax/" class="external">Pay a Real Estate Tax bill</a>
+                  <a href="https://ework.phila.gov/revenue/">Pay a Real Estate Tax bill</a>
                 </li>
                 <li>
                   <a href="http://property.phila.gov/">Search for property information</a>
@@ -81,7 +81,7 @@
                   <a href="http://www.philadelphiastreets.com/sanitation/residential/collection-schedules" class="external">Trash and recycling schedule</a>
                 </li>
                 <li>
-                  <a href="https://<?php phila_util_echo_website_url() ?>/services/become-a-water-customer/property-owners/">Turn water service on or off</a>
+                  <a href="https://beta.phila.gov/services/water-gas-utilities/water-sewer-services/become-a-water-customer/">Turn water service on or off</a>
                 </li>
               </ul>
             </section>
