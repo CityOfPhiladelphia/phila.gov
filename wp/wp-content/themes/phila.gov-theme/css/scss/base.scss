@@ -43,7 +43,12 @@
 @import 'home';
 @import 'containers';
 
+@import 'standards-overrides';
+
+@import 'modules/event-spotlight';
 @import 'modules/hero-half';
 @import 'modules/image-list';
+@import 'modules/registration';
+
 
 @import 'print';

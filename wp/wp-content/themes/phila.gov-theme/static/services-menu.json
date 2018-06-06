@@ -1,0 +1,181 @@
+[{
+    "id": 12856,
+    "link": "https://beta.phila.gov/services/zoning-planning-development/",
+    "title": {
+      "rendered": "Zoning, planning &#038; development"
+    },
+    "meta": {
+      "phila_page_icon": "fa-map"
+    }
+  },
+  {
+    "id": 12854,
+    "link": "https://beta.phila.gov/services/working-jobs/",
+    "title": {
+      "rendered": "Working &#038; jobs"
+    },
+    "meta": {
+      "phila_page_icon": "fa-briefcase"
+    }
+  },
+  {
+    "id": 12851,
+    "link": "https://beta.phila.gov/services/water-gas-utilities/",
+    "title": {
+      "rendered": "Water, gas &#038; utilities"
+    },
+    "meta": {
+      "phila_page_icon": "fa-wrench"
+    }
+  },
+  {
+    "id": 12843,
+    "link": "https://beta.phila.gov/services/trees-parks-the-environment/",
+    "title": {
+      "rendered": "Trees, parks &#038; the environment"
+    },
+    "meta": {
+      "phila_page_icon": "fa-leaf"
+    }
+  },
+  {
+    "id": 12845,
+    "link": "https://beta.phila.gov/services/trash-recycling-city-upkeep/",
+    "title": {
+      "rendered": "Trash, recycling &#038; city upkeep"
+    },
+    "meta": {
+      "phila_page_icon": "fa-trash"
+    }
+  },
+  {
+    "id": 12849,
+    "link": "https://beta.phila.gov/services/streets-sidewalks-alleys/",
+    "title": {
+      "rendered": "Streets, sidewalks &#038; alleys"
+    },
+    "meta": {
+      "phila_page_icon": "fa-road"
+    }
+  },
+  {
+    "id": 12847,
+    "link": "https://beta.phila.gov/services/safety-emergency-preparedness/",
+    "title": {
+      "rendered": "Safety &#038; emergency preparedness"
+    },
+    "meta": {
+      "phila_page_icon": "fa-ambulance"
+    }
+  },
+  {
+    "id": 12831,
+    "link": "https://beta.phila.gov/services/property-lots-housing/",
+    "title": {
+      "rendered": "Property, lots &#038; housing"
+    },
+    "meta": {
+      "phila_page_icon": "fa-home"
+    }
+  },
+  {
+    "id": 12841,
+    "link": "https://beta.phila.gov/services/permits-violations-licenses/",
+    "title": {
+      "rendered": "Permits, violations &#038; licenses"
+    },
+    "meta": {
+      "phila_page_icon": "fa-file-text"
+    }
+  },
+  {
+    "id": 12839,
+    "link": "https://beta.phila.gov/services/payments-assistance-taxes/",
+    "title": {
+      "rendered": "Payments, assistance &#038; taxes"
+    },
+    "meta": {
+      "phila_page_icon": "fa-credit-card-alt"
+    }
+  },
+  {
+    "id": 12835,
+    "link": "https://beta.phila.gov/services/mental-physical-health/",
+    "title": {
+      "rendered": "Mental &#038; physical health"
+    },
+    "meta": {
+      "phila_page_icon": "fa-heartbeat"
+    }
+  },
+  {
+    "id": 12829,
+    "link": "https://beta.phila.gov/services/education-learning/",
+    "title": {
+      "rendered": "Education &#038; learning"
+    },
+    "meta": {
+      "phila_page_icon": "fa-book"
+    }
+  },
+  {
+    "id": 12833,
+    "link": "https://beta.phila.gov/services/diversity-inclusion-immigration/",
+    "title": {
+      "rendered": "Diversity, inclusion &#038; immigration"
+    },
+    "meta": {
+      "phila_page_icon": "fa-users"
+    }
+  },
+  {
+    "id": 12827,
+    "link": "https://beta.phila.gov/services/culture-recreation/",
+    "title": {
+      "rendered": "Culture &#038; recreation"
+    },
+    "meta": {
+      "phila_page_icon": "fa-futbol-o"
+    }
+  },
+  {
+    "id": 12825,
+    "link": "https://beta.phila.gov/services/crime-law-justice/",
+    "title": {
+      "rendered": "Crime, law &#038; justice"
+    },
+    "meta": {
+      "phila_page_icon": "fa-gavel"
+    }
+  },
+  {
+    "id": 12823,
+    "link": "https://beta.phila.gov/services/cars-parking-transportation/",
+    "title": {
+      "rendered": "Cars, parking &#038; transportation"
+    },
+    "meta": {
+      "phila_page_icon": "fa-car"
+    }
+  },
+  {
+    "id": 12821,
+    "link": "https://beta.phila.gov/services/business-self-employment/",
+    "title": {
+      "rendered": "Business &#038; self-employment"
+    },
+    "meta": {
+      "phila_page_icon": "fa-gears"
+    }
+  },
+  {
+    "id": 12819,
+    "link": "https://beta.phila.gov/services/birth-marriage-life-events/",
+    "title": {
+      "rendered": "Birth, marriage &#038; life events"
+    },
+    "meta": {
+      "phila_page_icon": "fa-hourglass"
+    }
+  }
+]

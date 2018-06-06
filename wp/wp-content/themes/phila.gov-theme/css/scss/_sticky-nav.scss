@@ -84,6 +84,8 @@
         padding: 0.5rem 0 .8rem 0;
       }
       ul{
+        margin:0;
+        padding:0;
         text-align: left;
       }
       .fa-3x{
@@ -93,6 +95,7 @@
       li{
         border-right: none;
         border-bottom: 1px solid color(ghost-gray);
+        width: 100%;
         div{
           display: inline-block;
           padding-top:0;
@@ -101,11 +104,21 @@
     }
   }
 }
+.event-spotlight{
+  .menu a{
+    padding: 0 1rem;
+  }
+}
 
 @include breakpoint(small only) {
   .sticky{
     //TODO: Add to standards
     top: 0 !important;
+  }
+  .event-spotlight{
+    .menu a{
+      padding: 1rem;
+    }
   }
 }
 

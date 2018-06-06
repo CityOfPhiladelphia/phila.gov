@@ -1,0 +1,36 @@
+.event-spotlight nav {
+  a:hover,
+  a:active{
+    color: color(phanatic-green);
+  }
+}
+
+#spotlight-header {
+  h2{
+    font-size: 1.78571rem;
+    margin: .5rem 0;
+    color: color(dark-gray);
+  }
+  img{
+    width:100%;
+    height: 100%;
+  }
+}
+.spotlight-date{
+  font-size: 1rem;
+  font-family: "Montserrat";
+}
+
+.featured-events{
+  .feature{
+    border-bottom: 5px solid color(phanatic-green);
+  }
+}
+
+.feature-description{
+  min-height: 100px;
+}
+
+.feature-detail{
+  min-height: 200px;
+}

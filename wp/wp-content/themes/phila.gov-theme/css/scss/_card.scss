@@ -60,9 +60,21 @@ a.card,
       font-size: rem-calc(16);
     }
   }
+  &.card--calendar{
+    border-bottom:5px solid map-get($post_content_types, calendar);
+  }
   .post-meta{
     position: absolute;
     bottom:1rem;
+  }
+  .card-description{
+    font-weight: normal;
+    p{
+      color: color(dark-gray);
+    }
+  }
+  &.card-fixed-height{
+    min-height: 120px;
   }
 }
 .feature-main{

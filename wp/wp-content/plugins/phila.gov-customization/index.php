@@ -21,6 +21,8 @@
 // Direct access?  Get out.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+//TODO: Use an autoloader already
+
 $dir = plugin_dir_path( __FILE__ );
 require $dir. '/admin/admin-documentation.php';
 require $dir. '/admin/admin-ui.php';
@@ -43,6 +45,9 @@ require $dir. '/admin/tiny-mce.php';
 require $dir. '/admin/departments/class-phila-gov-cpt-departments.php';
 require $dir. '/admin/departments/class-phila-gov-department-register-templates.php';
 require $dir. '/admin/departments/templates/class-phila-gov-collection-page.php';
+
+require $dir. '/admin/event-spotlight/class-phila-gov-cpt-event-spotlight.php';
+require $dir. '/admin/event-spotlight/templates/class-phila-gov-spotlight.php';
 
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
