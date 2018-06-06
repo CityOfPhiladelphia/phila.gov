@@ -60,7 +60,7 @@
             <!-- TODO: Begin pulling these in from 311 -->
               <ul class="columns-2-mu">
                 <li>
-                  <a href="https://beta.phila.gov/services/property-lots-housing/get-the-homestead-exemption/">Apply for a Homestead Exemption</a>
+                  <a href="https://<?php phila_util_echo_website_url() ?>/services/property-lots-housing/get-the-homestead-exemption/">Apply for a Homestead Exemption</a>
                 </li>
                 <li>
                   <a href="http://www.phila.gov/prisons/Facilities/Pages/default.aspx">Correctional facilities</a>
@@ -72,7 +72,7 @@
                   <a href="https://secure.phila.gov/WRB/WaterBill/Account/GetAccount.aspx">Pay a water bill</a>
                 </li>
                 <li>
-                  <a href="https://ework.phila.gov/revenue/">Pay a Real Estate Tax bill</a>
+                  <a href="https://<?php phila_util_echo_website_url() ?>/services/payments-assistance-taxes/make-a-payment/pay-your-real-estate-tax/">Pay a Real Estate Tax bill</a>
                 </li>
                 <li>
                   <a href="http://property.phila.gov/">Search for property information</a>
@@ -81,7 +81,7 @@
                   <a href="http://www.philadelphiastreets.com/sanitation/residential/collection-schedules" class="external">Trash and recycling schedule</a>
                 </li>
                 <li>
-                  <a href="https://beta.phila.gov/services/water-gas-utilities/water-sewer-services/become-a-water-customer/">Turn water service on or off</a>
+                  <a href="https://<?php phila_util_echo_website_url() ?>/services/water-gas-utilities/water-sewer-services/become-a-water-customer/">Turn water service on or off</a>
                 </li>
               </ul>
             </section>
