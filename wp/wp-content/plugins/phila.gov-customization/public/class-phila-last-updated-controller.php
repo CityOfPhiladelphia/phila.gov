@@ -100,6 +100,9 @@ class Phila_Last_Updated_Controller {
     if (isset( $schema['properties']['link'] )) {
       $post_data['link']  =  (string)  get_permalink($post->ID);
     }
+    if (isset( $schema['properties']['updated_at'] )) {
+      $post_data['updated_at']  =  get_the_modified_date('Y-m-d H:i:s', $post->ID);
+    }
 
     return rest_ensure_response( $post_data );
 }
@@ -150,6 +153,11 @@ class Phila_Last_Updated_Controller {
         'link' => array(
           'description'  => esc_html__( 'Link to the object.', 'phila-gov' ),
           'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'updated_at' => array(
+          'description'  => esc_html__( 'Last updated time.', 'phila-gov' ),
+          'type'         => 'date',
           'readonly'     => true,
         ),
       ),
