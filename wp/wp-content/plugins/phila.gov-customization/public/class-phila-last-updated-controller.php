@@ -46,7 +46,11 @@ class Phila_Last_Updated_Controller {
       'post_type' => $post_types,
       'orderby' => 'modified',
       'order' => 'desc',
-      'date_query' => array( 'after' => $request['timestamp'] ),
+      'date_query' => array(
+        'after' => $request['timestamp'],
+        'column'  => 'post_modified',
+        'inclusive' => true
+      ),
 
     );
 
@@ -101,7 +105,7 @@ class Phila_Last_Updated_Controller {
       $post_data['link']  =  (string)  get_permalink($post->ID);
     }
     if (isset( $schema['properties']['updated_at'] )) {
-      $post_data['updated_at']  =  get_the_modified_date('Y-m-d H:i:s', $post->ID);
+      $post_data['updated_at']  = get_the_modified_date('Y-m-d H:i:s', $post->ID);
     }
 
     return rest_ensure_response( $post_data );
