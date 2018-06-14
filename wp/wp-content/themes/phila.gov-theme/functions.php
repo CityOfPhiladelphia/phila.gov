@@ -1599,3 +1599,10 @@ function phila_get_post_label( $label ){
     return $label;
   }
 }
+
+add_action('init','add_cors_http_header');
+
+function add_cors_http_header(){
+  header('Access-Control-Allow-Origin: https://standards.phila.gov');
+  header('Vary: Origin');
+}
