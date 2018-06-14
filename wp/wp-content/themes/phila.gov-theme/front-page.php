@@ -199,14 +199,13 @@ get_header(); ?>
             <div class="medium-10 columns bdr-right-mu equal about">
               <section>
                 <h3>About the redesign</h3>
-                <p>We’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
+                <p>We’re in the process of creating a new website for Philadelphia from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clear content.</p>
 
-                <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:</p>
-
+                <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:
+                  </p>
                 <ul class="list-style-none mln pln pvm">
                   <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
                 </ul>
-
               </section>
             </div>
             <div class="show-for-medium medium-14 pll plm columns equal process">
@@ -251,7 +250,7 @@ get_header(); ?>
                         </div>
                       </header>
                       <div class="description current">
-                        <span class="phs small-text">The homepage of beta.phila.gov became the official City homepage in 2018 and the content of beta.phila.gov and phila.gov were merged.</span>
+                        <span class="phs small-text">The homepage of beta.phila.gov became the official City homepage in 2018, and the content of beta.phila.gov and phila.gov were merged.</span>
                       </div>
                     </section>
                   </div>
@@ -265,7 +264,7 @@ get_header(); ?>
                         </div>
                       </header>
                       <div class="description">
-                        <span class="phs small-text">We're continuing to bring content onto this new platform. With your help, we’ll continue to improve it.</span>
+                        <span class="phs small-text">We’re continuing to bring content onto this new platform. With your help we’ll continue to improve it.</span>
                       </div>
                     </section>
                   </div>
