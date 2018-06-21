@@ -18,6 +18,7 @@
 
   <!-- Swiftype -->
   <meta class="swiftype" name="title" data-type="string" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) ); ?>">
+  <meta class="swiftype" name="type" data-type="string" content="wordpress" />
 
   <?php if (is_single()) : ?>
     <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
@@ -113,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)">Services</a>
                       </li>
                       <li>
-                        <a href="/programs-initiatives/" class="valign-cell">Programs &amp; initiatives</a>
+                        <a href="/programs/" class="valign-cell">Programs &amp; initiatives</a>
                       </li>
                       <li>
                         <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
@@ -166,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </ul>
                     </li>
                     <li tabindex="0">
-                      <a href="/programs-initiatives/" class="valign-cell"><i class="fa fa-info-circle"></i> Programs &amp; initiatives</a>
+                      <a href="/programs/" class="valign-cell"><i class="fa fa-info-circle"></i> Programs &amp; initiatives</a>
                     </li>
                     <li tabindex="0">
                       <a href="/news/" class="valign-cell"><i class="fa fa-microphone"></i> News &amp; events</a>
