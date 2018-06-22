@@ -130,8 +130,6 @@ jQuery(document).ready(function($){
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'press_release' ){
           $(this).css('display', 'inline-block');
-          console.log(phila_WP_User)
-
         }
       });
       $("#phila_template_select").val('post');
@@ -140,7 +138,6 @@ jQuery(document).ready(function($){
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'action_guide' ){
           $(this).css('display', 'inline-block');
-          console.log('pew pew')
         }
       });
     }
