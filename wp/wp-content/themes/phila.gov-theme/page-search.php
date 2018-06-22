@@ -32,13 +32,6 @@ get_header(); ?>
         </a>
       </div>
     </div>
-    <div class="row mtm">
-      <div class="medium-16 columns">
-        <p class="bg-ghost-gray pam">
-          This search is restricted to content on the beta.phila.gov site. If you can't find what you're looking for, try searching <a class="classic-gov-search">phila.gov</a>.
-        </p>
-      </div>
-    </div>
     <div class="row">
       <p class="medium-16 columns result-count" id="result-count"></p>
     </div>
