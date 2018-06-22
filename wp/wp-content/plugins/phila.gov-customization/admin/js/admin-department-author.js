@@ -121,19 +121,26 @@ jQuery(document).ready(function($){
   }
 
   if ( ( typenow == 'post') && adminpage.indexOf('post') > -1 ){
-
-    if( !phila_WP_User.includes('secondary_press_release_editor') && !phila_WP_User.includes('secondary_press_release_contributor') ) {
+    $('#phila_template_select option').each( function () {
+      if( $(this).val() !== '' && $(this).val() !== 'post' ){
+        $(this).css('display', 'none');
+      }
+    });
+    if( phila_WP_User.includes('secondary_press_release_editor') || phila_WP_User.includes('secondary_press_release_contributor') ) {
       $('#phila_template_select option').each( function () {
-        if( $(this).val() !== '' && $(this).val() !== 'post' ){
-          $(this).css('display', 'none');
+        if( $(this).val() === 'press_release' ){
+          $(this).css('display', 'inline-block');
+          console.log(phila_WP_User)
+
         }
       });
       $("#phila_template_select").val('post');
     }
-    if( !phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
+    if( phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
       $('#phila_template_select option').each( function () {
-        if( $(this).val() !== '' && $(this).val() == 'action_guide' ){
-          $(this).css('display', 'none');
+        if( $(this).val() === 'action_guide' ){
+          $(this).css('display', 'inline-block');
+          console.log('pew pew')
         }
       });
     }
