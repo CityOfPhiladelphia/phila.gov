@@ -27,8 +27,7 @@ module.exports = jQuery(document).ready(function($) {
       title: item.title,
       summary: item.highlight.body || (item.body.length > 300 ? item.body.substring(0, 300) + '...' : item.body)
     };
-    console.log(item)
-    if ( item.tags === 'wordpress' ) {
+    if ( item.tags === 'wordpress' || item.tags === 'app' ) {
       return Mustache.render(resultTemplate, view);
     }else{
       return Mustache.render(legacyTemplate, view);
