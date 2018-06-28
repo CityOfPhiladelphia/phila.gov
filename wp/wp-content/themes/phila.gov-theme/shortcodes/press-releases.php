@@ -29,7 +29,6 @@ function press_release_shortcode($atts) {
   }
   if ($a['tag'] != ''){
     $tag = $a['tag'];
-    var_dump($tag);
   }
 
   include( locate_template( 'partials/posts/press-release-grid.php' ) );
