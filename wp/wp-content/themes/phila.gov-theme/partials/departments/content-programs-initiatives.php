@@ -62,12 +62,12 @@
 
         <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
           <!-- Press Releases -->
-          <?php $press_cat_override = isset( $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category']) ? $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category'] : '';
+          <?php $press_cat_override = isset( $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category']) ? $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category'][0] : '';
           ?>
           <?php $press_tag_override = isset( $current_row['phila_full_options']['full_width_press_releases']['tag']) ? $current_row['phila_full_options']['full_width_press_releases']['tag'] : '';
           ?>
             <section class="row mvl">
-              <?php echo do_shortcode('[press-releases posts=5 tag="'. $press_tag_override .'" category="' . $press_cat_override[0] .'"]');?>
+              <?php echo do_shortcode('[press-releases posts=5 tag="'. $press_tag_override .'" category="' . $press_cat_override .'"]');?>
             </section>
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
