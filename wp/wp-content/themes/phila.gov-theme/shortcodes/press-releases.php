@@ -13,6 +13,7 @@ function press_release_shortcode($atts) {
   $a = shortcode_atts( array(
    'name' => 'Press releases',
     'category' => '',
+    'tag' => '',
   ), $atts );
 
   $category = array();
@@ -26,9 +27,12 @@ function press_release_shortcode($atts) {
       array_push($category, $cat->term_id);
     }
   }
+  if ($a['tag'] != ''){
+    $tag = $a['tag'];
+    var_dump($tag);
+  }
 
   include( locate_template( 'partials/posts/press-release-grid.php' ) );
-
 
   wp_reset_postdata();
 

@@ -20,10 +20,7 @@ class Phila_Gov_Custom_Taxonomies {
     add_action( 'init', array($this, 'audiences') );
     add_action( 'init', array($this, 'media_type') );
     add_action( 'init', array($this, 'media_author') );
-    add_action( 'init', array($this, 'spotlight_tags') );
     add_action( 'init', array($this, 'hierarchical_tags') );
-
-
   }
 
   function service_type() {
@@ -86,7 +83,6 @@ class Phila_Gov_Custom_Taxonomies {
     ));
   }
 
-
   function media_type() {
 
     register_taxonomy('media_type',
@@ -114,6 +110,7 @@ class Phila_Gov_Custom_Taxonomies {
       ),
     ));
   }
+
   function media_author() {
     register_taxonomy('media_author',
       array(
@@ -136,32 +133,6 @@ class Phila_Gov_Custom_Taxonomies {
       'show_admin_column' => true,
       'rewrite' => array(
         'slug' => 'media-author',
-        'with_front' => false,
-      ),
-    ));
-  }
-  function spotlight_tags() {
-    register_taxonomy('spotlight_tag',
-      array(
-        'post',
-      ),
-      array(
-      'hierarchical' => true,
-      'labels' => array(
-        'name' => _x( 'Spotlight tag', 'phila-gov'),
-        'singular_name' => _x( 'Spotlight tag', 'phila-gov'),
-        'search_items' =>  __( 'Search Spotlight tag' ),
-        'all_items' =>     __( 'All Spotlight tags' ),
-        'edit_item' =>     __( 'Edit Spotlight tag' ),
-        'update_item' =>   __( 'Update Spotlight tag' ),
-        'add_new_item' =>  __( 'Add New Spotlight tag' ),
-        'new_item_name' => __( 'New Spotlight tag Name' ),
-        'menu_name' =>     __( 'Spotlight tag' ),
-      ),
-      'public' => true,
-      'show_admin_column' => true,
-      'rewrite' => array(
-        'slug' => 'spotlight-tag',
         'with_front' => false,
       ),
     ));

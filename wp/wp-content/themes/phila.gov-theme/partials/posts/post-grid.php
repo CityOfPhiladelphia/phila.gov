@@ -5,7 +5,7 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
-<?php $spotlight_tags = isset($spotlight_tags) ? $spotlight_tags : ''; ?>
+<?php $tag = isset($tag) ? $tag : '';?>
 
 <?php
 /* Get all sticky posts for department homepages */
@@ -50,20 +50,14 @@ $phila_posts_args  = array(
 
 <?php
 
-if($spotlight_tags) {
+if( !empty($tag) ) {
 
   $posts_args  = array(
     'posts_per_page' => 3,
     'order' => 'desc',
     'orderby' => 'post_date',
+    'tag_id'  => (int) $tag,
     'ignore_sticky_posts' => 1,
-    'tax_query' => array(
-      array(
-          'taxonomy' => 'spotlight_tag',
-          'field' => 'term_id',
-          'terms' => $spotlight_tags,
-      )
-    ),
     'meta_query'  => array(
       'relation'  => 'AND',
       array(
@@ -75,9 +69,7 @@ if($spotlight_tags) {
   );
 
   $result = new WP_Query( $posts_args );
-
 }else{
-
   $posts_args  = array(
     'posts_per_page' => 3,
     'order' => 'desc',
@@ -152,10 +144,10 @@ $result->post_count = count( $result->posts );
             );
             $see_all = array_replace($see_all, $see_all_URL );
             endif;?>
-            <?php if( !empty( $spotlight_tags ) ) :
-              $term = get_term($spotlight_tags, 'spotlight_tag');
+            <?php if( !empty( $tag ) ) :
+              $term = get_term($tag, 'post_tag');
               $see_all_URL = array(
-                'URL' => '/the-latest/archives/?spotlight=' . $term->name,
+                'URL' => '/the-latest/archives/?tag=' . $term->name,
               );
               $see_all = array_replace($see_all, $see_all_URL );
               endif;?>
