@@ -157,7 +157,7 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'Announcement not found' ),
           'not_found_in_trash'   => __( 'Announcement entry not found in trash' ),
         ),
-        'taxonomies' => array('category'),
+        'taxonomies' => array('category', 'post_tag'),
         'supports' => array(
           'title',
           'editor',

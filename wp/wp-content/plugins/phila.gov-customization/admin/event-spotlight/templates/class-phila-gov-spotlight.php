@@ -444,19 +444,14 @@ class Phila_Gov_Event_Spotlight_Template {
               'id'  => 'blog_posts',
               'type'  => 'group',
               'visible'  => array('spotlight_options', '=', 'posts'),
-              'fields'  => array(
-                array(
-                  'name' => 'Display a full row of blog posts?',
-                  'id'   => 'blog_posts',
-                  'type' => 'switch',
-                  'on_label'  => 'Yes',
-                  'off_label' => 'No',
-                ),
-                array(
-                  'name' => 'Choose spotlight tag',
-                  'id'  => 'spotlight_tag',
-                  'type' => 'taxonomy_advanced',
-                  'taxonomy'  => 'spotlight_tag',
+              'fields' => array(
+                  array(
+                    'name'  => 'Filter by a tag',
+                    'id'  => 'tag',
+                    'type' => 'taxonomy_advanced',
+                    'taxonomy'  => 'post_tag',
+                    'field_type' => 'select_advanced',
+                    'desc'  => '<i>Required.</i> Display posts using this tag. "See all" will pre-filter on these terms.'
                 ),
               )
             )
