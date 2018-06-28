@@ -141,17 +141,6 @@ function phila_remove_thumbnails_from_pages() {
   remove_meta_box( 'postimagediv','page','side' );
 }
 
-
-/**
- * No tags for posts.
- */
-
-add_action( 'init', 'phila_unregister_tags' );
-
-function phila_unregister_tags() {
-  unregister_taxonomy_for_object_type( 'post_tag', 'post' );
-}
-
 /* Check if user is in role, and if so, unhide create new button */
 add_action('admin_head', 'hide_title_add_buttons');
 
