@@ -453,10 +453,12 @@ class Phila_Gov_Event_Spotlight_Template {
                   'off_label' => 'No',
                 ),
                 array(
-                  'name' => 'Choose spotlight tag',
-                  'id'  => 'spotlight_tag',
+                  'name'  => 'Filter by a tag',
+                  'id'  => 'tag',
                   'type' => 'taxonomy_advanced',
-                  'taxonomy'  => 'spotlight_tag',
+                  'taxonomy'  => 'post_tag',
+                  'field_type' => 'select_advanced',
+                  'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
                 ),
               )
             )
