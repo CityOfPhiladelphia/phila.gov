@@ -55,19 +55,18 @@ class Phila_Archives_Controller {
 
     $matching_users = get_users( $args );
 
-    $matching_spotlight = get_term_by( $field = 'name', $value = $request['spotlight'], $taxonomy = 'spotlight_tag' );
+    $matching_tag = get_term_by( $field = 'name', $value = $request['tag'], $taxonomy = 'post_tag' );
 
-    // Don't modify the query if there aren't any matching users
-    if ( $matching_spotlight != false ) {
+    if ( $matching_tag != false ) {
       $query_defaults = array(
         'posts_per_page' => $request['count'],
         'order' => 'desc',
         'orderby' => 'date',
         'tax_query' => array(
           array(
-            'taxonomy' => 'spotlight_tag',
+            'taxonomy' => 'post_tag',
             'field'    => 'slug',
-            'terms'    => $matching_spotlight->slug,
+            'terms'    => $matching_tag->slug,
           ),
         ),
       );

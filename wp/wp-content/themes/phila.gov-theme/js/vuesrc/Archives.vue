@@ -214,7 +214,7 @@ export default {
         axios.get(endpoint + 'archives', {
           params : {
             's': this.searchedVal,
-            'tag': this.tagVal,
+            'tag': '',
             'template': this.checkedTemplates,
             'category': this.selectedCategory,
             'count': -1,
