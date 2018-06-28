@@ -4,25 +4,47 @@
 */
 ?>
 <?php $ann_categories = isset( $category ) ? $category : '';?>
+<?php $ann_tag = isset( $tag ) ? $tag : '';?>
 <?php $current_time = current_time('U'); ?>
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
-<?php $announcement_args = array(
-  'posts_per_page' => 4,
-  'post_type' => array( 'announcement' ),
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'cat' => $ann_categories,
-  'meta_query'  => array(
-    'relation'  => 'AND',
-    array(
-      'key' => 'phila_announce_end_date',
-      'value'   => $current_time,
-      'compare' => '>=',
+<?php if(!empty( $ann_tag )) {
+
+  $announcement_args  = array(
+    'posts_per_page' => 4,
+    'post_type' => array( 'announcement' ),
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'tag_id'  => $ann_tag,
+    'meta_query'  => array(
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_announce_end_date',
+        'value'   => $current_time,
+        'compare' => '>=',
+      ),
+      $home_filter
     ),
-    $home_filter
-  ),
-);
+  );
+
+  }else {
+     $announcement_args = array(
+    'posts_per_page' => 4,
+    'post_type' => array( 'announcement' ),
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'cat' => $ann_categories,
+    'meta_query'  => array(
+      'relation'  => 'AND',
+      array(
+        'key' => 'phila_announce_end_date',
+        'value'   => $current_time,
+        'compare' => '>=',
+      ),
+      $home_filter
+    ),
+  );
+}
 ?>
 
 <?php $label = 'announcement'; ?>
