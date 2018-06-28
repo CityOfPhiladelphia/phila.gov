@@ -155,3 +155,8 @@ ul#department_page-search-checklist li{
 .percent-75 .rwmb-select.rwmb-select{
   width: 75%;
 }
+
+#newpost_tag_parent,
+#addtag .form-field.term-parent-wrap {
+  display: none;
+}
