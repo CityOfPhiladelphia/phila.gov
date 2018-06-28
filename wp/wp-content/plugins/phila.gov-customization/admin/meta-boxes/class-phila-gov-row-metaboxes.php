@@ -41,7 +41,15 @@ class Phila_Gov_Row_Metaboxes {
          'id'  => 'phila_get_post_cats',
          'type' => 'group',
          'fields' => array(
-           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection entirely.' ),
+           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners.' ),
+           array(
+             'name'  => 'Filter by a tag',
+             'id'  => 'tag',
+             'type' => 'taxonomy_advanced',
+             'taxonomy'  => 'post_tag',
+             'field_type' => 'select_advanced',
+             'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
+           ),
          ),
         ),
       array(
@@ -113,6 +121,22 @@ class Phila_Gov_Row_Metaboxes {
             'name'  => 'List of images',
             'id'    => 'phila_image_list',
             'type'  => 'image_advanced'
+          ),
+        ),
+      ),
+      array(
+        'id'  => 'full_width_press_releases',
+        'type' => 'group',
+        'visible'  => array('phila_full_options_select', '=', 'phila_full_width_press_releases'),
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_press_release_category', 'Display press releases from these owners.' ),
+          array(
+            'name'  => 'Filter by a tag',
+            'id'  => 'tag',
+            'type' => 'taxonomy_advanced',
+            'taxonomy'  => 'post_tag',
+            'field_type' => 'select_advanced',
+            'desc'  => 'Display press releases using this tag. "See all" will pre-filter on these terms.'
           ),
         ),
       ),
