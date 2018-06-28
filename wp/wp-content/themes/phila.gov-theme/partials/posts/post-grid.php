@@ -8,6 +8,7 @@
 <?php $tag = isset($tag) ? $tag : '';?>
 
 <?php
+
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
 
