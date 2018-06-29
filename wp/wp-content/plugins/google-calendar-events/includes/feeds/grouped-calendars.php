@@ -3,7 +3,6 @@
  * Grouped Calendars Feed
  *
  * @package SimpleCalendar/Feeds
- * KD edits - force allow private calendars to appear in group calendar lists
  */
 namespace SimpleCalendar\Feeds;
 
@@ -86,17 +85,14 @@ class Grouped_Calendars extends Feed {
 				$tax_query = array(
 					'taxonomy' => 'calendar_category',
 					'field'    => 'term_id',
-					'hide_empty'=> false,
 					'terms'    => array_map( 'absint', $categories ),
 				);
 
 				$calendars = get_posts( array(
-					'post_status' => 'any',
 					'post_type' => 'calendar',
 					'tax_query' => array( $tax_query ),
 					'nopaging'  => true,
 					'fields'    => 'ids',
-
 				) );
 
 				$this->calendars_ids = ! empty( $calendars ) && is_array( $calendars ) ? $calendars : array();
@@ -163,7 +159,7 @@ class Grouped_Calendars extends Feed {
 			}
 
 		}
-
+	
 		// Sort events by start time before returning
 		uasort( $events, array( $this, 'sort_by_start_time' ) );
 

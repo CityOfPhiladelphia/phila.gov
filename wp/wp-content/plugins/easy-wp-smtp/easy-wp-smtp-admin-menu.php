@@ -10,7 +10,7 @@ function swpsmtp_admin_default_setup() {
 }
 
 /**
- * Sanitizes textarea. Tries to use wp sanitize_textarea_field() function. If that's now available, uses its own methods
+ * Sanitizes textarea. Tries to use wp sanitize_textarea_field() function. If that's not available, uses its own methods
  * @return string
  */
 function swpsmtp_sanitize_textarea( $str ) {
@@ -50,6 +50,12 @@ function swpsmtp_sanitize_textarea( $str ) {
  * @return void
  */
 function swpsmtp_settings() {
+    //check if OpenSSL PHP extension is loaded and display warning if it's not
+    if ( ! extension_loaded( 'openssl' ) ) {
+	$class	 = 'notice notice-warning';
+	$message = __( "PHP OpenSSL extension is not installed on the server. It's required by Easy WP SMTP plugin to operate properly. Please contact your server administrator or hosting provider and ask them to install it.", 'easy-wp-smtp' );
+	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+    }
     echo '<div class="wrap" id="swpsmtp-mail">';
     echo '<h2>' . __( "Easy WP SMTP Settings", 'easy-wp-smtp' ) . '</h2>';
     echo '<div id="poststuff"><div id="post-body">';
@@ -87,17 +93,29 @@ function swpsmtp_settings() {
 	    $swpsmtp_options[ 'email_ignore_list' ] = sanitize_text_field( $_POST[ 'swpsmtp_email_ignore_list' ] );
 	}
 
-	$swpsmtp_options[ 'smtp_settings' ][ 'host' ]		 = sanitize_text_field( $_POST[ 'swpsmtp_smtp_host' ] );
+	$swpsmtp_options[ 'smtp_settings' ][ 'host' ]		 = stripslashes( $_POST[ 'swpsmtp_smtp_host' ] );
 	$swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] = ( isset( $_POST[ 'swpsmtp_smtp_type_encryption' ] ) ) ? sanitize_text_field( $_POST[ 'swpsmtp_smtp_type_encryption' ] ) : 'none';
 	$swpsmtp_options[ 'smtp_settings' ][ 'autentication' ]	 = ( isset( $_POST[ 'swpsmtp_smtp_autentication' ] ) ) ? sanitize_text_field( $_POST[ 'swpsmtp_smtp_autentication' ] ) : 'yes';
-	$swpsmtp_options[ 'smtp_settings' ][ 'username' ]	 = sanitize_text_field( $_POST[ 'swpsmtp_smtp_username' ] );
-	$smtp_password						 = $_POST[ 'swpsmtp_smtp_password' ];
-	if ( $smtp_password !== $gag_password ) {
-	    $swpsmtp_options[ 'smtp_settings' ][ 'password' ] = base64_encode( $smtp_password );
-	}
+	$swpsmtp_options[ 'smtp_settings' ][ 'username' ]	 = stripslashes( $_POST[ 'swpsmtp_smtp_username' ] );
+
 	$swpsmtp_options[ 'smtp_settings' ][ 'enable_debug' ]	 = isset( $_POST[ 'swpsmtp_enable_debug' ] ) ? 1 : false;
 	$swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ]	 = isset( $_POST[ 'swpsmtp_insecure_ssl' ] ) ? 1 : false;
-	$swpsmtp_options[ 'enable_domain_check' ]		 = isset( $_POST[ 'swpsmtp_enable_domain_check' ] ) ? 1 : false;
+	$swpsmtp_options[ 'smtp_settings' ][ 'encrypt_pass' ]	 = isset( $_POST[ 'swpsmtp_encrypt_pass' ] ) ? 1 : false;
+
+	$smtp_password = $_POST[ 'swpsmtp_smtp_password' ];
+	if ( $smtp_password !== $gag_password ) {
+	    $swpsmtp_options[ 'smtp_settings' ][ 'password' ] = swpsmtp_encrypt_password( $smtp_password );
+	}
+
+	if ( $swpsmtp_options[ 'smtp_settings' ][ 'encrypt_pass' ] && ! get_option( 'swpsmtp_pass_encrypted', false ) ) {
+	    update_option( 'swpsmtp_options', $swpsmtp_options );
+	    $pass							 = swpsmtp_get_password();
+	    $swpsmtp_options[ 'smtp_settings' ][ 'password' ]	 = swpsmtp_encrypt_password( $pass );
+	    update_option( 'swpsmtp_options', $swpsmtp_options );
+	}
+
+
+	$swpsmtp_options[ 'enable_domain_check' ] = isset( $_POST[ 'swpsmtp_enable_domain_check' ] ) ? 1 : false;
 	if ( isset( $_POST[ 'swpsmtp_allowed_domains' ] ) ) {
 	    $swpsmtp_options[ 'block_all_emails' ]	 = isset( $_POST[ 'swpsmtp_block_all_emails' ] ) ? 1 : false;
 	    $swpsmtp_options[ 'allowed_domains' ]	 = base64_encode( sanitize_text_field( $_POST[ 'swpsmtp_allowed_domains' ] ) );
@@ -126,7 +144,7 @@ function swpsmtp_settings() {
 
     /* Send test letter */
     $swpsmtp_to = '';
-    if ( isset( $_POST[ 'swpsmtp_test_submit' ] ) && check_admin_referer( plugin_basename( __FILE__ ), 'swpsmtp_nonce_name' ) ) {
+    if ( isset( $_POST[ 'swpsmtp_test_submit' ] ) && check_admin_referer( plugin_basename( __FILE__ ), 'swpsmtp_test_nonce_name' ) ) {
 	if ( isset( $_POST[ 'swpsmtp_to' ] ) ) {
 	    $to_email = sanitize_text_field( $_POST[ 'swpsmtp_to' ] );
 	    if ( is_email( $to_email ) ) {
@@ -145,22 +163,26 @@ function swpsmtp_settings() {
 	update_option( 'smtp_test_mail', $smtp_test_mail );
 
 	if ( ! empty( $swpsmtp_to ) ) {
-	    $result = swpsmtp_test_mail( $swpsmtp_to, $swpsmtp_subject, $swpsmtp_message );
+	    $test_res = swpsmtp_test_mail( $swpsmtp_to, $swpsmtp_subject, $swpsmtp_message );
 	}
+    }
+
+    //check if server meets encryption requirements
+    $enc_req_met	 = true;
+    $enc_req_err	 = '';
+    if ( ! extension_loaded( 'openssl' ) ) {
+	$enc_req_err	 .= __( "PHP OpenSSL extension is not installed on the server. It is required for encryption to work properly. Please contact your server administrator or hosting provider and ask them to install it.", 'easy-wp-smtp' ) . '<br />';
+	$enc_req_met	 = false;
+    }
+    if ( version_compare( PHP_VERSION, '5.3.0' ) < 0 ) {
+	$enc_req_err	 = ! empty( $enc_req_err ) ? $enc_req_err	 .= '<br />' : '';
+	$enc_req_err	 .= sprintf( __( 'Your PHP version is %s, encryption function requires PHP version 5.3.0 or higher.', 'easy-wp-smtp' ), PHP_VERSION );
+	$enc_req_met	 = false;
     }
     ?>
     <style>
         div.swpsmtp-tab-container, #swpsmtp-save-settings-notice {
     	display: none;
-        }
-        #swpsmtp-save-settings-notice {
-    	padding: 10px 0;
-        }
-        #swpsmtp-save-settings-notice span {
-    	background-color: #ffff76;
-    	padding: 7px;
-    	border: 1px dashed red;
-    	display: block;
         }
         .swpsmtp-stars-container {
     	text-align: center;
@@ -183,6 +205,25 @@ function swpsmtp_settings() {
     	width: 19%;
     	float: right;
         }
+
+        div.swpsmtp-msg-cont {
+    	clear: both;
+    	margin-bottom: 10px;
+    	padding: 5px 10px;
+    	border-radius: 2px;
+    	background-color: #ffffe0;
+        }
+        div.swpsmtp-msg-cont.msg-error {
+    	border-left: 5px solid red;
+        }
+        div.swpsmtp-msg-cont.msg-success {
+    	border-left: 5px solid green;
+        }
+
+        #swpsmtp-debug-log-cont {
+    	display: none;
+        }
+
         @media (max-width: 782px) {
     	.swpsmtp-settings-grid {
     	    display: block;
@@ -210,7 +251,7 @@ function swpsmtp_settings() {
     <div class="swpsmtp-settings-container">
         <div class="swpsmtp-settings-grid swpsmtp-settings-main-cont">
 
-    	<form id="swpsmtp_settings_form" method="post" action="">
+    	<form autocomplete="off" id="swpsmtp_settings_form" method="post" action="">
 
     	    <input type="hidden" id="swpsmtp-urlHash" name="swpsmtp-urlHash" value="">
 
@@ -284,14 +325,14 @@ function swpsmtp_settings() {
     			    <tr class="ad_opt swpsmtp_smtp_options">
     				<th><?php _e( 'SMTP Username', 'easy-wp-smtp' ); ?></th>
     				<td>
-    				    <input id='swpsmtp_smtp_username' type='text' name='swpsmtp_smtp_username' value='<?php echo isset( $swpsmtp_options[ 'smtp_settings' ][ 'username' ] ) ? esc_attr( $swpsmtp_options[ 'smtp_settings' ][ 'username' ] ) : ''; ?>' /><br />
+    				    <input id='swpsmtp_smtp_username' type='text' name='swpsmtp_smtp_username' value='<?php echo isset( $swpsmtp_options[ 'smtp_settings' ][ 'username' ] ) ? esc_attr( $swpsmtp_options[ 'smtp_settings' ][ 'username' ] ) : ''; ?>'/><br />
     				    <p class="description"><?php _e( "The username to login to your mail server", 'easy-wp-smtp' ); ?></p>
     				</td>
     			    </tr>
     			    <tr class="ad_opt swpsmtp_smtp_options">
     				<th><?php _e( 'SMTP Password', 'easy-wp-smtp' ); ?></th>
     				<td>
-    				    <input id = 'swpsmtp_smtp_password' type='password' name='swpsmtp_smtp_password' value='<?php echo (swpsmtp_get_password() !== '' ? $gag_password : ''); ?>' /><br />
+    				    <input id='swpsmtp_smtp_password' type='password' name='swpsmtp_smtp_password' value='<?php echo (swpsmtp_get_password() !== '' ? $gag_password : ''); ?>' autocomplete='new-password' /><br />
     				    <p class="description"><?php _e( "The password to login to your mail server", 'easy-wp-smtp' ); ?></p>
     				    <p class="description"><b><?php _e( 'Note', 'easy-wp-smtp' ); ?></b>: <?php _e( 'when you click "Save Changes", your actual password is stored in the database and then used to send emails. This field is replaced with a gag (#easywpsmtpgagpass#). This is done to prevent someone with the access to Settings page from seeing your password (using password fields unmasking programs, for example).', 'easy-wp-smtp' ); ?></p>
     				</td>
@@ -333,6 +374,17 @@ function swpsmtp_settings() {
     				</td>
     			    </tr>
     			    <tr valign="top">
+    				<th scope="row"><?php _e( "Encrypt Password", 'easy-wp-smtp' ); ?></th>
+    				<td>
+					<?php if ( $enc_req_met ) { ?>
+					    <input id="swpsmtp_encrypt_pass" type="checkbox" name="swpsmtp_encrypt_pass" value="1" <?php echo (isset( $swpsmtp_options[ 'smtp_settings' ][ 'encrypt_pass' ] ) && ($swpsmtp_options[ 'smtp_settings' ][ 'encrypt_pass' ])) ? 'checked' : ''; ?>/>
+					    <p class="description"><?php _e( "When enabled, your SMTP password is stored in the database using AES-256 encryption.", 'easy-wp-smtp' ); ?></p>
+					<?php } else { ?>
+					    <p style="color: red;"><?php echo $enc_req_err; ?></p>
+					<?php } ?>
+    				</td>
+    			    </tr>
+    			    <tr valign="top">
     				<th scope="row"><?php _e( "Allow Insecure SSL Certificates", 'easy-wp-smtp' ); ?></th>
     				<td>
     				    <input id="swpsmtp_insecure_ssl" type="checkbox" name="swpsmtp_insecure_ssl" value="1" <?php echo (isset( $swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ] ) && ($swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ])) ? 'checked' : ''; ?>/>
@@ -349,9 +401,7 @@ function swpsmtp_settings() {
     			    </tr>
     			</table>
     			<p class="submit">
-    			    <input type="submit" id="settings-form-submit" class="button-primary" value="<?php _e( 'Save Changes', 'easy-wp-smtp' ) ?>" />
-    			    <input type="hidden" name="swpsmtp_form_submit" value="submit" />
-				<?php wp_nonce_field( plugin_basename( __FILE__ ), 'swpsmtp_nonce_name' ); ?>
+    			    <input type="submit" id="additional-settings-form-submit" class="button-primary" value="<?php _e( 'Save Changes', 'easy-wp-smtp' ) ?>" />
     			</p>
 
     		    </div><!-- end of inside -->
@@ -363,11 +413,59 @@ function swpsmtp_settings() {
     	    <div class="postbox">
     		<h3 class="hndle"><label for="title"><?php _e( 'Test Email', 'easy-wp-smtp' ); ?></label></h3>
     		<div class="inside">
-    		    <div id="swpsmtp-save-settings-notice"><span><b><?php _e( 'Notice:', 'easy-wp-smtp' ); ?></b> <?php _e( 'You have unsaved settings. In order to send a test email, you need to go back to previous tab and click "Save Changes" button first.', 'easy-wp-smtp' ); ?></span></div>
+    		    <div id="swpsmtp-save-settings-notice" class="swpsmtp-msg-cont msg-error"><b><?php _e( 'Notice:', 'easy-wp-smtp' ); ?></b> <?php _e( 'You have unsaved settings. In order to send a test email, you need to go back to previous tab and click "Save Changes" button first.', 'easy-wp-smtp' ); ?></div>
+
+			<?php
+			if ( isset( $test_res ) && is_array( $test_res ) ) {
+			    if ( isset( $test_res[ 'error' ] ) ) {
+				$errmsg_class	 = ' msg-error';
+				$errmsg_text	 = '<b>' . __( 'Following error occured when attempting to send test email:', 'easy-wp-smtp' ) . '</b><br />' . $test_res[ 'error' ];
+			    } else {
+				$errmsg_class	 = ' msg-success';
+				$errmsg_text	 = '<b>' . __( 'Test email was successfully sent. No errors occured during the process.', 'easy-wp-smtp' ) . '</b>';
+			    }
+			    ?>
+
+			    <div class="swpsmtp-msg-cont<?php echo $errmsg_class; ?>">
+				<?php echo $errmsg_text; ?>
+
+				<?php
+				if ( isset( $test_res[ 'debug_log' ] ) ) {
+				    ?>
+	    			<br /><br />
+	    			<a id="swpsmtp-show-hide-log-btn" href="#0"><?php _e( 'Show Debug Log', 'easy-wp-smtp' ); ?></a>
+	    			<p id="swpsmtp-debug-log-cont"><textarea rows="20" style="width: 100%;"><?php echo $test_res[ 'debug_log' ]; ?></textarea></p>
+	    			<script>
+	    			    jQuery(function ($) {
+	    				$('#swpsmtp-show-hide-log-btn').click(function (e) {
+	    				    e.preventDefault();
+	    				    var logCont = $('#swpsmtp-debug-log-cont');
+	    				    if (logCont.is(':visible')) {
+	    					$(this).html('<?php echo esc_attr( __( 'Show Debug Log', 'easy-wp-smtp' ) ); ?>');
+	    				    } else {
+	    					$(this).html('<?php echo esc_attr( __( 'Hide Debug Log', 'easy-wp-smtp' ) ); ?>');
+	    				    }
+	    				    logCont.toggle();
+	    				});
+	    <?php if ( isset( $test_res[ 'error' ] ) ) {
+		?>
+						$('#swpsmtp-show-hide-log-btn').click();
+	    <?php }
+	    ?>
+	    			    });
+	    			</script>
+				    <?php
+				}
+				?>
+			    </div>
+			    <?php
+			}
+			?>
+
     		    <p><?php _e( 'You can use this section to send an email from your server using the above configured SMTP details to see if the email gets delivered.', 'easy-wp-smtp' ); ?></p>
     		    <p><b><?php _ex( 'Note:', '"Note" as in "Note: keep this in mind"', 'easy-wp-smtp' ); ?></b> <?php _e( 'debug log for this test email will be automatically displayed right after you send it. Test email also ignores "Enable Domain Check" option.', 'easy-wp-smtp' ); ?></p>
 
-    		    <form id="swpsmtp_settings_form" method="post" action="">
+    		    <form id="swpsmtp_settings_test_email_form" method="post" action="">
     			<table class="form-table">
     			    <tr valign="top">
     				<th scope="row"><?php _e( "To", 'easy-wp-smtp' ); ?>:</th>
@@ -392,9 +490,9 @@ function swpsmtp_settings() {
     			    </tr>
     			</table>
     			<p class="submit">
-    			    <input type="submit" id="settings-form-submit" class="button-primary" value="<?php _e( 'Send Test Email', 'easy-wp-smtp' ) ?>" />
+    			    <input type="submit" id="test-email-form-submit" class="button-primary" value="<?php _e( 'Send Test Email', 'easy-wp-smtp' ) ?>" />
     			    <input type="hidden" name="swpsmtp_test_submit" value="submit" />
-				<?php wp_nonce_field( plugin_basename( __FILE__ ), 'swpsmtp_nonce_name' ); ?>
+				<?php wp_nonce_field( plugin_basename( __FILE__ ), 'swpsmtp_test_nonce_name' ); ?>
     			</p>
     		    </form>
     		</div><!-- end of inside -->
@@ -432,7 +530,6 @@ function swpsmtp_settings() {
     	var hashObj = [];
 
     	hash.split('&').forEach(function (q) {
-    	    console.log(q);
     	    if (typeof q !== 'undefined') {
     		hashObj.push(q);
     	    }

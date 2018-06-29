@@ -1,9 +1,9 @@
 <?php
 /*
   Plugin Name: Easy WP SMTP
-  Version: 1.3.5
+  Version: 1.3.6
   Plugin URI: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
-  Author: wpecommerce
+  Author: wpecommerce, alexanderfoxc
   Author URI: https://wp-ecommerce.net/
   Description: Send email via SMTP from your WordPress Blog
   Text Domain: easy-wp-smtp
@@ -227,101 +227,135 @@ if ( ! function_exists( 'swpsmtp_init_smtp' ) ) {
 if ( ! function_exists( 'swpsmtp_test_mail' ) ) {
 
     function swpsmtp_test_mail( $to_email, $subject, $message ) {
+	$ret = array();
 	if ( ! swpsmtp_credentials_configured() ) {
-	    return;
+	    return false;
 	}
-	$errors = '';
 
 	$swpsmtp_options = get_option( 'swpsmtp_options' );
 
 	require_once( ABSPATH . WPINC . '/class-phpmailer.php' );
-	$mail = new PHPMailer();
+	$mail = new PHPMailer( true );
 
-	$charset	 = get_bloginfo( 'charset' );
-	$mail->CharSet	 = $charset;
+	try {
 
-	$from_name	 = $swpsmtp_options[ 'from_name_field' ];
-	$from_email	 = $swpsmtp_options[ 'from_email_field' ];
+	    $charset	 = get_bloginfo( 'charset' );
+	    $mail->CharSet	 = $charset;
 
-	$mail->IsSMTP();
+	    $from_name	 = $swpsmtp_options[ 'from_name_field' ];
+	    $from_email	 = $swpsmtp_options[ 'from_email_field' ];
 
-	// send plain text test email
-	$mail->ContentType = 'text/plain';
-	$mail->IsHTML( false );
+	    $mail->IsSMTP();
 
-	/* If using smtp auth, set the username & password */
-	if ( 'yes' == $swpsmtp_options[ 'smtp_settings' ][ 'autentication' ] ) {
-	    $mail->SMTPAuth	 = true;
-	    $mail->Username	 = $swpsmtp_options[ 'smtp_settings' ][ 'username' ];
-	    $mail->Password	 = swpsmtp_get_password();
-	}
+	    // send plain text test email
+	    $mail->ContentType = 'text/plain';
+	    $mail->IsHTML( false );
 
-	/* Set the SMTPSecure value, if set to none, leave this blank */
-	if ( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] !== 'none' ) {
-	    $mail->SMTPSecure = $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ];
-	}
+	    /* If using smtp auth, set the username & password */
+	    if ( 'yes' == $swpsmtp_options[ 'smtp_settings' ][ 'autentication' ] ) {
+		$mail->SMTPAuth	 = true;
+		$mail->Username	 = $swpsmtp_options[ 'smtp_settings' ][ 'username' ];
+		$mail->Password	 = swpsmtp_get_password();
+	    }
 
-	/* PHPMailer 5.2.10 introduced this option. However, this might cause issues if the server is advertising TLS with an invalid certificate. */
-	$mail->SMTPAutoTLS = false;
+	    /* Set the SMTPSecure value, if set to none, leave this blank */
+	    if ( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] !== 'none' ) {
+		$mail->SMTPSecure = $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ];
+	    }
 
-	if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ] ) && $swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ] !== false ) {
-	    // Insecure SSL option enabled
-	    $mail->SMTPOptions = array(
-		'ssl' => array(
-		    'verify_peer'		 => false,
-		    'verify_peer_name'	 => false,
-		    'allow_self_signed'	 => true
-		) );
-	}
+	    /* PHPMailer 5.2.10 introduced this option. However, this might cause issues if the server is advertising TLS with an invalid certificate. */
+	    $mail->SMTPAutoTLS = false;
 
-	/* Set the other options */
-	$mail->Host	 = $swpsmtp_options[ 'smtp_settings' ][ 'host' ];
-	$mail->Port	 = $swpsmtp_options[ 'smtp_settings' ][ 'port' ];
-	if ( ! empty( $swpsmtp_options[ 'reply_to_email' ] ) ) {
-	    $mail->AddReplyTo( $swpsmtp_options[ 'reply_to_email' ], $from_name );
-	}
-	$mail->SetFrom( $from_email, $from_name );
-	//This should set Return-Path header for servers that are not properly handling it, but needs testing first
-	//$mail->Sender		 = $mail->From;
-	$mail->Subject		 = $subject;
-	$mail->Body		 = $message;
-	$mail->AddAddress( $to_email );
-	global $debugMSG;
-	$debugMSG		 = '';
-	$mail->Debugoutput	 = function($str, $level) {
+	    if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ] ) && $swpsmtp_options[ 'smtp_settings' ][ 'insecure_ssl' ] !== false ) {
+		// Insecure SSL option enabled
+		$mail->SMTPOptions = array(
+		    'ssl' => array(
+			'verify_peer'		 => false,
+			'verify_peer_name'	 => false,
+			'allow_self_signed'	 => true
+		    ) );
+	    }
+
+	    /* Set the other options */
+	    $mail->Host	 = $swpsmtp_options[ 'smtp_settings' ][ 'host' ];
+	    $mail->Port	 = $swpsmtp_options[ 'smtp_settings' ][ 'port' ];
+	    if ( ! empty( $swpsmtp_options[ 'reply_to_email' ] ) ) {
+		$mail->AddReplyTo( $swpsmtp_options[ 'reply_to_email' ], $from_name );
+	    }
+	    $mail->SetFrom( $from_email, $from_name );
+	    //This should set Return-Path header for servers that are not properly handling it, but needs testing first
+	    //$mail->Sender		 = $mail->From;
+	    $mail->Subject		 = $subject;
+	    $mail->Body		 = $message;
+	    $mail->AddAddress( $to_email );
 	    global $debugMSG;
-	    $debugMSG .= $str;
-	};
-	$mail->SMTPDebug = 1;
+	    $debugMSG		 = '';
+	    $mail->Debugoutput	 = function($str, $level) {
+		global $debugMSG;
+		$debugMSG .= $str;
+	    };
+	    $mail->SMTPDebug = 1;
 
-	/* Send mail and return result */
-	if ( ! $mail->Send() )
-	    $errors = $mail->ErrorInfo;
-
-	$mail->ClearAddresses();
-	$mail->ClearAllRecipients();
-
-	echo '<div class="swpsmtp-yellow-box"><h3>Debug Info</h3>';
-	echo '<textarea rows="20" style="width: 100%;">' . $debugMSG . '</textarea>';
-	echo '</div>';
-
-	if ( ! empty( $errors ) ) {
-	    return $errors;
-	} else {
-	    return 'Test mail was sent';
+	    /* Send mail and return result */
+	    $mail->Send();
+	    $mail->ClearAddresses();
+	    $mail->ClearAllRecipients();
+	} catch ( Exception $e ) {
+	    $ret[ 'error' ] = $mail->ErrorInfo;
 	}
+
+	$ret[ 'debug_log' ] = $debugMSG;
+
+	return $ret;
     }
 
+}
+
+function swpsmtp_encrypt_password( $pass ) {
+    if ( $pass === '' ) {
+	return '';
+    }
+
+    $swpsmtp_options = get_option( 'swpsmtp_options' );
+
+    if ( empty( $swpsmtp_options[ 'smtp_settings' ][ 'encrypt_pass' ] ) || ! extension_loaded( 'openssl' ) ) {
+	// no openssl extension loaded - we can't encrypt the password
+	$password = base64_encode( $pass );
+	update_option( 'swpsmtp_pass_encrypted', false );
+    } else {
+	// let's encrypt password
+	require_once('easy-wp-smtp-utils.php');
+	$cryptor	 = SWPSMTPUtils::get_instance();
+	$password	 = $cryptor->encrypt_password( $pass );
+	update_option( 'swpsmtp_pass_encrypted', true );
+    }
+    return $password;
 }
 
 if ( ! function_exists( 'swpsmtp_get_password' ) ) {
 
     function swpsmtp_get_password() {
 	$swpsmtp_options = get_option( 'swpsmtp_options' );
-	$temp_password	 = isset( $swpsmtp_options[ 'smtp_settings' ][ 'password' ] ) ? $swpsmtp_options[ 'smtp_settings' ][ 'password' ] : '';
+
+	$temp_password = isset( $swpsmtp_options[ 'smtp_settings' ][ 'password' ] ) ? $swpsmtp_options[ 'smtp_settings' ][ 'password' ] : '';
 	if ( $temp_password == '' ) {
 	    return '';
 	}
+
+	if ( get_option( 'swpsmtp_pass_encrypted' ) ) {
+	    //this is encrypted password
+	    require_once('easy-wp-smtp-utils.php');
+	    $cryptor	 = SWPSMTPUtils::get_instance();
+	    $decrypted	 = $cryptor->decrypt_password( $temp_password );
+	    //check if encryption option is disabled
+	    if ( empty( $swpsmtp_options[ 'smtp_settings' ][ 'encrypt_pass' ] ) ) {
+		//it is. let's save decrypted password
+		$swpsmtp_options[ 'smtp_settings' ][ 'password' ] = swpsmtp_encrypt_password( addslashes( $decrypted ) );
+		update_option( 'swpsmtp_options', $swpsmtp_options );
+	    }
+	    return $decrypted;
+	}
+
 	$password	 = "";
 	$decoded_pass	 = base64_decode( $temp_password );
 	/* no additional checks for servers that aren't configured with mbstring enabled */
@@ -368,7 +402,6 @@ if ( ! function_exists( 'swpsmtp_credentials_configured' ) ) {
 	}
 	if ( ! isset( $swpsmtp_options[ 'from_name_field' ] ) || empty( $swpsmtp_options[ 'from_name_field' ] ) ) {
 	    $credentials_configured = false;
-	    ;
 	}
 	return $credentials_configured;
     }
@@ -376,7 +409,7 @@ if ( ! function_exists( 'swpsmtp_credentials_configured' ) ) {
 }
 
 /**
- * Performed at uninstal.
+ * Performed at uninstall.
  * @return void
  */
 if ( ! function_exists( 'swpsmtp_send_uninstall' ) ) {
@@ -394,21 +427,21 @@ function swpsmtp_activate() {
     $swpsmtp_options_default = array(
 	'from_email_field'		 => '',
 	'from_name_field'		 => '',
-	'force_from_name_replace'	 => 1,
+	'force_from_name_replace'	 => 0,
 	'smtp_settings'			 => array(
 	    'host'			 => 'smtp.example.com',
 	    'type_encryption'	 => 'none',
 	    'port'			 => 25,
 	    'autentication'		 => 'yes',
-	    'username'		 => 'yourusername',
-	    'password'		 => 'yourpassword'
+	    'username'		 => '',
+	    'password'		 => ''
 	)
     );
 
     /* install the default plugin options if needed */
     $swpsmtp_options = get_option( 'swpsmtp_options' );
     if ( ! $swpsmtp_options ) {
-	$swpsmtp_options = array();
+	$swpsmtp_options = $swpsmtp_options_default;
     }
     $swpsmtp_options = array_merge( $swpsmtp_options_default, $swpsmtp_options );
     update_option( 'swpsmtp_options', $swpsmtp_options, 'yes' );
@@ -423,6 +456,15 @@ function swpsmtp_activate() {
 	if ( ! empty( $swpsmtp_options[ 'allowed_domains' ] ) ) {
 	    if ( base64_decode_maybe( $swpsmtp_options[ 'allowed_domains' ] ) === $swpsmtp_options[ 'allowed_domains' ] ) {
 		$swpsmtp_options[ 'allowed_domains' ] = base64_encode( $swpsmtp_options[ 'allowed_domains' ] );
+		update_option( 'swpsmtp_options', $swpsmtp_options );
+	    }
+	}
+    }
+    // Encrypt password if needed
+    if ( ! get_option( 'swpsmtp_pass_encrypted' ) ) {
+	if ( extension_loaded( 'openssl' ) ) {
+	    if ( $swpsmtp_options[ 'smtp_settings' ][ 'password' ] !== '' ) {
+		$swpsmtp_options[ 'smtp_settings' ][ 'password' ] = swpsmtp_encrypt_password( swpsmtp_get_password() );
 		update_option( 'swpsmtp_options', $swpsmtp_options );
 	    }
 	}
