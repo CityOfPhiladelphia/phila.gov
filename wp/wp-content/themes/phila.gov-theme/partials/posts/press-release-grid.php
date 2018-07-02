@@ -1,8 +1,11 @@
 <?php
-/* Press release grid
+/*
+ * Press release grid
 */
 ?>
 <?php $press_categories = isset( $category ) ? $category : '';?>
+<?php $press_tag = isset( $tag ) ? $tag : '';?>
+
 <?php $press_release_args  = array(
   'posts_per_page' => 4,
   'post_type' => array( 'press_release' ),
@@ -24,23 +27,42 @@ if ( empty( $press_categories ) ) {
   $press_meta_query = array();
 }
 
- $press_release_template_args  = array(
-  'posts_per_page' => 4,
-  'post_type' => array( 'post' ),
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'ignore_sticky_posts' => 1,
-  'cat' => $press_categories,
-  'meta_query'  => array(
-    'relation'=> 'AND',
-    array(
-      'key' => 'phila_template_select',
-      'value' => 'press_release',
-      'compare' => '=',
+if( !empty($tag) ) {
+  $press_release_template_args  = array(
+    'posts_per_page' => 4,
+    'post_type' => array( 'post' ),
+    'orderby' => 'post_date',
+    'tag_id'  => (int) $tag,
+    'ignore_sticky_posts' => 1,
+    'meta_query'  => array(
+      'relation'=> 'AND',
+        array(
+          'key' => 'phila_template_select',
+          'value' => 'press_release',
+          'compare' => '=',
       ),
+    )
+  );
+
+}else{
+  $press_release_template_args  = array(
+    'posts_per_page' => 4,
+    'post_type' => array( 'post' ),
+    'order' => 'desc',
+    'orderby' => 'post_date',
+    'ignore_sticky_posts' => 1,
+    'cat' => $press_categories,
+    'meta_query'  => array(
+      'relation'=> 'AND',
+        array(
+          'key' => 'phila_template_select',
+          'value' => 'press_release',
+          'compare' => '=',
+        ),
       $press_meta_query
     ),
   );
+}
 ?>
 
 
