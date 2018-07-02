@@ -5,8 +5,8 @@
 source /home/ubuntu/.ssh/environment
 
 _dir="$(dirname "$0")"
-plugins="mb-admin-columns-1.2.1.zip
-mb-revision-1.1.0.zip
+plugins="mb-admin-columns-1.3.0.zip
+mb-revision-1.1.1.zip
 meta-box-columns-1.2.3.zip
 meta-box-conditional-logic-1.5.5.zip
 meta-box-group-1.2.13.zip

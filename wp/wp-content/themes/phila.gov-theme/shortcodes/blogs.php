@@ -13,6 +13,7 @@ function latest_posts_shortcode( $atts ) {
   $a = shortcode_atts( array(
     'name' => 'Posts',
     'category' => '',
+    'tag' => ''
   ), $atts );
 
   $category = array();
@@ -25,6 +26,10 @@ function latest_posts_shortcode( $atts ) {
     foreach ($cats as $cat) {
       array_push($category, $cat->term_id);
     }
+  }
+
+  if ($a['tag'] != ''){
+    $tag = $a['tag'];
   }
 
   include( locate_template( 'partials/posts/announcements-grid.php' ) );

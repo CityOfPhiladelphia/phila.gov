@@ -30,7 +30,10 @@
 
         <!-- Blog Content -->
         <div class="mvl">
-          <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']) ? $current_row['phila_full_options']['phila_get_post_cats'] : ''; ?>
+          <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : '';
+          ?>
+          <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : '';
+          ?>
           <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>
         </div>
         <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
@@ -38,7 +41,6 @@
           $cal_category = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; ?>
 
           <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
-
 
         <?php elseif ( $current_row_option == 'phila_callout'):
           $callout_text = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_text'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_text'] : ''; ?>
@@ -60,15 +62,13 @@
 
         <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
           <!-- Press Releases -->
+          <?php $press_cat_override = isset( $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category']) ? $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category'][0] : '';
+          ?>
+          <?php $press_tag_override = isset( $current_row['phila_full_options']['full_width_press_releases']['tag']) ? $current_row['phila_full_options']['full_width_press_releases']['tag'] : '';
+          ?>
             <section class="row mvl">
-              <?php echo do_shortcode('[press-releases posts=5]');?>
+              <?php echo do_shortcode('[press-releases posts=5 tag="'. $press_tag_override .'" category="' . $press_cat_override .'"]');?>
             </section>
-            <?php $see_all = array(
-              'URL' => '/press-releases/' . $category_slug ,
-              'content_type' => 'press_release',
-              'nice_name' => 'Press releases'
-            ); ?>
-            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
@@ -163,8 +163,7 @@
 
             <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
-                  $custom_text = $current_row_option_two['phila_custom_text'];
-                  var_dump($custom_text); ?>
+                  $custom_text = $current_row_option_two['phila_custom_text'];?>
                   <div class="large-12 columns">
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>

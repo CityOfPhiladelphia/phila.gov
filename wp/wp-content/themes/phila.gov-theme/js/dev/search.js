@@ -7,19 +7,33 @@ var Mustache = require('mustache');
 module.exports = jQuery(document).ready(function($) {
 
   var resultTemplate = '<article><header class="search-entry-header"><h3 class="entry-title">';
+
   resultTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
+
   resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr>';
+
+  var legacyTemplate = '<article><header class="search-entry-header"><h3 class="entry-title"><span class="label mrm bg-dark-gray">Legacy</span>';
+
+  legacyTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
+
+  legacyTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr>';
 
   var SWIFTYPE_ENGINE = 'ALSW3neJArH_ozFvSDse';
 
   var customRenderer = function(documentType, item) {
+
     var view = {
       url: encodeURI(item.url),
       title: item.title,
       summary: item.highlight.body || (item.body.length > 300 ? item.body.substring(0, 300) + '...' : item.body)
     };
-    return Mustache.render(resultTemplate, view);
+    if ( item.tags === 'wordpress' || item.tags === 'app' ) {
+      return Mustache.render(resultTemplate, view);
+    }else{
+      return Mustache.render(legacyTemplate, view);
+    }
   };
+
 
   var $resultCount = $('#result-count');
 

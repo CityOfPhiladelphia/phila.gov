@@ -156,7 +156,7 @@
             <b><?php echo $address['venue_name'] ?></b><br />
             <address>
               <?php echo isset($address['address'])? $address['address'] : '' ?><br />
-              <?php echo isset($address['address'])? $address['address'] : '' ?>
+              <?php echo isset($address['address_2'])? $address['address_2'] : '' ?>
               <?php echo isset($address['city'])? $address['city'] : '' ?>,
               <?php echo isset($address['state'])? $address['state'] : '' ?> <?php echo isset($address['zip'])? $address['zip'] : '' ?>
             </address>

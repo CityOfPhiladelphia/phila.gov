@@ -1533,13 +1533,13 @@ function phila_allowed_html($allowed){
 
 }
 
-add_filter('the_content', 'add_lightbox_rel');
+add_filter('the_content', 'phila_add_lightbox_rel');
 
-function add_lightbox_rel($content) {
+function phila_add_lightbox_rel($content) {
   global $post;
   $count = 0;
-  $pattern ="/<a(.*?)href=\"(.*?)(.bmp|.gif|.jpeg|.jpg|.png)\"/i";
-  $replacement = '<a$1 data-img-url=$2$3 class="lightbox-link lightbox-all" data-open="phila-lightbox"';
+  $pattern ="/<a(.*?)href=\"(.*?)(\/media\/)(.*?)(.bmp|.gif|.jpeg|.jpg|.png)\">/i";
+  $replacement = '<a$1 data-img-url=$2$3$4$5 class="lightbox-link lightbox-all" data-open="phila-lightbox">';
   $content = preg_replace($pattern, $replacement, $content);
   return $content;
 }
@@ -1598,4 +1598,11 @@ function phila_get_post_label( $label ){
     }
     return $label;
   }
+}
+
+add_action('init','phila_add_cors_http_header');
+
+function phila_add_cors_http_header(){
+  header('Access-Control-Allow-Origin: https://standards.phila.gov');
+  header('Vary: Origin');
 }

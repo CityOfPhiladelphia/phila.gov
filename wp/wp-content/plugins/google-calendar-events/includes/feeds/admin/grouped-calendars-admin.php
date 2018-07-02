@@ -3,7 +3,6 @@
  * Grouped Calendars Feed - Admin
  *
  * @package SimpleCalendar/Feeds
- * KD edits - force allow private calendars to appear in group calendar lists
  */
 namespace SimpleCalendar\Feeds\Admin;
 
@@ -126,7 +125,7 @@ class Grouped_Calendars_Admin {
 						$meta = get_post_meta( $post_id, '_grouped_calendars_category', true );
 						$category = $meta && is_array( $meta ) ? implode( ',', array_map( 'absint', $meta ) ): '';
 
-						$terms = get_terms( 'calendar_category', array( 'hide_empty' => false) );
+						$terms = get_terms( 'calendar_category' );
 
 						if ( ! empty( $terms ) ) {
 
