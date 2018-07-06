@@ -265,7 +265,9 @@ class Phila_Programs_Controller {
     if (isset( $schema['properties']['link'] )) {
       $external_link = rwmb_meta( 'prog_off_site_link', array(), $post->ID );
       if( empty($external_link) ) {
-        $post_data['link']  = (string) get_permalink($post->ID);
+        $link = get_permalink($post->ID);
+        $parsed_link = parse_url($link);
+        $post_data['link']  = (string) $parsed_link['path'];
       }else{
         $post_data['link']  = (string) $external_link;
       }
@@ -420,7 +422,9 @@ class Phila_Programs_Controller {
     }
 
     if (isset( $schema['properties']['link'] )) {
-      $post_data['link']  =  (string)  get_permalink($service->ID);
+      $link = get_permalink($service->ID);
+      $parsed_url = parse_url($link);
+      $post_data['link']  =  (string)  $parsed_url['path'];
     }
 
     if (isset( $schema['properties']['short_description'] )) {
