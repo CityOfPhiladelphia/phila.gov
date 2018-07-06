@@ -17,8 +17,10 @@ get_header(); ?>
     <div class="row">
       <div class="small-24 columns results mbm">
         <div id="filter-list" class="city-government-directory">
-          <form>
-            <input class="search" type="text" placeholder="Begin typing to filter results by title, keyword or acronym...">
+          <form class="search mbxl">
+            <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword or acronym...">
+            <input type="submit" class="search-submit" value="Search">
+            </form>
           </form>
             <?php
             $args = phila_get_department_homepage_list();
