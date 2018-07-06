@@ -1312,6 +1312,10 @@ function phila_connect_panel($connect_panel) {
 
   $output_array = array();
 
+  if (empty($connect_panel)){
+    return;
+  }
+
   foreach ($connect_panel as $key => $value) {
 
     $output_array['social'] = array();
