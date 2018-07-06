@@ -15,6 +15,8 @@ get_header();
       include( locate_template( 'partials/event-spotlight/header.php' ) );
 
       get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+      <?php include( locate_template( 'partials/event-spotlight/official-info.php' ) );?>
+      
       <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
       <?php

@@ -169,18 +169,10 @@ class Phila_Publications_Controller {
     }
 
     if (isset( $schema['properties']['link'] )) {
-      if ($post->post_type == 'phila_post'){
+      $link = get_permalink($post->ID);
+      $parsed_link = parse_url($link);
+      $post_data['link']  = (string) $parsed_link['path'];
 
-        $date = get_the_date('Y-m-d', $post->ID);
-        $url = get_permalink($post->ID);
-        $pattern = '/-';
-        $replacement = '/' . $date . '-';
-
-        $new_url = str_replace($pattern, $replacement, $url );
-        $post_data['link']  = (string) $new_url;
-      }else{
-        $post_data['link']  = (string) get_permalink($post->ID);
-     }
     }
 
     if (isset( $schema['properties']['categories'] )) {
