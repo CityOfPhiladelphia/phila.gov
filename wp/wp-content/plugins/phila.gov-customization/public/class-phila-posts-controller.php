@@ -319,10 +319,14 @@ class Phila_Archives_Controller {
         $pattern = '/-';
         $replacement = '/' . $date . '-';
 
-        $new_url = str_replace($pattern, $replacement, $url );
-        $post_data['link']  = (string) $new_url;
+        $new_url = str_replace( $pattern, $replacement, $url );
+        $parsed_link = parse_url($new_url);
+
+        $post_data['link']  = (string) $parsed_link['path'];
       }else{
-        $post_data['link']  = (string) get_permalink($post->ID);
+        $link = get_permalink($post->ID);
+        $parsed_link = parse_url($link);
+        $post_data['link']  = (string) $parsed_link['path'] ;
      }
     }
 
