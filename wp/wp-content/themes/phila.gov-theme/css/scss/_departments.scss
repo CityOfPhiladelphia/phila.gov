@@ -4,6 +4,27 @@
  *
  *
 */
+.city-government-directory  {
+  table.connect th,
+  table tbody,
+  table.no-alternate tr{
+    background: white;
+  }
+  .fa{
+    font-size:1.5rem;
+  }
+  .list-heading{
+    font-weight:bold;
+  }
+  hr.strong{
+    border-bottom: 2px solid black;
+    margin:0;
+  }
+  .hidden{
+    display: none;
+  }
+}
+
 .department-home, .department-landing{
   //hide secondary page title, we don't need it
   h2.sub-page-title{
