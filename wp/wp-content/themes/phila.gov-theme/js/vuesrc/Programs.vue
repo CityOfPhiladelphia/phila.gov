@@ -63,7 +63,7 @@
           :key="program.id"
           class="medium-12 cell mbl">
             <a class="card program-card" v-bind:href="program.link">
-              <img v-bind:src="program.image" />
+              <img v-bind:src="program.image" alt=""/>
               <div class="content-block">
                 <h3>{{program.title}}</h3>
                 <p>{{program.short_description}}</p>
