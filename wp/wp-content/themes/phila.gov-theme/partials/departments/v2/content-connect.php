@@ -15,7 +15,7 @@
   $archive = is_archive();
 ?>
 
-<div class="large-8 columns">
+<div class="columns <?php echo ($archive) ? 'small-8' : 'large-8'?>">
   <?php if(!$archive) : ?>
     <div class="row">
       <div class="columns">
@@ -23,7 +23,7 @@
       </div>
     </div>
   <?php endif; ?>
-  <table class="no-alternate connect h-card">
+  <table class="no-alternate connect h-card" aria-label="Connect information">
   <?php if(!$archive) : ?>
 
     <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
@@ -51,7 +51,7 @@
 
   <?php if ( !$connect_vars['email'] == '') : ?>
     <tr>
-      <th scope="row">
+      <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <span class="accessible">Email</span>
           <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
       </th>
@@ -62,7 +62,7 @@
   <?php endif; ?>
   <?php if ( ( !phila_util_is_array_empty($connect_vars['phone']) ) || (!$connect_vars['fax'] == '' ) ) : ?>
     <tr>
-      <th scope="row" aria-label="phone">
+      <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': '' ?>" <?php echo ($archive) ? 'width="90%"': '' ?>>
@@ -91,7 +91,7 @@
   <?php if(!$archive) : ?>
     <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
       <tr>
-        <th scope="row" aria-label="website">
+        <th scope="row">
           <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
         </th>
         <td>
