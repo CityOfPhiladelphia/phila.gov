@@ -18,7 +18,7 @@ get_header(); ?>
       <div class="small-24 columns results mbm">
         <div id="filter-list" class="city-government-directory">
           <form class="search mbxl">
-            <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword or acronym...">
+            <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword, or acronym...">
             <input type="submit" class="search-submit" value="Search">
             </form>
           </form>
@@ -28,13 +28,13 @@ get_header(); ?>
 
             if ( $department_list->have_posts() ) : ?>
             <div class="row list-heading">
-              <div class="columns medium-6">
+              <div class="columns small-6">
                 Name
               </div>
-              <div class="columns medium-10 phl">
+              <div class="columns small-10 mu-phl">
                 Description
               </div>
-              <div class="columns medium-8">
+              <div class="columns small-8">
                 Connect
               </div>
             </div>
@@ -42,7 +42,7 @@ get_header(); ?>
             <div class="list">
               <?php while ( $department_list->have_posts() ) : $department_list->the_post(); ?>
                 <div class="row pvm">
-                  <div class="columns medium-6">
+                  <div class="columns small-6">
                   <?php
                     //NOTE: The content-department class is used for Google Analytics and should not be removed.
                   ?><a href="<?php echo get_permalink(); ?>" class="content-department item"><?php echo the_title(); ?>
@@ -50,7 +50,7 @@ get_header(); ?>
                     </a>
                   </div>
 
-                  <div class="columns medium-10 phl">
+                  <div class="columns small-10 mu-phl">
                     <p class="item-desc"><?php echo phila_get_item_meta_desc( ); ?>
                     <span class="hidden"><?php echo  rwmb_meta('phila_department_keywords')?></span>               </p>
                   </div>
