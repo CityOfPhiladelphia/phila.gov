@@ -8,7 +8,7 @@
   ?>
 <?php if ( !empty( $cal_id )  || !empty($display_spotlight)):?>
   <!-- Full Width Calendar -->
-  <section class="expanded mtm">
+  <section class="expanded mvl">
     <div class="row">
       <div class="columns">
         <h2 id="calendar">Events</h2>

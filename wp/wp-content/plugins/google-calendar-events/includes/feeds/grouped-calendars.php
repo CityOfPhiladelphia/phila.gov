@@ -85,6 +85,7 @@ class Grouped_Calendars extends Feed {
 				$tax_query = array(
 					'taxonomy' => 'calendar_category',
 					'field'    => 'term_id',
+
 					'terms'    => array_map( 'absint', $categories ),
 				);
 
@@ -93,6 +94,8 @@ class Grouped_Calendars extends Feed {
 					'tax_query' => array( $tax_query ),
 					'nopaging'  => true,
 					'fields'    => 'ids',
+          //KD EDIT: 7/10/18 - allow private posts
+          'post_status' => 'any'
 				) );
 
 				$this->calendars_ids = ! empty( $calendars ) && is_array( $calendars ) ? $calendars : array();
@@ -159,7 +162,6 @@ class Grouped_Calendars extends Feed {
 			}
 
 		}
-	
 		// Sort events by start time before returning
 		uasort( $events, array( $this, 'sort_by_start_time' ) );
 
