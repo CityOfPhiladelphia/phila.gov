@@ -13,7 +13,7 @@ function phila_user_read_only(){
 
 /* For all admins */
 jQuery(document).ready(function($) {
-  
+
   //disable dupliate action on document pages, document meta not saving state propery.
   if ( ( typenow === 'document') && adminpage.indexOf('post') > -1 ){
     $('#duplicate-action').css('display', 'none')
@@ -211,7 +211,7 @@ jQuery(document).ready(function($) {
   }
 
   /*
-  * Intercepts the ajax response sent from Apperance -> Menu -> Departments search results and adds the upmost parent of each child page found. This should make it easier to identify child pages that have the same name".
+  * Intercepts the ajax response sent from Apperance -> Menu -> Departments search results and adds the upmost parent of each child page found. This should make it easier to identify child pages that have the same name.
   */
 
   if($('body').hasClass('nav-menus-php')){
@@ -236,17 +236,17 @@ jQuery(document).ready(function($) {
       }
       function updateResponseCheckboxes(postIds){
         $.ajax({
-          url: myAjax.ajaxurl,
+          url: searchAjax.ajaxurl,
           dataType: 'json',
           type: 'POST',
           data: {
             action: 'addDepartmentParent',
             postIds: postIds,
-            security: myAjax.ajax_nonce,
+            security: searchAjax.ajax_nonce,
           }
         }).success(function(response) {
           if (response) {
-            $.each(response, function(id,parent){
+            $.each(response, function(id, parent){
               value = id.replace("p=", "");
               parent = "<small class='pparent'><span>Parent:</span> " + parent + "</small>";
               $('#department_page-search-checklist .menu-item-title input[value="' + value + '"]').parent("label").append(parent);

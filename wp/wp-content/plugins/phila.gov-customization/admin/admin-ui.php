@@ -70,7 +70,7 @@ function phila_load_admin_media_js( $hook ) {
 
   wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jquery') ) );
 
-  wp_localize_script( 'all-admin-scripts', 'myAjax',
+  wp_localize_script( 'all-admin-scripts', 'searchAjax',
   array(
     'ajaxurl' => admin_url( 'admin-ajax.php' ),
     'ajax_nonce' => wp_create_nonce( 'search-results-update' ),
