@@ -20,7 +20,6 @@ get_header(); ?>
           <form class="search mbxl">
             <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword, or acronym...">
             <input type="submit" class="search-submit" value="Search">
-            </form>
           </form>
             <?php
             $args = phila_get_department_homepage_list();
