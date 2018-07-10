@@ -25,7 +25,6 @@
   <?php endif; ?>
   <table class="no-alternate connect h-card" aria-label="Connect information">
   <?php if(!$archive) : ?>
-
     <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
       <tr>
         <th scope="row">
@@ -48,7 +47,6 @@
       </tr>
     <?php endif; ?>
   <?php endif; ?>
-
   <?php if ( !$connect_vars['email'] == '') : ?>
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
@@ -87,7 +85,6 @@
       </td>
     </tr>
   <?php endif; ?>
-
   <?php if(!$archive) : ?>
     <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
       <tr>
@@ -175,6 +172,5 @@
       </div>
     </div>
   <?php endif; ?>
-
-  <?php endif; ?>
+<?php endif; ?>
 </div>
