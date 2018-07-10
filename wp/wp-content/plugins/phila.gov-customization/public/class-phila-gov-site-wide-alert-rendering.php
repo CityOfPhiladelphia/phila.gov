@@ -59,18 +59,18 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         if ( $alert_start <= $now || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
         ?>
-        <div id="site-wide-alert" data-swiftype-index="false" data-closable>
+        <div id="site-wide-alert" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false" data-closable>
           <div class="row">
             <div class="medium-centered">
-              <div class="grid-x align-middle pvs">
-                <div class="small-1 cell center icon hide-for-small-only">
+              <div class="grid-x grid-padding-x align-top pvs">
+                <div class="cell auto shrink center icon hide-for-small-only">
                   <div class="valign">
                     <div class="valign-cell">
                       <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
-              <div class="small-22 cell message">
+              <div class="cell auto message">
                 <?php
                   $content = get_the_content();
                   echo $content;
@@ -86,7 +86,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                 ?>
               </div>
                 </div>
-                <div class="small-1 cell message">
+                <div class="cell auto shrink message">
                   <button class="close-button" data-id-alert="<?php the_ID();  ?>" data-close>&times;</button>
                 </div>
               </div>
