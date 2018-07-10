@@ -55,7 +55,7 @@
         <span class="accessible">Email</span>
           <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
       </th>
-      <td class="<?php echo (!$archive) ? 'pvl': '' ?>" <?php echo ($archive) ? 'width="90%"': '' ?>>
+      <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <a href="mailto:<?php echo $connect_vars['email']; ?>" class="u-email"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
       </td>
     </tr>
@@ -65,7 +65,7 @@
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
       </th>
-      <td class="<?php echo (!$archive) ? 'pvl': '' ?>" <?php echo ($archive) ? 'width="90%"': '' ?>>
+      <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <div class="p-tel">
           <?php
           $area = ( $connect_vars['phone']['area'] != '' ) ? '(' .  $connect_vars['phone']['area'] . ') ' : '';
