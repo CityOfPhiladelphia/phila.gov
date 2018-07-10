@@ -25,7 +25,6 @@
   <?php endif; ?>
   <table class="no-alternate connect h-card" aria-label="Connect information">
   <?php if(!$archive) : ?>
-
     <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
       <tr>
         <th scope="row">
@@ -48,14 +47,13 @@
       </tr>
     <?php endif; ?>
   <?php endif; ?>
-
   <?php if ( !$connect_vars['email'] == '') : ?>
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <span class="accessible">Email</span>
           <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
       </th>
-      <td class="<?php echo (!$archive) ? 'pvl': '' ?>" <?php echo ($archive) ? 'width="90%"': '' ?>>
+      <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <a href="mailto:<?php echo $connect_vars['email']; ?>" class="u-email"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
       </td>
     </tr>
@@ -65,7 +63,7 @@
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
       </th>
-      <td class="<?php echo (!$archive) ? 'pvl': '' ?>" <?php echo ($archive) ? 'width="90%"': '' ?>>
+      <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <div class="p-tel">
           <?php
           $area = ( $connect_vars['phone']['area'] != '' ) ? '(' .  $connect_vars['phone']['area'] . ') ' : '';
@@ -87,7 +85,6 @@
       </td>
     </tr>
   <?php endif; ?>
-
   <?php if(!$archive) : ?>
     <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
       <tr>
@@ -175,6 +172,5 @@
       </div>
     </div>
   <?php endif; ?>
-
-  <?php endif; ?>
+<?php endif; ?>
 </div>
