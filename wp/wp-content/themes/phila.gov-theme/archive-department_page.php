@@ -27,15 +27,9 @@ get_header(); ?>
 
             if ( $department_list->have_posts() ) : ?>
             <div class="row list-heading">
-              <div class="columns small-6">
-                Name
-              </div>
-              <div class="columns small-10 mu-phl">
-                Description
-              </div>
-              <div class="columns small-8">
-                Connect
-              </div>
+              <div class="columns small-6">Name</div>
+              <div class="columns small-10 mu-phl">Description</div>
+              <div class="columns small-8">Connect</div>
             </div>
             <hr class="strong" />
             <div class="list">
@@ -48,24 +42,19 @@ get_header(); ?>
                     <?php $acronym = rwmb_meta( 'phila_department_acronym' );?> <?php echo !empty($acronym) ? '(' . $acronym . ')' : ''; ?>
                     </a>
                   </div>
-
                   <div class="columns small-10 mu-phl">
                     <p class="item-desc"><?php echo phila_get_item_meta_desc( ); ?>
                     <span class="hidden"><?php echo  rwmb_meta('phila_department_keywords')?></span>               </p>
                   </div>
-
                   <?php get_template_part( 'partials/departments/v2/content', 'connect' ); ?>
-              </div>
-              <hr />
-
+                </div>
+                <hr />
               <?php endwhile; ?>
-
             </div>
             <?php endif; ?>
-
             <?php wp_reset_query(); ?>
-          </div>
         </div>
+      </div>
     </div> <!-- .row -->
   </main><!-- #main -->
 </div><!-- #primary -->
