@@ -88,12 +88,18 @@ table.theme-light{
 }
 
 .archive-results{
-  @include breakpoint(medium up) {
+  @include breakpoint(large up) {
     .title{
       width:500px;
     }
     .date{
       width:150px;
     }
+  }
+}
+
+table.connect{
+  td{
+    word-break: break-word;
   }
 }

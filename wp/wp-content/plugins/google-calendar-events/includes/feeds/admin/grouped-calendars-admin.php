@@ -125,7 +125,8 @@ class Grouped_Calendars_Admin {
 						$meta = get_post_meta( $post_id, '_grouped_calendars_category', true );
 						$category = $meta && is_array( $meta ) ? implode( ',', array_map( 'absint', $meta ) ): '';
 
-						$terms = get_terms( 'calendar_category' );
+            //KD EDIT: 7/10/18 - allow empty taxonomies
+						$terms = get_terms( array(  'taxonomy'=> 'calendar_category', 'hide_empty' => false, ) );
 
 						if ( ! empty( $terms ) ) {
 
