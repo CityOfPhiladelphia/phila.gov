@@ -1026,6 +1026,8 @@ $meta_boxes[] = array(
       'post_type' => 'service_page',
       'desc'  => 'Display content from the selected page on the front-end.',
       'query_args'  => array(
+        'post_status'    => array('publish', 'draft', 'private'),
+        'posts_per_page' => - 1,
         'meta_key' => 'phila_template_select',
         'meta_value' => 'service_stub',
         'meta_compare' => '!=',

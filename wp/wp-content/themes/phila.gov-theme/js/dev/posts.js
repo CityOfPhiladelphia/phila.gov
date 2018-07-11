@@ -31,7 +31,7 @@ $(function(){
   //modal for any image that's been added to the page and linked to.
   var $modal = $('#phila-lightbox');
   function loadContent(url){
-    $modal.html('<div class="lightbox-content"><img src="' + url + '"></div>').foundation('open');
+    $modal.html('<div class="lightbox-content"><img src="' + url + '" alt=""></div>').foundation('open');
     $modal.append(closeButton);
   };
 
