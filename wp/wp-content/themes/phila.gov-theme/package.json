@@ -42,7 +42,7 @@
     "envify": "^4.1.0",
     "hoek": "^5.0.3",
     "node-sass": "^4.9.2",
-    "postcss": "^6.0.23",
+    "postcss-cli": "^5.0.1",
     "vueify": "^9.4.0"
   },
   "dependencies": {
