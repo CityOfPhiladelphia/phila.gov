@@ -56,7 +56,28 @@ class Phila_Last_Updated_Controller {
 
     $posts = get_posts( $args );
 
-    $data = array();
+    $data = array(
+      array(
+        'link'  => 'https://' . $_SERVER['HTTP_HOST'] . '/404',
+        'last_updated'=> ''
+      ),
+      array(
+        'link'  => 'https://' .  $_SERVER['HTTP_HOST'] . '/departments',
+        'last_updated'  => ''
+      ),
+      array(
+        'link'  => 'https://' .  $_SERVER['HTTP_HOST'] . '/documents',
+        'last_updated'  => ''
+      ),
+      array(
+        'link'  => 'https://' . $_SERVER['HTTP_HOST'] . '/programs',
+        'last_updated' => ''
+      ),
+      array(
+        'link'  => 'https://' .  $_SERVER['HTTP_HOST'] . '/services',
+        'last_updated'  => ''
+      ),
+    );
 
     if ( empty( $posts ) ) {
       return rest_ensure_response( $data );
