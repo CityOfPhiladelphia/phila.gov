@@ -55,27 +55,27 @@ class Phila_Last_Updated_Controller {
     );
 
     $posts = get_posts( $args );
-
+    
     $data = array(
       array(
-        'link'  => 'https://' . $_SERVER['HTTP_HOST'] . '/404',
-        'last_updated'=> ''
+        'link'  => get_site_url() . '/404',
+        'updated_at' => ''
       ),
       array(
-        'link'  => 'https://' .  $_SERVER['HTTP_HOST'] . '/departments',
-        'last_updated'  => ''
+        'link'  => get_site_url() . '/departments',
+        'updated_at' => ''
       ),
       array(
-        'link'  => 'https://' .  $_SERVER['HTTP_HOST'] . '/documents',
-        'last_updated'  => ''
+        'link'  => get_site_url() . '/documents',
+        'updated_at' => ''
       ),
       array(
-        'link'  => 'https://' . $_SERVER['HTTP_HOST'] . '/programs',
-        'last_updated' => ''
+        'link'  => get_site_url() . '/programs',
+        'updated_at' => ''
       ),
       array(
-        'link'  => 'https://' .  $_SERVER['HTTP_HOST'] . '/services',
-        'last_updated'  => ''
+        'link'  => get_site_url() . '/services',
+        'updated_at' => ''
       ),
     );
 
