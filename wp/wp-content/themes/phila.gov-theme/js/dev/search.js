@@ -20,14 +20,19 @@ module.exports = jQuery(document).ready(function($) {
 
   var SWIFTYPE_ENGINE = 'ALSW3neJArH_ozFvSDse';
 
+  var $stSearchInput = $("#st-search-input");
+
   var customRenderer = function(documentType, item) {
+    console.log(item)
 
     var view = {
       url: encodeURI(item.url),
       title: item.title,
-      summary: item.highlight.body || (item.body.length > 300 ? item.body.substring(0, 300) + '...' : item.body)
+      summary: item.highlight.body || (item.body.length > 300 ? item.body.substring(0, 300) + '...' : item.body),
+      contentType: item['content-type']
     };
     if ( item.tags === 'wordpress' || item.tags === 'app' ) {
+      console.log(view)
       return Mustache.render(resultTemplate, view);
     }else{
       return Mustache.render(legacyTemplate, view);
@@ -43,6 +48,7 @@ module.exports = jQuery(document).ready(function($) {
     var spellingSuggestion = null;
 
     if (data['info']) {
+      console.log(data['info']);
       $.each(data['info'], function(index, value) {
         totalResultCount += value['total_result_count'];
         if ( value['spelling_suggestion'] ) {
@@ -53,9 +59,9 @@ module.exports = jQuery(document).ready(function($) {
     }
 
     if (totalResultCount === 0) {
-      $resultCount.text("No results found");
+      $resultCount.text("No results found for \"<i>" + data['info']['page']['query'] +"\"</i>");
     } else {
-      $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results");
+      $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results for \"<i>" + data['info']['page']['query'] +"\"</i>");
     }
 
     if (spellingSuggestion !== null) {
@@ -64,21 +70,20 @@ module.exports = jQuery(document).ready(function($) {
   };
 
   function customRenderPaginationForType(type, currentPage, totalPages) {
-    var pages = '<nav class="navigation paging-navigation">',
+    var pages = '<nav><ul class="no-bullet paginate-links">',
       previousPage, nextPage;
     if (currentPage != 1) {
       previousPage = currentPage - 1;
-      pages = pages + '<a href="#" class="st-prev prev page-numbers" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> previous</a>';
+      pages = pages + '<li><a id="back-to-top" href="#page" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
     }
     if (currentPage < totalPages) {
       nextPage = currentPage + 1;
-      pages = pages + '<a href="#" class="st-next next page-numbers" data-hash="true" data-page="' + nextPage + '">next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+      pages = pages + '<li><a id="back-to-top" href="#page" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
     }
-    pages += '</nav>';
+    pages += '</ul></nav>';
     return pages;
   };
 
-  var $stSearchInput = $("#st-search-input");
   $stSearchInput.swiftypeSearch({
     engineKey: SWIFTYPE_ENGINE,
     resultContainingElement: '#st-results-container',

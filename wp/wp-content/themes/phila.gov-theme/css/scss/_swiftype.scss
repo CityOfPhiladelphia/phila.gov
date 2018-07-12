@@ -25,19 +25,9 @@
     font-size: 1.4rem;
     margin-top: 0;
   }
-  .property-link {
-    border: 3px solid color(flyers-orange);
+  #property-link,
+  #legacy-content {
     display: none;
-    padding: 0.3rem 0.5rem;
-
-    p {
-      margin: 0;
-    }
-
-    .fa-arrow-circle-right {
-      float: right;
-      padding-top: 0.1rem;
-    }
   }
   .entry-summary {
     em {
