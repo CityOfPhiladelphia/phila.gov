@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="row expanded ptl pbs pvxl-mu">
           <div class="medium-14 small-centered columns beta-message">
             <span class="h1 break-after">Beta.phila.gov</span> <span class="h2 sub-title">is a work-in-progress.</span>
-            <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg"></i> feedback links.</span></p>
+            <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links.</span></p>
           </div>
         </div>
         <!-- End beta.phila.gov message -->
@@ -30,7 +30,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
-                        <i class="fa fa-trash fa-4x"></i>
+                        <i class="fa fa-trash fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -44,7 +44,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-credit-card fa-4x"></i>
+                        <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -58,7 +58,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-briefcase fa-4x"></i>
+                        <i class="fa fa-briefcase fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -72,7 +72,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-home fa-4x"></i>
+                        <i class="fa fa-home fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>

@@ -26,7 +26,30 @@ get_header(); ?>
             <div class="accordion-item is-active" data-accordion-item>
               <a href="#" class="h4 accordion-title mbn">Filter by type</a>
               <div class="accordion-content" data-tab-content>
-                <div id="content-types"></div>
+                <div id="content-types">
+                  <fieldset>
+                    <div>
+                      <input type="checkbox" id="services" checked>
+                        <label for="services">Services</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="programs" checked>
+                      <label for="programs">Programs & initiatives</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="news-events" checked>
+                      <label for="news-events">News & events</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="publications" checked>
+                      <label for="publications">Publications & forms</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="departments" checked>
+                      <label for="departments">Departments</label>
+                    </div>
+                  </fieldset>
+                </div>
               </div>
             </div>
           </div>
@@ -40,8 +63,8 @@ get_header(); ?>
             <span class="label mrm bg-dark-gray">Legacy</span>
             Content marked "legacy" has not been moved to our new platform.
           </div>
-          <div id="result-count"></div>
-          <div id="st-results-container"></div>
+          <div id="result-count" class="pvm"></div>
+          <div id="st-results-container"><i class="fa fa-loading spin"></i></div>
         </div>
       </div>
     </div>

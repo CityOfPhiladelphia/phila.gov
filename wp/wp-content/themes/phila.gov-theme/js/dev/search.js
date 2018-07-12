@@ -6,9 +6,11 @@ var Mustache = require('mustache');
 
 module.exports = jQuery(document).ready(function($) {
 
-  var resultTemplate = '<article><header class="search-entry-header"><h3 class="entry-title">';
+  var resultTemplate = '<div data-type="{{&contentType}}"><article><header class="search-entry-header"><h3>';
 
   resultTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
+
+  resultTemplate += '<div class="mbm"><i class="fa fa-{{&icon}}" aria-hidden="true"></i> <i>{{&contentType}}</i></div>';
 
   resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr>';
 
@@ -28,11 +30,29 @@ module.exports = jQuery(document).ready(function($) {
     var view = {
       url: encodeURI(item.url),
       title: item.title,
-      summary: item.highlight.body || (item.body.length > 300 ? item.body.substring(0, 300) + '...' : item.body),
-      contentType: item['content-type']
+      summary: item.highlight.body || (item.body.length > 250 ? item.body.substring(0, 250) + '...' : item.body),
+      contentType: item.content_type,
+      icon: ''
     };
+
     if ( item.tags === 'wordpress' || item.tags === 'app' ) {
-      console.log(view)
+      if(item.content_type  === 'programs') {
+        view.contentType = 'Program'
+        view.icon = 'users'
+      }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post'){
+        view.contentType = 'News & events'
+        view.icon = 'newspaper-o'
+      }else if( item.content_type === 'department_page'){
+        view.contentType = 'Department'
+        view.icon = 'sitemap'
+      }else if(item.content_type === 'service_page'){
+        view.contentType = 'Service'
+        view.icon = 'gears'
+      }else if(item.contentType === 'document'){
+        view.contentType = 'document'
+        view.icon = 'file-text'
+      }
+
       return Mustache.render(resultTemplate, view);
     }else{
       return Mustache.render(legacyTemplate, view);
@@ -59,7 +79,7 @@ module.exports = jQuery(document).ready(function($) {
     }
 
     if (totalResultCount === 0) {
-      $resultCount.text("No results found for \"<i>" + data['info']['page']['query'] +"\"</i>");
+      $resultCount.text("No results found for \"<i>" + data['info']['page']['query'] +"\"</i>. <div class=\"info panel\"><p class=\"h3\">We're sorry, we didn't find any results that match your search terms.</h3>Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li>");
     } else {
       $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results for \"<i>" + data['info']['page']['query'] +"\"</i>");
     }
@@ -74,11 +94,11 @@ module.exports = jQuery(document).ready(function($) {
       previousPage, nextPage;
     if (currentPage != 1) {
       previousPage = currentPage - 1;
-      pages = pages + '<li><a id="back-to-top" href="#page" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
+      pages = pages + '<li><a href="#page" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
     }
     if (currentPage < totalPages) {
       nextPage = currentPage + 1;
-      pages = pages + '<li><a id="back-to-top" href="#page" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
+      pages = pages + '<li><a href="#page" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
     }
     pages += '</ul></nav>';
     return pages;
