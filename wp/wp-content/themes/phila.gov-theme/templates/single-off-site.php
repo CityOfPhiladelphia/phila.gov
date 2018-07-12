@@ -16,13 +16,13 @@
 
 <div class="row columns mvm equal-height">
   <div class="small-24 medium-12 column intro equal pal external-site-link-left bg-ghost-gray">
-    <p class="mbn"><strong><?php the_title(); ?> has a separate website</strong>: <a href="<?php echo $department_external_url ?>"><?php echo $department_external_url ?></a></p>
+    <p class="mbn"><strong>The <?php the_title(); ?>'s content is on our legacy site.</strong></p>
   </div>
   <div class="small-24 medium-12 column intro equal pal external-site-link-right bg-ghost-gray">
     <a href="<?php echo rwmb_meta( 'phila_dept_url', $args = array('type' => 'url')); ?>" class="button icon clearfix">
       <div class="valign">
         <i class="fa fa-sign-out valign-cell"></i>
-        <div class="button-label valign-cell"><span class="show-for-large-only">You are now </span>leaving <?php phila_util_echo_website_url();?></div>
+        <div class="button-label valign-cell">Go to the legacy site</div>
       </div>
     </a>
   </div>
