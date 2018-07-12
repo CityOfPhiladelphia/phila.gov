@@ -20,6 +20,7 @@
   <meta class="swiftype" name="title" data-type="string" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) ); ?>">
   <meta class="swiftype" name="tags" data-type="string" content="wordpress" />
   <meta class="swiftype" name="site-priority" data-type="integer" content="10" />
+  <meta class="swiftype" name="content-type" data-type="string" content="<?php echo get_post_type($post->ID)?>">
 
   <?php if (is_single()) : ?>
     <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
@@ -192,7 +193,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 <div id="page">
-  <?php get_template_part( 'partials/global/template', 'identifier' ); ?>
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
