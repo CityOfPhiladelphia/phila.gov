@@ -7,7 +7,7 @@
  */
      wp_reset_postdata();
 ?>
-<?php if ( !is_404() && !is_home()) : ?>
+<?php if ( !is_404() && !is_home() && !is_search()) : ?>
   <div class="row pvm">
     <div class="small-24 columns center">
       <?php

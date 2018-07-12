@@ -8,14 +8,9 @@ get_header(); ?>
 
 <section id="primary" class="content-area">
   <main id="main" class="site-main search-page">
-    <div class="search-head">
-      <div class="row">
-        <header class="medium-8 columns">
-          <h1><?php printf( __( 'Search results for:', 'phila-gov' )); ?></h1>
-        </header><!-- .page-header -->
-      </div>
-      <div class="row">
-        <div class="medium-16 columns">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell small-24">
           <form role="search" method="get" class="search" action="<?php echo home_url( '/search' ); ?>">
             <label for="st-search-input"><span class="screen-reader-text"><?php echo _x( 'Search for:', 'label' ) ?></span></label>
             <input type="text" class="search-field" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" id="st-search-input"/ autocomplete="off">
@@ -24,19 +19,31 @@ get_header(); ?>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="medium-16 columns">
-        <a class="property-link" id="property-link">
-          <i class="fa fa-arrow-circle-right"></i>
-          <p>We have found real estate property related to your search.</p>
-        </a>
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-8">
+          <div class="accordion" data-accordion data-allow-all-closed="true"  data-multi-expand="true">
+            <div class="accordion-item is-active" data-accordion-item>
+              <a href="#" class="h4 accordion-title mbn">Filter by type</a>
+              <div class="accordion-content" data-tab-content>
+                <div id="content-types"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="medium-16 cell">
+          <div id="property-link" class="callout">
+            We have found real estate property related to your search.
+            <a href="#">View results using the property application <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          <div id="legacy-content" class="callout">
+            <span class="label mrm bg-dark-gray">Legacy</span>
+            Content marked "legacy" has not been moved to our new platform.
+          </div>
+          <div id="result-count"></div>
+          <div id="st-results-container"></div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <p class="medium-16 columns result-count" id="result-count"></p>
-    </div>
-    <div class="row">
-      <div class="medium-16 columns search-results-list" id="st-results-container"></div>
     </div>
   </main><!-- #main -->
 </section><!-- #primary -->
