@@ -58,23 +58,23 @@ class Phila_Last_Updated_Controller {
 
     $data = array(
       array(
-        'link'  => $_SERVER['SERVER_NAME'] . '/404/',
+        'link'  => '/404/',
         'updated_at' => ''
       ),
       array(
-        'link'  => $_SERVER['SERVER_NAME'] . '/departments/',
+        'link'  => '/departments/',
         'updated_at' => ''
       ),
       array(
-        'link'  => $_SERVER['SERVER_NAME'] . '/documents/',
+        'link'  => '/documents/',
         'updated_at' => ''
       ),
       array(
-        'link'  => $_SERVER['SERVER_NAME'] . '/programs/',
+        'link'  => '/programs/',
         'updated_at' => ''
       ),
       array(
-        'link'  => $_SERVER['SERVER_NAME'] . '/services/',
+        'link'  => '/services/',
         'updated_at' => ''
       ),
     );
@@ -127,7 +127,7 @@ class Phila_Last_Updated_Controller {
       $link = get_permalink($post->ID);
       $parsed_url = parse_url($link);
 
-      $post_data['link']  =  (string) $_SERVER['SERVER_NAME'] . $parsed_url['path'];
+      $post_data['link']  =  (string) $parsed_url['path'];
 
     }
     if (isset( $schema['properties']['updated_at'] )) {
