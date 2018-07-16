@@ -24,6 +24,16 @@ module.exports = jQuery(document).ready(function($) {
 
   var $stSearchInput = $("#st-search-input");
 
+  var searchConfig = {
+    contentType: undefined
+  };
+
+  var readFilters = function() {
+    return {
+        contentType: window.searchConfig
+    }
+  }
+
   var customRenderer = function(documentType, item) {
     console.log(item)
 
@@ -109,7 +119,8 @@ module.exports = jQuery(document).ready(function($) {
     resultContainingElement: '#st-results-container',
     renderFunction: customRenderer,
     postRenderFunction: customPostRenderFunction,
-    renderPaginationForType: customRenderPaginationForType
+    renderPaginationForType: customRenderPaginationForType,
+    filters: readFilters,
   });
 
   $("#search-form").submit(function (e) {
@@ -117,6 +128,19 @@ module.exports = jQuery(document).ready(function($) {
     window.location.href = '/search/#stq=' + $(this).find(".search-field").val();
   });
 
+
+  $('.content-type').on('click', function(e){
+    if ($(this).attr('checked')) {
+      // Visually update the checkboxes
+      $('.content-type').attr('checked', false);
+      $(this).attr('checked', true);
+      // Update the search parameters
+      window.searchConfig.contentType = $(this).data('type');
+    } else {
+      window.searchConfig.contentType = undefined;
+    }
+    reloadResults();
+  })
 
 
   function hashQuery () {
@@ -177,6 +201,9 @@ module.exports = jQuery(document).ready(function($) {
     return '<a class="autocomplete-link" href="' + getPath(item.url) + '">' + Swiftype.htmlEscape(item.title) + '</a>';
   }
 
+  var reloadResults = function() {
+    $(window).hashchange();
+  };
   // Autocomplete
   $('.swiftype').swiftype({
     engineKey: SWIFTYPE_ENGINE,
