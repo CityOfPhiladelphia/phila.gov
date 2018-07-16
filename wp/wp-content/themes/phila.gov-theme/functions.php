@@ -1603,14 +1603,3 @@ function phila_get_post_label( $label ){
     return $label;
   }
 }
-
-/* Allow any secure phila.gov website to access content.
-Thanks https://stackoverflow.com/questions/14003332/access-control-allow-origin-wildcard-subdomains-ports-and-protocols?answertab=votes#tab-top
-*/
-
-add_action('init','phila_add_cors_http_header');
-
-function phila_add_cors_http_header(){
-  header('Access-Control-Allow-Origin: ^(https?://(?:.+\.)?phila\.gov(?::\d{1,5})?)$');
-  header('Vary: Origin');
-}
