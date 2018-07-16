@@ -1603,19 +1603,3 @@ function phila_get_post_label( $label ){
     return $label;
   }
 }
-
-
-/* Allow any secure phila.gov website to access content.
- * TODO: remove phila.website once testing is over
-*/
-
-add_action('init','phila_add_cors_http_header');
-
-function phila_add_cors_http_header(){
-  $http_origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-
-  if ( preg_match("/https:\/\/(.*)\.phila\.gov/", $http_origin) || preg_match("/https:\/\/(.*)\.phila\.website/", $http_origin) ) {
-    header("Access-Control-Allow-Origin: $http_origin");
-    header('Vary: Origin');
-  }
-}
