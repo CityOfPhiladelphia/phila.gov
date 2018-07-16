@@ -29,23 +29,23 @@ get_header(); ?>
                 <div id="content-types">
                   <fieldset>
                     <div>
-                      <input type="checkbox" id="services" checked>
+                      <input type="checkbox" id="services" data-type="service_page" class="content-type" checked>
                         <label for="services">Services</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="programs" checked>
+                      <input type="checkbox" id="programs" data-type="programs" class="content-type" checked>
                       <label for="programs">Programs & initiatives</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="news-events" checked>
+                      <input type="checkbox" id="news-events" data-type="news-events" class="content-type" checked>
                       <label for="news-events">News & events</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="publications" checked>
+                      <input type="checkbox" id="publications" data-type="documents" class="content-type" checked>
                       <label for="publications">Publications & forms</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="departments" checked>
+                      <input type="checkbox" id="departments" data-type="department_page" class="content-type" checked>
                       <label for="departments">Departments</label>
                     </div>
                   </fieldset>
