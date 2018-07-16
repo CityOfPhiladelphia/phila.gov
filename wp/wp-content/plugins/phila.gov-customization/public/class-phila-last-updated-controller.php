@@ -123,7 +123,12 @@ class Phila_Last_Updated_Controller {
     $schema = $this->get_item_schema( $request );
 
     if (isset( $schema['properties']['link'] )) {
-      $post_data['link']  =  (string)  get_permalink($post->ID);
+
+      $link = get_permalink($post->ID);
+      $parsed_url = parse_url($link);
+
+      $post_data['link']  =  (string) $_SERVER['SERVER_NAME'] . $parsed_url['path'];
+
     }
     if (isset( $schema['properties']['updated_at'] )) {
       $post_data['updated_at']  = get_the_modified_date('Y-m-d H:i:s', $post->ID);
