@@ -1606,7 +1606,7 @@ function phila_get_post_label( $label ){
 
 
 /* Allow any secure phila.gov website to access content.
- * TODO: remove phila.website once we are done
+ * TODO: remove phila.website once testing is over
 */
 
 add_action('init','phila_add_cors_http_header');
@@ -1614,7 +1614,7 @@ add_action('init','phila_add_cors_http_header');
 function phila_add_cors_http_header(){
   $http_origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 
-  if ($http_origin == "https://*.phila.gov" || $http_origin == "https://*.phila.website" ) {
+  if ( preg_match("/https:\/\/(.*)\.phila\.gov/", $http_origin) || preg_match("/https:\/\/(.*)\.phila\.website/", $http_origin) ) {
     header("Access-Control-Allow-Origin: $http_origin");
     header('Vary: Origin');
   }
