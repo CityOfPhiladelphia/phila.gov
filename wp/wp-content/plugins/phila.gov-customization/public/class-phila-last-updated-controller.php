@@ -58,23 +58,23 @@ class Phila_Last_Updated_Controller {
 
     $data = array(
       array(
-        'link'  => get_site_url() . '/404/',
+        'link'  => $_SERVER['SERVER_NAME'] . '/404/',
         'updated_at' => ''
       ),
       array(
-        'link'  => get_site_url() . '/departments/',
+        'link'  => $_SERVER['SERVER_NAME'] . '/departments/',
         'updated_at' => ''
       ),
       array(
-        'link'  => get_site_url() . '/documents/',
+        'link'  => $_SERVER['SERVER_NAME'] . '/documents/',
         'updated_at' => ''
       ),
       array(
-        'link'  => get_site_url() . '/programs/',
+        'link'  => $_SERVER['SERVER_NAME'] . '/programs/',
         'updated_at' => ''
       ),
       array(
-        'link'  => get_site_url() . '/services/',
+        'link'  => $_SERVER['SERVER_NAME'] . '/services/',
         'updated_at' => ''
       ),
     );
