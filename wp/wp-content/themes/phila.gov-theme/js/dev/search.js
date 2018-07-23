@@ -49,7 +49,7 @@ module.exports = jQuery(document).ready(function($) {
       if(item.content_type  === 'programs') {
         view.contentType = 'Program'
         view.icon = 'users'
-      }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post'){
+      }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post' || item.content_type === 'news_post'){
         view.contentType = 'News & events'
         view.icon = 'newspaper-o'
       }else if( item.content_type === 'department_page'){
@@ -58,7 +58,7 @@ module.exports = jQuery(document).ready(function($) {
       }else if(item.content_type === 'service_page'){
         view.contentType = 'Service'
         view.icon = 'gears'
-      }else if(item.contentType === 'document'){
+      }else if(item.contentType === 'document_page'){
         view.contentType = 'Document'
         view.icon = 'file-text-o'
       }
