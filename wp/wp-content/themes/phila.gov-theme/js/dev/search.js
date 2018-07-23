@@ -30,7 +30,7 @@ module.exports = jQuery(document).ready(function($) {
 
   var readFilters = function() {
     return {
-        contentType: window.searchConfig
+      contentType: window.searchConfig
     }
   }
 
@@ -59,12 +59,13 @@ module.exports = jQuery(document).ready(function($) {
         view.contentType = 'Service'
         view.icon = 'gears'
       }else if(item.contentType === 'document'){
-        view.contentType = 'document'
-        view.icon = 'file-text'
+        view.contentType = 'Document'
+        view.icon = 'file-text-o'
       }
 
       return Mustache.render(resultTemplate, view);
     }else{
+      $('#legacy-content').css('display', 'block');
       return Mustache.render(legacyTemplate, view);
     }
   };
@@ -139,6 +140,7 @@ module.exports = jQuery(document).ready(function($) {
     } else {
       window.searchConfig.contentType = undefined;
     }
+
     reloadResults();
   })
 
@@ -165,6 +167,8 @@ module.exports = jQuery(document).ready(function($) {
   var $propertyLink = $('#property-link');
 
   function addressSearch () {
+    $propertyLink.css('display', 'none');
+
     // Also check OPA API for results if it looks like an address
     var params = $.deparam(location.hash.substr(1));
     var query = params.stq;
