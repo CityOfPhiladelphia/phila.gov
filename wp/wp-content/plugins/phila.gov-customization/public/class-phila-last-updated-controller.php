@@ -56,7 +56,28 @@ class Phila_Last_Updated_Controller {
 
     $posts = get_posts( $args );
 
-    $data = array();
+    $data = array(
+      array(
+        'link'  => '/404/',
+        'updated_at' => ''
+      ),
+      array(
+        'link'  => '/departments/',
+        'updated_at' => ''
+      ),
+      array(
+        'link'  => '/documents/',
+        'updated_at' => ''
+      ),
+      array(
+        'link'  => '/programs/',
+        'updated_at' => ''
+      ),
+      array(
+        'link'  => '/services/',
+        'updated_at' => ''
+      ),
+    );
 
     if ( empty( $posts ) ) {
       return rest_ensure_response( $data );
@@ -102,7 +123,12 @@ class Phila_Last_Updated_Controller {
     $schema = $this->get_item_schema( $request );
 
     if (isset( $schema['properties']['link'] )) {
-      $post_data['link']  =  (string)  get_permalink($post->ID);
+
+      $link = get_permalink($post->ID);
+      $parsed_url = parse_url($link);
+
+      $post_data['link']  =  (string) $parsed_url['path'];
+
     }
     if (isset( $schema['properties']['updated_at'] )) {
       $post_data['updated_at']  = get_the_modified_date('Y-m-d H:i:s', $post->ID);
