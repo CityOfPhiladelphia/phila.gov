@@ -53,7 +53,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs mbs equal">
+                <a href="/personnel/JobOpps.html" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
@@ -123,7 +123,7 @@ get_header(); ?>
           <div class="grid-x grid-margin-x">
             <div class="cell medium-12">
               <div class="card hover-fade">
-                <a href="https://<?php phila_util_echo_website_url()?>/parks-rec-finder" class="hover-fade">
+                <a href="/parks-rec-finder/" class="hover-fade">
                   <?php $image = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'medium', 'limit' => 1), $post = '27984')[0]['url']; ?>
                   <img src="<?php echo $image ?>" alt="">
                   <?php wp_reset_query(); ?>
@@ -136,7 +136,7 @@ get_header(); ?>
             </div>
             <div class="cell medium-12 grid-x">
               <div class="card card-fixed-height cell shrink align-self-top full hover-fade">
-                <a href="http://www.phila.gov/contracts/pages/default.aspx" class="hover-fade">
+                <a href="/contracts/pages/default.aspx" class="hover-fade">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
                       <i class="fa fa-copy fa-4x fa-fw"></i>
@@ -151,7 +151,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="card card-fixed-height cell shrink align-self-middle full hover-fade">
-                <a href="https://beta.phila.gov/departments/department-of-licenses-and-inspections/">
+                <a href="/departments/department-of-licenses-and-inspections/">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
                       <i class="fa fa-file-text fa-4x  fa-fw"></i>
@@ -250,7 +250,8 @@ get_header(); ?>
                         </div>
                       </header>
                       <div class="description current">
-                        <span class="phs small-text">The homepage of beta.phila.gov became the official City homepage in 2018, and the content of beta.phila.gov and phila.gov were merged.</span>
+                        <!-- use &period; so the wordpress-scraper doesn't find/replace the string -->
+                        <span class="phs small-text">The homepage of beta&period;phila&period;gov became the official City homepage in 2018, and the content of beta&period;phila&period;gov and phila&period;gov were merged.</span>
                       </div>
                     </section>
                   </div>
