@@ -29,7 +29,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
-                        <i class="fa fa-trash fa-4x"></i>
+                        <i class="fa fa-trash fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -43,7 +43,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-credit-card fa-4x"></i>
+                        <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -57,7 +57,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-briefcase fa-4x"></i>
+                        <i class="fa fa-briefcase fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -71,7 +71,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-home fa-4x"></i>
+                        <i class="fa fa-home fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>

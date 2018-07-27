@@ -8,14 +8,9 @@ get_header(); ?>
 
 <section id="primary" class="content-area">
   <main id="main" class="site-main search-page">
-    <div class="search-head">
-      <div class="row">
-        <header class="medium-8 columns">
-          <h1><?php printf( __( 'Search results for:', 'phila-gov' )); ?></h1>
-        </header><!-- .page-header -->
-      </div>
-      <div class="row">
-        <div class="medium-16 columns">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell small-24">
           <form role="search" method="get" class="search" action="<?php echo home_url( '/search' ); ?>">
             <label for="st-search-input"><span class="screen-reader-text"><?php echo _x( 'Search for:', 'label' ) ?></span></label>
             <input type="text" class="search-field" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" id="st-search-input"/ autocomplete="off">
@@ -24,19 +19,55 @@ get_header(); ?>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="medium-16 columns">
-        <a class="property-link" id="property-link">
-          <i class="fa fa-arrow-circle-right"></i>
-          <p>We have found real estate property related to your search.</p>
-        </a>
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-8">
+          <div class="accordion" data-accordion data-allow-all-closed="true"  data-multi-expand="true">
+            <div class="accordion-item is-active" data-accordion-item>
+              <a href="#" class="h4 accordion-title mbn">Filter by type</a>
+              <div class="accordion-content" data-tab-content>
+                <div id="content-types">
+                  <fieldset>
+                    <div>
+                      <input type="radio" id="services" data-type="service_page" class="content-type" name="content_type">
+                        <label for="services">Services</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="programs" data-type="programs" class="content-type" name="content_type">
+                      <label for="programs">Programs & initiatives</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="news-events" data-type="news-events" class="content-type" name="content_type">
+                      <label for="news-events">News & events</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="publications" data-type="documents" class="content-type" name="content_type">
+                      <label for="publications">Publications & forms</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="departments" data-type="department_page" class="content-type" name="content_type">
+                      <label for="departments">Departments</label>
+                    </div>
+                    <a href="#" class="mtm clear-all button" data-name="content_type">Clear all filters</a>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="medium-16 cell">
+          <div id="property-link" class="callout">
+            We have found real estate property related to your search.
+            <a href="#">View results using the property application <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          <div id="legacy-content" class="callout">
+            <span class="label mrm bg-dark-gray">Legacy</span>
+            Content marked "legacy" has not been moved to our new platform.
+          </div>
+          <div id="result-count" class="pvm"></div>
+          <div id="st-results-container">Enter a search in the area above. <i class="fa fa-loading spin"></i></div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <p class="medium-16 columns result-count" id="result-count"></p>
-    </div>
-    <div class="row">
-      <div class="medium-16 columns search-results-list" id="st-results-container"></div>
     </div>
   </main><!-- #main -->
 </section><!-- #primary -->
