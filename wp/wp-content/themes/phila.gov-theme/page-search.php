@@ -29,25 +29,26 @@ get_header(); ?>
                 <div id="content-types">
                   <fieldset>
                     <div>
-                      <input type="checkbox" id="services" data-type="service_page" class="content-type">
+                      <input type="radio" id="services" data-type="service_page" class="content-type" name="content_type">
                         <label for="services">Services</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="programs" data-type="programs" class="content-type">
+                      <input type="radio" id="programs" data-type="programs" class="content-type" name="content_type">
                       <label for="programs">Programs & initiatives</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="news-events" data-type="news-events" class="content-type">
+                      <input type="radio" id="news-events" data-type="news-events" class="content-type" name="content_type">
                       <label for="news-events">News & events</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="publications" data-type="documents" class="content-type">
+                      <input type="radio" id="publications" data-type="documents" class="content-type" name="content_type">
                       <label for="publications">Publications & forms</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="departments" data-type="department_page" class="content-type">
+                      <input type="radio" id="departments" data-type="department_page" class="content-type" name="content_type">
                       <label for="departments">Departments</label>
                     </div>
+                    <a href="#" class="mtm clear-all button" data-name="content_type">Clear all filters</a>
                   </fieldset>
                 </div>
               </div>
@@ -64,7 +65,7 @@ get_header(); ?>
             Content marked "legacy" has not been moved to our new platform.
           </div>
           <div id="result-count" class="pvm"></div>
-          <div id="st-results-container"><i class="fa fa-loading spin"></i></div>
+          <div id="st-results-container">Enter a search in the area above. <i class="fa fa-loading spin"></i></div>
         </div>
       </div>
     </div>
