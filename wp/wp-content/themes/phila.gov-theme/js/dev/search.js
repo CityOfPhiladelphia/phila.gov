@@ -82,7 +82,6 @@ module.exports = jQuery(document).ready(function($) {
     var spellingSuggestion = null;
 
     if (data['info']) {
-      //console.log(data['info']);
       $.each(data['info'], function(index, value) {
         totalResultCount += value['total_result_count'];
         if ( value['spelling_suggestion'] ) {
@@ -135,24 +134,22 @@ module.exports = jQuery(document).ready(function($) {
   $("#search-form").submit(function (e) {
     e.preventDefault();
     window.location.href = '/search/#stq=' + $(this).find(".search-field").val();
-  });
+  })
 
-  $('.content-type').on('click', function(e){
-    console.log(this)
-  //  if ($(this).attr('checked')) {
+  $('#content-types').on('click', 'a.clear-all', function(e) {
+    e.preventDefault();
 
-      // Visually update the checkboxes
-      //$('.content-type').attr('checked', false);
-      $(this).attr('checked', true);
-      // Update the search parameters
-      console.log(searchConfig.filters.content_type)
-      searchConfig.filters.content_type = $(this).data('type');
-      var   activeType = $(this).data('type');
+    $('.content-type').prop('checked', false);
 
-    //}
-
+    searchConfig.filters.content_type = [];
     $stSearchInput.swiftypeSearch();
 
+    reloadResults();
+  })
+
+  $('.content-type').on('click', function(e){
+    searchConfig.filters.content_type = $(this).data('type');
+    $stSearchInput.swiftypeSearch();
     reloadResults();
   })
 
