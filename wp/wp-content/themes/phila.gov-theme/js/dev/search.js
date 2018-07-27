@@ -25,23 +25,27 @@ module.exports = jQuery(document).ready(function($) {
   var $stSearchInput = $("#st-search-input");
 
   var searchConfig = {
-    contentType: undefined
+    facets: {},
+    filters: {
+      content_type: undefined
+    }
   };
 
   var readFilters = function() {
     return {
-      contentType: window.searchConfig
+      page: {
+        content_type: searchConfig.filters.content_type
+      }
     }
   }
 
   var customRenderer = function(documentType, item) {
-    console.log(item)
 
     var view = {
       url: encodeURI(item.url),
       title: item.title,
       summary: item.highlight.body || (item.body.length > 250 ? item.body.substring(0, 250) + '...' : item.body),
-      contentType: item.content_type,
+      content_type: item.content_type,
       icon: ''
     };
 
@@ -58,11 +62,10 @@ module.exports = jQuery(document).ready(function($) {
       }else if(item.content_type === 'service_page'){
         view.contentType = 'Service'
         view.icon = 'gears'
-      }else if(item.contentType === 'document_page'){
+      }else if(item.content_type === 'document'){
         view.contentType = 'Document'
         view.icon = 'file-text-o'
       }
-
       return Mustache.render(resultTemplate, view);
     }else{
       $('#legacy-content').css('display', 'block');
@@ -79,7 +82,7 @@ module.exports = jQuery(document).ready(function($) {
     var spellingSuggestion = null;
 
     if (data['info']) {
-      console.log(data['info']);
+      //console.log(data['info']);
       $.each(data['info'], function(index, value) {
         totalResultCount += value['total_result_count'];
         if ( value['spelling_suggestion'] ) {
@@ -90,13 +93,16 @@ module.exports = jQuery(document).ready(function($) {
     }
 
     if (totalResultCount === 0) {
-      $resultCount.text("No results found for \"<i>" + data['info']['page']['query'] +"\"</i>. <div class=\"info panel\"><p class=\"h3\">We're sorry, we didn't find any results that match your search terms.</h3>Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li>");
+      $resultCount.html("No results found for <i>" + data['info']['page']['query'] +
+      "</i>. <div class='info panel mtm row'><div class='medium-3 columns hide-for-small-only'><i class='fa fa-frown-o fa-4x'></i></div> <div class='text small-24 medium-21 columns'><p class='h3 mbm'>We're sorry, we didn't find any results that match your search terms.</h3> Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li></ul></div></div>");
+      $('#legacy-content').css('display', 'none');
+
     } else {
       $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results for \"<i>" + data['info']['page']['query'] +"\"</i>");
     }
 
     if (spellingSuggestion !== null) {
-      $resultContainer.append('<div class="st-spelling-suggestion">Did you mean <a href="#" data-hash="true" data-spelling-suggestion="' + spellingSuggestion + '">' + spellingSuggestion + '</a>?</div>');
+      $('.info.panel .text').append('<span class="st-spelling-suggestion">Did you mean <a href="#" data-hash="true" data-spelling-suggestion="' + spellingSuggestion + '">' + spellingSuggestion + '</a>?</span>');
     }
   };
 
@@ -112,6 +118,7 @@ module.exports = jQuery(document).ready(function($) {
       pages = pages + '<li><a href="#page" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
     }
     pages += '</ul></nav>';
+
     return pages;
   };
 
@@ -122,6 +129,7 @@ module.exports = jQuery(document).ready(function($) {
     postRenderFunction: customPostRenderFunction,
     renderPaginationForType: customRenderPaginationForType,
     filters: readFilters,
+    facets: { page: ['content_type'] },
   });
 
   $("#search-form").submit(function (e) {
@@ -129,17 +137,21 @@ module.exports = jQuery(document).ready(function($) {
     window.location.href = '/search/#stq=' + $(this).find(".search-field").val();
   });
 
-
   $('.content-type').on('click', function(e){
-    if ($(this).attr('checked')) {
+    console.log(this)
+  //  if ($(this).attr('checked')) {
+
       // Visually update the checkboxes
-      $('.content-type').attr('checked', false);
+      //$('.content-type').attr('checked', false);
       $(this).attr('checked', true);
       // Update the search parameters
-      window.searchConfig.contentType = $(this).data('type');
-    } else {
-      window.searchConfig.contentType = undefined;
-    }
+      console.log(searchConfig.filters.content_type)
+      searchConfig.filters.content_type = $(this).data('type');
+      var   activeType = $(this).data('type');
+
+    //}
+
+    $stSearchInput.swiftypeSearch();
 
     reloadResults();
   })
@@ -205,9 +217,10 @@ module.exports = jQuery(document).ready(function($) {
     return '<a class="autocomplete-link" href="' + getPath(item.url) + '">' + Swiftype.htmlEscape(item.title) + '</a>';
   }
 
-  var reloadResults = function() {
-    $(window).hashchange();
-  };
+  var reloadResults =  function() {
+    $(window).trigger('hashchange');
+  }
+
   // Autocomplete
   $('.swiftype').swiftype({
     engineKey: SWIFTYPE_ENGINE,
