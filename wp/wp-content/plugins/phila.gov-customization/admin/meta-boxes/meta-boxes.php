@@ -616,7 +616,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'class' => 'action-panel-link',
         ),
         array(
-          'name'  => 'This link directs users away from beta.phila.gov',
+          'name'  => 'This link directs users away from www.phila.gov',
           'id'    => 'phila_action_panel_link_loc',
           'type'  => 'switch',
           'class' => 'action-panel-link-loc',
