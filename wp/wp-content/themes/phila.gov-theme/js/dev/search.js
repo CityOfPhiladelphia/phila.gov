@@ -148,7 +148,10 @@ module.exports = jQuery(document).ready(function($) {
   })
 
   $('.content-type').on('click', function(e){
-    searchConfig.filters.content_type = $(this).data('type');
+    var current = $(this).data('type')
+    //TODO: handle old content types, update pagination when filter is selected
+    searchConfig.filters.content_type = current;
+    //reset pagination to 1
     $stSearchInput.swiftypeSearch();
     reloadResults();
   })
