@@ -52,19 +52,19 @@ module.exports = jQuery(document).ready(function($) {
     if ( item.tags === 'wordpress' || item.tags === 'app' ) {
       if(item.content_type  === 'programs') {
         view.contentType = 'Program'
-        view.icon = 'users'
+        view.icon = 'info-circle'
       }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post' || item.content_type === 'news_post'){
         view.contentType = 'News & events'
-        view.icon = 'newspaper-o'
+        view.icon = 'microphone'
       }else if( item.content_type === 'department_page'){
         view.contentType = 'Department'
         view.icon = 'sitemap'
       }else if(item.content_type === 'service_page'){
         view.contentType = 'Service'
-        view.icon = 'gears'
+        view.icon = 'list'
       }else if(item.content_type === 'document'){
         view.contentType = 'Document'
-        view.icon = 'file-text-o'
+        view.icon = 'file-text'
       }
       return Mustache.render(resultTemplate, view);
     }else{
