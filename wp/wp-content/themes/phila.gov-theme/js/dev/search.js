@@ -105,21 +105,27 @@ module.exports = jQuery(document).ready(function($) {
     }
   };
 
+  function scrollTop(){
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  }
+
   function customRenderPaginationForType(type, currentPage, totalPages) {
     var pages = '<nav><ul class="no-bullet paginate-links">',
       previousPage, nextPage;
     if (currentPage != 1) {
       previousPage = currentPage - 1;
-      pages = pages + '<li><a href="#page" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
+      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
     }
     if (currentPage < totalPages) {
       nextPage = currentPage + 1;
-      pages = pages + '<li><a href="#page" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
+      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
     }
     pages += '</ul></nav>';
 
     return pages;
   }
+
 
   $('.content-type').on('click', function(e){
     var current = $(this).data('type')
@@ -139,7 +145,7 @@ module.exports = jQuery(document).ready(function($) {
     $('.content-type').prop('checked', false);
 
     searchConfig.filters.content_type = [];
-    
+
     //reset pagination to 1
     window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
 
