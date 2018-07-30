@@ -119,7 +119,34 @@ module.exports = jQuery(document).ready(function($) {
     pages += '</ul></nav>';
 
     return pages;
-  };
+  }
+
+  $('.content-type').on('click', function(e){
+    var current = $(this).data('type')
+    //TODO: handle old content types, update pagination when filter is selected
+    searchConfig.filters.content_type = current;
+
+    //reset pagination to 1
+    window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
+    $stSearchInput.swiftypeSearch()
+
+    reloadResults();
+  })
+
+  $('#content-types').on('click', 'a.clear-all', function(e) {
+    e.preventDefault();
+
+    $('.content-type').prop('checked', false);
+
+    searchConfig.filters.content_type = [];
+    
+    //reset pagination to 1
+    window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
+
+    $stSearchInput.swiftypeSearch();
+
+    reloadResults();
+  })
 
   $stSearchInput.swiftypeSearch({
     engineKey: SWIFTYPE_ENGINE,
@@ -134,26 +161,6 @@ module.exports = jQuery(document).ready(function($) {
   $("#search-form").submit(function (e) {
     e.preventDefault();
     window.location.href = '/search/#stq=' + $(this).find(".search-field").val();
-  })
-
-  $('#content-types').on('click', 'a.clear-all', function(e) {
-    e.preventDefault();
-
-    $('.content-type').prop('checked', false);
-
-    searchConfig.filters.content_type = [];
-    $stSearchInput.swiftypeSearch();
-
-    reloadResults();
-  })
-
-  $('.content-type').on('click', function(e){
-    var current = $(this).data('type')
-    //TODO: handle old content types, update pagination when filter is selected
-    searchConfig.filters.content_type = current;
-    //reset pagination to 1
-    $stSearchInput.swiftypeSearch();
-    reloadResults();
   })
 
 
@@ -217,7 +224,7 @@ module.exports = jQuery(document).ready(function($) {
     return '<a class="autocomplete-link" href="' + getPath(item.url) + '">' + Swiftype.htmlEscape(item.title) + '</a>';
   }
 
-  var reloadResults =  function() {
+  var reloadResults = function() {
     $(window).trigger('hashchange');
   }
 
