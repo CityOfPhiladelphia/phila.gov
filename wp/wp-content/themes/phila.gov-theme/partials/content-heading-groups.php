@@ -16,7 +16,7 @@
       <section>
         <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
         <?php if (array_key_exists('phila_stepped_select', $content) ) : ?>
-          <h4 class="mbm phm-mu" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h4>
+          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
         <?php else : ?>
         <?php if ( $wysiwyg_heading != '' ): ?>
           <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
