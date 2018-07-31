@@ -7,7 +7,7 @@
  */
      wp_reset_postdata();
 ?>
-<?php if ( !is_404() && !is_home()) : ?>
+<?php if ( !is_404() && !is_home() && !is_search() && !is_archive() && is_page_template(array('page-search.php', 'templates/the-latest-archive.php', 'templates/the-latest-events-archive.php'))) : ?>
   <div class="row pvm">
     <div class="small-24 columns center">
       <?php

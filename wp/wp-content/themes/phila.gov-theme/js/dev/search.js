@@ -6,9 +6,11 @@ var Mustache = require('mustache');
 
 module.exports = jQuery(document).ready(function($) {
 
-  var resultTemplate = '<article><header class="search-entry-header"><h3 class="entry-title">';
+  var resultTemplate = '<div data-type="{{&contentType}}"><article><header class="search-entry-header"><h3>';
 
   resultTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
+
+  resultTemplate += '<div class="mbm"><i class="fa fa-{{&icon}}" aria-hidden="true"></i> <i>{{&contentType}}</i></div>';
 
   resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr>';
 
@@ -20,16 +22,53 @@ module.exports = jQuery(document).ready(function($) {
 
   var SWIFTYPE_ENGINE = 'ALSW3neJArH_ozFvSDse';
 
+  var $stSearchInput = $("#st-search-input");
+
+  var searchConfig = {
+    facets: {},
+    filters: {
+      content_type: undefined
+    }
+  };
+
+  var readFilters = function() {
+    return {
+      page: {
+        content_type: searchConfig.filters.content_type
+      }
+    }
+  }
+
   var customRenderer = function(documentType, item) {
 
     var view = {
       url: encodeURI(item.url),
       title: item.title,
-      summary: item.highlight.body || (item.body.length > 300 ? item.body.substring(0, 300) + '...' : item.body)
+      summary: item.highlight.body || (item.body.length > 250 ? item.body.substring(0, 250) + '...' : item.body),
+      content_type: item.content_type,
+      icon: ''
     };
+
     if ( item.tags === 'wordpress' || item.tags === 'app' ) {
+      if(item.content_type  === 'programs') {
+        view.contentType = 'Program'
+        view.icon = 'info-circle'
+      }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post' || item.content_type === 'news_post'){
+        view.contentType = 'News & events'
+        view.icon = 'microphone'
+      }else if( item.content_type === 'department_page'){
+        view.contentType = 'Department'
+        view.icon = 'sitemap'
+      }else if(item.content_type === 'service_page'){
+        view.contentType = 'Service'
+        view.icon = 'list'
+      }else if(item.content_type === 'document'){
+        view.contentType = 'Document'
+        view.icon = 'file-text'
+      }
       return Mustache.render(resultTemplate, view);
     }else{
+      $('#legacy-content').css('display', 'block');
       return Mustache.render(legacyTemplate, view);
     }
   };
@@ -53,45 +92,87 @@ module.exports = jQuery(document).ready(function($) {
     }
 
     if (totalResultCount === 0) {
-      $resultCount.text("No results found");
+      $resultCount.html("No results found for <i>" + data['info']['page']['query'] +
+      "</i>. <div class='info panel mtm row'><div class='medium-3 columns hide-for-small-only'><i class='fa fa-frown-o fa-4x'></i></div> <div class='text small-24 medium-21 columns'><p class='h3 mbm'>We're sorry, we didn't find any results that match your search terms.</h3> Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li></ul></div></div>");
+      $('#legacy-content').css('display', 'none');
+
     } else {
-      $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results");
+      $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results for \"<i>" + data['info']['page']['query'] +"\"</i>");
     }
 
     if (spellingSuggestion !== null) {
-      $resultContainer.append('<div class="st-spelling-suggestion">Did you mean <a href="#" data-hash="true" data-spelling-suggestion="' + spellingSuggestion + '">' + spellingSuggestion + '</a>?</div>');
+      $('.info.panel .text').append('<span class="st-spelling-suggestion">Did you mean <a href="#" data-hash="true" data-spelling-suggestion="' + spellingSuggestion + '">' + spellingSuggestion + '</a>?</span>');
     }
   };
 
+  function scrollTop(){
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  }
+
   function customRenderPaginationForType(type, currentPage, totalPages) {
-    var pages = '<nav class="navigation paging-navigation">',
+    var pages = '<nav><ul class="no-bullet paginate-links">',
       previousPage, nextPage;
     if (currentPage != 1) {
       previousPage = currentPage - 1;
-      pages = pages + '<a href="#" class="st-prev prev page-numbers" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> previous</a>';
+      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
     }
     if (currentPage < totalPages) {
       nextPage = currentPage + 1;
-      pages = pages + '<a href="#" class="st-next next page-numbers" data-hash="true" data-page="' + nextPage + '">next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
     }
-    pages += '</nav>';
-    return pages;
-  };
+    pages += '</ul></nav>';
 
-  var $stSearchInput = $("#st-search-input");
+    return pages;
+  }
+
+
+  $('.content-type').on('click', function(e){
+    var current = $(this).data('type')
+
+    searchConfig.filters.content_type = current;
+
+    if ( current === 'post'){
+      searchConfig.filters.content_type = ['post', 'phila_post', 'news', 'press_release' ]
+    }
+
+console.log(searchConfig.filters.content_type)
+    //reset pagination to 1
+    window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
+    $stSearchInput.swiftypeSearch()
+
+    reloadResults();
+  })
+
+  $('#content-types').on('click', 'a.clear-all', function(e) {
+    e.preventDefault();
+
+    $('.content-type').prop('checked', false);
+
+    searchConfig.filters.content_type = [];
+
+    //reset pagination to 1
+    window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
+
+    $stSearchInput.swiftypeSearch();
+
+    reloadResults();
+  })
+
   $stSearchInput.swiftypeSearch({
     engineKey: SWIFTYPE_ENGINE,
     resultContainingElement: '#st-results-container',
     renderFunction: customRenderer,
     postRenderFunction: customPostRenderFunction,
-    renderPaginationForType: customRenderPaginationForType
+    renderPaginationForType: customRenderPaginationForType,
+    filters: readFilters,
+    facets: { page: ['content_type'] },
   });
 
   $("#search-form").submit(function (e) {
     e.preventDefault();
     window.location.href = '/search/#stq=' + $(this).find(".search-field").val();
-  });
-
+  })
 
 
   function hashQuery () {
@@ -116,6 +197,8 @@ module.exports = jQuery(document).ready(function($) {
   var $propertyLink = $('#property-link');
 
   function addressSearch () {
+    $propertyLink.css('display', 'none');
+
     // Also check OPA API for results if it looks like an address
     var params = $.deparam(location.hash.substr(1));
     var query = params.stq;
@@ -150,6 +233,10 @@ module.exports = jQuery(document).ready(function($) {
 
   function customAutocompleteRender (document_type, item) {
     return '<a class="autocomplete-link" href="' + getPath(item.url) + '">' + Swiftype.htmlEscape(item.title) + '</a>';
+  }
+
+  var reloadResults = function() {
+    $(window).trigger('hashchange');
   }
 
   // Autocomplete
