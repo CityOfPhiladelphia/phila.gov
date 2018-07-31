@@ -6,7 +6,7 @@
  */
 ?>
 <?php
-  // set category vars for news/blogs
+  // set category vars for blogs/staff
   $category = get_the_category();
   $category_slug = $category[0]->slug;
 
@@ -24,7 +24,6 @@
 
       // Begin full width row
       $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
-
 
       if ( $current_row_option == 'phila_blog_posts'):?>
 
@@ -131,6 +130,14 @@
             <?php include(locate_template('partials/global/registration.php')); ?>
           <?php endif; ?>
 
+          <!-- heading groups -->
+        <?php elseif ( $current_row_option == 'phila_stepped_content'):?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_full_options_select'] ) ): ?>
+            <?php
+            $heading_groups = $current_row['phila_full_options']['phila_heading_groups'];
+            include(locate_template('partials/content-heading-groups.php')); ?>
+          <?php endif;?>
+
       <?php endif;  /*end full row */?>
 
       <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
@@ -227,7 +234,6 @@
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
               <?php endif;?>
-
             <?php elseif ( $current_row_option_two['phila_one_third_col_option'] == 'phila_custom_feature'):?>
               <?php if ( isset( $current_row_option_two['phila_custom_feature'] ) ):
                 $feature_panel = $current_row_option_two['phila_custom_feature'];
