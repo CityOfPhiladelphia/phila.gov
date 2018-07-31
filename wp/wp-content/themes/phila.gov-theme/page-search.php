@@ -37,7 +37,7 @@ get_header(); ?>
                       <label for="programs">Programs & initiatives</label>
                     </div>
                     <div>
-                      <input type="radio" id="news-events" data-type="news-events" class="content-type" name="content_type">
+                      <input type="radio" id="news-events" data-type="post" class="content-type" name="content_type">
                       <label for="news-events">News & events</label>
                     </div>
                     <div>
@@ -65,7 +65,7 @@ get_header(); ?>
             Content marked "legacy" has not been moved to our new platform.
           </div>
           <div id="result-count" class="pvm"></div>
-          <div id="st-results-container">Enter a search in the area above. <i class="fa fa-loading spin"></i></div>
+          <div id="st-results-container">Enter search terms in the area above. <i class="fa fa-loading spin"></i></div>
         </div>
       </div>
     </div>
