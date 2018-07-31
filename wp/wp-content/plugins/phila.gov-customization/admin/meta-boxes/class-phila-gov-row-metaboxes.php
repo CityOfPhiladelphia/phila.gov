@@ -145,6 +145,16 @@ class Phila_Gov_Row_Metaboxes {
         'type'    => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_registration'),
         'fields'  => Phila_Gov_Standard_Metaboxes::phila_meta_registration(),
+      ),
+      array(
+        'id' => 'phila_heading_groups',
+        'type'  => 'group',
+        'clone' => false,
+        'visible' => array('phila_full_options_select', '=', 'phila_stepped_content'),
+
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_unique(),
+        )
       )
     ),
   );
