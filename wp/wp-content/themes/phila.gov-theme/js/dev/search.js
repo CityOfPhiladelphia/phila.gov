@@ -129,9 +129,14 @@ module.exports = jQuery(document).ready(function($) {
 
   $('.content-type').on('click', function(e){
     var current = $(this).data('type')
-    //TODO: handle old content types, update pagination when filter is selected
+
     searchConfig.filters.content_type = current;
 
+    if ( current === 'post'){
+      searchConfig.filters.content_type = ['post', 'phila_post', 'news', 'press_release' ]
+    }
+
+console.log(searchConfig.filters.content_type)
     //reset pagination to 1
     window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
     $stSearchInput.swiftypeSearch()
