@@ -37,7 +37,7 @@ get_header(); ?>
                       <label for="programs">Programs & initiatives</label>
                     </div>
                     <div>
-                      <input type="radio" id="news-events" data-type="news-events" class="content-type" name="content_type">
+                      <input type="radio" id="news-events" data-type="post" class="content-type" name="content_type">
                       <label for="news-events">News & events</label>
                     </div>
                     <div>
