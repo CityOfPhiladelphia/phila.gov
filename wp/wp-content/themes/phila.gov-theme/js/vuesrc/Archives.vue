@@ -184,8 +184,6 @@ export default {
         }
       })
       .then(response => {
-        console.log(response.data)
-
         this.posts = response.data
         this.successfulResponse
       })
@@ -223,7 +221,6 @@ export default {
             }
           })
           .then(response => {
-            console.log(response.data)
             this.posts = response.data
             this.successfulResponse
           })
@@ -235,8 +232,6 @@ export default {
     },
     reset() {
       //this.loading = true
-      //console.log(this.$refs.categorySelect)
-      //console.log(this.$refs.categorySelect.$el.textContent)
       window.location = window.location.pathname;
       /*this.selectedCategory = ''
       axios.get(endpoint + 'archives', {
