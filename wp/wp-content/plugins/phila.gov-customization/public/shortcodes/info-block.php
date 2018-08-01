@@ -12,6 +12,7 @@ function info_block_shortcode($a, $content=null){
     'paragraph-text' => false,
   ), $a);
 
+
   $allowed_html = [
     'a' => [
         'href'  => [],
@@ -28,7 +29,7 @@ function info_block_shortcode($a, $content=null){
     $output .= '<div class="row">';
     $output .= '<div class="columns">';
     $output .= '<div class="panel info info-block mbl">';
-    $output .= isset($a['paragraph-text']) ? '<p class="paragraph">' : '<p>';
+    $output .= $a['paragraph-text'] === 'true' ? '<p class="paragraph">' : '<p>';
 
     $output .=  wp_kses($content, $allowed_html). '</p>';
 
