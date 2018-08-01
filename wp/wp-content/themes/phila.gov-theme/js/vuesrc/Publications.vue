@@ -253,7 +253,6 @@ export default {
       })
     },
     sort: function( column ) {
-      console.log( column )
       //if column == current sort, reverse
       if(column === this.currentSort) {
         this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
