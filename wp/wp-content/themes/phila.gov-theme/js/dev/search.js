@@ -136,7 +136,6 @@ module.exports = jQuery(document).ready(function($) {
       searchConfig.filters.content_type = ['post', 'phila_post', 'news', 'press_release' ]
     }
 
-console.log(searchConfig.filters.content_type)
     //reset pagination to 1
     window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
     $stSearchInput.swiftypeSearch()
