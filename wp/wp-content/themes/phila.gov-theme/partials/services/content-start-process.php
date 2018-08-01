@@ -46,5 +46,6 @@
 </div>
 <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
-<?php get_template_part( 'partials/content', 'heading-groups' ); ?>
+<?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
+<?php include(locate_template('partials/content-heading-groups.php')); ?>
 <?php get_template_part( 'partials/content', 'additional' ); ?>

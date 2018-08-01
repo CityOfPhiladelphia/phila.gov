@@ -46,7 +46,8 @@ class Phila_Gov_Row_Select_Options {
         'phila_image_list' => 'Image list',
         'phila_list_items' => 'List items (grid)',
         'phila_full_width_press_releases' => 'Press Releases',
-        'phila_registration'  => 'Registration available'
+        'phila_registration'  => 'Registration available',
+        'phila_stepped_content' => 'Stepped content'
       ),
     );
   }
