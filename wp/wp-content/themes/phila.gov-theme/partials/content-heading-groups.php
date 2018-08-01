@@ -2,11 +2,11 @@
 /*
  *
  * Partial for heading groups
- *
+ * Required params: $heading_groups
  */
  ?>
 <?php
-  $heading_groups = rwmb_meta( 'phila_heading_groups' );
+
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
   if ( !empty($heading_content) ) : ?>
   <?php foreach ( $heading_content as $content ): ?>
@@ -15,8 +15,8 @@
     <div class="columns">
       <section>
         <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
-        <?php if (array_key_exists('phila_stepped_select', $content) ) : ?>
-          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
+        <?php if (phila_get_selected_template() === 'prog_landing_page'): ?>
+          <h2 class="contrast" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
         <?php else : ?>
         <?php if ( $wysiwyg_heading != '' ): ?>
           <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
