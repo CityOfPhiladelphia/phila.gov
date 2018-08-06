@@ -35,42 +35,48 @@
             </div>
           </div>
           <?php endif; ?>
+          <?php $start = isset($feature['start_datetime']['timestamp']) ? new DateTime("@" . $feature['start_datetime']['timestamp']) : ''; ?>
+          <?php $end = isset($feature['end_datetime']['timestamp']) ? new DateTime("@" .  $feature['end_datetime']['timestamp']) : ''; ?>
+
+          <?php //Don't render if start & end times are blank, or are registering at unmodified date/time object ?>
+
+          <?php if ( ($start !== '' && $end !== '') && ($start->format('Y-m-d H:i:s') !== '1970-01-01 00:00:00' && $end->format('Y-m-d H:i:s') !== '1970-01-01 00:00:00')) :?>
           <div class="mvm grid-x align-top full-width">
             <i class="fa fa-calendar fa-fw fa-lg inline-block mrm cell small-1"></i>
+
             <div class="cell small-21">
-              <?php $start = new DateTime("@" . $feature['start_datetime']['timestamp']); ?>
-              <?php $end = new DateTime("@" .  $feature['end_datetime']['timestamp']); ?>
               <?php $start_month_format = phila_util_month_format($start); ?>
               <?php $end_month_format = phila_util_month_format($end); ?>
 
-              <?php if ($start->format('m-d') === $end->format('m-d') && $start->format('g:i') === $end->format('g:i')): // single all day ?>
+                <?php if ($start->format('m-d') === $end->format('m-d') && $start->format('g:i') === $end->format('g:i')): // single all day ?>
 
-                 <?php $date_output = str_replace(
-                   array('Sep','am','pm',':00'),
-                   array('Sept','a.m.','p.m.',''),
-                  $start->format('<b>' . 'l, ' . $start_month_format . ' j, Y') . '</b>'. '<br /><i>All day event</i>');
-                  echo $date_output; ?>
-               <?php elseif ($start->format('m-d') === $end->format('m-d') && $start->format('a') === $end->format('a')): //single with time range ?>
+                   <?php $date_output = str_replace(
+                     array('Sep','am','pm',':00'),
+                     array('Sept','a.m.','p.m.',''),
+                    $start->format('<b>' . 'l, ' . $start_month_format . ' j, Y') . '</b>'. '<br /><i>All day event</i>');
+                    echo $date_output; ?>
+                 <?php elseif ($start->format('m-d') === $end->format('m-d') && $start->format('a') === $end->format('a')): //single with time range ?>
 
-                 <?php $date_output = str_replace(
-                   array('Sep','am','pm',':00'),
-                   array('Sept','a.m.','p.m.',''), $start->format('<b>' . 'l, ' . $start_month_format . ' j, Y') . '</b>'. '<br /><i>' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a') . '</i>');
-                  echo $date_output; ?>
+                   <?php $date_output = str_replace(
+                     array('Sep','am','pm',':00'),
+                     array('Sept','a.m.','p.m.',''), $start->format('<b>' . 'l, ' . $start_month_format . ' j, Y') . '</b>'. '<br /><i>' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a') . '</i>');
+                    echo $date_output; ?>
 
-              <?php elseif ($start ->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
-                <?php $date_output = str_replace(
+                <?php elseif ($start ->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
+                  <?php $date_output = str_replace(
+                      array('Sep','12:00 am','12:00 pm','am','pm',':00'),
+                      array('Sept','midnight','noon','a.m.','p.m.', ''), $start->format('<b>'.' l, ' . $start_month_format .  ' j, Y'. '</b>') .'<br /><i>' . $start->format( 'g:i a' ) . ' to ' . $end->format(' g:i a') . '</i>' );
+                      echo $date_output;?>
+                <?php else : //date range ?>
+                  <?php $date_output = str_replace(
                     array('Sep','12:00 am','12:00 pm','am','pm',':00'),
-                    array('Sept','midnight','noon','a.m.','p.m.', ''), $start->format('<b>'.' l, ' . $start_month_format .  ' j, Y'. '</b>') .'<br /><i>' . $start->format( 'g:i a' ) . ' to ' . $end->format(' g:i a') . '</i>' );
-                    echo $date_output;?>
-              <?php else : //date range ?>
-                <?php $date_output = str_replace(
-                  array('Sep','12:00 am','12:00 pm','am','pm',':00'),
-                  array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('<b>' . $start_month_format . ' j') . ' to ' . $end->format( $end_month_format . ' j, Y' . '</b>') );
-                  echo $date_output;
-                  ?>
-              <?php endif; ?>
+                    array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('<b>' . $start_month_format . ' j') . ' to ' . $end->format( $end_month_format . ' j, Y' . '</b>') );
+                    echo $date_output;
+                    ?>
+                <?php endif; ?>
+              </div>
             </div>
-          </div>
+          <?php endif; ?>
         </div>
       </div>
     <?php endforeach?>
