@@ -13,6 +13,7 @@ meta-box-group-1.2.13.zip
 meta-box-include-exclude-1.0.9.zip
 meta-box-tabs-1.0.3.zip
 meta-box-tooltip-1.1.1.zip
+mb-term-meta-1.2.3.zip
 wpfront-user-role-editor-personal-pro-2.14.1.zip"
 
 cd /home/ubuntu/app
