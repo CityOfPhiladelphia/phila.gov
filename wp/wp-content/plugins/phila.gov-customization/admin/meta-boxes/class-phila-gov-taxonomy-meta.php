@@ -9,9 +9,10 @@ class Phila_Gov_Taxonomy_Meta {
 
   public function __construct(){
 
-    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_taxonomy_meta_boxes' ), 100 );
+    add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_taxonomy_meta_boxes' ), 10 );
 
   }
+  
   function phila_register_taxonomy_meta_boxes( $meta_boxes ){
     $meta_boxes[] = array(
       'title'      => '',
