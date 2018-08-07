@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Add Staff Directory custom post type
+* Add Staff Directory custom meta
 *
 * @link https://github.com/CityOfPhiladelphia/phila.gov-customization
 *
@@ -20,8 +20,7 @@ class Phila_Gov_Staff_Directory {
   }
 
   // Use staff member's name as the post title
-  function staff_directory_post_title( $data , $postarr )
-  {
+  function staff_directory_post_title( $data , $postarr ) {
     if($data['post_type'] == 'staff_directory' && isset($_POST['phila_first_name']) && isset($_POST['phila_last_name']) ) {
       $staff_member_name = '';
       $staff_member_name .= $_POST['phila_last_name'] . ', ' . $_POST['phila_first_name'];
@@ -48,7 +47,6 @@ class Phila_Gov_Staff_Directory {
       'pages'    => array( 'staff_directory' ),
       'priority' => 'high',
       'context'  => 'normal',
-
 
       'fields' => array(
         array(
@@ -107,6 +105,12 @@ class Phila_Gov_Staff_Directory {
           'id'    => $prefix . 'phone',
           'type'  => 'phone',
           'class' => 'phone',
+        ),
+        array(
+          'id'  => 'units',
+          'name'  => 'Units associated with',
+          'type' => 'unit',
+          //'callback' => $this->phila_get_term_meta( $meta_boxes ),
         ),
         array(
           'id' => $prefix . 'staff_social',
