@@ -14,12 +14,12 @@ class Phila_Gov_Taxonomy_Meta {
   }
   function phila_register_taxonomy_meta_boxes( $meta_boxes ){
     $meta_boxes[] = array(
-      'title'      => 'Metadata',
+      'title'      => '',
       'taxonomies' => 'category', // List of taxonomies. Array or string
 
       'fields' => array(
         array(
-          'desc' => 'Prevent this category from appearing on the user-facing site?',
+          'desc' => 'Prevent this owner from appearing on the user-facing site? Primarily used for testing.',
           'id'   => 'hidden',
           'type' => 'checkbox',
         ),
@@ -28,6 +28,7 @@ class Phila_Gov_Taxonomy_Meta {
           'name' => 'Unit information',
           'id'  => 'unit',
           'clone' => true,
+          'desc'  => 'Does this owner have units that sit under it in the org. chart? If so, enter those units here. Used for expressing hierarchy throughout the site.',
           'add_button'  => '+ Add another unit',
           'fields'  => array(
             array(
@@ -36,7 +37,17 @@ class Phila_Gov_Taxonomy_Meta {
               'type' => 'text',
               'placeholder' => 'E.g. Director\'s Office'
             ),
-            Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('Assocated page (optional)', 'url', 'department_page' ),
+            array(
+              'name' => 'Department homepage (optional)',
+              'id' => 'url',
+              'type'  => 'post',
+              'post_type' => 'department_page',
+              'query_args'  => array(
+                'post_status'    => 'any',
+                'posts_per_page' => -1,
+                'post_parent'  => 0,
+              ),
+            ),
           ),
         )
       ),
