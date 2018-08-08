@@ -733,6 +733,32 @@ $meta_boxes[] = array(
   );
 
   $meta_boxes[] = array(
+    'id'  => 'staff_units',
+    'title' => 'Units ',
+    'pages' => array('department_page'),
+    'context' => 'normal',
+    'priority'  => 'default',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'staff_directory_v2'),
+      ),
+      'relation' => 'or',
+    ),
+
+    'fields'  => array(
+      array(
+        'id'  => 'units',
+        'name'  => 'Display these units',
+        'type' => 'unit',
+        //'callback' => $this->phila_get_term_meta( $meta_boxes ),
+      ),
+    )
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'phila_full_row_press_releases',
     'title'    => 'Full row press releases posts (3 total)',
     'pages'    => array( 'department_page' ),
