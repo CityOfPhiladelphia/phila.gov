@@ -51,3 +51,18 @@ function phila_filter_author_link(){
 
   $wp_rewrite->author_base = 'posts/author';
 }
+
+/**
+ * Disable wordpress redirects, they won't be used on the static site, so content authors shouldn't assume they will work.
+ * @var $redirect_url - String.
+ * @since - 1.0.0
+ */
+
+add_filter('redirect_canonical', 'phila_no_redirect_on_404');
+
+function phila_no_redirect_on_404( $redirect_url ) {
+  if ( is_404() ) {
+    return false;
+  }
+  return $redirect_url;
+}
