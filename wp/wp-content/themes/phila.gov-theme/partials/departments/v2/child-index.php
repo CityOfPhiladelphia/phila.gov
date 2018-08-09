@@ -17,6 +17,8 @@
 
     <div class="row">
       <div class="columns">
+        <div class="one-quarter-layout bdr-dark-gray">
+
         <?php
         $args = array(
         	'post_parent' => $post->ID,
@@ -26,8 +28,18 @@
         );
         $children = get_children( $args );
         foreach ($children as $child) : ?>
-          <a href="<?php echo get_permalink($child->ID) ?>"><?php echo $child->post_title ?></a> - <?php echo rwmb_meta('phila_meta_desc', '', $child->ID)?>
-          <hr />
+        <div class="row one-quarter-row mvl">
+
+          <div class="medium-6 columns">
+            <h3 id="<?= sanitize_title_with_dashes($child->post_title)?>"><?php echo $child->post_title ?></h3>
+
+          </div>
+            <div class="medium-18 columns pbxl">
+
+            <?php echo rwmb_meta('phila_meta_desc', '', $child->ID)?>
+            <a href="<?php echo get_permalink($child->ID) ?>">Learn more <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
         <?php endforeach;?>
       </div>
     </div> <!-- .row -->
