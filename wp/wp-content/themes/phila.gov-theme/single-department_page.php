@@ -93,9 +93,6 @@ get_header(); ?>
 
           get_template_part( 'partials/departments/v2/child', 'index' );
 
-          //$firstchild = $children[0];
-          //wp_redirect(get_permalink($firstchild->ID));
-          //exit;
         }else{
           get_template_part( 'templates/single', 'on-site-content' );
         }
