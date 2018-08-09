@@ -24,6 +24,8 @@
             'post_parent' => $post->ID,
             'post_type'   => 'any',
             'numberposts' => -1,
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
             'post_status' => array('publish', 'private')
           );
           $children = get_children( $args );
