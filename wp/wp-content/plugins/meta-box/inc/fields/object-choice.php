@@ -10,16 +10,26 @@
  */
 abstract class RWMB_Object_Choice_Field extends RWMB_Choice_Field {
 	/**
-	 * Get field HTML
+	 * Get field HTML.
 	 *
-	 * @param array $field     Field parameters.
-	 * @param mixed $options   Select options.
-	 * @param mixed $db_fields Database fields to use in the output.
-	 * @param mixed $meta      Meta value.
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
-	public static function walk( $field, $options, $db_fields, $meta ) {
-		return call_user_func( array( self::get_type_class( $field ), 'walk' ), $field, $options, $db_fields, $meta );
+	public static function html( $meta, $field ) {
+		$html = call_user_func( array( self::get_type_class( $field ), 'html' ), $meta, $field );
+		$html .= self::call( 'add_new_form', $field );
+		return $html;
+	}
+
+	/**
+	 * Render "Add New" form
+	 *
+	 * @param array $field Field settings.
+	 * @return string
+	 */
+	public static function add_new_form( $field ) {
+		return '';
 	}
 
 	/**
@@ -66,19 +76,6 @@ abstract class RWMB_Object_Choice_Field extends RWMB_Choice_Field {
 			$attributes['class'] .= ' rwmb-select';
 		}
 		return $attributes;
-	}
-
-	/**
-	 * Get field names of object to be used by walker.
-	 *
-	 * @return array
-	 */
-	public static function get_db_fields() {
-		return array(
-			'parent' => '',
-			'id'     => '',
-			'label'  => '',
-		);
 	}
 
 	/**

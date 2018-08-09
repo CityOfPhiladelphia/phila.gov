@@ -26,7 +26,7 @@ if ( ! function_exists( 'rwmb_meta' ) ) {
 		if ( false === $field ) {
 			return apply_filters( 'rwmb_meta', rwmb_meta_legacy( $key, $args, $post_id ) );
 		}
-		$meta = in_array( $field['type'], array( 'oembed', 'map' ), true ) ?
+		$meta = in_array( $field['type'], array( 'oembed', 'map', 'osm' ), true ) ?
 			rwmb_the_value( $key, $args, $post_id, false ) :
 			rwmb_get_value( $key, $args, $post_id );
 		return apply_filters( 'rwmb_meta', $meta, $key, $args, $post_id );
@@ -92,6 +92,7 @@ if ( ! function_exists( 'rwmb_meta_legacy' ) ) {
 				$field['taxonomy'] = $args['taxonomy'];
 				break;
 			case 'map':
+			case 'osm':
 			case 'oembed':
 				$method = 'the_value';
 				break;
@@ -278,5 +279,38 @@ if ( ! function_exists( 'rwmb_get_meta_box' ) ) {
 		$class_name = apply_filters( 'rwmb_meta_box_class_name', 'RW_Meta_Box', $meta_box );
 
 		return new $class_name( $meta_box );
+	}
+}
+
+/**
+ * Helper functions
+ */
+
+if ( ! function_exists( 'rwmb_change_array_key' ) ) {
+	/**
+	 * Change array key.
+	 *
+	 * @param  array  $array Input array.
+	 * @param  string $from  From key.
+	 * @param  string $to    To key.
+	 */
+	function rwmb_change_array_key( &$array, $from, $to ) {
+		if ( isset( $array[ $from ] ) ) {
+			$array[ $to ] = $array[ $from ];
+		}
+		unset( $array[ $from ] );
+	}
+}
+
+if ( ! function_exists( 'rwmb_csv_to_array' ) ) {
+	/**
+	 * Convert a comma separated string to array.
+	 *
+	 * @param string $string Comma separated string.
+	 *
+	 * @return array
+	 */
+	function rwmb_csv_to_array( $string ) {
+		return is_array( $string ) ? $string : array_filter( array_map( 'trim', explode( ',', $string . ',' ) ) );
 	}
 }
