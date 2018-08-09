@@ -302,9 +302,9 @@ function swpsmtp_settings() {
     				<th><?php _e( 'Type of Encryption', 'easy-wp-smtp' ); ?></th>
     				<td>
     				    <label for="swpsmtp_smtp_type_encryption_1"><input type="radio" id="swpsmtp_smtp_type_encryption_1" name="swpsmtp_smtp_type_encryption" value='none' <?php if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) && 'none' == $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) echo 'checked="checked"'; ?> /> <?php _e( 'None', 'easy-wp-smtp' ); ?></label>
-    				    <label for="swpsmtp_smtp_type_encryption_2"><input type="radio" id="swpsmtp_smtp_type_encryption_2" name="swpsmtp_smtp_type_encryption" value='ssl' <?php if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) && 'ssl' == $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) echo 'checked="checked"'; ?> /> <?php _e( 'SSL', 'easy-wp-smtp' ); ?></label>
-    				    <label for="swpsmtp_smtp_type_encryption_3"><input type="radio" id="swpsmtp_smtp_type_encryption_3" name="swpsmtp_smtp_type_encryption" value='tls' <?php if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) && 'tls' == $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) echo 'checked="checked"'; ?> /> <?php _e( 'TLS', 'easy-wp-smtp' ); ?></label><br />
-    				    <p class="description"><?php _e( "For most servers SSL is the recommended option", 'easy-wp-smtp' ); ?></p>
+    				    <label for="swpsmtp_smtp_type_encryption_2"><input type="radio" id="swpsmtp_smtp_type_encryption_2" name="swpsmtp_smtp_type_encryption" value='ssl' <?php if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) && 'ssl' == $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) echo 'checked="checked"'; ?> /> <?php _e( 'SSL/TLS', 'easy-wp-smtp' ); ?></label>
+    				    <label for="swpsmtp_smtp_type_encryption_3"><input type="radio" id="swpsmtp_smtp_type_encryption_3" name="swpsmtp_smtp_type_encryption" value='tls' <?php if ( isset( $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) && 'tls' == $swpsmtp_options[ 'smtp_settings' ][ 'type_encryption' ] ) echo 'checked="checked"'; ?> /> <?php _e( 'STARTTLS', 'easy-wp-smtp' ); ?></label><br />
+    				    <p class="description"><?php _e( "For most servers SSL/TLS is the recommended option", 'easy-wp-smtp' ); ?></p>
     				</td>
     			    </tr>
     			    <tr class="ad_opt swpsmtp_smtp_options">
