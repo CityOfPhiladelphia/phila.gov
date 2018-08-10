@@ -1,18 +1,17 @@
-/* global google */
-
-(function ( $, document, window, google ) {
+( function( $, L ) {
 	'use strict';
 
+	var osmTileLayer = L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	} );
+
 	// Use function construction to store map & DOM elements separately for each instance
-	var MapField = function ( $container ) {
+	var OsmField = function ( $container ) {
 		this.$container = $container;
 	};
 
-	// Geocoder service.
-	var geocoder = new google.maps.Geocoder();
-
 	// Use prototype for better performance
-	MapField.prototype = {
+	OsmField.prototype = {
 		// Initialize everything
 		init: function () {
 			this.initDomElements();
@@ -25,10 +24,10 @@
 
 		// Initialize DOM elements
 		initDomElements: function () {
-			this.$canvas = this.$container.find( '.rwmb-map-canvas' );
+			this.$canvas = this.$container.find( '.rwmb-osm-canvas' );
 			this.canvas = this.$canvas[0];
-			this.$coordinate = this.$container.find( '.rwmb-map-coordinate' );
-			this.$findButton = this.$container.find( '.rwmb-map-goto-address-button' );
+			this.$coordinate = this.$container.find( '.rwmb-osm-coordinate' );
+			this.$findButton = this.$container.find( '.rwmb-osm-goto-address-button' );
 			this.addressField = this.$container.data( 'address-field' );
 		},
 
@@ -37,16 +36,17 @@
 			var defaultLoc = this.$canvas.data( 'default-loc' ),
 				latLng;
 
-			defaultLoc = defaultLoc ? defaultLoc.split( ',' ) : [53.346881, - 6.258860];
-			latLng = new google.maps.LatLng( defaultLoc[0], defaultLoc[1] ); // Initial position for map
+			defaultLoc = defaultLoc ? defaultLoc.split( ',' ) : [53.346881, -6.258860];
+			latLng = L.latLng( defaultLoc[0], defaultLoc[1] ); // Initial position for map.
 
-			this.map = new google.maps.Map( this.canvas, {
+			this.map = L.map( this.canvas, {
 				center: latLng,
-				zoom: 14,
-				streetViewControl: 0,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
+				zoom: 14
 			} );
-			this.marker = new google.maps.Marker( {position: latLng, map: this.map, draggable: true} );
+			this.map.addLayer( osmTileLayer );
+			this.marker = L.marker( latLng, {
+				draggable: true
+			} ).addTo( this.map );
 		},
 
 		// Initialize marker position
@@ -57,11 +57,12 @@
 
 			if ( coordinate ) {
 				location = coordinate.split( ',' );
-				this.marker.setPosition( new google.maps.LatLng( location[0], location[1] ) );
+				var latLng = L.latLng( location[0], location[1] );
+				this.marker.setLatLng( latLng );
 
 				zoom = location.length > 2 ? parseInt( location[2], 10 ) : 14;
 
-				this.map.setCenter( this.marker.position );
+				this.map.panTo( latLng );
 				this.map.setZoom( zoom );
 			} else if ( this.addressField ) {
 				this.geocodeAddress();
@@ -71,27 +72,27 @@
 		// Add event listeners for 'click' & 'drag'
 		addListeners: function () {
 			var that = this;
-			google.maps.event.addListener( this.map, 'click', function ( event ) {
-				that.marker.setPosition( event.latLng );
-				that.updateCoordinate( event.latLng );
+			this.map.on( 'click', function ( event ) {
+				that.marker.setLatLng( event.latlng );
+				that.updateCoordinate( event.latlng );
 			} );
 
-			google.maps.event.addListener( this.map, 'zoom_changed', function ( event ) {
-				that.updateCoordinate( that.marker.getPosition() );
+			this.map.on( 'zoom', function () {
+				that.updateCoordinate( that.marker.getLatLng() );
 			} );
 
-			google.maps.event.addListener( this.marker, 'drag', function ( event ) {
-				that.updateCoordinate( event.latLng );
+			this.marker.on( 'drag', function () {
+				that.updateCoordinate( that.marker.getLatLng() );
 			} );
 
-			this.$findButton.on( 'click', function () {
+			this.$findButton.on( 'click', function ( e ) {
+				e.preventDefault();
 				that.geocodeAddress();
-				return false;
 			} );
 
 			/**
 			 * Add a custom event that allows other scripts to refresh the maps when needed
-			 * For example: when maps is in tabs or hidden div.
+			 * For example: when maps is in tabs or hidden div (this is known issue of Google Maps)
 			 *
 			 * @see https://developers.google.com/maps/documentation/javascript/reference ('resize' Event)
 			 */
@@ -110,12 +111,8 @@
 		},
 
 		refresh: function () {
-			var zoom = this.map.getZoom(),
-				center = this.map.getCenter();
-
 			if ( this.map ) {
-				this.map.setZoom( zoom );
-				this.map.panTo( center );
+				this.map.panTo( this.map.getCenter() );
 			}
 		},
 
@@ -130,41 +127,40 @@
 
 			// If Meta Box Geo Location installed. Do not run auto complete.
 			if ( $( '.rwmb-geo-binding' ).length ) {
-				$address.on( 'selected_address', function () {
-					that.$findButton.trigger( 'click' );
-				} );
-
-				return false;
+				$address.on( 'selected_address', that.geocodeAddress );
+				return;
 			}
 
 			$address.autocomplete( {
 				source: function ( request, response ) {
-					var options = {
-						'address': request.term,
-						'region': that.$canvas.data( 'region' )
-					};
-					geocoder.geocode( options, function ( results ) {
+					$.get( 'https://nominatim.openstreetmap.org/search', {
+						format: 'json',
+						q: request.term,
+						countrycodes: that.$canvas.data( 'region' ),
+						"accept-language": that.$canvas.data( 'language' )
+					}, function( results ) {
 						if ( ! results.length ) {
 							response( [ {
 								value: '',
-								label: RWMB_Map.no_results_string
+								label: RWMB_Osm.no_results_string
 							} ] );
 							return;
 						}
 						response( results.map( function ( item ) {
 							return {
-								label: item.formatted_address,
-								value: item.formatted_address,
-								latitude: item.geometry.location.lat(),
-								longitude: item.geometry.location.lng()
+								label: item.display_name,
+								value: item.display_name,
+								latitude: item.lat,
+								longitude: item.lon
 							};
 						} ) );
-					} );
+					}, 'json' );
 				},
 				select: function ( event, ui ) {
-					var latLng = new google.maps.LatLng( ui.item.latitude, ui.item.longitude );
-					that.map.setCenter( latLng );
-					that.marker.setPosition( latLng );
+					var latLng = L.latLng( ui.item.latitude, ui.item.longitude );
+
+					that.map.panTo( latLng );
+					that.marker.setLatLng( latLng );
 					that.updateCoordinate( latLng );
 				}
 			} );
@@ -173,7 +169,7 @@
 		// Update coordinate to input field
 		updateCoordinate: function ( latLng ) {
 			var zoom = this.map.getZoom();
-			this.$coordinate.val( latLng.lat() + ',' + latLng.lng() + ',' + zoom );
+			this.$coordinate.val( latLng.lat + ',' + latLng.lng + ',' + zoom );
 		},
 
 		// Find coordinates by address
@@ -184,14 +180,21 @@
 				return;
 			}
 
-			geocoder.geocode( {'address': address}, function ( results, status ) {
-				if ( status !== google.maps.GeocoderStatus.OK ) {
+			$.get( 'https://nominatim.openstreetmap.org/search', {
+				format: 'json',
+				q: address,
+				limit: 1,
+				countrycodes: that.$canvas.data( 'region' ),
+				"accept-language": that.$canvas.data( 'language' )
+			}, function( result ) {
+				if ( result.length !== 1 ) {
 					return;
 				}
-				that.map.setCenter( results[0].geometry.location );
-				that.marker.setPosition( results[0].geometry.location );
-				that.updateCoordinate( results[0].geometry.location );
-			} );
+				var latLng = L.latLng( result[0].lat, result[0].lon );
+				that.map.panTo( latLng );
+				that.marker.setLatLng( latLng );
+				that.updateCoordinate( latLng );
+			}, 'json' );
 		},
 
 		// Get the address field.
@@ -240,16 +243,16 @@
 	};
 
 	function update() {
-		$( '.rwmb-map-field' ).each( function () {
+		$( '.rwmb-osm-field' ).each( function () {
 			var $this = $( this ),
-				controller = $this.data( 'mapController' );
+				controller = $this.data( 'osmController' );
 			if ( controller ) {
 				return;
 			}
 
-			controller = new MapField( $this );
+			controller = new OsmField( $this );
 			controller.init();
-			$this.data( 'mapController', controller );
+			$this.data( 'osmController', controller );
 		} );
 	}
 
@@ -258,4 +261,4 @@
 		$( '.rwmb-input' ).on( 'clone', update );
 	} );
 
-})( jQuery, document, window, google );
+} )( jQuery, L );
