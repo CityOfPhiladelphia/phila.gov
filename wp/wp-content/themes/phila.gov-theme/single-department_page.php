@@ -28,13 +28,6 @@ $children = get_posts( array(
 $ancestors = get_post_ancestors($post);
 $template = phila_get_selected_template();
 
-
-//Don't redirect when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
-if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
-  $firstchild = $children[0];
-  wp_redirect(get_permalink($firstchild->ID));
-  exit;
-}
 $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
@@ -62,8 +55,8 @@ get_header(); ?>
 
       get_dept_partial('hero', $hero_data);
 
-
-    else: //it's an old-style department ?>
+?>
+<?php  else: //it's an old-style department ?>
     <header>
       <div class="row">
         <div class="columns">
@@ -95,7 +88,14 @@ get_header(); ?>
 
       while ( have_posts() ) : the_post();
 
-        get_template_part( 'templates/single', 'on-site-content' );
+        //Don't render child menu index template when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
+        if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
+
+          get_template_part( 'partials/departments/v2/child', 'index' );
+
+        }else{
+          get_template_part( 'templates/single', 'on-site-content' );
+        }
       endwhile;
     }
   ?>

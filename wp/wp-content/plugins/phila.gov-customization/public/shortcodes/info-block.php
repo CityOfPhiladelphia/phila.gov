@@ -8,15 +8,9 @@
 */
 function info_block_shortcode($a, $content=null){
 
-  $allowed_html = [
-    'a' => [
-        'href'  => [],
-        'title' => [],
-      ],
-    'br'     => [],
-    'em'     => [],
-    'strong' => [],
-  ];
+  $a = shortcode_atts( array(
+    'paragraph-text' => false,
+  ), $a);
 
   $output = '';
 
@@ -24,8 +18,11 @@ function info_block_shortcode($a, $content=null){
     $output .= '<div class="row">';
     $output .= '<div class="columns">';
     $output .= '<div class="panel info info-block mbl">';
+    $output .= $a['paragraph-text'] === 'true' ? '<div class="paragraph">' : '<p>';
 
-    $output .= '<p>' . wp_kses($content, $allowed_html). '</p>';
+    $output .=  apply_filters('the_content', $content );
+    $output .= $a['paragraph-text'] === 'true' ? '</div>' : '</p>';
+
 
     $output .= '</div>';
     $output .= '</div>';

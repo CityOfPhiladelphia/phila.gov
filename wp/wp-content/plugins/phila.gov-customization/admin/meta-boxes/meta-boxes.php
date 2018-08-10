@@ -1249,8 +1249,9 @@ $meta_boxes[] = array(
     ),
     array(
       'id' => 'phila_v2_service_link',
-      'title' => 'All services url',
-      'name'  => 'All services url',
+      'title' => 'See all services url',
+      'name'  => 'See all services url',
+      'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-services/',
       'type'  => 'url',
       'class' => 'metabox-url',
     ),
@@ -1269,7 +1270,16 @@ $meta_boxes[] = array(
     ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
+    array(
+      'id' => 'phila_v2_programs_link',
+      'title' => 'See all programs',
+      'name'  => 'See all programs url',
+      'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+      'type'  => 'url',
+      'class' => 'metabox-url',
+    ),
   )
+
 );
 
 

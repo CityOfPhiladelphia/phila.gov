@@ -101,7 +101,7 @@ $row_content = rwmb_meta('collection_row');?>
             <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
         </div>
         <div class="columns medium-18 pbxl">
-          <?php echo $free_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
+          <?php echo apply_filters( 'the_content', $free_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] ); ?>
 
         </div>
       </div>

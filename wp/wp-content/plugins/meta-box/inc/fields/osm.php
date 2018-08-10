@@ -1,48 +1,26 @@
 <?php
 /**
- * The Google Maps field.
+ * The Open Street Map field.
  *
  * @package Meta Box
+ * @since   4.15.0
  */
 
 /**
- * Map field class.
+ * Open Street Map field class.
  */
-class RWMB_Map_Field extends RWMB_Field {
+class RWMB_OSM_Field extends RWMB_Field {
 	/**
 	 * Enqueue scripts and styles.
 	 */
 	public static function admin_enqueue_scripts() {
-		wp_enqueue_style( 'rwmb-map', RWMB_CSS_URL . 'map.css', array(), RWMB_VER );
+		// Because map is a hosted service, it's ok to use hosted Leaflet scripts.
+		wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css', array(), '1.3.1' );
+		wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js', array(), '1.3.1', true );
 
-		/**
-		 * Since June 2016, Google Maps requires a valid API key.
-		 *
-		 * @link http://googlegeodevelopers.blogspot.com/2016/06/building-for-scale-updates-to-google.html
-		 * @link https://developers.google.com/maps/documentation/javascript/get-api-key
-		 */
-		$args            = func_get_args();
-		$field           = $args[0];
-		$google_maps_url = add_query_arg(
-			array(
-				'key'      => $field['api_key'],
-				'language' => $field['language'],
-			),
-			'https://maps.google.com/maps/api/js'
-		);
-
-		/**
-		 * Allows developers load more libraries via a filter.
-		 *
-		 * @link https://developers.google.com/maps/documentation/javascript/libraries
-		 */
-		$google_maps_url = apply_filters( 'rwmb_google_maps_url', $google_maps_url );
-		wp_register_script( 'google-maps', esc_url_raw( $google_maps_url ), array(), RWMB_VER, true );
-		wp_enqueue_script( 'rwmb-map', RWMB_JS_URL . 'map.js', array(
-			'jquery-ui-autocomplete',
-			'google-maps',
-		), RWMB_VER, true );
-		self::localize_script( 'rwmb-map', 'RWMB_Map', array(
+		wp_enqueue_style( 'rwmb-osm', RWMB_CSS_URL . 'osm.css', array( 'leaflet' ), RWMB_VER );
+		wp_enqueue_script( 'rwmb-osm', RWMB_JS_URL . 'osm.js', array( 'jquery', 'leaflet' ), RWMB_VER, true );
+		self::localize_script( 'rwmb-osm', 'RWMB_Osm', array(
 			'no_results_string' => __( 'No results found', 'meta-box' ),
 		) );
 	}
@@ -58,22 +36,23 @@ class RWMB_Map_Field extends RWMB_Field {
 	public static function html( $meta, $field ) {
 		$address = is_array( $field['address_field'] ) ? implode( ',', $field['address_field'] ) : $field['address_field'];
 		$html    = sprintf(
-			'<div class="rwmb-map-field" data-address-field="%s">',
+			'<div class="rwmb-osm-field" data-address-field="%s">',
 			esc_attr( $address )
 		);
 
 		$html .= sprintf(
-			'<div class="rwmb-map-canvas" data-default-loc="%s" data-region="%s"></div>
-			<input type="hidden" name="%s" class="rwmb-map-coordinate" value="%s">',
+			'<div class="rwmb-osm-canvas" data-default-loc="%s" data-region="%s" data-language="%s"></div>
+			<input type="hidden" name="%s" class="rwmb-osm-coordinate" value="%s">',
 			esc_attr( $field['std'] ),
 			esc_attr( $field['region'] ),
+			esc_attr( $field['language'] ),
 			esc_attr( $field['field_name'] ),
 			esc_attr( $meta )
 		);
 
 		if ( $field['address_field'] ) {
 			$html .= sprintf(
-				'<button class="button rwmb-map-goto-address-button">%s</button>',
+				'<button class="button rwmb-osm-goto-address-button">%s</button>',
 				esc_html__( 'Find Address', 'meta-box' )
 			);
 		}
@@ -97,10 +76,6 @@ class RWMB_Map_Field extends RWMB_Field {
 			'address_field' => '',
 			'language'      => '',
 			'region'        => '',
-
-			// Default API key, required by Google Maps since June 2016.
-			// Users should overwrite this key with their own key.
-			'api_key'       => 'AIzaSyC1mUh87SGFyf133tpZQJa-s96p0tgnraQ',
 		) );
 
 		return $field;
@@ -135,9 +110,6 @@ class RWMB_Map_Field extends RWMB_Field {
 	 */
 	public static function the_value( $field, $args = array(), $post_id = null ) {
 		$value = parent::get_value( $field, $args, $post_id );
-		$args  = wp_parse_args( $args, array(
-			'api_key' => isset( $field['api_key'] ) ? $field['api_key'] : '',
-		) );
 		return self::render_map( $value, $args );
 	}
 
@@ -164,38 +136,23 @@ class RWMB_Map_Field extends RWMB_Field {
 			'marker_title' => '', // Marker title, when hover.
 			'info_window'  => '', // Content of info window (when click on marker). HTML allowed.
 			'js_options'   => array(),
-
-			// Default API key, required by Google Maps since June 2016.
-			// Users should overwrite this key with their own key.
-			'api_key'      => 'AIzaSyC1mUh87SGFyf133tpZQJa-s96p0tgnraQ',
 		) );
 
-		$google_maps_url = add_query_arg( 'key', $args['api_key'], 'https://maps.google.com/maps/api/js' );
+		wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css', array(), '1.3.1' );
+		wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js', array(), '1.3.1', true );
+		wp_enqueue_script( 'rwmb-osm-frontend', RWMB_JS_URL . 'osm-frontend.js', array( 'jquery', 'leaflet' ), RWMB_VER, true );
 
 		/*
-		 * Allows developers load more libraries via a filter.
-		 * @link https://developers.google.com/maps/documentation/javascript/libraries
-		 */
-		$google_maps_url = apply_filters( 'rwmb_google_maps_url', $google_maps_url );
-		wp_register_script( 'google-maps', esc_url_raw( $google_maps_url ), array(), RWMB_VER, true );
-		wp_enqueue_script( 'rwmb-map-frontend', RWMB_JS_URL . 'map-frontend.js', array( 'google-maps' ), RWMB_VER, true );
-
-		/*
-		 * Google Maps options.
-		 * Option name is the same as specified in Google Maps documentation.
-		 * This array will be convert to Javascript Object and pass as map options.
-		 * @link https://developers.google.com/maps/documentation/javascript/reference
+		 * More Open Street Map options
+		 * @link https://leafletjs.com/reference-1.3.0.html#map-option
 		 */
 		$args['js_options'] = wp_parse_args( $args['js_options'], array(
 			// Default to 'zoom' level set in admin, but can be overwritten.
-			'zoom'      => $zoom,
-
-			// Map type, see https://developers.google.com/maps/documentation/javascript/reference#MapTypeId.
-			'mapTypeId' => 'ROADMAP',
+			'zoom' => $zoom,
 		) );
 
 		$output = sprintf(
-			'<div class="rwmb-map-canvas" data-map_options="%s" style="width:%s;height:%s"></div>',
+			'<div class="rwmb-osm-canvas" data-osm_options="%s" style="width:%s;height:%s"></div>',
 			esc_attr( wp_json_encode( $args ) ),
 			esc_attr( $args['width'] ),
 			esc_attr( $args['height'] )

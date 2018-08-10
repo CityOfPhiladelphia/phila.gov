@@ -30,3 +30,17 @@
     </div>
   </div>
 <?php endif; ?>
+
+<?php $all_programs = rwmb_meta( 'phila_v2_programs_link' ) ?>
+<?php if ( $all_programs != '' ) :?>
+  <div class="row mtm">
+    <div class="columns">
+      <?php $see_all = array(
+          'URL' => $all_programs,
+          'content_type' => 'programs',
+          'nice_name' => 'Programs'
+        );?>
+      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+    </div>
+  </div>
+<?php endif; ?>

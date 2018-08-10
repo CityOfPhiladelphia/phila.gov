@@ -15,7 +15,7 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_media();
 		if ( ! is_admin() ) {
-			wp_register_script( 'media-grid', includes_url( 'js/media-grid.min.js' ), array( 'media-editor' ), '', true );
+			wp_register_script( 'media-grid', includes_url( 'js/media-grid.min.js' ), array( 'media-editor' ), '4.9.7', true );
 		}
 		wp_enqueue_style( 'rwmb-media', RWMB_CSS_URL . 'media.css', array(), RWMB_VER );
 		wp_enqueue_script( 'rwmb-media', RWMB_JS_URL . 'media.js', array( 'jquery-ui-sortable', 'underscore', 'backbone', 'media-grid' ), RWMB_VER, true );
@@ -149,7 +149,7 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	 * @return array|mixed
 	 */
 	public static function value( $new, $old, $post_id, $field ) {
-		$new = ! is_array( $new ) && is_string( $new ) ? explode( ',', $new ) : $new;
+		$new = rwmb_csv_to_array( $new );
 		array_walk( $new, 'absint' );
 		return array_filter( array_unique( $new ) );
 	}
@@ -163,6 +163,9 @@ class RWMB_Media_Field extends RWMB_File_Field {
 	 * @param array $field   The field parameters.
 	 */
 	public static function save( $new, $old, $post_id, $field ) {
+		if ( empty( $field['id'] ) || ! $field['save_field'] ) {
+			return;
+		}
 		$storage = $field['storage'];
 		$storage->delete( $post_id, $field['id'] );
 		parent::save( $new, array(), $post_id, $field );
