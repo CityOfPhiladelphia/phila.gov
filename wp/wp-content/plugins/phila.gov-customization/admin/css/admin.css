@@ -65,7 +65,8 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #commentstatusdiv,
 /*Hide View Attachment Page on Admin*/
 .attachment-info .view-attachment,
-.post-type-event_spotlight #postdivrich{
+.post-type-event_spotlight #postdivrich,
+#try-gutenberg-panel{
   display: none !important;
 }
 

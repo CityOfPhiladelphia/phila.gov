@@ -88,7 +88,7 @@ class RW_Meta_Box {
 	 *
 	 * @return bool
 	 */
-	protected function is_shown() {
+	public function is_shown() {
 		$show = apply_filters( 'rwmb_show', true, $this->meta_box );
 
 		return apply_filters( "rwmb_show_{$this->id}", $show, $this->meta_box );
@@ -144,10 +144,6 @@ class RW_Meta_Box {
 			wp_enqueue_style( 'rwmb-rtl', RWMB_CSS_URL . 'style-rtl.css', array(), RWMB_VER );
 		}
 
-		if ( 'seamless' === $this->style ) {
-			wp_enqueue_script( 'rwmb', RWMB_JS_URL . 'script.js', array( 'jquery' ), RWMB_VER, true );
-		}
-
 		// Load clone script conditionally.
 		foreach ( $this->fields as $field ) {
 			if ( $field['clone'] ) {
@@ -178,6 +174,9 @@ class RW_Meta_Box {
 	 * Add meta box for multiple post types
 	 */
 	public function add_meta_boxes() {
+		$screen = get_current_screen();
+		add_filter( "postbox_classes_{$screen->id}_{$this->id}", array( $this, 'postbox_classes' ) );
+
 		foreach ( $this->post_types as $post_type ) {
 			add_meta_box(
 				$this->id,
@@ -188,6 +187,23 @@ class RW_Meta_Box {
 				$this->priority
 			);
 		}
+	}
+
+	/**
+	 * Modify meta box postbox classes.
+	 *
+	 * @param  array $classes Array of classes.
+	 * @return array
+	 */
+	public function postbox_classes( $classes ) {
+		if ( $this->closed && ! in_array( 'closed', $classes ) ) {
+			$classes[] = 'closed';
+		}
+		if ( 'seamless' === $this->style ) {
+			$classes[] = 'rwmb-seamless';
+		}
+
+		return $classes;
 	}
 
 	/**
@@ -217,8 +233,7 @@ class RW_Meta_Box {
 
 		// Container.
 		printf(
-			'<div class="rwmb-meta-box%s" data-autosave="%s" data-object-type="%s">',
-			esc_attr( 'seamless' === $this->style ? ' rwmb-meta-box--seamless' : '' ),
+			'<div class="rwmb-meta-box" data-autosave="%s" data-object-type="%s">',
 			esc_attr( $this->autosave ? 'true' : 'false' ),
 			esc_attr( $this->object_type )
 		);
@@ -347,12 +362,10 @@ class RW_Meta_Box {
 		 *
 		 * @since 4.4.1
 		 */
-		if ( ! empty( $meta_box['pages'] ) ) {
-			$meta_box['post_types'] = $meta_box['pages'];
-		}
+		rwmb_change_array_key( $meta_box, 'pages', 'post_types' );
 
 		// Make sure the post type is an array and is sanitized.
-		$meta_box['post_types'] = array_map( 'sanitize_key', (array) $meta_box['post_types'] );
+		$meta_box['post_types'] = array_map( 'sanitize_key', rwmb_csv_to_array( $meta_box['post_types'] ) );
 
 		return $meta_box;
 	}

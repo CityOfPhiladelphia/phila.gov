@@ -125,6 +125,10 @@ HTML;
       get_template_part( 'partials/departments/v2/content', 'all-services' );
       break;
 
+    case 'all_programs_v2':
+      get_template_part( 'partials/departments/v2/content', 'all-programs' );
+      break;
+
 
     case 'forms_and_documents_v2':
       get_template_part( 'partials/departments/v2/content', 'forms-documents' );
