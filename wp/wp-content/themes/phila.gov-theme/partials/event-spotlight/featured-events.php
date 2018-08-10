@@ -19,7 +19,7 @@
       <div class="cell medium-<?php echo $grid ?> bdr-all feature pam grid-x">
         <h3 class="cell align-self-top"><?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h3>
         <p class="feature-description cell align-self-top">
-          <?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
+          <?php echo apply_filters('the_content', $feature['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
         </p>
         <div class="align-self-bottom feature-detail">
           <?php if (isset($feature['venue_name']) || isset($feature['address_1'])) :?>
