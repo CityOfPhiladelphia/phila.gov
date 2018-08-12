@@ -1,0 +1,15 @@
+#loginform{
+  display: none;
+}
+#nav::before{
+  display: block;
+  content: 'Editing is temporarily disabled. We expect editing to be available by 12:00 p.m. on Monday, August 13th.';
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+#login h1 a, .login h1 a {
+  background-image: url('../img/city-of-philadelphia-mobile@2x.png');
+  height:100px;
+  width:100px;
+}
