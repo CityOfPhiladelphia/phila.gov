@@ -159,7 +159,7 @@ get_header(); ?>
                     <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
                         <h3>Licenses, inspections & permits </h3>
-                        <p>Get a license, schedule an inspection, apply for a building permit.</p>
+                        <p>Get a license, schedule an inspection, apply for a building permit, get a property certification.</p>
                       </div>
                     </div>
                   </div>
