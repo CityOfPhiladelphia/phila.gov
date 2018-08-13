@@ -193,7 +193,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
             'size'  => '60'
           ),
           array(
-            'name'  => 'Does this link direct users away from beta.phila.gov?',
+            'name'  => 'Does this link direct users away from www.phila.gov?',
             'id'    => 'phila_off_site',
             'type'  => 'switch',
             'on_label'  => 'Yes',

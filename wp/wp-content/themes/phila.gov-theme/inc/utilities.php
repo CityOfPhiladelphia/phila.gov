@@ -3,11 +3,6 @@
  * Phila.gov utility functions
  */
 
-//this is used throughout the theme and is meant to be updated once the major switch happens
-function phila_util_echo_website_url(){
-  echo 'beta.phila.gov';
-}
-
 //this form is used throughout the theme and can be updated as needed
 function phila_util_echo_tester_url(){
   echo '/sign-up-to-be-a-phila-gov-tester';

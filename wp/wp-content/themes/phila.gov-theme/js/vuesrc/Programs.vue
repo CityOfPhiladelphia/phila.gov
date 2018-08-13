@@ -1,20 +1,21 @@
 <template>
   <div id="programs-initiatives-landing">
     <div class="grid-x grid-margin-x">
+      <div class="small-24 cell">
+        <form v-on:submit.prevent="onSubmit">
+          <div class="search">
+            <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field"
+            v-model="searchedVal">
+            <input type="submit" value="submit" class="search-submit">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
       <div class="small-24 medium-8 cell">
         <section>
-          <div class="panel phm">
-            <h3>Search within Programs</h3>
-            <form v-on:submit.prevent="onSubmit">
-              <div class="search">
-                <input id="post-search" type="text" name="search" placeholder="Search by title or keyword" class="search-field" ref="search-field"
-                v-model="searchedVal">
-                <input type="submit" value="submit" class="search-submit">
-              </div>
-            </form>
-          </div>
           <div class="accordion" data-accordion data-allow-all-closed="true"  data-multi-expand="true">
-            <div class="accordion-item is-active mtl" data-accordion-item>
+            <div class="accordion-item is-active" data-accordion-item>
               <a href="#" class="h4 accordion-title mbn">Filter by audience</a>
               <div class="accordion-content" data-tab-content>
                 <fieldset>
