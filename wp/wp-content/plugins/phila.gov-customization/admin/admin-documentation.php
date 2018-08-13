@@ -15,10 +15,10 @@ function phila_documentation_content(){
   }
   </style>
   <div class="wrap">
-    <h2>beta.phila.gov Documentation</h2>
+    <h2>phila.gov Documentation</h2>
   </div>
   <section id="intro">
-    <p>The following documentation is intended to address workflows specific to beta.phila.gov. If you don't see a topic listed, assume that the workflow is unchanged from that of a standard WordPress implementation and consult the original source of documentation.</p>
+    <p>The following documentation is intended to address workflows specific to phila.gov. If you don't see a topic listed, assume that the workflow is unchanged from that of a standard WordPress implementation and consult the original source of documentation.</p>
   </section>
   <nav>
     <span>Help Topics: <a href="#mailchimp">MailChimp</a> <br>

@@ -263,7 +263,7 @@ function phila_open_graph() {
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
-  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://beta.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
+  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
   <?php
 }
 

@@ -16,12 +16,11 @@ get_header(); ?>
         </div>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
-          <div class="medium-14 small-centered columns beta-message">
-            <span class="h1 break-after">Beta.phila.gov</span> <span class="h2 sub-title">is a work-in-progress.</span>
-            <p class="mvm">We’re looking for your input so we can design a website that better meets your needs. Send us your ideas through the site’s <span class="nowrap"><i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links.</span></p>
+          <div class="medium-14 small-centered columns welcome-message">
+            <div class="small-text"><i>welcome to</i></div>
+            <div class="h1">phila.gov</div>
           </div>
         </div>
-        <!-- End beta.phila.gov message -->
         <div class="row common-requests">
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
@@ -54,7 +53,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="http://www.phila.gov/personnel/JobOpps.html" class="mrs mbs equal">
+                <a href="/personnel/JobOpps.html" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
@@ -124,7 +123,7 @@ get_header(); ?>
           <div class="grid-x grid-margin-x">
             <div class="cell medium-12">
               <div class="card hover-fade">
-                <a href="https://<?php phila_util_echo_website_url()?>/parks-rec-finder" class="hover-fade">
+                <a href="/parks-rec-finder/" class="hover-fade">
                   <?php $image = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'medium', 'limit' => 1), $post = '27984')[0]['url']; ?>
                   <img src="<?php echo $image ?>" alt="">
                   <?php wp_reset_query(); ?>
@@ -137,7 +136,7 @@ get_header(); ?>
             </div>
             <div class="cell medium-12 grid-x">
               <div class="card card-fixed-height cell shrink align-self-top full hover-fade">
-                <a href="http://www.phila.gov/contracts/pages/default.aspx" class="hover-fade">
+                <a href="/contracts/pages/default.aspx" class="hover-fade">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
                       <i class="fa fa-copy fa-4x fa-fw"></i>
@@ -152,7 +151,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="card card-fixed-height cell shrink align-self-middle full hover-fade">
-                <a href="https://beta.phila.gov/departments/department-of-licenses-and-inspections/">
+                <a href="/departments/department-of-licenses-and-inspections/">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
                       <i class="fa fa-file-text fa-4x  fa-fw"></i>
@@ -160,7 +159,7 @@ get_header(); ?>
                     <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
                         <h3>Licenses, inspections & permits </h3>
-                        <p>Get a license, schedule an inspection, apply for a building permit.</p>
+                        <p>Get a license, apply for a building permit, get a property certification.</p>
                       </div>
                     </div>
                   </div>
@@ -200,66 +199,73 @@ get_header(); ?>
             <div class="medium-10 columns bdr-right-mu equal about">
               <section>
                 <h3>About the redesign</h3>
-                <p>We understand that the City of Philadelphia’s current website, phila.gov, isn’t easy to use. So we’re in the process of creating a new site from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clearer content.</p>
+                <p>We’re in the process of creating a new website for Philadelphia from the ground up—with simple, mobile-friendly designs, more intuitive organization, and clear content.</p>
 
-                <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:</p>
-
+                <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:
+                  </p>
                 <ul class="list-style-none mln pln pvm">
                   <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
-                  <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> <a href="<?php phila_util_echo_tester_url()?>">Sign up to be a beta.phila.gov tester</a>. We’ll contact you for specific feedback on features as we design them.</li>
                 </ul>
-
               </section>
             </div>
             <div class="show-for-medium medium-14 pll plm columns equal process">
               <section>
                 <h3>Where are we in the redesign process?</h3>
-                <p>For the past couple of years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
+                <p>For the past few years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
                 <div class="row collapse">
                   <div class="medium-8 columns center small-centered ben-franklin-blue marker">
                     <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
                   </div>
                 </div>
                 <div class="row collapse process-bar">
-                  <div class="medium-8 columns">
+                  <div class="medium-4 columns">
                     <section>
                       <header class="bg-medium-gray">
-                        <div class="valign process-label left-arrow-indent left-arrow-white">
+                        <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Alpha</h4>
                           </div>
                         </div>
                       </header>
-                      <div class="description">
-                        <span class="phs small-text">Alpha.phila.gov went live in December 2014. The alpha prototype was revised throughout 2015.</span>
-                      </div>
                     </section>
                   </div>
-                  <div class="medium-8 columns small-text">
+                  <div class="medium-4 columns small-text">
                     <section>
-                      <header class="bg-ben-franklin-blue">
-                        <div class="valign process-label bg-ben-franklin-blue left-arrow-indent left-arrow-medium-gray">
+                      <header class="bg-medium-gray">
+                        <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Beta</h4>
                           </div>
                         </div>
                       </header>
+                    </section>
+                  </div>
+                  <div class="medium-8 columns small-text">
+                    <section>
+                      <header class="bg-ben-franklin-blue">
+                        <div class="valign process-label bg-ben-franklin-blue left-arrow-indent right-arrow-ben-franklin-blue right-arrow">
+                          <div class="valign-cell">
+                            <h4 class="mbn h5 white">phila.gov</h4>
+                          </div>
+                        </div>
+                      </header>
                       <div class="description current">
-                        <span class="phs small-text">Versions of beta.phila.gov will roll out in 2016 and 2017.</span>
+                        <!-- use &period; so the wordpress-scraper doesn't find/replace the string -->
+                        <span class="phs small-text">The homepage of beta&period;phila&period;gov became the official City homepage in 2018, and the content of beta&period;phila&period;gov and phila&period;gov were merged.</span>
                       </div>
                     </section>
                   </div>
                   <div class="medium-8 columns end">
                     <section>
                       <header>
-                        <div class="valign process-label bg-medium-gray left-arrow-indent left-arrow-ben-franklin-blue right-arrow">
+                        <div class="valign process-label bg-medium-gray left-arrow-indent right-arrow">
                           <div class="valign-cell">
-                            <h4 class="mbn h5 white">Launch</h4>
+                            <h4 class="mbn h5 white">Migration</h4>
                           </div>
                         </div>
                       </header>
                       <div class="description">
-                        <span class="phs small-text">Beta.phila.gov will become the City’s new website in 2018. With your help, we’ll continue to improve it after that.</span>
+                        <span class="phs small-text">We’re continuing to bring content onto this new platform. With your help we’ll continue to improve it.</span>
                       </div>
                     </section>
                   </div>
