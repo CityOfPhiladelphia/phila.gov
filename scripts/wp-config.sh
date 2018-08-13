@@ -67,6 +67,9 @@ define('EMPTY_TRASH_DAYS', 7);
 /** Disable WP cron, it runs on every page load! */
 define('DISABLE_WP_CRON', true);
 
+/** Don't concatendate scripts, could be causing wysiwyg not to load properly */
+define( 'CONCATENATE_SCRIPTS', false );
+
 /** We manually update WP, so disable auto updates */
 define('WP_AUTO_UPDATE_CORE', false);
 
