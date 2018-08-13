@@ -1604,3 +1604,9 @@ function phila_get_post_label( $label ){
     return $label;
   }
 }
+
+add_action( 'login_enqueue_scripts', 'temp_disable_login' );
+
+function temp_disable_login() {
+    wp_enqueue_style( 'disable-login', get_stylesheet_directory_uri() . '/css/temp-disable-login.css' );
+}
