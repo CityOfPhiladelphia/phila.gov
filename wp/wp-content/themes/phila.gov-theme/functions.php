@@ -254,7 +254,7 @@ function phila_open_graph() {
     $type = 'article';
   }
 
-  $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI'];
 
   //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary">
