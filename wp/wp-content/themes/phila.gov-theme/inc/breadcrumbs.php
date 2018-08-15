@@ -18,13 +18,13 @@ function phila_breadcrumbs() {
     if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
-        echo '<li><a href="/the-latest/archive?template=press_release">Press releases</a></li>';
+        echo '<li><a href="/the-latest/archives?template=press_release">Press releases</a></li>';
       }elseif (phila_get_selected_template( $post->ID ) == 'post'){
         echo '<li><a href="/the-latest/archive?template=post">Posts</a></li>';
       }elseif ( phila_get_selected_template( $post->ID ) == 'action_guide' ) {
-        echo '<li><a href="/the-latest/archive?template=action_guide">Action guides</a></li>';
+        echo '<li><a href="/the-latest/archives?template=action_guide">Action guides</a></li>';
       }else {
-        echo '<li><a href="/the-latest/archive?template=featured">Featured</a></li>';
+        echo '<li><a href="/the-latest/archives?template=featured">Featured</a></li>';
       }
       echo '<li>';
       the_title();
@@ -45,14 +45,14 @@ function phila_breadcrumbs() {
 
     }elseif ( is_singular('phila_post') ) {
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      echo '<li><a href="/the-latest/archive/?template=post">Posts</a></li></li>';
+      echo '<li><a href="/the-latest/archives/?template=post">Posts</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
 
     }elseif ( is_singular('press_release') ) {
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      echo '<li><a href="/the-latest/archive/?template=press_release">Press releases</a></li></li>';
+      echo '<li><a href="/the-latest/archives/?template=press_release">Press releases</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
@@ -91,7 +91,7 @@ function phila_breadcrumbs() {
       }
       echo $output;
       echo '<li> '.$title.'</li>';
-      
+
     }elseif ( is_singular('programs') ) {
 
        $anc = get_post_ancestors( $post->ID );
