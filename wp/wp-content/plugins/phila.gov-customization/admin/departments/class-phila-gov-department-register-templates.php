@@ -102,7 +102,6 @@ class Phila_Gov_Deparment_Templates {
         'visible' => array(
           'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
         )
-        //'callback' => $this->phila_get_term_meta( $meta_boxes ),
       ),
     ),
   );
