@@ -254,7 +254,7 @@ function phila_open_graph() {
     $type = 'article';
   }
 
-  $link = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI'];
 
   //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary">
@@ -263,7 +263,7 @@ function phila_open_graph() {
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
   <meta property="og:url" content="<?php echo $link ?>"/>
   <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
-  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'http://beta.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
+  <meta property="og:image" content="<?php echo isset($img_src) ? $img_src : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
   <?php
 }
 
@@ -296,7 +296,7 @@ function phila_gov_scripts() {
 
   wp_style_add_data( 'ie-only', 'conditional', 'lt IE 9' );
 
-  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts'. $GLOBALS['phila_is_minified'] . '.js', array(), '0.7.0', true );
+  wp_enqueue_script( 'phila-scripts', get_stylesheet_directory_uri().'/js/phila-scripts'. $GLOBALS['phila_is_minified'] . '.js', array(), null, true );
 
   wp_enqueue_style( 'standards', get_stylesheet_directory_uri() . '/css/styles' . $GLOBALS['phila_is_minified'] . '.css' );
 
@@ -317,7 +317,7 @@ function phila_gov_scripts() {
 
   if( is_page_template( 'templates/the-latest-archive.php' ) ||     is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
   is_post_type_archive( 'programs' ) ){
-    wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), '0.1.0', true);
+    wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
 
     wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
@@ -1603,4 +1603,17 @@ function phila_get_post_label( $label ){
     }
     return $label;
   }
+}
+
+add_filter( 'style_loader_src', 'phila_vcremove_wp_ver_css_js', 9999 );
+add_filter( 'script_loader_src', 'phila_vcremove_wp_ver_css_js', 9999 );
+
+// remove wp version param from enqueued scripts
+function phila_vcremove_wp_ver_css_js( $src ) {
+
+  if ( strpos( $src, 'ver=' . get_bloginfo( 'version' ) ) ) {
+    $src = remove_query_arg( 'ver', $src );
+  }
+  return $src;
+
 }

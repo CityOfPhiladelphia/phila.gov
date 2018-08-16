@@ -54,7 +54,6 @@ echo 'Rendering nginx confs'
 sudo rm -rf /etc/nginx
 shopt -s globstar
 # Defaults
-[ ! "$ROBOTS_DISALLOW" ] && export ROBOTS_DISALLOW=/
 for f in nginx/**; do
   [ ! -f "$f" ] && continue
   sudo mkdir -p "$(dirname "/etc/$f")"

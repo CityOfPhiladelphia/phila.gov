@@ -2,7 +2,7 @@
 <div class="cell ppr-feat-activity large-8 medium-8 small-20 align-self-center">
   <h3 data-program_name="program_name"></h3>
   <p data-desc class="ppr-feat-activity__desc"></p>
-  <a data-id class="ppr-feat-activity__learn-more" href="https://beta.phila.gov/parks-rec-finder/#/program/">Learn More</a>
+  <a data-id class="ppr-feat-activity__learn-more" href="/parks-rec-finder/#/program/">Learn More</a>
 
     <div class="ppr-feat-activity__location flex-container">
       <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
           <span data-state></span>
           <span data-zip></span>
         </address>
-        <a data-facility href="https://beta.phila.gov/parks-rec-finder/#/location/">View on Map</a>
+        <a data-facility href="/parks-rec-finder/#/location/">View on Map</a>
       </div>
     </div>
     <footer class="ppr-feat-activity__meta align-spaced flex-container text-center">

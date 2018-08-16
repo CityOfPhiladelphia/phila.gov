@@ -133,7 +133,7 @@ $result->post_count = count( $result->posts );
           <?php endif; ?>
 
         <?php endwhile; ?>
-        <div class="grid-container">
+        <div class="grid-container group">
           <?php $see_all = array(
             'URL' => '/the-latest/archives/?template=post',
             'content_type' => $label,

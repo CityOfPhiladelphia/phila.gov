@@ -137,8 +137,8 @@ class RWMB_About {
 	 * Enqueue CSS and JS.
 	 */
 	public function enqueue() {
-		wp_enqueue_style( 'meta-box-about', RWMB_URL . 'inc/about/css/about.css' );
-		wp_enqueue_script( 'meta-box-about', RWMB_URL . 'inc/about/js/about.js', array( 'jquery' ), '', true );
+		wp_enqueue_style( 'meta-box-about', RWMB_URL . 'inc/about/css/about.css', array(), RWMB_VER );
+		wp_enqueue_script( 'meta-box-about', RWMB_URL . 'inc/about/js/about.js', array( 'jquery' ), RWMB_VER, true );
 	}
 
 	/**
@@ -165,7 +165,7 @@ class RWMB_About {
 	 *                             or just the current site. Multisite only. Default is false.
 	 */
 	public function redirect( $plugin, $network_wide ) {
-		if ( ! $network_wide && 'meta-box/meta-box.php' === $plugin && ! $this->is_bundled() ) {
+		if ( 'cli' !== php_sapi_name() && ! $network_wide && 'meta-box/meta-box.php' === $plugin && ! $this->is_bundled() ) {
 			wp_safe_redirect( $this->get_menu_link() );
 			die;
 		}
