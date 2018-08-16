@@ -161,3 +161,10 @@ ul#department_page-search-checklist li{
 #addtag .form-field.term-parent-wrap {
   display: none;
 }
+/* Override 25% width on rwmb-label, so editing meta fields on tags is normal */
+#edittag .rwmb-group-clone .rwmb-column .rwmb-label {
+  width: 250px;
+}
+#edittag .rwmb-field {
+  display: block;
+}
