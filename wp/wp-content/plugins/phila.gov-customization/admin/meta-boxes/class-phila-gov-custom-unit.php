@@ -16,10 +16,13 @@ if ( class_exists( 'RWMB_Field' ) ) {
         $units = rwmb_meta( 'unit', array( 'object_type' => 'term' ), $cat->term_id );
       }
 
+      if ( !isset( $unit ) )
+        return;
+
       $options = [];
 
       foreach ($units as $unit){
-        $options[] = (object) array( 'value' => sanitize_title_with_dashes($unit['name']), 'label' => $unit['name'] );
+        $options[] = (object) array( 'value' => $unit['name'], 'label' => $unit['name'] );
       }
 
      	return $options;
