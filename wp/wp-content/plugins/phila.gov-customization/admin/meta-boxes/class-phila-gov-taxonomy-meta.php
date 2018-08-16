@@ -12,7 +12,7 @@ class Phila_Gov_Taxonomy_Meta {
     add_filter( 'rwmb_meta_boxes', array($this, 'phila_register_taxonomy_meta_boxes' ), 10 );
 
   }
-  
+
   function phila_register_taxonomy_meta_boxes( $meta_boxes ){
     $meta_boxes[] = array(
       'title'      => '',
@@ -20,15 +20,16 @@ class Phila_Gov_Taxonomy_Meta {
 
       'fields' => array(
         array(
-          'desc' => 'Prevent this owner from appearing on the user-facing site? Primarily used for testing.',
+          'desc' => 'Prevent this owner from appearing on the user-facing site? Primarily used for staged content.',
           'id'   => 'hidden',
           'type' => 'checkbox',
         ),
         array(
           'type'  => 'group',
           'name' => 'Unit information',
-          'id'  => 'unit',
+          'id'  => 'department_units',
           'clone' => true,
+          'sort_clone'  => true,
           'desc'  => 'Does this owner have units that sit under it in the org. chart? If so, enter those units here. Used for expressing hierarchy throughout the site.',
           'add_button'  => '+ Add another unit',
           'fields'  => array(
