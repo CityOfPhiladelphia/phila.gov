@@ -95,6 +95,14 @@ class Phila_Gov_Deparment_Templates {
           'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
         )
       ),
+      array(
+        'id'  => 'units',
+        'name'  => 'Display staff grouped by the following units?',
+        'type' => 'unit',
+        'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
+      ),
     ),
   );
 

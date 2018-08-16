@@ -245,6 +245,13 @@ class Phila_Archives_Controller {
 
     $categories = get_categories( array( 'parent' => 0 ) );
 
+    foreach ($categories as $category => $term){
+      $hidden = get_term_meta( $term->term_id, 'hidden', true );
+      if ($hidden == 1){
+        unset($categories[$category]);
+      }
+    }
+
     $data = array();
 
     if ( empty( $categories ) ) {
