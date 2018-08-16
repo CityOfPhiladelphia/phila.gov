@@ -11,7 +11,7 @@ if (typeof phila_js_vars !== 'undefined') {
 
   $(document).on('open.zf.reveal', '#phila-lightbox-feature', function (e) {
     var $modal = $(this);
-    var ajaxURL = 'https://beta.phila.gov/wp-json/wp/v2/' + postRestBase + '/' + postID + '/' + '?_embed=true' ;
+    var ajaxURL = '/wp-json/wp/v2/' + postRestBase + '/' + postID + '/' + '?_embed=true' ;
     $modal.html('Loading...');
     $.ajax(ajaxURL).done(function (response) {
       var fullSizeImg = response._embedded["wp:featuredmedia"]["0"].media_details.sizes.full.source_url;

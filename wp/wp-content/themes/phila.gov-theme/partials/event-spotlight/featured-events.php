@@ -18,9 +18,9 @@
     <?php foreach($featured_events['features'] as $feature) : ?>
       <div class="cell medium-<?php echo $grid ?> bdr-all feature pam grid-x">
         <h3 class="cell align-self-top"><?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h3>
-        <p class="feature-description cell align-self-top">
-          <?php echo $feature['phila_custom_wysiwyg']['phila_wysiwyg_content'] ?>
-        </p>
+        <div class="feature-description cell align-self-top">
+          <?php echo apply_filters('the_content', $feature['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
+        </div>
         <div class="align-self-bottom feature-detail">
           <?php if (isset($feature['venue_name']) || isset($feature['address_1'])) :?>
           <div class="mvm grid-x align-top cell full-width">

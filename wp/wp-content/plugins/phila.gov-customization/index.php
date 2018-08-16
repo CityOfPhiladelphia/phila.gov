@@ -80,6 +80,7 @@ require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
 require $dir. '/public/class-phila-posts-controller.php';
 require $dir. '/public/class-phila-last-updated-controller.php';
 require $dir. '/public/class-phila-programs-controller.php';
+require $dir. '/public/hostname-redirect.php';
 require $dir. '/public/modify-post-type-links.php';
 require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
