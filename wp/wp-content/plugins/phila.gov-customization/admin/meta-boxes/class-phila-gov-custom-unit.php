@@ -6,7 +6,7 @@
  * @see http://metabox.io/?post_type=docs&p=390
  */
 if ( class_exists( 'RWMB_Field' ) ) {
-  
+
   class RWMB_Unit_Field extends RWMB_Checkbox_List_Field {
 
     public static function filter_options( $field, $options ) {
