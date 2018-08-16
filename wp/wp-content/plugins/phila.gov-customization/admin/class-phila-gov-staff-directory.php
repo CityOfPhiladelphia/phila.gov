@@ -108,7 +108,7 @@ class Phila_Gov_Staff_Directory {
         ),
         array(
           'id'  => 'units',
-          'name'  => 'Units associated with',
+          'name'  => 'Associated unit',
           'type' => 'unit',
           //'callback' => $this->phila_get_term_meta( $meta_boxes ),
         ),
