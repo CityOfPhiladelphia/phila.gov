@@ -52,9 +52,6 @@ class RWMB_Taxonomy_Advanced_Field extends RWMB_Taxonomy_Field {
 	 * @param array $field   The field parameters.
 	 */
 	public static function save( $new, $old, $post_id, $field ) {
-		if ( empty( $field['id'] ) || ! $field['save_field'] ) {
-			return;
-		}
 		$storage = $field['storage'];
 
 		if ( $new ) {
