@@ -22,7 +22,7 @@ if ( class_exists( 'RWMB_Field' ) ) {
       $options = [];
 
       foreach ($units as $unit){
-        $options[] = (object) array( 'value' => $unit['name'], 'label' => $unit['name'] );
+        $options[] = (object) array( 'value' => urlencode($unit['name']), 'label' => $unit['name'] );
       }
 
      	return $options;
