@@ -145,7 +145,7 @@ if ( $staff_member_loop->have_posts() ):
   <?php if ( isset( $unit ) ): ?>
     <div class="row">
       <div class="columns">
-      <h3><?php echo $unit ?></h3>
+      <h3><?php echo urldecode($unit) ?></h3>
     </div>
   </div>
   <?php endif; ?>
