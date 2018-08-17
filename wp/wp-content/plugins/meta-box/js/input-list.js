@@ -20,10 +20,10 @@ jQuery( function ( $ ) {
 
 	$( '.rwmb-input-list-select-all-none' ).toggle(
 		function () {
-			$( this ).parent().siblings( '.rwmb-input-list' ).find( 'input' ).prop( 'checked', true );
+			$('input[name="' + $(this).data('name') + '[]"]').prop('checked', true);
 		},
 		function () {
-			$( this ).parent().siblings( '.rwmb-input-list' ).find( 'input' ).prop( 'checked', false );
+			$('input[name="' + $(this).data('name') + '[]"]').prop('checked', false);
 		}
 	);
 } );

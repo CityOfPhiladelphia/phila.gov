@@ -290,7 +290,7 @@ abstract class RWMB_Field {
 	 * @param array $field   The field parameters.
 	 */
 	public static function save( $new, $old, $post_id, $field ) {
-		if ( empty( $field['id'] ) || ! $field['save_field'] ) {
+		if ( empty( $field['id'] ) ) {
 			return;
 		}
 		$name = $field['id'];
@@ -388,7 +388,6 @@ abstract class RWMB_Field {
 			'after'             => '',
 			'field_name'        => isset( $field['id'] ) ? $field['id'] : '',
 			'placeholder'       => '',
-			'save_field'        => true,
 
 			'clone'             => false,
 			'max_clone'         => 0,

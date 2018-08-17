@@ -16,7 +16,7 @@ if ( class_exists( 'RWMB_Field' ) ) {
         $units = rwmb_meta( 'unit', array( 'object_type' => 'term' ), $cat->term_id );
       }
 
-      if ( !isset( $unit ) )
+      if ( !isset( $units ) )
         return;
 
       $options = [];

@@ -10,6 +10,19 @@
  */
 abstract class RWMB_Choice_Field extends RWMB_Field {
 	/**
+	 * Walk options.
+	 *
+	 * @param array $field     Field parameters.
+	 * @param mixed $options   Select options.
+	 * @param mixed $db_fields Database fields to use in the output.
+	 * @param mixed $meta      Meta value.
+	 * @return string
+	 */
+	public static function walk( $field, $options, $db_fields, $meta ) {
+		return '';
+	}
+
+	/**
 	 * Get field HTML.
 	 *
 	 * @param mixed $meta  Meta value.
@@ -17,7 +30,11 @@ abstract class RWMB_Choice_Field extends RWMB_Field {
 	 * @return string
 	 */
 	public static function html( $meta, $field ) {
-		return '';
+		$meta      = (array) $meta;
+		$options   = self::call( 'get_options', $field );
+		$options   = self::call( 'filter_options', $field, $options );
+		$db_fields = self::call( 'get_db_fields', $field );
+		return ! empty( $options ) ? self::call( 'walk', $field, $options, $db_fields, $meta ) : null;
 	}
 
 	/**
@@ -37,25 +54,55 @@ abstract class RWMB_Choice_Field extends RWMB_Field {
 	}
 
 	/**
-	 * Transform field options into the verbose format.
-	 *
-	 * @param array $options Field options.
+	 * Get field names of object to be used by walker.
 	 *
 	 * @return array
 	 */
-	public static function transform_options( $options ) {
-		$transformed = array();
-		$options     = (array) $options;
-		foreach ( $options as $value => $label ) {
+	public static function get_db_fields() {
+		return array(
+			'parent' => 'parent',
+			'id'     => 'value',
+			'label'  => 'label',
+		);
+	}
+
+	/**
+	 * Get options for walker.
+	 *
+	 * @param array $field Field parameters.
+	 *
+	 * @return array
+	 */
+	public static function get_options( $field ) {
+		$options = array();
+		foreach ( (array) $field['options'] as $value => $label ) {
 			$option = is_array( $label ) ? $label : array(
 				'label' => (string) $label,
 				'value' => (string) $value,
 			);
 			if ( isset( $option['label'] ) && isset( $option['value'] ) ) {
-				$transformed[ $option['value'] ] = (object) $option;
+				$options[ $option['value'] ] = (object) $option;
 			}
 		}
-		return $transformed;
+		return $options;
+	}
+
+	/**
+	 * Filter options for walker.
+	 *
+	 * @param array $field   Field parameters.
+	 * @param array $options Array of choice options.
+	 *
+	 * @return array
+	 */
+	public static function filter_options( $field, $options ) {
+		$db_fields = self::call( 'get_db_fields', $field );
+		$label     = $db_fields['label'];
+		foreach ( $options as &$option ) {
+			$option         = apply_filters( 'rwmb_option', $option, $field );
+			$option->$label = apply_filters( 'rwmb_option_label', $option->$label, $option, $field );
+		}
+		return $options;
 	}
 
 	/**
@@ -69,7 +116,19 @@ abstract class RWMB_Choice_Field extends RWMB_Field {
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value, $args, $post_id ) {
-		$options = self::transform_options( $field['options'] );
+		return self::call( 'get_option_label', $field, $value );
+	}
+
+	/**
+	 * Get option label.
+	 *
+	 * @param array  $field Field parameters.
+	 * @param string $value Option value.
+	 *
+	 * @return string
+	 */
+	public static function get_option_label( $field, $value ) {
+		$options = self::call( 'get_options', $field );
 		return isset( $options[ $value ] ) ? $options[ $value ]->label : '';
 	}
 }
