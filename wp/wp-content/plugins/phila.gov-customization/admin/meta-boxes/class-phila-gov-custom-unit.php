@@ -13,7 +13,7 @@ if ( class_exists( 'RWMB_Field' ) ) {
       $current_cats = get_the_category();
 
       foreach($current_cats as $cat){
-        $units = rwmb_meta( 'unit', array( 'object_type' => 'term' ), $cat->term_id );
+        $units = rwmb_meta( 'department_units', array( 'object_type' => 'term' ), $cat->term_id );
       }
 
       if ( !isset( $units ) )
