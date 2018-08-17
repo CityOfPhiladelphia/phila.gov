@@ -19,55 +19,62 @@ class RWMB_User_Field extends RWMB_Object_Choice_Field {
 	public static function normalize( $field ) {
 		// Set default field args.
 		$field = wp_parse_args( $field, array(
-			'placeholder'   => __( 'Select an user', 'meta-box' ),
-			'query_args'    => array(),
-			'display_field' => 'display_name',
+			'placeholder' => __( 'Select an user', 'meta-box' ),
 		) );
-
-		// Query posts for field options.
-		$field['options'] = self::query( $field );
-
 		$field = parent::normalize( $field );
+
+		// Prevent select tree for user since it's not hierarchical.
+		$field['field_type'] = 'select_tree' === $field['field_type'] ? 'select' : $field['field_type'];
+
+		// Set to always flat.
+		$field['flatten'] = true;
+
+		// Set default query args.
+		$field['query_args'] = wp_parse_args( $field['query_args'], array(
+			'orderby' => 'display_name',
+			'order'   => 'asc',
+			'role'    => '',
+			'fields'  => 'all',
+		) );
 
 		return $field;
 	}
 
 	/**
-	 * Query users for field options.
+	 * Get users.
 	 *
-	 * @param  array $field Field settings.
-	 * @return array        Field options array.
+	 * @param array $field Field parameters.
+	 *
+	 * @return array
 	 */
-	public static function query( $field ) {
-		$display_field = $field['display_field'];
-		$args = wp_parse_args( $field['query_args'], array(
-			'orderby' => $display_field,
-			'order'   => 'asc',
-		) );
-		$users   = get_users( $args );
-		$options = array();
-		foreach ( $users as $user ) {
-			$options[ $user->ID ] = array(
-				'value' => $user->ID,
-				'label' => $user->$display_field,
-			);
-		}
-		return $options;
+	public static function get_options( $field ) {
+		$query = new WP_User_Query( $field['query_args'] );
+		return $query->get_results();
 	}
 
 	/**
-	 * Format a single value for the helper functions. Sub-fields should overwrite this method if necessary.
+	 * Get field names of object to be used by walker.
 	 *
-	 * @param array    $field   Field parameters.
-	 * @param string   $value   The value.
-	 * @param array    $args    Additional arguments. Rarely used. See specific fields for details.
-	 * @param int|null $post_id Post ID. null for current post. Optional.
+	 * @return array
+	 */
+	public static function get_db_fields() {
+		return array(
+			'parent' => 'parent',
+			'id'     => 'ID',
+			'label'  => 'display_name',
+		);
+	}
+
+	/**
+	 * Get option label.
+	 *
+	 * @param array  $field Field parameters.
+	 * @param string $value Option value.
 	 *
 	 * @return string
 	 */
-	public static function format_single_value( $field, $value, $args, $post_id ) {
-		$display_field = $field['display_field'];
-		$user          = get_userdata( $value );
-		return '<a href="' . esc_url( get_author_posts_url( $value ) ) . '">' . esc_html( $user->$display_field ) . '</a>';
+	public static function get_option_label( $field, $value ) {
+		$user  = get_userdata( $value );
+		return '<a href="' . get_author_posts_url( $value ) . '">' . $user->display_name . '</a>';
 	}
 }
