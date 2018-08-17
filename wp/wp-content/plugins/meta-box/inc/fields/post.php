@@ -16,10 +16,10 @@ class RWMB_Post_Field extends RWMB_Object_Choice_Field {
 	 * @return array
 	 */
 	public static function normalize( $field ) {
+		// Set default field args.
 		$field = wp_parse_args( $field, array(
-			'post_type'  => 'post',
-			'parent'     => false,
-			'query_args' => array(),
+			'post_type' => 'post',
+			'parent'    => false,
 		) );
 
 		$field['post_type'] = (array) $field['post_type'];
@@ -41,9 +41,11 @@ class RWMB_Post_Field extends RWMB_Object_Choice_Field {
 		$field = wp_parse_args( $field, array(
 			'placeholder' => $placeholder,
 		) );
+		$field = parent::normalize( $field );
 
-		// Query posts for field options.
-		$field['options'] = self::query( $field );
+		if ( ! isset( $field['query_args']['post_type'] ) ) {
+			$field['query_args']['post_type'] = $field['post_type'];
+		}
 
 		// Set parent option, which will change field name to `parent_id` to save as post parent.
 		if ( $field['parent'] ) {
@@ -51,36 +53,26 @@ class RWMB_Post_Field extends RWMB_Object_Choice_Field {
 			$field['field_name'] = 'parent_id';
 		}
 
-		$field = parent::normalize( $field );
+		// Set default query args.
+		$field['query_args'] = wp_parse_args( $field['query_args'], array(
+			'post_status'    => 'publish',
+			'posts_per_page' => - 1,
+		) );
 
 		return $field;
 	}
 
 	/**
-	 * Query posts for field options.
+	 * Get field names of object to be used by walker.
 	 *
-	 * @param  array $field Field settings.
-	 * @return array        Field options array.
+	 * @return array
 	 */
-	public static function query( $field ) {
-		$args = wp_parse_args( $field['query_args'], array(
-			'post_type'              => $field['post_type'],
-			'post_status'            => 'publish',
-			'posts_per_page'         => -1,
-			'no_found_rows'          => true,
-			'update_post_meta_cache' => false,
-			'update_post_term_cache' => false,
-		) );
-		$query   = new WP_Query( $args );
-		$options = array();
-		foreach ( $query->posts as $post ) {
-			$options[ $post->ID ] = array(
-				'value'  => $post->ID,
-				'label'  => $post->post_title,
-				'parent' => $post->post_parent,
-			);
-		}
-		return $options;
+	public static function get_db_fields() {
+		return array(
+			'parent' => 'post_parent',
+			'id'     => 'ID',
+			'label'  => 'post_title',
+		);
 	}
 
 	/**
@@ -101,17 +93,26 @@ class RWMB_Post_Field extends RWMB_Object_Choice_Field {
 	}
 
 	/**
-	 * Format a single value for the helper functions. Sub-fields should overwrite this method if necessary.
+	 * Get options for walker.
 	 *
-	 * @param array    $field   Field parameters.
-	 * @param string   $value   The value.
-	 * @param array    $args    Additional arguments. Rarely used. See specific fields for details.
-	 * @param int|null $post_id Post ID. null for current post. Optional.
+	 * @param array $field Field parameters.
+	 * @return array
+	 */
+	public static function get_options( $field ) {
+		$query = new WP_Query( $field['query_args'] );
+		return $query->have_posts() ? $query->posts : array();
+	}
+
+	/**
+	 * Get option label.
+	 *
+	 * @param array  $field Field parameters.
+	 * @param string $value Option value.
 	 *
 	 * @return string
 	 */
-	public static function format_single_value( $field, $value, $args, $post_id ) {
-		return ! $value ? '' : sprintf(
+	public static function get_option_label( $field, $value ) {
+		return sprintf(
 			'<a href="%s" title="%s">%s</a>',
 			esc_url( get_permalink( $value ) ),
 			the_title_attribute( array(

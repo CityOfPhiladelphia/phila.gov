@@ -17,47 +17,59 @@ class RWMB_Sidebar_Field extends RWMB_Object_Choice_Field {
 	 * @return array
 	 */
 	public static function normalize( $field ) {
-		$field = wp_parse_args( $field, array(
-			'placeholder' => __( 'Select a sidebar', 'meta-box' ),
-		) );
-
-		// Get sidebars for field options.
-		$field['options'] = self::query( $field );
-
+		// Set default field args.
 		$field = parent::normalize( $field );
+
+		// Prevent select tree for user since it's not hierarchical.
+		$field['field_type'] = 'select_tree' === $field['field_type'] ? 'select' : $field['field_type'];
+
+		// Set to always flat.
+		$field['flatten'] = true;
+
+		// Set default placeholder.
+		$field['placeholder'] = empty( $field['placeholder'] ) ? __( 'Select a sidebar', 'meta-box' ) : $field['placeholder'];
 
 		return $field;
 	}
 
 	/**
-	 * Get sidebars for field options.
+	 * Get users.
 	 *
-	 * @param  array $field Field settings.
-	 * @return array        Field options array.
+	 * @param array $field Field parameters.
+	 *
+	 * @return array
 	 */
-	public static function query( $field ) {
+	public static function get_options( $field ) {
 		global $wp_registered_sidebars;
 		$options = array();
 		foreach ( $wp_registered_sidebars as $sidebar ) {
-			$options[ $sidebar['id'] ] = array(
-				'value' => $sidebar['id'],
-				'label' => $sidebar['name'],
-			);
+			$options[] = (object) $sidebar;
 		}
 		return $options;
 	}
 
 	/**
-	 * Format a single value for the helper functions. Sub-fields should overwrite this method if necessary.
+	 * Get field names of object to be used by walker.
 	 *
-	 * @param array    $field   Field parameters.
-	 * @param string   $value   The value.
-	 * @param array    $args    Additional arguments. Rarely used. See specific fields for details.
-	 * @param int|null $post_id Post ID. null for current post. Optional.
+	 * @return array
+	 */
+	public static function get_db_fields() {
+		return array(
+			'parent' => 'parent',
+			'id'     => 'id',
+			'label'  => 'name',
+		);
+	}
+
+	/**
+	 * Get option label.
+	 *
+	 * @param array  $field Field parameters.
+	 * @param string $value Option value.
 	 *
 	 * @return string
 	 */
-	public static function format_single_value( $field, $value, $args, $post_id ) {
+	public static function get_option_label( $field, $value ) {
 		if ( ! is_active_sidebar( $value ) ) {
 			return '';
 		}

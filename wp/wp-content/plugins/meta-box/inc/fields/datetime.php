@@ -252,7 +252,7 @@ class RWMB_Datetime_Field extends RWMB_Text_Field {
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value, $args, $post_id ) {
-		if ( empty( $args['format'] ) ) {
+		if ( ! isset( $args['format'] ) ) {
 			return $value;
 		}
 		if ( ! $field['timestamp'] ) {
