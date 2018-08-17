@@ -189,15 +189,5 @@ if ( $staff_member_loop->have_posts() ):
     </section>
   <?php endif; ?>
 <?php wp_reset_query();?>
-<?php else: ?>
-<div class="mvm">
-  <div class="row">
-    <div class="large-24 columns">
-      <div class="placeholder center mbl mtm mtl-mu">
-        <p>This page must have at least one category in order to display a staff directory.</p>
-      </div>
-    </div>
-  </div>
-</div>
 <?php endif; ?>
 <?php echo '</section>'; ?>
