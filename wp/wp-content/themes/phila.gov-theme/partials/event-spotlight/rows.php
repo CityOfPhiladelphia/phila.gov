@@ -109,7 +109,9 @@
         $tag = isset($current_row['blog_posts']['tag']) ? $current_row['blog_posts']['tag'] : '';
         ?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
-          <?php include(locate_template('partials/posts/post-grid.php')); ?>
+          <div class="mvxl">
+            <?php include(locate_template('partials/posts/post-grid.php')); ?>
+          </div>
         </div>
 
     <?php endif; ?>
