@@ -17,6 +17,12 @@
             <li class="event medium-auto">
               <a href="#anchor-<?php echo $c ?>"><?php echo $registration['title'] ?></a>
             </li>
+          <?php elseif ( $current_row['spotlight_options'] == 'custom_text_multi'): ?>
+            <?php $custom_text_title =
+            $current_row['custom_text_multi_option'] ?>
+            <li class="event medium-auto">
+              <a href="#anchor-<?php echo $c ?>"><?php echo $custom_text_title['phila_custom_row_title']?></a>
+            </li>
           <?php elseif ( $current_row['spotlight_options'] == 'call_to_action_multi'): ?>
             <?php $phila_dept_homepage_cta =
             $current_row['call_to_action_multi_row']['phila_call_to_action_section']; ?>
