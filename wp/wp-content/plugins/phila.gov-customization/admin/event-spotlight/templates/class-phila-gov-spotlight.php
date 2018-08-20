@@ -240,6 +240,7 @@ class Phila_Gov_Event_Spotlight_Template {
                 'calendar' => 'Calendar',
                 'accordion' => 'Accordions',
                 'free_text' => 'Free text',
+                'custom_text_multi' => 'Custom text (multi)',
                 'call_to_action_multi' => 'Call to action (multi)',
                 'full_width_cta'  => 'Full-width call to action',
                 'image_list'  => 'Image list',
@@ -258,6 +259,16 @@ class Phila_Gov_Event_Spotlight_Template {
               'fields' => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
               )
+            ),
+            array(
+              'id'  => 'custom_text_multi_option',
+              'type'  => 'group',
+              'visible' => array(
+                'when'  => array(
+                  array('spotlight_options', '=', 'custom_text_multi')
+                )
+              ),
+              'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea_multi(),
             ),
             array(
               'id' => 'phila_registration',
