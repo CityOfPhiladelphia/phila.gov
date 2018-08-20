@@ -30,6 +30,17 @@
         </div>
       <?php endif; ?>
 
+    <?php elseif ( $current_row['spotlight_options'] == 'custom_text_multi'): ?>
+      <?php if ( isset( $current_row['custom_text_multi_option'] ) ):
+        $custom_text = $current_row['custom_text_multi_option'];
+        $multi_full_row = true;?>
+        <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
+          <div class="row mvxl">
+            <?php include(locate_template('partials/departments/content-custom-text-multi.php')); ?>
+          </div>
+        </div>
+      <?php endif; ?>
+
     <?php elseif ( $current_row['spotlight_options'] == 'registration'): ?>
       <?php if ( isset( $current_row['phila_registration'] ) ):
         $registration = $current_row['phila_registration']; ?>
