@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="columns pbxl">
+    <div class="columns">
       <div class="row fat-gutter">
         <?php foreach( $cards as $card ) : ?>
           <div class="medium-8 columns end mbl">
