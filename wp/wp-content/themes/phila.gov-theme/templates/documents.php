@@ -28,7 +28,7 @@
           <input type="submit" class="search-submit" />
         </div>
       <?php endif; ?>
-      <table class="responsive">
+      <table class="responsive js-hide-empty">
         <thead>
           <tr>
             <th <?php echo ($arr_length >= 5 ) ? 'class="table-sort" data-sort="title"' : '' ?>><span>Name</span></th>
@@ -55,13 +55,7 @@
           <td>
             <a href="<?php echo $document['url'] ?>"><span class="title"><?php echo $document['title']; ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
           </td>
-            <td class="description">
-              <?php if ( $content ): ?>
-                <?php echo $content; ?>
-              <?php else:?>
-                 No description available.
-              <?php endif; ?>
-            </td>
+            <td class="description"><?php echo isset( $content ) ? $content : ''; ?></td>
             <td class="date">
               <?php if ($date_override === '1') : ?>
                 <?php echo $global_document_published; ?>
