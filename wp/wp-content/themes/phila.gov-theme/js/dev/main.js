@@ -6,7 +6,6 @@ require('./site-wide-alerts');
 require('./city-directory-list');
 require('./collapsible-div');
 require('./document-tables');
-require('./feedback-forms');
 require('./filter');
 require('./global-is-active');
 require('./hashchange-check');
