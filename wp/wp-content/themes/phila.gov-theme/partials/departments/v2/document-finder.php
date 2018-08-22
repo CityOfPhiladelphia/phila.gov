@@ -20,15 +20,15 @@ $c = -1;
             <input type="text" class="table-search search-field" placeholder="Filter documents by title, category, or author" />
             <input type="submit" class="search-submit" />
           </div>
-          <table class="responsive mbxl">
+          <table class="responsive mbxl js-hide-empty">
             <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? '<caption class="ptn accessible">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] . '</caption>' : ''; ?>
             <thead>
               <tr>
                 <th class="table-sort" data-sort="title"><span>Title</span></th>
                 <th class="table-sort" data-sort="category"><span>Category</span></th>
                 <th class="table-sort" data-sort="author"><span>Author</span></th>
-                <th class="table-sort" data-sort="date"><span>Date</span></th>
-                <th><span>Format</span></th>
+                <th class="table-sort" data-sort="date" width="150"><span>Date</span></th>
+                <th width="100"><span>Format</span></th>
               </tr>
             </thead>
             <tbody class="search-sortable">
@@ -55,25 +55,21 @@ $c = -1;
                   <td>
                     <a href="<?php echo $full_url ?>"><span class="title"><?php echo $file['title'] ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
                   </td>
-                  <td class="category">
-                    <?php
+                  <td class="category"><?php
                     if( !empty( $type ) ) :
                       foreach ( $type as $t ) :
                         array_push( $types, $t->name );
                       endforeach;
                       echo implode( ', ', $types );
-                    endif;?>
-                  </td>
-                  <td class="author">
-                    <?php
+                    endif;?></td>
+                  <td class="author"><?php
                     if( !empty( $author ) ) :
                       foreach ( $author as $a ) :
                         array_push( $authors, $a->name );
                       endforeach;
                       echo implode( ', ', $authors );
                     endif;
-                    ?>
-                  </td>
+                    ?></td>
                   <td class="date">
                     <?php echo $published ?>
                   </td>
