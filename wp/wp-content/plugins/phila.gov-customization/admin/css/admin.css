@@ -70,6 +70,10 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   display: none !important;
 }
 
+.hide-on-load {
+  display: none;
+}
+
 .rwmb-button.remove-clone:hover {
   background: #C00;
 }
