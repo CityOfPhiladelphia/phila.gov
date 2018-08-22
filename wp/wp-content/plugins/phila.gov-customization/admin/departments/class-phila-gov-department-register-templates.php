@@ -66,7 +66,7 @@ class Phila_Gov_Deparment_Templates {
        array(
         'name'  => 'Should this page appear in the City government directory?',
         'id'    => 'phila_department_home_page',
-        'class' => 'hide-from-non-admin',
+        'class' => 'hide-from-non-admin hide-on-load',
         'type'  => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
@@ -89,6 +89,7 @@ class Phila_Gov_Deparment_Templates {
       ),
       array(
         'id' => 'phila_template_select_staff',
+        'class' => 'hide-on-load',
         'type' => 'custom_html',
         'std' => 'Visit <a href="/wp-admin/edit.php?post_type=staff_directory">staff members</a> section to add/edit staff.',
         'visible' => array(
@@ -97,6 +98,7 @@ class Phila_Gov_Deparment_Templates {
       ),
       array(
         'id'  => 'units',
+        'class' => 'hide-on-load',
         'name'  => 'Display staff grouped by the following units?',
         'type' => 'unit',
         'visible' => array(
