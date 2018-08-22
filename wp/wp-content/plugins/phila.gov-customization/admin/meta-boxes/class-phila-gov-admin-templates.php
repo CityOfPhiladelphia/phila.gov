@@ -62,13 +62,12 @@ class Phila_Gov_Admin_Templates {
 
     $meta_boxes[] = array(
       'id'       => 'service_template_selection',
-      'title'    => 'Select Template',
+      'title'    => 'Service page options',
       'post_types'    => array( 'service_page' ),
       'context'  => 'advanced',
       'priority' => 'high',
       'fields' => array(
         array(
-          'placeholder'  => 'Select a template',
           'id'  => 'phila_template_select',
           'type'  => 'select',
           'options' => array(
@@ -84,6 +83,26 @@ class Phila_Gov_Admin_Templates {
             'sort'     => true,
           ),
         ),
+        array(
+          'type'  => 'heading',
+          'name' => 'Alternate title',
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '!=', 'service_stub'),
+            ),
+          ),
+        ),
+        array(
+          'id'  => 'phila_service_alt_title',
+          'type'  => 'text',
+          'desc' => 'Enter an alternate title for this service. This will appear in place of the page title on alphabetical lists of services.',
+          'size'  => 100,
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '!=', 'service_stub'),
+            ),
+          ),
+        )
       ),
     );
      return $meta_boxes;
