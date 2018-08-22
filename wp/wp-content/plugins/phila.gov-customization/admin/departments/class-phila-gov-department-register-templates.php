@@ -26,6 +26,7 @@ class Phila_Gov_Deparment_Templates {
     'pages'    => array( 'department_page' ),
     'context'  => 'advanced',
     'priority' => 'high',
+    'id'       => 'department_template_selection',
 
     'fields' => array(
       array(
@@ -34,7 +35,6 @@ class Phila_Gov_Deparment_Templates {
         'class' => 'template-select',
         'clone' => false,
         'placeholder'  => 'Select a template',
-
         'options' => array(
           'default'                 => 'Default',
           'homepage_v2'             => 'Department homepage version 2',
