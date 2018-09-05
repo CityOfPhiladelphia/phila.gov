@@ -83,7 +83,7 @@ $tweet_intent = rwmb_meta('phila_social_intent');
       <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
     <?php endif; ?>
   </div>
-  <hr />
+  <hr class="margin-auto"/>
 </article>
 
 <?php wp_reset_postdata(); ?>
