@@ -12,13 +12,13 @@ module.exports = jQuery(document).ready(function($) {
 
   resultTemplate += '<div class="mbm"><i class="fa fa-{{&icon}}" aria-hidden="true"></i> <i>{{&contentType}}</i></div>';
 
-  resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr>';
+  resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr class="man">';
 
   var legacyTemplate = '<article><header class="search-entry-header"><h3 class="entry-title"><span class="label mrm bg-dark-gray">Legacy</span>';
 
   legacyTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
 
-  legacyTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr>';
+  legacyTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr class="man">';
 
   var SWIFTYPE_ENGINE = 'ALSW3neJArH_ozFvSDse';
 
