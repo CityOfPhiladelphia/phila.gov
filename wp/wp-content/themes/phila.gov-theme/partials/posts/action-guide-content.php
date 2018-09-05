@@ -13,7 +13,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
 
 <p class="lead"><i>To help you understand your rights and protections, the City of Philadelphia is creating action guides on federal policies. The action guides include facts, ways you can help, and other resources.</i></p>
 
-<div class="one-quarter-layout bdr-dark-gray content-action_guide">
+<div class="one-quarter-layout content-action_guide">
   <div class="grid-x grid-margin-x mvl one-quarter-row">
     <div class="cell medium-6 print-stack">
       <h3 id="get-informed">Get informed</h3>
@@ -21,8 +21,9 @@ $actions = phila_loop_clonable_metabox( $get_actions );
     <div class="medium-18 cell pbxl">
       <?php echo rwmb_meta('phila_action_get_informed'); ?>
     </div>
-  </div>
 
+  </div>
+  <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-6 cell">
       <h3 id="know-the-facts">Know the facts</h3>
@@ -38,7 +39,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
       <?php endforeach; ?>
     </div>
   </div>
-
+  <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-6 cell print-stack">
       <h3 id="take-action" class="mbn">Take action</h3>
