@@ -16,6 +16,7 @@
     foreach ( $list_items_group as $list_items ) :
       $item_title = isset( $list_items['phila_list_item_title'] ) ? $list_items['phila_list_item_title'] : '';
       $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
+      $item_external = isset( $list_items['phila_list_item_external'] ) ? $list_items['phila_list_item_external'] : '' ;
       $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
       $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
       $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
@@ -42,7 +43,7 @@
     if ( $item_featured ):
       $featured_output = '';
 
-      $featured_resources[$featured_display_order] = array('title' => $item_title , 'alt-title' => $item_alt_title ,  'url' => $item_url , 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );  ?>
+      $featured_resources[$featured_display_order] = array('title' => $item_title , 'alt-title' => $item_alt_title ,  'url' => $item_url, 'external' => $item_external, 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );  ?>
     <?php endif;?>
   <?php endforeach ?>
 
@@ -79,9 +80,9 @@
                 </span>
               </div>
               <?php if (!$featured_resources[$key]['alt-title'] == ''): ?>
-                <span class=""><?php echo $featured_resources[$key]['alt-title']; ?></span>
+                <span class="<?php if ($featured_resources[$key]['external']) echo 'external';?>"><?php echo $featured_resources[$key]['alt-title']; ?></span>
               <?php elseif (!$featured_resources[$key]['title'] == ''): ?>
-                <span class=""><?php echo $featured_resources[$key]['title']; ?></span>
+                <span class="<?php if ($featured_resources[$key]['external']) echo 'external';?>"><?php echo $featured_resources[$key]['title']; ?></span>
               <?php endif; ?>
             </header>
             <?php echo $columns == '24' ? '' : '<hr class="mll mrl">'; ?>
@@ -136,6 +137,7 @@
               <?php foreach ( $list_items_group as $list_items ) :
                 $item_title = isset( $list_items['phila_list_item_title'] ) ? $list_items['phila_list_item_title'] : '';
                 $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
+                $item_external = isset( $list_items['phila_list_item_external'] ) ? $list_items['phila_list_item_external'] : '';
                 $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
                 $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
                 $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
@@ -159,7 +161,7 @@
                     $icon = 'fa-file-text';
                 } ?>
 
-                <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>"><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
+                <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
 
               <?php endforeach; ?>
             </ul>
