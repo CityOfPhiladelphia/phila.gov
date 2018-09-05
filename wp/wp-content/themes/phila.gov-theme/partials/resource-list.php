@@ -61,15 +61,17 @@
       $limit = 4;
       $current_position = 0;
       ?>
-      <section class="row mbl <?php if( $item_count > 1 ) echo 'equal-height' ?>">
+    <div class="grid-container">
 
-      <div class="columns">
+      <div class="grid-x grid-padding-x mbl <?php if( $item_count > 1 ) echo 'equal-height' ?>">
+
+      <div class="cell">
           <h2 class="h3">Featured <?php echo strtolower(the_title()) ?></h2>
       </div>
 
         <?php
         foreach ($featured_resources as $key => $value): ?>
-        <div class="large-<?php echo $columns ?> columns">
+        <div class="large-<?php echo $columns ?> cell">
           <a href="<?php echo $featured_resources[$key]['url']; ?>"  class="card action-panel">
             <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
             <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
@@ -97,18 +99,20 @@
           endif;
         ?>
         <?php endforeach; ?>
-      </section>
+      </div>
+    </div>
     <?php endif; ?>
 
     <?php if ( !empty( $featured_resources ) && count($featured_resources) > 0) : ?>
-      <section class="row">
-        <div class="column">
-          <h2 class="h3 mbn">All <?php echo strtolower(the_title()) ?></h2>
-        </div>
-        <hr class="mtm pts" />
-      </section>
+      <div class="grid-container">
+        <section class="grid-x">
+          <div class="cell">
+            <h2 class="h3 ptn">All <?php echo strtolower(the_title()) ?></h2>
+          </div>
+        </section>
+      <hr class="man" />
+    </div>
     <?php endif; ?>
-    <div class="one-quarter-layout">
       <?php
       if ( ! empty( $resource_list_groups ) ) :
         $outer_loop = 0;
@@ -122,60 +126,59 @@
           $outer_loop++;
           $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
           $resource_list_slug = sanitize_title_with_dashes($resource_list_title); ?>
-          <div class="row one-quarter-row <?php echo ($outer_loop== 1) ?  '' : 'mvl' ?>">
-          <section>
-            <div class="columns medium-6"><header><h2 id="<?php echo $resource_list_slug ?>" class="h4"><?php echo  $resource_list_title ?></h2></header></div>
-            <div class="column medium-16 mbxl">
+          <div class="grid-container">
+            <div class="grid-x grid-padding-x one-quarter-row mvm">
+              <div class="cell medium-8"><header><h2 id="<?php echo $resource_list_slug ?>" class="h4"><?php echo  $resource_list_title ?></h2></header></div>
+              <div class="cell medium-16">
+                <?php
+                if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
+                  <div class="expandable" aria-controls="<?php echo $resource_list_slug . '-control' ?>" aria-expanded="false">
+                <?php endif; ?>
+                <div class="resource-list">
+                  <ul><?php
+                  $list_items_group = $resource_list_group['phila_resource_list_items'];?>
+                  <?php foreach ( $list_items_group as $list_items ) :
+                    $item_title = isset( $list_items['phila_list_item_title'] ) ? $list_items['phila_list_item_title'] : '';
+                    $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
+                    $item_external = isset( $list_items['phila_list_item_external'] ) ? $list_items['phila_list_item_external'] : '';
+                    $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
+                    $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
+                    $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
+                    $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
+                    $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
 
-            <?php
-            if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
-              <div class="expandable" aria-controls="<?php echo $resource_list_slug . '-control' ?>" aria-expanded="false">
+                    switch ($item_resource_type) {
+                      case ('phila_resource_document'):
+                        $icon = 'fa-file-text';
+                        break;
+
+                      case ('phila_resource_map'):
+                        $icon = 'fa-map-marker';
+                        break;
+
+                      case ('phila_resource_link'):
+                        $icon = 'fa-link';
+                        break;
+
+                      default:
+                        $icon = 'fa-file-text';
+                    } ?>
+
+                    <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
+
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+              <?php if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
+              </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo $resource_list_slug . '-control' ?>"> More + </a>
             <?php endif; ?>
-            <div class="resource-list">
-              <ul><?php
-              $list_items_group = $resource_list_group['phila_resource_list_items'];?>
-              <?php foreach ( $list_items_group as $list_items ) :
-                $item_title = isset( $list_items['phila_list_item_title'] ) ? $list_items['phila_list_item_title'] : '';
-                $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
-                $item_external = isset( $list_items['phila_list_item_external'] ) ? $list_items['phila_list_item_external'] : '';
-                $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
-                $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
-                $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
-                $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
-                $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
-
-                switch ($item_resource_type) {
-                  case ('phila_resource_document'):
-                    $icon = 'fa-file-text';
-                    break;
-
-                  case ('phila_resource_map'):
-                    $icon = 'fa-map-marker';
-                    break;
-
-                  case ('phila_resource_link'):
-                    $icon = 'fa-link';
-                    break;
-
-                  default:
-                    $icon = 'fa-file-text';
-                } ?>
-
-                <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
-
-              <?php endforeach; ?>
-            </ul>
           </div>
-          <?php if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
-          </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo $resource_list_slug . '-control' ?>"> More + </a>
-        <?php endif; ?>
-          </div>
-        </section>
+        </div>
         <?php if ($last_key != $key) : ?>
-          <hr class="mhn"/>
+          <hr class="mhn">
         <?php endif ?>
       </div>
-      <?php endforeach; ?>
-    </div>
+
+    <?php endforeach; ?>
   <?php endif; ?>
 <?php endif; ?>
