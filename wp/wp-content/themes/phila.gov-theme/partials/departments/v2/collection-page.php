@@ -3,7 +3,9 @@
 
 $row_content = rwmb_meta('collection_row');?>
 
-<div class="one-quarter-layout bdr-dark-gray">
+<div class="one-quarter-layout">
+
+<?php $last_key = phila_util_is_last_in_array( (array) $row_content ); ?>
 
 <?php foreach ($row_content as $key => $value ) :
   $current_row = $row_content[$key];
@@ -108,5 +110,10 @@ $row_content = rwmb_meta('collection_row');?>
       <?php endforeach; ?>
 
   <?php endif; ?>
+
+  <?php if ($last_key != $key) : ?>
+    <hr class="margin-auto"/>
+  <?php endif; ?>
+
 <?php endforeach ?>
 </div>
