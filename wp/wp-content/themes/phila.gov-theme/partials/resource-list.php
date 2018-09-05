@@ -8,81 +8,7 @@
   $user_selected_template = phila_get_selected_template();
   $resource_list_groups = rwmb_meta( 'phila_resource_list' );
 
-    if ( ! empty( $resource_list_groups ) ) :
-      $i=0;
-      $total = count($resource_list_groups);
-      $count = 0;
-      $featured_resources = array();
-      $list_item_output = '';
-
-      //group
-      foreach ( $resource_list_groups as $resource_list_group ) :
-        $i++;
-
-        //assign vars
-        $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
-        $resource_list_slug = sanitize_title_with_dashes($resource_list_title);
-
-        $list_item_output .= '<div class="row one-quarter-row mvl">
-        <section>';
-
-        $list_item_output .= '<div class="columns medium-6"><header><h2 id="' . $resource_list_slug . '" class="h4 phm pvs">' . $resource_list_title . '</h2></header></div>';
-        $list_item_output .= '<div class="column medium-16 pbxl">';
-        $list_item_output .= '<div class="resource-list">';
-        $list_item_output .= '<ul>';
-
-        //items
-        $list_items_group = $resource_list_group['phila_resource_list_items'];
-
-        foreach ( $list_items_group as $list_items ) :
-          $count++;
-
-          $item_title = isset( $list_items['phila_list_item_title'] ) ? $list_items['phila_list_item_title'] : '';
-          $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
-          $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
-          $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
-          $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
-          $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
-          $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
-
-          switch ($item_resource_type) {
-            case ('phila_resource_document'):
-              $icon = 'fa-file-text';
-              break;
-
-            case ('phila_resource_map'):
-              $icon = 'fa-map-marker';
-              break;
-
-            case ('phila_resource_link'):
-              $icon = 'fa-link';
-              break;
-
-            default:
-              $icon = 'fa-file-text';
-          }
-
-          if ( $item_featured ):
-            $featured_output = '';
-
-            $featured_resources[$featured_display_order] = array('title' => $item_title , 'alt-title' => $item_alt_title ,  'url' => $item_url , 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );
-          endif;
-
-          if ( $count === 4 ):
-            $expand = true;
-            $list_item_output .= '<div class="staff-bio expandable">';
-          endif;
-
-            $list_item_output .= '<li class="phm pvs clickable-row" data-href="' . $item_url . '"><a href="' . $item_url . '"><i class="fa ' . $icon . ' fa-lg" aria-hidden="true"></i> ' . $item_title . '</a></li>';
-
-
-        endforeach;
-
-        $list_item_output .=  '</ul></div></div></section></div>'; ?>
-
-      <?php endforeach; ?>
-
-      <!-- Loop featured resources -->
+        ?><!-- Loop featured resources -->
       <?php if ( !empty( $featured_resources ) ):?>
 
           <?php
@@ -95,7 +21,7 @@
           $limit = 4;
           $current_position = 0;
           ?>
-          <section class="row mbl <?php if( $item_count > 1 ) echo 'equal-height';?>">
+          <section class="row mbl <?php if( $item_count > 1 ) echo 'equal-height' ?>">
 
           <div class="columns">
               <h2 class="h3">Featured <?php echo strtolower(the_title()) ?></h2>
@@ -144,7 +70,80 @@
     <?php endif; ?>
 
     <div class="one-quarter-layout bdr-dark-gray">
-      <?php echo $list_item_output; ?>
+      <?php
+      if ( ! empty( $resource_list_groups ) ) :
+        $i=0;
+        $total = count($resource_list_groups);
+        $count = 0;
+        $featured_resources = array();
+
+        //group
+        foreach ( $resource_list_groups as $resource_list_group ) :
+          $i++;
+
+          //assign vars
+          $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
+          $resource_list_slug = sanitize_title_with_dashes($resource_list_title); ?>
+          <div class="row one-quarter-row mvl">
+          <section>
+
+            <div class="columns medium-6"><header><h2 id="<?php echo $resource_list_slug ?>" class="h4 phm pvs"><?php echo  $resource_list_title ?></h2></header></div>
+            <div class="column medium-16 pbxl">
+            <?php if ( $i > 3 ) : ?>
+            <div class="expandable" aria-controls="<?php echo $resource_list_slug . '-control' ?>" aria-expanded="false">
+            <?php endif; ?>
+            <div class="resource-list">
+              <ul>
+                <?php
+          //items
+          $list_items_group = $resource_list_group['phila_resource_list_items'];?>
+          <?php foreach ( $list_items_group as $list_items ) :
+            $count++;
+
+            $item_title = isset( $list_items['phila_list_item_title'] ) ? $list_items['phila_list_item_title'] : '';
+            $item_url = isset( $list_items['phila_list_item_url'] ) ? $list_items['phila_list_item_url'] : '';
+            $item_resource_type = isset( $list_items['phila_list_item_type'] ) ? $list_items['phila_list_item_type'] : '';
+            $item_featured = isset( $list_items['phila_featured_resource'] ) ? $list_items['phila_featured_resource'] : 0;
+            $item_alt_title = isset( $list_items['phila_list_item_alt_title'] ) ? $list_items['phila_list_item_alt_title'] : '';
+            $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
+            $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
+
+            switch ($item_resource_type) {
+              case ('phila_resource_document'):
+                $icon = 'fa-file-text';
+                break;
+
+              case ('phila_resource_map'):
+                $icon = 'fa-map-marker';
+                break;
+
+              case ('phila_resource_link'):
+                $icon = 'fa-link';
+                break;
+
+              default:
+                $icon = 'fa-file-text';
+            }
+
+            if ( $item_featured ):
+              $featured_output = '';
+
+              $featured_resources[$featured_display_order] = array('title' => $item_title , 'alt-title' => $item_alt_title ,  'url' => $item_url , 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );  ?>
+            <?php endif;?>
+
+
+              <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>"><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
+
+          <?php endforeach; ?>
+
+        </ul></div>
+        <?php if ( $i > 3 ) : ?>
+
+      </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo $resource_list_slug . '-control' ?>"> More + </a>
+      <?php endif ?>
+      </div></section></div>
+
+        <?php endforeach; ?>
     </div>
 
     <?php endif; ?>
