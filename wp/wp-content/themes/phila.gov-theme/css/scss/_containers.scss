@@ -3,6 +3,7 @@
 .one-quarter-layout div.grid-x.one-quarter-row,{
   border-bottom: 1px;
   border-bottom-style: solid;
+  border-color: color(medium-gray);
   &:last-of-type{
     border-bottom-width: 0px;
   }
