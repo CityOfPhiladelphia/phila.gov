@@ -31,7 +31,7 @@ get_header(); ?>
               <div class="columns small-10 mu-phl">Description</div>
               <div class="columns small-8">Connect</div>
             </div>
-            <hr class="strong" />
+            <hr class="strong"/>
             <div class="list">
               <?php while ( $department_list->have_posts() ) : $department_list->the_post(); ?>
                 <div class="row pvm">
@@ -47,8 +47,9 @@ get_header(); ?>
                     <span class="hidden"><?php echo  rwmb_meta('phila_department_keywords')?></span>               </p>
                   </div>
                   <?php get_template_part( 'partials/departments/v2/content', 'connect' ); ?>
+                  <hr class="ptl"/>
+
                 </div>
-                <hr />
               <?php endwhile; ?>
             </div>
             <?php endif; ?>
