@@ -21,7 +21,7 @@
       <div class="grid-container pvl">
         <div class="grid-x center">
           <div class="cell">
-            <h1><?= $parent->post_title ?></h1>
+            <h1><?php echo $parent->post_title ?></h1>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
               <?php if ( !empty( $owner ) ) : ?>
                 <div class="owner-logo">
                   <div class="sep"></div>
-                  <img src="<?= $owner['full_url']?>" alt="<?= $owner['alt']?>">
+                  <img src="<?php echo $owner['full_url']?>" alt="<?php echo $owner['alt']?>">
                 </div>
               <?php endif;?>
             </div>

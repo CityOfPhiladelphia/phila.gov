@@ -31,10 +31,10 @@
           ?>
 
             <?php if($heading_link_set): ?>
-              <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
+              <a href="<?php echo $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
                 <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
             <?php else: ?>
-              <h3 id="<?= sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
+              <h3 id="<?php echo sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
             <?php endif;  ?>
 
 
@@ -45,11 +45,11 @@
                 // conditionally linked header image
                 if($heading_link_set):
               ?>
-                <a href="<?= $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>">
-                  <img src="<?= $content['phila_heading_image']; ?> " alt="">
+                <a href="<?php echo $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>">
+                  <img src="<?php echo $content['phila_heading_image']; ?> " alt="">
                 </a>
               <?php else: ?>
-                <img src="<?= $content['phila_heading_image']; ?> " alt="">
+                <img src="<?php echo $content['phila_heading_image']; ?> " alt="">
               <?php endif;  ?>
 
 

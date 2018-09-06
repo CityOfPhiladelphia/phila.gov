@@ -5,7 +5,7 @@
     <div class="large-24 columns" >
 
         <h2>Things To Do</h2>
-        <img class="float-center" src=" <?= rwmb_meta('phila_v2_homepage_things_to_do_image','limit=1')[0]['full_url']  ?> " alt="">
+        <img class="float-center" src=" <?php echo rwmb_meta('phila_v2_homepage_things_to_do_image','limit=1')[0]['full_url']  ?> " alt="">
     </div>
 
 </div>

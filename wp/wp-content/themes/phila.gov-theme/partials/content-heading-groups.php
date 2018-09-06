@@ -16,10 +16,10 @@
       <section>
         <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
         <?php if (phila_get_selected_template() === 'prog_landing_page'): ?>
-          <h2 class="contrast" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
+          <h2 class="contrast" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
         <?php else : ?>
         <?php if ( $wysiwyg_heading != '' ): ?>
-          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?= sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?= $wysiwyg_heading; ?></h3>
+          <h3 class="black bg-ghost-gray phm-mu mtl mbm" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
         <?php endif; ?>
       <?php endif; ?>
       <div class="phm-mu">
