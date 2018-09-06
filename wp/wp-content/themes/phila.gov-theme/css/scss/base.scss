@@ -1,9 +1,8 @@
 @import 'phila-standards';
 
 @import 'mixins';
-@import 'maps';
+@import 'sass-maps';
 @import 'layout';
-@import 'modules';
 @import 'wp-core';
 @import 'swiftype';
 @import 'swiftype-autocomplete';
@@ -15,39 +14,37 @@
 
 @import 'card';
 @import 'custom-text';
-@import 'departments';
-@import 'documents';
 @import 'expandable';
 @import 'get-involved';
-@import 'hero-header';
 @import 'jotform';
 @import 'label';
 @import 'lightbox';
 @import 'panel';
-@import 'placeholder';
-@import 'post';
-@import 'programs-initiatives';
 @import 'resource-list';
 @import 'search';
 @import 'service-updates';
 @import 'social-media';
-@import 'staff-directory';
 @import 'sticky-nav';
 @import 'table';
-@import 'things-to-do';
-@import 'our-locations';
 @import 'pagination';
-@import 'linked-image-grid';
 @import 'alerts';
 
-@import 'home';
-
-@import 'standards-overrides';
-
-@import 'modules/event-spotlight';
+@import 'modules/hero-header';
 @import 'modules/hero-half';
 @import 'modules/image-list';
+@import 'modules/linked-image-grid';
+@import 'modules/our-locations';
 @import 'modules/registration';
 
+@import 'pages/departments';
+@import 'pages/documents';
+@import 'pages/event-spotlight';
+@import 'pages/home';
+@import 'pages/post';
+@import 'pages/programs-initiatives';
+@import 'pages/staff-directory';
+@import 'pages/things-to-do';
+
+@import 'standards-overrides';
 
 @import 'print';
