@@ -36,7 +36,7 @@
 
           <div class="row one-quarter-row mvl">
             <div class="medium-6 columns">
-              <h3 id="<?= sanitize_title_with_dashes($child->post_title)?>"><?php echo $child->post_title ?></h3>
+              <h3 id="<?php echo sanitize_title_with_dashes($child->post_title)?>"><?php echo $child->post_title ?></h3>
             </div>
               <div class="medium-18 columns pbxl">
                 <?php echo rwmb_meta('phila_meta_desc', '', $child->ID)?>

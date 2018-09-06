@@ -1,21 +1,21 @@
 
 <header>
 
-    <div class="hero-content" style="background-image:url(<?= $this->bg['desktop'] ?>) ">
+    <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) ">
 
             <?php if ( $this->is_homepage_v2) : ?>
-                <img class="show-for-small-only" src="<?= $this->bg['mobile'] ?>" alt="">
+                <img class="show-for-small-only" src="<?php echo $this->bg['mobile'] ?>" alt="">
             <?php endif; ?>
 
             <div class="hero-wrap">
 
                 <?php if (!empty($this->bg['photo_credit']) ): ?>
                   <div class="photo-credit small-text">
-                    <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?= $this->bg['photo_credit'] ?></span>
+                    <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo $this->bg['photo_credit'] ?></span>
                   </div>
                 <?php endif; ?>
 
-                <div class="row expanded <?= $this->is_homepage_v2 ? 'pbs pvxxl-mu' : 'pbl' ?>">
+                <div class="row expanded <?php echo $this->is_homepage_v2 ? 'pbs pvxxl-mu' : 'pbl' ?>">
 
                         <div class="medium-18 small-centered columns text-overlay">
                             <?php echo phila_get_department_homepage_typography( $this->parent ); ?>
@@ -23,7 +23,7 @@
                             <?php if ($this->is_homepage_v2): ?>
                               <div class="row">
                                 <div class="medium-16 small-centered columns text-overlay">
-                                  <p class="sub-title mbn-mu"><strong><?= phila_get_item_meta_desc( ); ?></strong></p>
+                                  <p class="sub-title mbn-mu"><strong><?php echo phila_get_item_meta_desc( ); ?></strong></p>
                                 </div>
                               </div>
                             <?php endif;?>

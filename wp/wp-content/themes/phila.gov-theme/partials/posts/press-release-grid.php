@@ -78,7 +78,7 @@ if( !empty($tag) ) {
 <?php $label = 'press_release' ?>
 <?php $count = 0; ?>
 
-<div class="press-grid<?= ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
+<div class="press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
     <?php if (!is_page_template('templates/the-latest.php')): ?>
