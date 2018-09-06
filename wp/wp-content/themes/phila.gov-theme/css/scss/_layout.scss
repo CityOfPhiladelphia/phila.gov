@@ -167,6 +167,12 @@ hr {
   margin-left: 0.71429rem;
   margin-right: 0.71429rem
 }
+
+.vr{
+  padding: 0 0 0 $spacing-medium;
+  border-left: 4px solid color(ghost-gray);
+}
+
 .margin-auto{
   margin-left:auto;
   margin-right:auto;
