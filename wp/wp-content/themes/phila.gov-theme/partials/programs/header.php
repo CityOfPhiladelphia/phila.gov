@@ -6,8 +6,14 @@
   $hero = rwmb_meta( 'prog_header_img', array( 'limit' => 1 ) );
   $hero = reset($hero);
 
-  $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
-  $sub_hero = reset( $sub_hero );
+  $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $post->ID);
+
+  if ( !empty( $sub_hero ) ):
+    $sub_hero = reset( $sub_hero );
+  else:
+    $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
+    $sub_hero = reset( $sub_hero );
+  endif;
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
   $owner = reset($owner);

@@ -159,16 +159,16 @@ class Phila_Gov_Register_Program_Templates {
 
       'fields' => array(
         array(
-          'id'       => 'sub_head',
-          'name'    => 'Subheader text',
+          'id'    => 'prog_sub_head',
+          'name'  => 'Subheader text',
           'type'  => 'text',
           'desc'  => 'Used in the header to associate this page with its parent. <br /> E.g. A community school',
           'columns' => 6,
         ),
         array(
-          'id'       => 'association_img',
-          'name'    => 'Header image',
-          'type'  => 'image_advanced',
+          'id'   => 'prog_association_img',
+          'name' => 'Header image',
+          'type' => 'image_advanced',
           'max_file_uploads' => 1,
           'desc'  => 'Minimum size 700px by 500px. Overrides image field from program homepage.',
           'columns' => 3,
