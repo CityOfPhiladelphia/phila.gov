@@ -40,7 +40,8 @@ class Phila_Gov_Register_Program_Templates {
           'options' => array(
             'prog_landing_page'  => 'Homepage',
             'phila_one_quarter'    => '1/4 Headings (subpage)',
-            'prog_off_site' => 'Off-site program'
+            'prog_off_site' => 'Off-site program',
+            'prog_association'  => 'Subpage with association'
           ),
           'admin_columns' => array(
             'position' => 'after date',
@@ -79,7 +80,7 @@ class Phila_Gov_Register_Program_Templates {
       'visible' => array(
         'when' => array(
           array( 'phila_template_select', '=', 'prog_landing_page' ),
-          array( 'phila_template_select', '=', 'prog_off_site' )
+          array( 'phila_template_select', '=', 'prog_off_site' ),
         ),
         'relation'  => 'or'
       ),
@@ -105,7 +106,7 @@ class Phila_Gov_Register_Program_Templates {
           'columns' => 3,
           'hidden' => array(
             'when' => array(
-              array( 'phila_template_select', '=', 'prog_off_site' )
+              array( 'phila_template_select', '=', 'prog_off_site' ),
             ),
           ),
         ),
@@ -131,8 +132,9 @@ class Phila_Gov_Register_Program_Templates {
           'columns' => 3,
           'hidden' => array(
             'when' => array(
-              array( 'phila_template_select', '=', 'prog_off_site' )
+              array( 'phila_template_select', '=', 'prog_off_site' ),
             ),
+            'relation'  => 'or'
           ),
         ),
         array(
@@ -140,6 +142,38 @@ class Phila_Gov_Register_Program_Templates {
           'name'  => 'Photo credit',
         ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_title('Name & organization', 'phila_photo_credit', 'E.g.: N. Santos for VISIT PHILADELPHIA™', '60' ),
+      )
+    );
+
+    $meta_boxes[] = array(
+      'id'       => 'phila_sub_association',
+      'title'    => 'Association content',
+      'pages' => array( 'programs' ),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array( 'phila_template_select', '=', 'prog_association' )
+        ),
+      ),
+
+      'fields' => array(
+        array(
+          'id'       => 'sub_head',
+          'name'    => 'Subheader text',
+          'type'  => 'text',
+          'desc'  => 'Used in the header to associate this page with its parent. <br /> E.g. A community school',
+          'columns' => 6,
+        ),
+        array(
+          'id'       => 'association_img',
+          'name'    => 'Header image',
+          'type'  => 'image_advanced',
+          'max_file_uploads' => 1,
+          'desc'  => 'Minimum size 700px by 500px. Overrides image field from program homepage.',
+          'columns' => 3,
+        ),
+
       )
     );
 
