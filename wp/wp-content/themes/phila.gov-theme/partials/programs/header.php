@@ -8,6 +8,8 @@
 
   $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $post->ID);
 
+  $sub_heading = rwmb_meta('prog_sub_head');
+
   if ( !empty( $sub_hero ) ):
     $sub_hero = reset( $sub_hero );
   else:
@@ -23,11 +25,20 @@
 ?>
 <header>
   <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
-    <div class="hero-subpage" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
-      <div class="grid-container pvl">
+    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
+      <div class="grid-container pvxl">
         <div class="grid-x center">
           <div class="cell">
-            <h1><?php echo $parent->post_title ?></h1>
+            <?php if(!empty($sub_heading)) : ?>
+              <hr>
+            <?php endif ?>
+            <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>><?php echo $parent->post_title ?></h1>
+            <?php if(!empty($sub_heading)) : ?>
+              <hr>
+            <?php endif ?>
+            <?php if(!empty($sub_heading)) : ?>
+                <h3><?php echo $sub_heading ?></h3>
+            <?php endif;?>
           </div>
         </div>
       </div>
