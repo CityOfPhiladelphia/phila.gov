@@ -23,7 +23,6 @@ if ( class_exists( 'RWMB_Field' ) ) {
 
       foreach ($units as $key => $value){
         foreach($value as $name) {
-
           $options[] = (object) array( 'value' => urlencode($name['name']), 'label' => $key . ' - ' . $name['name']  );
         }
       }
