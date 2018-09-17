@@ -298,6 +298,14 @@ function phila_register_meta_boxes( $meta_boxes ){
                   'required' => true,
                 ),
                 array(
+                   //'name' => __('Featured Resource Summary', 'rwmb'),
+                  'id'   => 'phila_list_item_external',
+                  'name' => 'Does this link take users away from phila.gov?',
+                  'type' => 'switch',
+                  'on_label' => 'Yes',
+                  'off_label'  => 'No'
+                ),
+                array(
                    'name' => __('Item Icon', 'rwmb'),
                    'id'   => 'phila_list_item_type',
                    'type' => 'select',
@@ -318,14 +326,15 @@ function phila_register_meta_boxes( $meta_boxes ){
                     'name' => __('Alternate Featured Title', 'rwmb'),
                     'id'   => 'phila_list_item_alt_title',
                     'type' => 'text',
+                    'hidden' => array( 'phila_featured_resource', '!=', true ),
+
                   ),
                   array(
                      'name' => __('Featured Resource Summary', 'rwmb'),
                      'id'   => 'phila_featured_summary',
                      'class'   => 'phila_featured-summary',
                      'type' => 'textarea',
-                     //TODO: Conditional logic doesn't appear to work on cloned fields.
-                     //'hidden' => array( 'phila_featured_resource', '!=', true ),
+                     'hidden' => array( 'phila_featured_resource', '!=', true ),
                   ),
                   array(
                     'name'  => 'Display Order',
@@ -338,6 +347,7 @@ function phila_register_meta_boxes( $meta_boxes ){
                       '3' => '3',
                       '4' => '4',
                     ),
+                    'hidden' => array( 'phila_featured_resource', '!=', true ),
                   ),
                 ),
               ),

@@ -10,14 +10,13 @@
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
 ?>
+
 <?php if ( !empty($heading_content) ) : ?>
-  <div class="one-quarter-layout bdr-dark-gray">
+  <?php $last_key = phila_util_is_last_in_array( (array) $heading_content ); ?>
 
-    <?php foreach ( $heading_content as $content ): ?>
-
-
+  <div class="one-quarter-layout">
+    <?php foreach ( $heading_content as $key => $content ): ?>
       <div class="row one-quarter-row mvl">
-
         <div class="medium-6 columns">
 
           <?php
@@ -97,6 +96,9 @@
             <?php endif;?>
           </div>
         </div>
+        <?php if ($last_key != $key) : ?>
+          <hr class="margin-auto"/>
+        <?php endif; ?>
     <?php endforeach; ?>
   </div>
 <?php endif; ?>

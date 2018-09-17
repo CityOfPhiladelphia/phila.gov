@@ -17,7 +17,7 @@
 
     <div class="row">
       <div class="columns">
-        <div class="one-quarter-layout bdr-dark-gray">
+        <div class="one-quarter-layout">
 
           <?php
           $args = array(
@@ -29,7 +29,10 @@
             'post_status' => array('publish', 'private')
           );
           $children = get_children( $args );
-          foreach ($children as $child) : ?>
+
+          $last_key = phila_util_is_last_in_array( (array) $children );
+
+          foreach ($children as $key => $child) : ?>
 
           <div class="row one-quarter-row mvl">
             <div class="medium-6 columns">
@@ -40,6 +43,9 @@
                 <a href="<?php echo get_permalink($child->ID) ?>">Learn more <i class="fa fa-arrow-right"></i></a>
               </div>
             </div>
+            <?php if ($last_key != $key) : ?>
+            <hr class="mhn"/>
+          <?php endif ?>
           <?php endforeach;?>
         </div>
       </div>

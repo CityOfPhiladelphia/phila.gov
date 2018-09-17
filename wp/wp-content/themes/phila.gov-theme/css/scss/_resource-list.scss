@@ -1,5 +1,4 @@
 .resource-list {
-  margin-bottom: 3rem;
 
   header {
     background-color: color(dark-gray);
@@ -13,10 +12,13 @@
   }
   ul {
       list-style: none;
-      margin-left: 0;
+      margin: 0;
       padding-left: 0;
       display: block;
     li {
+      &:first-child{
+        margin-top:0;
+      }
       background-color: color(ghost-gray);
       margin: .75rem 0rem;
       a {
