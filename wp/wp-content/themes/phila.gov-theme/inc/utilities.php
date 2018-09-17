@@ -163,3 +163,12 @@ function phila_make_regular_quote($string){
 
   return $string;
 }
+
+/*
+ * Returns true if element is last item in array
+*/
+function phila_util_is_last_in_array( $array ){
+  $arrayKeys = array_keys( $array );
+  $lastArrayKey = array_pop( $arrayKeys );
+  return $lastArrayKey;
+}

@@ -102,7 +102,7 @@ if ( $staff_member_loop->have_posts() ):
         $staff_leadership_output .= '<div class="medium-13 columns staff-summary">';
 
         if ( strlen( $staff_summary ) > 820 ):
-          $staff_leadership_output .=  '<div class="staff-bio expandable">' . apply_filters( 'the_content', $staff_summary) . '</div><a href="#" data-toggle="expandable" class="float-right"> Expand + </a>';
+          $staff_leadership_output .=  '<div class="staff-bio expandable" aria-controls="' . sanitize_title_with_dashes($staff_title)  . '-control"' . ' aria-expanded="false">' . apply_filters( 'the_content', $staff_summary) . '</div><a href="#" data-toggle="expandable" class="float-right" id="' .  sanitize_title_with_dashes($staff_title) . '-control' . '"> More + </a>';
         else:
           $staff_leadership_output .= '<div class="staff-bio collapsible">' . apply_filters( 'the_content', $staff_summary) . '</div>';
         endif;

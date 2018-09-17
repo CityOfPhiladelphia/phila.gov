@@ -3,10 +3,15 @@ module.exports = $(function(){
   $('[data-toggle="expandable"]').click(function(e){
     e.preventDefault();
     $(this).siblings().toggleClass('expandable');
-    if($(this).html() === ' Expand + '){
-      $(this).html(' Collapse - ');
+    $(this).prev().attr('aria-expanded', 'true');
+
+    if($(this).html() === ' More + '){
+      $(this).html(' Less - ');
+      $(this).prev().attr('aria-expanded', 'true');
     } else {
-      $(this).html(' Expand + ');
+      $(this).html(' More + ');
+      $(this).prev().attr('aria-expanded', 'false');
+
     }
   });
 
