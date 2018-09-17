@@ -30,7 +30,7 @@ get_header(); ?>
               </form>
             </div>
           </div>
-        </section><!-- .error-404 -->
+        </section>
       </div>
     </div>
   </main><!-- #main -->

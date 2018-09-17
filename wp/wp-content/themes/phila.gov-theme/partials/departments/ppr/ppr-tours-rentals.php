@@ -5,8 +5,8 @@
 
 <section class="row mvl ppr-tours-rentals">
     <div class="columns">
-        <h2 class="contrast"><?= $custom_wysiwyg['phila_wysiwyg_title']; ?></h2>
-        <?= $custom_wysiwyg['phila_wysiwyg_content']; ?>
+        <h2 class="contrast"><?php echo $custom_wysiwyg['phila_wysiwyg_title']; ?></h2>
+        <?php echo $custom_wysiwyg['phila_wysiwyg_content']; ?>
     </div>
 </section>
 
