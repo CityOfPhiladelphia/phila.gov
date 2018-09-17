@@ -155,6 +155,44 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_unique(),
         )
+      ),
+      array(
+        'id'  => 'phila_location_list',
+        'type'  => 'group',
+        'clone' => false,
+        'visible' => array('phila_full_options_select', '=', 'phila_location_list'),
+        'fields'  => array(
+          array(
+            'name'  => 'Row title',
+            'type'  => 'text',
+            'id'  =>  'row_title'
+          ),
+          array(
+            'id'  => 'group',
+            'type'  => 'group',
+            'clone' => 'true',
+            'add_button' => '+ Add another group',
+            'fields'  => array(
+              array(
+                'id'  => 'group_title',
+                'name' => 'Group title',
+                'type'  => 'text'
+              ),
+              array(
+                'name' => 'Location list',
+                'id' => 'location_list',
+                'type' => 'post',
+                'post_type' => 'programs',
+                'multiple'  => true,
+                'field_type'  => 'select_advanced',
+                'query_args'  => array(
+                  'post_status'    => 'any',
+                  'posts_per_page' => - 1,
+                ),
+              )
+            ),
+          )
+        ),
       )
     ),
   );
