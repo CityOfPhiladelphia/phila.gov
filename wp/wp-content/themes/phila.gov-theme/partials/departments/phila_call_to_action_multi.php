@@ -26,7 +26,7 @@
     <!-- Display Multi Call to Action as Resource List -->
     <section class="row <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <div class="columns">
-        <h2 id="<?php echo phila_format_uri($action_panel_title)?>"<?php echo isset($contrast) ? '' : 'class="contrast"'?>><?php echo $action_panel_title; ?></h2>
+        <h2 id="<?php echo phila_format_uri($action_panel_title)?>" <?php echo isset($contrast) ? '' : 'class="contrast"'?>><?php echo $action_panel_title; ?></h2>
       </div>
     <?php foreach ( $action_panel_multi as $call_to_action ) :
 
