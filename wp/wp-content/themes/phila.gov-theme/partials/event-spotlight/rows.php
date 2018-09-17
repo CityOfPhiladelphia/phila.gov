@@ -118,5 +118,5 @@
 
   <?php endforeach; ?>
 </div>
-<hr>
+<hr class="margin-auto">
 <?php include( locate_template( 'partials/global/cta-go-to-latest.php' ) ); ?>
