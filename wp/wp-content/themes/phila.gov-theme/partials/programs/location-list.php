@@ -22,7 +22,7 @@
           <div class="grid-container">
             <div class="grid-x grid-padding-x">
               <div class="cell small-24">
-                <h3><?php echo $group['group_title'] ?></h3>
+                <h3 class="mts"><?php echo $group['group_title'] ?></h3>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@
               <div class="cell small-24">
                 <div class="location-list">
                 <?php foreach ($group['location_list'] as $id): ?>
-                  <a href="<?php echo get_the_permalink($id)?>" class=""><div class="location-link"><?php echo get_the_title($id);?>  </div></a>
+                  <a href="<?php echo get_the_permalink($id)?>" class=""><div class="location-link hover-fade"><?php echo get_the_title($id);?>  </div></a>
                 <?php endforeach; ?>
               </div>
             </div>
