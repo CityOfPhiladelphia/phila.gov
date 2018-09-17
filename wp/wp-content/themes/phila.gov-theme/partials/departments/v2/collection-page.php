@@ -38,7 +38,7 @@ $row_content = rwmb_meta('collection_row');?>
     <?php $headline = isset($current_row['document_pages']['phila_custom_text_title']) ? $current_row['document_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
     <div class="row one-quarter-row mvl">
       <div class="columns medium-6">
-        <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
+        <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
       </div>
       <div class="columns medium-18 pbxl">
         <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
@@ -100,7 +100,7 @@ $row_content = rwmb_meta('collection_row');?>
 
       <div class="row one-quarter-row mvl">
         <div class="columns medium-6">
-            <h3 id="<?= sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
+            <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
         </div>
         <div class="columns medium-18 pbxl">
           <?php echo apply_filters( 'the_content', $free_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] ); ?>

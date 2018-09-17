@@ -33,7 +33,7 @@ endif;
 <?php wp_reset_query();?>
 
 <?php if ( !empty( $update_array ) ): ?>
-<div class="row <?= ( !is_home() ) ? 'mtl' : ''?>">
+<div class="row <?php echo ( !is_home() ) ? 'mtl' : ''?>">
   <div class="columns">
     <table class="service-update">
       <tbody>

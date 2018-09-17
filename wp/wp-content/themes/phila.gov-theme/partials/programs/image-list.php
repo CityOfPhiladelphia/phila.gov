@@ -23,17 +23,17 @@
     <div class="grid-x">
       <div class="cell">
         <header>
-          <h2 class="contrast"><?= $image_list_vars['title']?></h2>
+          <h2 class="contrast"><?php echo $image_list_vars['title']?></h2>
         </header>
       </div>
     </div>
   </div>
   <div class="grid-container">
-    <div class="grid-x <?= ( $count == 1 ) ? '' : 'center' ?> align-middle">
+    <div class="grid-x <?php echo ( $count == 1 ) ? '' : 'center' ?> align-middle">
         <?php foreach( $image_list_vars['urls'] as $url ) : ?>
-          <div class="cell image-list medium-<?= $grid_count ?> mbl">
+          <div class="cell image-list medium-<?php echo $grid_count ?> mbl">
 
-            <img src=<?= $url ?> alt=""/>
+            <img src=<?php echo $url ?> alt=""/>
           </div>
         <?php endforeach; ?>
     </div>

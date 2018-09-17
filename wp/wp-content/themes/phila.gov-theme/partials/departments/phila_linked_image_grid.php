@@ -1,6 +1,6 @@
 <section class="row ">
     <div class="columns">
-        <h2 class="contrast"><?= rwmb_meta('phila_v2_linked_image_grid__header'); ?></h2>
+        <h2 class="contrast"><?php echo rwmb_meta('phila_v2_linked_image_grid__header'); ?></h2>
     </div>
     <div class="columns">
         <div class="grid-container phila-linked-image-grid">
@@ -21,9 +21,9 @@
              ?>
 
                     <div class="cell phila-linked-image-grid__item large-7 medium-7 small-auto">
-                        <a class="phila-linked-image-grid__item-photo hover-fade" href="<?= $linkURL ?>">
-                            <?php if($imageUrl): ?> <img src="<?= $imageUrl ?>" alt=""><?php endif; ?>
-                            <div href="<?= $linkURL ?>" class=" phila-linked-image-grid__item-title <?= $linkIsExternal ? 'external' : ''  ?>"><?= $linkTitle ?></div>
+                        <a class="phila-linked-image-grid__item-photo hover-fade" href="<?php echo $linkURL ?>">
+                            <?php if($imageUrl): ?> <img src="<?php echo $imageUrl ?>" alt=""><?php endif; ?>
+                            <div href="<?php echo $linkURL ?>" class=" phila-linked-image-grid__item-title <?php echo $linkIsExternal ? 'external' : ''  ?>"><?php echo $linkTitle ?></div>
                         </a>
                     </div>
                 <?php endif; ?>
