@@ -5,6 +5,7 @@
  ?>
 
 <?php if ( !empty($members)) : ?>
+<!-- Board/Commission members -->
 <div class="grid-container">
   <section>
     <?php if (!empty($section_title)) :?>
@@ -12,13 +13,17 @@
     <?php endif; ?>
     <div class="accordion commissions" data-accordion data-multi-expand="true" data-allow-all-closed="true">
       <?php foreach ($members as $member):?>
+        <div class="accordion-item" data-accordion-item>
+
           <!-- Accordion tab title -->
           <?php if( empty($member['headshot']) && empty($member['bio']) && empty($member['email']) && empty($member['phone']) ) : ?>
-            <div class="disabled accordion-title"><?php echo isset( $member['full_name']) ? $member['full_name'] : ''; ?><?php echo isset($member['title']) ? ', <i>' . $member['title'] . '</i>': '';?></div>
+            <div class="disabled accordion-title">
+              <?php echo isset( $member['full_name']) ? $member['full_name'] : ''; ?><?php echo isset($member['title']) ? ', <i>' . $member['title'] . '</i>': '';?>
+            </div>
           <?php else :?>
-            <div class="accordion-item" data-accordion-item>
 
-              <a href="#" class="accordion-title"><?php echo isset( $member['full_name']) ? $member['full_name'] : ''; ?><?php echo isset($member['title']) ? ', <i>' . $member['title'] . '</i>': '';?></a>
+              <a href="#" class="accordion-title"><?php echo isset( $member['full_name']) ? $member['full_name'] : ''; ?><?php echo isset($member['title']) ? ', <i>' . $member['title'] . '</i>': '';?>
+              </a>
           <?php endif; ?>
             <div class="accordion-content group" data-tab-content>
               <?php if( isset($member['headshot'])) : ?>
@@ -30,7 +35,7 @@
               ?>
               <?php if (isset($member['email']) == true && isset($member['phone']) == true) echo ' | ' ?>
               <?php echo isset($member['phone']) ?
-              '<a href="tel:' . $member['phone']['area'] . $member['phone']['phone-co-code'] . $member['phone']['phone-subscriber-number']  . '">(' . $member['phone']['area'] . ') ' . $member['phone']['phone-co-code'] .'-' . $member['phone']['phone-subscriber-number'] . '</a>' : ''?>
+              '<a href="tel:' . $member['phone']['area'] . $member['phone']['phone-co-code'] . $member['phone']['phone-subscriber-number']  . '">(' . $member['phone']['area'] . ') ' . $member['phone']['phone-co-code'] .'-' . $member['phone']['phone-subscriber-number'] . '</a>' : '' ?>
 
           </div>
         </div>
@@ -38,4 +43,5 @@
     </div>
   </section>
 </div>
+<!-- /Board/Commission members -->
 <?php endif; ?>

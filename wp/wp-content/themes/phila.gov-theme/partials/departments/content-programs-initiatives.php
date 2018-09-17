@@ -72,7 +72,10 @@
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
                 $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
-                include(locate_template('partials/departments/phila_call_to_action_multi.php'));
+                ?><div class="mvl"><?php
+
+                include(locate_template('partials/departments/phila_call_to_action_multi.php')); ?>
+              </div><?php 
             endif; ?>
 
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
@@ -136,6 +139,13 @@
             <?php
             $heading_groups = $current_row['phila_full_options']['phila_heading_groups'];
             include(locate_template('partials/content-heading-groups.php')); ?>
+          <?php endif;?>
+
+        <?php elseif ( $current_row_option == 'phila_programs'):?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_program'] ) ): ?>
+            <?php
+            $cards = $current_row['phila_full_options']['phila_program']['phila_select_programs'];
+            include(locate_template('partials/departments/v2/homepage_programs.php')); ?>
           <?php endif;?>
 
       <?php endif;  /*end full row */?>

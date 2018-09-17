@@ -1,12 +1,17 @@
 <?php
-  /* Department homepage program cards */
-
-  $cards = rwmb_meta('phila_select_programs');
+  /* Department homepage program cards
+  $cards - required. Array of post ids.
+  */
 ?>
+<?php
+  if ( !isset( $cards) ):
+    $cards = rwmb_meta('phila_select_programs');
+  endif;
+  ?>
 <?php if ( !empty($cards) ) :?>
   <div class="row">
     <div class="columns">
-      <h2 id="programs" class="contrast">Our programs</h3>
+      <h2 id="programs" class="contrast"><?php echo (get_post_type() == 'programs') ? 'Related programs' : 'Our programs'; ?></h3>
     </div>
   </div>
   <div class="row">

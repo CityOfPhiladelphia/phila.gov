@@ -155,7 +155,16 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_unique(),
         )
-      )
+      ),
+      array(
+        'id' => 'phila_programs',
+        'type'  => 'group',
+        'clone' => false,
+        'visible' => array('phila_full_options_select', '=', 'phila_programs'),
+        'fields'  => array(
+          Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true)
+        )
+      ),
     ),
   );
 }
