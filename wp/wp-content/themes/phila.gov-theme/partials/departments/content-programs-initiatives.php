@@ -130,12 +130,25 @@
             <?php include(locate_template('partials/global/registration.php')); ?>
           <?php endif; ?>
 
-          <!-- heading groups -->
         <?php elseif ( $current_row_option == 'phila_stepped_content'):?>
           <?php if ( isset( $current_row['phila_full_options']['phila_full_options_select'] ) ): ?>
+            <!-- heading groups -->
             <?php
             $heading_groups = $current_row['phila_full_options']['phila_heading_groups'];
             include(locate_template('partials/content-heading-groups.php')); ?>
+            <!-- /heading groups -->
+
+          <?php endif;?>
+
+
+        <?php elseif ( $current_row_option == 'phila_location_list'):?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_location_list'] ) ): ?>
+            <!-- Location list -->
+            <?php
+            $location_list = $current_row['phila_full_options']['phila_location_list'];
+            $location_list_title = $current_row['phila_full_options']['phila_location_list']['row_title'];
+            include(locate_template('partials/programs/location-list.php')); ?>
+            <!-- /Location list -->
           <?php endif;?>
 
       <?php endif;  /*end full row */?>
