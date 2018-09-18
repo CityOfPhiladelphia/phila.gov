@@ -14,13 +14,12 @@
     foreach ($page_rows as $key => $value):
       $current_row = $page_rows[$key];?>
 
-      <!-- Grid Row -->
       <?php if ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full'):
           // Begin full width row
           $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
           if ($current_row_option == 'phila_feature_p_i'): ?>
-            <!-- Display Featured Programs and Initiatives -->
+            <!-- Featured Programs and Initiatives -->
             <section class="mvl">
               <div class="row mvm">
                 <div class="columns">
@@ -57,7 +56,7 @@
               </section>
             </section>
           <?php endif; ?>
+          <!-- /Featured Programs and Initiatives -->
       <?php endif; ?>
-    <!-- Grid Row -->
     <?php endforeach; ?>
 </div>
