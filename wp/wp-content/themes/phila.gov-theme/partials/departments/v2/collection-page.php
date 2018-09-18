@@ -51,7 +51,7 @@ $row_content = rwmb_meta('collection_row');?>
           <?php if ( $content ) : ?>
             <p><?php echo $content ?></p>
           <?php endif; ?>
-          <div class="resource-list">
+          <div class="resource-list mbxl">
             <ul>
               <?php foreach($group['phila_document_page_picker'] as $doc): ?>
               <li class="phm pvs clickable-row" data-href="<?php echo get_the_permalink($doc); ?>">
