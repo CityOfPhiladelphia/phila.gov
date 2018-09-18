@@ -1,0 +1,13 @@
+.location-list{
+  column-count: 2;
+  column-width: auto;
+  margin-bottom: 3rem;
+   .location-link{
+      page-break-inside: avoid;
+      break-inside: avoid;
+      display: block;
+      padding: .5rem 1rem .5rem 2rem;
+      margin-bottom: .5rem;
+      background: rgba(218, 237, 254, .6);
+  }
+}

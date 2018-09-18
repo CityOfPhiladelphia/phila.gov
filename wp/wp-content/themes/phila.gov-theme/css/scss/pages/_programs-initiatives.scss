@@ -57,9 +57,20 @@
     }
   }
 }
+
 .hero-subpage{
   background-repeat: no-repeat;
   background-size: cover;
+
+  &.associated-sub {
+    h1 {
+      font-size: 3.5rem;
+    }
+    hr{
+      width: 40%;
+      margin: 0 auto;
+    }
+  }
 }
 
 .program #site-nav {
