@@ -243,6 +243,7 @@ class Phila_Gov_Standard_Metaboxes {
         'type' => 'group',
         'clone' => true,
         'max_clone' => 3,
+        'add_button'  => '+ Add column',
         'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
       )
     );
@@ -715,13 +716,13 @@ class Phila_Gov_Standard_Metaboxes {
              ),
            ),
            array(
-             'name'  =>  'Additional URL Title (optional)',
+             'name'  =>  'See all title (optional)',
              'id'    => 'phila_url_title',
              'type'  => 'text',
              'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
            ),
            array(
-             'name'  =>  'Additional URL (optional)',
+             'name'  =>  'See all URL (optional)',
              'id'    => 'phila_url',
              'type'  => 'url',
              'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
@@ -790,7 +791,7 @@ class Phila_Gov_Standard_Metaboxes {
      ),
    );
   }
-
+  //TODO - Deprecate after Education migration
   // Feature Programs and Initiatives
   public static function phila_meta_var_feature_programs_initiatives (){
    return array(
