@@ -17,8 +17,6 @@
 <?php
   foreach ($page_rows as $key => $value):
     $current_row = $page_rows[$key];?>
-
-    <!-- Grid Row -->
     <?php if ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_full' ) &&
     isset( $current_row['phila_full_options']['phila_full_options_select'] ) ):
 
@@ -35,72 +33,91 @@
           ?>
           <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>
         </div>
+        <!-- /Blog Content -->
+
         <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
           $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
           $cal_category = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; ?>
 
+          <!-- Calendar -->
           <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
+          <!-- /Calendar -->
 
         <?php elseif ( $current_row_option == 'phila_callout'):
           $callout_text = isset( $current_row['phila_full_options']['phila_callout']['phila_callout_text'] ) ? $current_row['phila_full_options']['phila_callout']['phila_callout_text'] : ''; ?>
 
           <?php if ( !empty( $callout_text ) ): ?>
-            <!-- Display Callout -->
-            <section class="row mvm">
+            <!-- Callout -->
+            <section class="row mvxl">
               <div class="large-24 column">
                   <?php echo do_shortcode('[callout type="default" inline="false"]' . $callout_text . '[/callout]'); ?>
               </div>
             </section>
+            <!-- /Callout -->
           <?php endif;?>
-
         <?php elseif ($current_row_option == 'phila_get_involved'): ?>
-          <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
-            $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
+          <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ): ?>
+            <!-- Get involved -->
+            <?php $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
               include(locate_template('partials/departments/content-get-involved.php'));
           endif; ?>
-
+          <!-- /Get involved -->
         <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
-          <!-- Press Releases -->
           <?php $press_cat_override = isset( $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category']) ? $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category'][0] : '';
           ?>
           <?php $press_tag_override = isset( $current_row['phila_full_options']['full_width_press_releases']['tag']) ? $current_row['phila_full_options']['full_width_press_releases']['tag'] : '';
           ?>
+            <!-- Press Releases -->
             <section class="row mvl">
               <?php echo do_shortcode('[press-releases posts=5 tag="'. $press_tag_override .'" category="' . $press_cat_override .'"]');?>
             </section>
+            <!-- /Press Releases -->
 
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
                 $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
-                ?><div class="mvl"><?php
+                ?>
+                <!-- Call to action multi -->
+                <div class="mvl"><?php
 
                 include(locate_template('partials/departments/phila_call_to_action_multi.php')); ?>
-              </div><?php 
-            endif; ?>
+              </div>
+              <!-- /Call to action multi -->
+
+              <?php endif; ?>
 
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_custom_text'] ) ):
               $custom_text = $current_row['phila_full_options']['phila_custom_text'];?>
-              <!-- Display Custom Text -->
+              <!-- Custom Text -->
               <section class="row mvl">
                 <div class="large-24 column">
                   <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                 </div>
               </section>
+              <!-- /Custom Text -->
 
             <?php endif; ?>
           <?php elseif ( $current_row_option == 'phila_list_items'): ?>
             <?php
               $list_items = isset( $current_row['phila_full_options']['phila_list_items'] ) ? $current_row['phila_full_options']['phila_list_items'] : '';
-              include(locate_template('partials/departments/content-list-items.php'));
-            ?>
+              ?>
+              <!-- List items -->
+
+              <?php include(locate_template('partials/departments/content-list-items.php')); ?>
+            <!-- /List items -->
+
         <?php elseif ( $current_row_option == 'phila_full_cta'): ?>
           <?php if ( isset( $current_row['phila_full_options']['phila_full_width_cta'] ) ):
             $cta = $current_row['phila_full_options']['phila_full_width_cta'];
 
-            $link = phila_cta_full_display( $cta );
+            $link = phila_cta_full_display( $cta ); ?>
+            <!-- Full width Call to Action-->
+            <div class="mvl">
+              <?php include(locate_template('partials/departments/v2/full-width-call-to-action.php')); ?>
+            </div>
+            <!-- /Full width Call to Action-->
 
-           include(locate_template('partials/departments/v2/full-width-call-to-action.php')); ?>
          <?php endif; ?>
 
        <?php elseif ( $current_row_option == 'phila_custom_text_multi'):?>
@@ -108,9 +125,12 @@
            $custom_text = $current_row['phila_full_options']['phila_custom_text_multi_full'];
            $multi_full_row = true;
            ?>
-           <div class="row">
+           <!-- Custom text-->
+           <div class="row mvl">
              <?php include(locate_template('partials/departments/content-custom-text-multi.php')); ?>
           </div>
+          <!-- /Custom text-->
+
          <?php endif; ?>
 
         <?php elseif ( $current_row_option == 'phila_image_list'):?>
@@ -120,26 +140,30 @@
             $image_list = $current_row['phila_full_options']['phila_image_list'];
 
             $image_list_vars = phila_image_list($image_list);
-
             ?>
+            <!-- Image List-->
             <?php include(locate_template('partials/programs/image-list.php')); ?>
+            <!-- /Image List-->
+
           <?php endif; ?>
 
         <?php elseif ( $current_row_option == 'phila_registration'):?>
           <?php if ( isset( $current_row['phila_full_options']['phila_registration'] ) ):
 
             $registration = $current_row['phila_full_options']['phila_registration']; ?>
-
+            <!--Registration-->
             <?php include(locate_template('partials/global/registration.php')); ?>
+            <!--/Registration-->
+
           <?php endif; ?>
 
         <?php elseif ( $current_row_option == 'phila_stepped_content'):?>
           <?php if ( isset( $current_row['phila_full_options']['phila_full_options_select'] ) ): ?>
-            <!-- heading groups -->
+            <!-- Heading groups -->
             <?php
             $heading_groups = $current_row['phila_full_options']['phila_heading_groups'];
             include(locate_template('partials/content-heading-groups.php')); ?>
-            <!-- /heading groups -->
+            <!-- /Heading groups -->
 
           <?php endif;?>
 
@@ -157,8 +181,10 @@
         <?php elseif ( $current_row_option == 'phila_programs'):?>
           <?php if ( isset( $current_row['phila_full_options']['phila_program'] ) ): ?>
             <?php
-            $cards = $current_row['phila_full_options']['phila_program']['phila_select_programs'];
-            include(locate_template('partials/departments/v2/homepage_programs.php')); ?>
+            $cards = $current_row['phila_full_options']['phila_program']['phila_select_programs'];?>
+            <!-- Program cards-->
+            <?php include(locate_template('partials/departments/v2/homepage_programs.php')); ?>
+            <!-- Program cards-->
           <?php endif;?>
 
       <?php endif;  /*end full row */?>
@@ -291,6 +317,5 @@
             <?php endif; ?>
         </section>
       <?php endif; ?>
-    <!-- Grid Row -->
     <?php endforeach; ?>
 </div>

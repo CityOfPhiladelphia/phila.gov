@@ -316,20 +316,26 @@ export default {
   top:0;
   right:0;
   background: #0f4d90;
-  padding: .6rem 1.5rem 1rem .8rem;
-  height: inherit;
+  padding: 0 0 0 9px;
+  width: 30px;
+  height:inherit;
+}
+.v-select .vs__actions{
+  padding:0;
+}
+.v-select .dropdown-toggle{
+  border-radius: 0;
+  padding:0;
 }
 
-.filter-by-owner .v-select input[type=search],
-.v-select input[type=search]:focus{
-  border:none;
-}
 .filter-by-owner .v-select .open-indicator:before{
   border-color:white;
 }
 .filter-by-owner .v-select input[type=search],
 .filter-by-owner .v-select input[type=search]:focus {
-  width:8rem !important;
+  height: 2.4rem;
+  margin:0;
+  border:none;
 }
 .filter-by-owner ul.dropdown-menu{
   border:none;
