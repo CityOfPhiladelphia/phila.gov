@@ -157,6 +157,7 @@ class Phila_Gov_Standard_Metaboxes {
         'std'=> '0',
         'on_label'  => 'Yes',
         'off_label' => 'No',
+        'visible' => array('phila_template_select', '!=', ''),
       ),
       array(
         'name'  => 'Select event spotlight',
