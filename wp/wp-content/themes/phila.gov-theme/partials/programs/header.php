@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-    <?php endif ?>
+    <?php endif; ?>
   <?php else: ?>
     <div class="hero-half">
       <div class="grid-x">
