@@ -32,7 +32,7 @@
             <?php if(!empty($sub_heading)) : ?>
               <hr>
             <?php endif ?>
-            <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>><?php echo $parent->post_title ?></h1>
+            <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>><?php echo !empty($sub_heading) ? the_title() : $parent->post_title ?></h1>
             <?php if(!empty($sub_heading)) : ?>
               <hr>
             <?php endif ?>
@@ -45,13 +45,15 @@
     </div>
     <?php phila_get_menu(); ?>
     <?php get_template_part( 'partials/breadcrumbs' ); ?>
-    <div class="grid-container">
-      <div class="grid-x">
-        <div class="cell">
-          <h2 class="contrast"><?php echo the_title(); ?></h2>
+    <?php if ( empty( $sub_heading ) ) :?>
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell">
+            <h2 class="contrast"><?php echo the_title(); ?></h2>
+          </div>
         </div>
       </div>
-    </div>
+    <?php endif; ?>
   <?php else: ?>
     <div class="hero-half">
       <div class="grid-x">
