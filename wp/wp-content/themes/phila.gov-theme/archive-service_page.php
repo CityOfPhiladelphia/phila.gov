@@ -143,19 +143,25 @@ get_header(); ?>
               }
             }
 
-            $service_title[$post->post_title] = $page_terms;
+
+            if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
+              $alt_title = rwmb_meta('phila_service_alt_title', '', $post->ID);
+              $service_title[$alt_title] = $page_terms;
+            }else{
+              $service_title[$post->post_title] = $page_terms;
+            }
+
             $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
             $link['link'] = get_permalink();
 
             $service_desc[$post->post_title] = $desc;
-
             $service_link[$post->post_title] = $link;
 
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
-
             ?>
           <?php endwhile; ?>
-
+          <?php var_dump($services);?>
+          <?php /* why not pass the post ID as the key? */?>
       <nav class="show-for-medium">
         <ul class="inline-list mbm pan mln h4">
           <?php foreach($a_z as $k => $v): ?>
