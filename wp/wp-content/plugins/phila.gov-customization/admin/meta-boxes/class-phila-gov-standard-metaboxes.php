@@ -1078,9 +1078,9 @@ public static function phila_meta_var_connect(){
     return array(
       'id' => 'phila_commission_members',
       'type'  => 'group',
-      'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order above.',
       'clone' => true,
       'sort_clone' => true,
+      'add_button' => '+ Add member',
       'fields'  => array(
         array(
           'id'  => 'full_name',
