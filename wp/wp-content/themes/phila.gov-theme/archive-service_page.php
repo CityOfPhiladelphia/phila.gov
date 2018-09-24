@@ -165,7 +165,7 @@ get_header(); ?>
             ?>
           <?php endwhile; ?>
       <form class="search mbxl">
-        <input class="search-field" type="text" placeholder="Begin typing to filter results by title or keyword" class="fuzzy-search">
+        <input class="search-field" type="text" placeholder="Begin typing to filter results by title or keyword">
         <input type="submit" class="search-submit" value="Search">
       </form>
         <nav class="show-for-medium">
@@ -186,26 +186,24 @@ get_header(); ?>
         <div class="list">
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true ): ?>
-              <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
-              <div class="small-3 medium-2 columns">
+              <hr class="grouper" data-alphabet="<?php echo $a_k ?>"/>
+              <div class="grouper small-3 medium-2 columns" data-alphabet="<?php echo $a_k ?>">
                 <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
               </div>
-              <div class="small-20 medium-21 columns">
+              <!--<div class="small-20 medium-21 columns">-->
             <?php endif; ?>
             <?php foreach( $services as $k => $v ) :?>
               <?php
                 $first_c = strtolower($k[0]);
                 if( $a_k == $first_c && $a_v == true ) : ?>
-                  <div class="result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>">
-                    <a href="<?php echo $v['link']?>" class="item"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
-                    <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
+                  <div class="small-20 medium-21 columns result mvm item" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
+                    <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
+                    <p class="hide-for-small-only mbl item-desc"><?php echo $v['desc'] ?></p>
 
                   </div>
                 <?php endif; ?>
               <?php endforeach; ?>
               <?php if( $a_v == true): ?>
-                </div>
-              </div>
             <?php endif; ?>
           <?php endforeach; ?>
         <?php endif; ?>
