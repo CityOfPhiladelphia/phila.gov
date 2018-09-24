@@ -136,32 +136,32 @@ get_header(); ?>
 
             <?php
 
+            $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
+            $link['link'] = get_permalink();
+
             foreach ( $contextual_pages as $id ) {
               if($id === $post->ID) {
                 $parent['parent'] = $post->post_parent;
                 $service_parent[$post->post_title] = $parent;
+                $service_desc[$post->post_title] = $desc;
+                $service_link[$post->post_title] = $link;
               }
             }
 
-
             if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
               $alt_title = rwmb_meta('phila_service_alt_title', '', $post->ID);
-              $service_title[$alt_title] = $page_terms;
+              $service_title[$alt_title] = $alt_title;
+              $service_desc[$alt_title] = $desc;
+              $service_link[$alt_title] = $link;
             }else{
               $service_title[$post->post_title] = $page_terms;
+              $service_desc[$post->post_title] = $desc;
+              $service_link[$post->post_title] = $link;
             }
-
-            $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
-            $link['link'] = get_permalink();
-
-            $service_desc[$post->post_title] = $desc;
-            $service_link[$post->post_title] = $link;
 
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
             ?>
           <?php endwhile; ?>
-          <?php var_dump($services);?>
-          <?php /* why not pass the post ID as the key? */?>
       <nav class="show-for-medium">
         <ul class="inline-list mbm pan mln h4">
           <?php foreach($a_z as $k => $v): ?>
@@ -192,6 +192,7 @@ get_header(); ?>
                   <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
                     <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                     <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
+
                   </div>
                 <?php endif; ?>
               <?php endforeach; ?>
