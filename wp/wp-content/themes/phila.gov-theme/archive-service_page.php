@@ -122,18 +122,17 @@ get_header(); ?>
 
         <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
 
-          <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
-
-          <?php $page_terms['terms'] = array();?>
-
-            <?php foreach ( $terms as $term ) : ?>
-              <?php array_push($page_terms['terms'], $term->slug); ?>
-            <?php endforeach; ?>
-
             <?php
               //overwrite range array with values that exist
               $a_z[strtolower(substr($post->post_title, 0, 1 ))] = true; ?>
 
+              <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
+
+              <?php $page_terms['terms'] = array();?>
+
+                <?php foreach ( $terms as $term ) : ?>
+                  <?php array_push($page_terms['terms'], $term->slug); ?>
+                <?php endforeach; ?>
             <?php
 
             $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
@@ -143,6 +142,7 @@ get_header(); ?>
               if($id === $post->ID) {
                 $parent['parent'] = $post->post_parent;
                 $service_parent[$post->post_title] = $parent;
+                $service_title[$post->post_title] = $page_terms;
                 $service_desc[$post->post_title] = $desc;
                 $service_link[$post->post_title] = $link;
               }
@@ -151,66 +151,68 @@ get_header(); ?>
             if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
               $alt_title = rwmb_meta('phila_service_alt_title', '', $post->ID);
               $service_title[$alt_title] = $alt_title;
+              $service_title[$alt_title] = $page_terms;
               $service_desc[$alt_title] = $desc;
               $service_link[$alt_title] = $link;
             }else{
               $service_title[$post->post_title] = $page_terms;
               $service_desc[$post->post_title] = $desc;
               $service_link[$post->post_title] = $link;
-            }
+            }?>
 
+            <?php
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
             ?>
           <?php endwhile; ?>
       <form class="search mbxl">
-        <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword, or acronym...">
+        <input class="search-field" type="text" placeholder="Begin typing to filter results by title or keyword" class="fuzzy-search">
         <input type="submit" class="search-submit" value="Search">
       </form>
-      <nav class="show-for-medium">
-        <ul class="inline-list mbm pan mln h4">
-          <?php foreach($a_z as $k => $v): ?>
-            <?php //TODO: handle special characters and numbers in a better way ?>
-            <?php $k_plain = preg_replace('/([^A-Za-z\-])/', '', $k);?>
-            <?php if( $v == true && !empty( $k_plain) ) : ?>
-              <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?> class="scrollTo"><?php echo strtoupper($k_plain); ?></a></li>
-            <?php else : ?>
-              <?php if ( !empty( $k_plain ) ) : ?>
-                <li><span class="ghost-gray"><?php echo strtoupper( $k_plain );?></span></li>
+        <nav class="show-for-medium">
+          <ul class="inline-list mbm pan mln h4">
+            <?php foreach($a_z as $k => $v): ?>
+              <?php //TODO: handle special characters and numbers in a better way ?>
+              <?php $k_plain = preg_replace('/([^A-Za-z\-])/', '', $k);?>
+              <?php if( $v == true && !empty( $k_plain) ) : ?>
+                <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?> class="scrollTo"><?php echo strtoupper($k_plain); ?></a></li>
+              <?php else : ?>
+                <?php if ( !empty( $k_plain ) ) : ?>
+                  <li><span class="ghost-gray"><?php echo strtoupper( $k_plain );?></span></li>
+                <?php endif; ?>
               <?php endif; ?>
-            <?php endif; ?>
-          <?php endforeach; ?>
-        </ul>
-      </nav>
-      <div class="list">
+            <?php endforeach; ?>
+          </ul>
+        </nav>
+        <div class="list">
         <?php foreach($a_z as $a_k => $a_v): ?>
-          <?php if( $a_v == true): ?>
-            <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
-                <div class="small-3 medium-2 columns">
-                  <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
-                </div>
-                <div class="small-20 medium-21 columns">
+          <?php if( $a_v == true ): ?>
+              <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
+              <div class="small-3 medium-2 columns">
+                <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
+              </div>
+              <div class="small-20 medium-21 columns">
             <?php endif; ?>
-            <?php foreach($services as $k => $v) :?>
+            <?php foreach( $services as $k => $v ) :?>
               <?php
                 $first_c = strtolower($k[0]);
                 if( $a_k == $first_c && $a_v == true ) : ?>
-                  <div class="result mvm item" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
-                    <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
+                  <div class="result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>">
+                    <a href="<?php echo $v['link']?>" class="item"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                     <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
 
                   </div>
                 <?php endif; ?>
               <?php endforeach; ?>
               <?php if( $a_v == true): ?>
+                </div>
               </div>
-            </div>
             <?php endif; ?>
-
           <?php endforeach; ?>
-        </div>
         <?php endif; ?>
         <?php wp_reset_query(); ?>
       </div>
+      </div>
+    </div>
     </div> <!-- .row -->
     <div id="mobile-filter" class="reveal filter full" data-reveal data-options="closeOnClick:false;">
       <div class="inner-modal">
