@@ -52,13 +52,11 @@ $phila_posts_args  = array(
 <?php
 
 if( !empty($tag) ) {
-
   $posts_args  = array(
     'posts_per_page' => 3,
     'order' => 'desc',
     'orderby' => 'post_date',
-    'tag_id'  => (int) $tag,
-    'ignore_sticky_posts' => 1,
+    'tag__in'  => (array) $tag,
     'meta_query'  => array(
       'relation'  => 'AND',
       array(
@@ -146,7 +144,8 @@ $result->post_count = count( $result->posts );
             $see_all = array_replace($see_all, $see_all_URL );
             endif;?>
             <?php if( !empty( $tag ) ) :
-              $term = get_term($tag, 'post_tag');
+              $single_tag = explode(',', $tag);
+              $term = get_term($single_tag[0], 'post_tag');
               $see_all_URL = array(
                 'URL' => '/the-latest/archives/?tag=' . $term->name,
               );
