@@ -53,7 +53,7 @@ get_header(); ?>
           </ul>
         </form>
       </div>
-      <div class="medium-16 columns results a-z-list">
+      <div id="filter-list" class="medium-16 columns results a-z-list">
       <?php $args = array(
         'post_type'  => 'service_page',
         'posts_per_page'  => -1,
@@ -162,6 +162,10 @@ get_header(); ?>
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
             ?>
           <?php endwhile; ?>
+      <form class="search mbxl">
+        <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword, or acronym...">
+        <input type="submit" class="search-submit" value="Search">
+      </form>
       <nav class="show-for-medium">
         <ul class="inline-list mbm pan mln h4">
           <?php foreach($a_z as $k => $v): ?>
@@ -177,6 +181,7 @@ get_header(); ?>
           <?php endforeach; ?>
         </ul>
       </nav>
+      <div class="list">
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true): ?>
             <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
@@ -189,7 +194,7 @@ get_header(); ?>
               <?php
                 $first_c = strtolower($k[0]);
                 if( $a_k == $first_c && $a_v == true ) : ?>
-                  <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
+                  <div class="result mvm item" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
                     <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                     <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
 
@@ -202,6 +207,7 @@ get_header(); ?>
             <?php endif; ?>
 
           <?php endforeach; ?>
+        </div>
         <?php endif; ?>
         <?php wp_reset_query(); ?>
       </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying the document archive page.
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
