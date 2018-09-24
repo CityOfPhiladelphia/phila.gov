@@ -733,6 +733,8 @@ $meta_boxes[] = array(
 
     'fields'  => array(
       array(
+        'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
+
         'id'  => 'section_title',
         'type'  => 'text',
         'name'  => 'Optional row title',
