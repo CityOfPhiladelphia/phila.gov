@@ -104,7 +104,7 @@ class Phila_Gov_Row_Metaboxes {
       array(
         'id'   => 'phila_feature_p_i',
         'type' => 'group',
-       'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
+        'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
         'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_feature_programs_initiatives(),
       ),
       array(
@@ -201,6 +201,21 @@ class Phila_Gov_Row_Metaboxes {
               )
             ),
           )
+        ),
+      ),
+      array(
+        'id'  => 'commission_members',
+        'type'  => 'group',
+        'clone' => false,
+        'visible' => array('phila_full_options_select', '=', 'phila_board_commission'),
+        'fields'  => array(
+          array(
+            'id'  => 'section_title',
+            'name'  => 'Section title',
+            'type'  => 'text',
+            'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
+          ),
+          Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
         ),
       )
     ),

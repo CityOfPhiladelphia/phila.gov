@@ -187,6 +187,18 @@
             <!-- Program cards-->
           <?php endif;?>
 
+        <?php elseif ( $current_row_option == 'phila_board_commission'):?>
+          <?php if ( isset( $current_row['phila_full_options']['commission_members'] ) ): ?>
+            <?php
+            $section_title = $current_row['phila_full_options']['commission_members']['section_title'];
+            $members = $current_row['phila_full_options']['commission_members']['phila_commission_members'];
+            ?>
+            <!-- Program cards-->
+            <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
+            <!-- Program cards-->
+          <?php endif;?>
+
+
       <?php endif;  /*end full row */?>
 
       <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
