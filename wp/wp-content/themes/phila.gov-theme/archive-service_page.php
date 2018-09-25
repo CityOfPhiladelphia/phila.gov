@@ -165,7 +165,7 @@ get_header(); ?>
             ?>
           <?php endwhile; ?>
       <form class="search mbxl">
-        <input class="search-field" type="text" placeholder="Begin typing to filter results by title or keyword">
+        <input class="search-field fuzzy-search" type="text" placeholder="Begin typing to filter results by title or keyword">
         <input type="submit" class="search-submit" value="Search">
       </form>
         <nav class="show-for-medium">
@@ -186,8 +186,8 @@ get_header(); ?>
         <div class="list">
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true ): ?>
-              <hr class="grouper" data-alphabet="<?php echo $a_k ?>"/>
-              <div class="grouper small-3 medium-2 columns" data-alphabet="<?php echo $a_k ?>">
+              <hr data-alphabet="<?php echo $a_k ?>"/>
+              <div class="separator small-3 medium-2 columns item" data-alphabet="<?php echo $a_k ?>">
                 <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
               </div>
               <!--<div class="small-20 medium-21 columns">-->
