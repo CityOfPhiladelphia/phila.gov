@@ -14,8 +14,10 @@
     $category_id = $blog_cat_override[0];
   endif;
 
-  if ( empty($blog_tag_override)) :
+  if ( empty($blog_tag_override) ) :
     $blog_tag_override = '';
+  elseif( is_array( $blog_tag_override) ):
+    $blog_tag_override = implode(',', $blog_tag_override);
   endif;
   ?>
 <section class="row">
