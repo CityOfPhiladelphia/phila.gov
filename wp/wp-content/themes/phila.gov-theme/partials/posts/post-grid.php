@@ -53,16 +53,17 @@ $phila_posts_args  = array(
 
 if( !empty($tag) ) {
   $posts_args  = array(
+    'post_type' => array('post', 'phila_post'),
     'posts_per_page' => 3,
     'order' => 'desc',
     'orderby' => 'post_date',
-    'tag__in'  => (array) $tag,
+    'tag__in'  => $tag,
     'meta_query'  => array(
       'relation'  => 'AND',
       array(
         'key' => 'phila_template_select',
-        'value' => 'post',
-        'compare' => '=',
+        'value' => 'press_release',
+        'compare' => '!=',
       ),
     )
   );
@@ -144,8 +145,7 @@ $result->post_count = count( $result->posts );
             $see_all = array_replace($see_all, $see_all_URL );
             endif;?>
             <?php if( !empty( $tag ) ) :
-              $single_tag = explode(',', $tag);
-              $term = get_term($single_tag[0], 'post_tag');
+              $term = get_term($tag[0], 'post_tag');
               $see_all_URL = array(
                 'URL' => '/the-latest/archives/?tag=' . $term->name,
               );
