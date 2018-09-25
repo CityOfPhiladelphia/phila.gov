@@ -2,7 +2,7 @@ var List = require('list.js');
 module.exports = $(function(){
 
   //City government directory filter list
-  new List('filter-list', {
+  var filterList = new List('filter-list', {
     valueNames: ['item', 'item-desc']
   });
 
@@ -13,4 +13,21 @@ module.exports = $(function(){
       return false;
     }
   });
+
+  // 
+  // $( '.search-field' ).keyup(function() {
+  //   var items = $('.list div');
+  //
+  //  items.each(function(i, v) {
+  //    var $v = $(v)
+  //    if ($v.data('alphabet')) {
+  //      console.log($v.data('alphabet'))
+  //       $(this).prepend('<h2>'+ $v.data('alphabet') + '</h2>')
+  //     }
+  //
+  //   })
+  //
+  // });
+
+
 });
