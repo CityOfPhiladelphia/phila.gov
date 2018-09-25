@@ -28,8 +28,8 @@ function latest_posts_shortcode( $atts ) {
     }
   }
 
-  if ($a['tag'] != ''){
-    $tag = $a['tag'];
+  if ( !empty($a['tag'] ) ){
+    $tag = explode(',', $a['tag']);
   }
 
   include( locate_template( 'partials/posts/announcements-grid.php' ) );
