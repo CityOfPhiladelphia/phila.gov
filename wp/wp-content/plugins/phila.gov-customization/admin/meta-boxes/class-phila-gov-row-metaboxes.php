@@ -43,11 +43,12 @@ class Phila_Gov_Row_Metaboxes {
          'fields' => array(
            Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners.' ),
            array(
-             'name'  => 'Filter by a tag',
+             'name'  => 'Filter by tags',
              'id'  => 'tag',
              'type' => 'taxonomy_advanced',
              'taxonomy'  => 'post_tag',
              'field_type' => 'select_advanced',
+             'multiple' => true,
              'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
            ),
          ),
