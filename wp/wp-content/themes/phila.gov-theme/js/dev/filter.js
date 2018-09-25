@@ -1,19 +1,27 @@
 jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
-  var parents = $('.a-z-group');
   var hiddenLetter = {};
+  var seperators = $('.separator');
 
   //Hide/show sets of letter groups
-  $('.a-z-group .result').bind('update', function() {
+  $('.list .result').bind('update', function() {
 
-    parents.each(function(index, item) {
+    seperators.each(function(index, item) {
 
       var $item = $(item);
-      var childElements = $item.find('.result.is-hidden');
 
-      var total = $item.find('.result');
+      var siblings = $item.nextUntil('hr');
 
-      if (childElements.length === total.length) {
+      var total = $item.nextUntil('div.is-hidden');
+      var j = 0;
+
+      siblings.each(function(i, v) {
+        if ( $( v ).hasClass('is-hidden') ){
+          j++;
+        }
+      })
+
+      if (siblings.length === j) {
         $item.hide();
         hiddenLetter[$item.data('alphabet')] =  $item.data('alphabet') ;
       }else{
@@ -33,7 +41,18 @@ jQuery(document).ready(function($) {
         $(this).attr('aria-disabled', false);
       }
     });
+    //hide/show horizontal rules when no results present
+    $('.list hr').each( function ( i, value ) {
+      var el = $(value);
+      if ( el.data('alphabet') in hiddenLetter ) {
+        $(this).hide();
+      }else{
+        $(this).show();
+      }
+    });
+
   });
+
 
   //Watch checkboxes
   $("#service_filter :checkbox").click(function() {
@@ -46,8 +65,6 @@ jQuery(document).ready(function($) {
         $(this).prop('checked', false);
 
       });
-
-      parents.show();
 
       $(this).prop('checked', true);
       $('.result').show().removeClass('is-hidden');
@@ -69,14 +86,13 @@ jQuery(document).ready(function($) {
                 return $.inArray( serviceType, arr ) != -1;
               }).show().removeClass('is-hidden');
           });
-          $('.a-z-group .result').trigger('update');
+          $('.list .result').trigger('update');
       });
     }else{
 
       $('#all').prop('checked', true);
       $('.result').show().removeClass('is-hidden');
-      parents.show();
-      $('.a-z-group .result').trigger('update');
+      $('.list .result').trigger('update');
 
     }
   });
