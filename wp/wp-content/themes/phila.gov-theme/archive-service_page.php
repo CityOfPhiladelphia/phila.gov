@@ -14,27 +14,6 @@ get_header(); ?>
         <?php printf(__('<h1 class="contrast ptm">Service directory</h1>', 'phila-gov') ); ?>
       </header>
     </div>
-    <div class="row mbl show-for-small-only">
-      <div class="small-24 columns mbm">
-        <a data-open="mobile-filter" class="button full-width pan clearfix">
-          <div class="center h2">Filter by service category</div>
-        </a>
-      </div>
-      <div class="small-12 columns">
-        <a href="#" class="button full-width pan clearfix" data-alpha-order>
-          <div class="valign">
-            <div class="button-label center valign-cell h2">A-Z</div>
-          </div>
-        </a>
-      </div>
-      <div class="small-12 columns">
-        <a href="#" class="button outline full-width pan clearfix" data-reverse-alpha-order>
-          <div class="valign">
-            <div class="button-label center valign-cell h2">Z-A</div>
-          </div>
-        </a>
-      </div>
-    </div>
     <div class="row">
       <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper>
         <?php printf(__('<h2 class="h4 mtn">Filter by service category</h2>', 'phila-gov') ); ?>
@@ -164,7 +143,7 @@ get_header(); ?>
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
             ?>
           <?php endwhile; ?>
-      <form id="service-filter" class="search mbxl">
+      <form id="service-filter" class="search">
         <input class="search-field fuzzy-search" type="text" placeholder="Begin typing to filter results by title or description">
         <input type="submit" class="search-submit" value="Search">
       </form>
@@ -189,13 +168,13 @@ get_header(); ?>
             <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
               <hr id="<?php echo $a_k ?>" class="letter separator" data-alphabet="<?php echo $a_k ?>"/>
 
-              <div class="small-20 medium-21 columns">
+              <div class="small-20 medium-24 columns">
               <?php endif; ?>
               <?php foreach( $services as $k => $v ) :?>
                 <?php
                   $first_c = strtolower($k[0]);
                   if( $a_k == $first_c && $a_v == true ) : ?>
-                    <div class="small-20 medium-21 columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
+                    <div class="small-21 columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
                       <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                       <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
 

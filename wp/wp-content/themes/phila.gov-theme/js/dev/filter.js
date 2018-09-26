@@ -41,51 +41,31 @@ jQuery(document).ready(function($) {
   })
 
   $input.keyup(function() {
-    doFilter();
+    searchFilter();
   });
 
 
-  function doFilter(){
-    console.log('done filtered')
+  function searchFilter(){
     function regexEscape(str) {
-        return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+      return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     }
 
     function reg(input) {
-        var flags;
-        flags = 'gmi';
-        input = regexEscape(input);
-        return new RegExp( input, flags);
+      var flags;
+      flags = 'gmi';
+      input = regexEscape(input);
+      return new RegExp( input, flags);
     }
 
-    var value = $($input).val();
+    var value = $input.val();
 
     if( $('#service_filter :checkbox:checked').length > 0 ){
 
       $(".list .result").not('is-hidden').each(function(i, v) {
-        var value = $input.val();
-        if ( $( this ).text().search( reg( value ) ) > -1 ) {
-          //$(this).show().removeClass('is-hidden')
-        } else {
+        if ( $( this ).text().search( reg( value ) ) < 0 ) {
           $(this).hide().addClass('is-hidden')
-
         }
       })
-      if ( value == '' ){
-        //Match array values with checked items
-        $('#service_filter :checkbox:checked').each(function(e) {
-          var serviceType = $(this).val();
-
-            $('.result').each(function( index, value ){
-
-              $('.result').filter(function() {
-                var arr = $(this).data('service').toString().split(/,\s+/);
-                  return $.inArray( serviceType, arr ) != -1;
-                }).show().removeClass('is-hidden');
-            });
-            $('.a-z-group .result').trigger('update');
-        })
-      }
     }else{
       $(".list .result").each(function(i, v) {
         var value = $input.val();
@@ -97,6 +77,22 @@ jQuery(document).ready(function($) {
         }
       })
 
+    }
+
+    if ( value == '' ){
+      //Match array values with checked items
+      $('#service_filter :checkbox:checked').each(function(e) {
+        var serviceType = $(this).val();
+
+          $('.result').each(function( index, value ){
+
+            $('.result').filter(function() {
+              var arr = $(this).data('service').toString().split(/,\s+/);
+                return $.inArray( serviceType, arr ) != -1;
+              }).show().removeClass('is-hidden');
+          });
+          $('.a-z-group .result').trigger('update');
+      })
     }
 
     $('.a-z-list .result').trigger('update');
@@ -137,7 +133,7 @@ jQuery(document).ready(function($) {
           });
           $('.a-z-group .result').trigger('update');
 
-          doFilter();
+          searchFilter();
 
         });
 
