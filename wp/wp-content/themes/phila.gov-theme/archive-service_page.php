@@ -188,6 +188,7 @@ get_header(); ?>
             <?php endforeach; ?>
           <?php endif; ?>
           <?php wp_reset_query(); ?>
+          <div class="nothing-found h3"></div>
         </div>
       </div>
     </div>
