@@ -1,27 +1,20 @@
 jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
   var hiddenLetter = {};
-  var seperators = $('.separator');
+  var parents = $('.a-z-group');
+  var $input = $('input.search-field');
 
   //Hide/show sets of letter groups
-  $('.list .result').bind('update', function() {
+  $('.a-z-group .result').on('update', function() {
 
-    seperators.each(function(index, item) {
+    parents.each(function(index, item) {
 
       var $item = $(item);
+      var childElements = $item.find('.result.is-hidden');
 
-      var siblings = $item.nextUntil('hr');
+      var total = $item.find('.result');
 
-      var total = $item.nextUntil('div.is-hidden');
-      var j = 0;
-
-      siblings.each(function(i, v) {
-        if ( $( v ).hasClass('is-hidden') ){
-          j++;
-        }
-      })
-
-      if (siblings.length === j) {
+      if (childElements.length === total.length) {
         $item.hide();
         hiddenLetter[$item.data('alphabet')] =  $item.data('alphabet') ;
       }else{
@@ -41,18 +34,74 @@ jQuery(document).ready(function($) {
         $(this).attr('aria-disabled', false);
       }
     });
-    //hide/show horizontal rules when no results present
-    $('.list hr').each( function ( i, value ) {
-      var el = $(value);
-      if ( el.data('alphabet') in hiddenLetter ) {
-        $(this).hide();
-      }else{
-        $(this).show();
-      }
-    });
-
   });
 
+  $('#service-filter').submit(function( e ) {
+    e.preventDefault();
+  })
+
+  $input.keyup(function() {
+    doFilter();
+  });
+
+
+  function doFilter(){
+    console.log('done filtered')
+    function regexEscape(str) {
+        return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+    }
+
+    function reg(input) {
+        var flags;
+        flags = 'gmi';
+        input = regexEscape(input);
+        return new RegExp( input, flags);
+    }
+
+    var value = $($input).val();
+
+    if( $('#service_filter :checkbox:checked').length > 0 ){
+
+      $(".list .result").not('is-hidden').each(function(i, v) {
+        var value = $input.val();
+        if ( $( this ).text().search( reg( value ) ) > -1 ) {
+          //$(this).show().removeClass('is-hidden')
+        } else {
+          $(this).hide().addClass('is-hidden')
+
+        }
+      })
+      if ( value == '' ){
+        //Match array values with checked items
+        $('#service_filter :checkbox:checked').each(function(e) {
+          var serviceType = $(this).val();
+
+            $('.result').each(function( index, value ){
+
+              $('.result').filter(function() {
+                var arr = $(this).data('service').toString().split(/,\s+/);
+                  return $.inArray( serviceType, arr ) != -1;
+                }).show().removeClass('is-hidden');
+            });
+            $('.a-z-group .result').trigger('update');
+        })
+      }
+    }else{
+      $(".list .result").each(function(i, v) {
+        var value = $input.val();
+        if ($(this).text().search(reg(value)) > -1 || value == '') {
+          $(this).show().removeClass('is-hidden')
+        } else {
+          $(this).hide().addClass('is-hidden')
+
+        }
+      })
+
+    }
+
+    $('.a-z-list .result').trigger('update');
+
+  }
 
   //Watch checkboxes
   $("#service_filter :checkbox").click(function() {
@@ -63,12 +112,12 @@ jQuery(document).ready(function($) {
 
       $('#service_filter :checkbox').each(function(){
         $(this).prop('checked', false);
-
       });
+
+      parents.show();
 
       $(this).prop('checked', true);
       $('.result').show().removeClass('is-hidden');
-
     }else{
       $('#all').prop('checked', false);
     }
@@ -86,16 +135,22 @@ jQuery(document).ready(function($) {
                 return $.inArray( serviceType, arr ) != -1;
               }).show().removeClass('is-hidden');
           });
-          $('.list .result').trigger('update');
-      });
+          $('.a-z-group .result').trigger('update');
+
+          doFilter();
+
+        });
+
     }else{
 
       $('#all').prop('checked', true);
       $('.result').show().removeClass('is-hidden');
-      $('.list .result').trigger('update');
+      parents.show();
+      $('.a-z-list .result').trigger('update');
 
     }
   });
+
   $("a.scrollTo").click(function(e){
     var link = $(this);
 
@@ -121,120 +176,6 @@ jQuery(document).ready(function($) {
 
     return false;
 
-  });
-
-
-
-  //TODO: This can/should be refactored when time permits
-  // Mobile Filter
-  function getValues() {
-    var confirmedValues = $( '#service_filter :checkbox:checked' ).map( function() {
-      return this.value;
-    }).get();
-  }
-
-  function applyValues() {
-    $( '#service_filter input[type="checkbox"]' ).prop( 'checked', false );
-    for ( i=0 ; i < confirmedValues.length ; i++ ){
-      $( 'input#' + confirmedValues[i] ).trigger( 'click' );
-    }
-  }
-
-  function attachFilter() {
-    var $filterForm = $( '#service_filter' );
-    $filterForm.detach();
-    $( 'div[data-desktop-filter-wrapper]' ).append( $filterForm );
-  }
-
-  function applyScrollFix() {
-    $('html').addClass('is-reveal-open');
-    $('body').addClass('no-scroll');
-  }
-  function removeScrollFix() {
-    $('html').removeClass('is-reveal-open');
-    $('body').removeClass('no-scroll');
-  }
-
-  $(document).on('open.zf.reveal', '[data-reveal]', function () {
-    applyScrollFix();
-  });
-  $(document).on('closed.zf.reveal', '[data-reveal]', function () {
-    removeScrollFix();
-  });
-
-  getValues();
-
-  $( '[data-open="mobile-filter"]' ).click( function() {
-    event.preventDefault();
-    getValues();
-    var $filterForm = $( '#service_filter' );
-    $filterForm.detach();
-    $( '[data-toggle="data-mobile-filter"]' ).append( $filterForm );
-  });
-
-  //Close button. Ignore unapplied changes.
-  $( 'button[data-close]' ).click( function() {
-    applyValues();
-  });
-
-  //Clear selection. Reset to 'All services'. Not applied unless "Apply" btn is clicked.
-  $( 'a[data-clear-filter]' ).click( function() {
-    event.preventDefault();
-    $( '#service_filter #all[type="checkbox"]' ).trigger( 'click' );
-  });
-
-  //Apply current filter selections.
-  $( 'a[data-apply-filter]' ).click( function() {
-    event.preventDefault();
-    getValues();
-    attachFilter;
-  });
-
-  if ( $( '.post-type-archive-service_page' ).length ) {
-    $( window ).on( 'changed.zf.mediaquery' , function( event , newSize , oldSize ){
-      if ( ( oldSize === 'medium' || oldSize === 'large' ) && ( newSize === 'small' ) ){
-        getValues();
-      }
-      else if ( ( newSize === 'medium' || newSize === 'large' ) && ( oldSize === 'small' ) ){
-        attachFilter();
-        $( '.button[data-alpha-order]' ).trigger( 'click' );
-        $( 'button[data-close]' ).trigger( 'click' );
-      }
-    });
-  }
-
-  function sortAlpha( a , b ) {
-    return ( $(b).data('alphabet') < $(a).data('alphabet') ) ? 1 : -1;
-  }
-
-  function sortReverseAlpha( a , b ) {
-    return ( $(b).data('alphabet') > $(a).data('alphabet') ) ? 1 : -1;
-  }
-
-// TODO: These alphabetical sorting click events can be condensed
-
-  $('.button[data-alpha-order]').click( function() {
-    event.preventDefault();
-    var $servicelist = $( '.a-z-group' );
-    $servicelist.detach();
-    $servicelist.sort( sortAlpha );
-    $( '.a-z-list' ).append( $servicelist );
-    if ( $('.button[data-alpha-order]').hasClass("outline") ){
-      $('.button[data-alpha-order]').removeClass("outline");
-      $('.button[data-reverse-alpha-order]').addClass("outline");
-    }
-  });
-
-  $('.button[data-reverse-alpha-order]').click( function() {
-    event.preventDefault();
-    var $servicelist = $( '.a-z-group' );
-    $servicelist.detach();
-    $servicelist.sort( sortReverseAlpha );
-    $( '.a-z-list' ).append( $servicelist );
-    if ( $('.button[data-reverse-alpha-order]').hasClass("outline") ){
-      $('.button[data-reverse-alpha-order]').removeClass("outline");
-      $('.button[data-alpha-order]').addClass("outline");
-    }
   });
 
 });

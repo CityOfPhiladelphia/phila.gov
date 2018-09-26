@@ -53,7 +53,7 @@ get_header(); ?>
           </ul>
         </form>
       </div>
-      <div id="filter-list" class="medium-16 columns results a-z-list">
+      <div id="a-z-filter-list" class="medium-16 columns results a-z-list">
       <?php $args = array(
         'post_type'  => 'service_page',
         'posts_per_page'  => -1,
@@ -164,8 +164,8 @@ get_header(); ?>
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
             ?>
           <?php endwhile; ?>
-      <form class="search mbxl">
-        <input class="search-field fuzzy-search" type="text" placeholder="Begin typing to filter results by title or keyword">
+      <form id="service-filter" class="search mbxl">
+        <input class="search-field fuzzy-search" type="text" placeholder="Begin typing to filter results by title or description">
         <input type="submit" class="search-submit" value="Search">
       </form>
         <nav class="show-for-medium">
@@ -186,71 +186,33 @@ get_header(); ?>
         <div class="list">
         <?php foreach($a_z as $a_k => $a_v): ?>
           <?php if( $a_v == true ): ?>
-              <hr data-alphabet="<?php echo $a_k ?>"/>
-              <div class="separator small-3 medium-2 columns item" data-alphabet="<?php echo $a_k ?>">
-                <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
-              </div>
-              <!--<div class="small-20 medium-21 columns">-->
-            <?php endif; ?>
-            <?php foreach( $services as $k => $v ) :?>
-              <?php
-                $first_c = strtolower($k[0]);
-                if( $a_k == $first_c && $a_v == true ) : ?>
-                  <div class="small-20 medium-21 columns result mvm item" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
-                    <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
-                    <p class="hide-for-small-only mbl item-desc"><?php echo $v['desc'] ?></p>
+            <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
+              <hr id="<?php echo $a_k ?>" class="letter separator" data-alphabet="<?php echo $a_k ?>"/>
 
-                  </div>
-                <?php endif; ?>
-              <?php endforeach; ?>
-              <?php if( $a_v == true): ?>
-            <?php endif; ?>
-          <?php endforeach; ?>
-        <?php endif; ?>
-        <?php wp_reset_query(); ?>
-      </div>
+              <div class="small-20 medium-21 columns">
+              <?php endif; ?>
+              <?php foreach( $services as $k => $v ) :?>
+                <?php
+                  $first_c = strtolower($k[0]);
+                  if( $a_k == $first_c && $a_v == true ) : ?>
+                    <div class="small-20 medium-21 columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
+                      <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
+                      <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
+
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+                <?php if( $a_v == true): ?>
+                </div>
+              </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+          <?php wp_reset_query(); ?>
+        </div>
       </div>
     </div>
     </div> <!-- .row -->
-    <div id="mobile-filter" class="reveal filter full" data-reveal data-options="closeOnClick:false;">
-      <div class="inner-modal">
-        <div class="row">
-          <div class="small-24 columns pts">
-            <button class="close-button float-right dark-ben-franklin bg-white" data-close aria-label="Close modal" type="button">
-              <i class="fa fa-times" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="columns">
-            <h2>Filter by service category</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="small-12 columns">
-            <a href="#" class="button full-width pan clearfix" aria-label="Clear filter selections" data-clear-filter>
-              <div class="valign">
-                <div class="button-label center valign-cell h2">Clear</div>
-              </div>
-            </a>
-          </div>
-          <div class="small-12 columns">
-            <a href="#" class="button full-width pan clearfix" data-close aria-label="Apply modal" data-apply-filter>
-              <div class="valign">
-                <div class="button-label center valign-cell h2">Apply</div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns mvm">
-            <span>Choose all that apply.</span>
-          </div>
-          <div class="small-24 columns">
-            <div data-toggle="data-mobile-filter">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- #mobile-filter -->
   </main><!-- #main -->
 </div><!-- #primary -->
 
