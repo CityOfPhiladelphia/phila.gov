@@ -44,15 +44,20 @@
 }
 
 #a-z-filter-list{
-  hr::after{
-    content: attr(data-alphabet);
-    display: inline-block;
-    margin-top: 2rem;
-    font-size: $large-font-base / 1.75;
-    line-height: 1;
-    text-transform: uppercase;
-    font-family: 'Montserrat', 'Tahoma', sans-serif;
-    font-weight: 400;
+  hr{
+    margin-top:1rem;
+    margin-bottom: 1rem;
+
+    &::after{
+      content: attr(data-alphabet);
+      display: inline-block;
+      margin-top: 1.9rem;
+      font-size: $large-font-base / 1.75;
+      line-height: 1;
+      text-transform: uppercase;
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+      font-weight: 400;
+    }
   }
 }
 
