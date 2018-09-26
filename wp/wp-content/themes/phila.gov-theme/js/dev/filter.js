@@ -20,9 +20,12 @@ jQuery(document).ready(function($) {
       }else{
         $item.show();
         delete hiddenLetter[$item.data('alphabet')];
-
       }
     });
+
+    if ( $(".a-z-group:visible").length === 0) {
+      $('.list .nothing-found').text("Sorry, we couldn't find anything for that search. Please try different terms." )
+    }
     //Disable anchor links when no results present for letter group
     $('.a-z-list nav li a').each( function ( i, value ) {
       var el = $(value);
