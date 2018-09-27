@@ -1,3 +1,9 @@
+.service.directory{
+  .result{
+    float:right;
+  }
+}
+
 .a-z-list {
   nav{
     font-size:1.5rem;
@@ -20,20 +26,6 @@
       border-top:none;
     }
   }
-  .row{
-    border-top: 1px solid color(dark-gray);
-    margin-bottom:2rem;
-
-    .letter{
-      font-size: $large-font-base / 1.75;
-      line-height: 1;
-
-      @media screen and (min-width: 40em) {
-        line-height: inherit;
-      }
-
-    }
-  }
 
   a[disabled] {
     pointer-events: none;
@@ -49,6 +41,24 @@
     border: 0;
   }
 
+}
+
+#a-z-filter-list{
+  hr{
+    margin-top:1rem;
+    margin-bottom: 1rem;
+
+    &::after{
+      content: attr(data-alphabet);
+      display: inline-block;
+      margin-top: 1.9rem;
+      font-size: $large-font-base / 1.75;
+      line-height: 1;
+      text-transform: uppercase;
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+      font-weight: 400;
+    }
+  }
 }
 
 .directory{
