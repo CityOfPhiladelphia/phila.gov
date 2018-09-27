@@ -432,85 +432,11 @@ function phila_register_meta_boxes( $meta_boxes ){
           'id'   => 'phila_module_row_1_col_2_type',
           'desc'  => 'Choose to display recent blog posts, custom markup, call to action panel, or a connect panel.',
           'type' => 'select',
+          'std'   => 'phila_module_row_1_col_2_connect_panel',
           'placeholder' => 'Select...',
           'options' => array(
-            'phila_module_row_1_col_2_blog_posts' => 'Blog Posts',
-            'phila_module_row_1_col_2_call_to_action_panel' => 'Call to Action Panel',
             'phila_module_row_1_col_2_connect_panel' => 'Connect Panel',
-            'phila_module_row_1_col_2_custom_text' => 'Custom Text',
-          ),
-        ),
-        array(
-          'id' => 'module_row_1_col_2_options',
-          'type' => 'group',
-          'fields' => array(
-             array(
-              'name' => 'Custom Text Title',
-              'id'   => 'phila_module_row_1_col_2_texttitle',
-              'type' => 'text',
-              //TODO Move these hidden fields up to the parent. This will change the metabox IDs and effect live content, so let's hold off for now.
-              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
-             ),
-             array(
-              'name' => 'Custom Text Content',
-              'id'   => 'phila_module_row_1_col_2_textarea',
-              'type' => 'textarea',
-              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
-             ),
-           ),
-          ),
-        ),
-      ),
-      array(
-        'id' => 'module_row_1_col_2_call_to_action_panel',
-        'type' => 'group',
-        'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_call_to_action_panel'),
-        'fields' => array(
-          array(
-            'name'  => 'Section Title',
-            'id'    => 'phila_action_section_title',
-            'type'  => 'text',
-            'class' => 'percent-100'
-          ),
-        array(
-          'name'  => 'Call to Action Text',
-          'id'    => 'phila_action_panel_cta_text',
-          'type'  => 'text',
-          'class' => 'action-panel-cta-text',
-        ),
-        array(
-          'name'  => 'Summary',
-          'id'    => 'phila_action_panel_summary',
-          'type'  => 'textarea',
-          'class' => 'action-panel-details',
-        ),
-        array(
-          'name'  => 'Icon',
-          'id'    => 'phila_action_panel_fa',
-          'type'  => 'text',
-          'class' => 'action-panel-fa',
-        ),
-        array(
-          'name'  => 'Icon Background Circle',
-          'id'    => 'phila_action_panel_fa_circle',
-          'type'  => 'switch',
-          'class' => 'action-panel-fa',
-          'on_label'  => 'Yes',
-          'off_label' => 'No'
-        ),
-        array(
-          'name'  => 'Link to Content',
-          'id'    => 'phila_action_panel_link',
-          'type'  => 'url',
-          'class' => 'action-panel-link',
-        ),
-        array(
-          'name'  => 'This link directs users away from www.phila.gov',
-          'id'    => 'phila_action_panel_link_loc',
-          'type'  => 'switch',
-          'class' => 'action-panel-link-loc',
-          'on_label'  => 'Yes',
-          'off_label' => 'No'
+            ),
           ),
         ),
       ),
