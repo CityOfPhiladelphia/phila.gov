@@ -56,13 +56,6 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'featured-programs-or-content'   => array(
-                                                'type'=>'v2',
-                                                'shown'=>!empty( $this->featured ),
-                                                'data'=> array(
-                                                    'featured'=>$this->featured
-                                                )
-                                             ),
        'board_commission_member_list'   => array(
                                          'type'=>'v2',
                                          'shown'=> true,
