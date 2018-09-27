@@ -103,12 +103,6 @@ class Phila_Gov_Row_Metaboxes {
       'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_list_items(),
      ),
       array(
-        'id'   => 'phila_feature_p_i',
-        'type' => 'group',
-        'visible' => array('phila_full_options_select', '=', 'phila_feature_p_i'),
-        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_feature_programs_initiatives(),
-      ),
-      array(
         'id'       => 'phila_image_list',
         'type'     => 'group',
         'visible'  => array('phila_full_options_select', '=', 'phila_image_list'),
