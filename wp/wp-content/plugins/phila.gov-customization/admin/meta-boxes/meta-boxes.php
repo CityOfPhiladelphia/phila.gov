@@ -256,7 +256,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     'priority' => 'high',
     'visible' => array(
       'when' => array(
-        array('phila_template_select', '=', 'resource_list'),
         array(  'phila_template_select','=', 'resource_list_v2'),
       ),
       'relation' => 'or'
