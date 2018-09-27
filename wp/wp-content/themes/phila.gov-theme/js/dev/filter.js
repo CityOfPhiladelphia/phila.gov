@@ -4,6 +4,8 @@ jQuery(document).ready(function($) {
   var parents = $('.a-z-group');
   var $input = $('input.search-field');
 
+  $('#service-filter .search-field').prop( 'disabled', false );
+
   //Hide/show sets of letter groups
   $('.a-z-group .result').on('update', function() {
 
@@ -23,9 +25,6 @@ jQuery(document).ready(function($) {
       }
     });
 
-    if ( $(".a-z-group:visible").length === 0) {
-      $('.list .nothing-found').text("Sorry, we couldn't find anything for that search. Please try different terms." )
-    }
     //Disable anchor links when no results present for letter group
     $('.a-z-list nav li a').each( function ( i, value ) {
       var el = $(value);
@@ -43,12 +42,12 @@ jQuery(document).ready(function($) {
     e.preventDefault();
   })
 
-  $input.keyup(function() {
-    searchFilter();
+  $input.keyup(function(event) {
+    searchFilter(event);
   });
 
 
-  function searchFilter(){
+  function searchFilter(event){
     function regexEscape(str) {
       return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     }
@@ -62,27 +61,38 @@ jQuery(document).ready(function($) {
 
     var value = $input.val();
 
-    if( $('#service_filter :checkbox:checked').length > 0 ){
-
+    if( $('#service_filter #all:checkbox:checked').length == 1 ){
+      $(".list .result").each(function(i, v) {
+        if ($(this).text().search(reg(value)) > -1 || value == '') {
+          $(this).show().removeClass('is-hidden')
+        } else {
+          $(this).hide().addClass('is-hidden')
+        }
+      })
+    }else{
       $(".list .result").not('is-hidden').each(function(i, v) {
         if ( $( this ).text().search( reg( value ) ) < 0 ) {
           $(this).hide().addClass('is-hidden')
         }
       })
-    }else{
-      $(".list .result").each(function(i, v) {
-        var value = $input.val();
-        if ($(this).text().search(reg(value)) > -1 || value == '') {
-          $(this).show().removeClass('is-hidden')
-        } else {
-          $(this).hide().addClass('is-hidden')
-
-        }
-      })
-
     }
 
-    if ( value == '' ){
+    if ( event.keypress == 8 ){
+      $('#service_filter :checkbox:checked').each(function(e) {
+        var serviceType = $(this).val();
+
+          $(this).show().removeClass('is-hidden')
+
+          $('.result').filter(function() {
+            var arr = $(this).data('service').toString().split(/,\s+/);
+              return $.inArray( serviceType, arr ) != -1;
+            }).show().removeClass('is-hidden');
+        });
+      $('.a-z-group .result').trigger('update');
+    }
+
+    //check if value is empty
+    if ( !value ){
       //Match array values with checked items
       $('#service_filter :checkbox:checked').each(function(e) {
         var serviceType = $(this).val();
@@ -94,8 +104,14 @@ jQuery(document).ready(function($) {
                 return $.inArray( serviceType, arr ) != -1;
               }).show().removeClass('is-hidden');
           });
-          $('.a-z-group .result').trigger('update');
-      })
+      });
+      $('.a-z-group .result').trigger('update');
+    }
+
+    if ( $(".a-z-group:visible").length === 0) {
+      $('.list .nothing-found').text("Sorry, we couldn't find anything for that search. Please try different terms." )
+    }else{
+      $('.list .nothing-found').text('')
     }
 
     $('.a-z-list .result').trigger('update');
@@ -136,9 +152,8 @@ jQuery(document).ready(function($) {
           });
           $('.a-z-group .result').trigger('update');
 
-          searchFilter();
-
         });
+        searchFilter(event);
 
     }else{
 
