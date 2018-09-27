@@ -418,7 +418,6 @@ $meta_boxes[] = array(
     'visible' => array(
       'when' => array(
         array('phila_template_select', 'homepage_v2'),
-        array('phila_template_select', 'department_homepage'),
         array('phila_template_select', 'off_site_department')
       ),
       'relation' => 'or'
