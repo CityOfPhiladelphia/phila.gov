@@ -14,20 +14,4 @@ module.exports = $(function(){
     }
   });
 
-  // 
-  // $( '.search-field' ).keyup(function() {
-  //   var items = $('.list div');
-  //
-  //  items.each(function(i, v) {
-  //    var $v = $(v)
-  //    if ($v.data('alphabet')) {
-  //      console.log($v.data('alphabet'))
-  //       $(this).prepend('<h2>'+ $v.data('alphabet') + '</h2>')
-  //     }
-  //
-  //   })
-  //
-  // });
-
-
 });

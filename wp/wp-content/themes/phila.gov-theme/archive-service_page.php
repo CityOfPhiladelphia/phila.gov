@@ -144,7 +144,7 @@ get_header(); ?>
             ?>
           <?php endwhile; ?>
       <form id="service-filter" class="search">
-        <input class="search-field fuzzy-search" type="text" placeholder="Begin typing to filter results by title or description">
+        <input class="search-field" type="text" placeholder="Begin typing to filter results by title or description" disabled="true">
         <input type="submit" class="search-submit" value="Search">
       </form>
         <nav class="show-for-medium">
