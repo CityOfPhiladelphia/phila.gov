@@ -791,26 +791,6 @@ class Phila_Gov_Standard_Metaboxes {
      ),
    );
   }
-  //TODO - Deprecate after Education migration
-  // Feature Programs and Initiatives
-  public static function phila_meta_var_feature_programs_initiatives (){
-   return array(
-      array(
-        'id' => 'phila_p_i',
-        'type' => 'group',
-        'fields' => array(
-          array(
-            'name' => 'Feature Program',
-            'id' => 'phila_p_i_items',
-            'type' => 'post',
-            'post_type' => 'department_page',
-            'clone' => true,
-            'max_clone' => 3,
-          ),
-        ),
-      ),
-    );
-  }
 public static function phila_meta_var_connect(){
   return array(
       array(
