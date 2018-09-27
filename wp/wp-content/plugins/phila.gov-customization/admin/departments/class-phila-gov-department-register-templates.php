@@ -37,7 +37,7 @@ class Phila_Gov_Deparment_Templates {
         'placeholder'  => 'Select a template',
         'options' => array(
           'default'                 => 'Default',
-          'homepage_v2'             => 'Department homepage',
+          'homepage_v2'             => 'Homepage',
           'one_quarter_headings_v2' => '1/4 headings',
           'all_programs_v2'         => 'All programs',
           'all_services_v2'         => 'All services',
