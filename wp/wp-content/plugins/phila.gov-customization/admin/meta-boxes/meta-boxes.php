@@ -356,38 +356,37 @@ function phila_register_meta_boxes( $meta_boxes ){
         ),
       );
 
- // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
- $meta_boxes[] = array(
-   'id'       => 'phila_module_row_1',
-   'title'    => 'Two-thirds row',
-   'pages'    => array( 'department_page' ),
-   'context'  => 'normal',
-   'priority' => 'default',
-   'revision' => true,
+// First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
+$meta_boxes[] = array(
+  'id'       => 'phila_module_row_1',
+  'title'    => 'Two-thirds row',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'priority' => 'default',
+  'revision' => true,
 
-   'visible' => array(
-     'when'  => array(
-       array('phila_template_select', '=', 'homepage_v2' ),
-     ),
-     'relation' => 'or',
-   ),
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'homepage_v2' ),
+    ),
+    'relation' => 'or',
+  ),
 
-   'fields' => array(
-     array(
+  'fields' => array(
+    array(
       'name' => 'Description',
       'id'   => 'phila_module_row_1_description',
       'type' => 'custom_html',
       'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
-     ),
-     array(
-       'type' => 'divider',
-     ),
-     array(
+    ),
+    array(
+      'type' => 'divider',
+    ),
+    array(
       'id' => 'module_row_1_col_1',
       'type' => 'group',
-      // List of sub-fields
       'fields' => array(
-         array(
+        array(
           'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
           'id'   => 'phila_module_row_1_col_1_type',
           'type' => 'select',
@@ -400,26 +399,24 @@ function phila_register_meta_boxes( $meta_boxes ){
           array(
             'id' => 'module_row_1_col_1_options',
             'type' => 'group',
-            // List of sub-fields
             'fields' => array(
              array(
               'name' => 'Custom Text Title',
               'id'   => 'phila_module_row_1_col_1_texttitle',
               'type' => 'text',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-
-             ),
-             array(
-              'name' => 'Custom Text Content',
-              'id'   => 'phila_module_row_1_col_1_textarea',
-              'type' => 'wysiwyg',
-              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-              'options' =>                     Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-             ),
             ),
+           array(
+            'name' => 'Custom Text Content',
+            'id'   => 'phila_module_row_1_col_1_textarea',
+            'type' => 'wysiwyg',
+            'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+            'options' =>                     Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+           ),
           ),
         ),
       ),
+    ),
     array(
       'type' => 'divider'
     ),
@@ -427,7 +424,7 @@ function phila_register_meta_boxes( $meta_boxes ){
       'id' => 'module_row_1_col_2',
       'type' => 'group',
       'fields' => array(
-         array(
+        array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => 'phila_module_row_1_col_2_type',
           'desc'  => 'Choose to display recent blog posts, custom markup, call to action panel, or a connect panel.',
@@ -436,17 +433,17 @@ function phila_register_meta_boxes( $meta_boxes ){
           'placeholder' => 'Select...',
           'options' => array(
             'phila_module_row_1_col_2_connect_panel' => 'Connect Panel',
-            ),
           ),
         ),
       ),
-      array(
-        'id' => 'module_row_1_col_2_connect_panel',
-        'type' => 'group',
-        'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_connect_panel'),
+    ),
+    array(
+      'id' => 'module_row_1_col_2_connect_panel',
+      'type' => 'group',
+      'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_connect_panel'),
 
-        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect()
-        ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect()
+      ),
     )
   );
 
