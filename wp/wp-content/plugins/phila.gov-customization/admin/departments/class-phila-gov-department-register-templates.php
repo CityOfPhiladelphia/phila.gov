@@ -37,7 +37,7 @@ class Phila_Gov_Deparment_Templates {
         'placeholder'  => 'Select a template',
         'options' => array(
           'default'                 => 'Default',
-          'homepage_v2'             => 'Department homepage version 2',
+          'homepage_v2'             => 'Department homepage',
           'one_quarter_headings_v2' => '1/4 headings',
           'all_programs_v2'         => 'All programs',
           'all_services_v2'         => 'All services',
@@ -49,13 +49,7 @@ class Phila_Gov_Deparment_Templates {
           'our-locations'           => 'Our locations',
           'resource_list_v2'        => 'Resource list',
           'staff_directory_v2'      => 'Staff directory',
-          'disabled'                => '──────────',
           'off_site_department'     => 'Off-site department',
-          'department_homepage'     => 'Department homepage',
-          'department_subpage'      => 'Department subpage',
-          'programs_initiatives'    => 'Programs and initiatives',
-          'resource_list'           => 'Resource list',
-          'staff_directory'         => 'Staff directory',
           ),
           'admin_columns' => array(
             'position' => 'after date',
