@@ -357,43 +357,43 @@ function phila_register_meta_boxes( $meta_boxes ){
       );
 
 // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
-$meta_boxes[] = array(
-  'id'       => 'phila_module_row_1',
-  'title'    => 'Two-thirds row',
-  'pages'    => array( 'department_page' ),
-  'context'  => 'normal',
-  'priority' => 'default',
-  'revision' => true,
+  $meta_boxes[] = array(
+    'id'       => 'phila_module_row_1',
+    'title'    => 'Two-thirds row',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'default',
+    'revision' => true,
 
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'homepage_v2' ),
+    'visible' => array(
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
+      ),
+      'relation' => 'or',
     ),
-    'relation' => 'or',
-  ),
 
-  'fields' => array(
-    array(
-      'name' => 'Description',
-      'id'   => 'phila_module_row_1_description',
-      'type' => 'custom_html',
-      'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
-    ),
-    array(
-      'type' => 'divider',
-    ),
-    array(
-      'id' => 'module_row_1_col_1',
-      'type' => 'group',
-      'fields' => array(
-        array(
-          'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
-          'id'   => 'phila_module_row_1_col_1_type',
-          'type' => 'select',
-          'placeholder' => 'Select...',
-          'std' => 'phila_module_row_1_col_1_custom_text',
-          'options' => array(
-            'phila_module_row_1_col_1_custom_text' => 'Custom Text',
+    'fields' => array(
+      array(
+        'name' => 'Description',
+        'id'   => 'phila_module_row_1_description',
+        'type' => 'custom_html',
+        'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
+      ),
+      array(
+        'type' => 'divider',
+      ),
+      array(
+        'id' => 'module_row_1_col_1',
+        'type' => 'group',
+        'fields' => array(
+          array(
+            'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+            'id'   => 'phila_module_row_1_col_1_type',
+            'type' => 'select',
+            'placeholder' => 'Select...',
+            'std' => 'phila_module_row_1_col_1_custom_text',
+            'options' => array(
+              'phila_module_row_1_col_1_custom_text' => 'Custom Text',
             ),
           ),
           array(
@@ -447,25 +447,24 @@ $meta_boxes[] = array(
     )
   );
 
-// Second row of modules - Calendar
-$meta_boxes[] = array(
-  'id'       => 'phila_module_row_2',
-  'title'    => 'Full row calendar',
-  'pages'    => array( 'department_page' ),
-  'context'  => 'normal',
-  'priority' => 'default',
-  'revision' => true,
+  // Second row of modules - Calendar
+  $meta_boxes[] = array(
+    'id'       => 'phila_module_row_2',
+    'title'    => 'Full row calendar',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'default',
+    'revision' => true,
 
-  'include' => array(
-    'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
-  ),
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'homepage_v2' ),
-      array('phila_template_select', '=', 'department_homepage' ),
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
     ),
-    'relation' => 'or',
-  ),
+    'visible' => array(
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
+      ),
+      'relation' => 'or',
+    ),
 
     // List of sub-fields
     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
