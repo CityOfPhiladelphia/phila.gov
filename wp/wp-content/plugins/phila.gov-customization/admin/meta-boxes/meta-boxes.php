@@ -368,7 +368,6 @@ function phila_register_meta_boxes( $meta_boxes ){
    'visible' => array(
      'when'  => array(
        array('phila_template_select', '=', 'homepage_v2' ),
-       array('phila_template_select', '=', 'department_homepage' ),
      ),
      'relation' => 'or',
    ),
@@ -391,7 +390,6 @@ function phila_register_meta_boxes( $meta_boxes ){
          array(
           'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
           'id'   => 'phila_module_row_1_col_1_type',
-          'desc'  => 'Choose to display recent blog posts or custom markup text.',
           'type' => 'select',
           'placeholder' => 'Select...',
           'std' => 'phila_module_row_1_col_1_custom_text',
@@ -404,26 +402,6 @@ function phila_register_meta_boxes( $meta_boxes ){
             'type' => 'group',
             // List of sub-fields
             'fields' => array(
-              array(
-               'name' => 'Post Style',
-               'id'   => 'phila_module_row_1_col_1_post_style',
-               'desc'  => 'Recent posts are displayed as "Cards" by default.',
-               'type' => 'select',
-               'placeholder' => 'Choose display style...',
-               'required'  => true,
-               'options' => array(
-                 'phila_module_row_1_col_1_post_style_cards' => 'Card',
-                 'phila_module_row_1_col_1_post_style_list' => 'List',
-               ),
-               'hidden' => array(
-                 'when'  => array(
-                   array('phila_module_row_1_col_1_type', '=', 'phila_module_row_1_col_1_custom_text' ),
-                   array('phila_module_row_1_col_1_type', '=', '' ),
-                 ),
-                 'relation' => 'or',
-               ),
-
-             ),
              array(
               'name' => 'Custom Text Title',
               'id'   => 'phila_module_row_1_col_1_texttitle',
