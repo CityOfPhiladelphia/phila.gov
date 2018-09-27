@@ -356,7 +356,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         ),
       );
 
-// First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
+  // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
   $meta_boxes[] = array(
     'id'       => 'phila_module_row_1',
     'title'    => 'Two-thirds row',
@@ -695,38 +695,6 @@ function phila_register_meta_boxes( $meta_boxes ){
 *
 **/
 
-// Program and Initiatives
-$meta_var_programs_initiatives_images = array(
-  'id' => 'phila_p_i_images',
-  'type' => 'group',
-  'visible' => array('phila_template_select', 'programs_initiatives'),
-
-  'fields' => array(
-    array(
-      'name' => 'Header Image',
-      'id' => 'phila_p_i_header',
-      'type' => 'file_input',
-    ),
-    array(
-      'name' => 'Featured Image',
-      'id' => 'phila_p_i_featured',
-      'type' => 'file_input',
-    ),
-    array(
-      'name' => 'Short Feature Description',
-      'id' => 'phila_short_feat_desc',
-      'type' => 'textarea',
-    ),
-    array(
-      'name' => 'Long Feature Description',
-      'id' => 'phila_long_feat_desc',
-      'type' => 'textarea',
-    ),
-  ),
-  'visible' => array('phila_template_select', '=', 'programs_initiatives'),
-);
-
-
 //Clonable WYSIWYG with title
 $meta_var_wysiwyg_multi = array(
   'id'  =>  'phila_cloneable_wysiwyg',
@@ -803,23 +771,6 @@ $meta_did_you_know = array(
     ),
   )
 );
-
-//Department Homepage metaboxes
-$meta_boxes[] = array(
-  'id'       => 'phila_department_homepage',
-  'title'    => 'Page Content',
-  'pages' => array( 'department_page' ),
-  'priority' => 'high',
-  'revision' => true,
-
-  'hidden'  => array('phila_template_select', 'ends with', 'v2'),
-
-  'fields' => array(
-    $meta_var_programs_initiatives_images,
-    Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
-  )
-);
-
 
 $meta_boxes[] = array(
   'title' => 'Service Stub',
