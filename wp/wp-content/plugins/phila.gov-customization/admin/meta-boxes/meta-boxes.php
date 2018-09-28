@@ -645,7 +645,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'id'  => 'phila_call_to_action_multi',
-    'title' => 'Call to action cards',
+    'title' => 'Call to action cards (resources)',
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority' => 'default',
