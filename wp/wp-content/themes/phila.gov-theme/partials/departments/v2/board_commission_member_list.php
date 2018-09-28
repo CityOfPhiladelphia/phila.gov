@@ -11,7 +11,7 @@ endif;
 
 <?php if ( !empty( $members ) ) : ?>
 <!-- Board/Commission members -->
-<div class="grid-container">
+<div class="grid-container mvxl">
   <section>
     <?php if ( !empty( $section_title ) ) :?>
       <h2 class="contrast"><?php echo $section_title ?></h2>
