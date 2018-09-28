@@ -380,7 +380,6 @@ class Phila_Gov_Standard_Metaboxes {
           'type'  => 'text',
           'size' => 50,
           'columns' => 12,
-          'required' => $required
          ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_url('URL', 'link_url', '', 12 ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'is_external'),
@@ -680,7 +679,6 @@ class Phila_Gov_Standard_Metaboxes {
                  'name'  => 'Link text',
                  'id'    => 'phila_action_panel_cta_text_multi',
                  'type'  => 'text',
-                 'required' => true,
                  'class' => 'action-panel-cta-text',
                ),
                array(
@@ -772,13 +770,11 @@ class Phila_Gov_Standard_Metaboxes {
                'name' => __('Item Title', 'rwmb'),
                'id'   => 'phila_list_item_title',
                'type' => 'text',
-               'required' => true,
              ),
              array(
                'name' => __('Item URL', 'rwmb'),
                'id'   => 'phila_list_item_url',
                'type' => 'url',
-               'required' => true,
              ),
              array(
                 'name' => __('Item Icon', 'rwmb'),
