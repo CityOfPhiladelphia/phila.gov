@@ -258,23 +258,13 @@
 
         <section class="row mvl">
             <?php
-              if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'):
-                $blog_cat_override = isset( $current_row['phila_two_thirds_col_option']['phila_get_post_cats']) ? $current_row['phila_two_thirds_col_option']['phila_get_post_cats'] : '';
-                include(locate_template('partials/departments/phila_full_row_blog.php'));?>
-            <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
+              if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
                   <div class="large-16 columns">
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
                 <?php endif;?>
-
-            <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text_multi'):?>
-              <?php if ( isset( $current_row_option_one['phila_custom_text_multi'] ) ):
-                $custom_text = $current_row_option_one['phila_custom_text_multi'];
-                include(locate_template('partials/departments/content-custom-text-multi.php'));
-              endif; ?>
-
             <?php endif;?>
 
             <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):?>
@@ -295,7 +285,7 @@
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
               <?php endif;?>
-          
+
             <?php endif; ?>
         </section>
       <?php endif; ?>
