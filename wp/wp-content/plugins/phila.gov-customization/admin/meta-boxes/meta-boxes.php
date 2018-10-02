@@ -256,7 +256,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     'priority' => 'high',
     'visible' => array(
       'when' => array(
-        array('phila_template_select', '=', 'resource_list'),
         array(  'phila_template_select','=', 'resource_list_v2'),
       ),
       'relation' => 'or'
@@ -356,191 +355,67 @@ function phila_register_meta_boxes( $meta_boxes ){
         ),
       );
 
- // Hero Header
- $meta_boxes[] = array(
-   'id'       => 'hero-header',
-   'title'    => 'Hero Header',
-   'pages'    => array( 'department_page' ),
-   'context'  => 'normal',
-   'priority' => 'high',
+  // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
+  $meta_boxes[] = array(
+    'id'       => 'phila_module_row_1',
+    'title'    => 'Two-thirds row',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'default',
+    'revision' => true,
 
-   'include' => array(
-     'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-   ),
-   'hidden' => array(
-     'when'  => array(
-       array('phila_template_select', 'ends with', 'v2')
-     ),
-     'relation' => 'or',
-   ),
-   'visible'  => array(
-     'when' => array(
-       array('phila_template_select', '=', 'default' ),
-       array('phila_template_select', '=', 'department_homepage' ),
-     ),
-     'relation' => 'or',
-   ),
+    'visible' => array(
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
+      ),
+      'relation' => 'or',
+    ),
 
-   'fields' => array(
-     array(
-       'name'  => 'Hero Header Title',
-       'id'    => 'phila_hero_header_title',
-       'type'  => 'text',
-       'class' => 'hero-header-title',
-       'desc'  => 'Title that will be placed over the header image.',
-       'size'  => '60'
-     ),
-     array(
-       'name'  => 'Hero Header Title (line 1)',
-       'id'    => 'phila_hero_header_title_l1',
-       'type'  => 'text',
-       'class' => 'hero-header-title-l1',
-       'desc'  => 'Portion of the title that will be displayed in standard case. Maximum of 20 characters',
-       'size'  => '60'
-     ),
-     array(
-       'name'  => 'Hero Header Title (line 2)',
-       'id'    => 'phila_hero_header_title_l2',
-       'type'  => 'text',
-       'class' => 'hero-header-title-l2',
-       'desc'  => 'Portion of the title that will be displayed in a larger font and forced uppercase. Maximum of 15 characters.',
-       'size'  => '60'
-     ),
-     array(
-       'name'  => 'Hero Header Body Copy',
-       'id'    => 'phila_hero_header_body_copy',
-       'type'  => 'textarea',
-       'class' => 'hero-header-body-copy',
-       'desc'  => 'Text that will be placed over the header image and below the Hero Header Title.',
-       'size'  => '60',
-     ),
-     array(
-       'name'  => 'Call to Action Button URL',
-       'desc'  => 'Optional URL to include as a "call to action" button',
-       'id'    => 'phila_hero_header_call_to_action_button_url',
-       'type'  => 'URL',
-       'class' => 'hero-header-call-to-action-button-url',
-     ),
-     array(
-       'name'  => 'Call to Action Button Text',
-       'id'    => 'phila_hero_header_call_to_action_button_text',
-       'type'  => 'text',
-       'class' => 'hero-header-call-to-action-button-text',
-       'desc'  => 'Text that appears on the "call to action" button.',
-       'size'  => '30',
-     ),
-     array(
-       'name'  => 'Image',
-       'id'    => 'phila_hero_header_image',
-       'type'  => 'file_input',
-       'class' => 'hero-header-image',
-       'desc'  => 'Image should be no smaller than 975px by 430px . '
-     ),
-     array(
-       'name'  => 'Image Alt Text',
-       'id'    => 'phila_hero_header_image_alt_text',
-       'type'  => 'text',
-       'class' => 'hero-header-image-alt-text',
-       'desc'  => 'A short description used to inform visitors about the contents of an image.',
-       'size'  => '60'
-     ),
-     array(
-       'name' => 'Image Credit',
-       'id'   => 'phila_hero_header_image_credit',
-       'type' => 'text',
-       'class' => 'hero-header-image-credit',
-       'desc'  => 'Provide attribution information when necessary.',
-       'size'  => '60'
-     ),
-   )
- );
-
- // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
- $meta_boxes[] = array(
-   'id'       => 'phila_module_row_1',
-   'title'    => 'Two-thirds row',
-   'pages'    => array( 'department_page' ),
-   'context'  => 'normal',
-   'priority' => 'default',
-   'revision' => true,
-
-   'visible' => array(
-     'when'  => array(
-       array('phila_template_select', '=', 'homepage_v2' ),
-       array('phila_template_select', '=', 'department_homepage' ),
-     ),
-     'relation' => 'or',
-   ),
-
-   'fields' => array(
-     array(
-      'name' => 'Description',
-      'id'   => 'phila_module_row_1_description',
-      'type' => 'custom_html',
-      'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
-     ),
-     array(
-       'type' => 'divider',
-     ),
-     array(
-      'id' => 'module_row_1_col_1',
-      'type' => 'group',
-      // List of sub-fields
-      'fields' => array(
-         array(
-          'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
-          'id'   => 'phila_module_row_1_col_1_type',
-          'desc'  => 'Choose to display recent blog posts or custom markup text.',
-          'type' => 'select',
-          'placeholder' => 'Select...',
-          'std' => 'phila_module_row_1_col_1_custom_text',
-          'options' => array(
-            'phila_module_row_1_col_1_custom_text' => 'Custom Text',
+    'fields' => array(
+      array(
+        'name' => 'Description',
+        'id'   => 'phila_module_row_1_description',
+        'type' => 'custom_html',
+        'std'  => '<span>Use this area to create a row that will be divided into two columns. The first column will take up 2/3 of the screen and second will take up 1/3.</span>',
+      ),
+      array(
+        'type' => 'divider',
+      ),
+      array(
+        'id' => 'module_row_1_col_1',
+        'type' => 'group',
+        'fields' => array(
+          array(
+            'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+            'id'   => 'phila_module_row_1_col_1_type',
+            'type' => 'select',
+            'placeholder' => 'Select...',
+            'std' => 'phila_module_row_1_col_1_custom_text',
+            'options' => array(
+              'phila_module_row_1_col_1_custom_text' => 'Custom Text',
             ),
           ),
           array(
             'id' => 'module_row_1_col_1_options',
             'type' => 'group',
-            // List of sub-fields
             'fields' => array(
-              array(
-               'name' => 'Post Style',
-               'id'   => 'phila_module_row_1_col_1_post_style',
-               'desc'  => 'Recent posts are displayed as "Cards" by default.',
-               'type' => 'select',
-               'placeholder' => 'Choose display style...',
-               'required'  => true,
-               'options' => array(
-                 'phila_module_row_1_col_1_post_style_cards' => 'Card',
-                 'phila_module_row_1_col_1_post_style_list' => 'List',
-               ),
-               'hidden' => array(
-                 'when'  => array(
-                   array('phila_module_row_1_col_1_type', '=', 'phila_module_row_1_col_1_custom_text' ),
-                   array('phila_module_row_1_col_1_type', '=', '' ),
-                 ),
-                 'relation' => 'or',
-               ),
-
-             ),
              array(
               'name' => 'Custom Text Title',
               'id'   => 'phila_module_row_1_col_1_texttitle',
               'type' => 'text',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-
-             ),
-             array(
-              'name' => 'Custom Text Content',
-              'id'   => 'phila_module_row_1_col_1_textarea',
-              'type' => 'wysiwyg',
-              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
-              'options' =>                     Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-             ),
             ),
+           array(
+            'name' => 'Custom Text Content',
+            'id'   => 'phila_module_row_1_col_1_textarea',
+            'type' => 'wysiwyg',
+            'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+            'options' =>                     Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+           ),
           ),
         ),
       ),
+    ),
     array(
       'type' => 'divider'
     ),
@@ -548,122 +423,47 @@ function phila_register_meta_boxes( $meta_boxes ){
       'id' => 'module_row_1_col_2',
       'type' => 'group',
       'fields' => array(
-         array(
+        array(
           'name' => 'Column 2 <br/><small>(1/3 column)</small>',
           'id'   => 'phila_module_row_1_col_2_type',
           'desc'  => 'Choose to display recent blog posts, custom markup, call to action panel, or a connect panel.',
           'type' => 'select',
+          'std'   => 'phila_module_row_1_col_2_connect_panel',
           'placeholder' => 'Select...',
           'options' => array(
-            'phila_module_row_1_col_2_blog_posts' => 'Blog Posts',
-            'phila_module_row_1_col_2_call_to_action_panel' => 'Call to Action Panel',
             'phila_module_row_1_col_2_connect_panel' => 'Connect Panel',
-            'phila_module_row_1_col_2_custom_text' => 'Custom Text',
-          ),
-        ),
-        array(
-          'id' => 'module_row_1_col_2_options',
-          'type' => 'group',
-          'fields' => array(
-             array(
-              'name' => 'Custom Text Title',
-              'id'   => 'phila_module_row_1_col_2_texttitle',
-              'type' => 'text',
-              //TODO Move these hidden fields up to the parent. This will change the metabox IDs and effect live content, so let's hold off for now.
-              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
-             ),
-             array(
-              'name' => 'Custom Text Content',
-              'id'   => 'phila_module_row_1_col_2_textarea',
-              'type' => 'textarea',
-              'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_custom_text'),
-             ),
-           ),
           ),
         ),
       ),
-      array(
-        'id' => 'module_row_1_col_2_call_to_action_panel',
-        'type' => 'group',
-        'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_call_to_action_panel'),
-        'fields' => array(
-          array(
-            'name'  => 'Section Title',
-            'id'    => 'phila_action_section_title',
-            'type'  => 'text',
-            'class' => 'percent-100'
-          ),
-        array(
-          'name'  => 'Call to Action Text',
-          'id'    => 'phila_action_panel_cta_text',
-          'type'  => 'text',
-          'class' => 'action-panel-cta-text',
-        ),
-        array(
-          'name'  => 'Summary',
-          'id'    => 'phila_action_panel_summary',
-          'type'  => 'textarea',
-          'class' => 'action-panel-details',
-        ),
-        array(
-          'name'  => 'Icon',
-          'id'    => 'phila_action_panel_fa',
-          'type'  => 'text',
-          'class' => 'action-panel-fa',
-        ),
-        array(
-          'name'  => 'Icon Background Circle',
-          'id'    => 'phila_action_panel_fa_circle',
-          'type'  => 'switch',
-          'class' => 'action-panel-fa',
-          'on_label'  => 'Yes',
-          'off_label' => 'No'
-        ),
-        array(
-          'name'  => 'Link to Content',
-          'id'    => 'phila_action_panel_link',
-          'type'  => 'url',
-          'class' => 'action-panel-link',
-        ),
-        array(
-          'name'  => 'This link directs users away from www.phila.gov',
-          'id'    => 'phila_action_panel_link_loc',
-          'type'  => 'switch',
-          'class' => 'action-panel-link-loc',
-          'on_label'  => 'Yes',
-          'off_label' => 'No'
-          ),
-        ),
-      ),
-      array(
-        'id' => 'module_row_1_col_2_connect_panel',
-        'type' => 'group',
-        'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_connect_panel'),
+    ),
+    array(
+      'id' => 'module_row_1_col_2_connect_panel',
+      'type' => 'group',
+      'hidden' => array('phila_module_row_1_col_2_type', '!=', 'phila_module_row_1_col_2_connect_panel'),
 
-        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect()
-        ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect()
+      ),
     )
   );
 
-// Second row of modules - Calendar
-$meta_boxes[] = array(
-  'id'       => 'phila_module_row_2',
-  'title'    => 'Full row calendar',
-  'pages'    => array( 'department_page' ),
-  'context'  => 'normal',
-  'priority' => 'default',
-  'revision' => true,
+  // Second row of modules - Calendar
+  $meta_boxes[] = array(
+    'id'       => 'phila_module_row_2',
+    'title'    => 'Full row calendar',
+    'pages'    => array( 'department_page' ),
+    'context'  => 'normal',
+    'priority' => 'default',
+    'revision' => true,
 
-  'include' => array(
-    'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
-  ),
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'homepage_v2' ),
-      array('phila_template_select', '=', 'department_homepage' ),
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
     ),
-    'relation' => 'or',
-  ),
+    'visible' => array(
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
+      ),
+      'relation' => 'or',
+    ),
 
     // List of sub-fields
     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
@@ -845,7 +645,7 @@ $meta_boxes[] = array(
 
   $meta_boxes[] = array(
     'id'  => 'phila_call_to_action_multi',
-    'title' => 'Call to action cards',
+    'title' => 'Call to action cards (resources)',
     'pages' => array( 'department_page' ),
     'context' => 'normal',
     'priority' => 'default',
@@ -893,38 +693,6 @@ $meta_boxes[] = array(
 * Begin MetaBox Field Arrays
 *
 **/
-
-// Program and Initiatives
-$meta_var_programs_initiatives_images = array(
-  'id' => 'phila_p_i_images',
-  'type' => 'group',
-  'visible' => array('phila_template_select', 'programs_initiatives'),
-
-  'fields' => array(
-    array(
-      'name' => 'Header Image',
-      'id' => 'phila_p_i_header',
-      'type' => 'file_input',
-    ),
-    array(
-      'name' => 'Featured Image',
-      'id' => 'phila_p_i_featured',
-      'type' => 'file_input',
-    ),
-    array(
-      'name' => 'Short Feature Description',
-      'id' => 'phila_short_feat_desc',
-      'type' => 'textarea',
-    ),
-    array(
-      'name' => 'Long Feature Description',
-      'id' => 'phila_long_feat_desc',
-      'type' => 'textarea',
-    ),
-  ),
-  'visible' => array('phila_template_select', '=', 'programs_initiatives'),
-);
-
 
 //Clonable WYSIWYG with title
 $meta_var_wysiwyg_multi = array(
@@ -1002,23 +770,6 @@ $meta_did_you_know = array(
     ),
   )
 );
-
-//Department Homepage metaboxes
-$meta_boxes[] = array(
-  'id'       => 'phila_department_homepage',
-  'title'    => 'Page Content',
-  'pages' => array( 'department_page' ),
-  'priority' => 'high',
-  'revision' => true,
-
-  'hidden'  => array('phila_template_select', 'ends with', 'v2'),
-
-  'fields' => array(
-    $meta_var_programs_initiatives_images,
-    Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
-  )
-);
-
 
 $meta_boxes[] = array(
   'title' => 'Service Stub',

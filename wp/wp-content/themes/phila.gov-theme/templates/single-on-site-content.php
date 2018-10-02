@@ -77,8 +77,6 @@ HTML;
       $_categories         = get_the_category();
       $_news_cat_override  = rwmb_meta('phila_get_news_cats');
       $_press_cat_override = rwmb_meta('phila_get_press_cats');
-      $_featured_meta      = rwmb_meta( 'phila_v2_homepage_featured' ) ;
-
 
       $homepage_v2_data = array(
         'full_row_blog'   => rwmb_meta( 'phila_full_row_blog_selected' ),
@@ -94,8 +92,6 @@ HTML;
         ),
 
         'staff_directory_listing'=>rwmb_meta( 'phila_staff_directory_selected' ),
-
-        'featured'=> phila_loop_clonable_metabox($_featured_meta)
 
       );
 
@@ -191,27 +187,7 @@ HTML;
 
   }
 
-
-
-
   ?>
-
-
-
-
-      <?php
-      // it's an old v1 department page and we still need to render the row one, etc. content
-
-      if ($user_selected_template != 'homepage_v2') :
-         get_template_part( 'partials/departments/content', 'row-one' );
-         get_template_part( 'partials/departments/v2/content', 'homepage-full-width-cta');
-         get_template_part( 'partials/departments/content', 'row-two' );
-         get_template_part( 'partials/departments/content', 'call-to-action-multi' );
-       endif;
-    ?>
-
-
-
 
     <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 

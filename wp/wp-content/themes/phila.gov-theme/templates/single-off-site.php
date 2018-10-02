@@ -7,6 +7,9 @@
 <?php
   $department_external_url = rwmb_meta( 'phila_dept_url', $args = array('type' => 'url'));
 ?>
+<div class="row columns">
+  <h1 class="contrast"><?php echo the_title() ?></h1>
+</div>
 
 <div class="row ptm">
   <div data-swiftype-index='true' class="entry-content columns end">

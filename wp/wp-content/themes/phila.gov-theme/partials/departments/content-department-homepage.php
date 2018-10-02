@@ -61,15 +61,6 @@
             <!-- /Full Width Calendar -->
 
             <?php endif;?>
-          <?php elseif ($current_row_option == 'phila_feature_p_i'): ?>
-            <!-- Featured Program -->
-            <?php
-              $featured = $current_row['phila_full_options']['phila_feature_p_i']['phila_p_i']['phila_p_i_items'];
-              if ( !empty( $featured ) ):
-                include(locate_template('partials/departments/content-featured-pages.php'));
-              endif;
-            ?>
-            <!-- /Featured Program -->
 
           <?php elseif ($current_row_option == 'phila_get_involved'): ?>
             <?php if ( !isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ): ?>

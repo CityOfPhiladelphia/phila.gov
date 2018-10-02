@@ -345,69 +345,6 @@ $meta_boxes[] = array(
     );//Things To Do
 
   $meta_boxes[] = array(
-    'title' => 'Featured programs or content',
-    'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'homepage_v2' ),
-
-    'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
-    ),
-
-    'fields' => array(
-      array(
-        'id'       => 'phila_v2_homepage_featured_section',
-        'title'    => 'Title',
-        'type'  => 'group',
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Section title', 'title', '', '60' ),
-        ),
-      ),
-      array(
-        'id'       => 'phila_v2_homepage_featured',
-        'title'    => 'Title',
-        'type'  => 'group',
-        'clone' => true,
-        'max_clone' => 3,
-
-        'fields' => array(
-          array(
-            'name' => 'Select page',
-            'type'  => 'heading',
-            'columns' => '6'
-          ),
-          array(
-            'name' => 'Alternate title',
-            'type'  => 'heading',
-            'columns' => '6'
-          ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('', 'phila_featured_page', 'department_page', false, '', '6' ),
-
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('', 'phila_featured_title', 'Optional.', '50', '6' ),
-          array(
-            'name' => 'Image',
-            'type'  => 'heading',
-            'columns' => '6'
-          ),
-          array(
-            'name' => 'Description',
-            'type'  => 'heading',
-            'columns' => '6'
-          ),
-          array(
-            'id' => 'phila_featured_img',
-            'title' => 'Select image',
-            'type' => 'image_advanced',
-            'desc'  => 'Required. Image must be square and a minimum of 150px by 150px.',
-            'max_file_uploads' => 1,
-            'columns' => '6'
-          ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('', 'phila_featured_description', '220 characters maximum.', '6' ),
-        ),
-      ),
-    ),
-  );
-
-  $meta_boxes[] = array(
     'title' => 'Department metadata',
     'pages'    => array( 'department_page' ),
     'context'  => 'side',
@@ -418,7 +355,6 @@ $meta_boxes[] = array(
     'visible' => array(
       'when' => array(
         array('phila_template_select', 'homepage_v2'),
-        array('phila_template_select', 'department_homepage'),
         array('phila_template_select', 'off_site_department')
       ),
       'relation' => 'or'

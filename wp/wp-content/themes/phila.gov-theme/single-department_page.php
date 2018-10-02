@@ -56,29 +56,7 @@ get_header(); ?>
       get_dept_partial('hero', $hero_data);
 
 ?>
-<?php  else: //it's an old-style department ?>
-    <header>
-      <div class="row">
-        <div class="columns">
-          <h1 class="entry-title contrast mbn"><?php echo $parent->post_title;?></h1>
-        </div>
-      </div>
-    </header>
-    <div class="menu-old">
-      <?php
-        //get department homepage alerts
-        call_user_func( array( 'Phila_Gov_Department_Sites', 'department_homepage_alert' ) );
-
-        if ( $user_selected_template != 'off_site_department' ){
-          /*
-          Our navigation menu. We use categories to drive functionality.
-          This checks to make sure a category exists for the given page,
-          if it does, we render our menu w/ markup.
-          */
-            phila_get_menu();
-        }
-        ?>
-      <?php endif; ?>
+<?php endif; ?>
   <?php
     if ( $user_selected_template === 'off_site_department' ){
 
