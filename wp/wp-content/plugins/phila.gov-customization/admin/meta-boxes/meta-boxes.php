@@ -728,6 +728,17 @@ $meta_related_content = array(
       'type'  => 'heading'
     ),
     array(
+      'id'  => 'phila_related_content_picker',
+      'type'  => 'post',
+      'post_type' => array('department_page', 'programs', 'post', 'service_page', 'document'),
+      'placeholder' => 'Select pages',
+      'query_args'  => array(
+          'post_status'    => 'any',
+          'posts_per_page' => - 1,
+        ),
+      'multiple'  => true,
+    ),
+    array(
       'id'  => 'phila_related_content',
       'type'  => 'wysiwyg',
       'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()

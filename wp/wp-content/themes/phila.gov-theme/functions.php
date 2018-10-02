@@ -1277,6 +1277,9 @@ function phila_additional_content( $input ){
     foreach ($input as $k => $v) {
       $output['forms'] = isset( $input['phila_forms_instructions']['phila_document_page_picker'] ) ? $input['phila_forms_instructions']['phila_document_page_picker'] : '';
 
+      $output['related_picker'] = isset( $input['phila_related']['phila_related_content_picker'] ) ? $input['phila_related']['phila_related_content_picker'] : '';
+
+
       $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
 
       $output['aside']['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
