@@ -30,11 +30,20 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty( $more['related'] ) ) : ?>
+<?php if ( !empty( $more['related_picker'] || !empty( $more['related'] ) ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
       <h3 class="black bg-ghost-gray phm-mu mtl mbm">Related content</h3>
+      <?php if (!empty( $more['related_picker']) ) : ?>
+        <div class="phm-mu">
+          <ul class="mbn">
+            <?php foreach ( $more['related_picker'] as $pick ) :?>
+              <li><a href="<?php echo get_permalink($pick)?>"><?php echo get_the_title($pick) ?></a></li>
+            <?php endforeach ?>
+          </ul>
+        </div>
+      <?php endif ?>
       <div class="phm-mu">
         <?php echo apply_filters( 'the_content', $more['related']); ?>
       </div>
