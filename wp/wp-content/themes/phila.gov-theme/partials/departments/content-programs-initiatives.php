@@ -258,23 +258,13 @@
 
         <section class="row mvl">
             <?php
-              if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_blog_posts'):
-                $blog_cat_override = isset( $current_row['phila_two_thirds_col_option']['phila_get_post_cats']) ? $current_row['phila_two_thirds_col_option']['phila_get_post_cats'] : '';
-                include(locate_template('partials/departments/phila_full_row_blog.php'));?>
-            <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
+              if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
                   <div class="large-16 columns">
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
                 <?php endif;?>
-
-            <?php elseif ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text_multi'):?>
-              <?php if ( isset( $current_row_option_one['phila_custom_text_multi'] ) ):
-                $custom_text = $current_row_option_one['phila_custom_text_multi'];
-                include(locate_template('partials/departments/content-custom-text-multi.php'));
-              endif; ?>
-
             <?php endif;?>
 
             <?php if ( $current_row_option_two['phila_one_third_col_option'] == 'phila_connect_panel'):?>
@@ -295,37 +285,7 @@
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
               <?php endif;?>
-            <?php elseif ( $current_row_option_two['phila_one_third_col_option'] == 'phila_custom_feature'):?>
-              <?php if ( isset( $current_row_option_two['phila_custom_feature'] ) ):
-                $feature_panel = $current_row_option_two['phila_custom_feature'];
-                $feature_title = isset( $feature_panel['phila_feature_title'] ) ? $feature_panel['phila_feature_title'] : '';
-                $feature_image = isset( $feature_panel['phila_feature_image'] ) ? $feature_panel['phila_feature_image'] : '';
-                $feature_text = isset( $feature_panel['phila_feature_text'] ) ? $feature_panel['phila_feature_text'] : '';
-                $feature_url = isset( $feature_panel['phila_feature_url'] ) ? $feature_panel['phila_feature_url'] : '';
-                $feature_url_text = isset( $feature_panel['phila_feature_url_text'] ) ? $feature_panel['phila_feature_url_text'] : '';
-              ?>
-              <div class="large-8 columns">
-                <h2 class="contrast"><?php echo $feature_title;?></h2>
-                <?php if( $feature_url != '' ): ?>
-                <a href="<?php echo $feature_url;?>" class="card action-panel mbn">
-                <?php endif; ?>
-                <?php if( $feature_image != '' ): ?>
-                  <img src="<?php echo $feature_image;?>" alt="">
-                <?php endif; ?>
-                  <div class="panel">
-                    <?php if( $feature_url_text != '' ): ?>
-                      <header class="">
-                        <span class="external"><?php echo $feature_url_text;?></span>
-                      </header>
-                      <hr class="mll mrl">
-                    <?php endif; ?>
-                    <span class="details"><?php echo $feature_text;?></span>
-                  </div>
-                <?php if( $feature_url != '' ): ?>
-                </a>
-                <?php endif; ?>
-              </div>
-              <?php endif; ?>
+
             <?php endif; ?>
         </section>
       <?php endif; ?>

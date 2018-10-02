@@ -1,8 +1,9 @@
 <?php
   /* Partial for board or commission member accordion-style rendering. */
+
   if ( !isset( $section_title ) ) :
-    rwmb_meta('section_title');
-  endif;
+  $section_title = rwmb_meta('section_title');
+endif;
   if ( !isset( $members ) ) :
     $members = rwmb_meta('phila_commission_members');
   endif;
@@ -10,7 +11,7 @@
 
 <?php if ( !empty( $members ) ) : ?>
 <!-- Board/Commission members -->
-<div class="grid-container">
+<div class="grid-container mvxl">
   <section>
     <?php if ( !empty( $section_title ) ) :?>
       <h2 class="contrast"><?php echo $section_title ?></h2>
