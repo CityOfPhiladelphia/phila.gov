@@ -13,12 +13,6 @@ h1 .fa{
   }
 }
 
-.group::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 #page {
   position: relative;
 }
@@ -81,17 +75,6 @@ img.float-right{
   }
 }
 
-//TODO: add all these as utility to patterns
-.float-none{
-  float:none;
-}
-.text-align-left{
-  text-align: left !important;
-}
-
-.inline-block{
-  display: inline-block;
-}
 .phila-thumb{
   max-width: 250px;
 }
@@ -134,31 +117,12 @@ table.connect{
   color: white;
 }
 
-//TODO: add to standards
-.full-height{
-  height:100%;
-}
-
-.all-caps{
-  text-transform: uppercase;
-}
-
 ol, ul {
   padding-left:2rem;
 }
 
 .breadcrumbs{
   padding:0;
-}
-
-//TODO: Add to standards
-footer.site-footer{
-  margin-top:6rem;
-}
-
-//TODO: Add to standards
-.percent-90{
-  width: 90%;
 }
 
 hr {
@@ -171,9 +135,4 @@ hr {
 .vr{
   padding: 0 0 0 $spacing-medium;
   border-left: 4px solid color(ghost-gray);
-}
-
-.margin-auto{
-  margin-left:auto;
-  margin-right:auto;
 }
