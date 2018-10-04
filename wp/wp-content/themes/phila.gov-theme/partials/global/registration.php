@@ -28,13 +28,13 @@ endif;
             <div class="columns small-1 hide-for-small-only">
               <?php if( $is_closed == true ) : ?>
                 <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
-                  <i class="fa fa-exclamation fa-stack-1x fa-inverse"  aria-hidden="true"></i>
+                  <i class="fas fa-circle fa-stack-2x" aria-hidden="true"></i>
+                  <i class="fas fa-exclamation fa-stack-1x fa-inverse"  aria-hidden="true"></i>
                 </span>
               <?php else :?>
                 <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
-                  <i class="fa fa-check fa-stack-1x fa-inverse"  aria-hidden="true"></i>
+                  <i class="fas fa-circle fa-stack-2x" aria-hidden="true"></i>
+                  <i class="fas fa-check fa-stack-1x fa-inverse"  aria-hidden="true"></i>
                 </span>
               <?php endif; ?>
             </div>

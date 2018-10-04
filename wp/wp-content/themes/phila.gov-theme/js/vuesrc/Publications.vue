@@ -20,7 +20,7 @@
             :disabled="state.disabled"></datepicker>
           </div>
           <div class="cell medium-1 small-2 mts">
-            <i class="fa fa-arrow-right"></i>
+            <i class="fas fa-arrow-right"></i>
           </div>
           <div class="cell medium-4 small-11">
             <datepicker
@@ -46,7 +46,7 @@
         </div>
       </div>
     <div v-show="loading" class="mtm center">
-      <i class="fa fa-spinner fa-spin fa-3x"></i>
+      <i class="fas fa-spinner fa-spin fa-3x"></i>
     </div>
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>

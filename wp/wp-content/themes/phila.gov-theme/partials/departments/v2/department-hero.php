@@ -11,7 +11,7 @@
 
                 <?php if (!empty($this->bg['photo_credit']) ): ?>
                   <div class="photo-credit small-text">
-                    <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo $this->bg['photo_credit'] ?></span>
+                    <span><i class="fas fa-camera" aria-hidden="true"></i> Photo by <?php echo $this->bg['photo_credit'] ?></span>
                   </div>
                 <?php endif; ?>
 

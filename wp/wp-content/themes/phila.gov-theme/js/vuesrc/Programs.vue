@@ -53,7 +53,7 @@
       <div class="cell medium-16">
         <div>
           <div v-show="loading" class="mtm center">
-            <i class="fa fa-spinner fa-spin fa-3x"></i>
+            <i class="fas fa-spinner fa-spin fa-3x"></i>
           </div>
           <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no program results.</div>
           <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>

@@ -57,7 +57,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-briefcase fa-4x" aria-hidden="true"></i>
+                        <i class="fas fa-briefcase fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -71,7 +71,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fa fa-home fa-4x" aria-hidden="true"></i>
+                        <i class="fas fa-home fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -139,7 +139,7 @@ get_header(); ?>
                 <a href="/contracts/pages/default.aspx" class="hover-fade">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
-                      <i class="fa fa-copy fa-4x fa-fw"></i>
+                      <i class="far fa-copy fa-4x fa-fw"></i>
                     </div>
                     <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
@@ -154,7 +154,7 @@ get_header(); ?>
                 <a href="/departments/department-of-licenses-and-inspections/">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
-                      <i class="fa fa-file-text fa-4x  fa-fw"></i>
+                      <i class="fas fa-file-alt fa-4x  fa-fw"></i>
                     </div>
                     <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
@@ -169,7 +169,7 @@ get_header(); ?>
                 <a href="https://visitphilly.com">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
-                      <i class="fa fa-users fa-4x fa-fw"></i>
+                      <i class="fas fa-users fa-4x fa-fw"></i>
                     </div>
                     <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
@@ -204,7 +204,7 @@ get_header(); ?>
                 <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:
                   </p>
                 <ul class="list-style-none mln pln pvm">
-                  <li class="mbm"><i class="fa fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
+                  <li class="mbm"><i class="fas fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fal fa-lightbulb fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
                 </ul>
               </section>
             </div>
@@ -214,7 +214,7 @@ get_header(); ?>
                 <p>For the past few years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
                 <div class="row collapse">
                   <div class="medium-8 columns center small-centered ben-franklin-blue marker">
-                    <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                    <i class="fal fa-map-marker-alt fa-3x" aria-hidden="true"></i>
                   </div>
                 </div>
                 <div class="row collapse process-bar">

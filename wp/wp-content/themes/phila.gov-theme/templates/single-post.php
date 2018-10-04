@@ -27,10 +27,10 @@ $tweet_intent = rwmb_meta('phila_social_intent');
         <?php endif; ?>
       </div>
       <div class="cell medium-6 align-self-bottom social-media">
-        <a href="#" id="fb-share" data-analytics="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="https://twitter.com/intent/tweet?text=<?php echo ( $tweet_intent != '' ) ? phila_encode_title(rwmb_meta('phila_social_intent') ) :  phila_encode_title( $the_title );?>&url=<?php echo get_permalink()?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        <a href="mailto:?subject=<?php echo str_replace('+', '%20', $email_title) ?>&body=<?php echo get_permalink()?>" data-analytics="social"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-        <a href="javascript:window.print()" data-analytics="social"><i class="fa fa-print" aria-hidden="true"></i></a>
+        <a href="#" id="fb-share" data-analytics="social"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/intent/tweet?text=<?php echo ( $tweet_intent != '' ) ? phila_encode_title(rwmb_meta('phila_social_intent') ) :  phila_encode_title( $the_title );?>&url=<?php echo get_permalink()?>"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+        <a href="mailto:?subject=<?php echo str_replace('+', '%20', $email_title) ?>&body=<?php echo get_permalink()?>" data-analytics="social"><i class="far fa-envelope fa-lg" aria-hidden="true"></i></a>
+        <a href="javascript:window.print()" data-analytics="social"><i class="fal fa-print fa-lg" aria-hidden="true"></i></a>
       </div>
       <div class="border-bottom-fat"></div>
     </div>

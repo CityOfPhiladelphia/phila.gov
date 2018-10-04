@@ -13,7 +13,7 @@
       <div class="row" data-toggle="feedback">
         <div class="small-24 columns">
           <div class="call-to-action phs pvm center">
-            <a href="#" class="no-link"><i class="fa fa-lightbulb-o fa-x2" aria-hidden="true"></i><span class="break-before-sm"> We're still working on this page's design and content.</span>
+            <a href="#" class="no-link"><i class="far fa-lightbulb fa-x2" aria-hidden="true"></i><span class="break-before-sm"> We're still working on this page's design and content.</span>
             <span class="break-before-sm"> How can we make it better?</span></a>
           </div>
         </div>
@@ -35,7 +35,7 @@
       <div class="row expanded" data-toggle="feedback" data-type="feedback-footer" style="display:none;">
         <div class="small-24 columns">
           <div class="call-to-action center">
-            <div class="pas"><a href="#" class="no-link"><i class="fa fa-close" aria-hidden="true"></i> Close</a></div>
+            <div class="pas"><a href="#" class="no-link"><i class="fas fa-times" aria-hidden="true"></i> Close</a></div>
           </div>
         </div>
       </div>

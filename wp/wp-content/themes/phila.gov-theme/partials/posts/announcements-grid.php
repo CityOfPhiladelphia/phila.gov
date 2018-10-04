@@ -70,7 +70,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
             <div class="post-label post-label--<?php echo $label_arr['label']?>">
-              <i class="fa fa-<?php echo $label_arr['icon'] ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_arr['nice']; ?></span>
+              <i class="<?php echo $label_arr['icon'] ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_arr['nice']; ?></span>
             </div>
             <header class="mvm">
               <h1><?php echo get_the_title(); ?></h1>

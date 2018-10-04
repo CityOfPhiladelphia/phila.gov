@@ -40,7 +40,7 @@
             </div>
               <div class="medium-18 columns pbxl">
                 <?php echo rwmb_meta('phila_meta_desc', '', $child->ID)?>
-                <a href="<?php echo get_permalink($child->ID) ?>">Learn more <i class="fa fa-arrow-right"></i></a>
+                <a href="<?php echo get_permalink($child->ID) ?>">Learn more <i class="fas fa-arrow-right"></i></a>
               </div>
             </div>
             <?php if ($last_key != $key) : ?>

@@ -28,7 +28,7 @@
     <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
       <tr>
         <th scope="row">
-          <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+          <i class="fal fa-map-marker-alt fa-2x" aria-hidden="true"></i>
           <span class="accessible">Address</span>
         </th>
         <td class="pvl">
@@ -51,7 +51,7 @@
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <span class="accessible">Email</span>
-          <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+          <i class="far fa-envelope fa-2x" aria-hidden="true"></i>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <a href="mailto:<?php echo $connect_vars['email']; ?>" class="u-email"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
@@ -61,7 +61,7 @@
   <?php if ( ( !phila_util_is_array_empty($connect_vars['phone']) ) || (!$connect_vars['fax'] == '' ) ) : ?>
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
-        <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+        <i class="fas fa-phone fa-2x" aria-hidden="true"></i>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <div class="p-tel">
@@ -89,7 +89,7 @@
     <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
       <tr>
         <th scope="row">
-          <i class="fa fa-globe fa-2x" aria-hidden="true"></i>
+          <i class="fas fa-globe fa-2x" aria-hidden="true"></i>
         </th>
         <td>
           <a href="<?php echo $connect_vars['website']['url'] ?>" class="<?php echo isset($connect_vars['website']['external']) ? 'external' : ''?>">
@@ -101,7 +101,7 @@
     <?php if ( ! empty( $connect_vars['social'] ) ) :?>
       <tr>
         <th scope="row">
-          <i class="fa fa-at fa-2x" aria-hidden="true"></i>
+          <i class="fal fa-at fa-2x" aria-hidden="true"></i>
           <span class="accessible">Social</span>
         </th>
         <td class="pvl">
@@ -115,7 +115,7 @@
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
             <div class="small-<?php echo $columns;?> end columns pvxs">
               <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs" data-analytics="social">
-                <i class="fa fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
+                <i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </div>
@@ -123,7 +123,7 @@
           <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
             <div class="small-<?php echo $columns;?> end columns pvxs">
               <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs" data-analytics="social">
-                <i class="fa fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </div>
@@ -131,7 +131,7 @@
           <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
             <div class="small-<?php echo $columns;?> end columns pvxs">
               <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs" data-analytics="social">
-              <i class="fa fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+              <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </div>
@@ -139,7 +139,7 @@
           <?php if ( isset( $connect_vars['social']['youtube'] ) && !$connect_vars['social']['youtube'] == '') : ?>
             <div class="small-<?php echo $columns;?> end columns pvxs">
               <a href="<?php echo $connect_vars['social']['youtube']; ?>" class="phs" data-analytics="social">
-              <i class="fa fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
+              <i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube channel</span>
               </a>
             </div>
@@ -147,7 +147,7 @@
           <?php if ( isset( $connect_vars['social']['flickr'] ) && !$connect_vars['social']['flickr'] == '') : ?>
             <div class="small-<?php echo $columns;?> end columns pvxs">
               <a href="<?php echo $connect_vars['social']['flickr']; ?>" class="phs" data-analytics="social">
-              <i class="fa fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
+              <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr stream</span>
               </a>
             </div>
