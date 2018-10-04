@@ -4,10 +4,8 @@
   "description": "A custom wordpress theme for phila.gov",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "fonts": "cp -R node_modules/font-awesome/fonts ./",
-    "dev:css": "node-sass --include-path node_modules/phila-standards/src/_vendor/font-awesome/scss --include-path node_modules/phila-standards/src/_vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --source-map true css/scss/base.scss css/styles.css",
-    "prebuild": "npm run fonts",
-    "build:css": "node-sass --include-path node_modules/phila-standards/src/_vendor/font-awesome/scss --include-path node_modules/phila-standards/src/_vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.min.css",
+    "dev:css": "node-sass --include-path node_modules/phila-standards/src/_vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --source-map true css/scss/base.scss css/styles.css",
+    "build:css": "node-sass --include-path node_modules/phila-standards/src/_vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.min.css",
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "dev:vuejs": "browserify -t vueify -e js/vuesrc/main.js -o js/app.js",
     "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
@@ -48,7 +46,6 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
-    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "list.js": "^1.5.0",
