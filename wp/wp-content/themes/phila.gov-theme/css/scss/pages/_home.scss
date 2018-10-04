@@ -70,10 +70,10 @@
 
       a {
         color:black;
-        .fa, p {
+        [class*="fa-"], p {
           color: color(dark-ben-franklin);
         }
-        .fa {
+        [class*="fa-"] {
           font-size: 5rem;
           line-height: 5rem;
           @media only screen and (min-width: 40em) {
@@ -81,7 +81,7 @@
             line-height: 4rem;
           }
           @media only screen and (min-width: 64em) {
-            font-size: 4rem;
+            font-size: 3.8rem;
           }
         }
         .fa-home {
@@ -92,7 +92,7 @@
             line-height: 4rem;
           }
           @media only screen and (min-width: 64em) {
-            font-size: 5rem;
+            font-size: 4rem;
           }
         }
     }

@@ -29,7 +29,7 @@ get_header(); ?>
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
-                        <i class="fa fa-trash fa-4x" aria-hidden="true"></i>
+                        <i class="fas fa-trash-alt fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
@@ -41,9 +41,9 @@ get_header(); ?>
               <div class="small-12 medium-6 columns">
                 <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
-                    <div class="valign ">
+                    <div class="valign">
                       <div class="valign-cell">
-                        <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
+                        <i class="fal fa-credit-card fa-4x" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div>
