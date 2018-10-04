@@ -132,7 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="small-5 medium-1 columns valign phn-m">
               <div class="valign-cell">
                 <button class="site-search" type="button"  data-toggle="search-dropdown">
-                  <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                  <i class="fas fa-search fa-2x" aria-hidden="true"></i>
                   <span class="show-for-small-only">Search</span>
                 </button>
               </div>
@@ -142,7 +142,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="top-bar">
             <div class="title-bar small-5 columns" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
               <button class="menu-icon" type="button" data-toggle>
-                <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+                <i class="fas fa-bars fa-3x" aria-hidden="true"></i>
                 <span class="title-bar-title">Menu</span>
               </button>
             </div>
@@ -150,9 +150,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class="top-bar-right valign-mu show-for-small-only">
               <nav data-swiftype-index="false" class="valign-mu">
                 <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
-                  <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                  <li><a href="/"><i class="fas fa-home fa-lg"></i> Home</a></li>
                   <li class="is-drilldown-submenu-parent" tabindex="0">
-                    <a href="#services" class="valign-cell"><i class="fa fa-list show-for-small-only"></i>Services</a>
+                    <a href="#services" class="valign-cell"><i class="far fa-list show-for-small-only"></i>Services</a>
                     <ul class="menu vertical menu-top-offset" tabindex="0">
                       <li tabindex="0"><a href="/services/">Service directory</a></li>
                       <?php
@@ -170,18 +170,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </ul>
                     </li>
                     <li tabindex="0">
-                      <a href="/programs/" class="valign-cell"><i class="fa fa-info-circle"></i> Programs &amp; initiatives</a>
+                      <a href="/programs/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs &amp; initiatives</a>
                     </li>
                     <li tabindex="0">
-                      <a href="/news/" class="valign-cell"><i class="fa fa-microphone"></i> News &amp; events</a>
+                      <a href="/news/" class="valign-cell"><i class="fas fa-microphone"></i> News &amp; events</a>
                     </li>
                     <li tabindex="0">
-                      <a href="/documents/" class="valign-cell"><i class="fa fa-file-text"></i> Publications &amp; forms</a>
+                      <a href="/documents/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications &amp; forms</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
-                      <a href="/mayor/"><i class="fa fa-university"></i> Mayor's Office</a>
+                      <a href="/mayor/"><i class="fas fa-university"></i> Mayor's Office</a>
                     </li>
-                    <li class="bg-sidewalk" tabindex="0"><a href="/departments/"><i class="fa fa-sitemap"></i> City government directory</a>
+                    <li class="bg-sidewalk" tabindex="0"><a href="/departments/"><i class="fas fa-sitemap"></i> City government directory</a>
                     </li>
                   </ul>
                 </nav>

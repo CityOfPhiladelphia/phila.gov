@@ -24,7 +24,7 @@
         <div class="align-self-bottom feature-detail">
           <?php if (isset($feature['venue_name']) || isset($feature['address_1'])) :?>
           <div class="mvm grid-x align-top cell full-width">
-            <i class="fa fa-map-marker fa-fw fa-lg inline-block mrm cell small-1"></i>
+            <i class="fal fa-map-marker-alt fa-fw fa-lg inline-block mrm cell small-1"></i>
             <div class="cell small-21">
                 <?php echo isset($feature['venue_name']) ? '<b>' . $feature['venue_name'] . '</b> <br />' : ''; ?>
                 <address>
@@ -42,7 +42,7 @@
 
           <?php if ( ($start !== '' && $end !== '') && ($start->format('Y-m-d H:i:s') !== '1970-01-01 00:00:00' && $end->format('Y-m-d H:i:s') !== '1970-01-01 00:00:00')) :?>
           <div class="mvm grid-x align-top full-width">
-            <i class="fa fa-calendar fa-fw fa-lg inline-block mrm cell small-1"></i>
+            <i class="fas fa-calendar-alt fa-fw fa-lg inline-block mrm cell small-1"></i>
 
             <div class="cell small-21">
               <?php $start_month_format = phila_util_month_format($start); ?>

@@ -57,7 +57,7 @@
             <?php if ($action_panel_fa): ?>
               <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?> icon">
                 <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
-                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fa <?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
                 </span>
               </div>

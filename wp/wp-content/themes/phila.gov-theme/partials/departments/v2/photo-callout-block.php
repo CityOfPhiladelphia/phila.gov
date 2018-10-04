@@ -27,7 +27,7 @@
                         <?php if($btnLink): ?>
                         <a href="<?php echo $btnLink ?>" class="photo-callout-block__txt-btn button icon">
                           <div class="valign">
-                            <i class="fa fa-map-o valign-cell"></i>
+                            <i class="far fa-map valign-cell"></i>
                             <div class="button-label valign-cell"><?php echo $btnTxt ?></div>
                           </div>
                         </a>
