@@ -25,7 +25,7 @@
         <header class="small-24 columns">
           <h1 class="contrast">
             <?php if ( !empty( $icon ) ) : ?>
-              <i class="fa <?php echo $icon ?>" aria-hidden="true"></i>
+              <i class="<?php echo $icon ?>" aria-hidden="true"></i>
             <?php endif; ?>
             <?php echo $parent_title; ?>
           </h1>

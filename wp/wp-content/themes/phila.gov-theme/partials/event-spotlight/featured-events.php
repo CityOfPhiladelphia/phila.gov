@@ -24,7 +24,7 @@
         <div class="align-self-bottom feature-detail">
           <?php if (isset($feature['venue_name']) || isset($feature['address_1'])) :?>
           <div class="mvm grid-x align-top cell full-width">
-            <i class="fal fa-map-marker-alt fa-fw fa-lg inline-block mrm cell small-1"></i>
+            <i class="fas fa-map-marker-alt fa-fw fa-lg inline-block mrm cell small-1"></i>
             <div class="cell small-21">
                 <?php echo isset($feature['venue_name']) ? '<b>' . $feature['venue_name'] . '</b> <br />' : ''; ?>
                 <address>
