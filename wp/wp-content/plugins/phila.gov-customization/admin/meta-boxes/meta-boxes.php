@@ -746,7 +746,7 @@ $meta_related_content = array(
   )
 );
 
-//Questions metabox, used for Pages
+//Questions metabox, used for Service Pages
 $meta_questions = array(
   'id'  => 'phila_questions',
   'type'  => 'group',
@@ -764,7 +764,7 @@ $meta_questions = array(
   )
 );
 
-//Did you know, used for Pages
+//Did you know, used for Service Pages
 $meta_did_you_know = array(
   'id'  => 'phila_did_you_know',
   'type'  => 'group',
@@ -777,6 +777,25 @@ $meta_did_you_know = array(
     array(
       'id'  => 'phila_did_you_know_content',
       'type'  => 'wysiwyg',
+      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+    ),
+  )
+);
+
+//Disclaimer, used for Service Pages
+$meta_disclaimer = array(
+  'id'  => 'phila_disclaimer',
+  'type'  => 'group',
+
+  'fields'  => array(
+    array(
+      'name'  => 'Disclaimer',
+      'type'  => 'heading'
+    ),
+    array(
+      'id'  => 'phila_disclaimer_content',
+      'type'  => 'wysiwyg',
+      'desc'  => 'Enter disclaimer content, or a [text block] with disclaimer shortcode',
       'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
     ),
   )
@@ -941,7 +960,8 @@ $meta_boxes[] = array(
         $meta_forms_instructions,
         $meta_related_content,
         $meta_did_you_know,
-        $meta_questions
+        $meta_questions,
+        $meta_disclaimer
       )
     )
   ),
