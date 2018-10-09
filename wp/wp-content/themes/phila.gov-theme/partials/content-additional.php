@@ -10,7 +10,7 @@
 
   $additional_content = rwmb_meta('phila_additional_content');
   $more = phila_additional_content( $additional_content );
-
+  var_dump($more);
 ?>
 
 <?php if ( !empty($more['forms']) ) : ?>
@@ -69,6 +69,16 @@
       <aside>
         <h3><i class="fas fa-comments" aria-hidden="true"></i> Questions?</h3>
         <?php echo apply_filters( 'the_content', $more['aside']['questions'] );?>
+      </aside>
+    </div>
+  </div>
+<?php endif; ?>
+
+<?php if ( !empty( $more['disclaimer'] ) ) : ?>
+  <div class="row">
+     <div class="medium-18 medium-centered columns disclaimer-text">
+      <aside>
+        <?php echo apply_filters( 'the_content', $more['disclaimer'] );?>
       </aside>
     </div>
   </div>
