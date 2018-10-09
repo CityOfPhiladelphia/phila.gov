@@ -24,7 +24,6 @@
       $current_row_option = $current_row['phila_full_options']['phila_full_options_select'];
 
       if ( $current_row_option == 'phila_blog_posts'):?>
-
         <!-- Blog Content -->
         <div class="mvl">
           <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : '';
@@ -55,12 +54,13 @@
             </section>
             <!-- /Callout -->
           <?php endif;?>
+
         <?php elseif ($current_row_option == 'phila_get_involved'): ?>
           <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ): ?>
             <!-- Get involved -->
             <?php $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
               include(locate_template('partials/departments/content-get-involved.php'));
-          endif; ?>
+            endif; ?>
           <!-- /Get involved -->
         <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
           <?php $press_cat_override = isset( $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category']) ? $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category'][0] : '';
@@ -72,7 +72,6 @@
               <?php echo do_shortcode('[press-releases posts=5 tag="'. $press_tag_override .'" category="' . $press_cat_override .'"]');?>
             </section>
             <!-- /Press Releases -->
-
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
                 $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
@@ -83,7 +82,6 @@
                 include(locate_template('partials/departments/phila_call_to_action_multi.php')); ?>
               </div>
               <!-- /Call to action multi -->
-
               <?php endif; ?>
 
           <?php elseif ( $current_row_option == 'phila_custom_text'): ?>
@@ -96,14 +94,13 @@
                 </div>
               </section>
               <!-- /Custom Text -->
-
             <?php endif; ?>
+
           <?php elseif ( $current_row_option == 'phila_list_items'): ?>
             <?php
               $list_items = isset( $current_row['phila_full_options']['phila_list_items'] ) ? $current_row['phila_full_options']['phila_list_items'] : '';
               ?>
               <!-- List items -->
-
               <?php include(locate_template('partials/departments/content-list-items.php')); ?>
             <!-- /List items -->
 
@@ -167,7 +164,6 @@
 
           <?php endif;?>
 
-
         <?php elseif ( $current_row_option == 'phila_location_list'):?>
           <?php if ( isset( $current_row['phila_full_options']['phila_location_list'] ) ): ?>
             <!-- Location list -->
@@ -179,9 +175,9 @@
           <?php endif;?>
 
         <?php elseif ( $current_row_option == 'phila_programs'):?>
-          <?php if ( isset( $current_row['phila_full_options']['phila_program'] ) ): ?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_programs'] ) ): ?>
             <?php
-            $cards = $current_row['phila_full_options']['phila_program']['phila_select_programs'];?>
+            $cards = $current_row['phila_full_options']['phila_programs']['phila_select_programs'];?>
             <!-- Program cards-->
             <?php include(locate_template('partials/departments/v2/homepage_programs.php')); ?>
             <!-- Program cards-->
@@ -193,11 +189,10 @@
             $section_title = $current_row['phila_full_options']['commission_members']['section_title'];
             $members = $current_row['phila_full_options']['commission_members']['phila_commission_members'];
             ?>
-            <!-- Program cards-->
+            <!-- Boards/Commission Members -->
             <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
-            <!-- Program cards-->
+            <!-- /Boards/Commission Members -->
           <?php endif;?>
-
 
       <?php endif;  /*end full row */?>
 
