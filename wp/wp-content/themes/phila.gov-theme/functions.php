@@ -1286,6 +1286,8 @@ function phila_additional_content( $input ){
 
       $output['aside']['questions'] = isset( $input['phila_questions']['phila_question_content'] ) ? $input['phila_questions']['phila_question_content'] : '';
 
+      $output['disclaimer'] = isset( $input['phila_disclaimer']['phila_disclaimer_content'] ) ? $input['phila_disclaimer']['phila_disclaimer_content'] : '';
+
     }
   }
 
