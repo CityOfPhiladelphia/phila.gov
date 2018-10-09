@@ -28,7 +28,7 @@
     <?php if ( !$connect_vars['address']['st_1'] == '') : ?>
       <tr>
         <th scope="row">
-          <i class="fal fa-map-marker-alt fa-2x" aria-hidden="true"></i>
+          <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
           <span class="accessible">Address</span>
         </th>
         <td class="pvl">
