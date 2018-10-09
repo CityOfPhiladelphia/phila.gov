@@ -438,7 +438,7 @@ class Phila_Gov_Standard_Metaboxes {
 
       'query_args'  => array(
         'post_status'    => 'any',
-        'posts_per_page' => - 1,
+        'posts_per_page' => -1,
         'post_parent' => 0
       ),
       'js_options'  => array(
