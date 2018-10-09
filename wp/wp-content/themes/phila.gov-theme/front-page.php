@@ -214,7 +214,7 @@ get_header(); ?>
                 <p>For the past few years, we’ve been working closely with content creators, City colleagues, and the public to rewrite service information and to design features that better meet your needs.</p>
                 <div class="row collapse">
                   <div class="medium-8 columns center small-centered ben-franklin-blue marker">
-                    <i class="fal fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+                    <i class="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
                   </div>
                 </div>
                 <div class="row collapse process-bar">
