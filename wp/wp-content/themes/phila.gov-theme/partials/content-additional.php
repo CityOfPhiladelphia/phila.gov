@@ -10,7 +10,6 @@
 
   $additional_content = rwmb_meta('phila_additional_content');
   $more = phila_additional_content( $additional_content );
-  var_dump($more);
 ?>
 
 <?php if ( !empty($more['forms']) ) : ?>
