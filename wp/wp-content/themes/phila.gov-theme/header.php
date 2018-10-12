@@ -142,7 +142,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="top-bar">
             <div class="title-bar small-5 columns" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
               <button class="menu-icon" type="button" data-toggle>
-                <i class="fas fa-bars fa-3x" aria-hidden="true"></i>
+                <i class="fas fa-bars fa-2x" aria-hidden="true"></i>
                 <span class="title-bar-title">Menu</span>
               </button>
             </div>
@@ -152,9 +152,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
                   <li><a href="/"><i class="fas fa-home fa-lg"></i> Home</a></li>
                   <li class="is-drilldown-submenu-parent" tabindex="0">
-                    <a href="#services" class="valign-cell"><i class="far fa-list show-for-small-only"></i>Services</a>
+                    <a href="#services" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
                     <ul class="menu vertical menu-top-offset" tabindex="0">
-                      <li tabindex="0"><a href="/services/">Service directory</a></li>
+                      <li tabindex="0"><a href="/services/"> Service directory</a></li>
                       <?php
                         $args = array(
                           //TODO: only display pages with taxonomy applied
