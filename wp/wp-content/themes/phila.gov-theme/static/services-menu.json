@@ -5,7 +5,7 @@
       "rendered": "Zoning, planning &#038; development"
     },
     "meta": {
-      "phila_page_icon": "fa-map"
+      "phila_page_icon": "far fa-map-alt"
     }
   },
   {
@@ -165,7 +165,7 @@
       "rendered": "Business &#038; self-employment"
     },
     "meta": {
-      "phila_page_icon": "fa-gears"
+      "phila_page_icon": "fas fa-cogs"
     }
   },
   {
@@ -175,7 +175,7 @@
       "rendered": "Birth, marriage &#038; life events"
     },
     "meta": {
-      "phila_page_icon": "fa-hourglass"
+      "phila_page_icon": "far fa-hourglass"
     }
   }
 ]
