@@ -156,22 +156,22 @@
 
                     switch ($item_resource_type) {
                       case ('phila_resource_document'):
-                        $icon = 'fa-file-text';
+                        $icon = 'fas fa-file-alt';
                         break;
 
                       case ('phila_resource_map'):
-                        $icon = 'fa-map-marker';
+                        $icon = 'fas fa-map-marker-alt';
                         break;
 
                       case ('phila_resource_link'):
-                        $icon = 'fa-link';
+                        $icon = 'fas fa-link';
                         break;
 
                       default:
-                        $icon = 'fa-file-text';
+                        $icon = 'fas fa-file-alt';
                     } ?>
 
-                    <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
+                    <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
 
                   <?php endforeach; ?>
                 </ul>
