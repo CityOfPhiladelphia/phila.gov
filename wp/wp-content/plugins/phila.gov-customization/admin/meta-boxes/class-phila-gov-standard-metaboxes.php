@@ -392,7 +392,7 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
-      'desc' => 'Example: fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+      'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
       'name'  => 'Select icon',
       'type'  => 'text',
     );
@@ -621,7 +621,7 @@ class Phila_Gov_Standard_Metaboxes {
         'id'    => 'phila_action_panel_fa_multi',
         'type'  => 'text',
         'class' => 'action-panel-fa',
-        'desc'  => 'Uses <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icons. Eg: fa-bell'
+        'desc'  => 'Uses <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell'
       ),
       array(
         'name'  => 'Link url',
