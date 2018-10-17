@@ -20,7 +20,7 @@
           format="MMM. dd, yyyy"></datepicker>
         </div>
         <div class="cell medium-1 small-2 mts">
-          <i class="fa fa-arrow-right"></i>
+          <i class="fas fa-arrow-right"></i>
         </div>
         <div class="cell medium-4 small-11">
           <datepicker
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div v-show="loading" class="mtm center">
-      <i class="fa fa-spinner fa-spin fa-3x"></i>
+      <i class="fas fa-spinner fa-spin fa-3x"></i>
     </div>
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
@@ -70,7 +70,7 @@
                 </div>
               </div>
               <div class="small-18 medium-21 cell calendar-details pam">
-                <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+                <div class="post-label post-label--calendar"><i class="far fa-calendar fa-lg" aria-hidden="true"></i>
                   <span>Event</span>
                 </div>
                 <div class="title">{{event.summary}}</div>
@@ -104,7 +104,7 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="post-label post-label--calendar"><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+          <div class="post-label post-label--calendar"><i class="far fa-calendar fa-lg" aria-hidden="true"></i>
             <span>Event</span>
           </div>
           <h3>{{event.summary}}</h3>

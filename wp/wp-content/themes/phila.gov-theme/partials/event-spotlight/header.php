@@ -29,7 +29,7 @@
     <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image" alt="<?php echo $hero['alt'] ?>">
     <?php if ( !empty($credit) ): ?>
       <div class="photo-credit small-text">
-        <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?></span>
+        <span><i class="fas fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?></span>
       </div>
     <?php endif; ?>
   </div>
@@ -37,7 +37,7 @@
     <div class="grid-container">
       <div class="grid-x">
         <div class="cell">
-          <div class="post-label post-label--calendar"><i class="fa fa-calendar"></i><span>Event</span></div>
+          <div class="post-label post-label--calendar"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
           <?php $start = new DateTime("@" . $start); ?>
           <?php $end = new DateTime("@" . $end); ?>
           <?php $start_month_format = phila_util_month_format($start); ?>
@@ -78,7 +78,7 @@
                       array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('l, ' . $start_month_format . ' j') . ' - ' . $end->format('l, ' . $end_month_format . ' j, Y' ) .  '<br />'. $start->format('g:i a') . ' - '  . $end->format('g:i a'));
                       echo $date_output;
                       ?>
-                      <i class="fa fa-refresh" aria-hidden="true"></i> Recurring daily
+                      <i class="fas fa-sync" aria-hidden="true"></i> Recurring daily
                   <?php endif; ?>
 
                 <?php endif; ?>

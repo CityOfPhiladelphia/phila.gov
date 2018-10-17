@@ -5,7 +5,7 @@
   <a data-id class="ppr-feat-activity__learn-more" href="/parks-rec-finder/#/program/">Learn More</a>
 
     <div class="ppr-feat-activity__location flex-container">
-      <i class="fa fa-map-marker" aria-hidden="true"></i>
+      <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
       <div>
         <h5 data-facility_name class="h5 ppr-feat-activity__location-header"></h5>
         <address data-address>

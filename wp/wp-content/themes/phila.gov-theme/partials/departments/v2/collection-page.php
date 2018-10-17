@@ -55,7 +55,7 @@ $row_content = rwmb_meta('collection_row');?>
             <ul>
               <?php foreach($group['phila_document_page_picker'] as $doc): ?>
               <li class="phm pvs clickable-row" data-href="<?php echo get_the_permalink($doc); ?>">
-                <a href="<?php echo get_the_permalink($doc);?>">                <div><i class="fa fa-file-text" aria-hidden="true"></i></div> <?php echo get_the_title($doc); ?></a></li>
+                <a href="<?php echo get_the_permalink($doc);?>">                <div><i class="fas fa-file-alt" aria-hidden="true"></i></div> <?php echo get_the_title($doc); ?></a></li>
               <?php endforeach; ?>
             </ul>
           </div>

@@ -20,7 +20,7 @@
       <div class="phm-mu">
         <?php foreach ( $more['forms'] as $form ): ?>
           <div class="pvs">
-            <a href="<?php echo get_the_permalink($form);?>"><i class="fa fa-file-text" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+            <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
           </div>
         <?php endforeach; ?>
       </div>
@@ -56,7 +56,7 @@
    <div class="medium-<?php echo (!empty( $more['aside']['questions'] ) ) ? '12' : '24'; ?> columns">
       <div class="panel info equal">
         <aside>
-          <h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Did you know?</h3>
+          <h3><i class="fas fa-exclamation-circle" aria-hidden="true"></i> Did you know?</h3>
           <?php echo apply_filters( 'the_content', $more['aside']['did_you_know'] ); ?>
         </aside>
       </div>
@@ -66,7 +66,7 @@
  <div class="medium-<?php echo (!empty( $more['aside']['did_you_know'] ) ) ? '12' : '24'; ?> columns">
     <div class="panel info equal">
       <aside>
-        <h3><i class="fa fa-comments" aria-hidden="true"></i> Questions?</h3>
+        <h3><i class="fas fa-comments" aria-hidden="true"></i> Questions?</h3>
         <?php echo apply_filters( 'the_content', $more['aside']['questions'] );?>
       </aside>
     </div>

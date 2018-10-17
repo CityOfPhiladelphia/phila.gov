@@ -1,6 +1,6 @@
 <div class="cell ppr-feat-locationType large-7 medium-12 small-auto loaded" >
   <div class="ppr-feat-locationType__img-container">
-    <div class="ppr-feat-locationType__count-badge"><i class="fa fa-map-marker" aria-hidden="true"></i><span data-count></span></div>
+    <div class="ppr-feat-locationType__count-badge"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span data-count></span></div>
     <a data-slug href="/parks-rec-finder/#/locations/">
         <img data-location_type_photo class="ppr-feat-locationType__img" src="" alt="">
     </a>

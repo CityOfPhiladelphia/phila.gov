@@ -36,7 +36,7 @@
       <img id="header-image" class="size-full wp-image-4069" src="<?php echo $hero_header_image; ?>" alt="<?php echo $hero_header_alt_text;?>" width="975" height="431" />
       <?php if ( !$hero_header_credit == '' ): ?>
         <div class="photo-credit small-text">
-          <span><i class="fa fa-camera" aria-hidden="true"></i> Photo by <?php echo $hero_header_credit; ?></span>
+          <span><i class="fas fa-camera" aria-hidden="true"></i> Photo by <?php echo $hero_header_credit; ?></span>
         </div>
       <?php endif; ?>
     <?php if ( !empty( $hero_header_title ) || !empty( $hero_header_title_l1 ) || !empty( $hero_header_title_l2 ) ): ?>

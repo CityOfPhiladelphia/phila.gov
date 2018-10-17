@@ -12,7 +12,7 @@ function phila_breadcrumbs() {
     echo '<li><a href="';
     echo get_option('home');
     echo '">';
-    echo '<i class="fa fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
+    echo '<i class="fas fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
     //TODO: loop through template and apply $label_arr
     if ( is_singular('post') ){

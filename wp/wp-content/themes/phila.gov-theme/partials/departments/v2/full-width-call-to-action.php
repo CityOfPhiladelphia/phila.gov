@@ -31,7 +31,7 @@
               <?php if ( !empty( $link['link_text'] ) ) :?>
               <div class="valign">
                 <?php if ( $link['external'] == 1 ) :?>
-                  <i class="fa fa-external-link valign-cell" aria-hidden="true"></i>
+                  <i class="fas fa-external-link-alt valign-cell" aria-hidden="true"></i>
                   <span class="accessible">External link</span>
                 <?php elseif (!empty( $link['modal_icon'] ) ) :?>
                   <i class="fa <?php echo $link['modal_icon'] ?> valign-cell" aria-hidden="true"></i>

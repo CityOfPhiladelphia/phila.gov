@@ -5,7 +5,7 @@
       "rendered": "Zoning, planning &#038; development"
     },
     "meta": {
-      "phila_page_icon": "fa-map"
+      "phila_page_icon": "fas fa-map"
     }
   },
   {
@@ -15,7 +15,7 @@
       "rendered": "Working &#038; jobs"
     },
     "meta": {
-      "phila_page_icon": "fa-briefcase"
+      "phila_page_icon": "fas fa-briefcase"
     }
   },
   {
@@ -25,7 +25,7 @@
       "rendered": "Water, gas &#038; utilities"
     },
     "meta": {
-      "phila_page_icon": "fa-wrench"
+      "phila_page_icon": "fas fa-wrench"
     }
   },
   {
@@ -35,7 +35,7 @@
       "rendered": "Trees, parks &#038; the environment"
     },
     "meta": {
-      "phila_page_icon": "fa-leaf"
+      "phila_page_icon": "fas fa-leaf"
     }
   },
   {
@@ -45,7 +45,7 @@
       "rendered": "Trash, recycling &#038; city upkeep"
     },
     "meta": {
-      "phila_page_icon": "fa-trash"
+      "phila_page_icon": "fas fa-trash-alt"
     }
   },
   {
@@ -55,7 +55,7 @@
       "rendered": "Streets, sidewalks &#038; alleys"
     },
     "meta": {
-      "phila_page_icon": "fa-road"
+      "phila_page_icon": "fas fa-road"
     }
   },
   {
@@ -65,7 +65,7 @@
       "rendered": "Safety &#038; emergency preparedness"
     },
     "meta": {
-      "phila_page_icon": "fa-ambulance"
+      "phila_page_icon": "fas fa-ambulance"
     }
   },
   {
@@ -75,7 +75,7 @@
       "rendered": "Property, lots &#038; housing"
     },
     "meta": {
-      "phila_page_icon": "fa-home"
+      "phila_page_icon": "fas fa-home"
     }
   },
   {
@@ -85,7 +85,7 @@
       "rendered": "Permits, violations &#038; licenses"
     },
     "meta": {
-      "phila_page_icon": "fa-file-text"
+      "phila_page_icon": "fas fa-file-alt"
     }
   },
   {
@@ -95,7 +95,7 @@
       "rendered": "Payments, assistance &#038; taxes"
     },
     "meta": {
-      "phila_page_icon": "fa-credit-card-alt"
+      "phila_page_icon": "fas fa-credit-card"
     }
   },
   {
@@ -105,7 +105,7 @@
       "rendered": "Mental &#038; physical health"
     },
     "meta": {
-      "phila_page_icon": "fa-heartbeat"
+      "phila_page_icon": "fas fa-heartbeat"
     }
   },
   {
@@ -115,7 +115,7 @@
       "rendered": "Education &#038; learning"
     },
     "meta": {
-      "phila_page_icon": "fa-book"
+      "phila_page_icon": "fas fa-book"
     }
   },
   {
@@ -125,7 +125,7 @@
       "rendered": "Diversity, inclusion &#038; immigration"
     },
     "meta": {
-      "phila_page_icon": "fa-users"
+      "phila_page_icon": "fas fa-users"
     }
   },
   {
@@ -135,7 +135,7 @@
       "rendered": "Culture &#038; recreation"
     },
     "meta": {
-      "phila_page_icon": "fa-futbol-o"
+      "phila_page_icon": "fas fa-futbol"
     }
   },
   {
@@ -145,7 +145,7 @@
       "rendered": "Crime, law &#038; justice"
     },
     "meta": {
-      "phila_page_icon": "fa-gavel"
+      "phila_page_icon": "fas fa-gavel"
     }
   },
   {
@@ -155,7 +155,7 @@
       "rendered": "Cars, parking &#038; transportation"
     },
     "meta": {
-      "phila_page_icon": "fa-car"
+      "phila_page_icon": "fas fa-car"
     }
   },
   {
@@ -165,7 +165,7 @@
       "rendered": "Business &#038; self-employment"
     },
     "meta": {
-      "phila_page_icon": "fa-gears"
+      "phila_page_icon": "fas fa-cogs"
     }
   },
   {
@@ -175,7 +175,7 @@
       "rendered": "Birth, marriage &#038; life events"
     },
     "meta": {
-      "phila_page_icon": "fa-hourglass"
+      "phila_page_icon": "far fa-hourglass"
     }
   }
 ]

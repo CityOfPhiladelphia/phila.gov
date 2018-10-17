@@ -10,7 +10,7 @@ module.exports = jQuery(document).ready(function($) {
 
   resultTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
 
-  resultTemplate += '<div class="mbm"><i class="fa fa-{{&icon}}" aria-hidden="true"></i> <i>{{&contentType}}</i></div>';
+  resultTemplate += '<div class="mbm"><i class="{{&icon}}" aria-hidden="true"></i> <i>{{&contentType}}</i></div>';
 
   resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr class="mhn">';
 
@@ -52,19 +52,19 @@ module.exports = jQuery(document).ready(function($) {
     if ( item.tags === 'wordpress' || item.tags === 'app' ) {
       if(item.content_type  === 'programs') {
         view.contentType = 'Program'
-        view.icon = 'info-circle'
+        view.icon = 'fas fa-info-circle'
       }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post' || item.content_type === 'news_post'){
         view.contentType = 'News & events'
-        view.icon = 'microphone'
+        view.icon = 'fas fa-microphone'
       }else if( item.content_type === 'department_page'){
         view.contentType = 'Department'
-        view.icon = 'sitemap'
+        view.icon = 'fas fa-sitemap'
       }else if(item.content_type === 'service_page'){
         view.contentType = 'Service'
-        view.icon = 'list'
+        view.icon = 'fas -falist'
       }else if(item.content_type === 'document'){
         view.contentType = 'Document'
-        view.icon = 'file-text'
+        view.icon = 'fas fa-file-alt'
       }
       return Mustache.render(resultTemplate, view);
     }else{
@@ -93,7 +93,7 @@ module.exports = jQuery(document).ready(function($) {
 
     if (totalResultCount === 0) {
       $resultCount.html("No results found for <i>" + data['info']['page']['query'] +
-      "</i>. <div class='info panel mtm row'><div class='medium-3 columns hide-for-small-only'><i class='fa fa-frown-o fa-4x'></i></div> <div class='text small-24 medium-21 columns'><p class='h3 mbm'>We're sorry, we didn't find any results that match your search terms.</h3> Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li></ul></div></div>");
+      "</i>. <div class='info panel mtm row'><div class='medium-3 columns hide-for-small-only'><i class='far fa-frown fa-4x'></i></div> <div class='text small-24 medium-21 columns'><p class='h3 mbm'>We're sorry, we didn't find any results that match your search terms.</h3> Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li></ul></div></div>");
       $('#legacy-content').css('display', 'none');
 
     } else {
@@ -115,11 +115,11 @@ module.exports = jQuery(document).ready(function($) {
       previousPage, nextPage;
     if (currentPage != 1) {
       previousPage = currentPage - 1;
-      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
+      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="prev" data-hash="true" data-page="' + previousPage  + '"><i class="fas fa-arrow-left" aria-hidden="true"></i> Previous</a></li>';
     }
     if (currentPage < totalPages) {
       nextPage = currentPage + 1;
-      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>';
+      pages = pages + '<li><a href="#" onClick="' + scrollTop() + '" class="next" data-hash="true" data-page="' + nextPage + '">Next <i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>';
     }
     pages += '</ul></nav>';
 

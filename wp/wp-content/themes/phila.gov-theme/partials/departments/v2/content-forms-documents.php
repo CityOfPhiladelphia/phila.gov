@@ -19,8 +19,8 @@
             <header class="">
               <div class="">
                 <span class="fa-stack fa-4x center" aria-hidden="true">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-file-alt fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
               <span class=""><?php echo $forms_documents[$key]['phila_action_panel_cta_text_multi']; ?></span>
@@ -36,7 +36,7 @@
                 <?php $featured_document = get_post( $featured_documents_array[$i] ); ?>
                 <li class="phm pvs clickable-row" data-href="http://">
                   <a href="<?php echo get_permalink($featured_document); ?>">
-                    <div><i class="fa fa-file-text fa-lg" aria-hidden="true"></i></div>
+                    <div><i class="fas fa-file-alt fa-lg" aria-hidden="true"></i></div>
                     <div><?php echo $featured_document->post_title; ?></div>
                   </a>
                 </li>

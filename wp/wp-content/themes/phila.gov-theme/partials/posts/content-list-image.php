@@ -16,7 +16,7 @@
     <div class="cell medium-<?php echo (has_post_thumbnail() ) ? '16' : '24' ?> grid-x bg-ghost-gray card <?php echo isset($label_arr['label']) ? 'card--' . $label_arr['label'] : '' ?> pam">
       <div class="cell align-self-top post-label <?php echo isset($label_arr['label']) ? 'post-label--' . $label_arr['label'] : '' ?>">
         <?php if ( isset( $label_arr['nice'] ) ) : ?>
-          <i class="fa fa-<?php echo isset($label_arr['icon']) ? $label_arr['icon'] : '' ?> fa-lg" aria-hidden="true"></i> <span><?php echo isset($label_arr['nice']) ? $label_arr['nice'] : '' ?></span>
+          <i class="<?php echo isset($label_arr['icon']) ? $label_arr['icon'] : '' ?> fa-lg" aria-hidden="true"></i> <span><?php echo isset($label_arr['nice']) ? $label_arr['nice'] : '' ?></span>
         <?php endif; ?>
         <header class="mvm">
           <h1><?php echo get_the_title(); ?></h1>

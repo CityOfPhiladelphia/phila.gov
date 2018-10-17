@@ -77,7 +77,7 @@ $c = -1;
                     <?php if ( $file_type ): ?>
                       <div aria-hidden="true">
                         <span class="file-type prs"><?php phila_format_document_type( $file_type ); ?></span>
-                        <a href="<?php echo $full_url ?>" data-file-name="<?php echo $file['title'] ?>" aria-hidden="true"><i class="fa fa-download fa-2x"></i>
+                        <a href="<?php echo $full_url ?>" data-file-name="<?php echo $file['title'] ?>" aria-hidden="true"><i class="fas fa-download fa-2x"></i>
                         </a>
                       </div>
                     <?php endif; ?>

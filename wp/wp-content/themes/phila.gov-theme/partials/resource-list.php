@@ -25,25 +25,32 @@
 
       switch ($item_resource_type) {
         case ('phila_resource_document'):
-          $icon = 'fa-file-text';
+          $icon = 'fas fa-file-alt';
           break;
 
         case ('phila_resource_map'):
-          $icon = 'fa-map-marker';
+          $icon = 'fas fa-map-marker-alt';
           break;
 
         case ('phila_resource_link'):
-          $icon = 'fa-link';
+          $icon = 'far fa-link';
           break;
 
         default:
-          $icon = 'fa-file-text';
+          $icon = 'fas fa-file-alt';
       }
 
     if ( $item_featured ):
       $featured_output = '';
 
-      $featured_resources[$featured_display_order] = array('title' => $item_title , 'alt-title' => $item_alt_title ,  'url' => $item_url, 'external' => $item_external, 'type' => $item_resource_type, 'icon' => $icon , 'summary' => $featured_summary );  ?>
+      $featured_resources[$featured_display_order] =
+      array('title' => $item_title ,
+      'alt-title' => $item_alt_title ,
+      'url' => $item_url,
+      'external' => $item_external,
+      'type' => $item_resource_type,
+      'icon' => $icon ,
+      'summary' => $featured_summary );  ?>
     <?php endif;?>
   <?php endforeach ?>
 
@@ -77,8 +84,8 @@
             <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
               <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?>">
                 <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa <?php echo $featured_resources[$key]['icon']; ?> fa-stack-1x fa-inverse"></i>
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="<?php echo $featured_resources[$key]['icon']; ?> fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
               <?php if (!$featured_resources[$key]['alt-title'] == ''): ?>
@@ -149,22 +156,22 @@
 
                     switch ($item_resource_type) {
                       case ('phila_resource_document'):
-                        $icon = 'fa-file-text';
+                        $icon = 'fas fa-file-alt';
                         break;
 
                       case ('phila_resource_map'):
-                        $icon = 'fa-map-marker';
+                        $icon = 'fas fa-map-marker-alt';
                         break;
 
                       case ('phila_resource_link'):
-                        $icon = 'fa-link';
+                        $icon = 'fas fa-link';
                         break;
 
                       default:
-                        $icon = 'fa-file-text';
+                        $icon = 'fas fa-file-alt';
                     } ?>
 
-                    <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="fa <?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
+                    <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
 
                   <?php endforeach; ?>
                 </ul>
