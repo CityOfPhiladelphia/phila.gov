@@ -95,7 +95,7 @@ if ( $calendar_q->have_posts() ) {
     <main id="main" class="site-main medium-20 columns medium-centered">
 
       <div id="all-events">
-        <div class="center"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+        <div class="center"><i class="fas fa-spinner fa-spin fa-3x"></i></div>
       </div>
 
     </main><!-- #main -->

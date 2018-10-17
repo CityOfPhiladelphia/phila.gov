@@ -20,37 +20,37 @@
             <ul class="inline-list grid-x man" data-magellan data-options="offset: 106; deepLinking: true;">
               <li class="featured cell medium-auto small-24">
                 <a href="#featured">
-                  <i class="fa fa-fw fa-3x fa-newspaper-o" aria-hidden="true"></i>
+                  <i class="fal fa-newspaper fa-fw fa-3x" aria-hidden="true"></i>
                   <div>Featured</div>
                 </a>
               </li>
               <li class="announcement cell medium-auto small-24">
                 <a href="#announcements">
-                  <i class="fa fa-fw fa-3x fa-bullhorn" aria-hidden="true"></i>
+                  <i class="fal fa-bullhorn fa-fw fa-3x" aria-hidden="true"></i>
                   <div>Announcements</div>
                 </a>
               </li>
               <li class="post cell medium-auto small-24">
                 <a href="#posts">
-                  <i class="fa fa-fw fa-3x fa-pencil" aria-hidden="true"></i>
+                  <i class="fas fa-pencil-alt fa-fw fa-3x" aria-hidden="true"></i>
                   <div>Posts</div>
                 </a>
               </li>
               <li class="action_guide cell medium-auto small-24">
                 <a href="#action-guides">
-                  <i class="fa fa-fw fa-3x fa-users" aria-hidden="true"></i>
+                  <i class="fas fa-users fa-fw fa-3x" aria-hidden="true"></i>
                   <div>Action guides</div>
                 </a>
               </li>
               <li class="event cell medium-auto small-24">
                 <a href="#events">
-                  <i class="fa fa-fw fa-3x fa-calendar-check-o" aria-hidden="true"></i>
+                  <i class="far fa-calendar-check fa-fw fa-3x" aria-hidden="true"></i>
                   <div>Events</div>
                 </a>
               </li>
               <li class="press_release cell medium-auto small-24">
                 <a href="#press-releases">
-                  <i class="fa fa-fw fa-3x fa-file-text-o" aria-hidden="true"></i>
+                  <i class="fal fa-file-alt fa-fw fa-3x" aria-hidden="true"></i>
                 <div>Press releases</div>
               </a>
               </li>

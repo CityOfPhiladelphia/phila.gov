@@ -10,7 +10,7 @@
 
   </div><!-- #content -->
  </div><!-- #page -->
-  <a href="#page" id="back-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i><br>Top</a>
+  <a href="#page" id="back-to-top"><i class="fas fa-arrow-up" aria-hidden="true"></i><br>Top</a>
  <?php get_template_part( 'searchform' ); ?>
  <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
 
@@ -124,19 +124,19 @@
           <ul class="inline-list">
             <li class="pbm">
               <a href="https://www.facebook.com/cityofphiladelphia" class="prl" data-analytics="social">
-                <i class="fa fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
+                <i class="fab fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://twitter.com/PhiladelphiaGov" class="prl"  data-analytics="social">
-                <i class="fa fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
+                <i class="fab fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://www.instagram.com/cityofphiladelphia/" class="prl" data-analytics="social">
-                <i class="fa fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
+                <i class="fab fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
@@ -153,19 +153,19 @@
             </li>
             <li class="pbm">
               <a href="https://www.youtube.com/user/PhilaGov" class="prl" data-analytics="social">
-                <i class="fa fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
+                <i class="fab fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://www.flickr.com/photos/phillycityrep" class="prl" data-analytics="social">
-                <i class="fa fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
+                <i class="fab fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://github.com/CityOfPhiladelphia" class="prl"  data-analytics="social">
-                <i class="fa fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
+                <i class="fab fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>
             </li>

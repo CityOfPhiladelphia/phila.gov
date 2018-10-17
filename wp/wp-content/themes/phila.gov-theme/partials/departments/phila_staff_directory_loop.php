@@ -44,19 +44,19 @@ if ( $staff_member_loop->have_posts() ):
       if ( is_array( $staff_social )):
 
         if ( isset( $staff_social['phila_staff_facebook'] ) ):
-          $staff_social_output .= '<a href="' . $staff_social['phila_staff_facebook'] . '" class="social-link"  data-analytics="social"><i class="fa fa-facebook fa-lg" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
+          $staff_social_output .= '<a href="' . $staff_social['phila_staff_facebook'] . '" class="social-link"  data-analytics="social"><i class="fab fa-facebook fa-lg" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>';
         endif;
 
         if ( isset( $staff_social['phila_staff_twitter'] ) ):
-          $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" class="social-link"  data-analytics="social"><i class="fa fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
+          $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" class="social-link"  data-analytics="social"><i class="fab fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
         endif;
 
         if ( isset( $staff_social['phila_staff_instagram'] ) ):
-          $staff_social_output .= '<a href="' . $staff_social['phila_staff_instagram'] . '" class="social-link"  data-analytics="social"><i class="fa fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
+          $staff_social_output .= '<a href="' . $staff_social['phila_staff_instagram'] . '" class="social-link"  data-analytics="social"><i class="fab fa-instagram fa-lg" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>';
         endif;
 
         if ( isset( $staff_social['phila_staff_linkedin'] ) ):
-          $staff_social_output .= '<a href="' . $staff_social['phila_staff_linkedin'] . '" class="social-link"  data-analytics="social"><i class="fa fa-linkedin fa-lg" title="LinkedIn" aria-hidden="true"></i><span class="show-for-sr">LinkedIn</span></a>';
+          $staff_social_output .= '<a href="' . $staff_social['phila_staff_linkedin'] . '" class="social-link"  data-analytics="social"><i class="fab fa-linkedin fa-lg" title="LinkedIn" aria-hidden="true"></i><span class="show-for-sr">LinkedIn</span></a>';
         endif;
 
       endif;

@@ -58,14 +58,14 @@ get_header(); ?>
         <div class="medium-16 cell">
           <div id="property-link" class="callout">
             We have found real estate property related to your search.
-            <a href="#">View results using the property application <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#">View results using the property application <i class="fas fa-arrow-circle-right"></i></a>
           </div>
           <div id="legacy-content" class="callout">
             <span class="label mrm bg-dark-gray">Legacy</span>
             Content marked "legacy" has not been moved to our new platform.
           </div>
           <div id="result-count" class="pvm"></div>
-          <div id="st-results-container">Enter search terms in the area above. <i class="fa fa-loading spin"></i></div>
+          <div id="st-results-container">Enter search terms in the area above. <i class="fas fa-loading spin"></i></div>
         </div>
       </div>
     </div>

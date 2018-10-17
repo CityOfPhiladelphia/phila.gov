@@ -49,19 +49,19 @@ $actions = phila_loop_clonable_metabox( $get_actions );
       <?php foreach( $actions as $action ) : ?>
         <?php switch ( $action['phila_select_action'] ):
           case 'share':
-            $icon = 'share';
+            $icon = 'fas fa-share';
             $text = 'Share';
             break;
           case 'contact':
-            $icon = 'address-book-o';
+            $icon = 'far fa-address-book';
             $text = 'Contact';
             break;
           case 'give_back':
-            $icon = 'handshake-o';
+            $icon = 'far fa-handshake';
             $text = 'Give back';
             break;
           case 'attend':
-            $icon = 'calendar-check-o';
+            $icon = 'far fa-calendar-check';
             $text = 'Attend';
             break;
           endswitch;
@@ -69,7 +69,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
           <?php ( strlen( $action['phila_action_content'] ) > 820 ) ? $expand = true : $expand = false; ?>
           <div class="panel info clearfix mbm">
             <div class="<?php echo ($expand) ? 'expandable' : ''?>">
-              <h4 class="mbm"><i class="fa fa-<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
+              <h4 class="mbm"><i class="<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
               <?php echo apply_filters( 'the_content',  $action['phila_action_content']); ?>
             </div>
             <?php if ( $expand ): ?>

@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
                 // if no data fade out card
                 $(card)
                   .find('.ppr-loader')
-                  .html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>')
+                  .html('<i class="fas fa-exclamation-circle" aria-hidden="true"></i>')
                 $(card).addClass('error')
                 $(card).animate({opacity: 0}, 250)
             }

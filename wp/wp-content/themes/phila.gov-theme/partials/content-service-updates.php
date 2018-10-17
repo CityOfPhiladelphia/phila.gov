@@ -70,7 +70,7 @@ endif;
 
          <tr class="service-update--<?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
             <th class="phl-mu">
-              <i class="fa  fa-2x fa-fw <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?> " aria-hidden="true"></i>
+              <i class="fa-2x fa-fw <?php if ( $update['service_icon'] ) echo $update['service_icon']; ?> " aria-hidden="true"></i>
                 <span class="icon-label"><?php if ( $update['service_type'] ) echo $update['service_type']; ?></span>
             </th>
             <td class="pam">
