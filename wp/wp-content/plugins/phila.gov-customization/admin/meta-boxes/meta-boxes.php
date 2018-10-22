@@ -852,15 +852,15 @@ $meta_boxes[] = array(
 
   'fields'  => array(
     array(
-      'name' => 'Contextual item',
+      'name' => 'Hide child pages',
       'type'  => 'heading'
     ),
     array(
-      'id'  => 'phila_is_contextual',
+      'id'  => 'phila_hide_children',
       'type' => 'switch',
       'on_label'  => 'Yes',
       'off_label' => 'No',
-      'name'  => 'Should this page appear in the service directory? The children of this item will appear in the service directory with this page\'s title appended to them.',
+      'name'  => 'Should the children of this page be hidden in the service directory?',
       'columns' => 6,
 
     ),
