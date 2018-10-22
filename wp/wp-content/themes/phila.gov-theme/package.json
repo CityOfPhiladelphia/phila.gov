@@ -39,7 +39,7 @@
     "browserify-shim": "^3.8.14",
     "envify": "^4.1.0",
     "hoek": "^5.0.4",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.9.4",
     "postcss-cli": "^5.0.1",
     "vueify": "^9.4.0"
   },
