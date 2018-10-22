@@ -41,7 +41,7 @@ nav li{
   display:none !important;
 }
 
-.fa{
+.fa, .fab, .fal, .far, .fas{
   padding:10px;
 }
 
