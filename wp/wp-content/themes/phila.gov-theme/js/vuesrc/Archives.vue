@@ -96,6 +96,7 @@
     :async="true"
     :limit="3"
     :show-step-links="true"
+    :hide-single-page="false"
     :step-links="{
       next: 'Next',
       prev: 'Previous'
