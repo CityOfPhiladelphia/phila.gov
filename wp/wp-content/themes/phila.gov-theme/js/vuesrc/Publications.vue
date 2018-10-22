@@ -88,8 +88,9 @@
     </table>
     <paginate-links for="documents"
     :limit="3"
+    :async="true"
     :show-step-links="true"
-    :hide-single-page="true"
+    :hide-single-page="false"
     :step-links="{
       next: 'Next',
       prev: 'Previous'
