@@ -33,11 +33,38 @@ get_header(); ?>
         </form>
       </div>
       <div id="a-z-filter-list" class="medium-16 columns results a-z-list">
+
+      <?php
+        $get_pages_args = array(
+          'hierarchical' => 0,
+          'meta_key' => 'phila_hide_children',
+          'meta_value' => '1',
+          'post_type' => 'service_page',
+        );
+        $pages = get_pages($get_pages_args);
+
+        $children_array = array();
+        $hidden_pages  = array();
+
+        foreach ( $pages as $page ){
+          $args = array(
+            'post_parent' => $page->ID,
+          );
+          $children_array[] = get_children( $args );
+        }
+
+        foreach ($children_array as $key => $value) {
+          foreach ($value as $child_key => $child_value) {
+            array_push($hidden_pages, $child_key);
+          }
+        } ?>
+
       <?php $args = array(
         'post_type'  => 'service_page',
         'posts_per_page'  => -1,
         'order' => 'ASC',
         'orderby' => 'title',
+        'post__not_in' => $hidden_pages,
         'meta_query' => array(
           'relation' => 'OR',
           array(
@@ -45,48 +72,10 @@ get_header(); ?>
             'value' => array('default', 'tax_detail'),
             'compare' => 'IN'
           ),
-          array(
-            'relation' => 'AND',
-              array(
-                'key'     => 'phila_template_select',
-                'value'   => 'topic_page',
-                'compare' => 'IN',
-              ),
-              array(
-                'key' => 'phila_is_contextual',
-                'value' => '1',
-                'compare' => '=' ,
-              ),
-            ),
-          ),
+        ),
       );
+
       $service_pages = new WP_Query( $args ); ?>
-
-      <?php
-      //TODO: clean up this rushed hackjob
-        $get_pages_args = array(
-          'hierarchical' => 0,
-          'meta_key' => 'phila_is_contextual',
-          'meta_value' => '1',
-          'post_type' => 'service_page',
-        );
-        $pages = get_pages($get_pages_args);
-
-        $children_array = array();
-        $contextual_pages  = array();
-
-        foreach ( $pages as $page ){
-          $args = array(
-            'post_parent' => $page->ID,
-          );
-          $children_array[] = get_children( $args, ARRAY_A );
-        }
-        foreach ($children_array as $k => $v){
-          foreach ($v as $arr => $thing){
-            array_push($contextual_pages, $thing['ID']);
-          }
-        }
-        ?>
 
       <?php if ( $service_pages->have_posts() ) : ?>
 
@@ -101,31 +90,21 @@ get_header(); ?>
 
         <?php while ( $service_pages->have_posts() ) : $service_pages->the_post(); ?>
 
-            <?php
-              //overwrite range array with values that exist
-              $a_z[strtolower(substr($post->post_title, 0, 1 ))] = true; ?>
+        <?php
+          //overwrite range array with values that exist
+          $a_z[strtolower(substr($post->post_title, 0, 1 ))] = true; ?>
 
-              <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
+          <?php $terms = wp_get_post_terms( $post->ID, 'service_type' ); ?>
 
-              <?php $page_terms['terms'] = array();?>
+          <?php $page_terms['terms'] = array();?>
 
-                <?php foreach ( $terms as $term ) : ?>
-                  <?php array_push($page_terms['terms'], $term->slug); ?>
-                <?php endforeach; ?>
+            <?php foreach ( $terms as $term ) : ?>
+              <?php array_push($page_terms['terms'], $term->slug); ?>
+            <?php endforeach; ?>
             <?php
 
             $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
             $link['link'] = get_permalink();
-
-            foreach ( $contextual_pages as $id ) {
-              if($id === $post->ID) {
-                $parent['parent'] = $post->post_parent;
-                $service_parent[$post->post_title] = $parent;
-                $service_title[$post->post_title] = $page_terms;
-                $service_desc[$post->post_title] = $desc;
-                $service_link[$post->post_title] = $link;
-              }
-            }
 
             if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
               $alt_title = rwmb_meta('phila_service_alt_title', '', $post->ID);
@@ -138,7 +117,6 @@ get_header(); ?>
               $service_desc[$post->post_title] = $desc;
               $service_link[$post->post_title] = $link;
             }?>
-
             <?php
             $services = array_merge_recursive($service_title, $service_desc, $service_link, $service_parent);
             ?>
