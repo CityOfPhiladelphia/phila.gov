@@ -41,7 +41,8 @@ class Phila_Gov_Register_Program_Templates {
             'prog_landing_page'  => 'Homepage',
             'phila_one_quarter'    => '1/4 Headings (subpage)',
             'prog_off_site' => 'Off-site program',
-            'prog_association'  => 'Subpage with association'
+            'resource_list_v2'  => 'Resource list',
+            'prog_association'  => 'Subpage with association',
           ),
           'admin_columns' => array(
             'position' => 'after date',
@@ -185,8 +186,11 @@ class Phila_Gov_Register_Program_Templates {
       'revision' => true,
       'hidden' => array(
         'when' => array(
-          array( 'phila_template_select', '=', 'prog_off_site' )
+          array( 'phila_template_select', '=', 'prog_off_site' ),
+          array( 'phila_template_select', '=', 'resource_list_v2' ),
+
         ),
+        'relation' => 'or',
       ),
 
       'fields' => array(
