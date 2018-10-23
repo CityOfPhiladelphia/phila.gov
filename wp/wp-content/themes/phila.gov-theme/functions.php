@@ -1392,12 +1392,22 @@ function phila_image_list($image_list) {
   foreach ($image_list as $key => $value) {
 
     $output_array['title'] = isset( $image_list['title'] ) ? $image_list['title'] : '';
+
+    $output_array['sub_title'] = isset( $image_list['sub_title'] ) ? $image_list['sub_title'] : '';
+
   }
 
   if( isset($image_list['phila_image_list']) ) {
     $output_array['urls'] = array();
     foreach( $image_list['phila_image_list'] as $image ) {
       array_push($output_array['urls'], wp_get_attachment_url($image) );
+    }
+  }
+
+  if( isset($image_list['phila_image_list_extended']) ) {
+    $output_array['extended'] = array();
+    foreach( $image_list['phila_image_list_extended'] as $extended ) {
+      array_push($output_array['extended'], $extended );
     }
   }
 
