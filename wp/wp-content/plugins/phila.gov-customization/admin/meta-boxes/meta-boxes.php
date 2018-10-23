@@ -184,7 +184,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'title'    => 'Release Date',
     'pages'    => array( 'post' ),
     'context'  => 'after_title',
-    //'priority' => 'high',
+    'priority' => 'low',
     'visible' => array(
       'when' => array(
         array('phila_template_select', '=', 'press_release'),
@@ -210,8 +210,8 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title'    => 'Contact Information',
     'pages'    => array( 'post' ),
-    'context'  => 'advanced',
-    'priority' => 'high',
+    'context'  => 'after_title',
+    'priority' => 'low',
     'visible' => array(
       'when' => array(
         array('phila_template_select', '=', 'press_release'),
