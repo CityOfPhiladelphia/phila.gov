@@ -883,7 +883,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Additional Content',
-  'pages' => array ('service_page', 'programs', 'department_page' ),
+  'pages' => array ( 'service_page', 'programs' ),
   'revision' => true,
   'context'  => 'advanced',
 
