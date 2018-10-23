@@ -749,7 +749,8 @@ $meta_questions = array(
 $meta_boxes[] = array(
   'title' => 'Service Stub',
   'pages' => array('service_page'),
-  'priority' => 'high',
+  'context' => 'after_title',
+  'priority' => 'low',
   'visible' => array('phila_template_select', 'service_stub'),
   'revision' => true,
 
@@ -792,7 +793,8 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Topic Page Options',
   'pages' => array('service_page'),
-  'priority' => 'high',
+  'context' => 'after_title',
+  'priority' => 'low',
   'visible' => array('phila_template_select', 'topic_page'),
 
   'fields'  => array(
