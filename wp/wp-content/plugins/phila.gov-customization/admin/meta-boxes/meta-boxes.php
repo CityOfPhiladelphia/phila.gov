@@ -476,7 +476,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'default',
 
-
     'include' => array(
       'user_role'  => array(
         'administrator', 'primary_department_homepage_editor', 'editor' ),
@@ -485,7 +484,6 @@ function phila_register_meta_boxes( $meta_boxes ){
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
-      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -509,6 +507,18 @@ function phila_register_meta_boxes( $meta_boxes ){
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
         ),
+      ),
+      array(
+        'id'  => 'hide_units',
+        'class' => 'hide-on-load',
+        'name'  => 'Hide staff assigned to units?',
+        'desc'  => 'By selecting this option, staff assigned to a unit will not appear on this department homepage.',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+        'visible' => array(
+          'phila_template_select', 'in', ['homepage_v2']
+        )
       ),
     ),
   );
