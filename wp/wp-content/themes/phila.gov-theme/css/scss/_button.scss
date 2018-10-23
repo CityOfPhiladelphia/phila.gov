@@ -7,7 +7,7 @@
 }
 .button{
   &[class*='content-type']{
-    .fa {
+    .fa, .fab, .fal, .far, .fas{
       padding-left:.5rem;
     }
   }

@@ -62,46 +62,54 @@
     <div v-show="loading" class="mtm center">
       <i class="fas fa-spinner fa-spin fa-3x"></i>
     </div>
-    <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+    <div v-show="!loading && emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
 
-    <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
-      <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
-        <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
-      </thead>
-      <paginate name="posts"
-        :list="posts"
-        class="paginate-list"
-        tag="tbody"
-        :per="40">
-        <tr v-for="post in paginated('posts')"
-        :key="post.id"
-        class="vue-clickable-row"
-        v-on:click.stop.prevent="goToPost(post.link)">
-          <td class="title">
-            <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
-              {{ post.title }}
-            </a>
-          </td>
-          <td class="date">{{ post.date  | formatDate }}</td>
-          <td class="categories">
-            <span v-for="(category, i) in post.categories">
-              <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
-            </span>
-          </td>
-        </tr>
-      </paginate>
-    </table>
-    <paginate-links for="posts"
-    :async="true"
-    :limit="3"
-    :show-step-links="true"
-    :step-links="{
-      next: 'Next',
-      prev: 'Previous'
-    }"
-    v-show="!loading && !emptyResponse && !failure"></paginate-links>
+    <div v-if="posts.length">
+      <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
+        <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
+          <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
+        </thead>
+        <paginate name="posts"
+          :list="posts"
+          class="paginate-list"
+          tag="tbody"
+          :per="40">
+          <tr v-for="post in paginated('posts')"
+          :key="post.id"
+          class="vue-clickable-row"
+          v-on:click.stop.prevent="goToPost(post.link)">
+            <td class="title">
+              <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
+                {{ post.title }}
+              </a>
+            </td>
+            <td class="date">{{ post.date  | formatDate }}</td>
+            <td class="categories">
+              <span v-for="(category, i) in post.categories">
+                <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
+              </span>
+            </td>
+          </tr>
+        </paginate>
+      </table>
+      <paginate-links for="posts"
+      :async="true"
+      :limit="3"
+      :show-step-links="true"
+      :hide-single-page="false"
+      :step-links="{
+        next: 'Next',
+        prev: 'Previous'
+      }"
+      v-show="!loading && !emptyResponse && !failure"></paginate-links>
+    </div>
+    <div v-else>
+      <div v-show="!emptyResponse" class="h3 mtm center">Sorry, there are no results.
+      </div>
+    </div>
   </div>
+
   </template>
 
 <script>
@@ -231,28 +239,14 @@ export default {
       })
     },
     reset() {
-      //this.loading = true
-      window.location = window.location.pathname;
-      /*this.selectedCategory = ''
-      axios.get(endpoint + 'archives', {
-       params : {
-          'count': -1
-        }
-      })
-        .then(response => {
-          this.posts = response.data
-          this.loading = false
-          this.searchedVal = ''
-          this.checkedTemplates = ''
-          this.selectedCategory = ''
-          this.state.startDate = ''
-          this.state.endDate = ''
-        })
-        .catch(e => {
-          this.failure = true
-      })
-      this.$forceUpdate();
-      */
+
+      this.searchedVal = ''
+      this.state.startDate = ''
+      this.state.endDate = ''
+      //a little convoluted, but will change the state of selected if the reset button is used mutiple times in a session
+      this.selected = (this.selected == null ? '' : null)
+      this.runDateQuery()
+      this.filterByCategory()
     },
     runDateQuery(){
       if ( !this.state.startDate || !this.state.endDate )
@@ -281,36 +275,35 @@ export default {
       })
     },
     filterByCategory: function(selectedVal){
-      this.$nextTick(function () {
-        this.loading = true
+      this.loading = true
 
-        this.selectedCategory = (selectedVal) ? selectedVal.id : ''
+      this.selectedCategory = (selectedVal) ? selectedVal.id : ''
 
-        axios.get(endpoint + 'archives', {
-          params : {
-            's': this.searchedVal,
-            'tag': this.tagVal,
-            'template': this.checkedTemplates,
-            'category': this.selectedCategory,
-            'count': -1,
-            'start_date': this.state.startDate,
-            'end_date': this.state.endDate,
-            }
-          })
-          .then(response => {
-            this.loading = false
-            //Don't let empty value change the rendered view
-          //  if ('id' in selectedVal && this.queriedCategory != ''){
-              this.posts = response.data
-          //  }
-
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
+      axios.get(endpoint + 'archives', {
+        params : {
+          's': this.searchedVal,
+          'tag': this.tagVal,
+          'template': this.checkedTemplates,
+          'category': this.selectedCategory,
+          'count': -1,
+          'start_date': this.state.startDate,
+          'end_date': this.state.endDate,
+          }
         })
+        .then(response => {
+          this.loading = false
+          //Don't let empty value change the rendered view
+        //  if ('id' in selectedVal && this.queriedCategory != ''){
+            this.posts = response.data
+        //  }
+
+          this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+          this.loading = false
       })
+
     },
   },
   computed:{
