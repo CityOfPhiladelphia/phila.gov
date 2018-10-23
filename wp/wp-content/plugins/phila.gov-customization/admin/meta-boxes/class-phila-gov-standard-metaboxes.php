@@ -7,6 +7,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
 class Phila_Gov_Standard_Metaboxes {
 
+
   public static function phila_wysiwyg_options_basic( $editor_height = 200 ){
 
     return array(
@@ -1105,21 +1106,23 @@ public static function phila_meta_var_connect(){
         'clone' => false,
 
         'fields' => array(
-            array(
-              'id'  => 'phila_forms_instructions',
-              'type'  => 'group',
+          array(
+            'id'  => 'phila_forms_instructions',
+            'type'  => 'group',
+            'visible' => array('post_type', '=', 'service_page'),
 
-              'fields'  => array(
-                array(
-                  'name'  => 'Forms & Instructions',
-                  'type'  => 'heading'
-                ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector()
+            'fields'  => array(
+              array(
+                'name'  => 'Forms & Instructions',
+                'type'  => 'heading'
               ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector()
             ),
+          ),
           array(
             'id'  => 'phila_related',
             'type'  => 'group',
+            'visible' => array('post_type', '=', 'service_page'),
 
             'fields'  => array(
               array(
