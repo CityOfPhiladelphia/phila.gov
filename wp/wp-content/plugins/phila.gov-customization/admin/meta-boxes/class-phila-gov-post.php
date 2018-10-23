@@ -17,8 +17,8 @@ if ( class_exists("Phila_Gov_Post" ) ){
     $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
       'pages'    => array( 'post' ),
-      'context'  => 'advanced',
-      'priority' => 'default',
+      'context'  => 'after_title',
+      //'priority' => 'default',
       'fields'  => array(
         array(
           'type' => 'textarea',
