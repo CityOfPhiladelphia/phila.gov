@@ -113,6 +113,11 @@ class Phila_Gov_Row_Metaboxes {
             'type'  => 'text',
           ),
           array(
+            'name'  => 'Image list subheading (optional)',
+            'id'    => 'sub_title',
+            'type'  => 'text',
+          ),
+          array(
             'name'  => 'List of images',
             'id'    => 'phila_image_list',
             'type'  => 'image_advanced'
