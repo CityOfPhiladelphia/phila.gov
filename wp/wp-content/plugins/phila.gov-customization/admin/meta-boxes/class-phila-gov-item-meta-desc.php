@@ -20,8 +20,8 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
     $meta_boxes[] = array(
       'id'  => 'item_description',
       'title' => 'Short Description',
-      'context'  => 'advanced',
-      'priority' => 'high',
+      'context'  => 'after_title',
+      //'priority' => 'high',
 
       //TODO: replace this with a function that pulls the post types we need. It had been set up this way, but after a WP update, get_post_types was not returning CPTs. A quick fix needed to be put in place, and this is it.
       'post_types' => array(
