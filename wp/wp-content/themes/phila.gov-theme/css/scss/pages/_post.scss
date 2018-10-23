@@ -19,7 +19,7 @@
         padding: $spacing-small;
       }
 
-      .fa {
+      .fa, .fab, .fal, .far, .fas {
         font-size: 1.5rem;
         @include breakpoint(small only) {
           font-size: 2rem;

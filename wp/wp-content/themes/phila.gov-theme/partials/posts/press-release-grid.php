@@ -16,17 +16,6 @@
 
 <?php
 
-//if categories aren't set then, this is the latest, don't show featured
-if ( empty( $press_categories ) ) {
-  $press_meta_query  = array(
-    'key' => 'phila_is_feature',
-    'value' => '0',
-    'compare' => '=',
-  );
-}else{
-  $press_meta_query = array();
-}
-
 if( !empty($tag) ) {
   $press_release_template_args  = array(
     'posts_per_page' => 4,
@@ -59,7 +48,6 @@ if( !empty($tag) ) {
           'value' => 'press_release',
           'compare' => '=',
         ),
-      $press_meta_query
     ),
   );
 }

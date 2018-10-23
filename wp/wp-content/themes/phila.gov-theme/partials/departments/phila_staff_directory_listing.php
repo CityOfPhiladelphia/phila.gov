@@ -21,10 +21,10 @@ if ( has_category() ) {
     $category_id = implode(", ", $category_override['phila_staff_category']);
   }
 
-  if (!empty($unit_data) ) {
-    foreach ($unit_data as $unit){
-      /* The Staff Directory Loop, when there are units */
+  if (!empty( $unit_data ) ) {
 
+    foreach ( $unit_data as $unit ){
+      /* The Staff Directory Loop, when there are units */
       $args = array(
         'orderby' => 'title',
         'order' => 'ASC',
@@ -60,18 +60,43 @@ if ( has_category() ) {
       include(locate_template('partials/departments/phila_staff_directory_loop.php'));
 
     }else{
+      $hidden = rwmb_meta('hide_units');
 
-      /* There are no units, display normally */
-      $args = array(
-        'orderby' => 'title',
-        'order' => 'ASC',
-        'post_type' => 'staff_directory',
-        'cat' => array($category_id),
-        'posts_per_page' => -1,
+      if ( !empty( $hidden ) ) {
+        $args = array(
+          'orderby' => 'title',
+          'order' => 'ASC',
+          'post_type' => 'staff_directory',
+          'cat' => array($category_id),
+          'posts_per_page' => -1,
+          'meta_query' => array(
+            'relation' => 'AND',
+            array(
+              'key'     => 'units',
+              'value'   => '',
+              'compare' => 'NOT EXISTS'
+            )
+          )
         );
 
-      include(locate_template('partials/departments/phila_staff_directory_loop.php'));
+        $unit = null;
+        include(locate_template('partials/departments/phila_staff_directory_loop.php'));
+
+      } else {
+
+        /* There are no units, display normally */
+        $args = array(
+          'orderby' => 'title',
+          'order' => 'ASC',
+          'post_type' => 'staff_directory',
+          'cat' => array($category_id),
+          'posts_per_page' => -1,
+          );
+
+        include(locate_template('partials/departments/phila_staff_directory_loop.php'));
+      }
     }
+
   }?>
 
 <?php if (phila_get_selected_template() != 'homepage_v2') : ?>

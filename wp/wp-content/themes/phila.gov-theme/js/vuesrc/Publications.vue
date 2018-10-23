@@ -48,54 +48,62 @@
     <div v-show="loading" class="mtm center">
       <i class="fas fa-spinner fa-spin fa-3x"></i>
     </div>
-    <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+    <div v-show="!loading && emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
 
-    <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
-      <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
-        <tr>
-          <th class="table-sort title"
-          @click="sort('title')" v-bind:class="sortTitle"><span>Title</span></th>
+      <div v-if="sortedDocuments.length">
+        <table class="stack theme-light archive-results"  data-sticky-container v-show="!loading && !emptyResponse && !failure">
+          <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
+            <tr>
+              <th class="table-sort title"
+              @click="sort('title')" v-bind:class="sortTitle"><span>Title</span></th>
 
-          <th class="table-sort date"
-          @click="sort('date')"
-          v-bind:class="sortDate"><span>Publish date</span></th>
-          <th class="department">Department</th>
-        </tr>
-      </thead>
-      <paginate name="documents"
-        :list="sortedDocuments"
-        class="paginate-list"
-        tag="tbody"
-        :per="40">
-        <tr v-for="document in paginated('documents')"
-        :key="document.id"
-        class="vue-clickable-row"
-        v-on:click.stop.prevent="goToDoc(document.link)">
-          <td class="title">
-            <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
-              {{ document.title }}
-            </a>
-          </td>
-          <td class="date">{{ document.date  | formatDate }}</td>
-          <td class="categories">
-            <span v-for="(category, i) in document.categories">
-              <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
-            </span>
-          </td>
-        </tr>
-      </paginate>
-    </table>
-    <paginate-links for="documents"
-    :limit="3"
-    :show-step-links="true"
-    :hide-single-page="true"
-    :step-links="{
-      next: 'Next',
-      prev: 'Previous'
-    }"
-    v-show="!loading && !emptyResponse && !failure"></paginate-links>
-  </div>
+              <th class="table-sort date"
+              @click="sort('date')"
+              v-bind:class="sortDate"><span>Publish date</span></th>
+              <th class="department">Department</th>
+            </tr>
+          </thead>
+
+          <paginate name="documents"
+            :list="sortedDocuments"
+            class="paginate-list"
+            tag="tbody"
+            :per="40">
+            <tr v-for="document in paginated('documents')"
+            :key="document.id"
+            class="vue-clickable-row"
+            v-on:click.stop.prevent="goToDoc(document.link)">
+              <td class="title">
+                <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
+                  {{ document.title }}
+                </a>
+              </td>
+              <td class="date">{{ document.date  | formatDate }}</td>
+              <td class="categories">
+                <span v-for="(category, i) in document.categories">
+                  <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
+                </span>
+              </td>
+            </tr>
+          </paginate>
+        </table>
+        <paginate-links for="documents"
+        :limit="3"
+        :async="true"
+        :show-step-links="true"
+        :hide-single-page="false"
+        @change="onDocsPageChange"
+        :step-links="{
+          next: 'Next',
+          prev: 'Previous'
+        }"
+        v-show="!loading && !emptyResponse && !failure"></paginate-links>
+      </div>
+      <div v-else>
+        <div v-show="!emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
+      </div>
+    </div>
   </template>
 
 <script>
@@ -176,6 +184,10 @@ export default {
     })
   },
   methods: {
+    onDocsPageChange (toPage, fromPage) {
+      console.log(toPage)
+      console.log(fromPage)
+      },
     getDropdownCategories: function () {
       axios.get('/wp-json/the-latest/v1/categories')
       .then(response => {
@@ -289,7 +301,7 @@ export default {
         this.failure = false
       }
     },
-    sortedDocuments:function() {
+    sortedDocuments: function() {
       return this.filteredList(this.documents.sort((a,b) => {
         let modifier = 1;
         if(this.currentSortDir === 'desc') modifier = -1;
