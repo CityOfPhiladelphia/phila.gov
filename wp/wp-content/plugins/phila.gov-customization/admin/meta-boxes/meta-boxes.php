@@ -251,7 +251,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_resource_list',
     'title'    => __( 'Resource List' ),
-    'pages'    => array( 'department_page', 'page' ),
+    'pages'    => array( 'department_page', 'programs' ),
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array(
