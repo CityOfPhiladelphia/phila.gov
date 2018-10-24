@@ -55,14 +55,12 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
 
 
   function phila_register_department_meta_boxes( $meta_boxes ){
-    // $prefix = 'phila_';
 
     $meta_boxes[] = array(
       'id'       => 'departments',
       'title'    => 'External Site',
       'pages'    => array( 'department_page' ),
-      'context'  => 'advanced',
-      'priority' => 'high',
+      'context'  => 'after_title',
 
       'visible' => array(
         'phila_template_select', '=', 'off_site_department',

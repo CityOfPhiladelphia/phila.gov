@@ -17,6 +17,7 @@
 <?php
 
 if( !empty($tag) ) {
+
   $press_release_template_args  = array(
     'posts_per_page' => 4,
     'post_type' => array( 'post' ),
@@ -92,7 +93,17 @@ if( !empty($tag) ) {
                   'nice_name' => 'Press releases',
                   'is_full' => true
                 );
-                ?>
+                 if( !empty( $tag ) ) :
+                  if (gettype($tag) === 'string' ) {
+                    $term = get_term($tag, 'post_tag');
+                  }else{
+                    $term = get_term($tag[0], 'post_tag');
+                  }
+                  $see_all_URL = array(
+                    'URL' => '/the-latest/archives/?tag=' . $term->name,
+                  );
+                  $see_all = array_replace($see_all, $see_all_URL );
+                  endif;?>
                 <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               <?php endif;?>
               <?php if ($count == 2 || $count == 4) :?>

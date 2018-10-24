@@ -183,8 +183,8 @@ function phila_register_meta_boxes( $meta_boxes ){
     'id'       => 'press-release-date',
     'title'    => 'Release Date',
     'pages'    => array( 'post' ),
-    'context'  => 'advanced',
-    'priority' => 'high',
+    'context'  => 'after_title',
+    'priority' => 'low',
     'visible' => array(
       'when' => array(
         array('phila_template_select', '=', 'press_release'),
@@ -210,8 +210,8 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title'    => 'Contact Information',
     'pages'    => array( 'post' ),
-    'context'  => 'advanced',
-    'priority' => 'high',
+    'context'  => 'after_title',
+    'priority' => 'low',
     'visible' => array(
       'when' => array(
         array('phila_template_select', '=', 'press_release'),
@@ -727,34 +727,6 @@ $meta_var_wysiwyg_multi = array(
   )
 );
 
-//Group all "Page" related content
-$meta_related_content = array(
-  'id'  => 'phila_related',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Related Content',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => 'phila_related_content_picker',
-      'type'  => 'post',
-      'post_type' => array('department_page', 'programs', 'post', 'service_page', 'document'),
-      'placeholder' => 'Select pages',
-      'query_args'  => array(
-          'post_status'    => 'any',
-          'posts_per_page' => - 1,
-        ),
-      'multiple'  => true,
-    ),
-    array(
-      'id'  => 'phila_related_content',
-      'type'  => 'wysiwyg',
-      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-    ),
-  )
-);
 
 //Questions metabox, used for Service Pages
 $meta_questions = array(
@@ -774,47 +746,11 @@ $meta_questions = array(
   )
 );
 
-//Did you know, used for Service Pages
-$meta_did_you_know = array(
-  'id'  => 'phila_did_you_know',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Did You Know?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => 'phila_did_you_know_content',
-      'type'  => 'wysiwyg',
-      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-    ),
-  )
-);
-
-//Disclaimer, used for Service Pages
-$meta_disclaimer = array(
-  'id'  => 'phila_disclaimer',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Disclaimer',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => 'phila_disclaimer_content',
-      'type'  => 'wysiwyg',
-      'desc'  => 'Enter disclaimer content, or a [text block] with disclaimer shortcode',
-      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-    ),
-  )
-);
-
 $meta_boxes[] = array(
   'title' => 'Service Stub',
   'pages' => array('service_page'),
-  'priority' => 'high',
+  'context' => 'after_title',
+  'priority' => 'low',
   'visible' => array('phila_template_select', 'service_stub'),
   'revision' => true,
 
@@ -857,7 +793,8 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Topic Page Options',
   'pages' => array('service_page'),
-  'priority' => 'high',
+  'context' => 'after_title',
+  'priority' => 'low',
   'visible' => array('phila_template_select', 'topic_page'),
 
   'fields'  => array(
@@ -886,18 +823,6 @@ $meta_boxes[] = array(
   )
 );
 
-$meta_forms_instructions = array(
-  'id'  => 'phila_forms_instructions',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Forms & Instructions',
-      'type'  => 'heading'
-    ),
-    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector()
-  )
-);
 
 $meta_boxes[] = array(
   'title' => 'Before you start',
@@ -958,23 +883,10 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Additional Content',
-  'pages' => array('page', 'service_page'),
+  'pages' => array ( 'service_page', 'programs' ),
   'revision' => true,
-  'fields' => array(
-    array(
-      'id' => 'phila_additional_content',
-      'type'  => 'group',
-      'clone' => false,
+  'context'  => 'advanced',
 
-      'fields' => array(
-        $meta_forms_instructions,
-        $meta_related_content,
-        $meta_did_you_know,
-        $meta_questions,
-        $meta_disclaimer
-      )
-    )
-  ),
   'hidden' => array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
@@ -982,6 +894,8 @@ $meta_boxes[] = array(
     ),
     'relation' => 'or',
   ),
+
+    'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
 );
 
 $meta_boxes[] = array(
@@ -1091,7 +1005,7 @@ $meta_boxes[] = array(
   'id'       => 'phila_custom_markup',
   'title'    => 'Custom Markup',
   'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
-  'context'  => 'normal',
+  'context'  => 'advanced',
   'priority' => 'low',
 
    'include' => array(

@@ -113,9 +113,34 @@ class Phila_Gov_Row_Metaboxes {
             'type'  => 'text',
           ),
           array(
+            'name'  => 'Image list subheading (optional)',
+            'id'    => 'sub_title',
+            'type'  => 'text',
+          ),
+          array(
             'name'  => 'List of images',
             'id'    => 'phila_image_list',
             'type'  => 'image_advanced'
+          ),
+          array(
+            'id'       => 'phila_image_list_extended',
+            'type'     => 'group',
+            'clone'    => true,
+            'max_clone' => 2,
+            'add_button'  => '+ Add secondary list',
+            'fields'   => array(
+              array(
+                'name'  => 'Secondary list heading',
+                'id'    => 'secondary_title',
+                'type'  => 'text',
+              ),
+              array(
+                'name'  => 'Secondary list content',
+                'id'    => 'secondary_list_content',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              ),
+            ),
           ),
         ),
       ),

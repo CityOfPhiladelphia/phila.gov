@@ -122,11 +122,9 @@
            $custom_text = $current_row['phila_full_options']['phila_custom_text_multi_full'];
            $multi_full_row = true;
            ?>
-           <!-- Custom text-->
-           <div class="row mvl">
+           <!-- Custom text multi-->
              <?php include(locate_template('partials/departments/content-custom-text-multi.php')); ?>
-          </div>
-          <!-- /Custom text-->
+          <!-- /Custom text multi -->
 
          <?php endif; ?>
 

@@ -1279,7 +1279,6 @@ function phila_additional_content( $input ){
 
       $output['related_picker'] = isset( $input['phila_related']['phila_related_content_picker'] ) ? $input['phila_related']['phila_related_content_picker'] : '';
 
-
       $output['related'] = isset( $input['phila_related']['phila_related_content'] ) ? $input['phila_related']['phila_related_content'] : '';
 
       $output['aside']['did_you_know'] = isset( $input['phila_did_you_know']['phila_did_you_know_content'] ) ? $input['phila_did_you_know']['phila_did_you_know_content'] : '';
@@ -1392,12 +1391,22 @@ function phila_image_list($image_list) {
   foreach ($image_list as $key => $value) {
 
     $output_array['title'] = isset( $image_list['title'] ) ? $image_list['title'] : '';
+
+    $output_array['sub_title'] = isset( $image_list['sub_title'] ) ? $image_list['sub_title'] : '';
+
   }
 
   if( isset($image_list['phila_image_list']) ) {
     $output_array['urls'] = array();
     foreach( $image_list['phila_image_list'] as $image ) {
       array_push($output_array['urls'], wp_get_attachment_url($image) );
+    }
+  }
+
+  if( isset($image_list['phila_image_list_extended']) ) {
+    $output_array['extended'] = array();
+    foreach( $image_list['phila_image_list_extended'] as $extended ) {
+      array_push($output_array['extended'], $extended );
     }
   }
 
