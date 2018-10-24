@@ -69,8 +69,8 @@ get_header(); ?>
           'relation' => 'OR',
           array(
             'key'     => 'phila_template_select',
-            'value' => array('default', 'tax_detail'),
-            'compare' => 'IN'
+            'value' => array( 'service_stub' ),
+            'compare' => 'NOT IN'
           ),
         ),
       );
