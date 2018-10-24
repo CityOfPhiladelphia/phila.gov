@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="grid-container mtl">
-    <div class="grid-x grid-padding-x custom-text-multi">
+    <div class="grid-x custom-text-multi">
         <?php foreach( $image_list_vars['extended'] as $content ) : ?>
           <div class="cell image-list medium-<?php echo $content_grid_count ?>">
             <h3><?php echo $content['secondary_title'] ?></h3>
