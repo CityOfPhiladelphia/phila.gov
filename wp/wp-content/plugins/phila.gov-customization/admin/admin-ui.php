@@ -114,20 +114,6 @@ function phila_get_user_roles(){
 
 }
 
-
-/**
- * Move all "advanced" metaboxes above the default editor to allow for custom reordering
- *
- * @since   0.17.7
- */
-add_action('edit_form_after_title', 'phila_reorder_meta_boxes');
-
-function phila_reorder_meta_boxes() {
-  global $post, $wp_meta_boxes;
-  do_meta_boxes(get_current_screen(), 'advanced', $post);
-  unset($wp_meta_boxes[get_post_type($post)]['advanced']);
-}
-
 add_action( 'admin_bar_menu', 'remove_add_new', 999 );
 
 function remove_add_new( $wp_admin_bar ) {

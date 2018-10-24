@@ -1,9 +1,13 @@
 .custom-text-multi {
   @media only screen and (min-width: 40em) {
-    .columns {
-      border-right: 2px solid color(ghost-gray);
+    .columns, .cell {
+      border-right: 1px solid color(dark-gray);
+      padding: 0 0 0 3rem;
       &:last-of-type {
         border-right: 0;
+      }
+      &:first-of-type {
+        padding: 0;
       }
     }
   }

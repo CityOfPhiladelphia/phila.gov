@@ -7,6 +7,7 @@ if ( class_exists('Phila_Gov_Standard_Metaboxes' ) ){
 
 class Phila_Gov_Standard_Metaboxes {
 
+
   public static function phila_wysiwyg_options_basic( $editor_height = 200 ){
 
     return array(
@@ -1093,6 +1094,109 @@ public static function phila_meta_var_connect(){
           'type' => 'wysiwyg',
           'options' =>    Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
         ),
+      )
+    );
+  }
+
+  public static function phila_meta_var_addtional_content() {
+    return array(
+      array(
+        'id' => 'phila_additional_content',
+        'type'  => 'group',
+        'clone' => false,
+
+        'fields' => array(
+          array(
+            'id'  => 'phila_forms_instructions',
+            'type'  => 'group',
+            'visible' => array('post_type', '=', 'service_page'),
+
+            'fields'  => array(
+              array(
+                'name'  => 'Forms & Instructions',
+                'type'  => 'heading'
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector()
+            ),
+          ),
+          array(
+            'id'  => 'phila_related',
+            'type'  => 'group',
+            'visible' => array('post_type', '=', 'service_page'),
+
+            'fields'  => array(
+              array(
+                'name'  => 'Related Content',
+                'type'  => 'heading'
+              ),
+              array(
+                'id'  => 'phila_related_content_picker',
+                'type'  => 'post',
+                'post_type' => array('department_page', 'programs', 'post', 'service_page', 'document'),
+                'placeholder' => 'Select pages',
+                'query_args'  => array(
+                    'post_status'    => 'any',
+                    'posts_per_page' => - 1,
+                  ),
+                'multiple'  => true,
+              ),
+              array(
+                'id'  => 'phila_related_content',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              ),
+            )
+          ),
+          array(
+            'id'  => 'phila_did_you_know',
+            'type'  => 'group',
+
+            'fields'  => array(
+              array(
+                'name'  => 'Did You Know?',
+                'type'  => 'heading'
+              ),
+              array(
+                'id'  => 'phila_did_you_know_content',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              ),
+            )
+          ),
+          array(
+            'id'  => 'phila_questions',
+            'type'  => 'group',
+
+            'fields'  => array(
+              array(
+                'name'  => 'Questions about this content?',
+                'type'  => 'heading'
+              ),
+              array(
+                'id'  => 'phila_question_content',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              ),
+            )
+          ),
+          array(
+            'id'  => 'phila_disclaimer',
+            'type'  => 'group',
+
+            'fields'  => array(
+              array(
+                'name'  => 'Disclaimer',
+                'type'  => 'heading'
+              ),
+              array(
+                'id'  => 'phila_disclaimer_content',
+                'type'  => 'wysiwyg',
+                'desc'  => 'Enter disclaimer content, or a [text block] with disclaimer shortcode',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              ),
+            )
+          )
+        )
       )
     );
   }

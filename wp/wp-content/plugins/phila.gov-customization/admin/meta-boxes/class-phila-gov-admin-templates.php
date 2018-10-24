@@ -64,8 +64,8 @@ class Phila_Gov_Admin_Templates {
       'id'       => 'service_template_selection',
       'title'    => 'Service page options',
       'post_types'    => array( 'service_page' ),
-      'context'  => 'advanced',
-      'priority' => 'high',
+      'context'  => 'after_title',
+
       'fields' => array(
         array(
           'id'  => 'phila_template_select',
@@ -113,8 +113,7 @@ class Phila_Gov_Admin_Templates {
     $meta_boxes[] = array(
       'title'    => 'Select Template',
       'post_types'    => array( 'post' ),
-      'context'  => 'advanced',
-      'priority' => 'high',
+      'context'  => 'after_title',
       'fields' => array(
         array(
           'placeholder'  => 'Select a template',

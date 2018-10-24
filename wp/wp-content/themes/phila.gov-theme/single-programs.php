@@ -55,6 +55,10 @@ get_header();
       <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>
       <!-- /Program and initiatives -->
 
+      <!-- Additional Content-->
+      <?php get_template_part( 'partials/content', 'additional' ); ?>
+      <!-- /Additional Content-->
+
     <?php endwhile; ?>
 </div><!-- #post-## -->
 <?php get_footer(); ?>

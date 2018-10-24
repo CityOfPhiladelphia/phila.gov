@@ -24,8 +24,7 @@ class Phila_Gov_Register_Program_Templates {
       'id'       => 'template_selection',
       'title'    => 'Select Template',
       'pages'    => array( 'programs' ),
-      'context'  => 'advanced',
-      'priority' => 'high',
+      'context'  => 'after_title',
 
       'fields' => array(
         array(
