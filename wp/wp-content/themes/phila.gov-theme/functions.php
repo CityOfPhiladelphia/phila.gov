@@ -320,6 +320,10 @@ function phila_gov_scripts() {
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
 
+    $google_calendar = ( defined( 'GOOGLE_CALENDAR' ) && ! empty( GOOGLE_CALENDAR ) ) ? GOOGLE_CALENDAR : 'ABC';
+
+    wp_localize_script('vuejs-app', 'g_cal_id', $google_calendar );
+
     wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
 
   }
