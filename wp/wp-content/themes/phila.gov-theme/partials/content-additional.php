@@ -10,6 +10,7 @@
 
   $additional_content = rwmb_meta('phila_additional_content');
   $more = phila_additional_content( $additional_content );
+
 ?>
 
 <?php if ( !empty($more['forms']) ) : ?>
@@ -29,7 +30,7 @@
 </div>
 <?php endif; ?>
 
-<?php if ( !empty( $more['related_picker'] || !empty( $more['related'] ) ) ) : ?>
+<?php if ( !empty( $more['related_picker'] ) || !empty( $more['related'] ) ) : ?>
 <div class="row">
   <div class="columns">
     <section>
