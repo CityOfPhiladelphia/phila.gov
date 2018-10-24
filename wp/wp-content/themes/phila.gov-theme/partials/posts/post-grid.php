@@ -142,7 +142,7 @@ $result->post_count = count( $result->posts );
             $see_all_URL = array(
               'URL' => '/the-latest/archives/?template=post&category=' . $post_categories[0],
             );
-            $see_all = array_replace($see_all, $see_all_URL );
+            $see_all = array_replace( $see_all, $see_all_URL );
             endif;?>
             <?php if( !empty( $tag ) ) :
               $term = get_term($tag[0], 'post_tag');
