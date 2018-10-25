@@ -20,8 +20,10 @@
     $grid_count = 6;
   }
 
-  $extended_count = count($image_list_vars['extended']);
-  $content_grid_count = phila_grid_column_counter($extended_count);
+  if(isset($image_list_vars['extended'])) {
+    $extended_count = count($image_list_vars['extended']);
+    $content_grid_count = phila_grid_column_counter($extended_count);
+  }
 
 ?>
 <section>
@@ -44,16 +46,18 @@
         <?php endforeach; ?>
     </div>
   </div>
-  <div class="grid-container mtl">
-    <div class="grid-x custom-text-multi">
-        <?php foreach( $image_list_vars['extended'] as $content ) : ?>
-          <div class="cell image-list medium-<?php echo $content_grid_count ?>">
-            <h3><?php echo $content['secondary_title'] ?></h3>
-            <div>
-              <?php echo $content['secondary_list_content'] ?>
+  <?php if(isset($image_list_vars['extended'])) :?>
+    <div class="grid-container mtl">
+      <div class="grid-x custom-text-multi">
+          <?php foreach( $image_list_vars['extended'] as $content ) : ?>
+            <div class="cell image-list medium-<?php echo $content_grid_count ?>">
+              <h3><?php echo $content['secondary_title'] ?></h3>
+              <div>
+                <?php echo $content['secondary_list_content'] ?>
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+      </div>
     </div>
-  </div>
+  <?php endif ?>
 </section>
