@@ -172,7 +172,6 @@ class Phila_Gov_Staff_Directory {
               'id'    => $prefix . 'summary',
               'type'  => 'wysiwyg',
               'class' => 'summary',
-              'desc'  => '700 character maximum.',
               'options' => array(
                 'editor_height' => 25,
                 'media_buttons' => false,
