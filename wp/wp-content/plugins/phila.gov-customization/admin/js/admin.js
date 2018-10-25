@@ -79,10 +79,6 @@ jQuery(document).ready(function($) {
             maxlength: 72
           });
         }
-        $('#phila_meta_desc').rules('add', {
-          maxlength: 140
-        });
-
       }
       // Set validations for custom post type Service Page
       if ( typenow == 'service_page' && adminpage.indexOf( 'post' ) > -1 ) {
@@ -164,13 +160,6 @@ jQuery(document).ready(function($) {
         $('.postarea').show();
       }
     });
-    //set character lengths for survey module
-    $( '#survey_title' ).rules( 'add', {
-      maxlength: 50
-    });
-    $( '#survey_description' ).rules( 'add', {
-      maxlength: 140
-    });
 
   }
 
@@ -183,23 +172,8 @@ jQuery(document).ready(function($) {
     $('#phila_date_format').prop('required', true);
     $('[id^=phila_effective_start_date]').prop('required', true);
     $('[id^=phila_effective_end_date]').prop('required', true);
-    $('textarea[id^="phila_service_update_message"]').each(function (i, el) {
-      $(this).rules('add', {
-        maxlength: 95
-      });
-    });
-    $('input[id^="phila_update_link_text"]').each(function (i, el) {
-      $(this).rules('add', {
-        maxlength: 80
-      });
-    });
-  }
 
-  if ( ( typenow == 'post' ) && adminpage.indexOf( 'post' ) > -1 )  {
-    $( '#phila_social_intent' ).rules( 'add', {
-      maxlength: 256
-    });
-
+    }
   }
   //Force category selection on all content types
   if ( ( typenow != 'attachment' ) && adminpage.indexOf( 'post' ) > -1 ) {
