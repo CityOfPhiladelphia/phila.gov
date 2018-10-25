@@ -173,7 +173,6 @@ jQuery(document).ready(function($) {
     $('[id^=phila_effective_start_date]').prop('required', true);
     $('[id^=phila_effective_end_date]').prop('required', true);
 
-    }
   }
   //Force category selection on all content types
   if ( ( typenow != 'attachment' ) && adminpage.indexOf( 'post' ) > -1 ) {
