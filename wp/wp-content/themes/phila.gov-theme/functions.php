@@ -324,8 +324,6 @@ function phila_gov_scripts() {
 
     wp_localize_script('vuejs-app', 'g_cal_id', $google_calendar );
 
-    wp_localize_script('vuejs-app', 'g_cal_id', GOOGLE_CALENDAR );
-
   }
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
