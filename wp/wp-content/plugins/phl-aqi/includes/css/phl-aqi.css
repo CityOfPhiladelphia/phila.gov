@@ -1,0 +1,196 @@
+.aqi {
+  background: #cae4ff;
+}
+.aqi-status-time{
+  font-size: .84rem;
+  border-bottom: 1px solid #444;
+  line-height: 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+.aqi-status-title{
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+.aqi-status-name{
+  font-size:1.8rem;
+  margin-top:1.2rem;
+}
+
+.aqi-status-description > p{
+  font-size: 1.4rem;
+  line-height: 3rem;
+  font-style: italic;
+  overflow: auto;
+}
+.aqi-info-title{
+  background: #444;
+  color: white;
+  padding: .5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.aqi-info-color{
+  padding: 2.5rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.aqi-info-color.aqi-green{
+  background-color: #00e400;
+}
+.aqi-info-color.aqi-yellow{
+  background-color: #ffff00;
+}
+.aqi-info-color.aqi-orange{
+  background-color: #ff7e00;
+}
+.aqi-info-color.aqi-red{
+  background-color: #ff0400;
+  color:white;
+}
+.aqi-info-color.aqi-purple{
+  background-color: #8f3f97;
+  color:white;
+}
+.aqi-info-color.aqi-maroon{
+  background-color: #7e0023;
+  color:white;
+}
+.aqi-description p{
+  margin-bottom: 0;
+}
+
+.highcharts-yaxis-labels{
+  display: none;
+}
+
+.highcharts-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  line-height: normal;
+  z-index: 0;
+  /* #1072 */
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.highcharts-background {
+  fill: transparent;
+}
+
+.highcharts-plot-border, .highcharts-plot-background {
+  fill: none;
+}
+
+.highcharts-label-box {
+  fill: none;
+}
+
+/* Axes */
+.highcharts-axis-line {
+  fill: none;
+}
+
+/* Credits */
+.highcharts-credits {
+  display: none;
+}
+
+/* Tooltip */
+.highcharts-tooltip {
+  display: none;
+}
+
+.highcharts-data-label {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.highcharts-data-label text, text.highcharts-data-label {
+  fill: #444;
+}
+
+/* Loading */
+.highcharts-loading {
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 0.5;
+  text-align: center;
+  z-index: 10;
+  transition: opacity 250ms;
+}
+
+.highcharts-loading-hidden {
+  height: 0 !important;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 250ms, height 250ms step-end;
+}
+
+.highcharts-loading-inner {
+  font-weight: bold;
+  position: relative;
+  top: 45%;
+}
+
+/*Our colors */
+.highcharts-outer-pane {
+  stroke: #1175cd;
+}
+.highcharts-color-green{
+  fill: #00e400;
+  stroke: #00e400;
+  stroke-width:3px;
+}
+.highcharts-color-yellow{
+  fill: #ffff00;
+  stroke: #ffff00;
+  stroke-width:3px;
+
+}
+.highcharts-color-orange{
+  fill: #ff7e00;
+  stroke: #ff7e00;
+  stroke-width:3px;
+
+}
+.highcharts-color-red{
+  fill: #ff0000;
+  stroke: #ff0000;
+  stroke-width:3px;
+
+}
+.highcharts-color-purple{
+  fill: #8f3f97;
+  stroke: #8f3f97;
+  stroke-width:3px;
+
+}
+.highcharts-color-maroon{
+  fill: #7e0023;
+  stroke: #7e0023;
+  stroke-width:3px;
+
+}
+
+/* spinner */
+.highcharts-gauge-series .highcharts-data-label-box {
+  stroke: #787878;
+  stroke-width: 0;
+}
+
+.highcharts-gauge-series .highcharts-dial {
+  fill: #787878;
+  stroke-width: 0;
+}
+
+/* Hide exporting module */
+.highcharts-contextbutton {
+  display: none;
+}
