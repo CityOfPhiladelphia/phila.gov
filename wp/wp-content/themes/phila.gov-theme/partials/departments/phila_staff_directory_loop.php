@@ -65,8 +65,11 @@ if ( $staff_member_loop->have_posts() ):
     }
     if ( $staff_leadership ):
       $staff_options = rwmb_meta('phila_leadership_options');
-      $staff_display_order = intval( $staff_options['phila_display_order'] );
+
+      $staff_display_order = isset($staff_options['phila_display_order']) ? intval($staff_options['phila_display_order']) : 0;
+
       $staff_summary = isset($staff_options['phila_summary']) ? wpautop($staff_options['phila_summary']) : '';
+
       $staff_leadership_output .= '<div class="row staff-highlight">';
       // Leadership Thumbnail
       if ( has_post_thumbnail() ):

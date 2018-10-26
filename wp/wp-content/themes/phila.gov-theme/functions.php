@@ -1363,6 +1363,9 @@ function phila_connect_panel($connect_panel) {
     $output_array['email'] =
       isset( $connect_panel['phila_connect_general']['phila_connect_email'] ) ? $connect_panel['phila_connect_general']['phila_connect_email'] :'';
 
+    $output_array['email_exp'] =
+      isset( $connect_panel['phila_connect_general']['phila_connect_email_exp'] ) ? $connect_panel['phila_connect_general']['phila_connect_email_exp'] :'';
+
     $output_array['website'] = array(
 
       'text' => isset( $connect_panel['phila_connect_general']['phila_web_link']['link_text'] ) ? $connect_panel['phila_connect_general']['phila_web_link']['link_text'] :'',
