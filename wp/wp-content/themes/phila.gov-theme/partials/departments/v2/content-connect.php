@@ -54,7 +54,7 @@
           <i class="far fa-envelope fa-2x" aria-hidden="true"></i>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
-        <?php echo $connect_vars['email_exp']; ?><br />
+        <?php echo !empty( $connect_vars['email_exp'] ) ? $connect_vars['email_exp'] . '<br />'  : ''; ?>
         <a href="mailto:<?php echo $connect_vars['email']; ?>" class="u-email"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
       </td>
     </tr>
