@@ -66,7 +66,7 @@
             <a class="card program-card" v-bind:href="program.link">
               <img v-bind:src="program.image" alt=""/>
               <div class="content-block">
-                <h3 v-bind:class="{'external': !program.link.includes('phila.gov')}">{{program.title}}</h3>
+                <h3>{{program.title}}</h3>
                 <p>{{program.short_description}}</p>
               </div>
             </a>
