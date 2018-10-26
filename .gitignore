@@ -6,6 +6,7 @@ wp/wp-config.php
 wp/wp-content/debug.log
 wp/wp-content/uploads/
 wp/wp-content/plugins/meta-box-*
+!wp/wp-content/plugins/meta-box-text-limiter
 wp/wp-content/plugins/mb-*
 wp/wp-content/plugins/wpfront-user-role-editor-personal-pro/
 wp/wp-content/themes/phila.gov-theme/yarn-error.log

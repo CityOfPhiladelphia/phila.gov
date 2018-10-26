@@ -154,8 +154,8 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
           array(
             'id'    => 'phila_service_update_message',
             'class' => 'service-update-message',
-            'desc'  => '95 character maximum.',
             'type'  => 'textarea',
+            'limit' => 95,
             //TODO: Use a wysiwyg instead of textarea if we can give a maxcount
             //  'type'  => 'wysiwyg',
             //  'options' => array(
@@ -181,7 +181,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
             'id'    => 'phila_update_link_text',
             'type'  => 'text',
             'class' => 'update-link-text',
-            'desc'  => '80 character maximum.',
+            'limit' => 80,
             'size'  => '60'
            ),
           array(
