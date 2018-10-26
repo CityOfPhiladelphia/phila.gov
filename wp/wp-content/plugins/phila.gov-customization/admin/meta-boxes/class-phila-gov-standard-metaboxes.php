@@ -898,6 +898,12 @@ public static function phila_meta_var_connect(){
             'desc' => '(###)-###-####',
           ),
           array(
+            'name' => 'Explanation text for email',
+            'id'   => 'phila_connect_email_exp',
+            'type' => 'text',
+            'desc' => 'Ex. For press inquiries contact:',
+          ),
+          array(
             'name' => 'Email',
             'id'   => 'phila_connect_email',
             'type' => 'email',
