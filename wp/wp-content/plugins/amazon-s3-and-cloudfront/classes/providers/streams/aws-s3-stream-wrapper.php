@@ -1,11 +1,29 @@
 <?php
 
-namespace DeliciousBrains\WP_Offload_S3\Providers\Streams;
+namespace DeliciousBrains\WP_Offload_Media\Providers\Streams;
 
-use DeliciousBrains\WP_Offload_S3\Aws3\Aws\S3\StreamWrapper;
-use DeliciousBrains\WP_Offload_S3\Providers\AWS_Provider;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\CacheInterface;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\S3\S3ClientInterface;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\S3\StreamWrapper;
+use DeliciousBrains\WP_Offload_Media\Providers\AWS_Provider;
 
 class AWS_S3_Stream_Wrapper extends StreamWrapper {
+
+	public static $wrapper;
+
+	/**
+	 * Register the 's3://' stream wrapper
+	 *
+	 * @param S3ClientInterface $client   Client to use with the stream wrapper
+	 * @param string            $protocol Protocol to register as.
+	 * @param CacheInterface    $cache    Default cache for the protocol.
+	 */
+	public static function register( S3ClientInterface $client, $protocol = 's3', CacheInterface $cache = null ) {
+		// Keep a shadow copy of the protocol for use with context options.
+		static::$wrapper = $protocol;
+
+		parent::register( $client, $protocol, $cache );
+	}
 
 	/**
 	 * Overrides so we don't check for stat on directories
@@ -67,9 +85,10 @@ class AWS_S3_Stream_Wrapper extends StreamWrapper {
 		$options = stream_context_get_options( $context );
 
 		// Set the ACL as public by default
-		$options['ACL'] = AWS_Provider::DEFAULT_ACL;
+		$options[ static::$wrapper ]['ACL'] = AWS_Provider::DEFAULT_ACL;
 
-		$options = apply_filters( 'wpos3_stream_flush_params', $options );
+		$options = apply_filters( 'wpos3_stream_flush_params', $options ); // Backwards compatibility
+		$options = apply_filters( 'as3cf_stream_flush_params', $options );
 
 		stream_context_set_option( $context, $options );
 
