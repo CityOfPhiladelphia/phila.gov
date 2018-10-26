@@ -529,7 +529,7 @@ class Phila_Gov_Standard_Metaboxes {
   }
 
 
-  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30', $columns = '12' ){
+  public static function phila_metabox_title( $name, $id, $desc = null, $size = '30', $columns = '12'){
     return array(
       'name'  => $name,
       'id'    => $id,
@@ -537,7 +537,7 @@ class Phila_Gov_Standard_Metaboxes {
       'class' => 'metabox-title',
       'desc'  => $desc,
       'size'  => $size,
-      'columns' => $columns
+      'columns' => $columns,
     );
   }
 
@@ -964,8 +964,20 @@ public static function phila_meta_var_connect(){
 
   public static function phila_meta_var_full_width_cta(){
     return array(
-      Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Title', 'cta_full_title', '50 character maximum.' ),
-      Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Description', 'cta_full_description', '140 character maximum.' ),
+      array(
+        'name'  => 'Title',
+        'id'    => 'cta_full_title',
+        'type'  => 'text',
+        'class' => 'metabox-title',
+        'limit' => 50
+      ),
+      array(
+        'name'  => 'Description',
+        'id'    => 'cta_full_description',
+        'type'  => 'textarea',
+        'class' => 'metabox-summary',
+        'limit' => 140
+      ),
       Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
       array(
         'id' => 'cta_is_survey',

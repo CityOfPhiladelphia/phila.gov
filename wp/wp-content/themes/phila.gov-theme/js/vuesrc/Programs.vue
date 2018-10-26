@@ -136,7 +136,7 @@ export default {
 
       axios.get(programsEndpoint + 'archives', {
         params: {
-          'count': 50,
+          'count': 150,
         }
       })
       .then(response => {
