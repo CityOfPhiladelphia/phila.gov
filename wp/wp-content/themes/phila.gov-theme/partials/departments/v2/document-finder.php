@@ -35,14 +35,13 @@ $c = -1;
               <?php
 
               foreach ( $table['phila_files'] as $id ) :
-
                 $file = wp_prepare_attachment_for_js($id);
                 $file_type = $file['subtype'];
 
-                $published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id );
+                $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id );
 
-                if ( empty($published) ){
-                  $published = get_the_date( $d = '', $id );
+                if ( empty($document_published) ){
+                  $document_published = get_the_date( $d = '', $id );
                 }
                 $url = get_post_meta($id, 'amazonS3_info');
                 $full_url = get_site_url() . '/' . $url[0]['key'];
@@ -71,7 +70,7 @@ $c = -1;
                     endif;
                     ?></td>
                   <td class="date">
-                    <?php echo $published ?>
+                    <?php echo $document_published ?>
                   </td>
                   <td class="format">
                     <?php if ( $file_type ): ?>
