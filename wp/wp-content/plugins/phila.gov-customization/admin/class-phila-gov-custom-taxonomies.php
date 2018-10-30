@@ -163,7 +163,12 @@ class Phila_Gov_Custom_Taxonomies {
     'not_found'                  => __( 'Not Found', 'hierarchical_tags' ),
   );
 
-    register_taxonomy( 'post_tag', 'post', array(
+    register_taxonomy( 'post_tag',
+      array(
+        'post',
+        'announcement'
+      ), 
+      array(
       'hierarchical'              => true,
       'query_var'                 => 'tag',
       'labels'                    => $labels,
