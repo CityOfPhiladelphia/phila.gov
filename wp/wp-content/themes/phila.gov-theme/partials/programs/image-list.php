@@ -51,9 +51,9 @@
       <div class="grid-x custom-text-multi">
           <?php foreach( $image_list_vars['extended'] as $content ) : ?>
             <div class="cell image-list medium-<?php echo $content_grid_count ?>">
-              <h3><?php echo $content['secondary_title'] ?></h3>
+              <?php echo isset($content['secondary_title']) ? '<h3>'.  $content['secondary_title'] . '</h3>' : ''; ?>
               <div>
-                <?php echo $content['secondary_list_content'] ?>
+                <?php echo apply_filters('the_content', $content['secondary_list_content']) ?>
               </div>
             </div>
           <?php endforeach; ?>
