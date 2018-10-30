@@ -9,13 +9,12 @@
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
 <?php if(!empty( $ann_tag )) {
-
   $announcement_args  = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
     'order' => 'desc',
     'orderby' => 'post_date',
-    'tag_id'  => $ann_tag,
+    'tag__in'  => $ann_tag,
     'meta_query'  => array(
       'relation'  => 'AND',
       array(
