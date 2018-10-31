@@ -2,6 +2,12 @@ jQuery(document).ready(function(){
   var AQIChart = Highcharts.chart('aqi-gauge', {
     chart: {
       type: 'gauge',
+      events: {
+        load: function () {
+          // Display the chart label
+          $('#aqi-gauge .highcharts-label').delay(350).fadeIn();
+        },
+      },
     },
     title: {
       text: ''
@@ -77,6 +83,7 @@ jQuery(document).ready(function(){
       }]
     },
     series: [{
+      animation: false,
       data: [0],
     }]
   }, function showData(chart){
