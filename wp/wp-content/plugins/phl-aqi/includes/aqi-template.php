@@ -7,7 +7,13 @@
       <div class="aqi-status-description"></div>
     </div>
     <div class="cell medium-12">
-      <div id="aqi-gauge" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+      <!-- Forcing the gauge label to be hidden, then it will be displayed using javascript animation latter on -->
+      <style>
+        .highcharts-label {
+          display: none;
+        }
+      </style>
+      <div id="aqi-gauge" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto;"></div>
     </div>
   </div>
 </div>
