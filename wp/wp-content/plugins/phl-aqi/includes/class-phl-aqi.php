@@ -111,8 +111,18 @@ class PHL_AQI {
     //make request
     $airnow_request = wp_remote_get($request_url);
     
-    if ($airnow_request['response']['code'] !== 200 || !isset($airnow_request['body'])) {
-      $this->errors[] = 'request failed with code ' . $airnow_request['response']['code'];
+    // $airnow_request = new WP_Error('500', 'not sure');
+
+    if (!is_wp_error($airnow_request)) {
+      if ($airnow_request['response']['code'] !== 200 || !isset($airnow_request['body'])) {
+        $this->errors[] = 'request failed with code ' . $airnow_request['response']['code'];
+      }
+    } else {
+      if ($airnow_request->get_error_messages())
+        foreach($airnow_request->get_error_messages() as $err) {
+          echo '<p>' . $err . '</p>';
+        }
+      exit;
     }
 
     $response = json_decode($airnow_request['body']);
