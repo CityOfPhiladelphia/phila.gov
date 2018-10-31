@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       PHL AQI
  * Plugin URI:        GitHub something something
- * Description:       
+ * Description:       Display plugin creates a wp shortcode [phl-aqi] that can be used on any page to display a gauge graph with the current air quality.
  *
  * Version:           0.0.1
  * Author:            City of Philadelphia
