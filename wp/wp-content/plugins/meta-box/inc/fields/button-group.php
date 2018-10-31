@@ -18,22 +18,21 @@ class RWMB_Button_Group_Field extends RWMB_Choice_Field {
 	}
 
 	/**
-	 * Walk options.
+	 * Get field HTML.
 	 *
-	 * @param array $field     Field parameters.
-	 * @param mixed $options   Select options.
-	 * @param mixed $db_fields Database fields to use in the output.
-	 * @param mixed $meta      Meta value.
-	 *
+	 * @param mixed $meta  Meta value.
+	 * @param array $field Field parameters.
 	 * @return string
 	 */
-	public static function walk( $field, $options, $db_fields, $meta ) {
-		$walker = new RWMB_Walker_Input_List( $db_fields, $field, $meta );
+	public static function html( $meta, $field ) {
+		$options = self::transform_options( $field['options'] );
+		$walker  = new RWMB_Walker_Input_List( $field, $meta );
 
-		$output = sprintf( '<ul class="rwmb-button-input-list %s">',
-			$field['inline'] ? 'inline' : ''
+		$output  = sprintf(
+			'<ul class="rwmb-button-input-list %s">',
+			$field['inline'] ? ' rwmb-inline' : ''
 		);
-		$output .= $walker->walk( $options, - 1 );
+		$output .= $walker->walk( $options, -1 );
 		$output .= '</ul>';
 
 		return $output;
@@ -48,9 +47,12 @@ class RWMB_Button_Group_Field extends RWMB_Choice_Field {
 	 */
 	public static function normalize( $field ) {
 		$field = parent::normalize( $field );
-		$field = wp_parse_args( $field, array(
-			'inline' => null,
-		) );
+		$field = wp_parse_args(
+			$field,
+			array(
+				'inline' => null,
+			)
+		);
 
 		$field = $field['multiple'] ? RWMB_Multiple_Values_Field::normalize( $field ) : $field;
 		$field = RWMB_Input_Field::normalize( $field );
