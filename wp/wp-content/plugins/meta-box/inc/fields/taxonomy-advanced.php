@@ -17,9 +17,12 @@ class RWMB_Taxonomy_Advanced_Field extends RWMB_Taxonomy_Field {
 	 * @return array
 	 */
 	public static function normalize( $field ) {
-		$field = wp_parse_args( $field, array(
-			'clone' => false,
-		) );
+		$field = wp_parse_args(
+			$field,
+			array(
+				'clone' => false,
+			)
+		);
 
 		$clone          = $field['clone'];
 		$field          = parent::normalize( $field );
@@ -52,6 +55,9 @@ class RWMB_Taxonomy_Advanced_Field extends RWMB_Taxonomy_Field {
 	 * @param array $field   The field parameters.
 	 */
 	public static function save( $new, $old, $post_id, $field ) {
+		if ( empty( $field['id'] ) || ! $field['save_field'] ) {
+			return;
+		}
 		$storage = $field['storage'];
 
 		if ( $new ) {
@@ -72,7 +78,7 @@ class RWMB_Taxonomy_Advanced_Field extends RWMB_Taxonomy_Field {
 	 */
 	public static function raw_meta( $object_id, $field, $args = array() ) {
 		$args['single'] = true;
-		$meta = RWMB_Field::raw_meta( $object_id, $field, $args );
+		$meta           = RWMB_Field::raw_meta( $object_id, $field, $args );
 
 		if ( empty( $meta ) ) {
 			return $field['multiple'] ? array() : '';
@@ -121,10 +127,13 @@ class RWMB_Taxonomy_Advanced_Field extends RWMB_Taxonomy_Field {
 		if ( empty( $term_ids ) ) {
 			return array();
 		}
-		$args = wp_parse_args( array(
-			'include'    => $term_ids,
-			'hide_empty' => false,
-		), $args );
+		$args = wp_parse_args(
+			array(
+				'include'    => $term_ids,
+				'hide_empty' => false,
+			),
+			$args
+		);
 
 		$info = get_terms( $field['taxonomy'], $args );
 		$info = is_array( $info ) ? $info : array();
