@@ -6,8 +6,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:       PHL AQI
- * Plugin URI:        GitHub something something
- * Description:       
+ * Plugin URI:        https://github.com/CityOfPhiladelphia/phila.gov
+ * Description:       Displays the current air quality conditions in the City of Philadelphia.
  *
  * Version:           0.0.1
  * Author:            City of Philadelphia
