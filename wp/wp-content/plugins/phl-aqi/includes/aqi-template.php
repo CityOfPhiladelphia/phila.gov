@@ -28,13 +28,13 @@
       $color_slug = sanitize_title($item['color']['name']);
       $label_slug = sanitize_title($item['label']);
       ?>
-      <div class="grid-x grid-padding-x">
+      <div class="grid-x grid-padding-x align-middle">
         <div class="cell medium-4">
           <div class="aqi-info-color aqi-<?php echo $color_slug; ?>">
             <?php echo $item['color']['name'];?>
           </div>
         </div>
-        <div class="cell medium-18 v-align-center">
+        <div class="cell medium-18">
           <div class="aqi-description">
             <h4><?php echo $item['label'];?> &mdash; <?php echo $item['range'];?></h4>
             <p class="aqi-status-<?php echo $label_slug; ?>"><?php echo $item['desc'];?></p>
