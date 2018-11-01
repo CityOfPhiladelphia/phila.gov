@@ -10,7 +10,12 @@
       <!-- Forcing the gauge label to be hidden, then it will be displayed using javascript animation latter on -->
       <style>
         .highcharts-label {
-          display: none;
+          opacity: 0;
+          transition: opacity 0.25s linear;
+          -webkit-transition: opacity 0.25s linear 0.5s;
+          -moz-transition: opacity 0.25s linear 0.5s;
+          -ms-transition: opacity 0.25s linear 0.5s;
+          -o-transition: opacity 0.25s linear 0.5s;
         }
       </style>
       <div id="aqi-gauge" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto;"></div>
