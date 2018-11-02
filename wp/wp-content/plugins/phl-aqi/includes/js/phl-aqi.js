@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
       events: {
         load: function () {
           // Display the chart label
-          $('#aqi-gauge .highcharts-label').delay(350).fadeIn();
+          $('#aqi-gauge .highcharts-label').css('opacity', 1);
         },
       },
     },
