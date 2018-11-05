@@ -927,6 +927,7 @@ $meta_boxes[] = array(
           application/vnd.ms-powerpointtd, application/vnd.openxmlformats-officedocument.presentationml.presentation,
           application/vnd.ms-excel,
           application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+          text/csv,
           text/plain,
           application/zip'
         ),
