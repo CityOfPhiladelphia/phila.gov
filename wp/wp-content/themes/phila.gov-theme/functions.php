@@ -594,6 +594,9 @@ function phila_format_document_type($document_type){
     case 'vnd.openxmlformats-officedocument.spreadsheetml.sheet':
       echo 'xlsx';
       break;
+    case 'csv':
+      echo 'csv';
+      break;
     case 'plain':
       echo  'txt';
       break;
