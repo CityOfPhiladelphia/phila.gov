@@ -169,7 +169,7 @@ if ( !empty( $row_one_col_two_module ) ){
           <div>
             <span class="fa-stack fa-4x center" aria-hidden="true">
               <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fa <?php echo $row_one_col_two_action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
+              <i class="<?php echo $row_one_col_two_action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
             </span>
           </div>
         <?php else: ?>
