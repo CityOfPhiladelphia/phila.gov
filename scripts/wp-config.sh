@@ -70,6 +70,9 @@ define('DISABLE_WP_CRON', true);
 /** We manually update WP, so disable auto updates */
 define('WP_AUTO_UPDATE_CORE', false);
 
+/** Airnow AQI KEY */
+define('AQI_KEY', '$AQI_KEY');
+
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
