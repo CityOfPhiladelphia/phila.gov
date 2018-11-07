@@ -2,6 +2,7 @@
 
 class PHL_AQI {
 
+  public $errors = [];
   public $airnow_quality = '';
   public $airnow = [
     'url' => 'http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json',
@@ -9,7 +10,7 @@ class PHL_AQI {
       'zipCode' => '19107',
       'date' => '',
       'distance' => '25',
-      'API_KEY' => 'F9785062-1CD5-4425-A1C0-E82C25AB741F',
+      'API_KEY' => '',
     ]
   ];
 
@@ -66,9 +67,25 @@ class PHL_AQI {
 
   function __construct() {
     
+    $this->set_aqi_key();
     add_shortcode( 'phl-aqi', array($this, 'add_aqi_shortcode') );
     add_action('wp_enqueue_scripts', array($this, 'register_scripts'));
+    $this->log_errors();
 
+  }
+
+  function set_aqi_key() {
+
+    $this->airnow['params']['API_KEY'] = AQI_KEY;
+
+  }
+
+  function log_errors() {
+    if (!empty($this->errors)) {
+      foreach($this->errors as $err) {
+        error_log($err, 0);
+      }
+    }
   }
 
   function register_scripts() {
@@ -83,7 +100,8 @@ class PHL_AQI {
     $this->get_aqi();
 
     $localize = array(
-      'aqi' => $this->airnow_quality
+      'aqi' => $this->airnow_quality,
+      'errors' => $this->errors,
     );
 
     wp_localize_script( 'phl-aqi-init', 'local', $localize );
@@ -94,43 +112,63 @@ class PHL_AQI {
 
   function get_aqi() {
 
-    if (!$this->airnow && !isset($this->airnow['url']) && !isset($this->airnow['params']) && !is_array($this->airnow['params'])) {
-      $this->errors[] = "Can't make request. Check airnow url and parameters";
-      return;
+    //Makes sure API_KEY is set
+    if ($this->airnow['params']['API_KEY'] === '') {
+      $this->errors[] = 'No API Key available';
     }
 
+    //Set date paramater to today
     $this->airnow['params']['date'] = date('Y-m-d');
 
+    //make request url
     $request_url = $this->airnow['url'];
 
-    //add params
-    foreach($this->airnow['params'] as $param_key => $param_value) {
+    foreach ($this->airnow['params'] as $param_key => $param_value) {
+      if (empty($param_value)) {
+        $this->errors[] = 'Airnow param ' . $param_key . ' is empty';
+        break;
+      }
       $request_url .= '&' . $param_key . '=' . $param_value;
     }
-
-    //make request
-    $airnow_request = wp_remote_get($request_url);
     
-    // $airnow_request = new WP_Error('500', 'not sure');
+    //if no errors start request
+    if (empty($this->errors)) {
 
-    if (!is_wp_error($airnow_request)) {
-      if ($airnow_request['response']['code'] !== 200 || !isset($airnow_request['body'])) {
-        $this->errors[] = 'request failed with code ' . $airnow_request['response']['code'];
-      }
-    } else {
-      if ($airnow_request->get_error_messages())
-        foreach($airnow_request->get_error_messages() as $err) {
-          echo '<p>' . $err . '</p>';
+      //make request
+      $airnow_request = wp_remote_get($request_url);
+      
+      //Catchs curl timeout errors
+      if (is_wp_error($airnow_request)) {
+        if ($airnow_request->get_error_messages()) {
+          foreach($airnow_request->get_error_messages() as $err) {
+            $this->errors[] = 'WP_Error: ' . $err;
+          }
         }
-      exit;
+      }
+
+      
+      if ($airnow_request['response']['code'] !== 200 || !isset($airnow_request['body'])) {
+        $this->errors[] = 'Airnow request failed with code ' . $airnow_request['response']['code'];
+      }
+
+      if (empty($this->errors)) {
+        
+        try {
+          $response = json_decode($airnow_request['body']);
+        } catch (Exception $e) {
+          $this->errors[] = $airnow_request['body'];
+          $this->errors[] = $e->getMessage();
+        }
+        
+
+          //Format date
+        $response[0]->parsedDate = date('M. j, Y g a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
+
+        $this->airnow_quality = $response[0];
+
+      }
+        
     }
-
-    $response = json_decode($airnow_request['body']);
-
-    //Format date
-    $response[0]->parsedDate = date('M. j, Y g a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
-
-    $this->airnow_quality = $response[0];
 
   }
 

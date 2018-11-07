@@ -81,7 +81,8 @@ jQuery(document).ready(function(){
     }]
   }, function showData(chart){
     
-    if (!local.aqi) {
+    if (local.errors.length > 0 || !local.aqi) {
+      console.table(local.errors);
       $("<p>We're sorry, this service is currently unavailable.</p>").appendTo(".aqi-status-description");
     }
     var point = chart.series[0].points[0];
