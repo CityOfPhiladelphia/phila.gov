@@ -162,7 +162,7 @@ class PHL_AQI {
         
 
           //Format date
-        $response[0]->parsedDate = date('M. j, Y g a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
+        $response[0]->parsedDate = date('M. j, Y g:i a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
 
         $this->airnow_quality = $response[0];
 
