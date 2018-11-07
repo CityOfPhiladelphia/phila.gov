@@ -798,46 +798,6 @@ public static function phila_meta_var_connect(){
        <span><em>Note: If all fields are left empty the <strong>Connect</strong> module will still appear on the page, however it will be empty.</em></span>',
       ),
       array(
-        'id' => 'phila_connect_social',
-        'type' => 'group',
-        'fields' => array(
-          array(
-            'type' => 'heading',
-            'name' => 'Social',
-          ),
-          array(
-           'name' => 'Facebook URL',
-           'id'   => 'phila_connect_social_facebook',
-           'type' => 'url',
-           'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
-          ),
-          array(
-           'name' => 'Twitter URL',
-           'id'   => 'phila_connect_social_twitter',
-           'type' => 'url',
-           'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
-          ),
-          array(
-           'name' => 'Instagram URL',
-           'id'   => 'phila_connect_social_instagram',
-           'type' => 'url',
-           'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
-          ),
-          array(
-           'name' => 'YouTube URL',
-           'id'   => 'phila_connect_social_youtube',
-           'type' => 'url',
-           'desc' => 'Example: https://www.youtube.com/user/philly311center'
-          ),
-          array(
-           'name' => 'Flickr URL',
-           'id'   => 'phila_connect_social_flickr',
-           'type' => 'url',
-           'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
-          ),
-        ),
-      ),
-      array(
         'id' => 'phila_connect_address',
         'type' => 'group',
         // List of sub-fields
@@ -883,7 +843,19 @@ public static function phila_meta_var_connect(){
         'fields' => array(
           array(
             'type' => 'heading',
-            'name' => 'Contact',
+            'name' => 'Email, phone, etc.',
+          ),
+          array(
+            'name' => 'Email',
+            'id'   => 'phila_connect_email',
+            'type' => 'email',
+            'desc' => 'example@phila.gov',
+          ),
+          array(
+            'name' => 'Explanation text for email',
+            'id'   => 'phila_connect_email_exp',
+            'type' => 'text',
+            'desc' => 'Ex. For press inquiries contact:',
           ),
           array(
              'name' => 'Phone',
@@ -897,20 +869,47 @@ public static function phila_meta_var_connect(){
             'type' => 'phone',
             'desc' => '(###)-###-####',
           ),
-          array(
-            'name' => 'Explanation text for email',
-            'id'   => 'phila_connect_email_exp',
-            'type' => 'text',
-            'desc' => 'Ex. For press inquiries contact:',
-          ),
-          array(
-            'name' => 'Email',
-            'id'   => 'phila_connect_email',
-            'type' => 'email',
-            'desc' => 'example@phila.gov',
-          ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link', false),
-
+          array(
+            'id' => 'phila_connect_social',
+            'type' => 'group',
+            'fields' => array(
+              array(
+                'type' => 'heading',
+                'name' => 'Social',
+              ),
+              array(
+               'name' => 'Facebook URL',
+               'id'   => 'phila_connect_social_facebook',
+               'type' => 'url',
+               'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+              ),
+              array(
+               'name' => 'Twitter URL',
+               'id'   => 'phila_connect_social_twitter',
+               'type' => 'url',
+               'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+              ),
+              array(
+               'name' => 'Instagram URL',
+               'id'   => 'phila_connect_social_instagram',
+               'type' => 'url',
+               'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+              ),
+              array(
+               'name' => 'YouTube URL',
+               'id'   => 'phila_connect_social_youtube',
+               'type' => 'url',
+               'desc' => 'Example: https://www.youtube.com/user/philly311center'
+              ),
+              array(
+               'name' => 'Flickr URL',
+               'id'   => 'phila_connect_social_flickr',
+               'type' => 'url',
+               'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
+              ),
+            ),
+          ),
           array(
             'name' => 'See all contact information',
             'id'  => 'connect_see_all',
