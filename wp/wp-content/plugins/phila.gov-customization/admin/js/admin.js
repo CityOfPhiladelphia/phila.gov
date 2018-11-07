@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
               maxlength: 72 + 14
             });
             $( "#title" ).attr('disabled', true);
-            $( "<div style='color:#838383; padding-left:5px;'>This field isn't avilable to edit. To change the title, save as a new item.</div> " ).insertAfter('#title');
+            $( "<div style='color:#838383; padding-left:5px;'>This field isn't available to edit. To change the title, save as a new item.</div> " ).insertAfter('#title');
 
         }else{
         $('#title').rules('add', {
