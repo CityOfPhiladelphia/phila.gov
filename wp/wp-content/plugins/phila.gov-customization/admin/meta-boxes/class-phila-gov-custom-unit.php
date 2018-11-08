@@ -16,7 +16,7 @@ if ( class_exists( 'RWMB_Field' ) ) {
     }
 
       /**
-       * gets the post status.
+       * Gets the post status.
        * TODO: Move into separate class
       */
       public static function is_edit_page( $new_edit = null ){
