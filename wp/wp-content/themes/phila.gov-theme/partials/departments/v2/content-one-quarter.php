@@ -63,6 +63,7 @@
 
           <?php if ( (!empty($wysiwyg_content) || (!empty($is_address) ) ) ) : ?>
             <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
+
               <?php
               $address_1 = isset( $content['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $content['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
 
@@ -73,18 +74,44 @@
               $state = isset( $content['phila_std_address']['address_group']['phila_std_address_state'] ) ? $content['phila_std_address']['address_group']['phila_std_address_state'] : '';
 
               $zip = isset( $content['phila_std_address']['address_group']['phila_std_address_zip'] ) ? $content['phila_std_address']['address_group']['phila_std_address_zip'] : '';
-              ?>
 
-              <?php if ( $is_address == 1 ) : ?>
+              $phone = array(
+                'area' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['area'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['area'] : '',
+
+                'co-code' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-co-code'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-co-code'] : '',
+
+               'subscriber-number' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-subscriber-number'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-subscriber-number']  : '',
+              );
+              ?>
+              <?php if ( !empty($address_1) || !empty($phone)) : ?>
                 <div class="vcard">
+                  <?php if ( !empty($address_1) ) : ?>
                   <span class="street-address"><?php echo $address_1; ?></span><br>
                   <?php if ( !empty($address_2) ) : ?>
                     <span class="street-address"><?php echo $address_2; ?></span><br>
                   <?php endif; ?>
                   <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
                   <span class="postal-code"><?php echo $zip; ?></span>
-                </div>
+                <?php endif; ?>
+                <?php endif; ?>
+                <?php if ( !empty($phone) ) : ?>
+                  <div class="tel">
+                   <abbr class="type" title="voice"></abbr>
+                     <div class="accessible">
+                       <span class="type">Work</span> Phone:
+                     </div>
+                      <?php $area = ( $phone['area'] != '' ) ? '(' . $phone['area'] . ') ' : '';
+
+                      $co_code = ( $phone['co-code'] != '' ) ? $phone['co-code'] : '';
+
+                      $subscriber_number = ( $phone['subscriber-number'] != '' ) ? '-' . $phone['subscriber-number'] : '';
+
+                      $full_phone = $area . $co_code . $subscriber_number; ?>
+
+                      <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
+                     </div>
               <?php endif;?>
+              </div>
             <?php endif;?>
             <?php if ( !empty($content['phila_stepped_select']) ) :?>
 
