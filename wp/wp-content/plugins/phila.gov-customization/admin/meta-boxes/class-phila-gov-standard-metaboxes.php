@@ -76,6 +76,11 @@ class Phila_Gov_Standard_Metaboxes {
           'id'   => 'phila_std_address_zip',
           'type' => 'text',
         ),
+        array(
+          'name' => 'Phone number',
+          'id'   => 'phila_std_address_phone',
+          'type' => 'phone',
+        ),
       ),
     );
   }
@@ -106,7 +111,7 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'name'  => 'Include an address?',
+          'name'  => 'Include address and phone number?',
           'id'  => 'phila_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
@@ -297,7 +302,7 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'name'  => 'Include an address?',
+          'name'  => 'Include address and phone number?',
           'id'  => 'phila_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
