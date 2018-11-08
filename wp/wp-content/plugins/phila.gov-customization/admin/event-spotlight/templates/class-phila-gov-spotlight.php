@@ -182,7 +182,6 @@ class Phila_Gov_Event_Spotlight_Template {
               array(
                 'id'  => 'city',
                 'type'  => 'text',
-                'std' => 'Philadelphia',
                 'placeholder' => 'City',
                 'columns' => 4,
               ),
@@ -191,14 +190,12 @@ class Phila_Gov_Event_Spotlight_Template {
                 'type'  => 'text',
                 'placeholder' => 'State',
                 'columns' => 2,
-                'std' => 'PA'
               ),
               array(
                 'id'  => 'zip',
                 'type'  => 'text',
                 'columns' => 2,
                 'placeholder' => 'Zip',
-                'std' => '19107'
               ),
           )
         ),
@@ -418,7 +415,6 @@ class Phila_Gov_Event_Spotlight_Template {
                       array(
                         'id'  => 'city',
                         'type'  => 'text',
-                        'std' => 'Philadelphia',
                         'placeholder' => 'City',
                         'columns' => 4,
                       ),
@@ -427,14 +423,12 @@ class Phila_Gov_Event_Spotlight_Template {
                         'type'  => 'text',
                         'placeholder' => 'State',
                         'columns' => 2,
-                        'std' => 'PA'
                       ),
                       array(
                         'id'  => 'zip',
                         'type'  => 'text',
                         'columns' => 2,
                         'placeholder' => 'Zip',
-                        'std' => '19107'
                       ),
                     array(
                       'name'  => 'Start Day and Time',
