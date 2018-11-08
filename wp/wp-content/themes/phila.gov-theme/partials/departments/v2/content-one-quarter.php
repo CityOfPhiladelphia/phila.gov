@@ -63,6 +63,7 @@
 
           <?php if ( (!empty($wysiwyg_content) || (!empty($is_address) ) ) ) : ?>
             <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
+
               <?php
               $address_1 = isset( $content['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $content['phila_std_address']['address_group']['phila_std_address_st_1'] : '';
 
@@ -82,8 +83,7 @@
                'subscriber-number' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-subscriber-number'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-subscriber-number']  : '',
               );
               ?>
-
-              <?php if ( $is_address == 1 ) : ?>
+              <?php if ( !empty($address_1) || !empty($phone)) : ?>
                 <div class="vcard">
                   <span class="street-address"><?php echo $address_1; ?></span><br>
                   <?php if ( !empty($address_2) ) : ?>
@@ -91,9 +91,10 @@
                   <?php endif; ?>
                   <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
                   <span class="postal-code"><?php echo $zip; ?></span>
+                <?php endif; ?>
+                <?php if ( !empty($phone) ) : ?>
                   <div class="tel">
                    <abbr class="type" title="voice"></abbr>
-                   <?php if ( !empty($phone) ) : ?>
                      <div class="accessible">
                        <span class="type">Work</span> Phone: </div>
                      </div>
@@ -106,9 +107,7 @@
                       $full_phone = $area . $co_code . $subscriber_number; ?>
 
                       <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
-
                      </div>
-                   <?php endif; ?>
                 </div>
               <?php endif;?>
             <?php endif;?>
