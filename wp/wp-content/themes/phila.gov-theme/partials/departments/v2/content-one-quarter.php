@@ -73,6 +73,14 @@
               $state = isset( $content['phila_std_address']['address_group']['phila_std_address_state'] ) ? $content['phila_std_address']['address_group']['phila_std_address_state'] : '';
 
               $zip = isset( $content['phila_std_address']['address_group']['phila_std_address_zip'] ) ? $content['phila_std_address']['address_group']['phila_std_address_zip'] : '';
+
+              $phone = array(
+                'area' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['area'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['area'] : '',
+
+                'co-code' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-co-code'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-co-code'] : '',
+
+               'subscriber-number' => isset( $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-subscriber-number'] ) ? $content['phila_std_address']['address_group']['phila_std_address_phone']['phone-subscriber-number']  : '',
+              );
               ?>
 
               <?php if ( $is_address == 1 ) : ?>
@@ -83,6 +91,24 @@
                   <?php endif; ?>
                   <span class="locality"><?php echo $city; ?></span>, <span class="region" title="Pennsylvania"><?php echo $state; ?></span>
                   <span class="postal-code"><?php echo $zip; ?></span>
+                  <div class="tel">
+                   <abbr class="type" title="voice"></abbr>
+                   <?php if ( !empty($phone) ) : ?>
+                     <div class="accessible">
+                       <span class="type">Work</span> Phone: </div>
+                     </div>
+                      <?php $area = ( $phone['area'] != '' ) ? '(' . $phone['area'] . ') ' : '';
+
+                      $co_code = ( $phone['co-code'] != '' ) ? $phone['co-code'] : '';
+
+                      $subscriber_number = ( $phone['subscriber-number'] != '' ) ? '-' . $phone['subscriber-number'] : '';
+
+                      $full_phone = $area . $co_code . $subscriber_number; ?>
+
+                      <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
+
+                     </div>
+                   <?php endif; ?>
                 </div>
               <?php endif;?>
             <?php endif;?>
