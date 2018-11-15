@@ -367,7 +367,6 @@ function phila_register_meta_boxes( $meta_boxes ){
       'when'  => array(
         array('phila_template_select', '=', 'homepage_v2' ),
       ),
-      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -501,7 +500,6 @@ function phila_register_meta_boxes( $meta_boxes ){
           'when' => array(
             array( 'phila_staff_directory_selected', '=', 1 ),
           ),
-          'relation' => 'or',
         ),
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
@@ -567,7 +565,6 @@ function phila_register_meta_boxes( $meta_boxes ){
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
-      'relation' => 'or',
     ),
     'fields' => array(
       array(
@@ -616,7 +613,6 @@ function phila_register_meta_boxes( $meta_boxes ){
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
-      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -667,7 +663,6 @@ function phila_register_meta_boxes( $meta_boxes ){
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
       ),
-      'relation' => 'or',
     ),
 
     'fields' => array(
