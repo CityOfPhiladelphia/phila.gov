@@ -42,7 +42,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
       ),
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
-        'relation' => 'OR',
+        'relation' => 'or',
        ),
        'fields' => array(
          array(

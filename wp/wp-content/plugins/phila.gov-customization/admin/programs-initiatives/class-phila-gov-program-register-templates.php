@@ -14,9 +14,6 @@ class Phila_Gov_Register_Program_Templates {
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_programs'), 10, 1 );
 
-    add_filter( 'rwmb_outside_conditions', array( $this, 'hide_prog_wysiwyg' ), 10, 1 );
-
-
   }
 
   function register_template_selection_metabox_programs( $meta_boxes ){
@@ -198,18 +195,6 @@ class Phila_Gov_Register_Program_Templates {
     );
 
     return $meta_boxes;
-  }
-
-  function hide_prog_wysiwyg( $conditions ) {
-    $conditions['#postdivrich'] = array(
-      'hidden' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'prog_off_site' ),
-        ),
-      ),
-    );
-
-    return $conditions;
   }
 
 }
