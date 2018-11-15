@@ -1,6 +1,6 @@
 /* for all users */
-
-.postbox{
+/* Recent metabox update is hidding submit div for some pages */
+#submitdiv{
   display: block !important;
 }
 .full-width,
