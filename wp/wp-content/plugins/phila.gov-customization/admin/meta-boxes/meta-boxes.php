@@ -258,7 +258,6 @@ function phila_register_meta_boxes( $meta_boxes ){
       'when' => array(
         array(  'phila_template_select','=', 'resource_list_v2'),
       ),
-      'relation' => 'or'
     ),
 
     'fields' => array(
