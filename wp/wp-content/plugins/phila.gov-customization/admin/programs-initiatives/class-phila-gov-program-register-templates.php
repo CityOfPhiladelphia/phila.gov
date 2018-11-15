@@ -200,16 +200,4 @@ class Phila_Gov_Register_Program_Templates {
     return $meta_boxes;
   }
 
-  function hide_prog_wysiwyg( $conditions ) {
-    $conditions['#postdivrich'] = array(
-      'hidden' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'prog_off_site' ),
-        ),
-      ),
-    );
-
-    return $conditions;
-  }
-
 }
