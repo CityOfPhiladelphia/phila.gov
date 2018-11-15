@@ -1,5 +1,8 @@
 /* for all users */
 
+.postbox{
+  display: block !important;
+}
 .full-width,
 input[type="url"],
 .full-width > .rwmb-input > .rwmb-text
