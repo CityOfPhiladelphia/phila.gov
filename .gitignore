@@ -23,3 +23,6 @@ wp/wp-contnet/themes/phila.gov-theme/js/main.js
 wp/wp-content/themes/phila.gov-theme/js/phila-scripts.js
 wp/wp-content/themes/phila.gov-theme/js/phila-scripts.min.js
 wp/wp-content/themes/phila.gov-theme/js/phila-scripts.min.js.map
+
+# OSX file
+.DS_Store
