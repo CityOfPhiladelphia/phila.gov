@@ -1,5 +1,6 @@
 /*can't create create new categories*/
 #category-adder,
+#categorydiv,
 /* can't edit menus */
 a[href^="nav-menus.php"],
 a[href$="nav-menus.php?action=locations"],
