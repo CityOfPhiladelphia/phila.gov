@@ -1,6 +1,7 @@
 /* for all users */
 /* Recent metabox update is hidding submit div for some pages */
-#submitdiv{
+#submitdiv,
+#categorydiv{
   display: block !important;
 }
 .full-width,
