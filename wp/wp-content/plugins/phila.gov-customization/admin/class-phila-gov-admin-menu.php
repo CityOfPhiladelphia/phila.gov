@@ -28,6 +28,9 @@ class Phila_Gov_Admin_Menu {
 
     add_action('admin_menu', array( $this, 'phila_hide_create_in_menu' ) );
 
+    add_action( 'pre_get_posts', array( $this, 'phila_filter_menu_search_results'), 10, 2 );
+
+
  }
 
   function admin_menu_order( $menu_ord ) {
@@ -105,5 +108,16 @@ class Phila_Gov_Admin_Menu {
     if ( !array_key_exists('secondary_program_creator', $user->caps) ) {
       unset($submenu['edit.php?post_type=programs'][10]);
     }
+  }
+
+  function phila_filter_menu_search_results( $q ) {
+    if( isset($_POST['action'] ) && $_POST['action']=="menu-quick-search" && isset( $_POST['menu-settings-column-nonce'] ) ){
+
+      if( is_a($q->query_vars['walker'], 'Walker_Nav_Menu_Checklist') ){
+        $q->query_vars['posts_per_page'] =  50;
+        $q->query_vars['post_status'] = 'any';
+      }
+    }
+    return $q;
   }
 }
