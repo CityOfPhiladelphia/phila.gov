@@ -56,7 +56,10 @@ get_header();
       <!-- /Program and initiatives -->
 
       <!-- Additional Content-->
-      <?php get_template_part( 'partials/content', 'additional' ); ?>
+      <div class="mtxl">
+        <?php get_template_part( 'partials/content', 'additional' ); ?>
+      </div>
+
       <!-- /Additional Content-->
 
     <?php endwhile; ?>

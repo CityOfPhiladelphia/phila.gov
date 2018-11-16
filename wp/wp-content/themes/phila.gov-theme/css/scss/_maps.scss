@@ -1,0 +1,29 @@
+ul.map-legend{
+  list-style: none;
+  margin: 0;
+  padding-left: 3rem;
+  text-indent: -1.5rem;
+}
+.map-legend li{
+  margin-bottom: 1rem;
+}
+.map-legend li::before{
+  font-family: 'Font Awesome 5 Pro';
+  content: '\f111';
+  display: inline-block;
+  font-weight: 800;
+  width: 1.5rem;
+}
+.map-legend .map-purple::before{
+  color: rgb(148, 0, 198);
+}
+.map-legend .map-red::before{
+  color: rgb(255, 0, 0);
+}
+.map-legend .map-orange::before{
+  color: rgb(255, 170, 0);
+}
+
+.embed-container + .map-legend{
+  margin-top:2rem;
+}
