@@ -75,6 +75,10 @@ class PHL_AQI {
   }
 
   function set_aqi_key() {
+    if (!defined('AQI_KEY')) {
+      $this->errors[] = 'AQI_KEY is not defined.';
+      return;
+    }
 
     $this->airnow['params']['API_KEY'] = AQI_KEY;
 
@@ -101,7 +105,6 @@ class PHL_AQI {
 
     $localize = array(
       'aqi' => $this->airnow_quality,
-      'errors' => $this->errors,
     );
 
     wp_localize_script( 'phl-aqi-init', 'local', $localize );
@@ -112,11 +115,10 @@ class PHL_AQI {
 
   function get_aqi() {
 
-    //Makes sure API_KEY is set
-    if ($this->airnow['params']['API_KEY'] === '') {
-      $this->errors[] = 'No API Key available';
+    if (!empty($this->errors)) {
+      return;
     }
-
+    
     //Set date paramater to today
     $this->airnow['params']['date'] = date('Y-m-d');
 
@@ -126,49 +128,35 @@ class PHL_AQI {
     foreach ($this->airnow['params'] as $param_key => $param_value) {
       if (empty($param_value)) {
         $this->errors[] = 'Airnow param ' . $param_key . ' is empty';
-        break;
+        return;
       }
       $request_url .= '&' . $param_key . '=' . $param_value;
     }
     
-    //if no errors start request
-    if (empty($this->errors)) {
-
-      //make request
-      $airnow_request = wp_remote_get($request_url);
-      
-      //Catchs curl timeout errors
-      if (is_wp_error($airnow_request)) {
-        if ($airnow_request->get_error_messages()) {
-          foreach($airnow_request->get_error_messages() as $err) {
-            $this->errors[] = 'WP_Error: ' . $err;
-          }
+    //make request
+    $airnow_request = wp_remote_get($request_url);
+    
+    //Catchs curl timeout errors
+    if (is_wp_error($airnow_request)) {
+      if ($airnow_request->get_error_messages()) {
+        foreach($airnow_request->get_error_messages() as $err) {
+          $this->errors[] = 'WP_Error: ' . $err;
+          return;
         }
       }
-
-      
-      if ($airnow_request['response']['code'] !== 200 || !isset($airnow_request['body'])) {
-        $this->errors[] = 'Airnow request failed with code ' . $airnow_request['response']['code'];
-      }
-
-      if (empty($this->errors)) {
-        
-        try {
-          $response = json_decode($airnow_request['body']);
-        } catch (Exception $e) {
-          $this->errors[] = $airnow_request['body'];
-          $this->errors[] = $e->getMessage();
-        }
-        
-
-          //Format date
-        $response[0]->parsedDate = date('M. j, Y g:i a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
-
-        $this->airnow_quality = $response[0];
-
-      }
-        
     }
+
+    if ($airnow_request['response']['code'] !== 200 || !isset($airnow_request['body'])) {
+      $this->errors[] = 'Airnow request failed with code ' . $airnow_request['response']['code'];
+      return;
+    }
+
+    $response = json_decode($airnow_request['body']);
+      
+    //Format date
+    $response[0]->parsedDate = date('M. j, Y g:i a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
+
+    $this->airnow_quality = $response[0];
 
   }
 
