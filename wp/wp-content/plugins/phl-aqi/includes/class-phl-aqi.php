@@ -62,11 +62,11 @@ class PHL_AQI {
       'color' => [
         'name' => 'Maroon',
       ]
-    ] 
+    ]
   ];
 
   function __construct() {
-    
+
     $this->set_aqi_key();
     add_shortcode( 'phl-aqi', array($this, 'add_aqi_shortcode') );
     add_action('wp_enqueue_scripts', array($this, 'register_scripts'));
@@ -100,7 +100,7 @@ class PHL_AQI {
   }
 
   function add_aqi_shortcode() {
-    
+
     $this->get_aqi();
 
     $localize = array(
@@ -108,7 +108,7 @@ class PHL_AQI {
     );
 
     wp_localize_script( 'phl-aqi-init', 'local', $localize );
-    
+
     return $this->aqi_template();
 
   }
@@ -118,7 +118,7 @@ class PHL_AQI {
     if (!empty($this->errors)) {
       return;
     }
-    
+
     //Set date paramater to today
     $this->airnow['params']['date'] = date('Y-m-d');
 
@@ -132,10 +132,10 @@ class PHL_AQI {
       }
       $request_url .= '&' . $param_key . '=' . $param_value;
     }
-    
+
     //make request
     $airnow_request = wp_remote_get($request_url);
-    
+
     //Catchs curl timeout errors
     if (is_wp_error($airnow_request)) {
       if ($airnow_request->get_error_messages()) {
@@ -152,11 +152,11 @@ class PHL_AQI {
     }
 
     $response = json_decode($airnow_request['body']);
-      
-    //Format date
-    $response[0]->parsedDate = date('M. j, Y g:i a', strtotime($response[0]->DateObserved . ' ' . $response[0]->HourObserved . ' hours'));
 
-    $this->airnow_quality = $response[0];
+    //Format date
+    $response[1]->parsedDate = date('M. j, Y g:i a', strtotime($response[1]->DateObserved . ' ' . $response[1]->HourObserved . ' hours'));
+
+    $this->airnow_quality = $response[1];
 
   }
 
@@ -168,14 +168,8 @@ class PHL_AQI {
     ob_end_clean();
     return $template;
   }
-  
 
-}
 
-function pre_print_r($value) {
-  echo '<pre>';
-  print_r($value);
-  echo '</pre>';
 }
 
 
