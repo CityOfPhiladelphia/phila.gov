@@ -76,7 +76,8 @@ $row_content = rwmb_meta('collection_row');?>
         <div class="row fat-gutter">
           <?php foreach( $current_row['program_pages']['phila_select_programs'] as $program_page ) : ?>
             <div class="medium-12 columns end mbl">
-              <a class="card program-card" href="<?php echo get_the_permalink($program_page);?>">
+              <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $post_id =  $program_page); ?>
+              <a href="<?php echo !empty($off_site) ? $off_site : get_the_permalink($post = $program_page); ?>" class="card program-card">
                 <?php
                 $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $program_page );
                 $img = reset( $img );?>
