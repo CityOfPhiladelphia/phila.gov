@@ -20,8 +20,7 @@
   <div class="grid-container">
       <div class="grid-x grid-padding-x">
           <?php while ( $programs_query->have_posts()  ) : $programs_query->the_post(); ?>
-            <?php $off_site = rwmb_meta('prog_off_site_link'); ?>
-              <a href="<?php echo isset($off_site) ? $off_site : get_the_permalink();  ?>" class="cell large-6 small-12 progs-inits-grid__item"><?php echo the_title(); ?></a>
+              <a href="<?php echo get_the_permalink();  ?>" class="cell large-6 small-12 progs-inits-grid__item"><?php echo the_title(); ?></a>
           <?php endwhile; ?>
       </div>
   </div>
