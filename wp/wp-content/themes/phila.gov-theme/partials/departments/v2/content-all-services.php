@@ -14,7 +14,7 @@
 get_header(); ?>
 
 <div class="row">
-  <div class="columns results a-z-list border-top-none">
+  <div id="a-z-filter-list" class="columns results a-z-list border-top-none">
   <?php
   $args = array(
     'post_type'  => 'service_page',
@@ -36,39 +36,27 @@ get_header(); ?>
             'value'   => 'topic_page',
             'compare' => 'IN',
           ),
-          array(
-            'key' => 'phila_is_contextual',
-            'value' => '1',
-            'compare' => '=' ,
-          ),
         ),
       ),
   );
   $service_pages = new WP_Query( $args ); ?>
 
   <?php
-  //TODO: clean up this rushed hackjob
     $get_pages_args = array(
       'hierarchical' => 0,
-      'meta_key' => 'phila_is_contextual',
+      'meta_key' => 'phila_hide_children',
       'meta_value' => '1',
       'post_type' => 'service_page',
     );
     $pages = get_pages($get_pages_args);
 
     $children_array = array();
-    $contextual_pages  = array();
 
     foreach ( $pages as $page ){
       $args = array(
         'post_parent' => $page->ID,
       );
       $children_array[] = get_children( $args, ARRAY_A );
-    }
-    foreach ($children_array as $k => $v){
-      foreach ($v as $arr => $thing){
-        array_push($contextual_pages, $thing['ID']);
-      }
     }
     ?>
 
@@ -99,16 +87,20 @@ get_header(); ?>
 
         <?php
 
-        foreach ( $contextual_pages as $id ) {
-          if($id === $post->ID) {
-            $parent['parent'] = $post->post_parent;
-            $service_parent[$post->post_title] = $parent;
-          }
-        }
-
-        $service_title[$post->post_title] = $page_terms;
         $desc['desc'] = phila_get_item_meta_desc( $blog_info = false );
         $link['link'] = get_permalink();
+
+        if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
+          $alt_title = rwmb_meta('phila_service_alt_title', '', $post->ID);
+          $service_title[$alt_title] = $alt_title;
+          $service_title[$alt_title] = $page_terms;
+          $service_desc[$alt_title] = $desc;
+          $service_link[$alt_title] = $link;
+        }else{
+          $service_title[$post->post_title] = $page_terms;
+          $service_desc[$post->post_title] = $desc;
+          $service_link[$post->post_title] = $link;
+        }
 
         $service_desc[$post->post_title] = $desc;
 
@@ -118,22 +110,43 @@ get_header(); ?>
 
         ?>
       <?php endwhile; ?>
+
+    <nav class="show-for-medium">
+      <ul class="inline-list mbm pan mln h4">
+        <?php foreach($a_z as $k => $v): ?>
+          <?php //TODO: handle special characters and numbers in a better way ?>
+          <?php $k_plain = preg_replace('/([^A-Za-z\-])/', '', $k);?>
+          <?php if( $v == true && !empty( $k_plain) ) : ?>
+            <li><a href="#<?php echo $k ?>" data-alphabet=<?php echo $k_plain ?> class="scrollTo"><?php echo strtoupper($k_plain); ?></a></li>
+          <?php else : ?>
+            <?php if ( !empty( $k_plain ) ) : ?>
+              <li><span class="ghost-gray"><?php echo strtoupper( $k_plain );?></span></li>
+            <?php endif; ?>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
+    </nav>
+    <div class="list">
     <?php foreach($a_z as $a_k => $a_v): ?>
       <?php if( $a_v == true): ?>
         <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
+          <hr id="<?php echo $a_k ?>" class="letter separator" data-alphabet="<?php echo $a_k ?>"/>
+
+<!--
             <div class="small-3 medium-2 columns">
               <span class="letter h1" id="<?php echo $a_k ?>"><?php echo strtoupper($a_k); ?></span>
-            </div>
+            </div> -->
             <div class="small-20 medium-21 columns">
         <?php endif; ?>
         <?php foreach($services as $k => $v) :?>
           <?php
             $first_c = strtolower($k[0]);
             if( $a_k == $first_c && $a_v == true ) : ?>
-              <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
-                <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
-                <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
-              </div>
+            <div class="columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
+              <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
+              <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
+
+            </div>
             <?php endif; ?>
           <?php endforeach; ?>
           <?php if( $a_v == true): ?>
@@ -144,6 +157,9 @@ get_header(); ?>
       <?php endforeach; ?>
     <?php endif; ?>
     <?php wp_reset_query(); ?>
+    <div class="nothing-found h3"></div>
+  </div>
+</div>
   </div>
 </div> <!-- .row -->
 
