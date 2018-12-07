@@ -13,7 +13,7 @@
 get_header(); ?>
 
 <div class="row service directory">
-  <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper>
+  <!-- <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper>
     <?php printf(__('<h2 class="h4 mtn">Filter by service category</h2>', 'phila-gov') ); ?>
     <?php $terms = get_terms(
       array(
@@ -29,8 +29,8 @@ get_header(); ?>
         <?php endforeach; ?>
       </ul>
     </form>
-  </div>
-<div id="a-z-filter-list" class="columns medium-16 results a-z-list">
+  </div> -->
+<div id="a-z-filter-list" class="columns medium-16 results a-z-list medium-centered">
 
 <?php $args = array(
   'post_type'  => 'service_page',
@@ -104,10 +104,10 @@ $service_pages = new WP_Query( $args ); ?>
 
       ?>
     <?php endwhile; ?>
-  <form id="service-filter" class="search">
+  <!-- <form id="service-filter" class="search">
     <input class="search-field" type="text" placeholder="Begin typing to filter results by title or description" disabled="true">
     <input type="submit" class="search-submit" value="Search">
-  </form>
+  </form> -->
   <div class="list">
   <?php foreach($a_z as $a_k => $a_v): ?>
     <?php if( $a_v == true ): ?>
