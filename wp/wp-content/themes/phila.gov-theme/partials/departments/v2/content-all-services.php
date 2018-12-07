@@ -86,21 +86,24 @@ $service_pages = new WP_Query( $args ); ?>
 
       if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != '' ) {
         $title = rwmb_meta('phila_service_alt_title', '', $post->ID);
+        $title_sanitized = sanitize_text_field($title);
         $service_title[$title] = $title;
         $service_desc[$title] = $desc;
         $service_link[$title] = $link;
       }else{
         $title = get_the_title();
-
+        $title_sanitized = sanitize_text_field($title);
         $service_title[$title] = $title;
         $service_desc[$post->post_title] = $desc;
         $service_link[$post->post_title] = $link;
       }?>
       <?php
         //overwrite range array with values that exist
-        $a_z[strtolower(substr($service_title[$title], 0, 1 ))] = true; ?>
+        $a_z[strtolower(substr($service_title[$title_sanitized], 0, 1 ))] = true; ?>
       <?php
       $services = array_merge_recursive($service_title, $service_desc, $service_link);
+
+      asort($services);
 
       ?>
     <?php endwhile; ?>
@@ -120,10 +123,12 @@ $service_pages = new WP_Query( $args ); ?>
         <?php foreach( $services as $k => $v ) :?>
           <?php
             $first_c = strtolower($k[0]);
-            if( $a_k == $first_c && $a_v == true ) : ?>
+
+            if( $a_k == $first_c && isset( $v['link']) ) : ?>
+
               <div class="small-21 columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
 
-                <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
+                <a href="<?php echo isset( $v['link'] )?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                 <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
 
               </div>
