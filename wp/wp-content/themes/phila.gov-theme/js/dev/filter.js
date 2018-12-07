@@ -76,7 +76,7 @@ jQuery(document).ready(function($) {
         }
       })
     }
-
+    //User backspaces
     if ( event.keypress == 8 ){
       $('#service_filter :checkbox:checked').each(function(e) {
         var serviceType = $(this).val();
