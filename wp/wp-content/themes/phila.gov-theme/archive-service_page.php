@@ -153,6 +153,7 @@ get_header(); ?>
                   $first_c = strtolower($k[0]);
                   if( $a_k == $first_c && $a_v == true ) : ?>
                     <div class="small-21 columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
+                      
                       <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                       <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
 
