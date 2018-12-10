@@ -69,43 +69,47 @@ class Phila_Staff_Member_Controller {
 
 
   public function create_item( $request ) {
-
+    
     $response = new WP_REST_Response();
-
     $params = $request->get_params();
-
     $msgs = [];
 
-  if ( isset( $params['posts'] ) && is_array( $params['posts'] ) ) {
+    if ( isset( $params['postmeta'] ) && is_array( $params['postmeta'] ) ) {
+      
+      $msgs[] = 'postmeta = isset and is_array';
 
-      $msgs[] = 'posts = isset and is_array';
-
-      foreach ( $params['posts'] as $post ) {
-
+      foreach ( $params['postmeta'] as $postmeta ) {
+        
         $msgs[] = 'inside foreach';
 
-        if( is_array( $post ) ){
+        $result = wp_insert_post(array(
+          'post_type' => 'staff',
+          'meta_input' => $postmeta
+        ));
 
-          $result = wp_insert_post( $post );
+        if(!is_wp_error( $result ) ) {
 
-          if(!is_wp_error( $result ) ) {
+          $response->set_status( 201 );
+          $msgs[] = 'added post_id ' . $result;
 
-            $response->set_status( 201 );
-            $msgs[] = 'add post ' . $result;
+        }else{
 
-          }else{
-            $response->set_status( 400 );
+          $response->set_status( 400 );
 
-            $msgs[] = 'failed with error';
-            $msgs[]['error'] = $result;
+          $msgs[] = array(
+            'error message: ' => 'failed with error',
+            'error: ' => $result
+          );
 
-          }
         }
       }
+    }
 
-  }
-    return $response;
-  }
+  $response->set_data(['messages' => $msgs]);
+
+  return $response;
+
+}
 
 
   /**
