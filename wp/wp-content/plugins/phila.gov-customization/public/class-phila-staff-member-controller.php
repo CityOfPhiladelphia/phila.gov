@@ -88,6 +88,7 @@ class Phila_Staff_Member_Controller {
 
         $result = wp_insert_post(array(
           'post_type' => 'staff_directory',
+          'post_status' => 'publish',
           'meta_input' => $postmeta
         ));
 
@@ -95,7 +96,8 @@ class Phila_Staff_Member_Controller {
 
           $update = wp_update_post(array(
             'ID' => $result,
-            'post_type' => 'staff_directory'
+            'post_type' => 'staff_directory',
+            'tags_input' => array('law-department')
           ), true);
 
           if (!is_wp_error($update)) {
