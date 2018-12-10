@@ -93,7 +93,10 @@ class Phila_Staff_Member_Controller {
 
         if(!is_wp_error( $result ) ) {
 
-          $update = wp_update_post($result, array('post_type' => 'staff_directory'), true);
+          $update = wp_update_post(array(
+            'ID' => $result,
+            'post_type' => 'staff_directory'
+          ), true);
 
           if (!is_wp_error($update)) {
             $response->set_status( 201 );
