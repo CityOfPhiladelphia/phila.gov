@@ -71,9 +71,11 @@ class Phila_Staff_Member_Controller {
   public function create_item( $request ) {
 
     $response = new WP_REST_Response();
+    $response->set_status( 201 );
+
     $params = $request->get_params();
 
-    if ( isset( $params['posts'] ) && is_array( $params['posts'] ) ) {
+  //if ( isset( $params['posts'] ) && is_array( $params['posts'] ) ) {
 
       foreach ( $posts as $post ) {
 
@@ -82,6 +84,7 @@ class Phila_Staff_Member_Controller {
 
           if( $results != is_wp_error( $results ) ) {
             $response->set_status( 201 );
+            return $response;
 
           }else{
             $response->set_status( 400 );
