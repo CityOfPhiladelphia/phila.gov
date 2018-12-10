@@ -82,8 +82,8 @@ class Phila_Staff_Member_Controller {
         
         $msgs[] = 'inside foreach';
 
-        if (isset($postmeta['phila_phone_subscriber-number'])) {
-          $postmeta['phila_phone_subscriber-number'] = serialize($postmeta['phila_phone_subscriber-number']);
+        if (isset($postmeta['phila_phone'])) {
+          $postmeta['phila_phone'] = serialize($postmeta['phila_phone']);
         }
 
         $result = wp_insert_post(array(
