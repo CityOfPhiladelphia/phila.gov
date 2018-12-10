@@ -71,34 +71,40 @@ class Phila_Staff_Member_Controller {
   public function create_item( $request ) {
 
     $response = new WP_REST_Response();
-    $response->set_status( 201 );
 
     $params = $request->get_params();
 
-  //if ( isset( $params['posts'] ) && is_array( $params['posts'] ) ) {
+    $msgs = [];
 
-      foreach ( $posts as $post ) {
+  if ( isset( $params['posts'] ) && is_array( $params['posts'] ) ) {
+
+      $msgs[] = 'posts = isset and is_array';
+
+      foreach ( $params['posts'] as $post ) {
+
+        $msgs[] = 'inside foreach';
 
         if( is_array( $post ) ){
-          $results = wp_insert_post( $post );
 
-          if( $results != is_wp_error( $results ) ) {
+          $result = wp_insert_post( $post );
+
+          if(!is_wp_error( $result ) ) {
+
             $response->set_status( 201 );
-            return $response;
+            $msgs[] = 'add post ' . $result;
 
           }else{
             $response->set_status( 400 );
-            $response->set_data(
-              ['message' => 'data is bad',
-              'data' => ['WP_ERROR' =>  $results ] ]
-            );
-            return $response;
+
+            $msgs[] = 'failed with error';
+            $msgs[]['error'] = $result;
 
           }
         }
       }
-      return $response;
-    //}
+
+  }
+    return $response;
   }
 
 
