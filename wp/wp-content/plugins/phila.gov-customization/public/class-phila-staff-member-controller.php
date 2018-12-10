@@ -5,24 +5,33 @@ class Phila_Staff_Member_Controller {
   // Initialize the namespace and resource name.
   public function __construct() {
     $this->namespace     = 'staff_directory/v1';
-    $this->resource_name = 'all';
+    $this->all_resources = 'all';
+    $this->add            = 'add';
   }
 
   // Register our routes.
   public function register_routes() {
   // Register the endpoint for collections.
-    register_rest_route( $this->namespace, '/' . $this->resource_name, array(
+    register_rest_route( $this->namespace, '/' . $this->all_resources, array(
       array(
-        'methods'   => WP_REST_Server::READABLE,
+        'methods'   => WP_REST_Server::READONLY,
         'callback'  => array( $this, 'get_items' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
 
-    //Register individual items
-    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
+    register_rest_route( $this->namespace, '/' . $this->add, array(
       array(
-        'methods'   => WP_REST_Server::READABLE,
+        'methods'   => WP_REST_Server::ALLMETHODS,
+        'callback'  => array( $this, 'add_items' ),
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+    //Register individual items
+    register_rest_route( $this->namespace, '/' . $this->all_resources . '/(?P<id>[\d]+)', array(
+      array(
+        'methods'   => WP_REST_Server::ALLMETHODS,
         'callback'  => array( $this, 'get_item' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
@@ -58,6 +67,34 @@ class Phila_Staff_Member_Controller {
     // Return all response data.
     return rest_ensure_response( $data );
   }
+
+
+  public function add_items( $request ) {
+
+    $response = new WP_REST_Response();
+    $params = $request->get_params();
+
+    if ( isArray($params['posts'] ) ) {
+      foreach ( $posts as $post ) {
+        if( isArray( $post ) ){
+
+          if( $results != is_wp_error() ) {
+
+            $results = wp_insert_post($post);
+            $response->set_status(200);
+
+          }else{
+            $response->set_status(400);
+            $response->set_data(
+              ['message' => 'data is bad',
+              'data' => ['request' => $params]]
+            );
+          }
+        }
+      }
+    }
+  }
+
 
   /**
    * Outputs an individual item's data
