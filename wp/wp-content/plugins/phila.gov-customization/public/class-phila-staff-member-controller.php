@@ -82,6 +82,10 @@ class Phila_Staff_Member_Controller {
         
         $msgs[] = 'inside foreach';
 
+        if (isset($postmeta['phila_phone_subscriber-number'])) {
+          $postmeta['phila_phone_subscriber-number'] = serialize($postmeta['phila_phone_subscriber-number']);
+        }
+
         $result = wp_insert_post(array(
           'post_type' => 'staff_directory',
           'meta_input' => $postmeta
@@ -89,8 +93,16 @@ class Phila_Staff_Member_Controller {
 
         if(!is_wp_error( $result ) ) {
 
-          $response->set_status( 201 );
-          $msgs[] = 'added post_id ' . $result;
+          $update = wp_update_post($result, array('post_type' => 'staff_directory'), true);
+
+          if (!is_wp_error($update)) {
+            $response->set_status( 201 );
+            $msgs[] = 'added post_id ' . $result;
+          } else {
+            $response->set_status( 400 );
+            $msgs[] = 'failed to update post_id ' . $update;
+          }
+          
 
         }else{
 
