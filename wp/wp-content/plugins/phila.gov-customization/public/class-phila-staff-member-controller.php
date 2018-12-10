@@ -98,7 +98,7 @@ class Phila_Staff_Member_Controller {
         }
       }
       return $response;
-    }
+    //}
   }
 
 
