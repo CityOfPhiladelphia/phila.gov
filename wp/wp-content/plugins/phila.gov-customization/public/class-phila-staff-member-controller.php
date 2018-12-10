@@ -83,7 +83,7 @@ class Phila_Staff_Member_Controller {
         $msgs[] = 'inside foreach';
 
         $result = wp_insert_post(array(
-          'post_type' => 'staff',
+          'post_type' => 'staff_directory',
           'meta_input' => $postmeta
         ));
 
