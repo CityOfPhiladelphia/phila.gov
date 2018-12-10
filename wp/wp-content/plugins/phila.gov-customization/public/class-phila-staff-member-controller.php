@@ -78,37 +78,21 @@ class Phila_Staff_Member_Controller {
       
       $msgs[] = 'postmeta = isset and is_array';
 
-      foreach ( $params['postmeta'] as $postmeta ) {
+      foreach ( $params['post'] as $post ) {
         
         $msgs[] = 'inside foreach';
 
-        if (isset($postmeta['phila_phone'])) {
-          $postmeta['phila_phone'] = serialize($postmeta['phila_phone']);
+        if (isset($post['meta_input']['phila_phone'])) {
+          $post['meta_input']['phila_phone'] = serialize($post['meta_input']['phila_phone']);
         }
 
-        $result = wp_insert_post(array(
-          'post_type' => 'staff_directory',
-          'post_status' => 'publish',
-          'meta_input' => $postmeta
-        ));
+        $result = wp_insert_post($post);
 
         if(!is_wp_error( $result ) ) {
 
-          $update = wp_update_post(array(
-            'ID' => $result,
-            'post_type' => 'staff_directory',
-            'tags_input' => array('law-department')
-          ), true);
-
-          if (!is_wp_error($update)) {
-            $response->set_status( 201 );
-            $msgs[] = 'added post_id ' . $result;
-          } else {
-            $response->set_status( 400 );
-            $msgs[] = 'failed to update post_id ' . $update;
-          }
-          
-
+          $response->set_status( 201 );
+          $msgs[] = 'added post_id ' . $result;
+         
         }else{
 
           $response->set_status( 400 );
