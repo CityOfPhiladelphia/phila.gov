@@ -14,7 +14,7 @@ $c = -1;
         $c++;
         ?>
         <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>
-        <div id="sortable-table-<?php echo $c?>" class="document-table">
+        <div id="sortable-table-<?php echo $c?>" class="search-sort-table">
           <div class="search">
             <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
             <input type="text" class="table-search search-field" placeholder="Filter documents by title, category, or author" />

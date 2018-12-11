@@ -90,6 +90,18 @@ class Phila_Gov_Deparment_Templates {
         )
       ),
       array(
+        'id'  => 'full_list',
+        'class' => 'hide-on-load',
+        'name'  => 'Display a list of every staff member assigned to this owner?',
+        'desc'  => 'Choosing this option will display all staff in a table regardless of unit and leadership assignment.',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+        'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
+      ),
+      array(
         'id'  => 'units',
         'class' => 'hide-on-load',
         'name'  => 'Display staff grouped by the following units?',

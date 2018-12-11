@@ -8,6 +8,7 @@ if ( $staff_member_loop->have_posts() ):
   while ( $staff_member_loop->have_posts() ) :
     $staff_leadership_output = '';
     $staff_member_loop->the_post();
+
     if (function_exists('rwmb_meta')){
 
       $staff_first_name = rwmb_meta('phila_first_name', $args = array('type'=>'text'));
@@ -63,7 +64,7 @@ if ( $staff_member_loop->have_posts() ):
 
       $staff_leadership = rwmb_meta('phila_leadership', $args = array('type'=>'checkbox'));
     }
-    if ( $staff_leadership ):
+    if ( $staff_leadership && $all_staff == 0 ):
       $staff_options = rwmb_meta('phila_leadership_options');
 
       $staff_display_order = isset($staff_options['phila_display_order']) ? intval($staff_options['phila_display_order']) : 0;
@@ -121,7 +122,7 @@ if ( $staff_member_loop->have_posts() ):
 
     else:
       $all_staff_table_output .= '<tr>
-        <td class="name">' . $staff_member_name_output . '</td>
+        <td class="name"><span class="list-name">' . $staff_member_name_output . '</span></td>
         <td class="title">' . $staff_title . '</td>';
         if (!empty($staff_email)) :
         $all_staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
@@ -170,24 +171,48 @@ if ( $staff_member_loop->have_posts() ):
   <!-- Begin Staff Directory Table -->
   <?php if (!$all_staff_table_output == ''): ?>
     <section class="row mbl all-staff-table">
-        <div class="large-24 columns">
+      <div class="large-24 columns">
+      <?php if ($all_staff == 1) : ?>
+        <div id="sortable-table-0" class="search-sort-table">
+          <div class="search">
+            <label for="table-search"><span class="screen-reader-text">Filter staff members by name or title</span></label>
+            <input type="text" class="table-search search-field" placeholder="Filter staff members by name or title" />
+            <input type="submit" class="search-submit" />
+          </div>
+        <?php endif ?>
           <?php if ($user_selected_template != 'staff_directory' && $user_selected_template != 'staff_directory_v2') : ?>
             <h2 class="contrast">Staff</h2>
           <?php endif; ?>
           <table role="grid" class="staff responsive js-hide-empty">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Job Title</th>
+                <th scope="col" class="table-sort" data-sort="name">Name</th>
+                <th scope="col" class="table-sort" data-sort="title">Job Title</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone #</th>
                 <th scope="col">Social</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="search-sortable">
               <?php echo $all_staff_table_output;?>
             </tbody>
           </table>
+          <ul>
+
+          <li>
+            <a class="next" href="#">Next</a>
+          </li>
+          <ul class="pagination">
+
+          </ul>
+          <li>
+            <a class="prev" href="#">Previous</a>
+          </li>
+        </ul>
+
+        </div>
+        <div class="no-results">
+          No results
         </div>
     </section>
   <?php endif; ?>
