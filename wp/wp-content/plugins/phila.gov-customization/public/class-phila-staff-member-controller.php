@@ -78,7 +78,7 @@ class Phila_Staff_Member_Controller {
       
       $msgs[] = 'posts = isset and is_array';
 
-      foreach ( $params['post'] as $post ) {
+      foreach ( $params['posts'] as $post ) {
         
         $msgs[] = 'inside foreach';
 
