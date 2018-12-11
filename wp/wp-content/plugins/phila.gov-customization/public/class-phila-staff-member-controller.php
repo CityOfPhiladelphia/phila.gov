@@ -82,13 +82,27 @@ class Phila_Staff_Member_Controller {
         
         $msgs[] = 'inside foreach';
 
-        if (isset($post['meta_input']['phila_phone'])) {
-          $post['meta_input']['phila_phone'] = serialize($post['meta_input']['phila_phone']);
+        //Units need to be imported one by one because the array key is the same
+        if (is_array($post['meta_input']['units'])) {
+          $units = $post['meta_input']['units'];
         }
+
+        //Unset units so they are not imported on the initial import
+        unset($post['meta_input']['units']);
+      
+        // if ($post['meta_input']['phila_phone']) {
+        //   $post['meta_input']['phila_phone'] = serialize($post['meta_input']['phila_phone']);
+        // }
 
         $result = wp_insert_post($post);
 
         if(!is_wp_error( $result ) ) {
+
+          if ($units) {
+            foreach($units as $unit) {
+              add_post_meta($result, 'units', urlencode($unit));
+            }
+          }
 
           $response->set_status( 201 );
           $msgs[] = 'added post_id ' . $result;
@@ -104,6 +118,8 @@ class Phila_Staff_Member_Controller {
 
         }
       }
+    } else {
+      $msgs[] = 'No posts found';
     }
 
   $response->set_data(['messages' => $msgs]);
