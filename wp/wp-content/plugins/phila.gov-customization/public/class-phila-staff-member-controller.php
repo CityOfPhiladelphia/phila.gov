@@ -74,9 +74,9 @@ class Phila_Staff_Member_Controller {
     $params = $request->get_params();
     $msgs = [];
 
-    if ( isset( $params['postmeta'] ) && is_array( $params['postmeta'] ) ) {
+    if ( isset( $params['posts'] ) && is_array( $params['posts'] ) ) {
       
-      $msgs[] = 'postmeta = isset and is_array';
+      $msgs[] = 'posts = isset and is_array';
 
       foreach ( $params['post'] as $post ) {
         
