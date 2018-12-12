@@ -197,19 +197,18 @@ if ( $staff_member_loop->have_posts() ):
               <?php echo $all_staff_table_output;?>
             </tbody>
           </table>
-          <ul class="pagination-wrapper no-js">
-          <li class="next">
-            <a class="next-0" href="#">Next</a>
-          </li>
-          <ul class="pagination"></ul>
-          <li class="prev">
-            <a class="prev-0" href="#">Previous</a>
-          </li>
-        </ul>
-
-        </div>
-        <div class="no-results">
-          No results
+          <div class="no-results">Sorry, there are no results for that search.</div>
+          <?php if ($all_staff == 1) : ?>
+            <ul class="pagination-wrapper no-js">
+              <li class="prev">
+                <a class="prev-0" href="#">Previous</a>
+              </li>
+            <ul class="pagination"></ul>
+            <li class="next">
+              <a class="next-0" href="#">Next</a>
+            </li>
+          </ul>
+        <?php endif ?>
         </div>
     </section>
   <?php endif; ?>
