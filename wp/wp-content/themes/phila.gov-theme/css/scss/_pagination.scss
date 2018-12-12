@@ -9,6 +9,9 @@ ul.paginate-links,
     display: inline-block;
     border-right: 2px solid white;
     margin-bottom:1rem;
+    &.disabled{
+      display: none;
+    }
   }
   a{
     display: block;
@@ -24,8 +27,21 @@ ul.paginate-links,
     color: #444;
   }
 }
+section ul.pagination-wrapper,
+section ul.pagination-wrapper ul {
+  overflow: initial;
+}
+
+[class*=" disabled"]{
+  display: none !important;
+}
 .pagination-wrapper{
   float:right;
+  .next, .prev{
+    &.disabled{
+      display: none;
+    }
+  }
 }
 
 .no-results {
