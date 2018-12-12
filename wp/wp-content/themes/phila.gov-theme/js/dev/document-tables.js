@@ -14,8 +14,8 @@ module.exports = $(function(){
     paginationClass: 'paginate-links',
   }
 
-  $('.search-sort-table').each(function( i ) {
-    var table = new List('sortable-table-' + i, options)
+  $('.search-sort-table').each(function( j ) {
+    var table = new List('sortable-table-' + j, options)
     table.on('updated', function (list) {
       console.log(table)
 
@@ -24,18 +24,23 @@ module.exports = $(function(){
     } else {
       $('.no-results').show()
     }
-
+    if ( table.i + pageNum > table.visibleItems.length) {
+      $('.next').addClass('disabled')
+    }else{
+      $('.next').removeClass('disabled')
+    }
   })
-  $('.next').on('click', function(){
-      table.show(table.i + 1);
-      console.log(table.i - 1);
+
+  $('.next-' + j).on('click', function(e){
+      table.show( table.i + pageNum , pageNum);
+      e.preventDefault();
   })
 
-  $('.prev').on('click', function(){
-      table.show(table.i - 1);
-      console.log(table.i - 1)
+  $('.prev-' + j).on('click', function(e){
+      // i, page
+      table.show( table.i - pageNum, pageNum);
+      e.preventDefault();
   })
 });
-
 
 });

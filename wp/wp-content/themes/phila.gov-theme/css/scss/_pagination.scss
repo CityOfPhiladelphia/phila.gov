@@ -1,8 +1,9 @@
-ul.paginate-links{
+ul.paginate-links,
+.pagination,
+.pagination-wrapper{
   display: inline-block;
   margin:0;
   padding:0;
-  float:right;
 
   li{
     display: inline-block;
@@ -22,6 +23,9 @@ ul.paginate-links{
     background: white;
     color: #444;
   }
+}
+.pagination-wrapper{
+  float:right;
 }
 
 .no-results {
