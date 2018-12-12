@@ -85,6 +85,21 @@ $c = -1;
               <?php endforeach; ?>
           </tbody>
         </table>
+        <ul class="pagination-wrapper no-js">
+
+        <li class="next">
+          <a class="next-<?php echo $c?>" href="#">Next</a>
+        </li>
+        <ul class="pagination"></ul>
+        <li class="prev">
+          <a class="prev-<?php echo $c?>" href="#">Previous</a>
+        </li>
+      </ul>
+
+      </div>
+      <div class="no-results">
+        No results
+      </div>
       </div>
       <?php endif;?>
     <?php endforeach; ?>

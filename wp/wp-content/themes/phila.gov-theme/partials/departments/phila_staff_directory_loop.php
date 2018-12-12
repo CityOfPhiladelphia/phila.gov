@@ -197,16 +197,13 @@ if ( $staff_member_loop->have_posts() ):
               <?php echo $all_staff_table_output;?>
             </tbody>
           </table>
-          <ul>
-
-          <li>
-            <a class="next" href="#">Next</a>
+          <ul class="pagination-wrapper no-js">
+          <li class="next">
+            <a class="next-0" href="#">Next</a>
           </li>
-          <ul class="pagination">
-
-          </ul>
-          <li>
-            <a class="prev" href="#">Previous</a>
+          <ul class="pagination"></ul>
+          <li class="prev">
+            <a class="prev-0" href="#">Previous</a>
           </li>
         </ul>
 
