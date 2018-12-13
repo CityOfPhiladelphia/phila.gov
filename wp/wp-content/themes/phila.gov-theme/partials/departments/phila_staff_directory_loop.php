@@ -156,7 +156,7 @@ if ( $staff_member_loop->have_posts() ):
         <?php foreach ( $unit_meta as $meta ) : ?>
           <?php if (urldecode($unit) == $meta['name']) :?>
             <?php if (isset($meta['unit_description'])) :?>
-              <div class="unit_desc">
+              <div class="unit-desc mtm mbl">
                 <?php echo apply_filters('the_content', $meta['unit_description']) ?>
               </div>
             <?php endif ?>
