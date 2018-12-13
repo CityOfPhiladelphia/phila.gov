@@ -40,6 +40,13 @@ class Phila_Gov_Taxonomy_Meta {
               'placeholder' => 'E.g. Director\'s Office'
             ),
             array(
+              'name'=> 'Unit description (optional)',
+              'id'  => 'unit_description',
+              'type'  => 'wysiwyg',
+              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+              'desc'  => 'Use this area to add a short description of a unit. This will appear in locations where staff members are grouped by unit.'
+            ),
+            array(
               'name' => 'Department homepage (optional)',
               'id' => 'url',
               'type'  => 'post',

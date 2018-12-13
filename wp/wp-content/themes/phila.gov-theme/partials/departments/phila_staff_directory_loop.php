@@ -150,8 +150,18 @@ if ( $staff_member_loop->have_posts() ):
     <div class="row">
       <div class="columns">
       <h3><?php echo urldecode($unit) ?></h3>
+        <?php foreach ( $unit_meta as $meta ) : ?>
+          <?php if (urldecode($unit) == $meta['name']) :?>
+            <?php if (isset($meta['unit_description'])) :?>
+              <div class="unit_desc">
+                <?php echo $meta['unit_description'] ?>
+              </div>
+            <?php endif ?>
+          <?php endif ?>
+        <?php endforeach ?>
     </div>
   </div>
+
   <?php endif; ?>
   <?php if (!empty($staff_leadership_array)):?>
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
