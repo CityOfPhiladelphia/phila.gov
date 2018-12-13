@@ -96,10 +96,6 @@ class Phila_Staff_Member_Controller {
 
         //Unset units so they are not imported on the initial import
         unset($post['meta_input']['units']);
-      
-        // if ($post['meta_input']['phila_phone']) {
-        //   $post['meta_input']['phila_phone'] = serialize($post['meta_input']['phila_phone']);
-        // }
 
         $result = wp_insert_post($post);
 
