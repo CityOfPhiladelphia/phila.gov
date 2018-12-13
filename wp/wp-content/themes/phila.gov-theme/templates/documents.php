@@ -20,7 +20,7 @@
     $arr_length = count($documents);
     ?>
     <p class="description"><?php echo $document_description; ?></p>
-    <div id="sortable-table-0" class="document-table">
+    <div id="sortable-table-0" class="search-sort-table staff">
       <?php if ($arr_length >= 5) : ?>
         <div class="search">
           <label for="table-search"><span class="screen-reader-text">Filter documents by title or description</span></label>

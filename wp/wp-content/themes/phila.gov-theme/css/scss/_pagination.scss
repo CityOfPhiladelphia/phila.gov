@@ -1,24 +1,53 @@
-ul.paginate-links {
+ul.paginate-links,
+.pagination,
+.pagination-wrapper{
   display: inline-block;
   margin:0;
   padding:0;
+
+  li{
+    display: inline-block;
+    border-right: 2px solid white;
+    margin-bottom:1rem;
+    &.disabled{
+      display: none;
+    }
+  }
+  a{
+    display: block;
+    padding: .5rem;
+    background: #0f4d90;
+    color:white;
+  }
+  a{
+    color:white;
+  }
+  li.active a{
+    background: white;
+    color: #444;
+  }
+}
+section ul.pagination-wrapper,
+section ul.pagination-wrapper ul {
+  overflow: initial;
+}
+
+[class*=" next-"]{
+  display: none;
+}
+[class*=" disabled"]{
+  display: none !important;
+}
+.pagination-wrapper{
   float:right;
+  .next, .prev{
+    &.disabled{
+      display: none;
+    }
+  }
 }
-.paginate-links li{
-  display: inline-block;
-  border-right: 2px solid white;
-  margin-bottom:1rem;
-}
-.paginate-links a{
-  display: block;
-  padding: .5rem;
-  background: #0f4d90;
-  color:white;
-}
-.paginate-links a{
-  color:white;
-}
-.paginate-links li.active a{
-  background: white;
-  color: #444;
+
+.no-results {
+  font-weight: bold;
+  display: none;
 }

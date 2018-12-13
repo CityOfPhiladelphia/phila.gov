@@ -4,10 +4,11 @@ $staff_leadership_array = array();
 $staff_member_loop = new WP_Query( $args );
 
 if ( $staff_member_loop->have_posts() ):
-  $all_staff_table_output = '';
+  $staff_table_output = '';
   while ( $staff_member_loop->have_posts() ) :
     $staff_leadership_output = '';
     $staff_member_loop->the_post();
+
     if (function_exists('rwmb_meta')){
 
       $staff_first_name = rwmb_meta('phila_first_name', $args = array('type'=>'text'));
@@ -27,6 +28,9 @@ if ( $staff_member_loop->have_posts() ):
 
 
       $staff_title = rwmb_meta('phila_job_title', $args = array('type'=>'text'));
+
+      $staff_unit = rwmb_meta( 'units' );
+
       $staff_email = rwmb_meta('phila_email', $args = array('type'=>'email'));
 
       $staff_phone = rwmb_meta('phila_phone', $args = array('type'=>'phone'));
@@ -63,7 +67,7 @@ if ( $staff_member_loop->have_posts() ):
 
       $staff_leadership = rwmb_meta('phila_leadership', $args = array('type'=>'checkbox'));
     }
-    if ( $staff_leadership ):
+    if ( $staff_leadership && $all_staff == 0 ):
       $staff_options = rwmb_meta('phila_leadership_options');
 
       $staff_display_order = isset($staff_options['phila_display_order']) ? intval($staff_options['phila_display_order']) : 0;
@@ -120,27 +124,27 @@ if ( $staff_member_loop->have_posts() ):
       $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
 
     else:
-      $all_staff_table_output .= '<tr>
-        <td class="name">' . $staff_member_name_output . '</td>
-        <td class="title">' . $staff_title . '</td>';
+      $staff_table_output .= '<tr>
+        <td class="name"><span class="list-name">' . $staff_member_name_output . '</span></td>
+        <td class="title">' . $staff_title . '<br>' . urldecode( $staff_unit ). '</td>';
         if (!empty($staff_email)) :
-        $all_staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
+        $staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
         else:
-          $all_staff_table_output .= '<td class="email"></td>';
+          $staff_table_output .= '<td class="email"></td>';
         endif;
 
         if ( !empty( $staff_phone_unformatted ) && !empty( $staff_phone_formatted ) ):
-          $all_staff_table_output .= '<td class="phone"><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
+          $staff_table_output .= '<td class="phone"><a href="tel:' . $staff_phone_unformatted . '">' . $staff_phone_formatted . '</a></td>';
         else :
-          $all_staff_table_output .= '<td class="phone"></td>';
+          $staff_table_output .= '<td class="phone"></td>';
         endif;
 
         if ( !empty( $staff_social_output ) ) :
-          $all_staff_table_output .= '<td class="social">' . $staff_social_output . '</td></tr>';
+          $staff_table_output .= '<td class="social">' . $staff_social_output . '</td></tr>';
         else :
-          $all_staff_table_output .= '<td class="social"></td>';
+          $staff_table_output .= '<td class="social"></td>';
         endif;
-        $all_staff_table_output .= '</tr>';
+        $staff_table_output .= '</tr>';
     endif;
   endwhile;
 
@@ -149,8 +153,18 @@ if ( $staff_member_loop->have_posts() ):
     <div class="row">
       <div class="columns">
       <h3><?php echo urldecode($unit) ?></h3>
+        <?php foreach ( $unit_meta as $meta ) : ?>
+          <?php if (urldecode($unit) == $meta['name']) :?>
+            <?php if (isset($meta['unit_description'])) :?>
+              <div class="unit-desc mtm mbl">
+                <?php echo apply_filters('the_content', $meta['unit_description']) ?>
+              </div>
+            <?php endif ?>
+          <?php endif ?>
+        <?php endforeach ?>
     </div>
   </div>
+
   <?php endif; ?>
   <?php if (!empty($staff_leadership_array)):?>
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
@@ -168,26 +182,46 @@ if ( $staff_member_loop->have_posts() ):
     </div>
   <?php endif; ?>
   <!-- Begin Staff Directory Table -->
-  <?php if (!$all_staff_table_output == ''): ?>
+  <?php if (!$staff_table_output == ''): ?>
     <section class="row mbl all-staff-table">
-        <div class="large-24 columns">
+      <div class="large-24 columns">
+      <?php if ($all_staff == 1) : ?>
+        <div id="sortable-table-0" class="search-sort-table">
+          <div class="search">
+            <label for="table-search"><span class="screen-reader-text">Filter staff members by name or title</span></label>
+            <input type="text" class="table-search search-field" placeholder="Filter staff members by name or title" />
+            <input type="submit" class="search-submit" />
+          </div>
+        <?php endif ?>
           <?php if ($user_selected_template != 'staff_directory' && $user_selected_template != 'staff_directory_v2') : ?>
             <h2 class="contrast">Staff</h2>
           <?php endif; ?>
           <table role="grid" class="staff responsive js-hide-empty">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Job Title</th>
+                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
+                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone #</th>
                 <th scope="col">Social</th>
               </tr>
             </thead>
-            <tbody>
-              <?php echo $all_staff_table_output;?>
+            <tbody class="search-sortable">
+              <?php echo $staff_table_output;?>
             </tbody>
           </table>
+          <div class="no-results">Sorry, there are no results for that search.</div>
+          <?php if ($all_staff == 1) : ?>
+            <ul class="pagination-wrapper no-js">
+              <li class="prev">
+                <a class="prev-0" href="#">Previous</a>
+              </li>
+            <ul class="pagination"></ul>
+            <li class="next">
+              <a class="next-0" href="#">Next</a>
+            </li>
+          </ul>
+        <?php endif ?>
         </div>
     </section>
   <?php endif; ?>

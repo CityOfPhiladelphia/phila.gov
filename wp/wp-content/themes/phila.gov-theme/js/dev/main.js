@@ -1,19 +1,19 @@
-var $ = require('jquery');
+var $ = require('jquery')
 
-require('phila-standards');
+require('phila-standards')
 
-require('./site-wide-alerts');
-require('./city-directory-list');
-require('./collapsible-div');
-require('./document-tables');
-require('./filter');
-require('./global-is-active');
-require('./hashchange-check');
-require('./hide-empty-table');
-require('./mailchimp');
-require('./posts');
-require('./search');
-require('./skip-link-focus-fix');
-require('./social-media');
-require('./header-sticky');
-require('./parks-and-recreation');
+require('./site-wide-alerts')
+require('./city-directory-list')
+require('./collapsible-div')
+require('./filter')
+require('./global-is-active')
+require('./hashchange-check')
+require('./hide-empty-table')
+require('./mailchimp')
+require('./posts')
+require('./search')
+require('./search-sort-tables')
+require('./skip-link-focus-fix')
+require('./social-media')
+require('./header-sticky')
+require('./parks-and-recreation')
