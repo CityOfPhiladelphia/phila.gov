@@ -87,8 +87,8 @@ $c = -1;
                 <?php endforeach; ?>
             </tbody>
           </table>
-        </div>
         <div class="no-results">Sorry, there are no results for that search.</div>
+        </div>
         <ul class="pagination-wrapper no-js">
           <li class="prev">
             <a class="prev-<?php echo $c?>" href="#">Previous</a>
