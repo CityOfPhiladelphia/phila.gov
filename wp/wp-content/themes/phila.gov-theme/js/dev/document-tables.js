@@ -32,21 +32,23 @@ module.exports = $(function(){
         if ( table.i === 1 && table.page === pageNum && table.visibleItems.length === pageNum ) {
           $('.prev-' + j).addClass('disabled')
         }else{
+          //Handle searches
           if( table.visibleItems.length < pageNum ){
             $('.prev-' + j).addClass('disabled')
           }else {
             $('.prev-' + j).removeClass('disabled')
           }
         }
-        console.log(table)
-        console.log(table.visibleItems.length)
-        console.log(table.i)
-
 
         if ( table.visibleItems.length < pageNum ) {
           $('.next-' + j).addClass('disabled')
         }else{
-          $('.next-' + j).removeClass('disabled')
+          //Handle last page
+          if (table.matchingItems.length % table.items.length == 0 && table.matchingItems.length - table.i  >= pageNum) {
+            $('.next-' + j).removeClass('disabled')
+          }else{
+            $('.next-' + j).addClass('disabled')
+          }
         }
       }
 
