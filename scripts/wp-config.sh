@@ -73,6 +73,12 @@ define('WP_AUTO_UPDATE_CORE', false);
 /** Airnow AQI KEY */
 define('AQI_KEY', '$AQI_KEY');
 
+/** Auth plugin key */
+define('JWT_AUTH_SECRET_KEY', '$JWT_AUTH_SECRET_KEY');
+
+/** Allow CORS */
+define('JWT_AUTH_CORS_ENABLE', true);
+
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
