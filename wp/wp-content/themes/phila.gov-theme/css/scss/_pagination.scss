@@ -32,6 +32,9 @@ section ul.pagination-wrapper ul {
   overflow: initial;
 }
 
+[class*=" next-"]{
+  display: none;
+}
 [class*=" disabled"]{
   display: none !important;
 }
@@ -45,5 +48,6 @@ section ul.pagination-wrapper ul {
 }
 
 .no-results {
+  font-weight: bold;
   display: none;
 }
