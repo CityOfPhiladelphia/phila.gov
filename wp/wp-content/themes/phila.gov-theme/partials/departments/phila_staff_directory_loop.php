@@ -199,8 +199,8 @@ if ( $staff_member_loop->have_posts() ):
           <table role="grid" class="staff responsive js-hide-empty">
             <thead>
               <tr>
-                <th scope="col" class="table-sort" data-sort="name">Name</th>
-                <th scope="col" class="table-sort" data-sort="title">Job Title</th>
+                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
+                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone #</th>
                 <th scope="col">Social</th>
