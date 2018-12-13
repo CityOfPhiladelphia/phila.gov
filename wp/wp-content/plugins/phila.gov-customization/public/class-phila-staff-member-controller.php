@@ -23,6 +23,7 @@ class Phila_Staff_Member_Controller {
       array(
         'methods'   => WP_REST_Server::CREATABLE,
         'callback'  => array( $this, 'create_item' ),
+        'permission_callback' => array( $this, 'create_item_permissions_check' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
@@ -67,6 +68,12 @@ class Phila_Staff_Member_Controller {
     return rest_ensure_response( $data );
   }
 
+  public function create_item_permissions_check( $request ) {
+    if ( ! current_user_can( 'publish_posts' ) ) {
+        return new WP_Error( 'rest_forbidden', esc_html__( 'You cannot publish new posts.' ), array( 'status' => 403 ) );
+    }
+    return true;
+  }
 
   public function create_item( $request ) {
     
