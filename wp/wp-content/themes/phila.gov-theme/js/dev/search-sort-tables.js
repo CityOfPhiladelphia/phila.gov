@@ -25,6 +25,19 @@ module.exports = $(function(){
         $('.no-results').show()
       }
       checkNavButtons()
+      console.log('#sortable-table-' + j)
+
+      var loggedIn
+
+      if($('#wpadminbar').length){
+        loggedIn = $('#wpadminbar').outerHeight();
+      }else {
+        loggedIn = 0
+      }
+      //subtract 50 incase there's a title on the div
+      $('html, body').animate({
+         scrollTop: $('#sortable-table-' + j).offset().top - $('.primary-menu').outerHeight() - loggedIn - 50
+       }, 400);
       })
 
       function checkNavButtons() {
