@@ -33,7 +33,7 @@ module.exports = $(function(){
           $('.prev-' + j).addClass('disabled')
         }else{
           //Handle searches
-          if( table.visibleItems.length < pageNum ){
+          if( table.searched == true && table.visibleItems.length < pageNum ){
             $('.prev-' + j).addClass('disabled')
           }else {
             $('.prev-' + j).removeClass('disabled')
