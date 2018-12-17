@@ -1492,7 +1492,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Mayor's Office of",
     "Philadelphia",
     "Commission on",
-    "Zoning board of",
+    "Zoning Board of",
     "Board of",
     "Office of the",
     "Office of",
