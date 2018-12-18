@@ -22,7 +22,7 @@ $children = get_posts( array(
   'orderby'     => 'menu_order',
   'order'       => 'ASC',
   'post_type'   => 'department_page',
-  'post_status' => 'publish'
+  'post_status' => 'any'
 ));
 
 $ancestors = get_post_ancestors($post);
@@ -67,11 +67,10 @@ get_header(); ?>
       while ( have_posts() ) : the_post();
 
         //Don't render child menu index template when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
-        if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
-
+        if ( count($children) >= 1 && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
           get_template_part( 'partials/departments/v2/child', 'index' );
-
         }else{
+          var_dump($children);
           get_template_part( 'templates/single', 'on-site-content' );
         }
       endwhile;
