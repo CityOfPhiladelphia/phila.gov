@@ -9,6 +9,17 @@ a.card,
     .content-block{
       min-height:165px;
     }
+    &.vertical {
+      @include breakpoint(medium up) {
+        img {
+          height: 184px;
+          width: auto;
+        }
+      }
+      .content-block{
+        display: inline-block;
+      }
+    }
   }
   position: relative;
   margin-bottom:0;

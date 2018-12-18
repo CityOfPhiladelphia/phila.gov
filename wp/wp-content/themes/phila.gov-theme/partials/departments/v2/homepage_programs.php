@@ -19,8 +19,8 @@
       <div class="row fat-gutter">
         <?php foreach( $cards as $card ) : ?>
           <?php $template = phila_get_selected_template( $card ); ?>
-          <div class="medium-8 columns end mbl">
-            <a class="card program-card" href="<?php echo ($template == 'prog_off_site') ? rwmb_meta('prog_off_site_link', '', $card) : get_the_permalink($card); ?>">
+          <div class="<?php echo count($cards) == 1  ? '' : 'medium-8'?> columns end mbl">
+            <a class="card program-card <?php echo count($cards) == 1  ? 'vertical' : ''?>" href="<?php echo ($template == 'prog_off_site') ? rwmb_meta('prog_off_site_link', '', $card) : get_the_permalink($card); ?>">
               <?php
               $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $card );
               $img = reset( $img );?>
