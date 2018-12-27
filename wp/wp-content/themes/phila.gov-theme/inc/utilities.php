@@ -172,3 +172,21 @@ function phila_util_is_last_in_array( $array ){
   $lastArrayKey = array_pop( $arrayKeys );
   return $lastArrayKey;
 }
+/* Recursively check nested arrays for a key */
+function phila_multi_key_exists( array $arr, $key ) {
+  //  check if key is in base array
+  if ( array_key_exists( $key, $arr ) ) {
+    return true;
+  }
+
+  // check arrays contained in this array
+  foreach ( $arr as $element ) {
+    if ( is_array( $element ) ) {
+      if ( phila_multi_key_exists( $element, $key ) ) {
+        return true;
+      }
+    }
+
+  }
+  return false;
+}
