@@ -164,7 +164,7 @@ class Phila_Services_Controller {
     if (isset( $schema['properties']['link'] )) {
       $link = get_permalink($post->ID);
       $parsed_link = parse_url($link);
-      $post_data['link']  = (string) $parsed_link['path'];
+      $post_data['link']  = (string) 'https://www.phila.gov' . $parsed_link['path'];
 
     }
 
