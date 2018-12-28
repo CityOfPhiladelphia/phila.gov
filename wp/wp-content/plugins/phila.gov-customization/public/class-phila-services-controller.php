@@ -6,7 +6,7 @@ class Phila_Services_Controller {
   public function __construct() {
     $this->namespace     = 'services/v1';
     $this->resource_name = 'directory';
-    //$this->category_resource = 'categories';
+    $this->category_resource = 'categories';
   }
 
   // Register our routes.
@@ -28,11 +28,18 @@ class Phila_Services_Controller {
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
-
+    //Register categories
+    register_rest_route( $this->namespace, '/' . $this->category_resource, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_categories' ),
+      ),
+      'schema' => array( $this, 'get_category_schema' ),
+    ) );
   }
 
   /**
-   * Return all services, excluding topic pages?
+   * Return all services, excluding stubs
    *
    * @param WP_REST_Request $request Current request.
   */
@@ -104,6 +111,34 @@ class Phila_Services_Controller {
   }
 
   /**
+  * Outputs category data
+  *
+  * @param WP_REST_Request $request Current request.
+  */
+  public function get_categories( $request ){ 
+
+    $service_categories = get_terms( 'service_type' );
+
+
+    $data = array();
+
+    if ( empty( $service_categories ) ) {
+      return rest_ensure_response( $array() );
+    }
+
+    foreach ( $service_categories as $category ) {
+      $response = $this->prepare_category_for_response( $category, $request );
+
+      $data[] = $this ->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+
+  }
+
+
+  /**
    * Matches the post data to the schema. Also, rename the fields to nicer names.
    *
    * @param WP_Post $post The comment object whose response is being prepared.
@@ -119,7 +154,7 @@ class Phila_Services_Controller {
     }
 
     if (isset( $schema['properties']['title'] )) {
-       if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
+      if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
           $post_data['title'] =  (string) rwmb_meta('phila_service_alt_title', '', $post->ID);
         }else{
           $post_data['title']  =  (string) html_entity_decode($post->post_title);
@@ -216,6 +251,72 @@ class Phila_Services_Controller {
     );
 
     return $schema;
+  }
+
+    /**
+   * Matches the post data to the schema. Also, rename the fields to nicer names.
+   *
+   * @param WP_Post $post The comment object whose response is being prepared.
+   */
+
+  public function prepare_category_for_response( $category, $request ) {
+
+    $post_data = array();
+
+    $schema = $this->get_category_schema( $request );
+
+    if ( isset( $schema['properties']['id'] ) ) {
+        $post_data['id'] = (int) $category->term_id;
+    }
+
+    if (isset( $schema['properties']['name'] )) {
+      $post_data['name']  =  (string) html_entity_decode($category->name);
+    }
+
+    if (isset( $schema['properties']['slug'] )) {
+      $post_data['slug']  =  (string) $category->slug;
+    }
+
+    return rest_ensure_response( $post_data );
+
+  }
+
+  /**
+   * Get sample schema for a category.
+   *
+   * @param WP_REST_Request $request Current request.
+   */
+  public function get_category_schema( $request ) {
+
+    $schema = array(
+      // This tells the spec of JSON Schema we are using which is draft 4.
+      '$schema'              => 'http://json-schema.org/draft-04/schema#',
+      // The title property marks the identity of the resource.
+      'title'                => 'post',
+      'type'                 => 'object',
+      // Specify object properties in the properties attribute.
+      'properties'           => array(
+        'id' => array(
+          'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
+          'type'         => 'integer',
+          'context'      => array( 'view', 'edit', 'embed' ),
+          'readonly'     => true,
+        ),
+        'name'=> array(
+          'description'  => esc_html__( 'Name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'slug'=> array(
+          'description'  => esc_html__( 'Slug of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+      ),
+    );
+
+    return $schema;
+
   }
 
 }
