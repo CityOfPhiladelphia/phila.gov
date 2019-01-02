@@ -37,7 +37,7 @@ endif;
           <td><?php echo isset( $member['phone'] ) ?
             '<a href="tel:' . $member['phone']['area'] . $member['phone']['phone-co-code'] . $member['phone']['phone-subscriber-number']  . '">(' . $member['phone']['area'] . ') ' . $member['phone']['phone-co-code'] .'-' . $member['phone']['phone-subscriber-number'] . '</a>' : '' ?></td>
         </tr>
-      <?php endforeach ?>
+<?php endforeach; ?>
     </tbody>
 
     </table>
@@ -60,7 +60,7 @@ endif;
               <?php if( isset( $member['headshot'] ) ) : ?>
                 <?php $image = wp_get_attachment_image_src( $member['headshot'][0], $size = 'full' );
                 echo isset( $member['headshot'] ) ? '<img src="' . $image[0] . '" alt="' . $member['full_name'] .'" class="float-left" width="200" height="200">'  : ''; ?>
-              <?php endif?>
+              <?php endif; ?>
               <?php echo isset( $member['bio'] ) ? apply_filters( 'the_content', $member['bio'] ) : ''?>
               <?php echo isset( $member['email'] ) ? '<a href="mailto:' . $member['email'] .'"> ' .  $member['email']. '</a>' : ''
               ?>
