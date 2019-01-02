@@ -48,8 +48,14 @@ endif;
         <div class="accordion-item" data-accordion-item>
 
           <!-- Accordion tab title -->
+          <?php if( empty( $member['headshot'] ) && empty( $member['bio'] ) && empty( $member['email'] ) && empty( $member['phone'] ) ) : ?>	
+            <div class="disabled accordion-title">	
+              <?php echo isset( $member['full_name']) ? $member['full_name'] : ''; ?><?php echo isset( $member['title'] ) ? ', <i>' . $member['title'] . '</i>': '';?>	
+            </div>	
+          <?php else :?>
               <a href="#" class="accordion-title"><?php echo isset( $member['full_name'] ) ? $member['full_name'] : ''; ?><?php echo isset($member['title'] ) ? ', <i>' . $member['title'] . '</i>': '';?>
               </a>
+            <?php endif; ?>	
             <div class="accordion-content group" data-tab-content>
               <?php if( isset( $member['headshot'] ) ) : ?>
                 <?php $image = wp_get_attachment_image_src( $member['headshot'][0], $size = 'full' );
