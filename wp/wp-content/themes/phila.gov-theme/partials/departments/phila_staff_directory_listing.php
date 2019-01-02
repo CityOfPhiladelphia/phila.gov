@@ -11,8 +11,8 @@ global $post;
 $user_selected_template = phila_get_selected_template();
 $category_override = rwmb_meta('phila_get_staff_cats');
 $unit_data = get_post_meta( $post->ID, 'units' );
-
 $all_staff = rwmb_meta('full_list');
+$unit_count = -1;
 
 if ( has_category() ) {
   $categories = get_the_category();
@@ -37,8 +37,7 @@ if ( has_category() ) {
         'meta_key' => 'units',
         'meta_value' => $unit,
       );
-
-
+      
       include(locate_template('partials/departments/phila_staff_directory_loop.php'));
 
     }
