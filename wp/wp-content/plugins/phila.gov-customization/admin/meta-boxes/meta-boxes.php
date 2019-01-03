@@ -776,11 +776,12 @@ $meta_boxes[] = array(
   'priority' => 'low',
   'visible' => array('phila_template_select', 'department_stub'),
   'revision' => true,
+  'class' => 'hide-on-load',
 
   'fields'  => array(
     array(
       'name' => 'Page source',
-      'type'  => 'heading'
+      'type'  => 'heading',
     ),
     array(
       'id' => 'phila_stub_source',
