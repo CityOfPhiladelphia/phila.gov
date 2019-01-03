@@ -770,6 +770,36 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'title' => 'Department Stub',
+  'pages' => array('department_page'),
+  'context' => 'after_title',
+  'priority' => 'low',
+  'visible' => array('phila_template_select', 'department_stub'),
+  'revision' => true,
+
+  'fields'  => array(
+    array(
+      'name' => 'Page source',
+      'type'  => 'heading'
+    ),
+    array(
+      //need to only pull child content
+      'id' => 'phila_stub_source',
+      'type' => 'post',
+      'post_type' => 'department_page',
+      'desc'  => 'Display content from the selected page on the front-end.',
+      'query_args'  => array(
+        'post_status'    => array('publish', 'draft', 'private'),
+        'posts_per_page' => - 1,
+        'meta_key' => 'phila_template_select',
+        'meta_value' => 'department_stub',
+        'meta_compare' => '!=',
+      ),
+    )
+  )
+);
+
+$meta_boxes[] = array(
   'title' => 'Program + initiatives association',
   'pages' => array('service_page'),
   'context'  => 'side',
