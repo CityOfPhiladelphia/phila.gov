@@ -23,7 +23,7 @@ class Phila_Gov_Admin_Templates {
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_posts' ), 10, 1 );
 
 
- }
+  }
 
 
   //TODO: break these callbacks out into individual functions
@@ -105,7 +105,7 @@ class Phila_Gov_Admin_Templates {
         )
       ),
     );
-     return $meta_boxes;
+    return $meta_boxes;
   }
 
   function register_template_selection_metabox_posts( $meta_boxes ){
