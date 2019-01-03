@@ -111,7 +111,7 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'name'  => 'Include address and phone number?',
+          'name'  => 'Include contact information?',
           'id'  => 'phila_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
