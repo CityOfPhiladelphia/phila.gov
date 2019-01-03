@@ -783,7 +783,6 @@ $meta_boxes[] = array(
       'type'  => 'heading'
     ),
     array(
-      //need to only pull child content
       'id' => 'phila_stub_source',
       'type' => 'post',
       'post_type' => 'department_page',
@@ -794,6 +793,7 @@ $meta_boxes[] = array(
         'meta_key' => 'phila_template_select',
         'meta_value' => 'department_stub',
         'meta_compare' => '!=',
+        'post_parent__not_in' => array('0')
       ),
     )
   )
