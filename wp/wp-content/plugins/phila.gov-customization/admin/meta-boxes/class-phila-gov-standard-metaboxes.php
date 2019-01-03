@@ -713,105 +713,105 @@ class Phila_Gov_Standard_Metaboxes {
 
   public static function phila_meta_var_callout (){
     return array(
-       // array(
-       //   'name' => 'Status',
-       //   'id'   => 'phila_callout_type',
-       //   'type' => 'select',
-       //   'options' => array(
-       //     'default' => 'Default',
-       //     'important' => 'Important'
-       //   ),
-       // ),
-       array(
-         'name' => ' Text',
-         'id'   => 'phila_callout_text',
-         'type' => 'textarea',
-       ),
-     );
-   }
+      // array(
+      //   'name' => 'Status',
+      //   'id'   => 'phila_callout_type',
+      //   'type' => 'select',
+      //   'options' => array(
+      //     'default' => 'Default',
+      //     'important' => 'Important'
+      //   ),
+      // ),
+      array(
+        'name' => ' Text',
+        'id'   => 'phila_callout_text',
+        'type' => 'textarea',
+      ),
+    );
+  }
 
 
-   // Multiple Call to Action (CTA) Panels
+  // Multiple Call to Action (CTA) Panels
   public static function phila_meta_var_call_to_action_multi (){
 
     return array(
       array(
         'id'  => 'phila_call_to_action_section',
-         'type' => 'group',
-         'fields' => array(
-           array(
-             'name'  => 'Section Title',
-             'id'    => 'phila_action_section_title_multi',
-             'type'  => 'text',
-             'class'  => 'percent-100'
-           ),
-           array(
-             'id'  => 'phila_call_to_action_multi_group',
-             'type' => 'group',
-             'clone'  => true,
-             'max_clone' => 4,
-             'sort_clone' => true,
-             'fields' => array(
-               array(
-                 'name'  => 'Link text',
-                 'id'    => 'phila_action_panel_cta_text_multi',
-                 'type'  => 'text',
-                 'class' => 'action-panel-cta-text',
-               ),
-               array(
-                 'name'  => 'Summary',
-                 'id'    => 'phila_action_panel_summary_multi',
-                 'type'  => 'textarea',
-                 'class' => 'action-panel-details',
-               ),
-               array(
-                 'name'  => 'Icon',
-                 'id'    => 'phila_action_panel_fa_multi',
-                 'type'  => 'text',
-                 'class' => 'action-panel-fa',
-               ),
-               array(
-                 'name'  => 'Add a circle background?',
-                 'id'    => 'phila_action_panel_fa_circle_multi',
-                 'type'  => 'switch',
-                 'class' => 'action-panel-fa',
-                 'std'  => 1,
-                 'on_label'  => 'Yes',
-                 'off_label' => 'No'
+        'type' => 'group',
+        'fields' => array(
+          array(
+            'name'  => 'Section Title',
+            'id'    => 'phila_action_section_title_multi',
+            'type'  => 'text',
+            'class'  => 'percent-100'
+          ),
+          array(
+            'id'  => 'phila_call_to_action_multi_group',
+            'type' => 'group',
+            'clone'  => true,
+            'max_clone' => 4,
+            'sort_clone' => true,
+            'fields' => array(
+              array(
+                'name'  => 'Link text',
+                'id'    => 'phila_action_panel_cta_text_multi',
+                'type'  => 'text',
+                'class' => 'action-panel-cta-text',
+              ),
+              array(
+                'name'  => 'Summary',
+                'id'    => 'phila_action_panel_summary_multi',
+                'type'  => 'textarea',
+                'class' => 'action-panel-details',
+              ),
+              array(
+                'name'  => 'Icon',
+                'id'    => 'phila_action_panel_fa_multi',
+                'type'  => 'text',
+                'class' => 'action-panel-fa',
+              ),
+              array(
+                'name'  => 'Add a circle background?',
+                'id'    => 'phila_action_panel_fa_circle_multi',
+                'type'  => 'switch',
+                'class' => 'action-panel-fa',
+                'std'  => 1,
+                'on_label'  => 'Yes',
+                'off_label' => 'No'
 
-               ),
-               array(
-                 'name'  => 'URL to content',
-                 'id'    => 'phila_action_panel_link_multi',
-                 'type'  => 'text',
-                 'class' => 'action-panel-link',
-                 'columns'  => 12,
-               ),
-               Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
-             ),
-           ),
-           array(
-             'name'  =>  'See all title (optional)',
-             'id'    => 'phila_url_title',
-             'type'  => 'text',
-             'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
-           ),
-           array(
-             'name'  =>  'See all URL (optional)',
-             'id'    => 'phila_url',
-             'type'  => 'url',
-             'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
-           ),
-           array(
-             'name'  =>  'Background Image',
-             'id'    => 'phila_bg_image',
-             'type'  => 'file_input',
-             'visible' => array('phila_full_options_select', '=', 'phila_get_involved'),
-           ),
-         ),
-       ),
-     );
-   }
+              ),
+              array(
+                'name'  => 'URL to content',
+                'id'    => 'phila_action_panel_link_multi',
+                'type'  => 'text',
+                'class' => 'action-panel-link',
+                'columns'  => 12,
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
+            ),
+          ),
+          array(
+            'name'  =>  'See all title (optional)',
+            'id'    => 'phila_url_title',
+            'type'  => 'text',
+            'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
+          ),
+          array(
+            'name'  =>  'See all URL (optional)',
+            'id'    => 'phila_url',
+            'type'  => 'url',
+            'visible' => array('phila_full_options_select', '=', 'phila_resource_list'),
+          ),
+          array(
+            'name'  =>  'Background Image',
+            'id'    => 'phila_bg_image',
+            'type'  => 'file_input',
+            'visible' => array('phila_full_options_select', '=', 'phila_get_involved'),
+          ),
+        ),
+      ),
+    );
+  }
   // List of links with FontAwesome icons
   public static function phila_meta_var_list_items (){
 
