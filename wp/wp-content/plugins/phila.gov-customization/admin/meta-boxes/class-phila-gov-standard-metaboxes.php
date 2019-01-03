@@ -151,7 +151,6 @@ class Phila_Gov_Standard_Metaboxes {
                   'type' => 'phone',
                   'desc' => '(###)-###-####',
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Website', 'phila_web_link', false),
                 array(
                   'id' => 'phila_connect_social',
                   'type' => 'group',
@@ -1182,7 +1181,7 @@ public static function phila_meta_var_connect(){
           'name' => 'Bio',
           'id'   => 'bio',
           'type' => 'wysiwyg',
-          'options' =>    Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
+          'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
         ),
       )
     );
