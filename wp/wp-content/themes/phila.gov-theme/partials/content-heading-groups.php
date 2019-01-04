@@ -4,7 +4,7 @@
  * Partial for heading groups
  * Required params: $heading_groups
  */
- ?>
+?>
 <?php
 
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
@@ -89,51 +89,51 @@
             </div>
             <?php endif;?>
           <?php endif;?>
-          <?php if ( $email !== '' ) : ?>
-                      <div class="pbm"><a href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
-                    <?php endif;?>
-                    <div class="ptxs">
-                      <?php if ( $facebook !== '') : ?>
-                        <span class="pvxs">
-                          <a href="<?php echo $facebook ?>" class="phs" data-analytics="social">
-                            <i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
-                            <span class="show-for-sr">Facebook</span>
-                          </a>
-                        </span>
-                      <?php endif; ?>
-                      <?php if ($twitter !== '') : ?>
-                        <span class="pvxs">
-                          <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
-                            <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
-                            <span class="show-for-sr">Twitter</span>
-                          </a>
-                        </span>
-                      <?php endif; ?>
-                      <?php if ( $instagram !== '') : ?>
-                        <span class="pvxs">
-                          <a href="<?php echo $instagram; ?>" class="phs" data-analytics="social">
-                          <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
-                            <span class="show-for-sr">Instagram</span>
-                          </a>
-                        </span>
-                      <?php endif; ?>
-                      <?php if ( $youtube !== '') : ?>
-                        <span class="pvxs">
-                          <a href="<?php echo $youtube ?>" class="phs" data-analytics="social">
-                          <i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
-                            <span class="show-for-sr">Youtube channel</span>
-                          </a>
-                        </span>
-                      <?php endif; ?>
-                      <?php if ( $flickr !== '') : ?>
-                        <span class="pvxs">
-                          <a href="<?php echo $flickr; ?>" class="phs" data-analytics="social">
-                          <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
-                            <span class="show-for-sr">Flickr stream</span>
-                          </a>
-                        </span>
-                      <?php endif; ?>
-                    </div>
+          <?php if ( !empty( $email ) ) : ?>
+          <div class="pbm"><a href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
+          <?php endif;?>
+          <div class="ptxs">
+            <?php if ( !empty( $facebook ) ) : ?>
+              <span class="pvxs">
+                <a href="<?php echo $facebook ?>" class="phs" data-analytics="social">
+                  <i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
+                  <span class="show-for-sr">Facebook</span>
+                </a>
+              </span>
+            <?php endif; ?>
+            <?php if ( !empty( $twitter ) ) : ?>
+              <span class="pvxs">
+                <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
+                  <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                  <span class="show-for-sr">Twitter</span>
+                </a>
+              </span>
+            <?php endif; ?>
+            <?php if ( !empty( $instagram ) ) : ?>
+              <span class="pvxs">
+                <a href="<?php echo $instagram; ?>" class="phs" data-analytics="social">
+                <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
+                  <span class="show-for-sr">Instagram</span>
+                </a>
+              </span>
+            <?php endif; ?>
+            <?php if ( !empty( $youtube ) ) : ?>
+              <span class="pvxs">
+                <a href="<?php echo $youtube ?>" class="phs" data-analytics="social">
+                <i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
+                  <span class="show-for-sr">Youtube channel</span>
+                </a>
+              </span>
+            <?php endif; ?>
+            <?php if ( !empty( $flickr ) )  : ?>
+              <span class="pvxs">
+                <a href="<?php echo $flickr; ?>" class="phs" data-analytics="social">
+                <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
+                  <span class="show-for-sr">Flickr stream</span>
+                </a>
+              </span>
+            <?php endif; ?>
+          </div>
             <?php if ( !empty($content['phila_stepped_select']) ) :?>
               <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);?>
               <div class="phm-mu">
