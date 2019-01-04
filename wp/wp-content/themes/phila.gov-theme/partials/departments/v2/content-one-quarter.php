@@ -128,11 +128,11 @@
                     <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
                   </div>
                   <?php endif;?>
-                    <?php if ( $email !== '' ) : ?>
+                    <?php if ( !empty( $email ) ) : ?>
                       <div class="pbm"><a href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
                     <?php endif;?>
                     <div class="ptxs">
-                      <?php if ( $facebook !== '') : ?>
+                      <?php if ( !empty( $facebook ) ) : ?>
                         <span class="pvxs">
                           <a href="<?php echo $facebook ?>" class="phs" data-analytics="social">
                             <i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
@@ -140,7 +140,7 @@
                           </a>
                         </span>
                       <?php endif; ?>
-                      <?php if ($twitter !== '') : ?>
+                      <?php if ( !empty( $twitter) ) : ?>
                         <span class="pvxs">
                           <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
                             <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
@@ -148,7 +148,7 @@
                           </a>
                         </span>
                       <?php endif; ?>
-                      <?php if ( $instagram !== '') : ?>
+                      <?php if ( !empty( $instagram) ) : ?>
                         <span class="pvxs">
                           <a href="<?php echo $instagram; ?>" class="phs" data-analytics="social">
                           <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
@@ -156,7 +156,7 @@
                           </a>
                         </span>
                       <?php endif; ?>
-                      <?php if ( $youtube !== '') : ?>
+                      <?php if ( !empty( $youtube ) ) : ?>
                         <span class="pvxs">
                           <a href="<?php echo $youtube ?>" class="phs" data-analytics="social">
                           <i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
@@ -164,7 +164,7 @@
                           </a>
                         </span>
                       <?php endif; ?>
-                      <?php if ( $flickr !== '') : ?>
+                      <?php if ( !empty( $flickr ) ) : ?>
                         <span class="pvxs">
                           <a href="<?php echo $flickr; ?>" class="phs" data-analytics="social">
                           <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
