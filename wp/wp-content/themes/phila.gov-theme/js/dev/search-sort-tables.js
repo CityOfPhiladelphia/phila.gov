@@ -20,9 +20,9 @@ module.exports = $(function(){
     table.on('updated', function (list) {
 
       if (list.matchingItems.length > 0) {
-        $('.no-results').hide()
+        $('#sortable-table-' + j + ' .no-results').hide()
       } else {
-        $('.no-results').show()
+        $('#sortable-table-' + j + ' .no-results').show()
       }
       checkNavButtons()
       console.log('#sortable-table-' + j)
