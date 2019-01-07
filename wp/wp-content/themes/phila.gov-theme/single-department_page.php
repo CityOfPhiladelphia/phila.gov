@@ -62,7 +62,7 @@ get_header(); ?>
 
       get_template_part( 'templates/single', 'off-site' );
 
-     }else{
+    }else{
 
       while ( have_posts() ) : the_post();
 
