@@ -187,7 +187,7 @@ if ( $staff_member_loop->have_posts() ):
     <section class="row mbl all-staff-table">
       <div class="large-24 columns">
       <?php if ($all_staff == 1 || $unit_count >= 0) : ?>
-        <div id="sortable-table-<?php echo $unit_count ?>" class="search-sort-table">
+        <div id="sortable-table-<?php echo ($unit_count > 1 ? $unit_count : '0' )  ?>" class="search-sort-table">
           <div class="search">
             <label for="table-search"><span class="screen-reader-text">Filter<?php echo ( $unit_count >= 1 ) ? ' unit' : '' ?> staff members by name or title</span></label>
             <input type="text" class="table-search search-field" placeholder="Filter<?php echo ( $unit_count >= 1 ) ? ' unit' : '' ?> staff members by name or title" />
@@ -215,11 +215,11 @@ if ( $staff_member_loop->have_posts() ):
           <?php if ( $all_staff == 1 || $unit_count >= 0 ) : ?>
             <ul class="pagination-wrapper no-js">
               <li class="prev">
-                <a class="prev-<?php echo $unit_count?>" href="#">Previous</a>
+                <a class="prev-<?php echo ($unit_count > 1 ? $unit_count : '0' )?>" href="#">Previous</a>
               </li>
             <ul class="pagination"></ul>
             <li class="next">
-              <a class="next-<?php echo $unit_count?>" href="#">Next</a>
+              <a class="next-<?php echo ($unit_count > 1 ? $unit_count : '0' )?>" href="#">Next</a>
             </li>
           </ul>
         <?php endif ?>
