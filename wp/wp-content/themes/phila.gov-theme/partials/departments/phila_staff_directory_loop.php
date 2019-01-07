@@ -169,22 +169,27 @@ if ( $staff_member_loop->have_posts() ):
   <?php endif; ?>
   <?php if (!empty($staff_leadership_array)):?>
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
-        <div class="large-24 columns">
-          <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
-            <h2 class="contrast">Leadership</h2>
-          <?php endif; ?>
-          <?php
-          ksort($staff_leadership_array);
-          foreach ($staff_leadership_array as $key => $value):
-            echo $value;
-          endforeach;
-          ?>
-        </div>
+      <div class="large-24 columns">
+        <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
+          <h2 class="contrast leadership">Leadership</h2>
+        <?php endif; ?>
+        <?php if ( isset( $unit )  ) : ?>
+          <h4 class="leadership">Leadership</h4>
+        <?php endif; ?>
+        <?php
+        ksort($staff_leadership_array);
+        foreach ($staff_leadership_array as $key => $value):
+          echo $value;
+        endforeach;
+        ?>
+      </div>
     </div>
   <?php endif; ?>
   <!-- Begin Staff Directory Table -->
   <?php if (!$staff_table_output == ''): ?>
-    <section class="row mbl all-staff-table">
+  <?php $unit_size = sizeof($unit_data);?>
+  
+    <section class="row mbl all-staff-table <?php echo ( $unit_count ==  --$unit_size ) ? '' : 'bdr-bottom' ?>">
       <div class="large-24 columns">
       <?php if ($all_staff == 1 || $unit_count >= 0) : ?>
         <div id="sortable-table-<?php echo ( $all_staff == 1 ? '0' : $unit_count )  ?>" class="search-sort-table">
