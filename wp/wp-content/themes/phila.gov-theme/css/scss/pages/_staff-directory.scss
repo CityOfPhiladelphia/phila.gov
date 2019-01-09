@@ -69,3 +69,10 @@
     }
   }
 }
+
+.staff, 
+.staff-directory{
+  .email{
+    text-transform: lowercase;
+  }
+}
