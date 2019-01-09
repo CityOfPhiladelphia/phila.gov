@@ -22,7 +22,7 @@ module.exports = $(function(){
       if (list.matchingItems.length > 0) {
         $('#sortable-table-' + j + ' .no-results').hide()
       } else {
-        $('#sortable-table-' + j + ' .no-results').show()
+        $('#sortable-table-' + j + '.no-results').show()
       }
       checkNavButtons()
       console.log('#sortable-table-' + j)
