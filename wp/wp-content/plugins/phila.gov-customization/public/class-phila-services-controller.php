@@ -161,16 +161,18 @@ class Phila_Services_Controller {
       }
     }
 
+    if (isset( $schema['properties']['desc'] )) {
+      $post_data['desc'] = (string) rwmb_meta('phila_meta_desc', '', $post->ID);
+    }
+
     if (isset( $schema['properties']['link'] )) {
       $link = get_permalink($post->ID);
       $parsed_link = parse_url($link);
       $post_data['link']  = (string) 'https://www.phila.gov' . $parsed_link['path'];
-
     }
 
     if (isset( $schema['properties']['categories'] )) {
       $service_categories = get_the_terms($post->ID, 'service_type');
-
       $post_data['categories']  = (array) $service_categories;
     }
 
@@ -231,12 +233,8 @@ class Phila_Services_Controller {
           'type'         => 'string',
           'readonly'     => true,
         ),
-        'template'  => array(
-          'description' => esc_html__('The template this object is using.', 'phila-gov'),
-          'type'  => 'string',
-        ),
-        'date'  => array(
-          'description' => esc_html__('The date this object was published.', 'phila-gov'),
+        'desc'  => array(
+          'description' => esc_html__('Description of this page.', 'phila-gov'),
           'type'  => 'string',
         ),
         'link'  => array(
