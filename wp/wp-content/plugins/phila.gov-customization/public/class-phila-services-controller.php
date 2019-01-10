@@ -45,27 +45,37 @@ class Phila_Services_Controller {
   */
   public function get_items( $request ) {
 
-    $hidden_children = array(
-      'post_type' => array('service_page'),
-      'posts_per_page'  => -1,
-      'order' => 'desc',
-      'orderby' => 'date',
+    $get_pages_args = array(
       'hierarchical' => 0,
       'meta_key' => 'phila_hide_children',
       'meta_value' => '1',
       'post_type' => 'service_page',
     );
+    $pages = get_pages($get_pages_args);
 
-    $hidden_pages = get_pages($hidden_children);
+    $children_array = array();
+    $hidden_children  = array();
+
+    foreach ( $pages as $page ){
+      $args = array(
+        'post_parent' => $page->ID,
+      );
+      $children_array[] = get_children( $args );
+    }
+    /* Hide children of parent pages marked as such */
+    foreach ($children_array as $key => $value) {
+      foreach ($value as $child_key => $child_value) {
+        array_push($hidden_children, $child_key);
+      }
+    }
 
     $args = array(
         'post_type'  => 'service_page',
         'posts_per_page'  => -1,
         'order' => 'ASC',
         'orderby' => 'title',
-        'post__not_in' => $hidden_pages,
+        'post__not_in' => $hidden_children,
         'meta_query' => array(
-          'relation' => 'OR',
           array(
             'key'     => 'phila_template_select',
             'value' => array( 'service_stub' ),
