@@ -16,9 +16,9 @@
       </form>
     </div>
     <div id="a-z-filter-list" class="medium-16 columns results a-z-list">
-      <form class="search" v-if="options.searchBox">
-        <input class="search-field" type="text" v-model="options.searchValue" :placeholder="options.labels.searchPlaceholder" @keyup="updateResultsList()">
-      </form>
+      <div class="search" v-if="options.searchBox">
+        <input class="search-field" type="text" v-model="options.searchValue" :placeholder="options.labels.searchPlaceholder" @keyup="updateResultsList()" v-on:keydown.enter.prevent="">
+      </div>
       <nav class="show-for-medium" v-if="options.azAnchors && options.azGroup">
         <ul class="inline-list mbm pan mln h4">
           <li v-for="letter in alphabetLetters" :key="letter">
