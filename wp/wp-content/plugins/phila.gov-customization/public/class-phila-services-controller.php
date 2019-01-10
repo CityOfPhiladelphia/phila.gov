@@ -165,14 +165,14 @@ class Phila_Services_Controller {
 
     if (isset( $schema['properties']['title'] )) {
       if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
-          $post_data['title'] =  (string) rwmb_meta('phila_service_alt_title', '', $post->ID);
+          $post_data['title'] =  (string) trim( rwmb_meta('phila_service_alt_title', '', $post->ID ) );
         }else{
-          $post_data['title']  =  (string) html_entity_decode($post->post_title);
+          $post_data['title']  =  (string) trim( html_entity_decode($post->post_title ) );
       }
     }
 
     if (isset( $schema['properties']['desc'] )) {
-      $post_data['desc'] = (string) rwmb_meta('phila_meta_desc', '', $post->ID);
+      $post_data['desc'] = (string) trim( rwmb_meta('phila_meta_desc', '', $post->ID ) );
     }
 
     if (isset( $schema['properties']['link'] )) {
