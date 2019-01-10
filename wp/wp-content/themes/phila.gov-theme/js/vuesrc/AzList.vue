@@ -1,5 +1,5 @@
 <template>
-  <div id="azlist-component" class="row">
+  <div class="row">
     <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper="">
       <h2 class="h4 mtn">{{ options.labels.filterByText }}</h2> 
       <form>
@@ -19,15 +19,13 @@
       <form class="search" v-if="options.searchBox">
         <input class="search-field" type="text" v-model="options.searchValue" :placeholder="options.labels.searchPlaceholder" @keyup="updateResultsList()">
       </form>
-      <div v-if="options.azAnchors && options.azGroup">
-        <nav class="show-for-medium">
-          <ul class="inline-list mbm pan mln h4">
-            <li v-for="letter in alphabetLetters" :key="letter">
-              <a href="#" v-scroll-to="getScrollToSettings(letter)" :disabled="isLetterInResults(letter)" :aria-disabled="isLetterInResults(letter)">{{ letter }}</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <nav class="show-for-medium" v-if="options.azAnchors && options.azGroup">
+        <ul class="inline-list mbm pan mln h4">
+          <li v-for="letter in alphabetLetters" :key="letter">
+            <a href="#" v-scroll-to="getScrollToSettings(letter)" :disabled="isLetterInResults(letter)" :aria-disabled="isLetterInResults(letter)">{{ letter }}</a>
+          </li>
+        </ul>
+      </nav>
       <div class="list">
         <template v-if="hasResults()">
           <template v-if="options.azGroup">
