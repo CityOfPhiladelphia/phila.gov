@@ -47,13 +47,13 @@ if (window.location.pathname === '/the-latest/archives/') {
 }else if(window.location.pathname === '/services/'){
 
   async function getAzListCategories() {
-    return axios.get('https://staging-www.phila.gov/wp-json/services/v1/categories').then((response) => {
+    return axios.get('https://admin.phila.gov/wp-json/services/v1/categories').then((response) => {
       return response.data
     })
   }
   
   async function getAzList() {
-    return axios.get('https://staging-www.phila.gov/wp-json/services/v1/directory').then((response) => {
+    return axios.get('https://admin.phila.gov/wp-json/services/v1/directory').then((response) => {
       return response.data.map((item) => {
   
         let categories = item.categories.map((cat) => {
