@@ -31,7 +31,7 @@
           <template v-if="options.azGroup">
             <div v-for="(list, letter) in resultsList" :key="letter">
               <div class="row collapse a-z-group">
-                <hr :id="'l-' + letter" class="letter separator" :data-alphabet="letter">
+                <hr :id="'l-' + letter" class="letter separator" :data-alphabet="numericLetterFilter(letter)">
                 <div class="small-20 medium-24 columns">
                   <div class="small-21 columns result mvm">
                     <div v-for="(listItem, index) in list" :key="'g-' + letter + index">
@@ -229,18 +229,19 @@ export default {
     sortResultsListByLabel(list) {
       return list.sort((a, b) => {
         if (a.title < b.title) {
-          return -1
-        }
+            return -1
+          }
         if (a.title > b.title) {
           return 1
         }
-        return 0
       })
     },
     groupAzList(list) {
 
       let combinedList = {}
       let orderedCombinedList = {}
+      let alpha = {}
+      let numeric = {}
       
       list.forEach((item, index) => {
         let letter = item.title.charAt(0)
@@ -257,11 +258,19 @@ export default {
       }, this)
       
       //sorts letters
+
       Object.keys(combinedList).sort().forEach(function(key) {
-        orderedCombinedList[key] = combinedList[key];
+        if (isNaN(key)) {
+          alpha[key] = combinedList[key];  
+        } else {
+          numeric['N-' + key] = combinedList[key];  
+        }
       });
 
-      return orderedCombinedList
+      deepMerge(alpha, numeric);
+
+      return alpha
+
     },
     filterCheckbox(list) {
       if (this.checkedItems.length > 0) {
@@ -297,6 +306,12 @@ export default {
       if (this.options.azAnchors && this.options.azGroup) {
         return !this.resultsList.hasOwnProperty(letter)
       }
+    },
+    numericLetterFilter(letter) {
+      if (typeof letter == 'string') {
+        return letter.replace('N-','')
+      }
+      return letter
     },
     getScrollToSettings(letter) {
       return deepMerge({el: `#l-${letter}`}, this.options.scrollToSettings) 
