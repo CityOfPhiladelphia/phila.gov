@@ -46,6 +46,9 @@ if (window.location.pathname === '/the-latest/archives/') {
   })
 }else if(window.location.pathname === '/services/'){
 
+  //add loading indicator
+  $("#a-z-filter-list-loading").html('<i class="fas fa-spinner fa-spin fa-3x loadingdir"></i>');
+
   async function getAzListCategories() {
     return axios.get('https://admin.phila.gov/wp-json/services/v1/categories').then((response) => {
       return response.data
@@ -80,6 +83,9 @@ if (window.location.pathname === '/the-latest/archives/') {
   
     const categories = await getAzListCategories()
     const list = await getAzList()
+
+    //remove loading indicator
+    $("#a-z-filter-list-loading").remove();
   
     new Vue({
       el: '#a-z-filter-list',
