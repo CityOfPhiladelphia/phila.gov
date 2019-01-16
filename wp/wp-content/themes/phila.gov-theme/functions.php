@@ -316,7 +316,7 @@ function phila_gov_scripts() {
   wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
 
   if( is_page_template( 'templates/the-latest-archive.php' ) ||     is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
-  is_post_type_archive( 'programs' ) ){
+  is_post_type_archive( ['programs', 'service_page'] ) ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
 
