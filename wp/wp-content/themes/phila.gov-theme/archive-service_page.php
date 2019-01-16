@@ -12,6 +12,7 @@ get_header(); ?>
     <div class="row">
       <header class="small-24 columns">
         <?php printf(__('<h1 class="contrast ptm">Service directory</h1>', 'phila-gov') ); ?>
+        <div id="a-z-filter-list-loading" class="center"></div>
       </header>
     </div>
     <div id="a-z-filter-list"></div>
