@@ -70,15 +70,16 @@
         <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
           <tr><th class="title">Title</th><th class="date">Publish date</th><th>Department</th></tr>
         </thead>
-        <paginate name="posts"
+        <paginate 
+          name="posts"
           :list="posts"
           class="paginate-list"
           tag="tbody"
           :per="40">
           <tr v-for="post in paginated('posts')"
-          :key="post.id"
-          class="vue-clickable-row"
-          v-on:click.stop.prevent="goToPost(post.link)">
+            :key="post.id"
+            class="vue-clickable-row"
+            v-on:click.stop.prevent="goToPost(post.link)">
             <td class="title">
               <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
                 {{ post.title }}
@@ -399,30 +400,6 @@ export default {
 .filter-by-owner .v-select.single .selected-tag{
   background-color: #f0f0f0;
   border: none;
-}
-ul.paginate-links {
-  display: inline-block;
-  margin:0;
-  padding:0;
-  float:right;
-}
-.paginate-links li{
-  display: inline-block;
-  border-right: 2px solid white;
-  margin-bottom:1rem;
-}
-.paginate-links a{
-  display: block;
-  padding: .5rem;
-  background: #0f4d90;
-  color:white;
-}
-.paginate-links a{
-  color:white;
-}
-.paginate-links li.active a{
-  background: white;
-  color: #444;
 }
 .vdp-datepicker [type='text'] {
   height: 2.4rem;
