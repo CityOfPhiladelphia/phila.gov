@@ -11,14 +11,16 @@
       <div class="h5">Filter results</div>
       <fieldset>
         <div class="grid-x grid-margin-x mbl">
-          <div v-for="(value, key) in templates" class="cell medium-auto">
+          <div v-for="(value, key) in templates"
+            :key="key" 
+            class="cell medium-auto">
             <input type="radio"
-            v-model="checkedTemplates"
-            v-bind:value="key"
-            v-bind:name="key"
-            v-bind:id="key"
-            @click="onSubmit" />
-            <label v-bind:for="key" class="post-label" v-bind:class="'post-label--' + key">{{ value }}</label>
+              v-model="checkedTemplates"
+              :value="key"
+              :name="key"
+              :id="key"
+              @click="onSubmit" />
+            <label :for="key" class="post-label" :class="'post-label--' + key">{{ value }}</label>
           </div>
         </div>
       </fieldset>
@@ -81,13 +83,13 @@
             class="vue-clickable-row"
             v-on:click.stop.prevent="goToPost(post.link)">
             <td class="title">
-              <a v-bind:href="post.link" v-on:click.prevent="goToPost(post.link)">
+              <a :href="post.link" v-on:click.prevent="goToPost(post.link)">
                 {{ post.title }}
               </a>
             </td>
             <td class="date">{{ post.date  | formatDate }}</td>
             <td class="categories">
-              <span v-for="(category, i) in post.categories">
+              <span v-for="(category, i) in post.categories" :key="i">
                 <span>{{ category.slang_name }}</span><span v-if="i < post.categories.length - 1">,&nbsp;</span>
               </span>
             </td>
@@ -95,15 +97,15 @@
         </paginate>
       </table>
       <paginate-links for="posts"
-      :async="true"
-      :limit="3"
-      :show-step-links="true"
-      :hide-single-page="false"
-      :step-links="{
-        next: 'Next',
-        prev: 'Previous'
-      }"
-      v-show="!loading && !emptyResponse && !failure"></paginate-links>
+        :async="true"
+        :limit="3"
+        :show-step-links="true"
+        :hide-single-page="false"
+        :step-links="{
+          next: 'Next',
+          prev: 'Previous'
+        }"
+        v-show="!loading && !emptyResponse && !failure"></paginate-links>
     </div>
     <div v-else>
       <div v-show="!emptyResponse" class="h3 mtm center">Sorry, there are no results.
