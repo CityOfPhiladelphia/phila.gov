@@ -56,11 +56,11 @@
           <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
             <tr>
               <th class="table-sort title"
-              @click="sort('title')" v-bind:class="sortTitle"><span>Title</span></th>
+              @click="sort('title')" :class="sortTitle"><span>Title</span></th>
 
               <th class="table-sort date"
               @click="sort('date')"
-              v-bind:class="sortDate"><span>Publish date</span></th>
+              :class="sortDate"><span>Publish date</span></th>
               <th class="department">Department</th>
             </tr>
           </thead>
@@ -75,13 +75,13 @@
             class="vue-clickable-row"
             v-on:click.stop.prevent="goToDoc(document.link)">
               <td class="title">
-                <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
+                <a :href="document.link" v-on:click.prevent="goToDoc(document.link)">
                   {{ document.title }}
                 </a>
               </td>
               <td class="date">{{ document.date  | formatDate }}</td>
               <td class="categories">
-                <span v-for="(category, i) in document.categories">
+                <span v-for="(category, i) in document.categories" :key="i">
                   <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
                 </span>
               </td>
