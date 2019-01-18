@@ -18,31 +18,30 @@
             <div class="accordion-item is-active" data-accordion-item>
               <a href="#" class="h4 accordion-title mbn">Filter by audience</a>
               <div class="accordion-content" data-tab-content>
-                <fieldset>
-                  <div v-for="(value, key) in audience">
-                    <input type="checkbox"
+                <div 
+                  v-for="(value, key) in audience" :key="key">
+                  <input type="checkbox"
                     v-model="checkedAudiences"
-                    v-bind:value="value.slug"
-                    v-bind:name="value.slug"
-                    v-bind:id="value.slug"
+                    :value="value.slug"
+                    :name="value.slug"
+                    :id="value.slug"
                     @click="filterResults"/>
-                    <label v-bind:for="value.slug">{{ value.name }}</label>
-                  </div>
-                </fieldset>
+                  <label :for="value.slug">{{ value.name }}</label>
+                </div>
               </div>
             </div>
             <div class="accordion-item is-active" data-accordion-item>
               <a href="#" class="h4 accordion-title mbn">Filter by category</a>
                 <div class="accordion-content" data-tab-content>
                   <fieldset>
-                    <div v-for="(value, key) in service_type">
+                    <div v-for="(value, key) in service_type" :key="key">
                       <input type="checkbox"
-                      v-model="checkedServiceType"
-                      v-bind:value="value.slug"
-                      v-bind:name="value.slug"
-                      v-bind:id="value.slug"
-                      @click="filterResults"/>
-                      <label v-bind:for="value.slug"><span v-html="value.name"></span></label>
+                        v-model="checkedServiceType"
+                        :value="value.slug"
+                        :name="value.slug"
+                        :id="value.slug"
+                        @click="filterResults"/>
+                      <label :for="value.slug"><span v-html="value.name"></span></label>
                     </div>
                 </fieldset>
               </div>
@@ -59,35 +58,51 @@
           <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
           <div class="grid-x grid-margin-x grid-padding-x program-archive-results" v-show="!loading && !emptyResponse && !failure"></div>
         </div>
-        <div id="program-results" class="grid-x grid-margin-x">
-          <div v-for="program in programs"
-          :key="program.id"
-          class="medium-12 cell mbl">
-            <a class="card program-card" v-bind:href="program.link">
-              <img v-bind:src="program.image" alt=""/>
+        <paginate 
+          name="programs"
+          :list="programs"
+          id="program-results"
+          class="grid-x grid-margin-x paginate-list"
+          tag="div"
+          :per="16">
+            <div v-for="program in paginated('programs')"
+              :key="program.id"
+              class="medium-12 cell mbl">
+              <a class="card program-card" :href="program.link">
+              <div class="trim"><img :src="program.image" alt="" class="program-image"/></div>
               <div class="content-block">
-                <h3>{{program.title}}</h3>
+              <h3 :class="{ external: [program.link].includes('http') }">{{program.title}}</h3>
                 <p>{{program.short_description}}</p>
               </div>
             </a>
             </div>
-          </div>
+          </paginate>
             <div id="related-services" class="grid-x grid-margin-x grid-padding-x" v-if="relatedServices.length !== 0">
               <div class="medium-24 cell">
                 <h3 class="black bg-ghost-gray phm-mu mtl mbm">Related services</h3>
                 <ul class="phm-mu">
                   <li v-for="relatedService in relatedServices"
                   :key="relatedService.id">
-                  <a v-bind:href="relatedService.link">{{relatedService.name}}</a>
+                  <a :href="relatedService.link">{{relatedService.name}}</a>
                 </li>
                 </ul>
               </div>
             </div>
+            <paginate-links for="programs"
+              :async="true"
+              :limit="3"
+              :show-step-links="true"
+              :hide-single-page="false"
+              :step-links="{
+                next: 'Next',
+                prev: 'Previous'
+              }"
+              @change="onLangsPageChange"
+              v-show="!loading && !emptyResponse && !failure">
+            </paginate-links>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -115,6 +130,8 @@ export default {
 
       searchedVal: '',
 
+      paginate: ['programs'],
+
       loading: false,
       emptyResponse: false,
       failure: false,
@@ -130,6 +147,21 @@ export default {
     this.loading = true
   },
   methods: {
+    externalLink: function(what){
+        console.log(this.programs)
+      console.log(what)
+    if(this.programs.link.indexOf('/programs/') > -1){
+      return 'exernal'
+      
+    }else{
+      return 'poo'
+      }
+    },
+    onLangsPageChange (toPage, fromPage) { 
+      window.scrollTo({
+        top: 0, 
+        behavior: 'smooth'});
+    },
     getAllPrograms: function () {
       this.loading = true
       //TODO use in instead of undefined
@@ -141,6 +173,8 @@ export default {
       })
       .then(response => {
         this.programs = response.data
+        console.log(this.programs)
+
         this.successfulResponse
       })
       .catch(e => {
@@ -184,7 +218,7 @@ export default {
       ){
         this.relatedServices = ''
       }else{
-        this.$nextTick(function () {
+        //this.$nextTick(function () {
           axios.get(programsEndpoint + 'related_service', { params
             })
             .then(response => {
@@ -195,7 +229,7 @@ export default {
               this.failure = true
               this.loading = false
           })
-        })
+        //})
       }
     },
     onSubmit: function (event) {
@@ -225,30 +259,31 @@ export default {
     filterResults: function (event) {
       this.loading = true
 
-      jQuery('html,body').animate({scrollTop:0},700);
+      window.scrollTo({
+        top: 0, 
+        behavior: 'smooth'
+      });
 
-      this.$nextTick(function () {
-        var params = {
-          'count': 50,
-          'audience': this.checkedAudiences,
-          'service_type': this.checkedServiceType
-        }
-        if (this.searchedVal != '')
-            params.s = this.searchedVal
+      var params = {
+        'count': 50,
+        'audience': this.checkedAudiences,
+        'service_type': this.checkedServiceType
+      }
+      if (this.searchedVal != '')
+          params.s = this.searchedVal
 
-          this.getRelatedServices(params)
+        this.getRelatedServices(params)
 
-        axios.get(programsEndpoint + 'archives', {
-          params
-          })
-          .then(response => {
-            this.programs = response.data
-            this.successfulResponse
-          })
-          .catch(e => {
-            this.failure = true
-            this.loading = false
+      axios.get(programsEndpoint + 'archives', {
+        params
         })
+        .then(response => {
+          this.programs = response.data
+          this.successfulResponse
+        })
+        .catch(e => {
+          this.failure = true
+          this.loading = false
       })
     },
   },
@@ -268,4 +303,14 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+@media screen and (min-width: 64em) {
+  .trim{
+    max-height: 188px;
+    overflow: hidden;
+  }
+}
+.paginate-links {
+  float:right;
+}
+</style>
