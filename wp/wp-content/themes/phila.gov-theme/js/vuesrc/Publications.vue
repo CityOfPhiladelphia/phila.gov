@@ -373,30 +373,7 @@ export default {
   background-color: #f0f0f0;
   border: none;
 }
-ul.paginate-links {
-  display: inline-block;
-  margin:0;
-  padding:0;
-  float:right;
-}
-.paginate-links li{
-  display: inline-block;
-  border-right: 2px solid white;
-  margin-bottom:1rem;
-}
-.paginate-links a{
-  display: block;
-  padding: .5rem;
-  background: #0f4d90;
-  color:white;
-}
-.paginate-links a{
-  color:white;
-}
-.paginate-links li.active a{
-  background: white;
-  color: #444;
-}
+
 .vdp-datepicker [type='text'] {
   height: 2.4rem;
 }
