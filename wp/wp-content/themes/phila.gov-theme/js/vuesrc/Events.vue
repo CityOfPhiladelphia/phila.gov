@@ -50,7 +50,7 @@
     <div v-show="emptyResponse" class="h3 mtm center">Sorry, there are no results.</div>
     <div v-show="failure" class="h3 mtm center">Sorry, there was a problem. Please try again.</div>
     <div v-show="!loading && !emptyResponse && !failure">
-      <div v-for="(event, index) in filteredEvents"
+      <div v-for="(event) in filteredEvents"
         :key="event.id">
           <div v-if="event.id" class="event-container">
             <div class="grid-x grid-padding-x event-row medium-collapse"
@@ -91,8 +91,8 @@
         <p class="h3 mtm center">Sorry, there are no results for that search.</p>
       </div>
     </div>
-      <div v-for="(event, index) in events"
-        :key="event.index">
+      <div v-for="(event) in events"
+        :key="event.id">
         <modal
         :name="event.id"
         height="auto"
