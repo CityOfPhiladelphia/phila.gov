@@ -56,11 +56,11 @@
           <thead class="sticky center bg-white" data-sticky data-top-anchor="filter-results:bottom" data-btm-anchor="page:bottom" data-options="marginTop:4.8;">
             <tr>
               <th class="table-sort title"
-              @click="sort('title')" v-bind:class="sortTitle"><span>Title</span></th>
+              @click="sort('title')" :class="sortTitle"><span>Title</span></th>
 
               <th class="table-sort date"
               @click="sort('date')"
-              v-bind:class="sortDate"><span>Publish date</span></th>
+              :class="sortDate"><span>Publish date</span></th>
               <th class="department">Department</th>
             </tr>
           </thead>
@@ -75,13 +75,13 @@
             class="vue-clickable-row"
             v-on:click.stop.prevent="goToDoc(document.link)">
               <td class="title">
-                <a v-bind:href="document.link" v-on:click.prevent="goToDoc(document.link)">
+                <a :href="document.link" v-on:click.prevent="goToDoc(document.link)">
                   {{ document.title }}
                 </a>
               </td>
               <td class="date">{{ document.date  | formatDate }}</td>
               <td class="categories">
-                <span v-for="(category, i) in document.categories">
+                <span v-for="(category, i) in document.categories" :key="i">
                   <span>{{ category.slang_name }}</span><span v-if="i < document.categories.length - 1">,&nbsp;</span>
                 </span>
               </td>
@@ -373,30 +373,7 @@ export default {
   background-color: #f0f0f0;
   border: none;
 }
-ul.paginate-links {
-  display: inline-block;
-  margin:0;
-  padding:0;
-  float:right;
-}
-.paginate-links li{
-  display: inline-block;
-  border-right: 2px solid white;
-  margin-bottom:1rem;
-}
-.paginate-links a{
-  display: block;
-  padding: .5rem;
-  background: #0f4d90;
-  color:white;
-}
-.paginate-links a{
-  color:white;
-}
-.paginate-links li.active a{
-  background: white;
-  color: #444;
-}
+
 .vdp-datepicker [type='text'] {
   height: 2.4rem;
 }
