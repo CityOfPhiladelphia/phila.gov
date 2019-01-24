@@ -30,14 +30,17 @@
           ?>
           <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : '';
           ?>
+          <?php $blog_see_all = isset( $current_row['phila_full_options']['phila_get_post_cats']['override_url']) ? $current_row['phila_full_options']['phila_get_post_cats']['override_url'] : ''; ?>
           <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>
         </div>
         <!-- /Blog Content -->
 
         <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
           $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
+
           $cal_category = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; ?>
 
+          <?php $calendar_see_all = isset( $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] : ''; ?>
           <!-- Calendar -->
           <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
           <!-- /Calendar -->
@@ -67,9 +70,10 @@
           ?>
           <?php $press_tag_override = isset( $current_row['phila_full_options']['full_width_press_releases']['tag']) ? $current_row['phila_full_options']['full_width_press_releases']['tag'] : '';
           ?>
+          <?php $blog_see_all = isset( $current_row['phila_full_options']['full_width_press_releases']['override_url']) ? $current_row['phila_full_options']['full_width_press_releases']['override_url'] : ''; ?>
             <!-- Press Releases -->
             <section class="row mvl">
-              <?php echo do_shortcode('[press-releases posts=5 tag="'. $press_tag_override .'" category="' . $press_cat_override .'"]');?>
+              <?php echo do_shortcode('[press-releases posts=5 see_all="' . $blog_see_all . '" tag="'. $press_tag_override .'" category="' . $press_cat_override . '"]');?>
             </section>
             <!-- /Press Releases -->
           <?php elseif ($current_row_option == 'phila_resource_list'): ?>

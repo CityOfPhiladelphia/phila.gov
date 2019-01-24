@@ -14,6 +14,7 @@ function press_release_shortcode($atts) {
    'name' => 'Press releases',
     'category' => '',
     'tag' => '',
+    'see_all' => ''
   ), $atts );
 
   $category = array();
@@ -30,6 +31,11 @@ function press_release_shortcode($atts) {
   if ($a['tag'] != ''){
     $tag = $a['tag'];
   }
+
+  if ( !empty($a['see_all']) ){
+    $override_url = $a['see_all'];
+  }
+
 
   include( locate_template( 'partials/posts/press-release-grid.php' ) );
 

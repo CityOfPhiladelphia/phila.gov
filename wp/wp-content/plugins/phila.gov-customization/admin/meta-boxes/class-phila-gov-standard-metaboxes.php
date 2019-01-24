@@ -254,6 +254,7 @@ class Phila_Gov_Standard_Metaboxes {
         ),
         'field_type'  => 'select_advanced'
       ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
     );
   }
 
