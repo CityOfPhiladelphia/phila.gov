@@ -32,6 +32,9 @@
             'content_type' => 'events',
             'nice_name' => 'events'
           ); ?>
+          <?php if (!empty($calendar_see_all) ):
+              $override_url = $calendar_see_all;
+            endif; ?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       </div>
