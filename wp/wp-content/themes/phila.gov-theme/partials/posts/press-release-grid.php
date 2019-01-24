@@ -93,7 +93,7 @@ if( !empty($tag) ) {
                   'nice_name' => 'Press releases',
                   'is_full' => true
                 );
-                 if( !empty( $tag ) ) :
+                if( !empty( $tag ) ) :
                   if (gettype($tag) === 'string' ) {
                     $term = get_term($tag, 'post_tag');
                   }else{
@@ -104,6 +104,11 @@ if( !empty($tag) ) {
                   );
                   $see_all = array_replace($see_all, $see_all_URL );
                   endif;?>
+              <?php if (!empty($override_url)) : ?>
+              <?php $see_all_URL = array(
+                  'URL' => $override_url
+                ); ?>
+              <?php endif; ?>
                 <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
               <?php endif;?>
               <?php if ($count == 2 || $count == 4) :?>

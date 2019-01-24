@@ -6,7 +6,6 @@
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
 <?php $tag = isset($tag) ? $tag : '';?>
-
 <?php
 
 /* Get all sticky posts for department homepages */
@@ -133,24 +132,29 @@ $result->post_count = count( $result->posts );
 
         <?php endwhile; ?>
         <div class="grid-container group">
-          <?php $see_all = array(
-            'URL' => '/the-latest/archives/?template=post',
-            'content_type' => $label,
-            'nice_name' => 'posts'
-          ); ?>
-          <?php if( !empty( $post_categories ) ) :
-            $see_all_URL = array(
-              'URL' => '/the-latest/archives/?template=post&category=' . $post_categories[0],
-            );
-            $see_all = array_replace( $see_all, $see_all_URL );
-            endif;?>
-            <?php if( !empty( $tag ) ) :
-              $term = get_term($tag[0], 'post_tag');
+            <?php $see_all = array(
+              'URL' => '/the-latest/archives/?template=post',
+              'content_type' => $label,
+              'nice_name' => 'posts'
+            ); ?>
+            <?php if( !empty( $post_categories ) ) :
               $see_all_URL = array(
-                'URL' => '/the-latest/archives/?tag=' . $term->name,
+                'URL' => '/the-latest/archives/?template=post&category=' . $post_categories[0],
               );
-              $see_all = array_replace($see_all, $see_all_URL );
+              $see_all = array_replace( $see_all, $see_all_URL );
               endif;?>
+              <?php if( !empty( $tag ) ) :
+                $term = get_term($tag[0], 'post_tag');
+                $see_all_URL = array(
+                  'URL' => '/the-latest/archives/?tag=' . $term->name,
+                ); ?>
+              <?php if (!empty($override_url)) : ?>
+              <?php $see_all_URL = array(
+                  'URL' => $override_url
+                ); ?>
+              <?php endif; ?>
+              <?php $see_all = array_replace($see_all, $see_all_URL );
+                endif;?>
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       <?php endif; ?>
