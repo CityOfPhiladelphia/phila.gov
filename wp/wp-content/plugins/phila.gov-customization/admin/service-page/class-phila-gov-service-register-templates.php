@@ -22,7 +22,6 @@ class Phila_Gov_Register_Service_Templates {
       'id'       => 'service_questions',
       'title'    => 'Default service content',
       'pages' => array( 'service_page' ),
-      'priority' => 'high',
       'visible' => array(
         'when' => array(
           array( 'phila_template_select', '=', 'default_v2' ),
@@ -85,11 +84,9 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'phila_stepped_content',
           'type' => 'group',
-          'visible' => array('phila_stepped_select', true),
-
+          'visible' => array('service_how_stepped_select', true),
           'fields'  => array(
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
-            
           )
         ),
         array(

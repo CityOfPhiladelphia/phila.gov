@@ -852,6 +852,7 @@ $meta_boxes[] = array(
   'title' => 'Before you start',
   'pages' => array('service_page'),
   'revision' => true,
+  'priority'  => 'high',
   'visible' => array(
     'when' => array(
       array( 'phila_template_select', '=', 'start_process' ),
