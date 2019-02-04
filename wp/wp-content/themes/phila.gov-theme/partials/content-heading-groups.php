@@ -134,15 +134,14 @@
               <?php endif; ?>
             </div>
             <?php endif;?>
-
+            <?php endif;?>
             <?php if ( !empty($content['phila_stepped_select']) ) :?>
-              <?php $steps =    phila_extract_stepped_content($content['phila_stepped_content']);?>
+              <?php $steps = phila_extract_stepped_content($content['phila_stepped_content']);?>
               <div class="phm-mu">
                 <?php include( locate_template( 'partials/stepped-content.php' ) );?>
               </div>
             <?php endif;?>
           </div>
-          <?php endif;?>
 
         </section>
       </div>
