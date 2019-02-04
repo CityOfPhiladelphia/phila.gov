@@ -1034,38 +1034,38 @@ $meta_boxes[] = array(
   'context'  => 'advanced',
   'priority' => 'low',
 
-   'include' => array(
-     'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-   ),
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
 
   'fields' => array(
     array(
-     'name' => 'Description',
-     'id'   => 'phila_custom_markup_description',
-     'type' => 'custom_html',
-     'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
-   ),
-   array(
+      'name' => 'Description',
+      'id'   => 'phila_custom_markup_description',
+      'type' => 'custom_html',
+      'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
+    ),
+    array(
       'name' => 'Append to head',
       'id'   => 'phila_append_to_head',
       'type' => 'textarea'
     ),
     array(
-     'name' => 'Append before WYSIWYG',
-     'id'   => 'phila_append_before_wysiwyg',
-     'type' => 'textarea'
-   ),
-   array(
-     'name' => 'Append after WYSIWYG',
-     'id'   => 'phila_append_after_wysiwyg',
-     'type' => 'textarea'
-   ),
-   array(
+      'name' => 'Append before WYSIWYG',
+      'id'   => 'phila_append_before_wysiwyg',
+      'type' => 'textarea'
+    ),
+    array(
+      'name' => 'Append after WYSIWYG',
+      'id'   => 'phila_append_after_wysiwyg',
+      'type' => 'textarea'
+    ),
+    array(
       'name' => 'Append after footer',
       'id'   => 'phila_append_after_footer',
       'type' => 'textarea'
     ),
- ),
+  ),
 );
 
 
