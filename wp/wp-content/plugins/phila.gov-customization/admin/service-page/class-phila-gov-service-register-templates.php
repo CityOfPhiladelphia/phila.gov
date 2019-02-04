@@ -25,7 +25,7 @@ class Phila_Gov_Register_Service_Templates {
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array( 'phila_template_select', '=', 'default' ),
+          array( 'phila_template_select', '=', 'default_v2' ),
         ),
         'relation'  => 'or'
       ),
