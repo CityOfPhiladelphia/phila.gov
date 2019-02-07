@@ -937,27 +937,27 @@ function phila_get_service_updates(){
         case 'city':
           $service_icon = 'fas fa-university';
           break;
-          case 'roads':
-            $service_icon = 'fas fa-road';
-            break;
-          case 'transit':
-            $service_icon = 'fas fa-subway';
-            break;
-          case 'trash':
-            $service_icon = 'fas fa-trash-alt';
-            break;
-          case 'phones':
-            $service_icon = 'fas fa-phone';
-            break;
-          case 'systems':
-            $service_icon = 'fas fa-desktop';
-            break;
-          case 'offices':
-            $service_icon = 'far fa-building';
+        case 'roads':
+          $service_icon = 'fas fa-road';
           break;
-          default :
-            $service_icon = 'fas fa-university';
-            break;
+        case 'transit':
+          $service_icon = 'fas fa-subway';
+          break;
+        case 'trash':
+          $service_icon = 'fas fa-trash-alt';
+          break;
+        case 'phones':
+          $service_icon = 'fas fa-phone';
+          break;
+        case 'systems':
+          $service_icon = 'fas fa-desktop';
+          break;
+        case 'offices':
+          $service_icon = 'far fa-building';
+          break;
+        default :
+          $service_icon = 'fas fa-university';
+          break;
       }
       switch($service_level){
         case '0':
