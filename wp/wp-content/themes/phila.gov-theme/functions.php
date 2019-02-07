@@ -949,9 +949,12 @@ function phila_get_service_updates(){
           case 'phones':
             $service_icon = 'fas fa-phone';
             break;
+          case 'systems':
+            $service_icon = 'fas fa-desktop';
+            break;
           case 'offices':
             $service_icon = 'far fa-building';
-            break;
+          break;
           default :
             $service_icon = 'fas fa-university';
             break;
