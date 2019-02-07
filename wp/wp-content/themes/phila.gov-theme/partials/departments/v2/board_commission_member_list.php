@@ -2,12 +2,14 @@
   /* Partial for board or commission member accordion-style rendering. */
 
   if ( !isset( $section_title ) ) :
-  $section_title = rwmb_meta('section_title');
-endif;
+    $section_title = rwmb_meta('section_title');
+  endif;
   if ( !isset( $members ) ) :
     $members = rwmb_meta('phila_commission_members');
   endif;
- ?>
+
+  $table_cell_title = rwmb_meta('table_head_title');
+?>
 
 <?php if ( !empty( $members ) ) : ?>
 <!-- Board/Commission members -->
@@ -23,7 +25,7 @@ endif;
       <thead>
         <tr>
           <th>Name</th>
-          <th>Title</th>
+          <th><?php echo !empty($table_cell_title) ? $table_cell_title : 'Title'; ?></th>
           <th>Email</th>
           <th>Phone</th>
         </tr>
