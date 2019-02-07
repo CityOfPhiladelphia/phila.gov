@@ -847,38 +847,6 @@ $meta_boxes[] = array(
   )
 );
 
-
-$meta_boxes[] = array(
-  'title' => 'Before you start',
-  'pages' => array('service_page'),
-  'revision' => true,
-  'priority'  => 'high',
-  'visible' => array(
-    'when' => array(
-      array( 'phila_template_select', '=', 'start_process' ),
-      array( 'phila_template_select', '=', 'default_v2' ),
-    ),
-    'relation' => 'or',
-  ),
-  'fields' => array(
-    array(
-      'id' => 'phila_start_process',
-      'type'  => 'group',
-      'clone' => false,
-
-      'fields' => array(
-        array(
-          'id'  => 'phila_wysiwyg_process_content',
-          'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
-        ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
-      )
-    )
-  )
-);
-
-
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('department_page', 'page', 'service_page', 'programs'),

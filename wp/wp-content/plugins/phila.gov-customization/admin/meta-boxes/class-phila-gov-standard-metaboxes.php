@@ -39,11 +39,11 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_address_fields(){
+  public static function phila_metabox_v2_address_fields($id = 'address_group'){
 
     //Default address fields
     return array(
-      'id'  =>  'address_group',
+      'id'  =>  $id,
       'type'  => 'group',
       'fields'  => array(
 
@@ -88,10 +88,10 @@ class Phila_Gov_Standard_Metaboxes {
   //Purpose: To display content in a wysiwyg and include markup for an address
   //TODO: Merge these two almost-identical fields. The ID used to create the metabox will interfere with other metaboxes that are used on the same page. For now we will create a second version of the address content metabox so we can set a different ID.
 
-  public static function phila_metabox_v2_address_fields_unique(){
+  public static function phila_metabox_v2_address_fields_unique($group_id = 'phila_wysiwyg_address_content'){
 
     return array(
-      'id'  => 'phila_wysiwyg_address_content',
+      'id'  => $group_id,
       'type'  => 'group',
       'clone' => true,
       'sort_clone'  => true,
