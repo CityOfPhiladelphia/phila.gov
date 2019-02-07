@@ -23,10 +23,10 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
 
       'fields' => array(
         array(
-         'id' => 'service_update',
-         'type' => 'group',
+        'id' => 'service_update',
+        'type' => 'group',
 
-         'fields' => array(
+        'fields' => array(
           array(
             'type' => 'custom_html',
             'std' => '<p class="description" style="margin-top:10px;">Choose the type of service impacted (city, roads, transit, or trash collection) and the level of urgency (normal, warning, critical).</p>',
@@ -45,6 +45,7 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
               'trash' => 'Trash',
               'phones' => 'Phones',
               'offices' => 'Offices',
+              'systems' => 'Computer systems',
             ),
           ),
           array(
@@ -58,12 +59,12 @@ if ( class_exists("Phila_Gov_Service_Update_Pages" ) ){
               '1' => 'Warning (Yellow)',
               '2' => 'Critical (Red)',
             ),
-           ),
+          ),
           array(
             'name' => 'Service Update Timeframe',
             'type' => 'heading',
             'after' => '<p class="description" style="margin-top:0; margin-bottom:1.5em;">The <strong>Effective Start</strong> and <strong>End</strong> day/times are used to display the window of time a City Service will be impacted. These fields do <strong>not</strong> schedule a service update to appear. If you need an update to appear on a particular day, schedule it using the <strong>Publish</strong> settings.</p>',
-           ),
+          ),
           array(
             'name' => 'Date/Time Format',
             'id' => 'phila_date_format',
