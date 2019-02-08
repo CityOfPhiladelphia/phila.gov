@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 $staff_leadership_array = array();
 $staff_member_loop = new WP_Query( $args );
@@ -149,11 +149,12 @@ if ( $staff_member_loop->have_posts() ):
   endwhile;
 
   echo '<section class="staff-directory">'; ?>
+  
   <?php if ( isset( $unit ) ): ?>
   <?php $unit_count++; ?>
     <div class="row">
       <div class="columns">
-      <h3><?php echo urldecode($unit) ?></h3>
+      <h3 id="<?php echo $unit; ?>"><?php echo urldecode($unit) ?></h3>
         <?php foreach ( $unit_meta as $meta ) : ?>
           <?php if (urldecode($unit) == $meta['name']) :?>
             <?php if (isset($meta['unit_description'])) :?>
@@ -205,11 +206,11 @@ if ( $staff_member_loop->have_posts() ):
           <table role="grid" class="<?php echo ( $all_staff == 1) ? 'staff-directory': 'staff' ?> responsive js-hide-empty">
             <thead>
               <tr>
-                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
-                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone #</th>
-                <th scope="col">Social</th>
+                <th class="name" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
+                <th class="title" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
+                <th class="email" scope="col">Email</th>
+                <th class="phone" scope="col">Phone #</th>
+                <th class="social" scope="col">Social</th>
               </tr>
             </thead>
             <tbody class="search-sortable">
