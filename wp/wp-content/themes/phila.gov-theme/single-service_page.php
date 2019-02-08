@@ -59,7 +59,12 @@
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/services/content', 'tax-detail');?>
             <?php elseif ($user_selected_template == 'start_process') : ?>
-                <?php get_template_part('partials/services/content', 'start-process');?>
+            <?php get_template_part('partials/services/content', 'start-process');?>
+              <?php elseif ($user_selected_template == 'default_v2') :?>
+            <?php get_template_part('partials/services/content', 'default-v2'); ?>
+              <?php elseif ($user_selected_template == 'default') : ?>
+            <?php get_template_part('partials/content', 'default'); ?>
+              
                 <!-- Service Stub  -->
             <?php elseif ($user_selected_template == 'service_stub') : ?>
               <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
@@ -75,7 +80,10 @@
                     <?php while ( $stub_post->have_posts() ) : ?>
                       <?php $stub_post->the_post(); ?>
                       <?php $source_template =  rwmb_meta( 'phila_template_select'); ?>
-                        <?php if ($source_template == 'default') :?>
+                        <?php if ($source_template == 'default_v2') :?>
+                          <?php get_template_part('partials/services/content', 'default-v2'); ?>
+
+                        <?php elseif ($source_template == 'default') : ?>
                           <?php get_template_part('partials/content', 'default'); ?>
 
                         <?php elseif ($source_template == 'tax_detail') : ?>
