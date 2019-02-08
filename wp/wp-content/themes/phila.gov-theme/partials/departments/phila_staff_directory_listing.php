@@ -13,6 +13,24 @@ $category_override = rwmb_meta('phila_get_staff_cats');
 $unit_data = get_post_meta( $post->ID, 'units' );
 $all_staff = rwmb_meta('full_list');
 $unit_count = -1;
+$anchor_list = rwmb_meta('anchor_list');
+?>
+
+<?php if ( !empty($unit_data) && $anchor_list == 1 )  : ?>
+<div class="row mbl">
+  <div class="columns">
+    <h3>On this page</h3>
+    <nav>
+    <ul class="no-bullet">
+    <?php foreach ($unit_data as $unit): ?>
+      <li class="pas"><a class="" href="#<?php echo $unit ?>"><?php echo urldecode($unit) ?></a></li>
+    <?php endforeach; ?>
+    </ul>
+    </nav>
+  </div>
+</div>
+<?php endif; ?>
+<?php 
 
 if ( has_category() ) {
   $categories = get_the_category();

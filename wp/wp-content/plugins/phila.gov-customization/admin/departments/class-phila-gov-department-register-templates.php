@@ -111,6 +111,17 @@ class Phila_Gov_Deparment_Templates {
           'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
         )
       ),
+      array(
+        'id'  => 'anchor_list',
+        'class' => 'hide-on-load',
+        'name'  => 'Add anchor links to each unit at the top of this page?',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+          'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
+      ),
     ),
   );
 
