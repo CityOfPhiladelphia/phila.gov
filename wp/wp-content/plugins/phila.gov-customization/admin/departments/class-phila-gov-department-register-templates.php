@@ -49,14 +49,15 @@ class Phila_Gov_Deparment_Templates {
           'resource_list_v2'        => 'Resource list',
           'staff_directory_v2'      => 'Staff directory',
           'off_site_department'     => 'Off-site department',
+          'department_stub'         => 'Stub'
           ),
           'admin_columns' => array(
             'position' => 'after date',
             'title'    => __( 'Template' ),
             'sort'     => true,
           ),
-       ),
-       array(
+      ),
+      array(
         'name'  => 'Should this page appear in the City government directory?',
         'id'    => 'phila_department_home_page',
         'class' => 'hide-from-non-admin hide-on-load',

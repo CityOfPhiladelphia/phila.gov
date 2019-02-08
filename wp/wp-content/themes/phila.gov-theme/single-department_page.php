@@ -71,8 +71,31 @@ get_header(); ?>
 
           get_template_part( 'partials/departments/v2/child', 'index' );
 
-        }else{
-          get_template_part( 'templates/single', 'on-site-content' );
+        }else if($user_selected_template == 'department_stub'){ ?>
+          <!-- Department Stub  -->
+          <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
+          <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
+          <?php $post_id = intval( $stub_source );?>
+          <?php $is_stub = true; ?>
+          <?php  get_template_part( 'partials/breadcrumbs' ); ?>
+            <?php $stub_args = array(
+              'p' => $post_id,
+              'post_type' => 'department_page'
+            ); ?>
+            <?php $stub_post = new WP_Query($stub_args); ?>
+            <?php if ( $stub_post->have_posts() ): ?>
+              <?php while ( $stub_post->have_posts() ) : ?>
+                <?php $stub_post->the_post(); ?>
+                  <?php include(locate_template( 'templates/single-on-site-content.php') ); ?>
+    
+                <?php endwhile; ?>
+              <?php endif; ?>
+              <?php wp_reset_query(); ?>
+            <?php endif; ?>
+            <!-- END Department Stub -->
+        <?php }else{
+          $is_stub = false;
+          include(locate_template( 'templates/single-on-site-content.php') ) ;
         }
       endwhile;
     }

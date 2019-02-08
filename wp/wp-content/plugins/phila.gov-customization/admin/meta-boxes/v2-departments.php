@@ -170,7 +170,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   );
 
 
-   $meta_boxes[] = array(
+  $meta_boxes[] = array(
       'title'    => 'Photo Callout Block',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
@@ -181,7 +181,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
       ),
 
       'visible' =>  array(
-         'when' => array(
+        'when' => array(
             array( 'phila_template_select', '=', 'homepage_v2'),
             array( 'phila_template_select', '=', 'things-to-do'),
             array( 'phila_template_select', '=', 'our-locations')

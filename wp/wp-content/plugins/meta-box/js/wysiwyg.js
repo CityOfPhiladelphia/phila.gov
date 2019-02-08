@@ -89,6 +89,25 @@ jQuery( function ( $ ) {
 		        .find( '.quicktags-toolbar' ).attr( 'id', 'qt_' + id + '_toolbar' ).html( '' );
 	}
 
+	/**
+	 * Handles updating tiny mce instances when saving a gutenberg post.
+	 * https://metabox.io/support/topic/data-are-not-saved-into-the-database/
+	 * https://github.com/WordPress/gutenberg/issues/7176
+	 */
+	function ensureSave() {
+		if ( ! wp.data || ! wp.data.hasOwnProperty( 'subscribe' ) || ! window.tinyMCE ) {
+			return;
+		}
+		wp.data.subscribe( function() {
+			var editor = wp.data.hasOwnProperty( 'select' ) ? wp.data.select( 'core/editor' ) : {};
+
+			if ( editor && editor.isSavingPost && editor.isSavingPost() ) {
+				window.tinyMCE.triggerSave();
+			}
+		} );
+	}
+
 	$( '.rwmb-wysiwyg' ).each( update );
 	$( document ).on( 'clone', '.rwmb-wysiwyg', update );
+	ensureSave();
 } );

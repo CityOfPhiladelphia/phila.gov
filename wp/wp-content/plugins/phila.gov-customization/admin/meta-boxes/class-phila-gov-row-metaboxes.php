@@ -26,33 +26,34 @@ class Phila_Gov_Row_Metaboxes {
 
   public static function phila_metabox_full_options( ){
     return array(
-     'name' => '',
-     'id'   => 'phila_full_options',
-     'type' => 'group',
-     'visible' => array(
-       'phila_grid_options',
-       '=',
-       'phila_grid_options_full'
-     ),
-     'fields' => array(
-       Phila_Gov_Row_Select_Options::phila_metabox_full_options_select(),
-       array(
-         'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
-         'id'  => 'phila_get_post_cats',
-         'type' => 'group',
-         'fields' => array(
-           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners.' ),
-           array(
-             'name'  => 'Filter by tags',
-             'id'  => 'tag',
-             'type' => 'taxonomy_advanced',
-             'taxonomy'  => 'post_tag',
-             'field_type' => 'select_advanced',
-             'multiple' => true,
-             'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
-           ),
-         ),
+    'name' => '',
+    'id'   => 'phila_full_options',
+    'type' => 'group',
+    'visible' => array(
+      'phila_grid_options',
+      '=',
+      'phila_grid_options_full'
+    ),
+    'fields' => array(
+      Phila_Gov_Row_Select_Options::phila_metabox_full_options_select(),
+      array(
+        'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
+        'id'  => 'phila_get_post_cats',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners.' ),
+          array(
+            'name'  => 'Filter by tags',
+            'id'  => 'tag',
+            'type' => 'taxonomy_advanced',
+            'taxonomy'  => 'post_tag',
+            'field_type' => 'select_advanced',
+            'multiple' => true,
+            'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
+          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
         ),
+      ),
       array(
         'id' => 'phila_full_width_calendar',
         'type' => 'group',
@@ -158,6 +159,7 @@ class Phila_Gov_Row_Metaboxes {
             'field_type' => 'select_advanced',
             'desc'  => 'Display press releases using this tag. "See all" will pre-filter on these terms.'
           ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
         ),
       ),
       array(
@@ -234,6 +236,12 @@ class Phila_Gov_Row_Metaboxes {
             'name'  => 'Section title',
             'type'  => 'text',
             'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
+          ),
+          array(
+            'id'  => 'table_head_title',
+            'name'  => 'Rename table title cell',
+            'type'  => 'text',
+            'desc'  => 'The staff table column label defaults to "title". Use this to change it.'
           ),
           Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
         ),
