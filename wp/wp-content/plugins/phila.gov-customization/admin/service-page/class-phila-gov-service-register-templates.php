@@ -207,7 +207,7 @@ class Phila_Gov_Register_Service_Templates {
         ),
         array(
           'type' => 'heading',
-          'name'  => 'Renewal requirements',
+          'name'  => 'Are there renewal requirements for this service?',
         ),
         array(
           'id' => 'service_renewal_requirements',
