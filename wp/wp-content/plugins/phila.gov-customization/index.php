@@ -67,6 +67,8 @@ require $dir. '/admin/meta-boxes/v2-departments.php';
 require $dir. '/admin/programs-initiatives/class-phila-gov-cpt-programs.php';
 require $dir. '/admin/programs-initiatives/class-phila-gov-program-register-templates.php';
 
+require $dir. '/admin/settings/phila-gov-settings.php';
+
 require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/modal.php';
