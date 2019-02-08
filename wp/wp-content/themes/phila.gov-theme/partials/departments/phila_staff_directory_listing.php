@@ -19,11 +19,11 @@ $anchor_list = rwmb_meta('anchor_list');
 <?php if ( !empty($unit_data) && $anchor_list == 1 )  : ?>
 <div class="row mbl">
   <div class="columns">
-    <h3>On this page</h3>
+    <div class="pll">On this page</div>
     <nav>
     <ul class="no-bullet">
     <?php foreach ($unit_data as $unit): ?>
-      <li class="pas"><a class="" href="#<?php echo $unit ?>"><?php echo urldecode($unit) ?></a></li>
+      <li class="pvs"><a class="" href="#<?php echo $unit ?>"><?php echo urldecode($unit) ?></a></li>
     <?php endforeach; ?>
     </ul>
     </nav>
