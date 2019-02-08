@@ -258,6 +258,7 @@ function phila_open_graph() {
 
   //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="<?php echo isset($img_src) ? $img_src . '?19107' : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg?19107'; ?>"/>
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
   <meta property="og:description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description'): phila_get_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
@@ -316,7 +317,7 @@ function phila_gov_scripts() {
   wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
 
   if( is_page_template( 'templates/the-latest-archive.php' ) ||     is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
-  is_post_type_archive( 'programs' ) ){
+  is_post_type_archive( ['programs', 'service_page'] ) ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
 
@@ -936,24 +937,27 @@ function phila_get_service_updates(){
         case 'city':
           $service_icon = 'fas fa-university';
           break;
-          case 'roads':
-            $service_icon = 'fas fa-road';
-            break;
-          case 'transit':
-            $service_icon = 'fas fa-subway';
-            break;
-          case 'trash':
-            $service_icon = 'fas fa-trash-alt';
-            break;
-          case 'phones':
-            $service_icon = 'fas fa-phone';
-            break;
-          case 'offices':
-            $service_icon = 'far fa-building';
-            break;
-          default :
-            $service_icon = 'fas fa-university';
-            break;
+        case 'roads':
+          $service_icon = 'fas fa-road';
+          break;
+        case 'transit':
+          $service_icon = 'fas fa-subway';
+          break;
+        case 'trash':
+          $service_icon = 'fas fa-trash-alt';
+          break;
+        case 'phones':
+          $service_icon = 'fas fa-phone';
+          break;
+        case 'systems':
+          $service_icon = 'fas fa-desktop';
+          break;
+        case 'offices':
+          $service_icon = 'far fa-building';
+          break;
+        default :
+          $service_icon = 'fas fa-university';
+          break;
       }
       switch($service_level){
         case '0':
@@ -1492,6 +1496,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Mayor's Office of",
     "Philadelphia",
     "Commission on",
+    "Zoning Board of",
     "Board of",
     "Office of the",
     "Office of",

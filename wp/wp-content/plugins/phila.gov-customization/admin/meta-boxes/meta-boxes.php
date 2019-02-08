@@ -546,6 +546,12 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type'  => 'text',
         'name'  => 'Optional row title',
       ),
+      array(
+        'id'  => 'table_head_title',
+        'name'  => 'Rename table "title" cell',
+        'type'  => 'text',
+        'desc'  => 'The staff table column label defaults to "title". Use this to change it.'
+      ),
       Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
     ),
 
@@ -764,6 +770,37 @@ $meta_boxes[] = array(
         'meta_key' => 'phila_template_select',
         'meta_value' => 'service_stub',
         'meta_compare' => '!=',
+      ),
+    )
+  )
+);
+
+$meta_boxes[] = array(
+  'title' => 'Department Stub',
+  'pages' => array('department_page'),
+  'context' => 'after_title',
+  'priority' => 'low',
+  'visible' => array('phila_template_select', 'department_stub'),
+  'revision' => true,
+  'class' => 'hide-on-load',
+
+  'fields'  => array(
+    array(
+      'name' => 'Page source',
+      'type'  => 'heading',
+    ),
+    array(
+      'id' => 'phila_stub_source',
+      'type' => 'post',
+      'post_type' => 'department_page',
+      'desc'  => 'Display content from the selected page on the front-end.',
+      'query_args'  => array(
+        'post_status'    => array('publish', 'draft', 'private'),
+        'posts_per_page' => - 1,
+        'meta_key' => 'phila_template_select',
+        'meta_value' => 'department_stub',
+        'meta_compare' => '!=',
+        'post_parent__not_in' => array('0')
       ),
     )
   )

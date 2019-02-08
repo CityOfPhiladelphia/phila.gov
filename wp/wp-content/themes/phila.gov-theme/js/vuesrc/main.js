@@ -8,7 +8,10 @@ import Posts from './Archives.vue'
 import Pubs from './Publications.vue'
 import Events from './Events.vue'
 import Programs from './Programs.vue'
+import AzList from './AzList.vue'
+import axios from 'axios'
 
+Vue.config.productionTip = false
 
 Vue.use(VuePaginate)
 Vue.use(VueRouter)
@@ -41,6 +44,65 @@ if (window.location.pathname === '/the-latest/archives/') {
     el: '#programs-initiatives-landing',
     render: h => h(Programs)
   })
+}else if(window.location.pathname === '/services/'){
+
+  //add loading indicator
+  $("#a-z-filter-list-loading").html('<i class="fas fa-spinner fa-spin fa-3x loadingdir"></i>');
+
+  async function getAzListCategories() {
+    return axios.get('https://admin.phila.gov/wp-json/services/v1/categories').then((response) => {
+      return response.data
+    })
+  }
+  
+  async function getAzList() {
+    return axios.get('https://admin.phila.gov/wp-json/services/v1/directory').then((response) => {
+      return response.data.map((item) => {
+  
+        let categories = item.categories.map((cat) => {
+          
+          if (cat) {
+            return cat.slug
+          }
+  
+          return ''
+          
+        })
+  
+        return {
+          title: item.title,
+          link: item.link,
+          desc: item.desc,
+          categories
+        }
+      })
+    })
+  }
+  
+  async function initAzList() {
+  
+    const categories = await getAzListCategories()
+    const list = await getAzList()
+
+    //remove loading indicator
+    $("#a-z-filter-list-loading").remove();
+  
+    new Vue({
+      el: '#a-z-filter-list',
+      render(h) {
+        return h(AzList, {
+          props: {
+            categories,
+            list
+          },
+        })
+      },
+    })
+  
+  }
+  
+  initAzList()
+
 }else{
   new Vue({
     el: '#all-events',

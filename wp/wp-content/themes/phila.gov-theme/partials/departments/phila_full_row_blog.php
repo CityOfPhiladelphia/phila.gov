@@ -10,6 +10,10 @@
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
 
+  if ( !empty($blog_see_all) ) : 
+    $blog_see_all = $blog_see_all;
+  endif;
+
   if ( !empty( $blog_cat_override ) ) :
     $category_id = $blog_cat_override[0];
   endif;
@@ -21,5 +25,5 @@
   endif;
   ?>
 <section class="row">
-  <?php echo do_shortcode('[recent-posts posts="3" category="' . $category_id .'" tag="'. $blog_tag_override .'"]'); ?>
+  <?php echo do_shortcode('[recent-posts posts="3" see_all="' . $blog_see_all .'"  category="' . $category_id .'" tag="'. $blog_tag_override .'"]'); ?>
 </section>

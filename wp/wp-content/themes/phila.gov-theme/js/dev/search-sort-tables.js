@@ -14,6 +14,16 @@ module.exports = $(function(){
     paginationClass: 'paginate-links',
   }
 
+
+  $('.search-sort-single-table').each(function( j ) {
+    var table = new List('sortable-table-' + j, {
+      searchClass: 'table-search',
+      listClass: 'search-sortable',
+      sortClass: 'table-sort',
+      valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
+    })
+  })
+
   $('.search-sort-table').each(function( j ) {
     var table = new List('sortable-table-' + j, options)
     console.log(j)

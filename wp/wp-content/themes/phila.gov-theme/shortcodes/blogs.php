@@ -13,7 +13,8 @@ function latest_posts_shortcode( $atts ) {
   $a = shortcode_atts( array(
     'name' => 'Posts',
     'category' => '',
-    'tag' => ''
+    'tag' => '',
+    'see_all' => ''
   ), $atts );
 
   $category = array();
@@ -32,6 +33,10 @@ function latest_posts_shortcode( $atts ) {
     $tag = explode(',', $a['tag']);
   }
 
+  if ( !empty($a['see_all']) ){
+    $override_url = $a['see_all'];
+  }
+
   include( locate_template( 'partials/posts/announcements-grid.php' ) );
   include( locate_template( 'partials/posts/post-grid.php' ) );
 
@@ -40,5 +45,5 @@ function latest_posts_shortcode( $atts ) {
 }
 
 function register_posts_shortcode(){
-   add_shortcode( 'recent-posts', 'latest_posts_shortcode' );
+  add_shortcode( 'recent-posts', 'latest_posts_shortcode' );
 }
