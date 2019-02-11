@@ -89,13 +89,13 @@ class Phila_Gov_Register_Service_Templates {
         ),
         array(
           'name'  => 'Include contact information?',
-          'id'  => 'phila_address_select',
+          'id'  => 'service_where_when_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
           'off_label' => 'No'
         ),
         array(
-          'id' => 'phila_std_address',
+          'id' => 'service_where_when_std_address',
           'type' => 'group',
           'hidden' => array('phila_address_select', false),
 
