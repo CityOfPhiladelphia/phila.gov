@@ -59,13 +59,14 @@
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/services/content', 'tax-detail');?>
             <?php elseif ($user_selected_template == 'start_process') : ?>
+
             <?php get_template_part('partials/services/content', 'start-process');?>
+            <?php get_template_part('partials/content', 'default'); ?>
+
               <?php elseif ($user_selected_template == 'default_v2') :?>
             <?php get_template_part('partials/services/content', 'default-v2'); ?>
-              <?php elseif ($user_selected_template == 'default') : ?>
-            <?php get_template_part('partials/content', 'default'); ?>
-              
-                <!-- Service Stub  -->
+            
+            <!-- Service Stub  -->
             <?php elseif ($user_selected_template == 'service_stub') : ?>
               <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
                 <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
@@ -74,7 +75,8 @@
                   <?php $stub_args = array(
                     'p' => $post_id,
                     'post_type' => 'service_page'
-                  ); ?>
+                    ); ?>
+
                   <?php $stub_post = new WP_Query($stub_args); ?>
                   <?php if ( $stub_post->have_posts() ): ?>
                     <?php while ( $stub_post->have_posts() ) : ?>
