@@ -97,7 +97,7 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_where_when_std_address',
           'type' => 'group',
-          'hidden' => array('phila_address_select', false),
+          'hidden' => array('service_where_when_address_select', false),
 
           'fields' => array(
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
@@ -198,7 +198,7 @@ class Phila_Gov_Register_Service_Templates {
           'off_label' => 'No'
         ),
         array(
-          'id' => 'phila_stepped_content',
+          'id' => 'service_how_stepped_content',
           'type' => 'group',
           'visible' => array('service_how_stepped_select', true),
           'fields'  => array(
