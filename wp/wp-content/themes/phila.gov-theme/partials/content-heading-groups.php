@@ -34,16 +34,16 @@
           <?php include( locate_template( 'partials/global/contact-information.php' ) );?>
 
         <?php endif ?>
-            <?php if ( !empty($content['phila_stepped_select']) ) :?>
-              <?php $steps = phila_extract_stepped_content($content['phila_stepped_content']);?>
-              <div class="phm-mu">
-                <?php include( locate_template( 'partials/stepped-content.php' ) );?>
-              </div>
-            <?php endif;?>
+        <?php if ( !empty($content['phila_stepped_select']) ) :?>
+          <?php $steps = phila_extract_stepped_content($content['phila_stepped_content']);?>
+          <div class="phm-mu">
+            <?php include( locate_template( 'partials/stepped-content.php' ) );?>
           </div>
-
-        </section>
+        <?php endif;?>
       </div>
+
+      </section>
     </div>
-  <?php endforeach; ?>
+  </div>
+<?php endforeach; ?>
 <?php endif; ?>

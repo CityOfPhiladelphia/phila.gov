@@ -190,3 +190,8 @@ function phila_multi_key_exists( array $arr, $key ) {
   }
   return false;
 }
+
+
+function phila_remove_empty_p_tags ( $content ){
+  return preg_replace("/<p[^>]*>[\s|&nbsp;]*<\/p>/", '', $content);
+}
