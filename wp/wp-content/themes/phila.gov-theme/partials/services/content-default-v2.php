@@ -7,7 +7,6 @@
 ?>
   
 <?php 
-
   $who = trim( rwmb_meta( 'service_who' ) ); 
   $who = isset( $who ) ? phila_remove_empty_p_tags( $who ) : false;
 
@@ -31,7 +30,6 @@
 
   $renewal = trim( rwmb_meta( 'service_renewal_requirements' ) );
   $renewal = isset( $renewal ) ? phila_remove_empty_p_tags( $renewal ) : false;
-
 ?>
 
 <?php get_template_part('partials/services/content', 'start-process'); ?>
@@ -96,6 +94,7 @@
 
 
 <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
+
 <?php include(locate_template('partials/content-heading-groups.php')); ?>
 
 <?php get_template_part( 'partials/content', 'additional' ); ?>
