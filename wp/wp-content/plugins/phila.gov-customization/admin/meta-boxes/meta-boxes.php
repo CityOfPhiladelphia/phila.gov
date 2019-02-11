@@ -721,24 +721,6 @@ $meta_var_wysiwyg_multi = array(
 );
 
 
-//Questions metabox, used for Service Pages
-$meta_questions = array(
-  'id'  => 'phila_questions',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Questions about this content?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => 'phila_question_content',
-      'type'  => 'wysiwyg',
-      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-    ),
-  )
-);
-
 $meta_boxes[] = array(
   'title' => 'Service Stub',
   'pages' => array('service_page'),
@@ -886,12 +868,13 @@ $meta_boxes[] = array(
   'hidden' => array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
-      array('phila_template_select', '=', 'service_stub')
+      array('phila_template_select', '=', 'service_stub'),
+      array('phila_template_select', '=', 'default_v2')
     ),
     'relation' => 'or',
   ),
 
-    'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
+  'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
 );
 
 $meta_boxes[] = array(
