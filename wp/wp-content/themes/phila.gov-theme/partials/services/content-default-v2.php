@@ -97,4 +97,4 @@
 
 <?php include(locate_template('partials/content-heading-groups.php')); ?>
 
-<?php get_template_part( 'partials/content', 'additional' ); ?>
+<?php include(locate_template('partials/services/content-additional-v2.php')); ?>
