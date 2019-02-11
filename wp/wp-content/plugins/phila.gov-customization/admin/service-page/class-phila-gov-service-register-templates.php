@@ -216,6 +216,74 @@ class Phila_Gov_Register_Service_Templates {
         ),
       )
     );
+    //v2 service related content, simplifies groupins to make compatible with gather content importer
+    $meta_boxes[] = array(
+      'id'       => 'service_related',
+      'title'    => 'Addtional content',
+      'pages' => array( 'service_page' ),
+      'visible' => array(
+        'when' => array(
+            array( 'phila_template_select', '=', 'default_v2' ),
+          ),
+        'relation'  => 'or'
+      ),
+      'fields' => array(
+        array(
+          'name'  => 'Forms & Instructions',
+          'type'  => 'heading'
+        ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector(),
+        array(
+          'name'  => 'Related Content',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => 'service_related_content_picker',
+          'type'  => 'post',
+          'post_type' => array('department_page', 'programs', 'post', 'service_page', 'document'),
+          'placeholder' => 'Select pages',
+          'query_args'  => array(
+              'post_status'    => 'any',
+              'posts_per_page' => - 1,
+            ),
+          'multiple'  => true,
+        ),
+        array(
+          'id'  => 'service_related_content',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+        array(
+          'name'  => 'Did You Know?',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => 'service_did_you_know_content',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+
+        array(
+          'name'  => 'Questions about this content?',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => 'service_questions_content',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+        array(
+          'name'  => 'Disclaimer',
+          'type'  => 'heading'
+        ),
+        array(
+          'id'  => 'service_disclaimer_content',
+          'type'  => 'wysiwyg',
+          'desc'  => 'Enter disclaimer content, or a [text block] with disclaimer shortcode',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+      )
+    );
     return $meta_boxes;
   }
 
