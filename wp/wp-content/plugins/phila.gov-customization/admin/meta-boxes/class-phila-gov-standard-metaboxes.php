@@ -1187,7 +1187,8 @@ public static function phila_meta_var_connect(){
       )
     );
   }
-
+  
+  //v1 service page default
   public static function phila_meta_var_addtional_content() {
     return array(
       array(
