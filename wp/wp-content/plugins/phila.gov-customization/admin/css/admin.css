@@ -70,7 +70,9 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 /*Hide View Attachment Page on Admin*/
 .attachment-info .view-attachment,
 .post-type-event_spotlight #postdivrich,
-#try-gutenberg-panel{
+#try-gutenberg-panel,
+/* Hide user role column from all users */
+.column-wpfront-user-role-editor-role-permission-column-key, {
   display: none !important;
 }
 
