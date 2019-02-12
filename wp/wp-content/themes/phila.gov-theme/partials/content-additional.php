@@ -4,12 +4,32 @@
  * Partial for additional content. Includes, forms, related content, did you know, and questions about this content.
  *
  */
- ?>
+?>
 
 <?php
 
   $additional_content = rwmb_meta('phila_additional_content');
-  $more = phila_additional_content( $additional_content );
+
+  if( !empty ($additional_content ) ) {
+    $more = phila_additional_content( $additional_content );
+  }else{
+    $more = array();
+    $document_picker = rwmb_meta('phila_document_page_picker');
+    $related_content = rwmb_meta('service_related_content');
+    $related_content_picker = rwmb_meta('service_related_content_picker');
+    $did_you_know = rwmb_meta('service_did_you_know_content');
+    $questions = rwmb_meta('service_questions_content');
+    $disclaimer = rwmb_meta('service_disclaimer_content');
+
+    $more['forms'] = $document_picker;
+    $more['related_picker'] = $related_content_picker;
+    $more['related'] = $related_content;
+    $more['aside']['did_you_know'] = $did_you_know;
+    $more['aside']['questions'] = $questions;
+    $more['disclaimer'] = $disclaimer;
+  }
+
+
 
 ?>
 
