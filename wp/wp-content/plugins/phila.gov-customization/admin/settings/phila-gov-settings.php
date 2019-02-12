@@ -6,7 +6,7 @@ function phila_options_page( $settings_pages ) {
   $settings_pages[] = array(
     'id'          => 'phila_gov',
     'option_name' => 'phila_settings',
-    'menu_title'  => 'Phila.gov',
+    'menu_title'  => 'Phila.gov settings',
     'parent'      => 'options-general.php',
     'tabs'        => array(
       'general' => 'General Settings',
@@ -24,6 +24,9 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'title'          => 'Homepage image',
     'settings_pages' => 'phila_gov',
     'tab'            => 'general',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor' ),
+    ),
     'fields'         => array(
       array(
         'name' => 'Mobile image',
@@ -43,6 +46,9 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'title'          => 'Featured jobs',
     'settings_pages' => 'phila_gov',
     'tab'            => 'jobs',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'job_board_editor' ),
+    ),
     'fields'  => array(
       array(
         'id'  => 'phila_featured_jobs',
