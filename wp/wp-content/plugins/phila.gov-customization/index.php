@@ -79,6 +79,7 @@ require $dir. '/public/shortcodes/vertical-rule.php';
 require $dir. '/public/add-headers.php';
 require $dir. '/public/class-phila-document-controller.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
+require $dir. '/public/class-phila-jobs-controller.php';
 require $dir. '/public/class-phila-posts-controller.php';
 require $dir. '/public/class-phila-last-updated-controller.php';
 require $dir. '/public/class-phila-programs-controller.php';
