@@ -8,7 +8,9 @@
     $members = rwmb_meta('phila_commission_members');
   endif;
 
-  $table_cell_title = rwmb_meta('table_head_title');
+  if ( !isset( $table_cell_title ) ) :
+    $table_cell_title = rwmb_meta('table_head_title');
+  endif;
 ?>
 
 <?php if ( !empty( $members ) ) : ?>
