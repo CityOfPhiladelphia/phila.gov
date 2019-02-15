@@ -76,6 +76,7 @@ require $dir. '/public/shortcodes/pullquote.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';
 
+require $dir. '/public/controllers/class-phila-departments.php';
 require $dir. '/public/controllers/class-phila-documents.php';
 require $dir. '/public/controllers/class-phila-jobs.php';
 require $dir. '/public/controllers/class-phila-last-updated.php';
