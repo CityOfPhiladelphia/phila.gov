@@ -36,18 +36,13 @@ class Phila_Jobs_Controller {
   */
   public function get_items( $request ) {
 
-    $group_values = rwmb_meta( 'phila_featured_jobs', array( 'object_type' => 'setting' ), 'featured_jobs'  );
-    var_dump($group_values);
-
-    $featured_jobs = rwmb_meta( 'phila_featured_jobs', array( 'object_type' => 'setting' ), 'featured_jobs' );
+    $featured_jobs = rwmb_meta( 'phila_featured_jobs', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
 
     if ( empty( $featured_jobs ) ) {
       return rest_ensure_response( $data );
     }
-
-    var_dump($featured_jobs);
 
     foreach ( $featured_jobs as $job ) {
       $response = $this->prepare_item_for_response( $job, $request );
@@ -89,31 +84,18 @@ class Phila_Jobs_Controller {
 
     $schema = $this->get_item_schema( $request );
 
-    if ( isset( $schema['properties']['id'] ) ) {
-      $post_data['id'] = (int) $post->ID;
-    }
-
     if (isset( $schema['properties']['title'] )) {
-      if ( rwmb_meta('phila_service_alt_title', '', $post->ID) != null ) {
-          $post_data['title'] =  (string) trim( rwmb_meta('phila_service_alt_title', '', $post->ID ) );
-        }else{
-          $post_data['title']  =  (string) trim( html_entity_decode($post->post_title ) );
-      }
-    }
-
-    if (isset( $schema['properties']['desc'] )) {
-      $post_data['desc'] = (string) trim( rwmb_meta('phila_meta_desc', '', $post->ID ) );
+      $post_data['title'] = (string) $post['job_title'];
     }
 
     if (isset( $schema['properties']['link'] )) {
-      $link = get_permalink($post->ID);
+      $link = get_permalink($post['job_link']);
       $parsed_link = parse_url($link);
       $post_data['link']  = (string) 'https://www.phila.gov' . $parsed_link['path'];
     }
 
-    if (isset( $schema['properties']['categories'] )) {
-      $service_categories = get_the_terms($post->ID, 'service_type');
-      $post_data['categories']  = (array) $service_categories;
+    if (isset( $schema['properties']['desc'] )) {
+      $post_data['desc'] = (string) $post['job_description'];
     }
 
     return rest_ensure_response( $post_data );
@@ -162,28 +144,18 @@ class Phila_Jobs_Controller {
       'type'                 => 'object',
       // Specify object properties in the properties attribute.
       'properties'           => array(
-        'id' => array(
-          'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
-          'type'         => 'integer',
-          'context'      => array( 'view', 'edit', 'embed' ),
-          'readonly'     => true,
-        ),
         'title'=> array(
           'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
-        'desc'  => array(
-          'description' => esc_html__('Description of this page.', 'phila-gov'),
-          'type'  => 'string',
-        ),
         'link'  => array(
           'description' => esc_html__('The permalink for this object.', 'phila-gov'),
           'type'  => 'string',
         ),
-        'categories'  => array(
-          'description' => esc_html__('The service categories assigned to this object.', 'phila-gov'),
-          'type'  => 'array',
+        'desc'  => array(
+          'description' => esc_html__('Description of this page.', 'phila-gov'),
+          'type'  => 'string',
         ),
       ),
     );
