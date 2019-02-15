@@ -76,15 +76,16 @@ require $dir. '/public/shortcodes/pullquote.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';
 
+require $dir. '/public/controllers/class-phila-documents.php';
+require $dir. '/public/controllers/class-phila-jobs.php';
+require $dir. '/public/controllers/class-phila-last-updated.php';
+require $dir. '/public/controllers/class-phila-posts.php';
+require $dir. '/public/controllers/class-phila-programs.php';
+require $dir. '/public/controllers/class-phila-service-pages.php';
+require $dir. '/public/controllers/class-phila-staff-members.php';
+
 require $dir. '/public/add-headers.php';
-require $dir. '/public/class-phila-document-controller.php';
 require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
-require $dir. '/public/class-phila-jobs-controller.php';
-require $dir. '/public/class-phila-posts-controller.php';
-require $dir. '/public/class-phila-last-updated-controller.php';
-require $dir. '/public/class-phila-programs-controller.php';
-require $dir. '/public/class-phila-services-controller.php';
-require $dir. '/public/class-phila-staff-member-controller.php';
 require $dir. '/public/hostname-redirect.php';
 require $dir. '/public/modify-post-type-links.php';
 require $dir. '/public/removals.php';
