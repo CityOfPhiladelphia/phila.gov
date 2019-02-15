@@ -41,7 +41,8 @@ class Phila_Departments_Controller {
       'post_type' => 'department_page',
       'orderby' => 'title',
       'order' => 'asc',
-      'post_parent' => 0
+      'post_parent' => 0,
+      'post_status' => 'publish'
     );
 
     $posts = get_posts( $args );
