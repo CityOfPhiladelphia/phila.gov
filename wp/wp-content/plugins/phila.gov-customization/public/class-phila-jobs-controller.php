@@ -88,10 +88,8 @@ class Phila_Jobs_Controller {
       $post_data['title'] = (string) $post['job_title'];
     }
 
-    if (isset( $schema['properties']['link'] )) {
-      $link = get_permalink($post['job_link']);
-      $parsed_link = parse_url($link);
-      $post_data['link']  = (string) 'https://www.phila.gov' . $parsed_link['path'];
+    if (isset( $schema['properties']['url'] )) {
+      $post_data['link']  = (string) $post['job_link'];
     }
 
     if (isset( $schema['properties']['desc'] )) {
@@ -149,7 +147,7 @@ class Phila_Jobs_Controller {
           'type'         => 'string',
           'readonly'     => true,
         ),
-        'link'  => array(
+        'url'  => array(
           'description' => esc_html__('The permalink for this object.', 'phila-gov'),
           'type'  => 'string',
         ),
