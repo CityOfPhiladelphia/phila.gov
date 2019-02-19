@@ -1494,6 +1494,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "City of Philadelphia",
     "Mayor's Commission on",
     "Mayor's Office of",
+    "Mural Arts Philadelphia",
     "Philadelphia",
     "Commission on",
     "Zoning Board of",
