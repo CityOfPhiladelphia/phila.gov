@@ -282,3 +282,46 @@ get_header(); ?>
 </div><!-- .site-main .home -->
 
 <?php get_footer(); ?>
+
+<?php
+
+$args = array(
+  'post_type' => array(
+    'service_page',
+  ),
+  'post_status' => 'publish',
+  'posts_per_page' => -1,
+  //'category__not_in'  => array('2', '234', '230'),
+  'meta_query' => array(
+    array(
+      'key'     => 'phila_template_select',
+      'value'   => 'service_stub',
+      'compare' => 'NOT IN',
+      ),
+    )
+);
+$the_query = new WP_Query( $args );
+
+var_dump($the_query->post_count);
+
+// The Loop
+if ( $the_query->have_posts() ) {
+	echo '<table>';
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		echo '<tr><td>' . get_the_title(). '</td><td>' .  get_permalink() .'</td> <td>';
+
+      if( get_the_category()  != null ) {
+        foreach((get_the_category()) as $category){
+          echo $category->name;
+          }
+      }
+
+    '</td></tr>';
+	}
+	echo '</table>';
+	/* Restore original Post Data */
+	wp_reset_postdata();
+} else {
+	// no posts found
+}?>
