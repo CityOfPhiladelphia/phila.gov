@@ -94,7 +94,19 @@ class Phila_Departments_Controller {
     $schema = $this->get_item_schema( $request );
 
     if (isset( $schema['properties']['name'] )) {
+
       $post_data['name'] = (string) $post->post_title;
+    }
+
+    if (isset( $schema['properties']['short_name'] )) {
+      $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $post->post_title );
+
+      $post_data['short_name'] = (string) html_entity_decode(trim($trimmed_name));
+    }
+
+    if (isset( $schema['properties']['acronym'] )) {
+      $acronym = rwmb_meta('phila_department_acronym', array(), $post->ID);
+      $post_data['acronym'] = (string) $acronym;
     }
 
     return rest_ensure_response( $post_data );
@@ -145,6 +157,16 @@ class Phila_Departments_Controller {
       'properties'           => array(
         'name' => array(
           'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'short_name' => array(
+          'description'  => esc_html__( 'Department short name.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'acronym' => array(
+          'description'  => esc_html__( 'Acronym of the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
