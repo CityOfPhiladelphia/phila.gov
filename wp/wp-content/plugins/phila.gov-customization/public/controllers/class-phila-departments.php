@@ -94,7 +94,9 @@ class Phila_Departments_Controller {
     $schema = $this->get_item_schema( $request );
 
     if (isset( $schema['properties']['name'] )) {
-      $post_data['name'] = (string) $post->post_title;
+      $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $post->post_title );
+
+      $post_data['name'] = (string) html_entity_decode(trim($trimmed_name));
     }
 
     return rest_ensure_response( $post_data );
