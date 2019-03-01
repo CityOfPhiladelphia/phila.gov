@@ -1503,6 +1503,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Office of",
     "Department of",
     "Bureau of",
+    "Division of"
   );
 
   if ( !isset( $page_title ) ) {
