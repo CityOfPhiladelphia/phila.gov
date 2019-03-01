@@ -17,10 +17,12 @@ function callout_shortcode($atts, $content=null){
     'a'      => [
         'href'  => [],
         'title' => [],
+        'class' => [],
       ],
     'br'     => [],
     'em'     => [],
     'strong' => [],
+    'class' => [],
   ];
 
   $output = '';
