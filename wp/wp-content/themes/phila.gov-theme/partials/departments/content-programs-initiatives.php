@@ -189,6 +189,7 @@
           <?php if ( isset( $current_row['phila_full_options']['commission_members'] ) ): ?>
             <?php
             $section_title = $current_row['phila_full_options']['commission_members']['section_title'];
+            $table_cell_title = $current_row['phila_full_options']['commission_members']['table_head_title'];
             $members = $current_row['phila_full_options']['commission_members']['phila_commission_members'];
             ?>
             <!-- Boards/Commission Members -->
