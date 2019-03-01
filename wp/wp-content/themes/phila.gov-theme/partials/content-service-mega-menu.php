@@ -17,7 +17,7 @@
         </div>  
         <div class="medium-8 float-right white bg-dark-ben-franklin left-arrow-indent mega-menu-footer">
           <div class="valign">
-            <a href="/services/" class="phl valign-cell service-directory"><span><i class="far fa-beer fa-2x phm"></i>Service directory</span></a>
+            <a href="/services/" class="phl valign-cell service-directory"><span><i class="far fa-list fa-lg phm"></i>Service directory</span></a>
           </div>
         </div>  
       </div>
