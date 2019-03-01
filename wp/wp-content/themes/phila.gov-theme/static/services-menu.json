@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": 12856,
     "link": "https://www.phila.gov/services/zoning-planning-development/",
     "title": {
@@ -26,6 +27,16 @@
     },
     "meta": {
       "phila_page_icon": "fas fa-wrench"
+    }
+  },
+  {
+    "id": 1,
+    "link": "https://www.phila.gov/services/",
+    "title": {
+      "rendered": "Volunteering"
+    },
+    "meta": {
+      "phila_page_icon": "far fa-beer"
     }
   },
   {

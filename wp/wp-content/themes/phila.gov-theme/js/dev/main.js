@@ -2,6 +2,7 @@ var $ = require('jquery')
 
 require('phila-standards')
 
+require('./phila-gov')
 require('./site-wide-alerts')
 require('./city-directory-list')
 require('./collapsible-div')
