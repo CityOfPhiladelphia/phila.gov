@@ -30,16 +30,6 @@
     }
   },
   {
-    "id": 1,
-    "link": "https://www.phila.gov/services/",
-    "title": {
-      "rendered": "Volunteering"
-    },
-    "meta": {
-      "phila_page_icon": "far fa-beer"
-    }
-  },
-  {
     "id": 12843,
     "link": "https://www.phila.gov/services/trees-parks-the-environment/",
     "title": {
@@ -117,6 +107,16 @@
     },
     "meta": {
       "phila_page_icon": "fas fa-heartbeat"
+    }
+  },
+  {
+    "id": 70681,
+    "link": "https://www.phila.gov/services/ethics-transparency/",
+    "title": {
+      "rendered": "Ethics &#038; transparency"
+    },
+    "meta": {
+      "phila_page_icon": "fas fa-balance-scale"
     }
   },
   {
