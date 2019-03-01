@@ -96,18 +96,27 @@ $row_content = rwmb_meta('collection_row');?>
 
   <?php if ($current_row_option === 'free_text') :  ?>
 
-    <?php foreach( $current_row['free_text'] as $free_text ) : ?>
+    <?php foreach( $current_row['free_text'] as $free_text ) :
+      ?>
       <?php $headline = isset($free_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $free_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '<span class="placeholder">Please enter heading title</span>'; ?>
+      <?php $expand_collapse = isset($free_text['expand_collapse']) ? $free_text['expand_collapse'] : ''; ?>
+
 
       <div class="row one-quarter-row mvl">
         <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
         </div>
         <div class="columns medium-18 pbxl">
+        <?php if ($expand_collapse == 1) :?>
+          <div class="expandable" aria-controls="<?php echo sanitize_title_with_dashes($headline, null, 'save') . '-control' ?>" aria-expanded="false">
+        <?php endif; ?>
           <?php echo apply_filters( 'the_content', $free_text['phila_custom_wysiwyg']['phila_wysiwyg_content'] ); ?>
-
+          <?php if ($expand_collapse == 1) :?>
+              </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo sanitize_title_with_dashes($headline, null, 'save') . '-control' ?>"> More + </a>
+          <?php endif; ?>
         </div>
-      </div>
+        
+      </div>      
       <?php endforeach; ?>
 
   <?php endif; ?>
