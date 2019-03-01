@@ -1,0 +1,529 @@
+#mobile-nav{ // sass-lint:disable-line no-ids
+  padding-right:0;
+  padding-left:0;
+  nav{
+    width:100%;
+  }
+}
+
+.global-nav {
+  @include secondary-font(400);
+  position: relative;
+  z-index: 1000;
+
+  &.no-js {
+    //prevent content from jumping down after JS is loaded
+    min-height: 95px;
+  }
+
+  .js-is-current {
+    color:white;
+    background: color(dark-ben-franklin);
+    &:hover,
+    &:active{
+      color:color(dark-ben-franklin);
+      background: color(light-blue);
+    }
+  }
+
+  a:link, a:visited {
+    font-weight: normal;
+    @include breakpoint(medium up) {
+      font-size: .85rem;
+    }
+
+  }
+  //utility nav
+  .utility-nav {
+    font-size: .85rem;
+
+    @include breakpoint(small only) {
+      height:10px;
+    }
+
+    ul {
+
+      li {
+        &:last-of-type::after {
+          content: none;
+        }
+        &::after {
+          display: inline;
+          content: '|';
+          background: color(ben-franklin-blue);
+          color: rgba(color(light-ben-franklin), .6);
+        }
+
+        a {
+          display: inline-block;
+          padding: $spacing-small;
+          color: white;
+          text-align: center;
+
+          &:hover,
+          &:active{
+            background: color(light-blue);
+            color:color(dark-ben-franklin);
+          }
+          &.js-is-current{
+            background:color(dark-gray);
+            color:white;
+            &:hover,
+            &:active{
+              color:color(dark-ben-franklin);
+              background: color(light-blue);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sticky{
+    // sass-lint:disable-block no-important
+    background: white;
+    width: 100% !important;
+    max-width: 100% !important;
+    left:0 !important;
+
+    @include breakpoint(small only) {
+      top: 0 !important;
+    }
+
+    &.is-stuck{
+      box-shadow: 0 3px 10px rgba(color(medium-gray), .5);
+    }
+
+    .sticky-header-width{
+      max-width: 75rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+
+  .title-bar {
+    position: absolute;
+    top:0;
+
+    .menu-icon {
+      position: relative;
+      width: auto;
+      height: auto;
+      padding: .75rem;
+      margin-left:0;
+      background: white;
+      color: color(dark-ben-franklin);
+
+      .fa {
+        display: block;
+      }
+
+      &:after, &:before {
+        background: color(dark-ben-franklin);
+        box-shadow: none;
+        height: 0;
+      }
+      &.active {
+        background-color: color(ghost-gray);
+        color: color(dark-ben-franklin);
+      }
+    }
+    .title-bar-title {
+      margin: 0;
+      font-size: .8rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .is-drilldown {
+    max-width: 100% !important; // sass-lint:disable-line no-important
+    background: color(ghost-gray);
+
+    ul {
+      width: 100%;
+
+      li {
+        background: color(ghost-gray);
+        list-style: none;
+        border-bottom: 1px solid white;
+        &.bg-sidewalk{
+          background: color(sidewalk);
+        }
+        &.js-drilldown-back{
+          text-transform: uppercase;
+          font-size:.9rem;
+        }
+        a{
+          display: block;
+          padding:1rem;
+          line-height: 1;
+
+          &:hover,
+          &:active {
+            background: color(dark-ben-franklin);
+            color:white;
+          }
+        }
+      }
+    }
+    .is-submenu-parent-item{
+      font-size: 1.3rem;
+      a:link, a:hover, a:active{
+        background:color(ghost-gray);
+        cursor: default;
+        color: black;
+
+      }
+    }
+    .is-drilldown-submenu-parent > a {
+      &:hover::after,
+      &:active::after{
+        border-color:transparent transparent transparent white;
+      }
+    }
+    .js-current-section{
+      padding: .5rem 1rem;
+      font-size: 1.3rem;
+      text-transform: none;
+    }
+  }
+
+
+  .js-drilldown-back{
+    >a:hover::before,
+    >a:active::before{
+      border-color: transparent white transparent transparent;
+    }
+  }
+
+  @include breakpoint(small only) {
+    .mega-menu-dropdown.dropdown-pane{
+      display: none;
+    }
+
+    .top-bar{
+      top: 0;
+      background-color: white;
+      &.no-js{
+        display:none;
+      }
+    }
+
+  }
+  .top-bar-right .menu > li {
+    > a:link {
+      @media screen and (min-width: 750px) and (max-width:950px) {
+        font-size:.75rem;
+        padding: 2rem .5rem;
+      }
+    }
+  }
+
+  @include breakpoint( medium ) {
+    .services-menu-link {
+      position: static;
+    }
+
+    .menu.medium-horizontal>li{
+      height:inherit;
+    }
+    .primary-menu {
+      ul {
+        background-color:white;
+      }
+      .menu>li {
+        > a {
+          text-align: center;
+          height: inherit;
+
+          text-transform: uppercase;
+
+          padding: $spacing-large 1.5rem;
+        }
+        a:active, a:hover {
+          color: color(dark-ben-franklin);
+          background: color(light-blue);
+        }
+      }
+    }
+    .services-menu-link {
+      position: relative;
+      height:inherit;
+
+      ul {
+        li {
+          display:none;
+        }
+      }
+      //TODO: some of this could be cleaned up
+      //big arrow
+      &.hover::after{
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+
+        border-bottom: 1rem solid color(ghost-gray);
+        bottom:0;
+        left:38%;
+        right:50%;
+        position: absolute;
+    }
+      //this is to account for when the dropdown panel is visible AND when the normal :hover state is active
+      &.hover {
+        background: color(dark-ben-franklin);
+        //panel is open
+        a{
+          color: white;
+          &:hover::after,
+          &:active::after{
+            border-color: transparent transparent color(dark-ben-franklin);
+          }
+          &.js-is-current{
+            &::after{
+              border-color: transparent transparent white;
+            }
+            //panel is open, and there is hover
+            &:hover::after,
+            &:active::after{
+              border-color: transparent transparent color(dark-ben-franklin);
+            }
+          }
+          //little arrow
+          &::after{
+            display: inline;
+            margin: auto 0;
+            content: '';
+            width: 0;
+            height: 0;
+            border: inset 5px;
+            border-color: transparent transparent white;
+            border-bottom-style: solid;
+            border-top-width: 0;
+            height: 0;
+            left: 74%;
+            position: absolute;
+            float: none;
+            top: 0;
+            bottom: 0;
+            height: 10px;
+            }
+          }
+        }
+      //not open
+      a {
+        padding: $spacing-large 2.5rem $spacing-large 1.5rem !important; // sass-lint:disable-line no-important
+        height: inherit;
+
+        &:hover::after,
+        &:active::after{
+          border-color: color(dark-ben-franklin) transparent transparent transparent;
+        }
+        &::after {
+          //little arrow
+          display: inline;
+          margin: auto 0;
+          content: '';
+          width: 0;
+          height: 0;
+          border: inset 5px;
+          border-color: color(dark-ben-franklin) transparent transparent;
+          border-top-style: solid;
+          border-bottom-width: 0;
+          left: 74%;
+          position: absolute;
+          float: none;
+          top: 0;
+          bottom: 0;
+          height: 10px;
+        }
+        &.js-is-current {
+          color:white;
+          background: color(dark-ben-franklin);
+          &::after{
+            border-color: white transparent transparent transparent;
+          }
+          &:hover::after,
+          &:active::after{
+            border-color: color(dark-ben-franklin) transparent transparent  transparent;
+            }
+          }
+        }
+      }
+    }
+
+  .dropdown-pane{
+    // sass-lint:disable-block no-important
+    max-width: 100% !important;
+    width:100% !important;
+    border: 0;
+    padding: 0;
+    font-size: 1rem;
+    left: 0 !important;
+    z-index: 10000;
+    position: fixed;
+
+    .placeholder{
+      background: color(ghost-gray);
+      min-height: 5rem;
+    }
+
+    .inner-wrapper .columns {
+      text-align: left;
+      border-left: 2px solid white;
+      border-right: 2px solid white;
+      border-bottom: 4px solid white;
+      padding-left: 0;
+      padding-right: 0;
+
+      a {
+        display:block;
+        padding: 1.5rem;
+        background-color: color(ghost-gray);
+        width: 100%;
+
+        &:hover {
+          color:white;
+          background: color(dark-ben-franklin);
+        }
+        span{
+          display:block;
+        }
+      }
+    }
+    .mega-menu-footer {
+      a {
+        padding: 1.5rem 4rem;
+
+        color: white;
+        &:hover {
+          background:white;
+          color:color(dark-ben-franklin);
+        }
+      }
+      &.left-arrow-indent{
+        position: relative;
+        &:before {
+          margin: auto 0;
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 35px solid transparent;
+          border-bottom: 35px solid transparent;
+          border-left: 35px solid color(ghost-gray);
+          position: absolute;
+          left:0;
+          right:0;
+          top:0;
+          bottom:0;
+        }
+      }
+    }
+  }
+
+  .dropdown.menu{
+    a{
+      //added to override patterns display:block
+      display:inherit;
+    }
+  }
+
+  #services-list{ // sass-lint:disable-line no-ids
+    .inner-wrapper{
+      width:100%;
+      height:100%;
+      background: transparent;
+      overflow: scroll;
+    }
+  }
+
+  button.site-search {
+    font-size:.5rem;
+    position: relative;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-weight: normal;
+    background: none;
+    @include breakpoint(medium up) {
+      margin-top:.75rem;
+    }
+
+    @include breakpoint(small only) {
+      font-size: .7rem;
+      float:right;
+      //matches padding on menu-icon
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+
+      .fa{
+        display: block;
+        padding-bottom: $spacing-small;
+        font-size: 3.7em;
+      }
+    }
+    color:color(dark-ben-franklin);
+    text-transform: uppercase;
+
+  }
+
+}
+
+header {
+  .logo {
+    display: block;
+    margin:.75rem 0 0 0;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    width:170px; //magic number for the size of the logo
+
+    &:hover{
+      opacity: .6;
+    }
+
+    @include breakpoint(small only) {
+      margin: .75rem auto 0 auto;
+    }
+
+  }
+}
+//Global search
+.site-search-dropdown{
+  .arrow{
+    position: relative;
+
+    &::before{
+      display: block;
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 1rem solid transparent;
+      border-right: 1rem solid transparent;
+      border-bottom: 1rem solid color(ghost-gray);
+      top:-1rem;
+      position: absolute;
+      right:.6rem;
+
+      @include breakpoint(medium) {
+        right: 1rem;
+      }
+    }
+  }
+}
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium) {
+    .title-bar {
+      display: none;
+    }
+  }
+}
