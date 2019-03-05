@@ -51,11 +51,6 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   padding-bottom: 10px;
 }
 
-.manage-column.column-wpfront-user-role-editor-role-permission-column-key, .column-wpfront-user-role-editor-role-permission-column-key {
-  width: 15%;
-  text-align: left;
-}
-
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
 #wp-link-target,
@@ -72,7 +67,9 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 .post-type-event_spotlight #postdivrich,
 #try-gutenberg-panel,
 /* Hide user role column from all users */
-.column-wpfront-user-role-editor-role-permission-column-key, {
+#wpfront-user-role-editor-role-permission-column-key,
+.column-wpfront-user-role-editor-role-permission-column-key
+{
   display: none !important;
 }
 
