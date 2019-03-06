@@ -100,7 +100,9 @@ class Phila_Departments_Controller {
 
     if (isset( $schema['properties']['short_name'] )) {
       $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $post->post_title );
-      
+
+      $trimmed_name = preg_replace('/( and )/', ' &amp; ', $trimmed_name);
+
       $post_data['short_name'] = (string) html_entity_decode(trim($trimmed_name));
     }
 
