@@ -8,7 +8,7 @@
 
 ?>
 <div id="services-list" class="global-nav show-for-medium">
-  <div class="dropdown-pane mega-menu-dropdown is-open" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-hover="true" data-close-on-click="true" id="services-mega-menu">
+  <div class="dropdown-pane mega-menu-dropdown" data-dropdown data-v-offset="0" data-hover-pane="true" data-trap-focus="true" data-hover="true" data-close-on-click="true" id="services-mega-menu">
     <div class="inner-wrapper">
       <div id="phila-menu-wrap" class="row expanded mbxs" data-equalizer data-equalize-by-row="true" data-services-menu>
         <?php #add dummy cell ?>
