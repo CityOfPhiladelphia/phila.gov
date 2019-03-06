@@ -9,8 +9,6 @@ module.exports = $(function(){
     e.preventDefault();
   });
 
-  var translate = setTimeout(function() { $('#google_translate_element a').prepend('<i class="fas fa-globe"></i>'); }, 1000);
-
   if ($('#mobile-nav-drilldown').length){
 
     var drilldownOptions = {
