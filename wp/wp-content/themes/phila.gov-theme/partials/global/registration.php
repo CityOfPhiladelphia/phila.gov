@@ -45,7 +45,7 @@ endif;
                 <?php echo ($is_closed == true ? apply_filters( 'the_content', $registration['closed']['phila_custom_wysiwyg']['phila_wysiwyg_content']) : apply_filters( 'the_content',$registration['open']['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) )?>
                 <?php if ($is_closed == false) : ?>
                   <?php foreach ($registration['open']['links'] as $link) : ?>
-                    <a class="button <?php echo isset( $link[is_external] ) ? 'external' : '' ?>" href="<?php echo $link['link_url']?>"><?php echo $link['link_text']?></a>
+                    <a class="button <?php echo isset( $link['is_external'] ) ? 'external' : '' ?>" href="<?php echo $link['link_url']?>"><?php echo $link['link_text']?></a>
                   <?php endforeach; ?>
                 <?php endif; ?>
               </div>
