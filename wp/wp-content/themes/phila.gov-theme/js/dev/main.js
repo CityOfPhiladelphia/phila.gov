@@ -1,4 +1,4 @@
-var $ = require('jquery')
+require('jquery')
 
 require('phila-standards')
 
