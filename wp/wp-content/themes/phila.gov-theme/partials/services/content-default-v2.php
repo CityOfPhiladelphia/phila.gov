@@ -32,14 +32,25 @@
   $renewal = isset( $renewal ) ? phila_remove_empty_p_tags( $renewal ) : false;
 ?>
 
-<?php get_template_part('partials/services/content', 'start-process'); ?>
+
+<?php 
+  $process = rwmb_meta( 'service_before_you_begin' );
+?>
+
+<?php get_template_part('partials/services/content', 'before-begin'); ?>
 
 <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
-<div class="row">
-  <div class="columns">
-    <?php the_content(); ?>
+<?php if( !empty (get_the_content() ) )  : ?>
+<section>
+  <div class="row">
+    <div class="columns">
+      <h3 id="service-overview" class="black bg-ghost-gray phm-mu mtl mbm">Service overview</h3>
+      <div class="phm-mu"><?php the_content(); ?></div>
+    </div>
   </div>
-</div>
+</section>
+<?php endif; ?>
+
 <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
 <?php if ( !empty( $who ) ) : ?>

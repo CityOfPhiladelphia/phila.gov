@@ -6,10 +6,9 @@
  */
 ?>
 <?php
-  $process = rwmb_meta( 'phila_start_process' );
+  $process = !empty( rwmb_meta( 'phila_start_process' ) ) ? rwmb_meta( 'phila_start_process' ) : rwmb_meta( 'service_before_you_begin' ) ;
   $start_process = phila_get_start_process( $process );
 ?>
-<p><?php echo phila_get_item_meta_desc() ?></p>
 
 <?php if ( !empty( $start_process['content'] ) ) : ?>
   <div class="row columns mvm">
