@@ -22,11 +22,11 @@ class Phila_Gov_Register_Service_Templates {
       'title' => 'Before you start',
       'pages' => array('service_page'),
       'revision' => true,
+      'class' => 'hide-on-load',
       'priority'  => 'high',
       'visible' => array(
         'when' => array(
           array( 'phila_template_select', '=', 'start_process' ),
-          array( 'phila_template_select', '=', 'default_v2' ),
         ),
         'relation' => 'or',
       ),
@@ -47,6 +47,28 @@ class Phila_Gov_Register_Service_Templates {
         )
       )
     );
+
+  $meta_boxes[] = array(
+    'title' => 'Before you begin',
+    'pages' => array('service_page'),
+    'revision' => true,
+    'class' => 'hide-on-load',
+    'priority'  => 'high',
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'default_v2' ),
+      ),
+      'relation' => 'or',
+    ),
+    'fields' => array(
+      array(
+        'id'  => 'service_before_you_begin',
+        'type'  => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+      ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
+    )
+  );
     
 
     $meta_boxes[] = array(
