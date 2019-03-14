@@ -147,16 +147,6 @@ export default {
     this.loading = true
   },
   methods: {
-    externalLink: function(what){
-        console.log(this.programs)
-      console.log(what)
-    if(this.programs.link.indexOf('/programs/') > -1){
-      return 'exernal'
-      
-    }else{
-      return 'poo'
-      }
-    },
     onLangsPageChange (toPage, fromPage) { 
       window.scrollTo({
         top: 0, 
@@ -164,8 +154,6 @@ export default {
     },
     getAllPrograms: function () {
       this.loading = true
-      //TODO use in instead of undefined
-
       axios.get(programsEndpoint + 'archives', {
         params: {
           'count': 150,
@@ -173,8 +161,6 @@ export default {
       })
       .then(response => {
         this.programs = response.data
-        console.log(this.programs)
-
         this.successfulResponse
       })
       .catch(e => {
