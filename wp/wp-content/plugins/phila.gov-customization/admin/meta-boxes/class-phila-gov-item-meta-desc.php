@@ -4,7 +4,7 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
   $phila_meta_desc = new Phila_Item_Meta_Desc();
 }
 
- class Phila_Item_Meta_Desc {
+class Phila_Item_Meta_Desc {
 
 
   public function __construct(){
@@ -35,8 +35,8 @@ if ( class_exists("Phila_Item_Meta_Desc" ) ){
           'type' => 'textarea',
           'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 140 character maximum.',
           'required'  => true
-         ),
-       ),
+        ),
+      ),
     );
 
     return $meta_boxes;

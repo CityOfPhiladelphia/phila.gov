@@ -102,20 +102,20 @@ function phila_register_meta_boxes( $meta_boxes ){
     'include' => array(
       'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
       'relation' => 'or',
-     ),
-     'fields' => array(
-       array(
-         'name'  => '',
-         'desc'  => 'Display on phila.gov homepage?',
-         'id'    => 'show_on_home',
-         'type'  => 'radio',
-         'std'=> '0',
-         'options' =>  array(
-             '0' => 'No',
-             '1' => 'Yes'
-         )
-       ),
-     )
+    ),
+    'fields' => array(
+      array(
+        'name'  => '',
+        'desc'  => 'Display on phila.gov homepage?',
+        'id'    => 'show_on_home',
+        'type'  => 'radio',
+        'std'=> '0',
+        'options' =>  array(
+            '0' => 'No',
+            '1' => 'Yes'
+        )
+      ),
+    )
   );
 
   $meta_boxes[] = array(
@@ -128,23 +128,23 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     'fields' => array(
         array(
-         'id'   => 'phila_document_description',
-         'type' => 'wysiwyg',
-         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-         'desc' => 'Information describing the collection of documents on this page. This content will appear above the document list.'
-       ),
-       array(
-         'type'  => 'heading',
-         'name' => ' Release Date',
-       ),
-       array(
-         'id'   => 'phila_override_release_date',
-         'name'  => 'Override all release dates on this page with the date below?',
-         'type' => 'switch',
-         'on_label'  => 'Yes',
-         'off_label' => 'No'
-       ),
-       array(
+        'id'   => 'phila_document_description',
+        'type' => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+        'desc' => 'Information describing the collection of documents on this page. This content will appear above the document list.'
+      ),
+      array(
+        'type'  => 'heading',
+        'name' => ' Release Date',
+      ),
+      array(
+        'id'   => 'phila_override_release_date',
+        'name'  => 'Override all release dates on this page with the date below?',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
+      ),
+      array(
         'id'    => 'phila_document_released',
         'type'  => 'date',
         'class' =>  'document-released',
@@ -229,7 +229,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'id'   => 'phila_press_release_contact_name',
             'type' => 'text',
             'required'  => true,
-           ),
+          ),
           array(
             'name' => 'Contact phone',
             'id'   => 'phila_press_release_contact_phone_number',
@@ -243,9 +243,9 @@ function phila_register_meta_boxes( $meta_boxes ){
             'std' => 'press@phila.gov',
             'required'  => true,
           ),
-         ),
-       )
-     ),
+        ),
+      )
+    ),
   );
 
   $meta_boxes[] = array(
@@ -296,7 +296,7 @@ function phila_register_meta_boxes( $meta_boxes ){
                   'required' => true,
                 ),
                 array(
-                   //'name' => __('Featured Resource Summary', 'rwmb'),
+                  //'name' => __('Featured Resource Summary', 'rwmb'),
                   'id'   => 'phila_list_item_external',
                   'name' => 'Does this link take users away from phila.gov?',
                   'type' => 'switch',
@@ -304,55 +304,54 @@ function phila_register_meta_boxes( $meta_boxes ){
                   'off_label'  => 'No'
                 ),
                 array(
-                   'name' => __('Item Icon', 'rwmb'),
-                   'id'   => 'phila_list_item_type',
-                   'type' => 'select',
-                   'placeholder' => 'Choose icon...',
-                   'options' => array(
-                     'phila_resource_link' => 'Link',
-                     'phila_resource_document' => 'Document',
-                     'phila_resource_map' => 'Map',
-                   ),
+                  'name' => __('Item Icon', 'rwmb'),
+                  'id'   => 'phila_list_item_type',
+                  'type' => 'select',
+                  'placeholder' => 'Choose icon...',
+                  'options' => array(
+                    'phila_resource_link' => 'Link',
+                    'phila_resource_document' => 'Document',
+                    'phila_resource_map' => 'Map',
                   ),
-                  array(
-                     'name' => __('Featured Resource', 'rwmb'),
-                     'id'   => 'phila_featured_resource',
-                     'class'   => 'phila_featured-resource',
-                     'type' => 'checkbox',
+                ),
+                array(
+                  'name' => __('Featured Resource', 'rwmb'),
+                  'id'   => 'phila_featured_resource',
+                  'class'   => 'phila_featured-resource',
+                  'type' => 'checkbox',
+                ),
+                array(
+                  'name' => __('Alternate Featured Title', 'rwmb'),
+                  'id'   => 'phila_list_item_alt_title',
+                  'type' => 'text',
+                  'hidden' => array( 'phila_featured_resource', '!=', true ),
+                ),
+                array(
+                  'name' => __('Featured Resource Summary', 'rwmb'),
+                  'id'   => 'phila_featured_summary',
+                  'class'   => 'phila_featured-summary',
+                  'type' => 'textarea',
+                  'hidden' => array( 'phila_featured_resource', '!=', true ),
+                ),
+                array(
+                  'name'  => 'Display Order',
+                  'id'    => 'phila_display_order',
+                  'type'  => 'select',
+                  'class' => 'display-order',
+                  'options' => array(
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
                   ),
-                  array(
-                    'name' => __('Alternate Featured Title', 'rwmb'),
-                    'id'   => 'phila_list_item_alt_title',
-                    'type' => 'text',
-                    'hidden' => array( 'phila_featured_resource', '!=', true ),
-
-                  ),
-                  array(
-                     'name' => __('Featured Resource Summary', 'rwmb'),
-                     'id'   => 'phila_featured_summary',
-                     'class'   => 'phila_featured-summary',
-                     'type' => 'textarea',
-                     'hidden' => array( 'phila_featured_resource', '!=', true ),
-                  ),
-                  array(
-                    'name'  => 'Display Order',
-                    'id'    => 'phila_display_order',
-                    'type'  => 'select',
-                    'class' => 'display-order',
-                    'options' => array(
-                      '1' => '1',
-                      '2' => '2',
-                      '3' => '3',
-                      '4' => '4',
-                    ),
-                    'hidden' => array( 'phila_featured_resource', '!=', true ),
-                  ),
+                  'hidden' => array( 'phila_featured_resource', '!=', true ),
                 ),
               ),
             ),
           ),
         ),
-      );
+      ),
+    );
 
   // First row of modules - Options have been reduced to What we do + connect circa V2 Department homepages
   $meta_boxes[] = array(
@@ -397,19 +396,19 @@ function phila_register_meta_boxes( $meta_boxes ){
             'id' => 'module_row_1_col_1_options',
             'type' => 'group',
             'fields' => array(
-             array(
+            array(
               'name' => 'Custom Text Title',
               'id'   => 'phila_module_row_1_col_1_texttitle',
               'type' => 'text',
               'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
             ),
-           array(
+          array(
             'name' => 'Custom Text Content',
             'id'   => 'phila_module_row_1_col_1_textarea',
             'type' => 'wysiwyg',
             'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
             'options' =>                     Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-           ),
+          ),
           ),
         ),
       ),
@@ -728,24 +727,6 @@ $meta_var_wysiwyg_multi = array(
 );
 
 
-//Questions metabox, used for Service Pages
-$meta_questions = array(
-  'id'  => 'phila_questions',
-  'type'  => 'group',
-
-  'fields'  => array(
-    array(
-      'name'  => 'Questions about this content?',
-      'type'  => 'heading'
-    ),
-    array(
-      'id'  => 'phila_question_content',
-      'type'  => 'wysiwyg',
-      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-    ),
-  )
-);
-
 $meta_boxes[] = array(
   'title' => 'Service Stub',
   'pages' => array('service_page'),
@@ -854,35 +835,6 @@ $meta_boxes[] = array(
   )
 );
 
-
-$meta_boxes[] = array(
-  'title' => 'Before you start',
-  'pages' => array('service_page'),
-  'revision' => true,
-  'visible' => array(
-    'when' => array(
-      array( 'phila_template_select', '=', 'start_process' ),
-    ),
-  ),
-  'fields' => array(
-    array(
-      'id' => 'phila_start_process',
-      'type'  => 'group',
-      'clone' => false,
-
-      'fields' => array(
-        array(
-          'id'  => 'phila_wysiwyg_process_content',
-          'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
-        ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
-      )
-    )
-  )
-);
-
-
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('department_page', 'page', 'service_page', 'programs'),
@@ -895,6 +847,7 @@ $meta_boxes[] = array(
       array( 'phila_template_select', '=', 'phila_one_quarter' ),
       array( 'phila_template_select', '=', 'default'),
       array( 'phila_template_select', '=', 'start_process'),
+      array( 'phila_template_select', '=', 'default_v2' ),
     ),
     'relation' => 'or',
   ),
@@ -921,12 +874,13 @@ $meta_boxes[] = array(
   'hidden' => array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
-      array('phila_template_select', '=', 'service_stub')
+      array('phila_template_select', '=', 'service_stub'),
+      array('phila_template_select', '=', 'default_v2')
     ),
     'relation' => 'or',
   ),
 
-    'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
+  'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
 );
 
 $meta_boxes[] = array(
@@ -1040,38 +994,38 @@ $meta_boxes[] = array(
   'context'  => 'advanced',
   'priority' => 'low',
 
-   'include' => array(
-     'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-   ),
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
 
   'fields' => array(
     array(
-     'name' => 'Description',
-     'id'   => 'phila_custom_markup_description',
-     'type' => 'custom_html',
-     'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
-   ),
-   array(
+      'name' => 'Description',
+      'id'   => 'phila_custom_markup_description',
+      'type' => 'custom_html',
+      'std'  => '<span>Use this area to insert CSS, HTML or JS.</span>',
+    ),
+    array(
       'name' => 'Append to head',
       'id'   => 'phila_append_to_head',
       'type' => 'textarea'
     ),
     array(
-     'name' => 'Append before WYSIWYG',
-     'id'   => 'phila_append_before_wysiwyg',
-     'type' => 'textarea'
-   ),
-   array(
-     'name' => 'Append after WYSIWYG',
-     'id'   => 'phila_append_after_wysiwyg',
-     'type' => 'textarea'
-   ),
-   array(
+      'name' => 'Append before WYSIWYG',
+      'id'   => 'phila_append_before_wysiwyg',
+      'type' => 'textarea'
+    ),
+    array(
+      'name' => 'Append after WYSIWYG',
+      'id'   => 'phila_append_after_wysiwyg',
+      'type' => 'textarea'
+    ),
+    array(
       'name' => 'Append after footer',
       'id'   => 'phila_append_after_footer',
       'type' => 'textarea'
     ),
- ),
+  ),
 );
 
 
