@@ -67,7 +67,7 @@ get_header(); ?>
           <?php
             $first_c = strtolower($k[0]);
             if( $a_k == $first_c && $a_v == true ) : ?>
-              <div class="result mvm" data-service="<?php echo implode(', ', $v['terms'] ); ?>">
+              <div class="result mvm">
                 <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                 <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>
               </div>

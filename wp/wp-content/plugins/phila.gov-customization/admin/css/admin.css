@@ -51,11 +51,6 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   padding-bottom: 10px;
 }
 
-.manage-column.column-wpfront-user-role-editor-role-permission-column-key, .column-wpfront-user-role-editor-role-permission-column-key {
-  width: 15%;
-  text-align: left;
-}
-
 /* hide wp target=_blank selector */
 #wp-link .link-target label:first-child,
 #wp-link-target,
@@ -70,7 +65,11 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 /*Hide View Attachment Page on Admin*/
 .attachment-info .view-attachment,
 .post-type-event_spotlight #postdivrich,
-#try-gutenberg-panel{
+#try-gutenberg-panel,
+/* Hide user role column from all users */
+#wpfront-user-role-editor-role-permission-column-key,
+.column-wpfront-user-role-editor-role-permission-column-key
+{
   display: none !important;
 }
 

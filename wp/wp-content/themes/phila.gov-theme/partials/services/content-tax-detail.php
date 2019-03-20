@@ -30,20 +30,19 @@
   <div class="medium-12 columns">
     <div class="panel info center heading">
       <div class="title pvxs">
-        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
- Due date</div>
-       <div class="valign equal">
-         <div class="pam valign-cell">
-           <?php if ($tax['due']['type'] != 'misc') : ?>
-             <?php if( $tax['due']['type'] == 'yearly') : ?>
-               <span class="h4"><?php echo $tax['due']['month'] ?></span>
-             <?php endif; ?>
+        <i class="fas fa-calendar-alt" aria-hidden="true"></i>Due date</div>
+        <div class="valign equal">
+          <div class="pam valign-cell">
+            <?php if ($tax['due']['type'] != 'misc') : ?>
+              <?php if( $tax['due']['type'] == 'yearly') : ?>
+                <span class="h4"><?php echo $tax['due']['month'] ?></span>
+              <?php endif; ?>
               <div class="numbers"><span class="large-text"><?php echo $tax['due']['date'] ?></span><span class="symbol"><?php echo phila_return_ordinal( $tax['due']['date'] ); ?></span></div>
               <div class="mtm"><?php echo $tax['due']['summary_brief'] ?></div>
-           <?php else : ?>
-             <?php echo apply_filters( 'the_content', $tax['due']['misc']); ?>
-           <?php endif; ?>
-       </div>
+            <?php else : ?>
+              <?php echo apply_filters( 'the_content', $tax['due']['misc']); ?>
+            <?php endif; ?>
+        </div>
       </div>
     </div>
   </div>

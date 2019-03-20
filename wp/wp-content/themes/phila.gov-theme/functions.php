@@ -252,13 +252,22 @@ function phila_open_graph() {
     $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
     $img_src = array_shift( $img );
     $type = 'article';
+
+    $img_id  = get_post_thumbnail_id($post->ID);
+    $alt_text = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
+
   }
 
   $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI'];
 
   //TODO: Determine which twitter account should be used for site attribution ?>
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="<?php echo isset($img_src) ? $img_src . '?19107' : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg?19107'; ?>"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@PhiladelphiaGov">
+  <meta name="twitter:image" content="<?php echo isset($img_src) ? $img_src : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
+  <meta name="twitter:image:alt" content="<?php echo isset($alt_text) ? $alt_text : 'phila.gov' ?>">
+  <meta name="twitter:description"  content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description'): phila_get_item_meta_desc(); ?>"/>
+  <meta name="twitter:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
+
   <meta property="og:title" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) )?>"/>
   <meta property="og:description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description'): phila_get_item_meta_desc(); ?>"/>
   <meta property="og:type" content="<?php echo isset($type) ? $type : 'website' ?>"/>
@@ -1494,6 +1503,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "City of Philadelphia",
     "Mayor's Commission on",
     "Mayor's Office of",
+    "Mural Arts Philadelphia",
     "Philadelphia",
     "Commission on",
     "Zoning Board of",
@@ -1502,6 +1512,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Office of",
     "Department of",
     "Bureau of",
+    "Division of"
   );
 
   if ( !isset( $page_title ) ) {
