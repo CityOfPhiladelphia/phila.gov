@@ -333,7 +333,7 @@ $meta_boxes[] = array(
       )
     );
 
- $meta_boxes[] = array(
+  $meta_boxes[] = array(
       'title'    => 'WYSIWYG section with header',
       'pages'    => array( 'department_page' ),
       'visible' => array( 'phila_template_select', 'things-to-do' ),
@@ -341,7 +341,7 @@ $meta_boxes[] = array(
 
       'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg()
-       )
+      )
     );//Things To Do
 
   $meta_boxes[] = array(

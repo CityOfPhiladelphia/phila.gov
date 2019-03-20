@@ -98,6 +98,14 @@ class Phila_Gov_Collection_Page {
               'add_button'  => '+ Add section',
               'fields' => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg($section_name = '1/4 Heading'),
+                array(
+                  'id'  => 'expand_collapse',
+                  'name'  => 'Add expand/collapse for long form content?',
+                  'type'  => 'switch',
+                  'on_label'  => 'Yes',
+                  'off_label' => 'No',
+                  'desc'  => 'Use this for content that is extremely long to shorten page length.'
+                )
               )
             ),
             array(
