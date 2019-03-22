@@ -73,7 +73,7 @@ $actions = phila_loop_clonable_metabox( $get_actions );
               <?php echo apply_filters( 'the_content',  $action['phila_action_content']); ?>
             </div>
             <?php if ( $expand ): ?>
-              <a href="#" data-toggle="expandable" class="float-right"> Expand + </a>
+              <a href="#" data-toggle="expandable" class="float-right"> More + </a>
             <?php endif; ?>
         </div>
       <?php endforeach; ?>
