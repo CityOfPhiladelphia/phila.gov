@@ -120,6 +120,10 @@ table.connect{
 ol, ul {
   padding-left:2rem;
 }
+ol + h4, 
+ul + h4{
+  margin-top:2rem;
+}
 
 .breadcrumbs{
   padding:0;
