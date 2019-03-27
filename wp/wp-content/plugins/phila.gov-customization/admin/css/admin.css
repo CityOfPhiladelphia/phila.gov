@@ -68,7 +68,9 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #try-gutenberg-panel,
 /* Hide user role column from all users */
 #wpfront-user-role-editor-role-permission-column-key,
-.column-wpfront-user-role-editor-role-permission-column-key
+.column-wpfront-user-role-editor-role-permission-column-key,
+/* tags must be added from menu  */
+#post_tag-adder
 {
   display: none !important;
 }

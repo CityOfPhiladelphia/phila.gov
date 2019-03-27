@@ -8,9 +8,6 @@ a[href$="nav-menus.php?action=locations"],
 #wp-admin-bar-wp-logo,
 /*hide content on editing pages */
 #news_type-adder,
-/* no tag creation  */
-#tagsdiv-post_tag,
-#post_tagdiv,
 /* no per-page role editor */
 #wpfront-user-role-editor-role-permission,
 /* hide media buttons */
