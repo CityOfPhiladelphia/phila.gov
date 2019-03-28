@@ -1633,9 +1633,9 @@ function phila_get_post_label( $label ){
         break;
       case 'post':
         $label = array(
-         'label' => $original_label,
-         'nice' => 'Post',
-         'icon' => 'fas fa-pencil-alt',
+        'label' => $original_label,
+        'nice' => 'Post',
+        'icon' => 'fas fa-pencil-alt',
         );
         break;
     }
@@ -1654,4 +1654,17 @@ function phila_vcremove_wp_ver_css_js( $src ) {
   }
   return $src;
 
+}
+
+add_action( 'admin_init', 'deleted_page_init' );
+
+function deleted_page_init() {
+  add_action( 'delete_post', 'page_deleted', 10 );
+}
+
+function page_deleted( $id ) {
+  global $wpdb;
+
+  $headers = 'From: ' . get_bloginfo("name") . ' <' . get_bloginfo("admin_email") . '>' . "\r\n";
+  wp_mail('karissa.demi@phila.gov', 'Post deleted', 'The page ' . $id . ' was just deleted.', $headers);
 }
