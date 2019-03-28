@@ -82,6 +82,9 @@
       padding:$spacing-small 0;
       @media screen and (min-width: 40em) {
         border-top:1px solid color(sidewalk);
+        //align checkboxes with wrapped lines
+        text-indent: -.8rem;
+        padding-left: 3rem;
       }
       label{
         margin:0;
