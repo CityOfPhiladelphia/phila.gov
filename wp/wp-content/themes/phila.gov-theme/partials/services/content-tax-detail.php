@@ -30,7 +30,7 @@
   <div class="medium-12 columns">
     <div class="panel info center heading">
       <div class="title pvxs">
-        <i class="fas fa-calendar-alt" aria-hidden="true"></i>Due date</div>
+        <i class="fas fa-calendar-alt" aria-hidden="true"></i> Due date</div>
         <div class="valign equal">
           <div class="pam valign-cell">
             <?php if ($tax['due']['type'] != 'misc') : ?>
@@ -49,7 +49,7 @@
   <div class="medium-12 columns">
     <div class="panel info center heading">
       <div class="title pvxs">
-        <i class="fas fa-dollar-sign" aria-hidden="true"></i>Tax rate</div>
+        <i class="fas fa-dollar-sign" aria-hidden="true"></i> Tax rate</div>
       <div class="valign equal">
         <div class="pam valign-cell">
           <?php if ( !empty( $tax['cost']['number'] ) ) : ?>
