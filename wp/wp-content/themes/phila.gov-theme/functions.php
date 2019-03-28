@@ -1633,9 +1633,9 @@ function phila_get_post_label( $label ){
         break;
       case 'post':
         $label = array(
-         'label' => $original_label,
-         'nice' => 'Post',
-         'icon' => 'fas fa-pencil-alt',
+        'label' => $original_label,
+        'nice' => 'Post',
+        'icon' => 'fas fa-pencil-alt',
         );
         break;
     }
@@ -1654,4 +1654,12 @@ function phila_vcremove_wp_ver_css_js( $src ) {
   }
   return $src;
 
+}
+/* Stop-gap unitl scraper is updated*/
+add_action( 'wp_trash_post', 'page_trash_alert', 10 );
+
+function page_trash_alert( $id ) {
+  global $post;
+  $headers = 'From: ' . get_bloginfo('name') . ' <' . get_bloginfo('admin_email') . '>' . "\r\n";
+  wp_mail('karissa.demi@phila.gov', 'Post trashed', 'Post title: ' . $post->post_title . "\r\n" . 'Post type: ' . $post->post_type . "\r\n" . 'ID: ' . $id . "\r\n" .  'Post status: ' . $post->post_status, $headers);
 }
