@@ -181,7 +181,7 @@ module.exports = $(function(){
     })
     .done( function( data ) {
       $.each(data, function(i, value) {
-        $('#services-list [data-services-menu]').prepend('<div class="medium-12 large-8 columns end"><div class="valign"><div class="valign-cell"><a href=' + value.link + ' data-equalizer-watch><span><i class="' + value.meta.phila_page_icon  + ' fa-2x phm"></i> ' + value.title.rendered + '</span></a></div></div></div>');
+        $('#services-list [data-services-menu]').prepend('<div class="medium-12 large-8 columns end"><div class="valign"><div class="valign-cell"><a href=' + value.link + ' data-equalizer-watch><span><i class="' + value.meta.phila_page_icon  + ' fa-2x phm"></i> <span class="label">' + value.title.rendered + '</span></span></a></div></div></div>');
       })
       Foundation.reInit($('#phila-menu-wrap'));
     })
