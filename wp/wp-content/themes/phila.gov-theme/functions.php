@@ -1655,16 +1655,12 @@ function phila_vcremove_wp_ver_css_js( $src ) {
   return $src;
 
 }
+/* Stop-gap unitl scraper is updated*/
+add_action( 'wp_trash_post', 'page_trash_alert', 10 );
 
-add_action( 'admin_init', 'deleted_page_init' );
-
-function deleted_page_init() {
-  add_action( 'delete_post', 'page_deleted', 10 );
-}
-
-function page_deleted( $id ) {
-  global $wpdb;
-
-  $headers = 'From: ' . get_bloginfo("name") . ' <' . get_bloginfo("admin_email") . '>' . "\r\n";
-  wp_mail('karissa.demi@phila.gov', 'Post deleted', 'The page ' . $id . ' was just deleted.', $headers);
+function page_trash_alert( $id ) {
+  global $post;
+  var_dump($id);
+  $headers = 'From: ' . get_bloginfo('name') . ' <' . get_bloginfo('admin_email') . '>' . "\r\n";
+  wp_mail('karissa.demi@phila.gov', 'Post trashed', 'Post title: ' . $post->post_title . "\r\n" . 'Post type: ' . $post->post_type . "\r\n" . 'ID: ' . $id . "\r\n" .  'Post status: ' . $post->post_status, $headers);
 }
