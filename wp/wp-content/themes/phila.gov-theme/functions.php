@@ -1660,7 +1660,6 @@ add_action( 'wp_trash_post', 'page_trash_alert', 10 );
 
 function page_trash_alert( $id ) {
   global $post;
-  var_dump($id);
   $headers = 'From: ' . get_bloginfo('name') . ' <' . get_bloginfo('admin_email') . '>' . "\r\n";
   wp_mail('karissa.demi@phila.gov', 'Post trashed', 'Post title: ' . $post->post_title . "\r\n" . 'Post type: ' . $post->post_type . "\r\n" . 'ID: ' . $id . "\r\n" .  'Post status: ' . $post->post_status, $headers);
 }
