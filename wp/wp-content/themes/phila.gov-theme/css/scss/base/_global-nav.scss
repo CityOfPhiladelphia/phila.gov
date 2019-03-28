@@ -384,12 +384,14 @@
         padding: 1.5rem;
         background-color: color(ghost-gray);
         width: 100%;
+        text-indent: -2.5em;
 
         &:hover {
           color:white;
           background: color(dark-ben-franklin);
         }
         span{
+          padding-left: 4rem;
           display:block;
         }
       }
