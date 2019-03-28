@@ -62,9 +62,9 @@ get_header(); ?>
 
       get_template_part( 'templates/single', 'off-site' );
 
-    }else{?>
+    }else{
 
-      <?php while ( have_posts() ) : the_post();
+      while ( have_posts() ) : the_post();
 
         //Don't render child menu index template when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
         if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
