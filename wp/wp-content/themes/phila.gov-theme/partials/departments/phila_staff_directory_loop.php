@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 $staff_leadership_array = array();
 $staff_member_loop = new WP_Query( $args );
@@ -149,10 +149,12 @@ if ( $staff_member_loop->have_posts() ):
   endwhile;
 
   echo '<section class="staff-directory">'; ?>
+  
   <?php if ( isset( $unit ) ): ?>
+  <?php $unit_count++; ?>
     <div class="row">
       <div class="columns">
-      <h3><?php echo urldecode($unit) ?></h3>
+      <h3 id="<?php echo $unit; ?>"><?php echo urldecode($unit) ?></h3>
         <?php foreach ( $unit_meta as $meta ) : ?>
           <?php if (urldecode($unit) == $meta['name']) :?>
             <?php if (isset($meta['unit_description'])) :?>
@@ -168,42 +170,47 @@ if ( $staff_member_loop->have_posts() ):
   <?php endif; ?>
   <?php if (!empty($staff_leadership_array)):?>
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
-        <div class="large-24 columns">
-          <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
-            <h2 class="contrast">Leadership</h2>
-          <?php endif; ?>
-          <?php
-          ksort($staff_leadership_array);
-          foreach ($staff_leadership_array as $key => $value):
-            echo $value;
-          endforeach;
-          ?>
-        </div>
+      <div class="large-24 columns">
+        <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
+          <h2 class="contrast leadership">Leadership</h2>
+        <?php endif; ?>
+        <?php if ( isset( $unit )  ) : ?>
+          <h4 class="leadership">Leadership</h4>
+        <?php endif; ?>
+        <?php
+        ksort($staff_leadership_array);
+        foreach ($staff_leadership_array as $key => $value):
+          echo $value;
+        endforeach;
+        ?>
+      </div>
     </div>
   <?php endif; ?>
   <!-- Begin Staff Directory Table -->
   <?php if (!$staff_table_output == ''): ?>
-    <section class="row mbl all-staff-table">
+  <?php $unit_size = sizeof($unit_data);?>
+  
+    <section class="row mbl all-staff-table <?php echo ( $unit_count ==  --$unit_size ) ? '' : 'bdr-bottom' ?>">
       <div class="large-24 columns">
-      <?php if ($all_staff == 1) : ?>
-        <div id="sortable-table-0" class="search-sort-table">
+      <?php if ($all_staff == 1 || $unit_count >= 0) : ?>
+        <div id="sortable-table-<?php echo ( $all_staff == 1 ? '0' : $unit_count )  ?>" class="search-sort-table">
           <div class="search">
-            <label for="table-search"><span class="screen-reader-text">Filter staff members by name or title</span></label>
-            <input type="text" class="table-search search-field" placeholder="Filter staff members by name or title" />
+            <label for="table-search"><span class="screen-reader-text">Filter<?php echo ( $unit_count >= 1 ) ? ' unit' : '' ?> staff members by name or title</span></label>
+            <input type="text" class="table-search search-field" placeholder="Filter<?php echo ( $unit_count >= 1 ) ? ' unit' : '' ?> staff members by name or title" />
             <input type="submit" class="search-submit" />
           </div>
         <?php endif ?>
           <?php if ($user_selected_template != 'staff_directory' && $user_selected_template != 'staff_directory_v2') : ?>
             <h2 class="contrast">Staff</h2>
           <?php endif; ?>
-          <table role="grid" class="staff responsive js-hide-empty">
+          <table role="grid" class="<?php echo ( $all_staff == 1) ? 'staff-directory': 'staff' ?> responsive js-hide-empty">
             <thead>
               <tr>
-                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
-                <th scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone #</th>
-                <th scope="col">Social</th>
+                <th class="name" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
+                <th class="title" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
+                <th class="email" scope="col">Email</th>
+                <th class="phone" scope="col">Phone #</th>
+                <th class="social" scope="col">Social</th>
               </tr>
             </thead>
             <tbody class="search-sortable">
@@ -211,14 +218,14 @@ if ( $staff_member_loop->have_posts() ):
             </tbody>
           </table>
           <div class="no-results">Sorry, there are no results for that search.</div>
-          <?php if ($all_staff == 1) : ?>
+          <?php if ( $all_staff == 1 || $unit_count >= 0 ) : ?>
             <ul class="pagination-wrapper no-js">
               <li class="prev">
-                <a class="prev-0" href="#">Previous</a>
+                <a class="prev-<?php echo ( $all_staff == 1 ? '0' : $unit_count )?>" href="#">Previous</a>
               </li>
             <ul class="pagination"></ul>
             <li class="next">
-              <a class="next-0" href="#">Next</a>
+              <a class="next-<?php echo ( $all_staff == 1 ? '0' : $unit_count )?>" href="#">Next</a>
             </li>
           </ul>
         <?php endif ?>

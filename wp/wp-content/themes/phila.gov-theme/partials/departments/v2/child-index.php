@@ -4,7 +4,7 @@
  *
  */
 ?>
-<?php   get_template_part( 'partials/breadcrumbs' ); ?>
+<?php get_template_part( 'partials/breadcrumbs' ); ?>
 <article>
 
   <div data-swiftype-index='true' class="entry-content">
