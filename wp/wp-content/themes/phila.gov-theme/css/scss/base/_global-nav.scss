@@ -389,8 +389,20 @@
           color:white;
           background: color(dark-ben-franklin);
         }
+        .text-label {
+          display: inline-block;
+          width: 100%;
+          line-height: 1.2;
+          vertical-align: middle;
+          max-width: calc(100% - 45px);
+        }
         span{
           display:block;
+          i {
+            display: inline-block;
+            vertical-align: middle;
+            padding-right: 0.8rem;
+          }
         }
       }
     }
