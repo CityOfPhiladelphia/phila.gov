@@ -189,6 +189,7 @@
             <li><a href="/terms-of-use">Terms of use</a></li>
             <li><a href="https://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to know (pdf)</a></li>
             <li><a href="https://www.phila.gov/privacypolicy">Privacy Policy</a></li>
+            <li><a href="https://www.phila.gov/documents/ada-policies/">Accessibility</a></li>
         </ul>
       </nav>
     </div>
