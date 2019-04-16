@@ -36,6 +36,8 @@ class Phila_Gov_Register_Program_Templates {
           'options' => array(
             'prog_landing_page'  => 'Homepage',
             'phila_one_quarter'    => '1/4 Headings (subpage)',
+            'collection_page_v2'   => 'Collection page',
+            'document_finder_v2'   =>  'Document finder',
             'prog_off_site' => 'Off-site program',
             'resource_list_v2'  => 'Resource list',
             'prog_association'  => 'Subpage with association',
