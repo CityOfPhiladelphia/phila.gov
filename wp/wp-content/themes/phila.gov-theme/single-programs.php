@@ -49,6 +49,25 @@ get_header();
           <?php include(locate_template('partials/resource-list.php')); ?>
         </section>
         <!-- /Resource list -->
+        <?php wp_reset_postdata(); ?>
+      <?php endif; ?>
+
+      <?php if ($user_selected_template == 'collection_page_v2'): ?>
+        <!-- Collection page -->
+        <section class="mtl">
+          <?php include(locate_template('partials/departments/v2/collection-page.php')); ?>
+        </section>
+        <?php wp_reset_postdata(); ?>
+        <!-- Collection page -->
+      <?php endif; ?>
+
+      <?php if ($user_selected_template == 'document_finder_v2'): ?>
+        <!-- Document finder -->
+        <section class="mtl">
+          <?php include(locate_template('partials/departments/v2/document-finder.php')); ?>
+        </section>
+        <?php wp_reset_postdata(); ?>
+        <!-- Document finder -->
       <?php endif; ?>
 
       <!-- Program and initiatives -->

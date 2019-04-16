@@ -17,9 +17,9 @@ class Phila_Gov_Deparment_Templates {
 
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_template_selection_metabox_departments'), 10, 1 );
 
- }
+}
 
- function register_template_selection_metabox_departments( $meta_boxes ){
+function register_template_selection_metabox_departments( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title'    => 'Select Template',
