@@ -92,7 +92,11 @@
           <div class="center heading">
             <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
               <div class="numbers"><span class="medium-text secondary-font">$<?php echo $callout['amount'] ?></span></div>
-              <?php echo isset($callout['description']) ? apply_filters( 'the_content', $callout['description']) : '' ;?>
+              <?php if ( isset($callout['description'] ) ) : ?>
+                <div class="pam">
+                  <?php echo apply_filters( 'the_content', $callout['description']) ?>
+                </div>
+              <?php endif; ?>
           </div>
         </div>
       <?php endforeach; ?>
