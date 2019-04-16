@@ -199,7 +199,59 @@ class Phila_Gov_Register_Service_Templates {
           'name'  => 'Are there any costs associated with this service?',
         ),
         array(
+          'name'  => 'Add cost callout?',
+          'id'  => 'service_cost_callout_select',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
+        ),
+        array(
+          'id' => 'service_cost_callout',
+          'type' => 'group',
+          'visible' => array('service_cost_callout_select', true),
+          'fields'  => array(
+            array(
+              'id'  => 'cost_callout',
+              'type'  => 'group',
+              'clone' => true,
+              'max_clone' => 3,
+              'fields'  => array(
+                array(
+                  'type' => 'text',
+                  'id' => 'heading',
+                  'name' => 'Cost type',
+                  'desc'  => 'E.g. License cost'
+                ),
+                array(
+                  'type' => 'number',
+                  'id' => 'amount',
+                  'name' => 'Cost amount, in dollars',
+                  'desc'  => 'E.g. 20.00'
+                ),
+                array(
+                  'id' => 'description',
+                  'type'  => 'wysiwyg',
+                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+                ),
+              )
+            )
+          )
+        ),
+        array(
           'id' => 'service_cost',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+        ),
+        array(
+          'name'  => 'Add payment information?',
+          'id'  => 'service_payment_info_select',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
+        ),
+        array(
+          'visible' => array('service_payment_info_select', true),
+          'id' => 'service_payment_info',
           'type'  => 'wysiwyg',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),

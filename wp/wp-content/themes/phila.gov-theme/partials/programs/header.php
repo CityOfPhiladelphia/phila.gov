@@ -43,7 +43,9 @@
         </div>
       </div>
     </div>
-    <?php phila_get_menu(); ?>
+    <?php if (phila_get_selected_template() != 'prog_association') : ?>
+      <?php phila_get_menu(); ?>
+    <?php endif; ?>
     <?php get_template_part( 'partials/breadcrumbs' ); ?>
     <?php if ( empty( $sub_heading ) ) :?>
       <div class="grid-container">
