@@ -91,7 +91,9 @@
         <div class="medium-<?php echo phila_grid_column_counter($count)?> cell align-self-stretch panel info">
           <div class="center heading">
             <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
-              <div class="numbers"><span class="medium-text secondary-font">$<?php echo $callout['amount'] ?></span></div>
+            <span class="symbol">
+              $<span class="large-text"><?php echo $callout['amount']; ?></span>
+            </span>  
               <?php if ( isset($callout['description'] ) ) : ?>
                 <div class="pam">
                   <?php echo apply_filters( 'the_content', $callout['description']) ?>
