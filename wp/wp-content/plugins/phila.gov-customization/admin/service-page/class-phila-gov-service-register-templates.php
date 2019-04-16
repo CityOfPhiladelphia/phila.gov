@@ -250,6 +250,7 @@ class Phila_Gov_Register_Service_Templates {
           'off_label' => 'No'
         ),
         array(
+          'visible' => array('service_payment_info_select', true),
           'id' => 'service_payment_info',
           'type'  => 'wysiwyg',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
