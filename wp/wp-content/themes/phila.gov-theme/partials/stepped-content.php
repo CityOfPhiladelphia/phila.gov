@@ -1,7 +1,8 @@
 <?php
   /*
   * Partial for displaying content that is stepped
-  */ ?>
+  */ 
+?>
       <div class="step-group">
         <?php $counter = 0; ?>
         <?php foreach ( $steps as $step ): ?>
