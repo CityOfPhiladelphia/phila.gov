@@ -82,40 +82,42 @@
 <?php endif ?>
 
 <?php if ( !empty( $cost ) || !empty( $is_cost_callout ) ): ?>
-<section>
-  <h3 id="cost" class="black bg-ghost-gray phm-mu mtl mbm">Cost</h3>
-  <?php if ( !empty( $is_cost_callout ) ): ?>
-    <div class="grid-x grid-margin-x">
-      <?php $count = count($cost_callout['cost_callout']) ?>
-      <?php foreach ( $cost_callout['cost_callout'] as $callout ): ?>
-        <div class="medium-<?php echo phila_grid_column_counter($count)?> cell align-self-stretch panel info">
-          <div class="center heading">
-            <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
-            <span class="symbol">
-              $<span class="large-text"><?php echo $callout['amount']; ?></span>
-            </span>  
-              <?php if ( isset($callout['description'] ) ) : ?>
-                <div class="pam">
-                  <?php echo apply_filters( 'the_content', $callout['description']) ?>
-                </div>
-              <?php endif; ?>
+<div class="cost">
+  <section>
+    <h3 id="cost" class="black bg-ghost-gray phm-mu mtl mbm">Cost</h3>
+    <?php if ( !empty( $is_cost_callout ) ): ?>
+      <div class="grid-x grid-margin-x">
+        <?php $count = count($cost_callout['cost_callout']) ?>
+        <?php foreach ( $cost_callout['cost_callout'] as $callout ): ?>
+          <div class="medium-<?php echo phila_grid_column_counter($count)?> cell align-self-stretch panel info">
+            <div class="center heading">
+              <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
+              <span class="symbol">
+                $<span class="large-text"><?php echo $callout['amount']; ?></span>
+              </span>  
+                <?php if ( isset($callout['description'] ) ) : ?>
+                  <div class="pam">
+                    <?php echo apply_filters( 'the_content', $callout['description']) ?>
+                  </div>
+                <?php endif; ?>
+            </div>
           </div>
+        <?php endforeach; ?>
         </div>
-      <?php endforeach; ?>
+      <?php endif; ?>
+    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo $cost ?></div>
+    <?php if (!empty($is_payment_info)) : ?>
+      <div class="reveal reveal--announcement" id="payment-information" data-reveal aria-labelledby="payment-information">
+        <h2 id="payment-information">Payment information</h2>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <?php echo do_shortcode($payment_info) ?>
       </div>
-    <?php endif; ?>
-  <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo $cost ?></div>
-  <?php if (!empty($is_payment_info)) : ?>
-    <div class="reveal reveal--announcement" id="payment-information" data-reveal aria-labelledby="payment-information">
-      <h2 id="payment-information">Payment information</h2>
-      <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <?php echo do_shortcode($payment_info) ?>
-    </div>
-    <div class="phm-mu"><a data-open="payment-information"><i class="fas fa-info-circle"></i> Payment information</a></div>
-  <?php endif ?>
-</section>
+      <div class="phm-mu"><a data-open="payment-information"><i class="fas fa-info-circle"></i> Payment information</a></div>
+    <?php endif ?>
+  </section>
+</div>
 <?php endif ?>
 
 <?php if ( !empty( $how || !empty( $how_stepped_select ) ) ): ?>
