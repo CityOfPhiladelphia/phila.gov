@@ -885,7 +885,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Document tables',
-  'pages' => array('department_page'),
+  'pages' => array('department_page', 'programs'),
   'revision' => true,
   'visible' => array(
     'when'  => array(
