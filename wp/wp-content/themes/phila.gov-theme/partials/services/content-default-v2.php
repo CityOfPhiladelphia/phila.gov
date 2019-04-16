@@ -19,8 +19,14 @@
   $is_address = rwmb_meta('service_where_when_address_select');
   $contact_content = rwmb_meta('service_where_when_std_address');
 
+  $is_cost_callout = rwmb_meta( 'service_cost_callout_select' );
+  $cost_callout = rwmb_meta( 'service_cost_callout' );
+
   $cost = trim( rwmb_meta( 'service_cost' ) );
   $cost = isset( $cost ) ? phila_remove_empty_p_tags( $cost ) : false;
+
+  $is_payment_info = rwmb_meta('service_payment_info_select');
+  $payment_info = rwmb_meta('service_payment_info');
 
   $how = trim( rwmb_meta( 'service_how' ) );
   $how = isset( $how ) ? phila_remove_empty_p_tags( $how ) : false;
@@ -75,14 +81,46 @@
 </section>
 <?php endif ?>
 
-<?php if ( !empty($cost) ): ?>
-<section>
-  <h3 id="cost" class="black bg-ghost-gray phm-mu mtl mbm">Cost</h3>
-  <div class="phm-mu"><?php echo $cost ?></div>
-</section>
+<?php if ( !empty( $cost ) || !empty( $is_cost_callout ) ): ?>
+<div class="cost">
+  <section>
+    <h3 id="cost" class="black bg-ghost-gray phm-mu mtl mbm">Cost</h3>
+    <?php if ( !empty( $is_cost_callout ) ): ?>
+      <div class="grid-x grid-margin-x">
+        <?php $count = count($cost_callout['cost_callout']) ?>
+        <?php foreach ( $cost_callout['cost_callout'] as $callout ): ?>
+          <div class="medium-<?php echo phila_grid_column_counter($count)?> cell align-self-stretch panel info">
+            <div class="center heading">
+              <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
+              <span class="symbol">
+                $<span class="large-text"><?php echo $callout['amount']; ?></span>
+              </span>  
+                <?php if ( isset($callout['description'] ) ) : ?>
+                  <div class="pam">
+                    <?php echo apply_filters( 'the_content', $callout['description']) ?>
+                  </div>
+                <?php endif; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo $cost ?></div>
+    <?php if (!empty($is_payment_info)) : ?>
+      <div class="reveal reveal--announcement" id="payment-information" data-reveal aria-labelledby="payment-information">
+        <h2 id="payment-information">Payment information</h2>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <?php echo do_shortcode($payment_info) ?>
+      </div>
+      <div class="phm-mu"><a data-open="payment-information"><i class="fas fa-info-circle"></i> Payment information</a></div>
+    <?php endif ?>
+  </section>
+</div>
 <?php endif ?>
 
-<?php if ( !empty($how) ): ?>
+<?php if ( !empty( $how || !empty( $how_stepped_select ) ) ): ?>
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
   <div class="phm-mu"><?php echo $how ?></div>
