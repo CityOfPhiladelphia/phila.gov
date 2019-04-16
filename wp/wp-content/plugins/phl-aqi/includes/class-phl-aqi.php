@@ -13,7 +13,6 @@ class PHL_AQI {
       'API_KEY' => '',
     ]
   ];
-
   public $airnow_quality_scale = [
     [
       'label' => 'Good',
@@ -93,8 +92,8 @@ class PHL_AQI {
   }
 
   function register_scripts() {
-    wp_enqueue_script('highcharts-core', '//code.highcharts.com/js/highcharts.js', null, '', true);
-    wp_enqueue_script('highcharts-more', '//code.highcharts.com/highcharts-more.js', null, '', true);
+    wp_enqueue_script('highcharts-core', '//code.highcharts.com/6.2.0/highcharts.js', null, '', true);
+    wp_enqueue_script('highcharts-more', '//code.highcharts.com/6.2.0/highcharts-more.js', null, '', true);
     wp_enqueue_script('phl-aqi-init', plugins_url('', __FILE__ ) . '/js/phl-aqi.js', 'jquery', '0.2', true);
     wp_enqueue_style('aqi-css', plugins_url('', __FILE__ ) . '/css/phl-aqi.css', null, '0.2', 'all');
   }
@@ -132,7 +131,6 @@ class PHL_AQI {
       }
       $request_url .= '&' . $param_key . '=' . $param_value;
     }
-
     //make request
     $airnow_request = wp_remote_get($request_url);
 
@@ -157,7 +155,6 @@ class PHL_AQI {
     $response[1]->parsedDate = date('M. j, Y g:i a', strtotime($response[1]->DateObserved . ' ' . $response[1]->HourObserved . ' hours'));
 
     $this->airnow_quality = $response[1];
-
   }
 
   function aqi_template() {
