@@ -96,7 +96,7 @@
             <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
             <li class="pvxs"><a href="http://www.courts.phila.gov/">Courts</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/districtattorney/pages/default.aspx">District Attorney</a></li>
-            <li class="pvxs"><a href="http://www.philadelphiacontroller.org/" class="external">City Controller</a></li>
+            <li class="pvxs"><a href="https://controller.phila.gov/">City Controller</a></li>
             <li class="pvxs"><a href="http://www.officeofphiladelphiasheriff.com/" class="external">Sheriff</a></li>
             <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">City Commissioners</a></li>
             <li class="pvxs"><a href="http://secureprod.phila.gov/wills/">Register of Wills</a></li>
