@@ -82,7 +82,7 @@
 </section>
 <?php endif ?>
 
-<?php if ( !empty($how) ): ?>
+<?php if ( !empty( $how || !empty( $how_stepped_select ) ) ): ?>
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
   <div class="phm-mu"><?php echo $how ?></div>
