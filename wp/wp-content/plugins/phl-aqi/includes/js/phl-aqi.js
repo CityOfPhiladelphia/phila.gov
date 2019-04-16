@@ -69,20 +69,20 @@ jQuery(document).ready(function(){
           thickness: 45,
           className: 'highcharts-color-orange',
         },{
-         from: 151,
-         to: 200,
-         thickness: 45,
-         className: 'highcharts-color-red',
-       },{
+        from: 151,
+        to: 200,
+        thickness: 45,
+        className: 'highcharts-color-red',
+      },{
         from: 201,
         to: 250,
         thickness: 45,
         className: 'highcharts-color-purple',
       },{
-         from: 251,
-         to: 300,
-         thickness: 45,
-         className: 'highcharts-color-maroon',
+        from: 251,
+        to: 300,
+        thickness: 45,
+        className: 'highcharts-color-maroon',
         }]
       },
       series: [{
