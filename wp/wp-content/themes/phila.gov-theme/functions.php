@@ -1663,3 +1663,28 @@ function page_trash_alert( $id ) {
   $headers = 'From: ' . get_bloginfo('name') . ' <' . get_bloginfo('admin_email') . '>' . "\r\n";
   wp_mail('karissa.demi@phila.gov', 'Post trashed', 'Post title: ' . $post->post_title . "\r\n" . 'Post type: ' . $post->post_type . "\r\n" . 'ID: ' . $id . "\r\n" .  'Post status: ' . $post->post_status, $headers);
 }
+
+function phila_weighted_search_results(){
+  global $post;
+
+  switch ( get_post_type($post->ID) ) {
+    case 'department_page':
+      echo 10;
+      break;
+    case 'programs':
+      echo 9;
+      break;
+    case 'service_page':
+      echo 8;
+      break;
+    case 'document':
+      echo 6;
+      break;
+    case 'post':
+      echo 1;
+      break;
+    default:
+      echo 5;
+      break;
+  }
+}
