@@ -106,11 +106,13 @@ $result->post_count = count( $result->posts );
         <h2>Posts</h2>
       <?php endif; ?>
       <div class="grid-x grid-margin-x align-stretch">
+        <?php $total = $result->post_count; ?>
+        <?php $label_arr = phila_get_post_label('post'); ?>
         <?php while ( $result->have_posts() ) : $result->the_post(); ?>
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
           <?php $count++; ?>
-          <?php if ($count <= 3 ): ?>
+          <?php if ($total >= 3 ): ?>
             <?php if ($count == 1 ): ?>
               <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
               <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
@@ -128,9 +130,14 @@ $result->post_count = count( $result->posts );
               </div>
             <?php endif; ?>
           </div>
-          <?php endif; ?>
+          <?php elseif ( $count == 1 || $count == 2) : ?>
+              <div class="cell medium-24">
+                <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+              </div>
+          <?php endif;?>
 
         <?php endwhile; ?>
+        <?php if ($count >= 3 ): ?>
         <div class="grid-container group">
             <?php $see_all = array(
               'URL' => '/the-latest/archives/?template=post',
@@ -158,5 +165,6 @@ $result->post_count = count( $result->posts );
           <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
         </div>
       <?php endif; ?>
-      <?php wp_reset_postdata(); ?>
+    <?php endif;?>
+  <?php wp_reset_postdata(); ?>
 </div>
