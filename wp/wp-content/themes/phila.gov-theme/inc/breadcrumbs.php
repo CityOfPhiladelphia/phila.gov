@@ -94,16 +94,16 @@ function phila_breadcrumbs() {
 
     }elseif ( is_singular('programs') ) {
 
-       $anc = get_post_ancestors( $post->ID );
-       $title = get_the_title();
+      $anc = get_post_ancestors( $post->ID );
+      $title = get_the_title();
 
-       foreach ( $anc as $ancestor ) {
+      foreach ( $anc as $ancestor ) {
 
-         $output = '<li><a href="/programs">Programs and initiatives</a></li><li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
-       }
+        $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
+      }
 
-       echo $output;
-       echo '<li> '.$title.'</li>';
+      echo '<li><a href="/programs">Programs and initiatives</a></li>' . $output;
+      echo '<li> '.$title.'</li>';
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if ( get_post_type() == 'service_page') {
