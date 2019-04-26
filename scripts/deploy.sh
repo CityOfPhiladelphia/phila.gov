@@ -29,7 +29,7 @@ sudo ed -s /etc/php/7.2/fpm/pool.d/www.conf <<'EOF'
 g/^pm\.max_children/s/5/10
 w
 EOF
-sudo ed /etc/php/7.2/fpm/php.ini <<'EOF'
+sudo ed -s /etc/php/7.2/fpm/php.ini <<'EOF'
 g/^post_max_size/s/8/100
 g/^upload_max_filesize/s/2/100
 g/^memory_limit/s/128/1024
