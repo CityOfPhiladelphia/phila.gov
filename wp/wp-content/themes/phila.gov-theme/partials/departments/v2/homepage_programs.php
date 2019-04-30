@@ -4,7 +4,7 @@
   */
 ?>
 <?php
-  if ( !isset( $cards) ):
+  if ( !isset( $cards ) ):
     $cards = rwmb_meta('phila_select_programs');
   endif;
 ?>
