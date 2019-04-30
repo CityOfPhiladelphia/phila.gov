@@ -243,11 +243,18 @@ class Phila_Gov_Register_Service_Templates {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'name'  => 'Add payment information?',
+          //Name/id doesn't match because reqirements we not defined before this made it to production
+          'name'  => 'Add modal information?',
           'id'  => 'service_payment_info_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
           'off_label' => 'No'
+        ),
+        array(
+          'visible' => array('service_payment_info_select', true),
+          'id'  => 'service_modal_info_link_text',
+          'name'  => 'Clickable link text',
+          'type'  => 'text',
         ),
         array(
           'visible' => array('service_payment_info_select', true),
