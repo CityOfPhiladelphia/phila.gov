@@ -25,8 +25,9 @@
   $cost = trim( rwmb_meta( 'service_cost' ) );
   $cost = isset( $cost ) ? phila_remove_empty_p_tags( $cost ) : false;
 
-  $is_payment_info = rwmb_meta('service_payment_info_select');
-  $payment_info = rwmb_meta('service_payment_info');
+  $is_modal = rwmb_meta('service_payment_info_select');
+  $modal_link_text = rwmb_meta('service_modal_info_link_text');
+  $modal_content = rwmb_meta('service_payment_info');
 
   $how = trim( rwmb_meta( 'service_how' ) );
   $how = isset( $how ) ? phila_remove_empty_p_tags( $how ) : false;
@@ -106,15 +107,14 @@
         </div>
       <?php endif; ?>
     <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo $cost ?></div>
-    <?php if (!empty($is_payment_info)) : ?>
-      <div class="reveal reveal--announcement" id="payment-information" data-reveal aria-labelledby="payment-information">
-        <h2 id="payment-information">Payment information</h2>
+    <?php if ( !empty($is_modal) && !empty( $modal_link_text ) ) : ?>
+      <div class="reveal reveal--announcement" id="<?php echo sanitize_title_with_dashes($modal_link_text)?>" data-reveal aria-labelledby="<?php echo sanitize_title_with_dashes($modal_link_text)?>">
         <button class="close-button" data-close aria-label="Close modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
-        <?php echo do_shortcode($payment_info) ?>
+        <div class="mtl"><?php echo do_shortcode($modal_content) ?></div>
       </div>
-      <div class="phm-mu"><a data-open="payment-information"><i class="fas fa-info-circle"></i> Payment information</a></div>
+      <div class="phm-mu"><a data-open="<?php echo sanitize_title_with_dashes($modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $modal_link_text ?></a></div>
     <?php endif ?>
   </section>
 </div>
