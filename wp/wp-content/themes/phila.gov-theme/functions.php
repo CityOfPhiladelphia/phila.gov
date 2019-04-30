@@ -248,14 +248,16 @@ function phila_open_graph() {
   global $title;
 
   if( has_post_thumbnail() ){
-
     $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
     $img_src = array_shift( $img );
     $type = 'article';
-
     $img_id  = get_post_thumbnail_id($post->ID);
     $alt_text = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
 
+  }
+  if ( is_archive() || is_search() || is_home() ){
+    $img_src = 'https://www.phila.gov/media/20160715133810/phila-gov.jpg';
+    $alt_text = 'phila.gov';
   }
 
   $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI'];
@@ -263,7 +265,6 @@ function phila_open_graph() {
   //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@PhiladelphiaGov">
-  
   <meta name="twitter:image" content="<?php echo isset($img_src) ? $img_src : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
   <meta name="twitter:image:alt" content="<?php echo isset($alt_text) ? $alt_text : 'phila.gov' ?>">
   <meta name="twitter:description"  content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description'): phila_get_item_meta_desc(); ?>"/>
