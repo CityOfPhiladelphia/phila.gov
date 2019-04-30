@@ -11,22 +11,9 @@ get_header();
 
 ?>
 
-<?php if ($user_selected_template == 'prog_off_site'): ?>
-  <?php get_template_part( 'templates/single', 'off-site' ); ?>
-    <a class="card program-card row collapse" href="<?php echo ($user_selected_template == 'prog_off_site')?>">
-    <?php
-    $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'large', 'limit' => 1 ), $post->ID );
-    $img = reset( $img );?>
-    <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>" class="columns medium-6">
-    <div class="content-block columns medium-16">
-      <div class="medium-text mbm">You can find more information on <?php the_title(); ?> on their website.</div>
-      <div class="button icon clearfix">
-        <div class="valign">
-          <div class="button-label valign-cell">Go to <?php the_title(); ?></div>
-        </div>
-      </div>
-    </div>
-  </a>
+<?php if ( $user_selected_template == 'prog_off_site' ) : ?>
+  <?php include(locate_template('templates/single-off-site.php')); ?>
+
   <?php get_footer(); ?>
   <?php return; ?>
 <?php endif;?>
