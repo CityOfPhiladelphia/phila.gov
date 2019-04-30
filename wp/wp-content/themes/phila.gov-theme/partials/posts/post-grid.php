@@ -119,7 +119,7 @@ $result->post_count = count( $result->posts );
             <?php elseif( $count == 2 ):?>
               <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
               <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-            <?php else : ?>
+            <?php elseif( $count == 3 )  : ?>
               </div>
             </div>
             <div class="grid-container">
