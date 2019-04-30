@@ -7,17 +7,16 @@
 
 $user_selected_template = phila_get_selected_template();
 
-if ( $user_selected_template == 'prog_off_site' ){
-  $url = rwmb_meta('prog_off_site_link');
-  if ( isset($url) ) {
-    wp_redirect($url, 302);
-    exit;
-  }
-}
-
 get_header();
 
 ?>
+
+<?php if ( $user_selected_template == 'prog_off_site' ) : ?>
+  <?php include(locate_template('templates/single-off-site.php')); ?>
+
+  <?php get_footer(); ?>
+  <?php return; ?>
+<?php endif;?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
   <?php
