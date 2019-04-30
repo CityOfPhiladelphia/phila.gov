@@ -33,7 +33,13 @@
   $how = isset( $how ) ? phila_remove_empty_p_tags( $how ) : false;
 
   $how_stepped_select = rwmb_meta('service_how_stepped_select');
-  $how_steped = rwmb_meta('service_how_stepped_content');
+  $how_stepped = rwmb_meta('service_how_stepped_content');
+
+  $how_stepped_select_multi = rwmb_meta('service_how_stepped_select_multi');
+  $how_stepped_multi = rwmb_meta('service_how_stepped_content_multi');
+
+  $how_ending = trim( rwmb_meta('service_how_ending_content' ) );
+  $how_ending = isset( $how_ending ) ? phila_remove_empty_p_tags( $how_ending ) : false;
 
   $renewal = trim( rwmb_meta( 'service_renewal_requirements' ) );
   $renewal = isset( $renewal ) ? phila_remove_empty_p_tags( $renewal ) : false;
@@ -120,17 +126,28 @@
 </div>
 <?php endif ?>
 
-<?php if ( !empty( $how || !empty( $how_stepped_select ) ) ): ?>
+<?php if ( !empty( $how_stepped_select ) || !empty( $how_stepped_select_multi ) ): ?>
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
-  <div class="phm-mu"><?php echo $how ?></div>
+    <?php if (!empty( $how) ) : ?>
+      <div class="phm-mu"><?php echo $how ?></div>
+    <?php endif ?>
 
   <?php if ( !empty( $how_stepped_select ) ) :?>
-    <?php $steps = phila_extract_stepped_content($how_steped);?>
+    <?php $steps = phila_extract_stepped_content($how_stepped);?>
     <div class="phm-mu">
       <?php include( locate_template( 'partials/stepped-content.php' ) );?>
     </div>
   <?php endif;?>
+  <?php if ( !empty( $how_stepped_select_multi) ) :?>
+    <?php $step_groups = phila_loop_clonable_metabox($how_stepped_multi);?>
+    <div class="phm-mu">
+      <?php include( locate_template( 'partials/stepped-content-multi.php' ) );?>
+    </div>
+  <?php endif;?>
+  <?php if (!empty( $how_ending ) ) : ?>
+    <div class="phm-mu"><?php echo $how_ending ?></div>
+  <?php endif ?>
 </section>
 <?php endif ?>
 
