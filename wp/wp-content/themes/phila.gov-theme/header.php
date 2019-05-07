@@ -57,7 +57,7 @@
 <body <?php body_class(); ?> lang="en">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) →
+<!-- End Google Tag Manager (noscript) -->
 
 <?php if ( !is_archive() && !is_tax() && !is_home() ) : ?>
   <!-- Google Tag Manager DataLayer -->
