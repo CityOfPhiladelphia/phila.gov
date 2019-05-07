@@ -79,3 +79,21 @@
     </div>
   </div>
 </div>
+<?php 
+wp_localize_script('dataLayer', 'the_data', array(
+    'page_title' => get_the_title(),
+) );
+?>
+<script>
+// window.onload = function () {
+//   window.dataLayer = window.dataLayer || [];
+//   $('.clickable-row').click( function(){
+//     window.dataLayer.push({
+//       'event' : 'GAEvent',
+//       'eventCategory' : 'Content Download',
+//       'eventAction' : the_data.page_title,
+//       'eventLabel' : '',
+//     });
+//   });
+// }
+</script>
