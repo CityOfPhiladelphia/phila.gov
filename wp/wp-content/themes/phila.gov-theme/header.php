@@ -16,11 +16,13 @@
       $departments = phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = true );
     ?>
     <script>
-      dataLayer = [{
+      window.dataLayer = window.dataLayer || [];
+      console.log(dataLayer)
+      dataLayer.push({
         "contentModifiedDepartment": "<?php echo $departments ?>",
         "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
         "templateType": "<?php echo phila_get_selected_template() ?>"
-      }];
+      });
     </script>
     <!-- End Google Tag Manager DataLayer -->
   <?php endif; ?>
