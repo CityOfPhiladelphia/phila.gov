@@ -289,7 +289,6 @@ class Phila_Gov_Register_Service_Templates {
           'columns'   => '6'
         ),
         array(
-          //https://localhost:8080/wp-admin/post.php?post=70656&action=edit
           'id' => 'service_how_stepped_content',
           'type' => 'group',
           'visible' => array('service_how_stepped_select', true),
@@ -303,7 +302,6 @@ class Phila_Gov_Register_Service_Templates {
           )
         ),
         array(
-          //https://localhost:8080/services/multi-stepped-content-group/
           'id' => 'service_how_stepped_content_multi',
           'type' => 'group',
           'clone' => true,
