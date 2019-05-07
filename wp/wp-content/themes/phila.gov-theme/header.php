@@ -10,6 +10,9 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
+  <!-- Google Tag Manager --> 
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-MC6CR2');</script> 
+  <!-- End Google Tag Manager -->
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description') : phila_get_item_meta_desc(); ?>">
@@ -52,6 +55,9 @@
 </head>
 
 <body <?php body_class(); ?> lang="en">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) →
 
 <?php if ( !is_archive() && !is_tax() && !is_home() ) : ?>
   <!-- Google Tag Manager DataLayer -->
@@ -66,16 +72,6 @@
     }];
   </script>
 <?php endif; ?>
-
-<!-- Google Tag Manager [phila.gov] -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MC6CR2');</script>
-<!-- End Google Tag Manager -->
 
 <?php if (phila_util_return_is_post(get_post_type()) ) : ?>
   <?php get_template_part( 'partials/social', 'media' ); ?>
