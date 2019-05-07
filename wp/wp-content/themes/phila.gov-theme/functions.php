@@ -279,6 +279,20 @@ function phila_open_graph() {
   <?php
 }
 
+add_filter( 'get_canonical_url', 'phila_stub_filter', 10, 2);
+
+function phila_stub_filter( $canonical_url, $post ){
+  if ( phila_get_selected_template( $post->ID ) == 'service_stub' || phila_get_selected_template( $post->ID ) == 'department_stub') {
+
+    if ( null !== rwmb_meta( 'phila_stub_source' ) ) {
+      $stub_source = rwmb_meta( 'phila_stub_source' );
+      $post_id = intval( $stub_source );
+      $canonical_url =  get_permalink( $post_id );
+    }
+  }
+
+  return $canonical_url;
+}
 
 
 /**
