@@ -21,11 +21,18 @@ get_header(); ?>
             <div class="h1">phila.gov</div>
           </div>
         </div>
+
         <div class="row common-requests">
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
               <div class="small-12 medium-6 columns">
-                <a href="/trashday" class="mrs mbs equal">
+                <a href="https://www.phila.gov/trashday" class="mrs mbs equal" onclick="dataLayer.push({
+                      'event': 'GAEvent',
+                      'eventCategory': 'Service Button',
+                      'eventAction': 'Find trash day',
+                      'eventLabel': 'phila.gov'
+                    });
+                  ">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
