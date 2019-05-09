@@ -126,10 +126,10 @@
 </div>
 <?php endif ?>
 
-<?php if ( !empty( $how_stepped_select ) || !empty( $how_stepped_select_multi ) ): ?>
+<?php if (!empty( $how ) || !empty( $how_stepped_select ) || !empty( $how_stepped_select_multi ) ): ?>
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
-    <?php if (!empty( $how) ) : ?>
+    <?php if ( !empty( $how ) ) : ?>
       <div class="phm-mu"><?php echo $how ?></div>
     <?php endif ?>
 
