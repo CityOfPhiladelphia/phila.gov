@@ -15,6 +15,7 @@ if ( $staff_member_loop->have_posts() ):
       $staff_middle_name = rwmb_meta('phila_middle_name', $args = array('type'=>'text'));
       $staff_last_name = rwmb_meta('phila_last_name', $args = array('type'=>'text'));
       $staff_name_suffix = rwmb_meta('phila_name_suffix', $args = array('type'=>'select'));
+      $staff_name_prof_cert = rwmb_meta('phila_prof_cert', $args = array('type'=>'text'));
 
       //Build the name
       $staff_member_name_output = '';
@@ -24,6 +25,8 @@ if ( $staff_member_loop->have_posts() ):
         if( isset( $staff_middle_name ) && !$staff_middle_name == '' ) $staff_member_name_output .= $staff_middle_name . ' ';
         $staff_member_name_output .= $staff_last_name;
         if( isset( $staff_name_suffix ) && !$staff_name_suffix == '' ) $staff_member_name_output .= ', ' . $staff_name_suffix;
+        if( isset( $staff_name_prof_cert ) && !$staff_name_prof_cert == '' ) $staff_member_name_output .= ', ' . $staff_name_prof_cert;
+
       endif;
 
 
