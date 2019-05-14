@@ -89,6 +89,11 @@ class Phila_Gov_Staff_Directory {
           ),
         ),
         array(
+          'name'  => 'Professional Certification<br/><small>(Optional)</small>',
+          'id'    => $prefix . 'prof_cert',
+          'type'  => 'text',
+        ),
+        array(
           'name'  => 'Job Title',
           'id'    => $prefix . 'job_title',
           'type'  => 'text',
