@@ -122,7 +122,11 @@ class Phila_Gov_Standard_Metaboxes {
           'id'  => 'phila_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
-          'off_label' => 'No'
+          'off_label' => 'No',
+          'visible' => array(
+            array( 'post_type', '=', 'department-page' ),
+            array( 'post_type', '=', 'programs' )
+          )
         ),
         array(
           'id' => 'phila_std_address',
