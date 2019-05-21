@@ -129,7 +129,7 @@ if ( $staff_member_loop->have_posts() ):
     else:
       $staff_table_output .= '<tr>
         <td class="name"><span class="list-name">' . $staff_member_name_output . '</span></td>
-        <td class="title">' . $staff_title . '<br>' . urldecode( $staff_unit ). '</td>';
+        <td class="title">' . $staff_title . '<br><span class="staff-unit">' . urldecode( $staff_unit ). '</span></td>';
         if (!empty($staff_email)) :
         $staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
         else:
@@ -210,7 +210,7 @@ if ( $staff_member_loop->have_posts() ):
             <thead>
               <tr>
                 <th class="name" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
-                <th class="title" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
+                <th class="title" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job title</span></th>
                 <th class="email" scope="col">Email</th>
                 <th class="phone" scope="col">Phone #</th>
                 <th class="social" scope="col">Social</th>
