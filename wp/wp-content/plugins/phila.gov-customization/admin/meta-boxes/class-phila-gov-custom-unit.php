@@ -70,18 +70,13 @@ if ( class_exists( 'RWMB_Field' ) ) {
 
           // get data out of term meta field
           $units = rwmb_meta( 'department_units', array( 'object_type' => 'term' ), $category->term_id);
-
-          // if ( empty( $units ) ) {
-          //   //$field = parent::normalize( $field );
-          //   $field['options'] = $options;
-          //   //return $options;
-          // }
-        if (!empty($units)) {
-          foreach($units as $unit) {
-            $options[urlencode($unit['name'])] = $category->name . ' - ' . $unit['name'];
+          
+          if (!empty($units)) {
+            foreach($units as $unit) {
+              $options[urlencode($unit['name'])] = $category->name . ' - ' . $unit['name'];
+            }
           }
         }
-      }
 
         $field['options'] = $options;
       }
