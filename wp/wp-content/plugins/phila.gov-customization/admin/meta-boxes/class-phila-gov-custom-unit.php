@@ -25,7 +25,7 @@ if ( class_exists( 'RWMB_Field' ) ) {
         if (!is_admin()) return false;
 
         if( $new_edit == 'edit' )
-          return in_array( $pagenow, array( 'post.php',  ) );
+          return in_array( $pagenow, array( 'post.php' ) );
 
         elseif($new_edit == 'new')
           return in_array( $pagenow, array( 'post-new.php' ) );
@@ -71,15 +71,17 @@ if ( class_exists( 'RWMB_Field' ) ) {
           // get data out of term meta field
           $units = rwmb_meta( 'department_units', array( 'object_type' => 'term' ), $category->term_id);
 
-          if ( !is_array( $units ) ) {
-            $field = parent::normalize( $field );
-            return $field;
-          }
-
+          // if ( empty( $units ) ) {
+          //   //$field = parent::normalize( $field );
+          //   $field['options'] = $options;
+          //   //return $options;
+          // }
+        if (!empty($units)) {
           foreach($units as $unit) {
             $options[urlencode($unit['name'])] = $category->name . ' - ' . $unit['name'];
           }
         }
+      }
 
         $field['options'] = $options;
       }
