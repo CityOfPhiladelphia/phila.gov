@@ -124,7 +124,7 @@ class Phila_Gov_Standard_Metaboxes {
           'on_label'  => 'Yes',
           'off_label' => 'No',
           'visible' => array(
-            array( 'post_type', '=', 'department-page' ),
+            array( 'post_type', '=', 'department_page' ),
             array( 'post_type', '=', 'programs' )
           )
         ),
