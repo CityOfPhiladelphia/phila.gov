@@ -111,11 +111,22 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
+          'name'  => 'Expand/collapse this section?',
+          'id'  => 'phila_expand_collapse',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
+        ),
+        array(
           'name'  => 'Include contact information?',
           'id'  => 'phila_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
-          'off_label' => 'No'
+          'off_label' => 'No',
+          'visible' => array(
+            array( 'post_type', '=', 'department_page' ),
+            array( 'post_type', '=', 'programs' )
+          )
         ),
         array(
           'id' => 'phila_std_address',
