@@ -130,7 +130,7 @@
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
     <?php if ( !empty( $how ) ) : ?>
-    <div class="phm-mu"><?php echo apply_filters( 'the_content', $where_when) ?></div>
+    <div class="phm-mu"><?php echo apply_filters( 'the_content', $how) ?></div>
     <?php endif ?>
 
   <?php if ( !empty( $how_stepped_select ) ) :?>
