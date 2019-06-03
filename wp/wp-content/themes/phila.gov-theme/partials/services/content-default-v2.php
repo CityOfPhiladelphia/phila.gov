@@ -69,21 +69,21 @@
 <?php if ( !empty( $who ) ) : ?>
   <section>
     <h3 id="who" class="black bg-ghost-gray phm-mu mtl mbm">Who</h3>
-    <div class="phm-mu"><?php echo $who ?></div>
+    <div class="phm-mu"><?php echo apply_filters( 'the_content', $who) ?></div>
   </section>
 <?php endif ?>
 
 <?php if ( !empty( $requirements ) ): ?>
 <section>
   <h3 id="requirements" class="black bg-ghost-gray phm-mu mtl mbm">Requirements</h3>
-  <div class="phm-mu"><?php echo $requirements ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $requirements) ?></div>
 </section>
 <?php endif ?>
 
 <?php if ( !empty($where_when)   ): ?>
 <section>
   <h3 id="where-when" class="black bg-ghost-gray phm-mu mtl mbm">Where and when</h3>
-  <div class="phm-mu"><?php echo $where_when ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $where_when) ?></div>
   <div class="phm-mu"><?php include( locate_template( 'partials/global/contact-information.php' ) );?></div>
 </section>
 <?php endif ?>
@@ -112,7 +112,7 @@
         <?php endforeach; ?>
         </div>
       <?php endif; ?>
-    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo $cost ?></div>
+    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo apply_filters( 'the_content', $cost) ?></div>
     <?php if ( !empty($is_modal) && !empty( $modal_link_text ) ) : ?>
       <div class="reveal reveal--announcement" id="<?php echo sanitize_title_with_dashes($modal_link_text)?>" data-reveal aria-labelledby="<?php echo sanitize_title_with_dashes($modal_link_text)?>">
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -130,7 +130,7 @@
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
     <?php if ( !empty( $how ) ) : ?>
-      <div class="phm-mu"><?php echo $how ?></div>
+    <div class="phm-mu"><?php echo apply_filters( 'the_content', $how) ?></div>
     <?php endif ?>
 
   <?php if ( !empty( $how_stepped_select ) ) :?>
@@ -146,7 +146,7 @@
     </div>
   <?php endif;?>
   <?php if (!empty( $how_ending ) ) : ?>
-    <div class="phm-mu"><?php echo $how_ending ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $how_ending) ?></div>
   <?php endif ?>
 </section>
 <?php endif ?>
@@ -154,7 +154,7 @@
 <?php if ( !empty($renewal) ): ?>
 <section>
   <h3 id="renewal" class="black bg-ghost-gray phm-mu mtl mbm">Renewal requirements</h3>
-  <div class="phm-mu"><?php echo $renewal ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $renewal) ?></div>
 </section>
 <?php endif ?>
 
