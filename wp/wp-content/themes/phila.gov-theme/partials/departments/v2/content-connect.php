@@ -59,7 +59,7 @@
       </td>
     </tr>
   <?php endif; ?>
-  <?php if ( ( !phila_util_is_array_empty($connect_vars['phone']) ) || (!$connect_vars['fax'] == '' ) ) : ?>
+  <?php if ( ( !phila_util_is_array_empty($connect_vars['phone']) ) || (!$connect_vars['fax'] == '' ) || (!$connect_vars['tty'] == '' ) ) : ?>
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <i class="fas fa-phone fa-2x" aria-hidden="true"></i>
@@ -81,6 +81,11 @@
       <?php if ( !$connect_vars['fax'] == '') : ?>
         <div class="fax">
           <span class="type">Fax: </span><span class="value"><?php echo $connect_vars['fax']; ?></span>
+        </div>
+      <?php endif; ?>
+      <?php if ( !$connect_vars['tty'] == '') : ?>
+        <div class="tty">
+          <span class="type">TTY: </span><span class="value"><?php echo $connect_vars['tty']; ?></span>
         </div>
       <?php endif; ?>
       </td>
