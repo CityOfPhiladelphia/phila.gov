@@ -63,6 +63,7 @@ require $dir. '/admin/meta-boxes/class-phila-gov-row-metaboxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-service-update-pages.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-standard-metaboxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-taxonomy-meta.php';
+require $dir. '/admin/meta-boxes/class-phila-gov-vue-app.php';
 require $dir. '/admin/meta-boxes/page-template-contact-us.php';
 require $dir. '/admin/meta-boxes/tax-detail-fields.php';
 require $dir. '/admin/meta-boxes/v2-departments.php';
