@@ -53,7 +53,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="/personnel/JobOpps.html" class="mrs mbs equal">
+                <a href="/jobs/" class="mrs mbs equal">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
