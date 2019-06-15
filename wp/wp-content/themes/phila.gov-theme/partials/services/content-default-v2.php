@@ -89,7 +89,8 @@
   <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
   <?php
     $accordion_title = '';
-    $accordion_group = $requirements_prereq['accordion_group'];?>
+    $accordion_group = $requirements_prereq['accordion_group'];
+    $is_icon_template = true; ?>
     <?php include(locate_template('partials/global/accordion.php')); ?>
 </section>
 <?php endif ?>
