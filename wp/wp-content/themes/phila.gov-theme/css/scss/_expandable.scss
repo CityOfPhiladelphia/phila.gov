@@ -11,7 +11,6 @@
     width: 100%;
     background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0) 0%, white);
     background-image: linear-gradient(rgba(255, 255, 255, 0), white);
-
   }
 }
 
@@ -24,4 +23,24 @@
 
 .cost .panel.info{
   padding:0;
+}
+.icon-expand-container{
+  position: relative;
+  
+  .icon-expand-link{
+    height: 25px;
+    position: absolute;
+    right: 0;
+    bottom: -25px;
+  }
+  .icon-expand-content{
+    display: none;
+    background: color(ghost-gray);
+    padding: 2rem;
+  }
+}
+
+.visible{
+  display: block !important;
+  height: auto;
 }
