@@ -38,7 +38,7 @@
         <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
       </div>
     </div>
-    <hr class="mhn">
+    <hr class="icon-expand-hr">
     <?php endforeach;?>
   </div>
 </section>
