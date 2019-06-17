@@ -362,6 +362,36 @@ class Phila_Gov_Standard_Metaboxes {
       )
     );
   }
+
+  public static function phila_metabox_double_wysiwyg($section_name = 'Section title', $wysiwyg_desc = '', $columns = 12){
+
+    //WYSIWYG with Title
+    return array(
+      'id'  =>  'phila_custom_wysiwyg',
+      'type'  => 'group',
+      'clone' => false,
+      'columns'=> $columns,
+
+      'fields'  => array(
+        array(
+          'type' => 'heading',
+          'name' => $section_name,
+        ),
+        array(
+          'id'  => 'phila_wysiwyg_title',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
+        ),
+        array(
+          'id'  => 'phila_wysiwyg_content',
+          'type'  => 'wysiwyg',
+          'desc'  => $wysiwyg_desc,
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+        )
+      )
+    );
+  }
+
   public static function phila_metabox_v2_wysiwyg_address(){
     //Purpose: To display content in a wysiwyg and include markup for an address
     return array(
