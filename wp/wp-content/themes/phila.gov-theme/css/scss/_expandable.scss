@@ -37,11 +37,10 @@
     background: color(ghost-gray);
     padding: 2rem;
   }
-  hr.icon-expand-hr{
-    margin: 3rem 0 2rem 0 !important;
-  }
 }
-
+hr.icon-expand-hr{
+  margin: 3rem 0 2rem 0 !important;
+}
 .visible{
   display: block !important;
   height: auto;
