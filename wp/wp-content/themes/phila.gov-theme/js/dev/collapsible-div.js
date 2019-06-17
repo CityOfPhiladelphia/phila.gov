@@ -19,4 +19,19 @@ module.exports = $(function(){
     $('.accordion').foundation('up', $('.accordion-content'));
   }
 
+  $('[data-toggle="icon-expand"]').click(function(e){
+    e.preventDefault();
+    $(this).next().attr('aria-expanded', 'true');
+    $(this).next().toggleClass('visible');
+
+    if($(this).html() === ' More + '){
+      $(this).html(' Less - ');
+      $(this).next().attr('aria-expanded', 'true');
+    } else {
+      $(this).html(' More + ');
+      $(this).next().attr('aria-expanded', 'false');
+
+    }
+  });
+
 });

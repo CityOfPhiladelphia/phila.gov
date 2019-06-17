@@ -101,6 +101,42 @@ class Phila_Gov_Register_Service_Templates {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
+          'name'  => 'Add prerequisite approvals?',
+          'id'  => 'service_accordion_select',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+          'columns'   => '6'
+          ),
+        array(
+          'id' => 'accordion_row',
+          'type' => 'group',
+          'visible' => array(
+            'when' => array(
+              array('service_accordion_select', '=', true),
+            ),
+          ),
+          'fields' => array(
+            array(
+              'name' => ('Prerequisite row title'),
+              'id'   => 'accordion_row_title',
+              'type' => 'text',
+              'required' => true,
+              'class' => 'percent-100'
+            ),
+            array(
+              'id'   => 'accordion_group',
+              'type' => 'group',
+              'clone'  => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add accordion',
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg($section_name = 'Accordion title', $wysiwyg_desc = 'Accordion content', $columns = 12, $clone = true),
+              )
+            )
+          ),
+        ),
+        array(
           'type' => 'heading',
           'name'  => 'Where is this located and when is it availble?',
         ),

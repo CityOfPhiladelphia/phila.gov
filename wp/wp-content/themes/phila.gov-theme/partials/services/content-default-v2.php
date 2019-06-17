@@ -13,6 +13,10 @@
   $requirements = trim( rwmb_meta( 'service_requirements' ) ); 
   $requirements = isset( $requirements ) ? phila_remove_empty_p_tags( $requirements ) : false;
 
+  $requirements_prereq_select = rwmb_meta( 'service_accordion_select' );
+  $requirements_prereq = rwmb_meta( 'accordion_row' );
+  $requirements_prereq_title = rwmb_meta( 'accordion_row' );
+
   $where_when = trim( rwmb_meta( 'service_where_when' ) ); 
   $where_when = isset( $where_when ) ? phila_remove_empty_p_tags( $where_when ) : false;
 
@@ -77,6 +81,17 @@
 <section>
   <h3 id="requirements" class="black bg-ghost-gray phm-mu mtl mbm">Requirements</h3>
   <div class="phm-mu"><?php echo apply_filters( 'the_content', $requirements) ?></div>
+</section>
+<?php endif ?>
+
+<?php if ( !empty( $requirements_prereq_select ) ): ?>
+<section>
+  <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
+  <?php
+    $accordion_title = '';
+    $accordion_group = $requirements_prereq['accordion_group'];
+    $is_icon_template = true; ?>
+    <?php include(locate_template('partials/global/accordion.php')); ?>
 </section>
 <?php endif ?>
 
