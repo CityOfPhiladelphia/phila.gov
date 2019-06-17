@@ -28,15 +28,17 @@
   position: relative;
   
   .icon-expand-link{
-    height: 25px;
     position: absolute;
     right: 0;
-    bottom: -25px;
+    bottom: -50px;
   }
   .icon-expand-content{
     display: none;
     background: color(ghost-gray);
     padding: 2rem;
+  }
+  hr.icon-expand-hr{
+    margin: 3rem 0 2rem 0 !important;
   }
 }
 
