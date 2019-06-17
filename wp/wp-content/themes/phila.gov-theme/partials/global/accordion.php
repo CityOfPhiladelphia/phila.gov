@@ -30,9 +30,9 @@
       <div class="icon-expand-title grid-x">
         <div class="cell shrink mrm mtxs"><i class="fas fa-tasks fa-2x"></i></div>
         <div class="cell auto">
-          <?php echo $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?>
+          <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?>
         </div>
-        </div>
+      </div>
       <a href="#" data-toggle="icon-expand" class="icon-expand-link" id="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>"> More + </a>
       <div class="icon-expand-content mvm " aria-controls="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>" aria-expanded="false">
         <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
