@@ -65,7 +65,7 @@
                 <?php elseif ($start ->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
                   <?php $date_output = str_replace(
                       array('Sep','12:00 am','12:00 pm','am','pm',':00'),
-                      array('Sept','midnight','noon','a.m.','p.m.', ''), $start->format('<b>'.' l, ' . $start_month_format .  ' j, Y'. '</b>') .'<br /><i>' . $start->format( 'g:i a' ) . ' - ' . $end->format(' g:i a') . '</i>' );
+                      array('Sept','midnight','noon','a.m.','p.m.', ''), $start->format('<b>'.' l, ' . $start_month_format .  ' j, Y'. '</b>') .'<br /><i>' . $start->format( 'g:i a' ) . ' to ' . $end->format(' g:i a') . '</i>' );
                       echo $date_output;?>
                 <?php else : //date range ?>
                   <?php $date_output = str_replace(
