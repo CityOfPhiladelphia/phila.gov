@@ -70,7 +70,7 @@
                 <?php else : //date range ?>
                   <?php $date_output = str_replace(
                     array('Sep','12:00 am','12:00 pm','am','pm',':00'),
-                    array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('<b>' . $start_month_format . ' j') . ' to ' . $end->format( $end_month_format . ' j, Y' . '</b>') );
+                    array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('<b>' . $start_month_format . ' j') . ' - ' . $end->format( $end_month_format . ' j, Y' . '</b>') );
                     echo $date_output;
                     ?>
                 <?php endif; ?>
