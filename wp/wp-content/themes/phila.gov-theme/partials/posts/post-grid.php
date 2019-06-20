@@ -151,10 +151,22 @@ $result->post_count = count( $result->posts );
               $see_all = array_replace( $see_all, $see_all_URL );
               endif;?>
               <?php if( !empty( $tag ) ) :
-                $term = get_term($tag[0], 'post_tag');
-                $see_all_URL = array(
-                  'URL' => '/the-latest/archives/?tag=' . $term->name,
-                ); ?>
+                  if( gettype($tag) === 'array'):
+                    $term = [];
+                    foreach($tag as $t) {
+                      $name = get_term($t, 'post_tag');
+                      array_push($term, $name->name);
+                    }
+                    $term = implode(', ', $term);
+                    $see_all_URL = array(
+                      'URL' => '/the-latest/archives/?tag=' . $term,
+                    );
+                  else: 
+                    $term = get_term($tag, 'post_tag');
+                    $see_all_URL = array(
+                      'URL' => '/the-latest/archives/?tag=' . $term->name,
+                    );
+                  endif; ?>
               <?php if (!empty($override_url)) : ?>
               <?php $see_all_URL = array(
                   'URL' => $override_url

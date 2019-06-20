@@ -15,6 +15,7 @@ if ( $staff_member_loop->have_posts() ):
       $staff_middle_name = rwmb_meta('phila_middle_name', $args = array('type'=>'text'));
       $staff_last_name = rwmb_meta('phila_last_name', $args = array('type'=>'text'));
       $staff_name_suffix = rwmb_meta('phila_name_suffix', $args = array('type'=>'select'));
+      $staff_name_prof_cert = rwmb_meta('phila_prof_cert', $args = array('type'=>'text'));
 
       //Build the name
       $staff_member_name_output = '';
@@ -24,6 +25,8 @@ if ( $staff_member_loop->have_posts() ):
         if( isset( $staff_middle_name ) && !$staff_middle_name == '' ) $staff_member_name_output .= $staff_middle_name . ' ';
         $staff_member_name_output .= $staff_last_name;
         if( isset( $staff_name_suffix ) && !$staff_name_suffix == '' ) $staff_member_name_output .= ', ' . $staff_name_suffix;
+        if( isset( $staff_name_prof_cert ) && !$staff_name_prof_cert == '' ) $staff_member_name_output .= ', ' . $staff_name_prof_cert;
+
       endif;
 
 
@@ -126,7 +129,7 @@ if ( $staff_member_loop->have_posts() ):
     else:
       $staff_table_output .= '<tr>
         <td class="name"><span class="list-name">' . $staff_member_name_output . '</span></td>
-        <td class="title">' . $staff_title . '<br>' . urldecode( $staff_unit ). '</td>';
+        <td class="title">' . $staff_title . '<br><span class="staff-unit">' . urldecode( $staff_unit ). '</span></td>';
         if (!empty($staff_email)) :
         $staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
         else:
@@ -207,7 +210,7 @@ if ( $staff_member_loop->have_posts() ):
             <thead>
               <tr>
                 <th class="name" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="name"><span>Name</span></th>
-                <th class="title" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job Title</span></th>
+                <th class="title" scope="col" <?php echo ($all_staff == 1) ? 'class="table-sort"' : '' ?> data-sort="title"><span>Job title</span></th>
                 <th class="email" scope="col">Email</th>
                 <th class="phone" scope="col">Phone #</th>
                 <th class="social" scope="col">Social</th>

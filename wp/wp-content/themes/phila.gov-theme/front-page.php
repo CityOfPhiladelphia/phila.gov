@@ -70,7 +70,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="/personnel/JobOpps.html" class="mrs mbs equal"
+                <a href="/jobs/" class="mrs mbs equal"
                 onclick="dataLayer.push({
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
