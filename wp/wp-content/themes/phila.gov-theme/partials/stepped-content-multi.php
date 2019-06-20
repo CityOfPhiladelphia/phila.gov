@@ -3,6 +3,13 @@
   * Partial for displaying content that is stepped
   */ 
 ?>
+<?php foreach ( $step_groups as $step_group ): ?>
+
+<?php $steps = phila_extract_stepped_content($step_group); ?>
+  <?php if ( !empty($step_group['service_how_stepped_content_intro'] ) ): ?>
+      <h3><?php echo $step_group['service_how_stepped_content_intro'] ?> </h3>
+  <?php endif; ?>
+
 <div class="step-group">
   <?php $counter = 0; ?>
   <?php foreach ( $steps as $step ): ?>
@@ -42,3 +49,4 @@
     </div>
   <?php endforeach; ?>
 </div>
+<?php endforeach; ?>

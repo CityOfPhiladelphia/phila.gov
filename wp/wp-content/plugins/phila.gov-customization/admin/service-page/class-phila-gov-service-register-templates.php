@@ -101,6 +101,42 @@ class Phila_Gov_Register_Service_Templates {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
+          'name'  => 'Add prerequisite approvals?',
+          'id'  => 'service_accordion_select',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+          'columns'   => '6'
+          ),
+        array(
+          'id' => 'accordion_row',
+          'type' => 'group',
+          'visible' => array(
+            'when' => array(
+              array('service_accordion_select', '=', true),
+            ),
+          ),
+          'fields' => array(
+            array(
+              'name' => ('Prerequisite row title'),
+              'id'   => 'accordion_row_title',
+              'type' => 'text',
+              'required' => true,
+              'class' => 'percent-100'
+            ),
+            array(
+              'id'   => 'accordion_group',
+              'type' => 'group',
+              'clone'  => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add accordion',
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg($section_name = 'Accordion title', $wysiwyg_desc = 'Accordion content', $columns = 12, $clone = true),
+              )
+            )
+          ),
+        ),
+        array(
           'type' => 'heading',
           'name'  => 'Where is this located and when is it availble?',
         ),
@@ -269,22 +305,66 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_how',
           'type'  => 'wysiwyg',
+          'name'  => 'Use this section for introduction content. Not required.',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
-          'name'  => 'Add stepped content?',
+          'name'  => 'Add single stepped content?',
           'id'  => 'service_how_stepped_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
-          'off_label' => 'No'
+          'off_label' => 'No',
+          'columns'   => '6'
+        ),
+        array(
+          'name'  => 'Add mutiple stepped content groups?',
+          'id'  => 'service_how_stepped_select_multi',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+          'columns'   => '6'
         ),
         array(
           'id' => 'service_how_stepped_content',
           'type' => 'group',
           'visible' => array('service_how_stepped_select', true),
           'fields'  => array(
+            array(
+              'id' => 'service_how_stepped_content_intro',
+              'type'  => 'wysiwyg',
+              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+            ),
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
           )
+        ),
+        array(
+          'id' => 'service_how_stepped_content_multi',
+          'type' => 'group',
+          'clone' => true,
+          'add_button'  => '+ Add a step group',
+          'visible' => array('service_how_stepped_select_multi', true),
+          'fields'  => array(
+            array(
+              'id' => 'service_how_stepped_content_intro',
+              'type'  => 'text',
+              'name' => 'Step group heading',
+              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
+          )
+        ),
+        array(
+          'id' => 'service_how_ending_content',
+          'type'  => 'wysiwyg',
+          'visible' => array(
+            'when' => array(
+              array('service_how_stepped_select', true ),
+              array('service_how_stepped_select_multi', true),
+            ),
+            'relation'  => 'or'
+          ),
+          'name'  => 'Display more content after all steps.',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
           'type' => 'heading',

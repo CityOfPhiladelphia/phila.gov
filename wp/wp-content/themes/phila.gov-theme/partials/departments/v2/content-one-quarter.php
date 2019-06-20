@@ -18,50 +18,23 @@
     <?php foreach ( $heading_content as $key => $content ): ?>
       <div class="row one-quarter-row mvl">
         <div class="medium-6 columns">
-
-          <?php
-            $heading_link_set = isset($content['phila_heading_link']) && $content['phila_heading_link'] !== '';
-            $heading_link_new_tab = (isset($content['phila_heading_link_new_tab']) && $content['phila_heading_link_new_tab']) ? '_blank' : null;
-            $heading_has_image = isset($content['phila_heading_image_selected']) && $content['phila_heading_image_selected'];
-          ?>
-
-          <?php
-            // conditionally linked header wysiwyg content
-            if ( isset( $content['phila_wysiwyg_heading'] ) &&  !$heading_has_image ):
-          ?>
-
-            <?php if($heading_link_set): ?>
-              <a href="<?php echo $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>" >
-                <h3><?php echo $content['phila_wysiwyg_heading']; ?></h3>
-            <?php else: ?>
-              <h3 id="<?php echo sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
-            <?php endif;  ?>
-
-
-          <?php elseif($heading_has_image ): ?>
-
-
-              <?php
-                // conditionally linked header image
-                if($heading_link_set):
-              ?>
-                <a href="<?php echo $content['phila_heading_link'] ?>" target="<?=$heading_link_new_tab?>">
-                  <img src="<?php echo $content['phila_heading_image']; ?> " alt="">
-                </a>
-              <?php else: ?>
-                <img src="<?php echo $content['phila_heading_image']; ?> " alt="">
-              <?php endif;  ?>
-
-
-          <?php endif; //END if conditionally linked header wysiwyg content?>
+            <h3 id="<?php echo sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
         </div>
 
         <div class="medium-18 columns pbxl">
-          <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
-          <?php $is_contact_info = isset( $content['phila_address_select'] ) ? $content['phila_address_select'] : ''; ?>
-          <?php if ( (!empty($wysiwyg_content)  ) ) : ?>
-            <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
-          <?php endif; ?>
+          <?php if ( isset($content['phila_expand_collapse'] ) ) : ?>
+            <div class="expandable" aria-controls="<?php echo $content['phila_wysiwyg_heading'] . '-control' ?>" aria-expanded="false">
+          <?php endif ?>
+            <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
+            <?php $is_contact_info = isset( $content['phila_address_select'] ) ? $content['phila_address_select'] : ''; ?>
+            <?php if ( (!empty($wysiwyg_content)  ) ) : ?>
+              <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?>
+            <?php endif; ?>
+
+            <?php if ( isset($content['phila_expand_collapse'] ) ) : ?>
+              </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo $content['phila_wysiwyg_heading'] . '-control' ?>"> More + </a>
+            <?php endif; ?>
+
             <?php if (!empty($is_contact_info) ) : ?>
             <?php
             $address_1 = isset( $content['phila_std_address']['address_group']['phila_std_address_st_1'] ) ? $content['phila_std_address']['address_group']['phila_std_address_st_1'] : '';

@@ -134,7 +134,7 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
   //Tax Detail Template
   $meta_boxes[] = array(
     'title' => 'Tax Highlights',
-    'pages' => array('page', 'service_page'),
+    'pages' => array('service_page'),
     'priority' => 'high',
 
     'visible' => array('phila_template_select', 'tax_detail'),
@@ -175,7 +175,7 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title' => 'Tax Details',
-    'pages' => array('page', 'service_page'),
+    'pages' => array('service_page'),
     'priority' => 'high',
     'visible' => array('phila_template_select', 'tax_detail'),
 
@@ -228,7 +228,7 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title' => 'How to pay',
-    'pages' => array('page', 'service_page'),
+    'pages' => array('service_page'),
     'priority' => 'high',
     'visible' => array('phila_template_select', 'tax_detail'),
 

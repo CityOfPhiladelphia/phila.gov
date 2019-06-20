@@ -39,21 +39,12 @@ get_header(); ?>
   'orderby' => 'title',
   'category__in' => phila_util_cat_ids(),
   'meta_query' => array(
-    'relation' => 'OR',
     array(
       'key'     => 'phila_template_select',
-      'value' => array('default', 'tax_detail'),
-      'compare' => 'IN'
+      'value' => array('service_stub'),
+      'compare' => 'NOT IN'
     ),
-    array(
-      'relation' => 'AND',
-        array(
-          'key'     => 'phila_template_select',
-          'value'   => 'topic_page',
-          'compare' => 'IN',
-        ),
-      ),
-    ),
+  ),
 );
 
 $service_pages = new WP_Query( $args ); ?>

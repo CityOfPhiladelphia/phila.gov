@@ -111,11 +111,22 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
         array(
+          'name'  => 'Expand/collapse this section?',
+          'id'  => 'phila_expand_collapse',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No'
+        ),
+        array(
           'name'  => 'Include contact information?',
           'id'  => 'phila_address_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
-          'off_label' => 'No'
+          'off_label' => 'No',
+          'visible' => array(
+            array( 'post_type', '=', 'department_page' ),
+            array( 'post_type', '=', 'programs' )
+          )
         ),
         array(
           'id' => 'phila_std_address',
@@ -351,6 +362,36 @@ class Phila_Gov_Standard_Metaboxes {
       )
     );
   }
+
+  public static function phila_metabox_double_wysiwyg($section_name = 'Section title', $wysiwyg_desc = '', $columns = 12){
+
+    //WYSIWYG with Title
+    return array(
+      'id'  =>  'phila_custom_wysiwyg',
+      'type'  => 'group',
+      'clone' => false,
+      'columns'=> $columns,
+
+      'fields'  => array(
+        array(
+          'type' => 'heading',
+          'name' => $section_name,
+        ),
+        array(
+          'id'  => 'phila_wysiwyg_title',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
+        ),
+        array(
+          'id'  => 'phila_wysiwyg_content',
+          'type'  => 'wysiwyg',
+          'desc'  => $wysiwyg_desc,
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+        )
+      )
+    );
+  }
+
   public static function phila_metabox_v2_wysiwyg_address(){
     //Purpose: To display content in a wysiwyg and include markup for an address
     return array(
@@ -939,6 +980,12 @@ public static function phila_meta_var_connect(){
           array(
             'name' => 'Fax',
             'id'   => 'phila_connect_fax',
+            'type' => 'phone',
+            'desc' => '(###)-###-####',
+          ),
+          array(
+            'name' => 'TTY',
+            'id'   => 'phila_connect_tty',
             'type' => 'phone',
             'desc' => '(###)-###-####',
           ),

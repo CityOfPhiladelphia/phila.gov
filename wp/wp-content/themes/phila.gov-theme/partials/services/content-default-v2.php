@@ -13,6 +13,10 @@
   $requirements = trim( rwmb_meta( 'service_requirements' ) ); 
   $requirements = isset( $requirements ) ? phila_remove_empty_p_tags( $requirements ) : false;
 
+  $requirements_prereq_select = rwmb_meta( 'service_accordion_select' );
+  $requirements_prereq = rwmb_meta( 'accordion_row' );
+  $requirements_prereq_title = rwmb_meta( 'accordion_row' );
+
   $where_when = trim( rwmb_meta( 'service_where_when' ) ); 
   $where_when = isset( $where_when ) ? phila_remove_empty_p_tags( $where_when ) : false;
 
@@ -33,7 +37,13 @@
   $how = isset( $how ) ? phila_remove_empty_p_tags( $how ) : false;
 
   $how_stepped_select = rwmb_meta('service_how_stepped_select');
-  $how_steped = rwmb_meta('service_how_stepped_content');
+  $how_stepped = rwmb_meta('service_how_stepped_content');
+
+  $how_stepped_select_multi = rwmb_meta('service_how_stepped_select_multi');
+  $how_stepped_multi = rwmb_meta('service_how_stepped_content_multi');
+
+  $how_ending = trim( rwmb_meta('service_how_ending_content' ) );
+  $how_ending = isset( $how_ending ) ? phila_remove_empty_p_tags( $how_ending ) : false;
 
   $renewal = trim( rwmb_meta( 'service_renewal_requirements' ) );
   $renewal = isset( $renewal ) ? phila_remove_empty_p_tags( $renewal ) : false;
@@ -63,21 +73,32 @@
 <?php if ( !empty( $who ) ) : ?>
   <section>
     <h3 id="who" class="black bg-ghost-gray phm-mu mtl mbm">Who</h3>
-    <div class="phm-mu"><?php echo $who ?></div>
+    <div class="phm-mu"><?php echo apply_filters( 'the_content', $who) ?></div>
   </section>
 <?php endif ?>
 
 <?php if ( !empty( $requirements ) ): ?>
 <section>
   <h3 id="requirements" class="black bg-ghost-gray phm-mu mtl mbm">Requirements</h3>
-  <div class="phm-mu"><?php echo $requirements ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $requirements) ?></div>
+</section>
+<?php endif ?>
+
+<?php if ( !empty( $requirements_prereq_select ) ): ?>
+<section>
+  <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
+  <?php
+    $accordion_title = '';
+    $accordion_group = $requirements_prereq['accordion_group'];
+    $is_icon_template = true; ?>
+    <?php include(locate_template('partials/global/accordion.php')); ?>
 </section>
 <?php endif ?>
 
 <?php if ( !empty($where_when)   ): ?>
 <section>
   <h3 id="where-when" class="black bg-ghost-gray phm-mu mtl mbm">Where and when</h3>
-  <div class="phm-mu"><?php echo $where_when ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $where_when) ?></div>
   <div class="phm-mu"><?php include( locate_template( 'partials/global/contact-information.php' ) );?></div>
 </section>
 <?php endif ?>
@@ -106,7 +127,7 @@
         <?php endforeach; ?>
         </div>
       <?php endif; ?>
-    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo $cost ?></div>
+    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo apply_filters( 'the_content', $cost) ?></div>
     <?php if ( !empty($is_modal) && !empty( $modal_link_text ) ) : ?>
       <div class="reveal reveal--announcement" id="<?php echo sanitize_title_with_dashes($modal_link_text)?>" data-reveal aria-labelledby="<?php echo sanitize_title_with_dashes($modal_link_text)?>">
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -120,24 +141,35 @@
 </div>
 <?php endif ?>
 
-<?php if ( !empty( $how || !empty( $how_stepped_select ) ) ): ?>
+<?php if (!empty( $how ) || !empty( $how_stepped_select ) || !empty( $how_stepped_select_multi ) ): ?>
 <section>
   <h3 id="how" class="black bg-ghost-gray phm-mu mtl mbm">How</h3>
-  <div class="phm-mu"><?php echo $how ?></div>
+    <?php if ( !empty( $how ) ) : ?>
+    <div class="phm-mu"><?php echo apply_filters( 'the_content', $how) ?></div>
+    <?php endif ?>
 
   <?php if ( !empty( $how_stepped_select ) ) :?>
-    <?php $steps = phila_extract_stepped_content($how_steped);?>
+    <?php $steps = phila_extract_stepped_content($how_stepped);?>
     <div class="phm-mu">
       <?php include( locate_template( 'partials/stepped-content.php' ) );?>
     </div>
   <?php endif;?>
+  <?php if ( !empty( $how_stepped_select_multi) ) :?>
+    <?php $step_groups = phila_loop_clonable_metabox($how_stepped_multi);?>
+    <div class="phm-mu">
+      <?php include( locate_template( 'partials/stepped-content-multi.php' ) );?>
+    </div>
+  <?php endif;?>
+  <?php if (!empty( $how_ending ) ) : ?>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $how_ending) ?></div>
+  <?php endif ?>
 </section>
 <?php endif ?>
 
 <?php if ( !empty($renewal) ): ?>
 <section>
   <h3 id="renewal" class="black bg-ghost-gray phm-mu mtl mbm">Renewal requirements</h3>
-  <div class="phm-mu"><?php echo $renewal ?></div>
+  <div class="phm-mu"><?php echo apply_filters( 'the_content', $renewal) ?></div>
 </section>
 <?php endif ?>
 
