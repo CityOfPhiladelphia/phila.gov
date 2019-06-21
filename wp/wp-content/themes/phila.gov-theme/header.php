@@ -24,9 +24,8 @@
         "templateType": "<?php echo phila_get_selected_template() ?>"
       });
     </script>
-    <?php if ( is_single() ) : ?>
+    <?php if ( is_single() && get_post_type() === 'post/') : ?>
       <script>
-        console.log(dataLayer)
         dataLayer.push({
           "articleTitle": "<?php echo get_the_title() ?>",
           "articleAuthor": "<?php echo get_the_author_meta('display_name') ?>",
@@ -35,6 +34,24 @@
         });
       </script>
     <?php endif; ?>
+    <?php if ( get_post_type() === 'programs' && phila_get_selected_template() === 'prog_landing_page'): 
+      $category = get_the_terms( $post->ID, 'service_type' );
+      $categories = array();
+        foreach($category as $c){
+          $categories[] = $c->name;
+        }
+        $audience = get_the_terms( $post->ID, 'audience' ); 
+        $audiences = array();
+        foreach($audience as $a){
+          $audiences[] = $a->name;
+        } ?>
+      <script>
+        dataLayer.push({
+          "programAudience": "<?php echo implode (', ', $audiences); ?>",
+          "programCategory": "<?php  echo implode(', ', $categories); ?>",
+        });
+      </script>
+    <?php endif ?>
     <!-- End Google Tag Manager DataLayer -->
   <?php endif; ?>
   <!-- Google Tag Manager --> 
