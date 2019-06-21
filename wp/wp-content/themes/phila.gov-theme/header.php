@@ -24,6 +24,17 @@
         "templateType": "<?php echo phila_get_selected_template() ?>"
       });
     </script>
+    <?php if ( is_single() ) : ?>
+      <script>
+        console.log(dataLayer)
+        dataLayer.push({
+          "articleTitle": "<?php echo get_the_title() ?>",
+          "articleAuthor": "<?php echo get_the_author_meta('display_name') ?>",
+          "publish": "<?php echo get_the_date() ?>",
+          "articleCategory": "<?php echo phila_get_selected_template() ?>"
+        });
+      </script>
+    <?php endif; ?>
     <!-- End Google Tag Manager DataLayer -->
   <?php endif; ?>
   <!-- Google Tag Manager --> 
