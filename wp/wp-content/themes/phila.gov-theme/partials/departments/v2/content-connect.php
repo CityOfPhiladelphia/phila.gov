@@ -15,7 +15,7 @@
   $archive = is_archive();
 ?>
 
-<div class="columns <?php echo ($archive) ? 'small-8' : 'large-8'?>">
+<div class="connect-box columns <?php echo ($archive) ? 'small-8' : 'large-8'?>">
   <?php if(!$archive) : ?>
     <div class="row">
       <div class="columns">
@@ -76,7 +76,7 @@
           $full_phone = $area . $co_code . $subscriber_number;
           ?>
           <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span>
-          <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value"><?php echo $full_phone; ?></a>
+          <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value phone-link"><?php echo $full_phone; ?></a>
         </div>
       <?php if ( !$connect_vars['fax'] == '') : ?>
         <div class="fax">
@@ -98,7 +98,7 @@
           <i class="fas fa-globe fa-2x" aria-hidden="true"></i>
         </th>
         <td>
-          <a href="<?php echo $connect_vars['website']['url'] ?>" class="<?php echo isset($connect_vars['website']['external']) ? 'external' : ''?>">
+          <a href="<?php echo $connect_vars['website']['url'] ?>" class="website <?php echo isset($connect_vars['website']['external']) ? 'external' : ''?>">
             <?php echo $connect_vars['website']['text'] ?>
           </a>
         </td>

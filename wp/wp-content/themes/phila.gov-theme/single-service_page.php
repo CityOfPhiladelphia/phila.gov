@@ -123,3 +123,13 @@
 </div><!-- #primary -->
 
 <?php get_footer(); ?>
+<script>
+  function serviceMenuClick(){
+  window.dataLayer.push({
+    'event' : 'GAEvent', 
+    'eventCategory' : 'Service Page Conversion', 
+    'eventAction' : phila_js_vars.postTitle, 
+    'eventLabel' : document.referrer, 
+  })
+}
+</script>

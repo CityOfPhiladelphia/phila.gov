@@ -279,6 +279,20 @@ function phila_open_graph() {
   <?php
 }
 
+add_filter( 'get_canonical_url', 'phila_stub_filter', 10, 2);
+
+function phila_stub_filter( $canonical_url, $post ){
+  if ( phila_get_selected_template( $post->ID ) == 'service_stub' || phila_get_selected_template( $post->ID ) == 'department_stub') {
+
+    if ( null !== rwmb_meta( 'phila_stub_source' ) ) {
+      $stub_source = rwmb_meta( 'phila_stub_source' );
+      $post_id = intval( $stub_source );
+      $canonical_url =  get_permalink( $post_id );
+    }
+  }
+
+  return $canonical_url;
+}
 
 
 /**
@@ -345,11 +359,13 @@ function phila_gov_scripts() {
       'postID' => $post->ID,
       'postType' => $post->post_type,
       'postRestBase' => $post_obj->rest_base,
+      'postTitle' => $post->post_title,
     ));
   }
+
   wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
 
-  if( is_page_template( 'templates/the-latest-archive.php' ) ||     is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
+  if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
   is_post_type_archive( ['programs', 'service_page'] ) ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
@@ -359,6 +375,19 @@ function phila_gov_scripts() {
     wp_localize_script('vuejs-app', 'g_cal_id', $google_calendar );
 
   }
+
+  // if( get_post_type() === 'department_page' || get_post_type() === 'programs' ){
+  //   $post_obj = get_post_type_object( $post->post_type );
+  //   $gtm_connect_vars = array_merge( $js_vars, array(
+  //     'postTitle' => $post->post_title,
+  //   ));
+  //   wp_enqueue_script('gtm_connect_box', get_stylesheet_directory_uri() . '/js/gtm/connect-box.js', array('phila-scripts'), null, true);
+  //   wp_localize_script('gtm_connect_box', 'params', $gtm_connect_vars );
+  // }
+
+  // if( get_post_type() === 'service_page' ){
+  //   wp_enqueue_script('gtm_service_page', get_stylesheet_directory_uri() . '/js/gtm/service-page.js', array('phila-scripts'), null, true);
+  // }
 
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
 
@@ -528,7 +557,12 @@ function phila_add_active_nav_class( $classes, $item ){
   return $classes;
 }
 
+add_filter('page_menu_link_attributes', 'phila_add_service_menu_on_click', 10, 5);
 
+function phila_add_service_menu_on_click($attrs = array (), $page, $depth, $args, $current_page){
+  $attrs['onclick'] = 'serviceMenuClick()' ;
+  return ($attrs);
+}
 
 function phila_get_dept_contact_blocks() {
   $categories = get_the_category();
