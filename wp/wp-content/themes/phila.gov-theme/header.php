@@ -102,11 +102,6 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-
 <?php if (phila_util_return_is_post(get_post_type()) ) : ?>
   <?php get_template_part( 'partials/social', 'media' ); ?>
 <?php endif ?>
