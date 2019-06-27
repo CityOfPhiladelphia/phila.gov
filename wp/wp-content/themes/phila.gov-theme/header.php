@@ -24,7 +24,7 @@
         "templateType": "<?php echo phila_get_selected_template() ?>"
       });
     </script>
-    <?php if ( is_single() && get_post_type() === 'post/') : ?>
+    <?php if ( is_single() && get_post_type() === 'post') : ?>
       <script>
         dataLayer.push({
           "articleTitle": "<?php echo get_the_title() ?>",
