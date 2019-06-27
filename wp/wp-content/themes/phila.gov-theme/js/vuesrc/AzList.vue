@@ -273,11 +273,9 @@ export default {
 
     },
     filterCheckbox(list) {
-      console.log(list)
       if (this.checkedItems.length > 0) {
         this.uncheckDefaultCheckbox()
-        dataLayer.push({'serviceCategory': this.checkedItems});
-        console.log(window.dataLayer)
+        dataLayer.push({'serviceCategory': this.checkedItems})
         return list.filter((listItem) => {
           return listItem.categories.some((tag) => {
             return this.checkedItems.includes(tag)
