@@ -37,14 +37,18 @@
     <?php if ( get_post_type() === 'programs' && phila_get_selected_template() === 'prog_landing_page'): 
       $category = get_the_terms( $post->ID, 'service_type' );
       $categories = array();
+      if (!empty($category)) {
         foreach($category as $c){
           $categories[] = $c->name;
         }
-        $audience = get_the_terms( $post->ID, 'audience' ); 
-        $audiences = array();
+      }
+      $audience = get_the_terms( $post->ID, 'audience' ); 
+      $audiences = array();
+      if (!empty($audience)) {
         foreach($audience as $a){
           $audiences[] = $a->name;
-        } ?>
+        } 
+      }?>
       <script>
         dataLayer.push({
           "programAudience": "<?php echo implode (', ', $audiences); ?>",
