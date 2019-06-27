@@ -33,7 +33,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Find trash day',
-                      'eventLabel': '<?php echo $domain['host'] ?>'
+                      'eventLabel': '<?php echo $domain['path'] ?>'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
@@ -54,7 +54,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Pay a bill',
-                      'eventLabel': '<?php echo $domain['host'] ?>'
+                      'eventLabel': '<?php echo $domain['path'] ?>'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
@@ -75,7 +75,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Explore City jobs',
-                      'eventLabel': '<?php echo $domain['host'] ?>'
+                      'eventLabel': '<?php echo $domain['path'] ?>'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
@@ -96,7 +96,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Search for a property',
-                      'eventLabel': '<?php echo $domain['host'] ?>'
+                      'eventLabel': '<?php echo $domain['path'] ?>'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
