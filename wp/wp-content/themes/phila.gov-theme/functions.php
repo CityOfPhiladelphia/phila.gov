@@ -385,6 +385,10 @@ function phila_gov_scripts() {
     wp_localize_script('gtm_connect_box', 'params', $gtm_connect_vars );
   }
 
+  if( get_post_type() === 'service_page' ){
+    wp_enqueue_script('gtm_service_page', get_stylesheet_directory_uri() . '/js/gtm/service-page.js', array('phila-scripts'), null, true);
+  }
+
   wp_enqueue_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js', array(), '3.7.3', false);
 
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
@@ -553,7 +557,12 @@ function phila_add_active_nav_class( $classes, $item ){
   return $classes;
 }
 
+add_filter('page_menu_link_attributes', 'phila_add_service_menu_on_click', 10, 5);
 
+function phila_add_service_menu_on_click($attrs = array (), $page, $depth, $args, $current_page){
+  $attrs['onclick'] = 'serviceMenuClick()' ;
+  return ($attrs);
+}
 
 function phila_get_dept_contact_blocks() {
   $categories = get_the_category();
