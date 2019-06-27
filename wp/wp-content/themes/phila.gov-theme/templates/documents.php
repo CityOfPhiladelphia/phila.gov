@@ -53,7 +53,7 @@
         ?>
         <tr class="clickable-row" data-href="<?php echo $document['url']; ?>" id="<?php echo phila_format_uri($document['title']); ?>">
           <td>
-            <a href="<?php echo $document['url'] ?>"><span class="title"><?php echo $document['title']; ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
+            <a href="<?php echo $document['url'] ?>" class="document"><span class="title"><?php echo $document['title']; ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
           </td>
             <td class="description"><?php echo isset( $content ) ? $content : ''; ?></td>
             <td class="date">

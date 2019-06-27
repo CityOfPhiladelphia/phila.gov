@@ -162,7 +162,7 @@ module.exports = $(function(){
     }
   });
 
-  $('.clickable-row').click(function(e) {
+  $('.clickable-row').click(function() {
     var name = $(this).children().children().children()[1];
     window.dataLayer.push({
       'event' : 'GAEvent',
@@ -173,6 +173,15 @@ module.exports = $(function(){
     window.location = $(this).data('href');
   });
 
+  $('.clickable-row .document').click(function(e) {
+    var name = $(this).children()[0];
+    window.dataLayer.push({
+      'event' : 'GAEvent',
+      'eventCategory' : 'Content Download',
+      'eventAction' : phila_js_vars.postTitle,
+      'eventLabel' : name.innerText,
+    });
+  });
   $('.clickable-row').hover(function() {
       $(this).addClass('is-hover');
     },
