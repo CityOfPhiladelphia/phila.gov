@@ -1,4 +1,5 @@
 module.exports = $(function(){
+//  window.dataLayer = window.dataLayer || [];
 
   /*Globals */
   var navHeight = $('.global-nav').height();
