@@ -25,6 +25,7 @@
                     :value="value.slug"
                     :name="value.slug"
                     :id="value.slug"
+                    class="program-audience"
                     @click="filterResults"/>
                   <label :for="value.slug">{{ value.name }}</label>
                 </div>
@@ -40,6 +41,7 @@
                         :value="value.slug"
                         :name="value.slug"
                         :id="value.slug"
+                        class="program-category"
                         @click="filterResults"/>
                       <label :for="value.slug"><span v-html="value.name"></span></label>
                     </div>
