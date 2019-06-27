@@ -161,7 +161,14 @@ module.exports = $(function(){
     }
   });
 
-  $('.clickable-row').click(function() {
+  $('.clickable-row').click(function(e) {
+    var name = $(this).children().children().children()[1];
+    window.dataLayer.push({
+      'event' : 'GAEvent',
+      'eventCategory' : 'Content Download',
+      'eventAction' : phila_js_vars.postTitle,
+      'eventLabel' : $(name)[0].innerText,
+    });
     window.location = $(this).data('href');
   });
 
