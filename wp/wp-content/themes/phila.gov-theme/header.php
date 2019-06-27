@@ -17,7 +17,6 @@
     ?>
     <script>
       window.dataLayer = window.dataLayer || [];
-      console.log(dataLayer)
       dataLayer.push({
         "contentModifiedDepartment": "<?php echo $departments ?>",
         "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
