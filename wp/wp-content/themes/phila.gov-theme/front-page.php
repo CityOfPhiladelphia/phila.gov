@@ -6,6 +6,9 @@
  */
 
 get_header(); ?>
+<?php 
+  $domain = parse_url($_SERVER['HTTP_HOST']);
+?>
 
 <div class="site-main home">
   <main>
@@ -21,11 +24,18 @@ get_header(); ?>
             <div class="h1">phila.gov</div>
           </div>
         </div>
+
         <div class="row common-requests">
           <div class="small-24 medium-15 large-13 small-centered columns overlap">
             <div class="row collapse call-to-action bg-white pvs pls equal-height">
               <div class="small-12 medium-6 columns">
-                <a href="/trashday" class="mrs mbs equal">
+                <a href="https://www.phila.gov/trashday" class="mrs mbs equal" onclick="dataLayer.push({
+                      'event': 'GAEvent',
+                      'eventCategory': 'Service Button',
+                      'eventAction': 'Find trash day',
+                      'eventLabel': '<?php echo $domain['path'] ?>'
+                    });
+                  ">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
@@ -39,7 +49,14 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal">
+                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal"
+                onclick="dataLayer.push({
+                      'event': 'GAEvent',
+                      'eventCategory': 'Service Button',
+                      'eventAction': 'Pay a bill',
+                      'eventLabel': '<?php echo $domain['path'] ?>'
+                    });
+                  ">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign">
                       <div class="valign-cell">
@@ -53,7 +70,14 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="/jobs/" class="mrs mbs equal">
+                <a href="/jobs/" class="mrs mbs equal"
+                onclick="dataLayer.push({
+                      'event': 'GAEvent',
+                      'eventCategory': 'Service Button',
+                      'eventAction': 'Explore City jobs',
+                      'eventLabel': '<?php echo $domain['path'] ?>'
+                    });
+                  ">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">
@@ -67,7 +91,14 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="http://property.phila.gov/" class="mrs mbs equal">
+                <a href="http://property.phila.gov/" class="mrs mbs equal"
+                onclick="dataLayer.push({
+                      'event': 'GAEvent',
+                      'eventCategory': 'Service Button',
+                      'eventAction': 'Search for a property',
+                      'eventLabel': '<?php echo $domain['path'] ?>'
+                    });
+                  ">
                   <div class="phs pvm cta-block clearfix">
                     <div class="valign ">
                       <div class="valign-cell">

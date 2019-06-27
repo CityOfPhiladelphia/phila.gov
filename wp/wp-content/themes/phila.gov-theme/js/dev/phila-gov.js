@@ -1,4 +1,5 @@
 module.exports = $(function(){
+//  window.dataLayer = window.dataLayer || [];
 
   /*Globals */
   var navHeight = $('.global-nav').height();
@@ -162,9 +163,25 @@ module.exports = $(function(){
   });
 
   $('.clickable-row').click(function() {
+    var name = $(this).children().children().children()[1];
+    window.dataLayer.push({
+      'event' : 'GAEvent',
+      'eventCategory' : 'Content Download',
+      'eventAction' : phila_js_vars.postTitle,
+      'eventLabel' : $(name)[0].innerText,
+    });
     window.location = $(this).data('href');
   });
 
+  $('.clickable-row .document').click(function(e) {
+    var name = $(this).children()[0];
+    window.dataLayer.push({
+      'event' : 'GAEvent',
+      'eventCategory' : 'Content Download',
+      'eventAction' : phila_js_vars.postTitle,
+      'eventLabel' : name.innerText,
+    });
+  });
   $('.clickable-row').hover(function() {
       $(this).addClass('is-hover');
     },

@@ -53,7 +53,7 @@
         ?>
         <tr class="clickable-row" data-href="<?php echo $document['url']; ?>" id="<?php echo phila_format_uri($document['title']); ?>">
           <td>
-            <a href="<?php echo $document['url'] ?>"><span class="title"><?php echo $document['title']; ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
+            <a href="<?php echo $document['url'] ?>" class="document"><span class="title"><?php echo $document['title']; ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
           </td>
             <td class="description"><?php echo isset( $content ) ? $content : ''; ?></td>
             <td class="date">
@@ -79,3 +79,21 @@
     </div>
   </div>
 </div>
+<?php 
+wp_localize_script('dataLayer', 'the_data', array(
+    'page_title' => get_the_title(),
+) );
+?>
+<script>
+// window.onload = function () {
+//   window.dataLayer = window.dataLayer || [];
+//   $('.clickable-row').click( function(){
+//     window.dataLayer.push({
+//       'event' : 'GAEvent',
+//       'eventCategory' : 'Content Download',
+//       'eventAction' : the_data.page_title,
+//       'eventLabel' : '',
+//     });
+//   });
+// }
+</script>

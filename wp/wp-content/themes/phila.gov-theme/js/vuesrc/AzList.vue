@@ -206,7 +206,7 @@ export default {
       return false
     },
     async updateResultsList() {
-     
+
       let filteredList = this.list
 
       //checkboxes filter
@@ -275,16 +275,18 @@ export default {
     filterCheckbox(list) {
       if (this.checkedItems.length > 0) {
         this.uncheckDefaultCheckbox()
+        dataLayer.push({'serviceCategory': this.checkedItems})
         return list.filter((listItem) => {
           return listItem.categories.some((tag) => {
             return this.checkedItems.includes(tag)
           }, this)
         })
+
       } else {
         this.uncheckAllCheckboxes()
         return list
       }
-      
+
     },
     filterSearch(list) {
       if (this.options.searchValue != '') {

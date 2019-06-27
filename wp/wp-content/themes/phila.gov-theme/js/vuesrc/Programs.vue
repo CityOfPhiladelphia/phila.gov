@@ -26,7 +26,8 @@
                     :name="value.slug"
                     :id="value.slug"
                     @click="filterResults"/>
-                  <label :for="value.slug">{{ value.name }}</label>
+                  <label :for="value.slug"
+                    class="program-audience">{{ value.name }}</label>
                 </div>
               </div>
             </div>
@@ -41,7 +42,8 @@
                         :name="value.slug"
                         :id="value.slug"
                         @click="filterResults"/>
-                      <label :for="value.slug"><span v-html="value.name"></span></label>
+                      <label :for="value.slug"
+                        class="program-category"><span v-html="value.name"></span></label>
                     </div>
                 </fieldset>
               </div>
