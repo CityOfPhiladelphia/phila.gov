@@ -54,7 +54,21 @@
           "programCategory": "<?php  echo implode(', ', $categories); ?>",
         });
       </script>
-    <?php endif ?>
+    <?php endif; ?>
+    <?php if ( get_post_type() === 'service_page') :
+      $category = get_the_terms( $post->ID, 'service_type' );
+      $categories = array();
+      if (!empty($category)) {
+        foreach($category as $c){
+          $categories[] = $c->name;
+        }
+      }?>
+      <script>
+        dataLayer.push({
+          "serviceCategory": "<?php  echo implode(', ', $categories); ?>",
+        });
+      </script>
+    <?php endif; ?>
     <!-- End Google Tag Manager DataLayer -->
   <?php endif; ?>
   <!-- Google Tag Manager --> 

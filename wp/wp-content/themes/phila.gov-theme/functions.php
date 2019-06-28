@@ -560,7 +560,7 @@ function phila_add_active_nav_class( $classes, $item ){
 add_filter('page_menu_link_attributes', 'phila_add_service_menu_on_click', 10, 5);
 
 function phila_add_service_menu_on_click($attrs = array (), $page, $depth, $args, $current_page){
-  $attrs['onclick'] = 'serviceMenuClick()' ;
+  $attrs['onclick'] = 'serviceMenuClick(this)' ;
   return ($attrs);
 }
 
