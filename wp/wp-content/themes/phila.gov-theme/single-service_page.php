@@ -124,12 +124,12 @@
 
 <?php get_footer(); ?>
 <script>
-  function serviceMenuClick(){
-  window.dataLayer.push({
-    'event' : 'GAEvent', 
-    'eventCategory' : 'Service Page Conversion', 
-    'eventAction' : phila_js_vars.postTitle, 
-    'eventLabel' : document.referrer, 
-  })
-}
+  function serviceMenuClick(obj){
+    window.dataLayer.push({
+      'event' : 'GAEvent', 
+      'eventCategory': 'Service Page Conversion', 
+      'eventAction': '<?php echo $parent_title ?>', 
+      'eventLabel': obj.innerText, 
+    })
+  }
 </script>
