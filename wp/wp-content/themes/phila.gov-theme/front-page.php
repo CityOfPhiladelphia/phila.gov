@@ -6,9 +6,6 @@
  */
 
 get_header(); ?>
-<?php 
-  $domain = parse_url($_SERVER['HTTP_HOST']);
-?>
 
 <div class="site-main home">
   <main>
@@ -33,7 +30,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Find trash day',
-                      'eventLabel': '<?php echo $domain['path'] ?>'
+                      'eventLabel': 'www.phila.gov'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
@@ -54,7 +51,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Pay a bill',
-                      'eventLabel': '<?php echo $domain['path'] ?>'
+                      'eventLabel': 'www.phila.gov'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
@@ -75,7 +72,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Explore City jobs',
-                      'eventLabel': '<?php echo $domain['path'] ?>'
+                      'eventLabel': 'www.phila.gov'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
@@ -96,7 +93,7 @@ get_header(); ?>
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
                       'eventAction': 'Search for a property',
-                      'eventLabel': '<?php echo $domain['path'] ?>'
+                      'eventLabel': 'www.phila.gov'
                     });
                   ">
                   <div class="phs pvm cta-block clearfix">
