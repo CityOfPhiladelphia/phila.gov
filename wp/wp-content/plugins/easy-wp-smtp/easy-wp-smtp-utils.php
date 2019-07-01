@@ -27,6 +27,16 @@ class SWPSMTPUtils {
 	return self::$instance;
     }
 
+    static function base64_decode_maybe( $str ) {
+	if ( ! function_exists( 'mb_detect_encoding' ) ) {
+	    return base64_decode( $str );
+	}
+	if ( mb_detect_encoding( $str ) === mb_detect_encoding( base64_decode( base64_encode( base64_decode( $str ) ) ) ) ) {
+	    $str = base64_decode( $str );
+	}
+	return $str;
+    }
+
     function encrypt_password( $pass ) {
 	if ( $pass === '' ) {
 	    return '';
