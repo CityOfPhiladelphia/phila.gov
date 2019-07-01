@@ -369,7 +369,7 @@ if ( ! class_exists( 'AS3CF_Compatibility_Check' ) ) {
 				global $as3cfpro;
 				if ( ! empty( $as3cfpro ) && $as3cfpro->get_plugin_slug( true ) === $this->parent_plugin_slug ) {
 					// Don't show update link for addons of a licensed plugin where the license is invalid
-					if ( ! $as3cfpro->is_valid_licence() ) {
+					if ( ! $as3cfpro->is_valid_licence( false, true ) ) {
 						$msg .= ' ' . sprintf( __( 'A valid license for %s is required to update.', 'amazon-s3-and-cloudfront' ), $this->get_parent_plugin_name() );
 						$msg .= $hide_notice_msg;
 
@@ -407,7 +407,7 @@ if ( ! class_exists( 'AS3CF_Compatibility_Check' ) ) {
 				global $as3cfpro;
 				if ( ! empty( $as3cfpro ) && $as3cfpro->get_plugin_slug( true ) === $this->parent_plugin_slug ) {
 					// Don't show update link for addons of a licensed plugin where the license is invalid
-					if ( ! $as3cfpro->is_valid_licence() ) {
+					if ( ! $as3cfpro->is_valid_licence( false, true ) ) {
 						$upgrade_msg = ' ' . sprintf( __( 'A valid license for %s is required to update.', 'amazon-s3-and-cloudfront' ), $this->get_parent_plugin_name() );
 					}
 				}
@@ -620,6 +620,14 @@ if ( ! class_exists( 'AS3CF_Compatibility_Check' ) ) {
 				$errors[] = __( 'a PHP version less than 5.5', 'amazon-s3-and-cloudfront' );
 			}
 
+			if ( ! class_exists( 'SimpleXMLElement' ) ) {
+				$errors[] = __( 'no SimpleXML PHP module', 'amazon-s3-and-cloudfront' );
+			}
+
+			if ( ! class_exists( 'XMLWriter' ) ) {
+				$errors[] = __( 'no XMLWriter PHP module', 'amazon-s3-and-cloudfront' );
+			}
+
 			if ( ! function_exists( 'curl_version' ) ) {
 				$errors[] = __( 'no PHP cURL library activated', 'amazon-s3-and-cloudfront' );
 
@@ -665,7 +673,7 @@ if ( ! class_exists( 'AS3CF_Compatibility_Check' ) ) {
 				return '';
 			}
 
-			$msg = __( 'The official Amazon&nbsp;Web&nbsp;Services SDK requires PHP 5.5+ and cURL 7.16.2+ compiled with OpenSSL and zlib. Your server currently has', 'amazon-s3-and-cloudfront' );
+			$msg = __( 'The official Amazon&nbsp;Web&nbsp;Services SDK requires PHP 5.5+ with SimpleXML and XMLWriter modules, and cURL 7.16.2+ compiled with OpenSSL and zlib. Your server currently has', 'amazon-s3-and-cloudfront' );
 
 			if ( count( $errors ) > 1 ) {
 				$last_one = ' and ' . array_pop( $errors );
