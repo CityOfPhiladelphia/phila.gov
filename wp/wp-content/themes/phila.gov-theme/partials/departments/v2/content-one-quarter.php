@@ -50,7 +50,7 @@
 
   <div class="one-quarter-layout">
     <?php foreach ( $heading_content as $key => $content ): ?>
-      <div class="row one-quarter-row mvl">
+      <div class="row one-quarter-row mvxl">
         <div class="medium-6 columns">
             <h3 id="<?php echo sanitize_title_with_dashes($content['phila_wysiwyg_heading'], null, 'save')?>"><?php echo $content['phila_wysiwyg_heading']; ?></h3>
         </div>
