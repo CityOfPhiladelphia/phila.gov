@@ -26,7 +26,7 @@
 <?php else: ?>
 <section class="mvl">
   <div class="phm-mu">
-    <?php foreach ( $accordion_group as $key => $accordion ) : ?>
+    <?php foreach ( $accordion_group as $ag_key => $accordion ) : ?>
     <?php reset($accordion_group) ?>
     <div class="icon-expand-container">
       <div class="icon-expand-title grid-x">
@@ -42,8 +42,8 @@
         <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
       </div>
     </div>
-    <?php end($accordion_group) ?>
-    <?php if ($key != key($accordion_group) ) :?>
+    <?php end( $accordion_group) ; ?>
+    <?php if ($ag_key != key($accordion_group) ) :?>
       <hr class="icon-expand-hr">
     <?php endif ?>
     <?php endforeach;?>

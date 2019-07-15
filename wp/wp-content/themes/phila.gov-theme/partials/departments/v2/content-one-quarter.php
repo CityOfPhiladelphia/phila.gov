@@ -12,9 +12,9 @@
 ?>
 
 <?php if ( !empty( $faq_group ) ): ?>
-<?php $last_key = phila_util_is_last_in_array( (array) $faq_group ); ?>
+  <?php foreach ($faq_group as $faq_key => $faq): ?>
+  <?php reset($faq_group);?>
 
-  <?php foreach ($faq_group as $key => $faq): ?>
   <section>
   <div class="one-quarter-layout">
     <div class="row one-quarter-row mvl">
@@ -30,15 +30,20 @@
       <div class="medium-18 columns pbxl">
         <?php include(locate_template('partials/global/accordion.php')); ?>
       </div>
-  </section>
-  <?php if ($last_key === $key) : ?>
-  
-      <hr class="margin-auto"/>
-  <?php endif; ?>
+    <?php end( $faq_group ) ; ?>
+    <?php if ($faq_key != key($faq_group) ) :?>
+      <hr class="icon-expand-hr">
+    <?php endif ?>
+    </div>
+    </section>
 
   <?php endforeach; ?>
-
 <?php endif; ?>
+
+<?php if ( !empty( $faq_group ) ): ?>
+  <hr class="margin-auto"/>
+<?php endif ?>
+
 
 <?php if ( !empty($heading_content) ) : ?>
   <?php $last_key = phila_util_is_last_in_array( (array) $heading_content ); ?>
