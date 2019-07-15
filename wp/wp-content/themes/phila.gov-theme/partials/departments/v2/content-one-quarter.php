@@ -6,10 +6,39 @@
  */
 ?>
 <?php
-
+  $faq_group = rwmb_meta( 'accordion_row' );
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
 ?>
+
+<?php if ( !empty( $faq_group ) ): ?>
+<?php $last_key = phila_util_is_last_in_array( (array) $faq_group ); ?>
+
+  <?php foreach ($faq_group as $key => $faq): ?>
+  <section>
+  <div class="one-quarter-layout">
+    <div class="row one-quarter-row mvl">
+      <div class="medium-6 columns">
+        <h3 id="<?php echo sanitize_title_with_dashes($faq['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $faq['accordion_row_title'] ?></h3>
+    </div>
+
+    <?php
+      $accordion_title = '';
+      $accordion_group = $faq['accordion_group'];
+      $is_full_width = false;
+      $use_icon = false; ?>
+      <div class="medium-18 columns pbxl">
+        <?php include(locate_template('partials/global/accordion.php')); ?>
+      </div>
+  </section>
+  <?php if ($last_key === $key) : ?>
+  
+      <hr class="margin-auto"/>
+  <?php endif; ?>
+
+  <?php endforeach; ?>
+
+<?php endif; ?>
 
 <?php if ( !empty($heading_content) ) : ?>
   <?php $last_key = phila_util_is_last_in_array( (array) $heading_content ); ?>

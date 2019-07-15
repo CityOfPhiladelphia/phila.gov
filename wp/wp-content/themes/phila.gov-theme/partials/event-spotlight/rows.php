@@ -75,7 +75,8 @@
       <!-- Accordion group  -->
       <?php if ( !isset( $current_row['accordion_group_title']) ):
         $accordion_title = $current_row['accordion_row']['accordion_row_title'];
-        $accordion_group = $current_row['accordion_row']['accordion_group'];?>
+        $accordion_group = $current_row['accordion_row']['accordion_group'];
+        $is_full_width = true;?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>">
           <?php include(locate_template('partials/global/accordion.php')); ?>
         </div>
