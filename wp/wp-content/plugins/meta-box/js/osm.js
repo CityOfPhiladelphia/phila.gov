@@ -1,9 +1,5 @@
-( function( $, L ) {
+( function( $, L, i18n ) {
 	'use strict';
-
-	var osmTileLayer = L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-	} );
 
 	// Use function construction to store map & DOM elements separately for each instance
 	var OsmField = function ( $container ) {
@@ -20,6 +16,12 @@
 			this.initMarkerPosition();
 			this.addListeners();
 			this.autocomplete();
+
+			// Make sure the map is displayed fully.
+			var map = this.map;
+			setTimeout( function() {
+				map.invalidateSize();
+			}, 0 );
 		},
 
 		// Initialize DOM elements
@@ -27,7 +29,6 @@
 			this.$canvas = this.$container.find( '.rwmb-osm-canvas' );
 			this.canvas = this.$canvas[0];
 			this.$coordinate = this.$container.find( '.rwmb-osm-coordinate' );
-			this.$findButton = this.$container.find( '.rwmb-osm-goto-address-button' );
 			this.addressField = this.$container.data( 'address-field' );
 		},
 
@@ -43,7 +44,11 @@
 				center: latLng,
 				zoom: 14
 			} );
-			this.map.addLayer( osmTileLayer );
+
+
+			L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			} ).addTo( this.map );
 			this.marker = L.marker( latLng, {
 				draggable: true
 			} ).addTo( this.map );
@@ -65,13 +70,28 @@
 				this.map.panTo( latLng );
 				this.map.setZoom( zoom );
 			} else if ( this.addressField ) {
-				this.geocodeAddress();
+				this.geocodeAddress( false );
 			}
 		},
 
 		// Add event listeners for 'click' & 'drag'
 		addListeners: function () {
 			var that = this;
+
+			/*
+			 * Auto change the map when there's change in address fields.
+			 * Works only for multiple address fields as single address field has autocomplete functionality.
+			 */
+			if ( this.addressField.split( ',' ).length > 1 ) {
+				var geocodeAddress = that.geocodeAddress.bind( that );
+				var addressFields = this.addressField.split( ',' ).forEach( function( part ) {
+					var $field = that.findAddressField( part );
+					if ( null !== $field ) {
+						$field.on( 'change', geocodeAddress );
+					}
+				} );
+			}
+
 			this.map.on( 'click', function ( event ) {
 				that.marker.setLatLng( event.latlng );
 				that.updateCoordinate( event.latlng );
@@ -85,29 +105,18 @@
 				that.updateCoordinate( that.marker.getLatLng() );
 			} );
 
-			this.$findButton.on( 'click', function ( e ) {
-				e.preventDefault();
-				that.geocodeAddress();
-			} );
-
 			/**
 			 * Add a custom event that allows other scripts to refresh the maps when needed
 			 * For example: when maps is in tabs or hidden div (this is known issue of Google Maps)
 			 *
 			 * @see https://developers.google.com/maps/documentation/javascript/reference ('resize' Event)
 			 */
-			$( window ).on( 'rwmb_map_refresh', function () {
-				that.refresh();
-			} );
+			$( window ).on( 'rwmb_map_refresh', that.refresh );
 
 			// Refresh on meta box hide and show
-			$( document ).on( 'postbox-toggled', function () {
-				that.refresh();
-			} );
+			$( document ).on( 'postbox-toggled', that.refresh );
 			// Refresh on sorting meta boxes
-			$( '.meta-box-sortables' ).on( 'sortstop', function () {
-				that.refresh();
-			} );
+			$( '.meta-box-sortables' ).on( 'sortstop', that.refresh );
 		},
 
 		refresh: function () {
@@ -127,10 +136,11 @@
 				return;
 			}
 
-			// If Meta Box Geo Location installed. Do not run auto complete.
+			// If Meta Box Geo Location installed. Do not run autocomplete.
 			if ( $( '.rwmb-geo-binding' ).length ) {
-				$address.on( 'selected_address', that.geocodeAddress );
-				return;
+				var geocodeAddress = that.geocodeAddress.bind( that );
+				$address.on( 'selected_address', geocodeAddress );
+				return false;
 			}
 
 			$address.autocomplete( {
@@ -144,7 +154,7 @@
 						if ( ! results.length ) {
 							response( [ {
 								value: '',
-								label: RWMB_Osm.no_results_string
+								label: i18n.no_results_string
 							} ] );
 							return;
 						}
@@ -175,13 +185,16 @@
 		},
 
 		// Find coordinates by address
-		geocodeAddress: function () {
+		geocodeAddress: function ( notify ) {
 			var address = this.getAddress(),
 				that = this;
 			if ( ! address ) {
 				return;
 			}
 
+			if ( false !== notify ) {
+				notify = true;
+			}
 			$.get( 'https://nominatim.openstreetmap.org/search', {
 				format: 'json',
 				q: address,
@@ -190,6 +203,9 @@
 				"accept-language": that.$canvas.data( 'language' )
 			}, function( result ) {
 				if ( result.length !== 1 ) {
+					if ( notify ) {
+						alert( i18n.no_results_string );
+					}
 					return;
 				}
 				var latLng = L.latLng( result[0].lat, result[0].lon );
@@ -263,4 +279,4 @@
 		$( '.rwmb-input' ).on( 'clone', update );
 	} );
 
-} )( jQuery, L );
+} )( jQuery, L, RWMB_Osm );

@@ -1,35 +1,36 @@
 jQuery( function ( $ ) {
 	'use strict';
 
-	function rwmb_update_slider() {
-		var $input = $( this ),
-			$slider = $input.siblings( '.rwmb-slider' ),
+	function update() {
+		var $input      = $( this ),
+			$slider     = $input.siblings( '.rwmb-slider' ),
 			$valueLabel = $slider.siblings( '.rwmb-slider-value-label' ).find( 'span' ),
-			value = $input.val(),
-			options = $slider.data( 'options' );
-
+			value       = $input.val(),
+			options     = $slider.data( 'options' );
 
 		$slider.html( '' );
+		$valueLabel.text( value );
 
-		if ( ! value ) {
-			value = 0;
-			$input.val( 0 );
-			$valueLabel.text( '0' );
-		}
-		else {
-			$valueLabel.text( value );
+		if ( true === options.range ) {
+			value = value.split( '|' );
+			options.values = value;
+		} else {
+			options.value = value;
 		}
 
-		// Assign field value and callback function when slide
-		options.value = value;
 		options.slide = function ( event, ui ) {
-			$input.val( ui.value );
-			$valueLabel.text( ui.value );
+			var value = ui.value;
+			if ( options.range === true ) {
+				value = ui.values[ 0 ] + '|' + ui.values[ 1 ];
+			}
+
+			$input.val( value );
+			$valueLabel.html( value );
 		};
 
 		$slider.slider( options );
 	}
 
-	$( '.rwmb-slider-value' ).each( rwmb_update_slider );
-	$( document ).on( 'clone', '.rwmb-slider-value', rwmb_update_slider );
+	$( '.rwmb-slider-value' ).each( update );
+	$( document ).on( 'clone', '.rwmb-slider-value', update );
 } );

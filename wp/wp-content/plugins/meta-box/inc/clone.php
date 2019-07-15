@@ -63,7 +63,7 @@ class RWMB_Clone {
 			$input_html .= '</div>';
 
 			$field_html .= $input_html;
-		} // End foreach().
+		}
 
 		return $field_html;
 	}
@@ -92,6 +92,12 @@ class RWMB_Clone {
 			$value       = RWMB_Field::call( $field, 'value', $value, $old_value, $post_id );
 			$new[ $key ] = RWMB_Field::filter( 'sanitize', $value, $field );
 		}
+
+		// Remove empty clones.
+		$new = array_filter( $new, 'RWMB_Helpers_Value::is_valid_for_field' );
+
+		// Reset indexes.
+		$new = array_values( $new );
 
 		return $new;
 	}

@@ -17,7 +17,10 @@
 			$clone = $this.prev().clone();
 
 		$clone.insertBefore( this ).val( '' );
-		file.updateVisibility.call( $this.closest( '.rwmb-input' ).find( '.rwmb-uploaded' )[0] );
+
+		var $fieldInput = $this.closest( '.rwmb-input' );
+		file.updateVisibility.call( $fieldInput.find( '.rwmb-uploaded' ) );
+		file.setRequired.call( $fieldInput );
 	};
 
 	/**
@@ -31,10 +34,13 @@
 
 		var $this = $( this ),
 			$item = $this.closest( 'li' ),
-			$uploaded = $this.closest( '.rwmb-uploaded' );
+			$uploaded = $this.closest( '.rwmb-uploaded' ),
+			$metaBox = $uploaded.closest( '.rwmb-meta-box' );
 
 		$item.remove();
 		file.updateVisibility.call( $uploaded );
+
+		file.setRequired.call( $uploaded.parent() );
 
 		if ( 1 > $uploaded.data( 'force_delete' ) ) {
 			return;
@@ -44,6 +50,8 @@
 			action: 'rwmb_delete_file',
 			_ajax_nonce: $uploaded.data( 'delete_nonce' ),
 			field_id: $uploaded.data( 'field_id' ),
+			object_type: $metaBox.data( 'object-type' ),
+			object_id: $metaBox.data( 'object-id' ),
 			attachment_id: $this.data( 'attachment_id' )
 		}, function ( response ) {
 			if ( ! response.success ) {
@@ -94,6 +102,23 @@
 		$clone.find( '.rwmb-file-input' ).not( ':first' ).remove();
 	};
 
+	// Set 'required' attribute. 'this' is the wrapper field input.
+	file.setRequired = function() {
+		var $this = $( this ),
+			$uploaded = $this.find( '.rwmb-uploaded' ),
+			$inputs = $this.find( '.rwmb-file-new input' );
+		$inputs.prop( 'required', false );
+
+		if ( $uploaded.children().length ) {
+			return;
+		}
+
+		var $firstInput = $inputs.first();
+		if ( 1 === $firstInput.data( 'required' ) ) {
+			$firstInput.prop( 'required', true );
+		}
+	};
+
 	// Initialize when document ready.
 	$( function ( $ ) {
 		$( document )
@@ -104,5 +129,7 @@
 		var $uploaded = $( '.rwmb-uploaded' );
 		$uploaded.each( file.sort );
 		$uploaded.each( file.updateVisibility );
+
+		$( '.rwmb-file-wrapper' ).each( file.setRequired );
 	} );
 } )( jQuery, document );

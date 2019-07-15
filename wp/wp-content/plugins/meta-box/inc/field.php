@@ -24,25 +24,6 @@ abstract class RWMB_Field {
 	}
 
 	/**
-	 * Localize scripts with prevention of loading localized data twice.
-	 *
-	 * @link https://github.com/rilwis/meta-box/issues/850
-	 *
-	 * @param string $handle Script handle.
-	 * @param string $name Object name.
-	 * @param mixed  $data Localized data.
-	 */
-	public static function localize_script( $handle, $name, $data ) {
-		/*
-		 * Check with function_exists to make it work in WordPress 4.1.
-		 * @link https://github.com/rilwis/meta-box/issues/1009
-		 */
-		if ( ! function_exists( 'wp_scripts' ) || ! wp_scripts()->get_data( $handle, 'data' ) ) {
-			wp_localize_script( $handle, $name, $data );
-		}
-	}
-
-	/**
 	 * Show field HTML
 	 * Filters are put inside this method, not inside methods such as "meta", "html", "begin_html", etc.
 	 * That ensures the returned value are always been applied filters.
@@ -229,13 +210,11 @@ abstract class RWMB_Field {
 
 		// Ensure multiple fields are arrays.
 		if ( $field['multiple'] ) {
+			$meta = (array) $meta;
 			if ( $field['clone'] ) {
-				$meta = (array) $meta;
 				foreach ( $meta as $key => $m ) {
 					$meta[ $key ] = (array) $m;
 				}
-			} else {
-				$meta = (array) $meta;
 			}
 		}
 		// Escape attributes.
@@ -275,7 +254,7 @@ abstract class RWMB_Field {
 	 * @param int   $post_id The post ID.
 	 * @param array $field   The field parameters.
 	 *
-	 * @return int
+	 * @return mixed
 	 */
 	public static function value( $new, $old, $post_id, $field ) {
 		return $new;
@@ -296,26 +275,14 @@ abstract class RWMB_Field {
 		$name    = $field['id'];
 		$storage = $field['storage'];
 
-		// Remove empty values for clones.
-		if ( $field['clone'] ) {
-			$new = (array) $new;
-			foreach ( $new as $k => $v ) {
-				if ( '' === $v || array() === $v ) {
-					unset( $new[ $k ] );
-				}
-			}
-		}
-
 		// Remove post meta if it's empty.
-		if ( '' === $new || array() === $new ) {
+		if ( ! RWMB_Helpers_Value::is_valid_for_field( $new ) ) {
 			$storage->delete( $post_id, $name );
 			return;
 		}
 
 		// If field is cloneable AND not force to save as multiple rows, value is saved as a single row in the database.
 		if ( $field['clone'] && ! $field['clone_as_multiple'] ) {
-			// Reset indexes.
-			$new = array_values( $new );
 			$storage->update( $post_id, $name, $new );
 			return;
 		}
@@ -422,11 +389,8 @@ abstract class RWMB_Field {
 	public static function render_attributes( $attributes ) {
 		$output = '';
 
+		$attributes = array_filter( $attributes, 'RWMB_Helpers_Value::is_valid_for_attribute' );
 		foreach ( $attributes as $key => $value ) {
-			if ( false === $value || '' === $value ) {
-				continue;
-			}
-
 			if ( is_array( $value ) ) {
 				$value = wp_json_encode( $value );
 			}
@@ -585,41 +549,7 @@ abstract class RWMB_Field {
 			}
 		}
 
-		return call_user_func_array( array( self::get_class_name( $field ), $method ), $args );
-	}
-
-	/**
-	 * Map field types.
-	 *
-	 * @param array $field Field parameters.
-	 * @return string Field mapped type.
-	 */
-	public static function map_types( $field ) {
-		$type     = isset( $field['type'] ) ? $field['type'] : 'input';
-		$type_map = apply_filters(
-			'rwmb_type_map',
-			array(
-				'file_advanced'  => 'media',
-				'plupload_image' => 'image_upload',
-				'url'            => 'text',
-			)
-		);
-
-		return isset( $type_map[ $type ] ) ? $type_map[ $type ] : $type;
-	}
-
-	/**
-	 * Get field class name.
-	 *
-	 * @param array $field Field parameters.
-	 * @return string Field class name.
-	 */
-	public static function get_class_name( $field ) {
-		$type  = self::map_types( $field );
-		$type  = str_replace( array( '-', '_' ), ' ', $type );
-		$class = 'RWMB_' . ucwords( $type ) . '_Field';
-		$class = str_replace( ' ', '_', $class );
-		return class_exists( $class ) ? $class : 'RWMB_Input_Field';
+		return call_user_func_array( array( RWMB_Helpers_Field::get_class( $field ), $method ), $args );
 	}
 
 	/**
