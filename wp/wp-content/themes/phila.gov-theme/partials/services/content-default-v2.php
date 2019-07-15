@@ -90,7 +90,8 @@
   <?php
     $accordion_title = '';
     $accordion_group = $requirements_prereq['accordion_group'];
-    $is_icon_template = true; ?>
+    $is_full_width = false; 
+    $use_icon = true;?>
     <?php include(locate_template('partials/global/accordion.php')); ?>
 </section>
 <?php endif ?>
