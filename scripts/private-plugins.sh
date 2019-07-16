@@ -10,7 +10,7 @@ mb-revision-1.3.2.zip
 mb-settings-page-1.3.4.zip
 mb-term-meta-1.2.5.zip
 meta-box-columns-1.2.5.zip
-meta-box-conditional-logic-1.6.6.zip
+meta-box-conditional-logic-1.6.4.zip
 meta-box-group-1.3.4.zip
 meta-box-include-exclude-1.0.10.zip
 meta-box-tabs-1.1.4.zip
