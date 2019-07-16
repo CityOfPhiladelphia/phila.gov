@@ -31,10 +31,10 @@
       <table class="responsive js-hide-empty">
         <thead>
           <tr>
-            <th <?php echo ($arr_length >= 5 ) ? 'class="table-sort" data-sort="title"' : '' ?>><span>Name</span></th>
+            <th class="<?php echo ($arr_length >= 5 ) ? 'table-sort" data-sort="title' : '' ?>"><span>Name</span></th>
             <th data-sort="description">Description</th>
-            <th <?php echo ($arr_length >= 5 ) ? 'class="table-sort" data-sort="date"' : '' ?>><span>Released</span></th>
-            <th>Format</th>
+            <th class="medium-3 <?php echo ($arr_length >= 5 ) ? 'table-sort" data-sort="date' : '' ?>"><span>Released</span></th>
+            <th class="medium-2">Format</th>
           </tr>
         </thead>
         <tbody class="search-sortable">
