@@ -45,7 +45,16 @@ $tweet_intent = rwmb_meta('phila_social_intent');
         </span>
         <?php if ( get_post_type() != 'news_post'): ?>
           <span class="author">
-            <?php echo $posted_on_values['author']; ?>
+          <?php if (sizeof($posted_on_values['author'] ) === 2 ) : ?>
+            <?php echo implode(' and ', $posted_on_values['author']); ?>
+          <?php else:?>
+            <?php
+              $last  = array_slice($posted_on_values['author'], -1);
+              $first = join(', ', array_slice($posted_on_values['author'], 0, -1));
+              $both  = array_filter(array_merge(array($first), $last), 'strlen');
+              echo join(', and ', $both);
+            ?>
+          <?php endif;?>
           </span>
         <?php endif?>
         <span class="departments">
