@@ -48,7 +48,7 @@ class RWMB_Map_Field extends RWMB_Field {
 			RWMB_VER,
 			true
 		);
-		self::localize_script(
+		RWMB_Helpers_Field::localize_script_once(
 			'rwmb-map',
 			'RWMB_Map',
 			array(
@@ -80,13 +80,6 @@ class RWMB_Map_Field extends RWMB_Field {
 			esc_attr( $field['field_name'] ),
 			esc_attr( $meta )
 		);
-
-		if ( $field['address_field'] ) {
-			$html .= sprintf(
-				'<button class="button rwmb-map-goto-address-button">%s</button>',
-				esc_html__( 'Find Address', 'meta-box' )
-			);
-		}
 
 		$html .= '</div>';
 

@@ -1,0 +1,311 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Disable Gutenberg\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-07 01:25+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#. Name of the plugin
+#: disable-gutenberg.php:75
+msgid "Disable Gutenberg"
+msgstr ""
+
+#: disable-gutenberg.php:158
+msgid "Settings"
+msgstr ""
+
+#: disable-gutenberg.php:173
+msgid "Plugin Homepage"
+msgstr ""
+
+#: disable-gutenberg.php:174
+msgid "Homepage"
+msgstr ""
+
+#: disable-gutenberg.php:179
+msgid "Click here to rate and review this plugin on WordPress.org"
+msgstr ""
+
+#: disable-gutenberg.php:180
+msgid "Rate this plugin"
+msgstr ""
+
+#: disable-gutenberg.php:202
+msgid "requires WordPress "
+msgstr ""
+
+#: disable-gutenberg.php:203
+msgid " or higher, and has been deactivated! "
+msgstr ""
+
+#: disable-gutenberg.php:204
+msgid "Please return to the"
+msgstr ""
+
+#: disable-gutenberg.php:205
+msgid "WP Admin Area"
+msgstr ""
+
+#: disable-gutenberg.php:205
+msgid "to upgrade WordPress and try again."
+msgstr ""
+
+#: disable-gutenberg.php:225 disable-gutenberg.php:231
+msgid "Sorry, pal!"
+msgstr ""
+
+#: inc/settings-reset.php:18
+msgid "Default options restored."
+msgstr ""
+
+#: inc/settings-reset.php:24
+msgid "No changes made to options."
+msgstr ""
+
+#: inc/plugin-features.php:49
+msgid "(Classic)"
+msgstr ""
+
+#: inc/plugin-features.php:84
+msgid "Block Edit"
+msgstr ""
+
+#: inc/plugin-features.php:86
+#, php-format
+msgid "Edit &#8220;%s&#8221; in the Block Editor"
+msgstr ""
+
+#: inc/plugin-features.php:94
+msgid "Classic Edit"
+msgstr ""
+
+#: inc/plugin-features.php:96
+#, php-format
+msgid "Edit &#8220;%s&#8221; in the Classic Editor"
+msgstr ""
+
+#: inc/resources-enqueue.php:33
+msgid "Confirm Reset"
+msgstr ""
+
+#: inc/resources-enqueue.php:34
+msgid "Restore default options?"
+msgstr ""
+
+#: inc/resources-enqueue.php:35
+msgid "Yes, make it so."
+msgstr ""
+
+#: inc/resources-enqueue.php:36
+msgid "No, abort mission."
+msgstr ""
+
+#: inc/settings-register.php:30
+msgid "Complete Disable"
+msgstr ""
+
+#: inc/settings-register.php:30
+msgid "Disable Gutenberg everywhere"
+msgstr ""
+
+#: inc/settings-register.php:36 inc/settings-register.php:44
+msgid "Disable for"
+msgstr ""
+
+#: inc/settings-register.php:36
+msgid "User Role ="
+msgstr ""
+
+#: inc/settings-register.php:44
+msgid "Post Type ="
+msgstr ""
+
+#: inc/settings-register.php:48
+msgid "Disable Templates"
+msgstr ""
+
+#: inc/settings-register.php:48
+msgid "Separate multiple templates with commas"
+msgstr ""
+
+#: inc/settings-register.php:49
+msgid "Disable Post IDs"
+msgstr ""
+
+#: inc/settings-register.php:49
+msgid "Separate multiple post IDs with commas"
+msgstr ""
+
+#: inc/settings-register.php:51
+msgid "Whitelist Post IDs"
+msgstr ""
+
+#: inc/settings-register.php:51
+msgid "Post IDs that always should use the Block Editor"
+msgstr ""
+
+#: inc/settings-register.php:52
+msgid "Whitelist Post Slugs"
+msgstr ""
+
+#: inc/settings-register.php:52
+msgid "Post slugs that always should use the Block Editor"
+msgstr ""
+
+#: inc/settings-register.php:53
+msgid "Whitelist Post Titles"
+msgstr ""
+
+#: inc/settings-register.php:53
+msgid "Post titles that always should use the Block Editor"
+msgstr ""
+
+#: inc/settings-register.php:55
+msgid "Disable Nag"
+msgstr ""
+
+#: inc/settings-register.php:55
+msgid "Disable \"Try Gutenberg\" nag"
+msgstr ""
+
+#: inc/settings-register.php:56
+msgid "Enable Frontend"
+msgstr ""
+
+#: inc/settings-register.php:56
+msgid "Enable frontend Gutenberg styles"
+msgstr ""
+
+#: inc/settings-register.php:57
+msgid "Whitelist Options"
+msgstr ""
+
+#: inc/settings-register.php:57
+msgid "Display Whitelist settings"
+msgstr ""
+
+#: inc/settings-register.php:58
+msgid "Plugin Menu Item"
+msgstr ""
+
+#: inc/settings-register.php:58
+msgid "Hide this plugin&rsquo;s menu item"
+msgstr ""
+
+#: inc/settings-register.php:59
+msgid "Gutenberg Menu Item"
+msgstr ""
+
+#: inc/settings-register.php:59
+msgid "Hide Gutenberg plugin&rsquo;s menu item (for WP &lt; 5.0)"
+msgstr ""
+
+#: inc/settings-register.php:60
+msgid "Display Edit Links"
+msgstr ""
+
+#: inc/settings-register.php:60
+msgid "Display \"Add New (Classic)\" menu link and Classic/Block edit links"
+msgstr ""
+
+#: inc/settings-register.php:61
+msgid "ACF Support"
+msgstr ""
+
+#: inc/settings-register.php:61
+msgid "Enable Custom Fields Meta Box (ACF disables by default),"
+msgstr ""
+
+#: inc/settings-register.php:61
+msgid "learn more"
+msgstr ""
+
+#: inc/settings-register.php:62
+msgid "Reset Options"
+msgstr ""
+
+#: inc/settings-register.php:62 inc/settings-register.php:229
+msgid "Restore default plugin options"
+msgstr ""
+
+#: inc/settings-register.php:63
+msgid "Rate Plugin"
+msgstr ""
+
+#: inc/settings-register.php:63 inc/settings-register.php:239
+msgid "Show support with a 5-star rating&nbsp;&raquo;"
+msgstr ""
+
+#: inc/settings-register.php:136
+msgid ""
+"Enable this setting to completely disable Gutenberg (and restore the Classic "
+"Editor). Or, disable this setting to display more options."
+msgstr ""
+
+#: inc/settings-register.php:142
+msgid "Select the user roles for which Gutenberg should be disabled."
+msgstr ""
+
+#: inc/settings-register.php:148
+msgid "Select the post types for which Gutenberg should be disabled."
+msgstr ""
+
+#: inc/settings-register.php:154
+msgid "Select the theme template files for which Gutenberg should be disabled."
+msgstr ""
+
+#: inc/settings-register.php:160
+msgid "Select the post IDs for which Gutenberg should be disabled."
+msgstr ""
+
+#: inc/settings-register.php:166
+msgid ""
+"Select the posts that always should use the Gutenberg Block Editor. Separate "
+"multiple values with commas."
+msgstr ""
+
+#: inc/settings-register.php:172
+msgid "Toggle More Tools"
+msgstr ""
+
+#: inc/settings-register.php:172
+msgid "Click here"
+msgstr ""
+
+#: inc/settings-register.php:172
+msgid ""
+"to display more tools and options. Note: these options remain in effect even "
+"when hidden on this page."
+msgstr ""
+
+#: inc/settings-register.php:238
+msgid "Please give a 5-star rating! A huge THANK YOU for your support!"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Disables Gutenberg Block Editor and restores the Classic Editor and original "
+"Edit Post screen. Provides options to enable on specific post types, user "
+"roles, and more."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://perishablepress.com/disable-gutenberg/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Jeff Starr"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://plugin-planet.com/"
+msgstr ""

@@ -46,6 +46,13 @@ class DigitalOcean_Provider extends AWS_Provider {
 	protected static $provider_service_name = '';
 
 	/**
+	 * The slug for the service's quick start guide doc.
+	 *
+	 * @var string
+	 */
+	protected static $provider_service_quick_start_slug = 'digitalocean-spaces-quick-start-guide';
+
+	/**
 	 * @var array
 	 */
 	protected static $access_key_id_constants = array(
@@ -72,6 +79,7 @@ class DigitalOcean_Provider extends AWS_Provider {
 		'ams3' => 'Amsterdam',
 		'sgp1' => 'Singapore',
 		'sfo2' => 'San Francisco',
+		'fra1' => 'Frankfurt',
 	);
 
 	/**
@@ -97,7 +105,7 @@ class DigitalOcean_Provider extends AWS_Provider {
 	/**
 	 * @var string
 	 */
-	protected $console_url_param = '?path=';
+	protected $console_url_prefix_param = '?path=';
 
 	/**
 	 * @var array

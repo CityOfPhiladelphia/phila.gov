@@ -10,21 +10,9 @@
  */
 class RWMB_About {
 	/**
-	 * Plugin data.
-	 *
-	 * @var array
-	 */
-	protected $plugin;
-
-	/**
 	 * Init hooks.
 	 */
 	public function init() {
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			include ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-		$this->plugin = get_plugin_data( RWMB_DIR . 'meta-box.php' );
-
 		// Add links to about page in the plugin action links.
 		add_filter( 'plugin_action_links_meta-box/meta-box.php', array( $this, 'plugin_links' ) );
 
@@ -205,7 +193,7 @@ class RWMB_About {
 	protected function is_bundled() {
 		// @codingStandardsIgnoreLine
 		foreach ( $_REQUEST as $key => $value ) {
-			if ( false !== strpos( $key, 'tgmpa' ) || false !== strpos( $value, 'tgmpa' ) ) {
+			if ( false !== strpos( $key, 'tgmpa' ) || ( ! is_array( $value ) && false !== strpos( $value, 'tgmpa' ) ) ) {
 				return true;
 			}
 		}
