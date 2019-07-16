@@ -4,7 +4,7 @@ if ( class_exists("Phila_Gov_Post" ) ){
   $phila_post = new Phila_Gov_Post();
 }
 
- class Phila_Gov_Post {
+class Phila_Gov_Post {
 
 
   public function __construct(){
@@ -12,13 +12,33 @@ if ( class_exists("Phila_Gov_Post" ) ){
     add_filter( 'rwmb_meta_boxes', array($this, 'register_meta_boxes_posts' ), 10 );
 
   }
+  
   function register_meta_boxes_posts($meta_boxes){
-
     $meta_boxes[] = array(
+      'title'    => 'Multiple authors',
+      'pages'    => array( 'post' ),
+      'context'  => 'after_title',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'post'),
+        ),
+      ),
+      'fields'  => array(
+        array(
+          'id'  => 'phila_author',
+          'type' => 'user',
+          'multiple' => true,
+          'field_type'  => 'select_advanced',
+          'placeholder' => 'Select more authors',
+          'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.'
+      ),
+    )
+  );
+
+  $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
-      //'priority' => 'default',
       'fields'  => array(
         array(
           'type' => 'textarea',
@@ -43,17 +63,17 @@ if ( class_exists("Phila_Gov_Post" ) ){
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
         'relation' => 'or',
-       ),
-       'fields' => array(
-         array(
-           'name'  => 'Feature this item in the latest and on the homepage?',
-           'id'    => 'phila_is_feature',
-           'type'  => 'switch',
-           'std'=> '0',
-           'on_label'  => 'Yes',
-           'off_label' => 'No',
-         ),
-       )
+      ),
+      'fields' => array(
+        array(
+          'name'  => 'Feature this item in the latest and on the homepage?',
+          'id'    => 'phila_is_feature',
+          'type'  => 'switch',
+          'std'=> '0',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+      )
     );
 
 

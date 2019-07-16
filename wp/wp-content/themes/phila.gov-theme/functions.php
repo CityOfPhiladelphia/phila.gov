@@ -604,7 +604,12 @@ function phila_get_dept_contact_blocks() {
 
 
 function phila_get_posted_on(){
-  $posted_on_meta['author'] = esc_html( get_the_author() );
+  $posted_on_meta['author'] = array( esc_html( get_the_author()));
+  $more_authors = rwmb_meta('phila_author');
+  foreach ($more_authors as $author) {
+    $user = get_userdata($author);
+    array_push($posted_on_meta['author'], $user->display_name);
+  }
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
   $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
   $time_string = sprintf( $time_string,
@@ -614,7 +619,6 @@ function phila_get_posted_on(){
     esc_html( get_the_modified_date() )
   );
   $posted_on_meta['time_string'] = $time_string;
-
   wp_reset_postdata();
 
   return $posted_on_meta;
