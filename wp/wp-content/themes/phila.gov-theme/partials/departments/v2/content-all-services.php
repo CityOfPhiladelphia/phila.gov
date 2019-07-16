@@ -13,24 +13,7 @@
 get_header(); ?>
 
 <div class="row service directory">
-  <!-- <div class="medium-7 columns show-for-medium filter" data-desktop-filter-wrapper>
-    <?php printf(__('<h2 class="h4 mtn">Filter by service category</h2>', 'phila-gov') ); ?>
-    <?php $terms = get_terms(
-      array(
-        'taxonomy' => 'audience',
-        'hide_empty' => true,
-        )
-    );?>
-    <form id="service_filter">
-      <ul class="no-bullet pan">
-        <li><input type="checkbox" name="all" value="all" id="all" checked="checked"><label for="all">All Services</label></li>
-        <?php foreach ( $terms as $term ) : ?>
-          <li><input type="checkbox" name="<?php echo $term->slug ?>" value="<?php echo $term->slug ?>" id="<?php echo $term->slug ?>"><label for="<?php echo $term->slug ?>"><?php echo $term->name ?></label></li>
-        <?php endforeach; ?>
-      </ul>
-    </form>
-  </div> -->
-<div id="a-z-filter-list" class="columns medium-16 results a-z-list medium-centered">
+  <div id="a-z-filter-list" class="columns results a-z-list medium-centered">
 
 <?php $args = array(
   'post_type'  => 'service_page',
@@ -98,18 +81,15 @@ $service_pages = new WP_Query( $args ); ?>
 
       ?>
     <?php endwhile; ?>
-  <!-- <form id="service-filter" class="search">
-    <input class="search-field" type="text" placeholder="Begin typing to filter results by title or description" disabled="true">
-    <input type="submit" class="search-submit" value="Search">
-  </form> -->
-  <div class="list">
+
+  <div class="see-all-list">
   <?php foreach($a_z as $a_k => $a_v): ?>
     <?php if( $a_v == true ): ?>
       <div class="row collapse a-z-group" data-alphabet=<?php echo $a_k ?>>
-
-        <hr id="<?php echo $a_k ?>" class="letter separator" data-alphabet="<?php echo $a_k ?>"/>
-
-        <div class="small-20 medium-24 columns">
+        <div class="medium-4 columns">
+          <div id="<?php echo $a_k ?>" class="letter separator"/><?php echo $a_k ?></div>
+      </div>
+        <div class="small-20 medium-20 columns">
         <?php endif; ?>
         <?php foreach( $services as $k => $v ) :?>
           <?php
@@ -117,7 +97,7 @@ $service_pages = new WP_Query( $args ); ?>
 
             if( $a_k == $first_c && isset( $v['link']) ) : ?>
 
-              <div class="small-21 columns result mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
+              <div class="mvm" data-service="<?php echo isset($v['terms']) ? implode(', ', $v['terms'] ) : ''; ?>"  data-alphabet="<?php echo $a_k ?>">
 
                 <a href="<?php echo $v['link']?>"><?php echo $k ?><?php echo isset( $v['parent'] ) ? ' - ' . get_the_title ($v['parent']) : '' ?></a>
                 <p class="hide-for-small-only mbl"><?php echo $v['desc'] ?></p>

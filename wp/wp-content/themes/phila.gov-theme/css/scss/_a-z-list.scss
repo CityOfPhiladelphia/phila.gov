@@ -43,6 +43,30 @@
 
 }
 
+.see-all-list{
+  .a-z-group{
+    &::before{
+      border-top:1px solid color(sidewalk);
+      width: 100%;
+    }
+    &:first-of-type::before{
+      border-top:none;
+    }
+  }
+
+  .letter{
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    margin-top: 1.9rem;
+    font-size: $large-font-base / 1.75;
+    line-height: 1;
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-weight: 400;
+  }
+}
+
+
 #a-z-filter-list{
   hr{
     margin-top:1rem;
