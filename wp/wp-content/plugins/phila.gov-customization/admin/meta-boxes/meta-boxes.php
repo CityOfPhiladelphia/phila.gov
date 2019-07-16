@@ -865,6 +865,51 @@ $meta_boxes[] = array(
   )
 );
 
+
+$meta_boxes[] = array(
+  'title' => 'FAQ groups',
+  'pages' => array('department_page', 'programs'),
+  'revision' => true,
+
+  'visible' => array(
+    'when' => array(
+      array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
+      array( 'phila_template_select', '=', 'phila_one_quarter' ),
+    ),
+    'relation' => 'or',
+  ),
+
+  'fields' => array(
+    array(
+      'id' => 'accordion_row',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+      'add_button' => '+ Add FAQ group',
+
+      'fields'  => array (
+        array(
+          'name' => ('Section title'),
+          'id'   => 'accordion_row_title',
+          'type' => 'text',
+          'class' => 'percent-90',
+          'tooltip' => 'The h2 in the 1/4 section of the page',
+        ),
+        array(
+          'id'   => 'accordion_group',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'add_button' => '+ Add FAQ',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg($section_name = 'FAQ title', $wysiwyg_desc = 'FAQ content', $columns = 12, $clone = true),
+          )
+        )
+      ),
+    ),
+  ),
+);
+
 $meta_boxes[] = array(
   'title' => 'Additional Content',
   'pages' => array ( 'service_page', 'programs' ),
