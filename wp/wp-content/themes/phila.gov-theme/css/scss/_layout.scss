@@ -145,3 +145,10 @@ hr {
   font-size: .8rem;
   padding: 3rem 0;
 }
+
+@media screen and (min-width: 40em) {
+  .columns-3-mu {
+    column-count: 3;
+    column-gap: 1.42857rem; 
+  } 
+}
