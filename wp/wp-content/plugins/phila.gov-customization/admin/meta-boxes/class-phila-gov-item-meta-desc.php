@@ -25,7 +25,13 @@ class Phila_Item_Meta_Desc {
 
       //TODO: replace this with a function that pulls the post types we need. It had been set up this way, but after a WP update, get_post_types was not returning CPTs. A quick fix needed to be put in place, and this is it.
       'post_types' => array(
-        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight'
+        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides'
+      ),
+
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'guide_sub_page'),
+        ),
       ),
 
       'fields' => array(
