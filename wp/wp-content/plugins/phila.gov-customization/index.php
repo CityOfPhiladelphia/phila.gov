@@ -52,6 +52,9 @@ require $dir. '/admin/departments/templates/class-phila-gov-collection-page.php'
 require $dir. '/admin/event-spotlight/class-phila-gov-cpt-event-spotlight.php';
 require $dir. '/admin/event-spotlight/templates/class-phila-gov-spotlight.php';
 
+require $dir. '/admin/guides/class-phila-gov-cpt-guides.php';
+require $dir. '/admin/guides/class-phila-gov-guides-register-templates.php';
+
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
