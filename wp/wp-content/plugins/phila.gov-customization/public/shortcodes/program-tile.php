@@ -15,7 +15,6 @@ function program_tile_shortcode($atts){
 
   if ( $a['id'] != '' ){
     $ids = explode(',', $a['id']);
-    var_dump($ids);
     $output .= '<div class="row">
     <div class="columns">
       <div class="row fat-gutter">';
