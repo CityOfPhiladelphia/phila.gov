@@ -46,25 +46,6 @@ class Phila_Gov_Register_Guide_Templates {
       ),
     );
 
-  $meta_boxes[] = array(
-    'title'    => 'Twitter share pre-filled text',
-    'pages'    => array( 'guides' ),
-    'context'  => 'normal',
-    'visible' => array(
-      'when' => array(
-        array('phila_template_select', '==', 'guide_landing_page'),
-      ),
-    ),
-    'fields'  => array(
-      array(
-        'type' => 'textarea',
-        'required'  => true,
-        'id'  => 'phila_social_intent',
-        'limit' => 256,
-        'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
-      )
-    ),
-  );
 
     $meta_boxes[] = array(
       'id'       => 'phila_guide',
@@ -74,6 +55,25 @@ class Phila_Gov_Register_Guide_Templates {
       'revision' => true,
 
       'fields' => array(
+        array(
+          'hidden' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'guide_sub_page'),
+            ),
+          ),
+          'type' => 'textarea',
+          'required'  => true,
+          'id'  => 'phila_social_intent',
+          'limit' => 256,
+          'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+        ),
+  
+        array(
+          'id' => 'guide_page_icon',
+          'type' => 'text',
+          'name'  => 'Page icon',
+          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.'
+        ),
         Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
         
       )

@@ -23,7 +23,7 @@ class Phila_Gov_Guides{
           'name' => __( 'Guides' ),
           'menu_name' => __('Guides '),
           'singular_name' => __( 'Guide' ),
-          'add_new'   => __( 'Add a Guide' ),
+          'add_new'   => __( 'Add a Guide page' ),
           'all_items'   => __( 'All guides' ),
           'add_new_item' => __( 'Add a Page' ),
           'edit_item'   => __( 'Edit a Page' ),
