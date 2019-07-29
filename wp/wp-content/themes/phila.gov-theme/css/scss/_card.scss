@@ -10,6 +10,21 @@ a.card,
       min-height:165px;
     }
     &.vertical {
+      &.small{
+        h3, .h3{
+          margin:0;
+        }
+        .content-block{
+          min-height: auto;
+          vertical-align: middle;
+        }
+        @include breakpoint(medium up) {
+          img {
+            height: 100px;
+            width: auto;
+          }
+        }
+      }
       @include breakpoint(medium up) {
         img {
           height: 184px;
