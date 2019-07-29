@@ -79,6 +79,7 @@ require $dir. '/admin/settings/phila-gov-settings.php';
 require $dir. '/public/shortcodes/callout.php';
 require $dir. '/public/shortcodes/info-block.php';
 require $dir. '/public/shortcodes/modal.php';
+require $dir. '/public/shortcodes/program-tile.php';
 require $dir. '/public/shortcodes/pullquote.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';

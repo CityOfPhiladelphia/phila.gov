@@ -46,5 +46,5 @@ function callout_shortcode($atts, $content=null){
 add_action( 'init', 'register_callout_shortcode' );
 
 function register_callout_shortcode(){
-   add_shortcode( 'callout', 'callout_shortcode' );
+  add_shortcode( 'callout', 'callout_shortcode' );
 }
