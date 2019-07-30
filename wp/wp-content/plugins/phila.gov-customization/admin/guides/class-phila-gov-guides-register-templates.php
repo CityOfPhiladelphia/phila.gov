@@ -72,8 +72,20 @@ class Phila_Gov_Register_Guide_Templates {
           'id' => 'guide_page_icon',
           'type' => 'text',
           'name'  => 'Page icon',
-          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.'
+          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.',
+          'columns' => 6,
         ),
+        array(
+          'name'          => 'Color picker',
+          'id'            => 'guide_color',
+          'type'          => 'color',
+          'descripion'    => 'Choose a color to represent this page in navigation',
+          'columns' => 6,
+          'alpha_channel' => false,
+          'js_options'    => array(
+              'palettes' => array( '#26cef8', '#58c04d', '#9400c6', '#0f4d90', '#dd2662' )
+          ),
+      ),
         Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
         
       )
