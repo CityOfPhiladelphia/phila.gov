@@ -19,12 +19,13 @@ class Phila_Gov_Register_Guide_Templates {
   function register_template_selection_metabox_guides( $meta_boxes ){
     $meta_boxes[] = array(
       'id'       => 'template_selection',
-      'title'    => 'Select Template',
+      'title'    => 'Page settings',
       'pages'    => array( 'guides' ),
       'context'  => 'after_title',
 
       'fields' => array(
         array(
+          'name'  => 'Select template',
           'desc'  => '',
           'id'    => 'phila_template_select',
           'type'  => 'select',
@@ -43,24 +44,13 @@ class Phila_Gov_Register_Guide_Templates {
             'sort'     => true,
           ),
         ),
-      ),
-    );
-
-
-    $meta_boxes[] = array(
-      'id'       => 'phila_guide',
-      'title'    => 'Page content',
-      'pages' => array( 'guides' ),
-      'priority' => 'high',
-      'revision' => true,
-
-      'fields' => array(
         array(
           'hidden' => array(
             'when' => array(
               array('phila_template_select', '=', 'guide_sub_page'),
             ),
           ),
+          'name'  => 'Social intent',
           'type' => 'textarea',
           'required'  => true,
           'id'  => 'phila_social_intent',
@@ -91,10 +81,58 @@ class Phila_Gov_Register_Guide_Templates {
               'palettes' => array( '#26cef8', '#58c04d', '#9400c6', '#0f4d90', '#dd2662' )
             ),
           ),
-        //Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
-        
-      )
+      ),
     );
+
+
+    // $meta_boxes[] = array(
+    //   'id'       => 'phila_guide',
+    //   'title'    => 'Page content',
+    //   'pages' => array( 'guides' ),
+    //   'priority' => 'normal',
+    //   'revision' => true,
+
+    //   'fields' => array(
+    //     array(
+    //       'hidden' => array(
+    //         'when' => array(
+    //           array('phila_template_select', '=', 'guide_sub_page'),
+    //         ),
+    //       ),
+    //       'type' => 'textarea',
+    //       'required'  => true,
+    //       'id'  => 'phila_social_intent',
+    //       'limit' => 256,
+    //       'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+    //     ),
+  
+    //     array(
+    //       'id' => 'guide_page_icon',
+    //       'type' => 'text',
+    //       'name'  => 'Page icon',
+    //       'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.',
+    //       'columns' => 6,
+    //     ),
+    //     array(
+    //       'name'          => 'Color picker',
+    //       'id'            => 'guide_color',
+    //       'type'          => 'color',
+    //       'descripion'    => 'Choose a color to represent this page in navigation',
+    //       'columns' => 6,
+    //       'alpha_channel' => false,
+    //       'hidden' => array(
+    //         'when' => array(
+    //           array('phila_template_select', '=', 'guide_landing_page'),
+    //         ),
+    //       ),
+    //       'js_options'    => array(
+    //           'palettes' => array( '#26cef8', '#58c04d', '#9400c6', '#0f4d90', '#dd2662' )
+    //         ),
+    //       ),
+    //     //Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+        
+    //   )
+    // );
 
 
     $meta_boxes[] = array(
