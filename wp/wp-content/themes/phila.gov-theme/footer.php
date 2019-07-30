@@ -9,10 +9,10 @@
 ?>
 
   </div><!-- #content -->
- </div><!-- #page -->
+</div><!-- #page -->
   <a href="#page" id="back-to-top"><i class="fas fa-arrow-up" aria-hidden="true"></i><br>Top</a>
- <?php get_template_part( 'searchform' ); ?>
- <?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
+<?php get_template_part( 'searchform' ); ?>
+<?php get_template_part( 'partials/content', 'service-mega-menu' ); ?>
 
 <footer data-swiftype-index='false' id="colophon" class="site-footer">
   <?php get_template_part( 'partials/departments/v2/content', 'footer' ) ?>
