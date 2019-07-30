@@ -101,6 +101,11 @@ class Phila_Gov_Register_Guide_Templates {
       'id'       => 'phila_guide_calendar',
       'title'    => 'Add calendar?',
       'pages' => array( 'guides' ),
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'guide_sub_page'),
+        ),
+      ),
 
       'fields' =>
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
