@@ -82,13 +82,29 @@ class Phila_Gov_Register_Guide_Templates {
           'descripion'    => 'Choose a color to represent this page in navigation',
           'columns' => 6,
           'alpha_channel' => false,
+          'hidden' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'guide_landing_page'),
+            ),
+          ),
           'js_options'    => array(
               'palettes' => array( '#26cef8', '#58c04d', '#9400c6', '#0f4d90', '#dd2662' )
+            ),
           ),
-      ),
-        Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+        //Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
         
       )
+    );
+
+
+    $meta_boxes[] = array(
+      'id'       => 'phila_guide_calendar',
+      'title'    => 'Add calendar?',
+      'pages' => array( 'guides' ),
+
+      'fields' =>
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
+
     );
 
     return $meta_boxes;

@@ -607,17 +607,19 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_full_row_blog',
     'title'    => 'Full row blog posts (3 total)',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'guides' ),
     'context'  => 'normal',
-    'priority' => 'default',
+    'priority' => 'high',
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
       'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
+        array( 'phila_template_select', '=', 'homepage_v2' ),
+        array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
+      'relation' => 'or', 
     ),
 
     'fields' => array(
