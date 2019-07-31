@@ -559,7 +559,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_full_row_press_releases',
     'title'    => 'Full row press releases posts (3 total)',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'guides' ),
     'context'  => 'normal',
     'priority' => 'default',
 
@@ -569,7 +569,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
+        array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
+      'relation'  => 'or'
     ),
     'fields' => array(
       array(
