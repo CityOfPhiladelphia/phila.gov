@@ -14,7 +14,7 @@
 <?php if ( !empty( $faq_group ) ): ?>
   <?php foreach ($faq_group as $faq_key => $faq): ?>
   <?php reset($faq_group);?>
-
+<!--1/4 Content-->
   <section>
   <div class="one-quarter-layout">
     <div class="row one-quarter-row mvl">
@@ -196,4 +196,5 @@
         <?php endif; ?>
     <?php endforeach; ?>
   </div>
+<!--1/4 Content-->
 <?php endif; ?>
