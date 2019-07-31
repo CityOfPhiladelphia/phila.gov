@@ -21,17 +21,8 @@ get_header();
   <?php
     while ( have_posts() ) : the_post();
       include( locate_template( 'partials/guides/header.php' ) );
-
-      get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
-      <?php if( !empty( get_the_content() ) ) : ?>
-        <div class="row">
-          <div class="columns">
-            <?php the_content(); ?>
-          </div>
-        </div>
-      <?php endif; ?>
-
-      <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
+      
+      ?>
 
     <?php if( !empty($full_row_blog_selected) )  :?>
       <?php $blog_override = rwmb_meta('phila_get_post_cats');
