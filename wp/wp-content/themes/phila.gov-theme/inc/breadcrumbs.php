@@ -114,7 +114,7 @@ function phila_breadcrumbs() {
         $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
       }
 
-      echo '<li>Guides</li>' . $output;
+      echo $output;
       echo '<li> '.$title.'</li>';
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
