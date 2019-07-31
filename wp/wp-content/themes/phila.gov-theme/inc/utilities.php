@@ -69,21 +69,17 @@ function phila_util_cat_ids(){
 
 
 function phila_util_is_array_empty($input){
-   $result = true;
+  $result = true;
 
-   if (is_array($input) && count($input) > 0)
-   {
-      foreach ($input as $v)
-      {
-         $result = $result && phila_util_is_array_empty($v);
-      }
-   }
-   else
-   {
-      $result = empty($input);
-   }
+  if (is_array($input) && count($input) > 0){
+    foreach ($input as $v){
+      $result = $result && phila_util_is_array_empty($v);
+    }
+  }else{
+    $result = empty($input);
+  }
 
-   return $result;
+  return $result;
 }
 
 function phila_util_return_parsed_email( $email_address ){
