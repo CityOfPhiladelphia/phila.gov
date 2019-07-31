@@ -18,7 +18,7 @@ class Phila_Gov_Register_Guide_Templates {
 
   function register_template_selection_metabox_guides( $meta_boxes ){
     $meta_boxes[] = array(
-      'id'       => 'template_selection',
+      'id'       => 'guides_template_selection',
       'title'    => 'Page settings',
       'pages'    => array( 'guides' ),
       'context'  => 'after_title',
@@ -33,7 +33,6 @@ class Phila_Gov_Register_Guide_Templates {
           'clone' => false,
           'placeholder'  => 'Select a template',
           'required' => true,
-
           'options' => array(
             'guide_landing_page'  => 'Homepage',
             'guide_sub_page'    => 'Subpage',
@@ -41,7 +40,7 @@ class Phila_Gov_Register_Guide_Templates {
           'admin_columns' => array(
             'position' => 'after date',
             'title'    => __( 'Template' ),
-            'sort'     => true,
+            'sort'     => false,
           ),
         ),
         array(
