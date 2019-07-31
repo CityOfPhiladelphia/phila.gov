@@ -1,0 +1,23 @@
+.hero-full{
+  @include breakpoint(large up) {
+    .hero-full--title{
+      width:510px;
+    }
+  }
+
+  .hero-full--container{
+    background-image: url('../img/bg/libery-bell-10-percent.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-top:0;
+  }
+  .hero-image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 400px;
+  }
+}
