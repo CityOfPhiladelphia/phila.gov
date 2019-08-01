@@ -32,10 +32,10 @@ get_header();
         'orderby' => 'menu_order'
       );
       $children = get_children( $args );
-      //var_dump($children)
       ?>
       <?php foreach ($children as $child): ?>
         <?php 
+          $link = get_permalink($child->ID);
           $h3 = $child->post_title; 
           $description = rwmb_meta('phila_meta_desc', $child->ID );
           $icon = rwmb_meta('guide_page_icon', $child->ID);
