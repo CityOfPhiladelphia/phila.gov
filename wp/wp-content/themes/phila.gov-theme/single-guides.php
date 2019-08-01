@@ -20,9 +20,37 @@ get_header();
 <div id="post-<?php the_ID(); ?>" <?php post_class('guides clearfix'); ?>>
   <?php
     while ( have_posts() ) : the_post();
-      include( locate_template( 'partials/guides/header.php' ) );
-      
+      include( locate_template( 'partials/guides/header.php' ) ); ?>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x guide-landing-nav">
+      <?php
+      $args = array(
+        'post_parent' => $post->ID,
+        'post_type'   => 'guides', 
+        'numberposts' => -1,
+        'post_status' => 'any',
+        'orderby' => 'menu_order'
+      );
+      $children = get_children( $args );
+      //var_dump($children)
       ?>
+      <?php foreach ($children as $child): ?>
+        <?php 
+          $h3 = $child->post_title; 
+          $description = rwmb_meta('phila_meta_desc', $child->ID );
+          $icon = rwmb_meta('guide_page_icon', $child->ID);
+          $bg_color = rwmb_meta('guide_color_picker', $child->ID);
+
+        ?>
+        <div class="cell medium-7">
+          <?php include( locate_template( 'partials/guides/navigation-card.php' ) ); ?>
+        </div>
+        <div class="cell medium-1"></div>
+      <?php endforeach;?>
+
+      </div>
+
+    </div>
 
     <?php if( !empty($full_row_blog_selected) )  :?>
       <?php $blog_override = rwmb_meta('phila_get_post_cats');
