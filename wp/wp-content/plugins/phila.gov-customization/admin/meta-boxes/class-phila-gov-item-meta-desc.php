@@ -28,12 +28,6 @@ class Phila_Item_Meta_Desc {
         'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides'
       ),
 
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'guide_sub_page'),
-        ),
-      ),
-
       'fields' => array(
         array(
           'id'   => $prefix . 'meta_desc',
