@@ -7,7 +7,7 @@
   <div class="hero-full">
     <div class="grid-x">
       <div class="cell bg-ben-franklin-blue white hero-full--container">
-        <div class="grid-x grid-container align-right">
+        <div class="grid-x grid-container">
           <div class="hero-full--title mvl">
             <h1 class="guide-name"><?php echo the_title(); ?></h1>
           </div>
@@ -31,7 +31,7 @@
 <section>
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
-      <div class="cell">
+      <div class="cell page-title">
         <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
         <?php $landing_title = rwmb_meta('guide_landing_page_title');?>
         <h1>
