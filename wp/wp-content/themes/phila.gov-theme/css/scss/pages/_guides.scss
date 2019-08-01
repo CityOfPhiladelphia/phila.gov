@@ -1,12 +1,31 @@
 .guides{
   h1, .h1 {
-    font-size: 4rem;
+    font-size: rem-calc(75);
   }
   h2, .h2{
-    font-size: 3rem;
+    font-size: rem-calc(45);
+  }
+  h3, .h3{
+    font-size: rem-calc(35);
+  }
+  h4, .h4{
+    font-size: rem-calc(25);
+  }
+  h5, .h5{
+    font-size: rem-calc(20);
+  }
+  h6, .h6{
+    font-size: rem-calc(15);
   }
   .intro-text{
-    font-size: 1.8rem;
+    font-size: rem-calc(25);
     line-height: 1.8rem;
   }
+  .page-title h1 {
+    font-size: rem-calc(65);
+    i {
+      font-size: rem-calc(56);
+    }
+  }
+
 }
