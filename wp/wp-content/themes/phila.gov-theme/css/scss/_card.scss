@@ -139,6 +139,11 @@ a.card.card--last,
     }
   }
 }
+a.faux-card {
+  h1, .h1{
+    font-size: 1.78571rem;
+  }
+}
 .faux-card:link,
 .faux-card:visited{
   font-weight: 400;
@@ -171,4 +176,20 @@ a.card.card--last,
 //TODO: Add to standards. It's currently only on medium and up breakpoints but should be for all.
 a.card.sub-topic{
   margin-bottom: 4rem;
+}
+
+a.card.card--icon{
+  .icon-box{
+    width: 100%;
+    .content {
+      position:absolute;
+      width:100%;
+      height:100%;
+    }
+    ::after{
+      content: "";
+      display:block;
+      padding-bottom: 100%;
+    }
+  }
 }
