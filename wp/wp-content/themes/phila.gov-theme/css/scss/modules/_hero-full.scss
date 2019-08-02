@@ -1,14 +1,9 @@
 .hero-full{
-  @include breakpoint(large up) {
-    .hero-full--title{
-      width:510px;
-    }
-  }
-
-  .hero-full--container{
-    background-image: url('../img/bg/libery-bell-10-percent.png');
+  .hero-full--container .grid-container{
+    background-image: url('https://www.phila.gov/assets/images/bell-10-percent.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    height:200px;
   }
 
   h1 {

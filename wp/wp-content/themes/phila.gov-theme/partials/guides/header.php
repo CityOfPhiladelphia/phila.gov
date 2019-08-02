@@ -8,7 +8,7 @@
     <div class="grid-x">
       <div class="cell bg-ben-franklin-blue white hero-full--container">
         <div class="grid-x grid-container">
-          <div class="hero-full--title mvl">
+          <div class="hero-full--title align-self-bottom">
             <h1 class="guide-name"><?php echo the_title(); ?></h1>
           </div>
         </div>
