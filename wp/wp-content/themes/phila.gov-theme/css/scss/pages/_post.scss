@@ -6,26 +6,6 @@
     h1 {
       margin-bottom: 0;
     }
-    .social-media {
-      text-align: right;
-      @include breakpoint(small only) {
-        order: 1;
-        text-align: center;
-        margin: 1rem 0;
-      }
-
-      a {
-        display: inline-block;
-        padding: $spacing-small;
-      }
-
-      .fa, .fab, .fal, .far, .fas {
-        font-size: 1.5rem;
-        @include breakpoint(small only) {
-          font-size: 2rem;
-        }
-      }
-    }
     @include breakpoint(small only) {
       h1 {
         margin: 0;
@@ -106,6 +86,28 @@
 
     &:last-of-type::after {
       content: '';
+    }
+  }
+}
+
+
+.social-media {
+  text-align: right;
+  @include breakpoint(small only) {
+    order: 1;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  a {
+    display: inline-block;
+    padding: $spacing-small;
+  }
+
+  .fa, .fab, .fal, .far, .fas {
+    font-size: 1.5rem;
+    @include breakpoint(small only) {
+      font-size: 2rem;
     }
   }
 }
