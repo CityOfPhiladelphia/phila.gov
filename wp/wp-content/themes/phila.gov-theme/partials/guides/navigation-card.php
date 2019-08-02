@@ -2,7 +2,7 @@
 /* 
   * Template for navigation card, with icon. 
   * @vars - $link - Required
-          - $bg_color - Required
+          - $background - Required
           - $icon - Required
           - $h3 - Required
           - $description - Required
@@ -11,7 +11,7 @@
 ?>
 <?php if ( !empty( $icon ) ): ?>
   <a class="card card--navigation" href="<?php echo !empty($link) ? $link : ''?>">
-    <div class="icon-box" style="background-color: <?php echo !empty($bg_color) ? $bg_color : ''?>">
+    <div class="icon-box" style="background-color: <?php echo $background ?>">
       <div class="icon-content">
         <i class="<?php echo !empty($icon) ? $icon : ''?>"></i>
       </div>
