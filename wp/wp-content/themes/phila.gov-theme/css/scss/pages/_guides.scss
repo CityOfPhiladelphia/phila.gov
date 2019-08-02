@@ -20,10 +20,13 @@
   .guide-name{
     margin:0 0 0 130px;
   }
-
   .intro-text{
     font-size: rem-calc(25);
     line-height: 1.8rem;
+    margin-bottom: 3rem;
+    p {
+      margin-bottom: 3rem;
+    }
   }
   .page-title h1 {
     font-size: rem-calc(65);
