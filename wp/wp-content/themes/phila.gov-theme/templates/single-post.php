@@ -23,7 +23,7 @@ $template_type = phila_get_selected_template();
           <?php the_title( '<h1>', '</h1>' ); ?>
         <?php endif; ?>
       </div>
-      <div class="cell medium-6 align-self-bottom social-media">
+      <div class="cell medium-6 align-self-bottom">
         <?php get_template_part('partials/posts/social-media') ?>
       </div>
       <div class="border-bottom-fat"></div>
