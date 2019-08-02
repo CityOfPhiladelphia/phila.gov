@@ -39,8 +39,7 @@ get_header();
           $h3 = $child->post_title; 
           $description = rwmb_meta('phila_meta_desc', $child->ID );
           $icon = rwmb_meta('guide_page_icon', $child->ID);
-          $bg_color = rwmb_meta('guide_color_picker', $child->ID);
-
+          $background = rwmb_meta('guide_color_picker', array(), $child->ID);
         ?>
         <div class="cell medium-7">
           <?php include( locate_template( 'partials/guides/navigation-card.php' ) ); ?>
