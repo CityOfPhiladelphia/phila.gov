@@ -94,7 +94,6 @@ class Phila_Gov_Register_Guide_Templates {
       ),
     );
 
-
     $meta_boxes[] = array(
       'id'       => 'phila_guide_calendar',
       'title'    => 'Add calendar?',
@@ -110,7 +109,24 @@ class Phila_Gov_Register_Guide_Templates {
 
     );
 
+    $meta_boxes[] = array(
+      'id'       => 'phila_guide_subpage',
+      'title'    => 'Guide subpage content',
+      'pages' => array( 'guides' ),
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'guide_sub_page'),
+        ),
+      ),
+
+      'fields' => array(
+        
+      ),
+
+    );
+
     return $meta_boxes;
+  
   }
 
 }
