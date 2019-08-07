@@ -30,7 +30,7 @@
         <?php if ( (!empty($wysiwyg_content) || (!empty($is_address) ) ) ) : ?>
           <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?> 
 
-          <?php $contact_content = $content['phila_std_address']; ?>
+          <?php $contact_content = isset($content['phila_std_address']) ? $content['phila_std_address'] : ''; ?>
 
           <?php include( locate_template( 'partials/global/contact-information.php' ) );?>
 
