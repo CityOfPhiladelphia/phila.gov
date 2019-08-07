@@ -6,23 +6,24 @@
  */
 ?>
 <?php
-
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
   if ( !empty($heading_content) ) : ?>
   <?php foreach ( $heading_content as $content ): ?>
 
-  <div class="row mvl">
-    <div class="columns">
+  <div class="grid-x mvl">
+    <div class="cell">
       <section>
         <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
         <?php if (phila_get_selected_template() === 'prog_landing_page'): ?>
           <h2 class="contrast" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
+        <?php elseif (phila_get_selected_template() === 'guide_sub_page') : ?>
+          <h2 id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
         <?php else : ?>
-        <?php if ( $wysiwyg_heading != '' ): ?>
-          <h3 class="black bg-ghost-gray phm-mu mbm" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
-        <?php endif; ?>
+          <?php if ( $wysiwyg_heading != '' ): ?>
+            <h3 class="black bg-ghost-gray phm-mu mbm" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
+          <?php endif; ?>
       <?php endif; ?>
-      <div class="<?php echo phila_get_selected_template() == 'prog_landing_page' ? '' : 'phm-mu'; ?>">
+      <div class="<?php echo (phila_get_selected_template() === 'prog_landing_page') || (phila_get_selected_template() === 'guide_sub_page') ? '' : 'phm-mu'; ?>">
         <?php $wysiwyg_content = isset( $content['phila_unique_wysiwyg_content'] ) ? $content['phila_unique_wysiwyg_content'] : ''; ?>
         <?php $is_address = isset( $content['phila_address_select'] ) ? $content['phila_address_select'] : ''; ?>
 
