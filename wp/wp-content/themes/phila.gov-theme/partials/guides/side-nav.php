@@ -3,7 +3,6 @@
   * Guides side nav template
   */
 
-  
   global $post;
   $direct_parent = $post->post_parent;
   $args = array(
@@ -17,27 +16,32 @@
 
   if ( $parent->have_posts() ) : ?>
 
-  <section>
-    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-    <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
-    <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
+    <section>
+      <div data-sticky-container>
+        <div class="sticky-side-nav" data-sticky data-margin-top="0" id="guides-nav">
+        <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
+        <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
+        <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
 
-    <?php $sub_heads = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
-      <nav class="sticky-side-nav">
-        <ul>
-          <li><a href="<?php the_permalink()?>">
-            <span class="icon"><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . '"></i>' : '' ?></span>
-            <span class="title"><?php the_title(); ?></span>
-          </a>
-          <ul>
-            <?php foreach($sub_heads as $sub_head) : ?>
-              <li><a href="<?php the_permalink()?>#<?php echo sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo $sub_head['phila_wysiwyg_heading'] ?></a></li>
-            <?php endforeach?>
+        <?php $sub_heads = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
+          <nav>
+            <ul class="no-bullet" data-magellan>
+              <li>
+                <a href="<?php the_permalink()?>">
+                  <span class="icon"><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . '"></i>' : '' ?></span>
+                  <span class="title"><?php the_title(); ?></span>
+                </a>
+                <ul class="no-bullet">
+                  <?php foreach($sub_heads as $sub_head) : ?>
+                    <li><a href="<?php the_permalink()?>#<?php echo sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo $sub_head['phila_wysiwyg_heading'] ?></a></li>
+                  <?php endforeach?>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul>
-      </nav>
-    <?php endwhile; ?>
-  </section>
-  
-<?php endif; wp_reset_query(); ?>
+          </nav>
+        <?php endwhile; ?>
+      </div>
+    </section>
+    
+  <?php endif; ?>
+<?php wp_reset_query(); ?>
