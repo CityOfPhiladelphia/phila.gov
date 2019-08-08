@@ -17,7 +17,7 @@
         <?php if (phila_get_selected_template() === 'prog_landing_page'): ?>
           <h2 class="contrast" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
         <?php elseif (phila_get_selected_template() === 'guide_sub_page') : ?>
-          <h2 id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
+          <h2 id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>" data-magellan-target="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h2>
         <?php else : ?>
           <?php if ( $wysiwyg_heading != '' ): ?>
             <h3 class="black bg-ghost-gray phm-mu mbm" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>

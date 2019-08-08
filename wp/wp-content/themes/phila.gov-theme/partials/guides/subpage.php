@@ -18,8 +18,8 @@
           <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
           <?php $landing_title = rwmb_meta('guide_landing_page_title');?>
           <h1>
-            <?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . '"></i>' : '' ?>
-              <?php the_title(); ?>
+            <span><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . '"></i>' : '' ?></span>
+            <span><?php the_title(); ?></span>
           </h1>
         </div>
 
