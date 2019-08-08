@@ -3,7 +3,7 @@
    * Guides header
   */
 ?>
-<header>
+<header id="guide-hero">
   <div class="hero-full">
     <div class="grid-x">
       <div class="cell bg-ben-franklin-blue white hero-full--container">

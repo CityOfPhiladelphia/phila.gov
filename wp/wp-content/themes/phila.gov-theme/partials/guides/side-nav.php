@@ -18,7 +18,7 @@
 
     <section>
       <div data-sticky-container>
-        <div class="sticky-side-nav" data-sticky data-margin-top="0" id="guides-nav">
+        <div class="sticky-side-nav" data-sticky data-top-anchor="guide-hero:bottom" data-btm-anchor="global-footer" id="guides-nav">
         <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
         <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
         <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
