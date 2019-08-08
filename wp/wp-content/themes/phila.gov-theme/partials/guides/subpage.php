@@ -2,12 +2,15 @@
 /*
 * Subpage partial 
 * phila_template_select = guide_sub_page
+* Required vars - $heading_groups - 
 */
+?>
+<?php 
 ?>
 <div class="grid-container">
   <div class="grid-x grid-padding-x">
     <div class="cell medium-6">
-      nav  
+    <?php include(locate_template('partials/guides/side-nav.php')); ?>
   </div>
     <div class="cell medium-18">
       <section>
@@ -29,9 +32,8 @@
         <?php get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' ); ?>
 
       <?php 
-      $heading_groups = rwmb_meta( 'phila_heading_groups' );
-
-      $heading_content = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
+        $heading_groups = rwmb_meta( 'phila_heading_groups' );
+        $heading_content = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
 
       <?php include(locate_template('partials/content-heading-groups.php')); ?>
 
