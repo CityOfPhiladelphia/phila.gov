@@ -75,11 +75,11 @@
         </div>
       </div>
     </div>
-    <!--sticky/desktop nav -->
+    <!-- sticky/desktop nav -->
     <div id="global-sticky-nav" class="row">
       <div class="small-24 columns">
-        <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
-          <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
+        <div class="row primary-menu" <?php echo (get_post_type() === 'guides') ? '' : 'data-sticky-container' ?> data-swiftype-index="false">
+          <div class="columns phila-sticky phn" <?php echo (get_post_type() === 'guides') ? '' : 'data-margin-top="0" data-sticky data-sticky-on="medium"' ?>>
             <div class="row sticky-header-width">
               <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
