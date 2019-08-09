@@ -234,12 +234,22 @@ module.exports = $(function(){
     var tooltip = new Foundation.Tooltip( $('.has-tip') );
 
   }
+  var mainContent = $('.guide-content').eq(0);
+
   /*GUIDES */
   //TODO: Chunk this and put it in seperate guides-only js file
   $('#guide-hero').on('sticky.zf.stuckto:top', function(){
     $(this).addClass('shrink');
+    
+    mainContent.css('margin-top', '7rem');
+
   }).on('sticky.zf.unstuckfrom:top', function(){
+
     $(this).removeClass('shrink');
+    mainContent.css('margin-top', '0');
+
   })
+
+
 
 });
