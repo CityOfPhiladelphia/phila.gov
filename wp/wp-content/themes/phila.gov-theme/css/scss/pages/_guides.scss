@@ -34,4 +34,29 @@
       font-size: rem-calc(56);
     }
   }
+  #guide-hero {
+    z-index: 1000;
+  }
+  .shrink{
+    .hero-full .hero-full--container .grid-container{
+      height: 7rem;
+      transition: height .25s ease;
+    }
+  }
+  #guides-nav{
+    height: 100vh;
+    overflow-y: scroll;
+    ul{
+      margin-bottom:1rem;
+      padding:0;
+      li{
+        padding: 1rem 0 1rem 0;
+      }
+    }
+    .is-active{
+      background: color(dark-gray);
+      padding: 5px;
+      color: white;
+    }
+  }
 }
