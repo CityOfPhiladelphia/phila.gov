@@ -18,7 +18,7 @@
 
     <section>
       <div data-sticky-container>
-        <div class="sticky-side-nav" data-sticky data-top-anchor="guide-hero:bottom" data-btm-anchor="global-footer" id="guides-nav">
+        <div class="sticky-side-nav" data-sticky data-top-anchor="breadcrumbs:bottom" data-btm-anchor="global-footer" data-margin-top="7" id="guides-nav">
         <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
         <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
         <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
@@ -33,7 +33,7 @@
                 </a>
                 <ul class="no-bullet">
                   <?php foreach($sub_heads as $sub_head) : ?>
-                    <li><a href="<?php the_permalink()?>#<?php echo sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo $sub_head['phila_wysiwyg_heading'] ?></a></li>
+                    <li><a href="#<?php echo sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo $sub_head['phila_wysiwyg_heading'] ?></a></li>
                   <?php endforeach?>
                 </ul>
               </li>
