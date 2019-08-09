@@ -13,9 +13,10 @@
     'orderby'        => 'menu_order',
   );
   $parent = new WP_Query( $args );
+  $this_post = $post->ID;
 
+  
   if ( $parent->have_posts() ) : ?>
-
     <section>
       <div data-sticky-container>
         <div class="sticky-side-nav" data-sticky data-top-anchor="breadcrumbs:bottom" data-btm-anchor="global-footer" data-margin-top="7" id="guides-nav">
@@ -33,7 +34,7 @@
                 </a>
                 <ul class="no-bullet">
                   <?php foreach($sub_heads as $sub_head) : ?>
-                    <li><a href="#<?php echo sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo $sub_head['phila_wysiwyg_heading'] ?></a></li>
+                    <li><a href="<?php echo ($this_post !== $post->ID) ? get_the_permalink() : '' ?>#<?php echo sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo $sub_head['phila_wysiwyg_heading'] ?></a></li>
                   <?php endforeach?>
                 </ul>
               </li>
