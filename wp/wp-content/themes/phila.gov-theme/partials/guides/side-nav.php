@@ -26,9 +26,9 @@
 
         <?php $sub_heads = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
           <nav>
-            <ul class="no-bullet" data-magellan>
+            <ul class="no-bullet" data-magellan data-offset="300">
               <li>
-                <a href="<?php the_permalink()?>">
+                <a href="<?php echo ($this_post !== $post->ID) ? get_the_permalink() : '#' . sanitize_title_with_dashes(get_the_title()); ?>">
                   <span class="icon"><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . '"></i>' : '' ?></span>
                   <span class="title"><?php the_title(); ?></span>
                 </a>

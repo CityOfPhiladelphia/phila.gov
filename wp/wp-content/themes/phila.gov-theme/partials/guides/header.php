@@ -30,7 +30,7 @@
 </div>
 <div id="breadcrumbs" class="grid-container pan">
   <div class="grid-x">
-    <div class="cell medium-18">
+    <div class="cell medium-18 mtm">
       <?php if ( phila_get_selected_template($post->ID) !== 'guide_landing_page' ): ?>
         <?php get_template_part( 'partials/breadcrumbs' ); ?>
       <?php endif; ?>

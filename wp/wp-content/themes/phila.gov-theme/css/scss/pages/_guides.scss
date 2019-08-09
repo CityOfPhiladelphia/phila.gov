@@ -17,6 +17,9 @@
   h6, .h6{
     font-size: rem-calc(15);
   }
+  .social-media .fa, .social-media .fab, .social-media .fal, .social-media .far, .social-media .fas {
+    font-size: 1.2rem;
+}
   .guide-name{
     margin:0 0 0 130px;
   }
@@ -40,8 +43,11 @@
   .shrink{
     .hero-full .hero-full--container .grid-container{
       height: 7rem;
-      transition: height .25s ease;
+      transition: height 1s ease;
     }
+  }
+  .guide-content{
+    transition: margin-top .5s ease;
   }
   #guides-nav{
     height: 100vh;
