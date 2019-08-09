@@ -9,10 +9,11 @@
 ?>
 <div class="grid-container">
   <div class="grid-x grid-padding-x">
-    <div class="cell medium-6">
-    <?php include(locate_template('partials/guides/side-nav.php')); ?>
-  </div>
-    <div class="cell medium-18">
+    <div class="cell medium-6" data-sticky-container>
+      <?php include(locate_template('partials/guides/side-nav.php')); ?>
+    </div>
+    <div class="cell medium-1"></div>
+    <div class="cell medium-17">
       <section>
         <div class="page-title">
           <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
