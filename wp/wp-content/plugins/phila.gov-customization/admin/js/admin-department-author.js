@@ -3,12 +3,12 @@
 jQuery(document).ready(function($){
   if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function(obj, start) {
-       for (var i = (start || 0), j = this.length; i < j; i++) {
-           if (this[i] === obj) { return i; }
-       }
-       return -1;
-     }
-   }
+      for (var i = (start || 0), j = this.length; i < j; i++) {
+          if (this[i] === obj) { return i; }
+      }
+      return -1;
+    }
+  }
 
   //Force top category to be checked all the time, unless the user has access to mutiple categories
   if( !phila_WP_User.includes('multi_department_access') && !phila_WP_User.includes('secondary_all_departments')) {
