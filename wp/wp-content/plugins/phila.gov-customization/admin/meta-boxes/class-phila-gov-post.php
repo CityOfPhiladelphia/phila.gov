@@ -104,14 +104,14 @@ class Phila_Gov_Post {
                 'type'  => 'heading',
                 'name'  => 'Link description',
               ),
-           array(
+          array(
             'id' => 'phila_link_desc',
             'type'  => 'textarea',
-           ),
-          )
+          ),
         )
       )
-    );
+    )
+  );
 
     /* Action guide specific metaboxes */
 

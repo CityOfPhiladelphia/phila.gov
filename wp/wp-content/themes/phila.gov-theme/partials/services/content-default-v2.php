@@ -86,13 +86,15 @@
 
 <?php if ( !empty( $requirements_prereq_select ) ): ?>
 <section>
-  <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
-  <?php
-    $accordion_title = '';
-    $accordion_group = $requirements_prereq['accordion_group'];
-    $is_full_width = false; 
-    $use_icon = true;?>
-    <?php include(locate_template('partials/global/accordion.php')); ?>
+  <div class="mbxxl">
+    <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
+    <?php
+      $accordion_title = '';
+      $accordion_group = $requirements_prereq['accordion_group'];
+      $is_full_width = false; 
+      $use_icon = true;?>
+      <?php include(locate_template('partials/global/accordion.php')); ?>
+  </div>
 </section>
 <?php endif ?>
 
