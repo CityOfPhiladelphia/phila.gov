@@ -3,7 +3,7 @@
    * Guides header
   */
 ?>
-<div data-sticky-container>
+<div data-sticky-container data-check-every="0">
   <header id="guide-hero" data-sticky data-top-anchor="global-sticky-nav:bottom" data-margin-top="0">
     <div class="hero-full">
       <div class="grid-x">
