@@ -7,7 +7,7 @@
 ?>
 <?php 
 ?>
-<div class="grid-container">
+<div class="grid-container mbxxl">
   <div class="grid-x grid-padding-x">
     <div class="cell medium-6 mtl" data-sticky-container>
       <?php include(locate_template('partials/guides/side-nav.php')); ?>
