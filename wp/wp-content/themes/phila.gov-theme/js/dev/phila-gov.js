@@ -239,14 +239,18 @@ module.exports = $(function(){
   /*GUIDES */
   //TODO: Chunk this and put it in seperate guides-only js file
   $('#guide-hero').on('sticky.zf.stuckto:top', function(){
-    $(this).addClass('shrink');
-    
-    mainContent.css('margin-top', '7rem');
+
+    $('#guide-hero').addClass('shrink');
+
+      mainContent.css('margin-top', '7rem');
+
 
   }).on('sticky.zf.unstuckfrom:top', function(){
 
     $(this).removeClass('shrink');
-    mainContent.css('margin-top', '0');
+
+      mainContent.css('margin-top', '0');
+
 
   })
 

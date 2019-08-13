@@ -43,13 +43,16 @@
   .shrink{
     .hero-full .hero-full--container .grid-container{
       height: 7rem;
-      transition: height 1s ease;
+      transition: height .3s ease-in-out;
+      background-position: bottom left;      
+      background-size: 170px;
     }
   }
   .guide-content{
-    transition: margin-top .5s ease;
+    transition: margin .2s ease;
   }
   #guides-nav{
+    transition: margin .2s ease;
     height: 100vh;
     overflow-y: scroll;
     ul{
