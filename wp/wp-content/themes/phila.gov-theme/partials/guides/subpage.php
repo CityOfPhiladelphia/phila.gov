@@ -37,7 +37,47 @@
         $heading_content = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
 
       <?php include(locate_template('partials/content-heading-groups.php')); ?>
+      <footer>
+      <?php
+        $args = array(
+          'child_of' => $post->post_parent,
+          'parent'  => $post->post_parent,
+          'sort_column' => 'menu_order',
+          'sort_order'=> 'asc',
+          'post_type' => 'guides'
+        );
+        $pagelist = get_pages($args);
 
+        $pages = array();
+
+        foreach ($pagelist as $page) {
+          $pages[] += $page->ID;
+        }
+
+        $current = array_search($post->ID, $pages);
+        $prevID = $pages[$current-1];
+        $nextID = $pages[$current+1];
+        ?>
+
+        <nav>
+          <div class="grid-x">
+
+            <?php if (!empty($prevID)) :?>
+
+              <div class="cell medium-12">
+                <a href="<?php echo get_permalink($prevID); ?>" title="<?php echo get_the_title($prevID); ?>"><i class="fas fa-arrow-left"></i> <?php echo get_the_title($prevID)?></a>
+
+              </div>
+          <?php endif;?>
+              <?php if (!empty($nextID)) : ?>
+              <div class="cell medium-12 text-right">
+                <a href="<?php echo get_permalink($nextID); ?>" title="<?php echo get_the_title($nextID); ?>"><?php echo get_the_title($nextID); ?> <i class="fas fa-arrow-right"></i></a>
+              </div>
+          <?php endif; ?>
+          </div>
+        </nav>
+
+        </footer>
       </section>
     </div>
   </div>

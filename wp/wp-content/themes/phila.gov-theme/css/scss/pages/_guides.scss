@@ -48,31 +48,9 @@
       background-size: 170px;
     }
   }
+
   #guides-nav{
-    &::before {
-      background: linear-gradient(180deg, #fff, rgba(255,255,255,0));
-      content: '';    
-      transition: opacity 0.15s linear;
-      height: 1.75rem;
-      content: '';
-      width: calc(100% - 0.25rem);
-      display: block;
-      position: absolute;
-      z-index: 50;
-      pointer-events: none;
-    }
-    &::after{
-      background: linear-gradient(180deg, rgba(255,255,255,0), #fff);
-      content: '';
-      transition: opacity 0.15s linear;
-      height: 1.75rem;
-      content: '';
-      width: calc(100% - 0.25rem);
-      display: block;
-      position: absolute;
-      z-index: 50;
-      pointer-events: none;
-    }
+  
     height: 100%;
     overflow-y: scroll;
     .icon{

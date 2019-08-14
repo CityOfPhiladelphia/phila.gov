@@ -254,6 +254,6 @@ module.exports = $(function(){
 
   })
 
-
+  //TODO - loop through and if the page is the current page, make sure the current page is "active"
 
 });
