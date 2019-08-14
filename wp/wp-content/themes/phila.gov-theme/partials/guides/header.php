@@ -11,15 +11,13 @@
           <div class="grid-x grid-container">
             <div class="hero-full--title align-self-bottom">
               <h1 class="guide-name">
-              <?php 
-                if($post->post_parent) {
-                  $parent_title = get_the_title($post->post_parent);
-                    echo $parent_title;
-                  }
-                else {
-                  echo get_the_title($post->ID);
-                } 
-              ?>
+                <?php 
+                  if($post->post_parent) : ?>
+                    <?php $parent_title = get_the_title($post->post_parent); ?>
+                    <a href="<?php echo the_permalink($post->post_parent) ?>"><?php echo $parent_title; ?></a>
+                  <?php else : ?>
+                  <a href="<?php echo the_permalink($post->ID) ?>"><?php echo get_the_title($post->ID); ?></a>
+                <?php endif; ?>
               </h1>
             </div>
           </div>
