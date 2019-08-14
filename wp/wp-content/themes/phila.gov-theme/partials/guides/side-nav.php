@@ -18,7 +18,7 @@
   
   if ( $parent->have_posts() ) : ?>
     <section>
-      <div data-sticky-container>
+      <div class="sticky-container" data-sticky-container>
         <div class="sticky-side-nav" data-sticky data-top-anchor="breadcrumbs:bottom" data-btm-anchor="global-footer" data-margin-top="7" id="guides-nav">
         <nav>
 
