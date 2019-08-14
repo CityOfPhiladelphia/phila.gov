@@ -22,11 +22,17 @@
 }
   .guide-name{
     margin:0 0 0 130px;
+    a:link, a:visited{
+      color:white;
+    }
+    a:hover, a:active{
+      color: color(light-ben-franklin);
+    }
   }
   .intro-text{
     font-size: rem-calc(25);
     line-height: 1.8rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     p {
       margin-bottom: 3rem;
     }

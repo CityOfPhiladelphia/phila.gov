@@ -15,7 +15,7 @@ function program_tile_shortcode($atts){
 
   if ( $a['ids'] != '' ){
     $ids = explode(',', $a['ids']);
-    $output .= '<div class="row fat-gutter">';
+    $output .= '<div class="row fat-gutter mtl">';
       foreach( $ids  as $id ) :
         if ( phila_get_selected_template($id) !== 'prog_landing_page' && phila_get_selected_template($id) !== 'prog_off_site'  ) {
           $output .= '<div class="row columns end phila-placeholder">Please use the ID of a program homepage.</div>';
@@ -33,7 +33,7 @@ function program_tile_shortcode($atts){
           </a>
         </div>';
       endforeach;
-      $output .= '</div></div>';
+      $output .= '</div>';
 
     return $output;
   } else {

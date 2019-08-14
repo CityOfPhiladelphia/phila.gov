@@ -61,11 +61,11 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
     <?php 
       $link = get_permalink($child->ID);
       $h3 = $child->post_title; 
-      $description = rwmb_meta('phila_meta_desc', $child->ID );
-      $icon = rwmb_meta('guide_page_icon', $child->ID);
+      $description = rwmb_meta('phila_meta_desc', array(), $child->ID );
+      $icon = rwmb_meta('guide_page_icon', array(), $child->ID);
       $background = rwmb_meta('guide_color_picker', array(), $child->ID);
     ?>
-    <div class="cell medium-7">
+    <div class="cell medium-7 mbxxl">
       <?php include( locate_template( 'partials/guides/navigation-card.php' ) ); ?>
     </div>
     <div class="cell medium-1"></div>

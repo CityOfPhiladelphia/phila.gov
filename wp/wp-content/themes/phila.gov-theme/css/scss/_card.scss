@@ -15,7 +15,8 @@ a.card,
       margin-top: .5rem;
     }
     .content-block{
-      min-height:165px;
+      max-width: 500px;
+      min-height: 165px;
     }
     &.vertical {
       &.small{
@@ -92,6 +93,9 @@ a.card,
   &.card--navigation{
     background: transparent;
     border-bottom: none;
+    p{
+      line-height: 2rem;
+    }
     i {
       font-size: rem-calc(100);
     }

@@ -20,7 +20,7 @@
             <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
             <?php $landing_title = rwmb_meta('guide_landing_page_title');?>
             <h1 id="<?php echo sanitize_title_with_dashes(get_the_title())?>" data-magellan-target="<?php echo sanitize_title_with_dashes(get_the_title())?>">
-              <span><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . '"></i>' : '' ?></span>
+              <span><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . ' fa-fw"></i>' : '' ?></span>
               <span><?php the_title(); ?></span>
             </h1>
           </div>
