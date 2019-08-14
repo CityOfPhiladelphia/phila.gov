@@ -241,7 +241,7 @@ class Phila_Archives_Controller {
    *
    * @param WP_REST_Request $request Current request.
    */
-   public function get_categories( $request ){
+  public function get_categories( $request ){
 
     $categories = get_categories( array( 'parent' => 0 ) );
 
