@@ -20,7 +20,7 @@
     <section>
       <div class="sticky-container" data-sticky-container>
         <div class="sticky-side-nav" data-sticky data-top-anchor="breadcrumbs:bottom" data-btm-anchor="global-footer" data-margin-top="7" id="guides-nav">
-        <nav>
+        <nav class="mbxxl">
 
         <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
         <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
