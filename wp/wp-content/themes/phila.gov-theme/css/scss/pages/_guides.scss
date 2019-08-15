@@ -37,10 +37,19 @@
       margin-bottom: 3rem;
     }
   }
-  .page-title h1 {
+  .page-title-group h1 {
     font-size: rem-calc(65);
     i {
       font-size: rem-calc(56);
+    }
+    .icon {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .title{
+      display: inline-block;
+      max-width: calc(100% - 88px);
+      word-break: break-word;
     }
   }
   #guide-hero {
