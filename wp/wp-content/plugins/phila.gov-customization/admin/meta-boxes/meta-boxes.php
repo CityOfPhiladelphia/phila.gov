@@ -841,7 +841,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
-  'pages' => array('department_page', 'page', 'service_page', 'programs', 'guides'),
+  'pages' => array('department_page', 'page', 'service_page', 'programs'),
   'revision' => true,
 
   'visible' => array(
@@ -852,7 +852,6 @@ $meta_boxes[] = array(
       array( 'phila_template_select', '=', 'default'),
       array( 'phila_template_select', '=', 'start_process'),
       array( 'phila_template_select', '=', 'default_v2' ),
-      array( 'phila_template_select', '=', 'guide_sub_page' ),
 
     ),
     'relation' => 'or',

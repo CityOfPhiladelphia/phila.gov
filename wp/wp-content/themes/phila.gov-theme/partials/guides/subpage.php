@@ -35,8 +35,8 @@
 
           <?php 
             $heading_groups = rwmb_meta( 'phila_heading_groups' );
-            $heading_content = phila_extract_clonable_wysiwyg( $heading_groups ); ?>
-
+            $heading_content = phila_extract_clonable_wysiwyg( $heading_groups, $array_key = 'phila_wywiwyg_alt_heading' ); ?>
+          
           <?php include(locate_template('partials/content-heading-groups.php')); ?>
 
           <?php include(locate_template('partials/guides/footer.php')); ?>

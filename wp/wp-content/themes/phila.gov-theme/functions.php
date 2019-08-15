@@ -1294,13 +1294,12 @@ function phila_cta_full_display( $cta_full ){
   return $output;
 }
 
-function phila_extract_clonable_wysiwyg($parent_group){
+function phila_extract_clonable_wysiwyg( $parent_group, $array_key = 'phila_wysiwyg_address_content'){
   $output = array();
 
   if ( !empty($parent_group) ){
 
-    $clonable_wysiwyg = isset($parent_group['phila_wysiwyg_address_content'] ) ? $parent_group['phila_wysiwyg_address_content'] : $output;
-
+    $clonable_wysiwyg = isset($parent_group[$array_key] ) ? $parent_group[$array_key] : $output;
     foreach ( $clonable_wysiwyg as $k => $v ){
       $output[$k] = $v;
     }
