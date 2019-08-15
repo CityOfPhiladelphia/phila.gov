@@ -6,7 +6,10 @@
  */
 ?>
 <?php
-  $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
+  if ( !isset( $heading_content ) )  {
+    $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
+  }
+
   if ( !empty($heading_content) ) : ?>
   <?php foreach ( $heading_content as $content ): ?>
 
@@ -14,10 +17,12 @@
     <div class="cell">
       <section>
         <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
+        <?php $wysiwyg_alt_heading = isset($content['phila_heading_alt']) ? $content['phila_heading_alt'] : '';?>
         <?php if (phila_get_selected_template() === 'prog_landing_page'): ?>
           <h2 class="contrast" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
         <?php elseif (phila_get_selected_template() === 'guide_sub_page') : ?>
-          <h2 id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>" data-magellan-target="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h2>
+
+          <h2 id="<?php echo !empty($wysiwyg_alt_heading) ? sanitize_title_with_dashes($wysiwyg_alt_heading, null, 'save') : sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>" data-magellan-target="<?php echo !empty($wysiwyg_alt_heading) ? sanitize_title_with_dashes($wysiwyg_alt_heading, null, 'save') : sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h2>
         <?php else : ?>
           <?php if ( $wysiwyg_heading != '' ): ?>
             <h3 class="black bg-ghost-gray phm-mu mbm" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>

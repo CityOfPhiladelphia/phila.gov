@@ -109,6 +109,30 @@ class Phila_Gov_Register_Guide_Templates {
 
     );
 
+    $meta_boxes[] = array(
+      'title' => 'Heading Groups',
+      'pages' => array( 'guides' ),
+      'revision' => true,
+
+      'visible' => array(
+        'when' => array(
+          array( 'phila_template_select', '=', 'guide_sub_page' ),
+        ),
+      ),
+
+      'fields' => array(
+        array(
+          'id' => 'phila_heading_groups',
+          'type'  => 'group',
+          'clone' => false,
+
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_simple(),
+          ),
+        )
+      )
+    );
+
     return $meta_boxes;
   
   }
