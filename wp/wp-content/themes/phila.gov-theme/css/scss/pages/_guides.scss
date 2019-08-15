@@ -104,4 +104,21 @@
       color: white;
     }
   }
+
+  @media print {
+    font-size: 70%;
+    .hero-full .hero-full--container .grid-container {
+      height: auto;
+    }
+    .sticky-container{
+      display:inline-block;
+      height: 0 !important;
+    }
+    .breadcrumbs{
+      display:none;
+    }
+    .guide-content{
+      width: 100%;
+    }
+  }
 }
