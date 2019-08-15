@@ -36,6 +36,7 @@ class Phila_Gov_Register_Guide_Templates {
           'options' => array(
             'guide_landing_page'  => 'Homepage',
             'guide_sub_page'    => 'Subpage',
+            'guide_resource_page' => 'Resource page'
           ),
           'admin_columns' => array(
             'position' => 'after date',
@@ -130,6 +131,19 @@ class Phila_Gov_Register_Guide_Templates {
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields_simple(),
           ),
         )
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title' => 'Resource groups',
+      'pages' => array('guides'),
+      'visible'   => array(
+        'when'  => array(
+          array('phila_template_select', '=', 'guide_resource_page')
+        )
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_resource_list_v2()
       )
     );
 
