@@ -53,7 +53,8 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
     'post_type'   => 'guides', 
     'numberposts' => -1,
     'post_status' => 'any',
-    'orderby' => 'menu_order'
+    'orderby' => 'menu_order',
+    'order'   => 'asc',
   );
   $children = get_children( $args );
   ?>
