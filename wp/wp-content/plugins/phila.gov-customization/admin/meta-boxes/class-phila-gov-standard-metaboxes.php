@@ -1367,4 +1367,65 @@ public static function phila_meta_var_connect(){
       )
     );
   }
+
+  public static function phila_resource_list_v2() {
+    return array(
+      'id'  => 'phila_resource_list_v2',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+      'add_button' => '+ Add another group',
+
+      'fields' => array(
+        array(
+          'name' => __('Group title', 'rwmb'),
+          'id'   => 'phila_resource_list_title',
+          'type' => 'text',
+        ),
+        array(
+          'id'   => 'phila_resource_list_items',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'add_button' => '+ Add a link',
+
+          'fields' => array(
+            array(
+              'name' => __('Link text', 'rwmb'),
+              'id'   => 'phila_list_item_title',
+              'type' => 'text',
+              'required' => true,
+            ),
+            array(
+              'name' => __('URL', 'rwmb'),
+              'id'   => 'phila_list_item_url',
+              'type' => 'url',
+              'required' => true,
+            ),
+            array(
+              'id'   => 'phila_list_item_external',
+              'name' => 'Does this link take users away from phila.gov?',
+              'type' => 'switch',
+              'on_label' => 'Yes',
+              'off_label'  => 'No'
+            ),
+            array(
+              'name' => __('Link icon', 'rwmb'),
+              'id'   => 'phila_list_item_type',
+              'type' => 'select',
+              'placeholder' => 'Choose icon...',
+              'options' => array(
+                'phila_resource_link' => 'Link',
+                'phila_resource_document' => 'Document',
+                'phila_resource_map' => 'Map',
+                'phila_resource_video'  => 'Video player'
+              ),
+            ),
+          ),
+        ),
+      )
+    );
+
+  }
+
 }//end Class
