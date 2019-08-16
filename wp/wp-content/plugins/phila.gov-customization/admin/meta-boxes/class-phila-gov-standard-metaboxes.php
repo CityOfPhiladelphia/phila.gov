@@ -1415,10 +1415,10 @@ public static function phila_meta_var_connect(){
               'type' => 'select',
               'placeholder' => 'Choose icon...',
               'options' => array(
-                'phila_resource_link' => 'Link',
-                'phila_resource_document' => 'Document',
-                'phila_resource_map' => 'Map',
-                'phila_resource_video'  => 'Video player'
+                'link' => 'Link',
+                'document' => 'Document',
+                'map' => 'Map',
+                'video'  => 'Video'
               ),
             ),
           ),
