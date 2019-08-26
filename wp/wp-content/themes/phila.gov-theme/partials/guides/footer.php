@@ -30,7 +30,7 @@
   <nav>
     <div class="grid-x">
       <?php if (!empty($previous)) :?>
-        <div class="cell medium-12">
+        <div class="cell small-12">
 
           <?php if ($previous == -1) : ?>
             <?php $landing_title = rwmb_meta('guide_landing_page_title', $post_parent);?>
@@ -43,7 +43,7 @@
 
           <?php endif;?>
         <?php if (!empty($next)) : ?>
-        <div class="cell medium-12 text-right">
+        <div class="cell small-12 text-right">
           <a href="<?php echo get_permalink($next); ?>" title="<?php echo get_the_title($next); ?>"><?php echo get_the_title($next); ?> <i class="fas fa-arrow-right"></i></a>
         </div>
     <?php endif; ?>
