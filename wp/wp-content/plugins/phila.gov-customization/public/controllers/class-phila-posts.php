@@ -337,6 +337,12 @@ class Phila_Archives_Controller {
      }
     }
 
+    if (isset( $schema['properties']['tags'] )) {
+      $tags = get_the_tags($post->ID);
+
+      $post_data['tags']  = (array) $tags;
+    }
+
     if (isset( $schema['properties']['categories'] )) {
       $categories = get_the_category($post->ID);
 
@@ -417,6 +423,10 @@ class Phila_Archives_Controller {
         'link'  => array(
           'description' => esc_html__('The permalink for this object.', 'phila-gov'),
           'type'  => 'string',
+        ),
+        'tags'  => array(
+          'description' => esc_html__('The tags assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
         ),
         'categories'  => array(
           'description' => esc_html__('The categories assigned to this object.', 'phila-gov'),
