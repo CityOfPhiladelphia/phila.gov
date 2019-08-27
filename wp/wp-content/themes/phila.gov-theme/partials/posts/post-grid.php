@@ -5,6 +5,11 @@
 */
 ?>
 <?php $post_categories = isset($category) ? $category : ''; ?>
+<?php foreach ($post_categories as $category ) {
+  $current_cat = get_the_category_by_ID($category);
+  $slang_name = html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat )));
+}
+?>
 <?php $tag = isset($tag) ? $tag : '';?>
 <?php
 
@@ -144,9 +149,9 @@ $result->post_count = count( $result->posts );
               'content_type' => $label,
               'nice_name' => 'posts'
             ); ?>
-            <?php if( !empty( $post_categories ) ) :
-              $see_all_URL = array(
-                'URL' => '/the-latest/archives/#/?templates=post&department=' . $post_categories[0],
+            <?php if( !empty( $post_categories ) ) :?>
+              <?php $see_all_URL = array(
+                'URL' => '/the-latest/archives/#/?templates=post&department=' . $slang_name,
               );
               $see_all = array_replace( $see_all, $see_all_URL );
               endif;?>
