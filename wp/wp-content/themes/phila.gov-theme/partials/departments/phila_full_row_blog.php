@@ -9,13 +9,17 @@
 
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
+  $slang_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
 
-  if ( !empty($blog_see_all) ) : 
-    $blog_see_all = $blog_see_all;
+  $category_slang_name = $categories[0]->slang_name = html_entity_decode(trim($slang_name));
+
+  if ( empty($blog_see_all) ) : 
+    $blog_see_all = '';
   endif;
 
   if ( !empty( $blog_cat_override ) ) :
-    $category_id = $blog_cat_override[0];
+    $slang_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $blog_cat_override[0]->name );
+
   endif;
 
   if ( empty($blog_tag_override) ) :
@@ -25,5 +29,5 @@
   endif;
   ?>
 <section class="row">
-  <?php echo do_shortcode('[recent-posts posts="3" see_all="' . $blog_see_all .'"  category="' . $category_id .'" tag="'. $blog_tag_override .'"]'); ?>
+  <?php echo do_shortcode('[recent-posts posts="3" see_all="' . $blog_see_all .'"  department="' . $slang_name .'" tag="'. $blog_tag_override .'"]'); ?>
 </section>
