@@ -88,7 +88,7 @@ if( !empty($tag) ) {
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
               <?php if ($count == 4) : ?>
                 <?php $see_all = array(
-                  'URL' => '/the-latest/archives/?template=press_release',
+                  'URL' => '/the-latest/archives/#/?templates=press_release',
                   'content_type' => 'press_release',
                   'nice_name' => 'Press releases',
                   'is_full' => true
@@ -100,7 +100,7 @@ if( !empty($tag) ) {
                     $term = get_term($tag[0], 'post_tag');
                   }
                   $see_all_URL = array(
-                    'URL' => '/the-latest/archives/?tag=' . $term->name,
+                    'URL' => '/the-latest/archives/#/?tag=' . $term->name,
                   );
                   $see_all = array_replace($see_all, $see_all_URL );
                   endif;?>
