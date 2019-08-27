@@ -93,7 +93,7 @@
 
           <?php endwhile; ?>
             <?php $see_all = array(
-              'URL' => '/the-latest/archives/?template=featured',
+              'URL' => '/the-latest/archives/#/?templates=featured',
               'content_type' => $label,
               'nice_name' => $label,
             ); ?>

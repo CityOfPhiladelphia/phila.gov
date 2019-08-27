@@ -18,13 +18,13 @@ function phila_breadcrumbs() {
     if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
-        echo '<li><a href="/the-latest/archives?template=press_release">Press releases</a></li>';
+        echo '<li><a href="/the-latest/archives/#/?templates=press_release">Press releases</a></li>';
       }elseif (phila_get_selected_template( $post->ID ) == 'post'){
-        echo '<li><a href="/the-latest/archives?template=post">Posts</a></li>';
+        echo '<li><a href="/the-latest/archives/#/?templates=post">Posts</a></li>';
       }elseif ( phila_get_selected_template( $post->ID ) == 'action_guide' ) {
-        echo '<li><a href="/the-latest/archives?template=action_guide">Action guides</a></li>';
+        echo '<li><a href="/the-latest/archives/#/?templates=action_guide">Action guides</a></li>';
       }else {
-        echo '<li><a href="/the-latest/archives?template=featured">Featured</a></li>';
+        echo '<li><a href="/the-latest/archives/#/?templates=featured">Featured</a></li>';
       }
       echo '<li>';
       the_title();
