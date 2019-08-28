@@ -1,0 +1,124 @@
+.guides{
+  h1, .h1 {
+    font-size: rem-calc(75);
+  }
+  h2, .h2{
+    font-size: rem-calc(45);
+  }
+  h3, .h3{
+    font-size: rem-calc(35);
+  }
+  h4, .h4{
+    font-size: rem-calc(25);
+  }
+  h5, .h5{
+    font-size: rem-calc(20);
+  }
+  h6, .h6{
+    font-size: rem-calc(15);
+  }
+  .social-media .fa, .social-media .fab, .social-media .fal, .social-media .far, .social-media .fas {
+    font-size: 1.2rem;
+}
+  .guide-name{
+    margin:0 0 0 130px;
+    a:link, a:visited{
+      color:white;
+    }
+    a:hover, a:active{
+      color: color(light-ben-franklin);
+    }
+  }
+  .intro-text{
+    font-size: rem-calc(25);
+    line-height: 1.8rem;
+    margin-bottom: 5rem;
+    p {
+      margin-bottom: 3rem;
+    }
+  }
+  .page-title-group h1 {
+    font-size: rem-calc(65);
+    i {
+      font-size: rem-calc(56);
+    }
+    .icon {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .title{
+      display: inline-block;
+      max-width: calc(100% - 88px);
+      word-break: break-word;
+    }
+  }
+  #guide-hero {
+    z-index: 1000;
+  }
+  .shrink{
+    .hero-full .hero-full--container .grid-container{
+      height: 7rem;
+      transition: height .3s ease-in-out;
+      background-position: bottom left;      
+      background-size: 170px;
+    }
+  }
+
+  #guides-nav{
+    border-right: 1px solid #ccc;
+    height: 100%;
+    overflow-y: scroll;
+    .icon{
+      display: inline-block;
+      vertical-align: top;
+    }
+    .title{
+      display: inline-block;
+      max-width: calc(100% - 28px);
+    }
+    ul{
+      margin-bottom:1rem;
+      padding:0;
+      font-size: 1.3rem;
+      .is-active{
+        padding: 0;
+      }
+      ul{
+        font-size: rem-calc(14);
+        margin-left: 2.1rem;
+        .is-active{
+          padding: 5px;
+        }
+      }
+      li{
+        padding: 1rem 0 1rem 0;
+        li{
+          padding: 3px 0 .8rem 0;
+          line-height: 1.5rem;
+        }
+      }
+    }
+    .is-active{
+      display: inline-block;
+      background: color(dark-gray);
+      color: white;
+    }
+  }
+
+  @media print {
+    font-size: 70%;
+    .hero-full .hero-full--container .grid-container {
+      height: auto;
+    }
+    .sticky-container{
+      display:inline-block;
+      height: 0 !important;
+    }
+    .breadcrumbs{
+      display:none;
+    }
+    .guide-content{
+      width: 100%;
+    }
+  }
+}

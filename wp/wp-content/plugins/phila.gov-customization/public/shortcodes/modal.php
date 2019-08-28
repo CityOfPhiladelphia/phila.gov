@@ -23,8 +23,8 @@ function modal_shortcode( $atts, $content = null ){
     $output .= '<div class="reveal center" id="' . $a['id'] . '" data-reveal data-deep-link="true">';
       $output .= $content;
     $output .= '<button class="close-button bg-white" data-close aria-label="Close modal" type="button">
-     <span aria-hidden="true">&times;</span>
-   </button>
+    <span aria-hidden="true">&times;</span>
+  </button>
   </div>';
 
 
@@ -37,5 +37,5 @@ function modal_shortcode( $atts, $content = null ){
 add_action( 'init', 'register_modal_shortcode' );
 
 function register_modal_shortcode(){
-   add_shortcode( 'modal', 'modal_shortcode' );
+  add_shortcode( 'modal', 'modal_shortcode' );
 }

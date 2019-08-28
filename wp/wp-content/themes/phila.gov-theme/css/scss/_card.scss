@@ -1,5 +1,13 @@
 a.card,
 .card{
+  position: relative;
+  margin-bottom:0;
+  h1 {
+    font-size: rem-calc(25);
+    margin: 0;
+    color:color(dark-gray);
+    word-break: break-word;
+  }
   &.program-card{
     border-bottom: none;
     h3, .h3 {
@@ -7,9 +15,25 @@ a.card,
       margin-top: .5rem;
     }
     .content-block{
-      min-height:165px;
+      max-width: 500px;
+      min-height: 165px;
     }
     &.vertical {
+      &.small{
+        h3, .h3{
+          margin:0;
+        }
+        .content-block{
+          min-height: auto;
+          vertical-align: middle;
+        }
+        @include breakpoint(medium up) {
+          img {
+            height: 100px;
+            width: auto;
+          }
+        }
+      }
       @include breakpoint(medium up) {
         img {
           height: 184px;
@@ -20,14 +44,6 @@ a.card,
         display: inline-block;
       }
     }
-  }
-  position: relative;
-  margin-bottom:0;
-  h1 {
-    font-size: rem-calc(25);
-    margin: 0;
-    color:color(dark-gray);
-    word-break: break-word;
   }
   &.card--list {
     @include xy-grid;
@@ -73,6 +89,19 @@ a.card,
   }
   &.card--calendar{
     border-bottom:5px solid map-get($post_content_types, calendar);
+  }
+  &.card--navigation{
+    background: transparent;
+    border-bottom: none;
+    p{
+      line-height: 2rem;
+    }
+    i {
+      font-size: rem-calc(100);
+    }
+    h3{
+      font-size: rem-calc(30);
+    }
   }
   .post-meta{
     position: absolute;
@@ -124,6 +153,11 @@ a.card.card--last,
     }
   }
 }
+a.faux-card {
+  h1, .h1{
+    font-size: 1.78571rem;
+  }
+}
 .faux-card:link,
 .faux-card:visited{
   font-weight: 400;
@@ -156,4 +190,21 @@ a.card.card--last,
 //TODO: Add to standards. It's currently only on medium and up breakpoints but should be for all.
 a.card.sub-topic{
   margin-bottom: 4rem;
+}
+
+.icon-box{
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  .icon-content {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

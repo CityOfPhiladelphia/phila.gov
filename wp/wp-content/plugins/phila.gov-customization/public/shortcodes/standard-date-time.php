@@ -20,5 +20,5 @@ function standard_date_time_shortcode( $atts, $content = null ){
 add_action( 'init', 'register_standard_date_time_shortcode' );
 
 function register_standard_date_time_shortcode(){
-   add_shortcode( 'standard_date_time', 'standard_date_time_shortcode' );
+  add_shortcode( 'standard_date_time', 'standard_date_time_shortcode' );
 }

@@ -55,9 +55,9 @@
   <?php endforeach ?>
 
 <?php endforeach ?>
-  <!-- Featured resources -->
+<section class="mtl">
     <?php if ( !empty( $featured_resources ) ):?>
-
+  <!-- Featured resources -->
       <?php
       ksort($featured_resources);
       $item_count = count( $featured_resources );
@@ -189,3 +189,6 @@
     <?php endforeach; ?>
   <?php endif; ?>
 <?php endif; ?>
+</section>
+<!-- /Resource list -->
+<?php wp_reset_postdata(); ?>

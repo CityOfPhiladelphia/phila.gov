@@ -963,6 +963,60 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
+
+function phila_get_department_owner_ids( $categories ){
+  if( !empty( $categories ) && $categories[0]->slug != 'uncategorized' ) { 
+
+
+    $cat_ids = array();
+    $cat_slug = array();
+    $final_list = array();
+
+
+    foreach( $categories as $cat ){
+      array_push( $cat_slug, $cat->slug );
+    }
+
+    foreach( $categories as $cat ){
+      array_push( $cat_ids, $cat->cat_ID );
+    }
+
+    $args = array(
+      'post_type'=> 'department_page',
+      'posts_per_page' => -1,
+      'category__in'  => $cat_ids,
+      'post_parent'  => 0
+    );
+
+
+    $pages_with_cat = new WP_Query( $args );
+
+    if ( $pages_with_cat->have_posts() ) {
+
+      while ( $pages_with_cat->have_posts() ) {
+        global $post;
+        $pages_with_cat->the_post();
+
+        $post_slug = $post->post_name;
+
+        if ( $post_slug != '' ) {
+
+          $all_available_pages[$post->ID] = $post_slug;
+
+        }
+      }
+    }
+
+    wp_reset_postdata();
+
+    $final_list = array_intersect($all_available_pages, $cat_slug);
+
+    return $final_list;
+
+  }
+
+}
+
 function phila_get_service_updates(){
 
     $service_update_details = rwmb_meta( 'service_update' );
@@ -1296,13 +1350,12 @@ function phila_cta_full_display( $cta_full ){
   return $output;
 }
 
-function phila_extract_clonable_wysiwyg($parent_group){
+function phila_extract_clonable_wysiwyg( $parent_group, $array_key = 'phila_wysiwyg_address_content'){
   $output = array();
 
   if ( !empty($parent_group) ){
 
-    $clonable_wysiwyg = isset($parent_group['phila_wysiwyg_address_content'] ) ? $parent_group['phila_wysiwyg_address_content'] : $output;
-
+    $clonable_wysiwyg = isset($parent_group[$array_key] ) ? $parent_group[$array_key] : $output;
     foreach ( $clonable_wysiwyg as $k => $v ){
       $output[$k] = $v;
     }

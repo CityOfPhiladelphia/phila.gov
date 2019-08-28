@@ -8,13 +8,10 @@
 <?php
 $category = get_the_category();
 $posted_on_values = phila_get_posted_on();
-$the_title =  get_the_title();
-$email_title = urlencode(html_entity_decode($the_title));
 $post_type = get_post_type();
 $post_obj = get_post_type_object( $post_type );
 $post_id = get_the_id();
 $template_type = phila_get_selected_template();
-$tweet_intent = rwmb_meta('phila_social_intent');
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
@@ -26,11 +23,8 @@ $tweet_intent = rwmb_meta('phila_social_intent');
           <?php the_title( '<h1>', '</h1>' ); ?>
         <?php endif; ?>
       </div>
-      <div class="cell medium-6 align-self-bottom social-media">
-        <a href="#" id="fb-share" data-analytics="social"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a>
-        <a href="https://twitter.com/intent/tweet?text=<?php echo ( $tweet_intent != '' ) ? phila_encode_title(rwmb_meta('phila_social_intent') ) :  phila_encode_title( $the_title );?>&url=<?php echo get_permalink()?>"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
-        <a href="mailto:?subject=<?php echo str_replace('+', '%20', $email_title) ?>&body=<?php echo get_permalink()?>" data-analytics="social"><i class="far fa-envelope fa-lg" aria-hidden="true"></i></a>
-        <a href="javascript:window.print()" data-analytics="social"><i class="fal fa-print fa-lg" aria-hidden="true"></i></a>
+      <div class="cell medium-6 align-self-bottom">
+        <?php get_template_part('partials/posts/social-media') ?>
       </div>
       <div class="border-bottom-fat"></div>
     </div>
