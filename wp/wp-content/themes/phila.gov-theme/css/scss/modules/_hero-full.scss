@@ -1,0 +1,18 @@
+.hero-full{
+  .hero-full--container .grid-container{
+    background-image: url('https://www.phila.gov/assets/images/bell-10-percent.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height:200px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-top:0;
+  }
+  .hero-image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 400px;
+  }
+}

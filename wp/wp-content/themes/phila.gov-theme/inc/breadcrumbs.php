@@ -104,6 +104,18 @@ function phila_breadcrumbs() {
 
       echo '<li><a href="/programs">Programs and initiatives</a></li>' . $output;
       echo '<li> '.$title.'</li>';
+    } elseif ( is_singular('guides') ) {
+
+      $anc = get_post_ancestors( $post->ID );
+      $title = get_the_title();
+
+      foreach ( $anc as $ancestor ) {
+
+        $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
+      }
+
+      echo $output;
+      echo '<li> '.$title.'</li>';
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if ( get_post_type() == 'service_page') {
@@ -129,7 +141,7 @@ function phila_breadcrumbs() {
 
       echo '<li><a href="/posts">Posts</a></li>';
       echo '<li>';
-       '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
+      '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
 
     } elseif( is_archive() && is_category() ){
 

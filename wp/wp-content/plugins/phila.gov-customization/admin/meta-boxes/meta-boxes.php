@@ -559,7 +559,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_full_row_press_releases',
     'title'    => 'Full row press releases posts (3 total)',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'guides' ),
     'context'  => 'normal',
     'priority' => 'default',
 
@@ -569,7 +569,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
+        array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
+      'relation'  => 'or'
     ),
     'fields' => array(
       array(
@@ -607,17 +609,19 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_full_row_blog',
     'title'    => 'Full row blog posts (3 total)',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'guides' ),
     'context'  => 'normal',
-    'priority' => 'default',
+    'priority' => 'high',
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
       'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
+        array( 'phila_template_select', '=', 'homepage_v2' ),
+        array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
+      'relation' => 'or', 
     ),
 
     'fields' => array(
@@ -848,6 +852,7 @@ $meta_boxes[] = array(
       array( 'phila_template_select', '=', 'default'),
       array( 'phila_template_select', '=', 'start_process'),
       array( 'phila_template_select', '=', 'default_v2' ),
+
     ),
     'relation' => 'or',
   ),
@@ -1035,7 +1040,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'id'       => 'phila_custom_markup',
   'title'    => 'Custom Markup',
-  'pages'    => array( 'department_page', 'page', 'service_page', 'programs' ),
+  'pages'    => array( 'department_page', 'page', 'service_page', 'programs', 'guides' ),
   'context'  => 'advanced',
   'priority' => 'low',
 

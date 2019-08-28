@@ -38,5 +38,5 @@ function info_block_shortcode($a, $content=null){
 add_action( 'init', 'register_info_block_shortcode' );
 
 function register_info_block_shortcode(){
-   add_shortcode( 'info-block', 'info_block_shortcode' );
+  add_shortcode( 'info-block', 'info_block_shortcode' );
 }

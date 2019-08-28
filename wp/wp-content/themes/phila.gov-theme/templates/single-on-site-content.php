@@ -12,9 +12,11 @@ $user_selected_template    = phila_get_selected_template();
 
 ?>
 
-<?php if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'homepage_v2' && $is_stub != 'false'):
-  get_template_part( 'partials/breadcrumbs' );
-endif; ?>
+<?php if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'homepage_v2' && $is_stub != 'false'):?>
+  <div class="mtl mbm">
+    <?php get_template_part( 'partials/breadcrumbs' ); ?>
+  </div>
+<?php endif; ?>
 
 
 

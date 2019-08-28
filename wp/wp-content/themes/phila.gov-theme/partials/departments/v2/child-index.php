@@ -4,7 +4,9 @@
  *
  */
 ?>
-<?php get_template_part( 'partials/breadcrumbs' ); ?>
+<div class="mtl mbm">
+  <?php get_template_part( 'partials/breadcrumbs' ); ?>
+</div>
 <article>
 
   <div data-swiftype-index='true' class="entry-content">
