@@ -77,7 +77,9 @@ get_header(); ?>
           <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
           <?php $post_id = intval( $stub_source );?>
           <?php $is_stub = true; ?>
-          <?php  get_template_part( 'partials/breadcrumbs' ); ?>
+          <div class="mtl mbm">
+            <?php  get_template_part( 'partials/breadcrumbs' ); ?>
+          </div>
             <?php $stub_args = array(
               'p' => $post_id,
               'post_type' => 'department_page'
