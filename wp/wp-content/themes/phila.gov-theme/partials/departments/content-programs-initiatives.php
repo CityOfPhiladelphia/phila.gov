@@ -161,9 +161,11 @@
           <?php elseif ( $current_row_option == 'phila_stepped_content'):?>
             <?php if ( isset( $current_row['phila_full_options']['phila_full_options_select'] ) ): ?>
               <!-- Heading groups -->
-              <?php
-              $heading_groups = $current_row['phila_full_options']['phila_heading_groups'];
-              include(locate_template('partials/content-heading-groups.php')); ?>
+              <div class="grid-container">
+                <?php
+                $heading_groups = $current_row['phila_full_options']['phila_heading_groups'];
+                include(locate_template('partials/content-heading-groups.php')); ?>
+              </div>
               <!-- /Heading groups -->
 
             <?php endif;?>
