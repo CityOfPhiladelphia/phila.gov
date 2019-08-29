@@ -93,6 +93,7 @@ a.card,
   &.card--navigation{
     background: transparent;
     border-bottom: none;
+
     p{
       line-height: 2rem;
     }
@@ -101,6 +102,21 @@ a.card,
     }
     h3{
       font-size: rem-calc(30);
+    }
+    @include breakpoint(small only) {
+      background: color(ghost-gray);
+      .icon-box{
+        width:20%;
+        padding-top:20%;
+        float:left;
+        margin-right: 1rem;
+      }
+      h3{
+        font-size: rem-calc(24);
+      }
+      i {
+        font-size: rem-calc(24);
+      }
     }
   }
   .post-meta{
