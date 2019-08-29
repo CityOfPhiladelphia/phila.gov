@@ -17,6 +17,7 @@
   h6, .h6{
     font-size: rem-calc(15);
   }
+
   .social-media .fa, .social-media .fab, .social-media .fal, .social-media .far, .social-media .fas {
     font-size: 1.2rem;
 }
@@ -119,6 +120,26 @@
     }
     .guide-content{
       width: 100%;
+    }
+  }
+  @include breakpoint(small only) {
+    h1, .h1 {
+      font-size: rem-calc(45);
+    }
+    h2, .h2{
+      font-size: rem-calc(35);
+    }
+    h3, .h3{
+      font-size: rem-calc(25);
+    }
+    h4, .h4{
+      font-size: rem-calc(20);
+    }
+    h5, .h5{
+      font-size: rem-calc(15);
+    }
+    h6, .h6{
+      font-size: rem-calc(15);
     }
   }
 }

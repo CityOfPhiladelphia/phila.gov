@@ -18,7 +18,7 @@
     </div>
     <div class="card-text">
       <h3><?php echo !empty($h3) ? $h3 : ''?></h3>
-      <p><?php echo !empty($description) ? $description : ''?></p>
+      <p class="hide-for-small-only"><?php echo !empty($description) ? $description : ''?></p>
     </div>
   </a>
 <?php endif ?>
