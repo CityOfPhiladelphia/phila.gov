@@ -17,7 +17,7 @@ function service_tile_shortcode($atts){
     $ids = explode(',', $a['ids']);
     $output .= '<div class="row equal-height fat-gutter">';
         foreach( $ids  as $id ) :
-          if ( get_post_type($id) !== 'service_page' ) {
+          if ( get_post_type(trim($id)) !== 'service_page' ) {
             $output .= '<div class="row columns end phila-placeholder">Please use the ID of a service page.</div>';
             return $output;
           }
@@ -30,7 +30,7 @@ function service_tile_shortcode($atts){
             </a>
           </div>';
         endforeach;
-        $output .= '</div></div>';
+        $output .= '</div>';
 
     return $output;
   } else {
