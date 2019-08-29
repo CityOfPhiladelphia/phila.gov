@@ -145,13 +145,13 @@ $result->post_count = count( $result->posts );
         <?php if ($count >= 3 ): ?>
         <div class="grid-container group">
             <?php $see_all = array(
-              'URL' => '/the-latest/archives/#/?templates=post',
+              'URL' => '/the-latest/archives/#/?templates=post&templates=featured',
               'content_type' => $label,
               'nice_name' => 'posts'
             ); ?>
             <?php if( !empty( $post_categories ) ) :?>
               <?php $see_all_URL = array(
-                'URL' => '/the-latest/archives/#/?templates=post&department=' . $slang_name,
+                'URL' => '/the-latest/archives/#/?templates=post&templates=featured&department=' . $slang_name,
               );
               $see_all = array_replace( $see_all, $see_all_URL );
               endif;?>
