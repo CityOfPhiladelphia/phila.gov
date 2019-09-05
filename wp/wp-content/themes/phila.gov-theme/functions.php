@@ -1489,6 +1489,16 @@ function phila_connect_panel($connect_panel) {
 
     'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number']  : '',
     );
+    foreach ( $connect_panel['phila_connect_general']['phila_connect_phone_multi'] as $key => $value ) {
+
+      $output_array['phone_multi'][$key] = array(
+        'area' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['area'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['area'] : '',
+  
+        'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] : '',
+  
+      'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number']  : '',
+      );
+    }
 
     $output_array['fax'] =
       isset( $connect_panel['phila_connect_general']['phila_connect_fax'] ) && is_array( $connect_panel['phila_connect_general']['phila_connect_fax'] ) ? $connect_panel_fax = '(' . $connect_panel['phila_connect_general']['phila_connect_fax']['area'] . ') ' . $connect_panel['phila_connect_general']['phila_connect_fax']['phone-co-code'] . '-' . $connect_panel['phila_connect_general']['phila_connect_fax']['phone-subscriber-number'] : '' ;
