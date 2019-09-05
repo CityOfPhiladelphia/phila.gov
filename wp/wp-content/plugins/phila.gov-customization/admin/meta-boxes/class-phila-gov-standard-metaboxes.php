@@ -1007,6 +1007,12 @@ public static function phila_meta_var_connect(){
             'desc' => '(###)-###-####',
           ),
           array(
+            'name' => 'Secondary phone',
+            'id'   => 'phila_connect_phone_second',
+            'type' => 'phone',
+            'desc' => '(###)-###-####',
+          ),
+          array(
             'name' => 'Fax',
             'id'   => 'phila_connect_fax',
             'type' => 'phone',
