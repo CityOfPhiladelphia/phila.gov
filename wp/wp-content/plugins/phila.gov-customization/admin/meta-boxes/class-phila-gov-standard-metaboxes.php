@@ -1007,6 +1007,21 @@ public static function phila_meta_var_connect(){
             'desc' => '(###)-###-####',
           ),
           array(
+            'name' => 'More phone numbers' ,
+            'id'   => 'phila_connect_phone_multi',
+            'type' => 'group',
+            'clone' => true,
+            'add_button'  => '+ Add another number',
+            'fields'  => array(
+              array(
+                'id'   => 'phila_connect_phone',
+                'type' => 'phone',
+                'desc' => '(###)-###-####',
+              ),
+            ),
+
+          ),
+          array(
             'name' => 'Fax',
             'id'   => 'phila_connect_fax',
             'type' => 'phone',
