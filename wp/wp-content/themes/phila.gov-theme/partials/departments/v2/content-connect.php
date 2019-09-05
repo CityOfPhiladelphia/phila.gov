@@ -78,6 +78,23 @@
           <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span>
           <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value phone-link"><?php echo $full_phone; ?></a>
         </div>
+        <?php if (!phila_util_is_array_empty($connect_vars['phone_multi'])): ?>
+          <?php foreach ($connect_vars['phone_multi'] as $phone_multi) : ?>
+          <div class="p-tel">
+            <?php
+            $area = ( $phone_multi['area'] != '' ) ? '(' .  $phone_multi['area'] . ') ' : '';
+
+            $co_code = ( $phone_multi['co-code'] != '' ) ? $phone_multi['co-code'] : '';
+
+            $subscriber_number = ( $phone_multi['subscriber-number'] != '' ) ? '-' . $phone_multi['subscriber-number'] : '';
+
+            $full_phone_2 = $area . $co_code . $subscriber_number;
+            ?>
+            <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Secondary phone: </span>
+            <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone_2); ?>" class="value phone-link"><?php echo $full_phone_2; ?></a>
+          </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
       <?php if ( !$connect_vars['fax'] == '') : ?>
         <div class="fax">
           <span class="type">Fax: </span><span class="value"><?php echo $connect_vars['fax']; ?></span>
