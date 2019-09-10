@@ -169,3 +169,7 @@ caption {
     width: 50%;
   }
 }
+//TODO: Fix in standards
+#google_translate_element .goog-te-gadget-simple span {
+  vertical-align: middle !important; 
+}
