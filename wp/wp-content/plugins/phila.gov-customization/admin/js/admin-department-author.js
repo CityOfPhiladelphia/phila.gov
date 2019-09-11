@@ -121,19 +121,28 @@ jQuery(document).ready(function($){
   }
 
   if ( ( typenow == 'post') && adminpage.indexOf('post') > -1 ){
+
+    //remove other options from the post dropdown unless that user has specific permissions to do it
     $('#phila_template_select option').each( function () {
       if( $(this).val() !== '' && $(this).val() !== 'post' ){
         $(this).css('display', 'none');
-      }
+      } 
     });
+      //ensure users who only have access to posts get the option preselcted for them
+    if (!phila_WP_User.includes('secondary_press_release_editor') && 
+      !phila_WP_User.includes('secondary_press_release_contributor') &&
+      !phila_WP_User.includes( 'secondary_action_guide_editor' )){
+      $("#phila_template_select").val('post');
+    }
+
     if( phila_WP_User.includes('secondary_press_release_editor') || phila_WP_User.includes('secondary_press_release_contributor') ) {
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'press_release' ){
           $(this).css('display', 'inline-block');
         }
       });
-      $("#phila_template_select").val('post');
     }
+    
     if( phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'action_guide' ){
@@ -141,6 +150,7 @@ jQuery(document).ready(function($){
         }
       });
     }
+
 
   }
   if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
