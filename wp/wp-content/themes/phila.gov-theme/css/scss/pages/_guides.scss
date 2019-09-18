@@ -56,7 +56,7 @@
   .intro-button {
     display: none;
   }
-  
+
   a.card.sub-topic {
     margin-bottom: 0;
   }
@@ -313,11 +313,9 @@
   }
 }
 
-@include breakpoint (small only) {
-  .guides-template-default #global-footer {
-    margin-top: 1rem;
-    .footer-logos {
-      padding-top: 1rem;
-    }
+.guides-template-default #global-footer {
+  margin-top: 1rem;
+  .footer-logos {
+    padding-top: 1rem;
   }
 }
