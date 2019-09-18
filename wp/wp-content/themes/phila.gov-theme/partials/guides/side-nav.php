@@ -19,7 +19,7 @@
   if ( $parent->have_posts() ) : ?>
     <section>
       <div class="sticky-container" data-sticky-container>
-        <div class="sticky-side-nav" data-sticky data-top-anchor="breadcrumbs:bottom" data-btm-anchor="global-footer" id="guides-nav">
+        <div class="sticky-side-nav" data-sticky data-top-anchor="breadcrumbs:bottom" data-margin-top="5" data-btm-anchor="global-footer" id="guides-nav">
         <nav class="mbxxl">
 
         <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
@@ -27,9 +27,9 @@
         <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
 
         <?php $sub_heads = phila_extract_clonable_wysiwyg( $heading_groups, $array_key = 'phila_wywiwyg_alt_heading' ); ?>
-          <ul class="no-bullet" data-magellan data-offset="300" data-threshold="100">
+          <ul class="no-bullet">
             <li>
-              <a href="<?php echo ($this_post !== $post->ID) ? get_the_permalink() : '#' . sanitize_title_with_dashes(get_the_title()); ?>">
+              <a href="<?php echo get_the_permalink()?>" class="<?php echo ($this_post !== $post->ID) ? '' : 'is-active' ?>">
                 <span class="icon"><?php echo !empty( $guide_icon )  ? '<i class="' . $guide_icon . ' fa-fw"></i>' : '' ?></span>
                 <span class="title"><?php the_title(); ?></span>
               </a>
