@@ -86,7 +86,7 @@ class Phila_Gov_Register_Program_Templates {
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
         'relation' => 'or',
-       ),
+      ),
       'fields' => array(
         array(
           'id' => 'prog_header_img',
