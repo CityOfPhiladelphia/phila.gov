@@ -5,7 +5,7 @@
  */
 ?>
 
-<footer class="guides-footer mtxl">
+<footer class="guides-footer mtxl mobile-no-top-margin">
   <?php
     $args = array(
       'child_of' => $post->post_parent,
