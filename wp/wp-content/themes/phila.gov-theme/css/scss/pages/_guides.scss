@@ -56,6 +56,10 @@
   .intro-button {
     display: none;
   }
+  
+  a.card.sub-topic {
+    margin-bottom: 0;
+  }
 
   .page-title-group h1 {
     font-size: rem-calc(65);
@@ -216,7 +220,6 @@
         font-weight: 600;
         margin: 5px 0 5px 0;
       }
-     
     }
 
     .page-title {
@@ -254,10 +257,6 @@
       }
   }
 
-    a.card.sub-topic {
-      margin-bottom: 0;
-    }
-
 
     .page-title-button {
       word-break: normal;
@@ -280,8 +279,6 @@
     }
 
     .guide-content {
-      // padding: 0;
- 
       .page-title-group {
         display: none;
       }
