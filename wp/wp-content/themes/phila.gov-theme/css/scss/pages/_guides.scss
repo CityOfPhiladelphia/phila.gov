@@ -1,43 +1,62 @@
-.guides{
-  h1, .h1 {
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600&display=swap");
+
+.guides {
+  h1,
+  .h1 {
     font-size: rem-calc(75);
   }
-  h2, .h2{
+  h2,
+  .h2 {
     font-size: rem-calc(45);
   }
-  h3, .h3{
-    font-size: rem-calc(35);
+  h3,
+  .h3 {
+    font-size: rem-calc(32);
   }
-  h4, .h4{
-    font-size: rem-calc(25);
+  h4,
+  .h4 {
+    font-size: rem-calc(24);
   }
-  h5, .h5{
+  h5,
+  .h5 {
     font-size: rem-calc(20);
   }
-  h6, .h6{
+  h6,
+  .h6 {
     font-size: rem-calc(15);
   }
 
-  .social-media .fa, .social-media .fab, .social-media .fal, .social-media .far, .social-media .fas {
+  .social-media .fa,
+  .social-media .fab,
+  .social-media .fal,
+  .social-media .far,
+  .social-media .fas {
     font-size: 1.2rem;
-}
-  .guide-name{
-    margin:0 0 0 130px;
-    a:link, a:visited{
-      color:white;
+  }
+  .guide-name {
+    margin: 0 0 0 130px;
+    a:link,
+    a:visited {
+      color: white;
     }
-    a:hover, a:active{
+    a:hover,
+    a:active {
       color: color(light-ben-franklin);
     }
   }
-  .intro-text{
+  .intro-text {
     font-size: rem-calc(25);
     line-height: 1.8rem;
-    margin-bottom: 5rem;
+    // margin-bottom: 5rem;
     p {
       margin-bottom: 3rem;
     }
   }
+
+  .intro-button {
+    display: none;
+  }
+
   .page-title-group h1 {
     font-size: rem-calc(65);
     i {
@@ -47,7 +66,7 @@
       display: inline-block;
       vertical-align: top;
     }
-    .title{
+    .title {
       display: inline-block;
       max-width: calc(100% - 88px);
       word-break: break-word;
@@ -56,50 +75,50 @@
   #guide-hero {
     z-index: 1000;
   }
-  .shrink{
-    .hero-full .hero-full--container .grid-container{
+  .shrink {
+    .hero-full .hero-full--container .grid-container {
       height: 7rem;
-      transition: height .3s ease-in-out;
-      background-position: bottom left;      
+      transition: height 0.3s ease-in-out;
+      background-position: bottom left;
       background-size: 170px;
     }
   }
 
-  #guides-nav{
+  #guides-nav {
     border-right: 1px solid #ccc;
     height: 100%;
     overflow-y: scroll;
-    .icon{
+    .icon {
       display: inline-block;
       vertical-align: top;
     }
-    .title{
+    .title {
       display: inline-block;
       max-width: calc(100% - 28px);
     }
-    ul{
-      margin-bottom:1rem;
-      padding:0;
+    ul {
+      margin-bottom: 1rem;
+      padding: 0;
       font-size: 1.3rem;
-      .is-active{
+      .is-active {
         padding: 0;
       }
-      ul{
+      ul {
         font-size: rem-calc(14);
         margin-left: 2.1rem;
-        .is-active{
+        .is-active {
           padding: 5px;
         }
       }
-      li{
+      li {
         padding: 1rem 0 1rem 0;
-        li{
-          padding: 3px 0 .8rem 0;
+        li {
+          padding: 3px 0 0.8rem 0;
           line-height: 1.5rem;
         }
       }
     }
-    .is-active{
+    .is-active {
       display: inline-block;
       background: color(dark-gray);
       color: white;
@@ -111,35 +130,197 @@
     .hero-full .hero-full--container .grid-container {
       height: auto;
     }
-    .sticky-container{
-      display:inline-block;
+    .sticky-container {
+      display: inline-block;
       height: 0 !important;
     }
-    .breadcrumbs{
-      display:none;
+    .breadcrumbs {
+      display: none;
     }
-    .guide-content{
+    .guide-content {
       width: 100%;
     }
   }
+
   @include breakpoint(small only) {
-    h1, .h1 {
-      font-size: rem-calc(45);
+
+    .mobile-no-bottom-margin {
+      margin-bottom: 0;
     }
-    h2, .h2{
-      font-size: rem-calc(35);
+
+    .mobile-no-top-margin {
+      margin-top: 0;
     }
-    h3, .h3{
-      font-size: rem-calc(25);
+
+    .hero-full--container{
+      margin: 0;
     }
-    h4, .h4{
-      font-size: rem-calc(20);
+
+    #guide-hero {
+      .hero-full {
+        // height: 5rem;
+        .grid-container {
+          height: 7rem;
+          background-image: none;
+          .hero-full--title {
+            align-self: center;
+            margin: 0 auto;
+            h1 {
+              font-size: 3rem;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
     }
-    h5, .h5{
-      font-size: rem-calc(15);
+
+    #breadcrumbs {
+      div {
+        margin: 0;
+      }
     }
-    h6, .h6{
-      font-size: rem-calc(15);
+    .nav-container {
+      display: none;
+      // position: absolute;
+    }
+
+    
+    .intro-text {
+      font-size: 1rem;
+      line-height: 1rem;
+      margin-bottom: 0;
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+
+    #guides-intro-text {
+  
+      height: 100px;
+      overflow: hidden;
+      
+    }
+
+    .intro-button {
+      float: right;
+      display: block;
+      margin-top: 5px;
+      transition-timing-function: ease;
+    }
+
+    .guide-page-title {
+      margin-bottom: 0px;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 5px 0 5px 0;
+      }
+     
+    }
+
+    .page-title {
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 400;
+      }
+    }
+    .guide-landing-nav {
+      .cell.medium-7 {
+        margin-bottom: 0;
+      }
+
+      .guide-card {
+        display: flex;
+
+        .icon-box {
+          // width: 44px !important;
+          padding: 7% !important;
+        }
+
+        .guide-card-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          h3 {
+            margin: 0px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: black;
+          }
+        }
+      }
+  }
+
+    a.card.sub-topic {
+      margin-bottom: 0;
+    }
+
+
+    .page-title-button {
+      word-break: normal;
+      position: sticky;
+      top: 0;
+      background-color: whitesmoke;
+      z-index: 1000;
+      box-shadow: 0 4px 2px -2px gray;
+      padding: 5px 0px 5px 0px;
+      text-align: center;
+      margin-bottom: 10px;
+  
+      h1 {
+          font-size: 2.4rem;
+          color: color(dark-ben-franklin);
+          font-weight: 600;
+
+        
+      }
+    }
+
+    .guide-content {
+      // padding: 0;
+ 
+      .page-title-group {
+        display: none;
+      }
+        h1,
+        .h1 {
+          font-size: rem-calc(30);
+        }
+        h2,
+        .h2 {
+          font-size: rem-calc(25);
+          font-weight: 600;
+        }
+        h3,
+        .h3 {
+          font-size: rem-calc(20);
+          // font-weight: bold;
+        }
+        h4,
+        .h4 {
+          font-size: rem-calc(15);
+        }
+        h5,
+        .h5 {
+          font-size: rem-calc(10);
+        }
+        h6,
+        .h6 {
+          font-size: rem-calc(10);
+        }
+      }
+    
+  }
+}
+
+@include breakpoint (small only) {
+  .guides-template-default #global-footer {
+    margin-top: 1rem;
+    .footer-logos {
+      padding-top: 1rem;
     }
   }
 }

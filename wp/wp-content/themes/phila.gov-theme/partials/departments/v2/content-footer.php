@@ -29,6 +29,7 @@
   $ids = phila_get_department_owner_ids($categories = get_the_category());
   if ($ids !== null) : ?>
     <div class="grid-container footer-logos">
+      <hr>
       <div class="grid-x">
         <?php foreach ($ids as $id => $slug) :?>
           <div class="cell center medium-<?php echo phila_grid_column_counter(sizeof($ids))?>">
