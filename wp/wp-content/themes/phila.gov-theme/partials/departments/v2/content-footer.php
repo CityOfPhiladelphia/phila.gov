@@ -17,9 +17,10 @@
   }
 ?>
 <?php if( null !== phila_get_department_logo_v2($id) && !is_archive()  ) : ?>
+<?php  $logo = phila_get_department_logo_v2( $id );?>
   <div class="row mtxl">
     <div class="columns center">
-      <img src="<?php echo phila_get_department_logo_v2( $id ) ?>" class="department-logo" alt="">
+      <img src="<?php echo $logo['full_url'] ?>" class="department-logo" alt="<?php echo $logo['alt'] ?>">
     </div>
   </div>
 <?php endif;?>
@@ -28,12 +29,14 @@
 <?php if (get_post_type() == 'guides') :
   $ids = phila_get_department_owner_ids($categories = get_the_category());
   if ($ids !== null) : ?>
+
     <div class="grid-container footer-logos">
       <hr>
-      <div class="grid-x">
+      <div class="grid-x align-center">
         <?php foreach ($ids as $id => $slug) :?>
-          <div class="cell center medium-<?php echo phila_grid_column_counter(sizeof($ids))?>">
-            <img src="<?php echo phila_get_department_logo_v2($id); ?>" src="">
+          <?php $img = rwmb_meta( 'phila_v2_department_logo', $args = array( 'size' => 'full', 'limit' => 1 ), $id ); ?>
+          <div class="cell center medium-6">
+            <img src="<?php echo $img[0]['full_url'] ?>" class="department-logo" alt="<?php echo $img[0]['alt'] ?>">
           </div>
         <?php endforeach; ?>
         </div>
