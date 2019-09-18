@@ -651,7 +651,7 @@ function phila_format_document_type($document_type){
       echo 'docx';
       break;
     case 'pdf':
-      echo $document_type;
+      echo 'PDF';
       break;
     case 'msword':
       echo 'doc';

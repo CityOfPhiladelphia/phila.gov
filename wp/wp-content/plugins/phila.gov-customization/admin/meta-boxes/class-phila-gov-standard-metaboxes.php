@@ -302,14 +302,26 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       'id'  => 'phila_document_page_picker',
       'type'  => 'post',
-      'name'  => 'Select document page',
-      'post_type' => 'document',
+      'name'  => 'Select document or document finder page',
+      'post_type' => array( 'document', 'department_page' ),
       'field_type'  => 'select_advanced',
-      'desc'  => 'Add document pages. You can narrow your search options by typing in the field above.',
+      'desc'  => 'Add document or document finder pages. You can narrow your search options by typing in the field above.',
       'query_args'  => array(
         'orderby' => 'title',
         'order' => 'ASC',
-        'post_status' => 'any'
+        'post_status' => 'any',
+        'meta_query' => array(
+          'relation'  => 'OR',
+          array(
+            'key'     => 'phila_template_select',
+            'value'   => 'document_finder_v2',
+            'compare' => '=',
+          ),
+          array(
+            'key'     => 'phila_template_select',
+            'compare' => 'NOT EXISTS',
+          ),
+        ),
       ),
       'multiple'  => true,
       'placeholder' => ' ',

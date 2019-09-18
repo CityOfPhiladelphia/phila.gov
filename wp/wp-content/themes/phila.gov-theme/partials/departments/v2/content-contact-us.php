@@ -10,8 +10,6 @@ $contact_us_vars = rwmb_meta('phila_contact_us');
 $contact_us = phila_loop_clonable_metabox($contact_us_vars);
 ?>
 <?php foreach ($contact_us as $row) : ?>
-  <div class="row">
-    <div class="columns">
       <?php
         $row_title = isset( $row['phila_contact_row_title']) ? $row['phila_contact_row_title'] : '';
       ?>
@@ -20,7 +18,7 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
           <h2 class="black bg-ghost-gray phm-mu mtl mbm"> <?php echo $row_title; ?> </h2>
         </div>
       <?php endif; ?>
-      <div class="row custom-text-multi equal-height">
+      <div class="row phl columns custom-text-multi equal-height">
         <?php foreach($row['phila_contact_group'] as $column ): ?>
           <?php //TODO: Clean up ?>
           <?php $column_title = isset( $column['phila_contact_column_title']) ? $column['phila_contact_column_title'] : '';?>
@@ -90,7 +88,7 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
                 <div class="inline-block valign-top">
                   <?php if (!$hours_day_start == '') :?>
                     <?php echo $hours_day_start . ' &mdash; ' . $hours_day_end ?>, <br>
-                     <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $hours_time_start . ' &mdash; ' . $hours_time_end); ?>
+                    <?php echo str_replace(array('am','pm'),array('a.m.','p.m.'), $hours_time_start . ' &mdash; ' . $hours_time_end); ?>
                   <?php endif; ?>
                 </div>
                 <?php endif; ?>
@@ -101,6 +99,4 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
           </div>
         <?php endforeach; ?>
       </div>
-    </div>
-  </div>
 <?php endforeach; ?>
