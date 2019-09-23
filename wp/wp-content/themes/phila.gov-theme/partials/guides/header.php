@@ -21,14 +21,14 @@
               </h1>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   </header>
 </div>
 <?php if (phila_get_selected_template($post->ID) !== 'guide_landing_page') : ?>
-  <div class="page-title-button hide-for-medium">
-    <h1> <?php echo get_the_title($post) ?> &or;</h1>
+  <div class="page-title-button hide-for-medium" id="page-title-button">
+    <h1> <?php echo get_the_title($post) ?> </h1> <div class="caret-icon"> <i class="fas fa-chevron-down"></i>  </div>
   </div>
 <?php endif; ?>
 <div id="breadcrumbs" class="grid-container pan">
