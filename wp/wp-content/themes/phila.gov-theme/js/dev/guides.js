@@ -18,15 +18,24 @@ module.exports = $(function () {
     });
 
     // $(".nav-container").hide();
-
     
     if (Foundation.MediaQuery.is('small only')) {
-        $("#page-title-button, #nav-menu-caret").click(function () {
+
+   if  ($('.nav-container').is(':visible')) 
+   {
+    $('body').css("overflow", "hidden")
+    } 
+
+        $("#page-title-button, #nav-menu-caret, .nav-subheader").click(function () {
             $(".nav-container").toggle();
             $("#guides-nav").toggle();
             $(".guides .sticky-container").height("100%");
         });
       }
+
+      $('.nav-subheader').click(function() {
+        
+      } );
     //calc offset from page-title-button and offset top of anchor x pix
   
 });
