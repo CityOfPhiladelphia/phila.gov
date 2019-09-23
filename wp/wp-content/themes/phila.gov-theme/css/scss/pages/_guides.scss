@@ -79,6 +79,7 @@
   #guide-hero {
     z-index: 1000;
   }
+  
   .shrink {
     .hero-full .hero-full--container .grid-container {
       height: 7rem;
@@ -92,6 +93,7 @@
     border-right: 1px solid #ccc;
     height: 100%;
     overflow-y: scroll;
+
     .icon {
       display: inline-block;
       vertical-align: top;
@@ -183,8 +185,9 @@
         margin: 0;
       }
     }
+    
     .nav-container {
-      display:none;
+      display: none;
       position: fixed;
       margin:0;
       top: 0;

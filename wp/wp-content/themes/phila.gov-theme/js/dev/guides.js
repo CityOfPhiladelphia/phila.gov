@@ -19,11 +19,14 @@ module.exports = $(function () {
 
     // $(".nav-container").hide();
 
-    $("#page-title-button, #nav-menu-caret").click(function () {
-        $(".nav-container").toggle();
-        $("#guides-nav").toggle();
-        $(".guides .sticky-container").height("100%");
-    });
-  
     
+    if (Foundation.MediaQuery.is('small only')) {
+        $("#page-title-button, #nav-menu-caret").click(function () {
+            $(".nav-container").toggle();
+            $("#guides-nav").toggle();
+            $(".guides .sticky-container").height("100%");
+        });
+      }
+    //calc offset from page-title-button and offset top of anchor x pix
+  
 });
