@@ -24,14 +24,20 @@ module.exports = $(function () {
     });
     // $(".nav-container").hide();
 
-    
     if (Foundation.MediaQuery.is('small only')) {
-        $("#page-title-button, #nav-menu-caret").click(function () {
+
+        $("#page-title-button, #nav-menu-caret, .nav-subheader").click(function () {
             $(".nav-container").toggle();
             $("#guides-nav").toggle();
             $(".guides .sticky-container").height("100%");
+            $('body').toggleClass('no-scroll');
+            $('#wpadminbar').toggle();
         });
-      }
+    }
+
+    // $('.nav-subheader').click(function () {
+
+    // });
     //calc offset from page-title-button and offset top of anchor x pix
-  
+
 });
