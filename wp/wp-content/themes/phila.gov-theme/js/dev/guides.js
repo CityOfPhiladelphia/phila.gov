@@ -28,11 +28,18 @@ module.exports = $(function () {
             $('body').toggleClass('no-scroll');
             $('#wpadminbar').toggle();
         });
+
+
+        // $(".title-link, .nav-subheader").click( function () {
+        //     console.log($('.page-title-button').height());
+            
+        //         window.scrollTo(window.scrollX, window.scrollY - $('.page-title-button').height());
+            
+        // });
+
     }
 
-    // $('.nav-subheader').click(function () {
-
-    // });
+    
     //calc offset from page-title-button and offset top of anchor x pix
 
 });

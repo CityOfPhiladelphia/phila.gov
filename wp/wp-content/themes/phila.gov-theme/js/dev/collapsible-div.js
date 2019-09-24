@@ -15,10 +15,6 @@ module.exports = $(function(){
     }
   });
 
-  if(Foundation.MediaQuery.current == 'small') {
-    $('.accordion').foundation('up', $('.accordion-content'));
-  }
-
   $('[data-toggle="icon-expand"]').click(function(e){
     e.preventDefault();
     $(this).next().attr('aria-expanded', 'true');

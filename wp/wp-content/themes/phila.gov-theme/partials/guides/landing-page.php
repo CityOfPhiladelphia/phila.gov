@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Guide homepage partial
  *
@@ -34,13 +35,13 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
   <?php if (!empty(get_the_content())) : ?>
     <div class="grid-container">
       <div class="grid-x grid-x-padding">
-        <div class="cell">
-          <div class="intro-text" id="guides-intro-text"><?php the_content(); ?></div>
 
+        <div class="expandable show-all-on-desktop">
+          <div class="intro-text" id="guides-intro-text"><?php the_content(); ?></div>
         </div>
-        <div class="cell">
-          <div class="intro-button button" id="guides-button-more">More</div>
-        </div>
+       
+          <a href="#" data-toggle="expandable" class="float-right more-button"> More + </a>
+       
       </div>
     </div>
   <?php endif; ?>
@@ -50,7 +51,9 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
 </section>
 
 <div class="grid-container">
-<div class="page-title "><h2>Explore this guide</h2></div>
+  <div class="page-title ">
+    <h2>Explore this guide</h2>
+  </div>
   <div class="grid-x grid-padding-x guide-landing-nav">
     <?php
     $args = array(
@@ -78,7 +81,7 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
     <?php endforeach; ?>
 
   </div>
- 
+
 </div>
 
 <?php if (!empty($full_row_blog_selected)) : ?>
