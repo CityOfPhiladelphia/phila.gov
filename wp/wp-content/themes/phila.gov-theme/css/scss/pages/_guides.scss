@@ -44,6 +44,10 @@
       color: color(light-ben-franklin);
     }
   }
+
+  @include breakpoint (medium) {
+  .show-all-on-desktop {
+    height: 100%;
   .intro-text {
     font-size: rem-calc(25);
     line-height: 1.8rem;
@@ -51,6 +55,11 @@
     p {
       margin-bottom: 3rem;
     }
+  }
+}
+.more-button {
+  display: none;
+}
   }
 
   .intro-button {
@@ -195,9 +204,17 @@
       z-index: 1000;
       background-color: #F0F0F0;
       overflow-y: scroll;
+      padding: 10px;
+     
 
       #guides-nav {
         display: none;
+        border: none;
+        overflow-y: none;
+        
+        #nav-menu-caret {
+          color:color(dark-ben-franklin);
+        }
 
         .title-link {
           border-bottom: solid 2px white;
@@ -232,8 +249,12 @@
       }
     }
 
+   .show-all-on-desktop {
+      min-height: 200px;
+   
+      .intro-text {
+
     
-    .intro-text {
       font-size: 1rem;
       line-height: 1rem;
       margin-bottom: 0;
@@ -241,20 +262,25 @@
         margin-bottom: 1rem;
       }
     }
+  }
 
-    #guides-intro-text {
+  .more-button {
+    margin-left: auto;
+  }
+
+    // #guides-intro-text {
   
-      height: 100px;
-      overflow: hidden;
+    //   height: 100px;
+    //   overflow: hidden;
       
-    }
+    // }
 
-    .intro-button {
-      float: right;
-      display: block;
-      margin-top: 5px;
-      transition-timing-function: ease;
-    }
+    // .intro-button {
+    //   float: right;
+    //   display: block;
+    //   margin-top: 5px;
+    //   transition-timing-function: ease;
+    // }
 
     .guide-page-title {
       margin-bottom: 0px;
@@ -315,7 +341,7 @@
       cursor: pointer;
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-evenly;
   
       h1, .caret-icon {
           font-size: 2.2rem;

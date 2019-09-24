@@ -28,7 +28,7 @@
             <i class="fas fa-home"></i>
               Overview
             </a>
-            <div id="nav-menu-caret"> <i class="fas fa-times"></i>  </div>
+            <div id="nav-menu-caret"> <i class="fas fa-times fa-2x"></i>  </div>
         </li>
         </ul>
 
@@ -46,7 +46,7 @@
               </a>
               <ul class="no-bullet">
                 <?php foreach($sub_heads as $sub_head) : ?>
-                  <li><a  class="nav-subheader" href="<?php echo ($this_post !== $post->ID) ? get_the_permalink() : '' ?>#<?php echo isset( $sub_head['phila_heading_alt']) ? sanitize_title_with_dashes($sub_head['phila_heading_alt']) : sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo isset( $sub_head['phila_heading_alt']) ? $sub_head['phila_heading_alt'] : $sub_head['phila_wysiwyg_heading'] ?></a></li>
+                  <li><a class="nav-subheader" href="<?php echo ($this_post !== $post->ID) ? get_the_permalink() : '' ?>#<?php echo isset( $sub_head['phila_heading_alt']) ? sanitize_title_with_dashes($sub_head['phila_heading_alt']) : sanitize_title_with_dashes($sub_head['phila_wysiwyg_heading']) ?>"><?php echo isset( $sub_head['phila_heading_alt']) ? $sub_head['phila_heading_alt'] : $sub_head['phila_wysiwyg_heading'] ?></a></li>
                 <?php endforeach?>
               </ul>
             </li>
