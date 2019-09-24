@@ -17,6 +17,11 @@ module.exports = $(function () {
         }
     });
 
+    $('.print-entire-guide').click(function(){
+        $('.guides-print-all-content').addClass('make-visible');
+        //reset print view so if user tries to print normally, they just get the page content
+        setTimeout(()=> $('.guides-print-all-content').removeClass('make-visible'), 200) 
+    });
     // $(".nav-container").hide();
 
     
