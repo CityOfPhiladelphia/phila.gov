@@ -141,23 +141,25 @@
   }
 
   .guides-print-all-content {
-    display:none;
-    &.make-visible{
+    display: none;
+    &.make-visible {
       display: none !important;
     }
   }
 
   @media print {
-    
-    h1{
+    h1 {
       font-size: 3rem;
       margin: 0;
     }
-    h2{
+    h2 {
       font-size: 2rem;
     }
-    h3, h4, h5, h6{
-      font-size: 1.5rem
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 1.5rem;
     }
     .hero-full .hero-full--container .grid-container {
       height: auto;
@@ -171,7 +173,7 @@
     .guide-content {
       width: 100%;
     }
-    .guide-name{
+    .guide-name {
       margin: 0;
     }
     .guides-print-all-content.make-visible {
@@ -180,8 +182,8 @@
     a.card img {
       width: 20%;
     }
-    .hide-from-print{
-      display:none;
+    .hide-from-print {
+      display: none;
     }
   }
 
@@ -244,6 +246,9 @@
 
         .title-link {
           border-bottom: solid 2px white;
+          // padding-right: 10em;
+          // padding-left: 10em;
+          // margin: 0 -10em;
         }
 
         ul {
@@ -260,6 +265,9 @@
               padding-left: 2.5rem;
               li {
                 border-bottom: solid 2px white;
+                padding-right: 10em;
+                padding-left: 10em;
+                margin: 0 -10em;
               }
             }
           }
@@ -289,12 +297,12 @@
       margin-left: auto;
     }
 
-    :target:before {
-      content: "";
-      display: block;
-      height: 70px; /* fixed header height*/
-      margin: -70px 0 0; /* negative fixed header height */
-    }
+    // :target:before {
+    //   content: "";
+    //   display: block;
+    //   height: 70px; /* fixed header height*/
+    //   margin: -70px 0 0; /* negative fixed header height */
+    // }
 
     .guide-page-title {
       margin-bottom: 0px;
@@ -346,7 +354,7 @@
       top: 0;
       background-color: whitesmoke;
       z-index: 500;
-      box-shadow: 0 4px 2px -2px gray;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
       padding: 5px 3px 5px 3px;
       text-align: center;
       margin-bottom: 10px;

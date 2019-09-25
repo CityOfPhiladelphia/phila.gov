@@ -1,28 +1,10 @@
 module.exports = $(function () {
 
-    // console.log("im here baby")
-    $("#guides-button-more").click(function () {
-        if ($("#guides-intro-text").height() == 100) {
-            $("#guides-intro-text").animate(
-                { height: "100%" });
-            $(this).text(function () {
-                return $(this).text().replace("More", "Less");
-            });
-        }
-        else if ($("#guides-intro-text").height() > 100) {
-            $("#guides-intro-text").animate({ height: "100px" });
-            $(this).text(function () {
-                return $(this).text().replace("Less", "More");
-            })
-        }
-    });
-
-    $('.print-entire-guide').click(function(){
+    $('.print-entire-guide').click(function () {
         $('.guides-print-all-content').addClass('make-visible');
         //reset print view so if user tries to print normally, they just get the page content
-        setTimeout(()=> $('.guides-print-all-content').removeClass('make-visible'), 200) 
+        setTimeout(() => $('.guides-print-all-content').removeClass('make-visible'), 200)
     });
-    // $(".nav-container").hide();
 
     if (Foundation.MediaQuery.is('small only')) {
 
@@ -34,17 +16,25 @@ module.exports = $(function () {
             $('#wpadminbar').toggle();
         });
 
+        var hash = window.location.hash
+        if (hash == '' || hash == '#' || hash == undefined) return false;
+        var target = $(hash);
+        var headerHeight = $('.page-title-button').height() + 20;
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+            $('html,body').stop().animate({
+                scrollTop: target.offset().top - headerHeight //offsets for fixed header
+            }, 'linear');
+        }
 
-        // $(".title-link, .nav-subheader").click( function () {
-        //     console.log($('.page-title-button').height());
-            
-        //         window.scrollTo(window.scrollX, window.scrollY - $('.page-title-button').height());
-            
-        // });
+        var headerHeight = $('.page-title-button').height() + 20;
 
+        $('a[href*="#"]:not([href="#"])').click(function() {
+            var target = $(this.hash);
+              $('html,body').stop().animate({
+                scrollTop: target.offset().top - headerHeight
+              }, 'linear');   
+        });    
     }
-
-    
-    //calc offset from page-title-button and offset top of anchor x pix
 
 });
