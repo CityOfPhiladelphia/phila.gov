@@ -242,13 +242,13 @@
 
         #nav-menu-caret {
           color: color(dark-ben-franklin);
+          border-bottom: solid 2px white;
         }
 
         .title-link {
           border-bottom: solid 2px white;
-          // padding-right: 10em;
-          // padding-left: 10em;
-          // margin: 0 -10em;
+          display: inline-block;
+          font-size: 1.3rem;
         }
 
         ul {
@@ -296,13 +296,6 @@
     .more-button {
       margin-left: auto;
     }
-
-    // :target:before {
-    //   content: "";
-    //   display: block;
-    //   height: 70px; /* fixed header height*/
-    //   margin: -70px 0 0; /* negative fixed header height */
-    // }
 
     .guide-page-title {
       margin-bottom: 0px;
@@ -392,20 +385,8 @@
       h3,
       .h3 {
         font-size: rem-calc(20);
-        // font-weight: bold;
       }
-      h4,
-      .h4 {
-        font-size: rem-calc(15);
-      }
-      h5,
-      .h5 {
-        font-size: rem-calc(10);
-      }
-      h6,
-      .h6 {
-        font-size: rem-calc(10);
-      }
+   
     }
   }
 }
