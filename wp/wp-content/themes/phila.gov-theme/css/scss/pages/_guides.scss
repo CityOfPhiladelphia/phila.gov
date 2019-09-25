@@ -1,42 +1,75 @@
-.guides{
-  h1, .h1 {
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600&display=swap");
+
+.guides {
+  h1,
+  .h1 {
     font-size: rem-calc(75);
   }
-  h2, .h2{
+  h2,
+  .h2 {
     font-size: rem-calc(45);
   }
-  h3, .h3{
-    font-size: rem-calc(35);
+  h3,
+  .h3 {
+    font-size: rem-calc(32);
   }
-  h4, .h4{
-    font-size: rem-calc(25);
+  h4,
+  .h4 {
+    font-size: rem-calc(24);
   }
-  h5, .h5{
+  h5,
+  .h5 {
     font-size: rem-calc(20);
   }
-  h6, .h6{
+  h6,
+  .h6 {
     font-size: rem-calc(15);
   }
-  .social-media .fa, .social-media .fab, .social-media .fal, .social-media .far, .social-media .fas {
+
+  .social-media .fa,
+  .social-media .fab,
+  .social-media .fal,
+  .social-media .far,
+  .social-media .fas {
     font-size: 1.2rem;
-}
-  .guide-name{
-    margin:0 0 0 130px;
-    a:link, a:visited{
-      color:white;
+  }
+  .guide-name {
+    margin: 0 0 0 130px;
+    a:link,
+    a:visited {
+      color: white;
     }
-    a:hover, a:active{
+    a:hover,
+    a:active {
       color: color(light-ben-franklin);
     }
   }
-  .intro-text{
-    font-size: rem-calc(25);
-    line-height: 1.8rem;
-    margin-bottom: 5rem;
-    p {
-      margin-bottom: 3rem;
+
+  @include breakpoint(medium) {
+    .show-all-on-desktop {
+      height: 100%;
+      .intro-text {
+        font-size: rem-calc(25);
+        line-height: 1.8rem;
+        // margin-bottom: 5rem;
+        p {
+          margin-bottom: 3rem;
+        }
+      }
+    }
+    .more-button {
+      display: none;
     }
   }
+
+  .intro-button {
+    display: none;
+  }
+
+  a.card.sub-topic {
+    margin-bottom: 0;
+  }
+
   .page-title-group h1 {
     font-size: rem-calc(65);
     i {
@@ -46,7 +79,7 @@
       display: inline-block;
       vertical-align: top;
     }
-    .title{
+    .title {
       display: inline-block;
       max-width: calc(100% - 88px);
       word-break: break-word;
@@ -55,70 +88,312 @@
   #guide-hero {
     z-index: 1000;
   }
-  .shrink{
-    .hero-full .hero-full--container .grid-container{
+
+  .shrink {
+    .hero-full .hero-full--container .grid-container {
       height: 7rem;
-      transition: height .3s ease-in-out;
-      background-position: bottom left;      
+      transition: height 0.3s ease-in-out;
+      background-position: bottom left;
       background-size: 170px;
     }
   }
 
-  #guides-nav{
+  #guides-nav {
     border-right: 1px solid #ccc;
     height: 100%;
     overflow-y: scroll;
-    .icon{
+
+    .icon {
       display: inline-block;
       vertical-align: top;
     }
-    .title{
+    .title {
       display: inline-block;
       max-width: calc(100% - 28px);
     }
-    ul{
-      margin-bottom:1rem;
-      padding:0;
+    ul {
+      margin-bottom: 1rem;
+      padding: 0;
       font-size: 1.3rem;
-      .is-active{
+      .is-active {
         padding: 0;
       }
-      ul{
+      ul {
         font-size: rem-calc(14);
         margin-left: 2.1rem;
-        .is-active{
+        .is-active {
           padding: 5px;
         }
       }
-      li{
+      li {
         padding: 1rem 0 1rem 0;
-        li{
-          padding: 3px 0 .8rem 0;
+        li {
+          padding: 3px 0 0.8rem 0;
           line-height: 1.5rem;
         }
       }
     }
-    .is-active{
+    .is-active {
       display: inline-block;
       background: color(dark-gray);
       color: white;
     }
   }
 
+  .guides-print-all-content {
+    display: none;
+    &.make-visible {
+      display: none !important;
+    }
+  }
+
   @media print {
-    font-size: 70%;
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 1.5rem;
+    }
     .hero-full .hero-full--container .grid-container {
       height: auto;
     }
-    .sticky-container{
-      display:inline-block;
-      height: 0 !important;
+    .nav-container {
+      display: none;
     }
-    .breadcrumbs{
-      display:none;
+    .breadcrumbs {
+      display: none;
     }
-    .guide-content{
+    .guide-content {
       width: 100%;
     }
+    .guide-name {
+      margin: 0;
+    }
+    .guides-print-all-content.make-visible {
+      display: block !important;
+    }
+    a.card img {
+      width: 20%;
+    }
+    .hide-from-print {
+      display: none;
+    }
+  }
+
+  @include breakpoint(small only) {
+    .mobile-no-bottom-margin {
+      margin-bottom: 0;
+    }
+
+    .mobile-no-top-margin {
+      margin-top: 0;
+    }
+
+    .hero-full--container {
+      margin: 0;
+    }
+
+    #guide-hero {
+      .hero-full {
+        // height: 5rem;
+        .grid-container {
+          height: 7rem;
+          background-image: none;
+          .hero-full--title {
+            align-self: center;
+            margin: 0 auto;
+            h1 {
+              font-size: 3rem;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+
+    #breadcrumbs {
+      div {
+        margin: 0;
+      }
+    }
+
+    .nav-container {
+      display: none;
+      position: fixed;
+      margin: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1000;
+      background-color: #f0f0f0;
+      overflow-y: scroll;
+      padding: 10px;
+
+      #guides-nav {
+        display: none;
+        border: none;
+        overflow-y: none;
+
+        #nav-menu-caret {
+          color: color(dark-ben-franklin);
+          border-bottom: solid 2px white;
+        }
+
+        .title-link {
+          border-bottom: solid 2px white;
+          display: inline-block;
+          font-size: 1.3rem;
+        }
+
+        ul {
+          margin: 0;
+
+          li {
+            padding: 0.2rem;
+
+            a:first-child {
+              width: 100%;
+            }
+
+            ul {
+              padding-left: 2.5rem;
+              li {
+                border-bottom: solid 2px white;
+                padding-right: 10em;
+                padding-left: 10em;
+                margin: 0 -10em;
+              }
+            }
+          }
+        }
+
+        #home-nav {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .show-all-on-desktop {
+      min-height: 200px;
+
+      .intro-text {
+        font-size: 1rem;
+        line-height: 1rem;
+        margin-bottom: 0;
+        p {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .more-button {
+      margin-left: auto;
+    }
+
+    .guide-page-title {
+      margin-bottom: 0px;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 5px 0 5px 0;
+      }
+    }
+
+    .page-title {
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 400;
+      }
+    }
+    .guide-landing-nav {
+      .cell.medium-7 {
+        margin-bottom: 0;
+      }
+
+      .guide-card {
+        display: flex;
+
+        .icon-box {
+          // width: 44px !important;
+          padding: 7% !important;
+        }
+
+        .guide-card-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          h3 {
+            margin: 0px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: black;
+          }
+        }
+      }
+    }
+
+    .page-title-button {
+      word-break: normal;
+      position: sticky;
+      top: 0;
+      background-color: whitesmoke;
+      z-index: 500;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+      padding: 5px 3px 5px 3px;
+      text-align: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      h1,
+      .caret-icon {
+        font-size: 2.2rem;
+        color: color(dark-ben-franklin);
+        font-weight: 600;
+      }
+
+      .caret-icon {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .guide-content {
+      .page-title-group {
+        display: none;
+      }
+      h1,
+      .h1 {
+        font-size: rem-calc(30);
+      }
+      h2,
+      .h2 {
+        font-size: rem-calc(25);
+        font-weight: 600;
+      }
+      h3,
+      .h3 {
+        font-size: rem-calc(20);
+      }
+   
+    }
+  }
+}
+
+.guides-template-default #global-footer {
+  margin-top: 1rem;
+  .footer-logos {
+    padding-top: 1rem;
   }
 }
