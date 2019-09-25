@@ -140,20 +140,48 @@
     }
   }
 
+  .guides-print-all-content {
+    display:none;
+    &.make-visible{
+      display: none !important;
+    }
+  }
+
   @media print {
-    font-size: 70%;
+    
+    h1{
+      font-size: 3rem;
+      margin: 0;
+    }
+    h2{
+      font-size: 2rem;
+    }
+    h3, h4, h5, h6{
+      font-size: 1.5rem
+    }
     .hero-full .hero-full--container .grid-container {
       height: auto;
     }
-    .sticky-container {
-      display: inline-block;
-      height: 0 !important;
+    .nav-container {
+      display: none;
     }
     .breadcrumbs {
       display: none;
     }
     .guide-content {
       width: 100%;
+    }
+    .guide-name{
+      margin: 0;
+    }
+    .guides-print-all-content.make-visible {
+      display: block !important;
+    }
+    a.card img {
+      width: 20%;
+    }
+    .hide-from-print{
+      display:none;
     }
   }
 
