@@ -28,7 +28,7 @@
             <i class="fas fa-home"></i>
               Overview
             </a>
-            <div id="nav-menu-caret"> <i class="fas fa-times fa-2x"></i>  </div>
+            <div id="nav-menu-caret"> <i class="fas fa-times"></i>  </div>
         </li>
         </ul>
 
