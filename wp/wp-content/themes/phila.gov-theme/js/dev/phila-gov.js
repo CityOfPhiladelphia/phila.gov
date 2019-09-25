@@ -236,24 +236,4 @@ module.exports = $(function(){
   }
   var mainContent = $('.guide-content').eq(0);
 
-  /*GUIDES */
-  //TODO: Chunk this and put it in seperate guides-only js file
-  $('#guide-hero').on('sticky.zf.stuckto:top', function(){
-
-    $('#guide-hero').addClass('shrink');
-
-      mainContent.css('margin-top', '7rem');
-
-
-  }).on('sticky.zf.unstuckfrom:top', function(){
-
-    $(this).removeClass('shrink');
-
-      mainContent.css('margin-top', '0');
-
-
-  })
-
-  //TODO - loop through and if the page is the current page, make sure the current page is "active"
-
 });
