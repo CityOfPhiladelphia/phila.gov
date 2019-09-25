@@ -69,7 +69,7 @@
 
 
 <?php if( $print_all ) :?>
-  <div class="mtxl pas">
+  <div class="mtxl mbm pas">
     <a href="javascript:window.print()" class="print-entire-guide"><i class="fal fa-print fa-fw fa-lg mrm"></i> Print this entire guide</a>
   </div>
 <?php endif; ?>
