@@ -20,7 +20,7 @@
     <section>
       <div class="sticky-container" data-sticky-container>
         <div class="sticky-side-nav" data-sticky  data-top-anchor="breadcrumbs:bottom" data-margin-top="5" data-btm-anchor="global-footer" id="guides-nav">
-        <nav>
+        <nav class="mbxxl-mu">
         <ul class="no-bullet hide-for-medium">
           <li id="home-nav">
 
@@ -35,7 +35,6 @@
         <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
         <?php $guide_icon = rwmb_meta('guide_page_icon'); ?>
         <?php $heading_groups = rwmb_meta( 'phila_heading_groups' ); ?>
-     
 
         <?php $sub_heads = phila_extract_clonable_wysiwyg( $heading_groups, $array_key = 'phila_wywiwyg_alt_heading' ); ?>
           <ul class="no-bullet">

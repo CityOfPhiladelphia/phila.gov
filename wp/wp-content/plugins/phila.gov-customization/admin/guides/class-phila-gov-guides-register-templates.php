@@ -143,7 +143,15 @@ class Phila_Gov_Register_Guide_Templates {
         )
       ),
       'fields' => array(
-        Phila_Gov_Standard_Metaboxes::phila_resource_list_v2()
+        Phila_Gov_Standard_Metaboxes::phila_resource_list_v2(),
+        array(
+          'name'          => 'Print this guide',
+          'id'            => 'guide_print_all',
+          'type'          => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+          'desc'    => 'Displays a "print entire guide" option.',
+        )
       )
     );
 
