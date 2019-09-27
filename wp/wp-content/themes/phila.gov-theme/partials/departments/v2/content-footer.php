@@ -17,10 +17,10 @@
   }
 ?>
 <?php if( null !== phila_get_department_logo_v2($id) && !is_archive()  ) : ?>
-<?php  $logo = phila_get_department_logo_v2( $id );?>
+<?php  $logo = phila_get_department_logo_v2( $id ); ?>
   <div class="row mtxl">
     <div class="columns center">
-      <img src="<?php echo $logo['full_url'] ?>" class="department-logo" alt="<?php echo $logo['alt'] ?>">
+      <img src="<?php echo $logo['full_url'] ?>" class="department-logo" alt="<?php echo isset( $logo['alt'] ) ? $logo['alt'] : '';?>">
     </div>
   </div>
 <?php endif;?>
