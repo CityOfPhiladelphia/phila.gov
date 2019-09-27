@@ -1625,7 +1625,8 @@ function phila_get_department_logo_v2( $post ){
     if ( !empty($img) ){
 
       foreach ($img as $k){
-        $output = $k['full_url'];
+        $output['full_url'] = $k['full_url'];
+        $output['alt'] = $k['alt'];
       }
       return $output;
     }
