@@ -11,7 +11,7 @@ function press_release_shortcode($atts) {
 
   global $post;
   $a = shortcode_atts( array(
-   'name' => 'Press releases',
+    'name' => 'Press releases',
     'category' => '',
     'tag' => '',
     'see_all' => ''
