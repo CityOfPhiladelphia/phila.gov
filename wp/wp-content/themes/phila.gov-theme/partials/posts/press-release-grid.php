@@ -4,6 +4,12 @@
 */
 ?>
 <?php $press_categories = isset( $category ) ? $category : '';?>
+<?php foreach ($press_categories as $category ) {
+  $current_cat = get_the_category_by_ID($category);
+  $slang_name = html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat )));
+}
+?>
+
 <?php $press_tag = isset( $tag ) ? $tag : '';?>
 
 <?php $press_release_args  = array(
@@ -88,7 +94,7 @@ if( !empty($tag) ) {
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
               <?php if ($count == 4) : ?>
                 <?php $see_all = array(
-                  'URL' => '/the-latest/archives/#/?templates=press_release',
+                  'URL' => '/the-latest/archives/#/?templates=press_release&department=' . $slang_name,
                   'content_type' => 'press_release',
                   'nice_name' => 'Press releases',
                   'is_full' => true
