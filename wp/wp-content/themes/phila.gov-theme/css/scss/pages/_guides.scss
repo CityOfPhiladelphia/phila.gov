@@ -46,16 +46,15 @@
   }
 
   @include breakpoint(medium) {
+    .intro-text {
+      font-size: rem-calc(25);
+      line-height: 1.8rem;
+      p {
+        margin-bottom: 3rem;
+      }
+    }
     .show-all-on-desktop {
       height: 100%;
-      .intro-text {
-        font-size: rem-calc(25);
-        line-height: 1.8rem;
-        // margin-bottom: 5rem;
-        p {
-          margin-bottom: 3rem;
-        }
-      }
     }
     .more-button {
       display: none;
