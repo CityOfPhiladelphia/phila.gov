@@ -108,7 +108,6 @@
       </td>
     </tr>
   <?php endif; ?>
-  <?php if(!$archive) : ?>
     <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
       <tr>
         <th scope="row">
@@ -127,7 +126,7 @@
           <i class="fal fa-at fa-2x" aria-hidden="true"></i>
           <span class="accessible">Social</span>
         </th>
-        <td class="pvl">
+        <td class="<?php echo (!$archive) ? 'pvl' : '' ?>">
           <?php if ( ! empty( $connect_vars['social'] ) ):
             $item_count = count( $connect_vars['social'] );
             $columns = phila_grid_column_counter( $item_count );
@@ -179,7 +178,6 @@
       </tr>
     <?php endif; ?>
   <?php endif; ?>
-<?php endif; ?>
 </table>
 <?php if(!$archive) : ?>
   <?php if ( !empty( $connect_vars['see_all'] ) ) : ?>
