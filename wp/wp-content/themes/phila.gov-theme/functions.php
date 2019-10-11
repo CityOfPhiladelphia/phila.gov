@@ -239,8 +239,6 @@ function phila_filter_title( $title ){
   return $title;
 }
 
-
-
 add_action('wp_head', 'phila_open_graph', 5);
 
 function phila_open_graph() {
@@ -266,8 +264,8 @@ function phila_open_graph() {
     $alt_text = 'phila.gov';
   }
 
-
   $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI']; ?>
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@PhiladelphiaGov">
   <meta name="twitter:image" content="<?php echo isset($img_src) ? $img_src : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
