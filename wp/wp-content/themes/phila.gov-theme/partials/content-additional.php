@@ -35,7 +35,7 @@
 
 <?php if( !phila_util_is_array_empty($content) ) :  ?>
 <!-- Additional Content-->
-<div class="mtxl">
+<section>
   <?php if ( !empty($content['forms']) ) : ?>
   <div class="row">
     <div class="columns">
@@ -107,6 +107,6 @@
     </div>
   <?php endif; ?>
   </div>
-</div>
+</section>
 <!-- /Additional Content-->
 <?php endif; ?>
