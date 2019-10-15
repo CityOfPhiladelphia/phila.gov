@@ -1020,34 +1020,49 @@ function phila_get_department_owner_ids( $categories ){
 function phila_get_service_updates(){
 
     $service_update_details = rwmb_meta( 'service_update' );
+
     $current_time = current_time('timestamp');
     $valid_update = false;
 
     $service_date_format = isset( $service_update_details['phila_date_format'] ) ? $service_update_details['phila_date_format'] : '';
 
-    if ($service_date_format == 'none'):
-      $service_effective_start = '';
-      $service_effective_end = '';
-      $valid_update = true;
-
-    elseif ( $service_date_format == 'datetime') :
+    if ( $service_date_format == 'datetime') :
       $service_effective_start = isset( $service_update_details['phila_effective_start_datetime'] ) ? $service_update_details['phila_effective_start_datetime'] : '';
 
       $service_effective_end = isset( $service_update_details['phila_effective_end_datetime'] ) ? $service_update_details['phila_effective_end_datetime'] : '';
 
-      if ( ( intval($service_effective_start['timestamp'] ) <= $current_time ) && ( intval($service_effective_end['timestamp'] ) >= $current_time ) ):
-        $valid_update = true;
-      endif;
+      $valid_update = filter_var(
+        $current_time,
+        FILTER_VALIDATE_INT,
+        array(
+          'options' => array(
+            'min_range' => $service_effective_start['timestamp'],
+            'max_range' => $service_effective_end['timestamp']
+          )
+        )
+      );
 
     elseif ( $service_date_format == 'date'):
 
       $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
       $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
+      
+      $valid_update = filter_var(
+        $current_time,
+        FILTER_VALIDATE_INT,
+        array(
+          'options' => array(
+            'min_range' => $service_effective_start['timestamp'],
+            'max_range' => $service_effective_end['timestamp'] + 84000
+          )
+        )
+      );
 
-      //Add the number of seconds in 24 hours to the base date, which will always be 00:00:00 of the selected day. This ensures the update will remain visible for the duration of the selected day.
-      if ( ( intval( $service_effective_start['timestamp'] ) <= $current_time ) && ( intval( $service_effective_end['timestamp'] ) + 86400 ) >= $current_time ) :
-        $valid_update = true;
-      endif;
+    elseif($service_date_format == 'none'):
+
+      $service_effective_start = '';
+      $service_effective_end = '';
+      $valid_update = true;
 
     endif;
 
