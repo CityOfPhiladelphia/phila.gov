@@ -76,6 +76,52 @@ class Phila_Gov_Post {
       )
     );
 
+    $meta_boxes[] = array(
+      'title'    => 'Last updated',
+      'pages'    => array( 'post' ),
+      'context'  => 'side',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'post'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'name'  => 'Include last updated?',
+          'id'    => 'is_last_updated',
+          'type'  => 'switch',
+          'std'=> '0',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
+          'name'  => 'Last updated date',
+          'id'    => 'last_updated_date',
+          'type'  => 'date',
+          'js_options'=> array(
+            'dateFormat'  => 'mm/dd/yy',
+            'maxDate'     => 0
+          ),
+          'visible' => array(
+            'when' => array(
+              array('is_last_updated', '=', '1'),
+            ),
+          ),
+        ),
+        array(
+          'name'  => 'Last updated explaination',
+          'id'    => 'last_updated_text',
+          'type'  => 'textarea',
+          'desc'  =>  'A short explanation of the changes.',
+          'visible' => array(
+            'when' => array(
+              array('is_last_updated', '=', '1'),
+            ),
+          ),
+        ),
+      )
+    );
+
 
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',
