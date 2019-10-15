@@ -60,11 +60,12 @@ $last_updated_text = rwmb_meta('last_updated_text') ;
         </span>
       <?php endif; ?>
   </div>
-    <?php if ( $last_updated ): ?>
-      <div class="last-updated mtm">
-        <span class="last-updated-text pts">Last updated:</span> <?php echo $date_formatted->format('F d, Y'); ?> <?php echo !empty($last_updated_text) ? ' | ' . $last_updated_text : '' ?>
-      <?php endif; ?>
+  <?php if ( $last_updated ): ?>
+    <div class="last-updated mtm">
+      <span class="last-updated-text ptm">Last updated:</span> <?php echo $date_formatted->format('F d, Y'); ?> 
+      <?php echo !empty($last_updated_text) ? '<p>' . $last_updated_text . '</p>' : '' ?>
     </div>
+  <?php endif; ?>
   </header>
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') ): ?>
     <div class="grid-container featured-image">
