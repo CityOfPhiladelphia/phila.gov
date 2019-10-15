@@ -239,8 +239,6 @@ function phila_filter_title( $title ){
   return $title;
 }
 
-
-
 add_action('wp_head', 'phila_open_graph', 5);
 
 function phila_open_graph() {
@@ -253,16 +251,21 @@ function phila_open_graph() {
     $type = 'article';
     $img_id  = get_post_thumbnail_id($post->ID);
     $alt_text = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
-
-  }
-  if ( is_archive() || is_search() || is_home() ){
+  } elseif ( get_post_type($post->ID) == 'programs' ){
+    $img = rwmb_meta('prog_header_img', array('limit' => 1), $post->ID );
+    $img_src = $img[0]['full_url'];
+    $alt_text = $img[0]['alt'];
+  } elseif ( get_post_type($post->ID) == 'event_spotlight' ){
+    $img = rwmb_meta('header_img', array('limit' => 1), $post->ID );
+    $img_src = $img[0]['full_url'];
+    $alt_text = $img[0]['alt'];
+  } else {
     $img_src = 'https://www.phila.gov/media/20160715133810/phila-gov.jpg';
     $alt_text = 'phila.gov';
   }
 
-  $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI'];
+  $link = 'https://www.phila.gov' . $_SERVER['REQUEST_URI']; ?>
 
-  //TODO: Determine which twitter account should be used for site attribution ?>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@PhiladelphiaGov">
   <meta name="twitter:image" content="<?php echo isset($img_src) ? $img_src : 'https://www.phila.gov/media/20160715133810/phila-gov.jpg'; ?>"/>
