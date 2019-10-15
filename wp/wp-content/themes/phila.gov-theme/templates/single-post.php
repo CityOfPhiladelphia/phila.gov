@@ -12,6 +12,10 @@ $post_type = get_post_type();
 $post_obj = get_post_type_object( $post_type );
 $post_id = get_the_id();
 $template_type = phila_get_selected_template();
+$last_updated = rwmb_meta('is_last_updated');
+$last_updated_date = rwmb_meta('last_updated_date');
+$date_formatted = new DateTime($last_updated_date);
+$last_updated_text = rwmb_meta('last_updated_text') ;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
@@ -54,6 +58,11 @@ $template_type = phila_get_selected_template();
         <span class="departments">
           <?php echo phila_get_current_department_name( $category, false, false ); ?>
         </span>
+      <?php endif; ?>
+  </div>
+    <?php if ( $last_updated ): ?>
+      <div class="last-updated mtm">
+        <span class="last-updated-text pts">Last updated:</span> <?php echo $date_formatted->format('F d, Y'); ?> <?php echo !empty($last_updated_text) ? ' | ' . $last_updated_text : '' ?>
       <?php endif; ?>
     </div>
   </header>
