@@ -177,10 +177,15 @@ caption {
 .step-group .step:last-of-type{
   padding-bottom: 0;
 }
-
-.last-updated{
-  .last-updated-text{
-    border-top: 1px solid #444;
-    display: inline-block;
+.post {
+  .last-updated{
+    font-size: .9rem;
+    p{
+      line-height: 1.5rem;
+    }
+    .last-updated-text{
+      border-top: 1px solid #444;
+      display: inline-block;
+    }
   }
 }
