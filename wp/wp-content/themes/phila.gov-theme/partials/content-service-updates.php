@@ -12,7 +12,7 @@ if (!is_home()) :
   $category_slug = $category[0]->slug;
 endif;
 if ( !isset( $service_args ) ) :
-  $service_args = array( 'post_type' => 'service_updates', 'category_name' => $category_slug );
+  $service_args = array( 'post_type' => 'service_updates', 'category_name' => $category_slug, 'posts_per_page' => -1 );
 endif;
 ?>
 
@@ -24,7 +24,6 @@ endif;
 <?php while ( $service_updates_loop->have_posts() ) :?>
   <?php $service_update = $service_updates_loop->the_post(); ?>
   <?php $update_details = phila_get_service_updates(); ?>
-
   <?php if ( !empty( $update_details ) ) :?>
     <?php array_push( $update_array, $update_details ); ?>
   <?php endif; ?>
@@ -33,6 +32,7 @@ endif;
 <?php wp_reset_query();?>
 
 <?php if ( !empty( $update_array ) ): ?>
+
 <div class="row <?php echo ( !is_home() ) ? 'mtl' : ''?>">
   <div class="columns">
     <table class="service-update">
