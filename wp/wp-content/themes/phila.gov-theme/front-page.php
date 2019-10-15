@@ -120,7 +120,7 @@ get_header(); ?>
         <h2>Service updates</h2>
       </div>
     </div>
-    <?php $service_args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage' ); ?>
+    <?php $service_args = array( 'post_type' => 'service_updates', 'category_name' => 'homepage', 'posts_per_page' => -1  ); ?>
     <div class="mbxl">
       <?php include( locate_template( 'partials/content-service-updates.php' ) ); ?>
     </div>
