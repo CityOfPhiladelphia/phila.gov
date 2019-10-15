@@ -70,7 +70,11 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 #wpfront-user-role-editor-role-permission-column-key,
 .column-wpfront-user-role-editor-role-permission-column-key,
 /* tags must be added from menu  */
-#post_tag-adder
+#post_tag-adder,
+/* hide ability to duplicate from title columns */
+.title .clone,
+/* remove checkbox to auto-add pages to new menu items */
+.auto-add-pages
 {
   display: none !important;
 }
