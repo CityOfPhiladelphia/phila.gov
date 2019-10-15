@@ -80,13 +80,16 @@ jQuery(document).ready(function($) {
           'required': true
         });
 
-        // HOW TO VALIDATE A REQUIRED TAXONOMY!
-        // jQuery( "input[name='tax_input[service_type][]']" ).rules( 'add', {
-        //       'required': true
-        //     }
-        // );
       }
     }
+    if ( ( typenow == 'post' ) && adminpage.indexOf( 'post' ) > -1 ) {
+
+      if ($(".rwmb-date").datepicker().datepicker("getDate") === null) {
+
+        $(".rwmb-date").datepicker().datepicker("setDate", new Date());
+      }
+    }
+
 
     if ( ( typenow == 'document' ) && adminpage.indexOf( 'post' ) > -1 ) {
 
