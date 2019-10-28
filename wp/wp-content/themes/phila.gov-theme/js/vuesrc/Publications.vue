@@ -111,8 +111,6 @@ import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
 import Datepicker from 'vuejs-datepicker';
-import Search from './components/phila-search.vue'
-
 
 const pubsEndpoint = '/wp-json/publications/v1/'
 
@@ -121,7 +119,6 @@ export default {
   components: {
     vSelect,
     Datepicker,
-    'phila-search': Search
   },
   data: function() {
     return{
