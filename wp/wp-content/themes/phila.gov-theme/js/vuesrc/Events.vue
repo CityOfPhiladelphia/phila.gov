@@ -137,7 +137,6 @@ import moment from 'moment'
 import axios from 'axios'
 import vSelect from 'vue-select'
 import Datepicker from 'vuejs-datepicker';
-import Search from './components/phila-search.vue'
 
 const gCalEndpoint = 'https://www.googleapis.com/calendar/v3/calendars/'
 const links = []
@@ -149,7 +148,6 @@ export default {
   components: {
     vSelect,
     Datepicker,
-    'phila-search': Search
   },
   data: function() {
     return{

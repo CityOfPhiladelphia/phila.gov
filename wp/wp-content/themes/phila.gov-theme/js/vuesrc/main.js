@@ -15,16 +15,16 @@ Vue.config.productionTip = false
 Vue.use(VuePaginate)
 Vue.use(VueRouter)
 Vue.use(vmodal)
+const route = [
+  { path: '/archives' },
+]
 
 const router = new VueRouter({
- route,
+  route,
   mode: 'history',
   props: true
 })
 
-const route = [
-  { path: '/archives' },
-]
 
 //check which page we're on before adding Vue
 if(window.location.pathname === '/documents/') {
