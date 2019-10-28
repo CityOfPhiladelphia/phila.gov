@@ -15,6 +15,18 @@
     width:100%;
     height: 100%;
   }
+  .image-container{
+    position: relative;
+    
+    .photo-credit {
+      color: white;
+      padding: $spacing-extra-small $spacing-small;
+      position:absolute;
+      bottom:0;
+      right:0;
+      text-shadow: 1px 1px 1px color(dark-gray);
+    }
+  }
 }
 .spotlight-date{
   font-size: 1rem;
