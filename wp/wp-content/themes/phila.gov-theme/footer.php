@@ -107,7 +107,7 @@
         <h2 class="mtn mbm">Open government</h2>
         <nav class="take-action">
           <ul>
-            <li class="pvxs"><a href="https://data.phila.gov/visualizations/payments-aggregate/" class="">City Budget</a></li>
+            <li class="pvxs"><a href="https://data.phila.gov/visualizations/payments-aggregate/" class="">City Payments</a></li>
             <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/records/index.html">City records</a></li>
             <li class="pvxs"><a href="http://regulations.phila-records.com/">City agency regulations</a></li>
