@@ -12,7 +12,7 @@ echo 'Running wp-config.sh'
 
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-npm update
+npm update --dev
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
   npm rebuild node-sass
