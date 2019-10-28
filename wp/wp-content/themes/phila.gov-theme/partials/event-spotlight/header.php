@@ -6,7 +6,7 @@
   $hero = rwmb_meta( 'header_img', array( 'limit' => 1 ) );
   $hero = reset($hero);
 
-  $credit = rwmb_meta( 'phila_photo_credit' );
+  $credit = rwmb_meta( 'photo_credit' );
   $description = rwmb_meta( 'phila_meta_desc' );
   $date_option = rwmb_meta('phila_date_format');
 
@@ -25,11 +25,11 @@
 
 ?>
 <header id="spotlight-header" class="spotlight">
-  <div class="grid-x">
+  <div class="grid-x image-container">
     <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image" alt="<?php echo $hero['alt'] ?>">
     <?php if ( !empty($credit) ): ?>
       <div class="photo-credit small-text">
-        <span><i class="fas fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?></span>
+        <span><i class="fas fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ?  $credit : '' ?></span>
       </div>
     <?php endif; ?>
   </div>
@@ -62,13 +62,13 @@
                     <?php $date_output = str_replace(
                       array('Sep','am','pm',':00'),
                       array('Sept','a.m.','p.m.',''),
-                       $end->format(' l, ' . $start_month_format . ' j, Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a')
-                   );
-                     echo $date_output; ?>
+                      $end->format(' l, ' . $start_month_format . ' j, Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a')
+                  );
+                    echo $date_output; ?>
                   <?php elseif ($start->format('m-d') === $end->format('m-d') && $start->format('a') !== $end->format('a')): ?>
-                     <?php $date_output = str_replace(
-                       array('Sep','am','pm',':00'),
-                       array('Sept','a.m.','p.m.',''),
+                    <?php $date_output = str_replace(
+                      array('Sep','am','pm',':00'),
+                      array('Sept','a.m.','p.m.',''),
                         $end->format(' l, ' . $start_month_format . ' j, Y') . '<br />' . $start->format( 'g:i a' ) . ' - ' . $end->format('g:i a')
                     );
                       echo $date_output; ?>
