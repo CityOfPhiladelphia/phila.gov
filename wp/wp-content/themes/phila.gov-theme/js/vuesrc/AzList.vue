@@ -63,7 +63,6 @@
 <script>
 
 import Vue from 'vue'
-import VueScrollTo from 'vue-scrollto'
 import deepMerge from 'lodash/merge'
 import Fuse from 'fuse.js'
 
@@ -74,8 +73,6 @@ Vue.prototype.$search = function (term, list, options) {
     resolve(results)
   })
 }
-
-Vue.use(VueScrollTo)
 
 export default {
   name: 'azlist',
@@ -321,5 +318,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss"></style>
