@@ -63,7 +63,7 @@
                   <a href="https://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="trending-requests">Correctional facilities</a>
                 </li>
                 <li>
-                  <a href="https://prodpci.etimspayments.com/pbw/include/philadelphia_parking/input.jsp" class="trending-requests">Pay a parking violation</a>
+                  <a href="https://onlineserviceshub.com/ParkingPortal/Philadelphia" class="trending-requests">Pay a parking violation</a>
                 </li>
                 <li>
                   <a href="https://secure8.i-doxs.net/CityOfPhiladelphiaWRB/SignIn.aspx" class="trending-requests">Pay a water bill</a>
