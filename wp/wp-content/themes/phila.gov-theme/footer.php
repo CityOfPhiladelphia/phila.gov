@@ -169,6 +169,12 @@
                 <span class="show-for-sr">GitHub</span>
               </a>
             </li>
+            <li class="pbm">
+              <a href="https://www.linkedin.com/showcase/phlcitycareers" class="prl"  data-analytics="social">
+                <i class="fab fa-linkedin-in fa-3x" title="LinkedIn" aria-hidden="true"></i>
+                <span class="show-for-sr">LinkedIn</span>
+              </a>
+            </li>
           </ul>
         </nav>
         <nav>
