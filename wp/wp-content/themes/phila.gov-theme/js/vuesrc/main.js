@@ -6,7 +6,6 @@ import VuePaginate from 'vue-paginate'
 import vmodal from 'vue-js-modal'
 import Pubs from './Publications.vue'
 import Events from './Events.vue'
-import Programs from './Programs.vue'
 import AzList from './AzList.vue'
 import axios from 'axios'
 
@@ -31,11 +30,6 @@ if(window.location.pathname === '/documents/') {
   new Vue({
     el: '#publication-search',
     render: h => h(Pubs)
-  })
-}else if(window.location.pathname === '/programs/'){
-  new Vue({
-    el: '#programs-initiatives-landing',
-    render: h => h(Programs)
   })
 }else if(window.location.pathname === '/services/'){
 
