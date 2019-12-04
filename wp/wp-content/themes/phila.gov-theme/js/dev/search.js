@@ -4,14 +4,6 @@ require('../dependencies/jquery.swiftype.search.js');
 require('js-cookie');
 var Mustache = require('mustache');
 
-function escapeHtml(unsafe) {
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
 
 module.exports = jQuery(document).ready(function($) {
 
@@ -146,8 +138,8 @@ module.exports = jQuery(document).ready(function($) {
     }
 
     //reset pagination to 1
-    window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
-    $stSearchInput.swiftypeSearch()
+    window.location.href = escapeHtml(window.location.href).replace(/stp=\d{0,3}/, 'stp=1');
+    $stSearchInput.swiftypeSearch();
 
     reloadResults();
   })
@@ -160,7 +152,7 @@ module.exports = jQuery(document).ready(function($) {
     searchConfig.filters.content_type = [];
 
     //reset pagination to 1
-    window.location.href = window.location.href.replace(/stp=\d{0,3}/, 'stp=1')
+    window.location.href = escapeHtml(window.location.href).replace(/stp=\d{0,3}/, 'stp=1');
 
     $stSearchInput.swiftypeSearch();
 
@@ -176,31 +168,19 @@ module.exports = jQuery(document).ready(function($) {
     filters: readFilters,
     facets: { page: ['content_type'] },
   });
-
+  
+  //handles searches from the global menu
   $("#search-form").submit(function (e) {
+    e.preventDefault();
+    var userString = $(this).find(".search-field").val();
+    window.location.href = '/search/#stq=' + Swiftype.htmlEscape(userString);
+  })
+
+  $("#st-search-form").submit(function (e) {
     e.preventDefault();
     var userString = $(this).find(".search-field").val();
     window.location.href = '/search/#stq=' + escapeHtml(userString);
   })
-
-
-  function hashQuery () {
-    // Fill search input with query from hash
-    var params = $.deparam(location.hash.substr(1));
-
-    $stSearchInput.val(params.stq);
-
-    //create link back to phila.gov with search param
-    var link = "https://cse.google.com/cse?oe=utf8&ie=utf8&source=uds&start=0&cx=003474906032785030072:utbav7zeaky&hl=en&q=" + params.stq + "#gsc.tab=0&gsc.q=" + params.stq + "&gsc.sort=";
-    var a = $('.classic-gov-search');
-    if (a.length != 0) {
-      a[0].href = link;
-    }
-
-  }
-
-  // Fill search box on page load
-  hashQuery();
 
   var addressRe = /\d+ \w+/;
   var $propertyLink = $('#property-link');
@@ -210,7 +190,7 @@ module.exports = jQuery(document).ready(function($) {
 
     // Also check OPA API for results if it looks like an address
     var params = $.deparam(location.hash.substr(1));
-    var query = params.stq;
+    var query = Swiftype.htmlEscape(params.stq);
     var queryEncoded = encodeURIComponent(query);
 
     if (addressRe.test(params.stq)) {
@@ -227,10 +207,13 @@ module.exports = jQuery(document).ready(function($) {
     }
   }
 
-
-  $(window).on('hashchange', function (e) {
-    addressSearch();
-  }).trigger('hashchange');
+  function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/</g, "")
+        .replace(/>/g, "")
+        .replace(/"/g, "")
+        .replace(/'/g, "");
+  }
 
   function getPath (url) {
     // Use this to only get the path on the URL
@@ -247,6 +230,10 @@ module.exports = jQuery(document).ready(function($) {
   var reloadResults = function() {
     $(window).trigger('hashchange');
   }
+
+  $(window).on('hashchange', function (e) {
+    addressSearch();
+  }).trigger('hashchange');
 
   // Autocomplete
   $('.swiftype').swiftype({

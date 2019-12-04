@@ -11,9 +11,9 @@ get_header(); ?>
     <div class="grid-container">
       <div class="grid-x">
         <div class="cell small-24">
-          <form role="search" method="get" class="search" action="<?php echo home_url( '/search' ); ?>">
+          <form role="search" method="get" class="search" id="st-search-form">
             <label for="st-search-input"><span class="screen-reader-text"><?php echo _x( 'Search for:', 'label' ) ?></span></label>
-            <input type="text" class="search-field" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" id="st-search-input"/ autocomplete="off">
+            <input type="text" class="search-field" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>" value="<?php echo sanitize_text_field(get_search_query() )?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" id="st-search-input" autocomplete="off">
             <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>">
           </form>
         </div>
@@ -64,7 +64,7 @@ get_header(); ?>
             <span class="label mrm bg-dark-gray">Legacy</span>
             Content marked "legacy" has not been moved to our new platform.
           </div>
-          <div id="result-count" class="pvm"></div>
+          <div id="result-count" class="pvm h3"></div>
           <div id="st-results-container">Enter search terms in the area above. <i class="fas fa-loading spin"></i></div>
         </div>
       </div>
