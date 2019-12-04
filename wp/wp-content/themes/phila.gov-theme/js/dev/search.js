@@ -4,6 +4,15 @@ require('../dependencies/jquery.swiftype.search.js');
 require('js-cookie');
 var Mustache = require('mustache');
 
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 module.exports = jQuery(document).ready(function($) {
 
   var resultTemplate = '<div data-type="{{&contentType}}"><article><header class="search-entry-header"><h3>';
@@ -170,7 +179,8 @@ module.exports = jQuery(document).ready(function($) {
 
   $("#search-form").submit(function (e) {
     e.preventDefault();
-    window.location.href = '/search/#stq=' + $(this).find(".search-field").val();
+    var userString = $(this).find(".search-field").val();
+    window.location.href = '/search/#stq=' + escapeHtml(userString);
   })
 
 
