@@ -7,6 +7,10 @@ var Mustache = require('mustache');
 
 module.exports = jQuery(document).ready(function($) {
 
+  if ( (window.location.href.indexOf("%3E")  > -1 ) || (window.location.href.indexOf("%3C")  > -1 )){
+    return;
+  }
+
   var resultTemplate = '<div data-type="{{&contentType}}"><article><header class="search-entry-header"><h3>';
 
   resultTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
@@ -179,7 +183,7 @@ module.exports = jQuery(document).ready(function($) {
   $("#st-search-form").submit(function (e) {
     e.preventDefault();
     var userString = $(this).find(".search-field").val();
-    window.location.href = '/search/#stq=' + escapeHtml(userString);
+    window.location.href = '/search/#stq=' + Swiftype.htmlEscape(userString);
   })
 
   var addressRe = /\d+ \w+/;
@@ -209,10 +213,10 @@ module.exports = jQuery(document).ready(function($) {
 
   function escapeHtml(unsafe) {
     return unsafe
-        .replace(/</g, "")
-        .replace(/>/g, "")
-        .replace(/"/g, "")
-        .replace(/'/g, "");
+      .replace(/</g, "")
+      .replace(/>/g, "")
+      .replace(/"/g, "")
+      .replace(/'/g, "");
   }
 
   function getPath (url) {
@@ -222,6 +226,7 @@ module.exports = jQuery(document).ready(function($) {
     a.href = url;
     return a.pathname;
   }
+
 
   function customAutocompleteRender (document_type, item) {
     return '<a class="autocomplete-link" href="' + getPath(item.url) + '">' + Swiftype.htmlEscape(item.title) + '</a>';
