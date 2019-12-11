@@ -181,7 +181,7 @@
           <ul>
             <li class="pvxs"><a href="https://www.phila.gov/departments/">City government directory</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/services/">Service directory</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov//programs-initiatives/#/">Programs & initiatives </a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/programs-initiatives/#/">Programs & initiatives </a></li>
             <li class="pvxs"><a href="https://www.phila.gov/documents/">Publications & forms </a></li>
           </ul>
         </nav>
