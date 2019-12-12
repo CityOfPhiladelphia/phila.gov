@@ -30,9 +30,9 @@
       <div class="list">
         <template v-if="hasResults()">
           <template v-if="options.azGroup">
-            <div v-for="(list, letter) in resultsList" :key="letter">
-              <div class="row collapse a-z-group">
-                <hr :id="'l-' + letter" class="letter separator" :data-alphabet="numericLetterFilter(letter)">
+            <div v-for="(list, letter) in resultsList" :key="letter" >
+              <div :id="'l-' + letter" class="row collapse a-z-group">
+                <hr class="letter separator" :data-alphabet="numericLetterFilter(letter)">
                 <div class="small-20 medium-24 columns">
                   <div class="small-21 columns result mvm">
                     <div v-for="(listItem, index) in list" :key="'g-' + letter + index">
