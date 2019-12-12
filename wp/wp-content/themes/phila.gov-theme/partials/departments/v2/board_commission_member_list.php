@@ -17,7 +17,9 @@
 <div class="grid-container mvxl">
   <section>
     <?php if ( !empty( $section_title ) ) :?>
-      <h2 class="contrast"><?php echo $section_title ?></h2>
+      <h2 class="contrast" id="<?php echo sanitize_title ( $section_title ); ?>">
+          <?php echo $section_title ?>
+      </h2>
     <?php endif; ?>
 
     <?php if( !phila_multi_key_exists($members, 'bio') && !phila_multi_key_exists($members, 'headshot') ): ?>
