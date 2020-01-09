@@ -28,7 +28,7 @@ $last_updated_text = rwmb_meta('last_updated_text') ;
         <?php endif; ?>
       </div>
       <div class="cell medium-6 align-self-bottom">
-        <?php get_template_part('partials/posts/social-media') ?>
+        <?php get_template_part('partials/social-media') ?>
       </div>
       <div class="border-bottom-fat"></div>
     </div>

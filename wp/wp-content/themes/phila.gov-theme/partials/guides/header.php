@@ -39,7 +39,7 @@
       <?php endif; ?>
     </div>
     <div class="cell medium-6 text-right">
-      <?php get_template_part('partials/posts/social-media') ?>
+      <?php get_template_part('partials/social-media') ?>
     </div>
   </div>
 </div>
