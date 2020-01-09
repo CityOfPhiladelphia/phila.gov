@@ -56,9 +56,6 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<?php if (phila_util_return_is_post(get_post_type()) ) : ?>
-  <?php get_template_part( 'partials/social', 'media' ); ?>
-<?php endif ?>
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
 
