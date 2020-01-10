@@ -22,7 +22,7 @@
       <nav class="show-for-medium" v-if="options.azAnchors && options.azGroup">
         <ul class="inline-list mbm pan mln h4">
           <li v-for="letter in alphabetLetters" :key="letter">
-            <a :href="'#l-' + letter" 
+            <a :href="'#l-' + letter"
             v-scroll-to="getScrollToSettings(letter)" :disabled="isLetterInResults(letter)" :aria-disabled="isLetterInResults(letter)">{{ letter }}</a>
           </li>
         </ul>
