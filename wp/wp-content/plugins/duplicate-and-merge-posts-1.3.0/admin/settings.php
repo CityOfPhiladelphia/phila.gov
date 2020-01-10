@@ -97,8 +97,8 @@ if ( ! class_exists('Duplicate_Edit_And_Merge_Settings') )
 			global $wp_roles;
      		$roles = $wp_roles->get_names();
      		$args = array(
-     		   'public'   => true,
-
+          // show all post types as options to disable. For example, announcements should not be duplicated
+     		  //  'public'   => true,
      		);
 
      		$output = 'names'; // names or objects, note names is the default
