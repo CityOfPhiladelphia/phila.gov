@@ -95,7 +95,7 @@
                   <nav data-swiftype-index="false" class="valign-mu">
                     <ul class="horizontal menu pan valign-mu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
                       <li>
                         <a href="/programs-initiatives/#/" class="valign-cell">Programs &amp; initiatives</a>
@@ -135,7 +135,7 @@
                   <li class="is-drilldown-submenu-parent" tabindex="0">
                     <a href="#services" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
                     <ul class="menu vertical menu-top-offset" tabindex="0">
-                      <li tabindex="0"><a href="/services/"> Service directory</a></li>
+                      <li tabindex="0"><a href="/service-directory/"> Service directory</a></li>
                       <?php
                         $args = array(
                           //TODO: only display pages with taxonomy applied
