@@ -76,7 +76,8 @@ class Phila_Gov_Admin_Templates {
             'tax_detail' => 'Tax detail',
             'start_process' => 'Start a process',
             'topic_page' => 'Topic page',
-            'service_stub' => 'Service stub'
+            'service_stub' => 'Service stub',
+            'vue_app'     => 'Vue app',
           ),
           'admin_columns' => array(
             'position' => 'after date',
