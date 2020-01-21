@@ -824,7 +824,7 @@ $meta_boxes[] = array(
       'type'=> 'text'
     ),
     array(
-      'id' => 'phila_vue',
+      'id' => 'phila_vue_app',
       'type'  => 'group',
       'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
     )

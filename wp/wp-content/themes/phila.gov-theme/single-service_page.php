@@ -58,13 +58,17 @@
             <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
             <?php if ($user_selected_template == 'tax_detail') : ?>
               <?php get_template_part('partials/services/content', 'tax-detail');?>
+            
             <?php elseif ($user_selected_template == 'start_process') : ?>
+              <?php get_template_part('partials/services/content', 'start-process');?>
+              <?php get_template_part('partials/content', 'default'); ?>
 
-            <?php get_template_part('partials/services/content', 'start-process');?>
-            <?php get_template_part('partials/content', 'default'); ?>
+            <?php elseif ($user_selected_template == 'vue_app') : ?>
+              <?php get_template_part('partials/services/content', 'vue-app');?>
+              <?php //get_template_part('partials/content', 'default'); ?>
 
-              <?php elseif ($user_selected_template == 'default_v2') :?>
-            <?php get_template_part('partials/services/content', 'default-v2'); ?>
+            <?php elseif ($user_selected_template == 'default_v2') :?>
+              <?php get_template_part('partials/services/content', 'default-v2'); ?>
             
             <!-- Service Stub  -->
             <?php elseif ($user_selected_template == 'service_stub') : ?>

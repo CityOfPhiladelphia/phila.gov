@@ -184,13 +184,15 @@
               
               ?>
             <!--Vuejs-->
-            <div class="grid-container">
-              <div class="grid-x">
-                <div class="cell small-24">
-                  <h2 class="contrast"><?php echo $app_title ?> </h2>
-                  </div>
+            <?php if (isset($app_title) ): ?>
+              <div class="grid-container">
+                <div class="grid-x">
+                  <div class="cell small-24">
+                    <h2 class="contrast"><?php echo $app_title ?> </h2>
+                    </div>
+                </div>
               </div>
-            </div>
+            <?php endif; ?>
             <div class="grid-container">
               <div class="grid-x">
                 <div class="cell small-24">
