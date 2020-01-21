@@ -51,3 +51,5 @@
     </div>
   </div>
   <!--/Vuejs-->
+
+<?php include(locate_template('partials/content-additional.php')); ?>
