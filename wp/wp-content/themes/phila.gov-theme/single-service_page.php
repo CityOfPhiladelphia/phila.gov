@@ -64,8 +64,8 @@
               <?php get_template_part('partials/content', 'default'); ?>
 
             <?php elseif ($user_selected_template == 'vue_app') : ?>
+              <?php get_template_part('partials/content', 'default'); ?>
               <?php get_template_part('partials/services/content', 'vue-app');?>
-              <?php //get_template_part('partials/content', 'default'); ?>
 
             <?php elseif ($user_selected_template == 'default_v2') :?>
               <?php get_template_part('partials/services/content', 'default-v2'); ?>
