@@ -184,7 +184,7 @@
               
               ?>
             <!--Vuejs-->
-            <?php if (isset($app_title) ): ?>
+            <?php if (!empty($app_title) ): ?>
               <div class="grid-container">
                 <div class="grid-x">
                   <div class="cell small-24">
