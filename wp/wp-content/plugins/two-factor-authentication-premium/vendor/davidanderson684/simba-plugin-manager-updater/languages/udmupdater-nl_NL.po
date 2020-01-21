@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-22 15:54+0000\n"
+"PO-Revision-Date: 2019-02-25 09:17+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl_NL\n"
+
+#: class-udm-updater.php:231 class-udm-updater.php:234
+#: class-udm-updater.php:280 class-udm-updater.php:283
+msgid "Errors occurred:"
+msgstr "Fouten opgetreden:"
+
+#: class-udm-updater.php:334
+#, php-format
+msgid "Dismiss from main dashboard (for %s weeks)"
+msgstr "Verwijderen van het dashboard (voor %s weken)"
+
+#: class-udm-updater.php:347
+msgid "please renew"
+msgstr "verleng de licentie"
+
+#: class-udm-updater.php:373
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: class-udm-updater.php:373
+#, php-format
+msgid ""
+"The installed version of %s has not been tested on your version of WordPress "
+"(%s)."
+msgstr ""
+"De geïnstalleerde versie van %s is niet getest op uw versie van WordPress "
+"( %s)."
+
+#: class-udm-updater.php:373
+#, php-format
+msgid "It has been tested up to version %s."
+msgstr "Deze is getest t/m versie %s."
+
+#: class-udm-updater.php:373
+msgid ""
+"You should update to make sure that you have a version that has been tested "
+"for compatibility."
+msgstr ""
+"U moet updaten om er zeker van te zijn dat u een versie hebt die getest is "
+"op compatibiliteit."
+
+#: class-udm-updater.php:381
+#, php-format
+msgid ""
+"Your paid access to %s updates for this site has expired. You will no longer "
+"receive updates."
+msgstr ""
+"Jouw betaalde toegang tot %s updates voor deze website is verlopen. Je zal "
+"geen updates meer ontvangen."
+
+#: class-udm-updater.php:381 class-udm-updater.php:383
+#, php-format
+msgid ""
+"To regain access to updates (including future features and compatibility "
+"with future WordPress releases) and support, %s."
+msgstr ""
+"Om opnieuw toegang te krijgen tot updates (inclusief nieuwe "
+"functionaliteiten en compatibiliteit met nieuwe Wordpress releases) en "
+"support, %s."
+
+#: class-udm-updater.php:383
+#, php-format
+msgid "Your paid access to %s updates for %s add-ons on this site has expired."
+msgstr ""
+"Jouw betaalde toegang tot %s updates voor %s add-ons op deze website is "
+"verlopen."
+
+#: class-udm-updater.php:391
+#, php-format
+msgid ""
+"Your paid access to %s updates for %s of the %s add-ons on this site will "
+"soon expire."
+msgstr ""
+"Jouw betaalde toegang tot %s updates voor %s van de %s add-ons op deze "
+"website zal binnenkort verlopen."
+
+#: class-udm-updater.php:391 class-udm-updater.php:393
+#, php-format
+msgid ""
+"To retain your access, and maintain access to updates (including future "
+"features and compatibility with future WordPress releases) and support, %s."
+msgstr ""
+"Om de toegang te behouden, en de toegang tot updates (inlcusief nieuwe "
+"releases en compatibiliteit met toekomstige Wordpress releases) en support, "
+"%s."
+
+#: class-udm-updater.php:393
+#, php-format
+msgid "Your paid access to %s updates for this site will soon expire."
+msgstr ""
+"Jouw betaalde toegang tot %s updates op deze site zal binnenkort verlopen."
+
+#: class-udm-updater.php:398
+#, php-format
+msgid "Your paid access to %s support has expired."
+msgstr "Uw betaalde toegang tot %s support is verlopen."
+
+#: class-udm-updater.php:398
+#, php-format
+msgid "To regain your access, %s."
+msgstr "Om de toegang te behouden, %s."
+
+#: class-udm-updater.php:400
+#, php-format
+msgid "Your paid access to %s support will soon expire."
+msgstr "Jouw betaalde toegang tot %s support verloopt binnenkort."
+
+#: class-udm-updater.php:400
+#, php-format
+msgid "To maintain your access to support, %s."
+msgstr "Om de toegang tot support te behouden, %s."
+
+#: class-udm-updater.php:483
+#, php-format
+msgid "Access to plugin updates (%s)"
+msgstr "Toegang tot updates (%s)"
+
+#: class-udm-updater.php:527
+#, php-format
+msgid "You need to enter both an email address and a %s"
+msgstr "Het invullen van een e-mailadres en %s is verplicht"
+
+#: class-udm-updater.php:528 class-udm-updater.php:558
+#: class-udm-updater.php:720
+msgid "password"
+msgstr "wachtwoord"
+
+#: class-udm-updater.php:543
+msgid "Connecting..."
+msgstr "Verbinding maken..."
+
+#: class-udm-updater.php:545 class-udm-updater.php:721
+msgid "Connect"
+msgstr "Verbinden"
+
+#: class-udm-updater.php:551 class-udm-updater.php:570
+#: class-udm-updater.php:575 class-udm-updater.php:611
+#: class-udm-updater.php:616 class-udm-updater.php:651
+#: class-udm-updater.php:656
+msgid ""
+"The response from the remote site could not be decoded. (More information is "
+"recorded in the browser console)."
+msgstr ""
+"De reactie van de server kon niet verwerkt worden. (Meer informatie is "
+"vinden in de browser console)."
+
+#: class-udm-updater.php:558
+#, php-format
+msgid "Your email address and %s were not recognised."
+msgstr "Jouw e-mailadres en %s zijn niet herkend."
+
+#: class-udm-updater.php:563
+msgid "You have successfully connected for access to updates to this plugin."
+msgstr "Je bent verbonden en hebt nu toegang tot updates van deze plugin."
+
+#: class-udm-updater.php:566
+msgid ""
+"Your login was accepted, but no available entitlement for this plugin was "
+"found."
+msgstr "Je login is geaccepteerd, echter zijn er geen licenties gevonden."
+
+#: class-udm-updater.php:566
+msgid ""
+"Has your licence expired, or have you used all your available licences "
+"elsewhere?"
+msgstr ""
+"Is jouw licentie verlopen, of heb je alle beschikbare licenties reeds in "
+"gebruik?"
+
+#: class-udm-updater.php:606
+msgid ""
+"When updates to this plugin are available, they will be automatically "
+"installed."
+msgstr ""
+"Indien er updates beschikbaar zijn, zullen deze automatisch geïnstalleerd "
+"worden."
+
+#: class-udm-updater.php:608
+msgid ""
+"When updates to this plugin are available, they will not be automatically "
+"installed."
+msgstr ""
+"Indien er updates beschikbaar zijn, zullen deze niet automatisch "
+"geïnstalleerd worden."
+
+#: class-udm-updater.php:633
+msgid "Disconnecting..."
+msgstr "Verbinding verbreken..."
+
+#: class-udm-updater.php:635 class-udm-updater.php:712
+msgid "Disconnect"
+msgstr "Verbinding verbreken"
+
+#: class-udm-updater.php:641
+msgid ""
+"Your email address was not recognised. The connection information will be "
+"removed from this site."
+msgstr ""
+"Jouw e-mailadres is niet herkend. De licentiedetails worden verwijderd van "
+"deze site."
+
+#: class-udm-updater.php:646
+msgid "You have successfully disconnected access to updates to this plugin."
+msgstr "De toegang tot updates van deze plugin is succesvol verbroken."
+
+#: class-udm-updater.php:709
+#, php-format
+msgid "You are connected to receive updates for %s (login: %s)"
+msgstr "Je bent verbonden om updates te ontvangen voor %s (login: %s)"
+
+#: class-udm-updater.php:716
+#, php-format
+msgid "Please enter your customer login to access updates for %s"
+msgstr "Vul uw inloggegevens in om toegang te krijgen tot updates voor %s"
+
+#: class-udm-updater.php:719
+msgid "Email"
+msgstr "E-mailadres"
+
+#: class-udm-updater.php:730
+msgid ""
+"Automatically update as soon as an update becomes available (N.B. other "
+"plugins can over-ride this setting)."
+msgstr ""
+"Automatisch updaten zodra een update beschikbaar is (N.B. andere plugins "
+"kunnen deze instelling mogelijk overschrijven)."

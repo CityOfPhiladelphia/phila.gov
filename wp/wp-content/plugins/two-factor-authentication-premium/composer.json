@@ -1,0 +1,5 @@
+{
+    "require": {
+        "davidanderson684/simba-plugin-manager-updater": "1.8.*"
+    }
+}

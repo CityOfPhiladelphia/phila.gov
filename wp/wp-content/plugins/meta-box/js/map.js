@@ -1,6 +1,4 @@
-/* global google */
-
-(function ( $, document, window, google, i18n ) {
+( function ( $, document, window, google, rwmb, i18n ) {
 	'use strict';
 
 	// Use function construction to store map & DOM elements separately for each instance
@@ -107,7 +105,7 @@
 			$( window ).on( 'rwmb_map_refresh', that.refresh );
 
 			// Refresh on meta box hide and show
-			$( document ).on( 'postbox-toggled', that.refresh );
+			rwmb.$document.on( 'postbox-toggled', that.refresh );
 			// Refresh on sorting meta boxes
 			$( '.meta-box-sortables' ).on( 'sortstop', that.refresh );
 		},
@@ -176,7 +174,7 @@
 		// Update coordinate to input field
 		updateCoordinate: function ( latLng ) {
 			var zoom = this.map.getZoom();
-			this.$coordinate.val( latLng.lat() + ',' + latLng.lng() + ',' + zoom );
+			this.$coordinate.val( latLng.lat() + ',' + latLng.lng() + ',' + zoom ).trigger( 'change' );
 		},
 
 		// Find coordinates by address
@@ -248,23 +246,27 @@
 		}
 	};
 
-	function update() {
-		$( '.rwmb-map-field' ).each( function () {
-			var $this = $( this ),
-				controller = $this.data( 'mapController' );
-			if ( controller ) {
-				return;
-			}
+	function initMap() {
+		var $this = $( this ),
+			controller = $this.data( 'mapController' );
+		if ( controller ) {
+			return;
+		}
 
-			controller = new MapField( $this );
-			controller.init();
-			$this.data( 'mapController', controller );
-		} );
+		controller = new MapField( $this );
+		controller.init();
+		$this.data( 'mapController', controller );
 	}
 
-	$( function () {
-		update();
-		$( '.rwmb-input' ).on( 'clone', update );
-	} );
+	function init( e ) {
+		$( e.target ).find( '.rwmb-map-field' ).each( initMap );
+	}
 
-})( jQuery, document, window, google, RWMB_Map );
+	function restart() {
+		$( '.rwmb-map-field' ).each( initMap );
+	}
+
+	rwmb.$document
+		.on( 'mb_ready', init )
+		.on( 'clone', '.rwmb-input', restart );
+} )( jQuery, document, window, google, rwmb, RWMB_Map );

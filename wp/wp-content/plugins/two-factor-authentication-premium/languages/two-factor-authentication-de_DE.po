@@ -1,0 +1,455 @@
+# Translation of Plugins - Two Factor Authentication - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - Two Factor Authentication - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-10-02 08:21:49+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Two Factor Authentication - Stable (latest release)\n"
+
+#: includes/user_settings.php:60
+msgid "N.B. Generating two-factor codes depends upon your web-server and your TFA app/device agreeing upon the time. The current UTC time according to the server when this page loaded: %s, and in the time-zone you have configured in your WordPress settings: %s"
+msgstr "Anmerkung: Das Generieren der Einmal-Passwörter hängt von deinem Webserver und deiner 2FA App ab. Die beiden Parteien müssen sich über die Zeiteinstellungen einig sein. Die aktuelle Zeit in UTC auf deinem Server (beim Seitenaufruf): %s und die Zeitzone, die in den WordPress-Einstellungen konfiguriert ist: %s"
+
+#. Author URI of the plugin/theme
+msgid "https://www.simbahosting.co.uk"
+msgstr "https://www.simbahosting.co.uk"
+
+#. Author of the plugin/theme
+msgid "David Nutbourne + David Anderson, original plugin by Oskar Hane"
+msgstr "David Nutbourne + David Anderson, Original Plugin von Oskar Hane"
+
+#. Description of the plugin/theme
+msgid "Secure your WordPress login forms with two factor authentication - including WooCommerce login forms"
+msgstr "Sichere dein WordPress Anmeldeformular mit Zwei-Faktor-Authentifizierung - inklusive WooCommerce Anmeldeformulare"
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.simbahosting.co.uk/s3/product/two-factor-authentication/"
+msgstr "https://www.simbahosting.co.uk/s3/product/two-factor-authentication/"
+
+#: two-factor-login.php:872
+msgid "One Time Password"
+msgstr "Einmal-Passwort"
+
+#: two-factor-login.php:870
+msgid "Enter One Time Password (if you have one)"
+msgstr "Bitte gib dein Einmal-Passwort ein (falls du eines hast)"
+
+#: two-factor-login.php:809
+msgid "You should also bookmark the FAQs, which explain how to de-activate the plugin even if you cannot log in."
+msgstr "Du solltest die FAQs in deine Lesezeichen aufnehmen. Dort kannst du nachlesen, wie das Plugin deaktiviert wird, falls du dich nicht mehr einloggen kannst."
+
+#: two-factor-login.php:809
+msgid "If you activate two-factor authentication, then verify that your two-factor application is showing the same One Time Password as shown on this page before you log out."
+msgstr "Falls du Zwei-Faktor-Authentifizierung aktivierst, stelle bitte sicher, dass deine Applikation für die Authentifizierung dasselbe Einmal-Passwort anzeigt, wie auf dieser Seite. Prüfe dies, bevor du dich abmeldest."
+
+#: two-factor-login.php:806
+msgid "Nothing you change here will have any effect on other users."
+msgstr "Alle hier gemachten Änderungen betreffen keine anderen Benutzer."
+
+#: two-factor-login.php:806
+msgid "These are your personal settings."
+msgstr "Dies sind deine persönlichen Einstellungen."
+
+#: two-factor-login.php:770
+msgid "Click here and re-scan the QR-Code"
+msgstr "Klicke hier und scanne den QR-Code erneut"
+
+#: two-factor-login.php:768
+msgid "Please re-sync or you might not be able to log in if you generate more OTPs without logging in."
+msgstr "Bitte synchronisiere neu oder du wirst dich nicht mehr anmelden können, falls du mehrere Einmal-Passwörter ohne Anmeldung generierst."
+
+#: two-factor-login.php:766
+msgid "You need to resync your device for Two Factor Authentication since the OTP you last used is many steps ahead of the server."
+msgstr "Du musst dein Gerät neu für die Zwei-Faktor-Authentifizierung synchronisieren. Das letzte, genutzte Einmal-Passwort ist einige Schritte neben dem Server."
+
+#: two-factor-login.php:764
+msgid "Two Factor Authentication re-sync needed"
+msgstr "Zwei-Faktor-Authentifizierung Synchronisierung benötigt"
+
+#: two-factor-login.php:743 two-factor-login.php:874
+msgid "(check your OTP app to get this password)"
+msgstr "(nutze deine OTP App um das Passwort zu bekommen)"
+
+#: two-factor-login.php:742
+msgid "One Time Password (i.e. 2FA)"
+msgstr "Einmal-Passwort (i.e. 2FA)"
+
+#: two-factor-login.php:741 two-factor-login.php:871
+msgid "You have to enter a username first."
+msgstr "Du musst erst einen Benutzernamen eingeben."
+
+#: two-factor-login.php:740
+msgid "Click to enter One Time Password"
+msgstr "Klicke hier, um das Einmal-Passwort einzugeben"
+
+#: two-factor-login.php:719
+msgid "Your counter on the server is currently on"
+msgstr "Der Zähler auf deinem Server ist aktuell auf"
+
+#: two-factor-login.php:712
+msgid "Choose which algorithm for One Time Passwords you want to use."
+msgstr "Wähle, welchen Algorhytmus du für die Einmal-Passwörter verwenden möchtest."
+
+#: two-factor-login.php:706
+msgid "Advanced settings"
+msgstr "Erweiterte Einstellungen"
+
+#: two-factor-login.php:696
+msgid "(update)"
+msgstr "(Aktualisierung)"
+
+#: two-factor-login.php:682
+msgid "One-time emergency codes are a feature of the Premium version of this plugin."
+msgstr "Einmal-Notfallcodes sind eine Funktion der Premium-Version von diesem Plugin."
+
+#: two-factor-login.php:659
+msgid "Private key - always to be kept secret - type this into your app to set it up (instead of scanning the code)"
+msgstr "Privater Schlüssel - muss immer geheim gehalten werden! Tippe diesen in deine App, um diese einzurichten (anstatt den Code zu scannen)"
+
+#: two-factor-login.php:651
+msgid "Private key: %s (base 32: %s)"
+msgstr "Privater Schlüssel: %s (Base32: %s)"
+
+#: two-factor-login.php:649
+msgid "algorithm"
+msgstr "Algorithmus"
+
+#: two-factor-login.php:649
+msgid "You are currently using"
+msgstr "Du verwendest aktuell"
+
+#: two-factor-login.php:647
+msgid "For OTP apps that support scanning, scanning this code is the quickest way to set the app up (e.g. with Duo Mobile, Google Authenticator)"
+msgstr "Für Einmal-Passwort-Apps, die Scanning unterstützen, ist das Scannen des Codes der schnellste Weg, um diese einzurichten (z.B. mit Duo Mobile, Google Authenticator)"
+
+#: two-factor-login.php:640 two-factor-login.php:643
+msgid "QR code"
+msgstr "QR-Code"
+
+#: two-factor-login.php:616 two-factor-login.php:628
+msgid "Current one-time password"
+msgstr "Aktuelles Einmal-Passwort"
+
+#: two-factor-login.php:605
+msgid "Current codes (login: %s)"
+msgstr "Aktuelle Codes (Login: %s)"
+
+#: two-factor-login.php:601
+msgid "Current codes"
+msgstr "Aktuelle Codes"
+
+#: two-factor-login.php:544
+msgid "Private key:"
+msgstr "Privater Schlüssel:"
+
+#: two-factor-login.php:541
+msgid "Private key (base 32 - used by Google Authenticator and Authy):"
+msgstr "Privater Schlüssel (Base32 - genutzt von Google Authenticator und Authy):"
+
+#: two-factor-login.php:472
+msgid "Updating..."
+msgstr "Aktualisiere ..."
+
+#: two-factor-login.php:453 two-factor-login.php:667
+msgid "Reset private key"
+msgstr "Privaten Schlüssel zurücksetzen"
+
+#: two-factor-login.php:453
+msgid "Warning: if you reset this key you will have to update your apps with the new one. Are you sure you want this?"
+msgstr "Warnung: Wenn du den Schlüssel zurücksetzt, dann musst du deine Apps mit dem neuen Schlüssel einrichten. Bist du sicher, dass du das machen möchtest?"
+
+#: two-factor-login.php:403
+msgid "User settings"
+msgstr "Benutzer Einstellungen"
+
+#: two-factor-login.php:394 two-factor-login.php:398
+msgid "Plugin settings"
+msgstr "Plugin Einstellungen"
+
+#: two-factor-login.php:370
+msgid "Two Factor Auth"
+msgstr "Zwei-Faktor-Authentifizierung"
+
+#: two-factor-login.php:343
+msgid "Do require 2FA over XMLRPC (best option if you do not use XMLRPC or are unsure)"
+msgstr "Erfordere 2FA über die XMLRPC Schnittstelle (beste Option, wenn Du die Schnittstelle gar nicht verwendest oder Du Dir nicht sicher bist)"
+
+#: two-factor-login.php:342
+msgid "Do not require 2FA over XMLRPC (best option if you must use XMLRPC and your client does not support 2FA)"
+msgstr "Erfordere keine 2FA über die XMLRPC Schnittstelle (beste Option, wenn Du XMLRPC verwenden musst und die Gegenseite kein 2FA unterstützt) "
+
+#: two-factor-login.php:303
+msgid "Multisite Super Admin"
+msgstr "Multisite Superadmin"
+
+#: two-factor-login.php:279 two-factor-login.php:329
+msgid "HOTP (event based)"
+msgstr "HOTP (basierend auf Events)"
+
+#: two-factor-login.php:279 two-factor-login.php:329
+msgid "TOTP (time based - most common algorithm; used by Google Authenticator)"
+msgstr "TOTP (zeitbasierend - der meistgenutzte Algorhytmus, z.b. auch von Google Authenticator)"
+
+#: two-factor-login.php:267
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: two-factor-login.php:267
+msgid "Disable two-factor authentication"
+msgstr "Deaktiviere Zwei-Faktor-Authentifizierung"
+
+#: two-factor-login.php:266
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: two-factor-login.php:266
+msgid "Enable two-factor authentication"
+msgstr "Aktiviere Zwei-Faktor-Authentifizierung"
+
+#: two-factor-login.php:263
+msgid "N.B. This site is configured to forbid you to log in if you disable two-factor authentication after your account is %d days old"
+msgstr "Anmerkung: Diese Seite verbietet Deine Anmeldung, wenn Du Zwei-Faktor-Authentifizierung deaktivierst und Dein Account bereits älter als %d Tage ist"
+
+#: two-factor-login.php:227 two-factor-login.php:852
+msgid "The one-time password (TFA code) you entered was incorrect."
+msgstr "Das eingegebene Einmal-Passwort ist nicht korrekt."
+
+#: two-factor-login.php:149
+msgid "The Two Factor Authentication plugin requires either the PHP openssl (preferred) or mcrypt module to be installed. Please ask your web hosting company to install one of them."
+msgstr "Das Plugin Two Factor Authentication verlangt entweder PHP OpenSSL (bevorzugt) oder das Mcrypt Modul. Bitte frage deinen Hoster, damit er dir eines dieser Module installiert."
+
+#: two-factor-login.php:149
+msgid "PHP OpenSSL or mcrypt module required"
+msgstr "PHP OpenSSL or mcrypt Module benötigt"
+
+#: two-factor-login.php:145
+msgid "The Two Factor Authentication plugin requires PHP version %s or higher - your current version is only %s."
+msgstr "Das Plugin Two Factor Authentication benötigt die PHP-Version %s oder höher - deine aktuelle Version ist nur %s."
+
+#: two-factor-login.php:145
+msgid "Higher PHP version required"
+msgstr "Höhere PHP-Version benötigt"
+
+#: includes/user_settings.php:55
+msgid "Activate two factor authentication"
+msgstr "Aktiviere Zwei-Faktor-Authentifizierung"
+
+#: includes/user_settings.php:46
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+#: includes/user_settings.php:41
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. #-#-#-#-#  two-factor-authentication-code.pot (Two Factor Authentication
+#. 1.2.30)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/user_settings.php:41 two-factor-login.php:370
+#: two-factor-login.php:383 two-factor-login.php:384
+msgid "Two Factor Authentication"
+msgstr "Two Factor Authentication"
+
+#: includes/tfa_frontend.php:257
+msgid "Two factor authentication is not available for your user."
+msgstr "Zwei-Faktor-Authentifizierung ist für deinen Benutzer nicht verfügbar."
+
+#: includes/tfa_frontend.php:195 includes/tfa_frontend.php:226
+#: two-factor-login.php:484 two-factor-login.php:506
+msgid "Response:"
+msgstr "Antwort:"
+
+#: includes/tfa_frontend.php:151
+msgid "Saving..."
+msgstr "Wird gespeichert..."
+
+#: includes/tfa_frontend.php:133
+msgid "You have unsaved settings."
+msgstr "Du hast nicht gespeicherte Einstellungen."
+
+#: includes/tfa_frontend.php:91 includes/tfa_frontend.php:104
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+#: includes/tfa_frontend.php:57 two-factor-login.php:649
+msgid "an event based"
+msgstr "basierend auf einem Event"
+
+#: includes/tfa_frontend.php:57 two-factor-login.php:649
+msgid "a time based"
+msgstr "zeitbasiert"
+
+#: includes/class.TFA.php:265
+msgid "You are attempting to log in to an account that has two-factor authentication enabled; this requires you to also have two-factor authentication enabled on the account whose credentials you are using."
+msgstr "Du versuchst dich gerade mit einem Benutzer anzumelden, der Zwei-Faktor-Authentifizierung aktiviert hat. Dies verlangt, dass du in deinem Benutzeraccount ebenfalls Zwei-Faktor-Authentifizierung aktiviert hast."
+
+#: includes/class.TFA.php:251
+msgid "The site owner has forbidden you to login without two-factor authentication. Please contact the site owner to re-gain access."
+msgstr "Der Betreiber der Seite hat es untersagt, sich ohne Zwei-Faktor-Authentifizierung anzumelden. Bitte kontaktiere den Betreiber, damit du wieder Zugriff erhältst."
+
+#: includes/class.TFA.php:251 includes/class.TFA.php:265
+#: two-factor-login.php:227 two-factor-login.php:852
+msgid "Error:"
+msgstr "Fehler: "
+
+#: includes/class.TFA.php:162 includes/class.TFA.php:172
+#: includes/tfa_frontend.php:85
+msgid "No emergency codes left. Sorry."
+msgstr "Keine Notfallcodes mehr verfügbar. Sorry."
+
+#: includes/admin_settings.php:203
+msgid "If you translate this plugin, please send the translations .po-file to us so we can include it in future releases - paste a link in the plugin's support forum."
+msgstr "Wenn du dieses Plugin übersetzt, sende uns bitte die .po-Dateien, damit wir diese in den zukünftigen Versionen inkludieren können. Füge einen Link dazu in das Supportforum."
+
+#: includes/admin_settings.php:201
+msgid "Translations"
+msgstr "Übersetzungen"
+
+#: includes/admin_settings.php:195
+msgid "access to our personal support desk for 12 months."
+msgstr "Zugriff auf unseren persönlichen Support für zwölf Monate."
+
+#: includes/admin_settings.php:195
+msgid "Personal support"
+msgstr "Persönlicher Support"
+
+#: includes/admin_settings.php:194
+msgid "flexible shortcodes allowing you to design your front-end settings page for your users exactly as you wish."
+msgstr "Flexible Shortcodes erlauben es dir, die Frontend-Seite mit den Einstellungen für die Benutzer so zu gestalten, wie du es dir vorstellst."
+
+#: includes/admin_settings.php:194
+msgid "More shortcodes"
+msgstr "Mehr Shortcodes"
+
+#: includes/admin_settings.php:193
+msgid "enable, disable or see TFA codes for all your users from one central location."
+msgstr "Aktiviere, deaktiviere oder sehe die 2FA Codes für alle deine Benutzer an einem zentralen Ort."
+
+#: includes/admin_settings.php:193
+msgid "Manage all users centrally"
+msgstr "Verwalte alle Benutzer zentral"
+
+#: includes/admin_settings.php:192
+msgid "provide your users with one-time codes to use in case they lose their device."
+msgstr "Gib deinen Benutzern Einmal-Codes für die Anmeldung, falls diese ihr Gerät verlieren."
+
+#: includes/admin_settings.php:192 two-factor-login.php:678
+msgid "Emergency codes"
+msgstr "Notfallcodes"
+
+#: includes/admin_settings.php:188
+msgid "It comes with these extra features:"
+msgstr "Es kommt mit diesen Extrafunktionen:"
+
+#: includes/admin_settings.php:188
+msgid "If you want to say 'thank you' or help this plugin's development, or get extra features, then please take a look at the premium version of this plugin."
+msgstr "Falls du einfach \"Danke\" sagen möchtest, die Weiterentwicklung fördern möchtest oder du die Zusatzfunktionen brauchst, dann wirf einen Blick auf die Premium-Version des Plugins."
+
+#: includes/admin_settings.php:177
+msgid "Change to email"
+msgstr "Zu E-Mail wechseln"
+
+#: includes/admin_settings.php:175
+msgid "Default"
+msgstr "Standard"
+
+#: includes/admin_settings.php:141
+msgid "Another way to do that is by using a user-switching plugin like this one."
+msgstr "Einen anderen Weg, dies zu tun, ist ein Plugin wie dieses einzusetzen."
+
+#: includes/admin_settings.php:139
+msgid "The Premium version of this plugin allows you to see and reset the TFA settings of other users."
+msgstr "Die Premium-Version von diesem Plugin erlaubt es dir, die 2FA Einstellungen der anderen Benutzer zu sehen und zurückzusetzen."
+
+#: includes/admin_settings.php:133
+msgid "Users' settings"
+msgstr "Benutzereinstellungen"
+
+#: includes/admin_settings.php:124
+msgid "Your users can change this in their own settings if they want."
+msgstr "Deine Benutzer können dies in Ihren eigenen Einstellungen anpassen, wenn sie möchten."
+
+#: includes/admin_settings.php:123
+msgid "Default algorithm"
+msgstr "Standard-Algorhytmus"
+
+#: includes/admin_settings.php:106
+msgid " i.e. XMLRPC requests coming in to WordPress (whether from a legitimate app, or from an attacker) can only be verified using the password - not with a two-factor code. As a result, there not be an ideal option to pick below. You may have to choose between the convenience of using your apps, or the security of two factor authentication."
+msgstr "z.B: XMLRPC Anfragen, die empfangen werden (von einem Hacker oder von einer legitimen App) können nur mit dem Passwort legitimiert werden - nicht mit Zwei-Faktor-Authentifizierung. Als Resultat ist die untere Option nicht empfohlen. Du musst dich zwischen der Bequemlichkeit für Deine Apps oder der Sicherheit der Zwei-Faktor-Authentifizierung entscheiden."
+
+#: includes/admin_settings.php:102
+msgid "Unfortunately, XMLRPC also provides a way for attackers to perform actions on your WordPress site, using only a password (i.e. without a two-factor password). More unfortunately, authors of legitimate programmes using XMLRPC have not yet added two-factor support to their code."
+msgstr "Leider bietet XMLRPC auch einen Angriffspunkt um Aktionen auf deiner Website auszuführen. Standardmässig ist XMLRPC auch nur mit dem Passwort geschützt. Zudem haben leider die meisten Verwender der Schnittstelle noch keine Zwei-Faktor-Authentifizierung eingebaut."
+
+#: includes/admin_settings.php:98
+msgid "XMLRPC is a feature within WordPress allowing other computers to talk to your WordPress install. For example, it could be used by an app on your tablet that allows you to blog directly from the app (instead of needing the WordPress dashboard)."
+msgstr "XMLRPC ist eine Funktion, welche es WordPress erlaubt, mit anderen Systemen zu kommunizieren. Sie kann zum Beispiel eingesetzt werden, um direkt aus einer App auf einem Tablet zu bloggen (anstatt das WordPress Backend zu verwenden)."
+
+#: includes/admin_settings.php:94
+msgid "XMLRPC requests"
+msgstr "XMLRPC Anfragen"
+
+#: includes/admin_settings.php:83
+msgid "Requiring users to use two-factor authentication is a feature of the Premium version of this plugin."
+msgstr "Um die Zwei-Faktor-Authentifizierung obligatorisch zu machen, benötigst du die Premium-Version von diesem Plugin."
+
+#: includes/admin_settings.php:79
+msgid "Make two factor authentication compulsory"
+msgstr "Mache zweistufige Authentifizierung obligatorisch"
+
+#: includes/admin_settings.php:69
+msgid "Choose which user roles will have two factor authentication available."
+msgstr "Wähle, welche Benutzerrollen Zwei-Faktor-Authentifizierung zur Verfügung haben sollen."
+
+#: includes/admin_settings.php:68
+msgid "User roles"
+msgstr "Benutzerrollen"
+
+#: includes/admin_settings.php:54
+msgid "N.B. These two-factor settings apply to your entire WordPress network. (i.e. They are not localised to one particular site)."
+msgstr "Anmerkung: Diese Zwei-Faktor-Authentifizierungs-Einstellungen sind für dein ganzes WordPress-Netzwerk gültig."
+
+#: includes/admin_settings.php:41
+msgid "Two factor authentication is currently disabled via the TWO_FACTOR_DISABLE constant (which is mostly likely to be defined in your wp-config.php)"
+msgstr "Zwei-Faktor-Authentifizierung ist aktuell über die Konstante TWO_FACTOR_DISABLE deaktiviert (diese ist meist in der wp-config.php definiert)"
+
+#: includes/admin_settings.php:39
+msgid "Two Factor Authentication currently disabled"
+msgstr "Zwei-Faktor-Authentifizierung ist deaktiviert"
+
+#: includes/admin_settings.php:32
+msgid "Lead developer's homepage"
+msgstr "Website des Hauptentwicklers"
+
+#: includes/admin_settings.php:30
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/admin_settings.php:29
+msgid "More premium plugins"
+msgstr "Mehr Premium-Plugins"
+
+#: includes/admin_settings.php:28
+msgid "WordPress backups"
+msgstr "WordPress Sicherungen"
+
+#: includes/admin_settings.php:27
+msgid "More free plugins"
+msgstr "Mehr kostenlose Plugins"
+
+#: includes/admin_settings.php:26
+msgid "Support"
+msgstr "Support"
+
+#: includes/admin_settings.php:22 includes/admin_settings.php:186
+msgid "Premium version"
+msgstr "Premium-Version"
+
+#: includes/admin_settings.php:17
+msgid "Two Factor Authentication (Version: %s) - Admin Settings"
+msgstr "Two Factor Authentication (Version: %s) - Administrator-Einstellungen"
