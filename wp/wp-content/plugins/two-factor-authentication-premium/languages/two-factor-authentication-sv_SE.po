@@ -1,0 +1,612 @@
+# Translation of Two Factor Authentication in Swedish
+# This file is distributed under the same license as the Two Factor Authentication package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-26 12:20:12+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Two Factor Authentication\n"
+
+#: updater/class-udm-updater.php:240 updater/class-udm-updater.php:242
+msgid "To regain access to updates (including future features and compatibility with future WordPress releases) and support, please renew."
+msgstr "För att åter igen få tillgång till uppdateringar (inklusive framtida funktioner och kompatibilitet med framtida Wordpress versioner) och stöd, vänligen förnya."
+
+#: updater/class-udm-updater.php:242
+msgid "Your paid access to %s updates for %s add-ons on this site has expired."
+msgstr "Din betalda period för att få tillgång till %s uppdateringar för %s tillägg på denna webbplats har löpt ut."
+
+#: updater/class-udm-updater.php:246
+msgid "Your paid access to %s updates for %s of the %s add-ons on this site will soon expire."
+msgstr "Din betalning för att få tillgång till %s uppdateringar för %s av %s tillägg på denna webbplats kommer snart att upphöra."
+
+#: updater/class-udm-updater.php:246 updater/class-udm-updater.php:248
+msgid "To retain your access, and maintain access to updates (including future features and compatibility with future WordPress releases) and support, please renew."
+msgstr "För att behålla och ha fortsatt tillgång till uppdateringar (inklusive framtida funktioner och kompatibilitet med framtida Wordpress versioner) och stöd, vänligen förnya."
+
+#: updater/class-udm-updater.php:248
+msgid "Your paid access to %s updates for this site will soon expire."
+msgstr "Din tillgång till betalda %s uppdateringar för den här webbplatsen kommer snart att gå ut."
+
+#: updater/class-udm-updater.php:252
+msgid "Your paid access to %s support has expired."
+msgstr "Din betalning för att få tillgång till %s support har gått ut."
+
+#: updater/class-udm-updater.php:252
+msgid "To regain your access, please renew."
+msgstr "För att återfå din tillgång, vänligen förnya."
+
+#: updater/class-udm-updater.php:254
+msgid "Your paid access to %s support will soon expire."
+msgstr "Din betalning för att få tillgång till %s stöd kommer snart att gå ut."
+
+#: updater/class-udm-updater.php:254
+msgid "To maintain your access to support, please renew."
+msgstr "För att behålla din tillgång till support, vänligen förnya."
+
+#: updater/class-udm-updater.php:311
+msgid "Access to plugin updates (%s)"
+msgstr "Tillgång till plugin uppdateringar (%s)"
+
+#: updater/class-udm-updater.php:346
+msgid "You need to enter both an email address and a password"
+msgstr "Du måste ange både en e-postadress och lösenord"
+
+#: updater/class-udm-updater.php:358
+msgid "Connecting..."
+msgstr "Ansluter..."
+
+#: updater/class-udm-updater.php:360 updater/class-udm-updater.php:466
+msgid "Connect"
+msgstr "Anslut"
+
+#: updater/class-udm-updater.php:366 updater/class-udm-updater.php:383
+#: updater/class-udm-updater.php:388 updater/class-udm-updater.php:416
+#: updater/class-udm-updater.php:421
+msgid "The response from the remote site could not be decoded. (More information is recorded in the browser console)."
+msgstr "Svaret från fjärrplatsen kunde inte avkodas. (Mer information lagras i webbläsarens konsol)."
+
+#: updater/class-udm-updater.php:372
+msgid "Your email address and password were not recognised."
+msgstr "Din e-postadress och lösenord kändes inte igen."
+
+#: updater/class-udm-updater.php:376
+msgid "You have successfully connected for access to updates to this plugin."
+msgstr "Du har anslutit för att få tillgång till uppdateringar till denna plugin."
+
+#: updater/class-udm-updater.php:379
+msgid "Your login was accepted, but no available entitlement for this plugin was found."
+msgstr "Din inloggning accepterades, men ingen tillgänglig rätt för denna plugin hittades."
+
+#: updater/class-udm-updater.php:379
+msgid "Has your licence expired, or have you used all your available licences elsewhere?"
+msgstr "Har din licens gått ut, eller har du använt alla dina tillgängliga licenser på annat håll?"
+
+#: updater/class-udm-updater.php:407
+msgid "Disconnecting..."
+msgstr "Kopplar bort..."
+
+#: updater/class-udm-updater.php:409 updater/class-udm-updater.php:457
+msgid "Disconnect"
+msgstr "Koppla bort"
+
+#: updater/class-udm-updater.php:413
+msgid "You have successfully disconnected access to updates to this plugin."
+msgstr "Du har framgångsrikt avslutat tillgång till uppdateringar till denna plugin."
+
+#: updater/class-udm-updater.php:454
+msgid "You are connected to receive updates for %s (login: %s)"
+msgstr "Du är ansluten för att ta emot uppdateringar för %s (login: %s)"
+
+#: updater/class-udm-updater.php:461
+msgid "Please enter your customer login to access updates for %s"
+msgstr "Ange dina kundinloggnings uppgifter för att få tillgång till uppdateringar för %s"
+
+#: updater/class-udm-updater.php:464
+msgid "Email"
+msgstr "Email"
+
+#: updater/class-udm-updater.php:465
+msgid "Password"
+msgstr "Lösenord"
+
+#: two-factor-login.php:136
+msgid "Higher PHP version required"
+msgstr "Högre PHP version krävs"
+
+#: two-factor-login.php:136
+msgid "The Two Factor Authentication plugin requires PHP version %s or higher - your current version is only %s."
+msgstr "Two Factor Authentication plugin kräver PHP version %s eller högre - din nuvarande version är endast %s."
+
+#: two-factor-login.php:140
+msgid "PHP Mcrypt module required"
+msgstr "PHP Mcrypt modul krävs"
+
+#: two-factor-login.php:140
+msgid "The Two Factor Authentication plugin requires the PHP mcrypt module to be installed. Please ask your web hosting company to install it."
+msgstr "Two Factor Authentication plugin kräver PHP Mcrypt modul installerad. Be din webbhotell leverantör installera modulen."
+
+#: two-factor-login.php:218
+msgid "Error:"
+msgstr "Fel:"
+
+#: two-factor-login.php:218
+msgid "The one-time password (TFA code) you entered was incorrect."
+msgstr "Det engångslösenord (TFA-kod) du angav var felaktig."
+
+#: two-factor-login.php:248
+msgid "Enable two-factor authentication"
+msgstr "Aktivera tvåfaktorsautentisering"
+
+#: two-factor-login.php:248
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: two-factor-login.php:249
+msgid "Disable two-factor authentication"
+msgstr "Inaktivera tvåfaktorsautentisering"
+
+#: two-factor-login.php:249
+msgid "Disabled"
+msgstr "Avaktiverad"
+
+#: two-factor-login.php:260 two-factor-login.php:310
+msgid "TOTP (time based - most common algorithm; used by Google Authenticator)"
+msgstr "TOTP (tidsbaserad - vanligast algoritm, som används av Google Authenticator)"
+
+#: two-factor-login.php:260 two-factor-login.php:310
+msgid "HOTP (event based)"
+msgstr "HOTP (räknebaserad)"
+
+#: two-factor-login.php:284
+msgid "Multisite Super Admin"
+msgstr ""
+
+#: two-factor-login.php:323
+msgid "Do not require 2FA over XMLRPC (best option if you must use XMLRPC and your client does not support 2FA)"
+msgstr "Kräv inte 2FA över XMLRPC (bästa alternativet om du måste använda XMLRPC och din klient inte stöder 2FA)"
+
+#: two-factor-login.php:324
+msgid "Do require 2FA over XMLRPC (best option if you do not use XMLRPC or are unsure)"
+msgstr "Kräver 2FA över XMLRPC (bästa alternativet om du inte använder XMLRPC eller är osäker)"
+
+#: two-factor-login.php:349 two-factor-login.php:362 two-factor-login.php:363
+#: includes/user_settings.php:41
+msgid "Two Factor Authentication"
+msgstr "Två faktors autentisering"
+
+#: two-factor-login.php:349
+msgid "Two Factor Auth"
+msgstr ""
+
+#: two-factor-login.php:373 two-factor-login.php:377
+msgid "Plugin settings"
+msgstr "Plugin inställningar"
+
+#: two-factor-login.php:382
+msgid "User settings"
+msgstr "Användarinställningar"
+
+#: two-factor-login.php:424
+msgid "Warning: if you reset this key you will have to update your apps with the new one. Are you sure you want this?"
+msgstr ""
+"Varning: Om du återställer denna nyckel måste du uppdatera dina appar med den nya.\n"
+"Är du säker på att du vill göra det här?"
+
+#: two-factor-login.php:424
+msgid "Reset private key"
+msgstr "Återställ privat nyckel"
+
+#: two-factor-login.php:443
+msgid "Updating..."
+msgstr "Uppdaterar..."
+
+#: two-factor-login.php:455 two-factor-login.php:477
+#: includes/tfa_frontend.php:195 includes/tfa_frontend.php:226
+msgid "Response:"
+msgstr "Respons"
+
+#: two-factor-login.php:512
+msgid "Private key (base 32 - used by Google Authenticator and Authy):"
+msgstr "Privat nyckel (base 32 - används av Google Authenticator och Authy):"
+
+#: two-factor-login.php:515
+msgid "Private key:"
+msgstr "Privat nyckel:"
+
+#: two-factor-login.php:572
+msgid "Current codes"
+msgstr "Aktuella koder"
+
+#: two-factor-login.php:576
+msgid "Current codes (login: %s)"
+msgstr "Aktuella koder (login: %s)"
+
+#: two-factor-login.php:587 two-factor-login.php:599
+msgid "Current one-time password"
+msgstr "Aktuell engångslösenord"
+
+#: two-factor-login.php:611 two-factor-login.php:614
+msgid "QR code"
+msgstr "QR-kod"
+
+#: two-factor-login.php:618
+msgid "For OTP apps that support scanning, scanning this code is the quickest way to set the app up (e.g. with Duo Mobile, Google Authenticator)"
+msgstr "För OTP appar som stöder skanning, skanna den här koden är det snabbaste sättet att ställa in programmet (t.ex. med Duo Mobile, Google Authenticator)"
+
+#: two-factor-login.php:620
+msgid "You are currently using"
+msgstr "Du använder för närvarande"
+
+#: two-factor-login.php:620 includes/tfa_frontend.php:57
+msgid "a time based"
+msgstr "en tidsbaserad"
+
+#: two-factor-login.php:620 includes/tfa_frontend.php:57
+msgid "an event based"
+msgstr "en räknebaserad"
+
+#: two-factor-login.php:620
+msgid "algorithm"
+msgstr "algoritm"
+
+#: two-factor-login.php:622 premium.php:394
+msgid "Private key: %s (base 32: %s)"
+msgstr "Privat nyckel: %s (base 32: %s)"
+
+#: two-factor-login.php:630
+msgid "Private key - always to be kept secret - type this into your app to set it up (instead of scanning the code)"
+msgstr "Privat nyckel - skall alltid hållas hemligt - skriv in detta i din app för att ställa in den (i stället för att skanna koden)"
+
+#: two-factor-login.php:645 includes/admin_settings.php:171
+msgid "Emergency codes"
+msgstr "Emergency koder"
+
+#: two-factor-login.php:649
+msgid "One-time emergency codes are a feature of the Premium version of this plugin."
+msgstr "Engångs emergency koder är en funktion av Premium-versionen av denna plugin."
+
+#: two-factor-login.php:663
+msgid "(update)"
+msgstr "(uppdatering)"
+
+#: two-factor-login.php:673
+msgid "Advanced settings"
+msgstr "Avancerade inställningar"
+
+#: two-factor-login.php:679
+msgid "Choose which algorithm for One Time Passwords you want to use."
+msgstr "Välj vilken algoritm för engångslösenord som du vill använda."
+
+#: two-factor-login.php:686
+msgid "Your counter on the server is currently on"
+msgstr "Din räknare på servern är för närvarande på"
+
+#: two-factor-login.php:707
+msgid "Click to enter One Time Password"
+msgstr "Klicka för att fylla i engångskod (OTP)"
+
+#: two-factor-login.php:708 two-factor-login.php:807
+msgid "You have to enter a username first."
+msgstr "Du måste fylla i ett användarnamn först."
+
+#: two-factor-login.php:709
+msgid "One Time Password (i.e. 2FA)"
+msgstr "Engångslösenord (dvs. 2FA)"
+
+#: two-factor-login.php:710 two-factor-login.php:810
+msgid "(check your OTP app to get this password)"
+msgstr "(kontrollera din OTP app för att få detta lösenord)"
+
+#: two-factor-login.php:731
+msgid "Two Factor Authentication re-sync needed"
+msgstr "Två faktors autentisering förnyad synkronisering behövs"
+
+#: two-factor-login.php:733
+msgid ""
+"You need to resync your device for Two Factor Authentication since the OTP you last used is many steps ahead \n"
+"\t\t\tof the server."
+msgstr ""
+"Du måste synkronisera din enhet för två faktors autentisering eftersom den OTP du senast använde är många steg framåt\n"
+"→ → → jämfört med servern."
+
+#: two-factor-login.php:736
+msgid "Please re-sync or you might not be able to log in if you generate more OTPs without logging in."
+msgstr "Vänligen förnya synkronisering, annars kanske du inte kommer kunna logga in om du genererar fler OTPs utan att logga in."
+
+#: two-factor-login.php:738
+msgid "Click here and re-scan the QR-Code"
+msgstr "Klicka här och skanna in en förnyad QR-kod."
+
+#: two-factor-login.php:774
+msgid "These are your personal settings."
+msgstr "Dessa är dina personliga inställningar."
+
+#: two-factor-login.php:774
+msgid "Nothing you change here will have any effect on other users."
+msgstr "Ingenting du ändrar här kommer att ha någon effekt på andra användare."
+
+#: two-factor-login.php:777
+msgid "If you activate two-factor authentication, then verify that your two-factor application is showing the same One Time Password as shown on this page before you log out."
+msgstr "Om du aktiverar tvåfaktorsautentisering, kontrollera att din två-faktor applikation visar samma Engångslösenord som visas på denna sida innan du loggar ut."
+
+#: two-factor-login.php:777
+msgid "You should also bookmark the FAQs, which explain how to de-activate the plugin even if you cannot log in."
+msgstr "Du bör också bokmärka den här länken FAQs, som förklarar hur man avaktiverar denna plugin även om du inte kan logga in."
+
+#: two-factor-login.php:806
+msgid "Enter One Time Password (if you have one)"
+msgstr "Ange Engångslösenord (om du har en)"
+
+#: two-factor-login.php:808
+msgid "One Time Password"
+msgstr "Engångslösenord (OTP)"
+
+#: includes/tfa_frontend.php:85 includes/class.TFA.php:100
+#: includes/class.TFA.php:110
+msgid "No emergency codes left. Sorry."
+msgstr "Inga emergency koder kvar. Förlåt."
+
+#: includes/tfa_frontend.php:91 includes/tfa_frontend.php:104 premium.php:352
+msgid "Save Settings"
+msgstr "Spara inställningar"
+
+#: includes/tfa_frontend.php:133
+msgid "You have unsaved settings."
+msgstr "Du har inte sparat dina inställningar."
+
+#: includes/tfa_frontend.php:151
+msgid "Saving..."
+msgstr "Sparar..."
+
+#: includes/tfa_frontend.php:257 premium.php:284 premium.php:297
+#: premium.php:315 premium.php:329 premium.php:341 premium.php:361
+#: premium.php:377 premium.php:415
+msgid "Two factor authentication is not available for your user."
+msgstr "Två faktor autentisering är inte tillgängligt för ditt användarnamn."
+
+#: includes/user_settings.php:41
+msgid "Settings"
+msgstr "Inställningar"
+
+#: includes/user_settings.php:46
+msgid "Settings saved."
+msgstr "Inställningar sparades."
+
+#: includes/user_settings.php:55
+msgid "Activate two factor authentication"
+msgstr "Aktivera två faktor autentisering"
+
+#: includes/user_settings.php:59
+msgid "N.B. Generating two-factor codes depends upon your web-server and your TFA app/device agreeing upon the time. The current UTC time according to the server when this page loaded: %s"
+msgstr "OBS. Generera två-faktor koder beror på när din web-server och din TFA app / enhet enas om tiden. Den nuvarande UTC-tiden enligt servern när denna sida laddas: %s"
+
+#: includes/admin_settings.php:17
+msgid "Two Factor Authentication (Version: %s) - Admin Settings"
+msgstr "Två faktors autentisering (Version: %s) - admininställningar"
+
+#: includes/admin_settings.php:22 includes/admin_settings.php:165
+msgid "Premium version"
+msgstr "Premiumversionen"
+
+#: includes/admin_settings.php:26
+msgid "Support"
+msgstr "Support"
+
+#: includes/admin_settings.php:27
+msgid "More free plugins"
+msgstr "Flera fria plugins"
+
+#: includes/admin_settings.php:28
+msgid "WordPress backups"
+msgstr "Wordpress säkerhetskopior"
+
+#: includes/admin_settings.php:29
+msgid "More premium plugins"
+msgstr "Fler premium plugins"
+
+#: includes/admin_settings.php:30
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/admin_settings.php:32
+msgid "Lead developer's homepage"
+msgstr "Lead developer's hemsida"
+
+#: includes/admin_settings.php:44
+msgid "N.B. These two-factor settings apply to your entire WordPress network. (i.e. They are not localised to one particular site)."
+msgstr "OBS. Dessa två-faktorinställningar gäller för hela ditt Wordpress nätverk. (dvs. de inte är lokaliserade till en viss webbplats)."
+
+#: includes/admin_settings.php:58
+msgid "User roles"
+msgstr "Användarroller"
+
+#: includes/admin_settings.php:59
+msgid "Choose which user roles will have two factor authentication enabled."
+msgstr "Välj vilka användarroller som ska ha två faktor autentisering aktiverad."
+
+#: includes/admin_settings.php:73
+msgid "XMLRPC requests"
+msgstr "XMLRPC förfrågningar"
+
+#: includes/admin_settings.php:77
+msgid "XMLRPC is a feature within WordPress allowing other computers to talk to your WordPress install. For example, it could be used by an app on your tablet that allows you to blog directly from the app (instead of needing the WordPress dashboard)."
+msgstr "XMLRPC är en funktion i Wordpress som tillåter andra datorer att prata med din Wordpress installation. Till exempel kan det användas av en app på pekdatorn som tillåter dig att blogga direkt från appen (i stället för att behöva Wordpress Panel)."
+
+#: includes/admin_settings.php:81
+msgid "Unfortunately, XMLRPC also provides a way for attackers to perform actions on your WordPress site, using only a password (i.e. without a two-factor password). More unfortunately, authors of legitimate programmes using XMLRPC have not yet added two-factor support to their code."
+msgstr "Tyvärr ger XMLRPC också ett sätt för angripare att utföra attacker på din Wordpress webbplats, med endast ett lösenord (det vill säga utan ett två-faktor lösenord). Mer tyvärr, författarna till legitima program som använder XMLRPC har ännu inte lagt två-faktor stöd till sin kod."
+
+#: includes/admin_settings.php:85
+msgid " i.e. XMLRPC requests coming in to WordPress (whether from a legitimate app, or from an attacker) can only be verified using the password - not with a two-factor code. As a result, there not be an ideal option to pick below. You may have to choose between the convenience of using your apps, or the security of two factor authentication."
+msgstr ""
+"dvs XMLRPC förfrågningar som kommer in till Wordpress (från en legitim app, eller från en angripare) verifieras endast med det använda lösenordet - inte med en två-faktor kod.\n"
+"Som ett resultat, inte en idealisk möjlighet att välja mellan nedan.\n"
+"Du kanske måste välja mellan att underlätta för att använda dina appar, eller säkerheten i två faktor autentisering."
+
+#: includes/admin_settings.php:102
+msgid "Default algorithm"
+msgstr "Standardalgoritmen"
+
+#: includes/admin_settings.php:103
+msgid "Your users can change this in their own settings if they want."
+msgstr "Användarna kan ändra detta i sina egna inställningar om de vill."
+
+#: includes/admin_settings.php:112
+msgid "Users' settings"
+msgstr "Användarnas inställningar"
+
+#: includes/admin_settings.php:118
+msgid "The Premium version of this plugin allows you to see and reset the TFA settings of other users."
+msgstr "Premium-versionen av denna plugin kan du se och återställa TFA inställningarna för andra användare."
+
+#: includes/admin_settings.php:120
+msgid "Another way to do that is by using a user-switching plugin like this one."
+msgstr "Ett annat sätt att göra det är genom att använda en användarväxlings plugin som denna."
+
+#: includes/admin_settings.php:154
+msgid "Default"
+msgstr "Standard"
+
+#: includes/admin_settings.php:156
+msgid "Change to email"
+msgstr "Ändra till email"
+
+#: includes/admin_settings.php:167
+msgid "If you want to say 'thank you' or help this plugin's development, or get extra features, then please take a look at the premium version of this plugin."
+msgstr "Om du vill säga \"tack\" eller hjälpa till med denna plugin utveckling, eller få extra funktioner, så ta en titt på premiumversion av denna plugin."
+
+#: includes/admin_settings.php:167
+msgid "It comes with these extra features:"
+msgstr "Den levereras med dessa extra funktioner:"
+
+#: includes/admin_settings.php:171
+msgid "provide your users with one-time codes to use in case they lose their device."
+msgstr "Förse användarna med engångskoder för användning i fall de förlorar sin enhet."
+
+#: includes/admin_settings.php:172
+msgid "Manage all users centrally"
+msgstr "Hantera alla användare centralt"
+
+#: includes/admin_settings.php:172
+msgid "enable, disable or see TFA codes for all your users from one central location."
+msgstr "aktivera, inaktivera eller se TFA koder för alla dina användare från en central plats."
+
+#: includes/admin_settings.php:173
+msgid "More shortcodes"
+msgstr "Fler kortkoder (shortcodes)"
+
+#: includes/admin_settings.php:173
+msgid "flexible shortcodes allowing you to design your front-end settings page for your users exactly as you wish."
+msgstr "flexibla kortkoder (shortcodes) så att du kan designa din front-end inställningssida för dina användare precis som du vill."
+
+#: includes/admin_settings.php:174
+msgid "Personal support"
+msgstr "Personlig support"
+
+#: includes/admin_settings.php:174
+msgid "access to our personal support desk for 12 months."
+msgstr "tillgång till vår personliga supportavdelning för 12 månader."
+
+#: includes/admin_settings.php:180
+msgid "Translations"
+msgstr "Översättningar"
+
+#: includes/admin_settings.php:182
+msgid "If you translate this plugin, please send the translations .po-file to us so we can include it in future releases - paste a link in the plugin's support forum."
+msgstr "Om du översätter denna plugin, skicka översättningarna .po-filen till oss så att vi kan inkludera den i framtida versioner - klistra in en länk i plugin supportforum"
+
+#: premium.php:45 premium.php:65
+msgid "Two factor authentication is not available for this user."
+msgstr "Två faktor autentisering är inte tillgängligt för den här användaren."
+
+#: premium.php:48
+msgid "Two factor authentication is not activated for this user."
+msgstr "Två faktor autentisering är inte aktiverad för den här användaren."
+
+#: premium.php:75
+msgid "Two factor authentication has been activated for this user."
+msgstr "Två faktor autentisering har aktiverats för den här användaren."
+
+#: premium.php:77
+msgid "Two factor authentication has been de-activated for this user."
+msgstr "Två faktor autentisering har avaktiverats för den här användaren."
+
+#: premium.php:135
+msgid "Show codes for a particular user"
+msgstr "Visa koder för en viss användare"
+
+#: premium.php:138
+msgid "Get codes"
+msgstr "Få koder"
+
+#: premium.php:139
+msgid "De-activate TFA"
+msgstr "Inaktivera TFA"
+
+#: premium.php:140
+msgid "Activate TFA"
+msgstr "aktivera TFA"
+
+#: premium.php:163 premium.php:183 premium.php:200
+msgid "You must first choose a valid user."
+msgstr "Du måste först välja en giltig användare."
+
+#: premium.php:427
+msgid "Your must now go to the Two Factor Authentication settings and generated a new private key if you wish to use any emergency codes in future."
+msgstr "Du måste nu gå till Två faktors autentisering inställningar och generera en ny privat nyckel om du vill använda några akuta koder i framtiden."
+
+#: premium.php:433
+msgid "emergency login code used"
+msgstr "akut (emergency) inloggningskod används"
+
+#: premium.php:434
+msgid "An emergency code was used to login (username: %s) on this website: "
+msgstr "En nöd kod (emergency) användes för att logga in (användarnamn: %s) på denna webbplats:"
+
+#: premium.php:435
+msgid "You now have %s emergency code(s) remaining."
+msgstr "Du har nu %s nöd koder (emergency code(s))  kvar."
+
+#: premium.php:477
+msgid "You have three emergency codes that can be used. Keep them in a safe place; if you lose your authentication device, then you can use them to log in."
+msgstr "Du har tre akut koder (emergency codes) som kan användas. Förvara dem på ett säkert ställe; om du förlorar autentiserings enheten kan du använda dem för att logga in."
+
+#: premium.php:477
+msgid "These can only be used once each - after using them all, you must reset your private key."
+msgstr "Dessa kan bara användas en gång vardera - efter att ha använt dem alla, måste du återställa din privata nyckel."
+
+#: premium.php:479
+msgid "Your emergency codes are:"
+msgstr "Dina akuta koder (emergency codes) är:"
+
+#: updater/class-udm-updater.php:120 updater/class-udm-updater.php:123
+#: updater/class-udm-updater.php:168 updater/class-udm-updater.php:171
+msgid "Errors occurred:"
+msgstr "Fel inträffade:"
+
+#: updater/class-udm-updater.php:202
+msgid "Dismiss from main dashboard (for %s weeks)"
+msgstr "Avfärda från huvudpanelen (för %s veckor)"
+
+#: updater/class-udm-updater.php:232
+msgid "Warning"
+msgstr "Varning"
+
+#: updater/class-udm-updater.php:232
+msgid "The installed version of %s has not been tested on your version of WordPress (%s)."
+msgstr "Den installerade versionen av %s har inte testats på din version av Wordpress (%s)."
+
+#: updater/class-udm-updater.php:232
+msgid "It has been tested up to version %s."
+msgstr "Den har testats upp till version %s."
+
+#: updater/class-udm-updater.php:232
+msgid "You should update to make sure that you have a version that has been tested for compatibility."
+msgstr "Du bör uppdatera för att se till att du har en version som är kompatibilitetstestad."
+
+#: updater/class-udm-updater.php:240
+msgid "Your paid access to %s updates for this site has expired. You will no longer receive updates."
+msgstr "Din tillgång till betald %s uppdateringar för den här webbplatsen har löpt ut. Du kommer inte längre att få uppdateringar."

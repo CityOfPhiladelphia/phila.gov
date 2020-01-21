@@ -1,0 +1,455 @@
+# Translation of Plugins - Two Factor Authentication - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Two Factor Authentication - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-10-11 16:50:47+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Two Factor Authentication - Stable (latest release)\n"
+
+#: includes/user_settings.php:60
+msgid "N.B. Generating two-factor codes depends upon your web-server and your TFA app/device agreeing upon the time. The current UTC time according to the server when this page loaded: %s, and in the time-zone you have configured in your WordPress settings: %s"
+msgstr "請注意，產生第二步驟驗證碼取決於網站伺服器與你的兩步驟驗證 App/裝置的約定時間。這個頁面載入時，伺服器目前的 UTC 時間為 %s，而你為 WordPress 網站所設定的時區時間為 %s。"
+
+#. Author URI of the plugin/theme
+msgid "https://www.simbahosting.co.uk"
+msgstr "https://www.simbahosting.co.uk"
+
+#. Author of the plugin/theme
+msgid "David Nutbourne + David Anderson, original plugin by Oskar Hane"
+msgstr "原開發者為 Oskar Hane，目前為 David Nutbourne 以及 David Anderson"
+
+#. Description of the plugin/theme
+msgid "Secure your WordPress login forms with two factor authentication - including WooCommerce login forms"
+msgstr "使用兩步驟驗證保護你的 WordPress 登入表單 - 包含 WooCommerce 登入表單。繁體中文本地化由「<a href=\"https://www.alexclassroom.com\" target=\"_blank\">阿力獅的教室</a>」站長<a href=\"https://www.facebook.com/captain.alexlion\" target=\"blank\">阿力獅</a>提供。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.simbahosting.co.uk/s3/product/two-factor-authentication/"
+msgstr "https://www.simbahosting.co.uk/s3/product/two-factor-authentication/"
+
+#: two-factor-login.php:872
+msgid "One Time Password"
+msgstr "一次性密碼"
+
+#: two-factor-login.php:870
+msgid "Enter One Time Password (if you have one)"
+msgstr "輸入一次性密碼 (如果有的話)"
+
+#: two-factor-login.php:809
+msgid "You should also bookmark the FAQs, which explain how to de-activate the plugin even if you cannot log in."
+msgstr "也請將「常見問題集」儲存在書籤裡，當中會解釋如何在無法登入時停用這個外掛。"
+
+#: two-factor-login.php:809
+msgid "If you activate two-factor authentication, then verify that your two-factor application is showing the same One Time Password as shown on this page before you log out."
+msgstr "啟用兩步驟驗證後，請在登出前確認你的兩步驟驗證碼產生器 App 產生的驗證碼，是否與本頁面顯示的一次性密碼相符。"
+
+#: two-factor-login.php:806
+msgid "Nothing you change here will have any effect on other users."
+msgstr "你在此處進行的設定變更，並<b>不會影響其他使用者</b>。"
+
+#: two-factor-login.php:806
+msgid "These are your personal settings."
+msgstr "以下是你的個人設定。"
+
+#: two-factor-login.php:770
+msgid "Click here and re-scan the QR-Code"
+msgstr "按一下這裡並重新掃描 QR 碼"
+
+#: two-factor-login.php:768
+msgid "Please re-sync or you might not be able to log in if you generate more OTPs without logging in."
+msgstr "如果未進行登入卻不斷生成一次性密碼，請馬上進行重新同步，否則將會無法登入。"
+
+#: two-factor-login.php:766
+msgid "You need to resync your device for Two Factor Authentication since the OTP you last used is many steps ahead of the server."
+msgstr "自你最後一次使用一次性密碼後，你裝置上的計數器已經落後伺服器許多；為了取得正確的兩步驟驗證碼，你必須為你的裝置進行重新同步。"
+
+#: two-factor-login.php:764
+msgid "Two Factor Authentication re-sync needed"
+msgstr "兩步驟驗證碼產生器必須重新同步"
+
+#: two-factor-login.php:743 two-factor-login.php:874
+msgid "(check your OTP app to get this password)"
+msgstr "(開啟你的驗證碼產生器 App 以取得驗證碼)"
+
+#: two-factor-login.php:742
+msgid "One Time Password (i.e. 2FA)"
+msgstr "一次性密碼 (意即兩步驟驗證)"
+
+#: two-factor-login.php:741 two-factor-login.php:871
+msgid "You have to enter a username first."
+msgstr "你必須先輸入使用者名稱"
+
+#: two-factor-login.php:740
+msgid "Click to enter One Time Password"
+msgstr "按一下以輸入一次性密碼"
+
+#: two-factor-login.php:719
+msgid "Your counter on the server is currently on"
+msgstr "目前伺服器上的計數器為"
+
+#: two-factor-login.php:712
+msgid "Choose which algorithm for One Time Passwords you want to use."
+msgstr "選擇你想使用的演算法以產生一次性密碼。"
+
+#: two-factor-login.php:706
+msgid "Advanced settings"
+msgstr "進階設定"
+
+#: two-factor-login.php:696
+msgid "(update)"
+msgstr "(更新)"
+
+#: two-factor-login.php:682
+msgid "One-time emergency codes are a feature of the Premium version of this plugin."
+msgstr "一次性復原碼為付費版外掛的功能。"
+
+#: two-factor-login.php:659
+msgid "Private key - always to be kept secret - type this into your app to set it up (instead of scanning the code)"
+msgstr "請不要洩漏下方的私密金鑰。在你的 App 中輸入下方的私密金鑰，是取代掃描上方條碼的另一種設定方式"
+
+#: two-factor-login.php:651
+msgid "Private key: %s (base 32: %s)"
+msgstr "私密金鑰: %s (Base 32 格式: %s)"
+
+#: two-factor-login.php:649
+msgid "algorithm"
+msgstr "演算法"
+
+#: two-factor-login.php:649
+msgid "You are currently using"
+msgstr "你目前使用的是"
+
+#: two-factor-login.php:647
+msgid "For OTP apps that support scanning, scanning this code is the quickest way to set the app up (e.g. with Duo Mobile, Google Authenticator)"
+msgstr "使用支援 OTP 協定並具備掃描條碼功能 App 去掃描下方的條碼，是設定 App 最快的方式 (例如 Duo Mobile 或 Google Authenticator)"
+
+#: two-factor-login.php:640 two-factor-login.php:643
+msgid "QR code"
+msgstr "QR 碼"
+
+#: two-factor-login.php:616 two-factor-login.php:628
+msgid "Current one-time password"
+msgstr "目前的一次性密碼"
+
+#: two-factor-login.php:605
+msgid "Current codes (login: %s)"
+msgstr "目前的驗證碼 (使用者為 %s)"
+
+#: two-factor-login.php:601
+msgid "Current codes"
+msgstr "目前的驗證碼"
+
+#: two-factor-login.php:544
+msgid "Private key:"
+msgstr "私密金鑰:"
+
+#: two-factor-login.php:541
+msgid "Private key (base 32 - used by Google Authenticator and Authy):"
+msgstr "私密金鑰 (Base 32 格式 - 用於 Google Authenticator 及 Authy):"
+
+#: two-factor-login.php:472
+msgid "Updating..."
+msgstr "更新中..."
+
+#: two-factor-login.php:453 two-factor-login.php:667
+msgid "Reset private key"
+msgstr "重設私密金鑰"
+
+#: two-factor-login.php:453
+msgid "Warning: if you reset this key you will have to update your apps with the new one. Are you sure you want this?"
+msgstr "提示: 如果重新設定設金鑰，就必須在你的驗證碼產生器 App 中輸入新的金鑰。你確定要這麼做嗎？"
+
+#: two-factor-login.php:403
+msgid "User settings"
+msgstr "使用者設定"
+
+#: two-factor-login.php:394 two-factor-login.php:398
+msgid "Plugin settings"
+msgstr "外掛設定"
+
+#: two-factor-login.php:370
+msgid "Two Factor Auth"
+msgstr "兩步驟驗證"
+
+#: two-factor-login.php:343
+msgid "Do require 2FA over XMLRPC (best option if you do not use XMLRPC or are unsure)"
+msgstr "透過 XMLRPC 連線時強制使用兩步驟驗證 (當你未使用 XMLRPC 相關用戶端程式或不確定自己有沒有使用 XMLRPC，此為最佳設定)"
+
+#: two-factor-login.php:342
+msgid "Do not require 2FA over XMLRPC (best option if you must use XMLRPC and your client does not support 2FA)"
+msgstr "透過 XMLRPC 連線時無須進行兩步驟驗證 (如果你的用戶端應用程式不支援兩步驟驗證時，此為最佳設定)"
+
+#: two-factor-login.php:303
+msgid "Multisite Super Admin"
+msgstr "多站點超級管理員"
+
+#: two-factor-login.php:279 two-factor-login.php:329
+msgid "HOTP (event based)"
+msgstr "HOTP (根據事件)"
+
+#: two-factor-login.php:279 two-factor-login.php:329
+msgid "TOTP (time based - most common algorithm; used by Google Authenticator)"
+msgstr "TOTP (根據時間 - 最通用的演算法，Google Authenticator 也採用這個演算法)"
+
+#: two-factor-login.php:267
+msgid "Disabled"
+msgstr "停用"
+
+#: two-factor-login.php:267
+msgid "Disable two-factor authentication"
+msgstr "停用兩步驟驗證"
+
+#: two-factor-login.php:266
+msgid "Enabled"
+msgstr "啟用"
+
+#: two-factor-login.php:266
+msgid "Enable two-factor authentication"
+msgstr "啟用兩步驟驗證"
+
+#: two-factor-login.php:263
+msgid "N.B. This site is configured to forbid you to log in if you disable two-factor authentication after your account is %d days old"
+msgstr "請注意，這個網站設定為符合「帳號已啟用 %d 天、卻停用兩步驟驗證」這個條件就禁止登入。"
+
+#: two-factor-login.php:227 two-factor-login.php:852
+msgid "The one-time password (TFA code) you entered was incorrect."
+msgstr "你輸入了錯誤的一次性密碼 (兩步驟驗證碼)。"
+
+#: two-factor-login.php:149
+msgid "The Two Factor Authentication plugin requires either the PHP openssl (preferred) or mcrypt module to be installed. Please ask your web hosting company to install one of them."
+msgstr "兩步驟驗證外掛需要 PHP OpenSSL (首選) 或 mcrypt 模組，請要求你的主機託管服務商擇一安裝。"
+
+#: two-factor-login.php:149
+msgid "PHP OpenSSL or mcrypt module required"
+msgstr "需要 PHP OpenSSL 或 mcrypt 模組"
+
+#: two-factor-login.php:145
+msgid "The Two Factor Authentication plugin requires PHP version %s or higher - your current version is only %s."
+msgstr "兩步驟驗證外掛需要 %s 版 PHP 或更新版本 - 你目前的版本為 %s。"
+
+#: two-factor-login.php:145
+msgid "Higher PHP version required"
+msgstr "需要更新版本的 PHP"
+
+#: includes/user_settings.php:55
+msgid "Activate two factor authentication"
+msgstr "啟用兩步驟驗證"
+
+#: includes/user_settings.php:46
+msgid "Settings saved."
+msgstr "設定已儲存。"
+
+#: includes/user_settings.php:41
+msgid "Settings"
+msgstr "設定"
+
+#. #-#-#-#-#  two-factor-authentication-code.pot (Two Factor Authentication
+#. 1.2.30)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/user_settings.php:41 two-factor-login.php:370
+#: two-factor-login.php:383 two-factor-login.php:384
+msgid "Two Factor Authentication"
+msgstr "Two Factor Authentication"
+
+#: includes/tfa_frontend.php:257
+msgid "Two factor authentication is not available for your user."
+msgstr "你的使用者帳號無法使用兩步驟驗證。"
+
+#: includes/tfa_frontend.php:195 includes/tfa_frontend.php:226
+#: two-factor-login.php:484 two-factor-login.php:506
+msgid "Response:"
+msgstr "回應:"
+
+#: includes/tfa_frontend.php:151
+msgid "Saving..."
+msgstr "儲存中..."
+
+#: includes/tfa_frontend.php:133
+msgid "You have unsaved settings."
+msgstr "你已回復設定。"
+
+#: includes/tfa_frontend.php:91 includes/tfa_frontend.php:104
+msgid "Save Settings"
+msgstr "儲存設定"
+
+#: includes/tfa_frontend.php:57 two-factor-login.php:649
+msgid "an event based"
+msgstr "基於事件的"
+
+#: includes/tfa_frontend.php:57 two-factor-login.php:649
+msgid "a time based"
+msgstr "基於時間的"
+
+#: includes/class.TFA.php:265
+msgid "You are attempting to log in to an account that has two-factor authentication enabled; this requires you to also have two-factor authentication enabled on the account whose credentials you are using."
+msgstr "目前你要進行登入的帳號已啟用兩步驟驗證，這表示你必須為這個已啟用兩步驟驗證帳號輸入驗證碼才能登入。"
+
+#: includes/class.TFA.php:251
+msgid "The site owner has forbidden you to login without two-factor authentication. Please contact the site owner to re-gain access."
+msgstr "由於你未使用兩步驟驗證，所以網站管理員已禁止你的登入，請聯絡網站管理員以重新取得登入權限。"
+
+#: includes/class.TFA.php:251 includes/class.TFA.php:265
+#: two-factor-login.php:227 two-factor-login.php:852
+msgid "Error:"
+msgstr "錯誤:"
+
+#: includes/class.TFA.php:162 includes/class.TFA.php:172
+#: includes/tfa_frontend.php:85
+msgid "No emergency codes left. Sorry."
+msgstr "抱歉！已無可用的復原碼。"
+
+#: includes/admin_settings.php:203
+msgid "If you translate this plugin, please send the translations .po-file to us so we can include it in future releases - paste a link in the plugin's support forum."
+msgstr "如果你為此外掛進行本地化，請將完成本地化的 PO 檔寄給我們，我們便能在將來釋出該語言的新版本，並將連結放在外掛支援論壇。"
+
+#: includes/admin_settings.php:201
+msgid "Translations"
+msgstr "本地化"
+
+#: includes/admin_settings.php:195
+msgid "access to our personal support desk for 12 months."
+msgstr "12 個月內隨時存取我們的個人化技術支援平台"
+
+#: includes/admin_settings.php:195
+msgid "Personal support"
+msgstr "個人化技術支援"
+
+#: includes/admin_settings.php:194
+msgid "flexible shortcodes allowing you to design your front-end settings page for your users exactly as you wish."
+msgstr "靈活的短代碼讓你設計出更符合所需的前端設定頁面"
+
+#: includes/admin_settings.php:194
+msgid "More shortcodes"
+msgstr "更多短代碼"
+
+#: includes/admin_settings.php:193
+msgid "enable, disable or see TFA codes for all your users from one central location."
+msgstr "提供集中啟用、停用以及檢視所有使用者兩步驟驗證的功能"
+
+#: includes/admin_settings.php:193
+msgid "Manage all users centrally"
+msgstr "集中管理所有使用者"
+
+#: includes/admin_settings.php:192
+msgid "provide your users with one-time codes to use in case they lose their device."
+msgstr "當使用者遺失產生驗證碼的裝置時，提供給他這種一次性密碼進行登入並變更設定。"
+
+#: includes/admin_settings.php:192 two-factor-login.php:678
+msgid "Emergency codes"
+msgstr "復原碼"
+
+#: includes/admin_settings.php:188
+msgid "It comes with these extra features:"
+msgstr "以下是付費版的進階功能:"
+
+#: includes/admin_settings.php:188
+msgid "If you want to say 'thank you' or help this plugin's development, or get extra features, then please take a look at the premium version of this plugin."
+msgstr "如果你想致謝、協助外掛的開發，或是想要更多的功能，請考慮使用付費版外掛。"
+
+#: includes/admin_settings.php:177
+msgid "Change to email"
+msgstr "變更至電子郵件"
+
+#: includes/admin_settings.php:175
+msgid "Default"
+msgstr "預設"
+
+#: includes/admin_settings.php:141
+msgid "Another way to do that is by using a user-switching plugin like this one."
+msgstr "另一個方式是透過這個切換使用者的外掛。"
+
+#: includes/admin_settings.php:139
+msgid "The Premium version of this plugin allows you to see and reset the TFA settings of other users."
+msgstr "付費版外掛允許你檢視及重設其他使用者的兩步驟驗證設定。"
+
+#: includes/admin_settings.php:133
+msgid "Users' settings"
+msgstr "使用者設定"
+
+#: includes/admin_settings.php:124
+msgid "Your users can change this in their own settings if they want."
+msgstr "使用者可根據他們的需求變更此項設定。"
+
+#: includes/admin_settings.php:123
+msgid "Default algorithm"
+msgstr "預設演算法"
+
+#: includes/admin_settings.php:106
+msgid " i.e. XMLRPC requests coming in to WordPress (whether from a legitimate app, or from an attacker) can only be verified using the password - not with a two-factor code. As a result, there not be an ideal option to pick below. You may have to choose between the convenience of using your apps, or the security of two factor authentication."
+msgstr "舉例來說，無論是合法程式或是攻擊者，只要他們透過 XMLRPC 請求進入 WordPress 網站，僅需正確的密碼即可通行，無須使用第二步驟驗證碼。正因為如此，下面沒有既便利又安全的選項，你必須從使用 App 的便利性以及使用兩步驟驗證的安全性兩者間擇一選用。"
+
+#: includes/admin_settings.php:102
+msgid "Unfortunately, XMLRPC also provides a way for attackers to perform actions on your WordPress site, using only a password (i.e. without a two-factor password). More unfortunately, authors of legitimate programmes using XMLRPC have not yet added two-factor support to their code."
+msgstr "糟糕的是，XMLRPC 也提供了攻擊者在你的 WordPress 網站上執行變更操作的能力，在<b>未啟用兩步驟驗證</b>的狀況下，僅需知道密碼即可實作此類攻擊。更糟糕的是，開發內建 XMLRPC 功能的合法程式的開發者們，並未對在他們的程式加入兩步驟驗證支援。"
+
+#: includes/admin_settings.php:98
+msgid "XMLRPC is a feature within WordPress allowing other computers to talk to your WordPress install. For example, it could be used by an app on your tablet that allows you to blog directly from the app (instead of needing the WordPress dashboard)."
+msgstr "XMLRPC 為 WordPress 的內建功能，該功能允許其他裝置與你的 WordPress 進行互動。舉例來說，如果你的平板上有個具備 XMLRPC 功能的 App，你可以透過該 App 直接在你的 WordPress 上發文，而無須進入 WordPress 控制台。"
+
+#: includes/admin_settings.php:94
+msgid "XMLRPC requests"
+msgstr "XMLRPC 請求"
+
+#: includes/admin_settings.php:83
+msgid "Requiring users to use two-factor authentication is a feature of the Premium version of this plugin."
+msgstr "「強制要求使用者啟用兩步驟驗證」是付費版外掛的功能。"
+
+#: includes/admin_settings.php:79
+msgid "Make two factor authentication compulsory"
+msgstr "強制啟用兩步驟驗證"
+
+#: includes/admin_settings.php:69
+msgid "Choose which user roles will have two factor authentication available."
+msgstr "以下使用者角色，核取後即具備啟用兩步驟驗證的資格。"
+
+#: includes/admin_settings.php:68
+msgid "User roles"
+msgstr "使用者角色"
+
+#: includes/admin_settings.php:54
+msgid "N.B. These two-factor settings apply to your entire WordPress network. (i.e. They are not localised to one particular site)."
+msgstr "請注意，此處的兩步驟驗證設定會套用至整個 WordPress 網路，即使他們並未集中至同一個特定網站。"
+
+#: includes/admin_settings.php:41
+msgid "Two factor authentication is currently disabled via the TWO_FACTOR_DISABLE constant (which is mostly likely to be defined in your wp-config.php)"
+msgstr "目前因設定了常數 TWO_FACTOR_DISABLE 導致兩步驟驗證停用，這項設定通常會定義在你的 wp-config.php 檔案中。"
+
+#: includes/admin_settings.php:39
+msgid "Two Factor Authentication currently disabled"
+msgstr "目前已停用兩步驟驗證"
+
+#: includes/admin_settings.php:32
+msgid "Lead developer's homepage"
+msgstr "首席程式設計師網站"
+
+#: includes/admin_settings.php:30
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/admin_settings.php:29
+msgid "More premium plugins"
+msgstr "更多付費外掛"
+
+#: includes/admin_settings.php:28
+msgid "WordPress backups"
+msgstr "WordPress 備份"
+
+#: includes/admin_settings.php:27
+msgid "More free plugins"
+msgstr "更多免費外掛"
+
+#: includes/admin_settings.php:26
+msgid "Support"
+msgstr "技術支援"
+
+#: includes/admin_settings.php:22 includes/admin_settings.php:186
+msgid "Premium version"
+msgstr "付費版"
+
+#: includes/admin_settings.php:17
+msgid "Two Factor Authentication (Version: %s) - Admin Settings"
+msgstr "Two Factor Authentication %s 版 - 管理員設定"

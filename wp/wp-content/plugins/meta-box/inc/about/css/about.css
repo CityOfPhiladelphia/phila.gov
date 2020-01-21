@@ -1,3 +1,6 @@
+.about-wrap {
+	padding-right: 20px;
+}
 .about-wrap.about-wrap .wp-badge {
 	background-image: url(../images/meta-box.svg);
 	background-color: #fff;
@@ -49,6 +52,7 @@
 .two img {
 	display: block;
 	box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+	border-radius: 4px;
 }
 .screenshot {
 	display: block;
@@ -63,12 +67,6 @@
 }
 .col li a {
 	text-decoration: none;
-}
-.col .dashicons {
-	color: #82878c;
-	padding-right: 5px;
-	font-size: 16px;
-	vertical-align: middle;
 }
 
 /* Extensions tab */
@@ -167,7 +165,8 @@
 }
 .newsletter.newsletter input {
 	width: 145px;
-	padding: 5px;
+	min-height: 28px;
+	line-height: 26px;
 }
 
 /* Upgrade */
