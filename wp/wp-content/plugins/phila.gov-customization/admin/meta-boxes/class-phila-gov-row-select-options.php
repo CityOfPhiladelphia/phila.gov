@@ -51,6 +51,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_programs'  => 'Program cards',
         'phila_registration'  => 'Registration available',
         'phila_stepped_content' => 'Stepped content',
+        'phila_vue_app'       => 'Vue app',
       ),
     );
   }

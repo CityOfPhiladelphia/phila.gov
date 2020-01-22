@@ -807,6 +807,32 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'title' => 'Vuejs app',
+  'pages' => array ( 'service_page' ),
+  'revision' => false,
+  'priority' => 'high',
+
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'vue_app'),
+    ),
+  ),
+  'fields' => array(
+    array (
+      'id'  => 'vue_app_title',
+      'name'  => 'Optional title',
+      'type'=> 'text'
+    ),
+    array(
+      'id' => 'phila_vue_app',
+      'type'  => 'group',
+      'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
+    )
+  ),
+);
+
+
+$meta_boxes[] = array(
   'title' => 'Topic Page Options',
   'pages' => array('service_page'),
   'context' => 'after_title',
