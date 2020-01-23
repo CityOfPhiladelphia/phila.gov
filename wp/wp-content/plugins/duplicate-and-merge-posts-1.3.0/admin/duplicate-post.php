@@ -1138,14 +1138,32 @@ class DuplicatePost{
 		if ($meta_blacklist == "") $meta_blacklist = array();
 		$meta_keys = array_diff($post_meta_keys, $meta_blacklist);
 
-		foreach ($meta_keys as $meta_key) {
-			if( in_array($meta_key, array("_dp_original","_dp_submited")) ) continue;
+    foreach ($meta_keys as $meta_key) {
+      $meta_values = get_post_custom_values($meta_key, $post->ID);
+      //KD - This is not ideal, but it prevents the duplicated page from overriding the meta field ID when page gets duplicated. 
+      /* These meta fields get stored as repeated keys, which the duplicate and edit plugin doesn't account for. 
+      By checking if the fields are of a certain name, we can prevent the fields from not getting duplicated at all, 
+      and when merged back in, prevent the fields from getting repeated ids */ 
+      if ($meta_key === 'phila_document_page_picker'){
+        foreach ($meta_values as $doc_page_value){
+          add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
+        }
+      }else if( $meta_key === 'phila_related_content_picker'){
+        foreach ($meta_values as $doc_page_value){
+          add_post_meta($new_id, 'phila_related_content_picker', $doc_page_value, false);
+        }
+      }else if( $meta_key === 'service_related_content_picker'){
+        foreach ($meta_values as $doc_page_value){
+          add_post_meta($new_id, 'service_related_content_picker', $doc_page_value, false);
+        }
+      }else{
+        if( in_array($meta_key, array("_dp_original","_dp_submited")) ) continue;
 
-			$meta_values = get_post_custom_values($meta_key, $post->ID);
-			foreach ($meta_values as $meta_value) {
-				$meta_value = maybe_unserialize($meta_value);
-				update_post_meta($new_id, $meta_key, $meta_value);
-			}
+        foreach ($meta_values as $meta_value) {
+          $meta_value = maybe_unserialize($meta_value);
+          update_post_meta($new_id, $meta_key, $meta_value);
+        }
+      }
 		}
 	}
 
