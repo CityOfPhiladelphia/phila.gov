@@ -34,7 +34,7 @@
         <div class="small-24 medium-8 columns pll prxl pvm ptn-mu pbl-mu pbl-mu sidewalk bdr-right-mu interact-311 clearfix equal">
           <section>
             <h3 class="h4 dark-gray">Interact with 311 online</h3>
-            <a href="http://iframe.publicstuff.com/#?client_id=242" class="button icon full-width clearfix">
+            <a href="https://iframe.publicstuff.com/#?client_id=242" class="button icon full-width clearfix">
               <div class="valign">
                 <div class="button-label valign-cell">Report a problem</div>
               </div>
