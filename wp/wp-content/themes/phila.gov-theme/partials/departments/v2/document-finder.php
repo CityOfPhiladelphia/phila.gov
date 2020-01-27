@@ -89,7 +89,7 @@ $c = -1;
                   <?php endforeach; ?>
               </tbody>
             </table>
-          <div class="no-results">Sorry, there are no results for that search.</div>
+            <div class="not-found h3" style="display:none">No results found for that search.</div>
           </div>
           <ul class="pagination-wrapper no-js">
             <li class="prev">
