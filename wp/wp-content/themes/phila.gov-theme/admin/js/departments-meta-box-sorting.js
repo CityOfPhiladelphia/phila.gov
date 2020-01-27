@@ -12,13 +12,13 @@ jQuery( document ).ready( function( $ ) {
      * @param {Object} post_meta {key: metadata kye, value: meta data value to save }
      */
     function setPostMeta(post_id, post_meta){
-        console.log('fetch post meta for post: '+ post_id);
+        //console.log('fetch post meta for post: '+ post_id);
 
             var department_postMeta = new wp.api.collections.PostMeta('',{parent: post_id});
 
                 department_postMeta.fetch()
                   .done(function(data) {
-                    console.log(data)
+                    //console.log(data)
                     var someKey = department_postMeta.findWhere({key: post_meta.key});
                     someKey.set('value', post_meta.value);
                     someKey.save({parent: post_id});

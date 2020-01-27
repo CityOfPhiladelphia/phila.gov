@@ -52,6 +52,8 @@ get_header(); ?>
                 </div>
               <?php endwhile; ?>
             </div>
+            <div class="not-found h3 mtm" style="display:none">No results found for that search.</div>
+
             <?php endif; ?>
             <?php wp_reset_query(); ?>
         </div>
