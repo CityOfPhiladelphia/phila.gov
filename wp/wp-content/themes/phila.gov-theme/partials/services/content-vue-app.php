@@ -43,7 +43,7 @@
       </div>
     </div>
   <?php endif;?>
-  <div>
+  <div class="grid-container man">
     <div class="grid-x">
       <div class="cell small-24">
         <div id="vue-app"></div>
