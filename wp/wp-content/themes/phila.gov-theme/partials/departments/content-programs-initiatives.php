@@ -193,13 +193,13 @@
                 </div>
               </div>
             <?php endif; ?>
-            <div class="grid-container">
+            <!-- <div class="grid-container"> -->
               <div class="grid-x">
                 <div class="cell small-24">
                   <div id="vue-app"></div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
             <!--/Vuejs-->
 
         <?php endif; ?>
