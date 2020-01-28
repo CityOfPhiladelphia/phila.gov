@@ -2,9 +2,9 @@ jQuery(document).ready(function($) {
   //TODO: Abstract for use on other data-types
   var hiddenLetter = {};
   var parents = $('.a-z-group');
-  var $input = $('input.search-field');
+  var $input = $('#a-z-filter-list .search-field');
 
-  $('#service-filter .search-field').prop( 'disabled', false );
+  $('.a-z-group .search-field').prop( 'disabled', false );
 
   //Hide/show sets of letter groups
   $('.a-z-group .result').on('update', function() {
@@ -24,27 +24,21 @@ jQuery(document).ready(function($) {
         delete hiddenLetter[$item.data('alphabet')];
       }
     });
-
-    //Disable anchor links when no results present for letter group
-    $('.a-z-list nav li a').each( function ( i, value ) {
-      var el = $(value);
-      if ( el.data('alphabet') in hiddenLetter ) {
-        $(this).attr('disabled', 'disabled');
-        $(this).attr('aria-disabled', true);
-      }else{
-        $(this).removeAttr('disabled');
-        $(this).attr('aria-disabled', false);
-      }
-    });
   });
 
-  $('#service-filter').submit(function( e ) {
+  $('#a-z-filter-list').submit(function( e ) {
     e.preventDefault();
   })
 
   $input.keyup(function(event) {
     searchFilter(event);
+    const key = event.key; // const {key} = event; ES6+
+    if (key === "Backspace" || key === "Delete") {
+      $('.a-z-group .result').trigger('update');
+      return false;
+    }
   });
+
 
 
   function searchFilter(event){
@@ -61,135 +55,24 @@ jQuery(document).ready(function($) {
 
     var value = $input.val();
 
-    if( $('#service_filter #all:checkbox:checked').length == 1 ){
-      $(".list .result").each(function(i, v) {
-        if ($(this).text().search(reg(value)) > -1 || value == '') {
-          $(this).show().removeClass('is-hidden')
-        } else {
-          $(this).hide().addClass('is-hidden')
-        }
-      })
-    }else{
-      $(".list .result").not('is-hidden').each(function(i, v) {
-        if ( $( this ).text().search( reg( value ) ) < 0 ) {
-          $(this).hide().addClass('is-hidden')
-        }
-      })
-    }
-    //User backspaces
-    if ( event.keypress == 8 ){
-      $('#service_filter :checkbox:checked').each(function(e) {
-        var serviceType = $(this).val();
-
-          $(this).show().removeClass('is-hidden')
-
-          $('.result').filter(function() {
-            var arr = $(this).data('service').toString().split(/,\s+/);
-              return $.inArray( serviceType, arr ) != -1;
-            }).show().removeClass('is-hidden');
-        });
-      $('.a-z-group .result').trigger('update');
-    }
+    $(".list .result").not('is-hidden').each(function(i, v) {
+      if ( $( this ).text().search( reg( value ) ) < 0 ) {
+        $(this).hide().addClass('is-hidden')
+      }
+    })
 
     //check if value is empty
     if ( !value ){
-      //Match array values with checked items
-      $('#service_filter :checkbox:checked').each(function(e) {
-        var serviceType = $(this).val();
-
-          $('.result').each(function( index, value ){
-
-            $('.result').filter(function() {
-              var arr = $(this).data('service').toString().split(/,\s+/);
-                return $.inArray( serviceType, arr ) != -1;
-              }).show().removeClass('is-hidden');
-          });
-      });
-      $('.a-z-group .result').trigger('update');
+      parents.show();
+      $('.result').show().removeClass('is-hidden');
     }
 
     if ( $(".a-z-group:visible").length === 0) {
-      $('.list .nothing-found').text("Sorry, we couldn't find anything for that search. Please try different terms." )
+      $('.not-found').show();
     }else{
-      $('.list .nothing-found').text('')
+      $('.not-found').hide();
     }
-
-    $('.a-z-list .result').trigger('update');
-
+    $('.a-z-group .result').trigger('update');
   }
-
-  //Watch checkboxes
-  $("#service_filter :checkbox").click(function() {
-
-    $('.result').hide().addClass('is-hidden');
-
-    if ( $(this).val() === 'all' ){
-
-      $('#service_filter :checkbox').each(function(){
-        $(this).prop('checked', false);
-      });
-
-      parents.show();
-
-      $(this).prop('checked', true);
-      $('.result').show().removeClass('is-hidden');
-    }else{
-      $('#all').prop('checked', false);
-    }
-
-    if( $('#service_filter :checkbox:checked').length > 0 ){
-
-      //Match array values with checked items
-      $('#service_filter :checkbox:checked').each(function(e) {
-        var serviceType = $(this).val();
-
-          $('.result').each(function( index, value ){
-
-            $('.result').filter(function() {
-              var arr = $(this).data('service').toString().split(/,\s+/);
-                return $.inArray( serviceType, arr ) != -1;
-              }).show().removeClass('is-hidden');
-          });
-          $('.a-z-group .result').trigger('update');
-
-        });
-        searchFilter(event);
-
-    }else{
-
-      $('#all').prop('checked', true);
-      $('.result').show().removeClass('is-hidden');
-      parents.show();
-      $('.a-z-list .result').trigger('update');
-
-    }
-  });
-
-  $("a.scrollTo").click(function(e){
-    var link = $(this);
-
-    var stickyHeight = $('.sticky-container').outerHeight();
-
-    if ( $('#wpadminbar').length ){
-      var wpadminbarHeight = $('#wpadminbar').outerHeight();
-    } else {
-      var wpadminbarHeight = 0;
-    }
-
-    $('html, body').animate({
-      scrollTop:
-        $( $(this).attr("href") ).offset().top-(stickyHeight + wpadminbarHeight)
-    }, 1000, function(){
-
-      var anchor = link.attr("href").substr(1);
-      var el = document.getElementById(anchor);
-
-      el.focus();
-
-    });
-
-    return false;
-
-  });
 
 });
