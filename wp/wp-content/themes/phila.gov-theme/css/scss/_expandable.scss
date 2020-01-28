@@ -37,6 +37,9 @@
     background: color(ghost-gray);
     padding: 2rem;
   }
+  &.is-hidden + .icon-expand-hr {
+    display:none;
+  }
 }
 hr.icon-expand-hr{
   margin: 3rem 0 2rem 0 !important;

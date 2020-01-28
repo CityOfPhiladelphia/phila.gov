@@ -15,30 +15,29 @@
 <?php if ( !empty( $faq_search ) ): ?>
   <div class="row">
     <div class="small-24 columns results mbm">
-      <div id="filter-list" class="faq-list">
+      <div id="a-z-filter-list" class="faq-list">
       <form class="search mvl">
         <input class="search-field" type="text" placeholder="Begin typing to filter results...">
         <input type="submit" class="search-submit" value="Search">
       </form>
   <?php endif;?>
   <?php if ( !empty( $faq_group ) ): ?>
-    <div class="list">
+    <div id="a-z-list">
       <?php foreach ($faq_group as $faq_key => $faq): ?>
       <?php reset($faq_group);?>
       <!--1/4 Content-->
-      <section>
+      <section class="a-z-group">
         <div class="one-quarter-layout">
           <div class="row one-quarter-row mvl">
             <div class="medium-6 columns item">
               <h3 id="<?php echo sanitize_title_with_dashes($faq['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $faq['accordion_row_title'] ?></h3>
           </div>
-
           <?php
             $accordion_title = '';
             $accordion_group = $faq['accordion_group'];
             $is_full_width = false;
             $use_icon = false; ?>
-            <div class="medium-18 columns pbxl">
+            <div class="medium-18 columns pbxl mvl phm-mu list">
               <?php include(locate_template('partials/global/accordion.php')); ?>
             </div>
           <?php end( $faq_group ) ; ?>
