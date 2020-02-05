@@ -99,6 +99,9 @@
 
                         <?php elseif ($source_template == 'start_process') : ?>
                           <?php get_template_part('partials/services/content', 'start-process'); ?>
+                        
+                        <?php elseif ($source_template == 'vue_app') : ?>
+                          <?php get_template_part('partials/services/content', 'vue-app'); ?>
 
                         <?php endif; ?>
                       <?php endwhile; ?>
