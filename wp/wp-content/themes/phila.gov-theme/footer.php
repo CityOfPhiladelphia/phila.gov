@@ -115,6 +115,7 @@
             <li class="pvxs"><a href="https://www.phila.gov/integrityworks/pages/default.aspx">Honesty in government</a></li>
             <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">Voting & elections</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/open-data-program/">Open data</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/documents/city-of-philadelphia-organization-chart/">City organization chart</a></li>
           </ul>
         </nav>
       </section>
