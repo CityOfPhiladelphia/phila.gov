@@ -49,11 +49,9 @@
     <?php if (phila_get_selected_template() != 'prog_association') : ?>
       <?php phila_get_menu(); ?>
     <?php endif; ?>
-    <?php if ( $current_post_type =! 'department_page')  : ?>
       <div class="mtl mbm">
         <?php get_template_part( 'partials/breadcrumbs' ); ?>
       </div>
-      <? endif; ?>
     <?php if ( empty( $sub_heading ) ) :?>
       <div class="grid-container">
         <div class="grid-x">
