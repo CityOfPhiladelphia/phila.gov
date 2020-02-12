@@ -181,10 +181,11 @@ HTML;
       apply_template_section(get_template_part( 'partials/departments/phila_staff_directory_listing' ));
       break;
 
+    case 'prog_association':
+      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
 
     default:
       break;
-
 
   }
 
