@@ -38,7 +38,7 @@ get_header(); ?>
 
     $parent = phila_util_get_furthest_ancestor($post);
 
-    if ( phila_util_is_v2_template( $parent->ID ) ) :
+    if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
 
       /**
        * Department Homepage V2 Hero
@@ -56,13 +56,17 @@ get_header(); ?>
       get_dept_partial('hero', $hero_data);
 
 ?>
+<?php else: ?>
+    <?php include(locate_template( 'partials/programs/header.php') ); ?>
 <?php endif; ?>
+
+
   <?php
     if ( $user_selected_template === 'off_site_department' ){
 
       get_template_part( 'templates/single', 'off-site' );
 
-    }else{
+    } else {
 
       while ( have_posts() ) : the_post();
 

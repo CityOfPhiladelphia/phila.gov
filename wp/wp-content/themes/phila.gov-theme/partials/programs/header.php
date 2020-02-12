@@ -4,7 +4,8 @@
   */
   $parent = phila_util_get_furthest_ancestor($post);
   $hero = rwmb_meta( 'prog_header_img', array( 'limit' => 1 ) );
-  $hero = reset($hero);
+
+  $hero = !empty( $hero ) ? reset( $hero ) : '';
 
   $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $post->ID);
 
@@ -14,14 +15,16 @@
     $sub_hero = reset( $sub_hero );
   else:
     $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
-    $sub_hero = reset( $sub_hero );
+    $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
   endif;
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
-  $owner = reset($owner);
+  $owner = !empty($owner) ? reset($owner) : '';
 
   $credit = rwmb_meta( 'phila_photo_credit' );
   $description = rwmb_meta( 'phila_meta_desc' );
+
+  $current_post_type = get_post_type($post);
 ?>
 <header>
   <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
@@ -46,9 +49,11 @@
     <?php if (phila_get_selected_template() != 'prog_association') : ?>
       <?php phila_get_menu(); ?>
     <?php endif; ?>
-    <div class="mtl mbm">
-      <?php get_template_part( 'partials/breadcrumbs' ); ?>
-    </div>
+    <?php if ( $current_post_type =! 'department_page')  : ?>
+      <div class="mtl mbm">
+        <?php get_template_part( 'partials/breadcrumbs' ); ?>
+      </div>
+      <? endif; ?>
     <?php if ( empty( $sub_heading ) ) :?>
       <div class="grid-container">
         <div class="grid-x">

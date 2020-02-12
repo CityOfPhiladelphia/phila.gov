@@ -147,7 +147,7 @@ class Phila_Gov_Register_Program_Templates {
     $meta_boxes[] = array(
       'id'       => 'phila_sub_association',
       'title'    => 'Association content',
-      'pages' => array( 'programs' ),
+      'pages' => array( 'programs', 'department_page' ),
       'priority' => 'high',
       'revision' => true,
       'visible' => array(
@@ -179,16 +179,20 @@ class Phila_Gov_Register_Program_Templates {
     $meta_boxes[] = array(
       'id'       => 'phila_program',
       'title'    => 'Page content',
-      'pages' => array( 'programs' ),
+      'pages' => array( 'programs', 'department_page' ),
       'priority' => 'high',
       'revision' => true,
       'hidden' => array(
         'when' => array(
           array( 'phila_template_select', '=', 'prog_off_site' ),
           array( 'phila_template_select', '=', 'resource_list_v2' ),
-
         ),
         'relation' => 'or',
+      ),
+      'visible' => array(
+        'when'  => array(
+          array( 'phila_template_select', '=', 'prog_association' )
+        )
       ),
 
       'fields' => array(
