@@ -28,27 +28,41 @@ if ( $calendar_q->have_posts() ) {
   $cal_ids = array();
   $cal_cat_ids = array();
   $cal_nice_name = array();
+  $grouped_cals = array();
   $names = array();
   $links = array();
   $i = 0;
 
   while ( $calendar_q->have_posts() ) : $calendar_q->the_post();
+  $ids = get_the_id();
+  //var_dump( $ids);
     $categories = get_the_category( get_the_id() );
+    var_dump( get_post_meta( get_the_id() ));
+
+    //var_dump($categories);
     if ($categories != null) {
       $i++;
       array_push($post_ids, get_the_id() );
       array_push($cal_cat_ids, $categories[0]->cat_ID);
       array_push($cal_nice_name, $categories);
+
       $names[$i]['id'] = $categories[0]->cat_ID;
       $names[$i]['name'] = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
     }
   endwhile;
+  //var_dump( $cal_cat_ids);
 
     wp_reset_postdata();
   }
   foreach ($post_ids as $post_id) {
+    $meta = get_post_meta( $post_id ) ;
+    //var_dump($meta);
+
+    // $test = get_post_meta($post_id, '_grouped_calendars_ids');
     array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
+
   }
+  var_dump($grouped_cals);
   $i=0;
   foreach ($cal_nice_name as $nice){
     $i++;
@@ -63,6 +77,7 @@ if ( $calendar_q->have_posts() ) {
   $links = array_filter($links);
 
   $calendar_ids = json_encode($final_array);
+  //var_dump($final_array);
 
   function sort_by_name($a, $b){
     return strcmp($a['name'], $b['name']);
