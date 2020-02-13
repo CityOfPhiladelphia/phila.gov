@@ -248,7 +248,7 @@ get_header(); ?>
                 <div class="row collapse process-bar">
                   <div class="medium-4 columns">
                     <section>
-                      <header class="bg-medium-gray">
+                      <header class="bg-dark-gray">
                         <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Alpha</h4>
@@ -259,7 +259,7 @@ get_header(); ?>
                   </div>
                   <div class="medium-4 columns small-text">
                     <section>
-                      <header class="bg-medium-gray">
+                      <header class="bg-dark-gray">
                         <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Beta</h4>
@@ -286,7 +286,7 @@ get_header(); ?>
                   <div class="medium-8 columns end">
                     <section>
                       <header>
-                        <div class="valign process-label bg-medium-gray left-arrow-indent right-arrow">
+                        <div class="valign process-label bg-dark-gray left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Migration</h4>
                           </div>
