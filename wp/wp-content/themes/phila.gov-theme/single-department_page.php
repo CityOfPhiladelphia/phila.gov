@@ -99,7 +99,7 @@ get_header(); ?>
               <?php wp_reset_query(); ?>
             <?php endif; ?>
             <!-- END Department Stub -->
-        <?php }else{
+        <?php } else {
           $is_stub = false;
           include(locate_template( 'templates/single-on-site-content.php') ) ;
         }
