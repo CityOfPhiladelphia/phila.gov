@@ -81,7 +81,7 @@
             <div class="row sticky-header-width">
               <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
-                  <a href="<?php echo get_home_url(); ?>" class="logo" tabindex="1" aria-label="City of Philadelphia">
+                  <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
                     <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
                   </a>
                 </div>
@@ -109,9 +109,10 @@
             </div>
             <div class="small-5 medium-1 columns valign phn-m">
               <div class="valign-cell">
-                <button class="site-search" type="button"  data-toggle="search-dropdown">
+                <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
                   <i class="fas fa-search fa-2x" aria-hidden="true"></i>
                   <span class="show-for-small-only">Search</span>
+                  <label class="accessible" for="site-search-button">Search</label>
                 </button>
               </div>
             </div>
