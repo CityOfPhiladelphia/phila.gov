@@ -244,9 +244,9 @@
           border-left-color: white;
         }
       }
-      &.left-arrow-medium-gray {
+      &.left-arrow-dark-gray {
         &:before {
-          border-left-color: color(medium-gray);
+          border-left-color: color(dark-gray);
         }
       }
       &.left-arrow-ben-franklin-blue {
@@ -264,7 +264,7 @@
         content: '';
         width: 0;
         height: 0;
-        border-left: 15px solid color(medium-gray);
+        border-left: 15px solid color(dark-gray);
         border-top: 20px solid transparent;
         border-bottom: 20px solid transparent;
         right: 0px;
