@@ -253,8 +253,8 @@ function phila_open_graph() {
     $alt_text = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
   } elseif ( get_post_type($post->ID) == 'programs' ){
     $img = rwmb_meta('prog_header_img', array('limit' => 1), $post->ID );
-    $img_src = $img[0]['full_url'];
-    $alt_text = $img[0]['alt'];
+    $img_src = !empty($img) ? $img[0]['full_url'] : '';
+    $alt_text = !empty( $img ) ? $img[0]['alt'] : '';
   } elseif ( get_post_type($post->ID) == 'event_spotlight' ){
     $img = rwmb_meta('header_img', array('limit' => 1), $post->ID );
     $img_src = $img[0]['full_url'];

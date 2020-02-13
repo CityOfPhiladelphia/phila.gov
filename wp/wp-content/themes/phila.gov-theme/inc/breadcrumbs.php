@@ -102,7 +102,7 @@ function phila_breadcrumbs() {
         $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
       }
 
-      echo '<li><a href="/programs">Programs and initiatives</a></li>' . $output;
+      echo '<li><a href="/programs-initiatives/">Programs and initiatives</a></li>' . $output;
       echo '<li> '.$title.'</li>';
     } elseif ( is_singular('guides') ) {
 
@@ -119,7 +119,7 @@ function phila_breadcrumbs() {
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if ( get_post_type() == 'service_page') {
-        echo '<li><a href="/services">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+        echo '<li><a href="/service-directory/">' . __( 'Services', 'phila.gov' ) . '</a></li>';
       }
 
       if( $post->post_parent ){
