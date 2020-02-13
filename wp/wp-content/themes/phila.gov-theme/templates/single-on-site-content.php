@@ -24,7 +24,7 @@ $user_selected_template    = phila_get_selected_template();
 
   <?php if ($user_selected_template == 'programs_initiatives') : ?>
     <?php get_template_part( 'partials/departments/content', 'programs-initiatives-header' ); ?>
-  <?php else : ?>
+  <?php elseif ($user_selected_template != 'prog_association'): ?>
     <header class="row">
       <div class="columns">
         <?php the_title( '<h2 class="sub-page-title contrast">', '</h2>' ); ?>
