@@ -89,7 +89,7 @@
               <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
               <div class="medium-17 columns show-for-medium desktop-nav">
                 <div class="top-bar-right valign-mu">
-                  <nav data-swiftype-index="false" class="valign-mu">
+                  <nav data-swiftype-index="false" class="phila-global-nav-menu valign-mu" aria-label="main-nav">
                     <ul class="horizontal menu pan valign-mu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
                         <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
@@ -112,7 +112,7 @@
                 <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
                   <i class="fas fa-search fa-2x" aria-hidden="true"></i>
                   <span class="show-for-small-only">Search</span>
-                  <label class="accessible" for="site-search-button">Search</label>
+                  <span class="accessible" for="site-search-button">Search</span>
                 </button>
               </div>
             </div>
@@ -127,11 +127,11 @@
             </div>
             <div class="primary-menu medium-15 medium-push-2 small-24 columns valign-mu" id="mobile-nav">
               <div class="top-bar-right valign-mu show-for-small-only">
-              <nav data-swiftype-index="false" class="valign-mu">
+              <nav data-swiftype-index="false" class="phila-mobile-nav-menu valign-mu" aria-label="mobile-nav">
                 <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
                   <li><a href="/"><i class="fas fa-home fa-lg"></i> Home</a></li>
                   <li class="is-drilldown-submenu-parent" tabindex="0">
-                    <a href="#services" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
+                    <a href="#service-directory" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
                     <ul class="menu vertical menu-top-offset" tabindex="0">
                       <li tabindex="0"><a href="/service-directory/"> Service directory</a></li>
                       <?php
