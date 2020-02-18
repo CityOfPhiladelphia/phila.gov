@@ -15,7 +15,7 @@ $desc = rwmb_meta('phila_meta_desc', $args = null, $latest_desc[0]->ID );
     <div class="row equal-height">
       <div class="small-24 medium-16 columns valign equal">
         <div class="valign-cell">
-          <h3 class="mbn">More from the City of Philadelphia</h3>
+          <h2 class="h3 mbn">More from the City of Philadelphia</h3>
           <p class="mts"><?php echo $desc ?></p>
         </div>
       </div>
