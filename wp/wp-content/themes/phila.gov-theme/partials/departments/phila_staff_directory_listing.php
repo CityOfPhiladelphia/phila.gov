@@ -21,15 +21,16 @@ $anchor_list = rwmb_meta('anchor_list');
   <div class="columns">
     <div class="pll pbs">On this page</div>
     <nav>
-    <ul class="no-bullet">
-    <?php foreach ($unit_data as $unit): ?>
-      <li class="pvs"><a class="" href="#<?php echo $unit ?>"><?php echo urldecode($unit) ?></a></li>
-    <?php endforeach; ?>
-    </ul>
+      <ul class="no-bullet">
+      <?php foreach ($unit_data as $unit): ?>
+        <li class="pvs"><a class="" href="#<?php echo $unit ?>"><?php echo urldecode($unit) ?></a></li>
+      <?php endforeach; ?>
+      </ul>
     </nav>
   </div>
 </div>
 <?php endif; ?>
+
 <?php 
 
 if ( has_category() ) {

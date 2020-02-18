@@ -169,6 +169,54 @@ class Phila_Gov_Row_Metaboxes {
         'fields'  => Phila_Gov_Standard_Metaboxes::phila_meta_registration(),
       ),
       array(
+        'id'       => 'phila_staff_directory_listing',
+        'title'    => 'Staff Directory Listing',
+        'context'  => 'normal',
+        'priority' => 'default',
+        'type'    => 'group',
+    
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_options_select', '=', 'phila_staff_table'),
+          ),
+        ),
+    
+        'fields' => array(
+          array(
+            'id'   => 'phila_staff_directory_selected',
+            'name'  => 'Display a staff directory list?',
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+            'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
+          ),
+          array(
+            'id'  => 'phila_get_staff_cats',
+            'type' => 'group',
+            'visible' => array(
+              'when' => array(
+                array( 'phila_staff_directory_selected', '=', 1 ),
+              ),
+            ),
+            'fields' => array(
+              Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
+            ),
+          ),
+          array(
+            'id'  => 'hide_units',
+            'class' => 'hide-on-load',
+            'name'  => 'Hide staff assigned to units?',
+            'desc'  => 'By selecting this option, staff assigned to a unit will not appear on this department homepage.',
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+            'visible' => array(
+              'phila_template_select', 'in', ['homepage_v2']
+            )
+          ),
+        ),
+      ),
+      array(
         'id' => 'phila_heading_groups',
         'type'  => 'group',
         'clone' => false,

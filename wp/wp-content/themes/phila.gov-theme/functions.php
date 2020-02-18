@@ -245,18 +245,20 @@ function phila_open_graph() {
   global $post;
   global $title;
 
+  $post_id = isset($post->ID) ? $post->ID : '';
+
   if( has_post_thumbnail() ){
-    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large' );
     $img_src = array_shift( $img );
     $type = 'article';
-    $img_id  = get_post_thumbnail_id($post->ID);
+    $img_id  = get_post_thumbnail_id($post_id);
     $alt_text = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
-  } elseif ( get_post_type($post->ID) == 'programs' ){
-    $img = rwmb_meta('prog_header_img', array('limit' => 1), $post->ID );
+  } elseif ( get_post_type($post_id) == 'programs' ){
+    $img = rwmb_meta('prog_header_img', array('limit' => 1), $post_id );
     $img_src = !empty($img) ? $img[0]['full_url'] : '';
     $alt_text = !empty( $img ) ? $img[0]['alt'] : '';
-  } elseif ( get_post_type($post->ID) == 'event_spotlight' ){
-    $img = rwmb_meta('header_img', array('limit' => 1), $post->ID );
+  } elseif ( get_post_type($post_id) == 'event_spotlight' ){
+    $img = rwmb_meta('header_img', array('limit' => 1), $ppost_id );
     $img_src = $img[0]['full_url'];
     $alt_text = $img[0]['alt'];
   } else {
@@ -321,25 +323,30 @@ function phila_gov_scripts() {
 
   wp_deregister_script( 'jquery' );
 
-  //get vue app required js files for vue app template
-  $vue_app_js_urls = rwmb_meta('phila-vue-app-js', '', $post->ID);
-  if (is_array($vue_app_js_urls)) {
-    $count = 1;
-    foreach($vue_app_js_urls as $url) {
-      $handle = $post->post_name . '-vue-app-js-url-' . $count;
-      wp_enqueue_script($handle, $url['phila_vue_app_js_url'], array(), null, true );
-      $count++;
-    }
-  }
+  if ( !is_404() ){
+    $vue_app_js_urls = rwmb_meta('phila-vue-app-js', '', $post->ID);
 
-  //get vue app required css files for vue app template
-  $vue_app_css_urls = rwmb_meta('phila-vue-app-css', '', $post->ID);
-  if (is_array($vue_app_css_urls)) {
-    $count = 1;
-    foreach($vue_app_css_urls as $url) {
-      $handle = $post->post_name . '-vue-app-css-url-' . $count;
-      wp_enqueue_style($handle, $url['phila_vue_app_css_url']);
-      $count++;
+    if (isset( $vue_app_js_urls) ) {
+      //get vue app required js files for vue app template
+      if (is_array($vue_app_js_urls)) {
+        $count = 1;
+        foreach($vue_app_js_urls as $url) {
+          $handle = $post->post_name . '-vue-app-js-url-' . $count;
+          wp_enqueue_script($handle, $url['phila_vue_app_js_url'], array(), null, true );
+          $count++;
+        }
+      }
+
+      //get vue app required css files for vue app template
+      $vue_app_css_urls = rwmb_meta('phila-vue-app-css', '', $post->ID);
+      if (is_array($vue_app_css_urls)) {
+        $count = 1;
+        foreach($vue_app_css_urls as $url) {
+          $handle = $post->post_name . '-vue-app-css-url-' . $count;
+          wp_enqueue_style($handle, $url['phila_vue_app_css_url']);
+          $count++;
+        }
+      }
     }
   }
 
@@ -908,12 +915,21 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
       while ( $get_links->have_posts() ) {
 
+        global $post;
         $get_links->the_post();
 
         $permalink = get_the_permalink();
         $the_title = get_the_title();
 
-        if ( $permalink != '' ) {
+        $is_parent = $post->post_parent; //true for subpages
+
+        $is_in_govt_dir = rwmb_meta('phila_department_home_page');
+
+        if ( !$is_parent ) {
+
+          $all_available_pages[$permalink] = $the_title;
+
+        }else if($is_in_govt_dir){
 
           $all_available_pages[$permalink] = $the_title;
 
@@ -927,22 +943,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       echo ' by ';
     }
 
-    foreach( $all_available_pages as $k=>$v ) {
-
-      $formatted_v = phila_make_regular_quote( $v );
-
-      foreach ( $cat_name as $name ) {
-        $formatted_name = phila_make_regular_quote( $name );
-
-        if( preg_match("/^$formatted_name?$/", $formatted_v ) ) {
-          $final_list[$k] = $v;
-
-        }
-      }
-
-    }
-
-    foreach ( $final_list as $k => $v ){
+    foreach ( $all_available_pages as $k => $v ){
 
       $markup = '<a href="' . addslashes($k) . '">' . $v . '</a>';
       $urls = basename( $k );
