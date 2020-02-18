@@ -323,25 +323,30 @@ function phila_gov_scripts() {
 
   wp_deregister_script( 'jquery' );
 
-  //get vue app required js files for vue app template
-  $vue_app_js_urls = rwmb_meta('phila-vue-app-js', '', $post->ID);
-  if (is_array($vue_app_js_urls)) {
-    $count = 1;
-    foreach($vue_app_js_urls as $url) {
-      $handle = $post->post_name . '-vue-app-js-url-' . $count;
-      wp_enqueue_script($handle, $url['phila_vue_app_js_url'], array(), null, true );
-      $count++;
-    }
-  }
+  if ( !is_404() ){
+    $vue_app_js_urls = rwmb_meta('phila-vue-app-js', '', $post->ID);
 
-  //get vue app required css files for vue app template
-  $vue_app_css_urls = rwmb_meta('phila-vue-app-css', '', $post->ID);
-  if (is_array($vue_app_css_urls)) {
-    $count = 1;
-    foreach($vue_app_css_urls as $url) {
-      $handle = $post->post_name . '-vue-app-css-url-' . $count;
-      wp_enqueue_style($handle, $url['phila_vue_app_css_url']);
-      $count++;
+    if (isset( $vue_app_js_urls) ) {
+      //get vue app required js files for vue app template
+      if (is_array($vue_app_js_urls)) {
+        $count = 1;
+        foreach($vue_app_js_urls as $url) {
+          $handle = $post->post_name . '-vue-app-js-url-' . $count;
+          wp_enqueue_script($handle, $url['phila_vue_app_js_url'], array(), null, true );
+          $count++;
+        }
+      }
+
+      //get vue app required css files for vue app template
+      $vue_app_css_urls = rwmb_meta('phila-vue-app-css', '', $post->ID);
+      if (is_array($vue_app_css_urls)) {
+        $count = 1;
+        foreach($vue_app_css_urls as $url) {
+          $handle = $post->post_name . '-vue-app-css-url-' . $count;
+          wp_enqueue_style($handle, $url['phila_vue_app_css_url']);
+          $count++;
+        }
+      }
     }
   }
 
