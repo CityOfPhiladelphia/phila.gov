@@ -245,18 +245,20 @@ function phila_open_graph() {
   global $post;
   global $title;
 
+  $post_id = isset($post->ID) ? $post->ID : '';
+
   if( has_post_thumbnail() ){
-    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large' );
     $img_src = array_shift( $img );
     $type = 'article';
-    $img_id  = get_post_thumbnail_id($post->ID);
+    $img_id  = get_post_thumbnail_id($post_id);
     $alt_text = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
-  } elseif ( get_post_type($post->ID) == 'programs' ){
-    $img = rwmb_meta('prog_header_img', array('limit' => 1), $post->ID );
+  } elseif ( get_post_type($post_id) == 'programs' ){
+    $img = rwmb_meta('prog_header_img', array('limit' => 1), $post_id );
     $img_src = !empty($img) ? $img[0]['full_url'] : '';
     $alt_text = !empty( $img ) ? $img[0]['alt'] : '';
-  } elseif ( get_post_type($post->ID) == 'event_spotlight' ){
-    $img = rwmb_meta('header_img', array('limit' => 1), $post->ID );
+  } elseif ( get_post_type($post_id) == 'event_spotlight' ){
+    $img = rwmb_meta('header_img', array('limit' => 1), $ppost_id );
     $img_src = $img[0]['full_url'];
     $alt_text = $img[0]['alt'];
   } else {
