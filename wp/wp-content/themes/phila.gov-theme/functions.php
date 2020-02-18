@@ -915,12 +915,21 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
       while ( $get_links->have_posts() ) {
 
+        global $post;
         $get_links->the_post();
 
         $permalink = get_the_permalink();
         $the_title = get_the_title();
 
-        if ( $permalink != '' ) {
+        $is_parent = $post->post_parent; //true for subpages
+
+        $is_in_govt_dir = rwmb_meta('phila_department_home_page');
+
+        if ( !$is_parent ) {
+
+          $all_available_pages[$permalink] = $the_title;
+
+        }else if($is_in_govt_dir){
 
           $all_available_pages[$permalink] = $the_title;
 
@@ -934,22 +943,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
       echo ' by ';
     }
 
-    foreach( $all_available_pages as $k=>$v ) {
-
-      $formatted_v = phila_make_regular_quote( $v );
-
-      foreach ( $cat_name as $name ) {
-        $formatted_name = phila_make_regular_quote( $name );
-
-        if( preg_match("/^$formatted_name?$/", $formatted_v ) ) {
-          $final_list[$k] = $v;
-
-        }
-      }
-
-    }
-
-    foreach ( $final_list as $k => $v ){
+    foreach ( $all_available_pages as $k => $v ){
 
       $markup = '<a href="' . addslashes($k) . '">' . $v . '</a>';
       $urls = basename( $k );
