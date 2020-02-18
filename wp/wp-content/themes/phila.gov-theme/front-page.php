@@ -33,10 +33,11 @@ get_header(); ?>
                       'eventLabel': 'www.phila.gov'
                     });
                   ">
-                  <div class="phs pvm cta-block clearfix">
+                  <span class="accessible">Find trash day</span>
+                  <div class="phs pvm cta-block clearfix" aria-hidden="true">
                     <div class="valign">
                       <div class="valign-cell">
-                        <i class="fas fa-trash-alt fa-4x" aria-hidden="true"></i>
+                        <i class="fas fa-trash-alt fa-4x"></i>
                       </div>
                     </div>
                     <div>
@@ -54,10 +55,11 @@ get_header(); ?>
                       'eventLabel': 'www.phila.gov'
                     });
                   ">
-                  <div class="phs pvm cta-block clearfix">
+                  <span class="accessible">Pay a bill</span>
+                  <div class="phs pvm cta-block clearfix"  aria-hidden="true">
                     <div class="valign">
                       <div class="valign-cell">
-                        <i class="fal fa-credit-card fa-4x" aria-hidden="true"></i>
+                        <i class="fal fa-credit-card fa-4x"></i>
                       </div>
                     </div>
                     <div>
@@ -75,10 +77,12 @@ get_header(); ?>
                       'eventLabel': 'www.phila.gov'
                     });
                   ">
-                  <div class="phs pvm cta-block clearfix">
+                <span class="accessible">Explore City jobs</span>
+
+                  <div class="phs pvm cta-block clearfix" aria-hidden="true">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fas fa-briefcase fa-4x" aria-hidden="true"></i>
+                        <i class="fas fa-briefcase fa-4x"></i>
                       </div>
                     </div>
                     <div>
@@ -96,10 +100,11 @@ get_header(); ?>
                       'eventLabel': 'www.phila.gov'
                     });
                   ">
-                  <div class="phs pvm cta-block clearfix">
+                  <span class="accessible">Search for a property</span>
+                  <div class="phs pvm cta-block clearfix" aria-hidden="true">
                     <div class="valign ">
                       <div class="valign-cell">
-                        <i class="fas fa-home fa-4x" aria-hidden="true"></i>
+                        <i class="fas fa-home fa-4x"></i>
                       </div>
                     </div>
                     <div>
@@ -248,7 +253,7 @@ get_header(); ?>
                 <div class="row collapse process-bar">
                   <div class="medium-4 columns">
                     <section>
-                      <header class="bg-medium-gray">
+                      <header class="bg-dark-gray">
                         <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Alpha</h4>
@@ -259,7 +264,7 @@ get_header(); ?>
                   </div>
                   <div class="medium-4 columns small-text">
                     <section>
-                      <header class="bg-medium-gray">
+                      <header class="bg-dark-gray">
                         <div class="valign process-label left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Beta</h4>
@@ -286,7 +291,7 @@ get_header(); ?>
                   <div class="medium-8 columns end">
                     <section>
                       <header>
-                        <div class="valign process-label bg-medium-gray left-arrow-indent right-arrow">
+                        <div class="valign process-label bg-dark-gray left-arrow-indent right-arrow">
                           <div class="valign-cell">
                             <h4 class="mbn h5 white">Migration</h4>
                           </div>
