@@ -183,7 +183,9 @@ function simcal_get_calendars( $exclude = '', $cached = true ) {
 
 		$posts = get_posts( array(
 			'post_type' => 'calendar',
-			'nopaging'  => true,
+      'nopaging'  => true,
+      //KD EDIT: set post status to any so we can use calendar post IDs to get the individual calendar ids.
+      'post_status' => 'any'
 		) );
 
 		$calendars = array();
