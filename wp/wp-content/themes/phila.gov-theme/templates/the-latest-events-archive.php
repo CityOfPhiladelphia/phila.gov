@@ -28,7 +28,7 @@ if ( $calendar_q->have_posts() ) {
   $cal_ids = array();
   $cal_cat_ids = array();
   $cal_nice_name = array();
-  $grouped_cals = array();
+  // $grouped_cals = array();
   $names = array();
   $links = array();
   $i = 0;
@@ -37,9 +37,8 @@ if ( $calendar_q->have_posts() ) {
   $ids = get_the_id();
   //var_dump( $ids);
     $categories = get_the_category( get_the_id() );
-    var_dump( get_post_meta( get_the_id() ));
+    //var_dump( get_post_meta( get_the_id() ));
 
-    //var_dump($categories);
     if ($categories != null) {
       $i++;
       array_push($post_ids, get_the_id() );
@@ -50,26 +49,41 @@ if ( $calendar_q->have_posts() ) {
       $names[$i]['name'] = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
     }
   endwhile;
-  //var_dump( $cal_cat_ids);
 
     wp_reset_postdata();
   }
   foreach ($post_ids as $post_id) {
-    $meta = get_post_meta( $post_id ) ;
-    //var_dump($meta);
-
-    // $test = get_post_meta($post_id, '_grouped_calendars_ids');
+    $categories = get_the_category( $post_id );
+    $category = $categories[0];
+    // var_dump($category);
+    $grouped_cals[$category->term_id] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+    //  $test = get_post_meta($post_id, '_grouped_calendars_ids');
+    //array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
     array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
-
   }
-  var_dump($grouped_cals);
+  //remove duplicates
+  $clean_grouped_cals = array_filter($grouped_cals);
+  $just_ids = array();
+
+  foreach ($clean_grouped_cals as $key => $value){
+    // var_dump($value);
+    if ( is_array($value) ) {
+      foreach ($value as $id) {
+        $single_cal_id[] = get_post_meta($id, '_google_calendar_id', true);
+      }
+      $just_ids[$key] = $single_cal_id;
+
+    }
+  }
+
   $i=0;
   foreach ($cal_nice_name as $nice){
     $i++;
     $links[$nice[0]->cat_ID] = phila_get_current_department_name($nice);
   }
-  $final_array = array_combine($cal_cat_ids, $cal_ids);
-  $final_array = array_filter($final_array);
+
+  $final_array_single = array_combine($cal_cat_ids, $cal_ids);
+  $final_array = array_replace($final_array_single, $just_ids);
 
   //remove duplicates
   $names = array_map("unserialize", array_unique(array_map("serialize", $names)));
@@ -77,7 +91,6 @@ if ( $calendar_q->have_posts() ) {
   $links = array_filter($links);
 
   $calendar_ids = json_encode($final_array);
-  //var_dump($final_array);
 
   function sort_by_name($a, $b){
     return strcmp($a['name'], $b['name']);
