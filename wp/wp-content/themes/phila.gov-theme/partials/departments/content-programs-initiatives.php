@@ -246,6 +246,13 @@
               <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
               <!-- /Boards/Commission Members -->
             <?php endif;?>
+            <?php elseif ( $current_row_option == 'phila_staff_table'):?>
+            <?php if ( isset( $current_row['phila_full_options']['phila_staff_directory_listing'] ) ): ?>
+              <!-- Staff listing -->
+              <?php include(locate_template('partials/departments/phila_staff_directory_listing.php')); ?>
+              <!-- /Staff listing -->
+            <?php endif;?>
+
 
         <?php endif;  /*end full row */?>
 
