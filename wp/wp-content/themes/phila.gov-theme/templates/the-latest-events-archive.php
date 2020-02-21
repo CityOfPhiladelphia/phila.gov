@@ -66,10 +66,9 @@ if ( $calendar_q->have_posts() ) {
   $just_ids = array();
 
   foreach ($clean_grouped_cals as $key => $value){
-    // var_dump($value);
     if ( is_array($value) ) {
       foreach ($value as $id) {
-        $single_cal_id[] = get_post_meta($id, '_google_calendar_id', true);
+        $single_cal_id[] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
       }
       $just_ids[$key] = $single_cal_id;
 
