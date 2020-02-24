@@ -24,29 +24,25 @@
   </div>
 </section>
 <?php else: ?>
-<section class="mvl">
-  <div class="phm-mu">
-    <?php foreach ( $accordion_group as $ag_key => $accordion ) : ?>
-    <?php reset($accordion_group) ?>
-    <div class="icon-expand-container">
-      <div class="icon-expand-title grid-x">
-        <?php if ($use_icon === true ) :?>
-          <div class="cell shrink mrm mtxs"><i class="fas fa-tasks fa-2x"></i></div> 
-        <?php endif; ?>
-        <div class="cell auto">
-          <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?>
-        </div>
-      </div>
-      <a href="#" data-toggle="icon-expand" class="icon-expand-link" id="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>"> More + </a>
-      <div class="icon-expand-content mvm " aria-controls="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>" aria-expanded="false">
-        <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
+  <?php foreach ( $accordion_group as $ag_key => $accordion ) : ?>
+  <?php reset($accordion_group) ?>
+  <div class="icon-expand-container result">
+    <div class="icon-expand-title grid-x">
+      <?php if ($use_icon === true ) :?>
+        <div class="cell shrink mrm mtxs"><i class="fas fa-tasks fa-2x"></i></div> 
+      <?php endif; ?>
+      <div class="cell auto">
+        <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?>
       </div>
     </div>
-    <?php end( $accordion_group) ; ?>
-    <?php if ($ag_key != key($accordion_group) ) :?>
-      <hr class="icon-expand-hr">
-    <?php endif ?>
-    <?php endforeach;?>
+    <a href="#" data-toggle="icon-expand" class="icon-expand-link" id="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>"> More + </a>
+    <div class="icon-expand-content mvm " aria-controls="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>" aria-expanded="false">
+      <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
+    </div>
   </div>
-</section>
+  <?php end( $accordion_group) ; ?>
+  <?php if ($ag_key != key($accordion_group) ) :?>
+    <hr class="icon-expand-hr">
+  <?php endif ?>
+  <?php endforeach;?>
 <?php endif; ?>

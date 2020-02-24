@@ -49,6 +49,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
           'resource_list_v2'        => 'Resource list',
           'staff_directory_v2'      => 'Staff directory',
           'off_site_department'     => 'Off-site department',
+          'prog_association'        =>  'Subpage with association',
           'department_stub'         => 'Stub'
           ),
           'admin_columns' => array(

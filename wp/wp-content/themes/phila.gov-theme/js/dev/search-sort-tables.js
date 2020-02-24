@@ -26,7 +26,7 @@ module.exports = $(function(){
 
   $('.search-sort-table').each(function( j ) {
     var table = new List('sortable-table-' + j, options)
-    console.log(j)
+
     table.on('updated', function (list) {
 
       if (list.matchingItems.length > 0) {
@@ -34,20 +34,19 @@ module.exports = $(function(){
       } else {
         $('#sortable-table-' + j + '.no-results').show()
       }
-      checkNavButtons()
-      console.log('#sortable-table-' + j)
+      checkNavButtons();
 
-      var loggedIn
+      var loggedIn;
 
       if($('#wpadminbar').length){
         loggedIn = $('#wpadminbar').outerHeight();
       }else {
-        loggedIn = 0
+        loggedIn = 0;
       }
       //subtract 50 incase there's a title on the div
       $('html, body').animate({
-         scrollTop: $('#sortable-table-' + j).offset().top - $('.primary-menu').outerHeight() - loggedIn - 50
-       }, 400);
+          scrollTop: $('#sortable-table-' + j).offset().top - $('.primary-menu').outerHeight() - loggedIn - 50
+        }, 400);
       })
 
       function checkNavButtons() {

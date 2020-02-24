@@ -156,8 +156,54 @@
               <?php include(locate_template('partials/global/registration.php')); ?>
               <!--/Registration-->
 
-            <?php endif; ?>
+        <?php endif; ?>
+        
+        <?php elseif ( $current_row_option == 'phila_vue_app'): ?>
+          <?php if ( isset( $current_row['phila_full_options']['phila_vue_template'] ) ):
+            $vuejs_js_ids = $current_row['phila_full_options']['phila_vue_template']['phila-vue-app-js'];
+            $vuejs_css_ids = $current_row['phila_full_options']['phila_vue_template']['phila-vue-app-css'];
 
+            $app_title = $current_row['phila_full_options']['vue_app_title'];
+              if (is_array($vuejs_js_ids)) {
+                $count = 1;
+                foreach($vuejs_js_ids as $url) {
+                  $handle = $post->post_name . '-vue-app-js-url-' . $count;
+                  wp_enqueue_script($handle, $url['phila_vue_app_js_url'], array(), null, true );
+                  $count++;
+                }
+              }
+
+              if (is_array($vuejs_css_ids)) {
+                $count = 1;
+                foreach($vuejs_css_ids as $url) {
+                  $handle = $post->post_name . '-vue-app-css-url-' . $count;
+                  wp_enqueue_style($handle, $url['phila_vue_app_css_url']);
+                  $count++;
+                }
+              }
+              
+              ?>
+            <!--Vuejs-->
+            <?php if (!empty($app_title) ): ?>
+              <div class="grid-container">
+                <div class="grid-x">
+                  <div class="cell small-24">
+                    <h2 class="contrast"><?php echo $app_title ?> </h2>
+                    </div>
+                </div>
+              </div>
+            <?php endif; ?>
+            <div class="grid-container pan">
+              <div class="grid-x">
+                <div class="cell small-24">
+                  <div id="vue-app"></div>
+                </div>
+              </div>
+            </div>
+            <!--/Vuejs-->
+
+        <?php endif; ?>
+        
           <?php elseif ( $current_row_option == 'phila_stepped_content'):?>
             <?php if ( isset( $current_row['phila_full_options']['phila_full_options_select'] ) ): ?>
               <!-- Heading groups -->
@@ -200,6 +246,13 @@
               <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
               <!-- /Boards/Commission Members -->
             <?php endif;?>
+            <?php elseif ( $current_row_option == 'phila_staff_table'):?>
+            <?php if ( isset( $current_row['phila_full_options']['phila_staff_directory_listing'] ) ): ?>
+              <!-- Staff listing -->
+              <?php include(locate_template('partials/departments/phila_staff_directory_listing.php')); ?>
+              <!-- /Staff listing -->
+            <?php endif;?>
+
 
         <?php endif;  /*end full row */?>
 
