@@ -1,7 +1,0 @@
-{
-	"name": "davidanderson684/simba-plugin-manager-updater",
-	"description": "This class is an updates checker and UI for WordPress plugins that are hosted using the Simba Plugin Manager plugin",
-	"require": {
-		"yahnis-elsts/plugin-update-checker": "4.6.*"
-	}
-}

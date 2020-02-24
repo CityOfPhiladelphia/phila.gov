@@ -1,2 +1,0 @@
-find . -name '*.php' | xgettext --force-po -o languages/tmp.pot -L PHP --from-code=utf-8 -k__ -k_e -k_x -f -
-
