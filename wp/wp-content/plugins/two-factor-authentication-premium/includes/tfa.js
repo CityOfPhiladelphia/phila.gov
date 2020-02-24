@@ -116,7 +116,8 @@ jQuery(document).ready(function($) {
 		}
 
 		// Hide all elements in a browser safe way
-		$submit_button.parents('form:first').find('p, .impu-form-line-fr, .tml-field-wrap').each(function(i) {
+		// .user-pass-wrap is the wrapper used (instead of a paragraph) on wp-login.php from WP 5.3
+		$submit_button.parents('form:first').find('p, .impu-form-line-fr, .tml-field-wrap, .user-pass-wrap').each(function(i) {
 			$(this).css('visibility','hidden').css('position', 'absolute');
 		});
 		
@@ -126,7 +127,7 @@ jQuery(document).ready(function($) {
 		// Add new field and controls
 		var html = '';
 		
-		html += '<label for="simba_two_factor_auth">' + simba_tfasettings.otp + '<br><input type="text" name="two_factor_code" id="simba_two_factor_auth" autocomplete="off"></label>';
+		html += '<label for="simba_two_factor_auth">' + simba_tfasettings.otp + '<br><input type="text" name="two_factor_code" id="simba_two_factor_auth" autocomplete="off" data-lpignore="true"></label>';
 		
 		html += '<p class="forgetmenot" style="font-size:small; max-width: 60%">' + simba_tfasettings.otp_login_help
 

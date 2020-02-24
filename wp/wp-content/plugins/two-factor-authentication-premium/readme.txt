@@ -1,8 +1,8 @@
 === Two Factor Authentication ===
 Tags: two factor, 2fa, tfa, two factor auth, google authenticator
 Requires at least: 3.4
-Tested up to: 5.2
-Stable tag: 1.6.2
+Tested up to: 5.3
+Stable tag: 1.7.1
 Requires PHP: 5.3
 Author: DavidAnderson
 Contributors: DavidAnderson, DNutbourne
@@ -102,7 +102,7 @@ If you cannot get in and need to disable two-factor authentication, then add thi
 
 Add it next to where any other line beginning with "define" is.
 
-Alternatively, if you have FTP or cPanel access to your web hosting space, you can de-activate the plugin; see this article: https://updraftplus.com/understanding-wordpress-installs-plugins/
+Alternatively, if you have FTP or cPanel access to your web hosting space, you can de-activate the plugin; <a href="https://updraftplus.com/understanding-wordpress-installs-plugins/">see this article.</a>
 
 = Why does the plugin not support sending the two-factor code by email? =
 
@@ -153,6 +153,32 @@ Note that the two factor authentication plugin has no mechanism to compare or ap
 13. Allowing users to have trusted devices (Premium version)
 
 == Changelog ==
+
+= 1.7.2 - 13/Feb/2020 =
+
+* TWEAK: Update message about what to do with translations
+
+= 1.7.1 - 14/Jan/2020 =
+
+* FIX: Missing file in 1.7.0 (free) release
+
+= 1.7.0 - 14/Jan/2020 =
+
+* FEATURE: (Premium version): Add an optional TFA section to the WooCommerce account details section in "My Account"
+* TWEAK: Fix div tag balancing issue in settings output
+* TWEAK: Update WooCommerce integration to adjust to DOM changes in WooCommerce 3.8
+* TWEAK: Update .pot file
+
+= 1.6.4 - 12/Nov/2019 =
+
+* TWEAK: On wp-login.php on WordPress 5.3, the password field was not hiding when the TFA field opened
+* TWEAK: Update .pot file
+* TWEAK: Add data-lpignore attribute to TFA field to indicate to LastPass that it is not a password field
+
+= 1.6.3 - 18/Oct/2019 =
+
+* FIX: The 'trusted users' option display in the settings defaulted to showing as enabled, whereas in fact the default setting is disabled
+* TWEAK: Mark as compatible with WP 5.3
 
 = 1.6.2 - 11/Sep/2019 =
 
@@ -566,4 +592,4 @@ Note that the two factor authentication plugin has no mechanism to compare or ap
 * User interface simplified/de-cluttered
 
 == Upgrade Notice ==
-* 1.6.2 : Response to an attempt to turn TFA on can now include an "error" attribute if the attempt failed due to failure to supply the current code
+* 1.7.0 : Fix a tag balancing issue; add WooCommerce 'my account' integration in paid version

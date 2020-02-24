@@ -5,7 +5,7 @@ Plugin URI: https://www.simbahosting.co.uk/s3/product/two-factor-authentication/
 Description: Secure your WordPress login forms with two factor authentication - including WooCommerce login forms
 Author: David Nutbourne + David Anderson, original plugin by Oskar Hane
 Author URI: https://www.simbahosting.co.uk
-Version: 1.6.2
+Version: 1.7.2
 Text Domain: two-factor-authentication
 Domain Path: /languages
 License: GPLv2 or later
@@ -16,11 +16,13 @@ define('SIMBA_TFA_PLUGIN_URL', plugins_url('', __FILE__));
 
 class Simba_Two_Factor_Authentication {
 
-	public $version = '1.6.2';
+	public $version = '1.7.2';
 
 	private $php_required = '5.3';
 
 	private $frontend;
+	
+	private $tfa_controller;
 
 	/**
 	 * Constructor, run upon plugin initiation
@@ -41,6 +43,10 @@ class Simba_Two_Factor_Authentication {
 
 		if (file_exists(SIMBA_TFA_PLUGIN_DIR.'/premium.php')) include_once(SIMBA_TFA_PLUGIN_DIR.'/premium.php');
 
+		require_once(SIMBA_TFA_PLUGIN_DIR.'/providers/totp-hotp.php');
+		$this->tfa_controller = new Simba_TFA_Provider_TOTP();
+		
+		// Process login form AJAX events
 		add_action('wp_ajax_nopriv_simbatfa-init-otp', array($this, 'tfaInitLogin'));
 		add_action('wp_ajax_simbatfa-init-otp', array($this, 'tfaInitLogin'));
 
@@ -93,7 +99,7 @@ class Simba_Two_Factor_Authentication {
 		add_action('init', array($this, 'init'));
 
 		// Show off-sync message for hotp
-		add_action('admin_notices', array($this, 'tfaShowHOTPOffSyncMessage'));
+		add_action('admin_notices', array($this, 'tfa_show_hotp_off_sync_message'));
 		
 		// We want to run first if possible, so that we're not aborted by JavaScript exceptions in other components (our code is critical to the login process for TFA users)
 		// Unfortunately, though, people start enqueuing from init onwards (before that is buggy - https://core.trac.wordpress.org/ticket/11526), so, we try to detect the login page and go earlier there. 
@@ -135,6 +141,16 @@ class Simba_Two_Factor_Authentication {
 		return $output;
 	}
 
+	/**
+	 * Used with set_error_handler()
+	 *
+	 * @param Integer $errno
+	 * @param String  $errstr
+	 * @param String  $errfile
+	 * @param Integer $errline
+	 *
+	 * @return Boolean
+	 */
 	public function get_php_errors($errno, $errstr, $errfile, $errline) {
 		if (0 == error_reporting()) return true;
 		$logline = $this->php_error_to_logline($errno, $errstr, $errfile, $errline);
@@ -196,18 +212,12 @@ class Simba_Two_Factor_Authentication {
 	}
 
 	/**
-	 * Return a new Simba_TFA object
+	 * Return a new Simba_TFA object. Legacy method.
 	 *
 	 * @returns Simba_TFA
 	 */
 	public function getTFA() {
-		if (!class_exists('HOTP')) require_once(SIMBA_TFA_PLUGIN_DIR.'/hotp-php-master/hotp.php');
-		if (!class_exists('Base32')) require_once(SIMBA_TFA_PLUGIN_DIR.'/Base32/Base32.php');
-		if (!class_exists('Simba_TFA')) require_once(SIMBA_TFA_PLUGIN_DIR.'/includes/class-simba-tfa.php');
-		
-		$tfa = new Simba_TFA(new Base32(), new HOTP());
-		
-		return $tfa;
+		return $this->tfa_controller->get_simba_tfa();
 	}
 
 	// "Shared" - i.e. could be called from either front-end or back-end
@@ -218,17 +228,15 @@ class Simba_Two_Factor_Authentication {
 
 		if ('refreshotp' == $_POST['subaction']) {
 
-			$tfa_priv_key_64 = get_user_meta($current_user->ID, 'tfa_priv_key_64', true);
+			$code = $this->tfa_controller->get_current_code($current_user->ID);
+		
+			if (false === $code) die(json_encode(array('code' => '')));
 
-			if (!$tfa_priv_key_64) {
-				echo json_encode(array('code' => ''));
-				die;
-			}
-
-			echo json_encode(array('code' => $this->getTFA()->generateOTP($current_user->ID, $tfa_priv_key_64)));
+			die(json_encode(array('code' => $code)));
+			
 		} elseif ('untrust_device' == $_POST['subaction'] && isset($_POST['device_id'])) {
 		
-			do_action('simba_tfa_untrust_device', $_POST['device_id']);
+			do_action('simba_tfa_untrust_device', stripslashes($_POST['device_id']));
 		
 		}
 		
@@ -386,6 +394,7 @@ class Simba_Two_Factor_Authentication {
 		register_setting('tfa_user_roles_required_group', 'tfa_requireafter');
 		register_setting('tfa_user_roles_required_group', 'tfa_hide_turn_off');
 		register_setting('tfa_user_roles_trusted_group', 'tfa_trusted_for');
+		register_setting('simba_tfa_woocommerce_group', 'tfa_wc_add_section');
 		register_setting('simba_tfa_default_hmac_group', 'tfa_default_hmac');
 		register_setting('tfa_xmlrpc_status_group', 'tfa_xmlrpc_on');
 	}
@@ -470,16 +479,17 @@ class Simba_Two_Factor_Authentication {
 	/**
 	 * Paint a list of checkboxes, one for each role
 	 *
-	 * @param String $prefix
+	 * @param String  $prefix
+	 * @param Integer $default - default value (0 or 1)
 	 */
-	public function list_user_roles_checkboxes($prefix = '') {
+	public function list_user_roles_checkboxes($prefix = '', $default = 1) {
 
 		if (is_multisite()) {
 			// Not a real WP role; needs separate handling
 			$id = '_super_admin';
 			$name = __('Multisite Super Admin', 'two-factor-authentication');
 			$setting = $this->get_option('tfa_'.$prefix.$id);
-			$setting = $setting === false || $setting ? 1 : 0;
+			$setting = ($setting === false) ? $default : ($setting ? 1 : 0);
 			
 			echo '<input type="checkbox" id="tfa_'.$prefix.$id.'" name="tfa_'.$prefix.$id.'" value="1" '.($setting ? 'checked="checked"' :'').'> <label for="tfa_'.$prefix.$id.'">'.htmlspecialchars($name)."</label><br>\n";
 		}
@@ -487,9 +497,9 @@ class Simba_Two_Factor_Authentication {
 		global $wp_roles;
 		if (!isset($wp_roles)) $wp_roles = new WP_Roles();
 		
-		foreach($wp_roles->role_names as $id => $name) {
+		foreach ($wp_roles->role_names as $id => $name) {
 			$setting = $this->get_option('tfa_'.$prefix.$id);
-			$setting = $setting === false || $setting ? 1 : 0;
+			$setting = ($setting === false) ? $default : ($setting ? 1 : 0);
 			
 			echo '<input type="checkbox" id="tfa_'.$prefix.$id.'" name="tfa_'.$prefix.$id.'" value="1" '.($setting ? 'checked="checked"' :'').'> <label for="tfa_'.$prefix.$id.'">'.htmlspecialchars($name)."</label><br>\n";
 		}
@@ -924,17 +934,16 @@ class Simba_Two_Factor_Authentication {
 			
 
 				<div style="min-height: 100px;">
-				<h3 class="normal" style="cursor: default"><?php _e('Emergency codes', 'two-factor-authentication'); ?></h3>
-
-					
-						<?php
+					<h3 class="normal" style="cursor: default"><?php _e('Emergency codes', 'two-factor-authentication'); ?></h3>
+					<?php
 							$default_text = '<a href="https://www.simbahosting.co.uk/s3/product/two-factor-authentication/">'.__('One-time emergency codes are a feature of the Premium version of this plugin.', 'two-factor-authentication').'</a>';
 							echo apply_filters('simba_tfa_emergency_codes_user_settings', $default_text, $user_id);
 						?>
 				</div>
-			</div>
 
 			<?php } ?>
+			
+			</div>
 
 		</div>
 		<?php
@@ -956,7 +965,7 @@ class Simba_Two_Factor_Authentication {
 		$algorithm_type = $tfa->getUserAlgorithm($current_user->ID);
 
 		?>
-		<h2 style="clear:both;"><?php _e('Advanced settings', 'two-factor-authentication'); ?></h2>
+		<h2 id="tfa_advanced_heading" style="clear:both;"><?php _e('Advanced settings', 'two-factor-authentication'); ?></h2>
 
 		<div id="tfa_advanced_box" class="tfa_settings_form" style="margin-top: 20px;">
 
@@ -1024,7 +1033,10 @@ class Simba_Two_Factor_Authentication {
 		$already_done = true;
 	}
 
-	public function tfaShowHOTPOffSyncMessage() {
+	/**
+	 * See if HOTP is off sync, and if show, print out a message
+	 */
+	public function tfa_show_hotp_off_sync_message() {
 		global $current_user;
 		$is_off_sync = get_user_meta($current_user->ID, 'tfa_hotp_off_sync', true);
 		if(!$is_off_sync)

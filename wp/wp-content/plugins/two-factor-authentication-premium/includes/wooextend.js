@@ -42,7 +42,8 @@ jQuery(document).ready(function($) {
 		tfa_field.name = 'two_factor_code';
 		tfa_field.className = 'input-text';
 		tfa_field.autocomplete = 'off';
-// 		tfa_field.style = 'margin-left: 10px; padding-left: 10px;';
+		tfa_field['data-lpignore'] = 'true';
+		// 		tfa_field.style = 'margin-left: 10px; padding-left: 10px;';
 // 		lbl.appendChild(tfa_field);
 		
 		//Remove button
@@ -154,6 +155,9 @@ jQuery(document).ready(function($) {
 		user_already_trusted = ('undefined' == typeof user_already_trusted) ? false : user_already_trusted;
 		$(tfa_wc_user_field).parent().hide();
 		$(tfa_wc_pass_field).parent().hide();
+		// Somewhere around WC 3.8 or 3.9 an extra <span> came in, so that the former parent became the grandparent
+		$(tfa_wc_pass_field).parent().parent('p.woocommerce-form-row').hide();
+		$('#rememberme').parent('label').hide();
 		if (user_can_trust && ('https:' == window.location.protocol || 'localhost' === location.hostname || '127.0.0.1' === location.hostname)) {
 			$(simba_tfa_mark_as_trusted).show();
 			$(simba_tfa_mark_as_trusted_label).show();
