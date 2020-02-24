@@ -138,11 +138,17 @@ add_filter('get_edit_post_link', 'disable_gutenberg_get_edit_post_link');
 
 function disable_gutenberg_redirect_post_location($location) {
 	
-	if (!isset($_REQUEST['classic-editor']) && !disable_gutenberg()) return $location;
-	
 	if (isset($_REQUEST['classic-editor']) || (isset($_POST['_wp_http_referer']) && strpos($_POST['_wp_http_referer'], '&classic-editor') !== false)) {
 		
-		$location = add_query_arg('classic-editor', '', $location);
+		if (disable_gutenberg()) {
+			
+			$location = add_query_arg('classic-editor', '', $location);
+			
+		} else {
+			
+			$location = remove_query_arg('classic-editor', $location);
+			
+		}
 		
 	}
 	

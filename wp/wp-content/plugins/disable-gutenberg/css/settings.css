@@ -1,10 +1,11 @@
 /* Plugin Settings */
 
 .wp-admin .disable-gutenberg-version { display: inline-block; margin-left: 3px; color: #c7c7c7; font-size: 80%; text-shadow: 1px 1px 1px rgba(255,255,255,0.5); }
-.wp-admin form h2 { margin-top: 30px; }
-.wp-admin label { display: block; margin: 3px 0 0 0; color: #777; font-size: 90%; font-style: italic; }
-.wp-admin .inline-block { display: inline-block; }
-.wp-admin abbr[title] { cursor: help !important; border-bottom: 1px dotted #dfdfdf !important; text-decoration: none !important; }
+.wp-admin form h2 { margin-top: 25px; }
+
+.wp-admin label { display: block; margin: 3px 0 0 3px; color: #777; font-size: 13px; font-style: italic; }
+.wp-admin .inline-block { display: inline-block; margin: 0; }
+.wp-admin input[type=checkbox] { margin-top: -1px; }
 
 .ui-dialog .ui-dialog-buttonpane, .ui-dialog .ui-dialog-titlebar, .ui-dialog .plugin-modal-dialog { text-align: center; }
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: none; }

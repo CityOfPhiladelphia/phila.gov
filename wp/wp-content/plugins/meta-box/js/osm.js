@@ -1,4 +1,4 @@
-( function( $, L, i18n ) {
+( function( $, L, rwmb, i18n ) {
 	'use strict';
 
 	// Use function construction to store map & DOM elements separately for each instance
@@ -44,7 +44,6 @@
 				center: latLng,
 				zoom: 14
 			} );
-
 
 			L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -105,18 +104,14 @@
 				that.updateCoordinate( that.marker.getLatLng() );
 			} );
 
-			/**
-			 * Add a custom event that allows other scripts to refresh the maps when needed
-			 * For example: when maps is in tabs or hidden div (this is known issue of Google Maps)
-			 *
-			 * @see https://developers.google.com/maps/documentation/javascript/reference ('resize' Event)
-			 */
-			$( window ).on( 'rwmb_map_refresh', that.refresh );
+			// Custom event to refresh maps when in hidden divs.
+			var refresh = that.refresh.bind( this );
+			$( window ).on( 'rwmb_map_refresh', refresh );
 
 			// Refresh on meta box hide and show
-			$( document ).on( 'postbox-toggled', that.refresh );
+			rwmb.$document.on( 'postbox-toggled', refresh );
 			// Refresh on sorting meta boxes
-			$( '.meta-box-sortables' ).on( 'sortstop', that.refresh );
+			$( '.meta-box-sortables' ).on( 'sortstop', refresh );
 		},
 
 		refresh: function () {
@@ -181,7 +176,7 @@
 		// Update coordinate to input field
 		updateCoordinate: function ( latLng ) {
 			var zoom = this.map.getZoom();
-			this.$coordinate.val( latLng.lat + ',' + latLng.lng + ',' + zoom );
+			this.$coordinate.val( latLng.lat + ',' + latLng.lng + ',' + zoom ).trigger( 'change' );
 		},
 
 		// Find coordinates by address
@@ -260,23 +255,27 @@
 		}
 	};
 
-	function update() {
-		$( '.rwmb-osm-field' ).each( function () {
-			var $this = $( this ),
-				controller = $this.data( 'osmController' );
-			if ( controller ) {
-				return;
-			}
+	function createController() {
+		var $this = $( this ),
+			controller = $this.data( 'osmController' );
+		if ( controller ) {
+			return;
+		}
 
-			controller = new OsmField( $this );
-			controller.init();
-			$this.data( 'osmController', controller );
-		} );
+		controller = new OsmField( $this );
+		controller.init();
+		$this.data( 'osmController', controller );
 	}
 
-	$( function () {
-		update();
-		$( '.rwmb-input' ).on( 'clone', update );
-	} );
+	function init( e ) {
+		$( e.target ).find( '.rwmb-osm-field' ).each( createController );
+	}
 
-} )( jQuery, L, RWMB_Osm );
+	function restart() {
+		$( '.rwmb-osm-field' ).each( createController );
+	}
+
+	rwmb.$document
+		.on( 'mb_ready', init )
+		.on( 'clone', '.rwmb-input', restart );
+} )( jQuery, L, rwmb, RWMB_Osm );
