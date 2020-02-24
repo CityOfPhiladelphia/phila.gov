@@ -6,7 +6,7 @@ source /home/ubuntu/.ssh/environment
 
 _dir="$(dirname "$0")"
 plugins="two-factor-authentication-premium.1.6.2.zip
-mb-admin-columns-1.4.2.zip
+mb-admin-columns-1.4.3.zip
 mb-revision-1.3.3.zip
 mb-settings-page-2.1.0.zip
 mb-term-meta-1.2.9.zip
