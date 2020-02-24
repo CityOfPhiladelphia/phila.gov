@@ -26,9 +26,11 @@ class Simba_Two_Factor_Authentication_Premium {
 		add_action('wp_ajax_simbatfa_user_activation', array($this, 'wp_ajax_simbatfa_user_activation'));
 		add_action('wp_ajax_simbatfa_user_privkey_reset', array($this, 'wp_ajax_simbatfa_user_privkey_reset'));
 		add_filter('simba_tfa_after_user_roles', array($this, 'simba_tfa_after_user_roles'));
+		add_filter('simba_tfa_settings_woocommerce', array($this, 'simba_tfa_settings_woocommerce'));
 		add_filter('simba_tfa_tfa_from_password', array($this, 'simba_tfa_tfa_from_password'), 10, 2);
 		add_action('simba_tfa_user_settings_after_advanced_settings', array($this, 'user_settings_after_advanced_settings'));
 		add_action('simba_tfa_untrust_device', array($this, 'simba_tfa_untrust_device'));
+		add_action('woocommerce_after_edit_account_form', array($this, 'woocommerce_after_edit_account_form'));
 		add_action('all_admin_notices', array($this, 'all_admin_notices'));
 		add_action('admin_scripts', array($this, 'admin_scripts'), 11);
 		add_action('plugins_loaded', array($this, 'plugins_loaded'));
@@ -44,8 +46,28 @@ class Simba_Two_Factor_Authentication_Premium {
 		add_shortcode('twofactor_conditional', array($this, 'shortcode_twofactor_conditional'));
 	}
 
+	/**
+	 * Get the saved setting for whether a particular user level can be trusted
+	 *
+	 * @param Boolean $can_trust - the result
+	 * @param Integer $user_id	 - WordPress user ID
+	 * @param Object  $tfa		 - TFA object
+	 */
 	public function simba_tfa_user_can_trust($can_trust, $user_id, $tfa) {
 		return $tfa->user_property_active($user_id, 'trusted_');
+	}
+	
+	/**
+	 * Runs upon the WP action woocommerce_after_edit_account_form
+	 */
+	public function woocommerce_after_edit_account_form() {
+	
+		global $simba_two_factor_authentication;
+		$wc_add_section = $simba_two_factor_authentication->get_option('tfa_wc_add_section');
+			if ($wc_add_section) {
+		
+			echo apply_filters('simba_tfa_woocommerce_after_edit_account_form', '<div id="simba_tfa_woocommerce_user_settings"><h2>'.__('Two factor settings', 'two-factor-authentication').'</h2>'.do_shortcode('[twofactor_user_settings]').'</div>');
+		}
 	}
 	
 	/**
@@ -149,7 +171,7 @@ class Simba_Two_Factor_Authentication_Premium {
 		ob_start();
 		echo '<p>';
 		global $simba_two_factor_authentication;
-		$simba_two_factor_authentication->list_user_roles_checkboxes('trusted_');
+		$simba_two_factor_authentication->list_user_roles_checkboxes('trusted_', 0);
 		
 		$trusted_for = $simba_two_factor_authentication->get_option('tfa_trusted_for');
 		$trusted_for = (false === $trusted_for) ? 30 : (string) absint($trusted_for);
@@ -174,10 +196,43 @@ class Simba_Two_Factor_Authentication_Premium {
 		return 'https://www.simbahosting.co.uk/s3/support/tickets/';
 	}
 
+	/**
+	 * Runs upon the WP action plugins_loaded
+	 */
 	public function plugins_loaded() {
 		global $simba_two_factor_authentication;
 		// WP-Members support
 		add_action('login_form', array($simba_two_factor_authentication, 'login_enqueue_scripts'));
+	}
+	
+	/**
+	 * Runs upon the WP filter simba_tfa_settings_woocommerce
+	 *
+	 * @return String - filtered value
+	 */
+	public function simba_tfa_settings_woocommerce() {
+	
+		if (!function_exists('WC')) return;
+		global $simba_two_factor_authentication;
+		$wc_add_section = $simba_two_factor_authentication->get_option('tfa_wc_add_section');
+		ob_start();
+		?>
+		
+			<form method="post" action="options.php" style="margin-top: 12px">
+				<?php settings_fields('simba_tfa_woocommerce_group'); ?>
+				<?php _e('Choose whether you want two-factor authentication settings to appear in the WooCommerce account area.', 'two-factor-authentication'); ?>
+				<p>
+					<?php
+					
+						echo '<input type="checkbox" id="tfa_wc_add_section" name="tfa_wc_add_section" value="1" '.($wc_add_section ? 'checked="checked"' :'').'> <label for="tfa_wc_add_section">'.htmlspecialchars(__('Add two-factor settings to the WooCommerce "My Account" area', 'two-factor-authentication'))."</label><br>\n";
+						
+					?>
+				</p>
+				<?php submit_button(); ?>
+			</form>
+		<?php
+	
+		return ob_get_clean();
 	}
 	
 	public function simba_tfa_after_user_roles($default) {

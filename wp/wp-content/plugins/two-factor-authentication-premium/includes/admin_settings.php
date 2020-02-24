@@ -137,6 +137,19 @@ $tfa->setUserHMACTypes();
 		<?php submit_button(); ?>
 	</form>
 	<hr>
+	
+	<?php
+	if (function_exists('WC')) {
+		
+		?>
+		<br><br>
+		<h2><?php _e("WooCommerce integration", 'two-factor-authentication'); ?></h2>
+		<p>
+			<?php echo apply_filters('simba_tfa_settings_woocommerce', '<a href="https://www.simbahosting.co.uk/s3/product/two-factor-authentication/">'.__('The Premium version of this plugin allows you to add a configuration tab for users in the WooCommerce "My account" area.', 'two-factor-authentication').'</a>'); ?>
+		</p>
+		<hr>
+	<?php } ?>
+	
 	<br><br>
 	<h2><?php _e("Users' settings", 'two-factor-authentication'); ?></h2>
 	<p>
@@ -156,9 +169,8 @@ $tfa->setUserHMACTypes();
 		
 		// Disabled
 		if (1==0) {
-		//List users and type of tfa
-		foreach($wp_roles->role_names as $id => $name)
-		{	
+		// List users and type of tfa
+		foreach ($wp_roles->role_names as $id => $name) {
 			$setting = $simba_two_factor_authentication->get_option('tfa_'.$id);
 			$setting = $setting === false || $setting ? 1 : 0;
 			if(!$setting)
@@ -210,7 +222,7 @@ $tfa->setUserHMACTypes();
 
 	<h2><?php _e('Translations', 'two-factor-authentication'); ?></h2>
 	<p>
-		<?php _e("If you translate this plugin, please send the translations .po-file to us so we can include it in future releases - paste a link in the plugin's support forum.", 'two-factor-authentication'); ?>
+		<?php echo sprintf(__("If you want to translate this plugin, please go to %s.", 'two-factor-authentication'), '<a href="https://translate.wordpress.org/projects/wp-plugins/two-factor-authentication/">'.__('the wordpress.org translation website.', 'two-factor-authentication').'</a>').' '.__("Don't send us the translation file directly - plugin authors do not have access to the wordpress.org translation system (local language teams do).", 'two-factor-authentication'); ?>
 		<br>
 	</p>
 
