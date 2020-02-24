@@ -9,9 +9,9 @@
 	Donate link: https://monzillamedia.com/donate.html
 	Contributors: specialk
 	Requires at least: 4.9
-	Tested up to: 5.2
-	Stable tag: 1.8.1
-	Version: 1.8.1
+	Tested up to: 5.3
+	Stable tag: 2.0
+	Version: 2.0
 	Requires PHP: 5.6.20
 	Text Domain: disable-gutenberg
 	Domain Path: /languages
@@ -69,7 +69,7 @@ if (!class_exists('DisableGutenberg')) {
 		
 		function constants() {
 			
-			if (!defined('DISABLE_GUTENBERG_VERSION')) define('DISABLE_GUTENBERG_VERSION', '1.8.1');
+			if (!defined('DISABLE_GUTENBERG_VERSION')) define('DISABLE_GUTENBERG_VERSION', '2.0');
 			if (!defined('DISABLE_GUTENBERG_REQUIRE')) define('DISABLE_GUTENBERG_REQUIRE', '4.9');
 			if (!defined('DISABLE_GUTENBERG_AUTHOR'))  define('DISABLE_GUTENBERG_AUTHOR',  'Jeff Starr');
 			if (!defined('DISABLE_GUTENBERG_NAME'))    define('DISABLE_GUTENBERG_NAME',    __('Disable Gutenberg', 'disable-gutenberg'));
@@ -85,6 +85,7 @@ if (!class_exists('DisableGutenberg')) {
 			
 			require_once DISABLE_GUTENBERG_DIR .'inc/classic-editor.php';
 			require_once DISABLE_GUTENBERG_DIR .'inc/plugin-core.php';
+			require_once DISABLE_GUTENBERG_DIR .'inc/plugin-frontend.php';
 			
 			if (is_admin()) {
 				
@@ -98,10 +99,6 @@ if (!class_exists('DisableGutenberg')) {
 					require_once DISABLE_GUTENBERG_DIR .'inc/plugin-features.php';
 					
 				}
-				
-			} else {
-				
-				require_once DISABLE_GUTENBERG_DIR .'inc/plugin-frontend.php';
 				
 			}
 			
