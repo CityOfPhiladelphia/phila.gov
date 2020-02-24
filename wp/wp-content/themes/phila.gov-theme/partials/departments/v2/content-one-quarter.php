@@ -7,43 +7,53 @@
 ?>
 <?php
   $faq_group = rwmb_meta( 'accordion_row' );
+  $faq_search = rwmb_meta('accordion_search');
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
 ?>
 
-<?php if ( !empty( $faq_group ) ): ?>
-  <?php foreach ($faq_group as $faq_key => $faq): ?>
-  <?php reset($faq_group);?>
-<!--1/4 Content-->
-  <section>
-  <div class="one-quarter-layout">
-    <div class="row one-quarter-row mvl">
-      <div class="medium-6 columns">
-        <h3 id="<?php echo sanitize_title_with_dashes($faq['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $faq['accordion_row_title'] ?></h3>
-    </div>
+<?php if ( !empty( $faq_search ) ): ?>
+  <div class="row">
+    <div class="small-24 columns results mbm">
+      <div id="a-z-filter-list" class="faq-list">
+      <form class="search mvl">
+        <input class="search-field" type="text" placeholder="Begin typing to filter results...">
+        <input type="submit" class="search-submit" value="Search">
+      </form>
+  <?php endif;?>
+  <?php if ( !empty( $faq_group ) ): ?>
+    <div id="a-z-list">
+      <?php foreach ($faq_group as $faq_key => $faq): ?>
+      <?php reset($faq_group);?>
+      <!--1/4 Content-->
+      <section class="a-z-group">
+        <div class="one-quarter-layout">
+          <div class="row one-quarter-row mvl">
+            <div class="medium-6 columns item">
+              <h3 id="<?php echo sanitize_title_with_dashes($faq['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $faq['accordion_row_title'] ?></h3>
+          </div>
+          <?php
+            $accordion_title = '';
+            $accordion_group = $faq['accordion_group'];
+            $is_full_width = false;
+            $use_icon = false; ?>
+            <div class="medium-18 columns pbxl mvl phm-mu list">
+              <?php include(locate_template('partials/global/accordion.php')); ?>
+            </div>
+          <?php end( $faq_group ) ; ?>
+          <?php if ($faq_key != key($faq_group) ) :?>
+            <hr class="icon-expand-hr">
+          <?php endif ?>
+          </div>
+        </section>
 
-    <?php
-      $accordion_title = '';
-      $accordion_group = $faq['accordion_group'];
-      $is_full_width = false;
-      $use_icon = false; ?>
-      <div class="medium-18 columns pbxl">
-        <?php include(locate_template('partials/global/accordion.php')); ?>
-      </div>
-    <?php end( $faq_group ) ; ?>
-    <?php if ($faq_key != key($faq_group) ) :?>
-      <hr class="icon-expand-hr">
-    <?php endif ?>
+    <?php endforeach; ?>
     </div>
-    </section>
-
-  <?php endforeach; ?>
+  <?php endif; ?>
+  <div class="not-found h3" style="display:none">No results found for that search.</div>
+<?php if ( !empty( $faq_search ) ): ?>
+  </div>
 <?php endif; ?>
-
-<?php if ( !empty( $faq_group ) ): ?>
-  <hr class="margin-auto"/>
-<?php endif ?>
-
 
 <?php if ( !empty($heading_content) ) : ?>
   <?php $last_key = phila_util_is_last_in_array( (array) $heading_content ); ?>

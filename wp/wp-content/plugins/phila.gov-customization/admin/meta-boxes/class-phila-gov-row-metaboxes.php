@@ -90,19 +90,19 @@ class Phila_Gov_Row_Metaboxes {
           'relation' => 'or',
         ),
         'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_call_to_action_multi(),
-     ),
-     array(
+      ),
+      array(
       'id' => 'phila_full_width_cta',
       'type' => 'group',
       'visible' => array('phila_full_options_select', '=', 'phila_full_cta'),
       'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
-     ),
-     array(
+      ),
+      array(
       'id'   => 'phila_list_items',
       'type' => 'group',
       'visible' => array('phila_full_options_select', '=', 'phila_list_items'),
       'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_list_items(),
-     ),
+      ),
       array(
         'id'       => 'phila_image_list',
         'type'     => 'group',
@@ -167,6 +167,54 @@ class Phila_Gov_Row_Metaboxes {
         'type'    => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_registration'),
         'fields'  => Phila_Gov_Standard_Metaboxes::phila_meta_registration(),
+      ),
+      array(
+        'id'       => 'phila_staff_directory_listing',
+        'title'    => 'Staff Directory Listing',
+        'context'  => 'normal',
+        'priority' => 'default',
+        'type'    => 'group',
+    
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_options_select', '=', 'phila_staff_table'),
+          ),
+        ),
+    
+        'fields' => array(
+          array(
+            'id'   => 'phila_staff_directory_selected',
+            'name'  => 'Display a staff directory list?',
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+            'after' => '<p class="description">Enter at least one staff member in the <a href="/wp-admin/edit.php?post_type=staff_directory">Staff Members</a> section.</p>',
+          ),
+          array(
+            'id'  => 'phila_get_staff_cats',
+            'type' => 'group',
+            'visible' => array(
+              'when' => array(
+                array( 'phila_staff_directory_selected', '=', 1 ),
+              ),
+            ),
+            'fields' => array(
+              Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_staff_category', 'Display staff members from these owners. This will override page ownership selection entirely.' ),
+            ),
+          ),
+          array(
+            'id'  => 'hide_units',
+            'class' => 'hide-on-load',
+            'name'  => 'Hide staff assigned to units?',
+            'desc'  => 'By selecting this option, staff assigned to a unit will not appear on this department homepage.',
+            'type' => 'switch',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+            'visible' => array(
+              'phila_template_select', 'in', ['homepage_v2']
+            )
+          ),
+        ),
       ),
       array(
         'id' => 'phila_heading_groups',
@@ -245,6 +293,26 @@ class Phila_Gov_Row_Metaboxes {
           ),
           Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
         ),
+      ),
+      // array(
+      //   'id' => 'phila_vue_template',
+      //   'type'  => 'group',
+      //   'name'  => 'Vue template',
+      //   'clone' => false,
+      //   'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
+      //   'fields'  =>  Phila_Vue_App_Files::phila_vue_metaboxes()
+      // ),
+      array (
+        'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
+        'id'  => 'vue_app_title',
+        'name'  => 'Optional title',
+        'type'=> 'text'
+      ),
+      array(
+        'id' => 'phila_vue_template',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
+        'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
       )
     ),
   );
@@ -262,75 +330,75 @@ class Phila_Gov_Row_Metaboxes {
       'id' => 'phila_two_thirds_col',
       'type' => 'group',
       'fields' => array(
-         array(
-           'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
-           'id'   => 'phila_two_thirds_col_option',
-           'desc'  => 'Choose to display recent blog posts or custom markup text.',
-           'type' => 'select',
-           'placeholder' => 'Select...',
-           'options' => array(
-             'phila_custom_text' => 'Custom Text',
-             'phila_custom_text_multi' => 'Custom Text (multi)',
-             ),
-         ),
-         array(
-           'id'   => 'phila_custom_text',
-           'type' => 'group',
-           'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
-           'revision' => true,
-           'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-         ),
-         array(
-           'id'   => 'phila_custom_text_multi',
-           'type' => 'group',
-           'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
-           'revision'  => true,
-           'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea_multi(),
-         ),
-       ),
-     );
-   }
+          array(
+            'name' => 'Column 1 <br/><small>(2/3 width column)</small>',
+            'id'   => 'phila_two_thirds_col_option',
+            'desc'  => 'Choose to display recent blog posts or custom markup text.',
+            'type' => 'select',
+            'placeholder' => 'Select...',
+            'options' => array(
+              'phila_custom_text' => 'Custom Text',
+              'phila_custom_text_multi' => 'Custom Text (multi)',
+              ),
+          ),
+          array(
+            'id'   => 'phila_custom_text',
+            'type' => 'group',
+            'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text'),
+            'revision' => true,
+            'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
+          ),
+          array(
+            'id'   => 'phila_custom_text_multi',
+            'type' => 'group',
+            'visible' => array('phila_two_thirds_col_option', '=', 'phila_custom_text_multi'),
+            'revision'  => true,
+            'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_textarea_multi(),
+          ),
+        ),
+      );
+    }
 
    // 2/3 x 1/3: Column 2 Options
-   public static function phila_metabox_thirds_option_two( ){
+    public static function phila_metabox_thirds_option_two( ){
 
     return array(
       'id' => 'phila_one_third_col',
       'type' => 'group',
       'fields' => array(
-         array(
-         'name' => 'Column 2 <br/><small>(1/3 width column)</small>',
-         'id'   => 'phila_one_third_col_option',
-         'desc'  => 'Choose to display recent blog posts or custom markup text.',
-         'type' => 'select',
-         'placeholder' => 'Select...',
-         'options' => array(
-           'phila_connect_panel' => 'Connect Panel',
-           'phila_custom_feature' => 'Custom Feature Panel',
-           'phila_custom_text' => 'Custom Text',
-           ),
-         ),
-         array(
-           'id' => 'phila_connect_panel',
-           'type' => 'group',
-           'hidden' => array('phila_one_third_col_option', '!=', 'phila_connect_panel'),
-           'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect(),
-         ),
-         array(
-           'id'   => 'phila_custom_text',
-           'type' => 'group',
-           'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
-           'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-         ),
-         array(
-           'id'   => 'phila_custom_feature',
-           'type' => 'group',
-           'visible' => array('phila_one_third_col_option', '=', 'phila_custom_feature'),
-           'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_custom_feature(),
-         ),
-       ),
-     );
-   }
+          array(
+          'name' => 'Column 2 <br/><small>(1/3 width column)</small>',
+          'id'   => 'phila_one_third_col_option',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
+          'type' => 'select',
+          'placeholder' => 'Select...',
+          'options' => array(
+            'phila_connect_panel' => 'Connect Panel',
+            'phila_custom_feature' => 'Custom Feature Panel',
+            'phila_custom_text' => 'Custom Text',
+            ),
+          ),
+          array(
+            'id' => 'phila_connect_panel',
+            'type' => 'group',
+            'hidden' => array('phila_one_third_col_option', '!=', 'phila_connect_panel'),
+            'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_connect(),
+          ),
+          array(
+            'id'   => 'phila_custom_text',
+            'type' => 'group',
+            'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
+            'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
+          ),
+          array(
+            'id'   => 'phila_custom_feature',
+            'type' => 'group',
+            'visible' => array('phila_one_third_col_option', '=', 'phila_custom_feature'),
+            'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_custom_feature(),
+          ),
+        ),
+      );
+    }
 
    // 1/2 x 1/2: Column 1 Options
   public static function phila_metabox_half_option_one( ){
@@ -338,38 +406,38 @@ class Phila_Gov_Row_Metaboxes {
     'id' => 'phila_half_col_1',
     'type' => 'group',
     'fields' => array(
-       array(
-         'name' => 'Column 1 <br/><small>(1/2 width column)</small>',
-         'id'   => 'phila_half_col_1_option',
-         'desc'  => 'Choose to display recent blog posts or custom markup text.',
-         'type' => 'select',
-         'placeholder' => 'Select...',
-         'options' => array(
-           'phila_custom_text' => 'Custom Text',
-           'phila_pullquote' => 'Pullquote',
-           ),
-       ),
-       array(
-         'id'   => 'phila_custom_text',
-         'type' => 'group',
-         'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
-         'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-       ),
-       array(
-         'id'   => 'phila_pullquote',
-         'type' => 'group',
-         'visible' => array('phila_half_col_1_option', '=', 'phila_pullquote'),
-         'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_pullquote(),
-       ),
-     ),
-   );
+        array(
+          'name' => 'Column 1 <br/><small>(1/2 width column)</small>',
+          'id'   => 'phila_half_col_1_option',
+          'desc'  => 'Choose to display recent blog posts or custom markup text.',
+          'type' => 'select',
+          'placeholder' => 'Select...',
+          'options' => array(
+            'phila_custom_text' => 'Custom Text',
+            'phila_pullquote' => 'Pullquote',
+            ),
+        ),
+        array(
+          'id'   => 'phila_custom_text',
+          'type' => 'group',
+          'visible' => array('phila_half_col_1_option', '=', 'phila_custom_text'),
+          'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
+        ),
+        array(
+          'id'   => 'phila_pullquote',
+          'type' => 'group',
+          'visible' => array('phila_half_col_1_option', '=', 'phila_pullquote'),
+          'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_pullquote(),
+        ),
+      ),
+    );
   }
    // 1/2 x 1/2: Column 1 Options
-   public static function phila_metabox_half_option_two( ){
+    public static function phila_metabox_half_option_two( ){
     return array(
-     'id' => 'phila_half_col_2',
-     'type' => 'group',
-     'fields' => array(
+      'id' => 'phila_half_col_2',
+      'type' => 'group',
+      'fields' => array(
         array(
           'name' => 'Column 2 <br/><small>(1/2 width column)</small>',
           'id'   => 'phila_half_col_2_option',

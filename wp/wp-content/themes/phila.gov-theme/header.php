@@ -81,7 +81,7 @@
             <div class="row sticky-header-width">
               <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
-                  <a href="<?php echo get_home_url(); ?>" class="logo" tabindex="1" aria-label="City of Philadelphia">
+                  <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
                     <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
                   </a>
                 </div>
@@ -89,10 +89,10 @@
               <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
               <div class="medium-17 columns show-for-medium desktop-nav">
                 <div class="top-bar-right valign-mu">
-                  <nav data-swiftype-index="false" class="valign-mu">
+                  <nav data-swiftype-index="false" class="phila-global-nav-menu valign-mu" aria-label="main-nav">
                     <ul class="horizontal menu pan valign-mu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link valign-cell" data-link="/services/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
                       <li>
                         <a href="/programs-initiatives/#/" class="valign-cell">Programs &amp; initiatives</a>
@@ -109,9 +109,10 @@
             </div>
             <div class="small-5 medium-1 columns valign phn-m">
               <div class="valign-cell">
-                <button class="site-search" type="button"  data-toggle="search-dropdown">
+                <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
                   <i class="fas fa-search fa-2x" aria-hidden="true"></i>
                   <span class="show-for-small-only">Search</span>
+                  <span class="accessible" for="site-search-button">Search</span>
                 </button>
               </div>
             </div>
@@ -126,13 +127,13 @@
             </div>
             <div class="primary-menu medium-15 medium-push-2 small-24 columns valign-mu" id="mobile-nav">
               <div class="top-bar-right valign-mu show-for-small-only">
-              <nav data-swiftype-index="false" class="valign-mu">
+              <nav data-swiftype-index="false" class="phila-mobile-nav-menu valign-mu" aria-label="mobile-nav">
                 <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
                   <li><a href="/"><i class="fas fa-home fa-lg"></i> Home</a></li>
                   <li class="is-drilldown-submenu-parent" tabindex="0">
-                    <a href="#services" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
+                    <a href="#service-directory" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
                     <ul class="menu vertical menu-top-offset" tabindex="0">
-                      <li tabindex="0"><a href="/services/"> Service directory</a></li>
+                      <li tabindex="0"><a href="/service-directory/"> Service directory</a></li>
                       <?php
                         $args = array(
                           //TODO: only display pages with taxonomy applied

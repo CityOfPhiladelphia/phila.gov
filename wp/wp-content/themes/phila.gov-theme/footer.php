@@ -34,7 +34,7 @@
         <div class="small-24 medium-8 columns pll prxl pvm ptn-mu pbl-mu pbl-mu sidewalk bdr-right-mu interact-311 clearfix equal">
           <section>
             <h3 class="h4 dark-gray">Interact with 311 online</h3>
-            <a href="http://iframe.publicstuff.com/#?client_id=242" class="button icon full-width clearfix">
+            <a href="https://iframe.publicstuff.com/#?client_id=242" class="button icon full-width clearfix">
               <div class="valign">
                 <div class="button-label valign-cell">Report a problem</div>
               </div>
@@ -115,6 +115,7 @@
             <li class="pvxs"><a href="https://www.phila.gov/integrityworks/pages/default.aspx">Honesty in government</a></li>
             <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">Voting & elections</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/open-data-program/">Open data</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/documents/city-of-philadelphia-organization-chart/">City organization chart</a></li>
           </ul>
         </nav>
       </section>
@@ -180,7 +181,7 @@
         <nav>
           <ul>
             <li class="pvxs"><a href="https://www.phila.gov/departments/">City government directory</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/services/">Service directory</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/service-directory/">Service directory</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs-initiatives/#/">Programs & initiatives </a></li>
             <li class="pvxs"><a href="https://www.phila.gov/documents/">Publications & forms </a></li>
           </ul>

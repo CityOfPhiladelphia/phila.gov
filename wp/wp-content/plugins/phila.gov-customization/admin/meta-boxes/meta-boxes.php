@@ -807,6 +807,32 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'title' => 'Vuejs app',
+  'pages' => array ( 'service_page' ),
+  'revision' => false,
+  'priority' => 'high',
+
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'vue_app'),
+    ),
+  ),
+  'fields' => array(
+    array (
+      'id'  => 'vue_app_title',
+      'name'  => 'Optional title',
+      'type'=> 'text'
+    ),
+    array(
+      'id' => 'phila_vue_app',
+      'type'  => 'group',
+      'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
+    )
+  ),
+);
+
+
+$meta_boxes[] = array(
   'title' => 'Topic Page Options',
   'pages' => array('service_page'),
   'context' => 'after_title',
@@ -886,6 +912,11 @@ $meta_boxes[] = array(
 
   'fields' => array(
     array(
+      'id'  => 'accordion_search',
+      'type'  => 'checkbox',
+      'name'  => 'Include in-page search on FAQ page?'
+    ),
+    array(
       'id' => 'accordion_row',
       'type' => 'group',
       'clone'  => true,
@@ -894,11 +925,10 @@ $meta_boxes[] = array(
 
       'fields'  => array (
         array(
-          'name' => ('Section title'),
+          'name' => 'Section title',
           'id'   => 'accordion_row_title',
           'type' => 'text',
           'class' => 'percent-90',
-          'tooltip' => 'The h2 in the 1/4 section of the page',
         ),
         array(
           'id'   => 'accordion_group',
@@ -907,7 +937,7 @@ $meta_boxes[] = array(
           'sort_clone' => true,
           'add_button' => '+ Add FAQ',
           'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg($section_name = 'FAQ title', $wysiwyg_desc = 'FAQ content', $columns = 12, $clone = true),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg($section_name = 'FAQ title', $wysiwyg_desc = 'FAQ content', $columns = 12, $clone = true ),
           )
         )
       ),
