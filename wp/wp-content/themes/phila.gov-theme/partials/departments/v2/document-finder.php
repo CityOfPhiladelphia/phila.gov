@@ -49,8 +49,8 @@ $c = -1;
                     if ( empty($document_published) ){
                       $document_published = get_the_date( $d = '', $id );
                     }
-                    $url = get_post_meta($id, 'amazonS3_info');
-                    $full_url = get_site_url() . '/' . $url[0]['key'];
+
+                    $full_url = wp_get_attachment_url( $id );
                     $type = get_the_terms($id, 'media_type');
                     $author = get_the_terms($id, 'media_author');
                     $types = array();
