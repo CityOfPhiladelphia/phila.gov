@@ -105,11 +105,8 @@ class Grouped_Calendars_Admin {
 						<?php
 
             $cals = simcal_get_calendars( $post_id );
-            var_dump($cals);
             $meta = get_post_meta( $post_id, '_grouped_calendars_ids', true );
-            var_dump($meta);
 						$ids  = $meta && is_array( $meta ) ? implode( ',', array_map( 'absint', $meta ) ) : absint( $meta );
-            var_dump($ids);
 						simcal_print_field( array(
 							'type'        => 'select',
 							'multiselect' => 'multiselect',
