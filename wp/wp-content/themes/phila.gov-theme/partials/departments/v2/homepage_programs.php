@@ -22,7 +22,7 @@
           <div class="<?php echo count($cards) == 1  ? '' : 'medium-8'?> columns end mbl">
             <a class="card program-card <?php echo count($cards) == 1  ? 'vertical' : ''?>" href="<?php echo ($template == 'prog_off_site') ? rwmb_meta('prog_off_site_link', '', $card) : get_the_permalink($card); ?>">
               <?php
-              $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $card );
+              $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium' ), $card );
               $img = reset( $img );?>
               <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
               <div class="content-block">
