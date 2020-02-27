@@ -83,7 +83,7 @@ $row_content = rwmb_meta('collection_row');?>
                   <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $post_id =  $program_page); ?>
                   <a href="<?php echo !empty($off_site) ? $off_site : get_the_permalink($post = $program_page); ?>" class="card program-card">
                     <?php
-                    $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium'), $program_page );
+                    $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $program_page );
                     $img = reset( $img );?>
                     <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
                     <div class="content-block">
