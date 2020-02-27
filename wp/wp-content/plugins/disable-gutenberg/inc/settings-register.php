@@ -141,7 +141,7 @@ function disable_gutenberg_settings_section_3() {
 
 function disable_gutenberg_settings_section_4() {
 	
-	echo '<p>'. esc_html__('Select the theme template files for which Gutenberg should be disabled.', 'disable-gutenberg') .'</p>';
+	echo '<p>'. esc_html__('Select the theme template files for which Gutenberg should be disabled (e.g., custom-page.php).', 'disable-gutenberg') .'</p>';
 	
 }
 

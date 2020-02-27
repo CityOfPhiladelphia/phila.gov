@@ -499,7 +499,7 @@ function phila_get_thumbnails(){
 
       $image = wp_get_attachment_image_src($id, $value);
 
-      if ($image[1] == 700 && $image[2] == 400 ) {
+      if ($image[1] >= 700 && $image[2] >= 400 ) {
         $output .= get_the_post_thumbnail( $post=null, 'medium' );
         break;
       }else if ($image[1] == 660 && $image[2] == 430 ) {
@@ -936,8 +936,8 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
         }
       }
     }
-
     wp_reset_postdata();
+
 
     if ( $byline == true ) {
       echo ' by ';

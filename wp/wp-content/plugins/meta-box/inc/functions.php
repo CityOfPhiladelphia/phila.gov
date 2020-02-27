@@ -235,8 +235,20 @@ if ( ! function_exists( 'rwmb_check_meta_box_supports' ) ) {
 				}
 				$prop = 'taxonomies';
 				break;
+			case 'user':
+				$type = 'user';
+				$prop = 'user';
+				break;
+			case 'setting':
+				$type = $type_or_id;
+				$prop = 'settings_pages';
+				break;
 		}
-		if ( ! $type || ! in_array( $type, $meta_box->meta_box[ $prop ], true ) ) {
+		if ( ! $type ) {
+			$meta_box = false;
+			return;
+		}
+		if ( isset( $meta_box->meta_box[ $prop ] ) && ! in_array( $type, $meta_box->meta_box[ $prop ], true ) ) {
 			$meta_box = false;
 		}
 	}
@@ -332,23 +344,17 @@ if ( ! function_exists( 'rwmb_get_storage' ) ) {
 	}
 }
 
-if ( ! function_exists( 'rwmb_get_meta_box' ) ) {
+if ( ! function_exists( 'rwmb_request' ) ) {
 	/**
-	 * Get meta box object from meta box data.
+	 * Get request object.
 	 *
-	 * @param  array $meta_box Array of meta box data.
-	 * @return RW_Meta_Box
+	 * @return RWMB_Request
 	 */
-	function rwmb_get_meta_box( $meta_box ) {
-		/**
-		 * Allow filter meta box class name.
-		 *
-		 * @var string Meta box class name.
-		 * @var array  Meta box data.
-		 */
-		$class_name = apply_filters( 'rwmb_meta_box_class_name', 'RW_Meta_Box', $meta_box );
-
-		return new $class_name( $meta_box );
+	function rwmb_request() {
+		static $request;
+		if ( ! $request ) {
+			$request = new RWMB_Request();
+		}
+		return $request;
 	}
 }
-
