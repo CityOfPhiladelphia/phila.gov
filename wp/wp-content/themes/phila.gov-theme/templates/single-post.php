@@ -67,7 +67,7 @@ $last_updated_text = rwmb_meta('last_updated_text') ;
     </div>
   <?php endif; ?>
   </header>
-  <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') ): ?>
+  <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
     <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
