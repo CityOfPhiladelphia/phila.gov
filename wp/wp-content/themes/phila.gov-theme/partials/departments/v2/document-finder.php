@@ -17,11 +17,13 @@ $c = -1;
           ?>
           <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>
           <div id="sortable-table-<?php echo $c?>" class="search-sort-table">
-            <div class="search">
-              <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
-              <input type="text" class="table-search search-field" placeholder="Filter documents by title, category, or author" />
-              <input type="submit" class="search-submit" />
-            </div>
+            <?php if ( count($table['phila_files']) > 6) : ?>
+              <div class="search">
+                <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
+                <input type="text" class="table-search search-field" placeholder="Filter documents by title, category, or author" />
+                <input type="submit" class="search-submit" />
+              </div>
+            <?php endif; ?>
             <div class="table-wrapper">
 
               <table class="responsive mbxl js-hide-empty">
@@ -89,17 +91,19 @@ $c = -1;
                   <?php endforeach; ?>
               </tbody>
             </table>
-            <div class="not-found h3" style="display:none">No results found for that search.</div>
           </div>
-          <ul class="pagination-wrapper no-js">
-            <li class="prev">
-              <a class="prev-<?php echo $c?>" href="#">Previous</a>
-            </li>
-            <ul class="pagination"></ul>
-            <li class="next">
-              <a class="next-<?php echo $c?>" href="#">Next</a>
-            </li>
-          </ul>
+          <?php if ( count($table['phila_files'] ) > 6) : ?>
+            <ul class="pagination-wrapper no-js">
+              <li class="prev">
+                <a class="prev-<?php echo $c?>" href="#">Previous</a>
+              </li>
+              <ul class="pagination"></ul>
+              <li class="next">
+                <a class="next-<?php echo $c?>" href="#">Next</a>
+              </li>
+            </ul>
+          <?php endif; ?>
+        
 
         </div>
         <?php endif;?>
