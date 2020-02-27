@@ -4,6 +4,8 @@ function disable_gutenberg_wp_enqueue_scripts() {
 	
 	global $wp_query;
 	
+	if (is_admin()) return;
+	
 	$post_id = isset($wp_query->post->ID) ? $wp_query->post->ID : null;
 	
 	$options = get_option('disable_gutenberg_options');

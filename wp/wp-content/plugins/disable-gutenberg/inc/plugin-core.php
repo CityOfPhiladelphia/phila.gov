@@ -212,11 +212,13 @@ function disable_gutenberg_disable_templates() {
 	
 	$excluded = array();
 	
-	$template = '';
-	
 	$disable = false;
 	
+	$template = null;
+	
 	$post_id = isset($_GET['post']) ? intval($_GET['post']) : null;
+	
+	$post_id = (empty($post_id) && isset($_POST['post_ID'])) ? $_POST['post_ID'] : $post_id;
 	
 	if (is_admin() && !empty($post_id)) {
 		
@@ -226,7 +228,15 @@ function disable_gutenberg_disable_templates() {
 		
 		$excluded = array_map('trim', explode(',', $excluded));
 		
-		$template = get_page_template_slug($post_id);
+		if (isset($_POST) && !empty($_POST)) {
+			
+			$template = isset($_POST['page_template']) ? $_POST['page_template'] : null;
+			
+		} else {
+			
+			$template = get_page_template_slug($post_id);
+			
+		}
 		
 	}
 	

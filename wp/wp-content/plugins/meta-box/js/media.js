@@ -1,8 +1,4 @@
-/* global jQuery, _,i18nRwmbMedia */
-
-window.rwmb = window.rwmb || {};
-
-jQuery( function ( $ ) {
+( function ( $, wp, _, rwmb, i18n ) {
 	'use strict';
 
 	var views = rwmb.views = rwmb.views || {},
@@ -143,7 +139,7 @@ jQuery( function ( $ ) {
 			}, 500 ) );
 
 			this.controller.get( 'items' ).on( 'remove', _.debounce( function () {
-				that.$input.val( '' );
+				that.$input.val( '' ).trigger( 'change' );
 			}, 500 ) );
 		},
 
@@ -216,7 +212,10 @@ jQuery( function ( $ ) {
 
 			// Sort items using helper 'clone' to prevent trigger click on the image, which means reselect.
 			this.$el.sortable( {
-				helper : 'clone'
+				helper : 'clone',
+				update: function( event, ui ) {
+					ui.item.find( rwmb.inputSelectors ).first().trigger( 'mb_change' );
+				}
 			} );
 		},
 
@@ -301,13 +300,7 @@ jQuery( function ( $ ) {
 			this._editFrame = new EditMedia( {
 				frame: 'edit-attachments',
 				controller: {
-					// Needed to trick Edit modal to think there is a gridRouter.
-					gridRouter: {
-						navigate: function ( destination ) {
-						},
-						baseUrl: function ( url ) {
-						}
-					}
+					gridRouter: new wp.media.view.MediaFrame.Manage.Router()
 				},
 				library: this.collection,
 				model: item
@@ -389,7 +382,7 @@ jQuery( function ( $ ) {
 			}
 		},
 		render: function () {
-			this.$el.html( this.template( {text: i18nRwmbMedia.add} ) );
+			this.$el.html( this.template( {text: i18n.add} ) );
 			return this;
 		},
 
@@ -424,20 +417,17 @@ jQuery( function ( $ ) {
 		},
 
 		events: {
-			'click .rwmb-image-overlay': function () {
+			'click .rwmb-image-overlay': function ( e ) {
+				e.preventDefault();
 				this.trigger( 'click:switch', this.model );
-				return false;
 			},
-
-			// Event when remove button clicked
-			'click .rwmb-remove-media': function () {
+			'click .rwmb-remove-media': function ( e ) {
+				e.preventDefault();
 				this.trigger( 'click:remove', this.model );
-				return false;
 			},
-
-			'click .rwmb-edit-media': function () {
+			'click .rwmb-edit-media': function ( e ) {
+				e.preventDefault();
 				this.trigger( 'click:edit', this.model );
-				return false;
 			}
 		},
 
@@ -564,20 +554,30 @@ jQuery( function ( $ ) {
 				controller: this,
 				model: this.model
 			} ) );
-		}
+		},
+		resetRoute: function() {}
 	} );
 
-	/**
-	 * Initialize media fields
-	 * @return void
-	 */
 	function initMediaField() {
-		var view = new MediaField( { input: this } );
-		//Remove old then add new
-		$( this ).siblings( 'div.rwmb-media-view' ).remove();
-		$( this ).after( view.el );
+		var $this = $( this ),
+			view = $this.data( 'view' );
+
+		if ( view ) {
+			return;
+		}
+
+		view = new MediaField( { input: this } );
+
+		$this.siblings( '.rwmb-media-view' ).remove();
+		$this.after( view.el );
+		$this.data( 'view', view );
 	}
 
-	$( '.rwmb-file_advanced' ).each( initMediaField );
-	$( document ).on( 'clone', '.rwmb-file_advanced', initMediaField );
-} );
+	function init( e ) {
+		$( e.target ).find( '.rwmb-file_advanced' ).each( initMediaField );
+	}
+
+	rwmb.$document
+		.on( 'mb_ready', init )
+		.on( 'clone', '.rwmb-file_advanced', initMediaField );
+} )( jQuery, wp, _, rwmb, i18nRwmbMedia );
