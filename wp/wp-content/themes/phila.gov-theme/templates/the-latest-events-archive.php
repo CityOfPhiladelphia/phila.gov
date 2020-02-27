@@ -10,7 +10,7 @@ get_header();
 <div class="row">
   <header class="columns">
     <h1 class="contrast">
-       <?php echo get_the_title(); ?>
+        <?php echo get_the_title(); ?>
     </h1>
   </header>
 </div>
@@ -68,10 +68,13 @@ if ( $calendar_q->have_posts() ) {
   foreach ($clean_grouped_cals as $key => $value){
     if ( is_array($value) ) {
       foreach ($value as $id) {
-        $single_cal_id[] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
+        $categories = get_the_category( $id );
+        $category = $categories[0];
+
+        //var_dump($categories);
+        $single_cal_id[$category->term_id] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
       }
       $just_ids[$key] = $single_cal_id;
-
     }
   }
 
@@ -82,6 +85,7 @@ if ( $calendar_q->have_posts() ) {
   }
 
   $final_array_single = array_combine($cal_cat_ids, $cal_ids);
+  //var_dump($final_array_single);
   $final_array = array_replace($final_array_single, $just_ids);
 
   //remove duplicates
