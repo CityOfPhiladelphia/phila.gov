@@ -44,10 +44,10 @@
         $file = wp_prepare_attachment_for_js($document['ID']);
         $file_type = $file['subtype'];
 
-        $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id );
-
+        $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $document['ID']);
+        
         if ( empty($document_published) ){
-          $document_published = get_the_date( $d = '', $id );
+          $document_published = get_the_date( $d = '', $document['ID'] );
         }
         ?>
         <tr class="clickable-row" data-href="<?php echo $document['url']; ?>" id="<?php echo phila_format_uri($document['title']); ?>">
@@ -83,16 +83,3 @@ wp_localize_script('dataLayer', 'the_data', array(
     'page_title' => get_the_title(),
 ) );
 ?>
-<script>
-// window.onload = function () {
-//   window.dataLayer = window.dataLayer || [];
-//   $('.clickable-row').click( function(){
-//     window.dataLayer.push({
-//       'event' : 'GAEvent',
-//       'eventCategory' : 'Content Download',
-//       'eventAction' : the_data.page_title,
-//       'eventLabel' : '',
-//     });
-//   });
-// }
-</script>
