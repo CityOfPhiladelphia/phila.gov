@@ -56,8 +56,7 @@
           </td>
             <td class="description"><?php echo isset( $content ) ? $content : ''; ?></td>
             <td class="date">
-              <?php 
-              if ($date_override === '1') : ?>
+              <?php if ($date_override === '1') : ?>
                 <?php echo $global_document_published; ?>
               <?php else: ?>
                 <?php echo $document_published; ?>
@@ -84,16 +83,3 @@ wp_localize_script('dataLayer', 'the_data', array(
     'page_title' => get_the_title(),
 ) );
 ?>
-<script>
-// window.onload = function () {
-//   window.dataLayer = window.dataLayer || [];
-//   $('.clickable-row').click( function(){
-//     window.dataLayer.push({
-//       'event' : 'GAEvent',
-//       'eventCategory' : 'Content Download',
-//       'eventAction' : the_data.page_title,
-//       'eventLabel' : '',
-//     });
-//   });
-// }
-</script>
