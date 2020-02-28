@@ -44,10 +44,10 @@
         $file = wp_prepare_attachment_for_js($document['ID']);
         $file_type = $file['subtype'];
 
-        $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $id );
-
+        $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $document['ID']);
+        
         if ( empty($document_published) ){
-          $document_published = get_the_date( $d = '', $id );
+          $document_published = get_the_date( $d = '', $document['ID'] );
         }
         ?>
         <tr class="clickable-row" data-href="<?php echo $document['url']; ?>" id="<?php echo phila_format_uri($document['title']); ?>">
@@ -56,7 +56,8 @@
           </td>
             <td class="description"><?php echo isset( $content ) ? $content : ''; ?></td>
             <td class="date">
-              <?php if ($date_override === '1') : ?>
+              <?php 
+              if ($date_override === '1') : ?>
                 <?php echo $global_document_published; ?>
               <?php else: ?>
                 <?php echo $document_published; ?>
