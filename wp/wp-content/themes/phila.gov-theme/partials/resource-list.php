@@ -166,6 +166,10 @@
                       case ('phila_resource_link'):
                         $icon = 'fas fa-link';
                         break;
+                        
+                      case ('phila_resource_video'):
+                        $icon = 'fas fa-video';
+                        break;
 
                       default:
                         $icon = 'fas fa-file-alt';

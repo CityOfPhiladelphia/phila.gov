@@ -312,6 +312,7 @@ function phila_register_meta_boxes( $meta_boxes ){
                     'phila_resource_link' => 'Link',
                     'phila_resource_document' => 'Document',
                     'phila_resource_map' => 'Map',
+                    'phila_resource_video' => 'Video',
                   ),
                 ),
                 array(
