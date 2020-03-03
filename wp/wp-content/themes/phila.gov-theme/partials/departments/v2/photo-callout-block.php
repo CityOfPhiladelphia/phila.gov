@@ -1,7 +1,7 @@
 <?php if (rwmb_meta( 'phila_v2_photo_callout_block__photo' )): ?>
 
 <?php
-    $imagePath = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'medium', 'limit' => 1))[0]['url'];
+    $imagePath = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'medium', 'limit'=> 1))[0]['url'];
     $subHeader = rwmb_meta('phila_v2_photo_callout_block__txt-sub-header');
     $header = rwmb_meta('phila_v2_photo_callout_block__txt-header');
     $description = rwmb_meta('phila_v2_photo-callout-block__desc');
