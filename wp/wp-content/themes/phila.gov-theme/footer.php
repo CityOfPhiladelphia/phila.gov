@@ -211,6 +211,9 @@
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>$(document).foundation();</script>
+  <?php if (get_post_type() === 'service_page') :?>
+    <script>$(function(){setTimeout(function(){$(".equal").length>0&&($(".equal-height").each(function(){$(this).find(".equal").attr("data-equalizer-watch","")}),new Foundation.Equalizer($(".equal-height"),{equalizeOnStack:!0,equalizeByRow:!0,equalizeOn:"small"}))},500)});</script>
+  <?php endif;?>
   <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
       <?php if (function_exists('rwmb_meta')): ?>
         <?php $append_after_footer = rwmb_meta( 'phila_append_after_footer', $args = array('type' => 'textarea'), $post->ID); ?>
