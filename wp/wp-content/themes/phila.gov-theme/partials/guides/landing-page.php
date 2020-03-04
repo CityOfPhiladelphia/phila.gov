@@ -63,6 +63,7 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
       'post_status' => 'any',
       'orderby' => 'menu_order',
       'order'   => 'asc',
+      'post_status' => array('publish', 'draft')
     );
     $children = get_children($args);
     ?>
