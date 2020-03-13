@@ -58,8 +58,17 @@
     </ul>
   </nav>
 </div>
+
 <section class="mvxl">
   <div class="grid-container">
+
+<?php 
+  $canceled = rwmb_meta('event_canceled');
+  if (!empty($canceled) ): ?>
+    <div class="callout full-width">
+      <?php echo apply_filters('the_content', $canceled); ?>
+    </div>
+<?php endif; ?>
     <h2 id="official-event-information">Official event information</h2>
     <div class="grid-x">
       <div class="cell medium-12">
