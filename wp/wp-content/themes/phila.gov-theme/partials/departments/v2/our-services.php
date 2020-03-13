@@ -13,9 +13,9 @@
   $services = phila_loop_clonable_metabox( $services_list );
 ?>
 <?php if ( !empty( $services ) ) :?>
-<div class="row mtl">
+<div class="row mtl services-section">
   <div class="columns">
-    <h2>Services</h2>
+    <h2 class="services-title">Services</h2>
     <div class="row" data-equalizer>
       <div class="columns small-collapse">
         <div class="row inside-border-group" data-equalizer>
@@ -69,7 +69,7 @@
           'content_type' => 'services',
           'nice_name' => 'Services'
         );?>
-      <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+      <span class="see-all-services"><?php include( locate_template( 'partials/content-see-all.php' ) ); ?></span>
     </div>
   </div>
 <?php endif; ?>
