@@ -1089,22 +1089,28 @@ $meta_boxes[] = array(
     array(
       'name' => 'Append to head',
       'id'   => 'phila_append_to_head',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
     ),
     array(
       'name' => 'Append before WYSIWYG',
       'id'   => 'phila_append_before_wysiwyg',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
+
     ),
     array(
       'name' => 'Append after WYSIWYG',
       'id'   => 'phila_append_after_wysiwyg',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
+
     ),
     array(
       'name' => 'Append after footer',
       'id'   => 'phila_append_after_footer',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
     ),
   ),
 );
