@@ -40,7 +40,7 @@ class Phila_Gov_Event_Spotlight_Template {
       'include' => array(
         'user_role'  => array( 'administrator', 'editor', 'phila_master_homepage_editor' ),
         'relation' => 'or',
-       ),
+        ),
       'fields' => array(
         array(
           'id' => 'header_img',
@@ -206,6 +206,12 @@ class Phila_Gov_Event_Spotlight_Template {
         array(
           'id'  => 'event_info',
           'type'  => 'wysiwyg',
+        ),
+        array(
+          'name'  => 'Event canceled text',
+          'id'  =>  'event_canceled',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
         ),
       ),
     );
