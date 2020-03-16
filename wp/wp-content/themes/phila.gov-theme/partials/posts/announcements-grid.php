@@ -68,8 +68,8 @@
   <?php if ( $announcements->have_posts() ) : ?>
     <div class="grid-container mbxl">
     <h2>Announcements</h2>
+    <div class="grid-x grid-margin-x">
     <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
-      <div class="grid-x grid-margin-x">
         <?php $post_type = get_post_type(); ?>
         <?php $cats = get_the_category($post->ID); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
