@@ -58,8 +58,9 @@ jQuery(document).ready(function($) {
           'post_title': 'required'
         }
       });
+      console.log(typenow)
       //Don't allow editing of title field when duplicated and increase text limit so validation won't prevent save of draft, but not on staff directory where there is no title field
-      if ( typenow != 'staff_directory') {
+      if ( typenow != 'staff_directory' ) {
 
         if( $( "#title" ).val().indexOf('[Duplicated]') != -1){
           $('#title').rules('add', {
@@ -69,7 +70,10 @@ jQuery(document).ready(function($) {
             $( "<div style='color:#838383; padding-left:5px;'>This field isn't available to edit. To change the title, save as a new item.</div> " ).insertAfter('#title');
 
         }else{
-        $('#title').rules('add', {
+          if (typenow == 'post'){
+            return;
+          }
+          $('#title').rules('add', {
             maxlength: 72
           });
         }
