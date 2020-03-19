@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="cell medium-12 align-self-stretch hero-image hide-for-small-only" style="background-image:url(<?php echo $hero['full_url']  ?>) ">
-          <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?>
+          <?php echo !empty($credit) ? '<div class="photo-credit"><span><i class="fas fa-camera" aria-hidden="true"></i> Photo by ' . $credit . '</div>' : '' ?>
         </div>
       </div>
     <?php phila_get_menu(); ?>
