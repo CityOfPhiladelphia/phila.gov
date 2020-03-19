@@ -58,7 +58,6 @@ jQuery(document).ready(function($) {
           'post_title': 'required'
         }
       });
-      console.log(typenow)
       //Don't allow editing of title field when duplicated and increase text limit so validation won't prevent save of draft, but not on staff directory where there is no title field
       if ( typenow != 'staff_directory' ) {
 
