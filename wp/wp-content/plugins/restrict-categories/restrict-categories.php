@@ -3,100 +3,54 @@
 Plugin Name: Restrict Categories
 Description: Restrict the categories that users can view, add, and edit in the admin panel.
 Author: Matthew Muro
-Author URI: http://vfbpro.com
-Version: 2.6.4
+Author URI: http://matthewmuro.com
+Version: 2.6.3
 */
 
+/*
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2 of the License.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+// Instantiate new class
+$restrict_categories_load = new RestrictCategories();
+
 // Restrict Categories class
-class RestrictCategories {
+class RestrictCategories{
 
-	/**
-	 * The unique identifier of this plugin.
-	 * @var [type]
-	 */
-	protected $plugin_name = 'restrict-categories';
-
-	/**
-	 * The current version of the plugin.
-	 * @var [type]
-	 */
-	protected $version = '2.6.4';
-
-	/**
-	 * The main instance of the class
-	 * @var [type]
-	 */
-	private static $instance = null;
-
-	/**
-	 * The category list
-	 * @var [type]
-	 */
 	private $cat_list = NULL;
 
-	/**
-     * Protected constructor to prevent creating a new instance of Visual_Form_Builder
-     * via the 'new' operator from outside of this class.
-     *
-     * @return void
-     */
-	protected function __construct() {
-	}
+	public function __construct(){
+		// Make sure we are in the admin before proceeding.
+		if ( is_admin() ) {
+			$post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : false;
 
-	/**
-     * Private clone method to prevent cloning of the instance.
-     *
-     * @return void
-     */
-    private function __clone() {
-    }
+				// If the page is the Posts screen, do our thing, otherwise chill
+			if ( $post_type == false || $post_type == 'post' )
+				add_action( 'admin_init', array( &$this, 'posts' ) );
 
-    /**
-     * Private unserialize method to prevent unserializing of the instance.
-     *
-     * @return void
-     */
-    private function __wakeup() {
-    }
+			// Build options and settings pages.
+			add_action( 'admin_init', array( &$this, 'init' ) );
+			add_action( 'admin_menu', array( &$this, 'add_admin' ) );
 
-	/**
-	 * Create a single instance
-	 *
-	 * Insures that only one instance of the class is running.
-	 * Otherwise known as the Singleton class pattern
-	 *
-	 * @since    3.0
-	 * @access   public
-	 * @static
-	 */
-	public static function instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new RestrictCategories;
+			// Adds a Settings link to the Plugins page
+			add_filter( 'plugin_action_links', array( &$this, 'rc_plugin_action_links' ), 10, 2 );
+			add_filter( 'screen_settings', array( &$this, 'add_screen_options' ) );
 
-			// Make sure we are in the admin before proceeding.
-			if ( is_admin() ) {
-				$post_type = isset( $_GET['post_type'] ) ? $_GET['post_type'] : false;
-
-	  			// If the page is the Posts screen, do our thing, otherwise chill
-				if ( $post_type == false || $post_type == 'post' )
-					add_action( 'admin_init', array( self::$instance, 'posts' ) );
-
-				// Build options and settings pages.
-				add_action( 'admin_init', array( self::$instance, 'init' ) );
-				add_action( 'admin_menu', array( self::$instance, 'add_admin' ) );
-
-				// Adds a Settings link to the Plugins page
-				add_filter( 'plugin_action_links', array( self::$instance, 'rc_plugin_action_links' ), 10, 2 );
-				add_filter( 'screen_settings', array( self::$instance, 'add_screen_options' ) );
-
-				add_action( 'admin_notices', array( self::$instance, 'admin_notices' ) );
-			}
-
-			// Make sure XML-RPC requests are filtered to match settings
-			if ( defined ( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST )
-				add_action( 'xmlrpc_call', array( self::$instance, 'posts' ) );
-
+			add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
 		}
+
+		// Make sure XML-RPC requests are filtered to match settings
+		if ( defined ( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST )
+			add_action( 'xmlrpc_call', array( &$this, 'posts' ) );
 	}
 
 	/**
@@ -106,20 +60,8 @@ class RestrictCategories {
 	 * @uses register_setting() Register a setting in the database
 	 */
 	public function init() {
-		register_setting(
-			'RestrictCats_options_group',
-			'RestrictCats_options',
-			array(
-				'santizie_callback' => array( $this, 'options_sanitize' ),
-			)
-		);
-		register_setting(
-			'RestrictCats_user_options_group',
-			'RestrictCats_user_options',
-			array(
-				'santizie_callback' => array( $this, 'options_sanitize' ),
-			)
-		);
+		register_setting( 'RestrictCats_options_group', 'RestrictCats_options', array( &$this, 'options_sanitize' ) );
+		register_setting( 'RestrictCats_user_options_group', 'RestrictCats_user_options', array( &$this, 'options_sanitize' ) );
 
 		// Set the options to a variable
 		add_option( 'RestrictCats_options' );
@@ -138,7 +80,7 @@ class RestrictCategories {
 			update_option( 'RestrictCats-screen-options', $defaults );
 
 		// If the user has saved the Screen Options, update
-		if ( isset( $_POST['restrict-categories-screen-options-apply'] ) && in_array( $_POST['restrict-categories-screen-options-apply'], array( 'Apply', 'apply' ) ) ) {
+		if ( isset( $_REQUEST['restrict-categories-screen-options-apply'] ) && in_array( $_REQUEST['restrict-categories-screen-options-apply'], array( 'Apply', 'apply' ) ) ) {
 			$roles_per_page = absint( $_REQUEST['RestrictCats-screen-options']['roles_per_page'] );
 			$users_per_page = absint( $_REQUEST['RestrictCats-screen-options']['users_per_page'] );
 
@@ -151,21 +93,25 @@ class RestrictCategories {
 		}
 
 		// Resets the options
-		if ( isset( $_GET['page'] ) && $_GET['page'] == 'restrict-categories' ) {
-			if ( !isset( $_POST['action'] ) )
+		if ( isset( $_REQUEST['page'] ) && $_REQUEST['page'] == 'restrict-categories' ) :
+
+			if ( !isset( $_REQUEST['action'] ) )
 				return;
 
-			if ( 'reset' !== $_POST['action'] )
+			if ( 'reset' !== $_REQUEST['action'] )
 				return;
+
+			$nonce = $_REQUEST['_wpnonce'];
 
 			// Security check to verify the nonce
-			if ( ! wp_verify_nonce( $_POST['_wpnonce'], 'rc-reset-nonce' ) )
+			if ( ! wp_verify_nonce( $nonce, 'rc-reset-nonce' ) )
 				wp_die( __( 'Security check', 'restrict-categories' ) );
 
 			// Reset Roles and Users options
 			update_option( 'RestrictCats_options', array() );
 			update_option( 'RestrictCats_user_options', array() );
-		}
+
+		endif;
 	}
 
 	/**
@@ -174,17 +120,15 @@ class RestrictCategories {
 	 * @since 1.0
 	 */
 	public function admin_notices(){
-		if ( !isset( $_POST['action'] ) )
-			return;
+		if ( isset( $_REQUEST['action'] ) ) :
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] !== 'restrict-categories' )
-			return;
+			switch( $_REQUEST['action'] ) :
+				case 'reset' :
+					echo '<div id="message" class="updated"><p>' . __( 'Restrict Categories reset' , 'restrict-categories') . '</p></div>';
+				break;
+			endswitch;
 
-		switch( $_POST['action'] ) :
-			case 'reset' :
-				echo '<div id="message" class="updated"><p>' . __( 'Restrict Categories reset' , 'restrict-categories') . '</p></div>';
-			break;
-		endswitch;
+		endif;
 	}
 
 	/**
@@ -263,7 +207,7 @@ class RestrictCategories {
 	 * @uses get_cats() Returns an array of all categories.
 	 * @return $rc_user_options array Multidimensional array with options.
 	 */
-	public function populate_user_opts() {
+	public function populate_user_opts(){
 		$rc_user_options = array();
 
 		$logins	= $this->get_logins();
@@ -276,7 +220,6 @@ class RestrictCategories {
 				'options'  => $cats
 			);
 		}
-
 		return $rc_user_options;
 	}
 
@@ -287,7 +230,7 @@ class RestrictCategories {
 	 * @uses get_editable_roles() Fetch a filtered list of user roles that the current user is allowed to edit.
 	 * @return $roles array Returns array of user roles with the "pretty" name and the slug.
 	 */
-	public function get_roles() {
+	public function get_roles(){
 		$roles = array();
 
 		$editable_roles = get_editable_roles();
@@ -309,27 +252,27 @@ class RestrictCategories {
 	 */
 	public function get_logins(){
 		$users = array();
-
 		$args = array();
-  	//KD edit - 8/31/17 - use display name instead of username & allow search on any part of name, instead of only exact usernames
-    //KD - update - 2/28/2020 - updates to new version of this plugin, all changes to this function are still needed
-    if ( isset( $_POST['rc-search-users'] ) ) {
-      global $wpdb;
-      $search = ( isset( $_REQUEST['rc-search'] ) && !empty( $_REQUEST['rc-search'] ) ) ? esc_html( $_POST['rc-search'] ) : '';
-      $args = array( 'search' => $search );
-      $results = $wpdb->get_results( "SELECT * FROM wp_users WHERE display_name LIKE '%{$search}%'" );
-    }
-    $blogusers = get_users( $args );
-    foreach ( $blogusers as $login ) {
-      $users[ $login->display_name ] = $login->user_nicename;
-    }
-    if ( isset($results) ){
-      foreach ($results as $result) {
-        $users[$result->display_name] = $result->user_nicename;
-      }
-    }
-    return $users;
-  }
+
+
+		//KD edit - 8/31/17 - use display name instead of username & allow search on any part of name, instead of only exact usernames
+			if ( isset( $_POST['rc-search-users'] ) ) {
+				global $wpdb;
+				$search = ( isset( $_REQUEST['rc-search'] ) && !empty( $_REQUEST['rc-search'] ) ) ? esc_html( $_POST['rc-search'] ) : '';
+				$args = array( 'search' => $search );
+				$results = $wpdb->get_results( "SELECT * FROM wp_users WHERE display_name LIKE '%{$search}%'" );
+			}
+			$blogusers = get_users( $args );
+			foreach ( $blogusers as $login ) {
+				$users[ $login->display_name ] = $login->user_nicename;
+			}
+			if ( isset($results) ){
+				foreach ($results as $result) {
+					$users[$result->display_name] = $result->user_nicename;
+				}
+			}
+			return $users;
+		}
 
 	/**
 	 * Adds the Screen Options tab
@@ -358,10 +301,11 @@ class RestrictCategories {
 	 * @return $input array Returns array of input if available
 	 */
 	public function options_sanitize( $input ){
-		if ( !isset( $_POST['option_page'] ) )
+
+		if ( !isset( $_REQUEST['option_page'] ) )
 			return;
 
-		$options = 'RestrictCats_user_options_group' == $_POST['option_page'] ? get_option( 'RestrictCats_user_options' ) : get_option( 'RestrictCats_options' );
+		$options = ( 'RestrictCats_user_options_group' == $_REQUEST['option_page'] ) ? get_option( 'RestrictCats_user_options' ) : get_option( 'RestrictCats_options' );
 
 		if ( is_array( $input ) ) {
 			foreach( $input as $k => $v ) {
@@ -380,10 +324,10 @@ class RestrictCategories {
 	 * @uses add_options_page() Creates a menu item under the Settings menu.
 	 */
 	public function add_admin() {
-		$current_page = add_options_page( __('Restrict Categories', 'restrict-categories'), __('Restrict Categories', 'restrict-categories'), 'manage_categories', 'restrict-categories', array( $this, 'admin' ) );
+		$current_page = add_options_page( __('Restrict Categories', 'restrict-categories'), __('Restrict Categories', 'restrict-categories'), 'manage_categories', 'restrict-categories', array( &$this, 'admin' ) );
 
 		// Load admin scripts
-		add_action( "load-$current_page", array( $this, 'admin_scripts' ) );
+		add_action( "load-$current_page", array( &$this, 'admin_scripts' ) );
 	}
 
 	/**
@@ -422,65 +366,65 @@ class RestrictCategories {
 			?>
 			</h2>
 
-            <h2 class="nav-tab-wrapper">
-            	<a href="<?php echo $roles_tab; ?>" class="nav-tab <?php echo ( $tab == 'roles' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Roles', 'restrict-categories' ); ?></a>
-                <a href="<?php echo $users_tab; ?>" class="nav-tab <?php echo ( $tab == 'users' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Users', 'restrict-categories' ); ?></a>
-            </h2>
+						<h2 class="nav-tab-wrapper">
+							<a href="<?php echo $roles_tab; ?>" class="nav-tab <?php echo ( $tab == 'roles' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Roles', 'restrict-categories' ); ?></a>
+								<a href="<?php echo $users_tab; ?>" class="nav-tab <?php echo ( $tab == 'users' ) ? 'nav-tab-active' : ''; ?>"><?php _e( 'Users', 'restrict-categories' ); ?></a>
+						</h2>
 
 			<?php
-                // Create a new instance of our user/roles boxes class
-                $boxes = new RestrictCats_User_Role_Boxes();
+								// Create a new instance of our user/roles boxes class
+								$boxes = new RestrictCats_User_Role_Boxes();
 
-                if ( $tab == 'roles' ) :
+								if ( $tab == 'roles' ) :
 
-                	$rc_options = $this->populate_opts();
+									$rc_options = $this->populate_opts();
 
-            ?>
-            	<form method="post" action="options.php">
-	                <fieldset>
-	                    <?php
-	                    	settings_fields( 'RestrictCats_options_group' );
+						?>
+							<form method="post" action="options.php">
+									<fieldset>
+											<?php
+												settings_fields( 'RestrictCats_options_group' );
 
-	                        // Create boxes for Roles
-	                        $boxes->start_box( get_option( 'RestrictCats_options' ), $rc_options, 'RestrictCats_options' );
-	                    ?>
-	                </fieldset>
-	                <?php submit_button(); ?>
-            	</form>
+													// Create boxes for Roles
+													$boxes->start_box( get_option( 'RestrictCats_options' ), $rc_options, 'RestrictCats_options' );
+											?>
+									</fieldset>
+									<?php submit_button(); ?>
+							</form>
 			<?php
 				elseif ( $tab == 'users' ) :
 
 					$rc_user_options = $this->populate_user_opts();
-            ?>
-            	<form method="post" action="options-general.php?page=restrict-categories&type=users">
-            		<fieldset>
-						<p><?php _e( 'Selecting categories for a user will <em>override</em> the categories you have chosen for that user\'s role.', 'restrict-categories' ); ?></p>
-						<p>
+						?>
+							<form method="post" action="options-general.php?page=restrict-categories&type=users">
+								<fieldset>
+						<p style="float: left; margin-top:8px;">Selecting categories for a user will <em>override</em> the categories you have chosen for that user's role.</p>
+						<p style="float:right; margin-top:8px;">
 							<input type="search" id="rc-search-users" name="rc-search" value="">
 							<?php submit_button( __( 'Search Users', 'restrict-categories' ), 'secondary', 'rc-search-users', false ); ?>
 						</p>
-            		</fieldset>
+								</fieldset>
 				</form>
 
 				<form method="post" action="options.php">
-	                <fieldset>
-	                    <?php
-	                    	settings_fields( 'RestrictCats_user_options_group' );
+									<fieldset>
+											<?php
+												settings_fields( 'RestrictCats_user_options_group' );
 
-	                        // Create boxes for Users
-	                        $boxes->start_box( get_option( 'RestrictCats_user_options' ), $rc_user_options, 'RestrictCats_user_options' );
-	                    ?>
-	                </fieldset>
-	                <?php submit_button(); ?>
-                </form>
-                <?php endif; ?>
+													// Create boxes for Users
+													$boxes->start_box( get_option( 'RestrictCats_user_options' ), $rc_user_options, 'RestrictCats_user_options' );
+											?>
+									</fieldset>
+									<?php submit_button(); ?>
+								</form>
+								<?php endif; ?>
 
-            <h3><?php _e('Reset to Default Settings', 'restrict-categories'); ?></h3>
+						<h3><?php _e('Reset to Default Settings', 'restrict-categories'); ?></h3>
 			<p><?php _e('This option will reset all changes you have made to the default configuration.  <strong>You cannot undo this process</strong>.', 'restrict-categories'); ?></p>
 			<form method="post">
 				<?php submit_button( __( 'Reset', 'restrict-categories' ), 'secondary', 'reset' ); ?>
-                <input type="hidden" name="action" value="reset" />
-                <?php wp_nonce_field( 'rc-reset-nonce' ); ?>
+								<input type="hidden" name="action" value="reset" />
+								<?php wp_nonce_field( 'rc-reset-nonce' ); ?>
 			</form>
 		</div>
 	<?php
@@ -549,7 +493,13 @@ class RestrictCategories {
 
 					// Build the category list
 					foreach ( $settings[ $key . '_cats' ] as $category ) {
-						$term_id = get_term_by( 'slug', $category, 'category' )->term_id;
+
+						$term = get_term_by( 'slug', $category, 'category' );
+
+						//EDIT - after WP update 4.8, if get_term_by was false, editor role threw SQL exception. Checking if the term exists corrects it.
+						if ($term) {
+							$term_id = $term->term_id;
+						}
 
 						// If WPML is installed, return the translated ID
 						if ( function_exists( 'icl_object_id' ) )
@@ -571,8 +521,10 @@ class RestrictCategories {
 	 * @global $cat_list string The global comma-separated list of restricted categories.
 	 */
 	public function cat_filters( $categories ){
+	//$this->var = $categories;
 		// Clean up the category list
-		$this->cat_list = rtrim( $categories, ',' );
+		//by commenting out this line, we allow for an OR instead of an AND on category selection
+		//$this->cat_list = rtrim( $categories, ',' );
 
 		// If there are no categories, don't do anything
 		if ( empty( $this->cat_list ) )
@@ -582,14 +534,14 @@ class RestrictCategories {
 
 		// Only restrict the posts query if we're on the Posts screen
 		if ( $pagenow == 'edit.php' || ( defined ( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) )
-			add_filter( 'pre_get_posts', array( $this, 'posts_query' ) );
+			add_filter( 'pre_get_posts', array( &$this, 'posts_query' ) );
 
 		// Allowed pages for term exclusions
-		$pages = array( 'edit.php', 'post-new.php', 'post.php' );
+		$pages = array( 'edit.php', 'post-new.php' );
 
 		// Make sure to exclude terms from $pages array as well as the Category screen
 		if ( in_array( $pagenow, $pages ) || ( $pagenow == 'edit-tags.php' && $_GET['taxonomy'] == 'category' ) || ( defined ( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) )
-			add_filter( 'list_terms_exclusions', array( $this, 'exclusions' ) );
+			add_filter( 'list_terms_exclusions', array( &$this, 'exclusions' ) );
 	}
 
 	/**
@@ -623,6 +575,10 @@ class RestrictCategories {
 	 * @return $excluded string Appended clause on WHERE of get_taxonomy
 	 */
 	public function exclusions(){
+
+		$this->cat_list = rtrim($this->cat_list, ",");
+
+
 		$excluded = " AND ( t.term_id IN ( $this->cat_list ) OR tt.taxonomy NOT IN ( 'category' ) )";
 
 		return $excluded;
@@ -644,22 +600,17 @@ class RestrictCats_User_Role_Boxes {
 	 */
 	var $_pagination_args = array();
 
-	/**
-	 * [start_box description]
-	 * @param  [type] $settings     [description]
-	 * @param  [type] $options      [description]
-	 * @param  [type] $options_name [description]
-	 * @return [type]               [description]
-	 */
-	public function start_box( $settings, $options, $options_name ) {
+	public function start_box($settings, $options, $options_name){
+
 		// Create a new instance of our custom walker class
 		$walker = new RestrictCats_Walker_Category_Checklist();
+
 
 		// Get screen options from the wp_options table
 		$screen_options = get_option( 'RestrictCats-screen-options' );
 
 		// How many to show per page
-		$per_page = 'RestrictCats_options' == $options_name ? $screen_options['roles_per_page'] : $screen_options['users_per_page'];
+		$per_page = ( 'RestrictCats_options' == $options_name  ) ? $screen_options['roles_per_page'] : $screen_options['users_per_page'];
 
 		// What page are we looking at?
 		$current_page = $this->get_pagenum();
@@ -694,6 +645,7 @@ class RestrictCats_User_Role_Boxes {
 				$selected = array();
 
 
+
 			// Setup links for Roles/Users tabs in this class
 			$roles_tab = esc_url( admin_url( 'options-general.php?page=restrict-categories' ) );
 			$users_tab = add_query_arg( $id . '-tab', 'popular', $roles_tab );
@@ -721,12 +673,12 @@ class RestrictCats_User_Role_Boxes {
 				<div class="postbox">
 					<h3 class="hndle"><span><?php echo $value['name']; ?></span></h3>
 
-	                <div class="inside" style="padding:0 10px;">
+									<div class="inside" style="padding:0 10px;">
 						<div class="taxonomydiv">
-	                    	<ul id="taxonomy-category-tabs" class="taxonomy-tabs add-menu-item-tabs">
-	                        	<li<?php echo ( 'all' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo add_query_arg( $id . '-tab', 'all', $roles_tab ); ?>" class="nav-tab-link">View All</a></li>
-	                            <li<?php echo ( 'popular' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo $users_tab; ?>" class="nav-tab-link">Most Used</a></li>
-	                        </ul>
+												<ul id="taxonomy-category-tabs" class="taxonomy-tabs add-menu-item-tabs">
+														<li<?php echo ( 'all' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo add_query_arg( $id . '-tab', 'all', $roles_tab ); ?>" class="nav-tab-link">View All</a></li>
+															<li<?php echo ( 'popular' == $current_tab ? ' class="tabs"' : '' ); ?>><a href="<?php echo $users_tab; ?>" class="nav-tab-link">Most Used</a></li>
+													</ul>
 							<div id="<?php echo $id; ?>-all" class="tabs-panel <?php echo ( 'all' == $current_tab ? 'tabs-panel-active' : 'tabs-panel-inactive' ); ?>">
 								<ul class="categorychecklist form-no-clear">
 								<?php
@@ -744,11 +696,11 @@ class RestrictCats_User_Role_Boxes {
 
 									$disable_checkbox = ( 'all' == $current_tab ) ? '' : 'disabled="disabled"';
 								?>
-	                            <input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
+															<input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
 								</ul>
 							</div>
-	                        <div id="<?php echo $id; ?>-popular" class="tabs-panel <?php echo ( 'popular' == $current_tab ? 'tabs-panel-active' : 'tabs-panel-inactive' ); ?>">
-	                        	<ul class="categorychecklist form-no-clear">
+													<div id="<?php echo $id; ?>-popular" class="tabs-panel <?php echo ( 'popular' == $current_tab ? 'tabs-panel-active' : 'tabs-panel-inactive' ); ?>">
+														<ul class="categorychecklist form-no-clear">
 								<?php
 									wp_list_categories(
 										array(
@@ -766,14 +718,14 @@ class RestrictCats_User_Role_Boxes {
 
 									$disable_checkbox = ( 'popular' == $current_tab ) ? '' : 'disabled="disabled"';
 								?>
-	                            <input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
+															<input style="display:none;" <?php echo $disable_checkbox; ?> type="checkbox" value="RestrictCategoriesDefault" checked="checked" name="<?php echo $options_name; ?>[<?php echo $id; ?>][]">
 								</ul>
 							</div>
 						</div>
 
-	                    <?php
+											<?php
 							$shift_default = array_diff( $selected, array( 'RestrictCategoriesDefault' ) );
-							$selected      = array_values( $shift_default );
+							$selected = array_values( $shift_default );
 						?>
 						<p style="padding-left:10px;">
 							<strong><?php echo count( $selected ); ?></strong> <?php echo ( count( $selected ) > 1 || count( $selected ) == 0 ) ? 'categories' : 'category'; ?> selected
@@ -832,106 +784,72 @@ class RestrictCats_User_Role_Boxes {
 		if ( empty( $this->_pagination_args ) )
 			return;
 
-		$total_items = $this->_pagination_args['total_items'];
-		$total_pages = $this->_pagination_args['total_pages'];
+		extract( $this->_pagination_args );
 
-		$output = '<span class="displaying-num">' . sprintf( _n( '%s item', '%s items', $total_items ), number_format_i18n( $total_items ) ) . '</span>';
+		$output = '<span class="displaying-num">' . sprintf( _n( '1 item', '%s items', $total_items ), number_format_i18n( $total_items ) ) . '</span>';
 
 		$current = $this->get_pagenum();
-		$removable_query_args = wp_removable_query_args();
 
-		$current_url = set_url_scheme( 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-		$current_url = remove_query_arg( $removable_query_args, $current_url );
+		$current_url = remove_query_arg( array( 'hotkeys_highlight_last', 'hotkeys_highlight_first' ), $current_url );
 
 		$page_links = array();
 
-		$total_pages_before = '<span class="paging-input">';
-		$total_pages_after  = '</span></span>';
+		$disable_first = $disable_last = '';
+		if ( $current == 1 )
+			$disable_first = ' disabled';
+		if ( $current == $total_pages )
+			$disable_last = ' disabled';
 
-		$disable_first = $disable_last = $disable_prev = $disable_next = false;
+		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
+			'first-page' . $disable_first,
+			esc_attr__( 'Go to the first page' ),
+			esc_url( remove_query_arg( 'paged', $current_url ) ),
+			'&laquo;'
+		);
 
- 		if ( $current == 1 ) {
-			$disable_first = true;
-			$disable_prev = true;
- 		}
-		if ( $current == 2 ) {
-			$disable_first = true;
-		}
- 		if ( $current == $total_pages ) {
-			$disable_last = true;
-			$disable_next = true;
- 		}
-		if ( $current == $total_pages - 1 ) {
-			$disable_last = true;
-		}
+		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
+			'prev-page' . $disable_first,
+			esc_attr__( 'Go to the previous page' ),
+			esc_url( add_query_arg( 'paged', max( 1, $current-1 ), $current_url ) ),
+			'&lsaquo;'
+		);
 
-		if ( $disable_first ) {
-			$page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&laquo;</span>';
-		} else {
-			$page_links[] = sprintf(
-				"<a class='first-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
-				esc_url( remove_query_arg( 'paged', $current_url ) ),
-				__( 'First page' ),
-				'&laquo;'
-			);
-		}
-
-		if ( $disable_prev ) {
-			$page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&lsaquo;</span>';
-		} else {
-			$page_links[] = sprintf(
-				"<a class='prev-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
-				esc_url( add_query_arg( 'paged', max( 1, $current-1 ), $current_url ) ),
-				__( 'Previous page' ),
-				'&lsaquo;'
-			);
-		}
-
-		if ( 'bottom' === $which ) {
-			$html_current_page  = $current;
-			$total_pages_before = '<span class="screen-reader-text">' . __( 'Current Page' ) . '</span><span id="table-paging" class="paging-input"><span class="tablenav-paging-text">';
-		} else {
-			$html_current_page = sprintf(
-				"%s<input class='current-page' id='current-page-selector' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
-				'<label for="current-page-selector" class="screen-reader-text">' . __( 'Current Page' ) . '</label>',
+		if ( 'bottom' == $which )
+			$html_current_page = $current;
+		else
+			$html_current_page = sprintf( "<input class='current-page' title='%s' type='text' name='%s' value='%s' size='%d' />",
+				esc_attr__( 'Current page' ),
+				esc_attr( 'paged' ),
 				$current,
 				strlen( $total_pages )
 			);
-		}
+
 		$html_total_pages = sprintf( "<span class='total-pages'>%s</span>", number_format_i18n( $total_pages ) );
-		$page_links[] = $total_pages_before . sprintf( _x( '%1$s of %2$s', 'paging' ), $html_current_page, $html_total_pages ) . $total_pages_after;
+		$page_links[] = '<span class="paging-input">' . sprintf( _x( '%1$s of %2$s', 'paging' ), $html_current_page, $html_total_pages ) . '</span>';
 
-		if ( $disable_next ) {
-			$page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&rsaquo;</span>';
-		} else {
-			$page_links[] = sprintf(
-				"<a class='next-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
-				esc_url( add_query_arg( 'paged', min( $total_pages, $current+1 ), $current_url ) ),
-				__( 'Next page' ),
-				'&rsaquo;'
-			);
-		}
+		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
+			'next-page' . $disable_last,
+			esc_attr__( 'Go to the next page' ),
+			esc_url( add_query_arg( 'paged', min( $total_pages, $current+1 ), $current_url ) ),
+			'&rsaquo;'
+		);
 
-		if ( $disable_last ) {
-			$page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&raquo;</span>';
-		} else {
-			$page_links[] = sprintf(
-				"<a class='last-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
-				esc_url( add_query_arg( 'paged', $total_pages, $current_url ) ),
-				__( 'Last page' ),
-				'&raquo;'
-			);
-		}
+		$page_links[] = sprintf( "<a class='%s' title='%s' href='%s'>%s</a>",
+			'last-page' . $disable_last,
+			esc_attr__( 'Go to the last page' ),
+			esc_url( add_query_arg( 'paged', $total_pages, $current_url ) ),
+			'&raquo;'
+		);
 
-		$pagination_links_class = 'pagination-links';
-		$output .= "\n<span class='$pagination_links_class'>" . join( "\n", $page_links ) . '</span>';
+		$output .= "\n<span class='pagination-links'>" . join( "\n", $page_links ) . '</span>';
 
-		if ( $total_pages ) {
+		if ( $total_pages )
 			$page_class = $total_pages < 2 ? ' one-page' : '';
-		} else {
+		else
 			$page_class = ' no-pages';
-		}
+
 		$this->_pagination = "<div class='tablenav-pages{$page_class}'>$output</div>";
 
 		echo $this->_pagination;
@@ -1005,13 +923,3 @@ class RestrictCats_Walker_Category_Checklist extends Walker {
 		$output .= "</li>\n";
 	}
 }
-
-/**
- * The main function responsible for returning Visual Form Builder forms and functionality.
- * @return [type] [description]
- */
-function restrict_categories_plugin_instance() {
-	return RestrictCategories::instance();
-}
-
-restrict_categories_plugin_instance();
