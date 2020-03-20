@@ -1030,8 +1030,12 @@ public static function phila_meta_var_connect(){
                 'type' => 'phone',
                 'desc' => '(###)-###-####',
               ),
+              array(
+                'id'  => 'phila_connect_phone_text',
+                'type'  => 'text',
+                'desc'  => 'Addtional information about this phone number'
+              ),
             ),
-
           ),
           array(
             'name' => 'Fax',
