@@ -1518,7 +1518,9 @@ function phila_connect_panel($connect_panel) {
     
           'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] : '',
     
-        'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number']  : '',
+          'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number']  : '',
+        
+          'helper-text' => isset($connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone_text'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone_text'] : ''
         );
       }
     }
