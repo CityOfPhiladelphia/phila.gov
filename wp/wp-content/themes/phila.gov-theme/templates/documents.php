@@ -32,7 +32,7 @@
         <thead>
           <tr>
             <th class="<?php echo ($arr_length >= 5 ) ? 'table-sort" data-sort="title' : '' ?>"><span>Name</span></th>
-            <th data-sort="description">Description</th>
+            <th>Description</th>
             <th class="medium-3 <?php echo ($arr_length >= 5 ) ? 'table-sort" data-sort="date' : '' ?>"><span>Released</span></th>
             <th class="medium-2">Format</th>
           </tr>
