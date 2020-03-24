@@ -2,7 +2,7 @@ var List = require('list.js');
 
 module.exports = $(function(){
 
-  var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 3
+  var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 6
 
   var options = {
     searchClass: 'table-search',
