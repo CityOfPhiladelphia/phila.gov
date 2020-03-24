@@ -45,7 +45,6 @@ get_header();
       <?php get_template_part( 'partials/departments/v2/our', 'services' );?>
 
       <?php 
-      var_dump($user_selected_template);
       switch ($user_selected_template){
         case ('phila_one_quarter'):
           get_template_part( 'partials/departments/v2/content', 'one-quarter' );
