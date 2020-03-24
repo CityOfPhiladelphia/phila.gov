@@ -9,6 +9,8 @@ $('table.js-hide-empty').each(function(i, obj) {
 
     tds.each(function(j) {
       if (this.innerHTML == '') remove++;
+      if (this.innerHTML == ' ') remove++;
+      if (this.innerHTML == '<b><span class="responsive-label">Description: </span></b> ') remove++;
     });
 
     if (remove == ($('tr', table).length - 1)) {
