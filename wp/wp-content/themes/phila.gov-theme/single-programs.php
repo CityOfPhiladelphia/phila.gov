@@ -19,8 +19,10 @@ get_header();
   <?php return; ?>
 <?php endif;?>
 
-<?php if ($user_selected_template == 'programs') : 
-      include( locate_template( 'partials/programs/header.php' ) ); ?>
+<?php if ($user_selected_template == 'programs') :  ?>
+  <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>
+
+  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
       <div class="row">
       <div class="columns">
         <div class="one-quarter-layout">
