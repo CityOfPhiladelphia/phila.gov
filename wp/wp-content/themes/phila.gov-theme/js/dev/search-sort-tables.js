@@ -1,7 +1,6 @@
 var List = require('list.js');
 
 module.exports = $(function(){
-  console.log('search sort');
 
   var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 6
 
