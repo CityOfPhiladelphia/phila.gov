@@ -26,8 +26,6 @@ $children = get_posts( array(
 ));
 
 $ancestors = get_post_ancestors($post);
-$template = phila_get_selected_template();
-
 $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
@@ -70,12 +68,7 @@ get_header(); ?>
 
       while ( have_posts() ) : the_post();
 
-        //Don't render child menu index template when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
-        if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
-
-          get_template_part( 'partials/departments/v2/child', 'index' );
-
-        }else if($user_selected_template == 'department_stub'){ ?>
+      if($user_selected_template == 'department_stub'){ ?>
           <!-- Department Stub  -->
           <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
           <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>

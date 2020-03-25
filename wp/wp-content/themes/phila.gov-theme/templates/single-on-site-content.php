@@ -96,7 +96,6 @@ HTML;
 
       );
 
-
       phila_get_template_part($DEPT_USER_TEMPLATE_PATH.$user_selected_template, $homepage_v2_data );
 
       break;
@@ -148,6 +147,10 @@ HTML;
     case 'collection_page_v2':
       get_template_part( 'partials/departments/v2/collection-page' );
       break;
+
+    case 'child_index':
+      get_template_part( 'partials/departments/v2/child', 'index' );
+    break;
 
     case 'disabled':
       break;

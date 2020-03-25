@@ -766,9 +766,12 @@ $meta_boxes[] = array(
   'pages' => array('department_page'),
   'context' => 'after_title',
   'priority' => 'low',
-  'visible' => array('phila_template_select', 'department_stub'),
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'department_stub'),
+    ),
+  ),
   'revision' => true,
-  'class' => 'hide-on-load',
 
   'fields'  => array(
     array(
