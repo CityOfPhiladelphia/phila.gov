@@ -175,8 +175,9 @@
                         $icon = 'fas fa-file-alt';
                     } ?>
 
-                    <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
-
+                    <?php if (!empty($item_url)) : ?>
+                      <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
+                    <?php endif; ?>
                   <?php endforeach; ?>
                 </ul>
               </div>
