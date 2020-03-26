@@ -10,6 +10,7 @@ $user_selected_template = phila_get_selected_template();
 get_header();
 
 ?>
+<div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
 
 <?php if ( $user_selected_template == 'prog_off_site' ) : ?>
 
@@ -20,7 +21,6 @@ get_header();
 <?php endif;?>
 
 <?php if ($user_selected_template == 'child_index') :  ?>
-  <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>
 
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
     <?php get_template_part( 'partials/departments/v2/child', 'index' ); ?>
@@ -29,8 +29,17 @@ get_header();
 <?php return; ?>
 <?php endif;?>
 
+<?php if ($user_selected_template == 'stub'): ?>
+  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
+ <?php  $post_type = 'programs';
+  include(locate_template('partials/global/stub.php'));
+  get_footer();
+
+  return; ?>
+  <?php endif;?>
+
+
   <?php
     while ( have_posts() ) : the_post();
       include( locate_template( 'partials/programs/header.php' ) );
@@ -51,6 +60,7 @@ get_header();
       <?php 
       switch ($user_selected_template){
         case ('phila_one_quarter'):
+          var_dump('phila_one_quarter');
           get_template_part( 'partials/departments/v2/content', 'one-quarter' );
           break;
         case ('resource_list_v2'):
@@ -62,7 +72,6 @@ get_header();
         case('document_finder_v2'):
           include(locate_template('partials/departments/v2/document-finder.php'));
           break;
-
       } ?>
       <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>
 
