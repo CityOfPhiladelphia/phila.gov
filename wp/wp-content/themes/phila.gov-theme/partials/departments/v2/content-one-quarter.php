@@ -6,9 +6,11 @@
  */
 ?>
 <?php
-  $faq_group = rwmb_meta( 'accordion_row' );
-  $faq_search = rwmb_meta('accordion_search');
-  $heading_groups = rwmb_meta( 'phila_heading_groups' );
+var_dump($post_id);
+  $stub_id = isset($post_id) ? $post->ID : $post_id; 
+  $faq_group = rwmb_meta( 'accordion_row', array(),  $stub_id);
+  $faq_search = rwmb_meta('accordion_search',  array(),  $stub_id );
+  $heading_groups = rwmb_meta( 'phila_heading_groups', array(), $stub_id );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
 ?>
 
