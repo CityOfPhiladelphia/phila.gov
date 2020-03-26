@@ -32,8 +32,8 @@ get_header();
 <?php if ($user_selected_template == 'stub'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
- <?php  $post_type = 'programs';
-  include(locate_template('partials/global/stub.php'));
+ <?php  
+  include(locate_template('partials/programs/stub.php'));
   get_footer();
 
   return; ?>
@@ -60,7 +60,6 @@ get_header();
       <?php 
       switch ($user_selected_template){
         case ('phila_one_quarter'):
-          var_dump('phila_one_quarter');
           get_template_part( 'partials/departments/v2/content', 'one-quarter' );
           break;
         case ('resource_list_v2'):
