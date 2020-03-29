@@ -36,6 +36,34 @@ class Phila_Gov_Post {
   );
 
   $meta_boxes[] = array(
+    'title'    => 'Select the translated verisons of this post',
+    'pages'    => array( 'post' ),
+    'context'  => 'after_title',
+    'priority' => 'high',
+    'visible' => array(
+      'when' => array(
+        array('phila_select_language', '=', 'english'),
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'    => 'phila_translations',
+        'type'  => 'post',
+        'placeholder' => 'Select posts',
+        'width' => '100px',
+        'query_args' => array(
+          'posts_per_page'  => -1, 
+          'post_type' => 'post',
+          'meta_key'  => 'phila_select_language', 
+          'meta_value'  => 'english', 
+          'meta_compare'  => '!='
+        ),
+        'multiple'  => true
+      ),
+    )
+  );
+
+  $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
@@ -51,7 +79,7 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
-      'title'    => 'Elevate to feature',
+      'title'    => 'Post options',
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
@@ -73,9 +101,20 @@ class Phila_Gov_Post {
           'on_label'  => 'Yes',
           'off_label' => 'No',
         ),
+        array(
+          'name'  => 'Select the language of this post',
+          'id'    => 'phila_select_language',
+          'type'  => 'select',
+          'options'         => array(
+            'english'   => 'English', 
+            'espanol'   => 'Spanish', 
+            'french'    => 'French', 
+            'simplifed_chinese'   => 'Chinese (simplifed)',
+          ),
+
+        ),
       )
     );
-
     $meta_boxes[] = array(
       'title'    => 'Last updated',
       'pages'    => array( 'post' ),
