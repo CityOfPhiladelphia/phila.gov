@@ -15,8 +15,11 @@ $template_type = phila_get_selected_template();
 $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
-$last_updated_text = rwmb_meta('last_updated_text') ;
+$last_updated_text = rwmb_meta('last_updated_text');
+$translations = rwmb_meta('phila_translations');
+
 ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
@@ -85,6 +88,15 @@ $last_updated_text = rwmb_meta('last_updated_text') ;
     </div>
   <?php endif ?>
   <div class="grid-container post-content">
+    <?php 
+      foreach ($translations as $translation ) : ?>
+      <?php 
+      $lang = get_post_meta($translation, 'phila_select_language'); 
+      $id = intval($translation);
+      $link = get_the_permalink($id);
+      ?>
+        <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
+    <?php endforeach; ?>
     <div class="medium-18 medium-centered mtm">
       <?php the_content(); ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>

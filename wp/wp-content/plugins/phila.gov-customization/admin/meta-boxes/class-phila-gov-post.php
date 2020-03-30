@@ -107,7 +107,7 @@ class Phila_Gov_Post {
           'type'  => 'select',
           'options'         => array(
             'english'   => 'English', 
-            'espanol'   => 'Spanish', 
+            'spanish'   => 'Spanish', 
             'french'    => 'French', 
             'simplifed_chinese'   => 'Chinese (simplifed)',
           ),
