@@ -1844,3 +1844,37 @@ function phila_weighted_search_results(){
       break;
   }
 }
+
+add_action( 'mb_relationships_init', function() {
+  MB_Relationships_API::register( [
+      'id'   => 'posts_to_posts',
+      'from' => array(
+        'object_type'  => 'post',
+        'post_type'   => 'post',
+        'empty_message' => 'none',
+        'admin_column' => true,
+        'add_button'  => '+ Add another translation',
+        'meta_box' => array(
+          'title' => 'Translated pages',
+          'context' => 'side', 
+          'priority' => 'high',
+          'fields' => array(
+            'name'  => 'Choose',
+            'placeholder' => 'Select a post',
+            'query_args' => array(
+              'posts_per_page'  => -1, 
+              'meta_key'  => 'phila_select_language', 
+              'meta_value'  => 'english', 
+              'meta_compare'  => '!=',
+            ),
+          ),
+        ),
+      ),      
+      'to'   => array( 
+        'object_type' => 'post',
+        'post_type'   => 'post',
+      ),
+      'reciprocal' => true,
+
+  ] );
+} );
