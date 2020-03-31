@@ -79,7 +79,7 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
-      'title'    => 'Post options',
+      'title'    => 'Elevate to feature',
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
@@ -101,6 +101,20 @@ class Phila_Gov_Post {
           'on_label'  => 'Yes',
           'off_label' => 'No',
         ),
+      )
+    );
+
+    $meta_boxes[] = array (
+      'title'    => 'Post options',
+      'pages'    => array( 'post' ),
+      'context'  => 'side',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'action_guide'),
+        ),
+      ),
+      'fields' => array(
         array(
           'name'  => 'Select the language of this post',
           'id'    => 'phila_select_language',
@@ -111,20 +125,7 @@ class Phila_Gov_Post {
             'french'    => 'French', 
             'simplifed_chinese'   => 'Chinese (simplifed)',
           ),
-
         ),
-      )
-    );
-    $meta_boxes[] = array(
-      'title'    => 'Last updated',
-      'pages'    => array( 'post' ),
-      'context'  => 'side',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'post'),
-        ),
-      ),
-      'fields' => array(
         array(
           'name'  => 'Include last updated?',
           'id'    => 'is_last_updated',
@@ -160,7 +161,6 @@ class Phila_Gov_Post {
         ),
       )
     );
-
 
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',

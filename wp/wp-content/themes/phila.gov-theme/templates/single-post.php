@@ -16,7 +16,19 @@ $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
-$translations = rwmb_meta('phila_translations');
+
+$connected = new WP_Query( array(
+  'relationship' => array(
+      'id'   => 'posts_to_posts',
+      'from' => $post->ID, // You can pass object ID or full object
+  ),
+ ) );
+while ( $connected->have_posts() ) : $connected->the_post();?>
+<?php $language =  rwmb_meta('phila_select_language'); ?>
+  <a href="<?php the_permalink(); ?>"><?php echo $language ?></a>
+  <?php
+endwhile;
+wp_reset_postdata();
 
 ?>
 
@@ -89,12 +101,12 @@ $translations = rwmb_meta('phila_translations');
   <?php endif ?>
   <div class="grid-container post-content">
     <?php 
-      if ( !empty($translations) ) :
-        foreach ($translations as $translation ) : ?>
+      if ( !empty( $translations ) ) :
+        foreach ( $translations as $translation ) : ?>
         <?php 
-        $lang = get_post_meta($translation, 'phila_select_language'); 
-        $id = intval($translation);
-        $link = get_the_permalink($id);
+        $lang = get_post_meta( $translation, 'phila_select_language' ); 
+        $id = intval( $translation );
+        $link = get_the_permalink( $id );
         ?>
           <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
       <?php endforeach; ?>
