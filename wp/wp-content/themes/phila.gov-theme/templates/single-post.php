@@ -89,14 +89,16 @@ $translations = rwmb_meta('phila_translations');
   <?php endif ?>
   <div class="grid-container post-content">
     <?php 
-      foreach ($translations as $translation ) : ?>
-      <?php 
-      $lang = get_post_meta($translation, 'phila_select_language'); 
-      $id = intval($translation);
-      $link = get_the_permalink($id);
-      ?>
-        <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
-    <?php endforeach; ?>
+      if ( !empty($translations) ) :
+        foreach ($translations as $translation ) : ?>
+        <?php 
+        $lang = get_post_meta($translation, 'phila_select_language'); 
+        $id = intval($translation);
+        $link = get_the_permalink($id);
+        ?>
+          <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
+      <?php endforeach; ?>
+    <?php endif; ?>
     <div class="medium-18 medium-centered mtm">
       <?php the_content(); ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
