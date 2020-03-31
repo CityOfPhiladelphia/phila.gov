@@ -1847,7 +1847,7 @@ function phila_weighted_search_results(){
 
 add_action( 'mb_relationships_init', function() {
   MB_Relationships_API::register( [
-      'id'   => 'posts_to_posts',
+      'id'   => 'translation_to_translation',
       'from' => array(
         'object_type'  => 'post',
         'post_type'   => 'post',

@@ -24,10 +24,11 @@ if ($language == 'english'){
 }
 $connected = new WP_Query( array(
   'relationship' => array(
-      'id'   => 'posts_to_posts',
+      'id'   => 'translation_to_translation',
       'from' => $english_id, 
       'sibling' => true,
-  ),
+  ),    
+  'nopaging'     => true,
 ) );
 while ( $connected->have_posts() ) : $connected->the_post(); ?>
 <?php $language = rwmb_meta('phila_select_language');
