@@ -123,7 +123,10 @@ class Phila_Gov_Post {
             'english'   => 'English', 
             'spanish'   => 'Spanish', 
             'french'    => 'French', 
-            'simplifed_chinese'   => 'Chinese (simplifed)',
+            'chinese'   => 'Chinese (simplifed)',
+            'vietnamese'    => 'Vietnamese',
+            'russian'     => 'Russian',
+            'arabic'    => 'Arabic'
           ),
         ),
         array(
