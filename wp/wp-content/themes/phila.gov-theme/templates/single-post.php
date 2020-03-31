@@ -16,16 +16,48 @@ $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
+$language = rwmb_meta('phila_select_language');
 
+if ($language == 'english'){
+  $english_id = get_the_ID();
+  var_dump($english_id);
+}
 $connected = new WP_Query( array(
   'relationship' => array(
       'id'   => 'posts_to_posts',
-      'from' => $post->ID, // You can pass object ID or full object
+      'from' => $english_id, 
+      'sibling' => true,
   ),
- ) );
-while ( $connected->have_posts() ) : $connected->the_post();?>
-<?php $language =  rwmb_meta('phila_select_language'); ?>
-  <a href="<?php the_permalink(); ?>"><?php echo $language ?></a>
+) );
+while ( $connected->have_posts() ) : $connected->the_post(); ?>
+<?php $language = rwmb_meta('phila_select_language');
+$current_lang;
+  switch ($language) {
+    case 'english';
+      $current_lang = 'English'; 
+      break;
+    case 'spanish';
+      $current_lang = 'Español';
+      break;
+    case 'chinese';
+      $current_lang = '中文';
+    break;
+    case 'vietnamese';
+      $current_lang = 'Tiếng Việt';
+      break;
+    case 'russian';
+      $current_lang = 'Pусский';
+      break;
+    case 'arabic';
+      $current_lang = 'عربى';
+    break;
+    default;
+      $current_lang = 'English'; 
+      break;
+  }
+
+?>
+  <a href="<?php the_permalink(); ?>"><?php echo $current_lang ?></a>
   <?php
 endwhile;
 wp_reset_postdata();
