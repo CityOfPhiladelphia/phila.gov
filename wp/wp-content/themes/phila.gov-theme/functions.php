@@ -1846,8 +1846,8 @@ function phila_weighted_search_results(){
 }
 
 add_action( 'mb_relationships_init', function() {
-  MB_Relationships_API::register( [
-      'id'   => 'translation_to_translation',
+  MB_Relationships_API::register( array(
+      'id'   => 'post_to_post_translations',
       'from' => array(
         'object_type'  => 'post',
         'post_type'   => 'post',
@@ -1855,26 +1855,28 @@ add_action( 'mb_relationships_init', function() {
         'admin_column' => true,
         'add_button'  => '+ Add another translation',
         'meta_box' => array(
-          'title' => 'Translated pages',
+          'visible' => array(
+            'when' => array(
+              array('phila_select_language', '=', 'english'),
+            ),
+          ),
+          'title' => 'Select translated posts',
           'context' => 'side', 
           'priority' => 'high',
-          'fields' => array(
+          'field' => array(
             'name'  => 'Choose',
             'placeholder' => 'Select a post',
-            'query_args' => array(
-              'posts_per_page'  => -1, 
-              'meta_key'  => 'phila_select_language', 
-              'meta_value'  => 'english', 
-              'meta_compare'  => '!=',
-            ),
+          ),
+          'query_args' => array(
+            'posts_per_page'  => -1, 
+            'meta_key'  => 'phila_select_language', 
+            'meta_value'  => 'english', 
+            'meta_compare'  => '!=',
           ),
         ),
       ),      
-      'to'   => array( 
-        'object_type' => 'post',
-        'post_type'   => 'post',
-      ),
+      'to'   => 'post',
       'reciprocal' => true,
 
-  ] );
+  ) );
 } );
