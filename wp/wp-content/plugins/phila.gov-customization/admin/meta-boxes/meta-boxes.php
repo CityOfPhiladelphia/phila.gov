@@ -997,7 +997,7 @@ $meta_boxes[] = array(
           'id'  => 'phila_search_bar_text',
           'type'  => 'text',
           'name'  => 'Text for the document search',
-          'desc'  => 'Defaults to: Begin typing to filter documents by title, category, or author',
+          'desc'  => 'Defaults to: Begin typing to filter documents',
         ),
         array(
           'name'  => 'Add files to table',
