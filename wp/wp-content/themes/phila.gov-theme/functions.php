@@ -1855,9 +1855,9 @@ add_action( 'mb_relationships_init', function() {
         'admin_column' => true,
         'add_button'  => '+ Add another translation',
         'meta_box' => array(
-          'visible' => array(
+          'hidden' => array(
             'when' => array(
-              array('phila_select_language', '=', 'english'),
+              array('phila_select_language', '!=', 'english'),
             ),
           ),
           'title' => 'Select translated posts',
@@ -1866,13 +1866,18 @@ add_action( 'mb_relationships_init', function() {
           'field' => array(
             'name'  => 'Choose',
             'placeholder' => 'Select a post',
+            'query_args' => array(
+              'posts_per_page'  => -1, 
+              'meta_query' => array(
+                array(
+                    'key'     => 'phila_select_language',
+                    'value'   => 'english',
+                    'compare' => '!=',
+                ),
+              ),
+            ),
           ),
-          'query_args' => array(
-            'posts_per_page'  => -1, 
-            'meta_key'  => 'phila_select_language', 
-            'meta_value'  => 'english', 
-            'meta_compare'  => '!=',
-          ),
+
         ),
       ),      
       'to'   => 'post',
@@ -1925,6 +1930,7 @@ function phila_get_translated_language( $language ) {
     ) ); 
       $language_list['english'] = get_the_permalink();
   }else{
+
     $connected = new WP_Query( array(
       'relationship' => array(
         'id'   => 'post_to_post_translations',
@@ -1951,8 +1957,9 @@ function phila_get_translated_language( $language ) {
   }
 
   while ( $connected->have_posts() ) : $connected->the_post();
+    
+    $parent = get_the_ID();
   
-  $parent = get_the_ID();
     $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
   
     $new_connection = new WP_Query( array(
@@ -1963,7 +1970,7 @@ function phila_get_translated_language( $language ) {
       ), 
       'nopaging'     => true,
     ) );
-  
+
     while ( $new_connection->have_posts() ) : $connected->the_post(); 
       $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
     endwhile;
