@@ -36,34 +36,6 @@ class Phila_Gov_Post {
   );
 
   $meta_boxes[] = array(
-    'title'    => 'Select the translated verisons of this post',
-    'pages'    => array( 'post' ),
-    'context'  => 'after_title',
-    'priority' => 'high',
-    'visible' => array(
-      'when' => array(
-        array('phila_select_language', '=', 'english'),
-      ),
-    ),
-    'fields' => array(
-      array(
-        'id'    => 'phila_translations',
-        'type'  => 'post',
-        'placeholder' => 'Select posts',
-        'width' => '100px',
-        'query_args' => array(
-          'posts_per_page'  => -1, 
-          'post_type' => 'post',
-          'meta_key'  => 'phila_select_language', 
-          'meta_value'  => 'english', 
-          'meta_compare'  => '!='
-        ),
-        'multiple'  => true
-      ),
-    )
-  );
-
-  $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
