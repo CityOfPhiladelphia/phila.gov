@@ -17,102 +17,7 @@ $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
 $language = rwmb_meta('phila_select_language');
-
-if ($language === 'english') : 
-  $parent = get_the_ID();
-    $connected = new WP_Query( array(
-      'relationship' => array(
-          'id'   => 'post_to_post_translations',
-          'to' => get_the_ID(), 
-      ), 
-      'nopaging'     => true,
-    ) );
-  else:
-    $connected = new WP_Query( array(
-      'relationship' => array(
-          'id'   => 'post_to_post_translations',
-          'from' => get_the_ID(), 
-      ), 
-      'nopaging'     => true,
-    ) );
-    while ( $connected->have_posts() ) : $connected->the_post(); 
-    $source_post = $post->ID;
-      $connected_source = new WP_Query( array(
-        'relationship' => array(
-            'id'   => 'post_to_post_translations',
-            'to' => $source_post, 
-        ), 
-        'nopaging'     => true,
-      ) );
-      while ( $connected_source->have_posts() ) : $connected_source->the_post(); ?>
-
-      <a href="<?php the_permalink(); ?>"><?php echo rwmb_meta('phila_select_language', get_the_ID()); ?></a>
-
-   
-    <?php 
-     endwhile;
-    endwhile;
-  endif;
-while ( $connected->have_posts() ) : $connected->the_post(); ?>
-
-
-<?php 
-$parent = get_the_ID();
-$current_lang;
-  switch ($language) {
-    case 'english';
-      $current_lang = 'English'; 
-      break;
-    case 'french';
-      $current_lang = 'Français'; 
-      break;
-    case 'spanish';
-      $current_lang = 'Español';
-      break;
-    case 'chinese';
-      $current_lang = '中文';
-    break;
-    case 'vietnamese';
-      $current_lang = 'Tiếng Việt';
-      break;
-    case 'russian';
-      $current_lang = 'Pусский';
-      break;
-    case 'arabic';
-      $current_lang = 'عربى';
-    break;
-    default;
-      $current_lang = 'English'; 
-      break;
-  }
-  var_dump($parent);
-
-?>
-
-  <a href="<?php the_permalink(); ?>"><?php echo rwmb_meta('phila_select_language', get_the_ID()); ?></a>
-  <?php
-  $new_connection = new WP_Query( array(
-    'relationship' => array(
-        'id'   => 'post_to_post_translations',
-        'from' => $parent, 
-        'sibling' => true,
-    ), 
-    'nopaging'     => true,
-  ) );
-
-
-  while ( $new_connection->have_posts() ) : $connected->the_post(); 
-  ?>
-    <a href="<?php the_permalink(); ?>"><?php echo rwmb_meta('phila_select_language', get_the_ID()); ?></a>
-
-  <?php endwhile;
-  wp_reset_postdata();
-  ?>
-
-
-<?php 
-endwhile;
-wp_reset_postdata();
+$language_list = phila_get_translated_language( $language );
 
 
 ?>
@@ -167,6 +72,25 @@ wp_reset_postdata();
     </div>
   <?php endif; ?>
   </header>
+
+<?php if ( !empty( $language_list ) ): ?>
+  <!-- Translated content -->
+  <div class="grid-container translations-container">
+    <div class="grid-x medium-24 bg-ghost-gray mvl pas translations">
+      <span class="border-right phl"><i class="fas fa-globe fa-2x"></i></span>
+      <ul class="inline-list no-bullet mbn">
+        <?php foreach ($language_list as $key => $value): ?>
+          <li class="phl">
+            <?php echo ( $value === get_the_permalink() ) ? '' : '<a href="' .  $value . '">' ?><?php echo phila_language_output($key)?><?php echo ($value === get_the_permalink()) ? '' : '</a>' ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+  <!-- /Translated content -->
+  <?php endif ?>
+
+
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
     <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
