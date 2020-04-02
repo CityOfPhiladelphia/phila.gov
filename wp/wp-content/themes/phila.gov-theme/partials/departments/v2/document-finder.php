@@ -20,8 +20,8 @@ $c = -1;
           <div id="sortable-table-<?php echo $c?>" class="search-sort-table">
             <?php if ( count($table['phila_files']) >= 6) : ?>
               <div class="search">
-                <label for="table-search"><span class="screen-reader-text"><?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Filter documents by title, category, or author';?> </span></label>
-                <input type="text" class="table-search search-field" placeholder="<?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Filter documents by title, category, or author';?> " />
+                <label for="table-search"><span class="screen-reader-text"><?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> </span></label>
+                <input type="text" class="table-search search-field" placeholder="<?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> " />
                 <input type="submit" class="search-submit" />
               </div>
             <?php endif; ?>
