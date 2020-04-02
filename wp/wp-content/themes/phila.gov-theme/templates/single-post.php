@@ -77,14 +77,15 @@ $language_list = phila_get_translated_language( $language );
   <!-- Translated content -->
   <div class="grid-container translations-container">
     <div class="grid-x medium-24 bg-ghost-gray mvl pas translations">
-      <span class="border-right phl"><i class="fas fa-globe fa-2x"></i></span>
-      <ul class="inline-list no-bullet mbn">
+      <span class="border-right phl-mu"><i class="fas fa-globe fa-2x"></i></span>
+      <ul class="inline-list no-bullet mbn pln">
         <?php foreach ($language_list as $key => $value): ?>
-          <li class="phl">
+          <li class="phl-mu phs">
             <?php echo ( $value === get_the_permalink() ) ? '' : '<a href="' .  $value . '">' ?><?php echo phila_language_output($key)?><?php echo ($value === get_the_permalink()) ? '' : '</a>' ?>
           </li>
         <?php endforeach; ?>
       </ul>
+
     </div>
   </div>
   <!-- /Translated content -->
