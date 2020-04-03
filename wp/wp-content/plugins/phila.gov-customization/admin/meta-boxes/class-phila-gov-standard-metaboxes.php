@@ -420,14 +420,12 @@ class Phila_Gov_Standard_Metaboxes {
           'id'  => 'phila_wysiwyg_title',
           'type'  => 'wysiwyg',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100),
-          'tooltip' => $title_tooltip,
         ),
         array(
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
           'desc'  => $wysiwyg_desc,
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
-          'tooltip' => $content_tooltip,
         )
       )
     );
