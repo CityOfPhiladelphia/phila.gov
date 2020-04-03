@@ -4,6 +4,7 @@
 ?>
 <?php
 $tables = rwmb_meta('phila_document_table');
+$no_pagination = rwmb_meta('phila_doc_no_paginate');
 //ensure 0 index for js initialization
 $c = -1;
 ?>
@@ -19,14 +20,14 @@ $c = -1;
           <div id="sortable-table-<?php echo $c?>" class="search-sort-table">
             <?php if ( count($table['phila_files']) >= 6) : ?>
               <div class="search">
-                <label for="table-search"><span class="screen-reader-text">Filter documents by title, category, or author</span></label>
-                <input type="text" class="table-search search-field" placeholder="Filter documents by title, category, or author" />
+                <label for="table-search"><span class="screen-reader-text"><?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> </span></label>
+                <input type="text" class="table-search search-field" placeholder="<?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> " />
                 <input type="submit" class="search-submit" />
               </div>
             <?php endif; ?>
             <div class="table-wrapper">
 
-              <table class="mbxl js-hide-empty">
+              <table class="mbxl js-hide-empty <?php echo !empty( $no_pagination ) ? 'no-paginate' : ''?>">
                 <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? '<caption class="ptn accessible">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] . '</caption>' : ''; ?>
                 <thead>
                   <tr>
@@ -94,7 +95,7 @@ $c = -1;
               </tbody>
             </table>
           </div>
-          <?php if ( count($table['phila_files'] ) >= 6) : ?>
+          <?php if ( count($table['phila_files'] ) >= 6 && empty( $no_pagination ) ) : ?>
             <ul class="pagination-wrapper no-js">
               <li class="prev">
                 <a class="prev-<?php echo $c?>" href="#">Previous</a>
@@ -105,8 +106,6 @@ $c = -1;
               </li>
             </ul>
           <?php endif; ?>
-        
-
         </div>
         <?php endif;?>
       <?php endforeach; ?>
