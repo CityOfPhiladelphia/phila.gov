@@ -294,14 +294,7 @@ class Phila_Gov_Row_Metaboxes {
           Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
         ),
       ),
-      // array(
-      //   'id' => 'phila_vue_template',
-      //   'type'  => 'group',
-      //   'name'  => 'Vue template',
-      //   'clone' => false,
-      //   'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
-      //   'fields'  =>  Phila_Vue_App_Files::phila_vue_metaboxes()
-      // ),
+
       array (
         'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
         'id'  => 'vue_app_title',
