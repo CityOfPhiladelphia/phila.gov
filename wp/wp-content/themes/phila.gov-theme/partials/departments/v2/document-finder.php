@@ -27,7 +27,7 @@ $c = -1;
             <?php endif; ?>
             <div class="table-wrapper">
 
-              <table class="mbxl js-hide-empty">
+              <table class="mbxl js-hide-empty <?php echo !empty( $no_pagination ) ? 'no-paginate' : ''?>">
                 <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? '<caption class="ptn accessible">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] . '</caption>' : ''; ?>
                 <thead>
                   <tr>
