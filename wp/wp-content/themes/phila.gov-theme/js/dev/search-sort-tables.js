@@ -4,7 +4,6 @@ module.exports = $(function(){
 
   var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 6
   var pagination = $("table").hasClass("no-paginate") ? false : true
-  console.log(pagination);
 
   if (pagination){
     var options = {
