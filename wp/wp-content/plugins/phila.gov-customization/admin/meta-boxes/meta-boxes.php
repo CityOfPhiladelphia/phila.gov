@@ -978,6 +978,13 @@ $meta_boxes[] = array(
   ),
   'fields' => array(
     array(
+      'id'  => 'phila_doc_no_paginate',
+      'type'  => 'switch',
+      'name'  => 'Turn off pagination for all tables on this page?',
+      'on_label'  => 'Yes',
+      'off_label' => 'No'
+    ),
+    array(
       'id' => 'phila_document_table',
       'type'  => 'group',
       'clone' => true,
@@ -987,6 +994,13 @@ $meta_boxes[] = array(
       'fields' =>
       array(
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter a description to describe the contents of this table for users with screenreaders. '),
+
+        array(
+          'id'  => 'phila_search_bar_text',
+          'type'  => 'text',
+          'name'  => 'Text for the document search',
+          'desc'  => 'Defaults to: Begin typing to filter documents',
+        ),
         array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',

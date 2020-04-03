@@ -3,16 +3,27 @@ var List = require('list.js');
 module.exports = $(function(){
 
   var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 6
+  var pagination = $("table").hasClass("no-paginate") ? false : true
 
-  var options = {
-    searchClass: 'table-search',
-    listClass: 'search-sortable',
-    sortClass: 'table-sort',
-    valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
-    pagination: true,
-    page: pageNum,
-    paginationClass: 'paginate-links',
-  }
+  if (pagination){
+    var options = {
+      searchClass: 'table-search',
+      listClass: 'search-sortable',
+      sortClass: 'table-sort',
+      valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
+      pagination: true,
+      page: pageNum,
+      paginationClass: 'paginate-links',
+    }
+  }else{
+    var options = {
+      searchClass: 'table-search',
+      listClass: 'search-sortable',
+      sortClass: 'table-sort',
+      valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
+    }
+  } 
+
 
 
   $('.search-sort-single-table').each(function( j ) {
@@ -34,7 +45,9 @@ module.exports = $(function(){
       } else {
         $('#sortable-table-' + j + '.no-results').show()
       }
-      checkNavButtons();
+      if ( pagination ) {
+        checkNavButtons();
+      }
 
       var loggedIn;
 
@@ -73,17 +86,19 @@ module.exports = $(function(){
           }
         }
       }
+      if (pagination) {
 
-    $('.next-' + j).on('click', function(e){
-      table.show( table.i + pageNum, pageNum);
-      e.preventDefault();
-    })
+      $('.next-' + j).on('click', function(e){
+        table.show( table.i + pageNum, pageNum);
+        e.preventDefault();
+      })
 
-    $('.prev-' + j).on('click', function(e){
-      table.show( table.i - pageNum, pageNum);
-      e.preventDefault();
-    })
-    checkNavButtons()
+      $('.prev-' + j).on('click', function(e){
+        table.show( table.i - pageNum, pageNum);
+        e.preventDefault();
+      })
+      checkNavButtons()
+    }
   })
 
 })
