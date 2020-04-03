@@ -39,7 +39,8 @@ class Phila_Gov_Service_Pages{
           'page-attributes',
           'revisions',
           'author',
-          'custom-fields'
+          'custom-fields',
+          'thumbnail'
         ),
         'public' => true,
         'show_in_rest' => true,

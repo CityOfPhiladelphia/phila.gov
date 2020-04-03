@@ -30,6 +30,11 @@ class Phila_Vue_App_Files {
 
   public static function phila_vue_metaboxes(){
     return  array(
+      array(
+      'id'  => 'phila_vue_app_id',
+      'type'  => 'text', 
+      'name'  => 'Vue App div id'
+      ),
         array(
           'id' => 'phila-vue-app-css',
           'type' => 'group',

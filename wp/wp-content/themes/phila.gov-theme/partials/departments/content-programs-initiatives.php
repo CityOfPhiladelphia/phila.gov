@@ -160,6 +160,9 @@
         
         <?php elseif ( $current_row_option == 'phila_vue_app'): ?>
           <?php if ( isset( $current_row['phila_full_options']['phila_vue_template'] ) ):
+
+            $app_id = $current_row['phila_full_options']['phila_vue_template']['phila_vue_app_id'];
+
             $vuejs_js_ids = $current_row['phila_full_options']['phila_vue_template']['phila-vue-app-js'];
             $vuejs_css_ids = $current_row['phila_full_options']['phila_vue_template']['phila-vue-app-css'];
 
@@ -167,7 +170,7 @@
               if (is_array($vuejs_js_ids)) {
                 $count = 1;
                 foreach($vuejs_js_ids as $url) {
-                  $handle = $post->post_name . '-vue-app-js-url-' . $count;
+                  $handle = $post->post_name . '-vue-app-js-url-' . $count . $app_id;
                   wp_enqueue_script($handle, $url['phila_vue_app_js_url'], array(), null, true );
                   $count++;
                 }
@@ -176,7 +179,7 @@
               if (is_array($vuejs_css_ids)) {
                 $count = 1;
                 foreach($vuejs_css_ids as $url) {
-                  $handle = $post->post_name . '-vue-app-css-url-' . $count;
+                  $handle = $post->post_name . '-vue-app-css-url-' . $count . $app_id;
                   wp_enqueue_style($handle, $url['phila_vue_app_css_url']);
                   $count++;
                 }
@@ -193,10 +196,10 @@
                 </div>
               </div>
             <?php endif; ?>
-            <div class="grid-container pan">
+            <div class="grid-container">
               <div class="grid-x">
                 <div class="cell small-24">
-                  <div id="vue-app"></div>
+                <div id="<?php echo empty($app_id) ? 'vue-app' : $app_id ?>"></div>
                 </div>
               </div>
             </div>
