@@ -981,6 +981,8 @@ $meta_boxes[] = array(
       'id'  => 'phila_doc_no_paginate',
       'type'  => 'switch',
       'name'  => 'Turn off pagination for all tables on this page?',
+      'on_label'  => 'Yes',
+      'off_label' => 'No'
     ),
     array(
       'id' => 'phila_document_table',
