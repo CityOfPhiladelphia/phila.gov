@@ -1,16 +1,19 @@
 var List = require('list.js');
+var moment = require('moment');
 
 module.exports = $(function(){
 
   var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 6
   var pagination = $("table").hasClass("no-paginate") ? false : true
+  
+  
 
   if (pagination){
     var options = {
       searchClass: 'table-search',
       listClass: 'search-sortable',
       sortClass: 'table-sort',
-      valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
+      valueNames: [ 'name', 'title', 'category', { name: 'date', attr : 'data-unix' } , 'author', 'description' ],
       pagination: true,
       page: pageNum,
       paginationClass: 'paginate-links',
@@ -20,18 +23,24 @@ module.exports = $(function(){
       searchClass: 'table-search',
       listClass: 'search-sortable',
       sortClass: 'table-sort',
-      valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
+      valueNames: [ 'name', 'title', 'category', { name: 'date', attr : 'data-unix' } , 'author', 'description' ],
     }
   } 
 
-
+  $('.date').each(function(j){
+    let text = $(this).clone().find('span').remove().end().text();
+    let date = text.split(" ").filter(function(v){return v!==''});
+    let jsDate = new Date(date[1] + " " + date[2] + " "  + date[3]);
+    // console.log(jsDate);
+    $(this).attr('data-unix', moment(jsDate).unix())
+  })
 
   $('.search-sort-single-table').each(function( j ) {
     var table = new List('sortable-table-' + j, {
       searchClass: 'table-search',
       listClass: 'search-sortable',
       sortClass: 'table-sort',
-      valueNames: [ 'name', 'title', 'category', 'date', 'author', 'description' ],
+      valueNames: [ 'name', 'title', 'category', { name: 'date', attr : 'data-unix' } , 'author', 'description' ],
     })
   })
 
@@ -39,6 +48,7 @@ module.exports = $(function(){
     var table = new List('sortable-table-' + j, options)
 
     table.on('updated', function (list) {
+      // console.log(list)
 
       if (list.matchingItems.length > 0) {
         $('#sortable-table-' + j + ' .no-results').hide()
