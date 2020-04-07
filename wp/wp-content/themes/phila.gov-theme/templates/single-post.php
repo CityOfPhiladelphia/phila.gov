@@ -15,8 +15,13 @@ $template_type = phila_get_selected_template();
 $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
-$last_updated_text = rwmb_meta('last_updated_text') ;
+$last_updated_text = rwmb_meta('last_updated_text');
+$language = rwmb_meta('phila_select_language');
+$language_list = phila_get_translated_language( $language );
+
+
 ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
@@ -67,6 +72,26 @@ $last_updated_text = rwmb_meta('last_updated_text') ;
     </div>
   <?php endif; ?>
   </header>
+
+<?php if ( !empty( $language_list ) ): ?>
+  <!-- Translated content -->
+  <div class="grid-container translations-container">
+    <div class="grid-x medium-24 bg-ghost-gray mvl pas translations">
+      <span class="border-right phl-mu hide-for-small-only"><i class="fas fa-globe fa-2x"></i></span>
+      <ul class="inline-list no-bullet mbn pln">
+        <?php foreach ($language_list as $key => $value): ?>
+          <li class="phl-mu phs">
+            <?php echo ( $value === get_the_permalink() ) ? '' : '<a href="' .  $value . '">' ?><?php echo phila_language_output($key)?><?php echo ($value === get_the_permalink()) ? '' : '</a>' ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+
+    </div>
+  </div>
+  <!-- /Translated content -->
+  <?php endif ?>
+
+
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
     <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
@@ -85,6 +110,17 @@ $last_updated_text = rwmb_meta('last_updated_text') ;
     </div>
   <?php endif ?>
   <div class="grid-container post-content">
+    <?php 
+      if ( !empty( $translations ) ) :
+        foreach ( $translations as $translation ) : ?>
+        <?php 
+        $lang = get_post_meta( $translation, 'phila_select_language' ); 
+        $id = intval( $translation );
+        $link = get_the_permalink( $id );
+        ?>
+          <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
+      <?php endforeach; ?>
+    <?php endif; ?>
     <div class="medium-18 medium-centered mtm">
       <?php the_content(); ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
