@@ -1844,3 +1844,151 @@ function phila_weighted_search_results(){
       break;
   }
 }
+
+add_action( 'mb_relationships_init', function() {
+  MB_Relationships_API::register( array(
+      'id'   => 'post_to_post_translations',
+      'from' => array(
+        'object_type'  => 'post',
+        'post_type'   => 'post',
+        'empty_message' => 'none',
+        'admin_column' => true,
+        'add_button'  => '+ Add another translation',
+        'meta_box' => array(
+          'hidden' => array(
+            'when' => array(
+              array('phila_select_language', '!=', 'english'),
+            ),
+          ),
+          'title' => 'Select translated posts',
+          'context' => 'side', 
+          'priority' => 'high',
+          'field' => array(
+            'name'  => 'Choose',
+            'placeholder' => 'Select a post',
+            'query_args' => array(
+              'posts_per_page'  => -1, 
+              'meta_query' => array(
+                array(
+                    'key'     => 'phila_select_language',
+                    'value'   => 'english',
+                    'compare' => '!=',
+                ),
+              ),
+            ),
+          ),
+
+        ),
+      ),      
+      'to'   => 'post',
+      'reciprocal' => true,
+
+  ) );
+} );
+
+function phila_language_output($language){
+  switch ($language) {
+    case 'english';
+      $language = 'English'; 
+      break;
+    case 'french';
+      $language = 'Français'; 
+      break;
+    case 'spanish';
+      $language = 'Español';
+      break;
+    case 'chinese';
+      $language = '中文';
+    break;
+    case 'vietnamese';
+      $language = 'Tiếng Việt';
+      break;
+    case 'russian';
+      $language = 'Pусский';
+      break;
+    case 'arabic';
+      $language = 'عربى';
+    break;
+    default;
+      $language = 'English'; 
+      break;
+  }
+  return $language;
+}
+
+function phila_get_translated_language( $language ) {
+
+  $language_list = array();
+
+  if ($language === 'english') {
+    $connected = new WP_Query( array(
+      'relationship' => array(
+        'id'   => 'post_to_post_translations',
+        'to' => get_the_ID(), 
+      ), 
+      'nopaging'     => true,
+    ) ); 
+      $language_list['english'] = get_the_permalink();
+  }else{
+
+    $connected = new WP_Query( array(
+      'relationship' => array(
+        'id'   => 'post_to_post_translations',
+        'from' => get_the_ID(), 
+      ), 
+      'nopaging'     => true,
+    ) );
+    while ( $connected->have_posts() ) : $connected->the_post(); 
+    global $post;
+    $source_post = $post->ID;
+      $connected_source = new WP_Query( array(
+        'relationship' => array(
+          'id'   => 'post_to_post_translations',
+          'to' => $source_post, 
+        ), 
+        'nopaging'     => true,
+      ) );
+      while ( $connected_source->have_posts() ) : $connected_source->the_post();
+
+      $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
+
+      endwhile;
+    endwhile;
+  }
+
+  while ( $connected->have_posts() ) : $connected->the_post();
+    
+    $parent = get_the_ID();
+  
+    $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
+  
+    $new_connection = new WP_Query( array(
+      'relationship' => array(
+          'id'   => 'post_to_post_translations',
+          'from' => $parent, 
+          'sibling' => true,
+      ), 
+      'nopaging'     => true,
+    ) );
+
+    while ( $new_connection->have_posts() ) : $connected->the_post(); 
+      $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
+    endwhile;
+    wp_reset_postdata();
+    endwhile;
+  wp_reset_postdata();
+
+
+
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $ordered_array = array_replace(array_flip($order), $language_list);
+  $final_array = array();
+  foreach ($ordered_array as $key => $value){
+    if ( !is_int( $value ) ){
+      $final_array[$key] = $value;
+    }
+  }
+
+  return $final_array;
+}
+
