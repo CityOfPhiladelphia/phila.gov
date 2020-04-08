@@ -51,7 +51,7 @@ $service_menu_args  = array(
         <div class="hide-for-medium-only large-8 columns end bg-ghost-gray placeholder">
           <div class="valign"><div class="valign-cell"></div></div>
         </div>
-        <div class="medium-12 large-8 float-right white bg-dark-ben-franklin left-arrow-indent mega-menu-footer">
+        <div class="medium-12 large-8 float-right white left-arrow-indent mega-menu-footer">
           <div class="valign">
             <a href="/services/" class="phl valign-cell service-directory"><span><i class="far fa-list fa-lg phm"></i>Service directory</span></a>
           </div>

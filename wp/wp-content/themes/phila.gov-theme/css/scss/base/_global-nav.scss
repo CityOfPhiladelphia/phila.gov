@@ -411,7 +411,8 @@
     }
     .mega-menu-footer {
       height: 66px;
-      
+      border-left: 2px solid white;
+      border-right: 2px solid white;
       a {
         padding: 1.5rem 4rem;
 
@@ -428,9 +429,9 @@
           content: '';
           width: 0;
           height: 0;
-          border-top: 35px solid transparent;
-          border-bottom: 35px solid transparent;
-          border-left: 35px solid color(ghost-gray);
+          border-top: 33px solid transparent;
+          border-bottom: 33px solid transparent;
+          border-left: 33px solid color(ghost-gray);
           position: absolute;
           left:0;
           right:0;
