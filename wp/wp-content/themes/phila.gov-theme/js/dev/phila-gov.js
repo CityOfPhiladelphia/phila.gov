@@ -189,25 +189,6 @@ module.exports = $(function(){
       $(this).removeClass('is-hover');
   });
 
-  //Generate services menu
-  if ($("#services-list [data-services-menu]").length) {
-    var wpURL = '/wp-content/themes/phila.gov-theme/static/services-menu.json';
-    $.ajax({
-      method: "GET",
-      url: wpURL,
-    })
-    .done( function( data ) {
-      $.each(data, function(i, value) {
-        $('#services-list [data-services-menu]').prepend('<div class="medium-12 large-8 columns end"><div class="valign"><div class="valign-cell"><a href=' + value.link + ' data-equalizer-watch><span><i class="' + value.meta.phila_page_icon  + ' fa-2x"></i> <div class="text-label">' + value.title.rendered + '</div></span></a></div></div></div>');
-      })
-      Foundation.reInit($('#phila-menu-wrap'));
-    })
-    .fail(function( data ) {
-      console.warn('Call to the WP API failed.');
-    });
-  }else{
-    console.warn('Standards JS: Add the #services-list menu markup.');
-  }
 
   //foundation equalizer rows
   //doesn't work with nested Equalizers, because a unique ID is required.
