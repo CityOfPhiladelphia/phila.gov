@@ -4,7 +4,7 @@
 ?>
 <?php
 $tables = rwmb_meta('phila_document_table');
-$no_pagination = rwmb_meta('phila_doc_no_paginate');
+$no_pagination = rwmb_meta('phila_doc_no_paginate') ;
 //ensure 0 index for js initialization
 $c = -1;
 ?>
@@ -27,7 +27,7 @@ $c = -1;
             <?php endif; ?>
             <div class="table-wrapper">
 
-              <table class="mbxl js-hide-empty <?php echo !empty( $no_pagination ) ? 'no-paginate' : ''?>">
+              <table class="mbxl js-hide-empty <?php echo !empty( $no_pagination ) || count($table['phila_files']) < 6 ? 'no-paginate' : ''?>">
                 <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? '<caption class="ptn accessible">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] . '</caption>' : ''; ?>
                 <thead>
                   <tr>
