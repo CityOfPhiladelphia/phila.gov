@@ -53,6 +53,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_staff_table' => 'Staff table',
         'phila_stepped_content' => 'Stepped content',
         'phila_vue_app'       => 'Vue app',
+        'phila_app_callout'       => 'App callout',
       ),
     );
   }
