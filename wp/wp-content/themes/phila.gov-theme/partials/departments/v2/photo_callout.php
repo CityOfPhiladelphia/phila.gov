@@ -2,7 +2,6 @@
 
 <?php
     $photo_callout = $current_row['phila_full_options']['photo_callout'];
-    $imagePath = wp_get_attachment_url( $photo_callout['phila_v2_photo_callout_block__photo'][0] );
     $header = $photo_callout['phila_v2_photo_callout_block__txt-header'];
     $subHeader = $photo_callout['phila_v2_photo_callout_block__txt-sub-header'];    
     $description = $photo_callout['phila_v2_photo-callout-block__desc'];
@@ -14,11 +13,7 @@
 <section class="row">
     <div class="grid-container columns">
     <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
-        <?php if (!empty( $photo_callout['phila_v2_photo_callout_block__image_toggle'] )) : ?>
-
-            <div class="photo-callout-block__img large-14 medium-12 small-20 cell">
-                <img src="<?php echo $imagePath ?>" alt="" class="float-center">
-            </div>
+        <?php if (empty( $photo_callout['phila_v2_photo_callout_block__image_toggle'] ) || !isset( $photo_callout['phila_v2_photo_callout_block__photo'] )) : ?>
 
             <div class="photo-callout-block__txt large-10 medium-12 small-20 cell">
                     <div class="grid align-center-middle grid-x grid-padding-x">
@@ -38,10 +33,10 @@
                     </div>
             </div>
 
-        <?php elseif (empty( $photo_callout['phila_v2_photo_callout_block__image_toggle'] )) : ?>
+        <?php elseif (!empty( $photo_callout['phila_v2_photo_callout_block__image_toggle'] )) : ?>
 
             <div class="photo-callout-block__img large-14 medium-12 small-20 cell">
-                <img src="<?php echo $imagePath ?>" alt="" class="float-center">
+                <img src="<?php echo wp_get_attachment_url( $photo_callout['phila_v2_photo_callout_block__photo'][0] ); ?>" alt="" class="float-center">
             </div>
 
             <div class="photo-callout-block__txt large-10 medium-12 small-20 cell">
