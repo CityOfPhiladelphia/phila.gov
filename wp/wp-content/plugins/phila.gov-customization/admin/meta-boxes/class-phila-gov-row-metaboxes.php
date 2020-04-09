@@ -308,10 +308,10 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
       ),
       array(
-        'id' => 'app_callout',
+        'id' => 'photo_callout',
         'type'  => 'group',
-        'visible' => array('phila_full_options_select', '=', 'phila_app_callout'),
-        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_app_callout()
+        'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
       )
     ),
   );
@@ -464,12 +464,12 @@ class Phila_Gov_Row_Metaboxes {
     );
   }
 
-  public static function phila_metabox_app_callout( ){
+  public static function phila_metabox_photo_callout( ){
       return  array(
         array(
-        'id'  => 'phila_app_callout_id',
+        'id'  => 'phila_photo_callout_id',
         'type'  => 'text', 
-        'name'  => 'App Callout id'
+        'name'  => 'Photo Callout id'
         ),
           array(
             'id' => 'phila_v2_photo_callout_block__photo',
