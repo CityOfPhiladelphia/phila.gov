@@ -467,6 +467,13 @@ class Phila_Gov_Row_Metaboxes {
   public static function phila_metabox_photo_callout( ){
       return  array(
         array(
+          'name' => 'Display with Image?',
+          'id'   => 'phila_v2_photo_callout_block__image_toggle',
+          'type' => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
           'id' => 'phila_v2_photo_callout_block__txt-header',
           'type' => 'text',
           'name' => 'Header',
@@ -476,7 +483,13 @@ class Phila_Gov_Row_Metaboxes {
           'id' => 'phila_v2_photo_callout_block__txt-sub-header',
           'type' => 'text',
           'name' => 'Sub-header',
-          'columns' => 12
+          'columns' => 12,
+
+          'visible' => array(
+            'when' => array(
+              array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+            ),
+          ),
         ),
         array(
           'id'   => 'phila_v2_photo_callout_block__link',
@@ -494,14 +507,26 @@ class Phila_Gov_Row_Metaboxes {
             'id' => 'phila_v2_photo-callout-block__desc',
             'type' => 'textarea',
             'name' => 'Description',
-            'columns' => 12
+            'columns' => 12,
+
+            'visible' => array(
+              'when' => array(
+                array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+              ),
+            ),
         ),
         array(
           'id' => 'phila_v2_photo_callout_block__photo',
           'title' => 'Select image',
           'type' => 'image_advanced',
           'max_file_uploads' => 1,
-          'columns' => 12
+          'columns' => 12,
+
+          'visible' => array(
+            'when' => array(
+              array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+            ),
+          ),
         ),
       );
   }
