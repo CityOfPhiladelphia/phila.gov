@@ -1958,7 +1958,6 @@ function phila_get_translated_language( $language ) {
 
     while ( $connected->have_posts() ) : $connected->the_post();
 
-    
       $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
     
       $new_connection = new WP_Query( array(
@@ -1975,6 +1974,7 @@ function phila_get_translated_language( $language ) {
       endwhile;
 
     wp_reset_postdata();
+
     endwhile;
   wp_reset_postdata();
 
@@ -1988,7 +1988,7 @@ function phila_get_translated_language( $language ) {
       $final_array[$key] = $value;
     }
   }
-//var_dump($final_array);
+
   return $final_array;
 }
 
