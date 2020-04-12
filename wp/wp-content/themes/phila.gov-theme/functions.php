@@ -1917,6 +1917,7 @@ function phila_language_output($language){
 }
 
 function phila_get_translated_language( $language ) {
+  global $post;
 
   $language_list = array();
 
@@ -1924,56 +1925,55 @@ function phila_get_translated_language( $language ) {
     $connected = new WP_Query( array(
       'relationship' => array(
         'id'   => 'post_to_post_translations',
-        'to' => get_the_ID(), 
+        'to' => $post->ID, 
       ), 
       'nopaging'     => true,
     ) ); 
       $language_list['english'] = get_the_permalink();
+
   }else{
 
     $connected = new WP_Query( array(
       'relationship' => array(
         'id'   => 'post_to_post_translations',
-        'from' => get_the_ID(), 
+        'from' => $post->ID, 
       ), 
       'nopaging'     => true,
     ) );
     while ( $connected->have_posts() ) : $connected->the_post(); 
-    global $post;
-    $source_post = $post->ID;
-      $connected_source = new WP_Query( array(
+        $connected_source = new WP_Query( array(
+          'relationship' => array(
+            'id'   => 'post_to_post_translations',
+            'to' => $post->ID, 
+          ), 
+          'nopaging'     => true,
+        ) );
+        while ( $connected_source->have_posts() ) : $connected_source->the_post();
+
+        $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
+
+        endwhile;
+      endwhile;
+    }
+
+    while ( $connected->have_posts() ) : $connected->the_post();
+
+    
+      $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
+    
+      $new_connection = new WP_Query( array(
         'relationship' => array(
-          'id'   => 'post_to_post_translations',
-          'to' => $source_post, 
+            'id'   => 'post_to_post_translations',
+            'from' => $post->ID, 
+            'sibling' => true,
         ), 
         'nopaging'     => true,
       ) );
-      while ( $connected_source->have_posts() ) : $connected_source->the_post();
 
-      $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
-
+      while ( $new_connection->have_posts() ) : $connected->the_post(); 
+        $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
       endwhile;
-    endwhile;
-  }
 
-  while ( $connected->have_posts() ) : $connected->the_post();
-    
-    $parent = get_the_ID();
-  
-    $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
-  
-    $new_connection = new WP_Query( array(
-      'relationship' => array(
-          'id'   => 'post_to_post_translations',
-          'from' => $parent, 
-          'sibling' => true,
-      ), 
-      'nopaging'     => true,
-    ) );
-
-    while ( $new_connection->have_posts() ) : $connected->the_post(); 
-      $language_list[rwmb_meta('phila_select_language', get_the_ID())] = get_the_permalink();
-    endwhile;
     wp_reset_postdata();
     endwhile;
   wp_reset_postdata();
@@ -1988,7 +1988,7 @@ function phila_get_translated_language( $language ) {
       $final_array[$key] = $value;
     }
   }
-
+//var_dump($final_array);
   return $final_array;
 }
 
