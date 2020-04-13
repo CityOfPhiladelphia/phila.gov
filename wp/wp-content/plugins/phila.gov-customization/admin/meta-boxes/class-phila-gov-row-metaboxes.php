@@ -504,6 +504,13 @@ class Phila_Gov_Row_Metaboxes {
           'columns' => 12
         ),
         array(
+          'id' => 'phila_v2_photo-callout-block__txt-icon',
+          'type' => 'text',
+          'name' => 'Icon selection',
+          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.',
+          'columns' => 12
+        ),
+        array(
             'id' => 'phila_v2_photo-callout-block__desc',
             'type' => 'textarea',
             'name' => 'Description',
