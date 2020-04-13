@@ -2,11 +2,13 @@
 
 <?php
     $photo_callout = $current_row['phila_full_options']['photo_callout'];
+
     $header = $photo_callout['phila_v2_photo_callout_block__txt-header'];
     $subHeader = $photo_callout['phila_v2_photo_callout_block__txt-sub-header'];    
     $description = $photo_callout['phila_v2_photo-callout-block__desc'];
     $btnLink = $photo_callout['phila_v2_photo_callout_block__link'];
     $btnTxt = $photo_callout['phila_v2_photo-callout-block__txt-btn-label'];
+    $icon = $photo_callout['phila_v2_photo-callout-block__txt-icon'];
 
 ?>
 
@@ -18,8 +20,10 @@
             <div class="photo-callout-block__txt large-20 medium-20 small-20 cell callout-photo-toggle-false">
                     <div class="grid align-center-middle grid-x grid-padding-x">
                         <div class="cell small-22 large-18 ">
-                            <div class="valign">        
-                                <i class="far fa-map valign-cell fa-3x"></i>
+                            <div class="valign">
+                                <?php if ( !empty( $icon ) ) : ?>
+                                    <i class="<?php echo $icon ?> valign-cell fa-3x" aria-hidden="true"></i>
+                                <?php endif; ?>
                                 <h2 class="h2 photo-callout-block__txt-header callout-photo-toggle-false"><?php echo $header ?></h2>
                                 <?php if($btnLink): ?>
                                     <a href="<?php echo $btnLink ?>" class="photo-callout-block__txt-btn button icon callout-photo-toggle-false">
@@ -46,7 +50,9 @@
                             <?php if($btnLink): ?>
                             <a href="<?php echo $btnLink ?>" class="photo-callout-block__txt-btn button icon">
                                 <div class="valign">
-                                    <i class="far fa-map valign-cell"></i>
+                                    <?php if ( !empty( $icon ) ) : ?>
+                                        <i class="<?php echo $icon ?> valign-cell fa-3x" aria-hidden="true"></i>
+                                    <?php endif; ?>
                                     <div class="button-label valign-cell"><?php echo $btnTxt ?></div>
                                 </div>
                             </a>
