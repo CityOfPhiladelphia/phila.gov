@@ -15,7 +15,7 @@
     <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
         <?php if (empty( $photo_callout['phila_v2_photo_callout_block__image_toggle'] ) || !isset( $photo_callout['phila_v2_photo_callout_block__photo'] )) : ?>
 
-            <div class="photo-callout-block__txt large-20 medium-12 small-20 cell callout-photo-toggle-false">
+            <div class="photo-callout-block__txt large-20 medium-20 small-20 cell callout-photo-toggle-false">
                     <div class="grid align-center-middle grid-x grid-padding-x">
                         <div class="cell small-22 large-18 ">
                             <div class="valign">        
