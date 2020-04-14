@@ -306,6 +306,12 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
         'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
+      ),
+      array(
+        'id' => 'photo_callout',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
       )
     ),
   );
@@ -456,5 +462,79 @@ class Phila_Gov_Row_Metaboxes {
         ),
       ),
     );
+  }
+
+  public static function phila_metabox_photo_callout( ){
+      return  array(
+        array(
+          'name' => 'Display with Image?',
+          'id'   => 'phila_v2_photo_callout_block__image_toggle',
+          'type' => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
+          'id' => 'phila_v2_photo_callout_block__txt-header',
+          'type' => 'text',
+          'name' => 'Header',
+          'columns' => 12
+        ),
+        array(
+          'id' => 'phila_v2_photo_callout_block__txt-sub-header',
+          'type' => 'text',
+          'name' => 'Sub-header',
+          'columns' => 12,
+
+          'visible' => array(
+            'when' => array(
+              array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+            ),
+          ),
+        ),
+        array(
+          'id'   => 'phila_v2_photo_callout_block__link',
+          'type' => 'url',
+          'name' => 'Button URL',
+          'columns' => 12
+        ),
+        array(
+          'id' => 'phila_v2_photo-callout-block__txt-btn-label',
+          'type' => 'text',
+          'name' => 'Button Text',
+          'columns' => 12
+        ),
+        array(
+          'id' => 'phila_v2_photo-callout-block__txt-icon',
+          'type' => 'text',
+          'name' => 'Icon selection',
+          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.',
+          'columns' => 12
+        ),
+        array(
+            'id' => 'phila_v2_photo-callout-block__desc',
+            'type' => 'textarea',
+            'name' => 'Description',
+            'columns' => 12,
+
+            'visible' => array(
+              'when' => array(
+                array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+              ),
+            ),
+        ),
+        array(
+          'id' => 'phila_v2_photo_callout_block__photo',
+          'title' => 'Select image',
+          'type' => 'image_advanced',
+          'max_file_uploads' => 1,
+          'columns' => 12,
+
+          'visible' => array(
+            'when' => array(
+              array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+            ),
+          ),
+        ),
+      );
   }
 }

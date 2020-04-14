@@ -256,6 +256,13 @@
               <!-- /Staff listing -->
             <?php endif;?>
 
+            <?php elseif ( $current_row_option == 'phila_photo_callout'):?>
+            <?php if ( isset( $current_row['phila_full_options']['photo_callout'] ) ): ?>
+              <!-- Photo call out -->
+              <?php include(locate_template('partials/departments/v2/photo_callout.php')); ?>
+              <!-- /Photo call out -->
+            <?php endif;?>
+
 
         <?php endif;  /*end full row */?>
 

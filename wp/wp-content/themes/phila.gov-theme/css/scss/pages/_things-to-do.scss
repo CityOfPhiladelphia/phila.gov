@@ -9,30 +9,66 @@
 }
 .photo-callout-block__txt {
     & > .grid {height: 100%;}
+    &.cell{
+        // max-height: 350px;
+        background: color(ghost-gray);
+        @media screen and (max-width: 39.9375em) {
+            padding: 5%;
+        }
+    
+        @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+            padding: 0 10px;
+        }
+    }
+    &.callout-photo-toggle-false {
+        background: none;
+        border-top: solid 1px black;
+        border-bottom: solid 1px black;
+        @media screen and (max-width: 749px) {
+            padding: 0px;
+        }
+        .cell {
+            width: 100%;
+            @media screen and (max-width: 749px) {
+                margin-top: 1rem;
+            }
+
+            .valign {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: auto;
+                justify-content: space-between;
+                align-items: center;
+                @media screen and (max-width: 749px) {
+                    grid-template-columns: 1fr;
+                    justify-content: center;
+                }
+                .fa-3x {
+                    @media screen and (max-width: 749px) {
+                        display: none;
+                    }
+                }
+                .photo-callout-block__txt-btn {
+                    @media screen and (max-width: 749px) {
+                        margin: 0.92857rem auto;
+                    }
+                }
+            }
+        }
+    }
 }
 
-.photo-callout-block__img.cell{
-    overflow: hidden;
-    margin-bottom:0;
-    img{
-        width:100%;
-        display: block;
-        margin:0;
-        padding:0
-    }
-
-}
-
-
-.photo-callout-block__txt.cell{
-    // max-height: 350px;
-    background: color(ghost-gray);
-    @media screen and (max-width: 39.9375em) {
-        padding: 5%;
-    }
-
-    @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-        padding:0 10px;
+.photo-callout-block__img{
+    &.cell{
+        overflow: hidden;
+        margin-bottom:0;
+        img{
+            width:100%;
+            display: block;
+            margin:0;
+            padding:0
+        }
+    
     }
 }
 
@@ -51,12 +87,19 @@
     @media screen and (min-width: 40em) and (max-width: 63.9375em) {
         margin:0; padding:0;
     }
+    &.callout-photo-toggle-false {
+        text-align: center;
+    }
 }
 .photo-callout-block__txt-btn{
     margin-top: 20px;
     .button-label{display: inline-block;}
     @media screen and (min-width: 40em) and (max-width: 63.9375em) {
         margin-top: 0px;
+    }
+    &.callout-photo-toggle-false {
+        width: fit-content;
+        margin: 0.92857rem 0px 0.92857rem auto;
     }
 }
 
