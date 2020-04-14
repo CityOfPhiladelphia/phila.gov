@@ -181,3 +181,6 @@ ul#department_page-search-checklist li{
 #edittag .rwmb-field {
   display: block;
 }
+.rwmb-row:not(:last-of-type) {
+  margin-bottom: 0px;
+}
