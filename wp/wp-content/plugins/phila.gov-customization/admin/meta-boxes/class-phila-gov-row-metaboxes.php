@@ -312,6 +312,12 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
+      ),
+      array(
+        'id' => 'faq',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_faq'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_faq()
       )
     ),
   );
@@ -537,4 +543,15 @@ class Phila_Gov_Row_Metaboxes {
         ),
       );
   }
+
+  public static function phila_metabox_faq( ){
+    return  array(
+      array(
+        'id' => 'phila_v2_faq__txt-header',
+        'type' => 'text',
+        'name' => 'Header',
+        'columns' => 12
+      ),
+    );
+}
 }
