@@ -1917,12 +1917,14 @@ function phila_language_output($language){
 }
 
 function phila_get_translated_language( $language ) {
-  global $post;
+  global $wp_query, $post;
 
   $language_list = array();
 
   if ($language === 'english') {
+
     $connected = new WP_Query( array(
+
       'relationship' => array(
         'id'   => 'post_to_post_translations',
         'to' => $post->ID, 
@@ -1934,6 +1936,8 @@ function phila_get_translated_language( $language ) {
   }else{
 
     $connected = new WP_Query( array(
+      'post_type'  => 'post',
+
       'relationship' => array(
         'id'   => 'post_to_post_translations',
         'from' => $post->ID, 
@@ -1941,42 +1945,29 @@ function phila_get_translated_language( $language ) {
       'nopaging'     => true,
     ) );
     while ( $connected->have_posts() ) : $connected->the_post(); 
-        $connected_source = new WP_Query( array(
-          'relationship' => array(
-            'id'   => 'post_to_post_translations',
-            'to' => $post->ID, 
-          ), 
-          'nopaging'     => true,
-        ) );
-        while ( $connected_source->have_posts() ) : $connected_source->the_post();
 
-        $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
-
-        endwhile;
-      endwhile;
-    }
-
-    while ( $connected->have_posts() ) : $connected->the_post();
-
-      $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
     
-      $new_connection = new WP_Query( array(
+      $connected_source = new WP_Query( array(
+        'post_type'  => 'post',
         'relationship' => array(
-            'id'   => 'post_to_post_translations',
-            'from' => $post->ID, 
-            'sibling' => true,
+          'id'   => 'post_to_post_translations',
+          'to' => $post->ID, 
         ), 
         'nopaging'     => true,
       ) );
+      while ( $connected_source->have_posts() ) : $connected_source->the_post();
 
-      while ( $new_connection->have_posts() ) : $connected->the_post(); 
-        $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
+      $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
+
       endwhile;
-
-    wp_reset_postdata();
+    endwhile;
+    }
+    //handles the english version of the posts
+    while ( $connected->have_posts() ) : $connected->the_post();
+      $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
 
     endwhile;
-  wp_reset_postdata();
+    wp_reset_postdata();
 
 
 
