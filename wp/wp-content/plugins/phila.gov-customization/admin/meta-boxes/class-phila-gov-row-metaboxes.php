@@ -312,6 +312,12 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
+      ),
+      array(
+        'id' => 'faq',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_faq'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_faq()
       )
     ),
   );
@@ -537,4 +543,29 @@ class Phila_Gov_Row_Metaboxes {
         ),
       );
   }
+
+  public static function phila_metabox_faq( ){
+    return  array(
+      array(
+        'name' => 'Section title',
+        'id'   => 'accordion_row_title',
+        'type' => 'text',
+        'class' => 'percent-90',
+      ),
+      array(
+        'id'   => 'accordion_group',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'add_button' => '+ Add FAQ',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
+            $section_name = 'FAQ title', 
+            $wysiwyg_desc = 'FAQ content', 
+            $columns = 12, 
+            $clone = true ),
+        )
+      )
+    );
+}
 }

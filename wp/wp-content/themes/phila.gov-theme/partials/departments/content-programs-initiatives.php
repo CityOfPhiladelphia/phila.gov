@@ -263,6 +263,13 @@
               <!-- /Photo call out -->
             <?php endif;?>
 
+            <?php elseif ( $current_row_option == 'phila_faq'):?>
+            <?php if ( isset( $current_row['phila_full_options']['faq'] ) ): ?>
+              <!-- FAQ -->
+              <?php include(locate_template('partials/departments/v2/faq.php')); ?>
+              <!-- /FAQ -->
+            <?php endif;?>
+
 
         <?php endif;  /*end full row */?>
 
