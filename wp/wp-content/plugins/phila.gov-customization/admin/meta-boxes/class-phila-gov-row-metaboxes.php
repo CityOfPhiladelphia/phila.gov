@@ -547,11 +547,25 @@ class Phila_Gov_Row_Metaboxes {
   public static function phila_metabox_faq( ){
     return  array(
       array(
-        'id' => 'phila_v2_faq__txt-header',
+        'name' => 'Section title',
+        'id'   => 'accordion_row_title',
         'type' => 'text',
-        'name' => 'Header',
-        'columns' => 12
+        'class' => 'percent-90',
       ),
+      array(
+        'id'   => 'accordion_group',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'add_button' => '+ Add FAQ',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
+            $section_name = 'FAQ title', 
+            $wysiwyg_desc = 'FAQ content', 
+            $columns = 12, 
+            $clone = true ),
+        )
+      )
     );
 }
 }
