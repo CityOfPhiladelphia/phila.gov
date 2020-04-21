@@ -9,15 +9,15 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.9
-Tested up to: 5.3
-Stable tag: 2.0
-Version: 2.0
+Tested up to: 5.4
+Stable tag: 2.1
+Version: 2.1
 Requires PHP: 5.6.20
 Text Domain: disable-gutenberg
 Domain Path: /languages
 License: GPL v2 or later
 
-Disable Gutenberg Block Editor and restore the Classic Editor and original Edit Post screen (TinyMCE, meta boxes, et al). Selectively disable for posts, pages, roles, post types, and theme templates. Hide the Gutenberg nag, menu item, and more.
+Disable Gutenberg Block Editor and restore the Classic Editor and original Edit Post screen (TinyMCE, meta boxes, etc.). Selectively disable for posts, pages, roles, post types, and theme templates. Hide the Gutenberg nag, menu item, and more.
 
 
 
@@ -27,7 +27,7 @@ This plugin disables the new Gutenberg Editor (aka Block Editor) and replaces it
 
 > The all-in-one, COMPLETE solution for handling Gutenberg.
 > Hide ALL traces of Gutenberg and replace with the Classic Editor.
-> Restores the original Edit Post screen (TinyMCE, meta boxes, et al).
+> Restores the original Edit Post screen (TinyMCE, meta boxes, etc.).
 
 The Disable Gutenberg plugin restores the classic (original) WordPress editor and the "Edit Post" screen. So you can continue using plugins and theme functions that extend the Classic Editor. Supports awesome features like Meta Boxes, Quicktags, Custom Fields, and everything else the Classic Editor can do.
 
@@ -289,6 +289,11 @@ Thank you to everyone for using Disable Gutenberg and for all the [awesome 5-sta
 
 If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via my [contact form](https://perishablepress.com/contact/) at Perishable Press.
 
+
+**2.1 (2020/03/13)**
+
+* Bumps version number
+* Tests on WordPress 5.4
 
 **2.0 (2019/10/26)**
 

@@ -77,6 +77,9 @@ class MBR_Query {
 		if ( $relationship['reciprocal'] ) {
 			$fields             = 'mbr.from AS mbr_from, mbr.to AS mbr_to';
 			$clauses['fields'] .= empty( $clauses['fields'] ) ? $fields : " , $fields";
+			if ( empty( $clauses['groupby'] ) ) {
+				$clauses['groupby'] = 'mbr_from, mbr_to';
+			}
 
 			return sprintf(
 				" (mbr.type = '%s' AND ((mbr.from = $id_column AND mbr.to IN (%s)) OR (mbr.to = $id_column AND mbr.from IN (%s)))) ",
@@ -93,6 +96,9 @@ class MBR_Query {
 
 		$fields             = "mbr.$source AS mbr_origin";
 		$clauses['fields'] .= empty( $clauses['fields'] ) ? $fields : " , $fields";
+		if ( empty( $clauses['groupby'] ) ) {
+			$clauses['groupby'] = 'mbr_origin';
+		}
 
 		return sprintf(
 			" (mbr.$target = $id_column AND mbr.type = '%s' AND mbr.$source IN (%s)) ",

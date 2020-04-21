@@ -167,8 +167,12 @@ class MB_Relationships_API {
 	 * @return array
 	 */
 	private static function filter( $items, $object_id ) {
-		return array_filter( $items, function( $item ) use ( $object_id ) {
-			return ( isset( $item->mbr_origin ) && $item->mb_origin == $object_id ) || $item->mbr_from == $object_id || $item->mbr_to == $object_id;
+		$items = array_filter( $items, function( $item ) use ( $object_id ) {
+			$item = (array) $item;
+			return ( isset( $item['mbr_origin'] ) && $item['mbr_origin'] == $object_id )
+				|| ( isset( $item['mbr_from'] ) && $item['mbr_from'] == $object_id )
+				|| ( isset( $item['mbr_to'] ) && $item['mbr_to'] == $object_id );
 		} );
+		return $items;
 	}
 }
