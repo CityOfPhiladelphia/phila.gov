@@ -1088,7 +1088,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'id'       => 'phila_custom_markup',
   'title'    => 'Custom Markup',
-  'pages'    => array( 'department_page', 'page', 'service_page', 'programs', 'guides' ),
+  'pages'    => array( 'department_page', 'page', 'service_page', 'programs', 'guides', 'event_spotlight' ),
   'context'  => 'advanced',
   'priority' => 'low',
 
