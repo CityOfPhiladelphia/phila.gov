@@ -31,7 +31,7 @@ class MBR_Storage {
 
 		if ( $relationship->reciprocal ) {
 			$results = $wpdb->get_results( $wpdb->prepare(
-				"SELECT `from`, `to` FROM {$wpdb->mb_relationships} WHERE `from`=%d OR `to`=%d AND `type`=%s",
+				"SELECT `from`, `to` FROM {$wpdb->mb_relationships} WHERE (`from`=%d OR `to`=%d) AND `type`=%s",
 				$object_id,
 				$object_id,
 				$type
