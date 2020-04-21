@@ -9,8 +9,8 @@
 <?php
   $vue_app_urls = rwmb_meta('phila_vue_app', '', $post->ID);
   $vue_app_id = isset($vue_app_urls['phila_vue_app_id']) ? $vue_app_urls['phila_vue_app_id'] : 'vue-app';
-
   $app_title = rwmb_meta('vue_app_title');
+
     if (is_array($vue_app_urls)) {
       $count = 1;
       foreach($vue_app_urls['phila-vue-app-js'] as $url) {
