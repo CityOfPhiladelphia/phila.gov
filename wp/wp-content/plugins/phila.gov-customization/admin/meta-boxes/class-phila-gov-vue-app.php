@@ -33,7 +33,7 @@ class Phila_Vue_App_Files {
       array(
       'id'  => 'phila_vue_app_id',
       'type'  => 'text', 
-      'name'  => 'Vue App div id'
+      'name'  => 'Vue app div id'
       ),
         array(
           'id' => 'phila-vue-app-css',
