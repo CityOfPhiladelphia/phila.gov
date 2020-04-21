@@ -54,3 +54,6 @@ add_filter('the_generator', 'phila_remove_version');
 function phila_remove_version() {
   return '';
 }
+
+// Removing wp-embed
+remove_shortcode( 'embed' );
