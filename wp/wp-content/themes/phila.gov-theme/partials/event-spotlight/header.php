@@ -34,7 +34,7 @@
     <?php endif; ?>
   </div>
   <div class="bg-ghost-gray card card--calendar pvm">
-    <div class="grid-container">
+    <div class="grid-container es-event-info">
       <div class="grid-x">
         <div class="cell">
           <div class="post-label post-label--calendar"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
