@@ -1982,4 +1982,3 @@ function phila_get_translated_language( $language ) {
 
   return $final_array;
 }
-
