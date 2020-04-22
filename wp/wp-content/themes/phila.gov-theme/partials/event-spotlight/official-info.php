@@ -65,7 +65,7 @@
 <?php 
   $canceled = rwmb_meta('event_canceled');
   if (!empty($canceled) ): ?>
-    <div class="callout full-width">
+    <div class="callout full-width es-canceled">
       <?php echo apply_filters('the_content', $canceled); ?>
     </div>
 <?php endif; ?>
