@@ -67,7 +67,7 @@
 <?php $count = $announcements->post_count ?>
   <?php if ( $announcements->have_posts() ) : ?>
     <div class="grid-container mbxl">
-    <?php if ( is_single()) { ?>
+    <?php if ( is_single() || is_home() ) { ?>
       <h2>Announcements</h2>
     <?php } ?>
     <div class="grid-x grid-margin-x">
