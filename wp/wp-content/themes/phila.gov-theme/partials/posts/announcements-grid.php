@@ -67,7 +67,9 @@
 <?php $count = $announcements->post_count ?>
   <?php if ( $announcements->have_posts() ) : ?>
     <div class="grid-container mbxl">
-    <h2>Announcements</h2>
+    <?php if ( is_single() || is_home() ) { ?>
+      <h2>Announcements</h2>
+    <?php } ?>
     <div class="grid-x grid-margin-x">
     <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
