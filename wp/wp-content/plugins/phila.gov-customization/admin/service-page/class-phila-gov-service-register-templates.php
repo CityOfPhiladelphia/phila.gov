@@ -22,7 +22,6 @@ class Phila_Gov_Register_Service_Templates {
       'title' => 'Before you start',
       'pages' => array('service_page'),
       'revision' => true,
-      'class' => 'hide-on-load',
       'priority'  => 'high',
       'visible' => array(
         'when' => array(
