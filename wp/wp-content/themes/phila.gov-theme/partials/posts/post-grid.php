@@ -4,7 +4,12 @@
  *
 */
 ?>
-<?php $post_categories = isset($category) ? $category : ''; ?>
+<?php 
+  $override = rwmb_meta('phila_get_post_cats');
+  $override_url = $override['override_url'];
+  $post_categories = isset($category) ? $category : '';
+  $override_url = $override['override_url'];
+?>
 <?php if (!empty($post_categories)): ?>
   <?php foreach ($post_categories as $category ) {
     $current_cat = get_the_category_by_ID($category);
@@ -17,8 +22,8 @@
   ?>
   <?php endif; ?>
 <?php $tag = isset($tag) ? $tag : '';?>
-<?php
 
+<?php
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
 
