@@ -653,6 +653,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'field_type' => 'select_advanced',
             'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
           ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
         ),
       ),
     ),
