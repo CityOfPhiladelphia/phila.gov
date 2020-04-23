@@ -115,7 +115,6 @@ HTML;
       get_template_part( 'partials/departments/v2/content', 'contact-us' );
       break;
 
-
     case 'all_services_v2':
       get_template_part( 'partials/departments/v2/content', 'all-services' );
       break;
@@ -124,16 +123,13 @@ HTML;
       get_template_part( 'partials/departments/v2/content', 'all-programs' );
       break;
 
-
     case 'forms_and_documents_v2':
       get_template_part( 'partials/departments/v2/content', 'forms-documents' );
       break;
 
-
     case 'resource_list_v2':
       apply_template_section(get_template_part( 'partials/resource', 'list' ));
       break;
-
 
     case 'staff_directory_v2':
       get_template_part( 'partials/departments/phila_staff_directory_listing' );
@@ -154,33 +150,7 @@ HTML;
     case 'disabled':
       break;
 
-
     case 'off_site_department':
-      break;
-
-
-    case 'department_homepage':
-      apply_template_section(get_template_part( 'partials/departments/content', 'department-homepage' ));
-      break;
-
-
-    case 'department_subpage':
-      apply_template_section(get_template_part( 'partials/departments/content', 'department-subpage' ));
-      break;
-
-
-    case 'programs_initiatives':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
-      break;
-
-
-    case 'resource_list':
-      apply_template_section(get_template_part( 'partials/resource', 'list' ));
-      break;
-
-
-    case 'staff_directory':
-      apply_template_section(get_template_part( 'partials/departments/phila_staff_directory_listing' ));
       break;
 
     case 'prog_association':
