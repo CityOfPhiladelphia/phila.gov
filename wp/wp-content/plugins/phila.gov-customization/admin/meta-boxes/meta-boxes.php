@@ -1133,6 +1133,33 @@ $meta_boxes[] = array(
 );
 
 
+$meta_boxes[] = array(
+  'title' => 'CTO Modal',
+  'pages'    => array( 'department_page', 'programs' ),
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'prog_landing_page')
+      ),
+    'relation'  => 'or'
+  ),
+  'fields' => array(
+    array(
+      'id'  => 'button_text',
+      'name'  => 'Button Text',
+      'type'  => 'text',
+    ),
+    array(
+      'name' => 'Modal Text',
+      'id'   => 'modal_text',
+      'type' => 'wysiwyg',
+      'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+    ),
+    // Phila_Gov_Standard_Metaboxes::phila_cto_modal(),
+  )
+);
+
+
 return $meta_boxes;
 
 }
