@@ -217,11 +217,4 @@ module.exports = $(function(){
   }
   var mainContent = $('.guide-content').eq(0);
 
-  // opens cto-modal if exists for department & program pages
-  $(document).ready(function() {
-    if ($('#cto-modal').length){
-      $('#cto-modal').foundation('open');
-    }
-  });
-
 });
