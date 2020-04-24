@@ -7,11 +7,7 @@
     <div class="content">
         <?php echo $modal_content; ?>
     </div>
-    <div class="button-text">
-    <?php echo $modal_button_text; ?>
-    </div>
-    
-    <button class="close-button bg-white" data-close aria-label="Close modal" type="button">
-    <span aria-hidden="true">&times;</span>
+    <button class="button-text" aria-label="Close modal" type="button" data-close>
+        <?php echo $modal_button_text; ?>
     </button>
 </div>
