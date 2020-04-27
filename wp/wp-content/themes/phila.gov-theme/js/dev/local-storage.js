@@ -35,9 +35,18 @@ module.exports = $(function(){
         if(getWithExpiry('phila-modal-'+modalSlug) == null && $('#cto-modal').length) {
             $('#cto-modal').foundation('open');
 
+            if ($('.reveal--announcement')[0]) {
+
+                $('.reveal--announcement').on('closed.zf.reveal', function () {
+                    $('#cto-modal').foundation('open'); 
+                });
+
+            }
+
             // expires in 1 week or 604800 seconds
             setWithExpiry('phila-modal-'+modalSlug, 'seen', 604800);
         }
     });
     
 });
+// data-multiple-opened

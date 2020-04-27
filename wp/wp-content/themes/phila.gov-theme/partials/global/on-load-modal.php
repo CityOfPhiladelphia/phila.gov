@@ -22,7 +22,7 @@
 ?>
 
 <?php if( $modal_exists ) { ?>
-    <div class="reveal center cto-modal" id="cto-modal" data-reveal data-deep-link="true">
+    <div class="reveal center cto-modal" id="cto-modal" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
         <div class="content">
             <?php echo $modal_content; ?>
         </div>
