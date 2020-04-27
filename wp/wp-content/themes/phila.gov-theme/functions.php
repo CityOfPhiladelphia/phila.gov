@@ -1987,6 +1987,6 @@ function phila_apply_modal_to_children_pages( $post_id ) {
   $classes = get_body_class();
   if (in_array('department_page-template-default',$classes) && !in_array('department-landing',$classes)) {
     $post_parent = wp_get_post_parent_id( $post_id );
-    return $meta = get_post_meta( $post_parent, 'cto_modal_text', TRUE );
+    return $meta = get_post_meta( $post_parent, 'disclaimer_modal_text', TRUE );
   }
 }
