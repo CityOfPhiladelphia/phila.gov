@@ -24,7 +24,7 @@ module.exports = $(function(){
     }
 
 
-    // opens cto-modal if exists for department & program pages
+    // opens disclaimer-modal if exists for department & program pages
     $(document).ready(function() {
         let modalSlug = window.location.pathname.split('/');
 
@@ -32,13 +32,13 @@ module.exports = $(function(){
             modalSlug = modalSlug.slice(1,3).join('-');
         }
 
-        if(getWithExpiry('phila-modal-'+modalSlug) == null && $('#cto-modal').length) {
-            $('#cto-modal').foundation('open');
+        if(getWithExpiry('phila-modal-'+modalSlug) == null && $('#disclaimer-modal').length) {
+            $('#disclaimer-modal').foundation('open');
 
             if ($('.reveal--announcement')[0]) {
 
                 $('.reveal--announcement').on('closed.zf.reveal', function () {
-                    $('#cto-modal').foundation('open'); 
+                    $('#disclaimer-modal').foundation('open'); 
                 });
 
             }

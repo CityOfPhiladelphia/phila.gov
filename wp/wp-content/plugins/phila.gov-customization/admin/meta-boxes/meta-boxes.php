@@ -1134,7 +1134,7 @@ $meta_boxes[] = array(
 
 
 $meta_boxes[] = array(
-  'title' => 'CTO Modal',
+  'title' => 'Disclaimer Modal',
   'pages'    => array( 'department_page', 'programs' ),
   'visible' => array(
     'when'  =>  array(
@@ -1143,7 +1143,7 @@ $meta_boxes[] = array(
       ),
     'relation'  => 'or'
   ),
-  'fields' => Phila_Gov_Standard_Metaboxes::phila_cto_modal(),
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_disclaimer_modal(),
 );
 
 
