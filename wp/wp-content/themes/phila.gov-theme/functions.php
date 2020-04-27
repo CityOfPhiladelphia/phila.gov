@@ -1983,10 +1983,26 @@ function phila_get_translated_language( $language ) {
   return $final_array;
 }
 
-function phila_apply_modal_to_children_pages( $post_id ) {  
+function phila_apply_modal_to_children_pages() {
   $classes = get_body_class();
-  if (in_array('department_page-template-default',$classes) && !in_array('department-landing',$classes)) {
-    $post_parent = wp_get_post_parent_id( $post_id );
-    return $meta = get_post_meta( $post_parent, 'disclaimer_modal_text', TRUE );
-  }
+    $modal_exists = true;
+    if (    (  in_array('department_page-template-default',$classes) && in_array('department-landing',$classes )) ||
+            ( in_array('programs-template-default',$classes) && wp_get_post_parent_id( get_the_ID()) == 0) ) {
+        $modal_content = rwmb_meta( 'disclaimer_modal_text' ); 
+        $modal_button_text = rwmb_meta( 'disclaimer_modal_button_text' );
+    }
+    else if (   ( in_array('department_page-template-default',$classes) && !in_array('department-landing',$classes )) ||
+                ( in_array('programs-template-default',$classes) && wp_get_post_parent_id( get_the_ID()) != 0) ) {
+        $post_parent = wp_get_post_parent_id( get_the_ID() );
+        $modal_content = get_post_meta( $post_parent, 'disclaimer_modal_text', TRUE );
+        $modal_button_text = get_post_meta( $post_parent, 'disclaimer_modal_button_text', TRUE );
+    }
+    if( $modal_content == null || 
+        $modal_content == '' || 
+        $modal_button_text == null || 
+        $modal_button_text == ''
+    ) {
+        $modal_exists = false;
+    }
+    return array($modal_exists, $modal_content, $modal_button_text);
 }
