@@ -26,11 +26,17 @@ module.exports = $(function(){
 
     // opens cto-modal if exists for department & program pages
     $(document).ready(function() {
-        if(getWithExpiry('philaCtoModal') == null && $('#cto-modal').length) {
+        let modalSlug = window.location.pathname.split('/');
+
+        if( ( modalSlug[1] == 'departments' || modalSlug[1] == 'programs') && modalSlug[2] ) {
+            modalSlug = modalSlug.slice(1,3).join('-');
+        }
+
+        if(getWithExpiry('phila-modal-'+modalSlug) == null && $('#cto-modal').length) {
             $('#cto-modal').foundation('open');
 
             // expires in 1 week or 604800 seconds
-            setWithExpiry('philaCtoModal', 'seen', 604800);
+            setWithExpiry('phila-modal-'+modalSlug, 'seen', 604800);
         }
     });
     
