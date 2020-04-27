@@ -52,4 +52,3 @@
     </div>
 
 </header>
-<?php include(locate_template('partials/departments/v2/on-load-modal.php')); ?>

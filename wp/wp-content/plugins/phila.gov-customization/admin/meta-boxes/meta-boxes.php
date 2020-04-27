@@ -1143,20 +1143,7 @@ $meta_boxes[] = array(
       ),
     'relation'  => 'or'
   ),
-  'fields' => array(
-    array(
-      'id'  => 'cto_modal_button_text',
-      'name'  => 'Button Text',
-      'type'  => 'text',
-    ),
-    array(
-      'name' => 'Modal Text',
-      'id'   => 'cto_modal_text',
-      'type' => 'wysiwyg',
-      'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-    ),
-    // Phila_Gov_Standard_Metaboxes::phila_cto_modal(),
-  )
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_cto_modal(),
 );
 
 
