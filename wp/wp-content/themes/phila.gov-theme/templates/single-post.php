@@ -73,7 +73,7 @@ $language_list = phila_get_translated_language( $language );
   <?php endif; ?>
   </header>
 
-<?php if ( !empty( $language_list ) ): ?>
+<?php  if ( count( $language_list ) != 1 ): ?>
   <!-- Translated content -->
   <div class="grid-container translations-container">
     <div class="grid-x medium-24 bg-ghost-gray mvl pas translations">
@@ -89,7 +89,7 @@ $language_list = phila_get_translated_language( $language );
     </div>
   </div>
   <!-- /Translated content -->
-  <?php endif ?>
+  <?php endif; ?>
 
 
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
