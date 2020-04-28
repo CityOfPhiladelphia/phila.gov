@@ -40,12 +40,11 @@ module.exports = $(function(){
                 $('.reveal--announcement').on('closed.zf.reveal', function () {
                     $('#disclaimer-modal').foundation('open'); 
                 });
-
             }
-
-            // expires in 1 week or 604800 seconds
-            setWithExpiry('phila-modal-'+modalSlug, 'seen', 604800);
         }
+        $('#disclaimer-modal .button-text').click(function() {
+            setWithExpiry('phila-modal-'+modalSlug, 'seen', 604800);     
+        });
     });
     
 });
