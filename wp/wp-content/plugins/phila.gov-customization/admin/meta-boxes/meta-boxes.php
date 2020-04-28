@@ -1134,6 +1134,20 @@ $meta_boxes[] = array(
 );
 
 
+$meta_boxes[] = array(
+  'title' => 'Disclaimer Modal',
+  'pages'    => array( 'department_page', 'programs' ),
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'prog_landing_page')
+      ),
+    'relation'  => 'or'
+  ),
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_disclaimer_modal(),
+);
+
+
 return $meta_boxes;
 
 }
