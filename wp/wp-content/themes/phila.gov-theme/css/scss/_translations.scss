@@ -6,7 +6,9 @@
   }
 }
 .translated-headings {
-  h1{
+  margin-top: 1.14286rem; //mimic h1 spacing
+  margin-bottom: 1.14286rem;
+  h1, h2{
     display: inline;
   }
   a:link, a:visited, a:active, a:hover{
@@ -16,6 +18,7 @@
     list-style-type: none;
     display: inline;
     margin:0;
+    padding:0;
     li{
       display: inline;
       border-right: 1px solid #444;
