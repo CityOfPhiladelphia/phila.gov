@@ -6,14 +6,14 @@
 ?>
 <?php 
   $override = rwmb_meta('phila_get_post_cats');
-  $override_url = $override['override_url'];
+  $override_url = isset($override['override_url']) ? $override['override_url'] : '';
   $post_categories = isset($category) ? $category : '';
-  $override_url = $override['override_url'];
+  $override_url = isset($override['override_url']) ? $override['override_url'] : '';
 ?>
 <?php if (!empty($post_categories)): ?>
   <?php foreach ($post_categories as $category ) {
     $current_cat = get_the_category_by_ID($category);
-    $slang_name = html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat )));
+    $slang_name = urlencode(html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat ))));
   } ?>
 <?php else: ?>
   <?php 
@@ -131,10 +131,8 @@ $result->post_count = count( $result->posts );
 <div class="post-grid">
   <div class="grid-container mbm">
     <?php if ( $result->have_posts() ) : ?>
-      <?php if (!is_page_template('templates/the-latest.php')): ?>
-        <h2><a href="/the-latest/archives/#/?templates=post&languge=english">Posts</h2>
-      <?php endif; ?>
-      <div class="grid-x grid-margin-x align-stretch">
+      <?php include( locate_template( 'partials/posts/post-translated-langs.php' ) ); ?>
+        <div class="grid-x grid-margin-x align-stretch">
         <?php $total = $result->post_count; ?>
         <?php $label_arr = phila_get_post_label('post'); ?>
         <?php while ( $result->have_posts() ) : $result->the_post(); ?>
