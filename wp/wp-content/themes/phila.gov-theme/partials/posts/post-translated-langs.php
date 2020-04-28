@@ -41,7 +41,15 @@ endif;
   endwhile;
   $unique_langs = array_unique($langs);
 
+  $term = get_term($tag[0],'post_tag');
+  var_dump($term);
+
+  /// TODO:
+  //  links when term is set.
+  //  links when see all URL is present
   ?>
+
+
 <?php if(count($unique_langs) > 1) :?>
   <div class="translated-headings">
     <h2>Posts</h2>
