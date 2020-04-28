@@ -1,0 +1,5 @@
+#main a:link:not(.faux-card):not(.card), 
+#main a:visited:not(.faux-card):not(.card),
+#footer a:link, a:visited{
+  text-decoration: underline;
+}

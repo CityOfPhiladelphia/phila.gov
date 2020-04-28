@@ -83,7 +83,17 @@
     <section>
       <div id="posts" data-magellan-target="posts">
         <header class="row columns mtl">
-          <h1>The latest posts from departments</h1>
+          <div class="translated-headings">
+            <h1 class="english"><a href="/the-latest/archives/#/?template=posts&language=english">Posts</a></h1>
+            <ul class="translated-list">
+              <li><a href="/the-latest/archives/#/?template=posts&language=spanish">Español</a></li>
+              <li><a href="/the-latest/archives/#/?template=posts&language=chinese">中文</a></li>
+              <li><a href="/the-latest/archives/#/?template=posts&language=vietnamese">Tiếng Việt</a></li>
+              <li><a href="/the-latest/archives/#/?template=posts&language=russian">Pусский</a></li>
+              <li><a href="/the-latest/archives/#/?template=posts&language=french">Français</a></li>
+              <li><a href="/the-latest/archives/#/?template=posts&language=arabic">عربى</a></li>
+            </ul>
+          </div>
         </header>
         <?php get_template_part('partials/posts/post', 'grid'); ?>
       </div>
