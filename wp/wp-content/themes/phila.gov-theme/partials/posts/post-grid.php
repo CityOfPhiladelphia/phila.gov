@@ -56,16 +56,6 @@ if ( empty( $post_categories ) ) {
 
 }
 
-$phila_posts_args  = array(
-  'posts_per_page' => 3,
-  'post_type' => array( 'phila_post' ),
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'cat' => $post_categories,
-); ?>
-
-<?php
-
 if( !empty($tag) ) {
   $posts_args  = array(
     'post_type' => array('post', 'phila_post'),
@@ -79,6 +69,19 @@ if( !empty($tag) ) {
         'key' => 'phila_template_select',
         'value' => 'press_release',
         'compare' => '!=',
+      ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
       ),
     )
   );
@@ -99,18 +102,28 @@ if( !empty($tag) ) {
         'value' => 'post',
         'compare' => '=',
       ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
+      ),
     )
   );
   $posts = new WP_Query( $posts_args );
-  $phila_posts = new WP_Query( $phila_posts_args );
 
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
-  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts, $phila_posts->posts );
+  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts);
 }
-
 $result->post_count = count( $result->posts );
-
 ?>
 
 <?php $count = 0; ?>
@@ -119,7 +132,7 @@ $result->post_count = count( $result->posts );
   <div class="grid-container mbm">
     <?php if ( $result->have_posts() ) : ?>
       <?php if (!is_page_template('templates/the-latest.php')): ?>
-        <h2>Posts</h2>
+        <h2><a href="/the-latest/archives/#/?templates=post&languge=english">Posts</h2>
       <?php endif; ?>
       <div class="grid-x grid-margin-x align-stretch">
         <?php $total = $result->post_count; ?>

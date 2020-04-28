@@ -41,6 +41,19 @@ if( !empty($tag) ) {
           'key' => 'phila_template_select',
           'value' => 'press_release',
           'compare' => '=',
+        ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
       ),
     )
   );
@@ -59,6 +72,19 @@ if( !empty($tag) ) {
           'key' => 'phila_template_select',
           'value' => 'press_release',
           'compare' => '=',
+        ),
+        array(
+          'relation'  => 'OR',
+          array(
+            'key' => 'phila_select_language',
+            'value' => 'english',
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'phila_select_language',
+            'value' => '',
+            'compare' => '=',
+          ),
         ),
     ),
   );
@@ -82,7 +108,7 @@ if( !empty($tag) ) {
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
     <?php if (!is_page_template('templates/the-latest.php')): ?>
-      <h2>Press releases</h2>
+      <h2><a href="/the-latest/archives/#/?templates=press_release&language=english">Press releases</a></h2>
     <?php endif; ?>
       <?php while ( $result->have_posts() ) : $result->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
