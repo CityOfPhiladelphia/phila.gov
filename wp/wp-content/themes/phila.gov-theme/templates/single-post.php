@@ -168,6 +168,19 @@ $language_list = phila_get_translated_language( $language );
         'value'   => $template_type,
         'compare' => '=',
       ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
+      ),
     ),
   );
 
