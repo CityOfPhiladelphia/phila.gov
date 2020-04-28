@@ -334,13 +334,21 @@ class Phila_Archives_Controller {
         $link = get_permalink($post->ID);
         $parsed_link = parse_url($link);
         $post_data['link']  = (string) $parsed_link['path'] ;
-     }
+      }
     }
 
     if (isset( $schema['properties']['tags'] )) {
       $tags = get_the_tags($post->ID);
 
       $post_data['tags']  = (array) $tags;
+    }
+
+    if (isset( $schema['properties']['language'] )) {
+      $language = rwmb_meta('phila_select_language', '', $post->ID);
+      if ( empty( $language ) ) { # set the default lang to account for items made before this feature existed.
+        $language = 'english';
+      }
+      $post_data['language']  = (string) $language;
     }
 
     if (isset( $schema['properties']['categories'] )) {
@@ -422,6 +430,10 @@ class Phila_Archives_Controller {
         ),
         'link'  => array(
           'description' => esc_html__('The permalink for this object.', 'phila-gov'),
+          'type'  => 'string',
+        ),
+        'language'  => array(
+          'description' => esc_html__('The langauge this post is in.', 'phila-gov'),
           'type'  => 'string',
         ),
         'tags'  => array(
