@@ -131,7 +131,7 @@ $result->post_count = count( $result->posts );
 <div class="post-grid">
   <div class="grid-container mbm">
     <?php if ( $result->have_posts() ) : ?>
-      <?php include( locate_template( 'partials/posts/post-translated-langs.php' ) ); ?>
+      <?php include( locate_template( 'partials/posts/post-translated-langs-see-all.php' ) ); ?>
         <div class="grid-x grid-margin-x align-stretch">
         <?php $total = $result->post_count; ?>
         <?php $label_arr = phila_get_post_label('post'); ?>
