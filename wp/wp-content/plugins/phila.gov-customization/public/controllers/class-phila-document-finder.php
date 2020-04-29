@@ -77,31 +77,78 @@ class Phila_Document_Finder_Controller {
    * @param WP_Post $post The comment object whose response is being prepared.
    */
 
-  public function prepare_item_for_response( $post, $request ) {
+  public function prepare_item_for_response( $file, $request ) {
     $post_data = array();
 
     $schema = $this->get_item_schema( $request );
 
-    // if (isset( $schema['properties']['name'] )) {
-
-    //   $post_data['name'] = (string) $post->post_title;
-    // }
-
-    // if (isset( $schema['properties']['short_name'] )) {
-    //   $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $post->post_title );
-
-    //   $trimmed_name = preg_replace('/( & )/', ' and ', $trimmed_name);
-
-    //   $post_data['short_name'] = (string) html_entity_decode(trim($trimmed_name));
-    // }
-
-    // if (isset( $schema['properties']['acronym'] )) {
-    //   $acronym = rwmb_meta('phila_department_acronym', array(), $post->ID);
-    //   $post_data['acronym'] = (string) $acronym;
-    // }
-
-    $post_data['test'] = (string) 'test 123';
-    $post_data['what'] = (string) 'where';
+    $post_data['url'] = (string) $file['subtype'];
+    if($file['id']) {
+      $post_data['id'] = (string) $file['id'];
+    }
+    if($file['title']) {
+      $post_data['title'] = (string) $file['title'];
+    }
+    if($file['filename']) {
+      $post_data['filename'] = (string) $file['filename'];
+    }
+    if($file['url']) {
+      $post_data['url'] = (string) $file['url'];
+    }
+    if($file['link']) {
+      $post_data['link'] = (string) $file['link'];
+    }
+    if($file['alt']) {
+      $post_data['alt'] = (string) $file['alt'];
+    }
+    if($file['author']) {
+      $post_data['author'] = (string) $file['author'];
+    }
+    if($file['description']) {
+      $post_data['description'] = (string) $file['description'];
+    }
+    if($file['caption']) {
+      $post_data['caption'] = (string) $file['caption'];
+    }
+    if($file['name']) {
+      $post_data['name'] = (string) $file['name'];
+    }
+    if($file['status']) {
+      $post_data['status'] = (string) $file['status'];
+    }
+    if($file['uploadedTo']) {
+      $post_data['uploadedTo'] = (string) $file['uploadedTo'];
+    }
+    if($file['date']) {
+      $post_data['date'] = (string) $file['date'];
+    }
+    if($file['modified']) {
+      $post_data['modified'] = (string) $file['modified'];
+    }
+    if($file['menuOrder']) {
+      $post_data['menuOrder'] = (string) $file['menuOrder'];
+    }
+    if($file['mime']) {
+      $post_data['mime'] = (string) $file['mime'];
+    }
+    if($file['type']) {
+      $post_data['type'] = (string) $file['type'];
+    }
+    if($file['subtype']) {
+      $post_data['subtype'] = (string) $file['subtype'];
+    }
+    if($file['icon']) {
+      $post_data['icon'] = (string) $file['icon'];
+    }
+    if($file['dateFormatted']) {
+      $post_data['dateFormatted'] = (string) $file['dateFormatted'];
+    }
+    if($file['editLink']) {
+      $post_data['editLink'] = (string) $file['editLink'];
+    }
+    if($file['meta']) {
+      $post_data['meta'] = (string) $file['meta'];
+    }
 
     return rest_ensure_response( $post_data );
 }
@@ -149,18 +196,115 @@ class Phila_Document_Finder_Controller {
       'type'                 => 'object',
       // Specify object properties in the properties attribute.
       'properties'           => array(
-        'title'=> array(
-          'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
-          'type'         => 'string',
-          'readonly'     => true,
+        'id'  => array(
+          'description' => esc_html__('id of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
         ),
-        'url'  => array(
-          'description' => esc_html__('The permalink for this object.', 'phila-gov'),
-          'type'  => 'string',
+        'title' => array(
+          'description' => esc_html__('title of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
         ),
-        'desc'  => array(
-          'description' => esc_html__('Description of this page.', 'phila-gov'),
-          'type'  => 'string',
+        'filename'  => array(
+          'description' => esc_html__('filename of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'url' => array(
+          'description' => esc_html__('url of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'link'  => array(
+          'description' => esc_html__('link of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'alt' => array(
+          'description' => esc_html__('alt of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'author'  => array(
+          'description' => esc_html__('author of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'description' => array(
+          'description' => esc_html__('description of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'caption' => array(
+          'description' => esc_html__('caption of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'name'  => array(
+          'description' => esc_html__('name of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'status'  => array(
+          'description' => esc_html__('status of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'uploadedTo'  => array(
+          'description' => esc_html__('uploadedTo of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'date'  => array(
+          'description' => esc_html__('date of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'modified'  => array(
+          'description' => esc_html__('modified of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'menuOrder' => array(
+          'description' => esc_html__('menuOrder of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'mime'  => array(
+          'description' => esc_html__('mime of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'type'  => array(
+          'description' => esc_html__('type of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'subtype' => array(
+          'description' => esc_html__('subtype of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'icon'  => array(
+          'description' => esc_html__('icon of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'dateFormatted' => array(
+          'description' => esc_html__('dateFormatted of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'editLink'  => array(
+          'description' => esc_html__('editLink of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'meta'  => array(
+          'description' => esc_html__('meta of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
         ),
       ),
     );
