@@ -43,7 +43,8 @@ module.exports = $(function(){
             }
         }
         $('#disclaimer-modal .button-text').click(function() {
-            setWithExpiry('phila-modal-'+modalSlug, 'seen', 604800);     
+            // two week expiry
+            setWithExpiry('phila-modal-'+modalSlug, 'seen', 1209600000);
         });
     });
     
