@@ -39,10 +39,11 @@ class Phila_Document_Finder_Controller {
     $args = array(
       'posts_per_page'=> -1,
       'post_type' => 'department_page',
-      'orderby' => 'title',
-      'order' => 'asc',
-      'post_parent' => 0,
-      'post_status' => 'publish'
+      // 'orderby' => 'title',
+      // 'order' => 'asc',
+      // 'post_parent' => 0,
+      // 'post_status' => 'publish',
+      'post__in' => array(71348) // code bulletin page ID
     );
 
     $posts = get_posts( $args );
@@ -55,7 +56,7 @@ class Phila_Document_Finder_Controller {
 
     foreach ( $posts as $post ) {
       
-      $document_tables = rwmb_meta( 'phila_document_table', '', $post_id );
+      $document_tables = rwmb_meta( 'phila_document_table', '', $post->ID );
 
       foreach ( $document_tables as $document_table ) {
         foreach ( $document_table['phila_files'] as $id )  {
@@ -68,25 +69,6 @@ class Phila_Document_Finder_Controller {
 
     // Return all response data.
     return rest_ensure_response( $data );
-  }
-
-
-  /**
-   * Outputs an individual item's data
-   *
-   * @param WP_REST_Request $request Current request.
-   */
-  public function get_item( $request ) {
-    $id = (int) $request['id'];
-    $post = get_post( $id );
-
-    if ( empty( $post ) ) {
-      return rest_ensure_response( array() );
-    }
-
-    $response = $this->prepare_item_for_response( $post, $request );
-
-    return $response;
   }
 
   /**
