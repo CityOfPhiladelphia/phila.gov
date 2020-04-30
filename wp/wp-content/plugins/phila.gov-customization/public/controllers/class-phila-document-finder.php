@@ -59,11 +59,16 @@ class Phila_Document_Finder_Controller {
       $document_tables = rwmb_meta( 'phila_document_table', '', $post->ID );
 
       foreach ( $document_tables as $document_table ) {
+        $unique_table = array();
+        $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
+
         foreach ( $document_table['phila_files'] as $id )  {
           $file = wp_prepare_attachment_for_js($id);
-          $response = $this->prepare_item_for_response( $file, $request );
-          $data[] = $this->prepare_response_for_collection( $response );
+          $response = $this->prepare_item_for_response( $file );
+          $unique_table['data'] = $this->prepare_response_for_collection( $response );
         }
+
+        $data[] = $unique_table;
       }
     }
 
@@ -77,10 +82,8 @@ class Phila_Document_Finder_Controller {
    * @param WP_Post $post The comment object whose response is being prepared.
    */
 
-  public function prepare_item_for_response( $file, $request ) {
+  public function prepare_item_for_response( $file ) {
     $post_data = array();
-
-    $schema = $this->get_item_schema( $request );
 
     $post_data['url'] = (string) $file['subtype'];
     if($file['id']) {
@@ -119,9 +122,6 @@ class Phila_Document_Finder_Controller {
     if($file['uploadedTo']) {
       $post_data['uploadedTo'] = (string) $file['uploadedTo'];
     }
-    // if($file['date']) {
-    //   $post_data['date'] = (string) $file['date'];
-    // }
     if($file['modified']) {
       $post_data['modified'] = (string) $file['modified'];
     }
