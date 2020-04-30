@@ -119,9 +119,9 @@ class Phila_Document_Finder_Controller {
     if($file['uploadedTo']) {
       $post_data['uploadedTo'] = (string) $file['uploadedTo'];
     }
-    if($file['date']) {
-      $post_data['date'] = (string) $file['date'];
-    }
+    // if($file['date']) {
+    //   $post_data['date'] = (string) $file['date'];
+    // }
     if($file['modified']) {
       $post_data['modified'] = (string) $file['modified'];
     }
@@ -135,13 +135,13 @@ class Phila_Document_Finder_Controller {
       $post_data['type'] = (string) $file['type'];
     }
     if($file['subtype']) {
-      $post_data['subtype'] = (string) $file['subtype'];
+      $post_data['format'] = (string) $file['subtype'];
     }
     if($file['icon']) {
       $post_data['icon'] = (string) $file['icon'];
     }
     if($file['dateFormatted']) {
-      $post_data['dateFormatted'] = (string) $file['dateFormatted'];
+      $post_data['date'] = (string) $file['dateFormatted'];
     }
     if($file['editLink']) {
       $post_data['editLink'] = (string) $file['editLink'];
@@ -281,7 +281,7 @@ class Phila_Document_Finder_Controller {
           'type'        => 'string',
           'readonly'    => true,
         ),
-        'subtype' => array(
+        'format' => array(
           'description' => esc_html__('subtype of the document.', 'phila-gov'),
           'type'        => 'string',
           'readonly'    => true,
@@ -291,11 +291,11 @@ class Phila_Document_Finder_Controller {
           'type'        => 'string',
           'readonly'    => true,
         ),
-        'dateFormatted' => array(
-          'description' => esc_html__('dateFormatted of the document.', 'phila-gov'),
-          'type'        => 'string',
-          'readonly'    => true,
-        ),
+        // 'dateFormatted' => array(
+        //   'description' => esc_html__('dateFormatted of the document.', 'phila-gov'),
+        //   'type'        => 'string',
+        //   'readonly'    => true,
+        // ),
         'editLink'  => array(
           'description' => esc_html__('editLink of the document.', 'phila-gov'),
           'type'        => 'string',
