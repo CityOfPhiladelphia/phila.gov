@@ -38,10 +38,19 @@ endif;
   while ( $is_translated->have_posts() ) : $is_translated->the_post(); 
   $lang = rwmb_meta('phila_select_language', '', $post->ID);
   array_push($langs, $lang);
-  var_dump($langs);
   endwhile;
   
   $unique_langs = phila_order_languages(array_unique($langs));
+
+  $order = array( 'english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $ordered_array = array_merge(array_flip($order), $unique_langs);
+  $final_array = array();
+
+  foreach ($ordered_array as $key => $value){
+    if ( !is_int( $value ) ){
+      $final_array[$key] = $value;
+    }
+  }
 
   if (!empty($tag)) {
     $term = get_term($tag[0],'post_tag');
@@ -51,13 +60,11 @@ endif;
   ?>
 
 
-<?php if(count($unique_langs) > 1) :
-var_dump($unique_langs);
-?>
+<?php if(count($final_array) > 1) : ?>
   <div class="translated-headings">
     <h2>Posts</h2>
     <ul class="translated-list">
-    <?php foreach ($unique_langs as $lang): ?>
+    <?php foreach ($final_array as $lang): ?>
         <?php if ($lang === 'english') : 
           $url = '/the-latest/archives/#/?template=posts&language=english';
           if (!empty($term)) {
