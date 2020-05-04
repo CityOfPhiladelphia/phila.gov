@@ -11,7 +11,7 @@ class Phila_Document_Finder_Controller {
   // Register our routes.
   public function register_routes() {
   // Register the endpoint for collections.
-    register_rest_route( $this->namespace, '/' . $this->resource_name, array(
+    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<slug>[\S]+)', array(
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
@@ -36,42 +36,33 @@ class Phila_Document_Finder_Controller {
   */
   public function get_items( $request ) {
 
-    $args = array(
-      'posts_per_page'=> -1,
-      'post_type' => 'department_page',
-      // 'orderby' => 'title',
-      // 'order' => 'asc',
-      // 'post_parent' => 0,
-      // 'post_status' => 'publish',
-      'post__in' => array(71348) // code bulletin page ID
-    );
+    $slug = (string) $request['slug'];
 
-    $posts = get_posts( $args );
+    $cleaned_slug = str_replace('~', '/', $slug);
+
+    $post = get_post( url_to_postid( $cleaned_slug) );
 
     $data = array();
 
-    if ( empty( $posts ) ) {
+    if ( empty( $post ) ) {
       return rest_ensure_response( $data );
     }
 
-    foreach ( $posts as $post ) {
-      
-      $document_tables = rwmb_meta( 'phila_document_table', '', $post->ID );
+    $document_tables = rwmb_meta( 'phila_document_table', '', $post->ID );
 
-      foreach ( $document_tables as $document_table ) {
-        $unique_table = array();
-        $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
-        $documents = array();
+    foreach ( $document_tables as $document_table ) {
+      $unique_table = array();
+      $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
+      $documents = array();
 
-        foreach ( $document_table['phila_files'] as $id )  {
-          
-          $file = wp_prepare_attachment_for_js($id);
-          $response = $this->prepare_item_for_response( $file );
-          $documents[] = $this->prepare_response_for_collection( $response );
-        }
-        $unique_table['documents'] = $documents;
-        $data[] = $unique_table;
+      foreach ( $document_table['phila_files'] as $id )  {
+        
+        $file = wp_prepare_attachment_for_js($id);
+        $response = $this->prepare_item_for_response( $file );
+        $documents[] = $this->prepare_response_for_collection( $response );
       }
+      $unique_table['documents'] = $documents;
+      $data[] = $unique_table;
     }
 
     // Return all response data.
