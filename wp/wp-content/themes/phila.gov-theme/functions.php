@@ -1992,5 +1992,7 @@ function phila_order_languages($languages){
       $final_order[$key] = $value;
     }
   }
-  return $final_order;
+  $ordered_array = array_merge(array_flip($order), $languages);
+
+  return $ordered_array;
 }
