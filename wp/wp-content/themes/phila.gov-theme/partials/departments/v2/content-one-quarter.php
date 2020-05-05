@@ -22,14 +22,18 @@
   <?php endif;?>
   <?php if ( !empty( $faq_group ) ): ?>
     <div id="a-z-list">
+      <div class="one-quarter-layout">
+        <div class="row one-quarter-row mvl">
+          <a href="#" data-toggle="expandable-all" class="float-right phm-mu"> Expand All + </a>
+          <hr class="no-bottom-margin">
+        </div>
+      </div>
       <?php foreach ($faq_group as $faq_key => $faq): ?>
       <?php reset($faq_group);?>
       <!--1/4 Content-->
       <section class="a-z-group">
         <div class="one-quarter-layout">
           <div class="row one-quarter-row mvl">
-            <a href="#" data-toggle="expandable-all" class="float-right phm-mu"> Expand All + </a>
-            <hr>
             <div class="medium-6 columns item">
               <h3 id="<?php echo sanitize_title_with_dashes($faq['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $faq['accordion_row_title'] ?></h3>
           </div>

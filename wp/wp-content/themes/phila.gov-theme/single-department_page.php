@@ -102,4 +102,7 @@ get_header(); ?>
     }
   ?>
 </div><!-- #post-## -->
+
+<?php include(locate_template('partials/global/on-load-modal.php')); ?>
+
 <?php get_footer(); ?>
