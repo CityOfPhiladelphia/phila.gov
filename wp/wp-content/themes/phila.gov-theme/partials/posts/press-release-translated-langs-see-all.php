@@ -56,7 +56,7 @@ endif;
     <ul class="translated-list">
     <?php foreach ($unique_langs as $lang): ?>
         <?php if ($lang === 'english') : 
-          $url = '/the-latest/archives/#/?template=press_release&language=english';
+          $url = '/the-latest/archives/#/?templates=press_release&language=english';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
@@ -68,7 +68,7 @@ endif;
           <li><a href="<?php echo $url; ?>">English</a></li>
         <?php endif; ?>
         <?php if ($lang === 'spanish') : 
-            $url = '/the-latest/archives/#/?template=press_release&language=spanish';
+            $url = '/the-latest/archives/#/?templates=press_release&language=spanish';
             if (!empty($term)) {
               $url .= '&tag=' . $term->name;
             }else if ($slang_name) {
@@ -80,7 +80,7 @@ endif;
           <li><a href="<?php echo $url; ?>">Español</a></li>
         <?php endif; ?>
         <?php if ($lang === 'chinese') : 
-            $url = '/the-latest/archives/#/?template=press_release&language=chinese';
+            $url = '/the-latest/archives/#/?templates=press_release&language=chinese';
             if (!empty($term)) {
               $url .= '&tag=' . $term->name;
             }else if ($slang_name) {
@@ -92,7 +92,7 @@ endif;
           <li><a href="<?php echo $url; ?>">中文</a></li>
         <?php endif; ?>
         <?php if ($lang === 'vietnamese') : 
-          $url = '/the-latest/archives/#/?template=press_release&language=vietnamese';
+          $url = '/the-latest/archives/#/?templates=press_release&language=vietnamese';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
@@ -103,7 +103,7 @@ endif;
           <li><a href="<?php echo $url ?>">Tiếng Việt</a></li>
         <?php endif; ?>
         <?php if ($lang === 'russian') : 
-          $url = '/the-latest/archives/#/?template=press_release&language=russian';
+          $url = '/the-latest/archives/#/?templates=press_release&language=russian';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
@@ -114,7 +114,7 @@ endif;
           <li><a href="<?php echo $url ?>">Pусский</a></li>
         <?php endif; ?>
         <?php if ($lang === 'french') :  
-          $url = '/the-latest/archives/#/?template=press_release&language=french';
+          $url = '/the-latest/archives/#/?templates=press_release&language=french';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
