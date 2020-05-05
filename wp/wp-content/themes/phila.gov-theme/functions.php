@@ -1983,7 +1983,6 @@ function phila_get_translated_language( $language ) {
   return $final_array;
 }
 
-<<<<<<< HEAD
 function phila_order_languages($languages){
   $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
   $ordered_array = array_replace(array_flip($order), $languages);
@@ -1997,7 +1996,7 @@ function phila_order_languages($languages){
 
   return $ordered_array;
 }
-=======
+
 function phila_apply_modal_to_children_pages() {
   $classes = get_body_class();
     $modal_exists = true;
@@ -2021,4 +2020,3 @@ function phila_apply_modal_to_children_pages() {
     }
     return array($modal_exists, $modal_content, $modal_button_text);
 }
->>>>>>> master
