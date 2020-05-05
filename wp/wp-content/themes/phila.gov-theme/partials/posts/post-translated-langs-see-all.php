@@ -37,7 +37,7 @@ endif;
 
   while ( $is_translated->have_posts() ) : $is_translated->the_post(); 
   $lang = rwmb_meta('phila_select_language', '', $post->ID);
-  array_push($langs, $lang);
+  $langs[$lang] = $lang;
   endwhile;
   
   $unique_langs = phila_order_languages(array_unique($langs));
