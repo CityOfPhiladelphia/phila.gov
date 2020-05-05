@@ -1457,4 +1457,20 @@ public static function phila_meta_var_connect(){
 
   }
 
+  public static function phila_disclaimer_modal(){
+    return array(
+      array(
+        'id'  => 'disclaimer_modal_button_text',
+        'name'  => 'Button Text',
+        'type'  => 'text',
+      ),
+      array(
+        'name' => 'Modal Text',
+        'id'   => 'disclaimer_modal_text',
+        'type' => 'wysiwyg',
+        'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+      ),
+    );
+  }
+
 }//end Class

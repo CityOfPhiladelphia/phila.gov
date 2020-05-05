@@ -78,7 +78,7 @@
             <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
           </div>
-          <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true">
+          <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
