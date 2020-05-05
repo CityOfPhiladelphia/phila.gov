@@ -5,3 +5,27 @@
     text-decoration: underline;
   }
 }
+.translated-headings {
+  margin-top: 1.14286rem; //mimic h1 spacing
+  margin-bottom: 1.14286rem;
+  h1, h2{
+    display: inline;
+  }
+  a:link, a:visited, a:active, a:hover{
+    text-decoration: underline;
+  }
+  .translated-list {
+    list-style-type: none;
+    display: inline;
+    margin:0;
+    padding:0;
+    li{
+      display: inline;
+      border-right: 1px solid #444;
+      padding: 0 1rem;
+      &:last-of-type{
+        border-right:none;
+      }
+    }
+  }
+}
