@@ -1983,6 +1983,20 @@ function phila_get_translated_language( $language ) {
   return $final_array;
 }
 
+function phila_order_languages($languages){
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $ordered_array = array_replace(array_flip($order), $languages);
+  $final_order = array();
+  foreach ($ordered_array as $key => $value){
+    if ( !is_int( $value ) ){
+      $final_order[$key] = $value;
+    }
+  }
+  $ordered_array = array_merge(array_flip($order), $languages);
+
+  return $ordered_array;
+}
+
 function phila_apply_modal_to_children_pages() {
   $classes = get_body_class();
     $modal_exists = true;
