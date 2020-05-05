@@ -43,7 +43,7 @@ endif;
   $unique_langs = phila_order_languages(array_unique($langs));
 
   if (!empty($tag)) {
-    $term = get_term($tag[0],'post_tag');
+    $term = get_term($tag,'post_tag');
   }else{
     $tag = '';
   }
@@ -57,7 +57,7 @@ endif;
     <?php foreach ($unique_langs as $lang): ?>
         <?php if ($lang === 'english') : 
           $url = '/the-latest/archives/#/?templates=press_release&language=english';
-          if (!empty($term)) {
+          if (!empty($tag)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
             $url .= '&department=' . $slang_name;
@@ -69,7 +69,7 @@ endif;
         <?php endif; ?>
         <?php if ($lang === 'spanish') : 
             $url = '/the-latest/archives/#/?templates=press_release&language=spanish';
-            if (!empty($term)) {
+            if (!empty($tag)) {
               $url .= '&tag=' . $term->name;
             }else if ($slang_name) {
               $url .= '&department=' . $slang_name;
@@ -81,7 +81,7 @@ endif;
         <?php endif; ?>
         <?php if ($lang === 'chinese') : 
             $url = '/the-latest/archives/#/?templates=press_release&language=chinese';
-            if (!empty($term)) {
+            if (!empty($tag)) {
               $url .= '&tag=' . $term->name;
             }else if ($slang_name) {
               $url .= '&department=' . $slang_name;
@@ -93,7 +93,7 @@ endif;
         <?php endif; ?>
         <?php if ($lang === 'vietnamese') : 
           $url = '/the-latest/archives/#/?templates=press_release&language=vietnamese';
-          if (!empty($term)) {
+          if (!empty($tag)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
             $url .= '&department=' . $slang_name;
@@ -104,7 +104,7 @@ endif;
         <?php endif; ?>
         <?php if ($lang === 'russian') : 
           $url = '/the-latest/archives/#/?templates=press_release&language=russian';
-          if (!empty($term)) {
+          if (!empty($tag)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
             $url .= '&department=' . $slang_name;
@@ -115,7 +115,7 @@ endif;
         <?php endif; ?>
         <?php if ($lang === 'french') :  
           $url = '/the-latest/archives/#/?templates=press_release&language=french';
-          if (!empty($term)) {
+          if (!empty($tag)) {
             $url .= '&tag=' . $term->name;
           }else if ($slang_name) {
             $url .= '&department=' . $slang_name;
