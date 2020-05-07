@@ -142,6 +142,9 @@ class Phila_Document_Finder_Controller {
     if($file['meta']) {
       $post_data['meta'] = (string) $file['meta'];
     }
+    if($file['mediaCategory']) {
+      $post_data['mediaCategory'] = (string) $file['mediaCategory'];
+    }
 
     return rest_ensure_response( $post_data );
 }
@@ -296,6 +299,11 @@ class Phila_Document_Finder_Controller {
         ),
         'meta'  => array(
           'description' => esc_html__('meta of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'media_category'  => array(
+          'description' => esc_html__('media category of the document.', 'phila-gov'),
           'type'        => 'string',
           'readonly'    => true,
         ),
