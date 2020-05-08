@@ -1473,4 +1473,26 @@ public static function phila_meta_var_connect(){
     );
   }
 
+  public static function phila_meta_prereq_row(){
+    return array(
+      array(
+        'name' => ('Prerequisite row title'),
+        'id'   => 'accordion_row_title',
+        'type' => 'text',
+        'required' => true,
+        'class' => 'percent-100'
+      ),
+      array(
+        'id'   => 'accordion_group',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'add_button' => '+ Add accordion',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg($section_name = 'Accordion title', $wysiwyg_desc = 'Accordion content', $columns = 12, $clone = true),
+        )
+      )
+    );
+  }
+
 }//end Class
