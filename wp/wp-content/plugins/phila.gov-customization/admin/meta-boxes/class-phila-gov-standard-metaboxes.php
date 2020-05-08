@@ -422,6 +422,13 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100),
         ),
         array(
+          //TODO: swap this out for an icon picker
+          'id'  => 'phila_accordion_icon',
+          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+          'name'  => 'Select icon',
+          'type'  => 'text',
+        ),
+        array(
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
           'desc'  => $wysiwyg_desc,
@@ -1490,36 +1497,11 @@ public static function phila_meta_var_connect(){
         'sort_clone' => true,
         'add_button' => '+ Add accordion',
         'fields' => array(
-          array(
-            'id'  =>  'phila_custom_wysiwyg',
-            'type'  => 'group',
-            'clone' => false,
-            'columns'=> 12,
-            'fields'  => array(
-              array(
-                'type' => 'heading',
-                'name' => 'Accordion title',
-              ),
-              array(
-                'id'  => 'phila_wysiwyg_title',
-                'type'  => 'wysiwyg',
-                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100),
-              ),
-              array(
-                //TODO: swap this out for an icon picker
-                'id'  => 'phila_accordion_icon',
-                'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
-                'name'  => 'Select icon',
-                'type'  => 'text',
-              ),
-              array(
-                'id'  => 'phila_wysiwyg_content',
-                'type'  => 'wysiwyg',
-                'desc'  => 'Accordion content',
-                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
-              )
-            )
-          )
+          Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
+            $section_name = 'Accordion title', 
+            $wysiwyg_desc = 'Accordion content', 
+            $columns = 12, 
+            $clone = true ),
         )
       )
     );
