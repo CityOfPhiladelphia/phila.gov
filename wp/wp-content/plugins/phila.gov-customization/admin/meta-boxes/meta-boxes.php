@@ -1163,7 +1163,7 @@ $meta_boxes[] = array(
     'relation' => 'or',
   ),
 
-  'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row()
+  'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
 );
 
 

@@ -1480,10 +1480,10 @@ public static function phila_meta_var_connect(){
     );
   }
 
-  public static function phila_meta_prereq_row(){
+  public static function phila_meta_prereq_row($row_title){
     return array(
       array(
-        'name' => ('Prerequisite row title'),
+        'name' => ($row_title),
         'id'   => 'accordion_row_title',
         'type' => 'text',
         'required' => true,
