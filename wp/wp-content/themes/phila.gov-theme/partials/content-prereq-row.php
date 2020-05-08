@@ -10,7 +10,8 @@
       <?php
         $accordion_title = '';
         $is_full_width = false; 
-        $use_icon = true;?>
+        $use_icon = true;
+        $custom_icon = true;?>
         <?php include(locate_template('partials/global/accordion.php')); ?>
     </div>
   </section>
