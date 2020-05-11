@@ -5,11 +5,15 @@
  * @package phila-gov
  */
 ?>
-<?php
-  // set category vars for blogs/staff
-  $category = get_the_category();
-  $category_slug = $category[0]->slug;
 
+<!-- The content -->
+<div class="row">
+  <div class="columns">
+    <?php the_content(); ?>
+  </div>
+</div>
+
+<?php
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
 ?>

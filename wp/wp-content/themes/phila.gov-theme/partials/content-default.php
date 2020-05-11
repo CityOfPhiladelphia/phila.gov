@@ -4,7 +4,7 @@
  * Default Page or Service Template
  *
  */
- ?>
+?>
   <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 <div class="row">
   <div class="columns">

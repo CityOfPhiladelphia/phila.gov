@@ -69,6 +69,9 @@
             <?php elseif ($user_selected_template == 'default_v2') :?>
               <?php get_template_part('partials/services/content', 'default-v2'); ?>
             
+            <?php elseif ($user_selected_template == 'custom_content') :?>
+              <?php get_template_part('partials/services/content', 'custom-content'); ?>
+            
             <!-- Service Stub  -->
             <?php elseif ($user_selected_template == 'service_stub') : ?>
               <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
