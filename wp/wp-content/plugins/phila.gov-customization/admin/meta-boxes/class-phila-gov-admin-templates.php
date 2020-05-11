@@ -72,6 +72,7 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'select',
           'options' => array(
             'default_v2'  => 'Default',
+            'custom_content'     => 'Custom Content',
             'default'   => 'Generic (old default)',
             'tax_detail' => 'Tax detail',
             'start_process' => 'Start a process',
