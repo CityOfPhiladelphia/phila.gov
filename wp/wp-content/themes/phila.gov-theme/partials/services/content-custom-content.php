@@ -274,6 +274,16 @@
               <!-- /FAQ -->
             <?php endif;?>
 
+            <?php elseif ( $current_row_option == 'phila_content_heading_group'):
+            
+              $wysiwyg_heading = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_wysiwyg_heading'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_wysiwyg_heading'] : '';
+              $wysiwyg_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_unique_wysiwyg_content'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_unique_wysiwyg_content'] : '';
+
+              if ( !empty( $wysiwyg_heading ) || !empty( $wysiwyg_content ) ) : ?>
+                <!-- Heading Group -->
+                <?php include(locate_template('partials/content-single-heading-group.php')); ?>
+                <!-- /Heading Group -->
+              <?php endif;?>
 
         <?php endif;  /*end full row */?>
 

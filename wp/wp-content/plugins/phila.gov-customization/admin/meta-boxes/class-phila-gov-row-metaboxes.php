@@ -317,7 +317,13 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_faq'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_faq()
-      )
+      ),
+      array(
+        'id' => 'phila_content_heading_group',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_content_heading_group'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_heading_group()
+      ),
     ),
   );
 }
@@ -543,6 +549,133 @@ class Phila_Gov_Row_Metaboxes {
       );
   }
 
+  public static function phila_metabox_heading_group( ){
+
+    return array(
+      array(
+        //TODO: determine way to display step numbers in admin
+        'placeholder' => 'Heading',
+        'id'  => 'phila_wysiwyg_heading',
+        'type'  => 'text',
+        'class' => 'percent-95'
+      ),
+      array(
+        'id'  => 'phila_unique_wysiwyg_content',
+        'type'  => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+      ),
+      array(
+        'name'  => 'Expand/collapse this section?',
+        'id'  => 'phila_expand_collapse',
+        'type'  => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
+      ),
+      array(
+        'name'  => 'Include contact information?',
+        'id'  => 'phila_address_select',
+        'type'  => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+      ),
+      array(
+        'id' => 'phila_std_address',
+        'type' => 'group',
+        'hidden' => array('phila_address_select', false),
+
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
+          array(
+            'id' => 'phila_connect_general',
+            'type' => 'group',
+            // List of sub-fields
+            'fields' => array(
+              array(
+                'type' => 'heading',
+                'name' => 'Email, fax, etc.',
+              ),
+              array(
+                'name' => 'Email',
+                'id'   => 'phila_connect_email',
+                'type' => 'email',
+                'desc' => 'example@phila.gov',
+              ),
+              array(
+                'name' => 'Explanation text for email',
+                'id'   => 'phila_connect_email_exp',
+                'type' => 'text',
+                'desc' => 'Ex. For press inquiries contact:',
+              ),
+              array(
+                'name' => 'Fax',
+                'id'   => 'phila_connect_fax',
+                'type' => 'phone',
+                'desc' => '(###)-###-####',
+              ),
+              array(
+                'id' => 'phila_connect_social',
+                'type' => 'group',
+                'fields' => array(
+                  array(
+                    'type' => 'heading',
+                    'name' => 'Social',
+                  ),
+                  array(
+                    'name' => 'Facebook URL',
+                    'id'   => 'phila_connect_social_facebook',
+                    'type' => 'url',
+                    'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+                  ),
+                  array(
+                    'name' => 'Twitter URL',
+                    'id'   => 'phila_connect_social_twitter',
+                    'type' => 'url',
+                    'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+                  ),
+                  array(
+                    'name' => 'Instagram URL',
+                    'id'   => 'phila_connect_social_instagram',
+                    'type' => 'url',
+                    'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+                  ),
+                  array(
+                    'name' => 'YouTube URL',
+                    'id'   => 'phila_connect_social_youtube',
+                    'type' => 'url',
+                    'desc' => 'Example: https://www.youtube.com/user/philly311center'
+                  ),
+                  array(
+                    'name' => 'Flickr URL',
+                    'id'   => 'phila_connect_social_flickr',
+                    'type' => 'url',
+                    'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
+                  ),
+                ),
+              )
+            )
+          )
+        ),
+      ),
+      array(
+        'name'  => 'Add stepped content?',
+        'id'  => 'phila_stepped_select',
+        'type'  => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
+      ),
+      array(
+        'id' => 'phila_stepped_content',
+        'type' => 'group',
+        'visible' => array('phila_stepped_select', true),
+
+        'fields'  => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
+          
+        )
+      ),
+    );
+  }
+
   public static function phila_metabox_faq( ){
     return  array(
       array(
@@ -566,5 +699,5 @@ class Phila_Gov_Row_Metaboxes {
         )
       )
     );
-}
+  }
 }
