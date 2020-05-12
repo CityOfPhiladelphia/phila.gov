@@ -56,6 +56,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_stepped_content' => 'Stepped content',
         'phila_vue_app'  => 'Vue app',
         'phila_content_heading_group' => 'Heading Group',
+        'phila_prereq' => 'Prereq',
       ),
     );
   }

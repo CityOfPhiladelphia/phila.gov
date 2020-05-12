@@ -324,6 +324,12 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_full_options_select', '=', 'phila_content_heading_group'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_heading_group()
       ),
+      array(
+        'id' => 'phila_prereq',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_prereq'),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
+      ),
     ),
   );
 }
