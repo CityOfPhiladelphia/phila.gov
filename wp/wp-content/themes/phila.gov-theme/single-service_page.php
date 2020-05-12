@@ -70,7 +70,7 @@
               <?php get_template_part('partials/services/content', 'default-v2'); ?>
             
             <?php elseif ($user_selected_template == 'custom_content') :?>
-              <?php get_template_part('partials/services/content', 'custom-content'); ?>
+              <?php include( locate_template( 'partials/departments/content-programs-initiatives.php' ) ); ?>
             
             <!-- Service Stub  -->
             <?php elseif ($user_selected_template == 'service_stub') : ?>
