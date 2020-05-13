@@ -17,7 +17,7 @@
     $blog_see_all = '';
   endif;
 
-  if ( !empty( $blog_cat_override ) ) :
+  if ( !empty( $blog_cat_override ) && is_object($blog_cat_override[0])) :
     $slang_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $blog_cat_override[0]->name );
 
   endif;
