@@ -292,6 +292,16 @@
               <!-- /Prereq Row -->
             <?php endif;?>
 
+          <?php elseif ( $current_row_option == 'phila_content_additional_content'):
+
+            $additional_content = isset( $current_row['phila_full_options']['phila_content_additional_content']['phila_additional_content'] ) ? $current_row['phila_full_options']['phila_content_additional_content']['phila_additional_content'] : '';
+
+            if ( !empty( $additional_content ) ) : ?>
+              <!-- Additional Content -->
+              <?php include(locate_template('partials/content-custom-additional.php')); ?>
+              <!-- /Additional Content -->
+            <?php endif;?>
+
         <?php endif;  /*end full row */?>
 
         <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
