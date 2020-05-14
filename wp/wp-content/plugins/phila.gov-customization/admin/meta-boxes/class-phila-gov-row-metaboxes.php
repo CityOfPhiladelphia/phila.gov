@@ -396,7 +396,6 @@ class Phila_Gov_Row_Metaboxes {
           'placeholder' => 'Select...',
           'options' => array(
             'phila_connect_panel' => 'Connect Panel',
-            'phila_custom_feature' => 'Custom Feature Panel',
             'phila_custom_text' => 'Custom Text',
             ),
           ),
@@ -411,12 +410,6 @@ class Phila_Gov_Row_Metaboxes {
             'type' => 'group',
             'visible' => array('phila_one_third_col_option', '=', 'phila_custom_text'),
             'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_upgraded(),
-          ),
-          array(
-            'id'   => 'phila_custom_feature',
-            'type' => 'group',
-            'visible' => array('phila_one_third_col_option', '=', 'phila_custom_feature'),
-            'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_custom_feature(),
           ),
         ),
       );
