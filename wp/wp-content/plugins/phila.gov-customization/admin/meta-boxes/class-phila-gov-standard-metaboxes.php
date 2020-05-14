@@ -1105,37 +1105,6 @@ public static function phila_meta_var_connect(){
     );
   }
 
-  // Custom Featured Content
-  public static function phila_meta_var_custom_feature(){
-    return array(
-      array(
-        'name' => 'Feature Title',
-        'id' => 'phila_feature_title',
-        'type' => 'text',
-      ),
-      array(
-        'name' => 'Feature Image',
-        'id' => 'phila_feature_image',
-        'type' => 'file_input',
-      ),
-      array(
-        'name' => 'Feature Text',
-        'id' => 'phila_feature_text',
-        'type' => 'textarea',
-      ),
-      array(
-        'name' => 'Feature URL Text',
-        'id' => 'phila_feature_url_text',
-        'type' => 'text',
-      ),
-      array(
-        'name' => 'URL',
-        'id' => 'phila_feature_url',
-        'type' => 'url',
-      ),
-    );
-  }
-
   // Pullquote
   public static function phila_meta_var_pullquote(){
     return array(
