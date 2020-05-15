@@ -37,6 +37,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'options' => array(
           'default'                 => 'Default',
           'homepage_v2'             => 'Homepage',
+          'repeating_rows'          => 'Repeating rows',
           'one_quarter_headings_v2' => '1/4 headings',
           'all_programs_v2'         => 'All programs',
           'all_services_v2'         => 'All services',
