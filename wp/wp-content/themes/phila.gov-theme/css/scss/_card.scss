@@ -177,6 +177,9 @@ a.faux-card {
 .faux-card:link,
 .faux-card:visited{
   font-weight: 400;
+  &.custom {
+    font-weight: bold;
+  }
 }
 
 .feature-main a.card h1, .card h1{
@@ -222,5 +225,32 @@ a.card.sub-topic{
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.post-grid {
+  .faux-card {
+    border-bottom:1px solid #cfcfcf;
+  }
+}
+
+.press-grid {
+  .card {
+    &.custom {
+      display: flex;
+      border-bottom:1px solid #cfcfcf !important;
+      background: none;
+
+      time {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      p {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 1rem;
+        line-height: 1.8rem;
+      }
+    }
   }
 }

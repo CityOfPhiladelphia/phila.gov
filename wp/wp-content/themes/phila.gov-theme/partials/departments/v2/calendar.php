@@ -5,6 +5,7 @@
   */
   $display_spotlight = rwmb_meta('phila_active_event_spotlight');
   $spotlight_id = rwmb_meta('phila_event_spotlight');
+  $user_selected_template = phila_get_selected_template();
   ?>
 <?php if ( !empty( $cal_id )  || !empty($display_spotlight)):?>
   <!-- Full Width Calendar -->
@@ -20,7 +21,7 @@
       </div>
     <?php endif;?>
     <div class="row calendar-row">
-      <div class="medium-centered large-24 columns">
+      <div class="medium-centered large-24 columns <?php echo ($user_selected_template == 'custom_content') ? 'custom' : '' ?>">
         <?php echo do_shortcode('[calendar id="' . $cal_id . '"]'); ?>
       </div>
     </div>
