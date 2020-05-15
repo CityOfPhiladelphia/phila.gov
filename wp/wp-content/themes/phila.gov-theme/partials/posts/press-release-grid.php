@@ -91,6 +91,7 @@ if( !empty($tag) ) {
 }
 ?>
 
+<?php $user_selected_template = phila_get_selected_template(); ?>
 
 <?php
 //special handling for old press release CPT
@@ -104,7 +105,7 @@ if( !empty($tag) ) {
 <?php $label = 'press_release' ?>
 <?php $count = 0; ?>
 
-<div class="press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
+<div class="custom press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
     <?php include( locate_template( 'partials/posts/press-release-translated-langs-see-all.php' ) ); ?>
@@ -119,8 +120,13 @@ if( !empty($tag) ) {
         <?php endif;?>
           <?php
           if ($count <= 4) : ?>
+          <?php if ($user_selected_template == 'custom_content'): ?>
+            <div class="cell align-self-stretch">
+              <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+          <?php else: ?>
             <div class="cell medium-12 align-self-stretch">
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+          <?php endif; ?>
               <?php if ($count == 4) : ?>
                 <?php $see_all = array(
                   'URL' => '/the-latest/archives/#/?templates=press_release&department=' . $slang_name,
