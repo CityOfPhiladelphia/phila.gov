@@ -166,7 +166,7 @@
             $vuejs_js_ids = $current_row['phila_full_options']['phila_vue_template']['phila-vue-app-js'];
             $vuejs_css_ids = $current_row['phila_full_options']['phila_vue_template']['phila-vue-app-css'];
 
-            $app_title = $current_row['phila_full_options']['vue_app_title'];
+            $app_title = isset($current_row['phila_full_options']['vue_app_title']) ? $current_row['phila_full_options']['vue_app_title'] : '';
               if (is_array($vuejs_js_ids)) {
                 $count = 1;
                 foreach($vuejs_js_ids as $url) {
