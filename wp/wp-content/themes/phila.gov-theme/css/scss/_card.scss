@@ -242,7 +242,8 @@ a.card.sub-topic{
   }
 }
 
-.press-grid {
+.press-grid,
+.announcement-grid {  
   .card {
     &.custom {
       display: flex;
@@ -259,7 +260,8 @@ a.card.sub-topic{
         margin-bottom: 1rem;
         line-height: 1.8rem;
       }
-      .far {
+      .far,
+      .fal {
         margin-left: auto;
         margin-right: auto;
         width: fit-content;
