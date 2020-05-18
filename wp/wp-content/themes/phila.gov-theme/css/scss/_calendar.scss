@@ -70,10 +70,16 @@ ul.simcal-events{
     display: block;
   }
 }
+.custom-content {
+  display: none;
+}
 
 .custom {
   .not-custom {
     display: none;
+  }
+  .custom-content {
+    display: block;
   }
   .event-row {
     border-bottom: 1px solid #444444;

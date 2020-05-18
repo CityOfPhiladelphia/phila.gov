@@ -105,7 +105,7 @@ if( !empty($tag) ) {
 <?php $label = 'press_release' ?>
 <?php $count = 0; ?>
 
-<div class="custom press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
+<div class="press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
     <?php include( locate_template( 'partials/posts/press-release-translated-langs-see-all.php' ) ); ?>
@@ -160,7 +160,9 @@ if( !empty($tag) ) {
                 ); ?>
               <?php endif; ?>
                 <?php if ($user_selected_template == 'custom_content'): ?>
+                <div class="custom">
                   <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
+                </div>
                 <?php else: ?>
                   <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
                 <?php endif; ?>
