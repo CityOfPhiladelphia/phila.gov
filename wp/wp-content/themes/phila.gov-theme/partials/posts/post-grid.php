@@ -143,17 +143,19 @@ $result->post_count = count( $result->posts );
           <?php $count++; ?>
           <?php if ($total >= 3 ): ?>
             <?php if ($count == 1 ): ?>
-              <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
               <?php if ($user_selected_template == 'custom_content'): ?>
-                <?php include( locate_template( 'partials/posts/custom-content-card-image.php' ) ); ?>
+                <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
+                <?php include( locate_template( 'partials/posts/custom-content-list-image.php' ) ); ?>
               <?php else: ?>
+                <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
                 <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
               <?php endif; ?>
             <?php elseif( $count == 2 ):?>
-              <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
               <?php if ($user_selected_template == 'custom_content'): ?>
-                <?php include( locate_template( 'partials/posts/custom-content-card-image.php' ) ); ?>
+                <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
+                <?php include( locate_template( 'partials/posts/custom-content-list-image.php' ) ); ?>
               <?php else: ?>
+                <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
                 <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
               <?php endif; ?>
             <?php elseif( $count == 3 )  : ?>
@@ -219,7 +221,13 @@ $result->post_count = count( $result->posts );
               <?php endif; ?>
               <?php $see_all = array_replace($see_all, $see_all_URL );
                 endif;?>
-          <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+          <?php if ($user_selected_template == 'custom_content'): ?>
+            <div class='custom'>
+              <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
+            </div>
+          <?php else: ?>
+            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
     <?php endif;?>
