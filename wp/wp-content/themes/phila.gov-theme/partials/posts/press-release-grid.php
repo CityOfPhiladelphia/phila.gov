@@ -128,13 +128,22 @@ if( !empty($tag) ) {
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
           <?php endif; ?>
               <?php if ($count == 4) : ?>
-                <?php $see_all = array(
+                <?php if ($user_selected_template == 'custom_content'): ?>
+                  <?php $see_all = array(
+                  'URL' => '/the-latest/archives/#/?templates=press_release&department=' . $slang_name,
+                  'content_type' => 'press_release',
+                  'nice_name' => 'Press releases',
+                  'is_full' => false
+                ); ?>
+                <?php else: ?>
+                  <?php $see_all = array(
                   'URL' => '/the-latest/archives/#/?templates=press_release&department=' . $slang_name,
                   'content_type' => 'press_release',
                   'nice_name' => 'Press releases',
                   'is_full' => true
-                );
-                if( !empty( $tag ) ) :
+                ); ?>
+                <?php endif; ?>
+                <?php if( !empty( $tag ) ) :
                   if (gettype($tag) === 'string' ) {
                     $term = get_term($tag, 'post_tag');
                   }else{
@@ -150,7 +159,11 @@ if( !empty($tag) ) {
                   'URL' => $override_url
                 ); ?>
               <?php endif; ?>
-                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                <?php if ($user_selected_template == 'custom_content'): ?>
+                  <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
+                <?php else: ?>
+                  <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+                <?php endif; ?>
               <?php endif;?>
               <?php if ($count == 2 || $count == 4) :?>
               </div>

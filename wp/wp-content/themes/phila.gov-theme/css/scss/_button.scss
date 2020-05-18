@@ -25,13 +25,18 @@
     background: color(dark-ben-franklin);
   }
   &.content-type-press_release{
-    @include inverse-button();
-    background: color(love-park-red);
+    // @include inverse-button();
+    // background: color(love-park-red);
   }
   &.content-type-post,
   &.content-type-announcement{
     @include inverse-button();
     background: color(pride-purple);
+  }
+  &.content-type-press_release{
+    color: color(dark-ben-franklin);
+    background: transparent;
+    font-weight: 900 !important;
   }
 }
 
