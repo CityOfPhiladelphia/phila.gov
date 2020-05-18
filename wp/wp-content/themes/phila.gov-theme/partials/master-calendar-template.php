@@ -17,7 +17,6 @@
         <span class="day">[start-date format="Y"] |</span>
         <span class="start-end">[if-whole-day]All Day[/if-whole-day][if-not-whole-day][start-time] - [end-time][/if-not-whole-day]</span>
     </div>
-    <div class="description">description description description description description description description description description</div>
     <div class="location">[location]</div>
   </div>
 </div>

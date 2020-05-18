@@ -231,7 +231,7 @@ a.card.sub-topic{
 .post-grid {
   .faux-card {
     &.custom {
-      border-bottom:1px solid #cfcfcf;
+      border-bottom:1px solid #444444;
       .fas {
         margin-left: auto;
         margin-right: auto;
@@ -246,7 +246,7 @@ a.card.sub-topic{
   .card {
     &.custom {
       display: flex;
-      border-bottom:1px solid #cfcfcf !important;
+      border-bottom:1px solid #444444 !important;
       background: none;
 
       time {
