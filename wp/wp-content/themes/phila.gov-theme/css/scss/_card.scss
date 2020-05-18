@@ -230,12 +230,14 @@ a.card.sub-topic{
 
 .post-grid {
   .faux-card {
-    border-bottom:1px solid #cfcfcf;
-    .fas {
-      margin-left: auto;
-      margin-right: auto;
-      width: fit-content;
-      display: block;
+    &.custom {
+      border-bottom:1px solid #cfcfcf;
+      .fas {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        display: block;
+      }
     }
   }
 }
