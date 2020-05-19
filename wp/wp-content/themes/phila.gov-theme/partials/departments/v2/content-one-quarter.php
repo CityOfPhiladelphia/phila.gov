@@ -7,11 +7,10 @@
 ?>
 <?php
   $faq_group = rwmb_meta( 'accordion_row' );
-  $faq_search = rwmb_meta('accordion_search');
+  $faq_search = rwmb_meta( 'accordion_search' );
   $heading_groups = rwmb_meta( 'phila_heading_groups' );
   $heading_content = phila_extract_clonable_wysiwyg( $heading_groups );
 ?>
-
 <?php if ( !empty( $faq_search ) ): ?>
   <div class="row">
     <div class="small-24 columns results mbm">
@@ -23,6 +22,12 @@
   <?php endif;?>
   <?php if ( !empty( $faq_group ) ): ?>
     <div id="a-z-list">
+      <div class="one-quarter-layout">
+        <div class="row one-quarter-row mvl">
+          <a href="#" data-toggle="expandable-all" class="float-right phm-mu"> Expand All + </a>
+          <hr class="no-bottom-margin">
+        </div>
+      </div>
       <?php foreach ($faq_group as $faq_key => $faq): ?>
       <?php reset($faq_group);?>
       <!--1/4 Content-->

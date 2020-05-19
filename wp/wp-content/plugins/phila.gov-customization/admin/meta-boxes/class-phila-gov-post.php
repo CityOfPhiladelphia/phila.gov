@@ -76,16 +76,31 @@ class Phila_Gov_Post {
       )
     );
 
-    $meta_boxes[] = array(
-      'title'    => 'Last updated',
+    $meta_boxes[] = array (
+      'title'    => 'Post options',
       'pages'    => array( 'post' ),
       'context'  => 'side',
+      'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '!=', 'action_guide'),
         ),
       ),
       'fields' => array(
+        array(
+          'name'  => 'Select the language of this post',
+          'id'    => 'phila_select_language',
+          'type'  => 'select',
+          'options'         => array(
+            'english'   => 'English', 
+            'spanish'   => 'Spanish', 
+            'french'    => 'French', 
+            'chinese'   => 'Chinese (simplifed)',
+            'vietnamese'    => 'Vietnamese',
+            'russian'     => 'Russian',
+            'arabic'    => 'Arabic'
+          ),
+        ),
         array(
           'name'  => 'Include last updated?',
           'id'    => 'is_last_updated',
@@ -121,7 +136,6 @@ class Phila_Gov_Post {
         ),
       )
     );
-
 
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',

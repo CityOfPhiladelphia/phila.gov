@@ -4,11 +4,16 @@
  *
 */
 ?>
-<?php $post_categories = isset($category) ? $category : ''; ?>
+<?php 
+  $override = rwmb_meta('phila_get_post_cats');
+  $override_url = isset($override['override_url']) ? $override['override_url'] : '';
+  $post_categories = isset($category) ? $category : '';
+  $override_url = isset($override['override_url']) ? $override['override_url'] : '';
+?>
 <?php if (!empty($post_categories)): ?>
   <?php foreach ($post_categories as $category ) {
     $current_cat = get_the_category_by_ID($category);
-    $slang_name = html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat )));
+    $slang_name = urlencode(html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat ))));
   } ?>
 <?php else: ?>
   <?php 
@@ -17,8 +22,8 @@
   ?>
   <?php endif; ?>
 <?php $tag = isset($tag) ? $tag : '';?>
-<?php
 
+<?php
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
 
@@ -51,16 +56,6 @@ if ( empty( $post_categories ) ) {
 
 }
 
-$phila_posts_args  = array(
-  'posts_per_page' => 3,
-  'post_type' => array( 'phila_post' ),
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'cat' => $post_categories,
-); ?>
-
-<?php
-
 if( !empty($tag) ) {
   $posts_args  = array(
     'post_type' => array('post', 'phila_post'),
@@ -74,6 +69,19 @@ if( !empty($tag) ) {
         'key' => 'phila_template_select',
         'value' => 'press_release',
         'compare' => '!=',
+      ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
       ),
     )
   );
@@ -94,18 +102,28 @@ if( !empty($tag) ) {
         'value' => 'post',
         'compare' => '=',
       ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
+      ),
     )
   );
   $posts = new WP_Query( $posts_args );
-  $phila_posts = new WP_Query( $phila_posts_args );
 
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
-  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts, $phila_posts->posts );
+  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts);
 }
-
 $result->post_count = count( $result->posts );
-
 ?>
 
 <?php $count = 0; ?>
@@ -113,10 +131,8 @@ $result->post_count = count( $result->posts );
 <div class="post-grid">
   <div class="grid-container mbm">
     <?php if ( $result->have_posts() ) : ?>
-      <?php if (!is_page_template('templates/the-latest.php')): ?>
-        <h2>Posts</h2>
-      <?php endif; ?>
-      <div class="grid-x grid-margin-x align-stretch">
+      <?php include( locate_template( 'partials/posts/post-translated-langs-see-all.php' ) ); ?>
+        <div class="grid-x grid-margin-x align-stretch">
         <?php $total = $result->post_count; ?>
         <?php $label_arr = phila_get_post_label('post'); ?>
         <?php while ( $result->have_posts() ) : $result->the_post(); ?>

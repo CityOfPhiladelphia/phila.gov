@@ -32,7 +32,7 @@
         <thead>
           <tr>
             <th class="<?php echo ($arr_length >= 5 ) ? 'table-sort" data-sort="title' : '' ?>"><span>Name</span></th>
-            <th data-sort="description">Description</th>
+            <th>Description</th>
             <th class="medium-3 <?php echo ($arr_length >= 5 ) ? 'table-sort" data-sort="date' : '' ?>"><span>Released</span></th>
             <th class="medium-2">Format</th>
           </tr>
@@ -40,10 +40,10 @@
         <tbody class="search-sortable">
     <?php
       foreach ( $documents as $document ): ?>
+
         <?php
         $file = wp_prepare_attachment_for_js($document['ID']);
         $file_type = $file['subtype'];
-
         $document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $document['ID']);
         
         if ( empty($document_published) ){
@@ -54,7 +54,7 @@
           <td>
             <a href="<?php echo $document['url'] ?>" class="document"><span class="title"><?php echo $document['title']; ?></span> <span class="show-for-sr"><?php phila_format_document_type( $file_type ); ?></span></a>
           </td>
-            <td class="description"><?php echo isset( $content ) ? $content : ''; ?></td>
+            <td class="description"><?php echo isset( $file['description'] ) ? $file['description'] : ''; ?></td>
             <td class="date">
               <?php if ($date_override === '1') : ?>
                 <?php echo $global_document_published; ?>

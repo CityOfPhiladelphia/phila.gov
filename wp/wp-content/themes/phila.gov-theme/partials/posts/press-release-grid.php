@@ -41,6 +41,19 @@ if( !empty($tag) ) {
           'key' => 'phila_template_select',
           'value' => 'press_release',
           'compare' => '=',
+        ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'value' => '',
+          'compare' => '=',
+        ),
       ),
     )
   );
@@ -59,6 +72,19 @@ if( !empty($tag) ) {
           'key' => 'phila_template_select',
           'value' => 'press_release',
           'compare' => '=',
+        ),
+        array(
+          'relation'  => 'OR',
+          array(
+            'key' => 'phila_select_language',
+            'value' => 'english',
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'phila_select_language',
+            'value' => '',
+            'compare' => '=',
+          ),
         ),
     ),
   );
@@ -81,9 +107,7 @@ if( !empty($tag) ) {
 <div class="press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
-    <?php if (!is_page_template('templates/the-latest.php')): ?>
-      <h2>Press releases</h2>
-    <?php endif; ?>
+    <?php include( locate_template( 'partials/posts/press-release-translated-langs-see-all.php' ) ); ?>
       <?php while ( $result->have_posts() ) : $result->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>

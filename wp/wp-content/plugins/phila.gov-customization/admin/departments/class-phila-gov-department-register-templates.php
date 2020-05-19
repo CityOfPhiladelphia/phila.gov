@@ -37,6 +37,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'options' => array(
           'default'                 => 'Default',
           'homepage_v2'             => 'Homepage',
+          'repeating_rows'          => 'Repeating rows',
           'one_quarter_headings_v2' => '1/4 headings',
           'all_programs_v2'         => 'All programs',
           'all_services_v2'         => 'All services',
@@ -44,13 +45,15 @@ function register_template_selection_metabox_departments( $meta_boxes ){
           'contact_us_v2'           => 'Contact us',
           'document_finder_v2'      => 'Document finder',
           'forms_and_documents_v2'  => 'Forms & documents',
-          'things-to-do'            => 'Things to do',
+          'child_index'             => 'List of child pages',
+          'off_site_department'     => 'Off-site department',
           'our-locations'           => 'Our locations',
           'resource_list_v2'        => 'Resource list',
           'staff_directory_v2'      => 'Staff directory',
-          'off_site_department'     => 'Off-site department',
-          'prog_association'        =>  'Subpage with association',
-          'department_stub'         => 'Stub'
+          'department_stub'         => 'Stub',
+          'prog_association'        => 'Subpage with association',
+          'things-to-do'            => 'Things to do',
+
           ),
           'admin_columns' => array(
             'position' => 'after date',

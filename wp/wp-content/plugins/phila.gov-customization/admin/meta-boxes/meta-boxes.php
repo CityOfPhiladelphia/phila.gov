@@ -653,6 +653,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'field_type' => 'select_advanced',
             'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
           ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
         ),
       ),
     ),
@@ -766,9 +767,12 @@ $meta_boxes[] = array(
   'pages' => array('department_page'),
   'context' => 'after_title',
   'priority' => 'low',
-  'visible' => array('phila_template_select', 'department_stub'),
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'department_stub'),
+    ),
+  ),
   'revision' => true,
-  'class' => 'hide-on-load',
 
   'fields'  => array(
     array(
@@ -975,6 +979,13 @@ $meta_boxes[] = array(
   ),
   'fields' => array(
     array(
+      'id'  => 'phila_doc_no_paginate',
+      'type'  => 'switch',
+      'name'  => 'Turn off pagination for all tables on this page?',
+      'on_label'  => 'Yes',
+      'off_label' => 'No'
+    ),
+    array(
       'id' => 'phila_document_table',
       'type'  => 'group',
       'clone' => true,
@@ -984,6 +995,13 @@ $meta_boxes[] = array(
       'fields' =>
       array(
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter a description to describe the contents of this table for users with screenreaders. '),
+
+        array(
+          'id'  => 'phila_search_bar_text',
+          'type'  => 'text',
+          'name'  => 'Text for the document search',
+          'desc'  => 'Defaults to: Begin typing to filter documents',
+        ),
         array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',
@@ -1071,7 +1089,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'id'       => 'phila_custom_markup',
   'title'    => 'Custom Markup',
-  'pages'    => array( 'department_page', 'page', 'service_page', 'programs', 'guides' ),
+  'pages'    => array( 'department_page', 'page', 'service_page', 'programs', 'guides', 'event_spotlight' ),
   'context'  => 'advanced',
   'priority' => 'low',
 
@@ -1089,24 +1107,44 @@ $meta_boxes[] = array(
     array(
       'name' => 'Append to head',
       'id'   => 'phila_append_to_head',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
     ),
     array(
       'name' => 'Append before WYSIWYG',
       'id'   => 'phila_append_before_wysiwyg',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
+
     ),
     array(
       'name' => 'Append after WYSIWYG',
       'id'   => 'phila_append_after_wysiwyg',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
+
     ),
     array(
       'name' => 'Append after footer',
       'id'   => 'phila_append_after_footer',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'sanitize_callback' => 'none',
     ),
   ),
+);
+
+
+$meta_boxes[] = array(
+  'title' => 'Disclaimer Modal',
+  'pages'    => array( 'department_page', 'programs' ),
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'prog_landing_page')
+      ),
+    'relation'  => 'or'
+  ),
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_disclaimer_modal(),
 );
 
 
