@@ -5,8 +5,8 @@
  * @package phila-gov
  */
 ?>
-<div class=“row”>
-	<div class=“columns”>
+<div class="row">
+	<div class="columns">
 		<?php the_content(); ?>
 	</div>
 </div>
