@@ -58,9 +58,10 @@ if ( $calendar_q->have_posts() ) {
     // var_dump($category);
     $grouped_cals[$category->term_id] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
     //  $test = get_post_meta($post_id, '_grouped_calendars_ids');
-    //array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
+    array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
     array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
   }
+  var_dump($grouped_cals);
   //remove duplicates
   $clean_grouped_cals = array_filter($grouped_cals);
   $just_ids = array();
