@@ -81,6 +81,11 @@ ul.simcal-events{
   .custom-content {
     display: block;
   }
+  .simcal-day:last-of-type{
+    .event-row {
+      border-bottom: none !important;
+    }
+  }
   .event-row {
     border-bottom: 1px solid #444444;
 
