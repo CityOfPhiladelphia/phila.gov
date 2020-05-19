@@ -141,48 +141,35 @@ $result->post_count = count( $result->posts );
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
           <?php $count++; ?>
-          <?php if ($total >= 3 ): ?>
-            <?php if ($count == 1 ): ?>
-              <?php if ($user_selected_template == 'custom_content'): ?>
-                <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
-                <?php include( locate_template( 'partials/posts/custom-content-list-image.php' ) ); ?>
-              <?php else: ?>
+          <?php if( $user_selected_template == 'custom_content' ): ?>
+            <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
+              <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+            </div>
+          <?php else: ?>
+            <?php if ($total >= 3 ): ?>
+              <?php if ($count == 1 ): ?>
                 <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
                 <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-              <?php endif; ?>
-            <?php elseif( $count == 2 ):?>
-              <?php if ($user_selected_template == 'custom_content'): ?>
-                <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
-                <?php include( locate_template( 'partials/posts/custom-content-list-image.php' ) ); ?>
-              <?php else: ?>
+              <?php elseif( $count == 2 ):?>
                 <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
                 <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-              <?php endif; ?>
-            <?php elseif( $count == 3 )  : ?>
-              </div>
-            </div>
-            <div class="grid-container">
-              <div class="grid-x grid-margin-x">
-                <div class="cell medium-24 post-<?php echo $count ?>">
-                <?php if ($user_selected_template == 'custom_content'): ?>
-                  <?php include( locate_template( 'partials/posts/custom-content-list-image.php' ) ); ?>
-                <?php else: ?>
-                  <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
-                <?php endif; ?>
+              <?php elseif( $count == 3 )  : ?>
                 </div>
               </div>
-            <?php endif; ?>
-          </div>
-          <?php elseif ( $count == 1 || $count == 2) : ?>
-              <div class="cell medium-24">
-                <?php if ($user_selected_template == 'custom_content'): ?>
-                  <?php include( locate_template( 'partials/posts/custom-content-list-image.php' ) ); ?>
-                <?php else: ?>
+              <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                  <div class="cell medium-24 post-<?php echo $count ?>">
+                    <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+                  </div>
+                </div>
+              <?php endif; ?>
+            </div>
+            <?php elseif ( $count == 1 || $count == 2) : ?>
+                <div class="cell medium-24">
                   <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
-                <?php endif; ?>
-              </div>
-          <?php endif;?>
-
+                </div>
+            <?php endif;?>
+          <?php endif; ?>
         <?php endwhile; ?>
         <?php if ($count >= 3 ): ?>
         <div class="grid-container group">
@@ -222,6 +209,7 @@ $result->post_count = count( $result->posts );
               <?php $see_all = array_replace($see_all, $see_all_URL );
                 endif;?>
           <?php if ($user_selected_template == 'custom_content'): ?>
+            </div>
             <div class='custom'>
               <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
             </div>

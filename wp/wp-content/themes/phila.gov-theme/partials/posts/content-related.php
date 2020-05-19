@@ -19,7 +19,7 @@
             </div>
           <?php else :  ?>
             <?php include( locate_template( 'partials/posts/content-list-image.php') ); ?>
-         <?php endif; ?>
+        <?php endif; ?>
       <?php endwhile; ?>
   <?php wp_reset_postdata(); ?>
 <?php endif; ?>
