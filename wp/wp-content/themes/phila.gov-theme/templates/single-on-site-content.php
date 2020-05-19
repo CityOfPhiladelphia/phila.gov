@@ -155,10 +155,12 @@ HTML;
 
     case 'prog_association':
       apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+    break;
 
     case 'repeating_rows':
       apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
-
+    break;
+    
     default:
       break;
 
