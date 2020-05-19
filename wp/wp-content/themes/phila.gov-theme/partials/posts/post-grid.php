@@ -23,6 +23,8 @@
   <?php endif; ?>
 <?php $tag = isset($tag) ? $tag : '';?>
 
+<?php var_dump(get_taxonomies()); ?>
+
 <?php
 /* Get all sticky posts for department homepages */
 $sticky = get_option( 'sticky_posts' );
