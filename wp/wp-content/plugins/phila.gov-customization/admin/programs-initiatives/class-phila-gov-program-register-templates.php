@@ -38,8 +38,10 @@ class Phila_Gov_Register_Program_Templates {
             'phila_one_quarter'    => '1/4 Headings (subpage)',
             'collection_page_v2'   => 'Collection page',
             'document_finder_v2'   =>  'Document finder',
+            'child_index'   => 'List of child pages',
             'prog_off_site' => 'Off-site program',
             'resource_list_v2'  => 'Resource list',
+            'stub'              => 'Stub',
             'prog_association'  => 'Subpage with association',
           ),
           'admin_columns' => array(
@@ -197,6 +199,40 @@ class Phila_Gov_Register_Program_Templates {
 
       'fields' => array(
         Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title' => 'Stub',
+      'pages' => array('programs'),
+      'context' => 'after_title',
+      'priority' => 'low',
+      'visible' => array(
+        'when'  => array(
+          array('phila_template_select', '=', 'stub'),
+        ),
+      ),
+      'revision' => true,
+    
+      'fields'  => array(
+        array(
+          'name' => 'Page source',
+          'type'  => 'heading',
+        ),
+        array(
+          'id' => 'phila_stub_source',
+          'type' => 'post',
+          'post_type' => 'programs',
+          'desc'  => 'Display content from the selected page on the front-end.',
+          'query_args'  => array(
+            'post_status'    => array('publish', 'draft', 'private'),
+            'posts_per_page' => - 1,
+            'meta_key' => 'phila_template_select',
+            'meta_value' => 'stub',
+            'meta_compare' => '!=',
+            'post_parent__not_in' => array('0')
+          ),
+        )
       )
     );
 

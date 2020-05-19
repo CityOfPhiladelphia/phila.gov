@@ -8,7 +8,7 @@
 <?php $current_time = current_time('U'); ?>
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
-<?php if(!empty( $ann_tag )) {
+<?php if( !empty( $ann_tag ) && $ann_tag != 'is_front_page' ) {
   $announcement_args  = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
@@ -26,8 +26,8 @@
     ),
   );
 
-  }else {
-     $announcement_args = array(
+  }else if(!empty($ann_categories)){
+    $announcement_args = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
     'order' => 'desc',
@@ -43,28 +43,42 @@
       $home_filter
     ),
   );
-}
+  } else {
+    $announcement_args = array(
+      'posts_per_page' => 4,
+      'post_type' => array( 'announcement' ),
+      'order' => 'desc',
+      'orderby' => 'post_date',
+      'meta_query'  => array(
+        'relation'  => 'AND',
+        array(
+          'key' => 'phila_announce_end_date',
+          'value'   => $current_time,
+          'compare' => '>=',
+        ),
+        $home_filter
+      ),
+    );
+};
 ?>
-
 <?php $label = 'announcement'; ?>
 
 <?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
   <?php if ( $announcements->have_posts() ) : ?>
     <div class="grid-container mbxl">
-
-    <?php if (!is_page_template('templates/the-latest.php')): ?>
+    <?php if ( is_single() || is_home() ) { ?>
       <h2>Announcements</h2>
-    <?php endif; ?>
+    <?php } ?>
     <div class="grid-x grid-margin-x">
-      <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
+    <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
         <?php $post_type = get_post_type(); ?>
         <?php $cats = get_the_category($post->ID); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
             <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
               <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
           </div>
-          <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true">
+          <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>

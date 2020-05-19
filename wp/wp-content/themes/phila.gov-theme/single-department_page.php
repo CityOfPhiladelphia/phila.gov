@@ -26,8 +26,6 @@ $children = get_posts( array(
 ));
 
 $ancestors = get_post_ancestors($post);
-$template = phila_get_selected_template();
-
 $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
@@ -70,36 +68,33 @@ get_header(); ?>
 
       while ( have_posts() ) : the_post();
 
-        //Don't render child menu index template when: this is a grandchild, there is content in the wysiwyg or, if the default template is 'department_page'. department_page will always be the default if there is no other template selected.
-        if ( $children && count( $ancestors ) == 1  && empty( $content ) && $template == 'department_page' )  {
+      if($user_selected_template == 'department_stub'){ ?>
+        <!-- Department Stub  -->
+        <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
+        <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
+        <?php $post_id = intval( $stub_source );?>
+        <?php $is_stub = true; ?>
+        <div class="mtl mbm">
+          <?php  get_template_part( 'partials/breadcrumbs' ); ?>
+        </div>
+          <?php $stub_args = array(
+            'p' => $post_id,
+            'post_type' => 'department_page'
+          ); ?>
+          <?php $stub_post = new WP_Query($stub_args); ?>
+          <?php if ( $stub_post->have_posts() ): ?>
+            <?php while ( $stub_post->have_posts() ) : ?>
+              <?php $stub_post->the_post(); ?>
+                <?php include(locate_template( 'templates/single-on-site-content.php') ); ?>
 
-          get_template_part( 'partials/departments/v2/child', 'index' );
-
-        }else if($user_selected_template == 'department_stub'){ ?>
-          <!-- Department Stub  -->
-          <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
-          <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
-          <?php $post_id = intval( $stub_source );?>
-          <?php $is_stub = true; ?>
-          <div class="mtl mbm">
-            <?php  get_template_part( 'partials/breadcrumbs' ); ?>
-          </div>
-            <?php $stub_args = array(
-              'p' => $post_id,
-              'post_type' => 'department_page'
-            ); ?>
-            <?php $stub_post = new WP_Query($stub_args); ?>
-            <?php if ( $stub_post->have_posts() ): ?>
-              <?php while ( $stub_post->have_posts() ) : ?>
-                <?php $stub_post->the_post(); ?>
-                  <?php include(locate_template( 'templates/single-on-site-content.php') ); ?>
-    
-                <?php endwhile; ?>
-              <?php endif; ?>
-              <?php wp_reset_query(); ?>
+              <?php endwhile; ?>
             <?php endif; ?>
-            <!-- END Department Stub -->
-        <?php } else {
+            <?php wp_reset_query(); ?>
+          <?php endif; ?>
+          <!-- END Department Stub -->
+      <?php 
+
+        } else {
           $is_stub = false;
           include(locate_template( 'templates/single-on-site-content.php') ) ;
         }
@@ -107,4 +102,7 @@ get_header(); ?>
     }
   ?>
 </div><!-- #post-## -->
+
+<?php include(locate_template('partials/global/on-load-modal.php')); ?>
+
 <?php get_footer(); ?>

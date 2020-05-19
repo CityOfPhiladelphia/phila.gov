@@ -258,7 +258,7 @@ function phila_open_graph() {
     $img_src = !empty($img) ? $img[0]['full_url'] : '';
     $alt_text = !empty( $img ) ? $img[0]['alt'] : '';
   } elseif ( get_post_type($post_id) == 'event_spotlight' ){
-    $img = rwmb_meta('header_img', array('limit' => 1), $ppost_id );
+    $img = rwmb_meta('header_img', array('limit' => 1), $post_id );
     $img_src = $img[0]['full_url'];
     $alt_text = $img[0]['alt'];
   } else {
@@ -1518,7 +1518,9 @@ function phila_connect_panel($connect_panel) {
     
           'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] : '',
     
-        'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number']  : '',
+          'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number']  : '',
+        
+          'helper-text' => isset($connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone_text'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone_text'] : ''
         );
       }
     }
@@ -1841,4 +1843,180 @@ function phila_weighted_search_results(){
       echo 5;
       break;
   }
+}
+
+add_action( 'mb_relationships_init', function() {
+  MB_Relationships_API::register( array(
+      'id'   => 'post_to_post_translations',
+      'from' => array(
+        'object_type'  => 'post',
+        'post_type'   => 'post',
+        'empty_message' => 'none',
+        'admin_column' => true,
+        'add_button'  => '+ Add another translation',
+        'meta_box' => array(
+          'hidden' => array(
+            'when' => array(
+              array('phila_select_language', '!=', 'english'),
+            ),
+          ),
+          'title' => 'Select translated posts',
+          'context' => 'side', 
+          'priority' => 'high',
+          'field' => array(
+            'name'  => 'Choose',
+            'placeholder' => 'Select a post',
+            'query_args' => array(
+              'posts_per_page'  => -1, 
+              'meta_query' => array(
+                array(
+                    'key'     => 'phila_select_language',
+                    'value'   => 'english',
+                    'compare' => '!=',
+                ),
+              ),
+            ),
+          ),
+
+        ),
+      ),      
+      'to'   => 'post',
+      'reciprocal' => true,
+
+  ) );
+} );
+
+function phila_language_output($language){
+  switch ($language) {
+    case 'english';
+      $language = 'English'; 
+      break;
+    case 'french';
+      $language = 'Français'; 
+      break;
+    case 'spanish';
+      $language = 'Español';
+      break;
+    case 'chinese';
+      $language = '中文';
+    break;
+    case 'vietnamese';
+      $language = 'Tiếng Việt';
+      break;
+    case 'russian';
+      $language = 'Pусский';
+      break;
+    case 'arabic';
+      $language = 'عربى';
+    break;
+    default;
+      $language = 'English'; 
+      break;
+  }
+  return $language;
+}
+
+function phila_get_translated_language( $language ) {
+  global $wp_query, $post;
+
+  $language_list = array();
+
+  if ($language === 'english') {
+
+    $connected = new WP_Query( array(
+
+      'relationship' => array(
+        'id'   => 'post_to_post_translations',
+        'to' => $post->ID, 
+      ), 
+      'nopaging'     => true,
+    ) ); 
+      $language_list['english'] = get_the_permalink();
+
+  }else{
+
+    $connected = new WP_Query( array(
+      'post_type'  => 'post',
+
+      'relationship' => array(
+        'id'   => 'post_to_post_translations',
+        'from' => $post->ID, 
+      ), 
+      'nopaging'     => true,
+    ) );
+    while ( $connected->have_posts() ) : $connected->the_post(); 
+
+    
+      $connected_source = new WP_Query( array(
+        'post_type'  => 'post',
+        'relationship' => array(
+          'id'   => 'post_to_post_translations',
+          'to' => $post->ID, 
+        ), 
+        'nopaging'     => true,
+      ) );
+      while ( $connected_source->have_posts() ) : $connected_source->the_post();
+
+      $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
+
+      endwhile;
+    endwhile;
+    }
+    //handles the english version of the posts
+    while ( $connected->have_posts() ) : $connected->the_post();
+      $language_list[rwmb_meta('phila_select_language', $post->ID)] = get_the_permalink();
+
+    endwhile;
+    wp_reset_postdata();
+
+
+
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $ordered_array = array_replace(array_flip($order), $language_list);
+  $final_array = array();
+  foreach ($ordered_array as $key => $value){
+    if ( !is_int( $value ) ){
+      $final_array[$key] = $value;
+    }
+  }
+
+  return $final_array;
+}
+
+function phila_order_languages($languages){
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $ordered_array = array_replace(array_flip($order), $languages);
+  $final_order = array();
+  foreach ($ordered_array as $key => $value){
+    if ( !is_int( $value ) ){
+      $final_order[$key] = $value;
+    }
+  }
+  $ordered_array = array_merge(array_flip($order), $languages);
+
+  return $ordered_array;
+}
+
+function phila_apply_modal_to_children_pages() {
+  $classes = get_body_class();
+    $modal_exists = true;
+    if (    (  in_array('department_page-template-default',$classes) && in_array('department-landing',$classes )) ||
+            ( in_array('programs-template-default',$classes) && wp_get_post_parent_id( get_the_ID()) == 0) ) {
+        $modal_content = rwmb_meta( 'disclaimer_modal_text' ); 
+        $modal_button_text = rwmb_meta( 'disclaimer_modal_button_text' );
+    }
+    else if (   ( in_array('department_page-template-default',$classes) && !in_array('department-landing',$classes )) ||
+                ( in_array('programs-template-default',$classes) && wp_get_post_parent_id( get_the_ID()) != 0) ) {
+        $post_parent = wp_get_post_parent_id( get_the_ID() );
+        $modal_content = get_post_meta( $post_parent, 'disclaimer_modal_text', TRUE );
+        $modal_button_text = get_post_meta( $post_parent, 'disclaimer_modal_button_text', TRUE );
+    }
+    if( $modal_content == null || 
+        $modal_content == '' || 
+        $modal_button_text == null || 
+        $modal_button_text == ''
+    ) {
+        $modal_exists = false;
+    }
+    return array($modal_exists, $modal_content, $modal_button_text);
 }

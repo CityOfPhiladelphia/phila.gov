@@ -30,4 +30,37 @@ module.exports = $(function(){
     }
   });
 
+  $('[data-toggle="expandable-all"]').click(function(e){
+    e.preventDefault();
+    
+    if($(this).html() === ' Expand All + '){
+      $(this).html(' Collapse All - ');
+      $('.icon-expand-content').each(function () {
+        $(this).attr('aria-expanded', 'true');
+        if (!$(this).hasClass("visible")) {
+          $(this).addClass('visible');
+        }
+      });
+      $('.icon-expand-link').each(function () {
+        if($(this).html() === ' More + '){
+          $(this).html(' Less - ');
+          $(this).prev().attr('aria-expanded', 'true');
+        }
+      });
+    } else {
+      $(this).html(' Expand All + ');
+      $('.icon-expand-content').each(function () {
+        $(this).attr('aria-expanded', 'false');
+        if ($(this).hasClass("visible")) {
+          $(this).removeClass('visible');
+        }
+      });
+      $('.icon-expand-link').each(function () {
+        if($(this).html() === ' Less - '){
+          $(this).html(' More + ');
+          $(this).prev().attr('aria-expanded', 'false');
+        }
+      });
+    }
+  });
 });

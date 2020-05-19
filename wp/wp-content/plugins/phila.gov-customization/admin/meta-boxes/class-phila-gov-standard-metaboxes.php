@@ -420,14 +420,12 @@ class Phila_Gov_Standard_Metaboxes {
           'id'  => 'phila_wysiwyg_title',
           'type'  => 'wysiwyg',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100),
-          'tooltip' => $title_tooltip,
         ),
         array(
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
           'desc'  => $wysiwyg_desc,
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
-          'tooltip' => $content_tooltip,
         )
       )
     );
@@ -1030,8 +1028,12 @@ public static function phila_meta_var_connect(){
                 'type' => 'phone',
                 'desc' => '(###)-###-####',
               ),
+              array(
+                'id'  => 'phila_connect_phone_text',
+                'type'  => 'text',
+                'desc'  => 'Addtional information about this phone number'
+              ),
             ),
-
           ),
           array(
             'name' => 'Fax',
@@ -1453,6 +1455,22 @@ public static function phila_meta_var_connect(){
       )
     );
 
+  }
+
+  public static function phila_disclaimer_modal(){
+    return array(
+      array(
+        'id'  => 'disclaimer_modal_button_text',
+        'name'  => 'Button Text',
+        'type'  => 'text',
+      ),
+      array(
+        'name' => 'Modal Text',
+        'id'   => 'disclaimer_modal_text',
+        'type' => 'wysiwyg',
+        'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+      ),
+    );
   }
 
 }//end Class

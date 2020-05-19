@@ -50,7 +50,7 @@
     <?php if (phila_get_selected_template() != 'prog_association') : ?>
       <?php phila_get_menu(); ?>
     <?php endif; ?>
-    <?php if ($current_post_type != 'department_page') : ?>
+    <?php if ($current_post_type != 'department_page' && $user_selected_template != 'stub') : ?>
       <div class="mtl mbm">
         <?php get_template_part( 'partials/breadcrumbs' ); ?>
       </div>
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="cell medium-12 align-self-stretch hero-image hide-for-small-only" style="background-image:url(<?php echo $hero['full_url']  ?>) ">
-          <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?>
+          <?php echo !empty($credit) ? '<div class="photo-credit"><span><i class="fas fa-camera" aria-hidden="true"></i> Photo by ' . $credit . '</div>' : '' ?>
         </div>
       </div>
     <?php phila_get_menu(); ?>

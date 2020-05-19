@@ -43,12 +43,11 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners.' ),
           array(
-            'name'  => 'Filter by tags',
+            'name'  => 'Filter by a tag',
             'id'  => 'tag',
             'type' => 'taxonomy_advanced',
             'taxonomy'  => 'post_tag',
             'field_type' => 'select_advanced',
-            'multiple' => true,
             'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
@@ -294,14 +293,7 @@ class Phila_Gov_Row_Metaboxes {
           Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
         ),
       ),
-      // array(
-      //   'id' => 'phila_vue_template',
-      //   'type'  => 'group',
-      //   'name'  => 'Vue template',
-      //   'clone' => false,
-      //   'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
-      //   'fields'  =>  Phila_Vue_App_Files::phila_vue_metaboxes()
-      // ),
+
       array (
         'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
         'id'  => 'vue_app_title',
@@ -313,6 +305,18 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_vue_app'),
         'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
+      ),
+      array(
+        'id' => 'photo_callout',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
+      ),
+      array(
+        'id' => 'faq',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_faq'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_faq()
       )
     ),
   );
@@ -464,4 +468,103 @@ class Phila_Gov_Row_Metaboxes {
       ),
     );
   }
+
+  public static function phila_metabox_photo_callout( ){
+      return  array(
+        array(
+          'name' => 'Display with Image?',
+          'id'   => 'phila_v2_photo_callout_block__image_toggle',
+          'type' => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
+          'id' => 'phila_v2_photo_callout_block__txt-header',
+          'type' => 'text',
+          'name' => 'Header',
+          'columns' => 12
+        ),
+        array(
+          'id' => 'phila_v2_photo_callout_block__txt-sub-header',
+          'type' => 'text',
+          'name' => 'Sub-header',
+          'columns' => 12,
+
+          'visible' => array(
+            'when' => array(
+              array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+            ),
+          ),
+        ),
+        array(
+          'id'   => 'phila_v2_photo_callout_block__link',
+          'type' => 'url',
+          'name' => 'Button URL',
+          'columns' => 12
+        ),
+        array(
+          'id' => 'phila_v2_photo-callout-block__txt-btn-label',
+          'type' => 'text',
+          'name' => 'Button Text',
+          'columns' => 12
+        ),
+        array(
+          'id' => 'phila_v2_photo-callout-block__txt-icon',
+          'type' => 'text',
+          'name' => 'Icon selection',
+          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.',
+          'columns' => 12
+        ),
+        array(
+            'id' => 'phila_v2_photo-callout-block__desc',
+            'type' => 'textarea',
+            'name' => 'Description',
+            'columns' => 12,
+
+            'visible' => array(
+              'when' => array(
+                array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+              ),
+            ),
+        ),
+        array(
+          'id' => 'phila_v2_photo_callout_block__photo',
+          'title' => 'Select image',
+          'type' => 'image_advanced',
+          'max_file_uploads' => 1,
+          'columns' => 12,
+
+          'visible' => array(
+            'when' => array(
+              array( 'phila_v2_photo_callout_block__image_toggle', '=', 1 ),
+            ),
+          ),
+        ),
+      );
+  }
+
+  public static function phila_metabox_faq( ){
+    return  array(
+      array(
+        'name' => 'Section title',
+        'id'   => 'accordion_row_title',
+        'type' => 'text',
+        'class' => 'percent-90',
+      ),
+      array(
+        'id'   => 'accordion_group',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'add_button' => '+ Add FAQ',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
+            $section_name = 'FAQ title', 
+            $wysiwyg_desc = 'FAQ content', 
+            $columns = 12, 
+            $clone = true ),
+        )
+      )
+    );
+}
 }

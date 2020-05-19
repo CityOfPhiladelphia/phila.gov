@@ -37,7 +37,8 @@ class Phila_Gov_Programs_Initiatives{
           'title',
           'editor',
           'page-attributes',
-          'revisions'
+          'revisions',
+          'thumbnail'
         ),
         'public' => true,
         'has_archive' => true,

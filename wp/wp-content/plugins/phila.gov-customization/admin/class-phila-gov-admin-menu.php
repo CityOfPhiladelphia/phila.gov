@@ -61,7 +61,7 @@ class Phila_Gov_Admin_Menu {
       global $wp_post_types;
       $labels = &$wp_post_types['post']->labels;
       $labels->name = 'The latest news + events';
-      $labels->singular_name = 'Latest';
+      $labels->singular_name = 'Latest item';
       $labels->add_new = 'Add new item to the latest';
       $labels->add_new_item = 'Add new item';
       $labels->edit_item = 'Edit item';

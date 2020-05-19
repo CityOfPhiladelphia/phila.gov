@@ -36,6 +36,7 @@
   //utility nav
   .utility-nav {
     font-size: .85rem;
+    height: 25px;
 
     @include breakpoint(small only) {
       height:10px;
@@ -52,6 +53,7 @@
           content: '|';
           background: color(ben-franklin-blue);
           color: rgba(color(light-ben-franklin), .6);
+          padding: 0 10px;
         }
 
         a {
@@ -77,7 +79,14 @@
         }
       }
     }
+    #google_translate_element a {
+      padding: .2rem 2rem .3rem .5rem;
+    }
+    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value::after {
+      top: 6px;
+    }
   }
+
 
   .sticky{
     // sass-lint:disable-block no-important
@@ -411,7 +420,8 @@
     }
     .mega-menu-footer {
       height: 66px;
-      
+      border-left: 2px solid white;
+      border-right: 2px solid white;
       a {
         padding: 1.5rem 4rem;
 
@@ -428,9 +438,9 @@
           content: '';
           width: 0;
           height: 0;
-          border-top: 35px solid transparent;
-          border-bottom: 35px solid transparent;
-          border-left: 35px solid color(ghost-gray);
+          border-top: 33px solid transparent;
+          border-bottom: 33px solid transparent;
+          border-left: 33px solid color(ghost-gray);
           position: absolute;
           left:0;
           right:0;
