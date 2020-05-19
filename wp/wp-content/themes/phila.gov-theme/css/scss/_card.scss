@@ -238,6 +238,9 @@ a.card.sub-topic{
         width: fit-content;
         display: block;
       }
+      &.card--last {
+        border-bottom:none !important;
+      }
     }
   }
 }
@@ -267,6 +270,11 @@ a.card.sub-topic{
         width: fit-content;
         display: block;
       }
+    }
+  }
+  .card--last {
+    .card {
+      border-bottom:none !important;
     }
   }
 }
