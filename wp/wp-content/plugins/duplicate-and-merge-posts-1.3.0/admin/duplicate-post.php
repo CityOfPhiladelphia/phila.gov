@@ -1149,12 +1149,16 @@ class DuplicatePost{
           add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
         }
       }else if( $meta_key === 'phila_related_content_picker'){
-        foreach ($meta_values as $doc_page_value){
-          add_post_meta($new_id, 'phila_related_content_picker', $doc_page_value, false);
+        foreach ($meta_values as $related_content){
+          add_post_meta($new_id, 'phila_related_content_picker', $related_content, false);
         }
       }else if( $meta_key === 'service_related_content_picker'){
-        foreach ($meta_values as $doc_page_value){
-          add_post_meta($new_id, 'service_related_content_picker', $doc_page_value, false);
+        foreach ($meta_values as $service_related_content){
+          add_post_meta($new_id, 'service_related_content_picker', $service_related_content, false);
+        }
+      }else if( $meta_key === 'phila_select_programs'){// now it's saving the values, but adding them to the page twice. updading the page normally fixes the issue, but it's still not ideal.
+        foreach ($meta_values as $program_values){
+          add_post_meta($new_id, 'phila_select_programs', $program_values, false);
         }
       }else{
         if( in_array($meta_key, array("_dp_original","_dp_submited")) ) continue;
