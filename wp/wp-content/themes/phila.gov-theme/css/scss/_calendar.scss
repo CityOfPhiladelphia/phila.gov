@@ -89,14 +89,19 @@ ul.simcal-events{
   .event-row {
     cursor: default;
     border-bottom: 1px solid #444444;
+    pointer-events: none;
     &:hover {
       opacity: 1;
+    }
+    &:focus {
+      outline: none;
     }
 
     .title {
       margin-bottom: 0px;
       -webkit-transition: opacity .25s ease-in-out;
       transition: opacity .25s ease-in-out;
+      pointer-events: all;
       .simcal-event-title {
           color: #0F4D90;
           font-size: 14px;
