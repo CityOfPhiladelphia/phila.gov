@@ -238,6 +238,10 @@ a.card.sub-topic{
         width: fit-content;
         display: block;
       }
+      time {
+        font-size: 14px;
+        font-weight: bold;
+      }
       &.card--last {
         border-bottom:none !important;
       }
@@ -257,7 +261,7 @@ a.card.sub-topic{
         font-size: 14px;
         font-weight: bold;
       }
-      p {
+      a {
         font-weight: bold;
         font-size: 14px;
         margin-bottom: 1rem;
