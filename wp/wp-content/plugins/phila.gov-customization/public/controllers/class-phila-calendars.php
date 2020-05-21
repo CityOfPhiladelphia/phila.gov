@@ -62,10 +62,10 @@ class Phila_Calendars_Controller {
           $i++;
           array_push($post_ids, get_the_id() );
 
-          $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name);
-          $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
+          // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name);
+          // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
 
-          array_push($cal_cat_ids, html_entity_decode(trim($trimmed_name)));
+          array_push($cal_cat_ids,  $categories[0]->slug);
           array_push($cal_nice_name, $categories);
     
           // $names[$i]['id'] = $categories[0]->cat_ID;
@@ -82,11 +82,11 @@ class Phila_Calendars_Controller {
         $categories = get_the_category( $post_id );
         $category = $categories[0];
 
-        $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name);
-        $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
-        $final =  html_entity_decode(trim($trimmed_name));
+        // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name);
+        // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
+        // $final =  html_entity_decode(trim($trimmed_name));
 
-        $grouped_cals[$final] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+        $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
         
         array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
         array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
@@ -101,11 +101,11 @@ class Phila_Calendars_Controller {
             $categories = get_the_category( $id );
             $category = $categories[0];
 
-            $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name);
-            $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
-            $final =  html_entity_decode(trim($trimmed_name));
+            // $cat = $category->slug
+            // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
+            // $final =  html_entity_decode(trim($trimmed_name));
 
-            $single_cal_id[$final] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
+            $single_cal_id[$category->slug] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
           }
           $just_ids[$key] = $single_cal_id;
         }
@@ -165,9 +165,9 @@ class Phila_Calendars_Controller {
     // var_dump($calendar);
     // foreach( $calendar as $key => $val) {
 
-      if (isset( $schema['properties']['department'] )) {
+      if (isset( $schema['properties']['department_slug'] )) {
         // convert to id of celandar
-        $calendar_data['department'] = (string) $key;
+        $calendar_data['department_slug'] = (string) $key;
       }
 
       if (isset( $schema['properties']['calendar_id'] )) {
@@ -222,7 +222,7 @@ class Phila_Calendars_Controller {
       'type'                 => 'object',
       // Specify object properties in the properties attribute.
       'properties'           => array(
-        'department' => array(
+        'department_slug' => array(
           'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
