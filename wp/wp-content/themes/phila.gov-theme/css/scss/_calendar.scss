@@ -87,16 +87,25 @@ ul.simcal-events{
     }
   }
   .event-row {
+    cursor: default;
     border-bottom: 1px solid #444444;
+    &:hover {
+      opacity: 1;
+    }
 
     .title {
       margin-bottom: 0px;
+      -webkit-transition: opacity .25s ease-in-out;
+      transition: opacity .25s ease-in-out;
       .simcal-event-title {
           color: #0F4D90;
           font-size: 14px;
           font-weight: bold;
           letter-spacing: 0;
           line-height: 18px;
+      }
+      &:hover {
+        opacity: .5;
       }
     }
     .date {
