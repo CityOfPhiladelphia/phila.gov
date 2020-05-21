@@ -10,7 +10,7 @@
 
 <?php if ($user_selected_template == 'custom_content'): ?>
   <article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
-    <a href="<?php echo the_permalink(); ?>" class="grid-x hover-fade faux-card custom cell medium-24 <?php echo ($count == $total) ? 'card--last' : '' ?>">
+    <div class="grid-x faux-card custom cell medium-24 <?php echo ($count == $total) ? 'card--last' : '' ?>">
       <div class="cell medium-4 small-6 pam card mtm">
         <?php if ( isset( $label_arr['nice'] ) ) : ?>
           <i class="<?php echo isset($label_arr['icon']) ? $label_arr['icon'] : '' ?> fa-lg fa-3x strong" aria-hidden="true"></i>
@@ -24,11 +24,13 @@
         </div>
         <div class="cell align-self-bottom">
           <header class="mts">
-            <p class="dark-ben-franklin strong"><?php echo get_the_title(); ?></p>
+            <a class="dark-ben-franklin strong hover-fade" href="<?php echo the_permalink(); ?>">
+              <?php echo get_the_title(); ?>
+            </a>
           </header>
         </div>
       </div>
-    </a>
+    </div>
   </article>
 
 <?php else: ?>

@@ -27,7 +27,7 @@
 <?php $last = isset($is_last) ? true : false; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $article_classes ); ?>>
-  <a <?php echo ($label_arr['label'] !== 'announcement') ? 'href=' . get_permalink() : '' ?> class="custom grid-x hover-fade custom cell medium-24 card <?php echo ($count == $total) ? 'card--last' : '' ?>  card--<?php echo $label_arr['label'] ?>" <?php echo ($label_arr['label'] == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
+  <div class="custom grid-x custom cell medium-24 card <?php echo ($count == $total) ? 'card--last' : '' ?>  card--<?php echo $label_arr['label'] ?>">
     <div class="cell medium-4 small-6 pam card mtm">
       <i class="<?php echo isset($label_arr['icon']) ? $label_arr['icon'] : '' ?> fa-lg fa-3x strong" aria-hidden="true"></i>
     </div>
@@ -39,9 +39,11 @@
       </div>
       <div class="cell align-self-bottom">
         <header class="mts">
-          <p class="dark-ben-franklin strong"><?php echo get_the_title(); ?></p>
+          <a class="dark-ben-franklin strong hover-fade" <?php echo ($label_arr['label'] !== 'announcement') ? 'href=' . get_permalink() : '' ?> <?php echo ($label_arr['label'] == 'announcement') ? 'data-open="announcement-' . get_the_ID() .'"' : ''?>>
+            <?php echo get_the_title(); ?>
+          </a>
         </header>
       </div>
     </div>
-  </a>
+  </div>
 </article>
