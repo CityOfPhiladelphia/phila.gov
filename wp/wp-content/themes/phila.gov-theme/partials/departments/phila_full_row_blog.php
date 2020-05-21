@@ -29,12 +29,9 @@
   endif;
 
   if ( empty($blog_tag_override) ) :
-    echo "check nope";
     $blog_tag_override = '';
   elseif( is_array( $blog_tag_override) ):
     $blog_tag_override = implode(',', $blog_tag_override);
-    echo "check yup";
-    var_dump($blog_tag_override);
   endif;
   ?>
 <section class="row">

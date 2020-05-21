@@ -270,11 +270,14 @@ a.card.sub-topic{
         width: fit-content;
         display: block;
       }
+      &.card--last {
+        border-bottom: none !important;
+      }
     }
   }
   .card--last {
     .card {
-      border-bottom:none !important;
+      border-bottom: none !important;
     }
   }
 }

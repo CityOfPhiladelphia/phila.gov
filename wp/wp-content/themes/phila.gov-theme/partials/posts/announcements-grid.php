@@ -68,6 +68,7 @@
 <?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
   <?php if ( $announcements->have_posts() ) : ?>
+    <?php $total = $announcements->post_count; ?>
     <div class="grid-container announcement-grid mbxl">
     <?php if ( is_single() || is_home() ) { ?>
       <h2>Announcements</h2>
