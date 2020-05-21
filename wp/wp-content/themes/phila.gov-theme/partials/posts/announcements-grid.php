@@ -8,7 +8,7 @@
 <?php $current_time = current_time('U'); ?>
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
-<?php if( !empty( $ann_tag ) && $ann_tag != 'is_front_page' ) {
+<?php if( !empty( $ann_tag ) && $ann_tag != 'is_front_page' && $ann_tag != 'is_single' ) {
   $announcement_args  = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
@@ -26,7 +26,7 @@
     ),
   );
 
-  }else if(!empty($ann_categories)){
+  }else if( $ann_categories != '' ){
     $announcement_args = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
