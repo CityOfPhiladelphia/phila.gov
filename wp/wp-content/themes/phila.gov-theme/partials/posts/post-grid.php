@@ -57,9 +57,6 @@ if ( empty( $post_categories ) ) {
 }
 
 if( !empty($tag) && $tag != 'is_single' ) {
-  var_dump('tag');
-  var_dump($tag);
-  var_dump('tag1');
   $posts_args  = array(
     'post_type' => array('post', 'phila_post'),
     'posts_per_page' => 3,
