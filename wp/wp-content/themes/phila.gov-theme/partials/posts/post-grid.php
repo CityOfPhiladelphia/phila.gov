@@ -7,7 +7,7 @@
 <?php 
   $override = rwmb_meta('phila_get_post_cats');
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
-  $post_categories = isset($category) ? $category : '';
+  $post_categories = $category;
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
 ?>
 <?php if (!empty($post_categories)): ?>
@@ -22,8 +22,6 @@
   ?>
   <?php endif; ?>
 <?php $tag = isset($tag) ? $tag : '';?>
-
-<?php var_dump(get_taxonomies()); ?>
 
 <?php
 /* Get all sticky posts for department homepages */
@@ -58,7 +56,10 @@ if ( empty( $post_categories ) ) {
 
 }
 
-if( !empty($tag) ) {
+if( !empty($tag) && $tag != 'is_single' ) {
+  var_dump('tag');
+  var_dump($tag);
+  var_dump('tag1');
   $posts_args  = array(
     'post_type' => array('post', 'phila_post'),
     'posts_per_page' => 3,
@@ -119,11 +120,10 @@ if( !empty($tag) ) {
       ),
     )
   );
-  $posts = new WP_Query( $posts_args );
 
-  $result = new WP_Query();
-  //if sticky posts is empty, don't add it to the results array
-  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts);
+  //TODO: Revisit Sticky Posts in the Future - Derrick
+  $result = new WP_Query( $posts_args );
+
 }
 $result->post_count = count( $result->posts );
 ?>
@@ -186,7 +186,7 @@ $result->post_count = count( $result->posts );
               );
               $see_all = array_replace( $see_all, $see_all_URL );
               endif;?>
-              <?php if( !empty( $tag ) ) :
+              <?php if( !empty( $tag ) && $tag != 'is_single' ) :
                   if( gettype($tag) === 'array'):
                     $term = [];
                     foreach($tag as $t) {

@@ -8,7 +8,7 @@
 <?php
   // set category vars for blogs/staff
   $category = get_the_category();
-  $category_slug = $category[0]->slug;
+  $category_slug = !phila_util_is_array_empty($category) ? $category[0]->slug : '';
 
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
@@ -31,6 +31,9 @@
             <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : '';
             ?>
             <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : '';
+            echo 'tag test';
+            var_dump($blog_tag_override);
+            echo 'tag test override';
             ?>
             <?php $blog_see_all = isset( $current_row['phila_full_options']['phila_get_post_cats']['override_url']) ? $current_row['phila_full_options']['phila_get_post_cats']['override_url'] : ''; ?>
             <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>
