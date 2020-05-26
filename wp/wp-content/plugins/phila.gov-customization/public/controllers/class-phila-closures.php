@@ -19,11 +19,20 @@ class Phila_Closures_Controller {
       'schema' => array( $this, 'get_item_schema' ),
     ) );
 
-    //Register today
+  // Register today
     register_rest_route( $this->namespace, '/' . $this->resource_name . '/today', array(
       array(
         'methods'   => WP_REST_Server::READABLE,
-        'callback'  => array( $this, 'today' ),
+        'callback'  => array( $this, 'get_today' ),
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+  // Register by date
+    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<date>[\d]{4}-[\d]{2}+-[\d]{2})', array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_by_date' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
@@ -58,8 +67,10 @@ class Phila_Closures_Controller {
    * Return closures that are occurring today
    *
    * @param WP_REST_Request $request Current request.
+   * 
+   * ex /closures/v1/closure/today
   */
-  public function today( $request ) {
+  public function get_today( $request ) {
 
     $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
 
@@ -81,6 +92,50 @@ class Phila_Closures_Controller {
 
       foreach ($period as $key => $value) {
         if ($value->format('Y-m-d') == $today) {
+          $response = $this->prepare_item_for_response( $closure, $request );
+  
+          $data[] = $this->prepare_response_for_collection( $response );
+          break;
+        }
+      }
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+  }
+
+
+  /**
+   * Return closures that are occurring on a specific date
+   *
+   * @param WP_REST_Request $request Current request.
+   * 
+   * ex /closures/v1/closure/YYYY-MM-DD
+  */
+  public function get_by_date( $request ) {
+
+    $request_date = (string) $request['date'];
+
+    $date = date($request_date);
+
+    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+    $data = array();
+    
+    if ( empty( $closures ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    foreach ( $closures as $closure ) {
+      
+      $period = new DatePeriod (
+        new DateTime($closure['start_date']),
+        new DateInterval('P1D'),
+        new DateTime($closure['end_date'])
+      );
+
+      foreach ($period as $key => $value) {
+        if ($value->format('Y-m-d') == $date) {
           $response = $this->prepare_item_for_response( $closure, $request );
   
           $data[] = $this->prepare_response_for_collection( $response );
