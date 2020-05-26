@@ -19,18 +19,18 @@ class Phila_Closures_Controller {
       'schema' => array( $this, 'get_item_schema' ),
     ) );
 
-    //Register individual items
-    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
+    //Register today
+    register_rest_route( $this->namespace, '/' . $this->resource_name . '/today', array(
       array(
         'methods'   => WP_REST_Server::READABLE,
-        'callback'  => array( $this, 'get_item' ),
+        'callback'  => array( $this, 'today' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
   }
 
   /**
-   * Return all services, excluding stubs
+   * Return all closures
    *
    * @param WP_REST_Request $request Current request.
   */
@@ -54,23 +54,42 @@ class Phila_Closures_Controller {
     return rest_ensure_response( $data );
   }
 
-
   /**
-   * Outputs an individual item's data
+   * Return closures that are occurring today
    *
    * @param WP_REST_Request $request Current request.
-   */
-  public function get_item( $request ) {
-    $id = (int) $request['id'];
-    $post = get_post( $id );
+  */
+  public function today( $request ) {
 
-    if ( empty( $post ) ) {
-      return rest_ensure_response( array() );
+    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+    $data = array();
+
+    $today = date('Y-m-d');
+    
+    if ( empty( $closures ) ) {
+      return rest_ensure_response( $data );
     }
 
-    $response = $this->prepare_item_for_response( $post, $request );
+    foreach ( $closures as $closure ) {
+      
+      $period = new DatePeriod (
+        new DateTime($closure['start_date']),
+        new DateInterval('P1D'),
+        new DateTime($closure['end_date'])
+      );
 
-    return $response;
+      foreach ($period as $key => $value) {
+        if ($value->format('Y-m-d') == $today) {
+          $response = $this->prepare_item_for_response( $closure, $request );
+  
+          $data[] = $this->prepare_response_for_collection( $response );
+        }
+      }
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
   }
 
   /**
