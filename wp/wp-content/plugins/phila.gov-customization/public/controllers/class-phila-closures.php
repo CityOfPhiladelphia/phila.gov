@@ -84,6 +84,7 @@ class Phila_Closures_Controller {
           $response = $this->prepare_item_for_response( $closure, $request );
   
           $data[] = $this->prepare_response_for_collection( $response );
+          break;
         }
       }
     }
