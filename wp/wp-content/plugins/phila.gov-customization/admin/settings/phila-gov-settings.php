@@ -111,14 +111,12 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'id'  => 'start_date',
             'name' => 'Closure Start Date',
             'type'  => 'date',
-            'timestamp' => true,
             'required'  => true,
           ),
           array(
             'id'  => 'end_date',
             'name' => 'Closure End Date',
             'type'  => 'date',
-            'timestamp' => true,
             'required'  => true,
           ),
           array(
@@ -133,8 +131,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'name' => 'Is This Active?',
             'type' => 'switch',
             'on_label' => 'Yes',
-            'off_label'  => 'No',
-            'std' => 1
+            'off_label'  => 'No'
           ),
         ),
       ),
