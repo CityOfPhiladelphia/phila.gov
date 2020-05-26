@@ -36,6 +36,15 @@ class Phila_Closures_Controller {
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
+
+  // Register by week
+  register_rest_route( $this->namespace, '/' . $this->resource_name . '/week', array(
+    array(
+      'methods'   => WP_REST_Server::READABLE,
+      'callback'  => array( $this, 'get_week' ),
+    ),
+    'schema' => array( $this, 'get_item_schema' ),
+  ) );
   }
 
   /**
@@ -147,6 +156,60 @@ class Phila_Closures_Controller {
     // Return all response data.
     return rest_ensure_response( $data );
   }
+
+
+  /**
+   * Return closures that are occurring in the following 7 days (today + 6 days)
+   * 
+   * ex /closures/v1/closure/week
+  */
+  public function get_week( $request ) {
+
+    $today = date('Y-m-d');
+
+    $week = new DatePeriod(
+      new DateTime($today), 
+      new DateInterval('P1D'), 
+      6);
+
+    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+    $data = array();
+    
+    if ( empty( $closures ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    foreach ( $closures as $closure ) {
+      
+      $period = new DatePeriod (
+        new DateTime($closure['start_date']),
+        new DateInterval('P1D'),
+        new DateTime($closure['end_date'])
+      );
+
+      $match = false;
+
+      foreach ($period as $key => $value) {
+        foreach ($week as $key => $day) {
+          if ($value->format('Y-m-d') == $day->format('Y-m-d')) {
+            $response = $this->prepare_item_for_response( $closure, $request );
+    
+            $data[] = $this->prepare_response_for_collection( $response );
+            $match = true;
+            break;
+          }
+        }
+        if ($match == true) {
+          break;
+        }
+      }
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+  }
+
 
   /**
    * Matches the post data to the schema. Also, rename the fields to nicer names.
