@@ -312,7 +312,6 @@ class Phila_Closures_Controller {
 }
 
 // Function to register our new routes from the controller.
-
 function phila_register_closures_rest_routes() {
   $controller = new Phila_Closures_Controller();
   $controller->register_routes();
