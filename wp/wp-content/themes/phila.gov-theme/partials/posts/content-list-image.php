@@ -6,9 +6,7 @@
  */
 ?>
 
-<?php //$user_selected_template = phila_get_selected_template(); ?>
-
-<?php if ($user_selected_template == 'custom_content'): ?>
+<?php if ($user_selected_template === 'custom_content' || $post_type_parent === 'guides'): ?>
   <article id="post-<?php the_ID(); ?>" <?php post_class('mbm'); ?>>
     <div class="grid-x faux-card custom cell medium-24 <?php echo ($count == $total) ? 'card--last' : '' ?>">
       <div class="cell medium-4 small-6 pam card mtm">

@@ -91,7 +91,10 @@ if( !empty($tag) ) {
 }
 ?>
 
-<?php $user_selected_template = phila_get_selected_template(); ?>
+<?php 
+  $user_selected_template = phila_get_selected_template(); 
+  $post_type_parent = get_post_type($post->ID);
+?>
 
 <?php
 //special handling for old press release CPT
@@ -113,7 +116,7 @@ if( !empty($tag) ) {
         <?php $post_type = get_post_type(); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
         <?php $count++; ?>
-        <?php if( $user_selected_template == 'custom_content' ): ?>
+        <?php if( $user_selected_template == 'custom_content' || $post_type_parent == 'guides' ): ?>
           <?php if ($count <= 4) : ?>
             <div class="cell align-self-stretch">
               <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
@@ -131,7 +134,7 @@ if( !empty($tag) ) {
             <div class="grid-x grid-margin-x grid-full-height mtm">
           <?php endif;?>
           <?php if ($count <= 4) : ?>
-            <?php if ($user_selected_template == 'custom_content'): ?>
+            <?php if ($user_selected_template == 'custom_content' || $post_type_parent == 'guides'): ?>
               <div class="cell align-self-stretch">
                 <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
             <?php else: ?>
