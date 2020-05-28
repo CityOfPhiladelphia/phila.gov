@@ -126,6 +126,7 @@ $result->post_count = count( $result->posts );
 ?>
 
 <?php $user_selected_template = phila_get_selected_template(); ?>
+<?php $post_type_parent = get_post_type($post->ID); ?>
 
 <?php $count = 0; ?>
 <?php $label = 'post'; ?>
@@ -140,7 +141,7 @@ $result->post_count = count( $result->posts );
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
           <?php $count++; ?>
-          <?php if( $user_selected_template == 'custom_content' ): ?>
+          <?php if($post_type_parent === 'guides' || $user_selected_template === 'custom_content' ): ?>
             <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
               <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
             </div>
@@ -207,7 +208,7 @@ $result->post_count = count( $result->posts );
               <?php endif; ?>
               <?php $see_all = array_replace($see_all, $see_all_URL );
                 endif;?>
-          <?php if ($user_selected_template == 'custom_content'): ?>
+          <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
             </div>
             <div class='custom'>
               <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>

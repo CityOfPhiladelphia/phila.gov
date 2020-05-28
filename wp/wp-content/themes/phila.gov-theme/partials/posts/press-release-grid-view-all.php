@@ -1,5 +1,5 @@
 <?php if ($count == 4) : ?>
-  <?php if ($user_selected_template == 'custom_content'): ?>
+  <?php if ($user_selected_template == 'custom_content' || $post_type_parent == 'guides'): ?>
     <?php $see_all = array(
     'URL' => '/the-latest/archives/#/?templates=press_release&department=' . $slang_name,
     'content_type' => 'press_release',
@@ -30,7 +30,7 @@
     'URL' => $override_url
   ); ?>
 <?php endif; ?>
-  <?php if ($user_selected_template == 'custom_content'): ?>
+  <?php if ($user_selected_template == 'custom_content' || $post_type_parent == 'guides'): ?>
   <div class="custom">
     <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
   </div>

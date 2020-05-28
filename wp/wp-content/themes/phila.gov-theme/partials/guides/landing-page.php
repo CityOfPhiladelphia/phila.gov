@@ -92,7 +92,7 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
     $blog_see_all = isset($blog_override['override_url']) ? $blog_override['override_url'] : ''; ?>
 
   <!-- Blog Content-->
-  <section class="mvl">
+  <section class="blogs">
     <?php include(locate_template('partials/departments/phila_full_row_blog.php')); ?>
   </section>
   <!-- /Blog Content-->
@@ -104,7 +104,7 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
     $press_cat_override = isset($press_override['phila_press_release_category']) ? $press_override['phila_press_release_category'] : '';
     $press_tag_override = isset($press_override['tag']) ? $press_override['tag'] : ''; ?>
   <!-- Press Releases -->
-  <div class="row mvl">
+  <div class="row press-releases">
     <?php echo do_shortcode('[press-releases posts=5]'); ?>
   </div>
   <!-- /Press Releases -->
