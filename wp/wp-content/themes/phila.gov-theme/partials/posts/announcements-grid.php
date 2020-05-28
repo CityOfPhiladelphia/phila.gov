@@ -63,7 +63,9 @@
 ?>
 <?php $label = 'announcement'; ?>
 
-<?php $user_selected_template = phila_get_selected_template(); ?>
+<?php $user_selected_template = phila_get_selected_template(); 
+  $post_type_parent = get_post_type($post->ID);
+?>
 
 <?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
@@ -79,7 +81,7 @@
         <?php $cats = get_the_category($post->ID); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
             <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
-              <?php if ($user_selected_template == 'custom_content'): ?>
+              <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
                 <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
               <?php else: ?>
                 <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>

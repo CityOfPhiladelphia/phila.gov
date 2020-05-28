@@ -141,7 +141,7 @@ $result->post_count = count( $result->posts );
           <?php $post_type = get_post_type(); ?>
           <?php $post_obj = get_post_type_object( $post_type ); ?>
           <?php $count++; ?>
-          <?php if($post_type_parent === 'guides' || $user_selected_template === 'custom_content' ): ?>
+          <?php if( $user_selected_template === 'custom_content' || $post_type_parent === 'guides' ): ?>
             <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
               <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
             </div>
