@@ -960,7 +960,8 @@ $meta_boxes[] = array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
       array('phila_template_select', '=', 'service_stub'),
-      array('phila_template_select', '=', 'default_v2')
+      array('phila_template_select', '=', 'default_v2'),
+      array('phila_template_select', '=', 'custom_content')
     ),
     'relation' => 'or',
   ),
@@ -1145,6 +1146,25 @@ $meta_boxes[] = array(
     'relation'  => 'or'
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_disclaimer_modal(),
+);
+
+
+$meta_boxes[] = array(
+  'title' => 'Prereq Row',
+  'id'       => 'prereq_row',
+  'pages' => array ( 'service_page' ),
+  'revision' => true,
+  'context'  => 'advanced',
+
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'default_v2'),
+      array('phila_template_select', '=', 'default')
+    ),
+    'relation' => 'or',
+  ),
+
+  'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
 );
 
 

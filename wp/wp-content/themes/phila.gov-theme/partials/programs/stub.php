@@ -17,11 +17,7 @@
       <?php $stub_id = $post_id; ?>
       <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
       <?php if( !empty( get_the_content() ) ) : ?>
-        <div class="row">
-          <div class="columns">
-            <?php the_content(); ?>
-          </div>
-        </div>
+        <?php include( locate_template( 'partials/content-basic.php' ) ); ?>
       <?php endif; ?>
 
       <?php 

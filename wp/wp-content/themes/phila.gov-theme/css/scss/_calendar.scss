@@ -51,7 +51,7 @@ ul.simcal-events{
 .simcal-event {
   margin-bottom:1rem;
 }
-.calendar-date{
+.calendar-date {
   text-align:center;
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   font-weight: normal;
@@ -68,6 +68,88 @@ ul.simcal-events{
     font-size: 5rem;
     line-height: 4rem;
     display: block;
+  }
+}
+.custom-content {
+  display: none;
+}
+
+.custom {
+  .not-custom {
+    display: none;
+  }
+  .custom-content {
+    display: block;
+  }
+  .simcal-day:last-of-type{
+    .event-row {
+      border-bottom: none !important;
+    }
+  }
+  .event-row {
+    cursor: default;
+    border-bottom: 1px solid #444444;
+    pointer-events: none;
+    &:hover {
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+    }
+
+    .title {
+      margin-bottom: 0px;
+      -webkit-transition: opacity .25s ease-in-out;
+      transition: opacity .25s ease-in-out;
+      pointer-events: all;
+      .simcal-event-title {
+          color: #0F4D90;
+          font-size: 14px;
+          font-weight: bold;
+          letter-spacing: 0;
+          line-height: 18px;
+      }
+      &:hover {
+        cursor: pointer;
+        opacity: .5;
+      }
+    }
+    .date {
+      &.custom-content {
+        color: #444444;
+        font-size: 12px;
+        font-style: italic;
+        letter-spacing: 0;
+        line-height: 17px;
+      }
+    }
+    .description {
+      margin-top: 12px;
+      color: #444444;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 25px;
+    } 
+    .calendar-date {
+      background: none;
+      font-weight: 600;
+      color: #444444;
+      letter-spacing: 0;
+      .month {
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 22px;
+      }
+      .day {
+        font-size: 48px;
+        line-height: 58px;
+      }
+    }
+    .calendar-details {
+      background-color: transparent;
+      border: none;
+    }
   }
 }
 

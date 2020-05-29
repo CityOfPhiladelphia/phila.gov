@@ -422,6 +422,13 @@ class Phila_Gov_Standard_Metaboxes {
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100),
         ),
         array(
+          //TODO: swap this out for an icon picker
+          'id'  => 'phila_accordion_icon',
+          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+          'name'  => 'Select icon',
+          'type'  => 'text',
+        ),
+        array(
           'id'  => 'phila_wysiwyg_content',
           'type'  => 'wysiwyg',
           'desc'  => $wysiwyg_desc,
@@ -1098,37 +1105,6 @@ public static function phila_meta_var_connect(){
     );
   }
 
-  // Custom Featured Content
-  public static function phila_meta_var_custom_feature(){
-    return array(
-      array(
-        'name' => 'Feature Title',
-        'id' => 'phila_feature_title',
-        'type' => 'text',
-      ),
-      array(
-        'name' => 'Feature Image',
-        'id' => 'phila_feature_image',
-        'type' => 'file_input',
-      ),
-      array(
-        'name' => 'Feature Text',
-        'id' => 'phila_feature_text',
-        'type' => 'textarea',
-      ),
-      array(
-        'name' => 'Feature URL Text',
-        'id' => 'phila_feature_url_text',
-        'type' => 'text',
-      ),
-      array(
-        'name' => 'URL',
-        'id' => 'phila_feature_url',
-        'type' => 'url',
-      ),
-    );
-  }
-
   // Pullquote
   public static function phila_meta_var_pullquote(){
     return array(
@@ -1470,6 +1446,33 @@ public static function phila_meta_var_connect(){
         'type' => 'wysiwyg',
         'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
       ),
+    );
+  }
+
+  public static function phila_meta_prereq_row($row_title){
+    return array(
+      array(
+        'name' => ($row_title),
+        'id'   => 'accordion_row_title',
+        'type' => 'text',
+        'required' => true,
+        'class' => 'percent-100'
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
+      array(
+        'id'   => 'accordion_group',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'add_button' => '+ Add accordion',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
+            $section_name = 'Accordion title', 
+            $wysiwyg_desc = 'Accordion content', 
+            $columns = 12, 
+            $clone = true ),
+        )
+      )
     );
   }
 
