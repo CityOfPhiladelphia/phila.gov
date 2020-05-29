@@ -34,6 +34,7 @@ class Phila_Gov_Row_Select_Options {
       'class' => 'percent-100',
       'placeholder' => 'Select full-width row module...',
       'options' => array(
+        'phila_content_additional_content' => 'Additional Content',
         'phila_blog_posts' => 'Blog posts',
         'phila_board_commission'  => 'Board or commission members',
         'phila_full_width_calendar' => 'Calendar',
@@ -43,9 +44,11 @@ class Phila_Gov_Row_Select_Options {
         'phila_custom_text' => 'Custom text',
         'phila_custom_text_multi' => 'Custom text (multiple)',
         'phila_faq' => 'FAQ',
+        'phila_prereq' => 'FAQ list with icon (prereq approval style)',
         'phila_feature_p_i' => 'Featured page content',
         'phila_get_involved' => 'Get Involved',
         'phila_image_list' => 'Image list',
+        'phila_content_heading_group' => 'Heading group',
         'phila_list_items' => 'List items (grid)',
         'phila_location_list' => 'Location List',
         'phila_photo_callout' => 'Photo callout',
@@ -55,9 +58,6 @@ class Phila_Gov_Row_Select_Options {
         'phila_staff_table' => 'Staff table',
         'phila_stepped_content' => 'Stepped content',
         'phila_vue_app'  => 'Vue app',
-        'phila_content_heading_group' => 'Heading Group',
-        'phila_prereq' => 'Prereq',
-        'phila_content_additional_content' => 'Additional Content',
       ),
     );
   }
