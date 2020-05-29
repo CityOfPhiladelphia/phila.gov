@@ -245,6 +245,9 @@ a.card.sub-topic{
       &.card--last {
         border-bottom:none !important;
       }
+      .cell{
+        margin-bottom:0;
+      }
     }
   }
 }
