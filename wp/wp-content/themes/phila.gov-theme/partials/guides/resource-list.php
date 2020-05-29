@@ -36,6 +36,12 @@
 <?php endif;?>
 
 <?php $resource_lists = rwmb_meta('phila_resource_list_v2'); ?>
+<?php $more_copy = rwmb_meta('phila_addtional_page_copy');?>
+<?php if (!empty( $more_copy )) : ?>
+  <div class="more_copy mbl">
+  <?php echo apply_filters('the_content', $more_copy ) ?>
+  </div>
+<?php endif; ?>
 <?php foreach($resource_lists as $resource_list) : ?>
   <h2 class="h5 bg-ghost-gray pas">
     <?php echo $resource_list['phila_resource_list_title'] ?>

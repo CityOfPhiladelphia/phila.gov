@@ -8,7 +8,7 @@
 <?php $current_time = current_time('U'); ?>
 <?php isset($home_filter) ? $home_filter : $home_filter = array(); ?>
 
-<?php if( !empty( $ann_tag ) && $ann_tag != 'is_front_page' ) {
+<?php if( !empty( $ann_tag ) && $ann_tag != 'is_front_page' && $ann_tag != 'is_single' ) {
   $announcement_args  = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
@@ -26,7 +26,7 @@
     ),
   );
 
-  }else if(!empty($ann_categories)){
+  }else if( $ann_categories != '' ){
     $announcement_args = array(
     'posts_per_page' => 4,
     'post_type' => array( 'announcement' ),
@@ -63,10 +63,15 @@
 ?>
 <?php $label = 'announcement'; ?>
 
+<?php $user_selected_template = phila_get_selected_template(); 
+  $post_type_parent = get_post_type($post->ID);
+?>
+
 <?php $announcements = new WP_Query( $announcement_args )?>
 <?php $count = $announcements->post_count ?>
   <?php if ( $announcements->have_posts() ) : ?>
-    <div class="grid-container mbxl">
+    <?php $total = $announcements->post_count; ?>
+    <div class="grid-container announcement-grid mbxl">
     <?php if ( is_single() || is_home() ) { ?>
       <h2>Announcements</h2>
     <?php } ?>
@@ -76,7 +81,11 @@
         <?php $cats = get_the_category($post->ID); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
             <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
-              <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+              <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
+                <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+              <?php else: ?>
+                <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+              <?php endif; ?>
           </div>
           <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
             <button class="close-button" data-close aria-label="Close modal" type="button">

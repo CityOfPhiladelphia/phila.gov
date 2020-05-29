@@ -960,7 +960,8 @@ $meta_boxes[] = array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
       array('phila_template_select', '=', 'service_stub'),
-      array('phila_template_select', '=', 'default_v2')
+      array('phila_template_select', '=', 'default_v2'),
+      array('phila_template_select', '=', 'custom_content')
     ),
     'relation' => 'or',
   ),
