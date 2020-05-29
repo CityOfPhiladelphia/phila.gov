@@ -49,8 +49,20 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
   <?php get_template_part('partials/content', 'custom-markup-after-wysiwyg'); ?>
 
 </section>
+<?php $resource_lists = rwmb_meta('phila_resource_list_v2'); ?>
+<?php if( !empty($resource_lists) ): ?>
+  <section class="featured-resources">
+    <div class="grid-container">
+      <div class="grid-x grid-x-padding">
+        <div class="cell">
+          <?php include(locate_template('partials/guides/resource-list.php')); ?>
+        </div>
+      </div>
+    </div>
+  </section>
+<?php endif; ?>
 
-<div class="grid-container">
+<div class="grid-container explore-guide">
   <div class="page-title ">
     <h2>Explore this guide</h2>
   </div>
