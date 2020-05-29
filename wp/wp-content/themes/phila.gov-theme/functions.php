@@ -1698,6 +1698,12 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
 }
 
 
+function phila_cat_id_to_cat_name( $cat_id ) {
+  $cat_name = get_term( $cat_id );
+  return $cat_name;
+}
+
+
 //Allow some HTML5 data-* attributes to appear in the TinyMCE WYSIWYG editor
 add_filter('wp_kses_allowed_html', 'phila_filter_allowed_html', 10, 2);
 

@@ -91,6 +91,10 @@ if( !empty($tag) ) {
 }
 ?>
 
+<?php 
+  $user_selected_template = phila_get_selected_template(); 
+  $post_type_parent = get_post_type($post->ID);
+?>
 
 <?php
 //special handling for old press release CPT
@@ -112,48 +116,40 @@ if( !empty($tag) ) {
         <?php $post_type = get_post_type(); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
         <?php $count++; ?>
-        <?php if ($count == 1) :?>
-          <div class="grid-x grid-margin-x grid-full-height">
-        <?php elseif( $count == 3 ) : ?>
-          <div class="grid-x grid-margin-x grid-full-height mtm">
-        <?php endif;?>
-          <?php
-          if ($count <= 4) : ?>
-            <div class="cell medium-12 align-self-stretch">
-              <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
-              <?php if ($count == 4) : ?>
-                <?php $see_all = array(
-                  'URL' => '/the-latest/archives/#/?templates=press_release&department=' . $slang_name,
-                  'content_type' => 'press_release',
-                  'nice_name' => 'Press releases',
-                  'is_full' => true
-                );
-                if( !empty( $tag ) ) :
-                  if (gettype($tag) === 'string' ) {
-                    $term = get_term($tag, 'post_tag');
-                  }else{
-                    $term = get_term($tag[0], 'post_tag');
-                  }
-                  $see_all_URL = array(
-                    'URL' => '/the-latest/archives/#/?tag=' . $term->name,
-                  );
-                  $see_all = array_replace($see_all, $see_all_URL );
-                  endif;?>
-              <?php if (!empty($override_url)) : ?>
-              <?php $see_all_URL = array(
-                  'URL' => $override_url
-                ); ?>
-              <?php endif; ?>
-                <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-              <?php endif;?>
-              <?php if ($count == 2 || $count == 4) :?>
+        <?php if( $user_selected_template == 'custom_content' || $post_type_parent == 'guides' ): ?>
+          <?php if ($count <= 4) : ?>
+            <div class="cell align-self-stretch">
+              <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+            </div>
+          <?php endif; ?>
+          <?php if( $count == 4 ) : ?>
+            <div class="cell align-self-stretch">
+              <?php include( locate_template( 'partials/posts/press-release-grid-view-all.php' ) ); ?>
+            </div>
+          <?php endif; ?>
+        <?php else: ?>
+          <?php if ($count == 1) :?>
+            <div class="grid-x grid-margin-x grid-full-height">
+          <?php elseif( $count == 3 ) : ?>
+            <div class="grid-x grid-margin-x grid-full-height mtm">
+          <?php endif;?>
+          <?php if ($count <= 4) : ?>
+            <?php if ($user_selected_template == 'custom_content' || $post_type_parent == 'guides'): ?>
+              <div class="cell align-self-stretch">
+                <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+            <?php else: ?>
+              <div class="cell medium-12 align-self-stretch">
+                <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+            <?php endif; ?>
+            <?php include( locate_template( 'partials/posts/press-release-grid-view-all.php' ) ); ?>
+            <?php if ($count == 2 || $count == 4) :?>
               </div>
             <?php endif;?>
-          </div>
+            </div>
+          <?php endif;?>
         <?php endif;?>
-
-        <?php endwhile; ?>
-      <?php endif; ?>
-    <?php wp_reset_postdata(); ?>
+      <?php endwhile; ?>
+  <?php endif; ?>
+  <?php wp_reset_postdata(); ?>
   </div>
 </div>

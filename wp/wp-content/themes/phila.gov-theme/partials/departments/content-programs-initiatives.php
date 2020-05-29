@@ -8,7 +8,7 @@
 <?php
   // set category vars for blogs/staff
   $category = get_the_category();
-  $category_slug = $category[0]->slug;
+  $category_slug = !phila_util_is_array_empty($category) ? $category[0]->slug : '';
 
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
@@ -28,10 +28,8 @@
         if ( $current_row_option == 'phila_blog_posts'):?>
           <!-- Blog Content -->
           <div class="mvl">
-            <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : '';
-            ?>
-            <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : '';
-            ?>
+            <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : ''; ?>
+            <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : ''; ?>
             <?php $blog_see_all = isset( $current_row['phila_full_options']['phila_get_post_cats']['override_url']) ? $current_row['phila_full_options']['phila_get_post_cats']['override_url'] : ''; ?>
             <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>
           </div>
@@ -270,6 +268,37 @@
               <!-- /FAQ -->
             <?php endif;?>
 
+            <?php elseif ( $current_row_option == 'phila_content_heading_group'):
+            
+            $wysiwyg_heading = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_wysiwyg_heading'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_wysiwyg_heading'] : '';
+            $wysiwyg_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_unique_wysiwyg_content'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_unique_wysiwyg_content'] : '';
+
+            if ( !empty( $wysiwyg_heading ) || !empty( $wysiwyg_content ) ) : ?>
+              <!-- Heading Group -->
+              <?php include(locate_template('partials/content-single-heading-group.php')); ?>
+              <!-- /Heading Group -->
+            <?php endif;?>
+
+          <?php elseif ( $current_row_option == 'phila_prereq'):
+          
+            $accordion_group = isset( $current_row['phila_full_options']['phila_prereq']['accordion_group'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_group'] : '';
+            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';
+
+            if ( !empty( $accordion_group ) || !empty( $requirements_prereq_title ) ) : ?>
+              <!-- Prereq Row -->
+              <?php include(locate_template('partials/content-custom-prereq-row.php')); ?>
+              <!-- /Prereq Row -->
+            <?php endif;?>
+
+          <?php elseif ( $current_row_option == 'phila_content_additional_content'):
+
+            $additional_content = isset( $current_row['phila_full_options']['phila_content_additional_content']['phila_additional_content'] ) ? $current_row['phila_full_options']['phila_content_additional_content']['phila_additional_content'] : '';
+
+            if ( !empty( $additional_content ) ) : ?>
+              <!-- Additional Content -->
+              <?php include(locate_template('partials/content-custom-additional.php')); ?>
+              <!-- /Additional Content -->
+            <?php endif;?>
 
         <?php endif;  /*end full row */?>
 

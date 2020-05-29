@@ -39,3 +39,14 @@
 #site-wide-alert .button{
   background-color:transparent;
 }
+
+.custom {
+  .button { 
+    &.content-type-press_release,
+    &.content-type-post {
+      color: color(dark-ben-franklin);
+      background: transparent;
+      font-weight: 900 !important;
+    }
+  }
+}

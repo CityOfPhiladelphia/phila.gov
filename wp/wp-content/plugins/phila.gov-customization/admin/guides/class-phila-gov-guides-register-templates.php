@@ -143,6 +143,12 @@ class Phila_Gov_Register_Guide_Templates {
         )
       ),
       'fields' => array(
+        array(
+          'type'=> 'wysiwyg',
+          'name'  => 'Addtional page copy',
+          'id'  => 'phila_addtional_page_copy',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+        ),
         Phila_Gov_Standard_Metaboxes::phila_resource_list_v2(),
         array(
           'name'          => 'Print this guide',
