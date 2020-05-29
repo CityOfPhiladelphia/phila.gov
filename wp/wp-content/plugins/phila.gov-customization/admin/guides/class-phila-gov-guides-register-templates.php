@@ -111,7 +111,7 @@ class Phila_Gov_Register_Guide_Templates {
     );
 
     $meta_boxes[] = array(
-      'title' => 'Heading Groups',
+      'title' => 'Heading groups',
       'pages' => array( 'guides' ),
       'revision' => true,
 
@@ -138,8 +138,10 @@ class Phila_Gov_Register_Guide_Templates {
       'title' => 'Resource groups',
       'pages' => array('guides'),
       'visible'   => array(
+        'relation' => 'or',
         'when'  => array(
-          array('phila_template_select', '=', 'guide_resource_page')
+          array('phila_template_select', '=', 'guide_landing_page'),
+          array('phila_template_select', '=', 'guide_resource_page'),
         )
       ),
       'fields' => array(
