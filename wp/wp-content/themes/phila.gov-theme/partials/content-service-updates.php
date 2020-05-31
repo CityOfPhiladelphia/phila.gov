@@ -66,7 +66,7 @@ endif;
             <?php $end_month_format = phila_util_month_format($end); ?>
           <?php endif; ?>
 
-          <?php if ($i > 3) break; ?>
+          <?php //if ($i > 4) break; ?>
 
           <tr class="service-update--<?php if ( !$update['service_level_label'] == '' ) echo $update['service_level_label']; ?> ">
             <th class="phl-mu">
