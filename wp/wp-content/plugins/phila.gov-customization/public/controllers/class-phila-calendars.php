@@ -78,6 +78,7 @@ class Phila_Calendars_Controller {
         wp_reset_postdata();
       }
 
+      $grouped_cals = array();
       foreach ($post_ids as $post_id) {
         $categories = get_the_category( $post_id );
         $category = $categories[0];
@@ -85,48 +86,64 @@ class Phila_Calendars_Controller {
         // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name);
         // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
         // $final =  html_entity_decode(trim($trimmed_name));
+        $current_cal = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+       // var_dump($current_cal );
+        $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );;
 
-        $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+      
+        //$grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
         
-        array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
+        //array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
         array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
       }
       //remove duplicates
       $clean_grouped_cals = array_filter($grouped_cals);
       $just_ids = array();
+
+      //var_dump($clean_grouped_cals);
     
       foreach ($clean_grouped_cals as $key => $value){
+        var_dump($value);
         if ( is_array($value) ) {
-          foreach ($value as $id) {
-            $categories = get_the_category( $id );
+          foreach ($value as $cal_id) {
+            $categories = get_the_category( $cal_id );
             $category = $categories[0];
 
-            // $cat = $category->slug
-            // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
-            // $final =  html_entity_decode(trim($trimmed_name));
+            $single_cal_id[$category->slug] = base64_decode(
+              get_post_meta($cal_id, '_google_calendar_id', true)
+            );
+            //var_dump($single_cal_id[$category->slug]);
+            //TODO: add if statement to catch the loop and stop it from duplicating 
+            //if () {
+              $just_ids[$key] = $single_cal_id;
 
-            $single_cal_id[$category->slug] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
+            //}
+
           }
-          $just_ids[$key] = $single_cal_id;
+
         }
-      }
-    
+      }    
+
       $i=0;
       foreach ($cal_nice_name as $nice){
         $i++;
         $links[$nice[0]->cat_ID] = phila_get_current_department_name($nice);
       }
-    
+      // this is good. 
       $final_array_single = array_combine($cal_cat_ids, $cal_ids);
-    
+      var_dump($just_ids);
+     //somewhere in here is the issue.
       $final_array = array_replace($final_array_single, $just_ids);
-      // var_dump($final_array);
+
+      //var_dump($final_array);
       //remove duplicates
       $names = array_map('unserialize', array_unique(array_map('serialize', $names)));
     
       $links = array_filter($links);
     
       $calendar_ids = json_encode($final_array);
+
+      //var_dump($calendar_ids);
     
       function sort_by_name($a, $b){
         return strcmp($a['name'], $b['name']);
