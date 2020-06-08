@@ -63,9 +63,11 @@ class Phila_Closures_Controller {
     }
 
     foreach ( $closures as $closure ) {
-      $response = $this->prepare_item_for_response( $closure, $request );
+      if ( isset($closure['is_active'])) {
+        $response = $this->prepare_item_for_response( $closure, $request );
 
-      $data[] = $this->prepare_response_for_collection( $response );
+        $data[] = $this->prepare_response_for_collection( $response );
+      }
     }
 
     // Return all response data.
@@ -92,19 +94,23 @@ class Phila_Closures_Controller {
     }
 
     foreach ( $closures as $closure ) {
-      
-      $period = new DatePeriod (
-        new DateTime($closure['start_date']),
-        new DateInterval('P1D'),
-        new DateTime($closure['end_date'])
-      );
-
-      foreach ($period as $key => $value) {
-        if ($value->format('Y-m-d') == $today) {
-          $response = $this->prepare_item_for_response( $closure, $request );
+      if ( isset($closure['is_active'])) {
+        $end_date = new DateTime($closure['end_date']);
+        $end_date->setTime(0,0,1);
+        
+        $period = new DatePeriod (
+          new DateTime($closure['start_date']),
+          new DateInterval('P1D'),
+          $end_date
+        );
   
-          $data[] = $this->prepare_response_for_collection( $response );
-          break;
+        foreach ($period as $key => $value) {
+          if ($value->format('Y-m-d') == $today) {
+            $response = $this->prepare_item_for_response( $closure, $request );
+    
+            $data[] = $this->prepare_response_for_collection( $response );
+            break;
+          }
         }
       }
     }
@@ -136,19 +142,23 @@ class Phila_Closures_Controller {
     }
 
     foreach ( $closures as $closure ) {
-      
-      $period = new DatePeriod (
-        new DateTime($closure['start_date']),
-        new DateInterval('P1D'),
-        new DateTime($closure['end_date'])
-      );
+      if ( isset($closure['is_active'])) {
+        $end_date = new DateTime($closure['end_date']);
+        $end_date->setTime(0,0,1);
+        
+        $period = new DatePeriod (
+          new DateTime($closure['start_date']),
+          new DateInterval('P1D'),
+          $end_date
+        );
 
-      foreach ($period as $key => $value) {
-        if ($value->format('Y-m-d') == $date) {
-          $response = $this->prepare_item_for_response( $closure, $request );
-  
-          $data[] = $this->prepare_response_for_collection( $response );
-          break;
+        foreach ($period as $key => $value) {
+          if ($value->format('Y-m-d') == $date) {
+            $response = $this->prepare_item_for_response( $closure, $request );
+    
+            $data[] = $this->prepare_response_for_collection( $response );
+            break;
+          }
         }
       }
     }
@@ -181,27 +191,31 @@ class Phila_Closures_Controller {
     }
 
     foreach ( $closures as $closure ) {
+      if ( isset($closure['is_active'])) {
+        $end_date = new DateTime($closure['end_date']);
+        $end_date->setTime(0,0,1);
+        
+        $period = new DatePeriod (
+          new DateTime($closure['start_date']),
+          new DateInterval('P1D'),
+          $end_date
+        );
+
+        $match = false;
+
+        foreach ($period as $key => $value) {
+          foreach ($week as $key => $day) {
+            if ($value->format('Y-m-d') == $day->format('Y-m-d')) {
+              $response = $this->prepare_item_for_response( $closure, $request );
       
-      $period = new DatePeriod (
-        new DateTime($closure['start_date']),
-        new DateInterval('P1D'),
-        new DateTime($closure['end_date'])
-      );
-
-      $match = false;
-
-      foreach ($period as $key => $value) {
-        foreach ($week as $key => $day) {
-          if ($value->format('Y-m-d') == $day->format('Y-m-d')) {
-            $response = $this->prepare_item_for_response( $closure, $request );
-    
-            $data[] = $this->prepare_response_for_collection( $response );
-            $match = true;
+              $data[] = $this->prepare_response_for_collection( $response );
+              $match = true;
+              break;
+            }
+          }
+          if ($match == true) {
             break;
           }
-        }
-        if ($match == true) {
-          break;
         }
       }
     }
