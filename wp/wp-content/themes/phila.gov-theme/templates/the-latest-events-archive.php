@@ -77,8 +77,11 @@ if ( $calendar_q->have_posts() ) {
     // $final =  html_entity_decode(trim($trimmed_name));
     $current_cal = get_post_meta( $post_id, '_grouped_calendars_ids', true );
    // var_dump($current_cal );
-    $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );;
+    $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
 
+    $single_cal_id[$category->slug] = base64_decode(
+      get_post_meta($post_id, '_google_calendar_id', true)
+    );
   
     //$grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
     
@@ -88,35 +91,40 @@ if ( $calendar_q->have_posts() ) {
   //remove duplicates
   $clean_grouped_cals = array_filter($grouped_cals);
   $just_ids = array();
-  $names = array();
 
-  //var_dump($clean_grouped_cals);
+  var_dump($clean_grouped_cals);
 
-  foreach ($clean_grouped_cals as $key => $value){
-    $j = 0;
-    if ( is_array($value) ) {
-      $k=0;
-      foreach ($value as $cal_id) {
+  foreach ($clean_grouped_cals as $slug => $grouped_array){
+    $k=0;
+    $k++;
+    if ( is_array($grouped_array) ) {
+      
+      foreach ($grouped_array as $cal_value => $cal_id) {
+        d($cal_id);
+
+        $j=0;
         $j++;
-        $k++;
         $categories = get_the_category( $cal_id );
         $category = $categories[0];
 
-        $single_cal_id[$category->slug] = base64_decode(
-          get_post_meta($cal_id, '_google_calendar_id', true)
-        );
-        d($single_cal_id[$category->slug]);
-        var_dump($j);
-        var_dump($key);
-        //TODO: add if statement to catch the loop and stop it from duplicating 
-        // if () {
-        array_push($names, $just_ids[$key]);
-        // }
+        d($clean_grouped_cals[$slug]);
+        //d($slug);
+        if ( $clean_grouped_cals[$slug][$k] == $cal_id ){
+          var_dump('yes');
 
-      }
-      $names = $single_cal_id;
-
+          $single_cal_id[$k][$slug] = base64_decode(
+            get_post_meta($cal_id, '_google_calendar_id', true)
+          );
+          $just_ids[$slug] = $single_cal_id;
+    
+        }
     }
+
+   // $final = array_replace($clean_grouped_cals, $single_cal_id);
+
+  }
+    d($just_ids);
+
   }    
 
   $i=0;
@@ -138,7 +146,7 @@ if ( $calendar_q->have_posts() ) {
 
   $calendar_ids = json_encode($final_array);
 
-  d($calendar_ids);
+ // d($calendar_ids);
 
   function sort_by_name($a, $b){
     return strcmp($a['name'], $b['name']);
