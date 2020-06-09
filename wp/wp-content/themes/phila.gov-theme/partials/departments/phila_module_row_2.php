@@ -8,7 +8,7 @@
 <?php
   $cal_id = rwmb_meta('phila_full_width_calendar_id');
   $owner = rwmb_meta('phila_calendar_owner');
-  $cal_category = !empty($owner) ? $owner->slug : '';
+  $cal_category = !empty($owner) ? $owner->name : '';
 ?>
 
 <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
