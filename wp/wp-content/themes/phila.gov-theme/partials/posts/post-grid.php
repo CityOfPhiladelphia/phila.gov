@@ -117,9 +117,13 @@ if( !empty($tag) && $tag != 'is_single' ) {
       ),
     )
   );
-
-  //TODO: Revisit Sticky Posts in the Future - Derrick
   $result = new WP_Query( $posts_args );
+
+  var_dump($sticky_posts);
+  //TODO: Revisit Sticky Posts in the Future - Derrick
+  $result->query = array_merge( isset($sticky[0]) ? $sticky_posts->query : array());
+
+ // $result = new WP_Query( $posts_args );
 
 }
 $result->post_count = count( $result->posts );
