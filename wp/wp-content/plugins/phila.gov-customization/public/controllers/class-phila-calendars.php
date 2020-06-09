@@ -100,50 +100,40 @@ class Phila_Calendars_Controller {
       $clean_grouped_cals = array_filter($grouped_cals);
       $just_ids = array();
 
-      //var_dump($clean_grouped_cals);
-    
       foreach ($clean_grouped_cals as $key => $value){
-        var_dump($value);
+    
         if ( is_array($value) ) {
           foreach ($value as $cal_id) {
-            $categories = get_the_category( $cal_id );
-            $category = $categories[0];
-
-            $single_cal_id[$category->slug] = base64_decode(
-              get_post_meta($cal_id, '_google_calendar_id', true)
-            );
-            //var_dump($single_cal_id[$category->slug]);
-            //TODO: add if statement to catch the loop and stop it from duplicating 
-            //if () {
-              $just_ids[$key] = $single_cal_id;
-
-            //}
-
+            $array_keys = array_keys( $clean_grouped_cals );
+              for($x = 0; $x < sizeof($clean_grouped_cals); $x++ ) { 
+    
+                $categories = get_the_category( $cal_id );
+                $category = $categories[0];
+                if ($key == $array_keys[$x] ){
+                  //Add the keys to the correct nested array, instead of pushing them all to a flatened version
+                  $just_ids[$key][$category->slug] = base64_decode(
+                    get_post_meta($cal_id, '_google_calendar_id', true)
+                  );
+              }
+            }
           }
-
         }
-      }    
+      }  
 
       $i=0;
       foreach ($cal_nice_name as $nice){
         $i++;
         $links[$nice[0]->cat_ID] = phila_get_current_department_name($nice);
       }
-      // this is good. 
       $final_array_single = array_combine($cal_cat_ids, $cal_ids);
-      var_dump($just_ids);
-     //somewhere in here is the issue.
       $final_array = array_replace($final_array_single, $just_ids);
 
-      //var_dump($final_array);
       //remove duplicates
       $names = array_map('unserialize', array_unique(array_map('serialize', $names)));
     
       $links = array_filter($links);
     
       $calendar_ids = json_encode($final_array);
-
-      //var_dump($calendar_ids);
     
       function sort_by_name($a, $b){
         return strcmp($a['name'], $b['name']);
