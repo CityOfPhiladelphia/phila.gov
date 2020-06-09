@@ -63,11 +63,9 @@ class Phila_Closures_Controller {
     }
 
     foreach ( $closures as $closure ) {
-      if ( isset($closure['is_active'])) {
-        $response = $this->prepare_item_for_response( $closure, $request );
+      $response = $this->prepare_item_for_response( $closure, $request );
 
-        $data[] = $this->prepare_response_for_collection( $response );
-      }
+      $data[] = $this->prepare_response_for_collection( $response );
     }
 
     // Return all response data.
