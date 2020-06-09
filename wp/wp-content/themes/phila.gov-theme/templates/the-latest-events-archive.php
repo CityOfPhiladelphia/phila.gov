@@ -76,13 +76,10 @@ if ( $calendar_q->have_posts() ) {
     // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
     // $final =  html_entity_decode(trim($trimmed_name));
     $current_cal = get_post_meta( $post_id, '_grouped_calendars_ids', true );
-   // var_dump($current_cal );
-    $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+    // var_dump($current_cal );
+    $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );;
 
-    $single_cal_id[$category->slug] = base64_decode(
-      get_post_meta($post_id, '_google_calendar_id', true)
-    );
-  
+
     //$grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
     
     //array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
@@ -92,40 +89,25 @@ if ( $calendar_q->have_posts() ) {
   $clean_grouped_cals = array_filter($grouped_cals);
   $just_ids = array();
 
-  var_dump($clean_grouped_cals);
-
-  foreach ($clean_grouped_cals as $slug => $grouped_array){
-    $k=0;
-    $k++;
-    if ( is_array($grouped_array) ) {
-      
-      foreach ($grouped_array as $cal_value => $cal_id) {
-        d($cal_id);
-
-        $j=0;
-        $j++;
-        $categories = get_the_category( $cal_id );
-        $category = $categories[0];
-
-        d($clean_grouped_cals[$slug]);
-        //d($slug);
-        if ( $clean_grouped_cals[$slug][$k] == $cal_id ){
-          var_dump('yes');
-
-          $single_cal_id[$k][$slug] = base64_decode(
-            get_post_meta($cal_id, '_google_calendar_id', true)
-          );
-          $just_ids[$slug] = $single_cal_id;
+  foreach ($clean_grouped_cals as $key => $value){
     
+    if ( is_array($value) ) {
+      foreach ($value as $cal_id) {
+        $array_keys = array_keys( $clean_grouped_cals );
+          for($x = 0; $x < sizeof($clean_grouped_cals); $x++ ) { 
+
+            $categories = get_the_category( $cal_id );
+            $category = $categories[0];
+            if ($key == $array_keys[$x] ){
+              //Add the keys to the correct nested array, instead of pushing them all to a flatened version
+              $just_ids[$key][$category->slug] = base64_decode(
+                get_post_meta($cal_id, '_google_calendar_id', true)
+              );
+          }
         }
+      }
     }
-
-   // $final = array_replace($clean_grouped_cals, $single_cal_id);
-
-  }
-    d($just_ids);
-
-  }    
+  }   
 
   $i=0;
   foreach ($cal_nice_name as $nice){
@@ -137,7 +119,6 @@ if ( $calendar_q->have_posts() ) {
   //var_dump($just_ids);
  //somewhere in here is the issue.
   $final_array = array_replace($final_array_single, $just_ids);
-
   //var_dump($final_array);
   //remove duplicates
   $names = array_map('unserialize', array_unique(array_map('serialize', $names)));
