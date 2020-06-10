@@ -142,7 +142,7 @@ if( !empty($tag) ) {
                 <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
             <?php endif; ?>
             <?php include( locate_template( 'partials/posts/press-release-grid-view-all.php' ) ); ?>
-            <?php if ($count == 1 || $count == 2 || $count == 4) :?>
+            <?php if ( $count == 2 || $count == 4) :?>
               </div>
             <?php endif;?>
             </div>
