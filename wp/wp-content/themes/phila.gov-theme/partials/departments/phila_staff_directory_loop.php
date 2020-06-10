@@ -172,6 +172,7 @@ if ( $staff_member_loop->have_posts() ):
 
   <?php endif; ?>
   <?php if (!empty($staff_leadership_array)):?>
+  <!-- Begin Staff Leadership -->
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
       <div class="large-24 columns">
         <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
@@ -188,6 +189,9 @@ if ( $staff_member_loop->have_posts() ):
         ?>
       </div>
     </div>
+    </div>
+  <!--End Staff Leadership -->
+
   <?php endif; ?>
   <!-- Begin Staff Directory Table -->
   <?php if (!$staff_table_output == ''): ?>
