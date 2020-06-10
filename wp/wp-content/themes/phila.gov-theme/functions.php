@@ -1952,7 +1952,6 @@ function phila_get_translated_language( $language ) {
     ) );
     while ( $connected->have_posts() ) : $connected->the_post(); 
 
-    
       $connected_source = new WP_Query( array(
         'post_type'  => 'post',
         'relationship' => array(
@@ -1974,8 +1973,6 @@ function phila_get_translated_language( $language ) {
 
     endwhile;
     wp_reset_postdata();
-
-
 
   $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
   $ordered_array = array_replace(array_flip($order), $language_list);

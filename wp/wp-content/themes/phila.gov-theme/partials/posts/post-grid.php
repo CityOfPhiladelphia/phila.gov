@@ -7,7 +7,7 @@
 <?php 
   $override = rwmb_meta('phila_get_post_cats');
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
-  $post_categories = $category;
+  $post_categories = isset($category) ? $category : '';
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
 ?>
 <?php if (!empty($post_categories)): ?>
@@ -34,15 +34,14 @@ if ( empty( $post_categories ) ) {
     'posts' => array(),
   ];
 }else{
-  /* Sort sticky posts, newest at the top */
-  rsort( $sticky );
-
   /* Get top 3 sticky posts, we could only have 3 max */
   $sticky = array_slice( $sticky, 0, 3 );
   $sticky_args = array(
     'posts_per_page' => -1,
     'post__in'  => $sticky,
     'cat' => $post_categories,
+    'order' => 'desc',
+    'orderby' => 'post_date',
     'meta_query'  => array(
       array(
         'key' => 'phila_template_select',
@@ -117,10 +116,13 @@ if( !empty($tag) && $tag != 'is_single' ) {
       ),
     )
   );
-
-  //TODO: Revisit Sticky Posts in the Future - Derrick
   $result = new WP_Query( $posts_args );
 
+  $posts = new WP_Query( $posts_args );
+
+  $result = new WP_Query();
+  //if sticky posts is empty, don't add it to the results array
+  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts);
 }
 $result->post_count = count( $result->posts );
 ?>
@@ -143,7 +145,7 @@ $result->post_count = count( $result->posts );
           <?php $count++; ?>
           <?php if( $user_selected_template === 'custom_content' || $post_type_parent === 'guides' ): ?>
             <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
-              <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+              <?php include( locate_template( 'partials/posts/content-list-icon.php' ) ); ?>
             </div>
           <?php else: ?>
             <?php if ($total >= 3 ): ?>

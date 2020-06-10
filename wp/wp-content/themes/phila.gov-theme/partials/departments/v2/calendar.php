@@ -3,6 +3,7 @@
   * $cal_id - required
   * $cal_category - required
   */
+  global $post;
   $display_spotlight = rwmb_meta('phila_active_event_spotlight');
   $spotlight_id = rwmb_meta('phila_event_spotlight');
   $user_selected_template = phila_get_selected_template();
