@@ -119,7 +119,7 @@ if( !empty($tag) ) {
         <?php if( $user_selected_template == 'custom_content' || $post_type_parent == 'guides' ): ?>
           <?php if ($count <= 4) : ?>
             <div class="cell align-self-stretch">
-              <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+              <?php include( locate_template( 'partials/posts/custom-content-icon.php' ) ); ?>
             </div>
           <?php endif; ?>
           <?php if( $count == 4 ) : ?>
@@ -136,13 +136,13 @@ if( !empty($tag) ) {
           <?php if ($count <= 4) : ?>
             <?php if ($user_selected_template == 'custom_content' || $post_type_parent == 'guides'): ?>
               <div class="cell align-self-stretch">
-                <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+                <?php include( locate_template( 'partials/posts/custom-content-icon.php' ) ); ?>
             <?php else: ?>
               <div class="cell medium-12 align-self-stretch">
                 <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
             <?php endif; ?>
             <?php include( locate_template( 'partials/posts/press-release-grid-view-all.php' ) ); ?>
-            <?php if ($count == 2 || $count == 4) :?>
+            <?php if ($count == 1 || $count == 2 || $count == 4) :?>
               </div>
             <?php endif;?>
             </div>
