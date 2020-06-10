@@ -7,7 +7,7 @@
 <?php 
   $override = rwmb_meta('phila_get_post_cats');
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
-  $post_categories = $category;
+  $post_categories = isset($category) ? $category : '';
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
 ?>
 <?php if (!empty($post_categories)): ?>
