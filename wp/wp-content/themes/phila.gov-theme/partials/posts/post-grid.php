@@ -119,12 +119,11 @@ if( !empty($tag) && $tag != 'is_single' ) {
   );
   $result = new WP_Query( $posts_args );
 
-  var_dump($sticky_posts);
-  //TODO: Revisit Sticky Posts in the Future - Derrick
-  $result->query = array_merge( isset($sticky[0]) ? $sticky_posts->query : array());
+  $posts = new WP_Query( $posts_args );
 
- // $result = new WP_Query( $posts_args );
-
+  $result = new WP_Query();
+  //if sticky posts is empty, don't add it to the results array
+  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts);
 }
 $result->post_count = count( $result->posts );
 ?>
@@ -147,7 +146,7 @@ $result->post_count = count( $result->posts );
           <?php $count++; ?>
           <?php if( $user_selected_template === 'custom_content' || $post_type_parent === 'guides' ): ?>
             <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
-              <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+              <?php include( locate_template( 'partials/posts/content-list-icon.php' ) ); ?>
             </div>
           <?php else: ?>
             <?php if ($total >= 3 ): ?>
