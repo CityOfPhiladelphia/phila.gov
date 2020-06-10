@@ -34,15 +34,14 @@ if ( empty( $post_categories ) ) {
     'posts' => array(),
   ];
 }else{
-  /* Sort sticky posts, newest at the top */
-  rsort( $sticky );
-
   /* Get top 3 sticky posts, we could only have 3 max */
   $sticky = array_slice( $sticky, 0, 3 );
   $sticky_args = array(
     'posts_per_page' => -1,
     'post__in'  => $sticky,
     'cat' => $post_categories,
+    'order' => 'desc',
+    'orderby' => 'post_date',
     'meta_query'  => array(
       array(
         'key' => 'phila_template_select',
