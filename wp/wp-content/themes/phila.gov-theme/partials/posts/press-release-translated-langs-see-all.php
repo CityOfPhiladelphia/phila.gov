@@ -8,6 +8,7 @@ endif;
     'post_type' => array('post'),
     'order' => 'desc',
     'cat' => $press_categories,
+    'posts_per_page'  => -1,
     'orderby' => 'post_date',
     'meta_query'  => array(
       'relation'  => 'AND',
