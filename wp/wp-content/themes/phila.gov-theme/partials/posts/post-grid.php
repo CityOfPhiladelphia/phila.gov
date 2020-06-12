@@ -118,11 +118,11 @@ if( !empty($tag) && $tag != 'is_single' ) {
   );
   $result = new WP_Query( $posts_args );
 
-  $posts = new WP_Query( $posts_args );
+  $more_posts = new WP_Query( $posts_args );
 
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
-  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $posts->posts);
+  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $more_posts->posts);
 }
 $result->post_count = count( $result->posts );
 ?>
