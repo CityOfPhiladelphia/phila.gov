@@ -24,8 +24,6 @@
 <?php $tag = isset($tag) ? $tag : '';?>
 
 <?php
-/* Get all sticky posts for department homepages */
-$sticky = get_option( 'sticky_posts' );
 
 /* if categories aren't set, this is the latest. */
 if ( empty( $post_categories ) ) {
@@ -34,11 +32,10 @@ if ( empty( $post_categories ) ) {
     'posts' => array(),
   ];
 }else{
-  /* Get top 3 sticky posts, we could only have 3 max */
-  $sticky = array_slice( $sticky, 0, 3 );
+  /* Get all sticky posts for department homepages */
   $sticky_args = array(
     'posts_per_page' => -1,
-    'post__in'  => $sticky,
+    'post__in'  => get_option( 'sticky_posts' ),
     'cat' => $post_categories,
     'order' => 'desc',
     'orderby' => 'post_date',
@@ -92,7 +89,7 @@ if( !empty($tag) && $tag != 'is_single' ) {
     'order' => 'desc',
     'orderby' => 'post_date',
     'cat' => $post_categories,
-    'post__not_in'  => $sticky,
+    'post__not_in'  => get_option( 'sticky_posts' ),
     'ignore_sticky_posts' => 1,
     'meta_query'  => array(
       'relation'  => 'AND',
@@ -122,9 +119,10 @@ if( !empty($tag) && $tag != 'is_single' ) {
 
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
-  $result->posts = array_merge( isset($sticky[0]) ? $sticky_posts->posts : array(), $more_posts->posts);
+  $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
 }
 $result->post_count = count( $result->posts );
+
 ?>
 
 <?php $user_selected_template = phila_get_selected_template(); ?>
