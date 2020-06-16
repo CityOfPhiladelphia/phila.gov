@@ -217,8 +217,8 @@ export default {
     },
   },
   mounted: function () {
-    this.getUpcomingEvents()
     this.loading = true
+    this.getUpcomingEvents()
   },
   methods: {
     getUpcomingEvents: function () {
@@ -226,7 +226,7 @@ export default {
       this.selectedCategory = this.queriedCategory
 
       let cal_ids = this.calendars.map(d=>{ return Object.values(d) });
-
+      console.log(cal_ids);
       //reindex this.owner
       let cal_owners = this.owner.map(d=>{ return Object.values(d) });
 
@@ -234,10 +234,20 @@ export default {
 
       if ( this.selectedCategory == undefined) {
         for( let i = 0; i < cal_ids[0].length; i++ ){
-          //console.log(cal_ids[0][i])
-          links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+          if ( Array.isArray(cal_ids[0][i])) {
+            for( let j = 0; j < cal_ids[0][i].length; j++ ){ 
+              if (cal_ids[0][i][j] != '') {
+                links.push(gCalEndpoint + cal_ids[0][i][j] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+              }
+            }
+          }else{
+            if (cal_ids[0][i] != '') {
+              links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+            }
+          }
         }
       }
+      console.log(links);
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
           this.calData = response
@@ -297,6 +307,7 @@ export default {
 
       let links = []
       let cal_ids = this.calendars.map(d=>{ return Object.values(d) });
+      console.log(cal_ids);
 
       let cal_owners = this.owner.map(d=>{ return Object.values(d) });
 
@@ -304,12 +315,38 @@ export default {
 
       if (this.queriedCategory != this.selectedCategory){
 
-        links.push(gCalEndpoint + this.calendars[0][this.selectedCategory] + '/events/?key=' + gCalId + '&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
-
-      }else if (this.queriedCategory != ''){
-
-        links.push(gCalEndpoint + this.calendars[0][this.queriedCategory] + '/events/?key=' + gCalId + '&singleEvents=true&orderBy=startTime&timeMin=' + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
+      if ( this.selectedCategory == undefined) {
+        for( let i = 0; i < cal_ids[0].length; i++ ){
+          if ( Array.isArray(cal_ids[0][i])) {
+            for( let j = 0; j < cal_ids[0][i].length; j++ ){ 
+              if (cal_ids[0][i][j] != '') {
+                links.push(gCalEndpoint + cal_ids[0][i][j] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+              }
+            }
+          }else{
+            if (cal_ids[0][i] != '') {
+              links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+            }
+          }
+        }
       }
+      }else if (this.queriedCategory != ''){
+        if ( this.selectedCategory == undefined) {
+          for( let i = 0; i < cal_ids[0].length; i++ ){
+            if ( Array.isArray(cal_ids[0][i])) {
+              for( let j = 0; j < cal_ids[0][i].length; j++ ){ 
+                if (cal_ids[0][i][j] != '') {
+                  links.push(gCalEndpoint + cal_ids[0][i][j] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+                }
+              }
+            }else{
+              if (cal_ids[0][i] != '') {
+                links.push(gCalEndpoint + cal_ids[0][i] + '/events/?key=' + gCalId + '&maxResults=10&singleEvents=true&orderBy=startTime&timeMin=' + moment().format() )
+              }
+            }
+          }
+        }      
+    }
 
       axios.all( links.map( l => axios.get( l ) ) )
         .then(response =>  {
@@ -387,7 +424,7 @@ export default {
       }else{
         this.selectedCategory = selectedVal.id
       }
-
+      console.log(gCalId)
       axios.get(gCalEndpoint + this.calendars[0][selectedVal.id] + '/events/?key=' + gCalId + '&singleEvents=true&orderBy=startTime&timeMin='  + moment(String(this.state.startDate)).format() + '&timeMax=' + moment(String(this.state.endDate)).format() )
       .then(response =>  {
         this.calData = response

@@ -28,18 +28,19 @@ class Phila_Calendars_Controller {
   */
   public function get_items( $request ) {
 
-    $id = (int) $request['id'];
-
     $cal_a = array(
       'post_type' => 'calendar',
       'posts_per_page'  => -1,
-      'post_status' => 'any'
-      // 'p' => 319
+      'post_status' => 'any',
+      'tax_query' => array(
+        'relation' => 'OR',
+        array(
+            'taxonomy' => 'calendar_category',
+            'field'    => 'slug',
+            'terms'    => array( 'all-events' ),
+        ),
+      )
     );
-
-    // if ( $id ) {
-    //   $cal_a['id'] = $id;
-    // }
 
     $calendar_q = new WP_Query( $cal_a );
     
@@ -54,63 +55,81 @@ class Phila_Calendars_Controller {
       $i = 0;
     
       while ( $calendar_q->have_posts() ) : $calendar_q->the_post();
-      $ids = get_the_id();
-      //var_dump( $ids);
+        $ids = get_the_id();
         $categories = get_the_category( get_the_id() );
-        //var_dump( get_post_meta( get_the_id() ));
     
         if ($categories != null) {
           $i++;
           array_push($post_ids, get_the_id() );
-          array_push($cal_cat_ids, $categories[0]->cat_ID);
+
+          // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name);
+          // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
+
+          array_push($cal_cat_ids,  $categories[0]->slug);
           array_push($cal_nice_name, $categories);
     
-          $names[$i]['id'] = $categories[0]->cat_ID;
-          $names[$i]['name'] = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
+          // $names[$i]['id'] = $categories[0]->cat_ID;
+          // $names[$i]['name'] = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
+          
         }
-      endwhile;
-    
+
+        endwhile;
+      
         wp_reset_postdata();
       }
 
+      $grouped_cals = array();
       foreach ($post_ids as $post_id) {
         $categories = get_the_category( $post_id );
         $category = $categories[0];
-        // var_dump($category);
-        $grouped_cals[$category->term_id] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
-        //  $test = get_post_meta($post_id, '_grouped_calendars_ids');
+
+        // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name);
+        // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
+        // $final =  html_entity_decode(trim($trimmed_name));
+        $current_cal = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+       // var_dump($current_cal );
+        $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );;
+
+      
+        //$grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
+        
         //array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
         array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
       }
       //remove duplicates
       $clean_grouped_cals = array_filter($grouped_cals);
       $just_ids = array();
-    
+
       foreach ($clean_grouped_cals as $key => $value){
+    
         if ( is_array($value) ) {
-          foreach ($value as $id) {
-            $categories = get_the_category( $id );
-            $category = $categories[0];
+          foreach ($value as $cal_id) {
+            $array_keys = array_keys( $clean_grouped_cals );
+              for($x = 0; $x < sizeof($clean_grouped_cals); $x++ ) { 
     
-            //var_dump($categories);
-            $single_cal_id[$category->term_id] = base64_decode(get_post_meta($id, '_google_calendar_id', true));
+                $categories = get_the_category( $cal_id );
+                $category = $categories[0];
+                if ($key == $array_keys[$x] ){
+                  //Add the keys to the correct nested array, instead of pushing them all to a flatened version
+                  $just_ids[$key][$category->slug] = base64_decode(
+                    get_post_meta($cal_id, '_google_calendar_id', true)
+                  );
+              }
+            }
           }
-          $just_ids[$key] = $single_cal_id;
         }
-      }
-    
+      }  
+
       $i=0;
       foreach ($cal_nice_name as $nice){
         $i++;
         $links[$nice[0]->cat_ID] = phila_get_current_department_name($nice);
       }
-    
       $final_array_single = array_combine($cal_cat_ids, $cal_ids);
-    
       $final_array = array_replace($final_array_single, $just_ids);
-      // var_dump($final_array);
+
       //remove duplicates
-      $names = array_map("unserialize", array_unique(array_map("serialize", $names)));
+      $names = array_map('unserialize', array_unique(array_map('serialize', $names)));
     
       $links = array_filter($links);
     
@@ -153,9 +172,9 @@ class Phila_Calendars_Controller {
     // var_dump($calendar);
     // foreach( $calendar as $key => $val) {
 
-      if (isset( $schema['properties']['id'] )) {
+      if (isset( $schema['properties']['department_slug'] )) {
         // convert to id of celandar
-        $calendar_data['id'] = (string) $key;
+        $calendar_data['department_slug'] = (string) $key;
       }
 
       if (isset( $schema['properties']['calendar_id'] )) {
@@ -210,7 +229,7 @@ class Phila_Calendars_Controller {
       'type'                 => 'object',
       // Specify object properties in the properties attribute.
       'properties'           => array(
-        'id' => array(
+        'department_slug' => array(
           'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
