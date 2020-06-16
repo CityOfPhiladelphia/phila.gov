@@ -71,7 +71,8 @@ class Grouped_Calendars extends Feed {
 		if ( 'ids' == $source ) {
 
 			if ( empty( $ids ) ) {
-				$ids = get_post_meta( $this->post_id, '_grouped_calendars_ids', true );
+        $ids = get_post_meta( $this->post_id, '_grouped_calendars_ids', true );
+        //var_dump( $ids);
 			}
 
 			$this->calendars_ids = ! empty( $ids ) && is_array( $ids ) ? array_map( 'absint', $ids ) : array();
