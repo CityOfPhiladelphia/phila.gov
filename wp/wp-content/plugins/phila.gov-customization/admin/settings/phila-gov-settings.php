@@ -103,32 +103,32 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'fields'  => array(
           array(
             'id'  => 'closure_label',
-            'name'  => 'Closure Label',
+            'name'  => 'Closure label',
             'type'  => 'text',
             'required'  => true
           ),
           array(
             'id'  => 'start_date',
-            'name' => 'Closure Start Date',
+            'name' => 'Closure start date',
             'type'  => 'date',
             'required'  => true,
           ),
           array(
             'id'  => 'end_date',
-            'name' => 'Closure End Date',
+            'name' => 'Closure end date',
             'type'  => 'date',
             'required'  => true,
           ),
           array(
             'id'   => 'is_recycling_biweekly',
-            'name' => 'Is Recycling Biweekly',
+            'name' => 'Is recycling biweekly?',
             'type' => 'switch',
             'on_label' => 'Yes',
             'off_label'  => 'No'
           ),
           array(
             'id'   => 'is_active',
-            'name' => 'Is This Active?',
+            'name' => 'Is this closure active?',
             'type' => 'switch',
             'on_label' => 'Yes',
             'off_label'  => 'No'
