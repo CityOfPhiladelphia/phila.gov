@@ -52,7 +52,7 @@ class Phila_Document_Finder_Controller {
 
     foreach ( $document_tables as $document_table ) {
       $unique_table = array();
-      $unique_table['title'] = $document_table['phila_vue_table_title'];
+      $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
       $documents = array();
 
       foreach ( $document_table['phila_files'] as $id )  {

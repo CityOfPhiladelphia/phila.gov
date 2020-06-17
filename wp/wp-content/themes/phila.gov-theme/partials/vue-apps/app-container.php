@@ -10,7 +10,7 @@
   <div class="grid-container">
     <div class="grid-x">
       <div class="cell small-24">
-        <h2 class="contrast"><?php echo $app_title ?> </h2>
+        <h3><?php echo $app_title ?> </h3>
         </div>
     </div>
   </div>
