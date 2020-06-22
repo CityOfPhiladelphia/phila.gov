@@ -1,0 +1,54 @@
+.timeline {
+  margin-top: 50px;
+  .timeline-item {
+    min-height: 121px;
+    .timeline-right {
+      float: right;
+      div {
+        color: #444444;
+        font-family: "Open Sans";
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 27px;
+      }
+    }
+    .month-label {
+      div {
+        width: 160px;
+        height: 30px;
+        background-color: #CAE4FF;
+        span {
+          padding: 5px 10px;
+          color: #444444;
+          font-family: 'Montserrat';
+          font-size: 16px;
+          letter-spacing: 0;
+          line-height: 19px;
+          font-weight: 600;
+          display: inline-block;
+        }
+        &::after {
+          content: '';
+          display: block;
+          position: relative;
+          left: 160px;
+          width: 0;
+          height: 0;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 20px solid #CAE4FF;
+          margin-top: -29px;
+        }
+      }
+    }
+  }
+}
+.month-link {
+  width: fit-content;
+  display: inline-block;
+  a {
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+}
