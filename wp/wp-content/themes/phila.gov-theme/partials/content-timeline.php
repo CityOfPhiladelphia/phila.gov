@@ -5,16 +5,20 @@
  */
 ?>
 
-<?php // $is_address = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_address_select'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_address_select'] : ''; ?>
-<?php // $stepped_select = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_stepped_select'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_stepped_select'] : ''; ?>
-
-<?php // $contact_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address'] : ''; ?>
+<?php $timeline_title = rwmb_meta( 'timeline-title' ) !== null ? rwmb_meta( 'timeline-title' ) : ''; ?>
+<?php $timeline_items = rwmb_meta( 'timeline-items' ) !== null ? rwmb_meta( 'timeline-items' ) : []; ?>
 
 
   <div class="grid-x mvl">
     <div class="cell">
       <section>
-        <h3>WOW</h3>
+        <h3><?php echo $timeline_title; ?></h3>
+        <?php foreach($timeline_items as $item) { ?>
+          <div><?php echo $item['phila_timeline_item_title'];?></div>
+          <div><?php echo $item['phila_timeline_item_body'];?></div>
+          <div><?php echo $item['phila_timeline_item_timestamp']['formatted'];?></div>
+
+        <?php } ?>
       </section>
     </div>
   </div>

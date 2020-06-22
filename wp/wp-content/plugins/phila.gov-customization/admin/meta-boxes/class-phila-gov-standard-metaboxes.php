@@ -1485,7 +1485,7 @@ public static function phila_meta_var_connect(){
     'name'  => 'timeline title'
     ),
     array(
-      'id' => 'timeline-item',
+      'id' => 'timeline-items',
       'type' => 'group',
       'clone'  => true,
       'sort_clone' => true,
