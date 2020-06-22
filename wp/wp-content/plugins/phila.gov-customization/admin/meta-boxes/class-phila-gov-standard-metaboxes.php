@@ -1492,14 +1492,8 @@ public static function phila_meta_var_connect(){
       'add_button'  => '+ Add timeline item',
       'fields' => array(
         array(
-          'name'  => 'item title',
-          'id'  => 'phila_timeline_item_title',
-          'type'  => 'text',
-          'class' => ''
-        ),
-        array(
-          'name'  => 'item body',
-          'id'  => 'phila_timeline_item_body',
+          'name'  => 'item',
+          'id'  => 'phila_timeline_item',
           'type'  => 'text',
           'class' => ''
         ),
