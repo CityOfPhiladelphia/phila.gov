@@ -7,6 +7,7 @@
 
 <?php $timeline_title = rwmb_meta( 'timeline-title' ) !== null ? rwmb_meta( 'timeline-title' ) : ''; ?>
 <?php $timeline_items = rwmb_meta( 'timeline-items' ) !== null ? rwmb_meta( 'timeline-items' ) : []; ?>
+<?php $temp_month = ''; ?>
 <?php 
   $month_list = array(); 
   usort($timeline_items, function($a, $b) {
@@ -40,10 +41,21 @@
         </div>
         
         <!-- Timeline -->
-        <?php foreach($timeline_items as $item) { ?>
-          <div><?php echo date('F d', $item['phila_timeline_item_timestamp']['timestamp']);?></div>
-          <div><?php echo $item['phila_timeline_item'];?></div>
-        <?php } ?>
+        <div class="timeline">
+          <?php foreach($timeline_items as $item) { ?>
+            <div class="timeline-item">
+              <?php $item_date = $item['phila_timeline_item_timestamp']['timestamp']; ?>
+              <?php if( date('F Y', $item_date) != $temp_month ) { ?>
+                <?php $temp_month = date('F Y', $item_date); ?>
+                <div class="month-label">
+                  <span><?php echo $temp_month; ?></span>
+                </div>
+              <?php } ?>
+              <div><?php echo date('F d', $item_date);?></div>
+              <div><?php echo $item['phila_timeline_item'];?></div>
+            </div>
+          <?php } ?>
+        </div>
       </div>
     </div>
   </div>
