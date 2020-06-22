@@ -1,26 +1,26 @@
-.walkins{
+.walk-ins{
   border: 10px solid color(ben-franklin-blue);
   .cell{
     margin-bottom: 0;
   }
-  .walkins-icon{
+  .walk-ins-icon{
     color:white;
     background: color(ben-franklin-blue);
     padding: 1rem;
     margin: 0;
   }
-  .walkins-copy{
+  .walk-ins-copy{
     padding: 1rem;
   }
 }
 
 @include breakpoint(small only) {
-  .walkins{
+  .walk-ins{
     border: none;
     background: color( ben-franklin-blue );
     color:white;
     padding: 1rem;
-    .walkins-icon{
+    .walk-ins-icon{
       padding: 1rem 0;
     }
   }
