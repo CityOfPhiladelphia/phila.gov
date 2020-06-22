@@ -35,7 +35,7 @@
             $i = 0;
           ?>
           <?php foreach($month_list as $month) { ?>
-            <span><?php echo $month; ?></span>
+            <span class="month-link"><a href="#"><?php echo $month; ?></a></span>
             <?php echo (++$i !== $numItems) ? '<span> |</span>' : null; ?>
           <?php } ?>
         </div>
@@ -43,16 +43,20 @@
         <!-- Timeline -->
         <div class="timeline">
           <?php foreach($timeline_items as $item) { ?>
-            <div class="timeline-item">
+            <div class="timeline-item row">
               <?php $item_date = $item['phila_timeline_item_timestamp']['timestamp']; ?>
               <?php if( date('F Y', $item_date) != $temp_month ) { ?>
                 <?php $temp_month = date('F Y', $item_date); ?>
-                <div class="month-label">
-                  <span><?php echo $temp_month; ?></span>
+                <div class="month-label medium-5 columns">
+                  <div>
+                    <span><?php echo $temp_month; ?></span>
+                  </div>
                 </div>
               <?php } ?>
-              <div><?php echo date('F d', $item_date);?></div>
-              <div><?php echo $item['phila_timeline_item'];?></div>
+              <div class="timeline-details medium-19 columns timeline-right">
+                <div><?php echo date('F d', $item_date);?></div>
+                <div><?php echo $item['phila_timeline_item'];?></div>
+              </div>
             </div>
           <?php } ?>
         </div>
