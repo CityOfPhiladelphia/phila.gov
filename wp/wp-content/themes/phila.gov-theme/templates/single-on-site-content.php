@@ -160,6 +160,10 @@ HTML;
     case 'repeating_rows':
       apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
     break;
+
+    case 'timeline':
+      get_template_part( 'partials/content-timeline' );
+      break;
     
     default:
       break;
