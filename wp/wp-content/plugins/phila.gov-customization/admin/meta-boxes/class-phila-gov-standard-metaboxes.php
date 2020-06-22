@@ -1476,4 +1476,49 @@ public static function phila_meta_var_connect(){
     );
   }
 
+  public static function phila_metabox_timeline(){
+
+  return  array(
+    array(
+    'id'  => 'timeline-title',
+    'type'  => 'text', 
+    'name'  => 'timeline title'
+    ),
+    array(
+      'id' => 'timeline-item',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add timeline item',
+      'fields' => array(
+        array(
+          'name'  => 'item title',
+          'id'  => 'phila_timeline_item_title',
+          'type'  => 'text',
+          'class' => ''
+        ),
+        array(
+          'name'  => 'item body',
+          'id'  => 'phila_timeline_item_body',
+          'type'  => 'text',
+          'class' => ''
+        ),
+        array(
+          'name'  => 'item timestamp',
+          'id'    => 'phila_timeline_item_timestamp',
+          'type'  => 'date',
+          'class' =>  '',
+          'size'  =>  25,
+          'timestamp'  => true,
+          'js_options' =>  array(
+            'dateFormat' => 'mm-dd-yy',
+            'controlType'=> 'select',
+            'oneLine'=> true,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 }//end Class
