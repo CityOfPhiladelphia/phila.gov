@@ -1515,4 +1515,36 @@ public static function phila_meta_var_connect(){
   );
 }
 
+
+public static function phila_timeline_page_selector( ){
+
+  return array(
+    'name'          => 'Select timeline page',
+    'id'          => 'phila_select_timeline',
+    'type'        => 'post',
+    'post_type'   => 'department_page',
+    'field_type'  => 'select_advanced',
+    'placeholder' => '',
+    'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above.',
+    'multiple'  => 'false',
+
+    'query_args'  => array(
+      'post_status'    => 'any',
+      'posts_per_page' => -1,
+      // 'post_parent' => $page_id,
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value'   => 'timeline',
+          'compare' => '=',
+        )
+      )
+    ),
+    'js_options'  => array(
+      'width' => '100%',
+      'closeOnSelect' => false,
+    )
+  );
+}
+
 }//end Class

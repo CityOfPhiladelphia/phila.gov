@@ -1180,6 +1180,22 @@ $meta_boxes[] = array(
   'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_timeline()
 );
 
+$meta_boxes[] = array(
+  'id'       => 'homepage_timeline',
+  'title'    => 'Timeline',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+      ),
+    ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+  )
+
+);
+
 return $meta_boxes;
 
 }
