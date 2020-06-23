@@ -3,6 +3,12 @@
   .timeline-item {
     min-height: 121px;
     .timeline-right {
+      @media only screen and (max-width: 900px) {
+        padding-left: 40px;
+      }
+      @media only screen and (max-width: 750px) {
+        padding-left: 20px;
+      }
       display: inline-flex;
       float: right;
       flex-direction: row;
@@ -51,6 +57,9 @@
       }
     }
     .month-label {
+      @media only screen and (max-width: 750px) {
+        margin: 5px 0px;
+      }
       div {
         width: 160px;
         height: 30px;
