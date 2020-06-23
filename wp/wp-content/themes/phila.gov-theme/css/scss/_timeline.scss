@@ -3,7 +3,9 @@
   .timeline-item {
     min-height: 121px;
     .timeline-right {
+      display: inline-flex;
       float: right;
+      flex-direction: row;
       .timeline-text {
         margin-left: 20px;
         display: inline-block;
@@ -19,18 +21,21 @@
         .timeline-month {
           font-size: 15px;
         }
+        .timeline-copy {
+          margin-bottom: 40px;
+        }
       }
       .timeline-dot-container {
         display: inline-block;
         padding-top: 7px;
         vertical-align: top;
-        height: 121px;
+        min-height: 121px;
         background: linear-gradient(to right, 
           transparent 0%, 
-          transparent calc(50% - 0.51px), 
-          black calc(50% - 0.5px), 
-          black calc(50% + 0.5px), 
-          transparent calc(50% + 0.51px), 
+          transparent calc(50% - 0.52px), 
+          black calc(50% - 0.45px), 
+          black calc(50% + 0.45px), 
+          transparent calc(50% + 0.52px), 
           transparent 100%); 
         &.first-dot {
           padding-top: 0px;

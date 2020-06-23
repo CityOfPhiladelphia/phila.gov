@@ -1492,10 +1492,10 @@ public static function phila_meta_var_connect(){
       'add_button'  => '+ Add timeline item',
       'fields' => array(
         array(
-          'name'  => 'item',
-          'id'  => 'phila_timeline_item',
-          'type'  => 'text',
-          'class' => ''
+          'name' => 'item',
+          'id'   => 'phila_timeline_item',
+          'type' => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
         ),
         array(
           'name'  => 'item timestamp',
