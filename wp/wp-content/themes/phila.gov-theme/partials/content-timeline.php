@@ -20,7 +20,9 @@
   <div class="grid-container">
     <div class="grid-x">
       <div class="cell">
-        <h2 class="contrast"><?php echo $timeline_title; ?></h2>
+        <?php if ($timeline_title != '') { ?>
+          <h2 class="contrast"><?php echo $timeline_title; ?></h2>
+        <?php } ?>
         <?php 
           foreach($timeline_items as $item) {
             array_push($month_list, date('F Y', $item['phila_timeline_item_timestamp']['timestamp']));
