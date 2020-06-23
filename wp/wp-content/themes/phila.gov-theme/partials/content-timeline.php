@@ -11,7 +11,7 @@
 <?php 
   $month_list = array(); 
   usort($timeline_items, function($a, $b) {
-    return strtotime(date($b['phila_timeline_item_timestamp']['timestamp'])) - strtotime(date($a['phila_timeline_item_timestamp']['timestamp']));
+    return date($b['phila_timeline_item_timestamp']['timestamp']) - date($a['phila_timeline_item_timestamp']['timestamp']);
   });
 ?>
 
