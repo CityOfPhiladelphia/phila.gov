@@ -28,6 +28,8 @@ if (phila_get_selected_template() === 'homepage_v2') {
 
 ?>
 
+<?php if (!empty($header)): ?>
+
 <section class="row">
   <div class="grid-container columns">
     <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
@@ -77,3 +79,4 @@ if (phila_get_selected_template() === 'homepage_v2') {
 
       <?php endif; ?>
 </section>
+<?php endif; ?>
