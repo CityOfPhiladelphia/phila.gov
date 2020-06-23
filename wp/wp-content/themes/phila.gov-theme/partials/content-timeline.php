@@ -60,7 +60,7 @@
                 </div>
                 <div class="timeline-text">
                   <div class="timeline-month"><?php echo date('F d', $item_date);?></div>
-                  <div class="timeline-copy"><?php echo $item['phila_timeline_item'];?></div>
+                  <div class="timeline-copy"><?php echo do_shortcode(wpautop( $item['phila_timeline_item'] )); ?></div>
                 </div>
               </div>
             </div>
