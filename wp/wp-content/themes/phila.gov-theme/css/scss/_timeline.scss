@@ -4,13 +4,45 @@
     min-height: 121px;
     .timeline-right {
       float: right;
-      div {
-        color: #444444;
-        font-family: "Open Sans";
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0;
-        line-height: 27px;
+      .timeline-text {
+        margin-left: 20px;
+        display: inline-block;
+        .timeline-month,
+        .timeline-copy {
+          color: #444444;
+          font-family: "Open Sans";
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0;
+          line-height: 27px;
+        }
+        .timeline-month {
+          font-size: 15px;
+        }
+      }
+      .timeline-dot-container {
+        display: inline-block;
+        padding-top: 7px;
+        vertical-align: top;
+        height: 121px;
+        background: linear-gradient(to right, 
+          transparent 0%, 
+          transparent calc(50% - 0.51px), 
+          black calc(50% - 0.5px), 
+          black calc(50% + 0.5px), 
+          transparent calc(50% + 0.51px), 
+          transparent 100%); 
+        &.first-dot {
+          padding-top: 0px;
+          margin-top: 7px;
+        }
+        .timeline-dot {
+          vertical-align: top;
+          height: 14px;
+          width: 14px;
+          background-color: #25CEF7;
+          border-radius: 50%;
+        }
       }
     }
     .month-label {
@@ -48,6 +80,7 @@
   width: fit-content;
   display: inline-block;
   a {
+    font-size: 16px;
     text-decoration: underline;
     text-transform: uppercase;
   }

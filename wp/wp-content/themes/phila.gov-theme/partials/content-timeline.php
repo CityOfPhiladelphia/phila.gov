@@ -42,6 +42,7 @@
         
         <!-- Timeline -->
         <div class="timeline">
+          <?php $first = true; ?>
           <?php foreach($timeline_items as $item) { ?>
             <div class="timeline-item row">
               <?php $item_date = $item['phila_timeline_item_timestamp']['timestamp']; ?>
@@ -54,10 +55,16 @@
                 </div>
               <?php } ?>
               <div class="timeline-details medium-19 columns timeline-right">
-                <div><?php echo date('F d', $item_date);?></div>
-                <div><?php echo $item['phila_timeline_item'];?></div>
+                <div class="timeline-dot-container <?php echo ($first) ? 'first-dot' : '' ?>">
+                  <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-text">
+                  <div class="timeline-month"><?php echo date('F d', $item_date);?></div>
+                  <div class="timeline-copy"><?php echo $item['phila_timeline_item'];?></div>
+                </div>
               </div>
             </div>
+            <?php $first = false; ?>
           <?php } ?>
         </div>
       </div>
