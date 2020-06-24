@@ -20,6 +20,7 @@ class Phila_Gov_Custom_Taxonomies {
     add_action( 'init', array($this, 'audiences') );
     add_action( 'init', array($this, 'media_type') );
     add_action( 'init', array($this, 'media_author') );
+    add_action( 'init', array($this, 'media_category') );
     add_action( 'init', array($this, 'hierarchical_tags') );
   }
 
@@ -133,6 +134,33 @@ class Phila_Gov_Custom_Taxonomies {
       'show_admin_column' => true,
       'rewrite' => array(
         'slug' => 'media-author',
+        'with_front' => false,
+      ),
+    ));
+  }
+
+  function media_category() {
+    register_taxonomy('media_category',
+      array(
+        'attachment'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Media Category', 'phila-gov'),
+        'singular_name' => _x( 'Media Category', 'phila-gov'),
+        'search_items' =>  __( 'Search Media Categories' ),
+        'all_items' =>     __( 'All Media Categories' ),
+        'edit_item' =>     __( 'Edit Media Category' ),
+        'update_item' =>   __( 'Update Media Category' ),
+        'add_new_item' =>  __( 'Add New Media Category' ),
+        'new_item_name' => __( 'New Media Category Name' ),
+        'menu_name' =>     __( 'Media Categories' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'media-categories',
         'with_front' => false,
       ),
     ));
