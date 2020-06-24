@@ -6,15 +6,20 @@
 ?>
 
 <?php 
-  $timeline_page =  rwmb_meta('phila_select_timeline');
-  $timeline_permalink = get_permalink($timeline_page[0]);
-  $limit = rwmb_meta('homepage_timeline_item_count') !== '' ? rwmb_meta('homepage_timeline_item_count') : 5;
+$timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_timeline') : null;
+
+  if ( $timeline_page != null ) {
+    $timeline_permalink = get_permalink($timeline_page[0]);
+    $limit = rwmb_meta('homepage_timeline_item_count') !== '' ? rwmb_meta('homepage_timeline_item_count') : 5;
+    $timeline_title = get_the_title($timeline_page[0]);
+    $timeline_items = rwmb_meta( 'timeline-items' , '', $timeline_page[0] );
+  }
+  else {
+    $timeline_items = rwmb_meta( 'timeline-items' ) !== null ? rwmb_meta( 'timeline-items' ) : [];
+    $limit = -1;
+  }
 ?>
 
-<?php // $timeline_title = rwmb_meta( 'timeline-title' ) !== null ? rwmb_meta( 'timeline-title' ) : ''; ?>
-<?php // $timeline_items = rwmb_meta( 'timeline-items' ) !== null ? rwmb_meta( 'timeline-items' ) : []; ?>
-<?php $timeline_title = rwmb_meta( 'timeline-title' , '', $timeline_page[0] ); ?>
-<?php $timeline_items = rwmb_meta( 'timeline-items' , '', $timeline_page[0] );  ?>
 <?php $temp_month = ''; ?>
 <?php 
   $month_list = array(); 
@@ -28,7 +33,7 @@
   <div class="grid-container">
     <div class="grid-x">
       <div class="cell">
-        <?php if ($timeline_title != '') { ?>
+        <?php if (isset($timeline_title)) { ?>
           <h2 class="contrast"><?php echo $timeline_title; ?></h2>
         <?php } ?>
         <?php 
@@ -87,7 +92,9 @@
             ?>
           <?php } ?>
         </div>
-        <a href="<?php echo $timeline_permalink; ?>" class="button alignright mts">See All items</a>
+        <?php if ( $timeline_page != null ) { ?>
+          <a href="<?php echo $timeline_permalink; ?>" class="button alignright mts">See All items</a>
+        <?php } ?>
       </div>
     </div>
   </div>

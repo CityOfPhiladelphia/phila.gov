@@ -162,7 +162,8 @@ HTML;
     break;
 
     case 'timeline':
-      get_template_part( 'partials/content-timeline' );
+      get_template_part( 'partials/departments/v2/homepage_timeline' );
+      
       break;
     
     default:
