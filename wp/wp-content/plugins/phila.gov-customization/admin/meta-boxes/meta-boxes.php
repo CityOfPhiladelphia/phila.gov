@@ -1192,6 +1192,12 @@ $meta_boxes[] = array(
     ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+    array(
+      'name' => 'Timeline item count',
+      'id'   => 'homepage_timeline_item_count',
+      'desc'  => 'Select the number of items from the timeline to display',
+      'type' => 'number'
+    ),
   )
 
 );
