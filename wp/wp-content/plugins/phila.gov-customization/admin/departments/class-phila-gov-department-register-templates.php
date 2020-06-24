@@ -53,6 +53,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
           'department_stub'         => 'Stub',
           'prog_association'        => 'Subpage with association',
           'things-to-do'            => 'Things to do',
+          'timeline'                => 'Timeline',
 
           ),
           'admin_columns' => array(
