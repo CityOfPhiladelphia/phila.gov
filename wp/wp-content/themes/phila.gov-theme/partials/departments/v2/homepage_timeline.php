@@ -30,7 +30,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
 
 <!-- Timeline Section -->
 <section>
-  <div class="grid-container">
+  <div class="grid-container <?php echo ( $timeline_page != null ) ? 'mtl' : ''; ?>">
     <div class="grid-x">
       <div class="cell">
         <?php if (isset($timeline_title)) { ?>
@@ -47,19 +47,20 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
           }
           $month_list = array_unique ($month_list);
         ?>
+        <?php if ( $timeline_page == null ) { ?>
+          <!-- Menu -->
+          <div class='menu'>
+            <?php 
+              $numItems = count($month_list);
+              $i = 0;
+            ?>
+            <?php foreach($month_list as $month) { ?>
+              <span class="month-link"><a href="#<?php echo strtolower(str_replace(' ', '-', $month));?>"><?php echo $month; ?></a></span>
+              <?php echo (++$i !== $numItems) ? '<span class="pipe"> |</>' : null; ?>
+            <?php } ?>
+          </div>
+        <?php } ?>
 
-        <!-- Menu -->
-        <div class='menu'>
-          <?php 
-            $numItems = count($month_list);
-            $i = 0;
-          ?>
-          <?php foreach($month_list as $month) { ?>
-            <span class="month-link"><a href="#<?php echo strtolower(str_replace(' ', '-', $month));?>"><?php echo $month; ?></a></span>
-            <?php echo (++$i !== $numItems) ? '<span class="pipe"> |</span>' : null; ?>
-          <?php } ?>
-        </div>
-        
         <!-- Timeline -->
         <div class="timeline">
           <?php $j = 0; ?>
