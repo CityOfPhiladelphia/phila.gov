@@ -20,7 +20,7 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'photo-callout-block'              => array(
+        'photo_callout'              => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
