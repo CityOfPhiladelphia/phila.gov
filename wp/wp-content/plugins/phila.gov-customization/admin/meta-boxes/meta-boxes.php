@@ -1183,6 +1183,40 @@ $meta_boxes[] = array(
 );
 
 
+$meta_boxes[] = array(
+  'title' => 'Timeline',
+  'pages' => array('department_page', 'programs'),
+  'revision' => true,
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'timeline'),
+    ),
+  ),
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_timeline()
+);
+
+$meta_boxes[] = array(
+  'id'       => 'homepage_timeline',
+  'title'    => 'Timeline',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+      ),
+    ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+    array(
+      'name' => 'Timeline item count',
+      'id'   => 'homepage_timeline_item_count',
+      'desc'  => 'Select the number of items from the timeline to display',
+      'type' => 'number'
+    ),
+  )
+
+);
+
 return $meta_boxes;
 
 }
