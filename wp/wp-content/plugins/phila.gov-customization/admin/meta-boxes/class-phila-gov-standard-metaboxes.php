@@ -1493,7 +1493,7 @@ public static function phila_meta_var_connect(){
       'add_button'  => '+ Add timeline item',
       'fields' => array(
         array(
-          'name'  => 'item date',
+          'name'  => 'Item date',
           'id'    => 'phila_timeline_item_timestamp',
           'type'  => 'date',
           'class' =>  '',
@@ -1506,7 +1506,7 @@ public static function phila_meta_var_connect(){
           ),
         ),
         array(
-          'name' => 'item content',
+          'name' => 'Item content',
           'id'   => 'phila_timeline_item',
           'type' => 'wysiwyg',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
