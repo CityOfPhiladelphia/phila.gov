@@ -57,6 +57,7 @@
       }
     }
     .month-label {
+      padding-left: 0px;
       margin-top: -40px;
       padding-top: 40px;
       @media only screen and (max-width: 750px) {
@@ -97,8 +98,12 @@
   width: fit-content;
   display: inline-block;
   a {
+    padding-left: 0px;
     font-size: 16px;
     text-decoration: underline;
     text-transform: uppercase;
+  }
+  .pipe {
+    padding-right: 1rem;
   }
 }
