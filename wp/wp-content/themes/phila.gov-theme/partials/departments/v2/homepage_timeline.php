@@ -93,7 +93,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
           <?php } ?>
         </div>
         <?php if ( $timeline_page != null ) { ?>
-          <a href="<?php echo $timeline_permalink; ?>" class="button alignright mts">See All items</a>
+          <a href="<?php echo $timeline_permalink; ?>" class="button alignright mts">See full timeline</a>
         <?php } ?>
       </div>
     </div>
