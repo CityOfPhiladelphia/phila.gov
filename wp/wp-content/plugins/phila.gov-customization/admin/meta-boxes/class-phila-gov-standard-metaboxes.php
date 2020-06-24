@@ -1482,7 +1482,8 @@ public static function phila_meta_var_connect(){
     array(
     'id'  => 'timeline-title',
     'type'  => 'text', 
-    'name'  => 'timeline title'
+    'name'  => 'Title',
+    'desc'     =>  'Content appears on homepage',
     ),
     array(
       'id' => 'timeline-items',
@@ -1492,13 +1493,7 @@ public static function phila_meta_var_connect(){
       'add_button'  => '+ Add timeline item',
       'fields' => array(
         array(
-          'name' => 'item',
-          'id'   => 'phila_timeline_item',
-          'type' => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-        ),
-        array(
-          'name'  => 'item timestamp',
+          'name'  => 'item date',
           'id'    => 'phila_timeline_item_timestamp',
           'type'  => 'date',
           'class' =>  '',
@@ -1509,6 +1504,12 @@ public static function phila_meta_var_connect(){
             'controlType'=> 'select',
             'oneLine'=> true,
           ),
+        ),
+        array(
+          'name' => 'item content',
+          'id'   => 'phila_timeline_item',
+          'type' => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
         ),
       ),
     ),
@@ -1525,13 +1526,12 @@ public static function phila_timeline_page_selector( ){
     'post_type'   => 'department_page',
     'field_type'  => 'select_advanced',
     'placeholder' => '',
-    'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above.',
+    'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
     'multiple'  => 'false',
 
     'query_args'  => array(
       'post_status'    => 'any',
       'posts_per_page' => -1,
-      // 'post_parent' => $page_id,
       'meta_query' => array(
         array(
           'key'     => 'phila_template_select',

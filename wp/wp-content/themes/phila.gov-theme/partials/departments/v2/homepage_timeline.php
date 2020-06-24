@@ -11,7 +11,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
   if ( $timeline_page != null ) {
     $timeline_permalink = get_permalink($timeline_page[0]);
     $limit = rwmb_meta('homepage_timeline_item_count') !== '' ? rwmb_meta('homepage_timeline_item_count') : 5;
-    $timeline_title = get_the_title($timeline_page[0]);
+    $timeline_title = rwmb_meta( 'timeline-title' , '', $timeline_page[0] );
     $timeline_items = rwmb_meta( 'timeline-items' , '', $timeline_page[0] );
   }
   else {
@@ -56,7 +56,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
           ?>
           <?php foreach($month_list as $month) { ?>
             <span class="month-link"><a href="#<?php echo strtolower(str_replace(' ', '-', $month));?>"><?php echo $month; ?></a></span>
-            <?php echo (++$i !== $numItems) ? '<span> |</span>' : null; ?>
+            <?php echo (++$i !== $numItems) ? '<span class="pipe"> |</span>' : null; ?>
           <?php } ?>
         </div>
         
