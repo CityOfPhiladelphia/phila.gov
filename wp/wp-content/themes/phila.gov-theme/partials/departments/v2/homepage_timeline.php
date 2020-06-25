@@ -24,7 +24,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
 <?php 
   $month_list = array(); 
   usort($timeline_items, function($a, $b) {
-    return date($b['phila_timeline_item_timestamp']['timestamp']) - date($a['phila_timeline_item_timestamp']['timestamp']);
+    return strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s')) - strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s'));
   });
 ?>
 
@@ -39,7 +39,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
         <?php 
           $h = 0;
           foreach($timeline_items as $item) {
-            array_push($month_list, date('F Y', $item['phila_timeline_item_timestamp']['timestamp']));
+            array_push($month_list, DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format('F Y') );
             $h++;
             if ($h == $limit) {
               break;
@@ -66,9 +66,9 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
           <?php $j = 0; ?>
           <?php foreach($timeline_items as $item) { ?>
             <div class="timeline-item row">
-              <?php $item_date = $item['phila_timeline_item_timestamp']['timestamp']; ?>
-              <?php if( date('F Y', $item_date) != $temp_month ) { ?>
-                <?php $temp_month = date('F Y', $item_date); ?>
+              <?php $item_date = $item['phila_timeline_item_timestamp']; ?>
+              <?php if( DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format('F Y') != $temp_month ) { ?>
+                <?php $temp_month = DateTime::createFromFormat('m-d-Y', $item_date)->format('F Y'); ?>
                 <div class="month-label medium-5 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
                   <div>
                     <span ><?php echo $temp_month; ?></span>
@@ -80,7 +80,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
                   <div class="timeline-dot"></div>
                 </div>
                 <div class="timeline-text">
-                  <div class="timeline-month"><?php echo date('F d', $item_date);?></div>
+                  <div class="timeline-month"><?php echo DateTime::createFromFormat('m-d-Y', $item_date)->format('F d');?></div>
                   <div class="timeline-copy"><?php echo do_shortcode(wpautop( $item['phila_timeline_item'] )); ?></div>
                 </div>
               </div>
