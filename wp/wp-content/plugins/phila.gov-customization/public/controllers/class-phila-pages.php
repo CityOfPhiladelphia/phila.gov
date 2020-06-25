@@ -15,7 +15,7 @@ class Phila_Pages_Controller {
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
-        // 'permission_callback' => array( $this, 'create_item_permissions_check' ),
+        'permission_callback' => array( $this, 'create_item_permissions_check' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
@@ -200,11 +200,11 @@ class Phila_Pages_Controller {
     return $schema;
   }
 
-  public function create_item_permissions_check( $request ) {
-    if ( wp_get_current_user()->user_email == 'derrickjdieso@gmail.com' ) {
-      return true;
+  public function create_item_permissions_check( ) {
+    if ( ! current_user_can( 'publish_posts' ) ) {
+        return new WP_Error( 'rest_forbidden', esc_html__( 'You cannot publish new posts.' ), array( 'status' => 403 ) );
     }
-    return new WP_Error( 'rest_forbidden', esc_html__( 'You cannot publish new posts.' ), array( 'status' => 403 ) );
+    return true;
   }
 
 }
