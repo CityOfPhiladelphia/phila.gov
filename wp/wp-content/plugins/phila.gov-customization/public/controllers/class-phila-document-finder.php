@@ -11,22 +11,13 @@ class Phila_Document_Finder_Controller {
   // Register our routes.
   public function register_routes() {
   // Register the endpoint for collections.
-    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<slug>[\S]+)', array(
+    register_rest_route( $this->namespace, '/' . $this->resource_name, array(
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
-
-    //Register individual items
-    // register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
-    //   array(
-    //     'methods'   => WP_REST_Server::READABLE,
-    //     'callback'  => array( $this, 'get_item' ),
-    //   ),
-    //   'schema' => array( $this, 'get_item_schema' ),
-    // ) );
   }
 
   /**
@@ -36,17 +27,8 @@ class Phila_Document_Finder_Controller {
   */
   public function get_items( $request ) {
 
-    $slug = (string) $request['slug'];
-
-    $cleaned_slug = str_replace('~', '/', $slug);
-
-    $post = get_post( url_to_postid( $cleaned_slug) );
-
     $data = array();
-
-    if ( empty( $post ) ) {
-      return rest_ensure_response( $data );
-    }
+    $post = get_post( url_to_postid( wp_get_referer()) );
 
     $document_tables = rwmb_meta( 'phila_document_table', '', $post->ID );
 
