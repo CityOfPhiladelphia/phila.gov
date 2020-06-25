@@ -43,6 +43,7 @@ class Phila_Gov_Register_Program_Templates {
             'resource_list_v2'  => 'Resource list',
             'stub'              => 'Stub',
             'prog_association'  => 'Subpage with association',
+            'timeline'   =>  'Timeline',
           ),
           'admin_columns' => array(
             'position' => 'after date',

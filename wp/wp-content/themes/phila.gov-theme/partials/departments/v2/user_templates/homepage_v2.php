@@ -20,7 +20,7 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'photo-callout-block'              => array(
+        'photo_callout'              => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
@@ -56,10 +56,14 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-      'board_commission_member_list'   => array(
+        'board_commission_member_list'   => array(
                                         'type'=>'v2',
                                         'shown'=> true,
-                                  ),
+                                        ),
+        'homepage_timeline'   => array(
+                                        'type'=>'v2',
+                                        'shown'=> true,
+                                        ),
     );
 
     $meta_box_order = get_post_meta(get_the_ID(), 'phila_meta-box-order');

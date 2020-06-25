@@ -189,46 +189,8 @@ function phila_register_department_meta_boxes( $meta_boxes ){
           'relation' => 'or'
       ),
 
-      'fields' => array(
-         array(
-            'id' => 'phila_v2_photo_callout_block__photo',
-            'title' => 'Select image',
-            'type' => 'image_advanced',
-            'max_file_uploads' => 1,
-            'columns' => 3
-          ),
-           array(
-            'id' => 'phila_v2_photo_callout_block__txt-sub-header',
-            'type' => 'text',
-            'name' => 'Sub-header',
-            'columns' => 4
-          ),
-           array(
-            'id' => 'phila_v2_photo_callout_block__txt-header',
-            'type' => 'text',
-            'name' => 'Header',
-            'columns' => 5
-          ),
-          array(
-            'id'   => 'phila_v2_photo_callout_block__link',
-            'type' => 'url',
-            'name' => 'Button URL',
-            'columns' => 7
-          ),
-           array(
-            'id' => 'phila_v2_photo-callout-block__txt-btn-label',
-            'type' => 'text',
-            'name' => 'Button Text',
-            'columns' => 5
-          ),
-          array(
-             'id' => 'phila_v2_photo-callout-block__desc',
-             'type' => 'textarea',
-             'name' => 'Description',
-             'columns' => 12
-          ),
-      )
-    );//Things To Do
+      'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout(),
+  );//Things To Do
 
 $meta_boxes[] = array(
     'title' => 'Image Grid with Links',

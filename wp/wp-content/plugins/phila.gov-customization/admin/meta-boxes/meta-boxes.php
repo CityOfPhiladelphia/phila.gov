@@ -979,12 +979,29 @@ $meta_boxes[] = array(
     ),
   ),
   'fields' => array(
+    array (
+      'id'  => 'phila_vue_toggle',
+      'type'  => 'switch',
+      'name'  => 'Use datables?',
+      'on_label'  => 'Yes',	
+      'off_label' => 'No'
+    ),
+    array(
+      'id'  => 'phila_vue_app_title',
+      'type'  => 'text',
+      'name'  => 'Optional title for document tables section',
+      'visible' => array(
+        'when'  => array(
+          array('phila_vue_toggle', '=', true),
+        ),
+      ),
+    ),
     array(
       'id'  => 'phila_doc_no_paginate',
       'type'  => 'switch',
       'name'  => 'Turn off pagination for all tables on this page?',
       'on_label'  => 'Yes',
-      'off_label' => 'No'
+      'off_label' => 'No',
     ),
     array(
       'id' => 'phila_document_table',
@@ -992,11 +1009,9 @@ $meta_boxes[] = array(
       'clone' => true,
       'sort_clone' => true,
       'add_button'  => 'Add another table',
-
       'fields' =>
       array(
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg( $section_title = 'Table title', $wysiwyg_desc = 'Enter a description to describe the contents of this table for users with screenreaders. '),
-
         array(
           'id'  => 'phila_search_bar_text',
           'type'  => 'text',
@@ -1017,7 +1032,7 @@ $meta_boxes[] = array(
           application/zip'
         ),
       )
-    )
+    ),
   ),
 );
 
@@ -1167,6 +1182,40 @@ $meta_boxes[] = array(
   'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
 );
 
+
+$meta_boxes[] = array(
+  'title' => 'Timeline',
+  'pages' => array('department_page', 'programs'),
+  'revision' => true,
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'timeline'),
+    ),
+  ),
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_timeline()
+);
+
+$meta_boxes[] = array(
+  'id'       => 'homepage_timeline',
+  'title'    => 'Timeline',
+  'pages'    => array( 'department_page' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+      ),
+    ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+    array(
+      'name' => 'Timeline item count',
+      'id'   => 'homepage_timeline_item_count',
+      'desc'  => 'Select the number of items from the timeline to display',
+      'type' => 'number'
+    ),
+  )
+
+);
 
 return $meta_boxes;
 
