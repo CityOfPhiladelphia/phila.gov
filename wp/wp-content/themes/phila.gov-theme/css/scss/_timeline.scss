@@ -1,0 +1,111 @@
+.timeline {
+  margin-top: 50px;
+  .timeline-item {
+    min-height: 121px;
+    .timeline-right {
+      @media only screen and (max-width: 900px) {
+        padding-left: 40px;
+      }
+      @media only screen and (max-width: 750px) {
+        padding-left: 20px;
+      }
+      display: inline-flex;
+      float: right;
+      flex-direction: row;
+      .timeline-text {
+        margin-left: 20px;
+        display: inline-block;
+        .timeline-month,
+        .timeline-copy {
+          color: #444444;
+          font-family: "Open Sans";
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0;
+          line-height: 27px;
+        }
+        .timeline-month {
+          font-size: 15px;
+        }
+        .timeline-copy {
+          margin-bottom: 40px;
+        }
+      }
+      .timeline-dot-container {
+        display: inline-block;
+        padding-top: 7px;
+        vertical-align: top;
+        min-height: 121px;
+        background: linear-gradient(to right, 
+          transparent 0%, 
+          transparent calc(50% - 0.52px), 
+          black calc(50% - 0.45px), 
+          black calc(50% + 0.45px), 
+          transparent calc(50% + 0.52px), 
+          transparent 100%); 
+        &.first-dot {
+          padding-top: 0px;
+          margin-top: 7px;
+        }
+        .timeline-dot {
+          vertical-align: top;
+          height: 14px;
+          width: 14px;
+          background-color: #25CEF7;
+          border-radius: 50%;
+        }
+      }
+    }
+    .month-label {
+      padding-left: 0px;
+      margin-top: -40px;
+      padding-top: 40px;
+      @media only screen and (max-width: 750px) {
+        padding-top: 0px;
+        margin: 5px 0px;
+      }
+      div {
+        width: 160px;
+        height: 30px;
+        background-color: #CAE4FF;
+        span {
+          padding: 5px 10px;
+          color: #444444;
+          font-family: 'Montserrat';
+          font-size: 16px;
+          letter-spacing: 0;
+          line-height: 19px;
+          font-weight: 600;
+          display: inline-block;
+        }
+        &::after {
+          content: '';
+          display: block;
+          position: relative;
+          left: 160px;
+          width: 0;
+          height: 0;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 20px solid #CAE4FF;
+          margin-top: -29px;
+        }
+      }
+    }
+  }
+}
+.menu {
+  .month-link {
+    width: fit-content;
+    display: inline-block;
+    a {
+      padding-left: 0px;
+      font-size: 16px;
+      text-decoration: underline;
+      text-transform: uppercase;
+    }
+  }
+  .pipe {
+    padding-right: 1rem;
+  }
+}

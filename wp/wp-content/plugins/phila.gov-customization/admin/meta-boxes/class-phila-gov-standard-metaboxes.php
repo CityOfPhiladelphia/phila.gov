@@ -1476,4 +1476,74 @@ public static function phila_meta_var_connect(){
     );
   }
 
+  public static function phila_metabox_timeline(){
+
+  return  array(
+    array(
+    'id'  => 'timeline-title',
+    'type'  => 'text', 
+    'name'  => 'Title',
+    'desc'     =>  'Content appears on homepage',
+    ),
+    array(
+      'id' => 'timeline-items',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add timeline item',
+      'fields' => array(
+        array(
+          'name'  => 'Item date',
+          'id'    => 'phila_timeline_item_timestamp',
+          'type'  => 'date',
+          'class' =>  '',
+          'size'  =>  25,
+          'js_options' =>  array(
+            'dateFormat' => 'mm-dd-yy',
+            'controlType'=> 'select',
+            'oneLine'=> true,
+          ),
+        ),
+        array(
+          'name' => 'Item content',
+          'id'   => 'phila_timeline_item',
+          'type' => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+      ),
+    ),
+  );
+}
+
+
+public static function phila_timeline_page_selector( ){
+
+  return array(
+    'name'          => 'Select timeline page',
+    'id'          => 'phila_select_timeline',
+    'type'        => 'post',
+    'post_type'   => 'department_page',
+    'field_type'  => 'select_advanced',
+    'placeholder' => '',
+    'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
+    'multiple'  => 'false',
+
+    'query_args'  => array(
+      'post_status'    => 'any',
+      'posts_per_page' => -1,
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value'   => 'timeline',
+          'compare' => '=',
+        )
+      )
+    ),
+    'js_options'  => array(
+      'width' => '100%',
+      'closeOnSelect' => false,
+    )
+  );
+}
+
 }//end Class
