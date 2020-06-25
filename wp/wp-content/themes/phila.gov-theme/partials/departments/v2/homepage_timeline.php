@@ -24,7 +24,7 @@ $timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_t
 <?php 
   $month_list = array(); 
   usort($timeline_items, function($a, $b) {
-    return strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s')) - strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s'));
+    return strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s')) - strtotime(DateTime::createFromFormat('m-d-Y', $a['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s'));
   });
 ?>
 
