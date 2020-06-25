@@ -1498,7 +1498,6 @@ public static function phila_meta_var_connect(){
           'type'  => 'date',
           'class' =>  '',
           'size'  =>  25,
-          'timestamp'  => true,
           'js_options' =>  array(
             'dateFormat' => 'mm-dd-yy',
             'controlType'=> 'select',
