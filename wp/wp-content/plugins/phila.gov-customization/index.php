@@ -85,6 +85,7 @@ require $dir. '/public/shortcodes/service-tiles.php';
 require $dir. '/public/shortcodes/standard-date-time.php';
 require $dir. '/public/shortcodes/vertical-rule.php';
 
+require $dir. '/public/controllers/class-phila-closures.php';
 require $dir. '/public/controllers/class-phila-calendars.php';
 require $dir. '/public/controllers/class-phila-departments.php';
 require $dir. '/public/controllers/class-phila-documents.php';
