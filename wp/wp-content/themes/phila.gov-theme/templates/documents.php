@@ -19,7 +19,7 @@
     $documents = rwmb_meta( 'phila_files', $args = array( 'type' => 'file_advanced' ) );
     $arr_length = count($documents);
     ?>
-    <p class="description"><?php echo $document_description; ?></p>
+    <p class="description"><?php echo apply_filters('the_content', $document_description); ?></p>
     <div id="sortable-table-0" class="search-sort-single-table">
       <?php if ($arr_length >= 5) : ?>
         <div class="search">

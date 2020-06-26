@@ -29,7 +29,7 @@ function walk_ins_shortcode($atts, $content=null){
       $output .= '<div class="walk-ins grid-x mvl">';
       $output .= '<div class="cell small-3 medium-3 walk-ins-icon">';
     }else{
-      $output .= '<div class="walk-ins grid-x mtxl">';
+      $output .= '<div class="walk-ins grid-x mvxl">';
       $output .= '<div class="cell small-3 medium-2 walk-ins-icon">';
     }
     
