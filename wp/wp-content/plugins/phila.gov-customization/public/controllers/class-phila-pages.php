@@ -15,7 +15,6 @@ class Phila_Pages_Controller {
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
-        'permission_callback' => array( $this, 'create_item_permissions_check' ),
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
@@ -46,7 +45,8 @@ class Phila_Pages_Controller {
             $page->id = get_the_id();
             $page->last_modified = get_the_modified_time('F jS, Y') . ', ' . get_the_modified_time();
             if (get_userdata( rwmb_meta( '_edit_last', $args = array(), $post_id = get_the_id() ) )) {
-              $page->last_modified_user = get_userdata( rwmb_meta( '_edit_last', $args = array(), $post_id = get_the_id() ) )->user_email;
+              $user = get_userdata( rwmb_meta( '_edit_last', $args = array(), $post_id = get_the_id() ) );
+              $page->last_modified_user = $user->first_name . ' ' . $user->last_name;
             }
             else {
               $page->last_modified_user = '';
@@ -145,52 +145,52 @@ class Phila_Pages_Controller {
       // Specify object properties in the properties attribute.
       'properties'           => array(
         'id' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'id'),
           'type' => 'integer',
           'readonly' => true,
         ),
         'last_modified' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'last modified time'),
           'type' => 'string',
           'readonly' => true,
         ),
         'last_modified_user' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'last modified user name'),
           'type' => 'string',
           'readonly' => true,
         ),
         'owner' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'owner'),
           'type' => 'string',
           'readonly' => true,
         ),
         'post_type' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'post type'),
           'type' => 'string',
           'readonly' => true,
         ),
         'short_description' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'short description'),
           'type' => 'string',
           'readonly' => true,
         ),
         'status' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'status'),
           'type' => 'string',
           'readonly' => true,
         ),
         'template' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'page template'),
           'type' => 'string',
           'readonly' => true,
         ),
         'title' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'page title'),
           'type' => 'string',
           'readonly' => true,
         ),
         'url' => array(
-          'description' => esc_html__('item', 'phila-gov'),
+          'description' => esc_html__('item', 'page url'),
           'type' => 'string',
           'readonly' => true,
         )
@@ -198,13 +198,6 @@ class Phila_Pages_Controller {
     );
 
     return $schema;
-  }
-
-  public function create_item_permissions_check( ) {
-    if ( ! current_user_can( 'publish_posts' ) ) {
-        return new WP_Error( 'rest_forbidden', esc_html__( 'You cannot publish new posts.' ), array( 'status' => 403 ) );
-    }
-    return true;
   }
 
 }
