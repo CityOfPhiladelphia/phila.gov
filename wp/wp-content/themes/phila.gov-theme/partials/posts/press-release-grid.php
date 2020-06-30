@@ -17,14 +17,6 @@
 
 <?php $press_tag = isset( $tag ) ? $tag : '';?>
 
-<?php $press_release_args  = array(
-  'posts_per_page' => 4,
-  'post_type' => array( 'press_release' ),
-  'order' => 'desc',
-  'orderby' => 'post_date',
-  'cat' => $press_categories,
-); ?>
-
 <?php
 
 if( !empty($tag) ) {
@@ -42,19 +34,6 @@ if( !empty($tag) ) {
           'value' => 'press_release',
           'compare' => '=',
         ),
-      array(
-        'relation'  => 'OR',
-        array(
-          'key' => 'phila_select_language',
-          'value' => 'english',
-          'compare' => '=',
-        ),
-        array(
-          'key' => 'phila_select_language',
-          'value' => '',
-          'compare' => '=',
-        ),
-      ),
     )
   );
 
@@ -64,27 +43,13 @@ if( !empty($tag) ) {
     'post_type' => array( 'post' ),
     'order' => 'desc',
     'orderby' => 'post_date',
-    'ignore_sticky_posts' => 1,
-    'cat' => $press_categories,
+    'cat' => (int) implode( $press_categories ),
     'meta_query'  => array(
       'relation'=> 'AND',
         array(
           'key' => 'phila_template_select',
           'value' => 'press_release',
           'compare' => '=',
-        ),
-        array(
-          'relation'  => 'OR',
-          array(
-            'key' => 'phila_select_language',
-            'value' => 'english',
-            'compare' => '=',
-          ),
-          array(
-            'key' => 'phila_select_language',
-            'value' => '',
-            'compare' => '=',
-          ),
         ),
     ),
   );
@@ -98,10 +63,7 @@ if( !empty($tag) ) {
 
 <?php
 //special handling for old press release CPT
-  $old_press = new WP_Query( $press_release_args );
-  $new_press = new WP_Query( $press_release_template_args );
-  $result = new WP_Query();
-  $result->posts = array_merge( $new_press->posts, $old_press->posts );
+  $result = new WP_Query( $press_release_template_args );
   $result->post_count = count( $result->posts );
 ?>
 
