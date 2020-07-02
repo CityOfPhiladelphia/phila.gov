@@ -337,6 +337,12 @@ class Phila_Gov_Row_Metaboxes {
         'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
       ),
     ),
+    array(
+      'id' => 'phila_service_updates',
+      'type'  => 'group',
+      'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
+      'fields'  => array( Phila_Gov_Standard_Metaboxes::phila_service_updates()),
+    ),
   );
 }
 
