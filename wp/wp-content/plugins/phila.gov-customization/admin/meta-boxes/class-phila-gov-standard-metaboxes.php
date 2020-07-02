@@ -1600,7 +1600,6 @@ public static function phila_get_service_updates( ){
                   '2' => 'Critical (Red)',
                 ),
               ),
-        
               array(
                 'id'    => 'phila_service_update_message',
                 'class' => 'service-update-message',
@@ -1616,10 +1615,10 @@ public static function phila_get_service_updates( ){
                       )
                     ),
                   'editor_height' => 100,
+                  ),
                 ),
+                )
               ),
-            )
-          ),
             )
           ),
         ),
