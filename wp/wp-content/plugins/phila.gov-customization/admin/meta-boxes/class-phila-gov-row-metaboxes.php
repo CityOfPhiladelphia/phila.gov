@@ -336,12 +336,12 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_full_options_select', '=', 'phila_content_additional_content'),
         'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
       ),
-    ),
-    array(
-      'id' => 'phila_service_updates',
-      'type'  => 'group',
-      'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
-      'fields'  => array( Phila_Gov_Standard_Metaboxes::phila_service_updates()),
+      array(
+        'id' => 'phila_service_update_page',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
+        'fields'  => Phila_Gov_Standard_Metaboxes::phila_get_service_updates(),
+      ),
     ),
   );
 }
