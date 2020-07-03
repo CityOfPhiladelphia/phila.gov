@@ -1552,7 +1552,6 @@ public static function phila_get_service_updates( ){
     array(
     'id' => 'service_update_group',
     'type' => 'group',
-    'name'   => 'Service updates',
 
     'fields' => array(
       array(
@@ -1565,6 +1564,7 @@ public static function phila_get_service_updates( ){
           array(
             'id'  => 'group_title',
             'type'  => 'text',
+            'name'  => 'Group title'
           ),
           'fields' => array(
             'id'  => 'content',
@@ -1573,47 +1573,48 @@ public static function phila_get_service_updates( ){
             'type'  => 'group',
             'fields'  => array(
               array(
-                'name' => 'Update Type',
-                'id'   => 'phila_update_type',
-                'type' => 'select',
-                'placeholder' => 'Choose type...',
-                'admin_columns' => 'after title',
-                'options' => array(
-                  'city' => 'City',
-                  'roads' => 'Roads',
-                  'transit' => 'Transit',
-                  'trash' => 'Trash',
-                  'phones' => 'Phones',
-                  'offices' => 'Offices',
-                  'systems' => 'Computer systems',
-                ),
+                'id'  => 'service_name',
+                'name' => 'Service name',
+                'type'  => 'text'
               ),
               array(
-                'name' => 'Urgency Level',
-                'id'   => 'phila_update_level',
+                'id'  => 'icon',
+                'name' => 'Icon',
+                'type'  => 'text',
+                'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+              ),
+              array(
+                'name' => 'Urgency level',
+                'id'   => 'level',
                 'type' => 'select',
                 'placeholder' => 'Choose type...',
-                'admin_columns' => 'after title',
                 'options' => array(
                   '0' => 'Normal (Green)',
                   '1' => 'Warning (Yellow)',
                   '2' => 'Critical (Red)',
                 ),
+                'columns' => 6,
               ),
               array(
-                'id'    => 'phila_service_update_message',
-                'class' => 'service-update-message',
+                'name' => 'Auto populate? ',
+                'id'   => 'auto',
+                'type' => 'select',
+                'placeholder' => 'Choose location...',
+                'options' => array(
+                  'city' => 'City services',
+                  'trash' => 'Trash and recycling',
+                  'transportation' => 'Transportation',
+                ),
+                'columns' => 6,
+              ),
+              array(
+                'id'    => 'message',
                 'type'  => 'wysiwyg',
                 'options' => array(
                   'media_buttons' => false,
                   'teeny' => true,
                   'dfw' => false,
                   'quicktags' => false,
-                  'tinymce' => phila_setup_tiny_mce_basic(
-                      array(
-                        'format_select' => false
-                      )
-                    ),
                   'editor_height' => 100,
                   ),
                 ),
