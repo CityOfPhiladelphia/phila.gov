@@ -1564,7 +1564,20 @@ public static function phila_get_service_updates( ){
           array(
             'id'  => 'group_title',
             'type'  => 'text',
-            'name'  => 'Group title'
+            'name'  => 'Group title',
+            'columns' => 6,
+          ),
+          array(
+            'name' => 'Auto populate?',
+            'id'   => 'auto',
+            'type' => 'select',
+            'placeholder' => 'Choose option...',
+            'options' => array(
+              'city' => 'City services',
+              'trash' => 'Trash and recycling',
+              'transportation' => 'Transportation',
+            ),
+            'columns' => 6,
           ),
           'fields' => array(
             'id'  => 'content',
@@ -1593,19 +1606,6 @@ public static function phila_get_service_updates( ){
                   '1' => 'Warning (Yellow)',
                   '2' => 'Critical (Red)',
                 ),
-                'columns' => 6,
-              ),
-              array(
-                'name' => 'Auto populate? ',
-                'id'   => 'auto',
-                'type' => 'select',
-                'placeholder' => 'Choose location...',
-                'options' => array(
-                  'city' => 'City services',
-                  'trash' => 'Trash and recycling',
-                  'transportation' => 'Transportation',
-                ),
-                'columns' => 6,
               ),
               array(
                 'id'    => 'message',
