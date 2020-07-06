@@ -342,6 +342,20 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
         'fields'  => Phila_Gov_Standard_Metaboxes::phila_get_service_updates(),
       ),
+      array(
+        'id' => 'phila_timeline_picker',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_homepage_timeline'),
+        'fields'  => array(
+            Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+            array(
+              'name' => 'Timeline item count',
+              'id'   => 'homepage_timeline_item_count',
+              'desc'  => 'Select the number of items from the timeline to display',
+              'type' => 'number'
+            ),
+        )
+      ),
     ),
   );
 }
