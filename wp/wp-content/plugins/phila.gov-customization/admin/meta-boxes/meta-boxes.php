@@ -865,7 +865,7 @@ $meta_boxes[] = array(
     array(
       'id' => 'phila_page_icon',
       'type' => 'text',
-      'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'
+      'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'
     )
   )
 );
