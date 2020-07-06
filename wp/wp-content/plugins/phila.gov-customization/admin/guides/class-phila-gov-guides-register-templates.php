@@ -61,7 +61,7 @@ class Phila_Gov_Register_Guide_Templates {
           'id' => 'guide_page_icon',
           'type' => 'text',
           'name'  => 'Page icon',
-          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.',
+          'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.',
           'columns' => 6,
         ),
         array(
