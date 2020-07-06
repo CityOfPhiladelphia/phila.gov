@@ -1197,14 +1197,14 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'id'       => 'homepage_timeline',
-  'title'    => 'Timeline',
+  'title'    => 'Homepage timeline',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
       ),
-    ),
+  ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
     array(
