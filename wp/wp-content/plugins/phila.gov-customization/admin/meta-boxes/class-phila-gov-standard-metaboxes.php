@@ -1546,4 +1546,86 @@ public static function phila_timeline_page_selector( ){
   );
 }
 
+public static function phila_get_service_updates( ){
+
+  return array(
+    array(
+    'id' => 'service_update_group',
+    'type' => 'group',
+
+    'fields' => array(
+      array(
+        'type'  => 'group',
+        'id'  => 'parent_group',
+        'clone' => true,
+        'add_button' => '+ Add group',
+        'sort_clone'  => true,
+        'fields' => array(
+          array(
+            'id'  => 'group_title',
+            'type'  => 'text',
+            'name'  => 'Group title',
+            'columns' => 6,
+          ),
+          array(
+            'name' => 'Auto populate?',
+            'id'   => 'auto',
+            'type' => 'select',
+            'placeholder' => 'Choose option...',
+            'options' => array(
+              'city' => 'City services',
+              'trash' => 'Trash and recycling',
+              'transportation' => 'Transportation',
+            ),
+            'columns' => 6,
+          ),
+          'fields' => array(
+            'id'  => 'content',
+            'clone' => true,
+            'add_button' => '+ Add service update',
+            'type'  => 'group',
+            'fields'  => array(
+              array(
+                'id'  => 'service_name',
+                'name' => 'Service name',
+                'type'  => 'text'
+              ),
+              array(
+                'id'  => 'icon',
+                'name' => 'Icon',
+                'type'  => 'text',
+                'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+              ),
+              array(
+                'name' => 'Urgency level',
+                'id'   => 'level',
+                'type' => 'select',
+                'placeholder' => 'Choose type...',
+                'options' => array(
+                  '0' => 'Normal (Green)',
+                  '1' => 'Warning (Yellow)',
+                  '2' => 'Critical (Red)',
+                ),
+              ),
+              array(
+                'id'    => 'message',
+                'type'  => 'wysiwyg',
+                'options' => array(
+                  'media_buttons' => false,
+                  'teeny' => true,
+                  'dfw' => false,
+                  'quicktags' => false,
+                  'editor_height' => 100,
+                  ),
+                ),
+                )
+              ),
+            )
+          ),
+        ),
+      ),
+  );// End Service Updates
+
+}
+
 }//end Class

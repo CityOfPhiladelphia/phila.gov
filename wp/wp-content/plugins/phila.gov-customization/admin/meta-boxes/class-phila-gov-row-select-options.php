@@ -55,8 +55,10 @@ class Phila_Gov_Row_Select_Options {
         'phila_full_width_press_releases' => 'Press Releases',
         'phila_programs'  => 'Program cards',
         'phila_registration'  => 'Registration available',
+        'phila_service_updates' => 'Service updates',
         'phila_staff_table' => 'Staff table',
         'phila_stepped_content' => 'Stepped content',
+        'phila_homepage_timeline' => 'Timeline',
         'phila_vue_app'  => 'Vue app',
       ),
     );
