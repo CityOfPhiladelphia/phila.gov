@@ -982,7 +982,7 @@ $meta_boxes[] = array(
     array (
       'id'  => 'phila_vue_toggle',
       'type'  => 'switch',
-      'name'  => 'Use datables?',
+      'name'  => 'Use data tables?',
       'on_label'  => 'Yes',	
       'off_label' => 'No'
     ),
