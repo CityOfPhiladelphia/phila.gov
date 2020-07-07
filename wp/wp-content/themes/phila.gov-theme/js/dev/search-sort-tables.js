@@ -3,28 +3,6 @@ var moment = require('moment');
 
 module.exports = $(function(){
 
-  var pageNum = $( "table" ).hasClass( "staff-directory" ) ? 20 : 6
-  var pagination = $("table").hasClass("no-paginate") ? false : true
-  
-  if (pagination){
-    var options = {
-      searchClass: 'table-search',
-      listClass: 'search-sortable',
-      sortClass: 'table-sort',
-      valueNames: [ 'name', 'title', 'category', { name: 'date', attr: 'data-unix' } , 'author', 'description' ],
-      pagination: true,
-      page: pageNum,
-      paginationClass: 'paginate-links',
-    }
-  }else{
-    var options = {
-      searchClass: 'table-search',
-      listClass: 'search-sortable',
-      sortClass: 'table-sort',
-      valueNames: [ 'name', 'title', 'category', { name: 'date', attr: 'data-unix' } , 'author', 'description' ],
-    }
-  } 
-
   $('.date').each(function(j){
     let text = $(this).clone().find('span').remove().end().text();
     let date = text.split(" ").filter(function(v){return v!==''});
@@ -44,6 +22,29 @@ module.exports = $(function(){
   })
 
   $('.search-sort-table').each(function( j ) {
+
+    var pageNum = $( '#sortable-table-' + j + ' table').hasClass( "staff-directory" ) ? 20 : 6
+    var pagination = $('#sortable-table-' + j + ' table').hasClass("no-paginate") ? false : true
+    
+    if (pagination){
+      var options = {
+        searchClass: 'table-search',
+        listClass: 'search-sortable',
+        sortClass: 'table-sort',
+        valueNames: [ 'name', 'title', 'category', { name: 'date', attr: 'data-unix' } , 'author', 'description' ],
+        pagination: true,
+        page: pageNum,
+        paginationClass: 'paginate-links',
+      }
+    }else{
+      var options = {
+        searchClass: 'table-search',
+        listClass: 'search-sortable',
+        sortClass: 'table-sort',
+        valueNames: [ 'name', 'title', 'category', { name: 'date', attr: 'data-unix' } , 'author', 'description' ],
+      }
+    } 
+
     var table = new List('sortable-table-' + j, options)
     table.on('updated', function (list) {
       
