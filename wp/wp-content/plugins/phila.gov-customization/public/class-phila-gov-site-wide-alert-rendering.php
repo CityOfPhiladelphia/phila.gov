@@ -60,7 +60,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
               <div class="medium-centered">
                 <div class="grid-x grid-padding-x align-top pvs">
                   <div class="cell auto shrink center icon hide-for-small-only align-self-middle">
-                      <i class="<?php echo ($alert_icon) ? $alert_icon :  'fas fa-exclamation' ?> fa-3x" aria-hidden="true"></i>
+                      <i class="<?php echo ($alert_icon) ? $alert_icon :  'fas fa-exclamation' ?> fa-2x" aria-hidden="true"></i>
                   </div>
                   <div class="cell auto message align-self-middle">
                   <?php

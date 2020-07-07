@@ -169,6 +169,11 @@ class Phila_Gov_Role_Administration {
         wp_enqueue_style( 'admin-read-only' );
 
       }
+      if ( array_key_exists( 'secondary_group_adder',  $user->caps ) ) {
+        wp_register_style( 'group-adder', plugins_url( 'css/group-adder.css' , __FILE__  ) );
+        wp_enqueue_style( 'group-adder', plugins_url( 'css/group-adder.css' , __FILE__  ), 'admin-department-author' );
+
+      }
 
     }
   }
