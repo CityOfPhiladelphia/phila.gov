@@ -1455,7 +1455,6 @@ public static function phila_meta_var_connect(){
         'name' => ($row_title),
         'id'   => 'accordion_row_title',
         'type' => 'text',
-        'required' => true,
         'class' => 'percent-100'
       ),
       Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
