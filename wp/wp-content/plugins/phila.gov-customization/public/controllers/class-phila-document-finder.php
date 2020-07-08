@@ -294,7 +294,6 @@ class Phila_Document_Finder_Controller {
 
     return $schema;
   }
-
 }
 
 // Function to register our new routes from the controller.
