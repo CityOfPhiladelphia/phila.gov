@@ -236,6 +236,8 @@ class Phila_Closures_Controller {
 
     $post_data['closure_label'] = (string) $post['closure_label'] ?? '';
 
+    $post_data['exception'] = (string) $post['exception'] ?? '';
+
     $post_data['start_date']  = (string) $post['start_date'] ?? '';
 
     $post_data['end_date'] = (string) $post['end_date'] ?? '';
@@ -292,6 +294,11 @@ class Phila_Closures_Controller {
       'properties'           => array(
         'closure_label'=> array(
           'description'  => esc_html__( 'Label of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'exception'=> array(
+          'description'  => esc_html__( 'Exception for closure.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),

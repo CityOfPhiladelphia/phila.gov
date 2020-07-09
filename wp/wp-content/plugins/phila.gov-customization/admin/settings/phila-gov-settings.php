@@ -108,6 +108,11 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'required'  => true
           ),
           array(
+            'id'  => 'exception',
+            'name'  => 'Exception',
+            'type'  => 'text'
+          ),
+          array(
             'id'  => 'start_date',
             'name' => 'Closure start date',
             'type'  => 'date',
