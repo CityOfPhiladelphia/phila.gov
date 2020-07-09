@@ -1580,7 +1580,7 @@ public static function phila_get_service_updates( ){
             'columns' => 6,
           ),
           'fields' => array(
-            'id'  => 'content',
+            'id'  => 'service_content',
             'clone' => true,
             'add_button' => '+ Add service update',
             'type'  => 'group',
