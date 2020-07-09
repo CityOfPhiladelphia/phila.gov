@@ -29,7 +29,7 @@ class Phila_Pages_Controller {
 
     $posts = new WP_Query( array(
       'post_type' => array('post', 'page', 'service_updates', 'site_wide_alert', 'document', 'staff_directory', 'announcement', 'service_page', 'department_page', 'event_spotlight', 'guides', 'programs', 'calendar', 'phila_post', 'news_post', 'press_release'),
-      'posts_per_page'  => -1,
+      'posts_per_page'  => 100,
       'order' => 'asc',
       'orderby' => 'title',
       'post_status' => 'publish',
@@ -41,6 +41,17 @@ class Phila_Pages_Controller {
         $posts->the_post();
         $terms = get_the_terms( get_the_id(), 'category' ); 
         if ($terms) {
+          $term_names = '';
+          $first = true;
+          foreach($terms as $term) {
+            if ($first) {
+              $first = false;
+              $term_names .= $term->name;
+            }
+            else {
+              $term_names .= '; '.$term->name;
+            }
+          }
           foreach($terms as $term) {
             $page = new stdClass();
             $page->id = get_the_id();
@@ -53,6 +64,7 @@ class Phila_Pages_Controller {
               $page->last_modified_user = '';
             }
             $page->owner = $term->name;
+            $page->all_owners = $term_names;
             $page->post_type = get_post_type_object(get_post_type())->labels->singular_name;
             $page->short_description = rwmb_meta( 'phila_meta_desc', $args = array(), $post_id = get_the_id() );
             $page->status = get_post_status();
@@ -91,6 +103,7 @@ class Phila_Pages_Controller {
     $post_data['last_modified'] = (string) $post->last_modified ?? '';
     $post_data['last_modified_user'] = (string) $post->last_modified_user ?? '';
     $post_data['owner'] = (string) $post->owner ?? '';
+    $post_data['all_owners'] = (string) $post->all_owners ?? '';
     $post_data['post_type'] = (string) $post->post_type ?? '';
     $post_data['short_description'] = (string) $post->short_description ?? '';
     $post_data['status'] = (string) $post->status ?? '';
@@ -162,6 +175,11 @@ class Phila_Pages_Controller {
         ),
         'owner' => array(
           'description' => esc_html__('item', 'owner'),
+          'type' => 'string',
+          'readonly' => true,
+        ),
+        'all_owners' => array(
+          'description' => esc_html__('item', 'all owners'),
           'type' => 'string',
           'readonly' => true,
         ),
