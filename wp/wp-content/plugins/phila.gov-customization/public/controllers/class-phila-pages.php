@@ -29,7 +29,7 @@ class Phila_Pages_Controller {
 
     $posts = new WP_Query( array(
       'post_type' => array('post', 'page', 'service_updates', 'site_wide_alert', 'document', 'staff_directory', 'announcement', 'service_page', 'department_page', 'event_spotlight', 'guides', 'programs', 'calendar', 'phila_post', 'news_post', 'press_release'),
-      'posts_per_page'  => 100,
+      'posts_per_page'  => -1,
       'order' => 'asc',
       'orderby' => 'title',
       'post_status' => 'publish',
