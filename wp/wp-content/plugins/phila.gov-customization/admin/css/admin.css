@@ -74,9 +74,30 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 /* hide ability to duplicate from title columns */
 .title .clone,
 /* remove checkbox to auto-add pages to new menu items */
-.auto-add-pages
+.auto-add-pages, 
+table.media #taxonomy-media_type, 
+table.media .taxonomy-media_type, 
+table.media #taxonomy-media_author, 
+table.media .taxonomy-media_category,
+table.media #taxonomy-media_category,
+table.media .taxonomy-media_category,
+table.media #parent,
+table.media .parent,
+table.media #author,
+table.media .taxonomy-media_author, 
+table.media td:nth-of-type(2) 
 {
   display: none !important;
+}
+/* Table  */
+table.media #title{
+  width: 40%;
+}
+table.media #categories{
+  width: 30%;
+}
+table.media #date{
+  width: 30%;
 }
 
 .hide-on-load {
