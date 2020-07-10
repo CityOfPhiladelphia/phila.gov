@@ -1570,7 +1570,7 @@ public static function phila_get_service_updates( ){
             'options' => array(
               'city' => 'City services',
               'trash' => 'Trash and recycling',
-              'transportation' => 'Transportation',
+              'transit' => 'Transportation',
             ),
             'columns' => 6,
           ),
