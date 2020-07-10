@@ -865,7 +865,7 @@ $meta_boxes[] = array(
     array(
       'id' => 'phila_page_icon',
       'type' => 'text',
-      'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'
+      'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'
     )
   )
 );
@@ -982,7 +982,7 @@ $meta_boxes[] = array(
     array (
       'id'  => 'phila_vue_toggle',
       'type'  => 'switch',
-      'name'  => 'Use datables?',
+      'name'  => 'Use data tables?',
       'on_label'  => 'Yes',	
       'off_label' => 'No'
     ),
@@ -1197,14 +1197,14 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'id'       => 'homepage_timeline',
-  'title'    => 'Timeline',
+  'title'    => 'Homepage timeline',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
       ),
-    ),
+  ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
     array(

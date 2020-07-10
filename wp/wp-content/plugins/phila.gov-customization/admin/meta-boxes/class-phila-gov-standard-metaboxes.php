@@ -424,7 +424,7 @@ class Phila_Gov_Standard_Metaboxes {
         array(
           //TODO: swap this out for an icon picker
           'id'  => 'phila_accordion_icon',
-          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
           'name'  => 'Select icon',
           'type'  => 'text',
         ),
@@ -556,7 +556,7 @@ class Phila_Gov_Standard_Metaboxes {
     return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
-      'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+      'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
       'name'  => 'Select icon',
       'type'  => 'text',
     );
@@ -785,7 +785,7 @@ class Phila_Gov_Standard_Metaboxes {
         'id'    => 'phila_action_panel_fa_multi',
         'type'  => 'text',
         'class' => 'action-panel-fa',
-        'desc'  => 'Uses <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell'
+        'desc'  => 'Uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell'
       ),
       array(
         'name'  => 'Link url',
@@ -1455,7 +1455,6 @@ public static function phila_meta_var_connect(){
         'name' => ($row_title),
         'id'   => 'accordion_row_title',
         'type' => 'text',
-        'required' => true,
         'class' => 'percent-100'
       ),
       Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),

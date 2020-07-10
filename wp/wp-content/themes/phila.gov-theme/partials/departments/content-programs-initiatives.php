@@ -210,6 +210,13 @@
 
             <?php endif;?>
 
+            <?php elseif ( $current_row_option == 'phila_homepage_timeline'):?>
+            <!-- Homepage timeline -->
+              <?php
+              $timeline_page = $current_row['phila_full_options']['phila_timeline_picker'];
+              include(locate_template('partials/departments/v2/homepage_timeline.php')); ?>
+            <!-- /Homepage timeline -->
+
           <?php elseif ( $current_row_option == 'phila_location_list'):?>
             <?php if ( isset( $current_row['phila_full_options']['phila_location_list'] ) ): ?>
               <!-- Location list -->

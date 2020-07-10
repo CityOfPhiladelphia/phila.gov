@@ -1,0 +1,6 @@
+/* these users can remove sections */
+.rwmb-button.remove-clone,
+/* these users can add new sections*/
+.rwmb-button.add-clone{
+  display:inline-block !important;
+}

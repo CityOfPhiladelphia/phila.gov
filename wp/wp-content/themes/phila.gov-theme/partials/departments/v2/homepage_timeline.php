@@ -6,7 +6,7 @@
 ?>
 
 <?php 
-$timeline_page =  rwmb_meta('phila_select_timeline') ? rwmb_meta('phila_select_timeline') : null;
+$timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $timeline_page['phila_select_timeline'];
 
   if ( $timeline_page != null ) {
     $timeline_permalink = get_permalink($timeline_page[0]);

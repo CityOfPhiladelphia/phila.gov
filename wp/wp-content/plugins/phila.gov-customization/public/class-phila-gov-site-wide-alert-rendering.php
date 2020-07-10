@@ -17,7 +17,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
     $args = array(
       'post_type' => array ('site_wide_alert'),
-      'posts_per_page'    => 1
+      'posts_per_page'    => -1
     );
 
     function dateTimeFormat($date) {
@@ -33,16 +33,19 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
     }
 
     $alert_query = new WP_Query($args);
+
     if ( $alert_query->have_posts() ) {
 
       while ( $alert_query->have_posts() ) {
 
         $alert_query->the_post();
 
-        $alert_active = rwmb_meta( 'phila_active', $args = array('type' => 'radio'));
+        $alert_active = rwmb_meta( 'phila_alert_active');
 
         $alert_start = rwmb_meta( 'phila_alert_start', $args = array('type' => 'datetime'));
         $alert_end = rwmb_meta( 'phila_alert_end', $args = array('type' => 'datetime'));
+        $alert_color = rwmb_meta( 'phila_alert_color');
+        $alert_icon = rwmb_meta( 'phila_alert_icon');
 
         $date_seperator = ' <strong>to</strong> ';
         if(($alert_start == '') || ($alert_end == '')){
@@ -51,26 +54,34 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
 
         $now = current_time('timestamp');
 
-        // Get off the "if", if the alert_end time is past today.
-        if ( ! empty( $alert_end ) && $alert_end < $now ) {
-          wp_reset_postdata();
-          return;
-        };
-
-        if ( $alert_start <= $now || ( is_preview() && is_singular( 'site_wide_alert' ) ) ) :
-        ?>
-        <div id="site-wide-alert" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false" data-closable>
+        if( $alert_active ) { ?>
+          <div class="site-wide-alert <?php echo $alert_color?>" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false">
+            <div class="row">
+              <div class="medium-centered">
+                <div class="grid-x grid-padding-x align-top pvs">
+                  <div class="cell auto shrink center icon hide-for-small-only align-self-middle">
+                      <i class="<?php echo ($alert_icon) ? $alert_icon :  'fas fa-exclamation' ?> fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div class="cell auto message align-self-middle">
+                  <?php
+                    $content = get_the_content();
+                    echo $content;
+                  ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+        }else if ( $alert_start <= $now && ( $alert_end > $now )){ ?>
+          <div class="site-wide-alert <?php echo $alert_color?>" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false">
           <div class="row">
             <div class="medium-centered">
               <div class="grid-x grid-padding-x align-top pvs">
-                <div class="cell auto shrink center icon hide-for-small-only">
-                  <div class="valign">
-                    <div class="valign-cell">
-                      <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
-                    </div>
-                  </div>
+                <div class="cell auto shrink center icon hide-for-small-only align-self-middle">
+                  <i class="<?php echo ($alert_icon) ? $alert_icon :  'fas fa-exclamation' ?>  fa-3x" aria-hidden="true"></i>
                 </div>
-              <div class="cell auto message">
+              <div class="cell auto message align-self-middle">
                 <?php
                   $content = get_the_content();
                   echo $content;
@@ -86,17 +97,14 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                 ?>
               </div>
                 </div>
-                <div class="cell auto shrink message">
-                  <button class="close-button" data-id-alert="<?php the_ID();  ?>" data-close>&times;</button>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <?php
-        endif;
-      }//end while
+        <?php 
+        }
+      }
     }
     wp_reset_postdata();
-  }
-}
+  }//function
+}//class

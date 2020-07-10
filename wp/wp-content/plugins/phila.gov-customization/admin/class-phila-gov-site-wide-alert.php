@@ -21,7 +21,6 @@ class Phila_Gov_Site_Wide_Alert {
   }
 
   function phila_register_meta_boxes( $meta_boxes ){
-    $prefix = 'phila_';
     $meta_boxes[] = array(
       'id'       => 'site-wide-alert',
       'title'    => 'Alert Settings',
@@ -32,11 +31,34 @@ class Phila_Gov_Site_Wide_Alert {
 
       'fields' => array(
         array(
+          'id'  => 'phila_alert_color',
+          'name'  => 'Alert background',
+          'type'  => 'select',
+          'options' => array(
+            'blue'       => 'Blue',
+            'orange' => 'Orange',
+          ),
+        ),
+        array(
+          'id'  => 'phila_alert_icon',
+          'name'  => 'Choose icon',
+          'type'  => 'text',
+          'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon. E.g.: fas fa-bell.',
+        ),
+        array(
+          'id'  => 'phila_alert_active',
+          'name'  => 'Override start and end times and make alert active?',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
           'name'  => 'Alert Start Time',
-          'id'    => $prefix . 'alert_start',
+          'id'    => 'phila_alert_start',
           'class' =>  'start-time',
           'type'  => 'datetime',
           'size'  =>  25,
+          'hidden'  => array( 'active', '=', 1),
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'mm-dd-yy',
@@ -55,11 +77,12 @@ class Phila_Gov_Site_Wide_Alert {
         ),
         array(
           'name'  => 'Alert End Time',
-          'id'    => $prefix . 'alert_end',
+          'id'    => 'phila_alert_end',
           'type'  => 'datetime',
           'class' =>  'end-time',
           'size'  =>  25,
-          'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. The times also define when an alert is visible on the site\'s homepage. <b>Leaving the end time blank will render "until further notice" on the alert. The alert will then need to be unpublished, or given an explicit end time.</b>',
+          'hidden'  => array( 'active', '=', 1),
+          'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. Use the active alert feature to turn alerts on and ignore this setting.',
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
             'dateFormat' => 'mm-dd-yy',
@@ -76,7 +99,7 @@ class Phila_Gov_Site_Wide_Alert {
           'timestamp' => true
 
         ),
-      )
+      ),
     );//site wide alert boxes
     return $meta_boxes;
   }
