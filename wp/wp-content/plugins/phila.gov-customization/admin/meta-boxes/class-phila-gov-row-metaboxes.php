@@ -342,6 +342,20 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
         'fields'  => Phila_Gov_Standard_Metaboxes::phila_get_service_updates(),
       ),
+      array(
+        'id' => 'phila_timeline_picker',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_homepage_timeline'),
+        'fields'  => array(
+            Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+            array(
+              'name' => 'Timeline item count',
+              'id'   => 'homepage_timeline_item_count',
+              'desc'  => 'Select the number of items from the timeline to display',
+              'type' => 'number'
+          ),
+        )
+      ),
     ),
   );
 }
@@ -529,7 +543,7 @@ class Phila_Gov_Row_Metaboxes {
           'id' => 'phila_v2_photo-callout-block__txt-icon',
           'type' => 'text',
           'name' => 'Icon selection',
-          'desc'  => 'Choose a <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.',
+          'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.',
           'columns' => 12
         ),
         array(

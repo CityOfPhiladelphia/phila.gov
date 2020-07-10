@@ -1,7 +1,16 @@
-#site-wide-alert {
-    display: none;
-    button {
-        padding: 0;
-        margin: 0;
+.site-wide-alert {
+  background: color(dark-ben-franklin);
+  color: white;
+  a:link, a:visited{
+    color: white;
+    text-decoration: underline;
+  }
+  &.orange {
+    background: #F5A623;
+    color: color(dark-gray);
+    a:link, a:visited{
+      color: color(dark-gray);
+      text-decoration: underline;
     }
+  }
 }

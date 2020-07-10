@@ -3,7 +3,7 @@ require('jquery')
 require('phila-standards')
 
 require('./phila-gov')
-require('./site-wide-alerts')
+//require('./site-wide-alerts')
 require('./city-directory-list')
 require('./collapsible-div')
 require('./filter')
