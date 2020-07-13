@@ -20,7 +20,7 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'photo_callout'              => array(
+        'phila-photo-callout'              => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),

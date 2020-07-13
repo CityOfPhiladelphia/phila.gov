@@ -307,7 +307,7 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => Phila_Vue_App_Files::phila_vue_metaboxes()
       ),
       array(
-        'id' => 'photo_callout',
+        'id' => 'phila_photo_callout',
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
