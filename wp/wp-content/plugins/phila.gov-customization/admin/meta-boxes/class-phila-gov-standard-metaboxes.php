@@ -1561,18 +1561,6 @@ public static function phila_get_service_updates( ){
             'name'  => 'Group title',
             'columns' => 6,
           ),
-          array(
-            'name' => 'Auto populate?',
-            'id'   => 'auto',
-            'type' => 'select',
-            'placeholder' => 'Choose option...',
-            'options' => array(
-              'city' => 'City services',
-              'trash' => 'Trash and recycling',
-              'transit' => 'Transportation',
-            ),
-            'columns' => 6,
-          ),
           'fields' => array(
             'type'  => 'group',
             'id'  => 'service_content',

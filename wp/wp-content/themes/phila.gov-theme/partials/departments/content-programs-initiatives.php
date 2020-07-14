@@ -134,7 +134,7 @@
 
           <?php elseif ( $current_row_option == 'phila_service_updates'):?>
           <?php if ( isset( $current_row['phila_full_options']['phila_service_update_page'] ) ):
-            $service_update = $current_row['phila_full_options']['phila_service_update_page'];
+            $service_update_page = $current_row['phila_full_options']['phila_service_update_page'];
             ?>
             <!-- service update page -->
               <?php include(locate_template('partials/global/page-service-updates.php')); ?>
