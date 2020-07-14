@@ -3473,6 +3473,7 @@ function wp_prepare_attachment_for_js( $attachment ) {
 		'editLink'      => false,
 		'meta'          => false,
 		'mediaCategory' => $attachment_term,
+		'label'					=> $attachment->phila_label,
 	);
 
 	$author = new WP_User( $attachment->post_author );

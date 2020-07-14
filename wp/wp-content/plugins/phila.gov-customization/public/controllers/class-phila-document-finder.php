@@ -35,6 +35,7 @@ class Phila_Document_Finder_Controller {
     foreach ( $document_tables as $document_table ) {
       $unique_table = array();
       $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
+      $unique_table['labelColumnTitle'] = isset($document_table['phila_doc_label_column_title']) ? $document_table['phila_doc_label_column_title'] : '';
       $documents = array();
 
       foreach ( $document_table['phila_files'] as $id )  {
@@ -126,6 +127,9 @@ class Phila_Document_Finder_Controller {
     }
     if($file['mediaCategory']) {
       $post_data['mediaCategory'] = (string) $file['mediaCategory'];
+    }
+    if($file['label']) {
+      $post_data['label'] = (string) $file['label'];
     }
 
     return rest_ensure_response( $post_data );
@@ -269,11 +273,6 @@ class Phila_Document_Finder_Controller {
           'type'        => 'string',
           'readonly'    => true,
         ),
-        // 'dateFormatted' => array(
-        //   'description' => esc_html__('dateFormatted of the document.', 'phila-gov'),
-        //   'type'        => 'string',
-        //   'readonly'    => true,
-        // ),
         'editLink'  => array(
           'description' => esc_html__('editLink of the document.', 'phila-gov'),
           'type'        => 'string',
@@ -286,6 +285,11 @@ class Phila_Document_Finder_Controller {
         ),
         'media_category'  => array(
           'description' => esc_html__('media category of the document.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'label'  => array(
+          'description' => esc_html__('attachment page label of the document.', 'phila-gov'),
           'type'        => 'string',
           'readonly'    => true,
         ),

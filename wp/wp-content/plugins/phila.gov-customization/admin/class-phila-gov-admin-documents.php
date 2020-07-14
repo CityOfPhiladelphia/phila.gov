@@ -88,6 +88,24 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
         ),
       )
     );
+
+    $meta_boxes[] = array(
+      'id'       => 'attachment_page_label',
+      'title'    => 'Label',
+      'post_types'    => array( 'attachment' ),
+      'context'  => 'side',
+      'priority' => 'high',
+
+      'fields' => array(
+        array(
+          'name'  => 'Optional label for this item',
+          'id'    => $prefix . 'label',
+          'type'  => 'text',
+          'clone' => false,
+          'desc'  => 'If you leave this field blank, there will be no label for this item',
+        ),
+      )
+    );
     return $meta_boxes;
   }
 
