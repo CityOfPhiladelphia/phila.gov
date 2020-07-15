@@ -163,8 +163,7 @@ HTML;
 
     case 'timeline':
       get_template_part( 'partials/departments/v2/homepage_timeline' );
-      
-      break;
+    break;
     
     default:
       break;
