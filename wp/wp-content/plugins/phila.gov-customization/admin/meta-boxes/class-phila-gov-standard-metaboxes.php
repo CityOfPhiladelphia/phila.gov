@@ -1549,6 +1549,12 @@ public static function phila_get_service_updates( ){
 
   return array(
       array(
+        'id' => 'service_intro',
+        'type'  => 'wysiwyg',
+        'name'  =>  'Intro text',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+      ),
+      array(
         'type'  => 'group',
         'id'  => 'parent_group',
         'clone' => true,

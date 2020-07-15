@@ -9,6 +9,16 @@
 <?php if ( $service_update_page['parent_group'] ): ?>
   <?php $num_items = count($service_update_page['parent_group']);
     $i = 0;?>
+  <?php if ($service_update_page['service_intro']) :?> 
+    <div class="grid-container"> 
+      <div class="grid-x">
+        <div class="cell"> 
+          <p>Last updated: <?php the_modified_date();?> </p>
+          <p><?php echo apply_filters('the_content',$service_update_page['service_intro'])?></p>
+        </div>
+      </div>
+    </div>
+    <?php endif; ?>
   <div class="grid-container"> 
     <div class="grid-x">
       <div class="cell">
