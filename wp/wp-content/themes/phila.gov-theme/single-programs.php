@@ -67,6 +67,9 @@ get_header();
         case('document_finder_v2'):
           include(locate_template('partials/departments/v2/document-finder.php'));
           break;
+        case 'timeline':
+          get_template_part( 'partials/departments/v2/homepage_timeline' );
+          break;
       } ?>
       <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>
 
