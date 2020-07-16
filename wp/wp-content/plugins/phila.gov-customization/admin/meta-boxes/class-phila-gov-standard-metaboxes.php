@@ -1548,11 +1548,12 @@ public static function phila_timeline_page_selector( ){
 public static function phila_get_service_updates( ){
 
   return array(
-    array(
-    'id' => 'service_update_group',
-    'type' => 'group',
-
-    'fields' => array(
+      array(
+        'id' => 'service_intro',
+        'type'  => 'wysiwyg',
+        'name'  =>  'Intro text',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+      ),
       array(
         'type'  => 'group',
         'id'  => 'parent_group',
@@ -1566,23 +1567,11 @@ public static function phila_get_service_updates( ){
             'name'  => 'Group title',
             'columns' => 6,
           ),
-          array(
-            'name' => 'Auto populate?',
-            'id'   => 'auto',
-            'type' => 'select',
-            'placeholder' => 'Choose option...',
-            'options' => array(
-              'city' => 'City services',
-              'trash' => 'Trash and recycling',
-              'transportation' => 'Transportation',
-            ),
-            'columns' => 6,
-          ),
           'fields' => array(
-            'id'  => 'content',
+            'type'  => 'group',
+            'id'  => 'service_content',
             'clone' => true,
             'add_button' => '+ Add service update',
-            'type'  => 'group',
             'fields'  => array(
               array(
                 'id'  => 'service_name',
@@ -1601,9 +1590,9 @@ public static function phila_get_service_updates( ){
                 'type' => 'select',
                 'placeholder' => 'Choose type...',
                 'options' => array(
-                  '0' => 'Normal (Green)',
-                  '1' => 'Warning (Yellow)',
-                  '2' => 'Critical (Red)',
+                  'normal' => 'Normal (Green)',
+                  'warning' => 'Warning (Yellow)',
+                  'critical' => 'Critical (Red)',
                 ),
               ),
               array(
@@ -1621,8 +1610,6 @@ public static function phila_get_service_updates( ){
               ),
             )
           ),
-        ),
-      ),
   );// End Service Updates
 
 }
