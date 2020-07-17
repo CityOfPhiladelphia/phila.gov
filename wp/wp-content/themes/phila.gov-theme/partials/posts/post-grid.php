@@ -9,6 +9,8 @@
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
   $post_categories = isset($category) ? $category : '';
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
+  $is_tag = rwmb_meta('phila_get_post_cats');
+  $tag = isset($is_tag['tag']) ? $is_tag['tag'] : '';
 ?>
 <?php if (!empty($post_categories)): ?>
   <?php foreach ($post_categories as $category ) {
@@ -21,9 +23,8 @@
   $slang_name = '';
   ?>
   <?php endif; ?>
-<?php $tag = isset($tag) ? $tag : '';?>
-
-<?php
+  
+<?php 
 
 /* if categories aren't set, this is the latest. */
 if ( empty( $post_categories ) ) {
@@ -51,7 +52,6 @@ if ( empty( $post_categories ) ) {
   $sticky_posts = new WP_Query( $sticky_args );
 
 }
-
 if( !empty($tag) && $tag != 'is_single' ) {
   $posts_args  = array(
     'post_type' => array('post', 'phila_post'),

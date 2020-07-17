@@ -77,9 +77,12 @@ HTML;
       $_categories         = get_the_category();
       $_news_cat_override  = rwmb_meta('phila_get_news_cats');
       $_press_cat_override = rwmb_meta('phila_get_press_cats');
-
+      $_tags_override = rwmb_meta('phila_get_post_cats');
       $homepage_v2_data = array(
-        'full_row_blog'   => rwmb_meta( 'phila_full_row_blog_selected' ),
+        'full_row_blog'   => array(
+          'exists'=> rwmb_meta('phila_full_row_blog_selected' ),
+          'tag' => !empty($_tags_override['tag']) ? $_tags_override['tag'] : ''
+        ),
 
         'full_row_news'   => array(
             'exists'=> rwmb_meta( 'phila_full_row_news_selected' ),
@@ -88,7 +91,7 @@ HTML;
 
         'full_width_press_releases'=>array(
           'exists'=>rwmb_meta( 'phila_full_row_press_releases_selected' ),
-          'category_id' => !empty($_press_cat_override) ? implode(", ", $_press_cat_override['phila_press_release_category']) : $_categories[0]->cat_ID
+          'category_id' => !empty($_press_cat_override) ? $_categories[0]->cat_ID : $_categories[0]->cat_ID
         ),
 
         'staff_directory_listing'=>rwmb_meta( 'phila_staff_directory_selected' ),
