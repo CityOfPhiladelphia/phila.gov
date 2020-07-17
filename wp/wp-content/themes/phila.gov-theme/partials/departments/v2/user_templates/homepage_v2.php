@@ -30,7 +30,7 @@
         ),
         'phila_full_row_blog'                    => array(
                                                 'type'=>'v1',
-                                                'shown'=>$this->full_row_blog
+                                                'shown'=>$this->full_row_blog['exists'],
                                             ),
         'full-width-call-to-action'      => array(
                                                 'type'=>'v2',
