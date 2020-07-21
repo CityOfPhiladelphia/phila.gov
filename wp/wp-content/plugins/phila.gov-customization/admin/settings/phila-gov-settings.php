@@ -110,7 +110,8 @@ function prefix_options_meta_boxes( $meta_boxes ) {
           array(
             'id'  => 'exception',
             'name'  => 'Exception',
-            'type'  => 'text'
+            'type'  => 'wysiwyg',
+            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(
             'id'  => 'start_date',
