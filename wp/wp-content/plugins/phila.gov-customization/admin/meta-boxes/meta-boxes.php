@@ -1016,6 +1016,7 @@ $meta_boxes[] = array(
           'id'  => 'phila_doc_label_column_title',
           'type'  => 'text',
           'name'  => 'Optional label column title (will add label column)',
+          'class' => 'optional-label',
           'visible' => array(
             'when'  => array(
               array('phila_vue_toggle', '=', true),
