@@ -3438,11 +3438,6 @@ function wp_prepare_attachment_for_js( $attachment ) {
 
 	$attachment_url = wp_get_attachment_url( $attachment->ID );
 	$base_url       = str_replace( wp_basename( $attachment_url ), '', $attachment_url );
-	$attachment_term = null;
-
-	if ( get_the_terms( $attachment->ID, 'media_category' ) ) {
-		$attachment_term = get_the_terms( $attachment->ID, 'media_category' )[0]->name;
-	}
 
 	$response = array(
 		'id'            => $attachment->ID,
@@ -3472,8 +3467,6 @@ function wp_prepare_attachment_for_js( $attachment ) {
 		),
 		'editLink'      => false,
 		'meta'          => false,
-		'mediaCategory' => $attachment_term,
-		'label'					=> $attachment->phila_label,
 	);
 
 	$author = new WP_User( $attachment->post_author );

@@ -2023,3 +2023,17 @@ function phila_apply_modal_to_children_pages() {
     }
     return array($modal_exists, $modal_content, $modal_button_text);
 }
+
+
+function add_meta_document_fields($response, $attachment) {
+  $attachment_term = null;
+  if ( get_the_terms( $attachment->ID, 'media_category' ) ) {
+		$attachment_term = get_the_terms( $attachment->ID, 'media_category' )[0]->name;
+  }
+  $response['mediaCategory'] = $attachment_term;
+  $response['label'] = $attachment->phila_label;
+
+  return $response;
+}
+
+add_filter( 'wp_prepare_attachment_for_js', 'add_meta_document_fields', 99, 3 );
