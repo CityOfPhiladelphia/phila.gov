@@ -171,7 +171,7 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
 
   $meta_boxes[] = array(
-      'title'    => 'Photo Callout Block',
+      'title'    => 'Photo Callout',
       'pages'    => array( 'department_page' ),
       'context'  => 'normal',
       'priority' => 'high',
