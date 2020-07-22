@@ -255,9 +255,9 @@
             <?php endif;?>
 
             <?php elseif ( $current_row_option == 'phila_photo_callout'):?>
-            <?php if ( isset( $current_row['phila_full_options']['photo_callout'] ) ): ?>
+            <?php if ( isset( $current_row['phila_full_options']['phila_photo_callout'] ) ): ?>
               <!-- Photo call out -->
-              <?php include(locate_template('partials/departments/v2/photo_callout.php')); ?>
+              <?php include(locate_template('partials/departments/v2/photo-callout.php')); ?>
               <!-- /Photo call out -->
             <?php endif;?>
 

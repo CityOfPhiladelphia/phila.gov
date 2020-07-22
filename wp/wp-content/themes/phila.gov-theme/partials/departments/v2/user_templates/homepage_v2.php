@@ -9,6 +9,8 @@
     /**
      * Array of partials in include order
      * key is partial name, value is version name
+     * checks against the nice name of the field label 
+     * ex. Photo callout from v2=departments.php
      * @var array
      */
     $homepage_v2_content_partials = array(
@@ -20,7 +22,7 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'photo_callout'              => array(
+        'photo-callout'              => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
                                             ),
