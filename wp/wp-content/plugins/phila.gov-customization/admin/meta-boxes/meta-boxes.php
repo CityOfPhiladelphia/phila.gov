@@ -127,7 +127,14 @@ function phila_register_meta_boxes( $meta_boxes ){
     'revision' => true,
 
     'fields' => array(
-        array(
+      array(
+        'id'   => 'phila_document_toggle',
+        'name'  => 'Override all release dates on this page with the date below?',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
+      ),
+      array(
         'id'   => 'phila_document_description',
         'type' => 'wysiwyg',
         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
