@@ -119,21 +119,82 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'       => 'document-type-select',
+    'title'    => 'Document Type Select',
+    'pages'    => array( 'document' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+    'revision' => true,
+    'fields' => array(
+      array(
+        'id'   => 'phila_document_toggle',
+        'name'  => 'Is this a default document or longform?',
+        'type'  => 'radio',
+        'std'=> '0',
+        'options' =>  array(
+            '0' => 'Default Document',
+            '1' => 'Longform Content'
+        )
+      ),
+    )
+  );
+
+  $meta_boxes[] = array(
+    'id'       => 'longform-document',
+    'title'    => 'Longform Document',
+    'pages'    => array( 'document' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+    'revision' => true,
+    'visible' => array(
+      'when' => array(
+        array('phila_document_toggle', '=', true),
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'   => 'phila_document_description',
+        'type' => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+        'desc' => 'Information describing the collection of documents on this page. This content will appear above the document list.'
+      ),
+      array(
+        'type'  => 'heading',
+        'name' => ' Release Date',
+      ),
+      array(
+        'id'   => 'phila_override_release_date',
+        'name'  => 'Override all release dates on this page with the date below?',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
+      ),
+      array(
+        'id'    => 'phila_document_released',
+        'type'  => 'date',
+        'class' =>  'document-released',
+        'size'  =>  25,
+        'js_options' =>  array(
+          'dateFormat'=>'MM dd, yy',
+          'showTimepicker' => false
+        )
+      ),
+    )
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'document-description',
     'title'    => 'Document Information',
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
     'revision' => true,
-
-    'fields' => array(
-      array(
-        'id'   => 'phila_document_toggle',
-        'name'  => 'Is this a default document or longform ',
-        'type' => 'switch',
-        'on_label'  => 'Longform',
-        'off_label' => 'Default'
+    'visible' => array(
+      'when' => array(
+        array('phila_document_toggle', '=', false),
       ),
+    ),
+    'fields' => array(
       array(
         'id'   => 'phila_document_description',
         'type' => 'wysiwyg',
