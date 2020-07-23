@@ -2025,7 +2025,7 @@ function phila_apply_modal_to_children_pages() {
 }
 
 
-function add_meta_document_fields($response, $attachment) {
+function phila_add_meta_document_fields($response, $attachment) {
   $attachment_term = null;
   if ( get_the_terms( $attachment->ID, 'media_category' ) ) {
 		$attachment_term = get_the_terms( $attachment->ID, 'media_category' )[0]->name;
@@ -2036,4 +2036,4 @@ function add_meta_document_fields($response, $attachment) {
   return $response;
 }
 
-add_filter( 'wp_prepare_attachment_for_js', 'add_meta_document_fields', 99, 3 );
+add_filter( 'wp_prepare_attachment_for_js', 'phila_add_meta_document_fields', 99, 3 );
