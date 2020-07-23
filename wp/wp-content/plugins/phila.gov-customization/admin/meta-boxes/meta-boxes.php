@@ -129,10 +129,10 @@ function phila_register_meta_boxes( $meta_boxes ){
     'fields' => array(
       array(
         'id'   => 'phila_document_toggle',
-        'name'  => 'Override all release dates on this page with the date below?',
+        'name'  => 'Is this a default document or longform ',
         'type' => 'switch',
-        'on_label'  => 'Yes',
-        'off_label' => 'No'
+        'on_label'  => 'Longform',
+        'off_label' => 'Default'
       ),
       array(
         'id'   => 'phila_document_description',
