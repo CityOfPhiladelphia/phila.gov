@@ -30,25 +30,32 @@ class Phila_Longform_Content_Controller {
     $data = array();
     // $post = get_post( url_to_postid( wp_get_referer()) );
     $post = get_post( 143332 );
-    $post_title = get_the_title( 14332 );
     $longform_document = rwmb_meta( 'phila_longform_document', '', $post->ID );
-    // $longform_document_title = rwmb_meta( 'phila_longform_document_title', '', $post->ID );
-    // $longform_document_description = rwmb_meta( 'phila_longform_document_description', '', $post->ID );
-    // $longform_document_sections = rwmb_meta( 'phila_longform_document_primary_sections', '', $post->ID );
+    $longform_document_title = $longform_document['phila_longform_document_title'];
+    $longform_document_description = $longform_document['phila_longform_document_description'];
+    $longform_document_sections = $longform_document['phila_longform_document_primary_sections'];
 
-    // foreach ( $document_tables as $document_table ) {
+    // foreach ( $longform_document_sections as $primary_section ) {
     //   $unique_table = array();
-    //   $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
+    //   $primary_section_title = $primary_section['phila_longform_document_primary_section_title'];
+    //   $primary_section_description = $primary_section['phila_longform_document_primary_section_description'];
     //   $documents = array();
 
-    //   foreach ( $document_table['phila_files'] as $id )  {
-        
-        $file = wp_prepare_attachment_for_js($post_title);
-        $response = $this->prepare_item_for_response( $file );
-        $documents[] = $this->prepare_response_for_collection( $response );
-      // }
-      // $unique_table['documents'] = $documents;
-      // $data[] = $documents;
+    //   foreach ( $primary_section['phila_longform_document_secondary_section'] as $secondary_section ) {
+    //     $secondary_section_title = $secondary_section['phila_longform_document_secondary_section_title'];
+    //     $secondary_section_description = $secondary_section['phila_longform_document_secondary_section_description'];
+
+    //     foreach ( $secondary_section['phila_longform_document_tertiary_section'] as $tertiary_section ) {
+    //       $tertiary_section_title = $primary_section['phila_longform_document_tertiary_section_title'];
+    //       $tertiary_section_description = $primary_section['phila_longform_document_tertiary_section_description'];
+
+    //       $file = wp_prepare_attachment_for_js($post_title);
+    //       $response = $this->prepare_item_for_response( $file );
+    //       $documents[] = $this->prepare_response_for_collection( $response );
+    //     }
+    //   }
+    //   $unique_table['documents'] = $documents;
+    //   $data[] = $documents;
     // }
 
     // Return all response data.
