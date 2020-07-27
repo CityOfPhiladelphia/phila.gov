@@ -23,6 +23,10 @@ function callout_shortcode($atts, $content=null){
     'em'     => [],
     'strong' => [],
     'class' => [],
+		'ol' => [],
+    'ul' => [],
+    'li' => [],
+    'p' => [],
   ];
 
   $output = '';
@@ -34,7 +38,7 @@ function callout_shortcode($atts, $content=null){
 
     $output .= $a['inline'] == 'true' ? 'mtl">' : 'mbn">';
 
-    $output .= '<p>' . wp_kses($content, $allowed_html). '</p>';
+    $output .= wp_kses($content, $allowed_html);
     $output .= '</div>';
 
     return $output;
