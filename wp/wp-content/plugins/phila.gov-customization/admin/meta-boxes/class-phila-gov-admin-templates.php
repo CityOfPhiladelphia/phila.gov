@@ -126,7 +126,8 @@ class Phila_Gov_Admin_Templates {
           'options' => array(
             'post'   => 'Post',
             'press_release' => 'Press Release',
-            'action_guide'  => 'Action Guide'
+            'action_guide'  => 'Action Guide',
+            'action_guide_v2'  => 'Action Guide V2'
           ),
           'admin_columns' => array(
             'position' => 'after date',
