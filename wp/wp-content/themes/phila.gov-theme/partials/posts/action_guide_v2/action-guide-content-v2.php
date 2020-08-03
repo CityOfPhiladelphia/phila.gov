@@ -49,8 +49,9 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
   </div>
 </div>
 
-<div class="content-action_guide">
 <!-- Tab 1 -->
+<div class="content-action_guide" id="tab-1-content">
+
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-24 cell pbxl">
@@ -67,7 +68,10 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     </div>
   </div>
 
+</div>
+
 <!-- Tab 2 -->
+<div class="content-action_guide" id="tab-2-content">
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-24 cell pbxl">
@@ -111,7 +115,10 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     </div>
   </div>
 
+</div>
+
 <!-- Tab 3 -->
+<div class="content-action_guide" id="tab-3-content">
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-24 cell pbxl">
