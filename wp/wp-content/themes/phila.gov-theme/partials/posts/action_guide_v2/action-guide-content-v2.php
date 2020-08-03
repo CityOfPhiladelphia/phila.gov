@@ -9,72 +9,147 @@ $facts = phila_loop_clonable_metabox( $get_facts );
 $get_actions = rwmb_meta( 'phila_take_action' );
 $actions = phila_loop_clonable_metabox( $get_actions );
 
+
+
+$get_step_1_content = rwmb_meta( 'step_1_content' );
+$step_1_content = phila_loop_clonable_metabox( $get_step_1_content );
+
+$get_step_2_content_before_steps = rwmb_meta( 'step_2_content_before_steps' );
+$step_2_content_before_steps = phila_loop_clonable_metabox( $get_step_2_content_before_steps );
+
+$get_phila_stepped_content_step_2 = rwmb_meta( 'phila_stepped_content_step_2' );
+$phila_stepped_content_step_2 = phila_extract_stepped_content( $get_phila_stepped_content_step_2 );
+
+$get_step_2_content_after_steps = rwmb_meta( 'step_2_content_after_steps' );
+$step_2_content_after_steps = phila_loop_clonable_metabox( $get_step_2_content_after_steps );
+
+$get_step_3_content_before_steps = rwmb_meta( 'step_3_content_before_steps' );
+$step_3_content_before_steps = phila_loop_clonable_metabox( $get_step_3_content_before_steps );
+
+$get_step_3_content_after_steps = rwmb_meta( 'step_3_content_after_steps' );
+$step_3_content_after_steps = phila_loop_clonable_metabox( $get_step_3_content_after_steps );
+
+$get_phila_stepped_content_step_3 = rwmb_meta( 'phila_stepped_content_step_3' );
+$phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_stepped_content_step_3 );
+
 ?>
 
-<p class="lead"><i>To help you understand your rights and protections, the City of Philadelphia is creating action guides on federal policies. The action guides include facts, ways you can help, and other resources.</i></p>
-
-<div class="one-quarter-layout content-action_guide">
+<!-- Tabs -->
+<div class="grid-container">
   <div class="grid-x grid-margin-x mvl one-quarter-row">
-    <div class="cell medium-6 print-stack">
-      <h3 id="get-informed">Get informed</h3>
+    <div class="cell medium-8">
+      <?php echo rwmb_meta( 'step_1_label' );?>
     </div>
-    <div class="medium-18 cell pbxl">
-      <?php echo rwmb_meta('phila_action_get_informed'); ?>
+    <div class="cell medium-8">
+      <?php echo rwmb_meta( 'step_2_label' );?>
     </div>
-
+    <div class="cell medium-8">
+      <?php echo rwmb_meta( 'step_3_label' );?>
+    </div>
   </div>
+</div>
+
+<div class="content-action_guide">
+<!-- Tab 1 -->
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
-    <div class="medium-6 cell">
-      <h3 id="know-the-facts">Know the facts</h3>
-    </div>
-    <div class="medium-18 cell pbxl">
-      <?php foreach( $facts as $fact ) :?>
+    <div class="medium-24 cell pbxl">
+      <?php foreach( $step_1_content as $content ) :?>
         <div class="mbl">
-          <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $fact['phila_custom_wysiwyg']['phila_wysiwyg_title'] ?></h2>
-            <div class="phm">
-              <?php echo apply_filters( 'the_content', $fact['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
-            </div>
+          <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+          <?php endif;?>
+          <div class="phm">
+            <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+          </div>
         </div>
       <?php endforeach; ?>
     </div>
   </div>
+
+<!-- Tab 2 -->
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
-    <div class="medium-6 cell print-stack">
-      <h3 id="take-action" class="mbn">Take action</h3>
+    <div class="medium-24 cell pbxl">
+      <?php foreach( $step_2_content_before_steps as $content ) :?>
+        <div class="mbl">
+          <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+          <?php endif;?>
+          <div class="phm">
+            <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
-    <div class="medium-18 cell">
-      <?php echo rwmb_meta('phila_action_intro'); ?>
-      <?php foreach( $actions as $action ) : ?>
-        <?php switch ( $action['phila_select_action'] ):
-          case 'share':
-            $icon = 'fas fa-share';
-            $text = 'Share';
-            break;
-          case 'contact':
-            $icon = 'far fa-address-book';
-            $text = 'Contact';
-            break;
-          case 'give_back':
-            $icon = 'far fa-handshake';
-            $text = 'Give back';
-            break;
-          case 'attend':
-            $icon = 'far fa-calendar-check';
-            $text = 'Attend';
-            break;
-          endswitch;
-          ?>
-          <?php ( strlen( $action['phila_action_content'] ) > 820 ) ? $expand = true : $expand = false; ?>
-          <div class="panel info clearfix mbm">
-            <div class="<?php echo ($expand) ? 'expandable' : ''?>">
-              <h4 class="mbm"><i class="<?php echo $icon ?>" aria-hidden="true"></i> <?php echo $text; ?></h4>
-              <?php echo apply_filters( 'the_content',  $action['phila_action_content']); ?>
-            </div>
-            <?php if ( $expand ): ?>
-              <a href="#" data-toggle="expandable" class="float-right"> More + </a>
-            <?php endif; ?>
+  </div>
+
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-24 cell pbxl">
+      <?php $steps = $phila_stepped_content_step_2; ?>
+        <div class="mbl">
+          <div class="phm">
+            <?php include( locate_template( 'partials/stepped-content.php' ) ); ?>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <hr class="mhn"/>
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-24 cell pbxl">
+      <?php foreach( $step_2_content_after_steps as $content ) :?>
+        <div class="mbl">
+          <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+          <?php endif;?>
+          <div class="phm">
+            <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+<!-- Tab 3 -->
+  <hr class="mhn"/>
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-24 cell pbxl">
+      <?php foreach( $step_3_content_before_steps as $content ) :?>
+        <div class="mbl">
+          <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+          <?php endif;?>
+          <div class="phm">
+            <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-24 cell pbxl">
+      <?php $steps = $phila_stepped_content_step_3; ?>
+        <div class="mbl">
+          <div class="phm">
+            <?php include( locate_template( 'partials/stepped-content.php' ) ); ?>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <hr class="mhn"/>
+  <div class="grid-x grid-margin-x mvl">
+    <div class="medium-24 cell pbxl">
+      <?php foreach( $step_3_content_after_steps as $content ) :?>
+        <div class="mbl">
+          <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+          <?php endif;?>
+          <div class="phm">
+            <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
+          </div>
         </div>
       <?php endforeach; ?>
     </div>
