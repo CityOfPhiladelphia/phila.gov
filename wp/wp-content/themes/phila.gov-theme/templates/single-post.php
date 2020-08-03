@@ -194,6 +194,9 @@ $language_list = phila_get_translated_language( $language );
   }elseif($template_type == 'action_guide'){
     $template = 'partials/posts/action-guide-grid.php';
 
+  }elseif($template_type == 'action_guide_v2'){
+    $template = 'partials/posts/action_guide_v2/action-guide-grid-v2.php';
+
   }else{
     $template = 'partials/posts/content-related.php';
   }

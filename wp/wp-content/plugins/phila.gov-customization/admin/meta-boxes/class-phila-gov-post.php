@@ -183,7 +183,9 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'action_guide'),
+          array('phila_template_select', '=', 'action_guide_v2'),
         ),
+        'relation' => 'or',
       ),
       'fields' => array(
         array(
