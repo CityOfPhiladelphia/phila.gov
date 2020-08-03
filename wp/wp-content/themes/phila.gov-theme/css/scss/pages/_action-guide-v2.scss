@@ -1,0 +1,6 @@
+.action-guide-v2 {
+  display: none;
+  &.active {
+    display: block;
+  }
+}

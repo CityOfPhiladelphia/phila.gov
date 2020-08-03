@@ -1,15 +1,7 @@
 <?php
 /*
- * Action guide display
+ * Action guide V2 display
  */
-
-$get_facts = rwmb_meta( 'phila_action_facts' );
-$facts = phila_loop_clonable_metabox( $get_facts );
-
-$get_actions = rwmb_meta( 'phila_take_action' );
-$actions = phila_loop_clonable_metabox( $get_actions );
-
-
 
 $get_step_1_content = rwmb_meta( 'step_1_content' );
 $step_1_content = phila_loop_clonable_metabox( $get_step_1_content );
@@ -37,20 +29,20 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
 <!-- Tabs -->
 <div class="grid-container">
   <div class="grid-x grid-margin-x mvl one-quarter-row">
-    <div class="cell medium-8">
+    <div class="cell medium-8 active" id="step-1-label">
       <?php echo rwmb_meta( 'step_1_label' );?>
     </div>
-    <div class="cell medium-8">
+    <div class="cell medium-8" id="step-2-label">
       <?php echo rwmb_meta( 'step_2_label' );?>
     </div>
-    <div class="cell medium-8">
+    <div class="cell medium-8" id="step-3-label">
       <?php echo rwmb_meta( 'step_3_label' );?>
     </div>
   </div>
 </div>
 
 <!-- Tab 1 -->
-<div class="content-action_guide" id="tab-1-content">
+<div class="content-action_guide action-guide-v2 active" id="tab-1-content">
 
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
@@ -71,7 +63,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
 </div>
 
 <!-- Tab 2 -->
-<div class="content-action_guide" id="tab-2-content">
+<div class="content-action_guide action-guide-v2" id="tab-2-content">
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-24 cell pbxl">
@@ -118,7 +110,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
 </div>
 
 <!-- Tab 3 -->
-<div class="content-action_guide" id="tab-3-content">
+<div class="content-action_guide action-guide-v2" id="tab-3-content">
   <hr class="mhn"/>
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-24 cell pbxl">
