@@ -183,9 +183,7 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'action_guide'),
-          array('phila_template_select', '=', 'action_guide_v2'),
         ),
-        'relation' => 'or',
       ),
       'fields' => array(
         array(
@@ -269,7 +267,124 @@ class Phila_Gov_Post {
       ),
     );
 
+    $meta_boxes[] = array(
+      'title'    => 'Step 1',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_v2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'name' => 'Step 1 Label',
+          'id'   => 'step_1_label',
+          'type' => 'text',
+          'required' => true,
+        ),
+        array(
+          'id' => 'step_1_content',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        )
+      )
+    );
 
+    $meta_boxes[] = array(
+      'title'    => 'Step 2',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_v2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'name' => 'Step 2 Label',
+          'id'   => 'step_2_label',
+          'type' => 'text',
+          'required' => true,
+        ),
+        array(
+          'id' => 'step_2_content_before_steps',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        ),
+        array(
+          'id' => 'phila_stepped_content_step_2',
+          'type' => 'group',
+          'fields'  => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
+          )
+        ),
+        array(
+          'id' => 'step_2_content_after_steps',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        )
+      )
+    );
+
+    $meta_boxes[] = array(
+      'title'    => 'Step 3',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_v2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'name' => 'Step 3 Label',
+          'id'   => 'step_3_label',
+          'type' => 'text',
+          'required' => true,
+        ),
+        array(
+          'id' => 'step_3_content_before_steps',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        ),
+        array(
+          'id' => 'phila_stepped_content_step_3',
+          'type' => 'group',
+          'fields'  => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
+          )
+        ),
+        array(
+          'id' => 'step_3_content_after_steps',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+          ),
+        )
+      )
+    );
 
     return $meta_boxes;
   }
