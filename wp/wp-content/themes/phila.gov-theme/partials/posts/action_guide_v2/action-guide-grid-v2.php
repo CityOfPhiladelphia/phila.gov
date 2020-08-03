@@ -13,7 +13,7 @@
   'meta_query'  => array(
     array(
       'key' => 'phila_template_select',
-      'value' => 'action_guide',
+      'value' => 'action_guide_v2',
       'compare' => '=',
     ),
   ),

@@ -26,11 +26,13 @@ $language_list = phila_get_translated_language( $language );
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-18 post-title">
-        <?php if ( $template_type == 'action_guide' ) : ?>
+        <?php if ( $template_type == 'action_guide' ) { ?>
           <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
-        <?php else:  ?>
+        <?php } else if ( $template_type == 'action_guide_v2' ) { ?>
+          <?php include( locate_template( 'partials/posts/action_guide_v2/action-guide-title-v2.php' ) ); ?>
+        <?php } else {  ?>
           <?php the_title( '<h1>', '</h1>' ); ?>
-        <?php endif; ?>
+        <?php } ?>
       </div>
       <div class="cell medium-6 align-self-bottom">
         <?php get_template_part('partials/social-media') ?>
@@ -128,9 +130,11 @@ $language_list = phila_get_translated_language( $language );
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
     <?php endif; ?>
-    <?php if ( $template_type == 'action_guide' ) : ?>
+    <?php if ( $template_type == 'action_guide' ) { ?>
       <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
-    <?php endif; ?>
+    <?php } else if ( $template_type == 'action_guide_v2' ) { ?>
+      <?php include(locate_template ('partials/posts/action_guide_v2/action-guide-content-v2.php') ); ?>
+    <?php } ?>
   </div>
   <hr class="margin-auto"/>
 </article>
