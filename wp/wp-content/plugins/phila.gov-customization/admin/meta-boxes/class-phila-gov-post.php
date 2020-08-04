@@ -285,6 +285,12 @@ class Phila_Gov_Post {
           'required' => true,
         ),
         array(
+          'id'  => 'step_1_icon',
+          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
+          'name'  => 'Select icon',
+          'type'  => 'text',
+        ),
+        array(
           'id' => 'step_1_content',
           'type' => 'group',
           'clone'  => true,
@@ -312,6 +318,12 @@ class Phila_Gov_Post {
           'id'   => 'step_2_label',
           'type' => 'text',
           'required' => true,
+        ),
+        array(
+          'id'  => 'step_2_icon',
+          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
+          'name'  => 'Select icon',
+          'type'  => 'text',
         ),
         array(
           'id' => 'step_2_content_before_steps',
@@ -357,6 +369,12 @@ class Phila_Gov_Post {
           'id'   => 'step_3_label',
           'type' => 'text',
           'required' => true,
+        ),
+        array(
+          'id'  => 'step_3_icon',
+          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
+          'name'  => 'Select icon',
+          'type'  => 'text',
         ),
         array(
           'id' => 'step_3_content_before_steps',
