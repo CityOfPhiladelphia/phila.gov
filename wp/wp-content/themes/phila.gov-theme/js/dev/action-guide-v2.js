@@ -24,7 +24,7 @@ module.exports = $(function () {
     }
   });
 
-  $('#step-3-label, #step-3-to-2-nav span, #step-3-to-2-nav i').click(function () {
+  $('#step-3-label, #step-2-to-3-nav span, #step-2-to-3-nav i').click(function () {
     if (!$('#step-3-label').hasClass('active')) {
       $('#tab-3-content').addClass('active');
       $('#step-3-label').addClass('active');
