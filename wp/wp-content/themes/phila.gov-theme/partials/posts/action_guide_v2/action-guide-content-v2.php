@@ -66,7 +66,17 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     </div>
   </div>
 
+  <div class="grid-x grid-margin-x mvl tab-nav">
+    <div class="medium-24 cell pbxl">
+      <div class="right-nav" id="step-1-to-2-nav">
+        <span><?php echo rwmb_meta( 'step_2_label' );?></span>
+        <i class="fas fa-caret-right"></i>
+      </div>
+    </div>
+  </div>
+
 </div>
+<!-- /Tab 1 -->
 
 <!-- Tab 2 -->
 <div class="content-action_guide action-guide-v2" id="tab-2-content">
@@ -113,7 +123,23 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     </div>
   </div>
 
+  <div class="grid-x grid-margin-x mvl tab-nav">
+    <div class="medium-12 cell pbxl">
+      <div class="left-nav" id="step-2-to-1-nav">
+        <i class="fas fa-caret-left"></i>
+        <span><?php echo rwmb_meta( 'step_1_label' );?></span>
+      </div>
+    </div>
+    <div class="medium-12 cell pbxl">
+      <div class="right-nav" id="step-2-to-3-nav">
+        <span><?php echo rwmb_meta( 'step_3_label' );?></span>
+        <i class="fas fa-caret-right"></i>
+      </div>
+    </div>
+  </div>
+
 </div>
+<!-- /Tab 2 -->
 
 <!-- Tab 3 -->
 <div class="content-action_guide action-guide-v2" id="tab-3-content">
@@ -160,4 +186,14 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     </div>
   </div>
 
+  <div class="grid-x grid-margin-x mvl tab-nav">
+    <div class="medium-24 cell pbxl">
+      <div class="left-nav" id="step-3-to-2-nav">
+        <i class="fas fa-caret-left"></i>
+        <span><?php echo rwmb_meta( 'step_2_label' );?></span>
+      </div>
+    </div>
+  </div>
+
 </div>
+<!-- /Tab 3 -->

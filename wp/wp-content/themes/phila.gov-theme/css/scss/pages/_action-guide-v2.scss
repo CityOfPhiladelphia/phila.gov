@@ -1,6 +1,15 @@
 .action-guide-v2-tabs {
   .step-label {
     text-align: center;
+    width: calc(33.33333% - 2px);
+    margin: 0px;
+    &#step-1-label {
+      margin-right: 3px;
+    }
+    &#step-3-label {
+      margin-left: 3px;
+    }
+
     &:not(.active) {
       cursor: pointer;
     }
@@ -34,5 +43,30 @@
   display: none;
   &.active {
     display: block;
+  }
+
+  .tab-nav {
+    color: #0F4D90;
+    font-family: "Montserrat";
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-decoration: underline;
+    font-weight: 600;
+    span, i {
+      cursor: pointer;
+    }
+    .right-nav {
+      text-align: right;
+      i {
+        text-decoration: underline;
+      }
+    }
+    .left-nav {
+      text-align: left;
+      i {
+        text-decoration: underline;
+      }
+    }
   }
 }
