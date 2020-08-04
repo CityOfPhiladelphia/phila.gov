@@ -404,6 +404,29 @@ class Phila_Gov_Post {
       )
     );
 
+    $meta_boxes[] = array(
+      'title'    => 'Full width call to action',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_v2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id'       => 'phila_v2_cta_full',
+          'context'  => 'normal',
+          'priority' => 'default',
+          'type'  => 'group',
+          'clone' => false,
+          'fields' =>
+            Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
+        ),
+      ),
+    );
+
     return $meta_boxes;
   }
 
