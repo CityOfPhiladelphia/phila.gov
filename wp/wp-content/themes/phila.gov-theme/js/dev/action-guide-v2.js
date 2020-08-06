@@ -26,6 +26,12 @@ module.exports = $(function () {
           $('#step-3-label').removeClass('active');
           $('#tab-2-content').removeClass('active');
           $('#tab-3-content').removeClass('active');
+          $( ".translation-link" ).each(function() {
+            var href = $(this).attr('href');
+            if (href) {
+              $(this).attr('href', href.split("?")[0] + '?tab=1');
+            }
+          });
         }
         break;
       case '2':
@@ -37,6 +43,12 @@ module.exports = $(function () {
           $('#step-3-label').removeClass('active');
           $('#tab-1-content').removeClass('active');
           $('#tab-3-content').removeClass('active');
+          $( ".translation-link" ).each(function() {
+            var href = $(this).attr('href');
+            if (href) {
+              $(this).attr('href', href.split("?")[0] + '?tab=2');
+            }
+          });
         }
         break;
       case '3':
@@ -48,6 +60,12 @@ module.exports = $(function () {
           $('#step-1-label').removeClass('active');
           $('#tab-2-content').removeClass('active');
           $('#tab-1-content').removeClass('active');
+          $( ".translation-link" ).each(function() {
+            var href = $(this).attr('href');
+            if (href) {
+              $(this).attr('href', href.split("?")[0] + '?tab=3');
+            }
+          });
         }
         break;
       default:
@@ -64,6 +82,12 @@ module.exports = $(function () {
       $('#tab-2-content').removeClass('active');
       $('#tab-3-content').removeClass('active');
       history.pushState({}, null, window.location.origin+window.location.pathname+'?tab=1');
+      $( ".translation-link" ).each(function() {
+        var href = $(this).attr('href');
+        if (href) {
+          $(this).attr('href', href.split("?")[0] + '?tab=1');
+        }
+      });
     }
   });
 
@@ -77,6 +101,12 @@ module.exports = $(function () {
       $('#tab-1-content').removeClass('active');
       $('#tab-3-content').removeClass('active');
       history.pushState({}, null, window.location.origin+window.location.pathname+'?tab=2');
+      $( ".translation-link" ).each(function() {
+        var href = $(this).attr('href');
+        if (href) {
+          $(this).attr('href', href.split("?")[0] + '?tab=2');
+        }
+      });
     }
   });
 
@@ -90,6 +120,12 @@ module.exports = $(function () {
       $('#tab-2-content').removeClass('active');
       $('#tab-1-content').removeClass('active');
       history.pushState({}, null, window.location.origin+window.location.pathname+'?tab=3');
+      $( ".translation-link" ).each(function() {
+        var href = $(this).attr('href');
+        if (href) {
+          $(this).attr('href', href.split("?")[0] + '?tab=3');
+        }
+      });
     }
   });
 
