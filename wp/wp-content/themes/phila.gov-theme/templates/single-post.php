@@ -75,22 +75,8 @@ $language_list = phila_get_translated_language( $language );
   <?php endif; ?>
   </header>
 
-<?php  if ( count( $language_list ) != 1 ): ?>
-  <!-- Translated content -->
-  <div class="grid-container translations-container">
-    <div class="grid-x medium-24 bg-ghost-gray mvl pas translations">
-      <span class="border-right phl-mu hide-for-small-only"><i class="fas fa-globe fa-2x"></i></span>
-      <ul class="inline-list no-bullet mbn pln">
-        <?php foreach ($language_list as $key => $value): ?>
-          <li class="phl-mu phs">
-            <?php echo ( $value === get_the_permalink() ) ? '' : '<a href="' .  $value . '">' ?><?php echo phila_language_output($key)?><?php echo ($value === get_the_permalink()) ? '' : '</a>' ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-
-    </div>
-  </div>
-  <!-- /Translated content -->
+  <?php  if ( count( $language_list ) != 1 ): ?>
+    <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
   <?php endif; ?>
 
 

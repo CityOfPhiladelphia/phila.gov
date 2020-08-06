@@ -98,7 +98,12 @@ class Phila_Gov_Post {
             'chinese'   => 'Chinese (simplifed)',
             'vietnamese'    => 'Vietnamese',
             'russian'     => 'Russian',
-            'arabic'    => 'Arabic'
+            'arabic'    => 'Arabic',
+            'language1' => 'Language 1',
+            'language2' => 'Language 2',
+            'language3' => 'Language 3',
+            'language4' => 'Language 4',
+            'language5' => 'Language 5',
           ),
         ),
         array(
