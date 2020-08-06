@@ -110,3 +110,50 @@
     }
   }
 }
+
+
+.inline-list {
+  width: calc(100% - 85px);
+    li {
+      width: 10.7%;
+      padding: 1rem;
+      text-align: center;
+      &.active {
+        color: white;
+        font-weight: 600;
+        background: #444444;
+      }
+  }
+}
+
+.dropdown {
+  .dropdown-selector {
+    padding: 0px !important;
+    &:after {
+      border-color: #2C60AB transparent transparent !important;
+    }
+  }
+  .is-dropdown-submenu-parent {
+    padding: 6px;
+  }
+  .is-active {
+    .dropdown-selector {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+    .js-dropdown-active {
+      background: #f0f0f0;
+      margin-top: 20px;
+      margin-left: -137px;
+      li {
+        width: 100%;
+        text-align: left;
+        padding: 1rem;
+        a {
+          padding: 0px;
+        }
+      }
+    }
+  }
+}
