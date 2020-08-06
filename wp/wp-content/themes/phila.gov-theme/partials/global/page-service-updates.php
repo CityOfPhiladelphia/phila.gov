@@ -9,16 +9,16 @@
 <?php if ( $service_update_page['parent_group'] ): ?>
   <?php $num_items = count($service_update_page['parent_group']);
     $i = 0;?>
-  <?php if ($service_update_page['service_intro']) :?> 
     <div class="grid-container"> 
       <div class="grid-x">
         <div class="cell"> 
           <p>Last updated: <?php the_modified_date();?> </p>
-          <p><?php echo apply_filters('the_content',$service_update_page['service_intro'])?></p>
+          <?php if ( isset( $service_update_page['service_intro'] ) ) :?> 
+            <p><?php echo apply_filters('the_content',$service_update_page['service_intro'])?></p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
-    <?php endif; ?>
   <div class="grid-container"> 
     <div class="grid-x">
       <div class="cell">
@@ -48,8 +48,8 @@
               foreach ($group['service_content'] as $item) :?>
                 <tr class="service-update--<?php if ( !$item['level'] == '' ) echo $item['level']; ?> ">
                   <th class="phl-mu">
-                    <i class="fa-2x fa-fw <?php if ( $item['icon']  ) echo $item['icon']; ?> " aria-hidden="true"></i>
-                      <span class="icon-label"><?php if ( $item['service_name']) echo $item['service_name']; ?></span>
+                    <i class="fa-2x fa-fw <?php if ( $item['icon']  ) echo $item['icon']; ?> service-icon" aria-hidden="true"></i>
+                    <span class="icon-label"><?php if ( $item['service_name']) echo $item['service_name']; ?></span>
                   </th>
                   <td class="pam">
                     <?php if ( !$item['message'] == '' ):?>
