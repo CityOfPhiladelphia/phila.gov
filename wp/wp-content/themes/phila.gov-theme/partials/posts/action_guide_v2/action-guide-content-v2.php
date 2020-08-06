@@ -10,6 +10,7 @@ $step_1_wysiwyg = rwmb_meta('step_1_wysiwyg');
 $step_2_wysiwyg = rwmb_meta('step_2_wysiwyg');
 $get_step_2_content_before_steps = rwmb_meta( 'step_2_content_before_steps' );
 $step_2_content_before_steps = phila_loop_clonable_metabox( $get_step_2_content_before_steps );
+$step_2_content_before_steps['url'] = strtolower(str_replace(' ', '-', $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title']));
 
 $get_phila_stepped_content_step_2 = rwmb_meta( 'phila_stepped_content_step_2' );
 $phila_stepped_content_step_2 = phila_extract_stepped_content( $get_phila_stepped_content_step_2 );
@@ -54,6 +55,14 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
           <div class="phm">
             <?php echo apply_filters( 'the_content', $step_1_wysiwyg) ?>
           </div>
+          <ul class="no-bullet mbn pln">
+            <?php foreach( $step_1_content as $key => $content) :?>
+              <?php $step_1_content[$key]['url'] = strtolower(str_replace(' ', '-', $content['phila_custom_wysiwyg']['phila_wysiwyg_title']));?>
+              <li class="pvs-mu phl-mu phs">
+                <a href="<?php echo '#'.$step_1_content[$key]['url'];?>" class="anchor underline">- <?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
         </div>
     </div>
   </div>
@@ -63,7 +72,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
       <?php foreach( $step_1_content as $content ) :?>
         <div class="mbl">
           <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+            <h4 id="<?php echo $content['url'];?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
           <?php endif;?>
           <div class="phm">
             <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
@@ -94,6 +103,17 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
           <div class="phm">
             <?php echo apply_filters( 'the_content', $step_2_wysiwyg) ?>
           </div>
+          <ul class="no-bullet mbn pln">
+            <li class="pvs-mu phl-mu phs">
+              <a href="<?php echo '#'.$step_2_content_before_steps['url'];?>" class="anchor underline">- <?php echo $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
+            </li>
+            <?php foreach( $step_2_content_after_steps as $key => $content) :?>
+              <?php $step_2_content_after_steps[$key]['url'] = strtolower(str_replace(' ', '-', $content['phila_custom_wysiwyg']['phila_wysiwyg_title']));?>
+              <li class="pvs-mu phl-mu phs">
+                <a href="<?php echo '#'.$step_2_content_after_steps[$key]['url'];?>" class="anchor underline">- <?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
         </div>
     </div>
   </div>
@@ -101,8 +121,8 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
   <div class="grid-x grid-margin-x mvl">
     <div class="medium-24 cell pbxl">
       <div class="mbl">
-        <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-          <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+        <?php if( isset($step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+          <h4 id="<?php echo $step_2_content_before_steps['url'];?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
         <?php endif;?>
         <div class="phm">
           <?php echo apply_filters( 'the_content', $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
@@ -127,7 +147,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
       <?php foreach( $step_2_content_after_steps as $content ) :?>
         <div class="mbl">
           <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-            <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+            <h4 id="<?php echo $content['url'];?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
           <?php endif;?>
           <div class="phm">
             <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
