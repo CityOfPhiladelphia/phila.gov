@@ -13,7 +13,7 @@ if ( count( $language_list ) >= 9 ) {
         <?php foreach ($language_list as $key => $value): ?>
           <?php echo ( $value === get_the_permalink() ) 
             ? '<li class="phm-mu phs active">' . phila_language_output($key) .'</li>' 
-            : '<li class="phm-mu phs"><a href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
+            : '<li class="phm-mu phs"><a class="translation-link" href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
         <?php endforeach; ?>
         <?php if ( isset($language_list_overflow) ) { ?>
           <li class="phm-mu phs">
@@ -24,7 +24,7 @@ if ( count( $language_list ) >= 9 ) {
                   <?php foreach ($language_list_overflow as $key => $value): ?>
                     <?php echo ( $value === get_the_permalink() ) 
                       ? '<li class="phs active">' . phila_language_output($key) .'</li>' 
-                      : '<li class="phs"><a href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
+                      : '<li class="phs"><a class="translation-link" href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
                   <?php endforeach; ?>
                 </ul>
               </li>
