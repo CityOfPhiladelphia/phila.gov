@@ -8,15 +8,15 @@ if ( count( $language_list ) >= 9 ) {
 
 <div class="grid-container translations-container">
     <div class="grid-x medium-24 bg-ghost-gray mvl translations">
-      <span class="border-right phl-mu hide-for-small-only"><i class="fas fa-globe fa-2x"></i></span>
+      <span class="border-right phm-mu globe"><i class="fas fa-globe fa-2x"></i></span>
       <ul class="inline-list no-bullet mbn pln">
         <?php foreach ($language_list as $key => $value): ?>
           <?php echo ( $value === get_the_permalink() ) 
-            ? '<li class="phl-mu phs active">' . phila_language_output($key) .'</li>' 
-            : '<li class="phl-mu phs"><a href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
+            ? '<li class="phm-mu phs active">' . phila_language_output($key) .'</li>' 
+            : '<li class="phm-mu phs"><a href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
         <?php endforeach; ?>
         <?php if ( isset($language_list_overflow) ) { ?>
-          <li class="phl-mu phs">
+          <li class="phm-mu phs">
             <ul class="dropdown menu" data-dropdown-menu>
               <li>
                 <a href="#" class="dropdown-selector"></a>
