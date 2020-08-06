@@ -9,7 +9,7 @@
 
   $image_count = count($image_list_vars['urls']);
 
-  if ($image_count === 5){
+  if ($image_count == 5){
     $grid_count = 6;
   }else if ($image_count == 6) {
     $grid_count = 8;
