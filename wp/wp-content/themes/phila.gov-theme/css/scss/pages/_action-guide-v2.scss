@@ -77,5 +77,16 @@
   }
 }
 
-.action-guide-v2-cta {
+
+
+.action-guide-v2-container-desktop {
+  @media screen and (max-width: 749px) {
+  display: none;
+  }
+}
+.action-guide-v2-container-mobile {
+  display: none;
+  @media screen and (max-width: 749px) {
+    display: block;
+    }
 }
