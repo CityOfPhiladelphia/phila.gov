@@ -6,6 +6,7 @@
   }
 }
 .button{
+  text-decoration: none;
   &[class*='content-type']{
     .fa, .fab, .fal, .far, .fas{
       padding-left:.5rem;
