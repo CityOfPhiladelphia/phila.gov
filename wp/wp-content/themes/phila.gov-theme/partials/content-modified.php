@@ -19,7 +19,7 @@
     $template !=  'off_site_department' &&
     $template != 'topic_page' &&
     $template != 'prog_association') : ?>
-  <div class="row pvm">
+  <div class="row pvm last-updated">
     <div class="small-24 columns center">
       <?php
       // NOTE: the id is important. Google Tag Manager uses it to attach the
