@@ -29,7 +29,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
 ?>
 
 <!-- Tabs -->
-<div class="grid-container action-guide-v2-tabs">
+<div class="grid-container action-guide-v2-tabs mtxl">
   <div class="grid-x grid-margin-x mvl one-quarter-row">
     <div class="cell medium-8 active step-label bg-dark-ben-franklin white" id="step-1-label">
       <div class="bg-dark-ben-franklin active-bar"></div>
@@ -64,7 +64,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     <div class="medium-24 cell pbxl">
         <div class="mbl">
           <?php if( isset($step_1_wysiwyg)): ?>
-            <div class="phm">
+            <div>
               <?php echo apply_filters( 'the_content', $step_1_wysiwyg) ?>
             </div>
           <?php endif; ?>
@@ -120,7 +120,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
     <div class="medium-24 cell pbxl">
         <div class="mbl">
           <?php if( isset($step_2_wysiwyg)): ?>
-            <div class="phm">
+            <div>
               <?php echo apply_filters( 'the_content', $step_2_wysiwyg) ?>
             </div>
           <?php endif; ?>
@@ -144,7 +144,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
   </div>
 
   <div class="grid-x grid-margin-x mvl">
-    <div class="medium-24 cell pbxl">
+    <div class="medium-24 cell pbm">
       <div class="mbl">
         <?php if( isset($step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
           <h4 id="<?php echo $step_2_content_before_steps['url'];?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
@@ -159,7 +159,7 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
   </div>
 
   <div class="grid-x grid-margin-x mvl">
-    <div class="medium-24 cell pbxl">
+    <div class="medium-24 cell pbm">
       <?php if( isset($phila_stepped_content_step_2)): ?>
         <?php $steps = $phila_stepped_content_step_2; ?>
         <div class="mbl">
@@ -215,9 +215,9 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
   
 <?php if( isset($step_3_wysiwyg)): ?>
   <div class="grid-x grid-margin-x mvl">
-    <div class="medium-24 cell pbxl">
+    <div class="medium-24 cell pbm">
         <div class="mbl">
-          <div class="phm">
+          <div>
             <?php echo apply_filters( 'the_content', $step_3_wysiwyg) ?>
           </div>
         </div>
@@ -227,15 +227,15 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
 
   <?php if( isset($phila_stepped_content_step_3)): ?>
     <div class="grid-x grid-margin-x mvl">
-      <div class="medium-24 cell pbxl">
+      <div class="medium-24 cell pbm">
         <?php $steps = $phila_stepped_content_step_3; ?>
           <div class="mbl">
+            <?php if( isset($step_3_stepped_content_title)): ?>
+              <div class="mbl">
+                <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $step_3_stepped_content_title; ?></h4>
+              </div>
+            <?php endif; ?>
             <div class="phm">
-              <?php if( isset($step_3_stepped_content_title)): ?>
-                <div class="mbl">
-                  <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $step_3_stepped_content_title; ?></h4>
-                </div>
-              <?php endif; ?>
               <?php include( locate_template( 'partials/stepped-content.php' ) ); ?>
             </div>
           </div>
