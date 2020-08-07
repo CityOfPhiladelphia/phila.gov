@@ -28,11 +28,18 @@ $phila_stepped_content_step_3 = phila_extract_stepped_content( $get_phila_steppe
 
 ?>
 
-<?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tabs.php')); ?>
-<?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tab-1.php')); ?>
-<?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tab-2.php')); ?>
-<?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tab-3.php')); ?>
+<div class="action-guide-v2-container-desktop">
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tabs.php')); ?>
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tab-1.php')); ?>
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tab-2.php')); ?>
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/action-guide-content-tab-3.php')); ?>
+</div>
 
+<div class="action-guide-v2-container-mobile">
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/mobile/action-guide-content-tab-1-mobile.php')); ?>
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/mobile/action-guide-content-tab-2-mobile.php')); ?>
+  <?php include(locate_template('partials/posts/action_guide_v2/action_guide_v2_sections/mobile/action-guide-content-tab-3-mobile.php')); ?>
+</div>
 
 <!-- Full width call to action-->
 <div class="mvl action-guide-v2-cta">
