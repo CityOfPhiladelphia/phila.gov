@@ -102,4 +102,108 @@ class Phila_Gov_Row_Select_Options {
       ),
     );
   }
+  
+  public static function phila_metabox_tabbed_select(){
+    return array(
+      'id'   => 'phila_tabbed_select',
+      'desc'  => 'Choose tabbed content.',
+      'type' => 'select',
+      'class' => 'percent-100',
+      'placeholder' => 'Select tabbed row module...',
+      'options' => array(
+        'phila_metabox_tabbed_single_title'  => 'Single title',
+        'phila_metabox_tabbed_single_wysiwyg'  => 'Single wysiwyg',
+        'phila_metabox_tabbed_repeater_wysiwyg'  => 'Repeater wysiwyg',
+        'phila_metabox_tabbed_stepped_content'  => 'Stepped content',
+      ),
+    );
+  }
+
+  public static function phila_metabox_tabbed_single_wysiwyg( ){
+
+    return array (
+      array(
+        'id' => 'step_wysiwyg',
+        'name'  => 'Single wysiwyg',
+        'type' => 'wysiwyg',
+      )
+    );
+  }
+
+  public static function phila_metabox_tabbed_repeater_wysiwyg( ){
+
+    return array(
+      array(
+        'id' => 'step_repeater_wysiwyg',
+        'name'  => 'Repeater wysiwyg',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'fields' => array(
+          array(
+            'name'  => 'Tab wysiwyg section',
+            'id'  =>  'phila_custom_wysiwyg',
+            'type'  => 'group',
+            'clone' => false,
+            'columns'=> 12,
+            'fields'  => array(
+              array(
+                'id'  => 'phila_wysiwyg_title',
+                'type'  => 'text',
+                'class' => 'percent-100'
+              ),
+              array(
+                'id'  => 'phila_wysiwyg_content',
+                'type'  => 'wysiwyg',
+              )
+            )
+          )
+        )
+      ),
+    );
+  }
+
+  public static function phila_metabox_tabbed_stepped_content( ){
+
+    return array (
+      array(
+        'id' => 'phila_stepped_content',
+        'name'  => 'Stepped content',
+        'type' => 'group',
+        'fields'  => array(
+          array(
+            'name'  => 'Tab stepped content',
+            'id'  => 'phila_ordered_content',
+            'type'  => 'group',
+            'clone' => true,
+            'sort_clone'  => true,
+            'add_button'  => '+ Add a step',
+      
+            'fields'  => array(
+              array(
+                'placeholder' => 'Step Heading',
+                'id'  => 'phila_step_wysiwyg_heading',
+                'type'  => 'text',
+                'class' => 'percent-95'
+              ),
+              array(
+                'id'  => 'phila_step_wysiwyg_content',
+                'type'  => 'wysiwyg',
+              ),
+            )
+          )
+        )
+      )
+    );
+  }
+
+  public static function phila_metabox_tabbed_single_title( ){
+    return array (
+      array(
+        'id'   => 'phila_single_title',
+        'name'  => 'Tab title',
+        'type' => 'text',
+      )
+    );
+  }
 }
