@@ -16,59 +16,28 @@ module.exports = $(function () {
   };
 
   $( document ).ready(function() {
-    switch(getUrlParameter('tab')) {
-      case '1':
-        if (!$('#step-1-label').hasClass('active')) {
-          $('#tab-1-content').addClass('active');
-          $('#step-1-label').addClass('active');
-      
-          $('#step-2-label').removeClass('active');
-          $('#step-3-label').removeClass('active');
-          $('#tab-2-content').removeClass('active');
-          $('#tab-3-content').removeClass('active');
+    let activeTabId = getUrlParameter('tab');
+    let stepID = '#step-'+activeTabId+'-label';
+    let tabID = '#tab-'+activeTabId+'-content';
+    let tabs = '';
+    for (let tab in tabs) {
+      let step = '';
+      if (tab == tabID) {
+        if (!$(stepID).hasClass('active')) {
+          $(tabID).addClass('active');
+          $(stepID).addClass('active');  
           $( ".translation-link" ).each(function() {
             var href = $(this).attr('href');
             if (href) {
-              $(this).attr('href', href.split("?")[0] + '?tab=1');
+              $(this).attr('href', href.split("?")[0] + '?tab='+activeTabId);
             }
           });
         }
-        break;
-      case '2':
-        if (!$('#step-2-label').hasClass('active')) {
-          $('#tab-2-content').addClass('active');
-          $('#step-2-label').addClass('active');
-    
-          $('#step-1-label').removeClass('active');
-          $('#step-3-label').removeClass('active');
-          $('#tab-1-content').removeClass('active');
-          $('#tab-3-content').removeClass('active');
-          $( ".translation-link" ).each(function() {
-            var href = $(this).attr('href');
-            if (href) {
-              $(this).attr('href', href.split("?")[0] + '?tab=2');
-            }
-          });
-        }
-        break;
-      case '3':
-        if (!$('#step-3-label').hasClass('active')) {
-          $('#tab-3-content').addClass('active');
-          $('#step-3-label').addClass('active');
-    
-          $('#step-2-label').removeClass('active');
-          $('#step-1-label').removeClass('active');
-          $('#tab-2-content').removeClass('active');
-          $('#tab-1-content').removeClass('active');
-          $( ".translation-link" ).each(function() {
-            var href = $(this).attr('href');
-            if (href) {
-              $(this).attr('href', href.split("?")[0] + '?tab=3');
-            }
-          });
-        }
-        break;
-      default:
+      }
+      else {
+        $(step).removeClass('active');
+        $(tab).removeClass('active');
+      }
     }
   });
 
