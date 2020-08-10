@@ -6,12 +6,12 @@
     <h2 class="label-copy"><?php echo rwmb_meta( 'step_2_label' );?></h2>
   <?php endif; ?>
 
-  <div class="grid-x grid-margin-x mvl">
-    <div class="medium-24 cell pbl">
+  <div class="grid-x grid-margin-x">
+    <div class="medium-24 cell pbs">
       <ul class="accordion phn" data-accordion data-multi-expand="true" data-allow-all-closed="true">
         
         <?php if( isset($step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-          <li class="mbl accordion-item" data-accordion-item>
+          <li class="mbs accordion-item" data-accordion-item>
             <a href="#" class="accordion-title"><?php echo $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
             <div class="phm accordion-content" data-tab-content>
               <?php echo apply_filters( 'the_content', $step_2_content_before_steps['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
@@ -32,7 +32,7 @@
         <?php endif;?>
 
         <?php foreach( $step_2_content_after_steps as $content ) :?>
-          <li class="mbl accordion-item" data-accordion-item>
+          <li class="mbs accordion-item" data-accordion-item>
           <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
             <a href="#" class="accordion-title"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
           <?php endif;?>
