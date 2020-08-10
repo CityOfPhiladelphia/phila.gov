@@ -99,3 +99,15 @@
     }
     }
 }
+
+.action-guide-v2-cta {
+  a {
+    @media screen and (max-width: 749px) {
+      float: none !important;
+      padding: 0px;
+    }
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
+  }
+}
