@@ -77,8 +77,6 @@
   }
 }
 
-
-
 .action-guide-v2-container-desktop {
   @media screen and (max-width: 749px) {
   display: none;
@@ -88,5 +86,16 @@
   display: none;
   @media screen and (max-width: 749px) {
     display: block;
+    .accordion {
+      background: none;
+      .accordion-item {
+        background: #f0f0f0;
+        .accordion-title {
+          &:before {
+            border-left: 5px solid white;
+          }
+        } 
+      }
+    }
     }
 }

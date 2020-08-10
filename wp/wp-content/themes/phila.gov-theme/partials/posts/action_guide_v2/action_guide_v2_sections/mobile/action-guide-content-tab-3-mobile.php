@@ -6,12 +6,12 @@
     <h2 class="label-copy"><?php echo rwmb_meta( 'step_3_label' );?></h2>
   <?php endif; ?>
 
-  <div class="grid-x grid-margin-x mvl">
-    <div class="medium-24 cell pbl">
+  <div class="grid-x grid-margin-x">
+    <div class="medium-24 cell pbs">
       <ul class="accordion phn" data-accordion data-multi-expand="true" data-allow-all-closed="true">
         
         <?php if( isset($step_3_stepped_content_title )): ?>
-          <li class="mbl accordion-item" data-accordion-item>
+          <li class="mbs accordion-item" data-accordion-item>
             <a href="#" class="accordion-title"><?php echo $step_3_stepped_content_title; ?></a>
             <div class="phm accordion-content" data-tab-content>
               <?php if( isset($step_3_wysiwyg)): ?>
