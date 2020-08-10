@@ -24,7 +24,6 @@
     }
   }
   .service-update-icon {
-    float:left;
     width: 70px;
     height: 100%;
     text-align: center;
@@ -39,12 +38,10 @@
     }
 
     .icon-label{
-      text-transform: uppercase;
       font-weight: normal;
       font-family:'Montserrat', 'Tahoma', sans-serif;
       color: #fff;
       font-size: .9rem;
-
     }
     @media only screen and (min-width: 40em) {
       font-size: 2rem;
@@ -67,4 +64,5 @@
       font-weight: normal;
     }
   }
+
 }
