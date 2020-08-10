@@ -24,6 +24,56 @@ class Phila_Gov_Row_Metaboxes {
     );
   }
 
+  public static function phila_tabbed_metabox_grid_row (){
+    return array(
+    'id'    => 'phila_row',
+    'class' => 'phila_row',
+    'type'  => 'group',
+    'clone' => true,
+    'sort_clone' => true,
+    'add_button'  => '+ Add row',
+    'fields' => array(
+      Phila_Gov_Row_Metaboxes::phila_metabox_tabbed_options(),
+      ),
+    );
+  }
+
+
+  public static function phila_metabox_tabbed_options( ){
+    return array(
+    'name' => 'Tabbed options',
+    'id'   => 'phila_tabbed_options',
+    'type' => 'group',
+    'fields' => array(
+      Phila_Gov_Row_Select_Options::phila_metabox_tabbed_select(),
+      array(
+        'id' => 'phila_vue_template',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_single_title'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_single_title()
+      ),
+      array(
+        'id' => 'phila_vue_template',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_single_wysiwyg'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_single_wysiwyg()
+      ),
+      array(
+        'id' => 'phila_vue_template',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_repeater_wysiwyg'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_repeater_wysiwyg()
+      ),
+      array(
+        'id' => 'phila_vue_template',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_stepped_content'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_stepped_content()
+      ),
+    ),
+  );
+}
+
   public static function phila_metabox_full_options( ){
     return array(
     'name' => '',

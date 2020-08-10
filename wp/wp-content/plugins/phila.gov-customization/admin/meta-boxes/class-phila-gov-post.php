@@ -272,6 +272,43 @@ class Phila_Gov_Post {
         ),
       ),
     );
+    
+    $meta_boxes[] = array(
+      'title'    => 'Page content',
+      'pages'    => array( 'post' ),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_v2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_tabbed_content',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'add_button'  => '+ Add tab',
+          'fields' => array(
+            array(
+              'name' => 'Tab label',
+              'id'   => 'tab_label',
+              'type' => 'text',
+              'required' => true,
+            ),
+            array(
+              'name'  => 'Tab icon',
+              'id'  => 'tab_icon',
+              'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
+              'type'  => 'text',
+              'required' => true,
+            ),
+            Phila_Gov_Row_Metaboxes::phila_tabbed_metabox_grid_row(),
+          ),
+        )
+      )
+    );
 
     $meta_boxes[] = array(
       'title'    => 'Step 1',
