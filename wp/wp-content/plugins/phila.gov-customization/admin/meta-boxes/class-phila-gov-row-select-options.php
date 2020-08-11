@@ -126,6 +126,14 @@ class Phila_Gov_Row_Select_Options {
         'id' => 'step_wysiwyg',
         'name'  => 'Single wysiwyg',
         'type' => 'wysiwyg',
+      ),
+      array(
+        'id' => 'include_anchor_links',
+        'name'  => 'Include anchor links?',
+        'desc' => 'Adds links to wysiwyg titles and single title rows',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
       )
     );
   }

@@ -51,9 +51,10 @@
           $current_row_option = $current_row['phila_tabbed_select'];
           if ( $current_row_option == 'phila_metabox_tabbed_single_title' && isset($current_row[$current_row_option]['phila_single_title'])):?>
             <!-- Single title -->
+            <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_single_title']));?>
             <div class="grid-x grid-margin-x mtl">
               <div class="medium-24 cell pbs">
-                <h4 class="h3 black bg-ghost-gray phm-mu mvn"><?php echo $current_row[$current_row_option]['phila_single_title']; ?></h4>
+                <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mvn"><?php echo $current_row[$current_row_option]['phila_single_title']; ?></h4>
               </div>
             </div>
             <!-- /Single title -->
@@ -67,6 +68,35 @@
                           <?php echo apply_filters( 'the_content', $current_row[$current_row_option]['step_wysiwyg']) ?>
                         </div>
                       <?php endif; ?>
+                      <!-- Anchor links -->
+                      <?php if( isset($current_row[$current_row_option]['include_anchor_links']) && $current_row[$current_row_option]['include_anchor_links'] == true): ?>
+                        <ul class="no-bullet mbn pln">
+                          <?php foreach ($current_tab['phila_row'] as $row_key => $value):?>
+                            <?php $current_row = $current_tab['phila_row'][$row_key]['phila_tabbed_options']; ?>
+                            <?php $current_row_option = $current_row['phila_tabbed_select']; ?>
+                            <?php if ( $current_row_option == 'phila_metabox_tabbed_single_title' && isset($current_row[$current_row_option]['phila_single_title'])):?>
+
+                              <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_single_title']));?>
+                              <li class="pvs-mu phl-mu phs">
+                                <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $current_row[$current_row_option]['phila_single_title']; ?></a>
+                              </li>
+
+                            <?php elseif ( $current_row_option == 'phila_metabox_tabbed_repeater_wysiwyg'):?>
+
+                              <?php $step_content = phila_loop_clonable_metabox( $current_row[$current_row_option]['step_repeater_wysiwyg'] ); ?>
+                              <?php foreach( $step_content as $content ) :?>
+                                <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+                                  <?php $current_row_id = strtolower(str_replace(' ', '-', $content['phila_custom_wysiwyg']['phila_wysiwyg_title']));?>
+                                  <li class="pvs-mu phl-mu phs">
+                                    <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
+                                  </li>
+                                <?php endif;?>
+                              <?php endforeach; ?>
+                            <?php endif; ?>
+                          <?php endforeach; ?>
+                        </ul>
+                      <?php endif; ?>
+                      <!-- /Anchor links -->
                     </div>
                 </div>
               </div>
@@ -80,7 +110,8 @@
                     <?php foreach( $step_content as $content ) :?>
                       <div class="mbl">
                         <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-                          <h4 id="<?php echo $content['url'];?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
+                          <?php $current_row_id = strtolower(str_replace(' ', '-', $content['phila_custom_wysiwyg']['phila_wysiwyg_title']));?>
+                          <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
                         <?php endif;?>
                         <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_content'] )): ?>
                           <div class="phm">
