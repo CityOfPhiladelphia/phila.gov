@@ -46,27 +46,20 @@
         foreach ($current_tab['phila_row'] as $key => $value){
         $current_row = $current_tab['phila_row'][$key]['phila_tabbed_options'];?>
         <?php if ( isset( $current_row['phila_tabbed_select'] ) ){
-
           // Begin full width row
           $current_row_option = $current_row['phila_tabbed_select'];
-          if ( $current_row_option == 'phila_metabox_tabbed_single_title'):?>
+          if ( $current_row_option == 'phila_metabox_tabbed_single_title' && isset($current_row[$current_row_option]['phila_single_title'])):?>
             <!-- Single title -->
-            <div class="grid-x grid-margin-x mvl">
-              <div class="medium-24 cell pbm">
-                <div class="mbl">
-                  <?php if( isset($current_row[$current_row_option]['phila_single_title'])): ?>
-                    <div class="mbl">
-                      <h4 class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $current_row[$current_row_option]['phila_single_title']; ?></h4>
-                    </div>
-                  <?php endif; ?>
-                </div>
+            <div class="grid-x grid-margin-x mtl">
+              <div class="medium-24 cell pbs">
+                <h4 class="h3 black bg-ghost-gray phm-mu mvn"><?php echo $current_row[$current_row_option]['phila_single_title']; ?></h4>
               </div>
             </div>
             <!-- /Single title -->
           <?php elseif ( $current_row_option == 'phila_metabox_tabbed_single_wysiwyg'):?>
             <!-- Single wywiwyg -->
               <div class="grid-x grid-margin-x mvl">
-                <div class="medium-24 cell pbxl">
+                <div class="medium-24 cell pbs">
                     <div class="mbl">
                       <?php if( isset($current_row[$current_row_option]['step_wysiwyg'])): ?>
                         <div>
