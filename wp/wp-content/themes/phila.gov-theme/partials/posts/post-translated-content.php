@@ -8,7 +8,7 @@ if ( count( $language_list ) >= 9 ) {
 
 <div class="grid-container translations-container">
     <div class="grid-x medium-24 bg-ghost-gray mvl translations">
-      <span class="border-right phm-mu globe"><i class="fas fa-globe fa-2x"></i></span>
+      <span class="phm-mu globe"><i class="fas fa-globe fa-2x"></i></span>
       <ul class="inline-list no-bullet mbn pln">
         <?php foreach ($language_list as $key => $value): ?>
           <?php echo ( $value === get_the_permalink() ) 
