@@ -10,18 +10,18 @@
   $tabs = rwmb_meta('phila_tabbed_content');
 ?>
 <?php if (!phila_util_is_array_empty($tabs)): ?>
-  <!-- Program and initiatives -->
+  <!-- Tabbed content -->
 
 
   <!-- Tabs -->
   <div class="grid-container action-guide-v2-tabs mtxl">
     <div class="grid-x grid-margin-x mvl one-quarter-row">
     <?php
-    foreach ($tabs as $key => $value){
-      $current_tab = $tabs[$key];
-      $tab_id = $key+1;
+    foreach ($tabs as $tab_label_key => $value){
+      $current_tab = $tabs[$tab_label_key];
+      $tab_id = $tab_label_key+1;
     ?>
-      <div class="cell medium-8 step-label bg-dark-ben-franklin white <?php echo ($tab_id == 1) ? 'active' : '' ?>" id="step-<?php echo $tab_id?>-label">
+      <div class="cell medium-8 tab-label bg-dark-ben-franklin white <?php echo ($tab_id == 1) ? 'active' : '' ?>" id="step-<?php echo $tab_id?>-label">
         <div class="bg-dark-ben-franklin active-bar"></div>
         <?php if( isset($current_tab['tab_icon'])) :?>
           <i class="<?php echo $current_tab['tab_icon'] ?> fa-2x" aria-hidden="true"></i>
@@ -37,14 +37,15 @@
 
   <section>
   <?php
-    foreach ($tabs as $key => $value){
-      $current_tab = $tabs[$key]; 
-      $tab_id = $key+1;
+    $tab_count = count($tabs);
+    foreach ($tabs as $tab_key => $value){
+      $current_tab = $tabs[$tab_key]; 
+      $tab_id = $tab_key+1;
   ?>
       <div class="content-action_guide action-guide-v2 <?php echo ($tab_id == 1) ? 'active' : '' ?>" id="tab-<?php echo $tab_id?>-content">
       <?php
-        foreach ($current_tab['phila_row'] as $key => $value){
-        $current_row = $current_tab['phila_row'][$key]['phila_tabbed_options'];?>
+        foreach ($current_tab['phila_row'] as $row_key => $value){
+        $current_row = $current_tab['phila_row'][$row_key]['phila_tabbed_options'];?>
         <?php if ( isset( $current_row['phila_tabbed_select'] ) ){
           // Begin full width row
           $current_row_option = $current_row['phila_tabbed_select'];
@@ -69,7 +70,7 @@
                     </div>
                 </div>
               </div>
-            <!-- /Staff listing -->
+            <!-- /Single wywiwyg -->
           <?php elseif ( $current_row_option == 'phila_metabox_tabbed_repeater_wysiwyg'):?>
             <!-- Repeater wyswiyg -->
               <?php if( isset($current_row[$current_row_option]['step_repeater_wysiwyg'])){ ?>
@@ -93,7 +94,7 @@
               <?php } ?>
             <!-- /Repeater wyswiyg -->
           <?php elseif ( $current_row_option == 'phila_metabox_tabbed_stepped_content'):?>
-            <!-- Staff listing -->
+            <!-- Stepped content -->
               <div class="grid-x grid-margin-x mvl">
                 <div class="medium-24 cell pbm">
                   <?php if( isset($current_row[$current_row_option]['phila_stepped_content']) && isset($current_row[$current_row_option]['phila_stepped_content']['phila_ordered_content'])): ?>
@@ -106,12 +107,36 @@
                   <?php endif; ?>
                 </div>
               </div>
-            <!-- /Staff listing -->
+            <!-- /Stepped content -->
           <?php endif;?>
           <?php } // if row isset ?>
       <?php } // row content ?>
+        <div class="grid-x grid-margin-x mvl tab-nav">
+          <?php if( $tab_id != 1 ) { ?>
+            <?php $prev_tab = $tabs[$tab_key-1]; ?>
+            <?php if( isset($prev_tab['tab_label']) ): ?>
+              <div class="medium-12 cell pbxl">
+                <div class="prev-tab">
+                  <i class="fas fa-caret-left"></i>
+                  <span><?php echo $prev_tab['tab_label'];?></span>
+                </div>
+              </div>
+            <?php endif; ?>
+          <?php } ?>
+          <?php if( $tab_id != $tab_count ) { ?>
+            <?php $next_tab = $tabs[$tab_key+1]; ?>
+            <?php if( isset($next_tab['tab_label']) ): ?>
+              <div class="medium-12 cell pbxl">
+                <div class="next-tab">
+                  <span><?php echo $next_tab['tab_label'];?></span>
+                  <i class="fas fa-caret-right"></i>
+                </div>
+              </div>
+            <?php endif; ?>
+          <?php } ?>
+        </div>
       </div>
     <?php } // tab content ?>
   </div>
-<!-- /Program and initiatives -->
+<!-- /Tabbed content -->
 <?php endif; ?>

@@ -1,5 +1,5 @@
 .action-guide-v2-tabs {
-  .step-label {
+  .tab-label {
     text-align: center;
     width: calc(33.33333% - 2px);
     margin: 0px;
@@ -56,13 +56,13 @@
     span, i {
       cursor: pointer;
     }
-    .right-nav {
+    .next-tab {
       text-align: right;
       i {
         text-decoration: underline;
       }
     }
-    .left-nav {
+    .prev-tab {
       text-align: left;
       i {
         text-decoration: underline;
