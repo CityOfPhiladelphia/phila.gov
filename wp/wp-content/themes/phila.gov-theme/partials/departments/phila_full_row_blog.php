@@ -32,8 +32,11 @@
     $blog_tag_override = '';
   elseif( is_array( $blog_tag_override) ):
     $blog_tag_override = implode(',', $blog_tag_override);
+  elseif (!empty($blog_tag_override)):
+    $blog_tag_override = $blog_tag_override;
   endif;
   ?>
+
 <section class="row">
   <?php 
     global $post;
