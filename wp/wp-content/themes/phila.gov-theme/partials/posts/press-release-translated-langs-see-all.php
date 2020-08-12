@@ -26,8 +26,7 @@ endif;
         ),
         array(
           'key' => 'phila_select_language',
-          'value' => '',
-          'compare' => '!=',
+          'compare' => 'NOT EXISTS'
         ),
       ),
     )
