@@ -47,12 +47,6 @@ class Phila_Gov_Row_Metaboxes {
     'fields' => array(
       Phila_Gov_Row_Select_Options::phila_metabox_tabbed_select(),
       array(
-        'id' => 'phila_metabox_tabbed_single_title',
-        'type'  => 'group',
-        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_single_title'),
-        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_single_title()
-      ),
-      array(
         'id' => 'phila_metabox_tabbed_single_wysiwyg',
         'type'  => 'group',
         'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_single_wysiwyg'),

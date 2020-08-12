@@ -38,9 +38,7 @@ if (!phila_util_is_array_empty($tabs)):
 </div>
 
 <div class="action-guide-v2-container-mobile">
-  <?php include(locate_template('partials/posts/action_guide_v2/components/mobile/action-guide-content-tab-2-mobile.php')); ?>
-  <?php include(locate_template('partials/posts/action_guide_v2/components/mobile/action-guide-content-tab-1-mobile.php')); ?>
-  <?php include(locate_template('partials/posts/action_guide_v2/components/mobile/action-guide-content-tab-3-mobile.php')); ?>
+  <?php include(locate_template('partials/posts/action_guide_v2/components/mobile/action-guide-content-tab-mobile.php')); ?>
 </div>
 
 <?php endif;?>
