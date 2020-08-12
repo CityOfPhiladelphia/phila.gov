@@ -93,8 +93,21 @@
         .accordion-title {
           &:before {
             border-left: 5px solid white;
+            padding: 0.8rem 0.95rem;
           }
         } 
+        .accordion-content {
+          ul {
+            list-style-type: disc;
+          }
+        }
+        &.is-active {
+          .accordion-title {
+            &:before {
+              padding: 0.6rem 0.95rem 1rem 0.95rem !important;
+            }
+          }
+        }
       }
     }
     }

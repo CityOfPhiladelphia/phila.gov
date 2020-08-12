@@ -111,7 +111,6 @@ class Phila_Gov_Row_Select_Options {
       'class' => 'percent-100',
       'placeholder' => 'Select tabbed row module...',
       'options' => array(
-        'phila_metabox_tabbed_single_title'  => 'Single title',
         'phila_metabox_tabbed_single_wysiwyg'  => 'Single wysiwyg',
         'phila_metabox_tabbed_repeater_wysiwyg'  => 'Repeater wysiwyg',
         'phila_metabox_tabbed_stepped_content'  => 'Stepped content',
@@ -180,6 +179,15 @@ class Phila_Gov_Row_Select_Options {
         'type' => 'group',
         'fields'  => array(
           array(
+            'id'  => 'phila_wysiwyg_title',
+            'type'  => 'text',
+            'class' => 'percent-100'
+          ),
+          array(
+            'id'  => 'phila_wysiwyg_content',
+            'type'  => 'wysiwyg',
+          ),
+          array(
             'name'  => 'Tab stepped content',
             'id'  => 'phila_ordered_content',
             'type'  => 'group',
@@ -201,16 +209,6 @@ class Phila_Gov_Row_Select_Options {
             )
           )
         )
-      )
-    );
-  }
-
-  public static function phila_metabox_tabbed_single_title( ){
-    return array (
-      array(
-        'id'   => 'phila_single_title',
-        'name'  => 'Tab title',
-        'type' => 'text',
       )
     );
   }

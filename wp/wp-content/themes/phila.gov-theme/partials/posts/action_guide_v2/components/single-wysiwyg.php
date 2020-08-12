@@ -13,14 +13,7 @@
             <?php foreach ($current_tab['phila_row'] as $row_key => $value):?>
               <?php $current_row = $current_tab['phila_row'][$row_key]['phila_tabbed_options']; ?>
               <?php $current_row_option = $current_row['phila_tabbed_select']; ?>
-              <?php if ( $current_row_option == 'phila_metabox_tabbed_single_title' && isset($current_row[$current_row_option]['phila_single_title'])):?>
-
-                <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_single_title']));?>
-                <li class="pvs-mu phl-mu phs">
-                  <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $current_row[$current_row_option]['phila_single_title']; ?></a>
-                </li>
-
-              <?php elseif ( $current_row_option == 'phila_metabox_tabbed_repeater_wysiwyg'):?>
+              <?php if ( $current_row_option == 'phila_metabox_tabbed_repeater_wysiwyg'):?>
 
                 <?php $step_content = phila_loop_clonable_metabox( $current_row[$current_row_option]['step_repeater_wysiwyg'] ); ?>
                 <?php foreach( $step_content as $content ) :?>
