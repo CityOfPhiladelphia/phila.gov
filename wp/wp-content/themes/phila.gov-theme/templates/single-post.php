@@ -74,15 +74,7 @@ $language_list = phila_get_translated_language( $language );
   </header>
 
   <?php  if ( count( $language_list ) != 1 ): ?>
-    <div class="translated-content-desktop">
-      <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
-    </div>
-    <div class="translated-content-tablet">
-      <?php include(locate_template ('partials/posts/post-translated-content-tablet.php') ); ?>
-    </div>
-    <div class="translated-content-mobile">
-      <?php include(locate_template ('partials/posts/post-translated-content-mobile.php') ); ?>
-    </div>
+    <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
   <?php endif; ?>
 
 
