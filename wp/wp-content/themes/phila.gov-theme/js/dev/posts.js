@@ -27,6 +27,49 @@ if (typeof phila_js_vars !== 'undefined') {
   });
 }
 
+
+if (typeof phila_language_list !== 'undefined') {
+  let phila_language_list_count = Object.keys(phila_language_list).length;
+  phila_language_list.entries = Object.entries(phila_language_list);
+
+  for (let item in phila_language_list.entries) {
+    let li = $("<li/>");
+    li.addClass("phm phs");
+    if(phila_language_list.entries[item][1] == window.location.href) {
+      li.addClass("active");
+      li.text(phila_language_list.entries[item][0]);
+    }
+    else {
+      let a_tag = $("<a/>");
+      a_tag.addClass("translation-link");
+      a_tag.attr('href',phila_language_list.entries[item][1])
+      a_tag.text(phila_language_list.entries[item][0]);
+      li.append(a_tag);
+    }
+    phila_language_list.entries[item][0] = li;
+  }
+
+  for (let i=0; i < phila_language_list_count; i++) {
+    if(phila_language_list_count >= 9) {
+      if (window.matchMedia('(max-width: 660px)').matches && i >= 2) {
+        $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
+      }
+      else if (window.matchMedia('(max-width: 980px)').matches && i >= 4) {
+        $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
+      }
+      else if (i >= 8){
+        $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
+      }
+      else {
+        $('#main-translation-bar').append(phila_language_list.entries.shift()[0]);
+      }
+    }
+    else {
+      $('#main-translation-bar').append(phila_language_list.entries.shift()[0]);
+    }
+  }
+}
+
 $(function(){
   //modal for any image that's been added to the page and linked to.
   var $modal = $('#phila-lightbox');
