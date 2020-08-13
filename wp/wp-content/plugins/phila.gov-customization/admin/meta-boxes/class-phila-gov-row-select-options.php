@@ -125,6 +125,7 @@ class Phila_Gov_Row_Select_Options {
         'id' => 'step_wysiwyg',
         'name'  => 'Single wysiwyg',
         'type' => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
       ),
       array(
         'id' => 'include_anchor_links',
@@ -162,6 +163,7 @@ class Phila_Gov_Row_Select_Options {
               array(
                 'id'  => 'phila_wysiwyg_content',
                 'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
               )
             )
           )
@@ -186,6 +188,7 @@ class Phila_Gov_Row_Select_Options {
           array(
             'id'  => 'phila_wysiwyg_content',
             'type'  => 'wysiwyg',
+            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
           ),
           array(
             'name'  => 'Tab stepped content',
@@ -205,6 +208,7 @@ class Phila_Gov_Row_Select_Options {
               array(
                 'id'  => 'phila_step_wysiwyg_content',
                 'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
               ),
             )
           )

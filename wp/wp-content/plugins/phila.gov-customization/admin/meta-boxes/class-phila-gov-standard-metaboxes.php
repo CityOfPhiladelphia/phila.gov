@@ -39,6 +39,22 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_wysiwyg_options_advanced_small(){
+
+    return array(
+      'media_buttons' => true,
+      'teeny' => true,
+      'dfw' => false,
+      'tinymce' => phila_setup_tiny_mce_basic(
+        array(
+          'format_select' => true,
+          'heading_level' => 'h3'
+        )
+      ),
+      'editor_height' => 200,
+    );
+  }
+
   public static function phila_metabox_v2_address_fields($id = 'address_group'){
 
     //Default address fields
