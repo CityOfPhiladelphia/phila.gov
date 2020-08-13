@@ -35,7 +35,7 @@ if (typeof phila_language_list !== 'undefined') {
   for (let item in phila_language_list.entries) {
     let li = $("<li/>");
     li.addClass("phm phs");
-    if(phila_language_list.entries[item][1] == window.location.href) {
+    if(phila_language_list.entries[item][1] == window.location.href.split('?')[0]) {
       li.addClass("active");
       li.text(phila_language_list.entries[item][0]);
     }
