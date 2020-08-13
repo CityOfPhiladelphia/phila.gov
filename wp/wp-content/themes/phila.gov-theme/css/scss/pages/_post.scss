@@ -169,26 +169,3 @@
     }
   }
 }
-
-.translated-content-tablet,
-.translated-content-mobile {
-  display: none;
-}
-
-@media screen and (max-width: 980px) {
-  .translated-content-desktop {
-    display: none;
-  }
-  .translated-content-tablet {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  .translated-content-tablet {
-    display: none;
-  }
-  .translated-content-mobile {
-    display: block;
-  }
-}
