@@ -40,6 +40,13 @@
   &.active {
     display: block;
   }
+  &.content-action_guide {
+    .mbl {
+      ul {
+        line-height: 2.5rem;
+      }
+    }
+  }
 
   .tab-nav {
     color: #0F4D90;

@@ -10,7 +10,7 @@
             <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
           <?php endif;?>
           <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_content'] )): ?>
-            <div class="phm">
+            <div class="plm">
               <?php echo apply_filters( 'the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']) ?>
             </div>
           <?php endif;?>

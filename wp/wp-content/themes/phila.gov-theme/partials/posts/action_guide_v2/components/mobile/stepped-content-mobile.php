@@ -10,7 +10,7 @@
         <div class="medium-24 cell pbm">
           <?php $steps = $current_row[$current_row_option]['phila_stepped_content']['phila_ordered_content']; ?>
           <div class="mbl">
-            <div class="phm">
+            <div class="plm">
             <?php include( locate_template( 'partials/stepped-content.php' ) ); ?>
             </div>
           </div>
