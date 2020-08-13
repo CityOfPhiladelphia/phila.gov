@@ -16,8 +16,15 @@ module.exports = $(function () {
   };
 
   $( document ).ready(function() {
-    let activeTabNumber = getUrlParameter('tab');
-    tabNavigation( activeTabNumber );
+    if($('.action-guide-v2').length !== 0) {
+      let activeTabNumber = getUrlParameter('tab');
+      if(activeTabNumber) {
+        tabNavigation( activeTabNumber );
+      }
+      else {
+        tabNavigation( 1 );
+      }
+    }
   });
 
   function tabNavigation( destinationTabNumber ) {
