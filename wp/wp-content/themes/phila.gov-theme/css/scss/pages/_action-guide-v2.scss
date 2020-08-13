@@ -1,40 +1,36 @@
 .action-guide-v2-tabs {
-  .tab-label {
-    text-align: center;
-    width: calc(33.33333% - 2px);
-    margin: 0px;
-    &#step-1-label {
-      margin-right: 3px;
-    }
-    &#step-3-label {
-      margin-left: 3px;
-    }
-
-    &:not(.active) {
-      cursor: pointer;
-    }
-    i {
-      padding: 8px 0px;
-    }
-    .label-copy {
-      font-family: "Montserrat";
-      font-size: 18px;
-      letter-spacing: 0;
-      line-height: 22px;
-      text-decoration: underline;
-      max-width: 200px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .active-bar {
-      display: block;
-      height: 10px;
-    }
-    &.active {
-      background: none !important;
-      color: #444444;
+  .grid-x {
+    gap: 3px;
+    .tab-label {
+      flex: 1 0 10%;
+      text-align: center;
+      margin: 0px;
+      &:not(.active) {
+        cursor: pointer;
+      }
+      i {
+        padding: 8px 0px;
+      }
+      .label-copy {
+        font-family: "Montserrat";
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: 22px;
+        text-decoration: underline;
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .active-bar {
+        display: block;
+        height: 10px;
+      }
+      &.active {
+        background: none !important;
+        color: #444444;
+      }
     }
   }
 }
