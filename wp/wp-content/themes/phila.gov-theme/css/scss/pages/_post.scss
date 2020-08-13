@@ -158,11 +158,8 @@
           }
           li {
             width: 100%;
-            text-align: left;
+            text-align: center;
             padding: 1rem;
-            @media screen and (max-width: 660px) {
-              text-align: center;
-            }
             a {
               padding: 0px;
             }
