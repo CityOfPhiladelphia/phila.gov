@@ -6,7 +6,7 @@
     $current_tab = $tabs[$tab_label_key];
     $tab_id = $tab_label_key+1;
   ?>
-    <div class="cell medium-8 tab-label bg-dark-ben-franklin white <?php echo ($tab_id == 1) ? 'active' : '' ?>" id="step-<?php echo $tab_id?>-label">
+    <div class="cell tab-label bg-dark-ben-franklin white <?php echo ($tab_id == 1) ? 'active' : '' ?>" id="step-<?php echo $tab_id?>-label">
       <div class="bg-dark-ben-franklin active-bar"></div>
       <?php if( isset($current_tab['tab_icon'])) :?>
         <i class="<?php echo $current_tab['tab_icon'] ?> fa-2x" aria-hidden="true"></i>
