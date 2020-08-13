@@ -1,36 +1,36 @@
 <!-- Translated content -->
 <?php 
-$language_list_desktop = $language_list;
+$language_list_mobile = $language_list;
 
 // unset english item
-if ($key = array_search('english', array_keys($language_list_desktop)) !== false) {
-  $english_item = $language_list_desktop['english'];
+if ($key = array_search('english', array_keys($language_list_mobile)) !== false) {
+  $english_item = $language_list_mobile['english'];
   $english_item_key = 'english';
-  unset($language_list_desktop['english']);
+  unset($language_list_mobile['english']);
 }
 
 // unset active item
-if (($key = array_search(get_the_permalink(), $language_list_desktop)) !== false) {
-  $active_item = $language_list_desktop[$key];
+if (($key = array_search(get_the_permalink(), $language_list_mobile)) !== false) {
+  $active_item = $language_list_mobile[$key];
   $active_item_key = $key;
-  unset($language_list_desktop[$key]);
+  unset($language_list_mobile[$key]);
 }
 
 // reinsert items
 if(isset($active_item) && isset($english_item)) {
-  $language_list_desktop = array_merge(array($active_item_key => $active_item), $language_list_desktop);
-  $language_list_desktop = array_merge(array($english_item_key => $english_item), $language_list_desktop);
+  $language_list_mobile = array_merge(array($active_item_key => $active_item), $language_list_mobile);
+  $language_list_mobile = array_merge(array($english_item_key => $english_item), $language_list_mobile);
 }
 elseif(isset($english_item)) {
-  $language_list_desktop = array_merge(array($english_item_key => $english_item), $language_list_desktop);
+  $language_list_mobile = array_merge(array($english_item_key => $english_item), $language_list_mobile);
 }
 elseif(isset($active_item)) {
-  $language_list_desktop = array_merge(array($active_item_key => $active_item), $language_list_desktop);
+  $language_list_mobile = array_merge(array($active_item_key => $active_item), $language_list_mobile);
 }
 
-if ( count( $language_list_desktop ) >= 9 ) {
-  $language_list_overflow = array_slice($language_list_desktop, 8);
-  $language_list_desktop = array_slice($language_list_desktop, 0, 8, true);
+if ( count( $language_list_mobile ) >= 9 ) {
+  $language_list_overflow = array_slice($language_list_mobile, 2);
+  $language_list_mobile = array_slice($language_list_mobile, 0, 2, true);
 }
 ?>
 
@@ -38,7 +38,7 @@ if ( count( $language_list_desktop ) >= 9 ) {
     <div class="grid-x medium-24 bg-ghost-gray mvl translations">
       <span class="phm globe"><i class="fas fa-globe fa-2x"></i></span>
       <ul class="inline-list no-bullet mbn pln">
-        <?php foreach ($language_list_desktop as $key => $value): ?>
+        <?php foreach ($language_list_mobile as $key => $value): ?>
           <?php echo ( $value === get_the_permalink() ) 
             ? '<li class="phm phs active">' . phila_language_output($key) .'</li>' 
             : '<li class="phm phs"><a class="translation-link" href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
@@ -59,7 +59,7 @@ if ( count( $language_list_desktop ) >= 9 ) {
             </li>
           </ul>
         </div>
-        <?php } ?>
+      <?php } ?>
 
     </div>
   </div>
