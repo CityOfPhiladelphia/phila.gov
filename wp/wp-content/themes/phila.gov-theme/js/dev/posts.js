@@ -34,14 +34,13 @@ if (typeof phila_language_list !== 'undefined') {
 
   for (let item in phila_language_list.entries) {
     let li = $("<li/>");
-    li.addClass("phm phs");
     if(phila_language_list.entries[item][1] == window.location.href.split('?')[0]) {
-      li.addClass("active");
+      li.addClass("phm phs active");
       li.text(phila_language_list.entries[item][0]);
     }
     else {
       let a_tag = $("<a/>");
-      a_tag.addClass("translation-link");
+      a_tag.addClass("phm phs translation-link");
       a_tag.attr('href',phila_language_list.entries[item][1])
       a_tag.text(phila_language_list.entries[item][0]);
       li.append(a_tag);
