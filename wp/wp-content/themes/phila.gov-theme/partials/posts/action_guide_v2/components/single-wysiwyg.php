@@ -2,9 +2,9 @@
 <div class="grid-x grid-margin-x mvl">
   <div class="medium-24 cell pbs">
       <div class="mbl">
-        <?php if( isset($current_row[$current_row_option]['step_wysiwyg'])): ?>
+        <?php if( isset($current_row[$current_row_option]['phila_wysiwyg_content'])): ?>
           <div>
-            <?php echo apply_filters( 'the_content', $current_row[$current_row_option]['step_wysiwyg']) ?>
+            <?php echo apply_filters( 'the_content', $current_row[$current_row_option]['phila_wysiwyg_content']) ?>
           </div>
         <?php endif; ?>
         <!-- Anchor links -->
