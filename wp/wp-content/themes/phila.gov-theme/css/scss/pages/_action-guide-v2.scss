@@ -45,6 +45,11 @@
       li {
         margin-bottom: 1rem;
       }
+      .no-bullet {
+        li {
+          margin-bottom: 0px;
+        }
+      }
     }
   }
 
