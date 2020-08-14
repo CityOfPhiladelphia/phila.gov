@@ -60,11 +60,7 @@ class Phila_Gov_Collection_Page {
                 ),
 
               'fields'  => array(
-                array(
-                  'name' => '1/4 Heading',
-                  'id'   => 'phila_custom_text_title',
-                  'type' => 'text',
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
                 Phila_Gov_Standard_Metaboxes::phila_program_page_selector( $multiple = true ),
               )
             ),
@@ -77,11 +73,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                array(
-                  'name' => '1/4 Heading',
-                  'id'   => 'phila_custom_text_title',
-                  'type' => 'text',
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
                 Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector( $multiple = true ),
               )
             ),
@@ -117,11 +109,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                array(
-                  'name' => '1/4 Heading',
-                  'id'   => 'phila_custom_text_title',
-                  'type' => 'text',
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
                 array(
                   'id'    => 'document_page_group',
                   'type'  => 'group',

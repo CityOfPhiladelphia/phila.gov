@@ -291,12 +291,7 @@ class Phila_Gov_Post {
           'sort_clone' => true,
           'add_button'  => '+ Add tab',
           'fields' => array(
-            array(
-              'name' => 'Tab label',
-              'id'   => 'tab_label',
-              'type' => 'text',
-              'required' => true,
-            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab label', 'tab_label', true),
             array(
               'name'  => 'Tab icon',
               'id'  => 'tab_icon',
