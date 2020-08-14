@@ -282,11 +282,7 @@ $meta_boxes[] = array(
             'on_label'  => 'Yes',
             'off_label' => 'No',
           ),
-          array(
-            'id' => 'phila_feat_locations_grid__header',
-            'type' => 'text',
-            'name' => 'Header'
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Header', 'phila_feat_locations_grid__header'),
           array(
             'id'  => 'phila_feat_locations_grid__desc',
             'type'  => 'wysiwyg',

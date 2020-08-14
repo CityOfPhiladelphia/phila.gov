@@ -67,31 +67,11 @@ class Phila_Gov_Standard_Metaboxes {
           'type' => 'heading',
           'name' => 'Address',
         ),
-        array(
-          'name' => 'Street Address 1',
-          'id'   => 'phila_std_address_st_1',
-          'type' => 'text',
-        ),
-        array(
-          'name' => 'Street Address 2',
-          'id'   => 'phila_std_address_st_2',
-          'type' => 'text',
-        ),
-        array(
-          'name' => 'City',
-          'id'   => 'phila_std_address_city',
-          'type' => 'text',
-        ),
-        array(
-          'name' => 'State',
-          'id'   => 'phila_std_address_state',
-          'type' => 'text',
-        ),
-        array(
-          'name' => 'Zip',
-          'id'   => 'phila_std_address_zip',
-          'type' => 'text',
-        ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Street Address 1', 'phila_std_address_st_1'),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Street Address 2', 'phila_std_address_st_2'),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('City', 'phila_std_address_city'),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('State', 'phila_std_address_state'),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Zip', 'phila_std_address_zip'),
         array(
           'name' => 'Phone number',
           'id'   => 'phila_std_address_phone',
@@ -555,6 +535,25 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_metabox_v2_phila_text($name = '', $id = '', $required= false){
+    return array(
+      'name' => $name,
+      'id'   => $id,
+      'type' => 'text',
+      'required' => $required,
+    );
+  }
+
+  // public static function phila_metabox_v2_phila_wysiwyg_title(){
+  //   return array(
+  //     'name'  => 'Tab icon',
+  //     'id'  => 'tab_icon',
+  //     'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
+  //     'type'  => 'text',
+  //     'required' => true,
+  //   ),
+  // }
+
   public static function phila_metabox_v2_ordered_content_adv_wysiwyg(){
     return array(
       'name'  => 'Tab stepped content',
@@ -961,11 +960,7 @@ class Phila_Gov_Standard_Metaboxes {
   public static function phila_meta_var_list_items (){
 
     return array(
-      array(
-        'name' => 'Row Title',
-        'id'   => 'phila_row_title',
-        'type' => 'text',
-        ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Row Title', 'phila_row_title'),
       array(
         'name' => 'Summary',
         'id'   => 'phila_summary',
@@ -988,21 +983,13 @@ class Phila_Gov_Standard_Metaboxes {
           'clone'  => true,
           'sort_clone' => true,
           'fields' => array(
-            array(
-              'name' => __('Item Title', 'rwmb'),
-              'id'   => 'phila_list_item_title',
-              'type' => 'text',
-            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('Item Title', 'rwmb'), 'phila_row_title'),
             array(
               'name' => __('Item URL', 'rwmb'),
               'id'   => 'phila_list_item_url',
               'type' => 'url',
             ),
-            array(
-              'name' => __('Item Icon', 'rwmb'),
-              'id'   => 'phila_list_item_type',
-              'type' => 'text',
-            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('Item Icon', 'rwmb'), 'phila_list_item_type'),
           ),
         ),
       ),
@@ -1027,31 +1014,11 @@ public static function phila_meta_var_connect(){
             'type' => 'heading',
             'name' => 'Address',
           ),
-          array(
-          'name' => 'Street Address 1',
-          'id'   => 'phila_connect_address_st_1',
-          'type' => 'text',
-          ),
-          array(
-          'name' => 'Street Address 2',
-          'id'   => 'phila_connect_address_st_2',
-          'type' => 'text',
-          ),
-          array(
-          'name' => 'City',
-          'id'   => 'phila_connect_address_city',
-          'type' => 'text',
-          ),
-          array(
-          'name' => 'State',
-          'id'   => 'phila_connect_address_state',
-          'type' => 'text',
-          ),
-          array(
-          'name' => 'Zip',
-          'id'   => 'phila_connect_address_zip',
-          'type' => 'text',
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Street Address 1', 'phila_connect_address_st_1'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Street Address 2', 'phila_connect_address_st_2'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('City', 'phila_connect_address_city'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('State', 'phila_connect_address_state'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Zip', 'phila_connect_address_zip'),
         ),
       ),
       array(
@@ -1171,11 +1138,7 @@ public static function phila_meta_var_connect(){
         'id'   => 'phila_quote',
         'type' => 'textarea',
       ),
-      array(
-        'name' => 'Attribution',
-        'id'   => 'phila_attribution',
-        'type' => 'text',
-      ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Attribution', 'phila_attribution'),
     );
   }
 
@@ -1440,11 +1403,7 @@ public static function phila_meta_var_connect(){
       'add_button' => '+ Add another group',
 
       'fields' => array(
-        array(
-          'name' => __('Group title', 'rwmb'),
-          'id'   => 'phila_resource_list_title',
-          'type' => 'text',
-        ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('Group title', 'rwmb'), 'phila_resource_list_title'),
         array(
           'id'   => 'phila_resource_list_items',
           'type' => 'group',
@@ -1453,12 +1412,7 @@ public static function phila_meta_var_connect(){
           'add_button' => '+ Add a link',
 
           'fields' => array(
-            array(
-              'name' => __('Link text', 'rwmb'),
-              'id'   => 'phila_list_item_title',
-              'type' => 'text',
-              'required' => true,
-            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('Link text', 'rwmb'), 'phila_list_item_title', true),
             array(
               'name' => __('URL', 'rwmb'),
               'id'   => 'phila_list_item_url',
