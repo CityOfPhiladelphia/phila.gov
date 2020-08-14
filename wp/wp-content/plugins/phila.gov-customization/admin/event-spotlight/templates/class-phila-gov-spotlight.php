@@ -302,12 +302,7 @@ class Phila_Gov_Event_Spotlight_Template {
                 ),
               ),
               'fields' => array(
-                array(
-                  'name' => ('Accordion row title'),
-                  'id'   => 'accordion_row_title',
-                  'type' => 'text',
-                  'required' => true,
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(('Accordion row title'), 'accordion_row_title', true),
                 array(
                   'id'   => 'accordion_group',
                   'type' => 'group',

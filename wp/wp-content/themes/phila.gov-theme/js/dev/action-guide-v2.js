@@ -1,7 +1,7 @@
 module.exports = $(function () {
 
-  var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
+  function getUrlParameter(sParam) {
+    let sPageURL = window.location.search.substring(1),
       sURLVariables = sPageURL.split('&'),
       sParameterName,
       i;
@@ -16,117 +16,59 @@ module.exports = $(function () {
   };
 
   $( document ).ready(function() {
-    switch(getUrlParameter('tab')) {
-      case '1':
-        if (!$('#step-1-label').hasClass('active')) {
-          $('#tab-1-content').addClass('active');
-          $('#step-1-label').addClass('active');
-      
-          $('#step-2-label').removeClass('active');
-          $('#step-3-label').removeClass('active');
-          $('#tab-2-content').removeClass('active');
-          $('#tab-3-content').removeClass('active');
-          $( ".translation-link" ).each(function() {
-            var href = $(this).attr('href');
-            if (href) {
-              $(this).attr('href', href.split("?")[0] + '?tab=1');
-            }
-          });
-        }
-        break;
-      case '2':
-        if (!$('#step-2-label').hasClass('active')) {
-          $('#tab-2-content').addClass('active');
-          $('#step-2-label').addClass('active');
-    
-          $('#step-1-label').removeClass('active');
-          $('#step-3-label').removeClass('active');
-          $('#tab-1-content').removeClass('active');
-          $('#tab-3-content').removeClass('active');
-          $( ".translation-link" ).each(function() {
-            var href = $(this).attr('href');
-            if (href) {
-              $(this).attr('href', href.split("?")[0] + '?tab=2');
-            }
-          });
-        }
-        break;
-      case '3':
-        if (!$('#step-3-label').hasClass('active')) {
-          $('#tab-3-content').addClass('active');
-          $('#step-3-label').addClass('active');
-    
-          $('#step-2-label').removeClass('active');
-          $('#step-1-label').removeClass('active');
-          $('#tab-2-content').removeClass('active');
-          $('#tab-1-content').removeClass('active');
-          $( ".translation-link" ).each(function() {
-            var href = $(this).attr('href');
-            if (href) {
-              $(this).attr('href', href.split("?")[0] + '?tab=3');
-            }
-          });
-        }
-        break;
-      default:
+    if($('.action-guide-v2').length !== 0) {
+      let activeTabNumber = getUrlParameter('tab');
+      if(activeTabNumber) {
+        tabNavigation( activeTabNumber );
+      }
+      else {
+        tabNavigation( 1 );
+      }
     }
   });
 
-  $('#step-1-label, #step-2-to-1-nav span, #step-2-to-1-nav i').click(function () {
-    if (!$('#step-1-label').hasClass('active')) {
-      $('#tab-1-content').addClass('active');
-      $('#step-1-label').addClass('active');
-
-      $('#step-2-label').removeClass('active');
-      $('#step-3-label').removeClass('active');
-      $('#tab-2-content').removeClass('active');
-      $('#tab-3-content').removeClass('active');
-      history.pushState({}, null, window.location.origin+window.location.pathname+'?tab=1');
-      $( ".translation-link" ).each(function() {
-        var href = $(this).attr('href');
-        if (href) {
-          $(this).attr('href', href.split("?")[0] + '?tab=1');
+  function tabNavigation( destinationTabNumber ) {
+    let steps = $(".tab-label").length;
+    for (let i = 1; i <= steps; i++) {
+      let stepId = '#step-'+i+'-label';
+      let tabId = '#tab-'+i+'-content';
+      if (i == destinationTabNumber) {
+        if (!$(stepId).hasClass('active')) {
+          $(tabId).addClass('active');
+          $(stepId).addClass('active');  
+          history.pushState({}, null, window.location.origin+window.location.pathname+'?tab='+i);
+          $( ".translation-link" ).each(function() {
+            let href = $(this).attr('href');
+            if (href) {
+              $(this).attr('href', href.split("?")[0] + '?tab='+i);
+            }
+          });
         }
-      });
+      }
+      else {
+        $(stepId).removeClass('active');
+        $(tabId).removeClass('active');
+      }
     }
+  }
+
+  $('.next-tab').click(function () {
+    let activeTabNumber = getUrlParameter('tab');
+    let nextTabNumber = parseInt(activeTabNumber)+1;
+    tabNavigation( nextTabNumber );
   });
 
-  $('#step-2-label, #step-1-to-2-nav span, #step-1-to-2-nav i, #step-3-to-2-nav span, #step-3-to-2-nav i').click(function () {
-    if (!$('#step-2-label').hasClass('active')) {
-      $('#tab-2-content').addClass('active');
-      $('#step-2-label').addClass('active');
-
-      $('#step-1-label').removeClass('active');
-      $('#step-3-label').removeClass('active');
-      $('#tab-1-content').removeClass('active');
-      $('#tab-3-content').removeClass('active');
-      history.pushState({}, null, window.location.origin+window.location.pathname+'?tab=2');
-      $( ".translation-link" ).each(function() {
-        var href = $(this).attr('href');
-        if (href) {
-          $(this).attr('href', href.split("?")[0] + '?tab=2');
-        }
-      });
-    }
+  $('.prev-tab').click(function () {
+    let activeTabNumber = getUrlParameter('tab');
+    let prevTabNumber = parseInt(activeTabNumber)-1;
+    tabNavigation( prevTabNumber );
   });
 
-  $('#step-3-label, #step-2-to-3-nav span, #step-2-to-3-nav i').click(function () {
-    if (!$('#step-3-label').hasClass('active')) {
-      $('#tab-3-content').addClass('active');
-      $('#step-3-label').addClass('active');
-
-      $('#step-2-label').removeClass('active');
-      $('#step-1-label').removeClass('active');
-      $('#tab-2-content').removeClass('active');
-      $('#tab-1-content').removeClass('active');
-      history.pushState({}, null, window.location.origin+window.location.pathname+'?tab=3');
-      $( ".translation-link" ).each(function() {
-        var href = $(this).attr('href');
-        if (href) {
-          $(this).attr('href', href.split("?")[0] + '?tab=3');
-        }
-      });
-    }
+  $('.tab-label').click(function () {
+    let tab_id = $(this).attr('id');
+    let numberPattern = /\d+/g;
+    let tabNumber = tab_id.match( numberPattern )[0];
+    tabNavigation( tabNumber );
   });
 
 });
