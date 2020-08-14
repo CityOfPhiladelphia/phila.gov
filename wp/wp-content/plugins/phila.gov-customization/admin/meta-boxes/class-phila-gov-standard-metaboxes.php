@@ -619,6 +619,36 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_metabox_v2_timeline_repeater(){
+    return array(
+      'id' => 'timeline-items',
+      'type' => 'group',
+      'clone'  => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add timeline item',
+      'fields' => array(
+        array(
+          'name'  => 'Item date',
+          'id'    => 'phila_timeline_item_timestamp',
+          'type'  => 'date',
+          'class' =>  '',
+          'size'  =>  25,
+          'js_options' =>  array(
+            'dateFormat' => 'mm-dd-yy',
+            'controlType'=> 'select',
+            'oneLine'=> true,
+          ),
+        ),
+        array(
+          'name' => 'Item content',
+          'id'   => 'phila_timeline_item',
+          'type' => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+      ),
+    );
+  }
+
   public static function phila_v2_service_page_selector( $multiple = false ){
     return array(
       'id'  => 'phila_v2_service_page',
@@ -1496,33 +1526,7 @@ public static function phila_meta_var_connect(){
     'name'  => 'Title',
     'desc'     =>  'Content appears on homepage',
     ),
-    array(
-      'id' => 'timeline-items',
-      'type' => 'group',
-      'clone'  => true,
-      'sort_clone' => true,
-      'add_button'  => '+ Add timeline item',
-      'fields' => array(
-        array(
-          'name'  => 'Item date',
-          'id'    => 'phila_timeline_item_timestamp',
-          'type'  => 'date',
-          'class' =>  '',
-          'size'  =>  25,
-          'js_options' =>  array(
-            'dateFormat' => 'mm-dd-yy',
-            'controlType'=> 'select',
-            'oneLine'=> true,
-          ),
-        ),
-        array(
-          'name' => 'Item content',
-          'id'   => 'phila_timeline_item',
-          'type' => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
-        ),
-      ),
-    ),
+    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_timeline_repeater(),
   );
 }
 

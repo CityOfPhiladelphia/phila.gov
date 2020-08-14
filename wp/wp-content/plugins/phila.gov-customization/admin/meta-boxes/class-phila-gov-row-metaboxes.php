@@ -64,6 +64,12 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_stepped_content'),
         'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_stepped_content()
       ),
+      array(
+        'id' => 'phila_metabox_tabbed_timeline_content',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_timeline_content'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_timeline_content()
+      ),
     ),
   );
 }
