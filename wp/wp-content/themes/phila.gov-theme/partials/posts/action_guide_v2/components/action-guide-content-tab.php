@@ -25,6 +25,8 @@
               include(locate_template('partials/posts/action_guide_v2/components/repeater-wysiwyg.php')); 
             elseif ( $current_row_option == 'phila_metabox_tabbed_stepped_content'):
               include(locate_template('partials/posts/action_guide_v2/components/stepped-content.php')); 
+            elseif ( $current_row_option == 'phila_metabox_tabbed_timeline_content'):
+              include(locate_template('partials/posts/action_guide_v2/components/timeline-content.php'));
             endif;
           } // if row isset 
         } // row content 
