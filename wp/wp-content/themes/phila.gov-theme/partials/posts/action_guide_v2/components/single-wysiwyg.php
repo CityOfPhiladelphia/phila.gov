@@ -24,7 +24,23 @@
                     </li>
                   <?php endif;?>
                 <?php endforeach; ?>
-              <?php endif; ?>
+              <?php elseif ( $current_row_option == 'phila_metabox_tabbed_stepped_content'):?>
+
+                <?php if( isset($current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title'] )): ?>
+                  <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']));?>
+                  <li class="pvs-mu phl-mu phs">
+                    <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']; ?></a>
+                  </li>
+                <?php endif;?>
+              <?php elseif ( $current_row_option == 'phila_metabox_tabbed_timeline_content'):?>
+                
+                <?php if( isset($current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title'] )): ?>
+                  <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']));?>
+                  <li class="pvs-mu phl-mu phs">
+                    <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']; ?></a>
+                  </li>
+                <?php endif;?>  
+              <?php endif;?>  
             <?php endforeach; ?>
           </ul>
         <?php endif; ?>
