@@ -1,37 +1,56 @@
 <!-- Translated content -->
 <?php 
-if ( count( $language_list ) >= 9 ) {
-  $language_list_overflow = array_slice($language_list, 8);
-  $language_list = array_slice($language_list, 0, 8, true);
+
+// unset english item
+
+if ($key = array_search('english', array_keys($language_list)) !== false) {
+  $english_item = $language_list['english'];
+  $english_item_key = 'english';
+  unset($language_list['english']);
 }
+
+// unset active item
+if (($key = array_search(get_the_permalink(), $language_list)) !== false) {
+  $active_item = $language_list[$key];
+  $active_item_key = $key;
+  unset($language_list[$key]);
+}
+
+// reinsert items
+if(isset($active_item) && isset($english_item)) {
+  $language_list = array_merge(array($active_item_key => $active_item), $language_list);
+  $language_list = array_merge(array($english_item_key => $english_item), $language_list);
+}
+elseif(isset($english_item)) {
+  $language_list = array_merge(array($english_item_key => $english_item), $language_list);
+}
+elseif(isset($active_item)) {
+  $language_list = array_merge(array($active_item_key => $active_item), $language_list);
+}
+
+foreach ($language_list as $key => $value) {
+  $language_list[phila_language_output($key)] = $language_list[$key];
+  unset($language_list[$key]);
+}
+
+
+wp_localize_script( 'phila-scripts', 'phila_language_list', $language_list );
 ?>
 
 <div class="grid-container translations-container">
     <div class="grid-x medium-24 bg-ghost-gray mvl translations">
-      <span class="border-right phm-mu globe"><i class="fas fa-globe fa-2x"></i></span>
-      <ul class="inline-list no-bullet mbn pln">
-        <?php foreach ($language_list as $key => $value): ?>
-          <?php echo ( $value === get_the_permalink() ) 
-            ? '<li class="phm-mu phs active">' . phila_language_output($key) .'</li>' 
-            : '<li class="phm-mu phs"><a class="translation-link" href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
-        <?php endforeach; ?>
-        <?php if ( isset($language_list_overflow) ) { ?>
-          <li class="phm-mu phs">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li>
-                <a href="#" class="dropdown-selector"></a>
-                <ul class="menu">
-                  <?php foreach ($language_list_overflow as $key => $value): ?>
-                    <?php echo ( $value === get_the_permalink() ) 
-                      ? '<li class="phs active">' . phila_language_output($key) .'</li>' 
-                      : '<li class="phs"><a class="translation-link" href="' .  $value . '">' . phila_language_output($key) . '</a></li>' ?>
-                  <?php endforeach; ?>
-                </ul>
-              </li>
-            </ul>
-          </li>
+      <span class="phm globe"><i class="fas fa-globe fa-2x"></i></span>
+      <ul id="main-translation-bar" class="inline-list no-bullet mbn pln"></ul>
+      <?php if ( count( $language_list ) >= 9) { ?>
+        <div class="phm phs dropdown-container">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li>
+              <a href="#" class="dropdown-selector"></a>
+              <ul id="dropdown-translation-bar" class="menu"/></ul>
+            </li>
+          </ul>
+        </div>
         <?php } ?>
-      </ul>
 
     </div>
   </div>

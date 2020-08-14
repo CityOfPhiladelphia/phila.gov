@@ -365,6 +365,8 @@ class Phila_Gov_Register_Service_Templates {
       'visible' => array(
         'when' => array(
             array( 'phila_template_select', '=', 'default_v2' ),
+            array( 'phila_template_select', '=', 'topic_page' ),
+
           ),
         'relation'  => 'or'
       ),

@@ -112,63 +112,75 @@
 }
 
 .translations-container {
-
-  .globe {
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
   .inline-list {
-    width: calc(100% - (29px + 2rem));
-    @media screen and (max-width: 768px) {
-      width: 100%;
-    }
-      li {
+    width: calc(100% - (36px + 7rem));
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      text-align: center;
+      flex: 1 0 10%;
+      a {
+        display: block;
         padding: 1rem;
-        text-align: center;
-        @media screen and (min-width: 985px) {
-          width: 10.7%;
+      }
+      &:hover {
+        cursor: pointer;
+        background: color(dark-ben-franklin);
+        a {
+          color: #ffffff;
         }
-        @media screen and (max-width: 768px) {
-          padding: 0.5rem;
-        }
-        &.active {
-          color: white;
-          font-weight: 600;
-          background: #444444;
-        }
+      }
+      &.active {
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: 600;
+        background: color(dark-gray);
+      }
     }
   }
-  
-  .dropdown {
-    .dropdown-selector {
-      padding: 0px 0px 0px 10px !important;
-      &:after {
-        border-color: #2C60AB transparent transparent !important;
-      }
-    }
-    .is-dropdown-submenu-parent {
-      padding: 6px;
-    }
-    .is-active {
+  .dropdown-container {
+    width: auto;
+    float: right;
+    padding: 1rem 2rem; 
+    .dropdown {
       .dropdown-selector {
+        padding: 0px 0px 0px 10px !important;
         &:after {
-          transform: rotate(180deg);
+          border-color: #2C60AB transparent transparent !important;
         }
       }
-      .js-dropdown-active {
-        background: #f0f0f0;
-        margin-top: 20px;
-        margin-left: -134px;
-        li {
-          width: 100%;
-          text-align: left;
-          padding: 1rem;
-          @media screen and (max-width: 768px) {
-            padding: 0.5rem;
+      .is-dropdown-submenu-parent {
+        padding: 6px;
+      }
+      .is-active {
+        .dropdown-selector {
+          &:after {
+            transform: rotate(180deg);
           }
-          a {
-            padding: 0px;
+        }
+        .js-dropdown-active {
+          background: color(ghost-gray);
+          margin-top: 20px;
+          margin-left: -149px;
+          @media screen and (max-width: 660px) {
+            width: calc(100vw - 1rem);
+            margin: 20px auto 0px auto;
+            right: -29px;
+          }
+          li {
+            width: 100%;
+            text-align: center;
+            a {
+              line-height: 1.6;
+              padding: 1rem;
+            }
+            &:hover {
+              cursor: pointer;
+              background: color(dark-ben-franklin);
+              a {
+                color: #ffffff;
+              }
+            }
           }
         }
       }

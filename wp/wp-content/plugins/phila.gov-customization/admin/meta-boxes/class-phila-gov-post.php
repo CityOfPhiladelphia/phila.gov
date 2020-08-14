@@ -272,12 +272,12 @@ class Phila_Gov_Post {
         ),
       ),
     );
-
+    
     $meta_boxes[] = array(
-      'title'    => 'Step 1',
+      'title'    => 'Page content',
       'pages'    => array( 'post' ),
-      'context'  => 'normal',
       'priority' => 'high',
+      'revision' => true,
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'action_guide_v2'),
@@ -285,219 +285,23 @@ class Phila_Gov_Post {
       ),
       'fields' => array(
         array(
-          'name' => 'Step 1 label',
-          'id'   => 'step_1_label',
-          'type' => 'text',
-          'required' => true,
-        ),
-        array(
-          'id'  => 'step_1_icon',
-          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-          'name'  => 'Select icon',
-          'type'  => 'text',
-        ),
-        array(
-          'name'  => 'Tab description',
-          'id' => 'step_1_wysiwyg',
-          'type' => 'wysiwyg',
-        ),
-        array(
-          'id' => 'step_1_content',
+          'id' => 'phila_tabbed_content',
           'type' => 'group',
           'clone'  => true,
           'sort_clone' => true,
+          'add_button'  => '+ Add tab',
           'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab label', 'tab_label', true),
             array(
-              'name'  => 'Tab wysiwyg section',
-              'id'  =>  'phila_custom_wysiwyg',
-              'type'  => 'group',
-              'clone' => false,
-              'columns'=> 12,
-              'fields'  => array(
-                array(
-                  'id'  => 'phila_wysiwyg_title',
-                  'type'  => 'text',
-                  'class' => 'percent-100'
-                ),
-                array(
-                  'id'  => 'phila_wysiwyg_content',
-                  'type'  => 'wysiwyg',
-                )
-              )
-            )
+              'name'  => 'Tab icon',
+              'id'  => 'tab_icon',
+              'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
+              'type'  => 'text',
+              'required' => true,
+            ),
+            Phila_Gov_Row_Metaboxes::phila_tabbed_metabox_grid_row(),
           ),
         )
-      )
-    );
-
-    $meta_boxes[] = array(
-      'title'    => 'Step 2',
-      'pages'    => array( 'post' ),
-      'context'  => 'normal',
-      'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide_v2'),
-        ),
-      ),
-      'fields' => array(
-        array(
-          'name' => 'Step 2 label',
-          'id'   => 'step_2_label',
-          'type' => 'text',
-          'required' => true,
-        ),
-        array(
-          'id'  => 'step_2_icon',
-          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-          'name'  => 'Select icon',
-          'type'  => 'text',
-        ),
-        array(
-          'name'  => 'Tab description',
-          'id' => 'step_2_wysiwyg',
-          'type' => 'wysiwyg',
-        ),
-        array(
-          'id' => 'step_2_content_before_steps',
-          'type' => 'group',
-          'fields' => array(
-            array(
-              'name'  => 'Tab wysiwyg sections',
-              'id'  =>  'phila_custom_wysiwyg',
-              'type'  => 'group',
-              'clone' => false,
-              'columns'=> 12,
-              'fields'  => array(
-                array(
-                  'id'  => 'phila_wysiwyg_title',
-                  'type'  => 'text',
-                  'class' => 'percent-100'
-                ),
-                array(
-                  'id'  => 'phila_wysiwyg_content',
-                  'type'  => 'wysiwyg',
-                )
-              )
-            )
-          ),
-        ),
-        array(
-          'id' => 'phila_stepped_content_step_2',
-          'type' => 'group',
-          'fields'  => array(
-            array(
-              'name'  => 'Tab stepped content',
-              'id'  => 'phila_ordered_content',
-              'type'  => 'group',
-              'clone' => true,
-              'sort_clone'  => true,
-              'add_button'  => '+ Add a step',
-        
-              'fields'  => array(
-                array(
-                  'placeholder' => 'Step Heading',
-                  'id'  => 'phila_step_wysiwyg_heading',
-                  'type'  => 'text',
-                  'class' => 'percent-95'
-                ),
-                array(
-                  'id'  => 'phila_step_wysiwyg_content',
-                  'type'  => 'wysiwyg',
-                ),
-              )
-            )
-          )
-        ),
-        array(
-          'id' => 'step_2_content_after_steps',
-          'type' => 'group',
-          'clone'  => true,
-          'sort_clone' => true,
-          'fields' => array(
-            array(
-              'name'  => 'Tab wysiwyg section',
-              'id'  =>  'phila_custom_wysiwyg',
-              'type'  => 'group',
-              'clone' => false,
-              'columns'=> 12,
-              'fields'  => array(
-                array(
-                  'id'  => 'phila_wysiwyg_title',
-                  'type'  => 'text',
-                  'class' => 'percent-100'
-                ),
-                array(
-                  'id'  => 'phila_wysiwyg_content',
-                  'type'  => 'wysiwyg',
-                )
-              )
-            )
-          ),
-        )
-      )
-    );
-
-    $meta_boxes[] = array(
-      'title'    => 'Step 3',
-      'pages'    => array( 'post' ),
-      'context'  => 'normal',
-      'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide_v2'),
-        ),
-      ),
-      'fields' => array(
-        array(
-          'name' => 'Step 3 label',
-          'id'   => 'step_3_label',
-          'type' => 'text',
-          'required' => true,
-        ),
-        array(
-          'id'  => 'step_3_icon',
-          'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-          'name'  => 'Select icon',
-          'type'  => 'text',
-        ),
-        array(
-          'name'  => 'Tab description',
-          'id' => 'step_3_wysiwyg',
-          'type' => 'wysiwyg',
-        ),
-        array(
-          'name'  => 'Tab title',
-          'id'   => 'phila_stepped_content_step_3_title',
-          'type' => 'text',
-        ),
-        array(
-          'name'  => 'Tab stepped content',
-          'id' => 'phila_stepped_content_step_3',
-          'type' => 'group',
-          'fields'  => array(
-            array(
-              'id'  => 'phila_ordered_content',
-              'type'  => 'group',
-              'clone' => true,
-              'sort_clone'  => true,
-              'add_button'  => '+ Add a step',
-        
-              'fields'  => array(
-                array(
-                  'placeholder' => 'Step Heading',
-                  'id'  => 'phila_step_wysiwyg_heading',
-                  'type'  => 'text',
-                  'class' => 'percent-95'
-                ),
-                array(
-                  'id'  => 'phila_step_wysiwyg_content',
-                  'type'  => 'wysiwyg',
-                ),
-              )
-            )
-          )
-        ),
       )
     );
 

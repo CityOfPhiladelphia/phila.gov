@@ -44,3 +44,5 @@
   <?php endwhile;?>
 <?php endif; ?>
 <?php wp_reset_query(); ?>
+
+<?php get_template_part( 'partials/content', 'additional' ); ?>
