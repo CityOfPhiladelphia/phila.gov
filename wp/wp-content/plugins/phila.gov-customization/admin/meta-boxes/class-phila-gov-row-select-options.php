@@ -121,12 +121,7 @@ class Phila_Gov_Row_Select_Options {
   public static function phila_metabox_tabbed_single_wysiwyg( ){
 
     return array (
-      array(
-        'id' => 'step_wysiwyg',
-        'name'  => 'Single wysiwyg',
-        'type' => 'wysiwyg',
-        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
-      ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg('Single wysiwyg'),
       array(
         'id' => 'include_anchor_links',
         'name'  => 'Include anchor links?',
@@ -155,16 +150,8 @@ class Phila_Gov_Row_Select_Options {
             'clone' => false,
             'columns'=> 12,
             'fields'  => array(
-              array(
-                'id'  => 'phila_wysiwyg_title',
-                'type'  => 'text',
-                'class' => 'percent-100'
-              ),
-              array(
-                'id'  => 'phila_wysiwyg_content',
-                'type'  => 'wysiwyg',
-                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
-              )
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
             )
           )
         )
@@ -173,45 +160,15 @@ class Phila_Gov_Row_Select_Options {
   }
 
   public static function phila_metabox_tabbed_stepped_content( ){
-
     return array (
       array(
         'id' => 'phila_stepped_content',
         'name'  => 'Stepped content',
         'type' => 'group',
         'fields'  => array(
-          array(
-            'id'  => 'phila_wysiwyg_title',
-            'type'  => 'text',
-            'class' => 'percent-100'
-          ),
-          array(
-            'id'  => 'phila_wysiwyg_content',
-            'type'  => 'wysiwyg',
-            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
-          ),
-          array(
-            'name'  => 'Tab stepped content',
-            'id'  => 'phila_ordered_content',
-            'type'  => 'group',
-            'clone' => true,
-            'sort_clone'  => true,
-            'add_button'  => '+ Add a step',
-      
-            'fields'  => array(
-              array(
-                'placeholder' => 'Step Heading',
-                'id'  => 'phila_step_wysiwyg_heading',
-                'type'  => 'text',
-                'class' => 'percent-95'
-              ),
-              array(
-                'id'  => 'phila_step_wysiwyg_content',
-                'type'  => 'wysiwyg',
-                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
-              ),
-            )
-          )
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
         )
       )
     );
