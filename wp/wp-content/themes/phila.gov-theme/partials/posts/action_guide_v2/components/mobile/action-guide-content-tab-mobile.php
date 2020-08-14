@@ -31,6 +31,8 @@
                 include(locate_template('partials/posts/action_guide_v2/components/mobile/repeater-wysiwyg-mobile.php')); 
               elseif ( $current_row_option == 'phila_metabox_tabbed_stepped_content'):
                 include(locate_template('partials/posts/action_guide_v2/components/mobile/stepped-content-mobile.php')); 
+              elseif ( $current_row_option == 'phila_metabox_tabbed_timeline_content'):
+                include(locate_template('partials/posts/action_guide_v2/components/mobile/timeline-content-mobile.php')); 
               endif;
             ?>
             <?php } //end phila_tabbed_select isset ?>
