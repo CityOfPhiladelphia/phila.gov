@@ -114,6 +114,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_metabox_tabbed_single_wysiwyg'  => 'Single wysiwyg',
         'phila_metabox_tabbed_repeater_wysiwyg'  => 'Repeater wysiwyg',
         'phila_metabox_tabbed_stepped_content'  => 'Stepped content',
+        'phila_metabox_tabbed_timeline_content' => 'Timeline content'
       ),
     );
   }
@@ -169,6 +170,21 @@ class Phila_Gov_Row_Select_Options {
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
+        )
+      )
+    );
+  }
+
+  public static function phila_metabox_tabbed_timeline_content( ){
+    return array (
+      array(
+        'id' => 'phila_timeline_content',
+        'name'  => 'Timeline content',
+        'type' => 'group',
+        'fields'  => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_timeline_repeater(),
         )
       )
     );
