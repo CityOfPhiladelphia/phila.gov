@@ -10,7 +10,7 @@
   $post_categories = isset($category) ? $category : '';
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
   $is_tag = rwmb_meta('phila_get_post_cats');
-  $tag = isset($is_tag['tag']) ? $is_tag['tag'] : '';
+  $tag = isset($is_tag['tag']) ? $is_tag['tag'] : $a['tag'];
 ?>
 <?php if (!empty($post_categories)): ?>
   <?php foreach ($post_categories as $category ) {
@@ -52,19 +52,20 @@ if ( empty( $post_categories ) ) {
   $sticky_posts = new WP_Query( $sticky_args );
 
 }
+
 if( !empty($tag) && $tag != 'is_single' ) {
   $posts_args  = array(
-    'post_type' => array('post', 'phila_post'),
+    'post_type' => array('post'),
     'posts_per_page' => 3,
     'order' => 'desc',
     'orderby' => 'post_date',
-    'tag__in'  => $tag,
+    'tag__in'  => array($tag),
     'meta_query'  => array(
       'relation'  => 'AND',
       array(
         'key' => 'phila_template_select',
-        'value' => 'press_release',
-        'compare' => '!=',
+        'value' => 'post',
+        'compare' => '=',
       ),
       array(
         'relation'  => 'OR',
@@ -75,8 +76,7 @@ if( !empty($tag) && $tag != 'is_single' ) {
         ),
         array(
           'key' => 'phila_select_language',
-          'value' => '',
-          'compare' => '=',
+          'compare' => 'NOT EXISTS'
         ),
       ),
     )
@@ -107,12 +107,12 @@ if( !empty($tag) && $tag != 'is_single' ) {
         ),
         array(
           'key' => 'phila_select_language',
-          'value' => '',
-          'compare' => '=',
+          'compare' => 'NOT EXISTS'
         ),
       ),
     )
   );
+  
   $result = new WP_Query( $posts_args );
 
   $more_posts = new WP_Query( $posts_args );
@@ -120,6 +120,7 @@ if( !empty($tag) && $tag != 'is_single' ) {
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
+  
 }
 $result->post_count = count( $result->posts );
 

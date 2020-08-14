@@ -8,16 +8,15 @@
   endif;
 
   $image_count = count($image_list_vars['urls']);
-  $image_grid_count = phila_grid_column_counter($image_count);
 
   if ($image_count == 5){
     $grid_count = 6;
-  }
-  if ($image_count == 6) {
+  }else if ($image_count == 6) {
     $grid_count = 8;
-  }
-  if($image_count >= 9){
+  }else if($image_count >= 9){
     $grid_count = 6;
+  }else{
+    $grid_count = phila_grid_column_counter($image_count);
   }
 
   if(isset($image_list_vars['extended'])) {
@@ -40,7 +39,7 @@
   <div class="grid-container">
     <div class="grid-x <?php echo ( $image_count == 1 ) ? '' : 'center' ?> align-middle">
         <?php foreach( $image_list_vars['urls'] as $url ) : ?>
-          <div class="cell image-list medium-<?php echo $image_grid_count ?> mbl">
+          <div class="cell image-list medium-<?php echo $image_count ?> mbl">
             <img src=<?php echo $url ?> alt=""/>
           </div>
         <?php endforeach; ?>
