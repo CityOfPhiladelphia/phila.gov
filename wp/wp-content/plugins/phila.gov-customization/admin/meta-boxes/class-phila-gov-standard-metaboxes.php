@@ -142,12 +142,7 @@ class Phila_Gov_Standard_Metaboxes {
                   'type' => 'email',
                   'desc' => 'example@phila.gov',
                 ),
-                array(
-                  'name' => 'Explanation text for email',
-                  'id'   => 'phila_connect_email_exp',
-                  'type' => 'text',
-                  'desc' => 'Ex. For press inquiries contact:',
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
                 array(
                   'name' => 'Fax',
                   'id'   => 'phila_connect_fax',
@@ -535,12 +530,13 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_phila_text($name = '', $id = '', $required= false){
+  public static function phila_metabox_v2_phila_text($name = '', $id = '', $required= false, $desc = ''){
     return array(
       'name' => $name,
       'id'   => $id,
       'type' => 'text',
       'required' => $required,
+      'desc' => $desc,
     );
   }
 
@@ -1066,12 +1062,7 @@ public static function phila_meta_var_connect(){
             'type' => 'email',
             'desc' => 'example@phila.gov',
           ),
-          array(
-            'name' => 'Explanation text for email',
-            'id'   => 'phila_connect_email_exp',
-            'type' => 'text',
-            'desc' => 'Ex. For press inquiries contact:',
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
           array(
             'name' => 'Phone',
             'id'   => 'phila_connect_phone',
