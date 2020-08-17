@@ -53,7 +53,7 @@ module.exports = $(function () {
   }
 
   $('.next-tab').click(function () {
-    let activeTabNumber = getUrlParameter('tab');
+    let activeTabNumber = getUrlParameter('tab') || 1;
     let nextTabNumber = parseInt(activeTabNumber)+1;
     tabNavigation( nextTabNumber );
   });
