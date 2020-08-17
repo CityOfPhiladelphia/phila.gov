@@ -540,16 +540,6 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  // public static function phila_metabox_v2_phila_wysiwyg_title(){
-  //   return array(
-  //     'name'  => 'Tab icon',
-  //     'id'  => 'tab_icon',
-  //     'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-  //     'type'  => 'text',
-  //     'required' => true,
-  //   ),
-  // }
-
   public static function phila_metabox_v2_ordered_content_adv_wysiwyg(){
     return array(
       'name'  => 'Tab stepped content',
