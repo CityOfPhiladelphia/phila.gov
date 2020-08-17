@@ -675,12 +675,7 @@ class Phila_Gov_Row_Metaboxes {
                 'type' => 'email',
                 'desc' => 'example@phila.gov',
               ),
-              array(
-                'name' => 'Explanation text for email',
-                'id'   => 'phila_connect_email_exp',
-                'type' => 'text',
-                'desc' => 'Ex. For press inquiries contact:',
-              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
               array(
                 'name' => 'Fax',
                 'id'   => 'phila_connect_fax',

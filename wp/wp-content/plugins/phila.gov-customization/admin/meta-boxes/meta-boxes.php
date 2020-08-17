@@ -847,11 +847,7 @@ $meta_boxes[] = array(
       'name' => 'Icon selection',
       'type'  => 'heading'
     ),
-    array(
-      'id' => 'phila_page_icon',
-      'type' => 'text',
-      'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'
-    )
+    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_page_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'),
   )
 );
 

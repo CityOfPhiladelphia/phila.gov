@@ -291,14 +291,8 @@ class Phila_Gov_Post {
           'sort_clone' => true,
           'add_button'  => '+ Add tab',
           'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab label', 'tab_label', true),
-            array(
-              'name'  => 'Tab icon',
-              'id'  => 'tab_icon',
-              'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-              'type'  => 'text',
-              'required' => true,
-            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab label', 'tab_label', true, 'Navigation text for tabbed content'),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab icon', 'tab_icon', true, 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.'),
             Phila_Gov_Row_Metaboxes::phila_tabbed_metabox_grid_row(),
           ),
         )
