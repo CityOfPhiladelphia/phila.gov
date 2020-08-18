@@ -244,6 +244,22 @@ function phila_register_meta_boxes( $meta_boxes ){
                             'type' => 'wysiwyg',
                             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
                           ),
+                          array(
+                            'id'  => 'phila_longform_document_quaternary_section',
+                            'type' => 'group',
+                            'clone'  => true,
+                            'sort_clone' => true,
+                            'add_button' => '+ Add a quaternary section',
+
+                            'fields' => array(
+                              array(
+                                'name' => 'Quaternary Section Description',
+                                'id'   => 'phila_longform_document_quaternary_section_description',
+                                'type' => 'wysiwyg',
+                                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+                              ),
+                            )
+                          ),
                         )
                       ),
                     )
