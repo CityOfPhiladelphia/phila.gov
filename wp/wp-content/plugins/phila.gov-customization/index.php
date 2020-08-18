@@ -92,7 +92,6 @@ require $dir. '/public/controllers/class-phila-documents.php';
 require $dir. '/public/controllers/class-phila-document-finder.php';
 require $dir. '/public/controllers/class-phila-jobs.php';
 require $dir. '/public/controllers/class-phila-last-updated.php';
-require $dir. '/public/controllers/class-phila-longform-content.php';
 require $dir. '/public/controllers/class-phila-pages.php';
 require $dir. '/public/controllers/class-phila-posts.php';
 require $dir. '/public/controllers/class-phila-programs.php';
