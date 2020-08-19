@@ -137,6 +137,9 @@
         background: color(dark-gray);
       }
     }
+    &.no-dropdown {
+      width: calc(100% - 4rem);
+    }
   }
   .dropdown-container {
     width: auto;

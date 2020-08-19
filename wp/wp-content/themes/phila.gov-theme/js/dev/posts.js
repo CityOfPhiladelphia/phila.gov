@@ -31,6 +31,7 @@ if (typeof phila_js_vars !== 'undefined') {
 if (typeof phila_language_list !== 'undefined') {
   let phila_language_list_count = Object.keys(phila_language_list).length;
   phila_language_list.entries = Object.entries(phila_language_list);
+  let show_dropdown = false;
 
   for (let item in phila_language_list.entries) {
     let li = $("<li/>");
@@ -49,23 +50,25 @@ if (typeof phila_language_list !== 'undefined') {
   }
 
   for (let i=0; i < phila_language_list_count; i++) {
-    if(phila_language_list_count >= 9) {
-      if (window.matchMedia('(max-width: 660px)').matches && i >= 2) {
-        $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
-      }
-      else if (window.matchMedia('(max-width: 980px)').matches && i >= 4) {
-        $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
-      }
-      else if (i >= 8){
-        $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
-      }
-      else {
-        $('#main-translation-bar').append(phila_language_list.entries.shift()[0]);
-      }
+    if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
+      $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
+      show_dropdown = true;
+    }
+    else if (window.matchMedia('(max-width: 980px)').matches && i >= 4 && phila_language_list_count >= 5) {
+      $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
+      show_dropdown = true;
+    }
+    else if (i >= 8 && phila_language_list_count >= 9){
+      $('#dropdown-translation-bar').append(phila_language_list.entries.shift()[0]);
+      show_dropdown = true;
     }
     else {
       $('#main-translation-bar').append(phila_language_list.entries.shift()[0]);
     }
+  }
+  if (show_dropdown == false) {
+    $('.dropdown-container').hide();
+    $('.translations-container .inline-list').addClass("no-dropdown");
   }
 }
 
