@@ -41,17 +41,14 @@ wp_localize_script( 'phila-scripts', 'phila_language_list', $language_list );
     <div class="grid-x medium-24 bg-ghost-gray mvl translations">
       <span class="phm globe"><i class="fas fa-globe fa-2x"></i></span>
       <ul id="main-translation-bar" class="inline-list no-bullet mbn pln"></ul>
-      <?php if ( count( $language_list ) >= 9) { ?>
-        <div class="phm phs dropdown-container">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li>
-              <a href="#" class="dropdown-selector"></a>
-              <ul id="dropdown-translation-bar" class="menu"/></ul>
-            </li>
-          </ul>
-        </div>
-        <?php } ?>
-
+      <div class="phm phs dropdown-container">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li>
+            <a href="#" class="dropdown-selector"></a>
+            <ul id="dropdown-translation-bar" class="menu"></ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <!-- /Translated content -->
