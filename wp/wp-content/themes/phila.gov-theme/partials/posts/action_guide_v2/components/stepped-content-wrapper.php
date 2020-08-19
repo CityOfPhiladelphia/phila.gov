@@ -1,4 +1,4 @@
-<!-- Stepped content -->
+<!-- Stepped content wrapper -->
 <div class="grid-x grid-margin-x mvl">
   <div class="medium-24 cell pbm">
     <div class="mbl">	
@@ -22,4 +22,4 @@
     <?php endif; ?>
   </div>
 </div>
-<!-- /Stepped content -->
+<!-- / Stepped content wrapper -->

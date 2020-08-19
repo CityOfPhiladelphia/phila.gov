@@ -23,26 +23,10 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_wysiwyg_options_basic_heading(){
+  public static function phila_wysiwyg_options_basic_heading($media_buttons = false){
 
     return array(
-      'media_buttons' => false,
-      'teeny' => true,
-      'dfw' => false,
-      'tinymce' => phila_setup_tiny_mce_basic(
-        array(
-          'format_select' => true,
-          'heading_level' => 'h3'
-        )
-      ),
-      'editor_height' => 200,
-    );
-  }
-
-  public static function phila_wysiwyg_options_advanced_small(){
-
-    return array(
-      'media_buttons' => true,
+      'media_buttons' => $media_buttons,
       'teeny' => true,
       'dfw' => false,
       'tinymce' => phila_setup_tiny_mce_basic(
@@ -526,7 +510,7 @@ class Phila_Gov_Standard_Metaboxes {
       'id'  => 'phila_wysiwyg_content',
       'name' => $name,
       'type'  => 'wysiwyg',
-      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
+      'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading( true )
     );
   }
 
@@ -538,31 +522,6 @@ class Phila_Gov_Standard_Metaboxes {
       'required' => $required,
       'desc' => $desc,
     );
-  }
-
-  public static function phila_metabox_v2_ordered_content_adv_wysiwyg(){
-    return array(
-      'name'  => 'Tab stepped content',
-      'id'  => 'phila_ordered_content',
-      'type'  => 'group',
-      'clone' => true,
-      'sort_clone'  => true,
-      'add_button'  => '+ Add a step',
-
-      'fields'  => array(
-        array(
-          'placeholder' => 'Step Heading',
-          'id'  => 'phila_step_wysiwyg_heading',
-          'type'  => 'text',
-          'class' => 'percent-95'
-        ),
-        array(
-          'id'  => 'phila_step_wysiwyg_content',
-          'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_advanced_small()
-        ),
-      )
-      );
   }
 
   public static function phila_metabox_v2_link_fields( $name, $id, $required = true, $columns = 12, $clone = false, $max_clone = 2){
