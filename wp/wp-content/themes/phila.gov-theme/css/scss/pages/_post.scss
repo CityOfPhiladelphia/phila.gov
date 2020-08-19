@@ -139,6 +139,11 @@
     }
     &.no-dropdown {
       width: calc(100% - 4rem);
+      li {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        flex: none;
+      }
     }
   }
   .dropdown-container {
