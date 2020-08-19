@@ -280,7 +280,7 @@ class Phila_Gov_Post {
       'revision' => true,
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'action_guide_v2'),
+          array('phila_template_select', '=', 'action_guide_2'),
         ),
       ),
       'fields' => array(
@@ -306,7 +306,7 @@ class Phila_Gov_Post {
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'action_guide_v2'),
+          array('phila_template_select', '=', 'action_guide_2'),
         ),
       ),
       'fields' => array(
