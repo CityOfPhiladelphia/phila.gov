@@ -55,7 +55,7 @@ if (typeof phila_language_list !== 'undefined') {
       $('#dropdown-translation-bar').append(item.key);
       show_dropdown = true;
     }
-    else if (i >= 8 && phila_language_list_count >= 9){
+    else if (i >= 6 && phila_language_list_count >= 7){
       $('#dropdown-translation-bar').append(item.key);
       show_dropdown = true;
     }
