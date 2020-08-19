@@ -28,13 +28,14 @@ elseif(isset($active_item)) {
   $language_list = array_merge(array($active_item_key => $active_item), $language_list);
 }
 
+$new_language_list = [];
 foreach ($language_list as $key => $value) {
-  $language_list[phila_language_output($key)] = $language_list[$key];
-  unset($language_list[$key]);
+  $language_list_item['key'] = phila_language_output($key);
+  $language_list_item['value'] = $value;
+  array_push($new_language_list, $language_list_item); 
 }
 
-
-wp_localize_script( 'phila-scripts', 'phila_language_list', $language_list );
+wp_localize_script( 'phila-scripts', 'phila_language_list', $new_language_list );
 ?>
 
 <div class="grid-container translations-container">
