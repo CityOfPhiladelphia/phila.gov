@@ -44,23 +44,23 @@ if (typeof phila_language_list !== 'undefined') {
       a_tag.addClass("phm phs translation-link");
       a_tag.attr('href',item.value)
       a_tag.text(item.key);
-      li.append(a_tag);
+      a_tag.appendTo(li);
     }
     item.key = li;
     if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
-      $('#dropdown-translation-bar').append(item.key);
+      $(item.key).appendTo('#dropdown-translation-bar');
       show_dropdown = true;
     }
     else if (window.matchMedia('(max-width: 980px)').matches && i >= 4 && phila_language_list_count >= 5) {
-      $('#dropdown-translation-bar').append(item.key);
+      $(item.key).appendTo('#dropdown-translation-bar');
       show_dropdown = true;
     }
     else if (i >= 6 && phila_language_list_count >= 7){
-      $('#dropdown-translation-bar').append(item.key);
+      $(item.key).appendTo('#dropdown-translation-bar');
       show_dropdown = true;
     }
     else {
-      $('#main-translation-bar').append(item.key);
+      $(item.key).appendTo('#main-translation-bar');
     }
     i++;
   }
