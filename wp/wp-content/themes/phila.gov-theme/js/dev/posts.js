@@ -64,10 +64,10 @@ if (typeof phila_language_list !== 'undefined') {
     }
     i++;
   }
-  if (show_dropdown == false) {
+  // if (show_dropdown == false) {
     // $('.dropdown-container').hide();
     // $('.translations-container .inline-list').addClass("no-dropdown");
-  }
+  // }
 }
 
 // $( '.column-content p:empty' ).remove();
