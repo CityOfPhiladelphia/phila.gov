@@ -14,7 +14,7 @@
     $tab_id = $tab_key+1;
   ?>
 <!-- Tabbed content -->
-  <div class="content-action_guide action-guide-v2 active" id="tab-<?php echo $tab_id?>-content-mobile">
+  <div class="content-action_guide" id="tab-<?php echo $tab_id?>-content-mobile">
 
 
     <?php if( isset($current_tab['tab_label'])):?>

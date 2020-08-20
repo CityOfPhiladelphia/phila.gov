@@ -1,5 +1,5 @@
 <!-- Tabs -->
-<div class="grid-container action-guide-v2-tabs mtxl">
+<div id="action-guide-v2-tabs" class="grid-container action-guide-v2-tabs mtxl">
   <div class="grid-x grid-margin-x mvl one-quarter-row">
   <?php
   foreach ($tabs as $tab_label_key => $value){
