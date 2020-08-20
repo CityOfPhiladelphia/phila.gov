@@ -33,19 +33,24 @@ if (typeof phila_language_list !== 'undefined') {
   let show_dropdown = false;
   let i = 0;
 
-  for (let item of phila_language_list) {
+  for (let item in phila_language_list) {
+    console.log(phila_language_list[item])
     let li = document.createElement("li");
-    // if(item.value == window.location.href.split(/[?#]/)[0]) {
-      li.classList.add('phm', 'phs', 'active')
-      li.innerHTML = item.key;
-    // }
-    // else {
-    //   let a_tag = document.createElement("a");
-    //   a_tag.classList.add('phm', 'phs', 'translation-link');
-    //   a_tag.href = item.value;
-    //   a_tag.innerHTML = item.key;
-    //   li.appendChild(a_tag);
-    // }
+    if(phila_language_list[item].value == window.location.href.split(/[?#]/)[0]) {
+      li.className += " phm";
+      li.className += " active"
+      li.className += " phs"
+      li.innerHTML = phila_language_list[item].key;
+    }
+    else {
+      let a_tag = document.createElement("a");
+      a_tag.className += " phm";
+      a_tag.className += " translation-link"
+      a_tag.className += " phs"
+      a_tag.href = phila_language_list[item].value;
+      a_tag.innerHTML = phila_language_list[item].key;
+      li.appendChild(a_tag);
+    }
 
     if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
       document.getElementById("dropdown-translation-bar").appendChild(li);
@@ -64,13 +69,13 @@ if (typeof phila_language_list !== 'undefined') {
     }
     i++;
   }
-  // if (show_dropdown == false) {
-    // $('.dropdown-container').hide();
-    // $('.translations-container .inline-list').addClass("no-dropdown");
-  // }
+  if (show_dropdown == false) {
+    $('.dropdown-container').hide();
+    $('.translations-container .inline-list').addClass("no-dropdown");
+  }
 }
 
-// $( '.column-content p:empty' ).remove();
+$( '.column-content p:empty' ).remove();
 
 $(function(){
   //modal for any image that's been added to the page and linked to.
