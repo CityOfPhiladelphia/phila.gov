@@ -34,33 +34,33 @@ if (typeof phila_language_list !== 'undefined') {
   let i = 0;
 
   for (let item of phila_language_list) {
-    let li = $("<li/>");
+    let li = document.createElement("li");
     if(item.value == window.location.href.split(/[?#]/)[0]) {
-      li.addClass("phm phs active");
-      li.text(item.key);
+      li.classList.add('phm', 'phs', 'active')
+      li.innerHTML = item.key;
     }
     else {
-      let a_tag = $("<a/>");
-      a_tag.addClass("phm phs translation-link");
-      a_tag.attr('href',item.value)
-      a_tag.text(item.key);
-      a_tag.appendTo(li);
+      let a_tag = document.createElement("a");
+      a_tag.classList.add('phm', 'phs', 'translation-link');
+      a_tag.href = item.value;
+      a_tag.innerHTML = item.key;
+      li.appendChild(a_tag);
     }
-    item.key = li;
+    
     if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
-      $(item.key).appendTo('#dropdown-translation-bar');
+      document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
     }
     else if (window.matchMedia('(max-width: 980px)').matches && i >= 4 && phila_language_list_count >= 5) {
-      $(item.key).appendTo('#dropdown-translation-bar');
+      document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
     }
     else if (i >= 6 && phila_language_list_count >= 7){
-      $(item.key).appendTo('#dropdown-translation-bar');
+      document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
     }
     else {
-      $(item.key).appendTo('#main-translation-bar');
+      document.getElementById("main-translation-bar").appendChild(li);
     }
     i++;
   }
