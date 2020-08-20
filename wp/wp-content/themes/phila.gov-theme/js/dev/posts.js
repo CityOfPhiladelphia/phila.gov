@@ -70,6 +70,8 @@ if (typeof phila_language_list !== 'undefined') {
   }
 }
 
+$( '.column-content p:empty' ).remove();
+
 $(function(){
   //modal for any image that's been added to the page and linked to.
   var $modal = $('#phila-lightbox');

@@ -70,12 +70,16 @@
       cursor: pointer;
     }
     .next-tab {
+      font-weight: 600;
       text-align: right;
+      display: block;
       i {
         text-decoration: underline;
       }
     }
     .prev-tab {
+      font-weight: 600;
+      display: block;
       text-align: left;
       i {
         text-decoration: underline;
