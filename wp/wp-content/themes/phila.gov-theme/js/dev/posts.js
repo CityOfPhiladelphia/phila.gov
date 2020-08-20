@@ -33,43 +33,37 @@ if (typeof phila_language_list !== 'undefined') {
   let show_dropdown = false;
   let i = 0;
 
-  var iiDiv = document.createElement('div');
-  iiDiv.className = 'block-2';
+  for (let item of phila_language_list) {
+    let li = document.createElement("li");
+    // if(item.value == window.location.href.split(/[?#]/)[0]) {
+      li.classList.add('phm', 'phs', 'active')
+      li.innerHTML = item.key;
+    // }
+    // else {
+    //   let a_tag = document.createElement("a");
+    //   a_tag.classList.add('phm', 'phs', 'translation-link');
+    //   a_tag.href = item.value;
+    //   a_tag.innerHTML = item.key;
+    //   li.appendChild(a_tag);
+    // }
 
-  var s = document.getElementById('main-translation-bar');
-  s.appendChild(iiDiv);
-
-  // for (let item of phila_language_list) {
-  //   let li = document.createElement("li");
-  //   if(item.value == window.location.href.split(/[?#]/)[0]) {
-  //     li.classList.add('phm', 'phs', 'active')
-  //     li.innerHTML = item.key;
-  //   }
-  //   else {
-  //     let a_tag = document.createElement("a");
-  //     a_tag.classList.add('phm', 'phs', 'translation-link');
-  //     a_tag.href = item.value;
-  //     a_tag.innerHTML = item.key;
-  //     li.appendChild(a_tag);
-  //   }
-
-  //   if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
-  //     document.getElementById("dropdown-translation-bar").appendChild(li);
-  //     show_dropdown = true;
-  //   }
-  //   else if (window.matchMedia('(max-width: 980px)').matches && i >= 4 && phila_language_list_count >= 5) {
-  //     document.getElementById("dropdown-translation-bar").appendChild(li);
-  //     show_dropdown = true;
-  //   }
-  //   else if (i >= 6 && phila_language_list_count >= 7){
-  //     document.getElementById("dropdown-translation-bar").appendChild(li);
-  //     show_dropdown = true;
-  //   }
-  //   else {
-  //     document.getElementById("main-translation-bar").appendChild(li);
-  //   }
-  //   i++;
-  // }
+    if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
+      document.getElementById("dropdown-translation-bar").appendChild(li);
+      show_dropdown = true;
+    }
+    else if (window.matchMedia('(max-width: 980px)').matches && i >= 4 && phila_language_list_count >= 5) {
+      document.getElementById("dropdown-translation-bar").appendChild(li);
+      show_dropdown = true;
+    }
+    else if (i >= 6 && phila_language_list_count >= 7){
+      document.getElementById("dropdown-translation-bar").appendChild(li);
+      show_dropdown = true;
+    }
+    else {
+      document.getElementById("main-translation-bar").appendChild(li);
+    }
+    i++;
+  }
   // if (show_dropdown == false) {
     // $('.dropdown-container').hide();
     // $('.translations-container .inline-list').addClass("no-dropdown");
