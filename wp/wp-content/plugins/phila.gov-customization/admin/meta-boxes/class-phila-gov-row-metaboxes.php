@@ -24,6 +24,56 @@ class Phila_Gov_Row_Metaboxes {
     );
   }
 
+  public static function phila_tabbed_metabox_grid_row (){
+    return array(
+    'id'    => 'phila_row',
+    'class' => 'phila_row',
+    'type'  => 'group',
+    'clone' => true,
+    'sort_clone' => true,
+    'add_button'  => '+ Add row',
+    'fields' => array(
+      Phila_Gov_Row_Metaboxes::phila_metabox_tabbed_options(),
+      ),
+    );
+  }
+
+
+  public static function phila_metabox_tabbed_options( ){
+    return array(
+    'name' => 'Tabbed options',
+    'id'   => 'phila_tabbed_options',
+    'type' => 'group',
+    'fields' => array(
+      Phila_Gov_Row_Select_Options::phila_metabox_tabbed_select(),
+      array(
+        'id' => 'phila_metabox_tabbed_single_wysiwyg',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_single_wysiwyg'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_single_wysiwyg()
+      ),
+      array(
+        'id' => 'phila_metabox_tabbed_repeater_wysiwyg',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_repeater_wysiwyg'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_repeater_wysiwyg()
+      ),
+      array(
+        'id' => 'phila_metabox_tabbed_stepped_content',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_stepped_content'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_stepped_content()
+      ),
+      array(
+        'id' => 'phila_metabox_tabbed_timeline_content',
+        'type'  => 'group',
+        'visible' => array('phila_tabbed_select', '=', 'phila_metabox_tabbed_timeline_content'),
+        'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_timeline_content()
+      ),
+    ),
+  );
+}
+
   public static function phila_metabox_full_options( ){
     return array(
     'name' => '',
@@ -625,12 +675,7 @@ class Phila_Gov_Row_Metaboxes {
                 'type' => 'email',
                 'desc' => 'example@phila.gov',
               ),
-              array(
-                'name' => 'Explanation text for email',
-                'id'   => 'phila_connect_email_exp',
-                'type' => 'text',
-                'desc' => 'Ex. For press inquiries contact:',
-              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
               array(
                 'name' => 'Fax',
                 'id'   => 'phila_connect_fax',

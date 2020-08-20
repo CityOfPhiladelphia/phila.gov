@@ -224,12 +224,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type' => 'group',
         'clone'  => true,
         'fields' => array(
-          array(
-            'name' => 'Contact name',
-            'id'   => 'phila_press_release_contact_name',
-            'type' => 'text',
-            'required'  => true,
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Contact name', 'phila_press_release_contact_name', true),
           array(
             'name' => 'Contact phone',
             'id'   => 'phila_press_release_contact_phone_number',
@@ -269,12 +264,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'add_button' => '+ Add a Resource List',
 
         'fields' => array(
-          array(
-            'name' => __('List Title', 'rwmb'),
-            'id'   => 'phila_resource_list_title',
-            'type' => 'text',
-            'required' => true,
-          ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('List Title', 'rwmb'), 'phila_resource_list_title', true),
           array(
             'id'   => 'phila_resource_list_items',
             'type' => 'group',
@@ -283,12 +273,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'add_button' => '+ Add an item',
 
             'fields' => array(
-                array(
-                  'name' => __('Item Title', 'rwmb'),
-                  'id'   => 'phila_list_item_title',
-                  'type' => 'text',
-                  'required' => true,
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('Item Title', 'rwmb'), 'phila_list_item_title', true),
                 array(
                   'name' => __('Item URL', 'rwmb'),
                   'id'   => 'phila_list_item_url',
@@ -862,11 +847,7 @@ $meta_boxes[] = array(
       'name' => 'Icon selection',
       'type'  => 'heading'
     ),
-    array(
-      'id' => 'phila_page_icon',
-      'type' => 'text',
-      'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'
-    )
+    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_page_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent a top-level page. E.g.: fas fa-bell.'),
   )
 );
 
