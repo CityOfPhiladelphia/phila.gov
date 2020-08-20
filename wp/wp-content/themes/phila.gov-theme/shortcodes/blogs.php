@@ -44,6 +44,14 @@ function latest_posts_shortcode( $atts ) {
 
 }
 
+function add_columns_shortcode( $atts, $content = null ) {
+  extract(shortcode_atts(array(
+    'columns' => '2'
+  ), $atts));
+  return '<div class="column-content" style="column-count: ' . $columns . '">' . $content . '</div>';
+}
+
 function register_posts_shortcode(){
   add_shortcode( 'recent-posts', 'latest_posts_shortcode' );
+  add_shortcode( 'add-columns', 'add_columns_shortcode' );
 }
