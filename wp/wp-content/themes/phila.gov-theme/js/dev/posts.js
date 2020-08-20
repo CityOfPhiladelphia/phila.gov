@@ -46,7 +46,7 @@ if (typeof phila_language_list !== 'undefined') {
       a_tag.innerHTML = item.key;
       li.appendChild(a_tag);
     }
-    
+
     if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
       document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
@@ -65,12 +65,12 @@ if (typeof phila_language_list !== 'undefined') {
     i++;
   }
   if (show_dropdown == false) {
-    $('.dropdown-container').hide();
-    $('.translations-container .inline-list').addClass("no-dropdown");
+    // $('.dropdown-container').hide();
+    // $('.translations-container .inline-list').addClass("no-dropdown");
   }
 }
 
-$( '.column-content p:empty' ).remove();
+// $( '.column-content p:empty' ).remove();
 
 $(function(){
   //modal for any image that's been added to the page and linked to.
