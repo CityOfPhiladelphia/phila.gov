@@ -195,3 +195,14 @@ caption {
   padding: 1rem 0 0 0;
   font-weight: bold;
 }
+
+.column-content {
+  @media screen and (max-width: 425px) {
+    column-count: 1 !important;
+  }
+  ul {
+    li {
+      margin-bottom: 0px !important;
+    }
+  }
+}
