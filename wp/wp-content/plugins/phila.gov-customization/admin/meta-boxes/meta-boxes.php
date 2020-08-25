@@ -201,12 +201,6 @@ function phila_register_meta_boxes( $meta_boxes ){
                     'required'  => true,
                   ),
                   array(
-                    'name' => 'Primary Section Description',
-                    'id'   => 'phila_longform_document_primary_section_description',
-                    'type' => 'wysiwyg',
-                    'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-                  ),
-                  array(
                     'id'  => 'phila_longform_document_secondary_section',
                     'type' => 'group',
                     'clone'  => true,
@@ -233,11 +227,6 @@ function phila_register_meta_boxes( $meta_boxes ){
                         'add_button' => '+ Add a tertiary section',
                 
                         'fields' => array(
-                          array(
-                            'name' => 'Tertiary Section Title',
-                            'id'   => 'phila_longform_document_tertiary_section_title',
-                            'type' => 'text',
-                          ),
                           array(
                             'name' => 'Tertiary Section Description',
                             'id'   => 'phila_longform_document_tertiary_section_description',
