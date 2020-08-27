@@ -166,12 +166,13 @@ function phila_register_meta_boxes( $meta_boxes ){
             'fields' => array(
               array(
                 'name' => 'Revision information',
-                'id'   => 'phila_longform_document_primary_section_title',
+                'id'   => 'phila_revision_information',
                 'type' => 'text',
                 'required'  => true,
               ),
               array(
                 'name' => 'Revision date',
+                'id'   => 'phila_revision_date',
                 'type'  => 'date',
                 'class' =>  'press-release-date',
                 'size'  =>  30,
