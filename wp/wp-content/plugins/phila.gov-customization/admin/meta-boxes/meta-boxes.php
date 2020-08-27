@@ -140,8 +140,57 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'       => 'revision-history',
+    'title'    => 'Revision History',
+    'pages'    => array( 'document' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+    'revision' => true,
+    'visible' => array(
+      'when' => array(
+        array('phila_document_toggle', '=', true),
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'  => 'phila_longform_document_revision_history',
+        'type' => 'group',
+
+        'fields' => array(
+          array(
+            'id'  => 'phila_longform_document_revision',
+            'type' => 'group',
+            'clone'  => true,
+            'sort_clone' => true,
+            'add_button' => '+ Add a revision',
+            'fields' => array(
+              array(
+                'name' => 'Revision information',
+                'id'   => 'phila_longform_document_primary_section_title',
+                'type' => 'text',
+                'required'  => true,
+              ),
+              array(
+                'name' => 'Revision date',
+                'type'  => 'date',
+                'class' =>  'press-release-date',
+                'size'  =>  30,
+                'required'  => true,
+                'js_options' =>  array(
+                  'dateFormat'=>'MM dd, yy',
+                  'showTimepicker' => false
+                )
+              ),
+            ),
+          ),
+        ),
+      )
+    )
+  );
+
+  $meta_boxes[] = array(
     'id'       => 'longform-document',
-    'title'    => 'Longform Document',
+    'title'    => 'Longform document',
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
@@ -168,18 +217,6 @@ function phila_register_meta_boxes( $meta_boxes ){
             'id'   => 'phila_longform_document_description',
             'type' => 'wysiwyg',
             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-          ),
-          array(
-            'name'  => 'Publish Date',
-            'id'    => 'phila_longform_document_publish_date',
-            'type'  => 'date',
-            'class' =>  'press-release-date',
-            'size'  =>  30,
-            'required'  => true,
-            'js_options' =>  array(
-              'dateFormat'=>'MM dd, yy',
-              'showTimepicker' => false
-            )
           ),
           array(
             'id'   => 'phila_longform_document_primary_sections',
