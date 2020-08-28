@@ -31,7 +31,7 @@ class Phila_Longform_Content_Controller {
     // $post = get_post( url_to_postid( wp_get_referer()) );
     $post = get_post( 143332 );
     $longform_document['document'] = ( object ) rwmb_meta( 'phila_longform_document', '', $post->ID );
-    $longform_document['revisionHistory'] = ( object ) rwmb_meta( 'phila_longform_document_revision_history', '', $post->ID );
+    $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
     $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
     $longform_document['post'] = ( object ) $post;
 
