@@ -140,8 +140,8 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'id'       => 'revision-history',
-    'title'    => 'Revision History',
+    'id'       => 'update-history',
+    'title'    => 'Update History',
     'pages'    => array( 'document' ),
     'context'  => 'normal',
     'priority' => 'high',
@@ -153,26 +153,28 @@ function phila_register_meta_boxes( $meta_boxes ){
     ),
     'fields' => array(
       array(
-        'id'  => 'phila_longform_document_revision_history',
+        'id'  => 'phila_longform_document_update_history',
         'type' => 'group',
 
         'fields' => array(
           array(
-            'id'  => 'phila_longform_document_revision',
+            'id'  => 'phila_longform_document_update',
             'type' => 'group',
             'clone'  => true,
             'sort_clone' => true,
-            'add_button' => '+ Add a revision',
+            'add_button' => '+ Add an update',
             'fields' => array(
               array(
-                'name' => 'Revision information',
-                'id'   => 'phila_revision_information',
+                'name' => 'Update information',
+                'id'   => 'phila_update_information',
                 'type' => 'text',
+                'limit' => 200,
                 'required'  => true,
+                'desc'  => 'Required. 200 character limit.',
               ),
               array(
-                'name' => 'Revision date',
-                'id'   => 'phila_revision_date',
+                'name' => 'Update date',
+                'id'   => 'phila_update_date',
                 'type'  => 'date',
                 'class' =>  'press-release-date',
                 'size'  =>  30,
