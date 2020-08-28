@@ -169,15 +169,15 @@ get_header(); ?>
             </div>
             <div class="cell medium-12 grid-x">
               <div class="card card-fixed-height cell shrink align-self-top full hover-fade">
-                <a href="/contracts/pages/default.aspx" class="hover-fade">
+                <a href="https://contracts.phila.gov" class="hover-fade">
                   <div class="grid-x">
                     <div class="cell shrink align-self-middle pas">
                       <i class="far fa-copy fa-4x fa-fw"></i>
                     </div>
                     <div class="cell auto align-self-middle pvm">
                       <div class="card-description phl">
-                        <h3>Contracts</h3>
-                        <p>Find, bid on, get alerts for contract opportunities with the City.</p>
+                        <h3>Contracts Hub</h3>
+                        <p>Find contract opportunities and vendor information for your business.</p>
                       </div>
                     </div>
                   </div>
