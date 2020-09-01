@@ -109,7 +109,7 @@
       </div>
 
     <?php elseif ( $current_row['spotlight_options'] == 'posts' ):
-        $tag = isset($current_row['blog_posts']['tag']) ? $current_row['blog_posts']['tag'] : '';
+        $is_spotlight_tag['tag'] = isset($current_row['blog_posts']['tag']) ? $current_row['blog_posts']['tag'] : '';
         ?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>" class="es-blogs">
           <div class="mvxl">
