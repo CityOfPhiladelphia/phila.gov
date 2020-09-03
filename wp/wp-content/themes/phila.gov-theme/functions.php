@@ -1883,7 +1883,12 @@ add_action( 'mb_relationships_init', function() {
             'name'  => 'Choose',
             'placeholder' => 'Select a post',
             'query_args' => array(
-              'posts_per_page'  => -1, 
+              'posts_per_page'  => -1,
+              'post_status'  => array(
+                'publish',
+                'private',
+                'draft',
+              ),
               'meta_query' => array(
                 array(
                     'key'     => 'phila_select_language',
@@ -1896,7 +1901,17 @@ add_action( 'mb_relationships_init', function() {
 
         ),
       ),      
-      'to'   => 'post',
+      'to'   => array(
+        'object_type'  => 'post',
+        'post_type'   => 'post',
+        'query_args' => array(
+          'post_status'  => array(
+            'publish',
+            'private',
+            'draft',
+          ),
+        ),
+      ),
       'reciprocal' => true,
 
   ) );
