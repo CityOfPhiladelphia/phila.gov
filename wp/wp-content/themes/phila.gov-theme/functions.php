@@ -1962,6 +1962,11 @@ function phila_get_translated_language( $language ) {
       'relationship' => array(
         'id'   => 'post_to_post_translations',
         'to' => $post->ID, 
+      ),
+      'post_status'  => array(
+        'publish',
+        'private',
+        'draft',
       ), 
       'nopaging'     => true,
     ) ); 
@@ -1971,7 +1976,11 @@ function phila_get_translated_language( $language ) {
 
     $connected = new WP_Query( array(
       'post_type'  => 'post',
-
+      'post_status'  => array(
+        'publish',
+        'private',
+        'draft',
+      ),
       'relationship' => array(
         'id'   => 'post_to_post_translations',
         'from' => $post->ID, 
@@ -1982,6 +1991,11 @@ function phila_get_translated_language( $language ) {
 
       $connected_source = new WP_Query( array(
         'post_type'  => 'post',
+        'post_status'  => array(
+          'publish',
+          'private',
+          'draft',
+        ),
         'relationship' => array(
           'id'   => 'post_to_post_translations',
           'to' => $post->ID, 
