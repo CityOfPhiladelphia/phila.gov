@@ -104,10 +104,10 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
 
   $datetime = DateTime::createFromFormat('m-d-Y', $date)->getTimestamp();
   $month = date("m", $datetime);
-  $translatedMonth = $languageToMonth[$language][$month];
-  $formatTemplate = $languageFormat[$language][$format];
   $day = date("d", $datetime);
   $year = date("Y", $datetime);
+  $translatedMonth = $languageToMonth[$language][$month];
+  $formatTemplate = $languageFormat[$language][$format];
 
   $formattedDate = str_replace("{day}",$day,$formatTemplate); 
   $formattedDate = str_replace("{month}",$translatedMonth,$formattedDate); 
