@@ -106,8 +106,8 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
   $month = date("m", $datetime);
   $day = date("d", $datetime);
   $year = date("Y", $datetime);
-  $translatedMonth = $languageToMonth[$language][$month];
-  $formatTemplate = $languageFormat[$language][$format];
+  $translatedMonth = isset($languageToMonth[$language][$month]) ? $languageToMonth[$language][$month] : $languageToMonth['english'][$month];
+  $formatTemplate = isset($languageFormat[$language][$format]) ? $languageFormat[$language][$format] : $languageFormat['english'][$format];
 
   $formattedDate = str_replace("{day}",$day,$formatTemplate); 
   $formattedDate = str_replace("{month}",$translatedMonth,$formattedDate); 
