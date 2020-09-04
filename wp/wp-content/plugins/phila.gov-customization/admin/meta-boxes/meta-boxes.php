@@ -119,24 +119,26 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'id'       => 'document-type-select',
-    'title'    => 'Document Type Select',
-    'pages'    => array( 'document' ),
-    'context'  => 'normal',
-    'priority' => 'high',
-    'revision' => true,
+    'title'    => 'Select Template',
+    'post_types'    => array( 'document' ),
+    'context'  => 'after_title',
     'fields' => array(
       array(
-        'id'   => 'phila_document_toggle',
-        'name'  => 'Is this a default document or longform?',
-        'type'  => 'radio',
-        'std'=> '0',
-        'options' =>  array(
-            '0' => 'Default Document',
-            '1' => 'Longform Content'
-        )
+        'placeholder'  => 'Select a template',
+        'id'  => 'phila_template_select',
+        'type'  => 'select',
+        'required'  => true,
+        'options' => array(
+          'default_document'   => 'Default Document',
+          'longform_document' => 'Longform Document',
+        ),
+        'admin_columns' => array(
+          'position' => 'after date',
+          'title'    => __( 'Template' ),
+          'sort'     => true,
+        ),
       ),
-    )
+    ),
   );
 
   $meta_boxes[] = array(
@@ -148,9 +150,10 @@ function phila_register_meta_boxes( $meta_boxes ){
     'revision' => true,
     'visible' => array(
       'when' => array(
-        array('phila_document_toggle', '=', true),
+        array('phila_template_select', '=', 'longform_document'),
       ),
     ),
+
     'fields' => array(
       array(
         'id'  => 'phila_longform_document_update_history',
@@ -200,7 +203,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'revision' => true,
     'visible' => array(
       'when' => array(
-        array('phila_document_toggle', '=', true),
+        array('phila_template_select', '=', 'longform_document'),
       ),
     ),
     'fields' => array(
@@ -311,7 +314,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'revision' => true,
     'visible' => array(
       'when' => array(
-        array('phila_document_toggle', '=', false),
+        array('phila_template_select', '=', 'default_document'),
       ),
     ),
     'fields' => array(
@@ -353,7 +356,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'revision' => true,
     'visible' => array(
       'when' => array(
-        array('phila_document_toggle', '=', false),
+        array('phila_template_select', '=', 'default_document'),
       ),
     ),
 
