@@ -473,6 +473,11 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  */
 require get_template_directory() . '/inc/utilities.php';
 
+/**
+ * Load custom Date translations file.
+ */
+require get_template_directory() . '/inc/date-translations.php';
+
 foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
   require $filename;
 }
