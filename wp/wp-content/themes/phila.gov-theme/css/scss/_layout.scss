@@ -175,7 +175,7 @@ caption {
 }
 
 .step-group .step:last-of-type{
-  padding-bottom: 0;
+  padding-bottom: 10px;
 }
 .post {
   .last-updated{
@@ -194,4 +194,15 @@ caption {
   text-align: center;
   padding: 1rem 0 0 0;
   font-weight: bold;
+}
+
+.column-content {
+  @media screen and (max-width: 425px) {
+    column-count: 1 !important;
+  }
+  ul {
+    li {
+      margin-bottom: 0px !important;
+    }
+  }
 }

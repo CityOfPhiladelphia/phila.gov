@@ -65,7 +65,9 @@
         <?php
         $cal_id = isset( $current_row['calendar_row']['phila_full_width_calendar_id'] ) ? $current_row['calendar_row']['phila_full_width_calendar_id'] : '';
 
-        $cal_category = isset( $current_row['calendar_row']['phila_calendar_owner'] ) ? $current_row['calendar_row']['phila_calendar_owner'] : ''; ?>
+        $cal_owner_id = isset( $current_row['calendar_row']['phila_calendar_owner'] ) ? $current_row['calendar_row']['phila_calendar_owner'] : ''; 
+        $cal_category = get_the_category_by_ID($cal_owner_id);
+        ?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="<?php echo $c ?>" class="es-calendar">
           <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
         </div>
@@ -107,7 +109,7 @@
       </div>
 
     <?php elseif ( $current_row['spotlight_options'] == 'posts' ):
-        $tag = isset($current_row['blog_posts']['tag']) ? $current_row['blog_posts']['tag'] : '';
+        $is_spotlight_tag['tag'] = isset($current_row['blog_posts']['tag']) ? $current_row['blog_posts']['tag'] : '';
         ?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="anchor-<?php echo $c ?>" class="es-blogs">
           <div class="mvxl">
