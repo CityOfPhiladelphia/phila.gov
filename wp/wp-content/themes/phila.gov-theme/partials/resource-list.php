@@ -23,22 +23,7 @@
       $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
       $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
 
-      switch ($item_resource_type) {
-        case ('phila_resource_document'):
-          $icon = 'fas fa-file-alt';
-          break;
-
-        case ('phila_resource_map'):
-          $icon = 'fas fa-map-marker-alt';
-          break;
-
-        case ('phila_resource_link'):
-          $icon = 'far fa-link';
-          break;
-
-        default:
-          $icon = 'fas fa-file-alt';
-      }
+      $icon = phila_resource_list_switch( $item_resource_type );
 
     if ( $item_featured ):
       $featured_output = '';
@@ -154,26 +139,9 @@
                     $featured_display_order = isset( $list_items['phila_display_order'] ) ? $list_items['phila_display_order'] : '';
                     $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
 
-                    switch ($item_resource_type) {
-                      case ('phila_resource_document'):
-                        $icon = 'fas fa-file-alt';
-                        break;
-
-                      case ('phila_resource_map'):
-                        $icon = 'fas fa-map-marker-alt';
-                        break;
-
-                      case ('phila_resource_link'):
-                        $icon = 'fas fa-link';
-                        break;
-                        
-                      case ('phila_resource_video'):
-                        $icon = 'fas fa-video';
-                        break;
-
-                      default:
-                        $icon = 'fas fa-file-alt';
-                    } ?>
+                    $icon = phila_resource_list_switch( $item_resource_type );
+                    
+                    ?>
 
                     <?php if (!empty($item_url)) : ?>
                       <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i> <?php echo  $item_title ?></a></li>
