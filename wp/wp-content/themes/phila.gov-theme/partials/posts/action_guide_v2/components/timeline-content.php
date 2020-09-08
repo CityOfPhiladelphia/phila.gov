@@ -23,8 +23,8 @@
             <?php foreach($timeline_items as $item) { ?>
               <div class="timeline-item row">
                 <?php $item_date = $item['phila_timeline_item_timestamp']; ?>
-                <?php if( DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format('F Y') != $temp_month ) { ?>
-                  <?php $temp_month = DateTime::createFromFormat('m-d-Y', $item_date)->format('F Y'); ?>
+                <?php if( phila_translate_date($item_date, $language, 'month-year') != $temp_month ) { ?>
+                  <?php $temp_month = phila_translate_date($item_date, $language, 'month-year'); ?>
                   <div class="month-label medium-5 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
                     <div>
                       <span ><?php echo $temp_month; ?></span>
@@ -36,7 +36,7 @@
                     <div class="timeline-dot"></div>
                   </div>
                   <div class="timeline-text">
-                    <div class="timeline-month"><?php echo DateTime::createFromFormat('m-d-Y', $item_date)->format('F d');?></div>
+                    <div class="timeline-month"><?php echo phila_translate_date($item_date, $language, 'month-day');?></div>
                     <div class="timeline-copy"><?php echo do_shortcode(wpautop( $item['phila_timeline_item'] )); ?></div>
                   </div>
                 </div>
