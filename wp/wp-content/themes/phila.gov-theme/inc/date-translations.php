@@ -3,18 +3,18 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
 
   $languageToMonth = [
     'english' => [
-      '01' => 'january',
-      '02' => 'february',
-      '03' => 'march',
-      '04' => 'april',
-      '05' => 'may',
-      '06' => 'june',
-      '07' => 'july',
-      '08' => 'august',
-      '09' => 'september',
-      '10' => 'october',
-      '11' => 'november',
-      '12' => 'december',
+      '01' => 'January',
+      '02' => 'February',
+      '03' => 'March',
+      '04' => 'April',
+      '05' => 'May',
+      '06' => 'June',
+      '07' => 'July',
+      '08' => 'August',
+      '09' => 'September',
+      '10' => 'October',
+      '11' => 'November',
+      '12' => 'December',
     ],
     'spanish' => [
       '01' => 'enero',
@@ -74,7 +74,7 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
     ],
   ];
 
-  // TODO: Derrick, vietnamese needs the year in month-year after FE fix
+  // TODO: Derrick, all need the year in month-year after FE fix
   $languageFormat = [
     'english' => [
       'month-day' => '{month} {day}',
@@ -83,12 +83,12 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
     ],
     'spanish' => [
       'month-day' => '{day} de {month}',
-      'month-year' => '{month} de {year}',
+      'month-year' => '{month}',
       'month-day-year' => '{day} de {month} de {year}',
     ],
     'chinese' => [
       'month-day' => '{month} 月 {day} 日',
-      'month-year' => '{year} 年 {month} 月',
+      'month-year' => '{month} 月',
       'month-day-year' => '{year} 年 {month} 月 {day} 日',
     ],
     'vietnamese' => [
@@ -98,7 +98,7 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
     ],
     'french' => [
       'month-day' => '{month} {day}',
-      'month-year' => '{month} {year}',
+      'month-year' => '{month}',
       'month-day-year' => '{month} {day}, {year}',
     ],
   ];
