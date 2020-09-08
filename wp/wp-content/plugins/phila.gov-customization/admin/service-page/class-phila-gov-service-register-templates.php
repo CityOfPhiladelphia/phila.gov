@@ -154,12 +154,7 @@ class Phila_Gov_Register_Service_Templates {
                   'type' => 'email',
                   'desc' => 'example@phila.gov',
                 ),
-                array(
-                  'name' => 'Explanation text for email',
-                  'id'   => 'phila_connect_email_exp',
-                  'type' => 'text',
-                  'desc' => 'Ex. For press inquiries contact:',
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
                 array(
                   'name' => 'Fax',
                   'id'   => 'phila_connect_fax',
@@ -232,12 +227,7 @@ class Phila_Gov_Register_Service_Templates {
               'clone' => true,
               'max_clone' => 3,
               'fields'  => array(
-                array(
-                  'type' => 'text',
-                  'id' => 'heading',
-                  'name' => 'Cost type',
-                  'desc'  => 'E.g. License cost'
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Cost type', 'heading', false, 'E.g. License cost'),
                 array(
                   'type' => 'number',
                   'id' => 'amount',
@@ -365,6 +355,8 @@ class Phila_Gov_Register_Service_Templates {
       'visible' => array(
         'when' => array(
             array( 'phila_template_select', '=', 'default_v2' ),
+            array( 'phila_template_select', '=', 'topic_page' ),
+
           ),
         'relation'  => 'or'
       ),

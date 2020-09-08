@@ -1082,29 +1082,38 @@ function phila_get_service_updates(){
       switch($service_type){
         case 'city':
           $service_icon = 'fas fa-university';
+          $service_name = 'City';
           break;
         case 'roads':
           $service_icon = 'fas fa-road';
+          $service_name = 'Roads';
           break;
         case 'transit':
           $service_icon = 'fas fa-subway';
+          $service_name = 'Transit';
           break;
         case 'trash':
           $service_icon = 'fas fa-trash-alt';
+          $service_name = 'Trash';
           break;
         case 'phones':
           $service_icon = 'fas fa-phone';
+          $service_name = 'Phones';
           break;
         case 'systems':
           $service_icon = 'fas fa-desktop';
+          $service_name = 'Systems';
           break;
         case 'offices':
           $service_icon = 'far fa-building';
+          $service_name = 'Offices';
           break;
         default :
           $service_icon = 'fas fa-university';
+          $service_name = 'City';
           break;
       }
+
       switch($service_level){
         case '0':
           $service_level_label = 'normal';
@@ -1124,6 +1133,7 @@ function phila_get_service_updates(){
 
       $output_item = array(
         'service_type' => $service_type,
+        'service_name'  => $service_name,
         'service_icon' => $service_icon,
         'service_level' => $service_level,
         'service_level_label' => $service_level_label,
@@ -1915,6 +1925,24 @@ function phila_language_output($language){
     case 'arabic';
       $language = 'عربى';
     break;
+    case 'bengali';
+      $language = 'বাংলা';
+    break;
+    case 'haitian';
+      $language = 'Ayisyen';
+    break;
+    case 'hindo';
+      $language = 'Hindo';
+    break;
+    case 'indonesian'; 
+      $language = 'bahasa Indonesia';
+    break;
+    case 'urdu'; 
+      $language = 'اردو';
+    break;
+    case 'korean'; 
+      $language = '한국어';
+    break;
     default;
       $language = 'English'; 
       break;
@@ -1974,7 +2002,7 @@ function phila_get_translated_language( $language ) {
     endwhile;
     wp_reset_postdata();
 
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean' );
   $ordered_array = array_replace(array_flip($order), $language_list);
   $final_array = array();
   foreach ($ordered_array as $key => $value){
@@ -1987,7 +2015,7 @@ function phila_get_translated_language( $language ) {
 }
 
 function phila_order_languages($languages){
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french');
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean');
   $ordered_array = array_replace(array_flip($order), $languages);
   $final_order = array();
   foreach ($ordered_array as $key => $value){
