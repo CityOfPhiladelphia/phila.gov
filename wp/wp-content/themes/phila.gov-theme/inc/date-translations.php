@@ -74,6 +74,7 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
     ],
   ];
 
+  // TODO: Derrick, vietnamese needs the year in month-year after FE fix
   $languageFormat = [
     'english' => [
       'month-day' => '{month} {day}',
@@ -92,7 +93,7 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
     ],
     'vietnamese' => [
       'month-day' => 'Ngày {day} tháng {month}',
-      'month-year' => 'tháng {month} năm {year}',
+      'month-year' => 'tháng {month}',
       'month-day-year' => 'Ngày {day} tháng {month} năm {year}',
     ],
     'french' => [
