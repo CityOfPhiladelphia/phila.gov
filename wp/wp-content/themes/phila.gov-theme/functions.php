@@ -473,6 +473,11 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  */
 require get_template_directory() . '/inc/utilities.php';
 
+/**
+ * Load custom Date translations file.
+ */
+require get_template_directory() . '/inc/date-translations.php';
+
 foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
   require $filename;
 }
@@ -1883,7 +1888,12 @@ add_action( 'mb_relationships_init', function() {
             'name'  => 'Choose',
             'placeholder' => 'Select a post',
             'query_args' => array(
-              'posts_per_page'  => -1, 
+              'posts_per_page'  => -1,
+              'post_status'  => array(
+                'publish',
+                'private',
+                'draft',
+              ),
               'meta_query' => array(
                 array(
                     'key'     => 'phila_select_language',
@@ -1896,7 +1906,17 @@ add_action( 'mb_relationships_init', function() {
 
         ),
       ),      
-      'to'   => 'post',
+      'to'   => array(
+        'object_type'  => 'post',
+        'post_type'   => 'post',
+        'query_args' => array(
+          'post_status'  => array(
+            'publish',
+            'private',
+            'draft',
+          ),
+        ),
+      ),
       'reciprocal' => true,
 
   ) );
@@ -1962,6 +1982,11 @@ function phila_get_translated_language( $language ) {
       'relationship' => array(
         'id'   => 'post_to_post_translations',
         'to' => $post->ID, 
+      ),
+      'post_status'  => array(
+        'publish',
+        'private',
+        'draft',
       ), 
       'nopaging'     => true,
     ) ); 
@@ -1971,7 +1996,11 @@ function phila_get_translated_language( $language ) {
 
     $connected = new WP_Query( array(
       'post_type'  => 'post',
-
+      'post_status'  => array(
+        'publish',
+        'private',
+        'draft',
+      ),
       'relationship' => array(
         'id'   => 'post_to_post_translations',
         'from' => $post->ID, 
@@ -1982,6 +2011,11 @@ function phila_get_translated_language( $language ) {
 
       $connected_source = new WP_Query( array(
         'post_type'  => 'post',
+        'post_status'  => array(
+          'publish',
+          'private',
+          'draft',
+        ),
         'relationship' => array(
           'id'   => 'post_to_post_translations',
           'to' => $post->ID, 
