@@ -478,6 +478,11 @@ require get_template_directory() . '/inc/utilities.php';
  */
 require get_template_directory() . '/inc/date-translations.php';
 
+/**
+ * Load custom Resource list switch file.
+ */
+require get_template_directory() . '/inc/resource-list-switch.php';
+
 foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
   require $filename;
 }
