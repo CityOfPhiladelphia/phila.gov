@@ -17,7 +17,7 @@ meta-box-group-1.3.11.zip
 meta-box-include-exclude-1.0.11.zip
 meta-box-tabs-1.1.5.zip
 meta-box-tooltip-1.1.2.zip
-wpfront-user-role-editor-personal-pro-2.14.3.zip"
+wpfront-user-role-editor-personal-pro-2.14.5.zip"
 
 cd /home/ubuntu/app
 for plugin in $plugins; do
