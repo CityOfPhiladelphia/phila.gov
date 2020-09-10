@@ -26,7 +26,15 @@ function disable_gutenberg_admin_enqueue_scripts() {
 	
 }
 
-function disable_gutenberg_admin_print_scripts() { ?>
+function disable_gutenberg_admin_print_scripts() { 
+	
+	$screen = get_current_screen();
+	
+	if (!is_object($screen)) $screen = new stdClass();
+	
+	if (!property_exists($screen, 'id')) return;
+	
+	if ($screen->id === 'settings_page_disable-gutenberg') : ?>
 		
 	<script type="text/javascript">
 		var 
@@ -36,5 +44,6 @@ function disable_gutenberg_admin_print_scripts() { ?>
 		alert_reset_options_false   = '<?php _e('No, abort mission.',       'disable-gutenberg'); ?>';
 	</script>
 	
-<?php 
+	<?php endif;
+	
 }
