@@ -721,7 +721,6 @@ function cms_tpv_options() {
 
 		<?php cms_tpv_show_annoying_box(); ?>
 
-		<?php screen_icon(); ?>
 		<h2><?php echo CMS_TPV_NAME ?> <?php _e("settings", 'cms-tree-page-view') ?></h2>
 
 		<form method="post" action="options.php" class="cmtpv_options_form">

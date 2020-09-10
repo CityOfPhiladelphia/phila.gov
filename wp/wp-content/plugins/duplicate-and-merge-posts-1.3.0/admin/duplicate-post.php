@@ -1144,6 +1144,8 @@ class DuplicatePost{
       /* These meta fields get stored as repeated keys, which the duplicate and edit plugin doesn't account for. 
       By checking if the fields are of a certain name, we can prevent the fields from not getting duplicated at all, 
       and when merged back in, prevent the fields from getting repeated ids */ 
+
+      //UPDATE 
       if ($meta_key === 'phila_document_page_picker'){
         foreach ($meta_values as $doc_page_value){
           add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
@@ -1160,6 +1162,11 @@ class DuplicatePost{
         foreach ($meta_values as $program_values){
           add_post_meta($new_id, 'phila_select_programs', $program_values, false);
         }
+      }else if( $meta_key === 'phila_files'){ //document pages
+        foreach ($meta_values as $file_values){
+          add_post_meta($new_id, 'phila_files', $file_values, false);
+      }
+      
       }else{
         if( in_array($meta_key, array("_dp_original","_dp_submited")) ) continue;
 
