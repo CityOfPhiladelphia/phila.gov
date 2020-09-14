@@ -1967,6 +1967,8 @@ function phila_language_output($language){
     break;
     case 'korean'; 
       $language = '한국어';
+    case 'portuguese'; 
+      $language = 'português';
     break;
     default;
       $language = 'English'; 
@@ -2041,7 +2043,7 @@ function phila_get_translated_language( $language ) {
     endwhile;
     wp_reset_postdata();
 
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean' );
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese' );
   $ordered_array = array_replace(array_flip($order), $language_list);
   $final_array = array();
   foreach ($ordered_array as $key => $value){
@@ -2054,7 +2056,7 @@ function phila_get_translated_language( $language ) {
 }
 
 function phila_order_languages($languages){
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean');
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese');
   $ordered_array = array_replace(array_flip($order), $languages);
   $final_order = array();
   foreach ($ordered_array as $key => $value){
