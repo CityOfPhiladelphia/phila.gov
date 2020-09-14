@@ -56,6 +56,8 @@ class Phila_Closures_Controller {
 
     $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
 
+    $exception = rwmb_meta( 'phila_closure_exception', array( 'object_type' => 'setting' ), 'phila_settings' );
+
     $data = array();
 
     if ( empty( $closures ) ) {
@@ -66,6 +68,12 @@ class Phila_Closures_Controller {
       $response = $this->prepare_item_for_response( $closure, $request );
 
       $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    if ( !empty( $exception ) ) {
+      $exception_response = $this->prepare_exception_for_response( $exception );
+
+      $data[] = $this->prepare_response_for_collection( $exception_response );
     }
 
     // Return all response data.
@@ -82,6 +90,8 @@ class Phila_Closures_Controller {
   public function get_today( $request ) {
 
     $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+    $exception = rwmb_meta( 'phila_closure_exception', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
 
@@ -111,6 +121,12 @@ class Phila_Closures_Controller {
           }
         }
       }
+    }
+
+    if ( !empty( $exception ) ) {
+      $exception_response = $this->prepare_exception_for_response( $exception );
+      
+      $data[] = $this->prepare_response_for_collection( $exception_response );
     }
 
     // Return all response data.
@@ -159,6 +175,12 @@ class Phila_Closures_Controller {
           }
         }
       }
+    }
+
+    if ( !empty( $exception ) ) {
+      $exception_response = $this->prepare_exception_for_response( $exception );
+      
+      $data[] = $this->prepare_response_for_collection( $exception_response );
     }
 
     // Return all response data.
@@ -218,6 +240,12 @@ class Phila_Closures_Controller {
       }
     }
 
+    if ( !empty( $exception ) ) {
+      $exception_response = $this->prepare_exception_for_response( $exception );
+
+      $data[] = $this->prepare_response_for_collection( $exception_response );
+    }
+
     // Return all response data.
     return rest_ensure_response( $data );
   }
@@ -229,22 +257,36 @@ class Phila_Closures_Controller {
    * @param WP_Post $post The comment object whose response is being prepared.
    */
 
-  public function prepare_item_for_response( $post, $request ) {
+  public function prepare_item_for_response( $data, $request ) {
     $post_data = array();
 
     $schema = $this->get_item_schema( $request );
 
-    $post_data['closure_label'] = (string) $post['closure_label'] ?? '';
+    $post_data['closure_label'] = (string) $data['closure_label'] ?? '';
 
-    $post_data['exception'] = (string) $post['exception'] ?? '';
+    $post_data['start_date']  = (string) $data['start_date'] ?? '';
 
-    $post_data['start_date']  = (string) $post['start_date'] ?? '';
+    $post_data['end_date'] = (string) $data['end_date'] ?? '';
 
-    $post_data['end_date'] = (string) $post['end_date'] ?? '';
+    $post_data['is_recycling_biweekly'] = array_key_exists('is_recycling_biweekly', $data) ? (boolean) $data['is_recycling_biweekly'] : false;
 
-    $post_data['is_recycling_biweekly'] = array_key_exists('is_recycling_biweekly', $post) ? (boolean) $post['is_recycling_biweekly'] : false;
+    $post_data['is_active'] = array_key_exists('is_active', $data) ? (boolean) $data['is_active'] : false;
 
-    $post_data['is_active'] = array_key_exists('is_active', $post) ? (boolean) $post['is_active'] : false;
+    return rest_ensure_response( $post_data );
+}
+
+/**
+   * Matches the post data to the schema. Also, rename the fields to nicer names.
+   *
+   * @param WP_Post $post The comment object whose response is being prepared.
+   */
+
+  public function prepare_exception_for_response( $exception ) {
+    $post_data = array();
+
+    $post_data['exception'] = (string) $exception['exception'] ?? '';
+
+    $post_data['exception_delay'] = (string) $exception['exception_delay'] ?? '';
 
     return rest_ensure_response( $post_data );
 }

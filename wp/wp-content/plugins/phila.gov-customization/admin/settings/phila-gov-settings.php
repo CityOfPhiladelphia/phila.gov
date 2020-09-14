@@ -95,6 +95,25 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
     'fields'  => array(
       array(
+        'id'  => 'phila_closure_exception',
+        'type'   => 'group',
+        'fields'  => array(
+          array(
+            'id'  => 'exception',
+            'name'  => 'Exception',
+            'type'  => 'wysiwyg',
+            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+          ),
+          array(
+            'id'   => 'exception_delay',
+            'name' => 'Does this exception delay trash collection by a day?',
+            'type' => 'switch',
+            'on_label' => 'Yes',
+            'off_label'  => 'No'
+          ),
+        )
+      ),
+      array(
         'id'  => 'phila_closures',
         'type'   => 'group',
         'clone' => true,
@@ -106,12 +125,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'name'  => 'Closure label',
             'type'  => 'text',
             'required'  => true
-          ),
-          array(
-            'id'  => 'exception',
-            'name'  => 'Exception',
-            'type'  => 'wysiwyg',
-            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(
             'id'  => 'start_date',
