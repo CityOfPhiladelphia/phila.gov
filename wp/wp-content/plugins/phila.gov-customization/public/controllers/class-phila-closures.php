@@ -148,6 +148,8 @@ class Phila_Closures_Controller {
     $date = date($request_date);
 
     $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+    
+    $exception = rwmb_meta( 'phila_closure_exception', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
     
@@ -203,6 +205,8 @@ class Phila_Closures_Controller {
       6);
 
     $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+    $exception = rwmb_meta( 'phila_closure_exception', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
     
