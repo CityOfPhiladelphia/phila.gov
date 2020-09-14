@@ -142,52 +142,6 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'id'       => 'footnotes',
-    'title'    => 'Footnotes',
-    'pages'    => array( 'document' ),
-    'context'  => 'normal',
-    'priority' => 'high',
-    'revision' => true,
-    'visible' => array(
-      'when' => array(
-        array('phila_template_select', '=', 'longform_document'),
-      ),
-    ),
-
-    'fields' => array(
-      array(
-        'id'  => 'phila_longform_document_footnotes',
-        'type' => 'group',
-
-        'fields' => array(
-          array(
-            'id'  => 'phila_longform_document_footnote',
-            'type' => 'group',
-            'clone'  => true,
-            'sort_clone' => true,
-            'add_button' => '+ Add a footnote',
-            'fields' => array(
-              array(
-                'name' => 'Footnote copy',
-                'id'   => 'phila_footnote_copy',
-                'type' => 'text',
-                'limit' => 400,
-                'desc'  => '400 character limit.',
-              ),
-              array(
-                'name' => 'Footnote index',
-                'id'   => 'phila_footnote_index',
-                'desc'  => 'call footnote using the following shortcode: [phila_footnote index={index} /]',
-                'type' => 'number'
-              ),
-            ),
-          ),
-        ),
-      )
-    )
-  );
-
-  $meta_boxes[] = array(
     'id'       => 'update-history',
     'title'    => 'Update History',
     'pages'    => array( 'document' ),
@@ -290,6 +244,18 @@ function phila_register_meta_boxes( $meta_boxes ){
                     'required'  => true,
                   ),
                   array(
+                    'name' => 'Footnote copy',
+                    'id'   => 'phila_primary_footnote_copy',
+                    'type' => 'text',
+                    'limit' => 400,
+                    'desc'  => '400 character limit.',
+                  ),
+                  array(
+                    'name' => 'Footnote index',
+                    'id'   => 'phila_primary_footnote_index',
+                    'type' => 'number'
+                  ),
+                  array(
                     'id'  => 'phila_longform_document_secondary_section',
                     'type' => 'group',
                     'clone'  => true,
@@ -301,6 +267,18 @@ function phila_register_meta_boxes( $meta_boxes ){
                         'name' => 'Secondary Section Title',
                         'id'   => 'phila_longform_document_secondary_section_title',
                         'type' => 'text',
+                      ),
+                      array(
+                        'name' => 'Footnote copy',
+                        'id'   => 'phila_secondary_footnote_copy',
+                        'type' => 'text',
+                        'limit' => 400,
+                        'desc'  => '400 character limit.',
+                      ),
+                      array(
+                        'name' => 'Footnote index',
+                        'id'   => 'phila_secondary_footnote_index',
+                        'type' => 'number'
                       ),
                       array(
                         'name' => 'Secondary Section Description',
