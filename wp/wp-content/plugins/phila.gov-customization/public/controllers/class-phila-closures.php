@@ -261,20 +261,20 @@ class Phila_Closures_Controller {
    * @param WP_Post $post The comment object whose response is being prepared.
    */
 
-  public function prepare_item_for_response( $data, $request ) {
+  public function prepare_item_for_response( $post, $request ) {
     $post_data = array();
 
     $schema = $this->get_item_schema( $request );
 
-    $post_data['closure_label'] = (string) $data['closure_label'] ?? '';
+    $post_data['closure_label'] = (string) $post['closure_label'] ?? '';
 
-    $post_data['start_date']  = (string) $data['start_date'] ?? '';
+    $post_data['start_date']  = (string) $post['start_date'] ?? '';
 
-    $post_data['end_date'] = (string) $data['end_date'] ?? '';
+    $post_data['end_date'] = (string) $post['end_date'] ?? '';
 
-    $post_data['is_recycling_biweekly'] = array_key_exists('is_recycling_biweekly', $data) ? (boolean) $data['is_recycling_biweekly'] : false;
+    $post_data['is_recycling_biweekly'] = array_key_exists('is_recycling_biweekly', $post) ? (boolean) $post['is_recycling_biweekly'] : false;
 
-    $post_data['is_active'] = array_key_exists('is_active', $data) ? (boolean) $data['is_active'] : false;
+    $post_data['is_active'] = array_key_exists('is_active', $post) ? (boolean) $post['is_active'] : false;
 
     return rest_ensure_response( $post_data );
 }
