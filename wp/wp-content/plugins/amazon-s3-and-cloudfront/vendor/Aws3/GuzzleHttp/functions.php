@@ -52,7 +52,7 @@ function describe_type($input)
 /**
  * Parses an array of header lines into an associative array of headers.
  *
- * @param array $lines Header lines array of strings in the following
+ * @param iterable $lines Header lines array of strings in the following
  *                     format: "Name: Value"
  * @return array
  */
@@ -86,8 +86,8 @@ function debug_resource($value = null)
  *
  * The returned handler is not wrapped by any default middlewares.
  *
- * @throws \RuntimeException if no viable Handler is available.
  * @return callable Returns the best handler for the given system.
+ * @throws \RuntimeException if no viable Handler is available.
  */
 function choose_handler()
 {
@@ -262,14 +262,14 @@ function is_host_in_noproxy($host, array $noProxyArray)
  * @param int    $options Bitmask of JSON decode options.
  *
  * @return mixed
- * @throws \InvalidArgumentException if the JSON cannot be decoded.
+ * @throws Exception\InvalidArgumentException if the JSON cannot be decoded.
  * @link http://www.php.net/manual/en/function.json-decode.php
  */
 function json_decode($json, $assoc = false, $depth = 512, $options = 0)
 {
     $data = \json_decode($json, $assoc, $depth, $options);
     if (JSON_ERROR_NONE !== json_last_error()) {
-        throw new \InvalidArgumentException('json_decode error: ' . json_last_error_msg());
+        throw new \DeliciousBrains\WP_Offload_Media\Aws3\GuzzleHttp\Exception\InvalidArgumentException('json_decode error: ' . json_last_error_msg());
     }
     return $data;
 }
@@ -281,14 +281,14 @@ function json_decode($json, $assoc = false, $depth = 512, $options = 0)
  * @param int    $depth   Set the maximum depth. Must be greater than zero.
  *
  * @return string
- * @throws \InvalidArgumentException if the JSON cannot be encoded.
+ * @throws Exception\InvalidArgumentException if the JSON cannot be encoded.
  * @link http://www.php.net/manual/en/function.json-encode.php
  */
 function json_encode($value, $options = 0, $depth = 512)
 {
     $json = \json_encode($value, $options, $depth);
     if (JSON_ERROR_NONE !== json_last_error()) {
-        throw new \InvalidArgumentException('json_encode error: ' . json_last_error_msg());
+        throw new \DeliciousBrains\WP_Offload_Media\Aws3\GuzzleHttp\Exception\InvalidArgumentException('json_encode error: ' . json_last_error_msg());
     }
     return $json;
 }

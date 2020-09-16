@@ -2,18 +2,22 @@
 
 namespace DeliciousBrains\WP_Offload_Media\Aws3\Aws\Exception;
 
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Shape;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\CommandInterface;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\HasDataTrait;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\HasMonitoringEventsTrait;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\MonitoringEventsInterface;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\ResponseContainerInterface;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\ResultInterface;
+use DeliciousBrains\WP_Offload_Media\Aws3\JmesPath\Env as JmesPath;
 use DeliciousBrains\WP_Offload_Media\Aws3\Psr\Http\Message\ResponseInterface;
 use DeliciousBrains\WP_Offload_Media\Aws3\Psr\Http\Message\RequestInterface;
-use DeliciousBrains\WP_Offload_Media\Aws3\Aws\CommandInterface;
-use DeliciousBrains\WP_Offload_Media\Aws3\Aws\ResultInterface;
 /**
  * Represents an AWS exception that is thrown when a command fails.
  */
-class AwsException extends \RuntimeException implements \DeliciousBrains\WP_Offload_Media\Aws3\Aws\MonitoringEventsInterface, \DeliciousBrains\WP_Offload_Media\Aws3\Aws\ResponseContainerInterface
+class AwsException extends \RuntimeException implements \DeliciousBrains\WP_Offload_Media\Aws3\Aws\MonitoringEventsInterface, \DeliciousBrains\WP_Offload_Media\Aws3\Aws\ResponseContainerInterface, \ArrayAccess
 {
+    use HasDataTrait;
     use HasMonitoringEventsTrait;
     /** @var ResponseInterface */
     private $response;
@@ -23,6 +27,7 @@ class AwsException extends \RuntimeException implements \DeliciousBrains\WP_Offl
     private $requestId;
     private $errorType;
     private $errorCode;
+    private $errorShape;
     private $connectionError;
     private $transferInfo;
     private $errorMessage;
@@ -35,12 +40,14 @@ class AwsException extends \RuntimeException implements \DeliciousBrains\WP_Offl
      */
     public function __construct($message, \DeliciousBrains\WP_Offload_Media\Aws3\Aws\CommandInterface $command, array $context = [], \Exception $previous = null)
     {
+        $this->data = isset($context['body']) ? $context['body'] : [];
         $this->command = $command;
         $this->response = isset($context['response']) ? $context['response'] : null;
         $this->request = isset($context['request']) ? $context['request'] : null;
         $this->requestId = isset($context['request_id']) ? $context['request_id'] : null;
         $this->errorType = isset($context['type']) ? $context['type'] : null;
         $this->errorCode = isset($context['code']) ? $context['code'] : null;
+        $this->errorShape = isset($context['error_shape']) ? $context['error_shape'] : null;
         $this->connectionError = !empty($context['connection_error']);
         $this->result = isset($context['result']) ? $context['result'] : null;
         $this->transferInfo = isset($context['transfer_stats']) ? $context['transfer_stats'] : [];
@@ -155,6 +162,15 @@ class AwsException extends \RuntimeException implements \DeliciousBrains\WP_Offl
         return $this->errorCode;
     }
     /**
+     * Get the AWS error shape.
+     *
+     * @return Shape|null Returns null if no response was received
+     */
+    public function getAwsErrorShape()
+    {
+        return $this->errorShape;
+    }
+    /**
      * Get all transfer information as an associative array if no $name
      * argument is supplied, or gets a specific transfer statistic if
      * a $name attribute is supplied (e.g., 'retries_attempted').
@@ -194,5 +210,17 @@ class AwsException extends \RuntimeException implements \DeliciousBrains\WP_Offl
     public function setMaxRetriesExceeded()
     {
         $this->maxRetriesExceeded = true;
+    }
+    public function hasKey($name)
+    {
+        return isset($this->data[$name]);
+    }
+    public function get($key)
+    {
+        return $this[$key];
+    }
+    public function search($expression)
+    {
+        return \DeliciousBrains\WP_Offload_Media\Aws3\JmesPath\Env::search($expression, $this->toArray());
     }
 }
