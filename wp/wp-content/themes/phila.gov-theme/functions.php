@@ -1960,7 +1960,7 @@ function phila_language_output($language){
       $language = 'Hindo';
     break;
     case 'indonesian'; 
-      $language = 'bahasa Indonesia';
+      $language = 'Bahasa Indonesia';
     break;
     case 'urdu'; 
       $language = 'اردو';
@@ -1968,7 +1968,7 @@ function phila_language_output($language){
     case 'korean'; 
       $language = '한국어';
     case 'portuguese'; 
-      $language = 'português';
+      $language = 'Português';
     break;
     default;
       $language = 'English'; 
