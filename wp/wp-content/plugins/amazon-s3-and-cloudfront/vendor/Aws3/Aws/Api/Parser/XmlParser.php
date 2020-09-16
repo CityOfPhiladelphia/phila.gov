@@ -5,6 +5,7 @@ namespace DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Parser;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\DateTimeResult;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\ListShape;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\MapShape;
+use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Parser\Exception\ParserException;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Shape;
 use DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\StructureShape;
 /**
@@ -33,6 +34,11 @@ class XmlParser
             $node = $this->memberKey($member, $name);
             if (isset($value->{$node})) {
                 $target[$name] = $this->dispatch($member, $value->{$node});
+            } else {
+                $memberShape = $shape->getMember($name);
+                if (!empty($memberShape['xmlAttribute'])) {
+                    $target[$name] = $this->parse_xml_attribute($shape, $memberShape, $value);
+                }
             }
         }
         return $target;
@@ -94,9 +100,20 @@ class XmlParser
     }
     private function parse_timestamp(\DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Shape $shape, $value)
     {
-        if (!empty($shape['timestampFormat']) && $shape['timestampFormat'] === 'unixTimestamp') {
-            return \DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\DateTimeResult::fromEpoch((string) $value);
+        if (is_string($value) || is_int($value) || is_object($value) && method_exists($value, '__toString')) {
+            return \DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\DateTimeResult::fromTimestamp((string) $value, !empty($shape['timestampFormat']) ? $shape['timestampFormat'] : null);
         }
-        return new \DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\DateTimeResult($value);
+        throw new \DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Parser\Exception\ParserException('Invalid timestamp value passed to XmlParser::parse_timestamp');
+    }
+    private function parse_xml_attribute(\DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Shape $shape, \DeliciousBrains\WP_Offload_Media\Aws3\Aws\Api\Shape $memberShape, $value)
+    {
+        $namespace = $shape['xmlNamespace']['uri'] ? $shape['xmlNamespace']['uri'] : '';
+        $prefix = $shape['xmlNamespace']['prefix'] ? $shape['xmlNamespace']['prefix'] : '';
+        if (!empty($prefix)) {
+            $prefix .= ':';
+        }
+        $key = str_replace($prefix, '', $memberShape['locationName']);
+        $attributes = $value->attributes($namespace);
+        return isset($attributes[$key]) ? (string) $attributes[$key] : null;
     }
 }
