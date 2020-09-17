@@ -15,6 +15,7 @@ class Phila_Departments_Controller {
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
+        'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );
@@ -24,6 +25,7 @@ class Phila_Departments_Controller {
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_item' ),
+        'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema' ),
     ) );

@@ -1172,6 +1172,11 @@ class DuplicatePost{
 						add_post_meta($new_id, 'phila_select_programs', $program_values, false);
 					}
         }
+      }else if( $meta_key === 'phila_files'){ //document pages
+        foreach ($meta_values as $file_values){
+          add_post_meta($new_id, 'phila_files', $file_values, false);
+      }
+      
       }else{
         if( in_array($meta_key, array("_dp_original","_dp_submited")) ) continue;
 

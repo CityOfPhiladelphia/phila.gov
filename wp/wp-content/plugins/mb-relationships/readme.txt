@@ -1,10 +1,10 @@
 === MB Relationships ===
-Contributors: metabox, rilwis, truongwp
+Contributors: metabox, rilwis, truongwp, hsimah
 Donate link: https://metabox.io/pricing/
 Tags: relationship, relationships, connection, connections, posts to posts, post relationship, post relationships
 Requires at least: 4.8
-Tested up to: 5.4
-Stable tag: 1.9.2
+Tested up to: 5.5
+Stable tag: 1.10.5
 License: GPLv2 or later
 
 A lightweight solution for creating many-to-many posts to posts relationships.
@@ -91,6 +91,27 @@ Install **MB Relationships** extension
 3. Database structure
 
 == Changelog ==
+
+= 1.10.5 - 2020-08-17 =
+- Fix SQL error when relationship ID contains dashes
+
+= 1.10.4 - 2020-07-28 =
+- Fix non-reciprocal relationships break multiple relationship query
+- Allow reciprocal relationships for users, terms
+
+= 1.10.3 - 2020-07-07 =
+- Fix reciprocal post query doesn't work with custom 'orderby' param
+
+= 1.10.2 - 2020-07-06 =
+- Fix wrong table prefix when getting reciprocal relationships
+- Add hooks for add, delete relationships
+
+= 1.10.1 - 2020-06-18 =
+- Add filter for relationship settings
+- Fix reciprocal not follow the order of the admin
+
+= 1.10.0 - 2020-04-22 =
+- Add APIs to get all relationships and relationships settings
 
 = 1.9.2 - 2020-04-17 =
 - Fix each_connected not working

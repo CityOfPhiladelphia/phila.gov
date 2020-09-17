@@ -4,7 +4,7 @@ namespace DeliciousBrains\WP_Offload_Media\Aws3\JmesPath;
 
 class Utils
 {
-    static $typeMap = ['boolean' => 'boolean', 'string' => 'string', 'NULL' => 'null', 'double' => 'number', 'float' => 'number', 'integer' => 'number'];
+    public static $typeMap = ['boolean' => 'boolean', 'string' => 'string', 'NULL' => 'null', 'double' => 'number', 'float' => 'number', 'integer' => 'number'];
     /**
      * Returns true if the value is truthy
      *
@@ -102,6 +102,30 @@ class Utils
         }
     }
     /**
+     * Safely add together two values.
+     *
+     * @param mixed $a First value to add
+     * @param mixed $b Second value to add
+     *
+     * @return int|float
+     */
+    public static function add($a, $b)
+    {
+        if (is_numeric($a)) {
+            if (is_numeric($b)) {
+                return $a + $b;
+            } else {
+                return $a;
+            }
+        } else {
+            if (is_numeric($b)) {
+                return $b;
+            } else {
+                return 0;
+            }
+        }
+    }
+    /**
      * JMESPath requires a stable sorting algorithm, so here we'll implement
      * a simple Schwartzian transform that uses array index positions as tie
      * breakers.
@@ -179,7 +203,7 @@ class Utils
     private static function sliceIndices($subject, $start, $stop, $step)
     {
         $type = gettype($subject);
-        $len = $type == 'string' ? strlen($subject) : count($subject);
+        $len = $type == 'string' ? mb_strlen($subject, 'UTF-8') : count($subject);
         list($start, $stop, $step) = self::adjustSlice($len, $start, $stop, $step);
         $result = [];
         if ($step > 0) {
@@ -191,6 +215,6 @@ class Utils
                 $result[] = $subject[$i];
             }
         }
-        return $type == 'string' ? implode($result, '') : $result;
+        return $type == 'string' ? implode('', $result) : $result;
     }
 }
