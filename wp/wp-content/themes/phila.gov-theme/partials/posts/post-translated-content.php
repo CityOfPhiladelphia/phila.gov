@@ -30,6 +30,7 @@ elseif(isset($active_item)) {
 
 $new_language_list = [];
 foreach ($language_list as $key => $value) {
+  $language_list_item['language'] = $key;
   $language_list_item['key'] = phila_language_output($key);
   $language_list_item['value'] = $value;
   array_push($new_language_list, $language_list_item); 

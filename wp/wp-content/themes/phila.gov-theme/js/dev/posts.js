@@ -45,8 +45,9 @@ if (typeof phila_language_list !== 'undefined') {
     else {
       let a_tag = document.createElement("a");
       a_tag.className += " phm";
-      a_tag.className += " translation-link"
-      a_tag.className += " phs"
+      a_tag.className += " translation-link";
+      a_tag.className += " phs";
+      a_tag.className += " "+phila_language_list[item].language+'-translation';
       a_tag.href = phila_language_list[item].value;
       a_tag.innerHTML = phila_language_list[item].key;
       li.appendChild(a_tag);
