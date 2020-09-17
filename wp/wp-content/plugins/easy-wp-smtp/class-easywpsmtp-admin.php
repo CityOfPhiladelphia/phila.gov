@@ -2,13 +2,18 @@
 
 class EasyWPSMTP_Admin {
 
-	private $sd_code;
-
 	public function __construct() {
-		$this->sd_code = md5( uniqid( 'swpsmtp', true ) );
-		set_transient( 'easy_wp_smtp_sd_code', $this->sd_code, 12 * 60 * 60 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+	}
+
+	public function remove_conflicting_scripts() {
+		$html = ob_get_clean();
+		if ( defined( 'CLICKY_PLUGIN_DIR_URL' ) ) {
+			$expr = '/^(.*)' . preg_quote( CLICKY_PLUGIN_DIR_URL, '/' ) . '(.*)$/m';
+			$html = preg_replace( $expr, '', $html );
+		}
+		echo $html;
 	}
 
 	public function admin_enqueue_scripts( $hook ) {
@@ -16,6 +21,11 @@ class EasyWPSMTP_Admin {
 		if ( 'settings_page_swpsmtp_settings' !== $hook ) {
 			return;
 		}
+
+		//generate secret code for self-destruct function
+		$sd_code = md5( uniqid( 'swpsmtp', true ) );
+		set_transient( 'easy_wp_smtp_sd_code', $sd_code, 12 * 60 * 60 );
+
 		$core           = EasyWPSMTP::get_instance();
 		$plugin_data    = get_file_data( $core->plugin_file, array( 'Version' => 'Version' ), false );
 		$plugin_version = $plugin_data['Version'];
@@ -23,7 +33,7 @@ class EasyWPSMTP_Admin {
 		wp_register_script( 'swpsmtp_admin_js', plugins_url( 'js/script.js', __FILE__ ), array(), $plugin_version, true );
 		$params = array(
 			'sd_redir_url'    => get_admin_url(),
-			'sd_code'         => $this->sd_code,
+			'sd_code'         => $sd_code,
 			'clear_log_nonce' => wp_create_nonce( 'easy-wp-smtp-clear-log' ),
 			'str'             => array(
 				'clear_log'               => __( 'Are you sure want to clear log?', 'easy-wp-smtp' ),
@@ -36,6 +46,13 @@ class EasyWPSMTP_Admin {
 		);
 		wp_localize_script( 'swpsmtp_admin_js', 'easywpsmtp', $params );
 		wp_enqueue_script( 'swpsmtp_admin_js' );
+
+		// `Clicky by Yoast` plugin's admin-side scripts should be removed from settings page to prevent JS errors
+		// https://wordpress.org/support/topic/plugin-causing-conflicts-on-admin-side/
+		if ( class_exists( 'Clicky_Admin' ) ) {
+			ob_start();
+			add_action( 'admin_print_scripts', array( $this, 'remove_conflicting_scripts' ), 10000 );
+		}
 	}
 
 	public function admin_menu() {
@@ -97,6 +114,7 @@ function swpsmtp_settings() {
 		/* Update settings */
 		$swpsmtp_options['from_name_field']         = isset( $_POST['swpsmtp_from_name'] ) ? sanitize_text_field( wp_unslash( $_POST['swpsmtp_from_name'] ) ) : '';
 		$swpsmtp_options['force_from_name_replace'] = isset( $_POST['swpsmtp_force_from_name_replace'] ) ? 1 : false;
+		$swpsmtp_options['sub_mode']                = isset( $_POST['swpsmtp_sub_mode'] ) ? 1 : false;
 
 		if ( isset( $_POST['swpsmtp_from_email'] ) ) {
 			if ( is_email( $_POST['swpsmtp_from_email'] ) ) {
@@ -108,6 +126,9 @@ function swpsmtp_settings() {
 		if ( isset( $_POST['swpsmtp_reply_to_email'] ) ) {
 			$swpsmtp_options['reply_to_email'] = sanitize_email( $_POST['swpsmtp_reply_to_email'] );
 		}
+                if ( isset( $_POST['swpsmtp_bcc_email'] ) ) {
+                        $swpsmtp_options['bcc_email'] = sanitize_text_field( $_POST['swpsmtp_bcc_email'] );//Can contain comma seperated addresses.
+                }
 
 		if ( isset( $_POST['swpsmtp_email_ignore_list'] ) ) {
 			$swpsmtp_options['email_ignore_list'] = sanitize_text_field( $_POST['swpsmtp_email_ignore_list'] );
@@ -241,8 +262,21 @@ function swpsmtp_settings() {
 									<td>
 										<input id="swpsmtp_reply_to_email" type="email" name="swpsmtp_reply_to_email" value="<?php echo isset( $swpsmtp_options['reply_to_email'] ) ? esc_attr( $swpsmtp_options['reply_to_email'] ) : ''; ?>" /><br />
 										<p class="description"><?php esc_html_e( "Optional. This email address will be used in the 'Reply-To' field of the email. Leave it blank to use 'From' email as the reply-to value.", 'easy-wp-smtp' ); ?></p>
+										<p>
+											<label><input type="checkbox" id="swpsmtp_sub_mode" name="swpsmtp_sub_mode" value="1" <?php echo ( isset( $swpsmtp_options['sub_mode'] ) && ( $swpsmtp_options['sub_mode'] ) ) ? ' checked' : ''; ?> /> <?php esc_html_e( 'Substitute Mode', 'easy-wp-smtp' ); ?></label>
+										</p>
+										<p class="description"><?php esc_html_e( 'When enabled, the plugin will substitute occurances of the above From Email with the Reply-To Email address. The Reply-To Email will still be used if no other Reply-To Email is present. This option can prevent conflicts with other plugins that specify reply-to email addresses but still replaces the From Email with the Reply-To Email.', 'easy-wp-smtp' ); ?></p>
+										<p>
 									</td>
 								</tr>
+                                                                <tr valign="top">
+                                                                        <th scope="row"><?php esc_html_e( 'BCC Email Address', 'easy-wp-smtp' ); ?></th>
+                                                                        <td>
+                                                                                <input id="swpsmtp_bcc_email" type="text" name="swpsmtp_bcc_email" value="<?php echo isset( $swpsmtp_options['bcc_email'] ) ? esc_attr( $swpsmtp_options['bcc_email'] ) : ''; ?>" /><br />
+                                                                                <p class="description"><?php esc_html_e( "Optional. This email address will be used in the 'BCC' field of the outgoing emails. Use this option carefully since all your outgoing emails from this site will add this address to the BCC field. You can also enter multiple email addresses (comma separated).", 'easy-wp-smtp' ); ?></p>
+                                                                        </td>
+                                                                </tr>
+
 								<tr class="ad_opt swpsmtp_smtp_options">
 									<th><?php esc_html_e( 'SMTP Host', 'easy-wp-smtp' ); ?></th>
 									<td>
@@ -253,19 +287,19 @@ function swpsmtp_settings() {
 								<tr class="ad_opt swpsmtp_smtp_options">
 									<th><?php esc_html_e( 'Type of Encryption', 'easy-wp-smtp' ); ?></th>
 									<td>
-										<label for="swpsmtp_smtp_type_encryption_1"><input type="radio" id="swpsmtp_smtp_type_encryption_1" name="swpsmtp_smtp_type_encryption" value='none' 
+										<label for="swpsmtp_smtp_type_encryption_1"><input type="radio" id="swpsmtp_smtp_type_encryption_1" name="swpsmtp_smtp_type_encryption" value='none'
 										<?php
 										if ( isset( $swpsmtp_options['smtp_settings']['type_encryption'] ) && 'none' === $swpsmtp_options['smtp_settings']['type_encryption'] ) {
 											echo 'checked="checked"';}
 										?>
 										/> <?php esc_html_e( 'None', 'easy-wp-smtp' ); ?></label>
-										<label for="swpsmtp_smtp_type_encryption_2"><input type="radio" id="swpsmtp_smtp_type_encryption_2" name="swpsmtp_smtp_type_encryption" value='ssl' 
+										<label for="swpsmtp_smtp_type_encryption_2"><input type="radio" id="swpsmtp_smtp_type_encryption_2" name="swpsmtp_smtp_type_encryption" value='ssl'
 										<?php
 										if ( isset( $swpsmtp_options['smtp_settings']['type_encryption'] ) && 'ssl' === $swpsmtp_options['smtp_settings']['type_encryption'] ) {
 											echo 'checked="checked"';}
 										?>
 										/> <?php esc_html_e( 'SSL/TLS', 'easy-wp-smtp' ); ?></label>
-										<label for="swpsmtp_smtp_type_encryption_3"><input type="radio" id="swpsmtp_smtp_type_encryption_3" name="swpsmtp_smtp_type_encryption" value='tls' 
+										<label for="swpsmtp_smtp_type_encryption_3"><input type="radio" id="swpsmtp_smtp_type_encryption_3" name="swpsmtp_smtp_type_encryption" value='tls'
 										<?php
 										if ( isset( $swpsmtp_options['smtp_settings']['type_encryption'] ) && 'tls' === $swpsmtp_options['smtp_settings']['type_encryption'] ) {
 											echo 'checked="checked"';}
@@ -284,13 +318,13 @@ function swpsmtp_settings() {
 								<tr class="ad_opt swpsmtp_smtp_options">
 									<th><?php esc_html_e( 'SMTP Authentication', 'easy-wp-smtp' ); ?></th>
 									<td>
-										<label for="swpsmtp_smtp_autentication"><input type="radio" id="swpsmtp_smtp_autentication_1" name="swpsmtp_smtp_autentication" value='no' 
+										<label for="swpsmtp_smtp_autentication"><input type="radio" id="swpsmtp_smtp_autentication_1" name="swpsmtp_smtp_autentication" value='no'
 										<?php
 										if ( isset( $swpsmtp_options['smtp_settings']['autentication'] ) && 'no' === $swpsmtp_options['smtp_settings']['autentication'] ) {
 											echo 'checked="checked"';}
 										?>
 										/> <?php esc_html_e( 'No', 'easy-wp-smtp' ); ?></label>
-										<label for="swpsmtp_smtp_autentication"><input type="radio" id="swpsmtp_smtp_autentication_2" name="swpsmtp_smtp_autentication" value='yes' 
+										<label for="swpsmtp_smtp_autentication"><input type="radio" id="swpsmtp_smtp_autentication_2" name="swpsmtp_smtp_autentication" value='yes'
 										<?php
 										if ( isset( $swpsmtp_options['smtp_settings']['autentication'] ) && 'yes' === $swpsmtp_options['smtp_settings']['autentication'] ) {
 											echo 'checked="checked"';}

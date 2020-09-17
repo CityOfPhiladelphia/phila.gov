@@ -2,9 +2,9 @@
 Contributors: bradt, deliciousbrains, ianmjones
 Tags: uploads, amazon, s3, amazon s3, digitalocean, digitalocean spaces, google cloud storage, gcs, mirror, admin, media, cdn, cloudfront
 Requires at least: 4.9
-Tested up to: 5.3
+Tested up to: 5.5
 Requires PHP: 5.5
-Stable tag: 2.3.2
+Stable tag: 2.4.4
 License: GPLv3
 
 Copies files to Amazon S3, DigitalOcean Spaces or Google Cloud Storage as they are uploaded to the Media Library. Optionally configure Amazon CloudFront or another CDN for faster delivery.
@@ -32,7 +32,7 @@ Although WP Offload Media doesn't include image optimization features, we work c
 * [Assets Pull addon](https://deliciousbrains.com/wp-offload-media/?utm_campaign=WP%2BOffload%2BS3&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting&utm_content=assets%2Baddon#addons) - Serve your CSS, JS and fonts via CloudFront or another CDN
 * [WooCommerce integration](https://deliciousbrains.com/wp-offload-media/?utm_campaign=WP%2BOffload%2BS3&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting&utm_content=woocommerce%2Baddon#integrations)
 * [Easy Digital Downloads integration](https://deliciousbrains.com/wp-offload-media/?utm_campaign=WP%2BOffload%2BS3&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting&utm_content=edd%2Baddon#integrations)
-* PriorityExpert&trade; email support
+* Priority email support
 
 [Compare pro vs free &rarr;](https://deliciousbrains.com/wp-offload-media/upgrade/?utm_campaign=WP%2BOffload%2BS3&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting)
 
@@ -80,6 +80,59 @@ This is a major change, which ensures S3 URLs are no longer saved in post conten
 This version requires PHP 5.3.3+ and the Amazon Web Services plugin
 
 == Changelog ==
+
+= WP Offload Media Lite 2.4.4 - 2020-09-08 =
+* Improvement: Updated AWS PHP SDK to v3.151.6
+* Bug fix: Files for duplicate thumbnail sizes not removed from server after initial offload
+* Bug fix: PHP Fatal error: Class 'DeliciousBrains\WP_Offload_Media\Aws3\Symfony\Polyfill\Intl\Idn\Idn' not found
+* Bug fix: PHP Recoverable fatal error: Object of class WP_Error could not be converted to string in .../wp-includes/post.php on line 504
+* Bug fix: PHP message: PHP Warning: is_readable(): open_basedir restriction in effect
+* Bug fix: URLs not rewritten for RSS feed enclosures
+
+= WP Offload Media Lite 2.4.3 - 2020-09-01 =
+* Improvement: Updated AWS PHP SDK to v3.151.3
+* Bug fix: PHP Fatal error: Class 'DeliciousBrains\WP_Offload_Media\Aws3\Symfony\Polyfill\Intl\Idn\Idn' not found
+
+= WP Offload Media Lite 2.4.2 - 2020-08-27 =
+* Improvement: Updated AWS PHP SDK to v3.150.1
+* Bug fix: Image thumbnail URLs in custom HTML not rewritten to delivery provider URLs
+* Bug fix: Background processes do not start when PHP memory limit in gigabytes
+* Bug fix: PHP Fatal error: require(): Failed opening required '.../vendor/Aws3/Aws/Sts/StsClient.php'
+* Bug fix: AWS SDK "Warning: is_readable(): open_basedir restriction in effect" message from Regional Endpoint check
+* Bug fix: Bottom and right button borders in settings page are clipped when focused
+
+= WP Offload Media Lite 2.4.1 - 2020-07-21 =
+* Bug fix: Fatal Error with EWWW Image Optimizer 5.5 or earlier installed
+* Bug fix: AWS SDK "Warning: is_readable(): open_basedir restriction in effect" message when Use ARN Region in effect
+* Bug fix: "Data you have entered may not be saved" notice shown incorrectly when leaving settings page
+
+= WP Offload Media Lite 2.4 - 2020-07-14 =
+* [Release Summary Blog Post](https://deliciousbrains.com/wp-offload-media-2-4-released/?utm_campaign=changelogs&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting)
+* New: Setting to choose a Delivery Provider (i.e. S3, CloudFront, another CDN)
+* New: Support for Block All Public Access setting on S3 buckets
+* New: Raw S3 URLs use bucket in domain rather than path where possible as per changes required by AWS
+* New: Raw S3 URLs use dot rather than dash between s3 and region name as per changes required by AWS
+* New: Added S3 regions for Africa (Cape Town), Asia Pacific (Hong Kong), EU (Milan), EU (Stockholm), and Middle East (Bahrain)
+* New: Added GCS regions for Salt Lake City, Las Vegas, Zürich, Osaka, Seoul, EUR4 (dual-region), and NAM4 (dual-region)
+* Improvement: Updated AWS PHP SDK to v3.133.40
+* Improvement: Updated Google Cloud Storage SDK to v1.18.0
+* Improvement: S3 regions for China no longer hidden (configuration via AWS Console still required)
+* Bug fix: Private images not showing in grid mode Media page overlay
+* Bug fix: Public image thumbnails not showing in grid mode Media page when original is private
+* Bug fix: URL rewriting sometimes fails for sites hosted on Windows
+* Bug fix: URL rewrite fails for image when original upload has size in file name
+* Bug fix: External URLs rewritten to local URLs when they shouldn't
+* Bug fix: StreamWrappers don't work with private buckets
+* Bug fix: Database error when inserting media library item and using HyperDB
+* Bug fix: S3 bucket link in settings no longer goes direct to bucket contents
+* Bug fix: New uploads slow with very large Media Library
+* Bug fix: Migration to custom table very slow with large postmeta tables
+* Bug fix: Signed GCS URLs have incorrect expires value
+* Bug fix: The use-server-roles AS3CF_SETTINGS value is not properly reflected in Diagnostic Info
+* Bug fix: Unknown column '2019/12/some-file-name.pdf' in 'where clause' when using managed MySQL on DigitalOcean
+* Bug fix: WordPress database error Expression #1 of ORDER BY clause is not in SELECT list when using MySQL8
+* Bug fix: WordPress forces HTTP in Edit Media page if site is not HTTPS, breaking remote URLs that require HTTPS
+* Tested: WordPress 5.5
 
 = WP Offload Media Lite 2.3.2 - 2019-12-09 =
 * Improvement: Reduced database queries when external object cache available
