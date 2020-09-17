@@ -11,10 +11,24 @@
   'orderby' => 'date',
   'ignore_sticky_posts' => 1,
   'meta_query'  => array(
+    'relation' => 'OR',
     array(
       'key' => 'phila_template_select',
       'value' => 'action_guide',
       'compare' => '=',
+    ),
+    array(
+      'relation' => 'AND',
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'action_guide_2',
+        'compare' => '=',
+      ),
+      array(
+        'key'     => 'phila_select_language',
+        'value'   => 'english',
+        'compare' => '=',
+      ),
     ),
   ),
 ); ?>

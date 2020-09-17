@@ -10,7 +10,7 @@
   $custom_text_content = $custom_text['phila_custom_text_content'];
 ?>
   <?php if ( !empty( $custom_text_title ) ) :?>
-    <h2 class="contrast"><?php echo( $custom_text_title ); ?></h2>
+    <h2 id="<?php echo phila_format_uri($custom_text_title)?>" class="contrast"><?php echo( $custom_text_title ); ?></h2>
   <?php endif; ?>
   <?php if ( !empty( $custom_text_content ) ) :?>
     <div class="custom-text">

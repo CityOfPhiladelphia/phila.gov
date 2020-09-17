@@ -1,11 +1,11 @@
 === CMS Tree Page View ===
-Contributors: eskapism, MarsApril
+Contributors: jchristopher, eskapism
 Donate link: http://eskapism.se/sida/donate/
 Tags: page, pages, posts, custom posts, tree, cms, dashboard, overview, drag-and-drop, rearrange, management, manage, admin
 Text Domain: cms-tree-page-view
 Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 1.6
+Tested up to: 5.4.2
+Stable tag: 1.6.1
 
 Adds a tree view of all pages & custom posts. Get a great overview + options to drag & drop to reorder & option to add multiple pages.
 
@@ -59,6 +59,9 @@ $query = new WP_Query( $args );
 `
 
 #### Screencast
+
+(An updated screencast is coming soon!)
+
 Watch this screencast to see how easy you could be managing your pages:
 [youtube http://www.youtube.com/watch?v=H4BGomLi_FU]
 
@@ -108,14 +111,20 @@ Now the tree with the pages will be visible both on the dashboard and in the men
 
 1. The page tree in action
 2. Edit, view and even add multiple pages at once!
-3. Search pages
-4. Drag-and-drop to rearrange/change the order of the pages.
-5. The tree is also available on the dashboard and therefore available immediately after you login.
-6. Users of WPML can find all their languages in the tree
-7. Quickly switch between regular list view and tree view using the switch icon
+3. Drag-and-drop to rearrange/change the order of the pages.
 
 
 == Changelog ==
+
+= 1.6.1 (July 2020) =
+
+CMS Tree Page View has been adopted by [Jon Christopher](https://jonchristopher.us/blog/cms-tree-page-view-has-been-adopted-by-me/)! Please read the [announcement post](https://jonchristopher.us/blog/cms-tree-page-view-has-been-adopted-by-me/) for more information and ways to provide feedback.
+
+- Tested with WordPress 5.4.
+- Tested with upcoming jQuery changes in WordPress core.
+- Updated banner images
+- Updated screenshots
+- Removed deprecated function call to `screen_icon()`.
 
 = 1.6 (January 2018) =
 
