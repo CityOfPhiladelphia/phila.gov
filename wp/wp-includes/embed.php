@@ -57,7 +57,6 @@ function wp_embed_unregister_handler( $id, $priority = 10 ) {
  * @global int $content_width
  *
  * @param string $url Optional. The URL that should be embedded. Default empty.
- *
  * @return array {
  *     Indexed array of the embed width and height in pixels.
  *
@@ -115,8 +114,6 @@ function wp_oembed_get( $url, $args = '' ) {
  * @since 2.9.0
  * @access private
  *
- * @staticvar WP_oEmbed $wp_oembed
- *
  * @return WP_oEmbed object.
  */
 function _wp_oembed_get_object() {
@@ -135,10 +132,10 @@ function _wp_oembed_get_object() {
  *
  * @see WP_oEmbed
  *
- * @param string  $format   The format of URL that this provider can handle. You can use asterisks
- *                          as wildcards.
- * @param string  $provider The URL to the oEmbed provider.
- * @param boolean $regex    Optional. Whether the `$format` parameter is in a RegEx format. Default false.
+ * @param string $format   The format of URL that this provider can handle. You can use asterisks
+ *                         as wildcards.
+ * @param string $provider The URL to the oEmbed provider.
+ * @param bool   $regex    Optional. Whether the `$format` parameter is in a RegEx format. Default false.
  */
 function wp_oembed_add_provider( $format, $provider, $regex = false ) {
 	if ( did_action( 'plugins_loaded' ) ) {
@@ -801,17 +798,30 @@ function _oembed_create_xml( $data, $node = null ) {
  * @return string The filtered oEmbed result.
  */
 function wp_filter_oembed_iframe_title_attribute( $result, $data, $url ) {
-	if ( false === $result || ! in_array( $data->type, array( 'rich', 'video' ) ) ) {
+	if ( false === $result || ! in_array( $data->type, array( 'rich', 'video' ), true ) ) {
 		return $result;
 	}
 
 	$title = ! empty( $data->title ) ? $data->title : '';
 
-	$pattern        = '`<iframe[^>]*?title=(\\\\\'|\\\\"|[\'"])([^>]*?)\1`i';
-	$has_title_attr = preg_match( $pattern, $result, $matches );
+	$pattern = '`<iframe([^>]*)>`i';
+	if ( preg_match( $pattern, $result, $matches ) ) {
+		$attrs = wp_kses_hair( $matches[1], wp_allowed_protocols() );
 
-	if ( $has_title_attr && ! empty( $matches[2] ) ) {
-		$title = $matches[2];
+		foreach ( $attrs as $attr => $item ) {
+			$lower_attr = strtolower( $attr );
+			if ( $lower_attr === $attr ) {
+				continue;
+			}
+			if ( ! isset( $attrs[ $lower_attr ] ) ) {
+				$attrs[ $lower_attr ] = $item;
+				unset( $attrs[ $attr ] );
+			}
+		}
+	}
+
+	if ( ! empty( $attrs['title']['value'] ) ) {
+		$title = $attrs['title']['value'];
 	}
 
 	/**
@@ -830,11 +840,11 @@ function wp_filter_oembed_iframe_title_attribute( $result, $data, $url ) {
 		return $result;
 	}
 
-	if ( $has_title_attr ) {
-		// Remove the old title, $matches[1]: quote, $matches[2]: title attribute value.
-		$result = str_replace( ' title=' . $matches[1] . $matches[2] . $matches[1], '', $result );
+	if ( isset( $attrs['title'] ) ) {
+		unset( $attrs['title'] );
+		$attr_string = join( ' ', wp_list_pluck( $attrs, 'whole' ) );
+		$result      = str_replace( $matches[0], '<iframe ' . trim( $attr_string ) . '>', $result );
 	}
-
 	return str_ireplace( '<iframe ', sprintf( '<iframe title="%s" ', esc_attr( $title ) ), $result );
 }
 
@@ -855,7 +865,7 @@ function wp_filter_oembed_iframe_title_attribute( $result, $data, $url ) {
  * @return string The filtered and sanitized oEmbed result.
  */
 function wp_filter_oembed_result( $result, $data, $url ) {
-	if ( false === $result || ! in_array( $data->type, array( 'rich', 'video' ) ) ) {
+	if ( false === $result || ! in_array( $data->type, array( 'rich', 'video' ), true ) ) {
 		return $result;
 	}
 
@@ -1184,8 +1194,8 @@ function the_embed_site_title() {
 	$site_title = sprintf(
 		'<a href="%s" target="_top"><img src="%s" srcset="%s 2x" width="32" height="32" alt="" class="wp-embed-site-icon"/><span>%s</span></a>',
 		esc_url( home_url() ),
-		esc_url( get_site_icon_url( 32, admin_url( 'images/w-logo-blue.png' ) ) ),
-		esc_url( get_site_icon_url( 64, admin_url( 'images/w-logo-blue.png' ) ) ),
+		esc_url( get_site_icon_url( 32, includes_url( 'images/w-logo-blue.png' ) ) ),
+		esc_url( get_site_icon_url( 64, includes_url( 'images/w-logo-blue.png' ) ) ),
 		esc_html( get_bloginfo( 'name' ) )
 	);
 

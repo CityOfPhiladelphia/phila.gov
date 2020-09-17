@@ -50,6 +50,22 @@ class MB_Relationships_API {
 		return self::$factory->build( $settings );
 	}
 
+	public static function get_relationship( $id ) {
+		return self::$factory->get( $id );
+	}
+
+	public static function get_relationship_settings( $id ) {
+		return self::$factory->get_settings( $id );
+	}
+
+	public static function get_all_relationships() {
+		return self::$factory->all();
+	}
+
+	public static function get_all_relationships_settings() {
+		return self::$factory->all_settings();
+	}
+
 	/**
 	 * Check if 2 objects has a relationship.
 	 *
@@ -114,8 +130,10 @@ class MB_Relationships_API {
 		$id_key       = $relationship->get_db_field( $direction );
 		$query_object = $object_type . '_query';
 
+		// if this is not reciprocal we need to derive the relationship key
+		$relationship_key = 'mbr_' .  $args['id'] . '_' . $direction;
 		$items = self::$$query_object->query( $args, $query_vars, $relationship );
-		self::distribute( $args[ $direction ], $items, $args['property'], $id_key );
+		self::distribute( $args[ $direction ], $items, $args['property'], $id_key, $relationship_key );
 	}
 
 	/**
@@ -144,32 +162,34 @@ class MB_Relationships_API {
 	 * Given a list of objects and another list of connected items,
 	 * distribute each connected item to it's respective counterpart.
 	 *
-	 * @param array  $items     List of objects.
-	 * @param array  $connected List of connected objects.
-	 * @param string $property  Name of connected array property.
-	 * @param string $id_key    ID key of the objects.
+	 * @param array  $items     				List of objects.
+	 * @param array  $connected 				List of connected objects.
+	 * @param string $property  				Name of connected array property.
+	 * @param string $id_key    				ID key of the objects.
+	 * @param string $relationship_key	Non-reciprocal constructed key.
 	 * @return array
 	 */
-	private static function distribute( &$items, $connected, $property, $id_key ) {
+	private static function distribute( &$items, $connected, $property, $id_key, $relationship_key ) {
 		foreach ( $items as &$item ) {
-			$item->$property = self::filter( $connected, $item->$id_key );
+			$item->$property = self::filter( $connected, $item->$id_key, $relationship_key );
 		}
 		return $items;
 	}
 
 	/**
 	 * Filter to find the matched items.
-	 * Non-reciprocal relationships: uses mbr_origin key.
+	 * Non-reciprocal relationships: uses constructed key.
 	 * Reciprocal relationships: uses mbr_from and mbr_to keys.
 	 *
-	 * @param array  $items     Connected items.
-	 * @param string $object_id Connected object ID.
+	 * @param array  $items     				Connected items.
+	 * @param string $object_id 				Connected object ID.
+	 * @param string $relationship_key	Non-reciprocal constructed key.
 	 * @return array
 	 */
-	private static function filter( $items, $object_id ) {
-		$items = array_filter( $items, function( $item ) use ( $object_id ) {
+	private static function filter( $items, $object_id, $relationship_key ) {
+		$items = array_filter( $items, function( $item ) use ( $object_id, $relationship_key ) {
 			$item = (array) $item;
-			return ( isset( $item['mbr_origin'] ) && $item['mbr_origin'] == $object_id )
+			return ( isset( $item[$relationship_key] ) && $item[$relationship_key] == $object_id )
 				|| ( isset( $item['mbr_from'] ) && $item['mbr_from'] == $object_id )
 				|| ( isset( $item['mbr_to'] ) && $item['mbr_to'] == $object_id );
 		} );

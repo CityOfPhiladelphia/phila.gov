@@ -130,16 +130,14 @@
 				that.controller.destroy();
 			} );
 
+			var collection = this.controller.get( 'items' );
 			this.$input.on( 'media:reset', function() {
-				that.controller.get( 'items' ).reset();
+				collection.reset();
 			} );
 
-			this.controller.get( 'items' ).on( 'add remove reset', _.debounce( function () {
-				that.$input.trigger( 'change', [that.$( '.rwmb-media-input' )] );
-			}, 500 ) );
-
-			this.controller.get( 'items' ).on( 'remove', _.debounce( function () {
-				that.$input.val( '' ).trigger( 'change' );
+			collection.on( 'add remove reset', _.debounce( function () {
+				var ids = collection.pluck( 'id' ).join( ',' );
+				that.$input.val( ids ).trigger( 'change', [that.$( '.rwmb-media-input' )] );
 			}, 500 ) );
 		},
 
@@ -375,7 +373,11 @@
 
 				this._frame.on( 'select', function () {
 					var selection = this._frame.state().get( 'selection' );
-					this.collection.add( selection.models );
+					if ( this.controller.get( 'addTo' ) === 'beginning' ) {
+						this.collection.add( selection.models, {at: 0} );
+					} else {
+						this.collection.add( selection.models );
+					}
 				}, this );
 
 				this._frame.open();
