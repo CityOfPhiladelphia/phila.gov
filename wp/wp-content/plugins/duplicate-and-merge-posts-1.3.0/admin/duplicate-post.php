@@ -1013,8 +1013,9 @@ class DuplicatePost{
 	}
 
 	function duplicate_post_save_to_original(){
+
 		if ( isset( $_GET['post'] ) ){
-			$original_post_id = absint( get_post_meta( $_GET["post"], '_dp_original', true) );
+			$original_post_id = absint(get_post_meta( $_GET["post"], '_dp_original', true) );
 			if($original_post_id){
 				$this->save_to_original( $_GET["post"] );
 
@@ -1139,26 +1140,37 @@ class DuplicatePost{
 		$meta_keys = array_diff($post_meta_keys, $meta_blacklist);
 
     foreach ($meta_keys as $meta_key) {
-      $meta_values = get_post_custom_values($meta_key, $post->ID);
+			$meta_values = get_post_custom_values($meta_key, $post->ID);
+			
       //KD - This is not ideal, but it prevents the duplicated page from overriding the meta field ID when page gets duplicated. 
       /* These meta fields get stored as repeated keys, which the duplicate and edit plugin doesn't account for. 
       By checking if the fields are of a certain name, we can prevent the fields from not getting duplicated at all, 
-      and when merged back in, prevent the fields from getting repeated ids */ 
+			and when merged back in, prevent the fields from getting repeated ids */ 
       if ($meta_key === 'phila_document_page_picker'){
+				// var_dump($meta_key);
+				// var_dump($meta_values);
         foreach ($meta_values as $doc_page_value){
-          add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
-        }
+					if(!metadata_exists('post', $new_id, 'phila_document_page_picker')) {
+						add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
+					}
+				}
       }else if( $meta_key === 'phila_related_content_picker'){
         foreach ($meta_values as $related_content){
-          add_post_meta($new_id, 'phila_related_content_picker', $related_content, false);
+					if(!metadata_exists('post', $new_id, 'phila_related_content_picker')) {
+						add_post_meta($new_id, 'phila_related_content_picker', $related_content, false);
+					}
         }
       }else if( $meta_key === 'service_related_content_picker'){
         foreach ($meta_values as $service_related_content){
-          add_post_meta($new_id, 'service_related_content_picker', $service_related_content, false);
+					if(!metadata_exists('post', $new_id, 'service_related_content_picker')) {
+						add_post_meta($new_id, 'service_related_content_picker', $service_related_content, false);
+					}
         }
       }else if( $meta_key === 'phila_select_programs'){// now it's saving the values, but adding them to the page twice. updading the page normally fixes the issue, but it's still not ideal.
         foreach ($meta_values as $program_values){
-          add_post_meta($new_id, 'phila_select_programs', $program_values, false);
+					if(!metadata_exists('post', $new_id, 'phila_select_programs')) {
+						add_post_meta($new_id, 'phila_select_programs', $program_values, false);
+					}
         }
       }else{
         if( in_array($meta_key, array("_dp_original","_dp_submited")) ) continue;
@@ -1269,6 +1281,7 @@ class DuplicatePost{
 
 		if($to_post_id == ''){
 			delete_post_meta($new_post_id, '_dp_original');
+			// THIS IS THE SPOT	
 			add_post_meta($new_post_id, '_dp_original', $post_to_dup->ID);
 		}else{
 			wp_delete_post($post_to_dup->ID);
