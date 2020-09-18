@@ -34,7 +34,6 @@ if (typeof phila_language_list !== 'undefined') {
   let i = 0;
 
   for (let item in phila_language_list) {
-    console.log(phila_language_list[item])
     let li = document.createElement("li");
     if(phila_language_list[item].value == window.location.href.split(/[?#]/)[0]) {
       li.className += " phm";
@@ -50,6 +49,15 @@ if (typeof phila_language_list !== 'undefined') {
       a_tag.className += " "+phila_language_list[item].language+'-translation';
       a_tag.href = phila_language_list[item].value;
       a_tag.innerHTML = phila_language_list[item].key;
+      a_tag.addEventListener("click", function() {
+        window.dataLayer.push({
+          'event' : 'GAEvent',
+          'eventCategory' : 'Translation Services',
+          'eventAction' : phila_language_list[item].language,
+          'eventLabel' : window.location.pathname,
+        });
+      });
+      
       li.appendChild(a_tag);
     }
 
