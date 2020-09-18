@@ -387,7 +387,7 @@ class Phila_Gov_Custom_Post_Types{
         'show_in_rest' => true,
         'rest_base' => 'longform-contents',
         'menu_icon' => 'dashicons-media-text',
-        'hierarchical' => false,
+        'hierarchical' => true,
         'rewrite' => array(
           'slug' => 'longform-contents',
           'with_front' => false,

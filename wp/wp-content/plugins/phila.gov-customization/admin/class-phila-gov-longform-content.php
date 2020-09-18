@@ -35,6 +35,7 @@ class Phila_Gov_Longform_Content {
           'name' => 'Section Title',
           'id'   => 'phila_longform_content_section_title',
           'type' => 'text',
+          'columns' => 4,
         ),
         array(
           'name' => 'Footnote copy',
@@ -42,11 +43,13 @@ class Phila_Gov_Longform_Content {
           'type' => 'text',
           'limit' => 400,
           'desc'  => '400 character limit.',
+          'columns' => 4,
         ),
         array(
           'name' => 'Footnote index',
           'id'   => 'phila_longform_content_footnote_index',
-          'type' => 'number'
+          'type' => 'number',
+          'columns' => 4,
         ),
         array(
           'name' => 'Section copy',
