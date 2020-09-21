@@ -26,11 +26,11 @@ $language_list = phila_get_translated_language( $language );
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-18 post-title">
-        <?php if ( $template_type == 'action_guide' ) : ?>
+        <?php if ( $template_type == 'action_guide' || $template_type == 'action_guide_2' ) { ?>
           <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
-        <?php else:  ?>
+        <?php } else {  ?>
           <?php the_title( '<h1>', '</h1>' ); ?>
-        <?php endif; ?>
+        <?php } ?>
       </div>
       <div class="cell medium-6 align-self-bottom">
         <?php get_template_part('partials/social-media') ?>
@@ -72,23 +72,8 @@ $language_list = phila_get_translated_language( $language );
     </div>
   <?php endif; ?>
   </header>
-
-<?php  if ( count( $language_list ) != 1 ): ?>
-  <!-- Translated content -->
-  <div class="grid-container translations-container">
-    <div class="grid-x medium-24 bg-ghost-gray mvl pas translations">
-      <span class="border-right phl-mu hide-for-small-only"><i class="fas fa-globe fa-2x"></i></span>
-      <ul class="inline-list no-bullet mbn pln">
-        <?php foreach ($language_list as $key => $value): ?>
-          <li class="phl-mu phs">
-            <?php echo ( $value === get_the_permalink() ) ? '' : '<a href="' .  $value . '">' ?><?php echo phila_language_output($key)?><?php echo ($value === get_the_permalink()) ? '' : '</a>' ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-
-    </div>
-  </div>
-  <!-- /Translated content -->
+  <?php  if ( count( $language_list ) >= 2 ): ?>
+    <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
   <?php endif; ?>
 
 
@@ -128,9 +113,11 @@ $language_list = phila_get_translated_language( $language );
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
     <?php endif; ?>
-    <?php if ( $template_type == 'action_guide' ) : ?>
+    <?php if ( $template_type == 'action_guide' ) { ?>
       <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
-    <?php endif; ?>
+    <?php } else if ( $template_type == 'action_guide_2' ) { ?>
+      <?php include(locate_template ('partials/posts/action_guide_v2/action-guide-content-v2.php') ); ?>
+    <?php } ?>
   </div>
   <hr class="margin-auto"/>
 </article>
@@ -191,9 +178,8 @@ $language_list = phila_get_translated_language( $language );
     $category = array($cat_id_string);
 
     $template = 'partials/posts/press-release-grid.php';
-  }elseif($template_type == 'action_guide'){
+  }elseif($template_type == 'action_guide' || $template_type == 'action_guide_2'){
     $template = 'partials/posts/action-guide-grid.php';
-
   }else{
     $template = 'partials/posts/content-related.php';
   }

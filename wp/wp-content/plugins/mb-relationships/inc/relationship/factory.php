@@ -10,25 +10,9 @@
  * Relationship factory class.
  */
 class MBR_Relationship_Factory {
-	/**
-	 * Reference to object factory.
-	 *
-	 * @var MBR_Object_Factory
-	 */
-	protected $object_factory;
-
-	/**
-	 * For storing instances.
-	 *
-	 * @var array
-	 */
-	protected $data = array();
-
-	/**
-	 * Temporary filter type.
-	 *
-	 * @var array
-	 */
+	private $object_factory;
+	private $relationships = [];
+	private $relationships_settings = [];
 	private $filter_type;
 
 	/**
@@ -56,23 +40,29 @@ class MBR_Relationship_Factory {
 		$meta_boxes = new MBR_Meta_Boxes( $settings );
 		$meta_boxes->init();
 
-		$this->data[ $settings['id'] ] = $relationship;
+		$this->relationships[ $settings['id'] ]          = $relationship;
+		$this->relationships_settings[ $settings['id'] ] = $settings;
 
 		// hook into post-registration action
 		do_action( 'mb_relationships_registered', $settings );
 
-		return $this->data[ $settings['id'] ];
+		return $this->relationships[ $settings['id'] ];
 	}
 
-	/**
-	 * Get a relationship object.
-	 *
-	 * @param string $id Relationship ID.
-	 *
-	 * @return MBR_Relationship
-	 */
 	public function get( $id ) {
-		return isset( $this->data[ $id ] ) ? $this->data[ $id ] : null;
+		return isset( $this->relationships[ $id ] ) ? $this->relationships[ $id ] : null;
+	}
+
+	public function get_settings( $id ) {
+		return isset( $this->relationships_settings[ $id ] ) ? $this->relationships_settings[ $id ] : null;
+	}
+
+	public function all() {
+		return $this->relationships;
+	}
+
+	public function all_settings() {
+		return $this->relationships_settings;
 	}
 
 	/**
@@ -84,7 +74,7 @@ class MBR_Relationship_Factory {
 	 */
 	public function filter_by( $type ) {
 		$this->filter_type = $type;
-		return array_filter( $this->data, array( $this, 'is_filtered' ) );
+		return array_filter( $this->relationships, array( $this, 'is_filtered' ) );
 	}
 
 	/**
@@ -114,8 +104,10 @@ class MBR_Relationship_Factory {
 			'label_to'   => __( 'Connected From', 'mb-relationships' ),
 			'reciprocal' => false,
 		] );
-		$settings['from'] = $this->normalize_side( $settings['from'], 'from', $settings['label_from'] );
-		$settings['to']   = $this->normalize_side( $settings['to'], 'to', $settings['label_to'] );
+		$settings['from'] = $this->normalize_side( $settings['from'], $settings['label_from'] );
+		$settings['to']   = $this->normalize_side( $settings['to'], $settings['label_to'] );
+
+		$settings = apply_filters( 'mb_relationships_settings', $settings );
 
 		return $settings;
 	}
@@ -124,13 +116,10 @@ class MBR_Relationship_Factory {
 	 * Normalize settings for a "from" or "to" side.
 	 *
 	 * @param array|string $settings  Array of settings or post type (string) for short.
-	 * @param string       $source    Relationship direction source.
 	 *
 	 * @return array
 	 */
-	protected function normalize_side( $settings, $source, $label ) {
-		$target = 'from' === $source ? 'to' : 'from';
-
+	protected function normalize_side( $settings, $label ) {
 		$default = array(
 			'object_type'   => 'post',
 			'empty_message' => __( 'No connections', 'mb-relationships' ),
