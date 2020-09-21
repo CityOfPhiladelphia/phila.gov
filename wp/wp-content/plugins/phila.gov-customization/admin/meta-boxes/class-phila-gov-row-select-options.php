@@ -102,4 +102,91 @@ class Phila_Gov_Row_Select_Options {
       ),
     );
   }
+  
+  public static function phila_metabox_tabbed_select(){
+    return array(
+      'id'   => 'phila_tabbed_select',
+      'desc'  => 'Choose tabbed content.',
+      'type' => 'select',
+      'class' => 'percent-100',
+      'placeholder' => 'Select tabbed row module...',
+      'options' => array(
+        'phila_metabox_tabbed_single_wysiwyg'  => 'Single wysiwyg',
+        'phila_metabox_tabbed_repeater_wysiwyg'  => 'Repeater wysiwyg',
+        'phila_metabox_tabbed_stepped_content'  => 'Stepped content',
+        'phila_metabox_tabbed_timeline_content' => 'Timeline content'
+      ),
+    );
+  }
+
+  public static function phila_metabox_tabbed_single_wysiwyg( ){
+
+    return array (
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg('Single wysiwyg'),
+      array(
+        'id' => 'include_anchor_links',
+        'name'  => 'Include anchor links?',
+        'desc' => 'Adds links to wysiwyg titles and single title rows',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
+      )
+    );
+  }
+
+  public static function phila_metabox_tabbed_repeater_wysiwyg( ){
+
+    return array(
+      array(
+        'id' => 'step_repeater_wysiwyg',
+        'name'  => 'Repeater wysiwyg',
+        'type' => 'group',
+        'clone'  => true,
+        'sort_clone' => true,
+        'fields' => array(
+          array(
+            'name'  => 'Tab wysiwyg section',
+            'id'  =>  'phila_custom_wysiwyg',
+            'type'  => 'group',
+            'clone' => false,
+            'columns'=> 12,
+            'fields'  => array(
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+            )
+          )
+        )
+      ),
+    );
+  }
+
+  public static function phila_metabox_tabbed_stepped_content( ){
+    return array (
+      array(
+        'id' => 'phila_stepped_content',
+        'name'  => 'Stepped content',
+        'type' => 'group',
+        'fields'  => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
+        )
+      )
+    );
+  }
+
+  public static function phila_metabox_tabbed_timeline_content( ){
+    return array (
+      array(
+        'id' => 'phila_timeline_content',
+        'name'  => 'Timeline content',
+        'type' => 'group',
+        'fields'  => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_timeline_repeater(),
+        )
+      )
+    );
+  }
 }

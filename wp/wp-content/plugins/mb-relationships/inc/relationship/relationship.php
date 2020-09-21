@@ -91,7 +91,7 @@ class MBR_Relationship {
 			return false;
 		}
 
-		return $wpdb->insert(
+		$result = $wpdb->insert(
 			$wpdb->mb_relationships,
 			array(
 				'from'       => $from,
@@ -108,6 +108,8 @@ class MBR_Relationship {
 				'%d',
 			)
 		);
+		do_action( 'mb_relationships_add', $from, $to, $this->id, $order_from, $order_to, $result );
+		return $result;
 	}
 
 	/**
@@ -121,7 +123,7 @@ class MBR_Relationship {
 	public function delete( $from, $to ) {
 		global $wpdb;
 
-		return $wpdb->delete(
+		$result = $wpdb->delete(
 			$wpdb->mb_relationships,
 			array(
 				'from' => $from,
@@ -129,6 +131,8 @@ class MBR_Relationship {
 				'type' => $this->id,
 			)
 		);
+		do_action( 'mb_relationships_delete', $from, $to, $this->id, $result );
+		return $result;
 	}
 
 	/**

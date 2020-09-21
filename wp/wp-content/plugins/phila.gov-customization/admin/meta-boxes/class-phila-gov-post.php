@@ -98,7 +98,14 @@ class Phila_Gov_Post {
             'chinese'   => 'Chinese (simplifed)',
             'vietnamese'    => 'Vietnamese',
             'russian'     => 'Russian',
-            'arabic'    => 'Arabic'
+            'arabic'    => 'Arabic',
+            'bengali' => 'Bengali',
+            'haitian' => 'Haitian Creole',
+            'hindo' => 'Hindo',
+            'indonesian' => 'Indonesian',
+            'urdu' => 'Urdu',
+            'korean' => 'Korean',
+            'portuguese' => 'Portuguese',
           ),
         ),
         array(
@@ -266,8 +273,55 @@ class Phila_Gov_Post {
         ),
       ),
     );
+    
+    $meta_boxes[] = array(
+      'title'    => 'Page content',
+      'pages'    => array( 'post' ),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_tabbed_content',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'add_button'  => '+ Add tab',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab label', 'tab_label', true, 'Navigation text for tabbed content'),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Tab icon', 'tab_icon', true, 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.'),
+            Phila_Gov_Row_Metaboxes::phila_tabbed_metabox_grid_row(),
+          ),
+        )
+      )
+    );
 
-
+    $meta_boxes[] = array(
+      'title'    => 'Full width call to action',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'action_guide_2'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id'       => 'phila_v2_cta_full',
+          'context'  => 'normal',
+          'priority' => 'default',
+          'type'  => 'group',
+          'clone' => false,
+          'fields' =>
+            Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
+        ),
+      ),
+    );
 
     return $meta_boxes;
   }

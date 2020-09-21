@@ -1,7 +1,9 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 /*
 Plugin Name: Easy WP SMTP
-Version: 1.3.9.2
+Version: 1.4.1
 Plugin URI: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Author: wpecommerce, alexanderfoxc
 Author URI: https://wp-ecommerce.net/
@@ -97,8 +99,34 @@ class EasyWPSMTP {
 		//set ReplyTo option if needed
 		//this should be set before SetFrom, otherwise might be ignored
 		if ( ! empty( $this->opts['reply_to_email'] ) ) {
-			$phpmailer->AddReplyTo( $this->opts['reply_to_email'], $from_name );
+			if ( isset( $this->opts['sub_mode'] ) && 1 === $this->opts['sub_mode'] ) {
+				if ( count( $phpmailer->getReplyToAddresses() ) >= 1 ) {
+					// Substitute from_email_field with reply_to_email
+					if ( array_key_exists( $this->opts['from_email_field'], $phpmailer->getReplyToAddresses() ) ) {
+						$reply_to_emails = $phpmailer->getReplyToAddresses();
+						unset( $reply_to_emails[ $this->opts['from_email_field'] ] );
+						$phpmailer->clearReplyTos();
+						foreach ( $reply_to_emails as $reply_to_email => $reply_to_name ) {
+							$phpmailer->AddReplyTo( $reply_to_email, $reply_to_name );
+						}
+						$phpmailer->AddReplyTo( $this->opts['reply_to_email'], $from_name );
+					}
+				} else { // Reply-to array is empty so add reply_to_email
+					$phpmailer->AddReplyTo( $this->opts['reply_to_email'], $from_name );
+				}
+			} else { // Default behaviour
+				$phpmailer->AddReplyTo( $this->opts['reply_to_email'], $from_name );
+			}
 		}
+
+                if ( ! empty( $this->opts['bcc_email'] ) ) {
+                        $bcc_emails = explode(",", $this->opts['bcc_email']);
+                        foreach ( $bcc_emails as $bcc_email ) {
+                                $bcc_email = trim($bcc_email);
+                                $phpmailer->AddBcc( $bcc_email );
+                        }
+                }
+
 		// let's see if we have email ignore list populated
 		if ( isset( $this->opts['email_ignore_list'] ) && ! empty( $this->opts['email_ignore_list'] ) ) {
 			$emails_arr  = explode( ',', $this->opts['email_ignore_list'] );
@@ -166,8 +194,16 @@ class EasyWPSMTP {
 			return false;
 		}
 
-		require_once ABSPATH . WPINC . '/class-phpmailer.php';
-		$mail = new PHPMailer( true );
+		global $wp_version;
+
+		if ( version_compare( $wp_version, '5.4.99' ) > 0 ) {
+			require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+			require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+			$mail = new PHPMailer( true );
+		} else {
+			require_once ABSPATH . WPINC . '/class-phpmailer.php';
+			$mail = new \PHPMailer( true );
+		}
 
 		try {
 
@@ -212,9 +248,21 @@ class EasyWPSMTP {
 			/* Set the other options */
 			$mail->Host = $this->opts['smtp_settings']['host'];
 			$mail->Port = $this->opts['smtp_settings']['port'];
+
+                        //Add reply-to if set in settings.
 			if ( ! empty( $this->opts['reply_to_email'] ) ) {
 				$mail->AddReplyTo( $this->opts['reply_to_email'], $from_name );
 			}
+
+                        //Add BCC if set in settings.
+                        if ( ! empty( $this->opts['bcc_email'] ) ) {
+                                $bcc_emails = explode(",", $this->opts['bcc_email']);
+                                foreach ( $bcc_emails as $bcc_email ) {
+                                        $bcc_email = trim($bcc_email);
+                                        $mail->AddBcc( $bcc_email );
+                                }
+                        }
+
 			$mail->SetFrom( $from_email, $from_name );
 			//This should set Return-Path header for servers that are not properly handling it, but needs testing first
 			//$mail->Sender		 = $mail->From;
@@ -235,7 +283,9 @@ class EasyWPSMTP {
 			$mail->Send();
 			$mail->ClearAddresses();
 			$mail->ClearAllRecipients();
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
+			$ret['error'] = $mail->ErrorInfo;
+		} catch ( \Throwable $e ) {
 			$ret['error'] = $mail->ErrorInfo;
 		}
 
@@ -253,7 +303,13 @@ class EasyWPSMTP {
 			//view log file
 			if ( isset( $_GET['swpsmtp_action'] ) ) {
 				if ( 'view_log' === $_GET['swpsmtp_action'] ) {
-					$log_file_name = $this->opts['smtp_settings']['log_file_name'];
+					$log_file_name = isset( $this->opts['smtp_settings']['log_file_name'] ) ? $this->opts['smtp_settings']['log_file_name'] : '';
+
+					if ( empty( $log_file_name ) ) {
+						//Nothing in the log file yet so nothing to show.
+						wp_die( 'Nothing in the log file yet.' );
+					}
+
 					if ( ! file_exists( plugin_dir_path( __FILE__ ) . $log_file_name ) ) {
 						if ( $this->log( "Easy WP SMTP debug log file\r\n\r\n" ) === false ) {
 							wp_die( esc_html( sprintf( 'Can\'t write to log file. Check if plugin directory (%s) is writeable.', plugin_dir_path( __FILE__ ) ) ) );
@@ -350,9 +406,9 @@ class EasyWPSMTP {
 			?>
 		<div class="error">
 			<p>
-                            <?php
-                            printf( __( 'Please configure your SMTP credentials in the <a href="%s">settings menu</a> in order to send email using Easy WP SMTP plugin.', 'easy-wp-smtp' ), esc_url( $settings_url ) );
-                            ?>
+							<?php
+							printf( __( 'Please configure your SMTP credentials in the <a href="%s">settings menu</a> in order to send email using Easy WP SMTP plugin.', 'easy-wp-smtp' ), esc_url( $settings_url ) );
+							?>
 			</p>
 		</div>
 			<?php
@@ -518,6 +574,7 @@ class EasyWPSMTP {
 			'from_email_field'        => '',
 			'from_name_field'         => '',
 			'force_from_name_replace' => 0,
+			'sub_mode'                => 0,
 			'smtp_settings'           => array(
 				'host'            => 'smtp.example.com',
 				'type_encryption' => 'none',

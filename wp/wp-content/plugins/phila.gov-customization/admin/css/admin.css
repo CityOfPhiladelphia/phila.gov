@@ -205,3 +205,7 @@ ul#department_page-search-checklist li{
 .rwmb-row:not(:last-of-type) {
   margin-bottom: 0px;
 }
+
+.optional-label {
+  margin-bottom: 10px;
+}
