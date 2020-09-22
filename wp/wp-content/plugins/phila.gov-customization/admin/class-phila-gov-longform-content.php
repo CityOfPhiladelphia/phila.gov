@@ -68,6 +68,55 @@ class Phila_Gov_Longform_Content {
         ),
       ),
     );
+
+    $meta_boxes[] = array(
+      'id'       => 'update-history',
+      'title'    => 'Update History',
+      'pages'    => array( 'longform_content' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'revision' => true,
+
+      'fields' => array(
+        array(
+          'id'  => 'phila_longform_document_update_history',
+          'type' => 'group',
+  
+          'fields' => array(
+            array(
+              'id'  => 'phila_longform_document_update',
+              'type' => 'group',
+              'clone'  => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add an update',
+              'fields' => array(
+                array(
+                  'name' => 'Update information',
+                  'id'   => 'phila_update_information',
+                  'type' => 'text',
+                  'limit' => 200,
+                  'required'  => true,
+                  'desc'  => 'Required. 200 character limit.',
+                ),
+                array(
+                  'name' => 'Update date',
+                  'id'   => 'phila_update_date',
+                  'type'  => 'date',
+                  'class' =>  'press-release-date',
+                  'size'  =>  30,
+                  'required'  => true,
+                  'js_options' =>  array(
+                    'dateFormat'=>'MM dd, yy',
+                    'showTimepicker' => false
+                  )
+                ),
+              ),
+            ),
+          ),
+        )
+      )
+    );
+
     return $meta_boxes;
   }
 }
