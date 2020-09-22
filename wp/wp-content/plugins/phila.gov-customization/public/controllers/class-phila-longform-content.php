@@ -29,12 +29,80 @@ class Phila_Longform_Content_Controller {
 
     $data = array();
     // $post = get_post( url_to_postid( wp_get_referer()) );
-    $post = get_post( 143332 );
-    $longform_document['document'] = ( object ) rwmb_meta( 'phila_longform_document', '', $post->ID );
-    $longform_document['footnotes'] = ( object ) rwmb_meta( 'phila_longform_document_footnotes', '', $post->ID );
-    $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
+    $post = get_post( 143606 );
+    $longform_document['section_title'] = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $post->ID );
+    $longform_document['section_number'] = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $post->ID );
+    $longform_document['footnote_copy'] = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $post->ID );
+    $longform_document['footnote_index'] = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $post->ID );
+
     $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
     $longform_document['post'] = ( object ) $post;
+    
+    $children = get_children( 143606 );
+    foreach ($children as $child) {
+      $post_children_1 = get_children( $child->ID );
+      $child->children = $post_children_1;
+      $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+      $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+      $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+      $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+      foreach ($post_children_1 as $child) {
+        $post_children_2 = get_children( $child->ID );
+        $child->children = $post_children_2;
+        $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+        $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+        $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+        $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+        foreach ($post_children_2 as $child) {
+          $post_children_3 = get_children( $child->ID );
+          $child->children = $post_children_3;
+          $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+          $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+          $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+          $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+          foreach ($post_children_3 as $child) {
+            $post_children_4 = get_children( $child->ID );
+            $child->children = $post_children_4;
+            $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+            $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+            $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+            $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+            foreach ($post_children_4 as $child) {
+              $post_children_5 = get_children( $child->ID );
+              $child->children = $post_children_5;
+              $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+              $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+              $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+              $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+              foreach ($post_children_5 as $child) {
+                $post_children_6 = get_children( $child->ID );
+                $child->children = $post_children_6;
+                $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+                $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+                $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+                $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+                foreach ($post_children_6 as $child) {
+                  $post_children_7 = get_children( $child->ID );
+                  $child->children = $post_children_7;
+                  $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+                  $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+                  $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+                  $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+                  foreach ($post_children_6 as $child) {
+                    $child->section_title = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $child->ID );
+                    $child->section_number = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $child->ID );
+                    $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $child->ID );
+                    $child->footnote_copy = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $child->ID );
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    $longform_document['children'] = ( object ) $children;
 
     // Return all response data.
     return rest_ensure_response( $longform_document );
