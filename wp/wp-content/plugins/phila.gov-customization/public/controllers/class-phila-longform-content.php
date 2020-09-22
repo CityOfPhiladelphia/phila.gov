@@ -30,13 +30,9 @@ class Phila_Longform_Content_Controller {
     $data = array();
     // $post = get_post( url_to_postid( wp_get_referer()) );
     $post = get_post( 143606 );
-    $longform_document['section_title'] = ( string ) rwmb_meta( 'phila_longform_content_section_title', '', $post->ID );
-    $longform_document['section_number'] = ( string ) rwmb_meta( 'phila_longform_content_section_number', '', $post->ID );
-    $longform_document['footnote_copy'] = ( string ) rwmb_meta( 'phila_longform_content_footnote_copy', '', $post->ID );
-    $longform_document['footnote_index'] = ( string ) rwmb_meta( 'phila_longform_content_footnote_index', '', $post->ID );
-
     $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
     $longform_document['post'] = ( object ) $post;
+    $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
     
     $children = get_children( 143606 );
     foreach ($children as $child) {
