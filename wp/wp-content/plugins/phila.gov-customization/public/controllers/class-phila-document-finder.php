@@ -11,7 +11,7 @@ class Phila_Document_Finder_Controller {
   // Register our routes.
   public function register_routes() {
   // Register the endpoint for collections.
-    register_rest_route( $this->namespace, '/' . $this->resource_name, array(
+    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
@@ -29,9 +29,9 @@ class Phila_Document_Finder_Controller {
   public function get_items( $request ) {
 
     $data = array();
-    $post = get_post( url_to_postid( wp_get_referer()) );
+    $post_id = $request['id'];
 
-    $document_tables = rwmb_meta( 'phila_document_table', '', $post->ID );
+    $document_tables = rwmb_meta( 'phila_document_table', '', $post_id );
 
     foreach ( $document_tables as $document_table ) {
       $unique_table = array();
