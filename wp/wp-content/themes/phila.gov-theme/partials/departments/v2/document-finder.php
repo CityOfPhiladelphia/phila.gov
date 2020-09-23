@@ -8,8 +8,6 @@ $vue_or_not = rwmb_meta('phila_vue_toggle');
 if ($vue_or_not) {
   $app_id = 'vue-app';
 
-  wp_localize_script( 'phila-scripts', 'phila_post_id', (string)$post->ID );
-
   $vuejs_js_ids = ['https://www.phila.gov/embedded/document-finder/dev/js/chunk-vendors.js', 'https://www.phila.gov/embedded/document-finder/dev/js/app.js'];
   $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/dev/css/chunk-vendors.css', 'https://www.phila.gov/embedded/document-finder/dev/css/app.css'];
   
