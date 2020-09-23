@@ -197,7 +197,7 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
     ],
     'vietnamese' => [
       'month-day' => 'Ngày {day} tháng {month}',
-      'month-year' => 'tháng {month} năm {year}',
+      'month-year' => 'Tháng {month} năm {year}',
       'month-day-year' => 'Ngày {day} tháng {month} năm {year}',
     ],
   ];
