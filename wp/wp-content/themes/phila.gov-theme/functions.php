@@ -373,15 +373,11 @@ function phila_gov_scripts() {
     ));
   }
 
-  function localize_phila_scripts( $js_vars ) { 
-    wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
-  }
-  localize_phila_scripts( $js_vars );
-  
+  wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
   
   if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
   is_post_type_archive( ['programs', 'service_page'] ) ){
-    wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts', 'localize_phila_scripts'), null, true);
+    wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
     wp_register_script( 'g-cal-archive', plugins_url( '/js/app.js' , __FILE__ ), array(), '', true );
 
     $google_calendar = ( defined( 'GOOGLE_CALENDAR' ) && ! empty( GOOGLE_CALENDAR ) ) ? GOOGLE_CALENDAR : 'ABC';
@@ -2110,3 +2106,12 @@ function phila_add_meta_document_fields($response, $attachment) {
 }
 
 add_filter( 'wp_prepare_attachment_for_js', 'phila_add_meta_document_fields', 99, 3 );
+
+function namespace_async_scripts( $tag, $handle ) {
+  // Just return the tag normally if this isn't one we want to async
+  if ( 'phila-scripts' !== $handle && 'vuejs-app' !== $handle  ) {
+      return $tag;
+  }
+  return str_replace( ' src', ' async src', $tag );
+}
+add_filter( 'script_loader_tag', 'namespace_async_scripts', 10, 2 );
