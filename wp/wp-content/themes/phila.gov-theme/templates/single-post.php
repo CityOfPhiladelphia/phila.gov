@@ -72,14 +72,13 @@ $language_list = phila_get_translated_language( $language );
     </div>
   <?php endif; ?>
   </header>
-
-  <?php  if ( count( $language_list ) != 1 ): ?>
+  <?php  if ( count( $language_list ) >= 2 ): ?>
     <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
   <?php endif; ?>
 
 
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
-    <div class="grid-container featured-image">
+    <div class="grid-container featured-image <?php echo $language == 'arabic' ? $language : '' ?>">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
           <div class="js-thumbnail-image">
@@ -95,7 +94,7 @@ $language_list = phila_get_translated_language( $language );
       </div>
     </div>
   <?php endif ?>
-  <div class="grid-container post-content">
+  <div class="grid-container post-content <?php echo $language == 'arabic' ? $language : '' ?>">
     <?php 
       if ( !empty( $translations ) ) :
         foreach ( $translations as $translation ) : ?>
@@ -185,7 +184,7 @@ $language_list = phila_get_translated_language( $language );
     $template = 'partials/posts/content-related.php';
   }
 ?>
-<div class="grid-container">
+<div class="grid-container <?php echo $language == 'arabic' ? $language : '' ?>">
     <?php include( locate_template( $template ) ); ?>
 </div>
 

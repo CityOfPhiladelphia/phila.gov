@@ -25,13 +25,13 @@
                 <?php $item_date = $item['phila_timeline_item_timestamp']; ?>
                 <?php if( phila_translate_date($item_date, $language, 'month-year') != $temp_month ) { ?>
                   <?php $temp_month = phila_translate_date($item_date, $language, 'month-year'); ?>
-                  <div class="month-label medium-5 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
+                  <div class="month-label medium-6 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
                     <div>
                       <span ><?php echo $temp_month; ?></span>
                     </div>
                   </div>
                 <?php } ?>
-                <div class="timeline-details medium-19 columns timeline-right">
+                <div class="timeline-details medium-18 columns timeline-right">
                   <div class="timeline-dot-container <?php echo ($j == 0) ? 'first-dot' : '' ?>">
                     <div class="timeline-dot"></div>
                   </div>
