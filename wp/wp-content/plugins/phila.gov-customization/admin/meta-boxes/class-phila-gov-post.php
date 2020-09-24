@@ -106,6 +106,7 @@ class Phila_Gov_Post {
             'urdu' => 'Urdu',
             'korean' => 'Korean',
             'portuguese' => 'Portuguese',
+            'khmer' => 'Khmer',
           ),
         ),
         array(

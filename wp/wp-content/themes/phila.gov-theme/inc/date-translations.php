@@ -86,6 +86,20 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
       '11' => 'November',
       '12' => 'Desember',
     ],
+    'khmer' => [
+      '01' => 'ខែមករា',
+      '02' => 'ខែកុម្ភៈ',
+      '03' => 'ខែមីនា',
+      '04' => 'ខែមេសា',
+      '05' => 'ខែឧសភា',
+      '06' => 'ខែមិថុនា',
+      '07' => 'ខែកក្កដា',
+      '08' => 'ខែសីហា',
+      '09' => 'ខែកញ្ញា',
+      '10' => 'ខែតុលា',
+      '11' => 'ខែវិច្ឆិកា',
+      '12' => 'ខែធ្នូ',
+    ],
     'korean' => [
       '01' => '1',
       '02' => '2',
@@ -99,6 +113,20 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
       '10' => '10',
       '11' => '11',
       '12' => '12',
+    ],
+    'portuguese' => [
+      '01' => 'Janeiro',
+      '02' => 'Fevereiro',
+      '03' => 'Março',
+      '04' => 'Abril',
+      '05' => 'Maio',
+      '06' => 'Junho',
+      '07' => 'Julho',
+      '08' => 'Agosto',
+      '09' => 'Setembro',
+      '10' => 'Outubro',
+      '11' => 'Novembro',
+      '12' => 'Dezembro',
     ],
     'russian' => [
       '01' => 'Январь',
@@ -147,7 +175,6 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
 // urdu
 // hindo
 // bengali
-// portuguese
 
   $languageFormat = [
     'arabic' => [
@@ -180,10 +207,20 @@ function phila_translate_date($date, $language = 'english', $format = 'month-day
       'month-year' => '{month} {year}',
       'month-day-year' => '{day} {month} {year}',
     ],
+    'khmer' => [
+      'month-day' => '{month} ទី {day}',
+      'month-year' => '{month} ឆ្នាំ {year}',
+      'month-day-year' => '{month} ទី {day} ឆ្នាំ {year}',
+    ],
     'korean' => [
       'month-day' => '{month}월 {day}일:',
       'month-year' => '{year}년 {month}월',
       'month-day-year' => '{year}년 {month}월 {day}일:',
+    ],
+    'portuguese' => [
+      'month-day' => '{day}o de {month}',
+      'month-year' => '{month} de {year}',
+      'month-day-year' => '{day}o de {month} de {year}',
     ],
     'russian' => [
       'month-day' => '{day} {month}',
