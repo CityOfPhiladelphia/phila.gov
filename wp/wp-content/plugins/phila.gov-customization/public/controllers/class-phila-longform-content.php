@@ -29,12 +29,12 @@ class Phila_Longform_Content_Controller {
 
     $data = array();
     // $post = get_post( url_to_postid( wp_get_referer()) );
-    $post = get_post( 143606 );
+    $post = get_post( 146529 );
     $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
     $longform_document['post'] = ( object ) $post;
     $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
     
-    $children = get_children( 143606 );
+    $children = get_children( $post->ID );
     foreach ($children as $child) {
       $post_children_1 = get_children( $child->ID );
       $child->children = $post_children_1;
