@@ -8,8 +8,8 @@ $vue_or_not = rwmb_meta('phila_vue_toggle');
 if ($vue_or_not) {
   $app_id = 'vue-app';
 
-  $vuejs_js_ids = ['https://www.phila.gov/embedded/document-finder/dev1/js/chunk-vendors.js?tester123', 'https://www.phila.gov/embedded/document-finder/dev1/js/app.js?tester123'];
-  $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/dev1/css/chunk-vendors.css?tester123', 'https://www.phila.gov/embedded/document-finder/dev1/css/app.css?tester123'];
+  $vuejs_js_ids = ['https://www.phila.gov/embedded/document-finder/production/js/chunk-vendors.js', 'https://www.phila.gov/embedded/document-finder/production/js/app.js'];
+  $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/production/css/chunk-vendors.css', 'https://www.phila.gov/embedded/document-finder/production/css/app.css'];
   
   include(locate_template( 'partials/vue-apps/vue-register.php' ) );
 }
