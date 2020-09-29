@@ -34,6 +34,7 @@ class Phila_Gov_Longform_Content {
         array(
           'name' => 'Section Title',
           'id'   => 'phila_longform_content_section_title',
+          'desc'  => 'If this section has an in-text title, enter it here.',
           'type' => 'text',
           'size'  =>  75,
           'columns' => 6,
