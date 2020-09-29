@@ -29,8 +29,8 @@ class Phila_Longform_Content_Controller {
 
     $data = array();
     // $post = get_post( url_to_postid( wp_get_referer()) );
-    $post = get_post( 143606 ); // Local Host
-    // $post = get_post( 146529 ); // Staging
+    // $post = get_post( 143606 ); // Local Host
+    $post = get_post( 146529 ); // Staging
     $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
     $longform_document['post'] = ( object ) $post;
     $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
