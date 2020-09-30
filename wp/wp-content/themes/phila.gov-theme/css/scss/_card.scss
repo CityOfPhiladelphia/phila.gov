@@ -125,8 +125,12 @@ a.card,
   }
   .card-description{
     font-weight: normal;
+    h3 {
+      text-decoration: none;
+    }
     p{
       color: color(dark-gray);
+      text-decoration: none;
     }
   }
   &.card-fixed-height{

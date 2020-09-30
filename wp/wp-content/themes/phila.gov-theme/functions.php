@@ -374,7 +374,7 @@ function phila_gov_scripts() {
   }
 
   wp_localize_script( 'phila-scripts', 'phila_js_vars', $js_vars );
-
+  
   if( is_page_template( 'templates/the-latest-archive.php' ) || is_post_type_archive( 'document' ) || is_page_template( 'templates/the-latest-events-archive.php' ) ||
   is_post_type_archive( ['programs', 'service_page'] ) ){
     wp_enqueue_script('vuejs-app', get_stylesheet_directory_uri() . '/js/app.js', array('phila-scripts'), null, true);
@@ -1949,27 +1949,31 @@ function phila_language_output($language){
       break;
     case 'arabic';
       $language = 'عربى';
-    break;
+      break;
     case 'bengali';
       $language = 'বাংলা';
-    break;
+      break;
     case 'haitian';
       $language = 'Ayisyen';
-    break;
+      break;
     case 'hindo';
       $language = 'Hindo';
-    break;
+      break;
     case 'indonesian'; 
       $language = 'Bahasa Indonesia';
-    break;
+      break;
     case 'urdu'; 
       $language = 'اردو';
-    break;
+      break;
     case 'korean'; 
       $language = '한국어';
+      break;
+    case 'khmer'; 
+      $language = 'ខ្មែរ';
+      break;
     case 'portuguese'; 
       $language = 'Português';
-    break;
+      break;
     default;
       $language = 'English'; 
       break;
@@ -2043,7 +2047,7 @@ function phila_get_translated_language( $language ) {
     endwhile;
     wp_reset_postdata();
 
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese' );
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese', 'khmer' );
   $ordered_array = array_replace(array_flip($order), $language_list);
   $final_array = array();
   foreach ($ordered_array as $key => $value){
@@ -2056,7 +2060,7 @@ function phila_get_translated_language( $language ) {
 }
 
 function phila_order_languages($languages){
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese');
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese', 'khmer');
   $ordered_array = array_replace(array_flip($order), $languages);
   $final_order = array();
   foreach ($ordered_array as $key => $value){

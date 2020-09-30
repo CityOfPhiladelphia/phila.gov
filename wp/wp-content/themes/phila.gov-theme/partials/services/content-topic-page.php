@@ -28,7 +28,7 @@
     <?php $topic_children->the_post(); ?>
     <?php $counter++; ?>
     <?php if($counter % 3 == 1) :?>
-      <div class="row equal-height fat-gutter">
+      <div class="row fat-gutter">
     <?php endif;?>
       <div class="small-24 medium-8 column end">
         <a href="<?php the_permalink(); ?>" class="card sub-topic equal">
