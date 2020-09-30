@@ -11,7 +11,7 @@ class Phila_Longform_Content_Controller {
   // Register our routes.
   public function register_routes() {
   // Register the endpoint for collections.
-    register_rest_route( $this->namespace, '/' . $this->resource_name, array(
+    register_rest_route( $this->namespace, '/' . $this->resource_name . '/(?P<id>[\d]+)', array(
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
@@ -26,11 +26,11 @@ class Phila_Longform_Content_Controller {
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
-
+    $post_id = $request['id'];
     $data = array();
-    // $post = get_post( url_to_postid( wp_get_referer()) );
+    $post = get_post( $post_id );
     // $post = get_post( 143606 ); // Local Host
-    $post = get_post( 146529 ); // Staging
+    // $post = get_post( 146529 ); // Staging
     $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
     $longform_document['post'] = ( object ) $post;
     $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
