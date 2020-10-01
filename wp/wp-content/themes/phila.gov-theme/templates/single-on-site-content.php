@@ -160,7 +160,7 @@ HTML;
       apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
     break;
 
-    case 'repeating_rows':
+    case 'homepage_v3':
       apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
     break;
 

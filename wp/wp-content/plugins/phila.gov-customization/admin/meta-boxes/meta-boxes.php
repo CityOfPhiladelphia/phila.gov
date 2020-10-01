@@ -499,7 +499,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'on_label'  => 'Yes',
         'off_label' => 'No',
         'visible' => array(
-          'phila_template_select', 'in', ['homepage_v2']
+          'phila_template_select', 'in', ['homepage_v2', 'homepage_v3']
         )
       ),
     ),
@@ -1034,6 +1034,7 @@ $meta_boxes[] = array(
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'homepage_v3'),
         array('phila_template_select', '=', 'prog_landing_page')
       ),
     'relation'  => 'or'

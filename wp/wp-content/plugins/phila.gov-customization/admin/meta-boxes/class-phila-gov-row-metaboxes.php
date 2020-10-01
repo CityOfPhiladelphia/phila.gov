@@ -260,7 +260,7 @@ class Phila_Gov_Row_Metaboxes {
             'on_label'  => 'Yes',
             'off_label' => 'No',
             'visible' => array(
-              'phila_template_select', 'in', ['homepage_v2']
+              'phila_template_select', 'in', ['homepage_v2','homepage_v3']
             )
           ),
         ),

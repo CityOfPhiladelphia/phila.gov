@@ -58,45 +58,51 @@ function phila_gov_setup() {
   // This theme uses wp_nav_menu() in any template that registers a "homepage" template.
   add_action( 'init', 'phila_register_category_menus' );
 
-    function phila_register_category_menus() {
+  function phila_register_category_menus() {
 
-      $get_possible_pages = array(
-      	'post_type' => array('department_page', 'programs'),
-        'posts_per_page'  => -1,
-        'order' => 'asc',
-        'orderby' => 'title',
-        'post_status' => 'any',
-        'meta_query' => array(
-      		'relation' => 'OR',
-      		array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'prog_landing_page',
-      			'compare' => '=',
-      		),
-      		array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'homepage_v2',
-      			'compare' => '=',
-      		),
-          array(
-            'key'     => 'phila_template_select',
-            'value'   => 'department_homepage',
-            'compare' => '=',
-          ),
-      	),
-      );
-      $query = new WP_Query( $get_possible_pages );
+    $get_possible_pages = array(
+      'post_type' => array('department_page', 'programs'),
+      'posts_per_page'  => -1,
+      'order' => 'asc',
+      'orderby' => 'title',
+      'post_status' => 'any',
+      'meta_query' => array(
+      'relation' => 'OR',
+      array(
+        'key'     => 'phila_template_select',
+        'value'   => 'prog_landing_page',
+        'compare' => '=',
+      ),
+      array(
+        'key'     => 'phila_template_select',
+        'value'   => 'homepage_v2',
+        'compare' => '=',
+      ),
+      array(
+        'key'     => 'phila_template_select',
+        'value'   => 'homepage_v3',
+        'compare' => '=',
+      ),
+      array(
+        'key'     => 'phila_template_select',
+        'value'   => 'department_homepage',
+        'compare' => '=',
+        ),
+      ),
+    );
 
-      // The Loop
-      if ( $query->have_posts() ) {
-      	while ( $query->have_posts() ) {
-      		$query->the_post();
-          register_nav_menus( array( 'menu-' . get_the_id() => get_the_title() . ' - <span class="theme-location-set">' . get_post_type_object(get_post_type())->labels->singular_name . '</span>' ) );
-      	}
-      	/* Restore original Post Data */
-      	wp_reset_postdata();
+    $query = new WP_Query( $get_possible_pages );
+
+    // The Loop
+    if ( $query->have_posts() ) {
+      while ( $query->have_posts() ) {
+        $query->the_post();
+        register_nav_menus( array( 'menu-' . get_the_id() => get_the_title() . ' - <span class="theme-location-set">' . get_post_type_object(get_post_type())->labels->singular_name . '</span>' ) );
       }
+      /* Restore original Post Data */
+      wp_reset_postdata();
     }
+  }
 
   /*
    * Switch default core markup for search form, comment form, and comments
