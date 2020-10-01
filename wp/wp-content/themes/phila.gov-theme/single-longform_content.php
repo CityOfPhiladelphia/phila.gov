@@ -1,3 +1,4 @@
+<div id='bad-never-do-this'>
 <?php
 /**
  * The template used for displaying longform content
@@ -16,3 +17,4 @@ get_header();
 </div><!-- #post-## -->
 
 <?php get_footer(); ?>
+</div>

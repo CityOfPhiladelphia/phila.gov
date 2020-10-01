@@ -5,7 +5,7 @@ class Phila_Longform_Content_Controller {
   // Initialize the namespace and resource name.
   public function __construct() {
     $this->namespace     = 'longform-content/v1';
-    $this->resource_name = 'all';
+    $this->resource_name = 'content';
   }
 
   // Register our routes.

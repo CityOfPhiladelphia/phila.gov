@@ -201,3 +201,12 @@
     }
   }
 }
+
+#bad-never-do-this {
+  #global-sticky-nav {
+    color: red;
+  }
+  footer {
+    color: red;
+  }
+}
