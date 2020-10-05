@@ -203,10 +203,68 @@
 }
 
 #bad-never-do-this {
-  #global-sticky-nav {
-    color: red;
+  .utility-nav {
+    margin: 0px;
+    .row {
+      width: 100%;
+      .medium-24 {
+        &.float-right {
+          margin-bottom: 0px;
+          margin-top: 0px;
+          display: block;
+        }
+      }
+    }
   }
+  #global-sticky-nav {
+    .sticky-header-width {
+      max-width: 75rem;
+      .columns {
+        margin-bottom: 0px;
+      }
+    }
+    .phila-sticky {
+      background: white;
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0 !important;
+    }
+    .small-24 {
+      &.columns {
+        display:block;
+        margin: 0px;
+        width: 100%;
+        padding: 0px 10px;
+        .columns {
+          margin: 0px;
+          display: block;
+          padding: 0px;
+          &.small-push-4 {
+            padding: 0px 10px;
+          }
+        }
+      }
+    }
+  }
+  .message {
+    background: none;
+  }
+
+
   footer {
-    color: red;
+    .fat {
+      .columns {
+        &.medium-8 {
+          display: block;
+        }
+      }
+    }
+    .inline-list {
+      margin-left: auto;
+      margin-right: auto;
+      .fa-stack-1x {
+        margin-top: 6px;
+      }
+    }
   }
 }
