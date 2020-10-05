@@ -3,7 +3,7 @@
 
 $app_id = 'vue-app';
 
-$vuejs_js_ids = ['https://www.phila.gov/embedded/longform-content/staging/js/chunk-vendors.js?test', 'https://www.phila.gov/embedded/longform-content/staging/js/app.js?test'];
-$vuejs_css_ids = ['https://www.phila.gov/embedded/longform-content/staging/css/chunk-vendors.css?test', 'https://www.phila.gov/embedded/longform-content/staging/css/app.css?test'];
+$vuejs_js_ids = ['https://www.phila.gov/embedded/longform-content/staging/js/chunk-vendors.js?checkers', 'https://www.phila.gov/embedded/longform-content/staging/js/app.js?checkers'];
+$vuejs_css_ids = ['https://www.phila.gov/embedded/longform-content/staging/css/chunk-vendors.css?checkers', 'https://www.phila.gov/embedded/longform-content/staging/css/app.css?checkers'];
 
 include(locate_template( 'partials/vue-apps/vue-register.php' ) );
