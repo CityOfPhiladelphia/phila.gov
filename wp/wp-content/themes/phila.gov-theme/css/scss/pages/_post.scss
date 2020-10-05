@@ -215,6 +215,9 @@
       padding-left: .71429rem;
       max-width: 75rem;
     }
+    &.pam {
+      padding: 1rem;
+    }
   }
   .utility-nav {
     margin: 0px;
@@ -280,6 +283,30 @@
       margin-right: auto;
       .fa-stack-1x {
         margin-top: 6px;
+      }
+    }
+    .small-24 {
+      &.columns {
+        display: block;
+        width: 100%;
+        margin: 0px auto;
+        &.interact-311 {
+          width: 33.33%;
+          a {
+            margin-bottom: 5px;
+          }
+          @media screen and (max-width: 750) {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .columns {
+      &.intro {
+        display: block;
+        width: 100%;
+        padding: 0px 10px;
+        margin: 0px;
       }
     }
   }
