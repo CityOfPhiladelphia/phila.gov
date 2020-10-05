@@ -241,6 +241,9 @@
           padding: 0px;
           &.small-push-4 {
             padding: 0px 10px;
+            .valign-cell {
+              display: block;
+            }
           }
         }
       }
