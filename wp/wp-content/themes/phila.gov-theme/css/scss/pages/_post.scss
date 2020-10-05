@@ -203,6 +203,19 @@
 }
 
 #bad-never-do-this {
+  body {
+    margin-top: 0px !important;
+  }
+  .grid-container {
+    padding: 0px;
+    width: 100%;
+    max-width: 100%;
+    .grid-container {
+      padding-right: .71429rem;
+      padding-left: .71429rem;
+      max-width: 75rem;
+    }
+  }
   .utility-nav {
     margin: 0px;
     .row {
@@ -268,6 +281,12 @@
       .fa-stack-1x {
         margin-top: 6px;
       }
+    }
+  }
+
+  .mtl {
+    &.mbm {
+      display: none;
     }
   }
 }
