@@ -46,174 +46,46 @@ class Phila_Calendars_Controller {
     $calendar_q = new WP_Query( $cal_a );
     
     if ( $calendar_q->have_posts() ) {
-      $post_ids = array();
-      $cal_ids = array();
-      $cal_cat_ids = array();
-      $cal_nice_name = array();
-      // $grouped_cals = array();
-      $names = array();
-      $links = array();
-      $i = 0;
+      $calendars = array();
     
       while ( $calendar_q->have_posts() ) : $calendar_q->the_post();
-        $ids = get_the_id();
-        $categories = get_the_category( get_the_id() );
+        $post_id = get_the_id();
+        $categories = get_the_category( $post_id );
+        $cal_url  = rwmb_meta('calendar_url', '', $post_id);
+        $post_title =  preg_replace("/Private: /", "", get_the_title( $post_id ));
     
         if ($categories != null) {
-          $i++;
-          array_push($post_ids, get_the_id() );
+          $category = $categories[0];
+          $calendar = base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) );
 
-          // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name);
-          // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
+          if (is_array( get_post_meta( $post_id, '_grouped_calendars_ids', true  ) )) {
+            $grouped_calendars = get_post_meta( $post_id, '_grouped_calendars_ids', true  );
+            $temp_cals = array();
+            foreach ($grouped_calendars as $cal_id) {
+  
+              $calendars_categories = get_the_category( $cal_id );
+              $calendars_category = $calendars_categories[0];
+              $cals_url  = rwmb_meta('calendar_url', '', $cal_id);
+              $cals_title =  preg_replace("/Private: /", "", get_the_title( $cal_id ));
 
-          array_push($cal_cat_ids,  $categories[0]->slug);
-          array_push($cal_nice_name, $categories);
-    
-          // $names[$i]['id'] = $categories[0]->cat_ID;
-          // $names[$i]['name'] = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $categories[0]->name );
-          
-        }
-
-        endwhile;
-      
-        wp_reset_postdata();
-      }
-
-      $grouped_cals = array();
-      foreach ($post_ids as $post_id) {
-        $categories = get_the_category( $post_id );
-        $category = $categories[0];
-
-        // $cat = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name);
-        // $trimmed_name = preg_replace('/( & )/', ' and ', $cat);
-        // $final =  html_entity_decode(trim($trimmed_name));
-        $current_cal = get_post_meta( $post_id, '_grouped_calendars_ids', true );
-       // var_dump($current_cal );
-        $grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );;
-
-      
-        //$grouped_cals[$category->slug] = get_post_meta( $post_id, '_grouped_calendars_ids', true );
-        
-        //array_push($grouped_cals, get_post_meta( $post_id, '_grouped_calendars_ids', true ) );
-        array_push($cal_ids, base64_decode(get_post_meta( $post_id, '_google_calendar_id', true ) ) );
-      }
-      //remove duplicates
-      $clean_grouped_cals = array_filter($grouped_cals);
-      $just_ids = array();
-
-      foreach ($clean_grouped_cals as $key => $value){
-    
-        if ( is_array($value) ) {
-          foreach ($value as $cal_id) {
-            $array_keys = array_keys( $clean_grouped_cals );
-              for($x = 0; $x < sizeof($clean_grouped_cals); $x++ ) { 
-    
-                $categories = get_the_category( $cal_id );
-                $category = $categories[0];
-                if ($key == $array_keys[$x] ){
-                  //Add the keys to the correct nested array, instead of pushing them all to a flatened version
-                  $just_ids[$key][$category->slug] = base64_decode(
-                    get_post_meta($cal_id, '_google_calendar_id', true)
-                  );
-              }
+              array_push($temp_cals, (object)['post_title' => $cals_title, 'url' => $cals_url, 'category_slug' => $calendars_category->slug, 'calendar' => base64_decode( get_post_meta($cal_id, '_google_calendar_id', true) ) ]);
             }
+
+            $calendar = $temp_cals;
           }
+          array_push($calendars, (object)['post_title' => $post_title, 'url' => $cal_url, 'category_slug' => $category->slug, 'calendar' => $calendar]);
         }
-      }  
 
-      $i=0;
-      foreach ($cal_nice_name as $nice){
-        $i++;
-        $links[$nice[0]->cat_ID] = phila_get_current_department_name($nice);
-      }
-      $final_array_single = array_combine($cal_cat_ids, $cal_ids);
-      $final_array = array_replace($final_array_single, $just_ids);
+      endwhile;
 
-      //remove duplicates
-      $names = array_map('unserialize', array_unique(array_map('serialize', $names)));
-    
-      $links = array_filter($links);
-    
-      $calendar_ids = json_encode($final_array);
-    
-      function sort_by_name($a, $b){
-        return strcmp($a['name'], $b['name']);
-      }
-    
-      usort($names, 'sort_by_name');
-    
-      $names = json_encode($names);
-
-    $data = array();
-
-    if ( empty( $calendar_ids ) ) {
-      return rest_ensure_response( $data );
+      wp_reset_postdata();
     }
 
-    foreach ( $final_array as $key => $cal_id ) {
-      $response = $this->prepare_item_for_response( $key, $cal_id, $request );
-
-      $data[] = $this->prepare_response_for_collection( $response );
+    if ( empty( json_encode($calendars) ) ) {
+      return rest_ensure_response( $calendars );
     }
     // Return all response data.
-    return rest_ensure_response( $data );
-  }
-
-
-  /**
-   * Matches the post data to the schema. Also, rename the fields to nicer names.
-   *
-   * @param WP_Post $post The comment object whose response is being prepared.
-   */
-
-  public function prepare_item_for_response( $key, $calendar , $request ) {
-    $calendar_data = array();
-
-    $schema = $this->get_item_schema( $request );
-    // var_dump($calendar);
-    // foreach( $calendar as $key => $val) {
-
-      if (isset( $schema['properties']['department_slug'] )) {
-        // convert to id of celandar
-        $calendar_data['department_slug'] = (string) $key;
-      }
-
-      if (isset( $schema['properties']['calendar_id'] )) {
-        // NEED TO CONVERT ARRAYS TO OBJECTS
-        $calendar_data['calendar_id'] =  $calendar;
-      }
-    // }
-
-    return rest_ensure_response( $calendar_data );
-}
-
-  /**
-   * Prepare a response for inserting into a collection of responses.
-   *
-   * This is copied from WP_REST_Controller class in the WP REST API v2 plugin.
-   *
-   * @param WP_REST_Response $response Response object.
-   * @return array Response data, ready for insertion into collection data.
-   */
-  public function prepare_response_for_collection( $response ) {
-    if ( ! ( $response instanceof WP_REST_Response ) ) {
-      return $response;
-    }
-
-    $data = (array) $response->get_data();
-    $server = rest_get_server();
-
-    if ( method_exists( $server, 'get_compact_response_links' ) ) {
-      $links = call_user_func( array( $server, 'get_compact_response_links' ), $response );
-    } else {
-      $links = call_user_func( array( $server, 'get_response_links' ), $response );
-    }
-
-    if ( ! empty( $links ) ) {
-      $data['_links'] = $links;
-    }
-
-    return $data;
+    return rest_ensure_response( $calendars );
   }
 
   /**
