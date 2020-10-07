@@ -45,12 +45,12 @@ function phila_util_month_format($date){
 }
 
 /**
- * Utility function to determine if selected template is v2 or not
+ * Utility function to determine if selected template is v2 or v3
 **/
 
 function phila_util_is_v2_template( $post_id = null ){
   $user_selected_template = phila_get_selected_template( $post_id );
-  if( strpos( $user_selected_template, '_v2' ) === false ){
+  if( strpos( $user_selected_template, '_v2' ) === false && strpos( $user_selected_template, '_v3' ) === false ){
     return false;
   }else{
     return true;

@@ -94,8 +94,14 @@ get_header(); ?>
           <!-- END Department Stub -->
       <?php 
 
-        } else {
+        } else if($user_selected_template === 'homepage_v3') {
           $is_stub = false;
+          include(locate_template( 'partials/departments/v2/our-services.php') ) ;
+          include(locate_template( 'partials/departments/content-programs-initiatives.php') ) ;
+
+      }else {
+          $is_stub = false;
+
           include(locate_template( 'templates/single-on-site-content.php') ) ;
         }
       endwhile;
