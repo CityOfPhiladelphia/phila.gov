@@ -39,7 +39,8 @@ class Phila_Gov_Register_Service_Templates {
             array(
               'id'  => 'phila_wysiwyg_process_content',
               'type'  => 'wysiwyg',
-              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+              'sanitize_callback' => 'none'
             ),
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
           )
@@ -62,7 +63,8 @@ class Phila_Gov_Register_Service_Templates {
       array(
         'id'  => 'service_before_you_begin',
         'type'  => 'wysiwyg',
-        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+        'sanitize_callback' => 'none'
       ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
     )
@@ -87,7 +89,8 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_who',
           'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           'type' => 'heading',
@@ -96,7 +99,8 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_requirements',
           'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           'name'  => 'Add prerequisite approvals?',
@@ -123,7 +127,8 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_where_when',
           'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           'name'  => 'Include contact information?',
@@ -237,7 +242,8 @@ class Phila_Gov_Register_Service_Templates {
                 array(
                   'id' => 'description',
                   'type'  => 'wysiwyg',
-                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+                  'sanitize_callback' => 'none'
                 ),
               )
             )
@@ -246,7 +252,8 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_cost',
           'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           //Name/id doesn't match because reqirements we not defined before this made it to production
@@ -266,7 +273,8 @@ class Phila_Gov_Register_Service_Templates {
           'visible' => array('service_payment_info_select', true),
           'id' => 'service_payment_info',
           'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           'type' => 'heading',
@@ -276,7 +284,8 @@ class Phila_Gov_Register_Service_Templates {
           'id' => 'service_how',
           'type'  => 'wysiwyg',
           'name'  => 'Use this section for introduction content. Not required.',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           'name'  => 'Add single stepped content?',
@@ -302,7 +311,8 @@ class Phila_Gov_Register_Service_Templates {
             array(
               'id' => 'service_how_stepped_content_intro',
               'type'  => 'wysiwyg',
-              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+              'sanitize_callback' => 'none'
             ),
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
           )
@@ -318,7 +328,8 @@ class Phila_Gov_Register_Service_Templates {
               'id' => 'service_how_stepped_content_intro',
               'type'  => 'text',
               'name' => 'Step group heading',
-              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+              'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+              'sanitize_callback' => 'none'
             ),
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
           )
@@ -334,7 +345,8 @@ class Phila_Gov_Register_Service_Templates {
             'relation'  => 'or'
           ),
           'name'  => 'Display more content after all steps.',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
         array(
           'type' => 'heading',
@@ -343,7 +355,8 @@ class Phila_Gov_Register_Service_Templates {
         array(
           'id' => 'service_renewal_requirements',
           'type'  => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          'sanitize_callback' => 'none'
         ),
       )
     );
