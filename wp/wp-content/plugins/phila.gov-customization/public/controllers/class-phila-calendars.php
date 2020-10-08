@@ -68,12 +68,12 @@ class Phila_Calendars_Controller {
               $cals_url  = rwmb_meta('calendar_url', '', $cal_id);
               $cals_title =  preg_replace("/Private: /", "", get_the_title( $cal_id ));
 
-              array_push($temp_cals, (object)['post_title' => $cals_title, 'url' => $cals_url, 'category_slug' => $calendars_category->slug, 'calendar' => base64_decode( get_post_meta($cal_id, '_google_calendar_id', true) ) ]);
+              array_push($temp_cals, (object)['post_title' => html_entity_decode($cals_title), 'url' => $cals_url, 'category_slug' => $calendars_category->slug, 'calendar' => base64_decode( get_post_meta($cal_id, '_google_calendar_id', true) ) ]);
             }
 
             $calendar = $temp_cals;
           }
-          array_push($calendars, (object)['post_title' => $post_title, 'url' => $cal_url, 'category_slug' => $category->slug, 'calendar' => $calendar]);
+          array_push($calendars, (object)['post_title' => html_entity_decode($post_title), 'url' => $cal_url, 'category_slug' => $category->slug, 'calendar' => $calendar]);
         }
 
       endwhile;
@@ -82,10 +82,10 @@ class Phila_Calendars_Controller {
     }
 
     if ( empty( json_encode($calendars) ) ) {
-      return rest_ensure_response( $calendars );
+      return rest_ensure_response($calendars);
     }
     // Return all response data.
-    return rest_ensure_response( $calendars );
+    return rest_ensure_response(  $calendars );
   }
 
   /**
