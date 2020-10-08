@@ -18,6 +18,8 @@ class Phila_Gov_Calendar_Helper {
 
   public function __construct(){
     add_filter( 'rwmb_meta_boxes', array( $this, 'register_master_cal_meta'), 10, 1 );
+    
+    add_filter( 'rwmb_meta_boxes', array( $this, 'register_cal_url_meta'), 10, 1 );
 
     add_action( 'save_post', array($this, 'copy_master_calendar'));
 
@@ -51,6 +53,24 @@ class Phila_Gov_Calendar_Helper {
     );
     return $meta_boxes;
   }
+
+  function register_cal_url_meta($meta_boxes){
+    $meta_boxes[] = array(
+      'id'  => 'phila_cal_url',
+      'title' => 'Phila Calendar url',
+      'pages' => array('calendar'),
+      'fields' => array(
+        array(
+          'id'  => 'calendar_url',
+          'name' => 'Calendar URL',
+          'type'  => 'text',
+          'desc' => 'link from calendar',
+        ),
+      ),
+    );
+    return $meta_boxes;
+  }
+
   function get_master(){
     $query = new WP_Query(
         array(

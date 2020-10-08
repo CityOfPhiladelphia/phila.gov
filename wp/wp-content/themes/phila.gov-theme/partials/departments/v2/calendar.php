@@ -31,12 +31,12 @@
       <div class="row">
         <div class="columns">
           <?php 
-          $slang_name = urlencode(html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $cal_category ) ) ) );
-            $see_all = array(
-              'URL' => '/the-latest/all-events/?category=' . $slang_name,
-              'content_type' => 'events',
-              'nice_name' => 'events'
-            ); ?>
+          $slang_name = rawurlencode(html_entity_decode(trim( $cal_category ) ) );
+          $see_all = array(
+            'URL' => '/the-latest/all-events/?category=' . $slang_name,
+            'content_type' => 'events',
+            'nice_name' => 'events'
+          ); ?>
           <?php if (!empty($calendar_see_all) ):
               $override_url = $calendar_see_all;
             endif; ?>
