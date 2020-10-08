@@ -42,7 +42,8 @@
             ?>
 
             <?php $calendar_see_all = isset( $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] : ''; ?>
-            <?php $cal_category = get_the_category_by_ID($cal_owner_id); ?>
+            <?php $owner = get_the_terms( get_the_id(), 'category' )[0]; ?>
+            <?php $cal_category = !empty($owner) ? $owner->name : ''; ?>
 
             <!-- Calendar -->
             <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
