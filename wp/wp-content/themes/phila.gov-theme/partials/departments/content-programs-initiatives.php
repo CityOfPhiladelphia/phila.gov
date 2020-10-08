@@ -38,9 +38,13 @@
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : '';
 
-            $cal_category = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; ?>
+            $cal_owner_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; 
+            ?>
 
             <?php $calendar_see_all = isset( $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] : ''; ?>
+            <?php $owner = get_the_terms( get_the_id(), 'category' )[0]; ?>
+            <?php $cal_category = !empty($owner) ? $owner->name : ''; ?>
+
             <!-- Calendar -->
             <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
             <!-- /Calendar -->
