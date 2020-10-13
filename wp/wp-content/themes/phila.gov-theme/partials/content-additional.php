@@ -7,10 +7,14 @@
 ?>
 
 <?php
-
   $additional_content = rwmb_meta('phila_additional_content');
-
-  if( !empty ($additional_content ) ) {
+  $page_template = rwmb_meta( 'phila_template_select');
+  if( !empty ($additional_content ) 
+    && $page_template != 'default_v2' 
+    && $page_template != 'topic_page'
+    && $page_template != 'service_stub'
+    && $page_template != 'custom_content'
+  ) {
     $content = phila_additional_content( $additional_content );
   }else{
     $content = array();
