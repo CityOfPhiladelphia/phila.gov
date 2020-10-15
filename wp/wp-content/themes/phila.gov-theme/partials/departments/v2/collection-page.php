@@ -22,10 +22,10 @@ $row_content = rwmb_meta('collection_row');?>
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
           <div class="columns medium-18 pbxl">
-            <div class="row equal-height fat-gutter">
+            <div class="row grid-x fat-gutter">
             <?php foreach( $current_row['service_pages']['phila_v2_service_page'] as $service_page ) : ?>
-              <div class="small-24 medium-8 column end">
-                <a href="<?php echo get_the_permalink($service_page);?>" class="card sub-topic equal">
+              <div class="flex-container auto small-24 medium-8 column end">
+                <a href="<?php echo get_the_permalink($service_page);?>" class="card sub-topic">
                   <div class="content-block">
                     <h4 class="h3"><?php echo get_the_title($service_page); ?></h3>
                     <?php echo rwmb_meta( 'phila_meta_desc', $args = '', $service_page ); ?>

@@ -1156,7 +1156,7 @@ $meta_boxes[] = array(
   'pages' => array ( 'service_page', 'programs' ),
   'revision' => true,
   'context'  => 'advanced',
-
+  // see this partial to add more page templates - DD phila.gov-theme/partials/content-additional.php
   'hidden' => array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
