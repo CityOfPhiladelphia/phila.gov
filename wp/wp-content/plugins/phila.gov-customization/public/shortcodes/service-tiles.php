@@ -15,14 +15,14 @@ function service_tile_shortcode($atts){
 
   if ( $a['ids'] != '' ){
     $ids = explode(',', $a['ids']);
-    $output .= '<div class="row equal-height fat-gutter">';
+    $output .= '<div class="row grid-x fat-gutter">';
         foreach( $ids  as $id ) :
           if ( get_post_type(trim($id)) !== 'service_page' ) {
             $output .= '<div class="row columns end phila-placeholder">Please use the ID of a service page.</div>';
             return $output;
           }
-          $output .= '<div class="' . (count($ids) == 1  ? 'columns end mbl">' : 'medium-8 columns end mbl">');
-          $output .= '<a class="card sub-topic equal';
+          $output .= '<div class="flex-container auto ' . (count($ids) == 1  ? 'columns end mbl">' : 'medium-8 columns end mbl">');
+          $output .= '<a class="card sub-topic';
           $output .= '" href="' . get_the_permalink($id) . '">';
           $output .=   '<div class="content-block"><h3>'. get_the_title($id) . '</h3>';
           $output .=   '<p>' . rwmb_meta( 'phila_meta_desc', array() ,$id) . '</p>';
