@@ -31,8 +31,8 @@
           </h1>
         </header>
       </div>
-      <div class="grid-x">
-        <div class="cell row bdr-bottom bdr-sidewalk mtm flex-container">
+      <div class="row bdr-bottom bdr-sidewalk mtm">
+        <div class="grid-x">
           <div class="side-menu medium-7 columns bdr-right bdr-sidewalk hide-for-small-only pbxl">
             <nav data-swiftype-index="false" id="side-nav">
               <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="services-menu vertical menu">
@@ -51,7 +51,7 @@
               </ul>
             </nav>
         </div>
-        <div class="cell medium-16 columns pbxl flex-container auto">
+        <div class="cell medium-16 columns pbxl flex-container auto mrn margin-auto">
           <article>
             <header class="entry-header">
               <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
