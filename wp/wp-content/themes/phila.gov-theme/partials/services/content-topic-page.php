@@ -28,10 +28,10 @@
     <?php $topic_children->the_post(); ?>
     <?php $counter++; ?>
     <?php if($counter % 3 == 1) :?>
-      <div class="row fat-gutter">
+      <div class="row grid-x fat-gutter">
     <?php endif;?>
-      <div class="small-24 medium-8 column end">
-        <a href="<?php the_permalink(); ?>" class="card sub-topic equal">
+      <div class="flex-container auto small-24 medium-8 column end">
+        <a href="<?php the_permalink(); ?>" class="card sub-topic">
           <div class="content-block">
             <h3><?php the_title(); ?></h3>
             <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
