@@ -52,7 +52,7 @@
             </nav>
         </div>
         <div class="cell medium-16 columns pbxl flex-container auto mrn margin-auto">
-          <article>
+          <article class="full">
             <header class="entry-header">
               <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
             </header>
