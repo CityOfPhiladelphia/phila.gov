@@ -37,6 +37,7 @@ class Phila_Document_Finder_Controller {
       $unique_table = array();
       $unique_table['title'] = $document_table['phila_custom_wysiwyg']['phila_wysiwyg_title'];
       $unique_table['labelColumnTitle'] = isset($document_table['phila_doc_label_column_title']) ? $document_table['phila_doc_label_column_title'] : '';
+      $unique_table['description'] = isset($document_table['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $document_table['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
       $documents = array();
 
       foreach ( $document_table['phila_files'] as $id )  {
