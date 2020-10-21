@@ -64,11 +64,17 @@ class Phila_Calendars_Controller {
             foreach ($grouped_calendars as $cal_id) {
   
               $calendars_categories = get_the_category( $cal_id );
-              $calendars_category = $calendars_categories[0];
               $cals_url  = rwmb_meta('calendar_url', '', $cal_id);
               $cals_title =  preg_replace("/Private: /", "", get_the_title( $cal_id ));
-
-              array_push($temp_cals, (object)['post_title' => html_entity_decode($cals_title), 'url' => $cals_url, 'category_slug' => $calendars_category->slug, 'calendar' => base64_decode( get_post_meta($cal_id, '_google_calendar_id', true) ) ]);
+              if ($calendars_categories) {
+                $calendars_category = $calendars_categories[0];
+                array_push($temp_cals, (object)['post_title' => html_entity_decode($cals_title), 'url' => $cals_url, 'category_slug' => $calendars_category->slug, 'calendar' => base64_decode( get_post_meta($cal_id, '_google_calendar_id', true) ) ]);
+              }
+              else {
+                $calendars_category = '';
+                array_push($temp_cals, (object)['post_title' => html_entity_decode($cals_title), 'url' => $cals_url, 'category_slug' => $calendars_category, 'calendar' => base64_decode( get_post_meta($cal_id, '_google_calendar_id', true) ) ]);
+              }
+            
             }
 
             $calendar = $temp_cals;
