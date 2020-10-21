@@ -34,7 +34,7 @@ g/^post_max_size/s/8/1000
 g/^upload_max_filesize/s/2/100
 g/^memory_limit/s/128/1024
 g/^max_execution_time/s/30/300
-g/^;max_input_vars = 100000/s//max_input_vars = 1000000
+g/^max_input_vars/s/100000/1000000
 w
 EOF
 
