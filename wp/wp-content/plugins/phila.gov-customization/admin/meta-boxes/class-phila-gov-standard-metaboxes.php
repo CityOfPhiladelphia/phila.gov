@@ -1461,10 +1461,20 @@ public static function phila_meta_var_connect(){
 
   return  array(
     array(
-    'id'  => 'timeline-title',
-    'type'  => 'text', 
-    'name'  => 'Title',
-    'desc'     =>  'Content appears on homepage',
+      'id'  => 'timeline-title',
+      'type'  => 'text', 
+      'name'  => 'Title',
+      'desc'  =>  'Content appears on homepage',
+    ),
+    array(
+      'id'  => 'timeline-month-year-toggle',
+      'type'  => 'radio', 
+      'name'  => 'Date display',
+      'options' => array(
+        'month-year' => 'Month - Year',
+        'year' => 'Year',
+      ),
+      'std' => 'month-year'
     ),
     Phila_Gov_Standard_Metaboxes::phila_metabox_v2_timeline_repeater(),
   );
