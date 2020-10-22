@@ -12,8 +12,13 @@
  */
 get_header(); ?>
 
+
 <div class="row service directory">
   <div id="a-z-filter-list" class="columns results a-z-list medium-centered">
+  <form class="search mbxl">
+    <input class="search-field" type="text" placeholder="Begin typing to filter results by title, keyword, or acronym...">
+    <input type="submit" class="search-submit" value="Search">
+  </form>
 
 <?php $args = array(
   'post_type'  => 'service_page',
