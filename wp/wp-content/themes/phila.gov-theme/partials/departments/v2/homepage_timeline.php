@@ -13,19 +13,24 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
     $limit = rwmb_meta('homepage_timeline_item_count') !== '' ? rwmb_meta('homepage_timeline_item_count') : 5;
     $timeline_title = rwmb_meta( 'timeline-title' , '', $timeline_page[0] );
     $timeline_items = rwmb_meta( 'timeline-items' , '', $timeline_page[0] );
+    $timeline_toggle = rwmb_meta( 'timeline-month-year-toggle' , '', $timeline_page[0] );
   }
   else {
     $timeline_items = rwmb_meta( 'timeline-items' ) !== null ? rwmb_meta( 'timeline-items' ) : [];
+    $timeline_toggle = rwmb_meta( 'timeline-month-year-toggle' );
     $limit = -1;
   }
 ?>
 
 <?php $temp_month = ''; ?>
 <?php 
+  $date_type = $timeline_toggle == 'year' ? 'Y' : 'F Y';
   $month_list = array(); 
-  usort($timeline_items, function($a, $b) {
-    return strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s')) - strtotime(DateTime::createFromFormat('m-d-Y', $a['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s'));
-  });
+  if ($timeline_toggle == 'month-year') {
+    usort($timeline_items, function($a, $b) {
+      return strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s')) - strtotime(DateTime::createFromFormat('m-d-Y', $a['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s'));
+    });
+  }
 ?>
 
 <!-- Timeline Section -->
@@ -39,7 +44,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
         <?php 
           $h = 0;
           foreach($timeline_items as $item) {
-            array_push($month_list, DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format('F Y') );
+            array_push($month_list, DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format($date_type) );
             $h++;
             if ($h == $limit) {
               break;
@@ -67,8 +72,8 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
           <?php foreach($timeline_items as $item) { ?>
             <div class="timeline-item row">
               <?php $item_date = $item['phila_timeline_item_timestamp']; ?>
-              <?php if( DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format('F Y') != $temp_month ) { ?>
-                <?php $temp_month = DateTime::createFromFormat('m-d-Y', $item_date)->format('F Y'); ?>
+              <?php if( DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format($date_type) != $temp_month ) { ?>
+                <?php $temp_month = DateTime::createFromFormat('m-d-Y', $item_date)->format($date_type); ?>
                 <div class="month-label medium-6 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
                   <div>
                     <span ><?php echo $temp_month; ?></span>
@@ -80,7 +85,9 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
                   <div class="timeline-dot"></div>
                 </div>
                 <div class="timeline-text">
-                  <div class="timeline-month"><?php echo DateTime::createFromFormat('m-d-Y', $item_date)->format('F d');?></div>
+                  <?php if ($timeline_toggle == 'month-year') { ?>
+                    <div class="timeline-month"><?php echo DateTime::createFromFormat('m-d-Y', $item_date)->format('F d');?></div>
+                  <?php } ?>
                   <div class="timeline-copy"><?php echo do_shortcode(wpautop( $item['phila_timeline_item'] )); ?></div>
                 </div>
               </div>
