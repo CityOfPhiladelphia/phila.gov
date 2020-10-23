@@ -26,7 +26,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
 <?php 
   $date_type = $timeline_toggle == 'year' ? 'Y' : 'F Y';
   $month_list = array(); 
-  if ($timeline_toggle == 'month-year') {
+  if ($timeline_toggle == 'day-month-year' ) {
     usort($timeline_items, function($a, $b) {
       return strtotime(DateTime::createFromFormat('m-d-Y', $b['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s')) - strtotime(DateTime::createFromFormat('m-d-Y', $a['phila_timeline_item_timestamp'])->format('Y-m-d H:i:s'));
     });
@@ -85,7 +85,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
                   <div class="timeline-dot"></div>
                 </div>
                 <div class="timeline-text">
-                  <?php if ($timeline_toggle == 'month-year') { ?>
+                  <?php if ($timeline_toggle == 'day-month-year') { ?>
                     <div class="timeline-month"><?php echo DateTime::createFromFormat('m-d-Y', $item_date)->format('F d');?></div>
                   <?php } ?>
                   <div class="timeline-copy"><?php echo do_shortcode(wpautop( $item['phila_timeline_item'] )); ?></div>
