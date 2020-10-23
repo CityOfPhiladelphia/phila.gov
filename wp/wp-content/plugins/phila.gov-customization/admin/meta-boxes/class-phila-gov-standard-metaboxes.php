@@ -1471,10 +1471,11 @@ public static function phila_meta_var_connect(){
       'type'  => 'radio', 
       'name'  => 'Date display',
       'options' => array(
+        'day-month-year' => 'Day - Month - Year',
         'month-year' => 'Month - Year',
         'year' => 'Year',
       ),
-      'std' => 'month-year'
+      'std' => 'day-month-year'
     ),
     Phila_Gov_Standard_Metaboxes::phila_metabox_v2_timeline_repeater(),
   );
