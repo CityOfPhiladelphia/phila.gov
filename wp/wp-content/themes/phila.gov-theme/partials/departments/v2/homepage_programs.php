@@ -4,14 +4,20 @@
   */
 ?>
 <?php
+  if ( !isset($title) ) :
+    $title = rwmb_meta('phila_custom_text_title');
+  endif;
   if ( !isset( $cards ) ):
     $cards = rwmb_meta('phila_select_programs');
+  endif;
+  if ( !isset($all_programs) ) :
+    $all_programs = rwmb_meta( 'phila_v2_programs_link' ); 
   endif;
 ?>
 <?php if ( !empty($cards) ) :?>
   <div class="row">
     <div class="columns">
-      <h2 id="programs" class="contrast"><?php echo (get_post_type() == 'programs') ? 'Related programs' : 'Our programs'; ?></h3>
+      <h2 id="programs" class="contrast"><?php echo isset($title) ? $title : 'Our programs'; ?></h3>
     </div>
   </div>
   <div class="row">
@@ -37,7 +43,6 @@
   </div>
 <?php endif; ?>
 
-<?php $all_programs = rwmb_meta( 'phila_v2_programs_link' ) ?>
 <?php if ( $all_programs != '' ) :?>
   <div class="row mtm">
     <div class="columns">
