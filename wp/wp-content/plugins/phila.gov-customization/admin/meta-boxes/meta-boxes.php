@@ -1079,17 +1079,8 @@ $meta_boxes[] = array(
         array('phila_template_select', '=', 'homepage_v2'),
       ),
     ),
-  'fields' => array(
+  'fields' => 
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
-    array(
-      'id' => 'phila_v2_programs_link',
-      'title' => 'See all programs',
-      'name'  => 'See all programs url',
-      'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
-      'type'  => 'url',
-      'class' => 'metabox-url',
-    ),
-  )
 
 );
 

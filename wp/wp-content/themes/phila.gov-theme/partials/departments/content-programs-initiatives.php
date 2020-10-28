@@ -234,7 +234,10 @@
           <?php elseif ( $current_row_option == 'phila_programs'):?>
             <?php if ( isset( $current_row['phila_full_options']['phila_programs'] ) ): ?>
               <?php
-              $cards = $current_row['phila_full_options']['phila_programs']['phila_select_programs'];?>
+              $title = isset ($current_row['phila_full_options']['phila_programs']['phila_custom_text_title']) ? $current_row['phila_full_options']['phila_programs']['phila_custom_text_title'] : 'Our programs';
+              $cards = isset($current_row['phila_full_options']['phila_programs']['phila_select_programs']) ? $current_row['phila_full_options']['phila_programs']['phila_select_programs'] : '';
+              $all_programs = isset($current_row['phila_full_options']['phila_programs']['phila_v2_programs_link']) ? $current_row['phila_full_options']['phila_programs']['phila_v2_programs_link'] : '';
+              ?>
               <!-- Program cards-->
               <?php include(locate_template('partials/departments/v2/homepage_programs.php')); ?>
               <!-- Program cards-->

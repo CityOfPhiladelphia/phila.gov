@@ -59,10 +59,9 @@ class Phila_Gov_Collection_Page {
                   ),
                 ),
 
-              'fields'  => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
+              'fields'  => 
                 Phila_Gov_Standard_Metaboxes::phila_program_page_selector( $multiple = true ),
-              )
+            
             ),
             array(
               'id'    => 'service_pages',
