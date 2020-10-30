@@ -5,7 +5,7 @@
 source /home/ubuntu/.ssh/environment
 
 _dir="$(dirname "$0")"
-plugins="change-wp-admin-login.zip
+plugins="wps-hide-login.1.5.7.zip
 two-factor-authentication-premium.1.8.6.zip
 mb-admin-columns-1.5.0.zip
 mb-revision-1.3.3.zip
