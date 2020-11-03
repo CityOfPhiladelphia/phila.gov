@@ -3,6 +3,7 @@ os: linux
 files:
   - source: /wp
     destination: /home/ubuntu/app/wp
+    overwrite: true
   - source: /nginx
     destination: /home/ubuntu/app/nginx
   - source: wp-cli.yml
