@@ -5,8 +5,7 @@
 source /home/ubuntu/.ssh/environment
 
 _dir="$(dirname "$0")"
-plugins="wps-hide-login.1.5.7.zip
-two-factor-authentication-premium.1.8.6.zip
+plugins="two-factor-authentication-premium.1.8.6.zip
 mb-admin-columns-1.5.0.zip
 mb-revision-1.3.3.zip
 mb-settings-page-2.1.3.zip
