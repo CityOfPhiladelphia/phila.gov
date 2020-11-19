@@ -1,4 +1,4 @@
-<div id='bad-never-do-this'>
+<div id='longform-content-single-container'>
 <?php
 /**
  * The template used for displaying longform content
