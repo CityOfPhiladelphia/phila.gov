@@ -45,6 +45,9 @@ endif;
 
   if (!empty($tag)) {
     $term = get_term($tag[0],'post_tag');
+    if ($term == NULL) {
+      $term = get_term($tag,'post_tag');
+    }
   }else{
     $tag = '';
   }

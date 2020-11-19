@@ -623,24 +623,35 @@ class Phila_Gov_Standard_Metaboxes {
   public static function phila_program_page_selector( $multiple = false ){
 
     return array(
-      'name'          => 'Select program pages',
-      'id'          => 'phila_select_programs',
-      'type'        => 'post',
-      'post_type'   => 'programs',
-      'field_type'  => 'select_advanced',
-      'placeholder' => '',
-      'desc'     =>  'Add program pages. You can narrow your search options by typing in the field above.',
-      'multiple'  => $multiple,
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Heading', 'phila_custom_text_title'),
+      array(
+        'name'        => 'Select program pages',
+        'id'          => 'phila_select_programs',
+        'type'        => 'post',
+        'post_type'   => 'programs',
+        'field_type'  => 'select_advanced',
+        'placeholder' => '',
+        'desc'     =>  'Add program pages. You can narrow your search options by typing in the field above.',
+        'multiple'  => $multiple,
 
-      'query_args'  => array(
-        'post_status'    => 'any',
-        'posts_per_page' => -1,
-        'post_parent' => 0
+        'query_args'  => array(
+          'post_status'    => 'any',
+          'posts_per_page' => -1,
+          'post_parent' => 0
+        ),
+        'js_options'  => array(
+          'width' => '100%',
+          'closeOnSelect' => false,
+        )
       ),
-      'js_options'  => array(
-        'width' => '100%',
-        'closeOnSelect' => false,
-      )
+      array(
+        'id' => 'phila_v2_programs_link',
+        'title' => 'See all programs',
+        'name'  => 'See all programs url',
+        'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+        'type'  => 'url',
+        'class' => 'metabox-url',
+      ),
     );
   }
 
@@ -1461,10 +1472,21 @@ public static function phila_meta_var_connect(){
 
   return  array(
     array(
-    'id'  => 'timeline-title',
-    'type'  => 'text', 
-    'name'  => 'Title',
-    'desc'     =>  'Content appears on homepage',
+      'id'  => 'timeline-title',
+      'type'  => 'text', 
+      'name'  => 'Title',
+      'desc'  =>  'Content appears on homepage',
+    ),
+    array(
+      'id'  => 'timeline-month-year-toggle',
+      'type'  => 'radio', 
+      'name'  => 'Date display',
+      'options' => array(
+        'day-month-year' => 'Day - Month - Year',
+        'month-year' => 'Month - Year',
+        'year' => 'Year',
+      ),
+      'std' => 'day-month-year'
     ),
     Phila_Gov_Standard_Metaboxes::phila_metabox_v2_timeline_repeater(),
   );

@@ -27,7 +27,7 @@
       <div class="row">
         <div class="columns intro">
           <h2 class="mbxs">Philly311</h2>
-          <span><a href="/311" class="external" aria-label="Philly 311">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available. Call 311 or <a href="https://twitter.com/philly311" class="external">tweet @philly311</a> for a quick response.</span>
+          <span><a href="/311" class="external" aria-label="Philly 311">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available.</span>
         </div>
       </div>
       <div class="row pvn pvl-mu equal-height">

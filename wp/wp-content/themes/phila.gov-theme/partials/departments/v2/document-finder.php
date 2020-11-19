@@ -8,12 +8,13 @@ $vue_or_not = rwmb_meta('phila_vue_toggle');
 if ($vue_or_not) {
   $app_id = 'vue-app';
 
-  $vuejs_js_ids = ['https://www.phila.gov/embedded/document-finder/production/js/chunk-vendors.js', 'https://www.phila.gov/embedded/document-finder/production/js/app.js'];
-  $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/production/css/chunk-vendors.css', 'https://www.phila.gov/embedded/document-finder/production/css/app.css'];
+  $vuejs_js_ids = ['https://www.phila.gov/embedded/document-finder/production/js/chunk-vendors.js?cachebreaker', 'https://www.phila.gov/embedded/document-finder/production/js/app.js?cachebreaker'];
+  $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/production/css/chunk-vendors.css?cachebreaker', 'https://www.phila.gov/embedded/document-finder/production/css/app.css?cachebreaker'];
   
   include(locate_template( 'partials/vue-apps/vue-register.php' ) );
 }
 else {
+  $no_pagination = rwmb_meta('phila_doc_no_paginate');
   //ensure 0 index for js initialization
   $c = -1;
   ?>
@@ -28,7 +29,7 @@ else {
             ?>	
             <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>	
             <div id="sortable-table-<?php echo $c?>" class="search-sort-table">	
-              <?php if ( count($table['phila_files']) >= 6) : ?>	
+              <?php if ( count($table['phila_files']) >= 7) : ?>	
                 <div class="search">	
                   <label for="table-search"><span class="screen-reader-text"><?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> </span></label>	
                   <input type="text" class="table-search search-field" placeholder="<?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> " />	
@@ -105,7 +106,7 @@ else {
                 </tbody>	
               </table>	
             </div>	
-            <?php if ( count($table['phila_files'] ) >= 6 && empty( $no_pagination ) ) : ?>	
+            <?php if ( count($table['phila_files'] ) >= 7 &&  $no_pagination == 0 ) : ?>	
               <ul class="pagination-wrapper no-js">	
                 <li class="prev">	
                   <a class="prev-<?php echo $c?>" href="#">Previous</a>	

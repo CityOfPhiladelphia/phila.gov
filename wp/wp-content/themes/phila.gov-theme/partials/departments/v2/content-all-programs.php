@@ -13,6 +13,7 @@
 
 get_header(); ?>
 
+
 <div class="row">
   <div class="columns results a-z-list border-top-none">
   <?php
