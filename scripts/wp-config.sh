@@ -70,6 +70,12 @@ define('DISABLE_WP_CRON', true);
 /** We manually update WP, so disable auto updates */
 define('WP_AUTO_UPDATE_CORE', false);
 
+/** Give WP admin addtional memory  */
+define( 'WP_MAX_MEMORY_LIMIT', '256M' );
+
+/* Change auto save interval from one minute to 10 */ 
+define( 'AUTOSAVE_INTERVAL', 600 );
+
 /** Airnow AQI KEY */
 define('AQI_KEY', '$AQI_KEY');
 
@@ -78,6 +84,7 @@ define('JWT_AUTH_SECRET_KEY', '$JWT_AUTH_SECRET_KEY');
 
 /** Allow CORS */
 define('JWT_AUTH_CORS_ENABLE', true);
+
 
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
