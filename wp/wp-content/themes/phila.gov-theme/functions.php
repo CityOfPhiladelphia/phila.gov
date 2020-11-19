@@ -2110,3 +2110,11 @@ function phila_add_meta_document_fields($response, $attachment) {
 }
 
 add_filter( 'wp_prepare_attachment_for_js', 'phila_add_meta_document_fields', 99, 3 );
+
+function force_type_private($post, $postarr) {
+  if ($post['post_type'] == 'longform_content' && count(wp_get_post_revisions( $postarr['ID'] )) <= 0) {
+    $post['post_status'] = 'private';
+  }
+  return $post;
+}
+add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
