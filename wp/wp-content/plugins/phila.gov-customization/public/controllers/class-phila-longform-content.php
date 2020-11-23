@@ -31,7 +31,7 @@ class Phila_Longform_Content_Controller {
     $post = get_post( $post_id );
     // $post = get_post( 143606 ); // Local Host
     // $post = get_post( 146529 ); // Staging
-    $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' );
+    $longform_document['owners'] = ( array ) get_the_terms( get_the_id(), 'category' )[0];
     $longform_document['post'] = ( object ) $post;
     $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
     
