@@ -380,7 +380,6 @@ class Phila_Gov_Custom_Post_Types{
         'supports' => array(
           'title',
           'revisions',
-          'author',
           'editor',
           'page-attributes',
           'thumbnail'
