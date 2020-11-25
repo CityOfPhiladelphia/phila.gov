@@ -30,9 +30,10 @@
             <?php echo $parent_title; ?>
           </h1>
         </header>
-        </div>
-        <div class="row equal-height bdr-bottom bdr-sidewalk mtm">
-          <div class="side-menu medium-7 columns bdr-right bdr-sidewalk equal hide-for-small-only pbxl">
+      </div>
+      <div class="row bdr-bottom bdr-sidewalk mtm">
+        <div class="grid-x">
+          <div class="side-menu medium-7 columns bdr-right bdr-sidewalk hide-for-small-only pbxl">
             <nav data-swiftype-index="false" id="side-nav">
               <ul id="menu-<?php echo sanitize_title( $parent_title )?>" class="services-menu vertical menu">
               <?php
@@ -50,8 +51,8 @@
               </ul>
             </nav>
         </div>
-        <div class="medium-16 columns equal pbxl">
-          <article>
+        <div class="cell medium-16 columns pbxl flex-container auto mrn margin-auto">
+          <article class="full">
             <header class="entry-header">
               <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
             </header>
@@ -123,7 +124,8 @@
               </div>
             </article>
           </div>
-        </div>
+        </div>  
+      </div>
     </div><!-- #post-## -->
 
 

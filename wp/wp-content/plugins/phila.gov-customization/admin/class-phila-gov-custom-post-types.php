@@ -24,6 +24,8 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_document' ), 1 );
 
+    add_action( 'init', array( $this, 'create_phila_longform_content' ), 1 );
+
     add_action( 'init', array( $this, 'create_phila_staff_directory' ), 1 );
 
     add_action( 'init', array( $this, 'create_phila_annoucement' ), 1 );
@@ -351,6 +353,47 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => false,
         'rewrite' => array(
           'slug' => 'staff-directory',
+          'with_front' => false,
+        ),
+      )
+    );
+  }
+
+  function create_phila_longform_content() {
+    register_post_type( 'longform_content',
+      array(
+        'labels' => array(
+          'name' => __( 'Longform Page' ),
+          'singular_name' => __( 'Longform Page' ),
+          'add_new'   => __( 'Add Longform Page' ),
+          'all_items'   => __( 'All Longform Pages' ),
+          'add_new_item' => __( 'Add New Longform Page' ),
+          'edit_item'   => __( 'Edit Longform Page' ),
+          'view_item'   => __( 'View Longform Page' ),
+          'search_items'   => __( 'Search Longform Pages' ),
+          'not_found'   => __( 'Longform Page Not Found' ),
+          'not_found_in_trash'   => __( 'Longform Page not found in trash' ),
+        ),
+        'taxonomies' => array(
+          'category',
+        ),
+        'supports' => array(
+          'title',
+          'revisions',
+          'editor',
+          'page-attributes',
+          'thumbnail'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_rest' => true,
+        'show_in_nav_menus' => true,
+        'rest_base' => 'longform-contents',
+        'menu_icon' => 'dashicons-media-text',
+        'hierarchical' => true,
+        'query_var' => true,
+        'rewrite' => array(
+          'slug' => 'longform-contents',
           'with_front' => false,
         ),
       )

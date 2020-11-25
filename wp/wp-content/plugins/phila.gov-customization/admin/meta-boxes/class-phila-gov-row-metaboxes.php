@@ -280,9 +280,8 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'clone' => false,
         'visible' => array('phila_full_options_select', '=', 'phila_programs'),
-        'fields'  => array(
+        'fields'  => 
           Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true)
-        )
       ),
       array(
         'id'  => 'phila_location_list',

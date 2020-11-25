@@ -3,6 +3,7 @@
 # Install private plugins
 
 source /home/ubuntu/.ssh/environment
+# wps-hide-login.1.5.7.zip <- hide login plugin
 
 _dir="$(dirname "$0")"
 plugins="two-factor-authentication-premium.1.8.6.zip

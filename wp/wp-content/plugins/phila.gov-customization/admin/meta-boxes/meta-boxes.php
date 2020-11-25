@@ -125,9 +125,8 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'high',
     'revision' => true,
-
     'fields' => array(
-        array(
+      array(
         'id'   => 'phila_document_description',
         'type' => 'wysiwyg',
         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
@@ -163,7 +162,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'high',
     'revision' => true,
-
     'fields' => array(
       array(
         'name'  => 'Add Files',
@@ -936,7 +934,7 @@ $meta_boxes[] = array(
   'pages' => array ( 'service_page', 'programs' ),
   'revision' => true,
   'context'  => 'advanced',
-
+  // see this partial to add more page templates - DD phila.gov-theme/partials/content-additional.php
   'hidden' => array(
     'when'  => array(
       array('phila_template_select', '=', 'topic_page'),
@@ -1080,17 +1078,8 @@ $meta_boxes[] = array(
         array('phila_template_select', '=', 'homepage_v2'),
       ),
     ),
-  'fields' => array(
+  'fields' => 
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
-    array(
-      'id' => 'phila_v2_programs_link',
-      'title' => 'See all programs',
-      'name'  => 'See all programs url',
-      'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
-      'type'  => 'url',
-      'class' => 'metabox-url',
-    ),
-  )
 
 );
 
