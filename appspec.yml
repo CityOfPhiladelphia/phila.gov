@@ -1,23 +1,15 @@
-version: 0.0
-os: linux
-files:
-  - source: /wp
-    destination: /home/ubuntu/app/wp
-  - source: /nginx
-    destination: /home/ubuntu/app/nginx
-  - source: wp-cli.yml
-    destination: /home/ubuntu/app
-permissions:
-  - object: /home/ubuntu/app/wp
-    owner: ubuntu
-    group: ubuntu
-  - object: /home/ubuntu/app/wp-cli.yml
-    owner: ubuntu
-    group: ubuntu
-hooks:
-  BeforeInstall:
-    - location: scripts/predeploy.sh
-      runas: ubuntu
-  AfterInstall:
-    - location: scripts/deploy.sh
-      runas: ubuntu
+# .appspec.yml
+
+# ... here be your existing CodeDeploy configuration.
+
+# This section controls the action:
+branch_config:
+    wip\/.*: ~
+
+    staging:
+        deploymentGroupName: 	staging-phila-gov-codedeploy-deploymentgroup
+        deploymentGroupConfig:
+            serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
+        deploymentConfig:
+            autoRollbackConfiguration:
+                enabled: true
