@@ -396,5 +396,3 @@
   </div>
 <!-- /Program and initiatives -->
 <?php endif; ?>
-
-?>
