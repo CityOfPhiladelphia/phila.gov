@@ -95,9 +95,15 @@ get_header(); ?>
       <?php 
 
         } else if($user_selected_template === 'homepage_v3') {
-          $is_stub = false;
-          include(locate_template( 'partials/departments/v2/our-services.php') ) ;
-          include(locate_template( 'partials/departments/content-programs-initiatives.php') ) ;
+          $tab = rwmb_meta( 'tab1' );
+          include(locate_template( 'partials/departments/v3/default.php') ) ;
+          $tab = rwmb_meta( 'tab2' );
+          include(locate_template( 'partials/departments/v3/default.php') ) ;
+          $tab = rwmb_meta( 'tab3' );
+          include(locate_template( 'partials/departments/v3/default.php') ) ;
+          // $is_stub = false;
+          // include(locate_template( 'partials/departments/v2/our-services.php') ) ;
+          // include(locate_template( 'partials/departments/content-programs-initiatives.php') ) ;
 
       }else {
           $is_stub = false;

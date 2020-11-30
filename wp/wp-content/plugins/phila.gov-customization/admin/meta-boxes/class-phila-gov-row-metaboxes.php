@@ -80,9 +80,9 @@ class Phila_Gov_Row_Metaboxes {
     'id'   => 'phila_full_options',
     'type' => 'group',
     'visible' => array(
-      'phila_grid_options',
-      '=',
-      'phila_grid_options_full'
+      'when' => array(
+        array('phila_grid_options', '=', 'phila_grid_options_full'),
+      ),
     ),
     'fields' => array(
       Phila_Gov_Row_Select_Options::phila_metabox_full_options_select(),

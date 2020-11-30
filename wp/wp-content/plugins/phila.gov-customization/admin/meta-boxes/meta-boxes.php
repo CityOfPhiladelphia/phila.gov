@@ -497,7 +497,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'on_label'  => 'Yes',
         'off_label' => 'No',
         'visible' => array(
-          'phila_template_select', 'in', ['homepage_v2', 'homepage_v3']
+          'phila_template_select', 'in', ['homepage_v2']
         )
       ),
     ),
@@ -1032,7 +1032,6 @@ $meta_boxes[] = array(
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
-        array('phila_template_select', '=', 'homepage_v3'),
         array('phila_template_select', '=', 'prog_landing_page')
       ),
     'relation'  => 'or'
@@ -1064,6 +1063,58 @@ $meta_boxes[] = array(
       'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-services/',
       'type'  => 'url',
       'class' => 'metabox-url',
+    ),
+  ),
+);
+
+$meta_boxes[] = array(
+  'title' => 'Our tabs',
+  'pages'    => array( 'department_page' ),
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v3'),
+      ),
+  ),
+  'tabs'      => array(
+    'tab1' => array(
+        'label' => 'Tab 1',
+    ),
+    'tab2'  => array(
+        'label' => 'Tab 2',
+    ),
+    'tab3'    => array(
+        'label' => 'Tab 3',
+    ),
+  ),
+  'tab_style' => 'default',
+  'tab_wrapper' => true,
+  'fields' => array(
+    array(
+      'id' => 'tab1',
+      'tab' => 'tab1',
+      'name' => __( 'Tab 1', 'rwmb' ),
+      'type' => 'group', 
+      'fields' => array(
+        Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+      )
+    ),
+    array(
+      'id' => 'tab2',
+      'tab' => 'tab2',
+      'name' => __( 'Tab 2', 'rwmb' ),
+      'type' => 'group',
+      'fields' => array(
+        Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+      )
+    ),
+    array(
+      'id' => 'tab3',
+      'tab' => 'tab3',
+      'name' => __( 'Tab 3', 'rwmb' ),
+      'type' => 'group',
+      'fields' => array(
+        Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
+      )
     ),
   ),
 );
