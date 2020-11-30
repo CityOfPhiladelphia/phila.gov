@@ -7,7 +7,7 @@ branch_config:
     wip\/.*: ~
 
     staging:
-        applicationName: staging-phila-gov-codedeploy
+        application: staging-phila-gov-codedeploy
         deploymentGroupName: staging-phila-gov-codedeploy-deploymentgroup
         deploymentGroupConfig:
             serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
