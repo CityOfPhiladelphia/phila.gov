@@ -3,7 +3,7 @@
 # ... here be your existing CodeDeploy configuration.
 
 # This section controls the action:
-application: staging-phila-gov-codedeploy
+applicationName: staging-phila-gov-codedeploy
 
 
 branch_config:
