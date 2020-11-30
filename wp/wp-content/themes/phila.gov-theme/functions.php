@@ -2118,3 +2118,21 @@ function force_type_private($post, $postarr) {
   return $post;
 }
 add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
+
+function set_environment() {
+  global $environment;
+  if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
+    $environment = 'staging';
+  }
+  else if(strpos($_SERVER['HTTP_HOST'],'test') !== false) {
+    $environment = 'test';
+  }
+  else if(strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
+    $environment = 'local';
+  }
+  else {
+    $environment = 'production';
+  }
+}
+
+add_action('init', 'set_environment');
