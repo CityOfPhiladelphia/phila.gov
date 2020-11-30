@@ -14,7 +14,7 @@ branch_config:
         # applicationName: staging-phila-gov-codedeploy
         deploymentGroupConfig:
             serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
-            applicationName: staging-phila-gov-codedeploy
+            application: staging-phila-gov-codedeploy
         deploymentConfig:
             autoRollbackConfiguration:
                 enabled: true
