@@ -3,11 +3,13 @@
 # ... here be your existing CodeDeploy configuration.
 
 # This section controls the action:
+application: staging-phila-gov-codedeploy
+
+
 branch_config:
     wip\/.*: ~
 
     staging:
-        application: staging-phila-gov-codedeploy
         deploymentGroupName: staging-phila-gov-codedeploy-deploymentgroup
         deploymentGroupConfig:
             serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
