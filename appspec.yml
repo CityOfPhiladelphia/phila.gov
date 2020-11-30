@@ -7,7 +7,7 @@
 
 
 branch_config:
-    applicatin: staging-phila-gov-codedeploy
+    application: staging-phila-gov-codedeploy
     wip\/.*: ~
 
     staging:
