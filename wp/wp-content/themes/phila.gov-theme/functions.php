@@ -2120,18 +2120,18 @@ function force_type_private($post, $postarr) {
 add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
 
 function set_environment() {
-  global $environment;
+  global $phila_environment;
   if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
-    $environment = 'staging';
+    $phila_environment = 'staging';
   }
   else if(strpos($_SERVER['HTTP_HOST'],'test') !== false) {
-    $environment = 'test';
+    $phila_environment = 'test';
   }
   else if(strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
-    $environment = 'local';
+    $phila_environment = 'local';
   }
   else {
-    $environment = 'production';
+    $phila_environment = 'production';
   }
 }
 
