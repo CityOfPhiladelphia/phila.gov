@@ -1290,7 +1290,12 @@ public static function phila_meta_var_connect(){
                 'name'  => 'Forms & Instructions',
                 'type'  => 'heading'
               ),
-              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector()
+              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector(),
+              array(
+                'id'  => 'phila_forms_instructions_free_text',
+                'type'  => 'wysiwyg',
+                'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+              ),
             ),
           ),
           array(
