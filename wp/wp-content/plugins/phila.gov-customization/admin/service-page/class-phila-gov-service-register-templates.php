@@ -380,6 +380,11 @@ class Phila_Gov_Register_Service_Templates {
         ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_document_page_selector(),
         array(
+          'id'  => 'phila_forms_instructions_free_text',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+        array(
           'name'  => 'Related Content',
           'type'  => 'heading'
         ),
@@ -399,6 +404,7 @@ class Phila_Gov_Register_Service_Templates {
           'type'  => 'wysiwyg',
           'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
         ),
+
         array(
           'name'  => 'Did You Know?',
           'type'  => 'heading'
