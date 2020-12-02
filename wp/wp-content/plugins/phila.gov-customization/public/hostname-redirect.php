@@ -22,8 +22,8 @@ function admin_phila_redirect(){
   }else if( !is_user_logged_in() && $domain['path'] === 'staging-admin.phila.gov' ){
     wp_redirect( 'https://' . 'staging-www.phila.gov' . $path );
     die();
-  }else if( !is_user_logged_in() && $domain['path'] === 'dev-admin.phila.gov' ){
-    wp_redirect( 'https://' . 'dev-www.phila.gov' . $path );
+  }else if( !is_user_logged_in() && $domain['path'] === 'test-admin.phila.gov' ){
+    wp_redirect( 'https://' . 'test-www.phila.gov' . $path );
     die();
   }
 }
