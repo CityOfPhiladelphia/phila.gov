@@ -14,5 +14,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - uses: actions/checkout@v2
+      - inputs: 
+        application: staging-phila-gov-codedeploy
       - id: staging-deploy
         uses: webfactory/create-aws-codedeploy-deployment@v0.2.1
