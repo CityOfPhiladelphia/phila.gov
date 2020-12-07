@@ -112,8 +112,6 @@ if( !empty($tag) && $tag != 'is_single' ) {
       ),
     )
   );
-  
-  $result = new WP_Query( $posts_args );
 
   $more_posts = new WP_Query( $posts_args );
 
