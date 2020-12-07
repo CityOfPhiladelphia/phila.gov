@@ -35,7 +35,6 @@ if ( empty( $post_categories ) ) {
 }else{
   /* Get all sticky posts for department homepages */
   $sticky_args = array(
-    'posts_per_page' => -1,
     'post__in'  => get_option( 'sticky_posts' ),
     'cat' => $post_categories,
     'order' => 'desc',
