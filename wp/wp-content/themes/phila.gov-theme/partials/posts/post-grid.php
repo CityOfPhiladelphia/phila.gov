@@ -48,7 +48,7 @@ if ( empty( $post_categories ) ) {
     ),
   );
 
-  // $sticky_posts = new WP_Query( $sticky_args );
+  $sticky_posts = new WP_Query( $sticky_args );
 
 }
 
@@ -112,7 +112,7 @@ if( !empty($tag) && $tag != 'is_single' ) {
     )
   );
 
-  $more_posts = new WP_Query( $posts_args );
+  // $more_posts = new WP_Query( $posts_args );
 
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
