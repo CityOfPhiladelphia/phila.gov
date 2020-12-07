@@ -84,6 +84,7 @@ if( !empty($tag) && $tag != 'is_single' ) {
   $result = new WP_Query( $posts_args );
 }else{
   $posts_args  = array(
+    'post_type' => array('post'),
     'posts_per_page' => 3,
     'order' => 'desc',
     'orderby' => 'post_date',
@@ -97,18 +98,18 @@ if( !empty($tag) && $tag != 'is_single' ) {
         'value' => 'post',
         'compare' => '=',
       ),
-      // array(
-      //   'relation'  => 'OR',
-      //   array(
-      //     'key' => 'phila_select_language',
-      //     'value' => 'english',
-      //     'compare' => '=',
-      //   ),
-      //   array(
-      //     'key' => 'phila_select_language',
-      //     'compare' => 'NOT EXISTS'
-      //   ),
-      // ),
+      array(
+        'relation'  => 'OR',
+        array(
+          'key' => 'phila_select_language',
+          'value' => 'english',
+          'compare' => '=',
+        ),
+        array(
+          'key' => 'phila_select_language',
+          'compare' => 'NOT EXISTS'
+        ),
+      ),
     )
   );
 
