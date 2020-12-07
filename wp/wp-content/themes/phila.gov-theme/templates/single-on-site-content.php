@@ -97,6 +97,9 @@ HTML;
         'staff_directory_listing'=>rwmb_meta( 'phila_staff_directory_selected' ),
 
       );
+      var_dump('hellooooo');
+      var_dump(rwmb_meta('phila_full_row_blog_selected' ));
+      var_dump(rwmb_meta('phila_get_post_cats' ));
 
       phila_get_template_part($DEPT_USER_TEMPLATE_PATH.$user_selected_template, $homepage_v2_data );
 

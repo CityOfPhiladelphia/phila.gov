@@ -7,9 +7,7 @@
  */
 
 $full_row_blog_selected =  rwmb_meta('phila_full_row_blog_selected');
-var_dump($full_row_blog_selected);
 $full_row_blog = rwmb_meta('phila_full_row_blog');
-var_dump($full_row_blog);
 $full_width_press_releases_selected = rwmb_meta('phila_full_row_press_releases_selected');
 $full_width_press_releases = rwmb_meta('phila_full_row_press_releases');
 $cal_id = rwmb_meta('phila_full_width_calendar_id');
@@ -98,6 +96,19 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
   </div>
 
 </div>
+
+<?php if (!empty($full_row_blog_selected)) : ?>
+  <?php $blog_override = rwmb_meta('phila_get_post_cats');
+    $blog_cat_override = isset($blog_override['phila_post_category']) ? $blog_override['phila_post_category'] : '';
+    $blog_tag_override = isset($blog_override['tag']) ? $blog_override['tag'] : '';
+    $blog_see_all = isset($blog_override['override_url']) ? $blog_override['override_url'] : ''; ?>
+
+  <!-- Blog Content-->
+  <section class="blogs">
+    <?php include(locate_template('partials/departments/phila_full_row_blog.php')); ?>
+  </section>
+  <!-- /Blog Content-->
+<?php endif; ?>
 
 
 <?php if (!empty($full_width_press_releases_selected)) : ?>
