@@ -128,7 +128,13 @@ if( !empty($tag) && $tag != 'is_single' ) {
     set_transient( get_the_ID().'_more_posts_results', $more_posts, 12 * HOUR_IN_SECONDS );
   }
 
-  $result = new WP_Query();
+  if ( false === ( $result = get_transient( get_the_ID().'_empty_posts_results' ) ) ) {
+    var_dump('yup3');
+    $result = new WP_Query();
+    set_transient( get_the_ID().'_empty_posts_results', $result, 12 * HOUR_IN_SECONDS );
+  }
+
+  
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
   
