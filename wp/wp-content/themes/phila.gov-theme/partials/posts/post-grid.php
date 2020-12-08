@@ -48,9 +48,9 @@ if ( empty( $post_categories ) ) {
     ),
   );
 
-  if ( false === ( $sticky_posts = get_transient( the_ID().'_sticky_posts_results' ) ) ) {
+  if ( false === ( $sticky_posts = get_transient( get_the_ID().'_sticky_posts_results' ) ) ) {
     $sticky_posts = new WP_Query( $sticky_args );
-    set_transient( the_ID().'_sticky_posts_results', $sticky_posts, 12 * HOUR_IN_SECONDS );
+    set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 12 * HOUR_IN_SECONDS );
   }
   
 
@@ -85,9 +85,9 @@ if( !empty($tag) && $tag != 'is_single' ) {
     )
   );
 
-  if ( false === ( $result = get_transient( the_ID().'_default_posts_results' ) ) ) {
+  if ( false === ( $result = get_transient( get_the_ID().'_default_posts_results' ) ) ) {
     $result = new WP_Query( $posts_args );
-    set_transient( the_ID().'_default_posts_results', $result, 12 * HOUR_IN_SECONDS );
+    set_transient( get_the_ID().'_default_posts_results', $result, 12 * HOUR_IN_SECONDS );
   }
 
 }else{
@@ -120,9 +120,9 @@ if( !empty($tag) && $tag != 'is_single' ) {
     )
   );
 
-  if ( false === ( $more_posts = get_transient( the_ID().'_more_posts_results' ) ) ) {
+  if ( false === ( $more_posts = get_transient( get_the_ID().'_more_posts_results' ) ) ) {
     $more_posts = new WP_Query( $posts_args );
-    set_transient( the_ID().'_more_posts_results', $more_posts, 12 * HOUR_IN_SECONDS );
+    set_transient( get_the_ID().'_more_posts_results', $more_posts, 12 * HOUR_IN_SECONDS );
   }
 
   $result = new WP_Query();
