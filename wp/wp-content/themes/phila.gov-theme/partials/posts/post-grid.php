@@ -48,7 +48,11 @@ if ( empty( $post_categories ) ) {
     ),
   );
 
-  $sticky_posts = new WP_Query( $sticky_args );
+  if ( false === ( $sticky_posts = get_transient( the_ID().'_sticky_posts_results' ) ) ) {
+    $sticky_posts = new WP_Query( $sticky_args );
+    set_transient( the_ID().'_sticky_posts_results', $sticky_posts, 12 * HOUR_IN_SECONDS );
+  }
+  
 
 }
 
@@ -81,10 +85,13 @@ if( !empty($tag) && $tag != 'is_single' ) {
     )
   );
 
-  $result = new WP_Query( $posts_args );
+  if ( false === ( $result = get_transient( the_ID().'_default_posts_results' ) ) ) {
+    $result = new WP_Query( $posts_args );
+    set_transient( the_ID().'_default_posts_results', $result, 12 * HOUR_IN_SECONDS );
+  }
+
 }else{
   $posts_args  = array(
-    'post_type' => array('post'),
     'posts_per_page' => 3,
     'order' => 'desc',
     'orderby' => 'post_date',
@@ -113,7 +120,10 @@ if( !empty($tag) && $tag != 'is_single' ) {
     )
   );
 
-  $more_posts = new WP_Query( $posts_args );
+  if ( false === ( $more_posts = get_transient( the_ID().'_more_posts_results' ) ) ) {
+    $more_posts = new WP_Query( $posts_args );
+    set_transient( the_ID().'_more_posts_results', $more_posts, 12 * HOUR_IN_SECONDS );
+  }
 
   $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
