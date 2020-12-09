@@ -47,7 +47,8 @@ if ( empty( $post_categories ) ) {
       )
     ),
   );
-
+  var_dump(get_the_ID().'_sticky_posts_results');
+  var_dump(get_transient( get_the_ID().'_sticky_posts_results' ));
   if ( false === ( $sticky_posts = get_transient( get_the_ID().'_sticky_posts_results' ) ) ) {
     var_dump('yup3');
     $sticky_posts = new WP_Query( $sticky_args );
@@ -85,7 +86,8 @@ if( !empty($tag) && $tag != 'is_single' ) {
       ),
     )
   );
-
+  var_dump(get_the_ID().'_default_posts_results');
+  var_dump(get_transient( get_the_ID().'_default_posts_results' ));
   if ( false === ( $result = get_transient( get_the_ID().'_default_posts_results' ) ) ) {
     var_dump('yup');
     $result = new WP_Query( $posts_args );
@@ -122,12 +124,16 @@ if( !empty($tag) && $tag != 'is_single' ) {
     )
   );
 
+  var_dump(get_the_ID().'_more_posts_results');
+  var_dump(get_transient( get_the_ID().'_more_posts_results' ));
   if ( false === ( $more_posts = get_transient( get_the_ID().'_more_posts_results' ) ) ) {
     var_dump('yup1');
     $more_posts = new WP_Query( $posts_args );
     set_transient( get_the_ID().'_more_posts_results', $more_posts, 12 * HOUR_IN_SECONDS );
   }
 
+  var_dump(get_the_ID().'_empty_posts_results');
+  var_dump(get_transient( get_the_ID().'_empty_posts_results' ));
   if ( false === ( $result = get_transient( get_the_ID().'_empty_posts_results' ) ) ) {
     var_dump('yup3');
     $result = new WP_Query();
