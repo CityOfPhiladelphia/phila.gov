@@ -1,8 +1,8 @@
-name: Deploy to staging
+name: Deploy to test
 on:
   push:
     branches:
-      - staging
+      - test
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - uses: actions/checkout@v2
-      - id: staging-deploy
-        uses: webfactory/create-aws-codedeploy-deployment@v0.2.1
+      - id: test-deploy
+        uses: webfactory/create-aws-codedeploy-deployment@v0.1.0
         with: 
-          application: staging-phila-gov-codedeploy
+          application: test-phila-gov-codedeploy
