@@ -17,3 +17,11 @@ branch_config:
         deploymentConfig:
             autoRollbackConfiguration:
                 enabled: false
+
+    test:
+        deploymentGroupName: test-phila-gov
+        deploymentGroupConfig:
+            serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
+        deploymentConfig:
+            autoRollbackConfiguration:
+                enabled: false
