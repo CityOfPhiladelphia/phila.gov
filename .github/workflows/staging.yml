@@ -15,6 +15,6 @@ jobs:
           aws-region: us-east-1
       - uses: actions/checkout@v2
       - id: staging-deploy
-        uses: webfactory/create-aws-codedeploy-deployment@v0.2.1
+        uses: webfactory/create-aws-codedeploy-deployment@v0.2.0
         with: 
           application: staging-phila-gov-codedeploy
