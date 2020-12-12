@@ -1741,8 +1741,6 @@ function phila_filter_allowed_html($allowed, $context){
     $allowed['div']['data-deep-link'] = true;
   }
 
-  $allowed['canvas'] = true;
-
   return $allowed;
 }
 //Stop stripping span tags from TinyMCE WYSIWYG
@@ -1752,7 +1750,7 @@ function phila_allowed_html($allowed){
 
     $allowed['extended_valid_elements'] = 'span[*]';
     $allowed['extended_valid_elements'] = 'canvas[*]';
-
+    $allowed['extended_valid_elements'] = 'i[*]';
 
   return $allowed;
 
