@@ -12,6 +12,7 @@ class NewMenuItem extends BaseHandler
 	public function __construct()
 	{
 		parent::__construct();
+		if ( !current_user_can('publish_posts') ) return;
 		$this->validateFields();
 		$this->saveRedirect();
 		$this->syncMenu();
@@ -66,6 +67,11 @@ class NewMenuItem extends BaseHandler
 			$term = get_term_by('id', $this->data['post']['objectId'], $this->data['post']['objectType']);
 			$this->data['post']['original_link'] = get_term_link($term);
 			$this->data['post']['original_title'] = $term->name;
+			return;
+		}
+		if ( $type == 'post_type_archive' ){
+			$this->data['post']['original_link'] = get_post_type_archive_link($this->data['post']['objectType']);
+			$this->data['post']['original_title'] = sanitize_text_field($this->data['post']['menuTitle']);
 			return;
 		}
 		$id = $this->data['post']['objectId'];
