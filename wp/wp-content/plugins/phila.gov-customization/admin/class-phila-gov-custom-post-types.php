@@ -388,12 +388,12 @@ class Phila_Gov_Custom_Post_Types{
         'has_archive' => true,
         'show_in_rest' => true,
         'show_in_nav_menus' => true,
-        'rest_base' => 'longform-contents',
+        'rest_base' => 'publications',
         'menu_icon' => 'dashicons-media-text',
         'hierarchical' => true,
         'query_var' => true,
         'rewrite' => array(
-          'slug' => 'longform-contents',
+          'slug' => 'publications',
           'with_front' => false,
         ),
       )
