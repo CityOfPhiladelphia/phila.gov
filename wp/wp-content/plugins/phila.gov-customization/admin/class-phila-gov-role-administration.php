@@ -79,6 +79,7 @@ class Phila_Gov_Role_Administration {
     if ( ! current_user_can( PHILA_ADMIN )  ){
       remove_meta_box('pageparentdiv', 'service_page', 'side');
       remove_meta_box('pageparentdiv', 'department_page', 'side');
+      remove_meta_box('pageparentdiv', 'longform_content', 'side');
       remove_meta_box('pageparentdiv', 'programs', 'side');
     }
   }
