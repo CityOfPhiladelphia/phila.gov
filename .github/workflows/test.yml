@@ -15,7 +15,7 @@ jobs:
           aws-region: us-east-1
       - uses: actions/checkout@v2
       - id: test-deploy
-        uses: webfactory/create-aws-codedeploy-deployment@v0.2.2
+        uses: webfactory/create-aws-codedeploy-deployment@v0d7a684950dae16883a140dd950257958730e0b5
         with: 
           application: test-phila-gov-codedeploy
           
