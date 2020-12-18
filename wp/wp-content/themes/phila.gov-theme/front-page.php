@@ -47,7 +47,7 @@ get_header(); ?>
                 </a>
               </div>
               <div class="small-12 medium-6 columns">
-                <a href="https://secure.phila.gov/PaymentCenter/AccountLookup/" class="mrs mbs equal"
+                <a href="https://epay.phila.gov/paymentcenter/accountlookup/"  class="mrs mbs equal"
                 onclick="dataLayer.push({
                       'event': 'GAEvent',
                       'eventCategory': 'Service Button',
