@@ -37,3 +37,4 @@ branch_config:
     deploymentConfig:
       autoRollbackConfiguration:
         enabled: false
+        
