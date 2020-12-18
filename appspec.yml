@@ -1,10 +1,4 @@
-# .appspec.yml
-
-# ... here be your existing CodeDeploy configuration.
-
-# This section controls the action:
-
-version: 0.0
+version: 0
 os: linux
 files:
   - source: /wp
@@ -27,22 +21,19 @@ hooks:
   AfterInstall:
     - location: scripts/deploy.sh
       runas: ubuntu
-      
 branch_config:
-    wip\/.*: ~
-
-    staging:
-        deploymentGroupName: staging-phila-gov-codedeploy-deploymentgroup
-        deploymentGroupConfig:
-            serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
-        deploymentConfig:
-            autoRollbackConfiguration:
-                enabled: false
-
-    test:
-        deploymentGroupName: test-phila-gov
-        deploymentGroupConfig:
-            serviceRoleArn: arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy
-        deploymentConfig:
-            autoRollbackConfiguration:
-                enabled: false
+  wip\/.*: null
+  staging:
+    deploymentGroupName: staging-phila-gov-codedeploy-deploymentgroup
+    deploymentGroupConfig:
+      serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
+    deploymentConfig:
+      autoRollbackConfiguration:
+        enabled: false
+  test:
+    deploymentGroupName: test-phila-gov
+    deploymentGroupConfig:
+      serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
+    deploymentConfig:
+      autoRollbackConfiguration:
+        enabled: false
