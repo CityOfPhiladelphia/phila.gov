@@ -1741,8 +1741,6 @@ function phila_filter_allowed_html($allowed, $context){
     $allowed['div']['data-deep-link'] = true;
   }
 
-  $allowed['canvas'] = true;
-
   return $allowed;
 }
 //Stop stripping span tags from TinyMCE WYSIWYG
@@ -1752,7 +1750,7 @@ function phila_allowed_html($allowed){
 
     $allowed['extended_valid_elements'] = 'span[*]';
     $allowed['extended_valid_elements'] = 'canvas[*]';
-
+    $allowed['extended_valid_elements'] = 'i[*]';
 
   return $allowed;
 
@@ -2118,3 +2116,21 @@ function force_type_private($post, $postarr) {
   return $post;
 }
 add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
+
+function set_environment() {
+  global $phila_environment;
+  if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
+    $phila_environment = 'staging';
+  }
+  else if(strpos($_SERVER['HTTP_HOST'],'test') !== false) {
+    $phila_environment = 'test';
+  }
+  else if(strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
+    $phila_environment = 'local';
+  }
+  else {
+    $phila_environment = 'production';
+  }
+}
+
+add_action('init', 'set_environment');

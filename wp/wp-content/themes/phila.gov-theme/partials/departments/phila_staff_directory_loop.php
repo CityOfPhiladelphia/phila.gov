@@ -175,7 +175,7 @@ if ( $staff_member_loop->have_posts() ):
   <!-- Begin Staff Leadership -->
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
       <div class="large-24 columns">
-        <?php if ( $user_selected_template == 'homepage_v2' ) : ?>
+        <?php if ( $user_selected_template == 'homepage_v2' || $user_selected_template == 'prog_association' ) : ?>
           <h2 class="contrast leadership">Leadership</h2>
         <?php endif; ?>
         <?php if ( isset( $unit )  ) : ?>

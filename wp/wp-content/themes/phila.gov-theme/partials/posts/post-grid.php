@@ -35,7 +35,6 @@ if ( empty( $post_categories ) ) {
 }else{
   /* Get all sticky posts for department homepages */
   $sticky_args = array(
-    'posts_per_page' => -1,
     'post__in'  => get_option( 'sticky_posts' ),
     'cat' => $post_categories,
     'order' => 'desc',
@@ -49,7 +48,11 @@ if ( empty( $post_categories ) ) {
     ),
   );
 
-  $sticky_posts = new WP_Query( $sticky_args );
+  if ( false === ( $sticky_posts = get_transient( get_the_ID().'_sticky_posts_results' ) ) ) {
+    $sticky_posts = new WP_Query( $sticky_args );
+    set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 1 * HOUR_IN_SECONDS );
+  }
+  
 
 }
 
@@ -81,8 +84,11 @@ if( !empty($tag) && $tag != 'is_single' ) {
       ),
     )
   );
+  if ( false === ( $result = get_transient( get_the_ID().'_default_posts_results' ) ) ) {
+    $result = new WP_Query( $posts_args );
+    set_transient( get_the_ID().'_default_posts_results', $result, 1 * HOUR_IN_SECONDS );
+  }
 
-  $result = new WP_Query( $posts_args );
 }else{
   $posts_args  = array(
     'posts_per_page' => 3,
@@ -112,12 +118,18 @@ if( !empty($tag) && $tag != 'is_single' ) {
       ),
     )
   );
+
+  if ( false === ( $more_posts = get_transient( get_the_ID().'_more_posts_results' ) ) ) {
+    $more_posts = new WP_Query( $posts_args );
+    set_transient( get_the_ID().'_more_posts_results', $more_posts, 1 * HOUR_IN_SECONDS );
+  }
+
+  if ( false === ( $result = get_transient( get_the_ID().'_empty_posts_results' ) ) ) {
+    $result = new WP_Query();
+    set_transient( get_the_ID().'_empty_posts_results', $result, 1 * HOUR_IN_SECONDS );
+  }
+
   
-  $result = new WP_Query( $posts_args );
-
-  $more_posts = new WP_Query( $posts_args );
-
-  $result = new WP_Query();
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
   
